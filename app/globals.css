@@ -431,14 +431,19 @@ button, input, select, textarea {
   box-shadow: var(--shadow-cta);
 }
 
-/* --- 01. Hero Section --- */
+/* --- 01. Hero Section (80% Viewport Height & ase-bot.live Fade) --- */
 .hero {
-  padding-top: 11rem;
-  padding-bottom: 7rem;
+  height: 80vh;
+  min-height: 80vh;
+  max-height: 850px;
+  padding-top: 7rem;
+  padding-bottom: 2rem;
   position: relative;
   overflow: hidden;
   color: #FFFFFF;
   background-color: #030712;
+  display: flex;
+  align-items: center;
 }
 
 .hero-video-bg {
@@ -452,18 +457,30 @@ button, input, select, textarea {
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: 1;
-  opacity: 0.55;
-  filter: brightness(0.85) contrast(1.25);
+  opacity: 0.45;
+  filter: brightness(0.85) contrast(1.2);
   pointer-events: none;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(3, 7, 18, 0.2) 0%, rgba(3, 7, 18, 0.85) 80%),
-              linear-gradient(to bottom, rgba(3, 7, 18, 0.6) 0%, rgba(3, 7, 18, 0.95) 100%);
+  background: radial-gradient(circle at 50% 50%, rgba(3, 7, 18, 0.25) 0%, rgba(3, 7, 18, 0.85) 85%),
+              linear-gradient(to bottom, rgba(3, 7, 18, 0.5) 0%, rgba(3, 7, 18, 0.95) 100%);
   z-index: 2;
   pointer-events: none;
+}
+
+/* Bottom Fade Gradient Transition (1:1 with ase-bot.live) */
+.hero-bottom-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(3, 7, 18, 0.6) 40%, rgba(246, 246, 244, 0.95) 90%, var(--color-bg-surface) 100%);
+  pointer-events: none;
+  z-index: 5;
 }
 
 .hero-grid {
