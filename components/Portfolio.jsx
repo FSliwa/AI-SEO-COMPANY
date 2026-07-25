@@ -8,13 +8,34 @@ const realizedWebsites = [
     brand: 'MADAMe THAI RESTAURANT',
     url: 'https://mada-me-thai-brown.vercel.app/',
     category: 'web',
-    tags: ['Web Design UX/UI', 'Strona za 0 zł'],
-    metric: 'Strona za 0 zł',
-    metricSubtitle: 'w pakiecie z pełnym wdrożeniem RWD i rezerwacjami Hotres',
-    desc: 'Indywidualny projekt graficzny (UX/UI) dostosowany pod użytkowników mobilnych z integracją formularza i systemu rezerwacji Hotres.',
+    metric: '0 zł',
+    metricSubtitle: 'strona WWW w pakiecie z pełnym RWD i systemem Hotres',
     gradient: 'linear-gradient(135deg, #38BDF8, #A855F7, #EC4899)',
-    bgGradient: 'radial-gradient(circle at 70% 30%, rgba(168, 85, 247, 0.25), rgba(7, 12, 24, 0.95))',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80',
+    meshColor: 'radial-gradient(circle at 75% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.25) 45%, transparent 70%)',
+    screens: [
+      {
+        title: 'Menu & Specjały',
+        subtitle: 'Autorskie dania Tajskie',
+        tag: 'Dania',
+        image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(-15px)'
+      },
+      {
+        title: 'Rezerwacja Stolika',
+        subtitle: 'System Hotres Online',
+        tag: 'Hotres UI',
+        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(15px)',
+        highlight: true
+      },
+      {
+        title: 'Lokalizacja & Kontakt',
+        subtitle: 'Wykrywanie GPS i Mapa',
+        tag: 'Mobile RWD',
+        image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(-5px)'
+      }
+    ],
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
 - Responsywna wersja strony (RWD): Poprawne działanie na telefonach i tabletach — eliminacja utraconych zapytań od klientów mobilnych.
@@ -26,13 +47,34 @@ const realizedWebsites = [
     brand: 'STANIAX METALIZACJA',
     url: 'https://www.staniax.pl/',
     category: 'seo',
-    tags: ['Pozycjonowanie SEO', 'Case Study 1'],
-    metric: '2,8 tys.',
-    metricSubtitle: 'wyświetleń w Google i gwałtowny wzrost widoczności w 60 dni',
-    desc: 'Skalowanie widoczności od zera na kluczowe frazy branżowe („metalizowanie próżniowe”, „metalizacja próżniowa”) oraz optymalizacja wersji mobilnej.',
+    metric: '2.8k',
+    metricSubtitle: 'wyświetleń w Google i gwałtowny wzrost widoczności',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #10B981)',
-    bgGradient: 'radial-gradient(circle at 70% 30%, rgba(56, 189, 248, 0.25), rgba(7, 12, 24, 0.95))',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    meshColor: 'radial-gradient(circle at 75% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(16, 185, 129, 0.25) 45%, transparent 70%)',
+    screens: [
+      {
+        title: 'Metalizacja Próżniowa',
+        subtitle: 'Fraza #1 w Google (17.3)',
+        tag: 'SEO B2B',
+        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(-10px)'
+      },
+      {
+        title: 'Park Maszynowy',
+        subtitle: 'Przemysłowa wydajność',
+        tag: 'Wersje DE/EN',
+        image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(20px)',
+        highlight: true
+      },
+      {
+        title: 'Zapytanie Ofertowe',
+        subtitle: 'Wzrost konwersji +180%',
+        tag: 'Formularz B2B',
+        image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(-15px)'
+      }
+    ],
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
 - Start od zerowej widoczności → 2,8 tys. wyświetleń i gwałtowny skokowy wzrost do ok. 100 wyświetleń dziennie.
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
@@ -43,13 +85,34 @@ const realizedWebsites = [
     brand: 'ASE-BOT TRADING',
     url: 'https://ase-bot.live/',
     category: 'seo',
-    tags: ['SEO B2B / USA', 'Case Study 2'],
-    metric: '+8 113%',
-    metricSubtitle: 'wzrostu wyświetleń w wyszukiwarce Google na rynku USA',
-    desc: 'Budowa widoczności w hiperkonkurencyjnej branży AI trading na rynku amerykańskim.',
-    gradient: 'linear-gradient(135deg, #F97316, #EC4899, #8B5CF6)',
-    bgGradient: 'radial-gradient(circle at 70% 30%, rgba(236, 72, 153, 0.25), rgba(7, 12, 24, 0.95))',
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80',
+    metric: '+8113%',
+    metricSubtitle: 'increase in organic search views on USA market',
+    gradient: 'linear-gradient(135deg, #A855F7, #EC4899, #F97316)',
+    meshColor: 'radial-gradient(circle at 75% 50%, rgba(236, 72, 153, 0.45) 0%, rgba(249, 115, 22, 0.3) 45%, transparent 70%)',
+    screens: [
+      {
+        title: 'AI Futures Bot',
+        subtitle: 'Algorytmy kwantowe USA',
+        tag: 'USA Organic',
+        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(-20px)'
+      },
+      {
+        title: 'Analityka Wyników',
+        subtitle: '4.8k wyświetleń/kwartał',
+        tag: 'CTR 4.62%',
+        image: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(10px)',
+        highlight: true
+      },
+      {
+        title: 'Live Signals Feed',
+        subtitle: 'Powiadomienia na żywo',
+        tag: 'High Velocity',
+        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
+        transform: 'translateY(-10px)'
+      }
+    ],
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
 - Skok od 0 do 4,8 tys. wyświetleń w kwartale (+8 113,8%) i wzrost w ostatnich 28 dniach o 244,7% (do 500 wyświetleń dziennie).
 - Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 — krok od TOP 20), „best futures trading platforms” (pozycja 61).
@@ -60,82 +123,109 @@ const realizedWebsites = [
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeModal, setActiveModal] = useState(null);
+  const [animating, setAnimating] = useState(false);
 
-  const nextSlide = () => {
+  const handleNext = () => {
+    if (animating) return;
+    setAnimating(true);
     setActiveIndex((prev) => (prev + 1) % realizedWebsites.length);
-  };
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + realizedWebsites.length) % realizedWebsites.length);
+    setTimeout(() => setAnimating(false), 500);
   };
 
   const currentItem = realizedWebsites[activeIndex];
 
   return (
-    <section className="portfolio" id="portfolio">
+    <section className="portfolio-kota-section" id="portfolio">
       <div className="container">
-        <div className="section-header">
-          <div className="section-tag">
+        <div className="section-header dark-header">
+          <div className="section-tag dark-tag">
             <span className="asterisk">✳</span> OUR RESULTS
           </div>
           <h2>Projects — zrealizowane strony z mierzalnym efektem</h2>
-          <p>Zobacz wyniki i realizacje stworzone na wzór najlepszych światowych agencji digital.</p>
+          <p style={{ color: '#94A3B8' }}>Projekty i case studies wygenerowane dla klientów poszukujących wzrostu organicznego.</p>
         </div>
 
-        {/* KOTA "Our Results" Stacked Deck Showcase (Screenshots 1 & 2) */}
-        <div className="kota-results-deck-wrapper">
-          {/* Background Stack Cards for Deck Effect */}
-          <div className="kota-deck-stack layer-3"></div>
-          <div className="kota-deck-stack layer-2"></div>
+        {/* KOTA Full Screen Deck Showcase */}
+        <div className="kota-deck-container">
+          {/* Stacked Back Edges (Left Cards Effect) */}
+          <div className="kota-deck-edge edge-3"></div>
+          <div className="kota-deck-edge edge-2"></div>
+          <div className="kota-deck-edge edge-1"></div>
 
-          {/* Active Primary Card */}
-          <div className="kota-deck-main-card" style={{ background: currentItem.bgGradient }}>
-            <div className="kota-deck-left">
-              <div className="kota-deck-brand">
-                <span>⚡</span> {currentItem.brand}
+          {/* Primary Main Card */}
+          <div className={`kota-main-card ${animating ? 'slide-animating' : ''}`}>
+            {/* Mesh Blur Glow Background Overlay */}
+            <div className="kota-card-mesh-bg" style={{ background: currentItem.meshColor }}></div>
+
+            {/* Left Side Content */}
+            <div className="kota-card-left">
+              <div className="kota-brand-badge">
+                <span className="kota-brand-icon">⚡</span>
+                <span>{currentItem.brand}</span>
               </div>
 
-              <div className="kota-deck-metric-group">
-                <div className="kota-deck-metric-number" style={{ background: currentItem.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              <div className="kota-metric-wrapper">
+                <div
+                  className="kota-giant-metric"
+                  style={{
+                    background: currentItem.gradient,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
                   {currentItem.metric}
                 </div>
-                <div className="kota-deck-metric-sub">
+                <div className="kota-metric-subtext">
                   {currentItem.metricSubtitle}
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-                {currentItem.tags.map((t, i) => (
-                  <span key={i} className="tag" style={{ background: 'rgba(255,255,255,0.1)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.2)' }}>
-                    {t}
-                  </span>
+              <button
+                className="kota-view-project-btn"
+                onClick={() => setActiveModal(currentItem)}
+              >
+                <span>View project</span>
+                <span className="kota-btn-arrow">→</span>
+              </button>
+            </div>
+
+            {/* Right Side 3 Floating Staggered Mobile Phone Screen Mockups */}
+            <div className="kota-card-right">
+              <div className="kota-phone-trio">
+                {currentItem.screens.map((screen, idx) => (
+                  <div
+                    key={idx}
+                    className={`kota-phone-card ${screen.highlight ? 'highlight-phone' : ''}`}
+                    style={{ transform: screen.transform }}
+                  >
+                    <div className="kota-phone-screen-top">
+                      <span className="kota-phone-dot"></span>
+                      <span className="kota-phone-tag">{screen.tag}</span>
+                    </div>
+                    <div
+                      className="kota-phone-img"
+                      style={{ backgroundImage: `url('${screen.image}')` }}
+                    ></div>
+                    <div className="kota-phone-body">
+                      <h4>{screen.title}</h4>
+                      <p>{screen.subtitle}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
-
-              <button className="btn btn-secondary" onClick={() => setActiveModal(currentItem)} style={{ background: 'rgba(255,255,255,0.1)', color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.2)' }}>
-                Zobacz szczegóły case study →
-              </button>
             </div>
 
-            <div className="kota-deck-right">
-              <div className="kota-deck-mockup-window">
-                <div className="kota-deck-mockup-bg" style={{ backgroundImage: `url('${currentItem.image}')` }}></div>
-                <div className="kota-deck-url-badge">{currentItem.url}</div>
-              </div>
-            </div>
-
-            {/* Circular Carousel Controls (Bottom Right) */}
-            <div className="kota-deck-controls">
-              <button className="kota-control-arrow" onClick={prevSlide} title="Poprzedni projekt" aria-label="Previous">
-                ‹
-              </button>
-              <span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: '600' }}>
-                0{activeIndex + 1} / 0{realizedWebsites.length}
-              </span>
-              <button className="kota-control-arrow" onClick={nextSlide} title="Następny projekt" aria-label="Next">
-                ›
-              </button>
-            </div>
+            {/* KOTA Bottom-Right Circular Carousel Control Button */}
+            <button
+              className="kota-deck-next-btn"
+              onClick={handleNext}
+              aria-label="Next Project"
+              title="Next Project"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -151,12 +241,7 @@ export default function Portfolio() {
                 {activeModal.url} ↗
               </a>
             </p>
-            <div style={{ marginBottom: '1rem' }}>
-              {activeModal.tags.map((tag, i) => (
-                <span key={i} className="tag" style={{ marginRight: '0.4rem' }}>{tag}</span>
-              ))}
-            </div>
-            <div style={{ fontSize: '2rem', fontWeight: '700', color: '#38BDF8', marginBottom: '1rem' }}>
+            <div style={{ fontSize: '2.5rem', fontWeight: '700', color: '#38BDF8', marginBottom: '1rem' }}>
               {activeModal.metric}
             </div>
             <div style={{ color: 'var(--color-text-main)', fontSize: '0.95rem', lineHeight: '1.7', whiteSpace: 'pre-line', marginBottom: '1.5rem', background: 'var(--color-bg-surface)', padding: '1.25rem', borderRadius: '12px' }}>
