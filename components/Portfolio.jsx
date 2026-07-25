@@ -11,7 +11,7 @@ const realizedWebsites = [
       <svg width="140" height="32" viewBox="0 0 160 36" fill="none">
         <path d="M8 18C8 12.5 12.5 8 18 8C23.5 8 28 12.5 28 18C28 23.5 23.5 28 18 28" stroke="#38BDF8" strokeWidth="3" strokeLinecap="round"/>
         <path d="M18 18C18 12.5 22.5 8 28 8C33.5 8 38 12.5 38 18" stroke="#A855F7" strokeWidth="3" strokeLinecap="round"/>
-        <text x="48" y="25" fill="#FFFFFF" fontSize="18" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">ISI GLOBAL</text>
+        <text x="48" y="25" fill="#0F172A" fontSize="18" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">ISI GLOBAL</text>
       </svg>
     ),
     url: 'https://mada-me-thai-brown.vercel.app/',
@@ -19,7 +19,7 @@ const realizedWebsites = [
     metric: '104.9%',
     metricSubtitle: 'increase in organic visits after 1 month.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(6, 11, 24, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.15) 0%, rgba(56, 189, 248, 0.1) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
@@ -56,9 +56,9 @@ const realizedWebsites = [
     brandName: 'WOGAN / STANIAX',
     brandLogo: (
       <svg width="140" height="36" viewBox="0 0 160 40" fill="none">
-        <path d="M18 10C14 10 10 14 10 18C10 22 14 26 18 26C22 26 26 22 26 18" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round"/>
-        <path d="M14 12L22 24" stroke="#FFFFFF" strokeWidth="2.5"/>
-        <text x="36" y="27" fill="#FFFFFF" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">WOGAN</text>
+        <path d="M18 10C14 10 10 14 10 18C10 22 14 26 18 26C22 26 26 22 26 18" stroke="#0F172A" strokeWidth="3" strokeLinecap="round"/>
+        <path d="M14 12L22 24" stroke="#0F172A" strokeWidth="2.5"/>
+        <text x="36" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">WOGAN</text>
       </svg>
     ),
     url: 'https://www.staniax.pl/',
@@ -66,7 +66,7 @@ const realizedWebsites = [
     metric: '83.14%',
     metricSubtitle: 'increase in sales after 1 year.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.3) 40%, rgba(6, 11, 24, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.15) 0%, rgba(52, 211, 153, 0.1) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'desktop',
     desktopCard: {
       tag: 'BRANDING & E-COMMERCE',
@@ -86,7 +86,7 @@ const realizedWebsites = [
     brandLogo: (
       <svg width="130" height="34" viewBox="0 0 150 40" fill="none">
         <path d="M12 8L28 20L12 32V8Z" stroke="#38BDF8" strokeWidth="3" strokeLinejoin="round"/>
-        <text x="38" y="27" fill="#FFFFFF" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">PISON</text>
+        <text x="38" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">PISON</text>
       </svg>
     ),
     url: 'https://ase-bot.live/',
@@ -94,7 +94,7 @@ const realizedWebsites = [
     metric: '67.6%',
     metricSubtitle: 'rise in engaged sessions per user after 1 month.',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(6, 11, 24, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.15) 0%, rgba(56, 189, 248, 0.12) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
@@ -133,6 +133,31 @@ export default function Portfolio() {
   const [activeModal, setActiveModal] = useState(null);
   const { lang } = useLanguage();
 
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragDistance, setDragDistance] = useState(0);
+
+  const handlePointerDown = (e) => {
+    if (isAnimating) return;
+    setDragStartX(e.clientX || (e.touches && e.touches[0].clientX) || 0);
+    setDragDistance(0);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!dragStartX || isAnimating) return;
+    const currentX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    setDragDistance(currentX - dragStartX);
+  };
+
+  const handlePointerUp = () => {
+    if (dragStartX && dragDistance < -60) {
+      handleNextSlide();
+    } else if (dragStartX && dragDistance > 60) {
+      // Swipe right logic (optional, currently just snap back)
+    }
+    setDragStartX(0);
+    setDragDistance(0);
+  };
+
   const handleNextSlide = () => {
     if (isAnimating) return;
     setIsAnimating(true);
@@ -140,27 +165,34 @@ export default function Portfolio() {
     setTimeout(() => {
       setActiveIndex((prev) => (prev + 1) % realizedWebsites.length);
       setIsAnimating(false);
+      setDragStartX(0);
+      setDragDistance(0);
     }, 380);
   };
 
   const currentItem = realizedWebsites[activeIndex];
 
+  const cardStyle = {
+    transform: dragStartX && !isAnimating ? `translateX(${dragDistance}px) rotate(${dragDistance * 0.02}deg)` : '',
+    transition: dragStartX && !isAnimating ? 'none' : 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease'
+  };
+
   return (
     <section className="portfolio-kota-section" id="portfolio">
       <div className="container" style={{ maxWidth: '1280px' }}>
-        <div className="section-header dark-header">
-          <div className="section-tag dark-tag">
-            <span className="asterisk">✳</span> OUR RESULTS
+        <div className="section-header center">
+          <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> OUR RESULTS
           </div>
-          <h2 style={{ color: '#FFFFFF' }}>
+          <h2>
             {lang === 'pl' ? 'Projects — zrealizowane strony z mierzalnym efektem' : 'Projects — high-performance websites with measurable impact'}
           </h2>
-          <p style={{ color: '#94A3B8' }}>
+          <p>
             {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}
           </p>
         </div>
 
-        {/* KOTA Full-Width Card Deck Showcase (Solid #000000 Background Section) */}
+        {/* KOTA Full-Width Card Deck Showcase (Light Background Section) */}
         <div className="kota-deck-container">
           {/* Left Stack Edges */}
           <div className="kota-deck-edge edge-3"></div>
@@ -168,11 +200,19 @@ export default function Portfolio() {
           <div className="kota-deck-edge edge-1"></div>
 
           {/* Primary Top Active Card */}
-          <div className={`kota-main-card ${isAnimating ? 'kota-slide-animating' : ''}`}>
+          <div 
+            className={`kota-main-card ${isAnimating ? 'kota-slide-animating' : ''}`}
+            style={cardStyle}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
+            onDragStart={(e) => e.preventDefault()}
+          >
             <div className="kota-card-mesh-bg" style={{ background: currentItem.meshBg }}></div>
 
             {/* Left Content Side */}
-            <div className="kota-card-left">
+            <div className="kota-card-left" style={{ pointerEvents: 'none' }}>
               <div className="kota-brand-logo-wrapper">
                 {currentItem.brandLogo}
               </div>
@@ -195,6 +235,7 @@ export default function Portfolio() {
 
               <button
                 className="kota-view-project-btn"
+                style={{ pointerEvents: 'auto' }}
                 onClick={() => setActiveModal(currentItem)}
               >
                 <span>View Project</span>
@@ -203,7 +244,7 @@ export default function Portfolio() {
             </div>
 
             {/* Right Side Visual Showcase */}
-            <div className="kota-card-right">
+            <div className="kota-card-right" style={{ pointerEvents: 'none' }}>
               {currentItem.rightVisual === 'desktop' ? (
                 /* Desktop Web Preview Mockup Card (WOGAN style) */
                 <div className="kota-desktop-preview-card">
@@ -247,7 +288,8 @@ export default function Portfolio() {
             {/* KOTA Bottom-Right Carousel Next Arrow Button */}
             <button
               className="kota-deck-next-btn"
-              onClick={handleNextSlide}
+              style={{ pointerEvents: 'auto' }}
+              onClick={(e) => { e.stopPropagation(); handleNextSlide(); }}
               aria-label="Next Project"
               title="Next Project"
             >
