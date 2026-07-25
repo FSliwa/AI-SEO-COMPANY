@@ -354,7 +354,7 @@ button, input, select, textarea {
   position: relative;
   height: fit-content;
   transform-origin: top right;
-  animation: menuUnfold 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: kotaMenuSpring 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 @keyframes fadeInOverlay {
@@ -362,14 +362,16 @@ button, input, select, textarea {
   100% { opacity: 1; }
 }
 
-@keyframes menuUnfold {
+@keyframes kotaMenuSpring {
   0% {
     opacity: 0;
-    transform: scale(0.85) translateY(-15px) translateX(15px);
+    transform: scale(0) translateY(-20px) translateX(20px);
+    border-radius: 50%;
   }
   100% {
     opacity: 1;
     transform: scale(1) translateY(0) translateX(0);
+    border-radius: 28px;
   }
 }
 
