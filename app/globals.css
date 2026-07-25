@@ -8,28 +8,28 @@
 :root {
   /* Color Palette (KOTA Mesh Ambient Light + VIS Editorial + Cosmic Hero) */
   --color-bg-dark: #030712;
-  --color-bg-surface: #030712;
-  --color-bg-alt: #0B1120;
-  --color-card-bg: #0F172A;
+  --color-bg-surface: #F6F6F4;
+  --color-bg-alt: #EFEFEA;
+  --color-card-bg: #FFFFFF;
 
-  --color-dark-accent: #FFFFFF;
-  --color-text-main: #CBD5E1;
-  --color-text-dark: #F8FAFC;
-  --color-text-muted: #94A3B8;
-  --color-text-dim: #64748B;
+  --color-dark-accent: #000000;
+  --color-text-main: #1E293B;
+  --color-text-dark: #0F172A;
+  --color-text-muted: #64748B;
+  --color-text-dim: #94A3B8;
 
-  --color-primary: #38BDF8;
-  --color-primary-light: #7DD3FC;
+  --color-primary: #185FA5;
+  --color-primary-light: #38BDF8;
 
-  --color-cta: #F97316;
-  --color-cta-hover: #EA580C;
-  --color-cta-glow: rgba(249, 115, 22, 0.35);
+  --color-cta: #D85A30;
+  --color-cta-hover: #C24A22;
+  --color-cta-glow: rgba(216, 90, 48, 0.35);
 
   --color-growth: #10B981;
-  --color-growth-bg: rgba(16, 185, 129, 0.1);
+  --color-growth-bg: #ECFDF5;
 
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-hover: rgba(56, 189, 248, 0.35);
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-border-hover: rgba(24, 95, 165, 0.35);
 
   /* Elevation & Shadows */
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
@@ -198,16 +198,16 @@ button, input, select, textarea {
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: #FFFFFF;
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-  border-color: #FFFFFF;
-  background-color: #FFFFFF;
-  color: #000000;
+  border-color: var(--color-text-dark);
+  background-color: #000000;
+  color: #FFFFFF;
   transform: translateY(-3px);
 }
 
@@ -223,11 +223,11 @@ button, input, select, textarea {
 }
 
 .header.scrolled {
-  background: rgba(3, 7, 18, 0.85);
+  background: rgba(246, 246, 244, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 0.9rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -272,7 +272,7 @@ button, input, select, textarea {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--color-text-dark);
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   padding: 0.4rem 0.8rem;
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
@@ -291,8 +291,8 @@ button, input, select, textarea {
 
 /* Header Hire Us Pill Button */
 .header-hire-btn {
-  background: #FFFFFF;
-  color: #000000;
+  background: #000000;
+  color: #FFFFFF;
   padding: 0.7rem 1.4rem;
   border-radius: var(--radius-full);
   font-weight: 600;
@@ -312,8 +312,8 @@ button, input, select, textarea {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #FFFFFF;
-  color: #000000;
+  background: #000000;
+  color: #FFFFFF;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
@@ -342,11 +342,11 @@ button, input, select, textarea {
 }
 
 .kota-menu-dropdown-card {
-  background: #0F172A;
+  background: #FFFFFF;
   border-radius: 28px;
   width: 290px;
   padding: 2rem 2.25rem 2.25rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -385,8 +385,8 @@ button, input, select, textarea {
   height: 38px;
   border-radius: 50%;
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.1);
-  color: #F8FAFC;
+  background: #FAFAFA;
+  color: var(--color-text-dark);
   font-size: 1.1rem;
   display: flex;
   align-items: center;
@@ -396,9 +396,9 @@ button, input, select, textarea {
 }
 
 .kota-menu-close-btn:hover {
-  background: #FFFFFF;
-  color: #000000;
-  border-color: #FFFFFF;
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
 }
 
 .kota-menu-card-links {
@@ -432,8 +432,8 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FFFFFF;
-  color: #000000;
+  background: #000000;
+  color: #FFFFFF;
   padding: 0.85rem 1.5rem;
   border-radius: var(--radius-full);
   font-weight: 600;
@@ -488,16 +488,7 @@ button, input, select, textarea {
   pointer-events: none;
 }
 
-.hero-bottom-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(to bottom, transparent 0%, var(--color-bg-surface) 100%);
-  pointer-events: none;
-  z-index: 5;
-}
+
 
 .hero-grid {
   position: relative;
@@ -716,7 +707,7 @@ button, input, select, textarea {
 .kota-pillar-card {
   flex: 1;
   min-width: 260px;
-  background: var(--color-card-bg);
+  background: #FFFFFF;
   border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
   border: 1px solid var(--color-border);
@@ -855,40 +846,41 @@ button, input, select, textarea {
   position: absolute;
   top: 0;
   bottom: 0;
-  background: #080E1C;
+  background: #FFFFFF;
   border-radius: 36px;
   border-top-right-radius: 140px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--color-border);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.04);
   pointer-events: none;
 }
 
 .kota-deck-edge.edge-3 {
   left: 0;
   right: 60px;
-  opacity: 0.25;
+  opacity: 0.5;
 }
 
 .kota-deck-edge.edge-2 {
   left: 20px;
   right: 40px;
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 .kota-deck-edge.edge-1 {
   left: 40px;
   right: 20px;
-  opacity: 0.75;
+  opacity: 1;
 }
 
 /* KOTA Primary Active Main Card */
 .kota-main-card {
   position: relative;
   z-index: 10;
-  background-color: #0B1120 !important;
+  background-color: #FFFFFF !important;
   border-radius: 36px;
   border-top-right-radius: 140px;
   padding: 4.5rem 4.5rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--color-border);
   display: grid;
   grid-template-columns: 1.1fr 1.25fr;
@@ -896,6 +888,7 @@ button, input, select, textarea {
   align-items: center;
   min-height: 560px;
   overflow: hidden;
+  user-select: none;
   transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease;
   opacity: 1;
 }
@@ -957,9 +950,9 @@ button, input, select, textarea {
 }
 
 .kota-view-project-btn:hover {
-  background: #FFFFFF;
-  color: #000000;
-  border-color: #FFFFFF;
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
   transform: translateY(-2px);
 }
 
@@ -1035,7 +1028,7 @@ button, input, select, textarea {
 
 .kota-phone-card {
   width: 185px;
-  background: var(--color-card-bg);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: 22px;
   padding: 0.85rem;
@@ -1064,7 +1057,7 @@ button, input, select, textarea {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #FFFFFF;
+  background: #000000;
 }
 
 .kota-phone-tag {
@@ -1106,7 +1099,7 @@ button, input, select, textarea {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(8px);
   border: 1px solid var(--color-border);
   color: var(--color-text-dark);
@@ -1223,7 +1216,7 @@ button, input, select, textarea {
 .pricing-note {
   margin-top: 3.5rem;
   text-align: center;
-  background: var(--color-card-bg);
+  background: #FFFFFF;
   padding: 1.75rem;
   border-radius: var(--radius-lg);
   font-size: 0.95rem;
@@ -1244,7 +1237,7 @@ button, input, select, textarea {
 }
 
 .stat-card {
-  background: var(--color-card-bg);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 3.5rem 2rem;
@@ -1294,7 +1287,7 @@ button, input, select, textarea {
   border-radius: var(--radius-full);
   font-size: 0.875rem;
   font-weight: 600;
-  background: var(--color-card-bg);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
   cursor: pointer;
@@ -1302,9 +1295,9 @@ button, input, select, textarea {
 }
 
 .kota-tab.active, .kota-tab:hover {
-  background: #FFFFFF;
-  color: #000000;
-  border-color: #FFFFFF;
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
 }
 
 .process-diagram-wrapper {
@@ -1341,7 +1334,7 @@ button, input, select, textarea {
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  background: var(--color-card-bg);
+  background: #000000;
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -1374,7 +1367,7 @@ button, input, select, textarea {
 /* --- 08. Results --- */
 .results {
   padding: 5.5rem 0;
-  background: var(--color-bg-alt);
+  background: var(--color-text-dark);
   color: #FFFFFF;
   border-radius: var(--radius-lg);
   margin: 2rem 0;
@@ -1406,7 +1399,7 @@ button, input, select, textarea {
 }
 
 .testimonial-card {
-  background: var(--color-card-bg);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 3rem 2.5rem;
@@ -1719,8 +1712,7 @@ button, input, select, textarea {
 }
 
 .modal-container {
-  background: var(--color-bg-dark);
-  border: 1px solid var(--color-border);
+  background: #FFFFFF;
   border-radius: var(--radius-lg);
   max-width: 720px;
   width: 90%;

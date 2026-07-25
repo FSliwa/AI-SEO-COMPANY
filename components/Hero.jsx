@@ -91,8 +91,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom Fade Gradient Transition Matching ase-bot.live */}
-      <div className="hero-bottom-fade"></div>
     </section>
   );
 }

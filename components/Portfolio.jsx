@@ -11,7 +11,7 @@ const realizedWebsites = [
       <svg width="140" height="32" viewBox="0 0 160 36" fill="none">
         <path d="M8 18C8 12.5 12.5 8 18 8C23.5 8 28 12.5 28 18C28 23.5 23.5 28 18 28" stroke="#38BDF8" strokeWidth="3" strokeLinecap="round"/>
         <path d="M18 18C18 12.5 22.5 8 28 8C33.5 8 38 12.5 38 18" stroke="#A855F7" strokeWidth="3" strokeLinecap="round"/>
-        <text x="48" y="25" fill="#FFFFFF" fontSize="18" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">ISI GLOBAL</text>
+        <text x="48" y="25" fill="#0F172A" fontSize="18" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">ISI GLOBAL</text>
       </svg>
     ),
     url: 'https://mada-me-thai-brown.vercel.app/',
@@ -19,7 +19,7 @@ const realizedWebsites = [
     metric: '104.9%',
     metricSubtitle: 'increase in organic visits after 1 month.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(11, 17, 32, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.15) 0%, rgba(56, 189, 248, 0.1) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
@@ -56,9 +56,9 @@ const realizedWebsites = [
     brandName: 'WOGAN / STANIAX',
     brandLogo: (
       <svg width="140" height="36" viewBox="0 0 160 40" fill="none">
-        <path d="M18 10C14 10 10 14 10 18C10 22 14 26 18 26C22 26 26 22 26 18" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round"/>
-        <path d="M14 12L22 24" stroke="#FFFFFF" strokeWidth="2.5"/>
-        <text x="36" y="27" fill="#FFFFFF" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">WOGAN</text>
+        <path d="M18 10C14 10 10 14 10 18C10 22 14 26 18 26C22 26 26 22 26 18" stroke="#0F172A" strokeWidth="3" strokeLinecap="round"/>
+        <path d="M14 12L22 24" stroke="#0F172A" strokeWidth="2.5"/>
+        <text x="36" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">WOGAN</text>
       </svg>
     ),
     url: 'https://www.staniax.pl/',
@@ -66,7 +66,7 @@ const realizedWebsites = [
     metric: '83.14%',
     metricSubtitle: 'increase in sales after 1 year.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.3) 40%, rgba(11, 17, 32, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.15) 0%, rgba(52, 211, 153, 0.1) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'desktop',
     desktopCard: {
       tag: 'BRANDING & E-COMMERCE',
@@ -86,7 +86,7 @@ const realizedWebsites = [
     brandLogo: (
       <svg width="130" height="34" viewBox="0 0 150 40" fill="none">
         <path d="M12 8L28 20L12 32V8Z" stroke="#38BDF8" strokeWidth="3" strokeLinejoin="round"/>
-        <text x="38" y="27" fill="#FFFFFF" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">PISON</text>
+        <text x="38" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">PISON</text>
       </svg>
     ),
     url: 'https://ase-bot.live/',
@@ -94,7 +94,7 @@ const realizedWebsites = [
     metric: '67.6%',
     metricSubtitle: 'rise in engaged sessions per user after 1 month.',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(11, 17, 32, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.15) 0%, rgba(56, 189, 248, 0.12) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
@@ -138,6 +138,7 @@ export default function Portfolio() {
 
   const handlePointerDown = (e) => {
     if (isAnimating) return;
+    e.target.setPointerCapture(e.pointerId);
     setDragStartX(e.clientX || (e.touches && e.touches[0].clientX) || 0);
     setDragDistance(0);
   };
@@ -148,11 +149,10 @@ export default function Portfolio() {
     setDragDistance(currentX - dragStartX);
   };
 
-  const handlePointerUp = () => {
-    if (dragStartX && dragDistance < -60) {
+  const handlePointerUp = (e) => {
+    if (e.pointerId) e.target.releasePointerCapture(e.pointerId);
+    if (dragStartX && dragDistance < -50) {
       handleNextSlide();
-    } else if (dragStartX && dragDistance > 60) {
-      // Swipe right logic (optional, currently just snap back)
     }
     setDragStartX(0);
     setDragDistance(0);
