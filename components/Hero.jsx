@@ -20,7 +20,9 @@ export default function Hero() {
 
       <div className="container hero-grid">
         <div className="hero-content">
-          <div className="section-tag" style={{ color: '#38BDF8', background: 'rgba(56, 189, 248, 0.12)', border: '1px solid rgba(56, 189, 248, 0.3)' }}>AI SEO COMPANY</div>
+          <div className="section-tag hero-badge-tag">
+            <span className="asterisk">✳</span> AI SEO COMPANY
+          </div>
           <h1>
             Branding i strony internetowe, które <span className="highlight">budują sprzedaż</span>
           </h1>
