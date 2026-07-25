@@ -338,7 +338,7 @@ button, input, select, textarea {
   display: flex;
   justify-content: flex-end;
   padding: 1.25rem calc(max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem));
-  animation: fadeIn 0.25s ease forwards;
+  animation: fadeInOverlay 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .kota-menu-dropdown-card {
@@ -351,9 +351,26 @@ button, input, select, textarea {
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid var(--color-border);
-  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   position: relative;
   height: fit-content;
+  transform-origin: top right;
+  animation: menuUnfold 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInOverlay {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes menuUnfold {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(-15px) translateX(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) translateX(0);
+  }
 }
 
 .kota-menu-card-header {
