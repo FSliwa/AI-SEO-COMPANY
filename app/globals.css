@@ -1,7 +1,7 @@
 /* ==========================================================================
    AI SEO COMPANY - NEXT.JS GLOBAL STYLESHEET
    Design Fusion: Visual Identity Studio (VIS) + KOTA (kota.co.uk)
-   Header: KOTA Floating Menu Card (Top Right Dropdown)
+   Animations: KOTA Horizontal Card Deal Swipe + CountUp Metrics + VIS Reveals
    Typography: Space Grotesk (Headings) + Inter (Body/UI)
    ========================================================================== */
 
@@ -307,7 +307,7 @@ button, input, select, textarea {
   box-shadow: 0 8px 20px rgba(216, 90, 48, 0.35);
 }
 
-/* KOTA Circular Menu Trigger (Black Circle Button with ≡ or ✕) */
+/* KOTA Circular Menu Trigger */
 .kota-menu-trigger {
   width: 44px;
   height: 44px;
@@ -328,7 +328,7 @@ button, input, select, textarea {
   background: var(--color-cta);
 }
 
-/* KOTA Floating Top-Right Navigation Menu Card (Attached Screenshot 1:1) */
+/* KOTA Floating Top-Right Navigation Menu Card */
 .kota-menu-overlay {
   position: fixed;
   inset: 0;
@@ -429,22 +429,6 @@ button, input, select, textarea {
   background: var(--color-cta);
   transform: translateY(-2px);
   box-shadow: var(--shadow-cta);
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 /* --- 01. Hero Section --- */
@@ -807,7 +791,7 @@ button, input, select, textarea {
   font-weight: bold;
 }
 
-/* --- 04. Portfolio (KOTA 100% PITCH-BLACK FULL-WIDTH OUR RESULTS DECK - Screenshots 1-4) --- */
+/* --- 04. Portfolio (KOTA HORIZONTAL CARD DEAL SWIPE - Screen Recording Frame 20 1:1) --- */
 .portfolio-kota-section {
   padding: 8rem 0;
   position: relative;
@@ -819,7 +803,8 @@ button, input, select, textarea {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding-left: 60px; /* Space for left stacked edges */
+  padding-left: 60px;
+  min-height: 580px;
 }
 
 /* KOTA Stacked Deck Left Border Layers */
@@ -868,12 +853,21 @@ button, input, select, textarea {
   align-items: center;
   min-height: 560px;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
-.kota-main-card.kota-swapping {
-  opacity: 0.4;
-  transform: translateX(-15px) scale(0.98);
+.kota-underneath-card {
+  position: absolute;
+  inset: 0;
+  left: 60px;
+  z-index: 5;
+}
+
+/* KOTA Horizontal Deal Swipe-Out Animation (Frame 20) */
+.kota-swiping-out {
+  transform: translateX(115%) rotate(4deg) !important;
+  opacity: 0 !important;
+  pointer-events: none;
 }
 
 .kota-card-mesh-bg {
@@ -943,7 +937,55 @@ button, input, select, textarea {
   transform: translateX(4px);
 }
 
-/* KOTA Right Side 3 White Phone Screen Cards (Screenshot 3 Pop-out Contrast) */
+/* KOTA Right Desktop Web Preview Mockup Card (WOGAN style - Frame 20) */
+.kota-desktop-preview-card {
+  background: #D1FAE5;
+  border-radius: 24px;
+  padding: 2.25rem;
+  color: #064E3B;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 360px;
+  justify-content: space-between;
+}
+
+.kota-desktop-img {
+  height: 180px;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+}
+
+.kota-desktop-content h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #064E3B;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.kota-desktop-content p {
+  font-size: 0.875rem;
+  color: #047857;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.kota-desktop-pill-btn {
+  display: inline-block;
+  background: #059669;
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+}
+
+/* KOTA Right Side 3 White Phone Screen Cards */
 .kota-card-right {
   position: relative;
   z-index: 5;
@@ -1018,17 +1060,6 @@ button, input, select, textarea {
   font-size: 0.75rem;
   color: #64748B;
   line-height: 1.3;
-  margin-bottom: 0.75rem;
-}
-
-.kota-phone-pill-btn {
-  display: inline-block;
-  background: #D2F535;
-  color: #000000;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-full);
 }
 
 /* KOTA Bottom-Right Carousel Next Arrow */
