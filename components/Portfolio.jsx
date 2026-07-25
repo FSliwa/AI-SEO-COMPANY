@@ -5,36 +5,46 @@ import { useState, useEffect } from 'react';
 const realizedWebsites = [
   {
     id: 1,
-    brand: 'MADAMe THAI',
+    brandName: 'MADAMe THAI',
+    brandLogo: (
+      <svg width="120" height="28" viewBox="0 0 160 36" fill="none">
+        <path d="M12 28L18 8L24 28M14 20H22" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round"/>
+        <path d="M30 8H42M36 8V28" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round"/>
+        <text x="50" y="24" fill="#FFFFFF" fontSize="17" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">MADAMe THAI</text>
+      </svg>
+    ),
     url: 'https://mada-me-thai-brown.vercel.app/',
     category: 'web',
     metricVal: 104.9,
     metricSuffix: '%',
-    metricSubtitle: 'wzrost rezerwacji i wizyt organicznych po 1 miesiącu.',
-    gradient: 'linear-gradient(135deg, #38BDF8, #A855F7, #EC4899)',
-    meshBg: 'radial-gradient(circle at 80% 45%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(6, 11, 24, 0.98) 75%)',
+    metricSubtitle: 'increase in organic visits after 1 month.',
+    gradient: 'linear-gradient(135deg, #818CF8, #C084FC, #F472B6)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(192, 132, 252, 0.45) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(6, 11, 24, 0.98) 75%)',
     screens: [
       {
         title: 'Senior 3D Retail',
         subtitle: 'London, UK',
         tag: 'CAREERS',
         image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-15px)'
+        transform: 'translateY(-18px)',
+        btnText: 'View Role'
       },
       {
         title: 'Shaping the future',
-        subtitle: 'Retail Experience',
+        subtitle: 'Retail Experience UI',
         tag: 'OUR EXPERTISE',
         image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(15px)',
-        highlight: true
+        transform: 'translateY(16px)',
+        highlight: true,
+        btnText: 'Explore System'
       },
       {
         title: 'Empower creativity',
-        subtitle: 'Design System',
+        subtitle: 'Brand Strategy 2026',
         tag: 'CULTURE',
         image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-5px)'
+        transform: 'translateY(-6px)',
+        btnText: 'Read More'
       }
     ],
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
@@ -45,36 +55,45 @@ const realizedWebsites = [
   },
   {
     id: 2,
-    brand: 'WOGAN / STANIAX',
+    brandName: 'STANIAX',
+    brandLogo: (
+      <svg width="120" height="28" viewBox="0 0 150 36" fill="none">
+        <path d="M10 8L22 18L10 28M22 8L34 18L22 28" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <text x="44" y="24" fill="#FFFFFF" fontSize="17" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">STANIAX</text>
+      </svg>
+    ),
     url: 'https://www.staniax.pl/',
     category: 'seo',
     metricVal: 83.14,
     metricSuffix: '%',
-    metricSubtitle: 'wzrost sprzedaży i zapytan B2B po 1 roku.',
-    gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #10B981)',
-    meshBg: 'radial-gradient(circle at 80% 45%, rgba(56, 189, 248, 0.45) 0%, rgba(16, 185, 129, 0.3) 40%, rgba(6, 11, 24, 0.98) 75%)',
+    metricSubtitle: 'increase in sales & B2B leads after 1 year.',
+    gradient: 'linear-gradient(135deg, #60A5FA, #34D399, #38BDF8)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(52, 211, 153, 0.45) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(6, 11, 24, 0.98) 75%)',
     screens: [
       {
         title: 'GREAT COFFEE',
-        subtitle: 'Sustainable roasting',
+        subtitle: 'Sustainable Roasting',
         tag: 'BRANDING',
         image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-10px)'
+        transform: 'translateY(-12px)',
+        btnText: 'Shop Now'
       },
       {
         title: 'Metalizacja Próżniowa',
-        subtitle: 'Pozycja #1 w Google',
+        subtitle: 'Google Ranking #1',
         tag: 'SEO B2B',
         image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(20px)',
-        highlight: true
+        transform: 'translateY(18px)',
+        highlight: true,
+        btnText: 'Zobacz Case'
       },
       {
         title: 'B2B Offer System',
         subtitle: 'Conversion +180%',
         tag: 'SYSTEM',
         image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-15px)'
+        transform: 'translateY(-14px)',
+        btnText: 'Wyceń'
       }
     ],
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
@@ -84,36 +103,45 @@ const realizedWebsites = [
   },
   {
     id: 3,
-    brand: 'ASE-BOT',
+    brandName: 'PISON / ASE-BOT',
+    brandLogo: (
+      <svg width="110" height="32" viewBox="0 0 140 40" fill="none">
+        <path d="M12 10L28 20L12 30V10Z" stroke="#FFFFFF" strokeWidth="2.5" strokeLinejoin="round"/>
+        <text x="36" y="26" fill="#FFFFFF" fontSize="18" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">PISON</text>
+      </svg>
+    ),
     url: 'https://ase-bot.live/',
     category: 'seo',
-    metricVal: 8113.8,
+    metricVal: 67.6,
     metricSuffix: '%',
-    metricSubtitle: 'wzrostu wyświetleń w wyszukiwarce Google (USA).',
-    gradient: 'linear-gradient(135deg, #A855F7, #EC4899, #F97316)',
-    meshBg: 'radial-gradient(circle at 80% 45%, rgba(236, 72, 153, 0.45) 0%, rgba(249, 115, 22, 0.3) 40%, rgba(6, 11, 24, 0.98) 75%)',
+    metricSubtitle: 'rise in engaged sessions per user after 1 month.',
+    gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #A855F7)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(6, 11, 24, 0.98) 75%)',
     screens: [
       {
-        title: 'AI Futures Trading',
-        subtitle: 'Quantum Trading USA',
-        tag: 'AI TRADING',
+        title: 'Unlock your mind.',
+        subtitle: 'Unleash your potential.',
+        tag: 'PISON READY',
         image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-20px)'
+        transform: 'translateY(-22px)',
+        btnText: 'Pre-order'
       },
       {
-        title: 'Organic Reach 4.8k',
-        subtitle: 'CTR 4.62% na rynku USA',
-        tag: 'ANALYTICS',
+        title: 'Neural Sensing Tech',
+        subtitle: 'AI Infused App & Wearable',
+        tag: 'OUR EXPERTISE',
         image: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(10px)',
-        highlight: true
+        transform: 'translateY(12px)',
+        highlight: true,
+        btnText: 'Buy Now'
       },
       {
-        title: 'Live Signal Feed',
-        subtitle: 'Realtime WebSocket',
-        tag: 'ENGINE',
+        title: 'Coming to your',
+        subtitle: 'Favorite Devices',
+        tag: 'ECOSYSTEM',
         image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-10px)'
+        transform: 'translateY(-12px)',
+        btnText: 'Explore'
       }
     ],
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
@@ -135,7 +163,7 @@ export default function Portfolio() {
   useEffect(() => {
     let start = 0;
     const target = currentItem.metricVal;
-    const duration = 600;
+    const duration = 650;
     const steps = 30;
     const increment = target / steps;
     const stepTime = duration / steps;
@@ -159,37 +187,37 @@ export default function Portfolio() {
     setTimeout(() => {
       setActiveIndex((prev) => (prev + 1) % realizedWebsites.length);
       setIsSwapping(false);
-    }, 250);
+    }, 280);
   };
 
   return (
     <section className="portfolio-kota-section" id="portfolio">
-      <div className="container" style={{ maxWidth: '1300px' }}>
-        <div className="section-header dark-header">
-          <div className="section-tag dark-tag">
+      <div className="container" style={{ maxWidth: '1280px' }}>
+        <div className="section-header">
+          <div className="section-tag">
             <span className="asterisk">✳</span> OUR RESULTS
           </div>
           <h2>Projects — zrealizowane strony z mierzalnym efektem</h2>
-          <p style={{ color: '#94A3B8' }}>Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.</p>
+          <p>Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.</p>
         </div>
 
         {/* KOTA Full-Width Card Deck Frame */}
         <div className="kota-deck-container">
-          {/* Stacked Left Edge Card Layers (Visual Depth Stack) */}
+          {/* Stacked Left Edge Layers */}
           <div className="kota-deck-edge edge-3"></div>
           <div className="kota-deck-edge edge-2"></div>
           <div className="kota-deck-edge edge-1"></div>
 
-          {/* Active Main Card */}
+          {/* Active Primary Main Card */}
           <div className={`kota-main-card ${isSwapping ? 'kota-swapping' : ''}`}>
-            {/* Dynamic Ambient Mesh Gradient Background */}
+            {/* Dynamic Ambient Mesh Gradient Overlay */}
             <div className="kota-card-mesh-bg" style={{ background: currentItem.meshBg }}></div>
 
             {/* Left Content Side */}
             <div className="kota-card-left">
-              <div className="kota-brand-badge">
-                <span className="kota-brand-icon">⚡</span>
-                <span>{currentItem.brand}</span>
+              {/* Client Vector SVG Logo */}
+              <div className="kota-brand-logo-wrapper">
+                {currentItem.brandLogo}
               </div>
 
               <div className="kota-metric-wrapper">
@@ -217,7 +245,7 @@ export default function Portfolio() {
               </button>
             </div>
 
-            {/* Right Side 3 Floating Mobile Phone Screen Trio */}
+            {/* Right Side 3 White Phone Screens (Pop-out Contrast - Screenshot 3) */}
             <div className="kota-card-right">
               <div className="kota-phone-trio">
                 {currentItem.screens.map((screen, idx) => (
@@ -237,13 +265,18 @@ export default function Portfolio() {
                     <div className="kota-phone-body">
                       <h4>{screen.title}</h4>
                       <p>{screen.subtitle}</p>
+                      {screen.btnText && (
+                        <div className="kota-phone-pill-btn">
+                          {screen.btnText}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Circular Carousel Next Control Arrow (Bottom Right) */}
+            {/* Circular Carousel Next Arrow (Bottom Right) */}
             <button
               className="kota-deck-next-btn"
               onClick={handleNextSlide}
@@ -263,7 +296,7 @@ export default function Portfolio() {
         <div className="modal-overlay" onClick={() => setActiveModal(null)}>
           <div className="modal-container" onClick={e => e.stopPropagation()}>
             <span className="modal-close" onClick={() => setActiveModal(null)}>&times;</span>
-            <h3 style={{ fontSize: '1.75rem', marginBottom: '0.25rem' }}>{activeModal.brand}</h3>
+            <h3 style={{ fontSize: '1.75rem', marginBottom: '0.25rem' }}>{activeModal.brandName}</h3>
             <p style={{ fontSize: '0.95rem', color: 'var(--color-primary)', marginBottom: '1rem', fontWeight: '600' }}>
               <a href={activeModal.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
                 {activeModal.url} ↗

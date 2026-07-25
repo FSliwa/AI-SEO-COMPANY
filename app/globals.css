@@ -1,7 +1,7 @@
 /* ==========================================================================
    AI SEO COMPANY - NEXT.JS GLOBAL STYLESHEET
    Design Fusion: Visual Identity Studio (VIS) + KOTA (kota.co.uk)
-   Animations: KOTA Stacked Deck Carousel + CountUp Metrics + VIS Reveals
+   Header: KOTA Floating Menu Card (Top Right Dropdown)
    Typography: Space Grotesk (Headings) + Inter (Body/UI)
    ========================================================================== */
 
@@ -165,19 +165,6 @@ button, input, select, textarea {
   color: var(--color-text-muted);
 }
 
-/* Dark Section Headers */
-.dark-header h2 {
-  color: #FFFFFF !important;
-}
-
-.dark-tag {
-  color: #94A3B8 !important;
-}
-
-.dark-tag span.asterisk {
-  color: #38BDF8 !important;
-}
-
 /* --- Buttons --- */
 .btn {
   display: inline-flex;
@@ -219,7 +206,7 @@ button, input, select, textarea {
   transform: translateY(-3px);
 }
 
-/* --- Header / Navigation --- */
+/* --- Header / Navigation (KOTA Style Menu) --- */
 .header {
   position: fixed;
   top: 0;
@@ -272,32 +259,190 @@ button, input, select, textarea {
   border-radius: var(--radius-full);
 }
 
-.nav-links {
+/* Language Switcher Button (PL | EN) */
+.lang-switcher {
   display: flex;
   align-items: center;
-  gap: 2.2rem;
-  list-style: none;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
-.nav-link {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--color-text-dark);
+.lang-btn {
+  color: var(--color-text-muted);
+  cursor: pointer;
   transition: color var(--transition-fast);
 }
 
-.nav-link:hover {
-  color: var(--color-cta);
-}
-
-.mobile-toggle {
-  display: none;
-  font-size: 1.5rem;
+.lang-btn.active {
   color: var(--color-text-dark);
-  cursor: pointer;
 }
 
-/* --- 01. Hero Section (Restored Original Clean Version) --- */
+/* Header Hire Us Pill Button */
+.header-hire-btn {
+  background: #000000;
+  color: #FFFFFF;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header-hire-btn:hover {
+  background: var(--color-cta);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(216, 90, 48, 0.35);
+}
+
+/* KOTA Circular Menu Trigger (Black Circle Button with ≡ or ✕) */
+.kota-menu-trigger {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #000000;
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.kota-menu-trigger:hover {
+  transform: scale(1.08);
+  background: var(--color-cta);
+}
+
+/* KOTA Floating Top-Right Navigation Menu Card (Attached Screenshot 1:1) */
+.kota-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.25rem 1.5rem;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.kota-menu-dropdown-card {
+  background: #FFFFFF;
+  border-radius: 28px;
+  width: 290px;
+  padding: 2rem 2.25rem 2.25rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--color-border);
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  position: relative;
+  height: fit-content;
+}
+
+.kota-menu-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.kota-menu-close-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: #FAFAFA;
+  color: var(--color-text-dark);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.kota-menu-close-btn:hover {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+
+.kota-menu-card-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 2.25rem;
+}
+
+.kota-menu-card-links a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  letter-spacing: -0.02em;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.kota-menu-card-links a:hover {
+  color: var(--color-cta);
+  transform: translateX(4px);
+}
+
+.kota-menu-card-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
+}
+
+.kota-menu-pill-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  color: #FFFFFF;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.kota-menu-pill-cta:hover {
+  background: var(--color-cta);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-cta);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- 01. Hero Section --- */
 .hero {
   padding-top: 11rem;
   padding-bottom: 7rem;
@@ -659,9 +804,7 @@ button, input, select, textarea {
 
 /* --- 04. Portfolio (KOTA 100% PITCH-BLACK FULL-WIDTH OUR RESULTS DECK - Screenshots 1-4) --- */
 .portfolio-kota-section {
-  background-color: #000000 !important;
   padding: 8rem 0;
-  color: #FFFFFF;
   position: relative;
   overflow: hidden;
 }
@@ -741,20 +884,8 @@ button, input, select, textarea {
   z-index: 5;
 }
 
-.kota-brand-badge {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
+.kota-brand-logo-wrapper {
   margin-bottom: 2.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.kota-brand-icon {
-  color: #38BDF8;
-  font-size: 1.3rem;
 }
 
 .kota-metric-wrapper {
@@ -807,7 +938,7 @@ button, input, select, textarea {
   transform: translateX(4px);
 }
 
-/* KOTA Right Side 3 Floating Mobile Phone Screen Trio */
+/* KOTA Right Side 3 White Phone Screen Cards (Screenshot 3 Pop-out Contrast) */
 .kota-card-right {
   position: relative;
   z-index: 5;
@@ -821,21 +952,21 @@ button, input, select, textarea {
 }
 
 .kota-phone-card {
-  width: 180px;
-  background: #0B1120;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 20px;
+  width: 185px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
   padding: 0.85rem;
-  color: #FFFFFF;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65);
+  color: #0F172A;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
 }
 
 .kota-phone-card.highlight-phone {
-  width: 200px;
-  border-color: rgba(56, 189, 248, 0.7);
-  box-shadow: 0 30px 60px rgba(56, 189, 248, 0.3);
+  width: 205px;
+  border-color: #38BDF8;
+  box-shadow: 0 30px 60px rgba(56, 189, 248, 0.35);
   z-index: 2;
 }
 
@@ -851,13 +982,13 @@ button, input, select, textarea {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #38BDF8;
+  background: #000000;
 }
 
 .kota-phone-tag {
   font-size: 0.65rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
+  color: #64748B;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -873,15 +1004,26 @@ button, input, select, textarea {
 .kota-phone-body h4 {
   font-size: 0.875rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #0F172A;
   margin-bottom: 0.25rem;
   line-height: 1.2;
 }
 
 .kota-phone-body p {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #64748B;
   line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.kota-phone-pill-btn {
+  display: inline-block;
+  background: #D2F535;
+  color: #000000;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
 }
 
 /* KOTA Bottom-Right Carousel Next Arrow */
@@ -1540,7 +1682,7 @@ button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
-  .nav-links, .header-award-badges { display: none; }
+  .header-award-badges { display: none; }
   .mobile-toggle { display: block; }
   .hero-content h1 { font-size: 2.4rem; }
   .footer-grid { grid-template-columns: 1fr; }

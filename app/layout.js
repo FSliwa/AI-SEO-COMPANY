@@ -1,26 +1,13 @@
-import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
-  variable: '--font-body',
-  display: 'swap',
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin', 'latin-ext'],
-  variable: '--font-display',
-  display: 'swap',
-});
+import { LanguageProvider } from '@/lib/LanguageContext';
 
 export const metadata = {
   title: 'Agencja brandingu i web design Warszawa | AI SEO COMPANY',
-  description: 'Projektujemy marki i strony, które sprzedają. Branding, web design i SEO w jednym zespole. Zobacz portfolio i cennik — wyceń projekt online.',
-  keywords: ['agencja SEO', 'branding Warszawa', 'tworzenie stron www', 'pozycjonowanie stron', 'identyfikacja wizualna', 'agencja cennik'],
-  metadataBase: new URL('https://ase-bot.live'),
+  description: 'Projektujemy marki i strony, które sprzedają. Branding, web design i SEO w jednym zespole. Zobacz portfolio i cennik.',
+  keywords: 'agencja seo, branding, web design, strony next.js, pozycjonowanie warszawa',
   openGraph: {
-    title: 'Agencja brandingu i web design Warszawa | AI SEO COMPANY',
-    description: 'Projektujemy marki i strony, które sprzedają. Branding, web design i SEO w jednym zespole. Zobacz portfolio i cennik.',
+    title: 'AI SEO COMPANY — Branding, Web Design & SEO Studio',
+    description: 'Projektujemy marki i strony internetowe w Next.js zoptymalizowane pod konwersję i wyniki organiczne.',
     url: 'https://ase-bot.live',
     siteName: 'AI SEO COMPANY',
     locale: 'pl_PL',
@@ -29,34 +16,18 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    'name': 'AI SEO COMPANY',
-    'url': 'https://ase-bot.live',
-    'description': 'Agencja brandingu, web designu i pozycjonowania SEO dla rosnących marek.',
-    'priceRange': '1900 zł - 2500 zł',
-    'address': {
-      '@type': 'PostalAddress',
-      'addressLocality': 'Warszawa',
-      'addressCountry': 'PL',
-    },
-    'aggregateRating': {
-      '@type': 'AggregateRating',
-      'ratingValue': '4.9',
-      'reviewCount': '48',
-    },
-  };
-
   return (
-    <html lang="pl" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="pl">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }
