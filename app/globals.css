@@ -808,11 +808,21 @@ button, input, select, textarea {
   font-weight: bold;
 }
 
-/* --- 04. Portfolio (KOTA HORIZONTAL CARD DEAL SWIPE - Screen Recording Frame 20 1:1) --- */
+/* --- 04. Portfolio (KOTA 100% PITCH-BLACK FULL-WIDTH OUR RESULTS DECK) --- */
 .portfolio-kota-section {
   padding: 8rem 0;
   position: relative;
   overflow: hidden;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+.dark-tag {
+  color: #38BDF8 !important;
+}
+
+.dark-tag span.asterisk {
+  color: #38BDF8 !important;
 }
 
 .kota-deck-container {
@@ -821,7 +831,7 @@ button, input, select, textarea {
   max-width: 1240px;
   margin: 0 auto;
   padding-left: 60px;
-  min-height: 580px;
+  min-height: 560px;
 }
 
 /* KOTA Stacked Deck Left Border Layers */
@@ -858,11 +868,11 @@ button, input, select, textarea {
 .kota-main-card {
   position: relative;
   z-index: 10;
-  background-color: #060B18;
+  background-color: #060B18 !important;
   border-radius: 36px;
   border-top-right-radius: 140px;
   padding: 4.5rem 4.5rem;
-  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: grid;
   grid-template-columns: 1.1fr 1.25fr;
@@ -870,21 +880,13 @@ button, input, select, textarea {
   align-items: center;
   min-height: 560px;
   overflow: hidden;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease;
+  opacity: 1;
 }
 
-.kota-underneath-card {
-  position: absolute;
-  inset: 0;
-  left: 60px;
-  z-index: 5;
-}
-
-/* KOTA Horizontal Deal Swipe-Out Animation (Frame 20) */
-.kota-swiping-out {
-  transform: translateX(115%) rotate(4deg) !important;
+.kota-slide-animating {
+  transform: translateX(110%) rotate(3deg) !important;
   opacity: 0 !important;
-  pointer-events: none;
 }
 
 .kota-card-mesh-bg {

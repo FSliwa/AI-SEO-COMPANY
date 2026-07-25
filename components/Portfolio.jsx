@@ -8,7 +8,7 @@ const realizedWebsites = [
     id: 1,
     brandName: 'ISI GLOBAL / MADAMe THAI',
     brandLogo: (
-      <svg width="130" height="30" viewBox="0 0 160 36" fill="none">
+      <svg width="140" height="32" viewBox="0 0 160 36" fill="none">
         <path d="M8 18C8 12.5 12.5 8 18 8C23.5 8 28 12.5 28 18C28 23.5 23.5 28 18 28" stroke="#38BDF8" strokeWidth="3" strokeLinecap="round"/>
         <path d="M18 18C18 12.5 22.5 8 28 8C33.5 8 38 12.5 38 18" stroke="#A855F7" strokeWidth="3" strokeLinecap="round"/>
         <text x="48" y="25" fill="#FFFFFF" fontSize="18" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">ISI GLOBAL</text>
@@ -19,7 +19,7 @@ const realizedWebsites = [
     metric: '104.9%',
     metricSubtitle: 'increase in organic visits after 1 month.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
-    meshBg: 'radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.5) 0%, rgba(56, 189, 248, 0.35) 45%, rgba(4, 8, 20, 0.98) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(6, 11, 24, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
@@ -55,7 +55,7 @@ const realizedWebsites = [
     id: 2,
     brandName: 'WOGAN / STANIAX',
     brandLogo: (
-      <svg width="130" height="36" viewBox="0 0 160 40" fill="none">
+      <svg width="140" height="36" viewBox="0 0 160 40" fill="none">
         <path d="M18 10C14 10 10 14 10 18C10 22 14 26 18 26C22 26 26 22 26 18" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round"/>
         <path d="M14 12L22 24" stroke="#FFFFFF" strokeWidth="2.5"/>
         <text x="36" y="27" fill="#FFFFFF" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">WOGAN</text>
@@ -66,7 +66,7 @@ const realizedWebsites = [
     metric: '83.14%',
     metricSubtitle: 'increase in sales after 1 year.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
-    meshBg: 'radial-gradient(circle at 80% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.35) 45%, rgba(4, 8, 20, 0.98) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.3) 40%, rgba(6, 11, 24, 1) 75%)',
     rightVisual: 'desktop',
     desktopCard: {
       tag: 'BRANDING & E-COMMERCE',
@@ -84,7 +84,7 @@ const realizedWebsites = [
     id: 3,
     brandName: 'PISON / ASE-BOT',
     brandLogo: (
-      <svg width="120" height="34" viewBox="0 0 150 40" fill="none">
+      <svg width="130" height="34" viewBox="0 0 150 40" fill="none">
         <path d="M12 8L28 20L12 32V8Z" stroke="#38BDF8" strokeWidth="3" strokeLinejoin="round"/>
         <text x="38" y="27" fill="#FFFFFF" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">PISON</text>
       </svg>
@@ -94,7 +94,7 @@ const realizedWebsites = [
     metric: '67.6%',
     metricSubtitle: 'rise in engaged sessions per user after 1 month.',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
-    meshBg: 'radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.5) 0%, rgba(56, 189, 248, 0.35) 45%, rgba(4, 8, 20, 0.98) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(6, 11, 24, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
@@ -129,22 +129,21 @@ const realizedWebsites = [
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [swipingIndex, setSwipingIndex] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
   const { lang } = useLanguage();
 
   const handleNextSlide = () => {
-    if (swipingIndex !== null) return;
-    setSwipingIndex(activeIndex);
+    if (isAnimating) return;
+    setIsAnimating(true);
 
     setTimeout(() => {
       setActiveIndex((prev) => (prev + 1) % realizedWebsites.length);
-      setSwipingIndex(null);
-    }, 450);
+      setIsAnimating(false);
+    }, 380);
   };
 
   const currentItem = realizedWebsites[activeIndex];
-  const nextItem = realizedWebsites[(activeIndex + 1) % realizedWebsites.length];
 
   return (
     <section className="portfolio-kota-section" id="portfolio">
@@ -157,77 +156,19 @@ export default function Portfolio() {
             {lang === 'pl' ? 'Projects — zrealizowane strony z mierzalnym efektem' : 'Projects — high-performance websites with measurable impact'}
           </h2>
           <p style={{ color: '#94A3B8' }}>
-            {lang === 'pl' ? 'Zobacz wyniki i realizacje stworzone na wzór najlepszych światowych agencji digital.' : 'Explore analytics-backed growth metrics across our client case studies.'}
+            {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}
           </p>
         </div>
 
-        {/* KOTA Full-Width Card Deck Showcase with Horizontal Card Swipe Physics */}
+        {/* KOTA Full-Width Card Deck Showcase (Solid #000000 Background Section) */}
         <div className="kota-deck-container">
           {/* Left Stack Edges */}
           <div className="kota-deck-edge edge-3"></div>
           <div className="kota-deck-edge edge-2"></div>
           <div className="kota-deck-edge edge-1"></div>
 
-          {/* Underneath Revealed Card (Appears as top card swipes right) */}
-          <div className="kota-main-card kota-underneath-card">
-            <div className="kota-card-mesh-bg" style={{ background: nextItem.meshBg }}></div>
-            <div className="kota-card-left">
-              <div className="kota-brand-logo-wrapper">{nextItem.brandLogo}</div>
-              <div className="kota-metric-wrapper">
-                <div
-                  className="kota-giant-metric"
-                  style={{
-                    background: nextItem.gradient,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}
-                >
-                  {nextItem.metric}
-                </div>
-                <div className="kota-metric-subtext">{nextItem.metricSubtitle}</div>
-              </div>
-              <button className="kota-view-project-btn">
-                <span>View Project</span>
-                <span className="kota-btn-arrow">→</span>
-              </button>
-            </div>
-
-            <div className="kota-card-right">
-              {nextItem.rightVisual === 'desktop' ? (
-                <div className="kota-desktop-preview-card">
-                  <div className="kota-desktop-img" style={{ backgroundImage: `url('${nextItem.desktopCard.image}')` }}></div>
-                  <div className="kota-desktop-content">
-                    <span className="kota-phone-tag">{nextItem.desktopCard.tag}</span>
-                    <h3>{nextItem.desktopCard.title}</h3>
-                    <p>{nextItem.desktopCard.subtitle}</p>
-                  </div>
-                </div>
-              ) : (
-                <div className="kota-phone-trio">
-                  {nextItem.screens.map((screen, idx) => (
-                    <div
-                      key={idx}
-                      className={`kota-phone-card ${screen.highlight ? 'highlight-phone' : ''}`}
-                      style={{ transform: screen.transform }}
-                    >
-                      <div className="kota-phone-screen-top">
-                        <span className="kota-phone-dot"></span>
-                        <span className="kota-phone-tag">{screen.tag}</span>
-                      </div>
-                      <div className="kota-phone-img" style={{ backgroundImage: `url('${screen.image}')` }}></div>
-                      <div className="kota-phone-body">
-                        <h4>{screen.title}</h4>
-                        <p>{screen.subtitle}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Primary Top Active Card (Swipes off to the right when arrow clicked) */}
-          <div className={`kota-main-card ${swipingIndex === activeIndex ? 'kota-swiping-out' : ''}`}>
+          {/* Primary Top Active Card */}
+          <div className={`kota-main-card ${isAnimating ? 'kota-slide-animating' : ''}`}>
             <div className="kota-card-mesh-bg" style={{ background: currentItem.meshBg }}></div>
 
             {/* Left Content Side */}
@@ -264,7 +205,7 @@ export default function Portfolio() {
             {/* Right Side Visual Showcase */}
             <div className="kota-card-right">
               {currentItem.rightVisual === 'desktop' ? (
-                /* Desktop Web Preview Mockup Card (WOGAN style - Frame 20) */
+                /* Desktop Web Preview Mockup Card (WOGAN style) */
                 <div className="kota-desktop-preview-card">
                   <div className="kota-desktop-img" style={{ backgroundImage: `url('${currentItem.desktopCard.image}')` }}></div>
                   <div className="kota-desktop-content">
@@ -303,7 +244,7 @@ export default function Portfolio() {
               )}
             </div>
 
-            {/* KOTA Bottom-Right Carousel Next Arrow Button (Frame 20) */}
+            {/* KOTA Bottom-Right Carousel Next Arrow Button */}
             <button
               className="kota-deck-next-btn"
               onClick={handleNextSlide}
