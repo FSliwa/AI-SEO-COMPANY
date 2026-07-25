@@ -11,7 +11,7 @@ const realizedWebsites = [
       <svg width="140" height="32" viewBox="0 0 160 36" fill="none">
         <path d="M8 18C8 12.5 12.5 8 18 8C23.5 8 28 12.5 28 18C28 23.5 23.5 28 18 28" stroke="#38BDF8" strokeWidth="3" strokeLinecap="round"/>
         <path d="M18 18C18 12.5 22.5 8 28 8C33.5 8 38 12.5 38 18" stroke="#A855F7" strokeWidth="3" strokeLinecap="round"/>
-        <text x="48" y="25" fill="#0F172A" fontSize="18" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">ISI GLOBAL</text>
+        <text x="48" y="25" fill="#0F172A" fontSize="18" fontWeight="800" fontFamily="Inter, sans-serif" letterSpacing="2">ISI GLOBAL</text>
       </svg>
     ),
     url: 'https://mada-me-thai-brown.vercel.app/',
@@ -58,7 +58,7 @@ const realizedWebsites = [
       <svg width="140" height="36" viewBox="0 0 160 40" fill="none">
         <path d="M18 10C14 10 10 14 10 18C10 22 14 26 18 26C22 26 26 22 26 18" stroke="#0F172A" strokeWidth="3" strokeLinecap="round"/>
         <path d="M14 12L22 24" stroke="#0F172A" strokeWidth="2.5"/>
-        <text x="36" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">WOGAN</text>
+        <text x="36" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Inter, sans-serif" letterSpacing="3">WOGAN</text>
       </svg>
     ),
     url: 'https://www.staniax.pl/',
@@ -86,7 +86,7 @@ const realizedWebsites = [
     brandLogo: (
       <svg width="130" height="34" viewBox="0 0 150 40" fill="none">
         <path d="M12 8L28 20L12 32V8Z" stroke="#38BDF8" strokeWidth="3" strokeLinejoin="round"/>
-        <text x="38" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Space Grotesk, sans-serif" letterSpacing="3">PISON</text>
+        <text x="38" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Inter, sans-serif" letterSpacing="3">PISON</text>
       </svg>
     ),
     url: 'https://ase-bot.live/',
