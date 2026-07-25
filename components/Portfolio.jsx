@@ -1,37 +1,38 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const realizedWebsites = [
   {
     id: 1,
-    brand: 'MADAMe THAI RESTAURANT',
+    brand: 'MADAMe THAI',
     url: 'https://mada-me-thai-brown.vercel.app/',
     category: 'web',
-    metric: '0 zł',
-    metricSubtitle: 'strona WWW w pakiecie z pełnym RWD i systemem Hotres',
+    metricVal: 104.9,
+    metricSuffix: '%',
+    metricSubtitle: 'wzrost rezerwacji i wizyt organicznych po 1 miesiącu.',
     gradient: 'linear-gradient(135deg, #38BDF8, #A855F7, #EC4899)',
-    meshColor: 'radial-gradient(circle at 75% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.25) 45%, transparent 70%)',
+    meshBg: 'radial-gradient(circle at 80% 45%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.3) 40%, rgba(6, 11, 24, 0.98) 75%)',
     screens: [
       {
-        title: 'Menu & Specjały',
-        subtitle: 'Autorskie dania Tajskie',
-        tag: 'Dania',
+        title: 'Senior 3D Retail',
+        subtitle: 'London, UK',
+        tag: 'CAREERS',
         image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-15px)'
       },
       {
-        title: 'Rezerwacja Stolika',
-        subtitle: 'System Hotres Online',
-        tag: 'Hotres UI',
+        title: 'Shaping the future',
+        subtitle: 'Retail Experience',
+        tag: 'OUR EXPERTISE',
         image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(15px)',
         highlight: true
       },
       {
-        title: 'Lokalizacja & Kontakt',
-        subtitle: 'Wykrywanie GPS i Mapa',
-        tag: 'Mobile RWD',
+        title: 'Empower creativity',
+        subtitle: 'Design System',
+        tag: 'CULTURE',
         image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-5px)'
       }
@@ -44,33 +45,34 @@ const realizedWebsites = [
   },
   {
     id: 2,
-    brand: 'STANIAX METALIZACJA',
+    brand: 'WOGAN / STANIAX',
     url: 'https://www.staniax.pl/',
     category: 'seo',
-    metric: '2.8k',
-    metricSubtitle: 'wyświetleń w Google i gwałtowny wzrost widoczności',
+    metricVal: 83.14,
+    metricSuffix: '%',
+    metricSubtitle: 'wzrost sprzedaży i zapytan B2B po 1 roku.',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #10B981)',
-    meshColor: 'radial-gradient(circle at 75% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(16, 185, 129, 0.25) 45%, transparent 70%)',
+    meshBg: 'radial-gradient(circle at 80% 45%, rgba(56, 189, 248, 0.45) 0%, rgba(16, 185, 129, 0.3) 40%, rgba(6, 11, 24, 0.98) 75%)',
     screens: [
       {
-        title: 'Metalizacja Próżniowa',
-        subtitle: 'Fraza #1 w Google (17.3)',
-        tag: 'SEO B2B',
+        title: 'GREAT COFFEE',
+        subtitle: 'Sustainable roasting',
+        tag: 'BRANDING',
         image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-10px)'
       },
       {
-        title: 'Park Maszynowy',
-        subtitle: 'Przemysłowa wydajność',
-        tag: 'Wersje DE/EN',
+        title: 'Metalizacja Próżniowa',
+        subtitle: 'Pozycja #1 w Google',
+        tag: 'SEO B2B',
         image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(20px)',
         highlight: true
       },
       {
-        title: 'Zapytanie Ofertowe',
-        subtitle: 'Wzrost konwersji +180%',
-        tag: 'Formularz B2B',
+        title: 'B2B Offer System',
+        subtitle: 'Conversion +180%',
+        tag: 'SYSTEM',
         image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-15px)'
       }
@@ -82,33 +84,34 @@ const realizedWebsites = [
   },
   {
     id: 3,
-    brand: 'ASE-BOT TRADING',
+    brand: 'ASE-BOT',
     url: 'https://ase-bot.live/',
     category: 'seo',
-    metric: '+8113%',
-    metricSubtitle: 'increase in organic search views on USA market',
+    metricVal: 8113.8,
+    metricSuffix: '%',
+    metricSubtitle: 'wzrostu wyświetleń w wyszukiwarce Google (USA).',
     gradient: 'linear-gradient(135deg, #A855F7, #EC4899, #F97316)',
-    meshColor: 'radial-gradient(circle at 75% 50%, rgba(236, 72, 153, 0.45) 0%, rgba(249, 115, 22, 0.3) 45%, transparent 70%)',
+    meshBg: 'radial-gradient(circle at 80% 45%, rgba(236, 72, 153, 0.45) 0%, rgba(249, 115, 22, 0.3) 40%, rgba(6, 11, 24, 0.98) 75%)',
     screens: [
       {
-        title: 'AI Futures Bot',
-        subtitle: 'Algorytmy kwantowe USA',
-        tag: 'USA Organic',
+        title: 'AI Futures Trading',
+        subtitle: 'Quantum Trading USA',
+        tag: 'AI TRADING',
         image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-20px)'
       },
       {
-        title: 'Analityka Wyników',
-        subtitle: '4.8k wyświetleń/kwartał',
-        tag: 'CTR 4.62%',
+        title: 'Organic Reach 4.8k',
+        subtitle: 'CTR 4.62% na rynku USA',
+        tag: 'ANALYTICS',
         image: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(10px)',
         highlight: true
       },
       {
-        title: 'Live Signals Feed',
-        subtitle: 'Powiadomienia na żywo',
-        tag: 'High Velocity',
+        title: 'Live Signal Feed',
+        subtitle: 'Realtime WebSocket',
+        tag: 'ENGINE',
         image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-10px)'
       }
@@ -122,42 +125,67 @@ const realizedWebsites = [
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [displayNumber, setDisplayNumber] = useState(0);
   const [activeModal, setActiveModal] = useState(null);
-  const [animating, setAnimating] = useState(false);
-
-  const handleNext = () => {
-    if (animating) return;
-    setAnimating(true);
-    setActiveIndex((prev) => (prev + 1) % realizedWebsites.length);
-    setTimeout(() => setAnimating(false), 500);
-  };
+  const [isSwapping, setIsSwapping] = useState(false);
 
   const currentItem = realizedWebsites[activeIndex];
 
+  // Countup counter animation for metric value
+  useEffect(() => {
+    let start = 0;
+    const target = currentItem.metricVal;
+    const duration = 600;
+    const steps = 30;
+    const increment = target / steps;
+    const stepTime = duration / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setDisplayNumber(target);
+        clearInterval(timer);
+      } else {
+        setDisplayNumber(start);
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [activeIndex, currentItem.metricVal]);
+
+  const handleNextSlide = () => {
+    if (isSwapping) return;
+    setIsSwapping(true);
+    setTimeout(() => {
+      setActiveIndex((prev) => (prev + 1) % realizedWebsites.length);
+      setIsSwapping(false);
+    }, 250);
+  };
+
   return (
     <section className="portfolio-kota-section" id="portfolio">
-      <div className="container">
+      <div className="container" style={{ maxWidth: '1300px' }}>
         <div className="section-header dark-header">
           <div className="section-tag dark-tag">
             <span className="asterisk">✳</span> OUR RESULTS
           </div>
           <h2>Projects — zrealizowane strony z mierzalnym efektem</h2>
-          <p style={{ color: '#94A3B8' }}>Projekty i case studies wygenerowane dla klientów poszukujących wzrostu organicznego.</p>
+          <p style={{ color: '#94A3B8' }}>Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.</p>
         </div>
 
-        {/* KOTA Full Screen Deck Showcase */}
+        {/* KOTA Full-Width Card Deck Frame */}
         <div className="kota-deck-container">
-          {/* Stacked Back Edges (Left Cards Effect) */}
+          {/* Stacked Left Edge Card Layers (Visual Depth Stack) */}
           <div className="kota-deck-edge edge-3"></div>
           <div className="kota-deck-edge edge-2"></div>
           <div className="kota-deck-edge edge-1"></div>
 
-          {/* Primary Main Card */}
-          <div className={`kota-main-card ${animating ? 'slide-animating' : ''}`}>
-            {/* Mesh Blur Glow Background Overlay */}
-            <div className="kota-card-mesh-bg" style={{ background: currentItem.meshColor }}></div>
+          {/* Active Main Card */}
+          <div className={`kota-main-card ${isSwapping ? 'kota-swapping' : ''}`}>
+            {/* Dynamic Ambient Mesh Gradient Background */}
+            <div className="kota-card-mesh-bg" style={{ background: currentItem.meshBg }}></div>
 
-            {/* Left Side Content */}
+            {/* Left Content Side */}
             <div className="kota-card-left">
               <div className="kota-brand-badge">
                 <span className="kota-brand-icon">⚡</span>
@@ -173,7 +201,7 @@ export default function Portfolio() {
                     WebkitTextFillColor: 'transparent'
                   }}
                 >
-                  {currentItem.metric}
+                  {displayNumber.toFixed(1)}{currentItem.metricSuffix}
                 </div>
                 <div className="kota-metric-subtext">
                   {currentItem.metricSubtitle}
@@ -184,12 +212,12 @@ export default function Portfolio() {
                 className="kota-view-project-btn"
                 onClick={() => setActiveModal(currentItem)}
               >
-                <span>View project</span>
+                <span>View Project</span>
                 <span className="kota-btn-arrow">→</span>
               </button>
             </div>
 
-            {/* Right Side 3 Floating Staggered Mobile Phone Screen Mockups */}
+            {/* Right Side 3 Floating Mobile Phone Screen Trio */}
             <div className="kota-card-right">
               <div className="kota-phone-trio">
                 {currentItem.screens.map((screen, idx) => (
@@ -215,10 +243,10 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* KOTA Bottom-Right Circular Carousel Control Button */}
+            {/* Circular Carousel Next Control Arrow (Bottom Right) */}
             <button
               className="kota-deck-next-btn"
-              onClick={handleNext}
+              onClick={handleNextSlide}
               aria-label="Next Project"
               title="Next Project"
             >
@@ -241,8 +269,8 @@ export default function Portfolio() {
                 {activeModal.url} ↗
               </a>
             </p>
-            <div style={{ fontSize: '2.5rem', fontWeight: '700', color: '#38BDF8', marginBottom: '1rem' }}>
-              {activeModal.metric}
+            <div style={{ fontSize: '2.8rem', fontWeight: '700', color: '#38BDF8', marginBottom: '1rem' }}>
+              {activeModal.metricVal}{activeModal.metricSuffix}
             </div>
             <div style={{ color: 'var(--color-text-main)', fontSize: '0.95rem', lineHeight: '1.7', whiteSpace: 'pre-line', marginBottom: '1.5rem', background: 'var(--color-bg-surface)', padding: '1.25rem', borderRadius: '12px' }}>
               {activeModal.details}
