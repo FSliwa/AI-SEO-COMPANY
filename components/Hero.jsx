@@ -23,27 +23,28 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
+      {/* Full-Viewport Title — OUTSIDE the container so it spans edge-to-edge */}
+      <div style={{ position: 'absolute', top: '45%', left: '0', transform: 'translateY(-50%)', width: '100%', zIndex: 4, padding: '0 3vw' }}>
+        <h1 style={{ 
+          fontSize: 'clamp(3.5rem, 10vw, 12rem)', 
+          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+          fontWeight: 800, 
+          lineHeight: 0.95, 
+          letterSpacing: '-0.04em', 
+          color: '#FFFFFF', 
+          textTransform: 'lowercase',
+          margin: 0,
+          width: '100%',
+          textAlign: 'left'
+        }}>
+           branding i<br/>
+           strony internetowe<br/>
+           <span className="highlight">które budują sprzedaż</span>
+        </h1>
+      </div>
+
+      {/* Bottom elements stay in container for proper margins */}
       <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
-        
-        {/* Full-Width Left-Aligned Title */}
-        <div style={{ position: 'absolute', top: '45%', left: '0', transform: 'translateY(-50%)', width: '100%' }}>
-          <h1 style={{ 
-            fontSize: 'clamp(3.5rem, 8.5vw, 9rem)', 
-            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-            fontWeight: 800, 
-            lineHeight: 1.0, 
-            letterSpacing: '-0.04em', 
-            color: '#FFFFFF', 
-            textTransform: 'lowercase',
-            margin: 0,
-            width: '100%',
-            textAlign: 'left'
-          }}>
-             branding i<br/>
-             strony internetowe<br/>
-             <span className="highlight">które budują sprzedaż</span>
-          </h1>
-        </div>
 
         {/* Bottom Left: Case Study */}
         <div style={{ position: 'absolute', bottom: '0', left: '0', maxWidth: '380px' }}>
