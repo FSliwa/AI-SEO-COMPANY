@@ -44,22 +44,12 @@ export default function Hero() {
         pointerEvents: 'none'
       }}>
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 35 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         >
-          <motion.img 
-            animate={{ 
-              y: [0, -14, 0],
-              scale: [1, 1.015, 1],
-              filter: [
-                'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))',
-                'drop-shadow(0 25px 45px rgba(0,0,0,0.7)) drop-shadow(0 0 45px rgba(216,90,48,0.45))',
-                'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))'
-              ]
-            }}
-            transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+          <img 
             src="/hero-text.svg" 
             alt="seo i strony internetowe które budują sprzedaż" 
             style={{ 
@@ -67,7 +57,8 @@ export default function Hero() {
               height: 'auto', 
               maxHeight: '88vh',
               objectFit: 'contain',
-              display: 'block'
+              display: 'block',
+              filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.65)) drop-shadow(0 0 30px rgba(216,90,48,0.3))'
             }} 
           />
         </motion.div>

@@ -72,31 +72,15 @@ const realizedWebsites = [
     metricSubtitle: 'Organic Google Search Growth',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
-    rightVisual: 'phones',
-    screens: [
-      {
-        title: 'AI Futures Trading',
-        subtitle: 'Global Market Leader',
-        tag: 'FINTECH',
-        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-22px)'
-      },
-      {
-        title: 'Unlock 4.8k impressions',
-        subtitle: 'per quarter from zero',
-        tag: 'SEO GROWTH',
-        image: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(12px)',
-        highlight: true
-      },
-      {
-        title: 'Global CTR 4.62%',
-        subtitle: 'On commercial keywords',
-        tag: 'CONVERSION',
-        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-12px)'
-      }
-    ],
+    layout: 'right-side',
+    rightVisual: 'desktop',
+    desktopCard: {
+      tag: 'FINTECH & GLOBAL SEO',
+      title: 'AI FUTURES TRADING PLATFORM',
+      subtitle: '+8 113.8% Google Search Growth in hyper-competitive US market.',
+      image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+      btnText: 'View Case Study'
+    },
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
 - Skok od 0 do 4,8 tys. wyświetleń w kwartale (+8 113,8%) i wzrost w ostatnich 28 dniach o 244,7% (do 500 wyświetleń dziennie).
 - Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 — krok od TOP 20), „best futures trading platforms” (pozycja 61).
@@ -271,32 +255,37 @@ export default function Portfolio() {
                         letterSpacing: '-0.035em', 
                         lineHeight: 1.18 
                       }}>
-                        {lang === 'pl' ? '2.8k+ wyświetleń w wyszukiwarce od zerowej widoczności.' : '2.8k+ organic search impressions from zero visibility.'}
+                        {item.id === 3 
+                          ? (lang === 'pl' ? '+8 113.8% Wzrost widoczności w Google w 3 miesiące.' : '+8 113.8% Organic Search Growth in 3 months.') 
+                          : (lang === 'pl' ? '2.8k+ wyświetleń w wyszukiwarce od zerowej widoczności.' : '2.8k+ organic search impressions from zero visibility.')
+                        }
                       </div>
                     </div>
 
-                    {/* Image flush with right and bottom card edges, 52% width, objectFit cover */}
+                    {/* Image flush with top, right and bottom card edges, 54% width, rounded left corners */}
                     <motion.div 
-                      animate={{ x: [0, 6, 0] }}
+                      animate={{ scale: [1, 1.01, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
                         right: '0', 
                         bottom: '0',
-                        top: '12%',
-                        height: '88%', 
-                        width: '52%',
+                        top: '0',
+                        height: '100%', 
+                        width: '54%',
                         borderTopLeftRadius: '24px',
+                        borderBottomLeftRadius: '24px',
+                        borderTopRightRadius: '32px',
+                        borderBottomRightRadius: '32px',
                         overflow: 'hidden',
                         boxShadow: '-20px 0 50px rgba(0,0,0,0.8)',
                         border: '1px solid rgba(255,255,255,0.18)',
                         borderRight: 'none',
-                        borderBottom: 'none',
                         zIndex: 1
                       }}
                     >
                       <img 
-                        src={item.desktopCard.image} 
+                        src={item.desktopCard ? item.desktopCard.image : '/projects/staniax.png'} 
                         alt={item.brandName} 
                         style={{ 
                           width: '100%', 

@@ -12,52 +12,52 @@ export default function WhyUs() {
   const whyUsCards = [
     {
       id: 1,
-      tag: lang === 'pl' ? 'ZAUFANIE I KONWERSJA' : 'TRUST & CONVERSION',
-      metric: '81%',
-      title: lang === 'pl' ? 'Zaufanie klientów przed zakupem.' : 'Client trust before purchase.',
+      tag: lang === 'pl' ? 'STRONA WWW ZA 0 ZŁ' : 'FREE WEBSITE PACKAGE',
+      metric: '0 zł',
+      title: lang === 'pl' ? 'Dedykowany projekt UX/UI i pełna responsywność RWD.' : 'Bespoke UX/UI design & full mobile responsiveness.',
       description: lang === 'pl' 
-        ? 'Projektujemy przemyślane interfejsy UX/UI i ścieżki zakupowe, które budują pełną wiarygodność marki od pierwszego kliknięcia.'
-        : 'We design intuitive UX/UI interfaces and conversion paths that establish complete brand credibility from the first click.',
+        ? 'Strona zaprojektowana pod konwersję (formularze, Analytics, Hotres, Social Media) z darmowym wykonaniem w pakiecie przy umowie na min. 3 miesiące.'
+        : 'High-conversion website with Google Analytics, Hotres & Social Media integrations, included for free with a min. 3-month contract.',
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 2,
-      tag: lang === 'pl' ? 'ROZPOZNAWALNOŚĆ MARKI' : 'BRAND RECOGNITION',
-      metric: '+80%',
-      title: lang === 'pl' ? 'Wzrost rozpoznawalności marki.' : 'Significant brand recall boost.',
+      tag: lang === 'pl' ? 'POZYCJONOWANIE & SEO' : 'ADVANCED TECHNICAL SEO',
+      metric: 'TOP 10',
+      title: lang === 'pl' ? 'Audyt konkurencji, Core Web Vitals i Schema.org.' : 'Competitor audit, Core Web Vitals & Schema.org.',
       description: lang === 'pl'
-        ? 'Kreujemy spójny system wizualny i nowoczesny design, który zapada w pamięć odbiorców i wyróżnia Twoją firmę na tle konkurencji.'
-        : 'We build cohesive visual systems and modern aesthetics that stay in your audience memory and outshine competitors.',
+        ? 'Błyskawiczne ładowanie, architektura sitemap.xml i robots.txt, przyjazne URL, Rich Snippets w Google oraz pełna obsługa przekierowań 301/404.'
+        : 'Split-second speed, sitemap.xml architecture, SEO URLs, Schema Rich Snippets, and zero-downtime 301/404 redirect management.',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 3,
-      tag: lang === 'pl' ? 'WPŁYW NA PRZYCHÓD' : 'REVENUE IMPACT',
-      metric: '+23%',
-      title: lang === 'pl' ? 'Średni wzrost przychodów.' : 'Average revenue increase.',
+      tag: lang === 'pl' ? 'MAPY GOOGLE & OPINIE' : 'GOOGLE MAPS & REVIEWS',
+      metric: 'TOP 3',
+      title: lang === 'pl' ? 'Dominacja w lokalnych wynikach i Mapach Google.' : 'Dominance in local search & Google Maps.',
       description: lang === 'pl'
-        ? 'Łączymy analitykę, optymalizację pod kątem wyszukiwarek (SEO) i psychologię konwersji, przekładając ruch w internecie na realne zyski.'
-        : 'We combine analytics, search engine optimization (SEO), and conversion psychology to turn traffic into revenue.',
+        ? 'Optymalizacja pod frazy lokalne (usługa + miasto), regularne publikacje zdjęć i aktualności oraz aktywne zarządzanie opiniami klientów.'
+        : 'Targeting local queries (service + city), publishing regular photos/updates, and proactively managing customer reviews.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 4,
-      tag: lang === 'pl' ? 'RUCH ORGANICZNY' : 'ORGANIC TRAFFIC',
-      metric: '+310%',
-      title: lang === 'pl' ? 'Dynamiczny wzrost ruchu organicznego.' : 'Dynamic organic traffic growth.',
+      tag: lang === 'pl' ? 'ANALIZA SEARCH CONSOLE' : 'SEARCH CONSOLE ANALYTICS',
+      metric: '+8 113%',
+      title: lang === 'pl' ? 'Monitoring danych i budowa ruchu organicznego.' : 'Real-time data tracking & traffic expansion.',
       description: lang === 'pl'
-        ? 'Optymalizujemy strukturę serwisu i intencjonalne słowa kluczowe, dostarczając wartościowych odbiorców gotowych do zakupu.'
-        : 'We optimize site structure and targeted commercial keywords, driving high-intent buyers ready to convert.',
+        ? 'Co miesiąc priorytetyzujemy frazy znajdujące się najbliżej TOP 10 / TOP 20 Google, co gwarantuje najszybszy wzrost realnych zapytań.'
+        : 'Monthly optimization prioritizing near-TOP 10 terms to generate fast, high-intent commercial inquiry growth.',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 5,
-      tag: lang === 'pl' ? 'WYDAJNOŚĆ I UX' : 'PERFORMANCE & UX',
-      metric: '99/100',
-      title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google.' : 'Lightning performance & Google score.',
+      tag: lang === 'pl' ? 'STAŁY KOSZT & RAPORTY' : 'TRANSPARENT COST & REPORTS',
+      metric: '3 075 zł',
+      title: lang === 'pl' ? '3 075 zł brutto/mies. (2 500 zł netto) — zero ukrytych opłat.' : '2 500 PLN net/mo — zero hidden fees.',
       description: lang === 'pl'
-        ? 'Eliminujemy opóźnienia i błędy UX, dostarczając strony ładujące się w ułamku sekundy, co drastycznie obniża wskaźnik odrzuceń.'
-        : 'We eliminate load delays and UX bottlenecks, serving split-second pages that drastically reduce bounce rates.',
+        ? 'Kwota obejmuje nową stronę WWW za 0 zł, pełne SEO, Mapy Google, opiekę techniczną z SSL oraz czytelny raport z wyników i pozycji co miesiąc.'
+        : 'Covers free website creation, full technical SEO, Google Maps management, SSL hosting, and transparent monthly performance reporting.',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
