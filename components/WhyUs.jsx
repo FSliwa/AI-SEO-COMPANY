@@ -55,22 +55,20 @@ export default function WhyUs() {
     const cards = container.querySelectorAll('.whyus-card-item');
     if (!cards.length) return;
 
-    const containerLeft = container.getBoundingClientRect().left;
+    const containerCenter = container.scrollLeft + container.clientWidth / 2;
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
-      const cardLeft = card.getBoundingClientRect().left;
-      const distance = Math.abs(cardLeft - containerLeft);
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(containerCenter - cardCenter);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
       }
     });
 
-    if (closestIndex !== activeIndex) {
-      setActiveIndex(closestIndex);
-    }
+    setActiveIndex(closestIndex);
   };
 
   const scrollTo = (index) => {
@@ -78,13 +76,13 @@ export default function WhyUs() {
     if (container) {
       const cards = container.querySelectorAll('.whyus-card-item');
       if (cards[index]) {
-        // Scroll so card aligns flush with container padding
         const paddingOffset = parseFloat(getComputedStyle(container).paddingLeft) || 0;
         const targetScrollLeft = cards[index].offsetLeft - paddingOffset;
         container.scrollTo({
           left: targetScrollLeft,
           behavior: 'smooth'
         });
+        setActiveIndex(index);
       }
     }
   };
@@ -249,18 +247,18 @@ export default function WhyUs() {
           ))}
         </RevealStagger>
 
-        {/* Bottom Pagination & Play Controls (1:1 Apple Style from Screenshot) */}
-        <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
+        {/* Bottom Pagination & Play Controls (2.5x Enlarged Apple Style) */}
+        <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '3.5rem' }}>
           {/* Dots Pill Container */}
-          <div style={{ display: 'flex', gap: '10px', padding: '10px 20px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '16px', padding: '16px 32px', background: '#E8E8ED', borderRadius: '50px', alignItems: 'center' }}>
             {whyUsCards.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => scrollTo(idx)}
                 style={{
-                  width: activeIndex === idx ? '36px' : '6px',
-                  height: '6px',
-                  borderRadius: activeIndex === idx ? '3px' : '50%',
+                  width: activeIndex === idx ? '80px' : '14px',
+                  height: '14px',
+                  borderRadius: activeIndex === idx ? '7px' : '50%',
                   background: activeIndex === idx ? '#1D1D1F' : '#86868B',
                   border: 'none',
                   padding: 0,
@@ -272,15 +270,15 @@ export default function WhyUs() {
             ))}
           </div>
 
-          {/* Standalone Circular Play Button (Apple Screenshot 1:1) */}
+          {/* Standalone Circular Play Button (2.5x Enlarged: 68px) */}
           <button 
             onClick={() => scrollTo((activeIndex + 1) % whyUsCards.length)}
             style={{ 
               background: '#E8E8ED', 
               border: 'none', 
               borderRadius: '50%', 
-              width: '32px', 
-              height: '32px', 
+              width: '68px', 
+              height: '68px', 
               cursor: 'pointer', 
               display: 'flex', 
               alignItems: 'center', 
@@ -290,7 +288,7 @@ export default function WhyUs() {
             }}
             aria-label="Next slide"
           >
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
           </button>

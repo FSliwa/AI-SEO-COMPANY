@@ -127,9 +127,7 @@ export default function Portfolio() {
       }
     });
 
-    if (closestIndex !== activeIndex) {
-      setActiveIndex(closestIndex);
-    }
+    setActiveIndex(closestIndex);
   };
 
   const scrollTo = (index) => {
@@ -142,6 +140,7 @@ export default function Portfolio() {
           left: targetScrollLeft,
           behavior: 'smooth'
         });
+        setActiveIndex(index);
       }
     }
   };
@@ -253,34 +252,34 @@ export default function Portfolio() {
                   </div>
                 ) : item.layout === 'right-side' ? (
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%', position: 'relative' }}>
-                    {/* Left Content (Staniax: Clean Headline filling space, no bullets, no button) */}
-                    <div style={{ flex: '0 0 50%', maxWidth: '540px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
+                    {/* Left Content (Staniax: Capped width to ensure clean spacing from right image) */}
+                    <div style={{ flex: '0 0 42%', maxWidth: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
                       <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
                       
                       {/* Large Headline filling space like Madame Thai */}
                       <div style={{ 
-                        fontSize: 'clamp(2.5rem, 4.2vw, 3.8rem)', 
+                        fontSize: 'clamp(2.2rem, 3.8vw, 3.5rem)', 
                         fontWeight: 700, 
                         color: '#FFFFFF', 
                         letterSpacing: '-0.035em', 
-                        lineHeight: 1.15 
+                        lineHeight: 1.18 
                       }}>
                         2.8k+ organic search impressions from zero visibility.
                       </div>
                     </div>
 
-                    {/* Image coming out from the right side with 90% height and 58% width of card */}
+                    {/* Image flush with right card edge, 92% height, objectFit contain so NO text is cropped */}
                     <motion.div 
-                      animate={{ x: [0, 8, 0] }}
+                      animate={{ x: [0, 6, 0] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
-                        right: '-1.5rem', 
-                        top: '5%',
-                        height: '90%', 
-                        width: '58%',
+                        right: '0', 
+                        top: '4%',
+                        height: '92%', 
+                        width: '54%',
                         borderTopLeftRadius: '24px',
                         borderBottomLeftRadius: '24px',
                         overflow: 'hidden',
@@ -290,7 +289,17 @@ export default function Portfolio() {
                         zIndex: 1
                       }}
                     >
-                      <img src={item.desktopCard.image} alt={item.brandName} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center' }} />
+                      <img 
+                        src={item.desktopCard.image} 
+                        alt={item.brandName} 
+                        style={{ 
+                          width: '100%', 
+                          height: '100%', 
+                          objectFit: 'contain', 
+                          objectPosition: 'center right',
+                          background: 'rgba(0,0,0,0.4)'
+                        }} 
+                      />
                     </motion.div>
                   </div>
                 ) : (
@@ -370,18 +379,18 @@ export default function Portfolio() {
             ))}
           </RevealStagger>
           
-          {/* Pagination Controls (1:1 Apple Proportional Size) */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
+          {/* Pagination Controls (2.5x Enlarged Apple Menu) */}
+          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '3.5rem' }}>
             {/* Dots Pill Container */}
-            <div style={{ display: 'flex', gap: '10px', padding: '10px 20px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '16px', padding: '16px 32px', background: '#E8E8ED', borderRadius: '50px', alignItems: 'center' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
                   style={{
-                    width: activeIndex === idx ? '36px' : '6px',
-                    height: '6px',
-                    borderRadius: activeIndex === idx ? '3px' : '50%',
+                    width: activeIndex === idx ? '80px' : '14px',
+                    height: '14px',
+                    borderRadius: activeIndex === idx ? '7px' : '50%',
                     background: activeIndex === idx ? '#1D1D1F' : '#86868B',
                     border: 'none',
                     padding: 0,
@@ -393,25 +402,25 @@ export default function Portfolio() {
               ))}
             </div>
 
-            {/* Standalone Apple Play Icon Circle Button matching Pill Height (32px) */}
+            {/* Standalone Apple Play Button (2.5x Enlarged: 68px) */}
             <button 
               onClick={() => scrollTo((activeIndex + 1) % realizedWebsites.length)}
               style={{ 
                 background: '#E8E8ED', 
                 border: 'none', 
                 borderRadius: '50%', 
-                width: '32px', 
-                height: '32px', 
+                width: '68px', 
+                height: '68px', 
                 cursor: 'pointer', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
                 padding: '0',
-                transition: 'background 0.2s ease'
+                transition: 'background 0.2s ease, transform 0.2s ease'
               }}
               aria-label="Next slide"
             >
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
             </button>
