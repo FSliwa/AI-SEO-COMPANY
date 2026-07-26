@@ -79,7 +79,13 @@ export default function WhyUs() {
     if (container) {
       const cards = container.querySelectorAll('.whyus-card-item');
       if (cards[index]) {
-        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        const containerRect = container.getBoundingClientRect();
+        const cardRect = cards[index].getBoundingClientRect();
+        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
+        container.scrollTo({
+          left: scrollOffset,
+          behavior: 'smooth'
+        });
         setActiveIndex(index);
       }
     }

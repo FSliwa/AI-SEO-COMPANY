@@ -138,7 +138,13 @@ export default function Portfolio() {
     if (container) {
       const cards = container.querySelectorAll('.apple-card');
       if (cards[index]) {
-        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        const containerRect = container.getBoundingClientRect();
+        const cardRect = cards[index].getBoundingClientRect();
+        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
+        container.scrollTo({
+          left: scrollOffset,
+          behavior: 'smooth'
+        });
         setActiveIndex(index);
       }
     }
@@ -269,22 +275,23 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Image flush with right card edge, 92% height, objectFit contain so NO text is cropped */}
+                    {/* Image flush with right and bottom card edges, 52% width, objectFit cover */}
                     <motion.div 
                       animate={{ x: [0, 6, 0] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
                         right: '0', 
-                        top: '4%',
-                        height: '92%', 
-                        width: '54%',
+                        bottom: '0',
+                        top: '12%',
+                        height: '88%', 
+                        width: '52%',
                         borderTopLeftRadius: '24px',
-                        borderBottomLeftRadius: '24px',
                         overflow: 'hidden',
                         boxShadow: '-20px 0 50px rgba(0,0,0,0.8)',
                         border: '1px solid rgba(255,255,255,0.18)',
                         borderRight: 'none',
+                        borderBottom: 'none',
                         zIndex: 1
                       }}
                     >
@@ -294,9 +301,8 @@ export default function Portfolio() {
                         style={{ 
                           width: '100%', 
                           height: '100%', 
-                          objectFit: 'contain', 
-                          objectPosition: 'center right',
-                          background: 'rgba(0,0,0,0.4)'
+                          objectFit: 'cover', 
+                          objectPosition: 'top left'
                         }} 
                       />
                     </motion.div>
