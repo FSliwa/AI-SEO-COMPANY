@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function WhyUs() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
   const { lang } = useLanguage();
 
   const whyUsCards = [
@@ -112,6 +113,15 @@ export default function WhyUs() {
     const nextIndex = Math.min(whyUsCards.length - 1, activeIndex + 1);
     scrollTo(nextIndex);
   };
+
+  useEffect(() => {
+    if (!isAutoplay) return;
+    const interval = setInterval(() => {
+      const nextIndex = (activeIndex + 1) % whyUsCards.length;
+      scrollTo(nextIndex);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isAutoplay, activeIndex]);
 
   return (
     <section className="why-us" id="why-us" style={{ background: '#F5F5F7', padding: '7rem 0', color: '#1D1D1F' }}>
@@ -290,9 +300,9 @@ export default function WhyUs() {
             ))}
           </div>
 
-          {/* Standalone Circular Play Button (44px) */}
+          {/* Standalone Circular Play/Pause Button (44px) */}
           <button 
-            onClick={() => scrollTo((activeIndex + 1) % whyUsCards.length)}
+            onClick={() => setIsAutoplay(!isAutoplay)}
             style={{ 
               background: '#E8E8ED', 
               border: 'none', 
@@ -306,11 +316,18 @@ export default function WhyUs() {
               padding: '0',
               transition: 'background 0.2s ease, transform 0.2s ease'
             }}
-            aria-label="Next slide"
+            aria-label={isAutoplay ? 'Pause' : 'Play'}
           >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
+            {isAutoplay ? (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none">
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </svg>
+            ) : (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            )}
           </button>
         </Reveal>
 
