@@ -72,7 +72,7 @@ export default function Pricing() {
         </div>
 
         <div className="pricing-note">
-          📌 <strong>Subskrypcja czy Booster Pack?</strong> W pakietach SEO Standard (1 900 zł netto) oraz SEO Premium (2 500 zł netto) korzystasz z <strong>miesięcznej subskrypcji z opcją rezygnacji w dowolnym momencie</strong>. Wybierając pakiet <strong>Booster Pack</strong> (2 500 zł netto przy umowie na min. 3 miesiące), otrzymujesz <strong>nową, w pełni responsywną stronę internetową całkowicie za darmo</strong>!
+          <strong>Subskrypcja czy Booster Pack?</strong> W pakietach SEO Standard (1 900 zł netto) oraz SEO Premium (2 500 zł netto) korzystasz z <strong>miesięcznej subskrypcji z opcją rezygnacji w dowolnym momencie</strong>. Wybierając pakiet <strong>Booster Pack</strong> (2 500 zł netto przy umowie na min. 3 miesiące), otrzymujesz <strong>nową, w pełni responsywną stronę internetową całkowicie za darmo</strong>!
         </div>
       </div>
     </section>

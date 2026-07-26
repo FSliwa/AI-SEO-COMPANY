@@ -23,7 +23,6 @@ export default function Home() {
         <Portfolio />
         <Pricing />
         <WhyUs />
-        <Process />
         <Results />
         <Testimonials />
         <Blog />

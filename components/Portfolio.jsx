@@ -15,7 +15,7 @@ const realizedWebsites = [
     metric: '104.9%',
     metricSubtitle: 'increase in organic visits after 1 month.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.15) 0%, rgba(56, 189, 248, 0.1) 40%, rgba(255, 255, 255, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
@@ -58,7 +58,7 @@ const realizedWebsites = [
     metric: '2.8k+',
     metricSubtitle: 'organic search impressions from zero visibility.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.15) 0%, rgba(52, 211, 153, 0.1) 40%, rgba(255, 255, 255, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'desktop',
     desktopCard: {
       tag: 'B2B INDUSTRY & SEO',
@@ -83,7 +83,7 @@ const realizedWebsites = [
     metric: '+8 113.8%',
     metricSubtitle: 'Organic Google Search Growth',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
-    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.15) 0%, rgba(56, 189, 248, 0.12) 40%, rgba(255, 255, 255, 1) 75%)',
+    meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
