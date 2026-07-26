@@ -1326,18 +1326,18 @@ button, input, select, textarea {
 
 .process-center-text {
   position: absolute;
-  width: 250px;
-  height: 250px;
+  width: 340px;
+  height: 340px;
   border-radius: 50%;
   background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 1.75rem;
+  padding: 2.25rem;
   z-index: 2;
   transition: all 0.3s ease;
 }
@@ -1352,7 +1352,7 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #FFFFFF;
+  border: none;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   z-index: 4;
@@ -1385,27 +1385,27 @@ button, input, select, textarea {
   font-family: 'Space Grotesk', system-ui, sans-serif;
 }
 
-/* Node Highlight & Active States */
+/* Node Highlight & Active States - Clean Green without Black Outline */
 .process-node-interactive.highlight,
 .process-node-interactive.active {
   background: #D2F535;
   color: #0F172A;
-  border-color: #0F172A;
+  border: none !important;
   box-shadow: 0 15px 35px rgba(210, 245, 53, 0.45);
 }
 
-/* Hover Animation: Zoom + Neon Glow */
+/* Hover Animation: Zoom + Glow without Outline */
 .process-node-interactive:hover {
   transform: translate(-50%, -50%) scale(1.18) !important;
   box-shadow: 0 20px 45px rgba(56, 189, 248, 0.5);
-  border-color: #38BDF8;
+  border: none !important;
   z-index: 10;
 }
 
 .process-node-interactive.highlight:hover,
 .process-node-interactive.active:hover {
   box-shadow: 0 20px 45px rgba(210, 245, 53, 0.7);
-  border-color: #0F172A;
+  border: none !important;
 }
 
 .process-grid-fallback {
