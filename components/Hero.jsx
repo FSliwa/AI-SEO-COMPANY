@@ -62,10 +62,13 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Right-side subtitle — positioned at same height as last title line, like KOTA's "A global branding agency..." */}
-      <div style={{ position: 'absolute', bottom: '18vh', right: '3vw', maxWidth: '320px', textAlign: 'left', zIndex: 5 }}>
-        <p style={{ fontSize: '0.95rem', color: '#E2E8F0', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
-          {t.subtitle}
+      {/* Right-side subtitle — at same height as last title line, like KOTA's "A global branding agency..." */}
+      <div style={{ position: 'absolute', top: '63%', right: '3vw', maxWidth: '300px', textAlign: 'left', zIndex: 5 }}>
+        <p style={{ fontSize: '0.9rem', color: '#CBD5E1', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
+          {lang === 'pl' 
+            ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>masowo wybierana przez klientów.</strong></>
+            : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>converts customers at scale.</strong></>
+          }
         </p>
       </div>
 
