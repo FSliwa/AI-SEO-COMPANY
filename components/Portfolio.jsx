@@ -240,7 +240,7 @@ export default function Portfolio() {
                     </motion.div>
                   </div>
                 ) : item.layout === 'right-side' ? (
-                  <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%', position: 'relative' }}>
+                  <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', minHeight: '480px', width: '100%', position: 'relative' }}>
                     {/* Left Content (Staniax: Capped width to ensure clean spacing from right image) */}
                     <div style={{ flex: '0 0 42%', maxWidth: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
                       <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
@@ -262,7 +262,7 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Image anchored right, 90% height, vertically centered */}
+                    {/* Image anchored right, 90% card height, 100% vertically centered */}
                     <motion.div 
                       animate={{ scale: [1, 1.008, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
