@@ -328,126 +328,145 @@ button, input, select, textarea {
   background: var(--color-cta);
 }
 
-/* KOTA Floating Top-Right Navigation Menu Card */
-.kota-menu-overlay {
+/* KOTA Full-Screen Immersive Nav */
+.kota-fullscreen-menu {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(8px);
+  background: #030712; /* Dark immersive background */
   z-index: 2000;
   display: flex;
-  justify-content: flex-end;
-  padding: 1.25rem calc(max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem));
-  animation: fadeInOverlay 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  flex-direction: column;
+  /* Start hidden at the trigger button location (top right) */
+  clip-path: circle(0px at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+  animation: kotaMenuExpand 0.7s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+  color: #FFFFFF;
 }
 
-.kota-menu-dropdown-card {
-  background: #FFFFFF;
-  border-radius: 28px;
-  width: 290px;
-  padding: 2rem 2.25rem 2.25rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+.kota-fullscreen-menu.closing {
+  animation: kotaMenuCollapse 0.6s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+.kota-fullscreen-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid var(--color-border);
-  position: relative;
-  height: fit-content;
-  transform-origin: top right;
-  animation: kotaMenuSpring 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-@keyframes fadeInOverlay {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes kotaMenuSpring {
-  0% {
-    opacity: 0;
-    transform: scale(0) translateY(-20px) translateX(20px);
-    border-radius: 50%;
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0) translateX(0);
-    border-radius: 28px;
-  }
-}
-
-.kota-menu-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 1.5rem;
-}
-
-.kota-menu-close-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: #FAFAFA;
-  color: var(--color-text-dark);
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
+  padding-bottom: 5rem;
 }
 
-.kota-menu-close-btn:hover {
-  background: #000000;
-  color: #FFFFFF;
-  border-color: #000000;
-}
-
-.kota-menu-card-links {
+/* Giant Display Links */
+.kota-fullscreen-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
-  margin-bottom: 2.25rem;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-.kota-menu-card-links a {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-text-dark);
-  letter-spacing: -0.02em;
-  transition: color var(--transition-fast), transform var(--transition-fast);
+.kota-fullscreen-links li {
+  overflow: hidden;
+}
+
+.kota-fullscreen-links a {
   display: inline-block;
-}
-
-.kota-menu-card-links a:hover {
-  color: var(--color-cta);
-  transform: translateX(4px);
-}
-
-.kota-menu-card-footer {
-  border-top: 1px solid var(--color-border);
-  padding-top: 1.5rem;
-}
-
-.kota-menu-pill-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000000;
+  font-family: 'Space Grotesk', system-ui, sans-serif !important;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 800;
   color: #FFFFFF;
-  padding: 0.85rem 1.5rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all var(--transition-fast);
-  box-shadow: var(--shadow-sm);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: linkSlideUp 0.6s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.3s + var(--delay, 0s));
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.kota-menu-pill-cta:hover {
+.kota-fullscreen-links a:hover {
+  color: var(--color-cta);
+  transform: translateX(20px);
+}
+
+.kota-fullscreen-menu.closing .kota-fullscreen-links a {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.kota-menu-trigger.close-variant {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.kota-menu-trigger.close-variant:hover {
   background: var(--color-cta);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-cta);
+  color: #FFFFFF;
+  transform: scale(1.08) rotate(90deg);
+}
+
+.kota-fullscreen-footer {
+  margin-top: auto;
+  display: flex;
+  gap: 4rem;
+  opacity: 0;
+  animation: fadeInOverlay 0.6s ease forwards;
+  animation-delay: 0.8s;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.footer-contact, .footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-label {
+  font-size: 0.85rem;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-value {
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-value:hover {
+  color: var(--color-cta);
+}
+
+@keyframes kotaMenuExpand {
+  0% {
+    clip-path: circle(0px at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+  }
+  100% {
+    clip-path: circle(150% at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+  }
+}
+
+@keyframes kotaMenuCollapse {
+  0% {
+    clip-path: circle(150% at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+  }
+  100% {
+    clip-path: circle(0px at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+  }
+}
+
+@keyframes linkSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* --- 01. Hero Section (Strict 80% Viewport Height & Fused ase-bot.live Fade) --- */

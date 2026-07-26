@@ -7,6 +7,7 @@ import { translations } from '@/lib/translations';
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuClosing, setMenuClosing] = useState(false);
   const { lang, toggleLang } = useLanguage();
   const t = translations[lang].nav;
 
@@ -17,6 +18,22 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleMenu = () => {
+    if (menuOpen) {
+      closeMenu();
+    } else {
+      setMenuOpen(true);
+    }
+  };
+
+  const closeMenu = () => {
+    setMenuClosing(true);
+    setTimeout(() => {
+      setMenuOpen(false);
+      setMenuClosing(false);
+    }, 600);
+  };
 
   return (
     <>
@@ -62,67 +79,69 @@ export default function Header() {
             {/* KOTA Circular Menu Toggle Trigger (Black Circle with ≡ or ✕) */}
             <button
               className="kota-menu-trigger"
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={toggleMenu}
               aria-label="Toggle Menu"
               title="Toggle Menu"
             >
-              {menuOpen ? '✕' : '≡'}
+              ≡
             </button>
           </div>
         </div>
       </header>
 
-      {/* KOTA Floating Top-Right Navigation Menu Dropdown Card (Matching Attached Screenshot) */}
+      {/* KOTA Full-Screen Immersive Menu */}
       {menuOpen && (
-        <div className="kota-menu-overlay" onClick={() => setMenuOpen(false)}>
-          <div className="kota-menu-dropdown-card" onClick={(e) => e.stopPropagation()}>
-            <div className="kota-menu-card-header">
+        <div className={`kota-fullscreen-menu ${menuClosing ? 'closing' : ''}`}>
+          
+          <div className="container nav-container" style={{ paddingTop: '2.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', opacity: 0 }}>
+              <span className="logo">AI SEO COMPANY</span>
+            </div>
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
               <button
-                className="kota-menu-close-btn"
-                onClick={() => setMenuOpen(false)}
+                className="kota-menu-trigger close-variant"
+                onClick={closeMenu}
                 aria-label="Close Menu"
+                title="Close Menu"
               >
                 ✕
               </button>
             </div>
+          </div>
 
-            <ul className="kota-menu-card-links">
-              <li>
-                <a href="#portfolio" onClick={() => setMenuOpen(false)}>
-                  {t.portfolio}
-                </a>
+          <div className="kota-fullscreen-content container">
+            <ul className="kota-fullscreen-links">
+              <li style={{ '--delay': '0.15s' }}>
+                <a href="#portfolio" onClick={closeMenu}>{t.portfolio}</a>
               </li>
-              <li>
-                <a href="#uslugi" onClick={() => setMenuOpen(false)}>
-                  {t.services} <span style={{ fontSize: '0.85rem', opacity: 0.6 }}>+</span>
-                </a>
+              <li style={{ '--delay': '0.2s' }}>
+                <a href="#uslugi" onClick={closeMenu}>{t.services}</a>
               </li>
-              <li>
-                <a href="#cennik" onClick={() => setMenuOpen(false)}>
-                  {t.pricing}
-                </a>
+              <li style={{ '--delay': '0.25s' }}>
+                <a href="#cennik" onClick={closeMenu}>{t.pricing}</a>
               </li>
-              <li>
-                <a href="#proces" onClick={() => setMenuOpen(false)}>
-                  {t.process}
-                </a>
+              <li style={{ '--delay': '0.3s' }}>
+                <a href="#proces" onClick={closeMenu}>{t.process}</a>
               </li>
-              <li>
-                <a href="#blog" onClick={() => setMenuOpen(false)}>
-                  {t.blog}
-                </a>
+              <li style={{ '--delay': '0.35s' }}>
+                <a href="#blog" onClick={closeMenu}>{t.blog}</a>
               </li>
-              <li>
-                <a href="#kontakt" onClick={() => setMenuOpen(false)}>
-                  {lang === 'pl' ? 'Kontakt' : 'Contact'}
-                </a>
+              <li style={{ '--delay': '0.4s' }}>
+                <a href="#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
             </ul>
 
-            <div className="kota-menu-card-footer">
-              <a href="#kontakt" className="kota-menu-pill-cta" onClick={() => setMenuOpen(false)}>
-                {t.cta}
-              </a>
+            <div className="kota-fullscreen-footer">
+              <div className="footer-contact">
+                <span className="footer-label">Napisz do nas</span>
+                <a href="mailto:kontakt@aiseocompany.com" className="footer-value">kontakt@aiseocompany.com</a>
+              </div>
+              <div className="footer-socials">
+                <span className="footer-label">Social Media</span>
+                <a href="#" className="footer-value">LinkedIn</a>
+                <a href="#" className="footer-value">Instagram</a>
+              </div>
             </div>
           </div>
         </div>
