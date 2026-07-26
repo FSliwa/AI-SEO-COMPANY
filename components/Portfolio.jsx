@@ -74,12 +74,12 @@ const realizedWebsites = [
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center-reverse',
     rightVisual: 'desktop',
-    largeImage: '/projects/Kafelek AISAS.png',
+    largeImage: '/projects/kafelek-aisas.png',
     desktopCard: {
       tag: 'FINTECH & GLOBAL SEO',
       title: 'AI FUTURES TRADING PLATFORM',
       subtitle: '+8 113.8% Google Search Growth in hyper-competitive US market.',
-      image: '/projects/Kafelek AISAS.png',
+      image: '/projects/kafelek-aisas.png',
       btnText: 'View Case Study'
     },
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
