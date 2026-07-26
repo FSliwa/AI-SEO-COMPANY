@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Process() {
   const [activeTab, setActiveTab] = useState(0);
+  const [activeStep, setActiveStep] = useState(3); // Default step 4 (UX & UI Design)
+  const [rotation, setRotation] = useState(0);
+  const sectionRef = useRef(null);
 
   const tabs = [
     'Strategy first. Always.',
@@ -14,25 +17,34 @@ export default function Process() {
   ];
 
   const steps = [
-    { num: '1', title: 'Odkrycie & Strategia', desc: 'Badamy grupę docelową, konkurencję i frazy kluczowe.' },
-    { num: '2', title: 'Kierunek Kreatywny', desc: 'Moodboardy i unikalny ton komunikacji.' },
-    { num: '3', title: 'Identyfikacja Visual', desc: 'Logo, paleta barw i pełna księga znaku.' },
-    { num: '4', title: 'UX & UI Design', desc: 'Przemyślane makiety nastawione na sprzedaż.', highlight: true },
-    { num: '5', title: 'Wdrożenie w Next.js', desc: 'Kodowanie z optymalizacją SEO i Core Web Vitals.' },
-    { num: '6', title: 'Launch & Wsparcie', desc: 'Uruchomienie, weryfikacja w Google i opieka.' },
+    { num: '1', title: 'Odkrycie & Strategia', desc: 'Badamy grupę docelową, konkurencję i kluczowe frazy SEO.' },
+    { num: '2', title: 'Kierunek Kreatywny', desc: 'Projektujemy moodboardy i unikalny ton komunikacji marki.' },
+    { num: '3', title: 'Identyfikacja Visual', desc: 'Tworzymy nowoczesne logo, paletę barw i system wizualny.' },
+    { num: '4', title: 'UX & UI Design', desc: 'Projektujemy makiety ukierunkowane na maksymalną konwersję.', highlight: true },
+    { num: '5', title: 'Wdrożenie w Next.js', desc: 'Kodujemy w ultrawydajnym Next.js z dbałością o Core Web Vitals.' },
+    { num: '6', title: 'Launch & Wsparcie', desc: 'Uruchamiamy serwis, weryfikujemy w Google i zapewniamy stałe wsparcie.' },
   ];
 
-  const positions = [
-    { top: '0%', left: '50%', transform: 'translate(-50%, -50%)' },
-    { top: '25%', left: '93.3%', transform: 'translate(-50%, -50%)' },
-    { top: '75%', left: '93.3%', transform: 'translate(-50%, -50%)' },
-    { top: '100%', left: '50%', transform: 'translate(-50%, -50%)' },
-    { top: '75%', left: '6.7%', transform: 'translate(-50%, -50%)' },
-    { top: '25%', left: '6.7%', transform: 'translate(-50%, -50%)' },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalDistance = windowHeight + rect.height;
+      const currentPos = windowHeight - rect.top;
+      const progress = Math.min(Math.max(currentPos / totalDistance, 0), 1);
+      
+      // Smooth rotation based on scroll distance (0 deg to 240 deg)
+      setRotation(progress * 240);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section className="process" id="proces">
+    <section className="process" id="proces" ref={sectionRef}>
       <div className="container">
         <div className="section-header center">
           <div className="section-tag">
@@ -42,7 +54,7 @@ export default function Process() {
           <p>Przekształcamy tożsamość marki w profesjonalne doświadczenie cyfrowe z przemyślaną strukturą konwersji.</p>
         </div>
 
-        {/* KOTA Framework Tabs (Screenshot 4) */}
+        {/* KOTA Framework Tabs */}
         <div className="kota-framework-tabs">
           {tabs.map((tab, idx) => (
             <button
@@ -55,30 +67,89 @@ export default function Process() {
           ))}
         </div>
 
-        {/* Circular Ring Workflow (VIS Screenshot 4) */}
+        {/* Interactive Rotating Circular Ring Workflow */}
         <div className="process-diagram-wrapper">
-          <div className="process-circle-ring"></div>
+          {/* Ambient Background Glow */}
+          <div className="process-ambient-glow"></div>
+
+          {/* Center Circle Ring Line (68% diameter) */}
+          <div 
+            className="process-circle-ring"
+            style={{ transform: `rotate(${rotation}deg)` }}
+          ></div>
+
+          {/* Central Description Box */}
           <div className="process-center-text">
-            <strong>{tabs[activeTab]}</strong><br/>
-            Przekładamy tożsamość firmy na dochodową obecność cyfrową w 6 przejrzystych krokach.
+            <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.35rem' }}>
+              {tabs[activeTab]}
+            </div>
+            <strong style={{ fontSize: '1.05rem', color: '#0F172A', display: 'block', marginBottom: '0.35rem', fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
+              0{steps[activeStep].num}. {steps[activeStep].title}
+            </strong>
+            <p style={{ margin: 0, fontSize: '0.83rem', color: '#64748B', lineHeight: '1.5' }}>
+              {steps[activeStep].desc}
+            </p>
           </div>
 
-          {steps.map((step, idx) => (
-            <div
-              key={idx}
-              className={`process-node ${step.highlight ? 'highlight' : ''}`}
-              style={positions[idx]}
-            >
-              <div style={{ fontSize: '0.7rem', opacity: 0.8, marginBottom: '2px' }}>{step.num}.</div>
-              <div style={{ lineHeight: '1.2' }}>{step.title}</div>
-            </div>
-          ))}
+          {/* Rotating Wheel of Node Circles */}
+          <div 
+            className="process-wheel-layer"
+            style={{ 
+              position: 'absolute', 
+              inset: 0, 
+              transform: `rotate(${rotation}deg)`,
+              transition: 'transform 0.05s linear',
+              pointerEvents: 'none'
+            }}
+          >
+            {steps.map((step, idx) => {
+              // 6 steps = 60° increments, starting at top (-90°)
+              const angleDeg = idx * 60 - 90;
+              const angleRad = (angleDeg * Math.PI) / 180;
+              
+              // Radius of 34% puts the circle centers EXACTLY on the 68% perimeter ring!
+              const radiusPercent = 34;
+              const leftPercent = 50 + radiusPercent * Math.cos(angleRad);
+              const topPercent = 50 + radiusPercent * Math.sin(angleRad);
+
+              const isActive = activeStep === idx;
+              const isHighlight = step.highlight || isActive;
+
+              return (
+                <div
+                  key={idx}
+                  onClick={() => setActiveStep(idx)}
+                  className={`process-node-interactive ${isHighlight ? 'highlight' : ''} ${isActive ? 'active' : ''}`}
+                  style={{
+                    position: 'absolute',
+                    top: `${topPercent}%`,
+                    left: `${leftPercent}%`,
+                    transform: 'translate(-50%, -50%)',
+                    pointerEvents: 'auto'
+                  }}
+                  title={`${step.num}. ${step.title}`}
+                >
+                  {/* Counter-rotate inner text so it stays perfectly horizontal & readable during scroll rotation */}
+                  <div 
+                    className="process-node-inner"
+                    style={{ 
+                      transform: `rotate(${-rotation}deg)`,
+                      transition: 'transform 0.05s linear'
+                    }}
+                  >
+                    <span className="process-node-num">0{step.num}.</span>
+                    <span className="process-node-title">{step.title}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Responsive Grid Fallback */}
         <div className="process-grid-fallback">
           {steps.map((step, idx) => (
-            <div key={idx} className="step-card">
+            <div key={idx} className={`step-card ${activeStep === idx ? 'active' : ''}`} onClick={() => setActiveStep(idx)}>
               <div className="step-number">0{step.num}</div>
               <h3>{step.title}</h3>
               <p>{step.desc}</p>
