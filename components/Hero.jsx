@@ -25,22 +25,26 @@ export default function Hero() {
 
       <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
         
-        {/* Massive Full-Width Left-Aligned Title (KOTA 'rebel against boring' style) */}
+        {/* Massive Staggered Title (KOTA 'rebel against boring' style) */}
         <div style={{ position: 'absolute', top: '45%', left: '0', transform: 'translateY(-50%)', width: '100%', textAlign: 'left' }}>
           <h1 style={{ 
-            fontSize: 'clamp(3rem, 8vw, 8.5rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
-            lineHeight: 0.9, 
-            letterSpacing: '-0.04em', 
+            lineHeight: 0.82, 
+            letterSpacing: '-0.05em', 
             color: '#FFFFFF', 
             textTransform: 'lowercase',
             margin: 0,
-            width: '100%'
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start'
           }}>
-             branding i<br/>
-             strony internetowe<br/>
-             <span className="highlight">które budują sprzedaż</span>
+             <span style={{ fontSize: 'clamp(4rem, 13vw, 15rem)' }}>branding</span>
+             <span style={{ fontSize: 'clamp(4rem, 13vw, 15rem)', marginLeft: '12%' }}>i strony</span>
+             <span style={{ fontSize: 'clamp(3.5rem, 11vw, 12rem)', marginLeft: '4%' }}>internetowe</span>
+             <span className="highlight" style={{ fontSize: 'clamp(3rem, 10vw, 11rem)', marginLeft: '18%' }}>które budują</span>
+             <span className="highlight" style={{ fontSize: 'clamp(4rem, 13vw, 15rem)', marginLeft: '8%' }}>sprzedaż</span>
           </h1>
         </div>
 
