@@ -38,10 +38,10 @@ export default function Hero() {
         {/* Line 1: SEO i (Starts at Left 0) */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <span style={{ 
-            fontSize: 'clamp(4.5rem, 12.5vw, 14.5rem)', 
+            fontSize: 'clamp(4.5rem, 12vw, 14rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
-            lineHeight: 0.92, 
+            lineHeight: 0.9, 
             letterSpacing: '-0.04em', 
             color: '#FFFFFF', 
             textTransform: 'lowercase',
@@ -52,12 +52,12 @@ export default function Hero() {
         </div>
 
         {/* Line 2: strony internetowe (Indented Left ~18vw, like KOTA's "against") */}
-        <div style={{ display: 'flex', paddingLeft: '18vw' }}>
+        <div style={{ display: 'flex', paddingLeft: '16vw' }}>
           <span style={{ 
-            fontSize: 'clamp(3rem, 7.5vw, 9.5rem)', 
+            fontSize: 'clamp(3.2rem, 8vw, 10rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
-            lineHeight: 0.92, 
+            lineHeight: 0.9, 
             letterSpacing: '-0.04em', 
             color: '#FFFFFF', 
             textTransform: 'lowercase',
@@ -73,16 +73,16 @@ export default function Hero() {
           justifyContent: 'space-between', 
           alignItems: 'flex-end', 
           width: '100%',
-          marginTop: '0.5vh',
+          marginTop: '0.8vh',
           flexWrap: 'nowrap',
-          gap: '2rem'
+          gap: '2.5rem'
         }}>
           {/* Left: które budują sprzedaż (Starts at Left 0, same as Line 1) */}
           <span className="highlight" style={{ 
-            fontSize: 'clamp(2.2rem, 4.8vw, 6rem)', 
+            fontSize: 'clamp(2.8rem, 6.2vw, 7.5rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
-            lineHeight: 0.95, 
+            lineHeight: 0.92, 
             letterSpacing: '-0.04em', 
             textTransform: 'lowercase',
             whiteSpace: 'nowrap',
@@ -92,11 +92,11 @@ export default function Hero() {
           </span>
 
           {/* Right: Subtitle paragraph (Aligned with Line 3, right edge) */}
-          <div style={{ maxWidth: '320px', textAlign: 'left', paddingBottom: '0.4rem', flexShrink: 1 }}>
-            <p style={{ fontSize: '0.88rem', color: '#CBD5E1', fontWeight: 400, lineHeight: '1.6', margin: 0 }}>
+          <div style={{ maxWidth: '340px', textAlign: 'left', paddingBottom: '0.2rem', flexShrink: 1 }}>
+            <p style={{ fontSize: '0.95rem', color: '#F1F5F9', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
               {lang === 'pl' 
-                ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>masowo wybierana przez klientów.</strong></>
-                : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>converts customers at scale.</strong></>
+                ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>masowo wybierana przez klientów.</strong></>
+                : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>converts customers at scale.</strong></>
               }
             </p>
           </div>
