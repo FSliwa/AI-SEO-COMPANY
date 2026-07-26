@@ -1141,7 +1141,9 @@ button, input, select, textarea {
 }
 
 .pricing-card.featured::before {
-  content: 'NAJPOPULARNIEJSZY PAKIEET';
+  content: 'NAJPOPULARNIEJSZY PAKIET';
+  letter-spacing: 0.05em;
+  font-weight: 700;
   position: absolute;
   top: -14px;
   left: 50%;

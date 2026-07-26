@@ -60,13 +60,13 @@ export default function Header() {
                 background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
                 borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
                 transition: 'all 0.7s ease'
-              }}>AWWWARDS</span>
+              }}>Top Rated Agency</span>
               <span className="badge-pill" style={{ 
                 color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
                 background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
                 borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
                 transition: 'all 0.7s ease'
-              }}>Clutch 4.9★</span>
+              }}>Reviews 4.9★</span>
             </div>
           </div>
 
