@@ -282,18 +282,26 @@ export default function WhyUs() {
           {/* Dots Pill Container */}
           <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
             {whyUsCards.map((_, idx) => (
-              <button
+              <motion.button
                 key={idx}
+                layout
+                initial={false}
                 onClick={() => scrollTo(idx)}
-                style={{
+                animate={{
                   width: activeIndex === idx ? '36px' : '8px',
+                  backgroundColor: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
+                  borderRadius: activeIndex === idx ? '8px' : '50%'
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 400,
+                  damping: 30
+                }}
+                style={{
                   height: '8px',
-                  borderRadius: activeIndex === idx ? '4px' : '50%',
-                  background: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
                   border: 'none',
                   padding: 0,
-                  cursor: 'pointer',
-                  transition: 'all 0.35s cubic-bezier(0.25, 1, 0.5, 1)'
+                  cursor: 'pointer'
                 }}
                 aria-label={`Go to slide ${idx + 1}`}
               />
