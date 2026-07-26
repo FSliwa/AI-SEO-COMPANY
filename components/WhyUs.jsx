@@ -249,8 +249,9 @@ export default function WhyUs() {
           ))}
         </RevealStagger>
 
-        {/* Bottom Pagination Dots Pill */}
-        <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
+        {/* Bottom Pagination & Play Controls (1:1 Apple Style from Screenshot) */}
+        <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
+          {/* Dots Pill Container */}
           <div style={{ display: 'flex', gap: '10px', padding: '10px 20px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
             {whyUsCards.map((_, idx) => (
               <button
@@ -270,6 +271,29 @@ export default function WhyUs() {
               />
             ))}
           </div>
+
+          {/* Standalone Circular Play Button (Apple Screenshot 1:1) */}
+          <button 
+            onClick={() => scrollTo((activeIndex + 1) % whyUsCards.length)}
+            style={{ 
+              background: '#E8E8ED', 
+              border: 'none', 
+              borderRadius: '50%', 
+              width: '32px', 
+              height: '32px', 
+              cursor: 'pointer', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              padding: '0',
+              transition: 'background 0.2s ease, transform 0.2s ease'
+            }}
+            aria-label="Next slide"
+          >
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </button>
         </Reveal>
 
       </div>
