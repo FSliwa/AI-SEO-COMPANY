@@ -23,74 +23,51 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
-      <div className="container hero-grid">
-        <div className="hero-content">
-          <div className="section-tag hero-badge-tag">
-            <span className="asterisk">✳</span> {t.tag}
-          </div>
-
-          <h1>
-            {t.title1}
-            <span className="highlight">{t.titleHighlight}</span>
+      <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
+        
+        {/* Massive Centered Title (KOTA 'rebel against boring' style) */}
+        <div style={{ position: 'absolute', top: '45%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', textAlign: 'center' }}>
+          <h1 style={{ 
+            fontSize: 'clamp(4rem, 9vw, 9rem)', 
+            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+            fontWeight: 800, 
+            lineHeight: 0.95, 
+            letterSpacing: '-0.05em', 
+            color: '#FFFFFF', 
+            textTransform: 'lowercase',
+            margin: 0
+          }}>
+             branding<br/>i strony internetowe<br/>
+             <span className="highlight" style={{ fontSize: 'clamp(3rem, 7vw, 7rem)' }}>które budują sprzedaż</span>
           </h1>
+        </div>
 
-          <p className="hero-subtitle">
+        {/* Bottom Left: Case Study */}
+        <div style={{ position: 'absolute', bottom: '2rem', left: '0', maxWidth: '380px' }}>
+          <div style={{ background: 'transparent', padding: '0', border: 'none', color: '#FFFFFF' }}>
+             <span className="preview-badge" style={{ marginBottom: '1rem', display: 'inline-block' }}>GOOGLING CASE STUDY</span>
+             <div style={{ fontSize: '3rem', fontWeight: 800, fontFamily: "'Space Grotesk', system-ui", color: '#38BDF8', lineHeight: 1.1, marginBottom: '0.5rem' }}>+8 113.8%</div>
+             <div style={{ fontWeight: 700, fontSize: '1.25rem', marginBottom: '0.75rem' }}>{t.caseTitle}</div>
+             <p style={{ fontSize: '0.95rem', color: '#CBD5E1', lineHeight: '1.6' }}>
+               {t.caseDesc}
+             </p>
+          </div>
+        </div>
+
+        {/* Bottom Right: Subtitle & CTA */}
+        <div style={{ position: 'absolute', bottom: '2rem', right: '0', maxWidth: '380px', textAlign: 'left' }}>
+          <p style={{ fontSize: '1.1rem', color: '#FFFFFF', fontWeight: 500, lineHeight: '1.6', marginBottom: '2rem' }}>
             {t.subtitle}
           </p>
-
-          <div className="hero-cta-group">
-            <a href="#kontakt" className="btn btn-primary">
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+            <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem', borderRadius: '40px' }}>
               {t.btnPrimary} →
             </a>
-            <a href="#portfolio" className="btn btn-secondary" style={{ background: 'rgba(255, 255, 255, 0.08)', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.25)' }}>
-              {t.btnSecondary}
-            </a>
-          </div>
-
-          <div className="hero-proof">
-            <div className="proof-item">
-              <span className="proof-stars">★★★★★</span>
-              <span>{t.rating}</span>
-            </div>
-            <div className="proof-item" style={{ opacity: 0.7 }}>•</div>
-            <div className="proof-item">
-              <span>{t.awards}</span>
-            </div>
           </div>
         </div>
 
-        <div className="hero-visual">
-          <div className="hero-card-preview">
-            <span className="preview-badge">GOOGLING CASE STUDY</span>
-            <div className="preview-metric">+8 113.8%</div>
-            <div className="preview-title">{t.caseTitle}</div>
-            <p style={{ fontSize: '0.85rem', color: '#94A3B8', lineHeight: '1.5' }}>
-              {t.caseDesc}
-            </p>
-            <div className="preview-bar">
-              <div className="preview-progress"></div>
-            </div>
-          </div>
-
-          {/* Floating Pill Badges */}
-          <div className="floating-pill pill-1">
-            <div className="pill-icon">✓</div>
-            <div>
-              <div style={{ fontSize: '0.75rem', color: '#64748B' }}>Organiczny ruch</div>
-              <div style={{ color: '#0F172A' }}>{t.pill1}</div>
-            </div>
-          </div>
-
-          <div className="floating-pill pill-2">
-            <div className="pill-icon">★</div>
-            <div>
-              <div style={{ fontSize: '0.75rem', color: '#64748B' }}>Darmowa Strona WWW</div>
-              <div style={{ color: '#0F172A' }}>{t.pill2}</div>
-            </div>
-          </div>
-        </div>
       </div>
-
     </section>
   );
 }
