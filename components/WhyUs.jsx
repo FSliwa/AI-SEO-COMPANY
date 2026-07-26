@@ -28,6 +28,22 @@ const whyUsCards = [
     title: 'Średni wzrost przychodów.',
     description: 'Łączymy analitykę, optymalizację pod kątem wyszukiwarek (SEO) i psychologię konwersji, przekładając ruch w internecie na realne zyski.',
     bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
+  },
+  {
+    id: 4,
+    tag: 'ORGANIC TRAFFIC',
+    metric: '+310%',
+    title: 'Dynamiczny wzrost ruchu organicznego.',
+    description: 'Optymalizujemy strukturę serwisu i intencjonalne słowa kluczowe, dostarczając wartościowych odbiorców gotowych do zakupu.',
+    bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
+  },
+  {
+    id: 5,
+    tag: 'PERFORMANCE & UX',
+    metric: '99/100',
+    title: 'Błyskawiczna wydajność i ocena Google.',
+    description: 'Eliminujemy opóźnienia i błędy UX, dostarczając strony ładujące się w ułamku sekundy, co drastycznie obniża wskaźnik odrzuceń.',
+    bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
   }
 ];
 
@@ -39,13 +55,13 @@ export default function WhyUs() {
     const cards = container.querySelectorAll('.whyus-card-item');
     if (!cards.length) return;
 
-    const containerCenter = container.scrollLeft + container.clientWidth / 2;
+    const containerLeft = container.getBoundingClientRect().left;
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const distance = Math.abs(containerCenter - cardCenter);
+      const cardLeft = card.getBoundingClientRect().left;
+      const distance = Math.abs(cardLeft - containerLeft);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
@@ -62,7 +78,9 @@ export default function WhyUs() {
     if (container) {
       const cards = container.querySelectorAll('.whyus-card-item');
       if (cards[index]) {
-        const targetScrollLeft = cards[index].offsetLeft - (container.clientWidth - cards[index].offsetWidth) / 2;
+        // Scroll so card aligns flush with container padding
+        const paddingOffset = parseFloat(getComputedStyle(container).paddingLeft) || 0;
+        const targetScrollLeft = cards[index].offsetLeft - paddingOffset;
         container.scrollTo({
           left: targetScrollLeft,
           behavior: 'smooth'
@@ -150,7 +168,7 @@ export default function WhyUs() {
         </div>
       </div>
 
-      {/* Apple Productivity Carousel (Full Screen Width) */}
+      {/* Apple Productivity Carousel (Full Screen Width, aligned flush with container above) */}
       <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
         <RevealStagger 
           id="whyus-carousel"
@@ -163,9 +181,9 @@ export default function WhyUs() {
             msOverflowStyle: 'none', 
             gap: '1.5rem',
             paddingBottom: '2rem',
-            paddingLeft: 'calc(50vw - min(42.5vw, 600px))',
-            paddingRight: 'calc(50vw - min(42.5vw, 600px))',
-            scrollPaddingLeft: 'calc(50vw - min(42.5vw, 600px))'
+            paddingLeft: 'calc((100vw - min(1280px, 100vw - 4rem)) / 2)',
+            paddingRight: 'calc((100vw - min(1280px, 100vw - 4rem)) / 2)',
+            scrollPaddingLeft: 'calc((100vw - min(1280px, 100vw - 4rem)) / 2)'
           }}
         >
           <style jsx>{`
