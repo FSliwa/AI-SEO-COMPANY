@@ -469,13 +469,13 @@ button, input, select, textarea {
   }
 }
 
-/* --- 01. Hero Section (Strict 80% Viewport Height & Fused ase-bot.live Fade) --- */
+/* --- 01. Hero Section (Full Viewport Height — KOTA style) --- */
 .hero {
-  height: 80vh;
-  min-height: 80vh;
-  max-height: 80vh;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
   padding-top: 5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   position: relative;
   overflow: hidden;
   color: #FFFFFF;
