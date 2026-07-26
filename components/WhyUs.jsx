@@ -12,52 +12,52 @@ export default function WhyUs() {
   const whyUsCards = [
     {
       id: 1,
-      tag: lang === 'pl' ? 'PEAK WIDOCZNOŚCI' : 'PEAK IMPRESSIONS',
-      metric: '500/dzień',
-      title: lang === 'pl' ? 'Szczyty sięgające 500 wyświetleń dziennie.' : 'Surging peaks reaching 500 daily views.',
+      tag: lang === 'pl' ? 'ZAUFANIE I KONWERSJA' : 'TRUST & CONVERSION',
+      metric: '81%',
+      title: lang === 'pl' ? 'Zaufanie klientów przed zakupem.' : 'Client trust before purchase.',
       description: lang === 'pl' 
-        ? 'Zaledwie w kilkadziesiąt dni wygenerowaliśmy skokowy przyrost ruchu do pół tysiąca wyświetleń dziennie z komercyjnych zapytań klientów.'
-        : 'Within weeks we unlocked surging search traffic reaching 500 daily impressions from targeted commercial buyer queries.',
+        ? '81% klientów musi w pełni zaufać wizualnie marce, zanim podejmie decyzję o wysłaniu zapytania ofertowego.'
+        : '81% of consumers must visually trust a brand before making a purchase or sending an inquiry.',
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 2,
-      tag: lang === 'pl' ? 'POZYCJE FRAZ KOMERCYJNYCH' : 'KEYWORD RANKINGS',
-      metric: 'Poz. 17',
-      title: lang === 'pl' ? 'Główne frazy usługowe wprowadzane pod TOP 10.' : 'Target commercial terms entering near TOP 10.',
+      tag: lang === 'pl' ? 'ROZPOZNAWALNOŚĆ MARKI' : 'BRAND RECOGNITION',
+      metric: '+80%',
+      title: lang === 'pl' ? 'Wzrost rozpoznawalności firmy.' : 'Significant brand recall boost.',
       description: lang === 'pl'
-        ? 'Skupiamy optymalizację na frazach tuż przy szczycie wyników ("metalizacja próżniowa" poz. 17 i 19), generując najszybszy przyrost zapytań.'
-        : 'Prioritizing terms right near the top 10 rankings ("vacuum metallizing" rank 17 & 19) guarantees the fastest query volume growth.',
+        ? 'Tworzymy spójne systemy wizualne, które zapadają w pamięć odbiorców i wyróżniają Twoją firmę na tle konkurencji.'
+        : 'We build cohesive visual systems and modern aesthetics that stay in your audience memory and outshine competitors.',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 3,
-      tag: lang === 'pl' ? 'RUCH Z BOGATYCH RYNKÓW' : 'HIGH-VALUE US TRAFFIC',
-      metric: '2k USA',
-      title: lang === 'pl' ? 'Ponad 2 000 wyświetleń z rynku amerykańskiego.' : 'Over 2,000 targeted views from US market.',
+      tag: lang === 'pl' ? 'WPŁYW NA PRZYCHÓD' : 'REVENUE IMPACT',
+      metric: '+23%',
+      title: lang === 'pl' ? 'Średni wzrost przychodów.' : 'Average revenue increase.',
       description: lang === 'pl'
-        ? 'Strategia podstron /en i /de otwiera firmę na zlecenia oraz wysokie marże eksportowe z najbogatszych gospodarek świata.'
-        : 'Parallel multilanguage architecture (/en & /de) opens your brand to lucrative export leads and dollars from global economies.',
+        ? 'Łączymy pozycjonowanie SEO z psychologią konwersji, przekładając odwiedziny w internecie na realny zysk.'
+        : 'We combine SEO positioning with conversion psychology, turning online visits into bottom-line profits.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 4,
-      tag: lang === 'pl' ? 'CTR PODSTRON OFERTOWYCH' : 'LANDING PAGE CTR',
-      metric: '4.62%',
-      title: lang === 'pl' ? 'CTR 4,62% na kluczowych treściach komercyjnych.' : '4.62% click-through rate on landing pages.',
+      tag: lang === 'pl' ? 'RUCH ORGANICZNY' : 'ORGANIC TRAFFIC',
+      metric: '+310%',
+      title: lang === 'pl' ? 'Dynamiczny wzrost wartościowego ruchu.' : 'Dynamic high-intent traffic growth.',
       description: lang === 'pl'
-        ? 'Optymalizacja zaufania (UX/UI) sprawia, że klienci klikają dwa razy chętniej w ofertę niż wynosi średnia rynkowa konkurencji.'
-        : 'High-conversion UX/UI and strategic titles double average click-through rates compared to industry competitors.',
+        ? 'Optymalizujemy intencjonalne frazy komercyjne, dostarczając klientów z Google gotowych do zakupu.'
+        : 'We optimize targeted commercial keywords, driving buyers from Google ready to convert.',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 5,
-      tag: lang === 'pl' ? 'STRONA WWW ZA 0 ZŁ' : 'FREE CUSTOM WEBSITE',
-      metric: 'min. 3 mies.',
-      title: lang === 'pl' ? 'Darmowa strona WWW przy umowie na min. 3 miesiące.' : 'Free custom website with 3-mo min contract.',
+      tag: lang === 'pl' ? 'WYDAJNOŚĆ I UX' : 'PERFORMANCE & UX',
+      metric: '99/100',
+      title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google.' : 'Lightning performance & Google score.',
       description: lang === 'pl'
-        ? 'Dedykowany projekt UX/UI z darmowym wykonaniem w pakiecie (2 500 zł netto / 3 075 zł brutto), pełnym SEO i opieki SSL bez ukrytych opłat.'
-        : 'Bespoke UX/UI website created for free in the package (2,500 PLN net), bundled with complete technical SEO, Maps, and SSL hosting.',
+        ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum.'
+        : 'We eliminate delays, serving split-second pages that drastically reduce bounce rates.',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
