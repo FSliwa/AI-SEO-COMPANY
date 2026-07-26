@@ -287,11 +287,13 @@ export default function Portfolio() {
                     </motion.div>
 
                     {/* Bottom Header Text */}
-                    <div style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2 }}>
-                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '1.25rem' }}>
+                    <div style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2, position: 'relative' }}>
+                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
                         {item.id === 3 ? (lang === 'pl' ? '+8 113.8% Wzrost widoczności w Google w 3 miesiące.' : '+8 113.8% Organic Search Growth in 3 months.') : item.metricSubtitle}
                       </div>
-                      <div style={{ marginBottom: '0', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                      
+                      {/* Position the logo absolutely below the headline so the headline doesn't shift up */}
+                      <div style={{ position: 'absolute', bottom: '-2.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
                     </div>
