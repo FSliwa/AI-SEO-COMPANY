@@ -47,7 +47,7 @@ export default function Footer() {
             <div className="footer-col">
               <h4>{lang === 'pl' ? 'Kontakt' : 'Contact'}</h4>
               <ul className="footer-links">
-                <li><a href="mailto:kontakt@aiseocompany.com">kontakt@aiseocompany.com</a></li>
+                <li><a href="mailto:f.sliwa@ai-signals-company.pl">f.sliwa@ai-signals-company.pl</a></li>
                 <li><a href="#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</a></li>
                 <li><a href="#">Warszawa, Polska</a></li>
               </ul>

@@ -176,7 +176,7 @@ export default function Header() {
             <div className="kota-fullscreen-footer">
               <div className="footer-contact">
                 <span className="footer-label">{lang === 'pl' ? 'Napisz do nas' : 'Email Us'}</span>
-                <a href="mailto:kontakt@aiseocompany.com" className="footer-value">kontakt@aiseocompany.com</a>
+                <a href="mailto:f.sliwa@ai-signals-company.pl" className="footer-value">f.sliwa@ai-signals-company.pl</a>
               </div>
               <div className="footer-socials">
                 <span className="footer-label">Social Media</span>
