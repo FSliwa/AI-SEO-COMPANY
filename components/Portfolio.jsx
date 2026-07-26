@@ -21,6 +21,7 @@ const realizedWebsites = [
     metricSubtitle: 'increase in organic visits after 1 month.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
+    layout: 'center',
     rightVisual: 'single-large',
     largeImage: '/projects/madame-thai-full.png',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
@@ -186,63 +187,85 @@ export default function Portfolio() {
                 }}
               >
                 
-                <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', height: '100%' }}>
-                  
-                  {/* Left Content */}
-                  <div style={{ flex: '1 1 400px', maxWidth: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ marginBottom: '2rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
-                      {item.brandLogo}
-                    </div>
-                    
-                    <div style={{ marginBottom: '3rem' }}>
-                      <div style={{ 
-                        fontSize: 'clamp(4.5rem, 8vw, 7rem)', 
-                        fontWeight: 700, 
-                        lineHeight: 1, 
-                        letterSpacing: '-0.04em',
-                        color: '#FFFFFF', // Pure white, no gradient
-                        marginBottom: '1rem'
-                      }}>
-                        {item.metric}
+                {item.layout === 'center' ? (
+                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
+                    {/* Top Header Text (Centered like Apple Siri AI) */}
+                    <div style={{ maxWidth: '650px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
+                      <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                        {item.brandLogo}
                       </div>
-                      <div style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.6 }}>
-                        {item.metricSubtitle}
+                      <div style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+                        {item.metric} {item.metricSubtitle}
                       </div>
-                    </div>
-                    
-                    <div>
                       <button
                         className="btn btn-secondary"
-                        style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent', padding: '0.8rem 2rem', borderRadius: '50px' }}
+                        style={{ background: 'rgba(255,255,255,0.12)', color: '#FFF', borderColor: 'transparent', padding: '0.6rem 1.8rem', borderRadius: '50px', fontSize: '0.9rem' }}
                         onClick={() => setActiveModal(item)}
                       >
                         View Case Study
                       </button>
                     </div>
+
+                    {/* Centered 80% Width Image coming from bottom edge */}
+                    <motion.div 
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+                      style={{ 
+                        width: '80%', 
+                        height: '320px', 
+                        position: 'absolute',
+                        bottom: '-4rem', // Comes from bottom edge of card
+                        left: '10%', // 80% width centered (10% + 80% + 10%)
+                        borderTopLeftRadius: '24px', 
+                        borderTopRightRadius: '24px', 
+                        overflow: 'hidden', 
+                        boxShadow: '0 -20px 60px rgba(0,0,0,0.9)', 
+                        border: '1px solid rgba(255,255,255,0.18)',
+                        borderBottom: 'none',
+                        zIndex: 1
+                      }}
+                    >
+                      <img src={item.largeImage} alt={item.brandName} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                    </motion.div>
                   </div>
-                  
-                  {/* Right Visual (Mockups) */}
-                  <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', position: 'relative' }}>
-                    {item.rightVisual === 'single-large' ? (
-                      <motion.div 
-                        animate={{ y: [0, -10, 0] }}
-                        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-                        style={{ 
-                          width: 'calc(100% - 2rem)', 
-                          height: '380px', 
-                          position: 'absolute',
-                          bottom: '-4rem', // Coming up from bottom of card and cut off at bottom edge
-                          borderTopLeftRadius: '24px', 
-                          borderTopRightRadius: '24px', 
-                          overflow: 'hidden', 
-                          boxShadow: '0 -15px 50px rgba(0,0,0,0.8)', 
-                          border: '1px solid rgba(255,255,255,0.18)',
-                          borderBottom: 'none'
-                        }}
-                      >
-                        <img src={item.largeImage} alt={item.brandName} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
-                      </motion.div>
-                    ) : (
+                ) : (
+                  <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', height: '100%', width: '100%' }}>
+                    
+                    {/* Left Content */}
+                    <div style={{ flex: '1 1 400px', maxWidth: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                      <div style={{ marginBottom: '2rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                        {item.brandLogo}
+                      </div>
+                      
+                      <div style={{ marginBottom: '3rem' }}>
+                        <div style={{ 
+                          fontSize: 'clamp(4.5rem, 8vw, 7rem)', 
+                          fontWeight: 700, 
+                          lineHeight: 1, 
+                          letterSpacing: '-0.04em',
+                          color: '#FFFFFF', // Pure white, no gradient
+                          marginBottom: '1rem'
+                        }}>
+                          {item.metric}
+                        </div>
+                        <div style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.6 }}>
+                          {item.metricSubtitle}
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <button
+                          className="btn btn-secondary"
+                          style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent', padding: '0.8rem 2rem', borderRadius: '50px' }}
+                          onClick={() => setActiveModal(item)}
+                        >
+                          View Case Study
+                        </button>
+                      </div>
+                    </div>
+                    
+                    {/* Right Visual (Mockups) */}
+                    <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', position: 'relative' }}>
                       <motion.div 
                         animate={{ y: [0, -15, 0] }}
                         transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
@@ -275,25 +298,26 @@ export default function Portfolio() {
                             </div>
                          )}
                       </motion.div>
-                    )}
+                    </div>
                   </div>
-                </div>
+                )}
               </RevealItem>
             ))}
           </RevealStagger>
           
-          {/* Pagination Dots (Apple Style) */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginTop: '2rem' }}>
-            <div style={{ display: 'flex', gap: '12px', padding: '10px 16px', background: 'rgba(0, 0, 0, 0.05)', borderRadius: '30px', alignItems: 'center', border: '1px solid rgba(0, 0, 0, 0.04)' }}>
+          {/* Pagination Controls (1:1 Apple Style) */}
+          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2rem' }}>
+            {/* Dots Pill Container */}
+            <div style={{ display: 'flex', gap: '10px', padding: '10px 18px', background: 'rgba(0, 0, 0, 0.06)', borderRadius: '30px', alignItems: 'center' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
                   style={{
-                    width: activeIndex === idx ? '40px' : '8px',
-                    height: '8px',
-                    borderRadius: '4px',
-                    background: activeIndex === idx ? '#1D1D1F' : '#D2D2D7',
+                    width: activeIndex === idx ? '36px' : '6px',
+                    height: '6px',
+                    borderRadius: activeIndex === idx ? '3px' : '50%',
+                    background: activeIndex === idx ? '#1D1D1F' : '#86868B',
                     border: 'none',
                     padding: 0,
                     cursor: 'pointer',
@@ -302,27 +326,25 @@ export default function Portfolio() {
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
-              
-              {/* Apple Play Icon Button */}
-              <button style={{ 
-                background: '#FFFFFF', 
-                border: '1px solid #D2D2D7', 
-                borderRadius: '50%', 
-                width: '22px', 
-                height: '22px', 
-                cursor: 'pointer', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                marginLeft: '4px',
-                padding: '0',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.08)'
-              }}>
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </button>
             </div>
+
+            {/* Standalone Apple Play Icon Circle Button */}
+            <button style={{ 
+              background: 'rgba(0, 0, 0, 0.06)', 
+              border: 'none', 
+              borderRadius: '50%', 
+              width: '28px', 
+              height: '28px', 
+              cursor: 'pointer', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              padding: '0'
+            }}>
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
           </Reveal>
 
         </div>
