@@ -24,39 +24,42 @@ export default function Hero() {
       <div className="hero-overlay"></div>
 
       {/* Full-Viewport Title — staggered like KOTA */}
-      <div style={{ position: 'absolute', top: '22%', left: '0', width: '100%', zIndex: 4, padding: '0 max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))', display: 'flex', flexDirection: 'column', gap: '0.5vw' }}>
+      <div style={{ position: 'absolute', top: '22%', left: '0', width: '100%', zIndex: 4, padding: '0 max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))', display: 'flex', flexDirection: 'column', gap: '1vh' }}>
         <span style={{ 
-          fontSize: 'clamp(5rem, 15vw, 17rem)', 
+          fontSize: 'clamp(4rem, 12vw, 14rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 1.05, 
+          lineHeight: 1, 
           letterSpacing: '-0.04em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
-          paddingLeft: '0'
+          alignSelf: 'flex-start',
+          whiteSpace: 'nowrap'
         }}>
           SEO i
         </span>
         <span style={{ 
-          fontSize: 'clamp(3.5rem, 9.5vw, 11rem)', 
+          fontSize: 'clamp(2.5rem, 7vw, 8rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 1.05, 
+          lineHeight: 1, 
           letterSpacing: '-0.04em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
-          paddingLeft: '25vw'
+          alignSelf: 'flex-end',
+          whiteSpace: 'nowrap'
         }}>
           strony internetowe
         </span>
         <span className="highlight" style={{ 
-          fontSize: 'clamp(3.5rem, 10vw, 11.5rem)', 
+          fontSize: 'clamp(2rem, 5.5vw, 6.5rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 1.05, 
+          lineHeight: 1, 
           letterSpacing: '-0.04em', 
           textTransform: 'lowercase',
-          paddingLeft: '8vw'
+          marginLeft: '5vw',
+          whiteSpace: 'nowrap'
         }}>
           które budują sprzedaż
         </span>
