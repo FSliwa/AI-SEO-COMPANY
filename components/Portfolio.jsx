@@ -6,13 +6,9 @@ import { useLanguage } from '@/lib/LanguageContext';
 const realizedWebsites = [
   {
     id: 1,
-    brandName: 'ISI GLOBAL / MADAMe THAI',
+    brandName: 'MADAME THAI',
     brandLogo: (
-      <svg width="140" height="32" viewBox="0 0 160 36" fill="none">
-        <path d="M8 18C8 12.5 12.5 8 18 8C23.5 8 28 12.5 28 18C28 23.5 23.5 28 18 28" stroke="#38BDF8" strokeWidth="3" strokeLinecap="round"/>
-        <path d="M18 18C18 12.5 22.5 8 28 8C33.5 8 38 12.5 38 18" stroke="#A855F7" strokeWidth="3" strokeLinecap="round"/>
-        <text x="48" y="25" fill="#0F172A" fontSize="18" fontWeight="800" fontFamily="Inter, sans-serif" letterSpacing="2">ISI GLOBAL</text>
-      </svg>
+      <img src="/logos/madame-thai.png" alt="Madame Thai" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
     ),
     url: 'https://mada-me-thai-brown.vercel.app/',
     category: 'web',
@@ -23,24 +19,24 @@ const realizedWebsites = [
     rightVisual: 'phones',
     screens: [
       {
-        title: 'Senior 3D Retail',
-        subtitle: 'London, UK',
-        tag: 'CAREERS',
+        title: 'Authentic Thai',
+        subtitle: 'Restaurant Experience',
+        tag: 'GASTRONOMY',
         image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-18px)'
       },
       {
-        title: 'Shaping the future',
-        subtitle: 'Retail Experience',
-        tag: 'OUR EXPERTISE',
+        title: 'Seamless Booking',
+        subtitle: 'High Conversion UI',
+        tag: 'UX/UI DESIGN',
         image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(16px)',
         highlight: true
       },
       {
-        title: 'Empower creativity',
-        subtitle: 'Brand Strategy 2026',
-        tag: 'CULTURE',
+        title: 'Brand Strategy',
+        subtitle: 'Digital Transformation',
+        tag: 'WEB DEV',
         image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-6px)'
       }
@@ -53,27 +49,23 @@ const realizedWebsites = [
   },
   {
     id: 2,
-    brandName: 'WOGAN / STANIAX',
+    brandName: 'STANIAX',
     brandLogo: (
-      <svg width="140" height="36" viewBox="0 0 160 40" fill="none">
-        <path d="M18 10C14 10 10 14 10 18C10 22 14 26 18 26C22 26 26 22 26 18" stroke="#0F172A" strokeWidth="3" strokeLinecap="round"/>
-        <path d="M14 12L22 24" stroke="#0F172A" strokeWidth="2.5"/>
-        <text x="36" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Inter, sans-serif" letterSpacing="3">WOGAN</text>
-      </svg>
+      <img src="/logos/staniax.png" alt="Staniax" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
     ),
     url: 'https://www.staniax.pl/',
     category: 'seo',
-    metric: '83.14%',
-    metricSubtitle: 'increase in sales after 1 year.',
+    metric: '2.8k+',
+    metricSubtitle: 'organic search impressions from zero visibility.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.15) 0%, rgba(52, 211, 153, 0.1) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'desktop',
     desktopCard: {
-      tag: 'BRANDING & E-COMMERCE',
-      title: 'GREAT COFFEE DOESN\'T HAVE TO COST THE EARTH',
-      subtitle: 'Since 1970, our family has been on a mission to provide sustainable and ethical specialty coffee.',
+      tag: 'B2B INDUSTRY & SEO',
+      title: 'METALIZACJA PRÓŻNIOWA & LAKIEROWANIE UV',
+      subtitle: 'Skalowanie biznesu B2B na rynki zagraniczne (Niemcy, USA) dzięki nowej architekturze informacji i SEO.',
       image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
-      btnText: 'Shop Now'
+      btnText: 'View Case Study'
     },
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
 - Start od zerowej widoczności → 2,8 tys. wyświetleń i gwałtowny skokowy wzrost do ok. 100 wyświetleń dziennie.
@@ -82,40 +74,37 @@ const realizedWebsites = [
   },
   {
     id: 3,
-    brandName: 'PISON / ASE-BOT',
+    brandName: 'ASE-BOT',
     brandLogo: (
-      <svg width="130" height="34" viewBox="0 0 150 40" fill="none">
-        <path d="M12 8L28 20L12 32V8Z" stroke="#38BDF8" strokeWidth="3" strokeLinejoin="round"/>
-        <text x="38" y="27" fill="#0F172A" fontSize="20" fontWeight="800" fontFamily="Inter, sans-serif" letterSpacing="3">PISON</text>
-      </svg>
+      <img src="/logos/ase-bot.png" alt="ASE-BOT" style={{ height: '36px', width: 'auto', objectFit: 'contain', filter: 'invert(1)' }} />
     ),
     url: 'https://ase-bot.live/',
     category: 'seo',
-    metric: '67.6%',
-    metricSubtitle: 'rise in engaged sessions per user after 1 month.',
+    metric: '+8 113.8%',
+    metricSubtitle: 'Organic Google Search Growth',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.15) 0%, rgba(56, 189, 248, 0.12) 40%, rgba(255, 255, 255, 1) 75%)',
     rightVisual: 'phones',
     screens: [
       {
-        title: 'PISON READY',
-        subtitle: 'Measure your ability',
-        tag: 'APP READY',
+        title: 'AI Futures Trading',
+        subtitle: 'Global Market Leader',
+        tag: 'FINTECH',
         image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-22px)'
       },
       {
-        title: 'Unlock your mind.',
-        subtitle: 'Unleash your potential.',
-        tag: 'OUR EXPERTISE',
+        title: 'Unlock 4.8k impressions',
+        subtitle: 'per quarter from zero',
+        tag: 'SEO GROWTH',
         image: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(12px)',
         highlight: true
       },
       {
-        title: 'Coming to your',
-        subtitle: 'Favorite Devices',
-        tag: 'ECOSYSTEM',
+        title: 'Global CTR 4.62%',
+        subtitle: 'On commercial keywords',
+        tag: 'CONVERSION',
         image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
         transform: 'translateY(-12px)'
       }
