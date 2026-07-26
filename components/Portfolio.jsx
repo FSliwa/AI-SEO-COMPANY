@@ -262,7 +262,7 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Image flush with top, right and bottom card edges, 52% width, rounded left corners */}
+                    {/* Image anchored flush right, 80% height, rounded left corners */}
                     <motion.div 
                       animate={{ scale: [1, 1.008, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
@@ -270,12 +270,10 @@ export default function Portfolio() {
                         position: 'absolute',
                         right: '-3.5rem', 
                         bottom: '-4rem',
-                        top: '-4rem',
-                        height: 'calc(100% + 8rem)', 
+                        height: '80%', 
                         width: 'calc(52% + 3.5rem)',
                         borderTopLeftRadius: '28px',
                         borderBottomLeftRadius: '28px',
-                        borderTopRightRadius: '36px',
                         borderBottomRightRadius: '36px',
                         overflow: 'hidden',
                         boxShadow: '-15px 0 40px rgba(0,0,0,0.5)',
