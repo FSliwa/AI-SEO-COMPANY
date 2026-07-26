@@ -1,80 +1,123 @@
+'use client';
+
+import { useLanguage } from '@/lib/LanguageContext';
+import { translations } from '@/lib/translations';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function Pricing() {
+  const { lang } = useLanguage();
+  const t = translations[lang].pricing;
+
   return (
     <section className="pricing" id="cennik">
       <div className="container">
         <Reveal className="section-header">
-          <div className="section-tag">Cennik Usług</div>
-          <h2>Przejrzyste pakiety bez ukrytych kosztów</h2>
-          <p>Wybierz elastyczną subskrypcję miesięczną lub skorzystaj z pakietu z darmową stroną internetową.</p>
+          <div className="section-tag">{t.tag}</div>
+          <h2>{t.title}</h2>
+          <p>{t.subtitle}</p>
         </Reveal>
 
         <RevealStagger className="pricing-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
           {/* Package 1 */}
           <RevealItem className="pricing-card">
             <div className="pricing-header">
-              <h3>SEO Standard</h3>
-              <p className="pricing-desc">Elastyczny pakiet pozycjonowania i optymalizacji dla rozwijających się firm.</p>
+              <h3>{t.standardTitle}</h3>
+              <p className="pricing-desc">{t.standardDesc}</p>
               <div className="pricing-price">
-                <div className="price-label">Subskrypcja miesięczna</div>
-                <div className="price-amount">1 900 zł <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>netto / mies.</span></div>
+                <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
+                <div className="price-amount">{t.standardPrice} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t.standardPeriod}</span></div>
               </div>
             </div>
             <ul className="pricing-features">
-              <li>Kompleksowy audyt SEO i analiza konkurencji</li>
-              <li>Podstawowa optymalizacja techniczna strony</li>
-              <li>Optymalizacja Wizytówki Google (Profil Firmy)</li>
-              <li>Comiesięczny raport pozycji i ruchu</li>
-              <li>Możliwość rezygnacji w każdej chwili</li>
+              {lang === 'pl' ? (
+                <>
+                  <li>Kompleksowy audyt SEO i analiza konkurencji</li>
+                  <li>Podstawowa optymalizacja techniczna strony</li>
+                  <li>Optymalizacja Wizytówki Google (Profil Firmy)</li>
+                  <li>Comiesięczny raport pozycji i ruchu</li>
+                  <li>Możliwość rezygnacji w każdej chwili</li>
+                </>
+              ) : (
+                <>
+                  <li>Comprehensive SEO audit & competitor analysis</li>
+                  <li>Core technical website optimization</li>
+                  <li>Google Business Profile optimization</li>
+                  <li>Monthly keyword ranking & traffic reports</li>
+                  <li>Cancel anytime flexible policy</li>
+                </>
+              )}
             </ul>
-            <a href="#kontakt" className="btn btn-secondary">Wybierz pakiet</a>
+            <a href="#kontakt" className="btn btn-secondary">{t.btnChoose}</a>
           </RevealItem>
 
           {/* Package 2 */}
           <RevealItem className="pricing-card">
             <div className="pricing-header">
-              <h3>SEO Premium</h3>
-              <p className="pricing-desc">Maksymalny wzrost widoczności i pozycji w Google dla wymagających branż.</p>
+              <h3>{t.premiumTitle}</h3>
+              <p className="pricing-desc">{t.premiumDesc}</p>
               <div className="pricing-price">
-                <div className="price-label">Subskrypcja miesięczna</div>
-                <div className="price-amount">2 500 zł <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>netto / mies.</span></div>
+                <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
+                <div className="price-amount">{t.premiumPrice} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t.premiumPeriod}</span></div>
               </div>
             </div>
             <ul className="pricing-features">
-              <li>Pełne pozycjonowanie techniczne i treściowe</li>
-              <li>Wzmocniony profil mobilny (wzrost CTR z telefonów)</li>
-              <li>Prowadzenie Wizytówki Google (walka o TOP 3 Map)</li>
-              <li>Strategia link buildingu i rozbudowa artykułów</li>
-              <li>Możliwość rezygnacji w każdej chwili</li>
+              {lang === 'pl' ? (
+                <>
+                  <li>Pełne pozycjonowanie techniczne i treściowe</li>
+                  <li>Wzmocniony profil mobilny (wzrost CTR z telefonów)</li>
+                  <li>Prowadzenie Wizytówki Google (walka o TOP 3 Map)</li>
+                  <li>Strategia link buildingu i rozbudowa artykułów</li>
+                  <li>Możliwość rezygnacji w każdej chwili</li>
+                </>
+              ) : (
+                <>
+                  <li>Full technical & content SEO positioning</li>
+                  <li>Enhanced mobile UX (mobile CTR optimization)</li>
+                  <li>Google Maps TOP 3 ranking management</li>
+                  <li>High-authority link building & expert content</li>
+                  <li>Cancel anytime flexible policy</li>
+                </>
+              )}
             </ul>
-            <a href="#kontakt" className="btn btn-secondary">Wybierz pakiet</a>
+            <a href="#kontakt" className="btn btn-secondary">{t.btnChoose}</a>
           </RevealItem>
 
           {/* Package 3 (Featured Booster Pack) */}
           <RevealItem className="pricing-card featured">
             <div className="pricing-header">
-              <h3>Booster Pack</h3>
-              <p className="pricing-desc">Strona internetowa za DARMO + pełna obsługa SEO i opieka techniczna.</p>
+              <h3>{t.boosterTitle}</h3>
+              <p className="pricing-desc">{t.boosterDesc}</p>
               <div className="pricing-price">
-                <div className="price-label" style={{ color: 'var(--color-cta)', fontWeight: '700' }}>Umowa min. 3 miesiące</div>
-                <div className="price-amount">2 500 zł <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>netto / mies.</span></div>
+                <div className="price-label" style={{ color: 'var(--color-cta)', fontWeight: '700' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące' : 'Min. 3-month contract'}</div>
+                <div className="price-amount">{t.boosterPrice} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t.boosterPeriod}</span></div>
               </div>
             </div>
             <ul className="pricing-features">
-              <li><strong style={{ color: 'var(--color-growth)' }}>NOWA STRONA WWW ZA 0 ZŁ W PAKIECIE</strong></li>
-              <li>Indywidualny projekt graficzny UX/UI (RWD)</li>
-              <li>Pełne pozycjonowanie SEO i audyt konkurencji</li>
-              <li>Optymalizacja i publikacje w Wizytówce Google</li>
-              <li>Certyfikat SSL, serwer i opieka techniczna</li>
-              <li>Brak jakichkolwiek dodatkowych ukrytych opłat</li>
+              <li><strong style={{ color: 'var(--color-growth)' }}>{t.boosterBadge}</strong></li>
+              {lang === 'pl' ? (
+                <>
+                  <li>Indywidualny projekt graficzny UX/UI (RWD)</li>
+                  <li>Pełne pozycjonowanie SEO i audyt konkurencji</li>
+                  <li>Optymalizacja i publikacje w Wizytówce Google</li>
+                  <li>Certyfikat SSL, serwer i opieka techniczna</li>
+                  <li>Brak jakichkolwiek dodatkowych ukrytych opłat</li>
+                </>
+              ) : (
+                <>
+                  <li>Bespoke responsive UX/UI website design</li>
+                  <li>Complete technical & content SEO suite</li>
+                  <li>Google Maps optimization & weekly updates</li>
+                  <li>SSL certificate, hosting & ongoing maintenance</li>
+                  <li>No hidden setup or maintenance fees</li>
+                </>
+              )}
             </ul>
-            <a href="#kontakt" className="btn btn-primary">Zamów Booster Pack</a>
+            <a href="#kontakt" className="btn btn-primary">{lang === 'pl' ? 'Zamów Booster Pack' : 'Get Booster Pack'}</a>
           </RevealItem>
         </RevealStagger>
 
         <Reveal className="pricing-note">
-          <strong>Subskrypcja czy Booster Pack?</strong> W pakietach SEO Standard (1 900 zł netto) oraz SEO Premium (2 500 zł netto) korzystasz z <strong>miesięcznej subskrypcji z opcją rezygnacji w dowolnym momencie</strong>. Wybierając pakiet <strong>Booster Pack</strong> (2 500 zł netto przy umowie na min. 3 miesiące), otrzymujesz <strong>nową, w pełni responsywną stronę internetową całkowicie za darmo</strong>!
+          {t.note}
         </Reveal>
       </div>
     </section>

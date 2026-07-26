@@ -157,13 +157,13 @@ export default function Portfolio() {
         {/* Top Header Row */}
         <Reveal className="section-header center" style={{ marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> OUR RESULTS
+            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZE WYNIKI' : 'OUR RESULTS'}
           </div>
           <h2 style={{ color: '#1D1D1F', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
-            {lang === 'pl' ? 'Explore what’s new for our clients.' : 'Explore what’s new for our clients.'}
+            {lang === 'pl' ? 'Odkryj nowości naszych klientów.' : 'Explore what’s new for our clients.'}
           </h2>
           <p style={{ color: '#6E6E73', fontSize: '1.25rem', fontWeight: 500 }}>
-            {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Analytics-backed growth metrics across our client case studies.'}
+            {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}
           </p>
         </Reveal>
       </div>
@@ -218,7 +218,7 @@ export default function Portfolio() {
                         {item.brandLogo}
                       </div>
                       <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
-                        {item.metric} {item.metricSubtitle}
+                        {item.metric} {lang === 'pl' ? 'wzrostu odwiedzin organicznych po 1 miesiącu.' : 'increase in organic visits after 1 month.'}
                       </div>
                     </div>
 
@@ -271,7 +271,7 @@ export default function Portfolio() {
                         letterSpacing: '-0.035em', 
                         lineHeight: 1.18 
                       }}>
-                        2.8k+ organic search impressions from zero visibility.
+                        {lang === 'pl' ? '2.8k+ wyświetleń w wyszukiwarce od zerowej widoczności.' : '2.8k+ organic search impressions from zero visibility.'}
                       </div>
                     </div>
 
@@ -328,7 +328,7 @@ export default function Portfolio() {
                           {item.metric}
                         </div>
                         <div style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.6 }}>
-                          {item.metricSubtitle}
+                          {lang === 'pl' ? 'Wzrost organiczny w Google' : item.metricSubtitle}
                         </div>
                       </div>
                       
@@ -338,7 +338,7 @@ export default function Portfolio() {
                           style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent', padding: '0.8rem 2rem', borderRadius: '50px' }}
                           onClick={() => setActiveModal(item)}
                         >
-                          View Case Study
+                          {lang === 'pl' ? 'Zobacz Case Study' : 'View Case Study'}
                         </button>
                       </div>
                     </div>

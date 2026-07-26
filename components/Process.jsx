@@ -1,14 +1,24 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useLanguage } from '@/lib/LanguageContext';
+import { translations } from '@/lib/translations';
 
 export default function Process() {
   const [activeTab, setActiveTab] = useState(0);
   const [activeStep, setActiveStep] = useState(3); // Default step 4 (UX & UI Design)
   const [rotation, setRotation] = useState(0);
   const sectionRef = useRef(null);
+  const { lang } = useLanguage();
+  const t = translations[lang].process;
 
-  const tabs = [
+  const tabs = lang === 'pl' ? [
+    'Najpierw strategia. Zawsze.',
+    'Znajdź odważną koncepcję',
+    'Dopracuj proces',
+    'Twórz pod konwersję',
+    'Buduj ze skalą'
+  ] : [
     'Strategy first. Always.',
     'Find the bold idea',
     'Nail the process',
@@ -16,13 +26,20 @@ export default function Process() {
     'Build for scale'
   ];
 
-  const steps = [
+  const steps = lang === 'pl' ? [
     { num: '1', title: 'Odkrycie & Strategia', desc: 'Badamy grupę docelową, konkurencję i kluczowe frazy SEO.' },
     { num: '2', title: 'Kierunek Kreatywny', desc: 'Projektujemy moodboardy i unikalny ton komunikacji marki.' },
-    { num: '3', title: 'Identyfikacja Visual', desc: 'Tworzymy nowoczesne logo, paletę barw i system wizualny.' },
+    { num: '3', title: 'Identyfikacja Wizualna', desc: 'Tworzymy nowoczesne logo, paletę barw i system wizualny.' },
     { num: '4', title: 'UX & UI Design', desc: 'Projektujemy makiety ukierunkowane na maksymalną konwersję.', highlight: true },
     { num: '5', title: 'Wdrożenie w Next.js', desc: 'Kodujemy w ultrawydajnym Next.js z dbałością o Core Web Vitals.' },
-    { num: '6', title: 'Launch & Wsparcie', desc: 'Uruchamiamy serwis, weryfikujemy w Google i zapewniamy stałe wsparcie.' },
+    { num: '6', title: 'Start & Wsparcie', desc: 'Uruchamiamy serwis, weryfikujemy w Google i zapewniamy stałe wsparcie.' },
+  ] : [
+    { num: '1', title: 'Discovery & Strategy', desc: 'We research target audiences, competitors, and core SEO queries.' },
+    { num: '2', title: 'Creative Direction', desc: 'We craft moodboards and a distinctive brand communication tone.' },
+    { num: '3', title: 'Visual Identity', desc: 'We craft modern logos, color palettes, and visual design systems.' },
+    { num: '4', title: 'UX & UI Design', desc: 'We design high-conversion mockups tailored for sales momentum.', highlight: true },
+    { num: '5', title: 'Next.js Development', desc: 'We code ultra-fast Next.js apps optimized for Core Web Vitals.' },
+    { num: '6', title: 'Launch & Support', desc: 'We launch your site, verify in Google, and provide ongoing support.' },
   ];
 
   useEffect(() => {
@@ -48,10 +65,10 @@ export default function Process() {
       <div className="container">
         <div className="section-header center">
           <div className="section-tag">
-            <span className="asterisk">✳</span> FRAMEWORK
+            <span className="asterisk">✳</span> {t.tag}
           </div>
-          <h2>Our brand-to-build framework</h2>
-          <p>Przekształcamy tożsamość marki w profesjonalne doświadczenie cyfrowe z przemyślaną strukturą konwersji.</p>
+          <h2>{t.title}</h2>
+          <p>{t.subtitle}</p>
         </div>
 
         {/* KOTA Framework Tabs */}

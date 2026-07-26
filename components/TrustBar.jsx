@@ -1,4 +1,9 @@
+'use client';
+
+import { useLanguage } from '@/lib/LanguageContext';
+
 export default function TrustBar() {
+  const { lang } = useLanguage();
   const partners = [
     { 
       name: 'STANIAX', 
@@ -64,7 +69,7 @@ export default function TrustBar() {
       `}</style>
       <div className="container">
         <div className="trust-title">
-          <span style={{ fontSize: '1.2rem' }}>✳</span> Our Clients & Partners
+          <span style={{ fontSize: '1.2rem' }}>✳</span> {lang === 'pl' ? 'Nasi Klienci & Partnerzy' : 'Our Clients & Partners'}
         </div>
         <div className="trust-marquee-wrapper">
           <div className="trust-marquee-track">

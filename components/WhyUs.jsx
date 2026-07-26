@@ -2,53 +2,65 @@
 
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/lib/LanguageContext';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
-
-const whyUsCards = [
-  {
-    id: 1,
-    tag: 'TRUST & CONVERSION',
-    metric: '81%',
-    title: 'Zaufanie klientów przed zakupem.',
-    description: 'Projektujemy przemyślane interfejsy UX/UI i ścieżki zakupowe, które budują pełną wiarygodność marki od pierwszego kliknięcia.',
-    bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
-  },
-  {
-    id: 2,
-    tag: 'BRAND RECOGNITION',
-    metric: '+80%',
-    title: 'Wzrost rozpoznawalności marki.',
-    description: 'Kreujemy spójny system wizualny i nowoczesny design, który zapada w pamięć odbiorców i wyróżnia Twoją firmę na tle konkurencji.',
-    bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
-  },
-  {
-    id: 3,
-    tag: 'REVENUE IMPACT',
-    metric: '+23%',
-    title: 'Średni wzrost przychodów.',
-    description: 'Łączymy analitykę, optymalizację pod kątem wyszukiwarek (SEO) i psychologię konwersji, przekładając ruch w internecie na realne zyski.',
-    bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
-  },
-  {
-    id: 4,
-    tag: 'ORGANIC TRAFFIC',
-    metric: '+310%',
-    title: 'Dynamiczny wzrost ruchu organicznego.',
-    description: 'Optymalizujemy strukturę serwisu i intencjonalne słowa kluczowe, dostarczając wartościowych odbiorców gotowych do zakupu.',
-    bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
-  },
-  {
-    id: 5,
-    tag: 'PERFORMANCE & UX',
-    metric: '99/100',
-    title: 'Błyskawiczna wydajność i ocena Google.',
-    description: 'Eliminujemy opóźnienia i błędy UX, dostarczając strony ładujące się w ułamku sekundy, co drastycznie obniża wskaźnik odrzuceń.',
-    bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
-  }
-];
 
 export default function WhyUs() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { lang } = useLanguage();
+
+  const whyUsCards = [
+    {
+      id: 1,
+      tag: lang === 'pl' ? 'ZAUFANIE I KONWERSJA' : 'TRUST & CONVERSION',
+      metric: '81%',
+      title: lang === 'pl' ? 'Zaufanie klientów przed zakupem.' : 'Client trust before purchase.',
+      description: lang === 'pl' 
+        ? 'Projektujemy przemyślane interfejsy UX/UI i ścieżki zakupowe, które budują pełną wiarygodność marki od pierwszego kliknięcia.'
+        : 'We design intuitive UX/UI interfaces and conversion paths that establish complete brand credibility from the first click.',
+      bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
+    },
+    {
+      id: 2,
+      tag: lang === 'pl' ? 'ROZPOZNAWALNOŚĆ MARKI' : 'BRAND RECOGNITION',
+      metric: '+80%',
+      title: lang === 'pl' ? 'Wzrost rozpoznawalności marki.' : 'Significant brand recall boost.',
+      description: lang === 'pl'
+        ? 'Kreujemy spójny system wizualny i nowoczesny design, który zapada w pamięć odbiorców i wyróżnia Twoją firmę na tle konkurencji.'
+        : 'We build cohesive visual systems and modern aesthetics that stay in your audience memory and outshine competitors.',
+      bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
+    },
+    {
+      id: 3,
+      tag: lang === 'pl' ? 'WPŁYW NA PRZYCHÓD' : 'REVENUE IMPACT',
+      metric: '+23%',
+      title: lang === 'pl' ? 'Średni wzrost przychodów.' : 'Average revenue increase.',
+      description: lang === 'pl'
+        ? 'Łączymy analitykę, optymalizację pod kątem wyszukiwarek (SEO) i psychologię konwersji, przekładając ruch w internecie na realne zyski.'
+        : 'We combine analytics, search engine optimization (SEO), and conversion psychology to turn traffic into revenue.',
+      bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
+    },
+    {
+      id: 4,
+      tag: lang === 'pl' ? 'RUCH ORGANICZNY' : 'ORGANIC TRAFFIC',
+      metric: '+310%',
+      title: lang === 'pl' ? 'Dynamiczny wzrost ruchu organicznego.' : 'Dynamic organic traffic growth.',
+      description: lang === 'pl'
+        ? 'Optymalizujemy strukturę serwisu i intencjonalne słowa kluczowe, dostarczając wartościowych odbiorców gotowych do zakupu.'
+        : 'We optimize site structure and targeted commercial keywords, driving high-intent buyers ready to convert.',
+      bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
+    },
+    {
+      id: 5,
+      tag: lang === 'pl' ? 'WYDAJNOŚĆ I UX' : 'PERFORMANCE & UX',
+      metric: '99/100',
+      title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google.' : 'Lightning performance & Google score.',
+      description: lang === 'pl'
+        ? 'Eliminujemy opóźnienia i błędy UX, dostarczając strony ładujące się w ułamku sekundy, co drastycznie obniża wskaźnik odrzuceń.'
+        : 'We eliminate load delays and UX bottlenecks, serving split-second pages that drastically reduce bounce rates.',
+      bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
+    }
+  ];
 
   const handleScroll = (e) => {
     const container = e.target;
@@ -109,13 +121,13 @@ export default function WhyUs() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '2rem' }}>
           <Reveal className="section-header" style={{ maxWidth: '720px', margin: 0 }}>
             <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', fontWeight: 600 }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> WHY US
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'DLACZEGO MY' : 'WHY US'}
             </div>
             <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
-              Result driven projects, with a focus on design and functionality
+              {lang === 'pl' ? 'Projekty nastawione na wyniki, z naciskiem na design i funkcjonalność' : 'Result driven projects, with a focus on design and functionality'}
             </h2>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
-              Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych.
+              {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych.' : 'We craft digital solutions backed by hard analytics and buyer psychology.'}
             </p>
           </Reveal>
 

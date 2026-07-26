@@ -1,14 +1,21 @@
+'use client';
+
+import { useLanguage } from '@/lib/LanguageContext';
+import { translations } from '@/lib/translations';
 import { Reveal } from './ScrollReveal';
 
 export default function Testimonials() {
+  const { lang } = useLanguage();
+  const t = translations[lang].testimonials;
+
   return (
     <section className="testimonials">
       <div className="container">
         <Reveal className="section-header center">
           <div className="section-tag">
-            <span className="asterisk">✳</span> Testimonials
+            <span className="asterisk">✳</span> {t.tag}
           </div>
-          <h2>Experiences & Rekomendacje</h2>
+          <h2>{t.title}</h2>
         </Reveal>
 
         {/* VIS Screenshot 5 Testimonial Experience Card */}
@@ -17,7 +24,10 @@ export default function Testimonials() {
             ★★★★★
           </div>
           <p className="testimonial-quote">
-            „AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł o 104% w zaledwie 3 miesiące, a klienci zachwycają się nowoczesną estetyką.”
+            {lang === 'pl' 
+              ? '„AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł o 104% w zaledwie 3 miesiące, a klienci zachwycają się nowoczesną estetyką.”'
+              : '“AI SEO COMPANY executed a full rebrand of our B2B platform and web deployment. The results blew away our expectations — organic traffic skyrocketed by 104% in just 3 months, and clients love our modern aesthetics.”'
+            }
           </p>
           <div className="testimonial-author">
             <div className="author-avatar">MK</div>

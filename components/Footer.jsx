@@ -1,9 +1,18 @@
+'use client';
+
+import { useLanguage } from '@/lib/LanguageContext';
+import { translations } from '@/lib/translations';
+
 export default function Footer() {
+  const { lang } = useLanguage();
+  const t = translations[lang].footer;
+  const nav = translations[lang].nav;
+
   return (
     <>
       {/* KOTA Sticky / Floating Action Pill Button (Bottom Right) */}
       <a href="#kontakt" className="kota-floating-cta">
-        Start your project →
+        {lang === 'pl' ? 'Wyceń projekt →' : 'Start your project →'}
       </a>
 
       <footer className="footer">
@@ -14,38 +23,38 @@ export default function Footer() {
                 AI SEO COMPANY
               </a>
               <p style={{ fontSize: '0.9rem', maxWidth: '320px', color: '#94A3B8' }}>
-                Butikowa agencja brandingu, web designu i optymalizacji SEO. Tworzymy marki i serwisy w Next.js, które przyciągają klientów.
+                {t.desc}
               </p>
             </div>
             <div className="footer-col">
-              <h4>Nawigacja</h4>
+              <h4>{lang === 'pl' ? 'Nawigacja' : 'Navigation'}</h4>
               <ul className="footer-links">
-                <li><a href="#uslugi">Usługi</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#cennik">Cennik</a></li>
-                <li><a href="#proces">Proces</a></li>
+                <li><a href="#uslugi">{nav.services}</a></li>
+                <li><a href="#portfolio">{nav.portfolio}</a></li>
+                <li><a href="#cennik">{nav.pricing}</a></li>
+                <li><a href="#proces">{nav.process}</a></li>
               </ul>
             </div>
             <div className="footer-col">
-              <h4>Usługi</h4>
+              <h4>{lang === 'pl' ? 'Usługi' : 'Services'}</h4>
               <ul className="footer-links">
-                <li><a href="#uslugi">Strona WWW za 0 zł</a></li>
-                <li><a href="#cennik">SEO Standard (1 900 zł netto)</a></li>
-                <li><a href="#cennik">SEO Premium (2 500 zł netto)</a></li>
-                <li><a href="#cennik">Booster Pack (2 500 zł netto)</a></li>
+                <li><a href="#cennik">{lang === 'pl' ? 'Strona WWW za 0 zł' : 'Free Website Package'}</a></li>
+                <li><a href="#cennik">SEO Standard</a></li>
+                <li><a href="#cennik">SEO Premium</a></li>
+                <li><a href="#cennik">Booster Pack</a></li>
               </ul>
             </div>
             <div className="footer-col">
-              <h4>Kontakt</h4>
+              <h4>{lang === 'pl' ? 'Kontakt' : 'Contact'}</h4>
               <ul className="footer-links">
-                <li><a href="mailto:kontakt@ase-bot.live">kontakt@ase-bot.live</a></li>
-                <li><a href="#kontakt">Formularz Wyceny</a></li>
+                <li><a href="mailto:kontakt@aiseocompany.com">kontakt@aiseocompany.com</a></li>
+                <li><a href="#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</a></li>
                 <li><a href="#">Warszawa, Polska</a></li>
               </ul>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2026 AI SEO COMPANY. Wszelkie prawa zastrzeżone. Inspired by VIS & KOTA.</p>
+            <p>{t.rights}</p>
           </div>
         </div>
       </footer>
