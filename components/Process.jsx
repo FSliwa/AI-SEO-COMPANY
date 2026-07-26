@@ -72,7 +72,7 @@ export default function Process() {
           {/* Ambient Background Glow */}
           <div className="process-ambient-glow"></div>
 
-          {/* Center Circle Ring Line (68% diameter) */}
+          {/* Center Circle Ring Line (82% diameter) */}
           <div 
             className="process-circle-ring"
             style={{ transform: `rotate(${rotation}deg)` }}
@@ -107,8 +107,8 @@ export default function Process() {
               const angleDeg = idx * 60 - 90;
               const angleRad = (angleDeg * Math.PI) / 180;
               
-              // Radius of 34% puts the circle centers EXACTLY on the 68% perimeter ring!
-              const radiusPercent = 34;
+              // Radius of 41% puts the circle centers EXACTLY on the enlarged 82% perimeter ring!
+              const radiusPercent = 41;
               const leftPercent = 50 + radiusPercent * Math.cos(angleRad);
               const topPercent = 50 + radiusPercent * Math.sin(angleRad);
 
