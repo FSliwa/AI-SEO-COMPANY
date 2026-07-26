@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
@@ -9,25 +9,25 @@ const whyUsCards = [
     id: 1,
     tag: 'TRUST & CONVERSION',
     metric: '81%',
-    text: 'klientów musi zaufać marce, zanim podejmie decyzję o zakupie.',
-    detail: 'Projektujemy interfejsy i architekturę informacji, które od pierwszej sekundy budują wiarygodność i prowadzą użytkownika do zakupu.',
-    visual: 'radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.25) 0%, rgba(0,0,0,0) 70%)'
+    title: 'Zaufanie klientów przed zakupem.',
+    description: 'Projektujemy przemyślane interfejsy UX/UI i ścieżki zakupowe, które budują pełną wiarygodność marki od pierwszego kliknięcia.',
+    bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
   },
   {
     id: 2,
     tag: 'BRAND RECOGNITION',
     metric: '+80%',
-    text: 'wzrostu rozpoznawalności dzięki spójnemu systemowi wizualnemu.',
-    detail: 'Tworzymy wyróżniającą się identyfikację marki i nowoczesny design, który zostaje w pamięci odbiorców na długo.',
-    visual: 'radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.25) 0%, rgba(0,0,0,0) 70%)'
+    title: 'Wzrost rozpoznawalności marki.',
+    description: 'Kreujemy spójny system wizualny i nowoczesny design, który zapada w pamięć odbiorców i wyróżnia Twoją firmę na tle konkurencji.',
+    bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
   },
   {
     id: 3,
     tag: 'REVENUE IMPACT',
     metric: '+23%',
-    text: 'średniego przychodu więcej przy jednolitej komunikacji SEO & Web.',
-    detail: 'Łączymy analitykę, optymalizację pod kątem wyszukiwarek (SEO) i UX, przekładając ruch w sieci bezpośrednio na wyniki finansowe.',
-    visual: 'radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.25) 0%, rgba(0,0,0,0) 70%)'
+    title: 'Średni wzrost przychodów.',
+    description: 'Łączymy analitykę, optymalizację pod kątem wyszukiwarek (SEO) i psychologię konwersji, przekładając ruch w internecie na realne zyski.',
+    bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
   }
 ];
 
@@ -36,7 +36,7 @@ export default function WhyUs() {
 
   const handleScroll = (e) => {
     const container = e.target;
-    const cards = container.querySelectorAll('.whyus-apple-card');
+    const cards = container.querySelectorAll('.whyus-card-item');
     if (!cards.length) return;
 
     const containerCenter = container.scrollLeft + container.clientWidth / 2;
@@ -60,7 +60,7 @@ export default function WhyUs() {
   const scrollTo = (index) => {
     const container = document.getElementById('whyus-carousel');
     if (container) {
-      const cards = container.querySelectorAll('.whyus-apple-card');
+      const cards = container.querySelectorAll('.whyus-card-item');
       if (cards[index]) {
         const targetScrollLeft = cards[index].offsetLeft - (container.clientWidth - cards[index].offsetWidth) / 2;
         container.scrollTo({
@@ -71,23 +71,86 @@ export default function WhyUs() {
     }
   };
 
+  const scrollPrev = () => {
+    const prevIndex = Math.max(0, activeIndex - 1);
+    scrollTo(prevIndex);
+  };
+
+  const scrollNext = () => {
+    const nextIndex = Math.min(whyUsCards.length - 1, activeIndex + 1);
+    scrollTo(nextIndex);
+  };
+
   return (
     <section className="why-us" id="why-us" style={{ background: '#F5F5F7', padding: '7rem 0', color: '#1D1D1F' }}>
       <div className="container" style={{ maxWidth: '1280px' }}>
-        <Reveal className="section-header center" style={{ marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto', textAlign: 'center' }}>
-          <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', fontWeight: 600 }}>
-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> WHY US
+        
+        {/* Top Header Row with Apple-style Navigation Arrows */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '2rem' }}>
+          <Reveal className="section-header" style={{ maxWidth: '720px', margin: 0 }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', fontWeight: 600 }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> WHY US
+            </div>
+            <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
+              Result driven projects, with a focus on design and functionality
+            </h2>
+            <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
+              Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych.
+            </p>
+          </Reveal>
+
+          {/* Top Right Apple Circular Arrow Buttons (from Apple Screenshot) */}
+          <div style={{ display: 'flex', gap: '10px', flexShrink: 0 }}>
+            <button 
+              onClick={scrollPrev}
+              disabled={activeIndex === 0}
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: '#E8E8ED',
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: activeIndex === 0 ? 'default' : 'pointer',
+                opacity: activeIndex === 0 ? 0.4 : 1,
+                transition: 'all 0.2s ease'
+              }}
+              aria-label="Previous slide"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            <button 
+              onClick={scrollNext}
+              disabled={activeIndex === whyUsCards.length - 1}
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: '#E8E8ED',
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: activeIndex === whyUsCards.length - 1 ? 'default' : 'pointer',
+                opacity: activeIndex === whyUsCards.length - 1 ? 0.4 : 1,
+                transition: 'all 0.2s ease'
+              }}
+              aria-label="Next slide"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
           </div>
-          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1.25rem' }}>
-            Result driven projects, with a focus on design and functionality
-          </h2>
-          <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6 }}>
-            Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych.
-          </p>
-        </Reveal>
+        </div>
       </div>
 
-      {/* Apple-style Carousel (Full Screen Width) */}
+      {/* Apple Productivity Carousel (Full Screen Width) */}
       <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
         <RevealStagger 
           id="whyus-carousel"
@@ -109,62 +172,67 @@ export default function WhyUs() {
             #whyus-carousel::-webkit-scrollbar { display: none; }
           `}</style>
           
-          {whyUsCards.map((item) => (
+          {whyUsCards.map((item, idx) => (
             <RevealItem 
               key={item.id} 
-              className="whyus-apple-card"
+              className="whyus-card-item"
               style={{
-                flex: '0 0 min(85vw, 1200px)',
+                flex: idx === 0 ? '0 0 min(85vw, 580px)' : '0 0 min(75vw, 420px)', // Card 1 is wider like Apple screenshot!
                 scrollSnapAlign: 'center',
-                background: '#000000', 
-                borderRadius: '36px',
-                padding: '4rem 3.5rem',
+                background: '#FFFFFF', // Pure white card background
+                borderRadius: '28px',
+                padding: '2.5rem 2.25rem',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                minHeight: '480px',
-                border: '1px solid rgba(255,255,255,0.08)',
+                height: '460px',
+                boxShadow: '0 8px 30px rgba(0,0,0,0.03)',
+                border: '1px solid rgba(0,0,0,0.05)',
                 position: 'relative',
                 overflow: 'hidden'
               }}
             >
-              {/* Subtle background glow effect */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: item.visual,
-                pointerEvents: 'none',
-                opacity: 0.8
-              }} />
-
-              <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-cta)', marginBottom: '1.5rem' }}>
+              {/* Top Graphic / Stat Visual Area */}
+              <div style={{ 
+                width: '100%', 
+                height: '240px', 
+                borderRadius: '20px', 
+                background: item.bgVisual, 
+                display: 'flex', 
+                flexDirection: 'column',
+                justifyContent: 'center', 
+                alignItems: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                border: '1px solid rgba(0,0,0,0.03)'
+              }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>
                   {item.tag}
                 </div>
+                <motion.div 
+                  animate={{ scale: [1, 1.03, 1] }}
+                  transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
+                  style={{ fontSize: 'clamp(4.5rem, 8vw, 6.5rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1, letterSpacing: '-0.04em' }}
+                >
+                  {item.metric}
+                </motion.div>
+              </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
-                  <div style={{ flex: '1 1 320px', maxWidth: '550px' }}>
-                    <div style={{ fontSize: 'clamp(4.5rem, 8vw, 7rem)', fontWeight: 800, color: '#FFFFFF', lineHeight: 1, letterSpacing: '-0.04em', marginBottom: '1rem' }}>
-                      {item.metric}
-                    </div>
-                    <div style={{ fontSize: '1.4rem', color: '#E4E4E7', fontWeight: 600, lineHeight: 1.4, marginBottom: '1rem' }}>
-                      {item.text}
-                    </div>
-                  </div>
-
-                  <div style={{ flex: '1 1 300px', maxWidth: '450px', background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <p style={{ color: '#A1A1AA', fontSize: '1.05rem', lineHeight: 1.7, margin: 0 }}>
-                      {item.detail}
-                    </p>
-                  </div>
-                </div>
+              {/* Bottom Text Area matching Apple's formatting */}
+              <div style={{ marginTop: '1.5rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.35, marginBottom: '0.5rem' }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: '0.98rem', color: '#515154', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
+                  {item.description}
+                </p>
               </div>
             </RevealItem>
           ))}
         </RevealStagger>
 
-        {/* Pagination Controls (1:1 Apple Style) */}
-        <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
+        {/* Bottom Pagination Dots Pill */}
+        <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '2.5rem' }}>
           <div style={{ display: 'flex', gap: '10px', padding: '10px 20px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
             {whyUsCards.map((_, idx) => (
               <button
@@ -184,29 +252,8 @@ export default function WhyUs() {
               />
             ))}
           </div>
-
-          <button 
-            onClick={() => scrollTo((activeIndex + 1) % whyUsCards.length)}
-            style={{ 
-              background: '#E8E8ED', 
-              border: 'none', 
-              borderRadius: '50%', 
-              width: '32px', 
-              height: '32px', 
-              cursor: 'pointer', 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center', 
-              padding: '0',
-              transition: 'background 0.2s ease'
-            }}
-            aria-label="Next slide"
-          >
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-          </button>
         </Reveal>
+
       </div>
     </section>
   );
