@@ -7,7 +7,7 @@ export default function Results() {
             <h2>Chcesz osiągnąć podobne wyniki?</h2>
             <p>Zamów bezpłatną analizę SEO i potencjału Twojej obecnej marki już teraz.</p>
           </div>
-          <a href="#kontakt" className="btn btn-primary" style={{ background: '#FFFFFF', color: 'var(--color-primary-dark)', boxShadow: 'none' }}>
+          <a href="#kontakt" className="btn btn-primary" style={{ background: '#FFFFFF', color: '#0F172A', fontWeight: '700', boxShadow: 'none' }}>
             Zamów bezpłatny audyt
           </a>
         </div>
