@@ -24,24 +24,24 @@ export default function Hero() {
       <div className="hero-overlay"></div>
 
       {/* Full-Viewport Title — staggered like KOTA */}
-      <div style={{ position: 'absolute', top: '28%', left: '0', width: '100%', zIndex: 4, padding: '0 3vw', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ position: 'absolute', top: '22%', left: '0', width: '100%', zIndex: 4, padding: '0 max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))', display: 'flex', flexDirection: 'column', gap: '0.5vw' }}>
         <span style={{ 
-          fontSize: 'clamp(4rem, 13vw, 15rem)', 
+          fontSize: 'clamp(5rem, 15vw, 17rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 0.95, 
+          lineHeight: 1.05, 
           letterSpacing: '-0.04em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           paddingLeft: '0'
         }}>
-          branding i
+          SEO i
         </span>
         <span style={{ 
-          fontSize: 'clamp(3rem, 8.5vw, 10rem)', 
+          fontSize: 'clamp(3.5rem, 9.5vw, 11rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 0.95, 
+          lineHeight: 1.05, 
           letterSpacing: '-0.04em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
@@ -50,10 +50,10 @@ export default function Hero() {
           strony internetowe
         </span>
         <span className="highlight" style={{ 
-          fontSize: 'clamp(3rem, 9vw, 10.5rem)', 
+          fontSize: 'clamp(3.5rem, 10vw, 11.5rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 0.95, 
+          lineHeight: 1.05, 
           letterSpacing: '-0.04em', 
           textTransform: 'lowercase',
           paddingLeft: '8vw'
@@ -63,7 +63,7 @@ export default function Hero() {
       </div>
 
       {/* Right-side subtitle — at same height as last title line, like KOTA's "A global branding agency..." */}
-      <div style={{ position: 'absolute', top: '63%', right: '3vw', maxWidth: '300px', textAlign: 'left', zIndex: 5 }}>
+      <div style={{ position: 'absolute', top: '68%', right: '3vw', maxWidth: '300px', textAlign: 'left', zIndex: 5 }}>
         <p style={{ fontSize: '0.9rem', color: '#CBD5E1', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
           {lang === 'pl' 
             ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>masowo wybierana przez klientów.</strong></>
@@ -72,16 +72,20 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Bottom-left: Case Study badges */}
-      <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
-        <div style={{ position: 'absolute', bottom: '2rem', left: '0', maxWidth: '380px' }}>
-          <span className="preview-badge" style={{ marginBottom: '0.75rem', display: 'inline-block' }}>GOOGLING CASE STUDY</span>
-          <div style={{ fontSize: '2.5rem', fontWeight: 800, fontFamily: "'Space Grotesk', system-ui", color: '#38BDF8', lineHeight: 1.1, marginBottom: '0.25rem' }}>+8 113.8%</div>
-          <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>{t.caseTitle}</div>
-          <p style={{ fontSize: '0.85rem', color: '#94A3B8', lineHeight: '1.5', margin: 0 }}>
-            {t.caseDesc}
-          </p>
+      {/* Bottom-left: Award-style badges like KOTA's Clutch/Awwwards row */}
+      <div style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span style={{ fontSize: '2rem', fontWeight: 800, fontFamily: "'Space Grotesk', system-ui", color: '#38BDF8' }}>+8 113%</span>
+          <span style={{ fontSize: '0.7rem', color: '#94A3B8', maxWidth: '90px', lineHeight: 1.3 }}>Google Search Growth</span>
         </div>
+        <div style={{ width: '1px', height: '28px', background: 'rgba(255,255,255,0.2)' }}></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span style={{ fontSize: '0.75rem', color: '#94A3B8', letterSpacing: '0.05em' }}>★★★★★</span>
+          <span style={{ fontSize: '0.7rem', color: '#94A3B8', lineHeight: 1.3 }}>4.9/5 Clients</span>
+        </div>
+        <div style={{ width: '1px', height: '28px', background: 'rgba(255,255,255,0.2)' }}></div>
+        <span style={{ fontSize: '0.75rem', color: '#94A3B8', letterSpacing: '0.05em', fontWeight: 600 }}>AWWWARDS</span>
+        <span style={{ fontSize: '0.75rem', color: '#94A3B8', letterSpacing: '0.05em', fontWeight: 600 }}>CLUTCH</span>
       </div>
     </section>
   );
