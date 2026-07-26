@@ -245,7 +245,7 @@ export default function WhyUs() {
                 <motion.div 
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
-                  style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3.4rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
                 >
                   {item.metric}
                 </motion.div>
