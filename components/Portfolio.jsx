@@ -137,7 +137,11 @@ export default function Portfolio() {
     if (container) {
       const cards = container.querySelectorAll('.apple-card');
       if (cards[index]) {
-        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        const targetScrollLeft = cards[index].offsetLeft - (container.clientWidth - cards[index].offsetWidth) / 2;
+        container.scrollTo({
+          left: targetScrollLeft,
+          behavior: 'smooth'
+        });
       }
     }
   };
@@ -380,17 +384,17 @@ export default function Portfolio() {
           </RevealStagger>
           
           {/* Pagination Controls (1:1 Apple Proportional Size) */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', marginTop: '2.5rem' }}>
+          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
             {/* Dots Pill Container */}
-            <div style={{ display: 'flex', gap: '12px', padding: '14px 26px', background: 'rgba(0, 0, 0, 0.06)', borderRadius: '30px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '10px', padding: '10px 20px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
                   style={{
-                    width: activeIndex === idx ? '54px' : '8px',
-                    height: '8px',
-                    borderRadius: activeIndex === idx ? '4px' : '50%',
+                    width: activeIndex === idx ? '36px' : '6px',
+                    height: '6px',
+                    borderRadius: activeIndex === idx ? '3px' : '50%',
                     background: activeIndex === idx ? '#1D1D1F' : '#86868B',
                     border: 'none',
                     padding: 0,
@@ -402,15 +406,15 @@ export default function Portfolio() {
               ))}
             </div>
 
-            {/* Standalone Apple Play Icon Circle Button matching Pill Height (40px) */}
+            {/* Standalone Apple Play Icon Circle Button matching Pill Height (32px) */}
             <button 
               onClick={() => scrollTo((activeIndex + 1) % realizedWebsites.length)}
               style={{ 
-                background: 'rgba(0, 0, 0, 0.06)', 
+                background: '#E8E8ED', 
                 border: 'none', 
                 borderRadius: '50%', 
-                width: '40px', 
-                height: '40px', 
+                width: '32px', 
+                height: '32px', 
                 cursor: 'pointer', 
                 display: 'flex', 
                 alignItems: 'center', 
@@ -420,7 +424,7 @@ export default function Portfolio() {
               }}
               aria-label="Next slide"
             >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
             </button>
