@@ -16,8 +16,8 @@ export default function WhyUs() {
       metric: '81%',
       title: lang === 'pl' ? 'Zaufanie klientów przed zakupem.' : 'Client trust before purchase.',
       description: lang === 'pl' 
-        ? '81% klientów musi w pełni zaufać wizualnie marce, zanim podejmie decyzję o wysłaniu zapytania ofertowego.'
-        : '81% of consumers must visually trust a brand before making a purchase or sending an inquiry.',
+        ? 'Statystyki jasno pokazują, że 81% klientów musi w pełni zaufać marce na podstawie jej wizerunku w sieci, zanim podejmie decyzję o zakupie. Nasz rygorystyczny proces projektowy UI/UX buduje u odbiorców poczucie bezpieczeństwa, co drastycznie zwiększa współczynnik konwersji i generuje więcej zapytań ofertowych.'
+        : 'Industry data shows that 81% of clients must completely trust a brand online before making a purchasing decision. Our rigorous UI/UX design process instills immediate confidence, significantly boosting conversion rates and driving more high-value inquiries from your existing traffic.',
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -26,8 +26,8 @@ export default function WhyUs() {
       metric: '+80%',
       title: lang === 'pl' ? 'Wzrost rozpoznawalności firmy.' : 'Significant brand recall boost.',
       description: lang === 'pl'
-        ? 'Tworzymy spójne systemy wizualne, które zapadają w pamięć odbiorców i wyróżniają Twoją firmę na tle konkurencji.'
-        : 'We build cohesive visual systems and modern aesthetics that stay in your audience memory and outshine competitors.',
+        ? 'Profesjonalny branding to kluczowe narzędzie sprzedażowe. Tworzymy unikalne, spójne systemy wizualne i nowoczesną architekturę designu, która zwiększa zapamiętywalność marki o 80%. Dzięki temu Twoja firma jednoznacznie wyróżnia się na tle konkurencji, budując pozycję lidera.'
+        : 'Professional branding is a critical sales tool. We develop unique, cohesive visual systems and modern design architectures that increase brand recall by 80%. This ensures your company stands out definitively from competitors, establishing a strong leadership position in your industry.',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -36,8 +36,8 @@ export default function WhyUs() {
       metric: '+23%',
       title: lang === 'pl' ? 'Średni wzrost przychodów.' : 'Average revenue increase.',
       description: lang === 'pl'
-        ? 'Łączymy pozycjonowanie SEO z psychologią konwersji, przekładając odwiedziny w internecie na realny zysk.'
-        : 'We combine SEO positioning with conversion psychology, turning online visits into bottom-line profits.',
+        ? 'Sama obecność w sieci to za mało. Łączymy zaawansowane pozycjonowanie SEO z psychologią konwersji, aby zmaksymalizować Twoje zyski. Zastosowanie premium designu na wszystkich etapach ścieżki klienta przekłada się na udokumentowany średni wzrost przychodów firmy o 23%.'
+        : 'Merely being online is not enough. We effectively combine advanced SEO with conversion psychology to maximize your ROI. Implementing a consistent, premium design across the entire customer journey translates to a documented average revenue increase of 23%.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
