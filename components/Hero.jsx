@@ -37,9 +37,9 @@ export default function Hero() {
         display: 'flex', 
         flexDirection: 'column', 
         gap: '0px',
-        padding: '0 8vw' // Increased base padding for tighter clustering
+        padding: '0 0' // We use specific paddingLeft per item to precisely control alignment
       }}>
-        {/* Line 1: SEO i */}
+        {/* Line 1: SEO i (rebel) */}
         <Reveal delay={0.2} style={{ 
           fontSize: 'clamp(5rem, 15vw, 17rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
@@ -49,12 +49,12 @@ export default function Hero() {
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
-          paddingLeft: '0' 
+          paddingLeft: '10vw' // Base indent like 'rebel'
         }}>
           seo i
         </Reveal>
 
-        {/* Line 2: strony internetowe */}
+        {/* Line 2: strony internetowe (against) */}
         <Reveal delay={0.3} style={{ 
           fontSize: 'clamp(3.5rem, 10vw, 12rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
@@ -65,17 +65,17 @@ export default function Hero() {
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
           display: 'flex',
-          justifyContent: 'center', 
-          paddingRight: '10vw' // Shifted left to match "against"
+          justifyContent: 'flex-start', // Starts from the left
+          paddingLeft: '35vw' // Shifted right relative to line 1
         }}>
           strony internetowe
         </Reveal>
 
-        {/* Line 3 Row: które budują sprzedaż + Subtitle Paragraph */}
+        {/* Line 3 Row: które budują sprzedaż + Subtitle Paragraph (boring) */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          justifyContent: 'flex-start', // Don't space-between, use margins
+          justifyContent: 'flex-start', 
           width: '100%',
           marginTop: '2vh'
         }}>
@@ -90,7 +90,7 @@ export default function Hero() {
             whiteSpace: 'nowrap',
             color: 'var(--color-cta)',
             flexShrink: 0,
-            paddingLeft: '2vw' // Slight indent like "boring"
+            paddingLeft: '10vw' // Same indent as 'rebel'
           }}>
             które budują sprzedaż
           </Reveal>
@@ -102,7 +102,7 @@ export default function Hero() {
             textAlign: 'left', 
             flexShrink: 0,
             marginLeft: 'auto', // Pushes to the right
-            marginRight: '5vw', // But keeps it away from the edge
+            marginRight: '8vw', // But keeps it slightly away from the edge
             transform: 'translateY(15%)' 
           }}>
             <p style={{ fontSize: '0.92rem', color: '#F1F5F9', fontWeight: 500, lineHeight: '1.65', margin: 0 }}>

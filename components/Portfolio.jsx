@@ -151,7 +151,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="portfolio" id="portfolio" style={{ background: '#FFFFFF', padding: '8rem 0' }}>
+    <section className="portfolio" id="portfolio" style={{ background: 'transparent', padding: '8rem 0' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         
         {/* Top Header Row */}
@@ -159,10 +159,10 @@ export default function Portfolio() {
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> OUR RESULTS
           </div>
-          <h2 style={{ color: '#111111', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
+          <h2 style={{ color: '#FFFFFF', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
             {lang === 'pl' ? 'Explore what’s new for our clients.' : 'Explore what’s new for our clients.'}
           </h2>
-          <p style={{ color: '#555555', fontSize: '1.25rem', fontWeight: 500 }}>
+          <p style={{ color: '#A1A1AA', fontSize: '1.25rem', fontWeight: 500 }}>
             {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Analytics-backed growth metrics across our client case studies.'}
           </p>
         </Reveal>
@@ -208,31 +208,6 @@ export default function Portfolio() {
                   overflow: 'hidden'
                 }}
               >
-                {/* Animated glowing orb/mesh */}
-                <motion.div 
-                  animate={{ 
-                    scale: [1, 1.25, 1], 
-                    opacity: [0.15, 0.35, 0.15],
-                    rotate: [0, 10, -10, 0]
-                  }}
-                  transition={{ 
-                    duration: 8, 
-                    ease: 'easeInOut', 
-                    repeat: Infinity,
-                    repeatType: 'reverse'
-                  }}
-                  style={{ 
-                    position: 'absolute', 
-                    top: '-10%', 
-                    left: '-10%', 
-                    right: '-10%', 
-                    bottom: '-10%', 
-                    background: item.meshBg, 
-                    filter: 'blur(80px)', 
-                    pointerEvents: 'none',
-                    zIndex: 0
-                  }} 
-                />
                 
                 <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', height: '100%' }}>
                   
@@ -248,9 +223,7 @@ export default function Portfolio() {
                         fontWeight: 700, 
                         lineHeight: 1, 
                         letterSpacing: '-0.04em',
-                        background: item.gradient,
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
+                        color: '#FFFFFF', // Pure white, no gradient
                         marginBottom: '1rem'
                       }}>
                         {item.metric}
@@ -273,7 +246,11 @@ export default function Portfolio() {
                   
                   {/* Right Visual (Mockups) */}
                   <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <div style={{ position: 'relative', width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <motion.div 
+                      animate={{ y: [0, -15, 0] }}
+                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+                      style={{ position: 'relative', width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    >
                        {item.rightVisual === 'desktop' ? (
                           <div style={{ width: '100%', maxWidth: '650px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>
                             <img src={item.desktopCard.image} alt="Desktop preview" style={{ width: '100%', display: 'block' }} />
@@ -281,21 +258,26 @@ export default function Portfolio() {
                        ) : (
                           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
                              {item.screens.map((screen, idx) => (
-                               <div key={idx} style={{ 
-                                 width: '180px', 
-                                 height: '360px', 
-                                 borderRadius: '28px', 
-                                 overflow: 'hidden', 
-                                 boxShadow: '0 20px 50px rgba(0,0,0,0.6)', 
-                                 border: '6px solid #222',
-                                 transform: screen.transform
-                               }}>
+                               <motion.div 
+                                 key={idx} 
+                                 animate={{ y: [0, idx % 2 === 0 ? 10 : -10, 0] }}
+                                 transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity, delay: idx * 0.5 }}
+                                 style={{ 
+                                   width: '180px', 
+                                   height: '360px', 
+                                   borderRadius: '28px', 
+                                   overflow: 'hidden', 
+                                   boxShadow: '0 20px 50px rgba(0,0,0,0.6)', 
+                                   border: '6px solid #222',
+                                   transform: screen.transform
+                                 }}
+                               >
                                  <img src={screen.image} alt={screen.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                               </div>
+                               </motion.div>
                              ))}
                           </div>
                        )}
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               </RevealItem>
@@ -304,29 +286,40 @@ export default function Portfolio() {
           
           {/* Pagination Dots (Apple Style) */}
           <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginTop: '1.5rem' }}>
-            <div style={{ display: 'flex', gap: '12px', padding: '12px 16px', background: 'rgba(0,0,0,0.05)', borderRadius: '30px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '12px', padding: '10px 14px', background: 'rgba(255,255,255,0.08)', borderRadius: '30px', alignItems: 'center', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.05)' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
                   style={{
-                    width: activeIndex === idx ? '40px' : '10px',
-                    height: '10px',
-                    borderRadius: '5px',
-                    background: activeIndex === idx ? '#111111' : '#D2D2D7', // Dark Apple grey for active, light for inactive
+                    width: activeIndex === idx ? '40px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    background: activeIndex === idx ? '#FFFFFF' : 'rgba(255,255,255,0.3)',
                     border: 'none',
                     padding: 0,
                     cursor: 'pointer',
-                    transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
-                    boxShadow: activeIndex === idx ? '0 1px 2px rgba(0,0,0,0.2)' : 'inset 0 1px 2px rgba(0,0,0,0.1)'
+                    transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
                   }}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
               
-              {/* Fake Apple Pause/Play icon */}
-              <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '4px' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="#333333" stroke="none">
+              {/* Apple Pause/Play icon - Circle with triangle */}
+              <button style={{ 
+                background: 'transparent', 
+                border: '1px solid rgba(255,255,255,0.3)', 
+                borderRadius: '50%', 
+                width: '20px', 
+                height: '20px', 
+                cursor: 'pointer', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                marginLeft: '4px',
+                padding: '0'
+              }}>
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="#FFFFFF" stroke="none" style={{ marginLeft: '1px' }}>
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
               </button>
