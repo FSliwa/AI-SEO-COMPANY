@@ -8,13 +8,48 @@ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 export default function Contact() {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const { lang } = useLanguage();
   const t = translations[lang].contact;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
+    setIsSubmitting(true);
+    setErrorMessage('');
+    setFormSubmitted(false);
+
+    try {
+      const formData = new FormData(e.target);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        service: formData.get('service'),
+        message: formData.get('message'),
+      };
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Wystąpił błąd podczas wysyłania.');
+      }
+
+      setFormSubmitted(true);
+      e.target.reset(); // Clear the form
+      setTimeout(() => setFormSubmitted(false), 8000);
+    } catch (err) {
+      setErrorMessage(err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -41,20 +76,26 @@ export default function Contact() {
                 {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Skontaktujemy się z Tobą w ciągu 2 godzin.' : '✓ Thank you! Your request has been received. We will contact you within 2 hours.'}
               </div>
             )}
+            
+            {errorMessage && (
+              <div style={{ background: '#FEE2E2', color: '#DC2626', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
+                {lang === 'pl' ? 'Wystąpił błąd: ' : 'An error occurred: '} {errorMessage}
+              </div>
+            )}
 
             <div className="form-group">
               <label className="form-label" htmlFor="name">{t.nameLabel}</label>
-              <input type="text" id="name" className="form-input" placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'} required />
+              <input type="text" id="name" name="name" className="form-input" placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'} required />
             </div>
 
             <div className="form-group">
               <label className="form-label" htmlFor="email">{t.emailLabel}</label>
-              <input type="email" id="email" className="form-input" placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'} required />
+              <input type="email" id="email" name="email" className="form-input" placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'} required />
             </div>
 
             <div className="form-group">
               <label className="form-label" htmlFor="service">{t.serviceLabel}</label>
-              <select id="service" className="form-select" required>
+              <select id="service" name="service" className="form-select" required>
                 <option value="">{lang === 'pl' ? 'Wybierz pakiet...' : 'Select plan...'}</option>
                 <option value="standard">{lang === 'pl' ? 'SEO Standard (1 900 zł netto/mies.)' : 'SEO Standard (€450 net/mo)'}</option>
                 <option value="premium">{lang === 'pl' ? 'SEO Premium (2 500 zł netto/mies.)' : 'SEO Premium (€590 net/mo)'}</option>
@@ -68,11 +109,11 @@ export default function Contact() {
 
             <div className="form-group">
               <label className="form-label" htmlFor="message">Opis projektu i oczekiwań</label>
-              <textarea id="message" className="form-textarea" rows="4" placeholder="Opisz w kilku słowach swoje cele, obecną stronę oraz wymagany termin..." required></textarea>
+              <textarea id="message" name="message" className="form-textarea" rows="4" placeholder="Opisz w kilku słowach swoje cele, obecną stronę oraz wymagany termin..." required></textarea>
             </div>
 
-            <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-              Wyślij zapytanie o wycenę
+            <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }} disabled={isSubmitting}>
+              {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : (lang === 'pl' ? 'Wyślij zapytanie o wycenę' : 'Send inquiry')}
             </button>
             </form>
           </RevealItem>
