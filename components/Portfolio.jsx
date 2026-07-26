@@ -167,14 +167,69 @@ export default function Portfolio() {
       setIsAnimating(false);
       setDragStartX(0);
       setDragDistance(0);
-    }, 380);
+    }, 400); // Wait for the slide-out animation to complete
   };
 
-  const currentItem = realizedWebsites[activeIndex];
+  const getCardStyle = (index) => {
+    const total = realizedWebsites.length;
+    const offset = (index - activeIndex + total) % total;
 
-  const cardStyle = {
-    transform: dragStartX && !isAnimating ? `translateX(${dragDistance}px) rotate(${dragDistance * 0.02}deg)` : '',
-    transition: dragStartX && !isAnimating ? 'none' : 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease'
+    // Handle the card currently being dragged
+    if (offset === 0 && dragStartX && !isAnimating) {
+      return {
+        zIndex: 10,
+        transform: `translateX(${dragDistance}px) rotate(${dragDistance * 0.02}deg)`,
+        transition: 'none',
+        opacity: 1,
+        boxShadow: '0 30px 70px rgba(0, 0, 0, 0.15)'
+      };
+    }
+
+    // Default stacking styles
+    let scale = 1;
+    let translateX = 0;
+    let opacity = 1;
+    let zIndex = 10 - offset;
+    let shadow = '0 25px 60px rgba(0, 0, 0, 0.08)';
+    let transition = 'all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+
+    if (offset === 1) {
+      scale = 0.95;
+      translateX = -40;
+      opacity = 0.95;
+      shadow = '0 15px 40px rgba(0, 0, 0, 0.05)';
+    } else if (offset === 2) {
+      scale = 0.90;
+      translateX = -80;
+      opacity = 0.7;
+      shadow = '0 10px 20px rgba(0, 0, 0, 0.03)';
+    } else if (offset > 2) {
+      scale = 0.85;
+      translateX = -100;
+      opacity = 0;
+      // If it's the card that just animated out, disable transition so it snaps back to the left invisibly
+      if (offset === total - 1) transition = 'none';
+    }
+
+    // When animating, the top card (offset 0) flies out
+    if (offset === 0 && isAnimating) {
+      return {
+        zIndex: 10,
+        transform: 'translateX(120%) rotate(5deg) scale(0.9)',
+        opacity: 0,
+        transition: 'all 0.4s cubic-bezier(0.8, 0, 0.2, 1)',
+        pointerEvents: 'none'
+      };
+    }
+
+    return {
+      zIndex,
+      transform: `translateX(${translateX}px) scale(${scale})`,
+      opacity,
+      boxShadow: shadow,
+      transition,
+      pointerEvents: offset === 0 ? 'auto' : 'none'
+    };
   };
 
   return (
@@ -192,112 +247,111 @@ export default function Portfolio() {
           </p>
         </div>
 
-        {/* KOTA Full-Width Card Deck Showcase (Light Background Section) */}
+        {/* KOTA Full-Width True Card Deck Showcase */}
         <div className="kota-deck-container">
-          {/* Left Stack Edges */}
-          <div className="kota-deck-edge edge-3"></div>
-          <div className="kota-deck-edge edge-2"></div>
-          <div className="kota-deck-edge edge-1"></div>
-
-          {/* Primary Top Active Card */}
-          <div 
-            className={`kota-main-card ${isAnimating ? 'kota-slide-animating' : ''}`}
-            style={cardStyle}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerLeave={handlePointerUp}
-            onDragStart={(e) => e.preventDefault()}
-          >
-            <div className="kota-card-mesh-bg" style={{ background: currentItem.meshBg }}></div>
-
-            {/* Left Content Side */}
-            <div className="kota-card-left" style={{ pointerEvents: 'none' }}>
-              <div className="kota-brand-logo-wrapper">
-                {currentItem.brandLogo}
-              </div>
-
-              <div className="kota-metric-wrapper">
-                <div
-                  className="kota-giant-metric"
-                  style={{
-                    background: currentItem.gradient,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}
-                >
-                  {currentItem.metric}
-                </div>
-                <div className="kota-metric-subtext">
-                  {currentItem.metricSubtitle}
-                </div>
-              </div>
-
-              <button
-                className="kota-view-project-btn"
-                style={{ pointerEvents: 'auto' }}
-                onClick={() => setActiveModal(currentItem)}
+          {realizedWebsites.map((item, index) => {
+            const offset = (index - activeIndex + realizedWebsites.length) % realizedWebsites.length;
+            
+            return (
+              <div 
+                key={item.id}
+                className="kota-stacked-card"
+                style={getCardStyle(index)}
+                onPointerDown={offset === 0 ? handlePointerDown : undefined}
+                onPointerMove={offset === 0 ? handlePointerMove : undefined}
+                onPointerUp={offset === 0 ? handlePointerUp : undefined}
+                onPointerLeave={offset === 0 ? handlePointerUp : undefined}
+                onDragStart={(e) => e.preventDefault()}
               >
-                <span>View Project</span>
-                <span className="kota-btn-arrow">→</span>
-              </button>
-            </div>
+                <div className="kota-card-mesh-bg" style={{ background: item.meshBg }}></div>
 
-            {/* Right Side Visual Showcase */}
-            <div className="kota-card-right" style={{ pointerEvents: 'none' }}>
-              {currentItem.rightVisual === 'desktop' ? (
-                /* Desktop Web Preview Mockup Card (WOGAN style) */
-                <div className="kota-desktop-preview-card">
-                  <div className="kota-desktop-img" style={{ backgroundImage: `url('${currentItem.desktopCard.image}')` }}></div>
-                  <div className="kota-desktop-content">
-                    <span className="kota-phone-tag">{currentItem.desktopCard.tag}</span>
-                    <h3>{currentItem.desktopCard.title}</h3>
-                    <p>{currentItem.desktopCard.subtitle}</p>
-                    <button className="kota-desktop-pill-btn">
-                      {currentItem.desktopCard.btnText}
-                    </button>
+                {/* Left Content Side */}
+                <div className="kota-card-left" style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}>
+                  <div className="kota-brand-logo-wrapper">
+                    {item.brandLogo}
                   </div>
-                </div>
-              ) : (
-                /* 3 White Phone Screen Cards Trio (PISON / ISI GLOBAL style) */
-                <div className="kota-phone-trio">
-                  {currentItem.screens.map((screen, idx) => (
+
+                  <div className="kota-metric-wrapper">
                     <div
-                      key={idx}
-                      className={`kota-phone-card ${screen.highlight ? 'highlight-phone' : ''}`}
-                      style={{ transform: screen.transform }}
+                      className="kota-giant-metric"
+                      style={{
+                        background: item.gradient,
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent'
+                      }}
                     >
-                      <div className="kota-phone-screen-top">
-                        <span className="kota-phone-dot"></span>
-                        <span className="kota-phone-tag">{screen.tag}</span>
-                      </div>
-                      <div
-                        className="kota-phone-img"
-                        style={{ backgroundImage: `url('${screen.image}')` }}
-                      ></div>
-                      <div className="kota-phone-body">
-                        <h4>{screen.title}</h4>
-                        <p>{screen.subtitle}</p>
+                      {item.metric}
+                    </div>
+                    <div className="kota-metric-subtext">
+                      {item.metricSubtitle}
+                    </div>
+                  </div>
+
+                  <button
+                    className="kota-view-project-btn"
+                    onClick={() => offset === 0 && setActiveModal(item)}
+                  >
+                    <span>View Project</span>
+                    <span className="kota-btn-arrow">→</span>
+                  </button>
+                </div>
+
+                {/* Right Side Visual Showcase */}
+                <div className="kota-card-right" style={{ pointerEvents: 'none' }}>
+                  {item.rightVisual === 'desktop' ? (
+                    <div className="kota-desktop-preview-card">
+                      <div className="kota-desktop-img" style={{ backgroundImage: `url('${item.desktopCard.image}')` }}></div>
+                      <div className="kota-desktop-content">
+                        <span className="kota-phone-tag">{item.desktopCard.tag}</span>
+                        <h3>{item.desktopCard.title}</h3>
+                        <p>{item.desktopCard.subtitle}</p>
+                        <button className="kota-desktop-pill-btn">
+                          {item.desktopCard.btnText}
+                        </button>
                       </div>
                     </div>
-                  ))}
+                  ) : (
+                    <div className="kota-phone-trio">
+                      {item.screens.map((screen, idx) => (
+                        <div
+                          key={idx}
+                          className={`kota-phone-card ${screen.highlight ? 'highlight-phone' : ''}`}
+                          style={{ transform: screen.transform }}
+                        >
+                          <div className="kota-phone-screen-top">
+                            <span className="kota-phone-dot"></span>
+                            <span className="kota-phone-tag">{screen.tag}</span>
+                          </div>
+                          <div
+                            className="kota-phone-img"
+                            style={{ backgroundImage: `url('${screen.image}')` }}
+                          ></div>
+                          <div className="kota-phone-body">
+                            <h4>{screen.title}</h4>
+                            <p>{screen.subtitle}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
 
-            {/* KOTA Bottom-Right Carousel Next Arrow Button */}
-            <button
-              className="kota-deck-next-btn"
-              style={{ pointerEvents: 'auto' }}
-              onClick={(e) => { e.stopPropagation(); handleNextSlide(); }}
-              aria-label="Next Project"
-              title="Next Project"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </div>
+                {/* Next Arrow Button (Only active on top card) */}
+                {offset === 0 && (
+                  <button
+                    className="kota-deck-next-btn"
+                    onClick={(e) => { e.stopPropagation(); handleNextSlide(); }}
+                    aria-label="Next Project"
+                    title="Next Project"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
 

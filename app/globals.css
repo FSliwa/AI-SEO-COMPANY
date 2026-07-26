@@ -837,52 +837,23 @@ button, input, select, textarea {
 .kota-deck-container {
   position: relative;
   width: 100%;
-  max-width: 1240px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding-left: 60px;
-  min-height: 560px;
+  height: 580px;
+  perspective: 1500px;
 }
 
-/* KOTA Stacked Deck Left Border Layers */
-.kota-deck-edge {
+/* KOTA True Deck Stacked Card */
+.kota-stacked-card {
   position: absolute;
   top: 0;
-  bottom: 0;
-  background: #FFFFFF;
-  border-radius: 36px;
-  border-top-right-radius: 140px;
-  border: 1px solid var(--color-border);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.04);
-  pointer-events: none;
-}
-
-.kota-deck-edge.edge-3 {
   left: 0;
-  right: 60px;
-  opacity: 0.5;
-}
-
-.kota-deck-edge.edge-2 {
-  left: 20px;
-  right: 40px;
-  opacity: 0.75;
-}
-
-.kota-deck-edge.edge-1 {
-  left: 40px;
-  right: 20px;
-  opacity: 1;
-}
-
-/* KOTA Primary Active Main Card */
-.kota-main-card {
-  position: relative;
-  z-index: 10;
+  width: 100%;
+  height: 100%;
   background-color: #FFFFFF !important;
   border-radius: 36px;
   border-top-right-radius: 140px;
   padding: 4.5rem 4.5rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--color-border);
   display: grid;
   grid-template-columns: 1.1fr 1.25fr;
@@ -891,13 +862,14 @@ button, input, select, textarea {
   min-height: 560px;
   overflow: hidden;
   user-select: none;
-  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease;
-  opacity: 1;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 .kota-slide-animating {
-  transform: translateX(110%) rotate(3deg) !important;
+  transform: translateX(110%) rotate(5deg) scale(0.9) !important;
   opacity: 0 !important;
+  pointer-events: none;
 }
 
 .kota-card-mesh-bg {
