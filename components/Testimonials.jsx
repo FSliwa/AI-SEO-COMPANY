@@ -1,16 +1,18 @@
+import { Reveal } from './ScrollReveal';
+
 export default function Testimonials() {
   return (
     <section className="testimonials">
       <div className="container">
-        <div className="section-header center">
+        <Reveal className="section-header center">
           <div className="section-tag">
             <span className="asterisk">✳</span> Testimonials
           </div>
           <h2>Experiences & Rekomendacje</h2>
-        </div>
+        </Reveal>
 
         {/* VIS Screenshot 5 Testimonial Experience Card */}
-        <div className="testimonial-card">
+        <Reveal className="testimonial-card" delay={0.2}>
           <div style={{ color: '#F59E0B', fontSize: '1.25rem', marginBottom: '1rem' }}>
             ★★★★★
           </div>
@@ -24,7 +26,7 @@ export default function Testimonials() {
               <p>CEO, FinTech Apex Platform</p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

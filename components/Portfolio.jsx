@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { translations } from '@/lib/translations';
+import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 const realizedWebsites = [
   {
@@ -230,7 +232,9 @@ export default function Portfolio() {
   return (
     <section className="portfolio-kota-section" id="portfolio">
       <div className="container" style={{ maxWidth: '1280px' }}>
-        <div className="section-header center">
+        
+        {/* Top Header Row */}
+        <Reveal className="section-header center" style={{ marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> OUR RESULTS
           </div>
@@ -240,15 +244,15 @@ export default function Portfolio() {
           <p>
             {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}
           </p>
-        </div>
+        </Reveal>
 
         {/* KOTA Full-Width True Card Deck Showcase */}
-        <div className="kota-deck-container">
+        <RevealStagger className="kota-deck-container">
           {realizedWebsites.map((item, index) => {
             const offset = (index - activeIndex + realizedWebsites.length) % realizedWebsites.length;
             
             return (
-              <div 
+              <RevealItem 
                 key={item.id}
                 className="kota-stacked-card"
                 style={getCardStyle(index)}
@@ -344,10 +348,10 @@ export default function Portfolio() {
                     </svg>
                   </button>
                 )}
-              </div>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealStagger>
       </div>
 
       {/* Case Study Detail Modal */}

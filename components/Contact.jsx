@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function Contact() {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack (2 500 zł netto)');
@@ -15,8 +16,8 @@ export default function Contact() {
   return (
     <section className="contact" id="kontakt">
       <div className="container">
-        <div className="contact-box">
-          <div className="contact-info">
+        <RevealStagger className="contact-box">
+          <RevealItem className="contact-info">
             <div className="section-tag">Kontakt</div>
             <h2>Masz projekt na oku? Wyceńmy go!</h2>
             <p>Wypełnij krótki formularz, a powrócimy do Ciebie z wstępną darmową analizą i propozycją w ciągu 24h.</p>
@@ -27,9 +28,10 @@ export default function Contact() {
               <li><strong>NIP:</strong> 5252819201</li>
               <li><strong>Czas odpowiedzi:</strong> Zazwyczaj &lt; 2 godziny</li>
             </ul>
-          </div>
+          </RevealItem>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <RevealItem>
+            <form className="contact-form" onSubmit={handleSubmit}>
             {formSubmitted && (
               <div style={{ background: '#EFF8E6', color: '#639922', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
                 ✓ Dziękujemy! Twoje zapytanie zostało wysłane. Skontaktujemy się z Tobą w ciągu 2 godzin.
@@ -80,8 +82,9 @@ export default function Contact() {
             <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
               Wyślij zapytanie o wycenę
             </button>
-          </form>
-        </div>
+            </form>
+          </RevealItem>
+        </RevealStagger>
       </div>
     </section>
   );

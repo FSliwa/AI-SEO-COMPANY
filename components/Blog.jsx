@@ -1,3 +1,5 @@
+import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+
 export default function Blog() {
   const posts = [
     {
@@ -26,20 +28,20 @@ export default function Blog() {
   return (
     <section className="blog" id="blog">
       <div className="container">
-        <div className="section-header">
+        <Reveal className="section-header">
           <div className="section-tag">
             <span className="asterisk">✳</span> Blog & Artykuły
           </div>
           <h2>Wiedza i inspiracje — Trends & Insights</h2>
           <p>Przeczytaj najnowsze wpisy eksperckie i wyprzedź konkurencję w wynikach wyszukiwania.</p>
-        </div>
+        </Reveal>
 
         {/* VIS Vertical Timeline Blog Layout (Screenshot 2 & 3) */}
-        <div className="blog-timeline-container">
+        <RevealStagger className="blog-timeline-container" delay={0.2}>
           <div className="blog-timeline-line"></div>
 
           {posts.map((post, idx) => (
-            <div key={idx} className={`blog-timeline-item ${post.side}`}>
+            <RevealItem key={idx} className={`blog-timeline-item ${post.side}`}>
               <div className="blog-timeline-node">
                 <span className="blog-timeline-date">{post.date}</span>
               </div>
@@ -53,9 +55,9 @@ export default function Blog() {
                   Czytaj wpis →
                 </a>
               </div>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealStagger>
       </div>
     </section>
   );

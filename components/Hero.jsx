@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
+import { Reveal } from './ScrollReveal';
 
 export default function Hero() {
   const { lang } = useLanguage();
@@ -20,6 +21,16 @@ export default function Hero() {
         <source src="/Black hole AI SEO COMPANY.mp4" type="video/mp4" />
       </video>
 
+      {/* Subtle Starfield Background */}
+      <div className="hero-stars-bg"></div>
+
+      {/* Hero Badge Tag */}
+      <Reveal delay={0.1} style={{ position: 'absolute', top: '5%', width: '100%', display: 'flex', justifyContent: 'center', zIndex: 4 }}>
+        <div className="section-tag hero-badge-tag">
+          <span className="asterisk">✳</span> {t.tag}
+        </div>
+      </Reveal>
+
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
@@ -35,61 +46,60 @@ export default function Hero() {
         flexDirection: 'column', 
         gap: '0px' 
       }}>
-        {/* Line 1: SEO i (Massive, Left 0) */}
-        <span style={{ 
-          fontSize: 'clamp(6rem, 16vw, 19rem)', 
+        {/* Line 1: SEO i */}
+        <Reveal delay={0.2} style={{ 
+          fontSize: 'clamp(3rem, 14vw, 15rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-          fontWeight: 800, 
+          fontWeight: 700, 
           lineHeight: 0.85, 
           letterSpacing: '-0.06em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
-          whiteSpace: 'nowrap',
-          paddingLeft: '0'
+          whiteSpace: 'nowrap'
         }}>
           SEO i
-        </span>
+        </Reveal>
 
-        {/* Line 2: strony internetowe (Massive, Indented 12vw so it can be huge without overflowing) */}
-        <span style={{ 
-          fontSize: 'clamp(4rem, 10.5vw, 13rem)', 
+        {/* Line 2: strony internetowe */}
+        <Reveal delay={0.3} style={{ 
+          fontSize: 'clamp(2.5rem, 9.5vw, 10rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-          fontWeight: 800, 
+          fontWeight: 700, 
           lineHeight: 0.85, 
           letterSpacing: '-0.06em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
-          paddingLeft: '12vw'
+          paddingLeft: '18vw'
         }}>
           strony internetowe
-        </span>
+        </Reveal>
 
         {/* Line 3 Row: które budują sprzedaż + Subtitle Paragraph */}
         <div style={{ 
           display: 'flex', 
-          alignItems: 'center', /* Vertically center the paragraph relative to Line 3, exactly like KOTA! */
+          alignItems: 'center', 
           justifyContent: 'space-between', 
           width: '100%',
           marginTop: '0px'
         }}>
           {/* Left: które budują sprzedaż */}
-          <span className="highlight" style={{ 
-            fontSize: 'clamp(3.5rem, 8.5vw, 10.5rem)', 
+          <Reveal delay={0.4} style={{ 
+            fontSize: 'clamp(2rem, 7.5vw, 8.5rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-            fontWeight: 800, 
+            fontWeight: 700, 
             lineHeight: 0.85, 
             letterSpacing: '-0.06em', 
             textTransform: 'lowercase',
             whiteSpace: 'nowrap',
-            paddingLeft: '0',
+            color: 'var(--color-cta)',
             flexShrink: 1
           }}>
             które budują sprzedaż
-          </span>
+          </Reveal>
 
-          {/* Right: Subtitle paragraph (Locked to the right, vertically centered) */}
-          <div style={{ 
+          {/* Right: Subtitle paragraph */}
+          <Reveal delay={0.5} style={{
             width: '300px', 
             minWidth: '240px',
             textAlign: 'left', 
@@ -103,7 +113,7 @@ export default function Hero() {
                 : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>converts customers at scale.</strong></>
               }
             </p>
-          </div>
+          </Reveal>
         </div>
       </div>
 
