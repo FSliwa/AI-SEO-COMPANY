@@ -154,7 +154,7 @@ export default function Header() {
           <div className="kota-fullscreen-content container">
             <ul className="kota-fullscreen-links">
               <li style={{ '--delay': '0.15s' }}>
-                <a href="#portfolio" onClick={closeMenu}>{t.portfolio}</a>
+                <a href="#why-us" onClick={closeMenu}>{t.results}</a>
               </li>
               <li style={{ '--delay': '0.2s' }}>
                 <a href="#uslugi" onClick={closeMenu}>{t.services}</a>
@@ -163,7 +163,7 @@ export default function Header() {
                 <a href="#cennik" onClick={closeMenu}>{t.pricing}</a>
               </li>
               <li style={{ '--delay': '0.3s' }}>
-                <a href="#proces" onClick={closeMenu}>{t.process}</a>
+                <a href="#portfolio" onClick={closeMenu}>{t.process}</a>
               </li>
               <li style={{ '--delay': '0.35s' }}>
                 <a href="#blog" onClick={closeMenu}>{t.blog}</a>

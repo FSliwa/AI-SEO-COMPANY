@@ -29,10 +29,10 @@ export default function Footer() {
             <div className="footer-col">
               <h4>{lang === 'pl' ? 'Nawigacja' : 'Navigation'}</h4>
               <ul className="footer-links">
+                <li><a href="#why-us">{nav.results}</a></li>
                 <li><a href="#uslugi">{nav.services}</a></li>
-                <li><a href="#portfolio">{nav.portfolio}</a></li>
+                <li><a href="#portfolio">{nav.process}</a></li>
                 <li><a href="#cennik">{nav.pricing}</a></li>
-                <li><a href="#proces">{nav.process}</a></li>
               </ul>
             </div>
             <div className="footer-col">
