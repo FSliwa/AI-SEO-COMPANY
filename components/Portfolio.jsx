@@ -262,16 +262,17 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Image anchored right, 90% card height, 100% vertically centered */}
+                    {/* Image anchored right, 90% card height (540px), 100% vertically centered relative to entire card */}
                     <motion.div 
                       animate={{ scale: [1, 1.008, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
                         right: '-3.5rem', 
-                        top: '50%',
+                        top: 'calc(50% - 4rem)',
                         transform: 'translateY(-50%)',
-                        height: '90%', 
+                        height: '540px', 
+                        maxHeight: '90vh',
                         width: 'calc(52% + 3.5rem)',
                         borderTopLeftRadius: '28px',
                         borderBottomLeftRadius: '28px',
