@@ -30,32 +30,32 @@ export default function Hero() {
       {/* Enlarged & Responsive Hero Typography SVG Graphic with Floating Animation */}
       <div style={{ 
         position: 'absolute', 
-        top: '48%', 
+        top: '46%', 
         left: '50%', 
         transform: 'translate(-50%, -50%)', 
-        width: '94vw', 
-        maxWidth: '1750px', 
-        maxHeight: '75vh',
+        width: '98vw', 
+        maxWidth: '2400px', 
+        maxHeight: '88vh',
         zIndex: 4, 
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center',
-        padding: '0 1vw',
+        padding: '0 0.5vw',
         pointerEvents: 'none'
       }}>
         <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 35 }}
+          initial={{ opacity: 0, scale: 0.95, y: 35 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+          style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         >
           <motion.img 
             animate={{ 
-              y: [0, -12, 0],
-              scale: [1, 1.012, 1],
+              y: [0, -14, 0],
+              scale: [1, 1.015, 1],
               filter: [
                 'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))',
-                'drop-shadow(0 25px 45px rgba(0,0,0,0.7)) drop-shadow(0 0 40px rgba(216,90,48,0.4))',
+                'drop-shadow(0 25px 45px rgba(0,0,0,0.7)) drop-shadow(0 0 45px rgba(216,90,48,0.45))',
                 'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))'
               ]
             }}
@@ -65,7 +65,7 @@ export default function Hero() {
             style={{ 
               width: '100%', 
               height: 'auto', 
-              maxHeight: '75vh',
+              maxHeight: '88vh',
               objectFit: 'contain',
               display: 'block'
             }} 

@@ -271,16 +271,16 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Image coming out from the right side with 80% height of card */}
+                    {/* Image coming out from the right side with 90% height and 58% width of card */}
                     <motion.div 
                       animate={{ x: [0, 8, 0] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
-                        right: '-3.5rem', 
-                        top: '10%',
-                        height: '80%', // 80% height of card
-                        width: '52%',
+                        right: '-1.5rem', 
+                        top: '5%',
+                        height: '90%', 
+                        width: '58%',
                         borderTopLeftRadius: '24px',
                         borderBottomLeftRadius: '24px',
                         overflow: 'hidden',
@@ -290,7 +290,7 @@ export default function Portfolio() {
                         zIndex: 1
                       }}
                     >
-                      <img src={item.desktopCard.image} alt={item.brandName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src={item.desktopCard.image} alt={item.brandName} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center' }} />
                     </motion.div>
                   </div>
                 ) : (
