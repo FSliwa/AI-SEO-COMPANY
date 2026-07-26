@@ -189,6 +189,7 @@ export default function WhyUs() {
           onScroll={handleScroll}
           style={{ 
             display: 'flex', 
+            alignItems: 'stretch',
             overflowX: 'auto', 
             scrollSnapType: 'x mandatory', 
             scrollbarWidth: 'none', 
@@ -217,7 +218,8 @@ export default function WhyUs() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                height: '460px',
+                height: 'auto',
+                minHeight: '480px',
                 boxShadow: '0 8px 30px rgba(0,0,0,0.03)',
                 border: '1px solid rgba(0,0,0,0.05)',
                 position: 'relative',
@@ -228,6 +230,7 @@ export default function WhyUs() {
               <div style={{ 
                 width: '100%', 
                 height: '210px', 
+                flexShrink: 0,
                 borderRadius: '20px', 
                 background: item.bgVisual, 
                 display: 'flex', 
