@@ -253,29 +253,19 @@ export default function Portfolio() {
                   </div>
                 ) : item.layout === 'right-side' ? (
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%', position: 'relative' }}>
-                    {/* Left Content (Enriched for Staniax, no button) */}
-                    <div style={{ flex: '0 0 45%', maxWidth: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
-                      <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                    {/* Left Content (Enriched for Staniax like Madame Thai, no button) */}
+                    <div style={{ flex: '0 0 48%', maxWidth: '520px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
+                      <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
-                      <div style={{ marginBottom: '1.5rem' }}>
-                        <div style={{ 
-                          fontSize: 'clamp(3.5rem, 6.5vw, 5.5rem)', 
-                          fontWeight: 700, 
-                          lineHeight: 1, 
-                          letterSpacing: '-0.04em',
-                          color: '#FFFFFF',
-                          marginBottom: '0.75rem'
-                        }}>
-                          {item.metric}
-                        </div>
-                        <div style={{ fontSize: '1.15rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.5 }}>
-                          {item.metricSubtitle}
-                        </div>
-                      </div>
                       
-                      {/* Rich bullet points to fill the left side */}
-                      <div style={{ color: '#E4E4E7', fontSize: '0.95rem', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '0.6rem', borderLeft: '2px solid rgba(255,255,255,0.2)', paddingLeft: '1.25rem' }}>
+                      {/* Unified Headline matching Madame Thai style */}
+                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '1.5rem' }}>
+                        {item.metric} {item.metricSubtitle}
+                      </div>
+
+                      {/* Styled bullet points box */}
+                      <div style={{ color: '#E4E4E7', fontSize: '0.95rem', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '0.6rem', background: 'rgba(255,255,255,0.05)', padding: '1.25rem 1.5rem', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>
                         <div>• <strong>Wzrost widoczności organicznej B2B:</strong> Od zera do ponad 2,8k wyświetleń w Google.</div>
                         <div>• <strong>Rynek międzynarodowy:</strong> Wdrożenie architektury wielojęzycznej (/de oraz /en).</div>
                         <div>• <strong>Czołowe pozycje:</strong> TOP 20 na trudne frazy komercyjne metalizacji i lakierowania UV.</div>
