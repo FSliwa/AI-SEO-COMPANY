@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
@@ -90,6 +90,7 @@ const realizedWebsites = [
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
   const [activeModal, setActiveModal] = useState(null);
   const { lang } = useLanguage();
 
@@ -133,6 +134,15 @@ export default function Portfolio() {
       }
     }
   };
+
+  useEffect(() => {
+    if (!isAutoplay) return;
+    const interval = setInterval(() => {
+      const nextIndex = (activeIndex + 1) % realizedWebsites.length;
+      scrollTo(nextIndex);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isAutoplay, activeIndex]);
 
   return (
     <section className="portfolio" id="portfolio" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
@@ -375,27 +385,35 @@ export default function Portfolio() {
             {/* Dots Pill Container */}
             <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
               {realizedWebsites.map((_, idx) => (
-                <button
+                <motion.button
                   key={idx}
+                  layout
+                  initial={false}
                   onClick={() => scrollTo(idx)}
-                  style={{
+                  animate={{
                     width: activeIndex === idx ? '36px' : '8px',
+                    backgroundColor: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
+                    borderRadius: activeIndex === idx ? '8px' : '50%'
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 400,
+                    damping: 30
+                  }}
+                  style={{
                     height: '8px',
-                    borderRadius: activeIndex === idx ? '4px' : '50%',
-                    background: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
                     border: 'none',
                     padding: 0,
-                    cursor: 'pointer',
-                    transition: 'all 0.35s cubic-bezier(0.25, 1, 0.5, 1)'
+                    cursor: 'pointer'
                   }}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
 
-            {/* Standalone Apple Play Button (44px) */}
+            {/* Standalone Apple Play/Pause Button (44px) */}
             <button 
-              onClick={() => scrollTo((activeIndex + 1) % realizedWebsites.length)}
+              onClick={() => setIsAutoplay(!isAutoplay)}
               style={{ 
                 background: '#E8E8ED', 
                 border: 'none', 
@@ -409,11 +427,18 @@ export default function Portfolio() {
                 padding: '0',
                 transition: 'background 0.2s ease, transform 0.2s ease'
               }}
-              aria-label="Next slide"
+              aria-label={isAutoplay ? 'Pause' : 'Play'}
             >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
+              {isAutoplay ? (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none">
+                  <rect x="6" y="4" width="4" height="16" />
+                  <rect x="14" y="4" width="4" height="16" />
+                </svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              )}
             </button>
           </Reveal>
 
