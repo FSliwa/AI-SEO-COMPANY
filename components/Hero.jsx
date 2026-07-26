@@ -1,15 +1,15 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
-import { Reveal } from './ScrollReveal';
 
 export default function Hero() {
   const { lang } = useLanguage();
   const t = translations[lang].hero;
 
   return (
-    <section className="hero" id="hero">
+    <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {/* Background Hero Video */}
       <video
         autoPlay
@@ -27,31 +27,50 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
-      {/* Hero Typography SVG Graphic */}
+      {/* Enlarged & Responsive Hero Typography SVG Graphic with Floating Animation */}
       <div style={{ 
         position: 'absolute', 
-        top: '15%', 
+        top: '48%', 
         left: '50%', 
-        transform: 'translateX(-50%)', 
-        width: '95%', 
-        maxWidth: '1400px', 
+        transform: 'translate(-50%, -50%)', 
+        width: '94vw', 
+        maxWidth: '1750px', 
+        maxHeight: '75vh',
         zIndex: 4, 
         display: 'flex', 
         justifyContent: 'center', 
-        alignItems: 'center' 
+        alignItems: 'center',
+        padding: '0 1vw',
+        pointerEvents: 'none'
       }}>
-        <Reveal delay={0.2} style={{ width: '100%' }}>
-          <img 
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94, y: 35 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+        >
+          <motion.img 
+            animate={{ 
+              y: [0, -12, 0],
+              scale: [1, 1.012, 1],
+              filter: [
+                'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))',
+                'drop-shadow(0 25px 45px rgba(0,0,0,0.7)) drop-shadow(0 0 40px rgba(216,90,48,0.4))',
+                'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))'
+              ]
+            }}
+            transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
             src="/hero-text.svg" 
             alt="seo i strony internetowe które budują sprzedaż" 
             style={{ 
               width: '100%', 
               height: 'auto', 
-              display: 'block',
-              filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.5))'
+              maxHeight: '75vh',
+              objectFit: 'contain',
+              display: 'block'
             }} 
           />
-        </Reveal>
+        </motion.div>
       </div>
 
       {/* Bottom-left: Our Partners (KOTA Style) */}
