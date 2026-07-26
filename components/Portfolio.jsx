@@ -112,15 +112,18 @@ export default function Portfolio() {
   const handleScroll = (e) => {
     const container = e.target;
     const cards = container.querySelectorAll('.apple-card');
-    if (!cards.length) return;
+    if (!cards || !cards.length) return;
 
-    const containerCenter = container.scrollLeft + container.clientWidth / 2;
+    const containerRect = container.getBoundingClientRect();
+    const containerCenterX = containerRect.left + containerRect.width / 2;
+
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const distance = Math.abs(containerCenter - cardCenter);
+      const cardRect = card.getBoundingClientRect();
+      const cardCenterX = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(containerCenterX - cardCenterX);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
@@ -135,11 +138,7 @@ export default function Portfolio() {
     if (container) {
       const cards = container.querySelectorAll('.apple-card');
       if (cards[index]) {
-        const targetScrollLeft = cards[index].offsetLeft - (container.clientWidth - cards[index].offsetWidth) / 2;
-        container.scrollTo({
-          left: targetScrollLeft,
-          behavior: 'smooth'
-        });
+        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         setActiveIndex(index);
       }
     }
@@ -379,38 +378,38 @@ export default function Portfolio() {
             ))}
           </RevealStagger>
           
-          {/* Pagination Controls (2.5x Enlarged Apple Menu) */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '3.5rem' }}>
+          {/* Pagination Controls (1:1 Apple Proportions from Screenshot) */}
+          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
             {/* Dots Pill Container */}
-            <div style={{ display: 'flex', gap: '16px', padding: '16px 32px', background: '#E8E8ED', borderRadius: '50px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
                   style={{
-                    width: activeIndex === idx ? '80px' : '14px',
-                    height: '14px',
-                    borderRadius: activeIndex === idx ? '7px' : '50%',
-                    background: activeIndex === idx ? '#1D1D1F' : '#86868B',
+                    width: activeIndex === idx ? '36px' : '8px',
+                    height: '8px',
+                    borderRadius: activeIndex === idx ? '4px' : '50%',
+                    background: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
                     border: 'none',
                     padding: 0,
                     cursor: 'pointer',
-                    transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
+                    transition: 'all 0.35s cubic-bezier(0.25, 1, 0.5, 1)'
                   }}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
 
-            {/* Standalone Apple Play Button (2.5x Enlarged: 68px) */}
+            {/* Standalone Apple Play Button (44px) */}
             <button 
               onClick={() => scrollTo((activeIndex + 1) % realizedWebsites.length)}
               style={{ 
                 background: '#E8E8ED', 
                 border: 'none', 
                 borderRadius: '50%', 
-                width: '68px', 
-                height: '68px', 
+                width: '44px', 
+                height: '44px', 
                 cursor: 'pointer', 
                 display: 'flex', 
                 alignItems: 'center', 
@@ -420,7 +419,7 @@ export default function Portfolio() {
               }}
               aria-label="Next slide"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
             </button>
