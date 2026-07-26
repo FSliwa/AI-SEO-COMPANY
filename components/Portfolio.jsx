@@ -44,6 +44,7 @@ const realizedWebsites = [
     metricSubtitle: 'organic search impressions from zero visibility.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
+    layout: 'right-side',
     rightVisual: 'desktop',
     desktopCard: {
       tag: 'B2B INDUSTRY & SEO',
@@ -189,33 +190,33 @@ export default function Portfolio() {
                 
                 {item.layout === 'center' ? (
                   <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
-                    {/* Top Header Text (Centered like Apple Siri AI) */}
-                    <div style={{ maxWidth: '650px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
-                      <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                    {/* Top Header Text (Centered above screenshot) */}
+                    <div style={{ maxWidth: '700px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.25rem', zIndex: 2 }}>
+                      <div style={{ marginBottom: '1rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
-                      <div style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+                      <div style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '1rem' }}>
                         {item.metric} {item.metricSubtitle}
                       </div>
                       <button
                         className="btn btn-secondary"
-                        style={{ background: 'rgba(255,255,255,0.12)', color: '#FFF', borderColor: 'transparent', padding: '0.6rem 1.8rem', borderRadius: '50px', fontSize: '0.9rem' }}
+                        style={{ background: 'rgba(255,255,255,0.12)', color: '#FFF', borderColor: 'transparent', padding: '0.55rem 1.6rem', borderRadius: '50px', fontSize: '0.85rem' }}
                         onClick={() => setActiveModal(item)}
                       >
                         View Case Study
                       </button>
                     </div>
 
-                    {/* Centered 80% Width Image coming from bottom edge */}
+                    {/* Centered 80% Width Image coming from bottom edge with top browser UI cropped out */}
                     <motion.div 
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         width: '80%', 
-                        height: '320px', 
+                        height: '300px', 
                         position: 'absolute',
-                        bottom: '-4rem', // Comes from bottom edge of card
-                        left: '10%', // 80% width centered (10% + 80% + 10%)
+                        bottom: '-3.5rem', 
+                        left: '10%',
                         borderTopLeftRadius: '24px', 
                         borderTopRightRadius: '24px', 
                         overflow: 'hidden', 
@@ -225,7 +226,72 @@ export default function Portfolio() {
                         zIndex: 1
                       }}
                     >
-                      <img src={item.largeImage} alt={item.brandName} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                      <img 
+                        src={item.largeImage} 
+                        alt={item.brandName} 
+                        style={{ 
+                          width: '100%', 
+                          marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top
+                          height: 'calc(100% + 75px)', 
+                          objectFit: 'cover', 
+                          objectPosition: 'top' 
+                        }} 
+                      />
+                    </motion.div>
+                  </div>
+                ) : item.layout === 'right-side' ? (
+                  <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%', position: 'relative' }}>
+                    {/* Left Content */}
+                    <div style={{ flex: '0 0 45%', maxWidth: '480px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
+                      <div style={{ marginBottom: '2rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                        {item.brandLogo}
+                      </div>
+                      <div style={{ marginBottom: '3rem' }}>
+                        <div style={{ 
+                          fontSize: 'clamp(4rem, 7vw, 6rem)', 
+                          fontWeight: 700, 
+                          lineHeight: 1, 
+                          letterSpacing: '-0.04em',
+                          color: '#FFFFFF',
+                          marginBottom: '1rem'
+                        }}>
+                          {item.metric}
+                        </div>
+                        <div style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.6 }}>
+                          {item.metricSubtitle}
+                        </div>
+                      </div>
+                      <div>
+                        <button
+                          className="btn btn-secondary"
+                          style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent', padding: '0.8rem 2rem', borderRadius: '50px' }}
+                          onClick={() => setActiveModal(item)}
+                        >
+                          View Case Study
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Image coming out from the right side of the card */}
+                    <motion.div 
+                      animate={{ x: [0, 8, 0] }}
+                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+                      style={{ 
+                        position: 'absolute',
+                        right: '-3.5rem', // Coming out from right edge
+                        top: '10%',
+                        bottom: '10%',
+                        width: '52%',
+                        borderTopLeftRadius: '24px',
+                        borderBottomLeftRadius: '24px',
+                        overflow: 'hidden',
+                        boxShadow: '-20px 0 50px rgba(0,0,0,0.8)',
+                        border: '1px solid rgba(255,255,255,0.18)',
+                        borderRight: 'none',
+                        zIndex: 1
+                      }}
+                    >
+                      <img src={item.desktopCard.image} alt={item.brandName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </motion.div>
                   </div>
                 ) : (
@@ -305,18 +371,18 @@ export default function Portfolio() {
             ))}
           </RevealStagger>
           
-          {/* Pagination Controls (1:1 Apple Style) */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2rem' }}>
+          {/* Pagination Controls (1:1 Apple Proportional Size) */}
+          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '14px', marginTop: '2.5rem' }}>
             {/* Dots Pill Container */}
-            <div style={{ display: 'flex', gap: '10px', padding: '10px 18px', background: 'rgba(0, 0, 0, 0.06)', borderRadius: '30px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '12px', padding: '12px 22px', background: 'rgba(0, 0, 0, 0.06)', borderRadius: '30px', alignItems: 'center' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
                   style={{
-                    width: activeIndex === idx ? '36px' : '6px',
-                    height: '6px',
-                    borderRadius: activeIndex === idx ? '3px' : '50%',
+                    width: activeIndex === idx ? '42px' : '8px',
+                    height: '8px',
+                    borderRadius: activeIndex === idx ? '4px' : '50%',
                     background: activeIndex === idx ? '#1D1D1F' : '#86868B',
                     border: 'none',
                     padding: 0,
@@ -328,20 +394,20 @@ export default function Portfolio() {
               ))}
             </div>
 
-            {/* Standalone Apple Play Icon Circle Button */}
+            {/* Standalone Apple Play Icon Circle Button matching Pill Height */}
             <button style={{ 
               background: 'rgba(0, 0, 0, 0.06)', 
               border: 'none', 
               borderRadius: '50%', 
-              width: '28px', 
-              height: '28px', 
+              width: '36px', 
+              height: '36px', 
               cursor: 'pointer', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
               padding: '0'
             }}>
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
             </button>
