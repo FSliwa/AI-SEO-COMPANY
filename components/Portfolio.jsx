@@ -262,19 +262,21 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Image anchored flush right, 80% height, rounded left corners */}
+                    {/* Image anchored right, 90% height, vertically centered */}
                     <motion.div 
                       animate={{ scale: [1, 1.008, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
                         right: '-3.5rem', 
-                        bottom: '-4rem',
-                        height: '80%', 
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        height: '90%', 
                         width: 'calc(52% + 3.5rem)',
                         borderTopLeftRadius: '28px',
                         borderBottomLeftRadius: '28px',
-                        borderBottomRightRadius: '36px',
+                        borderTopRightRadius: '28px',
+                        borderBottomRightRadius: '28px',
                         overflow: 'hidden',
                         boxShadow: '-15px 0 40px rgba(0,0,0,0.5)',
                         zIndex: 1
