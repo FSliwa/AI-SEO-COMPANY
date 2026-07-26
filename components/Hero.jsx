@@ -23,8 +23,8 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
-      {/* Full-Viewport Title — OUTSIDE the container, staggered like KOTA */}
-      <div style={{ position: 'absolute', top: '38%', left: '0', transform: 'translateY(-50%)', width: '100%', zIndex: 4, padding: '0 3vw', display: 'flex', flexDirection: 'column' }}>
+      {/* Full-Viewport Title — staggered like KOTA */}
+      <div style={{ position: 'absolute', top: '28%', left: '0', width: '100%', zIndex: 4, padding: '0 3vw', display: 'flex', flexDirection: 'column' }}>
         <span style={{ 
           fontSize: 'clamp(4rem, 13vw, 15rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
@@ -45,7 +45,7 @@ export default function Hero() {
           letterSpacing: '-0.04em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
-          paddingLeft: '22vw'
+          paddingLeft: '25vw'
         }}>
           strony internetowe
         </span>
@@ -62,10 +62,15 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Bottom elements in container for proper margins */}
-      <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
+      {/* Right-side subtitle — positioned at same height as last title line, like KOTA's "A global branding agency..." */}
+      <div style={{ position: 'absolute', bottom: '18vh', right: '3vw', maxWidth: '320px', textAlign: 'left', zIndex: 5 }}>
+        <p style={{ fontSize: '0.95rem', color: '#E2E8F0', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
+          {t.subtitle}
+        </p>
+      </div>
 
-        {/* Bottom Left: Case Study — like KOTA's bottom-left logos */}
+      {/* Bottom-left: Case Study badges */}
+      <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
         <div style={{ position: 'absolute', bottom: '2rem', left: '0', maxWidth: '380px' }}>
           <span className="preview-badge" style={{ marginBottom: '0.75rem', display: 'inline-block' }}>GOOGLING CASE STUDY</span>
           <div style={{ fontSize: '2.5rem', fontWeight: 800, fontFamily: "'Space Grotesk', system-ui", color: '#38BDF8', lineHeight: 1.1, marginBottom: '0.25rem' }}>+8 113.8%</div>
@@ -74,14 +79,6 @@ export default function Hero() {
             {t.caseDesc}
           </p>
         </div>
-
-        {/* Bottom Right: Subtitle — like KOTA's "A global branding agency..." */}
-        <div style={{ position: 'absolute', bottom: '2rem', right: '0', maxWidth: '340px', textAlign: 'left' }}>
-          <p style={{ fontSize: '1rem', color: '#E2E8F0', fontWeight: 400, lineHeight: '1.6', margin: 0 }}>
-            {t.subtitle}
-          </p>
-        </div>
-
       </div>
     </section>
   );
