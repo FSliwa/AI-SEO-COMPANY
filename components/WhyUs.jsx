@@ -12,52 +12,52 @@ export default function WhyUs() {
   const whyUsCards = [
     {
       id: 1,
-      tag: lang === 'pl' ? 'WZRUST WIDOCZNOŚCI & WIZYT' : 'VISIBILITY & TRAFFIC SCALING',
-      metric: '2 800+',
-      title: lang === 'pl' ? 'Start od zerowej widoczności do 2,8 tys. wyświetleń.' : 'From zero visibility to 2,800+ impressions.',
+      tag: lang === 'pl' ? 'PEAK WIDOCZNOŚCI' : 'PEAK IMPRESSIONS',
+      metric: '500/dzień',
+      title: lang === 'pl' ? 'Szczyty sięgające 500 wyświetleń dziennie.' : 'Surging peaks reaching 500 daily views.',
       description: lang === 'pl' 
-        ? 'W kilkadziesiąt dni zbudowaliśmy ruch ~100 wyświetleń dziennie i 98 kliknięć z fraz komercyjnych. Zyskujesz stały dopływ klientów bez wydawania budżetu na płatne reklamy.'
-        : 'Built consistent traffic of ~100 views/day and 98 commercial clicks in weeks, turning an inactive site into an automatic lead generator without ad spend.',
+        ? 'Zaledwie w kilkadziesiąt dni wygenerowaliśmy skokowy przyrost ruchu do pół tysiąca wyświetleń dziennie z komercyjnych zapytań klientów.'
+        : 'Within weeks we unlocked surging search traffic reaching 500 daily impressions from targeted commercial buyer queries.',
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 2,
-      tag: lang === 'pl' ? 'KONWERSJA Z TELEFONÓW' : 'MOBILE CONVERSION & CALLS',
-      metric: '2x CTR',
-      title: lang === 'pl' ? 'Dwukrotnie wyższy współczynnik klikalności na smartfonach.' : '2x higher click-through rate on mobile devices.',
+      tag: lang === 'pl' ? 'POZYCJE FRAZ KOMERCYJNYCH' : 'KEYWORD RANKINGS',
+      metric: 'Poz. 17',
+      title: lang === 'pl' ? 'Główne frazy usługowe wprowadzane pod TOP 10.' : 'Target commercial terms entering near TOP 10.',
       description: lang === 'pl'
-        ? 'Z naszych analiz wynika, że użytkownicy mobilni klikają w numery i formularze 2-krotnie częściej. Dedykowane RWD chroni Cię przed utratą gotowych do zakupu klientów.'
-        : 'Analytics prove mobile users convert and call twice as often. Responsive RWD ensures zero lost inquiries from high-intent mobile visitors.',
+        ? 'Skupiamy optymalizację na frazach tuż przy szczycie wyników ("metalizacja próżniowa" poz. 17 i 19), generując najszybszy przyrost zapytań.'
+        : 'Prioritizing terms right near the top 10 rankings ("vacuum metallizing" rank 17 & 19) guarantees the fastest query volume growth.',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 3,
-      tag: lang === 'pl' ? 'LOKALNA TRÓJKA MAP GOOGLE' : 'GOOGLE MAPS TOP 3 PACK',
-      metric: 'TOP 3',
-      title: lang === 'pl' ? 'Niezależne źródło klientów Kupujących "tu i teraz".' : 'Independent local revenue stream from Google Maps.',
+      tag: lang === 'pl' ? 'RUCH Z BOGATYCH RYNKÓW' : 'HIGH-VALUE US TRAFFIC',
+      metric: '2k USA',
+      title: lang === 'pl' ? 'Ponad 2 000 wyświetleń z rynku amerykańskiego.' : 'Over 2,000 targeted views from US market.',
       description: lang === 'pl'
-        ? 'Optymalizacja wizytówki pod frazy (usługa + miasto), publikacje i zarządzenie opiniami pozwalają wejść do TOP 3 Map, generując telefony przed wejściem na stronę.'
-        : 'Optimizing Google Profile for local queries (service + city) captures high-intent buyers looking to buy immediately, triggering direct phone calls.',
+        ? 'Strategia podstron /en i /de otwiera firmę na zlecenia oraz wysokie marże eksportowe z najbogatszych gospodarek świata.'
+        : 'Parallel multilanguage architecture (/en & /de) opens your brand to lucrative export leads and dollars from global economies.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 4,
-      tag: lang === 'pl' ? 'EKSPANSJA ZAGRANICZNA (USA, DE)' : 'HIGH-VALUE MARKET EXPANSION',
-      metric: '+8 113%',
-      title: lang === 'pl' ? 'Przełomowa widoczność na rynku amerykańskim i niemieckim.' : 'Breakthrough visibility in US and German markets.',
+      tag: lang === 'pl' ? 'CTR PODSTRON OFERTOWYCH' : 'LANDING PAGE CTR',
+      metric: '4.62%',
+      title: lang === 'pl' ? 'CTR 4,62% na kluczowych treściach komercyjnych.' : '4.62% click-through rate on landing pages.',
       description: lang === 'pl'
-        ? 'Skok z 0 do 4,8 tys. wyświetleń w kwartale (3,7 tys. w 28 dni). Podstrony /en i /de w branżach o wysokich marżach otwierają firmę na przychody w twardej walucie.'
-        : 'Surging from 0 to 4.8k impressions/quarter (+8,113%). Deploying /en and /de versions unlocks high-margin export leads from wealthy international economies.',
+        ? 'Optymalizacja zaufania (UX/UI) sprawia, że klienci klikają dwa razy chętniej w ofertę niż wynosi średnia rynkowa konkurencji.'
+        : 'High-conversion UX/UI and strategic titles double average click-through rates compared to industry competitors.',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 5,
-      tag: lang === 'pl' ? 'DARMOWA STRONA & ZWROT ROI' : 'FREE WEBSITE & GUARANTEED ROI',
-      metric: '0 zł',
-      title: lang === 'pl' ? 'Nowa strona WWW za 0 zł i pełny zwrot w abonamencie.' : 'Free custom website with complete ROI package.',
+      tag: lang === 'pl' ? 'STRONA WWW ZA 0 ZŁ' : 'FREE CUSTOM WEBSITE',
+      metric: 'min. 3 mies.',
+      title: lang === 'pl' ? 'Darmowa strona WWW przy umowie na min. 3 miesiące.' : 'Free custom website with 3-mo min contract.',
       description: lang === 'pl'
-        ? 'Miesięczny koszt 3 075 zł brutto (2 500 zł netto przy umowie na min. 3 miesiące) obejmuje darmową stronę WWW, pełne SEO, Mapy Google i SSL bez ukrytych opłat.'
-        : '2 500 PLN net/mo (min. 3 mo contract) includes free website, full technical SEO, Google Maps, and SSL maintenance with zero hidden costs.',
+        ? 'Dedykowany projekt UX/UI z darmowym wykonaniem w pakiecie (2 500 zł netto / 3 075 zł brutto), pełnym SEO i opieki SSL bez ukrytych opłat.'
+        : 'Bespoke UX/UI website created for free in the package (2,500 PLN net), bundled with complete technical SEO, Maps, and SSL hosting.',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
@@ -227,7 +227,7 @@ export default function WhyUs() {
               {/* Top Graphic / Stat Visual Area */}
               <div style={{ 
                 width: '100%', 
-                height: '240px', 
+                height: '210px', 
                 borderRadius: '20px', 
                 background: item.bgVisual, 
                 display: 'flex', 
@@ -236,26 +236,27 @@ export default function WhyUs() {
                 alignItems: 'center',
                 position: 'relative',
                 overflow: 'hidden',
+                padding: '1.25rem 1rem',
                 border: '1px solid rgba(0,0,0,0.03)'
               }}>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>
+                <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'nowrap' }}>
                   {item.tag}
                 </div>
                 <motion.div 
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
-                  style={{ fontSize: 'clamp(4.5rem, 8vw, 6.5rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1, letterSpacing: '-0.04em' }}
+                  style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3.4rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
                 >
                   {item.metric}
                 </motion.div>
               </div>
 
               {/* Bottom Text Area matching Apple's formatting */}
-              <div style={{ marginTop: '1.5rem' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.35, marginBottom: '0.5rem' }}>
+              <div style={{ marginTop: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.35, marginBottom: '0.5rem' }}>
                   {item.title}
                 </h3>
-                <p style={{ fontSize: '0.98rem', color: '#515154', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
+                <p style={{ fontSize: '0.94rem', color: '#424245', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
                   {item.description}
                 </p>
               </div>
