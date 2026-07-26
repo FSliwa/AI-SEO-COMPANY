@@ -24,45 +24,62 @@ export default function Hero() {
       <div className="hero-overlay"></div>
 
       {/* Full-Viewport Title — staggered like KOTA */}
-      <div style={{ position: 'absolute', top: '22%', left: '0', width: '100%', zIndex: 4, padding: '0 max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))', display: 'flex', flexDirection: 'column', gap: '1vh' }}>
+      <div style={{ position: 'absolute', top: '22%', left: '0', width: '100%', zIndex: 4, padding: '0 max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))', display: 'flex', flexDirection: 'column', gap: '0.2vw' }}>
         <span style={{ 
-          fontSize: 'clamp(4rem, 12vw, 14rem)', 
+          fontSize: 'clamp(4.5rem, 13.5vw, 15rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 1, 
+          lineHeight: 0.95, 
           letterSpacing: '-0.04em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
-          alignSelf: 'flex-start',
+          paddingLeft: '0',
           whiteSpace: 'nowrap'
         }}>
           SEO i
         </span>
         <span style={{ 
-          fontSize: 'clamp(2.5rem, 7vw, 8rem)', 
+          fontSize: 'clamp(2.5rem, 6.8vw, 8.2rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 1, 
+          lineHeight: 0.95, 
           letterSpacing: '-0.04em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
-          alignSelf: 'flex-end',
+          paddingLeft: '22vw',
           whiteSpace: 'nowrap'
         }}>
           strony internetowe
         </span>
-        <span className="highlight" style={{ 
-          fontSize: 'clamp(2rem, 5.5vw, 6.5rem)', 
-          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-          fontWeight: 800, 
-          lineHeight: 1, 
-          letterSpacing: '-0.04em', 
-          textTransform: 'lowercase',
-          marginLeft: '5vw',
-          whiteSpace: 'nowrap'
-        }}>
-          które budują sprzedaż
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', paddingLeft: '8vw' }}>
+          <span className="highlight" style={{ 
+            fontSize: 'clamp(2.2rem, 5.8vw, 7.2rem)', 
+            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+            fontWeight: 800, 
+            lineHeight: 0.95, 
+            letterSpacing: '-0.04em', 
+            textTransform: 'lowercase',
+            whiteSpace: 'nowrap',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4em'
+          }}>
+            ktore 
+            {/* KOTA circular thumbnail preview badge */}
+            <span style={{ 
+              display: 'inline-block', 
+              width: '0.8em', 
+              height: '0.8em', 
+              borderRadius: '50%', 
+              backgroundImage: 'url("https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=300&q=80")', 
+              backgroundSize: 'cover', 
+              border: '2px solid rgba(255,255,255,0.8)',
+              boxShadow: '0 0 15px rgba(56,189,248,0.5)',
+              verticalAlign: 'middle'
+            }}></span>
+            budują sprzedaż
+          </span>
+        </div>
       </div>
 
       {/* Right-side subtitle — at same height as last title line, like KOTA's "A global branding agency..." */}
