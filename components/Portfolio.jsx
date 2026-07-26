@@ -190,33 +190,27 @@ export default function Portfolio() {
                 
                 {item.layout === 'center' ? (
                   <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
-                    {/* Top Header Text (Centered above screenshot) */}
-                    <div style={{ maxWidth: '700px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.25rem', zIndex: 2 }}>
-                      <div style={{ marginBottom: '1rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                    {/* Top Header Text (Centered above screenshot, no button) */}
+                    <div style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
+                      <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
-                      <div style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '1rem' }}>
+                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
                         {item.metric} {item.metricSubtitle}
                       </div>
-                      <button
-                        className="btn btn-secondary"
-                        style={{ background: 'rgba(255,255,255,0.12)', color: '#FFF', borderColor: 'transparent', padding: '0.55rem 1.6rem', borderRadius: '50px', fontSize: '0.85rem' }}
-                        onClick={() => setActiveModal(item)}
-                      >
-                        View Case Study
-                      </button>
                     </div>
 
-                    {/* Centered 80% Width Image coming from bottom edge with top browser UI cropped out */}
+                    {/* Centered 80% Width Image anchored FLUSH to bottom edge during pulse animation */}
                     <motion.div 
-                      animate={{ y: [0, -8, 0] }}
+                      animate={{ scaleY: [1, 1.04, 1], scaleX: [1, 1.02, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         width: '80%', 
-                        height: '300px', 
+                        height: '310px', 
                         position: 'absolute',
                         bottom: '-3.5rem', 
                         left: '10%',
+                        transformOrigin: 'bottom center', // Ensures bottom ALWAYS stays flush with card bottom
                         borderTopLeftRadius: '24px', 
                         borderTopRightRadius: '24px', 
                         overflow: 'hidden', 
@@ -372,15 +366,15 @@ export default function Portfolio() {
           </RevealStagger>
           
           {/* Pagination Controls (1:1 Apple Proportional Size) */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '14px', marginTop: '2.5rem' }}>
+          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', marginTop: '2.5rem' }}>
             {/* Dots Pill Container */}
-            <div style={{ display: 'flex', gap: '12px', padding: '12px 22px', background: 'rgba(0, 0, 0, 0.06)', borderRadius: '30px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '12px', padding: '14px 26px', background: 'rgba(0, 0, 0, 0.06)', borderRadius: '30px', alignItems: 'center' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
                   style={{
-                    width: activeIndex === idx ? '42px' : '8px',
+                    width: activeIndex === idx ? '54px' : '8px',
                     height: '8px',
                     borderRadius: activeIndex === idx ? '4px' : '50%',
                     background: activeIndex === idx ? '#1D1D1F' : '#86868B',
@@ -394,20 +388,20 @@ export default function Portfolio() {
               ))}
             </div>
 
-            {/* Standalone Apple Play Icon Circle Button matching Pill Height */}
+            {/* Standalone Apple Play Icon Circle Button matching Pill Height (40px) */}
             <button style={{ 
               background: 'rgba(0, 0, 0, 0.06)', 
               border: 'none', 
               borderRadius: '50%', 
-              width: '36px', 
-              height: '36px', 
+              width: '40px', 
+              height: '40px', 
               cursor: 'pointer', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
               padding: '0'
             }}>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
             </button>
