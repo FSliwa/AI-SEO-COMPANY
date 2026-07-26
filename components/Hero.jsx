@@ -28,19 +28,22 @@ export default function Hero() {
         {/* Massive Full-Width Left-Aligned Title (KOTA 'rebel against boring' style) */}
         <div style={{ position: 'absolute', top: '40%', left: '0', transform: 'translateY(-50%)', width: '100%', textAlign: 'left' }}>
           <h1 style={{ 
-            fontSize: 'clamp(4rem, 11vw, 12rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
             lineHeight: 0.85, 
-            letterSpacing: '-0.05em', 
+            letterSpacing: '-0.04em', 
             color: '#FFFFFF', 
             textTransform: 'lowercase',
             margin: 0,
-            width: '100%'
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column'
           }}>
-             branding<br/>
-             i strony internetowe<br/>
-             <span className="highlight" style={{ fontSize: 'clamp(4rem, 10.5vw, 11rem)', display: 'block' }}>które budują sprzedaż</span>
+             <span style={{ fontSize: 'clamp(3rem, 13.5vw, 160px)' }}>branding</span>
+             <span style={{ fontSize: 'clamp(3rem, 13.5vw, 160px)' }}>i strony</span>
+             <span style={{ fontSize: 'clamp(2.5rem, 9.6vw, 115px)' }}>internetowe</span>
+             <span className="highlight" style={{ fontSize: 'clamp(2.2rem, 8.8vw, 105px)' }}>które budują</span>
+             <span className="highlight" style={{ fontSize: 'clamp(3rem, 13.5vw, 160px)' }}>sprzedaż</span>
           </h1>
         </div>
 
