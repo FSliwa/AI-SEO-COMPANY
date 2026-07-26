@@ -262,16 +262,16 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Image anchored flush right, 80% of entire card height, right edge straight and pulled slightly out */}
+                    {/* Image anchored flush right, 80% of entire card height, right edge straight and pulled out to match Madame Thai gap */}
                     <motion.div 
                       animate={{ scale: [1, 1.008, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
-                        right: '-1.5rem', 
+                        right: '-3.5rem', 
                         top: '10%',
                         bottom: '10%',
-                        width: 'calc(52% + 1.5rem)',
+                        width: 'calc(46% + 3.5rem)',
                         borderTopLeftRadius: '24px',
                         borderBottomLeftRadius: '24px',
                         borderTopRightRadius: '0',
