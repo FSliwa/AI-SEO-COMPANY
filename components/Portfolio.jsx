@@ -50,7 +50,7 @@ const realizedWebsites = [
       tag: 'B2B INDUSTRY & SEO',
       title: 'METALIZACJA PRÓŻNIOWA & LAKIEROWANIE UV',
       subtitle: 'Skalowanie biznesu B2B na rynki zagraniczne (Niemcy, USA) dzięki nowej architekturze informacji i SEO.',
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
+      image: '/projects/staniax.png',
       btnText: 'View Case Study'
     },
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
