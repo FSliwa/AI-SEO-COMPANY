@@ -165,10 +165,11 @@ export default function Portfolio() {
             {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Analytics-backed growth metrics across our client case studies.'}
           </p>
         </Reveal>
+      </div>
 
-        {/* Apple-style Carousel */}
-        <div style={{ position: 'relative', width: '100%' }}>
-          <RevealStagger 
+      {/* Apple-style Carousel (Full Screen Width) */}
+      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
+        <RevealStagger 
             id="apple-carousel"
             onScroll={handleScroll}
             style={{ 
@@ -179,7 +180,9 @@ export default function Portfolio() {
               msOverflowStyle: 'none', 
               gap: '1.5rem',
               paddingBottom: '2rem',
-              scrollPaddingLeft: 'calc(50% - 42.5%)' // Centers the 85% wide cards perfectly
+              paddingLeft: 'calc(50vw - min(42.5vw, 600px))',
+              paddingRight: 'calc(50vw - min(42.5vw, 600px))',
+              scrollPaddingLeft: 'calc(50vw - min(42.5vw, 600px))' // Centers the cards perfectly
             }}
           >
             <style jsx>{`
@@ -190,7 +193,7 @@ export default function Portfolio() {
               <RevealItem 
                 key={item.id} 
                 style={{
-                  flex: '0 0 85%', // 85% width so adjacent cards peek out
+                  flex: '0 0 min(85vw, 1200px)', // Max width 1200px or 85% of screen
                   scrollSnapAlign: 'center',
                   background: '#000000', 
                   borderRadius: '36px',
@@ -286,12 +289,12 @@ export default function Portfolio() {
                     width: activeIndex === idx ? '40px' : '10px',
                     height: '10px',
                     borderRadius: '5px',
-                    background: activeIndex === idx ? '#4285F4' : '#C1C1C5',
+                    background: activeIndex === idx ? '#111111' : '#D2D2D7', // Dark Apple grey for active, light for inactive
                     border: 'none',
                     padding: 0,
                     cursor: 'pointer',
                     transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
-                    boxShadow: activeIndex === idx ? 'inset 0 1px 3px rgba(0,0,0,0.2)' : 'none'
+                    boxShadow: activeIndex === idx ? '0 1px 2px rgba(0,0,0,0.2)' : 'inset 0 1px 2px rgba(0,0,0,0.1)'
                   }}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
@@ -299,7 +302,7 @@ export default function Portfolio() {
               
               {/* Fake Apple Pause/Play icon */}
               <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '4px' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="#555" stroke="none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#333333" stroke="none">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
               </button>
@@ -307,7 +310,6 @@ export default function Portfolio() {
           </Reveal>
 
         </div>
-      </div>
 
       {/* Case Study Detail Modal (unchanged logic, just styled dark) */}
       {activeModal && (
