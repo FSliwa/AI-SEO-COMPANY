@@ -25,22 +25,23 @@ export default function Hero() {
 
       <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
         
-        {/* Full-Width Left-Aligned Title */}
-        <div style={{ position: 'absolute', top: '45%', left: '0', transform: 'translateY(-50%)', width: '100%', textAlign: 'left' }}>
+        {/* Massive Alternating Full-Width Title (KOTA 'rebel against boring' style) */}
+        <div style={{ position: 'absolute', top: '45%', left: '0', transform: 'translateY(-50%)', width: '100%', paddingRight: '1rem' }}>
           <h1 style={{ 
-            fontSize: 'clamp(3rem, 8vw, 8rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
-            lineHeight: 1.0, 
+            lineHeight: 0.9, 
             letterSpacing: '-0.04em', 
             color: '#FFFFFF', 
             textTransform: 'lowercase',
             margin: 0,
-            width: '100%'
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column'
           }}>
-             branding i<br/>
-             strony internetowe<br/>
-             <span className="highlight">które budują sprzedaż</span>
+             <span style={{ fontSize: 'clamp(3rem, 10vw, 10rem)', alignSelf: 'flex-start' }}>branding i</span>
+             <span style={{ fontSize: 'clamp(2.5rem, 8vw, 8rem)', alignSelf: 'flex-end' }}>strony internetowe</span>
+             <span className="highlight" style={{ fontSize: 'clamp(2.2rem, 7vw, 7rem)', alignSelf: 'flex-start' }}>które budują sprzedaż</span>
           </h1>
         </div>
 
