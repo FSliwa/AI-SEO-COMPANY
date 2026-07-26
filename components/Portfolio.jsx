@@ -41,7 +41,7 @@ const realizedWebsites = [
     url: 'https://www.staniax.pl/',
     category: 'seo',
     metric: '2.8k+',
-    metricSubtitle: 'organic search impressions from zero visibility.',
+    metricSubtitle: 'Skalowanie widoczności organicznej od zera. Pozycjonowanie i architektura informacji B2B na rynki zagraniczne (USA & DE).',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'right-side',
@@ -253,12 +253,12 @@ export default function Portfolio() {
                   </div>
                 ) : item.layout === 'right-side' ? (
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%', position: 'relative' }}>
-                    {/* Left Content */}
+                    {/* Left Content (Rich content, no button) */}
                     <div style={{ flex: '0 0 45%', maxWidth: '480px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
-                      <div style={{ marginBottom: '2rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                      <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
-                      <div style={{ marginBottom: '3rem' }}>
+                      <div>
                         <div style={{ 
                           fontSize: 'clamp(4rem, 7vw, 6rem)', 
                           fontWeight: 700, 
@@ -269,30 +269,21 @@ export default function Portfolio() {
                         }}>
                           {item.metric}
                         </div>
-                        <div style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.6 }}>
+                        <div style={{ fontSize: '1.25rem', color: '#D4D4D8', fontWeight: 500, lineHeight: 1.6 }}>
                           {item.metricSubtitle}
                         </div>
                       </div>
-                      <div>
-                        <button
-                          className="btn btn-secondary"
-                          style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent', padding: '0.8rem 2rem', borderRadius: '50px' }}
-                          onClick={() => setActiveModal(item)}
-                        >
-                          View Case Study
-                        </button>
-                      </div>
                     </div>
 
-                    {/* Image coming out from the right side of the card */}
+                    {/* Image coming out from the right side of the card, exactly 80% height of card */}
                     <motion.div 
-                      animate={{ x: [0, 8, 0] }}
+                      animate={{ x: [0, 6, 0] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
-                        right: '-3.5rem', // Coming out from right edge
+                        right: '-3.5rem', 
                         top: '10%',
-                        bottom: '10%',
+                        height: '80%', // 80% height of the card
                         width: '52%',
                         borderTopLeftRadius: '24px',
                         borderBottomLeftRadius: '24px',
