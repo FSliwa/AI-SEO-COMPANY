@@ -116,21 +116,19 @@ export default function Hero() {
       </div>
 
       {/* Bottom-left: Our Partners (KOTA Style) */}
-      <div style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '3rem', opacity: 0.7 }}>
-        {/* Digital Agency Network */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#FFFFFF', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.5rem', fontWeight: 800 }}>DAN</div>
-          <div style={{ fontSize: '0.6rem', color: '#FFFFFF', lineHeight: 1.1, textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>Digital Agency<br/>Network</div>
-        </div>
-        {/* Clutch */}
-        <span style={{ fontSize: '1.2rem', color: '#FFFFFF', fontWeight: 700, letterSpacing: '-0.02em', fontFamily: 'system-ui' }}>Clutch</span>
-        {/* AWWWARDS */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: '1rem', color: '#FFFFFF', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 }}>AWWWARDS.</span>
-          <span style={{ fontSize: '0.45rem', color: '#FFFFFF', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '2px' }}>Honorable Mention</span>
-        </div>
-        {/* FWA */}
-        <span style={{ fontSize: '1.2rem', color: '#FFFFFF', fontWeight: 800, fontStyle: 'italic', letterSpacing: '-0.05em' }}>FWA</span>
+      <div style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '2.5rem', opacity: 0.85, flexWrap: 'wrap' }}>
+        <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.1rem', color: '#FFFFFF', whiteSpace: 'nowrap' }}>
+          STANIAX
+        </span>
+        <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1rem', color: '#FFFFFF', whiteSpace: 'nowrap' }}>
+          ASE-BOT
+        </span>
+        <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '0.95rem', color: '#FFFFFF', whiteSpace: 'nowrap' }}>
+          MADAME THAI
+        </span>
+        <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 500, letterSpacing: '0.05em', fontSize: '0.9rem', color: '#FFFFFF', whiteSpace: 'nowrap' }}>
+          IRENEUSZ KOZERA
+        </span>
       </div>
     </section>
   );
