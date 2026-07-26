@@ -23,91 +23,78 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
-      {/* KOTA 1:1 Hero Typography & Subtitle Layout */}
+      {/* KOTA 1:1 Hero Typography — Equal Massive Font Sizes */}
       <div style={{ 
         position: 'absolute', 
         top: '20%', 
         left: '0', 
         width: '100%', 
         zIndex: 4, 
-        padding: '0 max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))', 
+        padding: '0 4vw', 
         display: 'flex', 
         flexDirection: 'column', 
         gap: '0.8vh' 
       }}>
-        {/* Line 1: SEO i (Starts at Left 0) */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <span style={{ 
-            fontSize: 'clamp(4.5rem, 12vw, 14rem)', 
-            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-            fontWeight: 800, 
-            lineHeight: 0.9, 
-            letterSpacing: '-0.04em', 
-            color: '#FFFFFF', 
-            textTransform: 'lowercase',
-            whiteSpace: 'nowrap'
-          }}>
-            SEO i
-          </span>
-        </div>
-
-        {/* Line 2: strony internetowe (Indented Left ~18vw, like KOTA's "against") */}
-        <div style={{ display: 'flex', paddingLeft: '16vw' }}>
-          <span style={{ 
-            fontSize: 'clamp(3.2rem, 8vw, 10rem)', 
-            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-            fontWeight: 800, 
-            lineHeight: 0.9, 
-            letterSpacing: '-0.04em', 
-            color: '#FFFFFF', 
-            textTransform: 'lowercase',
-            whiteSpace: 'nowrap'
-          }}>
-            strony internetowe
-          </span>
-        </div>
-
-        {/* Line 3 Row: które budują sprzedaż (Left 0) + Subtitle (Right) side-by-side */}
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'flex-end', 
-          width: '100%',
-          marginTop: '1vh',
-          flexWrap: 'nowrap',
-          gap: '1.5rem'
+        {/* Line 1: SEO i */}
+        <span style={{ 
+          fontSize: 'clamp(3.5rem, 8vw, 9.5rem)', 
+          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+          fontWeight: 800, 
+          lineHeight: 0.95, 
+          letterSpacing: '-0.04em', 
+          color: '#FFFFFF', 
+          textTransform: 'lowercase',
+          whiteSpace: 'nowrap',
+          paddingLeft: '0'
         }}>
-          {/* Left: które budują sprzedaż (Starts at Left 0, same as Line 1) */}
-          <span className="highlight" style={{ 
-            fontSize: 'clamp(1.8rem, 3.9vw, 4.8rem)', 
-            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-            fontWeight: 800, 
-            lineHeight: 0.95, 
-            letterSpacing: '-0.04em', 
-            textTransform: 'lowercase',
-            whiteSpace: 'nowrap',
-            flexShrink: 0
-          }}>
-            które budują sprzedaż
-          </span>
+          SEO i
+        </span>
 
-          {/* Right: Subtitle paragraph (Aligned with Line 3, right edge) */}
-          <div style={{ 
-            width: '300px', 
-            minWidth: '260px', 
-            maxWidth: '320px', 
-            textAlign: 'left', 
-            paddingBottom: '0.2rem', 
-            flexShrink: 0 
-          }}>
-            <p style={{ fontSize: '0.88rem', color: '#F1F5F9', fontWeight: 400, lineHeight: '1.6', margin: 0, whiteSpace: 'normal' }}>
-              {lang === 'pl' 
-                ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>masowo wybierana przez klientów.</strong></>
-                : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>converts customers at scale.</strong></>
-              }
-            </p>
-          </div>
-        </div>
+        {/* Line 2: strony internetowe (Indented like KOTA's "against") */}
+        <span style={{ 
+          fontSize: 'clamp(3.5rem, 8vw, 9.5rem)', 
+          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+          fontWeight: 800, 
+          lineHeight: 0.95, 
+          letterSpacing: '-0.04em', 
+          color: '#FFFFFF', 
+          textTransform: 'lowercase',
+          whiteSpace: 'nowrap',
+          paddingLeft: '18vw'
+        }}>
+          strony internetowe
+        </span>
+
+        {/* Line 3: które budują sprzedaż (Same font size as Line 1 & 2!) */}
+        <span className="highlight" style={{ 
+          fontSize: 'clamp(3.5rem, 8vw, 9.5rem)', 
+          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+          fontWeight: 800, 
+          lineHeight: 0.95, 
+          letterSpacing: '-0.04em', 
+          textTransform: 'lowercase',
+          whiteSpace: 'nowrap',
+          paddingLeft: '0'
+        }}>
+          które budują sprzedaż
+        </span>
+      </div>
+
+      {/* Right-side Subtitle Paragraph — Absolute Bottom Right (like KOTA) */}
+      <div style={{ 
+        position: 'absolute', 
+        bottom: '12vh', 
+        right: '4vw', 
+        maxWidth: '320px', 
+        textAlign: 'left', 
+        zIndex: 5 
+      }}>
+        <p style={{ fontSize: '0.92rem', color: '#F1F5F9', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
+          {lang === 'pl' 
+            ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>masowo wybierana przez klientów.</strong></>
+            : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>converts customers at scale.</strong></>
+          }
+        </p>
       </div>
 
       {/* Bottom-left: Award-style badges like KOTA's Clutch/Awwwards row */}
