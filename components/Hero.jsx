@@ -26,22 +26,22 @@ export default function Hero() {
       {/* KOTA 1:1 Hero Typography & Integrated Subtitle Row */}
       <div style={{ 
         position: 'absolute', 
-        top: '15%', 
+        top: '12%', 
         left: '0', 
         width: '100%', 
         zIndex: 4, 
         padding: '0 3vw', 
         display: 'flex', 
         flexDirection: 'column', 
-        gap: '0.5vh' 
+        gap: '0px' 
       }}>
-        {/* Line 1: SEO i (Left 0 like KOTA's 'rebel') */}
+        {/* Line 1: SEO i (Massive, Left 0) */}
         <span style={{ 
-          fontSize: 'clamp(4.8rem, 13.5vw, 16.5rem)', 
+          fontSize: 'clamp(6rem, 16vw, 19rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 0.92, 
-          letterSpacing: '-0.04em', 
+          lineHeight: 0.85, 
+          letterSpacing: '-0.06em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
@@ -50,50 +50,52 @@ export default function Hero() {
           SEO i
         </span>
 
-        {/* Line 2: strony internetowe (Indented 18vw like KOTA's 'against') */}
+        {/* Line 2: strony internetowe (Massive, Indented 12vw so it can be huge without overflowing) */}
         <span style={{ 
-          fontSize: 'clamp(3.5rem, 9.2vw, 11.5rem)', 
+          fontSize: 'clamp(4rem, 10.5vw, 13rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
-          lineHeight: 0.92, 
-          letterSpacing: '-0.04em', 
+          lineHeight: 0.85, 
+          letterSpacing: '-0.06em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
-          paddingLeft: '18vw'
+          paddingLeft: '12vw'
         }}>
           strony internetowe
         </span>
 
-        {/* Line 3 Row: które budują sprzedaż + Subtitle Paragraph (Locked side-by-side like KOTA!) */}
+        {/* Line 3 Row: które budują sprzedaż + Subtitle Paragraph */}
         <div style={{ 
           display: 'flex', 
-          alignItems: 'flex-end', 
+          alignItems: 'center', /* Vertically center the paragraph relative to Line 3, exactly like KOTA! */
           justifyContent: 'space-between', 
           width: '100%',
-          marginTop: '0.5vh'
+          marginTop: '0px'
         }}>
-          {/* Left: które budują sprzedaż (Left 0, aligned with Line 1 like KOTA's 'boring') */}
+          {/* Left: które budują sprzedaż */}
           <span className="highlight" style={{ 
-            fontSize: 'clamp(3rem, 7.2vw, 9rem)', 
+            fontSize: 'clamp(3.5rem, 8.5vw, 10.5rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
-            lineHeight: 0.92, 
-            letterSpacing: '-0.04em', 
+            lineHeight: 0.85, 
+            letterSpacing: '-0.06em', 
             textTransform: 'lowercase',
             whiteSpace: 'nowrap',
-            paddingLeft: '0'
+            paddingLeft: '0',
+            flexShrink: 1
           }}>
             które budują sprzedaż
           </span>
 
-          {/* Right: Subtitle paragraph (Locked to Line 3's bottom-right, exactly like KOTA!) */}
+          {/* Right: Subtitle paragraph (Locked to the right, vertically centered) */}
           <div style={{ 
-            maxWidth: '320px', 
+            width: '300px', 
+            minWidth: '240px',
             textAlign: 'left', 
-            paddingBottom: '0.4rem',
             paddingRight: '1vw',
-            flexShrink: 0
+            flexShrink: 0,
+            transform: 'translateY(10%)' /* Slight nudge down to perfectly match KOTA's visual center */
           }}>
             <p style={{ fontSize: '0.92rem', color: '#F1F5F9', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
               {lang === 'pl' 
