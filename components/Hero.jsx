@@ -25,41 +25,41 @@ export default function Hero() {
 
       <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
         
-        {/* Massive Alternating Full-Width Title (KOTA 'rebel against boring' style) */}
-        <div style={{ position: 'absolute', top: '45%', left: '0', transform: 'translateY(-50%)', width: '100%', paddingRight: '1rem' }}>
+        {/* Full-Width Left-Aligned Title */}
+        <div style={{ position: 'absolute', top: '45%', left: '0', transform: 'translateY(-50%)', width: '100%' }}>
           <h1 style={{ 
+            fontSize: 'clamp(3.5rem, 8.5vw, 9rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
-            lineHeight: 0.9, 
+            lineHeight: 1.0, 
             letterSpacing: '-0.04em', 
             color: '#FFFFFF', 
             textTransform: 'lowercase',
             margin: 0,
             width: '100%',
-            display: 'flex',
-            flexDirection: 'column'
+            textAlign: 'left'
           }}>
-             <span style={{ fontSize: 'clamp(3rem, 10vw, 10rem)', alignSelf: 'flex-start' }}>branding i</span>
-             <span style={{ fontSize: 'clamp(2.5rem, 8vw, 8rem)', alignSelf: 'flex-end' }}>strony internetowe</span>
-             <span className="highlight" style={{ fontSize: 'clamp(2.2rem, 7vw, 7rem)', alignSelf: 'flex-start' }}>które budują sprzedaż</span>
+             branding i<br/>
+             strony internetowe<br/>
+             <span className="highlight">które budują sprzedaż</span>
           </h1>
         </div>
 
         {/* Bottom Left: Case Study */}
-        <div style={{ position: 'absolute', bottom: '2rem', left: '0', maxWidth: '380px' }}>
+        <div style={{ position: 'absolute', bottom: '0', left: '0', maxWidth: '380px' }}>
           <div style={{ background: 'transparent', padding: '0', border: 'none', color: '#FFFFFF' }}>
              <span className="preview-badge" style={{ marginBottom: '1rem', display: 'inline-block' }}>GOOGLING CASE STUDY</span>
              <div style={{ fontSize: '3rem', fontWeight: 800, fontFamily: "'Space Grotesk', system-ui", color: '#38BDF8', lineHeight: 1.1, marginBottom: '0.5rem' }}>+8 113.8%</div>
              <div style={{ fontWeight: 700, fontSize: '1.25rem', marginBottom: '0.75rem' }}>{t.caseTitle}</div>
-             <p style={{ fontSize: '0.95rem', color: '#CBD5E1', lineHeight: '1.6' }}>
+             <p style={{ fontSize: '0.95rem', color: '#CBD5E1', lineHeight: '1.6', margin: 0 }}>
                {t.caseDesc}
              </p>
           </div>
         </div>
 
         {/* Bottom Right: Subtitle & CTA */}
-        <div style={{ position: 'absolute', bottom: '2rem', right: '0', maxWidth: '380px', textAlign: 'left' }}>
-          <p style={{ fontSize: '1.1rem', color: '#FFFFFF', fontWeight: 500, lineHeight: '1.6', marginBottom: '2rem' }}>
+        <div style={{ position: 'absolute', bottom: '0', right: '0', maxWidth: '400px', textAlign: 'left' }}>
+          <p style={{ fontSize: '1.1rem', color: '#FFFFFF', fontWeight: 500, lineHeight: '1.6', marginBottom: '1.5rem' }}>
             {t.subtitle}
           </p>
           
