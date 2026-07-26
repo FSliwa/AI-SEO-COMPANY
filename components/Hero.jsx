@@ -23,73 +23,84 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
-      {/* Full-Viewport Title — staggered like KOTA */}
-      <div style={{ position: 'absolute', top: '22%', left: '0', width: '100%', zIndex: 4, padding: '0 max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))', display: 'flex', flexDirection: 'column', gap: '0.2vw' }}>
-        <span style={{ 
-          fontSize: 'clamp(4.5rem, 13.5vw, 15rem)', 
-          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-          fontWeight: 800, 
-          lineHeight: 0.95, 
-          letterSpacing: '-0.04em', 
-          color: '#FFFFFF', 
-          textTransform: 'lowercase',
-          paddingLeft: '0',
-          whiteSpace: 'nowrap'
+      {/* KOTA 1:1 Hero Typography & Subtitle Layout */}
+      <div style={{ 
+        position: 'absolute', 
+        top: '20%', 
+        left: '0', 
+        width: '100%', 
+        zIndex: 4, 
+        padding: '0 max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: '0.8vh' 
+      }}>
+        {/* Line 1: SEO i (Starts at Left 0) */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <span style={{ 
+            fontSize: 'clamp(4.5rem, 12.5vw, 14.5rem)', 
+            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+            fontWeight: 800, 
+            lineHeight: 0.92, 
+            letterSpacing: '-0.04em', 
+            color: '#FFFFFF', 
+            textTransform: 'lowercase',
+            whiteSpace: 'nowrap'
+          }}>
+            SEO i
+          </span>
+        </div>
+
+        {/* Line 2: strony internetowe (Indented Left ~18vw, like KOTA's "against") */}
+        <div style={{ display: 'flex', paddingLeft: '18vw' }}>
+          <span style={{ 
+            fontSize: 'clamp(3rem, 7.5vw, 9.5rem)', 
+            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+            fontWeight: 800, 
+            lineHeight: 0.92, 
+            letterSpacing: '-0.04em', 
+            color: '#FFFFFF', 
+            textTransform: 'lowercase',
+            whiteSpace: 'nowrap'
+          }}>
+            strony internetowe
+          </span>
+        </div>
+
+        {/* Line 3 Row: które budują sprzedaż (Left 0) + Subtitle (Right) side-by-side */}
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'flex-end', 
+          width: '100%',
+          marginTop: '0.5vh',
+          flexWrap: 'nowrap',
+          gap: '2rem'
         }}>
-          SEO i
-        </span>
-        <span style={{ 
-          fontSize: 'clamp(2.5rem, 6.8vw, 8.2rem)', 
-          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-          fontWeight: 800, 
-          lineHeight: 0.95, 
-          letterSpacing: '-0.04em', 
-          color: '#FFFFFF', 
-          textTransform: 'lowercase',
-          paddingLeft: '22vw',
-          whiteSpace: 'nowrap'
-        }}>
-          strony internetowe
-        </span>
-        <div style={{ display: 'flex', alignItems: 'center', paddingLeft: '8vw' }}>
+          {/* Left: które budują sprzedaż (Starts at Left 0, same as Line 1) */}
           <span className="highlight" style={{ 
-            fontSize: 'clamp(2.2rem, 5.8vw, 7.2rem)', 
+            fontSize: 'clamp(2.2rem, 4.8vw, 6rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
             lineHeight: 0.95, 
             letterSpacing: '-0.04em', 
             textTransform: 'lowercase',
             whiteSpace: 'nowrap',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.4em'
+            flexShrink: 0
           }}>
-            ktore 
-            {/* KOTA circular thumbnail preview badge */}
-            <span style={{ 
-              display: 'inline-block', 
-              width: '0.8em', 
-              height: '0.8em', 
-              borderRadius: '50%', 
-              backgroundImage: 'url("https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=300&q=80")', 
-              backgroundSize: 'cover', 
-              border: '2px solid rgba(255,255,255,0.8)',
-              boxShadow: '0 0 15px rgba(56,189,248,0.5)',
-              verticalAlign: 'middle'
-            }}></span>
-            budują sprzedaż
+            które budują sprzedaż
           </span>
-        </div>
-      </div>
 
-      {/* Right-side subtitle — at same height as last title line, like KOTA's "A global branding agency..." */}
-      <div style={{ position: 'absolute', top: '68%', right: '3vw', maxWidth: '300px', textAlign: 'left', zIndex: 5 }}>
-        <p style={{ fontSize: '0.9rem', color: '#CBD5E1', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
-          {lang === 'pl' 
-            ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>masowo wybierana przez klientów.</strong></>
-            : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>converts customers at scale.</strong></>
-          }
-        </p>
+          {/* Right: Subtitle paragraph (Aligned with Line 3, right edge) */}
+          <div style={{ maxWidth: '320px', textAlign: 'left', paddingBottom: '0.4rem', flexShrink: 1 }}>
+            <p style={{ fontSize: '0.88rem', color: '#CBD5E1', fontWeight: 400, lineHeight: '1.6', margin: 0 }}>
+              {lang === 'pl' 
+                ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>masowo wybierana przez klientów.</strong></>
+                : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>converts customers at scale.</strong></>
+              }
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Bottom-left: Award-style badges like KOTA's Clutch/Awwwards row */}
