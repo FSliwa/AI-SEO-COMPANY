@@ -30,30 +30,52 @@ export default function TrustBar() {
     }
   ];
 
+  // Duplicate array multiple times for a long seamless loop
+  const marqueeLogos = [...partners, ...partners, ...partners, ...partners];
+
   return (
-    <section className="trust-bar">
+    <section className="trust-bar" style={{ overflow: 'hidden', padding: '3rem 0' }}>
+      <style>{`
+        @keyframes scrollMarquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .trust-marquee-wrapper {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .trust-marquee-track {
+          display: flex;
+          align-items: center;
+          gap: 4rem;
+          width: max-content;
+          animation: scrollMarquee 25s linear infinite;
+          padding: 1rem 0;
+        }
+        .trust-marquee-track:hover {
+          animation-play-state: paused;
+        }
+        .trust-marquee-track .trust-pill-tile {
+          min-width: max-content;
+        }
+      `}</style>
       <div className="container">
         <div className="trust-title">
           <span style={{ fontSize: '1.2rem' }}>✳</span> Our Clients & Partners
         </div>
-        <div style={{ width: '100%' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '1.5rem',
-            width: '100%'
-          }}>
-            {partners.map((partner, idx) => (
-              <div key={idx} className="trust-pill-tile" style={{ width: '100%', minWidth: '0' }}>
+        <div className="trust-marquee-wrapper">
+          <div className="trust-marquee-track">
+            {marqueeLogos.map((partner, idx) => (
+              <div key={idx} className="trust-pill-tile">
                 <span style={{ 
                   fontFamily: partner.font, 
                   fontWeight: partner.weight, 
                   letterSpacing: partner.tracking,
                   fontSize: partner.size,
-                  textAlign: 'center',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis'
+                  whiteSpace: 'nowrap'
                 }}>
                   {partner.name}
                 </span>

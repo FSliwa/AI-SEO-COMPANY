@@ -38,24 +38,52 @@ export default function Header() {
   return (
     <>
       <header className={`header ${scrolled ? 'scrolled' : ''}`} id="header">
-        <div className="container nav-container">
+        <div 
+          className="nav-container" 
+          style={{ 
+            maxWidth: scrolled ? 'var(--container-width)' : '100%', 
+            padding: scrolled ? '0 1.5rem' : '0 3vw',
+            margin: '0 auto',
+            width: '100%',
+            transition: 'max-width 0.7s cubic-bezier(0.7, 0, 0.3, 1), padding 0.7s cubic-bezier(0.7, 0, 0.3, 1)'
+          }}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href="#" className="logo">
+            <a href="#" className="logo" style={{ color: scrolled ? 'var(--color-text-dark)' : '#FFFFFF', transition: 'color 0.7s ease' }}>
               AI SEO COMPANY
             </a>
             
             {/* Header Award Badges */}
             <div className="header-award-badges">
-              <span className="badge-pill">AWWWARDS</span>
-              <span className="badge-pill">Clutch 4.9★</span>
+              <span className="badge-pill" style={{ 
+                color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
+                background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
+                borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
+                transition: 'all 0.7s ease'
+              }}>AWWWARDS</span>
+              <span className="badge-pill" style={{ 
+                color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
+                background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
+                borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
+                transition: 'all 0.7s ease'
+              }}>Clutch 4.9★</span>
             </div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             {/* Language Switcher (PL | EN) */}
-            <div className="lang-switcher">
+            <div className="lang-switcher" style={{
+              background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255,255,255,0.1)',
+              borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
+              color: scrolled ? 'var(--color-text-dark)' : '#FFFFFF',
+              transition: 'all 0.7s ease'
+            }}>
               <button
                 className={`lang-btn ${lang === 'pl' ? 'active' : ''}`}
+                style={{ 
+                  color: lang === 'pl' ? (scrolled ? 'var(--color-text-dark)' : '#FFFFFF') : (scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
+                  transition: 'color 0.7s ease' 
+                }}
                 onClick={() => toggleLang('pl')}
                 title="Polski"
               >
@@ -64,6 +92,10 @@ export default function Header() {
               <span style={{ opacity: 0.35 }}>|</span>
               <button
                 className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+                style={{ 
+                  color: lang === 'en' ? (scrolled ? 'var(--color-text-dark)' : '#FFFFFF') : (scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
+                  transition: 'color 0.7s ease' 
+                }}
                 onClick={() => toggleLang('en')}
                 title="English"
               >
@@ -72,13 +104,22 @@ export default function Header() {
             </div>
 
             {/* Header Hire Us Pill Button */}
-            <a href="#kontakt" className="header-hire-btn">
+            <a href="#kontakt" className="header-hire-btn" style={{
+              background: scrolled ? '#000000' : '#FFFFFF',
+              color: scrolled ? '#FFFFFF' : '#000000',
+              transition: 'all 0.7s ease'
+            }}>
               {t.cta}
             </a>
 
-            {/* KOTA Circular Menu Toggle Trigger (Black Circle with ≡ or ✕) */}
+            {/* KOTA Circular Menu Toggle Trigger */}
             <button
               className="kota-menu-trigger"
+              style={{
+                background: scrolled ? '#000000' : '#FFFFFF',
+                color: scrolled ? '#FFFFFF' : '#000000',
+                transition: 'all 0.7s ease'
+              }}
               onClick={toggleMenu}
               aria-label="Toggle Menu"
               title="Toggle Menu"
