@@ -12,52 +12,52 @@ export default function WhyUs() {
   const whyUsCards = [
     {
       id: 1,
-      tag: lang === 'pl' ? 'STRONA WWW ZA 0 ZŁ' : 'FREE WEBSITE PACKAGE',
-      metric: '0 zł',
-      title: lang === 'pl' ? 'Dedykowany projekt UX/UI i pełna responsywność RWD.' : 'Bespoke UX/UI design & full mobile responsiveness.',
+      tag: lang === 'pl' ? 'WZRUST WIDOCZNOŚCI & WIZYT' : 'VISIBILITY & TRAFFIC SCALING',
+      metric: '2 800+',
+      title: lang === 'pl' ? 'Start od zerowej widoczności do 2,8 tys. wyświetleń.' : 'From zero visibility to 2,800+ impressions.',
       description: lang === 'pl' 
-        ? 'Strona zaprojektowana pod konwersję (formularze, Analytics, Hotres, Social Media) z darmowym wykonaniem w pakiecie przy umowie na min. 3 miesiące.'
-        : 'High-conversion website with Google Analytics, Hotres & Social Media integrations, included for free with a min. 3-month contract.',
+        ? 'W kilkadziesiąt dni zbudowaliśmy ruch ~100 wyświetleń dziennie i 98 kliknięć z fraz komercyjnych. Zyskujesz stały dopływ klientów bez wydawania budżetu na płatne reklamy.'
+        : 'Built consistent traffic of ~100 views/day and 98 commercial clicks in weeks, turning an inactive site into an automatic lead generator without ad spend.',
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 2,
-      tag: lang === 'pl' ? 'POZYCJONOWANIE & SEO' : 'ADVANCED TECHNICAL SEO',
-      metric: 'TOP 10',
-      title: lang === 'pl' ? 'Audyt konkurencji, Core Web Vitals i Schema.org.' : 'Competitor audit, Core Web Vitals & Schema.org.',
+      tag: lang === 'pl' ? 'KONWERSJA Z TELEFONÓW' : 'MOBILE CONVERSION & CALLS',
+      metric: '2x CTR',
+      title: lang === 'pl' ? 'Dwukrotnie wyższy współczynnik klikalności na smartfonach.' : '2x higher click-through rate on mobile devices.',
       description: lang === 'pl'
-        ? 'Błyskawiczne ładowanie, architektura sitemap.xml i robots.txt, przyjazne URL, Rich Snippets w Google oraz pełna obsługa przekierowań 301/404.'
-        : 'Split-second speed, sitemap.xml architecture, SEO URLs, Schema Rich Snippets, and zero-downtime 301/404 redirect management.',
+        ? 'Z naszych analiz wynika, że użytkownicy mobilni klikają w numery i formularze 2-krotnie częściej. Dedykowane RWD chroni Cię przed utratą gotowych do zakupu klientów.'
+        : 'Analytics prove mobile users convert and call twice as often. Responsive RWD ensures zero lost inquiries from high-intent mobile visitors.',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 3,
-      tag: lang === 'pl' ? 'MAPY GOOGLE & OPINIE' : 'GOOGLE MAPS & REVIEWS',
+      tag: lang === 'pl' ? 'LOKALNA TRÓJKA MAP GOOGLE' : 'GOOGLE MAPS TOP 3 PACK',
       metric: 'TOP 3',
-      title: lang === 'pl' ? 'Dominacja w lokalnych wynikach i Mapach Google.' : 'Dominance in local search & Google Maps.',
+      title: lang === 'pl' ? 'Niezależne źródło klientów Kupujących "tu i teraz".' : 'Independent local revenue stream from Google Maps.',
       description: lang === 'pl'
-        ? 'Optymalizacja pod frazy lokalne (usługa + miasto), regularne publikacje zdjęć i aktualności oraz aktywne zarządzanie opiniami klientów.'
-        : 'Targeting local queries (service + city), publishing regular photos/updates, and proactively managing customer reviews.',
+        ? 'Optymalizacja wizytówki pod frazy (usługa + miasto), publikacje i zarządzenie opiniami pozwalają wejść do TOP 3 Map, generując telefony przed wejściem na stronę.'
+        : 'Optimizing Google Profile for local queries (service + city) captures high-intent buyers looking to buy immediately, triggering direct phone calls.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 4,
-      tag: lang === 'pl' ? 'ANALIZA SEARCH CONSOLE' : 'SEARCH CONSOLE ANALYTICS',
+      tag: lang === 'pl' ? 'EKSPANSJA ZAGRANICZNA (USA, DE)' : 'HIGH-VALUE MARKET EXPANSION',
       metric: '+8 113%',
-      title: lang === 'pl' ? 'Monitoring danych i budowa ruchu organicznego.' : 'Real-time data tracking & traffic expansion.',
+      title: lang === 'pl' ? 'Przełomowa widoczność na rynku amerykańskim i niemieckim.' : 'Breakthrough visibility in US and German markets.',
       description: lang === 'pl'
-        ? 'Co miesiąc priorytetyzujemy frazy znajdujące się najbliżej TOP 10 / TOP 20 Google, co gwarantuje najszybszy wzrost realnych zapytań.'
-        : 'Monthly optimization prioritizing near-TOP 10 terms to generate fast, high-intent commercial inquiry growth.',
+        ? 'Skok z 0 do 4,8 tys. wyświetleń w kwartale (3,7 tys. w 28 dni). Podstrony /en i /de w branżach o wysokich marżach otwierają firmę na przychody w twardej walucie.'
+        : 'Surging from 0 to 4.8k impressions/quarter (+8,113%). Deploying /en and /de versions unlocks high-margin export leads from wealthy international economies.',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 5,
-      tag: lang === 'pl' ? 'STAŁY KOSZT & RAPORTY' : 'TRANSPARENT COST & REPORTS',
-      metric: '3 075 zł',
-      title: lang === 'pl' ? '3 075 zł brutto/mies. (2 500 zł netto) — zero ukrytych opłat.' : '2 500 PLN net/mo — zero hidden fees.',
+      tag: lang === 'pl' ? 'DARMOWA STRONA & ZWROT ROI' : 'FREE WEBSITE & GUARANTEED ROI',
+      metric: '0 zł',
+      title: lang === 'pl' ? 'Nowa strona WWW za 0 zł i pełny zwrot w abonamencie.' : 'Free custom website with complete ROI package.',
       description: lang === 'pl'
-        ? 'Kwota obejmuje nową stronę WWW za 0 zł, pełne SEO, Mapy Google, opiekę techniczną z SSL oraz czytelny raport z wyników i pozycji co miesiąc.'
-        : 'Covers free website creation, full technical SEO, Google Maps management, SSL hosting, and transparent monthly performance reporting.',
+        ? 'Miesięczny koszt 3 075 zł brutto (2 500 zł netto przy umowie na min. 3 miesiące) obejmuje darmową stronę WWW, pełne SEO, Mapy Google i SSL bez ukrytych opłat.'
+        : '2 500 PLN net/mo (min. 3 mo contract) includes free website, full technical SEO, Google Maps, and SSL maintenance with zero hidden costs.',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
