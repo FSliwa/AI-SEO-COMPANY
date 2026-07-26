@@ -224,12 +224,12 @@ export default function WhyUs() {
                 overflow: 'hidden'
               }}
             >
-              {/* Top Graphic / Stat Visual Area */}
+              {/* Top Graphic / Stat Visual Area (Black tile with white numbers) */}
               <div style={{ 
                 width: '100%', 
                 height: '210px', 
                 borderRadius: '20px', 
-                background: item.bgVisual, 
+                background: '#000000', 
                 display: 'flex', 
                 flexDirection: 'column',
                 justifyContent: 'center', 
@@ -237,15 +237,16 @@ export default function WhyUs() {
                 position: 'relative',
                 overflow: 'hidden',
                 padding: '1.25rem 1rem',
-                border: '1px solid rgba(0,0,0,0.03)'
+                border: '1px solid rgba(255,255,255,0.08)',
+                boxShadow: '0 12px 35px rgba(0,0,0,0.15)'
               }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'nowrap' }}>
                   {item.tag}
                 </div>
                 <motion.div 
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
-                  style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3.4rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3.4rem)', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
                 >
                   {item.metric}
                 </motion.div>
