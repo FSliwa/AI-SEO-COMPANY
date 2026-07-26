@@ -27,91 +27,31 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
-      {/* KOTA 1:1 Exact Hero Layout */}
+      {/* Hero Typography SVG Graphic */}
       <div style={{ 
         position: 'absolute', 
-        top: '18%', 
-        left: '0', 
-        width: '100%', 
+        top: '15%', 
+        left: '50%', 
+        transform: 'translateX(-50%)', 
+        width: '95%', 
+        maxWidth: '1400px', 
         zIndex: 4, 
         display: 'flex', 
-        flexDirection: 'column', 
-        gap: '0px',
-        padding: '0' 
+        justifyContent: 'center', 
+        alignItems: 'center' 
       }}>
-        {/* Line 1: SEO i (rebel) */}
-        <Reveal delay={0.2} style={{ 
-          fontSize: 'clamp(5.5rem, 14vw, 16.5rem)', 
-          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-          fontWeight: 700, 
-          lineHeight: 0.82, 
-          letterSpacing: '-0.05em', 
-          color: '#FFFFFF', 
-          textTransform: 'lowercase',
-          whiteSpace: 'nowrap',
-          paddingLeft: '4vw' 
-        }}>
-          seo i
+        <Reveal delay={0.2} style={{ width: '100%' }}>
+          <img 
+            src="/hero-text.svg" 
+            alt="seo i strony internetowe które budują sprzedaż" 
+            style={{ 
+              width: '100%', 
+              height: 'auto', 
+              display: 'block',
+              filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.5))'
+            }} 
+          />
         </Reveal>
-
-        {/* Line 2: strony internetowe (against) */}
-        <Reveal delay={0.3} style={{ 
-          fontSize: 'clamp(5.5rem, 14vw, 16.5rem)', 
-          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-          fontWeight: 700, 
-          lineHeight: 0.82, 
-          letterSpacing: '-0.05em', 
-          color: '#FFFFFF', 
-          textTransform: 'lowercase',
-          whiteSpace: 'nowrap',
-          display: 'flex',
-          justifyContent: 'flex-start', 
-          paddingLeft: '22vw' 
-        }}>
-          strony internetowe
-        </Reveal>
-
-        {/* Line 3 Row: które budują sprzedaż + Subtitle Paragraph (boring) */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'flex-start', 
-          width: '100%',
-          marginTop: '0px',
-          paddingLeft: '4vw'
-        }}>
-          {/* Left: które budują sprzedaż */}
-          <Reveal delay={0.4} style={{ 
-            fontSize: 'clamp(5.5rem, 14vw, 16.5rem)', 
-            fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-            fontWeight: 700, 
-            lineHeight: 0.82, 
-            letterSpacing: '-0.05em', 
-            textTransform: 'lowercase',
-            whiteSpace: 'nowrap',
-            color: 'var(--color-cta)',
-            flexShrink: 0
-          }}>
-            które budują sprzedaż
-          </Reveal>
-
-          {/* Right: Subtitle paragraph (placed next to Line 3 just like KOTA) */}
-          <Reveal delay={0.5} style={{
-            width: '320px', 
-            minWidth: '240px',
-            textAlign: 'left', 
-            flexShrink: 0,
-            marginLeft: '4vw', 
-            transform: 'translateY(10%)' 
-          }}>
-            <p style={{ fontSize: '1rem', color: '#F1F5F9', fontWeight: 500, lineHeight: '1.55', margin: 0 }}>
-              {lang === 'pl' 
-                ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>masowo wybierana przez klientów.</strong></>
-                : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>converts customers at scale.</strong></>
-              }
-            </p>
-          </Reveal>
-        </div>
       </div>
 
       {/* Bottom-left: Our Partners (KOTA Style) */}
