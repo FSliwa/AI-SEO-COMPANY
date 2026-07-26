@@ -72,13 +72,14 @@ const realizedWebsites = [
     metricSubtitle: 'Organic Google Search Growth',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
-    layout: 'right-side',
+    layout: 'center-reverse',
     rightVisual: 'desktop',
+    largeImage: '/projects/Kafelek AISAS.png',
     desktopCard: {
       tag: 'FINTECH & GLOBAL SEO',
       title: 'AI FUTURES TRADING PLATFORM',
       subtitle: '+8 113.8% Google Search Growth in hyper-competitive US market.',
-      image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+      image: '/projects/Kafelek AISAS.png',
       btnText: 'View Case Study'
     },
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
@@ -248,6 +249,52 @@ export default function Portfolio() {
                         }} 
                       />
                     </motion.div>
+                  </div>
+                ) : item.layout === 'center-reverse' ? (
+                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
+                    {/* Centered 80% Width Image anchored FLUSH to TOP edge during pulse animation */}
+                    <motion.div 
+                      animate={{ scaleY: [1, 1.03, 1] }}
+                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+                      style={{ 
+                        width: '80%', 
+                        height: '320px', 
+                        position: 'absolute',
+                        top: '-4.1rem', // Flush with TOP card boundary
+                        left: '10%',
+                        transformOrigin: 'top center', // Ensures top ALWAYS stays flush with card top
+                        borderBottomLeftRadius: '24px', 
+                        borderBottomRightRadius: '24px', 
+                        borderTopLeftRadius: '0',
+                        borderTopRightRadius: '0',
+                        overflow: 'hidden', 
+                        boxShadow: '0 20px 60px rgba(0,0,0,0.9)', 
+                        border: '1px solid rgba(255,255,255,0.18)',
+                        borderTop: 'none',
+                        zIndex: 1
+                      }}
+                    >
+                      <img 
+                        src={item.largeImage} 
+                        alt={item.brandName} 
+                        style={{ 
+                          width: '100%', 
+                          height: '100%', 
+                          objectFit: 'cover', 
+                          objectPosition: 'top' 
+                        }} 
+                      />
+                    </motion.div>
+
+                    {/* Bottom Header Text */}
+                    <div style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2 }}>
+                      <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                        {item.brandLogo}
+                      </div>
+                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
+                        {item.id === 3 ? (lang === 'pl' ? '+8 113.8% Wzrost widoczności w Google w 3 miesiące.' : '+8 113.8% Organic Search Growth in 3 months.') : item.metricSubtitle}
+                      </div>
+                    </div>
                   </div>
                 ) : item.layout === 'right-side' ? (
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%' }}>
