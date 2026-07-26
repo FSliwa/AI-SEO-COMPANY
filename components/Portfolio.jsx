@@ -21,31 +21,8 @@ const realizedWebsites = [
     metricSubtitle: 'increase in organic visits after 1 month.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
-    rightVisual: 'phones',
-    screens: [
-      {
-        title: 'Authentic Thai',
-        subtitle: 'Restaurant Experience',
-        tag: 'GASTRONOMY',
-        image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-18px)'
-      },
-      {
-        title: 'Seamless Booking',
-        subtitle: 'High Conversion UI',
-        tag: 'UX/UI DESIGN',
-        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(16px)',
-        highlight: true
-      },
-      {
-        title: 'Brand Strategy',
-        subtitle: 'Digital Transformation',
-        tag: 'WEB DEV',
-        image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80',
-        transform: 'translateY(-6px)'
-      }
-    ],
+    rightVisual: 'single-large',
+    largeImage: '/projects/madame-thai-full.png',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
 - Responsywna wersja strony (RWD): Poprawne działanie na telefonach i tabletach — eliminacja utraconych zapytań od klientów mobilnych.
@@ -151,7 +128,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="portfolio" id="portfolio" style={{ background: 'transparent', padding: '8rem 0' }}>
+    <section className="portfolio" id="portfolio" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         
         {/* Top Header Row */}
@@ -159,10 +136,10 @@ export default function Portfolio() {
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> OUR RESULTS
           </div>
-          <h2 style={{ color: '#FFFFFF', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
+          <h2 style={{ color: '#1D1D1F', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
             {lang === 'pl' ? 'Explore what’s new for our clients.' : 'Explore what’s new for our clients.'}
           </h2>
-          <p style={{ color: '#A1A1AA', fontSize: '1.25rem', fontWeight: 500 }}>
+          <p style={{ color: '#6E6E73', fontSize: '1.25rem', fontWeight: 500 }}>
             {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Analytics-backed growth metrics across our client case studies.'}
           </p>
         </Reveal>
@@ -245,39 +222,60 @@ export default function Portfolio() {
                   </div>
                   
                   {/* Right Visual (Mockups) */}
-                  <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <motion.div 
-                      animate={{ y: [0, -15, 0] }}
-                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-                      style={{ position: 'relative', width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                    >
-                       {item.rightVisual === 'desktop' ? (
-                          <div style={{ width: '100%', maxWidth: '650px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                            <img src={item.desktopCard.image} alt="Desktop preview" style={{ width: '100%', display: 'block' }} />
-                          </div>
-                       ) : (
-                          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-                             {item.screens.map((screen, idx) => (
-                               <motion.div 
-                                 key={idx} 
-                                 animate={{ y: [0, idx % 2 === 0 ? 10 : -10, 0] }}
-                                 transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity, delay: idx * 0.5 }}
-                                 style={{ 
-                                   width: '180px', 
-                                   height: '360px', 
-                                   borderRadius: '28px', 
-                                   overflow: 'hidden', 
-                                   boxShadow: '0 20px 50px rgba(0,0,0,0.6)', 
-                                   border: '6px solid #222',
-                                   transform: screen.transform
-                                 }}
-                               >
-                                 <img src={screen.image} alt={screen.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                               </motion.div>
-                             ))}
-                          </div>
-                       )}
-                    </motion.div>
+                  <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', position: 'relative' }}>
+                    {item.rightVisual === 'single-large' ? (
+                      <motion.div 
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+                        style={{ 
+                          width: 'calc(100% - 2rem)', 
+                          height: '380px', 
+                          position: 'absolute',
+                          bottom: '-4rem', // Coming up from bottom of card and cut off at bottom edge
+                          borderTopLeftRadius: '24px', 
+                          borderTopRightRadius: '24px', 
+                          overflow: 'hidden', 
+                          boxShadow: '0 -15px 50px rgba(0,0,0,0.8)', 
+                          border: '1px solid rgba(255,255,255,0.18)',
+                          borderBottom: 'none'
+                        }}
+                      >
+                        <img src={item.largeImage} alt={item.brandName} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                      </motion.div>
+                    ) : (
+                      <motion.div 
+                        animate={{ y: [0, -15, 0] }}
+                        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+                        style={{ position: 'relative', width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      >
+                         {item.rightVisual === 'desktop' ? (
+                            <div style={{ width: '100%', maxWidth: '650px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                              <img src={item.desktopCard.image} alt="Desktop preview" style={{ width: '100%', display: 'block' }} />
+                            </div>
+                         ) : (
+                            <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+                               {item.screens.map((screen, idx) => (
+                                 <motion.div 
+                                   key={idx} 
+                                   animate={{ y: [0, idx % 2 === 0 ? 10 : -10, 0] }}
+                                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity, delay: idx * 0.5 }}
+                                   style={{ 
+                                     width: '180px', 
+                                     height: '360px', 
+                                     borderRadius: '28px', 
+                                     overflow: 'hidden', 
+                                     boxShadow: '0 20px 50px rgba(0,0,0,0.6)', 
+                                     border: '6px solid #222',
+                                     transform: screen.transform
+                                   }}
+                                 >
+                                   <img src={screen.image} alt={screen.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                 </motion.div>
+                               ))}
+                            </div>
+                         )}
+                      </motion.div>
+                    )}
                   </div>
                 </div>
               </RevealItem>
@@ -285,8 +283,8 @@ export default function Portfolio() {
           </RevealStagger>
           
           {/* Pagination Dots (Apple Style) */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginTop: '1.5rem' }}>
-            <div style={{ display: 'flex', gap: '12px', padding: '10px 14px', background: 'rgba(255,255,255,0.08)', borderRadius: '30px', alignItems: 'center', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.05)' }}>
+          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginTop: '2rem' }}>
+            <div style={{ display: 'flex', gap: '12px', padding: '10px 16px', background: 'rgba(0, 0, 0, 0.05)', borderRadius: '30px', alignItems: 'center', border: '1px solid rgba(0, 0, 0, 0.04)' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
@@ -295,7 +293,7 @@ export default function Portfolio() {
                     width: activeIndex === idx ? '40px' : '8px',
                     height: '8px',
                     borderRadius: '4px',
-                    background: activeIndex === idx ? '#FFFFFF' : 'rgba(255,255,255,0.3)',
+                    background: activeIndex === idx ? '#1D1D1F' : '#D2D2D7',
                     border: 'none',
                     padding: 0,
                     cursor: 'pointer',
@@ -305,21 +303,22 @@ export default function Portfolio() {
                 />
               ))}
               
-              {/* Apple Pause/Play icon - Circle with triangle */}
+              {/* Apple Play Icon Button */}
               <button style={{ 
-                background: 'transparent', 
-                border: '1px solid rgba(255,255,255,0.3)', 
+                background: '#FFFFFF', 
+                border: '1px solid #D2D2D7', 
                 borderRadius: '50%', 
-                width: '20px', 
-                height: '20px', 
+                width: '22px', 
+                height: '22px', 
                 cursor: 'pointer', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
                 marginLeft: '4px',
-                padding: '0'
+                padding: '0',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.08)'
               }}>
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="#FFFFFF" stroke="none" style={{ marginLeft: '1px' }}>
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
               </button>
