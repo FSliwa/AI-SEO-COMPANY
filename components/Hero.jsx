@@ -27,46 +27,46 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
-      {/* KOTA 1:1 Hero Typography & Integrated Subtitle Row */}
+      {/* KOTA 1:1 Exact Hero Layout */}
       <div style={{ 
         position: 'absolute', 
-        top: '20%', 
+        top: '18%', 
         left: '0', 
         width: '100%', 
         zIndex: 4, 
         display: 'flex', 
         flexDirection: 'column', 
         gap: '0px',
-        padding: '0 0' // We use specific paddingLeft per item to precisely control alignment
+        padding: '0' 
       }}>
         {/* Line 1: SEO i (rebel) */}
         <Reveal delay={0.2} style={{ 
-          fontSize: 'clamp(5rem, 15vw, 17rem)', 
+          fontSize: 'clamp(5.5rem, 14vw, 16.5rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 700, 
-          lineHeight: 0.8, 
-          letterSpacing: '-0.06em', 
+          lineHeight: 0.82, 
+          letterSpacing: '-0.05em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
-          paddingLeft: '10vw' // Base indent like 'rebel'
+          paddingLeft: '4vw' 
         }}>
           seo i
         </Reveal>
 
         {/* Line 2: strony internetowe (against) */}
         <Reveal delay={0.3} style={{ 
-          fontSize: 'clamp(3.5rem, 10vw, 12rem)', 
+          fontSize: 'clamp(5.5rem, 14vw, 16.5rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 700, 
-          lineHeight: 0.8, 
-          letterSpacing: '-0.06em', 
+          lineHeight: 0.82, 
+          letterSpacing: '-0.05em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
           display: 'flex',
-          justifyContent: 'flex-start', // Starts from the left
-          paddingLeft: '35vw' // Shifted right relative to line 1
+          justifyContent: 'flex-start', 
+          paddingLeft: '22vw' 
         }}>
           strony internetowe
         </Reveal>
@@ -77,35 +77,34 @@ export default function Hero() {
           alignItems: 'center', 
           justifyContent: 'flex-start', 
           width: '100%',
-          marginTop: '2vh'
+          marginTop: '0px',
+          paddingLeft: '4vw'
         }}>
           {/* Left: które budują sprzedaż */}
           <Reveal delay={0.4} style={{ 
-            fontSize: 'clamp(3rem, 8vw, 9.5rem)', 
+            fontSize: 'clamp(5.5rem, 14vw, 16.5rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 700, 
-            lineHeight: 0.8, 
-            letterSpacing: '-0.06em', 
+            lineHeight: 0.82, 
+            letterSpacing: '-0.05em', 
             textTransform: 'lowercase',
             whiteSpace: 'nowrap',
             color: 'var(--color-cta)',
-            flexShrink: 0,
-            paddingLeft: '10vw' // Same indent as 'rebel'
+            flexShrink: 0
           }}>
             które budują sprzedaż
           </Reveal>
 
-          {/* Right: Subtitle paragraph */}
+          {/* Right: Subtitle paragraph (placed next to Line 3 just like KOTA) */}
           <Reveal delay={0.5} style={{
-            width: '280px', 
-            minWidth: '220px',
+            width: '320px', 
+            minWidth: '240px',
             textAlign: 'left', 
             flexShrink: 0,
-            marginLeft: 'auto', // Pushes to the right
-            marginRight: '8vw', // But keeps it slightly away from the edge
-            transform: 'translateY(15%)' 
+            marginLeft: '4vw', 
+            transform: 'translateY(10%)' 
           }}>
-            <p style={{ fontSize: '0.92rem', color: '#F1F5F9', fontWeight: 500, lineHeight: '1.65', margin: 0 }}>
+            <p style={{ fontSize: '1rem', color: '#F1F5F9', fontWeight: 500, lineHeight: '1.55', margin: 0 }}>
               {lang === 'pl' 
                 ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>masowo wybierana przez klientów.</strong></>
                 : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>converts customers at scale.</strong></>

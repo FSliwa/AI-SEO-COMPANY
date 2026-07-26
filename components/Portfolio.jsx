@@ -41,7 +41,7 @@ const realizedWebsites = [
     url: 'https://www.staniax.pl/',
     category: 'seo',
     metric: '2.8k+',
-    metricSubtitle: 'Skalowanie widoczności organicznej od zera. Pozycjonowanie i architektura informacji B2B na rynki zagraniczne (USA & DE).',
+    metricSubtitle: 'organic search impressions from zero visibility.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'right-side',
@@ -253,37 +253,44 @@ export default function Portfolio() {
                   </div>
                 ) : item.layout === 'right-side' ? (
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%', position: 'relative' }}>
-                    {/* Left Content (Rich content, no button) */}
-                    <div style={{ flex: '0 0 45%', maxWidth: '480px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
+                    {/* Left Content (Enriched for Staniax, no button) */}
+                    <div style={{ flex: '0 0 45%', maxWidth: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
                       <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
-                      <div>
+                      <div style={{ marginBottom: '1.5rem' }}>
                         <div style={{ 
-                          fontSize: 'clamp(4rem, 7vw, 6rem)', 
+                          fontSize: 'clamp(3.5rem, 6.5vw, 5.5rem)', 
                           fontWeight: 700, 
                           lineHeight: 1, 
                           letterSpacing: '-0.04em',
                           color: '#FFFFFF',
-                          marginBottom: '1rem'
+                          marginBottom: '0.75rem'
                         }}>
                           {item.metric}
                         </div>
-                        <div style={{ fontSize: '1.25rem', color: '#D4D4D8', fontWeight: 500, lineHeight: 1.6 }}>
+                        <div style={{ fontSize: '1.15rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.5 }}>
                           {item.metricSubtitle}
                         </div>
                       </div>
+                      
+                      {/* Rich bullet points to fill the left side */}
+                      <div style={{ color: '#E4E4E7', fontSize: '0.95rem', lineHeight: '1.7', display: 'flex', flexDirection: 'column', gap: '0.6rem', borderLeft: '2px solid rgba(255,255,255,0.2)', paddingLeft: '1.25rem' }}>
+                        <div>• <strong>Wzrost widoczności organicznej B2B:</strong> Od zera do ponad 2,8k wyświetleń w Google.</div>
+                        <div>• <strong>Rynek międzynarodowy:</strong> Wdrożenie architektury wielojęzycznej (/de oraz /en).</div>
+                        <div>• <strong>Czołowe pozycje:</strong> TOP 20 na trudne frazy komercyjne metalizacji i lakierowania UV.</div>
+                      </div>
                     </div>
 
-                    {/* Image coming out from the right side of the card, exactly 80% height of card */}
+                    {/* Image coming out from the right side with 80% height of card */}
                     <motion.div 
-                      animate={{ x: [0, 6, 0] }}
+                      animate={{ x: [0, 8, 0] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         position: 'absolute',
                         right: '-3.5rem', 
                         top: '10%',
-                        height: '80%', // 80% height of the card
+                        height: '80%', // 80% height of card
                         width: '52%',
                         borderTopLeftRadius: '24px',
                         borderBottomLeftRadius: '24px',
