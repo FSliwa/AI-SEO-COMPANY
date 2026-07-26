@@ -126,111 +126,31 @@ const realizedWebsites = [
 
 export default function Portfolio() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
   const { lang } = useLanguage();
 
-  const [dragStartX, setDragStartX] = useState(0);
-  const [dragDistance, setDragDistance] = useState(0);
-
-  const handlePointerDown = (e) => {
-    if (isAnimating) return;
-    e.target.setPointerCapture(e.pointerId);
-    setDragStartX(e.clientX || (e.touches && e.touches[0].clientX) || 0);
-    setDragDistance(0);
+  const handleScroll = (e) => {
+    const container = e.target;
+    const scrollPosition = container.scrollLeft;
+    const itemWidth = container.clientWidth;
+    const newIndex = Math.round(scrollPosition / itemWidth);
+    if (newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
+    }
   };
 
-  const handlePointerMove = (e) => {
-    if (!dragStartX || isAnimating) return;
-    const currentX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
-    setDragDistance(currentX - dragStartX);
-  };
-
-  const handlePointerUp = (e) => {
-    if (e.pointerId) e.target.releasePointerCapture(e.pointerId);
-    if (dragStartX && dragDistance < -50) {
-      handleNextSlide();
+  const scrollTo = (index) => {
+    const container = document.getElementById('apple-carousel');
+    if (container) {
+      container.scrollTo({
+        left: index * container.clientWidth,
+        behavior: 'smooth'
+      });
     }
-    setDragStartX(0);
-    setDragDistance(0);
-  };
-
-  const handleNextSlide = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-
-    setTimeout(() => {
-      setActiveIndex((prev) => (prev + 1) % realizedWebsites.length);
-      setIsAnimating(false);
-      setDragStartX(0);
-      setDragDistance(0);
-    }, 400); // Wait for the slide-out animation to complete
-  };
-
-  const getCardStyle = (index) => {
-    const total = realizedWebsites.length;
-    const offset = (index - activeIndex + total) % total;
-
-    // Handle the card currently being dragged
-    if (offset === 0 && dragStartX && !isAnimating) {
-      return {
-        zIndex: 10,
-        transform: `translateX(${dragDistance}px) rotate(${dragDistance * 0.02}deg)`,
-        transition: 'none',
-        opacity: 1,
-        boxShadow: '0 30px 70px rgba(0, 0, 0, 0.15)'
-      };
-    }
-
-    // Default stacking styles
-    let scale = 1;
-    let translateX = 0;
-    let opacity = 1;
-    let zIndex = 10 - offset;
-    let shadow = '0 25px 60px rgba(0, 0, 0, 0.08)';
-    let transition = 'all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
-
-    if (offset === 1) {
-      scale = 0.95;
-      translateX = -40;
-      opacity = 0.95;
-      shadow = '0 15px 40px rgba(0, 0, 0, 0.05)';
-    } else if (offset === 2) {
-      scale = 0.90;
-      translateX = -80;
-      opacity = 0.7;
-      shadow = '0 10px 20px rgba(0, 0, 0, 0.03)';
-    } else if (offset > 2) {
-      scale = 0.85;
-      translateX = -100;
-      opacity = 0;
-      // If it's the card that just animated out, disable transition so it snaps back to the left invisibly
-      if (offset === total - 1) transition = 'none';
-    }
-
-    // When animating, the top card (offset 0) flies out
-    if (offset === 0 && isAnimating) {
-      return {
-        zIndex: 10,
-        transform: 'translateX(120%) rotate(5deg) scale(0.9)',
-        opacity: 0,
-        transition: 'all 0.4s cubic-bezier(0.8, 0, 0.2, 1)',
-        pointerEvents: 'none'
-      };
-    }
-
-    return {
-      zIndex,
-      transform: `translateX(${translateX}px) scale(${scale})`,
-      opacity,
-      boxShadow: shadow,
-      transition,
-      pointerEvents: offset === 0 ? 'auto' : 'none'
-    };
   };
 
   return (
-    <section className="portfolio-kota-section" id="portfolio">
+    <section className="portfolio" id="portfolio" style={{ background: '#000000', padding: '8rem 0' }}>
       <div className="container" style={{ maxWidth: '1280px' }}>
         
         {/* Top Header Row */}
@@ -238,141 +158,167 @@ export default function Portfolio() {
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> OUR RESULTS
           </div>
-          <h2>
-            {lang === 'pl' ? 'Projects — zrealizowane strony z mierzalnym efektem' : 'Projects — high-performance websites with measurable impact'}
+          <h2 style={{ color: '#FFFFFF', fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
+            {lang === 'pl' ? 'Projects — zrealizowane strony z mierzalnym efektem' : 'Explore what’s new for our clients.'}
           </h2>
-          <p>
-            {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}
+          <p style={{ color: '#A1A1AA', fontSize: '1.15rem' }}>
+            {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Analytics-backed growth metrics across our client case studies.'}
           </p>
         </Reveal>
 
-        {/* KOTA Full-Width True Card Deck Showcase */}
-        <RevealStagger className="kota-deck-container">
-          {realizedWebsites.map((item, index) => {
-            const offset = (index - activeIndex + realizedWebsites.length) % realizedWebsites.length;
+        {/* Apple-style Carousel */}
+        <div style={{ position: 'relative', width: '100%' }}>
+          <RevealStagger 
+            id="apple-carousel"
+            onScroll={handleScroll}
+            style={{ 
+              display: 'flex', 
+              overflowX: 'auto', 
+              scrollSnapType: 'x mandatory', 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none', 
+              gap: '1.5rem',
+              paddingBottom: '2rem'
+            }}
+          >
+            <style jsx>{`
+              #apple-carousel::-webkit-scrollbar { display: none; }
+            `}</style>
             
-            return (
+            {realizedWebsites.map((item, index) => (
               <RevealItem 
-                key={item.id}
-                className="kota-stacked-card"
-                style={getCardStyle(index)}
-                onPointerDown={offset === 0 ? handlePointerDown : undefined}
-                onPointerMove={offset === 0 ? handlePointerMove : undefined}
-                onPointerUp={offset === 0 ? handlePointerUp : undefined}
-                onPointerLeave={offset === 0 ? handlePointerUp : undefined}
-                onDragStart={(e) => e.preventDefault()}
+                key={item.id} 
+                style={{
+                  flex: '0 0 100%',
+                  scrollSnapAlign: 'center',
+                  background: '#111111', 
+                  borderRadius: '32px',
+                  padding: '4rem 3rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  minHeight: '600px',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
               >
-                <div className="kota-card-mesh-bg" style={{ background: item.meshBg }}></div>
-
-                {/* Left Content Side */}
-                <div className="kota-card-left" style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}>
-                  <div className="kota-brand-logo-wrapper">
-                    {item.brandLogo}
-                  </div>
-
-                  <div className="kota-metric-wrapper">
-                    <div
-                      className="kota-giant-metric"
-                      style={{
+                {/* Background glowing orb/mesh */}
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: item.meshBg, opacity: 0.25, filter: 'blur(60px)', pointerEvents: 'none' }}></div>
+                
+                <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', height: '100%' }}>
+                  
+                  {/* Left Content */}
+                  <div style={{ flex: '1 1 400px', maxWidth: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ marginBottom: '2rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                      {item.brandLogo}
+                    </div>
+                    
+                    <div style={{ marginBottom: '3rem' }}>
+                      <div style={{ 
+                        fontSize: 'clamp(4.5rem, 8vw, 7rem)', 
+                        fontWeight: 700, 
+                        lineHeight: 1, 
+                        letterSpacing: '-0.04em',
                         background: item.gradient,
                         WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent'
-                      }}
-                    >
-                      {item.metric}
-                    </div>
-                    <div className="kota-metric-subtext">
-                      {item.metricSubtitle}
-                    </div>
-                  </div>
-
-                  <button
-                    className="kota-view-project-btn"
-                    onClick={() => offset === 0 && setActiveModal(item)}
-                  >
-                    <span>View Project</span>
-                    <span className="kota-btn-arrow">→</span>
-                  </button>
-                </div>
-
-                {/* Right Side Visual Showcase */}
-                <div className="kota-card-right" style={{ pointerEvents: 'none' }}>
-                  {item.rightVisual === 'desktop' ? (
-                    <div className="kota-desktop-preview-card">
-                      <div className="kota-desktop-img" style={{ backgroundImage: `url('${item.desktopCard.image}')` }}></div>
-                      <div className="kota-desktop-content">
-                        <span className="kota-phone-tag">{item.desktopCard.tag}</span>
-                        <h3>{item.desktopCard.title}</h3>
-                        <p>{item.desktopCard.subtitle}</p>
-                        <button className="kota-desktop-pill-btn">
-                          {item.desktopCard.btnText}
-                        </button>
+                        WebkitTextFillColor: 'transparent',
+                        marginBottom: '1rem'
+                      }}>
+                        {item.metric}
+                      </div>
+                      <div style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.6 }}>
+                        {item.metricSubtitle}
                       </div>
                     </div>
-                  ) : (
-                    <div className="kota-phone-trio">
-                      {item.screens.map((screen, idx) => (
-                        <div
-                          key={idx}
-                          className={`kota-phone-card ${screen.highlight ? 'highlight-phone' : ''}`}
-                          style={{ transform: screen.transform }}
-                        >
-                          <div className="kota-phone-screen-top">
-                            <span className="kota-phone-dot"></span>
-                            <span className="kota-phone-tag">{screen.tag}</span>
-                          </div>
-                          <div
-                            className="kota-phone-img"
-                            style={{ backgroundImage: `url('${screen.image}')` }}
-                          ></div>
-                          <div className="kota-phone-body">
-                            <h4>{screen.title}</h4>
-                            <p>{screen.subtitle}</p>
-                          </div>
-                        </div>
-                      ))}
+                    
+                    <div>
+                      <button
+                        className="btn btn-secondary"
+                        style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent', padding: '0.8rem 2rem', borderRadius: '50px' }}
+                        onClick={() => setActiveModal(item)}
+                      >
+                        View Case Study
+                      </button>
                     </div>
-                  )}
+                  </div>
+                  
+                  {/* Right Visual (Mockups) */}
+                  <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div style={{ position: 'relative', width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                       {item.rightVisual === 'desktop' ? (
+                          <div style={{ width: '100%', maxWidth: '650px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <img src={item.desktopCard.image} alt="Desktop preview" style={{ width: '100%', display: 'block' }} />
+                          </div>
+                       ) : (
+                          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+                             {item.screens.map((screen, idx) => (
+                               <div key={idx} style={{ 
+                                 width: '180px', 
+                                 height: '360px', 
+                                 borderRadius: '28px', 
+                                 overflow: 'hidden', 
+                                 boxShadow: '0 20px 50px rgba(0,0,0,0.6)', 
+                                 border: '6px solid #222',
+                                 transform: screen.transform
+                               }}>
+                                 <img src={screen.image} alt={screen.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                               </div>
+                             ))}
+                          </div>
+                       )}
+                    </div>
+                  </div>
                 </div>
-
-                {/* Next Arrow Button (Only active on top card) */}
-                {offset === 0 && (
-                  <button
-                    className="kota-deck-next-btn"
-                    onClick={(e) => { e.stopPropagation(); handleNextSlide(); }}
-                    aria-label="Next Project"
-                    title="Next Project"
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                  </button>
-                )}
               </RevealItem>
-            );
-          })}
-        </RevealStagger>
+            ))}
+          </RevealStagger>
+          
+          {/* Pagination Dots (Apple Style) */}
+          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginTop: '1.5rem' }}>
+            <div style={{ display: 'flex', gap: '8px', padding: '10px 14px', background: 'rgba(255,255,255,0.1)', borderRadius: '30px', backdropFilter: 'blur(10px)' }}>
+              {realizedWebsites.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => scrollTo(idx)}
+                  style={{
+                    width: activeIndex === idx ? '32px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    background: activeIndex === idx ? '#FFF' : 'rgba(255,255,255,0.3)',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
+                  }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </Reveal>
+
+        </div>
       </div>
 
-      {/* Case Study Detail Modal */}
+      {/* Case Study Detail Modal (unchanged logic, just styled dark) */}
       {activeModal && (
-        <div className="modal-overlay" onClick={() => setActiveModal(null)}>
-          <div className="modal-container" onClick={e => e.stopPropagation()}>
-            <span className="modal-close" onClick={() => setActiveModal(null)}>&times;</span>
-            <h3 style={{ fontSize: '1.75rem', marginBottom: '0.25rem' }}>{activeModal.brandName}</h3>
-            <p style={{ fontSize: '0.95rem', color: 'var(--color-primary)', marginBottom: '1rem', fontWeight: '600' }}>
+        <div className="modal-overlay" onClick={() => setActiveModal(null)} style={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(12px)' }}>
+          <div className="modal-container" onClick={e => e.stopPropagation()} style={{ background: '#111', color: '#FFF', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px' }}>
+            <span className="modal-close" onClick={() => setActiveModal(null)} style={{ color: '#FFF' }}>&times;</span>
+            <h3 style={{ fontSize: '2rem', marginBottom: '0.25rem', fontWeight: 700 }}>{activeModal.brandName}</h3>
+            <p style={{ fontSize: '1rem', color: 'var(--color-primary)', marginBottom: '1.5rem', fontWeight: '600' }}>
               <a href={activeModal.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
                 {activeModal.url} ↗
               </a>
             </p>
-            <div style={{ fontSize: '2.8rem', fontWeight: '700', color: '#38BDF8', marginBottom: '1rem' }}>
+            <div style={{ fontSize: '3.5rem', fontWeight: '700', background: activeModal.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '1.5rem', lineHeight: 1 }}>
               {activeModal.metric}
             </div>
-            <div style={{ color: 'var(--color-text-main)', fontSize: '0.95rem', lineHeight: '1.7', whiteSpace: 'pre-line', marginBottom: '1.5rem', background: 'var(--color-bg-surface)', padding: '1.25rem', borderRadius: '12px' }}>
+            <div style={{ color: '#A1A1AA', fontSize: '1rem', lineHeight: '1.8', whiteSpace: 'pre-line', marginBottom: '2rem', background: 'rgba(255,255,255,0.05)', padding: '1.5rem', borderRadius: '16px' }}>
               {activeModal.details}
             </div>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <a href={activeModal.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+              <a href={activeModal.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent' }}>
                 Odwiedź witrynę na żywo ↗
               </a>
               <a href="#kontakt" className="btn btn-primary" onClick={() => setActiveModal(null)}>

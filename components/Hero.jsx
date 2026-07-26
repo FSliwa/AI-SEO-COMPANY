@@ -37,40 +37,42 @@ export default function Hero() {
       {/* KOTA 1:1 Hero Typography & Integrated Subtitle Row */}
       <div style={{ 
         position: 'absolute', 
-        top: '12%', 
+        top: '18%', 
         left: '0', 
         width: '100%', 
         zIndex: 4, 
-        padding: '0 3vw', 
         display: 'flex', 
         flexDirection: 'column', 
         gap: '0px' 
       }}>
         {/* Line 1: SEO i */}
         <Reveal delay={0.2} style={{ 
-          fontSize: 'clamp(3rem, 14vw, 15rem)', 
+          fontSize: 'clamp(5rem, 16vw, 19rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 700, 
-          lineHeight: 0.85, 
-          letterSpacing: '-0.06em', 
-          color: '#FFFFFF', 
-          textTransform: 'lowercase',
-          whiteSpace: 'nowrap'
-        }}>
-          SEO i
-        </Reveal>
-
-        {/* Line 2: strony internetowe */}
-        <Reveal delay={0.3} style={{ 
-          fontSize: 'clamp(2.5rem, 9.5vw, 10rem)', 
-          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
-          fontWeight: 700, 
-          lineHeight: 0.85, 
+          lineHeight: 0.8, 
           letterSpacing: '-0.06em', 
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
-          paddingLeft: '18vw'
+          paddingLeft: '3vw'
+        }}>
+          seo i
+        </Reveal>
+
+        {/* Line 2: strony internetowe */}
+        <Reveal delay={0.3} style={{ 
+          fontSize: 'clamp(3.5rem, 9.5vw, 11rem)', 
+          fontFamily: "'Space Grotesk', system-ui, sans-serif", 
+          fontWeight: 700, 
+          lineHeight: 0.8, 
+          letterSpacing: '-0.06em', 
+          color: '#FFFFFF', 
+          textTransform: 'lowercase',
+          whiteSpace: 'nowrap',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          paddingRight: '6vw'
         }}>
           strony internetowe
         </Reveal>
@@ -79,35 +81,36 @@ export default function Hero() {
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          justifyContent: 'space-between', 
+          justifyContent: 'flex-start', 
           width: '100%',
-          marginTop: '0px'
+          marginTop: '0px',
+          paddingLeft: '3vw',
+          gap: '6vw'
         }}>
           {/* Left: które budują sprzedaż */}
           <Reveal delay={0.4} style={{ 
-            fontSize: 'clamp(2rem, 7.5vw, 8.5rem)', 
+            fontSize: 'clamp(2.5rem, 7.5vw, 9rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 700, 
-            lineHeight: 0.85, 
+            lineHeight: 0.8, 
             letterSpacing: '-0.06em', 
             textTransform: 'lowercase',
             whiteSpace: 'nowrap',
             color: 'var(--color-cta)',
-            flexShrink: 1
+            flexShrink: 0
           }}>
             które budują sprzedaż
           </Reveal>
 
           {/* Right: Subtitle paragraph */}
           <Reveal delay={0.5} style={{
-            width: '300px', 
-            minWidth: '240px',
+            width: '280px', 
+            minWidth: '220px',
             textAlign: 'left', 
-            paddingRight: '1vw',
             flexShrink: 0,
-            transform: 'translateY(10%)' /* Slight nudge down to perfectly match KOTA's visual center */
+            transform: 'translateY(15%)' /* Slight nudge down to perfectly match KOTA's visual center */
           }}>
-            <p style={{ fontSize: '0.92rem', color: '#F1F5F9', fontWeight: 400, lineHeight: '1.65', margin: 0 }}>
+            <p style={{ fontSize: '0.92rem', color: '#F1F5F9', fontWeight: 500, lineHeight: '1.65', margin: 0 }}>
               {lang === 'pl' 
                 ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>masowo wybierana przez klientów.</strong></>
                 : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>converts customers at scale.</strong></>
@@ -117,20 +120,22 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom-left: Award-style badges like KOTA's Clutch/Awwwards row */}
-      <div style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '2rem' }}>
+      {/* Bottom-left: Our Partners (KOTA Style) */}
+      <div style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '3rem', opacity: 0.7 }}>
+        {/* Digital Agency Network */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '2rem', fontWeight: 800, fontFamily: "'Space Grotesk', system-ui", color: '#38BDF8' }}>+8 113%</span>
-          <span style={{ fontSize: '0.7rem', color: '#94A3B8', maxWidth: '90px', lineHeight: 1.3 }}>Google Search Growth</span>
+          <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#FFFFFF', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.5rem', fontWeight: 800 }}>DAN</div>
+          <div style={{ fontSize: '0.6rem', color: '#FFFFFF', lineHeight: 1.1, textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.05em' }}>Digital Agency<br/>Network</div>
         </div>
-        <div style={{ width: '1px', height: '28px', background: 'rgba(255,255,255,0.2)' }}></div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '0.75rem', color: '#94A3B8', letterSpacing: '0.05em' }}>★★★★★</span>
-          <span style={{ fontSize: '0.7rem', color: '#94A3B8', lineHeight: 1.3 }}>4.9/5 Clients</span>
+        {/* Clutch */}
+        <span style={{ fontSize: '1.2rem', color: '#FFFFFF', fontWeight: 700, letterSpacing: '-0.02em', fontFamily: 'system-ui' }}>Clutch</span>
+        {/* AWWWARDS */}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span style={{ fontSize: '1rem', color: '#FFFFFF', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 }}>AWWWARDS.</span>
+          <span style={{ fontSize: '0.45rem', color: '#FFFFFF', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '2px' }}>Honorable Mention</span>
         </div>
-        <div style={{ width: '1px', height: '28px', background: 'rgba(255,255,255,0.2)' }}></div>
-        <span style={{ fontSize: '0.75rem', color: '#94A3B8', letterSpacing: '0.05em', fontWeight: 600 }}>AWWWARDS</span>
-        <span style={{ fontSize: '0.75rem', color: '#94A3B8', letterSpacing: '0.05em', fontWeight: 600 }}>CLUTCH</span>
+        {/* FWA */}
+        <span style={{ fontSize: '1.2rem', color: '#FFFFFF', fontWeight: 800, fontStyle: 'italic', letterSpacing: '-0.05em' }}>FWA</span>
       </div>
     </section>
   );
