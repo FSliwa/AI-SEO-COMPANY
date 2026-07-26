@@ -8,7 +8,9 @@ const realizedWebsites = [
     id: 1,
     brandName: 'MADAME THAI',
     brandLogo: (
-      <img src="/logos/madame-thai.png" alt="Madame Thai" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
+      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+        MADAME THAI
+      </span>
     ),
     url: 'https://mada-me-thai-brown.vercel.app/',
     category: 'web',
@@ -51,7 +53,9 @@ const realizedWebsites = [
     id: 2,
     brandName: 'STANIAX',
     brandLogo: (
-      <img src="/logos/staniax.png" alt="Staniax" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
+      <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+        STANIAX
+      </span>
     ),
     url: 'https://www.staniax.pl/',
     category: 'seo',
@@ -76,7 +80,9 @@ const realizedWebsites = [
     id: 3,
     brandName: 'ASE-BOT',
     brandLogo: (
-      <img src="/logos/ase-bot.png" alt="ASE-BOT" style={{ height: '36px', width: 'auto', objectFit: 'contain', filter: 'invert(1)' }} />
+      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+        ASE-BOT
+      </span>
     ),
     url: 'https://ase-bot.live/',
     category: 'seo',
