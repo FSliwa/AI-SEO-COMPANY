@@ -75,33 +75,32 @@ export default function Hero() {
           width: '100%',
           marginTop: '1vh',
           flexWrap: 'nowrap',
-          gap: '2rem'
+          gap: '1.5rem'
         }}>
           {/* Left: które budują sprzedaż (Starts at Left 0, same as Line 1) */}
           <span className="highlight" style={{ 
-            fontSize: 'clamp(2.2rem, 4.2vw, 5.5rem)', 
+            fontSize: 'clamp(1.8rem, 3.9vw, 4.8rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
             lineHeight: 0.95, 
             letterSpacing: '-0.04em', 
             textTransform: 'lowercase',
             whiteSpace: 'nowrap',
-            flexShrink: 1,
-            overflow: 'hidden'
+            flexShrink: 0
           }}>
             które budują sprzedaż
           </span>
 
           {/* Right: Subtitle paragraph (Aligned with Line 3, right edge) */}
           <div style={{ 
-            width: '320px', 
-            minWidth: '270px', 
-            maxWidth: '340px', 
+            width: '300px', 
+            minWidth: '260px', 
+            maxWidth: '320px', 
             textAlign: 'left', 
             paddingBottom: '0.2rem', 
             flexShrink: 0 
           }}>
-            <p style={{ fontSize: '0.92rem', color: '#F1F5F9', fontWeight: 400, lineHeight: '1.65', margin: 0, whiteSpace: 'normal' }}>
+            <p style={{ fontSize: '0.88rem', color: '#F1F5F9', fontWeight: 400, lineHeight: '1.6', margin: 0, whiteSpace: 'normal' }}>
               {lang === 'pl' 
                 ? <>Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>masowo wybierana przez klientów.</strong></>
                 : <>We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>converts customers at scale.</strong></>
