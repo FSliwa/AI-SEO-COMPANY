@@ -111,21 +111,34 @@ export default function Portfolio() {
 
   const handleScroll = (e) => {
     const container = e.target;
-    const scrollPosition = container.scrollLeft;
-    const itemWidth = container.clientWidth;
-    const newIndex = Math.round(scrollPosition / itemWidth);
-    if (newIndex !== activeIndex) {
-      setActiveIndex(newIndex);
+    const cards = container.querySelectorAll('.apple-card');
+    if (!cards.length) return;
+
+    const containerCenter = container.scrollLeft + container.clientWidth / 2;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    cards.forEach((card, idx) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(containerCenter - cardCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = idx;
+      }
+    });
+
+    if (closestIndex !== activeIndex) {
+      setActiveIndex(closestIndex);
     }
   };
 
   const scrollTo = (index) => {
     const container = document.getElementById('apple-carousel');
     if (container) {
-      container.scrollTo({
-        left: index * container.clientWidth,
-        behavior: 'smooth'
-      });
+      const cards = container.querySelectorAll('.apple-card');
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
     }
   };
 
@@ -172,6 +185,7 @@ export default function Portfolio() {
             {realizedWebsites.map((item, index) => (
               <RevealItem 
                 key={item.id} 
+                className="apple-card"
                 style={{
                   flex: '0 0 min(85vw, 1200px)', // Max width 1200px or 85% of screen
                   scrollSnapAlign: 'center',
@@ -202,13 +216,13 @@ export default function Portfolio() {
 
                     {/* Centered 80% Width Image anchored FLUSH to bottom edge during pulse animation */}
                     <motion.div 
-                      animate={{ scaleY: [1, 1.04, 1], scaleX: [1, 1.02, 1] }}
+                      animate={{ scaleY: [1, 1.03, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
                         width: '80%', 
-                        height: '310px', 
+                        height: '320px', 
                         position: 'absolute',
-                        bottom: '-3.5rem', 
+                        bottom: '-4.1rem', // Flush with bottom card boundary
                         left: '10%',
                         transformOrigin: 'bottom center', // Ensures bottom ALWAYS stays flush with card bottom
                         borderTopLeftRadius: '24px', 
@@ -389,18 +403,23 @@ export default function Portfolio() {
             </div>
 
             {/* Standalone Apple Play Icon Circle Button matching Pill Height (40px) */}
-            <button style={{ 
-              background: 'rgba(0, 0, 0, 0.06)', 
-              border: 'none', 
-              borderRadius: '50%', 
-              width: '40px', 
-              height: '40px', 
-              cursor: 'pointer', 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center', 
-              padding: '0'
-            }}>
+            <button 
+              onClick={() => scrollTo((activeIndex + 1) % realizedWebsites.length)}
+              style={{ 
+                background: 'rgba(0, 0, 0, 0.06)', 
+                border: 'none', 
+                borderRadius: '50%', 
+                width: '40px', 
+                height: '40px', 
+                cursor: 'pointer', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                padding: '0',
+                transition: 'background 0.2s ease'
+              }}
+              aria-label="Next slide"
+            >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '1px' }}>
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
