@@ -25,20 +25,22 @@ export default function Hero() {
 
       <div className="container" style={{ position: 'relative', zIndex: 4, height: '100%', width: '100%' }}>
         
-        {/* Massive Centered Title (KOTA 'rebel against boring' style) */}
-        <div style={{ position: 'absolute', top: '45%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', textAlign: 'center' }}>
+        {/* Massive Full-Width Left-Aligned Title (KOTA 'rebel against boring' style) */}
+        <div style={{ position: 'absolute', top: '40%', left: '0', transform: 'translateY(-50%)', width: '100%', textAlign: 'left' }}>
           <h1 style={{ 
-            fontSize: 'clamp(4rem, 9vw, 9rem)', 
+            fontSize: 'clamp(4rem, 11vw, 12rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 800, 
-            lineHeight: 0.95, 
+            lineHeight: 0.85, 
             letterSpacing: '-0.05em', 
             color: '#FFFFFF', 
             textTransform: 'lowercase',
-            margin: 0
+            margin: 0,
+            width: '100%'
           }}>
-             branding<br/>i strony internetowe<br/>
-             <span className="highlight" style={{ fontSize: 'clamp(3rem, 7vw, 7rem)' }}>które budują sprzedaż</span>
+             branding<br/>
+             i strony internetowe<br/>
+             <span className="highlight" style={{ fontSize: 'clamp(4rem, 10.5vw, 11rem)', display: 'block' }}>które budują sprzedaż</span>
           </h1>
         </div>
 
