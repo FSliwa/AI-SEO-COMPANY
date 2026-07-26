@@ -26,7 +26,7 @@ export default function Hero() {
       {/* Full-Viewport Title — OUTSIDE the container, staggered like KOTA */}
       <div style={{ position: 'absolute', top: '38%', left: '0', transform: 'translateY(-50%)', width: '100%', zIndex: 4, padding: '0 3vw', display: 'flex', flexDirection: 'column' }}>
         <span style={{ 
-          fontSize: 'clamp(3.5rem, 9.5vw, 11rem)', 
+          fontSize: 'clamp(4rem, 13vw, 15rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
           lineHeight: 0.95, 
@@ -38,7 +38,7 @@ export default function Hero() {
           branding i
         </span>
         <span style={{ 
-          fontSize: 'clamp(3.5rem, 9.5vw, 11rem)', 
+          fontSize: 'clamp(3rem, 8.5vw, 10rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
           lineHeight: 0.95, 
@@ -50,7 +50,7 @@ export default function Hero() {
           strony internetowe
         </span>
         <span className="highlight" style={{ 
-          fontSize: 'clamp(3rem, 8vw, 9.5rem)', 
+          fontSize: 'clamp(3rem, 9vw, 10.5rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 800, 
           lineHeight: 0.95, 
