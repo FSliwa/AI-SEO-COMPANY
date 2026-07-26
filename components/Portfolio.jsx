@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
@@ -207,8 +208,31 @@ export default function Portfolio() {
                   overflow: 'hidden'
                 }}
               >
-                {/* Background glowing orb/mesh */}
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: item.meshBg, opacity: 0.25, filter: 'blur(60px)', pointerEvents: 'none' }}></div>
+                {/* Animated glowing orb/mesh */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.25, 1], 
+                    opacity: [0.15, 0.35, 0.15],
+                    rotate: [0, 10, -10, 0]
+                  }}
+                  transition={{ 
+                    duration: 8, 
+                    ease: 'easeInOut', 
+                    repeat: Infinity,
+                    repeatType: 'reverse'
+                  }}
+                  style={{ 
+                    position: 'absolute', 
+                    top: '-10%', 
+                    left: '-10%', 
+                    right: '-10%', 
+                    bottom: '-10%', 
+                    background: item.meshBg, 
+                    filter: 'blur(80px)', 
+                    pointerEvents: 'none',
+                    zIndex: 0
+                  }} 
+                />
                 
                 <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', height: '100%' }}>
                   

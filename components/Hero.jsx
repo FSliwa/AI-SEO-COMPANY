@@ -37,11 +37,11 @@ export default function Hero() {
         display: 'flex', 
         flexDirection: 'column', 
         gap: '0px',
-        padding: '0 5vw' // Base padding for the whole container (like KOTA)
+        padding: '0 8vw' // Increased base padding for tighter clustering
       }}>
         {/* Line 1: SEO i */}
         <Reveal delay={0.2} style={{ 
-          fontSize: 'clamp(5rem, 15vw, 18rem)', 
+          fontSize: 'clamp(5rem, 15vw, 17rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 700, 
           lineHeight: 0.8, 
@@ -49,7 +49,7 @@ export default function Hero() {
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
-          paddingLeft: '0' // Aligned strictly left
+          paddingLeft: '0' 
         }}>
           seo i
         </Reveal>
@@ -65,8 +65,8 @@ export default function Hero() {
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
           display: 'flex',
-          justifyContent: 'center', // Centers like "against"
-          paddingLeft: '8vw' // Slight push to the right from center
+          justifyContent: 'center', 
+          paddingRight: '10vw' // Shifted left to match "against"
         }}>
           strony internetowe
         </Reveal>
@@ -75,13 +75,13 @@ export default function Hero() {
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          justifyContent: 'space-between', // Push paragraph to right edge
+          justifyContent: 'flex-start', // Don't space-between, use margins
           width: '100%',
-          marginTop: '0px'
+          marginTop: '2vh'
         }}>
           {/* Left: które budują sprzedaż */}
           <Reveal delay={0.4} style={{ 
-            fontSize: 'clamp(3rem, 8.5vw, 10rem)', 
+            fontSize: 'clamp(3rem, 8vw, 9.5rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 700, 
             lineHeight: 0.8, 
@@ -89,7 +89,8 @@ export default function Hero() {
             textTransform: 'lowercase',
             whiteSpace: 'nowrap',
             color: 'var(--color-cta)',
-            flexShrink: 0
+            flexShrink: 0,
+            paddingLeft: '2vw' // Slight indent like "boring"
           }}>
             które budują sprzedaż
           </Reveal>
@@ -100,7 +101,9 @@ export default function Hero() {
             minWidth: '220px',
             textAlign: 'left', 
             flexShrink: 0,
-            transform: 'translateY(15%)' /* Slight nudge down to perfectly match KOTA's visual center */
+            marginLeft: 'auto', // Pushes to the right
+            marginRight: '5vw', // But keeps it away from the edge
+            transform: 'translateY(15%)' 
           }}>
             <p style={{ fontSize: '0.92rem', color: '#F1F5F9', fontWeight: 500, lineHeight: '1.65', margin: 0 }}>
               {lang === 'pl' 
