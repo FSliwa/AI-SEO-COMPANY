@@ -24,30 +24,24 @@ export default function Hero() {
       {/* Subtle Starfield Background */}
       <div className="hero-stars-bg"></div>
 
-      {/* Hero Badge Tag */}
-      <Reveal delay={0.1} style={{ position: 'absolute', top: '5%', width: '100%', display: 'flex', justifyContent: 'center', zIndex: 4 }}>
-        <div className="section-tag hero-badge-tag">
-          <span className="asterisk">✳</span> {t.tag}
-        </div>
-      </Reveal>
-
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
       {/* KOTA 1:1 Hero Typography & Integrated Subtitle Row */}
       <div style={{ 
         position: 'absolute', 
-        top: '18%', 
+        top: '20%', 
         left: '0', 
         width: '100%', 
         zIndex: 4, 
         display: 'flex', 
         flexDirection: 'column', 
-        gap: '0px' 
+        gap: '0px',
+        padding: '0 5vw' // Base padding for the whole container (like KOTA)
       }}>
         {/* Line 1: SEO i */}
         <Reveal delay={0.2} style={{ 
-          fontSize: 'clamp(5rem, 16vw, 19rem)', 
+          fontSize: 'clamp(5rem, 15vw, 18rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 700, 
           lineHeight: 0.8, 
@@ -55,14 +49,14 @@ export default function Hero() {
           color: '#FFFFFF', 
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
-          paddingLeft: '3vw'
+          paddingLeft: '0' // Aligned strictly left
         }}>
           seo i
         </Reveal>
 
         {/* Line 2: strony internetowe */}
         <Reveal delay={0.3} style={{ 
-          fontSize: 'clamp(3.5rem, 9.5vw, 11rem)', 
+          fontSize: 'clamp(3.5rem, 10vw, 12rem)', 
           fontFamily: "'Space Grotesk', system-ui, sans-serif", 
           fontWeight: 700, 
           lineHeight: 0.8, 
@@ -71,8 +65,8 @@ export default function Hero() {
           textTransform: 'lowercase',
           whiteSpace: 'nowrap',
           display: 'flex',
-          justifyContent: 'flex-end',
-          paddingRight: '6vw'
+          justifyContent: 'center', // Centers like "against"
+          paddingLeft: '8vw' // Slight push to the right from center
         }}>
           strony internetowe
         </Reveal>
@@ -81,15 +75,13 @@ export default function Hero() {
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          justifyContent: 'flex-start', 
+          justifyContent: 'space-between', // Push paragraph to right edge
           width: '100%',
-          marginTop: '0px',
-          paddingLeft: '3vw',
-          gap: '6vw'
+          marginTop: '0px'
         }}>
           {/* Left: które budują sprzedaż */}
           <Reveal delay={0.4} style={{ 
-            fontSize: 'clamp(2.5rem, 7.5vw, 9rem)', 
+            fontSize: 'clamp(3rem, 8.5vw, 10rem)', 
             fontFamily: "'Space Grotesk', system-ui, sans-serif", 
             fontWeight: 700, 
             lineHeight: 0.8, 

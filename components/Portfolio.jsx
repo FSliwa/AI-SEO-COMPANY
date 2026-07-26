@@ -150,18 +150,18 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="portfolio" id="portfolio" style={{ background: '#000000', padding: '8rem 0' }}>
-      <div className="container" style={{ maxWidth: '1280px' }}>
+    <section className="portfolio" id="portfolio" style={{ background: '#FFFFFF', padding: '8rem 0' }}>
+      <div className="container" style={{ maxWidth: '1440px' }}>
         
         {/* Top Header Row */}
         <Reveal className="section-header center" style={{ marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> OUR RESULTS
           </div>
-          <h2 style={{ color: '#FFFFFF', fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
-            {lang === 'pl' ? 'Projects — zrealizowane strony z mierzalnym efektem' : 'Explore what’s new for our clients.'}
+          <h2 style={{ color: '#111111', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
+            {lang === 'pl' ? 'Explore what’s new for our clients.' : 'Explore what’s new for our clients.'}
           </h2>
-          <p style={{ color: '#A1A1AA', fontSize: '1.15rem' }}>
+          <p style={{ color: '#555555', fontSize: '1.25rem', fontWeight: 500 }}>
             {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Analytics-backed growth metrics across our client case studies.'}
           </p>
         </Reveal>
@@ -178,7 +178,8 @@ export default function Portfolio() {
               scrollbarWidth: 'none', 
               msOverflowStyle: 'none', 
               gap: '1.5rem',
-              paddingBottom: '2rem'
+              paddingBottom: '2rem',
+              scrollPaddingLeft: 'calc(50% - 42.5%)' // Centers the 85% wide cards perfectly
             }}
           >
             <style jsx>{`
@@ -189,11 +190,11 @@ export default function Portfolio() {
               <RevealItem 
                 key={item.id} 
                 style={{
-                  flex: '0 0 100%',
+                  flex: '0 0 85%', // 85% width so adjacent cards peek out
                   scrollSnapAlign: 'center',
-                  background: '#111111', 
-                  borderRadius: '32px',
-                  padding: '4rem 3rem',
+                  background: '#000000', 
+                  borderRadius: '36px',
+                  padding: '4rem 3.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
@@ -276,24 +277,32 @@ export default function Portfolio() {
           
           {/* Pagination Dots (Apple Style) */}
           <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginTop: '1.5rem' }}>
-            <div style={{ display: 'flex', gap: '8px', padding: '10px 14px', background: 'rgba(255,255,255,0.1)', borderRadius: '30px', backdropFilter: 'blur(10px)' }}>
+            <div style={{ display: 'flex', gap: '12px', padding: '12px 16px', background: 'rgba(0,0,0,0.05)', borderRadius: '30px', alignItems: 'center' }}>
               {realizedWebsites.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
                   style={{
-                    width: activeIndex === idx ? '32px' : '8px',
-                    height: '8px',
-                    borderRadius: '4px',
-                    background: activeIndex === idx ? '#FFF' : 'rgba(255,255,255,0.3)',
+                    width: activeIndex === idx ? '40px' : '10px',
+                    height: '10px',
+                    borderRadius: '5px',
+                    background: activeIndex === idx ? '#4285F4' : '#C1C1C5',
                     border: 'none',
                     padding: 0,
                     cursor: 'pointer',
-                    transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
+                    transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
+                    boxShadow: activeIndex === idx ? 'inset 0 1px 3px rgba(0,0,0,0.2)' : 'none'
                   }}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
+              
+              {/* Fake Apple Pause/Play icon */}
+              <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '4px' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#555" stroke="none">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </button>
             </div>
           </Reveal>
 
