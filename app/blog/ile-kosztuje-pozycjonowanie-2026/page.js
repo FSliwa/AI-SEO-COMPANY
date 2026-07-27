@@ -67,13 +67,13 @@ export default function ArticleCennikPage() {
 
               <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', marginTop: '4rem', textAlign: 'center' }}>
                 <h3 style={{ color: '#1D1D1F', margin: 0, marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
-                  Sprawdź pakiety
+                  Porozmawiajmy o SEO Twojej strony
                 </h3>
                 <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
-                  Zobacz nasz przejrzysty cennik na stronie głównej bez ukrytych opłat.
+                  Chcesz uzyskać wycenę i strategię dopasowaną do Twojego biznesu? Skontaktuj się z nami poprzez formularz poniżej.
                 </p>
-                <a href="/#cennik" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
-                  Przejdź do Cennika
+                <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
+                  Skonsultuj Projekt
                 </a>
               </div>
             </div>
@@ -81,7 +81,9 @@ export default function ArticleCennikPage() {
         </div>
       </article>
 
-      <Contact />
+      <div id="kontakt">
+        <Contact />
+      </div>
       <Footer />
     </main>
   );

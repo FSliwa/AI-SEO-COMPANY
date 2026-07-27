@@ -2,63 +2,25 @@
 
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
+import { blogPosts } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function Blog() {
   const { lang } = useLanguage();
   const t = translations[lang].blog;
 
-  const posts = lang === 'pl' ? [
-    {
-      date: '24 Lipca 2026',
-      tag: 'Strategia SEO',
-      title: 'Dlaczego responsywność i Core Web Vitals to klucz do wyższych pozycji w Google?',
-      desc: 'Dowiedz się, jak szybkość ładowania strony i doświadczenie użytkownika przekładają się bezpośrednio na pozycję w wyszukiwarce.',
-      side: 'left',
-      slug: '/blog/core-web-vitals-a-pozycje-google'
-    },
-    {
-      date: '20 Lipca 2026',
-      tag: 'SEO Lokalne',
-      title: 'SEO Lokalne dla firm w Warszawie - jak wygrać z konkurencją?',
-      desc: 'Praktyczny poradnik jak zdominować lokalne wyniki wyszukiwania i zdobyć klientów z Twojej okolicy w Warszawie.',
-      side: 'right',
-      slug: '/blog/seo-lokalne-dla-firm-w-warszawie'
-    },
-    {
-      date: '15 Lipca 2026',
-      tag: 'Budżet SEO',
-      title: 'Ile kosztuje pozycjonowanie w 2026 roku?',
-      desc: 'Analiza kosztów, modeli rozliczeń i zwrotu z inwestycji. Dowiedz się, za co tak naprawdę płacisz agencji SEO.',
-      side: 'left',
-      slug: '/blog/ile-kosztuje-pozycjonowanie-2026'
-    }
-  ] : [
-    {
-      date: 'July 24, 2026',
-      tag: 'SEO Strategy',
-      title: 'Why responsiveness & Core Web Vitals are key to top Google rankings',
-      desc: 'Discover how page speed and user experience translate directly into higher organic positioning.',
-      side: 'left',
-      slug: '/blog/core-web-vitals-a-pozycje-google'
-    },
-    {
-      date: 'July 20, 2026',
-      tag: 'Local SEO',
-      title: 'Local SEO for businesses in Warsaw - how to beat the competition?',
-      desc: 'A practical guide on how to dominate local search results and get clients from your area in Warsaw.',
-      side: 'right',
-      slug: '/blog/seo-lokalne-dla-firm-w-warszawie'
-    },
-    {
-      date: 'July 15, 2026',
-      tag: 'SEO Budget',
-      title: 'How much does SEO cost in 2026?',
-      desc: 'Analysis of costs, billing models and ROI. Find out what you really pay for when hiring an SEO agency.',
-      side: 'left',
-      slug: '/blog/ile-kosztuje-pozycjonowanie-2026'
-    }
-  ];
+  // Dynamic sorting algorithm: always top 3 latest posts
+  const posts = [...blogPosts]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3)
+    .map((p, idx) => ({
+      date: lang === 'pl' ? p.displayDatePl : p.displayDateEn,
+      tag: lang === 'pl' ? p.tagPl : p.tagEn,
+      title: lang === 'pl' ? p.titlePl : p.titleEn,
+      desc: lang === 'pl' ? p.descPl : p.descEn,
+      slug: p.slug,
+      side: idx % 2 === 0 ? 'left' : 'right'
+    }));
 
   return (
     <section className="blog" id="blog">
