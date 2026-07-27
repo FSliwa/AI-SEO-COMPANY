@@ -208,11 +208,18 @@ export default function Portfolio() {
                 {item.layout === 'center' ? (
                   <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
                     {/* Top Header Text (Centered above screenshot, no button) */}
-                    <div style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
-                      <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                    <div style={{ maxWidth: item.id === 1 ? '740px' : '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
+                      <div style={{ marginBottom: '1rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
-                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
+                      <div style={{ 
+                        fontSize: item.id === 1 ? 'clamp(1.35rem, 2.3vw, 1.85rem)' : 'clamp(2.2rem, 4vw, 3.2rem)', 
+                        fontWeight: 700, 
+                        color: '#FFFFFF', 
+                        letterSpacing: '-0.03em', 
+                        lineHeight: 1.3, 
+                        marginBottom: '0' 
+                      }}>
                         {item.id === 1 ? (
                           lang === 'pl' 
                             ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.' 
