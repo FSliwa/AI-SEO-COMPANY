@@ -8,11 +8,6 @@ export const metadata = {
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
   alternates: {
     canonical: 'https://www.ai-seo-company.pl',
-    languages: {
-      'pl-PL': 'https://www.ai-seo-company.pl',
-      'en': 'https://www.ai-seo-company.pl',
-      'x-default': 'https://www.ai-seo-company.pl',
-    },
   },
   icons: {
     icon: '/ai-seo-company-logotyp.svg',

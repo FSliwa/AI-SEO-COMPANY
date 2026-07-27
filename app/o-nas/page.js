@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'O nas | Agencja SEO Warszawa — AI SEO COMPANY',
+  description: 'Poznaj zespół AI SEO COMPANY. Jesteśmy architektami Twojego wzrostu. Łączymy design z twardymi danymi analitycznymi.',
+};
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

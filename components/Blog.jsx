@@ -14,21 +14,24 @@ export default function Blog() {
       tag: 'Strategia SEO',
       title: 'Dlaczego responsywność i Core Web Vitals to klucz do wyższych pozycji w Google?',
       desc: 'Dowiedz się, jak szybkość ładowania strony i doświadczenie użytkownika przekładają się bezpośrednio na pozycję w wyszukiwarce.',
-      side: 'left'
+      side: 'left',
+      slug: '/blog/core-web-vitals-a-pozycje-google'
     },
     {
-      date: '23 Lipca 2026',
-      tag: 'Branding',
-      title: 'Spójny system wizualny jako główny czynnik budowania zaufania B2B',
-      desc: 'Jak profesjonalne logo i spójny design system podnoszą postrzeganą wartość Twoich usług i konwersję ze strony.',
-      side: 'right'
+      date: '20 Lipca 2026',
+      tag: 'SEO Lokalne',
+      title: 'SEO Lokalne dla firm w Warszawie - jak wygrać z konkurencją?',
+      desc: 'Praktyczny poradnik jak zdominować lokalne wyniki wyszukiwania i zdobyć klientów z Twojej okolicy w Warszawie.',
+      side: 'right',
+      slug: '/blog/seo-lokalne-dla-firm-w-warszawie'
     },
     {
-      date: '22 Lipca 2026',
-      tag: 'Conversion Rate',
-      title: 'Jak zaplanować cennik na stronie internetowej, aby zwiększyć klikalność CTA?',
-      desc: 'Analiza psychologii prezentacji cen i wyboru odpowiedniego kontrastu przycisków akcji w ofertach agencji.',
-      side: 'left'
+      date: '15 Lipca 2026',
+      tag: 'Budżet SEO',
+      title: 'Ile kosztuje pozycjonowanie w 2026 roku?',
+      desc: 'Analiza kosztów, modeli rozliczeń i zwrotu z inwestycji. Dowiedz się, za co tak naprawdę płacisz agencji SEO.',
+      side: 'left',
+      slug: '/blog/ile-kosztuje-pozycjonowanie-2026'
     }
   ] : [
     {
@@ -36,21 +39,24 @@ export default function Blog() {
       tag: 'SEO Strategy',
       title: 'Why responsiveness & Core Web Vitals are key to top Google rankings',
       desc: 'Discover how page speed and user experience translate directly into higher organic positioning.',
-      side: 'left'
+      side: 'left',
+      slug: '/blog/core-web-vitals-a-pozycje-google'
     },
     {
-      date: 'July 23, 2026',
-      tag: 'Branding',
-      title: 'Cohesive visual identity as the foundation of B2B client trust',
-      desc: 'How professional branding and design systems raise perceived service value and site conversions.',
-      side: 'right'
+      date: 'July 20, 2026',
+      tag: 'Local SEO',
+      title: 'Local SEO for businesses in Warsaw - how to beat the competition?',
+      desc: 'A practical guide on how to dominate local search results and get clients from your area in Warsaw.',
+      side: 'right',
+      slug: '/blog/seo-lokalne-dla-firm-w-warszawie'
     },
     {
-      date: 'July 22, 2026',
-      tag: 'Conversion Rate',
-      title: 'How to structure pricing tables to boost CTA conversion rates',
-      desc: 'Analyzing pricing psychology and action button contrast to maximize sales inquiries.',
-      side: 'left'
+      date: 'July 15, 2026',
+      tag: 'SEO Budget',
+      title: 'How much does SEO cost in 2026?',
+      desc: 'Analysis of costs, billing models and ROI. Find out what you really pay for when hiring an SEO agency.',
+      side: 'left',
+      slug: '/blog/ile-kosztuje-pozycjonowanie-2026'
     }
   ];
 
@@ -80,7 +86,7 @@ export default function Blog() {
                 </div>
                 <h3>{post.title}</h3>
                 <p>{post.desc}</p>
-                <a href="#kontakt" className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
+                <a href={post.slug} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
                   {t.btnRead}
                 </a>
               </div>

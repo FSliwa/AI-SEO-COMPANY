@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'Pozycjonowanie Stron WWW | SEO B2B i B2C — AI SEO COMPANY',
+  description: 'Skuteczne pozycjonowanie stron internetowych oparte na danych. Podniesiemy widoczność Twojego biznesu i przekształcimy ruch w płacących klientów.',
+};
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

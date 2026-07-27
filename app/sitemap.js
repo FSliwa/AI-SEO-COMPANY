@@ -6,7 +6,6 @@ export default function sitemap() {
     '',
     '/pozycjonowanie-stron-internetowych',
     '/audyt-seo',
-    '/cennik-pozycjonowania',
     '/projektowanie-stron-internetowych',
     '/seo-lokalne-warszawa',
     '/blog',

@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'Projektowanie Stron Internetowych | Nowoczesny Web Design — AI SEO COMPANY',
+  description: 'Tworzymy ultraszybkie i piękne wizualnie strony na Next.js (Headless). Skoncentrowane na maksymalizacji UX i konwersji.',
+};
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

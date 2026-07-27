@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'Pozycjonowanie Lokalne Warszawa | Zdobądź klientów z okolicy',
+  description: 'Zdominuj lokalne wyniki Google w Warszawie (Mapy i wyszukiwarkę). Agencja AI SEO COMPANY zbuduje Twoją widoczność w Twoim mieście.',
+};
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

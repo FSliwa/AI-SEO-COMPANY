@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'Audyt SEO | Analiza i optymalizacja — AI SEO COMPANY',
+  description: 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne na Twojej stronie i przygotujemy strategię, która natychmiast poprawi Twoje pozycje w Google.',
+};
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
