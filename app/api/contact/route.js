@@ -20,7 +20,7 @@ export async function POST(request) {
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
     
     // The recipient is the business owner
-    const toEmail = process.env.RESEND_TO_EMAIL || 'f.sliwa@ai-signals-company.pl';
+    const toEmail = process.env.RESEND_TO_EMAIL || 'kontakt@ai-seo-company.pl';
 
     const { data, error } = await resend.emails.send({
       from: `AI SEO COMPANY <${fromEmail}>`,

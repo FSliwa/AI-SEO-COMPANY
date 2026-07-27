@@ -1,0 +1,26 @@
+export default function sitemap() {
+  const baseUrl = 'https://www.ai-seo-company.pl';
+  const currentDate = new Date().toISOString();
+
+  const routes = [
+    '',
+    '/pozycjonowanie-stron-internetowych',
+    '/audyt-seo',
+    '/cennik-pozycjonowania',
+    '/projektowanie-stron-internetowych',
+    '/seo-lokalne-warszawa',
+    '/blog',
+    '/blog/ile-kosztuje-pozycjonowanie-2026',
+    '/blog/core-web-vitals-a-pozycje-google',
+    '/blog/seo-lokalne-dla-firm-w-warszawie',
+    '/o-nas',
+    '/cookies'
+  ];
+
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: currentDate,
+    changeFrequency: route === '' || route.startsWith('/blog') ? 'weekly' : 'monthly',
+    priority: route === '' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85,
+  }));
+}

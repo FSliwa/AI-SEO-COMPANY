@@ -49,7 +49,7 @@ export default function Header() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href="#" className="logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+            <a href="/" className="logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 1802 534" 
@@ -174,29 +174,32 @@ export default function Header() {
           <div className="kota-fullscreen-content container">
             <ul className="kota-fullscreen-links">
               <li style={{ '--delay': '0.15s' }}>
-                <a href="#why-us" onClick={closeMenu}>{t.results}</a>
+                <a href="/#why-us" onClick={closeMenu}>{t.results}</a>
               </li>
               <li style={{ '--delay': '0.2s' }}>
-                <a href="#uslugi" onClick={closeMenu}>{t.services}</a>
+                <a href="/#uslugi" onClick={closeMenu}>{t.services}</a>
               </li>
               <li style={{ '--delay': '0.25s' }}>
-                <a href="#cennik" onClick={closeMenu}>{t.pricing}</a>
+                <a href="/cennik-pozycjonowania" onClick={closeMenu}>{t.pricing}</a>
               </li>
               <li style={{ '--delay': '0.3s' }}>
-                <a href="#portfolio" onClick={closeMenu}>{t.process}</a>
+                <a href="/#portfolio" onClick={closeMenu}>{t.process}</a>
               </li>
               <li style={{ '--delay': '0.35s' }}>
-                <a href="#blog" onClick={closeMenu}>{t.blog}</a>
+                <a href="/blog" onClick={closeMenu}>{t.blog}</a>
               </li>
               <li style={{ '--delay': '0.4s' }}>
-                <a href="#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
+                <a href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
+              </li>
+              <li style={{ '--delay': '0.45s' }}>
+                <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
             </ul>
 
             <div className="kota-fullscreen-footer">
               <div className="footer-contact">
                 <span className="footer-label">{lang === 'pl' ? 'Napisz do nas' : 'Email Us'}</span>
-                <a href="mailto:f.sliwa@ai-signals-company.pl" className="footer-value">f.sliwa@ai-signals-company.pl</a>
+                <a href="mailto:kontakt@ai-seo-company.pl" className="footer-value">kontakt@ai-seo-company.pl</a>
               </div>
               <div className="footer-socials">
                 <span className="footer-label">Social Media</span>

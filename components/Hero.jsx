@@ -10,6 +10,9 @@ export default function Hero() {
 
   return (
     <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      {/* Semantic Textual H1 for SEO */}
+      <h1 className="sr-only">Agencja SEO Warszawa — strony i pozycjonowanie, które budują sprzedaż</h1>
+
       {/* Background Hero Video */}
       <video
         autoPlay
@@ -17,8 +20,9 @@ export default function Hero() {
         muted
         playsInline
         className="hero-video-bg"
+        preload="metadata"
       >
-        <source src="/Black hole AI SEO COMPANY.mp4" type="video/mp4" />
+        <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" />
       </video>
 
       {/* Subtle Starfield Background */}

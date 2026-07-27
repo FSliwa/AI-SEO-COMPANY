@@ -29,27 +29,28 @@ export default function Footer() {
             <div className="footer-col">
               <h4>{lang === 'pl' ? 'Nawigacja' : 'Navigation'}</h4>
               <ul className="footer-links">
-                <li><a href="#why-us">{nav.results}</a></li>
-                <li><a href="#uslugi">{nav.services}</a></li>
-                <li><a href="#portfolio">{nav.process}</a></li>
-                <li><a href="#cennik">{nav.pricing}</a></li>
+                <li><a href="/o-nas">{lang === 'pl' ? 'O nas (E-E-A-T)' : 'About Us'}</a></li>
+                <li><a href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron' : 'SEO Services'}</a></li>
+                <li><a href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a></li>
+                <li><a href="/cennik-pozycjonowania">{nav.pricing}</a></li>
+                <li><a href="/blog">Blog SEO</a></li>
               </ul>
             </div>
             <div className="footer-col">
-              <h4>{lang === 'pl' ? 'Usługi' : 'Services'}</h4>
+              <h4>{lang === 'pl' ? 'Usługi SEO' : 'SEO Services'}</h4>
               <ul className="footer-links">
-                <li><a href="#cennik">{lang === 'pl' ? 'Strona WWW za 0 zł' : 'Free Website Package'}</a></li>
-                <li><a href="#cennik">SEO Standard</a></li>
-                <li><a href="#cennik">SEO Premium</a></li>
-                <li><a href="#cennik">Booster Pack</a></li>
+                <li><a href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron WWW' : 'Website SEO'}</a></li>
+                <li><a href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO i analiza' : 'SEO Audit & Analysis'}</a></li>
+                <li><a href="/projektowanie-stron-internetowych">{lang === 'pl' ? 'Projektowanie stron WWW' : 'Web Design'}</a></li>
+                <li><a href="/seo-lokalne-warszawa">{lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}</a></li>
               </ul>
             </div>
             <div className="footer-col">
               <h4>{lang === 'pl' ? 'Kontakt' : 'Contact'}</h4>
               <ul className="footer-links">
-                <li><a href="mailto:f.sliwa@ai-signals-company.pl">f.sliwa@ai-signals-company.pl</a></li>
-                <li><a href="#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</a></li>
-                <li><a href="/cookies">{lang === 'pl' ? 'Polityka Prywatności i Cookies' : 'Privacy & Cookie Policy'}</a></li>
+                <li><a href="mailto:kontakt@ai-seo-company.pl">kontakt@ai-seo-company.pl</a></li>
+                <li><a href="/#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</a></li>
+                <li><a href="/cookies">{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</a></li>
               </ul>
             </div>
           </div>
