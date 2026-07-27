@@ -182,7 +182,7 @@ export default function Header() {
                 <a href="/#uslugi" onClick={closeMenu}>{t.services}</a>
               </li>
               <li style={{ '--delay': '0.25s' }}>
-                <a href="/cennik-pozycjonowania" onClick={closeMenu}>{t.pricing}</a>
+                <a href="/#cennik" onClick={closeMenu}>{t.pricing}</a>
               </li>
               <li style={{ '--delay': '0.3s' }}>
                 <a href="/#portfolio" onClick={closeMenu}>{t.process}</a>

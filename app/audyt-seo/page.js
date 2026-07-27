@@ -30,73 +30,75 @@ const faqAudyt = {
 
 export default function AudytSeoPage() {
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#F5F5F7', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqAudyt) }}
       />
       <Header />
       
-      {/* Hero Banner */}
-      <section style={{ paddingTop: '160px', paddingBottom: '80px', position: 'relative' }}>
-        <div className="container">
-          <Reveal className="section-header" style={{ textAlign: 'left', marginBottom: '2.5rem', maxWidth: '850px' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> DIAGNOSTYKA &amp; AUDYT
+      {/* Hero Banner - Apple Style */}
+      <section style={{ paddingTop: '200px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <Reveal>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <span style={{ fontSize: '0.85rem', color: '#86868B', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                Diagnostyka i Audyt
+              </span>
             </div>
             
             <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', 
-              fontWeight: 800, 
-              lineHeight: 1.15, 
-              color: 'var(--color-text-dark)', 
+              fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+              fontWeight: 700, 
+              lineHeight: 1.05, 
+              color: '#1D1D1F', 
               marginBottom: '1.5rem', 
-              letterSpacing: '-0.02em'
+              letterSpacing: '-0.04em'
             }}>
-              Profesjonalny <span style={{ color: 'var(--color-cta)' }}>Audyt SEO</span> Strony i Sklepu
+              Profesjonalny Audyt SEO.
             </h1>
-            <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: '2.5rem' }}>
-              Odkryj przyczyny braku pozycji w Google i odblokuj pełny potencjał sprzedażowy serwisu. Przeprowadzamy weryfikację ponad 50 elementów technicznych i treściowych.
+            <p style={{ 
+              fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 
+              color: '#86868B', 
+              lineHeight: 1.5, 
+              maxWidth: '650px', 
+              margin: '0 auto 3rem auto',
+              fontWeight: 500,
+              letterSpacing: '-0.01em'
+            }}>
+              Odkryj przyczyny braku pozycji w Google i odblokuj pełny potencjał sprzedażowy serwisu. Weryfikujemy ponad 50 elementów.
             </p>
-            <a href="#kontakt" className="btn btn-primary" style={{ padding: '0.9rem 2.25rem' }}>
-              Zamów Audyt Strony →
+            <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1.2rem 2.5rem', borderRadius: '999px', fontSize: '1.1rem', fontWeight: 600, textDecoration: 'none' }}>
+              Zamów Audyt Strony
             </a>
           </Reveal>
         </div>
       </section>
 
-      {/* Feature Grid Section matching main site Services style */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--color-bg-alt)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
-        <div className="container">
-          <Reveal className="section-header">
-            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> ZAKRES AUDYTU
-            </div>
-            <h2>Co Analizujemy Podczas Audytu SEO?</h2>
-            <p>Kompleksowa weryfikacja techniczna, architektoniczna i profilu autorytetu.</p>
+      {/* Feature Grid Section - Apple Style */}
+      <section style={{ padding: '80px 0 120px 0' }}>
+        <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <Reveal style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.03em', marginBottom: '1rem' }}>
+              Co Analizujemy.
+            </h2>
+            <p style={{ fontSize: '1.2rem', color: '#86868B', maxWidth: '600px', margin: '0 auto', fontWeight: 500 }}>
+              Kompleksowa weryfikacja techniczna i architektoniczna.
+            </p>
           </Reveal>
 
-          <RevealStagger className="services-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            <RevealItem className="service-card">
-              <div className="service-icon" style={{ background: 'rgba(216, 90, 48, 0.08)', color: 'var(--color-cta)' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              </div>
-              <h3>1. SEO Techniczne i Szybkość</h3>
-              <p>Core Web Vitals (LCP, CLS, INP), kody odpowiedzi HTTP, kanibalizacja i błędy indeksowania.</p>
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.1 }}>Szybkość i Technikalia.</h3>
+              <p style={{ color: '#86868B', fontSize: '1.1rem', lineHeight: 1.5 }}>Weryfikacja Core Web Vitals (LCP, CLS, INP), kodów odpowiedzi HTTP oraz eliminacja błędów indeksowania.</p>
             </RevealItem>
-            <RevealItem className="service-card">
-              <div className="service-icon" style={{ background: 'rgba(24, 95, 165, 0.08)', color: 'var(--color-primary)' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              </div>
-              <h3>2. Architektura Treści (Content)</h3>
-              <p>Nasycenie frazami, struktura nagłówków (H1-H6), duplikacja treści oraz profil słów kluczowych.</p>
+            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.1 }}>Architektura Treści.</h3>
+              <p style={{ color: '#86868B', fontSize: '1.1rem', lineHeight: 1.5 }}>Analiza struktury nagłówków, duplikacji treści oraz weryfikacja prawidłowego profilu słów kluczowych.</p>
             </RevealItem>
-            <RevealItem className="service-card">
-              <div className="service-icon" style={{ background: 'rgba(16, 185, 129, 0.08)', color: 'var(--color-growth)' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              </div>
-              <h3>3. Profil Linków Zwrotnych</h3>
-              <p>Jakość i toksyczność domen odsyłających, rozkład anchor textów oraz autorytet serwisu.</p>
+            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.1 }}>Profil Linków.</h3>
+              <p style={{ color: '#86868B', fontSize: '1.1rem', lineHeight: 1.5 }}>Badanie jakości i toksyczności domen odsyłających, anchor textów oraz autorytetu domeny.</p>
             </RevealItem>
           </RevealStagger>
         </div>

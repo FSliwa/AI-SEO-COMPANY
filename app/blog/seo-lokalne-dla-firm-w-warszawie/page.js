@@ -7,59 +7,70 @@ import { Reveal } from '@/components/ScrollReveal';
 
 export default function ArticleLokalnePage() {
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#F5F5F7', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '100px', position: 'relative' }}>
-        <div className="container" style={{ maxWidth: '880px' }}>
-          <Reveal>
-            <a href="/blog" style={{ color: 'var(--color-cta)', textDecoration: 'none', fontWeight: 700, fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
-              ← Powrót do Bloga
-            </a>
-
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <span className="section-tag" style={{ color: 'var(--color-primary)', padding: '0.35rem 0.85rem', background: 'rgba(24, 95, 165, 0.1)', borderRadius: 'var(--radius-full)' }}>
-                <span className="asterisk">✳</span> LOKALNE SEO WARSZAWA
+      <article style={{ paddingTop: '200px', paddingBottom: '160px', position: 'relative' }}>
+        <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <Reveal style={{ textAlign: 'center' }}>
+            <div style={{ marginBottom: '2rem' }}>
+              <span style={{ fontSize: '0.85rem', color: '#86868B', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                Lokalne SEO Warszawa
               </span>
-              <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>6 min czytania • 10 Lipca 2026</span>
             </div>
 
             <h1 style={{ 
-              fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', 
-              fontWeight: 800, 
-              color: 'var(--color-text-dark)', 
-              marginBottom: '1.75rem', 
-              lineHeight: 1.15,
-              letterSpacing: '-0.02em'
+              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', 
+              fontWeight: 700, 
+              color: '#1D1D1F', 
+              marginBottom: '2rem', 
+              lineHeight: 1.05,
+              letterSpacing: '-0.04em'
             }}>
-              SEO Lokalne dla firm w Warszawie — Jak zdominować wyniki i Mapy?
+              SEO Lokalne w Warszawie.
             </h1>
 
-            <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: '3rem', borderLeft: '3px solid var(--color-primary)', paddingLeft: '1.25rem' }}>
-              Rynek usług lokalnych w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów ze swojej dzielnicy, musisz zsynchronizować optymalizację serwisu z profilem Google Profil Firmy.
+            <p style={{ fontSize: '1.4rem', color: '#86868B', lineHeight: 1.5, marginBottom: '4rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+              Rynek usług w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów, musisz zsynchronizować optymalizację serwisu z wizytówką Google.
             </p>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="service-card" style={{ padding: '3rem 2.5rem' }}>
-              <h2 style={{ fontSize: '1.6rem', color: 'var(--color-text-dark)', marginTop: '0', marginBottom: '1.25rem', fontWeight: 800 }}>
-                Strategiczne filary pozycjonowania lokalnego
+            <div style={{ background: '#FFFFFF', borderRadius: '32px', padding: '4rem', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
+              <h2 style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '0', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                Strategiczne filary pozycjonowania.
               </h2>
-              <ul className="service-features" style={{ borderTop: 'none', paddingTop: 0, marginBottom: '2rem' }}>
-                <li>Spójność wizytówki i witryny pod kątem danych NAP (Name, Address, Phone)</li>
-                <li>Optymalizacja kategorii głównych oraz słów kluczowych w Google Profil Firmy</li>
-                <li>Pozyskiwanie opinii klientów z frazami lokalnymi i geolokalizacją</li>
+              
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Spójność wizytówki i witryny pod kątem danych NAP (Name, Address, Phone).</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Optymalizacja kategorii w Google Profil Firmy.</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Pozyskiwanie opinii klientów z frazami lokalnymi.</span>
+                </li>
               </ul>
 
-              <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', padding: '2.25rem', borderRadius: 'var(--radius-md)', margin: '2.5rem 0' }}>
-                <h3 style={{ color: 'var(--color-text-dark)', margin: 0, marginBottom: '0.5rem', fontSize: '1.3rem', fontWeight: 800 }}>
-                  Szukasz pozycjonowania w Warszawie?
+              <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', marginTop: '4rem', textAlign: 'center' }}>
+                <h3 style={{ color: '#1D1D1F', margin: 0, marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                  Pozycjonowanie Warszawa
                 </h3>
-                <p style={{ margin: 0, color: 'var(--color-text-muted)', fontSize: '1rem', marginBottom: '1.25rem' }}>
-                  Sprawdź dedykowaną ofertę i dowiedz się, jak pozycjonujemy lokalne firmy w stolicy.
+                <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
+                  Sprawdź dedykowaną ofertę i dowiedz się, jak działamy w stolicy.
                 </p>
-                <a href="/seo-lokalne-warszawa" className="btn btn-primary" style={{ padding: '0.75rem 1.75rem', fontSize: '0.95rem' }}>
-                  SEO Lokalne Warszawa →
+                <a href="/seo-lokalne-warszawa" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
+                  Sprawdź Ofertę
                 </a>
               </div>
             </div>
