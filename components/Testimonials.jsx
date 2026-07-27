@@ -195,25 +195,26 @@ export default function Testimonials() {
             </button>
           </div>
         </Reveal>
+      </div>
 
-        {/* Carousel Bleeding Container */}
-        <div style={{ position: 'relative', width: '100%' }}>
-          <RevealStagger 
-            id="testimonials-apple-carousel"
-            onScroll={handleScroll}
-            className="hide-scrollbar"
-            style={{
-              display: 'flex',
-              gap: '24px',
-              overflowX: 'auto',
-              scrollSnapType: 'x mandatory',
-              scrollBehavior: 'smooth',
-              paddingBottom: '2.5rem',
-              paddingLeft: 'max(1.5rem, calc((100vw - 1240px) / 2))',
-              paddingRight: 'max(1.5rem, calc((100vw - 1240px) / 2))',
-              marginRight: 'calc(-50vw + 50%)',
-            }}
-          >
+      {/* Full 100vw Viewport Bleeding Carousel Container (Apple style) */}
+      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
+        <RevealStagger 
+          id="testimonials-apple-carousel"
+          onScroll={handleScroll}
+          className="hide-scrollbar"
+          style={{
+            display: 'flex',
+            gap: '24px',
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            scrollBehavior: 'smooth',
+            paddingBottom: '2.5rem',
+            paddingLeft: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)',
+            paddingRight: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)',
+            scrollPaddingLeft: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)'
+          }}
+        >
             {reviewsData.map((item, idx) => (
               <RevealItem 
                 key={item.id}
@@ -318,7 +319,6 @@ export default function Testimonials() {
             ))}
           </RevealStagger>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
 }
