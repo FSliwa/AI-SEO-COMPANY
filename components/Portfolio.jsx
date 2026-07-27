@@ -155,7 +155,7 @@ export default function Portfolio() {
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZE WYNIKI' : 'OUR RESULTS'}
           </div>
           <h2 style={{ color: '#1D1D1F', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
-            {lang === 'pl' ? 'Odkryj nowości naszych klientów.' : 'Explore what’s new for our clients.'}
+            {lang === 'pl' ? 'Odkryj nowości naszych klientów' : 'Explore what’s new for our clients'}
           </h2>
           <p style={{ color: '#6E6E73', fontSize: '1.25rem', fontWeight: 500 }}>
             {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}

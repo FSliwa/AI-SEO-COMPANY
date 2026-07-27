@@ -137,7 +137,7 @@ export default function Testimonials() {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
             </div>
             <h2 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.12, fontWeight: 700, marginBottom: '1.25rem' }}>
-              {lang === 'pl' ? 'Doświadczenia i Rekomendacje. Efekty, które budują zaufanie.' : 'Client Endorsements. Impact that builds trust.'}
+              {lang === 'pl' ? 'Doświadczenia i Rekomendacje. Efekty, które budują zaufanie' : 'Client Endorsements. Impact that builds trust'}
             </h2>
             <p style={{ color: '#6E6E73', fontSize: '1.15rem', lineHeight: 1.55, fontWeight: 500, margin: 0 }}>
               {lang === 'pl' 
