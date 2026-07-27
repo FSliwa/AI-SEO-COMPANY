@@ -1,40 +1,56 @@
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
-
-export const metadata = {
-  title: 'Cennik Pozycjonowania Stron 2026 — Pakiety SEO | AI SEO COMPANY',
-  description: 'Sprawdź transparentny cennik pozycjonowania stron internetowych. Pakiety od 0 zł za stronę WWW do zaawansowanej optymalizacji e-commerce.',
-  alternates: {
-    canonical: 'https://www.ai-seo-company.pl/cennik-pozycjonowania',
-  },
-  openGraph: {
-    title: 'Cennik Pozycjonowania Stron Internetowych 2026 — AI SEO COMPANY',
-    description: 'Przejrzyste pakiety pozycjonowania bez ukrytych kosztów. Wybierz pakiet dopasowany do celów biznesowych.',
-    url: 'https://www.ai-seo-company.pl/cennik-pozycjonowania',
-    siteName: 'AI SEO COMPANY',
-    locale: 'pl_PL',
-    type: 'website',
-  },
-};
+import { Reveal } from '@/components/ScrollReveal';
 
 export default function CennikPage() {
   return (
-    <main style={{ background: '#090D16', color: '#F8FAFC', minHeight: '100vh' }}>
+    <main style={{ background: '#030712', color: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       
-      <section style={{ paddingTop: '160px', paddingBottom: '40px' }}>
-        <div className="container" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
-          <div className="section-tag" style={{ color: '#D85A30', marginBottom: '1rem', justifyContent: 'center', display: 'flex' }}>
-            <span className="asterisk">✳</span> TRANSPARENTNA WYCENA
-          </div>
-          <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 800, lineHeight: 1.15, color: '#FFFFFF', marginBottom: '1.5rem' }}>
-            Ile Kosztuje Pozycjonowanie Stron? <span style={{ color: '#D85A30' }}>Cennik 2026</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: '#94A3B8', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.6 }}>
-            Brak ukrytych opłat i skomplikowanych umów. Płać za mierzalne wyniki i stały rozwój widoczności w wyszukiwarkach.
-          </p>
+      {/* Hero Banner */}
+      <section style={{ paddingTop: '180px', paddingBottom: '40px', position: 'relative' }}>
+        <div style={{
+          position: 'absolute',
+          top: '30%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '55vw',
+          height: '350px',
+          background: 'radial-gradient(circle, rgba(216, 90, 48, 0.16) 0%, rgba(3, 7, 18, 0) 80%)',
+          filter: 'blur(90px)',
+          pointerEvents: 'none',
+          zIndex: 1
+        }} />
+
+        <div className="container" style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center', position: 'relative', zIndex: 2 }}>
+          <Reveal>
+            <div className="section-tag" style={{ color: '#D85A30', marginBottom: '1.25rem', justifyContent: 'center', display: 'flex' }}>
+              <span className="asterisk">✳</span> TRANSPARENTNA WYCENA
+            </div>
+            <h1 style={{ 
+              fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)', 
+              fontWeight: 800, 
+              lineHeight: 1.1, 
+              color: '#FFFFFF', 
+              marginBottom: '1.5rem',
+              letterSpacing: '-0.03em',
+              fontFamily: "'Space Grotesk', system-ui, sans-serif"
+            }}>
+              Ile Kosztuje Pozycjonowanie Stron? <br />
+              <span style={{ 
+                background: 'linear-gradient(135deg, #FF7A59 0%, #D85A30 50%, #A855F7 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}>Cennik 2026</span>
+            </h1>
+            <p style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
+              Brak ukrytych opłat i skomplikowanych umów. Płać za mierzalne wyniki i stały rozwój widoczności w wyszukiwarkach.
+            </p>
+          </Reveal>
         </div>
       </section>
 
