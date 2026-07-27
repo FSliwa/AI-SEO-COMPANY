@@ -32,7 +32,7 @@ export default function Footer() {
                 <li><a href="/o-nas">{lang === 'pl' ? 'O nas (E-E-A-T)' : 'About Us'}</a></li>
                 <li><a href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron' : 'SEO Services'}</a></li>
                 <li><a href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a></li>
-                <li><a href="/cennik-pozycjonowania">{nav.pricing}</a></li>
+                <li><a href="/#cennik">{nav.pricing}</a></li>
                 <li><a href="/blog">Blog SEO</a></li>
               </ul>
             </div>

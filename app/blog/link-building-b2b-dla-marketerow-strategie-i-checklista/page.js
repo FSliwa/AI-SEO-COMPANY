@@ -10,38 +10,49 @@ import { Reveal } from '@/components/ScrollReveal';
 
 export default function ArticleLinkBuildingB2bPage() {
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       
-      <article style={{ paddingTop: '200px', paddingBottom: '120px', position: 'relative' }}>
-        <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <Reveal style={{ textAlign: 'center' }}>
-            <div style={{ marginBottom: '2rem' }}>
-              <span style={{ fontSize: '0.85rem', color: '#86868B', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                Link Building B2B • Jul 27, 2026
+      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          
+          <Reveal>
+            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                Link Building B2B
+              </span>
+              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                Jul 27, 2026
               </span>
             </div>
 
             <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', 
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
               color: '#1D1D1F', 
               marginBottom: '2rem', 
-              lineHeight: 1.05,
-              letterSpacing: '-0.04em'
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              textAlign: 'left'
             }}>
               Link building B2B dla marketerów: strategie i checklista
             </h1>
 
-            <p style={{ fontSize: '1.4rem', color: '#86868B', lineHeight: 1.5, marginBottom: '4rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-              Ekspertka od marketingu online, która tworzy skuteczną strategię linkowania dla firm z sektora B2B.
-            </p>
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </div>
+            
+            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(2rem, 5vw, 4rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
-              
-              <div style={{ fontSize: '1.15rem', lineHeight: 1.7, color: '#333336' }}>
+            <div style={{ fontSize: '1.15rem', lineHeight: 1.6, color: '#333336' }}>
+              <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+                Ekspertka od marketingu online, która tworzy skuteczną strategię linkowania dla firm z sektora B2B.
+              </p>
+
                 <p style={{ marginBottom: '1.5rem' }}>Skuteczny link building B2B opiera się na trzech filarach: digital PR opartym na danych własnych, strategicznych partnerstwach branżowych i precyzyjnie wybranych publikacjach eksperckich. Masowy outreach do przypadkowych stron nie działa w B2B, bo decydjonariusze weryfikują Twoją firmę przez pryzmat tego, kto Cię cytuje, nie ile masz linków.</p>
                 
                 <p style={{ marginBottom: '1.5rem' }}>Trzy działania, które warto uruchomić w pierwszym miesiącu:</p>
@@ -369,19 +380,21 @@ export default function ArticleLinkBuildingB2bPage() {
               </div>
 
               {/* Clear CTA Block */}
-              <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', marginTop: '4rem', textAlign: 'center' }}>
-                <h3 style={{ color: '#1D1D1F', margin: 0, marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
-                  Zbuduj silny autorytet w B2B
-                </h3>
-                <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
-                  Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO.
-                </p>
-                <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
-                  Skonsultuj Projekt
-                </a>
+              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
+                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
+                  <h3 style={{ color: '#1D1D1F', margin: 0, marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                    Zbuduj silny autorytet w B2B
+                  </h3>
+                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
+                    Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO.
+                  </p>
+                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
+                    Skonsultuj Projekt
+                  </a>
+                </div>
               </div>
 
-            </div>
+
           </Reveal>
         </div>
       </article>
