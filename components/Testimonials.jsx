@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
@@ -53,7 +52,6 @@ const reviewsData = [
 
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoplay, setIsAutoplay] = useState(true);
   const { lang } = useLanguage();
   const t = translations[lang].testimonials;
 
@@ -63,15 +61,14 @@ export default function Testimonials() {
     if (!cards || !cards.length) return;
 
     const containerRect = container.getBoundingClientRect();
-    const containerCenterX = containerRect.left + containerRect.width / 2;
+    const containerLeft = containerRect.left;
 
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
       const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect.left + cardRect.width / 2;
-      const distance = Math.abs(containerCenterX - cardCenterX);
+      const distance = Math.abs(cardRect.left - containerLeft);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
@@ -88,7 +85,8 @@ export default function Testimonials() {
       if (cards[index]) {
         const containerRect = container.getBoundingClientRect();
         const cardRect = cards[index].getBoundingClientRect();
-        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
+        // Calculate offset so the left edge of the card aligns with the left edge of the container
+        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft;
         container.scrollTo({
           left: scrollOffset,
           behavior: 'smooth'
@@ -98,19 +96,10 @@ export default function Testimonials() {
     }
   };
 
-  useEffect(() => {
-    if (!isAutoplay) return;
-    const interval = setInterval(() => {
-      const nextIndex = (activeIndex + 1) % reviewsData.length;
-      scrollTo(nextIndex);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isAutoplay, activeIndex]);
-
   return (
     <section className="testimonials" id="testimonials" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
-      <div className="container" style={{ maxWidth: '1440px' }}>
-        <Reveal className="section-header center" style={{ marginBottom: '4rem', padding: '0 2rem' }}>
+      <div className="container" style={{ maxWidth: '1440px', padding: '0 2rem' }}>
+        <Reveal className="section-header" style={{ marginBottom: '4rem', textAlign: 'left' }}>
           <div className="section-tag" style={{ color: '#0F172A', borderColor: 'rgba(0,0,0,0.1)' }}>
             <span className="asterisk" style={{ color: '#0F172A' }}>✳</span> {t.tag}
           </div>
@@ -120,7 +109,7 @@ export default function Testimonials() {
         </Reveal>
 
         {/* Carousel Container */}
-        <div style={{ position: 'relative', width: '100vw', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw' }}>
+        <div style={{ position: 'relative', width: '100%', overflow: 'visible' }}>
           <RevealStagger 
             id="testimonials-carousel"
             onScroll={handleScroll}
@@ -131,129 +120,110 @@ export default function Testimonials() {
               overflowX: 'auto',
               scrollSnapType: 'x mandatory',
               scrollBehavior: 'smooth',
-              padding: '0 50vw', // Ensures items can be centered
-              paddingBottom: '2rem' // Space for shadow
+              paddingBottom: '2rem', // Space for shadow
+              marginRight: '-100vw', // Allow horizontal overflow beyond container on the right
+              paddingRight: '100vw'
             }}
           >
-            {/* Empty element to act as start padding so first item centers properly */}
-            <div style={{ flex: '0 0 1px' }} />
-            
             {reviewsData.map((item, idx) => (
               <RevealItem 
                 key={item.id}
                 className="testimonial-apple-card"
                 style={{
-                  flex: '0 0 min(85vw, 900px)',
-                  scrollSnapAlign: 'center',
+                  flex: '0 0 min(85vw, 420px)', // Match Apple's screenshot proportions
+                  scrollSnapAlign: 'start',
                   background: '#FFFFFF', 
-                  borderRadius: '36px',
-                  padding: '4rem 3.5rem',
+                  borderRadius: '32px',
+                  padding: '3rem 2.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  minHeight: '400px',
+                  minHeight: '380px',
                   boxShadow: '0 20px 40px rgba(0,0,0,0.04)',
                   position: 'relative'
                 }}
               >
-                <div style={{ color: '#F59E0B', fontSize: '1.5rem', marginBottom: '1.5rem' }}>
-                  ★★★★★
+                <div>
+                  <div style={{ color: '#F59E0B', fontSize: '1.25rem', marginBottom: '1.5rem', letterSpacing: '2px' }}>
+                    ★★★★★
+                  </div>
+                  <p style={{ 
+                    fontSize: '1.15rem', 
+                    fontWeight: 500, 
+                    color: '#1D1D1F', 
+                    lineHeight: 1.5,
+                    letterSpacing: '-0.01em',
+                    marginBottom: '2rem'
+                  }}>
+                    {lang === 'pl' ? item.pl : item.en}
+                  </p>
                 </div>
-                <p style={{ 
-                  fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', 
-                  fontWeight: 500, 
-                  color: '#0F172A', 
-                  lineHeight: 1.4,
-                  letterSpacing: '-0.02em',
-                  marginBottom: '3rem'
-                }}>
-                  {lang === 'pl' ? item.pl : item.en}
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: 'auto' }}>
                   <div style={{
-                    width: '48px', height: '48px', borderRadius: '50%', background: 'linear-gradient(135deg, #0F172A, #334155)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 600, fontSize: '1.1rem'
+                    width: '44px', height: '44px', borderRadius: '50%', background: 'linear-gradient(135deg, #0F172A, #334155)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 600, fontSize: '1rem'
                   }}>
                     {item.initials}
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A', margin: 0 }}>{item.name}</h4>
-                    <p style={{ fontSize: '0.95rem', color: '#64748B', margin: 0 }}>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#1D1D1F', margin: 0 }}>{item.name}</h4>
+                    <p style={{ fontSize: '0.85rem', color: '#86868B', margin: 0 }}>
                       {lang === 'pl' ? item.role : (item.roleEn || item.role)}
                     </p>
                   </div>
                 </div>
               </RevealItem>
             ))}
-
-            {/* Empty element to act as end padding so last item centers properly */}
-            <div style={{ flex: '0 0 1px' }} />
           </RevealStagger>
           
-          {/* Pagination Controls */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
-            {/* Dots Pill Container */}
-            <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
-              {reviewsData.map((_, idx) => (
-                <motion.button
-                  key={idx}
-                  layout
-                  initial={false}
-                  onClick={() => scrollTo(idx)}
-                  animate={{
-                    width: activeIndex === idx ? '36px' : '8px',
-                    backgroundColor: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
-                    borderRadius: activeIndex === idx ? '8px' : '50%'
-                  }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 400,
-                    damping: 30
-                  }}
-                  style={{
-                    height: '8px',
-                    border: 'none',
-                    padding: 0,
-                    cursor: 'pointer',
-                    outline: 'none',
-                    flexShrink: 0
-                  }}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Play/Pause Button Pill */}
+          {/* Pagination Controls - Right Aligned Arrows */}
+          <Reveal delay={0.2} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '12px', marginTop: '1rem' }}>
             <button
-              onClick={() => setIsAutoplay(!isAutoplay)}
+              onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
+              disabled={activeIndex === 0}
               style={{
-                width: '32px',
-                height: '32px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
-                background: '#E8E8ED',
+                background: activeIndex === 0 ? 'rgba(0,0,0,0.04)' : 'rgba(0,0,0,0.08)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                cursor: 'pointer',
-                color: '#1D1D1F',
+                cursor: activeIndex === 0 ? 'default' : 'pointer',
+                color: activeIndex === 0 ? 'rgba(0,0,0,0.3)' : '#1D1D1F',
                 outline: 'none',
-                transition: 'background 0.3s ease'
+                transition: 'all 0.3s ease'
               }}
-              aria-label={isAutoplay ? 'Pause autoplay' : 'Play autoplay'}
+              aria-label="Previous"
             >
-              {isAutoplay ? (
-                // Pause Icon
-                <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="1" y="1" width="2" height="10" rx="1" />
-                  <rect x="7" y="1" width="2" height="10" rx="1" />
-                </svg>
-              ) : (
-                // Play Icon
-                <svg width="11" height="12" viewBox="0 0 11 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '2px' }}>
-                  <path d="M10.1 5.1C10.7 5.5 10.7 6.5 10.1 6.9L1.9 11.6C1.2 12 0.3 11.5 0.3 10.7V1.3C0.3 0.5 1.2 0 1.9 0.4L10.1 5.1Z" />
-                </svg>
-              )}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+
+            <button
+              onClick={() => scrollTo(Math.min(reviewsData.length - 1, activeIndex + 1))}
+              disabled={activeIndex >= reviewsData.length - 1} // Disables if at end
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                background: activeIndex >= reviewsData.length - 1 ? 'rgba(0,0,0,0.04)' : 'rgba(0,0,0,0.08)',
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: activeIndex >= reviewsData.length - 1 ? 'default' : 'pointer',
+                color: activeIndex >= reviewsData.length - 1 ? 'rgba(0,0,0,0.3)' : '#1D1D1F',
+                outline: 'none',
+                transition: 'all 0.3s ease'
+              }}
+              aria-label="Next"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
             </button>
           </Reveal>
         </div>
