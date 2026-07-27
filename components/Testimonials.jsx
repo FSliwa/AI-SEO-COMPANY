@@ -10,7 +10,8 @@ const reviewsData = [
     id: 1,
     initials: 'MK',
     name: 'Michał Kowalski',
-    role: 'CEO, FinTech Apex Platform',
+    role: 'FinTech Apex Platform • Zweryfikowany Partner',
+    roleEn: 'FinTech Apex Platform • Verified Partner',
     pl: '„AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł o 104% w zaledwie 3 miesiące, a klienci zachwycają się nowoczesną estetyką.”',
     en: '“AI SEO COMPANY executed a full rebrand of our B2B platform and web deployment. The results blew away our expectations — organic traffic skyrocketed by 104% in just 3 months, and clients love our modern aesthetics.”'
   },
@@ -18,8 +19,8 @@ const reviewsData = [
     id: 2,
     initials: 'AB',
     name: 'Anna Bielska',
-    role: 'Dyrektor E-commerce, Lumina Store',
-    roleEn: 'E-commerce Director, Lumina Store',
+    role: 'Lumina Store • Zweryfikowany Partner',
+    roleEn: 'Lumina Store • Verified Partner',
     pl: '„Zwiększenie konwersji i spójny, zjawiskowy design - to właśnie zyskaliśmy dzięki tej współpracy. Nasz sklep internetowy nie tylko wygląda teraz jak marka premium, ale generuje o 40% więcej zapytań od klientów.”',
     en: '“Increased conversion and a stunning, cohesive design - that\'s exactly what we gained from this collaboration. Our online store not only looks like a premium brand now but also generates 40% more customer inquiries.”'
   },
@@ -27,7 +28,8 @@ const reviewsData = [
     id: 3,
     initials: 'PS',
     name: 'Piotr Szymański',
-    role: 'Founder, DataFlow AI',
+    role: 'DataFlow AI • Zweryfikowany Partner',
+    roleEn: 'DataFlow AI • Verified Partner',
     pl: '„Wyróżnienie się na zatłoczonym rynku technologicznym to ogromne wyzwanie. AI SEO COMPANY stworzyło dla nas tożsamość, która idealnie oddaje naszą innowacyjność, zapewniając nam niesamowitą przewagę nad konkurencją.”',
     en: '“Standing out in a crowded tech market is a massive challenge. AI SEO COMPANY created an identity for us that perfectly captures our innovation, giving us an incredible edge over the competition.”'
   },
@@ -35,8 +37,8 @@ const reviewsData = [
     id: 4,
     initials: 'KW',
     name: 'Karolina Wróbel',
-    role: 'Właściciel, MedCare Clinic',
-    roleEn: 'Owner, MedCare Clinic',
+    role: 'MedCare Clinic • Zweryfikowany Partner',
+    roleEn: 'MedCare Clinic • Verified Partner',
     pl: '„Architektura treści i pozycjonowanie, które nam wdrożono, zaowocowały pełnym kalendarzem wizyt. Agencja nie tylko projektuje piękne strony, ale dba o to, by te strony zarabiały prawdziwe pieniądze.”',
     en: '“The content architecture and SEO positioning they implemented resulted in a fully booked calendar. The agency doesn\'t just design beautiful websites; they ensure those sites generate real revenue.”'
   },
@@ -44,7 +46,8 @@ const reviewsData = [
     id: 5,
     initials: 'TN',
     name: 'Tomasz Nowak',
-    role: 'Head of Marketing, Skyline Development',
+    role: 'Skyline Development • Zweryfikowany Partner',
+    roleEn: 'Skyline Development • Verified Partner',
     pl: '„Ich podejście do projektowania UX to mistrzostwo. Użytkownicy spędzają na naszej stronie o wiele więcej czasu, a zapytania ofertowe na nasze inwestycje wzrosły drastycznie. Prawdziwi partnerzy biznesowi.”',
     en: '“Their approach to UX design is masterful. Users spend much more time on our site, and leads for our properties have increased drastically. True business partners.”'
   }
@@ -98,7 +101,7 @@ export default function Testimonials() {
 
   return (
     <section className="testimonials" id="testimonials" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
-      <div className="container" style={{ maxWidth: '1440px', padding: '0 2rem' }}>
+      <div className="container">
         <Reveal className="section-header" style={{ marginBottom: '4rem', textAlign: 'left' }}>
           <div className="section-tag" style={{ color: '#0F172A', borderColor: 'rgba(0,0,0,0.1)' }}>
             <span className="asterisk" style={{ color: '#0F172A' }}>✳</span> {t.tag}
