@@ -54,10 +54,10 @@ export default function Header() {
                 src="/AI SEO COMPANY Logotyp.svg" 
                 alt="AI SEO COMPANY" 
                 style={{ 
-                  height: '32px', 
+                  height: 'clamp(36px, 4vw, 46px)', 
                   width: 'auto', 
                   filter: scrolled ? 'none' : 'brightness(0) invert(1)',
-                  transition: 'filter 0.7s ease'
+                  transition: 'filter 0.7s ease, height 0.7s ease'
                 }} 
               />
             </a>
