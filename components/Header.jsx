@@ -52,10 +52,10 @@ export default function Header() {
             <a href="/" className="logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 1802 534" 
+                viewBox="0 240 1802 294" 
                 overflow="visible"
                 style={{ 
-                  height: 'clamp(34px, 2.5vw, 40px)', 
+                  height: 'clamp(22px, 1.8vw, 26px)', 
                   width: 'auto', 
                   display: 'block',
                   transition: 'all 0.5s ease' 
