@@ -1170,7 +1170,7 @@ button, input, select, textarea {
 .pricing-desc {
   font-size: 0.9rem;
   color: var(--color-text-muted);
-  min-height: 7.2rem;
+  min-height: 4.8rem;
   margin-bottom: 1.25rem;
 }
 

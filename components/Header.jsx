@@ -55,7 +55,7 @@ export default function Header() {
                 viewBox="0 0 1802 534" 
                 overflow="visible"
                 style={{ 
-                  height: 'clamp(20px, 1.6vw, 24px)', 
+                  height: 'clamp(34px, 2.5vw, 40px)', 
                   width: 'auto', 
                   display: 'block',
                   transition: 'all 0.5s ease' 
