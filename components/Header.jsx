@@ -49,8 +49,17 @@ export default function Header() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href="#" className="logo" style={{ color: scrolled ? 'var(--color-text-dark)' : '#FFFFFF', transition: 'color 0.7s ease' }}>
-              AI SEO COMPANY
+            <a href="#" className="logo" style={{ display: 'flex', alignItems: 'center' }}>
+              <img 
+                src="/AI SEO COMPANY Logotyp.svg" 
+                alt="AI SEO COMPANY" 
+                style={{ 
+                  height: '32px', 
+                  width: 'auto', 
+                  filter: scrolled ? 'none' : 'brightness(0) invert(1)',
+                  transition: 'filter 0.7s ease'
+                }} 
+              />
             </a>
             
             {/* Header Award Badges */}
