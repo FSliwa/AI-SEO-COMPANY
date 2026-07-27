@@ -10,8 +10,8 @@ const reviewsData = [
     id: 1,
     initials: 'MK',
     name: 'Michał Kowalski',
-    role: 'FinTech Apex Platform • Zweryfikowany Partner',
-    roleEn: 'FinTech Apex Platform • Verified Partner',
+    role: 'Sektor FinTech • Zweryfikowany Partner',
+    roleEn: 'FinTech Sector • Verified Partner',
     pl: '„AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł o 104% w zaledwie 3 miesiące, a klienci zachwycają się nowoczesną estetyką.”',
     en: '“AI SEO COMPANY executed a full rebrand of our B2B platform and web deployment. The results blew away our expectations — organic traffic skyrocketed by 104% in just 3 months, and clients love our modern aesthetics.”'
   },
@@ -19,8 +19,8 @@ const reviewsData = [
     id: 2,
     initials: 'AB',
     name: 'Anna Bielska',
-    role: 'Lumina Store • Zweryfikowany Partner',
-    roleEn: 'Lumina Store • Verified Partner',
+    role: 'Branża E-commerce • Zweryfikowany Partner',
+    roleEn: 'E-commerce • Verified Partner',
     pl: '„Zwiększenie konwersji i spójny, zjawiskowy design - to właśnie zyskaliśmy dzięki tej współpracy. Nasz sklep internetowy nie tylko wygląda teraz jak marka premium, ale generuje o 40% więcej zapytań od klientów.”',
     en: '“Increased conversion and a stunning, cohesive design - that\'s exactly what we gained from this collaboration. Our online store not only looks like a premium brand now but also generates 40% more customer inquiries.”'
   },
@@ -28,8 +28,8 @@ const reviewsData = [
     id: 3,
     initials: 'PS',
     name: 'Piotr Szymański',
-    role: 'DataFlow AI • Zweryfikowany Partner',
-    roleEn: 'DataFlow AI • Verified Partner',
+    role: 'Branża Technologiczna • Zweryfikowany Partner',
+    roleEn: 'Tech Sector • Verified Partner',
     pl: '„Wyróżnienie się na zatłoczonym rynku technologicznym to ogromne wyzwanie. AI SEO COMPANY stworzyło dla nas tożsamość, która idealnie oddaje naszą innowacyjność, zapewniając nam niesamowitą przewagę nad konkurencją.”',
     en: '“Standing out in a crowded tech market is a massive challenge. AI SEO COMPANY created an identity for us that perfectly captures our innovation, giving us an incredible edge over the competition.”'
   },
@@ -37,8 +37,8 @@ const reviewsData = [
     id: 4,
     initials: 'KW',
     name: 'Karolina Wróbel',
-    role: 'MedCare Clinic • Zweryfikowany Partner',
-    roleEn: 'MedCare Clinic • Verified Partner',
+    role: 'Branża Medyczna • Zweryfikowany Partner',
+    roleEn: 'Healthcare Sector • Verified Partner',
     pl: '„Architektura treści i pozycjonowanie, które nam wdrożono, zaowocowały pełnym kalendarzem wizyt. Agencja nie tylko projektuje piękne strony, ale dba o to, by te strony zarabiały prawdziwe pieniądze.”',
     en: '“The content architecture and SEO positioning they implemented resulted in a fully booked calendar. The agency doesn\'t just design beautiful websites; they ensure those sites generate real revenue.”'
   },
@@ -46,8 +46,8 @@ const reviewsData = [
     id: 5,
     initials: 'TN',
     name: 'Tomasz Nowak',
-    role: 'Skyline Development • Zweryfikowany Partner',
-    roleEn: 'Skyline Development • Verified Partner',
+    role: 'Branża Deweloperska • Zweryfikowany Partner',
+    roleEn: 'Real Estate Sector • Verified Partner',
     pl: '„Ich podejście do projektowania UX to mistrzostwo. Użytkownicy spędzają na naszej stronie o wiele więcej czasu, a zapytania ofertowe na nasze inwestycje wzrosły drastycznie. Prawdziwi partnerzy biznesowi.”',
     en: '“Their approach to UX design is masterful. Users spend much more time on our site, and leads for our properties have increased drastically. True business partners.”'
   }
@@ -86,10 +86,10 @@ export default function Testimonials() {
     if (container) {
       const cards = container.querySelectorAll('.testimonial-apple-card');
       if (cards[index]) {
-        const containerRect = container.getBoundingClientRect();
-        const cardRect = cards[index].getBoundingClientRect();
-        // Calculate offset so the left edge of the card aligns with the left edge of the container
-        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft;
+        // We use the full-bleed CSS trick, so the container is the RevealStagger element itself.
+        // The first element has an offset of paddingLeft. 
+        // We can just use standard offsetLeft inside a scroll container.
+        const scrollOffset = cards[index].offsetLeft - container.offsetLeft;
         container.scrollTo({
           left: scrollOffset,
           behavior: 'smooth'
@@ -124,8 +124,10 @@ export default function Testimonials() {
               scrollSnapType: 'x mandatory',
               scrollBehavior: 'smooth',
               paddingBottom: '2rem', // Space for shadow
-              marginRight: '-100vw', // Allow horizontal overflow beyond container on the right
-              paddingRight: '100vw'
+              marginLeft: 'calc(-50vw + 50%)',
+              marginRight: 'calc(-50vw + 50%)',
+              paddingLeft: 'calc(50vw - 50%)',
+              paddingRight: 'calc(50vw - 50%)'
             }}
           >
             {reviewsData.map((item, idx) => (
