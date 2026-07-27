@@ -4,7 +4,7 @@ import CookiesBanner from '@/components/CookiesBanner';
 
 export const metadata = {
   metadataBase: new URL('https://www.ai-seo-company.pl'),
-  title: 'Agencja SEO Warszawa | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY',
+  title: 'Agencja SEO Warszawa | Branding & Web Design — AI SEO COMPANY',
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
   alternates: {
     canonical: 'https://www.ai-seo-company.pl',
@@ -20,17 +20,26 @@ export const metadata = {
     apple: '/ai-seo-company-logotyp.svg',
   },
   openGraph: {
-    title: 'Agencja SEO Warszawa — AI SEO COMPANY | Branding, Web Design & Pozycjonowanie',
+    title: 'Agencja SEO Warszawa — AI SEO COMPANY | Branding & Web Design',
     description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe zoptymalizowane pod konwersję, audyt SEO i wysokie pozycje w Google.',
     url: 'https://www.ai-seo-company.pl',
     siteName: 'AI SEO COMPANY',
     locale: 'pl_PL',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.ai-seo-company.pl/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'AI SEO COMPANY — Agencja SEO Warszawa',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Agencja SEO Warszawa — AI SEO COMPANY',
     description: 'Nowoczesna agencja SEO Warszawa. Strony i pozycjonowanie, które budują sprzedaż.',
+    images: ['https://www.ai-seo-company.pl/og-image.jpg'],
   },
 };
 

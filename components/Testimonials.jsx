@@ -233,28 +233,36 @@ export default function Testimonials() {
                   position: 'relative'
                 }}
               >
-                {/* Apple Intelligence Top Visual Media Banner */}
+                {/* Apple Visual Media Banner */}
                 <div style={{
                   width: '100%',
-                  height: '240px',
+                  height: '180px',
                   borderRadius: '20px',
                   overflow: 'hidden',
                   position: 'relative',
                   marginBottom: '1.75rem',
-                  background: item.bgGradient
+                  background: item.bgGradient,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}>
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'top center',
-                      opacity: 0.88,
-                      filter: 'contrast(1.05)'
-                    }}
-                  />
+                  <div style={{
+                    width: '70px',
+                    height: '70px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.15)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.75rem',
+                    fontWeight: 800,
+                    color: '#FFFFFF',
+                    letterSpacing: '0.05em'
+                  }}>
+                    {item.initials}
+                  </div>
                   {/* Glassmorphism Result Pill Badge */}
                   <div style={{
                     position: 'absolute',
