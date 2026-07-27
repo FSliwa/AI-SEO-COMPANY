@@ -49,7 +49,7 @@ export default function Footer() {
               <ul className="footer-links">
                 <li><a href="mailto:f.sliwa@ai-signals-company.pl">f.sliwa@ai-signals-company.pl</a></li>
                 <li><a href="#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</a></li>
-                <li><a href="#">Warszawa, Polska</a></li>
+                <li><a href="/cookies">{lang === 'pl' ? 'Polityka Prywatności i Cookies' : 'Privacy & Cookie Policy'}</a></li>
               </ul>
             </div>
           </div>
