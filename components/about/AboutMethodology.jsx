@@ -18,7 +18,7 @@ const methodologyStages = [
     metricSubtitle: 'Projektowanie UX/UI i solidny fundament techniczny.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
     layout: 'center',
-    largeImage: '/projects/madame-thai-full.png',
+    largeImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80',
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const methodologyStages = [
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     layout: 'right-side',
     desktopCard: {
-      image: '/projects/kafelek-staniax-full.png',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
     },
   },
   {
@@ -48,7 +48,7 @@ const methodologyStages = [
     metricSubtitle: 'Konwersja ruchu organicznego na realnych, płacących klientów.',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     layout: 'center-reverse',
-    largeImage: '/projects/kafelek-aisas.png',
+    largeImage: 'https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=1200&q=80',
   }
 ];
 

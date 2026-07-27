@@ -90,22 +90,22 @@ export default function AboutMission() {
     },
     {
       id: 4,
-      tag: lang === 'pl' ? 'ROZWÓJ BIZNESU' : 'BUSINESS GROWTH',
-      metric: '+300%',
-      title: lang === 'pl' ? 'Skalowanie sprzedaży B2B & B2C.' : 'Scaling B2B & B2C sales.',
+      tag: lang === 'pl' ? 'PARTNERSTWO' : 'PARTNERSHIP',
+      metric: '1:1',
+      title: lang === 'pl' ? 'Traktujemy Twój biznes jak własny.' : 'We treat your business as our own.',
       description: lang === 'pl'
-        ? 'Projektujemy zautomatyzowane systemy generowania leadów, które pracują 24/7, zamieniając ruch z wyszukiwarek w mierzalny zysk dla Twojej firmy.'
-        : 'We design automated lead generation systems that work 24/7, turning search traffic into measurable profit for your company.',
+        ? 'Nie jesteśmy tylko wykonawcą – stajemy się przedłużeniem Twojego zespołu. Angażujemy się w zrozumienie Twojego modelu biznesowego, by wspólnie budować długoterminowy sukces.'
+        : 'We are not just a contractor – we become an extension of your team. We commit to understanding your business model to build long-term success together.',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 5,
-      tag: lang === 'pl' ? 'PERFORMANCE' : 'PERFORMANCE',
-      metric: '99/100',
-      title: lang === 'pl' ? 'Ekstremalna wydajność i szybkość.' : 'Extreme performance and speed.',
+      tag: lang === 'pl' ? 'INNOWACJA' : 'INNOVATION',
+      metric: '∞',
+      title: lang === 'pl' ? 'Nigdy nie osiadamy na laurach.' : 'We never rest on our laurels.',
       description: lang === 'pl'
-        ? 'Tworzymy w oparciu o Next.js, gwarantując błyskawiczne ładowanie strony. Ekstremalna szybkość to wyższa pozycja w Google i znacznie lepsza konwersja.'
-        : 'We build on Next.js, guaranteeing lightning-fast page loads. Extreme speed means higher Google rankings and significantly better conversions.',
+        ? 'Technologia i algorytmy zmieniają się każdego dnia. Dlatego uczymy się i adaptujemy jeszcze szybciej, wyznaczając nowe standardy w branży, a nie tylko za nimi podążając.'
+        : 'Technology and algorithms change every day. That’s why we learn and adapt even faster, setting new industry standards rather than just following them.',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
