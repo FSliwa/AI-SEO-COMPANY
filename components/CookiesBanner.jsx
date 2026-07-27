@@ -30,13 +30,11 @@ export default function CookiesBanner() {
   if (!isVisible) return null;
 
   return (
-    <div 
-      className="cookies-banner-animated"
-      style={{
-        position: 'fixed',
-        bottom: '2rem',
-        left: '50%',
-        transform: 'translateX(-50%)',
+    <div style={{
+      position: 'fixed',
+      bottom: '2rem',
+      left: '50%',
+      transform: 'translateX(-50%)',
       width: '90%',
       maxWidth: '600px',
       background: '#0F172A',
