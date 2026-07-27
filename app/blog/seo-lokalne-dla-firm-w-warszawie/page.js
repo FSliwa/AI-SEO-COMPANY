@@ -18,8 +18,8 @@ export default function ArticleLokalnePage() {
             </a>
 
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <span style={{ background: 'rgba(24, 95, 165, 0.1)', color: 'var(--color-primary)', padding: '0.35rem 0.85rem', borderRadius: 'var(--radius-full)', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase' }}>
-                LOKALNE SEO WARSZAWA
+              <span className="section-tag" style={{ color: 'var(--color-primary)', padding: '0.35rem 0.85rem', background: 'rgba(24, 95, 165, 0.1)', borderRadius: 'var(--radius-full)' }}>
+                <span className="asterisk">✳</span> LOKALNE SEO WARSZAWA
               </span>
               <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>6 min czytania • 10 Lipca 2026</span>
             </div>
@@ -41,23 +41,14 @@ export default function ArticleLokalnePage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div style={{
-              background: 'var(--color-card-bg)',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--color-border)',
-              padding: '3rem 2.5rem',
-              color: 'var(--color-text-main)',
-              lineHeight: 1.8,
-              fontSize: '1.05rem',
-              boxShadow: 'var(--shadow-md)'
-            }}>
+            <div className="service-card" style={{ padding: '3rem 2.5rem' }}>
               <h2 style={{ fontSize: '1.6rem', color: 'var(--color-text-dark)', marginTop: '0', marginBottom: '1.25rem', fontWeight: 800 }}>
                 Strategiczne filary pozycjonowania lokalnego
               </h2>
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
-                <li style={{ marginBottom: '0.75rem' }}>Spójność wizytówki i witryny pod kątem danych NAP (Name, Address, Phone),</li>
-                <li style={{ marginBottom: '0.75rem' }}>Optymalizacja kategorii głównych oraz słów kluczowych w Google Profil Firmy,</li>
-                <li style={{ marginBottom: '0.75rem' }}>Pozyskiwanie opinii klientów z frazami lokalnymi i geolokalizacją.</li>
+              <ul className="service-features" style={{ borderTop: 'none', paddingTop: 0, marginBottom: '2rem' }}>
+                <li>Spójność wizytówki i witryny pod kątem danych NAP (Name, Address, Phone)</li>
+                <li>Optymalizacja kategorii głównych oraz słów kluczowych w Google Profil Firmy</li>
+                <li>Pozyskiwanie opinii klientów z frazami lokalnymi i geolokalizacją</li>
               </ul>
 
               <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', padding: '2.25rem', borderRadius: 'var(--radius-md)', margin: '2.5rem 0' }}>

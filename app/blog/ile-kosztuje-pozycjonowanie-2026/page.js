@@ -18,8 +18,8 @@ export default function ArticleCennikPage() {
             </a>
 
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <span style={{ background: 'rgba(24, 95, 165, 0.1)', color: 'var(--color-primary)', padding: '0.35rem 0.85rem', borderRadius: 'var(--radius-full)', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase' }}>
-                CENNIK &amp; BUDŻET SEO
+              <span className="section-tag" style={{ color: 'var(--color-primary)', padding: '0.35rem 0.85rem', background: 'rgba(24, 95, 165, 0.1)', borderRadius: 'var(--radius-full)' }}>
+                <span className="asterisk">✳</span> CENNIK &amp; BUDŻET SEO
               </span>
               <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>4 min czytania • 20 Lipca 2026</span>
             </div>
@@ -41,27 +41,18 @@ export default function ArticleCennikPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div style={{
-              background: 'var(--color-card-bg)',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--color-border)',
-              padding: '3rem 2.5rem',
-              color: 'var(--color-text-main)',
-              lineHeight: 1.8,
-              fontSize: '1.05rem',
-              boxShadow: 'var(--shadow-md)'
-            }}>
+            <div className="service-card" style={{ padding: '3rem 2.5rem' }}>
               <h2 style={{ fontSize: '1.6rem', color: 'var(--color-text-dark)', marginTop: '0', marginBottom: '1.25rem', fontWeight: 800 }}>
                 Główne składniki budżetu SEO
               </h2>
-              <p style={{ marginBottom: '1.5rem' }}>
+              <p style={{ marginBottom: '1.5rem', color: 'var(--color-text-muted)' }}>
                 Optymalizacja pod kątem wyszukiwarki Google to nie jednorazowy zabieg, lecz ciągły proces inżynieryjny. W ramach miesięcznego budżetu agencja SEO realizuje prace z zakresu:
               </p>
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
-                <li style={{ marginBottom: '0.5rem' }}>Audytu technicznego oraz ciągłego monitorowania błędów indeksacji,</li>
-                <li style={{ marginBottom: '0.5rem' }}>Tworzenia dedykowanych treści i architektury słów kluczowych pod Search Intent,</li>
-                <li style={{ marginBottom: '0.5rem' }}>Pozyskiwania wartościowych odnośników zewnętrznych (Link Building),</li>
-                <li style={{ marginBottom: '0.5rem' }}>Optymalizacji wskaźników konwersji (CRO) oraz analizy UX.</li>
+              <ul className="service-features" style={{ borderTop: 'none', paddingTop: 0, marginBottom: '2rem' }}>
+                <li>Audytu technicznego oraz ciągłego monitorowania błędów indeksacji</li>
+                <li>Tworzenia dedykowanych treści i architektury słów kluczowych pod Search Intent</li>
+                <li>Pozyskiwania wartościowych odnośników zewnętrznych (Link Building)</li>
+                <li>Optymalizacji wskaźników konwersji (CRO) oraz analizy UX</li>
               </ul>
 
               {/* Styled Callout matching main site */}

@@ -4,7 +4,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
-import { motion } from 'framer-motion';
 
 const articles = [
   {
@@ -13,7 +12,8 @@ const articles = [
     excerpt: 'Przegląd modeli rozliczeń SEO, budżetów linkowych oraz analizy wycen rynkowych w Polsce. Dowiedz się, od czego zależy cena pozycjonowania.',
     category: 'Cennik & Budżet',
     readTime: '4 min czytania',
-    date: '2026-07-20'
+    date: '24 Lipca 2026',
+    side: 'left'
   },
   {
     slug: 'core-web-vitals-a-pozycje-google',
@@ -21,7 +21,8 @@ const articles = [
     excerpt: 'LCP, CLS oraz INP. Poznaj oficjalny wpływ wskaźników jakości strony na algorytmy Google i konwersję w e-commerce.',
     category: 'Techniczne SEO',
     readTime: '5 min czytania',
-    date: '2026-07-15'
+    date: '23 Lipca 2026',
+    side: 'right'
   },
   {
     slug: 'seo-lokalne-dla-firm-w-warszawie',
@@ -29,7 +30,8 @@ const articles = [
     excerpt: 'Praktyczne strategie optymalizacji Google Profil Firmy oraz pozycjonowania lokalnych fraz usługowych w stolicy.',
     category: 'Lokalne SEO',
     readTime: '6 min czytania',
-    date: '2026-07-10'
+    date: '22 Lipca 2026',
+    side: 'left'
   }
 ];
 
@@ -39,9 +41,9 @@ export default function BlogHubPage() {
       <Header />
       
       {/* Blog Hero Banner */}
-      <section style={{ paddingTop: '160px', paddingBottom: '80px', position: 'relative' }}>
+      <section style={{ paddingTop: '160px', paddingBottom: '40px', position: 'relative' }}>
         <div className="container">
-          <Reveal className="section-header" style={{ textAlign: 'left', marginBottom: '3rem', maxWidth: '850px' }}>
+          <Reveal className="section-header" style={{ textAlign: 'left', marginBottom: '2rem', maxWidth: '850px' }}>
             <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> WIEDZA, TRENDY &amp; INSIGHTY SEO
             </div>
@@ -60,51 +62,35 @@ export default function BlogHubPage() {
               Ekspercka wiedza z zakresu pozycjonowania stron internetowych, optymalizacji pod kątem wyszukiwarek AI oraz architektury informacji.
             </p>
           </Reveal>
+        </div>
+      </section>
 
-          {/* Article Cards Grid matching main site card design */}
-          <RevealStagger className="pricing-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-            {articles.map((art) => (
-              <RevealItem key={art.slug} style={{ display: 'flex' }}>
-                <motion.article 
-                  whileHover={{ y: -6, borderColor: 'var(--color-primary)' }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    background: 'var(--color-card-bg)',
-                    borderRadius: 'var(--radius-lg)',
-                    border: '1px solid var(--color-border)',
-                    padding: '2.5rem 2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    width: '100%',
-                    boxShadow: 'var(--shadow-md)'
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                      {art.category}
+      {/* VIS Vertical Timeline Blog Layout matching main page */}
+      <section className="blog" style={{ paddingTop: 0, paddingBottom: '100px' }}>
+        <div className="container">
+          <RevealStagger className="blog-timeline-container" delay={0.2}>
+            <div className="blog-timeline-line"></div>
+
+            {articles.map((post, idx) => (
+              <RevealItem key={idx} className={`blog-timeline-item ${post.side}`}>
+                <div className="blog-timeline-node">
+                  <span className="blog-timeline-date">{post.date}</span>
+                </div>
+                <div className="blog-timeline-card">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                      {post.category}
                     </span>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>
-                      {art.readTime}
+                    <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
+                      {post.readTime}
                     </span>
                   </div>
-                  
-                  <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '1rem', lineHeight: 1.35, letterSpacing: '-0.01em' }}>
-                    <a href={`/blog/${art.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                      {art.title}
-                    </a>
-                  </h2>
-
-                  <p style={{ color: 'var(--color-text-muted)', fontSize: '0.95rem', lineHeight: 1.65, marginBottom: '2rem', flexGrow: 1 }}>
-                    {art.excerpt}
-                  </p>
-
-                  <div style={{ paddingTop: '1.25rem', borderTop: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--color-text-dim)' }}>{art.date}</span>
-                    <a href={`/blog/${art.slug}`} style={{ color: 'var(--color-cta)', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                      Czytaj wpis <span>→</span>
-                    </a>
-                  </div>
-                </motion.article>
+                  <h3>{post.title}</h3>
+                  <p style={{ color: 'var(--color-text-muted)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>{post.excerpt}</p>
+                  <a href={`/blog/${post.slug}`} className="blog-timeline-link" style={{ color: 'var(--color-cta)', fontWeight: 700 }}>
+                    Czytaj wpis →
+                  </a>
+                </div>
               </RevealItem>
             ))}
           </RevealStagger>
