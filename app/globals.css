@@ -1134,7 +1134,6 @@ button, input, select, textarea {
   padding: 2.75rem 2.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
   position: relative;
@@ -1171,8 +1170,8 @@ button, input, select, textarea {
 .pricing-desc {
   font-size: 0.9rem;
   color: var(--color-text-muted);
-  min-height: 88px;
-  margin-bottom: 1.5rem;
+  min-height: 4.2rem;
+  margin-bottom: 1.25rem;
 }
 
 .price-label {
@@ -1187,7 +1186,7 @@ button, input, select, textarea {
   font-weight: 700;
   color: var(--color-text-dark);
   line-height: 1.1;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .pricing-features {
@@ -1196,6 +1195,7 @@ button, input, select, textarea {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  flex-grow: 1;
 }
 
 .pricing-features li {
@@ -1983,6 +1983,7 @@ button, input, select, textarea {
   animation: shimmerGlow 4s infinite linear !important;
 }
 .pricing-card .btn {
+  margin-top: auto !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 .pricing-card .btn:hover {
