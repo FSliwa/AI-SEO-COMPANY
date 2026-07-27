@@ -64,14 +64,15 @@ export default function Testimonials() {
     if (!cards || !cards.length) return;
 
     const containerRect = container.getBoundingClientRect();
-    const containerLeft = containerRect.left;
+    const containerCenterX = containerRect.left + containerRect.width / 2;
 
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
       const cardRect = card.getBoundingClientRect();
-      const distance = Math.abs(cardRect.left - containerLeft);
+      const cardCenterX = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(containerCenterX - cardCenterX);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
@@ -86,10 +87,8 @@ export default function Testimonials() {
     if (container) {
       const cards = container.querySelectorAll('.testimonial-apple-card');
       if (cards[index]) {
-        // We use the full-bleed CSS trick, so the container is the RevealStagger element itself.
-        // The first element has an offset of paddingLeft. 
-        // We can just use standard offsetLeft inside a scroll container.
-        const scrollOffset = cards[index].offsetLeft - container.offsetLeft;
+        // Calculate offset so the center of the card aligns with the center of the container
+        const scrollOffset = cards[index].offsetLeft - container.offsetLeft - (containerRect.width - cardRect.width) / 2;
         container.scrollTo({
           left: scrollOffset,
           behavior: 'smooth'
@@ -101,8 +100,8 @@ export default function Testimonials() {
 
   return (
     <section className="testimonials" id="testimonials" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
-      <div className="container">
-        <Reveal className="section-header" style={{ marginBottom: '4rem', textAlign: 'left' }}>
+      <div className="container" style={{ maxWidth: '1440px' }}>
+        <Reveal className="section-header center" style={{ marginBottom: '4rem', padding: '0 2rem' }}>
           <div className="section-tag" style={{ color: '#0F172A', borderColor: 'rgba(0,0,0,0.1)' }}>
             <span className="asterisk" style={{ color: '#0F172A' }}>✳</span> {t.tag}
           </div>
@@ -112,7 +111,7 @@ export default function Testimonials() {
         </Reveal>
 
         {/* Carousel Container */}
-        <div style={{ position: 'relative', width: '100%', overflow: 'visible' }}>
+        <div style={{ position: 'relative', width: '100vw', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw' }}>
           <RevealStagger 
             id="testimonials-carousel"
             onScroll={handleScroll}
@@ -123,66 +122,69 @@ export default function Testimonials() {
               overflowX: 'auto',
               scrollSnapType: 'x mandatory',
               scrollBehavior: 'smooth',
-              paddingBottom: '2rem', // Space for shadow
-              marginLeft: 'calc(-50vw + 50%)',
-              marginRight: 'calc(-50vw + 50%)',
-              paddingLeft: 'calc(50vw - 50%)',
-              paddingRight: 'calc(50vw - 50%)'
+              padding: '0 50vw', // Ensures items can be centered
+              paddingBottom: '2rem' // Space for shadow
             }}
           >
+            {/* Empty element to act as start padding so first item centers properly */}
+            <div style={{ flex: '0 0 1px' }} />
+            
             {reviewsData.map((item, idx) => (
               <RevealItem 
                 key={item.id}
                 className="testimonial-apple-card"
                 style={{
-                  flex: '0 0 min(85vw, 420px)', // Match Apple's screenshot proportions
-                  scrollSnapAlign: 'start',
+                  flex: '0 0 min(85vw, 900px)',
+                  scrollSnapAlign: 'center',
                   background: '#FFFFFF', 
-                  borderRadius: '32px',
-                  padding: '3rem 2.5rem',
+                  borderRadius: '36px',
+                  padding: '4rem 3.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  minHeight: '380px',
+                  minHeight: '400px',
                   boxShadow: '0 20px 40px rgba(0,0,0,0.04)',
                   position: 'relative'
                 }}
               >
                 <div>
-                  <div style={{ color: '#F59E0B', fontSize: '1.25rem', marginBottom: '1.5rem', letterSpacing: '2px' }}>
+                  <div style={{ color: '#F59E0B', fontSize: '1.5rem', marginBottom: '1.5rem' }}>
                     ★★★★★
                   </div>
                   <p style={{ 
-                    fontSize: '1.15rem', 
+                    fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', 
                     fontWeight: 500, 
-                    color: '#1D1D1F', 
-                    lineHeight: 1.5,
-                    letterSpacing: '-0.01em',
-                    marginBottom: '2rem'
+                    color: '#0F172A', 
+                    lineHeight: 1.4,
+                    letterSpacing: '-0.02em',
+                    marginBottom: '3rem'
                   }}>
                     {lang === 'pl' ? item.pl : item.en}
                   </p>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: 'auto' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <div style={{
-                    width: '44px', height: '44px', borderRadius: '50%', background: 'linear-gradient(135deg, #0F172A, #334155)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 600, fontSize: '1rem'
+                    width: '48px', height: '48px', borderRadius: '50%', background: 'linear-gradient(135deg, #0F172A, #334155)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 600, fontSize: '1.1rem'
                   }}>
                     {item.initials}
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#1D1D1F', margin: 0 }}>{item.name}</h4>
-                    <p style={{ fontSize: '0.85rem', color: '#86868B', margin: 0 }}>
+                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A', margin: 0 }}>{item.name}</h4>
+                    <p style={{ fontSize: '0.95rem', color: '#64748B', margin: 0 }}>
                       {lang === 'pl' ? item.role : (item.roleEn || item.role)}
                     </p>
                   </div>
                 </div>
               </RevealItem>
             ))}
+
+            {/* Empty element to act as end padding so last item centers properly */}
+            <div style={{ flex: '0 0 1px' }} />
           </RevealStagger>
           
-          {/* Pagination Controls - Right Aligned Arrows */}
-          <Reveal delay={0.2} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '12px', marginTop: '1rem' }}>
+          {/* Pagination Controls */}
+          <Reveal delay={0.2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
             <button
               onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
               disabled={activeIndex === 0}
