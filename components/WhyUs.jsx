@@ -256,9 +256,10 @@ export default function WhyUs() {
                   {item.tag}
                 </div>
                 <motion.div 
+                  whileHover={{ scale: 1.08, color: 'var(--color-primary)' }}
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
-                  style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center', cursor: 'default', transition: 'color 0.3s ease' }}
                 >
                   {item.metric}
                 </motion.div>

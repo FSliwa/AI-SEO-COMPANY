@@ -86,7 +86,7 @@ export default function Pricing() {
 
           {/* Package 3 (Featured Booster Pack) */}
           <RevealItem className="pricing-card featured">
-            <span className="pricing-featured-badge">{lang === 'pl' ? 'NAJPOPULARNIEJSZY PAKIET' : 'MOST POPULAR PACK'}</span>
+            <span className="pricing-featured-badge shimmer-badge">{lang === 'pl' ? 'NAJPOPULARNIEJSZY PAKIET' : 'MOST POPULAR PACK'}</span>
             <div className="pricing-header">
               <h3>{t.boosterTitle}</h3>
               <p className="pricing-desc">{t.boosterDesc}</p>
