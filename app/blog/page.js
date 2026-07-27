@@ -40,12 +40,12 @@ export default function BlogHubPage() {
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       
-      {/* Blog Hero Banner */}
-      <section style={{ paddingTop: '160px', paddingBottom: '40px', position: 'relative' }}>
+      {/* Blog Hero Banner matching components/Blog.jsx */}
+      <section style={{ paddingTop: '160px', paddingBottom: '30px', position: 'relative' }}>
         <div className="container">
           <Reveal className="section-header" style={{ textAlign: 'left', marginBottom: '2rem', maxWidth: '850px' }}>
             <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> WIEDZA, TRENDY &amp; INSIGHTY SEO
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> BLOG &amp; ARTYKUŁY
             </div>
             
             <h1 style={{ 
@@ -56,16 +56,16 @@ export default function BlogHubPage() {
               marginBottom: '1.5rem', 
               letterSpacing: '-0.02em'
             }}>
-              Blog <span style={{ color: 'var(--color-cta)' }}>AI SEO COMPANY</span>
+              Wiedza i inspiracje — <span style={{ color: 'var(--color-cta)' }}>Trends &amp; Insights</span>
             </h1>
             <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', lineHeight: 1.65 }}>
-              Ekspercka wiedza z zakresu pozycjonowania stron internetowych, optymalizacji pod kątem wyszukiwarek AI oraz architektury informacji.
+              Przeczytaj najnowsze wpisy eksperckie i wyprzedź konkurencję w wynikach wyszukiwania.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* VIS Vertical Timeline Blog Layout matching main page */}
+      {/* VIS Vertical Timeline Blog Layout matching main page components/Blog.jsx */}
       <section className="blog" style={{ paddingTop: 0, paddingBottom: '100px' }}>
         <div className="container">
           <RevealStagger className="blog-timeline-container" delay={0.2}>
@@ -87,8 +87,8 @@ export default function BlogHubPage() {
                   </div>
                   <h3>{post.title}</h3>
                   <p style={{ color: 'var(--color-text-muted)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>{post.excerpt}</p>
-                  <a href={`/blog/${post.slug}`} className="blog-timeline-link" style={{ color: 'var(--color-cta)', fontWeight: 700 }}>
-                    Czytaj wpis →
+                  <a href={`/blog/${post.slug}`} className="blog-timeline-link" style={{ color: 'var(--color-cta)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                    Czytaj wpis <span style={{ fontSize: '1.1rem' }}>→</span>
                   </a>
                 </div>
               </RevealItem>
