@@ -1803,9 +1803,80 @@ button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
-  .header-award-badges { display: none; }
+  /* Header Mobile Layout Optimization */
+  .header {
+    padding: 0.85rem 0 !important;
+  }
+  .header.scrolled {
+    padding: 0.7rem 0 !important;
+  }
+  .header-award-badges { display: none !important; }
+  .header-hire-btn { display: none !important; } /* Hidden in header on mobile to prevent overcrowding */
+  .logo {
+    font-size: 1.15rem !important;
+  }
+  .lang-switcher {
+    padding: 0.3rem 0.6rem !important;
+    font-size: 0.8rem !important;
+  }
+  .kota-menu-trigger {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1.1rem !important;
+  }
+
+  /* Hero Section Height & Content Spacing Optimization (Mobile Only) */
+  .hero {
+    height: auto !important;
+    min-height: 100dvh !important;
+    min-height: -webkit-fill-available !important;
+    max-height: none !important;
+    padding-top: 6.5rem !important;
+    padding-bottom: 3.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.25rem !important;
+  }
+  .hero-content h1 {
+    font-size: clamp(2rem, 8.2vw, 2.75rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.75rem !important;
+  }
+  .hero-cta-group {
+    gap: 0.85rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .hero-proof {
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    padding-top: 1.25rem !important;
+  }
+  .hero-card-preview {
+    padding: 1.5rem !important;
+    border-radius: 20px !important;
+  }
+  .floating-pill {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.78rem !important;
+  }
+  .pill-1 {
+    bottom: -12px !important;
+    left: -10px !important;
+  }
+  .pill-2 {
+    top: -12px !important;
+    right: -10px !important;
+  }
+
   .mobile-toggle { display: block; }
-  .hero-content h1 { font-size: 2.4rem; }
   .footer-grid { grid-template-columns: 1fr; }
 
   /* Blog Timeline Mobile Responsiveness */
