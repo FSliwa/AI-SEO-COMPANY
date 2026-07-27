@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+import { motion } from 'framer-motion';
 
 const faqAudyt = {
   '@context': 'https://schema.org',
@@ -30,49 +31,63 @@ const faqAudyt = {
 
 export default function AudytSeoPage() {
   return (
-    <main style={{ background: '#030712', color: '#F8FAFC', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ background: '#F8FAFC', color: '#0F172A', minHeight: '100vh', overflowX: 'hidden' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqAudyt) }}
       />
       <Header />
       
-      {/* Hero Banner with Ambient Glow */}
-      <section style={{ paddingTop: '180px', paddingBottom: '100px', position: 'relative' }}>
+      {/* Hero Banner */}
+      <section style={{ paddingTop: '170px', paddingBottom: '90px', position: 'relative' }}>
         <div style={{
           position: 'absolute',
           top: '25%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '55vw',
+          width: '60vw',
           height: '350px',
-          background: 'radial-gradient(circle, rgba(216, 90, 48, 0.18) 0%, rgba(3, 7, 18, 0) 80%)',
-          filter: 'blur(90px)',
+          background: 'radial-gradient(circle, rgba(216, 90, 48, 0.08) 0%, rgba(248, 250, 252, 0) 80%)',
+          filter: 'blur(75px)',
           pointerEvents: 'none',
           zIndex: 1
         }} />
 
         <div className="container" style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 1.5rem', position: 'relative', zIndex: 2 }}>
           <Reveal>
-            <div className="section-tag" style={{ color: '#D85A30', marginBottom: '1.25rem' }}>
+            <div style={{ 
+              display: 'inline-flex', 
+              alignItems: 'center', 
+              gap: '0.5rem', 
+              padding: '0.4rem 1rem', 
+              borderRadius: '100px', 
+              background: '#FFFFFF', 
+              border: '1px solid rgba(216, 90, 48, 0.25)', 
+              boxShadow: '0 4px 15px rgba(216, 90, 48, 0.08)', 
+              color: '#D85A30', 
+              fontWeight: 700, 
+              fontSize: '0.85rem', 
+              marginBottom: '1.5rem' 
+            }}>
               <span className="asterisk">✳</span> LEAD MAGNET & DIAGNOSTYKA
             </div>
+            
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)', 
               fontWeight: 800, 
               lineHeight: 1.1, 
-              color: '#FFFFFF', 
+              color: '#0F172A', 
               marginBottom: '1.5rem', 
               letterSpacing: '-0.03em',
               fontFamily: "'Space Grotesk', system-ui, sans-serif"
             }}>
               Profesjonalny <span style={{ 
-                background: 'linear-gradient(135deg, #FF7A59 0%, #D85A30 50%, #A855F7 100%)',
+                background: 'linear-gradient(135deg, #D85A30 0%, #7C3AED 50%, #2563EB 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
               }}>Audyt SEO</span> Strony i Sklepu
             </h1>
-            <p style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '780px', lineHeight: 1.65, marginBottom: '2.5rem' }}>
+            <p style={{ fontSize: '1.25rem', color: '#475569', maxWidth: '780px', lineHeight: 1.65, marginBottom: '2.5rem' }}>
               Odkryj przyczyny braku pozycji w Google i odblokuj pełny potencjał sprzedażowy serwisu. Przeprowadzamy weryfikację ponad 50 elementów technicznych i treściowych.
             </p>
             <a href="#kontakt" className="btn btn-primary" style={{ padding: '0.9rem 2.25rem' }}>
@@ -83,29 +98,44 @@ export default function AudytSeoPage() {
       </section>
 
       {/* Feature Grid Section */}
-      <section style={{ padding: '80px 0', background: 'rgba(255,255,255,0.015)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <section style={{ padding: '90px 0', background: '#FFFFFF', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
         <div className="container" style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 1.5rem' }}>
           <Reveal>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#FFFFFF', marginBottom: '3rem', fontFamily: "'Space Grotesk', sans-serif" }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#0F172A', marginBottom: '3rem', fontFamily: "'Space Grotesk', sans-serif" }}>
               Co Analizujemy Podczas Audytu SEO?
             </h2>
           </Reveal>
 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            <RevealItem style={{ background: 'rgba(15, 23, 42, 0.65)', backdropFilter: 'blur(16px)', padding: '2.25rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>⚡</div>
-              <h3 style={{ color: '#D85A30', fontSize: '1.3rem', marginBottom: '0.75rem', fontWeight: 700 }}>1. SEO Techniczne i Szybkość</h3>
-              <p style={{ color: '#94A3B8', fontSize: '0.95rem', lineHeight: 1.6 }}>Core Web Vitals (LCP, CLS, INP), kody odpowiedzi HTTP, kanibalizacja i błędy indeksowania.</p>
+            <RevealItem>
+              <motion.div 
+                whileHover={{ y: -6 }}
+                style={{ background: '#F8FAFC', padding: '2.5rem', borderRadius: '28px', border: '1px solid #E2E8F0', boxShadow: '0 10px 25px rgba(0,0,0,0.02)' }}
+              >
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>⚡</div>
+                <h3 style={{ color: '#D85A30', fontSize: '1.3rem', marginBottom: '0.75rem', fontWeight: 800 }}>1. SEO Techniczne i Szybkość</h3>
+                <p style={{ color: '#475569', fontSize: '0.975rem', lineHeight: 1.65 }}>Core Web Vitals (LCP, CLS, INP), kody odpowiedzi HTTP, kanibalizacja i błędy indeksowania.</p>
+              </motion.div>
             </RevealItem>
-            <RevealItem style={{ background: 'rgba(15, 23, 42, 0.65)', backdropFilter: 'blur(16px)', padding: '2.25rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📝</div>
-              <h3 style={{ color: '#D85A30', fontSize: '1.3rem', marginBottom: '0.75rem', fontWeight: 700 }}>2. Architektura Treści (Content)</h3>
-              <p style={{ color: '#94A3B8', fontSize: '0.95rem', lineHeight: 1.6 }}>Nasycenie frazami, struktura nagłówków (H1-H6), duplikacja treści oraz profil słów kluczowych.</p>
+            <RevealItem>
+              <motion.div 
+                whileHover={{ y: -6 }}
+                style={{ background: '#F8FAFC', padding: '2.5rem', borderRadius: '28px', border: '1px solid #E2E8F0', boxShadow: '0 10px 25px rgba(0,0,0,0.02)' }}
+              >
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📝</div>
+                <h3 style={{ color: '#7C3AED', fontSize: '1.3rem', marginBottom: '0.75rem', fontWeight: 800 }}>2. Architektura Treści (Content)</h3>
+                <p style={{ color: '#475569', fontSize: '0.975rem', lineHeight: 1.65 }}>Nasycenie frazami, struktura nagłówków (H1-H6), duplikacja treści oraz profil słów kluczowych.</p>
+              </motion.div>
             </RevealItem>
-            <RevealItem style={{ background: 'rgba(15, 23, 42, 0.65)', backdropFilter: 'blur(16px)', padding: '2.25rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🔗</div>
-              <h3 style={{ color: '#D85A30', fontSize: '1.3rem', marginBottom: '0.75rem', fontWeight: 700 }}>3. Profil Linków Zwrotnych</h3>
-              <p style={{ color: '#94A3B8', fontSize: '0.95rem', lineHeight: 1.6 }}>Jakość i toksyczność domen odsyłających, rozkład anchor textów oraz autorytet serwisu.</p>
+            <RevealItem>
+              <motion.div 
+                whileHover={{ y: -6 }}
+                style={{ background: '#F8FAFC', padding: '2.5rem', borderRadius: '28px', border: '1px solid #E2E8F0', boxShadow: '0 10px 25px rgba(0,0,0,0.02)' }}
+              >
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🔗</div>
+                <h3 style={{ color: '#2563EB', fontSize: '1.3rem', marginBottom: '0.75rem', fontWeight: 800 }}>3. Profil Linków Zwrotnych</h3>
+                <p style={{ color: '#475569', fontSize: '0.975rem', lineHeight: 1.65 }}>Jakość i toksyczność domen odsyłających, rozkład anchor textów oraz autorytet serwisu.</p>
+              </motion.div>
             </RevealItem>
           </RevealStagger>
         </div>

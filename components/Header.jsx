@@ -12,9 +12,11 @@ export default function Header() {
   const t = translations[lang].nav;
 
   useEffect(() => {
+    const isSubpage = typeof window !== 'undefined' && window.location.pathname !== '/';
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(isSubpage || window.scrollY > 40);
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
