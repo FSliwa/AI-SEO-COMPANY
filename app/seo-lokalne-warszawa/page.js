@@ -7,7 +7,7 @@ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
 export default function SeoLokalnePage() {
   return (
-    <main style={{ backgroundColor: '#F5F5F7', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       
       <section style={{ paddingTop: '200px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>

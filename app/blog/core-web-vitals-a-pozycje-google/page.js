@@ -7,7 +7,7 @@ import { Reveal } from '@/components/ScrollReveal';
 
 export default function ArticleCwvPage() {
   return (
-    <main style={{ backgroundColor: '#F5F5F7', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       
       <article style={{ paddingTop: '200px', paddingBottom: '160px', position: 'relative' }}>
