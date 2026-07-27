@@ -57,6 +57,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -68,6 +70,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   position: relative;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-wrap: anywhere;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -123,13 +128,13 @@ button, input, select, textarea {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-text-dark);
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
 .section-tag span.asterisk {
   font-size: 1.2rem;
-  color: var(--color-text-dark);
+  color: var(--color-primary);
   line-height: 1;
 }
 
@@ -1140,8 +1145,7 @@ button, input, select, textarea {
   box-shadow: var(--shadow-lg);
 }
 
-.pricing-card.featured::before {
-  content: 'NAJPOPULARNIEJSZY PAKIET';
+.pricing-featured-badge {
   letter-spacing: 0.05em;
   font-weight: 700;
   position: absolute;
@@ -1151,10 +1155,11 @@ button, input, select, textarea {
   background: var(--color-primary);
   color: #FFFFFF;
   font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.25rem 0.9rem;
+  padding: 0.25rem 0.95rem;
   border-radius: var(--radius-full);
-  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(24, 95, 165, 0.3);
+  z-index: 2;
 }
 
 .pricing-header h3 {
@@ -1802,6 +1807,72 @@ button, input, select, textarea {
   .mobile-toggle { display: block; }
   .hero-content h1 { font-size: 2.4rem; }
   .footer-grid { grid-template-columns: 1fr; }
+
+  /* Blog Timeline Mobile Responsiveness */
+  .blog-timeline-container {
+    padding: 1rem 0;
+  }
+  .blog-timeline-line {
+    left: 0.75rem;
+    transform: none;
+  }
+  .blog-timeline-item {
+    width: 100% !important;
+    left: 0 !important;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+  }
+  .blog-timeline-item.right {
+    left: 0 !important;
+  }
+  .blog-timeline-node {
+    left: -0.25rem !important;
+    right: auto !important;
+    top: 0.25rem !important;
+    transform: none !important;
+    padding: 0.15rem 0.5rem;
+  }
+  .blog-timeline-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* Modal & Contact Form Mobile Responsiveness */
+  .contact-box {
+    padding: 1.75rem 1.25rem !important;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .company-details li {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .modal-container {
+    padding: 1.75rem 1.25rem;
+    width: 95%;
+    max-height: 88vh;
+  }
+  .kota-floating-cta {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.85rem;
+    z-index: 90;
+  }
+
+  /* Portfolio Mobile Card Adjustments */
+  .apple-card {
+    padding: 2.25rem 1.5rem !important;
+    min-height: 480px !important;
+    border-radius: 24px !important;
+  }
+
+  /* Apple Testimonial Mobile Card Adjustments */
+  .apple-testimonial-card {
+    padding: 1.25rem !important;
+    border-radius: 22px !important;
+  }
 }
 
 /* Hide scrollbar for components that use smooth horizontal scrolling */

@@ -64,8 +64,8 @@ export default function Process() {
     <section className="process" id="proces" ref={sectionRef}>
       <div className="container">
         <div className="section-header center">
-          <div className="section-tag">
-            <span className="asterisk">✳</span> {t.tag}
+          <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
           </div>
           <h2>{t.title}</h2>
           <p>{t.subtitle}</p>

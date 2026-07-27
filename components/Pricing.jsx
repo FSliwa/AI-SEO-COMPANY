@@ -12,7 +12,9 @@ export default function Pricing() {
     <section className="pricing" id="cennik">
       <div className="container">
         <Reveal className="section-header">
-          <div className="section-tag">{t.tag}</div>
+          <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+          </div>
           <h2>{t.title}</h2>
           <p>{t.subtitle}</p>
         </Reveal>
@@ -84,6 +86,7 @@ export default function Pricing() {
 
           {/* Package 3 (Featured Booster Pack) */}
           <RevealItem className="pricing-card featured">
+            <span className="pricing-featured-badge">{lang === 'pl' ? 'NAJPOPULARNIEJSZY PAKIET' : 'MOST POPULAR PACK'}</span>
             <div className="pricing-header">
               <h3>{t.boosterTitle}</h3>
               <p className="pricing-desc">{t.boosterDesc}</p>

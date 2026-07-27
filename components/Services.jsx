@@ -14,8 +14,8 @@ export default function Services() {
     <section className="services" id="uslugi">
       <div className="container">
         <Reveal className="section-header">
-          <div className="section-tag">
-            <span className="asterisk">✳</span> {t.tag}
+          <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
           </div>
           <h2>{t.title}</h2>
           <p>{t.subtitle}</p>

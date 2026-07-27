@@ -12,8 +12,14 @@ const reviewsData = [
     name: 'Michał Kowalski',
     role: 'Sektor FinTech • Zweryfikowany Partner',
     roleEn: 'FinTech Sector • Verified Partner',
-    pl: '„AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł o 104% w zaledwie 3 miesiące, a klienci zachwycają się nowoczesną estetyką.”',
-    en: '“AI SEO COMPANY executed a full rebrand of our B2B platform and web deployment. The results blew away our expectations — organic traffic skyrocketed by 104% in just 3 months, and clients love our modern aesthetics.”'
+    metricBadge: '+104% Ruchu B2B',
+    metricBadgeEn: '+104% Organic Traffic',
+    image: '/projects/kafelek-aisas.png',
+    bgGradient: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+    leadPl: 'Pełny rebrand B2B i 104% wzrostu ruchu w 3 miesiące.',
+    leadEn: 'Full B2B rebrand and 104% traffic growth in 3 months.',
+    bodyPl: 'AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł błyskawicznie, a klienci zachwycają się nowoczesną estetyką.',
+    bodyEn: 'AI SEO COMPANY executed a full rebrand of our platform and web deployment. The results blew away our expectations — organic traffic skyrocketed and clients love our modern aesthetics.'
   },
   {
     id: 2,
@@ -21,8 +27,14 @@ const reviewsData = [
     name: 'Anna Bielska',
     role: 'Branża E-commerce • Zweryfikowany Partner',
     roleEn: 'E-commerce • Verified Partner',
-    pl: '„Zwiększenie konwersji i spójny, zjawiskowy design - to właśnie zyskaliśmy dzięki tej współpracy. Nasz sklep internetowy nie tylko wygląda teraz jak marka premium, ale generuje o 40% więcej zapytań od klientów.”',
-    en: '“Increased conversion and a stunning, cohesive design - that\'s exactly what we gained from this collaboration. Our online store not only looks like a premium brand now but also generates 40% more customer inquiries.”'
+    metricBadge: '+40% Zapytań',
+    metricBadgeEn: '+40% Customer Leads',
+    image: '/projects/madame-thai-full.png',
+    bgGradient: 'linear-gradient(135deg, #1E1B4B 0%, #312E81 100%)',
+    leadPl: 'Zjawiskowy design i natychmiastowy skok konwersji.',
+    leadEn: 'Stunning design and an instant bump in sales conversion.',
+    bodyPl: 'Zwiększenie konwersji i spójny design — to właśnie zyskaliśmy. Nasz serwis nie tylko wygląda teraz jak marka premium, ale generuje o 40% więcej zapytań od klientów.',
+    bodyEn: 'Increased conversion and a stunning, cohesive design — that\'s exactly what we gained. Our website not only looks like a premium brand now but also generates 40% more inquiries.'
   },
   {
     id: 3,
@@ -30,8 +42,14 @@ const reviewsData = [
     name: 'Piotr Szymański',
     role: 'Branża Technologiczna • Zweryfikowany Partner',
     roleEn: 'Tech Sector • Verified Partner',
-    pl: '„Wyróżnienie się na zatłoczonym rynku technologicznym to ogromne wyzwanie. AI SEO COMPANY stworzyło dla nas tożsamość, która idealnie oddaje naszą innowacyjność, zapewniając nam niesamowitą przewagę nad konkurencją.”',
-    en: '“Standing out in a crowded tech market is a massive challenge. AI SEO COMPANY created an identity for us that perfectly captures our innovation, giving us an incredible edge over the competition.”'
+    metricBadge: '2.8k+ Wyświetleń od 0',
+    metricBadgeEn: '2.8k+ Impressions from 0',
+    image: '/projects/kafelek Staniax.png',
+    bgGradient: 'linear-gradient(135deg, #064E3B 0%, #047857 100%)',
+    leadPl: 'Przewaga nad konkurencją na zatłoczonym rynku B2B.',
+    leadEn: 'Competitive edge in a crowded B2B technology market.',
+    bodyPl: 'Wyróżnienie się w branży to ogromne wyzwanie. Stworzono dla nas tożsamość, która idealnie oddaje naszą innowacyjność, zapewniając nam niesamowitą przewagę nad konkurencją.',
+    bodyEn: 'Standing out in tech is a massive challenge. AI SEO COMPANY created an identity for us that perfectly captures our innovation, giving us an incredible edge over the competition.'
   },
   {
     id: 4,
@@ -39,8 +57,14 @@ const reviewsData = [
     name: 'Karolina Wróbel',
     role: 'Branża Medyczna • Zweryfikowany Partner',
     roleEn: 'Healthcare Sector • Verified Partner',
-    pl: '„Architektura treści i pozycjonowanie, które nam wdrożono, zaowocowały pełnym kalendarzem wizyt. Agencja nie tylko projektuje piękne strony, ale dba o to, by te strony zarabiały prawdziwe pieniądze.”',
-    en: '“The content architecture and SEO positioning they implemented resulted in a fully booked calendar. The agency doesn\'t just design beautiful websites; they ensure those sites generate real revenue.”'
+    metricBadge: '100% Obłożenia Kalendarza',
+    metricBadgeEn: 'Fully Booked Schedule',
+    image: '/projects/kafelek-aisas.png',
+    bgGradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 100%)',
+    leadPl: 'Przemyślana architektura treści i stały napływ pacjentów.',
+    leadEn: 'Smart content architecture and steady patient acquisition.',
+    bodyPl: 'Architektura treści i pozycjonowanie zaowocowały pełnym kalendarzem wizyt. Agencja nie tylko projektuje piękne strony, ale dba o to, by te strony zarabiały prawdziwe pieniądze.',
+    bodyEn: 'The content architecture and SEO positioning resulted in a fully booked calendar. The agency doesn\'t just design beautiful websites; they ensure those sites generate real revenue.'
   },
   {
     id: 5,
@@ -48,8 +72,14 @@ const reviewsData = [
     name: 'Tomasz Nowak',
     role: 'Branża Deweloperska • Zweryfikowany Partner',
     roleEn: 'Real Estate Sector • Verified Partner',
-    pl: '„Ich podejście do projektowania UX to mistrzostwo. Użytkownicy spędzają na naszej stronie o wiele więcej czasu, a zapytania ofertowe na nasze inwestycje wzrosły drastycznie. Prawdziwi partnerzy biznesowi.”',
-    en: '“Their approach to UX design is masterful. Users spend much more time on our site, and leads for our properties have increased drastically. True business partners.”'
+    metricBadge: '+180% Leadów Ofertowych',
+    metricBadgeEn: '+180% Property Inquiries',
+    image: '/projects/madame-thai-full.png',
+    bgGradient: 'linear-gradient(135deg, #7C2D12 0%, #9A3412 100%)',
+    leadPl: 'Mistrzowskie UX i drastyczny wzrost zapytań ofertowych.',
+    leadEn: 'Masterful UX and drastic growth in property inquiries.',
+    bodyPl: 'Podejście do projektowania UX to mistrzostwo. Użytkownicy spędzają na naszej stronie o wiele więcej czasu, a zapytania ofertowe na nasze inwestycje wzrosły drastycznie.',
+    bodyEn: 'Their approach to UX design is masterful. Users spend much more time on our site, and leads for our properties have increased drastically.'
   }
 ];
 
@@ -60,19 +90,18 @@ export default function Testimonials() {
 
   const handleScroll = (e) => {
     const container = e.target;
-    const cards = container.querySelectorAll('.testimonial-apple-card');
+    const cards = container.querySelectorAll('.apple-testimonial-card');
     if (!cards || !cards.length) return;
 
     const containerRect = container.getBoundingClientRect();
-    const containerCenterX = containerRect.left + containerRect.width / 2;
+    const containerLeft = containerRect.left;
 
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
       const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect.left + cardRect.width / 2;
-      const distance = Math.abs(containerCenterX - cardCenterX);
+      const distance = Math.abs(cardRect.left - containerLeft);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
@@ -83,12 +112,11 @@ export default function Testimonials() {
   };
 
   const scrollTo = (index) => {
-    const container = document.getElementById('testimonials-carousel');
+    const container = document.getElementById('testimonials-apple-carousel');
     if (container) {
-      const cards = container.querySelectorAll('.testimonial-apple-card');
+      const cards = container.querySelectorAll('.apple-testimonial-card');
       if (cards[index]) {
-        // Calculate offset so the center of the card aligns with the center of the container
-        const scrollOffset = cards[index].offsetLeft - container.offsetLeft - (containerRect.width - cardRect.width) / 2;
+        const scrollOffset = cards[index].offsetLeft - container.offsetLeft;
         container.scrollTo({
           left: scrollOffset,
           behavior: 'smooth'
@@ -99,21 +127,79 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="testimonials" id="testimonials" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
-      <div className="container" style={{ maxWidth: '1440px' }}>
-        <Reveal className="section-header center" style={{ marginBottom: '4rem', padding: '0 2rem' }}>
-          <div className="section-tag" style={{ color: '#0F172A', borderColor: 'rgba(0,0,0,0.1)' }}>
-            <span className="asterisk" style={{ color: '#0F172A' }}>✳</span> {t.tag}
+    <section className="testimonials" id="testimonials" style={{ background: '#F5F5F7', padding: '7rem 0', overflow: 'hidden' }}>
+      <div className="container">
+        
+        {/* Apple Intelligence Header Layout with Top-Right Nav Arrows */}
+        <Reveal className="section-header" style={{ marginBottom: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', maxWidth: '100%' }}>
+          <div style={{ maxWidth: '780px' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+            </div>
+            <h2 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.12, fontWeight: 700, marginBottom: '1.25rem' }}>
+              {lang === 'pl' ? 'Doświadczenia i Rekomendacje. Efekty, które budują zaufanie.' : 'Client Endorsements. Impact that builds trust.'}
+            </h2>
+            <p style={{ color: '#6E6E73', fontSize: '1.15rem', lineHeight: 1.55, fontWeight: 500, margin: 0 }}>
+              {lang === 'pl' 
+                ? 'Poznaj opinie partnerów i zobacz, jak połączenie nowoczesnego brandingu, architektury Web i zaawansowanego SEO przekłada się na realny wzrost przychodów.'
+                : 'Explore feedback from our partners and discover how custom web design, branding, and advanced SEO translate into measurable business growth.'}
+            </p>
           </div>
-          <h2 style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', color: '#0F172A', letterSpacing: '-0.04em', lineHeight: 1.1 }}>
-            {t.title}
-          </h2>
+
+          {/* Navigation Arrows (Apple Header Style) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem' }}>
+            <button
+              onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
+              disabled={activeIndex === 0}
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '50%',
+                background: activeIndex === 0 ? 'rgba(0,0,0,0.04)' : '#E8E8ED',
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: activeIndex === 0 ? 'default' : 'pointer',
+                color: activeIndex === 0 ? '#B0B0B5' : '#1D1D1F',
+                transition: 'all 0.25s ease'
+              }}
+              aria-label="Previous slide"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+
+            <button
+              onClick={() => scrollTo(Math.min(reviewsData.length - 1, activeIndex + 1))}
+              disabled={activeIndex >= reviewsData.length - 1}
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '50%',
+                background: activeIndex >= reviewsData.length - 1 ? 'rgba(0,0,0,0.04)' : '#E8E8ED',
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: activeIndex >= reviewsData.length - 1 ? 'default' : 'pointer',
+                color: activeIndex >= reviewsData.length - 1 ? '#B0B0B5' : '#1D1D1F',
+                transition: 'all 0.25s ease'
+              }}
+              aria-label="Next slide"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+          </div>
         </Reveal>
 
-        {/* Carousel Container */}
-        <div style={{ position: 'relative', width: '100vw', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw' }}>
+        {/* Carousel Bleeding Container */}
+        <div style={{ position: 'relative', width: '100%' }}>
           <RevealStagger 
-            id="testimonials-carousel"
+            id="testimonials-apple-carousel"
             onScroll={handleScroll}
             className="hide-scrollbar"
             style={{
@@ -122,117 +208,115 @@ export default function Testimonials() {
               overflowX: 'auto',
               scrollSnapType: 'x mandatory',
               scrollBehavior: 'smooth',
-              padding: '0 50vw', // Ensures items can be centered
-              paddingBottom: '2rem' // Space for shadow
+              paddingBottom: '2.5rem',
+              paddingLeft: 'max(1.5rem, calc((100vw - 1240px) / 2))',
+              paddingRight: 'max(1.5rem, calc((100vw - 1240px) / 2))',
+              marginRight: 'calc(-50vw + 50%)',
             }}
           >
-            {/* Empty element to act as start padding so first item centers properly */}
-            <div style={{ flex: '0 0 1px' }} />
-            
             {reviewsData.map((item, idx) => (
               <RevealItem 
                 key={item.id}
-                className="testimonial-apple-card"
+                className="apple-testimonial-card"
                 style={{
-                  flex: '0 0 min(85vw, 900px)',
-                  scrollSnapAlign: 'center',
+                  flex: '0 0 min(88vw, 540px)',
+                  scrollSnapAlign: 'start',
                   background: '#FFFFFF', 
-                  borderRadius: '36px',
-                  padding: '4rem 3.5rem',
+                  borderRadius: '28px',
+                  padding: '1.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  minHeight: '400px',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.04)',
+                  boxShadow: '0 12px 36px rgba(0,0,0,0.04)',
+                  border: '1px solid rgba(0,0,0,0.06)',
                   position: 'relative'
                 }}
               >
-                <div>
-                  <div style={{ color: '#F59E0B', fontSize: '1.5rem', marginBottom: '1.5rem' }}>
-                    ★★★★★
-                  </div>
-                  <p style={{ 
-                    fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', 
-                    fontWeight: 500, 
-                    color: '#0F172A', 
-                    lineHeight: 1.4,
-                    letterSpacing: '-0.02em',
-                    marginBottom: '3rem'
-                  }}>
-                    {lang === 'pl' ? item.pl : item.en}
-                  </p>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                {/* Apple Intelligence Top Visual Media Banner */}
+                <div style={{
+                  width: '100%',
+                  height: '240px',
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  marginBottom: '1.75rem',
+                  background: item.bgGradient
+                }}>
+                  <img 
+                    src={item.image} 
+                    alt={item.name}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'top center',
+                      opacity: 0.88,
+                      filter: 'contrast(1.05)'
+                    }}
+                  />
+                  {/* Glassmorphism Result Pill Badge */}
                   <div style={{
-                    width: '48px', height: '48px', borderRadius: '50%', background: 'linear-gradient(135deg, #0F172A, #334155)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 600, fontSize: '1.1rem'
+                    position: 'absolute',
+                    top: '1rem',
+                    left: '1rem',
+                    background: 'rgba(255, 255, 255, 0.92)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    color: '#0F172A',
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    padding: '0.4rem 0.9rem',
+                    borderRadius: '9999px',
+                    boxShadow: '0 4px 14px rgba(0,0,0,0.12)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.4rem'
                   }}>
-                    {item.initials}
+                    <span style={{ color: 'var(--color-growth)' }}>●</span>
+                    {lang === 'pl' ? item.metricBadge : item.metricBadgeEn}
                   </div>
-                  <div>
-                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0F172A', margin: 0 }}>{item.name}</h4>
-                    <p style={{ fontSize: '0.95rem', color: '#64748B', margin: 0 }}>
-                      {lang === 'pl' ? item.role : (item.roleEn || item.role)}
-                    </p>
+                </div>
+
+                {/* Body Content below banner — Apple inline bold lead styling */}
+                <div style={{ padding: '0 0.5rem 0.5rem 0.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <p style={{ 
+                    fontSize: '1.08rem', 
+                    color: '#1D1D1F', 
+                    lineHeight: 1.55,
+                    letterSpacing: '-0.015em',
+                    marginBottom: '1.75rem'
+                  }}>
+                    <strong style={{ fontWeight: 700, color: '#0F172A', marginRight: '0.35rem' }}>
+                      {lang === 'pl' ? item.leadPl : item.leadEn}
+                    </strong>
+                    {lang === 'pl' ? item.bodyPl : item.bodyEn}
+                  </p>
+
+                  {/* Client Signature Row */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '1.25rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                      <div style={{
+                        width: '42px', height: '42px', borderRadius: '50%', background: '#000000',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 700, fontSize: '0.9rem'
+                      }}>
+                        {item.initials}
+                      </div>
+                      <div>
+                        <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1D1D1F', margin: 0, lineHeight: 1.2 }}>{item.name}</h4>
+                        <p style={{ fontSize: '0.8rem', color: '#6E6E73', margin: '2px 0 0 0' }}>
+                          {lang === 'pl' ? item.role : (item.roleEn || item.role)}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div style={{ color: '#F59E0B', fontSize: '0.95rem', letterSpacing: '1px', fontWeight: 600 }}>
+                      ★★★★★
+                    </div>
                   </div>
                 </div>
               </RevealItem>
             ))}
-
-            {/* Empty element to act as end padding so last item centers properly */}
-            <div style={{ flex: '0 0 1px' }} />
           </RevealStagger>
-          
-          {/* Pagination Controls */}
-          <Reveal delay={0.2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
-            <button
-              onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
-              disabled={activeIndex === 0}
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: activeIndex === 0 ? 'rgba(0,0,0,0.04)' : 'rgba(0,0,0,0.08)',
-                border: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: activeIndex === 0 ? 'default' : 'pointer',
-                color: activeIndex === 0 ? 'rgba(0,0,0,0.3)' : '#1D1D1F',
-                outline: 'none',
-                transition: 'all 0.3s ease'
-              }}
-              aria-label="Previous"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6"/>
-              </svg>
-            </button>
-
-            <button
-              onClick={() => scrollTo(Math.min(reviewsData.length - 1, activeIndex + 1))}
-              disabled={activeIndex >= reviewsData.length - 1} // Disables if at end
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: activeIndex >= reviewsData.length - 1 ? 'rgba(0,0,0,0.04)' : 'rgba(0,0,0,0.08)',
-                border: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: activeIndex >= reviewsData.length - 1 ? 'default' : 'pointer',
-                color: activeIndex >= reviewsData.length - 1 ? 'rgba(0,0,0,0.3)' : '#1D1D1F',
-                outline: 'none',
-                transition: 'all 0.3s ease'
-              }}
-              aria-label="Next"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6"/>
-              </svg>
-            </button>
-          </Reveal>
         </div>
       </div>
     </section>

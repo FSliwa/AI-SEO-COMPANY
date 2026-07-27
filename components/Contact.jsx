@@ -57,7 +57,9 @@ export default function Contact() {
       <div className="container">
         <RevealStagger className="contact-box">
           <RevealItem className="contact-info">
-            <div className="section-tag">{t.tag}</div>
+            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+            </div>
             <h2>{t.title}</h2>
             <p>{t.subtitle}</p>
             
@@ -108,12 +110,19 @@ export default function Contact() {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="message">Opis projektu i oczekiwań</label>
-              <textarea id="message" name="message" className="form-textarea" rows="4" placeholder="Opisz w kilku słowach swoje cele, obecną stronę oraz wymagany termin..." required></textarea>
+              <label className="form-label" htmlFor="message">{t.msgLabel}</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                className="form-textarea" 
+                rows="4" 
+                placeholder={lang === 'pl' ? 'Opisz w kilku słowach swoje cele, obecną stronę oraz wymagany termin...' : 'Briefly describe your goals, current website, and required timeline...'} 
+                required
+              ></textarea>
             </div>
 
             <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }} disabled={isSubmitting}>
-              {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : (lang === 'pl' ? 'Wyślij zapytanie o wycenę' : 'Send inquiry')}
+              {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t.btnSend}
             </button>
             </form>
           </RevealItem>
