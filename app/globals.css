@@ -1907,6 +1907,14 @@ button, input, select, textarea {
     padding-top: 4rem !important;
   }
 
+  /* Merge About Values and Contact sections on mobile */
+  #about-values {
+    padding-bottom: 1rem !important;
+  }
+  #kontakt {
+    padding-top: 1rem !important;
+  }
+
   /* Modal & Contact Form Mobile Responsiveness */
   .contact-box {
     padding: 1.75rem 1.25rem !important;

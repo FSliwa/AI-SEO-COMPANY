@@ -87,6 +87,26 @@ export default function AboutMission() {
         ? 'Ruch to tylko początek. Nasze projekty są zaprojektowane od podstaw w taki sposób, aby zamieniać anonimowych odwiedzających w płacących, lojalnych klientów.'
         : 'Traffic is just the beginning. Our projects are designed from the ground up to turn anonymous visitors into paying, loyal customers.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
+    },
+    {
+      id: 4,
+      tag: lang === 'pl' ? 'ROZWÓJ BIZNESU' : 'BUSINESS GROWTH',
+      metric: '+300%',
+      title: lang === 'pl' ? 'Skalowanie sprzedaży B2B & B2C.' : 'Scaling B2B & B2C sales.',
+      description: lang === 'pl'
+        ? 'Projektujemy zautomatyzowane systemy generowania leadów, które pracują 24/7, zamieniając ruch z wyszukiwarek w mierzalny zysk dla Twojej firmy.'
+        : 'We design automated lead generation systems that work 24/7, turning search traffic into measurable profit for your company.',
+      bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
+    },
+    {
+      id: 5,
+      tag: lang === 'pl' ? 'PERFORMANCE' : 'PERFORMANCE',
+      metric: '99/100',
+      title: lang === 'pl' ? 'Ekstremalna wydajność i szybkość.' : 'Extreme performance and speed.',
+      description: lang === 'pl'
+        ? 'Tworzymy w oparciu o Next.js, gwarantując błyskawiczne ładowanie strony. Ekstremalna szybkość to wyższa pozycja w Google i znacznie lepsza konwersja.'
+        : 'We build on Next.js, guaranteeing lightning-fast page loads. Extreme speed means higher Google rankings and significantly better conversions.',
+      bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
 
@@ -161,7 +181,7 @@ export default function AboutMission() {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'KIM JESTEŚMY' : 'WHO WE ARE'}
             </div>
             <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
-              {lang === 'pl' ? 'Nie jesteśmy zwykłą agencją. Jesteśmy architektami Twojego wzrostu.' : 'We are not just an agency. We are the architects of your growth.'}
+              {lang === 'pl' ? 'Nie jesteśmy zwykłą agencją. Jesteśmy architektami Twojego wzrostu' : 'We are not just an agency. We are the architects of your growth'}
             </h2>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
               {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych.' : 'We craft digital solutions backed by hard analytics and buyer psychology.'}
