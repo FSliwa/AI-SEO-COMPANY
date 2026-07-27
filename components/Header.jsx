@@ -52,13 +52,12 @@ export default function Header() {
             <a href="#" className="logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                viewBox="135 430 1360 515" 
+                viewBox="135 753 1360 192" 
                 overflow="visible"
                 style={{ 
-                  height: 'clamp(52px, 4.2vw, 62px)', 
+                  height: 'clamp(20px, 1.6vw, 24px)', 
                   width: 'auto', 
                   display: 'block',
-                  margin: 'clamp(-16px, -1.3vw, -10px) 0',
                   transition: 'all 0.5s ease' 
                 }}
               >

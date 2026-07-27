@@ -1162,12 +1162,6 @@ button, input, select, textarea {
   z-index: 2;
 }
 
-.pricing-header {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
 .pricing-header h3 {
   font-size: 1.35rem;
   color: var(--color-text-dark);
@@ -1177,7 +1171,7 @@ button, input, select, textarea {
 .pricing-desc {
   font-size: 0.9rem;
   color: var(--color-text-muted);
-  flex: 1;
+  min-height: 88px;
   margin-bottom: 1.5rem;
 }
 
