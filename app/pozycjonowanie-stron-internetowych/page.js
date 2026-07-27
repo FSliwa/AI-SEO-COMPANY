@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Pricing from '@/components/Pricing';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
-import { motion } from 'framer-motion';
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -40,64 +39,33 @@ const faqSchema = {
 
 export default function PozycjonowanieStronPage() {
   return (
-    <main style={{ background: '#F8FAFC', color: '#0F172A', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Header />
       
-      {/* Hero Banner with Apple Ambient Glow */}
-      <section style={{ paddingTop: '170px', paddingBottom: '90px', position: 'relative' }}>
-        <div style={{
-          position: 'absolute',
-          top: '25%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '60vw',
-          height: '350px',
-          background: 'radial-gradient(circle, rgba(216, 90, 48, 0.08) 0%, rgba(99, 102, 241, 0.06) 50%, rgba(248, 250, 252, 0) 100%)',
-          filter: 'blur(75px)',
-          pointerEvents: 'none',
-          zIndex: 1
-        }} />
-
-        <div className="container" style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 1.5rem', position: 'relative', zIndex: 2 }}>
-          <Reveal>
-            <div style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.5rem', 
-              padding: '0.4rem 1rem', 
-              borderRadius: '100px', 
-              background: '#FFFFFF', 
-              border: '1px solid rgba(216, 90, 48, 0.25)', 
-              boxShadow: '0 4px 15px rgba(216, 90, 48, 0.08)', 
-              color: '#D85A30', 
-              fontWeight: 700, 
-              fontSize: '0.85rem', 
-              marginBottom: '1.5rem' 
-            }}>
-              <span className="asterisk">✳</span> USŁUGA GŁÓWNA SEO
+      {/* Hero Banner */}
+      <section style={{ paddingTop: '160px', paddingBottom: '80px', position: 'relative' }}>
+        <div className="container">
+          <Reveal className="section-header" style={{ textAlign: 'left', marginBottom: '2.5rem', maxWidth: '850px' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> USŁUGA GŁÓWNA SEO
             </div>
             
             <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)', 
+              fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', 
               fontWeight: 800, 
-              lineHeight: 1.1, 
-              color: '#0F172A', 
+              lineHeight: 1.15, 
+              color: 'var(--color-text-dark)', 
               marginBottom: '1.5rem', 
-              letterSpacing: '-0.03em',
-              fontFamily: "'Space Grotesk', system-ui, sans-serif"
+              letterSpacing: '-0.02em'
             }}>
               Pozycjonowanie Stron Internetowych <br />
-              <span style={{ 
-                background: 'linear-gradient(135deg, #D85A30 0%, #7C3AED 50%, #2563EB 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}>& Sklepów E-commerce</span>
+              <span style={{ color: 'var(--color-cta)' }}>&amp; Sklepów E-commerce</span>
             </h1>
-            <p style={{ fontSize: '1.25rem', color: '#475569', maxWidth: '780px', lineHeight: 1.65, marginBottom: '2.5rem' }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: '2.5rem' }}>
               Zbuduj trwałą przewagę konkurencyjną w Google. Nasza Agencja SEO w Warszawie łączy zaawansowane audyty techniczne, architekturę treści dopasowaną pod AI i intencje zakupowe użytkowników.
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -112,51 +80,38 @@ export default function PozycjonowanieStronPage() {
         </div>
       </section>
 
-      {/* Process Section with Framer Motion Stagger */}
-      <section style={{ padding: '90px 0', background: '#FFFFFF', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
-        <div className="container" style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <Reveal>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#0F172A', marginBottom: '3rem', fontFamily: "'Space Grotesk', sans-serif" }}>
-              Jak Działa Skuteczne Pozycjonowanie Stron w AI SEO COMPANY?
-            </h2>
+      {/* Process Section matching main site Services style */}
+      <section style={{ padding: '80px 0', backgroundColor: 'var(--color-bg-alt)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+        <div className="container">
+          <Reveal className="section-header">
+            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> NASZ PROCES POZYCJONOWANIA
+            </div>
+            <h2>Jak Działa Skuteczne Pozycjonowanie Stron w AI SEO COMPANY?</h2>
+            <p>Trzyetapowa strategia wzrostu widoczności poparta twardymi danymi analitycznymi.</p>
           </Reveal>
 
-          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            <RevealItem>
-              <motion.div 
-                whileHover={{ y: -6 }}
-                style={{ background: '#F8FAFC', padding: '2.5rem', borderRadius: '28px', border: '1px solid #E2E8F0', boxShadow: '0 10px 25px rgba(0,0,0,0.02)' }}
-              >
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#D85A30', letterSpacing: '0.1em', marginBottom: '1rem' }}>ETAP 01</div>
-                <h3 style={{ fontSize: '1.4rem', color: '#0F172A', marginBottom: '0.75rem', fontWeight: 800 }}>1. Audyt Techniczny & CWV</h3>
-                <p style={{ color: '#475569', fontSize: '0.975rem', lineHeight: 1.65 }}>
-                  Eliminujemy błędy indeksowania, przyspieszamy ładowanie strony (Core Web Vitals) i poprawiamy architekturę linkowania wewnętrznego.
-                </p>
-              </motion.div>
+          <RevealStagger className="services-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            <RevealItem className="service-card">
+              <div className="service-icon" style={{ background: 'rgba(24, 95, 165, 0.1)', color: 'var(--color-primary)' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <h3>1. Audyt Techniczny &amp; CWV</h3>
+              <p>Eliminujemy błędy indeksowania, przyspieszamy ładowanie strony (Core Web Vitals) i poprawiamy architekturę linkowania wewnętrznego.</p>
             </RevealItem>
-            <RevealItem>
-              <motion.div 
-                whileHover={{ y: -6 }}
-                style={{ background: '#F8FAFC', padding: '2.5rem', borderRadius: '28px', border: '1px solid #E2E8F0', boxShadow: '0 10px 25px rgba(0,0,0,0.02)' }}
-              >
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#7C3AED', letterSpacing: '0.1em', marginBottom: '1rem' }}>ETAP 02</div>
-                <h3 style={{ fontSize: '1.4rem', color: '#0F172A', marginBottom: '0.75rem', fontWeight: 800 }}>2. Content Marketing & AI</h3>
-                <p style={{ color: '#475569', fontSize: '0.975rem', lineHeight: 1.65 }}>
-                  Tworzymy klastry tematyczne (Topic Clusters) oraz semantyczne treści odpowiadające na pytania użytkowników w Google i modelach LLM.
-                </p>
-              </motion.div>
+            <RevealItem className="service-card">
+              <div className="service-icon" style={{ background: 'rgba(216, 90, 48, 0.1)', color: 'var(--color-cta)' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <h3>2. Content Marketing &amp; AI</h3>
+              <p>Tworzymy klastry tematyczne (Topic Clusters) oraz semantyczne treści odpowiadające na pytania użytkowników w Google i modelach LLM.</p>
             </RevealItem>
-            <RevealItem>
-              <motion.div 
-                whileHover={{ y: -6 }}
-                style={{ background: '#F8FAFC', padding: '2.5rem', borderRadius: '28px', border: '1px solid #E2E8F0', boxShadow: '0 10px 25px rgba(0,0,0,0.02)' }}
-              >
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#2563EB', letterSpacing: '0.1em', marginBottom: '1rem' }}>ETAP 03</div>
-                <h3 style={{ fontSize: '1.4rem', color: '#0F172A', marginBottom: '0.75rem', fontWeight: 800 }}>3. Link Building & Autorytet</h3>
-                <p style={{ color: '#475569', fontSize: '0.975rem', lineHeight: 1.65 }}>
-                  Pozyskujemy wartościowe odnośniki z cenionych portali i serwisów branżowych, zwiększając autorytet Twojej domeny (Domain Rating).
-                </p>
-              </motion.div>
+            <RevealItem className="service-card">
+              <div className="service-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: 'var(--color-growth)' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              </div>
+              <h3>3. Link Building &amp; Autorytet</h3>
+              <p>Pozyskujemy wartościowe odnośniki z cenionych portali i serwisów branżowych, zwiększając autorytet Twojej domeny (Domain Rating).</p>
             </RevealItem>
           </RevealStagger>
         </div>
@@ -166,20 +121,22 @@ export default function PozycjonowanieStronPage() {
       <Pricing />
 
       {/* FAQ Section */}
-      <section style={{ padding: '90px 0', borderTop: '1px solid #E2E8F0' }}>
-        <div className="container" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <Reveal>
-            <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#0F172A', marginBottom: '2.5rem', textAlign: 'center', fontFamily: "'Space Grotesk', sans-serif" }}>
-              Najczęściej Zadawane Pytania (FAQ)
-            </h2>
+      <section style={{ padding: '80px 0', borderTop: '1px solid var(--color-border)' }}>
+        <div className="container" style={{ maxWidth: '900px' }}>
+          <Reveal className="section-header">
+            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> FAQ
+            </div>
+            <h2>Najczęściej Zadawane Pytania</h2>
+            <p>Odpowiedzi na kluczowe pytania dotyczące pozycjonowania stron.</p>
           </Reveal>
 
-          <RevealStagger style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <RevealStagger style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '2.5rem' }}>
             {faqSchema.mainEntity.map((item, index) => (
               <RevealItem key={index}>
-                <div style={{ background: '#FFFFFF', padding: '2rem', borderRadius: '24px', border: '1px solid #E2E8F0', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
-                  <h3 style={{ fontSize: '1.25rem', color: '#0F172A', marginBottom: '0.75rem', fontWeight: 800 }}>{item.name}</h3>
-                  <p style={{ color: '#475569', lineHeight: 1.65, fontSize: '0.975rem' }}>{item.acceptedAnswer.text}</p>
+                <div style={{ background: 'var(--color-card-bg)', padding: '2rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+                  <h3 style={{ fontSize: '1.2rem', color: 'var(--color-text-dark)', marginBottom: '0.75rem', fontWeight: 800 }}>{item.name}</h3>
+                  <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.65, fontSize: '0.95rem' }}>{item.acceptedAnswer.text}</p>
                 </div>
               </RevealItem>
             ))}

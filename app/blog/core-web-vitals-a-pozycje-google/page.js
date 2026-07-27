@@ -7,65 +7,51 @@ import { Reveal } from '@/components/ScrollReveal';
 
 export default function ArticleCwvPage() {
   return (
-    <main style={{ background: '#F8FAFC', color: '#0F172A', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       
-      <article style={{ paddingTop: '170px', paddingBottom: '100px', position: 'relative' }}>
-        <div style={{
-          position: 'absolute',
-          top: '20%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '50vw',
-          height: '300px',
-          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(248, 250, 252, 0) 75%)',
-          filter: 'blur(70px)',
-          pointerEvents: 'none',
-          zIndex: 1
-        }} />
-
-        <div className="container" style={{ maxWidth: '880px', margin: '0 auto', padding: '0 1.5rem', position: 'relative', zIndex: 2 }}>
+      <article style={{ paddingTop: '160px', paddingBottom: '100px', position: 'relative' }}>
+        <div className="container" style={{ maxWidth: '880px' }}>
           <Reveal>
-            <a href="/blog" style={{ color: '#D85A30', textDecoration: 'none', fontWeight: 700, fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
+            <a href="/blog" style={{ color: 'var(--color-cta)', textDecoration: 'none', fontWeight: 700, fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
               ← Powrót do Bloga
             </a>
 
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <span style={{ background: 'rgba(99, 102, 241, 0.12)', color: '#6366F1', padding: '0.35rem 0.85rem', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase' }}>
-                TECHNICZNE SEO & SPEED
+              <span style={{ background: 'rgba(24, 95, 165, 0.1)', color: 'var(--color-primary)', padding: '0.35rem 0.85rem', borderRadius: 'var(--radius-full)', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase' }}>
+                TECHNICZNE SEO &amp; SPEED
               </span>
-              <span style={{ fontSize: '0.85rem', color: '#64748B' }}>5 min czytania • 15 Lipca 2026</span>
+              <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>5 min czytania • 15 Lipca 2026</span>
             </div>
 
             <h1 style={{ 
               fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', 
               fontWeight: 800, 
-              color: '#0F172A', 
+              color: 'var(--color-text-dark)', 
               marginBottom: '1.75rem', 
               lineHeight: 1.15,
-              letterSpacing: '-0.02em',
-              fontFamily: "'Space Grotesk', system-ui, sans-serif"
+              letterSpacing: '-0.02em'
             }}>
               Core Web Vitals a pozycje w Google — Jak szybkość wpływa na SEO?
             </h1>
 
-            <p style={{ fontSize: '1.25rem', color: '#475569', lineHeight: 1.65, marginBottom: '3rem', borderLeft: '3px solid #6366F1', paddingLeft: '1.25rem' }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: '3rem', borderLeft: '3px solid var(--color-primary)', paddingLeft: '1.25rem' }}>
               Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są przesunięć elementów, osiągają wyższy czas przebywania na stronie oraz lepsze pozycje w wyszukiwarce.
             </p>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div style={{
-              background: '#FFFFFF',
-              borderRadius: '28px',
-              border: '1px solid #E2E8F0',
+              background: 'var(--color-card-bg)',
+              borderRadius: 'var(--radius-lg)',
+              border: '1px solid var(--color-border)',
               padding: '3rem 2.5rem',
-              color: '#334155',
+              color: 'var(--color-text-main)',
               lineHeight: 1.8,
               fontSize: '1.05rem',
-              boxShadow: '0 15px 35px -5px rgba(0, 0, 0, 0.03)'
+              boxShadow: 'var(--shadow-md)'
             }}>
-              <h2 style={{ fontSize: '1.6rem', color: '#0F172A', marginTop: '0', marginBottom: '1.25rem', fontWeight: 800, fontFamily: "'Space Grotesk', sans-serif" }}>
+              <h2 style={{ fontSize: '1.6rem', color: 'var(--color-text-dark)', marginTop: '0', marginBottom: '1.25rem', fontWeight: 800 }}>
                 Kluczowe wskaźniki jakości strony (UX)
               </h2>
               <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
@@ -74,11 +60,11 @@ export default function ArticleCwvPage() {
                 <li style={{ marginBottom: '0.75rem' }}><strong>INP (Interaction to Next Paint)</strong>: Pomiary opóźnienia interakcji użytkownika z interfejsem.</li>
               </ul>
 
-              <div style={{ background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(241, 245, 249, 1) 100%)', border: '1px solid rgba(99, 102, 241, 0.25)', padding: '2.25rem', borderRadius: '20px', margin: '2.5rem 0' }}>
-                <h3 style={{ color: '#0F172A', margin: 0, marginBottom: '0.5rem', fontSize: '1.3rem', fontWeight: 800 }}>
+              <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', padding: '2.25rem', borderRadius: 'var(--radius-md)', margin: '2.5rem 0' }}>
+                <h3 style={{ color: 'var(--color-text-dark)', margin: 0, marginBottom: '0.5rem', fontSize: '1.3rem', fontWeight: 800 }}>
                   Chcesz przetestować szybkość swojej strony?
                 </h3>
-                <p style={{ margin: 0, color: '#475569', fontSize: '1rem', marginBottom: '1.25rem' }}>
+                <p style={{ margin: 0, color: 'var(--color-text-muted)', fontSize: '1rem', marginBottom: '1.25rem' }}>
                   Zamów bezpłatny lub zaawansowany audyt SEO i poznaj dokładny wynik techniczny Core Web Vitals.
                 </p>
                 <a href="/audyt-seo" className="btn btn-primary" style={{ padding: '0.75rem 1.75rem', fontSize: '0.95rem' }}>

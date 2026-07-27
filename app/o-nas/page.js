@@ -8,257 +8,166 @@ import { motion } from 'framer-motion';
 
 export default function ONasPage() {
   return (
-    <main style={{ background: '#F8FAFC', color: '#0F172A', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       
-      {/* Apple Intelligence Light Hero Section */}
-      <section style={{ paddingTop: '170px', paddingBottom: '90px', position: 'relative' }}>
-        {/* Soft iridescent ambient background glow */}
-        <div style={{
-          position: 'absolute',
-          top: '30%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '65vw',
-          height: '420px',
-          background: 'radial-gradient(circle, rgba(216, 90, 48, 0.08) 0%, rgba(99, 102, 241, 0.07) 40%, rgba(168, 85, 247, 0.05) 70%, rgba(248, 250, 252, 0) 100%)',
-          filter: 'blur(70px)',
-          pointerEvents: 'none',
-          zIndex: 1
-        }} />
-
-        <div className="container" style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 1.5rem', position: 'relative', zIndex: 2 }}>
-          <Reveal>
-            <div style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.5rem', 
-              padding: '0.4rem 1rem', 
-              borderRadius: '100px', 
-              background: '#FFFFFF', 
-              border: '1px solid rgba(216, 90, 48, 0.25)', 
-              boxShadow: '0 4px 15px rgba(216, 90, 48, 0.08)', 
-              color: '#D85A30', 
-              fontWeight: 700, 
-              fontSize: '0.85rem', 
-              marginBottom: '1.5rem' 
-            }}>
-              <span className="asterisk">✳</span> E-E-A-T & INŻYNIERIA MARKETINGOWA
+      {/* Hero Section */}
+      <section style={{ paddingTop: '160px', paddingBottom: '80px', position: 'relative' }}>
+        <div className="container">
+          <Reveal className="section-header" style={{ textAlign: 'left', marginBottom: '3rem', maxWidth: '900px' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> E-E-A-T &amp; O NAS
             </div>
-
             <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)', 
+              fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', 
               fontWeight: 800, 
-              lineHeight: 1.1, 
-              color: '#0F172A', 
-              marginBottom: '1.75rem', 
-              letterSpacing: '-0.03em',
-              fontFamily: "'Space Grotesk', system-ui, sans-serif"
+              lineHeight: 1.15, 
+              color: 'var(--color-text-dark)', 
+              marginBottom: '1.5rem',
+              letterSpacing: '-0.02em'
             }}>
               Łączymy inżynierię oprogramowania <br />
-              <span style={{ 
-                background: 'linear-gradient(135deg, #D85A30 0%, #7C3AED 50%, #2563EB 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}>z technologią pozycjonowania AI</span>
+              z precyzją <span style={{ color: 'var(--color-cta)' }}>pozycjonowania SEO</span>
             </h1>
-
-            <p style={{ fontSize: '1.25rem', color: '#475569', maxWidth: '780px', lineHeight: 1.65, marginBottom: '3.5rem' }}>
-              Jesteśmy agencją SEO i studiem projektowym w Warszawie. Projektujemy wyszukiwalne strony internetowe, budujemy architekturę treści AI i wprowadzamy marki do czołówki wyników w Google.
+            <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', lineHeight: 1.65, maxWidth: '780px' }}>
+              Jesteśmy warszawską agencją SEO i studiem web designu. Budujemy szybkie strony internetowe, automatyzujemy architekturę treści AI i wprowadzamy marki na czołowe pozycje w Google.
             </p>
           </Reveal>
 
-          {/* Apple Intelligence Style Interactive Cards */}
-          <RevealStagger className="pricing-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem' }}>
+          {/* Metric Cards Grid matching main site */}
+          <RevealStagger className="pricing-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem', marginTop: '2rem' }}>
             <RevealItem>
               <motion.div 
-                whileHover={{ y: -6, boxShadow: '0 20px 40px -10px rgba(216, 90, 48, 0.15)' }}
+                whileHover={{ y: -5, borderColor: 'var(--color-border-hover)' }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  background: '#FFFFFF',
-                  borderRadius: '28px',
-                  border: '1px solid #E2E8F0',
+                  background: 'var(--color-card-bg)',
+                  borderRadius: 'var(--radius-lg)',
+                  border: '1px solid var(--color-border)',
                   padding: '2.5rem 2rem',
-                  boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.04)'
+                  boxShadow: 'var(--shadow-md)'
                 }}
               >
-                <div style={{ fontSize: '3.5rem', fontWeight: 800, color: '#0F172A', fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.04em' }}>
-                  99.4<span style={{ color: '#D85A30' }}>%</span>
+                <div style={{ fontSize: '3.2rem', fontWeight: 800, color: 'var(--color-text-dark)', letterSpacing: '-0.03em', lineHeight: 1 }}>
+                  99.4<span style={{ color: 'var(--color-cta)' }}>%</span>
                 </div>
-                <div style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0F172A', marginTop: '0.5rem', marginBottom: '0.35rem' }}>Precyzja audytów SEO</div>
-                <div style={{ fontSize: '0.95rem', color: '#64748B', lineHeight: 1.55 }}>Eliminacja wąskich gardeł kodu oraz pełna optymalizacja wskaźników Core Web Vitals.</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-text-dark)', marginTop: '0.75rem', marginBottom: '0.35rem' }}>Skuteczność audytów</div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.55 }}>Wykrywanie wąskich gardeł kodu oraz optymalizacja wskaźników Core Web Vitals.</div>
               </motion.div>
             </RevealItem>
 
             <RevealItem>
               <motion.div 
-                whileHover={{ y: -6, boxShadow: '0 20px 40px -10px rgba(124, 58, 237, 0.15)' }}
+                whileHover={{ y: -5, borderColor: 'var(--color-border-hover)' }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  background: '#FFFFFF',
-                  borderRadius: '28px',
-                  border: '1px solid #E2E8F0',
+                  background: 'var(--color-card-bg)',
+                  borderRadius: 'var(--radius-lg)',
+                  border: '1px solid var(--color-border)',
                   padding: '2.5rem 2rem',
-                  boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.04)'
+                  boxShadow: 'var(--shadow-md)'
                 }}
               >
-                <div style={{ fontSize: '3.5rem', fontWeight: 800, color: '#0F172A', fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.04em' }}>
-                  4.9<span style={{ color: '#7C3AED' }}>★</span>
+                <div style={{ fontSize: '3.2rem', fontWeight: 800, color: 'var(--color-text-dark)', letterSpacing: '-0.03em', lineHeight: 1 }}>
+                  4.9<span style={{ color: 'var(--color-cta)' }}>★</span>
                 </div>
-                <div style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0F172A', marginTop: '0.5rem', marginBottom: '0.35rem' }}>Średnia Ocena Klientów</div>
-                <div style={{ fontSize: '0.95rem', color: '#64748B', lineHeight: 1.55 }}>Najwyższa opinia za terminowość, mierzalne wyniki i transparentną współpracę.</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-text-dark)', marginTop: '0.75rem', marginBottom: '0.35rem' }}>Średnia Ocena Klientów</div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.55 }}>Wyróżnienie Top Rated Agency za mierzalne wzrosty pozycji i profesjonalny kontakt.</div>
               </motion.div>
             </RevealItem>
 
             <RevealItem>
               <motion.div 
-                whileHover={{ y: -6, boxShadow: '0 20px 40px -10px rgba(37, 99, 235, 0.15)' }}
+                whileHover={{ y: -5, borderColor: 'var(--color-border-hover)' }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  background: '#FFFFFF',
-                  borderRadius: '28px',
-                  border: '1px solid #E2E8F0',
+                  background: 'var(--color-card-bg)',
+                  borderRadius: 'var(--radius-lg)',
+                  border: '1px solid var(--color-border)',
                   padding: '2.5rem 2rem',
-                  boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.04)'
+                  boxShadow: 'var(--shadow-md)'
                 }}
               >
-                <div style={{ fontSize: '3.5rem', fontWeight: 800, color: '#0F172A', fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.04em' }}>
+                <div style={{ fontSize: '3.2rem', fontWeight: 800, color: 'var(--color-text-dark)', letterSpacing: '-0.03em', lineHeight: 1 }}>
                   &lt; 2h
                 </div>
-                <div style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0F172A', marginTop: '0.5rem', marginBottom: '0.35rem' }}>Czas Reakcji Supportu</div>
-                <div style={{ fontSize: '0.95rem', color: '#64748B', lineHeight: 1.55 }}>Direct-line z opiekunem projektu. Bez zbędnych korpo-procedur.</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-text-dark)', marginTop: '0.75rem', marginBottom: '0.35rem' }}>Czas Reakcji Supportu</div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.55 }}>Bezpośredni kontakt z dedykowanym inżynierem SEO bez zbędnych pośredników.</div>
               </motion.div>
             </RevealItem>
           </RevealStagger>
         </div>
       </section>
 
-      {/* Pillars Section */}
-      <section style={{ padding: '90px 0', background: '#FFFFFF', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
-        <div className="container" style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <Reveal className="section-header" style={{ marginBottom: '4rem' }}>
-            <div style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.5rem', 
-              padding: '0.4rem 1rem', 
-              borderRadius: '100px', 
-              background: '#F1F5F9', 
-              color: '#D85A30', 
-              fontWeight: 700, 
-              fontSize: '0.85rem', 
-              marginBottom: '1rem' 
-            }}>
-              <span className="asterisk">✳</span> METODOLOGIA i FILARY
+      {/* Pillars Section matching main site Services style */}
+      <section style={{ padding: '80px 0', backgroundColor: 'var(--color-bg-alt)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+        <div className="container">
+          <Reveal className="section-header" style={{ marginBottom: '3.5rem' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> FILARY DZIAŁANIA
             </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 800, color: '#0F172A', fontFamily: "'Space Grotesk', sans-serif" }}>
-              Trzy filary sukcesu naszych klientów
-            </h2>
+            <h2>Trzy filary naszej przewagi na rynku</h2>
+            <p>Łączymy inżynierię oprogramowania z analityką i tworzeniem wysokiej jakości treści.</p>
           </Reveal>
 
-          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-            <RevealItem>
-              <motion.div 
-                whileHover={{ y: -5 }}
-                style={{
-                  background: '#F8FAFC',
-                  borderRadius: '28px',
-                  border: '1px solid #E2E8F0',
-                  padding: '2.5rem',
-                  boxShadow: '0 10px 25px rgba(0,0,0,0.02)'
-                }}
-              >
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#D85A30', letterSpacing: '0.1em', marginBottom: '1rem' }}>01 — ANOLITYKA DANYCH</div>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0F172A', marginBottom: '1rem' }}>Data-Driven SEO</h3>
-                <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.65 }}>
-                  Decyzje podejmujemy na podstawie analizy Search Intent, algorytmów semantycznych oraz profilu linków. Nie zgadujemy — budujemy pozycje na faktach.
-                </p>
-              </motion.div>
+          <RevealStagger className="services-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            <RevealItem className="service-card">
+              <div className="service-icon" style={{ background: 'rgba(24, 95, 165, 0.1)', color: 'var(--color-primary)' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+              </div>
+              <h3>01 — Data-Driven SEO</h3>
+              <p>Decyzje podejmujemy na podstawie analizy Search Intent, algorytmów semantycznych oraz profilu linków. Budujemy pozycje na twardych danych analitycznych.</p>
             </RevealItem>
 
-            <RevealItem>
-              <motion.div 
-                whileHover={{ y: -5 }}
-                style={{
-                  background: '#F8FAFC',
-                  borderRadius: '28px',
-                  border: '1px solid #E2E8F0',
-                  padding: '2.5rem',
-                  boxShadow: '0 10px 25px rgba(0,0,0,0.02)'
-                }}
-              >
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#7C3AED', letterSpacing: '0.1em', marginBottom: '1rem' }}>02 — DESIGN APPLE STYLE</div>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0F172A', marginBottom: '1rem' }}>Szybkość & High-End UX</h3>
-                <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.65 }}>
-                  Projektujemy strony internetowe, które ładują się w ułamku sekundy (Core Web Vitals) i budują wysoki prestiż oraz zaufanie odwiedzających.
-                </p>
-              </motion.div>
+            <RevealItem className="service-card">
+              <div className="service-icon" style={{ background: 'rgba(216, 90, 48, 0.1)', color: 'var(--color-cta)' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              </div>
+              <h3>02 — High-End Web Design</h3>
+              <p>Projektujemy strony internetowe w Next.js, które ładują się w ułamku sekundy (Core Web Vitals) i budują wysoki prestiż oraz zaufanie klientów.</p>
             </RevealItem>
 
-            <RevealItem>
-              <motion.div 
-                whileHover={{ y: -5 }}
-                style={{
-                  background: '#F8FAFC',
-                  borderRadius: '28px',
-                  border: '1px solid #E2E8F0',
-                  padding: '2.5rem',
-                  boxShadow: '0 10px 25px rgba(0,0,0,0.02)'
-                }}
-              >
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#2563EB', letterSpacing: '0.1em', marginBottom: '1rem' }}>03 — SEARCH INTENT & AI</div>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0F172A', marginBottom: '1rem' }}>LLM & AI Optimization</h3>
-                <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.65 }}>
-                  Przygotowujemy Twoją witrynę nie tylko na tradycyjne Google, ale również na wyszukiwarki AI (Perplexity, ChatGPT, SGE Generative Search).
-                </p>
-              </motion.div>
+            <RevealItem className="service-card">
+              <div className="service-icon" style={{ background: 'rgba(16, 185, 129, 0.1)', color: 'var(--color-growth)' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+              </div>
+              <h3>03 — LLM & AI Search</h3>
+              <p>Przygotowujemy Twoją witrynę nie tylko na tradycyjne Google, ale również na wyszukiwarki AI (Perplexity, ChatGPT, SGE Generative Search).</p>
             </RevealItem>
           </RevealStagger>
         </div>
       </section>
 
       {/* Official Registry Card (NAP + E-E-A-T) */}
-      <section style={{ padding: '90px 0', position: 'relative' }}>
-        <div className="container" style={{ maxWidth: '960px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <section style={{ padding: '80px 0' }}>
+        <div className="container" style={{ maxWidth: '960px' }}>
           <Reveal>
             <div style={{
-              background: '#FFFFFF',
-              borderRadius: '32px',
-              border: '1px solid rgba(216, 90, 48, 0.25)',
-              padding: '3.5rem 3rem',
-              boxShadow: '0 20px 50px -10px rgba(216, 90, 48, 0.1)',
-              position: 'relative',
-              overflow: 'hidden'
+              background: 'var(--color-card-bg)',
+              borderRadius: 'var(--radius-lg)',
+              border: '1px solid var(--color-border)',
+              padding: '3rem 2.5rem',
+              boxShadow: 'var(--shadow-md)'
             }}>
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                width: '200px',
-                height: '200px',
-                background: 'radial-gradient(circle at top right, rgba(216, 90, 48, 0.1), transparent 70%)',
-                pointerEvents: 'none'
-              }} />
-
-              <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0F172A', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <span style={{ color: '#D85A30' }}>🏢</span> Oficjalne Dane Rejestrowe & Siedziba w Warszawie
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ color: 'var(--color-cta)' }}>🏢</span> Oficjalne Dane Rejestrowe &amp; Siedziba w Warszawie
               </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', color: '#475569', lineHeight: 1.7, fontSize: '1.05rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.75rem', color: 'var(--color-text-muted)', lineHeight: 1.65 }}>
                 <div>
-                  <strong style={{ color: '#0F172A', display: 'block', marginBottom: '0.35rem' }}>Podmiot:</strong>
+                  <strong style={{ color: 'var(--color-text-dark)', display: 'block', marginBottom: '0.25rem' }}>Podmiot:</strong>
                   AI SEO COMPANY
                 </div>
                 <div>
-                  <strong style={{ color: '#0F172A', display: 'block', marginBottom: '0.35rem' }}>Siedziba:</strong>
+                  <strong style={{ color: 'var(--color-text-dark)', display: 'block', marginBottom: '0.25rem' }}>Siedziba:</strong>
                   ul. Grzybowska 12/14 lok. B-3<br />00-132 Warszawa, Polska
                 </div>
                 <div>
-                  <strong style={{ color: '#0F172A', display: 'block', marginBottom: '0.35rem' }}>NIP:</strong>
+                  <strong style={{ color: 'var(--color-text-dark)', display: 'block', marginBottom: '0.25rem' }}>NIP:</strong>
                   5253090237
                 </div>
                 <div>
-                  <strong style={{ color: '#0F172A', display: 'block', marginBottom: '0.35rem' }}>Kontakt E-mail:</strong>
-                  <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: '#D85A30', textDecoration: 'underline', fontWeight: 600 }}>kontakt@ai-seo-company.pl</a>
+                  <strong style={{ color: 'var(--color-text-dark)', display: 'block', marginBottom: '0.25rem' }}>E-mail:</strong>
+                  <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'var(--color-cta)', fontWeight: 600 }}>kontakt@ai-seo-company.pl</a>
                 </div>
               </div>
             </div>
