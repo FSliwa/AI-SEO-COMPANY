@@ -17,8 +17,8 @@ const realizedWebsites = [
     ),
     url: 'https://mada-me-thai-brown.vercel.app/',
     category: 'web',
-    metric: '104.9%',
-    metricSubtitle: 'increase in organic visits after 1 month.',
+    metric: 'START & SKALOWANIE',
+    metricSubtitle: 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center',
@@ -213,7 +213,13 @@ export default function Portfolio() {
                         {item.brandLogo}
                       </div>
                       <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
-                        {item.metric} {lang === 'pl' ? 'wzrostu odwiedzin organicznych po 1 miesiącu.' : 'increase in organic visits after 1 month.'}
+                        {item.id === 1 ? (
+                          lang === 'pl' 
+                            ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.' 
+                            : 'Building and scaling digital sales for the newly opened restaurant location.'
+                        ) : (
+                          `${item.metric} ${lang === 'pl' ? 'wzrostu odwiedzin organicznych po 1 miesiącu.' : 'increase in organic visits after 1 month.'}`
+                        )}
                       </div>
                     </div>
 
