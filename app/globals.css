@@ -1926,12 +1926,53 @@ button, input, select, textarea {
     padding: 2.25rem 1.5rem !important;
     min-height: 480px !important;
     border-radius: 24px !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
   }
+  .apple-card > div {
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+  .portfolio-text-container {
+    margin-top: 0 !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 240px !important; /* Space for the bottom image */
+    justify-content: flex-start !important;
+    max-width: 100% !important;
+    flex: none !important;
+  }
+  .portfolio-image-container {
+    position: absolute !important;
+    bottom: -1.5rem !important; /* align to bottom */
+    top: auto !important;
+    right: auto !important;
+    left: 5% !important;
+    width: 90% !important;
+    height: 220px !important;
+    transform-origin: bottom center !important;
+    border-radius: 20px 20px 0 0 !important;
+    box-shadow: 0 -15px 40px rgba(0,0,0,0.5) !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    border-bottom: none !important;
+    margin-top: 0 !important;
+  }
+  /* Fix logo position on mobile if absolutely positioned */
+  .portfolio-text-container > div:last-child {
+    position: relative !important;
+    bottom: auto !important;
+    margin-top: 1.5rem !important;
+  }
+
+  /* Hide asterisk on mobile */
+  .asterisk { display: none !important; }
 
   /* Apple Testimonial Mobile Card Adjustments */
   .apple-testimonial-card {
     padding: 1.25rem !important;
     border-radius: 22px !important;
+  }
+  .testimonial-avatar {
+    flex-shrink: 0 !important;
   }
 }
 

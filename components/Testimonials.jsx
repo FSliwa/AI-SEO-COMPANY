@@ -296,7 +296,7 @@ export default function Testimonials() {
                   {/* Client Signature Row */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '1.25rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-                      <div style={{
+                      <div className="testimonial-avatar" style={{
                         width: '42px', height: '42px', borderRadius: '50%', background: '#000000',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 700, fontSize: '0.9rem'
                       }}>

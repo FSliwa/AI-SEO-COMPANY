@@ -208,7 +208,7 @@ export default function Portfolio() {
                 {item.layout === 'center' ? (
                   <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
                     {/* Top Header Text (Centered above screenshot, no button) */}
-                    <div style={{ maxWidth: item.id === 1 ? '720px' : '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
+                    <div className="portfolio-text-container" style={{ maxWidth: item.id === 1 ? '720px' : '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
                       <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
@@ -232,6 +232,7 @@ export default function Portfolio() {
 
                     {/* Centered 80% Width Image anchored FLUSH to bottom edge during pulse animation */}
                     <motion.div 
+                      className="portfolio-image-container"
                       animate={{ scaleY: [1, 1.03, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
@@ -267,6 +268,7 @@ export default function Portfolio() {
                   <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
                     {/* Centered 80% Width Image anchored FLUSH to TOP edge during pulse animation */}
                     <motion.div 
+                      className="portfolio-image-container"
                       animate={{ scaleY: [1, 1.03, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
@@ -300,7 +302,7 @@ export default function Portfolio() {
                     </motion.div>
 
                     {/* Bottom Header Text */}
-                    <div style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2, position: 'relative' }}>
+                    <div className="portfolio-text-container" style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2, position: 'relative' }}>
                       <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
                         {item.id === 3 ? (lang === 'pl' ? '+8 113.8% Wzrost widoczności w Google w 3 miesiące.' : '+8 113.8% Organic Search Growth in 3 months.') : item.metricSubtitle}
                       </div>
@@ -314,7 +316,7 @@ export default function Portfolio() {
                 ) : item.layout === 'right-side' ? (
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%' }}>
                     {/* Left Content (Staniax: Capped width to ensure clean spacing from right image) */}
-                    <div style={{ flex: '0 0 42%', maxWidth: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
+                    <div className="portfolio-text-container" style={{ flex: '0 0 42%', maxWidth: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
                       <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
@@ -336,6 +338,7 @@ export default function Portfolio() {
 
                     {/* Image anchored flush right, 80% of entire card height, right edge straight and pulled INWARD to decrease text gap */}
                     <motion.div 
+                      className="portfolio-image-container"
                       animate={{ scale: [1, 1.008, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
