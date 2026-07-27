@@ -49,14 +49,16 @@ export default function Header() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href="#" className="logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <a href="#" className="logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="135 430 1360 515" 
+                overflow="visible"
                 style={{ 
-                  height: 'clamp(24px, 2.2vw, 30px)', 
+                  height: 'clamp(52px, 4.2vw, 62px)', 
                   width: 'auto', 
                   display: 'block',
+                  margin: 'clamp(-16px, -1.3vw, -10px) 0',
                   transition: 'all 0.5s ease' 
                 }}
               >
