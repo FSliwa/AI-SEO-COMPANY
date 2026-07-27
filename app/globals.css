@@ -1930,3 +1930,79 @@ button, input, select, textarea {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* --- Minimalist Animations & Micro-Interactions (Apple & KOTA Grade) --- */
+
+/* 1. Hero Partner Logo Hover Glow */
+.hero-partner-item {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.hero-partner-item:hover {
+  opacity: 1 !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0.12em !important;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.7);
+}
+
+/* 2. WhyUs Card Hover Lift & Glass Sheen */
+.whyus-card-item {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease !important;
+}
+.whyus-card-item:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(24, 95, 165, 0.25) !important;
+}
+
+/* 3. Services Card & Icon Hover Animation */
+.service-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+.service-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(24, 95, 165, 0.3) !important;
+}
+.service-card:hover .service-icon {
+  transform: scale(1.08) rotate(4deg) !important;
+  background: var(--color-primary) !important;
+  color: #FFFFFF !important;
+}
+.service-icon {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, color 0.4s ease !important;
+}
+
+/* 4. Pricing Badge Shimmer Glow & Button Arrow Slide */
+@keyframes shimmerGlow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.pricing-featured-badge, .booster-badge {
+  background: linear-gradient(90deg, #185FA5 0%, #38BDF8 50%, #185FA5 100%) !important;
+  background-size: 200% 100% !important;
+  animation: shimmerGlow 4s infinite linear !important;
+}
+.pricing-card .btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+.pricing-card .btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(24, 95, 165, 0.25) !important;
+}
+
+/* 5. Breath Pulse Glow for Floating CTA Button */
+@keyframes breathPulseGlow {
+  0%, 100% { 
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 0 0 0 rgba(24, 95, 165, 0); 
+  }
+  50% { 
+    box-shadow: 0 12px 32px rgba(24, 95, 165, 0.45), 0 0 24px 4px rgba(56, 189, 248, 0.35); 
+  }
+}
+.kota-floating-cta {
+  animation: breathPulseGlow 4s infinite ease-in-out !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.kota-floating-cta:hover {
+  transform: translateY(-3px) scale(1.03) !important;
+}

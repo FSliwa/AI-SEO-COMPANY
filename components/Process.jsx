@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
 
@@ -51,7 +52,6 @@ export default function Process() {
       const currentPos = windowHeight - rect.top;
       const progress = Math.min(Math.max(currentPos / totalDistance, 0), 1);
       
-      // Smooth rotation based on scroll distance (0 deg to 240 deg)
       setRotation(progress * 240);
     };
 
@@ -72,14 +72,28 @@ export default function Process() {
         </div>
 
         {/* KOTA Framework Tabs */}
-        <div className="kota-framework-tabs">
+        <div className="kota-framework-tabs" style={{ position: 'relative' }}>
           {tabs.map((tab, idx) => (
             <button
               key={idx}
               className={`kota-tab ${activeTab === idx ? 'active' : ''}`}
               onClick={() => setActiveTab(idx)}
+              style={{ position: 'relative', zIndex: 2 }}
             >
               {tab}
+              {activeTab === idx && (
+                <motion.div
+                  layoutId="activeKotaTabPill"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    borderRadius: '9999px',
+                    background: 'var(--color-primary)',
+                    zIndex: -1
+                  }}
+                />
+              )}
             </button>
           ))}
         </div>
@@ -95,17 +109,27 @@ export default function Process() {
             style={{ transform: `rotate(${rotation}deg)` }}
           ></div>
 
-          {/* Central Description Box */}
+          {/* Central Description Box with Cross-Fade Transition */}
           <div className="process-center-text">
-            <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.35rem' }}>
-              {tabs[activeTab]}
-            </div>
-            <strong style={{ fontSize: '1.05rem', color: '#0F172A', display: 'block', marginBottom: '0.35rem', fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
-              0{steps[activeStep].num}. {steps[activeStep].title}
-            </strong>
-            <p style={{ margin: 0, fontSize: '0.83rem', color: '#64748B', lineHeight: '1.5' }}>
-              {steps[activeStep].desc}
-            </p>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${activeTab}-${activeStep}`}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+              >
+                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.35rem' }}>
+                  {tabs[activeTab]}
+                </div>
+                <strong style={{ fontSize: '1.05rem', color: '#0F172A', display: 'block', marginBottom: '0.35rem', fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
+                  0{steps[activeStep].num}. {steps[activeStep].title}
+                </strong>
+                <p style={{ margin: 0, fontSize: '0.83rem', color: '#64748B', lineHeight: '1.5' }}>
+                  {steps[activeStep].desc}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Rotating Wheel of Node Circles */}

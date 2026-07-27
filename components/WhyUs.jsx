@@ -5,6 +5,53 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
+function CountUpMetric({ value }) {
+  const [displayValue, setDisplayValue] = useState(value);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const match = value.match(/([\+]*)([0-9\.]+)(.*)/);
+    if (!match) return;
+    const prefix = match[1] || '';
+    const targetNum = parseFloat(match[2]);
+    const suffix = match[3] || '';
+
+    const duration = 1200;
+    let startTime = null;
+
+    const animateCount = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const currentVal = Math.floor(easeProgress * targetNum);
+
+      setDisplayValue(`${prefix}${currentVal}${suffix}`);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateCount);
+      } else {
+        setDisplayValue(value);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          requestAnimationFrame(animateCount);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [value]);
+
+  return <span ref={ref}>{displayValue}</span>;
+}
+
 export default function WhyUs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
@@ -260,7 +307,7 @@ export default function WhyUs() {
                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
                   style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
                 >
-                  {item.metric}
+                  <CountUpMetric value={item.metric} />
                 </motion.div>
               </div>
 
