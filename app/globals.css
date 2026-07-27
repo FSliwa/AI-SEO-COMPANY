@@ -1840,9 +1840,9 @@ button, input, select, textarea {
 
   /* Hero Section Height & Content Spacing Optimization (Mobile Only) */
   .hero {
-    height: 84vh !important;
-    min-height: 520px !important;
-    max-height: 750px !important;
+    height: 65vh !important; /* Reduced to bring partners row closer to SVG */
+    min-height: 480px !important;
+    max-height: 650px !important;
     padding-top: 4.5rem !important;
     padding-bottom: 2rem !important;
     display: flex !important;
@@ -1880,22 +1880,25 @@ button, input, select, textarea {
     width: 100% !important;
     left: 0 !important;
     padding-left: 2.5rem; /* Increased padding to separate from line */
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
   .blog-timeline-item.right {
     left: 0 !important;
   }
   .blog-timeline-node {
-    left: -0.25rem !important;
+    position: relative !important; /* Fixes overlap by keeping it in the normal document flow */
+    display: inline-flex !important;
+    left: -1.75rem !important; /* Aligns horizontally with the vertical line */
     right: auto !important;
-    top: -0.5rem !important; /* Move above the card */
+    top: 0 !important;
     transform: none !important;
-    padding: 0.25rem 0.6rem;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 0.75rem !important; /* Pushes the card below it down */
     z-index: 10;
   }
   .blog-timeline-card {
     padding: 1.5rem 1.25rem;
-    margin-top: 1.75rem; /* Push card down to make room for badge */
+    margin-top: 0 !important; /* Reset margin since node is relative now */
   }
 
   /* Global Section Spacing Reduction for Mobile */
