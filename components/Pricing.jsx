@@ -49,7 +49,7 @@ export default function Pricing() {
                 </>
               )}
             </ul>
-            <a href="#kontakt" className="btn btn-secondary">{t.btnChoose}</a>
+            <a href="#kontakt" className="btn btn-secondary">{t.btnChoose} <span className="sr-only"> {t.standardTitle}</span></a>
           </RevealItem>
 
           {/* Package 2 */}
@@ -81,7 +81,7 @@ export default function Pricing() {
                 </>
               )}
             </ul>
-            <a href="#kontakt" className="btn btn-secondary">{t.btnChoose}</a>
+            <a href="#kontakt" className="btn btn-secondary">{t.btnChoose} <span className="sr-only"> {t.premiumTitle}</span></a>
           </RevealItem>
 
           {/* Package 3 (Featured Booster Pack) */}
@@ -115,7 +115,7 @@ export default function Pricing() {
                 </>
               )}
             </ul>
-            <a href="#kontakt" className="btn btn-primary">{lang === 'pl' ? 'Zamów Booster Pack' : 'Get Booster Pack'}</a>
+            <a href="#kontakt" className="btn btn-primary btn-glow" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: '600' }}>{t.btnChoose} <span className="sr-only"> {t.boosterTitle}</span></a>
           </RevealItem>
         </RevealStagger>
 

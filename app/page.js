@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Agencja SEO Warszawa - AI SEO COMPANY | Skuteczne Pozycjonowanie',
+  description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design oparty na AI.',
+};
+
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';

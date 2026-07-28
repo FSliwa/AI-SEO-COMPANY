@@ -1,5 +1,7 @@
-'use client';
-
+export const metadata = {
+  title: 'SEO Lokalne dla Firm w Warszawie - Poradnik | AI SEO COMPANY',
+  description: 'Jak zdominować lokalne wyniki wyszukiwania w Warszawie? Kompletny przewodnik po optymalizacji wizytówki Google i pozycjonowaniu lokalnym.',
+};
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';

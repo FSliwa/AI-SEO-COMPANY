@@ -1,5 +1,7 @@
-'use client';
-
+export const metadata = {
+  title: 'Ile kosztuje pozycjonowanie w 2026 roku? Cennik i pakiety SEO | AI SEO COMPANY',
+  description: 'Zastanawiasz się, ile kosztuje skuteczne pozycjonowanie w 2026 roku? Zobacz nasz cennik SEO i dowiedz się, co wpływa na finalną cenę optymalizacji.',
+};
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';

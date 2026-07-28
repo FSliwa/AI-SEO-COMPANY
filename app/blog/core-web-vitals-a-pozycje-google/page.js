@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'Core Web Vitals a Pozycje w Google | Przewodnik SEO',
+  description: 'Dowiedz się jak Core Web Vitals (LCP, FID, CLS) wpływają na pozycje Twojej strony w wyszukiwarce Google. Praktyczny przewodnik optymalizacji.',
+};
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
