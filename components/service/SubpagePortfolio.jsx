@@ -131,6 +131,40 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
           ))}
         </RevealStagger>
       </div>
+
+      <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem', padding: '0 2rem' }}>
+        <a 
+          href="/#portfolio" 
+          className="btn" 
+          style={{ 
+            padding: '1.1rem 2.5rem', 
+            fontSize: '1.1rem', 
+            fontWeight: 600, 
+            borderRadius: '50px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            background: '#1D1D1F',
+            color: '#FFFFFF',
+            textDecoration: 'none',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+          }}
+        >
+          Zobacz pełne portfolio wyników
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </Reveal>
     </section>
   );
 }
