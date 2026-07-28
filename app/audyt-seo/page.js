@@ -207,7 +207,6 @@ export default function AudytSeoPage() {
           title="Odkryj efekty naszych audytów" 
           subtitle="Najczęstsze błędy techniczne wykrywane podczas audytów oraz metody ich eliminacji"
           cases={auditPortfolioCases} 
-          layout="vertical"
         />
 
         {/* FAQ Section */}
