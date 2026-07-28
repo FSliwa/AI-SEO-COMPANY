@@ -24,7 +24,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
 
   return (
     <section style={{ padding: '8rem 0', overflow: 'hidden' }}>
-      <div className="container" style={{ maxWidth: '1440px' }}>
+      <div className="container" style={{ maxWidth: '1240px' }}>
         <Reveal>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '3.5rem', width: '100%' }}>
             <div style={{ maxWidth: '780px' }}>
