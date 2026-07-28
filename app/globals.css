@@ -2112,7 +2112,6 @@ section {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24) !important;
 }
 
-/* Madame Thai Image Mobile Crop Fix */
 @media (max-width: 900px) {
   .madame-thai-mobile-wrapper {
     height: 250px !important;
@@ -2122,11 +2121,12 @@ section {
     border-bottom-right-radius: 0 !important;
   }
   .madame-thai-mobile-img {
-    width: 180% !important;
+    width: 100% !important;
     max-width: none !important;
-    height: auto !important;
-    margin-left: -40% !important;
-    margin-top: -30px !important;
+    height: 350px !important;
+    margin-left: 0 !important;
+    margin-top: -50px !important;
     object-fit: cover !important;
+    object-position: top center !important;
   }
 }
