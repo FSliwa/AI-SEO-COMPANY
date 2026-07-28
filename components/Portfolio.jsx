@@ -206,9 +206,9 @@ export default function Portfolio() {
               >
                 
                 {item.layout === 'center' ? (
-                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', flex: 1, position: 'relative', width: '100%' }}>
+                  <>
                     {/* Top Header Text (Centered above screenshot, no button) */}
-                    <div className="portfolio-text-container" style={{ maxWidth: item.id === 1 ? '720px' : '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
+                    <div className="portfolio-text-container" style={{ maxWidth: item.id === 1 ? '720px' : '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', paddingTop: '0.5rem', zIndex: 2, alignSelf: 'center' }}>
                       <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
                         {item.brandLogo}
                       </div>
@@ -230,27 +230,24 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Centered 80% Width Image anchored FLUSH to bottom edge during pulse animation */}
-                    <motion.div 
-                      className="portfolio-image-container madame-thai-mobile-wrapper"
-                      animate={{ scaleY: [1, 1.03, 1] }}
-                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-                      style={{ 
-                        width: '80%', 
-                        height: '320px', 
-                        position: 'absolute',
-                        bottom: '-4.1rem', // Flush with bottom card boundary
-                        left: '10%',
-                        transformOrigin: 'bottom center', // Ensures bottom ALWAYS stays flush with card bottom
-                        borderTopLeftRadius: '24px', 
-                        borderTopRightRadius: '24px', 
-                        overflow: 'hidden', 
-                        boxShadow: '0 -20px 60px rgba(0,0,0,0.9)', 
-                        border: '1px solid rgba(255,255,255,0.18)',
-                        borderBottom: 'none',
-                        zIndex: 1
-                      }}
-                    >
+                    {/* Centered Image anchored FLUSH to bottom edge */}
+                    <div style={{ position: 'absolute', bottom: '-4.1rem', left: '3.5rem', right: '3.5rem', display: 'flex', justifyContent: 'center', zIndex: 1 }}>
+                      <motion.div 
+                        className="portfolio-image-container madame-thai-mobile-wrapper"
+                        animate={{ scaleY: [1, 1.03, 1] }}
+                        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+                        style={{ 
+                          width: '80%', 
+                          height: '320px', 
+                          transformOrigin: 'bottom center',
+                          borderTopLeftRadius: '24px', 
+                          borderTopRightRadius: '24px', 
+                          overflow: 'hidden', 
+                          boxShadow: '0 -20px 60px rgba(0,0,0,0.9)', 
+                          border: '1px solid rgba(255,255,255,0.18)',
+                          borderBottom: 'none'
+                        }}
+                      >
                       <img 
                         className="madame-thai-mobile-img"
                         src={item.largeImage} 
@@ -263,33 +260,29 @@ export default function Portfolio() {
                           objectPosition: 'top' 
                         }} 
                       />
-                    </motion.div>
-                  </div>
+                      </motion.div>
+                    </div>
+                  </>
                 ) : item.layout === 'center-reverse' ? (
-                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', flex: 1, position: 'relative', width: '100%' }}>
-                    {/* Centered 80% Width Image anchored FLUSH to TOP edge during pulse animation */}
-                    <motion.div 
-                      className="portfolio-image-container"
-                      animate={{ scaleY: [1, 1.03, 1] }}
-                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-                      style={{ 
-                        width: '80%', 
-                        height: '320px', 
-                        position: 'absolute',
-                        top: '-4.1rem', // Flush with TOP card boundary
-                        left: '10%',
-                        transformOrigin: 'top center', // Ensures top ALWAYS stays flush with card top
-                        borderBottomLeftRadius: '24px', 
-                        borderBottomRightRadius: '24px', 
-                        borderTopLeftRadius: '0',
-                        borderTopRightRadius: '0',
-                        overflow: 'hidden', 
-                        boxShadow: '0 20px 60px rgba(0,0,0,0.9)', 
-                        border: '1px solid rgba(255,255,255,0.18)',
-                        borderTop: 'none',
-                        zIndex: 1
-                      }}
-                    >
+                  <>
+                    {/* Centered Image anchored FLUSH to TOP edge */}
+                    <div style={{ position: 'absolute', top: '-4.1rem', left: '3.5rem', right: '3.5rem', display: 'flex', justifyContent: 'center', zIndex: 1 }}>
+                      <motion.div 
+                        className="portfolio-image-container"
+                        animate={{ scaleY: [1, 1.03, 1] }}
+                        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+                        style={{ 
+                          width: '80%', 
+                          height: '320px', 
+                          transformOrigin: 'top center', 
+                          borderBottomLeftRadius: '24px', 
+                          borderBottomRightRadius: '24px', 
+                          overflow: 'hidden', 
+                          boxShadow: '0 20px 60px rgba(0,0,0,0.9)', 
+                          border: '1px solid rgba(255,255,255,0.18)',
+                          borderTop: 'none'
+                        }}
+                      >
                       <img 
                         src={item.largeImage} 
                         alt={item.brandName} 
@@ -300,10 +293,11 @@ export default function Portfolio() {
                           objectPosition: 'top' 
                         }} 
                       />
-                    </motion.div>
+                      </motion.div>
+                    </div>
 
                     {/* Bottom Header Text */}
-                    <div className="portfolio-text-container" style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2, position: 'relative' }}>
+                    <div className="portfolio-text-container" style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2, position: 'relative', alignSelf: 'center' }}>
                       <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
                         {item.id === 3 ? (lang === 'pl' ? '+8 113.8% Wzrost widoczności w Google w 3 miesiące.' : '+8 113.8% Organic Search Growth in 3 months.') : item.metricSubtitle}
                       </div>
@@ -313,7 +307,7 @@ export default function Portfolio() {
                         {item.brandLogo}
                       </div>
                     </div>
-                  </div>
+                  </>
                 ) : item.layout === 'right-side' ? (
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%' }}>
                     {/* Left Content (Staniax: Capped width to ensure clean spacing from right image) */}
