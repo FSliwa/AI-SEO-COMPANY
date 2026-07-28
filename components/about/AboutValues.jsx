@@ -46,15 +46,15 @@ export default function AboutValues() {
         </Reveal>
 
         {/* KOTA 3 Pillars Row */}
-        <RevealStagger className="kota-pillars-row" delay={0.2}>
+        <RevealStagger className="kota-pillars-row" delay={0.2} style={{ alignItems: 'stretch' }}>
           {valuesData.map((pillar, idx) => (
-            <RevealItem key={idx} style={{ display: 'flex', alignItems: 'center', flex: 1, gap: '1rem' }}>
-              <div className="kota-pillar-card">
+            <RevealItem key={idx} style={{ display: 'flex', alignItems: 'stretch', flex: 1, gap: '1rem' }}>
+              <div className="kota-pillar-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div className="kota-pillar-num">{pillar.num}</div>
                 <h4>{pillar.title}</h4>
-                <p>{pillar.desc}</p>
+                <p style={{ flex: 1 }}>{pillar.desc}</p>
               </div>
-              {idx < valuesData.length - 1 && <span className="kota-divider-x">✕</span>}
+              {idx < valuesData.length - 1 && <span className="kota-divider-x" style={{ alignSelf: 'center' }}>✕</span>}
             </RevealItem>
           ))}
         </RevealStagger>
