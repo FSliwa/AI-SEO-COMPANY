@@ -58,7 +58,7 @@ const auditPortfolioCases = [
     tag: 'TECHNICAL E-COMMERCE',
     title: 'Naprawa indeksacji dużego sklepu',
     description: 'Znaleźliśmy i usunęliśmy ponad 20 tysięcy zduplikowanych i pustych adresów URL, które konsumowały Crawl Budget. Wynikiem był błyskawiczny powrót sklepu do Top 10 Google na kluczowe kategorie.',
-    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1550684848-722ebb602b9f?auto=format&fit=crop&w=800&q=80',
     metric: '-95%',
     metricLabel: 'Błędów 404/500',
     metric2: '+45%',
@@ -78,7 +78,7 @@ const auditPortfolioCases = [
     tag: 'RAPORT WYDAJNOŚCI',
     title: 'Audyt Techniczny Core Web Vitals: Od Diagnozy do Wyniku 99/100',
     description: 'Kompleksowa analiza przypadku optymalizacji kodu JavaScript i zasobów mediów, która skróciła czas ładowania serwisu B2B o 3.4 sekundy.',
-    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?auto=format&fit=crop&w=1200&q=80',
     metric: '28 Lipca',
     metricLabel: 'Data publikacji'
   },
@@ -86,7 +86,7 @@ const auditPortfolioCases = [
     tag: 'INDEKSACJA GOOGLE',
     title: 'Optymalizacja Crawl Budget dla Serwisów E-commerce',
     description: 'Jak wyeliminować pętle przekierowań i nieaktywne podstrony, aby ułatwić robotom indeksującym docieranie do produktów.',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1555448248-2571daf6346b?auto=format&fit=crop&w=1200&q=80',
     metric: '24 Lipca',
     metricLabel: 'Data publikacji'
   },

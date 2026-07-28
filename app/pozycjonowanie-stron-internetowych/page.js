@@ -43,11 +43,61 @@ const portfolioCases = [
     tag: 'E-COMMERCE GROWTH',
     title: 'Dominacja w kategorii Fashion',
     description: 'Zbudowanie strategii Topic Clusters dla sklepu internetowego. Efektem była całkowita dominacja w niszy organicznej i obniżenie kosztów pozyskania klienta (CAC) o ponad połowę.',
-    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?auto=format&fit=crop&w=800&q=80',
     metric: '-55%',
     metricLabel: 'Koszt CAC',
     metric2: 'Top 3',
     metric2Label: 'Kluczowe kategorie'
+  },
+  {
+    tag: 'LOCAL SEO B2C',
+    title: 'Skalowanie sieci klinik',
+    description: 'Dominacja lokalna na ponad 20 miast w Polsce dzięki zoptymalizowanej strukturze podstron lokalnych i zmasowanemu budowaniu profili Google Business.',
+    image: 'https://images.unsplash.com/photo-1618005177264-b77cd5d3b6df?auto=format&fit=crop&w=800&q=80',
+    metric: '+150%',
+    metricLabel: 'Nowych pacjentów',
+    metric2: '+210%',
+    metric2Label: 'Ruchu lokalnego'
+  },
+  {
+    tag: 'SAAS TECH',
+    title: 'Wzrost MRR o 45%',
+    description: 'Pozycjonowanie trudnych słów kluczowych o wysokim intent (np. "najlepsze narzędzie do automatyzacji") na rynku globalnym zaowocowało skokowym wzrostem cyklicznych przychodów.',
+    image: 'https://images.unsplash.com/photo-1550684376-ef3b2f293b68?auto=format&fit=crop&w=800&q=80',
+    metric: '+45%',
+    metricLabel: 'Wzrost MRR',
+    metric2: 'Top 1',
+    metric2Label: 'Kluczowe frazy'
+  },
+  {
+    tag: 'FINTECH SEO',
+    title: 'Optymalizacja lejka',
+    description: 'Przebudowanie contentu tak, aby precyzyjnie trafiał w bolączki użytkowników na etapie BOFU (Bottom of Funnel), co zmniejszyło CAC o jedną trzecią.',
+    image: 'https://images.unsplash.com/photo-1614850715649-1d0106293cb1?auto=format&fit=crop&w=800&q=80',
+    metric: '-30%',
+    metricLabel: 'Spadek CAC',
+    metric2: '12k+',
+    metric2Label: 'Nowych kont'
+  },
+  {
+    tag: 'B2B SERVICES',
+    title: 'Dominacja w logistyce',
+    description: 'Techniczny audyt SEO i wielojęzyczna rozbudowa strony wygenerowały ogromny popyt na usługi TSL na terenie całej Unii Europejskiej.',
+    image: 'https://images.unsplash.com/photo-1550859491-a5c9281e8c97?auto=format&fit=crop&w=800&q=80',
+    metric: '+280%',
+    metricLabel: 'Zapytań B2B',
+    metric2: '5.5k+',
+    metric2Label: 'Zestawień lead'
+  },
+  {
+    tag: 'E-COMMERCE PREMIUM',
+    title: 'Wzrost marki luksusowej',
+    description: 'Digital PR i pozyskanie linków z luksusowych magazynów lifestylowych zbudowały wysoki zaufany profil domeny, przekładający się na stabilną sprzedaż.',
+    image: 'https://images.unsplash.com/photo-1567359781514-3b964e2b04d6?auto=format&fit=crop&w=800&q=80',
+    metric: '+85%',
+    metricLabel: 'Przychodu',
+    metric2: '+120%',
+    metric2Label: 'Widoczności'
   }
 ];
 

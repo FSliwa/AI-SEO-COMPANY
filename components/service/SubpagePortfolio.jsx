@@ -1,8 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
 export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [], layout = "horizontal" }) {
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
   if (!cases || cases.length === 0) return null;
 
   return (
@@ -58,11 +61,14 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
             }
           `}</style>
           
-          {cases.map((c, idx) => (
+          {cases.map((c, idx) => {
+            const isExpanded = expandedIndex === idx;
+            return (
             <RevealItem 
               key={idx} 
               style={{
-                flex: layout === 'vertical' ? '0 0 min(85vw, 400px)' : '0 0 min(85vw, 1100px)',
+                flex: layout === 'vertical' ? (isExpanded ? '0 0 min(90vw, 800px)' : '0 0 min(85vw, 400px)') : '0 0 min(85vw, 1100px)',
+                transition: 'flex 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                 minHeight: layout === 'vertical' ? '600px' : 'auto',
                 scrollSnapAlign: 'center',
                 background: '#000000', 
@@ -79,7 +85,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   {/* Full Background Image */}
                   <div style={{ position: 'absolute', inset: 0, zIndex: -1 }}>
                     <img src={c.image} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 100%)' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.9) 100%)' }} />
                   </div>
 
                   {/* Top Text */}
@@ -90,6 +96,25 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     <h3 style={{ color: '#FFFFFF', fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
                       {c.title}
                     </h3>
+                  </div>
+
+                  {/* Expanded Content */}
+                  <div style={{ 
+                    marginTop: '2rem',
+                    opacity: isExpanded ? 1 : 0,
+                    height: isExpanded ? 'auto' : 0,
+                    overflow: 'hidden',
+                    transition: 'opacity 0.4s ease',
+                    color: '#FFFFFF'
+                  }}>
+                    <p style={{ fontSize: '1.1rem', lineHeight: 1.6, opacity: 0.9, maxWidth: '500px' }}>{c.description}</p>
+                    
+                    {c.metric2 && (
+                      <div style={{ marginTop: '2rem' }}>
+                        <div style={{ fontSize: '0.9rem', color: '#FFFFFF', opacity: 0.8, fontWeight: 500, marginBottom: '0.25rem' }}>{c.metric2Label}</div>
+                        <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>{c.metric2}</div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Bottom Content */}
@@ -104,16 +129,23 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     </div>
                     
                     {/* Plus Button */}
-                    <div style={{ 
-                      width: '36px', height: '36px', borderRadius: '50%', 
-                      background: 'rgba(255,255,255,0.25)', 
-                      backdropFilter: 'blur(10px)',
-                      display: 'flex', justifyContent: 'center', alignItems: 'center' 
-                    }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <button 
+                      onClick={() => setExpandedIndex(isExpanded ? null : idx)}
+                      style={{ 
+                        width: '36px', height: '36px', borderRadius: '50%', 
+                        background: 'rgba(255,255,255,0.25)', 
+                        backdropFilter: 'blur(10px)',
+                        display: 'flex', justifyContent: 'center', alignItems: 'center',
+                        border: 'none', cursor: 'pointer', outline: 'none'
+                      }}
+                    >
+                      <svg 
+                        width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                        style={{ transform: isExpanded ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}
+                      >
                         <path d="M12 5v14M5 12h14" />
                       </svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
               ) : (
@@ -174,7 +206,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                 </div>
               )}
             </RevealItem>
-          ))}
+            );
+          })}
         </RevealStagger>
       </div>
 
