@@ -68,7 +68,7 @@ const auditPortfolioCases = [
     tag: 'CORE WEB VITALS',
     title: 'Optymalizacja LCP i CLS w portalu B2B',
     description: 'Portal tracił użytkowników mobilnych przez bardzo wolne ładowanie wynoszące 8 sekund. Przebudowaliśmy architekturę zasobów i wdrożyliśmy nowoczesne mechanizmy buforowania.',
-    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80',
     metric: '1.2s',
     metricLabel: 'Nowy wskaźnik LCP',
     metric2: '0',
@@ -86,7 +86,7 @@ const auditPortfolioCases = [
     tag: 'INDEKSACJA GOOGLE',
     title: 'Optymalizacja Crawl Budget dla Serwisów E-commerce',
     description: 'Jak wyeliminować pętle przekierowań i nieaktywne podstrony, aby ułatwić robotom indeksującym docieranie do produktów.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
     metric: '24 Lipca',
     metricLabel: 'Data publikacji'
   },

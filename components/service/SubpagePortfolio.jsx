@@ -6,7 +6,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
   if (!cases || cases.length === 0) return null;
 
   return (
-    <section style={{ padding: '8rem 0', background: 'var(--color-bg-surface)', overflow: 'hidden' }}>
+    <section style={{ padding: '8rem 0', background: 'linear-gradient(to bottom, var(--color-bg-surface) 75%, #ffffff 100%)', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         <Reveal>
           <div className="section-header center" style={{ textAlign: 'center', marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
