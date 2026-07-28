@@ -35,7 +35,7 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'flex-end', 
-          marginBottom: '3rem',
+          marginBottom: '3.5rem',
           flexWrap: 'wrap',
           gap: '1.5rem'
         }}>

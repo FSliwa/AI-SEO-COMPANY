@@ -26,7 +26,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
     <section style={{ padding: '8rem 0', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         <Reveal>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '4rem', width: '100%' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '3.5rem', width: '100%' }}>
             <div style={{ maxWidth: '780px' }}>
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
                 <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> NASZE REALIZACJE
@@ -108,7 +108,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
             scrollbarWidth: 'none', 
             msOverflowStyle: 'none', 
             gap: '2rem',
-            paddingTop: '1rem',
+            paddingTop: '0',
             paddingBottom: '3.5rem',
             paddingLeft: 'calc(50vw - min(42.5vw, 600px))',
             paddingRight: 'calc(50vw - min(42.5vw, 600px))',
@@ -270,12 +270,44 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   </div>
                   
                   {/* Image Side */}
-                  <div className="portfolio-image-wrapper" style={{ width: '45%', position: 'relative', overflow: 'hidden', background: '#111113' }}>
+                  <div className="portfolio-image-wrapper" style={{ 
+                    width: '45%', 
+                    position: 'relative', 
+                    overflow: 'hidden', 
+                    background: c.gradient || 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
                     <img 
                       src={c.image} 
                       alt="" 
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'relative', zIndex: 2 }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
+                    
+                    {/* Futuristic Fallback Visual Grid & Glowing Orb */}
+                    <div style={{ position: 'absolute', inset: 0, zIndex: 1, overflow: 'hidden' }}>
+                      <div style={{
+                        position: 'absolute',
+                        top: '15%',
+                        left: '15%',
+                        width: '70%',
+                        height: '70%',
+                        background: 'radial-gradient(circle, rgba(99,102,241,0.4) 0%, rgba(0,0,0,0) 70%)',
+                        filter: 'blur(35px)'
+                      }} />
+                      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.2 }}>
+                        <defs>
+                          <pattern id={`card-grid-${idx}`} width="36" height="36" patternUnits="userSpaceOnUse">
+                            <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#FFFFFF" strokeWidth="1"/>
+                          </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill={`url(#card-grid-${idx})`} />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               )}
