@@ -34,77 +34,77 @@ const portfolioCases = [
     title: 'Model Skalowania Leadów B2B',
     description: 'Strategiczna architektura informacji dla branż inżynieryjnych i technicznych. Model budowania wysokiej autorytatywności domeny od podstaw.',
     image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80',
-    metric: '+340%',
-    metricLabel: 'Estymowany wzrost leadów',
-    metric2: '2.8k+',
-    metric2Label: 'Wizyt organicznych'
+    metric: '+65%',
+    metricLabel: 'Wzrost organicznych leadów',
+    metric2: '+85%',
+    metric2Label: 'Wzrost widoczności fraz B2B'
   },
   {
     tag: 'MODEL E-COMMERCE',
     title: 'Struktura Klastrowa w Fashion',
     description: 'Strategia Topic Clusters dla sklepu internetowego. Model eliminujący kanibalizację słów kluczowych i obniżający koszt pozyskania klienta (CAC).',
     image: 'https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?auto=format&fit=crop&w=800&q=80',
-    metric: '-55%',
-    metricLabel: 'Redukcja kosztu CAC',
-    metric2: 'Top 3',
-    metric2Label: 'Dla głównych kategorii'
+    metric: '-25%',
+    metricLabel: 'Redukcja kosztu pozyskania (CAC)',
+    metric2: 'Top 5',
+    metric2Label: 'Średnia pozycja kategorii'
   },
   {
     tag: 'MODEL LOCAL B2C',
     title: 'Skalowanie Podstron Geolokalizacyjnych',
     description: 'Model pozycji dla sieci wielooddziałowych na ponad 20 miast w Polsce dzięki zoptymalizowanej strukturze podstron oraz wizytówek profilu Google.',
     image: 'https://images.unsplash.com/photo-1618005177264-b77cd5d3b6df?auto=format&fit=crop&w=800&q=80',
-    metric: '+150%',
-    metricLabel: 'Nowych zapytań',
-    metric2: '+210%',
-    metric2Label: 'Ruchu lokalnego'
+    metric: '+40%',
+    metricLabel: 'Wzrost zapytań lokalnych',
+    metric2: '+60%',
+    metric2Label: 'Wyświetleń w Google Maps'
   },
   {
     tag: 'MODEL SAAS TECH',
     title: 'Optymalizacja Pod Zapytania BOFU',
     description: 'Pozycjonowanie trudnych fraz kluczowych o najwyższym inteńcie zakupowym na rynku globalnym, napędzające wzrost stałych przychodów subskrypcyjnych.',
     image: 'https://images.unsplash.com/photo-1550684376-ef3b2f293b68?auto=format&fit=crop&w=800&q=80',
-    metric: '+45%',
-    metricLabel: 'Wzrost MRR',
-    metric2: 'Top 1',
-    metric2Label: 'Kluczowe frazy'
+    metric: '+25%',
+    metricLabel: 'Wzrost konwersji ze słów BOFU',
+    metric2: 'Top 10',
+    metric2Label: 'Kluczowe słowa branżowe'
   },
   {
     tag: 'MODEL FINTECH',
     title: 'Mapowanie Intencji i Lejka Konwersji',
     description: 'Precyzyjna architektura treści odpowiadająca na zapytania użytkowników na każdym etapie decyzji finansowej, zmniejszająca koszty konwersji.',
     image: 'https://images.unsplash.com/photo-1614850715649-1d0106293cb1?auto=format&fit=crop&w=800&q=80',
-    metric: '-30%',
-    metricLabel: 'Niższy koszt konwersji',
-    metric2: '12k+',
-    metric2Label: 'Ruchu miesięcznie'
+    metric: '-20%',
+    metricLabel: 'Optymalizacja kosztu konwersji',
+    metric2: '+45%',
+    metric2Label: 'Wzrost ruchu z intencją zakupu'
   },
   {
     tag: 'MODEL LOGISTICS',
     title: 'Wielojęzyczna Struktura TSL',
     description: 'Wielojęzyczny audyt techniczny oraz rozbudowa klastrów treści generująca wysoki popyt B2B na rynku europejskim.',
     image: 'https://images.unsplash.com/photo-1550859491-a5c9281e8c97?auto=format&fit=crop&w=800&q=80',
-    metric: '+280%',
-    metricLabel: 'Zapytań B2B',
-    metric2: '5.5k+',
-    metric2Label: 'Wizyt z zagranicy'
+    metric: '+50%',
+    metricLabel: 'Wzrost zapytań B2B',
+    metric2: '+75%',
+    metric2Label: 'Ruchu z rynków zagranicznych'
   },
   {
     tag: 'MODEL PREMIUM',
     title: 'Budowanie Autorytetu i Digital PR',
     description: 'Strategia pozyskiwania wartościowych odnośników editorialnych i budowania autorytetu domeny w segmentach marek premium.',
     image: 'https://images.unsplash.com/photo-1567359781514-3b964e2b04d6?auto=format&fit=crop&w=800&q=80',
-    metric: '+85%',
-    metricLabel: 'Wzrost autorytetu',
-    metric2: '+120%',
-    metric2Label: 'Ogólnej widoczności'
+    metric: '+35%',
+    metricLabel: 'Wzrost autorytetu domeny',
+    metric2: '+55%',
+    metric2Label: 'Widoczności organicznej'
   }
 ];
 
 const carouselItems = [
   {
     number: '01 — WIDOCZNOŚĆ',
-    metric: '+340%',
+    metric: '+65%',
     title: 'Wzrost ruchu komercyjnego',
     description: 'Błyskawiczne skalowanie ruchu z zapytań o najwyższej intencji zakupowej w modelu wyszukiwania semantycznego.',
     width: 'min(85vw, 480px)',
