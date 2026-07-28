@@ -8,26 +8,93 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
 
   if (!cases || cases.length === 0) return null;
 
+  const scrollPrev = () => {
+    const el = document.getElementById("subpage-portfolio-carousel");
+    if (el) {
+      el.scrollBy({ left: -480, behavior: 'smooth' });
+    }
+  };
+
+  const scrollNext = () => {
+    const el = document.getElementById("subpage-portfolio-carousel");
+    if (el) {
+      el.scrollBy({ left: 480, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section style={{ padding: '8rem 0', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         <Reveal>
-          <div className="section-header center" style={{ textAlign: 'center', marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> NASZE REALIZACJE
+          <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '4rem' }}>
+            <div style={{ maxWidth: '780px' }}>
+              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
+                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> NASZE REALIZACJE
+              </div>
+              <h2 style={{ 
+                fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
+                fontWeight: 700, 
+                color: '#1D1D1F', 
+                letterSpacing: '-0.04em',
+                marginBottom: '1rem'
+              }}>
+                {title}
+              </h2>
+              <p style={{ color: '#6E6E73', fontSize: '1.25rem', margin: 0, fontWeight: 500 }}>
+                {subtitle}
+              </p>
             </div>
-            <h2 style={{ 
-              fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
-              fontWeight: 700, 
-              color: '#1D1D1F', 
-              letterSpacing: '-0.04em',
-              marginBottom: '1rem'
-            }}>
-              {title}
-            </h2>
-            <p style={{ color: '#6E6E73', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', fontWeight: 500 }}>
-              {subtitle}
-            </p>
+
+            {/* Navigation Arrows */}
+            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginBottom: '0.5rem' }}>
+              <button 
+                onClick={scrollPrev}
+                style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '50%',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(0,0,0,0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#F5F5F7'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#FFFFFF'}
+                aria-label="Poprzedni slajd"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <button 
+                onClick={scrollNext}
+                style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '50%',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(0,0,0,0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#F5F5F7'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#FFFFFF'}
+                aria-label="Następny slajd"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
           </div>
         </Reveal>
       </div>
