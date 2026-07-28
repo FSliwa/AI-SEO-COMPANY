@@ -30,7 +30,7 @@ export default function BlogGrid() {
 
   return (
     <section className="blog-grid" style={{ padding: '4rem 0', backgroundColor: '#F5F5F7' }}>
-      <div className="container" style={{ maxWidth: '1080px', margin: '0 auto' }}>
+      <div className="container" style={{ margin: '0 auto' }}>
         <Reveal>
           <h2 style={{ 
             fontSize: '2rem', 
