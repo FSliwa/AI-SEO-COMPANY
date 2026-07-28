@@ -88,6 +88,8 @@ const jsonLdData = {
   ]
 };
 
+import Script from 'next/script';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
@@ -100,6 +102,19 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WVVRW8FP30"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-WVVRW8FP30');
+          `}
+        </Script>
       </head>
       <body>
         <LanguageProvider>
