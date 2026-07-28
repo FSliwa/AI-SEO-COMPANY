@@ -8,38 +8,67 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Pricing from '@/components/Pricing';
 import ServiceCarousel from '@/components/service/ServiceCarousel';
+import AppleFaq from '@/components/service/AppleFaq';
+import SubpagePortfolio from '@/components/service/SubpagePortfolio';
+import ServiceBlogGrid from '@/components/service/ServiceBlogGrid';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  'mainEntity': [
-    {
-      '@type': 'Question',
-      'name': 'Ile trwa pozycjonowanie stron internetowych?',
-      'acceptedAnswer': {
-        '@type': 'Answer',
-        'text': 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Ustabilizowane wysokie pozycje na konkurencyjne frazy kluczowe buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy.'
-      }
-    },
-    {
-      '@type': 'Question',
-      'name': 'Czym różni się pozycjonowanie z AI od tradycyjnego SEO?',
-      'acceptedAnswer': {
-        '@type': 'Answer',
-        'text': 'Model AI SEO COMPANY analizuje zapytania użytkowników w kontekście intencji wyszukiwania (Search Intent) oraz wyszukiwania semantycznego (LLM Search), optymalizując treści pod kątem tradycyjnego Google oraz wyszukiwarek AI (ChatGPT, Perplexity).'
-      }
-    },
-    {
-      '@type': 'Question',
-      'name': 'Czy pozycjonowanie stron gwarantuje pozycję nr 1 w Google?',
-      'acceptedAnswer': {
-        '@type': 'Answer',
-        'text': 'Żadna uczciwa agencja nie gwarantuje statycznej pozycji nr 1 ze względu na zmienność algorytmów Google. Gwarantujemy natomiast stały wzrost widoczności, jakościowego ruchu oraz optymalizację współczynnika konwersji (CRO).'
-      }
-    }
-  ]
-};
+const faqData = [
+  {
+    question: 'Ile trwa pozycjonowanie stron internetowych?',
+    answer: 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Ustabilizowane wysokie pozycje na konkurencyjne frazy kluczowe buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy.'
+  },
+  {
+    question: 'Czym różni się pozycjonowanie z AI od tradycyjnego SEO?',
+    answer: 'Analizujemy zapytania użytkowników w kontekście intencji wyszukiwania (Search Intent) oraz wyszukiwania semantycznego (LLM Search), optymalizując treści pod kątem tradycyjnego Google oraz wyszukiwarek AI (ChatGPT, Perplexity).'
+  },
+  {
+    question: 'Czy pozycjonowanie stron gwarantuje pozycję nr 1 w Google?',
+    answer: 'Żadna uczciwa agencja nie gwarantuje statycznej pozycji nr 1 ze względu na zmienność algorytmów Google. Gwarantujemy natomiast stały wzrost widoczności, jakościowego ruchu oraz optymalizację współczynnika konwersji (CRO).'
+  }
+];
+
+const portfolioCases = [
+  {
+    tag: 'B2B INDUSTRY & SEO',
+    title: 'Wzrost leadów B2B o 340%',
+    description: 'Skalowanie biznesu na rynki zagraniczne (Niemcy, USA) dzięki nowej architekturze informacji i zaawansowanemu SEO. Start od zerowej widoczności na trudnym rynku inżynieryjnym.',
+    image: 'https://images.unsplash.com/photo-1664575198308-3959904fa430?auto=format&fit=crop&w=800&q=80',
+    metric: '+340%',
+    metricLabel: 'Wzrost leadów',
+    metric2: '2.8k+',
+    metric2Label: 'Wizyt organicznych'
+  },
+  {
+    tag: 'E-COMMERCE GROWTH',
+    title: 'Dominacja w kategorii Fashion',
+    description: 'Zbudowanie strategii Topic Clusters dla sklepu internetowego. Efektem była całkowita dominacja w niszy organicznej i obniżenie kosztów pozyskania klienta (CAC) o ponad połowę.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
+    metric: '-55%',
+    metricLabel: 'Koszt CAC',
+    metric2: 'Top 3',
+    metric2Label: 'Kluczowe kategorie'
+  }
+];
+
+const blogPostsData = [
+  {
+    date: '10 Czerwca 2026',
+    tag: 'STRATEGIA B2B',
+    title: 'Link building B2B dla marketerów',
+    description: 'Jak pozyskiwać wartościowe odnośniki dla firmy usługowej w modelu B2B.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    slug: '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista'
+  },
+  {
+    date: '28 Lipca 2026',
+    tag: 'BUDŻET SEO',
+    title: 'Ile kosztuje SEO w Polsce?',
+    description: 'Rozkładamy na czynniki pierwsze ceny pozycjonowania. Zobacz, ile kosztuje SEO.',
+    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80',
+    slug: '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026'
+  }
+];
 
 const carouselItems = [
   {
@@ -77,18 +106,15 @@ const carouselItems = [
 export default function PozycjonowanieStronPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
-      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
-        {/* Hero Banner - Apple Style */}
+      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+        
+        {/* Hero Banner - Apple Style Minimalist */}
         <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
           <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Reveal>
-              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center' }}>
-                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> POZYCJONOWANIE STRON
+              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Pozycjonowanie Stron
               </div>
               
               <h1 style={{ 
@@ -124,8 +150,16 @@ export default function PozycjonowanieStronPage() {
           </div>
         </section>
 
-        {/* Process Section - Apple Style Bento Grid */}
-        <section style={{ padding: '80px 0 100px 0' }}>
+        {/* Apple Interactive Carousel Section (Why Us) */}
+        <ServiceCarousel 
+          tag="FILARY SKALOWANIA WIDOCZNOŚCI"
+          title="Przewaga w Wynikach Organicznych"
+          subtitle="Odkryj mechanizmy, które napędzają wzrost Twojego biznesu w wyszukiwarce Google."
+          items={carouselItems}
+        />
+
+        {/* Process Section - Apple Style Minimal Grid */}
+        <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
               <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
@@ -136,90 +170,56 @@ export default function PozycjonowanieStronPage() {
               </p>
             </Reveal>
 
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 1</div>
+            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 1</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Audyt Techniczny &amp; CWV</h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Eliminujemy błędy indeksowania, przyspieszamy ładowanie i poprawiamy architekturę linkowania wewnętrznego.</p>
+                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Eliminujemy błędy indeksowania, przyspieszamy ładowanie i poprawiamy architekturę linkowania wewnętrznego.</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
+              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 2</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Content Marketing</h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania.</p>
+                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania.</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
+              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 3</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Link Building</h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.</p>
+                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.</p>
               </RevealItem>
             </RevealStagger>
           </div>
         </section>
 
-        {/* Apple Interactive Carousel Section */}
-        <ServiceCarousel 
-          tag="FILARY SKALOWANIA WIDOCZNOŚCI"
-          title="Przewaga w Wynikach Organicznych"
-          subtitle="Odkryj mechanizmy, które napędzają wzrost Twojego biznesu w wyszukiwarce Google."
-          items={carouselItems}
+        {/* Portfolio Section */}
+        <SubpagePortfolio 
+          title="Odkryj nowości naszych klientów" 
+          subtitle="Sukcesy organiczne w konkurencyjnych branżach"
+          cases={portfolioCases} 
         />
 
+        {/* Pricing */}
         <Pricing />
 
-        {/* FAQ Section - Apple Style */}
-        <section style={{ padding: '100px 0' }}>
-          <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <Reveal className="section-header" style={{ textAlign: 'center', marginBottom: '4rem' }}>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-                Najczęstsze pytania
-              </h2>
-              <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
-                Transparentne odpowiedzi na Twoje wątpliwości.
-              </p>
-            </Reveal>
+        {/* Blog / Knowledge Base */}
+        <ServiceBlogGrid 
+          tag="WIEDZA I INSPIRACJE"
+          title="Trends & Insights"
+          subtitle="Strategie pozycjonowania dla nowoczesnych wyszukiwarek"
+          heroItem={{
+            tag: 'SEO LOKALNE',
+            title: 'SEO Lokalne dla Firm w Warszawie',
+            description: 'Kompleksowy poradnik dla warszawskich firm usługowych. Dowiedz się, jak zdominować lokalne wyniki organiczne.',
+            date: '10 Lipca 2026',
+            image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80',
+            slug: '/blog/seo-lokalne-dla-firm-w-warszawie'
+          }}
+          items={blogPostsData}
+        />
 
-            <RevealStagger style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              {faqSchema.mainEntity.map((item, index) => (
-                <RevealItem key={index}>
-                  <div style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
-                    <h3 style={{ fontSize: '1.35rem', color: '#1D1D1F', marginBottom: '1rem', fontWeight: 700, letterSpacing: '-0.01em' }}>{item.name}</h3>
-                    <p style={{ color: '#6E6E73', lineHeight: 1.6, fontSize: '1.1rem' }}>{item.acceptedAnswer.text}</p>
-                  </div>
-                </RevealItem>
-              ))}
-            </RevealStagger>
-          </div>
-        </section>
-
-        {/* Custom Knowledge Section for SEO */}
-        <section style={{ padding: '80px 0 120px 0' }}>
-          <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
-            <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center' }}>
-                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> WIEDZA EKSPERCKA
-              </div>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-                Sekrety Pozycjonowania
-              </h2>
-              <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
-                Sprawdzone strategie dla nowoczesnych wyszukiwarek.
-              </p>
-            </Reveal>
-
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wyszukiwanie Semantyczne</h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>W 2026 roku nie pozycjonujemy na pojedyncze słowa, ale odpowiadamy na intencje. Tworzymy tzw. Topic Clusters budujące Topical Authority domeny w konkretnej niszy.</p>
-              </RevealItem>
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>AI Search (SGE)</h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Optymalizujemy treści nie tylko dla tradycyjnego bota Google, ale również pod kątem modeli językowych generujących bezpośrednie odpowiedzi (LLM-based Search).</p>
-              </RevealItem>
-            </RevealStagger>
-          </div>
-        </section>
+        {/* FAQ */}
+        <AppleFaq faqData={faqData} title="Najczęstsze pytania" />
 
         <Contact />
       </main>
