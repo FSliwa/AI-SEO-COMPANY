@@ -77,6 +77,43 @@ const auditPortfolioCases = [
   }
 ];
 
+const auditBlogData = {
+  heroItem: {
+    category: 'RAPORT WYDAJNOŚCI',
+    title: 'Audyt Techniczny Core Web Vitals: Od Diagnozy do Wyniku 99/100',
+    description: 'Kompleksowa analiza przypadku optymalizacji kodu JavaScript i zasobów mediów, która skróciła czas ładowania serwisu B2B o 3.4 sekundy.',
+    date: '28 Lipca 2026',
+    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=1200&q=80',
+    slug: '/blog'
+  },
+  items: [
+    {
+      category: 'INDEKSACJA GOOGLE',
+      title: 'Optymalizacja Crawl Budget dla Serwisów E-commerce',
+      description: 'Jak wyeliminować pętle przekierowań i nieaktywne podstrony, aby ułatwić robotom indeksującym docieranie do produktów.',
+      date: '24 Lipca 2026',
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+      slug: '/blog'
+    },
+    {
+      category: 'STRUKTURA DANYCH',
+      title: 'Wdrożenie Mikrodanych Schema.org w Modelu B2B',
+      description: 'Przewodnik po optymalizacji danych strukturalnych pod kątem wyszukiwarek AI.',
+      date: '20 Lipca 2026',
+      image: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?auto=format&fit=crop&w=1200&q=80',
+      slug: '/blog'
+    },
+    {
+      category: 'BEZPIECZEŃSTWO',
+      title: 'Weryfikacja Profilu Linków i Czyszczenie Toksycznych Domen',
+      description: 'Metodyka zabezpieczania autorytetu domeny przed działaniami depozycjonującymi.',
+      date: '16 Lipca 2026',
+      image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=1200&q=80',
+      slug: '/blog'
+    }
+  ]
+};
+
 export default function AudytSeoPage() {
   return (
     <>
@@ -168,6 +205,15 @@ export default function AudytSeoPage() {
           title="Odkryj efekty naszych audytów" 
           subtitle="Realne przypadki zoptymalizowanych witryn e-commerce i B2B."
           cases={auditPortfolioCases} 
+        />
+
+        {/* Blog Grid */}
+        <ServiceBlogGrid 
+          tag="ANALIZY AUDYTOWE"
+          title="Baza Wiedzy Technicznej"
+          subtitle="Najnowsze poradniki o błędach technicznych i ich wpływie na pozycje."
+          heroItem={auditBlogData.heroItem}
+          items={auditBlogData.items}
         />
 
         {/* FAQ Section */}
