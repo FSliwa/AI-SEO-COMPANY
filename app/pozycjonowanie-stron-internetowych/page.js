@@ -46,25 +46,31 @@ const carouselItems = [
     number: '01 — WIDOCZNOŚĆ',
     metric: '+340%',
     title: 'Wzrost ruchu komercyjnego',
-    description: 'Błyskawiczne skalowanie ruchu z zapytań o najwyższej intencji zakupowej w modelu wyszukiwania semantycznego.'
+    description: 'Błyskawiczne skalowanie ruchu z zapytań o najwyższej intencji zakupowej w modelu wyszukiwania semantycznego.',
+    width: 'min(85vw, 480px)',
+    minHeight: '380px'
   },
   {
     number: '02 — STRATEGIA',
     metric: 'TOP 3',
     title: 'Kluczowe frazy branżowe',
-    description: 'Wprowadzamy Twoje flagowe produkty i usługi na podium wyników organicznych wyszukiwarki Google.'
+    description: 'Wprowadzamy Twoje flagowe produkty i usługi na podium wyników organicznych wyszukiwarki Google.',
+    width: 'min(75vw, 370px)'
   },
   {
     number: '03 — ARCHITEKTURA',
     metric: '100%',
     title: 'Topic Clusters & Authority',
-    description: 'Tworzymy klastry tematyczne odpowiadające na pytania użytkowników, budując autorytet domeny.'
+    description: 'Tworzymy klastry tematyczne odpowiadające na pytania użytkowników, budując autorytet domeny.',
+    width: 'min(80vw, 420px)',
+    minHeight: '370px'
   },
   {
     number: '04 — AUTORYTET',
     metric: 'High DR',
     title: 'Jakościowy Link Building',
-    description: 'Pozyskujemy editorialne odnośniki z najbardziej cenionych polskich i zagranicznych portali biznesowych.'
+    description: 'Pozyskujemy editorialne odnośniki z najbardziej cenionych polskich i zagranicznych portali biznesowych.',
+    width: 'min(75vw, 360px)'
   }
 ];
 

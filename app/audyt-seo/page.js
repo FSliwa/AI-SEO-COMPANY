@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import ServiceCarousel from '@/components/service/ServiceCarousel';
+import ServiceBlogGrid from '@/components/service/ServiceBlogGrid';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
 const faqAudyt = {
@@ -37,27 +38,64 @@ const auditCarouselItems = [
     number: '01 — PRĘDKOŚĆ',
     metric: '99 / 100',
     title: 'PageSpeed & Core Web Vitals',
-    description: 'Eliminujemy blokujący kod JavaScript i optymalizujemy renderowanie obrazów WebP/AVIF.'
+    description: 'Eliminujemy blokujący kod JavaScript i optymalizujemy renderowanie obrazów WebP/AVIF.',
+    width: 'min(85vw, 460px)'
   },
   {
     number: '02 — INDEKSACJA',
     metric: '0 Błędów',
     title: 'Optymalizacja Crawl Budget',
-    description: 'Usuwamy pętle przekierowań, zduplikowane tagi canonical oraz podstrony ze statusem 404.'
+    description: 'Usuwamy pętle przekierowań, zduplikowane tagi canonical oraz podstrony ze statusem 404.',
+    width: 'min(75vw, 370px)'
   },
   {
     number: '03 — SEMANTYKA',
     metric: 'HTML5',
     title: 'Hierarchia Nagłówków & Schema',
-    description: 'Układamy poprawną strukturę H1-H3 oraz wdrażamy mikrodane Schema.org (LocalBusiness, Article).'
+    description: 'Układamy poprawną strukturę H1-H3 oraz wdrażamy mikrodane Schema.org (LocalBusiness, Article).',
+    width: 'min(80vw, 410px)'
   },
   {
     number: '04 — WYDAJNOŚĆ',
     metric: '< 0.5s',
     title: 'Czas Odpowiedzi Serwera (TTFB)',
-    description: 'Wskazujemy rekomendacje serwerowe i wdrażamy szybki bufor Caching/CDN dla natychmiastowego reaktywności.'
+    description: 'Wskazujemy rekomendacje serwerowe i wdrażamy szybki bufor Caching/CDN dla natychmiastowego reaktywności.',
+    width: 'min(75vw, 360px)'
   }
 ];
+
+const auditBlogData = {
+  heroItem: {
+    category: 'RAPORT WYDAJNOŚCI',
+    title: 'Audyt Techniczny Core Web Vitals: Od Diagnozy do Wyniku 99/100',
+    description: 'Kompleksowa analiza przypadku optymalizacji kodu JavaScript i zasobów mediów, która skróciła czas ładowania serwisu B2B o 3.4 sekundy.',
+    date: '28 Lipca 2026',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80'
+  },
+  items: [
+    {
+      category: 'INDEKSACJA GOOGLE',
+      title: 'Optymalizacja Crawl Budget dla Serwisów E-commerce',
+      description: 'Jak wyeliminować pętle przekierowań i nieaktywne podstrony, aby ułatwić robotom indeksującym docieranie do kluczowych produktów.',
+      date: '24 Lipca 2026',
+      image: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+      category: 'STRUKTURA DANYCH',
+      title: 'Wdrożenie Mikrodanych Schema.org w Modelu B2B',
+      description: 'Przewodnik po optymalizacji danych strukturalnych pod kątem wyszukiwarek AI oraz prezentacji firmy w wynikach rozszerzonych.',
+      date: '20 Lipca 2026',
+      image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+      category: 'BEZPIECZEŃSTWO',
+      title: 'Weryfikacja Profilu Linków i Czyszczenie Toksycznych Domen',
+      description: 'Metodyka zabezpieczania autorytetu domeny przed działaniami depozycjonującymi i spadkami widoczności po update algorytmu.',
+      date: '16 Lipca 2026',
+      image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=1200&q=80'
+    }
+  ]
+};
 
 export default function AudytSeoPage() {
   return (
@@ -146,6 +184,15 @@ export default function AudytSeoPage() {
           title="Standardy Wykonania Audytu"
           subtitle="Odkryj precyzyjny proces sprawdzania wydajności Twojej strony internetowej."
           items={auditCarouselItems}
+        />
+
+        {/* Blog-style Section specifically for Audit */}
+        <ServiceBlogGrid 
+          tag="STUDIA PRZYPADKU & INSIGHTS"
+          title="Baza Wiedzy i Analizy Audytowe"
+          subtitle="Praktyczne studia przypadków oraz techniczne opracowania z obszaru inspekcji witryn internetowych."
+          heroItem={auditBlogData.heroItem}
+          items={auditBlogData.items}
         />
 
         {/* FAQ Section - Apple Style */}

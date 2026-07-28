@@ -15,25 +15,31 @@ const webDesignCarouselItems = [
     number: '01 — WYDAJNOŚĆ',
     metric: '< 0.5s',
     title: 'Błyskawiczne Ładowanie LCP',
-    description: 'Statyczne i serwerowe renderowanie Next.js gwarantuje natychmiastowe otwieranie strony na urządzeniach mobilnych.'
+    description: 'Statyczne i serwerowe renderowanie Next.js gwarantuje natychmiastowe otwieranie strony na urządzeniach mobilnych.',
+    width: 'min(85vw, 470px)',
+    minHeight: '370px'
   },
   {
     number: '02 — UŻYTKOWNIK',
     metric: 'UX Premium',
     title: 'Intuicyjny Interfejs B2B',
-    description: 'Projektujemy makietę w oparciu o czystą symetrię, czytelną typografię oraz architekturę nastawioną na cel sprzedażowy.'
+    description: 'Projektujemy makietę w oparciu o czystą symetrię, czytelną typografię oraz architekturę nastawioną na cel sprzedażowy.',
+    width: 'min(75vw, 360px)'
   },
   {
     number: '03 — BEZPIECZEŃSTWO',
     metric: '100%',
     title: 'Architektura Headless',
-    description: 'Separacja warstwy wizualnej od bazy danych całkowicie eliminuje podatności na ataki hakerskie i awarie systemowe.'
+    description: 'Separacja warstwy wizualnej od bazy danych całkowicie eliminuje podatności na ataki hakerskie i awarie systemowe.',
+    width: 'min(80vw, 430px)',
+    minHeight: '380px'
   },
   {
     number: '04 — SEO READY',
     metric: 'Schema.org',
     title: 'Czysty Kod i Mikrodane',
-    description: 'Semantyczna struktura HTML5 pozbawiona zbędnego kodu spowalniającego gotowa na natychmiastowe pozycjonowanie.'
+    description: 'Semantyczna struktura HTML5 pozbawiona zbędnego kodu spowalniającego gotowa na natychmiastowe pozycjonowanie.',
+    width: 'min(75vw, 370px)'
   }
 ];
 

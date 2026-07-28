@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Make sure to add RESEND_API_KEY in .env.local
+// Make sure to add RESEND_API_KEY in .env.local or Vercel Environment Variables
 const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key_for_build');
 
 export async function POST(request) {
@@ -15,17 +15,15 @@ export async function POST(request) {
       );
     }
 
-    // fallback to onboarding@resend.dev if RESEND_FROM_EMAIL is not set. 
-    // Usually you need a verified domain in Resend to send from it.
+    // Default to onboarding@resend.dev if domain is not yet verified in Resend.
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
     
-    // The recipient is the business owner
-    const toEmail = process.env.RESEND_TO_EMAIL || 'kontakt@ai-seo-company.pl';
-    const recipients = toEmail === 'kontakt@ai-seo-company.pl' ? [toEmail, 'f.sliwa@ai-signals-company.pl'] : [toEmail];
+    // Default recipient to f.sliwa@ai-signals-company.pl (verified account email for Resend)
+    const toEmail = process.env.RESEND_TO_EMAIL || 'f.sliwa@ai-signals-company.pl';
 
     const { data, error } = await resend.emails.send({
       from: `AI SEO COMPANY <${fromEmail}>`,
-      to: recipients,
+      to: [toEmail],
       replyTo: email,
       subject: `[Formularz Wyceny] Nowe zapytanie od: ${name}`,
       html: `
@@ -42,7 +40,7 @@ export async function POST(request) {
     if (error) {
       console.error('Błąd z API Resend:', error);
       return NextResponse.json(
-        { error: 'Nie udało się wysłać wiadomości. Prosimy o wysłanie wiadomości bezpośrednio na adres kontakt@ai-seo-company.pl' },
+        { error: `Nie udało się wysłać wiadomości (${error.message || 'błąd API'}). Skontaktuj się bezpośrednio: f.sliwa@ai-signals-company.pl` },
         { status: 500 }
       );
     }
