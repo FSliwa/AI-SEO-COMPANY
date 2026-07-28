@@ -41,7 +41,10 @@ export async function POST(request) {
 
     if (error) {
       console.error('Błąd z API Resend:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Nie udało się wysłać wiadomości. Prosimy o wysłanie wiadomości bezpośrednio na adres kontakt@ai-seo-company.pl' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true, data });
