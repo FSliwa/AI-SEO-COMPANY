@@ -9,7 +9,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
   if (!cases || cases.length === 0) return null;
 
   return (
-    <section style={{ padding: '8rem 0', background: 'linear-gradient(to bottom, var(--color-bg-surface) 75%, #ffffff 100%)', overflow: 'hidden' }}>
+    <section style={{ padding: '8rem 0', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         <Reveal>
           <div className="section-header center" style={{ textAlign: 'center', marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
@@ -42,7 +42,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
             scrollbarWidth: 'none', 
             msOverflowStyle: 'none', 
             gap: '2rem',
-            paddingBottom: '2rem',
+            paddingTop: '1rem',
+            paddingBottom: '3.5rem',
             paddingLeft: 'calc(50vw - min(42.5vw, 600px))',
             paddingRight: 'calc(50vw - min(42.5vw, 600px))',
             scrollPaddingLeft: 'calc(50vw - min(42.5vw, 600px))'
@@ -68,7 +69,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
               key={idx} 
               style={{
                 flex: layout === 'vertical' ? (isExpanded ? '0 0 min(90vw, 800px)' : '0 0 min(85vw, 400px)') : '0 0 min(85vw, 1100px)',
-                transition: 'flex 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease',
                 minHeight: layout === 'vertical' ? '600px' : 'auto',
                 scrollSnapAlign: 'center',
                 background: '#000000', 
@@ -76,16 +77,23 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                boxShadow: layout === 'vertical' 
+                  ? '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 20px -5px rgba(0, 0, 0, 0.1)'
+                  : '0 20px 40px -10px rgba(0, 0, 0, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.06)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 position: 'relative'
               }}
             >
               {layout === 'vertical' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', padding: '2.5rem', position: 'relative', zIndex: 1, minHeight: '600px' }}>
                   {/* Full Background Image */}
-                  <div style={{ position: 'absolute', inset: 0, zIndex: -1 }}>
-                    <img src={c.image} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.9) 100%)' }} />
+                  <div style={{ position: 'absolute', inset: 0, zIndex: -1, overflow: 'hidden' }}>
+                    <img 
+                      src={c.image} 
+                      alt={c.title} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.7s ease' }} 
+                    />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.85) 100%)' }} />
                   </div>
 
                   {/* Top Text */}

@@ -94,7 +94,7 @@ const auditPortfolioCases = [
     tag: 'STRUKTURA DANYCH',
     title: 'Wdrożenie Mikrodanych Schema.org w Modelu B2B',
     description: 'Przewodnik po optymalizacji danych strukturalnych pod kątem wyszukiwarek AI.',
-    image: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
     metric: '20 Lipca',
     metricLabel: 'Data publikacji'
   },

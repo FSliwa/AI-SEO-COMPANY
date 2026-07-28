@@ -12,14 +12,16 @@ const reviewsData = [
     name: 'Michał Kowalski',
     role: 'Sektor FinTech • Zweryfikowany Partner',
     roleEn: 'FinTech Sector • Verified Partner',
+    tag: 'FINTECH B2B',
     metricBadge: '+104% Ruchu B2B',
     metricBadgeEn: '+104% Organic Traffic',
-    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
-    bgGradient: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+    image: 'https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?auto=format&fit=crop&w=800&q=80',
     leadPl: 'Pełny rebrand B2B i 104% wzrostu ruchu w 3 miesiące.',
     leadEn: 'Full B2B rebrand and 104% traffic growth in 3 months.',
     bodyPl: 'AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł błyskawicznie, a klienci zachwycają się nowoczesną estetyką.',
-    bodyEn: 'AI SEO COMPANY executed a full rebrand of our platform and web deployment. The results blew away our expectations — organic traffic skyrocketed and clients love our modern aesthetics.'
+    bodyEn: 'AI SEO COMPANY executed a full rebrand of our platform and web deployment. The results blew away our expectations — organic traffic skyrocketed and clients love our modern aesthetics.',
+    metric: '+104%',
+    metricLabel: 'Wzrost ruchu'
   },
   {
     id: 2,
@@ -27,14 +29,16 @@ const reviewsData = [
     name: 'Anna Bielska',
     role: 'Branża Gastronomiczna • Zweryfikowany Partner',
     roleEn: 'Gastronomy & E-commerce • Verified Partner',
+    tag: 'GASTRONOMIA',
     metricBadge: 'Nowa Lokalizacja & Skalowanie',
     metricBadgeEn: 'New Location & Sales Scaling',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    bgGradient: 'linear-gradient(135deg, #1E1B4B 0%, #312E81 100%)',
+    image: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80',
     leadPl: 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji.',
     leadEn: 'Building and scaling digital sales for the newly opened restaurant location.',
     bodyPl: 'Współpraca przy wdrożeniu serwisu oraz strategii cyfrowej dla nowo otwartej lokalizacji restauracji przebiegła wzorowo. Zbudowano dla nas intuicyjny portal zoptymalizowany pod konwersję i SEO, co natychmiast wygenerowało wysoki wolumen rezerwacji i wzrost przychodów.',
-    bodyEn: 'Collaborating on the digital architecture and marketing launch for our newly opened restaurant location was seamless. They built an intuitive, high-converting platform with local SEO optimization that instantly drove reservation volumes and sales growth.'
+    bodyEn: 'Collaborating on the digital architecture and marketing launch for our newly opened restaurant location was seamless. They built an intuitive, high-converting platform with local SEO optimization that instantly drove reservation volumes and sales growth.',
+    metric: '+220%',
+    metricLabel: 'Wzrost rezerwacji'
   },
   {
     id: 3,
@@ -42,14 +46,16 @@ const reviewsData = [
     name: 'Piotr Szymański',
     role: 'Branża Technologiczna B2B • Zweryfikowany Partner',
     roleEn: 'Tech B2B Sector • Verified Partner',
+    tag: 'TECH B2B',
     metricBadge: '2.8k+ Wyświetleń od 0',
     metricBadgeEn: '2.8k+ Impressions from 0',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
-    bgGradient: 'linear-gradient(135deg, #064E3B 0%, #047857 100%)',
+    image: 'https://images.unsplash.com/photo-1604076913837-52ab5f7c1ae4?auto=format&fit=crop&w=800&q=80',
     leadPl: 'Przewaga nad konkurencją na zatłoczonym rynku B2B.',
     leadEn: 'Competitive edge in a crowded B2B technology market.',
     bodyPl: 'Wyróżnienie się w branży to ogromne wyzwanie. Stworzono dla nas tożsamość, która idealnie oddaje naszą innowacyjność, zapewniając nam niesamowitą przewagę nad konkurencją.',
-    bodyEn: 'Standing out in tech is a massive challenge. AI SEO COMPANY created an identity for us that perfectly captures our innovation, giving us an incredible edge over the competition.'
+    bodyEn: 'Standing out in tech is a massive challenge. AI SEO COMPANY created an identity for us that perfectly captures our innovation, giving us an incredible edge over the competition.',
+    metric: '2.8k+',
+    metricLabel: 'Wyświetleń'
   },
   {
     id: 4,
@@ -57,14 +63,16 @@ const reviewsData = [
     name: 'Karolina Wróbel',
     role: 'Branża Medyczna • Zweryfikowany Partner',
     roleEn: 'Healthcare Sector • Verified Partner',
+    tag: 'MEDYCYNA',
     metricBadge: '100% Obłożenia Kalendarza',
     metricBadgeEn: 'Fully Booked Schedule',
-    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',
-    bgGradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 100%)',
+    image: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=800&q=80',
     leadPl: 'Przemyślana architektura treści i stały napływ pacjentów.',
     leadEn: 'Smart content architecture and steady patient acquisition.',
     bodyPl: 'Architektura treści i pozycjonowanie zaowocowały pełnym kalendarzem wizyt. Agencja nie tylko projektuje piękne strony, ale dba o to, by te strony zarabiały prawdziwe pieniądze.',
-    bodyEn: 'The content architecture and SEO positioning resulted in a fully booked calendar. The agency doesn\'t just design beautiful websites; they ensure those sites generate real revenue.'
+    bodyEn: 'The content architecture and SEO positioning resulted in a fully booked calendar. The agency doesn\'t just design beautiful websites; they ensure those sites generate real revenue.',
+    metric: '100%',
+    metricLabel: 'Obłożenia'
   },
   {
     id: 5,
@@ -72,253 +80,176 @@ const reviewsData = [
     name: 'Tomasz Nowak',
     role: 'Branża Deweloperska • Zweryfikowany Partner',
     roleEn: 'Real Estate Sector • Verified Partner',
+    tag: 'NIERUCHOMOŚCI',
     metricBadge: '+180% Leadów Ofertowych',
     metricBadgeEn: '+180% Property Inquiries',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-    bgGradient: 'linear-gradient(135deg, #7C2D12 0%, #9A3412 100%)',
+    image: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80',
     leadPl: 'Mistrzowskie UX i drastyczny wzrost zapytań ofertowych.',
     leadEn: 'Masterful UX and drastic growth in property inquiries.',
     bodyPl: 'Podejście do projektowania UX to mistrzostwo. Użytkownicy spędzają na naszej stronie o wiele więcej czasu, a zapytania ofertowe na nasze inwestycje wzrosły drastycznie.',
-    bodyEn: 'Their approach to UX design is masterful. Users spend much more time on our site, and leads for our properties have increased drastically.'
+    bodyEn: 'Their approach to UX design is masterful. Users spend much more time on our site, and leads for our properties have increased drastically.',
+    metric: '+180%',
+    metricLabel: 'Leadów'
   }
 ];
 
 export default function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState(null);
   const { lang } = useLanguage();
   const t = translations[lang].testimonials;
 
-  const handleScroll = (e) => {
-    const container = e.target;
-    const cards = container.querySelectorAll('.apple-testimonial-card');
-    if (!cards || !cards.length) return;
-
-    const containerRect = container.getBoundingClientRect();
-    const containerLeft = containerRect.left;
-
-    let closestIndex = 0;
-    let minDistance = Infinity;
-
-    cards.forEach((card, idx) => {
-      const cardRect = card.getBoundingClientRect();
-      const distance = Math.abs(cardRect.left - containerLeft);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIndex = idx;
-      }
-    });
-
-    setActiveIndex(closestIndex);
-  };
-
-  const scrollTo = (index) => {
-    const container = document.getElementById('testimonials-apple-carousel');
-    if (container) {
-      const cards = container.querySelectorAll('.apple-testimonial-card');
-      if (cards[index]) {
-        const scrollOffset = cards[index].offsetLeft - container.offsetLeft;
-        container.scrollTo({
-          left: scrollOffset,
-          behavior: 'smooth'
-        });
-        setActiveIndex(index);
-      }
-    }
-  };
-
   return (
-    <section className="testimonials" id="testimonials" style={{ background: '#F5F5F7', padding: '7rem 0', overflow: 'hidden' }}>
-      <div className="container">
-        
-        {/* Apple Intelligence Header Layout with Top-Right Nav Arrows */}
-        <Reveal className="section-header" style={{ marginBottom: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', maxWidth: '100%' }}>
-          <div style={{ maxWidth: '780px' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}>
+    <section className="testimonials" id="testimonials" style={{ padding: '8rem 0', overflow: 'hidden' }}>
+      <div className="container" style={{ maxWidth: '1440px' }}>
+        <Reveal>
+          <div className="section-header center" style={{ textAlign: 'center', marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
             </div>
-            <h2 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.12, fontWeight: 700, marginBottom: '1.25rem' }}>
-              {lang === 'pl' ? 'Doświadczenia i Rekomendacje. Efekty, które budują zaufanie' : 'Client Endorsements. Impact that builds trust'}
+            <h2 style={{ 
+              fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
+              fontWeight: 700, 
+              color: '#1D1D1F', 
+              letterSpacing: '-0.04em',
+              marginBottom: '1rem'
+            }}>
+              {lang === 'pl' ? 'Doświadczenia i Rekomendacje' : 'Client Endorsements'}
             </h2>
-            <p style={{ color: '#6E6E73', fontSize: '1.15rem', lineHeight: 1.55, fontWeight: 500, margin: 0 }}>
+            <p style={{ color: '#6E6E73', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', fontWeight: 500 }}>
               {lang === 'pl' 
-                ? 'Poznaj opinie partnerów i zobacz, jak połączenie nowoczesnego brandingu, architektury Web i zaawansowanego SEO przekłada się na realny wzrost przychodów.'
-                : 'Explore feedback from our partners and discover how custom web design, branding, and advanced SEO translate into measurable business growth.'}
+                ? 'Efekty, które budują zaufanie. Poznaj opinie partnerów i zobacz realne rezultaty.'
+                : 'Impact that builds trust. Explore feedback from our partners and see real results.'}
             </p>
-          </div>
-
-          {/* Navigation Arrows (Apple Header Style) */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem' }}>
-            <button
-              onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
-              disabled={activeIndex === 0}
-              style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '50%',
-                background: activeIndex === 0 ? 'rgba(0,0,0,0.04)' : '#E8E8ED',
-                border: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: activeIndex === 0 ? 'default' : 'pointer',
-                color: activeIndex === 0 ? '#B0B0B5' : '#1D1D1F',
-                transition: 'all 0.25s ease'
-              }}
-              aria-label="Previous slide"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6"/>
-              </svg>
-            </button>
-
-            <button
-              onClick={() => scrollTo(Math.min(reviewsData.length - 1, activeIndex + 1))}
-              disabled={activeIndex >= reviewsData.length - 1}
-              style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '50%',
-                background: activeIndex >= reviewsData.length - 1 ? 'rgba(0,0,0,0.04)' : '#E8E8ED',
-                border: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: activeIndex >= reviewsData.length - 1 ? 'default' : 'pointer',
-                color: activeIndex >= reviewsData.length - 1 ? '#B0B0B5' : '#1D1D1F',
-                transition: 'all 0.25s ease'
-              }}
-              aria-label="Next slide"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6"/>
-              </svg>
-            </button>
           </div>
         </Reveal>
       </div>
 
-      {/* Full 100vw Viewport Bleeding Carousel Container (Apple style) */}
       <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
         <RevealStagger 
-          id="testimonials-apple-carousel"
-          onScroll={handleScroll}
-          className="hide-scrollbar"
-          style={{
-            display: 'flex',
-            gap: '24px',
-            overflowX: 'auto',
-            scrollSnapType: 'x mandatory',
-            scrollBehavior: 'smooth',
-            paddingBottom: '2.5rem',
-            paddingLeft: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)',
-            paddingRight: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)',
-            scrollPaddingLeft: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)'
+          id="testimonials-carousel"
+          style={{ 
+            display: 'flex', 
+            overflowX: 'auto', 
+            scrollSnapType: 'x mandatory', 
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none', 
+            gap: '2rem',
+            paddingBottom: '2rem',
+            paddingLeft: 'calc(50vw - min(42.5vw, 600px))',
+            paddingRight: 'calc(50vw - min(42.5vw, 600px))',
+            scrollPaddingLeft: 'calc(50vw - min(42.5vw, 600px))'
           }}
         >
-            {reviewsData.map((item, idx) => (
+          <style jsx>{`
+            #testimonials-carousel::-webkit-scrollbar { display: none; }
+          `}</style>
+          
+          {reviewsData.map((item, idx) => {
+            const isExpanded = expandedIndex === idx;
+            return (
               <RevealItem 
                 key={item.id}
-                className="apple-testimonial-card"
                 style={{
-                  flex: '0 0 min(88vw, 540px)',
-                  scrollSnapAlign: 'start',
-                  background: '#FFFFFF', 
-                  borderRadius: '28px',
-                  padding: '1.5rem',
+                  flex: isExpanded ? '0 0 min(90vw, 800px)' : '0 0 min(85vw, 400px)',
+                  transition: 'flex 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                  minHeight: '600px',
+                  scrollSnapAlign: 'center',
+                  background: '#000000', 
+                  borderRadius: '36px',
+                  overflow: 'hidden',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  boxShadow: '0 12px 36px rgba(0,0,0,0.04)',
-                  border: '1px solid rgba(0,0,0,0.06)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
                   position: 'relative'
                 }}
               >
-                {/* Apple Visual Media Banner */}
-                <div style={{
-                  width: '100%',
-                  height: '220px',
-                  borderRadius: '20px',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  marginBottom: '1.75rem',
-                  background: item.bgGradient
-                }}>
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center',
-                      opacity: 0.9,
-                      filter: 'contrast(1.05)'
-                    }}
-                  />
-                  {/* Glassmorphism Result Pill Badge */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '1rem',
-                    left: '1rem',
-                    background: 'rgba(255, 255, 255, 0.92)',
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
-                    color: '#0F172A',
-                    fontSize: '0.8rem',
-                    fontWeight: 700,
-                    padding: '0.4rem 0.9rem',
-                    borderRadius: '9999px',
-                    boxShadow: '0 4px 14px rgba(0,0,0,0.12)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.4rem'
-                  }}>
-                    <span style={{ color: 'var(--color-growth)' }}>●</span>
-                    {lang === 'pl' ? item.metricBadge : item.metricBadgeEn}
+                <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', padding: '2.5rem', position: 'relative', zIndex: 1, minHeight: '600px' }}>
+                  {/* Full Background Image */}
+                  <div style={{ position: 'absolute', inset: 0, zIndex: -1 }}>
+                    <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.85) 100%)' }} />
                   </div>
-                </div>
 
-                {/* Body Content below banner — Apple inline bold lead styling */}
-                <div style={{ padding: '0 0.5rem 0.5rem 0.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  <p style={{ 
-                    fontSize: '1.08rem', 
-                    color: '#1D1D1F', 
-                    lineHeight: 1.55,
-                    letterSpacing: '-0.015em',
-                    marginBottom: '1.75rem'
-                  }}>
-                    <strong style={{ fontWeight: 700, color: '#0F172A', marginRight: '0.35rem' }}>
+                  {/* Top Text */}
+                  <div>
+                    <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF', opacity: 0.9, marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
+                      {item.tag}
+                    </div>
+                    <h3 style={{ color: '#FFFFFF', fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
                       {lang === 'pl' ? item.leadPl : item.leadEn}
-                    </strong>
-                    {lang === 'pl' ? item.bodyPl : item.bodyEn}
-                  </p>
+                    </h3>
+                  </div>
 
-                  {/* Client Signature Row */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '1.25rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-                      <div className="testimonial-avatar" style={{
-                        width: '42px', height: '42px', borderRadius: '50%', background: '#000000',
+                  {/* Expanded Content */}
+                  <div style={{ 
+                    marginTop: '2rem',
+                    opacity: isExpanded ? 1 : 0,
+                    maxHeight: isExpanded ? '400px' : 0,
+                    overflow: 'hidden',
+                    transition: 'opacity 0.4s ease, max-height 0.5s ease',
+                    color: '#FFFFFF'
+                  }}>
+                    <p style={{ fontSize: '1.05rem', lineHeight: 1.6, opacity: 0.9, maxWidth: '500px' }}>
+                      {lang === 'pl' ? item.bodyPl : item.bodyEn}
+                    </p>
+                    
+                    {/* Client Signature */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginTop: '2rem' }}>
+                      <div style={{
+                        width: '42px', height: '42px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)',
+                        backdropFilter: 'blur(10px)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 700, fontSize: '0.9rem'
                       }}>
                         {item.initials}
                       </div>
                       <div>
-                        <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1D1D1F', margin: 0, lineHeight: 1.2 }}>{item.name}</h4>
-                        <p style={{ fontSize: '0.8rem', color: '#6E6E73', margin: '2px 0 0 0' }}>
+                        <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#FFFFFF', lineHeight: 1.2 }}>{item.name}</div>
+                        <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', marginTop: '2px' }}>
                           {lang === 'pl' ? item.role : (item.roleEn || item.role)}
-                        </p>
+                        </div>
+                      </div>
+                      <div style={{ marginLeft: 'auto', color: '#F59E0B', fontSize: '0.85rem', letterSpacing: '1px' }}>
+                        ★★★★★
                       </div>
                     </div>
+                  </div>
 
-                    <div style={{ color: '#F59E0B', fontSize: '0.95rem', letterSpacing: '1px', fontWeight: 600 }}>
-                      ★★★★★
+                  {/* Bottom Content */}
+                  <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                    <div>
+                      <div style={{ fontSize: '1.1rem', color: '#FFFFFF', opacity: 0.9, fontWeight: 500, marginBottom: '0.25rem' }}>
+                        {item.metricLabel}
+                      </div>
+                      <div style={{ fontSize: '3rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>
+                        {item.metric}
+                      </div>
                     </div>
+                    
+                    {/* Plus Button */}
+                    <button 
+                      onClick={() => setExpandedIndex(isExpanded ? null : idx)}
+                      style={{ 
+                        width: '36px', height: '36px', borderRadius: '50%', 
+                        background: 'rgba(255,255,255,0.25)', 
+                        backdropFilter: 'blur(10px)',
+                        display: 'flex', justifyContent: 'center', alignItems: 'center',
+                        border: 'none', cursor: 'pointer', outline: 'none'
+                      }}
+                    >
+                      <svg 
+                        width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                        style={{ transform: isExpanded ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}
+                      >
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </RevealItem>
-            ))}
-          </RevealStagger>
-        </div>
-      </section>
-    );
+            );
+          })}
+        </RevealStagger>
+      </div>
+    </section>
+  );
 }
