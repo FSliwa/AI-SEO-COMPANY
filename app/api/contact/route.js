@@ -15,10 +15,10 @@ export async function POST(request) {
       );
     }
 
-    // Default to onboarding@resend.dev if domain is not yet verified in Resend.
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+    // Default to kontakt@ai-seo-company.pl for sending notifications.
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'kontakt@ai-seo-company.pl';
     
-    // Default recipient to f.sliwa@ai-signals-company.pl (verified account email for Resend)
+    // Default recipient to f.sliwa@ai-signals-company.pl
     const toEmail = process.env.RESEND_TO_EMAIL || 'f.sliwa@ai-signals-company.pl';
 
     const { data, error } = await resend.emails.send({
@@ -40,7 +40,7 @@ export async function POST(request) {
     if (error) {
       console.error('Błąd z API Resend:', error);
       return NextResponse.json(
-        { error: `Nie udało się wysłać wiadomości (${error.message || 'błąd API'}). Skontaktuj się bezpośrednio: f.sliwa@ai-signals-company.pl` },
+        { error: `Nie udało się wysłać wiadomości (${error.message || 'błąd API'}). Skontaktuj się bezpośrednio: kontakt@ai-seo-company.pl` },
         { status: 500 }
       );
     }
