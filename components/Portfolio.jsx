@@ -183,6 +183,11 @@ export default function Portfolio() {
           >
             <style jsx>{`
               #apple-carousel::-webkit-scrollbar { display: none; }
+              @media (max-width: 900px) {
+                .madame-thai-img-wrapper {
+                  height: 160px !important;
+                }
+              }
             `}</style>
             
             {realizedWebsites.map((item, index) => (
@@ -232,7 +237,7 @@ export default function Portfolio() {
 
                     {/* Centered 80% Width Image anchored FLUSH to bottom edge during pulse animation */}
                     <motion.div 
-                      className="portfolio-image-container"
+                      className="portfolio-image-container madame-thai-img-wrapper"
                       animate={{ scaleY: [1, 1.03, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
