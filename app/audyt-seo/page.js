@@ -91,7 +91,7 @@ const auditPortfolioCases = [
     tag: 'PROBLEM 04 — TOKSYCZNE LINKI',
     title: 'Ryzyko Filtrów Algorytmicznych',
     description: 'Wykrycie masowych przyrostów spamu i toksycznych domen odsyłających z filtrem depozycjonującym. Konieczność wdrożenia procedury Disavow Tool.',
-    image: 'https://images.unsplash.com/photo-1663937462387-6000810badb1?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1602536052359-ef94c21c5948?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #EA580C 100%)',
     metric: '0',
     metricLabel: 'Toksycznych linków',
