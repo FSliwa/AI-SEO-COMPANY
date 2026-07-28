@@ -7,7 +7,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import ServiceCarousel from '@/components/service/ServiceCarousel';
-import ServiceBlogGrid from '@/components/service/ServiceBlogGrid';
 import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
@@ -74,45 +73,40 @@ const auditPortfolioCases = [
     metricLabel: 'Nowy wskaźnik LCP',
     metric2: '0',
     metric2Label: 'Przesunięć CLS'
-  }
-];
-
-const auditBlogData = {
-  heroItem: {
-    category: 'RAPORT WYDAJNOŚCI',
+  },
+  {
+    tag: 'RAPORT WYDAJNOŚCI',
     title: 'Audyt Techniczny Core Web Vitals: Od Diagnozy do Wyniku 99/100',
     description: 'Kompleksowa analiza przypadku optymalizacji kodu JavaScript i zasobów mediów, która skróciła czas ładowania serwisu B2B o 3.4 sekundy.',
-    date: '28 Lipca 2026',
     image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=1200&q=80',
-    slug: '/blog'
+    metric: '28 Lipca',
+    metricLabel: 'Data publikacji'
   },
-  items: [
-    {
-      category: 'INDEKSACJA GOOGLE',
-      title: 'Optymalizacja Crawl Budget dla Serwisów E-commerce',
-      description: 'Jak wyeliminować pętle przekierowań i nieaktywne podstrony, aby ułatwić robotom indeksującym docieranie do produktów.',
-      date: '24 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    },
-    {
-      category: 'STRUKTURA DANYCH',
-      title: 'Wdrożenie Mikrodanych Schema.org w Modelu B2B',
-      description: 'Przewodnik po optymalizacji danych strukturalnych pod kątem wyszukiwarek AI.',
-      date: '20 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    },
-    {
-      category: 'BEZPIECZEŃSTWO',
-      title: 'Weryfikacja Profilu Linków i Czyszczenie Toksycznych Domen',
-      description: 'Metodyka zabezpieczania autorytetu domeny przed działaniami depozycjonującymi.',
-      date: '16 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    }
-  ]
-};
+  {
+    tag: 'INDEKSACJA GOOGLE',
+    title: 'Optymalizacja Crawl Budget dla Serwisów E-commerce',
+    description: 'Jak wyeliminować pętle przekierowań i nieaktywne podstrony, aby ułatwić robotom indeksującym docieranie do produktów.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+    metric: '24 Lipca',
+    metricLabel: 'Data publikacji'
+  },
+  {
+    tag: 'STRUKTURA DANYCH',
+    title: 'Wdrożenie Mikrodanych Schema.org w Modelu B2B',
+    description: 'Przewodnik po optymalizacji danych strukturalnych pod kątem wyszukiwarek AI.',
+    image: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?auto=format&fit=crop&w=1200&q=80',
+    metric: '20 Lipca',
+    metricLabel: 'Data publikacji'
+  },
+  {
+    tag: 'BEZPIECZEŃSTWO',
+    title: 'Weryfikacja Profilu Linków i Czyszczenie Toksycznych Domen',
+    description: 'Metodyka zabezpieczania autorytetu domeny przed działaniami depozycjonującymi.',
+    image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=1200&q=80',
+    metric: '16 Lipca',
+    metricLabel: 'Data publikacji'
+  }
+];
 
 export default function AudytSeoPage() {
   return (
@@ -203,17 +197,8 @@ export default function AudytSeoPage() {
         {/* Portfolio Section */}
         <SubpagePortfolio 
           title="Odkryj efekty naszych audytów" 
-          subtitle="Realne przypadki zoptymalizowanych witryn e-commerce i B2B."
+          subtitle="Realne przypadki zoptymalizowanych witryn e-commerce i B2B oraz nasza Baza Wiedzy Technicznej."
           cases={auditPortfolioCases} 
-        />
-
-        {/* Blog Grid */}
-        <ServiceBlogGrid 
-          tag="ANALIZY AUDYTOWE"
-          title="Baza Wiedzy Technicznej"
-          subtitle="Najnowsze poradniki o błędach technicznych i ich wpływie na pozycje."
-          heroItem={auditBlogData.heroItem}
-          items={auditBlogData.items}
         />
 
         {/* FAQ Section */}
