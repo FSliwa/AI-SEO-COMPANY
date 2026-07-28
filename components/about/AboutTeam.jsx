@@ -43,7 +43,7 @@ const teamData = [
     roleEn: 'Design System • Branding • Conversion',
     metricBadge: 'Maksymalizacja ROI',
     metricBadgeEn: 'ROI Maximization',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
     bgGradient: 'linear-gradient(135deg, #064E3B 0%, #047857 100%)',
     leadPl: 'Projektowanie, które sprzedaje.',
     leadEn: 'Design that sells.',
