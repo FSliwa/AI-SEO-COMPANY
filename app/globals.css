@@ -2114,3 +2114,18 @@ section {
 
 
 
+
+/* Portfolio Mobile Aware Image */
+.portfolio-mobile-aware-img {
+  width: 100%;
+  margin-top: -75px;
+  height: calc(100% + 75px);
+  object-fit: cover;
+  object-position: top;
+}
+@media (max-width: 768px) {
+  .portfolio-mobile-aware-img {
+    margin-top: 0;
+    height: 100%;
+  }
+}

@@ -24,6 +24,7 @@ const realizedWebsites = [
     layout: 'center',
     rightVisual: 'single-large',
     largeImage: '/projects/madame-thai-full.png',
+    largeImageMobile: '/images/madame-thai-mobile.png',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
 - Responsywna wersja strony (RWD): Poprawne działanie na telefonach i tabletach — eliminacja utraconych zapytań od klientów mobilnych.
@@ -251,17 +252,28 @@ export default function Portfolio() {
                         zIndex: 1
                       }}
                     >
-                      <img 
-                        src={item.largeImage} 
-                        alt={item.brandName} 
-                        style={{ 
-                          width: '100%', 
-                          marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top
-                          height: 'calc(100% + 75px)', 
-                          objectFit: 'cover', 
-                          objectPosition: 'top' 
-                        }} 
-                      />
+                      {item.largeImageMobile ? (
+                        <picture>
+                          <source srcSet={item.largeImageMobile} media="(max-width: 768px)" />
+                          <img 
+                            src={item.largeImage} 
+                            alt={item.brandName} 
+                            className="portfolio-mobile-aware-img"
+                          />
+                        </picture>
+                      ) : (
+                        <img 
+                          src={item.largeImage} 
+                          alt={item.brandName} 
+                          style={{ 
+                            width: '100%', 
+                            marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top
+                            height: 'calc(100% + 75px)', 
+                            objectFit: 'cover', 
+                            objectPosition: 'top' 
+                          }} 
+                        />
+                      )}
                     </motion.div>
                   </div>
                 ) : item.layout === 'center-reverse' ? (
