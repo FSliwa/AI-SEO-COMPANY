@@ -183,21 +183,6 @@ export default function Portfolio() {
           >
             <style jsx>{`
               #apple-carousel::-webkit-scrollbar { display: none; }
-              @media (max-width: 900px) {
-                .madame-thai-mobile-wrapper {
-                  height: 250px !important;
-                  width: 90% !important;
-                  left: 5% !important;
-                }
-                .madame-thai-mobile-img {
-                  width: 180% !important;
-                  max-width: none !important;
-                  height: auto !important;
-                  margin-left: -40% !important;
-                  margin-top: -30px !important;
-                  object-fit: cover !important;
-                }
-              }
             `}</style>
             
             {realizedWebsites.map((item, index) => (
@@ -221,7 +206,7 @@ export default function Portfolio() {
               >
                 
                 {item.layout === 'center' ? (
-                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
+                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', flex: 1, position: 'relative', width: '100%' }}>
                     {/* Top Header Text (Centered above screenshot, no button) */}
                     <div className="portfolio-text-container" style={{ maxWidth: item.id === 1 ? '720px' : '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
                       <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
@@ -281,7 +266,7 @@ export default function Portfolio() {
                     </motion.div>
                   </div>
                 ) : item.layout === 'center-reverse' ? (
-                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
+                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', flex: 1, position: 'relative', width: '100%' }}>
                     {/* Centered 80% Width Image anchored FLUSH to TOP edge during pulse animation */}
                     <motion.div 
                       className="portfolio-image-container"
