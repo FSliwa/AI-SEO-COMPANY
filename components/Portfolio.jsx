@@ -184,8 +184,18 @@ export default function Portfolio() {
             <style jsx>{`
               #apple-carousel::-webkit-scrollbar { display: none; }
               @media (max-width: 900px) {
-                .madame-thai-img-wrapper {
-                  height: 160px !important;
+                .madame-thai-mobile-wrapper {
+                  height: 250px !important;
+                  width: 90% !important;
+                  left: 5% !important;
+                }
+                .madame-thai-mobile-img {
+                  width: 180% !important;
+                  max-width: none !important;
+                  height: auto !important;
+                  margin-left: -40% !important;
+                  margin-top: -30px !important;
+                  object-fit: cover !important;
                 }
               }
             `}</style>
@@ -237,7 +247,7 @@ export default function Portfolio() {
 
                     {/* Centered 80% Width Image anchored FLUSH to bottom edge during pulse animation */}
                     <motion.div 
-                      className="portfolio-image-container madame-thai-img-wrapper"
+                      className="portfolio-image-container madame-thai-mobile-wrapper"
                       animate={{ scaleY: [1, 1.03, 1] }}
                       transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
                       style={{ 
@@ -257,11 +267,12 @@ export default function Portfolio() {
                       }}
                     >
                       <img 
+                        className="madame-thai-mobile-img"
                         src={item.largeImage} 
                         alt={item.brandName} 
                         style={{ 
                           width: '100%', 
-                          marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top
+                          marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top on desktop
                           height: 'calc(100% + 75px)', 
                           objectFit: 'cover', 
                           objectPosition: 'top' 
