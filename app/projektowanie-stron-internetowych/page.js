@@ -30,24 +30,81 @@ const faqWebDesign = [
 
 const webDesignPortfolioCases = [
   {
-    tag: 'MODEL REBRANDING & UX',
-    title: 'Model Nowoczesnej Tożsamości',
-    description: 'Minimalistyczna, budująca zaufanie architektura wizualna. Wdrożenie na Next.js obniżające czas ładowania LCP do ułamków sekund.',
-    image: 'https://images.unsplash.com/photo-1558470598-a5dda9640f6f?auto=format&fit=crop&w=800&q=80',
-    metric: '+120%',
-    metricLabel: 'Współczynnik zapytań',
-    metric2: '0.4s',
-    metric2Label: 'Czas ładowania LCP'
+    tag: 'MODEL HEADLESS ARCHITECTURE',
+    title: 'Model Headless CMS & Next.js App Router',
+    description: 'Rozdzielenie warstwy prezentacji od logiki biznesowej. Wykorzystanie Next.js React Server Components, ISR (Incremental Static Regeneration) oraz mikroserwisowego CMS dla natychmiastowego ładowania.',
+    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
+    metric: '0.3s',
+    metricLabel: 'Czas odpowiedzi (TTFB)',
+    metric2: '100/100',
+    metric2Label: 'Score Google Lighthouse'
   },
   {
-    tag: 'MODEL TECH PLATFORM',
-    title: 'Model Portalu Headless SaaS',
-    description: 'Architektura interfejsu (UX/UI) zorientowana na wydajność. System projektowy oparty na koncepcji Headless UI i kompresji zasobów.',
-    image: 'https://images.unsplash.com/photo-1618005198919-d7b1a238699f?auto=format&fit=crop&w=800&q=80',
-    metric: '100/100',
-    metricLabel: 'Core Web Vitals',
-    metric2: '-40%',
-    metric2Label: 'Spadek odrzuceń'
+    tag: 'MODEL DESIGN SYSTEM & ATOMIC',
+    title: 'System Projektowy i Architektura Atomowa',
+    description: 'Skalowalny system komponentów oparty na metodologii Atomic Design. Tworzenie spójnych tokenów projektowych (CSS variables, typografia, spacing, dark mode), eliminujące dług technologiczny.',
+    image: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
+    metric: '100%',
+    metricLabel: 'Spójność interfejsu (UI)',
+    metric2: '-60%',
+    metric2Label: 'Czas wdrażania zmian'
+  },
+  {
+    tag: 'MODEL SPEED & PERFORMANCE',
+    title: 'Optymalizacja Edge Rendering & Hydration',
+    description: 'Serwerowe renderowanie na krawędzi sieci (Vercel Edge Functions), selektywne nawadnianie komponentów (Selective Hydration) oraz bezstratna kompresja mediów w formacie AVIF/WebP.',
+    image: 'https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
+    metric: '0.4s',
+    metricLabel: 'Największe wyrenderowanie LCP',
+    metric2: '0.00',
+    metric2Label: 'Przesunięć układowych CLS'
+  },
+  {
+    tag: 'MODEL ACCESSIBILITY & A11Y',
+    title: 'Standardy Dostępności WCAG 2.1 AA & Semantic DOM',
+    description: 'Pełna zgodność ze standardami WCAG 2.1 AA i bezbłędna semantyka HTML5. Optymalizacja nawigacji klawiaturą, atrybuty ARIA i podwyższony kontrast dla czytników ekranowych.',
+    image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #EA580C 100%)',
+    metric: '100%',
+    metricLabel: 'Zgodność z WCAG 2.1 AA',
+    metric2: '100/100',
+    metric2Label: 'Wskaźnik Accessibility'
+  },
+  {
+    tag: 'MODEL ANIMATION & RIVE',
+    title: 'Interakcje WebGL, Framer Motion & Rive',
+    description: 'Immersyjne micro-interakcje z wykorzystaniem akcelerowanych sprzętowo animacji GPU, realizowane bez obciążania głównego wątku przeglądarki (Main Thread).',
+    image: 'https://images.unsplash.com/photo-1638803042985-75e160cf34c4?auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #1E293B 0%, #334155 50%, #0F172A 100%)',
+    metric: '60 FPS',
+    metricLabel: 'Płynność animacji GPU',
+    metric2: '+45%',
+    metric2Label: 'Czas spędzony na stronie'
+  },
+  {
+    tag: 'MODEL SECURITY & JAMSTACK',
+    title: 'Architektura Jamstack & Zero Trust Security',
+    description: 'Eliminacja podatności monolitów CMS (brak tradycyjnej bazy danych na froncie, serwowanie statycznych plików z CDN). Pełna ochrona przed atakami DDoS, SQL Injection oraz XSS.',
+    image: 'https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #311B92 0%, #4A148C 50%, #880E4F 100%)',
+    metric: '99.99%',
+    metricLabel: 'Dostępność Uptime',
+    metric2: 'Zero',
+    metric2Label: 'Luki w bezpieczeństwie'
+  },
+  {
+    tag: 'MODEL CRO & CONVERSION',
+    title: 'Architektura Zorientowana na Konwersję (CRO)',
+    description: 'Precyzyjnie zaprojektowane ścieżki użytkownika (User Journey), strategiczne rozmieszczenie akcentów CTA, układy F-Shape i eliminacja barier w procesie ofertowym.',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%)',
+    metric: '+120%',
+    metricLabel: 'Współczynnik zapytań (CRO)',
+    metric2: '-35%',
+    metric2Label: 'Współczynnik odrzuceń'
   }
 ];
 
