@@ -1999,12 +1999,12 @@ section {
   }
   .portfolio-image-container {
     position: absolute !important;
-    bottom: -1.5rem !important; /* align to bottom */
+    bottom: -2.25rem !important; /* must match card padding-bottom to be flush */
     top: auto !important;
     right: auto !important;
     left: 5% !important;
     width: 90% !important;
-    height: 220px !important;
+    height: 240px !important;
     transform-origin: bottom center !important;
     border-radius: 20px 20px 0 0 !important;
     box-shadow: 0 -15px 40px rgba(0,0,0,0.5) !important;
@@ -2112,21 +2112,5 @@ section {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24) !important;
 }
 
-@media (max-width: 900px) {
-  .madame-thai-mobile-wrapper {
-    height: 250px !important;
-    width: 90% !important;
-    left: 5% !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-  }
-  .madame-thai-mobile-img {
-    width: 100% !important;
-    max-width: none !important;
-    height: 350px !important;
-    margin-left: 0 !important;
-    margin-top: -50px !important;
-    object-fit: cover !important;
-    object-position: top center !important;
-  }
-}
+
+
