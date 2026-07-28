@@ -32,8 +32,8 @@ const portfolioCases = [
   {
     tag: 'B2B INDUSTRY & SEO',
     title: 'Wzrost leadów B2B o 340%',
-    description: 'Skalowanie biznesu na rynki zagraniczne (Niemcy, USA) dzięki nowej architekturze informacji i zaawansowanemu SEO. Start od zerowej widoczności na trudnym rynku inżynieryjnym.',
-    image: 'https://images.unsplash.com/photo-1664575198308-3959904fa430?auto=format&fit=crop&w=800&q=80',
+    description: 'Skalowanie biznesu na rynki zagraniczne dzięki nowej architekturze informacji i zaawansowanemu SEO. Start od zerowej widoczności na trudnym rynku inżynieryjnym.',
+    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80',
     metric: '+340%',
     metricLabel: 'Wzrost leadów',
     metric2: '2.8k+',
@@ -43,30 +43,11 @@ const portfolioCases = [
     tag: 'E-COMMERCE GROWTH',
     title: 'Dominacja w kategorii Fashion',
     description: 'Zbudowanie strategii Topic Clusters dla sklepu internetowego. Efektem była całkowita dominacja w niszy organicznej i obniżenie kosztów pozyskania klienta (CAC) o ponad połowę.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80',
     metric: '-55%',
     metricLabel: 'Koszt CAC',
     metric2: 'Top 3',
     metric2Label: 'Kluczowe kategorie'
-  }
-];
-
-const blogPostsData = [
-  {
-    date: '10 Czerwca 2026',
-    tag: 'STRATEGIA B2B',
-    title: 'Link building B2B dla marketerów',
-    description: 'Jak pozyskiwać wartościowe odnośniki dla firmy usługowej w modelu B2B.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-    slug: '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista'
-  },
-  {
-    date: '28 Lipca 2026',
-    tag: 'BUDŻET SEO',
-    title: 'Ile kosztuje SEO w Polsce?',
-    description: 'Rozkładamy na czynniki pierwsze ceny pozycjonowania. Zobacz, ile kosztuje SEO.',
-    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80',
-    slug: '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026'
   }
 ];
 
@@ -107,7 +88,7 @@ export default function PozycjonowanieStronPage() {
   return (
     <>
       <Header />
-      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
         
         {/* Hero Banner - Apple Style Minimalist */}
         <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
@@ -121,7 +102,7 @@ export default function PozycjonowanieStronPage() {
                 fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
                 fontWeight: 700, 
                 lineHeight: 1.05, 
-                color: '#1D1D1F', 
+                color: 'var(--color-text-main)', 
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
@@ -139,11 +120,8 @@ export default function PozycjonowanieStronPage() {
                 Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="#kontakt" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: '#1D1D1F', color: '#FFFFFF', padding: '1.2rem 2.5rem', borderRadius: '999px', fontSize: '1.1rem', fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s ease' }}>
+                <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
                   Zamów Wycenę
-                </a>
-                <a href="#cennik" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.05)', color: '#1D1D1F', padding: '1.2rem 2.5rem', borderRadius: '999px', fontSize: '1.1rem', fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s ease' }}>
-                  Cennik Pakietów
                 </a>
               </div>
             </Reveal>
@@ -159,10 +137,10 @@ export default function PozycjonowanieStronPage() {
         />
 
         {/* Process Section - Apple Style Minimal Grid */}
-        <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
+        <section style={{ padding: '120px 0' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
                 Jak Działamy
               </h2>
               <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
@@ -171,21 +149,21 @@ export default function PozycjonowanieStronPage() {
             </Reveal>
 
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 1</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Audyt Techniczny &amp; CWV</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 1</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Audyt Techniczny &amp; CWV</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Eliminujemy błędy indeksowania, przyspieszamy ładowanie i poprawiamy architekturę linkowania wewnętrznego.</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 2</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Content Marketing</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 2</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Content Marketing</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania.</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 3</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Link Building</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 3</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Link Building</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.</p>
               </RevealItem>
             </RevealStagger>
@@ -201,22 +179,6 @@ export default function PozycjonowanieStronPage() {
 
         {/* Pricing */}
         <Pricing />
-
-        {/* Blog / Knowledge Base */}
-        <ServiceBlogGrid 
-          tag="WIEDZA I INSPIRACJE"
-          title="Trends & Insights"
-          subtitle="Strategie pozycjonowania dla nowoczesnych wyszukiwarek"
-          heroItem={{
-            tag: 'SEO LOKALNE',
-            title: 'SEO Lokalne dla Firm w Warszawie',
-            description: 'Kompleksowy poradnik dla warszawskich firm usługowych. Dowiedz się, jak zdominować lokalne wyniki organiczne.',
-            date: '10 Lipca 2026',
-            image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80',
-            slug: '/blog/seo-lokalne-dla-firm-w-warszawie'
-          }}
-          items={blogPostsData}
-        />
 
         {/* FAQ */}
         <AppleFaq faqData={faqData} title="Najczęstsze pytania" />

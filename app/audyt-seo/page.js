@@ -59,7 +59,7 @@ const auditPortfolioCases = [
     tag: 'TECHNICAL E-COMMERCE',
     title: 'Naprawa indeksacji dużego sklepu',
     description: 'Znaleźliśmy i usunęliśmy ponad 20 tysięcy zduplikowanych i pustych adresów URL, które konsumowały Crawl Budget. Wynikiem był błyskawiczny powrót sklepu do Top 10 Google na kluczowe kategorie.',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80',
     metric: '-95%',
     metricLabel: 'Błędów 404/500',
     metric2: '+45%',
@@ -69,7 +69,7 @@ const auditPortfolioCases = [
     tag: 'CORE WEB VITALS',
     title: 'Optymalizacja LCP i CLS w portalu B2B',
     description: 'Portal tracił użytkowników mobilnych przez bardzo wolne ładowanie wynoszące 8 sekund. Przebudowaliśmy architekturę zasobów i wdrożyliśmy nowoczesne mechanizmy buforowania.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80',
     metric: '1.2s',
     metricLabel: 'Nowy wskaźnik LCP',
     metric2: '0',
@@ -77,48 +77,11 @@ const auditPortfolioCases = [
   }
 ];
 
-const auditBlogData = {
-  heroItem: {
-    category: 'RAPORT WYDAJNOŚCI',
-    title: 'Audyt Techniczny Core Web Vitals: Od Diagnozy do Wyniku 99/100',
-    description: 'Kompleksowa analiza przypadku optymalizacji kodu JavaScript i zasobów mediów, która skróciła czas ładowania serwisu B2B o 3.4 sekundy.',
-    date: '28 Lipca 2026',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-    slug: '/blog'
-  },
-  items: [
-    {
-      category: 'INDEKSACJA GOOGLE',
-      title: 'Optymalizacja Crawl Budget dla Serwisów E-commerce',
-      description: 'Jak wyeliminować pętle przekierowań i nieaktywne podstrony, aby ułatwić robotom indeksującym docieranie do produktów.',
-      date: '24 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    },
-    {
-      category: 'STRUKTURA DANYCH',
-      title: 'Wdrożenie Mikrodanych Schema.org w Modelu B2B',
-      description: 'Przewodnik po optymalizacji danych strukturalnych pod kątem wyszukiwarek AI.',
-      date: '20 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    },
-    {
-      category: 'BEZPIECZEŃSTWO',
-      title: 'Weryfikacja Profilu Linków i Czyszczenie Toksycznych Domen',
-      description: 'Metodyka zabezpieczania autorytetu domeny przed działaniami depozycjonującymi.',
-      date: '16 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    }
-  ]
-};
-
 export default function AudytSeoPage() {
   return (
     <>
       <Header />
-      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
         
         {/* Hero Banner - Apple Style */}
         <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
@@ -132,7 +95,7 @@ export default function AudytSeoPage() {
                 fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
                 fontWeight: 700, 
                 lineHeight: 1.05, 
-                color: '#1D1D1F', 
+                color: 'var(--color-text-main)', 
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
@@ -150,7 +113,7 @@ export default function AudytSeoPage() {
                 Odkryj prawdziwe przyczyny braku widoczności w Google i odblokuj pełny potencjał sprzedażowy serwisu. Weryfikujemy ponad 50 krytycznych elementów algorytmu.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <a href="#kontakt" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: '#1D1D1F', color: '#FFFFFF', padding: '1.2rem 2.5rem', borderRadius: '999px', fontSize: '1.1rem', fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s ease' }}>
+                <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
                   Zamów Audyt Strony
                 </a>
               </div>
@@ -167,10 +130,10 @@ export default function AudytSeoPage() {
         />
 
         {/* Feature Grid Section - Apple Bento Grid Style */}
-        <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
+        <section style={{ padding: '120px 0' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
                 Obszary Analizy Technicznej
               </h2>
               <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
@@ -179,21 +142,21 @@ export default function AudytSeoPage() {
             </Reveal>
 
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 1</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Technikalia &amp; CWV</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 1</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Technikalia &amp; CWV</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 2</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Architektura Treści</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 2</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Architektura Treści</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Badanie struktury nagłówków, architektury informacji, thin contentu oraz eliminowanie kanibalizacji słów kluczowych.</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 3</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Profil Linków &amp; Autorytet</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 3</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Profil Linków &amp; Autorytet</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.</p>
               </RevealItem>
             </RevealStagger>
@@ -205,15 +168,6 @@ export default function AudytSeoPage() {
           title="Odkryj efekty naszych audytów" 
           subtitle="Realne przypadki zoptymalizowanych witryn e-commerce i B2B."
           cases={auditPortfolioCases} 
-        />
-
-        {/* Blog Grid */}
-        <ServiceBlogGrid 
-          tag="ANALIZY AUDYTOWE"
-          title="Baza Wiedzy Technicznej"
-          subtitle="Najnowsze poradniki o błędach technicznych i ich wpływie na pozycje."
-          heroItem={auditBlogData.heroItem}
-          items={auditBlogData.items}
         />
 
         {/* FAQ Section */}

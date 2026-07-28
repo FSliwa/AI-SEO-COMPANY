@@ -28,7 +28,7 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
   };
 
   return (
-    <section style={{ padding: '80px 0 100px 0', backgroundColor: '#F5F5F7', overflow: 'hidden', position: 'relative' }}>
+    <section style={{ padding: '80px 0 100px 0', overflow: 'hidden', position: 'relative' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         {/* Header with Navigation Controls */}
         <div style={{ 

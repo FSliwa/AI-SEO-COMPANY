@@ -2,22 +2,14 @@
 
 import { useLanguage } from '@/lib/LanguageContext';
 import { blogPosts } from '@/lib/blogPosts';
-import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import Link from 'next/link';
 
-export default function BlogGrid() {
+export default function BlogLibrary() {
   const { lang } = useLanguage();
 
   // Sort all posts by date (newest first)
   const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  // Display only 4 posts (1 hero + 3 grid) on the main blog page
-  const displayPosts = sortedPosts.slice(0, 4);
-
-  // The newest post is the hero
-  const heroPost = displayPosts[0];
-  // The rest are standard grid items
-  const gridPosts = displayPosts.slice(1);
 
   const getPostData = (p) => ({
     date: lang === 'pl' ? p.displayDatePl : p.displayDateEn,
@@ -25,89 +17,26 @@ export default function BlogGrid() {
     title: lang === 'pl' ? p.titlePl : p.titleEn,
     slug: p.slug,
     image: p.image,
-    heroImage: p.heroImage || p.image,
   });
 
-  if (!heroPost) return null;
-  const heroData = getPostData(heroPost);
-
   return (
-    <section className="blog-grid" style={{ padding: '4rem 0', backgroundColor: '#F5F5F7' }}>
+    <section className="blog-grid" style={{ padding: '8rem 0 4rem 0', backgroundColor: 'var(--color-bg-surface)' }}>
       <div className="container" style={{ margin: '0 auto' }}>
         <Reveal>
-          <h2 style={{ 
-            fontSize: '2rem', 
-            fontWeight: 700, 
-            color: '#1D1D1F', 
-            marginBottom: '2rem',
-            textAlign: 'left'
-          }}>
-            {lang === 'pl' ? 'Najnowsze Artykuły' : 'Latest News'}
-          </h2>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <Link href={heroData.slug} style={{ textDecoration: 'none' }}>
-            <div className="hero-card" style={{ 
-              display: 'flex', 
-              flexDirection: 'column', 
-              backgroundColor: '#FFFFFF', 
-              borderRadius: '24px', 
-              overflow: 'hidden',
-              marginBottom: '2rem',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.04)',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              cursor: 'pointer'
+          <div style={{ marginBottom: '4rem', textAlign: 'center' }}>
+            <h1 style={{ 
+              fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', 
+              fontWeight: 700, 
+              color: '#1D1D1F', 
+              letterSpacing: '-0.04em',
+              marginBottom: '1rem'
             }}>
-              {/* Desktop: side-by-side, Mobile: stack */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', width: '100%' }}>
-                
-                <div style={{ 
-                  height: '100%', 
-                  minHeight: '350px',
-                  backgroundImage: `url(${heroData.heroImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }} />
-                
-                <div style={{ 
-                  padding: 'clamp(2rem, 5vw, 4rem)', 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  justifyContent: 'center' 
-                }}>
-                  <span style={{ 
-                    fontSize: '0.75rem', 
-                    fontWeight: 600, 
-                    color: '#86868B', 
-                    textTransform: 'uppercase', 
-                    letterSpacing: '0.05em',
-                    marginBottom: '1rem',
-                    display: 'block'
-                  }}>
-                    {heroData.tag}
-                  </span>
-                  <h3 style={{ 
-                    fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
-                    fontWeight: 700, 
-                    color: '#1D1D1F', 
-                    lineHeight: 1.1,
-                    marginBottom: '1.5rem',
-                    letterSpacing: '-0.02em'
-                  }}>
-                    {heroData.title}
-                  </h3>
-                  <span style={{ 
-                    fontSize: '0.9rem', 
-                    color: '#86868B',
-                    fontWeight: 500
-                  }}>
-                    {heroData.date}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Link>
+              {lang === 'pl' ? 'Biblioteka Artykułów' : 'Articles Library'}
+            </h1>
+            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+              {lang === 'pl' ? 'Wszystkie publikacje naszego zespołu w jednym miejscu.' : 'All publications from our team in one place.'}
+            </p>
+          </div>
         </Reveal>
 
         <RevealStagger style={{ 
@@ -115,7 +44,7 @@ export default function BlogGrid() {
           gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
           gap: '2rem' 
         }}>
-          {gridPosts.map((post, idx) => {
+          {sortedPosts.map((post, idx) => {
             const data = getPostData(post);
             return (
               <RevealItem key={idx}>
@@ -176,12 +105,12 @@ export default function BlogGrid() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <Link href="/blog/biblioteka" style={{ 
+          <Link href="/blog" style={{ 
             display: 'inline-flex', 
             alignItems: 'center', 
             justifyContent: 'center', 
-            background: '#1D1D1F', 
-            color: '#FFFFFF', 
+            background: 'rgba(0,0,0,0.05)', 
+            color: '#1D1D1F', 
             padding: '1.2rem 2.5rem', 
             borderRadius: '999px', 
             fontSize: '1.1rem', 
@@ -189,17 +118,10 @@ export default function BlogGrid() {
             textDecoration: 'none', 
             transition: 'all 0.3s ease' 
           }}>
-            Pełna biblioteka artykułów
+            Wróć na stronę główną bloga
           </Link>
         </RevealItem>
       </div>
-
-      <style jsx>{`
-        .hero-card:hover, .grid-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
-        }
-      `}</style>
     </section>
   );
 }

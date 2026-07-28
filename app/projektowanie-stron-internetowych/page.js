@@ -33,7 +33,7 @@ const webDesignPortfolioCases = [
     tag: 'REBRANDING & UX',
     title: 'Nowa tożsamość wizualna kancelarii',
     description: 'Zaprojektowaliśmy minimalistyczną, budującą zaufanie stronę dla wiodącej kancelarii prawniczej. Wdrożenie na Next.js obniżyło czas ładowania i zwiększyło współczynnik interakcji.',
-    image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80',
     metric: '+120%',
     metricLabel: 'Współczynnik zapytań',
     metric2: '0.4s',
@@ -43,50 +43,13 @@ const webDesignPortfolioCases = [
     tag: 'B2B TECH PLATFORM',
     title: 'Portal technologiczny SaaS',
     description: 'Całkowita przebudowa interfejsu (UX/UI) dla firmy z branży oprogramowania medycznego. Stworzyliśmy system projektowy oparty na architekturze headless.',
-    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80',
     metric: '100/100',
     metricLabel: 'Core Web Vitals',
     metric2: '-40%',
     metric2Label: 'Odrzuceń'
   }
 ];
-
-const webDesignBlogData = {
-  heroItem: {
-    category: 'ARCHITEKTURA HEADLESS',
-    title: 'Dlaczego korporacje przechodzą z WordPress na Next.js?',
-    description: 'Analiza kosztów utrzymania, bezpieczeństwa i szybkości. Dowiedz się, dlaczego Headless CMS to przyszłość profesjonalnego web designu w modelu B2B.',
-    date: '28 Lipca 2026',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
-    slug: '/blog'
-  },
-  items: [
-    {
-      category: 'UX / UI DESIGN',
-      title: 'Zasady symetrii w budowaniu konwersji na stronach usługowych',
-      description: 'Jak subtelne mikrozmiany w układzie wizualnym potrafią podnieść współczynnik zapytań o kilkadziesiąt procent.',
-      date: '24 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    },
-    {
-      category: 'OPTYMALIZACJA MOBILNA',
-      title: 'Mobile First Indexing: Co projektanci stron robią źle',
-      description: 'Przegląd najczęstszych błędów w wersjach responsywnych, które blokują pozycjonowanie Twojej strony.',
-      date: '20 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    },
-    {
-      category: 'BRANDING',
-      title: 'Czy kolor ma znaczenie w procesie decyzyjnym B2B?',
-      description: 'Psychologia kolorów w interfejsach biznesowych i ich bezpośredni wpływ na odczucie prestiżu oraz zaufanie.',
-      date: '16 Lipca 2026',
-      image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80',
-      slug: '/blog'
-    }
-  ]
-};
 
 const webDesignCarouselItems = [
   {
@@ -125,7 +88,7 @@ export default function ProjektowanieStronPage() {
   return (
     <>
       <Header />
-      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
         
         {/* Hero Banner - Apple Style */}
         <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
@@ -139,7 +102,7 @@ export default function ProjektowanieStronPage() {
                 fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
                 fontWeight: 700, 
                 lineHeight: 1.05, 
-                color: '#1D1D1F', 
+                color: 'var(--color-text-main)', 
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
@@ -157,7 +120,7 @@ export default function ProjektowanieStronPage() {
                 Tworzymy błyskawiczne i piękne witryny w technologii Next.js. Budujemy wizerunek marek B2B, który zachwyca estetów i sprzedaje bez kompromisów.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="#kontakt" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: '#1D1D1F', color: '#FFFFFF', padding: '1.2rem 2.5rem', borderRadius: '999px', fontSize: '1.1rem', fontWeight: 600, textDecoration: 'none', transition: 'all 0.3s ease' }}>
+                <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
                   Wyceń Projekt
                 </a>
               </div>
@@ -174,10 +137,10 @@ export default function ProjektowanieStronPage() {
         />
 
         {/* Standards Section - Apple Bento Grid Style */}
-        <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
+        <section style={{ padding: '120px 0' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
                 Standardy Inżynierii Web
               </h2>
               <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
@@ -186,21 +149,21 @@ export default function ProjektowanieStronPage() {
             </Reveal>
 
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>FILAR 1</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Technologia Next.js</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>FILAR 1</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Technologia Next.js</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Architektura serwerowa (SSR) i statyczna (SSG) zapewniająca natychmiastowe ładowanie, idealna dla perfekcyjnych wyników Core Web Vitals i pozycjonowania.</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>FILAR 2</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>High-End UX/UI</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>FILAR 2</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>High-End UX/UI</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Minimalistyczne interfejsy zaprojektowane z myślą o użytkowniku końcowym i maksymalizacji sprzedaży B2B. Wykorzystujemy zasady symetrii.</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>FILAR 3</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>SEO Ready</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>FILAR 3</div>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>SEO Ready</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Zoptymalizowana struktura semantyczna HTML5 i danych strukturalnych (Schema.org), gotowa na wdrożenie zaawansowanych kampanii od pierwszego dnia.</p>
               </RevealItem>
             </RevealStagger>
@@ -208,13 +171,13 @@ export default function ProjektowanieStronPage() {
         </section>
 
         {/* Process Section */}
-        <section style={{ padding: '0 0 120px 0', backgroundColor: '#FFFFFF' }}>
+        <section style={{ padding: '0 0 120px 0' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 KROKI PROJEKTOWE
               </div>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
                 Od Koncepcji do Kodowania
               </h2>
               <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
@@ -223,12 +186,12 @@ export default function ProjektowanieStronPage() {
             </Reveal>
 
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Figma Design &amp; Makiety</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Figma Design &amp; Makiety</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Projektowanie unikalnego wireframe'u oraz interaktywnych makiet UX w programie Figma z pełnym uwzględnieniem identyfikacji wizualnej marki.</p>
               </RevealItem>
-              <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wdrożenie Kodowe &amp; CRO</h3>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wdrożenie Kodowe &amp; CRO</h3>
                 <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Kodowanie czystego, semantycznego komponentu w Next.js oraz przetestowanie ścieżek konwersji klienta pod kątem najwyższego wskaźnika CTR.</p>
               </RevealItem>
             </RevealStagger>
@@ -244,15 +207,6 @@ export default function ProjektowanieStronPage() {
 
         {/* Pricing */}
         <Pricing />
-
-        {/* Blog Grid */}
-        <ServiceBlogGrid 
-          tag="TRENDS & INSIGHTS"
-          title="Wiedza o Projektowaniu"
-          subtitle="Dowiedz się, jak budować zaufanie marki i sprzedawać w świecie cyfrowym."
-          heroItem={webDesignBlogData.heroItem}
-          items={webDesignBlogData.items}
-        />
 
         {/* FAQ Section */}
         <AppleFaq faqData={faqWebDesign} title="Najczęstsze pytania" />

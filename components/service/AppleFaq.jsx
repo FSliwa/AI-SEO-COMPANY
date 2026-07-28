@@ -12,7 +12,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
   };
 
   return (
-    <section style={{ backgroundColor: '#FFFFFF', padding: '6rem 0', borderTop: '1px solid #E5E5EA' }}>
+    <section style={{ padding: '6rem 0' }}>
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
         <Reveal>
           <h2 style={{ 
