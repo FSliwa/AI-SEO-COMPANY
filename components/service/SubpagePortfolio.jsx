@@ -26,7 +26,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
     <section style={{ padding: '8rem 0', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         <Reveal>
-          <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '4rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '4rem', width: '100%' }}>
             <div style={{ maxWidth: '780px' }}>
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
                 <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> NASZE REALIZACJE
@@ -36,34 +36,34 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                 fontWeight: 700, 
                 color: '#1D1D1F', 
                 letterSpacing: '-0.04em',
-                marginBottom: '1rem'
+                marginBottom: '1rem',
+                lineHeight: 1.15
               }}>
                 {title}
               </h2>
-              <p style={{ color: '#6E6E73', fontSize: '1.25rem', margin: 0, fontWeight: 500 }}>
+              <p style={{ color: '#6E6E73', fontSize: '1.25rem', margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
                 {subtitle}
               </p>
             </div>
 
-            {/* Navigation Arrows */}
-            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginBottom: '0.5rem' }}>
+            {/* Navigation Arrows (Apple Circular Style matching WhyUs) */}
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexShrink: 0, marginBottom: '0.5rem' }}>
               <button 
                 onClick={scrollPrev}
                 style={{
-                  width: '44px',
-                  height: '44px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '50%',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(0,0,0,0.08)',
+                  background: '#E8E8ED',
+                  border: 'none',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#F5F5F7'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#FFFFFF'}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
                 aria-label="Poprzedni slajd"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -74,20 +74,19 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
               <button 
                 onClick={scrollNext}
                 style={{
-                  width: '44px',
-                  height: '44px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '50%',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(0,0,0,0.08)',
+                  background: '#E8E8ED',
+                  border: 'none',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#F5F5F7'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#FFFFFF'}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
                 aria-label="Następny slajd"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
