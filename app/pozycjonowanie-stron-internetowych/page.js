@@ -33,7 +33,7 @@ const portfolioCases = [
     tag: 'MODEL B2B & SEO',
     title: 'Model Skalowania Leadów B2B',
     description: 'Strategiczna architektura informacji dla branż inżynieryjnych i technicznych. Model budowania wysokiej autorytatywności domeny od podstaw.',
-    image: 'https://images.unsplash.com/photo-1685656440548-d8cad874d5d8?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1693648793394-0b76b7eb042e?auto=format&fit=crop&w=800&q=80',
     metric: '+362%',
     metricLabel: 'Wzrost leadów organicznych',
     metric2: '+520%',

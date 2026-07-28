@@ -49,7 +49,7 @@ const reviewsData = [
     tag: 'TECH B2B',
     metricBadge: '2.8k+ Wyświetleń od 0',
     metricBadgeEn: '2.8k+ Impressions from 0',
-    image: 'https://images.unsplash.com/photo-1604076913837-52ab5f7c1ae4?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1462556791646-c201b8241a94?auto=format&fit=crop&w=800&q=80',
     leadPl: 'Przewaga nad konkurencją na zatłoczonym rynku B2B.',
     leadEn: 'Competitive edge in a crowded B2B technology market.',
     bodyPl: 'Wyróżnienie się w branży to ogromne wyzwanie. Stworzono dla nas tożsamość, która idealnie oddaje naszą innowacyjność, zapewniając nam niesamowitą przewagę nad konkurencją.',
