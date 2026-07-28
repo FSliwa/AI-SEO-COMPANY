@@ -203,6 +203,7 @@ export default function ProjektowanieStronPage() {
           title="Odkryj nowości naszych klientów" 
           subtitle="Projekty łączące niesamowitą estetykę z maksymalizacją zapytań."
           cases={webDesignPortfolioCases} 
+          layout="vertical"
         />
 
         {/* Pricing */}

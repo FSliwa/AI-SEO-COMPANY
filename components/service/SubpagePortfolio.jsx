@@ -2,7 +2,7 @@
 
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
-export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [] }) {
+export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [], layout = "horizontal" }) {
   if (!cases || cases.length === 0) return null;
 
   return (
@@ -62,71 +62,117 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
             <RevealItem 
               key={idx} 
               style={{
-                flex: '0 0 min(85vw, 1100px)',
+                flex: layout === 'vertical' ? '0 0 min(85vw, 400px)' : '0 0 min(85vw, 1100px)',
+                minHeight: layout === 'vertical' ? '600px' : 'auto',
                 scrollSnapAlign: 'center',
                 background: '#000000', 
                 borderRadius: '36px',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
+                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                position: 'relative'
               }}
             >
-              <div className="portfolio-card-inner" style={{ display: 'flex', width: '100%', height: '100%' }}>
-                {/* Content Side */}
-                <div style={{ flex: '1', padding: '4rem 3.5rem', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem' }}>
-                    <div style={{ 
-                      color: 'var(--color-primary)', 
-                      fontSize: '0.85rem', 
-                      fontWeight: 700, 
-                      letterSpacing: '0.05em',
-                      textTransform: 'uppercase'
-                    }}>
+              {layout === 'vertical' ? (
+                <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', padding: '2.5rem', position: 'relative', zIndex: 1, minHeight: '600px' }}>
+                  {/* Full Background Image */}
+                  <div style={{ position: 'absolute', inset: 0, zIndex: -1 }}>
+                    <img src={c.image} alt={c.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 100%)' }} />
+                  </div>
+
+                  {/* Top Text */}
+                  <div>
+                    <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF', opacity: 0.9, marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
                       {c.tag}
                     </div>
-                    <div style={{ 
-                      color: '#FFFFFF', 
-                      fontSize: '5rem', 
-                      fontWeight: 700, 
-                      opacity: 0.1, 
-                      lineHeight: 0.8,
-                      fontFamily: "'Space Grotesk', sans-serif"
-                    }}>
-                      0{idx + 1}
-                    </div>
+                    <h3 style={{ color: '#FFFFFF', fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                      {c.title}
+                    </h3>
                   </div>
-                  
-                  <h3 style={{ color: '#FFFFFF', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 600, letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
-                    {c.title}
-                  </h3>
-                  <p style={{ color: '#86868B', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px', flex: 1 }}>
-                    {c.description}
-                  </p>
-                  
-                  <div style={{ display: 'flex', gap: '3rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem' }}>
+
+                  {/* Bottom Content */}
+                  <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                     <div>
-                      <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric}</div>
-                      <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>{c.metricLabel}</div>
-                    </div>
-                    {c.metric2 && (
-                      <div>
-                        <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric2}</div>
-                        <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>{c.metric2Label}</div>
+                      <div style={{ fontSize: '1.1rem', color: '#FFFFFF', opacity: 0.9, fontWeight: 500, marginBottom: '0.25rem' }}>
+                        {c.metricLabel}
                       </div>
-                    )}
+                      <div style={{ fontSize: '3rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>
+                        {c.metric}
+                      </div>
+                    </div>
+                    
+                    {/* Plus Button */}
+                    <div style={{ 
+                      width: '36px', height: '36px', borderRadius: '50%', 
+                      background: 'rgba(255,255,255,0.25)', 
+                      backdropFilter: 'blur(10px)',
+                      display: 'flex', justifyContent: 'center', alignItems: 'center' 
+                    }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-                
-                {/* Image Side */}
-                <div className="portfolio-image-wrapper" style={{ width: '45%', position: 'relative', overflow: 'hidden' }}>
-                  <img 
-                    src={c.image} 
-                    alt={c.title} 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
+              ) : (
+                <div className="portfolio-card-inner" style={{ display: 'flex', width: '100%', height: '100%' }}>
+                  {/* Content Side */}
+                  <div style={{ flex: '1', padding: '4rem 3.5rem', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem' }}>
+                      <div style={{ 
+                        color: 'var(--color-primary)', 
+                        fontSize: '0.85rem', 
+                        fontWeight: 700, 
+                        letterSpacing: '0.05em',
+                        textTransform: 'uppercase'
+                      }}>
+                        {c.tag}
+                      </div>
+                      <div style={{ 
+                        color: '#FFFFFF', 
+                        fontSize: '5rem', 
+                        fontWeight: 700, 
+                        opacity: 0.1, 
+                        lineHeight: 0.8,
+                        fontFamily: "'Space Grotesk', sans-serif"
+                      }}>
+                        0{idx + 1}
+                      </div>
+                    </div>
+                    
+                    <h3 style={{ color: '#FFFFFF', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 600, letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
+                      {c.title}
+                    </h3>
+                    <p style={{ color: '#86868B', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px', flex: 1 }}>
+                      {c.description}
+                    </p>
+                    
+                    <div style={{ display: 'flex', gap: '3rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem' }}>
+                      <div>
+                        <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric}</div>
+                        <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>{c.metricLabel}</div>
+                      </div>
+                      {c.metric2 && (
+                        <div>
+                          <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric2}</div>
+                          <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>{c.metric2Label}</div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* Image Side */}
+                  <div className="portfolio-image-wrapper" style={{ width: '45%', position: 'relative', overflow: 'hidden' }}>
+                    <img 
+                      src={c.image} 
+                      alt={c.title} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  </div>
                 </div>
-              </div>
+              )}
             </RevealItem>
           ))}
         </RevealStagger>

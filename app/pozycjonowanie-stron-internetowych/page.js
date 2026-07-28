@@ -175,6 +175,7 @@ export default function PozycjonowanieStronPage() {
           title="Odkryj nowości naszych klientów" 
           subtitle="Sukcesy organiczne w konkurencyjnych branżach"
           cases={portfolioCases} 
+          layout="vertical"
         />
 
         {/* Pricing */}
