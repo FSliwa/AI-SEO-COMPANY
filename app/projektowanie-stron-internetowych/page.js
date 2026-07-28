@@ -30,9 +30,9 @@ const faqWebDesign = [
 
 const webDesignPortfolioCases = [
   {
-    tag: 'REBRANDING & UX',
-    title: 'Nowa tożsamość wizualna kancelarii',
-    description: 'Zaprojektowaliśmy minimalistyczną, budującą zaufanie stronę dla wiodącej kancelarii prawniczej. Wdrożenie na Next.js obniżyło czas ładowania i zwiększyło współczynnik interakcji.',
+    tag: 'MODEL REBRANDING & UX',
+    title: 'Model Nowoczesnej Tożsamości',
+    description: 'Minimalistyczna, budująca zaufanie architektura wizualna. Wdrożenie na Next.js obniżające czas ładowania LCP do ułamków sekund.',
     image: 'https://images.unsplash.com/photo-1558470598-a5dda9640f6f?auto=format&fit=crop&w=800&q=80',
     metric: '+120%',
     metricLabel: 'Współczynnik zapytań',
@@ -40,14 +40,14 @@ const webDesignPortfolioCases = [
     metric2Label: 'Czas ładowania LCP'
   },
   {
-    tag: 'B2B TECH PLATFORM',
-    title: 'Portal technologiczny SaaS',
-    description: 'Całkowita przebudowa interfejsu (UX/UI) dla firmy z branży oprogramowania medycznego. Stworzyliśmy system projektowy oparty na architekturze headless.',
+    tag: 'MODEL TECH PLATFORM',
+    title: 'Model Portalu Headless SaaS',
+    description: 'Architektura interfejsu (UX/UI) zorientowana na wydajność. System projektowy oparty na koncepcji Headless UI i kompresji zasobów.',
     image: 'https://images.unsplash.com/photo-1618005198919-d7b1a238699f?auto=format&fit=crop&w=800&q=80',
     metric: '100/100',
     metricLabel: 'Core Web Vitals',
     metric2: '-40%',
-    metric2Label: 'Odrzuceń'
+    metric2Label: 'Spadek odrzuceń'
   }
 ];
 
@@ -200,8 +200,8 @@ export default function ProjektowanieStronPage() {
 
         {/* Portfolio Section */}
         <SubpagePortfolio 
-          title="Odkryj nowości naszych klientów" 
-          subtitle="Projekty łączące niesamowitą estetykę z maksymalizacją zapytań."
+          title="Standardy Architektury Web Design" 
+          subtitle="Nowoczesne wzorce projektowe łączące estetykę z maksymalizacją zapytań"
           cases={webDesignPortfolioCases} 
           layout="vertical"
         />

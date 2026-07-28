@@ -204,11 +204,11 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   </div>
                   
                   {/* Image Side */}
-                  <div className="portfolio-image-wrapper" style={{ width: '45%', position: 'relative', overflow: 'hidden' }}>
+                  <div className="portfolio-image-wrapper" style={{ width: '45%', position: 'relative', overflow: 'hidden', background: '#111113' }}>
                     <img 
                       src={c.image} 
-                      alt={c.title} 
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      alt="" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                     />
                   </div>
                 </div>

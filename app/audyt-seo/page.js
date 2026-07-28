@@ -55,56 +55,64 @@ const auditCarouselItems = [
 
 const auditPortfolioCases = [
   {
-    tag: 'TECHNICAL E-COMMERCE',
-    title: 'Naprawa indeksacji dużego sklepu',
-    description: 'Znaleźliśmy i usunęliśmy ponad 20 tysięcy zduplikowanych i pustych adresów URL, które konsumowały Crawl Budget. Wynikiem był błyskawiczny powrót sklepu do Top 10 Google na kluczowe kategorie.',
+    tag: 'PROBLEM 01 — INDEKSACJA',
+    title: 'Wyciek Crawl Budget i Błędy 404',
+    description: 'Wykryto ponad 20 000 zduplikowanych adresów URL oraz pętli przekierowań konsumujących budżet indeksowania. Eliminuje to kluczowe produkty z wyników wyszukiwania.',
     image: 'https://images.unsplash.com/photo-1550684848-722ebb602b9f?auto=format&fit=crop&w=800&q=80',
     metric: '-95%',
-    metricLabel: 'Błędów 404/500',
+    metricLabel: 'Redukcja błędów',
     metric2: '+45%',
-    metric2Label: 'Zaindeksowanych podstron'
+    metric2Label: 'Zaindeksowanych stron'
   },
   {
-    tag: 'CORE WEB VITALS',
-    title: 'Optymalizacja LCP i CLS w portalu B2B',
-    description: 'Portal tracił użytkowników mobilnych przez bardzo wolne ładowanie wynoszące 8 sekund. Przebudowaliśmy architekturę zasobów i wdrożyliśmy nowoczesne mechanizmy buforowania.',
+    tag: 'PROBLEM 02 — SPEED & CWV',
+    title: 'Wolne Ładowanie LCP (8.2s)',
+    description: 'Zablokowany wątek główny przez niezoptymalizowany JavaScript oraz brak kompresji obrazów Next-Gen, powodujący ucieczkę 60% użytkowników mobilnych.',
     image: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80',
     metric: '1.2s',
-    metricLabel: 'Nowy wskaźnik LCP',
-    metric2: '0',
+    metricLabel: 'Docelowy czas LCP',
+    metric2: '0.00',
     metric2Label: 'Przesunięć CLS'
   },
   {
-    tag: 'RAPORT WYDAJNOŚCI',
-    title: 'Audyt Techniczny Core Web Vitals: Od Diagnozy do Wyniku 99/100',
-    description: 'Kompleksowa analiza przypadku optymalizacji kodu JavaScript i zasobów mediów, która skróciła czas ładowania serwisu B2B o 3.4 sekundy.',
+    tag: 'PROBLEM 03 — DANE STRUKTURALNE',
+    title: 'Brak Mikrodanych Schema.org',
+    description: 'Brak oznaczeń semantycznych dla wyszukiwarek AI i Google (Rich Snippets), uniemożliwiający wyświetlanie ocen, cen i dostępności w wynikach Search.',
     image: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?auto=format&fit=crop&w=1200&q=80',
-    metric: '28 Lipca',
-    metricLabel: 'Data publikacji'
+    metric: '100%',
+    metricLabel: 'Pokrycia Schema',
+    metric2: '+35%',
+    metric2Label: 'Wzrost CTR'
   },
   {
-    tag: 'INDEKSACJA GOOGLE',
-    title: 'Optymalizacja Crawl Budget dla Serwisów E-commerce',
-    description: 'Jak wyeliminować pętle przekierowań i nieaktywne podstrony, aby ułatwić robotom indeksującym docieranie do produktów.',
+    tag: 'PROBLEM 04 — TOKSYCZNE LINKI',
+    title: 'Ryzyko Filtrów Algorytmicznych',
+    description: 'Wykrycie masowych przyrostów spamu i toksycznych domen odsyłających z filtrem depozycjonującym. Konieczność wdrożenia procedury Disavow Tool.',
     image: 'https://images.unsplash.com/photo-1555448248-2571daf6346b?auto=format&fit=crop&w=1200&q=80',
-    metric: '24 Lipca',
-    metricLabel: 'Data publikacji'
+    metric: '0',
+    metricLabel: 'Toksycznych linków',
+    metric2: '100%',
+    metric2Label: 'Bezpieczny profil'
   },
   {
-    tag: 'STRUKTURA DANYCH',
-    title: 'Wdrożenie Mikrodanych Schema.org w Modelu B2B',
-    description: 'Przewodnik po optymalizacji danych strukturalnych pod kątem wyszukiwarek AI.',
+    tag: 'PROBLEM 05 — KANIBALIZACJA',
+    title: 'Duplikacja i Wewnętrzne Rywalizacje',
+    description: 'Wielokrotne podstrony rywalizujące o te same frazy kluczowe. Wykryto brak tagów kanonicznych (rel="canonical") oraz błędne parametry filtrowania.',
     image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
-    metric: '20 Lipca',
-    metricLabel: 'Data publikacji'
+    metric: 'TOP 3',
+    metricLabel: 'Dla głównych fraz',
+    metric2: '100%',
+    metric2Label: 'Czystość kanoniczna'
   },
   {
-    tag: 'BEZPIECZEŃSTWO',
-    title: 'Weryfikacja Profilu Linków i Czyszczenie Toksycznych Domen',
-    description: 'Metodyka zabezpieczania autorytetu domeny przed działaniami depozycjonującymi.',
+    tag: 'PROBLEM 06 — SEMANTYKA HTML',
+    title: 'Błędna Hierarchia Nagłówków H1-H3',
+    description: 'Niewłaściwa struktura semantyczna HTML, brak opisów alternatywnych ALT w obrazach i puste tagi meta title uniemożliwiające zrozumienie intencji zapytania.',
     image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=1200&q=80',
-    metric: '16 Lipca',
-    metricLabel: 'Data publikacji'
+    metric: '100/100',
+    metricLabel: 'Wskaźnik SEO',
+    metric2: '+80%',
+    metric2Label: 'Widoczności fraz'
   }
 ];
 
@@ -130,7 +138,7 @@ export default function AudytSeoPage() {
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
-                Diagnoza Techniczna<br />Odblokowanie Wzrostu
+                Diagnoza Techniczna<br />Precyzyjna Optymalizacja
               </h1>
               <p style={{ 
                 fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 
@@ -181,8 +189,8 @@ export default function AudytSeoPage() {
               
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 2</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Architektura Treści</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Badanie struktury nagłówków, architektury informacji, thin contentu oraz eliminowanie kanibalizacji słów kluczowych.</p>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Treści &amp; Semantyka</h3>
+                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Weryfikacja intencji wyszukiwania (Search Intent), analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.</p>
               </RevealItem>
               
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -197,8 +205,9 @@ export default function AudytSeoPage() {
         {/* Portfolio Section */}
         <SubpagePortfolio 
           title="Odkryj efekty naszych audytów" 
-          subtitle="Realne przypadki zoptymalizowanych witryn e-commerce i B2B oraz nasza Baza Wiedzy Technicznej."
+          subtitle="Najczęstsze błędy techniczne wykrywane podczas audytów oraz metody ich eliminacji"
           cases={auditPortfolioCases} 
+          layout="vertical"
         />
 
         {/* FAQ Section */}

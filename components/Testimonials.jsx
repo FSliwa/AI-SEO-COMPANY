@@ -208,9 +208,6 @@ export default function Testimonials() {
                           {lang === 'pl' ? item.role : (item.roleEn || item.role)}
                         </div>
                       </div>
-                      <div style={{ marginLeft: 'auto', color: '#F59E0B', fontSize: '0.85rem', letterSpacing: '1px' }}>
-                        ★★★★★
-                      </div>
                     </div>
                   </div>
 
