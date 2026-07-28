@@ -43,6 +43,16 @@ export default function Contact() {
       }
 
       setFormSubmitted(true);
+      
+      // GA4 Event Tracking
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'Contact',
+          event_label: data.service || 'General Lead',
+          value: 1,
+        });
+      }
+
       e.target.reset(); // Clear the form
       setTimeout(() => setFormSubmitted(false), 8000);
     } catch (err) {
