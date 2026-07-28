@@ -43,7 +43,7 @@ const portfolioCases = [
     tag: 'MODEL E-COMMERCE',
     title: 'Struktura Klastrowa w Fashion',
     description: 'Strategia Topic Clusters dla sklepu internetowego. Model eliminujący kanibalizację słów kluczowych i obniżający koszt pozyskania klienta (CAC).',
-    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80',
     metric: '-58%',
     metricLabel: 'Obniżenie kosztu pozyskania (CAC)',
     metric2: '+310%',

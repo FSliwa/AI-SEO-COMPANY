@@ -113,7 +113,7 @@ const auditPortfolioCases = [
     tag: 'PROBLEM 06 — SEMANTYKA HTML',
     title: 'Błędna Hierarchia Nagłówków H1-H3',
     description: 'Niewłaściwa struktura semantyczna HTML, brak opisów alternatywnych ALT w obrazach i puste tagi meta title uniemożliwiające zrozumienie intencji zapytania.',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #311B92 0%, #4A148C 50%, #880E4F 100%)',
     metric: '100/100',
     metricLabel: 'Wskaźnik SEO',
