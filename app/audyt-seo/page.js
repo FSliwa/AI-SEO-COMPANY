@@ -6,8 +6,6 @@ export const metadata = {
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import Portfolio from '@/components/Portfolio';
-import Blog from '@/components/Blog';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
 const faqAudyt = {
@@ -43,7 +41,7 @@ export default function AudytSeoPage() {
       <Header />
       
       {/* Hero Banner - Apple Style */}
-      <section style={{ paddingTop: '180px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+      <section className="subpage-hero" style={{ paddingTop: '180px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center' }}>
@@ -85,40 +83,72 @@ export default function AudytSeoPage() {
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
             <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-              Obszary Analizy.
+              Obszary Analizy Technicznej.
             </h2>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
-              Kompleksowa weryfikacja techniczna, strukturalna i semantyczna.
+              Kompleksowa weryfikacja techniczna, strukturalna i semantyczna witryny.
             </p>
           </Reveal>
 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Technikalia & CWV.</h3>
+              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 1</div>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Technikalia &amp; CWV.</h3>
               <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
+              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 2</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Architektura Treści.</h3>
-              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Badanie struktury nagłówków, architektury informacji, thin contentu oraz kanibalizacji słów kluczowych.</p>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Badanie struktury nagłówków, architektury informacji, thin contentu oraz eliminowanie kanibalizacji słów kluczowych.</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Profil Linków.</h3>
+              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 3</div>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Profil Linków &amp; Autorytet.</h3>
               <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.</p>
             </RevealItem>
           </RevealStagger>
         </div>
       </section>
 
-      <Portfolio />
+      {/* Unique Audit Impact Section (Apple Bento Style) */}
+      <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
+        <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+          <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> EFEKTY WDROŻENIA AUDYTU
+            </div>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              Mierzalne Rezultaty.
+            </h2>
+            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+              Co zyskują serwisy po naprawieniu błędów technicznych i semantycznych.
+            </p>
+          </Reveal>
+
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.02)' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', letterSpacing: '-0.04em' }}>99 / 100</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.2 }}>Wynik PageSpeed Insights</h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Eliminacja blokującego JavaScriptu i optymalizacja krytycznej ścieżki renderowania pozwalają osiągnąć najwyższe oceny wydajności.</p>
+            </RevealItem>
+            
+            <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.02)' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', letterSpacing: '-0.04em' }}>0 Błędów</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.2 }}>Indeksacji w Google</h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Rozwiązanie problemów z adresami kanonicznymi, pętlami przekierowań oraz małowartościowymi podstronami uwalnia budżet indeksowania (Crawl Budget).</p>
+            </RevealItem>
+          </RevealStagger>
+        </div>
+      </section>
 
       {/* FAQ Section - Apple Style */}
-      <section style={{ padding: '40px 0 120px 0' }}>
+      <section style={{ padding: '120px 0', backgroundColor: '#F5F5F7' }}>
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-              Q&amp;A.
+              Q&amp;A dotyczące Audytu.
             </h2>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
               Często zadawane pytania.
@@ -138,7 +168,34 @@ export default function AudytSeoPage() {
         </div>
       </section>
 
-      <Blog />
+      {/* Unique Technical Audit Insights */}
+      <section style={{ padding: '80px 0 120px 0', backgroundColor: '#F5F5F7' }}>
+        <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+          <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> STANDARD AUDYTU
+            </div>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              Co Otrzymujesz w Raporcie.
+            </h2>
+            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+              Praktyczny dokument i konsultacja wideo gotowe do natychmiastowego wdrożenia.
+            </p>
+          </Reveal>
+
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Lista Zadań według Priorytetów</h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Nie zalewamy Cię setkami stron teorii. Otrzymujesz konkretną listę zadań podzielonych na krytyczne (do natychmiastowej naprawy), ważne oraz uzupełniające.</p>
+            </RevealItem>
+            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wytyczne Programistyczne</h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Precyzyjne rekomendacje w kodzie napisane w języku zrozumiałym dla programistów, co drastycznie skraca czas wdrażania zmian technicznych.</p>
+            </RevealItem>
+          </RevealStagger>
+        </div>
+      </section>
+
       <Contact />
       <Footer />
     </main>

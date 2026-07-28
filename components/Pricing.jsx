@@ -17,6 +17,9 @@ export default function Pricing() {
           </div>
           <h2>{t.title}</h2>
           <p>{t.subtitle}</p>
+          <div style={{ marginTop: '1rem', display: 'inline-block', background: 'rgba(29, 29, 31, 0.05)', color: '#1D1D1F', padding: '0.5rem 1.2rem', borderRadius: '999px', fontSize: '0.9rem', fontWeight: 600 }}>
+            {lang === 'pl' ? '✓ SEO Lokalne & Mapy Google w cenie każdego pakietu' : '✓ Local SEO & Google Maps included in all plans'}
+          </div>
         </Reveal>
 
         <RevealStagger className="pricing-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>

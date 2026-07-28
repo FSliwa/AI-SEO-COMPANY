@@ -7,8 +7,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Pricing from '@/components/Pricing';
-import Portfolio from '@/components/Portfolio';
-import Blog from '@/components/Blog';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
 const faqSchema = {
@@ -52,7 +50,7 @@ export default function PozycjonowanieStronPage() {
       <Header />
       
       {/* Hero Banner - Apple Style */}
-      <section style={{ paddingTop: '180px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+      <section className="subpage-hero" style={{ paddingTop: '180px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center' }}>
@@ -126,11 +124,41 @@ export default function PozycjonowanieStronPage() {
         </div>
       </section>
 
-      <Portfolio />
+      {/* Custom Portfolio Section for SEO */}
+      <section style={{ padding: '120px 0', backgroundColor: '#FFFFFF' }}>
+        <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+          <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> NASZE WYNIKI W GOOGLE
+            </div>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              Dowody Skuteczności.
+            </h2>
+            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+              Przykłady wzrostów widoczności organicznej dla naszych klientów B2B.
+            </p>
+          </Reveal>
+
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.02)' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', letterSpacing: '-0.04em' }}>+340%</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.2 }}>Ruchu z wyszukiwarki</h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Skalowanie widoczności organicznej dla platformy B2B w ciągu zaledwie 6 miesięcy od wdrożenia nowej architektury informacji i kampanii link buildingu.</p>
+            </RevealItem>
+            
+            <RevealItem style={{ background: '#F5F5F7', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.02)' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', letterSpacing: '-0.04em' }}>TOP 3</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.2 }}>Konkurencyjne frazy</h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Wprowadzenie kluczowych fraz produktowych na podium wyników wyszukiwania, co przełożyło się na kilkukrotny wzrost generowanych leadów.</p>
+            </RevealItem>
+          </RevealStagger>
+        </div>
+      </section>
+
       <Pricing />
 
       {/* FAQ Section - Apple Style */}
-      <section style={{ padding: '120px 0' }}>
+      <section style={{ padding: '120px 0', backgroundColor: '#F5F5F7' }}>
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
@@ -154,7 +182,34 @@ export default function PozycjonowanieStronPage() {
         </div>
       </section>
 
-      <Blog />
+      {/* Custom Knowledge Section for SEO */}
+      <section style={{ padding: '80px 0 120px 0', backgroundColor: '#F5F5F7' }}>
+        <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+          <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
+            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center' }}>
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> WIEDZA EKSPERCKA
+            </div>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              Sekrety Pozycjonowania.
+            </h2>
+            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+              Sprawdzone strategie dla nowoczesnych wyszukiwarek.
+            </p>
+          </Reveal>
+
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wyszukiwanie Semantyczne</h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>W 2026 roku nie pozycjonujemy na pojedyncze słowa, ale odpowiadamy na intencje. Tworzymy tzw. Topic Clusters budujące Topical Authority domeny w konkretnej niszy.</p>
+            </RevealItem>
+            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>AI Search (SGE)</h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.55 }}>Optymalizujemy treści nie tylko dla tradycyjnego bota Google, ale również pod kątem modeli językowych generujących bezpośrednie odpowiedzi (LLM-based Search).</p>
+            </RevealItem>
+          </RevealStagger>
+        </div>
+      </section>
+
       <Contact />
       <Footer />
     </main>

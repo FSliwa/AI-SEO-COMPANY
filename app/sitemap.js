@@ -7,7 +7,6 @@ export default function sitemap() {
     '/pozycjonowanie-stron-internetowych',
     '/audyt-seo',
     '/projektowanie-stron-internetowych',
-    '/seo-lokalne-warszawa',
     '/blog',
     '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista',
     '/blog/ile-kosztuje-pozycjonowanie-2026',

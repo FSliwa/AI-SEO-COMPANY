@@ -1929,10 +1929,19 @@ section {
     margin-top: 0 !important; /* Reset margin since node is relative now */
   }
 
-  /* Global Section Spacing Reduction for Mobile */
+  /* Global Section & Container Spacing Optimization for Mobile (Apple Style) */
+  .container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
   section {
     padding-bottom: 3.5rem !important;
-    padding-top: 4rem !important;
+    padding-top: 3.5rem !important;
+  }
+  /* Subpage Hero mobile padding */
+  .subpage-hero {
+    padding-top: 130px !important;
+    padding-bottom: 3rem !important;
   }
 
   /* Merge About Values and Contact sections on mobile */
