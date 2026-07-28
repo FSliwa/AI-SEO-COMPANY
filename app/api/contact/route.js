@@ -21,10 +21,11 @@ export async function POST(request) {
     
     // The recipient is the business owner
     const toEmail = process.env.RESEND_TO_EMAIL || 'kontakt@ai-seo-company.pl';
+    const recipients = toEmail === 'kontakt@ai-seo-company.pl' ? [toEmail, 'f.sliwa@ai-signals-company.pl'] : [toEmail];
 
     const { data, error } = await resend.emails.send({
       from: `AI SEO COMPANY <${fromEmail}>`,
-      to: [toEmail],
+      to: recipients,
       replyTo: email,
       subject: `[Formularz Wyceny] Nowe zapytanie od: ${name}`,
       html: `

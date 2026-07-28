@@ -6,9 +6,6 @@ export const metadata = {
   metadataBase: new URL('https://www.ai-seo-company.pl'),
   title: 'Agencja SEO Warszawa | Pozycjonowanie Stron — AI SEO COMPANY',
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
-  alternates: {
-    canonical: 'https://www.ai-seo-company.pl',
-  },
   icons: {
     icon: '/ai-seo-company-logotyp.svg',
     shortcut: '/ai-seo-company-logotyp.svg',
