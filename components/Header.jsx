@@ -174,56 +174,64 @@ export default function Header() {
             }}
           >
           
-          <div className="container nav-container" style={{ paddingTop: '2.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', opacity: 0 }}>
-              <span className="logo">AI SEO COMPANY</span>
-            </div>
-            
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
-              <button
-                className="kota-menu-trigger close-variant"
-                onClick={closeMenu}
-                aria-label="Close Menu"
-                title="Close Menu"
-                style={{
-                  position: 'fixed',
-                  top: `${triggerPos.y - 24}px`,
-                  left: `${triggerPos.x - 24}px`,
-                  margin: 0,
-                  zIndex: 2002
-                }}
-              >
-                ✕
-              </button>
-            </div>
-          </div>
+          {/* Fixed Close Button */}
+          <button
+            className="kota-menu-trigger close-variant"
+            onClick={closeMenu}
+            aria-label="Close Menu"
+            title="Close Menu"
+            style={{
+              position: 'fixed',
+              top: `${triggerPos.y - 24}px`,
+              left: `${triggerPos.x - 24}px`,
+              margin: 0,
+              zIndex: 2002
+            }}
+          >
+            ✕
+          </button>
 
-          <div className="kota-fullscreen-content container">
-            <ul className="kota-fullscreen-links">
-              <li style={{ '--delay': '0.15s' }}>
+          <div 
+            className="kota-fullscreen-content container"
+            style={{ 
+              justifyContent: 'flex-start',
+              paddingTop: `${Math.max(triggerPos.y - 12, 40)}px` 
+            }}
+          >
+            <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
+              <li style={{ '--delay': '0.1s' }}>
                 <a href="/#why-us" onClick={closeMenu}>{t.results}</a>
               </li>
-              <li style={{ '--delay': '0.2s' }}>
+              <li style={{ '--delay': '0.15s' }}>
                 <a href="/#uslugi" onClick={closeMenu}>{t.services}</a>
               </li>
-              <li style={{ '--delay': '0.25s' }}>
+              <li style={{ '--delay': '0.2s' }}>
                 <a href="/#cennik" onClick={closeMenu}>{t.pricing}</a>
               </li>
-              <li style={{ '--delay': '0.3s' }}>
+              <li style={{ '--delay': '0.25s' }}>
                 <a href="/#portfolio" onClick={closeMenu}>{t.process}</a>
               </li>
+              <li style={{ '--delay': '0.3s' }}>
+                <a href="/audyt-seo" onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a>
+              </li>
               <li style={{ '--delay': '0.35s' }}>
-                <a href="/blog" onClick={closeMenu}>{t.blog}</a>
+                <a href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</a>
               </li>
               <li style={{ '--delay': '0.4s' }}>
-                <a href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
+                <a href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</a>
               </li>
               <li style={{ '--delay': '0.45s' }}>
+                <a href="/blog" onClick={closeMenu}>{t.blog}</a>
+              </li>
+              <li style={{ '--delay': '0.5s' }}>
+                <a href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
+              </li>
+              <li style={{ '--delay': '0.55s' }}>
                 <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
             </ul>
 
-            <div className="kota-fullscreen-footer">
+            <div className="kota-fullscreen-footer" style={{ marginTop: 'auto' }}>
               <div className="footer-contact">
                 <span className="footer-label">{lang === 'pl' ? 'Napisz do nas' : 'Email Us'}</span>
                 <a href="mailto:kontakt@ai-seo-company.pl" className="footer-value">kontakt@ai-seo-company.pl</a>
