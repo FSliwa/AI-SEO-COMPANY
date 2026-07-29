@@ -7,7 +7,7 @@ import { translations } from '@/lib/translations';
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuClosing, setMenuClosing] = useState(false);
+  const [menuExpanded, setMenuExpanded] = useState(false);
   const [triggerPos, setTriggerPos] = useState({ x: 0, y: 0 });
   const { lang, toggleLang } = useLanguage();
   const t = translations[lang].nav;
@@ -26,24 +26,26 @@ export default function Header() {
     if (menuOpen) {
       closeMenu();
     } else {
-      let x = e.clientX;
-      let y = e.clientY;
-      if (!x && !y) {
-        const rect = e.currentTarget.getBoundingClientRect();
-        x = rect.left + rect.width / 2;
-        y = rect.top + rect.height / 2;
-      }
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
       setTriggerPos({ x, y });
       setMenuOpen(true);
+      
+      // Trigger CSS transition after mount
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setMenuExpanded(true);
+        });
+      });
     }
   };
 
   const closeMenu = () => {
-    setMenuClosing(true);
+    setMenuExpanded(false);
     setTimeout(() => {
       setMenuOpen(false);
-      setMenuClosing(false);
-    }, 600);
+    }, 700);
   };
 
   return (
@@ -164,23 +166,13 @@ export default function Header() {
       {/* KOTA Full-Screen Immersive Menu */}
       {menuOpen && (
         <>
-          <style>{`
-            @keyframes dynamicMenuExpand_${Math.round(triggerPos.x)}_${Math.round(triggerPos.y)} {
-              0% { clip-path: circle(0px at ${triggerPos.x}px ${triggerPos.y}px); }
-              100% { clip-path: circle(150vmax at ${triggerPos.x}px ${triggerPos.y}px); }
-            }
-            @keyframes dynamicMenuCollapse_${Math.round(triggerPos.x)}_${Math.round(triggerPos.y)} {
-              0% { clip-path: circle(150vmax at ${triggerPos.x}px ${triggerPos.y}px); }
-              100% { clip-path: circle(0px at ${triggerPos.x}px ${triggerPos.y}px); }
-            }
-            .kota-fullscreen-menu {
-              animation: dynamicMenuExpand_${Math.round(triggerPos.x)}_${Math.round(triggerPos.y)} 0.7s cubic-bezier(0.7, 0, 0.2, 1) forwards !important;
-            }
-            .kota-fullscreen-menu.closing {
-              animation: dynamicMenuCollapse_${Math.round(triggerPos.x)}_${Math.round(triggerPos.y)} 0.6s cubic-bezier(0.7, 0, 0.2, 1) forwards !important;
-            }
-          `}</style>
-          <div className={`kota-fullscreen-menu ${menuClosing ? 'closing' : ''}`}>
+          <div 
+            className="kota-fullscreen-menu"
+            style={{
+              clipPath: `circle(${menuExpanded ? '150vmax' : '0px'} at ${triggerPos.x}px ${triggerPos.y}px)`,
+              transition: 'clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1)'
+            }}
+          >
           
           <div className="container nav-container" style={{ paddingTop: '2.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', opacity: 0 }}>
@@ -194,10 +186,11 @@ export default function Header() {
                 aria-label="Close Menu"
                 title="Close Menu"
                 style={{
-                  position: 'absolute',
-                  top: `${triggerPos.y - 22}px`,
-                  left: `${triggerPos.x - 22}px`,
-                  margin: 0
+                  position: 'fixed',
+                  top: `${triggerPos.y - 24}px`,
+                  left: `${triggerPos.x - 24}px`,
+                  margin: 0,
+                  zIndex: 2002
                 }}
               >
                 ✕
