@@ -64,7 +64,7 @@ export default function ArticleAudytSeoCena2026Page() {
                 .blog-content blockquote { border-left: 4px solid var(--color-primary); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #6E6E73; }
               `}</style>
 
-              <img src="https://images.unsplash.com/photo-1661764570116-b1b0a2da783c?auto=format&fit=crop&w=1200&q=80" alt="Kobieta biznesu analizuje raport z audytu SEO przy swoim biurku" />
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Kobieta biznesu analizuje raport z audytu SEO przy swoim biurku" />
               
               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                 Audyt SEO dla małej strony firmowej kosztuje w Polsce różnie w zależności od zakresu i usług, podobnie ceny dla serwisów średniej wielkości i sklepów e-commerce oraz projektów korporacyjnych zależą od rozmiaru i złożoności serwisu. To rynkowe widełki na 2026 rok, nie ceny katalogowe — konkretna oferta zależy od zakresu, rozmiaru serwisu i tego, czy dostajesz raport z narzędzia czy pełną analizę z roadmapą.
