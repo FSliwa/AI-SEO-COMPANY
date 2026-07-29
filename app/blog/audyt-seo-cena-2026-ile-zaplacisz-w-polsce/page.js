@@ -196,7 +196,7 @@ export default function ArticleAudytSeoCena2026Page() {
                 Czasy realizacji audytu zależą od złożoności i metody pracy; dla średnich serwisów jest to zazwyczaj kilka dni do kilku tygodni, a dla większych sklepów i projektów korporacyjnych okres ten jest odpowiednio dłuższy.
               </p>
               
-              <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#FFF1F0', borderRadius: '12px', marginBottom: '2rem', borderLeft: '4px solid #FF4D4F' }}>
+              <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#FFF1F0', borderRadius: '12px', marginTop: '2rem', marginBottom: '2rem', borderLeft: '4px solid #FF4D4F' }}>
                 <strong>Czerwona flaga:</strong> oferta „audytu w 24 godziny" prawie zawsze oznacza eksport z narzędzia bez analizy ludzkiej. Taki raport wskazuje błędy, ale nie mówi, które z nich faktycznie blokują widoczność.
               </p>
 

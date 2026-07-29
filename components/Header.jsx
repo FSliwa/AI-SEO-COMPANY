@@ -157,13 +157,24 @@ export default function Header() {
 
       {/* KOTA Full-Screen Immersive Menu */}
       {menuOpen && (
-        <div 
-          className={`kota-fullscreen-menu ${menuClosing ? 'closing' : ''}`}
-          style={{
-            '--trigger-x': `${triggerPos.x}px`,
-            '--trigger-y': `${triggerPos.y}px`
-          }}
-        >
+        <>
+          <style>{`
+            @keyframes dynamicMenuExpand {
+              0% { clip-path: circle(0px at ${triggerPos.x}px ${triggerPos.y}px); }
+              100% { clip-path: circle(150% at ${triggerPos.x}px ${triggerPos.y}px); }
+            }
+            @keyframes dynamicMenuCollapse {
+              0% { clip-path: circle(150% at ${triggerPos.x}px ${triggerPos.y}px); }
+              100% { clip-path: circle(0px at ${triggerPos.x}px ${triggerPos.y}px); }
+            }
+            .kota-fullscreen-menu {
+              animation: dynamicMenuExpand 0.7s cubic-bezier(0.7, 0, 0.2, 1) forwards !important;
+            }
+            .kota-fullscreen-menu.closing {
+              animation: dynamicMenuCollapse 0.6s cubic-bezier(0.7, 0, 0.2, 1) forwards !important;
+            }
+          `}</style>
+          <div className={`kota-fullscreen-menu ${menuClosing ? 'closing' : ''}`}>
           
           <div className="container nav-container" style={{ paddingTop: '2.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', opacity: 0 }}>
@@ -226,6 +237,7 @@ export default function Header() {
             </div>
           </div>
         </div>
+        </>
       )}
     </>
   );
