@@ -354,8 +354,8 @@ button, input, select, textarea {
   z-index: 2000;
   display: flex;
   flex-direction: column;
-  /* Start hidden at the trigger button location (top right) */
-  clip-path: circle(0px at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+  /* Start hidden at the trigger button location */
+  clip-path: circle(0px at var(--trigger-x, calc(100vw - 3rem)) var(--trigger-y, 3rem));
   animation: kotaMenuExpand 0.7s cubic-bezier(0.7, 0, 0.2, 1) forwards;
   color: #FFFFFF;
 }
@@ -460,19 +460,19 @@ button, input, select, textarea {
 
 @keyframes kotaMenuExpand {
   0% {
-    clip-path: circle(0px at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+    clip-path: circle(0px at var(--trigger-x, calc(100vw - 3rem)) var(--trigger-y, 3rem));
   }
   100% {
-    clip-path: circle(150% at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+    clip-path: circle(150% at var(--trigger-x, calc(100vw - 3rem)) var(--trigger-y, 3rem));
   }
 }
 
 @keyframes kotaMenuCollapse {
   0% {
-    clip-path: circle(150% at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+    clip-path: circle(150% at var(--trigger-x, calc(100vw - 3rem)) var(--trigger-y, 3rem));
   }
   100% {
-    clip-path: circle(0px at calc(100vw - max(1.5rem, (100vw - var(--container-width)) / 2 + 1.5rem) - 22px) 3rem);
+    clip-path: circle(0px at var(--trigger-x, calc(100vw - 3rem)) var(--trigger-y, 3rem));
   }
 }
 

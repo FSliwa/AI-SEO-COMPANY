@@ -8,6 +8,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuClosing, setMenuClosing] = useState(false);
+  const [triggerPos, setTriggerPos] = useState({ x: 0, y: 0 });
   const { lang, toggleLang } = useLanguage();
   const t = translations[lang].nav;
 
@@ -21,10 +22,12 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
     if (menuOpen) {
       closeMenu();
     } else {
+      const rect = e.currentTarget.getBoundingClientRect();
+      setTriggerPos({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
       setMenuOpen(true);
     }
   };
@@ -154,7 +157,13 @@ export default function Header() {
 
       {/* KOTA Full-Screen Immersive Menu */}
       {menuOpen && (
-        <div className={`kota-fullscreen-menu ${menuClosing ? 'closing' : ''}`}>
+        <div 
+          className={`kota-fullscreen-menu ${menuClosing ? 'closing' : ''}`}
+          style={{
+            '--trigger-x': `${triggerPos.x}px`,
+            '--trigger-y': `${triggerPos.y}px`
+          }}
+        >
           
           <div className="container nav-container" style={{ paddingTop: '2.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', opacity: 0 }}>
@@ -167,6 +176,12 @@ export default function Header() {
                 onClick={closeMenu}
                 aria-label="Close Menu"
                 title="Close Menu"
+                style={{
+                  position: 'absolute',
+                  top: `${triggerPos.y - 22}px`,
+                  left: `${triggerPos.x - 22}px`,
+                  margin: 0
+                }}
               >
                 ✕
               </button>
