@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'Jak Pozycjonować Firmę Lokalnie w Google? Poradnik 2026',
   description: 'Kompletny poradnik: jak krok po kroku zoptymalizować wizytówkę Google Moja Firma, zdobyć opinie i poprawić lokalne pozycje w wyszukiwarce.',
   alternates: {
-    canonical: '/blog/seo-lokalne-dla-firm-w-warszawie',
+    canonical: `/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`,
   },
 };
+}
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';

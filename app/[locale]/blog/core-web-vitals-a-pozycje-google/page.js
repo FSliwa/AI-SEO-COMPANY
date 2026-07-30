@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'Core Web Vitals a Pozycje w Google | Przewodnik SEO',
   description: 'Dowiedz się jak Core Web Vitals (LCP, FID, CLS) wpływają na pozycje Twojej strony w wyszukiwarce Google. Praktyczny przewodnik optymalizacji.',
   alternates: {
-    canonical: '/blog/core-web-vitals-a-pozycje-google',
+    canonical: `/${locale}/blog/core-web-vitals-a-pozycje-google`,
   },
 };
+}
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

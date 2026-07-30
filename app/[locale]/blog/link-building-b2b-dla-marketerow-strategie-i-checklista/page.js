@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'Link Building B2B: Strategie i Checklista dla Marketerów',
   description: 'Skuteczny link building B2B opiera się na digital PR, partnerstwach i publikacjach eksperckich. Sprawdź, jak to robić.',
   alternates: {
-    canonical: '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista',
+    canonical: `/${locale}/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
   },
 };
+}
 
 import Header from '@/components/Header';
 import Link from 'next/link';

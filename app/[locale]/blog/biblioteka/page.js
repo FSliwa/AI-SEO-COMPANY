@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'Biblioteka Artykułów SEO i Web Design | AI SEO COMPANY',
   description: 'Wszystkie publikacje naszego zespołu w jednym miejscu. Przeglądaj pełną bibliotekę artykułów o pozycjonowaniu i web designie.',
   alternates: {
-    canonical: '/blog/biblioteka',
+    canonical: `/${locale}/blog/biblioteka`,
   },
 };
+}
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

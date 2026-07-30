@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
   description: 'Skuteczne pozycjonowanie stron internetowych oparte na danych. Podniesiemy widoczność Twojego biznesu i przekształcimy ruch w płacących klientów.',
   alternates: {
-    canonical: '/pozycjonowanie-stron-internetowych',
+    canonical: `/${locale}/pozycjonowanie-stron-internetowych`,
   },
 };
+}
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

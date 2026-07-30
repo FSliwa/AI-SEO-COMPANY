@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'Agencja SEO Warszawa | Skuteczne Pozycjonowanie Stron',
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design oparty na AI.',
   alternates: {
-    canonical: '/',
+    canonical: `/${locale}`,
   },
 };
+}
 
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';

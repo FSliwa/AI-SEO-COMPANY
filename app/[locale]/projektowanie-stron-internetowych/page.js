@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'Projektowanie Stron Internetowych | Web Design dla Firm',
   description: 'Tworzymy ultraszybkie i piękne wizualnie strony na Next.js (Headless). Skoncentrowane na maksymalizacji UX i konwersji.',
   alternates: {
-    canonical: '/projektowanie-stron-internetowych',
+    canonical: `/${locale}/projektowanie-stron-internetowych`,
   },
 };
+}
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'O nas | Agencja SEO Warszawa | AI SEO COMPANY',
   description: 'Poznaj zespół AI SEO COMPANY. Jesteśmy architektami Twojego wzrostu. Łączymy design z twardymi danymi analitycznymi.',
   alternates: {
-    canonical: '/o-nas',
+    canonical: `/${locale}/o-nas`,
   },
 };
+}
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

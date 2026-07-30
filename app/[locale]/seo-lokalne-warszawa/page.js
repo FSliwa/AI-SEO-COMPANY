@@ -1,10 +1,13 @@
-export const metadata = {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
   title: 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: 'Skuteczne pozycjonowanie lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
   alternates: {
-    canonical: '/seo-lokalne-warszawa',
+    canonical: `/${locale}/seo-lokalne-warszawa`,
   },
 };
+}
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
