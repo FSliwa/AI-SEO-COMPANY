@@ -14,7 +14,9 @@ export const metadata = {
   title: 'Agencja SEO Warszawa | Pozycjonowanie Stron | AI SEO COMPANY',
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
   icons: {
-    icon: '/ai-seo-company-logotyp.svg',
+    icon: [
+      { url: '/ai-seo-company-logotyp.svg', type: 'image/svg+xml', sizes: 'any' }
+    ],
     shortcut: '/ai-seo-company-logotyp.svg',
     apple: '/ai-seo-company-logotyp.svg',
   },
