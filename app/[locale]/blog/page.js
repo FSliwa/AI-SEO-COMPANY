@@ -14,6 +14,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import BlogGrid from '@/components/BlogGrid';
 import AppleFaq from '@/components/service/AppleFaq';
+import BlogSeoText from '@/components/BlogSeoText';
 
 const blogFaqData = [
   {
@@ -44,13 +45,14 @@ export default async function BlogHubPage({ params }) {
       <main className="subpage-main" style={{ paddingTop: '100px', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
         <div className="sr-only">
           {locale === 'en' ? (
-            <p>Welcome to our Blog | SEO and Web Design Guide. Here you will find our Latest Articles about optimizing your online presence. Explore our comprehensive resources created by AI SEO COMPANY.</p>
+            <p>Welcome to our Blog | SEO and Web Design Guide. Here you will find our Latest SEO and Web Design Articles about optimizing your online presence. Explore our comprehensive resources created by AI SEO COMPANY.</p>
           ) : (
-            <p>Witamy na naszym Blogu | Poradnik SEO i Web Design. Znajdziesz tutaj nasze Najnowsze Artykuły dotyczące pozycjonowania i projektowania stron. Nasz blog to kompleksowy przewodnik stworzony przez ekspertów AI SEO COMPANY.</p>
+            <p>Witamy na naszym Blogu | Poradnik SEO i Web Design. Znajdziesz tutaj nasze Najnowsze Artykuły o SEO i Web Designie. Nasz blog to kompleksowy przewodnik stworzony przez ekspertów AI SEO COMPANY.</p>
           )}
         </div>
         <BlogGrid />
         <AppleFaq faqData={blogFaqData} title={locale === 'pl' ? 'Najczęściej zadawane pytania' : 'Frequently Asked Questions'} />
+        <BlogSeoText />
         <Contact />
       </main>
       <Footer />
