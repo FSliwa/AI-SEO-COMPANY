@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'About Us | SEO Agency Warsaw | AI SEO COMPANY' : 'O nas | Agencja SEO Warszawa | AI SEO COMPANY',
-  description: 'Poznaj zespół AI SEO COMPANY. Jesteśmy architektami Twojego wzrostu. Łączymy design z twardymi danymi analitycznymi.',
+  description: locale === 'en' ? 'Meet the AI SEO COMPANY team. We are the architects of your digital growth. We combine design with hard data and analytics.' : 'Poznaj zespół AI SEO COMPANY. Jesteśmy architektami Twojego wzrostu. Łączymy design z twardymi danymi analitycznymi.',
   alternates: {
     canonical: `/${locale}/o-nas`,
   },

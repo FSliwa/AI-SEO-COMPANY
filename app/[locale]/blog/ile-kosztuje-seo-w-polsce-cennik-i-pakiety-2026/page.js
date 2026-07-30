@@ -143,7 +143,7 @@ export default async function ArticleCennikPage({ params }) {
                 <strong>Porada profesjonalisty:</strong> Zanim zadzwonisz do agencji, sprawdź w <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a>, ile ruchu organicznego masz teraz i z jakich fraz. To 10 minut pracy, które pozwolą Ci ocenić, czy oferta agencji jest dopasowana do Twojego punktu startowego.
               </p>
 
-              <p>Chcesz wiedzieć, ile dokładnie zapłacisz za swój projekt? Poniżej rozkładamy nasz <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link> na czynniki pierwsze — według typu firmy, zawartości pakietu i modelu rozliczeń.</p>
+              <p>Chcesz wiedzieć, ile dokładnie zapłacisz za swój projekt? Poniżej rozkładamy nasz <Link href={`/${locale}/cennik-pozycjonowania`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link> na czynniki pierwsze — według typu firmy, zawartości pakietu i modelu rozliczeń.</p>
 
               
 
@@ -212,7 +212,7 @@ export default async function ArticleCennikPage({ params }) {
               <p><strong>Elementy standardowe (core SEO) — powinny być w każdym pakiecie:</strong></p>
               <ul>
                 <li>Audyt techniczny strony (przynajmniej wstępny przy starcie)</li>
-                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Optymalizacja on-page</Link>: tytuły, opisy, nagłówki, struktura URL</li>
+                <li><Link href={`/${locale}/projektowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Optymalizacja on-page</Link>: tytuły, opisy, nagłówki, struktura URL</li>
                 <li>Monitoring pozycji i ruchu organicznego</li>
                 <li>Raportowanie (miesięczne lub dwutygodniowe)</li>
                 <li>Podstawowe naprawy techniczne (szybkość, indeksowanie, przekierowania)</li>
@@ -222,7 +222,7 @@ export default async function ArticleCennikPage({ params }) {
               <ul>
                 <li>Link building (pozyskiwanie linków zewnętrznych)</li>
                 <li>Content marketing (regularne artykuły, landing page'e, opisy kategorii)</li>
-                <li><Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Lokalne SEO</Link> i zarządzanie Google Moja Firma</li>
+                <li><Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Lokalne SEO</Link> i zarządzanie Google Moja Firma</li>
                 <li>Optymalizacja pod modele AI, czyli AEO (Answer Engine Optimization)</li>
                 <li>Migracje serwisu i zmiany CMS</li>
                 <li>Audyt UX/UI i optymalizacja konwersji</li>
@@ -247,7 +247,7 @@ export default async function ArticleCennikPage({ params }) {
               </ul>
               
               <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#F5F5F7', borderRadius: '12px', marginBottom: '2rem' }}>
-                <strong>Porada profesjonalisty:</strong> Dwa czynniki, które najszybciej windują koszty przy migracji lub przebudowie serwisu, to zmiana struktury URL bez przekierowań 301 i utrata historycznych treści. Zanim zlecisz <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> i ich redesign, upewnij się, że agencja SEO jest w tym procesie od początku, nie na końcu.
+                <strong>Porada profesjonalisty:</strong> Dwa czynniki, które najszybciej windują koszty przy migracji lub przebudowie serwisu, to zmiana struktury URL bez przekierowań 301 i utrata historycznych treści. Zanim zlecisz <Link href={`/${locale}/projektowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> i ich redesign, upewnij się, że agencja SEO jest w tym procesie od początku, nie na końcu.
               </p>
 
               <h2 id="kiedy-efekty">Kiedy zobaczysz efekty i jak liczyć opłacalność?</h2>
@@ -327,7 +327,7 @@ export default async function ArticleCennikPage({ params }) {
 
               <h2 id="oferta-ai-seo-company">Oferta AI SEO COMPANY: pakiety, efekty i co wyróżnia tę agencję</h2>
               
-              <p>AI SEO COMPANY łączy <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> pod konwersję z kompleksowym pozycjonowaniem, co oznacza, że optymalizacja SEO i UX/UI idą tu w parze od pierwszego dnia. Klienci agencji odnotowali średni wzrost przychodów o 23% — to wynik, który wynika z połączenia pracy nad widocznością w Google z poprawą doświadczenia użytkownika na stronie.</p>
+              <p>AI SEO COMPANY łączy <Link href={`/${locale}/projektowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> pod konwersję z kompleksowym pozycjonowaniem, co oznacza, że optymalizacja SEO i UX/UI idą tu w parze od pierwszego dnia. Klienci agencji odnotowali średni wzrost przychodów o 23% — to wynik, który wynika z połączenia pracy nad widocznością w Google z poprawą doświadczenia użytkownika na stronie.</p>
 
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', textAlign: 'left' }}>

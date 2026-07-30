@@ -102,7 +102,7 @@ export default async function ArticleLokalnePage({ params }) {
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
-              SEO Lokalne w Warszawie.
+              {locale === 'en' ? 'Local SEO for Companies | 2026 Guide' : 'SEO Lokalne w Warszawie.'}
             </h1>
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>

@@ -111,7 +111,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
-              Link building B2B dla marketerów: strategie i checklista
+              {locale === 'en' ? 'B2B Link Building - Strategies & Checklist for Marketers' : 'Link building B2B dla marketerów: strategie i checklista'}
             </h1>
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
