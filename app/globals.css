@@ -2129,3 +2129,11 @@ section {
     height: 100%;
   }
 }
+
+@media (max-width: 1024px) {
+  .testimonials-arrows {
+    position: static !important;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}

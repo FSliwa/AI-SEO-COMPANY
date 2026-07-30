@@ -115,8 +115,8 @@ export default function Testimonials() {
     <section className="testimonials" id="testimonials" style={{ padding: '8rem 0', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         <Reveal>
-          <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '3.5rem', width: '100%', textAlign: 'left' }}>
-            <div style={{ maxWidth: '840px' }}>
+          <div style={{ position: 'relative', marginBottom: '3.5rem', width: '100%' }}>
+            <div className="section-header center" style={{ textAlign: 'center', maxWidth: '840px', marginInline: 'auto' }}>
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
                 <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
               </div>
@@ -138,7 +138,7 @@ export default function Testimonials() {
             </div>
             
             {/* Navigation Arrows */}
-            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexShrink: 0, marginBottom: '0.5rem' }}>
+            <div className="testimonials-arrows" style={{ position: 'absolute', right: 0, bottom: '10px', display: 'flex', gap: '10px', alignItems: 'center', zIndex: 10 }}>
               <button 
                 onClick={scrollPrev}
                 style={{

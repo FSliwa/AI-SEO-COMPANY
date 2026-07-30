@@ -33,9 +33,9 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? (
-                <>Projektowanie stron internetowych — <br />Nowoczesne Strony Wysoka Konwersja</>
+                <>Projektowanie stron internetowych | <br />Nowoczesne Strony Wysoka Konwersja</>
               ) : (
-                <>Web Design & Development — <br />Modern Websites High Conversion</>
+                <>Web Design & Development | <br />Modern Websites High Conversion</>
               )}
             </h1>
             <p style={{ 

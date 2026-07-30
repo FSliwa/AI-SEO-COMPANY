@@ -32,9 +32,9 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? (
-                <>Audyt SEO — Diagnoza Techniczna<br />Precyzyjna Optymalizacja</>
+                <>Audyt SEO | Diagnoza Techniczna<br />Precyzyjna Optymalizacja</>
               ) : (
-                <>SEO Audit — Technical Diagnosis<br />Precise Optimization</>
+                <>SEO Audit | Technical Diagnosis<br />Precise Optimization</>
               )}
             </h1>
             <p style={{ 

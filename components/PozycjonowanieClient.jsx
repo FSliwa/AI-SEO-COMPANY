@@ -31,9 +31,9 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? (
-                <>Pozycjonowanie stron internetowych — <br />Organiczny Wzrost Maksymalna Konwersja</>
+                <>Pozycjonowanie stron internetowych | <br />Organiczny Wzrost Maksymalna Konwersja</>
               ) : (
-                <>Search Engine Optimization — <br />Organic Growth Maximum Conversion</>
+                <>Search Engine Optimization | <br />Organic Growth Maximum Conversion</>
               )}
             </h1>
             <p style={{ 
