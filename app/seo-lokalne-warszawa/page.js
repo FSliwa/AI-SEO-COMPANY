@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm — AI SEO COMPANY',
+  title: 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm | AI SEO COMPANY',
   description: 'Skuteczne pozycjonowanie lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
   alternates: {
     canonical: '/seo-lokalne-warszawa',
@@ -68,7 +68,7 @@ const portfolioCases = [
 
 const carouselItems = [
   {
-    number: '01 — AUDYT',
+    number: '01 / AUDYT',
     metric: 'Diagnoza',
     title: 'Analiza Konkurencji',
     description: 'Weryfikujemy, co robią liderzy w Twojej dzielnicy i wyznaczamy plan działania oparty na danych.',
@@ -76,14 +76,14 @@ const carouselItems = [
     minHeight: '370px'
   },
   {
-    number: '02 — MAPY',
+    number: '02 / MAPY',
     metric: 'GMB',
     title: 'Konfiguracja Wizytówki',
     description: 'Przejmujemy kontrolę nad Twoim Profilem w Google, uzupełniając go o odpowiednie frazy i tagi.',
     width: 'min(75vw, 360px)'
   },
   {
-    number: '03 — LINKI',
+    number: '03 / LINKI',
     metric: 'Autorytet',
     title: 'Lokalny Link Building',
     description: 'Zdobywamy wzmianki o Twojej firmie na lokalnych warszawskich portalach i branżowych stronach.',
@@ -91,7 +91,7 @@ const carouselItems = [
     minHeight: '380px'
   },
   {
-    number: '04 — TREŚĆ',
+    number: '04 / TREŚĆ',
     metric: 'On-Page',
     title: 'Optymalizacja Witryny',
     description: 'Dodajemy modyfikatory lokalne (nazwy dzielnic Warszawy) na stronę oraz wdrażamy Schema LocalBusiness.',
@@ -121,7 +121,7 @@ export default function SeoLokalneWarszawaPage() {
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
-                SEO Lokalne Warszawa — <br />Zdominuj Swoją Ofertą
+                SEO Lokalne Warszawa | <br />Zdominuj Swoją Ofertą
               </h1>
               <p style={{ 
                 fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 

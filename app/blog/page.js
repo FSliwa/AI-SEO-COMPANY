@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Blog | Poradnik SEO i Web Design — AI SEO COMPANY',
+  title: 'Blog | Poradnik SEO i Web Design | AI SEO COMPANY',
   description: 'Czytaj najnowsze artykuły o SEO, analityce, budowaniu konwersji i projektowaniu stron B2B na naszym blogu.',
   alternates: {
     canonical: '/blog',
