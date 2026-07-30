@@ -15,8 +15,15 @@ const methodologyStages = [
         KROK 1
       </span>
     ),
+    brandLogoEn: (
+      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+        STEP 1
+      </span>
+    ),
     metric: 'ARCHITEKTURA & DESIGN',
+    metricEn: 'ARCHITECTURE & DESIGN',
     metricSubtitle: 'Projektowanie UX/UI i solidny fundament techniczny.',
+    metricSubtitleEn: 'UX/UI design and solid technical foundation.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
     layout: 'center',
     largeImage: '/images/unsplash-1561070791-2526d30994b5.jpg',
@@ -29,8 +36,15 @@ const methodologyStages = [
         KROK 2
       </span>
     ),
+    brandLogoEn: (
+      <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+        STEP 2
+      </span>
+    ),
     metric: 'ZAAWANSOWANE SEO',
+    metricEn: 'ADVANCED SEO',
     metricSubtitle: 'Budowanie struktury treści, techniczne SEO i organiczny wzrost.',
+    metricSubtitleEn: 'Content structure building, technical SEO and organic growth.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     layout: 'right-side',
     desktopCard: {
@@ -45,8 +59,15 @@ const methodologyStages = [
         KROK 3
       </span>
     ),
+    brandLogoEn: (
+      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+        STEP 3
+      </span>
+    ),
     metric: 'SKALOWANIE SPRZEDAŻY',
+    metricEn: 'SCALING SALES',
     metricSubtitle: 'Konwersja ruchu organicznego na realnych, płacących klientów.',
+    metricSubtitleEn: 'Converting organic traffic into real, paying customers.',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     layout: 'center-reverse',
     largeImage: '/images/unsplash-1552581234-26160f608093.jpg',
@@ -172,7 +193,7 @@ export default function AboutMethodology() {
                   <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
                     <div className="portfolio-text-container" style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
                       <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
-                        {item.brandLogo}
+                        {lang === 'pl' ? item.brandLogo : item.brandLogoEn}
                       </div>
                       <div style={{ 
                         fontSize: 'clamp(1.85rem, 3vw, 2.45rem)', 
@@ -182,9 +203,9 @@ export default function AboutMethodology() {
                         lineHeight: 1.22, 
                         marginBottom: '0' 
                       }}>
-                        {lang === 'pl' ? item.metric : item.metric}
+                        {lang === 'pl' ? item.metric : item.metricEn}
                         <br />
-                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitle}</span>
+                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
                       </div>
                     </div>
 
@@ -257,13 +278,13 @@ export default function AboutMethodology() {
 
                     <div className="portfolio-text-container" style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2, position: 'relative' }}>
                       <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
-                        {lang === 'pl' ? item.metric : item.metric}
+                        {lang === 'pl' ? item.metric : item.metricEn}
                         <br />
-                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitle}</span>
+                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
                       </div>
                       
                       <div style={{ position: 'absolute', bottom: '-2.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
-                        {item.brandLogo}
+                        {lang === 'pl' ? item.brandLogo : item.brandLogoEn}
                       </div>
                     </div>
                   </div>
@@ -271,7 +292,7 @@ export default function AboutMethodology() {
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%' }}>
                     <div className="portfolio-text-container" style={{ flex: '0 0 42%', maxWidth: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
                       <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
-                        {item.brandLogo}
+                        {lang === 'pl' ? item.brandLogo : item.brandLogoEn}
                       </div>
                       
                       <div style={{ 
@@ -281,9 +302,9 @@ export default function AboutMethodology() {
                         letterSpacing: '-0.035em', 
                         lineHeight: 1.18 
                       }}>
-                        {lang === 'pl' ? item.metric : item.metric}
+                        {lang === 'pl' ? item.metric : item.metricEn}
                         <br />
-                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitle}</span>
+                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
                       </div>
                     </div>
 
