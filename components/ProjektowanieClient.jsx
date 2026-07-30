@@ -83,19 +83,19 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 1' : 'PILLAR 1'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Niezawodność i Bezpieczeństwo' : 'Reliability & Security'}</h3>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Niezawodność i Bezpieczeństwo' : 'Reliability & Security'}</div>
               <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Nasze projektowanie stron internetowych łączy nowoczesną architekturę Headless z biznesowymi korzyściami. To nie tylko niezrównana szybkość, ale też całkowite odcięcie hakerów od Twojej bazy danych. Zyskujesz spokój ducha i bezpieczeństwo znane z systemów klasy Enterprise, zapominając o awariach.' : "Our website design combines modern Headless architecture with business benefits. It's not just unmatched speed, but also a complete cut-off for hackers from your database. You gain peace of mind and Enterprise-grade security, forgetting about crashes."}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 2' : 'PILLAR 2'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wzrost Konwersji i Leady' : 'Conversion Growth & Leads'}</h3>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wzrost Konwersji i Leady' : 'Conversion Growth & Leads'}</div>
               <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Eliminujemy zbędny szum informacyjny. Budujemy przejrzyste interfejsy i formularze, które w logiczny sposób prowadzą klienta prosto do kontaktu z Twoim działem sprzedaży.' : 'We eliminate unnecessary information noise. We build clean interfaces and forms that logically guide the client straight to contacting your sales department.'}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 3' : 'PILLAR 3'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Fundament pod SEO' : 'SEO Foundation'}</h3>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Fundament pod SEO' : 'SEO Foundation'}</div>
               <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Od pierwszego dnia strona jest zoptymalizowana pod Google (szybkość wczytywania, tagi strukturalne). Tworzymy solidną bazę, gotową na bezkompromisowe pozycjonowanie stron.' : 'From day one, the site is optimized for Google (loading speed, structured tags). We create a solid base, ready for uncompromising SEO.'}</p>
             </RevealItem>
           </RevealStagger>
@@ -119,11 +119,11 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profesjonalny Design i Makiety' : 'Professional Design and Mockups'}</h3>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profesjonalny Design i Makiety' : 'Professional Design and Mockups'}</div>
               <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Nasze projektowanie stron internetowych zaczyna się od stworzenia czytelnych makiet i prototypów, w pełni dopasowanych do Twojej identyfikacji wizualnej i grupy docelowej.' : 'Our web design begins with clean mockups and prototypes, perfectly tailored to your visual identity and target audience.'}</p>
             </RevealItem>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wdrożenie i Skalowanie Sprzedaży' : 'Deployment and Sales Scaling'}</h3>
+              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wdrożenie i Skalowanie Sprzedaży' : 'Deployment and Sales Scaling'}</div>
               <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Gotowy projekt przenosimy do bezpiecznego i niezawodnego środowiska, dbając o zoptymalizowanie ścieżek zakupowych klienta (generowanie leadów).' : 'We transition the ready design into a secure and reliable environment, ensuring optimized customer purchase paths (lead generation).'}</p>
             </RevealItem>
           </RevealStagger>

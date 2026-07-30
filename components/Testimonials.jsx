@@ -249,9 +249,9 @@ export default function Testimonials() {
                     <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF', opacity: 0.9, marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
                       {lang === 'pl' ? item.tag : (item.tagEn || item.tag)}
                     </div>
-                    <h3 style={{ color: '#FFFFFF', fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                    <div style={{ color: '#FFFFFF', fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
                       {lang === 'pl' ? item.leadPl : item.leadEn}
-                    </h3>
+                    </div>
                   </div>
 
                   {/* Expanded Content */}

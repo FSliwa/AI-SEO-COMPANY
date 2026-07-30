@@ -31,10 +31,10 @@ export default function BlogLibrary() {
               letterSpacing: '-0.04em',
               marginBottom: '1rem'
             }}>
-              {lang === 'pl' ? 'Biblioteka Artykułów' : 'Articles Library'}
+              {lang === 'pl' ? 'Biblioteka Artykułów SEO i IT' : 'SEO and IT Articles Library'}
             </h1>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
-              {lang === 'pl' ? 'Wszystkie publikacje naszego zespołu w jednym miejscu.' : 'All publications from our team in one place.'}
+              {lang === 'pl' ? 'Wszystkie publikacje naszego zespołu w jednym miejscu. Przejrzyj naszą bibliotekę artykułów.' : 'All publications from our team in one place. Browse our complete articles library.'}
             </p>
           </div>
         </Reveal>
@@ -105,7 +105,7 @@ export default function BlogLibrary() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <Link href="/blog" style={{ 
+          <Link href={`/${lang}/blog`} style={{ 
             display: 'inline-flex', 
             alignItems: 'center', 
             justifyContent: 'center', 

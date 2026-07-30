@@ -31,7 +31,7 @@ export default function Services() {
             <RevealItem key={idx} style={{ display: 'flex', alignItems: 'center', flex: 1, gap: '1rem' }}>
               <div className="kota-pillar-card">
                 <div className="kota-pillar-num">{pillar.num}</div>
-                <h4>{pillar.title}</h4>
+                <div style={{ fontSize: "1.25rem", fontWeight: 600, margin: "0.75rem 0" }}>{pillar.title}</div>
                 <p>{pillar.desc}</p>
               </div>
               {idx < pillars.length - 1 && <span className="kota-divider-x">✕</span>}
@@ -46,7 +46,7 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
             </div>
-            <h3>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Identity'}</h3>
+            <div style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Identity'}</div>
             <p>{lang === 'pl' 
               ? 'Projektujemy spójną tożsamość wizualną: logo, system kolorystyczny, typografię oraz kompletną księgę znaku dostosowaną do wymagań cyfrowych.' 
               : 'We design cohesive visual identities: logo systems, color palettes, typography, and comprehensive digital brand guidelines.'
@@ -73,7 +73,7 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
-            <h3>{lang === 'pl' ? 'Projektowanie i wdrożenie stron' : 'Web Design & Development'}</h3>
+            <div style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Projektowanie i wdrożenie stron' : 'Web Design & Development'}</div>
             <p>{lang === 'pl'
               ? 'Tworzymy responsywne, niezwykle szybkie strony internetowe (UX/UI), zoptymalizowane pod najwyższe współczynniki konwersji i estetykę premium.'
               : 'We engineer responsive, high-speed websites (UX/UI), optimized for top conversion rates and premium aesthetic appeal.'
@@ -100,7 +100,7 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
             </div>
-            <h3>{lang === 'pl' ? 'Optymalizacja SEO i marketing wzrostu' : 'SEO Optimization & Growth Marketing'}</h3>
+            <div style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja SEO i marketing wzrostu' : 'SEO Optimization & Growth Marketing'}</div>
             <p>{lang === 'pl'
               ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
               : 'High-impact search engine positioning, local SEO, technical SEO optimization, and conversion rate optimization (CRO) driving stable organic growth.'

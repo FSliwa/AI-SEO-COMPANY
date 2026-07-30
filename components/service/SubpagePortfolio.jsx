@@ -329,7 +329,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
 
       <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem', padding: '0 2rem' }}>
         <a 
-          href="/#portfolio" 
+          href={`/${lang}/#portfolio`} 
           className="btn" 
           style={{ 
             padding: '1.1rem 2.5rem', 

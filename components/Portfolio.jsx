@@ -525,7 +525,7 @@ export default function Portfolio() {
         <div className="modal-overlay" onClick={() => setActiveModal(null)} style={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(12px)' }}>
           <div className="modal-container" onClick={e => e.stopPropagation()} style={{ background: '#111', color: '#FFF', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px' }}>
             <span className="modal-close" onClick={() => setActiveModal(null)} style={{ color: '#FFF' }}>&times;</span>
-            <h3 style={{ fontSize: '2rem', marginBottom: '0.25rem', fontWeight: 700 }}>{activeModal.brandName}</h3>
+            <div style={{ fontSize: '2rem', marginBottom: '0.25rem', fontWeight: 700 }} style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{activeModal.brandName}</div>
             <p style={{ fontSize: '1rem', color: 'var(--color-primary)', marginBottom: '1.5rem', fontWeight: '600' }}>
               <a href={activeModal.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
                 {activeModal.url} ↗

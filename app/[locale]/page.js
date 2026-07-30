@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: 'Agencja SEO Warszawa | Skuteczne Pozycjonowanie Stron',
-  description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design oparty na AI.',
+  title: locale === 'en' ? 'SEO Agency Warsaw | Effective Web Design & SEO' : 'Agencja SEO Warszawa | Skuteczne Pozycjonowanie Stron',
+  description: locale === 'en' ? 'Modern SEO agency in Warsaw. We design high-converting websites and brands. Comprehensive SEO, audits, and AI-driven web design.' : 'Nowoczesna agencja SEO Warszawa. Projektujemy strony internetowe, które sprzedają. Kompleksowe pozycjonowanie, audyt SEO i web design.',
   alternates: {
     canonical: `/${locale}`,
   },

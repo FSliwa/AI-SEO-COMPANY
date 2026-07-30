@@ -56,7 +56,7 @@ export default function Blog() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <a href="/blog" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
+          <a href={`/${lang}/blog`} className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
             {lang === 'pl' ? 'Zobacz pełną bibliotekę' : 'View full library'}
           </a>
         </RevealItem>

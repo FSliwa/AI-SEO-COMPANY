@@ -39,10 +39,21 @@ export default function BlogGrid() {
             fontSize: '2rem', 
             fontWeight: 700, 
             color: 'var(--color-text-main)', 
-            marginBottom: '2rem', textAlign: 'left' 
+            marginBottom: '0.5rem', textAlign: 'left' 
           }}>
-            {lang === 'pl' ? 'Najnowsze Artykuły' : 'Latest Articles'}
+            {lang === 'pl' ? 'Najnowsze Artykuły o SEO i Web Designie' : 'Latest Articles on SEO and Web Design'}
           </h1>
+          <p style={{
+            fontSize: '1.1rem',
+            color: '#6E6E73',
+            marginBottom: '2rem',
+            maxWidth: '800px',
+            textAlign: 'left'
+          }}>
+            {lang === 'pl' 
+              ? 'Przeczytaj nasze najnowsze artykuły z dziedziny pozycjonowania i optymalizacji.'
+              : 'Read our latest articles on SEO and optimization.'}
+          </p>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -175,7 +186,7 @@ export default function BlogGrid() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <Link href="/blog/biblioteka" style={{ 
+          <Link href={`/${lang}/blog/biblioteka`} style={{ 
             display: 'inline-flex', 
             alignItems: 'center', 
             justifyContent: 'center', 
