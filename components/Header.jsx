@@ -75,7 +75,7 @@ export default function Header() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href={`/${lang}/`} className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+            <a href={`/${lang}`} className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
               <span className="sr-only">Strona główna AI SEO COMPANY</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 

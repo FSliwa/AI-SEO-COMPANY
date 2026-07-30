@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="container">
           <div className="footer-grid">
             <div>
-              <a href={`/${lang}/`} className="logo" style={{ color: '#FFFFFF', marginBottom: '1rem' }}>
+              <a href={`/${lang}`} className="logo" style={{ color: '#FFFFFF', marginBottom: '1rem' }}>
                 AI SEO COMPANY
               </a>
               <p style={{ fontSize: '0.9rem', maxWidth: '320px', color: '#94A3B8' }}>

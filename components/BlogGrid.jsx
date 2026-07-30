@@ -57,7 +57,7 @@ export default function BlogGrid() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <Link href={heroData.slug} style={{ textDecoration: 'none' }}>
+          <Link href={`/${lang}${heroData.slug}`} style={{ textDecoration: 'none' }}>
             <div className="hero-card" style={{ 
               display: 'flex', 
               flexDirection: 'column', 
@@ -129,7 +129,7 @@ export default function BlogGrid() {
             const data = getPostData(post);
             return (
               <RevealItem key={idx}>
-                <Link href={data.slug} style={{ textDecoration: 'none' }}>
+                <Link href={`/${lang}${data.slug}`} style={{ textDecoration: 'none' }}>
                   <div className="grid-card" style={{ 
                     display: 'flex', 
                     flexDirection: 'column', 
@@ -210,6 +210,12 @@ export default function BlogGrid() {
           box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
         }
       `}</style>
+    
+      <div className="container" style={{ paddingBottom: '4rem' }}>
+        <p style={{ color: '#6E6E73', fontSize: '1rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto', textAlign: 'justify' }}>
+          {lang === 'pl' ? 'Blog AI SEO COMPANY to miejsce, w którym na bieżąco analizujemy rynek marketingu internetowego. Dzielimy się sprawdzonymi metodami, innowacyjnymi strategiami biznesowymi oraz narzędziami ułatwiającymi codzienną pracę z pozycjonowaniem stron. Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach, a nie jedynie teoretycznych domysłach. Chcemy, by nasz blog stał się Twoim ulubionym źródłem wartościowych informacji, które z łatwością przełożysz na wyższą konwersję i większe zyski Twojej firmy. Odkrywamy kulisy działania algorytmów sztucznej inteligencji, tłumaczymy trudne zjawiska technologiczne przystępnym językiem i demaskujemy mity krążące w branży reklamowej. Oprócz artykułów związanych stricte z SEO, poruszamy zagadnienia User Experience (UX), optymalizacji współczynnika konwersji (CRO), copywritingu sprzedażowego oraz odpowiedniego doboru słów kluczowych do architektury witryny. Współpracując z nami lub po prostu ucząc się z naszych bezpłatnych zasobów edukacyjnych, dajesz swojej stronie szansę na zdobycie rzeszy nowych, lojalnych odbiorców, którzy ufają Twojej marce tak samo mocno, jak wyszukiwarka ufa Twojej domenie. Subskrybuj nasze nowości, by nie przeoczyć najnowszych raportów, i bądź o krok przed firmami, które bagatelizują moc i potęgę widoczności organicznej. Zapraszamy do lektury i owocnego wdrażania naszych wskazówek na swoich stronach!' : 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning. Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities rather than mere theoretical guesswork. We want our blog to become your favorite source of valuable information that you can easily translate into higher conversions and greater profits for your company. We reveal the behind-the-scenes workings of artificial intelligence algorithms, explain complex technological phenomena in accessible language, and debunk myths circulating in the advertising industry. In addition to articles strictly related to SEO, we tackle topics of User Experience (UX), Conversion Rate Optimization (CRO), sales copywriting, and the proper selection of keywords for website architecture. By collaborating with us or simply learning from our free educational resources, you give your website a chance to gain a multitude of new, loyal audiences who trust your brand just as strongly as the search engine trusts your domain. Subscribe to our updates so you do not miss the latest reports, and stay one step ahead of companies that underestimate the power and potency of organic visibility. We invite you to read and fruitfully implement our tips on your own websites and digital projects today!'}
+        </p>
+      </div>
     </section>
   );
 }

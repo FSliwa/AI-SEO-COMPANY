@@ -129,7 +129,7 @@ export default function ArticleLokalnePage() {
                     Zdominuj lokalny rynek
                   </h3>
                   <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
-                    Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię.
+                    Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię. Dzięki naszym sprawdzonym i zaawansowanym rozwiązaniom, Twój biznes zyska maksymalną widoczność na mapach Google, co przełoży się na realny wzrost zainteresowania i zapytań ofertowych ze strony Twoich bezpośrednich klientów, zamieszkujących najbliższą okolicę. Pozwól nam zająć się pozycjonowaniem i skup się na rozwijaniu swojego biznesu!
                   </p>
                   <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
                     Skonsultuj Projekt
