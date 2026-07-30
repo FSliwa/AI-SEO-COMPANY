@@ -33,81 +33,70 @@ const faqWebDesign = [
 
 const webDesignPortfolioCases = [
   {
-    tag: 'MODEL HEADLESS ARCHITECTURE',
-    title: 'Model Headless CMS & Next.js App Router',
-    description: 'Rozdzielenie warstwy prezentacji od logiki biznesowej. Wykorzystanie Next.js React Server Components, ISR (Incremental Static Regeneration) oraz mikroserwisowego CMS dla natychmiastowego ładowania.',
+    tag: 'SZYBKOŚĆ I WYDAJNOŚĆ',
+    title: 'Błyskawiczne Ładowanie Strony',
+    description: 'Każda sekunda ładowania to utrata klientów. Projektujemy strony, które ładują się natychmiastowo, co drastycznie zmniejsza współczynnik odrzuceń i buduje zaufanie od pierwszego kliknięcia.',
     image: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
     metric: '0.3s',
-    metricLabel: 'Czas odpowiedzi (TTFB)',
+    metricLabel: 'Czas reakcji',
     metric2: '100/100',
-    metric2Label: 'Score Google Lighthouse'
+    metric2Label: 'Ocena w Google'
   },
   {
-    tag: 'MODEL DESIGN SYSTEM & ATOMIC',
-    title: 'System Projektowy i Architektura Atomowa',
-    description: 'Skalowalny system komponentów oparty na metodologii Atomic Design. Tworzenie spójnych tokenów projektowych (CSS variables, typografia, spacing, dark mode), eliminujące dług technologiczny.',
+    tag: 'SPÓJNY WIZERUNEK MARKI',
+    title: 'Skalowalny System Projektowy',
+    description: 'Nie tworzymy przypadkowych układów. Budujemy spójny system wizualny (Design System), dzięki któremu Twoja marka wygląda niezwykle profesjonalnie i wzbudza autorytet w segmencie B2B.',
     image: 'https://images.unsplash.com/photo-1566410824233-a8011929225c?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',
-    metricLabel: 'Spójność interfejsu (UI)',
-    metric2: '-60%',
-    metric2Label: 'Czas wdrażania zmian'
+    metricLabel: 'Spójność interfejsu',
+    metric2: 'Premium',
+    metric2Label: 'Odbiór marki'
   },
   {
-    tag: 'MODEL SPEED & PERFORMANCE',
-    title: 'Optymalizacja Edge Rendering & Hydration',
-    description: 'Serwerowe renderowanie na krawędzi sieci (Vercel Edge Functions), selektywne nawadnianie komponentów (Selective Hydration) oraz bezstratna kompresja mediów w formacie AVIF/WebP.',
+    tag: 'BEZPIECZEŃSTWO',
+    title: 'Niezawodna Architektura Bez Wtyczek',
+    description: 'Zapomnij o dziurawych systemach, ciągłych aktualizacjach i awariach. Nasze nowoczesne podejście oddziela treść od kodu, zapewniając pełną odporność na ataki i gwarantując bezawaryjne działanie.',
     image: 'https://images.unsplash.com/photo-1673036823812-b0d86a2cead1?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
-    metric: '0.4s',
-    metricLabel: 'Największe wyrenderowanie LCP',
-    metric2: '0.00',
-    metric2Label: 'Przesunięć układowych CLS'
+    metric: '99.99%',
+    metricLabel: 'Dostępność 24/7',
+    metric2: 'Zero',
+    metric2Label: 'Awarii i wirusów'
   },
   {
-    tag: 'MODEL ACCESSIBILITY & A11Y',
-    title: 'Standardy Dostępności WCAG 2.1 AA & Semantic DOM',
-    description: 'Pełna zgodność ze standardami WCAG 2.1 AA i bezbłędna semantyka HTML5. Optymalizacja nawigacji klawiaturą, atrybuty ARIA i podwyższony kontrast dla czytników ekranowych.',
+    tag: 'DOSTĘPNOŚĆ',
+    title: 'Zgodność ze Standardami WCAG',
+    description: 'Twoja strona będzie przyjazna dla każdego. Tworzymy serwisy, które są czytelne, responsywne i spełniają restrykcyjne wymogi prawne dotyczące dostępności cyfrowej dla instytucji i korporacji.',
     image: 'https://images.unsplash.com/photo-1709377058964-929af7f2d02f?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #EA580C 100%)',
-    metric: '100%',
-    metricLabel: 'Zgodność z WCAG 2.1 AA',
-    metric2: '100/100',
-    metric2Label: 'Wskaźnik Accessibility'
+    metric: 'WCAG 2.1',
+    metricLabel: 'Pełna zgodność',
+    metric2: '100%',
+    metric2Label: 'Czytelność'
   },
   {
-    tag: 'MODEL ANIMATION & RIVE',
-    title: 'Interakcje WebGL, Framer Motion & Rive',
-    description: 'Immersyjne micro-interakcje z wykorzystaniem akcelerowanych sprzętowo animacji GPU, realizowane bez obciążania głównego wątku przeglądarki (Main Thread).',
+    tag: 'ANIMACJE',
+    title: 'Płynne i Nowoczesne Interakcje',
+    description: 'Przykuwamy uwagę użytkowników subtelnymi, prestiżowymi animacjami, które ułatwiają nawigację i prowadzą klienta prosto do celu, bez zbędnego obciążania transferu danych.',
     image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #1E293B 0%, #334155 50%, #0F172A 100%)',
-    metric: '60 FPS',
-    metricLabel: 'Płynność animacji GPU',
-    metric2: '+45%',
-    metric2Label: 'Czas spędzony na stronie'
+    metric: '+45%',
+    metricLabel: 'Więcej czasu na stronie',
+    metric2: 'Premium',
+    metric2Label: 'Doświadczenie UX'
   },
   {
-    tag: 'MODEL SECURITY & JAMSTACK',
-    title: 'Architektura Jamstack & Zero Trust Security',
-    description: 'Eliminacja podatności monolitów CMS (brak tradycyjnej bazy danych na froncie, serwowanie statycznych plików z CDN). Pełna ochrona przed atakami DDoS, SQL Injection oraz XSS.',
-    image: 'https://images.unsplash.com/photo-1614292253389-bd2c1f89cd0e?auto=format&fit=crop&w=1200&q=80',
-    gradient: 'linear-gradient(135deg, #311B92 0%, #4A148C 50%, #880E4F 100%)',
-    metric: '99.99%',
-    metricLabel: 'Dostępność Uptime',
-    metric2: 'Zero',
-    metric2Label: 'Luki w bezpieczeństwie'
-  },
-  {
-    tag: 'MODEL CRO & CONVERSION',
-    title: 'Architektura Zorientowana na Konwersję (CRO)',
-    description: 'Precyzyjnie zaprojektowane ścieżki użytkownika (User Journey), strategiczne rozmieszczenie akcentów CTA, układy F-Shape i eliminacja barier w procesie ofertowym.',
+    tag: 'OPTYMALIZACJA KONWERSJI (CRO)',
+    title: 'Architektura Nakierowana na Sprzedaż',
+    description: 'Projektowanie stron internetowych to dla nas inżynieria sprzedaży. Precyzyjnie planujemy układ elementów i wezwania do akcji (CTA), aby zminimalizować porzucenia i zmaksymalizować ilość leadów B2B.',
     image: 'https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&w=1200&q=80',
-    gradient: 'linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%)',
+    gradient: 'linear-gradient(135deg, #311B92 0%, #4A148C 50%, #880E4F 100%)',
     metric: '+120%',
-    metricLabel: 'Współczynnik zapytań (CRO)',
+    metricLabel: 'Wzrost zapytań',
     metric2: '-35%',
-    metric2Label: 'Współczynnik odrzuceń'
+    metric2Label: 'Odrzucań'
   }
 ];
 
@@ -115,31 +104,31 @@ const webDesignCarouselItems = [
   {
     number: '01 — WYDAJNOŚĆ',
     metric: '< 0.5s',
-    title: 'Błyskawiczne Ładowanie LCP',
-    description: 'Statyczne i serwerowe renderowanie Next.js gwarantuje natychmiastowe otwieranie strony na urządzeniach mobilnych.',
+    title: 'Błyskawiczne Ładowanie',
+    description: 'Szybkość działania, która zachwyca użytkowników i zapewnia najwyższe oceny od Google.',
     width: 'min(85vw, 470px)',
     minHeight: '370px'
   },
   {
     number: '02 — UŻYTKOWNIK',
     metric: 'UX Premium',
-    title: 'Intuicyjny Interfejs B2B',
-    description: 'Projektujemy makietę w oparciu o czystą symetrię, czytelną typografię oraz architekturę nastawioną na cel sprzedażowy.',
+    title: 'Zaufanie i Autorytet',
+    description: 'Projektujemy przejrzyste strony B2B, w których profesjonalny układ buduje wizerunek niezawodnego partnera biznesowego.',
     width: 'min(75vw, 360px)'
   },
   {
     number: '03 — BEZPIECZEŃSTWO',
     metric: '100%',
-    title: 'Architektura Headless',
-    description: 'Separacja warstwy wizualnej od bazy danych całkowicie eliminuje podatności na ataki hakerskie i awarie systemowe.',
+    title: 'Brak Awarji',
+    description: 'Bezpieczna technologia, która eliminuje ryzyko włamań znane z przestarzałych systemów szablonowych.',
     width: 'min(80vw, 430px)',
     minHeight: '380px'
   },
   {
     number: '04 — SEO READY',
-    metric: 'Schema.org',
-    title: 'Czysty Kod i Mikrodane',
-    description: 'Semantyczna struktura HTML5 pozbawiona zbędnego kodu spowalniającego gotowa na natychmiastowe pozycjonowanie.',
+    metric: 'Zysk',
+    title: 'Więcej Zapytań',
+    description: 'Gotowa technicznie infrastruktura pozycjonująca, która generuje organiczne zapytania do Twojej firmy.',
     width: 'min(75vw, 370px)'
   }
 ];
@@ -247,12 +236,12 @@ export default function ProjektowanieStronPage() {
 
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Figma Design &amp; Makiety</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Projektowanie unikalnego wireframe'u oraz interaktywnych makiet UX w programie Figma z pełnym uwzględnieniem identyfikacji wizualnej marki.</p>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Profesjonalny Design i Makiety</h3>
+                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Nasze projektowanie stron internetowych zaczyna się od stworzenia czytelnych makiet i prototypów, w pełni dopasowanych do Twojej identyfikacji wizualnej i grupy docelowej.</p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wdrożenie Kodowe &amp; CRO</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Kodowanie czystego, semantycznego komponentu w Next.js oraz przetestowanie ścieżek konwersji klienta pod kątem najwyższego wskaźnika CTR.</p>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wdrożenie i Skalowanie Sprzedaży</h3>
+                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Gotowy projekt przenosimy do bezpiecznego i niezawodnego środowiska, dbając o zoptymalizowanie ścieżek zakupowych klienta (generowanie leadów).</p>
               </RevealItem>
             </RevealStagger>
           </div>

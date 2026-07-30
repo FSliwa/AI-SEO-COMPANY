@@ -52,32 +52,72 @@ export default function ArticleLokalnePage() {
           <Reveal delay={0.2}>
             <div style={{ fontSize: '1.15rem', lineHeight: 1.6, color: '#333336' }}>
               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                Rynek usług w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów, musisz zsynchronizować optymalizację serwisu z wizytówką Google.
+                Rynek usług w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów lokalnych, samo posiadanie strony to za mało. Kluczem jest perfekcyjna synergia między Twoją witryną, wizytówką Google i systemem pozyskiwania opinii. Poniżej przedstawiamy, jak pozycjonować firmę na poziomie dzielnicy i całego miasta, by wygrać wyścig o klientów z sąsiedztwa.
+              </p>
+
+              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '2.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                Czym właściwie jest pozycjonowanie lokalne (Local SEO)?
+              </h2>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                SEO lokalne to zbiór działań mających na celu zwiększenie widoczności firmy w wynikach wyszukiwania powiązanych z konkretną lokalizacją geograficzną (np. „dobry hydraulik warszawa wola”, „agencja reklamowa mokotów”). Kiedy użytkownik wyszukuje usługę na smartfonie, algorytm Google bierze pod uwagę jego fizyczną lokalizację i stara się dopasować do niej jak najbliższe, zaufane biznesy w tzw. Mapach Google (Local Pack).
+              </p>
+
+              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                Optymalizacja Profilu Firmy w Google (GBP)
+              </h2>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                Profil Firmy w Google (dawniej Google Moja Firma) to darmowe narzędzie i absolutny fundament lokalnego SEO. Jeśli Twoja firma nie ma założonej i zweryfikowanej wizytówki, tracisz nawet 70% potencjalnego ruchu z urządzeń mobilnych.
               </p>
               
-              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '2.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
-                Strategiczne filary pozycjonowania.
+              <ul style={{ listStyle: 'none', padding: 0, margin: '2rem 0', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Wybierz odpowiednią kategorię główną.</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Dodaj fizyczny adres i precyzyjne godziny otwarcia.</span>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Publikuj posty, oferty i zdjęcia bezpośrednio w wizytówce.</span>
+                </li>
+              </ul>
+
+              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                Strategia NAP (Name, Address, Phone)
               </h2>
-              
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Spójność wizytówki i witryny pod kątem danych NAP (Name, Address, Phone).</span>
-                </li>
-                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Optymalizacja kategorii w Google Profil Firmy.</span>
-                </li>
-                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Pozyskiwanie opinii klientów z frazami lokalnymi.</span>
-                </li>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                Sygnały NAP to jeden z głównych czynników rankingowych dla algorytmu lokalnego. Oznacza to, że nazwa firmy, jej adres i numer telefonu muszą być identyczne w każdym miejscu w Internecie. Zmiana nazwy ulicy lub nowy numer telefonu w jednym z zewnętrznych katalogów (np. Panorama Firm, Zumi, Yelp) podczas gdy wizytówka Google posiada inny format, wywołuje zamieszanie w robocie indeksującym i drastycznie obniża autorytet witryny.
+              </p>
+
+              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                Znaczenie prawdziwych recenzji od klientów
+              </h2>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                W Warszawie konkurencja z 500 pozytywnymi opiniami zawsze zdominuje firmę, która ma ich tylko 10. Kluczem do lokalnego SEO jest wdrożenie w firmie procesu ciągłego pozyskiwania opinii. Pamiętaj jednak o dwóch zasadach:
+              </p>
+              <ul style={{ marginBottom: '1.5rem', color: '#515154', paddingLeft: '1.5rem' }}>
+                <li>Google premiuje opinie zawierające odpowiednie frazy (np. "Polecam tę agencję SEO z Warszawy").</li>
+                <li>Jako właściciel firmy musisz zawsze odpowiadać na opinie, włączając w odpowiedź delikatne nawiązanie do lokalizacji.</li>
+              </ul>
+
+              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                Optymalizacja On-Page pod kątem miasta
+              </h2>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                Nie zapominaj o samej stronie internetowej! Zadbaj o to, aby słowo „Warszawa” oraz nazwa odpowiedniej dzielnicy pojawiały się w:
+              </p>
+              <ul style={{ marginBottom: '1.5rem', color: '#515154', paddingLeft: '1.5rem' }}>
+                <li>Zoptymalizowanych tytułach meta (Meta Title) i opisach (Meta Description).</li>
+                <li>W nagłówkach H1 na stronie ofertowej.</li>
+                <li>W schemacie danych ustrukturyzowanych LocalBusiness (JSON-LD), tak jak robimy to standardowo we wszystkich naszych realizacjach w AI SEO COMPANY.</li>
               </ul>
 
               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>

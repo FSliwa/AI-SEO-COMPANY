@@ -53,33 +53,62 @@ export default function ArticleCwvPage() {
           <Reveal delay={0.2}>
             <div style={{ fontSize: '1.15rem', lineHeight: 1.6, color: '#333336' }}>
               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są przesunięć elementów, osiągają wyższy czas przebywania na stronie.
+                Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są irytujących przesunięć elementów, osiągają znacznie wyższy czas przebywania na stronie. Przedstawiamy praktyczny przewodnik, jak optymalizować swoją stronę pod parametry prędkości w 2026 roku.
               </p>
               
               <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '2.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
-                Kluczowe wskaźniki jakości strony.
+                Dlaczego w ogóle przejmować się Core Web Vitals?
+              </h2>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według oficjalnych danych Google, opóźnienie w załadowaniu strony zaledwie o 1 do 3 sekund zwiększa prawdopodobieństwo porzucenia jej przez użytkownika o ponad 32%.
+              </p>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                Co więcej, algorytm Google premiuje w bezpłatnych wynikach wyszukiwania serwisy, które są lekkie i bezbłędnie zakodowane. Szybsza strona oznacza mniejszy koszt tzw. crawl budget, co sprzyja szybszej indeksacji nowych treści na Twoim blogu czy podstronach ofertowych.
+              </p>
+
+              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                Kluczowe wskaźniki (Metryki CWV) i ich optymalizacja
               </h2>
               
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '2rem 0', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}><strong>LCP (Largest Contentful Paint)</strong>: Czas renderowania elementu (poniżej 2,5s).</span>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>LCP (Largest Contentful Paint)</span>
+                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Czas renderowania największego widocznego elementu na stronie (najczęściej jest to baner z obrazkiem lub duży nagłówek tekstowy). Google wymaga wyniku poniżej 2,5 sekundy. Aby to osiągnąć, wdroż nowoczesne formaty mediów (WebP, AVIF), wstępnie ładuj (preload) krytyczne zasoby i wdróż renderowanie serwerowe.</span>
+                  </div>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}><strong>CLS (Cumulative Layout Shift)</strong>: Miernik stabilności wizualnej (poniżej 0,1).</span>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>CLS (Cumulative Layout Shift)</span>
+                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Miernik stabilności wizualnej (wynik idealny to poniżej 0,1). Wynika najczęściej z asynchronicznie ładujących się fontów (FOUT) lub z dynamicznie doczytujących się obrazków i reklam. Recepta: zadeklaruj zawsze stałą szerokość i wysokość atrybutów <code>width</code> i <code>height</code> dla wszystkich mediów oraz zablokuj miejsce pod ładowane z opóźnieniem skrypty (np. chat).</span>
+                  </div>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}><strong>INP (Interaction to Next Paint)</strong>: Pomiary opóźnienia interakcji użytkownika.</span>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>INP (Interaction to Next Paint)</span>
+                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Nowy standard zastępujący przestarzały FID. Mierzy opóźnienia interakcji – to znaczy czas między np. kliknięciem przycisku rozwinięcia menu, a fizyczną reakcją ekranu. Optymalizacja INP wymaga rozbicia długich zadań (Long Tasks) w głównym wątku JavaScript, zmniejszenia ilości wtyczek i redukcji zbędnego renderowania w React/Next.js.</span>
+                  </div>
                 </li>
               </ul>
+
+              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                Znaczenie TTFB i renderowania serwerowego (SSR)
+              </h2>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                Samo zmniejszanie rozmiaru obrazków nie pomoże, jeśli serwer odpowiada zbyt wolno (wskaźnik TTFB - Time to First Byte). Migracja na nowocześniejsze architektury (takie jak Jamstack, Next.js App Router z React Server Components) sprawia, że cały ciężar przetwarzania logiki bazy danych wykonywany jest raz na serwerze i dystrybuowany na węzły sieci CDN na całym świecie.
+              </p>
+              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co praktycznie gwarantuje zdobycie 100 punktów w teście PageSpeed Insights i deklasuje ociężałe monolityczne CMSy oparte o wtyczki.
+              </p>
 
               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
                 <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
