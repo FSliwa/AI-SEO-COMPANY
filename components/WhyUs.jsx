@@ -129,14 +129,14 @@ export default function WhyUs() {
     }
 
     const containerRect = container.getBoundingClientRect();
-    const containerCenterX = containerRect('left') + containerRect('width') / 2;
+    const containerCenterX = containerRect.left + containerRect.width / 2;
 
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
       const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect('left') + cardRect('width') / 2;
+      const cardCenterX = cardRect.left + cardRect.width / 2;
       const distance = Math.abs(containerCenterX - cardCenterX);
       if (distance < minDistance) {
         minDistance = distance;
@@ -154,7 +154,7 @@ export default function WhyUs() {
       if (cards[index]) {
         const containerRect = container.getBoundingClientRect();
         const cardRect = cards[index].getBoundingClientRect();
-        const scrollOffset = cardRect('left') - containerRect('left') + container.scrollLeft - (containerRect('width') - cardRect('width')) / 2;
+        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
         container.scrollTo({
           left: scrollOffset,
           behavior: 'smooth'

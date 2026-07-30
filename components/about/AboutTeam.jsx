@@ -63,14 +63,14 @@ export default function AboutTeam() {
     if (!cards || !cards.length) return;
 
     const containerRect = container.getBoundingClientRect();
-    const containerLeft = containerRect('left');
+    const containerLeft = containerRect.left;
 
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
       const cardRect = card.getBoundingClientRect();
-      const distance = Math.abs(cardRect('left') - containerLeft);
+      const distance = Math.abs(cardRect.left - containerLeft);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
