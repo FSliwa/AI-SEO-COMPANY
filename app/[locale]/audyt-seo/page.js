@@ -35,7 +35,7 @@ const auditCarouselItems = [
     metric: '99 / 100',
     title: 'PageSpeed & Core Web Vitals',
     titleEn: 'PageSpeed & Core Web Vitals',
-    description: locale === 'en' ? 'Order a professional SEO audit. We analyze technical errors, content, and backlinks to create an action plan for your website.' : 'Zamów profesjonalny audyt SEO. Analizujemy błędy techniczne, treści i linki profilu, aby stworzyć plan działania dla Twojej strony.',
+    description: 'Usuwamy render-blocking JavaScript i wdrażamy kompresję zdjęć Next-Gen (WebP/AVIF).',
     descriptionEn: 'We eliminate render-blocking JavaScript and optimize WebP/AVIF image rendering.',
     width: 'min(85vw, 460px)'
   },
