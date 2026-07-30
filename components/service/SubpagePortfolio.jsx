@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [], layout = "horizontal" }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const { lang } = useLanguage();
 
   if (!cases || cases.length === 0) return null;
 
@@ -165,10 +167,10 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   {/* Top Text */}
                   <div>
                     <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF', opacity: 0.9, marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
-                      {c.tag}
+                      {lang === 'pl' ? c.tag : (c.tagEn || c.tag)}
                     </div>
                     <h3 style={{ color: '#FFFFFF', fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-                      {c.title}
+                      {lang === 'pl' ? c.title : (c.titleEn || c.title)}
                     </h3>
                   </div>
 
@@ -181,11 +183,15 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     transition: 'opacity 0.4s ease',
                     color: '#FFFFFF'
                   }}>
-                    <p style={{ fontSize: '1.1rem', lineHeight: 1.6, opacity: 0.9, maxWidth: '500px' }}>{c.description}</p>
+                    <p style={{ fontSize: '1.1rem', lineHeight: 1.6, opacity: 0.9, maxWidth: '500px' }}>
+                      {lang === 'pl' ? c.description : (c.descriptionEn || c.description)}
+                    </p>
                     
                     {c.metric2 && (
                       <div style={{ marginTop: '2rem' }}>
-                        <div style={{ fontSize: '0.9rem', color: '#FFFFFF', opacity: 0.8, fontWeight: 500, marginBottom: '0.25rem' }}>{c.metric2Label}</div>
+                        <div style={{ fontSize: '0.9rem', color: '#FFFFFF', opacity: 0.8, fontWeight: 500, marginBottom: '0.25rem' }}>
+                          {lang === 'pl' ? c.metric2Label : (c.metric2LabelEn || c.metric2Label)}
+                        </div>
                         <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>{c.metric2}</div>
                       </div>
                     )}
@@ -195,7 +201,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                     <div>
                       <div style={{ fontSize: '1.1rem', color: '#FFFFFF', opacity: 0.9, fontWeight: 500, marginBottom: '0.25rem' }}>
-                        {c.metricLabel}
+                        {lang === 'pl' ? c.metricLabel : (c.metricLabelEn || c.metricLabel)}
                       </div>
                       <div style={{ fontSize: '3rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>
                         {c.metric}
@@ -234,7 +240,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                         letterSpacing: '0.05em',
                         textTransform: 'uppercase'
                       }}>
-                        {c.tag}
+                        {lang === 'pl' ? c.tag : (c.tagEn || c.tag)}
                       </div>
                       <div style={{ 
                         color: '#FFFFFF', 
@@ -249,21 +255,25 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     </div>
                     
                     <h3 style={{ color: '#FFFFFF', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 600, letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
-                      {c.title}
+                      {lang === 'pl' ? c.title : (c.titleEn || c.title)}
                     </h3>
                     <p style={{ color: '#86868B', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px', flex: 1 }}>
-                      {c.description}
+                      {lang === 'pl' ? c.description : (c.descriptionEn || c.description)}
                     </p>
                     
                     <div style={{ display: 'flex', gap: '3rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem' }}>
                       <div>
                         <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric}</div>
-                        <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>{c.metricLabel}</div>
+                        <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                          {lang === 'pl' ? c.metricLabel : (c.metricLabelEn || c.metricLabel)}
+                        </div>
                       </div>
                       {c.metric2 && (
                         <div>
                           <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric2}</div>
-                          <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>{c.metric2Label}</div>
+                          <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                            {lang === 'pl' ? c.metric2Label : (c.metric2LabelEn || c.metric2Label)}
+                          </div>
                         </div>
                       )}
                     </div>
@@ -344,7 +354,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
             e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
           }}
         >
-          Zobacz pełne portfolio wyników
+          {lang === 'pl' ? 'Zobacz pełne portfolio wyników' : 'View full portfolio of results'}
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>

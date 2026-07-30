@@ -21,7 +21,8 @@ const reviewsData = [
     bodyPl: 'AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł błyskawicznie, a klienci zachwycają się nowoczesną estetyką.',
     bodyEn: 'AI SEO COMPANY executed a full rebrand of our platform and web deployment. The results blew away our expectations — organic traffic skyrocketed and clients love our modern aesthetics.',
     metric: '+104%',
-    metricLabel: 'Wzrost ruchu'
+    metricLabel: 'Wzrost ruchu',
+    metricLabelEn: 'Traffic Growth'
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const reviewsData = [
     role: 'Branża Gastronomiczna • Zweryfikowany Partner',
     roleEn: 'Gastronomy & E-commerce • Verified Partner',
     tag: 'GASTRONOMIA',
+    tagEn: 'GASTRONOMY',
     metricBadge: 'Nowa Lokalizacja & Skalowanie',
     metricBadgeEn: 'New Location & Sales Scaling',
     image: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80',
@@ -38,7 +40,8 @@ const reviewsData = [
     bodyPl: 'Współpraca przy wdrożeniu serwisu oraz strategii cyfrowej dla nowo otwartej lokalizacji restauracji przebiegła wzorowo. Zbudowano dla nas intuicyjny portal zoptymalizowany pod konwersję i SEO, co natychmiast wygenerowało wysoki wolumen rezerwacji i wzrost przychodów.',
     bodyEn: 'Collaborating on the digital architecture and marketing launch for our newly opened restaurant location was seamless. They built an intuitive, high-converting platform with local SEO optimization that instantly drove reservation volumes and sales growth.',
     metric: '+220%',
-    metricLabel: 'Wzrost rezerwacji'
+    metricLabel: 'Wzrost rezerwacji',
+    metricLabelEn: 'Booking Growth'
   },
   {
     id: 3,
@@ -55,7 +58,8 @@ const reviewsData = [
     bodyPl: 'Wyróżnienie się w branży to ogromne wyzwanie. Stworzono dla nas tożsamość, która idealnie oddaje naszą innowacyjność, zapewniając nam niesamowitą przewagę nad konkurencją.',
     bodyEn: 'Standing out in tech is a massive challenge. AI SEO COMPANY created an identity for us that perfectly captures our innovation, giving us an incredible edge over the competition.',
     metric: '2.8k+',
-    metricLabel: 'Wyświetleń'
+    metricLabel: 'Wyświetleń',
+    metricLabelEn: 'Impressions'
   },
   {
     id: 4,
@@ -64,6 +68,7 @@ const reviewsData = [
     role: 'Branża Medyczna • Zweryfikowany Partner',
     roleEn: 'Healthcare Sector • Verified Partner',
     tag: 'MEDYCYNA',
+    tagEn: 'HEALTHCARE',
     metricBadge: '100% Obłożenia Kalendarza',
     metricBadgeEn: 'Fully Booked Schedule',
     image: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=800&q=80',
@@ -72,7 +77,8 @@ const reviewsData = [
     bodyPl: 'Architektura treści i pozycjonowanie zaowocowały pełnym kalendarzem wizyt. Agencja nie tylko projektuje piękne strony, ale dba o to, by te strony zarabiały prawdziwe pieniądze.',
     bodyEn: 'The content architecture and SEO positioning resulted in a fully booked calendar. The agency doesn\'t just design beautiful websites; they ensure those sites generate real revenue.',
     metric: '100%',
-    metricLabel: 'Obłożenia'
+    metricLabel: 'Obłożenia',
+    metricLabelEn: 'Booking Rate'
   },
   {
     id: 5,
@@ -81,6 +87,7 @@ const reviewsData = [
     role: 'Branża Deweloperska • Zweryfikowany Partner',
     roleEn: 'Real Estate Sector • Verified Partner',
     tag: 'NIERUCHOMOŚCI',
+    tagEn: 'REAL ESTATE',
     metricBadge: '+180% Leadów Ofertowych',
     metricBadgeEn: '+180% Property Inquiries',
     image: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80',
@@ -89,7 +96,8 @@ const reviewsData = [
     bodyPl: 'Podejście do projektowania UX to mistrzostwo. Użytkownicy spędzają na naszej stronie o wiele więcej czasu, a zapytania ofertowe na nasze inwestycje wzrosły drastycznie.',
     bodyEn: 'Their approach to UX design is masterful. Users spend much more time on our site, and leads for our properties have increased drastically.',
     metric: '+180%',
-    metricLabel: 'Leadów'
+    metricLabel: 'Leadów',
+    metricLabelEn: 'Leads'
   }
 ];
 
@@ -239,7 +247,7 @@ export default function Testimonials() {
                   {/* Top Text */}
                   <div>
                     <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF', opacity: 0.9, marginBottom: '0.75rem', letterSpacing: '0.05em' }}>
-                      {item.tag}
+                      {lang === 'pl' ? item.tag : (item.tagEn || item.tag)}
                     </div>
                     <h3 style={{ color: '#FFFFFF', fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
                       {lang === 'pl' ? item.leadPl : item.leadEn}
@@ -281,7 +289,7 @@ export default function Testimonials() {
                   <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                     <div>
                       <div style={{ fontSize: '1.1rem', color: '#FFFFFF', opacity: 0.9, fontWeight: 500, marginBottom: '0.25rem' }}>
-                        {item.metricLabel}
+                        {lang === 'pl' ? item.metricLabel : (item.metricLabelEn || item.metricLabel)}
                       </div>
                       <div style={{ fontSize: '3rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>
                         {item.metric}

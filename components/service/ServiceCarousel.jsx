@@ -2,8 +2,10 @@
 
 import { useState, useRef } from 'react';
 import { Reveal } from '@/components/ScrollReveal';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function ServiceCarousel({ tag, title, subtitle, items }) {
+  const { lang } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
 
@@ -158,19 +160,19 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
                 <div>
                   {item.number && (
                     <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '1.25rem', letterSpacing: '0.05em' }}>
-                      {item.number}
+                      {lang === 'pl' ? item.number : (item.numberEn || item.number)}
                     </div>
                   )}
                   {item.metric && (
                     <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.75rem', letterSpacing: '-0.04em' }}>
-                      {item.metric}
+                      {lang === 'pl' ? item.metric : (item.metricEn || item.metric)}
                     </div>
                   )}
                   <h3 style={{ fontSize: '1.45rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.25 }}>
-                    {item.title}
+                    {lang === 'pl' ? item.title : (item.titleEn || item.title)}
                   </h3>
                   <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.6, margin: 0 }}>
-                    {item.description}
+                    {lang === 'pl' ? item.description : (item.descriptionEn || item.description)}
                   </p>
                 </div>
               </div>

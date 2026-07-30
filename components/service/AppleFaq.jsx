@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Reveal } from '@/components/ScrollReveal';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
+  const { lang } = useLanguage();
   const [openIndex, setOpenIndex] = useState(0);
 
   const toggleAccordion = (index) => {
@@ -16,10 +18,10 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
     '@type': 'FAQPage',
     mainEntity: faqData.map((faq) => ({
       '@type': 'Question',
-      name: faq.question,
+      name: lang === 'pl' ? faq.question : (faq.questionEn || faq.question),
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer
+        text: lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer)
       }
     }))
   };
@@ -66,7 +68,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
                     }}
                   >
                     <span style={{ fontSize: '1.25rem', fontWeight: 600, paddingRight: '2rem' }}>
-                      {faq.question}
+                      {lang === 'pl' ? faq.question : (faq.questionEn || faq.question)}
                     </span>
                     <motion.div
                       animate={{ rotate: isOpen ? 45 : 0 }}
@@ -93,7 +95,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
                         transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                       >
                         <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}>
-                          {faq.answer}
+                          {lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer)}
                         </p>
                       </motion.div>
                     )}
