@@ -19,10 +19,24 @@ export default function sitemap() {
     '/cookies'
   ];
 
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: currentDate,
-    changeFrequency: route === '' || route.startsWith('/blog') ? 'weekly' : 'monthly',
-    priority: route === '' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85,
-  }));
+  const allRoutes = [];
+  
+  routes.forEach(route => {
+    // English version
+    allRoutes.push({
+      url: `${baseUrl}/en${route}`,
+      lastModified: currentDate,
+      changeFrequency: route === '' || route.startsWith('/blog') ? 'weekly' : 'monthly',
+      priority: route === '' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85,
+    });
+    // Polish version
+    allRoutes.push({
+      url: `${baseUrl}/pl${route}`,
+      lastModified: currentDate,
+      changeFrequency: route === '' || route.startsWith('/blog') ? 'weekly' : 'monthly',
+      priority: route === '' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85,
+    });
+  });
+
+  return allRoutes;
 }
