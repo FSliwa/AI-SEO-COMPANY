@@ -2,23 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const tocItems = [
-  { id: 'czym-jest', label: 'Czym jest link building B2B i czym różni się od B2C?' },
-  { id: 'dlaczego-linki', label: 'Dlaczego linki przekładają się na wyniki sprzedaży w B2B?' },
-  { id: 'rodzaje-linkow', label: 'Jakie rodzaje linków mają największą wartość w B2B?' },
-  { id: 'strategie', label: 'Skuteczne strategie pozyskiwania linków B2B' },
-  { id: 'outreach', label: 'Outreach, personalizacja i skalowanie procesu' },
-  { id: 'jakosc-linku', label: 'Jak ocenić jakość linku przed przyjęciem go do profilu?' },
-  { id: 'roi', label: 'Jak mierzyć ROI link buildingu B2B' },
-  { id: 'outsourcing', label: 'Kiedy outsourcować link building i jak wybrać agencję?' },
-  { id: 'ryzyka', label: 'Jakie ryzyka i błędy najczęściej psują programy link buildingu?' },
-  { id: 'digital-pr', label: 'Dlaczego digital PR i ekspertyza działają najlepiej w B2B?' },
-  { id: 'wnioski', label: 'Kluczowe wnioski' },
-  { id: 'ai-seo-company', label: 'Jak podchodzimy do link buildingu w Ai-seo-company' },
-  { id: 'wsparcie', label: 'Jak możemy wesprzeć Twój program link buildingu B2B?' },
-];
-
-export default function ArticleTOC() {
+export default function ArticleTOC({ items = [] }) {
   const [activeId, setActiveId] = useState('');
   const [isOpen, setIsOpen] = useState(true);
 
@@ -34,13 +18,13 @@ export default function ArticleTOC() {
       { rootMargin: '-80px 0px -70% 0px', threshold: 0.1 }
     );
 
-    tocItems.forEach(({ id }) => {
+    items.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [items]);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -103,7 +87,7 @@ export default function ArticleTOC() {
           gap: '0.35rem',
           counterReset: 'toc',
         }}>
-          {tocItems.map(({ id, label }) => (
+          {items.map(({ id, title, label }) => (
             <li key={id} style={{ counterIncrement: 'toc' }}>
               <button
                 onClick={() => scrollTo(id)}
@@ -123,7 +107,7 @@ export default function ArticleTOC() {
                   lineHeight: 1.4,
                 }}
               >
-                {label}
+                {title || label}
               </button>
             </li>
           ))}

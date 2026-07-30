@@ -7,7 +7,12 @@ export default function Services() {
   const lang = useLocale();
   const t = useTranslations('services');
 
-  const pillars = t('pillars');
+  const pillarsCount = 3;
+  const pillars = Array.from({ length: pillarsCount }).map((_, i) => ({
+    num: t(`pillars.${i}.num`),
+    title: t(`pillars.${i}.title`),
+    desc: t(`pillars.${i}.desc`)
+  }));
 
   return (
     <section className="services" id="uslugi">

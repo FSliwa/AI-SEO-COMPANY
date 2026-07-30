@@ -10,7 +10,7 @@ export default function CookiesBanner() {
   const [showManageModal, setShowManageModal] = useState(false);
   const [mounted, setMounted] = useState(false);
   const lang = useLocale();
-  const t = translations[lang]?.cookies;
+  const t = useTranslations('cookies');
 
   const [consentState, setConsentState] = useState({
     essential: true,

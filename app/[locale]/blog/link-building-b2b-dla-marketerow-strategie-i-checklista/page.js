@@ -7,18 +7,27 @@ export const metadata = {
 };
 
 import Header from '@/components/Header';
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import ArticleTOC from '@/components/ArticleTOC';
 import { Reveal } from '@/components/ScrollReveal';
 
-import TableOfContents from '@/components/TableOfContents';
-
 export default function ArticleLinkBuildingB2bPage() {
-  const iLink = (href, text) => <a href={href} style={{ color: '#1D1D1F', textDecoration: 'underline', textDecorationColor: '#86868B', textUnderlineOffset: '3px', fontWeight: 500 }}>{text}</a>;
-  const eLink = (href, text) => <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: '#1D1D1F', textDecoration: 'underline', textDecorationColor: '#86868B', textUnderlineOffset: '3px', fontWeight: 500 }}>{text}</a>;
-  const tocItems = [
-    
+      const tocItems = [
+    { id: 'czym-jest', title: 'Czym jest link building B2B i czym różni się od B2C?' },
+    { id: 'dlaczego-linki', title: 'Dlaczego linki przekładają się na wyniki sprzedaży w B2B?' },
+    { id: 'rodzaje-linkow', title: 'Jakie rodzaje linków mają największą wartość w B2B?' },
+    { id: 'strategie', title: 'Skuteczne strategie pozyskiwania linków B2B' },
+    { id: 'outreach', title: 'Outreach, personalizacja i skalowanie procesu' },
+    { id: 'jakosc-linku', title: 'Jak ocenić jakość linku przed przyjęciem go do profilu?' },
+    { id: 'roi', title: 'Jak mierzyć ROI link buildingu B2B' },
+    { id: 'outsourcing', title: 'Kiedy outsourcować link building i jak wybrać agencję?' },
+    { id: 'ryzyka', title: 'Jakie ryzyka i błędy najczęściej psują programy link buildingu?' },
+    { id: 'digital-pr', title: 'Dlaczego digital PR i ekspertyza działają najlepiej w B2B?' },
+    { id: 'wnioski', title: 'Kluczowe wnioski' },
+    { id: 'ai-seo-company', title: 'Jak podchodzimy do link buildingu w Ai-seo-company' },
+    { id: 'wsparcie', title: 'Jak możemy wesprzeć Twój program link buildingu B2B?' }
   ];
 
   return (
@@ -69,7 +78,7 @@ export default function ArticleLinkBuildingB2bPage() {
               
               <p style={{ marginBottom: '1.5rem' }}>Trzy działania, które warto uruchomić w pierwszym miesiącu:</p>
               <ol>
-                <li>{iLink('/audyt-seo', 'Audyt')} istniejących relacji — sprawdź, czy partnerzy, klienci i dostawcy linkują do Ciebie poprawnie i czy linki prowadzą do właściwych stron (nie tylko do strony głównej).</li>
+                <li><Link href="/audyt-seo">Audyt</Link> istniejących relacji — sprawdź, czy partnerzy, klienci i dostawcy linkują do Ciebie poprawnie i czy linki prowadzą do właściwych stron (nie tylko do strony głównej).</li>
                 <li>Przygotowanie jednego linkable asset — raport branżowy, kalkulator ROI lub benchmark oparty na danych własnych; to waluta do pitchowania mediom.</li>
                 <li>Identyfikacja 15–20 publikacji branżowych czytanych przez Twoich kupujących i nawiązanie pierwszego kontaktu z redaktorami.</li>
               </ol>
@@ -79,19 +88,19 @@ export default function ArticleLinkBuildingB2bPage() {
               <ArticleTOC />
 
               {/* ===== SECTION: Czym jest link building B2B ===== */}
-              <h3>Czym jest link building B2B i czym różni się od B2C?</h3>
-              <p style={{ marginBottom: '1.5rem' }}>Link building B2B to proces zdobywania odnośników z zewnętrznych stron internetowych, które wzmacniają autorytet Twojej domeny w oczach wyszukiwarek i potwierdzają wiarygodność firmy w oczach decyzjonariuszy. Współpraca z profesjonalną {iLink('/', 'agencją SEO')} pozwala ten proces systematycznie planować i skalować.</p>
+              <h2 id="czym-jest">Czym jest link building B2B i czym różni się od B2C?</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Link building B2B to proces zdobywania odnośników z zewnętrznych stron internetowych, które wzmacniają autorytet Twojej domeny w oczach wyszukiwarek i potwierdzają wiarygodność firmy w oczach decyzjonariuszy. Współpraca z profesjonalną <Link href="/">agencją SEO</Link> pozwala ten proces systematycznie planować i skalować.</p>
               <p style={{ marginBottom: '1.5rem' }}>Różnica wobec B2C jest fundamentalna. W B2C liczy się wolumen i zasięg masowy. W B2B jeden link z branżowego czasopisma czytanego przez 5 000 dyrektorów zakupów jest wart więcej niż sto linków z ogólnotematycznych portali. Kupujący B2B prowadzą research przez tygodnie lub miesiące, a cytaty eksperckie i wzmianki w zaufanych publikacjach branżowych bezpośrednio wpływają na to, które firmy trafiają na shortlistę.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Trzy typowe cele programu linkowego w B2B:</p>
               <ul>
-                <li>Widoczność przy researchu zakupowym — pojawienie się w wynikach wyszukiwania na frazy, których używają kupujący na etapie oceny dostawców. Dobra {iLink('/pozycjonowanie-stron-internetowych', 'strategia pozycjonowania stron internetowych')} jest tu kluczowa.</li>
+                <li>Widoczność przy researchu zakupowym — pojawienie się w wynikach wyszukiwania na frazy, których używają kupujący na etapie oceny dostawców. Dobra <Link href="/pozycjonowanie-stron-internetowych">strategia pozycjonowania stron internetowych</Link> jest tu kluczowa.</li>
                 <li>Brand trust — potwierdzenie przez trzecią stronę, że firma istnieje w realnym ekosystemie branżowym.</li>
                 <li>Wsparcie SEO dla stron produktowych i ofertowych — budowanie autorytetu stron, które bezpośrednio konwertują.</li>
               </ul>
 
               {/* ===== SECTION: Dlaczego linki ===== */}
-              <h3>Dlaczego linki przekładają się na wyniki sprzedaży w B2B?</h3>
+              <h2 id="dlaczego-linki">Dlaczego linki przekładają się na wyniki sprzedaży w B2B?</h2>
               <p style={{ marginBottom: '1.5rem' }}>Artykuły branżowe i odnośniki editorialne pozostają istotnym czynnikiem rankingowym i źródłem ruchu referencyjnego. W B2B ten ruch ma szczególną wartość, bo pochodzi od osób, które aktywnie szukają rozwiązań, a nie przeglądają treści przypadkowo.</p>
 
               <p style={{ marginBottom: '1.5rem' }}>Metryki, których warto szukać w programie linkowym:</p>
@@ -101,12 +110,12 @@ export default function ArticleLinkBuildingB2bPage() {
                 <li>Pozycje na frazy zakupowe dla stron produktowych i ofertowych.</li>
                 <li>Ruch referencyjny z konkretnych publikacji i jego jakość (czas na stronie, konwersje).</li>
               </ul>
-              <p style={{ marginBottom: '1.5rem' }}>Orientacyjny timeline efektów jest dłuższy niż w B2C: pierwsze sygnały wzrostu branded search pojawiają się po kilku tygodniach od pierwszych publikacji, pierwsze zmiany pozycji po około 1-3 miesiącach, a pełne efekty kampanii mogą wymagać ponad roku systematycznej pracy. To nie jest taktyka na kwartał, lecz inwestycja w autorytet rynkowy. Więcej o {iLink('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', 'kosztach i budżetach pozycjonowania')} dowiesz się z naszego przewodnika.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Orientacyjny timeline efektów jest dłuższy niż w B2C: pierwsze sygnały wzrostu branded search pojawiają się po kilku tygodniach od pierwszych publikacji, pierwsze zmiany pozycji po około 1-3 miesiącach, a pełne efekty kampanii mogą wymagać ponad roku systematycznej pracy. To nie jest taktyka na kwartał, lecz inwestycja w autorytet rynkowy. Więcej o <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">kosztach i budżetach pozycjonowania</Link> dowiesz się z naszego przewodnika.</p>
               <p style={{ marginBottom: '1.5rem' }}>Dane: W badaniu z 2025 roku digital PR jest wskazywany jako jedna z najskuteczniejszych taktyk zdobywania linków.</p>
               <p style={{ marginBottom: '1.5rem' }}>Proponowana proporcja profilu linków dla firm B2B powinna faworyzować linkowanie wewnętrzne: 60% linków internal, 15% dofollow zewnętrzne, 15% nofollow + wzmianki, 10% UGC; tempo zdobywania zewnętrznych linków dla małych i średnich firm to 5–20 miesięcznie.</p>
 
               {/* ===== SECTION: Rodzaje linków ===== */}
-              <h3>Jakie rodzaje linków mają największą wartość w B2B?</h3>
+              <h2 id="rodzaje-linkow">Jakie rodzaje linków mają największą wartość w B2B?</h2>
               <p style={{ marginBottom: '1.5rem' }}>Nie każdy link jest równy. W B2B hierarchia jest wyraźna i warto ją znać przed planowaniem działań.</p>
               <ul>
                 <li><strong>Linki editorialne</strong> to szczyt piramidy. Redakcja branżowego czasopisma lub portalu decyduje się Cię zacytować, bo Twoje dane lub ekspertyza są naprawdę wartościowe. Takich linków nie można kupić, a ich wartość dla SEO i brand trust jest nieproporcjonalnie wysoka.</li>
@@ -118,7 +127,7 @@ export default function ArticleLinkBuildingB2bPage() {
               <p style={{ marginBottom: '1.5rem' }}>Priorytet przy budowaniu profilu: zacznij od linków partnerskich (szybkie wygrane z istniejących relacji), następnie artykuły eksperckie, a dopiero potem kampanie digital PR oparte na danych.</p>
 
               {/* ===== SECTION: Strategie ===== */}
-              <h3>Skuteczne strategie pozyskiwania linków B2B krok po kroku</h3>
+              <h2 id="strategie">Skuteczne strategie pozyskiwania linków B2B krok po kroku</h2>
               
               <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Tworzenie i promocja research-driven assets</h4>
               <p style={{ marginBottom: '1.5rem' }}>Raport branżowy, benchmark lub badanie ankietowe to najlepsza waluta do pitchowania. Jedno dobrze przygotowane badanie może przynieść wiele naturalnych backlinków z publikacji, które same cytują Twoje dane.</p>
@@ -128,11 +137,11 @@ export default function ArticleLinkBuildingB2bPage() {
                 <li>Zbierz dane (ankieta wśród klientów, analiza własnej bazy, scraping publicznych danych).</li>
                 <li>Przygotuj raport z kluczowymi wnioskami i wizualizacjami gotowymi do osadzenia.</li>
                 <li>Wyślij raport do 20–30 dziennikarzy i redaktorów z personalizowanym pitchem, zanim opublikujesz go publicznie.</li>
-                <li>Po publikacji monitoruj wzmianki i prośby o cytowanie przez {eLink('https://ahrefs.com/alerts', 'Ahrefs Alerts')} lub {eLink('https://www.google.com/alerts', 'Google Alerts')}.</li>
+                <li>Po publikacji monitoruj wzmianki i prośby o cytowanie przez <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> lub <a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a>.</li>
               </ul>
 
               <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR i komentarze eksperckie</h4>
-              <p style={{ marginBottom: '1.5rem' }}>Digital PR w B2B polega na dostarczaniu unikalnych danych i komentarzy praktyków. Redaktorzy branżowi szukają ekspertów z realnym doświadczeniem, nie PR-owych komunikatów. Praktyczny proces: zarejestruj się w serwisach łączących dziennikarzy z ekspertami ({eLink('https://www.connectively.us/', 'Connectively')}, dawniej HARO, oraz {eLink('https://muckrack.com/', 'Muck Rack')}) i odpowiadaj na zapytania w ciągu 2–4 godzin od ich pojawienia się. Szybkość odpowiedzi jest tu kluczowa.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Digital PR w B2B polega na dostarczaniu unikalnych danych i komentarzy praktyków. Redaktorzy branżowi szukają ekspertów z realnym doświadczeniem, nie PR-owych komunikatów. Praktyczny proces: zarejestruj się w serwisach łączących dziennikarzy z ekspertami (<a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a>, dawniej HARO, oraz <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a>) i odpowiadaj na zapytania w ciągu 2–4 godzin od ich pojawienia się. Szybkość odpowiedzi jest tu kluczowa.</p>
 
               <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Artykuły gościnne z byline</h4>
               <p style={{ marginBottom: '1.5rem' }}>Wybierz 5–10 publikacji, które Twoi kupujący rzeczywiście czytają. Zaproponuj temat, który rozwiązuje konkretny problem czytelnika, a nie promuje Twoją firmę. Redakcje odrzucają pitche, które brzmią jak reklamy.</p>
@@ -141,8 +150,8 @@ export default function ArticleLinkBuildingB2bPage() {
               <p style={{ marginBottom: '1.5rem' }}>Znajdź strony w Twojej branży z uszkodzonymi linkami prowadzącymi do nieistniejących zasobów, a następnie zaproponuj własny zasób jako zamiennik. Konwersja outreachu w tej taktyce jest umiarkowana i zależy od dopasowania segmentu.</p>
               <p style={{ marginBottom: '0.5rem' }}>Checklista broken link building:</p>
               <ul>
-                <li>Użyj {eLink('https://ahrefs.com/site-explorer', 'Ahrefs Site Explorer')} lub Check My Links, by znaleźć uszkodzone linki na stronach branżowych.</li>
-                <li>Sprawdź, jaki zasób był pod oryginalnym URL ({eLink('https://web.archive.org/', 'Wayback Machine')}).</li>
+                <li>Użyj <a href="https://ahrefs.com/site-explorer" target="_blank" rel="noopener noreferrer">Ahrefs Site Explorer</a> lub Check My Links, by znaleźć uszkodzone linki na stronach branżowych.</li>
+                <li>Sprawdź, jaki zasób był pod oryginalnym URL (<a href="https://web.archive.org/" target="_blank" rel="noopener noreferrer">Wayback Machine</a>).</li>
                 <li>Przygotuj lub wskaż własny zasób, który faktycznie zastępuje brakującą treść.</li>
                 <li>Wyślij spersonalizowaną wiadomość do webmastera z konkretną propozycją zamiany.</li>
               </ul>
@@ -158,14 +167,14 @@ export default function ArticleLinkBuildingB2bPage() {
               <p style={{ marginBottom: '1.5rem' }}>Porada profesjonalisty: Zanim zaczniesz cold outreach, przejrzyj istniejące relacje biznesowe. Partnerzy, dostawcy i klienci, którzy już Cię znają, mają znacznie wyższy wskaźnik odpowiedzi niż zimne kontakty. Zacznij od nich i zbierz pierwsze linki bez kosztów outreachu.</p>
 
               {/* ===== SECTION: Outreach ===== */}
-              <h3>Outreach, personalizacja i skalowanie procesu</h3>
-              <p style={{ marginBottom: '1.5rem' }}>Efektywny outreach w B2B to kwestia jakości kontaktu, nie wolumenu wiadomości. Skuteczne programy digital PR skupiają się na relacjach z 15–30 dziennikarzami z publikacji czytanych przez decydentów, a nie na masowym rozsyłaniu szablonów. Każda {iLink('/', 'agencja marketingowa')} specjalizująca się w B2B powinna rozumieć tę różnicę.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Rekomendowany stos narzędzi: {eLink('https://ahrefs.com/', 'Ahrefs')} lub {eLink('https://www.semrush.com/', 'Semrush')} do analizy profilu linkowego i identyfikacji celów, {eLink('https://www.connectively.us/', 'Connectively')} lub {eLink('https://muckrack.com/', 'Muck Rack')} do monitorowania zapytań dziennikarskich, {eLink('https://hunter.io/', 'Hunter.io')} do weryfikacji adresów e-mail, Notion lub HubSpot jako proste CRM do śledzenia statusu outreachu.</p>
+              <h2 id="outreach">Outreach, personalizacja i skalowanie procesu</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Efektywny outreach w B2B to kwestia jakości kontaktu, nie wolumenu wiadomości. Skuteczne programy digital PR skupiają się na relacjach z 15–30 dziennikarzami z publikacji czytanych przez decydentów, a nie na masowym rozsyłaniu szablonów. Każda <Link href="/">agencja marketingowa</Link> specjalizująca się w B2B powinna rozumieć tę różnicę.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Rekomendowany stos narzędzi: <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> lub <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> do analizy profilu linkowego i identyfikacji celów, <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> lub <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> do monitorowania zapytań dziennikarskich, <a href="https://hunter.io/" target="_blank" rel="noopener noreferrer">Hunter.io</a> do weryfikacji adresów e-mail, Notion lub HubSpot jako proste CRM do śledzenia statusu outreachu.</p>
               <p style={{ marginBottom: '1.5rem' }}>Przykładowy workflow jednej kampanii: identyfikacja 30 celów (publikacje + redaktorzy) → personalizacja pitcha pod każdą redakcję → wysyłka → follow-up po 5 dniach roboczych → finalizacja i monitorowanie opublikowanego linku w Ahrefs Alerts.</p>
 
               {/* ===== SECTION: Jakość linku ===== */}
-              <h3>Jak ocenić jakość linku przed przyjęciem go do profilu?</h3>
-              <p style={{ marginBottom: '1.5rem' }}>Nie każdy link, który możesz zdobyć, warto zdobywać. Poniższa macierz pomaga szybko zdecydować. Profesjonalny {iLink('/audyt-seo', 'audyt SEO')} zawsze zawiera analizę jakości istniejącego profilu linkowego.</p>
+              <h2 id="jakosc-linku">Jak ocenić jakość linku przed przyjęciem go do profilu?</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Nie każdy link, który możesz zdobyć, warto zdobywać. Poniższa macierz pomaga szybko zdecydować. Profesjonalny <Link href="/audyt-seo">audyt SEO</Link> zawsze zawiera analizę jakości istniejącego profilu linkowego.</p>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
@@ -187,16 +196,16 @@ export default function ArticleLinkBuildingB2bPage() {
                 </table>
               </div>
               <p style={{ marginBottom: '1.5rem' }}>Kiedy przyjąć link niskiego DR? Jeśli strona ma realny ruch, jest tematycznie precyzyjna i pochodzi z relacji partnerskiej, niski DR nie dyskwalifikuje linku. Ryzyko pojawia się przy kombinacji: niski DR, brak ruchu, podejrzany profil wychodzący.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Do szybkiej oceny używaj {eLink('https://ahrefs.com/site-explorer', 'Ahrefs Site Explorer')}, {eLink('https://www.semrush.com/', 'Semrush Authority Score')} oraz {eLink('https://search.google.com/search-console', 'Google Search Console')} do weryfikacji, czy strona źródłowa jest indeksowana i nie ma manualnych kar.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Do szybkiej oceny używaj <a href="https://ahrefs.com/site-explorer" target="_blank" rel="noopener noreferrer">Ahrefs Site Explorer</a>, <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush Authority Score</a> oraz <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> do weryfikacji, czy strona źródłowa jest indeksowana i nie ma manualnych kar.</p>
 
               {/* ===== SECTION: ROI ===== */}
-              <h3>Jak mierzyć ROI link buildingu B2B: metryki i koszty</h3>
+              <h2 id="roi">Jak mierzyć ROI link buildingu B2B: metryki i koszty</h2>
               <p style={{ marginBottom: '1.5rem' }}>Cztery główne metryki programu linkowego:</p>
               <ul>
                 <li>Liczba nowych referring domains z tematycznie powiązanych stron, mierzona miesięcznie.</li>
                 <li>Średni DR nowych linków jako wskaźnik jakości pozyskiwanych źródeł.</li>
                 <li>Organic traffic uplift dla stron, do których aktywnie budujesz linki.</li>
-                <li>Leady i konwersje z ruchu organicznego przypisane do wspieranych stron przez {eLink('https://analytics.google.com/', 'Google Analytics 4')} lub CRM.</li>
+                <li>Leady i konwersje z ruchu organicznego przypisane do wspieranych stron przez <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer">Google Analytics 4</a> lub CRM.</li>
               </ul>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
@@ -215,11 +224,11 @@ export default function ArticleLinkBuildingB2bPage() {
                   </tbody>
                 </table>
               </div>
-              <p style={{ marginBottom: '1.5rem' }}>Orientacyjne widełki kosztów programu link buildingu w Polsce: rzetelny program digital PR + outreach zwykle kosztuje więcej niż tani, masowy linkbuilding, ale przynosi lepszy zwrot. Sprawdź szczegóły w naszym artykule: {iLink('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', 'ile kosztuje pozycjonowanie')} w 2026 roku. Przykładowe widełki: PR-owy koszt 3–10k zł/mies., outreach gościnny 2–6k zł/mies., mieszanka PR + outreach 5–15k zł/mies. (orientacyjnie).</p>
+              <p style={{ marginBottom: '1.5rem' }}>Orientacyjne widełki kosztów programu link buildingu w Polsce: rzetelny program digital PR + outreach zwykle kosztuje więcej niż tani, masowy linkbuilding, ale przynosi lepszy zwrot. Sprawdź szczegóły w naszym artykule: <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">ile kosztuje pozycjonowanie</Link> w 2026 roku. Przykładowe widełki: PR-owy koszt 3–10k zł/mies., outreach gościnny 2–6k zł/mies., mieszanka PR + outreach 5–15k zł/mies. (orientacyjnie).</p>
 
               {/* ===== SECTION: Outsourcing ===== */}
-              <h3>Kiedy outsourcować link building i jak wybrać agencję?</h3>
-              <p style={{ marginBottom: '1.5rem' }}>Trzy sygnały, że warto sięgnąć po zewnętrznego partnera — doświadczoną {iLink('/', 'agencję SEO Warszawa')} lub innego miasta:</p>
+              <h2 id="outsourcing">Kiedy outsourcować link building i jak wybrać agencję?</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Trzy sygnały, że warto sięgnąć po zewnętrznego partnera — doświadczoną <Link href="/">agencję SEO Warszawa</Link> lub innego miasta:</p>
               <ul>
                 <li>Brak wewnętrznych zasobów do prowadzenia systematycznego outreachu i produkcji treści eksperckich.</li>
                 <li>Potrzeba szybszego dostępu do sieci relacji z redakcjami branżowymi, których budowanie od zera zajmuje miesiące.</li>
@@ -244,17 +253,17 @@ export default function ArticleLinkBuildingB2bPage() {
               </ul>
 
               {/* ===== SECTION: Ryzyka ===== */}
-              <h3>Jakie ryzyka i błędy najczęściej psują programy link buildingu B2B?</h3>
+              <h2 id="ryzyka">Jakie ryzyka i błędy najczęściej psują programy link buildingu B2B?</h2>
               <p style={{ marginBottom: '1.5rem' }}>Najczęstsze błędy mają jeden wspólny mianownik: priorytetyzowanie wolumenu nad jakością.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Kupowanie linków i sieci PBN to taktyki, które mogą przynieść krótkoterminowy wzrost pozycji, ale narażają domenę na kary algorytmiczne lub manualne. Eksperci branżowi konsekwentnie wskazują, że earned links i partnerstwa dają lepsze wyniki w dłuższej perspektywie. Profesjonalna {iLink('/pozycjonowanie-stron-internetowych', 'optymalizacja SEO')} zawsze stawia jakość ponad wolumen.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Kupowanie linków i sieci PBN to taktyki, które mogą przynieść krótkoterminowy wzrost pozycji, ale narażają domenę na kary algorytmiczne lub manualne. Eksperci branżowi konsekwentnie wskazują, że earned links i partnerstwa dają lepsze wyniki w dłuższej perspektywie. Profesjonalna <Link href="/pozycjonowanie-stron-internetowych">optymalizacja SEO</Link> zawsze stawia jakość ponad wolumen.</p>
               <p style={{ marginBottom: '1.5rem' }}>Koncentracja linków na stronie głównej zamiast na stronach produktowych, ofertowych i case studies. W B2B kupujący trafiają na konkretne strony przez konkretne frazy, więc autorytet powinien wspierać te strony bezpośrednio.</p>
               <p style={{ marginBottom: '1.5rem' }}>Niezgodne z kontekstem anchor texty w stylu exact-match na komercyjne frazy to jeden z wyraźniejszych sygnałów manipulacji dla algorytmów Google.</p>
               <p style={{ marginBottom: '1.5rem' }}>Brak dywersyfikacji źródeł — profil złożony z linków z jednego typu stron (np. wyłącznie katalogi) wygląda nienaturalnie i nie buduje autorytetu tematycznego.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Jak minimalizować ryzyko: dokumentuj każdy outreach, preferuj linki editorialne i partnerskie, dywersyfikuj typy stron źródłowych i regularnie audytuj profil linkowy przez {eLink('https://ahrefs.com/', 'Ahrefs')} lub {eLink('https://www.semrush.com/', 'Semrush')}.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Jak minimalizować ryzyko: dokumentuj każdy outreach, preferuj linki editorialne i partnerskie, dywersyfikuj typy stron źródłowych i regularnie audytuj profil linkowy przez <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> lub <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a>.</p>
               <p style={{ marginBottom: '1.5rem' }}>Nota: link building sam w sobie nie jest nielegalny. Problemy prawne i naruszenia wytycznych pojawiają się przy ukrytych płatnościach za linki bez oznaczenia sponsorowanego i przy naruszeniu zasad wydawców. Transparentność w relacjach z redakcjami chroni zarówno Ciebie, jak i partnera.</p>
 
               {/* ===== SECTION: Digital PR ===== */}
-              <h3>Dlaczego digital PR i ekspertyza praktyczna działają najlepiej w B2B?</h3>
+              <h2 id="digital-pr">Dlaczego digital PR i ekspertyza praktyczna działają najlepiej w B2B?</h2>
               <p style={{ marginBottom: '1.5rem' }}>Digital PR powinien celować w publikacje branżowe, podcasty i newslettery, a nie w media ogólnotematyczne. Decyzjonariusze B2B czytają specjalistyczne źródła, a link z takiej publikacji ma podwójną wartość: SEO i brand trust wśród właściwej grupy odbiorców.</p>
               <p style={{ marginBottom: '0.5rem' }}>Badania i obserwacje z 2025–2026 roku wskazują kilka prawidłowości:</p>
               <ul>
@@ -265,13 +274,13 @@ export default function ArticleLinkBuildingB2bPage() {
               <p style={{ marginBottom: '1.5rem' }}>Obserwacja: Dane własne — badania, benchmarki, narzędzia — są najlepszą walutą do pitchowania historii. Jeden dobrze przygotowany raport może wygenerować znacznie więcej naturalnych backlinków niż dziesiątki postów gościnnych.</p>
               <p style={{ marginBottom: '0.5rem' }}>Najszybszy zwrot uwagi redakcji dają:</p>
               <ul>
-                <li>Odpowiedzi na zapytania dziennikarskie przez {eLink('https://www.connectively.us/', 'Connectively')} lub {eLink('https://muckrack.com/', 'Muck Rack')} w ciągu 2–4 godzin.</li>
+                <li>Odpowiedzi na zapytania dziennikarskie przez <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> lub <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> w ciągu 2–4 godzin.</li>
                 <li>Bylinedy z unikatową tezą, a nie artykuły przeglądowe dostępne wszędzie.</li>
                 <li>Transkrypcje i podsumowania podcastów branżowych, które redakcje chętnie linkują jako materiał źródłowy.</li>
               </ul>
 
               {/* ===== SECTION: Wnioski ===== */}
-              <h3>Kluczowe wnioski</h3>
+              <h2 id="wnioski">Kluczowe wnioski</h2>
               <p style={{ marginBottom: '1.5rem' }}>Skuteczny link building B2B wymaga systemu łączącego dane własne, relacje z redakcjami branżowymi i strategiczne partnerstwa, a nie masowego outreachu do przypadkowych stron.</p>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
@@ -299,14 +308,14 @@ export default function ArticleLinkBuildingB2bPage() {
               </ul>
 
               {/* ===== SECTION: Ai-seo-company ===== */}
-              <h3>Jak podchodzimy do link buildingu B2B w Ai-seo-company</h3>
-              <p style={{ marginBottom: '1.5rem' }}>Każdy program link buildingu zaczyna się od {iLink('/audyt-seo', 'audytu SEO')}: sprawdzamy aktualny profil linkowy, identyfikujemy luki tematyczne i mapujemy istniejące relacje partnerskie, które można natychmiast aktywować. Dopiero na tej podstawie projektujemy linkable asset, który ma realną szansę na cytowanie w mediach branżowych.</p>
+              <h2 id="ai-seo-company">Jak podchodzimy do link buildingu B2B w Ai-seo-company</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Każdy program link buildingu zaczyna się od <Link href="/audyt-seo">audytu SEO</Link>: sprawdzamy aktualny profil linkowy, identyfikujemy luki tematyczne i mapujemy istniejące relacje partnerskie, które można natychmiast aktywować. Dopiero na tej podstawie projektujemy linkable asset, który ma realną szansę na cytowanie w mediach branżowych.</p>
               <p style={{ marginBottom: '1.5rem' }}>Proces wygląda następująco: audyt i analiza konkurencji, produkcja zasobu (raport, kalkulator, benchmark), outreach do wyselekcjonowanych redakcji i partnerów, publikacja, a następnie miesięczne raportowanie KPI obejmujące nowe referring domains, średni DR i ruch organiczny na wspieranych stronach.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Klienci Ai-seo-company często obserwują wzrost przychodów po wdrożeniu kompleksowych usług SEO, w tym {iLink('/pozycjonowanie-stron-internetowych', 'pozycjonowania stron')}, programów link buildingu oraz {iLink('/projektowanie-stron-internetowych', 'projektowania stron internetowych')} zoptymalizowanych pod konwersję. Model abonamentowy sprawdza się przy długoterminowych programach digital PR, natomiast projekt jednorazowy jest odpowiedni dla firm, które chcą przetestować podejście.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Klienci Ai-seo-company często obserwują wzrost przychodów po wdrożeniu kompleksowych usług SEO, w tym <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron</Link>, programów link buildingu oraz <Link href="/projektowanie-stron-internetowych">projektowania stron internetowych</Link> zoptymalizowanych pod konwersję. Model abonamentowy sprawdza się przy długoterminowych programach digital PR, natomiast projekt jednorazowy jest odpowiedni dla firm, które chcą przetestować podejście.</p>
 
               {/* ===== SECTION: Wsparcie ===== */}
-              <h3>Jak możemy wesprzeć Twój program link buildingu B2B?</h3>
-              <p style={{ marginBottom: '1.5rem' }}>Firmy B2B, które chcą budować autorytet w wyszukiwarkach bez ryzyka kar i bez marnowania budżetu na masowy outreach, potrzebują partnera z dostępem do właściwych redakcji i procesem opartym na danych. Jako {iLink('/', 'agencja SEO')} z doświadczeniem w {iLink('/pozycjonowanie-stron-internetowych', 'pozycjonowaniu')} i krajowym, rozumiemy specyfikę polskiego rynku.</p>
+              <h2 id="wsparcie">Jak możemy wesprzeć Twój program link buildingu B2B?</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Firmy B2B, które chcą budować autorytet w wyszukiwarkach bez ryzyka kar i bez marnowania budżetu na masowy outreach, potrzebują partnera z dostępem do właściwych redakcji i procesem opartym na danych. Jako <Link href="/">agencja SEO</Link> z doświadczeniem w <Link href="/pozycjonowanie-stron-internetowych">pozycjonowaniu</Link> i krajowym, rozumiemy specyfikę polskiego rynku.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company prowadzi kampanie link buildingu B2B łączące digital PR, produkcję raportów branżowych, personalizowany outreach i przejrzyste raportowanie. Pracujemy w modelu abonamentowym dla firm planujących długoterminowy program oraz w modelu projektowym dla tych, które chcą zacząć od pilotażu. Każda kampania zaczyna się od bezpłatnego audytu profilu linkowego i analizy luk tematycznych.</p>
               <p style={{ marginBottom: '1.5rem' }}>Jeśli chcesz wiedzieć, które publikacje czytają Twoi kupujący i jak szybko możesz zdobyć pierwsze editorialne linki, skontaktuj się z nami i umów wstępną konsultację. Przygotujemy brief kampanii dopasowany do Twojej branży i budżetu.</p>
@@ -314,18 +323,18 @@ export default function ArticleLinkBuildingB2bPage() {
               <h3>Przydatne narzędzia i źródła do dalszej lektury</h3>
               <p style={{ marginBottom: '0.5rem' }}>Narzędzia do analizy i monitoringu:</p>
               <ul>
-                <li>{eLink('https://ahrefs.com/', 'Ahrefs')} — analiza profilu linkowego, monitoring nowych i utraconych linków, identyfikacja celów do broken link building.</li>
-                <li>{eLink('https://www.semrush.com/', 'Semrush')} — Authority Score, analiza konkurencji, śledzenie pozycji na frazy zakupowe.</li>
-                <li>{eLink('https://search.google.com/search-console', 'Google Search Console')} — weryfikacja indeksacji, monitoring ruchu organicznego na wspieranych stronach.</li>
-                <li>{eLink('https://www.connectively.us/', 'Connectively')} (dawniej HARO) — platforma łącząca dziennikarzy z ekspertami.</li>
-                <li>{eLink('https://muckrack.com/', 'Muck Rack')} — baza dziennikarzy i redaktorów branżowych.</li>
-                <li>{eLink('https://www.google.com/alerts', 'Google Alerts')} / {eLink('https://ahrefs.com/alerts', 'Ahrefs Alerts')} — monitoring wzmianek o marce i nowych linków w czasie rzeczywistym.</li>
+                <li><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> — analiza profilu linkowego, monitoring nowych i utraconych linków, identyfikacja celów do broken link building.</li>
+                <li><a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> — Authority Score, analiza konkurencji, śledzenie pozycji na frazy zakupowe.</li>
+                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> — weryfikacja indeksacji, monitoring ruchu organicznego na wspieranych stronach.</li>
+                <li><a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> (dawniej HARO) — platforma łącząca dziennikarzy z ekspertami.</li>
+                <li><a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> — baza dziennikarzy i redaktorów branżowych.</li>
+                <li><a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a> / <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> — monitoring wzmianek o marce i nowych linków w czasie rzeczywistym.</li>
               </ul>
 
               <p style={{ marginBottom: '1.5rem' }}>Jak zorganizować pilotaż: wybierz jedną taktykę (np. broken link building lub outreach partnerski), zdefiniuj 10–15 celów, uruchom kampanię przez 4–6 tygodni i oceń wskaźnik odpowiedzi oraz konwersję do publikacji. Wyniki pilotażu dają realną podstawę do decyzji o skali programu.</p>
 
               <h3>Rekomendacja</h3>
-              <p style={{ marginBottom: '1.5rem' }}>{iLink('/', 'Agencja SEO Warszawa')} | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY</p>
+              <p style={{ marginBottom: '1.5rem' }}><Link href="/">Agencja SEO Warszawa</Link> | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY</p>
               <p style={{ marginBottom: '1.5rem', fontStyle: 'italic', color: '#86868B' }}>Artykuł wygenerowany przez BabyLoveGrowth</p>
 
               {/* Clear CTA Block */}

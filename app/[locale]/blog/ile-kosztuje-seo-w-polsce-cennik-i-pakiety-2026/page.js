@@ -12,7 +12,7 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import Link from 'next/link';
 
-import TableOfContents from '@/components/TableOfContents';
+import ArticleTOC from '@/components/ArticleTOC';
 
 export default function ArticleCennikPage() {
   const tocItems = [
@@ -74,7 +74,7 @@ export default function ArticleCennikPage() {
               <p>
                 Co kupujesz za te pieniądze w praktyce? Za niższe kwoty miesięczne otrzymasz monitoring i drobne poprawki, z większym budżetem możliwa jest regularna praca nad treścią, naprawy techniczne i kilka linków, a przy większych nakładach rozpoczyna się pełna strategia z content marketingiem, link buildingiem i raportowaniem.
               </p>
-              <TableOfContents items={tocItems} />
+              <ArticleTOC items={tocItems} />
               <h2 id="szybki-przegl-d-typowych-bud-et-w">Szybki przegląd typowych budżetów:</h2>
               <ul>
                 <li><strong>Firma lokalna (np. gabinet, warsztat, salon):</strong> 800–1 200 zł/mies. (minimalny próg sensowności)</li>

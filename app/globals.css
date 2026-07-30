@@ -2240,3 +2240,54 @@ section {
 .article-content h2[id], .article-content h3[id] {
   scroll-margin-top: 100px;
 }
+
+/* Article Content Formatting */
+.article-content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #515154;
+}
+.article-content p {
+  margin-bottom: 1.5rem;
+}
+.article-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1D1D1F;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.article-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1D1D1F;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.article-content ul, .article-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+.article-content a {
+  color: #1D1D1F;
+  text-decoration: underline;
+  text-decoration-color: #86868B;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.article-content a:hover {
+  text-decoration-color: #1D1D1F;
+}
+
+.article-content .lead {
+  font-size: 1.4rem;
+  color: #1D1D1F;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}

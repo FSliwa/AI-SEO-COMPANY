@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 
-import TableOfContents from '@/components/TableOfContents';
+import ArticleTOC from '@/components/ArticleTOC';
 
 export default function ArticleLokalnePage() {
   const tocItems = [
@@ -64,7 +64,7 @@ export default function ArticleLokalnePage() {
               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                 Rynek usług w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów lokalnych, samo posiadanie strony to za mało. Kluczem jest perfekcyjna synergia między Twoją witryną, wizytówką Google i systemem pozyskiwania opinii. Poniżej przedstawiamy, jak pozycjonować firmę na poziomie dzielnicy i całego miasta, by wygrać wyścig o klientów z sąsiedztwa.
               </p>
-              <TableOfContents items={tocItems} />
+              <ArticleTOC items={tocItems} />
               <h2 id="czym-w-a-ciwie-jest-pozycjonowanie-lokalne-local-seo">Czym właściwie jest pozycjonowanie lokalne (Local SEO)?</h2>
               <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
                 SEO lokalne to zbiór działań mających na celu zwiększenie widoczności firmy w wynikach wyszukiwania powiązanych z konkretną lokalizacją geograficzną (np. „dobry hydraulik warszawa wola”, „agencja reklamowa mokotów”). Kiedy użytkownik wyszukuje usługę na smartfonie, algorytm Google bierze pod uwagę jego fizyczną lokalizację i stara się dopasować do niej jak najbliższe, zaufane biznesy w tzw. Mapach Google (Local Pack).

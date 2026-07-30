@@ -10,7 +10,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
-import TableOfContents from '@/components/TableOfContents';
+import ArticleTOC from '@/components/ArticleTOC';
 
 export default function ArticleCwvPage() {
   const tocItems = [
@@ -59,11 +59,11 @@ export default function ArticleCwvPage() {
 
           <Reveal delay={0.2}>
             <div className="article-content">
-              <p className="lead" style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+              <p className="lead">
                 Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są irytujących przesunięć elementów, osiągają znacznie wyższy czas przebywania na stronie. Przedstawiamy praktyczny przewodnik, jak optymalizować swoją stronę pod parametry prędkości w 2026 roku.
               </p>
 
-              <TableOfContents items={tocItems} />
+              <ArticleTOC items={tocItems} />
               
               <h2 id="dlaczego-przejmowac-sie">
                 Dlaczego w ogóle przejmować się Core Web Vitals?
@@ -121,7 +121,7 @@ export default function ArticleCwvPage() {
 
               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
                 <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
-                  <h3 style={{ color: '#1D1D1F', margin: 0, marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                  <h3>
                     Przyspiesz swoją stronę
                   </h3>
                   <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
