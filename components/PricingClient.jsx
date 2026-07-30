@@ -45,8 +45,8 @@ export default function PricingClient() {
             </h1>
             <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
-                ? 'Brak ukrytych opłat i skomplikowanych umów. Płać za mierzalne wyniki i stały rozwój widoczności w wyszukiwarkach.' 
-                : 'No hidden fees or complicated contracts. Pay for measurable results and continuous search visibility growth.'}
+                ? 'Poznaj nasz cennik pozycjonowania stron 2026. Brak ukrytych opłat i skomplikowanych umów. Sprawdź pakiety i ceny SEO i płać za mierzalne wyniki w wyszukiwarkach.' 
+                : 'Discover our SEO Pricing 2026. No hidden fees or complicated contracts. Check our packages and costs and pay for measurable search visibility growth.'}
             </p>
           </Reveal>
         </div>

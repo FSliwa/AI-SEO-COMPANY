@@ -48,8 +48,8 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               letterSpacing: '-0.01em'
             }}>
               {lang === 'pl' 
-                ? 'Profesjonalne projektowanie stron internetowych to inwestycja w bezpieczny i stabilny fundament Twojego biznesu. Tworzymy firmowe strony www, które chronią przed atakami hakerskimi, ładują się błyskawicznie i zamieniają ruch w płacących klientów oraz zapytania ofertowe.' 
-                : 'Professional website design is an investment in a secure and stable foundation for your business. We create corporate websites that protect against hacker attacks, load instantly, and turn traffic into paying customers and valuable leads.'}
+                ? 'Profesjonalne projektowanie stron internetowych to inwestycja w stabilny fundament. Tworzymy Web Design dla Firm, który chroni przed atakami, ładuje się błyskawicznie i zamienia ruch w klientów.' 
+                : 'Professional Web Design and Development is an investment in a stable foundation. We create Business Websites that protect against attacks, load instantly, and turn traffic into customers.'}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>

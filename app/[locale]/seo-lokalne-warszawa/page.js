@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
+  title: locale === 'en' ? 'Local SEO Warsaw | Local Business Optimization' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: 'Skuteczne pozycjonowanie lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
   alternates: {
     canonical: `/${locale}/seo-lokalne-warszawa`,
@@ -17,6 +17,7 @@ import ServiceCarousel from '@/components/service/ServiceCarousel';
 import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+import { useLocale } from 'next-intl';
 
 const faqData = [
   {
@@ -138,6 +139,7 @@ const carouselItems = [
 ];
 
 export default function SeoLokalneWarszawaPage() {
+  const lang = useLocale();
   return (
     <>
       <Header />
@@ -148,7 +150,7 @@ export default function SeoLokalneWarszawaPage() {
           <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Reveal>
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                MARKETING LOKALNY B2B & B2C
+                {lang === 'pl' ? 'MARKETING LOKALNY B2B & B2C' : 'LOCAL B2B & B2C MARKETING'}
               </div>
               
               <h1 style={{ 
@@ -159,7 +161,7 @@ export default function SeoLokalneWarszawaPage() {
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
-                SEO Lokalne Warszawa<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Zdominuj Swoją Ofertą
+                {lang === 'pl' ? <>SEO Lokalne Warszawa<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Zdominuj Swoją Ofertą</> : <>Local SEO Warsaw<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Dominate Your Offer</>}
               </h1>
               <p style={{ 
                 fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 
@@ -170,11 +172,11 @@ export default function SeoLokalneWarszawaPage() {
                 fontWeight: 500,
                 letterSpacing: '-0.01em'
               }}>
-                Wykorzystaj potęgę Map Google. Skuteczne pozycjonowanie lokalne pozwala skalować firmy (usługi, gabinety, sklepy), łącząc zaawansowaną analitykę ze sprawdzonymi strategiami widoczności. Nasze seo lokalne zamienia kliknięcia w prawdziwe zyski.
+                {lang === 'pl' ? 'Wykorzystaj potęgę Map Google. Skuteczne SEO Lokalne Warszawa (pozycjonowanie lokalne) pozwala skalować firmy (usługi, gabinety, sklepy), łącząc zaawansowaną analitykę ze sprawdzonymi strategiami. Zdominuj swoją ofertą rynek!' : 'Harness the power of Google Maps. Effective Local SEO Warsaw (local business optimization) helps scale businesses by combining advanced analytics with proven visibility strategies. Dominate your offer in the local market!'}
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                 <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
-                  Sprawdź Swój Potencjał
+                  {lang === 'pl' ? 'Sprawdź Swój Potencjał' : 'Check Your Potential'}
                 </a>
               </div>
             </Reveal>

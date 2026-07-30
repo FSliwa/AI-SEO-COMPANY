@@ -34,7 +34,9 @@ export default function BlogLibrary() {
               {lang === 'pl' ? 'Biblioteka Artykułów SEO i IT' : 'SEO and IT Articles Library'}
             </h1>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
-              {lang === 'pl' ? 'Wszystkie publikacje naszego zespołu w jednym miejscu. Przejrzyj naszą bibliotekę artykułów.' : 'All publications from our team in one place. Browse our complete articles library.'}
+              {lang === 'pl' 
+                ? 'Biblioteka Artykułów SEO i Web Design od ekspertów AI SEO COMPANY. Wszystkie publikacje naszego zespołu w jednym miejscu.' 
+                : 'SEO and Web Design Articles Library from AI SEO COMPANY experts. All publications from our team in one place.'}
             </p>
           </div>
         </Reveal>

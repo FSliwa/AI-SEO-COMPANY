@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: 'Blog | Poradnik SEO i Web Design | AI SEO COMPANY',
+  title: locale === 'en' ? 'Blog | SEO and Web Design Guide | AI SEO COMPANY' : 'Blog | Poradnik SEO i Web Design | AI SEO COMPANY',
   description: 'Czytaj najnowsze artykuły o SEO, analityce, budowaniu konwersji i projektowaniu stron B2B na naszym blogu.',
   alternates: {
     canonical: `/${locale}/blog`,

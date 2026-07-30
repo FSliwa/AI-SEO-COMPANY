@@ -74,7 +74,7 @@ export default function ArticleLinkBuildingB2bPage() {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                Ekspertka od marketingu online, która tworzy skuteczną strategię linkowania dla firm z sektora B2B.
+                Ekspertka od marketingu online przedstawia kompletny przewodnik - Link building B2B dla marketerów: strategia i checklista krok po kroku.
               </p>
 
               <p style={{ marginBottom: '1.5rem' }}>Skuteczny link building B2B opiera się na trzech filarach: digital PR opartym na danych własnych, strategicznych partnerstwach branżowych i precyzyjnie wybranych publikacjach eksperckich. Masowy outreach do przypadkowych stron nie działa w B2B, bo decydjonariusze weryfikują Twoją firmę przez pryzmat tego, kto Cię cytuje, nie ile masz linków.</p>

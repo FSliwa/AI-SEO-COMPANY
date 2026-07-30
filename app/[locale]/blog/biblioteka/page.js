@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: 'Biblioteka Artykułów SEO i Web Design | AI SEO COMPANY',
+  title: locale === 'en' ? 'SEO and Web Design Articles Library | AI SEO COMPANY' : 'Biblioteka Artykułów SEO i Web Design | AI SEO COMPANY',
   description: 'Wszystkie publikacje naszego zespołu w jednym miejscu. Przeglądaj pełną bibliotekę artykułów o pozycjonowaniu i web designie.',
   alternates: {
     canonical: `/${locale}/blog/biblioteka`,

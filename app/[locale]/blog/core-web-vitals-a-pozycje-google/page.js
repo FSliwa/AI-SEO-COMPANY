@@ -63,7 +63,7 @@ export default function ArticleCwvPage() {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są irytujących przesunięć elementów, osiągają znacznie wyższy czas przebywania na stronie. Przedstawiamy praktyczny przewodnik, jak optymalizować swoją stronę pod parametry prędkości w 2026 roku.
+                Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są irytujących przesunięć elementów, osiągają wyższe pozycje oraz znacznie wyższy czas przebywania na stronie. Przedstawiamy przewodnik: Core Web Vitals a pozycje w Google w 2026 roku.
               </p>
 
               <ArticleTOC items={tocItems} />

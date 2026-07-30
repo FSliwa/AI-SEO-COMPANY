@@ -17,6 +17,11 @@ export default function CookiesContent() {
             {t('title')}
           </h1>
           <div style={{ color: '#334155', fontSize: '1.1rem', lineHeight: 1.8 }}>
+            <p>
+              {lang === 'pl' 
+                ? 'Poniżej znajduje się Polityka Cookies serwisu AI SEO COMPANY.' 
+                : 'Below you will find the Cookies Policy of AI SEO COMPANY.'}
+            </p>
             <p>{t('content')}</p>
             {lang === 'pl' ? (
               <>

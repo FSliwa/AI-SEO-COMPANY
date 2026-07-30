@@ -47,8 +47,8 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               letterSpacing: '-0.01em'
             }}>
               {lang === 'pl' 
-                ? 'Odkryj prawdziwe przyczyny braku widoczności w Google i odblokuj pełny potencjał sprzedażowy serwisu. Weryfikujemy ponad 50 krytycznych elementów algorytmu.'
-                : 'Discover the real reasons for poor Google visibility and unlock your site\'s full sales potential. We verify over 50 critical algorithm elements.'}
+                ? 'Zamów profesjonalny Audyt SEO (analiza i optymalizacja) w AI SEO COMPANY. Nasza diagnoza techniczna i precyzyjna optymalizacja odkryją przyczyny braku widoczności w Google i odblokują potencjał sprzedażowy serwisu.'
+                : 'Order a professional SEO Audit (analysis and optimization) from AI SEO COMPANY. Our technical diagnosis and precise optimization will discover the real reasons for poor Google visibility and unlock your site\'s full sales potential.'}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>

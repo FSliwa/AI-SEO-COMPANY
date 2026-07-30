@@ -65,7 +65,7 @@ export default function ArticleLokalnePage() {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                Rynek usług w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów lokalnych, samo posiadanie strony to za mało. Kluczem jest perfekcyjna synergia między Twoją witryną, wizytówką Google i systemem pozyskiwania opinii. Poniżej przedstawiamy, jak pozycjonować firmę na poziomie dzielnicy i całego miasta, by wygrać wyścig o klientów z sąsiedztwa.
+                Rynek usług w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów lokalnych, samo posiadanie strony to za mało. Poniżej przedstawiamy kompletny Poradnik 2026: Jak Pozycjonować Firmę Lokalnie w Google?
               </p>
               <ArticleTOC items={tocItems} />
               <h2 id="czym-w-a-ciwie-jest-pozycjonowanie-lokalne-local-seo">Czym właściwie jest pozycjonowanie lokalne (Local SEO)?</h2>

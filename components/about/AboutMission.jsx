@@ -184,7 +184,7 @@ export default function AboutMission() {
               {lang === 'pl' ? 'Nie jesteśmy zwykłą agencją. Jesteśmy architektami Twojego wzrostu' : 'We are not just an agency. We are the architects of your growth'}
             </h1>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
-              {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych.' : 'We craft digital solutions backed by hard analytics and buyer psychology.'}
+              {lang === 'pl' ? 'O nas: Jako nowoczesna Agencja SEO Warszawa (AI SEO COMPANY), tworzymy rozwiązania poparte twardymi danymi analitycznymi i napędzamy Twój wzrost.' : 'About us: As a leading SEO Agency Warsaw (AI SEO COMPANY), we craft digital solutions backed by hard analytics. We are the architects of your digital growth.'}
             </p>
           </Reveal>
 

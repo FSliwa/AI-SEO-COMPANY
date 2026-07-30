@@ -51,8 +51,8 @@ export default function BlogGrid() {
             textAlign: 'left'
           }}>
             {lang === 'pl' 
-              ? 'Przeczytaj nasze najnowsze artykuły z dziedziny pozycjonowania i optymalizacji.'
-              : 'Read our latest articles on SEO and optimization.'}
+              ? 'Nasz Blog to praktyczny Poradnik SEO i Web Design, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze najnowsze artykuły z dziedziny pozycjonowania i optymalizacji.'
+              : 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization.'}
           </p>
         </Reveal>
 

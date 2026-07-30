@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
+  title: locale === 'en' ? 'Website SEO | B2B Optimization | AI SEO COMPANY' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
   description: 'Skuteczne pozycjonowanie stron internetowych oparte na danych. Podniesiemy widoczność Twojego biznesu i przekształcimy ruch w płacących klientów.',
   alternates: {
     canonical: `/${locale}/pozycjonowanie-stron-internetowych`,
