@@ -21,83 +21,118 @@ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 const faqData = [
   {
     question: 'Kiedy zobaczę efekty pozycjonowania lokalnego w Warszawie?',
-    answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Zbudowanie solidnej, wiodącej pozycji w konkurencyjnych dzielnicach Warszawy to proces na 3-6 miesięcy.'
+    questionEn: 'When will I see the effects of local SEO in Warsaw?',
+    answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Zbudowanie solidnej, wiodącej pozycji w konkurencyjnych dzielnicach Warszawy to proces na 3-6 miesięcy.',
+    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. Building a solid, leading position in competitive Warsaw districts is a 3-6 month process.'
   },
   {
     question: 'Czy muszę posiadać fizyczne biuro w Warszawie?',
-    answer: 'Google preferuje firmy z weryfikowalnym adresem fizycznym. Jeśli obsługujesz klientów mobilnie na terenie Warszawy (np. hydraulik, mobilny mechanik), możemy ukryć dokładny adres, konfigurując tzw. obszar świadczenia usług (Service Area Business).'
+    questionEn: 'Do I need a physical office in Warsaw?',
+    answer: 'Google preferuje firmy z weryfikowalnym adresem fizycznym. Jeśli obsługujesz klientów mobilnie na terenie Warszawy (np. hydraulik, mobilny mechanik), możemy ukryć dokładny adres, konfigurując tzw. obszar świadczenia usług (Service Area Business).',
+    answerEn: 'Google prefers businesses with a verifiable physical address. If you serve clients mobile across Warsaw (e.g., plumber, mobile mechanic), we can hide the exact address by configuring a Service Area Business.'
   },
   {
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
-    answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów.'
+    questionEn: 'How does local SEO differ from traditional SEO?',
+    answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów.',
+    answerEn: 'Local SEO focuses on the "Local Pack"—results from Google Maps—and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
   }
 ];
 
 const portfolioCases = [
   {
     tag: 'WIZYTÓWKA GOOGLE (GBP)',
+    tagEn: 'GOOGLE BUSINESS PROFILE (GBP)',
     title: 'Optymalizacja Profilu Firmy',
+    titleEn: 'Business Profile Optimization',
     description: 'Konfigurujemy Twoją wizytówkę Google od A do Z. Wdrażamy odpowiednie słowa kluczowe, precyzyjne kategorie i system postów, który przyciąga uwagę klientów przeglądających Mapy w Warszawie.',
+    descriptionEn: 'We configure your Google listing from A to Z. We implement the right keywords, precise categories, and a post system that attracts customers browsing Maps in Warsaw.',
     image: '/images/unsplash-1604871000636-074fa5117945.jpg',
     gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
     metric: '+150%',
     metricLabel: 'Wyświetlenia',
+    metricLabelEn: 'Views',
     metric2: '+85%',
-    metric2Label: 'Telefony z Map'
+    metric2Label: 'Telefony z Map',
+    metric2LabelEn: 'Calls from Maps'
   },
   {
     tag: 'SYGNAŁY NAP & CYTACJE',
+    tagEn: 'NAP SIGNALS & CITATIONS',
     title: 'Budowanie Autorytetu Lokalnego',
+    titleEn: 'Building Local Authority',
     description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Gwarantujemy pełną spójność nazwy, adresu i telefonu (NAP), co jest potężnym sygnałem zaufania dla Google.',
+    descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We guarantee complete consistency of Name, Address, and Phone (NAP), which is a powerful trust signal for Google.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',
     metricLabel: 'Spójność NAP',
+    metricLabelEn: 'NAP Consistency',
     metric2: 'Top 3',
-    metric2Label: 'Local Pack'
+    metric2Label: 'Local Pack',
+    metric2LabelEn: 'Local Pack'
   },
   {
     tag: 'OPINIE KLIENTÓW',
+    tagEn: 'CUSTOMER REVIEWS',
     title: 'Strategia Zbierania Opinii',
+    titleEn: 'Review Collection Strategy',
     description: 'Wdrażamy w Twojej firmie zautomatyzowane procesy pozyskiwania pięciogwiazdkowych recenzji od zadowolonych klientów. Opinie to najważniejszy czynnik konwersji (Social Proof) na warszawskim rynku.',
+    descriptionEn: 'We implement automated processes in your company for acquiring five-star reviews from satisfied customers. Reviews are the most important conversion factor (Social Proof) in the local market.',
     image: '/images/unsplash-1522202176988-66273c2fd55f.jpg',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
     metric: '5.0',
     metricLabel: 'Średnia ocen',
+    metricLabelEn: 'Average rating',
     metric2: 'Trust',
-    metric2Label: 'Wiarygodność'
+    metric2Label: 'Wiarygodność',
+    metric2LabelEn: 'Credibility'
   }
 ];
 
 const carouselItems = [
   {
     number: '01 / AUDYT',
+    numberEn: '01 / AUDIT',
     metric: 'Diagnoza',
+    metricEn: 'Diagnosis',
     title: 'Analiza Konkurencji',
+    titleEn: 'Competitor Analysis',
     description: 'Weryfikujemy, co robią liderzy w Twojej dzielnicy i wyznaczamy plan działania oparty na danych.',
+    descriptionEn: 'We verify what the leaders in your area are doing and define a data-driven action plan.',
     width: 'min(85vw, 470px)',
     minHeight: '370px'
   },
   {
     number: '02 / MAPY',
+    numberEn: '02 / MAPS',
     metric: 'GMB',
     title: 'Konfiguracja Wizytówki',
+    titleEn: 'Profile Configuration',
     description: 'Przejmujemy kontrolę nad Twoim Profilem w Google, uzupełniając go o odpowiednie frazy i tagi.',
+    descriptionEn: 'We take control of your Google Profile, completing it with the right keywords and tags.',
     width: 'min(75vw, 360px)'
   },
   {
     number: '03 / LINKI',
+    numberEn: '03 / LINKS',
     metric: 'Autorytet',
+    metricEn: 'Authority',
     title: 'Lokalny Link Building',
+    titleEn: 'Local Link Building',
     description: 'Zdobywamy wzmianki o Twojej firmie na lokalnych warszawskich portalach i branżowych stronach.',
+    descriptionEn: 'We acquire mentions of your business on local portals and industry websites.',
     width: 'min(80vw, 430px)',
     minHeight: '380px'
   },
   {
     number: '04 / TREŚĆ',
+    numberEn: '04 / CONTENT',
     metric: 'On-Page',
     title: 'Optymalizacja Witryny',
+    titleEn: 'Website Optimization',
     description: 'Dodajemy modyfikatory lokalne (nazwy dzielnic Warszawy) na stronę oraz wdrażamy Schema LocalBusiness.',
+    descriptionEn: 'We add local modifiers to your pages and implement Schema LocalBusiness markup.',
     width: 'min(75vw, 370px)'
   }
 ];
