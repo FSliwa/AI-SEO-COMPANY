@@ -367,38 +367,21 @@ export default function BlogGrid() {
                 <p style={{ color: '#1D1D1F', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                   {lang === 'pl' ? expandedMissionCard.textPl : expandedMissionCard.textEn}
                 </p>
+                <p style={{ color: '#1D1D1F', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                  {lang === 'pl' ? introTextPl : introTextEn}
+                </p>
                 
                 <div style={{ height: '1px', backgroundColor: '#E5E5EA', margin: '2rem 0' }} />
                 
                 <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
                   {lang === 'pl' ? extraQualityTextPl : extraQualityTextEn}
                 </p>
-                
-                <div style={{ padding: '2rem', backgroundColor: '#F5F5F7', borderRadius: '16px' }}>
-                  <p style={{ color: '#86868B', fontSize: '1rem', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
-                    {lang === 'pl' ? introTextPl : introTextEn}
-                  </p>
-                </div>
               </div>
             </div>
           </div>, document.body
         )}
 
-        {/* Intro text moved to the bottom */}
-        <Reveal>
-          <div style={{ textAlign: 'center', paddingTop: '2rem', paddingBottom: '2rem' }}>
-            <p style={{
-              fontSize: '1.1rem',
-              color: '#86868B',
-              maxWidth: '900px',
-              margin: '0 auto',
-              lineHeight: 1.7,
-              fontWeight: 500
-            }}>
-              {lang === 'pl' ? introTextPl : introTextEn}
-            </p>
-          </div>
-        </Reveal>
+        {/* Intro text removed as requested */}
       </div>
     </section>
   );
