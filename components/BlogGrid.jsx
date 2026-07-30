@@ -19,7 +19,7 @@ export default function BlogGrid() {
       titlePl: 'Wiedza, która napędza Twój zysk w internecie', titleEn: 'Knowledge that drives your online profit',
       textPl: 'Blog AI SEO COMPANY to miejsce, w którym na bieżąco analizujemy rynek marketingu internetowego. Dzielimy się sprawdzonymi metodami, innowacyjnymi strategiami biznesowymi oraz narzędziami ułatwiającymi codzienną pracę z pozycjonowaniem stron.',
       textEn: 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning.',
-      image: '/images/unsplash-1544148103-0773bf10d330.jpg'
+      image: '/images/unsplash-1478760329108-5c3ed9d495a0.jpg'
     },
     {
       id: 'metodologia',
@@ -388,6 +388,8 @@ export default function BlogGrid() {
                   backgroundImage: `url(${expandedMissionCard.image})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
+                  borderTopLeftRadius: '24px',
+                  borderTopRightRadius: '24px'
                 }} />
               )}
               
