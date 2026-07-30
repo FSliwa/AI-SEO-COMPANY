@@ -96,7 +96,7 @@ export default function ArticleLinkBuildingB2bPage() {
                 <li style={{ marginBottom: '0.5rem' }}>Pozycje na frazy zakupowe dla stron produktowych i ofertowych.</li>
                 <li style={{ marginBottom: '0.5rem' }}>Ruch referencyjny z konkretnych publikacji i jego jakość (czas na stronie, konwersje).</li>
               </ul>
-              <p style={{ marginBottom: '1.5rem' }}>Orientacyjny timeline efektów jest dłuższy niż w B2C: pierwsze sygnały wzrostu branded search pojawiają się po kilku tygodniach od pierwszych publikacji, pierwsze zmiany pozycji po około 1-3 miesiącach, a pełne efekty kampanii mogą wymagać ponad roku systematycznej pracy. To nie jest taktyka na kwartał, lecz inwestycja w autorytet rynkowy. Więcej o {iLink('/blog/ile-kosztuje-pozycjonowanie-2026', 'kosztach i budżetach pozycjonowania')} dowiesz się z naszego przewodnika.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Orientacyjny timeline efektów jest dłuższy niż w B2C: pierwsze sygnały wzrostu branded search pojawiają się po kilku tygodniach od pierwszych publikacji, pierwsze zmiany pozycji po około 1-3 miesiącach, a pełne efekty kampanii mogą wymagać ponad roku systematycznej pracy. To nie jest taktyka na kwartał, lecz inwestycja w autorytet rynkowy. Więcej o {iLink('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', 'kosztach i budżetach pozycjonowania')} dowiesz się z naszego przewodnika.</p>
               <p style={{ marginBottom: '1.5rem' }}>Dane: W badaniu z 2025 roku digital PR jest wskazywany jako jedna z najskuteczniejszych taktyk zdobywania linków.</p>
               <p style={{ marginBottom: '1.5rem' }}>Proponowana proporcja profilu linków dla firm B2B powinna faworyzować linkowanie wewnętrzne: 60% linków internal, 15% dofollow zewnętrzne, 15% nofollow + wzmianki, 10% UGC; tempo zdobywania zewnętrznych linków dla małych i średnich firm to 5–20 miesięcznie.</p>
 
@@ -210,7 +210,7 @@ export default function ArticleLinkBuildingB2bPage() {
                   </tbody>
                 </table>
               </div>
-              <p style={{ marginBottom: '1.5rem' }}>Orientacyjne widełki kosztów programu link buildingu w Polsce: rzetelny program digital PR + outreach zwykle kosztuje więcej niż tani, masowy linkbuilding, ale przynosi lepszy zwrot. Sprawdź szczegóły w naszym artykule: {iLink('/blog/ile-kosztuje-pozycjonowanie-2026', 'ile kosztuje pozycjonowanie')} w 2026 roku. Przykładowe widełki: PR-owy koszt 3–10k zł/mies., outreach gościnny 2–6k zł/mies., mieszanka PR + outreach 5–15k zł/mies. (orientacyjnie).</p>
+              <p style={{ marginBottom: '1.5rem' }}>Orientacyjne widełki kosztów programu link buildingu w Polsce: rzetelny program digital PR + outreach zwykle kosztuje więcej niż tani, masowy linkbuilding, ale przynosi lepszy zwrot. Sprawdź szczegóły w naszym artykule: {iLink('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', 'ile kosztuje pozycjonowanie')} w 2026 roku. Przykładowe widełki: PR-owy koszt 3–10k zł/mies., outreach gościnny 2–6k zł/mies., mieszanka PR + outreach 5–15k zł/mies. (orientacyjnie).</p>
 
               {/* ===== SECTION: Outsourcing ===== */}
               <h3 id="outsourcing" style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', marginTop: '2.5rem', marginBottom: '1rem', scrollMarginTop: '100px' }}>Kiedy outsourcować link building i jak wybrać agencję?</h3>

@@ -281,7 +281,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   }}>
                     <img 
                       src={c.image} 
-                      alt="" 
+                      alt={c.title || 'Realizacja SEO'} 
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'relative', zIndex: 2 }}
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';

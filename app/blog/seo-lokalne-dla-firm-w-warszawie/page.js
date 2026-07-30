@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'SEO Lokalne dla Firm w Warszawie - Poradnik | AI SEO COMPANY',
-  description: 'Jak zdominować lokalne wyniki wyszukiwania w Warszawie? Kompletny przewodnik po optymalizacji wizytówki Google i pozycjonowaniu lokalnym.',
+  title: 'Jak Pozycjonować Firmę Lokalnie w Google? Poradnik 2026',
+  description: 'Kompletny poradnik: jak krok po kroku zoptymalizować wizytówkę Google Moja Firma, zdobyć opinie i poprawić lokalne pozycje w wyszukiwarce.',
   alternates: {
     canonical: '/blog/seo-lokalne-dla-firm-w-warszawie',
   },

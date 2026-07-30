@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm | AI SEO COMPANY',
+  title: 'SEO Lokalne Warszawa | Pozycjonowanie Firm | AI SEO COMPANY',
   description: 'Skuteczne pozycjonowanie lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
   alternates: {
     canonical: '/seo-lokalne-warszawa',

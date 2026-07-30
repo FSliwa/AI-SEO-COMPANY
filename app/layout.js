@@ -12,7 +12,7 @@ export const metadata = {
     apple: '/ai-seo-company-logotyp.svg',
   },
   openGraph: {
-    title: 'Agencja SEO Warszawa | AI SEO COMPANY | Branding & Web Design',
+    title: 'Agencja SEO Warszawa | Pozycjonowanie i Web Design',
     description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe zoptymalizowane pod konwersję, audyt SEO i wysokie pozycje w Google.',
     url: 'https://www.ai-seo-company.pl',
     siteName: 'AI SEO COMPANY',
@@ -29,7 +29,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agencja SEO Warszawa | AI SEO COMPANY',
+    title: 'Agencja SEO Warszawa | Pozycjonowanie i Web Design',
     description: 'Nowoczesna agencja SEO Warszawa. Strony i pozycjonowanie, które budują sprzedaż.',
     images: ['https://www.ai-seo-company.pl/og-image.jpg'],
   },
