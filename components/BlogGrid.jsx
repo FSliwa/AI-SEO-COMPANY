@@ -389,7 +389,7 @@ export default function BlogGrid() {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   borderTopLeftRadius: '24px',
-                  borderTopRightRadius: '24px'
+                  borderTopRightRadius: '0'
                 }} />
               )}
               

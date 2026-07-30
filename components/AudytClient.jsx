@@ -19,40 +19,65 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
       <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}
+            <div className="section-tag" style={{ color: 'var(--color-text-main)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
+              {lang === 'pl' ? 'AUDYT SEO' : 'SEO AUDIT'}
             </div>
             
             <h1 style={{ 
-              fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+              fontSize: 'clamp(3.5rem, 7vw, 6rem)', 
               fontWeight: 700, 
               lineHeight: 1.05, 
               color: 'var(--color-text-main)', 
-              marginBottom: '1.5rem', 
+              marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? (
-                <>Audyt i Optymalizacja SEO<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Diagnoza Techniczna<br />Precyzyjna Optymalizacja</>
-              ) : (
-                <>SEO Audit & Optimization<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Technical Diagnosis<br />Precise Optimization</>
-              )}
+              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : 'SEO Audit & Optimization'}
             </h1>
+
+            <div style={{ 
+              width: '120px', 
+              height: '6px', 
+              background: 'linear-gradient(90deg, #1E293B 0%, #0F172A 100%)', 
+              margin: '0 auto 2rem auto', 
+              borderRadius: '3px',
+              boxShadow: '0 4px 15px rgba(15, 23, 42, 0.4)'
+            }}></div>
+
+            <div style={{ 
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+              fontWeight: 700, 
+              color: 'var(--color-text-main)', 
+              marginBottom: '1.5rem', 
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em'
+            }}>
+              {lang === 'pl' ? (
+                <>Diagnoza Techniczna<br/>Precyzyjna Optymalizacja</>
+              ) : (
+                <>Technical Diagnosis<br/>Precise Optimization</>
+              )}
+            </div>
+
             <p style={{ 
-              fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 
-              color: '#6E6E73', 
-              lineHeight: 1.5, 
-              maxWidth: '650px', 
+              fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
+              color: '#64748B', 
+              lineHeight: 1.6, 
+              maxWidth: '700px', 
               margin: '0 auto 3rem auto',
-              fontWeight: 500,
-              letterSpacing: '-0.01em'
+              fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? 'Zamów profesjonalny Audyt SEO (analiza i optymalizacja) w AI SEO COMPANY. Nasza diagnoza techniczna i precyzyjna optymalizacja odkryją przyczyny braku widoczności w Google i odblokują potencjał sprzedażowy serwisu.'
-                : 'Order a professional SEO Audit (analysis and optimization) from AI SEO COMPANY. Our technical diagnosis and precise optimization will discover the real reasons for poor Google visibility and unlock your site\'s full sales potential.'}
+                ? 'Odkryj prawdziwe przyczyny braku widoczności. Weryfikujemy ponad 50 krytycznych czynników technicznych, które blokują Twój potencjał w Google.'
+                : 'Discover the real reasons for your lack of visibility. We verify over 50 critical technical factors blocking your Google potential.'}
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
-                {lang === 'pl' ? 'Zamów Audyt Strony' : 'Order Website Audit'}
+            
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <a href="#kontakt" style={{ background: '#0F172A', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '9999px', fontSize: '1rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+                {lang === 'pl' ? 'Zamów audyt strony' : 'Order website audit'} 
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href={lang === 'pl' ? '/pl#portfolio' : '/en#portfolio'} style={{ background: '#FFFFFF', color: '#0F172A', border: '1px solid #E2E8F0', padding: '1rem 2rem', borderRadius: '9999px', fontSize: '1rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', textDecoration: 'none', transition: 'all 0.2s' }}>
+                {lang === 'pl' ? 'Zobacz case studies' : 'View case studies'}
               </a>
             </div>
           </Reveal>

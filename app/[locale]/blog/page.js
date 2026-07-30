@@ -41,7 +41,7 @@ export default async function BlogHubPage({ params }) {
   return (
     <>
       <Header />
-      <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+      <main className="subpage-main" style={{ paddingTop: '100px', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
         <div className="sr-only">
           {locale === 'en' ? (
             <p>Welcome to our Blog | SEO and Web Design Guide. Here you will find our Latest Articles about optimizing your online presence. Explore our comprehensive resources created by AI SEO COMPANY.</p>

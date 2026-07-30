@@ -18,40 +18,65 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
       <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {lang === 'pl' ? 'Pozycjonowanie Stron' : 'SEO Optimization'}
+            <div className="section-tag" style={{ color: 'var(--color-text-main)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
+              {lang === 'pl' ? 'POZYCJONOWANIE STRON' : 'SEO OPTIMIZATION'}
             </div>
             
             <h1 style={{ 
-              fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+              fontSize: 'clamp(3.5rem, 7vw, 6rem)', 
               fontWeight: 700, 
               lineHeight: 1.05, 
               color: 'var(--color-text-main)', 
-              marginBottom: '1.5rem', 
+              marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? (
-                <>Pozycjonowanie stron internetowych<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Organiczny Wzrost Maksymalna Konwersja</>
-              ) : (
-                <>Search Engine Optimization<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Organic Growth Maximum Conversion</>
-              )}
+              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'Search Engine Optimization'}
             </h1>
+
+            <div style={{ 
+              width: '120px', 
+              height: '6px', 
+              background: 'linear-gradient(90deg, #1E293B 0%, #0F172A 100%)', 
+              margin: '0 auto 2rem auto', 
+              borderRadius: '3px',
+              boxShadow: '0 4px 15px rgba(15, 23, 42, 0.4)'
+            }}></div>
+
+            <div style={{ 
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+              fontWeight: 700, 
+              color: 'var(--color-text-main)', 
+              marginBottom: '1.5rem', 
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em'
+            }}>
+              {lang === 'pl' ? (
+                <>Organiczny Wzrost<br/>Maksymalna Konwersja</>
+              ) : (
+                <>Organic Growth<br/>Maximum Conversion</>
+              )}
+            </div>
+
             <p style={{ 
-              fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 
-              color: '#6E6E73', 
-              lineHeight: 1.5, 
-              maxWidth: '650px', 
+              fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
+              color: '#64748B', 
+              lineHeight: 1.6, 
+              maxWidth: '700px', 
               margin: '0 auto 3rem auto',
-              fontWeight: 500,
-              letterSpacing: '-0.01em'
+              fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? 'Jako AI SEO COMPANY oferujemy profesjonalne pozycjonowanie stron internetowych, a w tym SEO dla firm B2B. Nasza optymalizacja i audyty techniczne gwarantują, że zrealizujemy cel: Pozycjonowanie stron internetowych - Organiczny Wzrost Maksymalna Konwersja, oparty na sztucznej inteligencji.'
-                : 'As AI SEO COMPANY we offer professional website positioning, including SEO for B2B companies. Our optimization and technical audits guarantee organic growth and maximum conversion powered by artificial intelligence.'}
+                ? 'Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę.'
+                : 'Build a lasting competitive advantage. We combine advanced technical audits with content architecture tailored for modern search engines.'}
             </p>
+            
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
-                {lang === 'pl' ? 'Zamów Wycenę' : 'Get a Quote'}
+              <a href="#kontakt" style={{ background: '#0F172A', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '9999px', fontSize: '1rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+                {lang === 'pl' ? 'Rozpocznij współpracę' : 'Start collaboration'} 
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href={lang === 'pl' ? '/pl#portfolio' : '/en#portfolio'} style={{ background: '#FFFFFF', color: '#0F172A', border: '1px solid #E2E8F0', padding: '1rem 2rem', borderRadius: '9999px', fontSize: '1rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', textDecoration: 'none', transition: 'all 0.2s' }}>
+                {lang === 'pl' ? 'Zobacz case studies' : 'View case studies'}
               </a>
             </div>
           </Reveal>
