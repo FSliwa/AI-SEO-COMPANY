@@ -40,7 +40,7 @@ const webDesignPortfolioCases = [
   {
     tag: 'SPÓJNY WIZERUNEK MARKI',
     title: 'Skalowalny System Projektowy',
-    description: 'Nie tworzymy przypadkowych układów. Budujemy spójny system wizualny (Design System), dzięki któremu Twoja marka wygląda niezwykle profesjonalnie i wzbudza autorytet w segmencie B2B.',
+    description: 'Nie tworzymy przypadkowych układów. Budujemy spójny system wizualny (Design System), dzięki któremu Twoja marka wygląda niezwykle profesjonalnie i wzbudza autorytet w Twojej branży – zarówno w B2B, jak i e-commerce B2C.',
     image: 'https://images.unsplash.com/photo-1566410824233-a8011929225c?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',
@@ -84,7 +84,7 @@ const webDesignPortfolioCases = [
   {
     tag: 'OPTYMALIZACJA KONWERSJI (CRO)',
     title: 'Architektura Nakierowana na Sprzedaż',
-    description: 'Projektowanie stron internetowych to dla nas inżynieria sprzedaży. Precyzyjnie planujemy układ elementów i wezwania do akcji (CTA), aby zminimalizować porzucenia i zmaksymalizować ilość leadów B2B.',
+    description: 'Projektowanie stron internetowych to dla nas inżynieria sprzedaży. Precyzyjnie planujemy układ elementów i wezwania do akcji (CTA), aby zminimalizować porzucenia i zmaksymalizować sprzedaż oraz ilość zapytań ofertowych.',
     image: 'https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #311B92 0%, #4A148C 50%, #880E4F 100%)',
     metric: '+120%',

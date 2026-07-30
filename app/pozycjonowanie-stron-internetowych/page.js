@@ -27,9 +27,9 @@ const faqData = [
 
 const portfolioCases = [
   {
-    tag: 'MODEL B2B & SEO',
-    title: 'Model Skalowania Leadów B2B',
-    description: 'Strategiczna architektura informacji dla branż inżynieryjnych i technicznych. Model budowania wysokiej autorytatywności domeny od podstaw.',
+    tag: 'SKALOWANIE SPRZEDAŻY',
+    title: 'Model Skalowania Leadów i Zapytań',
+    description: 'Strategiczna architektura informacji dla branż inżynieryjnych, usługowych i e-commerce. Model budowania wysokiej autorytatywności domeny od podstaw.',
     image: 'https://images.unsplash.com/photo-1693648793394-0b76b7eb042e?auto=format&fit=crop&w=800&q=80',
     metric: '+362%',
     metricLabel: 'Wzrost leadów organicznych',
@@ -77,12 +77,12 @@ const portfolioCases = [
     metric2Label: 'Nowych kont organicznie'
   },
   {
-    tag: 'MODEL LOGISTICS',
-    title: 'Wielojęzyczna Struktura TSL',
-    description: 'Wielojęzyczny audyt techniczny oraz rozbudowa klastrów treści generująca wysoki popyt B2B na rynku europejskim.',
+    tag: 'MODEL LOGISTICS & RETAIL',
+    title: 'Wielojęzyczna Struktura SEO',
+    description: 'Wielojęzyczny audyt techniczny oraz rozbudowa klastrów treści generująca wysoki popyt na rynkach europejskich.',
     image: 'https://images.unsplash.com/photo-1526289034009-0240ddb68ce3?auto=format&fit=crop&w=800&q=80',
     metric: '+380%',
-    metricLabel: 'Zapytań ofertowych B2B',
+    metricLabel: 'Zapytań ofertowych i sprzedaży',
     metric2: '+540%',
     metric2Label: 'Ruchu z rynków zagranicznych'
   },

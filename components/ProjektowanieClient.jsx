@@ -48,8 +48,8 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               letterSpacing: '-0.01em'
             }}>
               {lang === 'pl' 
-                ? 'Profesjonalne projektowanie stron internetowych to inwestycja w bezpieczny i stabilny fundament Twojego biznesu. Tworzymy firmowe strony www, które chronią przed atakami hakerskimi, ładują się błyskawicznie i zamieniają ruch w wartościowe zapytania ofertowe B2B.' 
-                : 'Professional website design is an investment in a secure and stable foundation for your business. We create corporate websites that protect against hacker attacks, load instantly, and turn traffic into valuable B2B leads.'}
+                ? 'Profesjonalne projektowanie stron internetowych to inwestycja w bezpieczny i stabilny fundament Twojego biznesu. Tworzymy firmowe strony www, które chronią przed atakami hakerskimi, ładują się błyskawicznie i zamieniają ruch w płacących klientów oraz zapytania ofertowe.' 
+                : 'Professional website design is an investment in a secure and stable foundation for your business. We create corporate websites that protect against hacker attacks, load instantly, and turn traffic into paying customers and valuable leads.'}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
@@ -89,7 +89,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 2' : 'PILLAR 2'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Konwersja B2B i Leady' : 'B2B Conversion & Leads'}</h3>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wzrost Konwersji i Leady' : 'Conversion Growth & Leads'}</h3>
               <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Eliminujemy zbędny szum informacyjny. Budujemy przejrzyste interfejsy i formularze, które w logiczny sposób prowadzą klienta prosto do kontaktu z Twoim działem sprzedaży.' : 'We eliminate unnecessary information noise. We build clean interfaces and forms that logically guide the client straight to contacting your sales department.'}</p>
             </RevealItem>
             
