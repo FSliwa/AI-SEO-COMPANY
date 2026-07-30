@@ -2,8 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 const reviewsData = [
@@ -105,18 +104,18 @@ const reviewsData = [
 export default function Testimonials() {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const carouselRef = useRef(null);
-  const { lang } = useLanguage();
-  const t = translations[lang].testimonials;
+  const lang = useLocale();
+  const t = useTranslations('testimonials');
 
   const scrollPrev = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+      carouselRef.current('scrollBy')({ left: -400, behavior: 'smooth' });
     }
   };
 
   const scrollNext = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+      carouselRef.current('scrollBy')({ left: 400, behavior: 'smooth' });
     }
   };
 
@@ -127,7 +126,7 @@ export default function Testimonials() {
           <div style={{ position: 'relative', marginBottom: '3.5rem', width: '100%' }}>
             <div className="section-header center" style={{ textAlign: 'center', maxWidth: '840px', marginInline: 'auto' }}>
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
-                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
               </div>
               <h2 style={{ 
                 fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
@@ -162,8 +161,8 @@ export default function Testimonials() {
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
                 aria-label="Previous"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -185,8 +184,8 @@ export default function Testimonials() {
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
                 aria-label="Next"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "pricing": "Pricing",
+    "process": "Examples",
+    "results": "Results",
+    "blog": "Blog",
+    "cta": "Get Proposal →"
+  },
+  "hero": {
+    "tag": "AI SEO COMPANY",
+    "title1": "Branding and websites that ",
+    "titleHighlight": "drive revenue",
+    "subtitle": "We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and converts customers at scale.",
+    "btnPrimary": "Get Proposal",
+    "btnSecondary": "View Portfolio",
+    "rating": "4.9/5 client rating",
+    "awards": "Awards: Top Rated Agency & Reviews 4.9★",
+    "caseTitle": "Organic Google Search Growth",
+    "caseDesc": "Comprehensive SEO positioning and content architecture — from 0 to 4.8k impressions per quarter for the ASE-BOT platform.",
+    "pill1": "+100 views/day",
+    "pill2": "Free Website in Package"
+  },
+  "trust": {
+    "tag": "Our Clients & Partners"
+  },
+  "services": {
+    "tag": "OUR SERVICES",
+    "title": "Shaping how brands are seen, trusted, and remembered",
+    "subtitle": "We blend brand strategy, bespoke web design, and SEO architecture to propel your business into sustainable growth.",
+    "pillars": [
+      {
+        "num": "01 —",
+        "title": "Brand Clarity",
+        "desc": "Strategic decisions positioning your brand at the top of your market."
+      },
+      {
+        "num": "02 —",
+        "title": "Creative Craft",
+        "desc": "Visually confident, high-end design built to stand out."
+      },
+      {
+        "num": "03 —",
+        "title": "Commercial Momentum",
+        "desc": "Scalable web systems optimized for rapid sales conversion."
+      }
+    ]
+  },
+  "results": {
+    "tag": "OUR RESULTS",
+    "title": "Projects — high-performance websites with measurable impact",
+    "subtitle": "Explore analytics-backed growth metrics across our client case studies.",
+    "btnView": "View Project →"
+  },
+  "pricing": {
+    "tag": "PRICING PLANS",
+    "title": "Transparent pricing with no hidden fees",
+    "subtitle": "Choose a flexible monthly subscription or get a free custom website with our Booster Pack.",
+    "standardTitle": "SEO Standard",
+    "standardPrice": "€450",
+    "standardPeriod": "net / mo.",
+    "standardDesc": "Comprehensive website SEO positioning with a flexible monthly subscription and cancel anytime policy.",
+    "premiumTitle": "SEO Premium",
+    "premiumPrice": "€590",
+    "premiumPeriod": "net / mo.",
+    "premiumDesc": "Full SEO management with Conversion Rate Optimization (CRO) and AI-driven content architecture.",
+    "boosterTitle": "Booster Pack",
+    "boosterPrice": "€590",
+    "boosterPeriod": "net / mo.",
+    "boosterBadge": "FREE CUSTOM WEBSITE INCLUDED",
+    "boosterDesc": "Free custom website included with a 3-month contract combined with full AI-driven SEO.",
+    "btnChoose": "Select Plan",
+    "note": "All prices are net (+VAT). Flexible subscriptions with no long-term lock-in (except Booster Pack min 3 mo)."
+  },
+  "whyUs": {
+    "tag": "Why Us",
+    "title": "Result driven projects, with a focus on design and functionality",
+    "subtitle": "We craft digital solutions backed by hard analytics and buyer psychology.",
+    "stat1": "of consumers must trust a brand before making a purchase decision.",
+    "stat2": "increase in brand recall through a cohesive visual identity system.",
+    "stat3": "average revenue boost with unified SEO & web communication."
+  },
+  "process": {
+    "tag": "FRAMEWORK",
+    "title": "Our brand-to-build framework",
+    "subtitle": "We transform brand identity into digital experiences engineered for maximum conversion."
+  },
+  "testimonials": {
+    "tag": "TESTIMONIALS",
+    "title": "Client Experiences & Endorsements"
+  },
+  "blog": {
+    "tag": "BLOG & ARTICLES",
+    "title": "Trends & Insights",
+    "subtitle": "Explore expert articles and outrank your competition in organic search.",
+    "btnRead": "Read Article →"
+  },
+  "contact": {
+    "tag": "Project Proposal",
+    "title": "Have a project in mind? Let’s price it!",
+    "subtitle": "Fill out our quick form and receive a tailored proposal within 24 hours.",
+    "nameLabel": "Full Name",
+    "emailLabel": "Email Address",
+    "phoneLabel": "Phone Number",
+    "serviceLabel": "Select Service Required",
+    "budgetLabel": "Estimated Budget",
+    "msgLabel": "Project Description",
+    "btnSend": "Submit Request →"
+  },
+  "footer": {
+    "desc": "Bespoke branding, web design, and SEO optimization agency. We build high-conversion Next.js brands.",
+    "rights": "© 2026 AI SEO COMPANY. All rights reserved."
+  },
+  "cookies": {
+    "title": "Cookie Consent (EU GDPR)",
+    "text": "We use cookies and similar technologies to ensure core website functionality, analyze site traffic (Google Analytics), and optimize marketing campaigns in compliance with EU ePrivacy and GDPR directives.",
+    "policy": "Privacy & Cookie Policy",
+    "acceptAll": "Accept All",
+    "declineAll": "Reject Optional",
+    "manage": "Manage Preferences",
+    "save": "Save Preferences",
+    "essentialTitle": "Essential (Required)",
+    "essentialDesc": "Required for encryption, security, and basic navigation. Always active.",
+    "analyticsTitle": "Analytics",
+    "analyticsDesc": "Helps us analyze traffic and improve user experience.",
+    "marketingTitle": "Marketing",
+    "marketingDesc": "Used to track ad performance and deliver personalized campaigns."
+  },
+  "cookiesPage": {
+    "title": "Privacy & Cookie Policy",
+    "content": "Details regarding the use of cookies for analytical, functional, and marketing purposes in compliance with GDPR."
+  }
+}

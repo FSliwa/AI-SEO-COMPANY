@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Reveal } from '@/components/ScrollReveal';
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
-  const { lang } = useLanguage();
+  const lang = useLocale();
   const [openIndex, setOpenIndex] = useState(0);
 
   const toggleAccordion = (index) => {

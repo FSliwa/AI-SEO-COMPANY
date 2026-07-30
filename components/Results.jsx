@@ -1,10 +1,10 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal } from './ScrollReveal';
 
 export default function Results() {
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   return (
     <section className="results" id="wyniki">

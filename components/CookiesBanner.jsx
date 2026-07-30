@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -10,7 +9,7 @@ export default function CookiesBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [showManageModal, setShowManageModal] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { lang } = useLanguage();
+  const lang = useLocale();
   const t = translations[lang]?.cookies;
 
   const [consentState, setConsentState] = useState({
@@ -56,8 +55,8 @@ export default function CookiesBanner() {
       {!isVisible && !showManageModal && (
         <button
           onClick={() => setShowManageModal(true)}
-          title={t.manage}
-          aria-label={t.manage}
+          title={t('manage')}
+          aria-label={t('manage')}
           style={{
             position: 'fixed',
             bottom: '1.25rem',
@@ -79,15 +78,15 @@ export default function CookiesBanner() {
             transition: 'all 0.3s ease'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.background = '#0F172A';
-            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget('style').background = '#0F172A';
+            e.currentTarget('style').transform = 'translateY(-2px)';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.background = 'rgba(15, 23, 42, 0.88)';
-            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget('style').background = 'rgba(15, 23, 42, 0.88)';
+            e.currentTarget('style').transform = 'translateY(0)';
           }}
         >
-          <span>🍪</span> {t.title.split(' ')[0]}
+          <span>🍪</span> {t('title').split(' ')[0]}
         </button>
       )}
 
@@ -122,12 +121,12 @@ export default function CookiesBanner() {
           >
             <div>
               <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', marginBottom: '0.35rem' }}>
-                {t.title}
+                {t('title')}
               </div>
               <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.55, color: '#E2E8F0', fontWeight: 400 }}>
-                {t.text}{' '}
+                {t('text')}{' '}
                 <Link href="/cookies" style={{ color: '#38BDF8', textDecoration: 'underline', fontWeight: 500 }}>
-                  {t.policy}
+                  {t('policy')}
                 </Link>
               </p>
             </div>
@@ -150,13 +149,13 @@ export default function CookiesBanner() {
                   transition: 'all 0.25s ease'
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                  e.currentTarget('style').background = 'rgba(255, 255, 255, 0.2)';
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget('style').background = 'rgba(255, 255, 255, 0.1)';
                 }}
               >
-                {t.declineAll}
+                {t('declineAll')}
               </button>
 
               <button 
@@ -176,13 +175,13 @@ export default function CookiesBanner() {
                   transition: 'all 0.25s ease'
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.background = '#144e88';
+                  e.currentTarget('style').background = '#144e88';
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.background = 'var(--color-primary)';
+                  e.currentTarget('style').background = 'var(--color-primary)';
                 }}
               >
-                {t.acceptAll}
+                {t('acceptAll')}
               </button>
 
               <button
@@ -198,10 +197,10 @@ export default function CookiesBanner() {
                   textDecoration: 'underline',
                   transition: 'color 0.25s ease'
                 }}
-                onMouseOver={(e) => e.currentTarget.style.color = '#FFF'}
-                onMouseOut={(e) => e.currentTarget.style.color = '#94A3B8'}
+                onMouseOver={(e) => e.currentTarget('style').color = '#FFF'}
+                onMouseOut={(e) => e.currentTarget('style').color = '#94A3B8'}
               >
-                {t.manage}
+                {t('manage')}
               </button>
             </div>
           </motion.div>
@@ -243,7 +242,7 @@ export default function CookiesBanner() {
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: '#0F172A' }}>
-                  {t.manage}
+                  {t('manage')}
                 </h3>
                 <button 
                   onClick={() => setShowManageModal(false)} 
@@ -254,51 +253,51 @@ export default function CookiesBanner() {
               </div>
 
               <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: 1.5, marginBottom: '1.5rem' }}>
-                {t.text}
+                {t('text')}
               </p>
 
               {/* Category 1: Essential */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t.essentialTitle}</strong>
+                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('essentialTitle')}</strong>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#059669', background: '#D1FAE5', padding: '0.2rem 0.6rem', borderRadius: '9999px' }}>
                     {lang === 'pl' ? 'Wymagane' : 'Always Active'}
                   </span>
                 </div>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
-                  {t.essentialDesc}
+                  {t('essentialDesc')}
                 </p>
               </div>
 
               {/* Category 2: Analytics */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t.analyticsTitle}</strong>
+                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('analyticsTitle')}</strong>
                   <input
                     type="checkbox"
                     checked={consentState.analytics}
-                    onChange={(e) => setConsentState({ ...consentState, analytics: e.target.checked })}
+                    onChange={(e) => setConsentState({ ...consentState, analytics: e.target('checked') })}
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
                   />
                 </div>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
-                  {t.analyticsDesc}
+                  {t('analyticsDesc')}
                 </p>
               </div>
 
               {/* Category 3: Marketing */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1.75rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t.marketingTitle}</strong>
+                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('marketingTitle')}</strong>
                   <input
                     type="checkbox"
                     checked={consentState.marketing}
-                    onChange={(e) => setConsentState({ ...consentState, marketing: e.target.checked })}
+                    onChange={(e) => setConsentState({ ...consentState, marketing: e.target('checked') })}
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
                   />
                 </div>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
-                  {t.marketingDesc}
+                  {t('marketingDesc')}
                 </p>
               </div>
 
@@ -318,7 +317,7 @@ export default function CookiesBanner() {
                     cursor: 'pointer'
                   }}
                 >
-                  {t.save}
+                  {t('save')}
                 </button>
               </div>
             </motion.div>

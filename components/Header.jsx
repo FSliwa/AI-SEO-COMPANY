@@ -1,16 +1,27 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuExpanded, setMenuExpanded] = useState(false);
   const [triggerPos, setTriggerPos] = useState({ x: 0, y: 0 });
-  const { lang, toggleLang } = useLanguage();
-  const t = translations[lang].nav;
+  const lang = useLocale();
+  const t = useTranslations('nav');
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const toggleLang = (newLocale) => {
+    if (lang === newLocale) return;
+    if (pathname.startsWith(`/${lang}`)) {
+      router.push(pathname.replace(`/${lang}`, `/${newLocale}`));
+    } else {
+      router.push(`/${newLocale}${pathname}`);
+    }
+  };
 
   useEffect(() => {
     const isSubpage = typeof window !== 'undefined' && window.location.pathname !== '/';
@@ -26,10 +37,10 @@ export default function Header() {
     if (menuOpen) {
       closeMenu();
     } else {
-      const rect = e.currentTarget.getBoundingClientRect();
+      const rect = e.currentTarget('getBoundingClientRect')();
       // Ensure we get valid coordinates, default to top right if something fails
-      const x = rect.left > 0 ? rect.left + rect.width / 2 : window.innerWidth - 40;
-      const y = rect.top > 0 ? rect.top + rect.height / 2 : 40;
+      const x = rect('left') > 0 ? rect('left') + rect('width') / 2 : window.innerWidth - 40;
+      const y = rect('top') > 0 ? rect('top') + rect('height') / 2 : 40;
       
       setTriggerPos({ x, y });
       setMenuOpen(true);
@@ -63,7 +74,7 @@ export default function Header() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href="/" className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+            <a href={`/${lang}/`} className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
               <span className="sr-only">Strona główna AI SEO COMPANY</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -144,7 +155,7 @@ export default function Header() {
               color: scrolled ? '#FFFFFF' : '#000000',
               transition: 'all 0.7s ease'
             }}>
-              {t.cta}
+              {t('cta')}
             </a>
 
             {/* KOTA Circular Menu Toggle Trigger */}
@@ -212,37 +223,37 @@ export default function Header() {
           >
             <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
               <li style={{ '--delay': '0.1s' }}>
-                <a href="/#why-us" onClick={closeMenu}>{t.results}</a>
+                <a href={`/${lang}#why-us`} onClick={closeMenu}>{t('results')}</a>
               </li>
               <li style={{ '--delay': '0.15s' }}>
-                <a href="/#uslugi" onClick={closeMenu}>{t.services}</a>
+                <a href={`/${lang}#uslugi`} onClick={closeMenu}>{t('services')}</a>
               </li>
               <li style={{ '--delay': '0.2s' }}>
-                <a href="/cennik-pozycjonowania" onClick={closeMenu}>{t.pricing}</a>
+                <a href={`/${lang}/cennik-pozycjonowania`} onClick={closeMenu}>{t('pricing')}</a>
               </li>
               <li style={{ '--delay': '0.25s' }}>
-                <a href="/#portfolio" onClick={closeMenu}>{t.process}</a>
+                <a href={`/${lang}#portfolio`} onClick={closeMenu}>{t('process')}</a>
               </li>
               <li style={{ '--delay': '0.3s' }}>
-                <a href="/audyt-seo" onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a>
+                <a href={`/${lang}/audyt-seo`} onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a>
               </li>
               <li style={{ '--delay': '0.35s' }}>
-                <a href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</a>
+                <a href={`/${lang}/pozycjonowanie-stron-internetowych`} onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</a>
               </li>
               <li style={{ '--delay': '0.4s' }}>
-                <a href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</a>
+                <a href={`/${lang}/projektowanie-stron-internetowych`} onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</a>
               </li>
               <li style={{ '--delay': '0.45s' }}>
-                <a href="/blog" onClick={closeMenu}>{t.blog}</a>
+                <a href={`/${lang}/blog`} onClick={closeMenu}>{t('blog')}</a>
               </li>
               <li style={{ '--delay': '0.5s' }}>
-                <a href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
+                <a href={`/${lang}/o-nas`} onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
               </li>
               <li style={{ '--delay': '0.55s' }}>
-                <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
+                <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
               <li style={{ '--delay': '0.6s' }}>
-                <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
+                <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Get Free Quote'}</a>
               </li>
             </ul>
 

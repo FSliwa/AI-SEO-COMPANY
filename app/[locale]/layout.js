@@ -1,9 +1,16 @@
-import './globals.css';
-import { LanguageProvider } from '@/lib/LanguageContext';
+import '../globals.css';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import CookiesBanner from '@/components/CookiesBanner';
 
 export const metadata = {
   metadataBase: new URL('https://www.ai-seo-company.pl'),
+  alternates: {
+    languages: {
+      'pl': '/pl',
+      'en': '/en',
+    },
+  },
   title: 'Agencja SEO Warszawa | Pozycjonowanie Stron | AI SEO COMPANY',
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
   icons: {
@@ -88,9 +95,12 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space', display: 'swap' });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
+  const { locale } = await params;
+  const messages = await getMessages();
+
   return (
-    <html lang="pl">
+    <html lang={locale}>
       <head>
         <link rel="icon" href="/ai-seo-company-logotyp.svg" type="image/svg+xml" />
         <script
@@ -112,10 +122,10 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-        <LanguageProvider>
+        <NextIntlClientProvider messages={messages}>
           {children}
           <CookiesBanner />
-        </LanguageProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -6,10 +6,10 @@ import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function PricingClient() {
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   const faqData = [
     {

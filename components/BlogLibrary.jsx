@@ -1,12 +1,12 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 import { blogPosts } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import Link from 'next/link';
 
 export default function BlogLibrary() {
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   // Sort all posts by date (newest first)
   const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));

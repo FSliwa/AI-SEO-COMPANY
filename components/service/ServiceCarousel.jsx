@@ -2,10 +2,10 @@
 
 import { useState, useRef } from 'react';
 import { Reveal } from '@/components/ScrollReveal';
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function ServiceCarousel({ tag, title, subtitle, items }) {
-  const { lang } = useLanguage();
+  const lang = useLocale();
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
 
@@ -21,12 +21,12 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
 
   const scrollPrev = () => {
     if (!containerRef.current) return;
-    containerRef.current.scrollBy({ left: -420, behavior: 'smooth' });
+    containerRef.current('scrollBy')({ left: -420, behavior: 'smooth' });
   };
 
   const scrollNext = () => {
     if (!containerRef.current) return;
-    containerRef.current.scrollBy({ left: 420, behavior: 'smooth' });
+    containerRef.current('scrollBy')({ left: 420, behavior: 'smooth' });
   };
 
   return (

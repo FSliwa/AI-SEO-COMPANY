@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
 
 const teamData = [
@@ -55,7 +55,7 @@ const teamData = [
 
 export default function AboutTeam() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   const handleScroll = (e) => {
     const container = e.target;
@@ -63,14 +63,14 @@ export default function AboutTeam() {
     if (!cards || !cards.length) return;
 
     const containerRect = container.getBoundingClientRect();
-    const containerLeft = containerRect.left;
+    const containerLeft = containerRect('left');
 
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
       const cardRect = card.getBoundingClientRect();
-      const distance = Math.abs(cardRect.left - containerLeft);
+      const distance = Math.abs(cardRect('left') - containerLeft);
       if (distance < minDistance) {
         minDistance = distance;
         closestIndex = idx;
@@ -81,7 +81,7 @@ export default function AboutTeam() {
   };
 
   const scrollTo = (index) => {
-    const container = document.getElementById('about-team-carousel');
+    const container = document('getElementById')('about-team-carousel');
     if (container) {
       const cards = container.querySelectorAll('.apple-testimonial-card');
       if (cards[index]) {

@@ -1,12 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Hero() {
-  const { lang } = useLanguage();
-  const t = translations[lang].hero;
+  const lang = useLocale();
+  const t = useTranslations('hero');
 
   return (
     <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -60,7 +59,7 @@ export default function Hero() {
             </span>
             
             <motion.img 
-              src="/hero-text.svg" 
+              src="/hero-text('svg')" 
               alt="Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż" 
               style={{ 
                 width: '100%', 

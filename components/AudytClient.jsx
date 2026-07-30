@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -10,7 +10,7 @@ import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
 export default function AudytClient({ faqData, portfolioCases, carouselItems }) {
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   return (
     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>

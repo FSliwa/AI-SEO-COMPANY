@@ -2,16 +2,15 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Process() {
   const [activeTab, setActiveTab] = useState(0);
   const [activeStep, setActiveStep] = useState(3); // Default step 4 (UX & UI Design)
   const [rotation, setRotation] = useState(0);
   const sectionRef = useRef(null);
-  const { lang } = useLanguage();
-  const t = translations[lang].process;
+  const lang = useLocale();
+  const t = useTranslations('process');
 
   const tabs = lang === 'pl' ? [
     'Najpierw strategia. Zawsze.',
@@ -46,10 +45,10 @@ export default function Process() {
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
+      const rect = sectionRef.current('getBoundingClientRect')();
       const windowHeight = window.innerHeight;
-      const totalDistance = windowHeight + rect.height;
-      const currentPos = windowHeight - rect.top;
+      const totalDistance = windowHeight + rect('height');
+      const currentPos = windowHeight - rect('top');
       const progress = Math.min(Math.max(currentPos / totalDistance, 0), 1);
       
       setRotation(progress * 240);
@@ -65,10 +64,10 @@ export default function Process() {
       <div className="container">
         <div className="section-header center">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
           </div>
-          <h2>{t.title}</h2>
-          <p>{t.subtitle}</p>
+          <h2>{t('title')}</h2>
+          <p>{t('subtitle')}</p>
         </div>
 
         {/* KOTA Framework Tabs */}

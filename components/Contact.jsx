@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function Contact() {
@@ -10,8 +9,8 @@ export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { lang } = useLanguage();
-  const t = translations[lang].contact;
+  const lang = useLocale();
+  const t = useTranslations('contact');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +38,7 @@ export default function Contact() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Wystąpił błąd podczas wysyłania.');
+        throw new Error(result('error') || 'Wystąpił błąd podczas wysyłania.');
       }
 
       setFormSubmitted(true);
@@ -53,7 +52,7 @@ export default function Contact() {
         });
       }
 
-      e.target.reset(); // Clear the form
+      e.target('reset')(); // Clear the form
       setTimeout(() => setFormSubmitted(false), 8000);
     } catch (err) {
       setErrorMessage(err.message);
@@ -68,10 +67,10 @@ export default function Contact() {
         <RevealStagger className="contact-box">
           <RevealItem className="contact-info">
             <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
             </div>
-            <h2>{t.title}</h2>
-            <p>{t.subtitle}</p>
+            <h2>{t('title')}</h2>
+            <p>{t('subtitle')}</p>
             
             <ul className="company-details">
               <li><strong>{lang === 'pl' ? 'Adres:' : 'Address:'}</strong> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
@@ -96,17 +95,17 @@ export default function Contact() {
             )}
 
             <div className="form-group">
-              <label className="form-label" htmlFor="name">{t.nameLabel}</label>
+              <label className="form-label" htmlFor="name">{t('nameLabel')}</label>
               <input type="text" id="name" name="name" className="form-input" placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'} required />
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="email">{t.emailLabel}</label>
+              <label className="form-label" htmlFor="email">{t('emailLabel')}</label>
               <input type="email" id="email" name="email" className="form-input" placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'} required />
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="service">{t.serviceLabel}</label>
+              <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
               <select id="service" name="service" className="form-select" required>
                 <option value="">{lang === 'pl' ? 'Wybierz pakiet...' : 'Select plan...'}</option>
                 <option value="standard">{lang === 'pl' ? 'SEO Standard (1 900 zł netto/mies.)' : 'SEO Standard (€450 net/mo)'}</option>
@@ -120,7 +119,7 @@ export default function Contact() {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="message">{t.msgLabel}</label>
+              <label className="form-label" htmlFor="message">{t('msgLabel')}</label>
               <textarea 
                 id="message" 
                 name="message" 
@@ -132,7 +131,7 @@ export default function Contact() {
             </div>
 
             <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }} disabled={isSubmitting}>
-              {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t.btnSend}
+              {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t('btnSend')}
             </button>
             </form>
           </RevealItem>

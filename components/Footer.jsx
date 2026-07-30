@@ -1,11 +1,10 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Footer() {
-  const { lang } = useLanguage();
-  const t = translations[lang].footer;
+  const lang = useLocale();
+  const t = useTranslations('footer');
   const nav = translations[lang].nav;
 
   return (
@@ -23,7 +22,7 @@ export default function Footer() {
                 AI SEO COMPANY
               </a>
               <p style={{ fontSize: '0.9rem', maxWidth: '320px', color: '#94A3B8' }}>
-                {t.desc}
+                {t('desc')}
               </p>
             </div>
             <div className="footer-col">
@@ -55,7 +54,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>{t.rights}</p>
+            <p>{t('rights')}</p>
           </div>
         </div>
       </footer>

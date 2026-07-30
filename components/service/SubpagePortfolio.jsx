@@ -3,23 +3,23 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [], layout = "horizontal" }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   if (!cases || cases.length === 0) return null;
 
   const scrollPrev = () => {
-    const el = document.getElementById("subpage-portfolio-carousel");
+    const el = document('getElementById')("subpage-portfolio-carousel");
     if (el) {
       el.scrollBy({ left: -480, behavior: 'smooth' });
     }
   };
 
   const scrollNext = () => {
-    const el = document.getElementById("subpage-portfolio-carousel");
+    const el = document('getElementById')("subpage-portfolio-carousel");
     if (el) {
       el.scrollBy({ left: 480, behavior: 'smooth' });
     }
@@ -65,8 +65,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
                 aria-label="Poprzedni slajd"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -88,8 +88,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
                 aria-label="Następny slajd"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -346,12 +346,12 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
             transition: 'transform 0.2s ease, box-shadow 0.2s ease'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+            e.currentTarget('style').transform = 'translateY(-2px)';
+            e.currentTarget('style').boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            e.currentTarget('style').transform = 'translateY(0)';
+            e.currentTarget('style').boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
           }}
         >
           {lang === 'pl' ? 'Zobacz pełne portfolio wyników' : 'View full portfolio of results'}

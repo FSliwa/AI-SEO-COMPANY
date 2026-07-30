@@ -1,13 +1,12 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 import { blogPosts } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function Blog() {
-  const { lang } = useLanguage();
-  const t = translations[lang].blog;
+  const lang = useLocale();
+  const t = useTranslations('blog');
 
   // Dynamic sorting algorithm: always top 3 latest posts
   const posts = [...blogPosts]
@@ -27,10 +26,10 @@ export default function Blog() {
       <div className="container">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
           </div>
-          <h2>{t.title}</h2>
-          <p>{t.subtitle}</p>
+          <h2>{t('title')}</h2>
+          <p>{t('subtitle')}</p>
         </Reveal>
 
         {/* VIS Vertical Timeline Blog Layout (Screenshot 2 & 3) */}
@@ -38,18 +37,18 @@ export default function Blog() {
           <div className="blog-timeline-line"></div>
 
           {posts.map((post, idx) => (
-            <RevealItem key={idx} className={`blog-timeline-item ${post.side}`}>
+            <RevealItem key={idx} className={`blog-timeline-item ${post('side')}`}>
               <div className="blog-timeline-node">
-                <span className="blog-timeline-date">{post.date}</span>
+                <span className="blog-timeline-date">{post('date')}</span>
               </div>
               <div className="blog-timeline-card">
                 <div style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: '600', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-                  {post.tag}
+                  {post('tag')}
                 </div>
-                <h3>{post.title}</h3>
-                <p>{post.desc}</p>
-                <a href={post.slug} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
-                  {t.btnRead} <span className="sr-only">o {post.title}</span>
+                <h3>{post('title')}</h3>
+                <p>{post('desc')}</p>
+                <a href={post('slug')} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
+                  {t('btnRead')} <span className="sr-only">o {post('title')}</span>
                 </a>
               </div>
             </RevealItem>

@@ -1,13 +1,12 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default function CookiesContent() {
-  const { lang } = useLanguage();
-  const t = translations[lang].cookiesPage;
+  const lang = useLocale();
+  const t = useTranslations('cookiesPage');
 
   return (
     <>
@@ -15,10 +14,10 @@ export default function CookiesContent() {
       <main style={{ paddingTop: '120px', minHeight: '80vh', background: '#F5F5F7' }}>
         <div className="container" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
           <h1 style={{ fontSize: '3rem', color: '#0F172A', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
-            {t.title}
+            {t('title')}
           </h1>
           <div style={{ color: '#334155', fontSize: '1.1rem', lineHeight: 1.8 }}>
-            <p>{t.content}</p>
+            <p>{t('content')}</p>
             {lang === 'pl' ? (
               <>
                 <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>1. Czym są pliki cookies?</h2>

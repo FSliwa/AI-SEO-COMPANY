@@ -1,24 +1,23 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function Services() {
-  const { lang } = useLanguage();
-  const t = translations[lang].services;
+  const lang = useLocale();
+  const t = useTranslations('services');
 
-  const pillars = t.pillars;
+  const pillars = t('pillars');
 
   return (
     <section className="services" id="uslugi">
       <div className="container">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
           </div>
-          <h2>{t.title}</h2>
-          <p>{t.subtitle}</p>
+          <h2>{t('title')}</h2>
+          <p>{t('subtitle')}</p>
         </Reveal>
 
         {/* KOTA 3 Pillars Row (Screenshot 1) */}
@@ -78,13 +77,13 @@ export default function Services() {
               {lang === 'pl' ? (
                 <>
                   <li>Makiety UX/UI w Figma</li>
-                  <li>Programowanie (Next.js & React)</li>
+                  <li>Programowanie (Next('js') & React)</li>
                   <li>Integracje z CRM i systemami płatności</li>
                 </>
               ) : (
                 <>
                   <li>UX/UI Wireframes in Figma</li>
-                  <li>Development (Next.js & React)</li>
+                  <li>Development (Next('js') & React)</li>
                   <li>CRM & payment system integrations</li>
                 </>
               )}

@@ -1,9 +1,9 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function TrustBar() {
-  const { lang } = useLanguage();
+  const lang = useLocale();
   const partners = [
     { 
       name: 'STANIAX', 

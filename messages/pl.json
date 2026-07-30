@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "services": "Usługi",
+    "portfolio": "Portfolio",
+    "pricing": "Cennik",
+    "process": "Przykłady",
+    "results": "Wyniki",
+    "blog": "Blog",
+    "cta": "Wyceń projekt →"
+  },
+  "hero": {
+    "tag": "AI SEO COMPANY",
+    "title1": "Branding i strony internetowe, które ",
+    "titleHighlight": "budują sprzedaż",
+    "subtitle": "Jako agencja SEO i studio web designu łączymy strategię marki, nowatorskie projektowanie i pozycjonowanie stron internetowych, aby Twoja firma była widoczna w Google i masowo wybierana przez klientów.",
+    "btnPrimary": "Wyceń projekt",
+    "btnSecondary": "Zobacz portfolio",
+    "rating": "4,9/5 oceny klientów",
+    "awards": "Wyróżnienia: Top Rated Agency & Reviews 4.9★",
+    "caseTitle": "Wzrost wyświetleń serwisu w Google",
+    "caseDesc": "Kompleksowe pozycjonowanie i architektura treści SEO — od 0 do 4,8 tys. wyświetleń w kwartale dla platformy ASE-BOT.",
+    "pill1": "+100 wyświetleń/dzień",
+    "pill2": "Strona za 0 zł w pakiecie"
+  },
+  "trust": {
+    "tag": "Nasi Klienci & Partnerzy"
+  },
+  "services": {
+    "tag": "NASZE USŁUGI",
+    "title": "Kształtujemy sposób, w jaki marki są postrzegane i zapamiętywane",
+    "subtitle": "Łączymy projektowanie stron internetowych, SEO lokalne, audyt SEO oraz zaawansowaną optymalizację SEO kodu, aby doprowadzić Twoją firmę do stabilnego wzrostu.",
+    "pillars": [
+      {
+        "num": "01 —",
+        "title": "Brand Clarity",
+        "desc": "Decyzje strategiczne pomagające pozycjonować markę na rynku."
+      },
+      {
+        "num": "02 —",
+        "title": "Creative Craft",
+        "desc": "Pewny siebie, dopracowany design stworzony, by się wyróżniać."
+      },
+      {
+        "num": "03 —",
+        "title": "Commercial Momentum",
+        "desc": "Skalowalne pozycjonowanie i SEO napędzające szybki wzrost sprzedaży."
+      }
+    ]
+  },
+  "results": {
+    "tag": "NASZE WYNIKI",
+    "title": "Projekty — zrealizowane strony z mierzalnym efektem",
+    "subtitle": "Zobacz wskaźniki wzrostu pozycjonowania stron poparte twardymi danymi analitycznymi i optymalizacją SEO.",
+    "btnView": "Zobacz Case Study →"
+  },
+  "pricing": {
+    "tag": "CENNIK USŁUG",
+    "title": "Przejrzyste pakiety pozycjonowania bez ukrytych kosztów",
+    "subtitle": "Sprawdź, ile kosztuje pozycjonowanie stron i wybierz elastyczną subskrypcję miesięczną lub pakiet z darmową stroną internetową.",
+    "standardTitle": "SEO Standard",
+    "standardPrice": "1 900 zł",
+    "standardPeriod": "netto / mies.",
+    "standardDesc": "Kompleksowa obsługa pozycjonowania z elastyczną subskrypcją miesięczną oraz możliwością rezygnacji w każdym momencie.",
+    "premiumTitle": "SEO Premium",
+    "premiumPrice": "2 500 zł",
+    "premiumPeriod": "netto / mies.",
+    "premiumDesc": "Pełne pozycjonowanie SEO z optymalizacją konwersji (CRO) oraz autorskim systemem AI wspierającym widoczność i zasięgi.",
+    "boosterTitle": "Booster Pack",
+    "boosterPrice": "2 500 zł",
+    "boosterPeriod": "netto / mies.",
+    "boosterBadge": "NOWA STRONA WWW ZA 0 ZŁ W PAKIECIE",
+    "boosterDesc": "Nowa profesjonalna strona WWW w pakiecie z umową na 3 miesiące oraz pełnym wsparciem pozycjonowania AI.",
+    "btnChoose": "Wybierz pakiet",
+    "note": "Wszystkie podane ceny są kwotami netto (+23% VAT). Umowa subskrypcyjna bez długoterminowych zobowiązań (z wyjątkiem pakietu Booster Pack min. 3 mies.)."
+  },
+  "whyUs": {
+    "tag": "DLACZEGO MY",
+    "title": "Projekty nastawione na wyniki, z naciskiem na design i funkcjonalność",
+    "subtitle": "Jako agencja SEO Warszawa tworzymy rozwiązania poparte twardymi danymi analitycznymi, pozycjonowaniem lokalnym i psychologią podejmowania decyzji zakupowych.",
+    "stat1": "klientów musi zaufać marce, zanim podejmie decyzję o zakupie.",
+    "stat2": "wzrostu rozpoznawalności dzięki spójnemu systemowi wizualnemu.",
+    "stat3": "średniego przychodu więcej przy jednolitej komunikacji SEO & Web."
+  },
+  "process": {
+    "tag": "FRAMEWORK PROCESU",
+    "title": "Nasz proces tworzenia marki i serwisu",
+    "subtitle": "Przekształcamy tożsamość marki w profesjonalne projektowanie stron internetowych z przemyślaną architekturą konwersji i optymalizacją pod wyniki wyszukiwania."
+  },
+  "testimonials": {
+    "tag": "OPINIE KLIENTÓW",
+    "title": "Doświadczenia i Rekomendacje"
+  },
+  "blog": {
+    "tag": "BLOG & ARTYKUŁY",
+    "title": "Wiedza i inspiracje — Trends & Insights",
+    "subtitle": "Przeczytaj najnowsze wpisy eksperckie i wyprzedź konkurencję w wynikach wyszukiwania.",
+    "btnRead": "Czytaj wpis →"
+  },
+  "contact": {
+    "tag": "WYCENA PROJEKTU",
+    "title": "Masz projekt na oku? Wyceńmy go!",
+    "subtitle": "Wypełnij krótki formularz, a przygotujemy dedykowaną propozycję współpracy w 24h.",
+    "nameLabel": "Imię i nazwisko",
+    "emailLabel": "Adres e-mail",
+    "phoneLabel": "Numer telefonu",
+    "serviceLabel": "Wybierz interesującą Cię usługę",
+    "budgetLabel": "Orientacyjny budżet",
+    "msgLabel": "Opisz swój projekt",
+    "btnSend": "Wyślij zapytanie →"
+  },
+  "footer": {
+    "desc": "AI SEO COMPANY — Nowoczesna agencja marketingowa, studio brandingu i profesjonalne pozycjonowanie stron internetowych. Projektujemy strony w Next.js zoptymalizowane pod konwersję.",
+    "rights": "© 2026 AI SEO COMPANY. Wszelkie prawa zastrzeżone."
+  },
+  "cookies": {
+    "title": "Zgoda na pliki cookies (RODO / GDPR)",
+    "text": "Używamy plików cookies i podobnych technologii w celu zapewnienia prawidłowego działania serwisu, analizy ruchu (Google Analytics) oraz optymalizacji kampanii marketingowych zgodnie z Dyrektywą ePrivacy i RODO (GDPR).",
+    "policy": "Polityka Prywatności i Cookies",
+    "acceptAll": "Zaakceptuj wszystkie",
+    "declineAll": "Odrzuć opcjonalne",
+    "manage": "Dostosuj preferencje",
+    "save": "Zapisz wybrane",
+    "essentialTitle": "Niezbędne (Wymagane)",
+    "essentialDesc": "Wymagane do szyfrowania, bezpieczeństwa oraz podstawowej nawigacji po stronie. Zawsze aktywne.",
+    "analyticsTitle": "Analityczne",
+    "analyticsDesc": "Pomagają nam badać ruch w serwisie i ulepszać UX (np. Google Analytics).",
+    "marketingTitle": "Marketingowe",
+    "marketingDesc": "Służą do śledzenia skuteczności reklam i dostarczania spersonalizowanych komunikatów."
+  },
+  "cookiesPage": {
+    "title": "Polityka Prywatności i Cookies",
+    "content": "Szczegóły dotyczące wykorzystywania plików cookies w celach analitycznych, funkcjonalnych i marketingowych zgodnie z RODO."
+  }
+}

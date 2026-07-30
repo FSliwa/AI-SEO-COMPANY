@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
 
 const methodologyStages = [
@@ -56,7 +56,7 @@ const methodologyStages = [
 export default function AboutMethodology() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   const handleScroll = (e) => {
     const container = e.target;
@@ -64,14 +64,14 @@ export default function AboutMethodology() {
     if (!cards || !cards.length) return;
 
     const containerRect = container.getBoundingClientRect();
-    const containerCenterX = containerRect.left + containerRect.width / 2;
+    const containerCenterX = containerRect('left') + containerRect('width') / 2;
 
     let closestIndex = 0;
     let minDistance = Infinity;
 
     cards.forEach((card, idx) => {
       const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect.left + cardRect.width / 2;
+      const cardCenterX = cardRect('left') + cardRect('width') / 2;
       const distance = Math.abs(containerCenterX - cardCenterX);
       if (distance < minDistance) {
         minDistance = distance;
@@ -83,13 +83,13 @@ export default function AboutMethodology() {
   };
 
   const scrollTo = (index) => {
-    const container = document.getElementById('about-methodology-carousel');
+    const container = document('getElementById')('about-methodology-carousel');
     if (container) {
       const cards = container.querySelectorAll('.apple-card');
       if (cards[index]) {
         const containerRect = container.getBoundingClientRect();
         const cardRect = cards[index].getBoundingClientRect();
-        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
+        const scrollOffset = cardRect('left') - containerRect('left') + container.scrollLeft - (containerRect('width') - cardRect('width')) / 2;
         container.scrollTo({
           left: scrollOffset,
           behavior: 'smooth'

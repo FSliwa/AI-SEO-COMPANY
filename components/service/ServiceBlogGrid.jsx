@@ -1,11 +1,11 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
 export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items }) {
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   return (
     <section style={{ padding: '90px 0', backgroundColor: '#F5F5F7' }}>

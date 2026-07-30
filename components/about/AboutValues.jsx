@@ -1,10 +1,10 @@
 'use client';
 
-import { useLanguage } from '@/lib/LanguageContext';
+import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
 
 export default function AboutValues() {
-  const { lang } = useLanguage();
+  const lang = useLocale();
 
   const valuesData = [
     {
