@@ -246,13 +246,13 @@ export default function CookiesBanner() {
                 </h3>
                 <button 
                   onClick={() => setShowManageModal(false)} 
-                  style={{ background: 'none', border: 'none', fontSize: '1.25rem', cursor: 'pointer', color: '#64748B' }}
+                  style={{ background: 'none', border: 'none', fontSize: '1.25rem', cursor: 'pointer', color: '#333336' }}
                 >
                   ✕
                 </button>
               </div>
 
-              <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: 1.5, marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '0.88rem', color: '#333336', lineHeight: 1.5, marginBottom: '1.5rem' }}>
                 {t('text')}
               </p>
 
@@ -264,7 +264,7 @@ export default function CookiesBanner() {
                     {lang === 'pl' ? 'Wymagane' : 'Always Active'}
                   </span>
                 </div>
-                <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
+                <p style={{ margin: 0, fontSize: '0.82rem', color: '#333336', lineHeight: 1.45 }}>
                   {t('essentialDesc')}
                 </p>
               </div>
@@ -280,7 +280,7 @@ export default function CookiesBanner() {
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
                   />
                 </div>
-                <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
+                <p style={{ margin: 0, fontSize: '0.82rem', color: '#333336', lineHeight: 1.45 }}>
                   {t('analyticsDesc')}
                 </p>
               </div>
@@ -296,7 +296,7 @@ export default function CookiesBanner() {
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
                   />
                 </div>
-                <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
+                <p style={{ margin: 0, fontSize: '0.82rem', color: '#333336', lineHeight: 1.45 }}>
                   {t('marketingDesc')}
                 </p>
               </div>

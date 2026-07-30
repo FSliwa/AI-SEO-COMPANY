@@ -69,19 +69,19 @@ export default async function ArticleCwvPage({ params }) {
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>LCP (Largest Contentful Paint)</span>
-                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Render time of the largest visible element on the page. Google requires a score below 2.5 seconds. To achieve this, implement modern media formats (WebP, AVIF), preload critical resources, and deploy server-side rendering.</span>
+                    <span style={{ color: '#333336', lineHeight: 1.5 }}>Render time of the largest visible element on the page. Google requires a score below 2.5 seconds. To achieve this, implement modern media formats (WebP, AVIF), preload critical resources, and deploy server-side rendering.</span>
                   </div>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>CLS (Cumulative Layout Shift)</span>
-                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Visual stability metric (ideal score is below 0.1). Most often results from asynchronously loading fonts (FOUT) or dynamically loading images and ads. Recipe: always declare fixed width and height attributes for all media.</span>
+                    <span style={{ color: '#333336', lineHeight: 1.5 }}>Visual stability metric (ideal score is below 0.1). Most often results from asynchronously loading fonts (FOUT) or dynamically loading images and ads. Recipe: always declare fixed width and height attributes for all media.</span>
                   </div>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>INP (Interaction to Next Paint)</span>
-                    <span style={{ color: '#515154', lineHeight: 1.5 }}>A new standard replacing the outdated FID. It measures interaction delays. Optimizing INP requires breaking up Long Tasks in the main JavaScript thread and reducing unnecessary rendering in React/Next.js.</span>
+                    <span style={{ color: '#333336', lineHeight: 1.5 }}>A new standard replacing the outdated FID. It measures interaction delays. Optimizing INP requires breaking up Long Tasks in the main JavaScript thread and reducing unnecessary rendering in React/Next.js.</span>
                   </div>
                 </li>
               </ul>
@@ -166,7 +166,7 @@ export default async function ArticleCwvPage({ params }) {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>LCP (Largest Contentful Paint)</span>
-                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Czas renderowania największego widocznego elementu na stronie (najczęściej jest to baner z obrazkiem lub duży nagłówek tekstowy). Google wymaga wyniku poniżej 2,5 sekundy. Aby to osiągnąć, wdroż nowoczesne formaty mediów (WebP, AVIF), wstępnie ładuj (preload) krytyczne zasoby i wdróż renderowanie serwerowe.</span>
+                    <span style={{ color: '#333336', lineHeight: 1.5 }}>Czas renderowania największego widocznego elementu na stronie (najczęściej jest to baner z obrazkiem lub duży nagłówek tekstowy). Google wymaga wyniku poniżej 2,5 sekundy. Aby to osiągnąć, wdroż nowoczesne formaty mediów (WebP, AVIF), wstępnie ładuj (preload) krytyczne zasoby i wdróż renderowanie serwerowe.</span>
                   </div>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
@@ -175,7 +175,7 @@ export default async function ArticleCwvPage({ params }) {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>CLS (Cumulative Layout Shift)</span>
-                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Miernik stabilności wizualnej (wynik idealny to poniżej 0,1). Wynika najczęściej z asynchronicznie ładujących się fontów (FOUT) lub z dynamicznie doczytujących się obrazków i reklam. Recepta: zadeklaruj zawsze stałą szerokość i wysokość atrybutów <code>width</code> i <code>height</code> dla wszystkich mediów oraz zablokuj miejsce pod ładowane z opóźnieniem skrypty (np. chat).</span>
+                    <span style={{ color: '#333336', lineHeight: 1.5 }}>Miernik stabilności wizualnej (wynik idealny to poniżej 0,1). Wynika najczęściej z asynchronicznie ładujących się fontów (FOUT) lub z dynamicznie doczytujących się obrazków i reklam. Recepta: zadeklaruj zawsze stałą szerokość i wysokość atrybutów <code>width</code> i <code>height</code> dla wszystkich mediów oraz zablokuj miejsce pod ładowane z opóźnieniem skrypty (np. chat).</span>
                   </div>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
@@ -184,7 +184,7 @@ export default async function ArticleCwvPage({ params }) {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>INP (Interaction to Next Paint)</span>
-                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Nowy standard zastępujący przestarzały FID. Mierzy opóźnienia interakcji – to znaczy czas między np. kliknięciem przycisku rozwinięcia menu, a fizyczną reakcją ekranu. Optymalizacja INP wymaga rozbicia długich zadań (Long Tasks) w głównym wątku JavaScript, zmniejszenia ilości wtyczek i redukcji zbędnego renderowania w React/Next.js.</span>
+                    <span style={{ color: '#333336', lineHeight: 1.5 }}>Nowy standard zastępujący przestarzały FID. Mierzy opóźnienia interakcji – to znaczy czas między np. kliknięciem przycisku rozwinięcia menu, a fizyczną reakcją ekranu. Optymalizacja INP wymaga rozbicia długich zadań (Long Tasks) w głównym wątku JavaScript, zmniejszenia ilości wtyczek i redukcji zbędnego renderowania w React/Next.js.</span>
                   </div>
                 </li>
               </ul>

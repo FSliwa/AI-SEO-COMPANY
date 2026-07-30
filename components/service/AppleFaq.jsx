@@ -94,7 +94,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
                         }}
                         transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                       >
-                        <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}>
+                        <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}>
                           {lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer)}
                         </p>
                       </motion.div>

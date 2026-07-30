@@ -60,12 +60,12 @@ export default function PricingClient() {
               <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-text-dark)' }}>
                 {lang === 'pl' ? 'Co obejmuje nasz cennik pozycjonowania?' : 'What does our SEO pricing include?'}
               </h2>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#515154', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' }}>
                 {lang === 'pl' 
                   ? 'Wybierając pakiety AI SEO COMPANY, inwestujesz w przewidywalny wzrost. Nasz cennik pozycjonowania stron internetowych został skonstruowany tak, aby zaspokoić potrzeby zarówno lokalnych biznesów B2C, jak i ogólnopolskich firm B2B.' 
                   : 'By choosing AI SEO COMPANY packages, you invest in predictable growth. Our website SEO pricing has been designed to meet the needs of both local B2C businesses and nationwide B2B companies.'}
               </p>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#515154', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' }}>
                 {lang === 'pl'
                   ? 'Jako nowoczesna agencja marketingowa i SEO, nie ograniczamy się tylko do dodawania linków. Każdy z poniższych pakietów zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację wskaźników Core Web Vitals.'
                   : 'As a modern marketing and SEO agency, we don\'t just build links. Each of the packages below includes a professional technical audit, unique content creation, B2B link building strategy, and Core Web Vitals optimization.'}
@@ -73,12 +73,12 @@ export default function PricingClient() {
               <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
                 {lang === 'pl' ? 'Dlaczego transparentne pakiety?' : 'Why transparent packages?'}
               </h3>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#515154' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336' }}>
                 {lang === 'pl'
                   ? 'Ukryte koszty i umowy na wiele lat to domena przestarzałych firm. Wierzymy, że dobra usługa broni się sama, a jasny i prosty cennik pozycjonowania to podstawa partnerskich relacji i najwyższego zwrotu z inwestycji (ROI).'
                   : 'Hidden costs and multi-year contracts are the domain of outdated companies. We believe a good service defends itself, and clear, simple SEO pricing is the foundation of partnership and the highest ROI.'}
               </p>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#515154', marginTop: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginTop: '1.5rem' }}>
                 {lang === 'pl'
                   ? 'Zdajemy sobie sprawę, że każda branża charakteryzuje się odmienną specyfiką, unikalną grupą docelową oraz specyficznym cyklem decyzyjnym. Z tego powodu podchodzimy z ogromną elastycznością do optymalizacji strategii biznesowej naszych Klientów. Decydując się na inwestycję w profesjonalny marketing internetowy w postaci SEO, wybierasz model trwałego budowania kompetencji własnej marki. Wspólnie identyfikujemy kluczowe cele konwersji i obniżamy długofalowy koszt pozyskania leada poprzez precyzyjne dotarcie z ofertą do właściwych konsumentów w najbardziej sprzyjającym momencie ich procesu zakupowego.'
                   : 'We realize that every industry is characterized by its own specific nature, unique target audience, and specific decision-making cycle. For this reason, we approach the optimization of our Clients business strategies with great flexibility. By deciding to invest in professional internet marketing in the form of SEO, you choose a model of lasting brand competency building. Together, we identify key conversion goals and lower the long-term cost of lead acquisition by precisely reaching out with an offer to the right consumers at the most favorable moment of their purchasing process.'}

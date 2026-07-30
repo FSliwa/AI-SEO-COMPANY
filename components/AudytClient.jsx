@@ -60,7 +60,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
 
             <p style={{ 
               fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
-              color: '#64748B', 
+              color: '#333336', 
               lineHeight: 1.6, 
               maxWidth: '700px', 
               margin: '0 auto 3rem auto',
@@ -108,19 +108,19 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 1' : 'AREA 1'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technikalia & CWV' : 'Technicals & CWV'}</h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots.'}</p>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots.'}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 2' : 'AREA 2'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Treści & Semantyka' : 'Content & Semantics'}</h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja intencji wyszukiwania (Search Intent), analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.' : 'Verification of search intent, analysis of keyword cannibalization and coverage of topical clusters.'}</p>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja intencji wyszukiwania (Search Intent), analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.' : 'Verification of search intent, analysis of keyword cannibalization and coverage of topical clusters.'}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 3' : 'AREA 3'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profil Linków & Autorytet' : 'Link Profile & Authority'}</h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.' : 'Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains.'}</p>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.' : 'Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains.'}</p>
             </RevealItem>
           </RevealStagger>
         </div>

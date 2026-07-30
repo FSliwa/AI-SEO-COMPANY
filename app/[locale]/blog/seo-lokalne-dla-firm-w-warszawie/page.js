@@ -134,12 +134,12 @@ export default async function ArticleLokalnePage({ params }) {
               </p>
               <ArticleTOC items={tocItems} />
               <h2 id="czym-w-a-ciwie-jest-pozycjonowanie-lokalne-local-seo">Czym właściwie jest pozycjonowanie lokalne (Local SEO)?</h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
                 SEO lokalne to zbiór działań mających na celu zwiększenie widoczności firmy w wynikach wyszukiwania powiązanych z konkretną lokalizacją geograficzną (np. „dobry hydraulik warszawa wola”, „agencja reklamowa mokotów”). Kiedy użytkownik wyszukuje usługę na smartfonie, algorytm Google bierze pod uwagę jego fizyczną lokalizację i stara się dopasować do niej jak najbliższe, zaufane biznesy w tzw. Mapach Google (Local Pack).
               </p>
 
               <h2 id="optymalizacja-profilu-firmy-w-google-gbp">Optymalizacja Profilu Firmy w Google (GBP)</h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
                 Profil Firmy w Google (dawniej Google Moja Firma) to darmowe narzędzie i absolutny fundament lokalnego SEO. Jeśli Twoja firma nie ma założonej i zweryfikowanej wizytówki, tracisz nawet 70% potencjalnego ruchu z urządzeń mobilnych.
               </p>
               
@@ -165,12 +165,12 @@ export default async function ArticleLokalnePage({ params }) {
               </ul>
 
               <h2 id="strategia-nap-name-address-phone">Strategia NAP (Name, Address, Phone)</h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
                 Sygnały NAP to jeden z głównych czynników rankingowych dla algorytmu lokalnego. Oznacza to, że nazwa firmy, jej adres i numer telefonu muszą być identyczne w każdym miejscu w Internecie. Zmiana nazwy ulicy lub nowy numer telefonu w jednym z zewnętrznych katalogów (np. Panorama Firm, Zumi, Yelp) podczas gdy wizytówka Google posiada inny format, wywołuje zamieszanie w robocie indeksującym i drastycznie obniża autorytet witryny.
               </p>
 
               <h2 id="znaczenie-prawdziwych-recenzji-od-klient-w">Znaczenie prawdziwych recenzji od klientów</h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
                 W Warszawie konkurencja z 500 pozytywnymi opiniami zawsze zdominuje firmę, która ma ich tylko 10. Kluczem do lokalnego SEO jest wdrożenie w firmie procesu ciągłego pozyskiwania opinii. Pamiętaj jednak o dwóch zasadach:
               </p>
               <ul>
@@ -179,7 +179,7 @@ export default async function ArticleLokalnePage({ params }) {
               </ul>
 
               <h2 id="optymalizacja-on-page-pod-k-tem-miasta">Optymalizacja On-Page pod kątem miasta</h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
                 Nie zapominaj o samej stronie internetowej! Zadbaj o to, aby słowo „Warszawa” oraz nazwa odpowiedniej dzielnicy pojawiały się w:
               </p>
               <ul>
@@ -189,17 +189,17 @@ export default async function ArticleLokalnePage({ params }) {
               </ul>
 
               <h2 id="link-building-lokalny">Lokalny Link Building: Budowanie siły domeny</h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
                 Aby Twoja firma osiągała czołowe pozycje w organicznych wynikach wyszukiwania, nie wystarczy tylko optymalizacja samej witryny. Google traktuje linki przychodzące (backlinki) jako "głosy zaufania" od innych stron. W przypadku pozycjonowania lokalnego liczą się specyficzne rodzaje linków. Zamiast zdobywać odnośniki z globalnych portali informacyjnych, znacznie cenniejsze będą linki z lokalnych katalogów firmowych, portali miejskich (np. wiadomości warszawskie), blogów prowadzonych przez osoby z regionu oraz stron partnerów biznesowych z tej samej okolicy. Aktywne sponsorowanie lokalnych wydarzeń, udział w charytatywnych akcjach dzielnicowych czy członkostwo w izbach gospodarczych to doskonałe i naturalne sposoby na budowanie silnego, lokalnego profilu linków.
               </p>
 
               <h2 id="znaczenie-user-experience">Wpływ doświadczenia użytkownika (UX) i urządzeń mobilnych</h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
                 Zdecydowana większość wyszukiwań lokalnych (ponad 60%) odbywa się za pośrednictwem smartfonów. Kiedy potencjalny klient będący w ruchu wpisuje w wyszukiwarkę "restauracja blisko mnie" lub "pogotowie hydrauliczne mokotów", oczekuje natychmiastowej odpowiedzi. Jeśli Twoja strona internetowa nie jest responsywna (RWD), ładuje się powoli lub nie posiada wyraźnego przycisku "Zadzwoń" (click-to-call), użytkownik błyskawicznie ją opuści i przejdzie do konkurencji. Ten tzw. "współczynnik odrzuceń" (bounce rate) wysyła do Google silny, negatywny sygnał. Dlatego w AI SEO COMPANY zawsze kładziemy ogromny nacisk na optymalizację Core Web Vitals i architekturę informacji, która natychmiast prowadzi użytkownika do najważniejszych danych (adres, numer telefonu, formularz kontaktowy).
               </p>
 
               <h2 id="mierzenie-efektow">Jak mierzyć skuteczność kampanii lokalnego SEO?</h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
                 Wielu przedsiębiorców skupia się wyłącznie na śledzeniu pozycji w rankingu dla 2-3 głównych słów kluczowych. W rzeczywistości nowoczesne SEO wymaga szerszego spojrzenia. Oprócz tradycyjnego rankingu w wynikach organicznych, należy analizować metryki płynące bezpośrednio ze statystyk Profilu Firmy w Google (GBP). Należą do nich: liczba zapytań o trasę dojazdu (Direction Requests), liczba połączeń telefonicznych wykonanych bezpośrednio z wyników wyszukiwania oraz liczba wizyt na stronie. Połączenie tych danych ze śledzeniem zdarzeń konwersji (np. wypełnienie formularza) w Google Analytics 4 pozwala na precyzyjne obliczenie zwrotu z inwestycji (ROI) w pozycjonowanie lokalne. Sukces kampanii SEO mierzy się nie pozycją w tabelkach, lecz realnym wzrostem liczby nowych zapytań ofertowych i faktycznych klientów z Twojej najbliższej okolicy.
               </p>
 

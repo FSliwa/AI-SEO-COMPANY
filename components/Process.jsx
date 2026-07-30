@@ -124,7 +124,7 @@ export default function Process() {
                 <strong style={{ fontSize: '1.05rem', color: '#0F172A', display: 'block', marginBottom: '0.35rem', fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
                   0{steps[activeStep].num}. {steps[activeStep].title}
                 </strong>
-                <p style={{ margin: 0, fontSize: '0.83rem', color: '#64748B', lineHeight: '1.5' }}>
+                <p style={{ margin: 0, fontSize: '0.83rem', color: '#333336', lineHeight: '1.5' }}>
                   {steps[activeStep].desc}
                 </p>
               </motion.div>

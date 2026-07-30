@@ -59,7 +59,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
             <p style={{ 
               fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
-              color: '#64748B', 
+              color: '#333336', 
               lineHeight: 1.6, 
               maxWidth: '700px', 
               margin: '0 auto 3rem auto',
@@ -67,7 +67,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             }}>
               {lang === 'pl' 
                 ? <>Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę. Nasza usługa to: <strong>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</strong>.</>
-                : <>Build a lasting competitive advantage. We combine advanced technical audits with content architecture tailored for modern search engines. Our service is: <strong style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</strong>.</>}
+                : <>Build a lasting competitive advantage. We combine advanced technical audits with content architecture tailored for modern search engines. Our service is: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
@@ -107,7 +107,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Audyt Techniczny & CWV' : 'Technical Audit & CWV'}
               </h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Eliminujemy błędy indeksowania, przyspieszamy ładowanie i poprawiamy architekturę linkowania wewnętrznego.' : 'We eliminate indexing errors, speed up loading times, and improve internal linking architecture.'}
               </p>
             </RevealItem>
@@ -117,7 +117,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Content Marketing' : 'Content Marketing'}
               </h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania.' : 'We create topical clusters and semantic content answering user queries and search intent.'}
               </p>
             </RevealItem>
@@ -127,7 +127,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Link Building' : 'Link Building'}
               </h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.' : 'We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain.'}
               </p>
             </RevealItem>
