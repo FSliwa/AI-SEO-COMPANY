@@ -12,7 +12,21 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import Link from 'next/link';
 
+import TableOfContents from '@/components/TableOfContents';
+
 export default function ArticleCennikPage() {
+  const tocItems = [
+    { id: 'dla-roznych-firm', title: 'Ile kosztuje pozycjonowanie dla różnych typów firm?' },
+    { id: 'co-zawiera-pakiet', title: 'Co zawiera pakiet SEO, a co jest płatnym dodatkiem?' },
+    { id: '10-czynnikow', title: 'Jakie 10 czynników wpływa na koszt SEO?' },
+    { id: 'kiedy-efekty', title: 'Kiedy zobaczysz efekty i jak liczyć opłacalność?' },
+    { id: 'modele-rozliczen', title: 'Jakie modele rozliczeń stosują agencje SEO?' },
+    { id: 'jak-wybrac-agencje', title: 'Jak wybrać agencję SEO krok po kroku?' },
+    { id: 'oferta-ai-seo-company', title: 'Oferta AI SEO COMPANY: pakiety, efekty i co wyróżnia tę agencję' },
+    { id: 'narzedzia', title: 'Przydatne źródła i narzędzia do weryfikacji ofert SEO' },
+    { id: 'szybki-przegl-d-typowych-bud-et-w', title: 'Szybki przegląd typowych budżetów:' }
+  ];
+
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
@@ -52,7 +66,7 @@ export default function ArticleCennikPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="article-content" style={{ fontSize: '1.15rem', lineHeight: 1.6, color: '#333336' }}>
+            <div className="article-content">
               <p>
                 <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie stron w Polsce</Link> kosztuje różną kwotę, począwszy od niskiego poziomu dla bardzo lokalnych projektów, aż do wysokich sum dla dużych serwisów w branżach takich jak prawo, finanse czy medycyna. Większość małych i średnich firm przeznacza budżet, który pozwala na realną pracę, obejmującą <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt techniczny</Link>, optymalizację, treści i podstawowy link building.
               </p>
@@ -60,9 +74,9 @@ export default function ArticleCennikPage() {
               <p>
                 Co kupujesz za te pieniądze w praktyce? Za niższe kwoty miesięczne otrzymasz monitoring i drobne poprawki, z większym budżetem możliwa jest regularna praca nad treścią, naprawy techniczne i kilka linków, a przy większych nakładach rozpoczyna się pełna strategia z content marketingiem, link buildingiem i raportowaniem.
               </p>
-
-              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '2.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Szybki przegląd typowych budżetów:</h2>
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
+              <TableOfContents items={tocItems} />
+              <h2 id="szybki-przegl-d-typowych-bud-et-w">Szybki przegląd typowych budżetów:</h2>
+              <ul>
                 <li><strong>Firma lokalna (np. gabinet, warsztat, salon):</strong> 800–1 200 zł/mies. (minimalny próg sensowności)</li>
                 <li><strong>Mały e-commerce (do 500 produktów):</strong> 1 500–5 000 zł/mies.</li>
                 <li><strong>Firma B2B lub średnie przedsiębiorstwo:</strong> 2 500–6 000 zł/mies.</li>
@@ -76,21 +90,9 @@ export default function ArticleCennikPage() {
 
               <p>Chcesz wiedzieć, ile dokładnie zapłacisz za swój projekt? Poniżej rozkładamy nasz <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link> na czynniki pierwsze — według typu firmy, zawartości pakietu i modelu rozliczeń.</p>
 
-              <div style={{ margin: '3rem 0', padding: '2rem', backgroundColor: '#F5F5F7', borderRadius: '20px' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1rem' }}>Spis treści</h3>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  <li><a href="#dla-roznych-firm" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>1. Ile kosztuje pozycjonowanie dla różnych typów firm?</a></li>
-                  <li><a href="#co-zawiera-pakiet" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>2. Co zawiera pakiet SEO, a co jest płatnym dodatkiem?</a></li>
-                  <li><a href="#10-czynnikow" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>3. Jakie 10 czynników wpływa na koszt SEO?</a></li>
-                  <li><a href="#kiedy-efekty" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>4. Kiedy zobaczysz efekty i jak liczyć opłacalność?</a></li>
-                  <li><a href="#modele-rozliczen" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>5. Jakie modele rozliczeń stosują agencje SEO?</a></li>
-                  <li><a href="#jak-wybrac-agencje" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>6. Jak wybrać agencję SEO krok po kroku?</a></li>
-                  <li><a href="#oferta-ai-seo-company" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>7. Oferta AI SEO COMPANY: pakiety i efekty</a></li>
-                  <li><a href="#narzedzia" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>8. Przydatne źródła i narzędzia do weryfikacji ofert SEO</a></li>
-                </ul>
-              </div>
+              
 
-              <h2 id="dla-roznych-firm" style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Ile kosztuje pozycjonowanie dla różnych typów firm?</h2>
+              <h2 id="dla-roznych-firm">Ile kosztuje pozycjonowanie dla różnych typów firm?</h2>
               
               <p>Cena SEO zależy przede wszystkim od tego, jak duży jest Twój rynek i jak mocna jest konkurencja. Firma oferująca usługi hydrauliczne w małym mieście ma zupełnie inne potrzeby niż sklep internetowy sprzedający elektronikę w całej Polsce. Poniższa tabela pokazuje typowe widełki dla czterech najczęstszych profili.</p>
 
@@ -135,8 +137,8 @@ export default function ArticleCennikPage() {
 
               <p>Dla firm lokalnych minimalny budżet zaczyna się od poziomu pozwalającego na monitoring i podstawowe poprawki, ale nie na pełny rozwój SEO. Dla MŚP, które chcą realnych wyników, budżet początkowy powinien być odpowiedni do wykonywania kompleksowych działań SEO.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginTop: '2rem', marginBottom: '1rem' }}>Przykładowe pakiety dla trzech typowych biznesów:</h3>
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
+              <h3>Przykładowe pakiety dla trzech typowych biznesów:</h3>
+              <ul>
                 <li><strong>Lokalny usługodawca (Starter, ~1 200 zł/mies.):</strong> optymalizacja Google Moja Firma, 2–3 wpisy blogowe miesięcznie, monitoring 10–20 fraz, raport miesięczny.</li>
                 <li><strong>Mały e-commerce (Rozwój, 1 500–5 000 zł/mies.):</strong> audyt techniczny, optymalizacja 50–100 podstron, 4 artykuły miesięcznie, 4–6 linków zewnętrznych, raportowanie KPI.</li>
                 <li><strong>Firma B2B (Premium, 2 500–6 000 zł/mies.):</strong> pełna strategia contentowa, link building (8–12 linków/mies.), optymalizacja konwersji, dedykowany opiekun, raport dwutygodniowy.</li>
@@ -148,12 +150,12 @@ export default function ArticleCennikPage() {
                 <strong>Porada profesjonalisty:</strong> Oceń swój przedział w trzech krokach: (1) sprawdź, czy działasz lokalnie czy ogólnopolsko, (2) wpisz swoje główne frazy w Google i policz, ile firm płaci za reklamy — to sygnał konkurencji, (3) sprawdź w <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a>, jaki autorytet domeny mają Twoi konkurenci. Te trzy liczby powiedzą Ci więcej niż jakikolwiek cennik.
               </p>
 
-              <h2 id="co-zawiera-pakiet" style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Co zawiera pakiet SEO, a co jest płatnym dodatkiem?</h2>
+              <h2 id="co-zawiera-pakiet">Co zawiera pakiet SEO, a co jest płatnym dodatkiem?</h2>
               
               <p>Nie każdy pakiet SEO zawiera to samo, nawet jeśli kosztuje tyle samo. Różnica między ofertą za 2 000 zł a za 2 000 zł u innej agencji może być ogromna — i ta sama kwota u różnych agencji może oznaczać bardzo różny zakres prac. Dlatego warto wiedzieć, co jest standardem, a co dodatkiem.</p>
 
               <p><strong>Elementy standardowe (core SEO) — powinny być w każdym pakiecie:</strong></p>
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
+              <ul>
                 <li>Audyt techniczny strony (przynajmniej wstępny przy starcie)</li>
                 <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Optymalizacja on-page</Link>: tytuły, opisy, nagłówki, struktura URL</li>
                 <li>Monitoring pozycji i ruchu organicznego</li>
@@ -162,7 +164,7 @@ export default function ArticleCennikPage() {
               </ul>
 
               <p><strong>Dodatki, które podnoszą cenę:</strong></p>
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
+              <ul>
                 <li>Link building (pozyskiwanie linków zewnętrznych)</li>
                 <li>Content marketing (regularne artykuły, landing page'e, opisy kategorii)</li>
                 <li><Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Lokalne SEO</Link> i zarządzanie Google Moja Firma</li>
@@ -174,9 +176,9 @@ export default function ArticleCennikPage() {
               <p>Optymalizacja pod wyszukiwarki AI (AEO) to rosnący element ofert agencji. Firmy coraz częściej łączą klasyczne SEO z widocznością w wynikach generowanych przez modele takie jak ChatGPT czy Gemini, co zwykle zwiększa koszty pakietu, ale poprawia widoczność w odpowiedziach generowanych przez te narzędzia.</p>
               <p>Największy wpływ na cenę mają trzy elementy: link building (koszt pozyskania jednego wartościowego linku to często 200–800 zł), content pisany zgodnie ze standardami E-E-A-T (doświadczenie, ekspertyza, autorytet, wiarygodność) oraz migracje techniczne przy zmianie CMS lub przebudowie serwisu.</p>
 
-              <h2 id="10-czynnikow" style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Jakie 10 czynników wpływa na koszt SEO?</h2>
+              <h2 id="10-czynnikow">Jakie 10 czynników wpływa na koszt SEO?</h2>
               
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <ul>
                 <li><strong>Konkurencja słów kluczowych (wpływ: wysoki)</strong> — im więcej firm walczy o te same frazy, tym więcej pracy i linków potrzeba. Frazy takie jak "adwokat Warszawa" czy "kredyt hipoteczny" kosztują wielokrotnie więcej niż "hydraulik Sandomierz".</li>
                 <li><strong>Liczba podstron do optymalizacji (wpływ: wysoki)</strong> — sklep z 5 000 produktów wymaga innego nakładu pracy niż strona wizytówkowa z 10 podstronami.</li>
                 <li><strong>Stan techniczny strony (wpływ: wysoki)</strong> — serwis z setkami błędów indeksowania, wolnym ładowaniem i zduplikowanymi treściami wymaga najpierw naprawy, zanim zacznie się pozycjonowanie.</li>
@@ -193,7 +195,7 @@ export default function ArticleCennikPage() {
                 <strong>Porada profesjonalisty:</strong> Dwa czynniki, które najszybciej windują koszty przy migracji lub przebudowie serwisu, to zmiana struktury URL bez przekierowań 301 i utrata historycznych treści. Zanim zlecisz <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> i ich redesign, upewnij się, że agencja SEO jest w tym procesie od początku, nie na końcu.
               </p>
 
-              <h2 id="kiedy-efekty" style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Kiedy zobaczysz efekty i jak liczyć opłacalność?</h2>
+              <h2 id="kiedy-efekty">Kiedy zobaczysz efekty i jak liczyć opłacalność?</h2>
               
               <p>SEO nie działa jak reklama płatna, gdzie efekty widać następnego dnia. To inwestycja z odroczonym zwrotem, a czas do pierwszych wymiernych efektów zależy od skali projektu.</p>
 
@@ -236,21 +238,21 @@ export default function ArticleCennikPage() {
                 </table>
               </div>
 
-              <h2 id="modele-rozliczen" style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Jakie modele rozliczeń stosują agencje SEO?</h2>
+              <h2 id="modele-rozliczen">Jakie modele rozliczeń stosują agencje SEO?</h2>
               
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <ul>
                 <li><strong>Abonament miesięczny</strong> — najpopularniejszy i najbezpieczniejszy dla większości firm. Płacisz stałą kwotę za zdefiniowany zakres prac. Pozwala planować budżet i wymusza na agencji regularną pracę.</li>
                 <li><strong>Jednorazowy projekt</strong> — sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt techniczny</Link> kosztuje od około 1 500 zł dla małej witryny do 4 000–8 000 zł dla dużego sklepu.</li>
                 <li><strong>Rozliczenie godzinowe</strong> — stosowane przy konsultacjach lub doraźnych pracach. Stawki specjalistów SEO w Polsce wahają się od 150 do 400 zł za godzinę.</li>
                 <li><strong>Model częściowego wynagrodzenia za efekt</strong> — pozycjonowanie „na efekt“ ma istotne ograniczenia: opiera się na metrykach, które agencja może optymalizować pod własne cele, a nie na realnym wzroście przychodów klienta. Dla większości firm bezpieczniejszy jest abonament z jasno określonym zakresem i KPI.</li>
               </ul>
 
-              <h2 id="jak-wybrac-agencje" style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Jak wybrać agencję SEO krok po kroku?</h2>
+              <h2 id="jak-wybrac-agencje">Jak wybrać agencję SEO krok po kroku?</h2>
               
               <p>Wybór agencji SEO to decyzja na minimum rok. Błąd kosztuje nie tylko pieniądze, ale też czas, którego nie odzyskasz. Poniżej konkretny proces, który pozwoli Ci porównać oferty bez gubienia się w marketingowym języku.</p>
 
               <p><strong>Checklist do porównania ofert:</strong></p>
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
+              <ul>
                 <li>Czy oferta zawiera szczegółową listę deliverables (co agencja robi każdego miesiąca)?</li>
                 <li>Czy KPI są mierzalne i powiązane z Twoimi celami biznesowymi (przychód, leady, ruch)?</li>
                 <li>Czy agencja ma dedykowanego opiekuna dla Twojego projektu?</li>
@@ -260,7 +262,7 @@ export default function ArticleCennikPage() {
               </ul>
 
               <p><strong>Czerwone flagi, których nie wolno ignorować:</strong></p>
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
+              <ul>
                 <li>Obietnica efektów w ciągu 2–4 tygodni</li>
                 <li>Brak umowy lub umowa na jedną stronę bez zakresu prac</li>
                 <li>Brak portfolio lub case study</li>
@@ -268,7 +270,7 @@ export default function ArticleCennikPage() {
                 <li>Agencja nie pyta o Twoje cele biznesowe, tylko o frazy kluczowe</li>
               </ul>
 
-              <h2 id="oferta-ai-seo-company" style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Oferta AI SEO COMPANY: pakiety, efekty i co wyróżnia tę agencję</h2>
+              <h2 id="oferta-ai-seo-company">Oferta AI SEO COMPANY: pakiety, efekty i co wyróżnia tę agencję</h2>
               
               <p>AI SEO COMPANY łączy <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> pod konwersję z kompleksowym pozycjonowaniem, co oznacza, że optymalizacja SEO i UX/UI idą tu w parze od pierwszego dnia. Klienci agencji odnotowali średni wzrost przychodów o 23% — to wynik, który wynika z połączenia pracy nad widocznością w Google z poprawą doświadczenia użytkownika na stronie.</p>
 
@@ -301,11 +303,11 @@ export default function ArticleCennikPage() {
                 </table>
               </div>
               
-              <h2 id="narzedzia" style={{ fontSize: '2rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>Przydatne źródła i narzędzia do weryfikacji ofert SEO</h2>
+              <h2 id="narzedzia">Przydatne źródła i narzędzia do weryfikacji ofert SEO</h2>
               
               <p>Zanim podpiszesz umowę z agencją, warto samodzielnie sprawdzić kilka rzeczy. Poniższe narzędzia i źródła pomogą Ci ocenić stan swojej strony i zweryfikować, czy oferta agencji jest dopasowana do rzeczywistych potrzeb.</p>
 
-              <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <ul>
                 <li><strong><a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a></strong> — bezpłatne narzędzie Google do monitorowania ruchu organicznego, błędów indeksowania i pozycji fraz. Punkt startowy każdej analizy.</li>
                 <li><strong><a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google PageSpeed Insights</a></strong> — sprawdza szybkość ładowania strony na urządzeniach mobilnych i desktopowych; wynik Core Web Vitals wpływa na pozycjonowanie.</li>
                 <li><strong><a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a></strong> — polskie narzędzie do monitorowania widoczności, analizy fraz i śledzenia pozycji; przydatne do porównania z konkurentami.</li>

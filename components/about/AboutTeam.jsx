@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
 
@@ -13,7 +14,7 @@ const teamData = [
     roleEn: 'Performance • Scalability • Next.js',
     metricBadge: 'Core Web Vitals 100/100',
     metricBadgeEn: 'Core Web Vitals 100/100',
-    image: 'https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/unsplash-1614729939124-032f0b56c9ce.jpg',
     bgGradient: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
     leadPl: 'Błyskawiczne działanie i perfekcyjny kod.',
     leadEn: 'Lightning fast performance and perfect code.',
@@ -28,7 +29,7 @@ const teamData = [
     roleEn: 'Analytics • Link Building • AI',
     metricBadge: 'Pozycje w TOP 3',
     metricBadgeEn: 'TOP 3 Rankings',
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/unsplash-1550745165-9bc0b252726f.jpg',
     bgGradient: 'linear-gradient(135deg, #1E1B4B 0%, #312E81 100%)',
     leadPl: 'Inżynieria widoczności oparta na danych.',
     leadEn: 'Data-driven visibility engineering.',
@@ -43,7 +44,7 @@ const teamData = [
     roleEn: 'Design System • Branding • Conversion',
     metricBadge: 'Maksymalizacja ROI',
     metricBadgeEn: 'ROI Maximization',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/unsplash-1618005182384-a83a8bd57fbe.jpg',
     bgGradient: 'linear-gradient(135deg, #064E3B 0%, #047857 100%)',
     leadPl: 'Projektowanie, które sprzedaje.',
     leadEn: 'Design that sells.',
@@ -211,12 +212,11 @@ export default function AboutTeam() {
                   marginBottom: '1.75rem',
                   background: item.bgGradient
                 }}>
-                  <img 
+                  <Image 
                     src={item.image} 
                     alt={item.name}
+                    fill
                     style={{
-                      width: '100%',
-                      height: '100%',
                       objectFit: 'cover',
                       objectPosition: 'center',
                       opacity: 0.9,

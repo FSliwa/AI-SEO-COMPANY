@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
@@ -18,7 +19,7 @@ const methodologyStages = [
     metricSubtitle: 'Projektowanie UX/UI i solidny fundament techniczny.',
     gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
     layout: 'center',
-    largeImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80',
+    largeImage: '/images/unsplash-1561070791-2526d30994b5.jpg',
   },
   {
     id: 2,
@@ -33,7 +34,7 @@ const methodologyStages = [
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     layout: 'right-side',
     desktopCard: {
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+      image: '/images/unsplash-1460925895917-afdab827c52f.jpg',
     },
   },
   {
@@ -48,7 +49,7 @@ const methodologyStages = [
     metricSubtitle: 'Konwersja ruchu organicznego na realnych, płacących klientów.',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     layout: 'center-reverse',
-    largeImage: 'https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=1200&q=80',
+    largeImage: '/images/unsplash-1552581234-26160f608093.jpg',
   }
 ];
 
@@ -207,13 +208,12 @@ export default function AboutMethodology() {
                         zIndex: 1
                       }}
                     >
-                      <img 
+                      <Image 
                         src={item.largeImage} 
                         alt="Project screenshot" 
+                        fill
                         style={{ 
-                          width: '100%', 
                           marginTop: '-75px',
-                          height: 'calc(100% + 75px)', 
                           objectFit: 'cover', 
                           objectPosition: 'top' 
                         }} 
@@ -244,12 +244,11 @@ export default function AboutMethodology() {
                         zIndex: 1
                       }}
                     >
-                      <img 
+                      <Image 
                         src={item.largeImage} 
                         alt="Project screenshot" 
+                        fill
                         style={{ 
-                          width: '100%', 
-                          height: '100%', 
                           objectFit: 'cover', 
                           objectPosition: 'top' 
                         }} 
@@ -307,12 +306,11 @@ export default function AboutMethodology() {
                         zIndex: 1
                       }}
                     >
-                      <img 
+                      <Image 
                         src={item.desktopCard ? item.desktopCard.image : '/projects/kafelek-staniax-full.png'} 
                         alt="Preview screenshot" 
+                        fill
                         style={{ 
-                          width: '100%', 
-                          height: '100%', 
                           objectFit: 'cover', 
                           objectPosition: 'top left'
                         }} 

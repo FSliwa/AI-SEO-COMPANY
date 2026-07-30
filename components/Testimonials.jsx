@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
@@ -15,7 +16,7 @@ const reviewsData = [
     tag: 'FINTECH B2B',
     metricBadge: '+104% Ruchu B2B',
     metricBadgeEn: '+104% Organic Traffic',
-    image: 'https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?auto=format&fit=crop&w=800&q=80',
+    image: '/images/unsplash-1635776062127-d379bfcba9f8.jpg',
     leadPl: 'Pełny rebrand B2B i 104% wzrostu ruchu w 3 miesiące.',
     leadEn: 'Full B2B rebrand and 104% traffic growth in 3 months.',
     bodyPl: 'AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł błyskawicznie, a klienci zachwycają się nowoczesną estetyką.',
@@ -34,7 +35,7 @@ const reviewsData = [
     tagEn: 'GASTRONOMY',
     metricBadge: 'Nowa Lokalizacja & Skalowanie',
     metricBadgeEn: 'New Location & Sales Scaling',
-    image: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80',
+    image: '/images/unsplash-1620641788421-7a1c342ea42e.jpg',
     leadPl: 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji.',
     leadEn: 'Building and scaling digital sales for the newly opened restaurant location.',
     bodyPl: 'Współpraca przy wdrożeniu serwisu oraz strategii cyfrowej dla nowo otwartej lokalizacji restauracji przebiegła wzorowo. Zbudowano dla nas intuicyjny portal zoptymalizowany pod konwersję i SEO, co natychmiast wygenerowało wysoki wolumen rezerwacji i wzrost przychodów.',
@@ -52,7 +53,7 @@ const reviewsData = [
     tag: 'TECH B2B',
     metricBadge: '2.8k+ Wyświetleń od 0',
     metricBadgeEn: '2.8k+ Impressions from 0',
-    image: 'https://images.unsplash.com/photo-1462556791646-c201b8241a94?auto=format&fit=crop&w=800&q=80',
+    image: '/images/unsplash-1462556791646-c201b8241a94.jpg',
     leadPl: 'Przewaga nad konkurencją na zatłoczonym rynku B2B.',
     leadEn: 'Competitive edge in a crowded B2B technology market.',
     bodyPl: 'Wyróżnienie się w branży to ogromne wyzwanie. Stworzono dla nas tożsamość, która idealnie oddaje naszą innowacyjność, zapewniając nam niesamowitą przewagę nad konkurencją.',
@@ -71,7 +72,7 @@ const reviewsData = [
     tagEn: 'HEALTHCARE',
     metricBadge: '100% Obłożenia Kalendarza',
     metricBadgeEn: 'Fully Booked Schedule',
-    image: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=800&q=80',
+    image: '/images/unsplash-1558591710-4b4a1ae0f04d.jpg',
     leadPl: 'Przemyślana architektura treści i stały napływ pacjentów.',
     leadEn: 'Smart content architecture and steady patient acquisition.',
     bodyPl: 'Architektura treści i pozycjonowanie zaowocowały pełnym kalendarzem wizyt. Agencja nie tylko projektuje piękne strony, ale dba o to, by te strony zarabiały prawdziwe pieniądze.',
@@ -90,7 +91,7 @@ const reviewsData = [
     tagEn: 'REAL ESTATE',
     metricBadge: '+180% Leadów Ofertowych',
     metricBadgeEn: '+180% Property Inquiries',
-    image: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80',
+    image: '/images/unsplash-1557682250-33bd709cbe85.jpg',
     leadPl: 'Mistrzowskie UX i drastyczny wzrost zapytań ofertowych.',
     leadEn: 'Masterful UX and drastic growth in property inquiries.',
     bodyPl: 'Podejście do projektowania UX to mistrzostwo. Użytkownicy spędzają na naszej stronie o wiele więcej czasu, a zapytania ofertowe na nasze inwestycje wzrosły drastycznie.',
@@ -240,7 +241,7 @@ export default function Testimonials() {
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', padding: '2.5rem', position: 'relative', zIndex: 1, minHeight: '600px' }}>
                   {/* Full Background Image */}
                   <div style={{ position: 'absolute', inset: 0, zIndex: -1 }}>
-                    <img src={item.image} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <Image src={item.image} alt={item.name} fill style={{ objectFit: 'cover' }} />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.85) 100%)' }} />
                   </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/LanguageContext';
+import Image from 'next/image';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 
 export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items }) {
@@ -44,10 +45,11 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
               border: '1px solid rgba(0,0,0,0.05)'
             }}>
               <div style={{ height: '340px', width: '100%', position: 'relative' }}>
-                <img 
+                <Image 
                   src={heroItem.image} 
                   alt={heroItem.title} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  fill
+                  style={{ objectFit: 'cover' }} 
                 />
               </div>
               <div style={{ padding: '3rem 2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -83,10 +85,11 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
                 border: '1px solid rgba(0,0,0,0.05)'
               }}>
                 <div style={{ height: '210px', width: '100%', position: 'relative' }}>
-                  <img 
+                  <Image 
                     src={item.image} 
                     alt={item.title} 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    fill
+                    style={{ objectFit: 'cover' }} 
                   />
                 </div>
                 <div style={{ padding: '2rem 1.75rem', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>

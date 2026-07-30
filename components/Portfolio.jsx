@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
@@ -255,20 +256,21 @@ export default function Portfolio() {
                       {item.largeImageMobile ? (
                         <picture>
                           <source srcSet={item.largeImageMobile} media="(max-width: 768px)" />
-                          <img 
+                          <Image 
                             src={item.largeImage} 
                             alt={item.brandName} 
+                            fill
                             className="portfolio-mobile-aware-img"
+                            style={{ objectFit: 'cover' }}
                           />
                         </picture>
                       ) : (
-                        <img 
+                        <Image 
                           src={item.largeImage} 
                           alt={item.brandName} 
+                          fill
                           style={{ 
-                            width: '100%', 
                             marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top
-                            height: 'calc(100% + 75px)', 
                             objectFit: 'cover', 
                             objectPosition: 'top' 
                           }} 
@@ -301,12 +303,11 @@ export default function Portfolio() {
                         zIndex: 1
                       }}
                     >
-                      <img 
+                      <Image 
                         src={item.largeImage} 
                         alt={item.brandName} 
+                        fill
                         style={{ 
-                          width: '100%', 
-                          height: '100%', 
                           objectFit: 'cover', 
                           objectPosition: 'top' 
                         }} 
@@ -368,12 +369,11 @@ export default function Portfolio() {
                         zIndex: 1
                       }}
                     >
-                      <img 
+                      <Image 
                         src={item.desktopCard ? item.desktopCard.image : '/projects/kafelek-staniax-full.png'} 
                         alt={item.brandName} 
+                        fill
                         style={{ 
-                          width: '100%', 
-                          height: '100%', 
                           objectFit: 'cover', 
                           objectPosition: 'top left'
                         }} 
@@ -425,7 +425,9 @@ export default function Portfolio() {
                       >
                          {item.rightVisual === 'desktop' ? (
                             <div style={{ width: '100%', maxWidth: '650px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                              <img src={item.desktopCard.image} alt="Desktop preview" style={{ width: '100%', display: 'block' }} />
+                              <div style={{ position: 'relative', width: '100%', height: '400px' }}>
+                                <Image src={item.desktopCard.image} alt="Desktop preview" fill style={{ objectFit: 'contain' }} />
+                              </div>
                             </div>
                          ) : (
                             <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
@@ -444,7 +446,7 @@ export default function Portfolio() {
                                      transform: screen.transform
                                    }}
                                  >
-                                   <img src={screen.image} alt={screen.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                   <Image src={screen.image} alt={screen.title} fill style={{ objectFit: 'cover' }} />
                                  </motion.div>
                                ))}
                             </div>

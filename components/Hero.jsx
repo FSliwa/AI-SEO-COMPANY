@@ -20,7 +20,9 @@ export default function Hero() {
         playsInline
         className="hero-video-bg"
         preload="metadata"
+        poster="/black-hole-poster.jpg"
       >
+        <source src="/black-hole-ai-seo-company.webm" type="video/webm" />
         <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" />
       </video>
 

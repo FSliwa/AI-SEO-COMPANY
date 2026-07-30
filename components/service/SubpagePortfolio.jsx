@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { useLanguage } from '@/lib/LanguageContext';
 
@@ -156,10 +157,11 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', padding: '2.5rem', position: 'relative', zIndex: 1, minHeight: '600px' }}>
                   {/* Full Background Image */}
                   <div style={{ position: 'absolute', inset: 0, zIndex: -1, overflow: 'hidden' }}>
-                    <img 
+                    <Image 
                       src={c.image} 
                       alt={c.title} 
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.7s ease' }} 
+                      fill
+                      style={{ objectFit: 'cover', display: 'block', transition: 'transform 0.7s ease' }} 
                     />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.85) 100%)' }} />
                   </div>
@@ -289,13 +291,11 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <img 
+                    <Image 
                       src={c.image} 
                       alt={c.title || 'Realizacja SEO'} 
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'relative', zIndex: 2 }}
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                      }}
+                      fill
+                      style={{ objectFit: 'cover', display: 'block', position: 'relative', zIndex: 2 }}
                     />
                     
                     {/* Futuristic Fallback Visual Grid & Glowing Orb */}

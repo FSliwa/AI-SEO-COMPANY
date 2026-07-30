@@ -10,8 +10,15 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
+import TableOfContents from '@/components/TableOfContents';
 
 export default function ArticleCwvPage() {
+  const tocItems = [
+    { id: 'dlaczego-przejmowac-sie', title: 'Dlaczego w ogóle przejmować się Core Web Vitals?' },
+    { id: 'kluczowe-wskazniki', title: 'Kluczowe wskaźniki (Metryki CWV) i ich optymalizacja' },
+    { id: 'znaczenie-ttfb', title: 'Znaczenie TTFB i renderowania serwerowego (SSR)' }
+  ];
+
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
@@ -51,26 +58,28 @@ export default function ArticleCwvPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div style={{ fontSize: '1.15rem', lineHeight: 1.6, color: '#333336' }}>
-              <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+            <div className="article-content">
+              <p className="lead" style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                 Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są irytujących przesunięć elementów, osiągają znacznie wyższy czas przebywania na stronie. Przedstawiamy praktyczny przewodnik, jak optymalizować swoją stronę pod parametry prędkości w 2026 roku.
               </p>
+
+              <TableOfContents items={tocItems} />
               
-              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '2.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+              <h2 id="dlaczego-przejmowac-sie">
                 Dlaczego w ogóle przejmować się Core Web Vitals?
               </h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p>
                 Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według oficjalnych danych Google, opóźnienie w załadowaniu strony zaledwie o 1 do 3 sekund zwiększa prawdopodobieństwo porzucenia jej przez użytkownika o ponad 32%.
               </p>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p>
                 Co więcej, algorytm Google premiuje w bezpłatnych wynikach wyszukiwania serwisy, które są lekkie i bezbłędnie zakodowane. Szybsza strona oznacza mniejszy koszt tzw. crawl budget, co sprzyja szybszej indeksacji nowych treści na Twoim blogu czy podstronach ofertowych.
               </p>
 
-              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+              <h2 id="kluczowe-wskazniki">
                 Kluczowe wskaźniki (Metryki CWV) i ich optymalizacja
               </h2>
               
-              <ul style={{ listStyle: 'none', padding: 0, margin: '2rem 0', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <ul style={{ listStyle: 'none' }}>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                   <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -100,13 +109,13 @@ export default function ArticleCwvPage() {
                 </li>
               </ul>
 
-              <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '3.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+              <h2 id="znaczenie-ttfb">
                 Znaczenie TTFB i renderowania serwerowego (SSR)
               </h2>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p>
                 Samo zmniejszanie rozmiaru obrazków nie pomoże, jeśli serwer odpowiada zbyt wolno (wskaźnik TTFB - Time to First Byte). Migracja na nowocześniejsze architektury (takie jak Jamstack, Next.js App Router z React Server Components) sprawia, że cały ciężar przetwarzania logiki bazy danych wykonywany jest raz na serwerze i dystrybuowany na węzły sieci CDN na całym świecie.
               </p>
-              <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+              <p>
                 Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co praktycznie gwarantuje zdobycie 100 punktów w teście PageSpeed Insights i deklasuje ociężałe monolityczne CMSy oparte o wtyczki.
               </p>
 
