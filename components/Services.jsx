@@ -96,10 +96,10 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
             </div>
-            <h3>{lang === 'pl' ? 'SEO i marketing wzrostu' : 'SEO & Growth Marketing'}</h3>
+            <h3>{lang === 'pl' ? 'Optymalizacja SEO i marketing wzrostu' : 'SEO Optimization & Growth Marketing'}</h3>
             <p>{lang === 'pl'
-              ? 'Skuteczne pozycjonowanie w wyszukiwarkach, architektura treści long-tail oraz optymalizacja konwersji (CRO) napędzająca stabilny ruch organiczny.'
-              : 'High-impact search engine positioning, long-tail content architecture, and conversion rate optimization (CRO) driving organic growth.'
+              ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
+              : 'High-impact search engine positioning, local SEO, technical SEO optimization, and conversion rate optimization (CRO) driving stable organic growth.'
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (

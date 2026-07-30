@@ -132,7 +132,7 @@ export default function SeoLokalneWarszawaPage() {
                 fontWeight: 500,
                 letterSpacing: '-0.01em'
               }}>
-                Wykorzystaj potęgę Map Google. Skalujemy firmy lokalne (usługi, gabinety, sklepy) łącząc zaawansowaną analitykę ze sprawdzonymi strategiami widoczności.
+                Wykorzystaj potęgę Map Google. Skuteczne pozycjonowanie lokalne pozwala skalować firmy (usługi, gabinety, sklepy), łącząc zaawansowaną analitykę ze sprawdzonymi strategiami widoczności. Nasze seo lokalne zamienia kliknięcia w prawdziwe zyski.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                 <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
@@ -167,7 +167,7 @@ export default function SeoLokalneWarszawaPage() {
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>ZASADA 1</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wyszukiwania z Intencją "Near Me"</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu.</p>
+                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne pozycjonowanie lokalne sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu.</p>
               </RevealItem>
               
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>

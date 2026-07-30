@@ -46,8 +46,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               letterSpacing: '-0.01em'
             }}>
               {lang === 'pl' 
-                ? 'Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę.'
-                : 'Build a lasting competitive advantage. We combine advanced technical audits and content architecture tailored for modern search engines.'}
+                ? 'Zbuduj trwałą przewagę konkurencyjną w Google. Nasza optymalizacja SEO łączy zaawansowane audyty techniczne i architekturę treści dopasowaną pod algorytmy sztucznej inteligencji.'
+                : 'Build a lasting competitive advantage. Our SEO optimization combines advanced technical audits and content architecture tailored for AI algorithms.'}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>

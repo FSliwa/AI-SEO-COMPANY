@@ -4,11 +4,21 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
+import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
 import { useLanguage } from '@/lib/LanguageContext';
 
 export default function PricingClient() {
   const { lang } = useLanguage();
+
+  const faqData = [
+    {
+      question: 'Ile kosztuje pozycjonowanie?',
+      questionEn: 'How much does SEO cost?',
+      answer: 'Cena pozycjonowania zależy od wielkości serwisu, konkurencyjności branży oraz aktualnego stanu technicznego strony. W AI SEO COMPANY nasze pakiety zaczynają się od transparentnych kwot, oferując pełną optymalizację SEO, dedykowaną strategię content marketingu oraz jakościowy link building, bez ukrytych kosztów.',
+      answerEn: 'The cost of SEO depends on the size of the website, industry competitiveness, and the current technical state of the site. At AI SEO COMPANY, our packages start at transparent rates, offering full SEO optimization, a dedicated content marketing strategy, and quality link building with no hidden costs.'
+    }
+  ];
 
   return (
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -74,6 +84,9 @@ export default function PricingClient() {
       </section>
 
       <Pricing />
+      
+      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Częste pytania o wycenę" : "Frequently Asked Questions about Pricing"} />
+      
       <Contact />
       <Footer />
     </main>

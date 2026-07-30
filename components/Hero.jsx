@@ -54,7 +54,7 @@ export default function Hero() {
         >
           <h1 style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <span className="sr-only">
-              Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż
+              Agencja marketingowa i SEO Warszawa - strony internetowe, pozycjonowanie lokalne i ogólnopolskie, optymalizacja SEO, które budują sprzedaż.
             </span>
             
             <motion.img 
