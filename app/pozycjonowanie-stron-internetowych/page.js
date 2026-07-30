@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Pozycjonowanie Stron Internetowych | SEO B2B i B2C | AI SEO COMPANY',
+  title: 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
   description: 'Skuteczne pozycjonowanie stron internetowych oparte na danych. Podniesiemy widoczność Twojego biznesu i przekształcimy ruch w płacących klientów.',
   alternates: {
     canonical: '/pozycjonowanie-stron-internetowych',

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'SEO Lokalne Warszawa | Pozycjonowanie Firm | AI SEO COMPANY',
+  title: 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: 'Skuteczne pozycjonowanie lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
   alternates: {
     canonical: '/seo-lokalne-warszawa',
@@ -121,7 +121,7 @@ export default function SeoLokalneWarszawaPage() {
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
-                SEO Lokalne Warszawa<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px' }}></span>Zdominuj Swoją Ofertą
+                SEO Lokalne Warszawa<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Zdominuj Swoją Ofertą
               </h1>
               <p style={{ 
                 fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Agencja SEO Warszawa - AI SEO COMPANY | Skuteczne Pozycjonowanie',
+  title: 'Agencja SEO Warszawa | Skuteczne Pozycjonowanie Stron',
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design oparty na AI.',
   alternates: {
     canonical: '/',

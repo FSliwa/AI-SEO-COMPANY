@@ -33,9 +33,9 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? (
-                <>Projektowanie stron internetowych<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px' }}></span>Nowoczesne Strony Wysoka Konwersja</>
+                <>Projektowanie stron internetowych<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Nowoczesne Strony Wysoka Konwersja</>
               ) : (
-                <>Web Design & Development<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px' }}></span>Modern Websites High Conversion</>
+                <>Web Design & Development<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Modern Websites High Conversion</>
               )}
             </h1>
             <p style={{ 

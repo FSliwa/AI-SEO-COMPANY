@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Projektowanie Stron Internetowych | Nowoczesny Web Design | AI SEO COMPANY',
+  title: 'Projektowanie Stron Internetowych | Web Design dla Firm',
   description: 'Tworzymy ultraszybkie i piękne wizualnie strony na Next.js (Headless). Skoncentrowane na maksymalizacji UX i konwersji.',
   alternates: {
     canonical: '/projektowanie-stron-internetowych',
