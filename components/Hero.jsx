@@ -56,7 +56,7 @@ export default function Hero() {
           <h1 style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             
             <motion.img 
-              src="/hero-text.svg" 
+              src={lang === 'en' ? '/hero-text-en.svg' : '/hero-text.svg'} 
               alt="Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż" 
               style={{ 
                 width: '100%', 
