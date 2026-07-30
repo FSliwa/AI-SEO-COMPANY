@@ -83,14 +83,16 @@ const jsonLdData = {
 
 import Script from 'next/script';
 
+import { Inter, Space_Grotesk } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space', display: 'swap' });
+
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
       <head>
         <link rel="icon" href="/ai-seo-company-logotyp.svg" type="image/svg+xml" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
@@ -109,7 +111,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body>
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
         <LanguageProvider>
           {children}
           <CookiesBanner />

@@ -75,7 +75,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif !important;
   background-color: var(--color-bg-surface);
   color: var(--color-text-main);
   line-height: 1.65;
@@ -89,7 +89,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif !important;
 }
 
 /* KOTA Ambient Mesh Gradient Blur Overlay */
@@ -387,7 +387,7 @@ button, input, select, textarea {
 
 .kota-fullscreen-links a {
   display: inline-block;
-  font-family: 'Space Grotesk', system-ui, sans-serif !important;
+  font-family: var(--font-space), system-ui, sans-serif !important;
   font-size: clamp(2.5rem, 4.8vw, 5rem);
   font-weight: 800;
   color: #FFFFFF;
@@ -1430,7 +1430,7 @@ section {
   font-size: 0.83rem;
   font-weight: 700;
   line-height: 1.25;
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: var(--font-space), system-ui, sans-serif;
 }
 
 /* Node Highlight & Active States (No black outline on green circle!) */

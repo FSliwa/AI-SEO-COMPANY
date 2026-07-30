@@ -21,22 +21,22 @@ export default function CookiesContent() {
             <p>{t.content}</p>
             {lang === 'pl' ? (
               <>
-                <h3 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A' }}>1. Czym są pliki cookies?</h3>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>1. Czym są pliki cookies?</h2>
                 <p>Pliki cookies (tzw. ciasteczka) to dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika Serwisu i przeznaczone są do korzystania ze stron internetowych Serwisu.</p>
-                <h3 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A' }}>2. Cele w jakich stosowane są cookies</h3>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>2. Cele w jakich stosowane są cookies</h2>
                 <p>Cookies używamy w celach analitycznych (Google Analytics), marketingowych (śledzenie konwersji i personalizacja reklam) oraz do zapewnienia prawidłowego funkcjonowania serwisu.</p>
-                <h3 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A' }}>3. Zarządzanie plikami cookies</h3>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>3. Zarządzanie plikami cookies</h2>
                 <p>W wielu przypadkach oprogramowanie służące do przeglądania stron internetowych (przeglądarka internetowa) domyślnie dopuszcza przechowywanie plików cookies w urządzeniu końcowym Użytkownika. Użytkownicy Serwisu mogą dokonać w każdym czasie zmiany ustawień dotyczących plików cookies w swojej przeglądarce.</p>
-                <h3 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A' }}>4. Kontakt</h3>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>4. Kontakt</h2>
                 <p>W razie pytań dotyczących polityki cookies prosimy o <a href="/#kontakt" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>kontakt</a>. Więcej o naszych usługach dowiesz się na stronach: <a href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>pozycjonowanie stron</a>, <a href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron internetowych</a> oraz <a href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt SEO</a>.</p>
               </>
             ) : (
               <>
-                <h3 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A' }}>1. What are cookies?</h3>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>1. What are cookies?</h2>
                 <p>Cookies are IT data, in particular text files, which are stored on the Website User's end device and are intended for using the Website's pages.</p>
-                <h3 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A' }}>2. Purposes for which cookies are used</h3>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>2. Purposes for which cookies are used</h2>
                 <p>We use cookies for analytical purposes (Google Analytics), marketing (conversion tracking and ad personalization), and to ensure the proper functioning of the website.</p>
-                <h3 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A' }}>3. Cookie management</h3>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>3. Cookie management</h2>
                 <p>In many cases, the software used for browsing websites (web browser) allows cookies to be stored on the User's end device by default. Website Users can change their cookie settings at any time in their browser.</p>
               </>
             )}

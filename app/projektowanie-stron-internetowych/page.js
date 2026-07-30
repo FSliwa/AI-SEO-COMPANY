@@ -52,7 +52,7 @@ const webDesignPortfolioCases = [
     tag: 'BEZPIECZEŃSTWO',
     title: 'Niezawodna Architektura Bez Wtyczek',
     description: 'Zapomnij o dziurawych systemach, ciągłych aktualizacjach i awariach. Nasze nowoczesne podejście oddziela treść od kodu, zapewniając pełną odporność na ataki i gwarantując bezawaryjne działanie.',
-    image: 'https://images.unsplash.com/photo-1673036823812-b0d86a2cead1?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1678366633407-7f49da199a42?auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
     metric: '99.99%',
     metricLabel: 'Dostępność 24/7',

@@ -11,8 +11,25 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
     setOpenIndex(openIndex === index ? -1 : index);
   };
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqData.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  };
+
   return (
     <section style={{ padding: '6rem 0' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
         <Reveal>
           <h2 style={{ 

@@ -74,7 +74,7 @@ export default function ArticleCennikPage() {
                 <strong>Porada profesjonalisty:</strong> Zanim zadzwonisz do agencji, sprawdź w <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a>, ile ruchu organicznego masz teraz i z jakich fraz. To 10 minut pracy, które pozwolą Ci ocenić, czy oferta agencji jest dopasowana do Twojego punktu startowego.
               </p>
 
-              <p>Chcesz wiedzieć, ile dokładnie zapłacisz za swój projekt? Poniżej rozkładamy ceny na czynniki pierwsze — według typu firmy, zawartości pakietu i modelu rozliczeń.</p>
+              <p>Chcesz wiedzieć, ile dokładnie zapłacisz za swój projekt? Poniżej rozkładamy nasz <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link> na czynniki pierwsze — według typu firmy, zawartości pakietu i modelu rozliczeń.</p>
 
               <div style={{ margin: '3rem 0', padding: '2rem', backgroundColor: '#F5F5F7', borderRadius: '20px' }}>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1rem' }}>Spis treści</h3>
@@ -155,7 +155,7 @@ export default function ArticleCennikPage() {
               <p><strong>Elementy standardowe (core SEO) — powinny być w każdym pakiecie:</strong></p>
               <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
                 <li>Audyt techniczny strony (przynajmniej wstępny przy starcie)</li>
-                <li>Optymalizacja on-page: tytuły, opisy, nagłówki, struktura URL</li>
+                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Optymalizacja on-page</Link>: tytuły, opisy, nagłówki, struktura URL</li>
                 <li>Monitoring pozycji i ruchu organicznego</li>
                 <li>Raportowanie (miesięczne lub dwutygodniowe)</li>
                 <li>Podstawowe naprawy techniczne (szybkość, indeksowanie, przekierowania)</li>
@@ -165,7 +165,7 @@ export default function ArticleCennikPage() {
               <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem' }}>
                 <li>Link building (pozyskiwanie linków zewnętrznych)</li>
                 <li>Content marketing (regularne artykuły, landing page'e, opisy kategorii)</li>
-                <li>Lokalne SEO i zarządzanie Google Moja Firma</li>
+                <li><Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Lokalne SEO</Link> i zarządzanie Google Moja Firma</li>
                 <li>Optymalizacja pod modele AI, czyli AEO (Answer Engine Optimization)</li>
                 <li>Migracje serwisu i zmiany CMS</li>
                 <li>Audyt UX/UI i optymalizacja konwersji</li>

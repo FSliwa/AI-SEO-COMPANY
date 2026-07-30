@@ -7,8 +7,8 @@ const EASE = [0.7, 0, 0.3, 1]; // Premium cubic-bezier easing
 export function Reveal({ children, delay = 0, className = '', style = {}, ...props }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 30 }}
+      whileInView={{ opacity: [0, 1], y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.8, ease: EASE, delay }}
       className={className}
@@ -27,9 +27,8 @@ export function RevealStagger({ children, className = '', style = {}, delay = 0,
       whileInView="visible"
       viewport={{ once: true, margin: '-40px' }}
       variants={{
-        hidden: { opacity: 0 },
+        hidden: {},
         visible: {
-          opacity: 1,
           transition: {
             staggerChildren: 0.15,
             delayChildren: delay
@@ -49,9 +48,9 @@ export function RevealItem({ children, className = '', style = {}, ...props }) {
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 30 },
+        hidden: { y: 30 },
         visible: {
-          opacity: 1,
+          opacity: [0, 1],
           y: 0,
           transition: { duration: 0.8, ease: EASE }
         }

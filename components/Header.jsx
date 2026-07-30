@@ -63,7 +63,8 @@ export default function Header() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href="/" className="logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+            <a href="/" className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+              <span className="sr-only">Strona główna AI SEO COMPANY</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 240 1802 294" 
@@ -241,7 +242,7 @@ export default function Header() {
                 <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
               <li style={{ '--delay': '0.6s' }}>
-                <a href="#" onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
+                <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
               </li>
             </ul>
 
@@ -252,8 +253,8 @@ export default function Header() {
               </div>
               <div className="footer-socials">
                 <span className="footer-label">Social Media</span>
-                <a href="#" className="footer-value">LinkedIn</a>
-                <a href="#" className="footer-value">Instagram</a>
+                <a href="https://linkedin.com/company/ai-seo-company" target="_blank" rel="noopener noreferrer" className="footer-value">LinkedIn</a>
+                <a href="https://instagram.com/aiseocompany" target="_blank" rel="noopener noreferrer" className="footer-value">Instagram</a>
               </div>
             </div>
           </div>

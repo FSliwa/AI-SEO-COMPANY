@@ -48,8 +48,8 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               letterSpacing: '-0.01em'
             }}>
               {lang === 'pl' 
-                ? 'Tworzymy błyskawiczne i piękne witryny w technologii Next.js. Budujemy wizerunek marek B2B, który zachwyca estetów i sprzedaje bez kompromisów.' 
-                : 'We create lightning-fast and beautiful websites using Next.js. We build B2B brand images that delight aesthetes and sell without compromise.'}
+                ? 'Profesjonalne projektowanie stron internetowych to inwestycja w bezpieczny i stabilny fundament Twojego biznesu. Tworzymy firmowe strony www, które chronią przed atakami hakerskimi, ładują się błyskawicznie i zamieniają ruch w wartościowe zapytania ofertowe B2B.' 
+                : 'Professional website design is an investment in a secure and stable foundation for your business. We create corporate websites that protect against hacker attacks, load instantly, and turn traffic into valuable B2B leads.'}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
@@ -83,20 +83,20 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 1' : 'PILLAR 1'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technologia Next.js' : 'Next.js Technology'}</h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Architektura serwerowa (SSR) i statyczna (SSG) zapewniająca natychmiastowe ładowanie, idealna dla perfekcyjnych wyników Core Web Vitals i pozycjonowania.' : 'Server-side (SSR) and static (SSG) architecture ensuring instant loading, perfect for pristine Core Web Vitals scores and SEO.'}</p>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Niezawodność i Bezpieczeństwo' : 'Reliability & Security'}</h3>
+              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Nasze projektowanie stron internetowych łączy nowoczesną architekturę Headless z biznesowymi korzyściami. To nie tylko niezrównana szybkość, ale też całkowite odcięcie hakerów od Twojej bazy danych. Zyskujesz spokój ducha i bezpieczeństwo znane z systemów klasy Enterprise, zapominając o awariach.' : 'Our website design combines modern Headless architecture with business benefits. It\\'s not just unmatched speed, but also a complete cut-off for hackers from your database. You gain peace of mind and Enterprise-grade security, forgetting about crashes.'}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 2' : 'PILLAR 2'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'High-End UX/UI' : 'High-End UX/UI'}</h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Minimalistyczne interfejsy zaprojektowane z myślą o użytkowniku końcowym i maksymalizacji sprzedaży B2B. Wykorzystujemy zasady symetrii.' : 'Minimalist interfaces designed with the end-user in mind, maximizing B2B sales. We leverage principles of symmetry.'}</p>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Konwersja B2B i Leady' : 'B2B Conversion & Leads'}</h3>
+              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Eliminujemy zbędny szum informacyjny. Budujemy przejrzyste interfejsy i formularze, które w logiczny sposób prowadzą klienta prosto do kontaktu z Twoim działem sprzedaży.' : 'We eliminate unnecessary information noise. We build clean interfaces and forms that logically guide the client straight to contacting your sales department.'}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 3' : 'PILLAR 3'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'SEO Ready' : 'SEO Ready'}</h3>
-              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Zoptymalizowana struktura semantyczna HTML5 i danych strukturalnych (Schema.org), gotowa na wdrożenie zaawansowanych kampanii od pierwszego dnia.' : 'Optimized HTML5 semantic structure and structured data (Schema.org), ready for advanced campaigns from day one.'}</p>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Fundament pod SEO' : 'SEO Foundation'}</h3>
+              <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Od pierwszego dnia strona jest zoptymalizowana pod Google (szybkość wczytywania, tagi strukturalne). Tworzymy solidną bazę, gotową na bezkompromisowe pozycjonowanie stron.' : 'From day one, the site is optimized for Google (loading speed, structured tags). We create a solid base, ready for uncompromising SEO.'}</p>
             </RevealItem>
           </RevealStagger>
         </div>
