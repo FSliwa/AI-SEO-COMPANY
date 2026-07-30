@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'O nas | Agencja SEO Warszawa — AI SEO COMPANY',
   description: 'Poznaj zespół AI SEO COMPANY. Jesteśmy architektami Twojego wzrostu. Łączymy design z twardymi danymi analitycznymi.',
+  alternates: {
+    canonical: '/o-nas',
+  },
 };
 
 import Header from '@/components/Header';

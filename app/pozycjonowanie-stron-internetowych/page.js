@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Pozycjonowanie Stron WWW | SEO B2B i B2C — AI SEO COMPANY',
   description: 'Skuteczne pozycjonowanie stron internetowych oparte na danych. Podniesiemy widoczność Twojego biznesu i przekształcimy ruch w płacących klientów.',
+  alternates: {
+    canonical: '/pozycjonowanie-stron-internetowych',
+  },
 };
 
 import Header from '@/components/Header';
@@ -156,7 +159,7 @@ export default function PozycjonowanieStronPage() {
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
-                Organiczny Wzrost<br />Maksymalna Konwersja
+                Pozycjonowanie stron internetowych — <br />Organiczny Wzrost Maksymalna Konwersja
               </h1>
               <p style={{ 
                 fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 

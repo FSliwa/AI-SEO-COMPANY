@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Audyt SEO | Analiza i optymalizacja — AI SEO COMPANY',
   description: 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne na Twojej stronie i przygotujemy strategię, która natychmiast poprawi Twoje pozycje w Google.',
+  alternates: {
+    canonical: '/audyt-seo',
+  },
 };
 
 import Header from '@/components/Header';
@@ -144,7 +147,7 @@ export default function AudytSeoPage() {
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
-                Diagnoza Techniczna<br />Precyzyjna Optymalizacja
+                Audyt SEO — Diagnoza Techniczna<br />Precyzyjna Optymalizacja
               </h1>
               <p style={{ 
                 fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 

@@ -35,15 +35,14 @@ export default function BlogGrid() {
     <section className="blog-grid" style={{ padding: '4rem 0', backgroundColor: '#F5F5F7' }}>
       <div className="container" style={{ margin: '0 auto' }}>
         <Reveal>
-          <h2 style={{ 
+          <h1 style={{ 
             fontSize: '2rem', 
             fontWeight: 700, 
-            color: '#1D1D1F', 
-            marginBottom: '2rem',
-            textAlign: 'left'
+            color: 'var(--color-text-main)', 
+            marginBottom: '2rem', textAlign: 'left' 
           }}>
-            {lang === 'pl' ? 'Najnowsze Artykuły' : 'Latest News'}
-          </h2>
+            {lang === 'pl' ? 'Najnowsze Artykuły' : 'Latest Articles'}
+          </h1>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -54,7 +53,7 @@ export default function BlogGrid() {
               backgroundColor: '#FFFFFF', 
               borderRadius: '24px', 
               overflow: 'hidden',
-              marginBottom: '2rem',
+              marginBottom: '2rem', textAlign: 'left',
               boxShadow: '0 4px 24px rgba(0,0,0,0.04)',
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               cursor: 'pointer'

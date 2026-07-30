@@ -50,9 +50,9 @@ const jsonLdData = {
       'email': 'kontakt@ai-seo-company.pl',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': 'ul. Grzybowska',
+        'streetAddress': 'ul. Grzybowska 12/14 lok. B-3',
         'addressLocality': 'Warszawa',
-        'postalCode': '00-844',
+        'postalCode': '00-132',
         'addressCountry': 'PL'
       },
       'vatID': 'PL5253090237',
@@ -61,13 +61,6 @@ const jsonLdData = {
         'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
         'opens': '09:00',
         'closes': '18:00'
-      },
-      'aggregateRating': {
-        '@type': 'AggregateRating',
-        'ratingValue': '4.9',
-        'reviewCount': '38',
-        'bestRating': '5',
-        'worstRating': '1'
       },
       'areaServed': {
         '@type': 'AdministrativeArea',

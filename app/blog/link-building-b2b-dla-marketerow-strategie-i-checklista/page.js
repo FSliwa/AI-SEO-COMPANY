@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Link building B2B dla marketerów: strategie i checklista | AI SEO COMPANY',
   description: 'Skuteczny link building B2B opiera się na digital PR, partnerstwach i publikacjach eksperckich. Sprawdź, jak to robić.',
+  alternates: {
+    canonical: '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista',
+  },
 };
 
 import Header from '@/components/Header';

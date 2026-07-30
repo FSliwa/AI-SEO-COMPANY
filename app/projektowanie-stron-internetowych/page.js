@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Projektowanie Stron Internetowych | Nowoczesny Web Design — AI SEO COMPANY',
   description: 'Tworzymy ultraszybkie i piękne wizualnie strony na Next.js (Headless). Skoncentrowane na maksymalizacji UX i konwersji.',
+  alternates: {
+    canonical: '/projektowanie-stron-internetowych',
+  },
 };
 
 import Header from '@/components/Header';
@@ -163,7 +166,7 @@ export default function ProjektowanieStronPage() {
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
-                Nowoczesne Strony<br />Wysoka Konwersja
+                Projektowanie stron internetowych — <br />Nowoczesne Strony Wysoka Konwersja
               </h1>
               <p style={{ 
                 fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 

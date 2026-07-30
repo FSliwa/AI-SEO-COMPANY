@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Biblioteka Artykułów | Poradnik SEO i Web Design — AI SEO COMPANY',
   description: 'Wszystkie publikacje naszego zespołu w jednym miejscu. Przeglądaj pełną bibliotekę artykułów o pozycjonowaniu i web designie.',
+  alternates: {
+    canonical: '/blog/biblioteka',
+  },
 };
 
 import Header from '@/components/Header';

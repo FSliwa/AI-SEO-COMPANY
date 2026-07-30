@@ -8,10 +8,14 @@ export default function sitemap() {
     '/audyt-seo',
     '/projektowanie-stron-internetowych',
     '/blog',
+    '/blog/biblioteka',
     '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista',
     '/blog/ile-kosztuje-pozycjonowanie-2026',
     '/blog/core-web-vitals-a-pozycje-google',
     '/blog/seo-lokalne-dla-firm-w-warszawie',
+    '/blog/audyt-seo-cena-2026-ile-zaplacisz-w-polsce',
+    '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',
+    '/cennik-pozycjonowania',
     '/o-nas',
     '/cookies'
   ];

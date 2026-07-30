@@ -1768,7 +1768,7 @@ section {
   margin-bottom: 3.5rem;
 }
 
-.footer-col h4 {
+.footer-col h4, .footer-col .footer-heading {
   color: #FFFFFF;
   font-size: 1rem;
   margin-bottom: 1.25rem;

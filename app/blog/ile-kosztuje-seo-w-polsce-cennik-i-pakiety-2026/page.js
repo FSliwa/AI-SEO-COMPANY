@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'Ile kosztuje SEO w Polsce? Cennik i pakiety 2026 | AI SEO COMPANY',
   description: 'Zastanawiasz się, ile kosztuje skuteczne pozycjonowanie w 2026 roku? Zobacz nasz cennik SEO i dowiedz się, co wpływa na finalną cenę optymalizacji.',
+  alternates: {
+    canonical: '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',
+  },
 };
 
 import Header from '@/components/Header';
