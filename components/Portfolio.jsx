@@ -23,7 +23,7 @@ const realizedWebsites = [
     layout: 'center',
     rightVisual: 'single-large',
     largeImage: '/projects/madame-thai-full.webp',
-    largeImageMobile: '/images/madame-thai-mobile.png',
+    largeImageMobile: '/images/madame-thai-mobile.webp',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
 - Responsywna wersja strony (RWD): Poprawne działanie na telefonach i tabletach — eliminacja utraconych zapytań od klientów mobilnych.

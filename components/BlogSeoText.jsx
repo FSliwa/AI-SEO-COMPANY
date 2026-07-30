@@ -9,7 +9,7 @@ export default function BlogSeoText() {
     <section style={{ backgroundColor: '#F5F5F7', padding: '80px 0', marginTop: '40px' }}>
       <div className="container" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2rem' }}>
         {locale === 'en' ? (
-          <div style={{ color: '#515154', fontSize: '1.05rem', lineHeight: '1.8' }}>
+          <div style={{ color: '#333336', fontSize: '1.05rem', lineHeight: '1.8' }}>
             <h2 style={{ color: '#1D1D1F', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '700' }}>Read our SEO and Web Design Articles</h2>
             <p style={{ marginBottom: '1.5rem' }}>
               Welcome to the ultimate resource for business owners, marketers, and developers looking to scale their online presence. Our blog is a meticulously curated knowledge base where we dive deep into the intricacies of Search Engine Optimization (SEO), modern Web Design, and conversion rate optimization (CRO). In today's highly competitive digital landscape, relying on outdated marketing tactics is no longer sufficient. That is why our team of experts continuously analyzes Google algorithm updates, artificial intelligence (AI) trends, and user behavior patterns to bring you actionable strategies that actually work.
@@ -28,7 +28,7 @@ export default function BlogSeoText() {
             </p>
           </div>
         ) : (
-          <div style={{ color: '#515154', fontSize: '1.05rem', lineHeight: '1.8' }}>
+          <div style={{ color: '#333336', fontSize: '1.05rem', lineHeight: '1.8' }}>
             <h2 style={{ color: '#1D1D1F', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '700' }}>Nasze Najnowsze Artykuły o SEO i Web Designie</h2>
             <p style={{ marginBottom: '1.5rem' }}>
               Witamy w najważniejszym miejscu dla właścicieli firm, marketerów i deweloperów, którzy chcą skutecznie skalować swoją obecność w internecie. Nasz blog to skrupulatnie opracowana baza wiedzy, w której dogłębnie analizujemy zawiłości pozycjonowania stron internetowych (SEO), nowoczesnego projektowania stron (Web Design) oraz optymalizacji współczynnika konwersji (CRO). W dzisiejszym, wysoce konkurencyjnym środowisku cyfrowym, poleganie na przestarzałych taktykach marketingowych to za mało. Dlatego nasz zespół ekspertów nieustannie bada aktualizacje algorytmów Google, trendy sztucznej inteligencji (AI) i wzorce zachowań użytkowników, aby dostarczać strategie, które realnie działają.

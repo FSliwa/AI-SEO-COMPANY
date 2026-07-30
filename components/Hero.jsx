@@ -8,7 +8,7 @@ export default function Hero() {
   const t = useTranslations('hero');
 
   return (
-    <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F172A' }}>
       {/* H1 moved to the main visual element */}
 
       {/* Background Hero Video */}
