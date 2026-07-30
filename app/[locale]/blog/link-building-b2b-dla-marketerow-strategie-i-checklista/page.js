@@ -144,7 +144,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Czym jest link building B2B ===== */}
               <h2 id="czym-jest">Czym jest link building B2B i czym różni się od B2C?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Link building B2B to proces zdobywania odnośników z zewnętrznych stron internetowych, które wzmacniają autorytet Twojej domeny w oczach wyszukiwarek i potwierdzają wiarygodność firmy w oczach decyzjonariuszy. Współpraca z profesjonalną <Link href="/">agencją SEO</Link> pozwala ten proces systematycznie planować i skalować.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Link building B2B to proces zdobywania odnośników z zewnętrznych stron internetowych, które wzmacniają autorytet Twojej domeny w oczach wyszukiwarek i potwierdzają wiarygodność firmy w oczach decyzjonariuszy. Współpraca z profesjonalną <Link href={`/${locale}`}>agencją SEO</Link> pozwala ten proces systematycznie planować i skalować.</p>
               <p style={{ marginBottom: '1.5rem' }}>Różnica wobec B2C jest fundamentalna. W B2C liczy się wolumen i zasięg masowy. W B2B jeden link z branżowego czasopisma czytanego przez 5 000 dyrektorów zakupów jest wart więcej niż sto linków z ogólnotematycznych portali. Kupujący B2B prowadzą research przez tygodnie lub miesiące, a cytaty eksperckie i wzmianki w zaufanych publikacjach branżowych bezpośrednio wpływają na to, które firmy trafiają na shortlistę.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Trzy typowe cele programu linkowego w B2B:</p>
@@ -223,7 +223,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Outreach ===== */}
               <h2 id="outreach">Outreach, personalizacja i skalowanie procesu</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Efektywny outreach w B2B to kwestia jakości kontaktu, nie wolumenu wiadomości. Skuteczne programy digital PR skupiają się na relacjach z 15–30 dziennikarzami z publikacji czytanych przez decydentów, a nie na masowym rozsyłaniu szablonów. Każda <Link href="/">agencja marketingowa</Link> specjalizująca się w B2B powinna rozumieć tę różnicę.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Efektywny outreach w B2B to kwestia jakości kontaktu, nie wolumenu wiadomości. Skuteczne programy digital PR skupiają się na relacjach z 15–30 dziennikarzami z publikacji czytanych przez decydentów, a nie na masowym rozsyłaniu szablonów. Każda <Link href={`/${locale}`}>agencja marketingowa</Link> specjalizująca się w B2B powinna rozumieć tę różnicę.</p>
               <p style={{ marginBottom: '1.5rem' }}>Rekomendowany stos narzędzi: <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> lub <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> do analizy profilu linkowego i identyfikacji celów, <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> lub <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> do monitorowania zapytań dziennikarskich, <a href="https://hunter.io/" target="_blank" rel="noopener noreferrer">Hunter.io</a> do weryfikacji adresów e-mail, Notion lub HubSpot jako proste CRM do śledzenia statusu outreachu.</p>
               <p style={{ marginBottom: '1.5rem' }}>Przykładowy workflow jednej kampanii: identyfikacja 30 celów (publikacje + redaktorzy) → personalizacja pitcha pod każdą redakcję → wysyłka → follow-up po 5 dniach roboczych → finalizacja i monitorowanie opublikowanego linku w Ahrefs Alerts.</p>
 
@@ -283,7 +283,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Outsourcing ===== */}
               <h2 id="outsourcing">Kiedy outsourcować link building i jak wybrać agencję?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Trzy sygnały, że warto sięgnąć po zewnętrznego partnera — doświadczoną <Link href="/">agencję SEO Warszawa</Link> lub innego miasta:</p>
+              <p style={{ marginBottom: '1.5rem' }}>Trzy sygnały, że warto sięgnąć po zewnętrznego partnera — doświadczoną <Link href={`/${locale}`}>agencję SEO Warszawa</Link> lub innego miasta:</p>
               <ul>
                 <li>Brak wewnętrznych zasobów do prowadzenia systematycznego outreachu i produkcji treści eksperckich.</li>
                 <li>Potrzeba szybszego dostępu do sieci relacji z redakcjami branżowymi, których budowanie od zera zajmuje miesiące.</li>
@@ -389,7 +389,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>Jak zorganizować pilotaż: wybierz jedną taktykę (np. broken link building lub outreach partnerski), zdefiniuj 10–15 celów, uruchom kampanię przez 4–6 tygodni i oceń wskaźnik odpowiedzi oraz konwersję do publikacji. Wyniki pilotażu dają realną podstawę do decyzji o skali programu.</p>
 
               <h3>Rekomendacja</h3>
-              <p style={{ marginBottom: '1.5rem' }}><Link href="/">Agencja SEO Warszawa</Link> | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY</p>
+              <p style={{ marginBottom: '1.5rem' }}><Link href={`/${locale}`}>Agencja SEO Warszawa</Link> | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY</p>
               <p style={{ marginBottom: '1.5rem', fontStyle: 'italic', color: '#86868B' }}>Artykuł wygenerowany przez BabyLoveGrowth</p>
 
               {/* Clear CTA Block */}
