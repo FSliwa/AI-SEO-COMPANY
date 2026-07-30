@@ -12,6 +12,7 @@ export default function sitemap() {
     '/blog/biblioteka',
     '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista',
     '/blog/core-web-vitals-a-pozycje-google',
+    '/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026',
     '/blog/seo-lokalne-dla-firm-w-warszawie',
     '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',
     '/cennik-pozycjonowania',
