@@ -31,9 +31,9 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? (
-                <>Pozycjonowanie stron internetowych | <br />Organiczny Wzrost Maksymalna Konwersja</>
+                <>Pozycjonowanie stron internetowych<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px' }}></span>Organiczny Wzrost Maksymalna Konwersja</>
               ) : (
-                <>Search Engine Optimization | <br />Organic Growth Maximum Conversion</>
+                <>Search Engine Optimization<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px' }}></span>Organic Growth Maximum Conversion</>
               )}
             </h1>
             <p style={{ 

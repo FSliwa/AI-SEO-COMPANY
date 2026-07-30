@@ -121,7 +121,7 @@ export default function SeoLokalneWarszawaPage() {
                 marginBottom: '1.5rem', 
                 letterSpacing: '-0.04em'
               }}>
-                SEO Lokalne Warszawa | <br />Zdominuj Swoją Ofertą
+                SEO Lokalne Warszawa<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px' }}></span>Zdominuj Swoją Ofertą
               </h1>
               <p style={{ 
                 fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 

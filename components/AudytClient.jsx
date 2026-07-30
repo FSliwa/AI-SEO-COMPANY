@@ -32,9 +32,9 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? (
-                <>Audyt SEO | Diagnoza Techniczna<br />Precyzyjna Optymalizacja</>
+                <>Audyt SEO<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px' }}></span>Diagnoza Techniczna<br />Precyzyjna Optymalizacja</>
               ) : (
-                <>SEO Audit | Technical Diagnosis<br />Precise Optimization</>
+                <>SEO Audit<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px' }}></span>Technical Diagnosis<br />Precise Optimization</>
               )}
             </h1>
             <p style={{ 
