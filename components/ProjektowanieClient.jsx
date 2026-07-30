@@ -68,7 +68,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? 'Profesjonalne projektowanie stron internetowych to inwestycja w stabilny fundament. Tworzymy nowoczesne i szybkie strony B2B, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów.' 
+                ? <>Profesjonalne projektowanie stron internetowych to inwestycja w stabilny fundament. <span style={{ color: 'var(--color-cta)' }}>Tworzymy nowoczesne i szybkie strony B2B, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów</span>.</> 
                 : <>Professional Web Design and Development is an investment in a stable foundation. <span style={{ color: 'var(--color-cta)' }}>We create fast Business Websites that protect against attacks and turn organic traffic into customers</span>.</>}
             </p>
             

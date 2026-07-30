@@ -6,8 +6,8 @@ export default function BlogSeoText() {
   const locale = useLocale();
 
   return (
-    <section style={{ backgroundColor: '#F5F5F7', padding: '80px 0', marginTop: '40px' }}>
-      <div className="container" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2rem' }}>
+    <section className="sr-only">
+      <div>
         {locale === 'en' ? (
           <div style={{ color: '#333336', fontSize: '1.05rem', lineHeight: '1.8' }}>
             <h2 style={{ color: '#1D1D1F', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '700' }}>Read our SEO and Web Design Articles</h2>

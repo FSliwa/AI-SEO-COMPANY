@@ -66,7 +66,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę. Nasza usługa to: <strong>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</strong>.</>
+                ? <>Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę. Nasza usługa to: <strong style={{ color: 'var(--color-cta)' }}>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</strong>.</>
                 : <>Build a lasting competitive advantage. We combine advanced technical audits with content architecture tailored for modern search engines. Our service is: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
             
