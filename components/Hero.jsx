@@ -19,7 +19,7 @@ export default function Hero() {
         playsInline
         className="hero-video-bg"
         preload="metadata"
-        poster="/black-hole-poster.jpg"
+        poster="/black-hole-poster.webp"
       >
         <source src="/black-hole-ai-seo-company.webm" type="video/webm" />
         <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" />
@@ -58,6 +58,8 @@ export default function Hero() {
             <motion.img 
               src={lang === 'en' ? '/hero-text-en.svg' : '/hero-text.svg'} 
               alt="Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż" 
+              width={1600}
+              height={294}
               style={{ 
                 width: '100%', 
                 height: 'auto', 

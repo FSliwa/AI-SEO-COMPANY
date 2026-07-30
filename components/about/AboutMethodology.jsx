@@ -328,7 +328,7 @@ export default function AboutMethodology() {
                       }}
                     >
                       <Image 
-                        src={item.desktopCard ? item.desktopCard.image : '/projects/kafelek-staniax-full.png'} 
+                        src={item.desktopCard ? item.desktopCard.image : '/projects/kafelek-staniax-full.webp'} 
                         alt="Preview screenshot" 
                         fill
                         style={{ 
