@@ -29,6 +29,57 @@ export default function ArticleLokalnePage() {
       <Header />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      {locale === 'en' ? (
+
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <Reveal>
+            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                Local SEO
+              </span>
+              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                Jul 27, 2026
+              </span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+              Local SEO for Businesses.
+            </h1>
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </div>
+            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="article-content">
+              <p className="lead">
+                For service-based companies, local SEO is often the primary source of acquiring new clients. Learn how to optimize your Google Business Profile and local website structure to dominate your city's search results.
+              </p>
+              <ArticleTOC items={tocItems} />
+              
+              <h2 id="wizytowka-google">Google Business Profile (Google Maps)</h2>
+              <p>Your Google Business Profile is the absolute foundation of local visibility. Ensure your NAP (Name, Address, Phone) data is perfectly consistent across the web. Regularly add high-quality photos, respond to all reviews (both positive and negative), and utilize Google Posts to share updates.</p>
+
+              <h2 id="optymalizacja-strony">On-Page Local Optimization</h2>
+              <p>Your website must clearly communicate your service areas. Create dedicated subpages for different districts or nearby cities. Include localized keywords in your H1 tags, meta titles, and naturally within the body content. Embedding a Google Map on your contact page also provides a strong local signal.</p>
+
+              <h2 id="opinie">The Power of Reviews</h2>
+              <p>Online reviews are a critical ranking factor in the local pack. Implement a systemic approach to asking satisfied customers for feedback. More genuine, high-rating reviews will directly impact your click-through rate (CTR) and overall local authority.</p>
+
+              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
+                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
+                  <h3>Dominate your local market</h3>
+                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>Let our experts position your business at the top of Google Maps.</p>
+                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Get a Local SEO Quote</a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+    
+      ) : (
+        <>
+
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           
           <Reveal>
@@ -139,7 +190,10 @@ export default function ArticleLokalnePage() {
             </div>
           </Reveal>
         </div>
-      </article>
+      
+        </>
+      )}
+    </article>
 
       <div id="kontakt">
         <Contact />

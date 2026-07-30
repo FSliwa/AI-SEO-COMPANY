@@ -27,6 +27,78 @@ export default function ArticleCwvPage() {
       <Header />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      {locale === 'en' ? (
+
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <Reveal>
+            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                Technical SEO & Speed
+              </span>
+              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                Jul 24, 2026
+              </span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+              Core Web Vitals and Rankings.
+            </h1>
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </div>
+            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="article-content">
+              <p className="lead">
+                Core Web Vitals is an official Google ranking factor. Websites that load instantly and are free of annoying layout shifts achieve higher positions and significantly higher dwell time. Here is our guide: Core Web Vitals and Google rankings in 2026.
+              </p>
+              <ArticleTOC items={tocItems} />
+              
+              <h2 id="dlaczego-przejmowac-sie">Why should you care about Core Web Vitals at all?</h2>
+              <p>Loading speed is no longer just a nice addition - it has become a requirement. According to official Google data, a delay in page load of just 1 to 3 seconds increases the probability of a user abandoning it by over 32%.</p>
+              <p>Moreover, the Google algorithm rewards websites in organic search results that are lightweight and flawlessly coded. A faster site means a lower crawl budget cost, which favors faster indexing of new content on your blog or offer subpages.</p>
+
+              <h2 id="kluczowe-wskazniki">Key indicators (CWV Metrics) and their optimization</h2>
+              <ul style={{ listStyle: 'none' }}>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>LCP (Largest Contentful Paint)</span>
+                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Render time of the largest visible element on the page. Google requires a score below 2.5 seconds. To achieve this, implement modern media formats (WebP, AVIF), preload critical resources, and deploy server-side rendering.</span>
+                  </div>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>CLS (Cumulative Layout Shift)</span>
+                    <span style={{ color: '#515154', lineHeight: 1.5 }}>Visual stability metric (ideal score is below 0.1). Most often results from asynchronously loading fonts (FOUT) or dynamically loading images and ads. Recipe: always declare fixed width and height attributes for all media.</span>
+                  </div>
+                </li>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 700, marginBottom: '0.25rem' }}>INP (Interaction to Next Paint)</span>
+                    <span style={{ color: '#515154', lineHeight: 1.5 }}>A new standard replacing the outdated FID. It measures interaction delays. Optimizing INP requires breaking up Long Tasks in the main JavaScript thread and reducing unnecessary rendering in React/Next.js.</span>
+                  </div>
+                </li>
+              </ul>
+
+              <h2 id="znaczenie-ttfb">The importance of TTFB and Server-Side Rendering (SSR)</h2>
+              <p>Simply reducing image sizes will not help if the server responds too slowly (TTFB). Migrating to more modern architectures (such as Next.js App Router with React Server Components) means that the entire burden of database logic processing is done once on the server and distributed.</p>
+              <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas.</p>
+
+              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
+                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
+                  <h3>Speed up your website</h3>
+                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>We will conduct a free technical audit of your website and show you how to improve your PageSpeed Insights scores.</p>
+                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Consult Your Project</a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+    
+      ) : (
+        <>
+
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           
           <Reveal>
@@ -138,7 +210,10 @@ export default function ArticleCwvPage() {
             </div>
           </Reveal>
         </div>
-      </article>
+      
+        </>
+      )}
+    </article>
 
       <div id="kontakt">
         <Contact />

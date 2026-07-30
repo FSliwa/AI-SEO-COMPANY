@@ -78,6 +78,11 @@ export default function PricingClient() {
                   ? 'Ukryte koszty i umowy na wiele lat to domena przestarzałych firm. Wierzymy, że dobra usługa broni się sama, a jasny i prosty cennik pozycjonowania to podstawa partnerskich relacji i najwyższego zwrotu z inwestycji (ROI).'
                   : 'Hidden costs and multi-year contracts are the domain of outdated companies. We believe a good service defends itself, and clear, simple SEO pricing is the foundation of partnership and the highest ROI.'}
               </p>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#515154', marginTop: '1.5rem' }}>
+                {lang === 'pl'
+                  ? 'Zdajemy sobie sprawę, że każda branża charakteryzuje się odmienną specyfiką, unikalną grupą docelową oraz specyficznym cyklem decyzyjnym. Z tego powodu podchodzimy z ogromną elastycznością do optymalizacji strategii biznesowej naszych Klientów. Decydując się na inwestycję w profesjonalny marketing internetowy w postaci SEO, wybierasz model trwałego budowania kompetencji własnej marki. Wspólnie identyfikujemy kluczowe cele konwersji i obniżamy długofalowy koszt pozyskania leada poprzez precyzyjne dotarcie z ofertą do właściwych konsumentów w najbardziej sprzyjającym momencie ich procesu zakupowego.'
+                  : 'We realize that every industry is characterized by its own specific nature, unique target audience, and specific decision-making cycle. For this reason, we approach the optimization of our Clients business strategies with great flexibility. By deciding to invest in professional internet marketing in the form of SEO, you choose a model of lasting brand competency building. Together, we identify key conversion goals and lower the long-term cost of lead acquisition by precisely reaching out with an offer to the right consumers at the most favorable moment of their purchasing process.'}
+              </p>
             </div>
           </Reveal>
         </div>

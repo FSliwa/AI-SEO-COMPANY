@@ -35,6 +35,57 @@ export default function ArticleCennikPage() {
       <Header />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      {locale === 'en' ? (
+
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <Reveal>
+            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                Strategy & Pricing
+              </span>
+              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                Jul 25, 2026
+              </span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+              How much does SEO cost? Pricing.
+            </h1>
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </div>
+            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="article-content">
+              <p className="lead">
+                SEO pricing in 2026 is one of the most frequently searched topics by entrepreneurs. In this guide, we break down website positioning costs to help you understand what you are actually paying an agency for.
+              </p>
+              <ArticleTOC items={tocItems} />
+              
+              <h2 id="od-czego-zalezy-cena">What determines the price of SEO?</h2>
+              <p>The cost of positioning is never fixed. It depends strictly on your industry's competitiveness, the current technical state of your website, and your business goals. Local businesses might pay €300/month, while nationwide e-commerce stores invest over €5,000 monthly.</p>
+
+              <h2 id="modele-rozliczen">Popular billing models</h2>
+              <p>Currently, the flat-fee subscription model is the absolute standard. It allows the agency to allocate a fixed budget for high-quality link building and content creation every month. The outdated "pay for results" model is practically dead and often leads to toxic SEO practices.</p>
+
+              <h2 id="ukryte-koszty">Hidden costs - what to watch out for?</h2>
+              <p>Always verify if your SEO contract includes the cost of publishing sponsored articles and copywriting. Many cheap agencies offer positioning for €100, but later require you to pay extra for every single piece of content or backlink.</p>
+
+              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
+                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
+                  <h3>Check our transparent pricing</h3>
+                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>No hidden fees. Full transparency.</p>
+                  <a href="/en/cennik-pozycjonowania" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>View Pricing Packages</a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+    
+      ) : (
+        <>
+
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           
           <Reveal>
@@ -325,7 +376,10 @@ export default function ArticleCennikPage() {
             </div>
           </Reveal>
         </div>
-      </article>
+      
+        </>
+      )}
+    </article>
 
       <Contact />
     </main>

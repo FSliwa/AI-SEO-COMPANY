@@ -39,6 +39,57 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
       <Header />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      {locale === 'en' ? (
+
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <Reveal>
+            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                Off-Site & Authority
+              </span>
+              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                Jul 26, 2026
+              </span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+              B2B Link Building Strategies.
+            </h1>
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </div>
+            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="article-content">
+              <p className="lead">
+                Acquiring high-quality links in the B2B sector is one of the most demanding tasks in SEO. Discover proven strategies that build domain authority and generate valuable leads.
+              </p>
+              <ArticleTOC items={tocItems} />
+              
+              <h2 id="czym-jest">What makes B2B Link Building different?</h2>
+              <p>In B2B, you cannot rely on mass directory submissions or spammy forum links. The focus is strictly on relevance and authority. Links must come from industry portals, expert blogs, or partner websites that your target audience actually visits and trusts.</p>
+
+              <h2 id="skuteczne-strategie">Effective link acquisition strategies</h2>
+              <p>The most effective methods include publishing in-depth guest articles, creating data-driven reports (link baiting), and digital PR. When you provide unique data or industry insights, journalists and bloggers naturally want to link back to your research.</p>
+
+              <h2 id="checklista">B2B Link Building Checklist</h2>
+              <p>Before acquiring a link, check the referring domain's traffic using Ahrefs or Semrush, ensure relevance to your niche, and analyze the anchor text profile. Diversification is key – mix exact match anchors with branded and natural ones to maintain a healthy backlink profile.</p>
+
+              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
+                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
+                  <h3>Need high-quality links?</h3>
+                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>We acquire premium placements that drive traffic and authority.</p>
+                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Contact our PR Team</a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+    
+      ) : (
+        <>
+
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           
           <Reveal>
@@ -359,7 +410,10 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
             </div>
           </Reveal>
         </div>
-      </article>
+      
+        </>
+      )}
+    </article>
 
       {/* Formularz kontaktowy na stronie artykułu */}
       <div id="kontakt">
