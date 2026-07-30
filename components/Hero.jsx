@@ -60,6 +60,7 @@ export default function Hero() {
               alt="Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż" 
               width={1600}
               height={294}
+              fetchPriority="high"
               style={{ 
                 width: '100%', 
                 height: 'auto', 

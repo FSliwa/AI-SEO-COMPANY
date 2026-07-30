@@ -92,7 +92,7 @@ export default function BlogGrid() {
               marginBottom: '0',
               letterSpacing: '-0.02em'
             }}>
-              {lang === 'pl' ? 'Najnowsze Artykuły o SEO i Web Designie' : 'SEO and Web Design Articles'}
+              {lang === 'pl' ? 'Artykuły o SEO i Web Designie' : 'SEO and Web Design Articles'}
             </h1>
           </div>
         </Reveal>
