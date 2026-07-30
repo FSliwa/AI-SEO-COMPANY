@@ -16,8 +16,8 @@ import Contact from '@/components/Contact';
 import ArticleTOC from '@/components/ArticleTOC';
 import { Reveal } from '@/components/ScrollReveal';
 
-export default function ArticleLinkBuildingB2bPage({ params }) {
-  const locale = params.locale;
+export default async function ArticleLinkBuildingB2bPage({ params }) {
+  const { locale } = await params;
       const tocItems = [
     { id: 'czym-jest', title: 'Czym jest link building B2B i czym różni się od B2C?' },
     { id: 'dlaczego-linki', title: 'Dlaczego linki przekładają się na wyniki sprzedaży w B2B?' },

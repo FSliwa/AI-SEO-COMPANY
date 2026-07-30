@@ -47,7 +47,7 @@ export default function Blog() {
                 </div>
                 <h3>{post.title}</h3>
                 <p>{post.desc}</p>
-                <a href={post.slug} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
+                <a href={`/${lang}${post.slug}`} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
                   {t('btnRead')} <span className="sr-only">o {post.title}</span>
                 </a>
               </div>

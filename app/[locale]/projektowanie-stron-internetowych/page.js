@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Web Design and Development | Business Websites | AI SEO COMPANY' : 'Projektowanie Stron Internetowych | Web Design dla Firm',
+  title: locale === 'en' ? 'Web Design and Development | AI SEO COMPANY' : 'Projektowanie Stron Internetowych | Web Design dla Firm',
   description: 'Tworzymy ultraszybkie i piękne wizualnie strony na Next.js (Headless). Skoncentrowane na maksymalizacji UX i konwersji.',
   alternates: {
     canonical: `/${locale}/projektowanie-stron-internetowych`,
