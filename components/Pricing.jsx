@@ -93,7 +93,7 @@ export default function Pricing() {
               <h3>{t('boosterTitle')}</h3>
               <p className="pricing-desc">{t('boosterDesc')}</p>
               <div className="pricing-price">
-                <div className="price-label" style={{ color: '#1D1D1F', fontWeight: '700' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące' : 'Min. 3-month contract'}</div>
+                <div className="price-label" style={{ color: 'var(--color-cta)', fontWeight: '700' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące' : 'Min. 3-month contract'}</div>
                 <div className="price-amount">{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
               </div>
             </div>
