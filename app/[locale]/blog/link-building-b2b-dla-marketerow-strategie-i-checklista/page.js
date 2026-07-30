@@ -63,7 +63,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Acquiring high-quality links in the B2B sector is one of the most demanding tasks in SEO. Discover proven strategies that build domain authority and generate valuable leads.
+                Welcome to our guide on <strong>B2B Link Building - Strategies & Checklist for Marketers</strong>. Acquiring high-quality links in the B2B sector is one of the most demanding tasks in SEO. Discover proven strategies that build domain authority and generate valuable leads.
               </p>
               <ArticleTOC items={tocItems} />
               
