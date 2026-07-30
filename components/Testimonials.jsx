@@ -313,8 +313,6 @@ export default function Testimonials() {
           })}
         </RevealStagger>
       </div>
-
-      </div>
     </section>
   );
 }
