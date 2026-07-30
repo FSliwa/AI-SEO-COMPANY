@@ -37,7 +37,7 @@ export default function BlogGrid() {
         <Reveal>
           <div style={{ textAlign: 'center', padding: '2rem 0 4rem 0' }}>
             <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', 
+              fontSize: 'clamp(3rem, 5vw, 4.5rem)', 
               fontWeight: 700, 
               color: '#1D1D1F', 
               marginBottom: '1.5rem',
@@ -45,18 +45,6 @@ export default function BlogGrid() {
             }}>
               {lang === 'pl' ? 'Najnowsze Artykuły' : 'Latest Articles'}
             </h1>
-            <p style={{
-              fontSize: '1.25rem',
-              color: '#86868B',
-              maxWidth: '850px',
-              margin: '0 auto',
-              lineHeight: 1.6,
-              fontWeight: 500
-            }}>
-              {lang === 'pl' 
-                ? 'Nasz Blog to praktyczny Poradnik, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze Najnowsze Artykuły o SEO i Web Designie. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.'
-                : 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization. We publish proven organic traffic strategies, analyze Google algorithm updates, and share knowledge on building converting B2B interfaces. Understanding search engine mechanisms allows not only to increase visibility, but above all to build a long-term competitive advantage online.'}
-            </p>
           </div>
         </Reveal>
 
@@ -215,66 +203,122 @@ export default function BlogGrid() {
         }
       `}</style>
     
-      <div className="container" style={{ paddingBottom: '6rem' }}>
+      <div className="container" style={{ paddingBottom: '2rem', paddingTop: '4rem' }}>
         <Reveal>
-          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '40px', padding: 'clamp(3rem, 6vw, 5rem)', boxShadow: '0 4px 40px rgba(0,0,0,0.03)', marginTop: '2rem' }}>
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
-                {lang === 'pl' ? 'Misja AI SEO COMPANY' : 'AI SEO COMPANY Mission'}
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em' }}>
+              {lang === 'pl' ? 'Misja AI SEO COMPANY' : 'AI SEO COMPANY Mission'}
+            </h2>
+          </div>
+        </Reveal>
+        
+        <RevealStagger style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', 
+          gap: '2rem', 
+          marginBottom: '4rem' 
+        }}>
+          {/* Card 1 */}
+          <RevealItem>
+            <div className="grid-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#FFFFFF', borderRadius: '24px', padding: '2.5rem', boxShadow: '0 4px 24px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'default' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
+                {lang === 'pl' ? 'EDUKACJA' : 'EDUCATION'}
               </span>
-              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem auto' }}>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', lineHeight: 1.25, letterSpacing: '-0.01em' }}>
                 {lang === 'pl' ? 'Wiedza, która napędza Twój zysk w internecie.' : 'Knowledge that drives your online profit.'}
-              </h2>
-              <p style={{ color: '#86868B', fontSize: '1.25rem', lineHeight: 1.6, maxWidth: '900px', margin: '0 auto', fontWeight: 500 }}>
+              </h3>
+              <p style={{ color: '#6E6E73', fontSize: '1rem', lineHeight: 1.6, flexGrow: 1 }}>
                 {lang === 'pl' 
                   ? 'Blog AI SEO COMPANY to miejsce, w którym na bieżąco analizujemy rynek marketingu internetowego. Dzielimy się sprawdzonymi metodami, innowacyjnymi strategiami biznesowymi oraz narzędziami ułatwiającymi codzienną pracę z pozycjonowaniem stron.' 
                   : 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning.'}
               </p>
             </div>
+          </RevealItem>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', marginBottom: '4rem' }}>
-              <div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#1D1D1F', marginBottom: '1rem' }}>
-                  {lang === 'pl' ? 'Twarde dane i testy A/B' : 'Hard data and A/B tests'}
-                </h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                  {lang === 'pl' 
-                    ? 'Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach, a nie jedynie teoretycznych domysłach.' 
-                    : 'Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities rather than mere theoretical guesswork.'}
-                </p>
-              </div>
-              <div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#1D1D1F', marginBottom: '1rem' }}>
-                  {lang === 'pl' ? 'Kompleksowe podejście' : 'Comprehensive approach'}
-                </h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                  {lang === 'pl' 
-                    ? 'Odkrywamy kulisy działania algorytmów AI i tłumaczymy trudne zjawiska technologiczne przystępnym językiem. Oprócz artykułów związanych stricte z SEO, poruszamy zagadnienia User Experience (UX), optymalizacji współczynnika konwersji (CRO) oraz copywritingu sprzedażowego.' 
-                    : 'We reveal the behind-the-scenes workings of AI algorithms and explain complex technological phenomena. In addition to articles strictly related to SEO, we tackle topics of User Experience (UX), Conversion Rate Optimization (CRO), and sales copywriting.'}
-                </p>
-              </div>
-              <div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#1D1D1F', marginBottom: '1rem' }}>
-                  {lang === 'pl' ? 'Jakość i wiarygodność' : 'Quality and credibility'}
-                </h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                  {lang === 'pl' 
-                    ? 'Każdy udostępniony materiał jest pieczołowicie sprawdzany przez zespół ekspertów i redaktorów. Współpracując z nami lub ucząc się z naszych bezpłatnych zasobów, dajesz swojej stronie szansę na zdobycie rzeszy lojalnych odbiorców, którzy ufają Twojej marce tak samo mocno, jak Google ufa Twojej domenie.' 
-                    : 'Every piece of material is meticulously checked by a team of experts. By collaborating with us or learning from our free resources, you give your website a chance to gain loyal audiences who trust your brand just as strongly as Google trusts your domain.'}
-                </p>
-              </div>
+          {/* Card 2 */}
+          <RevealItem>
+            <div className="grid-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#FFFFFF', borderRadius: '24px', padding: '2.5rem', boxShadow: '0 4px 24px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'default' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
+                {lang === 'pl' ? 'METODOLOGIA' : 'METHODOLOGY'}
+              </span>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', lineHeight: 1.25, letterSpacing: '-0.01em' }}>
+                {lang === 'pl' ? 'Twarde dane i testy A/B' : 'Hard data and A/B tests'}
+              </h3>
+              <p style={{ color: '#6E6E73', fontSize: '1rem', lineHeight: 1.6, flexGrow: 1 }}>
+                {lang === 'pl' 
+                  ? 'Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach.' 
+                  : 'Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities.'}
+              </p>
             </div>
+          </RevealItem>
 
-            <div style={{ backgroundColor: '#F5F5F7', borderRadius: '24px', padding: 'clamp(2rem, 5vw, 4rem)', textAlign: 'center' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: '#1D1D1F', marginBottom: '1rem' }}>
+          {/* Card 3 */}
+          <RevealItem>
+            <div className="grid-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#FFFFFF', borderRadius: '24px', padding: '2.5rem', boxShadow: '0 4px 24px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'default' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
+                {lang === 'pl' ? 'ZAKRES WIEDZY' : 'SCOPE OF KNOWLEDGE'}
+              </span>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', lineHeight: 1.25, letterSpacing: '-0.01em' }}>
+                {lang === 'pl' ? 'Kompleksowe podejście' : 'Comprehensive approach'}
+              </h3>
+              <p style={{ color: '#6E6E73', fontSize: '1rem', lineHeight: 1.6, flexGrow: 1 }}>
+                {lang === 'pl' 
+                  ? 'Odkrywamy kulisy działania algorytmów AI i tłumaczymy trudne zjawiska technologiczne przystępnym językiem. Oprócz artykułów związanych stricte z SEO, poruszamy zagadnienia UX, CRO oraz copywritingu sprzedażowego.' 
+                  : 'We reveal the behind-the-scenes workings of AI algorithms and explain complex technological phenomena. In addition to articles strictly related to SEO, we tackle topics of UX, CRO, and sales copywriting.'}
+              </p>
+            </div>
+          </RevealItem>
+
+          {/* Card 4 */}
+          <RevealItem>
+            <div className="grid-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#FFFFFF', borderRadius: '24px', padding: '2.5rem', boxShadow: '0 4px 24px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'default' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
+                {lang === 'pl' ? 'ZESPÓŁ' : 'TEAM'}
+              </span>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', lineHeight: 1.25, letterSpacing: '-0.01em' }}>
+                {lang === 'pl' ? 'Jakość i wiarygodność' : 'Quality and credibility'}
+              </h3>
+              <p style={{ color: '#6E6E73', fontSize: '1rem', lineHeight: 1.6, flexGrow: 1 }}>
+                {lang === 'pl' 
+                  ? 'Każdy udostępniony materiał jest pieczołowicie sprawdzany. Ucząc się z naszych bezpłatnych zasobów, dajesz swojej stronie szansę na zdobycie rzeszy lojalnych odbiorców, którzy ufają Twojej marce tak samo mocno, jak Google ufa Twojej domenie.' 
+                  : 'Every piece of material is meticulously checked. By learning from our free resources, you give your website a chance to gain loyal audiences who trust your brand just as strongly as Google trusts your domain.'}
+              </p>
+            </div>
+          </RevealItem>
+
+          {/* Card 5 - Span 2 columns or regular */}
+          <RevealItem style={{ gridColumn: '1 / -1' }}>
+            <div className="grid-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#FFFFFF', borderRadius: '24px', padding: 'clamp(2.5rem, 5vw, 4rem)', boxShadow: '0 4px 24px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'default', alignItems: 'center', textAlign: 'center' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
+                {lang === 'pl' ? 'REZULTATY' : 'RESULTS'}
+              </span>
+              <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', lineHeight: 1.15, letterSpacing: '-0.02em', maxWidth: '800px' }}>
                 {lang === 'pl' ? 'Bądź o krok przed konkurencją' : 'Stay one step ahead'}
               </h3>
-              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: '800px', margin: '0 auto' }}>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: '850px', margin: '0 auto' }}>
                 {lang === 'pl' 
                   ? 'Nie czekaj dłużej, zacznij aplikować nasze rozwiązania i patrz, jak rosną Twoje słupki w Google Analytics oraz Google Search Console. Bądź konsekwentny, cierpliwy i metodyczny, a z naszą pomocą z pewnością osiągniesz zaplanowane cele biznesowe i wizerunkowe, wyprzedzając konkurencję o lata świetlne. Zapraszamy do lektury i owocnego wdrażania naszych wskazówek na swoich stronach!' 
                   : 'Do not wait any longer, start applying our solutions today and watch your metrics grow in Google Analytics and GSC. Be consistent, patient, and methodical, and with our help you will certainly achieve your planned business and image goals, leaving your competition light years behind.'}
               </p>
             </div>
+          </RevealItem>
+        </RevealStagger>
+
+        {/* Intro text moved to the bottom */}
+        <Reveal>
+          <div style={{ textAlign: 'center', paddingTop: '2rem', paddingBottom: '2rem' }}>
+            <p style={{
+              fontSize: '1.1rem',
+              color: '#86868B',
+              maxWidth: '900px',
+              margin: '0 auto',
+              lineHeight: 1.7,
+              fontWeight: 500
+            }}>
+              {lang === 'pl' 
+                ? 'Nasz Blog to praktyczny Poradnik, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze Najnowsze Artykuły o SEO i Web Designie. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.'
+                : 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization. We publish proven organic traffic strategies, analyze Google algorithm updates, and share knowledge on building converting B2B interfaces. Understanding search engine mechanisms allows not only to increase visibility, but above all to build a long-term competitive advantage online.'}
+            </p>
           </div>
         </Reveal>
       </div>
