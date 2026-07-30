@@ -4,7 +4,11 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'How Much Does SEO Cost? Pricing & Packages 2026' : 'Ile Kosztuje SEO w Polsce? Cennik i Pakiety 2026',
   description: locale === 'en' ? 'Wondering how much effective SEO costs in 2026? See our SEO pricing and learn what affects the final cost of optimization.' : 'Zastanawiasz się, ile kosztuje skuteczne pozycjonowanie w 2026 roku? Zobacz nasz cennik SEO i dowiedz się, co wpływa na finalną cenę optymalizacji.',
   alternates: {
-    canonical: `/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
+    canonical: `https://www.ai-seo-company.pl/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
+    languages: {
+      'pl': 'https://www.ai-seo-company.pl/pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',
+      'en': 'https://www.ai-seo-company.pl/en/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026'
+    }
   },
 };
 }
@@ -130,15 +134,27 @@ export default async function ArticleCennikPage({ params }) {
                 Co kupujesz za te pieniądze w praktyce? Za niższe kwoty miesięczne otrzymasz monitoring i drobne poprawki, z większym budżetem możliwa jest regularna praca nad treścią, naprawy techniczne i kilka linków, a przy większych nakładach rozpoczyna się pełna strategia z content marketingiem, link buildingiem i raportowaniem.
               </p>
               <ArticleTOC items={tocItems} />
+              
+              <h2 id="znaczenie-certyfikatow-oraz-doswiadczenia-zespo-u">Znaczenie certyfikatów oraz doświadczenia zespołu (Perspektywa 2026)</h2>
+              <p>
+                Analizując cenniki agencji SEO, warto zwrócić uwagę na kompetencje zespołu realizującego projekt. Niskie pakiety cenowe rzędu 500-1000 zł często oznaczają, że Twoją kampanią zajmują się osoby stawiające pierwsze kroki w marketingu internetowym lub że znaczna część pracy jest zautomatyzowana za pomocą przestarzałych narzędzi. Doświadczeni eksperci SEO, analitycy danych i specjaliści od technicznego optymalizowania (Technical SEO) stanowią filar każdej skutecznej kampanii, a ich czas kosztuje.
+              </p>
+              <p>
+                Zaangażowanie sztucznej inteligencji (AI) w proces pozycjonowania w 2026 roku zrewolucjonizowało rynek. Narzędzia AI pozwalają na błyskawiczną analizę gigantycznych wolumenów danych, predykcję zachowań użytkowników i identyfikację nisz semantycznych. Niemniej jednak, samo narzędzie bez sprawnego operatora jest bezużyteczne. Koszt pakietu w profesjonalnej agencji uwzględnia dostęp do oprogramowania Enterprise (np. Ahrefs, Semrush, Screaming Frog) oraz opłacenie licencji na modele AI, które wspomagają codzienną pracę analityczną. 
+              </p>
+              
+              <h2 id="audyt-poczatkowy-dlaczego-nie-moze-byc-darmowy">Audyt początkowy: Dlaczego nie może być darmowy?</h2>
+              <p>
+                Wiele firm daje się nabrać na oferty "darmowego audytu SEO". W praktyce są to zautomatyzowane raporty generowane w 10 sekund z darmowych narzędzi online, które nie niosą żadnej realnej wartości biznesowej. Prawdziwy, dogłębny audyt SEO i UX/CRO wymaga od 20 do 50 godzin pracy specjalisty. Analizuje on profil linków zwrotnych pod kątem spamu, architekturę informacji, logi serwera, szybkość wczytywania zasobów oraz ścieżki konwersji użytkowników. To właśnie na bazie tak rzetelnego, płatnego dokumentu budowana jest wielomiesięczna, skuteczna strategia.
+              </p>
+
               <h2 id="szybki-przegl-d-typowych-bud-et-w">Szybki przegląd typowych budżetów:</h2>
               <ul>
-                <li><strong>Firma lokalna (np. gabinet, warsztat, salon):</strong> 800–1 200 zł/mies. (minimalny próg sensowności)</li>
-                <li><strong>Mały e-commerce (do 500 produktów):</strong> 1 500–5 000 zł/mies.</li>
-                <li><strong>Firma B2B lub średnie przedsiębiorstwo:</strong> 2 500–6 000 zł/mies.</li>
-                <li><strong>Duży sklep lub serwis w konkurencyjnej branży:</strong> 8 000–20 000+ zł/mies.</li>
-                <li><strong>Jednorazowy audyt SEO:</strong> 1 500–8 000 zł (zależnie od rozmiaru strony)</li>
+                <li><strong>Mała firma lokalna:</strong> 1500 – 3000 zł netto / m-c</li>
+                <li><strong>Średni sklep e-commerce:</strong> 4000 – 8000 zł netto / m-c</li>
+                <li><strong>Duży portal informacyjny lub gigant B2B:</strong> od 10 000 zł netto / m-c w górę</li>
               </ul>
-
+              
               <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#F5F5F7', borderRadius: '12px', marginBottom: '2rem' }}>
                 <strong>Porada profesjonalisty:</strong> Zanim zadzwonisz do agencji, sprawdź w <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a>, ile ruchu organicznego masz teraz i z jakich fraz. To 10 minut pracy, które pozwolą Ci ocenić, czy oferta agencji jest dopasowana do Twojego punktu startowego.
               </p>
