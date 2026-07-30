@@ -68,7 +68,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
             }}>
               {lang === 'pl' 
                 ? 'Odkryj prawdziwe przyczyny braku widoczności. Weryfikujemy ponad 50 krytycznych czynników technicznych, które blokują Twój potencjał w Google.'
-                : <>Discover the real reasons for your lack of visibility. <span style={{ color: 'var(--color-cta)' }}>We verify over 50 critical technical factors blocking your Google potential</span>.</>}
+                : 'Discover the real reasons for your lack of visibility. We verify over 50 critical technical factors blocking your Google potential.'}
             </p>
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
