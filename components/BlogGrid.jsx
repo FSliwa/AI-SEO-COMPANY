@@ -35,25 +35,29 @@ export default function BlogGrid() {
     <section className="blog-grid" style={{ padding: '4rem 0', backgroundColor: '#F5F5F7' }}>
       <div className="container" style={{ margin: '0 auto' }}>
         <Reveal>
-          <h1 style={{ 
-            fontSize: '2rem', 
-            fontWeight: 700, 
-            color: 'var(--color-text-main)', 
-            marginBottom: '0.5rem', textAlign: 'left' 
-          }}>
-            {lang === 'pl' ? 'Najnowsze Artykuły o SEO i Web Designie' : 'Latest Articles on SEO and Web Design'}
-          </h1>
-          <p style={{
-            fontSize: '1.1rem',
-            color: '#6E6E73',
-            marginBottom: '2rem',
-            maxWidth: '800px',
-            textAlign: 'left'
-          }}>
-            {lang === 'pl' 
-              ? 'Nasz Blog to praktyczny Poradnik, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze Najnowsze Artykuły o SEO i Web Designie. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.'
-              : 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization. We publish proven organic traffic strategies, analyze Google algorithm updates, and share knowledge on building converting B2B interfaces. Understanding search engine mechanisms allows not only to increase visibility, but above all to build a long-term competitive advantage online.'}
-          </p>
+          <div style={{ textAlign: 'center', padding: '2rem 0 4rem 0' }}>
+            <h1 style={{ 
+              fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', 
+              fontWeight: 700, 
+              color: '#1D1D1F', 
+              marginBottom: '1.5rem',
+              letterSpacing: '-0.02em'
+            }}>
+              {lang === 'pl' ? 'Najnowsze Artykuły' : 'Latest Articles'}
+            </h1>
+            <p style={{
+              fontSize: '1.25rem',
+              color: '#86868B',
+              maxWidth: '850px',
+              margin: '0 auto',
+              lineHeight: 1.6,
+              fontWeight: 500
+            }}>
+              {lang === 'pl' 
+                ? 'Nasz Blog to praktyczny Poradnik, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze Najnowsze Artykuły o SEO i Web Designie. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.'
+                : 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization. We publish proven organic traffic strategies, analyze Google algorithm updates, and share knowledge on building converting B2B interfaces. Understanding search engine mechanisms allows not only to increase visibility, but above all to build a long-term competitive advantage online.'}
+            </p>
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -211,16 +215,68 @@ export default function BlogGrid() {
         }
       `}</style>
     
-      <div className="container" style={{ paddingBottom: '4rem' }}>
-        <p style={{ color: '#6E6E73', fontSize: '1rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto', textAlign: 'justify' }}>
-          {lang === 'pl' ? 'Blog AI SEO COMPANY to miejsce, w którym na bieżąco analizujemy rynek marketingu internetowego. Dzielimy się sprawdzonymi metodami, innowacyjnymi strategiami biznesowymi oraz narzędziami ułatwiającymi codzienną pracę z pozycjonowaniem stron. Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach, a nie jedynie teoretycznych domysłach. Chcemy, by nasz blog stał się Twoim ulubionym źródłem wartościowych informacji, które z łatwością przełożysz na wyższą konwersję i większe zyski Twojej firmy. Odkrywamy kulisy działania algorytmów sztucznej inteligencji, tłumaczymy trudne zjawiska technologiczne przystępnym językiem i demaskujemy mity krążące w branży reklamowej. Oprócz artykułów związanych stricte z SEO, poruszamy zagadnienia User Experience (UX), optymalizacji współczynnika konwersji (CRO), copywritingu sprzedażowego oraz odpowiedniego doboru słów kluczowych do architektury witryny. Współpracując z nami lub po prostu ucząc się z naszych bezpłatnych zasobów edukacyjnych, dajesz swojej stronie szansę na zdobycie rzeszy nowych, lojalnych odbiorców, którzy ufają Twojej marce tak samo mocno, jak wyszukiwarka ufa Twojej domenie. Subskrybuj nasze nowości, by nie przeoczyć najnowszych raportów, i bądź o krok przed firmami, które bagatelizują moc i potęgę widoczności organicznej. Zapraszamy do lektury i owocnego wdrażania naszych wskazówek na swoich stronach!' : 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning. Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities rather than mere theoretical guesswork. We want our blog to become your favorite source of valuable information that you can easily translate into higher conversions and greater profits for your company. We reveal the behind-the-scenes workings of artificial intelligence algorithms, explain complex technological phenomena in accessible language, and debunk myths circulating in the advertising industry. In addition to articles strictly related to SEO, we tackle topics of User Experience (UX), Conversion Rate Optimization (CRO), sales copywriting, and the proper selection of keywords for website architecture. By collaborating with us or simply learning from our free educational resources, you give your website a chance to gain a multitude of new, loyal audiences who trust your brand just as strongly as the search engine trusts your domain. Subscribe to our updates so you do not miss the latest reports, and stay one step ahead of companies that underestimate the power and potency of organic visibility. We invite you to read and fruitfully implement our tips on your own websites and digital projects today!'}
-        </p>
-        <p style={{ color: '#6E6E73', fontSize: '1rem', lineHeight: 1.8, maxWidth: '1000px', margin: '1rem auto 0 auto', textAlign: 'justify' }}>
-          {lang === 'pl' ? 'Każdy udostępniony przez nas materiał jest pieczołowicie sprawdzany przez zespół ekspertów i redaktorów pod kątem merytorycznym i technicznym. Pragniemy, by nasze artykuły stanowiły punkt odniesienia dla innych specjalistów z branży SEO, dlatego kładziemy ogromny nacisk na jakość, wiarygodność i unikalność prezentowanych w nich informacji.' : 'Every piece of material we share is meticulously checked by a team of experts and editors for substantive and technical accuracy. We want our articles to serve as a reference point for other professionals in the SEO industry, which is why we place great emphasis on the quality, credibility, and uniqueness of the information presented.'}
-        </p>
-        <p style={{ color: '#6E6E73', fontSize: '1rem', lineHeight: 1.8, maxWidth: '1000px', margin: '1rem auto 0 auto', textAlign: 'justify' }}>
-          {lang === 'pl' ? 'Nie czekaj dłużej, zacznij aplikować nasze rozwiązania i patrz, jak rosną Twoje słupki w Google Analytics oraz Google Search Console. Bądź konsekwentny, cierpliwy i metodyczny, a z naszą pomocą z pewnością osiągniesz zaplanowane cele biznesowe i wizerunkowe, wyprzedzając konkurencję o lata świetlne.' : 'Do not wait any longer, start applying our solutions today and watch your metrics grow rapidly in Google Analytics and Google Search Console. Be consistent, patient, and methodical, and with our help you will certainly achieve your planned business and image goals, leaving your fierce competition light years behind you.'}
-        </p>
+      <div className="container" style={{ paddingBottom: '6rem' }}>
+        <Reveal>
+          <div style={{ backgroundColor: '#FFFFFF', borderRadius: '40px', padding: 'clamp(3rem, 6vw, 5rem)', boxShadow: '0 4px 40px rgba(0,0,0,0.03)', marginTop: '2rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
+                {lang === 'pl' ? 'Misja AI SEO COMPANY' : 'AI SEO COMPANY Mission'}
+              </span>
+              <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem auto' }}>
+                {lang === 'pl' ? 'Wiedza, która napędza Twój zysk w internecie.' : 'Knowledge that drives your online profit.'}
+              </h2>
+              <p style={{ color: '#86868B', fontSize: '1.25rem', lineHeight: 1.6, maxWidth: '900px', margin: '0 auto', fontWeight: 500 }}>
+                {lang === 'pl' 
+                  ? 'Blog AI SEO COMPANY to miejsce, w którym na bieżąco analizujemy rynek marketingu internetowego. Dzielimy się sprawdzonymi metodami, innowacyjnymi strategiami biznesowymi oraz narzędziami ułatwiającymi codzienną pracę z pozycjonowaniem stron.' 
+                  : 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning.'}
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', marginBottom: '4rem' }}>
+              <div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#1D1D1F', marginBottom: '1rem' }}>
+                  {lang === 'pl' ? 'Twarde dane i testy A/B' : 'Hard data and A/B tests'}
+                </h3>
+                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                  {lang === 'pl' 
+                    ? 'Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach, a nie jedynie teoretycznych domysłach.' 
+                    : 'Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities rather than mere theoretical guesswork.'}
+                </p>
+              </div>
+              <div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#1D1D1F', marginBottom: '1rem' }}>
+                  {lang === 'pl' ? 'Kompleksowe podejście' : 'Comprehensive approach'}
+                </h3>
+                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                  {lang === 'pl' 
+                    ? 'Odkrywamy kulisy działania algorytmów AI i tłumaczymy trudne zjawiska technologiczne przystępnym językiem. Oprócz artykułów związanych stricte z SEO, poruszamy zagadnienia User Experience (UX), optymalizacji współczynnika konwersji (CRO) oraz copywritingu sprzedażowego.' 
+                    : 'We reveal the behind-the-scenes workings of AI algorithms and explain complex technological phenomena. In addition to articles strictly related to SEO, we tackle topics of User Experience (UX), Conversion Rate Optimization (CRO), and sales copywriting.'}
+                </p>
+              </div>
+              <div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#1D1D1F', marginBottom: '1rem' }}>
+                  {lang === 'pl' ? 'Jakość i wiarygodność' : 'Quality and credibility'}
+                </h3>
+                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                  {lang === 'pl' 
+                    ? 'Każdy udostępniony materiał jest pieczołowicie sprawdzany przez zespół ekspertów i redaktorów. Współpracując z nami lub ucząc się z naszych bezpłatnych zasobów, dajesz swojej stronie szansę na zdobycie rzeszy lojalnych odbiorców, którzy ufają Twojej marce tak samo mocno, jak Google ufa Twojej domenie.' 
+                    : 'Every piece of material is meticulously checked by a team of experts. By collaborating with us or learning from our free resources, you give your website a chance to gain loyal audiences who trust your brand just as strongly as Google trusts your domain.'}
+                </p>
+              </div>
+            </div>
+
+            <div style={{ backgroundColor: '#F5F5F7', borderRadius: '24px', padding: 'clamp(2rem, 5vw, 4rem)', textAlign: 'center' }}>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: '#1D1D1F', marginBottom: '1rem' }}>
+                {lang === 'pl' ? 'Bądź o krok przed konkurencją' : 'Stay one step ahead'}
+              </h3>
+              <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: '800px', margin: '0 auto' }}>
+                {lang === 'pl' 
+                  ? 'Nie czekaj dłużej, zacznij aplikować nasze rozwiązania i patrz, jak rosną Twoje słupki w Google Analytics oraz Google Search Console. Bądź konsekwentny, cierpliwy i metodyczny, a z naszą pomocą z pewnością osiągniesz zaplanowane cele biznesowe i wizerunkowe, wyprzedzając konkurencję o lata świetlne. Zapraszamy do lektury i owocnego wdrażania naszych wskazówek na swoich stronach!' 
+                  : 'Do not wait any longer, start applying our solutions today and watch your metrics grow in Google Analytics and GSC. Be consistent, patient, and methodical, and with our help you will certainly achieve your planned business and image goals, leaving your competition light years behind.'}
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
