@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 import { useTranslations, useLocale } from 'next-intl';
 import { blogPosts } from '@/lib/blogPosts';
@@ -18,7 +19,7 @@ export default function BlogGrid() {
       titlePl: 'Wiedza, która napędza Twój zysk w internecie.', titleEn: 'Knowledge that drives your online profit.',
       textPl: 'Blog AI SEO COMPANY to miejsce, w którym na bieżąco analizujemy rynek marketingu internetowego. Dzielimy się sprawdzonymi metodami, innowacyjnymi strategiami biznesowymi oraz narzędziami ułatwiającymi codzienną pracę z pozycjonowaniem stron.',
       textEn: 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning.',
-      image: '/images/unsplash-1552581234-26160f608093.jpg'
+      image: '/images/unsplash-1517248135467-4c7edcad34c4.jpg'
     },
     {
       id: 'metodologia',
@@ -26,7 +27,7 @@ export default function BlogGrid() {
       titlePl: 'Twarde dane i testy A/B', titleEn: 'Hard data and A/B tests',
       textPl: 'Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach.',
       textEn: 'Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities.',
-      image: '/images/unsplash-1561070791-2526d30994b5.jpg'
+      image: '/images/unsplash-1541356665065-22676f35dd40.jpg'
     },
     {
       id: 'zakres',
@@ -34,7 +35,7 @@ export default function BlogGrid() {
       titlePl: 'Kompleksowe podejście', titleEn: 'Comprehensive approach',
       textPl: 'Odkrywamy kulisy działania algorytmów AI i tłumaczymy trudne zjawiska technologiczne przystępnym językiem. Oprócz artykułów związanych stricte z SEO, poruszamy zagadnienia UX, CRO oraz copywritingu sprzedażowego.',
       textEn: 'We reveal the behind-the-scenes workings of AI algorithms and explain complex technological phenomena. In addition to articles strictly related to SEO, we tackle topics of UX, CRO, and sales copywriting.',
-      image: '/images/unsplash-1585314062340-f1a5a7c9328d.jpg'
+      image: '/images/unsplash-1550745165-9bc0b252726f.jpg'
     },
     {
       id: 'rezultaty',
@@ -42,12 +43,18 @@ export default function BlogGrid() {
       titlePl: 'Bądź o krok przed konkurencją', titleEn: 'Stay one step ahead',
       textPl: 'Nie czekaj dłużej, zacznij aplikować nasze rozwiązania i patrz, jak rosną Twoje słupki w Google Analytics oraz Google Search Console. Bądź konsekwentny, cierpliwy i metodyczny, a z naszą pomocą z pewnością osiągniesz zaplanowane cele biznesowe i wizerunkowe, wyprzedzając konkurencję o lata świetlne.',
       textEn: 'Do not wait any longer, start applying our solutions today and watch your metrics grow in Google Analytics and GSC. Be consistent, patient, and methodical, and with our help you will certainly achieve your planned business and image goals, leaving your competition light years behind.',
-      image: '/images/unsplash-1608501821300-4f99e58bba77.jpg'
+      image: '/images/unsplash-1555529902-5261145633bf.jpg'
     }
   ];
 
   const extraQualityTextPl = 'Jakość i wiarygodność: Każdy udostępniony materiał jest pieczołowicie sprawdzany. Ucząc się z naszych bezpłatnych zasobów, dajesz swojej stronie szansę na zdobycie rzeszy lojalnych odbiorców, którzy ufają Twojej marce tak samo mocno, jak Google ufa Twojej domenie.';
   const extraQualityTextEn = 'Quality and credibility: Every piece of material is meticulously checked. By learning from our free resources, you give your website a chance to gain loyal audiences who trust your brand just as strongly as Google trusts your domain.';
+
+  const introTextPl = 'Nasz Blog to praktyczny Poradnik, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze Najnowsze Artykuły o SEO i Web Designie. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.';
+  const introTextEn = 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization. We publish proven organic traffic strategies, analyze Google algorithm updates, and share knowledge on building converting B2B interfaces. Understanding search engine mechanisms allows not only to increase visibility, but above all to build a long-term competitive advantage online.';
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
 
   // Sort all posts by date (newest first)
@@ -311,7 +318,7 @@ export default function BlogGrid() {
           })}
         </RevealStagger>
 
-        {expandedMissionCard && (
+        {expandedMissionCard && mounted && createPortal(
           <div style={{ 
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, 
             backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 2147483647, 
@@ -320,8 +327,8 @@ export default function BlogGrid() {
           }} onClick={() => setExpandedMissionCard(null)}>
             <div style={{ 
               backgroundColor: '#FFFFFF', borderRadius: '24px', 
-              padding: 'clamp(2rem, 5vw, 4rem)', width: '100%', maxWidth: '800px', 
-              maxHeight: '90vh', overflowY: 'auto', position: 'relative',
+              width: '100%', maxWidth: '800px', 
+              maxHeight: '90vh', overflowY: 'auto', overflowX: 'hidden', position: 'relative',
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
             }} onClick={e => e.stopPropagation()}>
               <button 
@@ -329,9 +336,9 @@ export default function BlogGrid() {
                 style={{ 
                   position: 'absolute', top: '1.5rem', right: '1.5rem', 
                   width: '36px', height: '36px', borderRadius: '50%', 
-                  backgroundColor: '#F5F5F7', border: 'none', 
+                  backgroundColor: 'rgba(245, 245, 247, 0.8)', border: 'none', 
                   display: 'flex', alignItems: 'center', justifyContent: 'center', 
-                  cursor: 'pointer', zIndex: 2 
+                  cursor: 'pointer', zIndex: 10, backdropFilter: 'blur(5px)'
                 }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -339,33 +346,42 @@ export default function BlogGrid() {
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
               </button>
+              
               {expandedMissionCard.image && (
                 <div style={{
                   width: '100%',
-                  height: 'clamp(200px, 40vh, 350px)',
+                  height: 'clamp(250px, 40vh, 400px)',
                   backgroundImage: `url(${expandedMissionCard.image})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  borderRadius: '16px',
-                  marginBottom: '2rem',
-                  marginTop: '1rem'
                 }} />
               )}
-              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
-                {lang === 'pl' ? expandedMissionCard.tagPl : expandedMissionCard.tagEn}
-              </span>
-              <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
-                {lang === 'pl' ? expandedMissionCard.titlePl : expandedMissionCard.titleEn}
-              </h3>
-              <p style={{ color: '#1D1D1F', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                {lang === 'pl' ? expandedMissionCard.textPl : expandedMissionCard.textEn}
-              </p>
-              <div style={{ height: '1px', backgroundColor: '#E5E5EA', margin: '2rem 0' }} />
-              <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                {lang === 'pl' ? extraQualityTextPl : extraQualityTextEn}
-              </p>
+              
+              <div style={{ padding: 'clamp(2rem, 5vw, 4rem)' }}>
+                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
+                  {lang === 'pl' ? expandedMissionCard.tagPl : expandedMissionCard.tagEn}
+                </span>
+                <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
+                  {lang === 'pl' ? expandedMissionCard.titlePl : expandedMissionCard.titleEn}
+                </h3>
+                <p style={{ color: '#1D1D1F', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                  {lang === 'pl' ? expandedMissionCard.textPl : expandedMissionCard.textEn}
+                </p>
+                
+                <div style={{ height: '1px', backgroundColor: '#E5E5EA', margin: '2rem 0' }} />
+                
+                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+                  {lang === 'pl' ? extraQualityTextPl : extraQualityTextEn}
+                </p>
+                
+                <div style={{ padding: '2rem', backgroundColor: '#F5F5F7', borderRadius: '16px' }}>
+                  <p style={{ color: '#86868B', fontSize: '1rem', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
+                    {lang === 'pl' ? introTextPl : introTextEn}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </div>, document.body
         )}
 
         {/* Intro text moved to the bottom */}
@@ -379,9 +395,7 @@ export default function BlogGrid() {
               lineHeight: 1.7,
               fontWeight: 500
             }}>
-              {lang === 'pl' 
-                ? 'Nasz Blog to praktyczny Poradnik, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze Najnowsze Artykuły o SEO i Web Designie. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.'
-                : 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization. We publish proven organic traffic strategies, analyze Google algorithm updates, and share knowledge on building converting B2B interfaces. Understanding search engine mechanisms allows not only to increase visibility, but above all to build a long-term competitive advantage online.'}
+              {lang === 'pl' ? introTextPl : introTextEn}
             </p>
           </div>
         </Reveal>
