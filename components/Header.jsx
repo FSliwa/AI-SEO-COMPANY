@@ -24,7 +24,8 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const isSubpage = typeof window !== 'undefined' && window.location.pathname !== '/';
+    const p = typeof window !== 'undefined' ? window.location.pathname : '';
+    const isSubpage = p !== '/' && p !== '/pl' && p !== '/en' && p !== '/pl/' && p !== '/en/';
     const handleScroll = () => {
       setScrolled(isSubpage || window.scrollY > 40);
     };

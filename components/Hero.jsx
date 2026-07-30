@@ -54,9 +54,6 @@ export default function Hero() {
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}
         >
           <h1 style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <span className="hero-floating-tag" style={{ color: 'var(--color-primary)' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
-            </span>
             
             <motion.img 
               src="/hero-text.svg" 
