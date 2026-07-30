@@ -133,7 +133,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               
               <p style={{ marginBottom: '1.5rem' }}>Trzy działania, które warto uruchomić w pierwszym miesiącu:</p>
               <ol>
-                <li><Link href="/audyt-seo">Audyt</Link> istniejących relacji — sprawdź, czy partnerzy, klienci i dostawcy linkują do Ciebie poprawnie i czy linki prowadzą do właściwych stron (nie tylko do strony głównej).</li>
+                <li><Link href={`/${locale}/audyt-seo`}>Audyt</Link> istniejących relacji — sprawdź, czy partnerzy, klienci i dostawcy linkują do Ciebie poprawnie i czy linki prowadzą do właściwych stron (nie tylko do strony głównej).</li>
                 <li>Przygotowanie jednego linkable asset — raport branżowy, kalkulator ROI lub benchmark oparty na danych własnych; to waluta do pitchowania mediom.</li>
                 <li>Identyfikacja 15–20 publikacji branżowych czytanych przez Twoich kupujących i nawiązanie pierwszego kontaktu z redaktorami.</li>
               </ol>
@@ -149,7 +149,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               
               <p style={{ marginBottom: '1.5rem' }}>Trzy typowe cele programu linkowego w B2B:</p>
               <ul>
-                <li>Widoczność przy researchu zakupowym — pojawienie się w wynikach wyszukiwania na frazy, których używają kupujący na etapie oceny dostawców. Dobra <Link href="/pozycjonowanie-stron-internetowych">strategia pozycjonowania stron internetowych</Link> jest tu kluczowa.</li>
+                <li>Widoczność przy researchu zakupowym — pojawienie się w wynikach wyszukiwania na frazy, których używają kupujący na etapie oceny dostawców. Dobra <Link href={`/${locale}/pozycjonowanie-stron-internetowych`}>strategia pozycjonowania stron internetowych</Link> jest tu kluczowa.</li>
                 <li>Brand trust — potwierdzenie przez trzecią stronę, że firma istnieje w realnym ekosystemie branżowym.</li>
                 <li>Wsparcie SEO dla stron produktowych i ofertowych — budowanie autorytetu stron, które bezpośrednio konwertują.</li>
               </ul>
@@ -229,7 +229,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Jakość linku ===== */}
               <h2 id="jakosc-linku">Jak ocenić jakość linku przed przyjęciem go do profilu?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Nie każdy link, który możesz zdobyć, warto zdobywać. Poniższa macierz pomaga szybko zdecydować. Profesjonalny <Link href="/audyt-seo">audyt SEO</Link> zawsze zawiera analizę jakości istniejącego profilu linkowego.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Nie każdy link, który możesz zdobyć, warto zdobywać. Poniższa macierz pomaga szybko zdecydować. Profesjonalny <Link href={`/${locale}/audyt-seo`}>audyt SEO</Link> zawsze zawiera analizę jakości istniejącego profilu linkowego.</p>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
@@ -310,7 +310,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               {/* ===== SECTION: Ryzyka ===== */}
               <h2 id="ryzyka">Jakie ryzyka i błędy najczęściej psują programy link buildingu B2B?</h2>
               <p style={{ marginBottom: '1.5rem' }}>Najczęstsze błędy mają jeden wspólny mianownik: priorytetyzowanie wolumenu nad jakością.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Kupowanie linków i sieci PBN to taktyki, które mogą przynieść krótkoterminowy wzrost pozycji, ale narażają domenę na kary algorytmiczne lub manualne. Eksperci branżowi konsekwentnie wskazują, że earned links i partnerstwa dają lepsze wyniki w dłuższej perspektywie. Profesjonalna <Link href="/pozycjonowanie-stron-internetowych">optymalizacja SEO</Link> zawsze stawia jakość ponad wolumen.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Kupowanie linków i sieci PBN to taktyki, które mogą przynieść krótkoterminowy wzrost pozycji, ale narażają domenę na kary algorytmiczne lub manualne. Eksperci branżowi konsekwentnie wskazują, że earned links i partnerstwa dają lepsze wyniki w dłuższej perspektywie. Profesjonalna <Link href={`/${locale}/pozycjonowanie-stron-internetowych`}>optymalizacja SEO</Link> zawsze stawia jakość ponad wolumen.</p>
               <p style={{ marginBottom: '1.5rem' }}>Koncentracja linków na stronie głównej zamiast na stronach produktowych, ofertowych i case studies. W B2B kupujący trafiają na konkretne strony przez konkretne frazy, więc autorytet powinien wspierać te strony bezpośrednio.</p>
               <p style={{ marginBottom: '1.5rem' }}>Niezgodne z kontekstem anchor texty w stylu exact-match na komercyjne frazy to jeden z wyraźniejszych sygnałów manipulacji dla algorytmów Google.</p>
               <p style={{ marginBottom: '1.5rem' }}>Brak dywersyfikacji źródeł — profil złożony z linków z jednego typu stron (np. wyłącznie katalogi) wygląda nienaturalnie i nie buduje autorytetu tematycznego.</p>
@@ -364,13 +364,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Ai-seo-company ===== */}
               <h2 id="ai-seo-company">Jak podchodzimy do link buildingu B2B w Ai-seo-company</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Każdy program link buildingu zaczyna się od <Link href="/audyt-seo">audytu SEO</Link>: sprawdzamy aktualny profil linkowy, identyfikujemy luki tematyczne i mapujemy istniejące relacje partnerskie, które można natychmiast aktywować. Dopiero na tej podstawie projektujemy linkable asset, który ma realną szansę na cytowanie w mediach branżowych.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Każdy program link buildingu zaczyna się od <Link href={`/${locale}/audyt-seo`}>audytu SEO</Link>: sprawdzamy aktualny profil linkowy, identyfikujemy luki tematyczne i mapujemy istniejące relacje partnerskie, które można natychmiast aktywować. Dopiero na tej podstawie projektujemy linkable asset, który ma realną szansę na cytowanie w mediach branżowych.</p>
               <p style={{ marginBottom: '1.5rem' }}>Proces wygląda następująco: audyt i analiza konkurencji, produkcja zasobu (raport, kalkulator, benchmark), outreach do wyselekcjonowanych redakcji i partnerów, publikacja, a następnie miesięczne raportowanie KPI obejmujące nowe referring domains, średni DR i ruch organiczny na wspieranych stronach.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Klienci Ai-seo-company często obserwują wzrost przychodów po wdrożeniu kompleksowych usług SEO, w tym <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron</Link>, programów link buildingu oraz <Link href="/projektowanie-stron-internetowych">projektowania stron internetowych</Link> zoptymalizowanych pod konwersję. Model abonamentowy sprawdza się przy długoterminowych programach digital PR, natomiast projekt jednorazowy jest odpowiedni dla firm, które chcą przetestować podejście.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Klienci Ai-seo-company często obserwują wzrost przychodów po wdrożeniu kompleksowych usług SEO, w tym <Link href={`/${locale}/pozycjonowanie-stron-internetowych`}>pozycjonowania stron</Link>, programów link buildingu oraz <Link href={`/${locale}/projektowanie-stron-internetowych`}>projektowania stron internetowych</Link> zoptymalizowanych pod konwersję. Model abonamentowy sprawdza się przy długoterminowych programach digital PR, natomiast projekt jednorazowy jest odpowiedni dla firm, które chcą przetestować podejście.</p>
 
               {/* ===== SECTION: Wsparcie ===== */}
               <h2 id="wsparcie">Jak możemy wesprzeć Twój program link buildingu B2B?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Firmy B2B, które chcą budować autorytet w wyszukiwarkach bez ryzyka kar i bez marnowania budżetu na masowy outreach, potrzebują partnera z dostępem do właściwych redakcji i procesem opartym na danych. Jako <Link href="/">agencja SEO</Link> z doświadczeniem w <Link href="/pozycjonowanie-stron-internetowych">pozycjonowaniu</Link> i krajowym, rozumiemy specyfikę polskiego rynku.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Firmy B2B, które chcą budować autorytet w wyszukiwarkach bez ryzyka kar i bez marnowania budżetu na masowy outreach, potrzebują partnera z dostępem do właściwych redakcji i procesem opartym na danych. Jako <Link href={`/${locale}`}>agencja SEO</Link> z doświadczeniem w <Link href={`/${locale}/pozycjonowanie-stron-internetowych`}>pozycjonowaniu</Link> i krajowym, rozumiemy specyfikę polskiego rynku.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company prowadzi kampanie link buildingu B2B łączące digital PR, produkcję raportów branżowych, personalizowany outreach i przejrzyste raportowanie. Pracujemy w modelu abonamentowym dla firm planujących długoterminowy program oraz w modelu projektowym dla tych, które chcą zacząć od pilotażu. Każda kampania zaczyna się od bezpłatnego audytu profilu linkowego i analizy luk tematycznych.</p>
               <p style={{ marginBottom: '1.5rem' }}>Jeśli chcesz wiedzieć, które publikacje czytają Twoi kupujący i jak szybko możesz zdobyć pierwsze editorialne linki, skontaktuj się z nami i umów wstępną konsultację. Przygotujemy brief kampanii dopasowany do Twojej branży i budżetu.</p>

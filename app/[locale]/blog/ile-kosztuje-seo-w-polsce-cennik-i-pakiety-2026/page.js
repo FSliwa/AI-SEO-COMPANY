@@ -123,7 +123,7 @@ export default async function ArticleCennikPage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p>
-                <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie stron w Polsce</Link> kosztuje różną kwotę, począwszy od niskiego poziomu dla bardzo lokalnych projektów, aż do wysokich sum dla dużych serwisów w branżach takich jak prawo, finanse czy medycyna. Większość małych i średnich firm przeznacza budżet, który pozwala na realną pracę, obejmującą <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt techniczny</Link>, optymalizację, treści i podstawowy link building.
+                <Link href={`/${locale}/pozycjonowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie stron w Polsce</Link> kosztuje różną kwotę, począwszy od niskiego poziomu dla bardzo lokalnych projektów, aż do wysokich sum dla dużych serwisów w branżach takich jak prawo, finanse czy medycyna. Większość małych i średnich firm przeznacza budżet, który pozwala na realną pracę, obejmującą <Link href={`/${locale}/audyt-seo`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt techniczny</Link>, optymalizację, treści i podstawowy link building.
               </p>
 
               <p>
@@ -297,7 +297,7 @@ export default async function ArticleCennikPage({ params }) {
               
               <ul>
                 <li><strong>Abonament miesięczny</strong> — najpopularniejszy i najbezpieczniejszy dla większości firm. Płacisz stałą kwotę za zdefiniowany zakres prac. Pozwala planować budżet i wymusza na agencji regularną pracę.</li>
-                <li><strong>Jednorazowy projekt</strong> — sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt techniczny</Link> kosztuje od około 1 500 zł dla małej witryny do 4 000–8 000 zł dla dużego sklepu.</li>
+                <li><strong>Jednorazowy projekt</strong> — sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. <Link href={`/${locale}/audyt-seo`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt techniczny</Link> kosztuje od około 1 500 zł dla małej witryny do 4 000–8 000 zł dla dużego sklepu.</li>
                 <li><strong>Rozliczenie godzinowe</strong> — stosowane przy konsultacjach lub doraźnych pracach. Stawki specjalistów SEO w Polsce wahają się od 150 do 400 zł za godzinę.</li>
                 <li><strong>Model częściowego wynagrodzenia za efekt</strong> — pozycjonowanie „na efekt“ ma istotne ograniczenia: opiera się na metrykach, które agencja może optymalizować pod własne cele, a nie na realnym wzroście przychodów klienta. Dla większości firm bezpieczniejszy jest abonament z jasno określonym zakresem i KPI.</li>
               </ul>

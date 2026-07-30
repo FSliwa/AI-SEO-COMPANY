@@ -46,8 +46,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               letterSpacing: '-0.01em'
             }}>
               {lang === 'pl' 
-                ? 'Jako AI SEO COMPANY oferujemy pozycjonowanie stron internetowych, a w tym SEO dla firm B2B. Nasza optymalizacja i audyty techniczne gwarantują organiczny wzrost oraz maksymalną konwersję opartą na sztucznej inteligencji.'
-                : 'As AI SEO COMPANY, we provide comprehensive Website SEO and B2B Optimization. Our Search Engine Optimization strategies ensure organic growth and maximum conversion tailored for AI algorithms.'}
+                ? 'Jako AI SEO COMPANY oferujemy profesjonalne pozycjonowanie stron internetowych, a w tym SEO dla firm B2B. Nasza optymalizacja i audyty techniczne gwarantują, że zrealizujemy cel: Pozycjonowanie stron internetowych - Organiczny Wzrost Maksymalna Konwersja, oparty na sztucznej inteligencji.'
+                : 'As AI SEO COMPANY we offer professional website positioning, including SEO for B2B companies. Our optimization and technical audits guarantee organic growth and maximum conversion powered by artificial intelligence.'}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>

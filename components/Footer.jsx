@@ -48,7 +48,7 @@ export default function Footer() {
               <p className="footer-heading">{lang === 'pl' ? 'Kontakt' : 'Contact'}</p>
               <ul className="footer-links">
                 <li><a href="mailto:kontakt@ai-seo-company.pl">kontakt@ai-seo-company.pl</a></li>
-                <li><a href="/#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</a></li>
+                <li><a href={`/${lang}#kontakt`}>{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</a></li>
                 <li><a href={`/${lang}/cookies`}>{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</a></li>
               </ul>
             </div>

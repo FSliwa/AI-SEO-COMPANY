@@ -51,7 +51,7 @@ export default function BlogGrid() {
             textAlign: 'left'
           }}>
             {lang === 'pl' 
-              ? 'Nasz Blog to praktyczny Poradnik SEO i Web Design, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze najnowsze artykuły z dziedziny pozycjonowania i optymalizacji. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.'
+              ? 'Nasz Blog to praktyczny Poradnik, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze Najnowsze Artykuły o SEO i Web Designie. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.'
               : 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization. We publish proven organic traffic strategies, analyze Google algorithm updates, and share knowledge on building converting B2B interfaces. Understanding search engine mechanisms allows not only to increase visibility, but above all to build a long-term competitive advantage online.'}
           </p>
         </Reveal>
