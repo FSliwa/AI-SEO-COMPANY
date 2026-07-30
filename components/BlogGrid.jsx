@@ -17,28 +17,32 @@ export default function BlogGrid() {
       tagPl: 'EDUKACJA', tagEn: 'EDUCATION',
       titlePl: 'Wiedza, która napędza Twój zysk w internecie.', titleEn: 'Knowledge that drives your online profit.',
       textPl: 'Blog AI SEO COMPANY to miejsce, w którym na bieżąco analizujemy rynek marketingu internetowego. Dzielimy się sprawdzonymi metodami, innowacyjnymi strategiami biznesowymi oraz narzędziami ułatwiającymi codzienną pracę z pozycjonowaniem stron.',
-      textEn: 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning.'
+      textEn: 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning.',
+      image: '/images/unsplash-1552581234-26160f608093.jpg'
     },
     {
       id: 'metodologia',
       tagPl: 'METODOLOGIA', tagEn: 'METHODOLOGY',
       titlePl: 'Twarde dane i testy A/B', titleEn: 'Hard data and A/B tests',
       textPl: 'Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach.',
-      textEn: 'Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities.'
+      textEn: 'Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities.',
+      image: '/images/unsplash-1561070791-2526d30994b5.jpg'
     },
     {
       id: 'zakres',
       tagPl: 'ZAKRES WIEDZY', tagEn: 'SCOPE OF KNOWLEDGE',
       titlePl: 'Kompleksowe podejście', titleEn: 'Comprehensive approach',
       textPl: 'Odkrywamy kulisy działania algorytmów AI i tłumaczymy trudne zjawiska technologiczne przystępnym językiem. Oprócz artykułów związanych stricte z SEO, poruszamy zagadnienia UX, CRO oraz copywritingu sprzedażowego.',
-      textEn: 'We reveal the behind-the-scenes workings of AI algorithms and explain complex technological phenomena. In addition to articles strictly related to SEO, we tackle topics of UX, CRO, and sales copywriting.'
+      textEn: 'We reveal the behind-the-scenes workings of AI algorithms and explain complex technological phenomena. In addition to articles strictly related to SEO, we tackle topics of UX, CRO, and sales copywriting.',
+      image: '/images/unsplash-1585314062340-f1a5a7c9328d.jpg'
     },
     {
       id: 'rezultaty',
       tagPl: 'REZULTATY', tagEn: 'RESULTS',
       titlePl: 'Bądź o krok przed konkurencją', titleEn: 'Stay one step ahead',
       textPl: 'Nie czekaj dłużej, zacznij aplikować nasze rozwiązania i patrz, jak rosną Twoje słupki w Google Analytics oraz Google Search Console. Bądź konsekwentny, cierpliwy i metodyczny, a z naszą pomocą z pewnością osiągniesz zaplanowane cele biznesowe i wizerunkowe, wyprzedzając konkurencję o lata świetlne.',
-      textEn: 'Do not wait any longer, start applying our solutions today and watch your metrics grow in Google Analytics and GSC. Be consistent, patient, and methodical, and with our help you will certainly achieve your planned business and image goals, leaving your competition light years behind.'
+      textEn: 'Do not wait any longer, start applying our solutions today and watch your metrics grow in Google Analytics and GSC. Be consistent, patient, and methodical, and with our help you will certainly achieve your planned business and image goals, leaving your competition light years behind.',
+      image: '/images/unsplash-1608501821300-4f99e58bba77.jpg'
     }
   ];
 
@@ -310,7 +314,7 @@ export default function BlogGrid() {
         {expandedMissionCard && (
           <div style={{ 
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, 
-            backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 99999, 
+            backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 2147483647, 
             display: 'flex', alignItems: 'center', justifyContent: 'center', 
             padding: '1rem', backdropFilter: 'blur(10px)' 
           }} onClick={() => setExpandedMissionCard(null)}>
@@ -327,7 +331,7 @@ export default function BlogGrid() {
                   width: '36px', height: '36px', borderRadius: '50%', 
                   backgroundColor: '#F5F5F7', border: 'none', 
                   display: 'flex', alignItems: 'center', justifyContent: 'center', 
-                  cursor: 'pointer' 
+                  cursor: 'pointer', zIndex: 2 
                 }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -335,6 +339,18 @@ export default function BlogGrid() {
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
               </button>
+              {expandedMissionCard.image && (
+                <div style={{
+                  width: '100%',
+                  height: 'clamp(200px, 40vh, 350px)',
+                  backgroundImage: `url(${expandedMissionCard.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  borderRadius: '16px',
+                  marginBottom: '2rem',
+                  marginTop: '1rem'
+                }} />
+              )}
               <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
                 {lang === 'pl' ? expandedMissionCard.tagPl : expandedMissionCard.tagEn}
               </span>
