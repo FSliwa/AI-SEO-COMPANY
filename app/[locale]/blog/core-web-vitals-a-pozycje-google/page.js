@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: 'Core Web Vitals a Pozycje w Google | Przewodnik SEO',
-  description: 'Dowiedz się jak Core Web Vitals (LCP, FID, CLS) wpływają na pozycje Twojej strony w wyszukiwarce Google. Praktyczny przewodnik optymalizacji.',
+  title: locale === 'en' ? 'Core Web Vitals vs Google Rankings | SEO Guide' : 'Core Web Vitals a Pozycje w Google | Przewodnik SEO',
+  description: locale === 'en' ? 'Learn how Core Web Vitals (LCP, FID, CLS) impact your Google rankings. A practical optimization guide.' : 'Dowiedz się jak Core Web Vitals (LCP, FID, CLS) wpływają na pozycje Twojej strony w wyszukiwarce Google. Praktyczny przewodnik optymalizacji.',
   alternates: {
     canonical: `/${locale}/blog/core-web-vitals-a-pozycje-google`,
   },
@@ -15,7 +15,8 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 
-export default function ArticleCwvPage() {
+export default async function ArticleCwvPage({ params }) {
+  const { locale } = await params;
   const tocItems = [
     { id: 'dlaczego-przejmowac-sie', title: 'Dlaczego w ogóle przejmować się Core Web Vitals?' },
     { id: 'kluczowe-wskazniki', title: 'Kluczowe wskaźniki (Metryki CWV) i ich optymalizacja' },

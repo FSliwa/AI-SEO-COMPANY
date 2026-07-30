@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: 'Ile Kosztuje SEO w Polsce? Cennik i Pakiety 2026',
-  description: 'Zastanawiasz się, ile kosztuje skuteczne pozycjonowanie w 2026 roku? Zobacz nasz cennik SEO i dowiedz się, co wpływa na finalną cenę optymalizacji.',
+  title: locale === 'en' ? 'How Much Does SEO Cost? Pricing & Packages 2026' : 'Ile Kosztuje SEO w Polsce? Cennik i Pakiety 2026',
+  description: locale === 'en' ? 'Wondering how much effective SEO costs in 2026? See our SEO pricing and learn what affects the final cost of optimization.' : 'Zastanawiasz się, ile kosztuje skuteczne pozycjonowanie w 2026 roku? Zobacz nasz cennik SEO i dowiedz się, co wpływa na finalną cenę optymalizacji.',
   alternates: {
     canonical: `/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
   },
@@ -17,7 +17,8 @@ import Link from 'next/link';
 
 import ArticleTOC from '@/components/ArticleTOC';
 
-export default function ArticleCennikPage() {
+export default async function ArticleCennikPage({ params }) {
+  const { locale } = await params;
   const tocItems = [
     { id: 'dla-roznych-firm', title: 'Ile kosztuje pozycjonowanie dla różnych typów firm?' },
     { id: 'co-zawiera-pakiet', title: 'Co zawiera pakiet SEO, a co jest płatnym dodatkiem?' },

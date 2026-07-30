@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: 'Jak Pozycjonować Firmę Lokalnie w Google? Poradnik 2026',
-  description: 'Kompletny poradnik: jak krok po kroku zoptymalizować wizytówkę Google Moja Firma, zdobyć opinie i poprawić lokalne pozycje w wyszukiwarce.',
+  title: locale === 'en' ? 'Local SEO for Companies | 2026 Guide' : 'SEO Lokalne dla Firm w Warszawie | Poradnik 2026',
+  description: locale === 'en' ? 'Effective local SEO in Google Maps (Business Profile). Get customers from your area with proven SEO strategies for small and medium businesses.' : 'Skuteczne pozycjonowanie lokalne w Google Maps (Profil Firmy). Zdobądź klientów z Twojej okolicy dzięki sprawdzonym strategiom SEO dla małych i średnich firm.',
   alternates: {
     canonical: `/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`,
   },
@@ -15,7 +15,8 @@ import { Reveal } from '@/components/ScrollReveal';
 
 import ArticleTOC from '@/components/ArticleTOC';
 
-export default function ArticleLokalnePage() {
+export default async function ArticleLokalnePage({ params }) {
+  const { locale } = await params;
   const tocItems = [
     { id: 'czym-w-a-ciwie-jest-pozycjonowanie-lokalne-local-seo', title: 'Czym właściwie jest pozycjonowanie lokalne (Local SEO)?' },
     { id: 'optymalizacja-profilu-firmy-w-google-gbp', title: 'Optymalizacja Profilu Firmy w Google (GBP)' },
