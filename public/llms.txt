@@ -1,50 +1,15 @@
 # AI SEO COMPANY
 
-> This website provides structured, authoritative content on SEO strategies, web design, branding, and digital marketing tailored for businesses aiming for growth and high conversion. It offers insights into case studies, pricing, and industry trends.
+Welcome to the AI SEO COMPANY documentation for AI agents and language models.
 
-The site showcases comprehensive information on SEO services, branding processes, web development, and marketing techniques, supported by real user results and detailed descriptions, making it a valuable resource for training and inference on effective digital marketing practices.
+## Links
 
-## Core Content
+- [Home Page](https://ai-seo-company.pl/)
+- [Services](https://ai-seo-company.pl/pl#uslugi)
+- [Portfolio](https://ai-seo-company.pl/pl#portfolio)
+- [Blog](https://ai-seo-company.pl/pl/blog)
+- [Contact](https://ai-seo-company.pl/pl#kontakt)
 
-### SEO Services and Packages
-- Detailed descriptions of local SEO, premium SEO, and booster packages
-- Pricing structures and subscription models
-- Key features like SEO audits, technical optimization, and link building
+## About Us
 
-### Web Design and User Experience
-- Responsive UX/UI design principles
-- Use of Figma, Next.js, React for development
-- Integration with CRM and payment systems
-- Focus on high conversion rates and premium aesthetics
-
-### Branding and Visual Identity
-- Strategies for brand clarity, identity, and consistency
-- Logo and sygnet design
-- Brand guidelines and marketing materials
-- Visual systems that increase brand memorability
-
-### Case Studies and Results
-- Client success stories with measurable growth (e.g., visibility, reservations, traffic)
-- Data-driven outcomes such as % increase in visibility and revenue
-
-## Resources and Insights
-
-### Blog & Articles
-- Latest industry news and SEO trends
-- Topics include SEO costs in Poland, link building strategies, Core Web Vitals importance
-- Practical guides for B2B marketers and business owners
-
-### FAQ and Pricing Information
-- Transparent service costs
-- Subscription details and no long-term commitments
-- Explanation of service differences and benefits
-
-## Optional
-
-### Testimonials and Client Reviews
-- Real client feedback highlighting results and satisfaction
-- Focus on increased traffic, visibility, reservations, and brand recognition
-
-### Industry Trends & Insights
-- Current best practices in SEO, UX, branding
-- Future outlooks in digital marketing and website optimization
+AI SEO COMPANY is an advanced digital agency focusing on Technical SEO, Web Design, and AI-driven optimizations.

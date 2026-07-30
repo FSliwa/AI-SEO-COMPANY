@@ -22,7 +22,7 @@ const realizedWebsites = [
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center',
     rightVisual: 'single-large',
-    largeImage: '/projects/madame-thai-full.png',
+    largeImage: '/projects/madame-thai-full.webp',
     largeImageMobile: '/images/madame-thai-mobile.png',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
@@ -74,12 +74,12 @@ const realizedWebsites = [
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center-reverse',
     rightVisual: 'desktop',
-    largeImage: '/projects/kafelek-aisas.png',
+    largeImage: '/projects/kafelek-aisas.webp',
     desktopCard: {
       tag: 'FINTECH & GLOBAL SEO',
       title: 'AI FUTURES TRADING PLATFORM',
       subtitle: '+8 113.8% Google Search Growth in hyper-competitive US market.',
-      image: '/projects/kafelek-aisas.png',
+      image: '/projects/kafelek-aisas.webp',
       btnText: 'View Case Study'
     },
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):

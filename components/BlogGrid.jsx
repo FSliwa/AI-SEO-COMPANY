@@ -374,6 +374,7 @@ export default function BlogGrid() {
                   display: 'flex', alignItems: 'center', justifyContent: 'center', 
                   cursor: 'pointer', zIndex: 10, backdropFilter: 'blur(5px)'
                 }}
+                aria-label="Close modal"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
