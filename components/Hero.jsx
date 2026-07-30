@@ -66,16 +66,6 @@ export default function Hero() {
                 display: 'block',
                 filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.65)) drop-shadow(0 0 30px rgba(216,90,48,0.3))'
               }} 
-              animate={{ 
-                y: [0, -12, 0],
-                scale: [1, 1.012, 1],
-                filter: [
-                  'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))',
-                  'drop-shadow(0 25px 45px rgba(0,0,0,0.7)) drop-shadow(0 0 40px rgba(216,90,48,0.4))',
-                  'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))'
-                ]
-              }}
-              transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
             />
           </h1>
         </motion.div>
