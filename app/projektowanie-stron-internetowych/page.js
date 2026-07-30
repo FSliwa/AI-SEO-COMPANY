@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Projektowanie Stron Internetowych | Nowoczesny Web Design — AI SEO COMPANY',
+  title: 'Projektowanie Stron Internetowych | Nowoczesny Web Design | AI SEO COMPANY',
   description: 'Tworzymy ultraszybkie i piękne wizualnie strony na Next.js (Headless). Skoncentrowane na maksymalizacji UX i konwersji.',
   alternates: {
     canonical: '/projektowanie-stron-internetowych',
@@ -96,7 +96,7 @@ const webDesignPortfolioCases = [
 
 const webDesignCarouselItems = [
   {
-    number: '01 — WYDAJNOŚĆ',
+    number: '01 / WYDAJNOŚĆ',
     metric: '< 0.5s',
     title: 'Błyskawiczne Ładowanie',
     description: 'Szybkość działania, która zachwyca użytkowników i zapewnia najwyższe oceny od Google.',
@@ -104,14 +104,14 @@ const webDesignCarouselItems = [
     minHeight: '370px'
   },
   {
-    number: '02 — UŻYTKOWNIK',
+    number: '02 / UŻYTKOWNIK',
     metric: 'UX Premium',
     title: 'Zaufanie i Autorytet',
     description: 'Projektujemy przejrzyste strony B2B, w których profesjonalny układ buduje wizerunek niezawodnego partnera biznesowego.',
     width: 'min(75vw, 360px)'
   },
   {
-    number: '03 — BEZPIECZEŃSTWO',
+    number: '03 / BEZPIECZEŃSTWO',
     metric: '100%',
     title: 'Brak Awarji',
     description: 'Bezpieczna technologia, która eliminuje ryzyko włamań znane z przestarzałych systemów szablonowych.',
@@ -119,7 +119,7 @@ const webDesignCarouselItems = [
     minHeight: '380px'
   },
   {
-    number: '04 — SEO READY',
+    number: '04 / SEO READY',
     metric: 'Zysk',
     title: 'Więcej Zapytań',
     description: 'Gotowa technicznie infrastruktura pozycjonująca, która generuje organiczne zapytania do Twojej firmy.',

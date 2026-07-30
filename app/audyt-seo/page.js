@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Audyt SEO | Analiza i optymalizacja — AI SEO COMPANY',
+  title: 'Audyt SEO | Analiza i optymalizacja | AI SEO COMPANY',
   description: 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne na Twojej stronie i przygotujemy strategię, która natychmiast poprawi Twoje pozycje w Google.',
   alternates: {
     canonical: '/audyt-seo',
@@ -23,28 +23,28 @@ const faqAudyt = [
 
 const auditCarouselItems = [
   {
-    number: '01 — PRĘDKOŚĆ',
+    number: '01 / PRĘDKOŚĆ',
     metric: '99 / 100',
     title: 'PageSpeed & Core Web Vitals',
     description: 'Eliminujemy blokujący kod JavaScript i optymalizujemy renderowanie obrazów WebP/AVIF.',
     width: 'min(85vw, 460px)'
   },
   {
-    number: '02 — INDEKSACJA',
+    number: '02 / INDEKSACJA',
     metric: '0 Błędów',
     title: 'Optymalizacja Crawl Budget',
     description: 'Usuwamy pętle przekierowań, zduplikowane tagi canonical oraz podstrony ze statusem 404.',
     width: 'min(75vw, 370px)'
   },
   {
-    number: '03 — SEMANTYKA',
+    number: '03 / SEMANTYKA',
     metric: 'HTML5',
     title: 'Hierarchia Nagłówków & Schema',
     description: 'Układamy poprawną strukturę H1-H3 oraz wdrażamy mikrodane Schema.org.',
     width: 'min(80vw, 410px)'
   },
   {
-    number: '04 — WYDAJNOŚĆ',
+    number: '04 / WYDAJNOŚĆ',
     metric: '< 0.5s',
     title: 'Czas Odpowiedzi Serwera (TTFB)',
     description: 'Wskazujemy rekomendacje serwerowe i wdrażamy szybki bufor Caching/CDN.',
@@ -54,7 +54,7 @@ const auditCarouselItems = [
 
 const auditPortfolioCases = [
   {
-    tag: 'PROBLEM 01 — INDEKSACJA',
+    tag: 'PROBLEM 01 / INDEKSACJA',
     title: 'Wyciek Crawl Budget i Błędy 404',
     description: 'Wykryto ponad 20 000 zduplikowanych adresów URL oraz pętli przekierowań konsumujących budżet indeksowania. Eliminuje to kluczowe produkty z wyników wyszukiwania.',
     image: 'https://images.unsplash.com/photo-1599422314077-f4dfdaa4cd09?auto=format&fit=crop&w=1200&q=80',
@@ -65,7 +65,7 @@ const auditPortfolioCases = [
     metric2Label: 'Zaindeksowanych stron'
   },
   {
-    tag: 'PROBLEM 02 — SPEED & CWV',
+    tag: 'PROBLEM 02 / SPEED & CWV',
     title: 'Wolne Ładowanie LCP (8.2s)',
     description: 'Zablokowany wątek główny przez niezoptymalizowany JavaScript oraz brak kompresji obrazów Next-Gen, powodujący ucieczkę 60% użytkowników mobilnych.',
     image: 'https://images.unsplash.com/photo-1541356665065-22676f35dd40?auto=format&fit=crop&w=1200&q=80',
@@ -76,7 +76,7 @@ const auditPortfolioCases = [
     metric2Label: 'Przesunięć CLS'
   },
   {
-    tag: 'PROBLEM 03 — DANE STRUKTURALNE',
+    tag: 'PROBLEM 03 / DANE STRUKTURALNE',
     title: 'Brak Mikrodanych Schema.org',
     description: 'Brak oznaczeń semantycznych dla wyszukiwarek AI i Google (Rich Snippets), uniemożliwiający wyświetlanie ocen, cen i dostępności w wynikach Search.',
     image: 'https://images.unsplash.com/photo-1597773150796-e5c14ebecbf5?auto=format&fit=crop&w=1200&q=80',
@@ -87,7 +87,7 @@ const auditPortfolioCases = [
     metric2Label: 'Wzrost CTR'
   },
   {
-    tag: 'PROBLEM 04 — TOKSYCZNE LINKI',
+    tag: 'PROBLEM 04 / TOKSYCZNE LINKI',
     title: 'Ryzyko Filtrów Algorytmicznych',
     description: 'Wykrycie masowych przyrostów spamu i toksycznych domen odsyłających z filtrem depozycjonującym. Konieczność wdrożenia procedury Disavow Tool.',
     image: 'https://images.unsplash.com/photo-1602536052359-ef94c21c5948?auto=format&fit=crop&w=1200&q=80',
@@ -98,7 +98,7 @@ const auditPortfolioCases = [
     metric2Label: 'Bezpieczny profil'
   },
   {
-    tag: 'PROBLEM 05 — KANIBALIZACJA',
+    tag: 'PROBLEM 05 / KANIBALIZACJA',
     title: 'Duplikacja i Wewnętrzne Rywalizacje',
     description: 'Wielokrotne podstrony rywalizujące o te same frazy kluczowe. Wykryto brak tagów kanonicznych (rel="canonical") oraz błędne parametry filtrowania.',
     image: 'https://images.unsplash.com/photo-1608501821300-4f99e58bba77?auto=format&fit=crop&w=1200&q=80',
@@ -109,7 +109,7 @@ const auditPortfolioCases = [
     metric2Label: 'Czystość kanoniczna'
   },
   {
-    tag: 'PROBLEM 06 — SEMANTYKA HTML',
+    tag: 'PROBLEM 06 / SEMANTYKA HTML',
     title: 'Błędna Hierarchia Nagłówków H1-H3',
     description: 'Niewłaściwa struktura semantyczna HTML, brak opisów alternatywnych ALT w obrazach i puste tagi meta title uniemożliwiające zrozumienie intencji zapytania.',
     image: 'https://images.unsplash.com/photo-1694852860772-ec8598c72c15?auto=format&fit=crop&w=1200&q=80',

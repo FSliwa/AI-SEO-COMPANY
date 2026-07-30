@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Pozycjonowanie Stron WWW | SEO B2B i B2C — AI SEO COMPANY',
+  title: 'Pozycjonowanie Stron WWW | SEO B2B i B2C | AI SEO COMPANY',
   description: 'Skuteczne pozycjonowanie stron internetowych oparte na danych. Podniesiemy widoczność Twojego biznesu i przekształcimy ruch w płacących klientów.',
   alternates: {
     canonical: '/pozycjonowanie-stron-internetowych',
@@ -100,7 +100,7 @@ const portfolioCases = [
 
 const carouselItems = [
   {
-    number: '01 — WIDOCZNOŚĆ',
+    number: '01 / WIDOCZNOŚĆ',
     metric: '+362%',
     title: 'Wzrost ruchu komercyjnego',
     description: 'Błyskawiczne skalowanie ruchu z zapytań o najwyższej intencji zakupowej w modelu wyszukiwania semantycznego.',
@@ -108,14 +108,14 @@ const carouselItems = [
     minHeight: '380px'
   },
   {
-    number: '02 — STRATEGIA',
+    number: '02 / STRATEGIA',
     metric: 'TOP 3',
     title: 'Kluczowe frazy branżowe',
     description: 'Wprowadzamy Twoje flagowe produkty i usługi na podium wyników organicznych wyszukiwarki Google.',
     width: 'min(75vw, 370px)'
   },
   {
-    number: '03 — ARCHITEKTURA',
+    number: '03 / ARCHITEKTURA',
     metric: '100%',
     title: 'Topic Clusters & Authority',
     description: 'Tworzymy klastry tematyczne odpowiadające na pytania użytkowników, budując autorytet domeny.',
@@ -123,7 +123,7 @@ const carouselItems = [
     minHeight: '370px'
   },
   {
-    number: '04 — AUTORYTET',
+    number: '04 / AUTORYTET',
     metric: 'High DR',
     title: 'Jakościowy Link Building',
     description: 'Pozyskujemy editorialne odnośniki z najbardziej cenionych polskich i zagranicznych portali biznesowych.',
