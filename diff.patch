@@ -1,0 +1,3192 @@
+diff --git a/app/audyt-seo/page.js b/app/[locale]/audyt-seo/page.js
+similarity index 100%
+rename from app/audyt-seo/page.js
+rename to app/[locale]/audyt-seo/page.js
+diff --git a/app/blog/biblioteka/page.js b/app/[locale]/blog/biblioteka/page.js
+similarity index 100%
+rename from app/blog/biblioteka/page.js
+rename to app/[locale]/blog/biblioteka/page.js
+diff --git a/app/blog/core-web-vitals-a-pozycje-google/page.js b/app/[locale]/blog/core-web-vitals-a-pozycje-google/page.js
+similarity index 96%
+rename from app/blog/core-web-vitals-a-pozycje-google/page.js
+rename to app/[locale]/blog/core-web-vitals-a-pozycje-google/page.js
+index 0ef7a9d..53d6c30 100644
+--- a/app/blog/core-web-vitals-a-pozycje-google/page.js
++++ b/app/[locale]/blog/core-web-vitals-a-pozycje-google/page.js
+@@ -10,7 +10,7 @@ import Header from '@/components/Header';
+ import Footer from '@/components/Footer';
+ import Contact from '@/components/Contact';
+ import { Reveal } from '@/components/ScrollReveal';
+-import TableOfContents from '@/components/TableOfContents';
++import ArticleTOC from '@/components/ArticleTOC';
+ 
+ export default function ArticleCwvPage() {
+   const tocItems = [
+@@ -59,11 +59,11 @@ export default function ArticleCwvPage() {
+ 
+           <Reveal delay={0.2}>
+             <div className="article-content">
+-              <p className="lead" style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
++              <p className="lead">
+                 Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są irytujących przesunięć elementów, osiągają znacznie wyższy czas przebywania na stronie. Przedstawiamy praktyczny przewodnik, jak optymalizować swoją stronę pod parametry prędkości w 2026 roku.
+               </p>
+ 
+-              <TableOfContents items={tocItems} />
++              <ArticleTOC items={tocItems} />
+               
+               <h2 id="dlaczego-przejmowac-sie">
+                 Dlaczego w ogóle przejmować się Core Web Vitals?
+@@ -121,7 +121,7 @@ export default function ArticleCwvPage() {
+ 
+               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
+                 <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
+-                  <h3 style={{ color: '#1D1D1F', margin: 0, marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
++                  <h3>
+                     Przyspiesz swoją stronę
+                   </h3>
+                   <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
+diff --git a/app/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026/page.js b/app/[locale]/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026/page.js
+similarity index 99%
+rename from app/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026/page.js
+rename to app/[locale]/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026/page.js
+index c6ecc64..08c5b09 100644
+--- a/app/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026/page.js
++++ b/app/[locale]/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026/page.js
+@@ -12,7 +12,7 @@ import Contact from '@/components/Contact';
+ import { Reveal } from '@/components/ScrollReveal';
+ import Link from 'next/link';
+ 
+-import TableOfContents from '@/components/TableOfContents';
++import ArticleTOC from '@/components/ArticleTOC';
+ 
+ export default function ArticleCennikPage() {
+   const tocItems = [
+@@ -74,7 +74,7 @@ export default function ArticleCennikPage() {
+               <p>
+                 Co kupujesz za te pieniądze w praktyce? Za niższe kwoty miesięczne otrzymasz monitoring i drobne poprawki, z większym budżetem możliwa jest regularna praca nad treścią, naprawy techniczne i kilka linków, a przy większych nakładach rozpoczyna się pełna strategia z content marketingiem, link buildingiem i raportowaniem.
+               </p>
+-              <TableOfContents items={tocItems} />
++              <ArticleTOC items={tocItems} />
+               <h2 id="szybki-przegl-d-typowych-bud-et-w">Szybki przegląd typowych budżetów:</h2>
+               <ul>
+                 <li><strong>Firma lokalna (np. gabinet, warsztat, salon):</strong> 800–1 200 zł/mies. (minimalny próg sensowności)</li>
+diff --git a/app/blog/link-building-b2b-dla-marketerow-strategie-i-checklista/page.js b/app/[locale]/blog/link-building-b2b-dla-marketerow-strategie-i-checklista/page.js
+similarity index 78%
+rename from app/blog/link-building-b2b-dla-marketerow-strategie-i-checklista/page.js
+rename to app/[locale]/blog/link-building-b2b-dla-marketerow-strategie-i-checklista/page.js
+index eb2cfb4..4737459 100644
+--- a/app/blog/link-building-b2b-dla-marketerow-strategie-i-checklista/page.js
++++ b/app/[locale]/blog/link-building-b2b-dla-marketerow-strategie-i-checklista/page.js
+@@ -7,18 +7,27 @@ export const metadata = {
+ };
+ 
+ import Header from '@/components/Header';
++import Link from 'next/link';
+ import Footer from '@/components/Footer';
+ import Contact from '@/components/Contact';
+ import ArticleTOC from '@/components/ArticleTOC';
+ import { Reveal } from '@/components/ScrollReveal';
+ 
+-import TableOfContents from '@/components/TableOfContents';
+-
+ export default function ArticleLinkBuildingB2bPage() {
+-  const iLink = (href, text) => <a href={href} style={{ color: '#1D1D1F', textDecoration: 'underline', textDecorationColor: '#86868B', textUnderlineOffset: '3px', fontWeight: 500 }}>{text}</a>;
+-  const eLink = (href, text) => <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: '#1D1D1F', textDecoration: 'underline', textDecorationColor: '#86868B', textUnderlineOffset: '3px', fontWeight: 500 }}>{text}</a>;
+-  const tocItems = [
+-    
++      const tocItems = [
++    { id: 'czym-jest', title: 'Czym jest link building B2B i czym różni się od B2C?' },
++    { id: 'dlaczego-linki', title: 'Dlaczego linki przekładają się na wyniki sprzedaży w B2B?' },
++    { id: 'rodzaje-linkow', title: 'Jakie rodzaje linków mają największą wartość w B2B?' },
++    { id: 'strategie', title: 'Skuteczne strategie pozyskiwania linków B2B' },
++    { id: 'outreach', title: 'Outreach, personalizacja i skalowanie procesu' },
++    { id: 'jakosc-linku', title: 'Jak ocenić jakość linku przed przyjęciem go do profilu?' },
++    { id: 'roi', title: 'Jak mierzyć ROI link buildingu B2B' },
++    { id: 'outsourcing', title: 'Kiedy outsourcować link building i jak wybrać agencję?' },
++    { id: 'ryzyka', title: 'Jakie ryzyka i błędy najczęściej psują programy link buildingu?' },
++    { id: 'digital-pr', title: 'Dlaczego digital PR i ekspertyza działają najlepiej w B2B?' },
++    { id: 'wnioski', title: 'Kluczowe wnioski' },
++    { id: 'ai-seo-company', title: 'Jak podchodzimy do link buildingu w Ai-seo-company' },
++    { id: 'wsparcie', title: 'Jak możemy wesprzeć Twój program link buildingu B2B?' }
+   ];
+ 
+   return (
+@@ -69,7 +78,7 @@ export default function ArticleLinkBuildingB2bPage() {
+               
+               <p style={{ marginBottom: '1.5rem' }}>Trzy działania, które warto uruchomić w pierwszym miesiącu:</p>
+               <ol>
+-                <li>{iLink('/audyt-seo', 'Audyt')} istniejących relacji — sprawdź, czy partnerzy, klienci i dostawcy linkują do Ciebie poprawnie i czy linki prowadzą do właściwych stron (nie tylko do strony głównej).</li>
++                <li><Link href="/audyt-seo">Audyt</Link> istniejących relacji — sprawdź, czy partnerzy, klienci i dostawcy linkują do Ciebie poprawnie i czy linki prowadzą do właściwych stron (nie tylko do strony głównej).</li>
+                 <li>Przygotowanie jednego linkable asset — raport branżowy, kalkulator ROI lub benchmark oparty na danych własnych; to waluta do pitchowania mediom.</li>
+                 <li>Identyfikacja 15–20 publikacji branżowych czytanych przez Twoich kupujących i nawiązanie pierwszego kontaktu z redaktorami.</li>
+               </ol>
+@@ -79,19 +88,19 @@ export default function ArticleLinkBuildingB2bPage() {
+               <ArticleTOC />
+ 
+               {/* ===== SECTION: Czym jest link building B2B ===== */}
+-              <h3>Czym jest link building B2B i czym różni się od B2C?</h3>
+-              <p style={{ marginBottom: '1.5rem' }}>Link building B2B to proces zdobywania odnośników z zewnętrznych stron internetowych, które wzmacniają autorytet Twojej domeny w oczach wyszukiwarek i potwierdzają wiarygodność firmy w oczach decyzjonariuszy. Współpraca z profesjonalną {iLink('/', 'agencją SEO')} pozwala ten proces systematycznie planować i skalować.</p>
++              <h2 id="czym-jest">Czym jest link building B2B i czym różni się od B2C?</h2>
++              <p style={{ marginBottom: '1.5rem' }}>Link building B2B to proces zdobywania odnośników z zewnętrznych stron internetowych, które wzmacniają autorytet Twojej domeny w oczach wyszukiwarek i potwierdzają wiarygodność firmy w oczach decyzjonariuszy. Współpraca z profesjonalną <Link href="/">agencją SEO</Link> pozwala ten proces systematycznie planować i skalować.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Różnica wobec B2C jest fundamentalna. W B2C liczy się wolumen i zasięg masowy. W B2B jeden link z branżowego czasopisma czytanego przez 5 000 dyrektorów zakupów jest wart więcej niż sto linków z ogólnotematycznych portali. Kupujący B2B prowadzą research przez tygodnie lub miesiące, a cytaty eksperckie i wzmianki w zaufanych publikacjach branżowych bezpośrednio wpływają na to, które firmy trafiają na shortlistę.</p>
+               
+               <p style={{ marginBottom: '1.5rem' }}>Trzy typowe cele programu linkowego w B2B:</p>
+               <ul>
+-                <li>Widoczność przy researchu zakupowym — pojawienie się w wynikach wyszukiwania na frazy, których używają kupujący na etapie oceny dostawców. Dobra {iLink('/pozycjonowanie-stron-internetowych', 'strategia pozycjonowania stron internetowych')} jest tu kluczowa.</li>
++                <li>Widoczność przy researchu zakupowym — pojawienie się w wynikach wyszukiwania na frazy, których używają kupujący na etapie oceny dostawców. Dobra <Link href="/pozycjonowanie-stron-internetowych">strategia pozycjonowania stron internetowych</Link> jest tu kluczowa.</li>
+                 <li>Brand trust — potwierdzenie przez trzecią stronę, że firma istnieje w realnym ekosystemie branżowym.</li>
+                 <li>Wsparcie SEO dla stron produktowych i ofertowych — budowanie autorytetu stron, które bezpośrednio konwertują.</li>
+               </ul>
+ 
+               {/* ===== SECTION: Dlaczego linki ===== */}
+-              <h3>Dlaczego linki przekładają się na wyniki sprzedaży w B2B?</h3>
++              <h2 id="dlaczego-linki">Dlaczego linki przekładają się na wyniki sprzedaży w B2B?</h2>
+               <p style={{ marginBottom: '1.5rem' }}>Artykuły branżowe i odnośniki editorialne pozostają istotnym czynnikiem rankingowym i źródłem ruchu referencyjnego. W B2B ten ruch ma szczególną wartość, bo pochodzi od osób, które aktywnie szukają rozwiązań, a nie przeglądają treści przypadkowo.</p>
+ 
+               <p style={{ marginBottom: '1.5rem' }}>Metryki, których warto szukać w programie linkowym:</p>
+@@ -101,12 +110,12 @@ export default function ArticleLinkBuildingB2bPage() {
+                 <li>Pozycje na frazy zakupowe dla stron produktowych i ofertowych.</li>
+                 <li>Ruch referencyjny z konkretnych publikacji i jego jakość (czas na stronie, konwersje).</li>
+               </ul>
+-              <p style={{ marginBottom: '1.5rem' }}>Orientacyjny timeline efektów jest dłuższy niż w B2C: pierwsze sygnały wzrostu branded search pojawiają się po kilku tygodniach od pierwszych publikacji, pierwsze zmiany pozycji po około 1-3 miesiącach, a pełne efekty kampanii mogą wymagać ponad roku systematycznej pracy. To nie jest taktyka na kwartał, lecz inwestycja w autorytet rynkowy. Więcej o {iLink('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', 'kosztach i budżetach pozycjonowania')} dowiesz się z naszego przewodnika.</p>
++              <p style={{ marginBottom: '1.5rem' }}>Orientacyjny timeline efektów jest dłuższy niż w B2C: pierwsze sygnały wzrostu branded search pojawiają się po kilku tygodniach od pierwszych publikacji, pierwsze zmiany pozycji po około 1-3 miesiącach, a pełne efekty kampanii mogą wymagać ponad roku systematycznej pracy. To nie jest taktyka na kwartał, lecz inwestycja w autorytet rynkowy. Więcej o <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">kosztach i budżetach pozycjonowania</Link> dowiesz się z naszego przewodnika.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Dane: W badaniu z 2025 roku digital PR jest wskazywany jako jedna z najskuteczniejszych taktyk zdobywania linków.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Proponowana proporcja profilu linków dla firm B2B powinna faworyzować linkowanie wewnętrzne: 60% linków internal, 15% dofollow zewnętrzne, 15% nofollow + wzmianki, 10% UGC; tempo zdobywania zewnętrznych linków dla małych i średnich firm to 5–20 miesięcznie.</p>
+ 
+               {/* ===== SECTION: Rodzaje linków ===== */}
+-              <h3>Jakie rodzaje linków mają największą wartość w B2B?</h3>
++              <h2 id="rodzaje-linkow">Jakie rodzaje linków mają największą wartość w B2B?</h2>
+               <p style={{ marginBottom: '1.5rem' }}>Nie każdy link jest równy. W B2B hierarchia jest wyraźna i warto ją znać przed planowaniem działań.</p>
+               <ul>
+                 <li><strong>Linki editorialne</strong> to szczyt piramidy. Redakcja branżowego czasopisma lub portalu decyduje się Cię zacytować, bo Twoje dane lub ekspertyza są naprawdę wartościowe. Takich linków nie można kupić, a ich wartość dla SEO i brand trust jest nieproporcjonalnie wysoka.</li>
+@@ -118,7 +127,7 @@ export default function ArticleLinkBuildingB2bPage() {
+               <p style={{ marginBottom: '1.5rem' }}>Priorytet przy budowaniu profilu: zacznij od linków partnerskich (szybkie wygrane z istniejących relacji), następnie artykuły eksperckie, a dopiero potem kampanie digital PR oparte na danych.</p>
+ 
+               {/* ===== SECTION: Strategie ===== */}
+-              <h3>Skuteczne strategie pozyskiwania linków B2B krok po kroku</h3>
++              <h2 id="strategie">Skuteczne strategie pozyskiwania linków B2B krok po kroku</h2>
+               
+               <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Tworzenie i promocja research-driven assets</h4>
+               <p style={{ marginBottom: '1.5rem' }}>Raport branżowy, benchmark lub badanie ankietowe to najlepsza waluta do pitchowania. Jedno dobrze przygotowane badanie może przynieść wiele naturalnych backlinków z publikacji, które same cytują Twoje dane.</p>
+@@ -128,11 +137,11 @@ export default function ArticleLinkBuildingB2bPage() {
+                 <li>Zbierz dane (ankieta wśród klientów, analiza własnej bazy, scraping publicznych danych).</li>
+                 <li>Przygotuj raport z kluczowymi wnioskami i wizualizacjami gotowymi do osadzenia.</li>
+                 <li>Wyślij raport do 20–30 dziennikarzy i redaktorów z personalizowanym pitchem, zanim opublikujesz go publicznie.</li>
+-                <li>Po publikacji monitoruj wzmianki i prośby o cytowanie przez {eLink('https://ahrefs.com/alerts', 'Ahrefs Alerts')} lub {eLink('https://www.google.com/alerts', 'Google Alerts')}.</li>
++                <li>Po publikacji monitoruj wzmianki i prośby o cytowanie przez <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> lub <a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a>.</li>
+               </ul>
+ 
+               <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR i komentarze eksperckie</h4>
+-              <p style={{ marginBottom: '1.5rem' }}>Digital PR w B2B polega na dostarczaniu unikalnych danych i komentarzy praktyków. Redaktorzy branżowi szukają ekspertów z realnym doświadczeniem, nie PR-owych komunikatów. Praktyczny proces: zarejestruj się w serwisach łączących dziennikarzy z ekspertami ({eLink('https://www.connectively.us/', 'Connectively')}, dawniej HARO, oraz {eLink('https://muckrack.com/', 'Muck Rack')}) i odpowiadaj na zapytania w ciągu 2–4 godzin od ich pojawienia się. Szybkość odpowiedzi jest tu kluczowa.</p>
++              <p style={{ marginBottom: '1.5rem' }}>Digital PR w B2B polega na dostarczaniu unikalnych danych i komentarzy praktyków. Redaktorzy branżowi szukają ekspertów z realnym doświadczeniem, nie PR-owych komunikatów. Praktyczny proces: zarejestruj się w serwisach łączących dziennikarzy z ekspertami (<a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a>, dawniej HARO, oraz <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a>) i odpowiadaj na zapytania w ciągu 2–4 godzin od ich pojawienia się. Szybkość odpowiedzi jest tu kluczowa.</p>
+ 
+               <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Artykuły gościnne z byline</h4>
+               <p style={{ marginBottom: '1.5rem' }}>Wybierz 5–10 publikacji, które Twoi kupujący rzeczywiście czytają. Zaproponuj temat, który rozwiązuje konkretny problem czytelnika, a nie promuje Twoją firmę. Redakcje odrzucają pitche, które brzmią jak reklamy.</p>
+@@ -141,8 +150,8 @@ export default function ArticleLinkBuildingB2bPage() {
+               <p style={{ marginBottom: '1.5rem' }}>Znajdź strony w Twojej branży z uszkodzonymi linkami prowadzącymi do nieistniejących zasobów, a następnie zaproponuj własny zasób jako zamiennik. Konwersja outreachu w tej taktyce jest umiarkowana i zależy od dopasowania segmentu.</p>
+               <p style={{ marginBottom: '0.5rem' }}>Checklista broken link building:</p>
+               <ul>
+-                <li>Użyj {eLink('https://ahrefs.com/site-explorer', 'Ahrefs Site Explorer')} lub Check My Links, by znaleźć uszkodzone linki na stronach branżowych.</li>
+-                <li>Sprawdź, jaki zasób był pod oryginalnym URL ({eLink('https://web.archive.org/', 'Wayback Machine')}).</li>
++                <li>Użyj <a href="https://ahrefs.com/site-explorer" target="_blank" rel="noopener noreferrer">Ahrefs Site Explorer</a> lub Check My Links, by znaleźć uszkodzone linki na stronach branżowych.</li>
++                <li>Sprawdź, jaki zasób był pod oryginalnym URL (<a href="https://web.archive.org/" target="_blank" rel="noopener noreferrer">Wayback Machine</a>).</li>
+                 <li>Przygotuj lub wskaż własny zasób, który faktycznie zastępuje brakującą treść.</li>
+                 <li>Wyślij spersonalizowaną wiadomość do webmastera z konkretną propozycją zamiany.</li>
+               </ul>
+@@ -158,14 +167,14 @@ export default function ArticleLinkBuildingB2bPage() {
+               <p style={{ marginBottom: '1.5rem' }}>Porada profesjonalisty: Zanim zaczniesz cold outreach, przejrzyj istniejące relacje biznesowe. Partnerzy, dostawcy i klienci, którzy już Cię znają, mają znacznie wyższy wskaźnik odpowiedzi niż zimne kontakty. Zacznij od nich i zbierz pierwsze linki bez kosztów outreachu.</p>
+ 
+               {/* ===== SECTION: Outreach ===== */}
+-              <h3>Outreach, personalizacja i skalowanie procesu</h3>
+-              <p style={{ marginBottom: '1.5rem' }}>Efektywny outreach w B2B to kwestia jakości kontaktu, nie wolumenu wiadomości. Skuteczne programy digital PR skupiają się na relacjach z 15–30 dziennikarzami z publikacji czytanych przez decydentów, a nie na masowym rozsyłaniu szablonów. Każda {iLink('/', 'agencja marketingowa')} specjalizująca się w B2B powinna rozumieć tę różnicę.</p>
+-              <p style={{ marginBottom: '1.5rem' }}>Rekomendowany stos narzędzi: {eLink('https://ahrefs.com/', 'Ahrefs')} lub {eLink('https://www.semrush.com/', 'Semrush')} do analizy profilu linkowego i identyfikacji celów, {eLink('https://www.connectively.us/', 'Connectively')} lub {eLink('https://muckrack.com/', 'Muck Rack')} do monitorowania zapytań dziennikarskich, {eLink('https://hunter.io/', 'Hunter.io')} do weryfikacji adresów e-mail, Notion lub HubSpot jako proste CRM do śledzenia statusu outreachu.</p>
++              <h2 id="outreach">Outreach, personalizacja i skalowanie procesu</h2>
++              <p style={{ marginBottom: '1.5rem' }}>Efektywny outreach w B2B to kwestia jakości kontaktu, nie wolumenu wiadomości. Skuteczne programy digital PR skupiają się na relacjach z 15–30 dziennikarzami z publikacji czytanych przez decydentów, a nie na masowym rozsyłaniu szablonów. Każda <Link href="/">agencja marketingowa</Link> specjalizująca się w B2B powinna rozumieć tę różnicę.</p>
++              <p style={{ marginBottom: '1.5rem' }}>Rekomendowany stos narzędzi: <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> lub <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> do analizy profilu linkowego i identyfikacji celów, <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> lub <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> do monitorowania zapytań dziennikarskich, <a href="https://hunter.io/" target="_blank" rel="noopener noreferrer">Hunter.io</a> do weryfikacji adresów e-mail, Notion lub HubSpot jako proste CRM do śledzenia statusu outreachu.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Przykładowy workflow jednej kampanii: identyfikacja 30 celów (publikacje + redaktorzy) → personalizacja pitcha pod każdą redakcję → wysyłka → follow-up po 5 dniach roboczych → finalizacja i monitorowanie opublikowanego linku w Ahrefs Alerts.</p>
+ 
+               {/* ===== SECTION: Jakość linku ===== */}
+-              <h3>Jak ocenić jakość linku przed przyjęciem go do profilu?</h3>
+-              <p style={{ marginBottom: '1.5rem' }}>Nie każdy link, który możesz zdobyć, warto zdobywać. Poniższa macierz pomaga szybko zdecydować. Profesjonalny {iLink('/audyt-seo', 'audyt SEO')} zawsze zawiera analizę jakości istniejącego profilu linkowego.</p>
++              <h2 id="jakosc-linku">Jak ocenić jakość linku przed przyjęciem go do profilu?</h2>
++              <p style={{ marginBottom: '1.5rem' }}>Nie każdy link, który możesz zdobyć, warto zdobywać. Poniższa macierz pomaga szybko zdecydować. Profesjonalny <Link href="/audyt-seo">audyt SEO</Link> zawsze zawiera analizę jakości istniejącego profilu linkowego.</p>
+               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
+                   <thead>
+@@ -187,16 +196,16 @@ export default function ArticleLinkBuildingB2bPage() {
+                 </table>
+               </div>
+               <p style={{ marginBottom: '1.5rem' }}>Kiedy przyjąć link niskiego DR? Jeśli strona ma realny ruch, jest tematycznie precyzyjna i pochodzi z relacji partnerskiej, niski DR nie dyskwalifikuje linku. Ryzyko pojawia się przy kombinacji: niski DR, brak ruchu, podejrzany profil wychodzący.</p>
+-              <p style={{ marginBottom: '1.5rem' }}>Do szybkiej oceny używaj {eLink('https://ahrefs.com/site-explorer', 'Ahrefs Site Explorer')}, {eLink('https://www.semrush.com/', 'Semrush Authority Score')} oraz {eLink('https://search.google.com/search-console', 'Google Search Console')} do weryfikacji, czy strona źródłowa jest indeksowana i nie ma manualnych kar.</p>
++              <p style={{ marginBottom: '1.5rem' }}>Do szybkiej oceny używaj <a href="https://ahrefs.com/site-explorer" target="_blank" rel="noopener noreferrer">Ahrefs Site Explorer</a>, <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush Authority Score</a> oraz <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> do weryfikacji, czy strona źródłowa jest indeksowana i nie ma manualnych kar.</p>
+ 
+               {/* ===== SECTION: ROI ===== */}
+-              <h3>Jak mierzyć ROI link buildingu B2B: metryki i koszty</h3>
++              <h2 id="roi">Jak mierzyć ROI link buildingu B2B: metryki i koszty</h2>
+               <p style={{ marginBottom: '1.5rem' }}>Cztery główne metryki programu linkowego:</p>
+               <ul>
+                 <li>Liczba nowych referring domains z tematycznie powiązanych stron, mierzona miesięcznie.</li>
+                 <li>Średni DR nowych linków jako wskaźnik jakości pozyskiwanych źródeł.</li>
+                 <li>Organic traffic uplift dla stron, do których aktywnie budujesz linki.</li>
+-                <li>Leady i konwersje z ruchu organicznego przypisane do wspieranych stron przez {eLink('https://analytics.google.com/', 'Google Analytics 4')} lub CRM.</li>
++                <li>Leady i konwersje z ruchu organicznego przypisane do wspieranych stron przez <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer">Google Analytics 4</a> lub CRM.</li>
+               </ul>
+               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
+@@ -215,11 +224,11 @@ export default function ArticleLinkBuildingB2bPage() {
+                   </tbody>
+                 </table>
+               </div>
+-              <p style={{ marginBottom: '1.5rem' }}>Orientacyjne widełki kosztów programu link buildingu w Polsce: rzetelny program digital PR + outreach zwykle kosztuje więcej niż tani, masowy linkbuilding, ale przynosi lepszy zwrot. Sprawdź szczegóły w naszym artykule: {iLink('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', 'ile kosztuje pozycjonowanie')} w 2026 roku. Przykładowe widełki: PR-owy koszt 3–10k zł/mies., outreach gościnny 2–6k zł/mies., mieszanka PR + outreach 5–15k zł/mies. (orientacyjnie).</p>
++              <p style={{ marginBottom: '1.5rem' }}>Orientacyjne widełki kosztów programu link buildingu w Polsce: rzetelny program digital PR + outreach zwykle kosztuje więcej niż tani, masowy linkbuilding, ale przynosi lepszy zwrot. Sprawdź szczegóły w naszym artykule: <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">ile kosztuje pozycjonowanie</Link> w 2026 roku. Przykładowe widełki: PR-owy koszt 3–10k zł/mies., outreach gościnny 2–6k zł/mies., mieszanka PR + outreach 5–15k zł/mies. (orientacyjnie).</p>
+ 
+               {/* ===== SECTION: Outsourcing ===== */}
+-              <h3>Kiedy outsourcować link building i jak wybrać agencję?</h3>
+-              <p style={{ marginBottom: '1.5rem' }}>Trzy sygnały, że warto sięgnąć po zewnętrznego partnera — doświadczoną {iLink('/', 'agencję SEO Warszawa')} lub innego miasta:</p>
++              <h2 id="outsourcing">Kiedy outsourcować link building i jak wybrać agencję?</h2>
++              <p style={{ marginBottom: '1.5rem' }}>Trzy sygnały, że warto sięgnąć po zewnętrznego partnera — doświadczoną <Link href="/">agencję SEO Warszawa</Link> lub innego miasta:</p>
+               <ul>
+                 <li>Brak wewnętrznych zasobów do prowadzenia systematycznego outreachu i produkcji treści eksperckich.</li>
+                 <li>Potrzeba szybszego dostępu do sieci relacji z redakcjami branżowymi, których budowanie od zera zajmuje miesiące.</li>
+@@ -244,17 +253,17 @@ export default function ArticleLinkBuildingB2bPage() {
+               </ul>
+ 
+               {/* ===== SECTION: Ryzyka ===== */}
+-              <h3>Jakie ryzyka i błędy najczęściej psują programy link buildingu B2B?</h3>
++              <h2 id="ryzyka">Jakie ryzyka i błędy najczęściej psują programy link buildingu B2B?</h2>
+               <p style={{ marginBottom: '1.5rem' }}>Najczęstsze błędy mają jeden wspólny mianownik: priorytetyzowanie wolumenu nad jakością.</p>
+-              <p style={{ marginBottom: '1.5rem' }}>Kupowanie linków i sieci PBN to taktyki, które mogą przynieść krótkoterminowy wzrost pozycji, ale narażają domenę na kary algorytmiczne lub manualne. Eksperci branżowi konsekwentnie wskazują, że earned links i partnerstwa dają lepsze wyniki w dłuższej perspektywie. Profesjonalna {iLink('/pozycjonowanie-stron-internetowych', 'optymalizacja SEO')} zawsze stawia jakość ponad wolumen.</p>
++              <p style={{ marginBottom: '1.5rem' }}>Kupowanie linków i sieci PBN to taktyki, które mogą przynieść krótkoterminowy wzrost pozycji, ale narażają domenę na kary algorytmiczne lub manualne. Eksperci branżowi konsekwentnie wskazują, że earned links i partnerstwa dają lepsze wyniki w dłuższej perspektywie. Profesjonalna <Link href="/pozycjonowanie-stron-internetowych">optymalizacja SEO</Link> zawsze stawia jakość ponad wolumen.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Koncentracja linków na stronie głównej zamiast na stronach produktowych, ofertowych i case studies. W B2B kupujący trafiają na konkretne strony przez konkretne frazy, więc autorytet powinien wspierać te strony bezpośrednio.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Niezgodne z kontekstem anchor texty w stylu exact-match na komercyjne frazy to jeden z wyraźniejszych sygnałów manipulacji dla algorytmów Google.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Brak dywersyfikacji źródeł — profil złożony z linków z jednego typu stron (np. wyłącznie katalogi) wygląda nienaturalnie i nie buduje autorytetu tematycznego.</p>
+-              <p style={{ marginBottom: '1.5rem' }}>Jak minimalizować ryzyko: dokumentuj każdy outreach, preferuj linki editorialne i partnerskie, dywersyfikuj typy stron źródłowych i regularnie audytuj profil linkowy przez {eLink('https://ahrefs.com/', 'Ahrefs')} lub {eLink('https://www.semrush.com/', 'Semrush')}.</p>
++              <p style={{ marginBottom: '1.5rem' }}>Jak minimalizować ryzyko: dokumentuj każdy outreach, preferuj linki editorialne i partnerskie, dywersyfikuj typy stron źródłowych i regularnie audytuj profil linkowy przez <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> lub <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a>.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Nota: link building sam w sobie nie jest nielegalny. Problemy prawne i naruszenia wytycznych pojawiają się przy ukrytych płatnościach za linki bez oznaczenia sponsorowanego i przy naruszeniu zasad wydawców. Transparentność w relacjach z redakcjami chroni zarówno Ciebie, jak i partnera.</p>
+ 
+               {/* ===== SECTION: Digital PR ===== */}
+-              <h3>Dlaczego digital PR i ekspertyza praktyczna działają najlepiej w B2B?</h3>
++              <h2 id="digital-pr">Dlaczego digital PR i ekspertyza praktyczna działają najlepiej w B2B?</h2>
+               <p style={{ marginBottom: '1.5rem' }}>Digital PR powinien celować w publikacje branżowe, podcasty i newslettery, a nie w media ogólnotematyczne. Decyzjonariusze B2B czytają specjalistyczne źródła, a link z takiej publikacji ma podwójną wartość: SEO i brand trust wśród właściwej grupy odbiorców.</p>
+               <p style={{ marginBottom: '0.5rem' }}>Badania i obserwacje z 2025–2026 roku wskazują kilka prawidłowości:</p>
+               <ul>
+@@ -265,13 +274,13 @@ export default function ArticleLinkBuildingB2bPage() {
+               <p style={{ marginBottom: '1.5rem' }}>Obserwacja: Dane własne — badania, benchmarki, narzędzia — są najlepszą walutą do pitchowania historii. Jeden dobrze przygotowany raport może wygenerować znacznie więcej naturalnych backlinków niż dziesiątki postów gościnnych.</p>
+               <p style={{ marginBottom: '0.5rem' }}>Najszybszy zwrot uwagi redakcji dają:</p>
+               <ul>
+-                <li>Odpowiedzi na zapytania dziennikarskie przez {eLink('https://www.connectively.us/', 'Connectively')} lub {eLink('https://muckrack.com/', 'Muck Rack')} w ciągu 2–4 godzin.</li>
++                <li>Odpowiedzi na zapytania dziennikarskie przez <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> lub <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> w ciągu 2–4 godzin.</li>
+                 <li>Bylinedy z unikatową tezą, a nie artykuły przeglądowe dostępne wszędzie.</li>
+                 <li>Transkrypcje i podsumowania podcastów branżowych, które redakcje chętnie linkują jako materiał źródłowy.</li>
+               </ul>
+ 
+               {/* ===== SECTION: Wnioski ===== */}
+-              <h3>Kluczowe wnioski</h3>
++              <h2 id="wnioski">Kluczowe wnioski</h2>
+               <p style={{ marginBottom: '1.5rem' }}>Skuteczny link building B2B wymaga systemu łączącego dane własne, relacje z redakcjami branżowymi i strategiczne partnerstwa, a nie masowego outreachu do przypadkowych stron.</p>
+               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
+@@ -299,14 +308,14 @@ export default function ArticleLinkBuildingB2bPage() {
+               </ul>
+ 
+               {/* ===== SECTION: Ai-seo-company ===== */}
+-              <h3>Jak podchodzimy do link buildingu B2B w Ai-seo-company</h3>
+-              <p style={{ marginBottom: '1.5rem' }}>Każdy program link buildingu zaczyna się od {iLink('/audyt-seo', 'audytu SEO')}: sprawdzamy aktualny profil linkowy, identyfikujemy luki tematyczne i mapujemy istniejące relacje partnerskie, które można natychmiast aktywować. Dopiero na tej podstawie projektujemy linkable asset, który ma realną szansę na cytowanie w mediach branżowych.</p>
++              <h2 id="ai-seo-company">Jak podchodzimy do link buildingu B2B w Ai-seo-company</h2>
++              <p style={{ marginBottom: '1.5rem' }}>Każdy program link buildingu zaczyna się od <Link href="/audyt-seo">audytu SEO</Link>: sprawdzamy aktualny profil linkowy, identyfikujemy luki tematyczne i mapujemy istniejące relacje partnerskie, które można natychmiast aktywować. Dopiero na tej podstawie projektujemy linkable asset, który ma realną szansę na cytowanie w mediach branżowych.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Proces wygląda następująco: audyt i analiza konkurencji, produkcja zasobu (raport, kalkulator, benchmark), outreach do wyselekcjonowanych redakcji i partnerów, publikacja, a następnie miesięczne raportowanie KPI obejmujące nowe referring domains, średni DR i ruch organiczny na wspieranych stronach.</p>
+-              <p style={{ marginBottom: '1.5rem' }}>Klienci Ai-seo-company często obserwują wzrost przychodów po wdrożeniu kompleksowych usług SEO, w tym {iLink('/pozycjonowanie-stron-internetowych', 'pozycjonowania stron')}, programów link buildingu oraz {iLink('/projektowanie-stron-internetowych', 'projektowania stron internetowych')} zoptymalizowanych pod konwersję. Model abonamentowy sprawdza się przy długoterminowych programach digital PR, natomiast projekt jednorazowy jest odpowiedni dla firm, które chcą przetestować podejście.</p>
++              <p style={{ marginBottom: '1.5rem' }}>Klienci Ai-seo-company często obserwują wzrost przychodów po wdrożeniu kompleksowych usług SEO, w tym <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron</Link>, programów link buildingu oraz <Link href="/projektowanie-stron-internetowych">projektowania stron internetowych</Link> zoptymalizowanych pod konwersję. Model abonamentowy sprawdza się przy długoterminowych programach digital PR, natomiast projekt jednorazowy jest odpowiedni dla firm, które chcą przetestować podejście.</p>
+ 
+               {/* ===== SECTION: Wsparcie ===== */}
+-              <h3>Jak możemy wesprzeć Twój program link buildingu B2B?</h3>
+-              <p style={{ marginBottom: '1.5rem' }}>Firmy B2B, które chcą budować autorytet w wyszukiwarkach bez ryzyka kar i bez marnowania budżetu na masowy outreach, potrzebują partnera z dostępem do właściwych redakcji i procesem opartym na danych. Jako {iLink('/', 'agencja SEO')} z doświadczeniem w {iLink('/pozycjonowanie-stron-internetowych', 'pozycjonowaniu')} i krajowym, rozumiemy specyfikę polskiego rynku.</p>
++              <h2 id="wsparcie">Jak możemy wesprzeć Twój program link buildingu B2B?</h2>
++              <p style={{ marginBottom: '1.5rem' }}>Firmy B2B, które chcą budować autorytet w wyszukiwarkach bez ryzyka kar i bez marnowania budżetu na masowy outreach, potrzebują partnera z dostępem do właściwych redakcji i procesem opartym na danych. Jako <Link href="/">agencja SEO</Link> z doświadczeniem w <Link href="/pozycjonowanie-stron-internetowych">pozycjonowaniu</Link> i krajowym, rozumiemy specyfikę polskiego rynku.</p>
+               
+               <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company prowadzi kampanie link buildingu B2B łączące digital PR, produkcję raportów branżowych, personalizowany outreach i przejrzyste raportowanie. Pracujemy w modelu abonamentowym dla firm planujących długoterminowy program oraz w modelu projektowym dla tych, które chcą zacząć od pilotażu. Każda kampania zaczyna się od bezpłatnego audytu profilu linkowego i analizy luk tematycznych.</p>
+               <p style={{ marginBottom: '1.5rem' }}>Jeśli chcesz wiedzieć, które publikacje czytają Twoi kupujący i jak szybko możesz zdobyć pierwsze editorialne linki, skontaktuj się z nami i umów wstępną konsultację. Przygotujemy brief kampanii dopasowany do Twojej branży i budżetu.</p>
+@@ -314,18 +323,18 @@ export default function ArticleLinkBuildingB2bPage() {
+               <h3>Przydatne narzędzia i źródła do dalszej lektury</h3>
+               <p style={{ marginBottom: '0.5rem' }}>Narzędzia do analizy i monitoringu:</p>
+               <ul>
+-                <li>{eLink('https://ahrefs.com/', 'Ahrefs')} — analiza profilu linkowego, monitoring nowych i utraconych linków, identyfikacja celów do broken link building.</li>
+-                <li>{eLink('https://www.semrush.com/', 'Semrush')} — Authority Score, analiza konkurencji, śledzenie pozycji na frazy zakupowe.</li>
+-                <li>{eLink('https://search.google.com/search-console', 'Google Search Console')} — weryfikacja indeksacji, monitoring ruchu organicznego na wspieranych stronach.</li>
+-                <li>{eLink('https://www.connectively.us/', 'Connectively')} (dawniej HARO) — platforma łącząca dziennikarzy z ekspertami.</li>
+-                <li>{eLink('https://muckrack.com/', 'Muck Rack')} — baza dziennikarzy i redaktorów branżowych.</li>
+-                <li>{eLink('https://www.google.com/alerts', 'Google Alerts')} / {eLink('https://ahrefs.com/alerts', 'Ahrefs Alerts')} — monitoring wzmianek o marce i nowych linków w czasie rzeczywistym.</li>
++                <li><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> — analiza profilu linkowego, monitoring nowych i utraconych linków, identyfikacja celów do broken link building.</li>
++                <li><a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> — Authority Score, analiza konkurencji, śledzenie pozycji na frazy zakupowe.</li>
++                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> — weryfikacja indeksacji, monitoring ruchu organicznego na wspieranych stronach.</li>
++                <li><a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> (dawniej HARO) — platforma łącząca dziennikarzy z ekspertami.</li>
++                <li><a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> — baza dziennikarzy i redaktorów branżowych.</li>
++                <li><a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a> / <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> — monitoring wzmianek o marce i nowych linków w czasie rzeczywistym.</li>
+               </ul>
+ 
+               <p style={{ marginBottom: '1.5rem' }}>Jak zorganizować pilotaż: wybierz jedną taktykę (np. broken link building lub outreach partnerski), zdefiniuj 10–15 celów, uruchom kampanię przez 4–6 tygodni i oceń wskaźnik odpowiedzi oraz konwersję do publikacji. Wyniki pilotażu dają realną podstawę do decyzji o skali programu.</p>
+ 
+               <h3>Rekomendacja</h3>
+-              <p style={{ marginBottom: '1.5rem' }}>{iLink('/', 'Agencja SEO Warszawa')} | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY</p>
++              <p style={{ marginBottom: '1.5rem' }}><Link href="/">Agencja SEO Warszawa</Link> | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY</p>
+               <p style={{ marginBottom: '1.5rem', fontStyle: 'italic', color: '#86868B' }}>Artykuł wygenerowany przez BabyLoveGrowth</p>
+ 
+               {/* Clear CTA Block */}
+diff --git a/app/blog/page.js b/app/[locale]/blog/page.js
+similarity index 100%
+rename from app/blog/page.js
+rename to app/[locale]/blog/page.js
+diff --git a/app/blog/seo-lokalne-dla-firm-w-warszawie/page.js b/app/[locale]/blog/seo-lokalne-dla-firm-w-warszawie/page.js
+similarity index 98%
+rename from app/blog/seo-lokalne-dla-firm-w-warszawie/page.js
+rename to app/[locale]/blog/seo-lokalne-dla-firm-w-warszawie/page.js
+index 154d230..1a34bbf 100644
+--- a/app/blog/seo-lokalne-dla-firm-w-warszawie/page.js
++++ b/app/[locale]/blog/seo-lokalne-dla-firm-w-warszawie/page.js
+@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
+ import Contact from '@/components/Contact';
+ import { Reveal } from '@/components/ScrollReveal';
+ 
+-import TableOfContents from '@/components/TableOfContents';
++import ArticleTOC from '@/components/ArticleTOC';
+ 
+ export default function ArticleLokalnePage() {
+   const tocItems = [
+@@ -64,7 +64,7 @@ export default function ArticleLokalnePage() {
+               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+                 Rynek usług w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów lokalnych, samo posiadanie strony to za mało. Kluczem jest perfekcyjna synergia między Twoją witryną, wizytówką Google i systemem pozyskiwania opinii. Poniżej przedstawiamy, jak pozycjonować firmę na poziomie dzielnicy i całego miasta, by wygrać wyścig o klientów z sąsiedztwa.
+               </p>
+-              <TableOfContents items={tocItems} />
++              <ArticleTOC items={tocItems} />
+               <h2 id="czym-w-a-ciwie-jest-pozycjonowanie-lokalne-local-seo">Czym właściwie jest pozycjonowanie lokalne (Local SEO)?</h2>
+               <p style={{ marginBottom: '1.5rem', color: '#515154' }}>
+                 SEO lokalne to zbiór działań mających na celu zwiększenie widoczności firmy w wynikach wyszukiwania powiązanych z konkretną lokalizacją geograficzną (np. „dobry hydraulik warszawa wola”, „agencja reklamowa mokotów”). Kiedy użytkownik wyszukuje usługę na smartfonie, algorytm Google bierze pod uwagę jego fizyczną lokalizację i stara się dopasować do niej jak najbliższe, zaufane biznesy w tzw. Mapach Google (Local Pack).
+diff --git a/app/cennik-pozycjonowania/page.js b/app/[locale]/cennik-pozycjonowania/page.js
+similarity index 100%
+rename from app/cennik-pozycjonowania/page.js
+rename to app/[locale]/cennik-pozycjonowania/page.js
+diff --git a/app/cookies/CookiesContent.jsx b/app/[locale]/cookies/CookiesContent.jsx
+similarity index 94%
+rename from app/cookies/CookiesContent.jsx
+rename to app/[locale]/cookies/CookiesContent.jsx
+index 8938708..1affe48 100644
+--- a/app/cookies/CookiesContent.jsx
++++ b/app/[locale]/cookies/CookiesContent.jsx
+@@ -1,13 +1,12 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ import Header from '@/components/Header';
+ import Footer from '@/components/Footer';
+ 
+ export default function CookiesContent() {
+-  const { lang } = useLanguage();
+-  const t = translations[lang].cookiesPage;
++  const lang = useLocale();
++  const t = useTranslations('cookiesPage');
+ 
+   return (
+     <>
+@@ -15,10 +14,10 @@ export default function CookiesContent() {
+       <main style={{ paddingTop: '120px', minHeight: '80vh', background: '#F5F5F7' }}>
+         <div className="container" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
+           <h1 style={{ fontSize: '3rem', color: '#0F172A', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
+-            {t.title}
++            {t('title')}
+           </h1>
+           <div style={{ color: '#334155', fontSize: '1.1rem', lineHeight: 1.8 }}>
+-            <p>{t.content}</p>
++            <p>{t('content')}</p>
+             {lang === 'pl' ? (
+               <>
+                 <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>1. Czym są pliki cookies?</h2>
+diff --git a/app/cookies/page.js b/app/[locale]/cookies/page.js
+similarity index 100%
+rename from app/cookies/page.js
+rename to app/[locale]/cookies/page.js
+diff --git a/app/layout.js b/app/[locale]/layout.js
+similarity index 90%
+rename from app/layout.js
+rename to app/[locale]/layout.js
+index 31593d9..9cbeb05 100644
+--- a/app/layout.js
++++ b/app/[locale]/layout.js
+@@ -1,9 +1,16 @@
+-import './globals.css';
+-import { LanguageProvider } from '@/lib/LanguageContext';
++import '../globals.css';
++import { NextIntlClientProvider } from 'next-intl';
++import { getMessages } from 'next-intl/server';
+ import CookiesBanner from '@/components/CookiesBanner';
+ 
+ export const metadata = {
+   metadataBase: new URL('https://www.ai-seo-company.pl'),
++  alternates: {
++    languages: {
++      'pl': '/pl',
++      'en': '/en',
++    },
++  },
+   title: 'Agencja SEO Warszawa | Pozycjonowanie Stron | AI SEO COMPANY',
+   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
+   icons: {
+@@ -88,9 +95,12 @@ import { Inter, Space_Grotesk } from 'next/font/google';
+ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space', display: 'swap' });
+ 
+-export default function RootLayout({ children }) {
++export default async function RootLayout({ children, params }) {
++  const { locale } = await params;
++  const messages = await getMessages();
++
+   return (
+-    <html lang="pl">
++    <html lang={locale}>
+       <head>
+         <link rel="icon" href="/ai-seo-company-logotyp.svg" type="image/svg+xml" />
+         <script
+@@ -112,10 +122,10 @@ export default function RootLayout({ children }) {
+         </Script>
+       </head>
+       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+-        <LanguageProvider>
++        <NextIntlClientProvider messages={messages}>
+           {children}
+           <CookiesBanner />
+-        </LanguageProvider>
++        </NextIntlClientProvider>
+       </body>
+     </html>
+   );
+diff --git a/app/o-nas/page.js b/app/[locale]/o-nas/page.js
+similarity index 100%
+rename from app/o-nas/page.js
+rename to app/[locale]/o-nas/page.js
+diff --git a/app/page.js b/app/[locale]/page.js
+similarity index 100%
+rename from app/page.js
+rename to app/[locale]/page.js
+diff --git a/app/page.module.css b/app/[locale]/page.module.css
+similarity index 100%
+rename from app/page.module.css
+rename to app/[locale]/page.module.css
+diff --git a/app/pozycjonowanie-stron-internetowych/page.js b/app/[locale]/pozycjonowanie-stron-internetowych/page.js
+similarity index 100%
+rename from app/pozycjonowanie-stron-internetowych/page.js
+rename to app/[locale]/pozycjonowanie-stron-internetowych/page.js
+diff --git a/app/projektowanie-stron-internetowych/page.js b/app/[locale]/projektowanie-stron-internetowych/page.js
+similarity index 100%
+rename from app/projektowanie-stron-internetowych/page.js
+rename to app/[locale]/projektowanie-stron-internetowych/page.js
+diff --git a/app/seo-lokalne-warszawa/page.js b/app/[locale]/seo-lokalne-warszawa/page.js
+similarity index 100%
+rename from app/seo-lokalne-warszawa/page.js
+rename to app/[locale]/seo-lokalne-warszawa/page.js
+diff --git a/app/globals.css b/app/globals.css
+index 685b0c9..a1904e2 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -2240,3 +2240,54 @@ section {
+ .article-content h2[id], .article-content h3[id] {
+   scroll-margin-top: 100px;
+ }
++
++/* Article Content Formatting */
++.article-content {
++  font-size: 1.1rem;
++  line-height: 1.6;
++  color: #515154;
++}
++.article-content p {
++  margin-bottom: 1.5rem;
++}
++.article-content h2 {
++  font-size: 1.75rem;
++  font-weight: 700;
++  color: #1D1D1F;
++  margin-top: 2.5rem;
++  margin-bottom: 1rem;
++  letter-spacing: -0.01em;
++}
++.article-content h3 {
++  font-size: 1.25rem;
++  font-weight: 700;
++  color: #1D1D1F;
++  margin-top: 1.5rem;
++  margin-bottom: 0.5rem;
++}
++.article-content ul, .article-content ol {
++  margin-bottom: 1.5rem;
++  padding-left: 1.5rem;
++}
++.article-content li {
++  margin-bottom: 0.5rem;
++}
++.article-content a {
++  color: #1D1D1F;
++  text-decoration: underline;
++  text-decoration-color: #86868B;
++  text-underline-offset: 3px;
++  font-weight: 500;
++}
++.article-content a:hover {
++  text-decoration-color: #1D1D1F;
++}
++
++.article-content .lead {
++  font-size: 1.4rem;
++  color: #1D1D1F;
++  line-height: 1.5;
++  margin-bottom: 2.5rem;
++  font-weight: 500;
++  letter-spacing: -0.01em;
++}
+diff --git a/components/ArticleTOC.jsx b/components/ArticleTOC.jsx
+index b791324..09fb950 100644
+--- a/components/ArticleTOC.jsx
++++ b/components/ArticleTOC.jsx
+@@ -2,23 +2,7 @@
+ 
+ import { useState, useEffect } from 'react';
+ 
+-const tocItems = [
+-  { id: 'czym-jest', label: 'Czym jest link building B2B i czym różni się od B2C?' },
+-  { id: 'dlaczego-linki', label: 'Dlaczego linki przekładają się na wyniki sprzedaży w B2B?' },
+-  { id: 'rodzaje-linkow', label: 'Jakie rodzaje linków mają największą wartość w B2B?' },
+-  { id: 'strategie', label: 'Skuteczne strategie pozyskiwania linków B2B' },
+-  { id: 'outreach', label: 'Outreach, personalizacja i skalowanie procesu' },
+-  { id: 'jakosc-linku', label: 'Jak ocenić jakość linku przed przyjęciem go do profilu?' },
+-  { id: 'roi', label: 'Jak mierzyć ROI link buildingu B2B' },
+-  { id: 'outsourcing', label: 'Kiedy outsourcować link building i jak wybrać agencję?' },
+-  { id: 'ryzyka', label: 'Jakie ryzyka i błędy najczęściej psują programy link buildingu?' },
+-  { id: 'digital-pr', label: 'Dlaczego digital PR i ekspertyza działają najlepiej w B2B?' },
+-  { id: 'wnioski', label: 'Kluczowe wnioski' },
+-  { id: 'ai-seo-company', label: 'Jak podchodzimy do link buildingu w Ai-seo-company' },
+-  { id: 'wsparcie', label: 'Jak możemy wesprzeć Twój program link buildingu B2B?' },
+-];
+-
+-export default function ArticleTOC() {
++export default function ArticleTOC({ items = [] }) {
+   const [activeId, setActiveId] = useState('');
+   const [isOpen, setIsOpen] = useState(true);
+ 
+@@ -34,13 +18,13 @@ export default function ArticleTOC() {
+       { rootMargin: '-80px 0px -70% 0px', threshold: 0.1 }
+     );
+ 
+-    tocItems.forEach(({ id }) => {
++    items.forEach(({ id }) => {
+       const el = document.getElementById(id);
+       if (el) observer.observe(el);
+     });
+ 
+     return () => observer.disconnect();
+-  }, []);
++  }, [items]);
+ 
+   const scrollTo = (id) => {
+     const el = document.getElementById(id);
+@@ -103,7 +87,7 @@ export default function ArticleTOC() {
+           gap: '0.35rem',
+           counterReset: 'toc',
+         }}>
+-          {tocItems.map(({ id, label }) => (
++          {items.map(({ id, title, label }) => (
+             <li key={id} style={{ counterIncrement: 'toc' }}>
+               <button
+                 onClick={() => scrollTo(id)}
+@@ -123,7 +107,7 @@ export default function ArticleTOC() {
+                   lineHeight: 1.4,
+                 }}
+               >
+-                {label}
++                {title || label}
+               </button>
+             </li>
+           ))}
+diff --git a/components/AudytClient.jsx b/components/AudytClient.jsx
+index 2c41544..dbc045a 100644
+--- a/components/AudytClient.jsx
++++ b/components/AudytClient.jsx
+@@ -1,6 +1,6 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import Header from '@/components/Header';
+ import Footer from '@/components/Footer';
+ import Contact from '@/components/Contact';
+@@ -10,7 +10,7 @@ import SubpagePortfolio from '@/components/service/SubpagePortfolio';
+ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+ 
+ export default function AudytClient({ faqData, portfolioCases, carouselItems }) {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   return (
+     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+diff --git a/components/Blog.jsx b/components/Blog.jsx
+index 3f28b73..2f62571 100644
+--- a/components/Blog.jsx
++++ b/components/Blog.jsx
+@@ -1,13 +1,12 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ import { blogPosts } from '@/lib/blogPosts';
+ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+ 
+ export default function Blog() {
+-  const { lang } = useLanguage();
+-  const t = translations[lang].blog;
++  const lang = useLocale();
++  const t = useTranslations('blog');
+ 
+   // Dynamic sorting algorithm: always top 3 latest posts
+   const posts = [...blogPosts]
+@@ -27,10 +26,10 @@ export default function Blog() {
+       <div className="container">
+         <Reveal className="section-header">
+           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
++            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
+           </div>
+-          <h2>{t.title}</h2>
+-          <p>{t.subtitle}</p>
++          <h2>{t('title')}</h2>
++          <p>{t('subtitle')}</p>
+         </Reveal>
+ 
+         {/* VIS Vertical Timeline Blog Layout (Screenshot 2 & 3) */}
+@@ -49,7 +48,7 @@ export default function Blog() {
+                 <h3>{post.title}</h3>
+                 <p>{post.desc}</p>
+                 <a href={post.slug} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
+-                  {t.btnRead} <span className="sr-only">o {post.title}</span>
++                  {t('btnRead')} <span className="sr-only">o {post.title}</span>
+                 </a>
+               </div>
+             </RevealItem>
+diff --git a/components/BlogGrid.jsx b/components/BlogGrid.jsx
+index d3ccc97..50fc20d 100644
+--- a/components/BlogGrid.jsx
++++ b/components/BlogGrid.jsx
+@@ -1,12 +1,12 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import { blogPosts } from '@/lib/blogPosts';
+ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+ import Link from 'next/link';
+ 
+ export default function BlogGrid() {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   // Sort all posts by date (newest first)
+   const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+diff --git a/components/BlogLibrary.jsx b/components/BlogLibrary.jsx
+index d320bb6..c70e985 100644
+--- a/components/BlogLibrary.jsx
++++ b/components/BlogLibrary.jsx
+@@ -1,12 +1,12 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import { blogPosts } from '@/lib/blogPosts';
+ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+ import Link from 'next/link';
+ 
+ export default function BlogLibrary() {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   // Sort all posts by date (newest first)
+   const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+diff --git a/components/Contact.jsx b/components/Contact.jsx
+index 0db18ea..f20f952 100644
+--- a/components/Contact.jsx
++++ b/components/Contact.jsx
+@@ -1,8 +1,7 @@
+ 'use client';
+ 
+ import { useState } from 'react';
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+ 
+ export default function Contact() {
+@@ -10,8 +9,8 @@ export default function Contact() {
+   const [formSubmitted, setFormSubmitted] = useState(false);
+   const [isSubmitting, setIsSubmitting] = useState(false);
+   const [errorMessage, setErrorMessage] = useState('');
+-  const { lang } = useLanguage();
+-  const t = translations[lang].contact;
++  const lang = useLocale();
++  const t = useTranslations('contact');
+ 
+   const handleSubmit = async (e) => {
+     e.preventDefault();
+@@ -39,7 +38,7 @@ export default function Contact() {
+       const result = await response.json();
+ 
+       if (!response.ok) {
+-        throw new Error(result.error || 'Wystąpił błąd podczas wysyłania.');
++        throw new Error(result('error') || 'Wystąpił błąd podczas wysyłania.');
+       }
+ 
+       setFormSubmitted(true);
+@@ -53,7 +52,7 @@ export default function Contact() {
+         });
+       }
+ 
+-      e.target.reset(); // Clear the form
++      e.target('reset')(); // Clear the form
+       setTimeout(() => setFormSubmitted(false), 8000);
+     } catch (err) {
+       setErrorMessage(err.message);
+@@ -68,10 +67,10 @@ export default function Contact() {
+         <RevealStagger className="contact-box">
+           <RevealItem className="contact-info">
+             <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
++              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
+             </div>
+-            <h2>{t.title}</h2>
+-            <p>{t.subtitle}</p>
++            <h2>{t('title')}</h2>
++            <p>{t('subtitle')}</p>
+             
+             <ul className="company-details">
+               <li><strong>{lang === 'pl' ? 'Adres:' : 'Address:'}</strong> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
+@@ -96,17 +95,17 @@ export default function Contact() {
+             )}
+ 
+             <div className="form-group">
+-              <label className="form-label" htmlFor="name">{t.nameLabel}</label>
++              <label className="form-label" htmlFor="name">{t('nameLabel')}</label>
+               <input type="text" id="name" name="name" className="form-input" placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'} required />
+             </div>
+ 
+             <div className="form-group">
+-              <label className="form-label" htmlFor="email">{t.emailLabel}</label>
++              <label className="form-label" htmlFor="email">{t('emailLabel')}</label>
+               <input type="email" id="email" name="email" className="form-input" placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'} required />
+             </div>
+ 
+             <div className="form-group">
+-              <label className="form-label" htmlFor="service">{t.serviceLabel}</label>
++              <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
+               <select id="service" name="service" className="form-select" required>
+                 <option value="">{lang === 'pl' ? 'Wybierz pakiet...' : 'Select plan...'}</option>
+                 <option value="standard">{lang === 'pl' ? 'SEO Standard (1 900 zł netto/mies.)' : 'SEO Standard (€450 net/mo)'}</option>
+@@ -120,7 +119,7 @@ export default function Contact() {
+             </div>
+ 
+             <div className="form-group">
+-              <label className="form-label" htmlFor="message">{t.msgLabel}</label>
++              <label className="form-label" htmlFor="message">{t('msgLabel')}</label>
+               <textarea 
+                 id="message" 
+                 name="message" 
+@@ -132,7 +131,7 @@ export default function Contact() {
+             </div>
+ 
+             <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }} disabled={isSubmitting}>
+-              {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t.btnSend}
++              {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t('btnSend')}
+             </button>
+             </form>
+           </RevealItem>
+diff --git a/components/CookiesBanner.jsx b/components/CookiesBanner.jsx
+index fdfc1e1..65e0aed 100644
+--- a/components/CookiesBanner.jsx
++++ b/components/CookiesBanner.jsx
+@@ -1,8 +1,7 @@
+ 'use client';
+ 
+ import { useState, useEffect } from 'react';
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ import Link from 'next/link';
+ import { motion, AnimatePresence } from 'framer-motion';
+ 
+@@ -10,8 +9,8 @@ export default function CookiesBanner() {
+   const [isVisible, setIsVisible] = useState(false);
+   const [showManageModal, setShowManageModal] = useState(false);
+   const [mounted, setMounted] = useState(false);
+-  const { lang } = useLanguage();
+-  const t = translations[lang]?.cookies;
++  const lang = useLocale();
++  const t = useTranslations('cookies');
+ 
+   const [consentState, setConsentState] = useState({
+     essential: true,
+@@ -56,8 +55,8 @@ export default function CookiesBanner() {
+       {!isVisible && !showManageModal && (
+         <button
+           onClick={() => setShowManageModal(true)}
+-          title={t.manage}
+-          aria-label={t.manage}
++          title={t('manage')}
++          aria-label={t('manage')}
+           style={{
+             position: 'fixed',
+             bottom: '1.25rem',
+@@ -79,15 +78,15 @@ export default function CookiesBanner() {
+             transition: 'all 0.3s ease'
+           }}
+           onMouseOver={(e) => {
+-            e.currentTarget.style.background = '#0F172A';
+-            e.currentTarget.style.transform = 'translateY(-2px)';
++            e.currentTarget('style').background = '#0F172A';
++            e.currentTarget('style').transform = 'translateY(-2px)';
+           }}
+           onMouseOut={(e) => {
+-            e.currentTarget.style.background = 'rgba(15, 23, 42, 0.88)';
+-            e.currentTarget.style.transform = 'translateY(0)';
++            e.currentTarget('style').background = 'rgba(15, 23, 42, 0.88)';
++            e.currentTarget('style').transform = 'translateY(0)';
+           }}
+         >
+-          <span>🍪</span> {t.title.split(' ')[0]}
++          <span>🍪</span> {t('title').split(' ')[0]}
+         </button>
+       )}
+ 
+@@ -122,12 +121,12 @@ export default function CookiesBanner() {
+           >
+             <div>
+               <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', marginBottom: '0.35rem' }}>
+-                {t.title}
++                {t('title')}
+               </div>
+               <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.55, color: '#E2E8F0', fontWeight: 400 }}>
+-                {t.text}{' '}
++                {t('text')}{' '}
+                 <Link href="/cookies" style={{ color: '#38BDF8', textDecoration: 'underline', fontWeight: 500 }}>
+-                  {t.policy}
++                  {t('policy')}
+                 </Link>
+               </p>
+             </div>
+@@ -150,13 +149,13 @@ export default function CookiesBanner() {
+                   transition: 'all 0.25s ease'
+                 }}
+                 onMouseOver={(e) => {
+-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
++                  e.currentTarget('style').background = 'rgba(255, 255, 255, 0.2)';
+                 }}
+                 onMouseOut={(e) => {
+-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
++                  e.currentTarget('style').background = 'rgba(255, 255, 255, 0.1)';
+                 }}
+               >
+-                {t.declineAll}
++                {t('declineAll')}
+               </button>
+ 
+               <button 
+@@ -176,13 +175,13 @@ export default function CookiesBanner() {
+                   transition: 'all 0.25s ease'
+                 }}
+                 onMouseOver={(e) => {
+-                  e.currentTarget.style.background = '#144e88';
++                  e.currentTarget('style').background = '#144e88';
+                 }}
+                 onMouseOut={(e) => {
+-                  e.currentTarget.style.background = 'var(--color-primary)';
++                  e.currentTarget('style').background = 'var(--color-primary)';
+                 }}
+               >
+-                {t.acceptAll}
++                {t('acceptAll')}
+               </button>
+ 
+               <button
+@@ -198,10 +197,10 @@ export default function CookiesBanner() {
+                   textDecoration: 'underline',
+                   transition: 'color 0.25s ease'
+                 }}
+-                onMouseOver={(e) => e.currentTarget.style.color = '#FFF'}
+-                onMouseOut={(e) => e.currentTarget.style.color = '#94A3B8'}
++                onMouseOver={(e) => e.currentTarget('style').color = '#FFF'}
++                onMouseOut={(e) => e.currentTarget('style').color = '#94A3B8'}
+               >
+-                {t.manage}
++                {t('manage')}
+               </button>
+             </div>
+           </motion.div>
+@@ -243,7 +242,7 @@ export default function CookiesBanner() {
+             >
+               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: '#0F172A' }}>
+-                  {t.manage}
++                  {t('manage')}
+                 </h3>
+                 <button 
+                   onClick={() => setShowManageModal(false)} 
+@@ -254,51 +253,51 @@ export default function CookiesBanner() {
+               </div>
+ 
+               <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: 1.5, marginBottom: '1.5rem' }}>
+-                {t.text}
++                {t('text')}
+               </p>
+ 
+               {/* Category 1: Essential */}
+               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
+                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t.essentialTitle}</strong>
++                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('essentialTitle')}</strong>
+                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#059669', background: '#D1FAE5', padding: '0.2rem 0.6rem', borderRadius: '9999px' }}>
+                     {lang === 'pl' ? 'Wymagane' : 'Always Active'}
+                   </span>
+                 </div>
+                 <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
+-                  {t.essentialDesc}
++                  {t('essentialDesc')}
+                 </p>
+               </div>
+ 
+               {/* Category 2: Analytics */}
+               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
+                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t.analyticsTitle}</strong>
++                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('analyticsTitle')}</strong>
+                   <input
+                     type="checkbox"
+                     checked={consentState.analytics}
+-                    onChange={(e) => setConsentState({ ...consentState, analytics: e.target.checked })}
++                    onChange={(e) => setConsentState({ ...consentState, analytics: e.target('checked') })}
+                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
+                   />
+                 </div>
+                 <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
+-                  {t.analyticsDesc}
++                  {t('analyticsDesc')}
+                 </p>
+               </div>
+ 
+               {/* Category 3: Marketing */}
+               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1.75rem', border: '1px solid #E2E8F0' }}>
+                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t.marketingTitle}</strong>
++                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('marketingTitle')}</strong>
+                   <input
+                     type="checkbox"
+                     checked={consentState.marketing}
+-                    onChange={(e) => setConsentState({ ...consentState, marketing: e.target.checked })}
++                    onChange={(e) => setConsentState({ ...consentState, marketing: e.target('checked') })}
+                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
+                   />
+                 </div>
+                 <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748B', lineHeight: 1.45 }}>
+-                  {t.marketingDesc}
++                  {t('marketingDesc')}
+                 </p>
+               </div>
+ 
+@@ -318,7 +317,7 @@ export default function CookiesBanner() {
+                     cursor: 'pointer'
+                   }}
+                 >
+-                  {t.save}
++                  {t('save')}
+                 </button>
+               </div>
+             </motion.div>
+diff --git a/components/Footer.jsx b/components/Footer.jsx
+index b9c8dc5..19f0c8d 100644
+--- a/components/Footer.jsx
++++ b/components/Footer.jsx
+@@ -1,12 +1,11 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ 
+ export default function Footer() {
+-  const { lang } = useLanguage();
+-  const t = translations[lang].footer;
+-  const nav = translations[lang].nav;
++  const lang = useLocale();
++  const navT = useTranslations('nav');
++  const t = useTranslations('footer');
+ 
+   return (
+     <>
+@@ -23,7 +22,7 @@ export default function Footer() {
+                 AI SEO COMPANY
+               </a>
+               <p style={{ fontSize: '0.9rem', maxWidth: '320px', color: '#94A3B8' }}>
+-                {t.desc}
++                {t('desc')}
+               </p>
+             </div>
+             <div className="footer-col">
+@@ -32,7 +31,7 @@ export default function Footer() {
+                 <li><a href="/o-nas">{lang === 'pl' ? 'O nas (E-E-A-T)' : 'About Us'}</a></li>
+                 <li><a href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron' : 'SEO Services'}</a></li>
+                 <li><a href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a></li>
+-                <li><a href="/cennik-pozycjonowania">{nav.pricing}</a></li>
++                <li><a href="/cennik-pozycjonowania">{navT('pricing')}</a></li>
+                 <li><a href="/blog">Blog SEO</a></li>
+               </ul>
+             </div>
+@@ -55,7 +54,7 @@ export default function Footer() {
+             </div>
+           </div>
+           <div className="footer-bottom">
+-            <p>{t.rights}</p>
++            <p>{t('rights')}</p>
+           </div>
+         </div>
+       </footer>
+diff --git a/components/Header.jsx b/components/Header.jsx
+index 53dff2e..590b775 100644
+--- a/components/Header.jsx
++++ b/components/Header.jsx
+@@ -1,16 +1,27 @@
+ 'use client';
+ 
+ import { useState, useEffect } from 'react';
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
++import { usePathname, useRouter } from 'next/navigation';
+ 
+ export default function Header() {
+   const [scrolled, setScrolled] = useState(false);
+   const [menuOpen, setMenuOpen] = useState(false);
+   const [menuExpanded, setMenuExpanded] = useState(false);
+   const [triggerPos, setTriggerPos] = useState({ x: 0, y: 0 });
+-  const { lang, toggleLang } = useLanguage();
+-  const t = translations[lang].nav;
++  const lang = useLocale();
++  const t = useTranslations('nav');
++  const pathname = usePathname();
++  const router = useRouter();
++
++  const toggleLang = (newLocale) => {
++    if (lang === newLocale) return;
++    if (pathname.startsWith(`/${lang}`)) {
++      router.push(pathname.replace(`/${lang}`, `/${newLocale}`));
++    } else {
++      router.push(`/${newLocale}${pathname}`);
++    }
++  };
+ 
+   useEffect(() => {
+     const isSubpage = typeof window !== 'undefined' && window.location.pathname !== '/';
+@@ -26,10 +37,10 @@ export default function Header() {
+     if (menuOpen) {
+       closeMenu();
+     } else {
+-      const rect = e.currentTarget.getBoundingClientRect();
++      const rect = e.currentTarget('getBoundingClientRect')();
+       // Ensure we get valid coordinates, default to top right if something fails
+-      const x = rect.left > 0 ? rect.left + rect.width / 2 : window.innerWidth - 40;
+-      const y = rect.top > 0 ? rect.top + rect.height / 2 : 40;
++      const x = rect('left') > 0 ? rect('left') + rect('width') / 2 : window.innerWidth - 40;
++      const y = rect('top') > 0 ? rect('top') + rect('height') / 2 : 40;
+       
+       setTriggerPos({ x, y });
+       setMenuOpen(true);
+@@ -63,7 +74,7 @@ export default function Header() {
+           }}
+         >
+           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+-            <a href="/" className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
++            <a href={`/${lang}/`} className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+               <span className="sr-only">Strona główna AI SEO COMPANY</span>
+               <svg 
+                 xmlns="http://www.w3.org/2000/svg" 
+@@ -144,7 +155,7 @@ export default function Header() {
+               color: scrolled ? '#FFFFFF' : '#000000',
+               transition: 'all 0.7s ease'
+             }}>
+-              {t.cta}
++              {t('cta')}
+             </a>
+ 
+             {/* KOTA Circular Menu Toggle Trigger */}
+@@ -212,37 +223,37 @@ export default function Header() {
+           >
+             <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
+               <li style={{ '--delay': '0.1s' }}>
+-                <a href="/#why-us" onClick={closeMenu}>{t.results}</a>
++                <a href={`/${lang}#why-us`} onClick={closeMenu}>{t('results')}</a>
+               </li>
+               <li style={{ '--delay': '0.15s' }}>
+-                <a href="/#uslugi" onClick={closeMenu}>{t.services}</a>
++                <a href={`/${lang}#uslugi`} onClick={closeMenu}>{t('services')}</a>
+               </li>
+               <li style={{ '--delay': '0.2s' }}>
+-                <a href="/cennik-pozycjonowania" onClick={closeMenu}>{t.pricing}</a>
++                <a href={`/${lang}/cennik-pozycjonowania`} onClick={closeMenu}>{t('pricing')}</a>
+               </li>
+               <li style={{ '--delay': '0.25s' }}>
+-                <a href="/#portfolio" onClick={closeMenu}>{t.process}</a>
++                <a href={`/${lang}#portfolio`} onClick={closeMenu}>{t('process')}</a>
+               </li>
+               <li style={{ '--delay': '0.3s' }}>
+-                <a href="/audyt-seo" onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a>
++                <a href={`/${lang}/audyt-seo`} onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a>
+               </li>
+               <li style={{ '--delay': '0.35s' }}>
+-                <a href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</a>
++                <a href={`/${lang}/pozycjonowanie-stron-internetowych`} onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</a>
+               </li>
+               <li style={{ '--delay': '0.4s' }}>
+-                <a href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</a>
++                <a href={`/${lang}/projektowanie-stron-internetowych`} onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</a>
+               </li>
+               <li style={{ '--delay': '0.45s' }}>
+-                <a href="/blog" onClick={closeMenu}>{t.blog}</a>
++                <a href={`/${lang}/blog`} onClick={closeMenu}>{t('blog')}</a>
+               </li>
+               <li style={{ '--delay': '0.5s' }}>
+-                <a href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
++                <a href={`/${lang}/o-nas`} onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
+               </li>
+               <li style={{ '--delay': '0.55s' }}>
+-                <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
++                <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
+               </li>
+               <li style={{ '--delay': '0.6s' }}>
+-                <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
++                <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Get Free Quote'}</a>
+               </li>
+             </ul>
+ 
+diff --git a/components/Hero.jsx b/components/Hero.jsx
+index 7727c25..b79fcea 100644
+--- a/components/Hero.jsx
++++ b/components/Hero.jsx
+@@ -1,12 +1,11 @@
+ 'use client';
+ 
+ import { motion } from 'framer-motion';
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ 
+ export default function Hero() {
+-  const { lang } = useLanguage();
+-  const t = translations[lang].hero;
++  const lang = useLocale();
++  const t = useTranslations('hero');
+ 
+   return (
+     <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+@@ -60,7 +59,7 @@ export default function Hero() {
+             </span>
+             
+             <motion.img 
+-              src="/hero-text.svg" 
++              src="/hero-text('svg')" 
+               alt="Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż" 
+               style={{ 
+                 width: '100%', 
+diff --git a/components/Portfolio.jsx b/components/Portfolio.jsx
+index 1ea11b6..dfb1737 100644
+--- a/components/Portfolio.jsx
++++ b/components/Portfolio.jsx
+@@ -3,8 +3,7 @@
+ import { useState, useEffect } from 'react';
+ import Image from 'next/image';
+ import { motion } from 'framer-motion';
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+ 
+ const realizedWebsites = [
+@@ -95,7 +94,7 @@ export default function Portfolio() {
+   const [activeIndex, setActiveIndex] = useState(0);
+   const [isAutoplay, setIsAutoplay] = useState(true);
+   const [activeModal, setActiveModal] = useState(null);
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   const handleScroll = (e) => {
+     const container = e.target;
+@@ -103,14 +102,14 @@ export default function Portfolio() {
+     if (!cards || !cards.length) return;
+ 
+     const containerRect = container.getBoundingClientRect();
+-    const containerCenterX = containerRect.left + containerRect.width / 2;
++    const containerCenterX = containerRect('left') + containerRect('width') / 2;
+ 
+     let closestIndex = 0;
+     let minDistance = Infinity;
+ 
+     cards.forEach((card, idx) => {
+       const cardRect = card.getBoundingClientRect();
+-      const cardCenterX = cardRect.left + cardRect.width / 2;
++      const cardCenterX = cardRect('left') + cardRect('width') / 2;
+       const distance = Math.abs(containerCenterX - cardCenterX);
+       if (distance < minDistance) {
+         minDistance = distance;
+@@ -122,13 +121,13 @@ export default function Portfolio() {
+   };
+ 
+   const scrollTo = (index) => {
+-    const container = document.getElementById('apple-carousel');
++    const container = document('getElementById')('apple-carousel');
+     if (container) {
+       const cards = container.querySelectorAll('.apple-card');
+       if (cards[index]) {
+         const containerRect = container.getBoundingClientRect();
+         const cardRect = cards[index].getBoundingClientRect();
+-        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
++        const scrollOffset = cardRect('left') - containerRect('left') + container.scrollLeft - (containerRect('width') - cardRect('width')) / 2;
+         container.scrollTo({
+           left: scrollOffset,
+           behavior: 'smooth'
+diff --git a/components/PozycjonowanieClient.jsx b/components/PozycjonowanieClient.jsx
+index d73f658..735fce0 100644
+--- a/components/PozycjonowanieClient.jsx
++++ b/components/PozycjonowanieClient.jsx
+@@ -1,6 +1,6 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import Header from '@/components/Header';
+ import Footer from '@/components/Footer';
+ import Contact from '@/components/Contact';
+@@ -11,7 +11,7 @@ import SubpagePortfolio from '@/components/service/SubpagePortfolio';
+ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+ 
+ export default function PozycjonowanieClient({ faqData, portfolioCases, carouselItems }) {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   return (
+     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+diff --git a/components/Pricing.jsx b/components/Pricing.jsx
+index 31839bb..8f7469d 100644
+--- a/components/Pricing.jsx
++++ b/components/Pricing.jsx
+@@ -1,22 +1,21 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+ 
+ export default function Pricing() {
+-  const { lang } = useLanguage();
+-  const t = translations[lang].pricing;
++  const lang = useLocale();
++  const t = useTranslations('pricing');
+ 
+   return (
+     <section className="pricing" id="cennik">
+       <div className="container">
+         <Reveal className="section-header">
+           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
++            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
+           </div>
+-          <h2>{t.title}</h2>
+-          <p>{t.subtitle}</p>
++          <h2>{t('title')}</h2>
++          <p>{t('subtitle')}</p>
+           <div style={{ marginTop: '1rem', display: 'inline-block', background: 'rgba(29, 29, 31, 0.05)', color: '#1D1D1F', padding: '0.5rem 1.2rem', borderRadius: '999px', fontSize: '0.9rem', fontWeight: 600 }}>
+             {lang === 'pl' ? '✓ SEO Lokalne & Mapy Google w cenie każdego pakietu' : '✓ Local SEO & Google Maps included in all plans'}
+           </div>
+@@ -26,11 +25,11 @@ export default function Pricing() {
+           {/* Package 1 */}
+           <RevealItem className="pricing-card">
+             <div className="pricing-header">
+-              <h3>{t.standardTitle}</h3>
+-              <p className="pricing-desc">{t.standardDesc}</p>
++              <h3>{t('standardTitle')}</h3>
++              <p className="pricing-desc">{t('standardDesc')}</p>
+               <div className="pricing-price">
+                 <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
+-                <div className="price-amount">{t.standardPrice} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t.standardPeriod}</span></div>
++                <div className="price-amount">{t('standardPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('standardPeriod')}</span></div>
+               </div>
+             </div>
+             <ul className="pricing-features">
+@@ -52,17 +51,17 @@ export default function Pricing() {
+                 </>
+               )}
+             </ul>
+-            <a href="#kontakt" className="btn btn-secondary">{t.btnChoose} <span className="sr-only"> {t.standardTitle}</span></a>
++            <a href="#kontakt" className="btn btn-secondary">{t('btnChoose')} <span className="sr-only"> {t('standardTitle')}</span></a>
+           </RevealItem>
+ 
+           {/* Package 2 */}
+           <RevealItem className="pricing-card">
+             <div className="pricing-header">
+-              <h3>{t.premiumTitle}</h3>
+-              <p className="pricing-desc">{t.premiumDesc}</p>
++              <h3>{t('premiumTitle')}</h3>
++              <p className="pricing-desc">{t('premiumDesc')}</p>
+               <div className="pricing-price">
+                 <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
+-                <div className="price-amount">{t.premiumPrice} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t.premiumPeriod}</span></div>
++                <div className="price-amount">{t('premiumPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('premiumPeriod')}</span></div>
+               </div>
+             </div>
+             <ul className="pricing-features">
+@@ -84,22 +83,22 @@ export default function Pricing() {
+                 </>
+               )}
+             </ul>
+-            <a href="#kontakt" className="btn btn-secondary">{t.btnChoose} <span className="sr-only"> {t.premiumTitle}</span></a>
++            <a href="#kontakt" className="btn btn-secondary">{t('btnChoose')} <span className="sr-only"> {t('premiumTitle')}</span></a>
+           </RevealItem>
+ 
+           {/* Package 3 (Featured Booster Pack) */}
+           <RevealItem className="pricing-card featured">
+             <span className="pricing-featured-badge">{lang === 'pl' ? 'NAJPOPULARNIEJSZY PAKIET' : 'MOST POPULAR PACK'}</span>
+             <div className="pricing-header">
+-              <h3>{t.boosterTitle}</h3>
+-              <p className="pricing-desc">{t.boosterDesc}</p>
++              <h3>{t('boosterTitle')}</h3>
++              <p className="pricing-desc">{t('boosterDesc')}</p>
+               <div className="pricing-price">
+                 <div className="price-label" style={{ color: 'var(--color-cta)', fontWeight: '700' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące' : 'Min. 3-month contract'}</div>
+-                <div className="price-amount">{t.boosterPrice} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t.boosterPeriod}</span></div>
++                <div className="price-amount">{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
+               </div>
+             </div>
+             <ul className="pricing-features">
+-              <li><strong style={{ color: 'var(--color-growth)' }}>{t.boosterBadge}</strong></li>
++              <li><strong style={{ color: 'var(--color-growth)' }}>{t('boosterBadge')}</strong></li>
+               {lang === 'pl' ? (
+                 <>
+                   <li>Indywidualny projekt graficzny UX/UI (RWD)</li>
+@@ -118,12 +117,12 @@ export default function Pricing() {
+                 </>
+               )}
+             </ul>
+-            <a href="#kontakt" className="btn btn-primary btn-glow" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: '600' }}>{t.btnChoose} <span className="sr-only"> {t.boosterTitle}</span></a>
++            <a href="#kontakt" className="btn btn-primary btn-glow" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: '600' }}>{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
+           </RevealItem>
+         </RevealStagger>
+ 
+         <Reveal className="pricing-note">
+-          {t.note}
++          {t('note')}
+         </Reveal>
+       </div>
+     </section>
+diff --git a/components/PricingClient.jsx b/components/PricingClient.jsx
+index 889e69d..2479a0e 100644
+--- a/components/PricingClient.jsx
++++ b/components/PricingClient.jsx
+@@ -6,10 +6,10 @@ import Pricing from '@/components/Pricing';
+ import Contact from '@/components/Contact';
+ import AppleFaq from '@/components/service/AppleFaq';
+ import { Reveal } from '@/components/ScrollReveal';
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ 
+ export default function PricingClient() {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   const faqData = [
+     {
+diff --git a/components/Process.jsx b/components/Process.jsx
+index b5a8363..a680400 100644
+--- a/components/Process.jsx
++++ b/components/Process.jsx
+@@ -2,16 +2,15 @@
+ 
+ import { useState, useEffect, useRef } from 'react';
+ import { motion, AnimatePresence } from 'framer-motion';
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ 
+ export default function Process() {
+   const [activeTab, setActiveTab] = useState(0);
+   const [activeStep, setActiveStep] = useState(3); // Default step 4 (UX & UI Design)
+   const [rotation, setRotation] = useState(0);
+   const sectionRef = useRef(null);
+-  const { lang } = useLanguage();
+-  const t = translations[lang].process;
++  const lang = useLocale();
++  const t = useTranslations('process');
+ 
+   const tabs = lang === 'pl' ? [
+     'Najpierw strategia. Zawsze.',
+@@ -46,10 +45,10 @@ export default function Process() {
+   useEffect(() => {
+     const handleScroll = () => {
+       if (!sectionRef.current) return;
+-      const rect = sectionRef.current.getBoundingClientRect();
++      const rect = sectionRef.current('getBoundingClientRect')();
+       const windowHeight = window.innerHeight;
+-      const totalDistance = windowHeight + rect.height;
+-      const currentPos = windowHeight - rect.top;
++      const totalDistance = windowHeight + rect('height');
++      const currentPos = windowHeight - rect('top');
+       const progress = Math.min(Math.max(currentPos / totalDistance, 0), 1);
+       
+       setRotation(progress * 240);
+@@ -65,10 +64,10 @@ export default function Process() {
+       <div className="container">
+         <div className="section-header center">
+           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
++            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
+           </div>
+-          <h2>{t.title}</h2>
+-          <p>{t.subtitle}</p>
++          <h2>{t('title')}</h2>
++          <p>{t('subtitle')}</p>
+         </div>
+ 
+         {/* KOTA Framework Tabs */}
+diff --git a/components/ProjektowanieClient.jsx b/components/ProjektowanieClient.jsx
+index 108b325..64c388b 100644
+--- a/components/ProjektowanieClient.jsx
++++ b/components/ProjektowanieClient.jsx
+@@ -1,6 +1,6 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import Header from '@/components/Header';
+ import Footer from '@/components/Footer';
+ import Contact from '@/components/Contact';
+@@ -11,7 +11,7 @@ import SubpagePortfolio from '@/components/service/SubpagePortfolio';
+ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+ 
+ export default function ProjektowanieClient({ faqData, portfolioCases, carouselItems }) {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   return (
+     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+diff --git a/components/Results.jsx b/components/Results.jsx
+index d16dd51..00a0b95 100644
+--- a/components/Results.jsx
++++ b/components/Results.jsx
+@@ -1,10 +1,10 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal } from './ScrollReveal';
+ 
+ export default function Results() {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   return (
+     <section className="results" id="wyniki">
+diff --git a/components/Services.jsx b/components/Services.jsx
+index b69abca..c3b48e5 100644
+--- a/components/Services.jsx
++++ b/components/Services.jsx
+@@ -1,24 +1,28 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+ 
+ export default function Services() {
+-  const { lang } = useLanguage();
+-  const t = translations[lang].services;
++  const lang = useLocale();
++  const t = useTranslations('services');
+ 
+-  const pillars = t.pillars;
++  const pillarsCount = 3;
++  const pillars = Array.from({ length: pillarsCount }).map((_, i) => ({
++    num: t(`pillars.${i}.num`),
++    title: t(`pillars.${i}.title`),
++    desc: t(`pillars.${i}.desc`)
++  }));
+ 
+   return (
+     <section className="services" id="uslugi">
+       <div className="container">
+         <Reveal className="section-header">
+           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
+-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
++            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
+           </div>
+-          <h2>{t.title}</h2>
+-          <p>{t.subtitle}</p>
++          <h2>{t('title')}</h2>
++          <p>{t('subtitle')}</p>
+         </Reveal>
+ 
+         {/* KOTA 3 Pillars Row (Screenshot 1) */}
+@@ -78,13 +82,13 @@ export default function Services() {
+               {lang === 'pl' ? (
+                 <>
+                   <li>Makiety UX/UI w Figma</li>
+-                  <li>Programowanie (Next.js & React)</li>
++                  <li>Programowanie (Next('js') & React)</li>
+                   <li>Integracje z CRM i systemami płatności</li>
+                 </>
+               ) : (
+                 <>
+                   <li>UX/UI Wireframes in Figma</li>
+-                  <li>Development (Next.js & React)</li>
++                  <li>Development (Next('js') & React)</li>
+                   <li>CRM & payment system integrations</li>
+                 </>
+               )}
+diff --git a/components/TableOfContents.jsx b/components/TableOfContents.jsx
+deleted file mode 100644
+index 13eb61c..0000000
+--- a/components/TableOfContents.jsx
++++ /dev/null
+@@ -1,27 +0,0 @@
+-'use client';
+-
+-import React from 'react';
+-
+-export default function TableOfContents({ items }) {
+-  if (!items || items.length === 0) return null;
+-
+-  return (
+-    <div style={{ margin: '3rem 0', padding: '2rem', backgroundColor: '#F5F5F7', borderRadius: '20px' }}>
+-      <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1rem', color: '#1D1D1F' }}>Spis treści</h3>
+-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+-        {items.map((item, index) => (
+-          <li key={index}>
+-            <a 
+-              href={`#${item.id}`} 
+-              style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500, transition: 'color 0.2s' }}
+-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-cta)'}
+-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+-            >
+-              {index + 1}. {item.title}
+-            </a>
+-          </li>
+-        ))}
+-      </ul>
+-    </div>
+-  );
+-}
+diff --git a/components/Testimonials.jsx b/components/Testimonials.jsx
+index 3aaad9f..537cabb 100644
+--- a/components/Testimonials.jsx
++++ b/components/Testimonials.jsx
+@@ -2,8 +2,7 @@
+ 
+ import { useState, useRef } from 'react';
+ import Image from 'next/image';
+-import { useLanguage } from '@/lib/LanguageContext';
+-import { translations } from '@/lib/translations';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+ 
+ const reviewsData = [
+@@ -105,18 +104,18 @@ const reviewsData = [
+ export default function Testimonials() {
+   const [expandedIndex, setExpandedIndex] = useState(null);
+   const carouselRef = useRef(null);
+-  const { lang } = useLanguage();
+-  const t = translations[lang].testimonials;
++  const lang = useLocale();
++  const t = useTranslations('testimonials');
+ 
+   const scrollPrev = () => {
+     if (carouselRef.current) {
+-      carouselRef.current.scrollBy({ left: -400, behavior: 'smooth' });
++      carouselRef.current('scrollBy')({ left: -400, behavior: 'smooth' });
+     }
+   };
+ 
+   const scrollNext = () => {
+     if (carouselRef.current) {
+-      carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' });
++      carouselRef.current('scrollBy')({ left: 400, behavior: 'smooth' });
+     }
+   };
+ 
+@@ -127,7 +126,7 @@ export default function Testimonials() {
+           <div style={{ position: 'relative', marginBottom: '3.5rem', width: '100%' }}>
+             <div className="section-header center" style={{ textAlign: 'center', maxWidth: '840px', marginInline: 'auto' }}>
+               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
+-                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
++                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
+               </div>
+               <h2 style={{ 
+                 fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
+@@ -162,8 +161,8 @@ export default function Testimonials() {
+                   cursor: 'pointer',
+                   transition: 'all 0.2s ease'
+                 }}
+-                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
++                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
++                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
+                 aria-label="Previous"
+               >
+                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+@@ -185,8 +184,8 @@ export default function Testimonials() {
+                   cursor: 'pointer',
+                   transition: 'all 0.2s ease'
+                 }}
+-                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
++                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
++                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
+                 aria-label="Next"
+               >
+                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+diff --git a/components/TrustBar.jsx b/components/TrustBar.jsx
+index 63a5f04..2f74cc4 100644
+--- a/components/TrustBar.jsx
++++ b/components/TrustBar.jsx
+@@ -1,9 +1,9 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ 
+ export default function TrustBar() {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+   const partners = [
+     { 
+       name: 'STANIAX', 
+diff --git a/components/WhyUs.jsx b/components/WhyUs.jsx
+index b7a96ae..29e068c 100644
+--- a/components/WhyUs.jsx
++++ b/components/WhyUs.jsx
+@@ -2,7 +2,7 @@
+ 
+ import { useState, useRef, useEffect } from 'react';
+ import { motion } from 'framer-motion';
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+ 
+ function CountUpMetric({ value }) {
+@@ -55,7 +55,7 @@ function CountUpMetric({ value }) {
+ export default function WhyUs() {
+   const [activeIndex, setActiveIndex] = useState(0);
+   const [isAutoplay, setIsAutoplay] = useState(true);
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   const whyUsCards = [
+     {
+@@ -129,14 +129,14 @@ export default function WhyUs() {
+     }
+ 
+     const containerRect = container.getBoundingClientRect();
+-    const containerCenterX = containerRect.left + containerRect.width / 2;
++    const containerCenterX = containerRect('left') + containerRect('width') / 2;
+ 
+     let closestIndex = 0;
+     let minDistance = Infinity;
+ 
+     cards.forEach((card, idx) => {
+       const cardRect = card.getBoundingClientRect();
+-      const cardCenterX = cardRect.left + cardRect.width / 2;
++      const cardCenterX = cardRect('left') + cardRect('width') / 2;
+       const distance = Math.abs(containerCenterX - cardCenterX);
+       if (distance < minDistance) {
+         minDistance = distance;
+@@ -148,13 +148,13 @@ export default function WhyUs() {
+   };
+ 
+   const scrollTo = (index) => {
+-    const container = document.getElementById('whyus-carousel');
++    const container = document('getElementById')('whyus-carousel');
+     if (container) {
+       const cards = container.querySelectorAll('.whyus-card-item');
+       if (cards[index]) {
+         const containerRect = container.getBoundingClientRect();
+         const cardRect = cards[index].getBoundingClientRect();
+-        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
++        const scrollOffset = cardRect('left') - containerRect('left') + container.scrollLeft - (containerRect('width') - cardRect('width')) / 2;
+         container.scrollTo({
+           left: scrollOffset,
+           behavior: 'smooth'
+diff --git a/components/about/AboutMethodology.jsx b/components/about/AboutMethodology.jsx
+index e472ade..bf5f411 100644
+--- a/components/about/AboutMethodology.jsx
++++ b/components/about/AboutMethodology.jsx
+@@ -3,7 +3,7 @@
+ import { useState, useEffect } from 'react';
+ import Image from 'next/image';
+ import { motion } from 'framer-motion';
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
+ 
+ const methodologyStages = [
+@@ -56,7 +56,7 @@ const methodologyStages = [
+ export default function AboutMethodology() {
+   const [activeIndex, setActiveIndex] = useState(0);
+   const [isAutoplay, setIsAutoplay] = useState(true);
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   const handleScroll = (e) => {
+     const container = e.target;
+@@ -64,14 +64,14 @@ export default function AboutMethodology() {
+     if (!cards || !cards.length) return;
+ 
+     const containerRect = container.getBoundingClientRect();
+-    const containerCenterX = containerRect.left + containerRect.width / 2;
++    const containerCenterX = containerRect('left') + containerRect('width') / 2;
+ 
+     let closestIndex = 0;
+     let minDistance = Infinity;
+ 
+     cards.forEach((card, idx) => {
+       const cardRect = card.getBoundingClientRect();
+-      const cardCenterX = cardRect.left + cardRect.width / 2;
++      const cardCenterX = cardRect('left') + cardRect('width') / 2;
+       const distance = Math.abs(containerCenterX - cardCenterX);
+       if (distance < minDistance) {
+         minDistance = distance;
+@@ -83,13 +83,13 @@ export default function AboutMethodology() {
+   };
+ 
+   const scrollTo = (index) => {
+-    const container = document.getElementById('about-methodology-carousel');
++    const container = document('getElementById')('about-methodology-carousel');
+     if (container) {
+       const cards = container.querySelectorAll('.apple-card');
+       if (cards[index]) {
+         const containerRect = container.getBoundingClientRect();
+         const cardRect = cards[index].getBoundingClientRect();
+-        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
++        const scrollOffset = cardRect('left') - containerRect('left') + container.scrollLeft - (containerRect('width') - cardRect('width')) / 2;
+         container.scrollTo({
+           left: scrollOffset,
+           behavior: 'smooth'
+diff --git a/components/about/AboutMission.jsx b/components/about/AboutMission.jsx
+index 0dc2b89..97262b4 100644
+--- a/components/about/AboutMission.jsx
++++ b/components/about/AboutMission.jsx
+@@ -2,7 +2,7 @@
+ 
+ import { useState, useRef, useEffect } from 'react';
+ import { motion } from 'framer-motion';
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
+ 
+ function CountUpMetric({ value }) {
+@@ -55,7 +55,7 @@ function CountUpMetric({ value }) {
+ export default function AboutMission() {
+   const [activeIndex, setActiveIndex] = useState(0);
+   const [isAutoplay, setIsAutoplay] = useState(true);
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   const aboutCards = [
+     {
+@@ -116,14 +116,14 @@ export default function AboutMission() {
+     if (!cards || !cards.length) return;
+ 
+     const containerRect = container.getBoundingClientRect();
+-    const containerCenterX = containerRect.left + containerRect.width / 2;
++    const containerCenterX = containerRect('left') + containerRect('width') / 2;
+ 
+     let closestIndex = 0;
+     let minDistance = Infinity;
+ 
+     cards.forEach((card, idx) => {
+       const cardRect = card.getBoundingClientRect();
+-      const cardCenterX = cardRect.left + cardRect.width / 2;
++      const cardCenterX = cardRect('left') + cardRect('width') / 2;
+       const distance = Math.abs(containerCenterX - cardCenterX);
+       if (distance < minDistance) {
+         minDistance = distance;
+@@ -135,13 +135,13 @@ export default function AboutMission() {
+   };
+ 
+   const scrollTo = (index) => {
+-    const container = document.getElementById('about-mission-carousel');
++    const container = document('getElementById')('about-mission-carousel');
+     if (container) {
+       const cards = container.querySelectorAll('.whyus-card-item');
+       if (cards[index]) {
+         const containerRect = container.getBoundingClientRect();
+         const cardRect = cards[index].getBoundingClientRect();
+-        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
++        const scrollOffset = cardRect('left') - containerRect('left') + container.scrollLeft - (containerRect('width') - cardRect('width')) / 2;
+         container.scrollTo({
+           left: scrollOffset,
+           behavior: 'smooth'
+diff --git a/components/about/AboutTeam.jsx b/components/about/AboutTeam.jsx
+index f05c072..73a74f9 100644
+--- a/components/about/AboutTeam.jsx
++++ b/components/about/AboutTeam.jsx
+@@ -2,7 +2,7 @@
+ 
+ import { useState } from 'react';
+ import Image from 'next/image';
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
+ 
+ const teamData = [
+@@ -55,7 +55,7 @@ const teamData = [
+ 
+ export default function AboutTeam() {
+   const [activeIndex, setActiveIndex] = useState(0);
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   const handleScroll = (e) => {
+     const container = e.target;
+@@ -63,14 +63,14 @@ export default function AboutTeam() {
+     if (!cards || !cards.length) return;
+ 
+     const containerRect = container.getBoundingClientRect();
+-    const containerLeft = containerRect.left;
++    const containerLeft = containerRect('left');
+ 
+     let closestIndex = 0;
+     let minDistance = Infinity;
+ 
+     cards.forEach((card, idx) => {
+       const cardRect = card.getBoundingClientRect();
+-      const distance = Math.abs(cardRect.left - containerLeft);
++      const distance = Math.abs(cardRect('left') - containerLeft);
+       if (distance < minDistance) {
+         minDistance = distance;
+         closestIndex = idx;
+@@ -81,7 +81,7 @@ export default function AboutTeam() {
+   };
+ 
+   const scrollTo = (index) => {
+-    const container = document.getElementById('about-team-carousel');
++    const container = document('getElementById')('about-team-carousel');
+     if (container) {
+       const cards = container.querySelectorAll('.apple-testimonial-card');
+       if (cards[index]) {
+diff --git a/components/about/AboutValues.jsx b/components/about/AboutValues.jsx
+index fff349e..83003cb 100644
+--- a/components/about/AboutValues.jsx
++++ b/components/about/AboutValues.jsx
+@@ -1,10 +1,10 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
+ 
+ export default function AboutValues() {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   const valuesData = [
+     {
+diff --git a/components/service/AppleFaq.jsx b/components/service/AppleFaq.jsx
+index ad7c1ed..e4b06d8 100644
+--- a/components/service/AppleFaq.jsx
++++ b/components/service/AppleFaq.jsx
+@@ -3,10 +3,10 @@
+ import { useState } from 'react';
+ import { motion, AnimatePresence } from 'framer-motion';
+ import { Reveal } from '@/components/ScrollReveal';
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ 
+ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+   const [openIndex, setOpenIndex] = useState(0);
+ 
+   const toggleAccordion = (index) => {
+diff --git a/components/service/ServiceBlogGrid.jsx b/components/service/ServiceBlogGrid.jsx
+index 2d78d99..1dfca55 100644
+--- a/components/service/ServiceBlogGrid.jsx
++++ b/components/service/ServiceBlogGrid.jsx
+@@ -1,11 +1,11 @@
+ 'use client';
+ 
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ import Image from 'next/image';
+ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+ 
+ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items }) {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   return (
+     <section style={{ padding: '90px 0', backgroundColor: '#F5F5F7' }}>
+diff --git a/components/service/ServiceCarousel.jsx b/components/service/ServiceCarousel.jsx
+index 9b723e7..01b3836 100644
+--- a/components/service/ServiceCarousel.jsx
++++ b/components/service/ServiceCarousel.jsx
+@@ -2,10 +2,10 @@
+ 
+ import { useState, useRef } from 'react';
+ import { Reveal } from '@/components/ScrollReveal';
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ 
+ export default function ServiceCarousel({ tag, title, subtitle, items }) {
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+   const [activeIndex, setActiveIndex] = useState(0);
+   const containerRef = useRef(null);
+ 
+@@ -21,12 +21,12 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
+ 
+   const scrollPrev = () => {
+     if (!containerRef.current) return;
+-    containerRef.current.scrollBy({ left: -420, behavior: 'smooth' });
++    containerRef.current('scrollBy')({ left: -420, behavior: 'smooth' });
+   };
+ 
+   const scrollNext = () => {
+     if (!containerRef.current) return;
+-    containerRef.current.scrollBy({ left: 420, behavior: 'smooth' });
++    containerRef.current('scrollBy')({ left: 420, behavior: 'smooth' });
+   };
+ 
+   return (
+diff --git a/components/service/SubpagePortfolio.jsx b/components/service/SubpagePortfolio.jsx
+index ac6dcdd..8ae2cf8 100644
+--- a/components/service/SubpagePortfolio.jsx
++++ b/components/service/SubpagePortfolio.jsx
+@@ -3,23 +3,23 @@
+ import { useState } from 'react';
+ import Image from 'next/image';
+ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+-import { useLanguage } from '@/lib/LanguageContext';
++import { useTranslations, useLocale } from 'next-intl';
+ 
+ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [], layout = "horizontal" }) {
+   const [expandedIndex, setExpandedIndex] = useState(null);
+-  const { lang } = useLanguage();
++  const lang = useLocale();
+ 
+   if (!cases || cases.length === 0) return null;
+ 
+   const scrollPrev = () => {
+-    const el = document.getElementById("subpage-portfolio-carousel");
++    const el = document('getElementById')("subpage-portfolio-carousel");
+     if (el) {
+       el.scrollBy({ left: -480, behavior: 'smooth' });
+     }
+   };
+ 
+   const scrollNext = () => {
+-    const el = document.getElementById("subpage-portfolio-carousel");
++    const el = document('getElementById')("subpage-portfolio-carousel");
+     if (el) {
+       el.scrollBy({ left: 480, behavior: 'smooth' });
+     }
+@@ -65,8 +65,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle
+                   cursor: 'pointer',
+                   transition: 'all 0.2s ease'
+                 }}
+-                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
++                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
++                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
+                 aria-label="Poprzedni slajd"
+               >
+                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+@@ -88,8 +88,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle
+                   cursor: 'pointer',
+                   transition: 'all 0.2s ease'
+                 }}
+-                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
++                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
++                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
+                 aria-label="Następny slajd"
+               >
+                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+@@ -346,12 +346,12 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle
+             transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+           }}
+           onMouseEnter={(e) => {
+-            e.currentTarget.style.transform = 'translateY(-2px)';
+-            e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
++            e.currentTarget('style').transform = 'translateY(-2px)';
++            e.currentTarget('style').boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+           }}
+           onMouseLeave={(e) => {
+-            e.currentTarget.style.transform = 'translateY(0)';
+-            e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
++            e.currentTarget('style').transform = 'translateY(0)';
++            e.currentTarget('style').boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+           }}
+         >
+           {lang === 'pl' ? 'Zobacz pełne portfolio wyników' : 'View full portfolio of results'}
+diff --git a/i18n.js b/i18n.js
+new file mode 100644
+index 0000000..ebc8f9e
+--- /dev/null
++++ b/i18n.js
+@@ -0,0 +1,15 @@
++import {getRequestConfig} from 'next-intl/server';
++import {notFound} from 'next/navigation';
++
++const locales = ['pl', 'en'];
++
++export default getRequestConfig(async ({requestLocale}) => {
++  let locale = await requestLocale;
++  
++  if (!locales.includes(locale)) notFound();
++
++  return {
++    locale,
++    messages: (await import(`./messages/${locale}.json`)).default
++  };
++});
+diff --git a/messages/en.json b/messages/en.json
+new file mode 100644
+index 0000000..eac2fd3
+--- /dev/null
++++ b/messages/en.json
+@@ -0,0 +1,134 @@
++{
++  "nav": {
++    "services": "Services",
++    "portfolio": "Portfolio",
++    "pricing": "Pricing",
++    "process": "Examples",
++    "results": "Results",
++    "blog": "Blog",
++    "cta": "Get Proposal →"
++  },
++  "hero": {
++    "tag": "AI SEO COMPANY",
++    "title1": "Branding and websites that ",
++    "titleHighlight": "drive revenue",
++    "subtitle": "We combine brand strategy, cutting-edge UI/UX design, and advanced SEO so your company stands out, gets trusted, and converts customers at scale.",
++    "btnPrimary": "Get Proposal",
++    "btnSecondary": "View Portfolio",
++    "rating": "4.9/5 client rating",
++    "awards": "Awards: Top Rated Agency & Reviews 4.9★",
++    "caseTitle": "Organic Google Search Growth",
++    "caseDesc": "Comprehensive SEO positioning and content architecture — from 0 to 4.8k impressions per quarter for the ASE-BOT platform.",
++    "pill1": "+100 views/day",
++    "pill2": "Free Website in Package"
++  },
++  "trust": {
++    "tag": "Our Clients & Partners"
++  },
++  "services": {
++    "tag": "OUR SERVICES",
++    "title": "Shaping how brands are seen, trusted, and remembered",
++    "subtitle": "We blend brand strategy, bespoke web design, and SEO architecture to propel your business into sustainable growth.",
++    "pillars": [
++      {
++        "num": "01 —",
++        "title": "Brand Clarity",
++        "desc": "Strategic decisions positioning your brand at the top of your market."
++      },
++      {
++        "num": "02 —",
++        "title": "Creative Craft",
++        "desc": "Visually confident, high-end design built to stand out."
++      },
++      {
++        "num": "03 —",
++        "title": "Commercial Momentum",
++        "desc": "Scalable web systems optimized for rapid sales conversion."
++      }
++    ]
++  },
++  "results": {
++    "tag": "OUR RESULTS",
++    "title": "Projects — high-performance websites with measurable impact",
++    "subtitle": "Explore analytics-backed growth metrics across our client case studies.",
++    "btnView": "View Project →"
++  },
++  "pricing": {
++    "tag": "PRICING PLANS",
++    "title": "Transparent pricing with no hidden fees",
++    "subtitle": "Choose a flexible monthly subscription or get a free custom website with our Booster Pack.",
++    "standardTitle": "SEO Standard",
++    "standardPrice": "€450",
++    "standardPeriod": "net / mo.",
++    "standardDesc": "Comprehensive website SEO positioning with a flexible monthly subscription and cancel anytime policy.",
++    "premiumTitle": "SEO Premium",
++    "premiumPrice": "€590",
++    "premiumPeriod": "net / mo.",
++    "premiumDesc": "Full SEO management with Conversion Rate Optimization (CRO) and AI-driven content architecture.",
++    "boosterTitle": "Booster Pack",
++    "boosterPrice": "€590",
++    "boosterPeriod": "net / mo.",
++    "boosterBadge": "FREE CUSTOM WEBSITE INCLUDED",
++    "boosterDesc": "Free custom website included with a 3-month contract combined with full AI-driven SEO.",
++    "btnChoose": "Select Plan",
++    "note": "All prices are net (+VAT). Flexible subscriptions with no long-term lock-in (except Booster Pack min 3 mo)."
++  },
++  "whyUs": {
++    "tag": "Why Us",
++    "title": "Result driven projects, with a focus on design and functionality",
++    "subtitle": "We craft digital solutions backed by hard analytics and buyer psychology.",
++    "stat1": "of consumers must trust a brand before making a purchase decision.",
++    "stat2": "increase in brand recall through a cohesive visual identity system.",
++    "stat3": "average revenue boost with unified SEO & web communication."
++  },
++  "process": {
++    "tag": "FRAMEWORK",
++    "title": "Our brand-to-build framework",
++    "subtitle": "We transform brand identity into digital experiences engineered for maximum conversion."
++  },
++  "testimonials": {
++    "tag": "TESTIMONIALS",
++    "title": "Client Experiences & Endorsements"
++  },
++  "blog": {
++    "tag": "BLOG & ARTICLES",
++    "title": "Trends & Insights",
++    "subtitle": "Explore expert articles and outrank your competition in organic search.",
++    "btnRead": "Read Article →"
++  },
++  "contact": {
++    "tag": "Project Proposal",
++    "title": "Have a project in mind? Let’s price it!",
++    "subtitle": "Fill out our quick form and receive a tailored proposal within 24 hours.",
++    "nameLabel": "Full Name",
++    "emailLabel": "Email Address",
++    "phoneLabel": "Phone Number",
++    "serviceLabel": "Select Service Required",
++    "budgetLabel": "Estimated Budget",
++    "msgLabel": "Project Description",
++    "btnSend": "Submit Request →"
++  },
++  "footer": {
++    "desc": "Bespoke branding, web design, and SEO optimization agency. We build high-conversion Next.js brands.",
++    "rights": "© 2026 AI SEO COMPANY. All rights reserved."
++  },
++  "cookies": {
++    "title": "Cookie Consent (EU GDPR)",
++    "text": "We use cookies and similar technologies to ensure core website functionality, analyze site traffic (Google Analytics), and optimize marketing campaigns in compliance with EU ePrivacy and GDPR directives.",
++    "policy": "Privacy & Cookie Policy",
++    "acceptAll": "Accept All",
++    "declineAll": "Reject Optional",
++    "manage": "Manage Preferences",
++    "save": "Save Preferences",
++    "essentialTitle": "Essential (Required)",
++    "essentialDesc": "Required for encryption, security, and basic navigation. Always active.",
++    "analyticsTitle": "Analytics",
++    "analyticsDesc": "Helps us analyze traffic and improve user experience.",
++    "marketingTitle": "Marketing",
++    "marketingDesc": "Used to track ad performance and deliver personalized campaigns."
++  },
++  "cookiesPage": {
++    "title": "Privacy & Cookie Policy",
++    "content": "Details regarding the use of cookies for analytical, functional, and marketing purposes in compliance with GDPR."
++  }
++}
+\ No newline at end of file
+diff --git a/messages/pl.json b/messages/pl.json
+new file mode 100644
+index 0000000..f904177
+--- /dev/null
++++ b/messages/pl.json
+@@ -0,0 +1,134 @@
++{
++  "nav": {
++    "services": "Usługi",
++    "portfolio": "Portfolio",
++    "pricing": "Cennik",
++    "process": "Przykłady",
++    "results": "Wyniki",
++    "blog": "Blog",
++    "cta": "Wyceń projekt →"
++  },
++  "hero": {
++    "tag": "AI SEO COMPANY",
++    "title1": "Branding i strony internetowe, które ",
++    "titleHighlight": "budują sprzedaż",
++    "subtitle": "Jako agencja SEO i studio web designu łączymy strategię marki, nowatorskie projektowanie i pozycjonowanie stron internetowych, aby Twoja firma była widoczna w Google i masowo wybierana przez klientów.",
++    "btnPrimary": "Wyceń projekt",
++    "btnSecondary": "Zobacz portfolio",
++    "rating": "4,9/5 oceny klientów",
++    "awards": "Wyróżnienia: Top Rated Agency & Reviews 4.9★",
++    "caseTitle": "Wzrost wyświetleń serwisu w Google",
++    "caseDesc": "Kompleksowe pozycjonowanie i architektura treści SEO — od 0 do 4,8 tys. wyświetleń w kwartale dla platformy ASE-BOT.",
++    "pill1": "+100 wyświetleń/dzień",
++    "pill2": "Strona za 0 zł w pakiecie"
++  },
++  "trust": {
++    "tag": "Nasi Klienci & Partnerzy"
++  },
++  "services": {
++    "tag": "NASZE USŁUGI",
++    "title": "Kształtujemy sposób, w jaki marki są postrzegane i zapamiętywane",
++    "subtitle": "Łączymy projektowanie stron internetowych, SEO lokalne, audyt SEO oraz zaawansowaną optymalizację SEO kodu, aby doprowadzić Twoją firmę do stabilnego wzrostu.",
++    "pillars": [
++      {
++        "num": "01 —",
++        "title": "Brand Clarity",
++        "desc": "Decyzje strategiczne pomagające pozycjonować markę na rynku."
++      },
++      {
++        "num": "02 —",
++        "title": "Creative Craft",
++        "desc": "Pewny siebie, dopracowany design stworzony, by się wyróżniać."
++      },
++      {
++        "num": "03 —",
++        "title": "Commercial Momentum",
++        "desc": "Skalowalne pozycjonowanie i SEO napędzające szybki wzrost sprzedaży."
++      }
++    ]
++  },
++  "results": {
++    "tag": "NASZE WYNIKI",
++    "title": "Projekty — zrealizowane strony z mierzalnym efektem",
++    "subtitle": "Zobacz wskaźniki wzrostu pozycjonowania stron poparte twardymi danymi analitycznymi i optymalizacją SEO.",
++    "btnView": "Zobacz Case Study →"
++  },
++  "pricing": {
++    "tag": "CENNIK USŁUG",
++    "title": "Przejrzyste pakiety pozycjonowania bez ukrytych kosztów",
++    "subtitle": "Sprawdź, ile kosztuje pozycjonowanie stron i wybierz elastyczną subskrypcję miesięczną lub pakiet z darmową stroną internetową.",
++    "standardTitle": "SEO Standard",
++    "standardPrice": "1 900 zł",
++    "standardPeriod": "netto / mies.",
++    "standardDesc": "Kompleksowa obsługa pozycjonowania z elastyczną subskrypcją miesięczną oraz możliwością rezygnacji w każdym momencie.",
++    "premiumTitle": "SEO Premium",
++    "premiumPrice": "2 500 zł",
++    "premiumPeriod": "netto / mies.",
++    "premiumDesc": "Pełne pozycjonowanie SEO z optymalizacją konwersji (CRO) oraz autorskim systemem AI wspierającym widoczność i zasięgi.",
++    "boosterTitle": "Booster Pack",
++    "boosterPrice": "2 500 zł",
++    "boosterPeriod": "netto / mies.",
++    "boosterBadge": "NOWA STRONA WWW ZA 0 ZŁ W PAKIECIE",
++    "boosterDesc": "Nowa profesjonalna strona WWW w pakiecie z umową na 3 miesiące oraz pełnym wsparciem pozycjonowania AI.",
++    "btnChoose": "Wybierz pakiet",
++    "note": "Wszystkie podane ceny są kwotami netto (+23% VAT). Umowa subskrypcyjna bez długoterminowych zobowiązań (z wyjątkiem pakietu Booster Pack min. 3 mies.)."
++  },
++  "whyUs": {
++    "tag": "DLACZEGO MY",
++    "title": "Projekty nastawione na wyniki, z naciskiem na design i funkcjonalność",
++    "subtitle": "Jako agencja SEO Warszawa tworzymy rozwiązania poparte twardymi danymi analitycznymi, pozycjonowaniem lokalnym i psychologią podejmowania decyzji zakupowych.",
++    "stat1": "klientów musi zaufać marce, zanim podejmie decyzję o zakupie.",
++    "stat2": "wzrostu rozpoznawalności dzięki spójnemu systemowi wizualnemu.",
++    "stat3": "średniego przychodu więcej przy jednolitej komunikacji SEO & Web."
++  },
++  "process": {
++    "tag": "FRAMEWORK PROCESU",
++    "title": "Nasz proces tworzenia marki i serwisu",
++    "subtitle": "Przekształcamy tożsamość marki w profesjonalne projektowanie stron internetowych z przemyślaną architekturą konwersji i optymalizacją pod wyniki wyszukiwania."
++  },
++  "testimonials": {
++    "tag": "OPINIE KLIENTÓW",
++    "title": "Doświadczenia i Rekomendacje"
++  },
++  "blog": {
++    "tag": "BLOG & ARTYKUŁY",
++    "title": "Wiedza i inspiracje — Trends & Insights",
++    "subtitle": "Przeczytaj najnowsze wpisy eksperckie i wyprzedź konkurencję w wynikach wyszukiwania.",
++    "btnRead": "Czytaj wpis →"
++  },
++  "contact": {
++    "tag": "WYCENA PROJEKTU",
++    "title": "Masz projekt na oku? Wyceńmy go!",
++    "subtitle": "Wypełnij krótki formularz, a przygotujemy dedykowaną propozycję współpracy w 24h.",
++    "nameLabel": "Imię i nazwisko",
++    "emailLabel": "Adres e-mail",
++    "phoneLabel": "Numer telefonu",
++    "serviceLabel": "Wybierz interesującą Cię usługę",
++    "budgetLabel": "Orientacyjny budżet",
++    "msgLabel": "Opisz swój projekt",
++    "btnSend": "Wyślij zapytanie →"
++  },
++  "footer": {
++    "desc": "AI SEO COMPANY — Nowoczesna agencja marketingowa, studio brandingu i profesjonalne pozycjonowanie stron internetowych. Projektujemy strony w Next.js zoptymalizowane pod konwersję.",
++    "rights": "© 2026 AI SEO COMPANY. Wszelkie prawa zastrzeżone."
++  },
++  "cookies": {
++    "title": "Zgoda na pliki cookies (RODO / GDPR)",
++    "text": "Używamy plików cookies i podobnych technologii w celu zapewnienia prawidłowego działania serwisu, analizy ruchu (Google Analytics) oraz optymalizacji kampanii marketingowych zgodnie z Dyrektywą ePrivacy i RODO (GDPR).",
++    "policy": "Polityka Prywatności i Cookies",
++    "acceptAll": "Zaakceptuj wszystkie",
++    "declineAll": "Odrzuć opcjonalne",
++    "manage": "Dostosuj preferencje",
++    "save": "Zapisz wybrane",
++    "essentialTitle": "Niezbędne (Wymagane)",
++    "essentialDesc": "Wymagane do szyfrowania, bezpieczeństwa oraz podstawowej nawigacji po stronie. Zawsze aktywne.",
++    "analyticsTitle": "Analityczne",
++    "analyticsDesc": "Pomagają nam badać ruch w serwisie i ulepszać UX (np. Google Analytics).",
++    "marketingTitle": "Marketingowe",
++    "marketingDesc": "Służą do śledzenia skuteczności reklam i dostarczania spersonalizowanych komunikatów."
++  },
++  "cookiesPage": {
++    "title": "Polityka Prywatności i Cookies",
++    "content": "Szczegóły dotyczące wykorzystywania plików cookies w celach analitycznych, funkcjonalnych i marketingowych zgodnie z RODO."
++  }
++}
+\ No newline at end of file
+diff --git a/middleware.js b/middleware.js
+new file mode 100644
+index 0000000..9623bf1
+--- /dev/null
++++ b/middleware.js
+@@ -0,0 +1,17 @@
++import createMiddleware from 'next-intl/middleware';
++ 
++export default createMiddleware({
++  // A list of all locales that are supported
++  locales: ['pl', 'en'],
++ 
++  // Used when no locale matches
++  defaultLocale: 'pl',
++  
++  // If you don't want the default locale to show in the URL, you can set it to 'as-needed' or 'always'
++  localePrefix: 'always'
++});
++ 
++export const config = {
++  // Match only internationalized pathnames
++  matcher: ['/', '/(pl|en)/:path*']
++};
+diff --git a/next.config.mjs b/next.config.mjs
+index 8fd2804..d15deb6 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,4 +1,7 @@
+ import path from 'path';
++import createNextIntlPlugin from 'next-intl/plugin';
++
++const withNextIntl = createNextIntlPlugin('./i18n.js');
+ 
+ /** @type {import('next').NextConfig} */
+ const nextConfig = {
+@@ -29,4 +32,4 @@ const nextConfig = {
+   },
+ };
+ 
+-export default nextConfig;
++export default withNextIntl(nextConfig);
+diff --git a/package-lock.json b/package-lock.json
+index 0faf834..ffa73f3 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -10,6 +10,7 @@
+       "dependencies": {
+         "framer-motion": "^12.42.2",
+         "next": "16.2.12",
++        "next-intl": "^4.13.4",
+         "react": "19.2.4",
+         "react-dom": "19.2.4",
+         "resend": "^6.18.0"
+@@ -436,6 +437,36 @@
+         "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+       }
+     },
++    "node_modules/@formatjs/fast-memoize": {
++      "version": "3.1.7",
++      "resolved": "https://registry.npmjs.org/@formatjs/fast-memoize/-/fast-memoize-3.1.7.tgz",
++      "integrity": "sha512-zXfhLpvA6T7+efdt9JLbBwZ00tT7NsBMDVnDu8rpHeNNv8KfRZAMo2gkG0k9lK/Nzc//3kJ9pImsfuJxk3KhUA==",
++      "license": "MIT"
++    },
++    "node_modules/@formatjs/icu-messageformat-parser": {
++      "version": "3.5.15",
++      "resolved": "https://registry.npmjs.org/@formatjs/icu-messageformat-parser/-/icu-messageformat-parser-3.5.15.tgz",
++      "integrity": "sha512-5o4grXKotAB3JqQuisLApHG43g17N+paoRTa92Jiz35Zvfemq0cVf4EDvuxyHAzmsJji7igaEowicLO/VmfJ8Q==",
++      "license": "MIT",
++      "dependencies": {
++        "@formatjs/icu-skeleton-parser": "2.1.11"
++      }
++    },
++    "node_modules/@formatjs/icu-skeleton-parser": {
++      "version": "2.1.11",
++      "resolved": "https://registry.npmjs.org/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-2.1.11.tgz",
++      "integrity": "sha512-j8cUmOJzVgkHuS0QiQ6ga76UIoLOFSAMWhs7aZJztH3aAdCOAE6vpC8KVvFB4cU10ON0y2/5oOVmPJ43s2lTwA==",
++      "license": "MIT"
++    },
++    "node_modules/@formatjs/intl-localematcher": {
++      "version": "0.8.13",
++      "resolved": "https://registry.npmjs.org/@formatjs/intl-localematcher/-/intl-localematcher-0.8.13.tgz",
++      "integrity": "sha512-kHEAFOkeJSPNi7c5PaKaRjxcBrJwzzt81ifUu+8uve1EDW/VJl83KsxmqgqNZLzcFEhSliZGvx3+pk/RH0IOmg==",
++      "license": "MIT",
++      "dependencies": {
++        "@formatjs/fast-memoize": "3.1.7"
++      }
++    },
+     "node_modules/@humanfs/core": {
+       "version": "0.19.2",
+       "resolved": "https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz",
+@@ -1229,6 +1260,292 @@
+         "node": ">=12.4.0"
+       }
+     },
++    "node_modules/@parcel/watcher": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher/-/watcher-2.6.0.tgz",
++      "integrity": "sha512-7FNeNl8NCE7aINx7WXiKQrPYZWC/hvrTsmk6zmxbI7LTXE7hVek/n8AfVgpe2y82zl3w0HvCHN0bVKMBoJcC0w==",
++      "hasInstallScript": true,
++      "license": "MIT",
++      "dependencies": {
++        "detect-libc": "^2.0.3",
++        "is-glob": "^4.0.3",
++        "node-addon-api": "^7.0.0",
++        "picomatch": "^4.0.4"
++      },
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      },
++      "optionalDependencies": {
++        "@parcel/watcher-android-arm64": "2.6.0",
++        "@parcel/watcher-darwin-arm64": "2.6.0",
++        "@parcel/watcher-darwin-x64": "2.6.0",
++        "@parcel/watcher-freebsd-x64": "2.6.0",
++        "@parcel/watcher-linux-arm-glibc": "2.6.0",
++        "@parcel/watcher-linux-arm-musl": "2.6.0",
++        "@parcel/watcher-linux-arm64-glibc": "2.6.0",
++        "@parcel/watcher-linux-arm64-musl": "2.6.0",
++        "@parcel/watcher-linux-x64-glibc": "2.6.0",
++        "@parcel/watcher-linux-x64-musl": "2.6.0",
++        "@parcel/watcher-win32-arm64": "2.6.0",
++        "@parcel/watcher-win32-x64": "2.6.0"
++      }
++    },
++    "node_modules/@parcel/watcher-android-arm64": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-android-arm64/-/watcher-android-arm64-2.6.0.tgz",
++      "integrity": "sha512-trgpLSCKRC/huFjXX/Smh+0sWe4+YtKfktIToiMl59ghz7z+qkH6kMvNnUbLyRs9N11t8l4svSCs1+5B3rOAhA==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-darwin-arm64": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-darwin-arm64/-/watcher-darwin-arm64-2.6.0.tgz",
++      "integrity": "sha512-Y3QV0gl7Q1zbfueunkWIERICbEojQFCgpyG7YqOGNFLsckXyI1xu9mAIUpKY9QBYzBtSkN8dBPwd3yiAO9ovMw==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-darwin-x64": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-darwin-x64/-/watcher-darwin-x64-2.6.0.tgz",
++      "integrity": "sha512-Ohv6OpzhUfKYD7Beb8kDvG0jbIxORCYY1JRdZnaBtnjjkJxgD7ZVL0nw2sCYd0yTMKTvz3nnTnOF3cDifK+kvw==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-freebsd-x64": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-freebsd-x64/-/watcher-freebsd-x64-2.6.0.tgz",
++      "integrity": "sha512-5HmXvDgs8VK+74jF9y9/2FE3/OnlcKmc56tjmSrEuZjpSZOGL+fvAu+HKJBdPs9uwoP2hE6TlSUpXZ/C5jUFmQ==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-linux-arm-glibc": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-linux-arm-glibc/-/watcher-linux-arm-glibc-2.6.0.tgz",
++      "integrity": "sha512-Ps/hui3A+vMbjdqlqAowK2ZL8+BO8dBjxeWXj6npTBs3jx4wWmbPpaLuqwrQrSqIVMCnpWo238bJ1U37GhQOYg==",
++      "cpu": [
++        "arm"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-linux-arm-musl": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-linux-arm-musl/-/watcher-linux-arm-musl-2.6.0.tgz",
++      "integrity": "sha512-9c6AUHgHoG+IY88MRIHupztQiQnrbqHYQjkM2btA+Bf/wQnQMuiD0Wfk1EVv3TlNT3x41uU71rn6E4xh/+zvkw==",
++      "cpu": [
++        "arm"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-linux-arm64-glibc": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-linux-arm64-glibc/-/watcher-linux-arm64-glibc-2.6.0.tgz",
++      "integrity": "sha512-yHRqS2owEXe6Hic9z6Mh1ECsCd+ODVOGvZDyciqRd21+v+o+DnXMOrw50DSpIG2sb8GPEaPPmfeCAWKPJdq46g==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-linux-arm64-musl": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-linux-arm64-musl/-/watcher-linux-arm64-musl-2.6.0.tgz",
++      "integrity": "sha512-WhB2e/V7rqdHHWZusBSPuy5Ei8S6lSz6FE5TKKQz5h3a0O+C+mhY7vxU9b/stqvMb8beLnPY82ZrFTLKs+SrKA==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-linux-x64-glibc": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-linux-x64-glibc/-/watcher-linux-x64-glibc-2.6.0.tgz",
++      "integrity": "sha512-ulGE6x6Oz6iAwg75T8YQSoguBWasniIbX+QWpaYPcCnDOpdWX3k+4xbEYPZVLxOuoJI+svJJPD3sEj8G7lrQ3A==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-linux-x64-musl": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-linux-x64-musl/-/watcher-linux-x64-musl-2.6.0.tgz",
++      "integrity": "sha512-tkBYKt7YQrjIJWYDnto2YgO8MRkjlMTSNoRHzsXinBqbLdeOM3L32wPZJvIZxqaLMfSlS/4sUjH/6STVP/XDLw==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-win32-arm64": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-win32-arm64/-/watcher-win32-arm64-2.6.0.tgz",
++      "integrity": "sha512-gIZAP23jaHjGWasY/TY6yL7NHFClf0Ga7FN+iINvk+KN94rhm94lYZhFsbYFNcA04/onvGD9kKmiJLJB2HbNwQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher-win32-x64": {
++      "version": "2.6.0",
++      "resolved": "https://registry.npmjs.org/@parcel/watcher-win32-x64/-/watcher-win32-x64-2.6.0.tgz",
++      "integrity": "sha512-cA+/pXV2YkfxlIcXOQ5fSWqAzzPyD78/x5qbK/I0vUkrlYHA8TIz+MXjAbGouguKVSI4bOmkTSJ1/poVSsgt+A==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 10.0.0"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/parcel"
++      }
++    },
++    "node_modules/@parcel/watcher/node_modules/picomatch": {
++      "version": "4.0.5",
++      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.5.tgz",
++      "integrity": "sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=12"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/jonschlinkert"
++      }
++    },
+     "node_modules/@rtsao/scc": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/@rtsao/scc/-/scc-1.1.0.tgz",
+@@ -1236,12 +1553,216 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/@schummar/icu-type-parser": {
++      "version": "1.21.5",
++      "resolved": "https://registry.npmjs.org/@schummar/icu-type-parser/-/icu-type-parser-1.21.5.tgz",
++      "integrity": "sha512-bXHSaW5jRTmke9Vd0h5P7BtWZG9Znqb8gSDxZnxaGSJnGwPLDPfS+3g0BKzeWqzgZPsIVZkM7m2tbo18cm5HBw==",
++      "license": "MIT"
++    },
+     "node_modules/@stablelib/base64": {
+       "version": "1.0.1",
+       "resolved": "https://registry.npmjs.org/@stablelib/base64/-/base64-1.0.1.tgz",
+       "integrity": "sha512-1bnPQqSxSuc3Ii6MhBysoWCg58j97aUjuCSZrGSmDxNqtytIi0k8utUenAwTZN4V5mXXYGsVUI9zeBqy+jBOSQ==",
+       "license": "MIT"
+     },
++    "node_modules/@swc/core-darwin-arm64": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-darwin-arm64/-/core-darwin-arm64-1.15.47.tgz",
++      "integrity": "sha512-GsoMtan3ojGGMGFbl31mmRu5ctZ56re8grGE8mO/OHJ8O+JRkzod02fe7X6ZQ8JvamA3imkEkx/h3u+vsOgPgA==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-darwin-x64": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-darwin-x64/-/core-darwin-x64-1.15.47.tgz",
++      "integrity": "sha512-leTi7Rx3KF4zcC637iqWgk9SoV8VXAD8ppQYXsep63px5A/UftOcxLN1pmr8Z1si/YvX90ompP/rHgpYkgwXWg==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-linux-arm-gnueabihf": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-linux-arm-gnueabihf/-/core-linux-arm-gnueabihf-1.15.47.tgz",
++      "integrity": "sha512-hBqHuoWKKIsKmDBn9qVeWqj5GWZhtlcczVaqQmNRXsDfq+voR5CxKRfamA367QjJXtceYuliLFfEL8QsskRM2g==",
++      "cpu": [
++        "arm"
++      ],
++      "license": "Apache-2.0",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-linux-arm64-gnu": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.15.47.tgz",
++      "integrity": "sha512-TBxvRz+B4K205TWHHZxWVxkC2RFNP/Mz3PNcECBos5PsKwxjg3QSJzdoebr0VCf0Bfh8HOPldKxAP/8XkFe9gA==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-linux-arm64-musl": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.15.47.tgz",
++      "integrity": "sha512-3Yu3Uq/VgytqsPjTMbkPU1ExADytbdWbruJYhA584E9jrpE2Ki+R6VVPoZCeAVk1Cb7QxcRTgblw6bSa6a/R+w==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-linux-ppc64-gnu": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-linux-ppc64-gnu/-/core-linux-ppc64-gnu-1.15.47.tgz",
++      "integrity": "sha512-wfdMi5IaOaNtmh2/6geRoxIdNfqylUZFdtzTKS655y1axWfIWyx7As74vv0wVdjeCIZ3WmCI9odDd4rUttXOSQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-linux-s390x-gnu": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-linux-s390x-gnu/-/core-linux-s390x-gnu-1.15.47.tgz",
++      "integrity": "sha512-3hHYBY0yx8Ez7GMRrkhXHQzMdR5IZA6Wq5Ee4svlgwvSECLpnAJ9+0AimEGUFDvuLwE7nV/2+PYe8+Nm4rvNcQ==",
++      "cpu": [
++        "s390x"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-linux-x64-gnu": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.15.47.tgz",
++      "integrity": "sha512-TjfhjgP/jGCfFHYC3JQPhJA1HwErbIJ9JfREDc1KNkvY6P0LodCgKVIlQ5deeTbkG7ih3bF5PHJLuLpaZjdRyQ==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-linux-x64-musl": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.15.47.tgz",
++      "integrity": "sha512-CQpS8Ge/avfjZd0UEwG/sds83Uu32deQXcV1Jo3jD0mmvQQqtYAjpsDZXugmheeAwmt+YIuoVtVHro8LMYHqsQ==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-win32-arm64-msvc": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-win32-arm64-msvc/-/core-win32-arm64-msvc-1.15.47.tgz",
++      "integrity": "sha512-0W8IKHsUTYiT7G2RqtOoVWk+89yzZikIiDUb/sCK6BmQDBhN91hQSfyUtW12jhEWLzYgcfmisfsZrmZE+84U1A==",
++      "cpu": [
++        "arm64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-win32-ia32-msvc": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-win32-ia32-msvc/-/core-win32-ia32-msvc-1.15.47.tgz",
++      "integrity": "sha512-ZIp49d2Z4/ka2jO9otOg4hDvTdPmp86kVOgS2M5FCPI7eKKZ1W0boxWn+8XeZrfERtFGW0AlMRm4JhlJa7l3NA==",
++      "cpu": [
++        "ia32"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/core-win32-x64-msvc": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.15.47.tgz",
++      "integrity": "sha512-2h8Iek95vnixkBRCo+H8p09+Q5ll2NgSMFrWTy0iKt7+/t+8/T5mBpiT6c0ZxSS7wcWjwZ9sGZkK70tTSYHdDw==",
++      "cpu": [
++        "x64"
++      ],
++      "license": "Apache-2.0 AND MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/@swc/counter": {
++      "version": "0.1.3",
++      "resolved": "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz",
++      "integrity": "sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==",
++      "license": "Apache-2.0"
++    },
+     "node_modules/@swc/helpers": {
+       "version": "0.5.15",
+       "resolved": "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.15.tgz",
+@@ -1251,6 +1772,15 @@
+         "tslib": "^2.8.0"
+       }
+     },
++    "node_modules/@swc/types": {
++      "version": "0.1.27",
++      "resolved": "https://registry.npmjs.org/@swc/types/-/types-0.1.27.tgz",
++      "integrity": "sha512-K6h3iUlqeM946U4sXFYeahefR1YBbXJvko+hv8WS8/0BNJ4OHiHRywMnQUJCqkR7Y9+hqQ1TvEpiKqUhz7NEFg==",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@swc/counter": "^0.1.3"
++      }
++    },
+     "node_modules/@tybys/wasm-util": {
+       "version": "0.10.3",
+       "resolved": "https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.3.tgz",
+@@ -2544,7 +3074,6 @@
+       "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz",
+       "integrity": "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==",
+       "license": "Apache-2.0",
+-      "optional": true,
+       "engines": {
+         "node": ">=8"
+       }
+@@ -3694,6 +4223,21 @@
+         "hermes-estree": "0.25.1"
+       }
+     },
++    "node_modules/icu-minify": {
++      "version": "4.13.4",
++      "resolved": "https://registry.npmjs.org/icu-minify/-/icu-minify-4.13.4.tgz",
++      "integrity": "sha512-yK6HyPLGlQjqm8fTKtnBpM77z7vl7JdDBN2EXLvmgAu/b7XaOHWZb73M3ISl9ahBTehBv7RYeqqWSHfk1v2YcA==",
++      "funding": [
++        {
++          "type": "individual",
++          "url": "https://github.com/sponsors/amannn"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "@formatjs/icu-messageformat-parser": "^3.4.0"
++      }
++    },
+     "node_modules/ignore": {
+       "version": "5.3.2",
+       "resolved": "https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz",
+@@ -3746,6 +4290,16 @@
+         "node": ">= 0.4"
+       }
+     },
++    "node_modules/intl-messageformat": {
++      "version": "11.2.12",
++      "resolved": "https://registry.npmjs.org/intl-messageformat/-/intl-messageformat-11.2.12.tgz",
++      "integrity": "sha512-KW70Xxfcvy7vV3qODfvShWkFDPMqKDAa4N+hSyVBWGNtVhTUFYaqlD/l88DaYPKiVcPP4rPQ3qnH7i5K82Mg7g==",
++      "license": "BSD-3-Clause",
++      "dependencies": {
++        "@formatjs/fast-memoize": "3.1.7",
++        "@formatjs/icu-messageformat-parser": "3.5.15"
++      }
++    },
+     "node_modules/is-array-buffer": {
+       "version": "3.0.5",
+       "resolved": "https://registry.npmjs.org/is-array-buffer/-/is-array-buffer-3.0.5.tgz",
+@@ -3924,7 +4478,6 @@
+       "version": "2.1.1",
+       "resolved": "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz",
+       "integrity": "sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==",
+-      "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=0.10.0"
+@@ -3970,7 +4523,6 @@
+       "version": "4.0.3",
+       "resolved": "https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz",
+       "integrity": "sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==",
+-      "dev": true,
+       "license": "MIT",
+       "dependencies": {
+         "is-extglob": "^2.1.1"
+@@ -4512,6 +5064,15 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/negotiator": {
++      "version": "1.0.0",
++      "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-1.0.0.tgz",
++      "integrity": "sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==",
++      "license": "MIT",
++      "engines": {
++        "node": ">= 0.6"
++      }
++    },
+     "node_modules/next": {
+       "version": "16.2.12",
+       "resolved": "https://registry.npmjs.org/next/-/next-16.2.12.tgz",
+@@ -4565,6 +5126,100 @@
+         }
+       }
+     },
++    "node_modules/next-intl": {
++      "version": "4.13.4",
++      "resolved": "https://registry.npmjs.org/next-intl/-/next-intl-4.13.4.tgz",
++      "integrity": "sha512-jhPAT0u0lahIK6E4gVdZAehugWCosBhLG8sV7xMzgSVoJpxHObP+Fiu+z2FfkEW0XPPtr7uEXoUlLEfhxhNMTg==",
++      "funding": [
++        {
++          "type": "individual",
++          "url": "https://github.com/sponsors/amannn"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "@formatjs/intl-localematcher": "^0.8.1",
++        "@parcel/watcher": "^2.4.1",
++        "@swc/core": "^1.15.2",
++        "icu-minify": "^4.13.4",
++        "negotiator": "^1.0.0",
++        "next-intl-swc-plugin-extractor": "^4.13.4",
++        "po-parser": "^2.1.1",
++        "use-intl": "^4.13.4"
++      },
++      "peerDependencies": {
++        "next": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0",
++        "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0"
++      },
++      "peerDependenciesMeta": {
++        "typescript": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/next-intl-swc-plugin-extractor": {
++      "version": "4.13.4",
++      "resolved": "https://registry.npmjs.org/next-intl-swc-plugin-extractor/-/next-intl-swc-plugin-extractor-4.13.4.tgz",
++      "integrity": "sha512-uN1+NMUYbG6YkO3q+rjc2bvAPX9nQ23owemvHJAyW0pRbQjVDwvNhmrV5qaak0oQc/9okbK17KLT49AoMGhVEQ==",
++      "license": "MIT"
++    },
++    "node_modules/next-intl/node_modules/@swc/core": {
++      "version": "1.15.47",
++      "resolved": "https://registry.npmjs.org/@swc/core/-/core-1.15.47.tgz",
++      "integrity": "sha512-FbsO5JcfOjfH38W/rohBRBweJeERsAuIP4f377lmkmxTcq9exjtx4SkRuZY5CdfhR2CBVwDIJegBpJDffwNsOg==",
++      "hasInstallScript": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@swc/counter": "^0.1.3",
++        "@swc/types": "^0.1.27"
++      },
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/swc"
++      },
++      "optionalDependencies": {
++        "@swc/core-darwin-arm64": "1.15.47",
++        "@swc/core-darwin-x64": "1.15.47",
++        "@swc/core-linux-arm-gnueabihf": "1.15.47",
++        "@swc/core-linux-arm64-gnu": "1.15.47",
++        "@swc/core-linux-arm64-musl": "1.15.47",
++        "@swc/core-linux-ppc64-gnu": "1.15.47",
++        "@swc/core-linux-s390x-gnu": "1.15.47",
++        "@swc/core-linux-x64-gnu": "1.15.47",
++        "@swc/core-linux-x64-musl": "1.15.47",
++        "@swc/core-win32-arm64-msvc": "1.15.47",
++        "@swc/core-win32-ia32-msvc": "1.15.47",
++        "@swc/core-win32-x64-msvc": "1.15.47"
++      },
++      "peerDependencies": {
++        "@swc/helpers": ">=0.5.17"
++      },
++      "peerDependenciesMeta": {
++        "@swc/helpers": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/next-intl/node_modules/@swc/helpers": {
++      "version": "0.5.23",
++      "resolved": "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.23.tgz",
++      "integrity": "sha512-5lSsMOTXURePglDfvuAQUqkGek9Hg2kksOYay2m0+XR++b2NWYL/4sWyuvVBIs8oKnJaxkdi9whaL/sqN13afw==",
++      "license": "Apache-2.0",
++      "optional": true,
++      "peer": true,
++      "dependencies": {
++        "tslib": "^2.8.0"
++      }
++    },
++    "node_modules/node-addon-api": {
++      "version": "7.1.1",
++      "resolved": "https://registry.npmjs.org/node-addon-api/-/node-addon-api-7.1.1.tgz",
++      "integrity": "sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==",
++      "license": "MIT"
++    },
+     "node_modules/node-exports-info": {
+       "version": "1.6.2",
+       "resolved": "https://registry.npmjs.org/node-exports-info/-/node-exports-info-1.6.2.tgz",
+@@ -4845,6 +5500,12 @@
+         "url": "https://github.com/sponsors/jonschlinkert"
+       }
+     },
++    "node_modules/po-parser": {
++      "version": "2.1.1",
++      "resolved": "https://registry.npmjs.org/po-parser/-/po-parser-2.1.1.tgz",
++      "integrity": "sha512-ECF4zHLbUItpUgE3OTtLKlPjeBN+fKEczj2zYjDfCGOzicNs0GK3Vg2IoAYwx7LH/XYw43fZQP6xnZ4TkNxSLQ==",
++      "license": "MIT"
++    },
+     "node_modules/possible-typed-array-names": {
+       "version": "1.1.0",
+       "resolved": "https://registry.npmjs.org/possible-typed-array-names/-/possible-typed-array-names-1.1.0.tgz",
+@@ -5951,6 +6612,27 @@
+         "punycode": "^2.1.0"
+       }
+     },
++    "node_modules/use-intl": {
++      "version": "4.13.4",
++      "resolved": "https://registry.npmjs.org/use-intl/-/use-intl-4.13.4.tgz",
++      "integrity": "sha512-wRhU5zyPNgu845++EJ8ckQsi89b22QUop7NlGxNXpsnKSwEJr7WErAkdAYeVQgFTmDWsa8e2NI1e14XbWz9Ecw==",
++      "funding": [
++        {
++          "type": "individual",
++          "url": "https://github.com/sponsors/amannn"
++        }
++      ],
++      "license": "MIT",
++      "dependencies": {
++        "@formatjs/fast-memoize": "^3.1.0",
++        "@schummar/icu-type-parser": "1.21.5",
++        "icu-minify": "^4.13.4",
++        "intl-messageformat": "^11.1.0"
++      },
++      "peerDependencies": {
++        "react": "^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0"
++      }
++    },
+     "node_modules/which": {
+       "version": "2.0.2",
+       "resolved": "https://registry.npmjs.org/which/-/which-2.0.2.tgz",
+diff --git a/package.json b/package.json
+index b68e53d..3d2c710 100644
+--- a/package.json
++++ b/package.json
+@@ -11,6 +11,7 @@
+   "dependencies": {
+     "framer-motion": "^12.42.2",
+     "next": "16.2.12",
++    "next-intl": "^4.13.4",
+     "react": "19.2.4",
+     "react-dom": "19.2.4",
+     "resend": "^6.18.0"

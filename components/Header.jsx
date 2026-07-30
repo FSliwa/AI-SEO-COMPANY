@@ -37,10 +37,10 @@ export default function Header() {
     if (menuOpen) {
       closeMenu();
     } else {
-      const rect = e.currentTarget('getBoundingClientRect')();
+      const rect = e.currentTarget.getBoundingClientRect();
       // Ensure we get valid coordinates, default to top right if something fails
-      const x = rect('left') > 0 ? rect('left') + rect('width') / 2 : window.innerWidth - 40;
-      const y = rect('top') > 0 ? rect('top') + rect('height') / 2 : 40;
+      const x = rect.left > 0 ? rect.left + rect.width / 2 : window.innerWidth - 40;
+      const y = rect.top > 0 ? rect.top + rect.height / 2 : 40;
       
       setTriggerPos({ x, y });
       setMenuOpen(true);
@@ -253,7 +253,7 @@ export default function Header() {
                 <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
               <li style={{ '--delay': '0.6s' }}>
-                <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Get Free Quote'}</a>
+                <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
               </li>
             </ul>
 
