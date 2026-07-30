@@ -177,6 +177,10 @@ export default function Header() {
           <div 
             className="nav-container" 
             style={{ 
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              left: 0,
               maxWidth: scrolled ? 'var(--container-width)' : '100%', 
               padding: scrolled ? '0 1.5rem' : '0 3vw',
               margin: '0 auto',
@@ -184,7 +188,8 @@ export default function Header() {
               display: 'flex',
               justifyContent: 'flex-end',
               paddingTop: scrolled ? '0.9rem' : '1.35rem',
-              height: scrolled ? 'auto' : 'auto'
+              height: scrolled ? 'auto' : 'auto',
+              zIndex: 10
             }}
           >
             <button
@@ -201,7 +206,7 @@ export default function Header() {
             className="kota-fullscreen-content container"
             style={{ 
               justifyContent: 'flex-start',
-              paddingTop: '1rem' 
+              paddingTop: scrolled ? '0.9rem' : '1.35rem' 
             }}
           >
             <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
@@ -236,7 +241,7 @@ export default function Header() {
                 <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
               <li style={{ '--delay': '0.6s' }}>
-                <a href="#" onClick={closeMenu} style={{ color: 'var(--color-primary-light)' }}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
+                <a href="#" onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
               </li>
             </ul>
 

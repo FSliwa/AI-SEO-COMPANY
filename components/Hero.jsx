@@ -50,34 +50,34 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.98, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}
+          style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}
         >
-          <h1 
-            style={{
-              fontSize: 'clamp(2.5rem, 6vw, 7rem)',
-              fontWeight: 800,
-              color: '#FFFFFF',
-              lineHeight: 1.05,
-              letterSpacing: '-0.03em',
-              textTransform: 'uppercase',
-              textShadow: '0 20px 40px rgba(0,0,0,0.65), 0 0 30px rgba(216,90,48,0.3)',
-              margin: 0,
-              fontFamily: "'Inter', sans-serif"
-            }}
-          >
-            Agencja SEO Warszawa<br />
-            <span style={{ 
-              display: 'block', 
-              fontSize: 'clamp(1.5rem, 3.5vw, 4rem)',
-              fontWeight: 500,
-              color: 'rgba(255, 255, 255, 0.85)',
-              marginTop: '1rem',
-              letterSpacing: '-0.01em',
-              textTransform: 'none'
-            }}>
-              strony i pozycjonowanie, które budują sprzedaż
-            </span>
+          <h1 className="sr-only">
+            Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż
           </h1>
+          
+          <motion.img 
+            src="/hero-text.svg" 
+            alt="seo i strony internetowe które budują sprzedaż" 
+            style={{ 
+              width: '100%', 
+              height: 'auto', 
+              maxHeight: '75vh',
+              objectFit: 'contain',
+              display: 'block',
+              filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.65)) drop-shadow(0 0 30px rgba(216,90,48,0.3))'
+            }} 
+            animate={{ 
+              y: [0, -12, 0],
+              scale: [1, 1.012, 1],
+              filter: [
+                'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))',
+                'drop-shadow(0 25px 45px rgba(0,0,0,0.7)) drop-shadow(0 0 40px rgba(216,90,48,0.4))',
+                'drop-shadow(0 15px 35px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(216,90,48,0.2))'
+              ]
+            }}
+            transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+          />
         </motion.div>
       </div>
 

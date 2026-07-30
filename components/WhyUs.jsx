@@ -115,6 +115,19 @@ export default function WhyUs() {
     const cards = container.querySelectorAll('.whyus-card-item');
     if (!cards || !cards.length) return;
 
+    // Fix for large padding: if scrolled to the very left edge, always select the first item
+    if (container.scrollLeft <= 20) {
+      setActiveIndex(0);
+      return;
+    }
+
+    // If scrolled to the very right edge, always select the last item
+    // Adding 20px tolerance for sub-pixel rendering differences
+    if (Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 20) {
+      setActiveIndex(whyUsCards.length - 1);
+      return;
+    }
+
     const containerRect = container.getBoundingClientRect();
     const containerCenterX = containerRect.left + containerRect.width / 2;
 

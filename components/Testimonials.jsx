@@ -115,24 +115,76 @@ export default function Testimonials() {
     <section className="testimonials" id="testimonials" style={{ padding: '8rem 0', overflow: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         <Reveal>
-          <div className="section-header center" style={{ textAlign: 'center', marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+          <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '3.5rem', width: '100%', textAlign: 'left' }}>
+            <div style={{ maxWidth: '840px' }}>
+              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
+                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+              </div>
+              <h2 style={{ 
+                fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
+                fontWeight: 700, 
+                color: '#1D1D1F', 
+                letterSpacing: '-0.04em',
+                marginBottom: '1rem',
+                lineHeight: 1.15
+              }}>
+                {lang === 'pl' ? 'Doświadczenia i Rekomendacje' : 'Client Endorsements'}
+              </h2>
+              <p style={{ color: '#6E6E73', fontSize: '1.25rem', margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+                {lang === 'pl' 
+                  ? 'Efekty, które budują zaufanie. Poznaj opinie partnerów i zobacz realne rezultaty.'
+                  : 'Impact that builds trust. Explore feedback from our partners and see real results.'}
+              </p>
             </div>
-            <h2 style={{ 
-              fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
-              fontWeight: 700, 
-              color: '#1D1D1F', 
-              letterSpacing: '-0.04em',
-              marginBottom: '1rem'
-            }}>
-              {lang === 'pl' ? 'Doświadczenia i Rekomendacje' : 'Client Endorsements'}
-            </h2>
-            <p style={{ color: '#6E6E73', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto', fontWeight: 500 }}>
-              {lang === 'pl' 
-                ? 'Efekty, które budują zaufanie. Poznaj opinie partnerów i zobacz realne rezultaty.'
-                : 'Impact that builds trust. Explore feedback from our partners and see real results.'}
-            </p>
+            
+            {/* Navigation Arrows */}
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexShrink: 0, marginBottom: '0.5rem' }}>
+              <button 
+                onClick={scrollPrev}
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: '#E8E8ED',
+                  border: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                aria-label="Previous"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <button 
+                onClick={scrollNext}
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: '#E8E8ED',
+                  border: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                aria-label="Next"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -262,29 +314,6 @@ export default function Testimonials() {
         </RevealStagger>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '3rem' }}>
-        <button 
-          onClick={scrollPrev}
-          style={{
-            width: '48px', height: '48px', borderRadius: '50%', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.05)', transition: 'all 0.2s ease'
-          }}
-          aria-label="Previous"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-        </button>
-        <button 
-          onClick={scrollNext}
-          style={{
-            width: '48px', height: '48px', borderRadius: '50%', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.05)', transition: 'all 0.2s ease'
-          }}
-          aria-label="Next"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-        </button>
       </div>
     </section>
   );
