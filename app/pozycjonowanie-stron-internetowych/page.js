@@ -8,13 +8,7 @@ export const metadata = {
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Contact from '@/components/Contact';
-import Pricing from '@/components/Pricing';
-import ServiceCarousel from '@/components/service/ServiceCarousel';
-import AppleFaq from '@/components/service/AppleFaq';
-import SubpagePortfolio from '@/components/service/SubpagePortfolio';
-import ServiceBlogGrid from '@/components/service/ServiceBlogGrid';
-import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+import PozycjonowanieClient from '@/components/PozycjonowanieClient';
 
 const faqData = [
   {
@@ -141,104 +135,7 @@ export default function PozycjonowanieStronPage() {
   return (
     <>
       <Header />
-      <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
-        
-        {/* Hero Banner - Apple Style Minimalist */}
-        <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
-          <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <Reveal>
-              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Pozycjonowanie Stron
-              </div>
-              
-              <h1 style={{ 
-                fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
-                fontWeight: 700, 
-                lineHeight: 1.05, 
-                color: 'var(--color-text-main)', 
-                marginBottom: '1.5rem', 
-                letterSpacing: '-0.04em'
-              }}>
-                Pozycjonowanie stron internetowych — <br />Organiczny Wzrost Maksymalna Konwersja
-              </h1>
-              <p style={{ 
-                fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 
-                color: '#6E6E73', 
-                lineHeight: 1.5, 
-                maxWidth: '650px', 
-                margin: '0 auto 3rem auto',
-                fontWeight: 500,
-                letterSpacing: '-0.01em'
-              }}>
-                Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę.
-              </p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
-                  Zamów Wycenę
-                </a>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Apple Interactive Carousel Section (Why Us) */}
-        <ServiceCarousel 
-          tag="FILARY SKALOWANIA WIDOCZNOŚCI"
-          title="Przewaga w Wynikach Organicznych"
-          subtitle="Odkryj mechanizmy, które napędzają wzrost Twojego biznesu w wyszukiwarce Google."
-          items={carouselItems}
-        />
-
-        {/* Process Section - Apple Style Minimal Grid */}
-        <section style={{ padding: '120px 0' }}>
-          <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
-            <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-                Jak Działamy
-              </h2>
-              <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
-                Trzyetapowa strategia wzrostu oparta na twardych danych analitycznych.
-              </p>
-            </Reveal>
-
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 1</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Audyt Techniczny &amp; CWV</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Eliminujemy błędy indeksowania, przyspieszamy ładowanie i poprawiamy architekturę linkowania wewnętrznego.</p>
-              </RevealItem>
-              
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 2</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Content Marketing</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania.</p>
-              </RevealItem>
-              
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>KROK 3</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Link Building</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.</p>
-              </RevealItem>
-            </RevealStagger>
-          </div>
-        </section>
-
-        {/* Portfolio Section */}
-        <SubpagePortfolio 
-          title="Scenariusze Wzrostu i Wyniki" 
-          subtitle="Sprawdzone wzorce skalowania widoczności i konwersji w modelu AI SEO"
-          cases={portfolioCases} 
-          layout="vertical"
-        />
-
-        {/* Pricing */}
-        <Pricing />
-
-        {/* FAQ */}
-        <AppleFaq faqData={faqData} title="Najczęstsze pytania" />
-
-        <Contact />
-      </main>
+      <PozycjonowanieClient faqData={faqData} portfolioCases={portfolioCases} carouselItems={carouselItems} />
       <Footer />
     </>
   );

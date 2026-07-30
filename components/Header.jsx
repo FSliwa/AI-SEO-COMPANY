@@ -27,12 +27,13 @@ export default function Header() {
       closeMenu();
     } else {
       const rect = e.currentTarget.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
+      // Ensure we get valid coordinates, default to top right if something fails
+      const x = rect.left > 0 ? rect.left + rect.width / 2 : window.innerWidth - 40;
+      const y = rect.top > 0 ? rect.top + rect.height / 2 : 40;
+      
       setTriggerPos({ x, y });
       setMenuOpen(true);
       
-      // Trigger CSS transition after mount
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setMenuExpanded(true);
@@ -165,37 +166,42 @@ export default function Header() {
 
       {/* KOTA Full-Screen Immersive Menu */}
       {menuOpen && (
-        <>
+        <div 
+          className="kota-fullscreen-menu"
+          style={{
+            clipPath: `circle(${menuExpanded ? '150vmax' : '0px'} at ${triggerPos.x}px ${triggerPos.y}px)`,
+            transition: 'clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1)'
+          }}
+        >
+          {/* Header inside the menu to match placement */}
           <div 
-            className="kota-fullscreen-menu"
-            style={{
-              clipPath: `circle(${menuExpanded ? '150vmax' : '0px'} at ${triggerPos.x}px ${triggerPos.y}px)`,
-              transition: 'clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1)'
+            className="nav-container" 
+            style={{ 
+              maxWidth: scrolled ? 'var(--container-width)' : '100%', 
+              padding: scrolled ? '0 1.5rem' : '0 3vw',
+              margin: '0 auto',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              paddingTop: scrolled ? '0.9rem' : '1.35rem',
+              height: scrolled ? 'auto' : 'auto'
             }}
           >
-          
-          {/* Fixed Close Button */}
-          <button
-            className="kota-menu-trigger close-variant"
-            onClick={closeMenu}
-            aria-label="Close Menu"
-            title="Close Menu"
-            style={{
-              position: 'fixed',
-              top: `${triggerPos.y - 24}px`,
-              left: `${triggerPos.x - 24}px`,
-              margin: 0,
-              zIndex: 2002
-            }}
-          >
-            ✕
-          </button>
+            <button
+              className="kota-menu-trigger close-variant"
+              onClick={closeMenu}
+              aria-label="Close Menu"
+              title="Close Menu"
+            >
+              ✕
+            </button>
+          </div>
 
           <div 
             className="kota-fullscreen-content container"
             style={{ 
               justifyContent: 'flex-start',
-              paddingTop: `${Math.max(triggerPos.y - 12, 40)}px` 
+              paddingTop: '1rem' 
             }}
           >
             <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
@@ -229,6 +235,9 @@ export default function Header() {
               <li style={{ '--delay': '0.55s' }}>
                 <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
+              <li style={{ '--delay': '0.6s' }}>
+                <a href="#" onClick={closeMenu} style={{ color: 'var(--color-primary-light)' }}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
+              </li>
             </ul>
 
             <div className="kota-fullscreen-footer" style={{ marginTop: 'auto' }}>
@@ -244,7 +253,6 @@ export default function Header() {
             </div>
           </div>
         </div>
-        </>
       )}
     </>
   );

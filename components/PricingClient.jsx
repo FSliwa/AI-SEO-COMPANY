@@ -5,8 +5,11 @@ import Footer from '@/components/Footer';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function PricingClient() {
+  const { lang } = useLanguage();
+
   return (
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
@@ -16,7 +19,7 @@ export default function PricingClient() {
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '850px' }}>
             <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> TRANSPARENTNA WYCENA
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'TRANSPARENTNA WYCENA' : 'TRANSPARENT PRICING'}
             </div>
             
             <h1 style={{ 
@@ -27,11 +30,13 @@ export default function PricingClient() {
               marginBottom: '1.5rem', 
               letterSpacing: '-0.02em'
             }}>
-              Ile Kosztuje Pozycjonowanie Stron? <br />
-              <span style={{ color: 'var(--color-cta)' }}>Cennik 2026</span>
+              {lang === 'pl' ? 'Ile Kosztuje Pozycjonowanie Stron?' : 'How Much Does SEO Cost?'} <br />
+              <span style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Cennik 2026' : 'Pricing 2026'}</span>
             </h1>
             <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
-              Brak ukrytych opłat i skomplikowanych umów. Płać za mierzalne wyniki i stały rozwój widoczności w wyszukiwarkach.
+              {lang === 'pl' 
+                ? 'Brak ukrytych opłat i skomplikowanych umów. Płać za mierzalne wyniki i stały rozwój widoczności w wyszukiwarkach.' 
+                : 'No hidden fees or complicated contracts. Pay for measurable results and continuous search visibility growth.'}
             </p>
           </Reveal>
         </div>

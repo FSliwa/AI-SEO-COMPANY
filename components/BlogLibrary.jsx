@@ -118,7 +118,7 @@ export default function BlogLibrary() {
             textDecoration: 'none', 
             transition: 'all 0.3s ease' 
           }}>
-            Wróć na stronę główną bloga
+            {lang === 'pl' ? 'Wróć na stronę główną bloga' : 'Back to main blog page'}
           </Link>
         </RevealItem>
       </div>

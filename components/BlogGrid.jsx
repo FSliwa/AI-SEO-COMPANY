@@ -188,7 +188,7 @@ export default function BlogGrid() {
             textDecoration: 'none', 
             transition: 'all 0.3s ease' 
           }}>
-            Pełna biblioteka artykułów
+            {lang === 'pl' ? 'Pełna biblioteka artykułów' : 'Full article library'}
           </Link>
         </RevealItem>
       </div>

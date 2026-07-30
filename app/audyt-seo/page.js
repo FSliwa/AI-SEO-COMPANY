@@ -8,11 +8,7 @@ export const metadata = {
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Contact from '@/components/Contact';
-import ServiceCarousel from '@/components/service/ServiceCarousel';
-import AppleFaq from '@/components/service/AppleFaq';
-import SubpagePortfolio from '@/components/service/SubpagePortfolio';
-import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+import AudytClient from '@/components/AudytClient';
 
 const faqAudyt = [
   {
@@ -129,100 +125,7 @@ export default function AudytSeoPage() {
   return (
     <>
       <Header />
-      <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
-        
-        {/* Hero Banner - Apple Style */}
-        <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
-          <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <Reveal>
-              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Audyt SEO
-              </div>
-              
-              <h1 style={{ 
-                fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
-                fontWeight: 700, 
-                lineHeight: 1.05, 
-                color: 'var(--color-text-main)', 
-                marginBottom: '1.5rem', 
-                letterSpacing: '-0.04em'
-              }}>
-                Audyt SEO — Diagnoza Techniczna<br />Precyzyjna Optymalizacja
-              </h1>
-              <p style={{ 
-                fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 
-                color: '#6E6E73', 
-                lineHeight: 1.5, 
-                maxWidth: '650px', 
-                margin: '0 auto 3rem auto',
-                fontWeight: 500,
-                letterSpacing: '-0.01em'
-              }}>
-                Odkryj prawdziwe przyczyny braku widoczności w Google i odblokuj pełny potencjał sprzedażowy serwisu. Weryfikujemy ponad 50 krytycznych elementów algorytmu.
-              </p>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
-                  Zamów Audyt Strony
-                </a>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Carousel */}
-        <ServiceCarousel 
-          tag="STANDARDY TECHNICZNE"
-          title="Pełna Kontrola Jakości"
-          subtitle="Poznaj kluczowe metryki, które analizujemy podczas każdego audytu."
-          items={auditCarouselItems}
-        />
-
-        {/* Feature Grid Section - Apple Bento Grid Style */}
-        <section style={{ padding: '120px 0' }}>
-          <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
-            <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-                Obszary Analizy Technicznej
-              </h2>
-              <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
-                Kompleksowa weryfikacja techniczna, strukturalna i semantyczna witryny.
-              </p>
-            </Reveal>
-
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 1</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Technikalia &amp; CWV</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.</p>
-              </RevealItem>
-              
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 2</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Treści &amp; Semantyka</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Weryfikacja intencji wyszukiwania (Search Intent), analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.</p>
-              </RevealItem>
-              
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>OBSZAR 3</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Profil Linków &amp; Autorytet</h3>
-                <p style={{ color: '#515154', fontSize: '1.1rem', lineHeight: 1.55 }}>Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.</p>
-              </RevealItem>
-            </RevealStagger>
-          </div>
-        </section>
-
-        {/* Portfolio Section */}
-        <SubpagePortfolio 
-          title="Odkryj efekty naszych audytów" 
-          subtitle="Najczęstsze błędy techniczne wykrywane podczas audytów oraz metody ich eliminacji"
-          cases={auditPortfolioCases} 
-        />
-
-        {/* FAQ Section */}
-        <AppleFaq faqData={faqAudyt} title="Najczęstsze pytania" />
-
-        <Contact />
-      </main>
+      <AudytClient faqData={faqAudyt} portfolioCases={auditPortfolioCases} carouselItems={auditCarouselItems} />
       <Footer />
     </>
   );

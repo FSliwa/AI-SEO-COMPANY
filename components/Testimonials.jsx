@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { translations } from '@/lib/translations';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
@@ -95,8 +95,21 @@ const reviewsData = [
 
 export default function Testimonials() {
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const carouselRef = useRef(null);
   const { lang } = useLanguage();
   const t = translations[lang].testimonials;
+
+  const scrollPrev = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+    }
+  };
+
+  const scrollNext = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="testimonials" id="testimonials" style={{ padding: '8rem 0', overflow: 'hidden' }}>
@@ -127,6 +140,7 @@ export default function Testimonials() {
       <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
         <RevealStagger 
           id="testimonials-carousel"
+          ref={carouselRef}
           style={{ 
             display: 'flex', 
             overflowX: 'auto', 
@@ -246,6 +260,31 @@ export default function Testimonials() {
             );
           })}
         </RevealStagger>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '3rem' }}>
+        <button 
+          onClick={scrollPrev}
+          style={{
+            width: '48px', height: '48px', borderRadius: '50%', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.05)', transition: 'all 0.2s ease'
+          }}
+          aria-label="Previous"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
+        <button 
+          onClick={scrollNext}
+          style={{
+            width: '48px', height: '48px', borderRadius: '50%', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.05)', transition: 'all 0.2s ease'
+          }}
+          aria-label="Next"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+        </button>
       </div>
     </section>
   );
