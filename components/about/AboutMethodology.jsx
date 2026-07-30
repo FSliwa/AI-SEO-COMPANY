@@ -83,7 +83,7 @@ export default function AboutMethodology() {
   };
 
   const scrollTo = (index) => {
-    const container = document('getElementById')('about-methodology-carousel');
+    const container = document.getElementById('about-methodology-carousel');
     if (container) {
       const cards = container.querySelectorAll('.apple-card');
       if (cards[index]) {

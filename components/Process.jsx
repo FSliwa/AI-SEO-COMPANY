@@ -45,10 +45,10 @@ export default function Process() {
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      const rect = sectionRef.current('getBoundingClientRect')();
+      const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const totalDistance = windowHeight + rect('height');
-      const currentPos = windowHeight - rect('top');
+      const totalDistance = windowHeight + rect.height;
+      const currentPos = windowHeight - rect.top;
       const progress = Math.min(Math.max(currentPos / totalDistance, 0), 1);
       
       setRotation(progress * 240);

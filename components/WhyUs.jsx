@@ -148,7 +148,7 @@ export default function WhyUs() {
   };
 
   const scrollTo = (index) => {
-    const container = document('getElementById')('whyus-carousel');
+    const container = document.getElementById('whyus-carousel');
     if (container) {
       const cards = container.querySelectorAll('.whyus-card-item');
       if (cards[index]) {

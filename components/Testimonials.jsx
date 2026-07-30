@@ -109,13 +109,13 @@ export default function Testimonials() {
 
   const scrollPrev = () => {
     if (carouselRef.current) {
-      carouselRef.current('scrollBy')({ left: -400, behavior: 'smooth' });
+      carouselRef.current.scrollBy({ left: -400, behavior: 'smooth' });
     }
   };
 
   const scrollNext = () => {
     if (carouselRef.current) {
-      carouselRef.current('scrollBy')({ left: 400, behavior: 'smooth' });
+      carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' });
     }
   };
 
@@ -161,8 +161,8 @@ export default function Testimonials() {
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
                 aria-label="Previous"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -184,8 +184,8 @@ export default function Testimonials() {
                   cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget('style').background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget('style').background = '#E8E8ED'}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
                 aria-label="Next"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

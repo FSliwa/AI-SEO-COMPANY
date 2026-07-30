@@ -38,7 +38,7 @@ export default function Contact() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result('error') || 'Wystąpił błąd podczas wysyłania.');
+        throw new Error(result.error || 'Wystąpił błąd podczas wysyłania.');
       }
 
       setFormSubmitted(true);
@@ -52,7 +52,7 @@ export default function Contact() {
         });
       }
 
-      e.target('reset')(); // Clear the form
+      e.target.reset(); // Clear the form
       setTimeout(() => setFormSubmitted(false), 8000);
     } catch (err) {
       setErrorMessage(err.message);

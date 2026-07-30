@@ -78,12 +78,12 @@ export default function CookiesBanner() {
             transition: 'all 0.3s ease'
           }}
           onMouseOver={(e) => {
-            e.currentTarget('style').background = '#0F172A';
-            e.currentTarget('style').transform = 'translateY(-2px)';
+            e.currentTarget.style.background = '#0F172A';
+            e.currentTarget.style.transform = 'translateY(-2px)';
           }}
           onMouseOut={(e) => {
-            e.currentTarget('style').background = 'rgba(15, 23, 42, 0.88)';
-            e.currentTarget('style').transform = 'translateY(0)';
+            e.currentTarget.style.background = 'rgba(15, 23, 42, 0.88)';
+            e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
           <span>🍪</span> {t('title').split(' ')[0]}
@@ -149,10 +149,10 @@ export default function CookiesBanner() {
                   transition: 'all 0.25s ease'
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget('style').background = 'rgba(255, 255, 255, 0.2)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget('style').background = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
                 }}
               >
                 {t('declineAll')}
@@ -175,10 +175,10 @@ export default function CookiesBanner() {
                   transition: 'all 0.25s ease'
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget('style').background = '#144e88';
+                  e.currentTarget.style.background = '#144e88';
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget('style').background = 'var(--color-primary)';
+                  e.currentTarget.style.background = 'var(--color-primary)';
                 }}
               >
                 {t('acceptAll')}
@@ -197,8 +197,8 @@ export default function CookiesBanner() {
                   textDecoration: 'underline',
                   transition: 'color 0.25s ease'
                 }}
-                onMouseOver={(e) => e.currentTarget('style').color = '#FFF'}
-                onMouseOut={(e) => e.currentTarget('style').color = '#94A3B8'}
+                onMouseOver={(e) => e.currentTarget.style.color = '#FFF'}
+                onMouseOut={(e) => e.currentTarget.style.color = '#94A3B8'}
               >
                 {t('manage')}
               </button>
@@ -276,7 +276,7 @@ export default function CookiesBanner() {
                   <input
                     type="checkbox"
                     checked={consentState.analytics}
-                    onChange={(e) => setConsentState({ ...consentState, analytics: e.target('checked') })}
+                    onChange={(e) => setConsentState({ ...consentState, analytics: e.target.checked })}
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
                   />
                 </div>
@@ -292,7 +292,7 @@ export default function CookiesBanner() {
                   <input
                     type="checkbox"
                     checked={consentState.marketing}
-                    onChange={(e) => setConsentState({ ...consentState, marketing: e.target('checked') })}
+                    onChange={(e) => setConsentState({ ...consentState, marketing: e.target.checked })}
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
                   />
                 </div>

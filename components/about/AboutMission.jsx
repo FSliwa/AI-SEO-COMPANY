@@ -135,7 +135,7 @@ export default function AboutMission() {
   };
 
   const scrollTo = (index) => {
-    const container = document('getElementById')('about-mission-carousel');
+    const container = document.getElementById('about-mission-carousel');
     if (container) {
       const cards = container.querySelectorAll('.whyus-card-item');
       if (cards[index]) {

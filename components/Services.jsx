@@ -82,13 +82,13 @@ export default function Services() {
               {lang === 'pl' ? (
                 <>
                   <li>Makiety UX/UI w Figma</li>
-                  <li>Programowanie (Next('js') & React)</li>
+                  <li>Programowanie (Next.js & React)</li>
                   <li>Integracje z CRM i systemami płatności</li>
                 </>
               ) : (
                 <>
                   <li>UX/UI Wireframes in Figma</li>
-                  <li>Development (Next('js') & React)</li>
+                  <li>Development (Next.js & React)</li>
                   <li>CRM & payment system integrations</li>
                 </>
               )}

@@ -81,7 +81,7 @@ export default function AboutTeam() {
   };
 
   const scrollTo = (index) => {
-    const container = document('getElementById')('about-team-carousel');
+    const container = document.getElementById('about-team-carousel');
     if (container) {
       const cards = container.querySelectorAll('.apple-testimonial-card');
       if (cards[index]) {
