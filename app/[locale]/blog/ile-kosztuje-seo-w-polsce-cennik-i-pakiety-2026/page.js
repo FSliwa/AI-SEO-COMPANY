@@ -69,10 +69,10 @@ export default async function ArticleCennikPage({ params }) {
               <ArticleTOC items={tocItems} />
               
               <h2 id="od-czego-zalezy-cena">What determines the price of SEO?</h2>
-              <p>The cost of positioning is never fixed. It depends strictly on your industry's competitiveness, the current technical state of your website, and your business goals. Local businesses might pay €300/month, while nationwide e-commerce stores invest over €5,000 monthly.</p>
+              <p>The cost of positioning is never fixed. It depends strictly on your industry's competitiveness, the current technical state of your website, and your business goals. Local businesses might pay €300/month for <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local positioning</Link>, while nationwide e-commerce stores invest over €5,000 monthly for a full <Link href={`/${locale}/pozycjonowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO strategy</Link>.</p>
 
               <h2 id="modele-rozliczen">Popular billing models</h2>
-              <p>Currently, the flat-fee subscription model is the absolute standard. It allows the agency to allocate a fixed budget for high-quality link building and content creation every month. The outdated "pay for results" model is practically dead and often leads to toxic SEO practices.</p>
+              <p>Currently, the flat-fee subscription model is the absolute standard. It allows the agency to allocate a fixed budget for high-quality link building and content creation every month. The outdated "pay for results" model is practically dead and often leads to toxic SEO practices. Before signing a contract, you should always request a comprehensive <Link href={`/${locale}/audyt-seo`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>technical SEO audit</Link> to understand your website's baseline.</p>
 
               <h2 id="ukryte-koszty">Hidden costs - what to watch out for?</h2>
               <p>Always verify if your SEO contract includes the cost of publishing sponsored articles and copywriting. Many cheap agencies offer positioning for €100, but later require you to pay extra for every single piece of content or backlink.</p>
@@ -81,7 +81,7 @@ export default async function ArticleCennikPage({ params }) {
                 <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
                   <h3>Check our transparent pricing</h3>
                   <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>No hidden fees. Full transparency.</p>
-                  <a href="/en/cennik-pozycjonowania" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>View Pricing Packages</a>
+                  <Link href={`/${locale}/cennik-pozycjonowania`} style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>View Pricing Packages</Link>
                 </div>
               </div>
             </div>
