@@ -18,7 +18,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
       <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <div className="section-tag" style={{ color: 'var(--color-text-main)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
+            <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
               {lang === 'pl' ? 'POZYCJONOWANIE STRON' : 'SEO OPTIMIZATION'}
             </div>
             
@@ -36,10 +36,10 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <div style={{ 
               width: '120px', 
               height: '6px', 
-              background: 'linear-gradient(90deg, #1E293B 0%, #0F172A 100%)', 
+              background: 'linear-gradient(90deg, var(--color-cta) 0%, #FF8A65 100%)', 
               margin: '0 auto 2rem auto', 
               borderRadius: '3px',
-              boxShadow: '0 4px 15px rgba(15, 23, 42, 0.4)'
+              boxShadow: '0 4px 15px rgba(216, 90, 48, 0.4)'
             }}></div>
 
             <div style={{ 
@@ -66,16 +66,16 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? 'Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę.'
-                : 'Build a lasting competitive advantage. We combine advanced technical audits with content architecture tailored for modern search engines.'}
+                ? <>Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę. Nasza usługa to: <strong>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</strong>.</>
+                : <>Build a lasting competitive advantage. We combine advanced technical audits with content architecture tailored for modern search engines. Our service is: <strong>Website SEO | B2B Optimization | AI SEO COMPANY</strong>.</>}
             </p>
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <a href="#kontakt" style={{ background: '#0F172A', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '9999px', fontSize: '1rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+              <a href="#kontakt" className="hero-btn-primary">
                 {lang === 'pl' ? 'Rozpocznij współpracę' : 'Start collaboration'} 
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href={lang === 'pl' ? '/pl#portfolio' : '/en#portfolio'} style={{ background: '#FFFFFF', color: '#0F172A', border: '1px solid #E2E8F0', padding: '1rem 2rem', borderRadius: '9999px', fontSize: '1rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', textDecoration: 'none', transition: 'all 0.2s' }}>
+              <a href={lang === 'pl' ? '/pl#portfolio' : '/en#portfolio'} className="hero-btn-secondary">
                 {lang === 'pl' ? 'Zobacz case studies' : 'View case studies'}
               </a>
             </div>

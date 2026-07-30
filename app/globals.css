@@ -458,6 +458,54 @@ button, input, select, textarea {
   color: var(--color-cta);
 }
 
+.contact-map-iframe {
+  filter: grayscale(100%) contrast(1.2) opacity(0.8);
+  transition: all 0.5s ease;
+}
+
+.contact-map-iframe:hover {
+  filter: grayscale(0%) contrast(1) opacity(1);
+}
+
+/* Hero Button Animations */
+.hero-btn-primary {
+  background: #0F172A;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-btn-primary:hover {
+  background: var(--color-cta);
+  color: #FFFFFF;
+}
+
+.hero-btn-secondary {
+  background: #FFFFFF;
+  color: #0F172A;
+  border: 1px solid #E2E8F0;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-btn-secondary:hover {
+  border-color: var(--color-cta);
+  color: var(--color-cta);
+}
+
 @keyframes kotaMenuExpand {
   0% {
     clip-path: circle(0px at var(--trigger-x, calc(100vw - 3rem)) var(--trigger-y, 3rem));

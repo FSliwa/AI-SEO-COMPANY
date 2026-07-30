@@ -192,9 +192,6 @@ export default async function PozycjonowanieStronPage({ params }) {
   return (
     <>
       <Header />
-      <div className="sr-only">
-        {locale === 'en' ? 'Website SEO | B2B Optimization | AI SEO COMPANY' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B'}
-      </div>
       <PozycjonowanieClient faqData={faqData} portfolioCases={portfolioCases} carouselItems={carouselItems} />
       <Footer />
     </>
