@@ -2325,10 +2325,9 @@ section {
 
 /* Article Content Formatting */
 .article-content {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #6E6E73;
-  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333336;
 }
 .article-content p {
   margin-bottom: 1.5rem;
@@ -2339,8 +2338,6 @@ section {
   color: #1D1D1F;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  text-align: left;
-  letter-spacing: -0.01em;
 }
 .article-content h3 {
   font-size: 1.25rem;
