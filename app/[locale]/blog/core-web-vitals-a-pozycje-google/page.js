@@ -18,6 +18,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
+import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleCwvPage({ params }) {
   const { locale } = await params;
@@ -199,19 +200,12 @@ export default async function ArticleCwvPage({ params }) {
                 Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co praktycznie gwarantuje zdobycie 100 punktów w teście PageSpeed Insights i deklasuje ociężałe monolityczne CMSy oparte o wtyczki. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
               </p>
 
-              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
-                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
-                  <h3>
-                    Przyspiesz swoją stronę
-                  </h3>
-                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
-                    Przeprowadzimy darmowy audyt techniczny Twojej witryny i wskażemy, jak poprawić wyniki PageSpeed Insights.
-                  </p>
-                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
-                    Skonsultuj Projekt
-                  </a>
-                </div>
-              </div>
+              <BlogCTA 
+                locale={locale} 
+                currentSlug="/blog/core-web-vitals-a-pozycje-google" 
+                customCtaTitlePl="Przyspiesz swoją stronę"
+                customCtaTextPl="Przeprowadzimy darmowy audyt techniczny Twojej witryny i wskażemy, jak poprawić wyniki PageSpeed Insights."
+              />
             </div>
           </Reveal>
         </div>

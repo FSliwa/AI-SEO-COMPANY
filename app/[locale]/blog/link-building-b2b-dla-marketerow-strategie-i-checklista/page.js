@@ -19,6 +19,7 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import ArticleTOC from '@/components/ArticleTOC';
 import { Reveal } from '@/components/ScrollReveal';
+import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleLinkBuildingB2bPage({ params }) {
   const { locale } = await params;
@@ -666,25 +667,12 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               <p style={{ marginBottom: '1.5rem' }}>Jak zorganizować pilotaż: wybierz jedną taktykę (np. broken link building lub outreach partnerski), zdefiniuj 10–15 celów, uruchom kampanię przez 4–6 tygodni i oceń wskaźnik odpowiedzi oraz konwersję do publikacji. Wyniki pilotażu dają realną podstawę do decyzji o skali programu.</p>
 
-              <h3>Rekomendacja</h3>
-              <p style={{ marginBottom: '1.5rem' }}><Link href={`/${locale}`}>Agencja SEO Warszawa</Link> | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY</p>
-              <p style={{ marginBottom: '1.5rem', fontStyle: 'italic', color: '#86868B' }}>Artykuł wygenerowany przez BabyLoveGrowth</p>
-
-              {/* Clear CTA Block */}
-              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
-                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
-                  <h3>
-                    Zbuduj silny autorytet w B2B
-                  </h3>
-                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
-                    Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO.
-                  </p>
-                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
-                    Skonsultuj Projekt
-                  </a>
-                </div>
-              </div>
-
+              <BlogCTA 
+                locale={locale} 
+                currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
+                customCtaTitlePl="Zbuduj silny autorytet w B2B"
+                customCtaTextPl="Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO."
+              />
             </div>
           </Reveal>
         </div>

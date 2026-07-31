@@ -19,6 +19,7 @@ import { Reveal } from '@/components/ScrollReveal';
 
 import ArticleTOC from '@/components/ArticleTOC';
 import Link from 'next/link';
+import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleLokalnePage({ params }) {
   const { locale } = await params;
@@ -204,19 +205,12 @@ export default async function ArticleLokalnePage({ params }) {
                 Wielu przedsiębiorców skupia się wyłącznie na śledzeniu pozycji w rankingu dla 2-3 głównych słów kluczowych. W rzeczywistości nowoczesne SEO wymaga szerszego spojrzenia. Oprócz tradycyjnego rankingu w wynikach organicznych, należy analizować metryki płynące bezpośrednio ze statystyk Profilu Firmy w Google (GBP). Należą do nich: liczba zapytań o trasę dojazdu (Direction Requests), liczba połączeń telefonicznych wykonanych bezpośrednio z wyników wyszukiwania oraz liczba wizyt na stronie. Połączenie tych danych ze śledzeniem zdarzeń konwersji (np. wypełnienie formularza) w Google Analytics 4 pozwala na precyzyjne obliczenie zwrotu z inwestycji (ROI) w pozycjonowanie lokalne. Sukces kampanii SEO mierzy się nie pozycją w tabelkach, lecz realnym wzrostem liczby nowych zapytań ofertowych i faktycznych klientów z Twojej najbliższej okolicy.
               </p>
 
-              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
-                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
-                  <h3>
-                    Zdominuj lokalny rynek
-                  </h3>
-                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
-                    Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię. Dzięki naszym sprawdzonym i zaawansowanym rozwiązaniom, Twój biznes zyska maksymalną widoczność na mapach Google, co przełoży się na realny wzrost zainteresowania i zapytań ofertowych ze strony Twoich bezpośrednich klientów, zamieszkujących najbliższą okolicę. Pozwól nam zająć się pozycjonowaniem i skup się na rozwijaniu swojego biznesu!
-                  </p>
-                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
-                    Skonsultuj Projekt
-                  </a>
-                </div>
-              </div>
+              <BlogCTA 
+                locale={locale} 
+                currentSlug="/blog/seo-lokalne-dla-firm-w-warszawie" 
+                customCtaTitlePl="Zdominuj lokalny rynek"
+                customCtaTextPl="Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię. Dzięki naszym sprawdzonym i zaawansowanym rozwiązaniom, Twój biznes zyska maksymalną widoczność na mapach Google, co przełoży się na realny wzrost zainteresowania i zapytań ofertowych ze strony Twoich bezpośrednich klientów, zamieszkujących najbliższą okolicę. Pozwól nam zająć się pozycjonowaniem i skup się na rozwijaniu swojego biznesu!"
+              />
             </div>
           </Reveal>
         </div>

@@ -20,6 +20,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import Link from 'next/link';
 
 import ArticleTOC from '@/components/ArticleTOC';
+import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleCennikPage({ params }) {
   const { locale } = await params;
@@ -408,6 +409,10 @@ export default async function ArticleCennikPage({ params }) {
               <p style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#86868B', textAlign: 'center' }}>
                 Artykuł wygenerowany przez BabyLoveGrowth
               </p>
+              <BlogCTA 
+                locale={locale} 
+                currentSlug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" 
+              />
             </div>
           </Reveal>
         </div>

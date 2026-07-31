@@ -19,6 +19,7 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import Link from 'next/link';
 import ArticleTOC from '@/components/ArticleTOC';
+import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleReviewsPage({ params }) {
   const { locale } = await params;
@@ -397,37 +398,11 @@ export default async function ArticleReviewsPage({ params }) {
                 </ul>
               </div>
 
-              <div style={{ marginTop: '3rem' }}>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: 600, color: '#1D1D1F' }}>{locale === 'en' ? 'Related Articles' : 'Powiązane artykuły'}</h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                  <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ textDecoration: 'none', display: 'block' }}>
-                    <div style={{ padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
-                      <h4 style={{ fontSize: '1.1rem', color: '#1D1D1F', marginBottom: '0.5rem', fontWeight: 600 }}>{locale === 'en' ? 'Local SEO for businesses - how to beat the competition?' : 'SEO Lokalne dla firm - jak wygrać z konkurencją?'}</h4>
-                      <p style={{ color: '#86868B', fontSize: '0.95rem', margin: 0, lineHeight: 1.5 }}>{locale === 'en' ? 'A practical guide on how to dominate local search results.' : 'Praktyczny poradnik jak zdominować lokalne wyniki wyszukiwania.'}</p>
-                    </div>
-                  </Link>
-                  <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`} style={{ textDecoration: 'none', display: 'block' }}>
-                    <div style={{ padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
-                      <h4 style={{ fontSize: '1.1rem', color: '#1D1D1F', marginBottom: '0.5rem', fontWeight: 600 }}>{locale === 'en' ? 'How much does SEO cost? Pricing and packages 2026' : 'Ile kosztuje SEO w Polsce? Cennik i pakiety 2026'}</h4>
-                      <p style={{ color: '#86868B', fontSize: '0.95rem', margin: 0, lineHeight: 1.5 }}>{locale === 'en' ? 'We break down the prices of SEO in Poland.' : 'Rozkładamy na czynniki pierwsze ceny pozycjonowania.'}</p>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
-                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
-                  <h3>
-                    {locale === 'en' ? 'Dominate your local market' : 'Zdominuj lokalny rynek'}
-                  </h3>
-                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
-                    {locale === 'en' ? 'Want to outpace your competition? Leave us a message below and we will prepare a dedicated strategy.' : <>Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię, w tym <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>wdrożenie procesu zbierania opinii</Link>.</>}
-                  </p>
-                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
-                    {locale === 'en' ? 'Consult Your Project' : 'Skonsultuj Projekt'}
-                  </a>
-                </div>
-              </div>
+              <BlogCTA 
+                locale={locale} 
+                currentSlug="/blog/jak-pozyskiwac-opinie-google-poradnik" 
+                customCtaTextPl={<>Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię, w tym <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>wdrożenie procesu zbierania opinii</Link>.</>}
+              />
             </div>
           </Reveal>
         </div>

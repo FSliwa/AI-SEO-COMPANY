@@ -19,6 +19,7 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import Link from 'next/link';
+import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleCanonicalPage({ params }) {
   const { locale } = await params;
@@ -323,7 +324,10 @@ export default async function ArticleCanonicalPage({ params }) {
               
               <p>Chcesz sprawdzić, jak wyglądają tagi kanoniczne na Twojej stronie? <Link href={`/${locale}#kontakt`}>Umów bezpłatną konsultację</Link>.</p>
 
-              <p><strong>Przeczytaj również:</strong> <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`}>Ile kosztuje SEO w Polsce? Cennik i pakiety 2026</Link></p>
+              <BlogCTA 
+                locale={locale} 
+                currentSlug="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026" 
+              />
             </div>
           </Reveal>
         </div>
