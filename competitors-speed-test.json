@@ -1,0 +1,37 @@
+[
+  {
+    "site": "https://widoczni.com",
+    "performance": 50,
+    "accessibility": 85,
+    "bestPractices": 57.99999999999999,
+    "seo": 92
+  },
+  {
+    "site": "https://verseo.pl",
+    "performance": 51,
+    "accessibility": 81,
+    "bestPractices": 73,
+    "seo": 92
+  },
+  {
+    "site": "https://www.whitepress.com/pl/",
+    "performance": 82,
+    "accessibility": 97,
+    "bestPractices": 96,
+    "seo": 100
+  },
+  {
+    "site": "https://digitalk.pl",
+    "performance": 57.99999999999999,
+    "accessibility": 82,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "site": "https://www.ai-seo-company.pl",
+    "performance": 68,
+    "accessibility": 96,
+    "bestPractices": 100,
+    "seo": 100
+  }
+]

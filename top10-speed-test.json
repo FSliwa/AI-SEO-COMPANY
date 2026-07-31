@@ -1,0 +1,65 @@
+[
+  {
+    "site": "https://semcore.pl",
+    "performance": 38,
+    "accessibility": 83,
+    "bestPractices": 54,
+    "seo": 92
+  },
+  {
+    "site": "https://www.artefakt.pl",
+    "performance": 64,
+    "accessibility": 80,
+    "bestPractices": 73,
+    "seo": 92
+  },
+  {
+    "site": "https://delante.pl",
+    "performance": 71,
+    "accessibility": 83,
+    "bestPractices": 54,
+    "seo": 100
+  },
+  {
+    "site": "https://bluerank.pl",
+    "performance": 67,
+    "accessibility": 83,
+    "bestPractices": 92,
+    "seo": 92
+  },
+  {
+    "site": "https://www.grupatense.pl",
+    "performance": 69,
+    "accessibility": 68,
+    "bestPractices": 73,
+    "seo": 85
+  },
+  {
+    "site": "https://www.eactive.pl",
+    "performance": 75,
+    "accessibility": 97,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  {
+    "site": "https://ks.pl",
+    "performance": 60,
+    "accessibility": 92,
+    "bestPractices": 100,
+    "seo": 85
+  },
+  {
+    "site": "https://foxstrategy.pl",
+    "performance": 56.99999999999999,
+    "accessibility": 80,
+    "bestPractices": 77,
+    "seo": 85
+  },
+  {
+    "site": "https://www.elephate.com/pl/",
+    "performance": 51,
+    "accessibility": 90,
+    "bestPractices": 54,
+    "seo": 92
+  }
+]
