@@ -107,7 +107,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p><em>Pro tip: Instead of "Leave us a review," write: "How do you rate our cooperation? Your honest comment will take 2 minutes and help us a lot." An open question instead of a rating request increases both conversion and review quality.</em></p>
 
                   <h2 id="gdzie-wyswietlaja-sie-opinie">Where Google reviews appear and why it matters</h2>
-                  <p>A Google review is user-generated content (UGC) linked to a Google Business Profile. It appears in several places simultaneously: on the Google Maps listing, in the Local Pack for local queries, in the star ratings visible directly in organic search results, and in Google Ads extensions.</p>
+                  <p>A Google review is user-generated content (UGC) linked to a Google Business Profile. It appears in several places simultaneously: on the Google Maps listing, in the <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Local Pack</Link> for local queries, in the star ratings visible directly in organic search results, and in Google Ads extensions.</p>
 
                   <h2 id="jak-opinie-wplywaja-na-seo">How Google reviews impact SEO, CTR, and sales</h2>
                   <p>Reviews affect <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO visibility</Link> through three independent mechanisms: freshness signal, search result click-through rates (CTR) via stars, and content delivering unique keywords and sales arguments.</p>
@@ -137,7 +137,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Google precisely defines what is not allowed. Violations do not end with a warning, but with immediate action from algorithms or moderators. Do not buy reviews, offer incentives, or set up review kiosks.</p>
 
                   <h2 id="proces-pozyskiwania-krok-po-kroku">How to build a review acquisition process step-by-step</h2>
-                  <p>An effective process does not happen overnight. Implement it in phases: Audit (days 1-14), Startup (days 15-45), and Optimization (days 46-90).</p>
+                  <p>An effective process does not happen overnight. Implement it in phases: <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Audit</Link> (days 1-14), Startup (days 15-45), and Optimization (days 46-90).</p>
 
                   <h2 id="szablony-wiadomosci">Message templates that actually work</h2>
                   <p>A good review request is short, personalized, and contains one CTA. The client must know it takes 2 minutes and must receive a direct link.</p>
@@ -158,10 +158,10 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Effective Google review acquisition requires a personalized CRM-based process, a safe growth pace, and full compliance with Google policies.</p>
 
                   <h2 id="dlaczego-uczciwe-opinie">Why honest reviews pay off more than you think</h2>
-                  <p>Obsession with a perfect star rating is a trap. Profiles with a few negative reviews, where the company responds concretely and empathetically, often convert better than profiles with only 5 stars and no replies.</p>
+                  <p>Obsession with a perfect star rating is a trap. Profiles with a few negative reviews, where the company responds concretely and empathetically, often convert better than profiles with only 5 stars and no replies (as seen in our <Link href={`/${locale}#portfolio`} style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>).</p>
 
                   <h2 id="ai-seo-company-wdrozy">Ai-seo-company will implement this process for you</h2>
-                  <p><Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Ai-seo-company</Link> does exactly that. We do not sell guides, we implement processes. We configure CRM integration, prepare templates, build KPI dashboards, and manage review responses in 30-60 days. You can also start with a <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>free SEO audit</Link>.</p>
+                  <p><Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Ai-seo-company</Link> does exactly that. We do not sell guides, we implement processes. We configure CRM integration, prepare templates, build KPI dashboards, and manage review responses in 30-60 days (check our <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`} style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>free SEO audit</Link>.</p>
                 </>
               ) : (
                 <>
@@ -181,7 +181,7 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <h2 id="gdzie-wyswietlaja-sie-opinie">Gdzie wyświetlają się opinie Google i dlaczego to ważne</h2>
                   <p>Opinia Google to treść tworzona przez użytkownika (UGC) powiązana z Profilem Firmy w Google (Google Business Profile). Wyświetla się w kilku miejscach jednocześnie: w wizytówce w Mapach Google, w sekcji wyników lokalnych (Local Pack) przy zapytaniach z intencją lokalną, w gwiazdkach widocznych bezpośrednio w organicznych wynikach wyszukiwania oraz w rozszerzeniach reklam Google Ads.</p>
-                  <p>Dla zapytań z lokalną intencją, takich jak „restauracja Warszawa“ czy „dentysta Kraków“, Google priorytetowo traktuje wizytówki z większą liczbą aktualnych opinii. Liczba i świeżość recenzji to ważne sygnały rankingowe, ale nie działają w izolacji – algorytm bierze pod uwagę także średnią ocen, proximity (bliskość lokalizacji), relevance (zgodność kategorii i treści z zapytaniem), kompletność danych NAP oraz poziom engagementu (odpowiedzi na opinie, zdjęcia, aktualizacje profilu).</p>
+                  <p>Dla zapytań z lokalną intencją, takich jak „restauracja Warszawa“ czy „dentysta Kraków“, Google priorytetowo traktuje wizytówki z większą liczbą aktualnych opinii. Liczba i świeżość recenzji to ważne sygnały rankingowe, ale nie działają w izolacji – algorytm bierze pod uwagę także średnią ocen, proximity (bliskość lokalizacji), relevance (zgodność kategorii i treści z zapytaniem), <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie#strategia-nap-name-address-phone`} style={{ color: '#0066cc', textDecoration: 'underline' }}>kompletność danych NAP</Link> oraz poziom engagementu (odpowiedzi na opinie, zdjęcia, aktualizacje profilu).</p>
                   <p>Profil z większą liczbą aktualnych recenzji i dobrą średnią ocen ma wyraźną przewagę nad profilem z małą liczbą recenzji, nawet jeśli ten drugi ma nieco wyższą średnią. Świeżość i regularny przyrost opinii często waży więcej niż sama ocena, bo Google traktuje je jako dowód aktywnego, żyjącego biznesu.</p>
                   <p>Opinie wspierają też SEO przez unikalną treść, która zawiera naturalne frazy długiego ogona. Klient, który pisze „świetna pizza na Mokotowie, szybka dostawa“, tworzy treść, której żaden copywriter nie napisałby lepiej pod kątem lokalnych zapytań.</p>
 
@@ -277,7 +277,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p><em>Porada profesjonalisty: Pytanie pomocnicze „Co najbardziej pomogło Ci w naszej współpracy?“ zamiast prośby o ocenę działa podwójnie: zwiększa długość recenzji i kieruje klienta na konkretne aspekty usługi, co podnosi wartość SEO opinii przez naturalne frazy kluczowe.</em></p>
 
                   <h2 id="jak-odpowiadac">Jak odpowiadać na opinie, żeby zyskać wiarygodność</h2>
-                  <p>Odpowiedź na opinię to nie formalność. To treść widoczna dla wszystkich potencjalnych klientów, którzy czytają recenzje przed podjęciem decyzji. Dobra odpowiedź na negatywną recenzję często przekonuje do zakupu skuteczniej niż seria idealnych ocen.</p>
+                  <p>Odpowiedź na opinię to nie formalność. To treść widoczna dla wszystkich potencjalnych klientów, którzy czytają recenzje przed podjęciem decyzji. Dobra odpowiedź na negatywną recenzję często przekonuje do zakupu skuteczniej niż seria idealnych ocen (co świetnie widać w naszych <Link href={`/${locale}#portfolio`} style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>).</p>
                   
                   <p><strong>Zasady odpowiedzi:</strong></p>
                   <ul>
@@ -374,16 +374,46 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <h2 id="dlaczego-uczciwe-opinie">Dlaczego uczciwe opinie opłacają się bardziej, niż myślisz</h2>
                   <p>Widzę regularnie ten sam schemat: firma inwestuje w <Link href={`/${locale}/pozycjonowanie-stron-internetowych`} style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie</Link>, poprawia stronę, uruchamia reklamy, a potem traci klientów na etapie wizytówki Google, bo ma 12 opinii z 2021 roku i średnią 3,8. Potencjalny klient porównuje ją z konkurentem, który ma 90 recenzji z ostatnich 6 miesięcy i odpowiada na każdą z nich. Wybór jest oczywisty.</p>
-                  <p>Procesowy model zbierania opinii, systematyczny, zautomatyzowany, zgodny z zasadami Google, jest też najodporniejszy na zmiany algorytmów. Autentyczność nie jest romantycznym ideałem. Jest strategią, która po prostu działa dłużej.</p>
+                  <p>Procesowy model zbierania opinii, systematyczny, zautomatyzowany, zgodny z zasadami Google, jest też najodporniejszy na zmiany algorytmów (podobnie jak dbanie o <Link href={`/${locale}/blog/core-web-vitals-a-pozycje-google`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Core Web Vitals</Link> czy architekturę strony). Autentyczność nie jest romantycznym ideałem. Jest strategią, która po prostu działa dłużej.</p>
 
                   <h2 id="ai-seo-company-wdrozy">Ai-seo-company wdroży ten proces za Ciebie w 30–60 dni</h2>
                   <p>Czytasz ten artykuł, bo chcesz więcej opinii Google. Wiesz już, co robić. Pytanie brzmi: kto to wdroży, skonfiguruje trigger w CRM, przygotuje szablony, ustawi dashboard KPI i zadba o to, żeby cały proces działał bez Twojego codziennego nadzoru?</p>
-                  <p><strong>Ai-seo-company</strong> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy. Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
+                  <p><strong>Ai-seo-company</strong> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy (sprawdź nasze <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`} style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
                   
                   <p>Jeśli chcesz wiedzieć, od czego zacząć w Twoim konkretnym przypadku, zacznij od <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>bezpłatnego audytu SEO</Link>, który obejmuje też ocenę Profilu Firmy i aktualnego stanu opinii. Albo sprawdź pełną ofertę <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO dla firm</Link> i napisz do nas bezpośrednio.</p>
                 </>
               )}
               
+              
+              <div style={{ marginTop: '3rem', padding: '2rem', background: '#F9F9F9', borderRadius: '12px', border: '1px solid #E5E5EA' }}>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600, color: '#1D1D1F' }}>{locale === 'en' ? 'Useful sources & references' : 'Przydatne źródła i odniesienia'}</h3>
+                <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', color: '#333336' }}>
+                  <li style={{ marginBottom: '0.5rem' }}><a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>{locale === 'en' ? 'Google: How to get reviews on Google' : 'Google: Jak pozyskiwać opinie w Google'}</a></li>
+                  <li style={{ marginBottom: '0.5rem' }}><a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>{locale === 'en' ? 'Google: Prohibited and restricted content' : 'Google: Treści zabronione i podlegające ograniczeniom'}</a></li>
+                  <li style={{ marginBottom: '0.5rem' }}><a href="https://whitespark.ca/local-search-ranking-factors/" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Whitespark: Local Search Ranking Factors (2026)</a></li>
+                  <li style={{ marginBottom: '0.5rem' }}><a href="https://www.searchenginejournal.com/local-seo/google-reviews/" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Search Engine Journal: The Ultimate Guide to Google Reviews</a></li>
+                  <li style={{ marginBottom: '0.5rem' }}><a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>BrightLocal: Local Consumer Review Survey</a></li>
+                </ul>
+              </div>
+
+              <div style={{ marginTop: '3rem' }}>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: 600, color: '#1D1D1F' }}>{locale === 'en' ? 'Related Articles' : 'Powiązane artykuły'}</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                  <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <div style={{ padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
+                      <h4 style={{ fontSize: '1.1rem', color: '#1D1D1F', marginBottom: '0.5rem', fontWeight: 600 }}>{locale === 'en' ? 'Local SEO for businesses - how to beat the competition?' : 'SEO Lokalne dla firm - jak wygrać z konkurencją?'}</h4>
+                      <p style={{ color: '#86868B', fontSize: '0.95rem', margin: 0, lineHeight: 1.5 }}>{locale === 'en' ? 'A practical guide on how to dominate local search results.' : 'Praktyczny poradnik jak zdominować lokalne wyniki wyszukiwania.'}</p>
+                    </div>
+                  </Link>
+                  <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`} style={{ textDecoration: 'none', display: 'block' }}>
+                    <div style={{ padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
+                      <h4 style={{ fontSize: '1.1rem', color: '#1D1D1F', marginBottom: '0.5rem', fontWeight: 600 }}>{locale === 'en' ? 'How much does SEO cost? Pricing and packages 2026' : 'Ile kosztuje SEO w Polsce? Cennik i pakiety 2026'}</h4>
+                      <p style={{ color: '#86868B', fontSize: '0.95rem', margin: 0, lineHeight: 1.5 }}>{locale === 'en' ? 'We break down the prices of SEO in Poland.' : 'Rozkładamy na czynniki pierwsze ceny pozycjonowania.'}</p>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
                 <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
                   <h3>

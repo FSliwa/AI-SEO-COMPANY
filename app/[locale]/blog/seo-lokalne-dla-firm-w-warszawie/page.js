@@ -18,6 +18,7 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 
 import ArticleTOC from '@/components/ArticleTOC';
+import Link from 'next/link';
 
 export default async function ArticleLokalnePage({ params }) {
   const { locale } = await params;
@@ -69,7 +70,7 @@ export default async function ArticleLokalnePage({ params }) {
               <p>Your website must clearly communicate your service areas. Create dedicated subpages for different districts or nearby cities. Include localized keywords in your H1 tags, meta titles, and naturally within the body content. Embedding a Google Map on your contact page also provides a strong local signal.</p>
 
               <h2 id="opinie">The Power of Reviews</h2>
-              <p>Online reviews are a critical ranking factor in the local pack. Implement a systemic approach to asking satisfied customers for feedback. More genuine, high-rating reviews will directly impact your click-through rate (CTR) and overall local authority.</p>
+              <p>Online reviews are a critical ranking factor in the local pack. Implement a systemic approach to asking satisfied customers for feedback (see our dedicated <Link href={`/${locale}/blog/jak-pozyskiwac-opinie-google-poradnik`} style={{ color: '#0066cc', textDecoration: 'underline' }}>guide on getting Google reviews</Link>). More genuine, high-rating reviews will directly impact your click-through rate (CTR) and overall local authority.</p>
               
               <h2 id="local-citations">Local Citations and Directory Listings</h2>
               <p>Beyond your Google Business Profile, your business needs consistent representation across the broader internet. This is where Local Citations come into play. A local citation is any online mention of the name, address, and phone number (NAP) of your local business. Citations can occur on local business directories, on websites and apps, and on social platforms. When search engines like Google scan the web, they look for these consistent data points to verify your business's legitimacy. Having your business listed on reputable national directories (like Yelp or YellowPages) as well as highly specific local or industry niches (like a city chamber of commerce) significantly boosts your local trust score. However, inconsistency is a local SEO killer. If your phone number is different on Yelp compared to Google Maps, it creates confusion for the search algorithms, resulting in a lower ranking.</p>
@@ -171,7 +172,7 @@ export default async function ArticleLokalnePage({ params }) {
 
               <h2 id="znaczenie-prawdziwych-recenzji-od-klient-w">Znaczenie prawdziwych recenzji od klientów</h2>
               <p style={{ marginBottom: '1.5rem', color: '#333336' }}>
-                W Warszawie konkurencja z 500 pozytywnymi opiniami zawsze zdominuje firmę, która ma ich tylko 10. Kluczem do lokalnego SEO jest wdrożenie w firmie procesu ciągłego pozyskiwania opinii. Pamiętaj jednak o dwóch zasadach:
+                W Warszawie konkurencja z 500 pozytywnymi opiniami zawsze zdominuje firmę, która ma ich tylko 10. Kluczem do lokalnego SEO jest wdrożenie w firmie procesu ciągłego pozyskiwania opinii (zobacz nasz dedykowany <Link href={`/${locale}/blog/jak-pozyskiwac-opinie-google-poradnik`} style={{ color: '#0066cc', textDecoration: 'underline' }}>poradnik jak zdobywać opinie Google</Link>). Pamiętaj jednak o dwóch zasadach:
               </p>
               <ul>
                 <li>Google premiuje opinie zawierające odpowiednie frazy (np. "Polecam tę agencję SEO z Warszawy").</li>
