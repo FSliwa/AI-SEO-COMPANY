@@ -29,11 +29,11 @@ export default function BlogSeoText() {
           </div>
         ) : (
           <div style={{ color: '#333336', fontSize: '1.05rem', lineHeight: '1.8' }}>
-            <h2 style={{ color: '#1D1D1F', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '700' }}>Nasze Najnowsze Artykuły o SEO i Web Designie</h2>
+            <h2 style={{ color: '#1D1D1F', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '700' }}>Nasze Najnowsze Artykuły o Pozycjonowaniu i Web Designie</h2>
             <p style={{ marginBottom: '1.5rem' }}>
               Witamy w najważniejszym miejscu dla właścicieli firm, marketerów i deweloperów, którzy chcą skutecznie skalować swoją obecność w internecie. Nasz blog to skrupulatnie opracowana baza wiedzy, w której dogłębnie analizujemy zawiłości pozycjonowania stron internetowych (SEO), nowoczesnego projektowania stron (Web Design) oraz optymalizacji współczynnika konwersji (CRO). W dzisiejszym, wysoce konkurencyjnym środowisku cyfrowym, poleganie na przestarzałych taktykach marketingowych to za mało. Dlatego nasz zespół ekspertów nieustannie bada aktualizacje algorytmów Google, trendy sztucznej inteligencji (AI) i wzorce zachowań użytkowników, aby dostarczać strategie, które realnie działają.
             </p>
-            <h3 style={{ color: '#1D1D1F', fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Opanowanie Technicznego SEO i Strategii Treści</h3>
+            <h3 style={{ color: '#1D1D1F', fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Opanowanie Aspektów Technicznych i Strategii Treści</h3>
             <p style={{ marginBottom: '1.5rem' }}>
               Jednym z głównych filarów udanej strategii online jest techniczne SEO. Nasze artykuły obejmują wszystko: od optymalizacji Core Web Vitals (LCP, FID, CLS), poprawy czasu odpowiedzi serwera (TTFB) i zarządzania budżetem indeksowania, po poprawne wdrażanie znaczników schema i tagów kanonicznych. Rozumiemy, że techniczny żargon może być przytłaczający, dlatego rozkładamy skomplikowane koncepcje na proste poradniki krok po kroku i praktyczne check-listy. Ponadto, kładziemy ogromny nacisk na architekturę treści. Odkryj, jak tworzyć klastry tematyczne, wykorzystywać semantyczny HTML i pisać teksty idealnie dopasowane do intencji wyszukiwania (Search Intent).
             </p>

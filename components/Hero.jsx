@@ -56,17 +56,17 @@ export default function Hero() {
           <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
             {lang === 'en' 
               ? <><strong>SEOTools, SEO and Search Optimization Services for Agencies, Content in Marketing Agency</strong></>
-              : <><strong>Agencja Marketingowa SEO Warszawa: Cennik Pozycjonowania, Audyt, Optymalizacja SEO, Projektowanie Stron Internetowych, Projekt Strony i Pozycjonowanie Stron</strong>, które budują sprzedaż</>}
+              : <><strong>Agencja Marketingowa SEO Warszawa: SEO Lokalne, Cennik Pozycjonowania, Audyt, Optymalizacja SEO, Projektowanie Stron Internetowych, Projekt Strony i Pozycjonowanie Stron</strong>, które budują sprzedaż</>}
           </h1>
           <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <motion.img 
-              src={lang === 'en' ? '/seotools-seo-and-search-optimization-services-for-agencies-content-in-marketing-agency-en.svg' : '/agencja-marketingowa-seo-warszawa-cennik-pozycjonowania-audyt-optymalizacja-seo-projektowanie-stron-internetowych-projekt-strony-i-pozycjonowanie-stron.svg'} 
+              src={lang === 'en' ? '/seotools-seo-and-search-optimization-services-for-agencies-content-in-marketing-agency-en.svg' : '/agencja-marketingowa-seo-warszawa-seo-lokalne-cennik-pozycjonowania-audyt-optymalizacja-seo-projektowanie-stron-internetowych-projekt-strony-i-pozycjonowanie-stron.svg'} 
               alt={lang === 'en' 
                 ? 'SEOTools, SEO and Search Optimization Services for Agencies, Content in Marketing Agency' 
-                : 'Agencja Marketingowa SEO Warszawa, Cennik Pozycjonowania, Audyt, Optymalizacja SEO, Projektowanie Stron Internetowych, Projekt Strony i Pozycjonowanie Stron, które budują sprzedaż'} 
+                : 'Agencja Marketingowa SEO Warszawa, SEO Lokalne, Cennik Pozycjonowania, Audyt, Optymalizacja SEO, Projektowanie Stron Internetowych, Projekt Strony i Pozycjonowanie Stron, które budują sprzedaż'} 
               title={lang === 'en' 
                 ? 'SEOTools, SEO and Search Optimization Services for Agencies, Content in Marketing Agency' 
-                : 'Agencja Marketingowa SEO Warszawa, Cennik Pozycjonowania, Audyt, Optymalizacja SEO, Projektowanie Stron Internetowych, Projekt Strony i Pozycjonowanie Stron'}
+                : 'Agencja Marketingowa SEO Warszawa, SEO Lokalne, Cennik Pozycjonowania, Audyt, Optymalizacja SEO, Projektowanie Stron Internetowych, Projekt Strony i Pozycjonowanie Stron'}
               width={1600}
               height={294}
               fetchPriority="high"
