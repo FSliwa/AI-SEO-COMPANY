@@ -76,6 +76,7 @@ export default function Hero() {
               width={1600}
               height={294}
               priority={true}
+              unoptimized={true}
               style={{ 
                 width: '100%', 
                 height: 'auto', 
