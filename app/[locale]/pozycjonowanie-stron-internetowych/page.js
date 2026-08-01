@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `/en/seo-services` : `/pozycjonowanie-stron-internetowych`,
     languages: {
       'pl': `/pozycjonowanie-stron-internetowych`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `/pozycjonowanie-stron-internetowych`,
       'en': `/en/seo-services`
     }
   },

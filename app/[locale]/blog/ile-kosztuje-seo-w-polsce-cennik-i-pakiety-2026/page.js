@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
     languages: {
       'pl': `https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
       'en': `https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026`
     }
   },

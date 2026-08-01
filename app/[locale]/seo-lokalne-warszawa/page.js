@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `/en/local-seo-warsaw` : `/seo-lokalne-warszawa`,
     languages: {
       'pl': `/seo-lokalne-warszawa`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `/seo-lokalne-warszawa`,
       'en': `/en/local-seo-warsaw`
     }
   },

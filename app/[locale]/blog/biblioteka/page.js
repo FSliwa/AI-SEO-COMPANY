@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `/en/blog/library` : `/blog/biblioteka`,
     languages: {
       'pl': `/blog/biblioteka`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `/blog/biblioteka`,
       'en': `/en/blog/library`
     }
   },

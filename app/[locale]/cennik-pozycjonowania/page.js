@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `/en/seo-pricing` : `/cennik-pozycjonowania`,
     languages: {
       'pl': `/cennik-pozycjonowania`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `/cennik-pozycjonowania`,
       'en': `/en/seo-pricing`
     }
   },

@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/local-seo-for-companies` : `https://www.ai-seo-company.pl/blog/seo-lokalne-dla-firm-w-warszawie`,
     languages: {
       'pl': `https://www.ai-seo-company.pl/blog/seo-lokalne-dla-firm-w-warszawie`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `https://www.ai-seo-company.pl/blog/seo-lokalne-dla-firm-w-warszawie`,
       'en': `https://www.ai-seo-company.pl/en/blog/local-seo-for-companies`
     }
   },

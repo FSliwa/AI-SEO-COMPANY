@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist` : `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
     languages: {
       'pl': `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
       'en': `https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist`
     }
   },

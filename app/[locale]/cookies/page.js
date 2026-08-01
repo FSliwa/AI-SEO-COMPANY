@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `/en/cookies` : `/cookies`,
     languages: {
       'pl': `/cookies`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `/cookies`,
       'en': `/en/cookies`
     }
   },

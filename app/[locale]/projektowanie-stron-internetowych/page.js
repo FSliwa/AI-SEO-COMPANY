@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `/en/web-design` : `/projektowanie-stron-internetowych`,
     languages: {
       'pl': `/projektowanie-stron-internetowych`,
-      'x-default': (/'pl':\s*/, ''),
+      'x-default': `/projektowanie-stron-internetowych`,
       'en': `/en/web-design`
     }
   },
