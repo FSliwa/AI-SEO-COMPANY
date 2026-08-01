@@ -92,6 +92,11 @@ export default async function ArticleReviewsPage({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <p style={{ fontSize: '1.2rem', color: '#6E6E73', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto 3rem auto' }}>
+                {locale === 'en' 
+                  ? 'Learning how to effectively get Google reviews is one of the most critical steps for local SEO success. Positive customer feedback builds immediate trust and improves your local map pack rankings.' 
+                  : 'Pozyskiwanie opinii w Google to jeden z najważniejszych elementów skutecznego pozycjonowania lokalnego. Pozytywne recenzje klientów budują zaufanie i przekładają się bezpośrednio na wyższe pozycje w Mapach Google.'}
+              </p>
               {locale === 'en' ? (
                 <>
                   <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
@@ -393,7 +398,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <li style={{ marginBottom: '0.5rem' }}><a href="https://support.google.com/business/answer/4596773" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Google: Manage your reviews and ratings (Best practices)</a></li>
                   <li style={{ marginBottom: '0.5rem' }}><a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>{locale === 'en' ? 'Google: Prohibited and restricted content' : 'Google: Treści zabronione i podlegające ograniczeniom'}</a></li>
                   <li style={{ marginBottom: '0.5rem' }}><a href="https://whitespark.ca/local-search-ranking-factors/" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Whitespark: Local Search Ranking Factors (2026)</a></li>
-                  <li style={{ marginBottom: '0.5rem' }}><a href="https://www.searchenginejournal.com/local-seo/google-reviews/" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Search Engine Journal: The Ultimate Guide to Google Reviews</a></li>
+                  <li style={{ marginBottom: '0.5rem' }}><a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>{locale === 'en' ? 'Google Business Profile Help: Get Google Reviews' : 'Pomoc Google Business Profile: Pozyskiwanie opinii w Google'}</a></li>
                   <li style={{ marginBottom: '0.5rem' }}><a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>BrightLocal: Local Consumer Review Survey</a></li>
                 </ul>
               </div>
