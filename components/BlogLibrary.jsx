@@ -31,12 +31,12 @@ export default function BlogLibrary() {
               letterSpacing: '-0.04em',
               marginBottom: '1rem'
             }}>
-              {lang === 'pl' ? 'Biblioteka Artykułów SEO i IT' : 'SEO and IT Articles Library'}
+              {lang === 'pl' ? 'Biblioteka Artykułów SEO i IT' : 'SEO Content Library & Strategies'}
             </h1>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
               {lang === 'pl' 
                 ? 'Biblioteka Artykułów SEO i Web Design od ekspertów AI SEO COMPANY. Wszystkie publikacje naszego zespołu w jednym miejscu.' 
-                : 'SEO and Web Design Articles Library from AI SEO COMPANY experts. All publications from our team in one place.'}
+                : 'SEO and Web Design Content Library from AI SEO COMPANY experts. All publications and marketing strategies from our team in one place.'}
             </p>
           </div>
         </Reveal>

@@ -60,10 +60,13 @@ export default function Hero() {
           </h1>
           <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <motion.img 
-              src={lang === 'en' ? '/hero-text-en.svg' : '/hero-text.svg'} 
+              src={lang === 'en' ? '/seo-services-hero-text-en.svg' : '/agencja-seo-warszawa-hero-text.svg'} 
               alt={lang === 'en' 
                 ? 'SEO Services & Optimization Service - Professional Marketing Agency' 
                 : 'Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż'} 
+              title={lang === 'en' 
+                ? 'SEO Services and Marketing Agency' 
+                : 'Agencja SEO Warszawa - Skuteczne Pozycjonowanie Stron'}
               width={1600}
               height={294}
               fetchPriority="high"

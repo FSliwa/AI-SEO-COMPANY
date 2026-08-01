@@ -139,7 +139,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               {/* ===== SECTION: Strategie ===== */}
               <h2 id="strategie">Effective B2B link building strategies step-by-step</h2>
               
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Creating and promoting research-driven assets</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Creating and promoting research-driven assets</h3>
               <p style={{ marginBottom: '1.5rem' }}>An industry report, benchmark, or survey is the best currency for pitching. One well-prepared study can bring many natural backlinks from publications that quote your data themselves.</p>
               <p style={{ marginBottom: '0.5rem' }}>How to do it:</p>
               <ul>
@@ -150,13 +150,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>After publication, monitor mentions and requests for quotes using <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> or <a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a>.</li>
               </ul>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR and expert comments</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR and expert comments</h3>
               <p style={{ marginBottom: '1.5rem' }}>Digital PR in B2B is about providing unique data and practitioner comments. Industry editors are looking for experts with real experience, not PR releases. Practical process: register on platforms connecting journalists with experts (<a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a>, formerly HARO, and <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a>) and respond to queries within 2–4 hours of their appearance. Speed of response is key here.</p>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Guest articles with a byline</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Guest articles with a byline</h3>
               <p style={{ marginBottom: '1.5rem' }}>Choose 5–10 publications that your buyers actually read. Propose a topic that solves a specific reader problem rather than promoting your company. Editorial boards reject pitches that sound like ads.</p>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>4. Broken link building</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>4. Broken link building</h3>
               <p style={{ marginBottom: '1.5rem' }}>Find pages in your industry with broken links leading to non-existent resources, then propose your own resource as a replacement. Outreach conversion in this tactic is moderate and depends on segment alignment.</p>
               <p style={{ marginBottom: '0.5rem' }}>Broken link building checklist:</p>
               <ul>
@@ -166,13 +166,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Send a personalized message to the webmaster with a specific replacement proposal.</li>
               </ul>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>5. Ecosystem partnerships</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>5. Ecosystem partnerships</h3>
               <p style={{ marginBottom: '1.5rem' }}>Document all technology partners, integrators, and complementary service providers. Each of these partnerships is a potential link to an integration page, case study, or product page.</p>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>6. Thought leadership and conference activity</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>6. Thought leadership and conference activity</h3>
               <p style={{ marginBottom: '1.5rem' }}>Speaking at industry conferences, participating in podcasts, and expert panels generate links from speaker profiles, event pages, and summary articles. In B2B, buyers often trust people more than companies, so building the personal brand of key experts directly supports the link program.</p>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>7. Client case studies</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>7. Client case studies</h3>
               <p style={{ marginBottom: '1.5rem' }}>A joint case study with a client who is a recognizable brand brings a link from their site and simultaneously acts as a powerful sales argument. Propose mutual publication to the client: you describe the results, they link to your case study.</p>
               <p style={{ marginBottom: '1.5rem' }}>Pro tip: Before you start cold outreach, review existing business relationships. Partners, suppliers, and clients who already know you have a much higher response rate than cold contacts. Start with them and gather your first links without outreach costs.</p>
 
@@ -463,7 +463,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               {/* ===== SECTION: Strategie ===== */}
               <h2 id="strategie">Skuteczne strategie pozyskiwania linków B2B krok po kroku</h2>
               
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Tworzenie i promocja research-driven assets</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Tworzenie i promocja research-driven assets</h3>
               <p style={{ marginBottom: '1.5rem' }}>Raport branżowy, benchmark lub badanie ankietowe to najlepsza waluta do pitchowania. Jedno dobrze przygotowane badanie może przynieść wiele naturalnych backlinków z publikacji, które same cytują Twoje dane.</p>
               <p style={{ marginBottom: '0.5rem' }}>Jak to zrobić:</p>
               <ul>
@@ -474,13 +474,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Po publikacji monitoruj wzmianki i prośby o cytowanie przez <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> lub <a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a>.</li>
               </ul>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR i komentarze eksperckie</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR i komentarze eksperckie</h3>
               <p style={{ marginBottom: '1.5rem' }}>Digital PR w B2B polega na dostarczaniu unikalnych danych i komentarzy praktyków. Redaktorzy branżowi szukają ekspertów z realnym doświadczeniem, nie PR-owych komunikatów. Praktyczny proces: zarejestruj się w serwisach łączących dziennikarzy z ekspertami (<a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a>, dawniej HARO, oraz <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a>) i odpowiadaj na zapytania w ciągu 2–4 godzin od ich pojawienia się. Szybkość odpowiedzi jest tu kluczowa.</p>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Artykuły gościnne z byline</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Artykuły gościnne z byline</h3>
               <p style={{ marginBottom: '1.5rem' }}>Wybierz 5–10 publikacji, które Twoi kupujący rzeczywiście czytają. Zaproponuj temat, który rozwiązuje konkretny problem czytelnika, a nie promuje Twoją firmę. Redakcje odrzucają pitche, które brzmią jak reklamy.</p>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>4. Broken link building</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>4. Broken link building</h3>
               <p style={{ marginBottom: '1.5rem' }}>Znajdź strony w Twojej branży z uszkodzonymi linkami prowadzącymi do nieistniejących zasobów, a następnie zaproponuj własny zasób jako zamiennik. Konwersja outreachu w tej taktyce jest umiarkowana i zależy od dopasowania segmentu.</p>
               <p style={{ marginBottom: '0.5rem' }}>Checklista broken link building:</p>
               <ul>
@@ -490,13 +490,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Wyślij spersonalizowaną wiadomość do webmastera z konkretną propozycją zamiany.</li>
               </ul>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>5. Partnerstwa ekosystemowe</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>5. Partnerstwa ekosystemowe</h3>
               <p style={{ marginBottom: '1.5rem' }}>Udokumentuj wszystkich partnerów technologicznych, integratorów i dostawców komplementarnych usług. Każde z tych partnerstw to potencjalny link do strony integracji, case study lub strony produktowej.</p>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>6. Thought leadership i aktywność konferencyjna</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>6. Thought leadership i aktywność konferencyjna</h3>
               <p style={{ marginBottom: '1.5rem' }}>Wystąpienia na branżowych konferencjach, udział w podcastach i panelach eksperckich generują linki z profili prelegentów, stron wydarzeń i artykułów podsumowujących. W B2B kupujący często ufają ludziom bardziej niż firmom, więc budowanie marki osobistej kluczowych ekspertów bezpośrednio wspiera program linkowy.</p>
 
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>7. Case studies z klientami</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>7. Case studies z klientami</h3>
               <p style={{ marginBottom: '1.5rem' }}>Wspólne case study z klientem, który jest rozpoznawalną marką, przynosi link z jego strony i jednocześnie działa jako potężny argument sprzedażowy. Zaproponuj klientowi wzajemną publikację: Ty opisujesz wyniki, on linkuje do Twojego case study.</p>
               <p style={{ marginBottom: '1.5rem' }}>Porada profesjonalisty: Zanim zaczniesz cold outreach, przejrzyj istniejące relacje biznesowe. Partnerzy, dostawcy i klienci, którzy już Cię znają, mają znacznie wyższy wskaźnik odpowiedzi niż zimne kontakty. Zacznij od nich i zbierz pierwsze linki bez kosztów outreachu.</p>
 
