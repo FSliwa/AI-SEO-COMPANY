@@ -436,7 +436,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <ul>
                 <li><strong>SEO Standard</strong> – 1 900 zł / mies.</li>
                 <li><strong>SEO Premium</strong> – 2 500 zł / mies.</li>
-                <li><strong>Booster Pack</strong> – 2 500 zł / mies. (min. 3 miesiące) – nowa profesjonalna strona WWW za 0 zł w pakiecie + pełne pozycjonowanie + SSL + serwer + opieka techniczna.</li>
+                <li><strong>Booster Pack</strong> – 2 500 zł / mies. (min. 3 miesiące) – <strong>nowa profesjonalna strona WWW za 0 zł</strong> w pakiecie + pełne pozycjonowanie + SSL + serwer + opieka techniczna.</li>
               </ul>
               
               <p>Jeśli planujesz projekt, zacznij od bezpłatnej konsultacji. Przygotuj cel biznesowy, listę kluczowych funkcji i przykłady stron, które Ci się podobają. Szczegóły oferty i możliwość umówienia rozmowy znajdziesz na stronie <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowania stron internetowych</Link>.</p>
