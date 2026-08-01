@@ -53,7 +53,9 @@ const portfolioCases = [
     titleEn: 'Business Profile Optimization',
     description: 'Konfigurujemy Twoją wizytówkę Google od A do Z. Wdrażamy odpowiednie słowa kluczowe, precyzyjne kategorie i system postów, który przyciąga uwagę klientów przeglądających Mapy w Warszawie.',
     descriptionEn: 'We configure your Google listing from A to Z. We implement the right keywords, precise categories, and a post system that attracts customers browsing Maps in Warsaw.',
-    image: '/images/unsplash-1604871000636-074fa5117945.jpg',
+    image: '/images/pozycjonowanie-lokalne-warszawa.jpg',
+    imgAlt: 'Pozycjonowanie lokalne',
+    imgTitle: 'Pozycjonowanie lokalne',
     gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
     metric: '+150%',
     metricLabel: 'Wyświetlenia',
@@ -166,7 +168,7 @@ export default function SeoLokalneWarszawaPage() {
                 marginBottom: '1rem', 
                 letterSpacing: '-0.04em'
               }}>
-                {lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}
+                {lang === 'pl' ? 'SEO i pozycjonowanie lokalne Warszawa' : 'Local SEO Warsaw'}
               </h1>
 
               <div style={{ 
@@ -202,7 +204,7 @@ export default function SeoLokalneWarszawaPage() {
                 fontWeight: 400
               }}>
                 {lang === 'pl' 
-                  ? <>Wykorzystaj potęgę wyszukiwań lokalnych. Skuteczne pozycjonowanie pozwala skalować firmy, łącząc <span style={{ color: 'var(--color-cta)' }}>zaawansowaną analitykę ze sprawdzonymi strategiami</span>. Zdominuj swój rynek!</>
+                  ? <>Wykorzystaj potęgę wyszukiwań lokalnych. Skuteczne <strong>pozycjonowanie lokalne</strong> pozwala skalować firmy, łącząc <span style={{ color: 'var(--color-cta)' }}>zaawansowaną analitykę ze sprawdzonymi strategiami</span>. Zdominuj swój rynek!</>
                   : <>Harness the power of local searches. Effective optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
               </p>
               
@@ -232,7 +234,7 @@ export default function SeoLokalneWarszawaPage() {
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
               <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-                Dlaczego lokalność ma znaczenie?
+                Dlaczego pozycjonowanie lokalne ma znaczenie?
               </h2>
               <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
                 Zrozum, jak zachowują się użytkownicy smartfonów poszukujący usług.
@@ -243,7 +245,7 @@ export default function SeoLokalneWarszawaPage() {
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>ZASADA 1</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>Wyszukiwania z Intencją "Near Me"</h3>
-                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne pozycjonowanie lokalne sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</p>
+                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne <strong>pozycjonowanie lokalne</strong> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</p>
               </RevealItem>
               
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
