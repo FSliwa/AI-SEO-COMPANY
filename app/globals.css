@@ -494,7 +494,7 @@ button, input, select, textarea {
   background: var(--color-cta);
   z-index: -1;
   clip-path: circle(0% at 50% 50%);
-  transition: clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: clip-path 1.0s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-btn-primary:hover::before {
@@ -528,7 +528,7 @@ button, input, select, textarea {
   background: var(--color-cta);
   z-index: -1;
   clip-path: circle(0% at 50% 50%);
-  transition: clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: clip-path 1.0s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-btn-secondary:hover {
