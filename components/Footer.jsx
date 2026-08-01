@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export default function Footer() {
   const lang = useLocale();
@@ -18,9 +19,9 @@ export default function Footer() {
         <div className="container">
           <div className="footer-grid">
             <div>
-              <a href={lang === 'en' ? '/en' : '/'} className="logo" style={{ color: '#FFFFFF', marginBottom: '1rem' }}>
+              <Link href="/" className="logo" style={{ color: '#FFFFFF', marginBottom: '1rem' }}>
                 AI SEO COMPANY
-              </a>
+              </Link>
               <p style={{ fontSize: '0.9rem', maxWidth: '320px', color: '#94A3B8' }}>
                 {t('desc')}
               </p>
@@ -28,28 +29,28 @@ export default function Footer() {
             <div className="footer-col">
               <p className="footer-heading">{lang === 'pl' ? 'Nawigacja' : 'Navigation'}</p>
               <ul className="footer-links">
-                <li><a href={`${lang === 'en' ? '/en' : ''}/o-nas`}>{lang === 'pl' ? 'O nas (E-E-A-T)' : 'About Us'}</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/pozycjonowanie-stron-internetowych`}>{lang === 'pl' ? 'Pozycjonowanie stron' : 'SEO Services'}</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/audyt-seo`}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/cennik-pozycjonowania`}>{navT('pricing')}</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/blog`}>Blog SEO</a></li>
+                <li><Link href="/o-nas">{lang === 'pl' ? 'O nas (E-E-A-T)' : 'About Us'}</Link></li>
+                <li><Link href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron' : 'SEO Services'}</Link></li>
+                <li><Link href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</Link></li>
+                <li><Link href="/cennik-pozycjonowania">{navT('pricing')}</Link></li>
+                <li><Link href="/blog">Blog SEO</Link></li>
               </ul>
             </div>
             <div className="footer-col">
               <p className="footer-heading">{lang === 'pl' ? 'Usługi SEO' : 'SEO Services'}</p>
               <ul className="footer-links">
-                <li><a href={`${lang === 'en' ? '/en' : ''}/pozycjonowanie-stron-internetowych`}>{lang === 'pl' ? 'Pozycjonowanie stron WWW' : 'Website SEO'}</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/audyt-seo`}>{lang === 'pl' ? 'Audyt SEO i analiza' : 'SEO Audit & Analysis'}</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/projektowanie-stron-internetowych`}>{lang === 'pl' ? 'Projektowanie stron WWW' : 'Web Design'}</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/seo-lokalne-warszawa`}>{lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}</a></li>
+                <li><Link href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron WWW' : 'Website SEO'}</Link></li>
+                <li><Link href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO i analiza' : 'SEO Audit & Analysis'}</Link></li>
+                <li><Link href="/projektowanie-stron-internetowych">{lang === 'pl' ? 'Projektowanie stron WWW' : 'Web Design'}</Link></li>
+                <li><Link href="/seo-lokalne-warszawa">{lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}</Link></li>
               </ul>
             </div>
             <div className="footer-col">
               <p className="footer-heading">{lang === 'pl' ? 'Kontakt' : 'Contact'}</p>
               <ul className="footer-links">
                 <li><a href="mailto:kontakt@ai-seo-company.pl">kontakt@ai-seo-company.pl</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/#kontakt`}>{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</a></li>
-                <li><a href={`${lang === 'en' ? '/en' : ''}/cookies`}>{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</a></li>
+                <li><Link href="/#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</Link></li>
+                <li><Link href="/cookies">{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</Link></li>
               </ul>
             </div>
           </div>

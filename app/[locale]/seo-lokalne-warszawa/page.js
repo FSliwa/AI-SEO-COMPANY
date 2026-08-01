@@ -169,7 +169,7 @@ export default function SeoLokalneWarszawaPage() {
                 marginBottom: '1rem', 
                 letterSpacing: '-0.04em'
               }}>
-                {lang === 'pl' ? 'SEO i pozycjonowanie lokalne Warszawa' : 'Local SEO Warsaw'}
+                {lang === 'pl' ? 'SEO i pozycjonowanie lokalne Warszawa' : <><span className="sr-only">Search Engine Optimization - </span>Local SEO Warsaw</>}
               </h1>
 
               <div style={{ 
