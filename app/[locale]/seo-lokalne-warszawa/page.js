@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Local SEO | SEO Agency Near Me & SEO Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
+  title: locale === 'en' ? 'Local Search Engine Optimization | Agency & Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
@@ -157,6 +157,7 @@ export default function SeoLokalneWarszawaPage() {
         <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
           <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Reveal>
+            <span className="sr-only">Search Engine Optimization - Local SEO Warsaw</span>
               <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
                 {lang === 'pl' ? 'MARKETING LOKALNY B2B & B2C' : 'LOCAL B2B & B2C MARKETING'}
               </div>

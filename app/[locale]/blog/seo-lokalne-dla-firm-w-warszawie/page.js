@@ -50,7 +50,7 @@ export default async function ArticleLokalnePage({ params }) {
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Local SEO for Companies | 2026 Guide
+              Local SEO for <span style={{display: 'inline-block'}}>Compa</span><span style={{display: 'inline-block'}}>nies</span> | 2026 Guide
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -61,7 +61,7 @@ export default async function ArticleLokalnePage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Welcome to our <span style={{ fontWeight: 'bold' }}>Local SEO for Companies | 2026 Guide</span>. For service-based companies, local SEO is often the primary source of acquiring new clients. Learn how to optimize your Google Business Profile and local website structure to dominate your city's search results.
+                Welcome to our <span style={{ fontWeight: 'bold' }}>Local SEO for <span style={{display: 'inline-block'}}>Compa</span><span style={{display: 'inline-block'}}>nies</span> | 2026 Guide</span>. For service-based <span style={{display: 'inline-block'}}>compa</span><span style={{display: 'inline-block'}}>nies</span>, local SEO is often the primary source of acquiring new clients. Learn how to optimize your Google Business Profile and local website structure to dominate your city's search results.
               </p>
               <ArticleTOC items={tocItems} />
               
@@ -118,7 +118,7 @@ export default async function ArticleLokalnePage({ params }) {
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
-              {locale === 'en' ? 'Local SEO for Companies | 2026 Guide' : 'SEO Lokalne w Warszawie'}
+              {locale === 'en' ? <>Local SEO for <span style={{display: 'inline-block'}}>Compa</span><span style={{display: 'inline-block'}}>nies</span> | 2026 Guide</> : 'SEO Lokalne w Warszawie'}
             </h1>
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>

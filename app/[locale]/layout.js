@@ -4,7 +4,7 @@ import { getMessages } from 'next-intl/server';
 import CookiesBanner from '@/components/CookiesBanner';
 
 export const metadata = {
-  metadataBase: new URL('https://www.ai-seo-company.pl'),
+  metadataBase: new URL('https://www.ai-seo-company.pl/'),
   title: 'Agencja SEO Warszawa | Pozycjonowanie Stron | AI SEO COMPANY',
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
   icons: {
@@ -17,7 +17,7 @@ export const metadata = {
   openGraph: {
     title: 'Agencja SEO Warszawa | Pozycjonowanie i Web Design',
     description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe zoptymalizowane pod konwersję, audyt SEO i wysokie pozycje w Google.',
-    url: 'https://www.ai-seo-company.pl',
+    url: 'https://www.ai-seo-company.pl/',
     siteName: 'AI SEO COMPANY',
     locale: 'pl_PL',
     type: 'website',

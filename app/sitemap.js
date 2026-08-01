@@ -13,7 +13,7 @@ export default function sitemap() {
     // English version
     const enSlug = routing.pathnames[route].en || route;
     allRoutes.push({
-      url: `${baseUrl}/en${enSlug === '/' ? '' : enSlug}`,
+      url: `${baseUrl}/en${enSlug === '/' ? '/' : enSlug}`,
       lastModified: currentDate,
       changeFrequency: route === '/' || route.startsWith('/blog') ? 'weekly' : 'monthly',
       priority: route === '/' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85,
@@ -21,7 +21,7 @@ export default function sitemap() {
     // Polish version
     const plSlug = routing.pathnames[route].pl || route;
     allRoutes.push({
-      url: `${baseUrl}${plSlug === '/' ? '' : plSlug}`,
+      url: `${baseUrl}${plSlug === '/' ? '/' : plSlug}`,
       lastModified: currentDate,
       changeFrequency: route === '/' || route.startsWith('/blog') ? 'weekly' : 'monthly',
       priority: route === '/' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85,
