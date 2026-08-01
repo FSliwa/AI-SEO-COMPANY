@@ -9,10 +9,10 @@ export const metadata = {
   description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
   icons: {
     icon: [
-      { url: '/ai-seo-company-logotyp.svg', type: 'image/svg+xml', sizes: 'any' }
+      { url: '/ai-seo-company-logotyp.svg?v=2', type: 'image/svg+xml', sizes: 'any' }
     ],
-    shortcut: '/ai-seo-company-logotyp.svg',
-    apple: '/ai-seo-company-logotyp.svg',
+    shortcut: '/ai-seo-company-logotyp.svg?v=2',
+    apple: '/ai-seo-company-logotyp.svg?v=2',
   },
   openGraph: {
     title: 'Agencja SEO Warszawa | Pozycjonowanie i Web Design',
