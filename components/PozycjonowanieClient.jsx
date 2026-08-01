@@ -31,7 +31,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'Search Engine Optimization'}
+              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'Content Marketing & Search Engine Optimization'}
             </h1>
 
             <div style={{ 
@@ -68,7 +68,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             }}>
               {lang === 'pl' 
                 ? <>Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę. Nasza usługa to: <strong style={{ color: 'var(--color-cta)' }}>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</strong>.</>
-                : <>Build a lasting competitive advantage. We combine advanced technical audits with content architecture tailored for modern search engines. Our service is: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
+                : <>Build a lasting competitive advantage. We combine advanced technical audits with <strong>content marketing</strong> tailored for modern search engines. Our service is: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
@@ -86,7 +86,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <ServiceCarousel 
         tag={lang === 'pl' ? "FILARY SKALOWANIA WIDOCZNOŚCI" : "PILLARS OF VISIBILITY SCALING"}
-        title={lang === 'pl' ? "Przewaga w Wynikach Organicznych" : "Advantage in Organic Results"}
+        title={lang === 'pl' ? "Przewaga w Wynikach Organicznych" : "Advantage in Organic Results & Content Marketing"}
         subtitle={lang === 'pl' ? "Odkryj mechanizmy, które napędzają wzrost Twojego biznesu w wyszukiwarce Google." : "Discover the mechanisms driving your business growth in Google search."}
         items={carouselItems}
       />
