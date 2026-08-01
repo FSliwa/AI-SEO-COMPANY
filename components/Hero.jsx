@@ -55,17 +55,17 @@ export default function Hero() {
         >
           <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
             {lang === 'en' 
-              ? <><strong>Content in Marketing</strong> & SEO Services | Top Agency</>
+              ? <><strong>SEO & Search Optimization Services, Content in Marketing</strong> | Top Agency</>
               : 'Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż'}
           </h1>
           <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <motion.img 
-              src={lang === 'en' ? '/content-in-marketing-seo-services-en.svg' : '/agencja-seo-warszawa-hero-text.svg'} 
+              src={lang === 'en' ? '/seo-search-optimization-services-content-in-marketing-en.svg' : '/agencja-seo-warszawa-hero-text.svg'} 
               alt={lang === 'en' 
-                ? 'Content in Marketing & SEO Services & Optimization Service - Professional Marketing Agency' 
+                ? 'SEO and Search Optimization Services, Content in Marketing - Professional Agency' 
                 : 'Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż'} 
               title={lang === 'en' 
-                ? 'Content in Marketing, SEO Services and Marketing Agency' 
+                ? 'SEO and Search Optimization Services, Content in Marketing' 
                 : 'Agencja SEO Warszawa - Skuteczne Pozycjonowanie Stron'}
               width={1600}
               height={294}
