@@ -159,7 +159,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   <div style={{ position: 'absolute', inset: 0, zIndex: -1, overflow: 'hidden' }}>
                     <Image 
                       src={c.image} 
-                      alt={c.title} 
+                      alt={c.imgAlt || c.title}
+                      title={c.imgTitle || c.title}
                       fill
                       style={{ objectFit: 'cover', display: 'block', transition: 'transform 0.7s ease' }} 
                     />
@@ -293,7 +294,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   }}>
                     <Image 
                       src={c.image} 
-                      alt={c.title || 'Realizacja SEO'} 
+                      alt={c.imgAlt || c.title || 'Realizacja SEO'}
+                      title={c.imgTitle || c.title}
                       fill
                       style={{ objectFit: 'cover', display: 'block', position: 'relative', zIndex: 2 }}
                     />
