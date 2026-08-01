@@ -100,10 +100,10 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Organic Search Optimization & Marketing Growth'}</h3>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Organic Search Optimization & Marketing Growth using seotools'}</h3>
             <p>{lang === 'pl'
               ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
-              : <>High-impact search engine positioning, local <strong>SEO services</strong>, technical <strong>SEO optimization service</strong>, and strategic content in marketing driving stable organic growth for your brand.</>
+              : <>High-impact search engine positioning, local <strong>SEO services</strong>, technical <strong>SEO optimization service</strong>, and strategic content in marketing using seotools driving stable organic growth for your brand.</>
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (
