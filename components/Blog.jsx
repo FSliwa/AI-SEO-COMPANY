@@ -47,7 +47,7 @@ export default function Blog() {
                 </div>
                 <h3>{post.title}</h3>
                 <p>{post.desc}</p>
-                <a href={`/${lang}${post.slug}`} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
+                <a href={post.slug} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
                   {t('btnRead')} <span className="sr-only">o {post.title}</span>
                 </a>
               </div>
@@ -56,7 +56,7 @@ export default function Blog() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <a href={`/${lang}/blog`} className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
+          <a href="/blog" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
             {lang === 'pl' ? 'Zobacz pełną bibliotekę' : 'View full library'}
           </a>
         </RevealItem>

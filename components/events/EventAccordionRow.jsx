@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 export const EventAccordionRow = ({ data }) => {
   const [activeId, setActiveId] = useState(data.items[3]?.id || data.items[0].id);

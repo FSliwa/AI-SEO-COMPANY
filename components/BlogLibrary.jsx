@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { blogPosts } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 export default function BlogLibrary() {
   const lang = useLocale();
@@ -50,7 +50,7 @@ export default function BlogLibrary() {
             const data = getPostData(post);
             return (
               <RevealItem key={idx}>
-                <Link href={`/${lang}${data.slug}`} style={{ textDecoration: 'none' }}>
+                <Link href={data.slug} style={{ textDecoration: 'none' }}>
                   <div className="grid-card" style={{ 
                     display: 'flex', 
                     flexDirection: 'column', 
@@ -107,7 +107,7 @@ export default function BlogLibrary() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <Link href={`/${lang}/blog`} style={{ 
+          <Link href="/blog" style={{ 
             display: 'inline-flex', 
             alignItems: 'center', 
             justifyContent: 'center', 

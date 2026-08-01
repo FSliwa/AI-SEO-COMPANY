@@ -4,7 +4,7 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'How Much Does SEO Cost? Pricing & Packages 2026' : 'Ile Kosztuje SEO w Polsce? Cennik i Pakiety 2026',
   description: locale === 'en' ? 'Wondering how much effective SEO costs in 2026? See our SEO pricing and learn what affects the final cost of optimization.' : 'Zastanawiasz się, ile kosztuje skuteczne pozycjonowanie w 2026 roku? Zobacz nasz cennik SEO i dowiedz się, co wpływa na finalną cenę optymalizacji.',
   alternates: {
-    canonical: `https://www.ai-seo-company.pl/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026` : `https://www.ai-seo-company.pl/pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
     languages: {
       'pl': 'https://www.ai-seo-company.pl/pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',
       'en': 'https://www.ai-seo-company.pl/en/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026'
@@ -17,7 +17,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
@@ -70,10 +70,10 @@ export default async function ArticleCennikPage({ params }) {
               <ArticleTOC items={tocItems} />
               
               <h2 id="od-czego-zalezy-cena">What determines the price of SEO?</h2>
-              <p>The cost of positioning is never fixed. It depends strictly on your industry's competitiveness, the current technical state of your website, and your business goals. Local businesses might pay €300/month for <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local positioning</Link>, while nationwide e-commerce stores invest over €5,000 monthly for a full <Link href={`/${locale}/pozycjonowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO strategy</Link>.</p>
+              <p>The cost of positioning is never fixed. It depends strictly on your industry's competitiveness, the current technical state of your website, and your business goals. Local businesses might pay €300/month for <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local positioning</Link>, while nationwide e-commerce stores invest over €5,000 monthly for a full <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO strategy</Link>.</p>
 
               <h2 id="modele-rozliczen">Popular billing models</h2>
-              <p>Currently, the flat-fee subscription model is the absolute standard. It allows the agency to allocate a fixed budget for high-quality link building and content creation every month. The outdated "pay for results" model is practically dead and often leads to toxic SEO practices. Before signing a contract, you should always request a comprehensive <Link href={`/${locale}/audyt-seo`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>technical SEO audit</Link> to understand your website's baseline.</p>
+              <p>Currently, the flat-fee subscription model is the absolute standard. It allows the agency to allocate a fixed budget for high-quality link building and content creation every month. The outdated "pay for results" model is practically dead and often leads to toxic SEO practices. Before signing a contract, you should always request a comprehensive <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>technical SEO audit</Link> to understand your website's baseline.</p>
 
               <h2 id="ukryte-koszty">Hidden costs - what to watch out for?</h2>
               <p>Always verify if your SEO contract includes the cost of publishing sponsored articles and copywriting. Many cheap agencies offer positioning for €100, but later require you to pay extra for every single piece of content or backlink.</p>
@@ -91,7 +91,7 @@ export default async function ArticleCennikPage({ params }) {
                 <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
                   <h3>Check our transparent pricing</h3>
                   <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>No hidden fees. Full transparency.</p>
-                  <Link href={`/${locale}/cennik-pozycjonowania`} style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>View Pricing Packages</Link>
+                  <Link href="/cennik-pozycjonowania" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>View Pricing Packages</Link>
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@ export default async function ArticleCennikPage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p>
-                <Link href={`/${locale}/pozycjonowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie stron w Polsce</Link> kosztuje różną kwotę, począwszy od niskiego poziomu dla bardzo lokalnych projektów, aż do wysokich sum dla dużych serwisów w branżach takich jak prawo, finanse czy medycyna. Większość małych i średnich firm przeznacza budżet, który pozwala na realną pracę, obejmującą <Link href={`/${locale}/audyt-seo`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt techniczny</Link>, optymalizację, treści i podstawowy link building.
+                <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie stron w Polsce</Link> kosztuje różną kwotę, począwszy od niskiego poziomu dla bardzo lokalnych projektów, aż do wysokich sum dla dużych serwisów w branżach takich jak prawo, finanse czy medycyna. Większość małych i średnich firm przeznacza budżet, który pozwala na realną pracę, obejmującą <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt techniczny</Link>, optymalizację, treści i podstawowy link building.
               </p>
 
               <p>
@@ -169,7 +169,7 @@ export default async function ArticleCennikPage({ params }) {
                 <strong>Porada profesjonalisty:</strong> Zanim zadzwonisz do agencji, sprawdź w <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a>, ile ruchu organicznego masz teraz i z jakich fraz. To 10 minut pracy, które pozwolą Ci ocenić, czy oferta agencji jest dopasowana do Twojego punktu startowego.
               </p>
 
-              <p>Chcesz wiedzieć, ile dokładnie zapłacisz za swój projekt? Poniżej rozkładamy nasz <Link href={`/${locale}/cennik-pozycjonowania`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link> na czynniki pierwsze — według typu firmy, zawartości pakietu i modelu rozliczeń.</p>
+              <p>Chcesz wiedzieć, ile dokładnie zapłacisz za swój projekt? Poniżej rozkładamy nasz <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link> na czynniki pierwsze — według typu firmy, zawartości pakietu i modelu rozliczeń.</p>
 
               
 
@@ -238,7 +238,7 @@ export default async function ArticleCennikPage({ params }) {
               <p><strong>Elementy standardowe (core SEO) — powinny być w każdym pakiecie:</strong></p>
               <ul>
                 <li>Audyt techniczny strony (przynajmniej wstępny przy starcie)</li>
-                <li><Link href={`/${locale}/projektowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Optymalizacja on-page</Link>: tytuły, opisy, nagłówki, struktura URL</li>
+                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Optymalizacja on-page</Link>: tytuły, opisy, nagłówki, struktura URL</li>
                 <li>Monitoring pozycji i ruchu organicznego</li>
                 <li>Raportowanie (miesięczne lub dwutygodniowe)</li>
                 <li>Podstawowe naprawy techniczne (szybkość, indeksowanie, przekierowania)</li>
@@ -248,7 +248,7 @@ export default async function ArticleCennikPage({ params }) {
               <ul>
                 <li>Link building (pozyskiwanie linków zewnętrznych)</li>
                 <li>Content marketing (regularne artykuły, landing page'e, opisy kategorii)</li>
-                <li><Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Lokalne SEO</Link> i zarządzanie Google Moja Firma</li>
+                <li><Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Lokalne SEO</Link> i zarządzanie Google Moja Firma</li>
                 <li>Optymalizacja pod modele AI, czyli AEO (Answer Engine Optimization)</li>
                 <li>Migracje serwisu i zmiany CMS</li>
                 <li>Audyt UX/UI i optymalizacja konwersji</li>
@@ -282,7 +282,7 @@ export default async function ArticleCennikPage({ params }) {
               </ul>
               
               <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#F5F5F7', borderRadius: '12px', marginBottom: '2rem' }}>
-                <strong>Porada profesjonalisty:</strong> Dwa czynniki, które najszybciej windują koszty przy migracji lub przebudowie serwisu, to zmiana struktury URL bez przekierowań 301 i utrata historycznych treści. Zanim zlecisz <Link href={`/${locale}/projektowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> i ich redesign, upewnij się, że agencja SEO jest w tym procesie od początku, nie na końcu.
+                <strong>Porada profesjonalisty:</strong> Dwa czynniki, które najszybciej windują koszty przy migracji lub przebudowie serwisu, to zmiana struktury URL bez przekierowań 301 i utrata historycznych treści. Zanim zlecisz <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> i ich redesign, upewnij się, że agencja SEO jest w tym procesie od początku, nie na końcu.
               </p>
 
               <h2 id="kiedy-efekty">Kiedy zobaczysz efekty i jak liczyć opłacalność?</h2>
@@ -332,7 +332,7 @@ export default async function ArticleCennikPage({ params }) {
               
               <ul>
                 <li><strong>Abonament miesięczny</strong> — najpopularniejszy i najbezpieczniejszy dla większości firm. Płacisz stałą kwotę za zdefiniowany zakres prac. Pozwala planować budżet i wymusza na agencji regularną pracę.</li>
-                <li><strong>Jednorazowy projekt</strong> — sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. <Link href={`/${locale}/audyt-seo`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt techniczny</Link> kosztuje od około 1 500 zł dla małej witryny do 4 000–8 000 zł dla dużego sklepu.</li>
+                <li><strong>Jednorazowy projekt</strong> — sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt techniczny</Link> kosztuje od około 1 500 zł dla małej witryny do 4 000–8 000 zł dla dużego sklepu.</li>
                 <li><strong>Rozliczenie godzinowe</strong> — stosowane przy konsultacjach lub doraźnych pracach. Stawki specjalistów SEO w Polsce wahają się od 150 do 400 zł za godzinę.</li>
                 <li><strong>Model częściowego wynagrodzenia za efekt</strong> — pozycjonowanie „na efekt“ ma istotne ograniczenia: opiera się na metrykach, które agencja może optymalizować pod własne cele, a nie na realnym wzroście przychodów klienta. Dla większości firm bezpieczniejszy jest abonament z jasno określonym zakresem i KPI.</li>
               </ul>
@@ -362,7 +362,7 @@ export default async function ArticleCennikPage({ params }) {
 
               <h2 id="oferta-ai-seo-company">Oferta AI SEO COMPANY: pakiety, efekty i co wyróżnia tę agencję</h2>
               
-              <p>AI SEO COMPANY łączy <Link href={`/${locale}/projektowanie-stron-internetowych`} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> pod konwersję z kompleksowym pozycjonowaniem, co oznacza, że optymalizacja SEO i UX/UI idą tu w parze od pierwszego dnia. Klienci agencji odnotowali średni wzrost przychodów o 23% — to wynik, który wynika z połączenia pracy nad widocznością w Google z poprawą doświadczenia użytkownika na stronie.</p>
+              <p>AI SEO COMPANY łączy <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> pod konwersję z kompleksowym pozycjonowaniem, co oznacza, że optymalizacja SEO i UX/UI idą tu w parze od pierwszego dnia. Klienci agencji odnotowali średni wzrost przychodów o 23% — to wynik, który wynika z połączenia pracy nad widocznością w Google z poprawą doświadczenia użytkownika na stronie.</p>
 
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', textAlign: 'left' }}>

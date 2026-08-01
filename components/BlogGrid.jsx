@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import { useTranslations, useLocale } from 'next-intl';
 import { blogPosts } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 export default function BlogGrid() {
   const lang = useLocale();
@@ -98,7 +98,7 @@ export default function BlogGrid() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <Link href={`/${lang}${heroData.slug}`} style={{ textDecoration: 'none' }}>
+          <Link href={heroData.slug} style={{ textDecoration: 'none' }}>
             <div className="hero-card" style={{ 
               display: 'flex', 
               flexDirection: 'column', 
@@ -170,7 +170,7 @@ export default function BlogGrid() {
             const data = getPostData(post);
             return (
               <RevealItem key={idx}>
-                <Link href={`/${lang}${data.slug}`} style={{ textDecoration: 'none' }}>
+                <Link href={data.slug} style={{ textDecoration: 'none' }}>
                   <div className="grid-card" style={{ 
                     display: 'flex', 
                     flexDirection: 'column', 
@@ -227,7 +227,7 @@ export default function BlogGrid() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <Link href={`/${lang}/blog/biblioteka`} style={{ 
+          <Link href="/blog/biblioteka" style={{ 
             display: 'inline-flex', 
             alignItems: 'center', 
             justifyContent: 'center', 

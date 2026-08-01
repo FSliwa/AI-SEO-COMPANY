@@ -4,7 +4,7 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'How to get Google Reviews? Guide 2026' : 'Jak pozyskiwać opinie Google? Poradnik 2026',
   description: locale === 'en' ? 'The most effective method of getting Google reviews. Check how to build a process that automatically generates new reviews.' : 'Najskuteczniejsza metoda pozyskiwania opinii Google. Sprawdź, jak zbudować proces, który automatycznie generuje nowe recenzje.',
   alternates: {
-    canonical: `https://www.ai-seo-company.pl/${locale}/blog/jak-pozyskiwac-opinie-google-poradnik`,
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews` : `https://www.ai-seo-company.pl/pl/blog/jak-pozyskiwac-opinie-google-poradnik`,
     languages: {
       'pl': 'https://www.ai-seo-company.pl/pl/blog/jak-pozyskiwac-opinie-google-poradnik',
       'en': 'https://www.ai-seo-company.pl/en/blog/jak-pozyskiwac-opinie-google-poradnik'
@@ -17,7 +17,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
 
@@ -108,10 +108,10 @@ export default async function ArticleReviewsPage({ params }) {
                   <p><em>Pro tip: Instead of "Leave us a review," write: "How do you rate our cooperation? Your honest comment will take 2 minutes and help us a lot." An open question instead of a rating request increases both conversion and review quality.</em></p>
 
                   <h2 id="gdzie-wyswietlaja-sie-opinie">Where Google reviews appear and why it matters</h2>
-                  <p>A Google review is user-generated content (UGC) linked to a Google Business Profile. It appears in several places simultaneously: on the Google Maps listing, in the <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Local Pack</Link> for local queries, in the star ratings visible directly in organic search results, and in Google Ads extensions.</p>
+                  <p>A Google review is user-generated content (UGC) linked to a Google Business Profile. It appears in several places simultaneously: on the Google Maps listing, in the <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>Local Pack</Link> for local queries, in the star ratings visible directly in organic search results, and in Google Ads extensions.</p>
 
                   <h2 id="jak-opinie-wplywaja-na-seo">How Google reviews impact SEO, CTR, and sales</h2>
-                  <p>Reviews affect <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO visibility</Link> through three independent mechanisms: freshness signal, search result click-through rates (CTR) via stars, and content delivering unique keywords and sales arguments.</p>
+                  <p>Reviews affect <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO visibility</Link> through three independent mechanisms: freshness signal, search result click-through rates (CTR) via stars, and content delivering unique keywords and sales arguments.</p>
                   <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '2rem' }}>
                     <thead>
                       <tr style={{ background: '#F5F5F7', textAlign: 'left' }}>
@@ -138,7 +138,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Google precisely defines what is not allowed. Violations do not end with a warning, but with immediate action from algorithms or moderators. Do not buy reviews, offer incentives, or set up review kiosks.</p>
 
                   <h2 id="proces-pozyskiwania-krok-po-kroku">How to build a review acquisition process step-by-step</h2>
-                  <p>An effective process does not happen overnight. Implement it in phases: <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Audit</Link> (days 1-14), Startup (days 15-45), and Optimization (days 46-90).</p>
+                  <p>An effective process does not happen overnight. Implement it in phases: <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>Audit</Link> (days 1-14), Startup (days 15-45), and Optimization (days 46-90).</p>
 
                   <h2 id="szablony-wiadomosci">Message templates that actually work</h2>
                   <p>A good review request is short, personalized, and contains one CTA. The client must know it takes 2 minutes and must receive a direct link.</p>
@@ -159,10 +159,10 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Effective Google review acquisition requires a personalized CRM-based process, a safe growth pace, and full compliance with Google policies.</p>
 
                   <h2 id="dlaczego-uczciwe-opinie">Why honest reviews pay off more than you think</h2>
-                  <p>Obsession with a perfect star rating is a trap. Profiles with a few negative reviews, where the company responds concretely and empathetically, often convert better than profiles with only 5 stars and no replies (as seen in our <Link href={`/${locale}#portfolio`} style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>).</p>
+                  <p>Obsession with a perfect star rating is a trap. Profiles with a few negative reviews, where the company responds concretely and empathetically, often convert better than profiles with only 5 stars and no replies (as seen in our <Link href="/#portfolio" style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>).</p>
 
                   <h2 id="ai-seo-company-wdrozy">Ai-seo-company will implement this process for you</h2>
-                  <p><Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Ai-seo-company</Link> does exactly that. We do not sell guides, we implement processes. We configure CRM integration, prepare templates, build KPI dashboards, and manage review responses in 30-60 days (check our <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`} style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>free SEO audit</Link>.</p>
+                  <p><Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>Ai-seo-company</Link> does exactly that. We do not sell guides, we implement processes. We configure CRM integration, prepare templates, build KPI dashboards, and manage review responses in 30-60 days (check our <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>free SEO audit</Link>.</p>
                 </>
               ) : (
                 <>
@@ -181,13 +181,13 @@ export default async function ArticleReviewsPage({ params }) {
                   <p><em>Porada profesjonalisty: Zamiast „Zostaw nam opinię“ napisz: „Jak oceniasz naszą współpracę? Twój szczery komentarz zajmie 2 minuty i bardzo nam pomoże.“ Pytanie otwarte zamiast prośby o ocenę podnosi zarówno konwersję, jak i jakość treści recenzji.</em></p>
 
                   <h2 id="gdzie-wyswietlaja-sie-opinie">Gdzie wyświetlają się opinie Google i dlaczego to ważne</h2>
-                  <p>Opinia Google to treść tworzona przez użytkownika (UGC) powiązana z Profilem Firmy w Google (Google Business Profile). Wyświetla się w kilku miejscach jednocześnie: w wizytówce w Mapach Google, w sekcji <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: '#0066cc', textDecoration: 'underline' }}>wyników lokalnych (Local Pack)</Link> przy zapytaniach z intencją lokalną, w gwiazdkach widocznych bezpośrednio w organicznych wynikach wyszukiwania oraz w rozszerzeniach reklam Google Ads.</p>
-                  <p>Dla zapytań z lokalną intencją, takich jak „restauracja Warszawa“ czy „dentysta Kraków“, Google priorytetowo traktuje wizytówki z większą liczbą aktualnych opinii. Liczba i świeżość recenzji to ważne sygnały rankingowe, ale nie działają w izolacji – algorytm bierze pod uwagę także średnią ocen, proximity (bliskość lokalizacji), relevance (zgodność kategorii i treści z zapytaniem), <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie#strategia-nap-name-address-phone`} style={{ color: '#0066cc', textDecoration: 'underline' }}>kompletność danych NAP</Link> oraz poziom engagementu (odpowiedzi na opinie, zdjęcia, aktualizacje profilu).</p>
+                  <p>Opinia Google to treść tworzona przez użytkownika (UGC) powiązana z Profilem Firmy w Google (Google Business Profile). Wyświetla się w kilku miejscach jednocześnie: w wizytówce w Mapach Google, w sekcji <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>wyników lokalnych (Local Pack)</Link> przy zapytaniach z intencją lokalną, w gwiazdkach widocznych bezpośrednio w organicznych wynikach wyszukiwania oraz w rozszerzeniach reklam Google Ads.</p>
+                  <p>Dla zapytań z lokalną intencją, takich jak „restauracja Warszawa“ czy „dentysta Kraków“, Google priorytetowo traktuje wizytówki z większą liczbą aktualnych opinii. Liczba i świeżość recenzji to ważne sygnały rankingowe, ale nie działają w izolacji – algorytm bierze pod uwagę także średnią ocen, proximity (bliskość lokalizacji), relevance (zgodność kategorii i treści z zapytaniem), <Link href="/blog/seo-lokalne-dla-firm-w-warszawie#strategia-nap-name-address-phone" style={{ color: '#0066cc', textDecoration: 'underline' }}>kompletność danych NAP</Link> oraz poziom engagementu (odpowiedzi na opinie, zdjęcia, aktualizacje profilu).</p>
                   <p>Profil z większą liczbą aktualnych recenzji i dobrą średnią ocen ma wyraźną przewagę nad profilem z małą liczbą recenzji, nawet jeśli ten drugi ma nieco wyższą średnią. Świeżość i regularny przyrost opinii często waży więcej niż sama ocena, bo Google traktuje je jako dowód aktywnego, żyjącego biznesu.</p>
                   <p>Opinie wspierają też SEO przez unikalną treść, która zawiera naturalne frazy długiego ogona. Klient, który pisze „świetna pizza na Mokotowie, szybka dostawa“, tworzy treść, której żaden copywriter nie napisałby lepiej pod kątem lokalnych zapytań.</p>
 
                   <h2 id="jak-opinie-wplywaja-na-seo">Jak opinie Google wpływają na SEO, CTR i sprzedaż</h2>
-                  <p>Opinie działają na widoczność przez trzy niezależne mechanizmy. Pierwszy to sygnał świeżości: algorytmy <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO</Link> traktują nowe recenzje jako dowód aktywności businessu, podobnie jak świeże wpisy na blogu. Drugi to gwiazdki w wynikach wyszukiwania, które bezpośrednio zwiększają klikalność. Trzeci to treść samych recenzji, która dostarcza unikalnych fraz i argumentów sprzedażowych (co potwierdza, jak ważna jest <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>optymalizacja Profilu Firmy w Google</Link>).</p>
+                  <p>Opinie działają na widoczność przez trzy niezależne mechanizmy. Pierwszy to sygnał świeżości: algorytmy <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO</Link> traktują nowe recenzje jako dowód aktywności businessu, podobnie jak świeże wpisy na blogu. Drugi to gwiazdki w wynikach wyszukiwania, które bezpośrednio zwiększają klikalność. Trzeci to treść samych recenzji, która dostarcza unikalnych fraz i argumentów sprzedażowych (co potwierdza, jak ważna jest <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>optymalizacja Profilu Firmy w Google</Link>).</p>
                   
                   <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
@@ -237,13 +237,13 @@ export default async function ArticleReviewsPage({ params }) {
                     <li>Zbieranie opinii na urządzeniach firmowych lub kioskach w lokalu, gdzie klient loguje się na swoje konto Google.</li>
                   </ul>
                   <p><strong>Konsekwencje techniczne i reputacyjne:</strong></p>
-                  <p>Nagłe skoki liczby recenzji włączają filtry Google. Opinie mogą zostać odfiltrowane i nie pojawić się publicznie, a profil może otrzymać ograniczenia widoczności. Użytkownicy, którzy odkryją, że firma kupuje recenzje, reagują falą negatywnych opinii, które są już trudne do usunięcia. Reputacyjny koszt wpadki wielokrotnie przewyższa krótkoterminowy zysk z kilku fałszywych gwiazdek. W razie podejrzenia nałożenia filtrów lub spadku widoczności, zalecamy profesjonalny <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>audyt wizytówki Google</Link>.</p>
+                  <p>Nagłe skoki liczby recenzji włączają filtry Google. Opinie mogą zostać odfiltrowane i nie pojawić się publicznie, a profil może otrzymać ograniczenia widoczności. Użytkownicy, którzy odkryją, że firma kupuje recenzje, reagują falą negatywnych opinii, które są już trudne do usunięcia. Reputacyjny koszt wpadki wielokrotnie przewyższa krótkoterminowy zysk z kilku fałszywych gwiazdek. W razie podejrzenia nałożenia filtrów lub spadku widoczności, zalecamy profesjonalny <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>audyt wizytówki Google</Link>.</p>
                   <p>Gdy opinia narusza regulamin, właściciel firmy może ją zgłosić przez panel Profilu Firmy. Procedurę opisuje <a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>oficjalna pomoc Google</a>.</p>
 
                   <h2 id="proces-pozyskiwania-krok-po-kroku">Jak zbudować proces pozyskiwania opinii krok po kroku</h2>
                   <p>Skuteczny proces nie powstaje z dnia na dzień. Poniższy plan trzech faz pozwala wdrożyć go bez ryzyka nagłego skoku liczby recenzji.</p>
                   <ol>
-                    <li><strong>Faza audytu (dni 1–14):</strong> Sprawdź aktualny stan profilu (lub zleć <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>pełny audyt SEO</Link>), policz istniejące opinie, oceń średnią i udział recenzji z treścią. Skonfiguruj link do wystawienia opinii (skrócony URL z Profilu Firmy). Przygotuj dwa szablony wiadomości: e-mail i SMS.</li>
+                    <li><strong>Faza audytu (dni 1–14):</strong> Sprawdź aktualny stan profilu (lub zleć <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>pełny audyt SEO</Link>), policz istniejące opinie, oceń średnią i udział recenzji z treścią. Skonfiguruj link do wystawienia opinii (skrócony URL z Profilu Firmy). Przygotuj dwa szablony wiadomości: e-mail i SMS.</li>
                     <li><strong>Faza rozruchu (dni 15–45):</strong> Uruchom trigger w CRM powiązany ze statusem „zrealizowano“. Pierwsze 4 tygodnie: wysyłaj prośby do wszystkich klientów z zamkniętymi zleceniami. Cel: 3–5 nowych opinii tygodniowo.</li>
                     <li><strong>Faza optymalizacji (dni 46–90):</strong> Rozszerz bazę odbiorców na wszystkich klientów z zamkniętymi zleceniami. Włącz follow-up po 7 dniach dla tych, którzy nie zareagowali. Analizuj conversion rate dla każdego kanału i dostosuj miks.</li>
                   </ol>
@@ -278,7 +278,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p><em>Porada profesjonalisty: Pytanie pomocnicze „Co najbardziej pomogło Ci w naszej współpracy?“ zamiast prośby o ocenę działa podwójnie: zwiększa długość recenzji i kieruje klienta na konkretne aspekty usługi, co podnosi wartość SEO opinii przez naturalne frazy kluczowe.</em></p>
 
                   <h2 id="jak-odpowiadac">Jak odpowiadać na opinie, żeby zyskać wiarygodność</h2>
-                  <p>Odpowiedź na opinię to nie formalność. To treść widoczna dla wszystkich potencjalnych klientów, którzy czytają recenzje przed podjęciem decyzji. Dobra odpowiedź na negatywną recenzję często przekonuje do zakupu skuteczniej niż seria idealnych ocen (co świetnie widać w naszych <Link href={`/${locale}#portfolio`} style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>). Profesjonalne <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>zarządzanie opiniami Google</Link> to dzisiaj standard komunikacji z klientem.</p>
+                  <p>Odpowiedź na opinię to nie formalność. To treść widoczna dla wszystkich potencjalnych klientów, którzy czytają recenzje przed podjęciem decyzji. Dobra odpowiedź na negatywną recenzję często przekonuje do zakupu skuteczniej niż seria idealnych ocen (co świetnie widać w naszych <Link href="/#portfolio" style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>). Profesjonalne <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>zarządzanie opiniami Google</Link> to dzisiaj standard komunikacji z klientem.</p>
                   
                   <p><strong>Zasady odpowiedzi:</strong></p>
                   <ul>
@@ -374,14 +374,14 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Skuteczne pozyskiwanie opinii Google wymaga spersonalizowanego procesu opartego na CRM, bezpiecznego tempa wzrostu i pełnej zgodności z zasadami Google.</p>
 
                   <h2 id="dlaczego-uczciwe-opinie">Dlaczego uczciwe opinie opłacają się bardziej, niż myślisz</h2>
-                  <p>Widzę regularnie ten sam schemat: firma inwestuje w <Link href={`/${locale}/pozycjonowanie-stron-internetowych`} style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie</Link>, poprawia stronę, uruchamia reklamy, a potem traci klientów na etapie wizytówki Google, bo ma 12 opinii z 2021 roku i średnią 3,8. Potencjalny klient porównuje ją z konkurentem, który ma 90 recenzji z ostatnich 6 miesięcy i odpowiada na każdą z nich. Wybór jest oczywisty.</p>
-                  <p>Procesowy model zbierania opinii, systematyczny, zautomatyzowany, zgodny z zasadami Google, jest też najodporniejszy na zmiany algorytmów (podobnie jak dbanie o <Link href={`/${locale}/blog/core-web-vitals-a-pozycje-google`} style={{ color: '#0066cc', textDecoration: 'underline' }}>Core Web Vitals</Link> czy architekturę strony). Autentyczność nie jest romantycznym ideałem. Jest strategią, która po prostu działa dłużej. Dlatego <Link href={`/${locale}/blog/seo-lokalne-dla-firm-w-warszawie`} style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie lokalne</Link> bez rzetelnego pozyskiwania opinii to zwykle przepalanie budżetu.</p>
+                  <p>Widzę regularnie ten sam schemat: firma inwestuje w <Link href="/pozycjonowanie-stron-internetowych" style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie</Link>, poprawia stronę, uruchamia reklamy, a potem traci klientów na etapie wizytówki Google, bo ma 12 opinii z 2021 roku i średnią 3,8. Potencjalny klient porównuje ją z konkurentem, który ma 90 recenzji z ostatnich 6 miesięcy i odpowiada na każdą z nich. Wybór jest oczywisty.</p>
+                  <p>Procesowy model zbierania opinii, systematyczny, zautomatyzowany, zgodny z zasadami Google, jest też najodporniejszy na zmiany algorytmów (podobnie jak dbanie o <Link href="/blog/core-web-vitals-a-pozycje-google" style={{ color: '#0066cc', textDecoration: 'underline' }}>Core Web Vitals</Link> czy architekturę strony). Autentyczność nie jest romantycznym ideałem. Jest strategią, która po prostu działa dłużej. Dlatego <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie lokalne</Link> bez rzetelnego pozyskiwania opinii to zwykle przepalanie budżetu.</p>
 
                   <h2 id="ai-seo-company-wdrozy">Ai-seo-company wdroży ten proces za Ciebie w 30–60 dni</h2>
                   <p>Czytasz ten artykuł, bo chcesz więcej opinii Google. Wiesz już, co robić. Pytanie brzmi: kto to wdroży, skonfiguruje trigger w CRM, przygotuje szablony, ustawi dashboard KPI i zadba o to, żeby cały proces działał bez Twojego codziennego nadzoru?</p>
-                  <p><strong>Ai-seo-company</strong> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy (sprawdź nasze <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`} style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
+                  <p><strong>Ai-seo-company</strong> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy (sprawdź nasze <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
                   
-                  <p>Jeśli chcesz wiedzieć, od czego zacząć w Twoim konkretnym przypadku, zacznij od <Link href={`/${locale}/audyt-seo`} style={{ color: '#0066cc', textDecoration: 'underline' }}>bezpłatnego audytu SEO</Link>, który obejmuje też ocenę Profilu Firmy i aktualnego stanu opinii. Albo sprawdź pełną ofertę <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO dla firm</Link> i napisz do nas bezpośrednio.</p>
+                  <p>Jeśli chcesz wiedzieć, od czego zacząć w Twoim konkretnym przypadku, zacznij od <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>bezpłatnego audytu SEO</Link>, który obejmuje też ocenę Profilu Firmy i aktualnego stanu opinii. Albo sprawdź pełną ofertę <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO dla firm</Link> i napisz do nas bezpośrednio.</p>
                 </>
               )}
               
@@ -401,7 +401,7 @@ export default async function ArticleReviewsPage({ params }) {
               <BlogCTA 
                 locale={locale} 
                 currentSlug="/blog/jak-pozyskiwac-opinie-google-poradnik" 
-                customCtaTextPl={<>Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię, w tym <Link href={`/${locale}/seo-lokalne-warszawa`} style={{ color: '#0066cc', textDecoration: 'underline' }}>wdrożenie procesu zbierania opinii</Link>.</>}
+                customCtaTextPl={<>Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię, w tym <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>wdrożenie procesu zbierania opinii</Link>.</>}
               />
             </div>
           </Reveal>

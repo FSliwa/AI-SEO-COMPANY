@@ -41,7 +41,7 @@
               
               <p style={{ marginBottom: '1.5rem' }}>Three actions worth starting in the first month:</p>
               <ol>
-                <li><Link href={`/${locale}/audyt-seo`}>Audit</Link> existing relationships — check if partners, clients, and suppliers link to you correctly and if the links lead to the right pages (not just the homepage).</li>
+                <li><Link href="/audyt-seo">Audit</Link> existing relationships — check if partners, clients, and suppliers link to you correctly and if the links lead to the right pages (not just the homepage).</li>
                 <li>Preparation of one linkable asset — an industry report, ROI calculator, or benchmark based on internal data; this is currency for pitching to the media.</li>
                 <li>Identification of 15–20 industry publications read by your buyers and making initial contact with editors.</li>
               </ol>
@@ -52,12 +52,12 @@
 
               {/* ===== SECTION: Czym jest link building B2B ===== */}
               <h2 id="czym-jest">What is B2B link building and how does it differ from B2C?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>B2B link building is the process of acquiring links from external websites that strengthen your domain's authority in the eyes of search engines and confirm the company's credibility for decision-makers. Cooperating with a professional <Link href={`/${locale}`}>SEO agency</Link> allows this process to be systematically planned and scaled.</p>
+              <p style={{ marginBottom: '1.5rem' }}>B2B link building is the process of acquiring links from external websites that strengthen your domain's authority in the eyes of search engines and confirm the company's credibility for decision-makers. Cooperating with a professional <Link href="/">SEO agency</Link> allows this process to be systematically planned and scaled.</p>
               <p style={{ marginBottom: '1.5rem' }}>The difference compared to B2C is fundamental. In B2C, volume and mass reach matter. In B2B, a single link from an industry magazine read by 5,000 procurement directors is worth more than a hundred links from general portals. B2B buyers conduct research for weeks or months, and expert quotes and mentions in trusted industry publications directly influence which companies make the shortlist.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Three typical goals of a B2B link program:</p>
               <ul>
-                <li>Visibility during purchasing research — appearing in search results for phrases buyers use during the supplier evaluation stage. A good <Link href={`/${locale}/pozycjonowanie-stron-internetowych`}>website positioning strategy</Link> is crucial here.</li>
+                <li>Visibility during purchasing research — appearing in search results for phrases buyers use during the supplier evaluation stage. A good <Link href="/pozycjonowanie-stron-internetowych">website positioning strategy</Link> is crucial here.</li>
                 <li>Brand trust — third-party confirmation that the company exists in a real industry ecosystem.</li>
                 <li>SEO support for product and offer pages — building authority for pages that directly convert.</li>
               </ul>
@@ -73,7 +73,7 @@
                 <li>Rankings for purchasing phrases for product and offer pages.</li>
                 <li>Referral traffic from specific publications and its quality (time on page, conversions).</li>
               </ul>
-              <p style={{ marginBottom: '1.5rem' }}>The indicative timeline for effects is longer than in B2C: the first signs of branded search growth appear a few weeks after the initial publications, the first ranking changes after about 1-3 months, and the full effects of a campaign may require over a year of systematic work. This is not a tactic for one quarter, but an investment in market authority. You can learn more about <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`}>SEO costs and budgets</Link> from our guide.</p>
+              <p style={{ marginBottom: '1.5rem' }}>The indicative timeline for effects is longer than in B2C: the first signs of branded search growth appear a few weeks after the initial publications, the first ranking changes after about 1-3 months, and the full effects of a campaign may require over a year of systematic work. This is not a tactic for one quarter, but an investment in market authority. You can learn more about <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">SEO costs and budgets</Link> from our guide.</p>
               <p style={{ marginBottom: '1.5rem' }}>Data: In a 2025 study, digital PR is indicated as one of the most effective link acquisition tactics.</p>
               <p style={{ marginBottom: '1.5rem' }}>The proposed link profile proportion for B2B companies should favor internal linking: 60% internal links, 15% dofollow external, 15% nofollow + mentions, 10% UGC; the pace of acquiring external links for small and medium-sized enterprises is 5–20 per month.</p>
 
@@ -131,13 +131,13 @@
 
               {/* ===== SECTION: Outreach ===== */}
               <h2 id="outreach">Outreach, personalization, and scaling the process</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Effective outreach in B2B is a matter of contact quality, not message volume. Successful digital PR programs focus on relationships with 15–30 journalists from publications read by decision-makers, rather than mass emailing templates. Any <Link href={`/${locale}`}>marketing agency</Link> specializing in B2B should understand this difference.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Effective outreach in B2B is a matter of contact quality, not message volume. Successful digital PR programs focus on relationships with 15–30 journalists from publications read by decision-makers, rather than mass emailing templates. Any <Link href="/">marketing agency</Link> specializing in B2B should understand this difference.</p>
               <p style={{ marginBottom: '1.5rem' }}>Recommended tech stack: <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> or <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> for link profile analysis and target identification, <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> or <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> for monitoring journalist queries, <a href="https://hunter.io/" target="_blank" rel="noopener noreferrer">Hunter.io</a> for email verification, Notion or HubSpot as a simple CRM for tracking outreach status.</p>
               <p style={{ marginBottom: '1.5rem' }}>Example workflow of one campaign: identify 30 targets (publications + editors) → personalize the pitch for each editorial board → send → follow-up after 5 business days → finalize and monitor the published link in Ahrefs Alerts.</p>
 
               {/* ===== SECTION: Jakość linku ===== */}
               <h2 id="jakosc-linku">How to assess link quality before adding it to your profile?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Not every link you can get is worth getting. The matrix below helps you decide quickly. A professional <Link href={`/${locale}/audyt-seo`}>SEO audit</Link> always includes an analysis of the existing link profile's quality.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Not every link you can get is worth getting. The matrix below helps you decide quickly. A professional <Link href="/audyt-seo">SEO audit</Link> always includes an analysis of the existing link profile's quality.</p>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
@@ -187,11 +187,11 @@
                   </tbody>
                 </table>
               </div>
-              <p style={{ marginBottom: '1.5rem' }}>Indicative cost brackets for a link building program: a solid digital PR + outreach program usually costs more than cheap, mass link building, but brings a better return. Check details in our article: <Link href={`/${locale}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`}>how much SEO costs</Link> in 2026. Example brackets: PR cost 3–10k PLN/month, guest outreach 2–6k PLN/month, PR + outreach mix 5–15k PLN/month (approximately).</p>
+              <p style={{ marginBottom: '1.5rem' }}>Indicative cost brackets for a link building program: a solid digital PR + outreach program usually costs more than cheap, mass link building, but brings a better return. Check details in our article: <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">how much SEO costs</Link> in 2026. Example brackets: PR cost 3–10k PLN/month, guest outreach 2–6k PLN/month, PR + outreach mix 5–15k PLN/month (approximately).</p>
 
               {/* ===== SECTION: Outsourcing ===== */}
               <h2 id="outsourcing">When to outsource link building and how to choose an agency?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Three signs it's worth reaching for an external partner — an experienced <Link href={`/${locale}`}>SEO agency</Link>:</p>
+              <p style={{ marginBottom: '1.5rem' }}>Three signs it's worth reaching for an external partner — an experienced <Link href="/">SEO agency</Link>:</p>
               <ul>
                 <li>Lack of internal resources to conduct systematic outreach and produce expert content.</li>
                 <li>Need for faster access to a network of relationships with industry editors, which takes months to build from scratch.</li>
@@ -218,7 +218,7 @@
               {/* ===== SECTION: Ryzyka ===== */}
               <h2 id="ryzyka">What risks and mistakes most often ruin B2B link building programs?</h2>
               <p style={{ marginBottom: '1.5rem' }}>The most common mistakes have one common denominator: prioritizing volume over quality.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Buying links and PBN networks are tactics that may bring a short-term ranking increase, but expose the domain to algorithmic or manual penalties. Industry experts consistently point out that earned links and partnerships yield better results in the long run. Professional <Link href={`/${locale}/pozycjonowanie-stron-internetowych`}>SEO optimization</Link> always prioritizes quality over volume.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Buying links and PBN networks are tactics that may bring a short-term ranking increase, but expose the domain to algorithmic or manual penalties. Industry experts consistently point out that earned links and partnerships yield better results in the long run. Professional <Link href="/pozycjonowanie-stron-internetowych">SEO optimization</Link> always prioritizes quality over volume.</p>
               <p style={{ marginBottom: '1.5rem' }}>Focusing links on the homepage instead of product, offer, and case study pages. In B2B, buyers land on specific pages via specific phrases, so authority should support these pages directly.</p>
               <p style={{ marginBottom: '1.5rem' }}>Contextually incorrect anchor texts in exact-match style for commercial phrases is one of the clearest manipulation signals for Google algorithms.</p>
               <p style={{ marginBottom: '1.5rem' }}>Lack of source diversification — a profile composed of links from one type of site (e.g., only directories) looks unnatural and does not build topical authority.</p>
@@ -272,13 +272,13 @@
 
               {/* ===== SECTION: Ai-seo-company ===== */}
               <h2 id="ai-seo-company">How we approach B2B link building at Ai-seo-company</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Every link building program begins with an <Link href={`/${locale}/audyt-seo`}>SEO audit</Link>: we check the current link profile, identify content gaps, and map existing partner relationships that can be activated immediately. Only on this basis do we design a linkable asset that has a real chance of being quoted in industry media.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Every link building program begins with an <Link href="/audyt-seo">SEO audit</Link>: we check the current link profile, identify content gaps, and map existing partner relationships that can be activated immediately. Only on this basis do we design a linkable asset that has a real chance of being quoted in industry media.</p>
               <p style={{ marginBottom: '1.5rem' }}>The process looks like this: audit and competitor analysis, asset production (report, calculator, benchmark), outreach to selected editorial boards and partners, publication, and then monthly KPI reporting covering new referring domains, average DR, and organic traffic on supported pages.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company clients often observe revenue growth after implementing comprehensive SEO services, including <Link href={`/${locale}/pozycjonowanie-stron-internetowych`}>website positioning</Link>, link building programs, and conversion-optimized <Link href={`/${locale}/projektowanie-stron-internetowych`}>web design</Link>. A subscription model works well for long-term digital PR programs, while a one-time project is suitable for companies looking to test the approach.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company clients often observe revenue growth after implementing comprehensive SEO services, including <Link href="/pozycjonowanie-stron-internetowych">website positioning</Link>, link building programs, and conversion-optimized <Link href="/projektowanie-stron-internetowych">web design</Link>. A subscription model works well for long-term digital PR programs, while a one-time project is suitable for companies looking to test the approach.</p>
 
               {/* ===== SECTION: Wsparcie ===== */}
               <h2 id="wsparcie">How can we support your B2B link building program?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>B2B companies that want to build search engine authority without the risk of penalties and without wasting budget on mass outreach need a partner with access to the right editorial boards and a data-driven process. As an <Link href={`/${locale}`}>SEO agency</Link> with experience in domestic <Link href={`/${locale}/pozycjonowanie-stron-internetowych`}>positioning</Link>, we understand the specifics of the market.</p>
+              <p style={{ marginBottom: '1.5rem' }}>B2B companies that want to build search engine authority without the risk of penalties and without wasting budget on mass outreach need a partner with access to the right editorial boards and a data-driven process. As an <Link href="/">SEO agency</Link> with experience in domestic <Link href="/pozycjonowanie-stron-internetowych">positioning</Link>, we understand the specifics of the market.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company runs B2B link building campaigns combining digital PR, production of industry reports, personalized outreach, and transparent reporting. We work in a subscription model for companies planning a long-term program and in a project model for those wanting to start with a pilot. Every campaign begins with a free audit of the link profile and content gap analysis.</p>
               <p style={{ marginBottom: '1.5rem' }}>If you want to know which publications your buyers read and how quickly you can get your first editorial links, contact us and schedule an initial consultation. We will prepare a campaign brief tailored to your industry and budget.</p>
@@ -297,7 +297,7 @@
               <p style={{ marginBottom: '1.5rem' }}>How to organize a pilot: choose one tactic (e.g., broken link building or partner outreach), define 10–15 targets, run the campaign for 4–6 weeks, and evaluate the response rate and publication conversion. Pilot results provide a real basis for a decision on the program's scale.</p>
 
               <h3>Recommendation</h3>
-              <p style={{ marginBottom: '1.5rem' }}><Link href={`/${locale}`}>SEO Agency</Link> | Branding, Web Design & Positioning — AI SEO COMPANY</p>
+              <p style={{ marginBottom: '1.5rem' }}><Link href="/">SEO Agency</Link> | Branding, Web Design & Positioning — AI SEO COMPANY</p>
               <p style={{ marginBottom: '1.5rem', fontStyle: 'italic', color: '#86868B' }}>Article generated by BabyLoveGrowth</p>
 
               {/* Clear CTA Block */}

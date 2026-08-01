@@ -4,7 +4,7 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'SEO Audit | Analysis and Optimization | AI SEO COMPANY' : 'Audyt SEO | Analiza i optymalizacja | AI SEO COMPANY',
   description: locale === 'en' ? 'Comprehensive SEO audit. We will find technical errors on your website and prepare a strategy that will immediately improve your Google rankings.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne na Twojej stronie i przygotujemy strategię, która natychmiast poprawi Twoje pozycje w Google.',
   alternates: {
-    canonical: `/${locale}/audyt-seo`,
+    canonical: locale === 'en' ? `/en/seo-audit` : `/pl/audyt-seo`,
   },
 };
 }

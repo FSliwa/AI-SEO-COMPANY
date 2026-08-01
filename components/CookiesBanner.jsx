@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CookiesBanner() {
@@ -125,7 +125,7 @@ export default function CookiesBanner() {
               </div>
               <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.55, color: '#E2E8F0', fontWeight: 400 }}>
                 {t('text')}{' '}
-                <Link href={`/${lang}/cookies`} style={{ color: '#38BDF8', textDecoration: 'underline', fontWeight: 500 }}>
+                <Link href="/cookies" style={{ color: '#38BDF8', textDecoration: 'underline', fontWeight: 500 }}>
                   {t('policy')}
                 </Link>
               </p>

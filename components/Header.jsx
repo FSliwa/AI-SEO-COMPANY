@@ -75,7 +75,7 @@ export default function Header() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href={`/${lang}`} className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+            <a href="/" className="logo" aria-label="Strona główna AI SEO COMPANY" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
               <span className="sr-only">Strona główna AI SEO COMPANY</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -224,37 +224,37 @@ export default function Header() {
           >
             <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
               <li style={{ '--delay': '0.1s' }}>
-                <a href={`/${lang}#why-us`} onClick={closeMenu}>{t('results')}</a>
+                <a href="/#why-us" onClick={closeMenu}>{t('results')}</a>
               </li>
               <li style={{ '--delay': '0.15s' }}>
-                <a href={`/${lang}#uslugi`} onClick={closeMenu}>{t('services')}</a>
+                <a href="/#uslugi" onClick={closeMenu}>{t('services')}</a>
               </li>
               <li style={{ '--delay': '0.2s' }}>
-                <a href={`/${lang}/cennik-pozycjonowania`} onClick={closeMenu}>{t('pricing')}</a>
+                <a href="/cennik-pozycjonowania" onClick={closeMenu}>{t('pricing')}</a>
               </li>
               <li style={{ '--delay': '0.25s' }}>
-                <a href={`/${lang}#portfolio`} onClick={closeMenu}>{t('process')}</a>
+                <a href="/#portfolio" onClick={closeMenu}>{t('process')}</a>
               </li>
               <li style={{ '--delay': '0.3s' }}>
-                <a href={`/${lang}/audyt-seo`} onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a>
+                <a href="/audyt-seo" onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</a>
               </li>
               <li style={{ '--delay': '0.35s' }}>
-                <a href={`/${lang}/pozycjonowanie-stron-internetowych`} onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</a>
+                <a href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</a>
               </li>
               <li style={{ '--delay': '0.4s' }}>
-                <a href={`/${lang}/projektowanie-stron-internetowych`} onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</a>
+                <a href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</a>
               </li>
               <li style={{ '--delay': '0.45s' }}>
-                <a href={`/${lang}/blog`} onClick={closeMenu}>{t('blog')}</a>
+                <a href="/blog" onClick={closeMenu}>{t('blog')}</a>
               </li>
               <li style={{ '--delay': '0.5s' }}>
-                <a href={`/${lang}/o-nas`} onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
+                <a href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</a>
               </li>
               <li style={{ '--delay': '0.55s' }}>
-                <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
+                <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</a>
               </li>
               <li style={{ '--delay': '0.6s' }}>
-                <a href={`/${lang}#kontakt`} onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
+                <a href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</a>
               </li>
             </ul>
 

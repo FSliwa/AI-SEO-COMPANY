@@ -4,7 +4,7 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'Top SEO Agency Warsaw | Professional SEO Services & Search Optimization Company' : 'Agencja SEO Warszawa | Skuteczne Pozycjonowanie Stron',
   description: locale === 'en' ? 'Modern SEO company in Warsaw. We provide expert SEO services, search optimization services, and search engine marketing for your digital growth.' : 'Nowoczesna agencja SEO Warszawa. Projektujemy strony internetowe, które sprzedają. Kompleksowe pozycjonowanie, audyt SEO i web design.',
   alternates: {
-    canonical: `/${locale}`,
+    canonical: locale === 'en' ? `/en` : `/pl`,
   },
 };
 }

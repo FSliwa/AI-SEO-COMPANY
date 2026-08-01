@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { blogPosts } from '@/lib/blogPosts';
 
 export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customCtaTitleEn, customCtaTextPl, customCtaTextEn }) {
@@ -14,7 +14,7 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {relatedPosts.map(post => (
-            <Link key={post.slug} href={`/${locale}${post.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+            <Link key={post.slug} href={post.slug} style={{ textDecoration: 'none', display: 'block' }}>
               <div style={{ padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
                 <h4 style={{ fontSize: '1.1rem', color: '#1D1D1F', marginBottom: '0.5rem', fontWeight: 600 }}>
                   {locale === 'en' ? post.titleEn : post.titlePl}

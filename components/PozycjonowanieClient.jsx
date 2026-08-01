@@ -9,7 +9,7 @@ import ServiceCarousel from '@/components/service/ServiceCarousel';
 import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 export default function PozycjonowanieClient({ faqData, portfolioCases, carouselItems }) {
   const lang = useLocale();
@@ -120,8 +120,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               </h3>
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' 
-                  ? <>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania. Sprawdź nasz <Link href={`/${lang}/blog/jak-pozyskiwac-opinie-google-poradnik`} style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>poradnik o opiniach Google</Link>.</>
-                  : <>We create topical clusters and semantic content answering user queries and search intent. Check out our <Link href={`/${lang}/blog/jak-pozyskiwac-opinie-google-poradnik`} style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}
+                  ? <>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania. Sprawdź nasz <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>poradnik o opiniach Google</Link>.</>
+                  : <>We create topical clusters and semantic content answering user queries and search intent. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}
               </p>
             </RevealItem>
             

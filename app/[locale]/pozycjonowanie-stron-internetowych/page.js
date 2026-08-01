@@ -4,7 +4,7 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'SEO Services | Expert Search Optimization Agency | AI SEO COMPANY' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
   description: locale === 'en' ? 'Comprehensive SEO optimization service. We are a search engine optimization firm providing marketing and SEO, B2B SEO services, and search engine marketing.' : 'Skuteczne pozycjonowanie lokalne w Warszawie, dominuj Mapy Google i wysokie pozycje. Zdobądź klientów i wygraj z konkurencją.',
   alternates: {
-    canonical: `/${locale}/pozycjonowanie-stron-internetowych`,
+    canonical: locale === 'en' ? `/en/seo-services` : `/pl/pozycjonowanie-stron-internetowych`,
   },
 };
 }

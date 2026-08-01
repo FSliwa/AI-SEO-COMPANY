@@ -4,7 +4,7 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'Blog | SEO Content & Content in Marketing Guide | AI SEO COMPANY' : 'Blog | Poradnik SEO i Web Design | AI SEO COMPANY',
   description: locale === 'en' ? 'Read the latest articles about content in marketing, search engine optimization SEO, and learn exactly what is SEO content with our expert search optimization agency.' : 'Czytaj najnowsze artykuły o SEO, analityce, budowaniu konwersji i projektowaniu. Zobacz nasz AI SEO COMPANY blog.',
   alternates: {
-    canonical: `/${locale}/blog`,
+    canonical: locale === 'en' ? `/en/blog` : `/pl/blog`,
   },
 };
 }
