@@ -51,14 +51,14 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.98, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}
+          style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
         >
-          <h1 style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <span className="sr-only">
-              {lang === 'en' 
-                ? 'Top SEO Agency & Marketing Agency | Professional SEO Optimization Service, SEO Services & Strategic Content in Marketing' 
-                : 'Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż'}
-            </span>
+          <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
+            {lang === 'en' 
+              ? 'Top SEO Agency & Marketing Agency | Professional SEO Optimization Service & SEO Services' 
+              : 'Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż'}
+          </h1>
+          <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <motion.img 
               src={lang === 'en' ? '/hero-text-en.svg' : '/hero-text.svg'} 
               alt={lang === 'en' 
@@ -76,7 +76,7 @@ export default function Hero() {
                 filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.65)) drop-shadow(0 0 30px rgba(216,90,48,0.3))'
               }} 
             />
-          </h1>
+          </div>
         </motion.div>
       </div>
 
