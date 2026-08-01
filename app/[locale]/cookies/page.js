@@ -5,6 +5,10 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'Information about cookies and how they are used on the AI SEO COMPANY agency website.' : 'Informacje o plikach cookies i sposobach ich wykorzystania na stronie agencji AI SEO COMPANY.',
   alternates: {
     canonical: locale === 'en' ? `/en/cookies` : `/pl/cookies`,
+    languages: {
+      'pl': `/pl/cookies`,
+      'en': `/en/cookies`
+    }
   },
 };
 }

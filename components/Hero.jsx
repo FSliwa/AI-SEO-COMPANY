@@ -54,10 +54,16 @@ export default function Hero() {
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}
         >
           <h1 style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            
+            <span className="sr-only">
+              {lang === 'en' 
+                ? 'Top SEO Agency & Professional Marketing Agency | Expert SEO Services & Content Marketing' 
+                : 'Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż'}
+            </span>
             <motion.img 
               src={lang === 'en' ? '/hero-text-en.svg' : '/hero-text.svg'} 
-              alt="Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż" 
+              alt={lang === 'en' 
+                ? 'Top SEO Agency & Marketing Agency - Professional SEO Services' 
+                : 'Agencja SEO Warszawa - strony i pozycjonowanie, które budują sprzedaż'} 
               width={1600}
               height={294}
               fetchPriority="high"

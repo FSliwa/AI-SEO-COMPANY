@@ -6,8 +6,8 @@ export async function generateMetadata({ params }) {
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings` : `https://www.ai-seo-company.pl/pl/blog/core-web-vitals-a-pozycje-google`,
     languages: {
-      'pl': 'https://www.ai-seo-company.pl/pl/blog/core-web-vitals-a-pozycje-google',
-      'en': 'https://www.ai-seo-company.pl/en/blog/core-web-vitals-a-pozycje-google'
+      'pl': `https://www.ai-seo-company.pl/pl/blog/core-web-vitals-a-pozycje-google`,
+      'en': `https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings`
     }
   },
 };

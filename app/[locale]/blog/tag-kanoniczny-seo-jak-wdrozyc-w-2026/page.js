@@ -6,8 +6,8 @@ export async function generateMetadata({ params }) {
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026` : `https://www.ai-seo-company.pl/pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
     languages: {
-      'pl': 'https://www.ai-seo-company.pl/pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026',
-      'en': 'https://www.ai-seo-company.pl/en/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026'
+      'pl': `https://www.ai-seo-company.pl/pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
+      'en': `https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026`
     }
   },
 };

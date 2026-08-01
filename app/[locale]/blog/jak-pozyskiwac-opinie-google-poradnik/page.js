@@ -6,8 +6,8 @@ export async function generateMetadata({ params }) {
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews` : `https://www.ai-seo-company.pl/pl/blog/jak-pozyskiwac-opinie-google-poradnik`,
     languages: {
-      'pl': 'https://www.ai-seo-company.pl/pl/blog/jak-pozyskiwac-opinie-google-poradnik',
-      'en': 'https://www.ai-seo-company.pl/en/blog/jak-pozyskiwac-opinie-google-poradnik'
+      'pl': `https://www.ai-seo-company.pl/pl/blog/jak-pozyskiwac-opinie-google-poradnik`,
+      'en': `https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews`
     }
   },
 };

@@ -5,6 +5,10 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'All publications from our SEO content writers in one place. Browse the full library of articles on marketing and SEO provided by top search optimization companies.' : 'Wszystkie publikacje naszego zespołu w jednym miejscu. Przeglądaj pełną bibliotekę artykułów o pozycjonowaniu i web designie.',
   alternates: {
     canonical: locale === 'en' ? `/en/blog/library` : `/pl/blog/biblioteka`,
+    languages: {
+      'pl': `/pl/blog/biblioteka`,
+      'en': `/en/blog/library`
+    }
   },
 };
 }

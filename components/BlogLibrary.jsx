@@ -107,18 +107,9 @@ export default function BlogLibrary() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <Link href="/blog" style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            background: 'rgba(0,0,0,0.05)', 
-            color: '#1D1D1F', 
+          <Link href="/blog" className="btn btn-primary" style={{ 
             padding: '1.2rem 2.5rem', 
-            borderRadius: '999px', 
             fontSize: '1.1rem', 
-            fontWeight: 600, 
-            textDecoration: 'none', 
-            transition: 'all 0.3s ease' 
           }}>
             {lang === 'pl' ? 'Wróć na stronę główną bloga' : 'Back to main blog page'}
           </Link>

@@ -5,6 +5,10 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'Read the latest articles about content in marketing, search engine optimization SEO, and learn exactly what is SEO content with our expert search optimization agency.' : 'Czytaj najnowsze artykuły o SEO, analityce, budowaniu konwersji i projektowaniu. Zobacz nasz AI SEO COMPANY blog.',
   alternates: {
     canonical: locale === 'en' ? `/en/blog` : `/pl/blog`,
+    languages: {
+      'pl': `/pl/blog`,
+      'en': `/en/blog`
+    }
   },
 };
 }

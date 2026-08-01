@@ -100,10 +100,10 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
             </div>
-            <div style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja SEO i marketing wzrostu' : 'SEO Optimization & Growth Marketing'}</div>
+            <div style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja SEO i marketing wzrostu' : 'SEO Services & Marketing Agency Growth'}</div>
             <p>{lang === 'pl'
               ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
-              : 'High-impact search engine positioning, local SEO, technical SEO optimization, and conversion rate optimization (CRO) driving stable organic growth.'
+              : 'High-impact search engine positioning, local SEO services, technical SEO, and strategic content in marketing driving stable organic growth for your brand.'
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (
@@ -115,7 +115,7 @@ export default function Services() {
               ) : (
                 <>
                   <li>SEO audit & competitor analysis</li>
-                  <li>Content marketing & technical SEO</li>
+                  <li>Content in marketing & technical SEO</li>
                   <li>Visibility & conversion tracking</li>
                 </>
               )}

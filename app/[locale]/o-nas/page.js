@@ -5,6 +5,10 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'Meet the AI SEO COMPANY team of SEO experts. We are a marketing agency and search optimization company combining design with hard data and analytics.' : 'Poznaj zespół AI SEO COMPANY. Jesteśmy architektami Twojego wzrostu. Łączymy design z twardymi danymi analitycznymi.',
   alternates: {
     canonical: locale === 'en' ? `/en/about-us` : `/pl/o-nas`,
+    languages: {
+      'pl': `/pl/o-nas`,
+      'en': `/en/about-us`
+    }
   },
 };
 }

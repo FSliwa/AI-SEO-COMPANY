@@ -5,6 +5,10 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'Comprehensive SEO audit. We will find technical errors on your website and prepare a strategy that will immediately improve your Google rankings.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne na Twojej stronie i przygotujemy strategię, która natychmiast poprawi Twoje pozycje w Google.',
   alternates: {
     canonical: locale === 'en' ? `/en/seo-audit` : `/pl/audyt-seo`,
+    languages: {
+      'pl': `/pl/audyt-seo`,
+      'en': `/en/seo-audit`
+    }
   },
 };
 }

@@ -227,18 +227,9 @@ export default function BlogGrid() {
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <Link href="/blog/biblioteka" style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            background: '#1D1D1F', 
-            color: '#FFFFFF', 
+          <Link href="/blog/biblioteka" className="btn btn-primary" style={{ 
             padding: '1.2rem 2.5rem', 
-            borderRadius: '999px', 
             fontSize: '1.1rem', 
-            fontWeight: 600, 
-            textDecoration: 'none', 
-            transition: 'all 0.3s ease' 
           }}>
             {lang === 'pl' ? 'Pełna biblioteka artykułów' : 'Full article library'}
           </Link>
