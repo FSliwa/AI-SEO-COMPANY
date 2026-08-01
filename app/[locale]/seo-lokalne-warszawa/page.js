@@ -3,12 +3,12 @@ export async function generateMetadata({ params }) {
   return {
   title: locale === 'en' ? 'Local SEO | SEO Agency Near Me & SEO Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo firms near me, get seo services near me from top search engine optimization companies near me.' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
-    alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl${p.enPath}` : `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
+      alternates: {
+    canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
     languages: {
-      'pl': `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
-      'x-default': `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
-      'en': `https://www.ai-seo-company.pl${p.enPath}`
+      'pl': 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
+      'x-default': 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
+      'en': 'https://www.ai-seo-company.pl/en/local-seo-warsaw'
     }
   },
 };

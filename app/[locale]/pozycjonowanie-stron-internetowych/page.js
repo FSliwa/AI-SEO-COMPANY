@@ -3,12 +3,12 @@ export async function generateMetadata({ params }) {
   return {
   title: locale === 'en' ? 'SEO Services | Content Marketing & Search Optimization Services & SEO for Agencies' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
   description: locale === 'en' ? 'Looking for a reliable seo optimization service? We provide expert content in marketing, and seo services. SEO services SEO for agencies available. We are a search optimization agency, seo optimization agency offering search engine marketing, search engine optimisation seo, search optimisation agency, seo digital marketing, digital marketing seo, seo and digital marketing, search engine optimization and marketing, search optimization, seo search engine, seo marketing digital, search engine optimization marketing, seo search engine optimization, seo and marketing. We also do content marketing.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe pozycje w Google.',
-    alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl${p.enPath}` : `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
+      alternates: {
+    canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
-      'pl': `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
-      'x-default': `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
-      'en': `https://www.ai-seo-company.pl${p.enPath}`
+      'pl': 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
+      'x-default': 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
+      'en': 'https://www.ai-seo-company.pl/en/seo-services'
     }
   },
 };
