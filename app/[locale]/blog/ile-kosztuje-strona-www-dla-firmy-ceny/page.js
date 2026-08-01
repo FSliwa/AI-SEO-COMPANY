@@ -83,7 +83,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                A simple brochure website usually falls into a wide price range, a company website with a dozen or more pages costs more, and online stores start at amounts that can rise significantly with complex integrations. These are broad ranges because the final <Link href="/en/web-design" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>price of a website</Link> depends on several variables, which I’ll cover below.
+                A simple brochure website usually falls into a wide price range, a company website with a dozen or more pages costs more, and online stores start at amounts that can rise significantly with complex integrations. These are broad ranges because the final <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>price of a website</Link> depends on several variables, which I’ll cover below.
               </p>
               
               <p>
@@ -148,7 +148,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Company website (10–20 pages)</td>
                       <td style={{ padding: '1rem' }}>Depends on project requirements</td>
-                      <td style={{ padding: '1rem' }}>Custom UX/UI, WordPress or Next.js, blog, basic <Link href="/en/seo-audit" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO audit</Link></td>
+                      <td style={{ padding: '1rem' }}>Custom UX/UI, WordPress or Next.js, blog, basic <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO audit</Link></td>
                       <td style={{ padding: '1rem' }}>Realistic delivery time</td>
                       <td style={{ padding: '1rem' }}>SMEs, B2B companies</td>
                       <td style={{ padding: '1rem' }}>Higher maintenance costs</td>
@@ -364,14 +364,14 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 </table>
               </div>
 
-              <p>The <Link href="/en" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ai-seo-company</Link> package includes design in Next.js and React technologies, which deliver better Core Web Vitals than standard WordPress, directly translating into Google rankings and advertising costs. It also includes CRM and payment system integrations, a technical SEO audit as part of implementation, and the option of a monthly SEO subscription after the website launches.</p>
+              <p>The <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ai-seo-company</Link> package includes design in Next.js and React technologies, which deliver better Core Web Vitals than standard WordPress, directly translating into Google rankings and advertising costs. It also includes CRM and payment system integrations, a technical SEO audit as part of implementation, and the option of a monthly SEO subscription after the website launches.</p>
               
               <p>A freelancer is a good choice when you have a limited budget, a simple project, and time to manage the process yourself. A small agency offers more structure and usually better graphic design, but rarely provides advanced technical and SEO competencies in one place. Full-service makes sense when the website is meant to directly generate revenue and every week of delay or every percentage point of conversion has measurable value.</p>
 
               <h2 id="why-invest">Why It's Worth Investing in a Well-Designed Website</h2>
               <p>A website is not a cost that needs to be minimized. It is a sales channel that works 24 hours a day.</p>
               <p>Research on buying behavior shows that 81% of customers need full trust in a brand before making a purchase, and the website is the first place where that trust is built or lost.</p>
-              <p>A concrete example: a real estate company that moved from an outdated WordPress website to a Next.js solution with an optimized content structure and <Link href="/en/local-seo-warsaw" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local SEO</Link> can expect growth in organic traffic within 3–6 months of launch. The key point, however, is that simply changing technology without thoughtful UX and content will not deliver results.</p>
+              <p>A concrete example: a real estate company that moved from an outdated WordPress website to a Next.js solution with an optimized content structure and <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local SEO</Link> can expect growth in organic traffic within 3–6 months of launch. The key point, however, is that simply changing technology without thoughtful UX and content will not deliver results.</p>
 
               <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
                 <strong>Professional tip:</strong> Measure website ROI through four indicators: organic traffic (Google Search Console), conversion rate (Google Analytics 4), average transaction or inquiry value, and bounce rate. If after 6 months none of these indicators have improved, the problem lies either in traffic quality or website UX.
@@ -414,12 +414,12 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <h2 id="what-really-matters">A €450 Website or a €4,650 Website: What Really Matters?</h2>
               <p>Over the years I’ve observed one repeating pattern: a client chooses the cheapest offer, the website is built in 2 weeks, and after 6 months they come back asking why no one visits it and why there are no inquiries. The answer is usually simple: because the website was not designed with the user or Google in mind.</p>
               <p>I’m not claiming that expensive always means better. I’ve seen €7,000 projects that were technical disasters. But there is a certain threshold below which it’s impossible to build something that actually works. Today that threshold is around <strong>€700–930</strong> for the simplest cases and <strong>€1,850–2,300</strong> for a website that needs to generate leads in a competitive industry.</p>
-              <p>The most common mistake? Treating the website as a one-time expense rather than an investment that requires maintenance. A website without regular updates, without <Link href="/en/seo-services" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO</Link>, and without analysis of user behavior ages faster than you think. After 2–3 years without technical care, most websites need a rebuild, not just a refresh.</p>
+              <p>The most common mistake? Treating the website as a one-time expense rather than an investment that requires maintenance. A website without regular updates, without <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO</Link>, and without analysis of user behavior ages faster than you think. After 2–3 years without technical care, most websites need a rebuild, not just a refresh.</p>
               <p>My advice is simple: before you ask about the price, decide what the website is supposed to do for you. If it only needs to confirm the company’s existence, a budget of <strong>€700–1,150</strong> is enough. If it needs to attract clients and convert, plan a minimum of <strong>€2,300</strong> and treat it as an investment with a measurable return.</p>
               
               <h2 id="ai-seo-company-en">Ai-seo-company: A Website That Works for Your Business from Day One</h2>
               <p>Most companies face a choice: a freelancer for a few hundred or thousand euros, a small agency, or full service. Ai-seo-company is the answer when the website should not only look good but generate traffic and inquiries.</p>
-              <p>The offer includes design in Next.js and React with full Core Web Vitals optimization, custom UX/UI based on user journey analysis, CRM and payment system integrations, and an SEO audit as part of implementation. After the website launches, you can continue cooperation with a monthly <Link href="/en/seo-services" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>B2B website positioning</Link> subscription that maintains and builds organic visibility.</p>
+              <p>The offer includes design in Next.js and React with full Core Web Vitals optimization, custom UX/UI based on user journey analysis, CRM and payment system integrations, and an SEO audit as part of implementation. After the website launches, you can continue cooperation with a monthly <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>B2B website positioning</Link> subscription that maintains and builds organic visibility.</p>
               
               <p><strong>Current packages (net + VAT):</strong></p>
               <ul>
@@ -428,7 +428,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><strong>Booster Pack</strong> – <strong>€580 / month</strong> (min. 3 months) – <strong>new professional website for €0</strong> in the package + full positioning + SSL + server + technical care.</li>
               </ul>
               
-              <p>If you’re planning a project, start with a free consultation. Prepare the business goal, list of key features, and examples of websites you like. Details of the offer and the option to schedule a call are available on the <Link href="/en/web-design" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>website design</Link> page.</p>
+              <p>If you’re planning a project, start with a free consultation. Prepare the business goal, list of key features, and examples of websites you like. Details of the offer and the option to schedule a call are available on the <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>website design</Link> page.</p>
 
               <h2 id="useful-sources">Useful Sources and Tools for Budget Planning</h2>
               <p>Before sending a quote request, it’s worth reviewing a few resources that will help you prepare a brief and evaluate the offers you receive.</p>
@@ -436,19 +436,19 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <ul>
                 <li>How much does it cost to create a website? See sample prices</li>
                 <li>How much does website maintenance cost?</li>
-                <li><Link href="/en/web-design" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website design for companies</Link></li>
-                <li><Link href="/en/seo-pricing" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>How much does SEO cost? Price list and packages</Link></li>
-                <li><Link href="/en/seo-audit" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO audit</Link></li>
+                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website design for companies</Link></li>
+                <li><Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>How much does SEO cost? Price list and packages</Link></li>
+                <li><Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO audit</Link></li>
               </ul>
               
               <p>How to use these sources when preparing a brief? Start by defining the website’s business goal (sales, lead generation, brand building). Then list 3–5 key user paths, required integrations, reference website examples, and an approximate budget. Such a brief will allow every provider to quote the project on comparable terms and cut negotiation time in half.</p>
               
               <p><strong>Recommendations:</strong></p>
               <ul>
-                <li><Link href="/en/seo-pricing" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website Positioning Price List 2026 | SEO Packages and Prices</Link></li>
-                <li><Link href="/en/blog/how-much-does-seo-cost-in-poland-pricing-and-packages-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>How Much Does SEO Cost? 2026 Price List and Packages</Link></li>
-                <li><Link href="/en/web-design" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website Design | Web Design for Companies</Link></li>
-                <li><Link href="/en/seo-services" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website Positioning | SEO for B2B Companies</Link></li>
+                <li><Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website Positioning Price List 2026 | SEO Packages and Prices</Link></li>
+                <li><Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>How Much Does SEO Cost? 2026 Price List and Packages</Link></li>
+                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website Design | Web Design for Companies</Link></li>
+                <li><Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website Positioning | SEO for B2B Companies</Link></li>
               </ul>
               
               <BlogCTA />
