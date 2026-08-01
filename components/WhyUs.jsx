@@ -62,7 +62,7 @@ export default function WhyUs() {
       id: 1,
       tag: lang === 'pl' ? 'ZAUFANIE I KONWERSJA' : 'TRUST & CONVERSION',
       metric: '81%',
-      title: lang === 'pl' ? 'Zaufanie klientów przed zakupem.' : 'Client trust before purchase.',
+      title: lang === 'pl' ? 'Zaufanie klientów przed zakupem' : 'Client trust before purchase',
       description: lang === 'pl' 
         ? 'Statystyki jasno pokazują, że 81% klientów musi w pełni zaufać marce na podstawie jej wizerunku w sieci, zanim podejmie decyzję o zakupie. Nasz rygorystyczny proces projektowy UI/UX buduje u odbiorców poczucie bezpieczeństwa, co drastycznie zwiększa współczynnik konwersji i generuje więcej zapytań ofertowych.'
         : <>Industry data shows that 81% of clients must completely trust a brand online before making a purchasing decision. As a professional <strong>SEO company</strong> and one of the leading <strong>search engine optimisation companies</strong>, our rigorous UI/UX design process instills immediate confidence. We meticulously map user journeys to eliminate friction points, significantly boosting conversion rates and driving more high-value inquiries from your existing traffic. This translates directly into a robust and highly predictable sales pipeline.</>,
@@ -72,7 +72,7 @@ export default function WhyUs() {
       id: 2,
       tag: lang === 'pl' ? 'ROZPOZNAWALNOŚĆ MARKI' : 'BRAND RECOGNITION',
       metric: '+80%',
-      title: lang === 'pl' ? 'Wzrost rozpoznawalności firmy.' : 'Significant brand recall boost.',
+      title: lang === 'pl' ? 'Wzrost rozpoznawalności firmy' : 'Significant brand recall boost',
       description: lang === 'pl'
         ? 'Profesjonalny branding to kluczowe narzędzie sprzedażowe. Tworzymy unikalne, spójne systemy wizualne i nowoczesną architekturę designu, która zwiększa zapamiętywalność marki o 80%. Dzięki temu Twoja firma jednoznacznie wyróżnia się na tle konkurencji, budując pozycję lidera.'
         : <>Professional branding is a critical sales tool. Unlike other <strong>SEO firms</strong>, <strong>SEO optimization companies</strong>, and typical <strong>search engine optimization companies</strong> or <strong>search engine optimization agencies</strong>, we operate as a full-stack <strong>marketing agency</strong> leveraging advanced <strong>seotools</strong>. We develop unique, cohesive visual systems and modern design architectures that increase brand recall by 80%. This ensures your company stands out definitively from competitors, establishing a strong leadership position in your industry.</>,
@@ -82,7 +82,7 @@ export default function WhyUs() {
       id: 3,
       tag: lang === 'pl' ? 'WPŁYW NA PRZYCHÓD' : 'REVENUE IMPACT',
       metric: '+23%',
-      title: lang === 'pl' ? 'Średni wzrost przychodów.' : 'Average revenue increase.',
+      title: lang === 'pl' ? 'Średni wzrost przychodów' : 'Average revenue increase',
       description: lang === 'pl'
         ? 'Sama obecność w sieci to za mało. Łączymy zaawansowane pozycjonowanie SEO z psychologią konwersji, aby zmaksymalizować Twoje zyski. Zastosowanie premium designu na wszystkich etapach ścieżki klienta przekłada się na udokumentowany średni wzrost przychodów firmy o 23%.'
         : "Merely being online is not enough in today's fiercely competitive digital landscape. We effectively combine advanced SEO methodologies with deep conversion psychology to maximize your ROI. Implementing a consistent, premium design architecture across the entire customer journey builds unparalleled trust. For our partners, this comprehensive approach directly translates to a documented average revenue increase of 23%, ensuring long-term financial stability.",
@@ -92,7 +92,7 @@ export default function WhyUs() {
       id: 4,
       tag: lang === 'pl' ? 'RUCH ORGANICZNY' : 'ORGANIC TRAFFIC',
       metric: '+310%',
-      title: lang === 'pl' ? 'Dynamiczny wzrost wartościowego ruchu.' : 'Dynamic high-intent traffic growth.',
+      title: lang === 'pl' ? 'Dynamiczny wzrost wartościowego ruchu' : 'Dynamic high-intent traffic growth',
       description: lang === 'pl'
         ? 'Optymalizujemy intencjonalne frazy komercyjne, dostarczając klientów z Google gotowych do zakupu.'
         : 'We meticulously optimize for highly targeted commercial keywords that carry the highest purchase intent, driving qualified buyers directly from Google who are ready to convert immediately. By analyzing deep search behavior and competitor gaps, we construct a resilient visibility moat around your brand. This strategic positioning ensures that you capture the most valuable market share, consistently turning organic traffic into loyal, long-term business partners.',
@@ -102,7 +102,7 @@ export default function WhyUs() {
       id: 5,
       tag: lang === 'pl' ? 'WYDAJNOŚĆ I UX' : 'PERFORMANCE & UX',
       metric: '99/100',
-      title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google.' : 'Lightning performance & Google score.',
+      title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google' : 'Lightning performance & Google score',
       description: lang === 'pl'
         ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum.'
         : 'We completely eliminate frustrating loading delays, serving split-second, highly optimized web pages that drastically reduce user bounce rates. By implementing advanced caching strategies, next-generation image formats, and streamlined code architectures, we ensure your site passes all Core Web Vitals assessments with flying colors. This uncompromising approach to technical excellence guarantees a frictionless user experience and rewards you with superior Google rankings.',

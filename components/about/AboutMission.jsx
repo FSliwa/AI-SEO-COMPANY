@@ -62,7 +62,7 @@ export default function AboutMission() {
       id: 1,
       tag: lang === 'pl' ? 'AI & DATA-DRIVEN' : 'AI & DATA-DRIVEN',
       metric: '100%',
-      title: lang === 'pl' ? 'Strategia oparta na twardych danych.' : 'Strategy based on hard data.',
+      title: lang === 'pl' ? 'Strategia oparta na twardych danych' : 'Strategy based on hard data',
       description: lang === 'pl' 
         ? 'Nie zgadujemy. Wykorzystujemy zaawansowaną analitykę i algorytmy AI do precyzyjnego pozycjonowania i architektury treści, gwarantując najwyższą skuteczność działań.'
         : 'We don’t guess. We use advanced analytics and AI algorithms for precise positioning and content architecture, guaranteeing maximum campaign effectiveness.',
@@ -72,7 +72,7 @@ export default function AboutMission() {
       id: 2,
       tag: lang === 'pl' ? 'APPLE-GRADE DESIGN' : 'APPLE-GRADE DESIGN',
       metric: 'UX',
-      title: lang === 'pl' ? 'Bezkompromisowa estetyka i minimalizm.' : 'Uncompromising aesthetics and minimalism.',
+      title: lang === 'pl' ? 'Bezkompromisowa estetyka i minimalizm' : 'Uncompromising aesthetics and minimalism',
       description: lang === 'pl'
         ? 'Wierzymy, że premium design sprzedaje. Tworzymy czyste, minimalistyczne interfejsy inspirowane najwyższymi standardami w branży tech, aby budować bezwzględne zaufanie.'
         : 'We believe premium design sells. We craft clean, minimalist interfaces inspired by the highest standards in the tech industry to build absolute trust.',
@@ -82,7 +82,7 @@ export default function AboutMission() {
       id: 3,
       tag: lang === 'pl' ? 'CRO & KONWERSJA' : 'CRO & CONVERSION',
       metric: 'ROI',
-      title: lang === 'pl' ? 'Hiper-optymalizacja konwersji sprzedażowej.' : 'Hyper-optimization of sales conversion.',
+      title: lang === 'pl' ? 'Hiper-optymalizacja konwersji sprzedażowej' : 'Hyper-optimization of sales conversion',
       description: lang === 'pl'
         ? 'Ruch to tylko początek. Nasze projekty są zaprojektowane od podstaw w taki sposób, aby zamieniać anonimowych odwiedzających w płacących, lojalnych klientów.'
         : 'Traffic is just the beginning. Our projects are designed from the ground up to turn anonymous visitors into paying, loyal customers.',
@@ -92,7 +92,7 @@ export default function AboutMission() {
       id: 4,
       tag: lang === 'pl' ? 'PARTNERSTWO' : 'PARTNERSHIP',
       metric: '1:1',
-      title: lang === 'pl' ? 'Traktujemy Twój biznes jak własny.' : 'We treat your business as our own.',
+      title: lang === 'pl' ? 'Traktujemy Twój biznes jak własny' : 'We treat your business as our own',
       description: lang === 'pl'
         ? 'Nie jesteśmy tylko wykonawcą – stajemy się przedłużeniem Twojego zespołu. Angażujemy się w zrozumienie Twojego modelu biznesowego, by wspólnie budować długoterminowy sukces.'
         : 'We are not just a contractor – we become an extension of your team. We commit to understanding your business model to build long-term success together.',
@@ -102,7 +102,7 @@ export default function AboutMission() {
       id: 5,
       tag: lang === 'pl' ? 'INNOWACJA' : 'INNOVATION',
       metric: '∞',
-      title: lang === 'pl' ? 'Nigdy nie osiadamy na laurach.' : 'We never rest on our laurels.',
+      title: lang === 'pl' ? 'Nigdy nie osiadamy na laurach' : 'We never rest on our laurels',
       description: lang === 'pl'
         ? 'Technologia i algorytmy zmieniają się każdego dnia. Dlatego uczymy się i adaptujemy jeszcze szybciej, wyznaczając nowe standardy w branży, a nie tylko za nimi podążając.'
         : 'Technology and algorithms change every day. That’s why we learn and adapt even faster, setting new industry standards rather than just following them.',
