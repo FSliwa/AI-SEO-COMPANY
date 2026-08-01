@@ -67,7 +67,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Odkryj prawdziwe przyczyny braku widoczności. <span style={{ color: 'var(--color-cta)' }}>Weryfikujemy ponad 50 krytycznych czynników technicznych, które blokują Twój potencjał w Google</span>.</>
+                ? <>Odkryj prawdziwe przyczyny braku widoczności. <span style={{ color: 'var(--color-cta)' }}>Nasz profesjonalny <strong>audyt SEO</strong> weryfikuje ponad 50 krytycznych czynników technicznych, które blokują Twój potencjał w Google</span>.</>
                 : <>Discover the real reasons for your lack of visibility. <span style={{ color: 'var(--color-cta)' }}>We verify over 50 critical technical factors blocking your Google potential</span>.</>}
             </p>
             
