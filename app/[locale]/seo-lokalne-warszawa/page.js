@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'Local SEO Warsaw | Local Business Optimization' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
-  description: locale === 'en' ? 'Effective local SEO in Warsaw. Dominate Google Maps (Google Business Profile), get customers from your area, and outpace the competition.' : 'Skuteczne pozycjonowanie lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
+  description: locale === 'en' ? 'Effective local SEO in Warsaw. Dominate Google Maps (Google Business Profile), get customers from your area, and outpace the competition.' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
   alternates: {
     canonical: locale === 'en' ? `/en/local-seo-warsaw` : `/pl/seo-lokalne-warszawa`,
     languages: {
