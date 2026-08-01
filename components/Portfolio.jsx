@@ -52,11 +52,11 @@ const realizedWebsites = [
       tag: 'B2B INDUSTRY & SEO',
       title: 'METALIZACJA PRÓŻNIOWA & LAKIEROWANIE UV',
       subtitle: 'Skalowanie biznesu B2B na rynki zagraniczne (Niemcy, USA) dzięki nowej architekturze informacji i SEO.',
-      image: '/projects/seo-firms-optimization-companies-staniax.webp',
+      image: '/projects/seo-firms-optimization-companies-marketing-agency-seotools-staniax.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'SEO firms, SEO optimization companies',
-    imgTitle: 'SEO firms, SEO optimization companies',
+    imgAlt: 'SEO firms, SEO optimization companies, marketing agency, seotools',
+    imgTitle: 'SEO firms, SEO optimization companies, marketing agency, seotools',
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
 - Start od zerowej widoczności → 2,8 tys. wyświetleń i gwałtowny skokowy wzrost do ok. 100 wyświetleń dziennie.
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
