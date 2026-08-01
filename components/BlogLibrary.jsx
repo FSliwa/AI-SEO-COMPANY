@@ -23,7 +23,7 @@ export default function BlogLibrary() {
     <section className="blog-grid" style={{ padding: '8rem 0 4rem 0', backgroundColor: 'var(--color-bg-surface)' }}>
       <div className="container" style={{ margin: '0 auto' }}>
         <Reveal>
-          <div style={{ marginBottom: '4rem', textAlign: 'center' }}>
+          <div style={{ marginBottom: '4rem', textAlign: 'left' }}>
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', 
               fontWeight: 700, 
@@ -33,7 +33,7 @@ export default function BlogLibrary() {
             }}>
               {lang === 'pl' ? 'Biblioteka Artykułów SEO i IT' : 'SEO Content Library & Strategies'}
             </h1>
-            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0', fontWeight: 500 }}>
               {lang === 'pl' 
                 ? 'Biblioteka Artykułów SEO i Web Design od ekspertów AI SEO COMPANY. Wszystkie publikacje naszego zespołu w jednym miejscu.' 
                 : 'SEO and Web Design Content Library from AI SEO COMPANY experts. All publications and marketing strategies from our team in one place.'}
