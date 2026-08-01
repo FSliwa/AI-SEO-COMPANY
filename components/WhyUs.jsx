@@ -194,7 +194,7 @@ export default function WhyUs() {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'DLACZEGO MY' : 'WHY US'}
             </div>
             <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
-              {lang === 'pl' ? 'Twój projekt, strony, projektowanie stron internetowych, audyt SEO i pozycjonowanie stron – agencja marketingowa nastawiona na wyniki' : 'Result driven projects, with a focus on design and functionality'}
+              {lang === 'pl' ? 'Twój projekt, strony, projektowanie stron internetowych, audyt SEO, optymalizacja SEO i pozycjonowanie stron – agencja marketingowa nastawiona na wyniki' : 'Result driven projects, with a focus on design and functionality'}
             </h2>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
               {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych.' : 'We craft digital solutions backed by hard analytics and buyer psychology.'}
