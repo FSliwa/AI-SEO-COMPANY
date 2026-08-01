@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'B2B Link Building - Strategies & Checklist for Marketers' : 'Link Building B2B - Strategie i Checklista dla Marketerów',
   description: locale === 'en' ? 'Everything you need to know about B2B link acquisition. Discover effective link building methods that actually translate into Google visibility.' : 'Wszystko co musisz wiedzieć o pozyskiwaniu linków B2B. Odkryj skuteczne metody link buildingu, które faktycznie przekładają się na widoczność w Google.',
   alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist` : `https://www.ai-seo-company.pl/pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist` : `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
     languages: {
-      'pl': `https://www.ai-seo-company.pl/pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
+      'pl': `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
+      'x-default': (/'pl':\s*/, ''),
       'en': `https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist`
     }
   },

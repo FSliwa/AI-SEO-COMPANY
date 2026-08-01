@@ -21,7 +21,7 @@ export default function sitemap() {
     // Polish version
     const plSlug = routing.pathnames[route].pl || route;
     allRoutes.push({
-      url: `${baseUrl}/pl${plSlug === '/' ? '' : plSlug}`,
+      url: `${baseUrl}${plSlug === '/' ? '' : plSlug}`,
       lastModified: currentDate,
       changeFrequency: route === '/' || route.startsWith('/blog') ? 'weekly' : 'monthly',
       priority: route === '/' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85,

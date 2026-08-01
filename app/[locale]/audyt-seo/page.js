@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'SEO Audit | SEO Consultancy & Search Engine Optimization Consultants' : 'Audyt SEO | Analiza i Optymalizacja SEO',
   description: locale === 'en' ? 'Looking for a search engine optimisation consultancy or seo consultancy? We offer comprehensive seo keyword analysis and SEO audit from top search engine optimization consultants. Improve your Google rankings.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
   alternates: {
-    canonical: locale === 'en' ? `/en/seo-audit` : `/pl/audyt-seo`,
+    canonical: locale === 'en' ? `/en/seo-audit` : `/audyt-seo`,
     languages: {
-      'pl': `/pl/audyt-seo`,
+      'pl': `/audyt-seo`,
+      'x-default': (/'pl':\s*/, ''),
       'en': `/en/seo-audit`
     }
   },

@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'SEO Canonical Tag (rel=canonical) Guide 2026' : 'Tag Kanoniczny (rel=canonical) SEO w 2026 | Poradnik',
   description: locale === 'en' ? 'The canonical tag (rel=canonical) is the foundation of SEO. See how to avoid duplicate content, protect crawl budget, and implement it correctly.' : 'Tag kanoniczny (rel=canonical) to fundament SEO. Zobacz, jak unikać duplikacji treści, chronić crawl budget i poprawnie go wdrażać.',
   alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026` : `https://www.ai-seo-company.pl/pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026` : `https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
     languages: {
-      'pl': `https://www.ai-seo-company.pl/pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
+      'pl': `https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
+      'x-default': (/'pl':\s*/, ''),
       'en': `https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026`
     }
   },

@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'How Much Does SEO Cost? Pricing & Packages 2026' : 'Ile Kosztuje SEO w Polsce? Cennik i Pakiety 2026',
   description: locale === 'en' ? 'Wondering how much effective SEO costs in 2026? See our SEO pricing and learn what affects the final cost of optimization.' : 'Zastanawiasz się, ile kosztuje skuteczne pozycjonowanie w 2026 roku? Zobacz nasz cennik SEO i dowiedz się, co wpływa na finalną cenę optymalizacji.',
   alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026` : `https://www.ai-seo-company.pl/pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
     languages: {
-      'pl': `https://www.ai-seo-company.pl/pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
+      'pl': `https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
+      'x-default': (/'pl':\s*/, ''),
       'en': `https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026`
     }
   },

@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'Local SEO | SEO Agency Near Me & SEO Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo firms near me, get seo services near me from top search engine optimization companies near me.' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
   alternates: {
-    canonical: locale === 'en' ? `/en/local-seo-warsaw` : `/pl/seo-lokalne-warszawa`,
+    canonical: locale === 'en' ? `/en/local-seo-warsaw` : `/seo-lokalne-warszawa`,
     languages: {
-      'pl': `/pl/seo-lokalne-warszawa`,
+      'pl': `/seo-lokalne-warszawa`,
+      'x-default': (/'pl':\s*/, ''),
       'en': `/en/local-seo-warsaw`
     }
   },

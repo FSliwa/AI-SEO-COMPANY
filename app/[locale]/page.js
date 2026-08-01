@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'Search Engine Optimization Companies, Optimisation Agencies & Top Company for SEO, SEO Firms, Marketing Agency | Seotools' : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost',
   description: locale === 'en' ? 'Need a company for seo or seo for companies? We are a leading seo company, marketing agency, and search engine optimization company using top seotools. We rank among top search engine optimization companies, seo firms, engine optimization companies, seo optimization companies, search engine optimisation companies and search engine optimization agencies.' : 'Twój projekt i strony to nasz priorytet. Agencja SEO, agencja marketingowa Warszawa. Zapewniamy pozycjonowanie stron, które generuje realny wzrost Twojej firmy.',
   alternates: {
-    canonical: locale === 'en' ? `/en` : `/pl`,
+    canonical: locale === 'en' ? `/en` : `/`,
     languages: {
-      'pl': `/pl`,
+      'pl': `/`,
+      'x-default': `/`,
       'en': `/en`
     }
   },

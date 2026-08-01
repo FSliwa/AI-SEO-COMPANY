@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'Local SEO for Companies | 2026 Guide' : 'SEO Lokalne dla Firm w Warszawie | Poradnik 2026',
   description: locale === 'en' ? 'Effective local SEO in Google Maps (Business Profile). Get customers from your area with proven SEO strategies for small and medium businesses.' : 'Skuteczne pozycjonowanie lokalne w Google Maps. Zdobądź klientów z okolicy dzięki sprawdzonym strategiom SEO dla firm.',
   alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/local-seo-for-companies` : `https://www.ai-seo-company.pl/pl/blog/seo-lokalne-dla-firm-w-warszawie`,
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/local-seo-for-companies` : `https://www.ai-seo-company.pl/blog/seo-lokalne-dla-firm-w-warszawie`,
     languages: {
-      'pl': `https://www.ai-seo-company.pl/pl/blog/seo-lokalne-dla-firm-w-warszawie`,
+      'pl': `https://www.ai-seo-company.pl/blog/seo-lokalne-dla-firm-w-warszawie`,
+      'x-default': (/'pl':\s*/, ''),
       'en': `https://www.ai-seo-company.pl/en/blog/local-seo-for-companies`
     }
   },

@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'Content Library | Strategies by Experts | AI SEO COMPANY' : 'Biblioteka Artykułów SEO i Web Design | AI SEO COMPANY',
   description: locale === 'en' ? 'All publications from our SEO content writers in one place. Browse the full library of articles on marketing and SEO provided by top search optimization companies.' : 'Wszystkie publikacje naszego zespołu w jednym miejscu. Przeglądaj pełną bibliotekę artykułów o pozycjonowaniu i web designie.',
   alternates: {
-    canonical: locale === 'en' ? `/en/blog/library` : `/pl/blog/biblioteka`,
+    canonical: locale === 'en' ? `/en/blog/library` : `/blog/biblioteka`,
     languages: {
-      'pl': `/pl/blog/biblioteka`,
+      'pl': `/blog/biblioteka`,
+      'x-default': (/'pl':\s*/, ''),
       'en': `/en/blog/library`
     }
   },

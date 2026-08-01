@@ -4,9 +4,10 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'Core Web Vitals vs Google Rankings | SEO Guide' : 'Core Web Vitals a Pozycje w Google | Przewodnik SEO',
   description: locale === 'en' ? 'Learn how Core Web Vitals (LCP, FID, CLS) impact your Google rankings. A practical optimization guide.' : 'Dowiedz się jak Core Web Vitals (LCP, FID, CLS) wpływają na pozycje Twojej strony w wyszukiwarce Google. Praktyczny przewodnik optymalizacji.',
   alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings` : `https://www.ai-seo-company.pl/pl/blog/core-web-vitals-a-pozycje-google`,
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings` : `https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google`,
     languages: {
-      'pl': `https://www.ai-seo-company.pl/pl/blog/core-web-vitals-a-pozycje-google`,
+      'pl': `https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google`,
+      'x-default': (/'pl':\s*/, ''),
       'en': `https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings`
     }
   },
