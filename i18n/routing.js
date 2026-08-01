@@ -5,6 +5,7 @@ export const routing = defineRouting({
   locales: ['pl', 'en'],
   defaultLocale: 'pl',
   localePrefix: 'as-needed',
+  localeDetection: false,
   pathnames: {
     '/': '/',
     '/pozycjonowanie-stron-internetowych': {
