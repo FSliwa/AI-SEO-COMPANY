@@ -55,7 +55,7 @@ export default function Hero() {
         >
           <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
             {lang === 'en' 
-              ? <><strong>AI SEO COMPANY | Modern SEO & Marketing Agency</strong></>
+              ? <><strong>AI SEO COMPANY | Top SEO Firms & Marketing Agency</strong></>
               : <><strong>Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost</strong></>}
           </h1>
           <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
