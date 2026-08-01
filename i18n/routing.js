@@ -67,6 +67,10 @@ export const routing = defineRouting({
     '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista': {
       pl: '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista',
       en: '/blog/b2b-link-building-strategies-checklist'
+    },
+    '/blog/ile-kosztuje-strona-www-dla-firmy-ceny': {
+      pl: '/blog/ile-kosztuje-strona-www-dla-firmy-ceny',
+      en: '/blog/how-much-does-a-business-website-cost-pricing'
     }
   }
 });
