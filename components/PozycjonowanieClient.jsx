@@ -76,7 +76,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 {lang === 'pl' ? 'Rozpocznij współpracę' : 'Start collaboration'} 
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href={lang === 'pl' ? '/pl#portfolio' : '/en#portfolio'} className="hero-btn-secondary">
+              <a href={lang === 'pl' ? '/#portfolio' : '/en#portfolio'} className="hero-btn-secondary">
                 {lang === 'pl' ? 'Zobacz case studies' : 'View case studies'}
               </a>
             </div>
