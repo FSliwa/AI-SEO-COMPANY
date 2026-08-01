@@ -1,108 +1,109 @@
 'use client';
 
-import { useLocale } from 'next-intl';
-import { Reveal } from '@/components/ScrollReveal';
+import { motion } from 'framer-motion';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Hero() {
   const lang = useLocale();
+  const t = useTranslations('hero');
 
   return (
-    <section className="subpage-hero" id="hero" style={{ paddingTop: '160px', paddingBottom: '120px', position: 'relative', textAlign: 'center', backgroundColor: '#FFFFFF', overflow: 'hidden' }}>
-      
-      {/* Ukryte elementy pod 100% zachowanie wyników SEO (Exact Match) */}
-      <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
-        {lang === 'en' 
-          ? <><strong>AI SEO COMPANY | Modern SEO & Marketing Agency</strong></>
-          : <><strong>Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost</strong></>}
-      </h1>
-      <div style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', zIndex: -1 }}>
-        <img 
-          src={lang === 'en' ? '/ai-seo-company-modern-seo-marketing-agency-en.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 
-          alt={lang === 'en' 
-            ? 'Modern SEO & Marketing Agency' 
-            : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'} 
-          title={lang === 'en' 
-            ? 'Modern SEO & Marketing Agency' 
-            : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'}
-          width={1}
-          height={1}
-        />
+    <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F172A' }}>
+      {/* H1 moved to the main visual element */}
+
+      {/* Background Hero Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="hero-video-bg"
+        preload="metadata"
+        poster="/black-hole-poster.webp"
+      >
+        <source src="/black-hole-ai-seo-company.webm" type="video/webm" />
+        <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" />
+      </video>
+
+      {/* Subtle Starfield Background */}
+      <div className="hero-stars-bg"></div>
+
+      {/* Hero Overlay & Subtle Vignette */}
+      <div className="hero-overlay"></div>
+
+      {/* Enlarged & Responsive Hero Typography SVG Graphic with Floating Animation */}
+      <div style={{ 
+        position: 'absolute', 
+        top: '46%', 
+        left: '50%', 
+        transform: 'translate(-50%, -50%)', 
+        width: '98vw', 
+        maxWidth: '2400px', 
+        maxHeight: '88vh',
+        zIndex: 4, 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        padding: '0 0.5vw',
+        pointerEvents: 'none'
+      }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
+        >
+          <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
+            {lang === 'en' 
+              ? <><strong>AI SEO COMPANY | Modern SEO & Marketing Agency</strong></>
+              : <><strong>Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost</strong></>}
+          </h1>
+          <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <motion.img 
+              src={lang === 'en' ? '/ai-seo-company-modern-seo-marketing-agency-en.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 
+              alt={lang === 'en' 
+                ? 'Modern SEO & Marketing Agency' 
+                : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'} 
+              title={lang === 'en' 
+                ? 'Modern SEO & Marketing Agency' 
+                : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'}
+              width={1600}
+              height={294}
+              fetchPriority="high"
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                maxHeight: '75vh',
+                objectFit: 'contain',
+                display: 'block',
+                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.65)) drop-shadow(0 0 30px rgba(216,90,48,0.3))'
+              }} 
+            />
+          </div>
+        </motion.div>
       </div>
 
-      <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', zIndex: 2, position: 'relative' }}>
-        <Reveal>
-          <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
-            AI SEO COMPANY
-          </div>
-          
-          <div style={{ 
-            fontSize: 'clamp(3rem, 6vw, 5rem)', 
-            fontWeight: 700, 
-            lineHeight: 1.05, 
-            color: 'var(--color-text-main)', 
-            marginBottom: '1rem', 
-            letterSpacing: '-0.04em'
-          }}>
-            {lang === 'pl' 
-              ? 'Agencja SEO, Agencja Marketingowa Warszawa' 
-              : 'SEO Company & SEO Agency'}
-          </div>
-
-          <div style={{ 
-            width: '120px', 
-            height: '6px', 
-            background: 'linear-gradient(90deg, var(--color-cta) 0%, #FF8A65 100%)', 
-            margin: '0 auto 2rem auto', 
-            borderRadius: '3px',
-            boxShadow: '0 4px 15px rgba(216, 90, 48, 0.4)'
-          }}></div>
-
-          <div style={{ 
-            fontSize: 'clamp(2rem, 4vw, 3.2rem)', 
-            fontWeight: 700, 
-            color: 'var(--color-text-main)', 
-            marginBottom: '1.5rem', 
-            lineHeight: 1.1,
-            letterSpacing: '-0.02em'
-          }}>
-            {lang === 'pl' ? (
-              <>Pozycjonowanie Stron, Projekt,<br/>Strony i Wzrost</>
-            ) : (
-              <>Search Engine Optimization<br/>Company</>
-            )}
-          </div>
-
-          <p style={{ 
-            fontSize: 'clamp(1.1rem, 2vw, 1.25rem)', 
-            color: '#333336', 
-            lineHeight: 1.6, 
-            maxWidth: '800px', 
-            margin: '0 auto 3rem auto',
-            fontWeight: 400
-          }}>
-            {lang === 'pl' 
-              ? <>Twój projekt i strony to nasz priorytet. Agencja SEO, agencja marketingowa Warszawa. Zapewniamy pozycjonowanie stron, które generuje realny wzrost Twojej firmy.</> 
-              : <>Need a company for seo or seo for companies? We are a leading seo company seo agency and search engine optimization company. We rank among top search engine optimization companies, seo firms, engine optimization companies, seo optimization companies, search engine optimisation companies and search engine optimization agencies.</>}
-          </p>
-          
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href="#kontakt" className="hero-btn-primary">
-              {lang === 'pl' ? 'Rozpocznij współpracę' : 'Start collaboration'} 
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px' }}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-            <a href={lang === 'pl' ? '/pl/blog/cennik-pozycjonowania' : '/en/blog/seo-pricing'} className="hero-btn-secondary">
-              {lang === 'pl' ? 'Zobacz cennik SEO' : 'View SEO pricing'}
-            </a>
-          </div>
-        </Reveal>
-      </div>
-
-      <div style={{ marginTop: '5rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '3rem', flexWrap: 'wrap', opacity: 0.5, filter: 'grayscale(100%)', position: 'relative', zIndex: 2 }}>
-        <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.2rem', color: '#1D1D1F' }}>STANIAX</span>
-        <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.1rem', color: '#1D1D1F' }}>ASE-BOT</span>
-        <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1rem', color: '#1D1D1F' }}>MADAME THAI</span>
-        <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 500, letterSpacing: '0.05em', fontSize: '1rem', color: '#1D1D1F' }}>IRENEUSZ KOZERA</span>
-      </div>
+      {/* Bottom-left: Our Partners (KOTA Style) */}
+      <motion.div 
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 0.85, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
+        className="hero-partners-row" 
+        style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '2.5rem', flexWrap: 'wrap' }}
+      >
+        <span className="hero-partner-item" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.1rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
+          STANIAX
+        </span>
+        <span className="hero-partner-item" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
+          ASE-BOT
+        </span>
+        <span className="hero-partner-item" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '0.95rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
+          MADAME THAI
+        </span>
+        <span className="hero-partner-item" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 500, letterSpacing: '0.05em', fontSize: '0.9rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
+          IRENEUSZ KOZERA
+        </span>
+      </motion.div>
     </section>
   );
 }

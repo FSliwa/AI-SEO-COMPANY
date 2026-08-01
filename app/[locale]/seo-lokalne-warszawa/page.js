@@ -154,34 +154,65 @@ export default function SeoLokalneWarszawaPage() {
         <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
           <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Reveal>
-              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
                 {lang === 'pl' ? 'MARKETING LOKALNY B2B & B2C' : 'LOCAL B2B & B2C MARKETING'}
               </div>
               
               <h1 style={{ 
-                fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+                fontSize: 'clamp(3.5rem, 7vw, 6rem)', 
                 fontWeight: 700, 
                 lineHeight: 1.05, 
                 color: 'var(--color-text-main)', 
-                marginBottom: '1.5rem', 
+                marginBottom: '1rem', 
                 letterSpacing: '-0.04em'
               }}>
-                {lang === 'pl' ? <>SEO Lokalne Warszawa<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Zdominuj Swoją Ofertą</> : <>Local SEO Warsaw<span style={{ display: 'block', width: '60px', height: '4px', backgroundColor: 'currentColor', margin: '0.5rem auto', borderRadius: '2px', overflow: 'hidden', textIndent: '-9999px' }}> — </span>Dominate Your Offer</>}
+                {lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}
               </h1>
-              <p style={{ 
-                fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', 
-                color: '#6E6E73', 
-                lineHeight: 1.5, 
-                maxWidth: '650px', 
-                margin: '0 auto 3rem auto',
-                fontWeight: 500,
-                letterSpacing: '-0.01em'
+
+              <div style={{ 
+                width: '120px', 
+                height: '6px', 
+                background: 'linear-gradient(90deg, var(--color-cta) 0%, #FF8A65 100%)', 
+                margin: '0 auto 2rem auto', 
+                borderRadius: '3px',
+                boxShadow: '0 4px 15px rgba(216, 90, 48, 0.4)'
+              }}></div>
+
+              <div style={{ 
+                fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+                fontWeight: 700, 
+                color: 'var(--color-text-main)', 
+                marginBottom: '1.5rem', 
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em'
               }}>
-                {lang === 'pl' ? 'Wykorzystaj potęgę Map Google. Skuteczne SEO Lokalne Warszawa (pozycjonowanie lokalne) pozwala skalować firmy (usługi, gabinety, sklepy), łącząc zaawansowaną analitykę ze sprawdzonymi strategiami. Zdominuj swoją ofertą rynek!' : 'Harness the power of Google Maps. Effective Local SEO Warsaw (local business optimization) helps scale businesses by combining advanced analytics with proven visibility strategies. Dominate your offer in the local market!'}
+                {lang === 'pl' ? (
+                  <>Zdominuj Swoją Ofertą<br/>Mapy Google</>
+                ) : (
+                  <>Dominate Your Offer<br/>Google Maps</>
+                )}
+              </div>
+
+              <p style={{ 
+                fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
+                color: '#333336', 
+                lineHeight: 1.6, 
+                maxWidth: '700px', 
+                margin: '0 auto 3rem auto',
+                fontWeight: 400
+              }}>
+                {lang === 'pl' 
+                  ? <>Wykorzystaj potęgę wyszukiwań lokalnych. Skuteczne pozycjonowanie pozwala skalować firmy, łącząc <span style={{ color: 'var(--color-cta)' }}>zaawansowaną analitykę ze sprawdzonymi strategiami</span>. Zdominuj swój rynek!</>
+                  : <>Harness the power of local searches. Effective optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
               </p>
+              
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="#kontakt" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
-                  {lang === 'pl' ? 'Sprawdź Swój Potencjał' : 'Check Your Potential'}
+                <a href="#kontakt" className="hero-btn-primary">
+                  {lang === 'pl' ? 'Sprawdź Swój Potencjał' : 'Check Your Potential'} 
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <a href={lang === 'pl' ? '/pl#portfolio' : '/en#portfolio'} className="hero-btn-secondary">
+                  {lang === 'pl' ? 'Zobacz case studies' : 'View case studies'}
                 </a>
               </div>
             </Reveal>
