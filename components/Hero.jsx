@@ -2,10 +2,17 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
+import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const lang = useLocale();
   const t = useTranslations('hero');
+  const [loadVideo, setLoadVideo] = useState(false);
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setLoadVideo(true);
+    }
+  }, []);
 
   return (
     <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F172A' }}>
@@ -21,8 +28,8 @@ export default function Hero() {
         preload="metadata"
         poster="/black-hole-poster.webp"
       >
-        <source src="/black-hole-ai-seo-company.webm" type="video/webm" />
-        <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" />
+        {loadVideo && <source src="/black-hole-ai-seo-company.webm" type="video/webm" />}
+        {loadVideo && <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" />}
       </video>
 
       {/* Subtle Starfield Background */}
@@ -47,10 +54,8 @@ export default function Hero() {
         padding: '0 0.5vw',
         pointerEvents: 'none'
       }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+        <div
+          className="hero-lcp-image"
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
         >
           <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
@@ -59,7 +64,7 @@ export default function Hero() {
               : <><span style={{ fontWeight: 'bold' }}>Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost</span></>}
           </h1>
           <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <motion.img 
+            <img 
               src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 
               alt={lang === 'en' 
                 ? 'SEO for companies' 
@@ -80,7 +85,7 @@ export default function Hero() {
               }} 
             />
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom-left: Our Partners (KOTA Style) */}
