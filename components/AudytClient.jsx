@@ -114,7 +114,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 2' : 'AREA 2'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Treści & Semantyka' : 'Content & Semantics'}</h3>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja intencji wyszukiwania (Search Intent), analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.' : 'Verification of search intent, analysis of keyword cannibalization and coverage of topical clusters.'}</p>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Weryfikacja intencji wyszukiwania (Search Intent), <strong>optymalizacja SEO</strong> treści, analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.</> : 'Verification of search intent, analysis of keyword cannibalization and coverage of topical clusters.'}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>

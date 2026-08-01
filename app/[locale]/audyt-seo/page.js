@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'SEO Audit | SEO Consultancy & Search Engine Optimization Consultants' : 'Audyt SEO | Analiza i Optymalizacja SEO',
-  description: locale === 'en' ? 'Looking for a search engine optimisation consultancy or seo consultancy? We offer comprehensive seo keyword analysis and SEO audit from top search engine optimization consultants. Improve your Google rankings.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne i wdrożymy skuteczną optymalizację SEO, która natychmiast poprawi pozycje Twojej strony w Google.',
+  description: locale === 'en' ? 'Looking for a search engine optimisation consultancy or seo consultancy? We offer comprehensive seo keyword analysis and SEO audit from top search engine optimization consultants. Improve your Google rankings.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
   alternates: {
     canonical: locale === 'en' ? `/en/seo-audit` : `/pl/audyt-seo`,
     languages: {
@@ -102,7 +102,9 @@ const auditPortfolioCases = [
     titleEn: 'Slow LCP Loading (8.2s)',
     description: 'Zablokowany wątek główny przez niezoptymalizowany JavaScript oraz brak kompresji obrazów Next-Gen, powodujący ucieczkę 60% użytkowników mobilnych.',
     descriptionEn: 'Main thread blocked by unoptimized JavaScript and lack of Next-Gen image compression, causing 60% of mobile users to bounce.',
-    image: '/images/unsplash-1541356665065-22676f35dd40.jpg',
+    image: '/images/skuteczna-optymalizacja-seo.jpg',
+    imgAlt: 'Skuteczna optymalizacja SEO',
+    imgTitle: 'Optymalizacja SEO',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '1.2s',
     metricLabel: 'Docelowy czas LCP',
