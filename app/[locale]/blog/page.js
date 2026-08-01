@@ -3,12 +3,12 @@ export async function generateMetadata({ params }) {
   return {
   title: locale === 'en' ? 'Blog | Content Marketing Guide | AI SEO COMPANY' : 'Blog | Poradnik SEO i Web Design | AI SEO COMPANY',
   description: locale === 'en' ? 'Read the latest articles about content in marketing, search engine optimization SEO, and learn exactly what is SEO content with our expert search optimization agency.' : 'Czytaj najnowsze artykuły o SEO, analityce, budowaniu konwersji i projektowaniu. Zobacz nasz AI SEO COMPANY blog.',
-  alternates: {
-    canonical: locale === 'en' ? `/en/blog` : `/blog`,
+    alternates: {
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl${p.enPath}` : `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
     languages: {
-      'pl': `/blog`,
-      'x-default': `/blog`,
-      'en': `/en/blog`
+      'pl': `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
+      'x-default': `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
+      'en': `https://www.ai-seo-company.pl${p.enPath}`
     }
   },
 };

@@ -3,12 +3,12 @@ export async function generateMetadata({ params }) {
   return {
   title: locale === 'en' ? 'About Us | Professional SEO Firm & Marketing Agency' : 'O nas | Agencja SEO Warszawa | AI SEO COMPANY',
   description: locale === 'en' ? 'Meet the AI SEO COMPANY team of SEO experts. We are a marketing agency and search optimization company combining design with hard data and analytics.' : 'Poznaj zespół AI SEO COMPANY. Jesteśmy architektami Twojego wzrostu. Łączymy design z twardymi danymi analitycznymi.',
-  alternates: {
-    canonical: locale === 'en' ? `/en/about-us` : `/o-nas`,
+    alternates: {
+    canonical: locale === 'en' ? `https://www.ai-seo-company.pl${p.enPath}` : `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
     languages: {
-      'pl': `/o-nas`,
-      'x-default': `/o-nas`,
-      'en': `/en/about-us`
+      'pl': `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
+      'x-default': `https://www.ai-seo-company.pl${p.plPath === '/' ? '' : p.plPath}`,
+      'en': `https://www.ai-seo-company.pl${p.enPath}`
     }
   },
 };

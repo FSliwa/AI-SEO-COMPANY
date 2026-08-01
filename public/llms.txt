@@ -5,10 +5,10 @@ Welcome to the AI SEO COMPANY documentation for AI agents and language models.
 ## Links
 
 - [Home Page](https://ai-seo-company.pl/)
-- [Services](https://ai-seo-company.pl/pl#uslugi)
-- [Portfolio](https://ai-seo-company.pl/pl#portfolio)
-- [Blog](https://ai-seo-company.pl/pl/blog)
-- [Contact](https://ai-seo-company.pl/pl#kontakt)
+- [Services](https://ai-seo-company.pl#uslugi)
+- [Portfolio](https://ai-seo-company.pl#portfolio)
+- [Blog](https://ai-seo-company.pl/blog)
+- [Contact](https://ai-seo-company.pl#kontakt)
 
 ## About Us
 
