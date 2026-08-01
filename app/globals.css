@@ -628,6 +628,12 @@ section {
   pointer-events: none;
 }
 
+@media (max-width: 767px) {
+  .hero-video-bg {
+    display: none !important;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;

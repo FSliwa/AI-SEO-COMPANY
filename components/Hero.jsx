@@ -2,17 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
-import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const lang = useLocale();
   const t = useTranslations('hero');
-  const [loadVideo, setLoadVideo] = useState(false);
-  useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setLoadVideo(true);
-    }
-  }, []);
 
   return (
     <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F172A' }}>
@@ -28,8 +21,8 @@ export default function Hero() {
         preload="metadata"
         poster="/black-hole-poster.webp"
       >
-        {loadVideo && <source src="/black-hole-ai-seo-company.webm" type="video/webm" />}
-        {loadVideo && <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" />}
+        <source src="/black-hole-ai-seo-company.webm" type="video/webm" media="(min-width: 768px)" />
+        <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" media="(min-width: 768px)" />
       </video>
 
       {/* Subtle Starfield Background */}
