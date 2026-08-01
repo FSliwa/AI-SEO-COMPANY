@@ -161,13 +161,13 @@ export default async function ArticleCennikPage({ params }) {
 
               <h2 id="szybki-przegl-d-typowych-bud-et-w">Szybki przegląd typowych budżetów:</h2>
               <ul>
-                <li><strong>Mała firma lokalna:</strong> 1500 – 3000 zł netto / m-c</li>
-                <li><strong>Średni sklep e-commerce:</strong> 4000 – 8000 zł netto / m-c</li>
-                <li><strong>Duży portal informacyjny lub gigant B2B:</strong> od 10 000 zł netto / m-c w górę</li>
+                <li><span style={{ fontWeight: 'bold' }}>Mała firma lokalna:</span> 1500 – 3000 zł netto / m-c</li>
+                <li><span style={{ fontWeight: 'bold' }}>Średni sklep e-commerce:</span> 4000 – 8000 zł netto / m-c</li>
+                <li><span style={{ fontWeight: 'bold' }}>Duży portal informacyjny lub gigant B2B:</span> od 10 000 zł netto / m-c w górę</li>
               </ul>
               
               <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#F5F5F7', borderRadius: '12px', marginBottom: '2rem' }}>
-                <strong>Porada profesjonalisty:</strong> Zanim zadzwonisz do agencji, sprawdź w <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a>, ile ruchu organicznego masz teraz i z jakich fraz. To 10 minut pracy, które pozwolą Ci ocenić, czy oferta agencji jest dopasowana do Twojego punktu startowego.
+                <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Zanim zadzwonisz do agencji, sprawdź w <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a>, ile ruchu organicznego masz teraz i z jakich fraz. To 10 minut pracy, które pozwolą Ci ocenić, czy oferta agencji jest dopasowana do Twojego punktu startowego.
               </p>
 
               <p>Chcesz wiedzieć, ile dokładnie zapłacisz za swój projekt? Poniżej rozkładamy nasz <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link> na czynniki pierwsze — według typu firmy, zawartości pakietu i modelu rozliczeń.</p>
@@ -221,22 +221,22 @@ export default async function ArticleCennikPage({ params }) {
 
               <h3>Przykładowe pakiety dla trzech typowych biznesów:</h3>
               <ul>
-                <li><strong>Lokalny usługodawca (Starter, ~1 200 zł/mies.):</strong> optymalizacja Google Moja Firma, 2–3 wpisy blogowe miesięcznie, monitoring 10–20 fraz, raport miesięczny.</li>
-                <li><strong>Mały e-commerce (Rozwój, 1 500–5 000 zł/mies.):</strong> audyt techniczny, optymalizacja 50–100 podstron, 4 artykuły miesięcznie, 4–6 linków zewnętrznych, raportowanie KPI.</li>
-                <li><strong>Firma B2B (Premium, 2 500–6 000 zł/mies.):</strong> pełna strategia contentowa, link building (8–12 linków/mies.), optymalizacja konwersji, dedykowany opiekun, raport dwutygodniowy.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Lokalny usługodawca (Starter, ~1 200 zł/mies.):</span> optymalizacja Google Moja Firma, 2–3 wpisy blogowe miesięcznie, monitoring 10–20 fraz, raport miesięczny.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Mały e-commerce (Rozwój, 1 500–5 000 zł/mies.):</span> audyt techniczny, optymalizacja 50–100 podstron, 4 artykuły miesięcznie, 4–6 linków zewnętrznych, raportowanie KPI.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Firma B2B (Premium, 2 500–6 000 zł/mies.):</span> pełna strategia contentowa, link building (8–12 linków/mies.), optymalizacja konwersji, dedykowany opiekun, raport dwutygodniowy.</li>
               </ul>
               
               <p>Branże o wysokiej konkurencji — prawo, medycyna, finanse, ubezpieczenia — wymagają wyższych budżetów ze względu na większą konkurencję o widoczność, szczególnie dla firm z ambicjami ogólnopolskimi.</p>
               
               <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#F5F5F7', borderRadius: '12px', marginBottom: '2rem' }}>
-                <strong>Porada profesjonalisty:</strong> Oceń swój przedział w trzech krokach: (1) sprawdź, czy działasz lokalnie czy ogólnopolsko, (2) wpisz swoje główne frazy w Google i policz, ile firm płaci za reklamy — to sygnał konkurencji, (3) sprawdź w <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a>, jaki autorytet domeny mają Twoi konkurenci. Te trzy liczby powiedzą Ci więcej niż jakikolwiek cennik.
+                <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Oceń swój przedział w trzech krokach: (1) sprawdź, czy działasz lokalnie czy ogólnopolsko, (2) wpisz swoje główne frazy w Google i policz, ile firm płaci za reklamy — to sygnał konkurencji, (3) sprawdź w <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a>, jaki autorytet domeny mają Twoi konkurenci. Te trzy liczby powiedzą Ci więcej niż jakikolwiek cennik.
               </p>
 
               <h2 id="co-zawiera-pakiet">Co zawiera pakiet SEO, a co jest płatnym dodatkiem?</h2>
               
               <p>Nie każdy pakiet SEO zawiera to samo, nawet jeśli kosztuje tyle samo. Różnica między ofertą za 2 000 zł a za 2 000 zł u innej agencji może być ogromna — i ta sama kwota u różnych agencji może oznaczać bardzo różny zakres prac. Dlatego warto wiedzieć, co jest standardem, a co dodatkiem.</p>
 
-              <p><strong>Elementy standardowe (core SEO) — powinny być w każdym pakiecie:</strong></p>
+              <p><span style={{ fontWeight: 'bold' }}>Elementy standardowe (core SEO) — powinny być w każdym pakiecie:</span></p>
               <ul>
                 <li>Audyt techniczny strony (przynajmniej wstępny przy starcie)</li>
                 <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Optymalizacja on-page</Link>: tytuły, opisy, nagłówki, struktura URL</li>
@@ -245,7 +245,7 @@ export default async function ArticleCennikPage({ params }) {
                 <li>Podstawowe naprawy techniczne (szybkość, indeksowanie, przekierowania)</li>
               </ul>
 
-              <p><strong>Dodatki, które podnoszą cenę:</strong></p>
+              <p><span style={{ fontWeight: 'bold' }}>Dodatki, które podnoszą cenę:</span></p>
               <ul>
                 <li>Link building (pozyskiwanie linków zewnętrznych)</li>
                 <li>Content marketing (regularne artykuły, landing page'e, opisy kategorii)</li>
@@ -270,20 +270,20 @@ export default async function ArticleCennikPage({ params }) {
               <h2 id="10-czynnikow">Jakie 10 czynników wpływa na koszt SEO?</h2>
               
               <ul>
-                <li><strong>Konkurencja słów kluczowych (wpływ: wysoki)</strong> — im więcej firm walczy o te same frazy, tym więcej pracy i linków potrzeba. Frazy takie jak "adwokat Warszawa" czy "kredyt hipoteczny" kosztują wielokrotnie więcej niż "hydraulik Sandomierz".</li>
-                <li><strong>Liczba podstron do optymalizacji (wpływ: wysoki)</strong> — sklep z 5 000 produktów wymaga innego nakładu pracy niż strona wizytówkowa z 10 podstronami.</li>
-                <li><strong>Stan techniczny strony (wpływ: wysoki)</strong> — serwis z setkami błędów indeksowania, wolnym ładowaniem i zduplikowanymi treściami wymaga najpierw naprawy, zanim zacznie się pozycjonowanie.</li>
-                <li><strong>Używany CMS (wpływ: średni)</strong> — WordPress jest łatwiejszy i tańszy w optymalizacji niż niestandardowe systemy lub starsze platformy e-commerce bez wtyczek SEO.</li>
-                <li><strong>Branża i regulacje (wpływ: wysoki)</strong> — branże YMYL (zdrowie, prawo, finanse) wymagają treści pisanych przez ekspertów lub z ich udziałem, co podnosi koszt contentu.</li>
-                <li><strong>Wymagany zakres treści (wpływ: wysoki)</strong> — regularne artykuły, opisy kategorii, landing page'e to znacząca część budżetu, szczególnie przy strategii long-tail.</li>
-                <li><strong>Profil linków zewnętrznych (wpływ: wysoki)</strong> — słaby profil linków oznacza konieczność intensywnego link buildingu od zera.</li>
-                <li><strong>Zasięg geograficzny (wpływ: średni)</strong> — lokalne SEO jest tańsze niż ogólnopolskie; kampania na całą Polskę wymaga większej liczby fraz i treści.</li>
-                <li><strong>Integracje techniczne (wpływ: średni)</strong> — połączenie z CRM, systemem płatności lub niestandardową analityką wymaga dodatkowych godzin pracy.</li>
-                <li><strong>Potrzeba AEO (wpływ: niski— średni)</strong> — optymalizacja pod wyszukiwarki AI to stosunkowo nowy koszt, ale firmy w branżach informacyjnych i doradczych coraz częściej go uwzględniają.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Konkurencja słów kluczowych (wpływ: wysoki)</span> — im więcej firm walczy o te same frazy, tym więcej pracy i linków potrzeba. Frazy takie jak "adwokat Warszawa" czy "kredyt hipoteczny" kosztują wielokrotnie więcej niż "hydraulik Sandomierz".</li>
+                <li><span style={{ fontWeight: 'bold' }}>Liczba podstron do optymalizacji (wpływ: wysoki)</span> — sklep z 5 000 produktów wymaga innego nakładu pracy niż strona wizytówkowa z 10 podstronami.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Stan techniczny strony (wpływ: wysoki)</span> — serwis z setkami błędów indeksowania, wolnym ładowaniem i zduplikowanymi treściami wymaga najpierw naprawy, zanim zacznie się pozycjonowanie.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Używany CMS (wpływ: średni)</span> — WordPress jest łatwiejszy i tańszy w optymalizacji niż niestandardowe systemy lub starsze platformy e-commerce bez wtyczek SEO.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Branża i regulacje (wpływ: wysoki)</span> — branże YMYL (zdrowie, prawo, finanse) wymagają treści pisanych przez ekspertów lub z ich udziałem, co podnosi koszt contentu.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Wymagany zakres treści (wpływ: wysoki)</span> — regularne artykuły, opisy kategorii, landing page'e to znacząca część budżetu, szczególnie przy strategii long-tail.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Profil linków zewnętrznych (wpływ: wysoki)</span> — słaby profil linków oznacza konieczność intensywnego link buildingu od zera.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Zasięg geograficzny (wpływ: średni)</span> — lokalne SEO jest tańsze niż ogólnopolskie; kampania na całą Polskę wymaga większej liczby fraz i treści.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Integracje techniczne (wpływ: średni)</span> — połączenie z CRM, systemem płatności lub niestandardową analityką wymaga dodatkowych godzin pracy.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Potrzeba AEO (wpływ: niski— średni)</span> — optymalizacja pod wyszukiwarki AI to stosunkowo nowy koszt, ale firmy w branżach informacyjnych i doradczych coraz częściej go uwzględniają.</li>
               </ul>
               
               <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#F5F5F7', borderRadius: '12px', marginBottom: '2rem' }}>
-                <strong>Porada profesjonalisty:</strong> Dwa czynniki, które najszybciej windują koszty przy migracji lub przebudowie serwisu, to zmiana struktury URL bez przekierowań 301 i utrata historycznych treści. Zanim zlecisz <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> i ich redesign, upewnij się, że agencja SEO jest w tym procesie od początku, nie na końcu.
+                <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Dwa czynniki, które najszybciej windują koszty przy migracji lub przebudowie serwisu, to zmiana struktury URL bez przekierowań 301 i utrata historycznych treści. Zanim zlecisz <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron</Link> i ich redesign, upewnij się, że agencja SEO jest w tym procesie od początku, nie na końcu.
               </p>
 
               <h2 id="kiedy-efekty">Kiedy zobaczysz efekty i jak liczyć opłacalność?</h2>
@@ -332,17 +332,17 @@ export default async function ArticleCennikPage({ params }) {
               <h2 id="modele-rozliczen">Jakie modele rozliczeń stosują agencje SEO?</h2>
               
               <ul>
-                <li><strong>Abonament miesięczny</strong> — najpopularniejszy i najbezpieczniejszy dla większości firm. Płacisz stałą kwotę za zdefiniowany zakres prac. Pozwala planować budżet i wymusza na agencji regularną pracę.</li>
-                <li><strong>Jednorazowy projekt</strong> — sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt techniczny</Link> kosztuje od około 1 500 zł dla małej witryny do 4 000–8 000 zł dla dużego sklepu.</li>
-                <li><strong>Rozliczenie godzinowe</strong> — stosowane przy konsultacjach lub doraźnych pracach. Stawki specjalistów SEO w Polsce wahają się od 150 do 400 zł za godzinę.</li>
-                <li><strong>Model częściowego wynagrodzenia za efekt</strong> — pozycjonowanie „na efekt“ ma istotne ograniczenia: opiera się na metrykach, które agencja może optymalizować pod własne cele, a nie na realnym wzroście przychodów klienta. Dla większości firm bezpieczniejszy jest abonament z jasno określonym zakresem i KPI.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Abonament miesięczny</span> — najpopularniejszy i najbezpieczniejszy dla większości firm. Płacisz stałą kwotę za zdefiniowany zakres prac. Pozwala planować budżet i wymusza na agencji regularną pracę.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Jednorazowy projekt</span> — sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt techniczny</Link> kosztuje od około 1 500 zł dla małej witryny do 4 000–8 000 zł dla dużego sklepu.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Rozliczenie godzinowe</span> — stosowane przy konsultacjach lub doraźnych pracach. Stawki specjalistów SEO w Polsce wahają się od 150 do 400 zł za godzinę.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Model częściowego wynagrodzenia za efekt</span> — pozycjonowanie „na efekt“ ma istotne ograniczenia: opiera się na metrykach, które agencja może optymalizować pod własne cele, a nie na realnym wzroście przychodów klienta. Dla większości firm bezpieczniejszy jest abonament z jasno określonym zakresem i KPI.</li>
               </ul>
 
               <h2 id="jak-wybrac-agencje">Jak wybrać agencję SEO krok po kroku?</h2>
               
               <p>Wybór agencji SEO to decyzja na minimum rok. Błąd kosztuje nie tylko pieniądze, ale też czas, którego nie odzyskasz. Poniżej konkretny proces, który pozwoli Ci porównać oferty bez gubienia się w marketingowym języku.</p>
 
-              <p><strong>Checklist do porównania ofert:</strong></p>
+              <p><span style={{ fontWeight: 'bold' }}>Checklist do porównania ofert:</span></p>
               <ul>
                 <li>Czy oferta zawiera szczegółową listę deliverables (co agencja robi każdego miesiąca)?</li>
                 <li>Czy KPI są mierzalne i powiązane z Twoimi celami biznesowymi (przychód, leady, ruch)?</li>
@@ -352,7 +352,7 @@ export default async function ArticleCennikPage({ params }) {
                 <li>Czy umowa ma rozsądny okres wypowiedzenia?</li>
               </ul>
 
-              <p><strong>Czerwone flagi, których nie wolno ignorować:</strong></p>
+              <p><span style={{ fontWeight: 'bold' }}>Czerwone flagi, których nie wolno ignorować:</span></p>
               <ul>
                 <li>Obietnica efektów w ciągu 2–4 tygodni</li>
                 <li>Brak umowy lub umowa na jedną stronę bez zakresu prac</li>
@@ -399,12 +399,12 @@ export default async function ArticleCennikPage({ params }) {
               <p>Zanim podpiszesz umowę z agencją, warto samodzielnie sprawdzić kilka rzeczy. Poniższe narzędzia i źródła pomogą Ci ocenić stan swojej strony i zweryfikować, czy oferta agencji jest dopasowana do rzeczywistych potrzeb.</p>
 
               <ul>
-                <li><strong><a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a></strong> — bezpłatne narzędzie Google do monitorowania ruchu organicznego, błędów indeksowania i pozycji fraz. Punkt startowy każdej analizy.</li>
-                <li><strong><a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google PageSpeed Insights</a></strong> — sprawdza szybkość ładowania strony na urządzeniach mobilnych i desktopowych; wynik Core Web Vitals wpływa na pozycjonowanie.</li>
-                <li><strong><a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a></strong> — polskie narzędzie do monitorowania widoczności, analizy fraz i śledzenia pozycji; przydatne do porównania z konkurentami.</li>
-                <li><strong><a href="https://www.semstorm.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Semstorm</a></strong> — alternatywa dla Senuto z funkcją analizy treści i słów kluczowych; dobre do oceny potencjału fraz.</li>
-                <li><strong><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Screaming Frog SEO Spider</a></strong> — bezpłatna wersja pozwala przeskanować do 500 podstron i znaleźć błędy techniczne (brakujące tytuły, zduplikowane treści, błędy 404).</li>
-                <li><strong><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://majestic.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Majestic</a></strong> — analiza profilu linków zewnętrznych; pozwala sprawdzić, skąd agencja pozyskuje linki i czy są wartościowe.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a></span> — bezpłatne narzędzie Google do monitorowania ruchu organicznego, błędów indeksowania i pozycji fraz. Punkt startowy każdej analizy.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google PageSpeed Insights</a></span> — sprawdza szybkość ładowania strony na urządzeniach mobilnych i desktopowych; wynik Core Web Vitals wpływa na pozycjonowanie.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a></span> — polskie narzędzie do monitorowania widoczności, analizy fraz i śledzenia pozycji; przydatne do porównania z konkurentami.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.semstorm.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Semstorm</a></span> — alternatywa dla Senuto z funkcją analizy treści i słów kluczowych; dobre do oceny potencjału fraz.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Screaming Frog SEO Spider</a></span> — bezpłatna wersja pozwala przeskanować do 500 podstron i znaleźć błędy techniczne (brakujące tytuły, zduplikowane treści, błędy 404).</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://majestic.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Majestic</a></span> — analiza profilu linków zewnętrznych; pozwala sprawdzić, skąd agencja pozyskuje linki i czy są wartościowe.</li>
               </ul>
 
               <p style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#86868B', textAlign: 'center' }}>

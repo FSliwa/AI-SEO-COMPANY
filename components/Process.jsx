@@ -121,9 +121,9 @@ export default function Process() {
                 <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.35rem' }}>
                   {tabs[activeTab]}
                 </div>
-                <strong style={{ fontSize: '1.05rem', color: '#0F172A', display: 'block', marginBottom: '0.35rem', fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
+                <span style={{ fontWeight: 'bold' }} style={{ fontSize: '1.05rem', color: '#0F172A', display: 'block', marginBottom: '0.35rem', fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>
                   0{steps[activeStep].num}. {steps[activeStep].title}
-                </strong>
+                </span>
                 <p style={{ margin: 0, fontSize: '0.83rem', color: '#333336', lineHeight: '1.5' }}>
                   {steps[activeStep].desc}
                 </p>

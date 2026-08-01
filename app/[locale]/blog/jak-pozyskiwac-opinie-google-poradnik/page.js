@@ -234,7 +234,7 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <h2 id="co-jest-zabronione">Co jest zabronione i jakie grożą konsekwencje za łamanie zasad</h2>
                   <p>Google precyzyjnie określa, co jest niedozwolone. Naruszenia nie kończą się ostrzeżeniem, lecz natychmiastowym działaniem algorytmów lub moderatorów.</p>
-                  <p><strong>Bezwzględne zakazy:</strong></p>
+                  <p><span style={{ fontWeight: 'bold' }}>Bezwzględne zakazy:</span></p>
                   <ul>
                     <li>Kupowanie opinii od firm oferujących „pakiety recenzji“ lub fałszywych kont.</li>
                     <li>Oferowanie rabatów, darmowych produktów, punktów lojalnościowych ani żadnych innych korzyści w zamian za wystawienie opinii, nawet jeśli nie precyzujesz, że ma być pozytywna.</li>
@@ -242,23 +242,23 @@ export default async function ArticleReviewsPage({ params }) {
                     <li>Proszenie pracowników, rodziny ani znajomych o wystawianie recenzji.</li>
                     <li>Zbieranie opinii na urządzeniach firmowych lub kioskach w lokalu, gdzie klient loguje się na swoje konto Google.</li>
                   </ul>
-                  <p><strong>Konsekwencje techniczne i reputacyjne:</strong></p>
+                  <p><span style={{ fontWeight: 'bold' }}>Konsekwencje techniczne i reputacyjne:</span></p>
                   <p>Nagłe skoki liczby recenzji włączają filtry Google. Opinie mogą zostać odfiltrowane i nie pojawić się publicznie, a profil może otrzymać ograniczenia widoczności. Użytkownicy, którzy odkryją, że firma kupuje recenzje, reagują falą negatywnych opinii, które są już trudne do usunięcia. Reputacyjny koszt wpadki wielokrotnie przewyższa krótkoterminowy zysk z kilku fałszywych gwiazdek. W razie podejrzenia nałożenia filtrów lub spadku widoczności, zalecamy profesjonalny <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>audyt wizytówki Google</Link>.</p>
                   <p>Gdy opinia narusza regulamin, właściciel firmy może ją zgłosić przez panel Profilu Firmy. Procedurę opisuje <a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>oficjalna pomoc Google</a>.</p>
 
                   <h2 id="proces-pozyskiwania-krok-po-kroku">Jak zbudować proces pozyskiwania opinii krok po kroku</h2>
                   <p>Skuteczny proces nie powstaje z dnia na dzień. Poniższy plan trzech faz pozwala wdrożyć go bez ryzyka nagłego skoku liczby recenzji.</p>
                   <ol>
-                    <li><strong>Faza audytu (dni 1–14):</strong> Sprawdź aktualny stan profilu (lub zleć <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>pełny audyt SEO</Link>), policz istniejące opinie, oceń średnią i udział recenzji z treścią. Skonfiguruj link do wystawienia opinii (skrócony URL z Profilu Firmy). Przygotuj dwa szablony wiadomości: e-mail i SMS.</li>
-                    <li><strong>Faza rozruchu (dni 15–45):</strong> Uruchom trigger w CRM powiązany ze statusem „zrealizowano“. Pierwsze 4 tygodnie: wysyłaj prośby do wszystkich klientów z zamkniętymi zleceniami. Cel: 3–5 nowych opinii tygodniowo.</li>
-                    <li><strong>Faza optymalizacji (dni 46–90):</strong> Rozszerz bazę odbiorców na wszystkich klientów z zamkniętymi zleceniami. Włącz follow-up po 7 dniach dla tych, którzy nie zareagowali. Analizuj conversion rate dla każdego kanału i dostosuj miks.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Faza audytu (dni 1–14):</span> Sprawdź aktualny stan profilu (lub zleć <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>pełny audyt SEO</Link>), policz istniejące opinie, oceń średnią i udział recenzji z treścią. Skonfiguruj link do wystawienia opinii (skrócony URL z Profilu Firmy). Przygotuj dwa szablony wiadomości: e-mail i SMS.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Faza rozruchu (dni 15–45):</span> Uruchom trigger w CRM powiązany ze statusem „zrealizowano“. Pierwsze 4 tygodnie: wysyłaj prośby do wszystkich klientów z zamkniętymi zleceniami. Cel: 3–5 nowych opinii tygodniowo.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Faza optymalizacji (dni 46–90):</span> Rozszerz bazę odbiorców na wszystkich klientów z zamkniętymi zleceniami. Włącz follow-up po 7 dniach dla tych, którzy nie zareagowali. Analizuj conversion rate dla każdego kanału i dostosuj miks.</li>
                   </ol>
                   <p>Rekomendowany miks kanałów dla średniej firmy usługowej opiera się na skuteczności poszczególnych metod: krótko po usłudze e-mail, SMS, osobista prośba oraz kod QR w lokalu. Najlepszy efekt daje połączenie dwóch lub więcej kanałów, bo każdy dociera do innego segmentu klientów.</p>
                   <p>Kluczowe jest bezpieczne tempo. Jeśli przez ostatnie 3 miesiące zbierałeś średnio 2 opinie miesięcznie, nie próbuj nagle zebrać 30 w tydzień. Bezpieczny skok to maksymalnie 3–5 razy powyżej tej średniej.</p>
 
                   <h2 id="szablony-wiadomosci">Szablony wiadomości, które faktycznie działają</h2>
                   <p>Dobra prośba o opinię jest krótka, spersonalizowana i zawiera jedno CTA. Klient musi wiedzieć, że zajmie mu to 2 minuty, i musi dostać bezpośredni link, nie instrukcję, jak go znaleźć.</p>
-                  <p><strong>Zasady każdej wiadomości:</strong></p>
+                  <p><span style={{ fontWeight: 'bold' }}>Zasady każdej wiadomości:</span></p>
                   <ul>
                     <li>Użyj imienia klienta i nazwy konkretnej usługi.</li>
                     <li>Podaj datę lub kontekst wizyty, żeby klient od razu wiedział, o co chodzi.</li>
@@ -267,7 +267,7 @@ export default async function ArticleReviewsPage({ params }) {
                   </ul>
                   
                   <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
-                    <strong>Wzór e-maila (24–48 h po usłudze):</strong><br /><br />
+                    <span style={{ fontWeight: 'bold' }}>Wzór e-maila (24–48 h po usłudze):</span><br /><br />
                     Temat: Jak oceniasz naszą współpracę, [Imię]?<br /><br />
                     Cześć [Imię],<br /><br />
                     Dziękujemy za wizytę w środę. Mamy nadzieję, że [nazwa usługi] spełniła Twoje oczekiwania.<br /><br />
@@ -277,7 +277,7 @@ export default async function ArticleReviewsPage({ params }) {
                   </div>
 
                   <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
-                    <strong>Wzór SMS:</strong><br /><br />
+                    <span style={{ fontWeight: 'bold' }}>Wzór SMS:</span><br /><br />
                     Cześć [Imię], dziękujemy za wczorajszą wizytę! Zostaw nam krótki komentarz: [LINK]. Zajmie 2 min. Dziękujemy!
                   </div>
 
@@ -286,7 +286,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <h2 id="jak-odpowiadac">Jak odpowiadać na opinie, żeby zyskać wiarygodność</h2>
                   <p>Odpowiedź na opinię to nie formalność. To treść widoczna dla wszystkich potencjalnych klientów, którzy czytają recenzje przed podjęciem decyzji. Dobra odpowiedź na negatywną recenzję często przekonuje do zakupu skuteczniej niż seria idealnych ocen (co świetnie widać w naszych <Link href="/#portfolio" style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>). Profesjonalne <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>zarządzanie opiniami Google</Link> to dzisiaj standard komunikacji z klientem.</p>
                   
-                  <p><strong>Zasady odpowiedzi:</strong></p>
+                  <p><span style={{ fontWeight: 'bold' }}>Zasady odpowiedzi:</span></p>
                   <ul>
                     <li>Reaguj szybko, najlepiej w ciągu 24–48 godzin.</li>
                     <li>Podpisuj się imieniem, nie tylko nazwą firmy.</li>
@@ -295,7 +295,7 @@ export default async function ArticleReviewsPage({ params }) {
                   </ul>
 
                   <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
-                    <strong>Przykład odpowiedzi na pozytywną recenzję:</strong><br /><br />
+                    <span style={{ fontWeight: 'bold' }}>Przykład odpowiedzi na pozytywną recenzję:</span><br /><br />
                     Dzień dobry Pani Anno,<br />
                     Dziękujemy za tak miłą opinię! Cieszymy się, że doceniła Pani szybkość realizacji i dokładność naszej ekipy. Takie słowa bardzo nas motywują.<br />
                     Pozdrawiamy,<br />
@@ -305,7 +305,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Odpowiedź powinna być krótka, konkretna, z imieniem klienta i elementem, który wyróżnia usługę. Nie kopiuj tego samego szablonu do każdej pozytywnej recenzji – Google i klienci to zauważają.</p>
 
                   <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
-                    <strong>Przykład odpowiedzi na negatywną recenzję:</strong><br /><br />
+                    <span style={{ fontWeight: 'bold' }}>Przykład odpowiedzi na negatywną recenzję:</span><br /><br />
                     Dzień dobry Panie Tomaszu,<br />
                     Przykro nam, że doświadczenie nie spełniło Pana oczekiwań. Chcielibyśmy to dokładnie wyjaśnić i naprawić. Prosimy o kontakt na adres [e-mail] lub telefon [numer] – chętnie porozmawiamy prywatnie.<br />
                     Pozdrawiam,<br />
@@ -316,11 +316,11 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <h2 id="falszywa-opinia">Gdy opinia jest fałszywa lub narusza zasady — co zrobić</h2>
                   <ol>
-                    <li><strong>Oceń, czy opinia faktycznie narusza regulamin Google.</strong> Podstawy to spam, fałszywa treść, konflikt interesów itp. Niska ocena bez naruszenia regulaminu nie jest podstawą do usunięcia.</li>
-                    <li><strong>Zgłoś opinię przez panel Profilu Firmy.</strong> Wybierz właściwą kategorię naruszenia. Moderacja może potrwać kilka dni roboczych.</li>
-                    <li><strong>Przygotuj dokumentację.</strong> Zapisz zrzuty ekranu opinii z datą i godziną.</li>
-                    <li><strong>Odpowiedz publicznie, neutralnie.</strong> Napisz: „Nie możemy zidentyfikować tej wizyty w naszych zapisach. Zapraszamy do kontaktu bezpośredniego, żebyśmy mogli wyjaśnić sytuację.“ Nie atakuj autora.</li>
-                    <li><strong>Jeśli Google nie usuwa opinii:</strong> Skontaktuj się z pomocą techniczną. W skrajnych przypadkach (np. zniesławienie) rozważ kroki prawne.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Oceń, czy opinia faktycznie narusza regulamin Google.</span> Podstawy to spam, fałszywa treść, konflikt interesów itp. Niska ocena bez naruszenia regulaminu nie jest podstawą do usunięcia.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Zgłoś opinię przez panel Profilu Firmy.</span> Wybierz właściwą kategorię naruszenia. Moderacja może potrwać kilka dni roboczych.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Przygotuj dokumentację.</span> Zapisz zrzuty ekranu opinii z datą i godziną.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Odpowiedz publicznie, neutralnie.</span> Napisz: „Nie możemy zidentyfikować tej wizyty w naszych zapisach. Zapraszamy do kontaktu bezpośredniego, żebyśmy mogli wyjaśnić sytuację.“ Nie atakuj autora.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Jeśli Google nie usuwa opinii:</span> Skontaktuj się z pomocą techniczną. W skrajnych przypadkach (np. zniesławienie) rozważ kroki prawne.</li>
                   </ol>
 
                   <h2 id="automatyzacja-i-kpi">Automatyzacja i KPI: co mierzyć i jak testować</h2>
@@ -368,7 +368,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <h2 id="co-mowia-eksperci">Co mówią eksperci o personalizacji i automatyzacji w 2026 roku</h2>
                   <p>Główny wniosek z branżowych analiz jest prosty: personalizacja prośby o opinię podnosi zaangażowanie bardziej niż jakikolwiek inny pojedynczy czynnik. Użycie imienia klienta, nazwy konkretnej usługi i daty wizyty sprawia, że wiadomość wygląda jak kontakt od człowieka, nie od systemu.</p>
                   <p>Optymalne okno wysyłki to 24–48 godzin po usłudze. Follow-up po 7 dniach jest dopuszczalny raz. Więcej przypomnień niszczy relację z klientem.</p>
-                  <p><strong>Praktyczne kroki wdrożenia:</strong></p>
+                  <p><span style={{ fontWeight: 'bold' }}>Praktyczne kroki wdrożenia:</span></p>
                   <ul>
                     <li>Skonfiguruj trigger w CRM na status „zrealizowano“ z opóźnieniem 24–48 h.</li>
                     <li>Przygotuj dwa warianty wiadomości (A/B) z personalizowanymi polami.</li>
@@ -385,7 +385,7 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <h2 id="ai-seo-company-wdrozy">Ai-seo-company wdroży ten proces za Ciebie w 30–60 dni</h2>
                   <p>Czytasz ten artykuł, bo chcesz więcej opinii Google. Wiesz już, co robić. Pytanie brzmi: kto to wdroży, skonfiguruje trigger w CRM, przygotuje szablony, ustawi dashboard KPI i zadba o to, żeby cały proces działał bez Twojego codziennego nadzoru?</p>
-                  <p><strong>Ai-seo-company</strong> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy (sprawdź nasze <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
+                  <p><span style={{ fontWeight: 'bold' }}>Ai-seo-company</span> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy (sprawdź nasze <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
                   
                   <p>Jeśli chcesz wiedzieć, od czego zacząć w Twoim konkretnym przypadku, zacznij od <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>bezpłatnego audytu SEO</Link>, który obejmuje też ocenę Profilu Firmy i aktualnego stanu opinii. Albo sprawdź pełną ofertę <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO dla firm</Link> i napisz do nas bezpośrednio.</p>
                 </>

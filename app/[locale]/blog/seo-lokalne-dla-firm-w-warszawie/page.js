@@ -61,7 +61,7 @@ export default async function ArticleLokalnePage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Welcome to our <strong>Local SEO for Companies | 2026 Guide</strong>. For service-based companies, local SEO is often the primary source of acquiring new clients. Learn how to optimize your Google Business Profile and local website structure to dominate your city's search results.
+                Welcome to our <span style={{ fontWeight: 'bold' }}>Local SEO for Companies | 2026 Guide</span>. For service-based companies, local SEO is often the primary source of acquiring new clients. Learn how to optimize your Google Business Profile and local website structure to dominate your city's search results.
               </p>
               <ArticleTOC items={tocItems} />
               

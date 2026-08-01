@@ -71,7 +71,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <ArticleTOC items={tocItems} />
               
               <h2 id="czym-jest">What is a canonical tag and how it works in practice</h2>
-              <p>Many business owners ask themselves: <strong>canonical url what is it</strong> in practice? Simply put, it is a short HTML snippet placed in the <code>&lt;head&gt;</code> section of a webpage. Its task is to indicate the official URL for a given content to search engine crawlers.</p>
+              <p>Many business owners ask themselves: <span style={{ fontWeight: 'bold' }}>canonical url what is it</span> in practice? Simply put, it is a short HTML snippet placed in the <code>&lt;head&gt;</code> section of a webpage. Its task is to indicate the official URL for a given content to search engine crawlers.</p>
               
               <div style={{ backgroundColor: '#F5F5F7', padding: '1.5rem', borderRadius: '12px', marginBottom: '1.5rem', overflowX: 'auto' }}>
                 <code>&lt;link rel="canonical" href="https://example.com/preferred-page/" /&gt;</code>
@@ -131,11 +131,11 @@ export default async function ArticleCanonicalPage({ params }) {
 
               <h2 id="jak-wdrozyc">How to correctly implement a canonical tag – 5 proven ways</h2>
               <ol>
-                <li><strong>Tag in the <code>&lt;head&gt;</code> section of the HTML document</strong> – the most recommended and easily verifiable method.</li>
-                <li><strong>HTTP Header</strong> – also works for other file types (e.g., PDF documents, spreadsheets, or images) for which a standard HTML tag cannot be applied.</li>
-                <li><strong>sitemap.xml file</strong> – all addresses submitted in the sitemap are treated by Google as canonical suggestions.</li>
-                <li><strong>SEO plugins in CMS systems</strong> – most systems like WordPress automate the self-referencing canonical process for basic pages.</li>
-                <li><strong>Cross-domain canonical</strong> – essential when syndicating articles on other, external domains.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Tag in the <code>&lt;head&gt;</code> section of the HTML document</span> – the most recommended and easily verifiable method.</li>
+                <li><span style={{ fontWeight: 'bold' }}>HTTP Header</span> – also works for other file types (e.g., PDF documents, spreadsheets, or images) for which a standard HTML tag cannot be applied.</li>
+                <li><span style={{ fontWeight: 'bold' }}>sitemap.xml file</span> – all addresses submitted in the sitemap are treated by Google as canonical suggestions.</li>
+                <li><span style={{ fontWeight: 'bold' }}>SEO plugins in CMS systems</span> – most systems like WordPress automate the self-referencing canonical process for basic pages.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Cross-domain canonical</span> – essential when syndicating articles on other, external domains.</li>
               </ol>
 
               <h2 id="bledy">Most common mistakes that destroy SEO effects</h2>
@@ -177,7 +177,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <p>As part of the cooperation, we make sure that canonical tags, sitemap.xml, and store structure harmonize with each other. This is the safest way to stable visibility growth.</p>
               <p>Do you want to check what canonical tags look like on your site? <Link href="/#kontakt">Schedule a free consultation</Link>.</p>
               
-              <p><strong>Also read:</strong> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">How much does SEO cost in Poland? Pricing and packages 2026</Link></p>
+              <p><span style={{ fontWeight: 'bold' }}>Also read:</span> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">How much does SEO cost in Poland? Pricing and packages 2026</Link></p>
             </div>
           </Reveal>
         </div>
@@ -214,7 +214,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <ArticleTOC items={tocItems} />
               
               <h2 id="czym-jest">Czym jest tag kanoniczny i jak działa w praktyce</h2>
-              <p>Wielu właścicieli biznesów internetowych na początku swojej drogi zadaje sobie pytanie: <strong>canonical url co to jest</strong> w praktyce? Najprościej mówiąc, to krótki fragment kodu HTML umieszczany w sekcji <code>&lt;head&gt;</code> strony internetowej. Jego zadaniem jest wskazanie robotom indeksującym oficjalnego adresu URL dla danej treści.</p>
+              <p>Wielu właścicieli biznesów internetowych na początku swojej drogi zadaje sobie pytanie: <span style={{ fontWeight: 'bold' }}>canonical url co to jest</span> w praktyce? Najprościej mówiąc, to krótki fragment kodu HTML umieszczany w sekcji <code>&lt;head&gt;</code> strony internetowej. Jego zadaniem jest wskazanie robotom indeksującym oficjalnego adresu URL dla danej treści.</p>
 
               <div style={{ backgroundColor: '#F5F5F7', padding: '1.5rem', borderRadius: '12px', marginBottom: '1.5rem', overflowX: 'auto' }}>
                 <code>&lt;link rel="canonical" href="https://przyklad.pl/preferowana-strona/" /&gt;</code>
@@ -275,11 +275,11 @@ export default async function ArticleCanonicalPage({ params }) {
 
               <h2 id="jak-wdrozyc">Jak poprawnie wdrożyć tag kanoniczny – 5 sprawdzonych sposobów</h2>
               <ol>
-                <li><strong>Tag w sekcji <code>&lt;head&gt;</code> dokumentu HTML</strong> – najbardziej polecana i łatwo weryfikowalna metoda.</li>
-                <li><strong>Nagłówek HTTP (HTTP Header)</strong> – działa również dla innych typów plików (np. dokumentów PDF, arkuszy kalkulacyjnych czy obrazów), dla których nie można zastosować standardowego tagu w HTML.</li>
-                <li><strong>Plik sitemap.xml</strong> – wszystkie zgłoszone adresy w mapie witryny są traktowane przez Google jako sugestie kanoniczne.</li>
-                <li><strong>Wtyczki SEO w systemach CMS</strong> – większość systemów jak WordPress automatyzuje proces self-referencing canonical dla podstawowych stron.</li>
-                <li><strong>Cross-domain canonical</strong> – niezbędny przy syndykacji artykułów na innych, zewnętrznych domenach.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Tag w sekcji <code>&lt;head&gt;</code> dokumentu HTML</span> – najbardziej polecana i łatwo weryfikowalna metoda.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Nagłówek HTTP (HTTP Header)</span> – działa również dla innych typów plików (np. dokumentów PDF, arkuszy kalkulacyjnych czy obrazów), dla których nie można zastosować standardowego tagu w HTML.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Plik sitemap.xml</span> – wszystkie zgłoszone adresy w mapie witryny są traktowane przez Google jako sugestie kanoniczne.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Wtyczki SEO w systemach CMS</span> – większość systemów jak WordPress automatyzuje proces self-referencing canonical dla podstawowych stron.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Cross-domain canonical</span> – niezbędny przy syndykacji artykułów na innych, zewnętrznych domenach.</li>
               </ol>
 
               <h2 id="bledy">Najczęstsze błędy, które niszczą efekty SEO</h2>
