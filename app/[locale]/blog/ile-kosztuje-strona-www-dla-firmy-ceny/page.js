@@ -855,6 +855,9 @@ export default async function ArticleWebsitePricingPage({ params }) {
       )}
       </article>
       
+      <div id="kontakt">
+        <Contact />
+      </div>
       <Footer />
     </main>
   );
