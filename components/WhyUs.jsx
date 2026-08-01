@@ -75,7 +75,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Wzrost rozpoznawalności firmy.' : 'Significant brand recall boost.',
       description: lang === 'pl'
         ? 'Profesjonalny branding to kluczowe narzędzie sprzedażowe. Tworzymy unikalne, spójne systemy wizualne i nowoczesną architekturę designu, która zwiększa zapamiętywalność marki o 80%. Dzięki temu Twoja firma jednoznacznie wyróżnia się na tle konkurencji, budując pozycję lidera.'
-        : <>Professional branding is a critical sales tool. Unlike other <strong>SEO firms</strong>, <strong>SEO optimization companies</strong>, and typical <strong>search engine optimization companies</strong>, we develop unique, cohesive visual systems and modern design architectures that increase brand recall by 80%. This ensures your company stands out definitively from competitors, establishing a strong leadership position in your industry.</>,
+        : <>Professional branding is a critical sales tool. Unlike other <strong>SEO firms</strong>, <strong>SEO optimization companies</strong>, and typical <strong>search engine optimization companies</strong> or <strong>search engine optimization agencies</strong>, we develop unique, cohesive visual systems and modern design architectures that increase brand recall by 80%. This ensures your company stands out definitively from competitors, establishing a strong leadership position in your industry.</>,
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
