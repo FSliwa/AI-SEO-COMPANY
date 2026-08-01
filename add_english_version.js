@@ -1,14 +1,22 @@
-export async function generateMetadata({ params }) {
+const fs = require('fs');
+const path = require('path');
+
+const targetPath = path.join(
+  __dirname,
+  'app/[locale]/blog/ile-kosztuje-strona-www-dla-firmy-ceny/page.js'
+);
+
+const code = `export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'How Much Does a Business Website Cost? Pricing & What\'s Included (2026)' : 'Ile kosztuje strona www dla firmy: ceny i co zawierają',
+  title: locale === 'en' ? 'How Much Does a Business Website Cost? Pricing & What\\'s Included (2026)' : 'Ile kosztuje strona www dla firmy: ceny i co zawierają',
   description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta strona wizytówkowa w Polsce kosztuje od kilkuset złotych, ale profesjonalna strona to większy wydatek. Sprawdź, ile kosztuje strona www dla firmy i co zawiera cena.',
   alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
+    canonical: locale === 'en' ? \`https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing\` : \`https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny\`,
     languages: {
-      'pl': `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
-      'x-default': `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
-      'en': `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing`
+      'pl': \`https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny\`,
+      'x-default': \`https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny\`,
+      'en': \`https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing\`
     }
   },
 };
@@ -39,15 +47,16 @@ export default async function ArticleWebsitePricingPage({ params }) {
     { id: 'ai-seo-company', title: 'Ai-seo-company: strona, która pracuje na Twój biznes od pierwszego dnia' },
     { id: 'zrodla', title: 'Przydatne źródła i narzędzia do planowania budżetu' }
   ];
+
   const tocItemsEn = [
     { id: 'detailed-price-ranges', title: 'Detailed Price Ranges by Website Type' },
     { id: 'what-affects-price', title: 'What Exactly Affects the Price of a Website?' },
-    { id: 'whats-included', title: "What's Included in the Price and What Costs Extra?" },
+    { id: 'whats-included', title: 'What\\'s Included in the Price and What Costs Extra?' },
     { id: 'how-long-does-it-take', title: 'How Long Does Website Development Take and What Are the Stages?' },
     { id: 'how-to-reduce-cost', title: 'How to Reduce Website Cost Without Risky Compromises' },
     { id: 'how-to-choose-provider', title: 'How to Choose a Provider and What Questions to Ask When Getting a Quote' },
     { id: 'freelancer-or-agency', title: 'Freelancer, Small Agency, or Full-Service: What Do You Get for the Price?' },
-    { id: 'why-invest', title: "Why It's Worth Investing in a Well-Designed Website" },
+    { id: 'why-invest', title: 'Why It\\'s Worth Investing in a Well-Designed Website' },
     { id: 'key-takeaways', title: 'Key Takeaways' },
     { id: 'what-really-matters', title: 'A €450 Website or a €4,650 Website: What Really Matters?' },
     { id: 'ai-seo-company-en', title: 'Ai-seo-company: A Website That Works for Your Business from Day One' },
@@ -455,7 +464,6 @@ export default async function ArticleWebsitePricingPage({ params }) {
             </div>
           </Reveal>
         </div>
-
       ) : (
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
@@ -604,7 +612,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <p>Copywriting, sesja zdjęciowa, dedykowane moduły (np. system rezerwacji, konfigurator produktów), integracje z CRM lub systemami płatności, migracja danych ze starej strony. Audyt SEO przed wdrożeniem to kolejna pozycja, którą warto zaplanować osobno, szczególnie gdy przenosisz istniejącą stronę na nową platformę.</p>
 
               <h3>Koszty cykliczne</h3>
-              <p>Tutaj wiele firm się zaskakuje. Roczne koszty utrzymania prostej strony wizytówkowej są umiarkowane i obejmują domenę, hosting i podstawowe licencje. W przypadku rozbudowanych projektów koszty są znacznie wyższe.</p>
+              <p>Tutaj wiele firm się zaskakuje. Roczne koszty utrzymania prostej strony wizytówkowej są umiarkowane i obejmują domenę, hosting i podstawowe licencje. W przypadku rozbudowanych projects koszty są znacznie wyższe.</p>
 
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
@@ -752,7 +760,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     <tr>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Full-service (Ai-seo-company)</td>
                       <td style={{ padding: '1rem' }}>model subskrypcyjny (od 1 900 zł netto/mies.)</td>
-                      <td style={{ padding: '1rem' }}>Custom UX/UI, Next.js/React, integracja CRM i płatności, audyt SEO, opcjonalna subskrypcja SEO; w pakiecie Booster Pack nowa strona WWW za 0 zł</td>
+                      <td style={{ padding: '1rem' }}>Custom UX/UI, Next.js/React, integracja CRM i płatności, audyt SEO, opcjonalna subskrypcja SEO; w pakiecie Booster Pack <strong>nowa profesjonalna strona WWW za 0 zł</strong></td>
                       <td style={{ padding: '1rem' }}>Realistyczny czas realizacji</td>
                       <td style={{ padding: '1rem' }}>Firmy B2B, e-commerce</td>
                       <td style={{ padding: '1rem' }}>Koszty roczne wyższe</td>
@@ -859,3 +867,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
     </main>
   );
 }
+\`;
+
+fs.writeFileSync(targetPath, code, 'utf8');
+console.log('Successfully updated article with English version.');
