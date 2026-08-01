@@ -65,7 +65,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Zaufanie klientów przed zakupem.' : 'Client trust before purchase.',
       description: lang === 'pl' 
         ? 'Statystyki jasno pokazują, że 81% klientów musi w pełni zaufać marce na podstawie jej wizerunku w sieci, zanim podejmie decyzję o zakupie. Nasz rygorystyczny proces projektowy UI/UX buduje u odbiorców poczucie bezpieczeństwa, co drastycznie zwiększa współczynnik konwersji i generuje więcej zapytań ofertowych.'
-        : <>Industry data shows that 81% of clients must completely trust a brand online before making a purchasing decision. As a professional <strong>SEO company</strong>, our rigorous UI/UX design process instills immediate confidence. We meticulously map user journeys to eliminate friction points, significantly boosting conversion rates and driving more high-value inquiries from your existing traffic. This translates directly into a robust and highly predictable sales pipeline.</>,
+        : <>Industry data shows that 81% of clients must completely trust a brand online before making a purchasing decision. As a professional <strong>SEO company</strong> and one of the leading <strong>search engine optimisation companies</strong>, our rigorous UI/UX design process instills immediate confidence. We meticulously map user journeys to eliminate friction points, significantly boosting conversion rates and driving more high-value inquiries from your existing traffic. This translates directly into a robust and highly predictable sales pipeline.</>,
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
