@@ -259,7 +259,7 @@ export default function CookiesBanner() {
               {/* Category 1: Essential */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('essentialTitle')}</strong>
+                  <span style={{ fontWeight: 'bold' }} style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('essentialTitle')}</span>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#059669', background: '#D1FAE5', padding: '0.2rem 0.6rem', borderRadius: '9999px' }}>
                     {lang === 'pl' ? 'Wymagane' : 'Always Active'}
                   </span>
@@ -272,7 +272,7 @@ export default function CookiesBanner() {
               {/* Category 2: Analytics */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('analyticsTitle')}</strong>
+                  <span style={{ fontWeight: 'bold' }} style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('analyticsTitle')}</span>
                   <input
                     type="checkbox"
                     checked={consentState.analytics}
@@ -288,7 +288,7 @@ export default function CookiesBanner() {
               {/* Category 3: Marketing */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1.75rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <strong style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('marketingTitle')}</strong>
+                  <span style={{ fontWeight: 'bold' }} style={{ fontSize: '0.95rem', color: '#0F172A' }}>{t('marketingTitle')}</span>
                   <input
                     type="checkbox"
                     checked={consentState.marketing}

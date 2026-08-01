@@ -33,7 +33,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
     { id: 'jakosc-linku', title: 'Jak ocenić jakość linku przed przyjęciem go do profilu?' },
     { id: 'roi', title: 'Jak mierzyć ROI link buildingu B2B' },
     { id: 'outsourcing', title: 'Kiedy outsourcować link building i jak wybrać agencję?' },
-    { id: 'ryzyka', title: 'Jakie ryzyka i błędy najczęściej psują programy link buildingu?' },
+    { id: 'ryzyka', title: 'Jakie ryzyka i błędy najczęściej psują programy link' },
     { id: 'digital-pr', title: 'Dlaczego digital PR i ekspertyza działają najlepiej w B2B?' },
     { id: 'wnioski', title: 'Kluczowe wnioski' },
     { id: 'ai-seo-company', title: 'Jak podchodzimy do link buildingu w Ai-seo-company' },

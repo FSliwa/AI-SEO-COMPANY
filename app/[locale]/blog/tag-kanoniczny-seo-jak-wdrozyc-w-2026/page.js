@@ -28,13 +28,13 @@ export default async function ArticleCanonicalPage({ params }) {
     { id: 'czym-jest', title: locale === 'en' ? 'What is a canonical tag and how it works' : 'Czym jest tag kanoniczny i jak działa w praktyce' },
     { id: 'kiedy-warto', title: locale === 'en' ? 'When to use (and when not to) rel="canonical"' : 'Kiedy warto (i kiedy nie) używać tagu rel="canonical"' },
     { id: 'a-przekierowania', title: locale === 'en' ? 'Canonical tag vs 301 redirects and noindex' : 'Tag kanoniczny a przekierowania 301 i dyrektywa noindex' },
-    { id: 'jak-wdrozyc', title: locale === 'en' ? 'How to correctly implement canonical tag – 5 proven ways' : 'Jak poprawnie wdrożyć tag kanoniczny – 5 sprawdzonych sposobów' },
+    { id: 'jak-wdrozyc', title: locale === 'en' ? 'How to correctly implement canonical tag – 5 proven ways' : 'Jak poprawnie wdrożyć tag kanoniczny – 5 sprawdzonych' },
     { id: 'bledy', title: locale === 'en' ? 'Most common mistakes that destroy SEO effects' : 'Najczęstsze błędy, które niszczą efekty SEO' },
     { id: 'indeksowanie', title: locale === 'en' ? 'Canonical vs indexing and crawl budget' : 'Canonical a indeksowanie i crawl budget' },
     { id: 'ecommerce', title: locale === 'en' ? 'Canonical strategy in e-commerce and PrestaShop' : 'Strategia canonical w e-commerce i na platformach PrestaShop' },
     { id: 'narzedzia', title: locale === 'en' ? 'Tools for checking and monitoring canonical tags' : 'Narzędzia do sprawdzania i monitorowania tagów kanonicznych' },
-    { id: 'checklist', title: locale === 'en' ? 'Canonical implementation checklist – technical SEO step by step' : 'Checklist wdrożenia canonical – techniczne SEO krok po kroku' },
-    { id: 'oferta', title: locale === 'en' ? 'AI SEO COMPANY offer: technical audit and optimization packages' : 'Oferta AI SEO COMPANY: audyt techniczny i pakiety optymalizacji' }
+    { id: 'checklist', title: locale === 'en' ? 'Canonical implementation checklist – technical SEO step by' : 'Checklist wdrożenia canonical – techniczne SEO krok po kroku' },
+    { id: 'oferta', title: locale === 'en' ? 'AI SEO COMPANY offer: technical audit and optimization' : 'Oferta AI SEO COMPANY: audyt techniczny i pakiety' }
   ];
 
   return (

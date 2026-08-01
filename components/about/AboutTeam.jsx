@@ -255,9 +255,9 @@ export default function AboutTeam() {
                     letterSpacing: '-0.015em',
                     marginBottom: '1.75rem'
                   }}>
-                    <strong style={{ fontWeight: 700, color: '#0F172A', marginRight: '0.35rem' }}>
+                    <span style={{ fontWeight: 'bold' }} style={{ fontWeight: 700, color: '#0F172A', marginRight: '0.35rem' }}>
                       {lang === 'pl' ? item.leadPl : item.leadEn}
-                    </strong>
+                    </span>
                     {lang === 'pl' ? item.bodyPl : item.bodyEn}
                   </p>
 

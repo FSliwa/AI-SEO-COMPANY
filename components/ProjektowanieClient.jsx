@@ -68,7 +68,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Profesjonalne <strong>projektowanie stron internetowych</strong> to inwestycja w stabilny fundament. <span style={{ color: 'var(--color-cta)' }}>Tworzymy nowoczesne i szybkie strony B2B, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów</span>.</> 
+                ? <>Profesjonalne <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> to inwestycja w stabilny fundament. <span style={{ color: 'var(--color-cta)' }}>Tworzymy nowoczesne i szybkie strony B2B, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów</span>.</> 
                 : <>Professional Web Design and Development is an investment in a stable foundation. <span style={{ color: 'var(--color-cta)' }}>We create fast Business Websites that protect against attacks and turn organic traffic into customers</span>.</>}
             </p>
             
@@ -109,7 +109,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 1' : 'PILLAR 1'}</div>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Niezawodność i Bezpieczeństwo' : 'Reliability & Security'}</div>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Nasze <strong>projektowanie stron internetowych</strong> łączy nowoczesną architekturę Headless z biznesowymi korzyściami. To nie tylko niezrównana szybkość, ale też całkowite odcięcie hakerów od Twojej bazy danych. Zyskujesz spokój ducha i bezpieczeństwo znane z systemów klasy Enterprise, zapominając o awariach.</> : "Our website design combines modern Headless architecture with business benefits. It's not just unmatched speed, but also a complete cut-off for hackers from your database. You gain peace of mind and Enterprise-grade security, forgetting about crashes."}</p>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Nasze <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> łączy nowoczesną architekturę Headless z biznesowymi korzyściami. To nie tylko niezrównana szybkość, ale też całkowite odcięcie hakerów od Twojej bazy danych. Zyskujesz spokój ducha i bezpieczeństwo znane z systemów klasy Enterprise, zapominając o awariach.</> : "Our website design combines modern Headless architecture with business benefits. It's not just unmatched speed, but also a complete cut-off for hackers from your database. You gain peace of mind and Enterprise-grade security, forgetting about crashes."}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -145,7 +145,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profesjonalny Design i Makiety' : 'Professional Design and Mockups'}</div>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Nasze <strong>projektowanie stron internetowych</strong> zaczyna się od stworzenia czytelnych makiet i prototypów, w pełni dopasowanych do Twojej identyfikacji wizualnej i grupy docelowej.</> : 'Our web design begins with clean mockups and prototypes, perfectly tailored to your visual identity and target audience.'}</p>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Nasze <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> zaczyna się od stworzenia czytelnych makiet i prototypów, w pełni dopasowanych do Twojej identyfikacji wizualnej i grupy docelowej.</> : 'Our web design begins with clean mockups and prototypes, perfectly tailored to your visual identity and target audience.'}</p>
             </RevealItem>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wdrożenie i Skalowanie Sprzedaży' : 'Deployment and Sales Scaling'}</div>

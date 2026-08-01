@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Audit | SEO Consultancy & Search Engine Optimization Consultants' : 'Audyt SEO | Analiza i Optymalizacja SEO',
-  description: locale === 'en' ? 'Looking for a search engine optimisation consultancy or seo consultancy? We offer comprehensive seo keyword analysis and SEO audit from top search engine optimization consultants. Improve your Google rankings.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
+  title: locale === 'en' ? 'SEO Audit | SEO Consultancy & Search Engine Optimization' : 'Audyt SEO | Analiza i Optymalizacja SEO',
+  description: locale === 'en' ? 'Looking for a search engine optimisation consultancy or seo consultancy? We offer comprehensive seo keyword analysis and SEO audit from top search engine' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-audit' : 'https://www.ai-seo-company.pl/audyt-seo',
     languages: {
@@ -83,7 +83,7 @@ const auditPortfolioCases = [
     tagEn: 'PROBLEM 01 / INDEXING',
     title: 'Wyciek Crawl Budget i Błędy 404',
     titleEn: 'Crawl Budget Leak and 404 Errors',
-    description: 'Wykryto ponad 20 000 zduplikowanych adresów URL oraz pętli przekierowań konsumujących budżet indeksowania. Eliminuje to kluczowe produkty z wyników wyszukiwania.',
+    description: 'Wykryto ponad 20 000 zduplikowanych adresów URL oraz pętli przekierowań konsumujących budżet indeksowania. Eliminuje to kluczowe produkty z wyników',
     descriptionEn: 'Detected over 20,000 duplicated URLs and redirect loops consuming the indexing budget. This eliminates key products from search results.',
     image: '/images/audyt-seo-optymalizacja.jpg',
     imgAlt: 'Profesjonalny audyt SEO',

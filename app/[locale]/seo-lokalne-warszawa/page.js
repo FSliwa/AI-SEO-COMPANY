@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'Local SEO | SEO Agency Near Me & SEO Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
-  description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo firms near me, get seo services near me from top search engine optimization companies near me.' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź konkurencję.',
+  description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
     languages: {
@@ -52,7 +52,7 @@ const portfolioCases = [
     tagEn: 'GOOGLE BUSINESS PROFILE (GBP)',
     title: 'Optymalizacja Profilu Firmy',
     titleEn: 'Business Profile Optimization',
-    description: 'Konfigurujemy Twoją wizytówkę Google od A do Z. Wdrażamy odpowiednie słowa kluczowe, precyzyjne kategorie i system postów, który przyciąga uwagę klientów przeglądających Mapy w Warszawie.',
+    description: 'Konfigurujemy Twoją wizytówkę Google od A do Z. Wdrażamy odpowiednie słowa kluczowe, precyzyjne kategorie i system postów, który przyciąga uwagę klientów',
     descriptionEn: 'We configure your Google listing from A to Z. We implement the right keywords, precise categories, and a post system that attracts customers browsing Maps in Warsaw.',
     image: '/images/pozycjonowanie-lokalne-warszawa.jpg',
     imgAlt: 'Pozycjonowanie lokalne',
@@ -70,7 +70,7 @@ const portfolioCases = [
     tagEn: 'NAP SIGNALS & CITATIONS',
     title: 'Budowanie Autorytetu Lokalnego',
     titleEn: 'Building Local Authority',
-    description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Gwarantujemy pełną spójność nazwy, adresu i telefonu (NAP), co jest potężnym sygnałem zaufania dla Google.',
+    description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Gwarantujemy pełną spójność nazwy',
     descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We guarantee complete consistency of Name, Address, and Phone (NAP), which is a powerful trust signal for Google.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
@@ -86,7 +86,7 @@ const portfolioCases = [
     tagEn: 'CUSTOMER REVIEWS',
     title: 'Strategia Zbierania Opinii',
     titleEn: 'Review Collection Strategy',
-    description: 'Wdrażamy w Twojej firmie zautomatyzowane procesy pozyskiwania pięciogwiazdkowych recenzji od zadowolonych klientów. Opinie to najważniejszy czynnik konwersji (Social Proof) na warszawskim rynku.',
+    description: 'Wdrażamy w Twojej firmie zautomatyzowane procesy pozyskiwania pięciogwiazdkowych recenzji od zadowolonych klientów. Opinie to najważniejszy czynnik',
     descriptionEn: 'We implement automated processes in your company for acquiring five-star reviews from satisfied customers. Reviews are the most important conversion factor (Social Proof) in the local market.',
     image: '/images/unsplash-1522202176988-66273c2fd55f.jpg',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',

@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'How Much Does a Business Website Cost? Pricing & What\'s Included (2026)' : 'Ile kosztuje strona www dla firmy: ceny i co zawierają',
-  description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta strona wizytówkowa w Polsce kosztuje od kilkuset złotych, ale profesjonalna strona to większy wydatek. Sprawdź, ile kosztuje strona www dla firmy i co zawiera cena.',
+  description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta strona wizytówkowa w Polsce kosztuje od kilkuset złotych, ale profesjonalna strona to większy wydatek. Sprawdź, ile kosztuje strona www dla firmy i',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
     languages: {
@@ -32,25 +32,25 @@ export default async function ArticleWebsitePricingPage({ params }) {
     { id: 'jak-dlugo-trwa', title: 'Jak długo trwa realizacja strony i jakie są etapy?' },
     { id: 'jak-obnizyc-koszt', title: 'Jak obniżyć koszt strony bez ryzykownych kompromisów?' },
     { id: 'jak-wybrac-wykonawce', title: 'Jak wybrać wykonawcę i jakie pytania zadać przy wycenie?' },
-    { id: 'freelancer-agencja', title: 'Freelancer, mała agencja czy full-service: co dostaniesz za tę cenę?' },
+    { id: 'freelancer-agencja', title: 'Freelancer, mała agencja czy full-service: co dostaniesz za' },
     { id: 'dlaczego-warto', title: 'Dlaczego warto zainwestować w dobrze zaprojektowaną stronę?' },
     { id: 'kluczowe-wnioski', title: 'Kluczowe wnioski' },
-    { id: 'strona-za-2-tys-czy-20-tys', title: 'Strona za 2 000 zł czy za 20 000 zł: co naprawdę ma znaczenie?' },
-    { id: 'ai-seo-company', title: 'Ai-seo-company: strona, która pracuje na Twój biznes od pierwszego dnia' },
+    { id: 'strona-za-2-tys-czy-20-tys', title: 'Strona za 2 000 zł czy za 20 000 zł: co naprawdę ma' },
+    { id: 'ai-seo-company', title: 'Ai-seo-company: strona, która pracuje na Twój biznes od' },
     { id: 'zrodla', title: 'Przydatne źródła i narzędzia do planowania budżetu' }
   ];
   const tocItemsEn = [
     { id: 'detailed-price-ranges', title: 'Detailed Price Ranges by Website Type' },
     { id: 'what-affects-price', title: 'What Exactly Affects the Price of a Website?' },
     { id: 'whats-included', title: "What's Included in the Price and What Costs Extra?" },
-    { id: 'how-long-does-it-take', title: 'How Long Does Website Development Take and What Are the Stages?' },
+    { id: 'how-long-does-it-take', title: 'How Long Does Website Development Take and What Are the' },
     { id: 'how-to-reduce-cost', title: 'How to Reduce Website Cost Without Risky Compromises' },
-    { id: 'how-to-choose-provider', title: 'How to Choose a Provider and What Questions to Ask When Getting a Quote' },
-    { id: 'freelancer-or-agency', title: 'Freelancer, Small Agency, or Full-Service: What Do You Get for the Price?' },
+    { id: 'how-to-choose-provider', title: 'How to Choose a Provider and What Questions to Ask When' },
+    { id: 'freelancer-or-agency', title: 'Freelancer, Small Agency, or Full-Service: What Do You Get' },
     { id: 'why-invest', title: "Why It's Worth Investing in a Well-Designed Website" },
     { id: 'key-takeaways', title: 'Key Takeaways' },
     { id: 'what-really-matters', title: 'A €450 Website or a €4,650 Website: What Really Matters?' },
-    { id: 'ai-seo-company-en', title: 'Ai-seo-company: A Website That Works for Your Business from Day One' },
+    { id: 'ai-seo-company-en', title: 'Ai-seo-company: A Website That Works for Your Business from' },
     { id: 'useful-sources', title: 'Useful Sources and Tools for Budget Planning' }
   ];
 

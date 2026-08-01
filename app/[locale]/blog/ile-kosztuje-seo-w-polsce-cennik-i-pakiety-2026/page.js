@@ -32,7 +32,7 @@ export default async function ArticleCennikPage({ params }) {
     { id: 'kiedy-efekty', title: 'Kiedy zobaczysz efekty i jak liczyć opłacalność?' },
     { id: 'modele-rozliczen', title: 'Jakie modele rozliczeń stosują agencje SEO?' },
     { id: 'jak-wybrac-agencje', title: 'Jak wybrać agencję SEO krok po kroku?' },
-    { id: 'oferta-ai-seo-company', title: 'Oferta AI SEO COMPANY: pakiety, efekty i co wyróżnia tę agencję' },
+    { id: 'oferta-ai-seo-company', title: 'Oferta AI SEO COMPANY: pakiety, efekty i co wyróżnia tę' },
     { id: 'narzedzia', title: 'Przydatne źródła i narzędzia do weryfikacji ofert SEO' },
     { id: 'szybki-przegl-d-typowych-bud-et-w', title: 'Szybki przegląd typowych budżetów:' }
   ];

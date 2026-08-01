@@ -27,13 +27,13 @@ export default async function ArticleReviewsPage({ params }) {
   const tocItems = [
     { id: 'gdzie-wyswietlaja-sie-opinie', title: 'Gdzie wyświetlają się opinie Google i dlaczego to ważne' },
     { id: 'jak-opinie-wplywaja-na-seo', title: 'Jak opinie Google wpływają na SEO, CTR i sprzedaż' },
-    { id: 'co-jest-zabronione', title: 'Co jest zabronione i jakie grożą konsekwencje za łamanie zasad' },
+    { id: 'co-jest-zabronione', title: 'Co jest zabronione i jakie grożą konsekwencje za łamanie' },
     { id: 'proces-pozyskiwania-krok-po-kroku', title: 'Jak zbudować proces pozyskiwania opinii krok po kroku' },
     { id: 'szablony-wiadomosci', title: 'Szablony wiadomości, które faktycznie działają' },
     { id: 'jak-odpowiadac', title: 'Jak odpowiadać na opinie, żeby zyskać wiarygodność' },
     { id: 'falszywa-opinia', title: 'Gdy opinia jest fałszywa lub narusza zasady — co zrobić' },
     { id: 'automatyzacja-i-kpi', title: 'Automatyzacja i KPI: co mierzyć i jak testować' },
-    { id: 'co-mowia-eksperci', title: 'Co mówią eksperci o personalizacji i automatyzacji w 2026 roku' },
+    { id: 'co-mowia-eksperci', title: 'Co mówią eksperci o personalizacji i automatyzacji w 2026' },
     { id: 'kluczowe-wnioski', title: 'Kluczowe wnioski' },
     { id: 'dlaczego-uczciwe-opinie', title: 'Dlaczego uczciwe opinie opłacają się bardziej, niż myślisz' },
     { id: 'ai-seo-company-wdrozy', title: 'Ai-seo-company wdroży ten proces za Ciebie' }
@@ -48,7 +48,7 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'jak-odpowiadac', title: 'How to reply to reviews to gain credibility' },
     { id: 'falszywa-opinia', title: 'When a review is fake or violates rules — what to do' },
     { id: 'automatyzacja-i-kpi', title: 'Automation and KPIs: what to measure and test' },
-    { id: 'co-mowia-eksperci', title: 'What experts say about personalization and automation in 2026' },
+    { id: 'co-mowia-eksperci', title: 'What experts say about personalization and automation in' },
     { id: 'kluczowe-wnioski', title: 'Key Takeaways' },
     { id: 'dlaczego-uczciwe-opinie', title: 'Why honest reviews pay off more than you think' },
     { id: 'ai-seo-company-wdrozy', title: 'Ai-seo-company will implement this process for you' }

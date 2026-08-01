@@ -73,10 +73,10 @@ export default function Contact() {
             <p>{t('subtitle')}</p>
             
             <ul className="company-details">
-              <li><strong>{lang === 'pl' ? 'Adres:' : 'Address:'}</strong> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
-              <li><strong>E-mail:</strong> <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
-              <li><strong>NIP:</strong> 5253090237</li>
-              <li><strong>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</strong> {lang === 'pl' ? 'Zazwyczaj < 2 godziny' : 'Usually < 2 hours'}</li>
+              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Adres:' : 'Address:'}</span> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
+              <li><span style={{ fontWeight: 'bold' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
+              <li><span style={{ fontWeight: 'bold' }}>NIP:</span> 5253090237</li>
+              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</span> {lang === 'pl' ? 'Zazwyczaj < 2 godziny' : 'Usually < 2 hours'}</li>
             </ul>
           </RevealItem>
 

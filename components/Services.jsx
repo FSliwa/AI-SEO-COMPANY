@@ -103,7 +103,7 @@ export default function Services() {
             <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Organic Search Optimization & Optimisation, Marketing Growth using seotools'}</h3>
             <p>{lang === 'pl'
               ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
-              : <>High-impact search engine positioning, local <strong>SEO services</strong>, technical <strong>SEO optimization service</strong>, and strategic content in marketing using seotools driving stable organic growth for your brand.</>
+              : <>High-impact search engine positioning, local <span style={{ fontWeight: 'bold' }}>SEO services</span>, technical <span style={{ fontWeight: 'bold' }}>SEO optimization service</span>, and strategic content in marketing using seotools driving stable organic growth for your brand.</>
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (
