@@ -171,7 +171,7 @@ export default async function ArticleCanonicalPage({ params }) {
               </ol>
 
               <h2 id="oferta">AI SEO COMPANY offer: technical audit and optimization packages</h2>
-              <p>Choosing a reliable <Link href="/o-nas">SEO agency</Link> is the foundation of success. At AI SEO COMPANY, we understand that without a healthy technical foundation, no off-site activities or the best content will bring the expected results.</p>
+              <p>Choosing a reliable <Link href="/o-nas">SEO partner</Link> is the foundation of success. At AI SEO COMPANY, we understand that without a healthy technical foundation, no off-site activities or the best content will bring the expected results.</p>
               <p>Before implementing a solid strategy, we conduct an <Link href="/audyt-seo">advanced SEO audit</Link>, which shows the real state of the site's structure – including the correctness of canonical tags, sitemap, and URL architecture. We support both <Link href="/seo-lokalne-warszawa">local positioning</Link> for smaller companies and clinics, as well as e-commerce projects.</p>
               <p>As part of the cooperation, we make sure that canonical tags, sitemap.xml, and store structure harmonize with each other. This is the safest way to stable visibility growth.</p>
               <p>Do you want to check what canonical tags look like on your site? <Link href="/#kontakt">Schedule a free consultation</Link>.</p>
