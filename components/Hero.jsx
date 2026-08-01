@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   const lang = useLocale();
@@ -64,7 +65,7 @@ export default function Hero() {
               : <><span style={{ fontWeight: 'bold' }}>Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost</span></>}
           </h1>
           <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <img 
+            <Image 
               src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 
               alt={lang === 'en' 
                 ? 'SEO for companies' 
@@ -74,7 +75,7 @@ export default function Hero() {
                 : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'}
               width={1600}
               height={294}
-              fetchPriority="high"
+              priority={true}
               style={{ 
                 width: '100%', 
                 height: 'auto', 
