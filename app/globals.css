@@ -2373,11 +2373,13 @@ section {
   letter-spacing: -0.01em;
 }
 
-/* PageSpeed LCP Fix */
+/* PageSpeed LCP Fix - Desktop Only */
 @keyframes heroLcpPop {
   0% { opacity: 0.99; transform: scale(0.98) translateY(20px); }
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
-.hero-lcp-image {
-  animation: heroLcpPop 0.8s ease-out forwards;
+@media (min-width: 768px) {
+  .hero-lcp-image {
+    animation: heroLcpPop 0.8s ease-out forwards;
+  }
 }

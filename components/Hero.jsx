@@ -55,6 +55,7 @@ export default function Hero() {
         pointerEvents: 'none'
       }}>
         <div
+          className="hero-lcp-image"
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
         >
           <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
