@@ -55,17 +55,17 @@ export default function Hero() {
         >
           <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
             {lang === 'en' 
-              ? <><strong>SEOTools, SEO and Search Optimization Services for Agencies, Content in Marketing Agency</strong></>
+              ? <><strong>AI SEO COMPANY | Modern SEO & Marketing Agency</strong></>
               : <><strong>Agencja SEO i Marketingowa Warszawa – Pozycjonowanie i Projektowanie Stron</strong>, które napędzają wzrost</>}
           </h1>
           <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <motion.img 
-              src={lang === 'en' ? '/seotools-seo-and-search-optimization-services-for-agencies-content-in-marketing-agency-en.svg' : '/agencja-seo-warszawa-pozycjonowanie-projektowanie-stron.svg'} 
+              src={lang === 'en' ? '/ai-seo-company-modern-seo-marketing-agency-en.svg' : '/agencja-seo-warszawa-pozycjonowanie-projektowanie-stron.svg'} 
               alt={lang === 'en' 
-                ? 'SEOTools, SEO and Search Optimization Services for Agencies, Content in Marketing Agency' 
+                ? 'Modern SEO & Marketing Agency' 
                 : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie i Projektowanie Stron, które napędzają wzrost'} 
               title={lang === 'en' 
-                ? 'SEOTools, SEO and Search Optimization Services for Agencies, Content in Marketing Agency' 
+                ? 'Modern SEO & Marketing Agency' 
                 : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie i Projektowanie Stron'}
               width={1600}
               height={294}
