@@ -238,18 +238,21 @@ export default function Header() {
                 <Link href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</Link>
               </li>
               <li style={{ '--delay': '0.4s' }}>
-                <Link href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</Link>
+                <Link href="/seo-lokalne-warszawa" onClick={closeMenu}>{lang === 'pl' ? 'Lokalne SEO' : 'Local SEO'}</Link>
               </li>
               <li style={{ '--delay': '0.45s' }}>
-                <Link href="/blog" onClick={closeMenu}>{t('blog')}</Link>
+                <Link href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</Link>
               </li>
               <li style={{ '--delay': '0.5s' }}>
-                <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
+                <Link href="/blog" onClick={closeMenu}>{t('blog')}</Link>
               </li>
               <li style={{ '--delay': '0.55s' }}>
-                <Link href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
+                <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
               </li>
               <li style={{ '--delay': '0.6s' }}>
+                <Link href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
+              </li>
+              <li style={{ '--delay': '0.65s' }}>
                 <Link href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
               </li>
             </ul>
