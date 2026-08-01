@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO and Search Optimization Services, Content in Marketing Agency' : 'Agencja SEO Warszawa | Skuteczne Pozycjonowanie Stron',
-  description: locale === 'en' ? 'Leading SEO and search optimization services, content in marketing agency. We deliver expert SEO services for organic growth.' : 'Nowoczesna agencja SEO Warszawa. Projektujemy strony internetowe, które sprzedają. Kompleksowe pozycjonowanie, audyt SEO i web design.',
+  title: locale === 'en' ? 'SEO and Search Optimization Services for Agencies, Content in Marketing Agency' : 'Agencja SEO Warszawa | Skuteczne Pozycjonowanie Stron',
+  description: locale === 'en' ? 'Leading SEO and search optimization services for agencies, content in marketing agency. We deliver expert SEO services for growth.' : 'Nowoczesna agencja SEO Warszawa. Projektujemy strony internetowe, które sprzedają. Kompleksowe pozycjonowanie, audyt SEO i web design.',
   alternates: {
     canonical: locale === 'en' ? `/en` : `/pl`,
     languages: {
