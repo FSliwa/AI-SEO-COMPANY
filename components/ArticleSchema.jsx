@@ -4,7 +4,7 @@ export default function ArticleSchema({ title, description, url, datePublished, 
     '@type': 'BlogPosting',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.ai-seo-company.pl${url}`
+      '@id': `https://www.ai-seo-company.pl${url || '/'}`
     },
     headline: title,
     description: description,
