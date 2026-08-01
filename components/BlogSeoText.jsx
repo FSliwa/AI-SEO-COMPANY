@@ -10,11 +10,11 @@ export default function BlogSeoText() {
       <div>
         {locale === 'en' ? (
           <div style={{ color: '#333336', fontSize: '1.05rem', lineHeight: '1.8' }}>
-            <h2 style={{ color: '#1D1D1F', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '700' }}>Read our SEO and Web Design Articles</h2>
+            <h2 style={{ color: '#1D1D1F', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '700' }}>Articles by a top company for SEO and Web Design</h2>
             <p style={{ marginBottom: '1.5rem' }}>
               Welcome to the ultimate resource for business owners, marketers, and developers looking to scale their online presence. Our blog is a meticulously curated knowledge base where we dive deep into the intricacies of Search Engine Optimization (SEO), modern Web Design, and conversion rate optimization (CRO). In today's highly competitive digital landscape, relying on outdated marketing tactics is no longer sufficient. That is why our team of experts continuously analyzes Google algorithm updates, artificial intelligence (AI) trends, and user behavior patterns to bring you actionable strategies that actually work.
             </p>
-            <h3 style={{ color: '#1D1D1F', fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Mastering Technical SEO and Content Strategy</h3>
+            <h3 style={{ color: '#1D1D1F', fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Mastering Search Visibility and Content Strategy</h3>
             <p style={{ marginBottom: '1.5rem' }}>
               One of the core pillars of a successful online strategy is technical SEO. Our articles cover everything from optimizing Core Web Vitals (LCP, FID, CLS), improving server response times (TTFB), and managing crawl budgets, to correctly implementing schema markup and canonical tags. We understand that technical jargon can be overwhelming, which is why we break down complex concepts into step-by-step guides and practical checklists. Furthermore, we emphasize the importance of content architecture. Discover how to create topical clusters, leverage semantic HTML, and craft content that perfectly aligns with search intent, ensuring your website becomes a highly authoritative entity in your industry.
             </p>

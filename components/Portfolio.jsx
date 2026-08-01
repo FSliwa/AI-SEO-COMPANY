@@ -78,14 +78,16 @@ const realizedWebsites = [
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center-reverse',
     rightVisual: 'desktop',
-    largeImage: '/projects/kafelek-aisas.webp',
+    largeImage: '/projects/company-for-seo-aisas.webp',
     desktopCard: {
       tag: 'FINTECH & GLOBAL SEO',
       title: 'AI FUTURES TRADING PLATFORM',
       subtitle: '+8 113.8% Google Search Growth in hyper-competitive US market.',
-      image: '/projects/kafelek-aisas.webp',
+      image: '/projects/company-for-seo-aisas.webp',
       btnText: 'View Case Study'
     },
+    imgAlt: 'company for SEO',
+    imgTitle: 'company for SEO',
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
 - Skok od 0 do 4,8 tys. wyświetleń w kwartale (+8 113,8%) i wzrost w ostatnich 28 dniach o 244,7% (do 500 wyświetleń dziennie).
 - Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 — krok od TOP 20), „best futures trading platforms” (pozycja 61).
