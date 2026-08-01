@@ -22,7 +22,9 @@ const realizedWebsites = [
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center',
     rightVisual: 'single-large',
-    largeImage: '/projects/madame-thai-full.webp',
+    largeImage: '/projects/seo-company-madame.webp',
+    imgAlt: 'SEO company',
+    imgTitle: 'SEO company',
     largeImageMobile: '/images/madame-thai-mobile.webp',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
@@ -256,14 +258,14 @@ export default function Portfolio() {
                           <source srcSet={item.largeImageMobile} media="(max-width: 768px)" />
                           <img 
                             src={item.largeImage} 
-                            alt={item.brandName} 
+                            alt={item.imgAlt || item.brandName} title={item.imgTitle || item.brandName} 
                             className="portfolio-mobile-aware-img"
                           />
                         </picture>
                       ) : (
                         <img 
                           src={item.largeImage} 
-                          alt={item.brandName} 
+                          alt={item.imgAlt || item.brandName} title={item.imgTitle || item.brandName} 
                           style={{ 
                             width: '100%', 
                             marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top
@@ -302,7 +304,7 @@ export default function Portfolio() {
                     >
                       <img 
                         src={item.largeImage} 
-                        alt={item.brandName} 
+                        alt={item.imgAlt || item.brandName} title={item.imgTitle || item.brandName} 
                         style={{ 
                           width: '100%', 
                           height: '100%', 
@@ -369,7 +371,7 @@ export default function Portfolio() {
                     >
                       <img 
                         src={item.desktopCard ? item.desktopCard.image : '/projects/kafelek-staniax-full.webp'} 
-                        alt={item.brandName} 
+                        alt={item.imgAlt || item.brandName} title={item.imgTitle || item.brandName} 
                         style={{ 
                           width: '100%', 
                           height: '100%', 

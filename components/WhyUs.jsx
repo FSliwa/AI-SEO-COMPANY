@@ -65,7 +65,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Zaufanie klientów przed zakupem.' : 'Client trust before purchase.',
       description: lang === 'pl' 
         ? 'Statystyki jasno pokazują, że 81% klientów musi w pełni zaufać marce na podstawie jej wizerunku w sieci, zanim podejmie decyzję o zakupie. Nasz rygorystyczny proces projektowy UI/UX buduje u odbiorców poczucie bezpieczeństwa, co drastycznie zwiększa współczynnik konwersji i generuje więcej zapytań ofertowych.'
-        : 'Industry data shows that 81% of clients must completely trust a brand online before making a purchasing decision. Our rigorous UI/UX design process instills immediate confidence, significantly boosting conversion rates and driving more high-value inquiries from your existing traffic.',
+        : <>Industry data shows that 81% of clients must completely trust a brand online before making a purchasing decision. As a professional <strong>SEO company</strong>, our rigorous UI/UX design process instills immediate confidence, significantly boosting conversion rates and driving more high-value inquiries from your existing traffic.</>,
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -194,7 +194,7 @@ export default function WhyUs() {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'DLACZEGO MY' : 'WHY US'}
             </div>
             <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
-              {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie – agencja marketingowa nastawiona na wyniki' : 'Result driven projects, with a focus on design and functionality'}
+              {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie – agencja marketingowa nastawiona na wyniki' : 'Result driven projects, with a focus on SEO, design and functionality'}
             </h2>
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
               {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych.' : 'We craft digital solutions backed by hard analytics and buyer psychology.'}
