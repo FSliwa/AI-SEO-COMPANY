@@ -85,7 +85,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Średni wzrost przychodów' : 'Average revenue increase',
       description: lang === 'pl'
         ? 'Sama obecność w sieci to za mało. Łączymy zaawansowane pozycjonowanie SEO z psychologią konwersji, aby zmaksymalizować Twoje zyski. Zastosowanie premium designu na wszystkich etapach ścieżki klienta przekłada się na udokumentowany średni wzrost przychodów firmy o 23%.'
-        : "Merely being online is not enough in today's fiercely competitive digital landscape. We effectively combine advanced SEO methodologies with deep conversion psychology to maximize your ROI. Implementing a consistent, premium design architecture across the entire customer journey builds unparalleled trust. For our partners, this comprehensive approach directly translates to a documented average revenue increase of 23%, ensuring long-term financial stability.",
+        : "Merely being online is not enough in today's fiercely competitive digital landscape. As one of the best <strong>seo firms</strong>, we effectively combine advanced SEO methodologies with deep conversion psychology to maximize your ROI. Implementing a consistent, premium design architecture across the entire customer journey builds unparalleled trust. For our partners, this comprehensive approach directly translates to a documented average revenue increase of 23%, ensuring long-term financial stability.",
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
