@@ -67,9 +67,10 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
                       color: '#1D1D1F',
                     }}
                   >
-                    <span style={{ fontSize: '1.25rem', fontWeight: 600, paddingRight: '2rem' }}>
-                      {lang === 'pl' ? faq.question : (faq.questionEn || faq.question)}
-                    </span>
+                    <span 
+                      style={{ fontSize: '1.25rem', fontWeight: 600, paddingRight: '2rem' }}
+                      dangerouslySetInnerHTML={{ __html: lang === 'pl' ? faq.question : (faq.questionEn || faq.question) }}
+                    />
                     <motion.div
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -94,9 +95,10 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
                         }}
                         transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                       >
-                        <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}>
-                          {lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer)}
-                        </p>
+                        <p 
+                          style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}
+                          dangerouslySetInnerHTML={{ __html: lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer) }}
+                        />
                       </motion.div>
                     )}
                   </AnimatePresence>

@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Local Search Engine Optimization | Agency & Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
+  title: locale === 'en' ? 'Local SEO & Search Engine Optimization | Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
@@ -28,7 +28,7 @@ import { Link } from '@/i18n/routing';
 const faqData = [
   {
     question: 'Kiedy zobaczę efekty pozycjonowania lokalnego w Warszawie?',
-    questionEn: 'When will I see the effects of local SEO in Warsaw?',
+    questionEn: 'When will I see the effects of <strong>local SEO</strong> in Warsaw?',
     answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Zbudowanie solidnej, wiodącej pozycji w konkurencyjnych dzielnicach Warszawy to proces na 3-6 miesięcy.',
     answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. Building a solid, leading position in competitive Warsaw districts is a 3-6 month process.'
   },
@@ -42,7 +42,7 @@ const faqData = [
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
     questionEn: 'How does local SEO differ from traditional SEO?',
     answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów.',
-    answerEn: 'Local SEO focuses on the "Local Pack"—results from Google Maps—and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
+    answerEn: '<strong>Local SEO</strong> focuses on the "Local Pack"—results from Google Maps—and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
   }
 ];
 
@@ -56,7 +56,9 @@ const portfolioCases = [
     descriptionEn: 'We configure your Google listing from A to Z. We implement the right keywords, precise categories, and a post system that attracts customers browsing Maps in Warsaw.',
     image: '/images/pozycjonowanie-lokalne-warszawa.jpg',
     imgAlt: 'Pozycjonowanie lokalne',
+    imgAltEn: 'Local SEO Warsaw',
     imgTitle: 'Pozycjonowanie lokalne',
+    imgTitleEn: 'Local SEO Company',
     gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
     metric: '+150%',
     metricLabel: 'Wyświetlenia',
@@ -73,6 +75,8 @@ const portfolioCases = [
     description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Gwarantujemy pełną spójność nazwy',
     descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We guarantee complete consistency of Name, Address, and Phone (NAP), which is a powerful trust signal for Google.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
+    imgAltEn: 'Local SEO agency near me',
+    imgTitleEn: 'Local SEO agency near me',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',
     metricLabel: 'Spójność NAP',
@@ -89,6 +93,8 @@ const portfolioCases = [
     description: 'Wdrażamy w Twojej firmie zautomatyzowane procesy pozyskiwania pięciogwiazdkowych recenzji od zadowolonych klientów. Opinie to najważniejszy czynnik',
     descriptionEn: 'We implement automated processes in your company for acquiring five-star reviews from satisfied customers. Reviews are the most important conversion factor (Social Proof) in the local market.',
     image: '/images/unsplash-1522202176988-66273c2fd55f.jpg',
+    imgAltEn: 'Local SEO services near me',
+    imgTitleEn: 'Local SEO services near me',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
     metric: '5.0',
     metricLabel: 'Średnia ocen',
