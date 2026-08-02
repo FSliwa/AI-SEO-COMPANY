@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Audit | Consultancy & Search Engine Optimization' : 'Audyt SEO | Analiza i Optymalizacja SEO',
-  description: locale === 'en' ? 'Looking for a search engine optimisation consultancy or seo consultancy? We offer comprehensive seo keyword analysis and SEO audit from top search engine' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
+  title: locale === 'en' ? 'SEO Keyword Analysis & Search Engine Optimization Consultancy' : 'Audyt SEO | Analiza i Optymalizacja SEO',
+  description: locale === 'en' ? 'Looking for expert search engine optimization consultants? Get professional seo keyword analysis and comprehensive search engine optimisation consultancy.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-audit' : 'https://www.ai-seo-company.pl/audyt-seo',
     languages: {
@@ -84,7 +84,7 @@ const auditPortfolioCases = [
     title: 'Wyciek Crawl Budget i Błędy 404',
     titleEn: 'Crawl Budget Leak and 404 Errors',
     description: 'Wykryto ponad 20 000 zduplikowanych adresów URL oraz pętli przekierowań konsumujących budżet indeksowania. Eliminuje to kluczowe produkty z wyników',
-    descriptionEn: 'Detected over 20,000 duplicated URLs and redirect loops consuming the indexing budget. This eliminates key products from search results.',
+    descriptionEn: 'Detected over 20,000 duplicated URLs and redirect loops consuming the indexing budget. This eliminates key products from search results, requiring deep <strong>seo keyword analysis</strong>.',
     image: '/images/audyt-seo-optymalizacja.jpg',
     imgAlt: 'Profesjonalny audyt SEO',
     imgTitle: 'Profesjonalny audyt SEO',
@@ -136,7 +136,7 @@ const auditPortfolioCases = [
     title: 'Ryzyko Filtrów Algorytmicznych',
     titleEn: 'Algorithmic Filter Risk',
     description: 'Wykrycie masowych przyrostów spamu i toksycznych domen odsyłających z filtrem depozycjonującym. Konieczność wdrożenia procedury Disavow Tool.',
-    descriptionEn: 'Detection of massive spam spikes and toxic referring domains with a demotion filter. Necessitates implementing the Disavow Tool procedure.',
+    descriptionEn: 'Detection of massive spam spikes and toxic referring domains with a demotion filter. Necessitates implementing the Disavow Tool procedure through <strong>seo consultancy</strong>.',
     image: '/images/unsplash-1602536052359-ef94c21c5948.jpg',
     gradient: 'linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #EA580C 100%)',
     metric: '0',

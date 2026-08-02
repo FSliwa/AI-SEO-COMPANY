@@ -31,7 +31,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : 'SEO Audit & Optimization'}
+              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : <><span className="sr-only">SEO Keyword Analysis, Search Engine Optimization & Optimisation Consultancy / Consultants - </span>SEO Audit & Optimization</>}
             </h1>
 
             <div style={{ 
@@ -134,7 +134,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
       />
 
       {/* FAQ Section */}
-      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Frequently Asked Questions"} />
+      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : <><span className="sr-only">SEO Keyword Analysis, Search Engine Optimization & Optimisation Consultancy / Consultants - </span>Frequently Asked Questions</>} />
 
       <Contact />
     </main>

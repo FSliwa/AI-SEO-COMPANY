@@ -31,7 +31,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'Content Marketing & Search Engine Optimization'}
+              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : <><span className="sr-only">Search Engine Optimization, Optimisation, SEO Digital Marketing Agency, Agencies & Services - </span>Content Marketing & Search Engine Optimization</>}
             </h1>
 
             <div style={{ 
@@ -68,7 +68,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             }}>
               {lang === 'pl' 
                 ? <>Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę. Nasza usługa to: <span style={{ fontWeight: 'bold' }} style={{ color: 'var(--color-cta)' }}>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</span>.</>
-                : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our Search Optimization Services and SEO for Agencies are unparalleled: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
+                : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>search optimization services</strong> and <strong>seo for agencies</strong> are unparalleled: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
@@ -147,7 +147,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <Pricing />
 
-      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Frequently Asked Questions"} />
+      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : <><span className="sr-only">Search Engine Optimization, Optimisation, SEO Digital Marketing Agency, Agencies & Services - </span>Frequently Asked Questions</>} />
 
       <Contact />
     </main>
