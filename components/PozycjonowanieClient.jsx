@@ -162,7 +162,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                   SEO Marketing Digital & Content In Marketing
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                  Our approach to seo and marketing ensures that every piece of content drives traffic. We specialize in seo for agencies, offering scalable solutions.
+                  Our approach to seo and marketing ensures that every piece of content drives traffic. We specialize in seo for agencies, offering scalable solutions. As a trusted search optimization agency and a premium seo optimization agency, our content in marketing is unparalleled. If you need search engine marketing, we are the right search optimization agency.
                 </p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
@@ -170,7 +170,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                   SEO Search Engine Expertise
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                  We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive and seo services designed for sustainable growth.
+                  We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive and seo services designed for sustainable growth. Choose our seo optimization agency for top search engine marketing results. We are the leading search optimization agency for B2B.
                 </p>
               </RevealItem>
             </RevealStagger>
