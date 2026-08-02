@@ -30,7 +30,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'SEO Optimization, Digital Marketing & Search Engine Optimisation Agency'}
+              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'SEO Optimization, Digital Marketing and Search Engine Optimisation Agency'}
             </h1>
 
             <div style={{ 

@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Optimization, Digital Marketing & Search Engine Optimisation Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
+  title: locale === 'en' ? 'SEO Optimization, Digital Marketing and Search Engine Optimisation Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
   description: locale === 'en' ? 'Top SEO optimization and search engine marketing agency. We offer expert search engine optimisation, SEO digital marketing, and content in marketing services.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
@@ -104,9 +104,9 @@ const portfolioCases = [
     description: 'Pozycjonowanie trudnych fraz kluczowych o najwyższym inteńcie zakupowym na rynku globalnym, napędzające wzrost stałych przychodów subskrypcyjnych.',
     descriptionEn: 'Positioning highly competitive keywords with the highest purchase intent globally, driving steady MRR growth.',
     image: '/images/unsplash-1557264322-b44d383a2906.jpg',
-    imageEn: '/images/search-engine-optimisation-seo-digital-marketing.jpg',
+    imageEn: '/images/search-engine-optimisation-seo-and-digital-marketing.jpg',
     imgAltEn: 'search engine optimisation seo and digital marketing seo',
-    imgTitleEn: 'search engine optimisation seo digital marketing expert team working',
+    imgTitleEn: 'search engine optimisation seo and digital marketing expert team working',
     metric: '+140%',
     metricLabel: 'Skok przychodów (MRR)',
     metricLabelEn: 'MRR Jump',
