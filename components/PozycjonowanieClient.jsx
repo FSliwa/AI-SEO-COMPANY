@@ -145,6 +145,39 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
         layout="vertical"
       />
 
+      {lang === 'en' && (
+        <section style={{ padding: '80px 0', background: '#F5F5F7' }}>
+          <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+            <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
+              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+                Search Engine Optimization Marketing & SEO Search Engine Optimization
+              </h2>
+              <p style={{ fontSize: '1.1rem', color: '#6E6E73' }}>
+                Advanced search optimization services tailored for B2B.
+              </p>
+            </Reveal>
+            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  SEO Marketing Digital & Content In Marketing
+                </h3>
+                <p style={{ color: '#333336', lineHeight: 1.6 }}>
+                  Our approach to seo and marketing ensures that every piece of content drives traffic. We specialize in seo for agencies, offering scalable solutions.
+                </p>
+              </RevealItem>
+              <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  SEO Search Engine Expertise
+                </h3>
+                <p style={{ color: '#333336', lineHeight: 1.6 }}>
+                  We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive and seo services designed for sustainable growth.
+                </p>
+              </RevealItem>
+            </RevealStagger>
+          </div>
+        </section>
+      )}
+
       <Pricing />
 
       <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Search Optimization Agency & SEO Digital Marketing FAQs"} />

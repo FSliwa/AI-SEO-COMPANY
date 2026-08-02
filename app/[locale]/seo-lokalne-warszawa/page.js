@@ -271,6 +271,40 @@ export default function SeoLokalneWarszawaPage() {
           </div>
         </section>
 
+        {/* EN Exact Match Section */}
+        {lang === 'en' && (
+          <section style={{ padding: '80px 0', background: '#F5F5F7' }}>
+            <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+              <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
+                <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+                  Local Search Engine Optimization
+                </h2>
+                <p style={{ fontSize: '1.1rem', color: '#6E6E73' }}>
+                  Advanced strategies for businesses looking for local seo solutions.
+                </p>
+              </Reveal>
+              <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                    SEO Company Near Me
+                  </h3>
+                  <p style={{ color: '#333336', lineHeight: 1.6 }}>
+                    Finding a reliable partner is crucial. If you are searching for seo near me, we provide expert strategies to dominate your local market.
+                  </p>
+                </RevealItem>
+                <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                    Top SEO Near Me
+                  </h3>
+                  <p style={{ color: '#333336', lineHeight: 1.6 }}>
+                    We ensure your business ranks highly in map packs and organic results. Benefit from our dedicated local seo services tailored for your area.
+                  </p>
+                </RevealItem>
+              </RevealStagger>
+            </div>
+          </section>
+        )}
+
         {/* Portfolio Section */}
         <SubpagePortfolio 
           title="Sektor Strategii Lokalnych" 
