@@ -162,7 +162,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                   SEO Marketing Digital & Content In Marketing
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                  Our approach to seo and marketing ensures that every piece of content drives traffic. We specialize in seo for agencies, offering scalable solutions. As a trusted search optimization agency and a premium seo optimization agency, our content in marketing is unparalleled. If you need search engine marketing, we are the right search optimization agency.
+                  Our approach to seo and marketing ensures that every piece of content drives traffic. We specialize in seo for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency</strong> and a premium seo optimization agency, our content in marketing is unparalleled. If you need search engine marketing, we are the right search optimization agency.
                 </p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>

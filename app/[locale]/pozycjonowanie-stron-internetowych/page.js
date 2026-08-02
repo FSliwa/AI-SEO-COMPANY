@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'Search Engine Marketing & SEO Optimization Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
-  description: locale === 'en' ? 'Top search engine marketing and search optimization agency. We offer seo digital marketing, seo optimization service, content in marketing, and seo services.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
+  description: locale === 'en' ? 'Top search engine marketing and search optimisation agency. We offer seo digital marketing, seo optimization service, content in marketing, and seo services.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
@@ -21,19 +21,19 @@ import PozycjonowanieClient from '@/components/PozycjonowanieClient';
 const faqData = [
   {
     question: 'Ile trwa pozycjonowanie stron internetowych?',
-    questionEn: 'How long does website SEO take?',
+    questionEn: 'How long does website optimization take?',
     answer: 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Ustabilizowane wysokie pozycje na konkurencyjne frazy kluczowe buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy.',
     answerEn: 'The first effects of visibility growth appear 4-8 weeks after technical optimization. Stabilized high rankings for competitive keywords are typically built over a 3 to 6 month horizon.'
   },
   {
     question: 'Czym różni się pozycjonowanie z AI od tradycyjnego SEO?',
-    questionEn: 'How does AI SEO differ from traditional SEO?',
+    questionEn: 'How does AI-driven strategy differ from traditional methods?',
     answer: 'Analizujemy zapytania użytkowników w kontekście intencji wyszukiwania (Search Intent) oraz wyszukiwania semantycznego (LLM Search), optymalizując treści pod kątem tradycyjnego Google oraz wyszukiwarek AI (ChatGPT, Perplexity).',
     answerEn: 'We analyze user queries in the context of Search Intent and semantic search (LLM Search), optimizing content for both traditional Google and AI search engines (ChatGPT, Perplexity).'
   },
   {
     question: 'Czy pozycjonowanie stron gwarantuje pozycję nr 1 w Google?',
-    questionEn: 'Does SEO guarantee the #1 position on Google?',
+    questionEn: 'Do you guarantee the #1 position on Google search?',
     answer: 'Żadna uczciwa agencja nie gwarantuje statycznej pozycji nr 1 ze względu na zmienność algorytmów Google. Gwarantujemy natomiast stały wzrost widoczności, jakościowego ruchu oraz optymalizację współczynnika konwersji (CRO).',
     answerEn: 'No honest agency guarantees a static #1 position due to the volatility of Google\'s algorithms. However, we guarantee steady growth in visibility, quality traffic, and conversion rate optimization (CRO).'
   }
@@ -104,7 +104,7 @@ const portfolioCases = [
     description: 'Pozycjonowanie trudnych fraz kluczowych o najwyższym inteńcie zakupowym na rynku globalnym, napędzające wzrost stałych przychodów subskrypcyjnych.',
     descriptionEn: 'Positioning highly competitive keywords with the highest purchase intent globally, driving steady MRR growth.',
     image: '/images/unsplash-1557264322-b44d383a2906.jpg',
-    imageEn: '/images/digital-marketing-seo-content-in-marketing.jpg',
+    imageEn: '/images/search-engine-optimisation-seo-digital-marketing.jpg',
     imgAltEn: 'search engine optimisation seo and digital marketing seo',
     imgTitleEn: 'seo digital marketing expert team working',
     metric: '+140%',
