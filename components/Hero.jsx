@@ -51,12 +51,22 @@ export default function Hero() {
           className="hero-lcp-image"
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
         >
-          <h1 style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', color: 'transparent', zIndex: -10, top: 0, left: 0, pointerEvents: 'none', margin: 0, padding: 0 }}>
-            {lang === 'en' 
-              ? <><strong>SEO, Marketing Agency & Firms for Companies: Search Engine Optimization Company & Optimisation Agencies using seotools</strong></>
-              : <><strong>Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost</strong></>}
-          </h1>
           <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <h1 style={{ 
+              fontSize: 'clamp(0.65rem, 1vw, 0.85rem)', 
+              color: 'rgba(255, 255, 255, 0.45)', 
+              fontWeight: 500, 
+              letterSpacing: '0.05em', 
+              textAlign: 'center', 
+              margin: '0 0 1.5rem 0', 
+              textTransform: 'uppercase',
+              maxWidth: '800px',
+              lineHeight: 1.5
+            }}>
+              {lang === 'en' 
+                ? 'SEO, Marketing Agency & Firms for Companies: Search Engine Optimization Company & Optimisation Agencies using seotools'
+                : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'}
+            </h1>
             <img 
               src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 
               alt={lang === 'en' 
