@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Optimization Agency, Search Engine Marketing & SEO Services' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
-  description: locale === 'en' ? 'Top search optimization agency offering digital marketing seo, seo and digital marketing, seo optimization service, content in marketing and seo services seo.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
+  title: locale === 'en' ? 'Search Engine Marketing & SEO Optimization Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
+  description: locale === 'en' ? 'Top search engine marketing and search optimization agency. We offer seo digital marketing, seo optimization service, content in marketing, and seo services.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
@@ -48,6 +48,7 @@ const portfolioCases = [
     description: 'Strategiczna architektura informacji dla branż inżynieryjnych, usługowych i e-commerce. Model budowania wysokiej autorytatywności domeny od podstaw.',
     descriptionEn: 'As a top <strong>search optimization agency</strong>, we build strategic information architecture for engineering, services, and e-commerce. A model for building high domain authority from scratch.',
     image: '/images/content-marketing-unsplash-1693648793394-0b76b7eb042e.jpg',
+    imageEn: '/images/search-engine-marketing-seo-optimization-agency.jpg',
     imgAlt: 'content marketing',
     imgAltEn: 'search optimization agency team',
     imgTitle: 'content marketing',
@@ -67,6 +68,7 @@ const portfolioCases = [
     description: 'Strategia Topic Clusters dla sklepu internetowego. Model eliminujący kanibalizację słów kluczowych i obniżający koszt pozyskania klienta (CAC).',
     descriptionEn: 'Topic Clusters strategy for an online store powered by our <strong>seo optimization service</strong>. A model eliminating keyword cannibalization and lowering Customer Acquisition Cost (CAC).',
     image: '/images/unsplash-1533134486753-c833f0ed4866.jpg',
+    imageEn: '/images/search-optimization-agency-seo-digital-marketing.jpg',
     imgAltEn: 'seo optimization agency growth chart',
     imgTitleEn: 'seo optimization agency performance metrics',
     metric: '-58%',
@@ -84,6 +86,7 @@ const portfolioCases = [
     description: 'Model pozycji dla sieci wielooddziałowych na ponad 20 miast w Polsce dzięki zoptymalizowanej strukturze podstron oraz wizytówek profilu Google.',
     descriptionEn: 'Ranking model for multi-branch networks across 20+ cities in Poland thanks to optimized subpage structures and Google Business Profiles.',
     image: '/images/unsplash-1710438399422-2fca27686bcd.jpg',
+    imageEn: '/images/seo-search-engine-optimization-services.jpg',
     imgAltEn: 'search engine marketing and local seo optimization',
     imgTitleEn: 'search engine marketing strategies for businesses',
     metric: '+280%',
@@ -101,6 +104,7 @@ const portfolioCases = [
     description: 'Pozycjonowanie trudnych fraz kluczowych o najwyższym inteńcie zakupowym na rynku globalnym, napędzające wzrost stałych przychodów subskrypcyjnych.',
     descriptionEn: 'Positioning highly competitive keywords with the highest purchase intent globally, driving steady MRR growth.',
     image: '/images/unsplash-1557264322-b44d383a2906.jpg',
+    imageEn: '/images/digital-marketing-seo-content-in-marketing.jpg',
     imgAltEn: 'search engine optimisation seo and digital marketing seo',
     imgTitleEn: 'seo digital marketing expert team working',
     metric: '+140%',

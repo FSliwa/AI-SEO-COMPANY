@@ -158,7 +158,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   {/* Full Background Image */}
                   <div style={{ position: 'absolute', inset: 0, zIndex: -1, overflow: 'hidden' }}>
                     <Image 
-                      src={c.image} 
+                      src={lang === 'pl' ? c.image : (c.imageEn || c.image)} 
                       alt={lang === 'pl' ? (c.imgAlt || c.title) : (c.imgAltEn || c.titleEn || c.imgAlt || c.title)}
                       title={lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title)}
                       fill
