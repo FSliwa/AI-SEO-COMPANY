@@ -186,9 +186,10 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     transition: 'opacity 0.4s ease',
                     color: '#FFFFFF'
                   }}>
-                    <p style={{ fontSize: '1.1rem', lineHeight: 1.6, opacity: 0.9, maxWidth: '500px' }}>
-                      {lang === 'pl' ? c.description : (c.descriptionEn || c.description)}
-                    </p>
+                    <p 
+                      style={{ fontSize: '1.1rem', lineHeight: 1.6, opacity: 0.9, maxWidth: '500px' }}
+                      dangerouslySetInnerHTML={{ __html: lang === 'pl' ? c.description : (c.descriptionEn || c.description) }}
+                    />
                     
                     {c.metric2 && (
                       <div style={{ marginTop: '2rem' }}>
@@ -260,9 +261,10 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     <h3 style={{ color: '#FFFFFF', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 600, letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
                       {lang === 'pl' ? c.title : (c.titleEn || c.title)}
                     </h3>
-                    <p style={{ color: '#86868B', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px', flex: 1 }}>
-                      {lang === 'pl' ? c.description : (c.descriptionEn || c.description)}
-                    </p>
+                    <p 
+                      style={{ color: '#86868B', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px', flex: 1 }}
+                      dangerouslySetInnerHTML={{ __html: lang === 'pl' ? c.description : (c.descriptionEn || c.description) }}
+                    />
                     
                     <div style={{ display: 'flex', gap: '3rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem' }}>
                       <div>

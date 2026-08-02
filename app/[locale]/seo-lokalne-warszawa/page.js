@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Local SEO & Local Search Engine Optimization | Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
+  title: locale === 'en' ? 'Local Search Engine Optimization & Local SEO Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
@@ -30,13 +30,13 @@ const faqData = [
     question: 'Kiedy zobaczę efekty pozycjonowania lokalnego w Warszawie?',
     questionEn: 'When will I see the effects of <strong>local SEO</strong> in Warsaw?',
     answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Zbudowanie solidnej, wiodącej pozycji w konkurencyjnych dzielnicach Warszawy to proces na 3-6 miesięcy.',
-    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. Building a solid, leading position in competitive Warsaw districts is a 3-6 month process.'
+    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. Building a solid, leading position in competitive Warsaw districts is a 3-6 month process. If you are looking for an <strong>seo agency near me</strong> or <strong>seo firms near me</strong>, we can help you build that solid position.'
   },
   {
     question: 'Czy muszę posiadać fizyczne biuro w Warszawie?',
     questionEn: 'Do I need a physical office in Warsaw?',
     answer: 'Google preferuje firmy z weryfikowalnym adresem fizycznym. Jeśli obsługujesz klientów mobilnie na terenie Warszawy (np. hydraulik, mobilny mechanik), możemy ukryć dokładny adres, konfigurując tzw. obszar świadczenia usług (Service Area Business).',
-    answerEn: 'Google prefers businesses with a verifiable physical address. If you serve clients mobile across Warsaw (e.g., plumber, mobile mechanic), we can hide the exact address by configuring a Service Area Business.'
+    answerEn: 'Google prefers businesses with a verifiable physical address. If you serve clients mobile across Warsaw (e.g., plumber, mobile mechanic), we can hide the exact address by configuring a Service Area Business. This is crucial when potential customers search for <strong>seo near me</strong> or local services.'
   },
   {
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
@@ -56,7 +56,7 @@ const portfolioCases = [
     descriptionEn: 'We configure your Google listing from A to Z. We implement the right keywords, precise categories, and a post system that attracts customers browsing Maps in Warsaw.',
     image: '/images/pozycjonowanie-lokalne-warszawa.jpg',
     imgAlt: 'Pozycjonowanie lokalne',
-    imgAltEn: 'Local search engine optimization in Warsaw',
+    imgAltEn: 'Local search engine optimization companies near me',
     imgTitle: 'Pozycjonowanie lokalne',
     imgTitleEn: 'Local SEO Company',
     gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
@@ -73,9 +73,9 @@ const portfolioCases = [
     title: 'Budowanie Autorytetu Lokalnego',
     titleEn: 'Building Local Authority',
     description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Gwarantujemy pełną spójność nazwy',
-    descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We guarantee complete consistency of Name, Address, and Phone (NAP), which is a powerful trust signal for Google.',
+    descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We guarantee complete consistency of Name, Address, and Phone (NAP), which is a powerful trust signal for Google. This consistency is what top <strong>search engine optimization companies near me</strong> focus on to build trust.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
-    imgAltEn: 'Local SEO agency near me',
+    imgAltEn: 'Top local SEO agency near me and SEO firms near me',
     imgTitleEn: 'Local SEO agency near me',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',
@@ -91,9 +91,9 @@ const portfolioCases = [
     title: 'Strategia Zbierania Opinii',
     titleEn: 'Review Collection Strategy',
     description: 'Wdrażamy w Twojej firmie zautomatyzowane procesy pozyskiwania pięciogwiazdkowych recenzji od zadowolonych klientów. Opinie to najważniejszy czynnik',
-    descriptionEn: 'We implement automated processes in your company for acquiring five-star reviews from satisfied customers. Reviews are the most important conversion factor (Social Proof) in the local market.',
+    descriptionEn: 'We implement automated processes in your company for acquiring five-star reviews from satisfied customers. Reviews are the most important conversion factor (Social Proof) in the local market. When clients look for <strong>seo services near me</strong>, reviews are the ultimate conversion factor.',
     image: '/images/unsplash-1522202176988-66273c2fd55f.jpg',
-    imgAltEn: 'Local SEO services near me',
+    imgAltEn: 'Expert SEO services near me and local SEO near me',
     imgTitleEn: 'Local SEO services near me',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
     metric: '5.0',
@@ -176,7 +176,7 @@ export default function SeoLokalneWarszawaPage() {
                 marginBottom: '1rem', 
                 letterSpacing: '-0.04em'
               }}>
-                {lang === 'pl' ? 'SEO i pozycjonowanie lokalne Warszawa' : <><span className="sr-only">Search Engine Optimization - </span>Local SEO Warsaw</>}
+                {lang === 'pl' ? 'SEO i pozycjonowanie lokalne Warszawa' : <><span className="sr-only">Local Search Engine Optimization & SEO Company Near Me - </span>Local SEO Warsaw</>}
               </h1>
 
               <div style={{ 
