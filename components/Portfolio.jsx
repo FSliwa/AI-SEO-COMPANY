@@ -23,8 +23,8 @@ const realizedWebsites = [
     layout: 'center',
     rightVisual: 'single-large',
     largeImage: '/projects/seo-company-search-engine-optimization-agencies-madame.webp',
-    imgAlt: 'SEO company, search engine optimization agencies',
-    imgTitle: 'SEO company, search engine optimization agencies',
+    imgAlt: 'SEO company website design for restaurant - search engine optimization agencies',
+    imgTitle: 'SEO company project for Madame Thai restaurant',
     largeImageMobile: '/images/madame-thai-mobile.webp',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
@@ -55,8 +55,8 @@ const realizedWebsites = [
       image: '/projects/seo-firms-optimization-optimisation-companies-marketing-agency-seotools-staniax.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'SEO firms, SEO optimization companies, search engine optimisation companies, marketing agency, seotools',
-    imgTitle: 'SEO firms, SEO optimization companies, search engine optimisation companies, marketing agency, seotools',
+    imgAlt: 'SEO firms B2B industrial website - SEO optimization companies case study',
+    imgTitle: 'Search engine optimisation companies project for Staniax - marketing agency results',
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
 - Start od zerowej widoczności → 2,8 tys. wyświetleń i gwałtowny skokowy wzrost do ok. 100 wyświetleń dziennie.
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
@@ -86,8 +86,8 @@ const realizedWebsites = [
       image: '/projects/company-for-seo-search-engine-optimization-company-aisas.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'company for SEO, search engine optimization company',
-    imgTitle: 'company for SEO, search engine optimization company',
+    imgAlt: 'Search engine optimization company fintech platform - seotools driven growth',
+    imgTitle: 'SEO company for fintech - search engine optimization company results',
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
 - Skok od 0 do 4,8 tys. wyświetleń w kwartale (+8 113,8%) i wzrost w ostatnich 28 dniach o 244,7% (do 500 wyświetleń dziennie).
 - Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 — krok od TOP 20), „best futures trading platforms” (pozycja 61).

@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Content & SEO Optimization Services for Agencies, Digital Marketing and Search Engine Optimisation Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
-  description: locale === 'en' ? 'Top SEO optimization and search engine marketing agency for agencies. We offer expert search engine optimisation, SEO digital marketing, and content in marketing services.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
+  title: locale === 'en' ? 'SEO Optimization Services for Companies & Digital Marketing Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
+  description: locale === 'en' ? 'Expert SEO optimization service and search engine marketing for B2B companies. We offer content marketing strategy and SEO digital marketing to drive sustainable organic growth.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
@@ -69,8 +69,8 @@ const portfolioCases = [
     descriptionEn: 'Topic Clusters strategy for an online store powered by our <strong>seo optimization service</strong>. A model eliminating keyword cannibalization and lowering Customer Acquisition Cost (CAC).',
     image: '/images/unsplash-1533134486753-c833f0ed4866.jpg',
     imageEn: '/images/content-in-marketing-seo-agency.jpg',
-    imgAltEn: 'seo company agency for companies content in marketing',
-    imgTitleEn: 'seo company agency optimization marketing firms content in marketing',
+    imgAltEn: 'Content in marketing strategy for SEO company growth',
+    imgTitleEn: 'SEO company content marketing optimization results',
     metric: '-58%',
     metricLabel: 'Obniżenie kosztu pozyskania (CAC)',
     metricLabelEn: 'CAC Reduction',
@@ -105,8 +105,8 @@ const portfolioCases = [
     descriptionEn: 'Positioning highly competitive keywords with the highest purchase intent globally, driving steady MRR growth.',
     image: '/images/unsplash-1557264322-b44d383a2906.jpg',
     imageEn: '/images/search-engine-optimisation-seo-and-digital-marketing-services.jpg',
-    imgAltEn: 'search engine optimisation seo and digital marketing seo services',
-    imgTitleEn: 'search engine optimisation seo and digital marketing services expert team working',
+    imgAltEn: 'Search engine optimisation and digital marketing SEO services dashboard',
+    imgTitleEn: 'Search engine optimisation SEO digital marketing services results',
     metric: '+140%',
     metricLabel: 'Skok przychodów (MRR)',
     metricLabelEn: 'MRR Jump',

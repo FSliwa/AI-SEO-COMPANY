@@ -317,7 +317,7 @@ export default function SeoLokalneWarszawaPage() {
         <Pricing />
 
         {/* FAQ Section */}
-        <AppleFaq faqData={faqData} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : <>Local Search Engine Optimization FAQs<span style={{ display: 'block', fontSize: '1rem', fontWeight: 400, color: '#6E6E73', marginTop: '0.5rem', letterSpacing: 'normal' }}>Provided by our Local SEO Company, Companies, Agency, Services & Firms Near Me</span></>} />
+        <AppleFaq faqData={faqData} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : "Local Search Engine Optimization FAQs"} />
 
         <Contact />
       </main>
