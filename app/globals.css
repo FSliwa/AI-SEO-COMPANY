@@ -2408,7 +2408,7 @@ section {
 @media (min-width: 768px) {
   .hero-seo-h1 {
     position: absolute;
-    top: 38%;
+    top: 41%;
     right: 2vw;
     text-align: right;
     max-width: 45%;
@@ -2418,6 +2418,6 @@ section {
 
 @media (min-width: 1200px) {
   .hero-seo-h1 {
-    top: 38%;
+    top: 41%;
   }
 }
