@@ -2392,7 +2392,7 @@ section {
 
 .hero-seo-h1 {
   font-family: var(--font-inter), 'Inter', sans-serif;
-  font-size: clamp(0.65rem, 1vw, 0.85rem);
+  font-size: clamp(1rem, 2vw, 1.6rem);
   color: rgba(255, 255, 255, 0.45);
   font-weight: 400;
   letter-spacing: 0.15em;
@@ -2408,8 +2408,8 @@ section {
 @media (min-width: 768px) {
   .hero-seo-h1 {
     position: absolute;
-    top: 39%;
-    right: 2vw;
+    top: 12%;
+    right: 12vw;
     text-align: right;
     max-width: 45%;
     margin: 0;
@@ -2418,6 +2418,6 @@ section {
 
 @media (min-width: 1200px) {
   .hero-seo-h1 {
-    top: 39%;
+    top: 12%;
   }
 }
