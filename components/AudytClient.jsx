@@ -31,7 +31,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : <><span className="sr-only">SEO Keyword Analysis, Search Engine Optimization & Optimisation Consultancy / Consultants - </span>SEO Audit & Optimization</>}
+              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : 'SEO Keyword Analysis & Search Engine Optimisation Consultancy'}
             </h1>
 
             <div style={{ 
@@ -107,7 +107,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 1' : 'AREA 1'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technikalia & CWV' : 'Technicals & CWV'}</h3>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technikalia & CWV' : 'SEO Consultancy'}</h3>
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots.'}</p>
             </RevealItem>
             
@@ -134,7 +134,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
       />
 
       {/* FAQ Section */}
-      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : <><span className="sr-only">SEO Keyword Analysis, Search Engine Optimization & Optimisation Consultancy / Consultants - </span>Frequently Asked Questions</>} />
+      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Search Engine Optimization Consultants FAQs"} />
 
       <Contact />
     </main>
