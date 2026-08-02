@@ -106,7 +106,7 @@ const portfolioCases = [
     image: '/images/unsplash-1557264322-b44d383a2906.jpg',
     imageEn: '/images/search-engine-optimisation-seo-digital-marketing.jpg',
     imgAltEn: 'search engine optimisation seo and digital marketing seo',
-    imgTitleEn: 'seo digital marketing expert team working',
+    imgTitleEn: 'search engine optimisation seo digital marketing expert team working',
     metric: '+140%',
     metricLabel: 'Skok przychodów (MRR)',
     metricLabelEn: 'MRR Jump',

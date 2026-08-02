@@ -127,8 +127,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 3' : 'STEP 3'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
-                {lang === 'pl' ? 'Link Building' : 'Search Optimisation Agency, SEO Optimization Service & SEO Services SEO'}
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text-main)', marginBottom: '0.75rem' }}>
+                3. Search Optimisation Agency & Optimization Service
               </h3>
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.' : 'We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain.'}
@@ -140,7 +140,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <SubpagePortfolio 
         title={lang === 'pl' ? "Scenariusze Wzrostu i Wyniki" : "Growth Scenarios and Results"} 
-        subtitle={lang === 'pl' ? "Sprawdzone wzorce skalowania widoczności i konwersji w modelu AI SEO" : "Proven patterns of visibility and conversion scaling in the AI SEO model"}
+        subtitle={lang === 'pl' ? "Sprawdzone wzorce skalowania widoczności i konwersji w modelu AI SEO" : "Proven patterns of visibility and conversion scaling in the AI Optimization model"}
         cases={portfolioCases} 
         layout="vertical"
       />
@@ -150,7 +150,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
               <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
-                Search Engine Optimization Marketing & SEO Search Engine Optimization
+                Search Engine Optimization Marketing & Search Engine Optimization
               </h2>
               <p style={{ fontSize: '1.1rem', color: '#6E6E73' }}>
                 Advanced search optimization services tailored for B2B.
@@ -159,18 +159,18 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                  SEO Marketing Digital & Content In Marketing
+                  Search Marketing Digital & Content In Marketing
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                  Our approach to seo and marketing ensures that every piece of content drives traffic. We specialize in seo for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency</strong> and a premium seo optimization agency, our content in marketing is unparalleled. If you need search engine marketing, we are the right search optimization agency.
+                  Our approach to search engine marketing ensures that every piece of content drives traffic. We specialize in digital marketing for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency</strong>, our content in marketing is unparalleled. If you need true optimisation, we are the right search optimization agency. Our search engine optimisation experts will guide you.
                 </p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                  SEO Search Engine Expertise
+                  Search Engine Expertise
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                  We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive and seo services designed for sustainable growth. Choose our seo optimization agency for top search engine marketing results. We are the leading search optimization agency for B2B.
+                  We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive optimisation services designed for sustainable growth. Choose our optimization agency for top search engine marketing results. We are the leading search engine optimisation agency for B2B, dedicated to your long-term optimisation.
                 </p>
               </RevealItem>
             </RevealStagger>
@@ -180,7 +180,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <Pricing />
 
-      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Search Optimization Agency & SEO Digital Marketing FAQs"} />
+      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Search Optimization Agency & Digital Marketing FAQs"} />
 
       <Contact />
     </main>
