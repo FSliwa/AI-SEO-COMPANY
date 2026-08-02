@@ -6,9 +6,13 @@ export default function BlogSeoText() {
   const locale = useLocale();
 
   return (
-    <section className="sr-only">
-      <div>
-        {locale === 'en' ? (
+    <section className="container" style={{ padding: '2rem 0' }}>
+      <details style={{ background: '#F9F9FB', borderRadius: '16px', padding: '1.5rem', cursor: 'pointer' }}>
+        <summary style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1D1D1F', listStyle: 'none', margin: 0 }}>
+          {locale === 'en' ? 'Explore our SEO Knowledge Base & Strategies' : 'Rozwiń bazę wiedzy o pozycjonowaniu i projektowaniu'}
+        </summary>
+        <div style={{ marginTop: '2rem', cursor: 'text' }}>
+          {locale === 'en' ? (
           <div style={{ color: '#333336', fontSize: '1.05rem', lineHeight: '1.8' }}>
             <h2 style={{ color: '#1D1D1F', fontSize: '2rem', marginBottom: '1.5rem', fontWeight: '700' }}>Articles by a top company for SEO and Web Design</h2>
             <p style={{ marginBottom: '1.5rem' }}>
@@ -47,7 +51,8 @@ export default function BlogSeoText() {
             </p>
           </div>
         )}
-      </div>
+        </div>
+      </details>
     </section>
   );
 }

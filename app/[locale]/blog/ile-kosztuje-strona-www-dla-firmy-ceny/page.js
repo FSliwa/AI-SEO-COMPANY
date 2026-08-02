@@ -364,7 +364,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 </table>
               </div>
 
-              <p>The <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ai-seo-company<span className="sr-only"> Agency</span></Link> package includes design in Next.js and React technologies, which deliver better Core Web Vitals than standard WordPress, directly translating into Google rankings and advertising costs. It also includes CRM and payment system integrations, a technical SEO audit as part of implementation, and the option of a monthly SEO subscription after the website launches.</p>
+              <p>The <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ai-seo-company Agency</Link> package includes design in Next.js and React technologies, which deliver better Core Web Vitals than standard WordPress, directly translating into Google rankings and advertising costs. It also includes CRM and payment system integrations, a technical SEO audit as part of implementation, and the option of a monthly SEO subscription after the website launches.</p>
               
               <p>A freelancer is a good choice when you have a limited budget, a simple project, and time to manage the process yourself. A small agency offers more structure and usually better graphic design, but rarely provides advanced technical and SEO competencies in one place. Full-service makes sense when the website is meant to directly generate revenue and every week of delay or every percentage point of conversion has measurable value.</p>
 
