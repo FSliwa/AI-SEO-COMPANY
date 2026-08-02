@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Keyword Analysis & Search Engine Optimization Consultancy' : 'Audyt SEO | Analiza i Optymalizacja SEO',
+  title: locale === 'en' ? 'Search Engine Optimisation Consultancy, SEO Keyword Analysis & Optimization' : 'Audyt SEO | Analiza i Optymalizacja SEO',
   description: locale === 'en' ? 'Looking for expert search engine optimization consultants? Get professional seo keyword analysis and comprehensive search engine optimisation consultancy.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-audit' : 'https://www.ai-seo-company.pl/audyt-seo',
@@ -138,6 +138,9 @@ const auditPortfolioCases = [
     description: 'Wykrycie masowych przyrostów spamu i toksycznych domen odsyłających z filtrem depozycjonującym. Konieczność wdrożenia procedury Disavow Tool.',
     descriptionEn: 'Detection of massive spam spikes and toxic referring domains with a demotion filter. Necessitates implementing the Disavow Tool procedure through <strong>seo consultancy</strong>.',
     image: '/images/unsplash-1602536052359-ef94c21c5948.jpg',
+    imageEn: '/images/search-engine-optimisation-consultancy.jpg',
+    imgAltEn: 'search engine optimisation consultancy and optimization',
+    imgTitleEn: 'expert search engine optimisation consultancy and optimization',
     gradient: 'linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #EA580C 100%)',
     metric: '0',
     metricLabel: 'Toksycznych linków',

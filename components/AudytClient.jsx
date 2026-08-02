@@ -31,7 +31,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : 'SEO Keyword Analysis & Search Engine Optimisation Consultancy'}
+              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : 'Search Engine Optimisation Consultancy, SEO Keyword Analysis & Optimization'}
             </h1>
 
             <div style={{ 
@@ -68,7 +68,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
             }}>
               {lang === 'pl' 
                 ? <>Odkryj prawdziwe przyczyny braku widoczności. <span style={{ color: 'var(--color-cta)' }}>Nasz profesjonalny <span style={{ fontWeight: 'bold' }}>audyt SEO</span> weryfikuje ponad 50 krytycznych czynników technicznych, które blokują Twój potencjał w Google</span>.</>
-                : <>Discover the real reasons for your lack of visibility. As top <span style={{ fontWeight: 'bold' }}>Search Engine Optimization Consultants</span> providing expert <span style={{ fontWeight: 'bold' }}>SEO Consultancy</span>, <span style={{ color: 'var(--color-cta)' }}>we verify over 50 critical technical factors blocking your Google potential</span>.</>}
+                : <>Discover the real reasons for your lack of visibility. As top <strong>search engine optimization consultants</strong> providing expert <strong>search engine optimisation consultancy</strong>, <span style={{ color: 'var(--color-cta)' }}>we verify over 50 critical technical factors blocking your Google potential</span>.</>}
             </p>
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
@@ -107,8 +107,8 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 1' : 'AREA 1'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technikalia & CWV' : 'SEO Consultancy'}</h3>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots.'}</p>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technikalia & CWV' : 'Search Engine Optimization and Optimisation Consultancy'}</h3>
+              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots. Expert search engine optimisation consultancy and optimization applied.'}</p>
             </RevealItem>
             
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
