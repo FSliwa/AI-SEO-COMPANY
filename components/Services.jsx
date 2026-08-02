@@ -46,7 +46,7 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Identity by top SEO Firms'}</h3>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Identity by top SEO Firms & Search Engine Optimisation Agencies'}</h3>
             <p>{lang === 'pl' 
               ? 'Projektujemy spójną tożsamość wizualną: logo, system kolorystyczny, typografię oraz kompletną księgę znaku dostosowaną do wymagań cyfrowych.' 
               : 'We design cohesive visual identities: logo systems, color palettes, typography, and comprehensive digital brand guidelines.'
@@ -103,7 +103,7 @@ export default function Services() {
             <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Organic Search Optimization & Optimisation, Marketing Growth using seotools'}</h3>
             <p>{lang === 'pl'
               ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
-              : <>High-impact search engine positioning, local <span style={{ fontWeight: 'bold' }}>SEO services</span>, technical <span style={{ fontWeight: 'bold' }}>SEO optimization service</span>, and strategic content in marketing using seotools driving stable organic growth for your brand.</>
+              : <>High-impact search engine positioning, local <span style={{ fontWeight: 'bold' }}>SEO services</span>, technical <span style={{ fontWeight: 'bold' }}>SEO optimization service</span>, and strategic content in marketing using seotools driving stable organic growth for your brand. We are recognized among top <strong>search engine optimisation companies</strong>.</>
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (
