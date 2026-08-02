@@ -2401,23 +2401,23 @@ section {
   text-transform: uppercase;
   width: 100%;
   max-width: 800px;
-  line-height: 1.5;
+  line-height: 2;
   z-index: 10;
 }
 
 @media (min-width: 768px) {
   .hero-seo-h1 {
     position: absolute;
-    top: 12%;
+    top: 11%;
     right: 12vw;
     text-align: right;
-    max-width: 45%;
+    max-width: 50%;
     margin: 0;
   }
 }
 
 @media (min-width: 1200px) {
   .hero-seo-h1 {
-    top: 12%;
+    top: 11%;
   }
 }

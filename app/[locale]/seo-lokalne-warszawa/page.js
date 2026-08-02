@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'Local SEO Agency, Companies & Search Engine Optimization Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
-  description: locale === 'en' ? 'Looking for local search engine optimization companies or seo near me? We are a top seo agency, firm, and services company offering local seo.' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
+  description: locale === 'en' ? 'Expert local search engine optimization agency helping businesses rank higher in Google Maps. If you need SEO near me, our team delivers proven local SEO results.' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
     languages: {
@@ -271,39 +271,37 @@ export default function SeoLokalneWarszawaPage() {
           </div>
         </section>
 
-        {/* EN Exact Match Section */}
-        {lang === 'en' && (
-          <section style={{ padding: '80px 0', background: '#F5F5F7' }}>
+        {/* Local SEO Strategy Section */}
+        <section style={{ padding: '80px 0', background: '#F5F5F7' }}>
             <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
               <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
                 <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
-                  Local Search Engine Optimization
+                  {lang === 'pl' ? 'Lokalna Optymalizacja Wyszukiwarek' : 'Local Search Engine Optimization'}
                 </h2>
                 <p style={{ fontSize: '1.1rem', color: '#6E6E73' }}>
-                  Advanced strategies for businesses looking for local seo solutions.
+                  {lang === 'pl' ? 'Zaawansowane strategie dla firm szukających lokalnych rozwiązań SEO.' : 'Advanced strategies for businesses looking for local SEO solutions.'}
                 </p>
               </Reveal>
               <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                    SEO Company Near Me
+                    {lang === 'pl' ? 'Firma SEO w Twojej Okolicy' : 'SEO Company Near Me'}
                   </h3>
                   <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                    Finding a reliable partner is crucial. If you are searching for seo near me, we provide expert strategies to dominate your local market.
+                    {lang === 'pl' ? 'Znalezienie wiarygodnego partnera jest kluczowe. Zapewniamy eksperckie strategie dominacji na lokalnym rynku, trafiając do klientów szukających usług w Twojej okolicy.' : 'Finding a reliable partner is crucial. If you are searching for SEO near me, we provide expert strategies to dominate your local market.'}
                   </p>
                 </RevealItem>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                    Top SEO Near Me
+                    {lang === 'pl' ? 'Najlepsze Lokalne SEO' : 'Top SEO Near Me'}
                   </h3>
                   <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                    We ensure your business ranks highly in map packs and organic results. Benefit from our dedicated local seo services tailored for your area.
+                    {lang === 'pl' ? 'Gwarantujemy, że Twoja firma zajmie wysokie pozycje w mapach i wynikach organicznych. Skorzystaj z naszych dedykowanych usług lokalnego SEO dopasowanych do Twojego obszaru.' : 'We ensure your business ranks highly in map packs and organic results. Benefit from our dedicated local SEO services tailored for your area.'}
                   </p>
                 </RevealItem>
               </RevealStagger>
             </div>
           </section>
-        )}
 
         {/* Portfolio Section */}
         <SubpagePortfolio 
