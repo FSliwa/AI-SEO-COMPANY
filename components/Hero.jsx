@@ -52,25 +52,10 @@ export default function Hero() {
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
         >
           <div style={{ position: 'relative', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '1400px' }}>
-            <h1 style={{ 
-              fontFamily: 'var(--font-inter), "Inter", sans-serif',
-              fontSize: 'clamp(0.65rem, 1vw, 0.85rem)', 
-              color: 'rgba(255, 255, 255, 0.45)', 
-              fontWeight: 400, 
-              letterSpacing: '0.15em', 
-              textAlign: 'right', 
-              position: 'absolute',
-              top: 0,
-              right: '2vw',
-              margin: 0, 
-              textTransform: 'uppercase',
-              maxWidth: '40%',
-              lineHeight: 1.5,
-              zIndex: 10
-            }}>
+            <h1 className="hero-seo-h1">
               {lang === 'en' 
-                ? 'SEO, Marketing Agency & Firms for Companies: Search Engine Optimization Company & Optimisation Agencies using seotools'
-                : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'}
+                ? 'Premium SEO & Marketing Agency for Companies. Advanced Search Engine Optimization & Growth.'
+                : 'Kompleksowa Agencja SEO i Marketingowa z Warszawy. Skuteczne Pozycjonowanie i Projektowanie Stron.'}
             </h1>
             <img 
               src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 

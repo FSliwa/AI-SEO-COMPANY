@@ -2389,3 +2389,35 @@ section {
     animation: heroLcpPop 0.8s ease-out forwards;
   }
 }
+
+.hero-seo-h1 {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(0.65rem, 1vw, 0.85rem);
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  width: 100%;
+  max-width: 800px;
+  line-height: 1.5;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .hero-seo-h1 {
+    position: absolute;
+    top: 2rem;
+    right: 2vw;
+    text-align: right;
+    max-width: 45%;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-seo-h1 {
+    top: 3rem;
+  }
+}
