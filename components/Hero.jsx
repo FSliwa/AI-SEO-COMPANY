@@ -61,10 +61,10 @@ export default function Hero() {
               src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 
               alt={lang === 'en' 
                 ? 'SEO for companies' 
-                : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'} 
+                : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie Stron i Projektowanie'} 
               title={lang === 'en' 
                 ? 'SEO for companies' 
-                : 'Agencja SEO, Agencja Marketingowa Warszawa: Pozycjonowanie Stron, Projekt, Strony i Wzrost'}
+                : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie Stron i Projektowanie'}
               width={1600}
               height={294}
               fetchPriority="high"

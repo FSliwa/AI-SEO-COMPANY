@@ -65,7 +65,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Zaufanie klientów przed zakupem' : 'Client trust before purchase',
       description: lang === 'pl' 
         ? 'Statystyki jasno pokazują, że 81% klientów musi w pełni zaufać marce na podstawie jej wizerunku w sieci, zanim podejmie decyzję o zakupie. Nasz rygorystyczny proces projektowy UI/UX buduje u odbiorców poczucie bezpieczeństwa, co drastycznie zwiększa współczynnik konwersji i generuje więcej zapytań ofertowych.'
-        : <>Partnering with a professional <strong>SEO company</strong> is a critical step for growth. We are recognized among the leading <strong>search engine optimisation companies</strong> because we deliver measurable results. When providing <strong>seo for companies</strong>, our rigorous UI/UX design process instills immediate confidence. Furthermore, we operate as a full-stack <strong>marketing agency</strong> leveraging advanced <strong>seotools</strong> for data-driven precision. Unlike other <strong>SEO firms</strong>, we bridge the gap between design and search performance, maximizing your ROI with cutting-edge seotools.</>,
+        : 'Partnering with a professional SEO company and marketing agency is a critical step for growth. Our rigorous UI/UX design process instills immediate confidence, dramatically increasing conversion rates and generating more qualified inquiries.',
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -75,7 +75,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Wzrost rozpoznawalności firmy' : 'Significant brand recall boost',
       description: lang === 'pl'
         ? 'Profesjonalny branding to kluczowe narzędzie sprzedażowe. Tworzymy unikalne, spójne systemy wizualne i nowoczesną architekturę designu, która zwiększa zapamiętywalność marki o 80%. Dzięki temu Twoja firma jednoznacznie wyróżnia się na tle konkurencji, budując pozycję lidera.'
-        : <>Professional branding is a critical sales tool. Unlike other <strong>SEO firms</strong>, <strong>SEO optimization companies</strong>, and typical <strong>search engine optimization companies</strong> or <strong>search engine optimization agencies</strong>, we operate as a full-stack <strong>marketing agency</strong> leveraging advanced <strong>seotools</strong>. We develop unique, cohesive visual systems and modern design architectures that increase brand recall by 80%. This ensures your company stands out definitively from competitors, establishing a strong leadership position in your industry.</>,
+        : 'Professional branding is a critical sales tool. Recognized among leading search engine optimisation companies, we leverage advanced seotools to develop unique, cohesive visual systems that increase brand recall by 80%, ensuring your company stands out definitively from competitors.',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -85,7 +85,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Średni wzrost przychodów' : 'Average revenue increase',
       description: lang === 'pl'
         ? 'Sama obecność w sieci to za mało. Łączymy zaawansowane pozycjonowanie SEO z psychologią konwersji, aby zmaksymalizować Twoje zyski. Zastosowanie premium designu na wszystkich etapach ścieżki klienta przekłada się na udokumentowany średni wzrost przychodów firmy o 23%.'
-        : "Merely being online is not enough in today's fiercely competitive digital landscape. As one of the best <strong>seo firms</strong>, we effectively combine advanced SEO methodologies with deep conversion psychology to maximize your ROI. Implementing a consistent, premium design architecture across the entire customer journey builds unparalleled trust. For our partners, this comprehensive approach directly translates to a documented average revenue increase of 23%, ensuring long-term financial stability.",
+        : 'Merely being online is not enough. Unlike traditional SEO firms, we provide SEO for companies that combines advanced optimization with conversion psychology, translating to a documented average revenue increase of 23% for our partners.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -95,7 +95,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Dynamiczny wzrost wartościowego ruchu' : 'Dynamic high-intent traffic growth',
       description: lang === 'pl'
         ? 'Optymalizujemy intencjonalne frazy komercyjne, dostarczając klientów z Google gotowych do zakupu.'
-        : 'We meticulously optimize for highly targeted commercial keywords that carry the highest purchase intent, driving qualified buyers directly from Google who are ready to convert immediately. By analyzing deep search behavior and competitor gaps, we construct a resilient visibility moat around your brand. This strategic positioning ensures that you capture the most valuable market share, consistently turning organic traffic into loyal, long-term business partners.',
+        : 'We meticulously optimize for high-intent commercial keywords. As one of the top SEO optimization companies, we drive qualified buyers directly from Google who are ready to convert immediately, constructing a resilient visibility moat around your brand and capturing the most valuable market share.',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -105,7 +105,7 @@ export default function WhyUs() {
       title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google' : 'Lightning performance & Google score',
       description: lang === 'pl'
         ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum.'
-        : 'We completely eliminate frustrating loading delays, serving split-second, highly optimized web pages that drastically reduce user bounce rates. By implementing advanced caching strategies, next-generation image formats, and streamlined code architectures, we ensure your site passes all Core Web Vitals assessments with flying colors. This uncompromising approach to technical excellence guarantees a frictionless user experience and rewards you with superior Google rankings.',
+        : 'Trusted by businesses and search engine optimization agencies alike, we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures ensure your site passes all Core Web Vitals with flying colors.',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];

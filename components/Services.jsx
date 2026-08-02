@@ -46,10 +46,10 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy by Search Engine Optimisation Agencies'}</h3>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Visual Identity'}</h3>
             <p>{lang === 'pl' 
               ? 'Projektujemy spójną tożsamość wizualną: logo, system kolorystyczny, typografię oraz kompletną księgę znaku dostosowaną do wymagań cyfrowych.' 
-              : <>As a comprehensive <strong>marketing agency</strong>, we design cohesive visual identities: logo systems, color palettes, typography, and comprehensive digital brand guidelines.</>
+              : <>Trusted by <strong>search engine optimisation agencies</strong> worldwide, we design cohesive visual identities: logo systems, color palettes, typography, and comprehensive digital brand guidelines.</>
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (
@@ -73,10 +73,10 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Projektowanie stron i sklepów internetowych' : 'Web Design & E-Commerce by our Marketing Agency'}</h3>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Projektowanie stron i sklepów internetowych' : 'Web Design & E-Commerce Development'}</h3>
             <p>{lang === 'pl'
               ? 'Tworzymy responsywne, niezwykle szybkie strony internetowe (UX/UI), zoptymalizowane pod najwyższe współczynniki konwersji i estetykę premium.'
-              : 'We engineer responsive, high-speed websites (UX/UI), optimized for top conversion rates and premium aesthetic appeal.'
+              : 'As a full-service marketing agency, we engineer responsive, high-speed websites (UX/UI), optimized for top conversion rates and premium aesthetic appeal.'
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (
@@ -100,10 +100,10 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Organic Search Optimization & Optimisation'}</h3>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Growth Marketing & Search Optimization'}</h3>
             <p>{lang === 'pl'
               ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
-              : <>High-impact search engine positioning, local <span style={{ fontWeight: 'bold' }}>SEO services</span>, technical <span style={{ fontWeight: 'bold' }}>SEO optimization service</span>, and strategic content in marketing driving stable marketing growth using seotools for your brand. We are recognized among top <strong>search engine optimisation companies</strong>.</>
+              : <>High-impact search engine positioning, local <span style={{ fontWeight: 'bold' }}>SEO services</span>, and technical <span style={{ fontWeight: 'bold' }}>SEO optimization service</span> driving stable growth. We are recognized among top <strong>search engine optimization companies</strong>.</>
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (
