@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Optimization Services, Digital Marketing and Search Engine Optimisation Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
+  title: locale === 'en' ? 'Content & SEO Optimization Services, Digital Marketing and Search Engine Optimisation Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
   description: locale === 'en' ? 'Top SEO optimization and search engine marketing agency. We offer expert search engine optimisation, SEO digital marketing, and content in marketing services.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
@@ -68,9 +68,9 @@ const portfolioCases = [
     description: 'Strategia Topic Clusters dla sklepu internetowego. Model eliminujący kanibalizację słów kluczowych i obniżający koszt pozyskania klienta (CAC).',
     descriptionEn: 'Topic Clusters strategy for an online store powered by our <strong>seo optimization service</strong>. A model eliminating keyword cannibalization and lowering Customer Acquisition Cost (CAC).',
     image: '/images/unsplash-1533134486753-c833f0ed4866.jpg',
-    imageEn: '/images/search-optimization-agency-seo-digital-marketing.jpg',
-    imgAltEn: 'seo optimization agency growth chart',
-    imgTitleEn: 'seo optimization agency performance metrics',
+    imageEn: '/images/content-in-marketing-seo-agency.jpg',
+    imgAltEn: 'seo company agency for companies content in marketing',
+    imgTitleEn: 'seo company agency optimization marketing firms content in marketing',
     metric: '-58%',
     metricLabel: 'Obniżenie kosztu pozyskania (CAC)',
     metricLabelEn: 'CAC Reduction',
