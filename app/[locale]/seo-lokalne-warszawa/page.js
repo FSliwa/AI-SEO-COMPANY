@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Local Search Engine Optimization & Local SEO Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
-  description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
+  title: locale === 'en' ? 'Local SEO Agency, Company & Search Engine Optimization Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
+  description: locale === 'en' ? 'Looking for local search engine optimization companies or seo near me? We are a top seo agency, firm, and services company offering local seo.' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
     languages: {
@@ -176,7 +176,7 @@ export default function SeoLokalneWarszawaPage() {
                 marginBottom: '1rem', 
                 letterSpacing: '-0.04em'
               }}>
-                {lang === 'pl' ? 'SEO i pozycjonowanie lokalne Warszawa' : <><span className="sr-only">Local Search Engine Optimization & SEO Company Near Me - </span>Local SEO Warsaw</>}
+                {lang === 'pl' ? 'SEO i pozycjonowanie lokalne Warszawa' : <><span className="sr-only">Local Search Engine Optimization Companies, SEO Agency, Services & Firms Near Me - </span>Local SEO Warsaw</>}
               </h1>
 
               <div style={{ 
