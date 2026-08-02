@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Local SEO & Search Engine Optimization | Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
+  title: locale === 'en' ? 'Local SEO & Local Search Engine Optimization | Company Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
   description: locale === 'en' ? 'Looking for local search engine optimization or seo near me? We are a leading seo company near me and seo agency near me offering local seo. Compare seo' : 'Skuteczne pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google (Google Profil Firmy), zdobądź klientów z Twojej okolicy i wyprzedź',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
@@ -42,7 +42,7 @@ const faqData = [
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
     questionEn: 'How does local SEO differ from traditional SEO?',
     answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów.',
-    answerEn: '<strong>Local SEO</strong> focuses on the "Local Pack"—results from Google Maps—and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
+    answerEn: '<strong>Local SEO</strong> (or <strong>local search engine optimization</strong>) focuses on the "Local Pack"—results from Google Maps—and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
   }
 ];
 
@@ -56,7 +56,7 @@ const portfolioCases = [
     descriptionEn: 'We configure your Google listing from A to Z. We implement the right keywords, precise categories, and a post system that attracts customers browsing Maps in Warsaw.',
     image: '/images/pozycjonowanie-lokalne-warszawa.jpg',
     imgAlt: 'Pozycjonowanie lokalne',
-    imgAltEn: 'Local SEO Warsaw',
+    imgAltEn: 'Local search engine optimization in Warsaw',
     imgTitle: 'Pozycjonowanie lokalne',
     imgTitleEn: 'Local SEO Company',
     gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
@@ -283,7 +283,7 @@ export default function SeoLokalneWarszawaPage() {
         <Pricing />
 
         {/* FAQ Section */}
-        <AppleFaq faqData={faqData} title="Często zadawane pytania (Lokalne SEO)" />
+        <AppleFaq faqData={faqData} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : "Local Search Engine Optimization FAQs"} />
 
         <Contact />
       </main>
