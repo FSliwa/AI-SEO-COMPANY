@@ -295,7 +295,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     justifyContent: 'center'
                   }}>
                     <Image 
-                      src={c.image} 
+                      src={lang === 'pl' ? c.image : (c.imageEn || c.image)} 
                       alt={lang === 'pl' ? (c.imgAlt || c.title || 'Realizacja SEO') : (c.imgAltEn || c.titleEn || c.imgAlt || c.title || 'SEO Case Study')}
                       title={lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title)}
                       fill

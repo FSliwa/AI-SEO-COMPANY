@@ -31,7 +31,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : 'Search Engine Optimisation Consultancy, SEO Keyword Analysis & Optimization Consultants'}
+              {lang === 'pl' ? 'Audyt i Optymalizacja SEO' : 'Search Engine Optimization Consultants, Optimisation Consultancy & SEO Keyword Analysis'}
             </h1>
 
             <div style={{ 
