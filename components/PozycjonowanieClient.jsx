@@ -30,7 +30,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'Content & SEO Optimization Services, Digital Marketing and Search Engine Optimisation Agency'}
+              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'Content & SEO Optimization Services for Agencies, Digital Marketing and Search Engine Optimisation Agency'}
             </h1>
 
             <div style={{ 
@@ -158,10 +158,10 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                  Search Marketing Digital & Content In Marketing Services
+                  Search Marketing Digital & Content In Marketing Services for Agencies
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                  Our approach to search engine marketing ensures that every piece of content in marketing drives traffic. We specialize in SEO digital marketing for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency, SEO digital marketing expert and content in marketing specialist</strong>, our content in marketing is unparalleled. If you need true optimisation, we are the right search optimization agency providing the best SEO optimization service. Our search engine optimisation experts will guide you.
+                  Our approach to search engine marketing ensures that every piece of content in marketing drives traffic. We specialize in SEO digital marketing for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency, SEO digital marketing expert and content in marketing specialist</strong>, our content in marketing is unparalleled. If you need true optimisation, we are the right search optimization agency providing the best SEO optimization service, especially SEO for agencies. Our search engine optimisation experts will guide you.
                 </p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>

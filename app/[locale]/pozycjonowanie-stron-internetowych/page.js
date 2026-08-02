@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Content & SEO Optimization Services, Digital Marketing and Search Engine Optimisation Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
-  description: locale === 'en' ? 'Top SEO optimization and search engine marketing agency. We offer expert search engine optimisation, SEO digital marketing, and content in marketing services.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
+  title: locale === 'en' ? 'Content & SEO Optimization Services for Agencies, Digital Marketing and Search Engine Optimisation Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
+  description: locale === 'en' ? 'Top SEO optimization and search engine marketing agency for agencies. We offer expert search engine optimisation, SEO digital marketing, and content in marketing services.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
@@ -86,9 +86,9 @@ const portfolioCases = [
     description: 'Model pozycji dla sieci wielooddziałowych na ponad 20 miast w Polsce dzięki zoptymalizowanej strukturze podstron oraz wizytówek profilu Google.',
     descriptionEn: 'Ranking model for multi-branch networks across 20+ cities in Poland thanks to optimized subpage structures and Google Business Profiles.',
     image: '/images/unsplash-1710438399422-2fca27686bcd.jpg',
-    imageEn: '/images/seo-search-engine-optimization-services.jpg',
-    imgAltEn: 'search engine marketing and local seo optimization',
-    imgTitleEn: 'search engine marketing strategies for businesses',
+    imageEn: '/images/seo-for-agencies.jpg',
+    imgAltEn: 'search engine marketing and local seo optimization for agencies',
+    imgTitleEn: 'search engine marketing strategies for agencies businesses',
     metric: '+280%',
     metricLabel: 'Wzrost zapytań lokalnych',
     metricLabelEn: 'Local Inquiries Growth',
