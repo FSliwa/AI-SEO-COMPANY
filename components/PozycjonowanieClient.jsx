@@ -30,7 +30,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'Search Engine Marketing, SEO Optimization & Optimisation Agency'}
+              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'SEO Optimization, Digital Marketing & Search Engine Optimisation Agency'}
             </h1>
 
             <div style={{ 
@@ -161,7 +161,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                   Search Marketing Digital & Content In Marketing
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                  Our approach to search engine marketing ensures that every piece of content drives traffic. We specialize in digital marketing for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency</strong>, our content in marketing is unparalleled. If you need true optimisation, we are the right search optimization agency. Our search engine optimisation experts will guide you.
+                  Our approach to search engine marketing ensures that every piece of content drives traffic. We specialize in SEO digital marketing for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency and SEO digital marketing expert</strong>, our content in marketing is unparalleled. If you need true optimisation, we are the right search optimization agency. Our search engine optimisation experts will guide you.
                 </p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
