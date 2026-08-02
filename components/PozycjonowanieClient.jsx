@@ -115,7 +115,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 2' : 'STEP 2'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
-                {lang === 'pl' ? 'Content Marketing' : 'Search Engine Optimisation SEO & Digital Marketing SEO'}
+                {lang === 'pl' ? 'Content Marketing' : 'Digital Marketing SEO & Search Engine Optimisation Strategies'}
               </h3>
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' 
@@ -127,7 +127,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 3' : 'STEP 3'}</div>
               <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text-main)', marginBottom: '0.75rem' }}>
-                3. Search Optimisation Agency & Optimization Service
+                3. Search Optimisation Agency Services
               </h3>
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.' : 'We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain.'}
@@ -149,7 +149,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
               <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
-                Search Engine Optimization Marketing & Search Engine Optimization
+                Search Engine Optimization Marketing Strategies & Search Engine Optimization
               </h2>
               <p style={{ fontSize: '1.1rem', color: '#6E6E73' }}>
                 Advanced search optimization services tailored for B2B.
@@ -161,7 +161,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                   Search Marketing Digital & Content In Marketing Services for Agencies
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                  Our approach to search engine marketing ensures that every piece of content in marketing drives traffic. We specialize in SEO digital marketing for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency, SEO digital marketing expert and content in marketing specialist</strong>, our content in marketing is unparalleled. If you need true optimisation, we are the right search optimization agency providing the best SEO optimization service, especially SEO for agencies. Our search engine optimisation experts will guide you.
+                  Our approach to search engine marketing ensures that every piece of content in marketing drives traffic. We specialize in SEO digital marketing for agencies, offering scalable solutions. As a trusted <strong>search optimisation agency</strong> and <strong>SEO digital marketing</strong> expert, we know how to engage your audience. Working with a dedicated <strong>content in marketing</strong> specialist ensures your content is unparalleled. If you need true optimisation, we are the right search optimization agency providing the best SEO optimization service. We specialize in SEO for agencies, and our search engine optimisation experts will guide you.
                 </p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>

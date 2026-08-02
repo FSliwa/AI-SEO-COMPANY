@@ -163,7 +163,7 @@ export default function SeoLokalneWarszawaPage() {
         <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
           <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Reveal>
-            <span className="sr-only">Search Engine Optimization - Local SEO Warsaw</span>
+            <div style={{ fontSize: '0.85rem', color: '#86868B', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>Search Engine Optimization - Local SEO Warsaw</div>
               <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
                 {lang === 'pl' ? 'MARKETING LOKALNY B2B & B2C' : 'LOCAL B2B & B2C MARKETING'}
               </div>
@@ -252,19 +252,19 @@ export default function SeoLokalneWarszawaPage() {
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 1' : 'RULE 1'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Search Engine Optimization Companies Near Me'}</h3>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Finding Search Engine Optimization Companies Near Me'}</h3>
                 <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>Over 46% of all Google searches have a local intent. Working with top <strong>seo company near me</strong> ensures clients are ready to call you. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
               </RevealItem>
               
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 2' : 'RULE 2'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Widoczność Mobilna' : 'SEO Agency & SEO Firms Near Me'}</h3>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Widoczność Mobilna' : 'Partnering with an SEO Agency & SEO Firms Near Me'}</h3>
                 <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Dominacja na urządzeniach mobilnych to klucz w branżach lokalnych (gastronomia, usługi prawne, beauty), gdzie decyzje podejmuje się "w drodze".' : 'Mobile dominance is key in local industries (gastronomy, legal services, beauty), where decisions are made on the go.'}</p>
               </RevealItem>
               
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 3' : 'RULE 3'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'Local SEO Services Near Me'}</h3>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'Utilizing Local SEO Services Near Me'}</h3>
                 <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Ruch z Map Google cechuje się jednym z najwyższych wskaźników konwersji ze wszystkich cyfrowych kanałów marketingowych.' : 'Traffic from Google Maps is characterized by one of the highest conversion rates of all digital marketing channels.'}</p>
               </RevealItem>
             </RevealStagger>
@@ -317,7 +317,7 @@ export default function SeoLokalneWarszawaPage() {
         <Pricing />
 
         {/* FAQ Section */}
-        <AppleFaq faqData={faqData} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : <><span className="sr-only">Local SEO Company, Companies, Agency, Services & Firms Near Me - </span>Local Search Engine Optimization FAQs</>} />
+        <AppleFaq faqData={faqData} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : <>Local Search Engine Optimization FAQs<span style={{ display: 'block', fontSize: '1rem', fontWeight: 400, color: '#6E6E73', marginTop: '0.5rem', letterSpacing: 'normal' }}>Provided by our Local SEO Company, Companies, Agency, Services & Firms Near Me</span></>} />
 
         <Contact />
       </main>
