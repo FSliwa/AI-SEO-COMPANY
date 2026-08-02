@@ -51,16 +51,17 @@ export default function Hero() {
           className="hero-lcp-image"
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
         >
-          <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '1400px' }}>
             <h1 style={{ 
               fontFamily: "'Inter', sans-serif",
               fontSize: 'clamp(0.65rem, 1vw, 0.85rem)', 
               color: 'rgba(255, 255, 255, 0.45)', 
               fontWeight: 400, 
               letterSpacing: '0.15em', 
-              textAlign: 'left', 
-              alignSelf: 'flex-start',
+              textAlign: 'right', 
+              alignSelf: 'flex-end',
               margin: '0 0 1rem 0', 
+              paddingRight: '2vw',
               textTransform: 'uppercase',
               maxWidth: '800px',
               lineHeight: 1.5
