@@ -31,7 +31,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : <><span className="sr-only">Search Engine Optimization, Optimisation, SEO Digital Marketing Agency, Agencies & Services - </span>Content Marketing & Search Engine Optimization</>}
+              {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'Content Marketing & Search Engine Optimization Agency'}
             </h1>
 
             <div style={{ 
@@ -106,7 +106,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 1' : 'STEP 1'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
-                {lang === 'pl' ? 'Audyt Techniczny & CWV' : 'Technical Audit & CWV'}
+                {lang === 'pl' ? 'Audyt Techniczny & CWV' : 'Search Optimization Agency & SEO Services'}
               </h3>
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Eliminujemy błędy indeksowania, przyspieszamy ładowanie i poprawiamy architekturę linkowania wewnętrznego.' : 'We eliminate indexing errors, speed up loading times, and improve internal linking architecture.'}
@@ -116,7 +116,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 2' : 'STEP 2'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
-                {lang === 'pl' ? 'Content Marketing' : 'Content Marketing'}
+                {lang === 'pl' ? 'Content Marketing' : 'SEO Optimization Service & Content In Marketing'}
               </h3>
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' 
@@ -128,7 +128,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 3' : 'STEP 3'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
-                {lang === 'pl' ? 'Link Building' : 'Link Building'}
+                {lang === 'pl' ? 'Link Building' : 'Search Engine Optimisation SEO & Digital Marketing SEO'}
               </h3>
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.' : 'We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain.'}
@@ -147,7 +147,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <Pricing />
 
-      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : <><span className="sr-only">Search Engine Optimization, Optimisation, SEO Digital Marketing Agency, Agencies & Services - </span>Frequently Asked Questions</>} />
+      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "SEO Digital Marketing & Search Engine Optimization Marketing FAQs"} />
 
       <Contact />
     </main>
