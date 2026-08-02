@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Search Engine Optimisation Consultancy, SEO Keyword Analysis & Optimization' : 'Audyt SEO | Analiza i Optymalizacja SEO',
+  title: locale === 'en' ? 'Search Engine Optimisation Consultancy, SEO Keyword Analysis & Optimization Consultants' : 'Audyt SEO | Analiza i Optymalizacja SEO',
   description: locale === 'en' ? 'Looking for expert search engine optimization consultants? Get professional seo keyword analysis and comprehensive search engine optimisation consultancy.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-audit' : 'https://www.ai-seo-company.pl/audyt-seo',
@@ -122,6 +122,9 @@ const auditPortfolioCases = [
     description: 'Brak oznaczeń semantycznych dla wyszukiwarek AI i Google (Rich Snippets), uniemożliwiający wyświetlanie ocen, cen i dostępności w wynikach Search.',
     descriptionEn: 'Lack of semantic markup for AI search engines and Google (Rich Snippets), preventing ratings, prices, and availability from showing in Search results.',
     image: '/images/unsplash-1597773150796-e5c14ebecbf5.jpg',
+    imageEn: '/images/search-engine-optimization-consultants.jpg',
+    imgAltEn: 'expert search engine optimization consultants',
+    imgTitleEn: 'search engine optimization consultants data analysis',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
     metric: '100%',
     metricLabel: 'Pokrycia Schema',
