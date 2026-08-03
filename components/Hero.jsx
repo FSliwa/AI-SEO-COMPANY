@@ -52,10 +52,10 @@ export default function Hero() {
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
         >
           <div style={{ position: 'relative', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '1400px' }}>
-            <h1 className="hero-seo-h1">
+            <h1 className={`hero-seo-h1${lang === 'pl' ? ' hero-seo-h1-pl' : ''}`}>
               {lang === 'en' 
-                ? 'Premium SEO & Marketing Agency for Companies. Advanced Search Engine Optimization & Growth.'
-                : 'Kompleksowa Agencja SEO i Marketingowa z Warszawy. Skuteczne Pozycjonowanie i Projektowanie Stron.'}
+                ? 'Premium SEO & Marketing Agency for Companies. Recognized among leading search engine optimisation companies for advanced optimization & sustainable growth.'
+                : 'Kompleksowa Agencja SEO i Marketingowa z Warszawy. Twój projekt i strony to nasz priorytet — skuteczne pozycjonowanie napędzające wzrost.'}
             </h1>
             <img 
               src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 
