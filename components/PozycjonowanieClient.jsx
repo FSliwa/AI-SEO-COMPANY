@@ -23,11 +23,12 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               {lang === 'pl' ? 'POZYCJONOWANIE STRON' : 'SEO OPTIMIZATION'}
             </div>
             
-            <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 800, 
-              color: 'var(--color-text-main)', 
-              marginBottom: '1rem', 
+            <h1 style={{
+              fontSize: 'clamp(3.5rem, 7vw, 6rem)',
+              fontWeight: 700,
+              lineHeight: 1.05,
+              color: 'var(--color-text-main)',
+              marginBottom: '1rem',
               letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? 'Pozycjonowanie stron internetowych' : 'SEO Optimization Services for Companies & Digital Marketing Agency'}
