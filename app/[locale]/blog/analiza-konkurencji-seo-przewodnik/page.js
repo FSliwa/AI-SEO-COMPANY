@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
       canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide' : 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik',
       languages: {
         'pl': 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik',
-        'x-default': 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik',
+        'x-default': 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide',
         'en': 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide'
       }
     },
@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
@@ -40,6 +41,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
+      <ArticleSchema slug="/blog/analiza-konkurencji-seo-przewodnik" locale={locale} />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (

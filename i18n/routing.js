@@ -71,6 +71,10 @@ export const routing = defineRouting({
     '/blog/ile-kosztuje-strona-www-dla-firmy-ceny': {
       pl: '/blog/ile-kosztuje-strona-www-dla-firmy-ceny',
       en: '/blog/how-much-does-a-business-website-cost-pricing'
+    },
+    '/blog/analiza-konkurencji-seo-przewodnik': {
+      pl: '/blog/analiza-konkurencji-seo-przewodnik',
+      en: '/blog/seo-competitor-analysis-step-by-step-guide'
     }
   }
 });

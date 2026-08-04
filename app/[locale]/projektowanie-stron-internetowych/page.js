@@ -2,12 +2,12 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'Web Design and Development | AI SEO COMPANY' : 'Projektowanie Stron Internetowych | Web Design dla Firm',
-  description: locale === 'en' ? 'We create intuitive and visually stunning Headless websites based on Next.js. Laser-focused on maximizing ROI and UX.' : 'Profesjonalne projektowanie stron internetowych. Tworzymy ultraszybkie i piękne wizualnie strony na Next.js (Headless), skoncentrowane na maksymalizacji',
+  description: locale === 'en' ? 'We create intuitive and visually stunning Headless websites based on Next.js. Laser-focused on maximizing ROI and UX.' : 'Profesjonalne projektowanie stron internetowych. Tworzymy ultraszybkie strony na Next.js (Headless), skoncentrowane na maksymalizacji konwersji.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/web-design' : 'https://www.ai-seo-company.pl/projektowanie-stron-internetowych',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/projektowanie-stron-internetowych',
-      'x-default': 'https://www.ai-seo-company.pl/projektowanie-stron-internetowych',
+      'x-default': 'https://www.ai-seo-company.pl/en/web-design',
       'en': 'https://www.ai-seo-company.pl/en/web-design'
     }
   },

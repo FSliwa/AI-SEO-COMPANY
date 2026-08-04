@@ -62,14 +62,14 @@ export default function Hero() {
                 <>
                   Premium SEO & Marketing Agency for Companies.{' '}
                   <span className="hero-seo-h1-rest">
-                    Recognized among leading search engine optimisation companies for advanced optimization & sustainable growth.
+                    Recognized among leading search engine optimisation companies for advanced optimization & sustainable growth
                   </span>
                 </>
               ) : (
                 <>
                   Kompleksowa Agencja SEO i Marketingowa z Warszawy.{' '}
                   <span className="hero-seo-h1-rest">
-                    Twój projekt i strony to nasz priorytet — skuteczne pozycjonowanie napędzające wzrost.
+                    Twój projekt i strony to nasz priorytet — skuteczne pozycjonowanie napędzające wzrost
                   </span>
                 </>
               )}

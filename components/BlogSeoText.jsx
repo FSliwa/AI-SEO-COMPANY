@@ -5,8 +5,10 @@ import { useLocale } from 'next-intl';
 export default function BlogSeoText() {
   const locale = useLocale();
 
+  // Horizontal padding must match .container (0 1.5rem); an inline `padding: 2rem 0`
+  // zeroed it and made this box overhang the contact section by 24px per side.
   return (
-    <section className="container" style={{ padding: '2rem 0' }}>
+    <section className="container" style={{ padding: '2rem 1.5rem' }}>
       <details style={{ background: '#F9F9FB', borderRadius: '16px', padding: '1.5rem', cursor: 'pointer' }}>
         <summary style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1D1D1F', listStyle: 'none', margin: 0 }}>
           {locale === 'en' ? 'Explore our SEO Knowledge Base & Strategies' : 'Rozwiń bazę wiedzy o pozycjonowaniu i projektowaniu'}

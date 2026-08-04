@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import ArticleSchema from '@/components/ArticleSchema';
 import { Link } from '@/i18n/routing';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -43,6 +44,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
+      <ArticleSchema slug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" locale={locale} />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (

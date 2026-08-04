@@ -23,8 +23,10 @@ const realizedWebsites = [
     layout: 'center',
     rightVisual: 'single-large',
     largeImage: '/projects/seo-company-search-engine-optimization-agencies-madame.webp',
-    imgAlt: 'SEO company website design for restaurant - search engine optimization agencies',
-    imgTitle: 'SEO company project for Madame Thai restaurant',
+    imgAlt: 'Strona internetowa restauracji Madame Thai — projekt agencji SEO i marketingowej z Warszawy',
+    imgAltEn: 'SEO company website design for restaurant - search engine optimization agencies',
+    imgTitle: 'Projekt strony dla restauracji Madame Thai',
+    imgTitleEn: 'SEO company project for Madame Thai restaurant',
     largeImageMobile: '/images/madame-thai-mobile.webp',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
@@ -55,8 +57,10 @@ const realizedWebsites = [
       image: '/projects/seo-firms-optimization-optimisation-companies-marketing-agency-seotools-staniax.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'SEO firms B2B industrial website - SEO optimization companies case study',
-    imgTitle: 'Search engine optimisation companies project for Staniax - marketing agency results',
+    imgAlt: 'Strona B2B dla Staniax — pozycjonowanie stron i optymalizacja SEO w branży przemysłowej',
+    imgAltEn: 'SEO firms B2B industrial website - SEO optimization companies case study',
+    imgTitle: 'Pozycjonowanie stron dla Staniax — wyniki agencji marketingowej',
+    imgTitleEn: 'Search engine optimisation companies project for Staniax - marketing agency results',
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
 - Start od zerowej widoczności → 2,8 tys. wyświetleń i gwałtowny skokowy wzrost do ok. 100 wyświetleń dziennie.
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
@@ -86,8 +90,10 @@ const realizedWebsites = [
       image: '/projects/company-for-seo-search-engine-optimization-company-aisas.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'Search engine optimization company fintech platform - seotools driven growth',
-    imgTitle: 'SEO company for fintech - search engine optimization company results',
+    imgAlt: 'Platforma fintech z AI — pozycjonowanie stron na rynku zagranicznym',
+    imgAltEn: 'Search engine optimization company fintech platform - seotools driven growth',
+    imgTitle: 'Pozycjonowanie stron dla platformy fintech — wyniki',
+    imgTitleEn: 'SEO company for fintech - search engine optimization company results',
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
 - Skok od 0 do 4,8 tys. wyświetleń w kwartale (+8 113,8%) i wzrost w ostatnich 28 dniach o 244,7% (do 500 wyświetleń dziennie).
 - Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 — krok od TOP 20), „best futures trading platforms” (pozycja 61).
@@ -262,14 +268,14 @@ export default function Portfolio() {
                           <source srcSet={item.largeImageMobile} media="(max-width: 768px)" />
                           <img 
                             src={item.largeImage} 
-                            alt={item.imgAlt || item.brandName} title={item.imgTitle || item.brandName} 
+                            alt={(lang === 'en' ? (item.imgAltEn || item.imgAlt) : item.imgAlt) || item.brandName} title={(lang === 'en' ? (item.imgTitleEn || item.imgTitle) : item.imgTitle) || item.brandName} 
                             className="portfolio-mobile-aware-img"
                           />
                         </picture>
                       ) : (
                         <img 
                           src={item.largeImage} 
-                          alt={item.imgAlt || item.brandName} title={item.imgTitle || item.brandName} 
+                          alt={(lang === 'en' ? (item.imgAltEn || item.imgAlt) : item.imgAlt) || item.brandName} title={(lang === 'en' ? (item.imgTitleEn || item.imgTitle) : item.imgTitle) || item.brandName} 
                           style={{ 
                             width: '100%', 
                             marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top
@@ -308,7 +314,7 @@ export default function Portfolio() {
                     >
                       <img 
                         src={item.largeImage} 
-                        alt={item.imgAlt || item.brandName} title={item.imgTitle || item.brandName} 
+                        alt={(lang === 'en' ? (item.imgAltEn || item.imgAlt) : item.imgAlt) || item.brandName} title={(lang === 'en' ? (item.imgTitleEn || item.imgTitle) : item.imgTitle) || item.brandName} 
                         style={{ 
                           width: '100%', 
                           height: '100%', 
@@ -375,7 +381,7 @@ export default function Portfolio() {
                     >
                       <img 
                         src={item.desktopCard ? item.desktopCard.image : '/projects/kafelek-staniax-full.webp'} 
-                        alt={item.imgAlt || item.brandName} title={item.imgTitle || item.brandName} 
+                        alt={(lang === 'en' ? (item.imgAltEn || item.imgAlt) : item.imgAlt) || item.brandName} title={(lang === 'en' ? (item.imgTitleEn || item.imgTitle) : item.imgTitle) || item.brandName} 
                         style={{ 
                           width: '100%', 
                           height: '100%', 

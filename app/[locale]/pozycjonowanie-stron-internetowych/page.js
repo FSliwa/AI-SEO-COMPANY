@@ -2,12 +2,12 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'SEO Optimization Services for Companies & Digital Marketing Agency' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
-  description: locale === 'en' ? 'Expert SEO optimization service and search engine marketing for B2B companies. We offer content marketing strategy and SEO digital marketing to drive sustainable organic growth.' : 'Kompleksowe pozycjonowanie stron internetowych. Oferujemy skuteczne pozycjonowanie stron i pełną optymalizację SEO, zdobywając dla Ciebie najwyższe',
+  description: locale === 'en' ? 'Expert SEO optimization service and search engine marketing for B2B companies. We offer content marketing strategy and SEO digital marketing to drive sustainable organic growth.' : 'Kompleksowe pozycjonowanie stron internetowych. Skuteczne pozycjonowanie stron i pełna optymalizacja SEO — zdobywamy dla Ciebie najwyższe pozycje w Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
-      'x-default': 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
+      'x-default': 'https://www.ai-seo-company.pl/en/seo-services',
       'en': 'https://www.ai-seo-company.pl/en/seo-services'
     }
   },

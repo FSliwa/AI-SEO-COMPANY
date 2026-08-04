@@ -1,8 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLocale } from 'next-intl';
 
 export default function ArticleTOC({ items = [] }) {
+  // Derived here rather than passed in: every call site rendered <ArticleTOC items={...} />
+  // with no locale, which pinned the heading to Polish on English articles.
+  const lang = useLocale();
   const [activeId, setActiveId] = useState('');
   const [isOpen, setIsOpen] = useState(true);
 
@@ -61,7 +65,7 @@ export default function ArticleTOC({ items = [] }) {
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
         }}>
-          Spis treści
+          {lang === 'en' ? 'Table of contents' : 'Spis treści'}
         </span>
         <svg
           width="20" height="20" viewBox="0 0 24 24" fill="none"
