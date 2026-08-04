@@ -120,7 +120,9 @@ export default async function ArticleCwvPage({ params }) {
               </span>
             </div>
 
-            <h2 style={{ 
+            {/* The English branch above has its own <h1>. Only one of the two branches ever
+                renders, so this is not a second H1 on the page — do not demote it. */}
+              <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
               color: '#1D1D1F', 
@@ -130,7 +132,7 @@ export default async function ArticleCwvPage({ params }) {
               textAlign: 'left'
             }}>
               Core Web Vitals a pozycje
-            </h2>
+            </h1>
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>

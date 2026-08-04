@@ -303,9 +303,11 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 03 Sierpnia 2026
               </span>
             </div>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            {/* The English branch above has its own <h1>. Only one of the two branches ever
+                renders, so this is not a second H1 on the page — do not demote it. */}
+              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Analiza konkurencji SEO: przewodnik krok po kroku
-            </h2>
+            </h1>
             <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
           </Reveal>
 
