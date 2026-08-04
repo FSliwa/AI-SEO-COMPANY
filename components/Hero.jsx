@@ -51,31 +51,41 @@ export default function Hero() {
           className="hero-lcp-image"
           style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
         >
-          <div style={{ position: 'relative', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '1400px' }}>
+          {/* Aspect-locked stage: matches the SVG viewBox (1440x810) exactly, so the
+              H1 can be positioned in SVG coordinates as percentages and keeps the
+              same placement relative to the artwork at every screen resolution. */}
+          <div className="hero-art">
+            {/* Two-tone like the SVG's own paragraphs: lead sentence in the accent
+                colour, the remainder in white. Wording is unchanged. */}
             <h1 className={`hero-seo-h1${lang === 'pl' ? ' hero-seo-h1-pl' : ''}`}>
-              {lang === 'en' 
-                ? 'Premium SEO & Marketing Agency for Companies. Recognized among leading search engine optimisation companies for advanced optimization & sustainable growth.'
-                : 'Kompleksowa Agencja SEO i Marketingowa z Warszawy. Twój projekt i strony to nasz priorytet — skuteczne pozycjonowanie napędzające wzrost.'}
+              {lang === 'en' ? (
+                <>
+                  Premium SEO & Marketing Agency for Companies.{' '}
+                  <span className="hero-seo-h1-rest">
+                    Recognized among leading search engine optimisation companies for advanced optimization & sustainable growth.
+                  </span>
+                </>
+              ) : (
+                <>
+                  Kompleksowa Agencja SEO i Marketingowa z Warszawy.{' '}
+                  <span className="hero-seo-h1-rest">
+                    Twój projekt i strony to nasz priorytet — skuteczne pozycjonowanie napędzające wzrost.
+                  </span>
+                </>
+              )}
             </h1>
-            <img 
-              src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'} 
-              alt={lang === 'en' 
-                ? 'SEO for companies' 
-                : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie Stron i Projektowanie'} 
-              title={lang === 'en' 
-                ? 'SEO for companies' 
+            <img
+              className="hero-art-img"
+              src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'}
+              alt={lang === 'en'
+                ? 'SEO for companies'
                 : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie Stron i Projektowanie'}
-              width={1600}
-              height={294}
+              title={lang === 'en'
+                ? 'SEO for companies'
+                : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie Stron i Projektowanie'}
+              width={1440}
+              height={810}
               fetchPriority="high"
-              style={{ 
-                width: '100%', 
-                height: 'auto', 
-                maxHeight: '75vh',
-                objectFit: 'contain',
-                display: 'block',
-                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.65)) drop-shadow(0 0 30px rgba(216,90,48,0.3))'
-              }} 
             />
           </div>
         </div>

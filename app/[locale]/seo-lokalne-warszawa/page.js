@@ -230,10 +230,14 @@ export default function SeoLokalneWarszawaPage() {
         </section>
 
         {/* Carousel */}
-        <ServiceCarousel 
-          tag="SKUTECZNY PROCES"
-          title="Inżynieria Zysku na Rynku Lokalnym"
-          subtitle="Proces optymalizacji, który transformuje przypadkowych klikających w płacących klientów z Twojej okolicy."
+        <ServiceCarousel
+          tag={lang === 'pl' ? 'SKUTECZNY PROCES' : 'PROVEN PROCESS'}
+          title={lang === 'pl'
+            ? 'Inżynieria Zysku na Rynku Lokalnym'
+            : 'Engineering Profit in the Local Market'}
+          subtitle={lang === 'pl'
+            ? 'Proces optymalizacji, który transformuje przypadkowych klikających w płacących klientów z Twojej okolicy.'
+            : 'A local SEO process that turns accidental clicks into paying customers from your own neighbourhood.'}
           items={carouselItems}
         />
 
@@ -245,7 +249,9 @@ export default function SeoLokalneWarszawaPage() {
                 {lang === 'pl' ? 'Dlaczego pozycjonowanie lokalne ma znaczenie?' : 'Why Local SEO & Search Engine Optimization Matters'}
               </h2>
               <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
-                Zrozum, jak zachowują się użytkownicy smartfonów poszukujący usług.
+                {lang === 'pl'
+                  ? 'Zrozum, jak zachowują się użytkownicy smartfonów poszukujący usług.'
+                  : 'Understand how smartphone users behave when they search for services near them.'}
               </p>
             </Reveal>
 
@@ -304,10 +310,12 @@ export default function SeoLokalneWarszawaPage() {
           </section>
 
         {/* Portfolio Section */}
-        <SubpagePortfolio 
-          title="Sektor Strategii Lokalnych" 
-          subtitle="Poznaj kluczowe obszary, dzięki którym wprowadzamy firmy na szczyt wyników w Warszawie"
-          cases={portfolioCases} 
+        <SubpagePortfolio
+          title={lang === 'pl' ? 'Sektor Strategii Lokalnych' : 'Local Strategy Sector'}
+          subtitle={lang === 'pl'
+            ? 'Poznaj kluczowe obszary, dzięki którym wprowadzamy firmy na szczyt wyników w Warszawie'
+            : 'The key areas of local search engine optimization we use to take companies to the top of the Warsaw results'}
+          cases={portfolioCases}
           layout="vertical"
         />
 

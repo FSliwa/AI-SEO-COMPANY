@@ -19,7 +19,7 @@ export default function BlogGrid() {
       titlePl: 'Wiedza, która napędza Twój zysk w internecie', titleEn: 'Knowledge that drives your online profit',
       textPl: 'Blog AI SEO COMPANY to miejsce, w którym na bieżąco analizujemy rynek marketingu internetowego. Dzielimy się sprawdzonymi metodami, innowacyjnymi strategiami biznesowymi oraz narzędziami ułatwiającymi codzienną pracę z pozycjonowaniem stron.',
       textEn: 'The AI SEO COMPANY Blog is a place where we continuously analyze the digital marketing market. We share proven methods, innovative business strategies, and tools that facilitate daily work with website positioning.',
-      image: '/images/unsplash-1478760329108-5c3ed9d495a0.jpg'
+      image: '/images/projektowanie-stron-internetowych-wydajnosc.jpg'
     },
     {
       id: 'metodologia',
@@ -27,7 +27,7 @@ export default function BlogGrid() {
       titlePl: 'Twarde dane i testy A/B', titleEn: 'Hard data and A/B tests',
       textPl: 'Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach.',
       textEn: 'Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities.',
-      image: '/images/unsplash-1541356665065-22676f35dd40.jpg'
+      image: '/images/skuteczna-optymalizacja-seo.jpg'
     },
     {
       id: 'zakres',
@@ -58,7 +58,9 @@ export default function BlogGrid() {
 
 
   // Sort all posts by date (newest first)
-  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sortedPosts = blogPosts
+    .filter(p => !(lang === 'en' && p.plOnly))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // Display only 4 posts (1 hero + 3 grid) on the main blog page
   const displayPosts = sortedPosts.slice(0, 4);

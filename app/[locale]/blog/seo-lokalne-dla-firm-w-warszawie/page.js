@@ -24,13 +24,24 @@ import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleLokalnePage({ params }) {
   const { locale } = await params;
-  const tocItems = [
+  const tocItemsPl = [
     { id: 'czym-w-a-ciwie-jest-pozycjonowanie-lokalne-local-seo', title: 'Czym właściwie jest pozycjonowanie lokalne (Local SEO)?' },
     { id: 'optymalizacja-profilu-firmy-w-google-gbp', title: 'Optymalizacja Profilu Firmy w Google (GBP)' },
     { id: 'strategia-nap-name-address-phone', title: 'Strategia NAP (Name, Address, Phone)' },
     { id: 'znaczenie-prawdziwych-recenzji-od-klient-w', title: 'Znaczenie prawdziwych recenzji od klientów' },
     { id: 'optymalizacja-on-page-pod-k-tem-miasta', title: 'Optymalizacja On-Page pod kątem miasta' }
   ];
+  // The English article renders a different set of sections with different ids,
+  // so it needs its own table of contents or the links point at missing anchors.
+  const tocItemsEn = [
+    { id: 'wizytowka-google', title: 'Google Business Profile (Google Maps)' },
+    { id: 'optymalizacja-strony', title: 'On-Page Local Optimization' },
+    { id: 'opinie', title: 'The Power of Reviews' },
+    { id: 'local-citations', title: 'Local Citations and Directory Listings' },
+    { id: 'localized-content', title: 'Creating Localized Content' },
+    { id: 'mobile-optimization', title: 'Mobile Optimization for Local Search' }
+  ];
+  const tocItems = locale === 'en' ? tocItemsEn : tocItemsPl;
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>

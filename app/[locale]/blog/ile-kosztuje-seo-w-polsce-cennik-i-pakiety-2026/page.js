@@ -25,7 +25,7 @@ import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleCennikPage({ params }) {
   const { locale } = await params;
-  const tocItems = [
+  const tocItemsPl = [
     { id: 'dla-roznych-firm', title: 'Ile kosztuje pozycjonowanie dla różnych typów firm?' },
     { id: 'co-zawiera-pakiet', title: 'Co zawiera pakiet SEO, a co jest płatnym dodatkiem?' },
     { id: '10-czynnikow', title: 'Jakie 10 czynników wpływa na koszt SEO?' },
@@ -36,6 +36,17 @@ export default async function ArticleCennikPage({ params }) {
     { id: 'narzedzia', title: 'Przydatne źródła i narzędzia do weryfikacji ofert SEO' },
     { id: 'szybki-przegl-d-typowych-bud-et-w', title: 'Szybki przegląd typowych budżetów:' }
   ];
+  // The English article renders a different set of sections with different ids,
+  // so it needs its own table of contents or the links point at missing anchors.
+  const tocItemsEn = [
+    { id: 'od-czego-zalezy-cena', title: 'What determines the price of SEO?' },
+    { id: 'modele-rozliczen', title: 'Popular billing models' },
+    { id: 'ukryte-koszty', title: 'Hidden costs - what to watch out for?' },
+    { id: 'how-to-choose-an-agency', title: 'How to choose an SEO Agency?' },
+    { id: 'roi-and-timeline', title: 'ROI and expected timeline for results' },
+    { id: 'the-role-of-ai', title: 'The role of AI in modern SEO pricing' }
+  ];
+  const tocItems = locale === 'en' ? tocItemsEn : tocItemsPl;
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>

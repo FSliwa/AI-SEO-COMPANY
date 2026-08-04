@@ -364,6 +364,16 @@ button, input, select, textarea {
 .kota-fullscreen-menu.closing {
 }
 
+/* The close-button row spans the full menu width and sits above the link list,
+   so it swallowed clicks on the first link. Only the button itself is clickable. */
+.kota-fullscreen-menu .nav-container {
+  pointer-events: none;
+}
+
+.kota-fullscreen-menu .nav-container .kota-menu-trigger {
+  pointer-events: auto;
+}
+
 .kota-fullscreen-content {
   flex: 1;
   display: flex;
@@ -2390,85 +2400,81 @@ section {
   }
 }
 
-.hero-seo-h1 {
-  font-family: var(--font-inter), 'Inter', sans-serif;
-  font-size: 1.4vw;
-  color: var(--color-cta);
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-align: right;
-  margin: 0;
+/* ---------------------------------------------------------------------------
+   HERO TYPOGRAPHY OVERLAY
+
+   The hero artwork is an SVG with viewBox 1440x810. `.hero-art` reproduces that
+   aspect ratio exactly, so `object-fit: contain` never letterboxes and every
+   percentage below maps 1:1 onto SVG user units. Sizing uses container query
+   units (1cqw = 1% of the stage width = 14.4 SVG units), so the H1 keeps an
+   identical position and scale relative to the artwork at any resolution —
+   no per-breakpoint overrides needed.
+
+   Measured glyph anchors (SVG units -> % of height):
+     EN  top of "SEO" =  92.1 / 810 = 11.37%
+     PL  top of "SEO" = 132.5 / 810 = 16.36%
+   --------------------------------------------------------------------------- */
+.hero-art {
+  position: relative;
   width: 100%;
-  max-width: 40%;
-  line-height: 1.4;
-  z-index: 10;
+  max-width: min(1400px, 133vh);
+  aspect-ratio: 1440 / 810;
+  margin: 0 auto;
+  container-type: inline-size;
+}
+
+.hero-art-img {
   position: absolute;
-  top: 11%;
-  right: 8vw;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 30px rgba(216, 90, 48, 0.3));
 }
 
-/* Osobne sterowanie pozycją dla wersji polskiej */
+/* English anchors, all measured off seo-for-companies.svg:
+     top    92.1  = top edge of the "SEO" glyphs
+     right 1195.6 = right edge of the "We combine ..." paragraph block
+     left   507.1 = right edge of "SEO"; the column starts just clear of it
+   Normal wrapping (not `balance`) so every line runs the full column width and
+   the block actually reaches back toward "SEO" instead of shrinking away. */
+.hero-seo-h1 {
+  position: absolute;
+  top: 11.37%;
+  right: 16.97%;
+  width: 46%;
+  margin: 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-weight: 400;
+  color: var(--color-cta);
+  text-align: right;
+  letter-spacing: 0.08em;
+  font-size: 1.2vw; /* fallback for browsers without container query units */
+  font-size: 1.69cqw;
+  line-height: 1.36;
+  z-index: 10;
+}
+
+/* Everything after the lead sentence is white, mirroring how the SVG's own
+   paragraphs open in the accent colour and continue in white. */
+.hero-seo-h1-rest {
+  color: #FFFFFF;
+}
+
+/* Polish artwork is laid out differently and must be measured separately:
+     top    132.5 = top edge of "SEO" (40 units lower than the English one)
+     right 1037.9 = right edge of the display word "które"
+     left   512.0 = right edge of "SEO", which caps how wide the column can be
+   The narrower column (right edge 47 units further left than the paragraph
+   block) needs a smaller size to still resolve to 4 lines and clear "które",
+   whose own top edge starts at y 254.9. */
 .hero-seo-h1-pl {
-  right: 8vw;
-}
-
-/* Prevent text from becoming too small on very narrow screens */
-@media (max-width: 479px) {
-  .hero-seo-h1 {
-    font-size: 1.6vw;
-    max-width: 36%;
-    right: 3vw;
-    letter-spacing: 0.05em;
-  }
-  .hero-seo-h1-pl {
-    right: 3vw;
-  }
-}
-
-/* Tablet landscape */
-@media (min-width: 768px) {
-  .hero-seo-h1 {
-    right: 8vw;
-    max-width: 40%;
-  }
-  .hero-seo-h1-pl {
-    right: 8vw;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .hero-seo-h1 {
-    font-size: 1.3vw;
-    max-width: 42%;
-    right: 10vw;
-  }
-  .hero-seo-h1-pl {
-    right: 10vw;
-  }
-}
-
-/* Large desktop */
-@media (min-width: 1400px) {
-  .hero-seo-h1 {
-    font-size: 1.15vw;
-    max-width: 43%;
-    right: 12vw;
-  }
-  .hero-seo-h1-pl {
-    right: 12vw;
-  }
-}
-
-/* XL desktop */
-@media (min-width: 1800px) {
-  .hero-seo-h1 {
-    font-size: 1.05vw;
-    max-width: 44%;
-    right: 13vw;
-  }
-  .hero-seo-h1-pl {
-    right: 13vw;
-  }
+  top: 16.36%;
+  right: 27.92%;
+  width: 35%;
+  font-size: 1.04vw;
+  font-size: 1.43cqw;
+  line-height: 1.24;
 }
 

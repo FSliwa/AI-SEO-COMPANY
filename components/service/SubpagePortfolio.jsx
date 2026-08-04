@@ -299,7 +299,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                       alt={lang === 'pl' ? (c.imgAlt || c.title || 'Realizacja SEO') : (c.imgAltEn || c.titleEn || c.imgAlt || c.title || 'SEO Case Study')}
                       title={lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title)}
                       fill
-                      style={{ objectFit: 'cover', display: 'block', position: 'relative', zIndex: 2 }}
+                      style={{ objectFit: 'cover', display: 'block', zIndex: 2 }}
                     />
                     
                     {/* Futuristic Fallback Visual Grid & Glowing Orb */}

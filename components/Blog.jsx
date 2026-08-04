@@ -9,7 +9,8 @@ export default function Blog() {
   const t = useTranslations('blog');
 
   // Dynamic sorting algorithm: always top 3 latest posts
-  const posts = [...blogPosts]
+  const posts = blogPosts
+    .filter(p => !(lang === 'en' && p.plOnly))
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3)
     .map((p, idx) => ({

@@ -9,7 +9,9 @@ export default function BlogLibrary() {
   const lang = useLocale();
 
   // Sort all posts by date (newest first)
-  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sortedPosts = blogPosts
+    .filter(p => !(lang === 'en' && p.plOnly))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const getPostData = (p) => ({
     date: lang === 'pl' ? p.displayDatePl : p.displayDateEn,
