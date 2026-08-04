@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -83,25 +83,24 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
                     </motion.div>
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial="collapsed"
-                        animate="open"
-                        exit="collapsed"
-                        variants={{
-                          open: { opacity: 1, height: "auto", marginBottom: '1.5rem' },
-                          collapsed: { opacity: 0, height: 0, marginBottom: 0 }
-                        }}
-                        transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
-                      >
-                        <p 
-                          style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}
-                          dangerouslySetInnerHTML={{ __html: lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer) }}
-                        />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Answers stay mounted and collapse by height rather than unmounting.
+                      Conditional rendering kept every closed answer out of the HTML, so
+                      only the open one was ever crawlable. */}
+                  <motion.div
+                    initial={false}
+                    animate={isOpen ? 'open' : 'collapsed'}
+                    variants={{
+                      open: { opacity: 1, height: 'auto', marginBottom: '1.5rem' },
+                      collapsed: { opacity: 0, height: 0, marginBottom: 0 }
+                    }}
+                    transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <p
+                      style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}
+                      dangerouslySetInnerHTML={{ __html: lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer) }}
+                    />
+                  </motion.div>
                 </div>
               </Reveal>
             );

@@ -30,6 +30,54 @@ const faqAudyt = [
     questionEn: 'How long does it take to prepare an SEO audit?',
     answer: 'Standardowy czas realizacji kompletnego audytu SEO wynosi od 3 do 5 dni roboczych. Po wygenerowaniu raportu przeprowadzamy konsultację omówieniową.',
     answerEn: 'The standard completion time for a comprehensive SEO audit is 3 to 5 business days. After generating the report, we conduct a detailed consultation.'
+  },
+  {
+    question: 'Czym różni się audyt techniczny od audytu treści?',
+    questionEn: 'What is the difference between a technical audit and a content audit?',
+    answer: 'Audyt techniczny sprawdza, czy Google może stronę zaindeksować i szybko wczytać: Core Web Vitals, przekierowania, tagi kanoniczne, strukturę adresów URL i mapę witryny. Audyt treści ocenia, czy strona odpowiada na intencję zapytania: pokrycie tematu, strukturę nagłówków, kanibalizację fraz i luki wobec konkurencji. Pierwszy usuwa bariery, drugi buduje trafność — pełna optymalizacja SEO wymaga obu.',
+    answerEn: 'A technical audit checks whether Google can index and quickly load the site: Core Web Vitals, redirects, canonical tags, URL structure and the sitemap. A content audit assesses whether the page answers search intent: topic coverage, heading structure, keyword cannibalisation and gaps against competitors. The first removes barriers, the second builds relevance — full SEO optimization needs both.'
+  },
+  {
+    question: 'Czy sam audyt wystarczy, czy potrzebne jest jeszcze wdrożenie?',
+    questionEn: 'Is the audit alone enough, or is implementation also needed?',
+    answer: 'Audyt sam w sobie nie zmienia pozycji — jest diagnozą, nie leczeniem. Raport zawiera listę zadań uszeregowaną według wpływu i pracochłonności, więc możesz wdrożyć go własnym zespołem albo przekazać swojemu deweloperowi. Dopóki rekomendacje nie zostaną wdrożone, wynik audytu nie przełoży się na widoczność w wyszukiwarce.',
+    answerEn: 'An audit on its own does not change rankings — it is a diagnosis, not a treatment. The report lists tasks ranked by impact and effort, so your own team or your developer can implement it. Until the recommendations are applied, the audit will not translate into search visibility.'
+  },
+  {
+    question: 'Jak często należy powtarzać audyt SEO?',
+    questionEn: 'How often should an SEO audit be repeated?',
+    answer: 'Pełny audyt raz na 6–12 miesięcy wystarcza większości serwisów. Wcześniej warto go powtórzyć w trzech sytuacjach: po migracji lub przebudowie strony, po istotnej aktualizacji algorytmu Google oraz po nagłym spadku widoczności bez znanej przyczyny. Między audytami wystarczy bieżący monitoring pozycji i Search Console.',
+    answerEn: 'A full audit every 6–12 months is enough for most websites. Repeat it sooner in three situations: after a migration or redesign, after a significant Google algorithm update, and after a sudden drop in visibility with no known cause. Between audits, routine rank monitoring and Search Console are sufficient.'
+  },
+  {
+    question: 'Jakich dostępów potrzebujecie, żeby przeprowadzić audyt?',
+    questionEn: 'What access do you need to run the audit?',
+    answer: 'Do rzetelnego audytu potrzebujemy dostępu do Google Search Console i Google Analytics — to jedyne źródła danych o Twojej domenie z pierwszej ręki. Przydaje się też dostęp do panelu CMS oraz informacja o hostingu, żeby zweryfikować czas odpowiedzi serwera i konfigurację przekierowań. Audyt jest możliwy bez tych dostępów, ale opiera się wtedy wyłącznie na danych zewnętrznych i jest mniej precyzyjny.',
+    answerEn: 'A reliable audit needs access to Google Search Console and Google Analytics — the only first-party data about your domain. Access to the CMS and details about hosting also help, so we can verify server response times and redirect configuration. An audit is possible without them, but it then rests solely on third-party data and is less precise.'
+  },
+  {
+    question: 'Czy audyt SEO ma sens dla nowej strony, która nie ma jeszcze ruchu?',
+    questionEn: 'Does an SEO audit make sense for a new site with no traffic yet?',
+    answer: 'Tak, ale zakres jest inny. Przy nowej domenie nie ma jeszcze danych o pozycjach ani kliknięciach, więc audyt skupia się na fundamentach: indeksowalności, strukturze adresów, architekturze treści i planie fraz kluczowych. To najtańszy moment na naprawę błędów, bo nie trzeba później migrować adresów. Audyt nie ma natomiast sensu, jeśli strona dopiero powstaje i jej struktura nie została jeszcze ustalona.',
+    answerEn: 'Yes, but the scope differs. A new domain has no ranking or click data yet, so the audit focuses on fundamentals: indexability, URL structure, content architecture and the keyword plan. This is the cheapest moment to fix mistakes, because no URL migration is needed later. An audit does not make sense, however, while the site is still being built and its structure is not settled.'
+  },
+  {
+    question: 'Co dokładnie otrzymuję w raporcie z audytu?',
+    questionEn: 'What exactly do I receive in the audit report?',
+    answer: 'Raport zawiera listę znalezionych błędów z oceną wpływu na widoczność, priorytetyzację zadań według stosunku efektu do pracochłonności, wskazanie konkretnych adresów URL wymagających poprawy oraz rekomendacje techniczne w formie gotowej do przekazania deweloperowi. Po przekazaniu raportu omawiamy go na konsultacji, żeby wspólnie ustalić kolejność wdrożenia.',
+    answerEn: 'The report contains the list of issues found with their impact on visibility, a prioritisation of tasks by effect versus effort, the specific URLs that need work, and technical recommendations written so they can be handed straight to a developer. After delivery we walk through the report in a consultation to agree the order of implementation.'
+  },
+  {
+    question: 'Czy audyt obejmuje sklepy internetowe i strony na WordPressie?',
+    questionEn: 'Does the audit cover online stores and WordPress websites?',
+    answer: 'Tak. Zakres kontrolny jest ten sam niezależnie od technologii, zmieniają się natomiast typowe problemy. W sklepach internetowych najczęściej badamy kanibalizację między kategoriami, obsługę filtrów i parametrów w adresach oraz budżet indeksowania. Przy WordPressie częstym źródłem usterek są nadmiarowe wtyczki, duplikaty tagów i archiwów oraz wydajność szablonu.',
+    answerEn: 'Yes. The checklist is the same regardless of technology; what changes are the typical problems. In online stores we most often examine cannibalisation between categories, how filters and URL parameters are handled, and crawl budget. On WordPress, recurring sources of trouble are excess plugins, duplicate tag and archive pages, and theme performance.'
+  },
+  {
+    question: 'Czym audyt SEO różni się od darmowego raportu z narzędzia online?',
+    questionEn: 'How does an SEO audit differ from a free online tool report?',
+    answer: 'Darmowe narzędzia wykrywają błędy według sztywnej listy reguł i nie rozumieją kontekstu biznesowego. Pokażą, że brakuje słowa w tytule, ale nie ocenią, czy strona odpowiada na intencję zapytania, ani które z dwustu znalezionych usterek realnie wpływają na widoczność. Audyt to interpretacja tych danych: odsiew szumu, priorytetyzacja i decyzja, co zrobić najpierw — oraz czego świadomie nie ruszać.',
+    answerEn: 'Free tools flag issues against a fixed rule set and have no business context. They will tell you a word is missing from the title, but not whether the page answers search intent, nor which of the two hundred issues found actually affect visibility. An audit is the interpretation of that data: filtering out noise, prioritising, and deciding what to do first — and what to deliberately leave alone.'
   }
 ];
 
