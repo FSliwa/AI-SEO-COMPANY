@@ -651,6 +651,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               <BlogCTA currentSlug="/blog/vwo-vs-optimizely-porownanie" />
             </div>
             )}
+          </Reveal>
         </div>
       </article>
 
