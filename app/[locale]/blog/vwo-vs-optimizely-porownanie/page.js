@@ -1,13 +1,14 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: '{locale === 'en' ? 'VWO vs Optimizely: Which A/B Testing Platform Is Better for Most Marketing and E-commerce Teams?' : 'VWO vs Optimizely: porównanie platform do testów A/B'} | AI SEO Company',
-    description: 'VWO vs Optimizely — porównanie funkcji, cen, wdrożenia i zgodności z RODO. Sprawdź, która platforma do testów A/B pasuje do Twojego zespołu.',
+    title: locale === 'en' ? 'VWO vs Optimizely: Which A/B Testing Platform Is Better? | AI SEO Company' : 'VWO vs Optimizely: porównanie platform do testów A/B | AI SEO Company',
+    description: locale === 'en' ? 'VWO vs Optimizely — feature, pricing, implementation, and GDPR comparison. See which A/B testing platform fits your team.' : 'VWO vs Optimizely — porównanie funkcji, cen, wdrożenia i zgodności z RODO. Sprawdź, która platforma do testów A/B pasuje do Twojego zespołu.',
     alternates: {
-      canonical: 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie',
+      canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie' : 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie',
       languages: {
         'pl': 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie',
-        'x-default': 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie'
+        'x-default': 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie',
+        'en': 'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie'
       }
     },
   };
