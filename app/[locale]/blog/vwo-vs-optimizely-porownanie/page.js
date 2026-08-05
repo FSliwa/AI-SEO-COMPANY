@@ -134,19 +134,19 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                     </thead>
                     <tbody>
                       <tr><td>Best for</td><td>Marketing teams, mid-market, e-commerce</td><td>Large organizations with engineering, enterprise</td><td>Lightweight experiments, smaller teams</td></tr>
-                      <tr><td>Implementation</td><td>Client-side (async snippet), server-side option</td><td>Full-stack: client-side, server-side, edge</td><td>Client-side (details to be verified)</td></tr>
-                      <tr><td>A/B testing, MVT</td><td>Yes</td><td>Yes</td><td>Yes (scope to be verified)</td></tr>
-                      <tr><td>Personalization</td><td>Yes, native</td><td>Yes, advanced</td><td>Limited (to be confirmed)</td></tr>
-                      <tr><td>Feature flags</td><td>Yes (basic)</td><td>Yes, robust with governance</td><td>To be verified</td></tr>
-                      <tr><td>Visual editor</td><td>Yes, simple and marketer-friendly</td><td>Yes, but more technical</td><td>To be verified</td></tr>
-                      <tr><td>Heatmaps and session recordings</td><td>Native</td><td>No native support (requires FullStory / Contentsquare)</td><td>To be verified</td></tr>
-                      <tr><td>SDKs (web, mobile, server)</td><td>Web, mobile, server SDKs</td><td>Extensive SDKs for multiple languages</td><td>To be verified</td></tr>
-                      <tr><td>Data warehouse integrations</td><td>Yes (limited)</td><td>Yes, warehouse-native</td><td>To be verified</td></tr>
-                      <tr><td>Statistical engine</td><td>SmartStats (Bayesian)</td><td>Stats Engine (sequential)</td><td>To be verified</td></tr>
-                      <tr><td>Pricing model</td><td>Orientative pricing / quote after registration, plans starting from approx. $300/month (depending on MTU)</td><td>No public pricing, custom quotes (entry threshold ~$36,000/year)</td><td>To be verified</td></tr>
-                      <tr><td>Approximate annual cost</td><td>From low tens of thousands of USD to several tens of thousands of USD</td><td>From ~$36,000/year upwards</td><td>To be verified</td></tr>
-                      <tr><td>Support / SLA</td><td>24/7 chat and email, dedicated account manager on higher plans</td><td>Enterprise SLA, dedicated CSM</td><td>To be verified</td></tr>
-                      <tr><td>GDPR / data residency</td><td>EU data residency options, DPA available</td><td>EU data residency, SOC 2, DPA available</td><td>To be verified</td></tr>
+                      <tr><td>Implementation</td><td>Client-side (async snippet), server-side option</td><td>Full-stack: client-side, server-side, edge</td><td>-</td></tr>
+                      <tr><td>A/B testing, MVT</td><td>Yes</td><td>Yes</td><td>-</td></tr>
+                      <tr><td>Personalization</td><td>Yes, native</td><td>Yes, advanced</td><td>-</td></tr>
+                      <tr><td>Feature flags</td><td>Yes (basic)</td><td>Yes, robust with governance</td><td>-</td></tr>
+                      <tr><td>Visual editor</td><td>Yes, simple and marketer-friendly</td><td>Yes, but more technical</td><td>-</td></tr>
+                      <tr><td>Heatmaps and session recordings</td><td>Native</td><td>No native support (requires FullStory / Contentsquare)</td><td>-</td></tr>
+                      <tr><td>SDKs (web, mobile, server)</td><td>Web, mobile, server SDKs</td><td>Extensive SDKs for multiple languages</td><td>-</td></tr>
+                      <tr><td>Data warehouse integrations</td><td>Yes (limited)</td><td>Yes, warehouse-native</td><td>-</td></tr>
+                      <tr><td>Statistical engine</td><td>SmartStats (Bayesian)</td><td>Stats Engine (sequential)</td><td>-</td></tr>
+                      <tr><td>Pricing model</td><td>Orientative pricing / quote after registration, plans starting from approx. $300/month (depending on MTU)</td><td>No public pricing, custom quotes (entry threshold ~$36,000/year)</td><td>-</td></tr>
+                      <tr><td>Approximate annual cost</td><td>From low tens of thousands of USD to several tens of thousands of USD</td><td>From ~$36,000/year upwards</td><td>-</td></tr>
+                      <tr><td>Support / SLA</td><td>24/7 chat and email, dedicated account manager on higher plans</td><td>Enterprise SLA, dedicated CSM</td><td>-</td></tr>
+                      <tr><td>GDPR / data residency</td><td>EU data residency options, DPA available</td><td>EU data residency, SOC 2, DPA available</td><td>-</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -417,19 +417,19 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                   </thead>
                   <tbody>
                     <tr><td>Najlepsze dla</td><td>Zespoły marketingowe, mid-market, e-commerce</td><td>Duże organizacje z inżynierią, enterprise</td><td>Lekkie eksperymenty, mniejsze zespoły</td></tr>
-                    <tr><td>Wdrożenie</td><td>Client-side (async snippet), opcja server-side</td><td>Full-stack: client-side, server-side, edge</td><td>Client-side (szczegóły do weryfikacji)</td></tr>
-                    <tr><td>Testy A/B, MVT</td><td>Tak</td><td>Tak</td><td>Tak (zakres do weryfikacji)</td></tr>
+                    <tr><td>Wdrożenie</td><td>Client-side (async snippet), opcja server-side</td><td>Full-stack: client-side, server-side, edge</td><td>-</td></tr>
+                    <tr><td>Testy A/B, MVT</td><td>Tak</td><td>Tak</td><td>-</td></tr>
                     <tr><td>Personalizacja</td><td>Tak, natywna</td><td>Tak, zaawansowana</td><td>Ograniczona (do potwierdzenia)</td></tr>
-                    <tr><td>Feature flags</td><td>Tak (podstawowe)</td><td>Tak, rozbudowane z governance</td><td>Do weryfikacji</td></tr>
-                    <tr><td>Edytor wizualny</td><td>Tak, prosty i marketer-friendly</td><td>Tak, ale bardziej techniczny</td><td>Do weryfikacji</td></tr>
-                    <tr><td>Heatmapy i nagrania sesji</td><td>Natywne</td><td>Brak natywnych (wymaga FullStory/Contentsquare)</td><td>Do weryfikacji</td></tr>
-                    <tr><td>SDK (web, mobile, server)</td><td>Web, mobile, server SDK</td><td>Rozbudowane SDK dla wielu języków</td><td>Do weryfikacji</td></tr>
-                    <tr><td>Integracje z hurtownią danych</td><td>Tak (ograniczone)</td><td>Tak, warehouse-native</td><td>Do weryfikacji</td></tr>
-                    <tr><td>Silnik statystyczny</td><td>SmartStats (bayesowski)</td><td>Stats Engine (sekwencyjny)</td><td>Do weryfikacji</td></tr>
-                    <tr><td>Model cenowy</td><td>Orientacyjny cennik / wycena po rejestracji, poziomy od ok. 300 USD/mies. (w zależności od MTU)</td><td>Brak publicznego cennika, wycena indywidualna (próg wejścia ~36 000 USD/rok)</td><td>Do weryfikacji</td></tr>
-                    <tr><td>Orientacyjny koszt roczny</td><td>Od kilkunastu tysięcy USD do kilkudziesięciu tysięcy USD</td><td>Od ~36 000 USD/rok wzwyż</td><td>Do weryfikacji</td></tr>
-                    <tr><td>Wsparcie / SLA</td><td>24/7 czat i e-mail, dedykowany opiekun w wyższych planach</td><td>Enterprise SLA, dedykowany CM</td><td>Do weryfikacji</td></tr>
-                    <tr><td>RODO / lokalizacja danych</td><td>Opcje EU data residency, DPA dostępne</td><td>EU data residency, SOC 2, DPA dostępne</td><td>Do weryfikacji</td></tr>
+                    <tr><td>Feature flags</td><td>Tak (podstawowe)</td><td>Tak, rozbudowane z governance</td><td>-</td></tr>
+                    <tr><td>Edytor wizualny</td><td>Tak, prosty i marketer-friendly</td><td>Tak, ale bardziej techniczny</td><td>-</td></tr>
+                    <tr><td>Heatmapy i nagrania sesji</td><td>Natywne</td><td>Brak natywnych (wymaga FullStory/Contentsquare)</td><td>-</td></tr>
+                    <tr><td>SDK (web, mobile, server)</td><td>Web, mobile, server SDK</td><td>Rozbudowane SDK dla wielu języków</td><td>-</td></tr>
+                    <tr><td>Integracje z hurtownią danych</td><td>Tak (ograniczone)</td><td>Tak, warehouse-native</td><td>-</td></tr>
+                    <tr><td>Silnik statystyczny</td><td>SmartStats (bayesowski)</td><td>Stats Engine (sekwencyjny)</td><td>-</td></tr>
+                    <tr><td>Model cenowy</td><td>Orientacyjny cennik / wycena po rejestracji, poziomy od ok. 300 USD/mies. (w zależności od MTU)</td><td>Brak publicznego cennika, wycena indywidualna (próg wejścia ~36 000 USD/rok)</td><td>-</td></tr>
+                    <tr><td>Orientacyjny koszt roczny</td><td>Od kilkunastu tysięcy USD do kilkudziesięciu tysięcy USD</td><td>Od ~36 000 USD/rok wzwyż</td><td>-</td></tr>
+                    <tr><td>Wsparcie / SLA</td><td>24/7 czat i e-mail, dedykowany opiekun w wyższych planach</td><td>Enterprise SLA, dedykowany CM</td><td>-</td></tr>
+                    <tr><td>RODO / lokalizacja danych</td><td>Opcje EU data residency, DPA dostępne</td><td>EU data residency, SOC 2, DPA dostępne</td><td>-</td></tr>
                   </tbody>
                 </table>
               </div>
