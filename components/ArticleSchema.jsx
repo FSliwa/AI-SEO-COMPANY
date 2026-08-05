@@ -38,10 +38,17 @@ export default function ArticleSchema({
     description: resolvedDesc,
     image: resolvedImage ? `${BASE}${resolvedImage}` : `${BASE}/og-image.jpg`,
     inLanguage: isEn ? 'en' : 'pl',
+    // A named person carries more weight than an organisation for advisory
+    // content, which is what Google's rater guidelines look for.
     author: {
-      '@type': 'Organization',
-      name: 'AI SEO COMPANY',
-      url: `${BASE}/`
+      '@type': 'Person',
+      name: 'Filip Śliwa',
+      jobTitle: isEn ? 'SEO specialist' : 'Specjalista SEO',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'AI SEO COMPANY',
+        url: `${BASE}/`
+      }
     },
     publisher: {
       '@type': 'Organization',

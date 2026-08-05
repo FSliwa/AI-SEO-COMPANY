@@ -262,10 +262,9 @@ export default function Header() {
                 <span className="footer-label">{lang === 'pl' ? 'Napisz do nas' : 'Email Us'}</span>
                 <a href="mailto:kontakt@ai-seo-company.pl" className="footer-value">kontakt@ai-seo-company.pl</a>
               </div>
-              <div className="footer-socials">
-                <span className="footer-label">Social Media</span>
-                <a href="https://linkedin.com/company/ai-seo-company" target="_blank" rel="noopener noreferrer" className="footer-value">LinkedIn</a>
-                <a href="https://instagram.com/aiseocompany" target="_blank" rel="noopener noreferrer" className="footer-value">Instagram</a>
+              <div className="footer-contact">
+                <span className="footer-label">{lang === 'pl' ? 'Zadzwoń' : 'Call us'}</span>
+                <a href="tel:+48518815055" className="footer-value">518 815 055</a>
               </div>
             </div>
           </div>

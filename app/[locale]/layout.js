@@ -51,6 +51,7 @@ const jsonLdData = {
       'logo': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.svg',
       'image': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.png',
       'email': 'kontakt@ai-seo-company.pl',
+      'telephone': '+48518815055',
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': 'ul. Grzybowska 12/14 lok. B-3',

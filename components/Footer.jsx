@@ -48,6 +48,7 @@ export default function Footer() {
             <div className="footer-col">
               <p className="footer-heading">{lang === 'pl' ? 'Kontakt' : 'Contact'}</p>
               <ul className="footer-links">
+                <li><a href="tel:+48518815055">518 815 055</a></li>
                 <li><a href="mailto:kontakt@ai-seo-company.pl">kontakt@ai-seo-company.pl</a></li>
                 <li><Link href="/#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</Link></li>
                 <li><Link href="/cookies">{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</Link></li>

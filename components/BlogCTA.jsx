@@ -15,6 +15,23 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
 
   return (
     <>
+      {/* Named byline: matches the Person author in the BlogPosting schema.
+          TODO: extend with years of experience and specialisation — left out
+          deliberately rather than invented. */}
+      <div style={{ marginTop: '3rem', padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', background: '#F9F9FB' }}>
+        <p style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 0.5rem 0' }}>
+          {lang === 'en' ? 'Author' : 'Autor'}
+        </p>
+        <p style={{ fontSize: '1rem', color: '#1D1D1F', fontWeight: 600, margin: '0 0 0.35rem 0' }}>
+          Filip Śliwa
+        </p>
+        <p style={{ fontSize: '0.95rem', color: '#4B5563', margin: 0, lineHeight: 1.55 }}>
+          {lang === 'en'
+            ? 'SEO specialist at AI SEO COMPANY. Works on technical optimisation and search visibility strategy for B2B companies.'
+            : 'Specjalista SEO w AI SEO COMPANY. Zajmuje się optymalizacją techniczną i strategią widoczności w wyszukiwarce dla firm B2B.'}
+        </p>
+      </div>
+
       <div style={{ marginTop: '3rem' }}>
         <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: 600, color: '#1D1D1F' }}>
           {lang === 'en' ? 'Related Articles' : 'Powiązane artykuły'}
