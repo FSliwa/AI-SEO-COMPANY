@@ -57,7 +57,7 @@ export default function PricingClient() {
     {
       question: 'Kiedy zobaczę pierwsze efekty pozycjonowania?',
       questionEn: 'When will I see the first SEO results?',
-      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. Stabilne pozycje na frazach komercyjnych to horyzont 3–6 miesięcy, a przy nowej domenie bez profilu linków — dłuższy. Każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, nie usługę.',
+      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. W standardowym podejściu agencji SEO stabilne pozycje na frazach komercyjnych to zakres 3–6 miesięcy, ale my jesteśmy w stanie osiągnąć ten efekt już w 2–3 miesiące (przy nowej domenie bez profilu linków czas ten może być nieco dłuższy). Pamiętaj jednak: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',
       answerEn: 'The first visibility movements usually appear after 4–8 weeks, once Google has re-crawled the technical fixes and new content. Stable positions on commercial phrases are a 3–6 month horizon, and longer for a new domain with no link profile. Anyone promising a Top 3 in a month is selling you risk, not a service.'
     },
     {

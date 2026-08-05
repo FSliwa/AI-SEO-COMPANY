@@ -69,7 +69,7 @@ export default function Hero() {
                 <>
                   Kompleksowa Agencja SEO i Marketingowa z Warszawy.{' '}
                   <span className="hero-seo-h1-rest">
-                    Twój projekt i strony to nasz priorytet — skuteczne pozycjonowanie napędzające wzrost
+                    Twój projekt i strony to nasz priorytet - skuteczne pozycjonowanie napędzające wzrost
                   </span>
                 </>
               )}
