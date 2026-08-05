@@ -17,6 +17,54 @@ export default function PricingClient() {
       questionEn: 'How much does SEO cost?',
       answer: 'Cena pozycjonowania zależy od wielkości serwisu, konkurencyjności branży oraz aktualnego stanu technicznego strony. W AI SEO COMPANY nasze pakiety zaczynają się od transparentnych kwot, oferując pełną optymalizację SEO, dedykowaną strategię content marketingu oraz jakościowy link building, bez ukrytych kosztów. Przeczytaj więcej w naszym szczegółowym poradniku: <a href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style="text-decoration:underline">Ile kosztuje SEO w Polsce? Cennik i pakiety 2026</a>.',
       answerEn: 'The cost of SEO depends on the size of the website, industry competitiveness, and the current technical state of the site. At AI SEO COMPANY, our packages start at transparent rates, offering full SEO optimization, a dedicated content marketing strategy, and quality link building with no hidden costs. Read more in our detailed guide: <a href="/en/blog/how-much-does-seo-cost-pricing-packages-2026" style="text-decoration:underline">How Much Does SEO Cost? Pricing &amp; Packages 2026</a>.'
+    },
+    {
+      question: 'Czy muszę podpisywać umowę na dłuższy okres?',
+      questionEn: 'Do I have to sign a long-term contract?',
+      answer: 'Nie. Pracujemy w modelu elastycznej subskrypcji miesięcznej z możliwością rezygnacji w każdej chwili. Umowy wieloletnie z karami za wcześniejsze zakończenie uznajemy za sposób na zatrzymanie klienta, którego nie da się zatrzymać wynikami.',
+      answerEn: 'No. We work on a flexible monthly subscription that you can cancel at any time. Multi-year contracts with early-termination penalties are, in our view, a way of holding on to a client that results alone cannot hold.'
+    },
+    {
+      question: 'Czy audyt SEO jest wliczony w cenę pakietu?',
+      questionEn: 'Is the SEO audit included in the package price?',
+      answer: 'Tak. Każdy pakiet zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację techniczną. Audyt nie jest osobno płatnym dodatkiem — bez niego nie wiedzielibyśmy, od czego zacząć.',
+      answerEn: 'Yes. Every package includes a professional technical audit, original content production, a B2B link building strategy and technical optimisation. The audit is not a paid add-on — without it we would not know where to start.'
+    },
+    {
+      question: 'Czy SEO lokalne i wizytówka Google są dodatkowo płatne?',
+      questionEn: 'Are local SEO and the Google Business Profile charged separately?',
+      answer: 'Nie. SEO lokalne oraz optymalizacja Profilu Firmy w Google są w cenie każdego pakietu. Dla firm usługowych działających w konkretnym mieście to zwykle najszybsze źródło pierwszych zapytań, więc traktujemy je jako element bazowy, a nie opcję.',
+      answerEn: 'No. Local SEO and Google Business Profile optimisation are included in every package. For service businesses operating in a specific city this is usually the fastest source of first enquiries, so we treat it as a baseline element rather than an option.'
+    },
+    {
+      question: 'Jak często dostaję raport z postępów?',
+      questionEn: 'How often do I receive a progress report?',
+      answer: 'Co miesiąc otrzymujesz raport pozycji i ruchu. Raport pokazuje zmiany widoczności na monitorowanych frazach oraz ruch organiczny, żebyś mógł ocenić efekt niezależnie od naszych deklaracji. Dostęp do Google Search Console i Analytics pozostaje po Twojej stronie.',
+      answerEn: 'You receive a rankings and traffic report every month. It shows visibility changes on the tracked phrases and organic traffic, so you can judge the effect independently of what we claim. Access to Google Search Console and Analytics stays on your side.'
+    },
+    {
+      question: 'Od czego zależy, ile zapłacę za pozycjonowanie?',
+      questionEn: 'What determines how much I pay for SEO?',
+      answer: 'O cenie decydują trzy rzeczy: konkurencyjność fraz, na które chcesz się pozycjonować, stan techniczny strony na starcie oraz zakres potrzebnych treści. Domena bez historii w konkurencyjnej branży wymaga więcej pracy niż serwis z ugruntowanym profilem linków. Dlatego wycena zaczyna się od rozmowy o celach, a nie od cennika.',
+      answerEn: 'Three things drive the price: how competitive your target phrases are, the technical condition of the site at the start, and how much content is needed. A domain with no history in a competitive niche takes more work than a site with an established link profile. That is why a quote starts with a conversation about goals, not with a price list.'
+    },
+    {
+      question: 'Czym różnią się pakiety SEO Standard i SEO Premium?',
+      questionEn: 'What is the difference between the SEO Standard and SEO Premium packages?',
+      answer: 'Oba pakiety obejmują ten sam fundament: audyt techniczny, treści, link building i SEO lokalne. Różnica leży w skali — liczbie monitorowanych fraz, ilości publikowanych treści i intensywności pozyskiwania odnośników. Premium ma sens przy szerszym asortymencie usług lub bardziej konkurencyjnej branży; przy jednej usłudze w niszy lokalnej Standard zwykle wystarcza.',
+      answerEn: 'Both packages share the same foundation: technical audit, content, link building and local SEO. The difference is scale — the number of tracked phrases, the volume of published content and the intensity of link acquisition. Premium makes sense for a broader service range or a more competitive niche; for a single service in a local niche, Standard is usually enough.'
+    },
+    {
+      question: 'Kiedy zobaczę pierwsze efekty pozycjonowania?',
+      questionEn: 'When will I see the first SEO results?',
+      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. Stabilne pozycje na frazach komercyjnych to horyzont 3–6 miesięcy, a przy nowej domenie bez profilu linków — dłuższy. Każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, nie usługę.',
+      answerEn: 'The first visibility movements usually appear after 4–8 weeks, once Google has re-crawled the technical fixes and new content. Stable positions on commercial phrases are a 3–6 month horizon, and longer for a new domain with no link profile. Anyone promising a Top 3 in a month is selling you risk, not a service.'
+    },
+    {
+      question: 'Potrzebuję też nowej strony — czy da się to połączyć z pozycjonowaniem?',
+      questionEn: 'I also need a new website — can that be combined with SEO?',
+      answer: 'Tak. Poza subskrypcją miesięczną oferujemy pakiet łączący pozycjonowanie z wykonaniem strony internetowej. Ma to przewagę porządkową: strona powstaje od razu z architekturą informacji i strukturą adresów przygotowaną pod wyszukiwarkę, więc nie trzeba później migrować URL-i ani przebudowywać nawigacji. Szczegóły w sekcji <a href="/projektowanie-stron-internetowych" style="text-decoration:underline">projektowanie stron internetowych</a>.',
+      answerEn: 'Yes. Alongside the monthly subscription we offer a package combining SEO with building the website itself. That has a practical advantage: the site is built from the start with an information architecture and URL structure prepared for search, so there is no need to migrate URLs or rebuild navigation later. See <a href="/en/web-design" style="text-decoration:underline">web design</a> for details.'
     }
   ];
 
