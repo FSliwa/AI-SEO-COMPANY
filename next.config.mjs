@@ -51,6 +51,19 @@ const nextConfig = {
         destination: '/en/blog/how-much-does-seo-cost-pricing-packages-2026',
         permanent: true,
       },
+      // The two consolidated pricing articles were only redirected on /blog/…,
+      // so their /en/ counterparts stayed live, served Polish copy and carried
+      // no canonical at all. Same destination as the Polish rule, English slug.
+      {
+        source: '/en/blog/ile-kosztuje-pozycjonowanie-2026',
+        destination: '/en/blog/how-much-does-seo-cost-pricing-packages-2026',
+        permanent: true,
+      },
+      {
+        source: '/en/blog/audyt-seo-cena-2026-ile-zaplacisz-w-polsce',
+        destination: '/en/blog/how-much-does-seo-cost-pricing-packages-2026',
+        permanent: true,
+      },
       {
         source: '/en/blog/link-building-b2b-dla-marketerow-strategie-i-checklista',
         destination: '/en/blog/b2b-link-building-strategies-checklist',
