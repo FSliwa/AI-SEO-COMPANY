@@ -3,7 +3,7 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: 'Best Marketing Attribution Tools for 2026: Full Buyer Guide',
+    title: 'Best Marketing Attribution Tools for 2026: Full Buyer Guide | AI SEO Company',
     description: 'Discover the best marketing attribution tools and platforms. A comprehensive buyer guide for B2B, DTC, and agencies in 2026.',
     alternates: {
       canonical: `https://www.ai-seo-company.pl/en/blog/best-marketing-attribution-tools-for-2026`,
@@ -19,7 +19,7 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 export default async function ArticleAttributionTools({ params }) {
   const { locale } = await params;
@@ -35,7 +35,7 @@ export default async function ArticleAttributionTools({ params }) {
     { id: 'mta-vs-mmm', title: 'MTA vs MMM vs incrementality: which measurement approach do you actually need?' },
     { id: 'key-takeaways', title: 'Key Takeaways' },
     { id: 'data', title: 'What the data actually says about choosing attribution tools' },
-    { id: 'partner', title: 'When hiring an attribution implementation partner makes more sense' },
+    { id: 'partner', title: 'When hiring an attribution implementation partner makes more sense than going it alone' },
     { id: 'sources', title: 'Useful sources for deeper reading' }
   ];
 
@@ -84,7 +84,7 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><strong>Free baseline:</strong> Google Analytics 4 (GA4)</li>
               </ul>
               
-              <p>These <strong>leading attribution platforms</strong> and <strong>top marketing attribution software</strong> options cover the majority of use cases. Pick the “best for” match above, then run the vendor checklist in the how-to-choose section before signing anything. For teams that prefer a managed approach instead of self-serve tools, see the <a href="https://ai-seo-company.pl/">attribution implementation services</a> offered by AI SEO Company.</p>
+              <p>These <strong>leading attribution platforms</strong> and <strong>top marketing attribution software</strong> options cover the majority of use cases. Pick the “best for” match above, then run the vendor checklist in the how-to-choose section before signing anything. For teams that prefer a managed approach instead of self-serve tools, see the <Link href="/pozycjonowanie-stron-internetowych">attribution implementation services</Link> offered by AI SEO Company.</p>
 
               <ArticleTOC items={tocItems} />
               
@@ -270,7 +270,7 @@ export default async function ArticleAttributionTools({ params }) {
                 </table>
               </div>
               
-              <p>A note on methodology: Pricing figures come from publicly listed plans or vendor-sourced ranges as of mid-2026. These <strong>multi-touch attribution tools</strong> and <strong>best tools for marketing ROI</strong> should always be validated against your own conversion data during a trial period. For a deeper data audit before choosing any tool, start with an <a href="https://ai-seo-company.pl/">SEO and analytics audit</a>.</p>
+              <p>A note on methodology: Pricing figures come from publicly listed plans or vendor-sourced ranges as of mid-2026. These <strong>multi-touch attribution tools</strong> and <strong>best tools for marketing ROI</strong> should always be validated against your own conversion data during a trial period. For a deeper data audit before choosing any tool, start with an <Link href="/audyt-seo">SEO and analytics audit</Link>.</p>
 
               <h2 id="vendor-profiles">Vendor profiles: strengths, limitations, and who each tool actually fits</h2>
               
@@ -309,7 +309,7 @@ export default async function ArticleAttributionTools({ params }) {
               <p>Most decisions go wrong when teams evaluate tools before auditing their own data. Fix UTMs and CRM mapping first, learn <strong>how to measure marketing attribution</strong> properly, then select from the <strong>best marketing attribution tools</strong> and <strong>top marketing attribution software</strong> available.</p>
 
               <h2 id="partner">When hiring an attribution implementation partner makes more sense than going it alone</h2>
-              <p><a href="https://ai-seo-company.pl/">AI SEO Company</a> offers a managed path... If you want to start with a data audit, the <a href="https://ai-seo-company.pl/">SEO audit service</a> is the right first step.</p>
+              <p><Link href="/pozycjonowanie-stron-internetowych">AI SEO Company</Link> offers a managed path... If you want to start with a data audit, the <Link href="/audyt-seo">SEO audit service</Link> is the right first step.</p>
 
               <h2 id="sources">Useful sources for deeper reading</h2>
               <ul>
@@ -321,7 +321,7 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><a href="https://funnel.io/pricing" target="_blank" rel="noopener noreferrer">Funnel Pricing</a></li>
                 <li><a href="https://segmentstream.com/pricing" target="_blank" rel="noopener noreferrer">SegmentStream Pricing</a></li>
                 <li><a href="https://www.hubspot.com/pricing/marketing" target="_blank" rel="noopener noreferrer">HubSpot Marketing Hub Pricing</a></li>
-                <li><a href="https://ai-seo-company.pl/">AI SEO Company – SEO & Analytics Services</a></li>
+                <li><Link href="/pozycjonowanie-stron-internetowych">AI SEO Company – SEO & Analytics Services</Link></li>
               </ul>
               
               <BlogCTA 
@@ -335,9 +335,7 @@ export default async function ArticleAttributionTools({ params }) {
         </div>
       </article>
 
-      <div id="kontakt">
-        <Contact />
-      </div>
+      <Contact />
       <Footer />
     </main>
   );
