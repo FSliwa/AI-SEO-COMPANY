@@ -52,10 +52,13 @@ function CountUpMetric({ value }) {
   return <span ref={ref}>{displayValue}</span>;
 }
 
-export default function WhyUs() {
+export default function WhyUs({ isMainContent = false }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
   const lang = useLocale();
+
+  const Wrapper = isMainContent ? 'section' : 'aside';
+  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Dlaczego my' };
 
   const whyUsCards = [
     {
@@ -184,7 +187,7 @@ export default function WhyUs() {
   }, [isAutoplay, activeIndex]);
 
   return (
-    <section className="why-us" id="why-us" style={{ background: '#F5F5F7', padding: '7rem 0', color: '#1D1D1F' }}>
+    <Wrapper className="why-us" id="why-us" style={{ background: '#F5F5F7', padding: '7rem 0', color: '#1D1D1F' }} {...wrapperProps}>
       <div className="container" style={{ maxWidth: '1280px' }}>
         
         {/* Top Header Row with Apple-style Navigation Arrows */}
@@ -405,6 +408,6 @@ export default function WhyUs() {
         </Reveal>
 
       </div>
-    </section>
+    </Wrapper>
   );
 }

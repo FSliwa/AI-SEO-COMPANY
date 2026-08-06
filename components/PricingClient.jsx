@@ -136,7 +136,7 @@ export default function PricingClient() {
         </div>
       </section>
 
-      <Pricing />
+      <Pricing isMainContent={true} />
       
       <AppleFaq faqData={faqData} title={lang === 'pl' ? "Częste pytania o wycenę" : "Frequently Asked Questions about Pricing"} />
       

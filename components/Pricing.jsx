@@ -3,12 +3,15 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
-export default function Pricing() {
+export default function Pricing({ isMainContent = false }) {
   const lang = useLocale();
   const t = useTranslations('pricing');
 
+  const Wrapper = isMainContent ? 'section' : 'aside';
+  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Cennik' };
+
   return (
-    <section className="pricing" id="cennik">
+    <Wrapper className="pricing" id="cennik" {...wrapperProps}>
       <div className="container">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
@@ -98,7 +101,7 @@ export default function Pricing() {
               </div>
             </div>
             <ul className="pricing-features">
-              <li><strong style={{ color: 'var(--color-growth)' }}>{t('boosterBadge')}</strong></li>
+              <li><span style={{ fontWeight: 'bold', color: 'var(--color-growth)' }}>{t('boosterBadge')}</span></li>
               {lang === 'pl' ? (
                 <>
                   <li>Indywidualny projekt graficzny UX/UI (RWD)</li>
@@ -125,6 +128,6 @@ export default function Pricing() {
           {t('note')}
         </Reveal>
       </div>
-    </section>
+    </Wrapper>
   );
 }

@@ -33,14 +33,14 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <WhyUs />
+        <WhyUs isMainContent={true} />
         <Services />
         <Portfolio />
-        <Pricing />
+        <Pricing isMainContent={true} />
         <Results />
         <Testimonials />
         <Blog />
-        <Contact />
+        <Contact isMainContent={true} />
       </main>
       <Footer />
     </>

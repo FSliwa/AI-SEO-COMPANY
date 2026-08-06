@@ -61,10 +61,35 @@ export default function ArticleSchema({
     datePublished: resolvedDate || new Date().toISOString()
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: isEn ? 'Home' : 'Strona Główna',
+        item: `${BASE}${isEn ? '/en' : '/'}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: isEn ? 'Blog' : 'Blog',
+        item: `${BASE}${isEn ? '/en/blog' : '/blog'}`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: resolvedTitle,
+        item: `${BASE}${resolvedUrl}`
+      }
+    ]
+  };
+
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify([jsonLd, breadcrumbJsonLd]) }}
     />
   );
 }

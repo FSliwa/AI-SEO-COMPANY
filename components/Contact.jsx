@@ -4,13 +4,16 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
-export default function Contact() {
+export default function Contact({ isMainContent = false }) {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const lang = useLocale();
   const t = useTranslations('contact');
+
+  const Wrapper = isMainContent ? 'section' : 'aside';
+  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Kontakt' };
 
   // Native constraint-validation bubbles follow the browser UI language, not the
   // page, so a Polish browser showed "Wypełnij to pole" on the English form.
@@ -81,7 +84,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="contact" id="kontakt">
+    <Wrapper className="contact" id="kontakt" {...wrapperProps}>
       <div className="container">
         <RevealStagger className="contact-box">
           <RevealItem className="contact-info">
@@ -159,6 +162,6 @@ export default function Contact() {
           </RevealItem>
         </RevealStagger>
       </div>
-    </section>
+    </Wrapper>
   );
 }
