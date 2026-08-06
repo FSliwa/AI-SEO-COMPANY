@@ -416,6 +416,16 @@ button, input, select, textarea {
   transform: translateX(20px);
 }
 
+/* On ~360px handsets (Galaxy S21 FE and similar) the clamp floor pinned these
+   links at 2.5rem, which is wider than the viewport for the longest item
+   ("POZYCJONOWANIE", 14 characters) and pushed it onto a second line.
+   Below 430px the size scales with the viewport instead. */
+@media (max-width: 430px) {
+  .kota-fullscreen-links a {
+    font-size: clamp(1.5rem, 7.5vw, 2.5rem);
+  }
+}
+
 .kota-fullscreen-menu.closing .kota-fullscreen-links a {
   animation: none;
   opacity: 0;

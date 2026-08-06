@@ -12,6 +12,25 @@ export default function Contact() {
   const lang = useLocale();
   const t = useTranslations('contact');
 
+  // Native constraint-validation bubbles follow the browser UI language, not the
+  // page, so a Polish browser showed "Wypełnij to pole" on the English form.
+  // Supplying our own message per locale overrides that.
+  const validationMessages = {
+    required: lang === 'pl' ? 'Wypełnij to pole.' : 'Please fill in this field.',
+    email: lang === 'pl' ? 'Podaj poprawny adres e-mail.' : 'Please enter a valid email address.',
+    select: lang === 'pl' ? 'Wybierz jedną z opcji.' : 'Please select one of the options.'
+  };
+
+  const handleInvalid = (e) => {
+    const el = e.target;
+    if (el.validity.typeMismatch) el.setCustomValidity(validationMessages.email);
+    else if (el.tagName === 'SELECT') el.setCustomValidity(validationMessages.select);
+    else el.setCustomValidity(validationMessages.required);
+  };
+
+  // Clear the override so the field can validate normally on the next attempt.
+  const handleInput = (e) => e.target.setCustomValidity('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -97,17 +116,17 @@ export default function Contact() {
 
             <div className="form-group">
               <label className="form-label" htmlFor="name">{t('nameLabel')}</label>
-              <input type="text" id="name" name="name" className="form-input" placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'} required />
+              <input type="text" id="name" name="name" className="form-input" placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'} required onInvalid={handleInvalid} onInput={handleInput} />
             </div>
 
             <div className="form-group">
               <label className="form-label" htmlFor="email">{t('emailLabel')}</label>
-              <input type="email" id="email" name="email" className="form-input" placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'} required />
+              <input type="email" id="email" name="email" className="form-input" placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'} required onInvalid={handleInvalid} onInput={handleInput} />
             </div>
 
             <div className="form-group">
               <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
-              <select id="service" name="service" className="form-select" required>
+              <select id="service" name="service" className="form-select" required onInvalid={handleInvalid} onInput={handleInput}>
                 <option value="">{lang === 'pl' ? 'Wybierz pakiet...' : 'Select plan...'}</option>
                 <option value="standard">{lang === 'pl' ? 'SEO Standard (1 900 zł netto/mies.)' : 'SEO Standard (€450 net/mo)'}</option>
                 <option value="premium">{lang === 'pl' ? 'SEO Premium (2 500 zł netto/mies.)' : 'SEO Premium (€590 net/mo)'}</option>
@@ -126,8 +145,10 @@ export default function Contact() {
                 name="message" 
                 className="form-textarea" 
                 rows="4" 
-                placeholder={lang === 'pl' ? 'Opisz w kilku słowach swoje cele, obecną stronę oraz wymagany termin...' : 'Briefly describe your goals, current website, and required timeline...'} 
+                placeholder={lang === 'pl' ? 'Opisz w kilku słowach swoje cele, obecną stronę oraz wymagany termin...' : 'Briefly describe your goals, current website, and required timeline...'}
                 required
+                onInvalid={handleInvalid}
+                onInput={handleInput}
               ></textarea>
             </div>
 
