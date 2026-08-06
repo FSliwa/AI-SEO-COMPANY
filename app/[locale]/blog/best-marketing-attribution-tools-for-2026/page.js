@@ -84,7 +84,7 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><strong>Free baseline:</strong> Google Analytics 4 (GA4)</li>
               </ul>
               
-              <p>These <strong>leading attribution platforms</strong> and <strong>top marketing attribution software</strong> options cover the majority of use cases. Pick the “best for” match above, then run the vendor checklist in the how-to-choose section before signing anything. For teams that prefer a managed approach instead of self-serve tools, see the <Link href="/pozycjonowanie-stron-internetowych">attribution implementation services</Link> offered by AI SEO Company.</p>
+              <p>These <strong>leading attribution platforms</strong> and <strong>top marketing attribution software</strong> options cover the majority of use cases. Pick the “best for” match above, then run the vendor checklist in the how-to-choose section before signing anything. For teams that prefer a managed approach instead of self-serve tools, see the <Link href="/pozycjonowanie-stron-internetowych">B2B SEO & Marketing services</Link> offered by AI SEO Company.</p>
 
               <ArticleTOC items={tocItems} />
               
