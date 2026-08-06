@@ -2319,10 +2319,10 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 .article-content table {
-  width: 100%;
-  min-width: 600px;
-  border-collapse: collapse;
-  text-align: left;
+  width: 100% !important;
+  min-width: 900px !important;
+  border-collapse: collapse !important;
+  text-align: left !important;
   margin-bottom: 2.5rem;
 }
 
