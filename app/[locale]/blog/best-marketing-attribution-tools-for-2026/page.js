@@ -87,180 +87,180 @@ export default async function ArticleAttributionTools({ params }) {
               <h2 id="comparison">What are the best marketing attribution tools compared side by side?</h2>
               <p>The table below compares the <strong>leading attribution platforms</strong> and <strong>marketing analytics tools</strong> on the dimensions that actually drive purchase decisions. Pricing reflects publicly listed starting tiers or ballpark ranges as of mid-2026; many vendors require a demo for exact quotes. These <strong>marketing attribution solutions</strong> and <strong>effective attribution tools</strong> help teams understand true channel contribution.</p>
               
-              <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+              <div className="table-container">
+                <table>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', textAlign: 'left' }}>
-                      <th style={{ padding: '1rem', borderBottom: '2px solid #E5E5EA' }}>Tool</th>
-                      <th style={{ padding: '1rem', borderBottom: '2px solid #E5E5EA' }}>Best for</th>
-                      <th style={{ padding: '1rem', borderBottom: '2px solid #E5E5EA' }}>Pricing (ballpark)</th>
-                      <th style={{ padding: '1rem', borderBottom: '2px solid #E5E5EA' }}>Attribution models</th>
-                      <th style={{ padding: '1rem', borderBottom: '2px solid #E5E5EA' }}>Key integrations</th>
-                      <th style={{ padding: '1rem', borderBottom: '2px solid #E5E5EA' }}>Offline / identity tracking</th>
-                      <th style={{ padding: '1rem', borderBottom: '2px solid #E5E5EA' }}>Setup</th>
-                      <th style={{ padding: '1rem', borderBottom: '2px solid #E5E5EA' }}>B2B / eCom / Agency</th>
+                    <tr>
+                      <th>Tool</th>
+                      <th>Best for</th>
+                      <th>Pricing (ballpark)</th>
+                      <th>Attribution models</th>
+                      <th>Key integrations</th>
+                      <th>Offline / identity tracking</th>
+                      <th>Setup</th>
+                      <th>B2B / eCom / Agency</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Dreamdata</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>B2B revenue attribution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Freemium; paid custom (typically from ~$750–999/mo)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>First-touch, last-touch, linear, time-decay, data-driven</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Salesforce, HubSpot, LinkedIn, Google Ads</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Account-level identity stitching</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Managed onboarding</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>B2B</td>
+                      <td>Dreamdata</td>
+                      <td>B2B revenue attribution</td>
+                      <td>Freemium; paid custom (typically from ~$750–999/mo)</td>
+                      <td>First-touch, last-touch, linear, time-decay, data-driven</td>
+                      <td>Salesforce, HubSpot, LinkedIn, Google Ads</td>
+                      <td>Account-level identity stitching</td>
+                      <td>Managed onboarding</td>
+                      <td>B2B</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>HockeyStack</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>SaaS product + marketing attribution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Custom pricing (often from ~$2,200/mo)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Multi-touch, algorithmic</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Salesforce, HubSpot, Stripe, ad platforms</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Session-to-revenue stitching</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve + support</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>B2B / SaaS</td>
+                      <td>HockeyStack</td>
+                      <td>SaaS product + marketing attribution</td>
+                      <td>Custom pricing (often from ~$2,200/mo)</td>
+                      <td>Multi-touch, algorithmic</td>
+                      <td>Salesforce, HubSpot, Stripe, ad platforms</td>
+                      <td>Session-to-revenue stitching</td>
+                      <td>Self-serve + support</td>
+                      <td>B2B / SaaS</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>HubSpot Marketing Hub</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>SMBs on HubSpot CRM</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Free tier; Starter from ~$20/seat; Professional from ~$800–890/mo; multi-touch in Enterprise (~$3,600/mo)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>First-touch, last-touch, linear, time-decay, full-path (Enterprise)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>HubSpot CRM, Google Ads, Facebook</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>CRM-linked contact tracking</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>B2B / SMB</td>
+                      <td>HubSpot Marketing Hub</td>
+                      <td>SMBs on HubSpot CRM</td>
+                      <td>Free tier; Starter from ~$20/seat; Professional from ~$800–890/mo; multi-touch in Enterprise (~$3,600/mo)</td>
+                      <td>First-touch, last-touch, linear, time-decay, full-path (Enterprise)</td>
+                      <td>HubSpot CRM, Google Ads, Facebook</td>
+                      <td>CRM-linked contact tracking</td>
+                      <td>Self-serve</td>
+                      <td>B2B / SMB</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Ruler Analytics</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Agencies, closed-loop B2B</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>From ~$179–400/mo (traffic-based)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Multi-touch, first, last, linear, time-decay</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Salesforce, HubSpot, GA4, Google Ads</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Lead-level CRM matching</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>B2B / Agencies</td>
+                      <td>Ruler Analytics</td>
+                      <td>Agencies, closed-loop B2B</td>
+                      <td>From ~$179–400/mo (traffic-based)</td>
+                      <td>Multi-touch, first, last, linear, time-decay</td>
+                      <td>Salesforce, HubSpot, GA4, Google Ads</td>
+                      <td>Lead-level CRM matching</td>
+                      <td>Self-serve</td>
+                      <td>B2B / Agencies</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Triple Whale</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Shopify / DTC ad profitability</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>From ~$149–219/mo (GMV-based)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>First-touch, last-touch, linear, Triple Pixel deterministic</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Shopify, Meta, TikTok, Google Ads</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Pixel-based, fast deploy</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>eCom / DTC</td>
+                      <td>Triple Whale</td>
+                      <td>Shopify / DTC ad profitability</td>
+                      <td>From ~$149–219/mo (GMV-based)</td>
+                      <td>First-touch, last-touch, linear, Triple Pixel deterministic</td>
+                      <td>Shopify, Meta, TikTok, Google Ads</td>
+                      <td>Pixel-based, fast deploy</td>
+                      <td>Self-serve</td>
+                      <td>eCom / DTC</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Northbeam</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>DTC creative-level paid media</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Starter from $1,500/mo; higher tiers custom</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Multi-touch, algorithmic</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Meta, TikTok, Google Ads, Shopify</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Pixel + probabilistic</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Managed</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>eCom / DTC</td>
+                      <td>Northbeam</td>
+                      <td>DTC creative-level paid media</td>
+                      <td>Starter from $1,500/mo; higher tiers custom</td>
+                      <td>Multi-touch, algorithmic</td>
+                      <td>Meta, TikTok, Google Ads, Shopify</td>
+                      <td>Pixel + probabilistic</td>
+                      <td>Managed</td>
+                      <td>eCom / DTC</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>CallRail</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Phone-lead attribution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>From ~$45–50/mo + usage</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Source-level call attribution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Google Ads, HubSpot, Salesforce, GA4</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Dynamic number insertion</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>B2B / Local / Agencies</td>
+                      <td>CallRail</td>
+                      <td>Phone-lead attribution</td>
+                      <td>From ~$45–50/mo + usage</td>
+                      <td>Source-level call attribution</td>
+                      <td>Google Ads, HubSpot, Salesforce, GA4</td>
+                      <td>Dynamic number insertion</td>
+                      <td>Self-serve</td>
+                      <td>B2B / Local / Agencies</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Funnel</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Data pipeline / ETL</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>From ~$200–400/mo</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>N/A (data connector, not attribution engine)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>500+ connectors; BigQuery, Looker, Tableau</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Data normalization layer</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>All</td>
+                      <td>Funnel</td>
+                      <td>Data pipeline / ETL</td>
+                      <td>From ~$200–400/mo</td>
+                      <td>N/A (data connector, not attribution engine)</td>
+                      <td>500+ connectors; BigQuery, Looker, Tableau</td>
+                      <td>Data normalization layer</td>
+                      <td>Self-serve</td>
+                      <td>All</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Invoca</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Enterprise call analytics</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Custom pricing</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>AI-driven call attribution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Salesforce, Adobe, Google Ads, Meta</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Call transcription + AI tagging</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Managed</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Enterprise / B2B</td>
+                      <td>Invoca</td>
+                      <td>Enterprise call analytics</td>
+                      <td>Custom pricing</td>
+                      <td>AI-driven call attribution</td>
+                      <td>Salesforce, Adobe, Google Ads, Meta</td>
+                      <td>Call transcription + AI tagging</td>
+                      <td>Managed</td>
+                      <td>Enterprise / B2B</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>WhatConverts</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>SMB multi-channel lead tracking</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>From ~$30/mo</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Multi-channel source attribution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Google Ads, GA4, HubSpot, Salesforce</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Lead-level tracking</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>SMB / Agencies</td>
+                      <td>WhatConverts</td>
+                      <td>SMB multi-channel lead tracking</td>
+                      <td>From ~$30/mo</td>
+                      <td>Multi-channel source attribution</td>
+                      <td>Google Ads, GA4, HubSpot, Salesforce</td>
+                      <td>Lead-level tracking</td>
+                      <td>Self-serve</td>
+                      <td>SMB / Agencies</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>LeadsRx</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Mid-market cross-channel</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Custom pricing (product ends Oct 30, 2026)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Multi-touch, algorithmic</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Ad platforms, CRMs, analytics tools</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Cross-channel identity matching</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve + support</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Mid-market / Enterprise</td>
+                      <td>LeadsRx</td>
+                      <td>Mid-market cross-channel</td>
+                      <td>Custom pricing (product ends Oct 30, 2026)</td>
+                      <td>Multi-touch, algorithmic</td>
+                      <td>Ad platforms, CRMs, analytics tools</td>
+                      <td>Cross-channel identity matching</td>
+                      <td>Self-serve + support</td>
+                      <td>Mid-market / Enterprise</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>HubSpot Marketing Attribution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Existing HubSpot customers</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Included in higher HubSpot plans</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>First-touch, last-touch, linear, time-decay, full-path</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Native HubSpot CRM and campaigns</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Contact-level CRM tracking</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>B2B / SMB</td>
+                      <td>HubSpot Marketing Attribution</td>
+                      <td>Existing HubSpot customers</td>
+                      <td>Included in higher HubSpot plans</td>
+                      <td>First-touch, last-touch, linear, time-decay, full-path</td>
+                      <td>Native HubSpot CRM and campaigns</td>
+                      <td>Contact-level CRM tracking</td>
+                      <td>Self-serve</td>
+                      <td>B2B / SMB</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Adobe Analytics</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Enterprise analytics + Attribution IQ</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Custom (enterprise pricing)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Rule-based + algorithmic (Attribution IQ)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Adobe Experience Cloud, Salesforce, GA4</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Advanced identity resolution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Managed / complex</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Enterprise</td>
+                      <td>Adobe Analytics</td>
+                      <td>Enterprise analytics + Attribution IQ</td>
+                      <td>Custom (enterprise pricing)</td>
+                      <td>Rule-based + algorithmic (Attribution IQ)</td>
+                      <td>Adobe Experience Cloud, Salesforce, GA4</td>
+                      <td>Advanced identity resolution</td>
+                      <td>Managed / complex</td>
+                      <td>Enterprise</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Google Analytics 4</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Free web analytics baseline</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Free (GA4); enterprise pricing available</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Last-click, data-driven (Google-ecosystem)</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Google Ads, Search Console, BigQuery</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Google-ecosystem only</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>All (baseline)</td>
+                      <td>Google Analytics 4</td>
+                      <td>Free web analytics baseline</td>
+                      <td>Free (GA4); enterprise pricing available</td>
+                      <td>Last-click, data-driven (Google-ecosystem)</td>
+                      <td>Google Ads, Search Console, BigQuery</td>
+                      <td>Google-ecosystem only</td>
+                      <td>Self-serve</td>
+                      <td>All (baseline)</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>AppsFlyer</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Mobile app attribution</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Usage-based / custom</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Multi-touch, view-through, probabilistic</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Major ad networks, Salesforce, Adjust</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Deep SDK + device fingerprinting</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Self-serve + support</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Mobile / App</td>
+                      <td>AppsFlyer</td>
+                      <td>Mobile app attribution</td>
+                      <td>Usage-based / custom</td>
+                      <td>Multi-touch, view-through, probabilistic</td>
+                      <td>Major ad networks, Salesforce, Adjust</td>
+                      <td>Deep SDK + device fingerprinting</td>
+                      <td>Self-serve + support</td>
+                      <td>Mobile / App</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>SegmentStream</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>High-spend measurement + budget automation</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>From ~$800/mo (Online); higher tiers custom</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Multi-model + incrementality</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Google Ads, Meta, GA4, BigQuery</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Probabilistic + first-party</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Managed</td>
-                      <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>eCom / Enterprise</td>
+                      <td>SegmentStream</td>
+                      <td>High-spend measurement + budget automation</td>
+                      <td>From ~$800/mo (Online); higher tiers custom</td>
+                      <td>Multi-model + incrementality</td>
+                      <td>Google Ads, Meta, GA4, BigQuery</td>
+                      <td>Probabilistic + first-party</td>
+                      <td>Managed</td>
+                      <td>eCom / Enterprise</td>
                     </tr>
                   </tbody>
                 </table>
@@ -269,7 +269,7 @@ export default async function ArticleAttributionTools({ params }) {
               <p>A note on methodology: Pricing figures come from publicly listed plans or vendor-sourced ranges as of mid-2026. These <strong>multi-touch attribution tools</strong> and <strong>best tools for marketing ROI</strong> should always be validated against your own conversion data during a trial period. For a deeper data audit before choosing any tool, start with an <a href="https://ai-seo-company.pl/">SEO and analytics audit</a>.</p>
 
               <h2 id="data">What the data actually says about choosing attribution tools</h2>
-              <p>Most decisions go wrong when teams evaluate tools before auditing their own data. Fix UTMs and CRM mapping first, then select from the <strong>best marketing attribution tools</strong> and <strong>top marketing attribution software</strong> available.</p>
+              <p>Most decisions go wrong when teams evaluate tools before auditing their own data. Fix UTMs and CRM mapping first, learn <strong>how to measure marketing attribution</strong> properly, then select from the <strong>best marketing attribution tools</strong> and <strong>top marketing attribution software</strong> available.</p>
 
               <h2 id="partner">When hiring an attribution implementation partner makes more sense than going it alone</h2>
               <p><a href="https://ai-seo-company.pl/">AI SEO Company</a> offers a managed path... If you want to start with a data audit, the <a href="https://ai-seo-company.pl/">SEO audit service</a> is the right first step.</p>
