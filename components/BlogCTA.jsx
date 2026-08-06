@@ -1,7 +1,7 @@
 'use client';
 import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { blogPosts } from '@/lib/blogPosts';
+import { postsForLocale } from '@/lib/blogPosts';
 
 export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customCtaTitleEn, customCtaTextPl, customCtaTextEn }) {
   // Fall back to the active locale: several call sites render <BlogCTA /> with no
@@ -9,8 +9,8 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
   const activeLocale = useLocale();
   const lang = locale || activeLocale;
   // Get 2 related posts (excluding current)
-  const relatedPosts = blogPosts
-    .filter(p => p.slug !== currentSlug && !(lang === 'en' && p.plOnly))
+  const relatedPosts = postsForLocale(lang)
+    .filter(p => p.slug !== currentSlug)
     .slice(0, 2);
 
   return (

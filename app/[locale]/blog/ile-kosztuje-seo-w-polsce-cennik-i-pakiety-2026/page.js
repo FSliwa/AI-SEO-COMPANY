@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'Wondering how much effective SEO costs in 2026? See our SEO pricing and learn what affects the final cost of optimization.' : 'Zastanawiasz się, ile kosztuje skuteczne pozycjonowanie w 2026 roku? Zobacz nasz cennik SEO i dowiedz się, co wpływa na finalną cenę optymalizacji.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
-    languages: {
-      'pl': `https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
-      'x-default': `https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`,
-      'en': `https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026`
-    }
+    languages: articleLanguages('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', 'https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', 'https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026')
   },
 };
 }

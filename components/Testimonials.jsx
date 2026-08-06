@@ -138,7 +138,7 @@ export default function Testimonials() {
               }}>
                 {lang === 'pl' ? 'Doświadczenia i Rekomendacje' : 'Client Endorsements'}
               </h2>
-              <p style={{ color: '#6E6E73', fontSize: '1.25rem', margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+              <p style={{ color: '#6E6E73', fontSize: '1.25rem', margin: '0 auto', fontWeight: 500, lineHeight: 1.5 }}>
                 {lang === 'pl' 
                   ? 'Efekty, które budują zaufanie. Poznaj opinie partnerów i zobacz realne rezultaty.'
                   : 'Impact that builds trust. Explore feedback from our partners and see real results.'}

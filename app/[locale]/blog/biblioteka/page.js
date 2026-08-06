@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'All publications from our SEO content writers in one place. Browse the full library of articles on marketing and SEO provided by top search optimization' : 'Wszystkie publikacje naszego zespołu w jednym miejscu. Przeglądaj pełną bibliotekę artykułów o pozycjonowaniu i web designie.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/library' : 'https://www.ai-seo-company.pl/blog/biblioteka',
-    languages: {
-      'pl': 'https://www.ai-seo-company.pl/blog/biblioteka',
-      'x-default': 'https://www.ai-seo-company.pl/en/blog/library',
-      'en': 'https://www.ai-seo-company.pl/en/blog/library'
-    }
+    languages: articleLanguages('/blog/biblioteka', 'https://www.ai-seo-company.pl/blog/biblioteka', 'https://www.ai-seo-company.pl/en/blog/library')
   },
 };
 }

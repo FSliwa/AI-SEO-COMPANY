@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '../i18n/routing';
+import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +17,12 @@ export default function Header() {
 
   const toggleLang = (newLocale) => {
     if (lang === newLocale) return;
-    router.replace(pathname, { locale: newLocale });
+    // Articles can be published in one language only. Swapping the locale on the
+    // same path would land on a URL that does not exist in the target language,
+    // or serve the wrong language under it, so fall back to the blog index.
+    const post = blogPosts.find(p => p.slug === pathname);
+    const hasTranslation = !post || isPostAvailableIn(post, newLocale);
+    router.replace(hasTranslation ? pathname : '/blog', { locale: newLocale });
   };
 
   useEffect(() => {

@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
     description: locale === 'en' ? 'Boost your online visibility with SEO competitor analysis. Learn how to effectively compare your results with rivals and build a winning strategy.' : 'Zwiększ swoją widoczność w sieci z pomocą analizy konkurencji SEO. Dowiedz się, jak skutecznie porównać swoje wyniki z rywalami.',
     alternates: {
       canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide' : 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik',
-      languages: {
-        'pl': 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik',
-        'x-default': 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide',
-        'en': 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide'
-      }
+      languages: articleLanguages('/blog/analiza-konkurencji-seo-przewodnik', 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik', 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide')
     },
   };
 }

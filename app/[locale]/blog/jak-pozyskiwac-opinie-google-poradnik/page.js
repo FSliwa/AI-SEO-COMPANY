@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'The most effective method of getting Google reviews. Check how to build a process that automatically generates new reviews.' : 'Najskuteczniejsza metoda pozyskiwania opinii Google. Sprawdź, jak zbudować proces, który automatycznie generuje nowe recenzje.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews` : `https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik`,
-    languages: {
-      'pl': `https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik`,
-      'x-default': `https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik`,
-      'en': `https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews`
-    }
+    languages: articleLanguages('/blog/jak-pozyskiwac-opinie-google-poradnik', 'https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik', 'https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews')
   },
 };
 }

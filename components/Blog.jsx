@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { blogPosts } from '@/lib/blogPosts';
+import { postsForLocale } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function Blog() {
@@ -9,8 +9,7 @@ export default function Blog() {
   const t = useTranslations('blog');
 
   // Dynamic sorting algorithm: always top 3 latest posts
-  const posts = blogPosts
-    .filter(p => !(lang === 'en' && p.plOnly))
+  const posts = postsForLocale(lang)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3)
     .map((p, idx) => ({

@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
     description: locale === 'en' ? 'VWO vs Optimizely — feature, pricing, implementation, and GDPR comparison. See which A/B testing platform fits your team.' : 'VWO vs Optimizely — porównanie funkcji, cen, wdrożenia i zgodności z RODO. Sprawdź, która platforma do testów A/B pasuje do Twojego zespołu.',
     alternates: {
       canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie' : 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie',
-      languages: {
-        'pl': 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie',
-        'x-default': 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie',
-        'en': 'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie'
-      }
+      languages: articleLanguages('/blog/vwo-vs-optimizely-porownanie', 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie', 'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie')
     },
   };
 }

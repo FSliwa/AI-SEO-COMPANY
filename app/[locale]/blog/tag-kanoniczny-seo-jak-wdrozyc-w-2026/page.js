@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'The canonical tag (rel=canonical) is the foundation of SEO. See how to avoid duplicate content, protect crawl budget, and implement it correctly.' : 'Tag kanoniczny (rel=canonical) to fundament SEO. Zobacz, jak unikać duplikacji treści, chronić crawl budget i poprawnie go wdrażać.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026` : `https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
-    languages: {
-      'pl': `https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
-      'x-default': `https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
-      'en': `https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026`
-    }
+    languages: articleLanguages('/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026', 'https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026', 'https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026')
   },
 };
 }

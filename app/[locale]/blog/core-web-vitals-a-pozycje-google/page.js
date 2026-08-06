@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'Learn how Core Web Vitals (LCP, FID, CLS) impact your Google rankings. A practical optimization guide.' : 'Dowiedz się jak Core Web Vitals (LCP, FID, CLS) wpływają na pozycje Twojej strony w wyszukiwarce Google. Praktyczny przewodnik optymalizacji.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings` : `https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google`,
-    languages: {
-      'pl': `https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google`,
-      'x-default': `https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google`,
-      'en': `https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings`
-    }
+    languages: articleLanguages('/blog/core-web-vitals-a-pozycje-google', 'https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google', 'https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings')
   },
 };
 }

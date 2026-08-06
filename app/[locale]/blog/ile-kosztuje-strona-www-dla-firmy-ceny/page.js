@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta strona wizytówkowa w Polsce kosztuje od kilkuset złotych, ale profesjonalna strona to większy wydatek. Sprawdź, ile kosztuje strona www dla firmy i',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
-    languages: {
-      'pl': `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
-      'x-default': `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
-      'en': `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing`
-    }
+    languages: articleLanguages('/blog/ile-kosztuje-strona-www-dla-firmy-ceny', 'https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny', 'https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing')
   },
 };
 }

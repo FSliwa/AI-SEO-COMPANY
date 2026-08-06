@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { blogPosts } from '@/lib/blogPosts';
+import { postsForLocale } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 
@@ -58,8 +58,7 @@ export default function BlogGrid() {
 
 
   // Sort all posts by date (newest first)
-  const sortedPosts = blogPosts
-    .filter(p => !(lang === 'en' && p.plOnly))
+  const sortedPosts = postsForLocale(lang)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // Display only 4 posts (1 hero + 3 grid) on the main blog page

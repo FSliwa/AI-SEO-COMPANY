@@ -1,3 +1,4 @@
+import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -5,11 +6,7 @@ export async function generateMetadata({ params }) {
   description: locale === 'en' ? 'Everything you need to know about B2B link acquisition. Discover effective link building methods that actually translate into Google visibility.' : 'Wszystko co musisz wiedzieć o pozyskiwaniu linków B2B. Odkryj skuteczne metody link buildingu, które faktycznie przekładają się na widoczność w Google.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist` : `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
-    languages: {
-      'pl': `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
-      'x-default': `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
-      'en': `https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist`
-    }
+    languages: articleLanguages('/blog/link-building-b2b-dla-marketerow-strategie-i-checklista', 'https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista', 'https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist')
   },
 };
 }
