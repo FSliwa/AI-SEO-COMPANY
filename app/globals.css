@@ -2320,7 +2320,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 .article-content table {
   width: 100% !important;
-  min-width: 900px !important;
+  min-width: max-content !important;
   border-collapse: collapse !important;
   text-align: left !important;
   margin-bottom: 2.5rem;
@@ -2331,12 +2331,14 @@ section, aside.pricing, aside.contact, aside.why-us {
   font-weight: 600;
   background-color: var(--color-bg-alt);
   border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
 }
 
 .article-content td {
   padding: 1rem;
   border-bottom: 1px solid var(--color-border);
   color: #4B5563;
+  max-width: 450px;
 }
 
 .article-content .table-container {
