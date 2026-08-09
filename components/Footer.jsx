@@ -25,6 +25,12 @@ export default function Footer() {
               <p style={{ fontSize: '0.9rem', maxWidth: '320px', color: '#94A3B8' }}>
                 {t('desc')}
               </p>
+              <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '1rem', lineHeight: '1.5' }}>
+                <p style={{ margin: 0 }}><strong>AI SEO Company</strong> to marka należąca do:</p>
+                <p style={{ margin: 0 }}>AI Signals Company Prosta Spółka Akcyjna</p>
+                <p style={{ margin: 0 }}>NIP: 5253090237</p>
+                <p style={{ margin: 0 }}>ul. Grzybowska 12/14, 00-132 Warszawa</p>
+              </div>
             </div>
             <div className="footer-col">
               <p className="footer-heading">{lang === 'pl' ? 'Nawigacja' : 'Navigation'}</p>
