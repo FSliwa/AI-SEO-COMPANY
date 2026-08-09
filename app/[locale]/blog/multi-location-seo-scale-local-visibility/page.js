@@ -183,7 +183,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     </table>
                   </div>
 
-                  <p><Link href="/en/blog/canonical-tag-seo-guide-2026">Ahrefs&apos; franchise SEO guide</Link> reinforces this: subfolders give you both local and national ranking opportunities simultaneously, because every location page contributes to the same domain&apos;s topical authority. A Chicago location page ranking for &quot;HVAC repair Chicago&quot; also strengthens the domain&apos;s overall HVAC authority, which lifts national rankings.</p>
+                  <p><Link href="/blog/canonical-tag-seo-guide-2026">Ahrefs&apos; franchise SEO guide</Link> reinforces this: subfolders give you both local and national ranking opportunities simultaneously, because every location page contributes to the same domain&apos;s topical authority. A Chicago location page ranking for &quot;HVAC repair Chicago&quot; also strengthens the domain&apos;s overall HVAC authority, which lifts national rankings.</p>
                   
                   <h3>When subdomains or separate domains make sense</h3>
                   <p>There are real exceptions. If your company acquired a brand with strong existing domain authority, migrating immediately to a subfolder could destroy rankings you paid for. Separate domains also make sense when locations operate under genuinely different brand names, serve different languages with distinct legal requirements, or are franchise units that own their own web presence contractually. In those cases, the trade-off is conscious and documented, not accidental. Your <strong>franchise SEO strategy</strong> should define these exceptions explicitly before any migration begins.</p>
@@ -215,7 +215,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   
                   <p>Title tag pattern: <code>[Service] in [City] | [Brand Name]</code>. Meta description: write a unique one per location that mentions the neighborhood or a local landmark. It takes 30 seconds per location and signals to Google that a human touched this page.</p>
                   
-                  <p><strong>When a location closes:</strong> redirect the URL to the nearest open location or to the location directory page. Do not leave it live with outdated hours. Do not delete it without a redirect. Update the GBP immediately and mark it as permanently closed. The <Link href="/en/blog/local-seo-for-companies">local SEO trust signals guide</Link> covers the full process for managing location lifecycle changes.</p>
+                  <p><strong>When a location closes:</strong> redirect the URL to the nearest open location or to the location directory page. Do not leave it live with outdated hours. Do not delete it without a redirect. Update the GBP immediately and mark it as permanently closed. The <Link href="/blog/local-seo-for-companies">local SEO trust signals guide</Link> covers the full process for managing location lifecycle changes.</p>
                   
                   <p><strong>Pro Tip:</strong> Service-area pages follow different rules — see the &quot;Handling overlapping service areas&quot; section below for when and how to create them safely.</p>
                   
@@ -371,7 +371,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     <li>Monitor for crawl errors and coverage drops weekly for the first month.</li>
                   </ul>
                   
-                  <p>The <Link href="/en/seo-services">Ai-seo-company SEO services team</Link> handles programmatic deployments with a pre-launch QA gate that checks schema validity, canonical correctness, and content uniqueness thresholds before any location page goes live.</p>
+                  <p>The <Link href="/seo-services">Ai-seo-company SEO services team</Link> handles programmatic deployments with a pre-launch QA gate that checks schema validity, canonical correctness, and content uniqueness thresholds before any location page goes live.</p>
                   
                   <h2 id="how-internal-linking-and-governance-prevent-location-cannibalization">How internal linking and governance prevent location cannibalization</h2>
                   <p>Two location pages competing for the same query is a governance failure, not a technical one. It happens when no one owns the URL naming convention, when service pages and location pages target the same keywords, or when a regional hub page and a city page both try to rank for &quot;plumber in Dallas.&quot;</p>
@@ -388,7 +388,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   </ul>
                   
                   <h3>Handling overlapping service areas</h3>
-                  <p>When two locations are close enough to compete for the same local queries, the solution is differentiation, not deletion. Give each location page a distinct service emphasis, a different staff profile, and different local landmarks in the directions section. Use internal links to signal which page owns which intent: link &quot;plumbing repair in North Dallas&quot; to the Plano location, and &quot;plumbing repair in South Dallas&quot; to the Irving location. The <Link href="/en/blog/library">Ai-seo-company content library</Link> includes templates for location page differentiation in overlapping markets.</p>
+                  <p>When two locations are close enough to compete for the same local queries, the solution is differentiation, not deletion. Give each location page a distinct service emphasis, a different staff profile, and different local landmarks in the directions section. Use internal links to signal which page owns which intent: link &quot;plumbing repair in North Dallas&quot; to the Plano location, and &quot;plumbing repair in South Dallas&quot; to the Irving location. The <Link href="/blog/library">Ai-seo-company content library</Link> includes templates for location page differentiation in overlapping markets.</p>
                   
                   <p>Service-area pages for locations without a physical storefront need extra care. Only create them when there is genuine, business-backed coverage. A service-area page for a city where you have no staff, no customers, and no operations is a doorway page by another name.</p>
                   
@@ -525,7 +525,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   <h2 id="ai-seo-companys-multi-location-seo-services">Ai-seo-company&apos;s multi-location SEO services</h2>
                   <p>Running a multi-location SEO program in-house means managing GBP verification, citation audits, schema validation, content governance, and location-level reporting simultaneously. Most marketing teams hit a ceiling around 15–20 locations where the coordination cost starts outpacing the output.</p>
                   
-                  <p>Ai-seo-company delivers the full program: <Link href="/en/seo-audit">technical SEO audits</Link> that surface every NAP inconsistency, duplicate page, and schema error before they compound; location page templates built with required unique content blocks; GBP management and citation sync through BrightLocal and Whitespark; and a Looker Studio measurement dashboard that gives corporate and local stakeholders their own view of performance.</p>
+                  <p>Ai-seo-company delivers the full program: <Link href="/seo-audit">technical SEO audits</Link> that surface every NAP inconsistency, duplicate page, and schema error before they compound; location page templates built with required unique content blocks; GBP management and citation sync through BrightLocal and Whitespark; and a Looker Studio measurement dashboard that gives corporate and local stakeholders their own view of performance.</p>
                   
                   <p>The engagement starts with an audit. You get a prioritized action list, a master NAP repository, and a clear picture of which locations need the most work and why. While a typical agency needs 3–6 months for this, Ai-seo-company completes the build phase in 2–3 months in most cases, followed by ongoing management at whatever scale your network requires. Transparent monthly retainer pricing, no long-term lock-in.</p>
                   
@@ -542,9 +542,9 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   
                   <h2>Recommended</h2>
                   <ul>
-                    <li><Link href="/en/blog/local-seo-for-companies">Local SEO Guide for B2B Businesses | 2026</Link></li>
+                    <li><Link href="/blog/local-seo-for-companies">Local SEO Guide for B2B Businesses | 2026</Link></li>
                     <li><Link href="/blog/seo-lokalne-dla-firm-w-warszawie">SEO Lokalne dla Firm w Warszawie | Poradnik 2026</Link></li>
-                    <li><Link href="/en/local-seo-warsaw">Local SEO Agency, Companies & Search Engine Optimization Near Me</Link></li>
+                    <li><Link href="/local-seo-warsaw">Local SEO Agency, Companies & Search Engine Optimization Near Me</Link></li>
                     <li><Link href="/seo-lokalne-warszawa">SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm</Link></li>
                   </ul>
                 </>
