@@ -91,13 +91,10 @@ export default async function ArticleCwvPage({ params }) {
               <p>Simply reducing image sizes will not help if the server responds too slowly (TTFB). Migrating to more modern architectures (such as Next.js App Router with React Server Components) means that the entire burden of database logic processing is done once on the server and distributed.</p>
               <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas.</p>
 
-              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
-                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
-                  <h3>Speed up your website</h3>
-                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>We will conduct a free technical audit of your website and show you how to improve your PageSpeed Insights scores.</p>
-                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Consult Your Project</a>
-                </div>
-              </div>
+              <BlogCTA 
+                locale={locale} 
+                currentSlug="/blog/core-web-vitals-a-pozycje-google" 
+              />
             </div>
           </Reveal>
         </div>
@@ -205,8 +202,6 @@ export default async function ArticleCwvPage({ params }) {
               <BlogCTA 
                 locale={locale} 
                 currentSlug="/blog/core-web-vitals-a-pozycje-google" 
-                customCtaTitlePl="Przyspiesz swoją stronę"
-                customCtaTextPl="Przeprowadzimy darmowy audyt techniczny Twojej witryny i wskażemy, jak poprawić wyniki PageSpeed Insights."
               />
             </div>
           </Reveal>

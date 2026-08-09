@@ -98,13 +98,10 @@ export default async function ArticleCennikPage({ params }) {
               <h2 id="the-role-of-ai">The role of AI in modern SEO pricing</h2>
               <p>Artificial Intelligence is radically transforming how SEO services are priced and delivered. Agencies leveraging advanced AI tools can perform large-scale data analysis, semantic keyword research, and competitor backlink profiling much faster than before. However, this doesn't necessarily mean SEO is becoming cheaper. Instead, the focus is shifting toward higher quality and strategic execution. While AI can draft content outlines, human expertise is still required to inject brand voice, ensure factual accuracy, and satisfy Google's E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) guidelines. Therefore, when you pay for premium SEO in 2026, you are investing in the sophisticated human orchestration of AI tools, ensuring your brand stands out in an increasingly automated digital ecosystem.</p>
 
-              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
-                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
-                  <h3>Check our transparent pricing</h3>
-                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>No hidden fees. Full transparency.</p>
-                  <Link href="/cennik-pozycjonowania" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>View Pricing Packages</Link>
-                </div>
-              </div>
+              <BlogCTA 
+                locale={locale} 
+                currentSlug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" 
+              />
             </div>
           </Reveal>
         </div>

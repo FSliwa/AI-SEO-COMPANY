@@ -290,10 +290,10 @@ window.dataLayer.push({
                   
                   <p>Do codziennej pracy z GTM najczęściej sięgaj po dokumentację na <code>developers.google.com</code> — znajdziesz tam specyfikacje techniczne dataLayer i listę zalecanych nazw zdarzeń. Panel <code>support.google.com</code> jest lepszy do szybkich instrukcji konfiguracyjnych bez zagłębiania się w kod.</p>
 
-                  <h2 id="rekomendacja">Rekomendacja</h2>
-                  <ul>
-                    <li><Link href="/" style={{ color: '#0066cc', textDecoration: 'underline' }}>Agencja SEO Warszawa | Branding, Web Design & Pozycjonowanie — AI SEO COMPANY</Link></li>
-                  </ul>
+                  <BlogCTA 
+                    locale={locale} 
+                    currentSlug="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik" 
+                  />
                 </>
               )}
             </div>
