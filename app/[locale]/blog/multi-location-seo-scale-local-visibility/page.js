@@ -540,13 +540,10 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     <li><a href="https://www.searchenginejournal.com/local-seo-multiple-locations/370704/" target="_blank" rel="noopener noreferrer">The Complete Guide To Local SEO For Multiple Locations</a></li>
                   </ul>
                   
-                  <h2>Recommended</h2>
-                  <ul>
-                    <li><Link href="/blog/local-seo-for-companies">Local SEO Guide for B2B Businesses | 2026</Link></li>
-                    <li><Link href="/blog/seo-lokalne-dla-firm-w-warszawie">SEO Lokalne dla Firm w Warszawie | Poradnik 2026</Link></li>
-                    <li><Link href="/local-seo-warsaw">Local SEO Agency, Companies & Search Engine Optimization Near Me</Link></li>
-                    <li><Link href="/seo-lokalne-warszawa">SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm</Link></li>
-                  </ul>
+                  <BlogCTA 
+                    locale={locale} 
+                    currentSlug="/blog/multi-location-seo-scale-local-visibility" 
+                  />
                 </>
               )}
             </div>
