@@ -343,9 +343,46 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>To rozróżnienie jest ważne, bo kalkulator Mailchimpa eksponuje nie cenę katalogową, lecz <strong>ofertę wprowadzającą: 15% taniej przez pierwsze 12 miesięcy</strong>, po których stawka wraca do pełnej. Duża liczba na karcie planu to właśnie ta promocja, a cena docelowa kryje się w drobnym dopisku „then, starts at". Przykładowo Standard przy 20 001–25 000 kontaktów pokazuje 230 €, ale realnie kosztuje 271 €; Premium na tym progu to 460 € w promocji i 542 € po roku. Rabat obowiązuje od 10 000 kontaktów w górę — poniżej tego progu dostępny jest wyłącznie 14-dniowy okres próbny.</p>
 
-                  <p>Pełna drabinka Mailchimpa w euro (ceny katalogowe, Essentials / Standard / Premium): widełki 2 501–5 000 kontaktów 66 € / 88 € / 306 €, przy 5 001–10 000 — 96 € / 118 € / 306 €, przy 10 001–15 000 — 158 € / 201 € / 406 €, przy 15 001–20 000 — 201 € / 249 € / 467 €, przy 20 001–25 000 — 236 € / 271 € / 542 €, przy 25 001–30 000 — 262 € / 297 € / 598 €, przy 30 001–40 000 — 297 € / 358 € / 655 €, a przy 40 001–50 000 — 336 € / 393 € / 712 €. Plan Premium zawsze obejmuje pakiet do 10 000 kontaktów, więc przy mniejszej liście i tak kosztuje 306 € — dla małych baz realny wybór jest tylko między Essentials a Standardem. Warto zauważyć, że polski cennik nie jest prostym przeliczeniem dolarowego: przy 1 000 kontaktów Starter kosztuje 59 zł, choć przy kursie wynikającym z pozostałych progów wypadałoby ok. 72 zł — próg wejścia jest w Polsce po prostu tańszy. Powyżej 100 000 kontaktów plany standardowe przestają być dostępne i zostaje wyłącznie Enterprise z wyceną indywidualną. Rabaty działają inaczej w obu narzędziach. GetResponse obniża cenę o 18% przy płatności rocznej (Starter przy 1 000 kontaktów spada z 59 zł do 48,38 zł, Creator przy 25 000 z 919 zł do 753,58 zł) — cennik oferuje tylko te dwa tryby rozliczenia — a organizacjom pozarządowym daje nawet 50% zniżki. Mailchimp oferuje 15% na 12 miesięcy dopiero od pakietu obejmującego 10 000 kontaktów, czyli od widełek 5 001–10 000 w górę — przy mniejszych listach dostępny jest wyłącznie 14-dniowy okres próbny — oraz 15% dla zweryfikowanych organizacji non profit.</p>
+                  <h3>Pełna drabinka Mailchimpa w euro (ceny katalogowe)</h3>
+                  <div className="table-container">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Liczba kontaktów</th>
+                          <th>Essentials</th>
+                          <th>Standard</th>
+                          <th>Premium</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>2 501–5 000</td><td>66 €</td><td>88 €</td><td>306 €</td></tr>
+                        <tr><td>5 001–10 000</td><td>96 €</td><td>118 €</td><td>306 €</td></tr>
+                        <tr><td>10 001–15 000</td><td>158 €</td><td>201 €</td><td>406 €</td></tr>
+                        <tr><td>15 001–20 000</td><td>201 €</td><td>249 €</td><td>467 €</td></tr>
+                        <tr><td>20 001–25 000</td><td>236 €</td><td>271 €</td><td>542 €</td></tr>
+                        <tr><td>25 001–30 000</td><td>262 €</td><td>297 €</td><td>598 €</td></tr>
+                        <tr><td>30 001–40 000</td><td>297 €</td><td>358 €</td><td>655 €</td></tr>
+                        <tr><td>40 001–50 000</td><td>336 €</td><td>393 €</td><td>712 €</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
 
-                  <p>Warto znać sposób naliczania. Mailchimp rozlicza w widełkach (0–500, 501–1 500, 1 501–2 500, 2 501–5 000, 5 001–10 000 i dalej), więc lista licząca 1 000 adresów kosztuje tyle samo co 1 500 — w euro jest to 24 € za Essentials i 40 € za Standard. GetResponse nalicza opłatę według szczytowej liczby aktywnych kontaktów w miesiącu oraz liczby kontaktów dodanych w tym okresie, niezależnie od tego, co się z nimi później stanie.</p>
+                  <p><strong>Ważne niuanse cenników:</strong></p>
+                  <ul>
+                    <li><strong>Plan Premium w Mailchimp:</strong> Zawsze obejmuje pakiet do 10 000 kontaktów, więc przy mniejszej liście i tak kosztuje 306 € — dla małych baz realny wybór to tylko Essentials lub Standard.</li>
+                    <li><strong>Koszty wejścia w GetResponse:</strong> Polski cennik nie jest prostym przeliczeniem dolarowego. Przy 1 000 kontaktów Starter kosztuje 59 zł (choć przy kursie wynikającym z pozostałych progów wypadałoby ok. 72 zł). Próg wejścia w Polsce jest po prostu tańszy.</li>
+                    <li><strong>Skala Enterprise:</strong> Powyżej 100 000 kontaktów plany standardowe przestają być dostępne u obu dostawców — zostaje wyłącznie pakiet Enterprise z wyceną indywidualną.</li>
+                  </ul>
+
+                  <p><strong>Jak działają rabaty?</strong></p>
+                  <ul>
+                    <li><strong>GetResponse:</strong> Obniża cenę o 18% przy płatności rocznej (np. Starter przy 1 000 kontaktów spada z 59 zł do 48,38 zł, a Creator przy 25 000 z 919 zł do 753,58 zł). Cennik oferuje tylko te dwa tryby rozliczenia, a organizacjom pozarządowym daje nawet 50% zniżki.</li>
+                    <li><strong>Mailchimp:</strong> Oferuje 15% na 12 miesięcy, ale dopiero od pakietu obejmującego 10 000 kontaktów (czyli od widełek 5 001–10 000 w górę) — przy mniejszych listach dostępny jest wyłącznie 14-dniowy okres próbny. Zapewnia również 15% zniżki dla zweryfikowanych organizacji non profit.</li>
+                  </ul>
+
+                  <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#F5F5F7', borderRadius: '12px', marginBottom: '2rem' }}>
+                    <strong>Warto znać sposób naliczania:</strong> Mailchimp rozlicza w widełkach (0–500, 501–1 500, 1 501–2 500, 2 501–5 000, 5 001–10 000 i dalej), więc lista licząca 1 000 adresów kosztuje tyle samo co 1 500 — w euro jest to 24 € za Essentials i 40 € za Standard. GetResponse nalicza opłatę według szczytowej liczby aktywnych kontaktów w miesiącu oraz liczby kontaktów dodanych w tym okresie, niezależnie od tego, co się z nimi później stanie.
+                  </p>
 
                   <p>Praktyczna reguła cenowa: <strong>punkt przecięcia wypada tuż przed progiem 5 000 kontaktów</strong>. Porównując plany o zbliżonych funkcjach — GetResponse Marketer kontra Mailchimp Standard, oba z pełną automatyzacją — przy 2 500 kontaktów tańszy jest Mailchimp (53 €, czyli ok. 225 zł, wobec 269 zł). Przy 5 000 kontaktów jest już remis: 88 € to około 374 zł wobec 359 zł u GetResponse. Przy 10 000 relacja odwraca się wyraźnie: Mailchimp kosztuje 118 € (ok. 500 zł), a GetResponse 439 zł. Przy 25 000 kontaktów różnica robi się dotkliwa: 271 € (ok. 1 150 zł) kontra 799 zł, czyli około 350 zł miesięcznie i ponad 4 000 zł rocznie. Przeliczenia przyjmują kurs 4,25 zł za euro — przy własnej kalkulacji podstaw aktualny. Warto jednak porównywać plany o zbliżonych funkcjach, nie najtańszy z najdroższym — Starter GetResponse nie ma automatyzacji na poziomie Standardu Mailchimpa.</p>
 
