@@ -56,13 +56,13 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
         <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
           <p style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem', display: 'block' }}>
             {lang === 'en' 
-              ? (customCtaTitleEn || 'Dominate your local market') 
-              : (customCtaTitlePl || 'Zdominuj lokalny rynek')}
+              ? (customCtaTitleEn || 'Dominate your market') 
+              : (customCtaTitlePl || 'Zdominuj swój rynek')}
           </p>
           <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
             {lang === 'en' 
-              ? (customCtaTextEn || 'Want to outpace your competition? Leave us a message below and we will prepare a dedicated strategy.')
-              : (customCtaTextPl || 'Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię.')}
+              ? (customCtaTextEn || 'Want to outpace your competition in search results? Leave us a message below and we will prepare a dedicated SEO strategy.')
+              : (customCtaTextPl || 'Chcesz wyprzedzić konkurencję w wynikach wyszukiwania? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię SEO.')}
           </p>
           <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
             {lang === 'en' ? 'Consult Your Project' : 'Skonsultuj Projekt'}

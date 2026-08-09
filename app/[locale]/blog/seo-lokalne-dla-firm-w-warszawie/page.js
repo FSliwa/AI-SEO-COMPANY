@@ -95,9 +95,9 @@ export default async function ArticleLokalnePage({ params }) {
 
               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
                 <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
-                  <h3>Dominate your local market</h3>
-                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>Let our experts position your business at the top of Google Maps.</p>
-                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Get a Local SEO Quote</a>
+                  <h3>Dominate your market</h3>
+                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>Let our experts position your business at the top of search results.</p>
+                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Get an SEO Quote</a>
                 </div>
               </div>
             </div>
@@ -221,8 +221,6 @@ export default async function ArticleLokalnePage({ params }) {
               <BlogCTA 
                 locale={locale} 
                 currentSlug="/blog/seo-lokalne-dla-firm-w-warszawie" 
-                customCtaTitlePl="Zdominuj lokalny rynek"
-                customCtaTextPl="Chcesz wyprzedzić konkurencję w swojej okolicy? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię. Dzięki naszym sprawdzonym i zaawansowanym rozwiązaniom, Twój biznes zyska maksymalną widoczność na mapach Google, co przełoży się na realny wzrost zainteresowania i zapytań ofertowych ze strony Twoich bezpośrednich klientów, zamieszkujących najbliższą okolicę. Pozwól nam zająć się pozycjonowaniem i skup się na rozwijaniu swojego biznesu!"
               />
             </div>
           </Reveal>
