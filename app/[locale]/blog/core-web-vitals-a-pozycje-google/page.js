@@ -92,9 +92,13 @@ export default async function ArticleCwvPage({ params }) {
               <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas.</p>
 
               <BlogCTA 
-                locale={locale} 
-                currentSlug="/blog/core-web-vitals-a-pozycje-google" 
-              />
+  locale={locale} 
+  currentSlug="/blog/core-web-vitals-a-pozycje-google" 
+  customCtaTitlePl="Przyspiesz swoją stronę"
+  customCtaTextPl="Przeprowadzimy darmowy audyt techniczny Twojej witryny i wskażemy, jak poprawić wyniki PageSpeed Insights."
+  customCtaTitleEn="Speed up your website"
+  customCtaTextEn="We will conduct a free technical audit of your website and show you how to improve your PageSpeed Insights scores."
+/>
             </div>
           </Reveal>
         </div>
@@ -200,9 +204,13 @@ export default async function ArticleCwvPage({ params }) {
               </p>
 
               <BlogCTA 
-                locale={locale} 
-                currentSlug="/blog/core-web-vitals-a-pozycje-google" 
-              />
+  locale={locale} 
+  currentSlug="/blog/core-web-vitals-a-pozycje-google" 
+  customCtaTitlePl="Przyspiesz swoją stronę"
+  customCtaTextPl="Przeprowadzimy darmowy audyt techniczny Twojej witryny i wskażemy, jak poprawić wyniki PageSpeed Insights."
+  customCtaTitleEn="Speed up your website"
+  customCtaTextEn="We will conduct a free technical audit of your website and show you how to improve your PageSpeed Insights scores."
+/>
             </div>
           </Reveal>
         </div>

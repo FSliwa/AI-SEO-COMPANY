@@ -349,9 +349,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* Clear CTA Block */}
               <BlogCTA 
-                locale={locale} 
-                currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
-              />
+  locale={locale} 
+  currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
+  customCtaTitlePl="Zbuduj silny autorytet w B2B"
+  customCtaTextPl="Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO."
+  customCtaTitleEn="Build strong authority in B2B"
+  customCtaTextEn="Want to implement an effective link acquisition strategy in your company? Let's talk about a dedicated PR and SEO strategy."
+/>
 
             </div>
           </Reveal>
@@ -661,9 +665,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>Jak zorganizować pilotaż: wybierz jedną taktykę (np. broken link building lub outreach partnerski), zdefiniuj 10–15 celów, uruchom kampanię przez 4–6 tygodni i oceń wskaźnik odpowiedzi oraz konwersję do publikacji. Wyniki pilotażu dają realną podstawę do decyzji o skali programu.</p>
 
               <BlogCTA 
-                locale={locale} 
-                currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
-              />
+  locale={locale} 
+  currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
+  customCtaTitlePl="Zbuduj silny autorytet w B2B"
+  customCtaTextPl="Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO."
+  customCtaTitleEn="Build strong authority in B2B"
+  customCtaTextEn="Want to implement an effective link acquisition strategy in your company? Let's talk about a dedicated PR and SEO strategy."
+/>
             </div>
           </Reveal>
         </div>

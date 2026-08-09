@@ -404,9 +404,10 @@ export default async function ArticleReviewsPage({ params }) {
               </div>
 
               <BlogCTA 
-                locale={locale} 
-                currentSlug="/blog/jak-pozyskiwac-opinie-google-poradnik" 
-              />
+  locale={locale} 
+  currentSlug="/blog/jak-pozyskiwac-opinie-google-poradnik" 
+  customCtaTextPl={<>Chcesz wyprzedzić konkurencję w wynikach wyszukiwania? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię, w tym <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>wdrożenie procesu zbierania opinii</Link>.</>}
+/>
             </div>
           </Reveal>
         </div>
