@@ -2490,3 +2490,36 @@ section, aside.pricing, aside.contact, aside.why-us {
   line-height: 1.24;
 }
 
+
+/* ---------------------------------------------------------------------------
+   PHONES ONLY — subpage hero heading
+   Deliberately 600px, not the 768px block above: 768 is iPad portrait, and this
+   is meant for handsets only. Widest phone in portrait is ~430px.
+
+   Two problems this fixes, measured at 375px:
+   - the H1 clamp bottomed out at its 3.5rem minimum, so the heading rendered at
+     56px and ran to four lines, 235px tall
+   - main (100px) plus the section (130px) pushed the H1 down to 279px, so the
+     heading alone finished past 60% of the first screen
+
+   !important is required because the sizes are inline styles on the components.
+   --------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .subpage-hero {
+    padding-top: 48px !important;
+  }
+
+  .subpage-hero h1 {
+    font-size: clamp(1.9rem, 8.4vw, 2.6rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  /* The sub-headline sits two siblings after the H1 — a div on three pages, an
+     h2 on the SEO services page — and is fixed at 40px on phones. Left alone it
+     would now outrank the H1 it follows, so it scales with it. */
+  .subpage-hero h1 + div + div,
+  .subpage-hero h1 + div + h2 {
+    font-size: clamp(1.5rem, 6.4vw, 2.05rem) !important;
+    line-height: 1.2 !important;
+  }
+}
