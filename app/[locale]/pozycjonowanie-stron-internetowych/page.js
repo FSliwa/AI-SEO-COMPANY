@@ -36,6 +36,30 @@ const faqData = [
     questionEn: 'Do you guarantee the #1 position on Google search?',
     answer: 'Żadna uczciwa agencja nie gwarantuje statycznej pozycji nr 1 ze względu na zmienność algorytmów Google. Gwarantujemy natomiast stały wzrost widoczności, jakościowego ruchu oraz optymalizację współczynnika konwersji (CRO).',
     answerEn: 'No honest agency guarantees a static #1 position due to the volatility of Google\'s algorithms. However, we guarantee steady growth in visibility, quality traffic, and conversion rate optimization (CRO).'
+  },
+  {
+    question: 'Czym różni się pozycjonowanie od marketingu cyfrowego?',
+    questionEn: 'What is the difference between SEO and digital marketing?',
+    answer: 'Marketing cyfrowy to całość działań w kanałach online — reklama płatna, social media, e-mail, treści. Pozycjonowanie jest jednym z tych kanałów i odpowiada wyłącznie za widoczność w wynikach wyszukiwania. Różnica praktyczna dotyczy horyzontu: reklama przestaje przynosić kliknięcia w dniu wyłączenia budżetu, a pozycje zbudowane organicznie pracują dalej. Dlatego traktujemy oba kanały jako uzupełniające się, a nie konkurencyjne.',
+    answerEn: 'Digital marketing covers everything you do in online channels — paid ads, social, e-mail, content. SEO is one of those channels and answers only for visibility in search results. The practical difference is the horizon: paid stops delivering clicks the day the budget stops, while positions built organically keep working. That is why we treat SEO and digital marketing as complementary rather than competing, and why a plan combining search engine optimization and marketing usually beats either one on its own.'
+  },
+  {
+    question: 'Czy pozycjonowanie ma sens bez pozostałych działań marketingowych?',
+    questionEn: 'Does SEO make sense without the rest of your marketing?',
+    answer: 'Ma, ale wolniej. Ruch z wyszukiwarki trafia na stronę, która musi go przekonać — jeśli oferta, dowody społeczne i ścieżka kontaktu są słabe, wyższa pozycja podniesie liczbę wizyt, a nie liczbę zapytań. Dlatego przy każdym wdrożeniu patrzymy również na konwersję, a nie wyłącznie na pozycje.',
+    answerEn: 'It does, but more slowly. Search traffic lands on a page that still has to convince — if the offer, the proof and the contact path are weak, a higher position raises visits rather than enquiries. Good SEO and marketing therefore get planned together: we look at conversion alongside rankings on every engagement, because seo marketing digital work only pays off when the page can close.'
+  },
+  {
+    question: 'Czym właściwie jest SEO i skąd bierze się ta nazwa?',
+    questionEn: 'What exactly is SEO, and where does the name come from?',
+    answer: 'SEO to skrót od search engine optimization, czyli optymalizacji pod wyszukiwarki. Obejmuje trzy obszary: techniczny (czy wyszukiwarka może stronę zaindeksować i szybko wczytać), treściowy (czy strona odpowiada na intencję zapytania) oraz autorytet (czy inne serwisy się na nią powołują). Pominięcie któregokolwiek z nich zatrzymuje efekt pozostałych dwóch.',
+    answerEn: 'The acronym stands for search engine optimisation. SEO covers three areas: the technical one — whether a search engine can index and quickly load the page; the content one — whether the page answers the intent behind the query; and authority — whether other sites cite it. Skipping any of the three caps what the other two can achieve. Put plainly: there is no shortcut in SEO. Search engine optimization compounds, which is why we plan in quarters rather than weeks.'
+  },
+  {
+    question: 'Czy współpracujecie z zespołami in-house i innymi agencjami?',
+    questionEn: 'Do you work with in-house teams and other agencies?',
+    answer: 'Tak, w obu układach. Zespołom in-house zwykle przejmujemy część techniczną — audyt, architekturę informacji, poprawki wydajnościowe — a redakcja i kampanie zostają po ich stronie. Agencjom kreatywnym i mediowym dostarczamy warstwę wyszukiwarkową w modelu white-label, bez kontaktu z ich klientem końcowym. W obu przypadkach zakres i podział odpowiedzialności ustalamy na piśmie przed startem.',
+    answerEn: 'Yes, in both setups. For in-house teams we usually take over the technical side — audits, information architecture and SEO services they have no spare capacity for — while editorial work and campaigns stay with them. For creative and media agencies we supply the search layer white-label, with no contact with their end client. Either way the scope and the split of responsibilities are agreed in writing before we start. Most partners who come to us already run digital marketing. SEO is simply the layer that makes everything else compound instead of resetting each time a budget stops.'
   }
 ];
 
