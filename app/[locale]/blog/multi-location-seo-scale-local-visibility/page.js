@@ -14,7 +14,11 @@ export async function generateMetadata({ params }) {
     title: locale === 'en' ? 'Multi-Location SEO: Scale Local Visibility in 2026' : 'Multi-Location SEO: Scale Local Visibility',
     description: locale === 'en' ? 'A complete guide to scaling local visibility for multiple locations using single domains, GBP optimization, and programmatic local content.' : 'Poradnik multi-location SEO na rok 2026.',
     alternates: {
-      canonical: `https://www.ai-seo-company.pl/${locale}/blog/multi-location-seo-scale-local-visibility`,
+      // The site runs localePrefix 'as-needed' with Polish as default, so there
+      // is no /pl/ prefix — interpolating the locale produced /pl/blog/…, which
+      // 307s back here and closed a canonical loop. This post is enOnly, so the
+      // English URL is the canonical one in both cases.
+      canonical: 'https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility',
       languages: articleLanguages('/blog/multi-location-seo-scale-local-visibility', 'https://www.ai-seo-company.pl/blog/multi-location-seo-scale-local-visibility', 'https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility')
     },
   };

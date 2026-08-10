@@ -33,7 +33,13 @@ export default function sitemap() {
   // silently drops every new one — keep both sources in play.
   blogPosts.forEach(post => {
     const mapped = routing.pathnames[post.slug];
-    push(`${baseUrl}${(mapped && mapped.pl) || post.slug}`, 'weekly', 0.7);
+
+    // English-only posts have no Polish page to advertise. Listing one anyway
+    // put a URL in the sitemap whose canonical pointed at the English version,
+    // which reads as a contradiction: "index this" plus "no, index that".
+    if (!post.enOnly) {
+      push(`${baseUrl}${(mapped && mapped.pl) || post.slug}`, 'weekly', 0.7);
+    }
 
     // Polish-only posts have no English page to advertise.
     if (!post.plOnly) {
