@@ -24,6 +24,7 @@ import Process from '@/components/Process';
 import Results from '@/components/Results';
 import Testimonials from '@/components/Testimonials';
 import Blog from '@/components/Blog';
+import HomeFaq from '@/components/HomeFaq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -40,6 +41,7 @@ export default function Home() {
         <Results />
         <Testimonials />
         <Blog />
+        <HomeFaq />
         <Contact isMainContent={true} />
       </main>
       <Footer />
