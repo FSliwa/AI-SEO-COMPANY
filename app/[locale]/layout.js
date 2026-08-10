@@ -45,7 +45,14 @@ const jsonLdData = {
       '@type': ['LocalBusiness', 'ProfessionalService'],
       '@id': 'https://www.ai-seo-company.pl/#organization',
       'name': 'AI SEO COMPANY',
+      // The brand and the registered firm differ; both belong in the graph so the
+      // entity resolves against public registers as well as the brand name.
+      'legalName': 'AI SIGNALS COMPANY Prosta Spółka Akcyjna',
       'alternateName': 'Agencja SEO Warszawa AI SEO COMPANY',
+      'identifier': [
+        { '@type': 'PropertyValue', 'propertyID': 'KRS', 'value': '0001239983' },
+        { '@type': 'PropertyValue', 'propertyID': 'REGON', 'value': '544761611' }
+      ],
       'description': 'Nowoczesna agencja SEO Warszawa. Projektujemy wyszukiwalne strony internetowe, przeprowadzamy profesjonalny audyt SEO i realizujemy skuteczne pozycjonowanie stron.',
       'url': 'https://www.ai-seo-company.pl',
       'logo': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.svg',

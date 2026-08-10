@@ -27,9 +27,17 @@ export default function Footer() {
               </p>
               <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '1rem', lineHeight: '1.5' }}>
                 <p style={{ margin: 0 }}><strong>AI SEO Company</strong> to marka należąca do:</p>
-                <p style={{ margin: 0 }}>AI Signals Company Prosta Spółka Akcyjna</p>
+                {/* Art. 300(5) KSH: a prosta spółka akcyjna must state its firm,
+                    registered office and address, the registry court and KRS
+                    number, NIP, and the amount of share capital (kapitał akcyjny). */}
+                <p style={{ margin: 0 }}>AI SIGNALS COMPANY Prosta Spółka Akcyjna</p>
+                <p style={{ margin: 0 }}>ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p>
+                <p style={{ margin: 0 }}>
+                  {lang === 'pl' ? 'Sąd Rejonowy dla m.st. Warszawy w Warszawie' : 'District Court for the Capital City of Warsaw'}
+                </p>
+                <p style={{ margin: 0 }}>KRS: 0001239983</p>
                 <p style={{ margin: 0 }}>NIP: 5253090237</p>
-                <p style={{ margin: 0 }}>ul. Grzybowska 12/14, 00-132 Warszawa</p>
+                <p style={{ margin: 0 }}>REGON: 544761611</p>
               </div>
             </div>
             <div className="footer-col">
@@ -58,6 +66,7 @@ export default function Footer() {
                 <li><a href="mailto:kontakt@ai-seo-company.pl">kontakt@ai-seo-company.pl</a></li>
                 <li><Link href="/#kontakt">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</Link></li>
                 <li><Link href="/cookies">{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</Link></li>
+                <li><Link href="/regulamin">{lang === 'pl' ? 'Regulamin' : 'Terms of Service'}</Link></li>
               </ul>
             </div>
           </div>

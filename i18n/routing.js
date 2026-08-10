@@ -32,6 +32,10 @@ export const routing = defineRouting({
       pl: '/o-nas',
       en: '/about-us'
     },
+    '/regulamin': {
+      pl: '/regulamin',
+      en: '/terms'
+    },
     '/cookies': {
       pl: '/cookies',
       en: '/cookies'
