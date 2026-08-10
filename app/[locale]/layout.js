@@ -104,6 +104,26 @@ export default async function RootLayout({ children, params }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
         />
+        {/* Consent Mode v2 defaults. This must execute before the gtag library
+            loads, otherwise Analytics writes _ga cookies on first paint —
+            before the banner has been answered, which art. 173 of the Polish
+            electronic communications law does not allow. The banner calls
+            gtag('consent','update',…) once the user decides. */}
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              functionality_storage: 'granted',
+              security_storage: 'granted',
+              wait_for_update: 500
+            });
+          `}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-WVVRW8FP30"
           strategy="afterInteractive"

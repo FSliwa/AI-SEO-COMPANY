@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { Link } from '@/i18n/routing';
 
 export default function Contact({ isMainContent = false }) {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack');
@@ -154,6 +155,27 @@ export default function Contact({ isMainContent = false }) {
                 onInput={handleInput}
               ></textarea>
             </div>
+
+            {/* Art. 13 GDPR information duty: the form collects personal data,
+                so the notice has to appear where the data is entered, not only
+                in a policy the user may never open. */}
+            <p style={{ fontSize: '0.8rem', lineHeight: 1.5, color: '#6E6E73', margin: '0 0 1rem 0' }}>
+              {lang === 'pl' ? (
+                <>
+                  Administratorem Twoich danych jest AI SEO COMPANY, ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa.
+                  Dane z formularza przetwarzamy wyłącznie po to, żeby odpowiedzieć na Twoje zapytanie.
+                  Przysługuje Ci dostęp do danych, ich sprostowanie, usunięcie oraz sprzeciw wobec przetwarzania.
+                  Szczegóły znajdziesz w <Link href="/cookies" style={{ textDecoration: 'underline' }}>polityce prywatności</Link>.
+                </>
+              ) : (
+                <>
+                  The controller of your data is AI SEO COMPANY, ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland.
+                  Data from this form is processed solely to answer your enquiry.
+                  You have the right to access, rectify and erase your data, and to object to processing.
+                  Details are in our <Link href="/cookies" style={{ textDecoration: 'underline' }}>privacy policy</Link>.
+                </>
+              )}
+            </p>
 
             <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }} disabled={isSubmitting}>
               {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t('btnSend')}

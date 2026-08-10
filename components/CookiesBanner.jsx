@@ -18,12 +18,29 @@ export default function CookiesBanner() {
     marketing: false
   });
 
+  // Google Consent Mode defaults to denied in the layout. Nothing here stored a
+  // choice anywhere gtag could read it, so Analytics ran regardless of what the
+  // user clicked; this pushes the decision through to Consent Mode.
+  const applyConsentToGtag = ({ analytics, marketing }) => {
+    if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+    window.gtag('consent', 'update', {
+      analytics_storage: analytics ? 'granted' : 'denied',
+      ad_storage: marketing ? 'granted' : 'denied',
+      ad_user_data: marketing ? 'granted' : 'denied',
+      ad_personalization: marketing ? 'granted' : 'denied'
+    });
+  };
+
   useEffect(() => {
     setMounted(true);
     try {
       const saved = localStorage.getItem('cookiesConsentState');
       if (saved) {
-        setConsentState(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        setConsentState(parsed);
+        // Consent Mode resets to denied on every page load, so a previously
+        // granted choice has to be replayed.
+        applyConsentToGtag(parsed);
       } else {
         const timer = setTimeout(() => setIsVisible(true), 1000);
         return () => clearTimeout(timer);
@@ -36,6 +53,7 @@ export default function CookiesBanner() {
   const saveConsent = (analytics, marketing) => {
     const newState = { essential: true, analytics, marketing };
     setConsentState(newState);
+    applyConsentToGtag(newState);
     try {
       localStorage.setItem('cookiesConsentState', JSON.stringify(newState));
       localStorage.setItem('cookiesConsent', 'saved');
