@@ -78,7 +78,7 @@ export default function WhyUs({ isMainContent = false }) {
       title: lang === 'pl' ? 'Wzrost rozpoznawalności firmy' : 'Significant brand recall boost',
       description: lang === 'pl'
         ? 'Profesjonalny branding to kluczowe narzędzie sprzedażowe. Tworzymy unikalne, spójne systemy wizualne i nowoczesną architekturę designu, która zwiększa zapamiętywalność marki o 80%. Dzięki temu Twoja firma jednoznacznie wyróżnia się na tle konkurencji, budując pozycję lidera.'
-        : 'Professional branding is a critical sales tool. Recognized among leading search engine optimisation companies, we leverage advanced seotools to develop unique, cohesive visual systems that increase brand recall by 80%, ensuring your company stands out definitively from competitors.',
+        : 'Professional branding is a critical sales tool. Most search engine optimisation companies stop at rankings and leave identity to somebody else; we treat the two as one project. We develop unique, cohesive visual systems and a modern design architecture that increase brand recall by 80%, so your company stands out definitively from competitors.',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -197,11 +197,11 @@ export default function WhyUs({ isMainContent = false }) {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'DLACZEGO MY' : 'WHY US'}
             </div>
             <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
-              {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie – agencja marketingowa nastawiona na wyniki' : 'Leading SEO Agency for companies using advanced seotools'}
+              {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie – agencja marketingowa nastawiona na wyniki' : 'An SEO agency for companies that measure pipeline, not rankings'}
             </h2>
             {lang === 'en' && (
               <h2 style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: '0 0 1rem 0' }}>
-                Projects trusted by top SEO firms and SEO optimization companies.
+                Selected B2B projects delivered end to end — strategy, build and search visibility.
               </h2>
             )}
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>

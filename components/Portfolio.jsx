@@ -22,11 +22,11 @@ const realizedWebsites = [
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center',
     rightVisual: 'single-large',
-    largeImage: '/projects/seo-company-search-engine-optimization-agencies-madame.webp',
+    largeImage: '/projects/madame-thai-restaurant-website.webp',
     imgAlt: 'Strona internetowa restauracji Madame Thai — projekt agencji SEO i marketingowej z Warszawy',
-    imgAltEn: 'SEO company website design for restaurant - search engine optimization agencies',
+    imgAltEn: 'Madame Thai restaurant website — the homepage we designed and built for their Warsaw location',
     imgTitle: 'Projekt strony dla restauracji Madame Thai',
-    imgTitleEn: 'SEO company project for Madame Thai restaurant',
+    imgTitleEn: 'Madame Thai restaurant — website project',
     largeImageMobile: '/images/madame-thai-mobile.webp',
     details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
@@ -54,13 +54,13 @@ const realizedWebsites = [
       tag: 'B2B INDUSTRY & SEO',
       title: 'METALIZACJA PRÓŻNIOWA & LAKIEROWANIE UV',
       subtitle: 'Skalowanie biznesu B2B na rynki zagraniczne (Niemcy, USA) dzięki nowej architekturze informacji i SEO.',
-      image: '/projects/seo-firms-optimization-optimisation-companies-marketing-agency-seotools-staniax.webp',
+      image: '/projects/staniax-b2b-industrial-website.webp',
       btnText: 'View Case Study'
     },
     imgAlt: 'Strona B2B dla Staniax — pozycjonowanie stron i optymalizacja SEO w branży przemysłowej',
-    imgAltEn: 'SEO firms B2B industrial website - SEO optimization companies case study',
+    imgAltEn: 'Staniax B2B industrial website — the product pages we rebuilt for their German and US markets',
     imgTitle: 'Pozycjonowanie stron dla Staniax — wyniki agencji marketingowej',
-    imgTitleEn: 'Search engine optimisation companies project for Staniax - marketing agency results',
+    imgTitleEn: 'Staniax — B2B website rebuild and search visibility results',
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
 - Start od zerowej widoczności → 2,8 tys. wyświetleń i gwałtowny skokowy wzrost do ok. 100 wyświetleń dziennie.
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
@@ -82,18 +82,18 @@ const realizedWebsites = [
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center-reverse',
     rightVisual: 'desktop',
-    largeImage: '/projects/company-for-seo-search-engine-optimization-company-aisas.webp',
+    largeImage: '/projects/aisas-fintech-platform.webp',
     desktopCard: {
       tag: 'FINTECH & GLOBAL SEO',
       title: 'AI FUTURES TRADING PLATFORM',
       subtitle: '+8 113.8% Google Search Growth in hyper-competitive US market.',
-      image: '/projects/company-for-seo-search-engine-optimization-company-aisas.webp',
+      image: '/projects/aisas-fintech-platform.webp',
       btnText: 'View Case Study'
     },
     imgAlt: 'Platforma fintech z AI — pozycjonowanie stron na rynku zagranicznym',
-    imgAltEn: 'Search engine optimization company fintech platform - seotools driven growth',
+    imgAltEn: 'AISAS fintech platform — the dashboard interface we designed for the US market launch',
     imgTitle: 'Pozycjonowanie stron dla platformy fintech — wyniki',
-    imgTitleEn: 'SEO company for fintech - search engine optimization company results',
+    imgTitleEn: 'AISAS fintech platform — design and organic growth results',
     details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
 - Skok od 0 do 4,8 tys. wyświetleń w kwartale (+8 113,8%) i wzrost w ostatnich 28 dniach o 244,7% (do 500 wyświetleń dziennie).
 - Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 — krok od TOP 20), „best futures trading platforms” (pozycja 61).
