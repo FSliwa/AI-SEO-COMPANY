@@ -62,7 +62,7 @@ export default function Hero() {
                 <>
                   Premium SEO & Marketing Agency for Companies.{' '}
                   <span className="hero-seo-h1-rest">
-                    Recognized among leading search engine optimisation companies for advanced optimization & sustainable growth
+                    We do what search engine optimisation companies rarely do: report on pipeline, not on rankings
                   </span>
                 </>
               ) : (
