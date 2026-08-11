@@ -108,7 +108,7 @@ export default function WhyUs({ isMainContent = false }) {
       title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google' : 'Lightning performance & Google score',
       description: lang === 'pl'
         ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum.'
-        : 'Trusted by businesses and search engine optimization agencies alike, we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures ensure your site passes all Core Web Vitals with flying colors.',
+        : 'Page speed is where businesses and search engine optimization agencies lose most rankings, so we treat it as a core deliverable: we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures ensure your site passes all Core Web Vitals with flying colors.',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
@@ -197,7 +197,7 @@ export default function WhyUs({ isMainContent = false }) {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'DLACZEGO MY' : 'WHY US'}
             </div>
             <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
-              {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie – agencja marketingowa nastawiona na wyniki' : 'An SEO agency for companies that measure pipeline, not rankings'}
+              {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie – agencja marketingowa nastawiona na wyniki' : 'An SEO and marketing agency for companies that measure pipeline, not rankings'}
             </h2>
             {lang === 'en' && (
               <h2 style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: '0 0 1rem 0' }}>

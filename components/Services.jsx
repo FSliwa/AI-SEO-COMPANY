@@ -49,7 +49,7 @@ export default function Services() {
             <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Visual Identity'}</h3>
             <p>{lang === 'pl' 
               ? 'Projektujemy spójną tożsamość wizualną: logo, system kolorystyczny, typografię oraz kompletną księgę znaku dostosowaną do wymagań cyfrowych.' 
-              : <>Trusted by <strong>search engine optimisation agencies</strong> worldwide, we design cohesive visual identities: logo systems, color palettes, typography, and comprehensive digital brand guidelines.</>
+              : <>We design the part <strong>search engine optimisation agencies</strong> usually outsource: cohesive visual identities — logo systems, color palettes, typography, and comprehensive digital brand guidelines.</>
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (

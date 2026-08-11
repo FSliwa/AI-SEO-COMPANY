@@ -158,7 +158,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                  {lang === 'pl' ? 'Marketing Cyfrowy i Strategia Treści' : 'Digital Search Marketing & Content Strategy for Agencies'}
+                  {lang === 'pl' ? 'Marketing Cyfrowy i Strategia Treści' : 'SEO for Agencies: Digital Search Marketing & Content Strategy'}
                 </h3>
                 <p style={{ color: '#333336', lineHeight: 1.6 }}>
                   {lang === 'pl'
