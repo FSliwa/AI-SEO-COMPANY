@@ -54,7 +54,7 @@ const jsonLdData = {
         { '@type': 'PropertyValue', 'propertyID': 'REGON', 'value': '544761611' }
       ],
       'description': 'Nowoczesna agencja SEO Warszawa. Projektujemy wyszukiwalne strony internetowe, przeprowadzamy profesjonalny audyt SEO i realizujemy skuteczne pozycjonowanie stron.',
-      'url': 'https://www.ai-seo-company.pl',
+      'url': 'https://www.ai-seo-company.pl/',
       'logo': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.svg',
       'image': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.png',
       'email': 'kontakt@ai-seo-company.pl',
@@ -82,7 +82,7 @@ const jsonLdData = {
     {
       '@type': 'WebSite',
       '@id': 'https://www.ai-seo-company.pl/#website',
-      'url': 'https://www.ai-seo-company.pl',
+      'url': 'https://www.ai-seo-company.pl/',
       'name': 'AI SEO COMPANY | Agencja SEO Warszawa',
       'publisher': {
         '@id': 'https://www.ai-seo-company.pl/#organization'

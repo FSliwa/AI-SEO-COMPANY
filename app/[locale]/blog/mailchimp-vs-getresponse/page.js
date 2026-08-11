@@ -77,7 +77,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
         "@type": "Organization",
         "@id": "https://www.ai-seo-company.pl/#organization",
         "name": "AI SEO COMPANY",
-        "url": "https://www.ai-seo-company.pl",
+        "url": "https://www.ai-seo-company.pl/",
         "telephone": "+48518815055",
         "email": "kontakt@ai-seo-company.pl",
         "vatID": "5253090237",
