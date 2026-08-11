@@ -13,7 +13,10 @@ export async function generateMetadata({ params }) {
     title: locale === 'en' ? 'Mailchimp vs GetResponse 2026: Pricing, Features, Choice' : 'Mailchimp vs GetResponse 2026: ceny, funkcje, wybór',
     description: locale === 'en' ? 'Mailchimp or GetResponse? Compare pricing, features, webinars, and the list threshold where GetResponse becomes cheaper.' : 'Mailchimp czy GetResponse? Aktualne ceny z sierpnia 2026, porównanie funkcji i webinarów oraz próg listy, przy którym GetResponse staje się tańszy.',
     alternates: {
-      canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/mailchimp-vs-getresponse' : 'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse',
+      // The English URL has no article body yet, so it points at the Polish
+      // version rather than at itself — a self-canonical would ask Google to
+      // index a page whose only sentence says the translation is unavailable.
+      canonical: 'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse',
       languages: articleLanguages('/blog/mailchimp-vs-getresponse', 'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse', 'https://www.ai-seo-company.pl/en/blog/mailchimp-vs-getresponse')
     },
     openGraph: {
@@ -56,7 +59,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
         "dateModified": "2026-08-09",
         "author": {
           "@type": "Person",
-          "name": "Filip",
+          "name": "Filip Śliwa",
           "jobTitle": "Specjalista ds. SEO i strategii marketingu cyfrowego",
           "worksFor": { "@id": "https://www.ai-seo-company.pl/#organization" }
         },
@@ -564,7 +567,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Ceny platform zmieniają się regularnie — Mailchimp w styczniu 2026 r. obciął darmowy plan, a w kwietniu podniósł stawki o 11–13% użytkownikom starych planów, założonych przed majem 2019 r. Przed zakupem zawsze weryfikuj aktualne stawki bezpośrednio na stronach GetResponse i Mailchimp. Limity darmowych planów są szczególnie podatne na zmiany.</p>
 
-                  <p>Autorem i redaktorem tego porównania jest Filip, specjalista ds. SEO i strategii marketingu cyfrowego w Ai-seo-company. Jako agencja z Warszawy realizujemy projekty pozycjonowania, projektowania stron i optymalizacji konwersji dla firm działających na rynku polskim.</p>
+                  <p>Autorem i redaktorem tego porównania jest Filip Śliwa, specjalista ds. SEO i strategii marketingu cyfrowego w Ai-seo-company. Jako agencja z Warszawy realizujemy projekty pozycjonowania, projektowania stron i optymalizacji konwersji dla firm działających na rynku polskim.</p>
 
                   <h2 id="kluczowe-wnioski">Kluczowe wnioski</h2>
                   
