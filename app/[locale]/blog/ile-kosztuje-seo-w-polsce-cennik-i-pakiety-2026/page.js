@@ -76,7 +76,7 @@ export default async function ArticleCennikPage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                SEO pricing in 2026 is one of the most frequently searched topics by entrepreneurs. In this guide, we break down website positioning costs to help you understand what you are actually paying an agency for.
+                SEO pricing in 2026 is one of the most frequently searched topics by entrepreneurs. Most agencies sell the work in monthly packages, so below we break down what each tier actually contains and what you are really paying for.
               </p>
               <ArticleTOC items={tocItems} />
               
