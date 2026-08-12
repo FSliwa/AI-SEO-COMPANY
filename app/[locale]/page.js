@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'SEO for Companies | B2B SEO Agency in Warsaw' : 'Agencja SEO i Marketingowa Warszawa | Pozycjonowanie Stron',
-  description: locale === 'en' ? 'AI SEO COMPANY is a top SEO agency and marketing agency providing search engine optimization for companies. Warsaw based, B2B focused.' : 'Twój projekt i strony to nasz priorytet. Agencja SEO, agencja marketingowa Warszawa. Zapewniamy pozycjonowanie stron, które generuje realny wzrost Twojej firmy.',
+  description: locale === 'en' ? 'AI SEO COMPANY is a top SEO agency and marketing agency providing search engine optimization for companies. Warsaw based, B2B focused.' : 'Twój projekt i strony to nasz priorytet. Agencja SEO Warszawa i agencja marketingowa. Pozycjonowanie stron, które generuje realny wzrost firmy.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en' : 'https://www.ai-seo-company.pl/',
     languages: {
