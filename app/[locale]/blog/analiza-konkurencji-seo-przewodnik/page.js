@@ -2,7 +2,7 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: locale === 'en' ? 'SEO Competitor Analysis: A Step-by-Step Guide | AI SEO Company' : 'Analiza Konkurencji SEO: Przewodnik Krok po Kroku | AI SEO Company',
+    title: locale === 'en' ? 'SEO Competitor Analysis: A Step-by-Step Guide' : 'Analiza Konkurencji SEO: Przewodnik Krok po Kroku',
     description: locale === 'en' ? 'Boost your online visibility with SEO competitor analysis. Learn how to effectively compare your results with rivals and build a winning strategy.' : 'Zwiększ swoją widoczność w sieci z pomocą analizy konkurencji SEO. Dowiedz się, jak skutecznie porównać swoje wyniki z rywalami.',
     alternates: {
       canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide' : 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik',

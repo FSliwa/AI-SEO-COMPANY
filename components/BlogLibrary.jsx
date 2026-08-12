@@ -81,7 +81,7 @@ export default function BlogLibrary() {
                       }}>
                         {data.tag}
                       </span>
-                      <h3 style={{ 
+                      <h2 style={{ 
                         fontSize: '1.25rem', 
                         fontWeight: 700, 
                         color: '#1D1D1F', 
@@ -91,7 +91,7 @@ export default function BlogLibrary() {
                         flexGrow: 1
                       }}>
                         {data.title}
-                      </h3>
+                      </h2>
                       <span style={{ 
                         fontSize: '0.85rem', 
                         color: '#86868B',
@@ -126,21 +126,21 @@ export default function BlogLibrary() {
             <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto 1.5rem auto' }}>
             {lang === 'pl' ? 'Nasza biblioteka artykułów to kompleksowe i niezwykle obszerne źródło wiedzy z zakresu optymalizacji pod kątem wyszukiwarek, nowoczesnego projektowania stron internetowych, a także zaawansowanej analityki cyfrowej. Znajdziesz tu dziesiątki merytorycznych poradników, case studies bazujących na rzeczywistych danych naszych klientów z różnych branż, wyczerpujące raporty oraz inspirujące eseje na temat przyszłości technologii i marketingu internetowego.' : 'Our article library is a comprehensive and extremely extensive source of knowledge in the fields of search engine optimization, modern web design, and advanced digital analytics. Here you will find dozens of substantive guides, case studies based on real data from our clients across various industries, exhaustive reports, and inspiring essays on the future of technology and digital marketing.'}
           </p>
-            <h4 style={{ color: '#1D1D1F', fontSize: '1.15rem', fontWeight: 600, maxWidth: '1000px', margin: '0 auto 0.75rem auto' }}>
+            <h3 style={{ color: '#1D1D1F', fontSize: '1.15rem', fontWeight: 600, maxWidth: '1000px', margin: '0 auto 0.75rem auto' }}>
               {lang === 'pl' ? 'Najświeższe informacje od ekspertów' : 'Latest insights from our experts'}
-            </h4>
+            </h3>
             <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto 1.5rem auto' }}>
             {lang === 'pl' ? 'Nasi eksperci z AI SEO COMPANY regularnie publikują najświeższe informacje na temat zmian w algorytmach Google, najnowszych trendach w budowaniu interfejsów użytkownika, strategiach link buildingu, optymalizacji wydajności Core Web Vitals, a także efektywnym wykorzystywaniu sztucznej inteligencji do generowania wartościowego ruchu organicznego. Przeglądając nasze obszerne zbiory, zdobędziesz praktyczne umiejętności, które pozwolą Ci znacząco wyprzedzić konkurencję i zdominować pierwszą stronę wyników wyszukiwania, osiągając rewelacyjne wskaźniki zwrotu z inwestycji (ROI).' : 'Our experts at AI SEO COMPANY regularly publish the latest information regarding Google algorithm updates, the newest trends in user interface building, link building strategies, Core Web Vitals performance optimization, and the effective use of artificial intelligence to generate valuable organic traffic. By browsing our extensive collections, you will acquire practical skills that will allow you to significantly outpace the competition and dominate the first page of search engine results, achieving phenomenal return on investment (ROI) metrics.'}
           </p>
-            <h4 style={{ color: '#1D1D1F', fontSize: '1.15rem', fontWeight: 600, maxWidth: '1000px', margin: '0 auto 0.75rem auto' }}>
+            <h3 style={{ color: '#1D1D1F', fontSize: '1.15rem', fontWeight: 600, maxWidth: '1000px', margin: '0 auto 0.75rem auto' }}>
               {lang === 'pl' ? 'Wiedza dla każdego poziomu zaawansowania' : 'Knowledge for every skill level'}
-            </h4>
+            </h3>
             <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto 1.5rem auto' }}>
             {lang === 'pl' ? 'Jesteśmy dumni, że możemy dzielić się naszym bogatym, wieloletnim doświadczeniem w przystępnej i skondensowanej formie. Od poradników dla absolutnych początkujących, którzy stawiają swoje pierwsze kroki w świecie digital marketingu, aż po specjalistyczne, techniczne artykuły dla doświadczonych deweloperów i dyrektorów marketingu, którzy poszukują niuansów i najdrobniejszych przewag konkurencyjnych.' : 'We are proud to share our rich, multi-year experience in an accessible and condensed format. From tutorials for absolute beginners taking their first steps in the digital marketing world, to specialized, technical articles for experienced developers and marketing directors looking for nuances and the smallest competitive advantages.'}
           </p>
-            <h4 style={{ color: '#1D1D1F', fontSize: '1.15rem', fontWeight: 600, maxWidth: '1000px', margin: '0 auto 0.75rem auto' }}>
+            <h3 style={{ color: '#1D1D1F', fontSize: '1.15rem', fontWeight: 600, maxWidth: '1000px', margin: '0 auto 0.75rem auto' }}>
               {lang === 'pl' ? 'Zawsze aktualna baza wiedzy' : 'Always up-to-date knowledge base'}
-            </h4>
+            </h3>
             <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto 1.5rem auto' }}>
             {lang === 'pl' ? 'Nasza baza wiedzy jest nieustannie aktualizowana, by dostarczać tylko zweryfikowane, działające i zgodne z wytycznymi wyszukiwarek metody, które napędzają zyski w sektorach B2B i B2C. Zachęcamy do regularnego odwiedzania naszej biblioteki, czytania najnowszych publikacji i wcielania zdobytej wiedzy we własnych, skalowalnych projektach e-commerce oraz portalach korporacyjnych. Sukces Twojego biznesu w sieci zaczyna się od solidnych podstaw teoretycznych i strategicznych przemyśleń, które z chęcią Ci dostarczamy za darmo każdego miesiąca, aby wspólnie rozwijać branżę IT i SEO.' : 'Our knowledge base is continuously updated to provide only verified, working methods that comply with search engine guidelines and drive profits in B2B and B2C sectors. We encourage you to regularly visit our library, read the latest publications, and implement the acquired knowledge in your own scalable e-commerce projects and corporate portals. The success of your business online begins with a solid theoretical foundation and strategic insights, which we gladly provide for free every single month to jointly develop and advance the IT and SEO industry forward together.'}
           </p>

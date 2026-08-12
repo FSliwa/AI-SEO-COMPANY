@@ -18,6 +18,16 @@
   border: 0 !important;
 }
 
+/* Makes a whole card clickable while keeping the anchor text short: the link
+   wraps only the heading, and this pseudo-element extends its hit area over the
+   nearest positioned ancestor. Wrapping the full card in <a> instead put the
+   description inside the anchor text, which reads as an over-long anchor. */
+.stretched-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
 :root {
   /* Color Palette (KOTA Mesh Ambient Light + VIS Editorial + Cosmic Hero) */
   --color-bg-dark: #030712;

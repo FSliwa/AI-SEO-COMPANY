@@ -37,17 +37,21 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
           {lang === 'en' ? 'Related Articles' : 'Powiązane artykuły'}
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+          {/* The card stays fully clickable, but only the title sits inside the
+              anchor — wrapping the description too made the anchor text ~150
+              characters, which the crawl flagged. .stretched-link covers the
+              card via ::after, so the look and the click target are unchanged. */}
           {relatedPosts.map(post => (
-            <Link key={post.slug} href={post.slug} style={{ textDecoration: 'none', display: 'block' }}>
-              <div style={{ padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
-                <h4 style={{ fontSize: '1.1rem', color: '#1D1D1F', marginBottom: '0.5rem', fontWeight: 600 }}>
+            <div key={post.slug} style={{ position: 'relative', padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
+              <h4 style={{ fontSize: '1.1rem', color: '#1D1D1F', marginBottom: '0.5rem', fontWeight: 600 }}>
+                <Link href={post.slug} className="stretched-link" style={{ textDecoration: 'none', color: 'inherit' }}>
                   {lang === 'en' ? post.titleEn : post.titlePl}
-                </h4>
-                <p style={{ color: '#86868B', fontSize: '0.95rem', margin: 0, lineHeight: 1.5 }}>
-                  {lang === 'en' ? post.descEn : post.descPl}
-                </p>
-              </div>
-            </Link>
+                </Link>
+              </h4>
+              <p style={{ color: '#86868B', fontSize: '0.95rem', margin: 0, lineHeight: 1.5 }}>
+                {lang === 'en' ? post.descEn : post.descPl}
+              </p>
+            </div>
           ))}
         </div>
       </div>
