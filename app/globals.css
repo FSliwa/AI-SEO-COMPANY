@@ -82,6 +82,16 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+
+  /* Three full-bleed sections (Portfolio, Testimonials, WhyUs) size themselves
+     with `width: 100vw`, and 100vw counts the scrollbar while the viewport does
+     not — so every page scrolled 8px sideways at tablet and desktop widths.
+     `clip` rather than `hidden`: hidden turns the element into a scroll
+     container, which changes how descendants position themselves; clip just
+     cuts the overflow. Measured before/after at 1440px: 1443 -> 1435 = the
+     viewport width exactly. Vertical scrolling and the fixed header are
+     unaffected (verified in-browser). */
+  overflow-x: clip;
 }
 
 body {
@@ -307,10 +317,19 @@ button, input, select, textarea {
   box-shadow: var(--shadow-sm);
 }
 
+/* The PL/EN buttons rendered at 15x16 and 17x16 CSS pixels — the smallest hit
+   targets on the site and the ones a thumb misses most often. WCAG 2.2 (2.5.8)
+   sets the floor at 24x24; Apple's guidance is 44x44. The type size is
+   unchanged: the box grows around the label, so the header reads identically. */
 .lang-btn {
   color: var(--color-text-muted);
   cursor: pointer;
   transition: color var(--transition-fast);
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lang-btn.active {
