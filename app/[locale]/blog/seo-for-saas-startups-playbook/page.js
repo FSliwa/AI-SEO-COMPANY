@@ -331,7 +331,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <p>If you are publishing pages while technical remediation is still running, you are deploying continuously — run a comparative crawl within 48 hours of every significant deploy and diff it against the previous state. Most SEO disasters are unintended side effects of releases, caught too late.</p>
 
               <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
-                <strong>Pro Tip:</strong> In Google Search Console, use the URL Inspection tool on your five highest-priority pages after any major site update. If Googlebot's last crawl predates your update by more than two weeks, request indexing manually.
+                Pro Tip: In Google Search Console, use the URL Inspection tool on your five highest-priority pages after any major site update. If Googlebot's last crawl predates your update by more than two weeks, request indexing manually.
               </div>
 
               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '2rem', marginBottom: '2rem' }}></div>
@@ -373,7 +373,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <ul>
                 <li><strong>Organic sessions by landing page:</strong> Which pages drive the most organic traffic? Are they BOFU pages or TOF posts? Read the trend year over year, not just month over month — most SaaS categories have a seasonal shape that makes a flat month look like a problem and a strong month look like a win when neither is true.</li>
                 <li><strong>Organic MQLs, and what they are worth:</strong> Define an MQL as an event that represents a real hand-raise — trial start, demo request, or pricing-form submission. Do not count a pricing page <em>view</em> as an MQL; it is an intent signal worth tracking separately, and folding it in inflates the number and undermines the case you are trying to build. Treat the MQL count as a weekly operational signal, not as the number you report upward.</li>
-                <li><strong>Sales-qualified leads and sign-ups from organic — the number that settles the argument:</strong> An MQL is a marketing judgement about a lead; an SQL is sales agreeing the lead is real. That difference is the whole reason to track both. Report how many organic leads sales actually accepted and what they were worth — the CRM plumbing that makes this possible is covered under <em>Validating SEO lift</em> below. In a product-led motion the equivalent is organic sign-ups that reach activation. If you report only MQLs, the first skeptical question from finance — "how many of those became opportunities?" — has no answer, and the channel loses the argument it deserves to win.</li>
+                <li>Sales-qualified leads and sign-ups from organic — the number that settles the argument: An MQL is a marketing judgement about a lead; an SQL is sales agreeing the lead is real. That difference is the whole reason to track both. Report how many organic leads sales actually accepted and what they were worth — the CRM plumbing that makes this possible is covered under <em>Validating SEO lift</em> below. In a product-led motion the equivalent is organic sign-ups that reach activation. If you report only MQLs, the first skeptical question from finance — "how many of those became opportunities?" — has no answer, and the channel loses the argument it deserves to win.</li>
                 <li><strong>Trial starts from organic:</strong> Set a GA4 conversion event for trial signup and filter by organic source/medium. This is the event everything upstream is measured against — impressions, sessions, and rankings only matter insofar as they move it. It is not, however, the number you report to the board: that is the qualified pipeline above. If you sell through demos rather than a self-serve trial, substitute the demo request as the conversion event and read the rest of this section the same way — the mechanics do not change, only the name of the event.</li>
                 <li><strong>Activation events:</strong> Track the first meaningful action inside the product (first project created, first integration connected). Organic trial cohorts that activate at lower rates signal a content-audience mismatch.</li>
                 <li><strong>Share of voice, not average position:</strong> Once you are tracking dozens of comparison, alternative, and integration pages, average position becomes actively misleading — a handful of new long-tail pages entering at position 40 will drag the average down in a month when the channel grew. Track share of voice instead: define a basket of priority queries, weight each by volume or by the value of the deal behind it, and measure what proportion of the available visibility you hold against three to five named competitors. That single number moves with the things that matter and is the one worth putting in front of a board.</li>
@@ -458,8 +458,8 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               </ul>
 
               <h3>Webflow: integration and comparison pages</h3>
-              <p><strong>What they did:</strong> Webflow built dedicated pages for every major integration and comparison pages against major competitors. These pages rank for high-intent queries such as "Webflow vs WordPress," capturing searchers who are already evaluating rather than still learning the category.</p>
-              <p><strong>How to replicate:</strong></p>
+              <p>What they did: Webflow built dedicated pages for every major integration and comparison pages against major competitors. These pages rank for high-intent queries such as "Webflow vs WordPress," capturing searchers who are already evaluating rather than still learning the category.</p>
+              <p>How to replicate:</p>
               <ul>
                 <li>List every tool your product integrates with and build a dedicated page for each</li>
                 <li>Build a comparison page for your top three to five competitors</li>
@@ -467,8 +467,8 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               </ul>
 
               <h3>Stripe: docs as a ranking asset</h3>
-              <p><strong>What they did:</strong> Stripe's documentation ranks for a large volume of long-tail implementation queries ("how to create a payment intent," "Stripe webhook signature verification") — the kind a marketing page would never target. The docs are written to be useful during evaluation rather than only after purchase.</p>
-              <p><strong>How to replicate:</strong></p>
+              <p>What they did: Stripe's documentation ranks for a large volume of long-tail implementation queries ("how to create a payment intent," "Stripe webhook signature verification") — the kind a marketing page would never target. The docs are written to be useful during evaluation rather than only after purchase.</p>
+              <p>How to replicate:</p>
               <ul>
                 <li>Audit your docs for pages that answer "how to" queries buyers actually search</li>
                 <li>Add proper H1s, meta descriptions, and internal links to docs pages</li>

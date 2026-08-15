@@ -3,7 +3,7 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: locale === 'en' ? 'UX Audit for Conversion: A Guide | AI SEO COMPANY' : 'Audyt UX strony pod konwersję: przewodnik | AI SEO COMPANY',
+    title: locale === 'en' ? 'UX Audit for Conversion: A Guide' : 'Audyt UX strony pod konwersję: przewodnik',
     description: locale === 'en' ? 'How to conduct a UX audit that ends with a prioritized backlog: measurement verification, funnel analysis, user testing, and effect measurement.' : 'Jak przeprowadzić audyt UX, który kończy się backlogiem z priorytetami: weryfikacja pomiaru, analiza lejków, testy z użytkownikami i pomiar efektu.',
     alternates: {
       canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/ux-audit-guide` : `https://www.ai-seo-company.pl/blog/audyt-ux-strony`,
@@ -172,7 +172,7 @@ export default async function ArticleUXAudit({ params }) {
                   </ul>
 
                   <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
-                    <strong>Porada profesjonalisty:</strong> <em>Przy małym ruchu na stronie ciężar audytu przesuwa się na metody jakościowe. Reguła Nielsena mówi, że pięciu obserwowanych użytkowników wychwytuje około 85% problemów użyteczności — to wystarczy do zbudowania backlogu nawet wtedy, gdy miesięczna liczba sesji jest zbyt niska, by lejki w GA4 dawały statystycznie wiarygodne wyniki.</em>
+                    Porada profesjonalisty: <em>Przy małym ruchu na stronie ciężar audytu przesuwa się na metody jakościowe. Reguła Nielsena mówi, że pięciu obserwowanych użytkowników wychwytuje około 85% problemów użyteczności — to wystarczy do zbudowania backlogu nawet wtedy, gdy miesięczna liczba sesji jest zbyt niska, by lejki w GA4 dawały statystycznie wiarygodne wyniki.</em>
                   </div>
 
                   <h2 id="jak-przebiega-audyt-ux-krok-po-kroku">Jak przebiega audyt UX krok po kroku?</h2>
@@ -261,7 +261,7 @@ export default async function ArticleUXAudit({ params }) {
                   <p>Typowe pułapki: podwójne liczenie zdarzeń (np. event <code>purchase</code> odpalany dwukrotnie przez błąd tagu), brak podziału na urządzenia, nieuwzględnienie kroków pominiętych w zliczeniach oraz mylenie liczby użytkowników z liczbą zakupów. Jeśli ten sam użytkownik przejdzie ścieżkę kilka razy w wybranym zakresie dat, Analytics odnotuje wyłącznie pierwszą sekwencję — raport pokazuje więc, ilu <strong>użytkowników</strong> przeszło ścieżkę, a nie ile było transakcji. W sklepie z wysokim odsetkiem klientów powracających te dwie wartości znacząco się rozjeżdżają. Błędne zdarzenie może sprawić, że działająca ścieżka wygląda na zepsutą.</p>
 
                   <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
-                    <strong>Porada profesjonalisty:</strong> <em>Zanim zaczniesz interpretować dane z GA4, odtwórz kilka znanych sesji w Microsoft Clarity lub Hotjarze i sprawdź, czy zdarzenia pokrywają się z tym, co widzisz na nagraniu. To zajmuje 20 minut i oszczędza dni błędnej diagnozy.</em>
+                    Porada profesjonalisty: <em>Zanim zaczniesz interpretować dane z GA4, odtwórz kilka znanych sesji w Microsoft Clarity lub Hotjarze i sprawdź, czy zdarzenia pokrywają się z tym, co widzisz na nagraniu. To zajmuje 20 minut i oszczędza dni błędnej diagnozy.</em>
                   </div>
 
                   <h2 id="jakie-problemy-ux-audyt-wykrywa-najczesciej">Jakie problemy UX audyt wykrywa najczęściej?</h2>

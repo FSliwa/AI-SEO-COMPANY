@@ -2,7 +2,7 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'How Much Does a Business Website Cost? Pricing & What\'s Included (2026)' : 'Ile kosztuje strona www dla firmy: ceny i co zawierają',
+  title: locale === 'en' ? 'How Much Does a Business Website Cost in 2026?' : 'Ile kosztuje strona www dla firmy: ceny i co zawierają',
   description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta strona wizytówkowa w Polsce kosztuje od kilkuset złotych, ale profesjonalna strona to większy wydatek. Sprawdź, ile kosztuje strona www dla firmy i',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
