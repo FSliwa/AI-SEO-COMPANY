@@ -18,12 +18,24 @@ export async function POST(request) {
     // Default to kontakt@ai-seo-company.pl for sending notifications.
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'kontakt@ai-seo-company.pl';
     
-    // Default recipient to f.sliwa@ai-signals-company.pl
-    const toEmail = process.env.RESEND_TO_EMAIL || 'f.sliwa@ai-signals-company.pl';
+    // Notifications go to every address in this list. RESEND_TO_EMAIL overrides
+    // the primary inbox, RESEND_TO_EMAIL_CC the additional ones; both accept a
+    // comma-separated list. Kept as two variables rather than one so that setting
+    // RESEND_TO_EMAIL in the hosting environment cannot silently drop the second
+    // recipient. Deduplicated, so the same address listed twice still gets one copy.
+    const primaryTo = process.env.RESEND_TO_EMAIL || 'f.sliwa@ai-signals-company.pl';
+    const additionalTo = process.env.RESEND_TO_EMAIL_CC || 'filipsliwa.business.contact@gmail.com';
+
+    const toEmails = [...new Set(
+      [primaryTo, additionalTo]
+        .flatMap(entry => entry.split(','))
+        .map(address => address.trim())
+        .filter(Boolean)
+    )];
 
     const { data, error } = await resend.emails.send({
       from: `AI SEO COMPANY <${fromEmail}>`,
-      to: [toEmail],
+      to: toEmails,
       replyTo: email,
       subject: `[Formularz Wyceny] Nowe zapytanie od: ${name}`,
       html: `

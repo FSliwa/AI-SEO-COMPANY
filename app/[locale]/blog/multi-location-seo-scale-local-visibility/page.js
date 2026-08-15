@@ -1,4 +1,4 @@
-import { articleLanguages } from '@/lib/blogPosts';
+import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
@@ -21,6 +21,7 @@ export async function generateMetadata({ params }) {
       canonical: 'https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility',
       languages: articleLanguages('/blog/multi-location-seo-scale-local-visibility', 'https://www.ai-seo-company.pl/blog/multi-location-seo-scale-local-visibility', 'https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility')
     },
+    robots: articleRobots('/blog/multi-location-seo-scale-local-visibility', locale),
   };
 }
 

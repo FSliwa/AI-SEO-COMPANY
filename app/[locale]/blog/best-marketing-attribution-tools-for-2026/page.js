@@ -1,4 +1,4 @@
-import { articleLanguages } from '@/lib/blogPosts';
+import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -9,6 +9,7 @@ export async function generateMetadata({ params }) {
       canonical: `https://www.ai-seo-company.pl/en/blog/best-marketing-attribution-tools-for-2026`,
       languages: articleLanguages('/blog/best-marketing-attribution-tools-for-2026', null, 'https://www.ai-seo-company.pl/en/blog/best-marketing-attribution-tools-for-2026')
     },
+    robots: articleRobots('/blog/best-marketing-attribution-tools-for-2026', locale),
   };
 }
 

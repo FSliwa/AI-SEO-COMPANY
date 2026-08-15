@@ -1,4 +1,4 @@
-import { articleLanguages } from '@/lib/blogPosts';
+import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -19,6 +19,7 @@ export async function generateMetadata({ params }) {
       canonical: 'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse',
       languages: articleLanguages('/blog/mailchimp-vs-getresponse', 'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse', 'https://www.ai-seo-company.pl/en/blog/mailchimp-vs-getresponse')
     },
+    robots: articleRobots('/blog/mailchimp-vs-getresponse', locale),
     openGraph: {
       type: 'article',
       title: locale === 'en' ? 'Mailchimp vs GetResponse 2026: Pricing, Features, Choice' : 'Mailchimp vs GetResponse 2026: ceny, funkcje, wybór',

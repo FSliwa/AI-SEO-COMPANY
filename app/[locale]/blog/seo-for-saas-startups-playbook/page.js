@@ -1,4 +1,4 @@
-import { articleLanguages } from '@/lib/blogPosts';
+import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -9,6 +9,7 @@ export async function generateMetadata({ params }) {
       canonical: `https://www.ai-seo-company.pl/en/blog/seo-for-saas-startups-playbook`,
       languages: articleLanguages('/blog/seo-for-saas-startups-playbook', null, 'https://www.ai-seo-company.pl/en/blog/seo-for-saas-startups-playbook')
     },
+    robots: articleRobots('/blog/seo-for-saas-startups-playbook', locale),
   };
 }
 

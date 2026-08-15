@@ -1,4 +1,4 @@
-import { articleLanguages } from '@/lib/blogPosts';
+import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -9,6 +9,7 @@ export async function generateMetadata({ params }) {
       canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/ux-audit-guide` : `https://www.ai-seo-company.pl/blog/audyt-ux-strony`,
       languages: articleLanguages('/blog/audyt-ux-strony', 'https://www.ai-seo-company.pl/blog/audyt-ux-strony', 'https://www.ai-seo-company.pl/en/blog/ux-audit-guide')
     },
+    robots: articleRobots('/blog/audyt-ux-strony', locale),
   };
 }
 

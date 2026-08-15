@@ -1,4 +1,4 @@
-import { articleLanguages } from '@/lib/blogPosts';
+import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -8,6 +8,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/google-tag-manager-ga4-events-guide` : `https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik`,
     languages: articleLanguages('/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', 'https://www.ai-seo-company.pl/en/blog/google-tag-manager-ga4-events-guide')
   },
+  robots: articleRobots('/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', locale),
 };
 }
 
