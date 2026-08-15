@@ -2669,7 +2669,17 @@ section, aside.pricing, aside.contact, aside.why-us {
   justify-content: center;
 }
 
-/* Placeholder only — CSS gradients, no JS and no image request. */
+/* The Spline canvas fills the stage. It ships its own inline sizing, so the
+   selectors below have to reach the generated canvas rather than a wrapper. */
+.hero-en-stage > *,
+.hero-en-stage canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Rendered while the Spline chunk downloads, and the whole visual if the scene
+   fails to load — CSS gradients only, no JS and no image request. */
 .hero-en-orb {
   width: 78%;
   aspect-ratio: 1 / 1;

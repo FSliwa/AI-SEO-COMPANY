@@ -2,6 +2,25 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
+import dynamic from 'next/dynamic';
+
+/**
+ * The Spline runtime is roughly 1.5 MB of JavaScript plus the scene itself — far
+ * too much to sit in the critical path of a page we have been tuning for Core
+ * Web Vitals. Loading it with ssr:false keeps it out of the server response and
+ * out of the initial bundle, so the LCP element stays the headline text on the
+ * left. Until it resolves, the same CSS orb renders in its place, which means
+ * the column never reflows and there is no empty box while the scene downloads.
+ *
+ * Note the import path: `@splinetool/react-spline/next` is an async Server
+ * Component, and this file is a client component (framer-motion, useLocale), so
+ * that variant throws "is an async Client Component". The base export is the
+ * client-side one and is what belongs here.
+ */
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+  loading: () => <div className="hero-en-orb" />
+});
 
 export default function Hero() {
   const lang = useLocale();
@@ -66,12 +85,10 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Stage reserved for the Spline scene. Until the .splinecode URL is
-              available this renders a CSS-only orb — no JavaScript, no extra
-              network request, so it costs nothing against Core Web Vitals.
-              Replacing it means swapping the inner div for <Spline scene=… />. */}
+          {/* Decorative: the scene carries no information the copy does not, so
+              it is hidden from assistive technology rather than given a label. */}
           <div className="hero-en-stage" aria-hidden="true">
-            <div className="hero-en-orb"></div>
+            <Spline scene="https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode" />
           </div>
         </div>
       )}
