@@ -8,7 +8,7 @@ export default function Hero() {
   const t = useTranslations('hero');
 
   return (
-    <section className="hero" id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F172A' }}>
+    <section className={`hero${lang === 'en' ? ' hero--en' : ''}`} id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F172A' }}>
       {/* H1 moved to the main visual element */}
 
       {/* Background Hero Video */}
@@ -31,8 +31,54 @@ export default function Hero() {
       {/* Hero Overlay & Subtle Vignette */}
       <div className="hero-overlay"></div>
 
+      {/* ── ENGLISH: text-first hero ───────────────────────────────────────────
+          The Polish side still uses the SVG-with-overlay treatment below. The
+          English side renders the same words as ordinary HTML in a two-column
+          layout: copy on the left, a reserved stage on the right for the 3D
+          scene. Wording is carried over verbatim from the SVG artwork and the
+          old H1 overlay, so keyword coverage is unchanged — only the rendering
+          differs.
+
+          This also removes the overlay's mobile defect: the SVG version sized
+          the H1 in container-query units (1.69cqw), which resolved to 6px on a
+          375px screen. Ordinary text with clamp() cannot fall below its floor. */}
+      {lang === 'en' && (
+        <div className="hero-en">
+          <div className="hero-en-copy">
+            <h1 className="hero-en-title">
+              <span className="hero-en-title-display">SEO that drives sales</span>
+              <span className="hero-en-title-sub">Premium SEO &amp; Marketing Agency for Companies</span>
+            </h1>
+
+            <p className="hero-en-lead">
+              We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
+            </p>
+
+            <p className="hero-en-body">
+              We merge the creativity of human SEO teams with AI-driven accuracy to ensure your brand achieves
+              dominant visibility and lasting growth. We combine brand strategy, innovative design, and advanced
+              SEO to ensure your business is visible, remembered, and chosen by customers on a massive scale.
+            </p>
+
+            <div className="hero-en-actions">
+              <a href="#kontakt" className="hero-en-cta">Get Proposal →</a>
+              <a href="#portfolio" className="hero-en-cta-secondary">View Portfolio</a>
+            </div>
+          </div>
+
+          {/* Stage reserved for the Spline scene. Until the .splinecode URL is
+              available this renders a CSS-only orb — no JavaScript, no extra
+              network request, so it costs nothing against Core Web Vitals.
+              Replacing it means swapping the inner div for <Spline scene=… />. */}
+          <div className="hero-en-stage" aria-hidden="true">
+            <div className="hero-en-orb"></div>
+          </div>
+        </div>
+      )}
+
       {/* Enlarged & Responsive Hero Typography SVG Graphic with Floating Animation */}
-      <div style={{ 
+      {lang !== 'en' && (
+      <div style={{
         position: 'absolute', 
         top: '46%', 
         left: '50%', 
@@ -90,6 +136,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      )}
 
       {/* Bottom-left: Our Partners (KOTA Style) */}
       <motion.div 

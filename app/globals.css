@@ -2552,3 +2552,176 @@ section, aside.pricing, aside.contact, aside.why-us {
     line-height: 1.2 !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   ENGLISH HERO — text-first layout
+
+   Replaces the SVG-plus-overlay treatment on /en only; the Polish hero above is
+   untouched. Two columns on desktop (copy left, 3D stage right), stacked on
+   phones. Every size uses clamp() with an absolute floor, which is the fix for
+   the defect the container-query version had: 1.69cqw resolved to 6px at 375px
+   because cqw scales with the artwork and text has no lower bound in that unit.
+   --------------------------------------------------------------------------- */
+.hero-en {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.hero-en-copy {
+  max-width: 34rem;
+}
+
+.hero-en-title {
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.hero-en-title-display {
+  font-size: clamp(2.5rem, 6.2vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+}
+
+/* The keyword-bearing half of the H1. Smaller than the display line but still
+   well above the readability floor — it is a heading, not a caption. */
+.hero-en-title-sub {
+  font-size: clamp(1.05rem, 2.1vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--color-cta);
+}
+
+.hero-en-lead {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hero-en-body {
+  margin: 0 0 2rem;
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-en-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero-en-cta,
+.hero-en-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius-full);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.hero-en-cta {
+  background: #FFFFFF;
+  color: #0F172A;
+}
+
+.hero-en-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.18);
+}
+
+.hero-en-cta-secondary {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.hero-en-cta-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Reserved slot for the 3D scene. Square-ish box so swapping in a Spline canvas
+   does not reflow the column. */
+.hero-en-stage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Placeholder only — CSS gradients, no JS and no image request. */
+.hero-en-orb {
+  width: 78%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.22), transparent 45%),
+    radial-gradient(circle at 68% 72%, rgba(216, 90, 48, 0.55), transparent 55%),
+    radial-gradient(circle at 50% 50%, #1e293b, #0b1220 70%);
+  box-shadow:
+    inset -18px -12px 60px rgba(0, 0, 0, 0.6),
+    0 0 90px rgba(216, 90, 48, 0.22);
+}
+
+@media (max-width: 900px) {
+  .hero-en {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-en-copy {
+    max-width: none;
+    order: 2;
+  }
+
+  .hero-en-stage {
+    order: 1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+/* The section's mobile rules (65vh, capped at 650px, overflow hidden) were tuned
+   for the SVG hero, which scales down to fit. Text does not scale down, so the
+   English variant needs the section to grow with its content instead — otherwise
+   the CTAs and half the copy are clipped below the fold. Scoped to .hero--en so
+   the Polish hero keeps its existing behaviour exactly. */
+@media (max-width: 900px) {
+  .hero.hero--en {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    align-items: flex-start !important;
+    padding-top: 6.5rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Absolutely positioned at the bottom of the section; once the columns stack
+     it lands on top of the copy. */
+  .hero.hero--en .hero-partners-row {
+    display: none !important;
+  }
+}
