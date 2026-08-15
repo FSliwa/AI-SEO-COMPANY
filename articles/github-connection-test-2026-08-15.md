@@ -1,0 +1,1 @@
+Test article content — GitHub API connection check.
