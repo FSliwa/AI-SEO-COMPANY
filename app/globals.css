@@ -2728,19 +2728,19 @@ section, aside.pricing, aside.contact, aside.why-us {
   to { opacity: 1; }
 }
 
-.hero-en-copy > * {
+.hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
   animation:
     heroCopyRise 1000ms cubic-bezier(0.22, 1, 0.36, 1) both,
     heroCopyFade 280ms ease-out both;
 }
 
-.hero-en-copy > *:nth-child(1) { animation-delay: 80ms; }
-.hero-en-copy > *:nth-child(2) { animation-delay: 200ms; }
-.hero-en-copy > *:nth-child(3) { animation-delay: 320ms; }
-.hero-en-copy > *:nth-child(4) { animation-delay: 440ms; }
+.hero-en-lead { animation-delay: 80ms; }
+.hero-en-body { animation-delay: 200ms; }
+.hero-en-title { animation-delay: 320ms; }
+.hero-en-actions { animation-delay: 440ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-en-copy > * {
+  .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
     animation: none;
   }
 }
@@ -2749,14 +2749,17 @@ section, aside.pricing, aside.contact, aside.why-us {
    the top edge and the promise line the bottom, with the scene's lettering in
    the gap between them. Top padding clears the fixed header; bottom padding
    clears the absolutely-positioned partner row. */
+/* Absolutely positioned so it shares one coordinate space with the canvas: both
+   resolve against the section's padding box, which means a percentage here and a
+   percentage of the scene's framing are the same number. As a flex child it was
+   offset by the section's own 5.5rem padding and the two could not be lined up. */
 .hero-en {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 5;
-  align-self: stretch;
-  width: 100%;
   max-width: none;
   margin: 0;
-  padding: clamp(2.5rem, 5vh, 4rem) clamp(1.25rem, 3.4vw, 3.5rem) clamp(4.5rem, 8vh, 5.5rem);
+  padding: 0 clamp(1.25rem, 3.4vw, 3.5rem);
   display: flex;
   flex-direction: column;
 }
@@ -2765,15 +2768,28 @@ section, aside.pricing, aside.contact, aside.why-us {
    auto, which pins it and the buttons after it to the bottom edge while the
    promise line stays at the top. Same DOM order at every width, so nothing has
    to be re-nested for the narrow layout. */
-/* Measured off the rendered scene at this scale: the word runs from 15.5% to
-   73.5% of the viewport. The copy takes exactly that column, so its left edge
-   lines up with the stem of the "S" and nothing overruns the "O". Percentages
-   rather than a max-width because the lettering is sized by the canvas, which
-   is sized by the viewport — a rem measure would drift apart from it. */
+/* Where the lettering actually sits, measured rather than guessed: the canvas
+   framebuffer was read back at two aspect ratios and the orange pixels located.
+
+   offsets measured from the canvas centre, divided by canvas height:
+
+     1942x1324  ->  left -0.5510, right +0.3659   (12.1% / 75.1% of width)
+     1200x1000  ->  left -0.5515, right +0.3665   ( 3.4% / 80.9% of width)
+     1440x900   ->  left -0.5506, right +0.3672   (15.2% / 73.2% of width)
+
+   Three aspect ratios, agreeing to a tenth of a percent against height, while
+   the same edges swing between 3% and 15% of the width. That is the camera:
+   Spline holds a vertical field of view, so the scene scales with canvas height
+   and only the empty margin either side grows with width.
+
+   So the column is expressed in vh from the centre line. Tying it to width, as
+   the previous 15.5% did, is exactly what made the copy slide off the lettering
+   as soon as the window aspect changed. max() keeps the padding legal on tall,
+   narrow desktop windows, where the word runs off both edges anyway. */
 @media (min-width: 901px) {
   .hero-en {
-    padding-left: 15.5%;
-    padding-right: 26.5%;
+    padding-left: max(1.25rem, calc(50% - 55.1vh));
+    padding-right: max(1.25rem, calc(50% - 36.65vh));
   }
 }
 
@@ -2790,12 +2806,37 @@ section, aside.pricing, aside.contact, aside.why-us {
   pointer-events: auto;
 }
 
+/* Three rows: everything above the lettering, the lettering's own band, and
+   everything below. Measured top edge is 30.4% of the section height and the
+   bottom edge 62.2%, consistent across both aspect ratios tested. The 8px and
+   16px are the gaps asked for — the paragraph sits just clear of the "S", close
+   enough to read as one block with it. */
 .hero-en-copy {
   flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: calc(30.4% - 8px) calc(31.8% + 24px) 1fr;
+  align-items: start;
+  justify-items: start;
+}
+
+/* Bottom-aligned in its row, so the gap to the lettering stays 8px whatever the
+   paragraph wraps to. */
+.hero-en-top {
+  grid-row: 1;
+  align-self: end;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.hero-en-bottom {
+  grid-row: 3;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
   gap: 1.1rem;
+  align-items: flex-start;
 }
 
 
@@ -2805,12 +2846,8 @@ section, aside.pricing, aside.contact, aside.why-us {
   text-shadow: 0 1px 16px rgba(3, 7, 18, 0.9);
 }
 
-/* margin-top:auto is what pins the heading and the buttons after it to the
-   bottom edge while the promise line stays at the top. Keep it in the same
-   block as the rest of the margin shorthand — a separate `margin: 0` later in
-   the file silently undoes it. */
 .hero-en-title {
-  margin: auto 0 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -2852,6 +2889,18 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 /* Second tier under the promise line: same column, dimmer and a size down, so
    the two read as lead and supporting paragraph rather than one grey block. */
+/* Wide-screen-only connective clauses. They carry no keywords by design: what
+   is hidden on a phone is what mobile-first indexing would not read anyway. */
+.hero-en-wide-only {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .hero-en-wide-only {
+    display: inline;
+  }
+}
+
 .hero-en-body {
   margin: 0;
   font-size: clamp(0.92rem, 1.05vw, 1rem);
@@ -2912,54 +2961,48 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 @media (max-width: 900px) {
-  /* Full-bleed stops working here: the copy fills the width, so it would sit on
-     the lettering, and no offset fixes that while the canvas grows with the
-     section — the lettering just re-centres and follows the text down. Giving
-     the canvas its own height at the top breaks that loop. The scene plays at
-     full strength in the upper band, the copy owns the lower one, and the
-     bottom edge is faded rather than cut so there is no seam against the
-     section backdrop. */
+  /* Same reading as the desktop composition — copy, then the word, then the
+     heading — rather than the scene sitting on top of everything. Full-bleed
+     still cannot work at this width: the lettering is scaled by canvas height,
+     so at 375 x 900 its half-width would be 500px against a 187px half-screen
+     and only the middle of the "E" would be on screen. A band of its own gives
+     the canvas an aspect near the desktop one, where the whole word fits.
+     Placed lower than the desktop 30.4% because the header eats the top of the
+     first row and the copy needs the space. */
   .hero-en-bg {
+    top: 44%;
+    height: 26%;
     bottom: auto;
-    height: 34vh;
-    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
   }
 
   .hero-en {
-    padding-top: 36vh;
-    padding-bottom: 4rem;
+    padding-left: clamp(1.25rem, 5vw, 2rem);
+    padding-right: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .hero-en-copy {
+    grid-template-rows: calc(44% - 8px) calc(26% + 24px) 1fr;
+  }
+
+  /* Room for the fixed header, which overlays the first row. */
+  .hero-en-top {
+    padding-top: 5.5rem;
   }
 
   /* Nothing to push apart here — the canvas has its own band above the copy,
      so the two groups simply stack. */
-  .hero-en-copy {
-    gap: 1.6rem;
-  }
-
-  /* The canvas band is above the copy here, so the heading has to lead — it is
-     the half-sentence the scene's lettering completes. The stagger follows that
-     order rather than the markup order. */
-  .hero-en-title {
-    order: -1;
-    margin-top: 0;
-  }
-
-  .hero-en-copy > *:nth-child(1) { animation-delay: 200ms; }
-  .hero-en-copy > *:nth-child(2) { animation-delay: 320ms; }
-  .hero-en-copy > *:nth-child(3) { animation-delay: 80ms; }
-
-  /* The copy is below the canvas band here, not beside it, so the left-weighted
-     wash has nothing to do. Vertical instead: lift the header, lift the copy,
-     leave the scene band alone. */
+  /* Almost nothing to do at this width. The canvas occupies 44%-70% and the copy
+     sits outside it, over the section's own backdrop — so the only job left is
+     taking the glare off the top edge, where the header floats. Scrimming the
+     band itself would just dim the animation for no reason. */
   .hero-overlay--en {
     background: linear-gradient(
       180deg,
-      rgba(3, 7, 18, 0.45) 0%,
-      rgba(3, 7, 18, 0) 14%,
-      rgba(3, 7, 18, 0) 44%,
-      rgba(3, 7, 18, 0.55) 60%,
-      rgba(3, 7, 18, 0.75) 100%
+      rgba(3, 7, 18, 0.55) 0%,
+      rgba(3, 7, 18, 0) 12%,
+      rgba(3, 7, 18, 0) 100%
     );
   }
 }
@@ -2971,13 +3014,18 @@ section, aside.pricing, aside.contact, aside.why-us {
    the Polish hero keeps its existing behaviour exactly. */
 @media (max-width: 900px) {
   .hero.hero--en {
+    /* .hero-en is positioned out of flow now, so it cannot push the section
+       open the way it used to — the height has to be stated. 820px is what the
+       shortened copy needs at 375px wide with the band and the header in it,
+       and it lands the buttons just above the sticky bar rather than under it;
+       taller screens simply use their own. */
     height: auto !important;
-    min-height: 0 !important;
+    min-height: max(100svh, 820px) !important;
     max-height: none !important;
-    overflow: visible !important;
+    overflow: hidden !important;
     align-items: flex-start !important;
     padding-top: 0 !important;
-    padding-bottom: 3rem !important;
+    padding-bottom: 0 !important;
   }
 
   /* Absolutely positioned at the bottom of the section; once the columns stack

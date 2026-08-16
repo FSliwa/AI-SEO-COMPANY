@@ -100,24 +100,42 @@ export default function Hero() {
               canvas is a band above everything, so there the heading is pulled
               to the front of the copy for the same reason. */}
           <div className="hero-en-copy">
-            <p className="hero-en-lead">
-              We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
-            </p>
+            <div className="hero-en-top">
+              <p className="hero-en-lead">
+                We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
+              </p>
 
-            <p className="hero-en-body">
-              We merge the creativity of human SEO teams with AI-driven accuracy to ensure your brand achieves
-              dominant visibility and lasting growth. We combine brand strategy, innovative design, and advanced
-              SEO to ensure your business is visible, remembered, and chosen by customers on a massive scale.
-            </p>
+              {/* Phones get the shorter reading. Note how: the sentences that carry
+                  the keywords are shared by both widths and appear exactly once,
+                  and only keyword-free connective clauses are added on wide
+                  screens. Nothing is duplicated, so the HTML does not repeat a
+                  phrase twice, and nothing indexable is hidden from the mobile
+                  layout — which matters, because mobile-first indexing means the
+                  narrow rendering is the one Google actually reads. */}
+              <p className="hero-en-body">
+                The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and
+                lasting growth.
+                <span className="hero-en-wide-only">
+                  {' '}We merge the two so your brand compounds results instead of chasing them.
+                </span>
+                {' '}Brand strategy, innovative design and advanced SEO make your business remembered and
+                chosen at massive scale.
+                <span className="hero-en-wide-only">
+                  {' '}We combine all three rather than treating them as separate projects.
+                </span>
+              </p>
+            </div>
 
-            <h1 className="hero-en-title">
-              <span className="hero-en-title-display">that drives sales</span>
-              <span className="hero-en-title-sub">Premium SEO &amp; Marketing Agency for Companies</span>
-            </h1>
+            <div className="hero-en-bottom">
+              <h1 className="hero-en-title">
+                <span className="hero-en-title-display">that drives sales</span>
+                <span className="hero-en-title-sub">Premium SEO &amp; Marketing Agency for Companies</span>
+              </h1>
 
-            <div className="hero-en-actions">
-              <a href="#kontakt" className="hero-en-cta">Get Proposal →</a>
-              <a href="#portfolio" className="hero-en-cta-secondary">View Portfolio</a>
+              <div className="hero-en-actions">
+                <a href="#kontakt" className="hero-en-cta">Get Proposal →</a>
+                <a href="#portfolio" className="hero-en-cta-secondary">View Portfolio</a>
+              </div>
             </div>
           </div>
         </div>
