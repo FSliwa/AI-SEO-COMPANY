@@ -3084,20 +3084,19 @@ section, aside.pricing, aside.contact, aside.why-us {
      The section grows to 880px to buy that back without pushing the buttons
      under the sticky bar. */
   .hero-en-bg {
-    top: 36%;
+    top: 38%;
     height: 35%;
     bottom: auto;
     -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
     mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
   }
 
-  .hero-en {
-    padding-left: clamp(1.25rem, 5vw, 2rem);
-    padding-right: clamp(1.25rem, 5vw, 2rem);
-  }
+  /* No mobile-only side padding: the shared clamp already lands on the same
+     1.25rem floor here, so the copy sits on the identical margin as the wide
+     layout rather than on a second value that happened to match. */
 
   .hero-en-copy {
-    grid-template-rows: calc(36% - 8px) calc(35% + 24px) 1fr;
+    grid-template-rows: calc(38% - 8px) calc(35% + 24px) 1fr;
   }
 
   /* Polish runs about 25% longer than the English for the same meaning, and
@@ -3115,28 +3114,30 @@ section, aside.pricing, aside.contact, aside.why-us {
     font-size: 1rem;
   }
 
+  /* Type is a size down because the column is only 335px wide, but the leading
+     ratios are the desktop ones — 1.55 on the promise line, 1.6 on the
+     paragraph — so the vertical rhythm reads the same rather than tighter. */
   .hero-en-lead {
     font-size: 1rem;
-    line-height: 1.45;
+    line-height: 1.55;
   }
 
   .hero-en-body {
     font-size: 0.88rem;
-    line-height: 1.45;
+    line-height: 1.6;
   }
 
-  /* "Wyceń projekt" + "Zobacz portfolio" come to 347px at the shared padding,
-     against 335px of content width — so the pair wrapped to two lines and the
-     second button dropped under the sticky bar. Tighter sides fit both labels
-     on one row in either language. */
-  .hero-en-actions {
-    gap: 0.7rem;
-  }
-
+  /* The one spacing that cannot match the wide layout, and only this one. At the
+     shared 1.35rem sides the Polish pair measures 177 + 172 + 16 = 365px against
+     335px of column — 30px over, so the buttons wrapped to two rows and dropped
+     below the fold. Sides come in to 0.85rem, which recovers 32px and puts them
+     back on one row. Vertical padding, the gap between them, and the font size
+     are all left at the desktop values, so only the inside of the pill differs
+     and every gap between elements is identical. */
   .hero-en-cta,
   .hero-en-cta-secondary {
-    padding: 0.85rem 1rem;
-    font-size: 0.95rem;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
   }
 
   /* Nothing to push apart here — the canvas has its own band above the copy,
@@ -3163,12 +3164,13 @@ section, aside.pricing, aside.contact, aside.why-us {
 @media (max-width: 900px) {
   .hero.hero--en {
     /* .hero-en is positioned out of flow now, so it cannot push the section
-       open the way it used to — the height has to be stated. 880px is what the
-       shortened copy, a band wide enough to run the lettering edge to edge, and
-       the header come to at 375px, with the buttons still landing above the
-       sticky bar; taller screens simply use their own. */
+       open the way it used to — the height has to be stated. 880px with the
+       band at 38%-73% is where three competing demands settle at 375x812: 20px
+       of clearance under the fixed header, the lettering at 89% of the screen,
+       and the buttons landing on the fold rather than under it. Taller screens
+       simply use their own height. */
     height: auto !important;
-    min-height: max(100svh, 900px) !important;
+    min-height: max(100svh, 880px) !important;
     max-height: none !important;
     overflow: hidden !important;
     align-items: flex-start !important;
