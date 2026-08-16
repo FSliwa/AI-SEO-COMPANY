@@ -2760,7 +2760,22 @@ section, aside.pricing, aside.contact, aside.why-us {
   to { opacity: 1; }
 }
 
+/* Held at the animation's first frame until the scene reports its own first
+   frame, then both run off the same state change — one movement instead of the
+   copy settling seconds before the 3D turns up.
+
+   The cost is stated plainly because it is real: the copy is the LCP element,
+   and it now waits on a 34 MB download. On a cold visit that measured 10.7s.
+   The failsafe in Hero.jsx releases the copy anyway after 8s so the hero is
+   never permanently blank, and the noscript block in the markup hands it to the
+   finished state when there is no JavaScript at all. The proper fix is upstream:
+   shrink the scene in Spline. */
 .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.hero-en-copy.is-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
   animation:
     heroCopyRise 1000ms cubic-bezier(0.22, 1, 0.36, 1) both,
     heroCopyFade 280ms ease-out both;
@@ -2774,6 +2789,8 @@ section, aside.pricing, aside.contact, aside.why-us {
 @media (prefers-reduced-motion: reduce) {
   .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
     animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -2946,6 +2963,13 @@ section, aside.pricing, aside.contact, aside.why-us {
   gap: 1rem;
 }
 
+/* Same hover as the buttons on the local-SEO hero: the accent colour wipes in
+   as a circle growing from the centre. Only the interaction is borrowed — the
+   pills keep the colours and shape they already had.
+
+   The fill is a ::before at z-index -1 inside a z-index:1 stacking context,
+   which paints it above the button's own background but below its label, so a
+   white pill works the same way the dark one does over there. */
 .hero-en-cta,
 .hero-en-cta-secondary {
   display: inline-flex;
@@ -2957,7 +2981,26 @@ section, aside.pricing, aside.contact, aside.why-us {
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.hero-en-cta::before,
+.hero-en-cta-secondary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-cta);
+  z-index: -1;
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-en-cta:hover::before,
+.hero-en-cta-secondary:hover::before {
+  clip-path: circle(150% at 50% 50%);
 }
 
 .hero-en-cta {
@@ -2966,8 +3009,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 .hero-en-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
 }
 
 .hero-en-cta-secondary {
@@ -2977,7 +3019,8 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 .hero-en-cta-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.7);
+  color: #FFFFFF;
+  border-color: var(--color-cta);
 }
 
 /* Rendered while the Spline chunk downloads, and the whole backdrop if the
@@ -3021,6 +3064,43 @@ section, aside.pricing, aside.contact, aside.why-us {
   /* Room for the fixed header, which overlays the first row. */
   .hero-en-top {
     padding-top: 5.5rem;
+  }
+
+  /* Polish runs about 25% longer than the English for the same meaning, and
+     "które buduje sprzedaż" is twice the length of "that drives sales". At the
+     shared sizes the first row pushed up under the header and the buttons were
+     clipped off the bottom of the section. A notch down on all four sizes fits
+     both languages in the same box. */
+  .hero-en-title-display {
+    font-size: clamp(1.85rem, 7.5vw, 2.4rem);
+  }
+
+  .hero-en-title-sub {
+    font-size: 1rem;
+  }
+
+  .hero-en-lead {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .hero-en-body {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  /* "Wyceń projekt" + "Zobacz portfolio" come to 347px at the shared padding,
+     against 335px of content width — so the pair wrapped to two lines and the
+     second button dropped under the sticky bar. Tighter sides fit both labels
+     on one row in either language. */
+  .hero-en-actions {
+    gap: 0.7rem;
+  }
+
+  .hero-en-cta,
+  .hero-en-cta-secondary {
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
   }
 
   /* Nothing to push apart here — the canvas has its own band above the copy,

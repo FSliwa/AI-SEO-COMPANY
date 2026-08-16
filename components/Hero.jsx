@@ -1,17 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
 
 /**
- * The Spline runtime is roughly 1.5 MB of JavaScript plus the scene itself — far
- * too much to sit in the critical path of a page we have been tuning for Core
- * Web Vitals. Loading it with ssr:false keeps it out of the server response and
- * out of the initial bundle, so the LCP element stays the headline text on the
- * left. Until it resolves, the same CSS orb renders in its place, which means
- * the column never reflows and there is no empty box while the scene downloads.
+ * The Spline runtime is roughly 1.5 MB of JavaScript plus the scene itself.
+ * ssr:false keeps both out of the server response and the initial bundle. Until
+ * it resolves the CSS orb stands in, so the section never reflows.
  *
  * Note the import path: `@splinetool/react-spline/next` is an async Server
  * Component, and this file is a client component (framer-motion, useLocale), so
@@ -23,206 +20,144 @@ const Spline = dynamic(() => import('@splinetool/react-spline'), {
   loading: () => <div className="hero-en-orb" />
 });
 
+const SCENE = 'https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode';
+
+/**
+ * Hero copy per locale.
+ *
+ * Polish is not a translation of the English — it is the wording that was
+ * already on the Polish hero, redistributed. The old H1 read "Kompleksowa
+ * Agencja SEO i Marketingowa z Warszawy. Twój projekt i strony to nasz
+ * priorytet - skuteczne pozycjonowanie napędzające wzrost" and is preserved
+ * whole across `sub` and `lead`. `display` and `body` were previously baked
+ * into the SVG artwork as paths, so they existed as pixels and not as text —
+ * moving them here turns them into indexable HTML for the first time.
+ *
+ * `wide` clauses are the ones phones do not get. They deliberately carry no
+ * keyword of their own: everything that ranks lives in the shared sentences, so
+ * the shortened mobile rendering — the one mobile-first indexing reads — is not
+ * missing a single phrase.
+ */
+const COPY = {
+  en: {
+    lead: 'We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.',
+    bodyA: 'The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and lasting growth.',
+    wideA: 'We merge the two so your brand compounds results instead of chasing them.',
+    bodyB: 'Brand strategy, innovative design and advanced SEO make your business remembered and chosen at massive scale.',
+    wideB: 'We combine all three rather than treating them as separate projects.',
+    display: 'that drives sales',
+    sub: 'Premium SEO & Marketing Agency for Companies',
+    ctaPrimary: 'Get Proposal',
+    ctaSecondary: 'View Portfolio'
+  },
+  pl: {
+    lead: 'Twój projekt i strony to nasz priorytet – skuteczne pozycjonowanie napędzające wzrost.',
+    bodyA: 'Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i masowo wybierana przez klientów.',
+    wideA: 'Prowadzimy te trzy obszary razem, a nie jako osobne projekty.',
+    bodyB: 'Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.',
+    wideB: 'Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.',
+    display: 'które buduje sprzedaż',
+    sub: 'Kompleksowa Agencja SEO i Marketingowa z Warszawy',
+    ctaPrimary: 'Wyceń projekt',
+    ctaSecondary: 'Zobacz portfolio'
+  }
+};
+
 export default function Hero() {
   const lang = useLocale();
   const t = useTranslations('hero');
+  const copy = COPY[lang] || COPY.pl;
 
-  // Whether the scene has finished parsing and drawn its first frame. Used only
-  // to fade the canvas in — the copy is never gated on it, because this scene is
-  // 34 MB and the hero would sit empty until it landed.
+  // The scene's first painted frame. The copy entrance is tied to this so the
+  // two arrive as one movement rather than the text settling long before the
+  // 3D shows up. The timeout is a floor, not a preference: if the scene never
+  // resolves the hero must not stay blank, so the copy comes in regardless.
   const [sceneIn, setSceneIn] = useState(false);
 
+  useEffect(() => {
+    const failsafe = setTimeout(() => setSceneIn(true), 8000);
+    return () => clearTimeout(failsafe);
+  }, []);
+
   return (
-    <section className={`hero${lang === 'en' ? ' hero--en' : ''}`} id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: lang === 'en' ? '#000000' : '#0F172A' }}>
-      {/* H1 moved to the main visual element */}
-
-      {/* Background Hero Video — Polish only. On the English side the Spline
-          scene covers the whole section, so shipping the video too would be a
-          second full-screen background nobody ever sees. */}
-      {lang !== 'en' && (
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="hero-video-bg"
-          preload="metadata"
-          poster="/black-hole-poster.webp"
-        >
-          <source src="/black-hole-ai-seo-company.webm" type="video/webm" media="(min-width: 768px)" />
-          <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" media="(min-width: 768px)" />
-        </video>
-      )}
-
-      {/* ── ENGLISH: the 3D scene is the section background ────────────────────
-          The section's own colour is #000000 because that is, measured off the
-          canvas, exactly the scene's baked background — sampled at every edge it
-          comes back 0,0,0. It used to be #05070D, which was invisible on desktop
-          where the canvas covers everything, but showed as a seam on phones
-          where the canvas only occupies a band.
-          Full-bleed rather than a column, which also settles the black-box
-          problem from the previous pass: the scene's own opaque background was
-          impossible to remove from outside the file, but at full width it stops
-          being a rectangle sitting on the page and simply becomes the section's
-          backdrop. */}
-      {lang === 'en' && (
-        <div className={`hero-en-bg${sceneIn ? ' is-in' : ''}`} aria-hidden="true">
-          <Spline
-            scene="https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode"
-            onLoad={() => setSceneIn(true)}
-          />
-        </div>
-      )}
-
-      {/* Subtle Starfield Background */}
-      {lang !== 'en' && <div className="hero-stars-bg"></div>}
-
-      {/* Hero Overlay & Subtle Vignette. On English it doubles as the scrim that
-          keeps the copy readable over the moving scene. */}
-      <div className={`hero-overlay${lang === 'en' ? ' hero-overlay--en' : ''}`}></div>
-
-      {/* ── ENGLISH: copy layered over the scene ───────────────────────────────
-          The Polish side still uses the SVG-with-overlay treatment below. Here
-          the same words render as ordinary HTML, sitting on top of the scene
-          rather than beside it. Wording is carried over verbatim from the SVG
-          artwork and the old H1 overlay, so keyword coverage is unchanged.
-
-          The copy is split around the artwork: the heading above the scene's
-          lettering, the promise and the buttons below it. The display line no
-          longer carries "SEO" — the scene renders it, and repeating it directly
-          above read as the same word twice.
-
-          The cost of that, stated plainly: if the scene fails to load, the
-          first line reads "that drives sales" on its own. The H1's second line
-          still says "Premium SEO & Marketing Agency for Companies", so the
-          heading is not meaningless without WebGL — but it is a fragment. This
-          wording was specified.
-
-          This also removes the overlay's mobile defect: the SVG version sized
-          the H1 in container-query units (1.69cqw), which resolved to 6px on a
-          375px screen. Ordinary text with clamp() cannot fall below its floor. */}
-      {lang === 'en' && (
-        <div className="hero-en">
-          {/* Two groups pinned to the top and bottom edges, with the scene's
-              lettering occupying the middle band it already claims (31%-63% of
-              the height). Nothing overlaps, so the scrim barely has to work and
-              the animation plays at full strength.
-
-              The heading sits below the artwork on purpose. The scene supplies
-              the word "SEO", so the eye has to meet it before "that drives
-              sales" or the sentence comes out backwards. On narrow screens the
-              canvas is a band above everything, so there the heading is pulled
-              to the front of the copy for the same reason. */}
-          <div className="hero-en-copy">
-            <div className="hero-en-top">
-              <p className="hero-en-lead">
-                We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
-              </p>
-
-              {/* Phones get the shorter reading. Note how: the sentences that carry
-                  the keywords are shared by both widths and appear exactly once,
-                  and only keyword-free connective clauses are added on wide
-                  screens. Nothing is duplicated, so the HTML does not repeat a
-                  phrase twice, and nothing indexable is hidden from the mobile
-                  layout — which matters, because mobile-first indexing means the
-                  narrow rendering is the one Google actually reads. */}
-              <p className="hero-en-body">
-                The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and
-                lasting growth.
-                <span className="hero-en-wide-only">
-                  {' '}We merge the two so your brand compounds results instead of chasing them.
-                </span>
-                {' '}Brand strategy, innovative design and advanced SEO make your business remembered and
-                chosen at massive scale.
-                <span className="hero-en-wide-only">
-                  {' '}We combine all three rather than treating them as separate projects.
-                </span>
-              </p>
-            </div>
-
-            <div className="hero-en-bottom">
-              <h1 className="hero-en-title">
-                <span className="hero-en-title-display">that drives sales</span>
-                <span className="hero-en-title-sub">Premium SEO &amp; Marketing Agency for Companies</span>
-              </h1>
-
-              <div className="hero-en-actions">
-                <a href="#kontakt" className="hero-en-cta">Get Proposal →</a>
-                <a href="#portfolio" className="hero-en-cta-secondary">View Portfolio</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Enlarged & Responsive Hero Typography SVG Graphic with Floating Animation */}
-      {lang !== 'en' && (
-      <div style={{
-        position: 'absolute', 
-        top: '46%', 
-        left: '50%', 
-        transform: 'translate(-50%, -50%)', 
-        width: '98vw', 
-        maxWidth: '2400px', 
-        maxHeight: '88vh',
-        zIndex: 4, 
-        display: 'flex', 
-        justifyContent: 'center', 
+    <section
+      className="hero hero--en"
+      id="hero"
+      style={{
+        position: 'relative',
+        width: '100%',
+        minHeight: '100vh',
+        overflow: 'hidden',
+        display: 'flex',
         alignItems: 'center',
-        padding: '0 0.5vw',
-        pointerEvents: 'none'
-      }}>
-        <div
-          className="hero-lcp-image"
-          style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}
-        >
-          {/* Aspect-locked stage: matches the SVG viewBox (1440x810) exactly, so the
-              H1 can be positioned in SVG coordinates as percentages and keeps the
-              same placement relative to the artwork at every screen resolution. */}
-          <div className="hero-art">
-            {/* Two-tone like the SVG's own paragraphs: lead sentence in the accent
-                colour, the remainder in white. Wording is unchanged. */}
-            <h1 className={`hero-seo-h1${lang === 'pl' ? ' hero-seo-h1-pl' : ''}`}>
-              {lang === 'en' ? (
-                <>
-                  Premium SEO & Marketing Agency for Companies.{' '}
-                  <span className="hero-seo-h1-rest">
-                    We do what search engine optimisation companies rarely do: report on pipeline, not on rankings
-                  </span>
-                </>
-              ) : (
-                <>
-                  Kompleksowa Agencja SEO i Marketingowa z Warszawy.{' '}
-                  <span className="hero-seo-h1-rest">
-                    Twój projekt i strony to nasz priorytet - skuteczne pozycjonowanie napędzające wzrost
-                  </span>
-                </>
-              )}
+        justifyContent: 'center',
+        // Measured off the canvas framebuffer at seven edge points: the scene's
+        // baked background is 0,0,0 at every one. Matching it means the band the
+        // canvas occupies on phones has no visible edge against the section.
+        backgroundColor: '#000000'
+      }}
+    >
+      {/* The scene is the section background on both locales now. The video and
+          the starfield are gone with it — they were a second full-screen
+          backdrop nobody could see underneath this one. */}
+      <div className={`hero-en-bg${sceneIn ? ' is-in' : ''}`} aria-hidden="true">
+        <Spline scene={SCENE} onLoad={() => setSceneIn(true)} />
+      </div>
+
+      {/* Vignette, and on the wide layout the scrim that lifts the copy edges. */}
+      <div className="hero-overlay hero-overlay--en"></div>
+
+      {/* Two groups pinned above and below the scene's own lettering, which
+          occupies 30.4%-62.2% of the section height. The heading sits under the
+          artwork on purpose: the scene supplies the word "SEO", so the eye has
+          to meet it before "that drives sales" / "które buduje sprzedaż" or the
+          sentence comes out backwards.
+
+          Without JavaScript the copy would never get its entrance class and
+          would stay hidden, so the noscript block below hands it straight to
+          the finished state. */}
+      <noscript>
+        <style>{`.hero-en-copy :is(.hero-en-lead,.hero-en-body,.hero-en-title,.hero-en-actions){opacity:1;transform:none}`}</style>
+      </noscript>
+
+      <div className="hero-en">
+        <div className={`hero-en-copy${sceneIn ? ' is-in' : ''}`}>
+          <div className="hero-en-top">
+            <p className="hero-en-lead">{copy.lead}</p>
+
+            <p className="hero-en-body">
+              {copy.bodyA}
+              <span className="hero-en-wide-only">{' '}{copy.wideA}</span>
+              {' '}{copy.bodyB}
+              <span className="hero-en-wide-only">{' '}{copy.wideB}</span>
+            </p>
+          </div>
+
+          <div className="hero-en-bottom">
+            {/* The explicit space matters. These are inline spans blockified by
+                the flex column, so they read as separate lines on screen — but a
+                crawler concatenating inline text with no whitespace between them
+                produces "sprzedażKompleksowa" / "salesPremium", a token that is
+                in no dictionary and breaks the phrase at the seam. */}
+            <h1 className="hero-en-title">
+              <span className="hero-en-title-display">{copy.display}</span>{' '}
+              <span className="hero-en-title-sub">{copy.sub}</span>
             </h1>
-            <img
-              className="hero-art-img"
-              src={lang === 'en' ? '/seo-for-companies.svg' : '/agencja-marketingowa-agencja-seo-pozycjonowanie-stron-projekt-strony-wzrost.svg'}
-              alt={lang === 'en'
-                ? 'SEO for companies'
-                : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie Stron i Projektowanie'}
-              title={lang === 'en'
-                ? 'SEO for companies'
-                : 'Agencja SEO i Marketingowa Warszawa – Pozycjonowanie Stron i Projektowanie'}
-              width={1440}
-              height={810}
-              fetchPriority="high"
-            />
+
+            <div className="hero-en-actions">
+              <a href="#kontakt" className="hero-en-cta">{copy.ctaPrimary} →</a>
+              <a href="#portfolio" className="hero-en-cta-secondary">{copy.ctaSecondary}</a>
+            </div>
           </div>
         </div>
       </div>
-      )}
 
       {/* Bottom-left: Our Partners (KOTA Style) */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 0.85, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
-        className="hero-partners-row" 
+        className="hero-partners-row"
         style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '2.5rem', flexWrap: 'wrap' }}
       >
         <span className="hero-partner-item" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.1rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
