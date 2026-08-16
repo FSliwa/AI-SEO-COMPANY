@@ -30,33 +30,55 @@ export default function Hero() {
     <section className={`hero${lang === 'en' ? ' hero--en' : ''}`} id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F172A' }}>
       {/* H1 moved to the main visual element */}
 
-      {/* Background Hero Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="hero-video-bg"
-        preload="metadata"
-        poster="/black-hole-poster.webp"
-      >
-        <source src="/black-hole-ai-seo-company.webm" type="video/webm" media="(min-width: 768px)" />
-        <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" media="(min-width: 768px)" />
-      </video>
+      {/* Background Hero Video — Polish only. On the English side the Spline
+          scene covers the whole section, so shipping the video too would be a
+          second full-screen background nobody ever sees. */}
+      {lang !== 'en' && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="hero-video-bg"
+          preload="metadata"
+          poster="/black-hole-poster.webp"
+        >
+          <source src="/black-hole-ai-seo-company.webm" type="video/webm" media="(min-width: 768px)" />
+          <source src="/black-hole-ai-seo-company.mp4" type="video/mp4" media="(min-width: 768px)" />
+        </video>
+      )}
+
+      {/* ── ENGLISH: the 3D scene is the section background ────────────────────
+          Full-bleed rather than a column, which also settles the black-box
+          problem from the previous pass: the scene's own opaque background was
+          impossible to remove from outside the file, but at full width it stops
+          being a rectangle sitting on the page and simply becomes the section's
+          backdrop. */}
+      {lang === 'en' && (
+        <div className="hero-en-bg" aria-hidden="true">
+          <Spline scene="https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode" />
+        </div>
+      )}
 
       {/* Subtle Starfield Background */}
-      <div className="hero-stars-bg"></div>
+      {lang !== 'en' && <div className="hero-stars-bg"></div>}
 
-      {/* Hero Overlay & Subtle Vignette */}
-      <div className="hero-overlay"></div>
+      {/* Hero Overlay & Subtle Vignette. On English it doubles as the scrim that
+          keeps the copy readable over the moving scene. */}
+      <div className={`hero-overlay${lang === 'en' ? ' hero-overlay--en' : ''}`}></div>
 
-      {/* ── ENGLISH: text-first hero ───────────────────────────────────────────
-          The Polish side still uses the SVG-with-overlay treatment below. The
-          English side renders the same words as ordinary HTML in a two-column
-          layout: copy on the left, a reserved stage on the right for the 3D
-          scene. Wording is carried over verbatim from the SVG artwork and the
-          old H1 overlay, so keyword coverage is unchanged — only the rendering
-          differs.
+      {/* ── ENGLISH: copy layered over the scene ───────────────────────────────
+          The Polish side still uses the SVG-with-overlay treatment below. Here
+          the same words render as ordinary HTML, sitting on top of the scene
+          rather than beside it. Wording is carried over verbatim from the SVG
+          artwork and the old H1 overlay, so keyword coverage is unchanged.
+
+          The scene renders "SEO" as its own centrepiece, so the headline steps
+          back to meet it: smaller display size, and the shared word tinted to
+          the scene's colour. It keeps the word rather than letting the canvas
+          supply it — the scene is a 34 MB network dependency, and a headline
+          that reads "that drives sales" whenever WebGL is unavailable is a
+          defect, not a design.
 
           This also removes the overlay's mobile defect: the SVG version sized
           the H1 in container-query units (1.69cqw), which resolved to 6px on a
@@ -65,7 +87,9 @@ export default function Hero() {
         <div className="hero-en">
           <div className="hero-en-copy">
             <h1 className="hero-en-title">
-              <span className="hero-en-title-display">SEO that drives sales</span>
+              <span className="hero-en-title-display">
+                <span className="hero-en-title-kw">SEO</span> that drives sales
+              </span>
               <span className="hero-en-title-sub">Premium SEO &amp; Marketing Agency for Companies</span>
             </h1>
 
@@ -83,12 +107,6 @@ export default function Hero() {
               <a href="#kontakt" className="hero-en-cta">Get Proposal →</a>
               <a href="#portfolio" className="hero-en-cta-secondary">View Portfolio</a>
             </div>
-          </div>
-
-          {/* Decorative: the scene carries no information the copy does not, so
-              it is hidden from assistive technology rather than given a label. */}
-          <div className="hero-en-stage" aria-hidden="true">
-            <Spline scene="https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode" />
           </div>
         </div>
       )}
