@@ -2580,63 +2580,92 @@ section, aside.pricing, aside.contact, aside.why-us {
   object-fit: cover;
 }
 
-/* Scrim. The scene's "SEO" reaches roughly a quarter of the way in from the
-   left, so the copy column cannot avoid it — offsetting the canvas far enough
-   to clear the text needs a scale that enlarges the lettering by as much as the
-   offset gains. So the overlap is made deliberate instead: a near-solid panel
-   under the copy that falls away quickly, leaving the artwork to the right.
-   The second layer darkens the top and bottom edges, where the header links and
-   the partner row sit over the same canvas. */
+/* Scrim. The animation has to read at full strength, so this can no longer be a
+   panel laid over the artwork — it only darkens the two edges that the header
+   and the copy actually occupy. The scene's lettering sits between 31% and 63%
+   of the section height and is left completely alone: the ramp starts below it
+   and the top stop clears it by a wide margin. */
 .hero-overlay--en {
-  background:
-    linear-gradient(
-      96deg,
-      rgba(3, 7, 18, 0.95) 0%,
-      rgba(3, 7, 18, 0.92) 30%,
-      rgba(3, 7, 18, 0.62) 50%,
-      rgba(3, 7, 18, 0.16) 72%,
-      rgba(3, 7, 18, 0.06) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(3, 7, 18, 0.55) 0%,
-      rgba(3, 7, 18, 0) 20%,
-      rgba(3, 7, 18, 0) 78%,
-      rgba(3, 7, 18, 0.6) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(3, 7, 18, 0.5) 0%,
+    rgba(3, 7, 18, 0) 15%,
+    rgba(3, 7, 18, 0) 58%,
+    rgba(3, 7, 18, 0.58) 78%,
+    rgba(3, 7, 18, 0.9) 100%
+  );
   z-index: 2;
 }
 
+/* Bottom-anchored. Separating the copy from the lettering horizontally is not
+   possible: the word spans 25% to 70% of the width at every viewport, so no
+   column both clears it and stays wide enough to set a paragraph in. Vertically
+   it works, because the lettering stops at 63% of the height.
+   The section is a flex container that centres its children, so the offset has
+   to come from margin-top:auto — align-self would lose to the parent. */
 .hero-en {
   position: relative;
   z-index: 5;
   width: 100%;
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 3rem);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-items: center;
+  margin: auto auto 0;
+  /* The section already carries 88px of bottom padding, and the partner row is
+     absolutely positioned inside it, so this only needs to keep the buttons off
+     that row — every rem added here is a rem the copy is pushed back up into
+     the lettering. */
+  padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(0.5rem, 1.5vh, 1.25rem);
 }
 
-/* Held inside the left third. It still crosses the scene's lettering, which the
-   scrim above handles, but a wider measure would push the paragraphs into the
-   sculpture on the right, where no scrim can rescue them. */
+/* Two columns so the block is half as tall as it would be stacked. Explicit
+   placement rather than source order: the buttons are last in the markup, where
+   they belong for reading and crawling, but belong under the heading visually.
+   The right column is the wider of the two — it carries the body paragraph, and
+   every line it saves there is a line the whole block gets shorter by. */
 .hero-en-copy {
-  max-width: 30rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  column-gap: clamp(2rem, 4vw, 3.5rem);
+  row-gap: 1.6rem;
+  align-items: end;
 }
 
 .hero-en-title {
-  margin: 0 0 1.5rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.hero-en-support {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+}
+
+.hero-en-actions {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* The copy no longer sits on a scrim panel, so it carries its own contrast for
+   the frames where a lit part of the sculpture drifts underneath it. */
+.hero-en-copy :is(h1, p, a) {
+  text-shadow: 0 1px 16px rgba(3, 7, 18, 0.9);
+}
+
+.hero-en-cta {
+  text-shadow: none;
+}
+
+.hero-en-title {
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .hero-en-title-display {
-  font-size: clamp(2.35rem, 5.4vw, 4rem);
+  font-size: clamp(2.25rem, 4.2vw, 3.4rem);
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.04;
   letter-spacing: -0.03em;
   color: #FFFFFF;
 }
@@ -2653,7 +2682,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 /* The keyword-bearing half of the H1. Smaller than the display line but still
    well above the readability floor — it is a heading, not a caption. */
 .hero-en-title-sub {
-  font-size: clamp(1.05rem, 2.1vw, 1.5rem);
+  font-size: clamp(1rem, 1.7vw, 1.3rem);
   font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -2661,16 +2690,16 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 .hero-en-lead {
-  margin: 0 0 1.25rem;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  margin: 0 0 0.85rem;
+  font-size: clamp(0.98rem, 1.25vw, 1.12rem);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.92);
 }
 
 .hero-en-body {
-  margin: 0 0 2rem;
-  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
-  line-height: 1.65;
+  margin: 0;
+  font-size: clamp(0.9rem, 1.05vw, 0.97rem);
+  line-height: 1.58;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -2727,15 +2756,37 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 @media (max-width: 900px) {
+  /* Full-bleed stops working here: the copy fills the width, so it would sit on
+     the lettering, and no offset fixes that while the canvas grows with the
+     section — the lettering just re-centres and follows the text down. Giving
+     the canvas its own height at the top breaks that loop. The scene plays at
+     full strength in the upper band, the copy owns the lower one, and the
+     bottom edge is faded rather than cut so there is no seam against the
+     section backdrop. */
+  .hero-en-bg {
+    bottom: auto;
+    height: 34vh;
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+  }
+
   .hero-en {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding-top: 6rem;
+    margin: 0 auto;
+    padding-top: 36vh;
     padding-bottom: 4rem;
   }
 
   .hero-en-copy {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
     max-width: none;
+  }
+
+  .hero-en-title,
+  .hero-en-support,
+  .hero-en-actions {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   /* Narrow screens crop the canvas, so the lettering can end up directly behind
@@ -2744,9 +2795,11 @@ section, aside.pricing, aside.contact, aside.why-us {
   .hero-overlay--en {
     background: linear-gradient(
       180deg,
-      rgba(3, 7, 18, 0.86) 0%,
-      rgba(3, 7, 18, 0.62) 52%,
-      rgba(3, 7, 18, 0.88) 100%
+      rgba(3, 7, 18, 0.45) 0%,
+      rgba(3, 7, 18, 0) 14%,
+      rgba(3, 7, 18, 0) 44%,
+      rgba(3, 7, 18, 0.55) 60%,
+      rgba(3, 7, 18, 0.75) 100%
     );
   }
 }
@@ -2763,7 +2816,7 @@ section, aside.pricing, aside.contact, aside.why-us {
     max-height: none !important;
     overflow: visible !important;
     align-items: flex-start !important;
-    padding-top: 6.5rem !important;
+    padding-top: 0 !important;
     padding-bottom: 3rem !important;
   }
 

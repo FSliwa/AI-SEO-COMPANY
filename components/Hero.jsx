@@ -27,7 +27,7 @@ export default function Hero() {
   const t = useTranslations('hero');
 
   return (
-    <section className={`hero${lang === 'en' ? ' hero--en' : ''}`} id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F172A' }}>
+    <section className={`hero${lang === 'en' ? ' hero--en' : ''}`} id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: lang === 'en' ? '#05070D' : '#0F172A' }}>
       {/* H1 moved to the main visual element */}
 
       {/* Background Hero Video — Polish only. On the English side the Spline
@@ -85,6 +85,16 @@ export default function Hero() {
           375px screen. Ordinary text with clamp() cannot fall below its floor. */}
       {lang === 'en' && (
         <div className="hero-en">
+          {/* Three grid children, not because the copy wants columns, but because
+              the band under the scene's lettering is only ~190px tall and this
+              copy is 273px stacked. Splitting it across two columns — heading
+              and buttons left, paragraphs right — halves the height so nothing
+              has to sit on the artwork.
+
+              DOM order stays headline → lead → body → actions, which is the
+              order it should be read and crawled in; CSS does the rearranging,
+              so the buttons appear under the heading without moving ahead of
+              the pitch in the markup. */}
           <div className="hero-en-copy">
             <h1 className="hero-en-title">
               <span className="hero-en-title-display">
@@ -93,15 +103,17 @@ export default function Hero() {
               <span className="hero-en-title-sub">Premium SEO &amp; Marketing Agency for Companies</span>
             </h1>
 
-            <p className="hero-en-lead">
-              We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
-            </p>
+            <div className="hero-en-support">
+              <p className="hero-en-lead">
+                We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
+              </p>
 
-            <p className="hero-en-body">
-              We merge the creativity of human SEO teams with AI-driven accuracy to ensure your brand achieves
-              dominant visibility and lasting growth. We combine brand strategy, innovative design, and advanced
-              SEO to ensure your business is visible, remembered, and chosen by customers on a massive scale.
-            </p>
+              <p className="hero-en-body">
+                We merge the creativity of human SEO teams with AI-driven accuracy to ensure your brand achieves
+                dominant visibility and lasting growth. We combine brand strategy, innovative design, and advanced
+                SEO to ensure your business is visible, remembered, and chosen by customers on a massive scale.
+              </p>
+            </div>
 
             <div className="hero-en-actions">
               <a href="#kontakt" className="hero-en-cta">Get Proposal →</a>
