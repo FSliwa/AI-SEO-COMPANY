@@ -6,16 +6,24 @@ import dynamic from 'next/dynamic';
 /**
  * A Spline scene used as a section background.
  *
- * Two gates before anything downloads. The Spline runtime is around 1.5 MB of
- * JavaScript, which is far too much to spend on a section most visitors never
- * reach, so the scene is only mounted once the section is within a screen of
- * the viewport. And motion at this scale is decoration: if the visitor has
- * asked their system for less of it, the right answer is not to fetch the
- * runtime at all rather than to fetch it and hold it still.
+ * Timing is the whole point of this component. These scenes animate off a
+ * "Start" event set to Once — decoded from the .splinecode, the results scene
+ * has 239 of them, the last on a 7000ms delay. The event fires when the canvas
+ * initialises and never fires again, so *when the canvas mounts* decides
+ * whether anyone sees the animation. Mount it a viewport early, as this used
+ * to, and the entire timeline plays out below the fold; the visitor arrives to
+ * the finished state and reports that nothing happens.
  *
- * Decorative by definition — it carries nothing the surrounding copy does not —
- * so it is hidden from assistive technology and cannot take pointer events,
- * which matters here because a call-to-action sits on top of it.
+ * Hence two observers rather than one. The far one only warms caches — it pulls
+ * the runtime module and the scene file without touching WebGL, which is the
+ * expensive part and the part that would otherwise delay the animation if
+ * everything waited until arrival. The near one mounts the canvas as the
+ * section reaches the fold, so the Start event fires in front of the reader.
+ *
+ * Motion at this scale is decoration, so under prefers-reduced-motion nothing
+ * is fetched at all — better than fetching it and holding it still. Decorative
+ * also means hidden from assistive technology; pointer events are handled in
+ * CSS, where they are enabled only for real cursors.
  */
 const Spline = dynamic(() => import('@splinetool/react-spline'), { ssr: false });
 
@@ -29,21 +37,34 @@ export default function SceneBackdrop({ scene, className = '' }) {
     const el = ref.current;
     if (!el) return;
 
-    // A full viewport of runway, so the scene has painted by the time the
-    // section is actually looked at instead of popping in under the reader.
-    const observer = new IntersectionObserver(
+    const warm = new IntersectionObserver(
       entries => {
-        if (entries.some(entry => entry.isIntersecting)) {
-          setMounted(true);
-          observer.disconnect();
-        }
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        warm.disconnect();
+        // Both are best-effort: a failure here costs a slower start, nothing more.
+        import('@splinetool/react-spline').catch(() => {});
+        fetch(scene, { mode: 'cors' }).catch(() => {});
       },
-      { rootMargin: '100% 0px' }
+      { rootMargin: '150% 0px' }
     );
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    const reveal = new IntersectionObserver(
+      entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        reveal.disconnect();
+        setMounted(true);
+      },
+      { rootMargin: '5% 0px' }
+    );
+
+    warm.observe(el);
+    reveal.observe(el);
+
+    return () => {
+      warm.disconnect();
+      reveal.disconnect();
+    };
+  }, [scene]);
 
   return (
     <div ref={ref} className={`scene-backdrop ${className}`.trim()} aria-hidden="true">
