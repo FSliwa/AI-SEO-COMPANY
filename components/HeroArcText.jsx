@@ -31,9 +31,9 @@ import { useEffect, useRef, useState } from 'react';
 // Horizontal run the shoulder is spread over, in px. The letterform's own
 // shoulder takes about 76px; the text gets a little more so the bend reads as a
 // curve in a 16px face rather than a kink.
-const CURVE_RUN = 130;
+const CURVE_RUN = 150;
 
-export default function HeroArcText({ text, className = '', rise = 22 }) {
+export default function HeroArcText({ text, className = '', rise = 14 }) {
   const hostRef = useRef(null);
   const [layout, setLayout] = useState(null);
 
@@ -108,13 +108,12 @@ export default function HeroArcText({ text, className = '', rise = 22 }) {
               // and the text mirrors that: a shoulder over the first CURVE_RUN
               // pixels, flat from there on.
               //
-              // The drop grows down the paragraph, nothing on the first line and
-              // full on the last. That is what turns the block's left edge into
-              // one arc rather than four identical hooks — and the last line,
-              // the one actually next to the lettering, is the one that follows
-              // it most closely.
-              const last = Math.max(1, layout.lines.length - 1);
-              const drop = rise * (i / last);
+              // The same shoulder on every line, not a drop that grows downwards.
+              // Ramping it made each line sag further than the one above, and the
+              // block stopped reading as a curve and started reading as a
+              // paragraph that had been rotated by mistake. Identical on all
+              // lines, the left edge is one consistent shape.
+              const drop = rise;
               const run = Math.min(CURVE_RUN, layout.width * 0.28);
               return (
                 <path
