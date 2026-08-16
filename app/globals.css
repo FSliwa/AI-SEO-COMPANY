@@ -2936,6 +2936,56 @@ section, aside.pricing, aside.contact, aside.why-us {
   color: rgba(255, 255, 255, 0.92);
 }
 
+/* Curved left edge. A float with shape-outside bends the text around an
+   invisible ellipse, so the paragraph's first lines step in and release as they
+   go down, echoing the round shoulder of the "S" underneath.
+
+   Deliberately done with a shape and not by splitting the text into per-letter
+   spans, which is the usual way curved type is faked on the web: that pattern
+   is exactly what was cleaned out of this site in 56e08ce, and it would break
+   the paragraph into dozens of elements for a crawler. Here the copy stays a
+   single uninterrupted text node — the shape only changes where lines break. */
+.hero-en-body::before {
+  content: "";
+  float: left;
+  width: 3.6em;
+  height: 6em;
+  /* Traced as a polygon rather than an ellipse: an ellipse tall enough to span
+     the paragraph is almost flat where the lines actually fall, and measured it
+     gave indents of 46/52/52/52px — a margin, not a curve. These vertices are
+     placed at the line positions themselves, so the indent falls away line by
+     line and the arc reads. Sized in em, so it scales with the type and holds
+     its shape when the copy reflows or the language changes. */
+  shape-outside: polygon(
+    0 0,
+    3.6em 0,
+    3.1em 1.2em,
+    2.3em 2.4em,
+    1.3em 3.6em,
+    0.5em 4.8em,
+    0 6em
+  );
+  shape-margin: 0.4em;
+}
+
+/* Half the sweep on a phone: the column is 335px wide there and the full curve
+   would take a sixth of every line. */
+@media (max-width: 900px) {
+  .hero-en-body::before {
+    width: 1.9em;
+    height: 6em;
+    shape-outside: polygon(
+      0 0,
+      1.9em 0,
+      1.75em 1.2em,
+      1.45em 2.4em,
+      1em 3.6em,
+      0.5em 4.8em,
+      0 6em
+    );
+  }
+}
+
 /* Second tier under the promise line: same column, dimmer and a size down, so
    the two read as lead and supporting paragraph rather than one grey block. */
 /* Wide-screen-only connective clauses. They carry no keywords by design: what
