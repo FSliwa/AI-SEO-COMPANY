@@ -2,12 +2,23 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal } from './ScrollReveal';
+import SceneBackdrop from './SceneBackdrop';
 
 export default function Results() {
   const lang = useLocale();
 
   return (
     <section className="results" id="wyniki">
+      {/* The scene carries its own near-black background baked into the file, so
+          it can only live on a dark surface — this band is the one place on the
+          page that already is one. It occupies the right side and is faded out
+          towards the copy rather than cut, so nothing has to match the colour
+          inside the .splinecode. */}
+      <SceneBackdrop
+        className="results-scene"
+        scene="https://prod.spline.design/ZTZnzIExDn2uMvQW/scene.splinecode"
+      />
+
       <div className="container">
         <Reveal className="results-content">
           <div className="results-text">

@@ -1601,11 +1601,67 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 /* --- 08. Results --- */
 .results {
-  padding: 5.5rem 0;
+  position: relative;
+  overflow: hidden;
+  /* Taller than it was: at 5.5rem the band came to 276px, which is not enough
+     for an isometric scene to read as anything but a sliver. The global
+     `section` rule near the top of this file sets its padding with !important,
+     so matching that is the only way to move it. */
+  padding-top: 9.5rem !important;
+  padding-bottom: 9.5rem !important;
   background: var(--color-text-dark);
   color: #FFFFFF;
   border-radius: var(--radius-lg);
   margin: 2rem 0;
+}
+
+.results > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Generic backdrop mechanics, shared by any section that takes a scene. */
+.scene-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scene-backdrop > *,
+.scene-backdrop canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Right-hand half only, faded out before it reaches the copy. The fade also
+   covers the tonal gap between the section's navy and the near-black baked into
+   the scene, so the two never meet at a hard edge. */
+/* Faded on every edge, not just towards the copy. The band is shorter than the
+   scene's composition wants, so without the vertical pair the top and bottom
+   rows of tiles end on a hard cut against the section border. Two gradients
+   composited to an intersection: a pixel shows only where both allow it. */
+.results-scene {
+  left: 38%;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 26%),
+    linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 26%),
+    linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Narrow screens drop it entirely. A scene keyed to the right-hand 62% has
+   nothing left to show once the copy stacks to full width, and display:none
+   means the observer inside SceneBackdrop never fires — so phones do not
+   download the 1.5 MB runtime for a decoration they would not see. */
+@media (max-width: 900px) {
+  .results-scene {
+    display: none;
+  }
 }
 
 .results-content {
