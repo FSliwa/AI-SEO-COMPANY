@@ -2936,56 +2936,6 @@ section, aside.pricing, aside.contact, aside.why-us {
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* Curved left edge. A float with shape-outside bends the text around an
-   invisible ellipse, so the paragraph's first lines step in and release as they
-   go down, echoing the round shoulder of the "S" underneath.
-
-   Deliberately done with a shape and not by splitting the text into per-letter
-   spans, which is the usual way curved type is faked on the web: that pattern
-   is exactly what was cleaned out of this site in 56e08ce, and it would break
-   the paragraph into dozens of elements for a crawler. Here the copy stays a
-   single uninterrupted text node — the shape only changes where lines break. */
-.hero-en-body::before {
-  content: "";
-  float: left;
-  width: 3.6em;
-  height: 6em;
-  /* Traced as a polygon rather than an ellipse: an ellipse tall enough to span
-     the paragraph is almost flat where the lines actually fall, and measured it
-     gave indents of 46/52/52/52px — a margin, not a curve. These vertices are
-     placed at the line positions themselves, so the indent falls away line by
-     line and the arc reads. Sized in em, so it scales with the type and holds
-     its shape when the copy reflows or the language changes. */
-  shape-outside: polygon(
-    0 0,
-    3.6em 0,
-    3.1em 1.2em,
-    2.3em 2.4em,
-    1.3em 3.6em,
-    0.5em 4.8em,
-    0 6em
-  );
-  shape-margin: 0.4em;
-}
-
-/* Half the sweep on a phone: the column is 335px wide there and the full curve
-   would take a sixth of every line. */
-@media (max-width: 900px) {
-  .hero-en-body::before {
-    width: 1.9em;
-    height: 6em;
-    shape-outside: polygon(
-      0 0,
-      1.9em 0,
-      1.75em 1.2em,
-      1.45em 2.4em,
-      1em 3.6em,
-      0.5em 4.8em,
-      0 6em
-    );
-  }
-}
-
 /* Second tier under the promise line: same column, dimmer and a size down, so
    the two read as lead and supporting paragraph rather than one grey block. */
 /* Wide-screen-only connective clauses. They carry no keywords by design: what
@@ -3094,9 +3044,14 @@ section, aside.pricing, aside.contact, aside.why-us {
      the canvas an aspect near the desktop one, where the whole word fits.
      Placed lower than the desktop 30.4% because the header eats the top of the
      first row and the copy needs the space. */
+  /* Measured on the device width: the lettering comes to 1.238x the band's
+     height, so at the old 26% band (213px) the word covered 70% of a 375px
+     screen. 35% of an 880px section is 308px, which puts the word edge to edge.
+     The section grows to 880px to buy that back without pushing the buttons
+     under the sticky bar. */
   .hero-en-bg {
-    top: 44%;
-    height: 26%;
+    top: 36%;
+    height: 35%;
     bottom: auto;
     -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
     mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
@@ -3108,12 +3063,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   }
 
   .hero-en-copy {
-    grid-template-rows: calc(44% - 8px) calc(26% + 24px) 1fr;
-  }
-
-  /* Room for the fixed header, which overlays the first row. */
-  .hero-en-top {
-    padding-top: 5.5rem;
+    grid-template-rows: calc(36% - 8px) calc(35% + 24px) 1fr;
   }
 
   /* Polish runs about 25% longer than the English for the same meaning, and
@@ -3121,8 +3071,10 @@ section, aside.pricing, aside.contact, aside.why-us {
      shared sizes the first row pushed up under the header and the buttons were
      clipped off the bottom of the section. A notch down on all four sizes fits
      both languages in the same box. */
+  /* Down a notch again so "które buduje sprzedaż" sets on one line — at two it
+     added 30px to the bottom group and pushed the buttons under the fold. */
   .hero-en-title-display {
-    font-size: clamp(1.85rem, 7.5vw, 2.4rem);
+    font-size: clamp(1.7rem, 6.9vw, 2.2rem);
   }
 
   .hero-en-title-sub {
@@ -3135,8 +3087,8 @@ section, aside.pricing, aside.contact, aside.why-us {
   }
 
   .hero-en-body {
-    font-size: 0.92rem;
-    line-height: 1.5;
+    font-size: 0.88rem;
+    line-height: 1.45;
   }
 
   /* "Wyceń projekt" + "Zobacz portfolio" come to 347px at the shared padding,
@@ -3177,12 +3129,12 @@ section, aside.pricing, aside.contact, aside.why-us {
 @media (max-width: 900px) {
   .hero.hero--en {
     /* .hero-en is positioned out of flow now, so it cannot push the section
-       open the way it used to — the height has to be stated. 820px is what the
-       shortened copy needs at 375px wide with the band and the header in it,
-       and it lands the buttons just above the sticky bar rather than under it;
-       taller screens simply use their own. */
+       open the way it used to — the height has to be stated. 880px is what the
+       shortened copy, a band wide enough to run the lettering edge to edge, and
+       the header come to at 375px, with the buttons still landing above the
+       sticky bar; taller screens simply use their own. */
     height: auto !important;
-    min-height: max(100svh, 820px) !important;
+    min-height: max(100svh, 900px) !important;
     max-height: none !important;
     overflow: hidden !important;
     align-items: flex-start !important;
