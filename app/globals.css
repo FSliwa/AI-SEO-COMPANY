@@ -2677,6 +2677,38 @@ section, aside.pricing, aside.contact, aside.why-us {
   display: block;
 }
 
+/* The scene appears the instant its download finishes, which next to copy that
+   eased in a second earlier reads as a glitch rather than an entrance. Same
+   curve and duration as the copy, so the two belong to one system even though
+   they cannot share a clock: the copy must not wait on a 34 MB download, so it
+   is anchored to page load and this to the scene's first frame.
+
+   Until then the canvas is transparent and the section's own black shows — which
+   is the scene's background colour exactly, so there is nothing to notice.
+
+   Opacity only, deliberately: the wide layout carries transform: scale(1.12) on
+   this element and the whole copy-alignment geometry is measured against it, so
+   a keyframe touching transform would quietly break the column. */
+.hero-en-bg canvas {
+  opacity: 0;
+}
+
+.hero-en-bg.is-in canvas {
+  animation: heroSceneIn 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroSceneIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-en-bg.is-in canvas {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* Scaled just enough to crop the dead grid the scene is composed with — at 1:1
    the section's top and bottom thirds looked abandoned. Centred origin now: the
    copy sits above and below the artwork rather than beside it, so there is

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
@@ -26,8 +27,13 @@ export default function Hero() {
   const lang = useLocale();
   const t = useTranslations('hero');
 
+  // Whether the scene has finished parsing and drawn its first frame. Used only
+  // to fade the canvas in — the copy is never gated on it, because this scene is
+  // 34 MB and the hero would sit empty until it landed.
+  const [sceneIn, setSceneIn] = useState(false);
+
   return (
-    <section className={`hero${lang === 'en' ? ' hero--en' : ''}`} id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: lang === 'en' ? '#05070D' : '#0F172A' }}>
+    <section className={`hero${lang === 'en' ? ' hero--en' : ''}`} id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: lang === 'en' ? '#000000' : '#0F172A' }}>
       {/* H1 moved to the main visual element */}
 
       {/* Background Hero Video — Polish only. On the English side the Spline
@@ -49,14 +55,22 @@ export default function Hero() {
       )}
 
       {/* ── ENGLISH: the 3D scene is the section background ────────────────────
+          The section's own colour is #000000 because that is, measured off the
+          canvas, exactly the scene's baked background — sampled at every edge it
+          comes back 0,0,0. It used to be #05070D, which was invisible on desktop
+          where the canvas covers everything, but showed as a seam on phones
+          where the canvas only occupies a band.
           Full-bleed rather than a column, which also settles the black-box
           problem from the previous pass: the scene's own opaque background was
           impossible to remove from outside the file, but at full width it stops
           being a rectangle sitting on the page and simply becomes the section's
           backdrop. */}
       {lang === 'en' && (
-        <div className="hero-en-bg" aria-hidden="true">
-          <Spline scene="https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode" />
+        <div className={`hero-en-bg${sceneIn ? ' is-in' : ''}`} aria-hidden="true">
+          <Spline
+            scene="https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode"
+            onLoad={() => setSceneIn(true)}
+          />
         </div>
       )}
 
