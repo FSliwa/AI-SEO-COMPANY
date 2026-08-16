@@ -1618,6 +1618,11 @@ section, aside.pricing, aside.contact, aside.why-us {
 .results > .container {
   position: relative;
   z-index: 2;
+  pointer-events: none;
+}
+
+.results-content > * {
+  pointer-events: auto;
 }
 
 /* Generic backdrop mechanics, shared by any section that takes a scene. */
@@ -1626,6 +1631,15 @@ section, aside.pricing, aside.contact, aside.why-us {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+}
+
+/* Same reasoning as the hero: cursor-driven states need the events, touch
+   devices must keep their scrolling. Anything the section places above this
+   (the call to action here) keeps working — it sits at a higher z-index. */
+@media (hover: hover) and (pointer: fine) {
+  .scene-backdrop {
+    pointer-events: auto;
+  }
 }
 
 .scene-backdrop > *,
@@ -2628,6 +2642,17 @@ section, aside.pricing, aside.contact, aside.why-us {
   pointer-events: none;
 }
 
+/* The scene has cursor-driven states, which it can only run if the canvas
+   actually receives pointer events. Restricted to devices that have a real
+   cursor: on a touchscreen the same setting hands every swipe over the hero to
+   the WebGL canvas instead of to the page, and the section stops scrolling.
+   The copy sits at z-index 5, so links and text selection are unaffected. */
+@media (hover: hover) and (pointer: fine) {
+  .hero-en-bg {
+    pointer-events: auto;
+  }
+}
+
 .hero-en-bg > *,
 .hero-en-bg canvas {
   width: 100% !important;
@@ -2682,6 +2707,31 @@ section, aside.pricing, aside.contact, aside.why-us {
    auto, which pins it and the buttons after it to the bottom edge while the
    promise line stays at the top. Same DOM order at every width, so nothing has
    to be re-nested for the narrow layout. */
+/* Measured off the rendered scene at this scale: the word runs from 15.5% to
+   73.5% of the viewport. The copy takes exactly that column, so its left edge
+   lines up with the stem of the "S" and nothing overruns the "O". Percentages
+   rather than a max-width because the lettering is sized by the canvas, which
+   is sized by the viewport — a rem measure would drift apart from it. */
+@media (min-width: 901px) {
+  .hero-en {
+    padding-left: 15.5%;
+    padding-right: 26.5%;
+  }
+}
+
+/* The copy layer stretches across the whole section, so it was swallowing every
+   pointer event before the canvas underneath could see one — pointer-events on
+   the scene alone did nothing. Made transparent here and opted back in on the
+   text and controls themselves, which keeps their links and text selection
+   while everything around them reaches the scene. */
+.hero-en {
+  pointer-events: none;
+}
+
+.hero-en-copy > * {
+  pointer-events: auto;
+}
+
 .hero-en-copy {
   flex: 1;
   display: flex;
@@ -2737,7 +2787,6 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 .hero-en-lead {
   margin: 0;
-  max-width: 34rem;
   font-size: clamp(1rem, 1.35vw, 1.2rem);
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.92);
