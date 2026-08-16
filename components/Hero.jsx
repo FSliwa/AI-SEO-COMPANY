@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
+import HeroArcText from './HeroArcText';
 
 /**
  * The Spline runtime is roughly 1.5 MB of JavaScript plus the scene itself.
@@ -45,6 +46,7 @@ const COPY = {
     wideA: 'We merge the two so your brand compounds results instead of chasing them.',
     bodyB: 'Brand strategy, innovative design and advanced SEO make your business remembered and chosen at massive scale.',
     wideB: 'We combine all three rather than treating them as separate projects.',
+    bodyArc: 'The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and lasting growth. We merge the two so your brand compounds results instead of chasing them. Brand strategy, innovative design and advanced SEO make your business remembered and chosen at massive scale. We combine all three rather than treating them as separate projects.',
     display: 'that drives sales',
     sub: 'Premium SEO & Marketing Agency for Companies',
     ctaPrimary: 'Get Proposal',
@@ -56,6 +58,7 @@ const COPY = {
     wideA: 'Prowadzimy te trzy obszary razem, a nie jako osobne projekty.',
     bodyB: 'Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.',
     wideB: 'Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.',
+    bodyArc: 'Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i masowo wybierana przez klientów. Prowadzimy te trzy obszary razem, a nie jako osobne projekty. Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie. Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.',
     display: 'które buduje sprzedaż',
     sub: 'Kompleksowa Agencja SEO i Marketingowa z Warszawy',
     ctaPrimary: 'Wyceń projekt',
@@ -77,6 +80,19 @@ export default function Hero() {
   useEffect(() => {
     const failsafe = setTimeout(() => setSceneIn(true), 8000);
     return () => clearTimeout(failsafe);
+  }, []);
+
+  // The arc is a wide-layout treatment only; phones keep the plain paragraph.
+  // Deliberately client-side: the server renders the straight <p>, so that is
+  // the markup a crawler reads and the copy never exists twice in the HTML.
+  const [arcBody, setArcBody] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 901px)');
+    const sync = () => setArcBody(query.matches);
+    sync();
+    query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
   }, []);
 
   return (
@@ -125,12 +141,16 @@ export default function Hero() {
           <div className="hero-en-top">
             <p className="hero-en-lead">{copy.lead}</p>
 
-            <p className="hero-en-body">
-              {copy.bodyA}
-              <span className="hero-en-wide-only">{' '}{copy.wideA}</span>
-              {' '}{copy.bodyB}
-              <span className="hero-en-wide-only">{' '}{copy.wideB}</span>
-            </p>
+            {arcBody ? (
+              <HeroArcText className="hero-en-body hero-en-body--arc" text={copy.bodyArc} />
+            ) : (
+              <p className="hero-en-body">
+                {copy.bodyA}
+                <span className="hero-en-wide-only">{' '}{copy.wideA}</span>
+                {' '}{copy.bodyB}
+                <span className="hero-en-wide-only">{' '}{copy.wideB}</span>
+              </p>
+            )}
           </div>
 
           <div className="hero-en-bottom">

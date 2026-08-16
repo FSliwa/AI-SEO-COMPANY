@@ -2786,6 +2786,90 @@ section, aside.pricing, aside.contact, aside.why-us {
 .hero-en-title { animation-delay: 320ms; }
 .hero-en-actions { animation-delay: 440ms; }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-en-bg.is-in canvas {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Scaled just enough to crop the dead grid the scene is composed with — at 1:1
+   the section's top and bottom thirds looked abandoned. Centred origin now: the
+   copy sits above and below the artwork rather than beside it, so there is
+   nothing to steer the lettering away from. */
+@media (min-width: 901px) {
+  .hero-en-bg {
+    transform: scale(1.12);
+  }
+}
+
+/* Scrim. Edges only — the copy is pinned to the top and bottom of the section
+   and the lettering owns the middle, so the artwork itself needs no cover at
+   all. Top stop clears the header, bottom stop the promise line, buttons and
+   partner row. */
+.hero-overlay--en {
+  background: linear-gradient(
+    180deg,
+    rgba(3, 7, 18, 0.82) 0%,
+    rgba(3, 7, 18, 0.32) 14%,
+    rgba(3, 7, 18, 0) 26%,
+    rgba(3, 7, 18, 0) 58%,
+    rgba(3, 7, 18, 0.42) 74%,
+    rgba(3, 7, 18, 0.88) 100%
+  );
+  z-index: 2;
+}
+
+/* Copy entrance, matched to the scene rather than picked by feel. Decoded from
+   hero .splinecode: its Start timeline opens on a 1500ms delay and its moves run
+   1000ms (two others at 2000 and 3000ms) on an eased curve. So the rise here is
+   1000ms on an ease-out, and the four elements stagger out to 1440ms — landing
+   with the scene's own lead-in rather than against it.
+
+   Two animations, not one, because of LCP. The rise is what carries the timing;
+   the fade is deliberately quick, since an element at opacity 0 does not count
+   as painted and a 1000ms fade on the heading would push Largest Contentful
+   Paint out by a second on a page we have spent this long tuning.
+
+   Plain CSS rather than the motion library on purpose: it runs without waiting
+   for hydration, and the server HTML carries no inline opacity:0 — so a crawler
+   that does not execute JavaScript still reads the copy as ordinary text. */
+@keyframes heroCopyRise {
+  from { transform: translateY(26px); }
+  to { transform: none; }
+}
+
+@keyframes heroCopyFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Held at the animation's first frame until the scene reports its own first
+   frame, then both run off the same state change — one movement instead of the
+   copy settling seconds before the 3D turns up.
+
+   The cost is stated plainly because it is real: the copy is the LCP element,
+   and it now waits on a 34 MB download. On a cold visit that measured 10.7s.
+   The failsafe in Hero.jsx releases the copy anyway after 8s so the hero is
+   never permanently blank, and the noscript block in the markup hands it to the
+   finished state when there is no JavaScript at all. The proper fix is upstream:
+   shrink the scene in Spline. */
+.hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.hero-en-copy.is-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
+  animation:
+    heroCopyRise 1000ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    heroCopyFade 280ms ease-out both;
+}
+
+.hero-en-lead { animation-delay: 80ms; }
+.hero-en-body { animation-delay: 200ms; }
+.hero-en-title { animation-delay: 320ms; }
+.hero-en-actions { animation-delay: 440ms; }
+
 /* The bend, carried inside the entrance keyframes rather than as its own rule.
    Both want the transform property, and a separate declaration would simply be
    overwritten the moment the animation runs — the paragraph would snap flat.
@@ -2822,10 +2906,6 @@ section, aside.pricing, aside.contact, aside.why-us {
     transform: none;
   }
 
-  /* The bend is a static shape, not motion, so it survives the preference. */
-  .hero-en-copy .hero-en-body {
-    transform: perspective(680px) rotateX(11deg);
-  }
 }
 
 /* Stretched to the full section height and pushed apart, so the heading rides
@@ -2982,6 +3062,18 @@ section, aside.pricing, aside.contact, aside.why-us {
   .hero-en-wide-only {
     display: inline;
   }
+}
+
+/* The arc variant is the same element with the same type metrics — HeroArcText
+   reads its computed font and line-height off this rule to lay the SVG out, so
+   the two versions are typographically identical and only the baseline differs. */
+.hero-en-body--arc {
+  width: 100%;
+}
+
+.hero-en-arc-line {
+  fill: rgba(255, 255, 255, 0.72);
+  font: inherit;
 }
 
 .hero-en-body {
