@@ -28,7 +28,12 @@ import { useEffect, useRef, useState } from 'react';
  * screens, client-side, so the markup a crawler reads is the plain paragraph and
  * the copy is never duplicated.
  */
-export default function HeroArcText({ text, className = '', rise = 18 }) {
+// Horizontal run the shoulder is spread over, in px. The letterform's own
+// shoulder takes about 76px; the text gets a little more so the bend reads as a
+// curve in a 16px face rather than a kink.
+const CURVE_RUN = 130;
+
+export default function HeroArcText({ text, className = '', rise = 22 }) {
   const hostRef = useRef(null);
   const [layout, setLayout] = useState(null);
 
@@ -76,8 +81,10 @@ export default function HeroArcText({ text, className = '', rise = 18 }) {
 
   // Only the last line's descender is reserved below its baseline, not a whole
   // extra line — a full line-height there pushed the paragraph off the lettering.
+  // The last line's left end sits `rise` below its baseline now, so the box has
+  // to carry that as well as the descender.
   const height = layout
-    ? rise + layout.fontSize * 1.3 + (layout.lines.length - 1) * layout.lineHeight
+    ? rise + layout.fontSize * 1.3 + (layout.lines.length - 1) * layout.lineHeight + rise
     : 0;
 
   return (
@@ -92,18 +99,32 @@ export default function HeroArcText({ text, className = '', rise = 18 }) {
           <defs>
             {layout.lines.map((_, i) => {
               const y = rise + layout.fontSize + i * layout.lineHeight;
-              // Only the lower part of the paragraph is curved. The bend ramps
-              // from nothing on the first line to full on the last, which is the
-              // one sitting against the lettering — the curve belongs to that
-              // meeting point, and a block bent uniformly top to bottom reads as
-              // a shape applied to the text rather than a response to the scene.
+
+              // Only the left end of each line bends; the rest of the line runs
+              // straight. The shape is taken from the letterform underneath —
+              // reading the scene's framebuffer, the "S" holds a flat top at
+              // y=274 from x=277 rightwards and its shoulder falls to y=341 by
+              // x=201. So roughly 76px of horizontal run carries the whole drop,
+              // and the text mirrors that: a shoulder over the first CURVE_RUN
+              // pixels, flat from there on.
+              //
+              // The drop grows down the paragraph, nothing on the first line and
+              // full on the last. That is what turns the block's left edge into
+              // one arc rather than four identical hooks — and the last line,
+              // the one actually next to the lettering, is the one that follows
+              // it most closely.
               const last = Math.max(1, layout.lines.length - 1);
-              const lineRise = rise * (i / last);
+              const drop = rise * (i / last);
+              const run = Math.min(CURVE_RUN, layout.width * 0.28);
               return (
                 <path
                   key={i}
                   id={`hero-arc-${i}`}
-                  d={`M 0 ${y} Q ${layout.width / 2} ${y - lineRise * 2} ${layout.width} ${y}`}
+                  d={
+                    `M 0 ${y + drop} ` +
+                    `Q ${run * 0.5} ${y + drop} ${run} ${y} ` +
+                    `L ${layout.width} ${y}`
+                  }
                   fill="none"
                 />
               );

@@ -95,8 +95,19 @@ export default function Hero() {
     const query = window.matchMedia('(min-width: 901px)');
     const sync = () => setArcBody(query.matches);
     sync();
+
+    // Both listeners on purpose. The media query's own `change` event is the
+    // right signal but it does not always fire — under device emulation it
+    // stayed silent while the query itself already reported false, which left
+    // the arc rendered at 375px where the plain paragraph belongs. `resize` is
+    // the coarser net that catches those cases; sync() is idempotent, so the
+    // pair firing together costs nothing.
     query.addEventListener('change', sync);
-    return () => query.removeEventListener('change', sync);
+    window.addEventListener('resize', sync);
+    return () => {
+      query.removeEventListener('change', sync);
+      window.removeEventListener('resize', sync);
+    };
   }, []);
 
   return (
