@@ -104,6 +104,12 @@ export default function Hero() {
               We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
             </p>
 
+            <p className="hero-en-body">
+              We merge the creativity of human SEO teams with AI-driven accuracy to ensure your brand achieves
+              dominant visibility and lasting growth. We combine brand strategy, innovative design, and advanced
+              SEO to ensure your business is visible, remembered, and chosen by customers on a massive scale.
+            </p>
+
             <h1 className="hero-en-title">
               <span className="hero-en-title-display">that drives sales</span>
               <span className="hero-en-title-sub">Premium SEO &amp; Marketing Agency for Companies</span>

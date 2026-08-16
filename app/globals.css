@@ -1615,10 +1615,18 @@ section, aside.pricing, aside.contact, aside.why-us {
   margin: 2rem 0;
 }
 
+/* The shared container centres inside a 1240px max-width, which left the copy
+   222px in from the tile edge on a wide screen — a lot of empty tile before the
+   first word. Here it runs the full width with the same 32px the button carries
+   as its own padding, so text and button sit the same distance from their
+   respective edges. */
 .results > .container {
   position: relative;
   z-index: 2;
   pointer-events: none;
+  max-width: none;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 .results-content > * {
@@ -2698,7 +2706,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: clamp(6rem, 13vh, 9rem) clamp(1.25rem, 3.4vw, 3.5rem) clamp(4.5rem, 8vh, 5.5rem);
+  padding: clamp(2.5rem, 5vh, 4rem) clamp(1.25rem, 3.4vw, 3.5rem) clamp(4.5rem, 8vh, 5.5rem);
   display: flex;
   flex-direction: column;
 }
@@ -2790,6 +2798,15 @@ section, aside.pricing, aside.contact, aside.why-us {
   font-size: clamp(1rem, 1.35vw, 1.2rem);
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.92);
+}
+
+/* Second tier under the promise line: same column, dimmer and a size down, so
+   the two read as lead and supporting paragraph rather than one grey block. */
+.hero-en-body {
+  margin: 0;
+  font-size: clamp(0.92rem, 1.05vw, 1rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .hero-en-actions {
