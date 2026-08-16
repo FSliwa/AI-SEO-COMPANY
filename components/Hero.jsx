@@ -73,47 +73,41 @@ export default function Hero() {
           rather than beside it. Wording is carried over verbatim from the SVG
           artwork and the old H1 overlay, so keyword coverage is unchanged.
 
-          The scene renders "SEO" as its own centrepiece, so the headline steps
-          back to meet it: smaller display size, and the shared word tinted to
-          the scene's colour. It keeps the word rather than letting the canvas
-          supply it — the scene is a 34 MB network dependency, and a headline
-          that reads "that drives sales" whenever WebGL is unavailable is a
-          defect, not a design.
+          The copy is split around the artwork: the heading above the scene's
+          lettering, the promise and the buttons below it. The display line no
+          longer carries "SEO" — the scene renders it, and repeating it directly
+          above read as the same word twice.
+
+          The cost of that, stated plainly: if the scene fails to load, the
+          first line reads "that drives sales" on its own. The H1's second line
+          still says "Premium SEO & Marketing Agency for Companies", so the
+          heading is not meaningless without WebGL — but it is a fragment. This
+          wording was specified.
 
           This also removes the overlay's mobile defect: the SVG version sized
           the H1 in container-query units (1.69cqw), which resolved to 6px on a
           375px screen. Ordinary text with clamp() cannot fall below its floor. */}
       {lang === 'en' && (
         <div className="hero-en">
-          {/* Three grid children, not because the copy wants columns, but because
-              the band under the scene's lettering is only ~190px tall and this
-              copy is 273px stacked. Splitting it across two columns — heading
-              and buttons left, paragraphs right — halves the height so nothing
-              has to sit on the artwork.
+          {/* Two groups pinned to the top and bottom edges, with the scene's
+              lettering occupying the middle band it already claims (31%-63% of
+              the height). Nothing overlaps, so the scrim barely has to work and
+              the animation plays at full strength.
 
-              DOM order stays headline → lead → body → actions, which is the
-              order it should be read and crawled in; CSS does the rearranging,
-              so the buttons appear under the heading without moving ahead of
-              the pitch in the markup. */}
+              The heading sits below the artwork on purpose. The scene supplies
+              the word "SEO", so the eye has to meet it before "that drives
+              sales" or the sentence comes out backwards. On narrow screens the
+              canvas is a band above everything, so there the heading is pulled
+              to the front of the copy for the same reason. */}
           <div className="hero-en-copy">
+            <p className="hero-en-lead">
+              We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
+            </p>
+
             <h1 className="hero-en-title">
-              <span className="hero-en-title-display">
-                <span className="hero-en-title-kw">SEO</span> that drives sales
-              </span>
+              <span className="hero-en-title-display">that drives sales</span>
               <span className="hero-en-title-sub">Premium SEO &amp; Marketing Agency for Companies</span>
             </h1>
-
-            <div className="hero-en-support">
-              <p className="hero-en-lead">
-                We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.
-              </p>
-
-              <p className="hero-en-body">
-                We merge the creativity of human SEO teams with AI-driven accuracy to ensure your brand achieves
-                dominant visibility and lasting growth. We combine brand strategy, innovative design, and advanced
-                SEO to ensure your business is visible, remembered, and chosen by customers on a massive scale.
-              </p>
-            </div>
 
             <div className="hero-en-actions">
               <a href="#kontakt" className="hero-en-cta">Get Proposal →</a>

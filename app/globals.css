@@ -2579,63 +2579,61 @@ section, aside.pricing, aside.contact, aside.why-us {
   display: block;
 }
 
-/* The scene is composed with a lot of empty grid around its subject, which left
-   the top third of the section looking abandoned. Scaling it up crops that
-   margin away and, anchored to the left edge, walks the lettering to the right
-   at the same time — so the copy column gets its own space without the canvas
-   ever uncovering the left edge. Both problems, one transform. */
+/* Scaled just enough to crop the dead grid the scene is composed with — at 1:1
+   the section's top and bottom thirds looked abandoned. Centred origin now: the
+   copy sits above and below the artwork rather than beside it, so there is
+   nothing to steer the lettering away from. */
 @media (min-width: 901px) {
   .hero-en-bg {
-    transform: scale(1.26);
-    transform-origin: 0% 50%;
+    transform: scale(1.12);
   }
 }
 
-/* Scrim. Light by design — the animation has to read at full strength. It only
-   lifts the left edge, where the copy column is, and the top and bottom, where
-   the header and the partner row sit over the canvas. The lettering is off to
-   the right of all of it. */
+/* Scrim. Edges only — the copy is pinned to the top and bottom of the section
+   and the lettering owns the middle, so the artwork itself needs no cover at
+   all. Top stop clears the header, bottom stop the promise line, buttons and
+   partner row. */
 .hero-overlay--en {
-  background:
-    linear-gradient(
-      98deg,
-      rgba(3, 7, 18, 0.88) 0%,
-      rgba(3, 7, 18, 0.6) 26%,
-      rgba(3, 7, 18, 0.12) 44%,
-      rgba(3, 7, 18, 0) 58%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(3, 7, 18, 0.5) 0%,
-      rgba(3, 7, 18, 0) 16%,
-      rgba(3, 7, 18, 0) 82%,
-      rgba(3, 7, 18, 0.6) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(3, 7, 18, 0.82) 0%,
+    rgba(3, 7, 18, 0.32) 14%,
+    rgba(3, 7, 18, 0) 26%,
+    rgba(3, 7, 18, 0) 58%,
+    rgba(3, 7, 18, 0.42) 74%,
+    rgba(3, 7, 18, 0.88) 100%
+  );
   z-index: 2;
 }
 
-/* Copy sits beside the artwork, vertically centred — the bottom-band version
-   read like a caption and left the whole upper third empty. Horizontal
-   separation works now only because the scaled scene carries its lettering to
-   the right; at 1:1 the word reached 25% in and no column could clear it. */
-/* Full-bleed rather than the site's 1280px grid: centring the container would
-   start the copy 14% in, and every one of those percent is a percent closer to
-   the lettering. Hugging the edge buys the column its clearance. */
+/* Stretched to the full section height and pushed apart, so the heading rides
+   the top edge and the promise line the bottom, with the scene's lettering in
+   the gap between them. Top padding clears the fixed header; bottom padding
+   clears the absolutely-positioned partner row. */
 .hero-en {
   position: relative;
   z-index: 5;
+  align-self: stretch;
   width: 100%;
   max-width: none;
-  margin: auto;
-  padding: 0 clamp(1.25rem, 3.4vw, 3.5rem);
+  margin: 0;
+  padding: clamp(6rem, 13vh, 9rem) clamp(1.25rem, 3.4vw, 3.5rem) clamp(4.5rem, 8vh, 5.5rem);
+  display: flex;
+  flex-direction: column;
 }
 
+/* Three flat children rather than two wrappers: the heading takes margin-top
+   auto, which pins it and the buttons after it to the bottom edge while the
+   promise line stays at the top. Same DOM order at every width, so nothing has
+   to be re-nested for the narrow layout. */
 .hero-en-copy {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.3rem;
-  max-width: 23rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
 }
+
 
 /* The copy has no scrim panel under it, so it carries its own contrast for the
    frames where a lit part of the scene drifts behind it. */
@@ -2643,15 +2641,19 @@ section, aside.pricing, aside.contact, aside.why-us {
   text-shadow: 0 1px 16px rgba(3, 7, 18, 0.9);
 }
 
+/* margin-top:auto is what pins the heading and the buttons after it to the
+   bottom edge while the promise line stays at the top. Keep it in the same
+   block as the rest of the margin shorthand — a separate `margin: 0` later in
+   the file silently undoes it. */
 .hero-en-title {
-  margin: 0;
+  margin: auto 0 0;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.6rem;
 }
 
 .hero-en-title-display {
-  font-size: clamp(2.25rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.4rem, 4.8vw, 3.9rem);
   font-weight: 700;
   line-height: 1.04;
   letter-spacing: -0.03em;
@@ -2670,7 +2672,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 /* The keyword-bearing half of the H1. Smaller than the display line but still
    well above the readability floor — it is a heading, not a caption. */
 .hero-en-title-sub {
-  font-size: clamp(1rem, 1.7vw, 1.3rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
   font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -2678,17 +2680,11 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 .hero-en-lead {
-  margin: 0 0 0.75rem;
-  font-size: clamp(0.98rem, 1.25vw, 1.12rem);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.hero-en-body {
   margin: 0;
-  font-size: clamp(0.9rem, 1.05vw, 0.97rem);
-  line-height: 1.58;
-  color: rgba(255, 255, 255, 0.7);
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .hero-en-actions {
@@ -2759,15 +2755,21 @@ section, aside.pricing, aside.contact, aside.why-us {
   }
 
   .hero-en {
-    margin: 0 auto;
     padding-top: 36vh;
     padding-bottom: 4rem;
   }
 
+  /* Nothing to push apart here — the canvas has its own band above the copy,
+     so the two groups simply stack. */
   .hero-en-copy {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem;
-    max-width: none;
+    gap: 1.6rem;
+  }
+
+  /* The canvas band is above the copy here, so the heading has to lead — it is
+     the half-sentence the scene's lettering completes. */
+  .hero-en-title {
+    order: -1;
+    margin-top: 0;
   }
 
   /* The copy is below the canvas band here, not beside it, so the left-weighted
