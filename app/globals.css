@@ -1688,20 +1688,13 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 .results-content {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
-/* The copy moved out to the tile edge, the button did not. This puts the button
-   back exactly where the old centred 1240px container had it, without touching
-   the text: the container used to start (W - 1240) / 2 + 24 from each edge, and
-   expressed against this element's own width that distance is 50% - 596px.
-   Clamped at zero, so below 1240px the button simply sits at the padding. */
-.results-content {
-  padding-right: max(0px, calc(50% - 596px));
-}
+/* The button sits under the copy now, so the right-hand inset that used to
+   hold it level with the old centred container is gone with it. */
 
 .results-text h2 {
   color: #FFFFFF;

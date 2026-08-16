@@ -92,11 +92,18 @@ export default function HeroArcText({ text, className = '', rise = 18 }) {
           <defs>
             {layout.lines.map((_, i) => {
               const y = rise + layout.fontSize + i * layout.lineHeight;
+              // Only the lower part of the paragraph is curved. The bend ramps
+              // from nothing on the first line to full on the last, which is the
+              // one sitting against the lettering — the curve belongs to that
+              // meeting point, and a block bent uniformly top to bottom reads as
+              // a shape applied to the text rather than a response to the scene.
+              const last = Math.max(1, layout.lines.length - 1);
+              const lineRise = rise * (i / last);
               return (
                 <path
                   key={i}
                   id={`hero-arc-${i}`}
-                  d={`M 0 ${y} Q ${layout.width / 2} ${y - rise * 2} ${layout.width} ${y}`}
+                  d={`M 0 ${y} Q ${layout.width / 2} ${y - lineRise * 2} ${layout.width} ${y}`}
                   fill="none"
                 />
               );

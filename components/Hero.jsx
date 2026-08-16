@@ -41,7 +41,9 @@ const SCENE = 'https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode';
  */
 const COPY = {
   en: {
-    lead: 'We do what search engine optimisation companies rarely do: report on pipeline, not on rankings.',
+    leadA: 'We do what search engine optimisation companies rarely do: report on pipeline',
+    leadWide: ', not on rankings',
+    leadEnd: '.',
     bodyA: 'The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and lasting growth.',
     wideA: 'We merge the two so your brand compounds results instead of chasing them.',
     bodyB: 'Brand strategy, innovative design and advanced SEO make your business remembered and chosen at massive scale.',
@@ -53,7 +55,9 @@ const COPY = {
     ctaSecondary: 'View Portfolio'
   },
   pl: {
-    lead: 'Twój projekt i strony to nasz priorytet – skuteczne pozycjonowanie napędzające wzrost.',
+    leadA: 'Twój projekt i strony',
+    leadWide: ' to nasz priorytet',
+    leadEnd: ' – skuteczne pozycjonowanie napędzające wzrost.',
     bodyA: 'Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i masowo wybierana przez klientów.',
     wideA: 'Prowadzimy te trzy obszary razem, a nie jako osobne projekty.',
     bodyB: 'Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.',
@@ -139,7 +143,16 @@ export default function Hero() {
       <div className="hero-en">
         <div className={`hero-en-copy${sceneIn ? ' is-in' : ''}`}>
           <div className="hero-en-top">
-            <p className="hero-en-lead">{copy.lead}</p>
+            {/* Same device as the paragraph below: the clause phones drop carries
+                no phrase of its own. "not on rankings" goes, and "rankings"
+                still appears 4 more times on the page; "to nasz priorytet" goes,
+                and "priorytet" survives elsewhere. Both readings are complete
+                sentences — the cut is at a clause boundary, not mid-thought. */}
+            <p className="hero-en-lead">
+              {copy.leadA}
+              <span className="hero-en-wide-only">{copy.leadWide}</span>
+              {copy.leadEnd}
+            </p>
 
             {arcBody ? (
               <HeroArcText className="hero-en-body hero-en-body--arc" text={copy.bodyArc} />
