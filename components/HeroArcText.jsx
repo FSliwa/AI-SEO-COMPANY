@@ -36,11 +36,20 @@ const R_FRAC = 0.0556;
 const BASE_ABOVE_TOP = 12;
 // Sweep of the last line, degrees.
 const THETA_CAP = 66;
-// Glyph scale gain at full sweep: the last line renders at 1 + GAIN times the
-// base size, lines above proportionally to their own sweep.
+// Glyph scale gain on the last line; the ramp between lines is linear in the
+// line index. It was tied to each line's sweep first, and because the middle
+// sweeps are nearly equal the sizes ran 15.1 / 16.5 / 16.8 / 17.3 / 19.7 —
+// three near-identical steps and a jump, which reads as an accident. A linear
+// ramp is an even crescendo, which reads as intent.
 const SCALE_GAIN = 0.3;
-// Letter-spacing at full sweep, as a fraction of the font size.
-const TRACK_GAIN = 0.09;
+// Letter-spacing on the last line, as a fraction of its font size. 0.09 was
+// visibly airy against the lines above; 0.055 tracks out without gapping.
+const TRACK_GAIN = 0.055;
+// Text brightness ramp, first line to last. One flat dim white made the large
+// lines look soft; brightening with size keeps every line crisp and gives the
+// crescendo a second axis.
+const FILL_FROM = 0.62;
+const FILL_TO = 0.92;
 
 export default function HeroArcText({ text, className = '' }) {
   const hostRef = useRef(null);
@@ -88,7 +97,7 @@ export default function HeroArcText({ text, className = '' }) {
             if (i === last) return cap;
             return Math.asin(Math.min(1, r / (cy - yy)));
           });
-          scales = thetas.map(th => 1 + SCALE_GAIN * (th / cap));
+          scales = ys.map((_, i) => 1 + SCALE_GAIN * (last ? i / last : 0));
         }
         return { ys, thetas, scales, cy: ys[last] + r + BASE_ABOVE_TOP };
       };
@@ -104,9 +113,10 @@ export default function HeroArcText({ text, className = '' }) {
         };
         const applyFont = li => {
           const i = Math.min(li, geo.scales.length - 1);
+          const last = Math.max(1, geo.scales.length - 1);
           const px = fontSize * geo.scales[i];
           ctx.font = fontOf(px);
-          try { ctx.letterSpacing = `${(TRACK_GAIN * px * (geo.thetas[i] / cap)).toFixed(2)}px`; } catch (e) {}
+          try { ctx.letterSpacing = `${(TRACK_GAIN * px * (i / last)).toFixed(2)}px`; } catch (e) {}
         };
         for (const word of words) {
           applyFont(lines.length);
@@ -199,15 +209,19 @@ export default function HeroArcText({ text, className = '' }) {
           </defs>
           {layout.lines.map((line, i) => {
             const idx = Math.min(i, layout.geo.scales.length - 1);
+            const last = Math.max(1, layout.geo.scales.length - 1);
+            const t = idx / last;
             const scale = layout.geo.scales[idx];
-            const track = TRACK_GAIN * layout.fontSize * scale * (layout.geo.thetas[idx] / layout.cap);
+            const track = TRACK_GAIN * layout.fontSize * scale * t;
+            const fill = FILL_FROM + (FILL_TO - FILL_FROM) * t;
             return (
               <text
                 key={i}
                 className="hero-en-arc-line"
                 style={{
                   fontSize: `${(layout.fontSize * scale).toFixed(2)}px`,
-                  letterSpacing: `${track.toFixed(2)}px`
+                  letterSpacing: `${track.toFixed(2)}px`,
+                  fill: `rgba(255, 255, 255, ${fill.toFixed(2)})`
                 }}
               >
                 <textPath href={`#hero-arc-${i}`}>{line}</textPath>
