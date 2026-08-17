@@ -3,11 +3,17 @@ import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: 'Content Gap Analysis: A Practical Guide',
-    description: 'Run a content gap analysis that ends in a prioritized roadmap: competitor selection, seven gap types, scoring by impact and effort, quarterly re-runs.',
+    title: locale === 'en'
+      ? 'Content Gap Analysis: A Practical Guide'
+      : 'Analiza luk contentowych: przewodnik praktyczny',
+    description: locale === 'en'
+      ? 'Run a content gap analysis that ends in a prioritized roadmap: competitor selection, seven gap types, scoring by impact and effort, quarterly re-runs.'
+      : 'Jak przeprowadzić analizę luk contentowych kończącą się backlogiem z priorytetami: wybór konkurentów, siedem typów luk, scoring i kwartalne powtórki.',
     alternates: {
-      canonical: `https://www.ai-seo-company.pl/en/blog/content-gap-analysis`,
-      languages: articleLanguages('/blog/content-gap-analysis', null, 'https://www.ai-seo-company.pl/en/blog/content-gap-analysis')
+      canonical: locale === 'en'
+        ? `https://www.ai-seo-company.pl/en/blog/content-gap-analysis`
+        : `https://www.ai-seo-company.pl/blog/analiza-luk-contentowych`,
+      languages: articleLanguages('/blog/content-gap-analysis', 'https://www.ai-seo-company.pl/blog/analiza-luk-contentowych', 'https://www.ai-seo-company.pl/en/blog/content-gap-analysis')
     },
     robots: articleRobots('/blog/content-gap-analysis', locale),
   };
@@ -26,7 +32,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
   const { locale } = await params;
 
   if (locale === 'pl') {
-    return null;
+    return <ArticleAnalizaLukContentowych locale={locale} />;
   }
 
   const tocItems = [
@@ -515,6 +521,359 @@ export default async function ArticleContentGapAnalysis({ params }) {
                 currentSlug="/blog/content-gap-analysis"
                 customCtaTitleEn="Want this run on your site?"
                 customCtaTextEn="We will pull the competitor exports, classify the gaps and hand you a prioritized roadmap in week four."
+              />
+            </div>
+          </Reveal>
+        </div>
+      </article>
+
+      <Contact />
+      <Footer />
+    </main>
+  );
+}
+
+
+/**
+ * The Polish half of the pair, live at /blog/analiza-luk-contentowych via the
+ * pathnames map in i18n/routing.js. Content mirrors the supplied manuscript;
+ * the {{IMAGE_*}} placeholders from it are omitted until real files exist —
+ * a broken image is worse than none, and the hero comes from blogPosts.js.
+ *
+ * No FAQPage JSON-LD here, deliberately: the manuscript's own head spec omits
+ * it because FAQ rich results were withdrawn on 7 May 2026 — the article says
+ * so itself. The English branch predates that decision and keeps its block.
+ */
+function ArticleAnalizaLukContentowych({ locale }) {
+  const tocItems = [
+    { id: 'co-obejmuje-analiza-luk-contentowych', title: 'Co obejmuje analiza luk contentowych' },
+    { id: 'siedem-typow-luk', title: 'Siedem typów luk' },
+    { id: 'polska-specyfika-co-zmienia-rynek', title: 'Polska specyfika: co zmienia rynek' },
+    { id: 'jak-przeprowadzic-analize-krok-po-kroku', title: 'Jak przeprowadzić analizę krok po kroku' },
+    { id: 'narzedzia-takze-bez-budzetu', title: 'Narzędzia — także bez budżetu' },
+    { id: 'priorytetyzacja-i-roadmapa', title: 'Priorytetyzacja i roadmapa' },
+    { id: 'co-mierzyc-po-wdrozeniu', title: 'Co mierzyć po wdrożeniu' },
+    { id: 'gdzie-zespoly-faktycznie-utykaja', title: 'Gdzie zespoły faktycznie utykają' },
+    { id: 'jak-ai-seo-company-prowadzi-te-analize', title: 'Jak AI SEO COMPANY prowadzi tę analizę' },
+    { id: 'najczestsze-pytania', title: 'Najczęstsze pytania' },
+    { id: 'zrodla', title: 'Źródła' }
+  ];
+
+  return (
+    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+      <Header />
+      <ArticleSchema
+        slug="/blog/content-gap-analysis"
+        locale={locale}
+        url="/blog/analiza-luk-contentowych"
+        datePublished="2026-08-17"
+      />
+
+      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <Reveal>
+            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                Strategia treści
+              </span>
+              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                17 Sierpnia 2026
+              </span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+              Analiza luk contentowych: przewodnik praktyczny
+            </h1>
+            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="article-content">
+              <p className="lead">
+                Analiza luk contentowych polega na porównaniu tego, na co rankuje konkurencja, z tym, co faktycznie masz na stronie. Wynikiem nie jest lista fraz, tylko uporządkowany backlog: które strony zaktualizować, które napisać od zera, a które połączyć albo wycofać.
+              </p>
+
+              <p><strong>Cztery kroki na start:</strong></p>
+              <ul>
+                <li><strong>Wybierz konkurentów:</strong> 3–5 domen, które rankują na Twoje frazy — niekoniecznie tych, z którymi konkurujesz biznesowo.</li>
+                <li><strong>Wyeksportuj luki:</strong> narzędzie typu Semrush lub Ahrefs, dwa razy — raz dla fraz, na które nie rankujesz, raz dla pozycji 5–30.</li>
+                <li><strong>Zbuduj inwentarz:</strong> crawl serwisu, dane z Search Console, przypisanie każdego URL-a do etapu ścieżki zakupowej.</li>
+                <li><strong>Ustaw priorytety:</strong> oceń każdą lukę wpływem, pewnością i pracochłonnością, potem pisz briefy.</li>
+              </ul>
+
+              <p>Pierwszy eksport i wstępną listę fraz zrobisz w godzinę. Aktualizacje istniejących stron dają ruch w <strong>4–8 tygodni</strong>, nowe klastry tematyczne potrzebują <strong>3–6 miesięcy</strong>.</p>
+
+              <p><strong>Porada profesjonalisty:</strong> <em>Zanim wyeksportujesz cokolwiek, sprawdź w Search Console, na jakie frazy już zbierasz wyświetlenia bez kliknięć. To najtańsza lista luk, jaką dostaniesz, i nie wymaga płatnego narzędzia.</em></p>
+
+              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '2rem', marginBottom: '2rem' }}></div>
+
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem' }}>Kluczowe wnioski</h2>
+              <p>Analiza luk contentowych działa wtedy, gdy kończy się backlogiem z właścicielami i metrykami, a nie arkuszem z dwustoma frazami.</p>
+
+              <div className="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Punkt</th>
+                      <th>Szczegóły</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Zacznij od konkurentów, nie od fraz</td><td>Wybierz 3–5 domen o dużym pokryciu SERP-ów, niekoniecznie rywali biznesowych.</td></tr>
+                    <tr><td>Siedem typów luk</td><td>Tematyczne, na poziomie strony, intencyjne, jakościowe, techniczne, formatowe i widoczności w AI — każdy wykrywa się inaczej.</td></tr>
+                    <tr><td>Najpierw aktualizuj, potem pisz</td><td>Strony z pozycji 5–15 zwykle potrzebują rozbudowy, nie zastąpienia, i ruszają w 4–8 tygodni.</td></tr>
+                    <tr><td>Weryfikuj klastry na SERP-ach</td><td>Dwie frazy należą do jednego klastra, gdy ich TOP 10 pokrywa się w 40–50%. Grupowanie po podobieństwie słów prowadzi do kanibalizacji.</td></tr>
+                    <tr><td>Sprawdź, co jeszcze daje wynik</td><td>Wyniki rozszerzone FAQ i HowTo zostały wycofane. Strukturę buduj pod czytelnika i ekstrakcję, nie pod nieistniejący element SERP-u.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <ArticleTOC items={tocItems} />
+
+              <h2 id="co-obejmuje-analiza-luk-contentowych">Co obejmuje analiza luk contentowych</h2>
+
+              <p>Większość osób traktuje to jako ćwiczenie na frazach. To za wąsko. Luka może polegać na tym, że strona istnieje, ale ma zły format, albo że ładuje się wolniej niż konkurencja, albo że nie pojawia się w odpowiedziach ChatGPT, gdzie konkurenci są cytowani.</p>
+
+              <p>Analiza łączy trzy źródła: eksport fraz konkurencji, przegląd własnych stron na poziomie treści i dane z Search Console. Żadne z nich osobno nie wystarcza — eksport pokazuje, czego nie masz, ale nie mówi, czy to, co masz, działa.</p>
+
+              <p>Efektem końcowym powinien być dokument, w którym każda pozycja ma: typ luki, przypisany klaster fraz, etap ścieżki zakupowej, istniejący URL (jeśli jest), wynik priorytetu i właściciela. Backlog bez tych pól to lista obserwacji, nie plan pracy.</p>
+
+              <h2 id="siedem-typow-luk">Siedem typów luk</h2>
+
+              <p><strong>Luki tematyczne i domenowe</strong> to całe obszary, których nie ruszasz, a konkurencja rankuje na nich dziesiątkami fraz. Wykrywasz je porównaniem domena–domena i filtrowaniem klastrów, w których nie masz ani jednego URL-a.</p>
+
+              <p><strong>Luki na poziomie strony</strong> są subtelniejsze. Strona istnieje i rankuje, ale nie odpowiada na pytania, które pokrywa pierwsza trójka wyników. Naprawa to rozbudowa, nie nowa publikacja.</p>
+
+              <p><strong>Luki intencyjne</strong> są najbardziej kosztowne, bo niewidoczne w danych o frazach. Zapytanie „system CRM dla małych firm" ma intencję transakcyjną. Jeśli rankuje na nie wpis blogowy, a nie strona porównawcza albo produktowa, tracisz konwersje mimo dobrej pozycji.</p>
+
+              <p><strong>Luki jakościowe</strong> to strony poniżej 500 słów, bez linkowania wewnętrznego, z ruchem poniżej 10 sesji miesięcznie. Do tej samej kategorii należą teksty opisujące ten sam temat pod różnymi tytułami — rozbijają autorytet zamiast go kumulować.</p>
+
+              <p><strong>Luki techniczne</strong> rzadko widać w eksporcie fraz, a ograniczają wszystko pozostałe. Progi Core Web Vitals to LCP poniżej 2,5 s, INP poniżej 200 ms i CLS poniżej 0,1, oceniane na danych polowych z raportu w Search Console, a nie na wyniku Lighthouse. Szerzej opisujemy to w tekście o <Link href="/blog/core-web-vitals-a-pozycje-google">Core Web Vitals i pozycjach w Google</Link>.</p>
+
+              <p><strong>Luki formatowe</strong> wychodzą przy przeglądzie pierwszej dziesiątki. Jeśli każdy konkurent ma kalkulator, wideo albo szablon do pobrania, a Ty masz sam tekst, to jest luka niezależna od tego, jak dobry jest ten tekst.</p>
+
+              <p><strong>Luki widoczności w AI</strong> wymagają innej metody wykrywania: uruchom 10–20 promptów z Twojego obszaru w ChatGPT i Perplexity, zanotuj, kto jest cytowany i jaką strukturę mają cytowane strony.</p>
+
+              <h3>Uwaga o schematach FAQ i HowTo</h3>
+
+              <p>Wiele poradników nadal zaleca dodawanie znaczników FAQ jako szybkiej wygranej. Ta rada jest nieaktualna i ma znaczenie praktyczne, bo zmienia zawartość briefu.</p>
+
+              <p>Google wycofał wyniki rozszerzone HowTo z desktopu we wrześniu 2023, a FAQ ograniczył wtedy do witryn rządowych i zdrowotnych, po czym <strong>7 maja 2026 wycofał je całkowicie</strong>. Raportowanie w Search Console i obsługa w Rich Results Test zniknęły w czerwcu 2026, obsługa w API — w sierpniu 2026.</p>
+
+              <p>Trzy wnioski:</p>
+
+              <ul>
+                <li><strong>Nie briefuj markupu FAQ ani HowTo jako taktyki na SERP.</strong> Nie ma już czego wygrać. <code>FAQPage</code> pozostaje poprawnym typem Schema.org i istniejący markup może zostać, ale nie jest powodem do przebudowy strony.</li>
+                <li><strong>Briefuj dalej treść FAQ</strong>, czyli widoczny blok realnych pytań z bezpośrednimi odpowiedziami. To treść zawsze wykonywała pracę, markup był tylko etykietą.</li>
+                <li><strong>Wpływ schemy na cytowalność w AI traktuj jako nierozstrzygnięty.</strong> Google mówi, że dla AI Overviews i AI Mode żadne dedykowane dane strukturalne nie są wymagane. Microsoft twierdzi, że markup pomaga jego modelom w Copilocie. Dopóki to się nie wyjaśni, buduj strukturę pod czytelnika i parser, nie pod zachowanie jednego dostawcy.</li>
+              </ul>
+
+              <p>Jeśli macie eksporty do BigQuery albo dashboardy pobierające dane o wyglądzie FAQ z API Search Console, przestały zwracać wyniki w sierpniu 2026.</p>
+
+              <h2 id="polska-specyfika-co-zmienia-rynek">Polska specyfika: co zmienia rynek</h2>
+
+              <p>Metoda opisana niżej jest uniwersalna, ale trzy rzeczy wyglądają nad Wisłą inaczej — i wpływają na kroki 1 i 2, więc warto je znać, zanim zaczniesz.</p>
+
+              <p><strong>Agregatory zajmują część pierwszej dziesiątki.</strong> W wielu kategoriach produktowych Allegro i Ceneo są w TOP 10 niezależnie od tego, co zrobisz. Przy wyborze konkurentów to nie są domeny do benchmarkowania — to są stałe elementy krajobrazu. Realnych konkurentów szukaj wśród pozostałych pozycji. Jeśli po odjęciu agregatorów i portali zostaje mniej niż trzy domeny, rozszerz analizę na TOP 20 zamiast obniżać kryteria.</p>
+
+              <p><strong>Fleksja rozbija wolumeny.</strong> „Audyt treści", „audytu treści", „audyty treści" mogą figurować w narzędziach jako osobne frazy o niskim wolumenie, choć Google traktuje je jako jedno zapytanie. Przy filtrowaniu po minimalnym wolumenie łatwo odrzucić klaster, który po zsumowaniu odmian jest wart pracy. Weryfikacja klastrów na SERP-ach, opisana dalej, wychwytuje to od razu.</p>
+
+              <p><strong>Wolumeny bezwzględne są wielokrotnie niższe niż na rynku anglojęzycznym</strong>, a różnica bywa większa w niszach B2B niż w kategoriach konsumenckich. Próg 100 wyszukiwań miesięcznie, typowy dla rynku anglojęzycznego, na polskim rynku odetnie większość wartościowych fraz B2B. Ustawiaj go raczej w okolicach 20–50 i kompensuj wymogiem, żeby rankowało co najmniej dwóch konkurentów.</p>
+
+              <h2 id="jak-przeprowadzic-analize-krok-po-kroku">Jak przeprowadzić analizę krok po kroku</h2>
+
+              <h3>Krok 1: wybierz konkurentów</h3>
+
+              <p>Nie zaczynaj od listy rywali biznesowych. Twoi konkurenci w wyszukiwarce to domeny rankujące na Twoje frazy — często porównywarki, portale branżowe albo narzędzia z sąsiedniej kategorii.</p>
+
+              <p>Weź 10–20 kluczowych fraz, sprawdź, które domeny pojawiają się najczęściej w TOP 10, i wybierz 3–5 o dużym pokryciu i porównywalnym lub wyższym autorytecie.</p>
+
+              <h3>Krok 2: wyeksportuj luki</h3>
+
+              <p>Uruchom narzędzie <strong>dwa razy</strong>, nie raz. Pierwszy eksport: frazy, na które konkurenci rankują w pozycjach 1–20, a Ty jesteś poza TOP 100 lub w ogóle. To lista nowych treści. Drugi eksport: te same pozycje konkurencji, ale frazy, na które <strong>już rankujesz w przedziale 5–30</strong>. To lista aktualizacji — i to w niej leżą najszybsze wygrane.</p>
+
+              <p>Większość zespołów robi tylko pierwszy eksport, a potem dziwi się, że roadmapa nie ma nic, co dałoby efekt w miesiąc.</p>
+
+              <p>Filtry przed eksportem: minimalny wolumen dopasowany do branży, wykluczenie fraz brandowych, wymóg, żeby co najmniej dwóch konkurentów rankowało.</p>
+
+              <h3>Krok 3: zbuduj inwentarz</h3>
+
+              <p>Zrób crawl narzędziem typu Screaming Frog lub Sitebulb i wyeksportuj każdy indeksowalny URL z tytułem, meta description, liczbą słów, canonicalem i statusem HTTP.</p>
+
+              <p>Następnie pobierz dane z Search Console: kliknięcia, wyświetlenia, średnią pozycję i CTR dla każdego URL-a z <strong>pełnych 16 miesięcy</strong> — to całe okno, jakie Search Console przechowuje, i minimum potrzebne, żeby porównać okres z tym samym okresem rok wcześniej.</p>
+
+              <h3>Krok 4: sklasyfikuj luki i przypisz do ścieżki</h3>
+
+              <p>Pogrupuj frazy w klastry tematyczne, a potem <strong>zweryfikuj grupowanie na SERP-ach</strong>. Weź dwie–trzy wiodące frazy z każdego klastra i porównaj ich TOP 10: jeśli pokrywają się w 40–50% lub więcej, Google traktuje je jako jedno zapytanie i należą na jeden URL. Jeśli pokrycie jest znikome, rozdziel klaster niezależnie od tego, jak podobnie brzmią frazy.</p>
+
+              <p>Pominięcie tego kroku to najczęstsza przyczyna sytuacji, w której analiza rekomenduje trzy strony na jedną intencję albo jedną na trzy.</p>
+
+              <p>Przypisz każdy zweryfikowany klaster do etapu ścieżki: świadomość, rozważanie, decyzja. Potem sprawdź w inwentarzu, czy strona już istnieje — a jeśli tak, czy jest zbyt uboga, źle dopasowana intencyjnie, czy po prostu nieaktualna.</p>
+
+              <h3>Krok 5: napisz briefy</h3>
+
+              <p>Brief aktualizacji: klaster docelowy, obecny URL, czego brakuje (podtematy, pytania bez odpowiedzi, przykłady), intencja do dopasowania, docelowa objętość.</p>
+
+              <p>Brief nowej strony dodaje: format, cele linkowania wewnętrznego i elementy ułatwiające ekstrakcję — definicja w pierwszych stu słowach, ponumerowany proces, blok bezpośrednich odpowiedzi.</p>
+
+              <p><strong>Uwaga o generatywnej AI w produkcji.</strong> Lista dwustu luk to dokładnie ta sytuacja, w której zespół sięga po model, żeby pisać na skalę. Polityka spamowa Google celuje w scaled content abuse — masową produkcję stron głównie po to, żeby manipulować rankingiem — i nie rozróżnia, czy autorem był człowiek, czy model. Używaj modeli do researchu, konspektów i pierwszych wersji, ale wymagaj, żeby każdy brief niósł coś, czego model sam nie dostarczy: własne dane, przepracowany przykład, cytat klienta. Fakty weryfikuje człowiek przed publikacją.</p>
+
+              <h3>Krok 6: ustaw priorytety</h3>
+
+              <p>Oceniaj w trzech wymiarach, nie dwóch.</p>
+
+              <p><strong>Wpływ</strong> (1–5): wolumen, etap ścieżki (decyzja = 5, świadomość = 2), znaczenie dla widoczności w AI.</p>
+
+              <p><strong>Pewność</strong> (1–5): jak dobrze luka jest udokumentowana. Trzech konkurentów rankujących plus własne wyświetlenia w Search Console = 5. Pojedynczy eksport bez potwierdzenia = 1 lub 2.</p>
+
+              <p><strong>Pracochłonność</strong> (1–5): strona istnieje = 1, nowa strona = 3, nowa strona wymagająca badań własnych lub czasu dewelopera = 5.</p>
+
+              <p>Priorytet = (wpływ × pewność) ÷ pracochłonność. W tych skalach wynik mieści się między 0,2 a 25. Powyżej 10 to szybka wygrana, poniżej 2 — projekt długoterminowy albo kandydat do skreślenia.</p>
+
+              <p>Asymetria jest celowa: przy pracochłonności 3 lub wyższej maksymalny możliwy wynik to 8,3, więc nowa strona nigdy nie trafi do kategorii szybkich wygranych. Ta kategoria jest dla aktualizacji.</p>
+
+              <h3>Krok 7: mierz i powtarzaj</h3>
+
+              <p>Pozycje aktualizowanych stron sprawdzaj co tydzień, sesje i CTR — co miesiąc. Pełne powtórzenie analizy raz na kwartał: świeży eksport, ponowny crawl, kolejna runda promptów w ChatGPT i Perplexity.</p>
+
+              <h2 id="narzedzia-takze-bez-budzetu">Narzędzia — także bez budżetu</h2>
+
+              <p>Na polskim rynku abonament w Semrushu czy Ahrefsie to wydatek, którego wiele firm nie ponosi. Warto więc rozdzielić, co wymaga płatnego narzędzia, a co nie.</p>
+
+              <div className="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Etap</th>
+                      <th>Bez budżetu</th>
+                      <th>Z płatnym narzędziem</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Własne frazy i strony</td><td>Search Console: wyświetlenia bez kliknięć, pozycje 5–30, CTR poniżej średniej</td><td>To samo, szybciej, z historią dłuższą niż 16 miesięcy</td></tr>
+                    <tr><td>Inwentarz i technika</td><td>Screaming Frog do 500 URL-i bezpłatnie, PageSpeed Insights, raport Core Web Vitals</td><td>Crawl bez limitu, integracja z danymi o ruchu</td></tr>
+                    <tr><td>Frazy konkurencji</td><td>Ręczny przegląd TOP 10 i sekcji „Podobne wyszukiwania"</td><td>Eksport domena–domena, tu płatne narzędzie jest nie do zastąpienia</td></tr>
+                    <tr><td>Widoczność w AI</td><td>Prompty wpisywane ręcznie w ChatGPT i Perplexity</td><td>Narzędzia monitorujące cytowania</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p><strong>Czego nie da się obejść:</strong> strony konkurencji. Search Console raportuje wyłącznie Twoje zapytania, więc bez płatnego narzędzia zostaje audyt tego, co już masz, i ręczne czytanie wyników. To wystarczy na start, ale nie wystarczy, żeby wykonać krok 2 tak, jak go opisaliśmy.</p>
+
+              <h2 id="priorytetyzacja-i-roadmapa">Priorytetyzacja i roadmapa</h2>
+
+              <p><strong>Szybkie wygrane (tygodnie 1–4).</strong> Aktualizacje stron z pozycji 5–15: podtematy, których nie pokrywasz, odpowiedzi na pytania bez odpowiedzi, świeższe dane.</p>
+
+              <p><strong>Średni horyzont (miesiące 2–3).</strong> Nowe strony pod luki o wysokim wolumenie, z przypisanym właścicielem i standardem briefu.</p>
+
+              <p><strong>Długi horyzont (miesiące 4–6 i dalej).</strong> Pełne klastry tematyczne dla luk domenowych: strona filarowa, teksty wspierające, architektura linkowania. <strong>To moment startu pracy, nie moment zwrotu</strong> — do tego dolicz 3–6 miesięcy na zbudowanie ruchu, czyli realny efekt między siódmym a dwunastym miesiącem.</p>
+
+              <p>Kwartalne powtórzenie analizy nie resetuje tej roadmapy. Pozycje z długiego horyzontu, które są już w produkcji, traktuj jako zobowiązanie, a nową listę dopuszczaj tylko do konkurencji o kolejne sloty w dwóch pierwszych kategoriach. Zespoły, które co kwartał przestawiają wszystko, przebudowują plan cztery razy do roku i nie kończą żadnego klastra.</p>
+
+              <p><strong>Checklista dla każdej pozycji:</strong></p>
+
+              <ul>
+                <li>Właściciel przypisany przed napisaniem briefu</li>
+                <li>Brief zweryfikowany wobec intencji widocznej na SERP-ie</li>
+                <li>Dane strukturalne tam, gdzie nadal dają wynik (Article, BreadcrumbList, VideoObject, Organization)</li>
+                <li>Minimum dwa istniejące URL-e linkujące do nowej strony</li>
+                <li>Elementy ekstrakcyjne: definicja w otwarciu, ponumerowane kroki, bezpośrednie odpowiedzi</li>
+                <li>Kontrola jakości wobec briefu przed publikacją</li>
+              </ul>
+
+              <h2 id="co-mierzyc-po-wdrozeniu">Co mierzyć po wdrożeniu</h2>
+
+              <div className="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Metryka</th>
+                      <th>Co pokazuje</th>
+                      <th>Źródło</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Sesje organiczne w klastrze</td><td>Czy nowe i zaktualizowane strony przyciągają ruch</td><td>Google Analytics</td></tr>
+                    <tr><td>Udział w widoczności (share of voice)</td><td>Ważona widoczność wobec nazwanych konkurentów — wiarygodniejsza niż średnia pozycja, którą zaburza publikacja nowych stron long-tail</td><td>Semrush / Ahrefs</td></tr>
+                    <tr><td>Konwersje organiczne</td><td>Kluczowe zdarzenia z ruchu organicznego (GA4 zastąpił nimi cele z Universal Analytics)</td><td>Google Analytics</td></tr>
+                    <tr><td>CTR z wyników</td><td>Czy tytuły i opisy odpowiadają intencji</td><td>Search Console</td></tr>
+                    <tr><td>Średni czas zaangażowania</td><td>Ile realnie trwała uwaga; GA4 zastąpił tym metrykę czasu na stronie</td><td>Google Analytics</td></tr>
+                    <tr><td>Udział wzmianek w AI</td><td>Jak często marka jest cytowana w odpowiedziach modeli</td><td>Ręczne prompty</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p><strong>Atrybucja.</strong> Porównaj 60 dni przed i po aktualizacji, ale zawsze wobec grupy kontrolnej — stron z tego samego obszaru, których nie ruszałeś. To jedyne, co oddziela efekt Twojej pracy od aktualizacji algorytmu i sezonowości. Czytaj też trend rok do roku, bo większość branż ma sezonowy kształt, przy którym płaski miesiąc wygląda na zastój, choć nim nie jest.</p>
+
+              <h2 id="gdzie-zespoly-faktycznie-utykaja">Gdzie zespoły faktycznie utykają</h2>
+
+              <p>Sama analiza rzadko jest trudna. Problem zaczyna się, gdy lista już istnieje.</p>
+
+              <p><strong>Paraliż priorytetów.</strong> Trzysta pozycji wygląda jak mandat do naprawienia wszystkiego, więc nie naprawia się niczego, a arkusz leży na dysku przez pół roku. Scoring z trzema wymiarami istnieje właśnie po to, żeby wymusić ranking. Jeśli zespół nie potrafi uzgodnić pierwszej dziesiątki, problem leży w zarządzaniu, nie w danych.</p>
+
+              <p><strong>Traktowanie analizy jako jednorazowego projektu.</strong> Lukę zamkniętą w styczniu może przykryć głębszy tekst konkurencji opublikowany w marcu.</p>
+
+              <p><strong>Ignorowanie luk autorytetu.</strong> Strona z doskonałą treścią, bez linkowania wewnętrznego i bez linków zewnętrznych, będzie rankować znacznie poniżej swojego potencjału. Google zaindeksuje ją z sitemapy, ale osierocony URL dostaje mniej uwagi crawlera i zero autorytetu z serwisu — dwóch rzeczy, których jakość treści nie zastąpi.</p>
+
+              <h2 id="jak-ai-seo-company-prowadzi-te-analize">Jak AI SEO COMPANY prowadzi tę analizę</h2>
+
+              <p>Nasz proces odpowiada krok po kroku metodzie opisanej wyżej, z kilkoma dodatkami wynikającymi z prowadzenia go na stronach klientów z różnych branż.</p>
+
+              <ul>
+                <li><strong>Tydzień 1:</strong> ustalenie klastrów docelowych, crawl serwisu, pobranie pełnych 16 miesięcy danych z Search Console, scalenie w jeden inwentarz.</li>
+                <li><strong>Tydzień 2:</strong> eksporty luk, weryfikacja klastrów na SERP-ach, klasyfikacja według typu i etapu ścieżki, testy promptów pod widoczność w AI.</li>
+                <li><strong>Tydzień 3:</strong> scoring, roadmapa, briefy dla pierwszej dziesiątki szybkich wygranych.</li>
+                <li><strong>Tydzień 4:</strong> przypisanie właścicieli, standardy redakcyjne, wymagania dotyczące danych strukturalnych, uruchomienie raportowania.</li>
+              </ul>
+
+              <p>Raportowanie dzieli się potem tak samo: comiesięczny przegląd wyników to element abonamentu, pełne powtórzenie analizy można zaplanować w zakresie prac raz na kwartał, a cotygodniowa kontrola pozycji zostaje po stronie osoby prowadzącej strony na co dzień — to sygnał do działania, nie dokument do archiwum.</p>
+
+              <p>Analizę luk prowadzimy w ramach abonamentu, jako stały element pracy nad treścią. W wyjątkowych sytuacjach — na przykład gdy masz własny zespół contentowy i potrzebujesz wyłącznie roadmapy — możemy wycenić ją jako zlecenie jednorazowe, bo jej efekt da się wdrożyć samodzielnie. Audytu UX w tym trybie nie realizujemy nigdy: prowadzimy go wyłącznie w ramach pakietu, bo jego wnioski bez wdrożenia nie zmieniają żadnego wskaźnika.</p>
+
+              <p>Wyniki zależą od punktu wyjścia, konkurencyjności branży i tego, ile z backlogu faktycznie powstanie — <strong>żadna agencja nie zagwarantuje pozycji ani przychodu</strong>. Liczby z zakończonych projektów publikujemy w sekcji realizacji na <Link href="/">stronie głównej</Link>.</p>
+
+              <p>Jeśli chcesz zacząć od diagnozy, a nie od umowy, zamów bezpłatną analizę SEO i potencjału obecnej marki — pokazuje, gdzie leżą największe luki, zanim ustalimy zakres. Na zapytanie odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję przygotowujemy w ciągu doby. Zakres każdego pakietu opisuje <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link>, a brief możesz przesłać przez <a href="/#kontakt">formularz kontaktowy</a>.</p>
+
+              <h2 id="najczestsze-pytania">Najczęstsze pytania</h2>
+
+              <p><strong>Jak często powtarzać analizę luk contentowych?</strong><br />
+              Raz na kwartał. Lista starsza niż pół roku jest częściowo nieaktualna — konkurenci publikują bez przerwy, a klaster zamknięty w styczniu może zostać przykryty w marcu.</p>
+
+              <p><strong>Po jakim czasie widać efekty?</strong><br />
+              Aktualizacja strony z pozycji 5–15 zwykle rusza w 4–8 tygodni. Nowy klaster tematyczny potrzebuje 3–6 miesięcy, zanim zacznie generować zauważalny ruch.</p>
+
+              <p><strong>Czy potrzebne są płatne narzędzia?</strong><br />
+              Do audytu własnych stron nie. Search Console i crawler pokrywają inwentarz i pracę na poziomie strony w całości. Bezpłatnie nie zrobisz jednej rzeczy: eksportu fraz konkurencji.</p>
+
+              <p><strong>Czym analiza luk różni się od audytu treści?</strong><br />
+              Audyt patrzy do wewnątrz i ocenia to, co masz. Analiza luk patrzy na zewnątrz — na to, na co rankuje konkurencja, a Ty nie. Kolejność jest kwestią wyboru: ten przewodnik zaczyna od eksportu konkurencji, bo dzięki niemu wiesz, czego szukać podczas crawla. Odwróć to, jeśli serwis jest na tyle duży, że sam inwentarz zajmie tydzień.</p>
+
+              <p><strong>Jak pogodzić kwartalne powtórki z sześciomiesięczną roadmapą?</strong><br />
+              Powtórka nie kasuje planu. Pozycje w produkcji zostają, nowa lista walczy tylko o kolejne wolne sloty.</p>
+
+              <h2 id="zrodla">Źródła</h2>
+
+              <ul>
+                <li>Google Search Central — dane strukturalne FAQPage, nota o wycofaniu z 7 maja 2026; obsługa w Search Console i Rich Results Test usunięta w czerwcu 2026, w API — w sierpniu 2026</li>
+                <li>Google Search Central — dane strukturalne HowTo wycofane na desktopie, wrzesień 2023</li>
+                <li>Google Search Central — wytyczne dla funkcji AI: dla AI Overviews i AI Mode nie są wymagane żadne dedykowane dane strukturalne</li>
+                <li>Google Search Central — polityka spamowa, sekcja scaled content abuse</li>
+              </ul>
+
+              <p style={{ fontStyle: 'italic', color: '#86868B' }}>Ostatnia weryfikacja: sierpień 2026. Wytyczne dotyczące danych strukturalnych odpowiadają stanowi dokumentacji Google na tę datę.</p>
+
+              <h2>Powiązane</h2>
+
+              <ul>
+                <li><Link href="/blog/vwo-vs-optimizely-porownanie">VWO czy Optimizely — porównanie platform do testów</Link> — czym podzielić ruch, gdy chcesz zmierzyć efekt zmiany grupą kontrolną</li>
+                <li><Link href="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik">Konfiguracja zdarzeń GA4 w Google Tag Managerze</Link> — jak naprawić pomiar przed analizą</li>
+                <li><Link href="/pozycjonowanie-stron-internetowych">Pozycjonowanie stron internetowych</Link> — zakres stałej współpracy</li>
+              </ul>
+
+              <BlogCTA
+                locale={locale}
+                currentSlug="/blog/content-gap-analysis"
+                customCtaTitlePl="Chcesz, żebyśmy przeprowadzili to na Twojej stronie?"
+                customCtaTextPl="Pobierzemy eksporty konkurencji, sklasyfikujemy luki i oddamy roadmapę z priorytetami w czwartym tygodniu."
               />
             </div>
           </Reveal>

@@ -79,6 +79,10 @@ export const routing = defineRouting({
     '/blog/analiza-konkurencji-seo-przewodnik': {
       pl: '/blog/analiza-konkurencji-seo-przewodnik',
       en: '/blog/seo-competitor-analysis-step-by-step-guide'
+    },
+    '/blog/content-gap-analysis': {
+      pl: '/blog/analiza-luk-contentowych',
+      en: '/blog/content-gap-analysis'
     }
   }
 });
