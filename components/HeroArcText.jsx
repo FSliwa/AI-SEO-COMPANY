@@ -36,9 +36,10 @@ import { useEffect, useRef, useState } from 'react';
 const R_FRAC = 0.0556;
 // Baseline of the last line sits this far above the letter top (measured).
 const BASE_ABOVE_TOP = 12;
-// Hard cap on the sweep, degrees. 90 would run the tip fully vertical at the
-// first-bend height; 80 stops a touch above it and keeps the first word legible.
-const THETA_CAP = 80;
+// Sweep of the last line, degrees. 90 would run the tip fully vertical at the
+// first-bend height; 66 keeps the curl obvious while the first word stays
+// comfortably readable — the tidier reading of the approved spec.
+const THETA_CAP = 66;
 
 export default function HeroArcText({ text, className = '' }) {
   const hostRef = useRef(null);
@@ -65,21 +66,17 @@ export default function HeroArcText({ text, className = '' }) {
 
       const words = text.split(/\s+/).filter(Boolean);
 
-      // Sweep per line. The first line is dead straight. The last takes the
-      // full capped sweep — that is the one tracing the S's corner. The lines
-      // between get exactly the sweep that lands their tip on the column edge
-      // (sin theta = cx / R), which keeps the block's left profile monotone:
-      // a straight top, starts pinned to the column with a growing dip, then
-      // the final line curling down past the corner. An earlier draft faded
-      // the sweep quadratically instead, and the mid-line tips landed 30px
-      // right of the column — the left edge read as a zigzag.
+      // Only the LAST line curls — the one actually meeting the S — and every
+      // other line is dead straight, flush with the column. Two earlier drafts
+      // bent the middle lines too (faded sweeps, then tips pinned with growing
+      // dips) and both read as untidy: rotated glyphs in the middle of a
+      // paragraph look like a rendering fault, not a design. One clean curl on
+      // the closing line reads as intent.
       const sweep = (li, count) => {
         const last = Math.max(1, count - 1);
-        const i = Math.min(li, last);
-        if (i === 0) return 0;
-        const R = r + BASE_ABOVE_TOP + (last - i) * lineHeight;
-        if (i === last) return THETA_CAP * Math.PI / 180;
-        return Math.asin(Math.min(1, r / R));
+        return Math.min(li, last) === last && count > 1
+          ? THETA_CAP * Math.PI / 180
+          : 0;
       };
 
       // Extra capacity a bent line gains over a flat one: arc length minus the

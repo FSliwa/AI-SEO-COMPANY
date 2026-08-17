@@ -3143,8 +3143,12 @@ section, aside.pricing, aside.contact, aside.why-us {
      The section grows to 880px to buy that back without pushing the buttons
      under the sticky bar. */
   .hero-en-bg {
-    top: 31%;
-    height: 35%;
+    /* Pixels, not percentages. The band was 31%/35% of the section, so cutting
+       the section's dead bottom also shrank the band — and with it the word,
+       which is sized by band height. Fixed at 300px tall the word keeps its
+       ~91% span of a 375px screen no matter what the section height does. */
+    top: 260px;
+    height: 300px;
     bottom: auto;
     /* The band's own top margin carries the sculpture's upper half, and with the
        copy keyed to the LETTERS (not the band) the text sits over that margin —
@@ -3167,8 +3171,10 @@ section, aside.pricing, aside.contact, aside.why-us {
      was read back at 375x812 with reflection filtering, and the word sits at
      49.4%-59.3% of the section. (The derived 30.4%-62.2% canvas fractions do
      not carry over — the mobile band's aspect reframes the scene.) */
+  /* Lettering inside a 260px + 300px band sits at 358-443px (32.6%-60.9% of
+     the band): row one ends 8px above it, row two 16px below it. */
   .hero-en-copy {
-    grid-template-rows: calc(42.4% - 8px) calc(9.9% + 24px) 1fr;
+    grid-template-rows: 350px 109px 1fr;
   }
 
   /* Polish runs about 25% longer than the English for the same meaning, and
@@ -3242,8 +3248,13 @@ section, aside.pricing, aside.contact, aside.why-us {
        above the fold — and as little dead air under the header as the Polish
        text allows, since the copy is bottom-anchored to the 8px gap and all
        row-one surplus surfaces at the top. Taller screens use their own. */
-    height: auto !important;
-    min-height: max(100svh, 860px) !important;
+    /* Fixed height equal to the content: rows 459px + heading, sub and buttons
+       ~155px + breathing room. The old max(100svh, 860px) filled the whole
+       screen and left ~240px of dead black under the buttons; at 660px the
+       next section peeks above the fold instead, which is what tells a phone
+       user there is more page. */
+    height: 660px !important;
+    min-height: 0 !important;
     max-height: none !important;
     overflow: hidden !important;
     align-items: flex-start !important;
