@@ -3180,8 +3180,15 @@ section, aside.pricing, aside.contact, aside.why-us {
      1.25rem floor here, so the copy sits on the identical margin as the wide
      layout rather than on a second value that happened to match. */
 
+  /* Keyed to the LETTERING, not to the canvas band. The band runs 38%-73% of
+     the section, but the word inside it carries the scene's own empty margin,
+     so rows pinned to the band edges read as a ~100px visual gap where the
+     desktop has 8px. These numbers are measured, not derived: the framebuffer
+     was read back at 375x812 with reflection filtering, and the word sits at
+     49.4%-59.3% of the section. (The derived 30.4%-62.2% canvas fractions do
+     not carry over — the mobile band's aspect reframes the scene.) */
   .hero-en-copy {
-    grid-template-rows: calc(38% - 8px) calc(35% + 24px) 1fr;
+    grid-template-rows: calc(49.4% - 8px) calc(9.9% + 24px) 1fr;
   }
 
   /* Polish runs about 25% longer than the English for the same meaning, and

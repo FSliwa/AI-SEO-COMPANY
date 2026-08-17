@@ -28,10 +28,13 @@ import { useEffect, useRef, useState } from 'react';
  * screens, client-side, so the markup a crawler reads is the plain paragraph and
  * the copy is never duplicated.
  */
-// Horizontal run the shoulder is spread over, in px. The letterform's own
-// shoulder takes about 76px; the text gets a little more so the bend reads as a
-// curve in a 16px face rather than a kink.
-const CURVE_RUN = 150;
+// Horizontal run each line's bend is spread over, in px.
+const CURVE_RUN = 170;
+
+// Total leftward sweep of the block's left edge, in px: the top line starts on
+// the column edge and the lines below it slide progressively left, tracing one
+// arc down towards the "S" — the direction the marked-up screenshot drew.
+const EDGE_SWEEP = 44;
 
 export default function HeroArcText({ text, className = '', rise = 14 }) {
   const hostRef = useRef(null);
@@ -91,38 +94,48 @@ export default function HeroArcText({ text, className = '', rise = 14 }) {
     <div ref={hostRef} className={className}>
       {layout && (
         <svg
-          width={layout.width}
+          width={layout.width + EDGE_SWEEP}
           height={height}
-          viewBox={`0 0 ${layout.width} ${height}`}
+          viewBox={`0 0 ${layout.width + EDGE_SWEEP} ${height}`}
+          style={{ display: 'block', marginLeft: `-${EDGE_SWEEP}px` }}
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
             {layout.lines.map((_, i) => {
               const y = rise + layout.fontSize + i * layout.lineHeight;
 
-              // Only the left end of each line bends; the rest of the line runs
-              // straight. The shape is taken from the letterform underneath —
-              // reading the scene's framebuffer, the "S" holds a flat top at
-              // y=274 from x=277 rightwards and its shoulder falls to y=341 by
-              // x=201. So roughly 76px of horizontal run carries the whole drop,
-              // and the text mirrors that: a shoulder over the first CURVE_RUN
-              // pixels, flat from there on.
+              // One continuous sweep, not a repeated hook. Three earlier attempts
+              // failed three different ways: identical shoulders on every line
+              // read as four separate hooks; a drop that grew without moving the
+              // line starts read as a rotated paragraph; stepped indents read as
+              // a margin. What the marked-up screenshot drew is a single arc
+              // running down-left towards the "S", so that is what this builds:
               //
-              // The same shoulder on every line, not a drop that grows downwards.
-              // Ramping it made each line sag further than the one above, and the
-              // block stopped reading as a curve and started reading as a
-              // paragraph that had been rotated by mistake. Identical on all
-              // lines, the left edge is one consistent shape.
-              const drop = rise;
-              const run = Math.min(CURVE_RUN, layout.width * 0.28);
+              //   - the START of each line slides left, quadratically (t²), so
+              //     the block's left edge is itself a curve accelerating towards
+              //     the lettering, not a straight diagonal;
+              //   - the TIP of each line dips below its baseline by rise*t, so
+              //     the bend deepens as the lines approach the letters;
+              //   - past the bend every line runs dead straight, so only the
+              //     left side carries the shape.
+              //
+              // The svg is widened by EDGE_SWEEP and pulled left by the same
+              // amount in CSS, so the top line still starts exactly on the
+              // column edge, aligned with the promise line above it.
+              const last = Math.max(1, layout.lines.length - 1);
+              const t = i / last;
+              const shift = EDGE_SWEEP * t * t;
+              const drop = rise * t;
+              const x0 = EDGE_SWEEP - shift;
+              const run = Math.min(CURVE_RUN, layout.width * 0.3);
               return (
                 <path
                   key={i}
                   id={`hero-arc-${i}`}
                   d={
-                    `M 0 ${y + drop} ` +
-                    `Q ${run * 0.5} ${y + drop} ${run} ${y} ` +
-                    `L ${layout.width} ${y}`
+                    `M ${x0} ${y + drop} ` +
+                    `Q ${x0 + run * 0.5} ${y + drop} ${x0 + run} ${y} ` +
+                    `L ${layout.width + EDGE_SWEEP} ${y}`
                   }
                   fill="none"
                 />
