@@ -2774,10 +2774,13 @@ section, aside.pricing, aside.contact, aside.why-us {
     heroCopyFade 280ms ease-out both;
 }
 
-.hero-en-lead { animation-delay: 80ms; }
-.hero-en-body { animation-delay: 200ms; }
-.hero-en-title { animation-delay: 320ms; }
-.hero-en-actions { animation-delay: 440ms; }
+/* The stagger. Has to carry the same specificity as the shorthand above —
+   written as bare element classes it loses to `.hero-en-copy.is-in :is(...)`,
+   the shorthand resets delay to 0, and all four elements arrive at once. */
+.hero-en-copy.is-in .hero-en-lead { animation-delay: 80ms; }
+.hero-en-copy.is-in .hero-en-body { animation-delay: 200ms; }
+.hero-en-copy.is-in .hero-en-title { animation-delay: 320ms; }
+.hero-en-copy.is-in .hero-en-actions { animation-delay: 440ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-en-bg.is-in canvas {
@@ -2862,35 +2865,6 @@ section, aside.pricing, aside.contact, aside.why-us {
 .hero-en-body { animation-delay: 200ms; }
 .hero-en-title { animation-delay: 320ms; }
 .hero-en-actions { animation-delay: 440ms; }
-
-/* The bend, carried inside the entrance keyframes rather than as its own rule.
-   Both want the transform property, and a separate declaration would simply be
-   overwritten the moment the animation runs — the paragraph would snap flat.
-
-   Only this paragraph is bent; the promise line above it stays straight. The
-   block is tipped on the X axis under perspective, with the origin at its
-   bottom edge, so it stays anchored to the 8px gap above the lettering and only
-   the far edge leans away — the text reads as arcing over the letters instead
-   of sitting flat in front of them.
-
-   A transform and not per-letter spans: the copy stays one text node and
-   reflows normally. What it does not do is put every line on its own circular
-   path — that is SVG textPath, which cannot wrap, so each line break would have
-   to be frozen per breakpoint and per language. */
-@media (min-width: 901px) {
-  .hero-en-copy .hero-en-body {
-    transform: translateY(26px) perspective(680px) rotateX(11deg);
-  }
-
-  .hero-en-copy.is-in .hero-en-body {
-    animation-name: heroBodyRise, heroCopyFade;
-  }
-
-  @keyframes heroBodyRise {
-    from { transform: translateY(26px) perspective(680px) rotateX(11deg); }
-    to { transform: perspective(680px) rotateX(11deg); }
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
