@@ -3,30 +3,28 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * The hero paragraph, wrapping around the top of the "S" — to the approved
- * spec: the wrap runs along the top edge of the lettering and descends, in the
- * letter's own trail, no further than the height of the S's first bend.
+ * The hero paragraph, wrapping around the top of the "S" below it.
  *
- * Geometry, all derived from the section height (the camera scales the scene
- * with it): the S's top-left corner is a quarter-arc of radius r ~ 5.56% of the
- * section height, tangent to both the letter's flat top and its left edge, and
- * the left edge is flush with the text column. So there is one shared centre C,
- * sitting r to the right of the column and r below the letter top — and every
- * line's curved portion is a CONCENTRIC arc around C. Concentric spacing is
- * what keeps the lines a constant line-height apart along the whole bend, and
- * it makes the innermost arc run parallel to the letter's own shoulder — the
- * text literally follows the S.
+ * Every line curves — concentric arcs around the S's corner circle, whose
+ * radius is ~5.56% of the section height and whose centre sits r right of the
+ * column and r below the letter top. Concentric spacing keeps the lines a
+ * constant leading apart along the bend, and the innermost arc runs parallel
+ * to the letter's own shoulder.
  *
- * Each line is flat and level from C's vertical to the right edge, and bends
- * down-left along its arc before that. The sweep fades quadratically up the
- * paragraph: the last line takes the full bend (capped at THETA_CAP so the
- * descent stops at the first-bend height and the tip stays readable), the
- * first line is dead straight. Glyphs rotate along the tangent — that is what
- * textPath is for; a curving baseline cannot be done in CSS.
+ * Sweep per line: the middle lines take exactly the sweep that lands their tip
+ * on the column edge (sin theta = r / R), which grows naturally towards the
+ * letter as the radii shrink; the last line takes the full capped sweep and
+ * curls down the shoulder, stopping above the S's first bend.
  *
- * The wrap must know the curve: bent lines carry more text (the arc is longer
- * than its chord), and how much depends on the line count, which depends on
- * the wrap — so it iterates until the count settles.
+ * The type follows the curvature: the more a line bends, the larger and more
+ * tracked-out its glyphs — scale and letter-spacing are both driven by the
+ * line's sweep as a fraction of the cap, so the paragraph accelerates towards
+ * the letterform. Leading scales with each line's own size, and the arc radii
+ * are recomputed from those positions, so the geometry stays concentric.
+ *
+ * Wrapping, measuring and the curve all feed each other — bent lines carry
+ * more text (arc vs chord), scaled lines carry less, and the count moves the
+ * radii — so the layout iterates until the line count settles.
  *
  * SEO: the server renders the straight <p>; this replaces it client-side above
  * 901px only. No per-letter spans, no duplicated copy.
@@ -36,10 +34,13 @@ import { useEffect, useRef, useState } from 'react';
 const R_FRAC = 0.0556;
 // Baseline of the last line sits this far above the letter top (measured).
 const BASE_ABOVE_TOP = 12;
-// Sweep of the last line, degrees. 90 would run the tip fully vertical at the
-// first-bend height; 66 keeps the curl obvious while the first word stays
-// comfortably readable — the tidier reading of the approved spec.
+// Sweep of the last line, degrees.
 const THETA_CAP = 66;
+// Glyph scale gain at full sweep: the last line renders at 1 + GAIN times the
+// base size, lines above proportionally to their own sweep.
+const SCALE_GAIN = 0.3;
+// Letter-spacing at full sweep, as a fraction of the font size.
+const TRACK_GAIN = 0.09;
 
 export default function HeroArcText({ text, className = '' }) {
   const hostRef = useRef(null);
@@ -58,41 +59,59 @@ export default function HeroArcText({ text, className = '' }) {
       const cs = getComputedStyle(host);
       const fontSize = parseFloat(cs.fontSize) || 16;
       const lineHeight = parseFloat(cs.lineHeight) || fontSize * 1.6;
-      ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${fontSize}px ${cs.fontFamily}`;
+      const fontOf = px => `${cs.fontStyle} ${cs.fontWeight} ${px}px ${cs.fontFamily}`;
 
       const hero = host.closest('.hero');
       const heroH = hero ? hero.clientHeight : window.innerHeight;
       const r = R_FRAC * heroH;
+      const cap = THETA_CAP * Math.PI / 180;
 
       const words = text.split(/\s+/).filter(Boolean);
 
-      // Only the LAST line curls — the one actually meeting the S — and every
-      // other line is dead straight, flush with the column. Two earlier drafts
-      // bent the middle lines too (faded sweeps, then tips pinned with growing
-      // dips) and both read as untidy: rotated glyphs in the middle of a
-      // paragraph look like a rendering fault, not a design. One clean curl on
-      // the closing line reads as intent.
-      const sweep = (li, count) => {
+      // Geometry for a given line count. Scales depend on sweeps, sweeps on
+      // radii, radii on baselines, baselines on scales — two passes settle it.
+      const geometry = count => {
         const last = Math.max(1, count - 1);
-        return Math.min(li, last) === last && count > 1
-          ? THETA_CAP * Math.PI / 180
-          : 0;
+        let scales = Array(count).fill(1);
+        let thetas = Array(count).fill(0);
+        let ys = [];
+        for (let pass = 0; pass < 3; pass++) {
+          ys = [];
+          let y = 0;
+          for (let i = 0; i < count; i++) {
+            y += (i === 0 ? fontSize * scales[0] : lineHeight * scales[i]);
+            ys.push(y);
+          }
+          const cy = ys[last] + r + BASE_ABOVE_TOP;
+          thetas = ys.map((yy, i) => {
+            if (i === 0 || count < 2) return 0;
+            if (i === last) return cap;
+            return Math.asin(Math.min(1, r / (cy - yy)));
+          });
+          scales = thetas.map(th => 1 + SCALE_GAIN * (th / cap));
+        }
+        return { ys, thetas, scales, cy: ys[last] + r + BASE_ABOVE_TOP };
       };
 
-      // Extra capacity a bent line gains over a flat one: arc length minus the
-      // chord's horizontal extent.
-      const extra = (li, count) => {
-        const last = Math.max(1, count - 1);
-        const theta = sweep(li, count);
-        const R = r + BASE_ABOVE_TOP + (last - Math.min(li, last)) * lineHeight;
-        return R * theta - R * Math.sin(theta);
-      };
-      const wrapWith = maxOf => {
+      const wrapWith = geo => {
         const lines = [];
         let current = '';
+        const capacity = li => {
+          const i = Math.min(li, geo.thetas.length - 1);
+          const R = geo.cy - geo.ys[i];
+          const th = geo.thetas[i];
+          return width + (R * th - R * Math.sin(th));
+        };
+        const applyFont = li => {
+          const i = Math.min(li, geo.scales.length - 1);
+          const px = fontSize * geo.scales[i];
+          ctx.font = fontOf(px);
+          try { ctx.letterSpacing = `${(TRACK_GAIN * px * (geo.thetas[i] / cap)).toFixed(2)}px`; } catch (e) {}
+        };
         for (const word of words) {
+          applyFont(lines.length);
           const next = current ? `${current} ${word}` : word;
-          if (ctx.measureText(next).width > maxOf(lines.length) && current) {
+          if (ctx.measureText(next).width > capacity(lines.length) && current) {
             lines.push(current);
             current = word;
           } else {
@@ -103,15 +122,28 @@ export default function HeroArcText({ text, className = '' }) {
         return lines;
       };
 
-      let count = wrapWith(() => width).length;
+      ctx.font = fontOf(fontSize);
+      let count = wrapWith(geometry(4)).length;
       let lines = null;
-      for (let pass = 0; pass < 3; pass++) {
-        lines = wrapWith(li => width + extra(li, count));
+      let geo = null;
+      for (let pass = 0; pass < 4; pass++) {
+        geo = geometry(count);
+        lines = wrapWith(geo);
         if (lines.length === count) break;
         count = lines.length;
       }
 
-      setLayout({ width, lines, lineHeight, fontSize, r, sweep });
+      // The wrap can oscillate between two counts when a break lands exactly on
+      // a word boundary — the loop then exits with geometry built for the OTHER
+      // count, the last two lines sharing a clamped scale and the svg height
+      // indexing past the array. The final rebuild pins the geometry to the
+      // lines actually rendered; the capacity mismatch it leaves is a fraction
+      // of one word and only ever makes a line end slightly early.
+      if (lines.length !== geo.ys.length) {
+        geo = geometry(lines.length);
+      }
+
+      setLayout({ width, lines, fontSize, geo, cap });
     };
 
     measure();
@@ -122,8 +154,9 @@ export default function HeroArcText({ text, className = '' }) {
     return () => observer.disconnect();
   }, [text]);
 
+  const lastIdx = layout ? Math.min(layout.lines.length, layout.geo.ys.length) - 1 : 0;
   const height = layout
-    ? layout.fontSize * 1.3 + (layout.lines.length - 1) * layout.lineHeight
+    ? layout.geo.ys[lastIdx] + layout.fontSize * layout.geo.scales[lastIdx] * 0.35
     : 0;
 
   return (
@@ -131,27 +164,21 @@ export default function HeroArcText({ text, className = '' }) {
       {layout && (
         <svg
           width={layout.width}
-          height={height}
-          viewBox={`0 0 ${layout.width} ${height}`}
+          height={Math.ceil(height)}
+          viewBox={`0 0 ${layout.width} ${Math.ceil(height)}`}
           style={{ display: 'block', overflow: 'visible' }}
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
             {layout.lines.map((_, i) => {
-              const n = layout.lines.length;
-              const y = layout.fontSize + i * layout.lineHeight;
-
-              // Shared centre: r right of the column, and below the last
-              // baseline by (r + BASE_ABOVE_TOP). Radii are concentric.
-              const yLast = layout.fontSize + (n - 1) * layout.lineHeight;
-              const cx = layout.r;
-              const cy = yLast + layout.r + BASE_ABOVE_TOP;
+              const { ys, thetas, cy } = layout.geo;
+              const y = ys[Math.min(i, ys.length - 1)];
               const R = cy - y;
-
-              const theta = layout.sweep(i, n);
+              const theta = thetas[Math.min(i, thetas.length - 1)];
+              const cx = cy - ys[ys.length - 1] - BASE_ABOVE_TOP + 0; // == r
               if (theta < 0.01) {
                 return (
-                  <path key={i} id={`hero-arc-${i}`} d={`M 0 ${y} L ${layout.width} ${y}`} fill="none" />
+                  <path key={i} id={`hero-arc-${i}`} d={`M 0 ${y.toFixed(1)} L ${layout.width} ${y.toFixed(1)}`} fill="none" />
                 );
               }
               const tipX = cx - R * Math.sin(theta);
@@ -162,19 +189,31 @@ export default function HeroArcText({ text, className = '' }) {
                   id={`hero-arc-${i}`}
                   d={
                     `M ${tipX.toFixed(1)} ${tipY.toFixed(1)} ` +
-                    `A ${R.toFixed(1)} ${R.toFixed(1)} 0 0 1 ${cx.toFixed(1)} ${y} ` +
-                    `L ${layout.width} ${y}`
+                    `A ${R.toFixed(1)} ${R.toFixed(1)} 0 0 1 ${cx.toFixed(1)} ${y.toFixed(1)} ` +
+                    `L ${layout.width} ${y.toFixed(1)}`
                   }
                   fill="none"
                 />
               );
             })}
           </defs>
-          {layout.lines.map((line, i) => (
-            <text key={i} className="hero-en-arc-line">
-              <textPath href={`#hero-arc-${i}`}>{line}</textPath>
-            </text>
-          ))}
+          {layout.lines.map((line, i) => {
+            const idx = Math.min(i, layout.geo.scales.length - 1);
+            const scale = layout.geo.scales[idx];
+            const track = TRACK_GAIN * layout.fontSize * scale * (layout.geo.thetas[idx] / layout.cap);
+            return (
+              <text
+                key={i}
+                className="hero-en-arc-line"
+                style={{
+                  fontSize: `${(layout.fontSize * scale).toFixed(2)}px`,
+                  letterSpacing: `${track.toFixed(2)}px`
+                }}
+              >
+                <textPath href={`#hero-arc-${i}`}>{line}</textPath>
+              </text>
+            );
+          })}
         </svg>
       )}
     </div>

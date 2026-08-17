@@ -75,15 +75,25 @@ export default function Hero() {
   const t = useTranslations('hero');
   const copy = COPY[lang] || COPY.pl;
 
-  // The scene's first painted frame. The copy entrance is tied to this so the
-  // two arrive as one movement rather than the text settling long before the
-  // 3D shows up. The timeout is a floor, not a preference: if the scene never
-  // resolves the hero must not stay blank, so the copy comes in regardless.
+  // The copy enters ONLY when the scene has painted its first frame — both run
+  // off this one state change, on the same curve and duration, so text and 3D
+  // arrive as a single movement. The timeout is not pacing, it is disaster
+  // recovery: if the network never delivers the scene, the hero must not stay
+  // blank forever.
   const [sceneIn, setSceneIn] = useState(false);
 
   useEffect(() => {
-    const failsafe = setTimeout(() => setSceneIn(true), 8000);
+    const failsafe = setTimeout(() => setSceneIn(true), 15000);
     return () => clearTimeout(failsafe);
+  }, []);
+
+  // Warm both halves of the load immediately, in parallel: the runtime module
+  // (~1.5 MB of JS) and the scene file itself. Without this the scene download
+  // starts only after hydration finishes and the runtime has initialised — on
+  // a scene this size the serialisation costs seconds. Both are best-effort.
+  useEffect(() => {
+    import('@splinetool/react-spline').catch(() => {});
+    fetch(SCENE, { mode: 'cors', cache: 'force-cache' }).catch(() => {});
   }, []);
 
   // The arc is a wide-layout treatment only; phones keep the plain paragraph.

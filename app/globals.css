@@ -2768,10 +2768,14 @@ section, aside.pricing, aside.contact, aside.why-us {
   transform: translateY(26px);
 }
 
+/* Same duration and the same curve as heroSceneIn on the canvas: the copy is
+   gated on the scene's first frame, so the two animations start together and
+   must move together. The fade used to be a quick 280ms for LCP's sake — moot
+   now that the copy waits for the scene anyway. */
 .hero-en-copy.is-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
   animation:
     heroCopyRise 1000ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroCopyFade 280ms ease-out both;
+    heroCopyFade 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* The stagger. Has to carry the same specificity as the shorthand above —
