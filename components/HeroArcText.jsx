@@ -3,41 +3,42 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * The hero paragraph, wrapping around the top of the "S" below it.
+ * The hero paragraph, wrapping around the top of the "S" — to the approved
+ * spec: the wrap runs along the top edge of the lettering and descends, in the
+ * letter's own trail, no further than the height of the S's first bend.
  *
- * The spec, in the user's words: "napis ma sie owijac wokol gornej czesci S".
- * The "S" sits under the paragraph's left end, and its top-left corner is a
- * rounded shoulder falling away down-left — measured off the framebuffer, about
- * 52px of horizontal run carries a 46px drop at 1440x900. The space above that
- * shoulder, left of the letter's flat top, is empty; that pocket is what the
- * text wraps into.
+ * Geometry, all derived from the section height (the camera scales the scene
+ * with it): the S's top-left corner is a quarter-arc of radius r ~ 5.56% of the
+ * section height, tangent to both the letter's flat top and its left edge, and
+ * the left edge is flush with the text column. So there is one shared centre C,
+ * sitting r to the right of the column and r below the letter top — and every
+ * line's curved portion is a CONCENTRIC arc around C. Concentric spacing is
+ * what keeps the lines a constant line-height apart along the whole bend, and
+ * it makes the innermost arc run parallel to the letter's own shoulder — the
+ * text literally follows the S.
  *
- * So the left END of each line extends left of the column and bends DOWN into
- * the pocket, tracing the shoulder's radius — deepest on the last line, which
- * sits against the letter, fading to nothing by the first. The right-hand part
- * of every line stays perfectly straight and level. This needs <textPath>:
- * a baseline that curves is not something CSS can do.
+ * Each line is flat and level from C's vertical to the right edge, and bends
+ * down-left along its arc before that. The sweep fades quadratically up the
+ * paragraph: the last line takes the full bend (capped at THETA_CAP so the
+ * descent stops at the first-bend height and the tip stays readable), the
+ * first line is dead straight. Glyphs rotate along the tangent — that is what
+ * textPath is for; a curving baseline cannot be done in CSS.
  *
- * The dip drops below the svg's own box, into the section's empty margin — the
- * svg is overflow:visible, and the flat baselines keep their measured 8px gap
- * to the letter's flat top.
- *
- * The wrap must know the curve: the bottom lines are LONGER (they gain the
- * left extension), and how much longer depends on the line count, which
- * depends on the wrap. It iterates until the count settles.
+ * The wrap must know the curve: bent lines carry more text (the arc is longer
+ * than its chord), and how much depends on the line count, which depends on
+ * the wrap — so it iterates until the count settles.
  *
  * SEO: the server renders the straight <p>; this replaces it client-side above
- * 901px only, so a crawler reads the plain paragraph and the copy is never
- * duplicated.
+ * 901px only. No per-letter spans, no duplicated copy.
  */
 
-// Shape of the wrap, in px at the reference type size. E_MAX: how far left of
-// the column the last line's tip reaches. D_MAX: how far below its baseline the
-// tip dips. RUN: the horizontal distance over which the dip rises back to flat
-// — past x0+RUN every line is dead level.
-const E_MAX = 70;
-const D_MAX = 30;
-const RUN = 130;
+// Corner radius as a fraction of the section height (measured: 50px at 900).
+const R_FRAC = 0.0556;
+// Baseline of the last line sits this far above the letter top (measured).
+const BASE_ABOVE_TOP = 12;
+// Hard cap on the sweep, degrees. 90 would run the tip fully vertical at the
+// first-bend height; 80 stops a touch above it and keeps the first word legible.
+const THETA_CAP = 80;
 
 export default function HeroArcText({ text, className = '' }) {
   const hostRef = useRef(null);
@@ -58,11 +59,36 @@ export default function HeroArcText({ text, className = '' }) {
       const lineHeight = parseFloat(cs.lineHeight) || fontSize * 1.6;
       ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${fontSize}px ${cs.fontFamily}`;
 
+      const hero = host.closest('.hero');
+      const heroH = hero ? hero.clientHeight : window.innerHeight;
+      const r = R_FRAC * heroH;
+
       const words = text.split(/\s+/).filter(Boolean);
-      const ext = (li, count) => {
+
+      // Sweep per line. The first line is dead straight. The last takes the
+      // full capped sweep — that is the one tracing the S's corner. The lines
+      // between get exactly the sweep that lands their tip on the column edge
+      // (sin theta = cx / R), which keeps the block's left profile monotone:
+      // a straight top, starts pinned to the column with a growing dip, then
+      // the final line curling down past the corner. An earlier draft faded
+      // the sweep quadratically instead, and the mid-line tips landed 30px
+      // right of the column — the left edge read as a zigzag.
+      const sweep = (li, count) => {
         const last = Math.max(1, count - 1);
-        const t = Math.min(li, last) / last;
-        return E_MAX * t * t;
+        const i = Math.min(li, last);
+        if (i === 0) return 0;
+        const R = r + BASE_ABOVE_TOP + (last - i) * lineHeight;
+        if (i === last) return THETA_CAP * Math.PI / 180;
+        return Math.asin(Math.min(1, r / R));
+      };
+
+      // Extra capacity a bent line gains over a flat one: arc length minus the
+      // chord's horizontal extent.
+      const extra = (li, count) => {
+        const last = Math.max(1, count - 1);
+        const theta = sweep(li, count);
+        const R = r + BASE_ABOVE_TOP + (last - Math.min(li, last)) * lineHeight;
+        return R * theta - R * Math.sin(theta);
       };
       const wrapWith = maxOf => {
         const lines = [];
@@ -83,17 +109,19 @@ export default function HeroArcText({ text, className = '' }) {
       let count = wrapWith(() => width).length;
       let lines = null;
       for (let pass = 0; pass < 3; pass++) {
-        lines = wrapWith(li => width + ext(li, count));
+        lines = wrapWith(li => width + extra(li, count));
         if (lines.length === count) break;
         count = lines.length;
       }
 
-      setLayout({ width, lines, lineHeight, fontSize });
+      setLayout({ width, lines, lineHeight, fontSize, r, sweep });
     };
 
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(host);
+    const hero = host.closest('.hero');
+    if (hero) observer.observe(hero);
     return () => observer.disconnect();
   }, [text]);
 
@@ -105,32 +133,40 @@ export default function HeroArcText({ text, className = '' }) {
     <div ref={hostRef} className={className}>
       {layout && (
         <svg
-          width={layout.width + E_MAX}
+          width={layout.width}
           height={height}
-          viewBox={`0 0 ${layout.width + E_MAX} ${height}`}
-          style={{ display: 'block', marginLeft: `-${E_MAX}px`, overflow: 'visible' }}
+          viewBox={`0 0 ${layout.width} ${height}`}
+          style={{ display: 'block', overflow: 'visible' }}
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
             {layout.lines.map((_, i) => {
-              const last = Math.max(1, layout.lines.length - 1);
-              const t = Math.min(i, last) / last;
-              const e = E_MAX * t * t;
-              const d = D_MAX * t * t;
+              const n = layout.lines.length;
               const y = layout.fontSize + i * layout.lineHeight;
-              const x0 = E_MAX - e;
-              // Control point level with the flat baseline: the end tangent is
-              // horizontal (the curve merges into the level line with no kink)
-              // and the start tangent points steeply up out of the pocket, the
-              // way the letter's own shoulder does.
+
+              // Shared centre: r right of the column, and below the last
+              // baseline by (r + BASE_ABOVE_TOP). Radii are concentric.
+              const yLast = layout.fontSize + (n - 1) * layout.lineHeight;
+              const cx = layout.r;
+              const cy = yLast + layout.r + BASE_ABOVE_TOP;
+              const R = cy - y;
+
+              const theta = layout.sweep(i, n);
+              if (theta < 0.01) {
+                return (
+                  <path key={i} id={`hero-arc-${i}`} d={`M 0 ${y} L ${layout.width} ${y}`} fill="none" />
+                );
+              }
+              const tipX = cx - R * Math.sin(theta);
+              const tipY = cy - R * Math.cos(theta);
               return (
                 <path
                   key={i}
                   id={`hero-arc-${i}`}
                   d={
-                    `M ${x0} ${y + d} ` +
-                    `Q ${x0 + RUN / 2} ${y} ${x0 + RUN} ${y} ` +
-                    `L ${layout.width + E_MAX} ${y}`
+                    `M ${tipX.toFixed(1)} ${tipY.toFixed(1)} ` +
+                    `A ${R.toFixed(1)} ${R.toFixed(1)} 0 0 1 ${cx.toFixed(1)} ${y} ` +
+                    `L ${layout.width} ${y}`
                   }
                   fill="none"
                 />
