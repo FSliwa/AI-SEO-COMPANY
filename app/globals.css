@@ -3169,11 +3169,17 @@ section, aside.pricing, aside.contact, aside.why-us {
      The section grows to 880px to buy that back without pushing the buttons
      under the sticky bar. */
   .hero-en-bg {
-    top: 38%;
+    top: 31%;
     height: 35%;
     bottom: auto;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    /* The band's own top margin carries the sculpture's upper half, and with the
+       copy keyed to the LETTERS (not the band) the text sits over that margin —
+       on the marked screenshot the robot showed through behind the paragraph.
+       The mask now opens only around the measured lettering rows (32.6%-60.9%
+       of the band): everything above fades to nothing under the text, and the
+       lower fade keeps the sculpture from running behind the heading. */
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 20%, #000 29%, #000 65%, transparent 76%);
+    mask-image: linear-gradient(180deg, transparent 0%, transparent 20%, #000 29%, #000 65%, transparent 76%);
   }
 
   /* No mobile-only side padding: the shared clamp already lands on the same
@@ -3188,7 +3194,7 @@ section, aside.pricing, aside.contact, aside.why-us {
      49.4%-59.3% of the section. (The derived 30.4%-62.2% canvas fractions do
      not carry over — the mobile band's aspect reframes the scene.) */
   .hero-en-copy {
-    grid-template-rows: calc(49.4% - 8px) calc(9.9% + 24px) 1fr;
+    grid-template-rows: calc(42.4% - 8px) calc(9.9% + 24px) 1fr;
   }
 
   /* Polish runs about 25% longer than the English for the same meaning, and
@@ -3256,13 +3262,14 @@ section, aside.pricing, aside.contact, aside.why-us {
 @media (max-width: 900px) {
   .hero.hero--en {
     /* .hero-en is positioned out of flow now, so it cannot push the section
-       open the way it used to — the height has to be stated. 880px with the
-       band at 38%-73% is where three competing demands settle at 375x812: 20px
-       of clearance under the fixed header, the lettering at 89% of the screen,
-       and the buttons landing on the fold rather than under it. Taller screens
-       simply use their own height. */
+       open the way it used to — the height has to be stated. 860px with the
+       band at 31%-66% is where the competing demands settle at 375x812: the
+       copy clear of the fixed header, the lettering wall to wall, the buttons
+       above the fold — and as little dead air under the header as the Polish
+       text allows, since the copy is bottom-anchored to the 8px gap and all
+       row-one surplus surfaces at the top. Taller screens use their own. */
     height: auto !important;
-    min-height: max(100svh, 880px) !important;
+    min-height: max(100svh, 860px) !important;
     max-height: none !important;
     overflow: hidden !important;
     align-items: flex-start !important;
