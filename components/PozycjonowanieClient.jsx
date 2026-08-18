@@ -182,7 +182,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <Pricing />
 
-      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Frequently Asked Questions About Our SEO Services"} />
+      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania o pozycjonowanie stron internetowych" : "Frequently Asked Questions About Our SEO Services"} />
 
       <Contact />
     </main>

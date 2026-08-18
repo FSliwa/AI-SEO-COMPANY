@@ -19,6 +19,12 @@ export default function PricingClient() {
       answerEn: 'The cost of SEO depends on the size of the website, industry competitiveness, and the current technical state of the site. At AI SEO COMPANY, our packages start at transparent rates, offering full SEO optimization, a dedicated content marketing strategy, and quality link building with no hidden costs. Read more in our detailed guide: <a href="/en/blog/how-much-does-seo-cost-pricing-packages-2026" style="text-decoration:underline">How Much Does SEO Cost? Pricing &amp; Packages 2026</a>.'
     },
     {
+      question: 'Ile kosztuje pozycjonowanie strony w 2026?',
+      questionEn: 'How much does SEO for a website cost in 2026?',
+      answer: 'W 2026 roku pozycjonowanie strony w AI SEO COMPANY kosztuje od 1 900 zł netto miesięcznie w pakiecie SEO Standard, a rozszerzony pakiet SEO Premium z optymalizacją konwersji to 2 500 zł netto miesięcznie. W tej samej kwocie 2 500 zł netto/mies. dostępny jest też Booster Pack, który przy umowie na minimum 3 miesiące obejmuje dodatkowo wykonanie nowej strony WWW. Wszystkie ceny są kwotami netto (+23% VAT), bez ukrytych opłat.',
+      answerEn: 'In 2026, SEO at AI SEO COMPANY starts at PLN 1,900 net per month with the SEO Standard package, while the extended SEO Premium package with conversion optimisation costs PLN 2,500 net per month. For the same PLN 2,500 net per month, the Booster Pack additionally includes building a brand-new website with a minimum 3-month contract. All prices are net (+23% VAT), with no hidden fees.'
+    },
+    {
       question: 'Czy muszę podpisywać umowę na dłuższy okres?',
       questionEn: 'Do I have to sign a long-term contract?',
       answer: 'Nie. Pracujemy w modelu elastycznej subskrypcji miesięcznej z możliwością rezygnacji w każdej chwili. Umowy wieloletnie z karami za wcześniejsze zakończenie uznajemy za sposób na zatrzymanie klienta, którego nie da się zatrzymać wynikami.',

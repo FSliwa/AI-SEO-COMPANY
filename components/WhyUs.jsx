@@ -205,7 +205,7 @@ export default function WhyUs({ isMainContent = false }) {
               </h2>
             )}
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
-              {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych. Agencja SEO Warszawa to nasz adres, nie slogan — jako agencja marketingowa prowadzimy projekt, strony i pozycjonowanie w jednym zespole.' : 'We craft digital solutions backed by hard analytics and buyer psychology.'}
+              {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych. Agencja SEO Warszawa to nasz adres, nie slogan — jako agencja marketingowa prowadzimy projekt, strony i pozycjonowanie w jednym zespole.' : 'We craft digital solutions backed by hard analytics and buyer psychology. Whether you call us an SEO firm or a search engine optimization agency, our job is the same: measurable pipeline growth.'}
             </p>
           </Reveal>
 
