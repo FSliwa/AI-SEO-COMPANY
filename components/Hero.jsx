@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
@@ -39,30 +39,62 @@ const SCENE = 'https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode';
  * the shortened mobile rendering — the one mobile-first indexing reads — is not
  * missing a single phrase.
  */
+/* The lead and the body are segment lists now, not strings. Segments marked
+   `wide: true` render inside .hero-en-wide-only spans, which phones (and the
+   squeezed near-square desktop) hide — so the two readings are maintained in
+   ONE place and the mobile text is a grammatical subsequence of the wide one
+   by construction. The full wide string (also the arc's input) is derived by
+   joining every segment, so the two variants cannot drift apart. Every cut is
+   an adjective or a keyword-free clause; each phrase that ranks stays in the
+   visible mobile text. */
 const COPY = {
   en: {
-    leadA: 'We do what search engine optimisation companies rarely do: report on pipeline',
-    leadWide: ', not on rankings',
-    leadEnd: '.',
-    bodyA: 'The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and lasting growth.',
-    wideA: 'We merge the two so your brand compounds results instead of chasing them.',
-    bodyB: 'Brand strategy, innovative design and advanced SEO make your business remembered and chosen at massive scale.',
-    wideB: 'We combine all three rather than treating them as separate projects.',
-    bodyArc: 'The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and lasting growth. We merge the two so your brand compounds results instead of chasing them. Brand strategy, innovative design and advanced SEO make your business remembered and chosen at massive scale. We combine all three rather than treating them as separate projects.',
+    leadSeg: [
+      { t: 'We do what search engine optimisation companies rarely do: report on pipeline' },
+      { t: ', not on rankings', wide: true },
+      { t: '.' }
+    ],
+    bodySeg: [
+      { t: 'The creativity of human SEO teams' },
+      { t: ' with AI-driven accuracy', wide: true },
+      { t: ' delivers' },
+      { t: ' dominant', wide: true },
+      { t: ' visibility and' },
+      { t: ' lasting', wide: true },
+      { t: ' growth.' },
+      { t: ' We merge the two so your brand compounds results instead of chasing them.', wide: true },
+      { t: ' Brand strategy,' },
+      { t: ' innovative', wide: true },
+      { t: ' design and advanced SEO make your business remembered and chosen' },
+      { t: ' at massive scale', wide: true },
+      { t: '.' },
+      { t: ' We combine all three rather than treating them as separate projects.', wide: true }
+    ],
     display: 'that drives sales',
     sub: 'Premium SEO & Marketing Agency for Companies',
     ctaPrimary: 'Get Proposal',
     ctaSecondary: 'View Portfolio'
   },
   pl: {
-    leadA: 'Twój projekt i strony',
-    leadWide: ' to nasz priorytet',
-    leadEnd: ' – skuteczne pozycjonowanie napędzające wzrost.',
-    bodyA: 'Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i masowo wybierana przez klientów.',
-    wideA: 'Prowadzimy te trzy obszary razem, a nie jako osobne projekty.',
-    bodyB: 'Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.',
-    wideB: 'Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.',
-    bodyArc: 'Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i masowo wybierana przez klientów. Prowadzimy te trzy obszary razem, a nie jako osobne projekty. Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie. Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.',
+    leadSeg: [
+      { t: 'Twój projekt i strony' },
+      { t: ' to nasz priorytet', wide: true },
+      { t: ' – ' },
+      { t: 'skuteczne ', wide: true },
+      { t: 'pozycjonowanie napędzające wzrost.' }
+    ],
+    bodySeg: [
+      { t: 'Łączymy strategię marki,' },
+      { t: ' nowatorskie', wide: true },
+      { t: ' projektowanie i zaawansowane SEO, aby Twoja firma była widoczna' },
+      { t: ', zapamiętana', wide: true },
+      { t: ' i' },
+      { t: ' masowo', wide: true },
+      { t: ' wybierana przez klientów.' },
+      { t: ' Prowadzimy te trzy obszary razem, a nie jako osobne projekty.', wide: true },
+      { t: ' Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.' },
+      { t: ' Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.', wide: true }
+    ],
     display: 'które buduje sprzedaż',
     sub: 'Kompleksowa Agencja SEO i Marketingowa z Warszawy',
     ctaPrimary: 'Wyceń projekt',
@@ -242,19 +274,26 @@ export default function Hero() {
                 and "priorytet" survives elsewhere. Both readings are complete
                 sentences — the cut is at a clause boundary, not mid-thought. */}
             <p className="hero-en-lead">
-              {copy.leadA}
-              <span className="hero-en-wide-only">{copy.leadWide}</span>
-              {copy.leadEnd}
+              {copy.leadSeg.map((s, i) =>
+                s.wide
+                  ? <span key={i} className="hero-en-wide-only">{s.t}</span>
+                  : <Fragment key={i}>{s.t}</Fragment>
+              )}
             </p>
 
             {arcBody ? (
-              <HeroArcText className="hero-en-body hero-en-body--arc" text={copy.bodyArc} lang={lang} />
+              <HeroArcText
+                className="hero-en-body hero-en-body--arc"
+                text={copy.bodySeg.map(s => s.t).join('')}
+                lang={lang}
+              />
             ) : (
               <p className="hero-en-body">
-                {copy.bodyA}
-                <span className="hero-en-wide-only">{' '}{copy.wideA}</span>
-                {' '}{copy.bodyB}
-                <span className="hero-en-wide-only">{' '}{copy.wideB}</span>
+                {copy.bodySeg.map((s, i) =>
+                  s.wide
+                    ? <span key={i} className="hero-en-wide-only">{s.t}</span>
+                    : <Fragment key={i}>{s.t}</Fragment>
+                )}
               </p>
             )}
           </div>
