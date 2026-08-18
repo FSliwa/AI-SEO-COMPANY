@@ -10,6 +10,22 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // /pl and /pl/* never exist as pages (defaultLocale 'pl' is unprefixed,
+      // localePrefix 'as-needed'). The next-intl middleware strips the prefix
+      // with a temporary 307, so Google keeps the /pl/ URLs indexed. These two
+      // rules run BEFORE middleware and make the redirect permanent (308).
+      // Segment-based matching: '/pl/:path*' only matches when the first full
+      // segment is exactly 'pl' - a hypothetical '/pliki' would NOT match.
+      {
+        source: '/pl',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/pl/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
       {
         source: '/blog/ile-kosztuje-pozycjonowanie-2026',
         destination: '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',

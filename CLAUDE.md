@@ -1,7 +1,7 @@
 # AI SEO COMPANY — notatki projektowe
 
 Next.js 16 (App Router) + next-intl. Dwa języki: **pl** (domyślny, bez prefiksu w URL)
-i **en** (prefiks `/en`). Adresy `/pl/*` nie istnieją — przekierowują 307.
+i **en** (prefiks `/en`). Adresy `/pl/*` nie istnieją — przekierowują 308 (permanent, reguły w next.config.mjs przed middleware).
 
 ## Checklist publikacji artykułu
 
