@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
@@ -96,6 +96,34 @@ export default function Hero() {
     fetch(SCENE, { mode: 'cors', cache: 'force-cache' }).catch(() => {});
   }, []);
 
+  // Micro-parallax (wide screens, fine pointers, motion allowed): the copy
+  // drifts a few pixels slower than the scene on scroll, which reads as depth.
+  // rAF-throttled, transform-only, and capped at 14px so it can never collide
+  // the text with the lettering band.
+  const copyRef = useRef(null);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(min-width: 901px)').matches) return;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const el = copyRef.current;
+        if (!el) return;
+        const y = Math.max(-14, Math.min(14, window.scrollY * -0.06));
+        el.style.transform = `translateY(${y.toFixed(1)}px)`;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   // The arc is a wide-layout treatment only; phones keep the plain paragraph.
   // Deliberately client-side: the server renders the straight <p>, so that is
   // the markup a crawler reads and the copy never exists twice in the HTML.
@@ -162,7 +190,7 @@ export default function Hero() {
       </noscript>
 
       <div className="hero-en">
-        <div className={`hero-en-copy${sceneIn ? ' is-in' : ''}`}>
+        <div ref={copyRef} className={`hero-en-copy${sceneIn ? ' is-in' : ''}`}>
           <div className="hero-en-top">
             {/* Same device as the paragraph below: the clause phones drop carries
                 no phrase of its own. "not on rankings" goes, and "rankings"
@@ -176,7 +204,7 @@ export default function Hero() {
             </p>
 
             {arcBody ? (
-              <HeroArcText className="hero-en-body hero-en-body--arc" text={copy.bodyArc} />
+              <HeroArcText className="hero-en-body hero-en-body--arc" text={copy.bodyArc} lang={lang} />
             ) : (
               <p className="hero-en-body">
                 {copy.bodyA}

@@ -249,7 +249,7 @@ window.dataLayer.push({
 
                   <p>Aby oznaczyć zdarzenie jako kluczowe zdarzenie: przejdź do Administracja → Wyświetlanie danych → Zdarzenia, znajdź nazwę zdarzenia na liście i włącz przełącznik „Oznacz jako kluczowe zdarzenie”. Zmiana jest aktywna od momentu jej zapisania — nie działa wstecznie.</p>
 
-                  <p>Nie oznaczaj jako <strong>kluczowego zdarzenia</strong> każdego zdarzenia, które wydaje się ważne. <a href="https://ntpm.pl/google-analytics-events-jak-sledzic-zdarzenia-i-budowac-lepsze-raporty/" target="_blank" rel="noopener noreferrer">GA4 ma limit około 500 unikalnych nazw zdarzeń</a> na właściwość w przypadku strumieni aplikacji (app). Dla stron internetowych (web) limit formalnie nie obowiązuje lub jest znacznie wyższy. Co ważniejsze w praktyce, GA4 pozwala oznaczyć maksymalnie <strong>30 kluczowych zdarzeń na standardową właściwość</strong> (50 w GA4 360), planuj oznaczenia oszczędnie. Niezależnie od tego warto trzymać katalog zdarzeń możliwie mały. Zbyt wiele zdarzeń oznaczonych jako <strong>kluczowe zdarzenia</strong> utrudnia interpretację raportów i optymalizację kampanii w Google Ads.</p>
+                  <p>Nie oznaczaj jako <strong>kluczowego zdarzenia</strong> każdego zdarzenia, które wydaje się ważne. <a href="https://ntpm.pl/google-analytics-events-jak-sledzic-zdarzenia-i-budowac-lepsze-raporty/" target="_blank" rel="noopener noreferrer">GA4 ma limit około 500 unikalnych nazw zdarzeń</a> na właściwość w przypadku strumieni aplikacji (app). Dla stron internetowych (web) limit formalnie nie obowiązuje lub jest znacznie wyższy. Co ważniejsze w praktyce, GA4 pozwala oznaczyć maksymalnie <strong>30 kluczowych zdarzeń na standardową właściwość</strong> (50 w GA4 360), planuj oznaczenia oszczędnie. Niezależnie od tego warto trzymać katalog zdarzeń możliwie mały. Zbyt wiele zdarzeń oznaczonych jako kluczowe zdarzenia utrudnia interpretację raportów i optymalizację kampanii w Google Ads.</p>
 
                   <h2 id="najczestsze-problemy-i-jak-je-szybko-naprawic">Najczęstsze problemy i jak je szybko naprawić</h2>
                   <ol>
@@ -262,7 +262,7 @@ window.dataLayer.push({
                   </ol>
 
                   <h2 id="jak-zarzadzac-zdarzeniami-w-organizacji-katalog-nazewnictwo-i-dokumentacja">Jak zarządzać zdarzeniami w organizacji: katalog, nazewnictwo i dokumentacja</h2>
-                  <p>Brak spójności nazewnictwa i zbyt wiele <strong>kluczowych zdarzeń</strong> to najczęstsze przyczyny chaosu w raportach. Rozwiązaniem jest katalog zdarzeń prowadzony jako żywy dokument zespołowy.</p>
+                  <p>Brak spójności nazewnictwa i zbyt wiele kluczowych zdarzeń to najczęstsze przyczyny chaosu w raportach. Rozwiązaniem jest katalog zdarzeń prowadzony jako żywy dokument zespołowy.</p>
 
                   <p>Konwencja nazewnictwa: <code>lower_snake_case</code> bez wyjątków, opcjonalne prefiksy tematyczne (<code>form_</code>, <code>video_</code>, <code>ecommerce_</code>) dla grup zdarzeń. Tę samą konwencję stosuj w każdym środowisku — dev, staging i produkcja muszą używać identycznych nazw, inaczej porównanie danych między środowiskami staje się niemożliwe.</p>
 
@@ -278,7 +278,7 @@ window.dataLayer.push({
                   <h2 id="ai-seo-company-wdrozenie-gtm-i-konfiguracja-zdarzen-dla-twojej-firmy">Ai-seo-company: wdrożenie GTM i konfiguracja zdarzeń dla Twojej firmy</h2>
                   <p>Zamiast spędzać tygodnie na konfiguracji i debugowaniu, możesz zlecić całość specjalistom, którzy robią to na co dzień.</p>
 
-                  <p><Link href="/" style={{ color: '#0066cc', textDecoration: 'underline' }}>Ai-seo-company</Link> realizuje kompleksowe wdrożenia GTM dla firm w Polsce: od audytu istniejącego kontenera, przez zaprojektowanie katalogu zdarzeń i implementację dataLayer.push dla <strong>kluczowych zdarzeń</strong>, po testy w Preview i DebugView oraz szkolenie Twojego zespołu. Każde wdrożenie kończy się dokumentacją gotową do przekazania wewnętrznemu analitykowi. Transparentny zakres prac oznacza, że przed startem wiesz dokładnie, co dostarczymy: które zdarzenia zostaną skonfigurowane, kto jest odpowiedzialny (developer, analityk, PM) i kiedy projekt zostanie zamknięty. Skontaktuj się z nami przez Ai-seo-company, by omówić zakres wdrożenia.</p>
+                  <p><Link href="/" style={{ color: '#0066cc', textDecoration: 'underline' }}>Ai-seo-company</Link> realizuje kompleksowe wdrożenia GTM dla firm w Polsce: od audytu istniejącego kontenera, przez zaprojektowanie katalogu zdarzeń i implementację dataLayer.push dla kluczowych zdarzeń, po testy w Preview i DebugView oraz szkolenie Twojego zespołu. Każde wdrożenie kończy się dokumentacją gotową do przekazania wewnętrznemu analitykowi. Transparentny zakres prac oznacza, że przed startem wiesz dokładnie, co dostarczymy: które zdarzenia zostaną skonfigurowane, kto jest odpowiedzialny (developer, analityk, PM) i kiedy projekt zostanie zamknięty. Skontaktuj się z nami przez Ai-seo-company, by omówić zakres wdrożenia.</p>
 
                   <h2 id="zrodla">Źródła</h2>
                   <p>Poniższe zasoby warto mieć otwarte podczas implementacji:</p>

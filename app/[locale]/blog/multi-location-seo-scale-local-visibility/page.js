@@ -164,7 +164,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Single domain + subfolders</strong></td>
+                          <td>Single domain + subfolders</td>
                           <td>Consolidated, strongest</td>
                           <td>Low to moderate</td>
                           <td>Centralized, easiest</td>
@@ -245,7 +245,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   
                   <p>GBP functions as an entity anchor for location-level visibility. Search Engine Journal&apos;s AI search visibility guide explains that aligning GBP attributes exactly with on-site schema and third-party aggregators prevents AI models from receiving conflicting signals about your business. The <code>sameAs</code> field in your LocalBusiness schema should point to the GBP URL. The address in your schema should match the GBP address character-for-character.</p>
                   
-                  <p><strong>Pro Tip:</strong> <em>AI models reading GBP listings prioritize photos, services, and attributes over the business description. A complete attributes section and a full services list with descriptions will outperform a polished 750-character business description every time.</em></p>
+                  <p>Pro Tip: <em>AI models reading GBP listings prioritize photos, services, and attributes over the business description. A complete attributes section and a full services list with descriptions will outperform a polished 750-character business description every time.</em></p>
                   
                   <p>Beyond Google, verify your listings on Bing Places and Apple Maps for every location. Bing Places feeds Microsoft&apos;s Bing AI and Copilot. Apple Maps feeds Siri and Apple&apos;s local search. Neither requires the same effort as GBP, but both are entity corroboration points that AI recommendation engines check.</p>
                   
@@ -281,7 +281,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     <li><em>Negative review:</em> Respond within 24 hours. Never argue. Acknowledge, apologize, and move the conversation offline with a direct phone number or email.</li>
                   </ul>
                   
-                  <p><strong>Pro Tip:</strong> <em>Never incentivize reviews with discounts, gifts, or any form of compensation. Google&apos;s review policy prohibits it, and the FTC requires disclosure of material connections. Review-gating (filtering customers before asking for a review) violates Google&apos;s terms and can result in listing suspension.</em></p>
+                  <p>Pro Tip: <em>Never incentivize reviews with discounts, gifts, or any form of compensation. Google&apos;s review policy prohibits it, and the FTC requires disclosure of material connections. Review-gating (filtering customers before asking for a review) violates Google&apos;s terms and can result in listing suspension.</em></p>
                   
                   <h3>Measuring review health per location</h3>
                   <p>Set a minimum threshold for each location: a target review count, a minimum average rating, and a maximum acceptable response time. When a location falls below threshold, it triggers a review acquisition push. Track these metrics monthly in your location dashboard. BrightLocal&apos;s reputation management module and Semrush&apos;s listing management tool both aggregate review data across locations in a single view.</p>

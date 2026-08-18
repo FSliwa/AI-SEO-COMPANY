@@ -3045,6 +3045,59 @@ section, aside.pricing, aside.contact, aside.why-us {
 .hero-en-arc-line {
   fill: rgba(255, 255, 255, 0.72);
   font: inherit;
+  /* Final letter-spacing comes from the component as --track; the entrance
+     animates from compressed to that value (HUD-style expansion). */
+  letter-spacing: var(--track, 0px);
+}
+
+/* A + B: before the scene's first frame the lines are held masked and
+   compressed; when .is-in lands, each line wipes open left-to-right (from its
+   arc tip towards the flat run) while its tracking expands to target. The
+   negative vertical insets keep the curved tips outside the clip untouched.
+   Staggered by line index, on the same bezier as everything else in this hero. */
+.hero-en-copy .hero-en-arc-line {
+  clip-path: inset(-40% 100% -40% 0);
+}
+
+.hero-en-copy.is-in .hero-en-arc-line {
+  animation:
+    heroLineWipe 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    heroLineTrack 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(250ms + var(--line-i, 0) * 110ms);
+}
+
+@keyframes heroLineWipe {
+  from { clip-path: inset(-40% 100% -40% 0); }
+  to { clip-path: inset(-40% 0% -40% 0); }
+}
+
+@keyframes heroLineTrack {
+  from { letter-spacing: 0px; }
+  to { letter-spacing: var(--track, 0px); }
+}
+
+/* D: the two lines nearest the lettering breathe — a slow pulse of the same
+   orange glow the static ramp already gives them. Values are a superset of the
+   inline ramp so the pulse reads as brightening, never as a flicker. */
+.hero-en-copy.is-in .hero-en-arc-line--hot {
+  animation:
+    heroLineWipe 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    heroLineTrack 1100ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    heroGlowPulse 5.5s ease-in-out 2s infinite;
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(216, 90, 48, 0.3)); }
+  50% { filter: drop-shadow(0 0 22px rgba(216, 90, 48, 0.55)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-en-copy .hero-en-arc-line,
+  .hero-en-copy.is-in .hero-en-arc-line,
+  .hero-en-copy.is-in .hero-en-arc-line--hot {
+    animation: none;
+    clip-path: none;
+  }
 }
 
 .hero-en-body {

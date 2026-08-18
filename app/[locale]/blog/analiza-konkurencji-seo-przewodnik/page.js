@@ -280,7 +280,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               </ul>
 
               <p><strong>Also read:</strong> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">How much does SEO cost in Poland? Pricing and packages 2026</Link></p>
-              <p><strong>Also read:</strong> <Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">SEO Canonical Tag – what is it and how to implement it in 2026</Link></p>
+              <p>Also read: <Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">SEO Canonical Tag – what is it and how to implement it in 2026</Link></p>
 
               <BlogCTA
                 locale={locale}
@@ -528,7 +528,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               </ul>
 
               <p><strong>Przeczytaj też:</strong> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">Ile kosztuje SEO w Polsce? Cennik i pakiety 2026</Link></p>
-              <p><strong>Przeczytaj też:</strong> <Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">Tag kanoniczny SEO – czym jest i jak go wdrożyć w 2026</Link></p>
+              <p>Przeczytaj też: <Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">Tag kanoniczny SEO – czym jest i jak go wdrożyć w 2026</Link></p>
 
               <BlogCTA
                 locale={locale}

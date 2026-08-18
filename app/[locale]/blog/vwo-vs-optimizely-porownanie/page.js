@@ -92,8 +92,8 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
 
                 <p>Three signals that should point you to the right tool:</p>
                 <ul>
-                  <li>Budget at a reasonable level for marketing-led teams without dedicated engineers → <strong>VWO</strong></li>
-                  <li>Need for backend testing, feature flags, and data warehouse integrations, with a larger budget available → <strong>Optimizely</strong></li>
+                  <li>Budget at a reasonable level for marketing-led teams without dedicated engineers → VWO</li>
+                  <li>Need for backend testing, feature flags, and data warehouse integrations, with a larger budget available → Optimizely</li>
                   <li>Looking for a lighter, more affordable alternative with a more limited feature set → <strong>Mida</strong> is worth checking, though its technical specifications require verification before any purchase decision</li>
                 </ul>
 
@@ -208,7 +208,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 </ul>
 
                 <p>VWO uses a lightweight asynchronous script and global CDNs, minimizing impact on page load time. On high-traffic sites with strict performance requirements, it is worth checking the snippet’s effect on Core Web Vitals before production deployment.</p>
-                <p><strong>Pro tip:</strong> Before implementation, map all conversion events in a single document. Inconsistent KPI definitions between marketing and analytics are the most common reason experiment results are questioned internally.</p>
+                <p>Pro tip: Before implementation, map all conversion events in a single document. Inconsistent KPI definitions between marketing and analytics are the most common reason experiment results are questioned internally.</p>
 
                 <h2 id="rodo">GDPR and Data Security: What to Check Before Signing the Contract</h2>
                 <p>For organizations subject to GDPR, compliance is not optional. Several concrete points to verify with every vendor:</p>
@@ -220,7 +220,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                   <li>Data retention policy: how long are session recordings and user data stored?</li>
                 </ul>
                 <p>Heatmaps and session recordings carry particular risk: they can capture personal data (email addresses, card numbers) entered in forms. Both tools offer field masking, but configuration requires active action.</p>
-                <p><strong>Pro tip:</strong> Enable masking of all form fields by default rather than selectively. Unlocking specific fields is safer than trying to identify and block sensitive data after the fact.</p>
+                <p>Pro tip: Enable masking of all form fields by default rather than selectively. Unlocking specific fields is safer than trying to identify and block sensitive data after the fact.</p>
 
                 <div className="table-container">
                   <table>
@@ -265,7 +265,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                   <li>Requirement for a multi-month sales process without the possibility of a technical pilot</li>
                 </ul>
 
-                <p><strong>Pro tip:</strong> Always request a technical pilot before signing an annual contract. Two weeks with real traffic will tell you more about the tool than an hour-long sales demo.</p>
+                <p>Pro tip: Always request a technical pilot before signing an annual contract. Two weeks with real traffic will tell you more about the tool than an hour-long sales demo.</p>
 
                 <h2 id="obserwacje-agencji">Agency Observations: Typical Implementation Issues and Migration Costs</h2>
                 <p>The most common scenario we observe with clients: tool purchased, snippet inserted, first tests launched, and after three months the experimentation program dies. The reason is always the same: lack of governance and lack of a person responsible for the hypothesis backlog.</p>
@@ -487,7 +487,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               </ul>
 
               <p>VWO używa lekkiego, asynchronicznego kodu i globalnych CDN, co minimalizuje wpływ na czas ładowania strony. Przy stronach z dużym ruchem i restrykcyjnymi wymaganiami dotyczącymi wydajności warto sprawdzić wpływ snippetu na <Link href="/blog/core-web-vitals-a-pozycje-google">Core Web Vitals</Link> przed wdrożeniem produkcyjnym.</p>
-              <p><strong>Porada profesjonalisty:</strong> Przed wdrożeniem zmapuj wszystkie eventy konwersji w jednym dokumencie. Niespójne definicje KPI między marketingiem a analityką to najczęstszy powód, dla którego wyniki eksperymentów są kwestionowane wewnętrznie.</p>
+              <p>Porada profesjonalisty: Przed wdrożeniem zmapuj wszystkie eventy konwersji w jednym dokumencie. Niespójne definicje KPI między marketingiem a analityką to najczęstszy powód, dla którego wyniki eksperymentów są kwestionowane wewnętrznie.</p>
 
               <h2 id="rodo">RODO i bezpieczeństwo danych: co sprawdzić przed podpisaniem umowy</h2>
               <p>Dla polskich organizacji kwestia zgodności z RODO nie jest opcjonalna. Kilka konkretnych punktów do weryfikacji u każdego dostawcy:</p>
@@ -499,7 +499,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <li>Polityka retencji danych: jak długo przechowywane są nagrania sesji i dane użytkowników?</li>
               </ul>
               <p>Heatmapy i nagrania sesji niosą szczególne ryzyko: mogą rejestrować dane osobowe (adresy e-mail, numery kart) wpisywane w formularzach. Oba narzędzia oferują maskowanie pól, ale konfiguracja wymaga aktywnego działania.</p>
-              <p><strong>Porada profesjonalisty:</strong> Włącz maskowanie wszystkich pól formularzy domyślnie, a nie selektywnie. Odblokowanie konkretnych pól jest bezpieczniejsze niż próba zidentyfikowania i zablokowania wrażliwych danych po fakcie.</p>
+              <p>Porada profesjonalisty: Włącz maskowanie wszystkich pól formularzy domyślnie, a nie selektywnie. Odblokowanie konkretnych pól jest bezpieczniejsze niż próba zidentyfikowania i zablokowania wrażliwych danych po fakcie.</p>
 
               <div className="table-container">
                 <table>
@@ -544,7 +544,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <li>Wymaganie wielomiesięcznego procesu sprzedażowego bez możliwości pilotu technicznego.</li>
               </ul>
 
-              <p><strong>Porada profesjonalisty:</strong> Zawsze żądaj pilotu technicznego przed podpisaniem rocznej umowy. Dwa tygodnie z realnym ruchem powiedzą Ci więcej o narzędziu niż godzina demo z handlowcem.</p>
+              <p>Porada profesjonalisty: Zawsze żądaj pilotu technicznego przed podpisaniem rocznej umowy. Dwa tygodnie z realnym ruchem powiedzą Ci więcej o narzędziu niż godzina demo z handlowcem.</p>
 
               <h2 id="obserwacje-agencji">Obserwacje agencji: typowe problemy wdrożeniowe i koszty migracji</h2>
               <p>Najczęstszy scenariusz, który obserwujemy u klientów: narzędzie kupione, snippet wklejony, pierwsze testy uruchomione, a po trzech miesiącach program eksperymentów zamiera. Powód jest zawsze ten sam: brak governance i brak osoby odpowiedzialnej za backlog hipotez.</p>

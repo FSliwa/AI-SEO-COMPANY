@@ -213,8 +213,8 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Kluczowe punkty decyzyjne:</p>
                   <ul>
-                    <li><strong>GetResponse</strong> sprawdza się przy listach powyżej 5 000 kontaktów, kampaniach e-commerce, kursach online i wszędzie tam, gdzie webinary lub lejki sprzedażowe są częścią procesu.</li>
-                    <li><strong>Mailchimp</strong> jest lepszy na start: intuicyjny interfejs i setki gotowych integracji pozwalają uruchomić pierwszą wysyłkę w ciągu godziny — choć darmowy plan został w 2026 r. mocno okrojony i nadaje się już tylko do testów.</li>
+                    <li>GetResponse sprawdza się przy listach powyżej 5 000 kontaktów, kampaniach e-commerce, kursach online i wszędzie tam, gdzie webinary lub lejki sprzedażowe są częścią procesu.</li>
+                    <li>Mailchimp jest lepszy na start: intuicyjny interfejs i setki gotowych integracji pozwalają uruchomić pierwszą wysyłkę w ciągu godziny — choć darmowy plan został w 2026 r. mocno okrojony i nadaje się już tylko do testów.</li>
                     <li>Kryterium decydujące to rozmiar listy i potrzeba webinarów lub złożonej automatyzacji. Poniżej 5 000 kontaktów bez webinarów różnice cenowe są niewielkie, więc decyduj funkcjami. Powyżej 5 000 kontaktów lub z potrzebą lejków i webinarów: GetResponse.</li>
                   </ul>
 
@@ -380,8 +380,8 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p><strong>Jak działają rabaty?</strong></p>
                   <ul>
-                    <li><strong>GetResponse:</strong> Obniża cenę o 18% przy płatności rocznej (np. Starter przy 1 000 kontaktów spada z 59 zł do 48,38 zł, a Creator przy 25 000 z 919 zł do 753,58 zł). Cennik oferuje tylko te dwa tryby rozliczenia, a organizacjom pozarządowym daje nawet 50% zniżki.</li>
-                    <li><strong>Mailchimp:</strong> Oferuje 15% na 12 miesięcy, ale dopiero od pakietu obejmującego 10 000 kontaktów (czyli od widełek 5 001–10 000 w górę) — przy mniejszych listach dostępny jest wyłącznie 14-dniowy okres próbny. Zapewnia również 15% zniżki dla zweryfikowanych organizacji non profit.</li>
+                    <li>GetResponse: Obniża cenę o 18% przy płatności rocznej (np. Starter przy 1 000 kontaktów spada z 59 zł do 48,38 zł, a Creator przy 25 000 z 919 zł do 753,58 zł). Cennik oferuje tylko te dwa tryby rozliczenia, a organizacjom pozarządowym daje nawet 50% zniżki.</li>
+                    <li>Mailchimp: Oferuje 15% na 12 miesięcy, ale dopiero od pakietu obejmującego 10 000 kontaktów (czyli od widełek 5 001–10 000 w górę) — przy mniejszych listach dostępny jest wyłącznie 14-dniowy okres próbny. Zapewnia również 15% zniżki dla zweryfikowanych organizacji non profit.</li>
                   </ul>
 
                   <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: '#F5F5F7', borderRadius: '12px', marginBottom: '2rem' }}>
@@ -495,7 +495,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Typowy harmonogram migracji przy liście do 10 000 kontaktów to 2–4 tygodnie. Przy złożonych automatyzacjach i wielu segmentach może to potrwać 6–8 tygodni.</p>
 
-                  <p><strong>Porada profesjonalisty:</strong> <em>Przed migracją wyślij kampanię reaktywacyjną do nieaktywnych kontaktów. Przenoszenie „martwej" bazy do nowego narzędzia obniży deliverability od pierwszego dnia i może trwale zaszkodzić reputacji domeny.</em></p>
+                  <p>Porada profesjonalisty: <em>Przed migracją wyślij kampanię reaktywacyjną do nieaktywnych kontaktów. Przenoszenie „martwej" bazy do nowego narzędzia obniży deliverability od pierwszego dnia i może trwale zaszkodzić reputacji domeny.</em></p>
 
                   <p>Warto też pamiętać o kwestii <a href="https://fibly.pl/pomoc/klienci/profil-klienta" target="_blank" rel="noopener noreferrer">profilowania klientów i zgodności z danymi</a> przy imporcie bazy. Poprawne odwzorowanie pól zgód to nie tylko wymóg RODO, lecz też warunek działania segmentów i automatyzacji po migracji.</p>
 

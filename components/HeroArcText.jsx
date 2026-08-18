@@ -51,8 +51,39 @@ const TRACK_GAIN = 0.055;
 // crescendo a second axis.
 const FILL_FROM = 0.62;
 const FILL_TO = 0.92;
+// Key phrases rendered in the scene's own orange, as a gradient tspan. Matched
+// case-insensitively inside a single wrapped line; a phrase the wrap happens to
+// split across lines simply stays white on that viewport - deterministic and
+// harmless. SEO-safe by construction: the server serves the plain <p>, this
+// SVG exists only client-side.
+const ACCENT = {
+  pl: ['zaawansowane SEO', 'pozycjonowanie stron', 'agencja SEO'],
+  en: ['advanced SEO', 'brand strategy']
+};
 
-export default function HeroArcText({ text, className = '' }) {
+// Split one line into plain/accent segments for tspan rendering.
+function accentSegments(line, phrases) {
+  const low = line.toLowerCase();
+  const hits = [];
+  for (const ph of phrases) {
+    const i = low.indexOf(ph.toLowerCase());
+    if (i >= 0) hits.push([i, i + ph.length]);
+  }
+  if (!hits.length) return [{ t: line, hot: false }];
+  hits.sort((a, b) => a[0] - b[0]);
+  const seg = [];
+  let pos = 0;
+  for (const [a, b] of hits) {
+    if (a < pos) continue;
+    if (a > pos) seg.push({ t: line.slice(pos, a), hot: false });
+    seg.push({ t: line.slice(a, b), hot: true });
+    pos = b;
+  }
+  if (pos < line.length) seg.push({ t: line.slice(pos), hot: false });
+  return seg;
+}
+
+export default function HeroArcText({ text, className = '', lang = 'pl' }) {
   const hostRef = useRef(null);
   const [layout, setLayout] = useState(null);
 
@@ -184,6 +215,12 @@ export default function HeroArcText({ text, className = '' }) {
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
+            {/* The scene's orange, lifted towards its highlight at the right
+                end - the direction the lettering's own lighting runs. */}
+            <linearGradient id="hero-arc-accent" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stopColor="#D85A30" />
+              <stop offset="1" stopColor="#FF8A65" />
+            </linearGradient>
             {layout.lines.map((_, i) => {
               const { ys, thetas, cy } = layout.geo;
               const y = ys[Math.min(i, ys.length - 1)];
@@ -218,17 +255,30 @@ export default function HeroArcText({ text, className = '' }) {
             const scale = layout.geo.scales[idx];
             const track = TRACK_GAIN * layout.fontSize * scale * t;
             const fill = FILL_FROM + (FILL_TO - FILL_FROM) * t;
+            // Glow ramps with the crescendo; the two lines nearest the lettering
+            // additionally breathe (the --hot class carries the pulse).
+            const glowR = (5 + 9 * t).toFixed(1);
+            const glowA = (0.12 + 0.26 * t).toFixed(2);
+            const segments = accentSegments(line, ACCENT[lang] || ACCENT.pl);
             return (
               <text
                 key={i}
-                className="hero-en-arc-line"
+                className={`hero-en-arc-line${i >= layout.lines.length - 2 ? ' hero-en-arc-line--hot' : ''}`}
                 style={{
                   fontSize: `${(layout.fontSize * scale).toFixed(2)}px`,
-                  letterSpacing: `${track.toFixed(2)}px`,
-                  fill: `rgba(255, 255, 255, ${fill.toFixed(2)})`
+                  ['--track']: `${track.toFixed(2)}px`,
+                  ['--line-i']: i,
+                  fill: `rgba(255, 255, 255, ${fill.toFixed(2)})`,
+                  filter: `drop-shadow(0 0 ${glowR}px rgba(216, 90, 48, ${glowA}))`
                 }}
               >
-                <textPath href={`#hero-arc-${i}`}>{line}</textPath>
+                <textPath href={`#hero-arc-${i}`}>
+                  {segments.map((sg, k) =>
+                    sg.hot
+                      ? <tspan key={k} fill="url(#hero-arc-accent)">{sg.t}</tspan>
+                      : <tspan key={k}>{sg.t}</tspan>
+                  )}
+                </textPath>
               </text>
             );
           })}
