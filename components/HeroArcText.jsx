@@ -41,13 +41,12 @@ const BASE_ABOVE_TOP = 12;
 // chromatic ghosts, the scan sheet, cursor proximity, the entrance wipe and
 // the glow pulse) keep working unchanged.
 const THETA_CAP = 0;
-// Size and tracking crescendos belonged to the curvature system - flat lines
-// keep uniform type. Zero gains short-circuit both ramps everywhere they are
-// read (wrap capacity, canvas measurement, the mask copies, the ghosts).
-const SCALE_GAIN = 0;
-const TRACK_GAIN = 0;
-// A gentle brightness ramp stays: it reads as depth, not as leftover bend.
-const FILL_FROM = 0.78;
+// The line-to-line crescendo STAYS (only the curvature was retired): glyphs
+// grow and track out towards the last line, straight baselines or not.
+const SCALE_GAIN = 0.3;
+const TRACK_GAIN = 0.055;
+// Text brightness ramp, first line to last - the crescendo's second axis.
+const FILL_FROM = 0.62;
 const FILL_TO = 0.92;
 // Key phrases rendered in the scene's own orange, as a gradient tspan. Matched
 // case-insensitively inside a single wrapped line; a phrase the wrap happens to
