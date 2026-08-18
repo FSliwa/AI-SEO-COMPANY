@@ -426,66 +426,10 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
               </text>
             );
           })}
-          {/* HUD ruler: the last arc continued past the type, down the S's
-              shoulder - radial tick marks and a micro-label on the same
-              radius, so the paragraph reads as ending on an instrument
-              graduation. Static by design; under reduced motion it stays. */}
-          {(() => {
-            const { ys, cy } = layout.geo;
-            const lastIdx2 = ys.length - 1;
-            const R = cy - ys[lastIdx2];
-            const cx = R - BASE_ABOVE_TOP;
-            const a0 = layout.cap + 6 * Math.PI / 180;
-            const a1 = Math.min(a0 + 52 * Math.PI / 180, 124 * Math.PI / 180);
-            if (a1 - a0 < 0.2) return null;
-            const P = (RR, th) => [cx - RR * Math.sin(th), cy - RR * Math.cos(th)];
-            const n = Math.max(3, Math.floor((R * (a1 - a0)) / 10));
-            const ticks = Array.from({ length: n + 1 }, (_, k) => a0 + ((a1 - a0) * k) / n);
-            const [sx, sy] = P(R, a0);
-            const [ex, ey] = P(R, a1);
-            return (
-              <g className="hero-arc-ruler">
-                <path
-                  id="hero-arc-ruler-path"
-                  d={`M ${sx.toFixed(1)} ${sy.toFixed(1)} A ${R.toFixed(1)} ${R.toFixed(1)} 0 0 0 ${ex.toFixed(1)} ${ey.toFixed(1)}`}
-                  fill="none"
-                  stroke="rgba(255,255,255,0.14)"
-                  strokeWidth="1"
-                />
-                {ticks.map((th, k) => {
-                  const [x1, y1] = P(R - 3, th);
-                  const [x2, y2] = P(R + 3, th);
-                  return (
-                    <line
-                      key={k}
-                      className="hero-arc-tick"
-                      x1={x1.toFixed(1)} y1={y1.toFixed(1)}
-                      x2={x2.toFixed(1)} y2={y2.toFixed(1)}
-                    />
-                  );
-                })}
-                <text className="hero-arc-ruler-label">
-                  <textPath href="#hero-arc-ruler-path" startOffset="6">ORBIT 01</textPath>
-                </text>
-              </g>
-            );
-          })()}
-          {/* Data motes drifting along the outermost line's path - SMIL, so
-              they cost nothing per frame; hidden under reduced motion. */}
-          {[0, 1, 2].map(k => (
-            <circle
-              key={k}
-              className="hero-arc-particle"
-              r={k === 1 ? 2 : 1.5}
-              fill={k === 1 ? 'rgba(216, 90, 48, 0.6)' : 'rgba(255, 255, 255, 0.4)'}
-            >
-              <animateMotion dur={`${[12, 15, 18][k]}s`} begin={`${[-4, -9, -14][k]}s`} repeatCount="indefinite">
-                <mpath href="#hero-arc-0" />
-              </animateMotion>
-            </circle>
-          ))}
           {/* The scan sheet itself: painted only where the mask re-draws the
-              glyphs. */}
+              glyphs. (The HUD ruler and the drifting motes that used to sit
+              here were cut on review - the ruler's label read as stray text
+              over the artwork and the motes as noise.) */}
           <rect
             className="hero-arc-scan"
             x="0" y="-40"

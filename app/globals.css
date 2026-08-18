@@ -3100,22 +3100,10 @@ section, aside.pricing, aside.contact, aside.why-us {
   transition: filter 300ms ease;
 }
 
-/* The chromatic ghosts and the HUD ruler under the last arc. The ghosts get
-   no glow of their own — they are fringes, not lights. */
+/* The chromatic ghosts get no glow of their own — they are fringes, not
+   lights. */
 .hero-en-arc-ghost {
   pointer-events: none;
-}
-
-.hero-arc-tick {
-  stroke: rgba(255, 255, 255, 0.3);
-  stroke-width: 1;
-}
-
-.hero-arc-ruler-label {
-  fill: rgba(255, 255, 255, 0.32);
-  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-size: 8.5px;
-  letter-spacing: 0.16em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3126,11 +3114,9 @@ section, aside.pricing, aside.contact, aside.why-us {
     clip-path: none;
   }
 
-  /* The moving decorations go entirely; the static ruler stays — it is
-     typography, not motion. The SMIL animations cannot see media queries,
-     so their host elements are hidden instead. */
-  .hero-arc-scan,
-  .hero-arc-particle {
+  /* The scan is motion; SMIL cannot see media queries, so its host element
+     is hidden instead. */
+  .hero-arc-scan {
     display: none;
   }
 }
