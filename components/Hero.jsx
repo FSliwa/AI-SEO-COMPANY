@@ -55,15 +55,11 @@ const COPY = {
       { t: '.' }
     ],
     bodySeg: [
-      { t: 'The creativity of human SEO teams' },
-      { t: ' with AI-driven accuracy', wide: true },
-      { t: ' delivers' },
-      { t: ' dominant', wide: true },
-      { t: ' visibility and' },
-      { t: ' lasting', wide: true },
-      { t: ' growth.' },
-      { t: ' We merge the two so your brand compounds results instead of chasing them.', wide: true },
-      { t: ' Brand strategy,' },
+      // The whole first sentence is a wide-screen clause: none of its words
+      // is a listed phrase ("SEO" recurs in "advanced SEO" below), so phones
+      // open straight on the sentence that carries the accents.
+      { t: 'The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and lasting growth. We merge the two so your brand compounds results instead of chasing them. ', wide: true },
+      { t: 'Brand strategy,' },
       { t: ' innovative', wide: true },
       { t: ' design and advanced SEO make your business remembered and chosen' },
       { t: ' at massive scale', wide: true },
@@ -86,11 +82,11 @@ const COPY = {
     bodySeg: [
       { t: 'Łączymy strategię marki,' },
       { t: ' nowatorskie', wide: true },
-      { t: ' projektowanie i zaawansowane SEO, aby Twoja firma była widoczna' },
-      { t: ', zapamiętana', wide: true },
-      { t: ' i' },
-      { t: ' masowo', wide: true },
-      { t: ' wybierana przez klientów.' },
+      { t: ' projektowanie i zaawansowane SEO' },
+      // The whole result clause is wide-screen: not one of its words is a
+      // listed phrase, and without it the sentence still closes cleanly.
+      { t: ', aby Twoja firma była widoczna, zapamiętana i masowo wybierana przez klientów', wide: true },
+      { t: '.' },
       { t: ' Prowadzimy te trzy obszary razem, a nie jako osobne projekty.', wide: true },
       { t: ' Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.' },
       { t: ' Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.', wide: true }

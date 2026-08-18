@@ -3244,13 +3244,19 @@ section, aside.pricing, aside.contact, aside.why-us {
     top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + 8px - var(--m-band-h) * 0.3233);
     height: var(--m-band-h);
     bottom: auto;
-    /* The S's left edge sits at 50vw - 0.5083 x band in the raw framing
-       (measured); this slide puts it exactly on the 20px content margin.
-       The word is (100vw - 40px) wide, so its right edge then lands on the
-       right margin too - the letters line up with the copy above and the
-       heading below on both sides. The robot rides along; the gap this
-       opens at the canvas's right edge is black on black. */
-    transform: translateX(calc(20px - 50vw + var(--m-band-h) * 0.5083));
+    /* Neither a slide nor a wider canvas: sliding left opened a black gap
+       at the right edge, and widening the canvas broke the scene's own
+       framing (the letters shrank - the scene stops scaling purely by
+       height once the aspect leaves its calibrated range). Instead the
+       full-width canvas scales 5% about its right edge: the S's natural
+       left edge (50vw - 0.5083 x band, i.e. 34-40px) lands on the 20px
+       content margin - the factor is ~1.049-1.050 at every phone width
+       because the whole geometry is proportional - while the right side
+       of the artwork stays pinned to the screen edge. The vertical origin
+       sits at the letters' centre (46.75% of the band), so their gaps to
+       the copy and the heading drift by only ~2px. */
+    transform: scale(1.05);
+    transform-origin: 100% 46.75%;
     /* Bottom fade only — the 64%-75% dissolve under the letters is the
        approved look: the robot's legs melt into the black just before the
        heading, reading as staging rather than a crop. The band's top carries
@@ -3260,8 +3266,13 @@ section, aside.pricing, aside.contact, aside.why-us {
        yields — the paragraph column stops left of the robot (see
        .hero-en-top below), the same division of space the desktop layout
        uses, so there is simply nothing over the helmet to hide it from. */
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 64%, transparent 75%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 64%, transparent 75%);
+    /* The fade ends BEFORE the heading: the letters bottom out at 61.17% of
+       the band and the heading starts 16px under that line (row two is
+       24px + 0.2867 x band), so fading from +4px to +12px leaves the word
+       untouched and guarantees 4px of clear black above the heading at
+       every band size - the stops mix % and px through calc on purpose. */
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 calc(61.17% + 3px), transparent calc(61.17% + 9px));
+    mask-image: linear-gradient(180deg, #000 0%, #000 calc(61.17% + 3px), transparent calc(61.17% + 9px));
   }
 
   /* Same chain with the English fallback: the EN copy is 22px shorter at
