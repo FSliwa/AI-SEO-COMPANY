@@ -2706,7 +2706,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    the section's top and bottom thirds looked abandoned. Centred origin now: the
    copy sits above and below the artwork rather than beside it, so there is
    nothing to steer the lettering away from. */
-@media (min-width: 901px) and (min-aspect-ratio: 7/6) {
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   .hero-en-bg {
     transform: scale(1.12);
   }
@@ -2797,9 +2797,23 @@ section, aside.pricing, aside.contact, aside.why-us {
    the section's top and bottom thirds looked abandoned. Centred origin now: the
    copy sits above and below the artwork rather than beside it, so there is
    nothing to steer the lettering away from. */
-@media (min-width: 901px) and (min-aspect-ratio: 7/6) {
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   .hero-en-bg {
     transform: scale(1.12);
+  }
+}
+
+/* Near-square desktop windows (an app docked beside the browser): 1.12 would
+   push the word past the viewport edges below ~9/8, so the crop-scale eases
+   off. Letters are 0.9175 x viewport-height x this, which fits width down to
+   a 1:1 window. Placed after the 1.12 rule - later wins in the overlap. */
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 9/8) {
+  .hero-en-bg {
+    /* The word sits off-centre in the frame (its left edge is 0.551 x height
+       from centre vs 0.366 on the right), so near 1:1 it would clip on the
+       left - the translateX slides it right just enough for a 10px margin,
+       and collapses to zero as soon as the window is wide enough. */
+    transform: translateX(max(0px, 56.75vh - 50vw + 10px)) scale(1.03);
   }
 }
 
@@ -2920,7 +2934,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    the previous 15.5% did, is exactly what made the copy slide off the lettering
    as soon as the window aspect changed. max() keeps the padding legal on tall,
    narrow desktop windows, where the word runs off both edges anyway. */
-@media (min-width: 901px) and (min-aspect-ratio: 7/6) {
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   .hero-en {
     padding-left: max(1.25rem, calc(50% - 55.1vh));
     padding-right: max(1.25rem, calc(50% - 36.65vh));
@@ -3029,7 +3043,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   display: none;
 }
 
-@media (min-width: 901px) and (min-aspect-ratio: 7/6) {
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   .hero-en-wide-only {
     display: inline;
   }
@@ -3206,7 +3220,7 @@ section, aside.pricing, aside.contact, aside.why-us {
     radial-gradient(circle at 40% 50%, #16202f, #0b1220 72%);
 }
 
-@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 7/6) {
+@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
   /* Same reading as the desktop composition — copy, then the word, then the
      heading — rather than the scene sitting on top of everything. Full-bleed
      still cannot work at this width: the lettering is scaled by canvas height,
@@ -3400,7 +3414,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    English variant needs the section to grow with its content instead — otherwise
    the CTAs and half the copy are clipped below the fold. Scoped to .hero--en so
    the Polish hero keeps its existing behaviour exactly. */
-@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 7/6) {
+@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
   .hero.hero--en {
     /* .hero-en is positioned out of flow now, so it cannot push the section
        open the way it used to — the height has to be stated. 860px with the

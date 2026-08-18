@@ -132,7 +132,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (!window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 7/6)').matches) return;
+    if (!window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)').matches) return;
     let raf = 0;
     const onScroll = () => {
       if (raf) return;
@@ -162,7 +162,7 @@ export default function Hero() {
     // narrow-but-tall desktop window (side-by-side with another app) overflows
     // the width and squeezes the arc into a spiral. Below ~7:6 the stylesheet
     // swaps to the phone composition, and the paragraph must follow it.
-    const query = window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 7/6)');
+    const query = window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)');
     const sync = () => setArcBody(query.matches);
     sync();
 

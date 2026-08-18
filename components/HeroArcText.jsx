@@ -35,21 +35,19 @@ import { useEffect, useRef, useState } from 'react';
 const R_FRAC = 0.0556;
 // Baseline of the last line sits this far above the letter top (measured).
 const BASE_ABOVE_TOP = 12;
-// Sweep of the last line, degrees.
-const THETA_CAP = 66;
-// Glyph scale gain on the last line; the ramp between lines is linear in the
-// line index. It was tied to each line's sweep first, and because the middle
-// sweeps are nearly equal the sizes ran 15.1 / 16.5 / 16.8 / 17.3 / 19.7 —
-// three near-identical steps and a jump, which reads as an accident. A linear
-// ramp is an even crescendo, which reads as intent.
-const SCALE_GAIN = 0.3;
-// Letter-spacing on the last line, as a fraction of its font size. 0.09 was
-// visibly airy against the lines above; 0.055 tracks out without gapping.
-const TRACK_GAIN = 0.055;
-// Text brightness ramp, first line to last. One flat dim white made the large
-// lines look soft; brightening with size keeps every line crisp and gives the
-// crescendo a second axis.
-const FILL_FROM = 0.62;
+// Sweep of the last line, degrees. Zero = the FLAT layout: the curvature was
+// retired on review, but the machinery stays - every line renders as a
+// straight textPath and all the effects riding the paths (accent gradients,
+// chromatic ghosts, the scan sheet, cursor proximity, the entrance wipe and
+// the glow pulse) keep working unchanged.
+const THETA_CAP = 0;
+// Size and tracking crescendos belonged to the curvature system - flat lines
+// keep uniform type. Zero gains short-circuit both ramps everywhere they are
+// read (wrap capacity, canvas measurement, the mask copies, the ghosts).
+const SCALE_GAIN = 0;
+const TRACK_GAIN = 0;
+// A gentle brightness ramp stays: it reads as depth, not as leftover bend.
+const FILL_FROM = 0.78;
 const FILL_TO = 0.92;
 // Key phrases rendered in the scene's own orange, as a gradient tspan. Matched
 // case-insensitively inside a single wrapped line; a phrase the wrap happens to
@@ -125,6 +123,7 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
           }
           const cy = ys[last] + r + BASE_ABOVE_TOP;
           thetas = ys.map((yy, i) => {
+            if (!THETA_CAP) return 0;
             if (count < 2) return 0;
             if (i === last) return cap;
             // Tip pinned to the column edge (sin theta = r / R): the first line
