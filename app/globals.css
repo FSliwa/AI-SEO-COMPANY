@@ -3220,11 +3220,18 @@ section, aside.pricing, aside.contact, aside.why-us {
      screen. 35% of an 880px section is 308px, which puts the word edge to edge.
      The section grows to 880px to buy that back without pushing the buttons
      under the sticky bar. */
+  /* The word is sized by band HEIGHT (the camera holds a vertical FOV), so
+     a fixed 300px band meant one fixed letter width — right on a 375 screen,
+     overflowing a 320 one and undersized on a 430. The band's height now
+     follows the viewport instead: measured at 375, the word spans 1.13x the
+     band height, so (100vw - 40px) / 1.13 keeps the letters at the content
+     width — the same span as the copy above and the heading below — on every
+     phone. All vertical offsets inside the band are fractions of it. */
+  .hero.hero--en {
+    --m-band-h: calc(88.5vw - 35.4px);
+  }
+
   .hero-en-bg {
-    /* Pixels, not percentages. The band was 31%/35% of the section, so cutting
-       the section's dead bottom also shrank the band — and with it the word,
-       which is sized by band height. Fixed at 300px tall the word keeps its
-       ~91% span of a 375px screen no matter what the section height does. */
     /* The whole chain hangs off one measured value: Hero.jsx observes the
        copy's real height and publishes it as --m-copy-h on the section (with
        the header's as --m-head-h), because the height changes with width,
@@ -3234,8 +3241,8 @@ section, aside.pricing, aside.contact, aside.why-us {
        97px into the band and must start 8px under the copy, so the band's
        top is that row minus 89. Fallbacks equal the measured Polish 375x812
        values, so pre-hydration frames render in place. */
-    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) - 89px);
-    height: 300px;
+    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + 8px - var(--m-band-h) * 0.3233);
+    height: var(--m-band-h);
     bottom: auto;
     /* Bottom fade only — the 64%-75% dissolve under the letters is the
        approved look: the robot's legs melt into the black just before the
@@ -3254,7 +3261,7 @@ section, aside.pricing, aside.contact, aside.why-us {
      375, and until the observer publishes the real height these static
      fallbacks are what keeps the pre-hydration frame from jumping. */
   html[lang="en"] .hero-en-bg {
-    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) - 89px);
+    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + 8px - var(--m-band-h) * 0.3233);
   }
 
   /* No mobile-only side padding: the shared clamp already lands on the same
@@ -3275,22 +3282,22 @@ section, aside.pricing, aside.contact, aside.why-us {
      helmet needs no mask and shows from the crown — the same copy-left /
      robot-right split the desktop composition uses. */
   .hero-en-top {
-    /* Column right edge = 20px margin + this. The helmet's left edge sits at
-       x=300 on a 375 screen and slides half a pixel per viewport pixel (the
-       camera widens from the centre), so the clamp tracks it with 50vw and
-       keeps ~25px of clearance at every width. */
-    max-width: calc(50vw + 87.5px);
+    /* Column right edge = 20px margin + this. The robot's left edge sits at
+       half the viewport plus 0.375 of the band height (he scales with the
+       scene), so the clamp is derived from the same variable and keeps ~28px
+       of clearance at every width and band size. */
+    max-width: calc(50vw + var(--m-band-h) * 0.375 - 28px);
   }
 
   /* Row one ends 8px above the letters. Row two is the letters plus the
      desktop gaps (8 above, 16 below), which puts the heading back over the
      tail of the leg fade — the approved staging. */
   .hero-en-copy {
-    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px)) 109px 1fr;
+    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px)) calc(24px + var(--m-band-h) * 0.2867) 1fr;
   }
 
   html[lang="en"] .hero-en-copy {
-    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px)) 109px 1fr;
+    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px)) calc(24px + var(--m-band-h) * 0.2867) 1fr;
   }
 
   /* Polish runs about 25% longer than the English for the same meaning, and
@@ -3392,7 +3399,7 @@ section, aside.pricing, aside.contact, aside.why-us {
        left ~240px of dead black under the buttons; sized to content the next
        section peeks above the fold instead, which is what tells a phone user
        there is more page. */
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + 285px) !important;
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + var(--m-band-h, 296px) * 0.2867 + 200px) !important;
     min-height: 0 !important;
     max-height: none !important;
     overflow: hidden !important;
@@ -3403,7 +3410,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 
   /* The English fallback of the same height chain (see the band rule). */
   html[lang="en"] .hero.hero--en {
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + 285px) !important;
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + var(--m-band-h, 296px) * 0.2867 + 200px) !important;
   }
 
   /* Absolutely positioned at the bottom of the section; once the columns stack
