@@ -11,9 +11,10 @@ import { useEffect, useRef, useState } from 'react';
  * constant leading apart along the bend, and the innermost arc runs parallel
  * to the letter's own shoulder.
  *
- * Sweep per line: the middle lines take exactly the sweep that lands their tip
- * on the column edge (sin theta = r / R), which grows naturally towards the
- * letter as the radii shrink; the last line takes the full capped sweep and
+ * Sweep per line: every line except the last takes exactly the sweep that
+ * lands its tip on the column edge (sin theta = r / R), which grows naturally
+ * towards the letter as the radii shrink — the first line included, with the
+ * gentlest bend of the set; the last line takes the full capped sweep and
  * curls down the shoulder, stopping above the S's first bend.
  *
  * The type follows the curvature: the more a line bends, the larger and more
@@ -93,8 +94,11 @@ export default function HeroArcText({ text, className = '' }) {
           }
           const cy = ys[last] + r + BASE_ABOVE_TOP;
           thetas = ys.map((yy, i) => {
-            if (i === 0 || count < 2) return 0;
+            if (count < 2) return 0;
             if (i === last) return cap;
+            // Tip pinned to the column edge (sin theta = r / R): the first line
+            // has the largest radius, so it gets the gentlest bend of the set —
+            // the cascade now starts from the very top instead of from line two.
             return Math.asin(Math.min(1, r / (cy - yy)));
           });
           scales = ys.map((_, i) => 1 + SCALE_GAIN * (last ? i / last : 0));
