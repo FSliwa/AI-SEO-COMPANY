@@ -3244,6 +3244,13 @@ section, aside.pricing, aside.contact, aside.why-us {
     top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + 8px - var(--m-band-h) * 0.3233);
     height: var(--m-band-h);
     bottom: auto;
+    /* The S's left edge sits at 50vw - 0.5083 x band in the raw framing
+       (measured); this slide puts it exactly on the 20px content margin.
+       The word is (100vw - 40px) wide, so its right edge then lands on the
+       right margin too - the letters line up with the copy above and the
+       heading below on both sides. The robot rides along; the gap this
+       opens at the canvas's right edge is black on black. */
+    transform: translateX(calc(20px - 50vw + var(--m-band-h) * 0.5083));
     /* Bottom fade only — the 64%-75% dissolve under the letters is the
        approved look: the robot's legs melt into the black just before the
        heading, reading as staging rather than a crop. The band's top carries
@@ -3282,11 +3289,10 @@ section, aside.pricing, aside.contact, aside.why-us {
      helmet needs no mask and shows from the crown — the same copy-left /
      robot-right split the desktop composition uses. */
   .hero-en-top {
-    /* Column right edge = 20px margin + this. The robot's left edge sits at
-       half the viewport plus 0.375 of the band height (he scales with the
-       scene), so the clamp is derived from the same variable and keeps ~28px
-       of clearance at every width and band size. */
-    max-width: calc(50vw + var(--m-band-h) * 0.375 - 28px);
+    /* Column right edge = 20px margin + this. After the band's alignment
+       slide the robot's left edge sits at 20px + 0.8833 x band height, so
+       the clamp keeps ~8px of clearance at every width and band size. */
+    max-width: calc(var(--m-band-h) * 0.8833 - 8px);
   }
 
   /* Row one ends 8px above the letters. Row two is the letters plus the
