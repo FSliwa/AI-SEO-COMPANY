@@ -3248,27 +3248,27 @@ section, aside.pricing, aside.contact, aside.why-us {
        97px into the band and must start 8px under the copy, so the band's
        top is that row minus 89. Fallbacks equal the measured Polish 375x812
        values, so pre-hydration frames render in place. */
-    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 199px) - 89px);
+    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) - 89px);
     height: 300px;
     bottom: auto;
-    /* Two jobs, measured separately. TOP: the robot's head (right side, rows
-       50-100 of the band) sits behind the paragraph's lower corner — opaque
-       only from 32.5% (the letter tops, 97px in), nothing under the text
-       itself. The old stops reached full opacity 3px BELOW the copy, which is
-       exactly the "text over the animation" complaint: the letters' glow was
-       showing at 80% right under the last line. BOTTOM: the old 64%-75% fade
-       cut the robot off at the waist — 75px of real render binned. The render
-       runs to the canvas edge, so the mask now holds opaque to 94% and only
-       feathers the crop line itself. */
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 29%, #000 32.5%, #000 94%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, transparent 29%, #000 32.5%, #000 94%, transparent 100%);
+    /* Bottom fade only — the 64%-75% dissolve under the letters is the
+       approved look: the robot's legs melt into the black just before the
+       heading, reading as staging rather than a crop. The band's top carries
+       NO mask at all any more: every full-width vertical fade has to cross
+       the robot's helmet somewhere (it spans the text boundary), and that
+       crossing is exactly the "top is cut off" complaint. Instead the COPY
+       yields — the paragraph column stops left of the robot (see
+       .hero-en-top below), the same division of space the desktop layout
+       uses, so there is simply nothing over the helmet to hide it from. */
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 64%, transparent 75%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 64%, transparent 75%);
   }
 
   /* Same chain with the English fallback: the EN copy is 22px shorter at
      375, and until the observer publishes the real height these static
      fallbacks are what keeps the pre-hydration frame from jumping. */
   html[lang="en"] .hero-en-bg {
-    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 177px) - 89px);
+    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) - 89px);
   }
 
   /* No mobile-only side padding: the shared clamp already lands on the same
@@ -3282,19 +3282,29 @@ section, aside.pricing, aside.contact, aside.why-us {
      was read back at 375x812 with reflection filtering, and the word sits at
      49.4%-59.3% of the section. (The derived 30.4%-62.2% canvas fractions do
      not carry over — the mobile band's aspect reframes the scene.) */
-  /* Row one ends 8px above the letters (310 at 375x812). Row two used to be
-     the letters plus the desktop gaps — but the robot standing to the right
-     of the word runs another 117px below it, to the bottom edge of the band,
-     and the old rows parked the heading in the middle of him (which the
-     bottom mask then papered over by cutting his legs off). Row two now
-     spans to the band's bottom edge plus the 16px gap, so the heading clears
-     the whole render and the mask no longer has to cut anything. */
+  /* The copy column stops left of the robot. He stands in the right ~85px
+     of the frame (helmet from x=300 at 375, and the framing widens from the
+     centre, so his left edge slides half a pixel right per viewport pixel —
+     hence 50vw in the clamp). With nothing of the paragraph over him, the
+     helmet needs no mask and shows from the crown — the same copy-left /
+     robot-right split the desktop composition uses. */
+  .hero-en-top {
+    /* Column right edge = 20px margin + this. The helmet's left edge sits at
+       x=300 on a 375 screen and slides half a pixel per viewport pixel (the
+       camera widens from the centre), so the clamp tracks it with 50vw and
+       keeps ~25px of clearance at every width. */
+    max-width: calc(50vw + 87.5px);
+  }
+
+  /* Row one ends 8px above the letters. Row two is the letters plus the
+     desktop gaps (8 above, 16 below), which puts the heading back over the
+     tail of the leg fade — the approved staging. */
   .hero-en-copy {
-    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 199px)) 227px 1fr;
+    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px)) 109px 1fr;
   }
 
   html[lang="en"] .hero-en-copy {
-    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 177px)) 227px 1fr;
+    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px)) 109px 1fr;
   }
 
   /* Polish runs about 25% longer than the English for the same meaning, and
@@ -3390,13 +3400,13 @@ section, aside.pricing, aside.contact, aside.why-us {
        text allows, since the copy is bottom-anchored to the 8px gap and all
        row-one surplus surfaces at the top. Taller screens use their own. */
     /* Height equal to the content, via the same measured chain: row one,
-       then 227 to the heading (8px gap + the band's remaining 211px + 16px),
-       154 for the heading-and-buttons group and 22px of breathing room —
-       row one + 403. The old max(100svh, 860px) filled the whole screen and
+       then 109 to the heading (8px gap + the 86px letters + 16px), 154 for
+       the heading-and-buttons group and 22px of breathing room — row one
+       + 285. The old max(100svh, 860px) filled the whole screen and
        left ~240px of dead black under the buttons; sized to content the next
        section peeks above the fold instead, which is what tells a phone user
        there is more page. */
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 199px) + 403px) !important;
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + 285px) !important;
     min-height: 0 !important;
     max-height: none !important;
     overflow: hidden !important;
@@ -3407,7 +3417,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 
   /* The English fallback of the same height chain (see the band rule). */
   html[lang="en"] .hero.hero--en {
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 177px) + 403px) !important;
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + 285px) !important;
   }
 
   /* Absolutely positioned at the bottom of the section; once the columns stack

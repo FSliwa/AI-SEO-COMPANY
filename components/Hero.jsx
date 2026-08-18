@@ -174,7 +174,18 @@ export default function Hero() {
     ro.observe(top);
     if (header) ro.observe(header);
     apply();
-    return () => ro.disconnect();
+    // The observer only delivers during rendering steps, which hidden
+    // documents never run — a viewport resized in the background (device
+    // emulation, a backgrounded tab restored later) would keep stale numbers
+    // until the next paint. These two run apply() off plain events instead;
+    // getBoundingClientRect is synchronous and works hidden.
+    window.addEventListener('resize', apply);
+    document.addEventListener('visibilitychange', apply);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', apply);
+      document.removeEventListener('visibilitychange', apply);
+    };
   }, []);
 
   return (
