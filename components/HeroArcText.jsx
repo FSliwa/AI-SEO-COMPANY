@@ -188,7 +188,26 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
         geo = geometry(lines.length);
       }
 
-      setLayout({ width, lines, fontSize, geo, cap });
+      // Accent segmentation measured here rather than at render time, because
+      // the chromatic ghosts ride the same textPath at a pixel startOffset and
+      // that offset must agree with the real glyph advance — so it is measured
+      // with the line's own font and tracking, prefix by prefix.
+      const phrases = ACCENT[lang] || ACCENT.pl;
+      const segs = lines.map((line, li) => {
+        const i = Math.min(li, geo.scales.length - 1);
+        const lastIdx = Math.max(1, geo.scales.length - 1);
+        const px = fontSize * geo.scales[i];
+        ctx.font = fontOf(px);
+        try { ctx.letterSpacing = `${(TRACK_GAIN * px * (i / lastIdx)).toFixed(2)}px`; } catch (e) {}
+        let off = 0;
+        return accentSegments(line, phrases).map(s => {
+          const at = off;
+          off += ctx.measureText(s.t).width;
+          return { ...s, off: at };
+        });
+      });
+
+      setLayout({ width, lines, fontSize, geo, cap, segs });
     };
 
     measure();
@@ -197,7 +216,57 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
     const hero = host.closest('.hero');
     if (hero) observer.observe(hero);
     return () => observer.disconnect();
-  }, [text]);
+  }, [text, lang]);
+
+  // Cursor proximity (real cursors only): the line nearest the pointer lifts
+  // 10% in brightness and 30% in glow radius. Written as the two custom
+  // properties the line filters are already built from — including inside the
+  // heroGlowPulse keyframes, since a running animation beats any inline filter
+  // and would otherwise swallow the hover on the two hot lines. The 300ms
+  // transition lives on the class.
+  useEffect(() => {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const host = hostRef.current;
+    if (!host) return;
+    let raf = 0;
+    const set = (t, on) => {
+      t.style.setProperty('--nb', on ? '1.1' : '1');
+      t.style.setProperty('--ng', on ? '1.3' : '1');
+    };
+    const onMove = e => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const svg = host.querySelector('svg');
+        if (!svg) return;
+        const rect = svg.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        const near = mx > -40 && mx < rect.width + 40 && my > -40 && my < rect.height + 40;
+        const texts = svg.querySelectorAll('text.hero-en-arc-line:not(.hero-en-arc-ghost)');
+        let best = -1;
+        let bd = 1e9;
+        texts.forEach((t, i) => {
+          const r = t.getBoundingClientRect();
+          const d = Math.abs((r.top + r.bottom) / 2 - rect.top - my);
+          if (d < bd) { bd = d; best = i; }
+        });
+        texts.forEach((t, i) => set(t, near && i === best && bd < 60));
+      });
+    };
+    const clear = () => {
+      const svg = host.querySelector('svg');
+      if (svg) svg.querySelectorAll('text.hero-en-arc-line').forEach(t => set(t, false));
+    };
+    window.addEventListener('mousemove', onMove, { passive: true });
+    window.addEventListener('mouseout', clear);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseout', clear);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   const lastIdx = layout ? Math.min(layout.lines.length, layout.geo.ys.length) - 1 : 0;
   const height = layout
@@ -221,6 +290,45 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
               <stop offset="0" stopColor="#D85A30" />
               <stop offset="1" stopColor="#FF8A65" />
             </linearGradient>
+            {/* Holo-scan: a 36px band of light that runs down the paragraph
+                every 8.5s (the travel itself takes ~1.7s of that). SMIL on the
+                gradient, no per-frame JS; the band only exists where the mask
+                below re-draws the glyphs, so it reads as a sheen on the type,
+                never as a bar across the scene. First pass begins at 3s, after
+                the entrance wipe has settled. */}
+            <linearGradient id="hero-arc-scan-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="36">
+              <stop offset="0" stopColor="rgba(255,255,255,0)" />
+              <stop offset="0.5" stopColor="rgba(255,255,255,0.14)" />
+              <stop offset="1" stopColor="rgba(255,255,255,0)" />
+              <animateTransform
+                attributeName="gradientTransform"
+                type="translate"
+                values={`0 -50; 0 ${Math.ceil(height) + 50}; 0 ${Math.ceil(height) + 50}`}
+                keyTimes="0; 0.2; 1"
+                dur="8.5s"
+                begin="3s"
+                repeatCount="indefinite"
+              />
+            </linearGradient>
+            <mask id="hero-arc-scanmask" maskUnits="userSpaceOnUse" x="0" y="-40" width={layout.width} height={Math.ceil(height) + 80}>
+              {layout.lines.map((line, i) => {
+                const idx = Math.min(i, layout.geo.scales.length - 1);
+                const last = Math.max(1, layout.geo.scales.length - 1);
+                const scale = layout.geo.scales[idx];
+                return (
+                  <text
+                    key={i}
+                    fill="#fff"
+                    style={{
+                      fontSize: `${(layout.fontSize * scale).toFixed(2)}px`,
+                      letterSpacing: `${(TRACK_GAIN * layout.fontSize * scale * (idx / last)).toFixed(2)}px`
+                    }}
+                  >
+                    <textPath href={`#hero-arc-${i}`}>{line}</textPath>
+                  </text>
+                );
+              })}
+            </mask>
             {layout.lines.map((_, i) => {
               const { ys, thetas, cy } = layout.geo;
               const y = ys[Math.min(i, ys.length - 1)];
@@ -248,6 +356,41 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
               );
             })}
           </defs>
+          {/* Chromatic ghosts under the accent phrases: the same words, twice,
+              nudged ±1.2px along the same path in the neon pair (cool ahead,
+              warm behind), so only a fringe of each shows past the real
+              glyphs. They share the line class, so the entrance wipe and the
+              tracking animation carry them in step with the type. */}
+          {layout.lines.map((line, i) => {
+            const hot = layout.segs[i].filter(sg => sg.hot);
+            if (!hot.length) return null;
+            const idx = Math.min(i, layout.geo.scales.length - 1);
+            const scale = layout.geo.scales[idx];
+            const last = Math.max(1, layout.geo.scales.length - 1);
+            const track = TRACK_GAIN * layout.fontSize * scale * (idx / last);
+            return hot.map((sg, k) =>
+              [
+                { d: -1.2, fill: 'rgba(127, 216, 255, 0.38)' },
+                { d: 1.2, fill: 'rgba(255, 138, 101, 0.42)' }
+              ].map(g => (
+                <text
+                  key={`${i}-${k}-${g.d}`}
+                  className="hero-en-arc-line hero-en-arc-ghost"
+                  aria-hidden="true"
+                  style={{
+                    fontSize: `${(layout.fontSize * scale).toFixed(2)}px`,
+                    ['--track']: `${track.toFixed(2)}px`,
+                    ['--line-i']: i,
+                    fill: g.fill
+                  }}
+                >
+                  <textPath href={`#hero-arc-${i}`} startOffset={(sg.off + g.d).toFixed(1)}>
+                    {sg.t}
+                  </textPath>
+                </text>
+              ))
+            );
+          })}
           {layout.lines.map((line, i) => {
             const idx = Math.min(i, layout.geo.scales.length - 1);
             const last = Math.max(1, layout.geo.scales.length - 1);
@@ -256,10 +399,11 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
             const track = TRACK_GAIN * layout.fontSize * scale * t;
             const fill = FILL_FROM + (FILL_TO - FILL_FROM) * t;
             // Glow ramps with the crescendo; the two lines nearest the lettering
-            // additionally breathe (the --hot class carries the pulse).
+            // additionally breathe (the --hot class carries the pulse). The two
+            // custom properties are the cursor-proximity hooks - 1 at rest.
             const glowR = (5 + 9 * t).toFixed(1);
             const glowA = (0.12 + 0.26 * t).toFixed(2);
-            const segments = accentSegments(line, ACCENT[lang] || ACCENT.pl);
+            const segments = layout.segs[i];
             return (
               <text
                 key={i}
@@ -269,7 +413,7 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
                   ['--track']: `${track.toFixed(2)}px`,
                   ['--line-i']: i,
                   fill: `rgba(255, 255, 255, ${fill.toFixed(2)})`,
-                  filter: `drop-shadow(0 0 ${glowR}px rgba(216, 90, 48, ${glowA}))`
+                  filter: `brightness(var(--nb, 1)) drop-shadow(0 0 calc(${glowR}px * var(--ng, 1)) rgba(216, 90, 48, ${glowA}))`
                 }}
               >
                 <textPath href={`#hero-arc-${i}`}>
@@ -282,6 +426,75 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
               </text>
             );
           })}
+          {/* HUD ruler: the last arc continued past the type, down the S's
+              shoulder - radial tick marks and a micro-label on the same
+              radius, so the paragraph reads as ending on an instrument
+              graduation. Static by design; under reduced motion it stays. */}
+          {(() => {
+            const { ys, cy } = layout.geo;
+            const lastIdx2 = ys.length - 1;
+            const R = cy - ys[lastIdx2];
+            const cx = R - BASE_ABOVE_TOP;
+            const a0 = layout.cap + 6 * Math.PI / 180;
+            const a1 = Math.min(a0 + 52 * Math.PI / 180, 124 * Math.PI / 180);
+            if (a1 - a0 < 0.2) return null;
+            const P = (RR, th) => [cx - RR * Math.sin(th), cy - RR * Math.cos(th)];
+            const n = Math.max(3, Math.floor((R * (a1 - a0)) / 10));
+            const ticks = Array.from({ length: n + 1 }, (_, k) => a0 + ((a1 - a0) * k) / n);
+            const [sx, sy] = P(R, a0);
+            const [ex, ey] = P(R, a1);
+            return (
+              <g className="hero-arc-ruler">
+                <path
+                  id="hero-arc-ruler-path"
+                  d={`M ${sx.toFixed(1)} ${sy.toFixed(1)} A ${R.toFixed(1)} ${R.toFixed(1)} 0 0 0 ${ex.toFixed(1)} ${ey.toFixed(1)}`}
+                  fill="none"
+                  stroke="rgba(255,255,255,0.14)"
+                  strokeWidth="1"
+                />
+                {ticks.map((th, k) => {
+                  const [x1, y1] = P(R - 3, th);
+                  const [x2, y2] = P(R + 3, th);
+                  return (
+                    <line
+                      key={k}
+                      className="hero-arc-tick"
+                      x1={x1.toFixed(1)} y1={y1.toFixed(1)}
+                      x2={x2.toFixed(1)} y2={y2.toFixed(1)}
+                    />
+                  );
+                })}
+                <text className="hero-arc-ruler-label">
+                  <textPath href="#hero-arc-ruler-path" startOffset="6">ORBIT 01</textPath>
+                </text>
+              </g>
+            );
+          })()}
+          {/* Data motes drifting along the outermost line's path - SMIL, so
+              they cost nothing per frame; hidden under reduced motion. */}
+          {[0, 1, 2].map(k => (
+            <circle
+              key={k}
+              className="hero-arc-particle"
+              r={k === 1 ? 2 : 1.5}
+              fill={k === 1 ? 'rgba(216, 90, 48, 0.6)' : 'rgba(255, 255, 255, 0.4)'}
+            >
+              <animateMotion dur={`${[12, 15, 18][k]}s`} begin={`${[-4, -9, -14][k]}s`} repeatCount="indefinite">
+                <mpath href="#hero-arc-0" />
+              </animateMotion>
+            </circle>
+          ))}
+          {/* The scan sheet itself: painted only where the mask re-draws the
+              glyphs. */}
+          <rect
+            className="hero-arc-scan"
+            x="0" y="-40"
+            width={layout.width}
+            height={Math.ceil(height) + 80}
+            fill="url(#hero-arc-scan-grad)"
+            mask="url(#hero-arc-scanmask)"
+            pointerEvents="none"
+          />
         </svg>
       )}
     </div>

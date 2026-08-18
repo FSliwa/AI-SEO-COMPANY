@@ -3086,9 +3086,36 @@ section, aside.pricing, aside.contact, aside.why-us {
     heroGlowPulse 5.5s ease-in-out 2s infinite;
 }
 
+/* The two custom properties are the cursor-proximity hooks (HeroArcText sets
+   them on the nearest line). They must live INSIDE the keyframes too: on the
+   two hot lines this animation runs forever and a running animation beats any
+   inline filter, so a hover written only inline would never show there. */
 @keyframes heroGlowPulse {
-  0%, 100% { filter: drop-shadow(0 0 12px rgba(216, 90, 48, 0.3)); }
-  50% { filter: drop-shadow(0 0 22px rgba(216, 90, 48, 0.55)); }
+  0%, 100% { filter: brightness(var(--nb, 1)) drop-shadow(0 0 calc(12px * var(--ng, 1)) rgba(216, 90, 48, 0.3)); }
+  50% { filter: brightness(var(--nb, 1)) drop-shadow(0 0 calc(22px * var(--ng, 1)) rgba(216, 90, 48, 0.55)); }
+}
+
+/* Cursor proximity eases in and out rather than snapping. */
+.hero-en-arc-line {
+  transition: filter 300ms ease;
+}
+
+/* The chromatic ghosts and the HUD ruler under the last arc. The ghosts get
+   no glow of their own — they are fringes, not lights. */
+.hero-en-arc-ghost {
+  pointer-events: none;
+}
+
+.hero-arc-tick {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1;
+}
+
+.hero-arc-ruler-label {
+  fill: rgba(255, 255, 255, 0.32);
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3097,6 +3124,14 @@ section, aside.pricing, aside.contact, aside.why-us {
   .hero-en-copy.is-in .hero-en-arc-line--hot {
     animation: none;
     clip-path: none;
+  }
+
+  /* The moving decorations go entirely; the static ruler stays — it is
+     typography, not motion. The SMIL animations cannot see media queries,
+     so their host elements are hidden instead. */
+  .hero-arc-scan,
+  .hero-arc-particle {
+    display: none;
   }
 }
 
