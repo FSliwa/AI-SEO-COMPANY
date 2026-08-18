@@ -148,6 +148,35 @@ export default function Hero() {
     };
   }, []);
 
+  // The phone layout is measured, not guessed. The copy is bottom-anchored to
+  // the lettering band, so every pixel the paragraph does not fill surfaces as
+  // dead air under the header — and how much it fills changes with viewport
+  // width, locale and font loading (the Polish runs 199px at 375, 177px at
+  // 390). One observed height feeds the whole chain — row one, the band's top,
+  // the section height — through calc() in the stylesheet, which keeps the
+  // header gap at 20px and the letters gap at 8px at every width in both
+  // languages. The static fallbacks in those rules cover the pre-hydration
+  // frames; the observer also refires on the post-font-load reflow.
+  useEffect(() => {
+    const copy = copyRef.current;
+    if (!copy) return;
+    const section = copy.closest('.hero');
+    const top = copy.querySelector('.hero-en-top');
+    const header = document.querySelector('header');
+    if (!section || !top) return;
+    const apply = () => {
+      section.style.setProperty('--m-copy-h', `${Math.round(top.getBoundingClientRect().height)}px`);
+      if (header) {
+        section.style.setProperty('--m-head-h', `${Math.round(header.getBoundingClientRect().height)}px`);
+      }
+    };
+    const ro = new ResizeObserver(apply);
+    ro.observe(top);
+    if (header) ro.observe(header);
+    apply();
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <section
       className="hero hero--en"
