@@ -2708,7 +2708,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    nothing to steer the lettering away from. */
 @media (min-width: 901px) {
   .hero-en-bg {
-    transform: scale(1.12);
+    transform: translateX(var(--hero-pan, 0px)) scale(1.12);
   }
 }
 
@@ -2799,7 +2799,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    nothing to steer the lettering away from. */
 @media (min-width: 901px) {
   .hero-en-bg {
-    transform: scale(1.12);
+    transform: translateX(var(--hero-pan, 0px)) scale(1.12);
   }
 }
 
@@ -2923,27 +2923,26 @@ section, aside.pricing, aside.contact, aside.why-us {
    as soon as the window aspect changed. max() keeps the padding legal on tall,
    narrow desktop windows, where the word runs off both edges anyway. */
 @media (min-width: 901px) {
-  /* The hero is a 16:10 STAGE on every desktop window: full viewport on
-     classic screens (aspect >= 1.6, where min() returns 100vh - unchanged),
-     and capped at 62.5vw on squarer windows, so the composition is pixel-
-     for-pixel the laptop one, just ending higher with the next section
-     visible below. The scene is height-driven, so one fixed stage aspect =
-     one fixed framing: the word always spans the same relative width, the
-     artwork always reaches the right edge and the stage's bottom, nothing
-     is ever cut. !important beats the inline min-height:100vh. */
+  /* The section keeps the full viewport height everywhere - shortening it
+     was the wrong lever. The real defect on near-square windows is
+     HORIZONTAL: the word's left edge sits at 50% - 55.1vh, which goes
+     negative once the window is narrower than ~1.13 x its height, so the
+     "S" ran off the left side. --hero-pan is exactly the shortfall (plus a
+     20px margin), clamped to zero, so classic screens are untouched and
+     squarer ones slide the framing right until the word is fully visible.
+     The canvas is a full-viewport box scaled 1.12, so even at maximum pan
+     its edges still overhang the viewport on all four sides: the artwork
+     keeps reaching the right edge and the bottom of the screen, and no
+     black gap can open. */
   .hero.hero--en {
-    height: min(100vh, 62.5vw);
-    min-height: 0 !important;
+    --hero-pan: max(0px, calc(55.1vh - 50% + 20px));
   }
 
   .hero-en {
-    /* The offsets are fractions of the STAGE height, and the stage is
-       min(100vh, 62.5vw) - a 16:10 canvas on every desktop window (see the
-       section rule below). min() mirrors that cap: on classic screens the
-       vh term wins (identical to the old rule), on squarer windows the vw
-       term takes over, tracking the shorter stage. */
-    padding-left: max(1.25rem, calc(50% - min(55.1vh, 34.4375vw)));
-    padding-right: max(1.25rem, calc(50% - min(36.65vh, 22.90625vw)));
+    /* Same pan on the copy column, so text and lettering stay locked: when
+       the pan is active both collapse to a flat 20px left margin. */
+    padding-left: max(1.25rem, calc(50% - 55.1vh + var(--hero-pan)));
+    padding-right: max(1.25rem, calc(50% - 36.65vh - var(--hero-pan)));
   }
 }
 
