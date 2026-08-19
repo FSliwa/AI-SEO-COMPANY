@@ -566,7 +566,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
         slug="/blog/content-gap-analysis"
         locale={locale}
         url="/blog/analiza-luk-contentowych"
-        datePublished="2026-08-17"
+        datePublished="2026-08-18"
       />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
@@ -577,7 +577,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
                 Strategia treści
               </span>
               <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
-                17 Sierpnia 2026
+                18 Sierpnia 2026
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
