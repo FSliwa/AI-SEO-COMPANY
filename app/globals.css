@@ -3459,17 +3459,27 @@ section, aside.pricing, aside.contact, aside.why-us {
       --hs: min(1.12, tan(atan2(70vw, 100vh)));
     }
 
+    /* Anchored to the bottom-right: when the scale drops under 1 the scene
+       would otherwise shrink towards its centre and float in black - the
+       artwork's right edge (the robot) and its floor pulled away from the
+       viewport edges. The translate pushes the scaled frame back until its
+       right and bottom edges TOUCH the viewport's, and clamps to zero at
+       classic aspects (s >= 1), so 16:10 screens render bit-identically.
+       The word ends a scene-fixed margin before the frame's right edge, so
+       it stays uncut by construction. */
     .hero-en-bg {
-      transform: scale(var(--hs));
+      transform: translate(max(0%, 50% - 50% * var(--hs)), max(0%, 50% - 50% * var(--hs))) scale(var(--hs));
     }
 
+    /* The copy column and the rows carry the same clamped shift, keeping the
+       8px and 16px meeting points with the word at every scale. */
     .hero-en {
-      padding-left: max(1.25rem, calc(50% - 49.2vh * var(--hs)));
-      padding-right: max(1.25rem, calc(50% - 32.72vh * var(--hs)));
+      padding-left: max(1.25rem, calc(50% - 49.2vh * var(--hs) + max(0%, 50% - 50% * var(--hs))));
+      padding-right: max(1.25rem, calc(50% - 32.72vh * var(--hs) - max(0%, 50% - 50% * var(--hs))));
     }
 
     .hero-en-copy {
-      grid-template-rows: calc(50% - 17.5% * var(--hs) - 8px) calc(28.393% * var(--hs) + 24px) 1fr;
+      grid-template-rows: calc(50% - 17.5% * var(--hs) + max(0%, 50% - 50% * var(--hs)) - 8px) calc(28.393% * var(--hs) + 24px) 1fr;
     }
   }
 }
