@@ -3497,6 +3497,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   background: none;
   font: inherit;
   color: inherit;
+  text-decoration: none;
   cursor: pointer;
   position: relative;
   overflow: hidden;

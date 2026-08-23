@@ -122,7 +122,11 @@ const MOSAIC = [
   { kind: 'gsc', key: 'gsc-3', clientId: 3, clicks: '28', impressions: '7,66 tys.', impressionsEn: '7.66K', ctr: '0,4%', ctrEn: '0.4%', position: '28,9', positionEn: '28.9' },
   { kind: 'gsc', key: 'gsc-1', clientId: 1, clicks: '175', impressions: '9,5 tys.', impressionsEn: '9.5K', ctr: '1,8%', ctrEn: '1.8%', position: '5,7', positionEn: '5.7' },
   { kind: 'gsc', key: 'gsc-2', clientId: 2, clicks: '153', impressions: '6,24 tys.', impressionsEn: '6.24K', ctr: '2,5%', ctrEn: '2.5%', position: '10,3', positionEn: '10.3' },
-  { src: '/projects/mosaic/asebot-m.webp', clientId: 3, w: 468, h: 372, alt: 'Widok mobilny platformy ASE-BOT', altEn: 'ASE-BOT platform on a phone' }
+  { src: '/projects/mosaic/asebot-m.webp', clientId: 3, w: 468, h: 372, alt: 'Widok mobilny platformy ASE-BOT', altEn: 'ASE-BOT platform on a phone' },
+  { src: '/projects/mosaic/tql-1.webp', href: 'https://www.tql.pl/pl/uslugi', brand: 'TQL', w: 1200, h: 667, alt: 'Katalog wdrożeń norm ISO na stronie TQL', altEn: 'Catalogue of ISO implementations on the TQL site' },
+  { src: '/projects/mosaic/tql-2.webp', href: 'https://www.tql.pl/pl/cennik', brand: 'TQL', w: 1200, h: 542, alt: 'Cennik wdrożeń ISO na stronie TQL', altEn: 'ISO implementation pricing on the TQL site' },
+  { src: '/projects/mosaic/tql-3.webp', href: 'https://www.tql.pl/pl/o-mnie', brand: 'TQL', w: 1200, h: 583, alt: 'Strona audytora wiodącego ISO w serwisie TQL', altEn: 'Lead ISO auditor page on the TQL site' },
+  { src: '/projects/mosaic/tql-m.webp', href: 'https://www.tql.pl/pl', brand: 'TQL', w: 468, h: 372, alt: 'Widok mobilny strony TQL', altEn: 'TQL site on a phone' }
 ];
 
 export default function Portfolio() {
@@ -160,6 +164,35 @@ export default function Portfolio() {
         <div className="portfolio-mosaic">
           {MOSAIC.map((tile) => {
             const item = realizedWebsites.find((p) => p.id === tile.clientId);
+
+            /* Tiles for a site we have no case study written for open the live
+               site instead of a modal. Rather that than invent a case study. */
+            if (tile.href) {
+              return (
+                <a
+                  key={tile.src}
+                  className="portfolio-mosaic-tile"
+                  href={tile.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={tile.src}
+                    alt={lang === 'pl' ? tile.alt : tile.altEn}
+                    width={tile.w}
+                    height={tile.h}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="portfolio-mosaic-overlay">
+                    <span className="portfolio-mosaic-brand">{tile.brand}</span>
+                    <span className="portfolio-mosaic-metric">
+                      {lang === 'pl' ? 'zobacz stronę ↗' : 'view site ↗'}
+                    </span>
+                  </span>
+                </a>
+              );
+            }
 
             if (tile.kind === 'gsc') {
               return (
