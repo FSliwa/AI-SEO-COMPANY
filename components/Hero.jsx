@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
 import HeroArcText from './HeroArcText';
+import SceneErrorBoundary from './SceneErrorBoundary';
 
 /**
  * The Spline runtime is roughly 1.5 MB of JavaScript plus the scene itself.
@@ -242,7 +243,12 @@ export default function Hero() {
           the starfield are gone with it — they were a second full-screen
           backdrop nobody could see underneath this one. */}
       <div className={`hero-en-bg${sceneIn ? ' is-in' : ''}`} aria-hidden="true">
-        <Spline scene={SCENE} onLoad={() => setSceneIn(true)} />
+        <SceneErrorBoundary
+          fallback={<div className="hero-en-orb" />}
+          onFail={() => setSceneIn(true)}
+        >
+          <Spline scene={SCENE} onLoad={() => setSceneIn(true)} />
+        </SceneErrorBoundary>
       </div>
 
       {/* Vignette, and on the wide layout the scrim that lifts the copy edges. */}

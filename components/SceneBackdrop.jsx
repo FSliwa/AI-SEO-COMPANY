@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import SceneErrorBoundary from './SceneErrorBoundary';
 
 /**
  * A Spline scene used as a section background.
@@ -68,7 +69,11 @@ export default function SceneBackdrop({ scene, className = '' }) {
 
   return (
     <div ref={ref} className={`scene-backdrop ${className}`.trim()} aria-hidden="true">
-      {mounted && <Spline scene={scene} />}
+      {mounted && (
+        <SceneErrorBoundary>
+          <Spline scene={scene} />
+        </SceneErrorBoundary>
+      )}
     </div>
   );
 }

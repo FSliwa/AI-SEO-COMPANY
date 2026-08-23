@@ -8,6 +8,31 @@ const nextConfig = {
   turbopack: {
     root: path.resolve('.'),
   },
+  // Security headers PageSpeed flagged as missing (23.08.2026). Deliberately
+  // WITHOUT Content-Security-Policy: this site loads a third-party 3D scene and
+  // styles nearly every element inline, so a strict policy would blank the hero
+  // the moment it shipped. CSP belongs in a separate, report-only rollout.
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          // The apex and www already redirect to HTTPS with a permanent 308;
+          // this removes the first insecure hop for returning visitors.
+          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains' },
+          // Nothing on the site is meant to be framed elsewhere.
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          // allow-popups rather than plain same-origin: bare same-origin severs
+          // window.opener, which would break any third-party popup flow added
+          // later (payments, OAuth) for no gain here.
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin-allow-popups' }
+        ]
+      }
+    ];
+  },
+
   async redirects() {
     return [
       // /pl and /pl/* never exist as pages (defaultLocale 'pl' is unprefixed,
