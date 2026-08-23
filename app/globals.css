@@ -3457,3 +3457,222 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 
+
+/* --- Portfolio: ściana realizacji (mozaika) ------------------------------
+   Mechanika z ghost.org, zmierzona na żywo: kolumny równej szerokości,
+   jednakowe rynny, obrazy w naturalnych proporcjach, bez podpisów. Tam było
+   5 kolumn po 386px i gap 16px na sztywno — tu multi-column, żeby liczba
+   kolumn zmieniała się z szerokością bez przeliczania tablicy w JS. */
+.portfolio-mosaic {
+  column-count: 2;
+  column-gap: 12px;
+  padding-inline: 12px;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .portfolio-mosaic { column-count: 3; column-gap: 16px; padding-inline: 16px; }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-mosaic { column-count: 4; }
+}
+
+/* Cztery kolumny to sufit, nie pięć jak u Ghosta: mamy 12 kafelków, a przy
+   pięciu kolumnach wychodzi 2,4 na kolumnę i ściana robi się rzadka. Przy
+   czterech każda kolumna ma trzy kafelki — gęstość zgadza się z pierwowzorem
+   (17 zdjęć / 5 kolumn). Szeroki ekran dostaje szersze kafelki zamiast
+   dodatkowej kolumny. */
+@media (min-width: 1600px) {
+  .portfolio-mosaic { max-width: 1900px; margin-inline: auto; }
+}
+
+/* Kafelek jest przyciskiem (otwiera case study), więc trzeba mu zdjąć całą
+   domyślną skórę przycisku, zanim zacznie wyglądać jak obrazek. */
+.portfolio-mosaic-tile {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  break-inside: avoid;
+  margin: 0 0 12px;
+  /* Bez tego Safari łamie kafelek między kolumnami mimo break-inside. */
+  -webkit-column-break-inside: avoid;
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 640px) {
+  .portfolio-mosaic-tile { margin-bottom: 16px; }
+}
+
+.portfolio-mosaic-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.portfolio-mosaic-tile:hover,
+.portfolio-mosaic-tile:focus-visible {
+  transform: scale(1.02);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  outline: none;
+}
+
+.portfolio-mosaic-tile:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-cta), 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* Marka i metryka wjeżdżają dopiero pod kursorem — na spoczynku ściana ma być
+   samymi ekranami, tak jak u Ghosta. */
+.portfolio-mosaic-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 2.5rem 1rem 0.9rem;
+  background: linear-gradient(180deg, rgba(11, 18, 32, 0) 0%, rgba(11, 18, 32, 0.92) 100%);
+  opacity: 0;
+  transition: opacity 240ms ease;
+  text-align: left;
+}
+
+.portfolio-mosaic-tile:hover .portfolio-mosaic-overlay,
+.portfolio-mosaic-tile:focus-visible .portfolio-mosaic-overlay {
+  opacity: 1;
+}
+
+.portfolio-mosaic-brand {
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.portfolio-mosaic-metric {
+  color: var(--color-cta);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-mosaic-tile,
+  .portfolio-mosaic-overlay { transition: none; }
+  .portfolio-mosaic-tile:hover,
+  .portfolio-mosaic-tile:focus-visible { transform: none; }
+}
+
+/* Pasek klientów pod ścianą: to tu mieszka tekst, który wcześniej niosły
+   karty karuzeli — widoczny, nie schowany pod hover. */
+.portfolio-clients {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 1rem 1.25rem 0;
+}
+
+@media (min-width: 768px) {
+  .portfolio-clients { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+}
+
+.portfolio-client {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Loga klientów są narysowane w ciemnym kolorze pod jasne tło karuzeli;
+   na ciemnej ścianie trzeba je odwrócić — ten sam zabieg, co wcześniej. */
+.portfolio-client-logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.portfolio-client-note {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.portfolio-client-cta {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-cta);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.portfolio-client-cta:hover { text-decoration: underline; }
+
+/* Kafelek z danymi z Search Console. Wchodzi tam, gdzie klient miał dwa zrzuty
+   tego samego szablonu i ściana zaczynała się powtarzać — zamiast trzeciego
+   podobnego ekranu pokazuje dowód: kliknięcia, wyświetlenia, CTR i średnią
+   pozycję z ostatnich 90 dni. Proporcja jak u sąsiadów (1200:667), żeby rytm
+   kolumn się nie rozjechał. */
+.portfolio-gsc {
+  aspect-ratio: 1200 / 667;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1.1rem 1.2rem;
+  text-align: left;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(216, 90, 48, 0.22) 0%, transparent 55%),
+    linear-gradient(160deg, #16202F 0%, #0E1726 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.portfolio-gsc-source {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.portfolio-gsc-brand {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+}
+
+.portfolio-gsc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 0.9rem;
+}
+
+.portfolio-gsc-grid > span {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6rem;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.portfolio-gsc-grid b {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+/* Pozycja to liczba, o którą w tym wykresie chodzi — dostaje pomarańcz sceny. */
+.portfolio-gsc-hero b { color: var(--color-cta); }

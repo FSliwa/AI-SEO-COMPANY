@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
@@ -101,61 +100,34 @@ const realizedWebsites = [
   }
 ];
 
+/* One tile per real screenshot of a client site, captured at 1440x950 (desktop)
+   and 390x900 (mobile) and cropped above each site's cookie banner. Heights
+   differ on purpose: in a column layout that difference IS the mosaic. Order
+   interleaves the three brands so no column shows the same site twice.
+
+   Three tiles are not screenshots: where a client had two views of the same
+   template (and the wall started repeating itself) the tile shows that
+   client's real Search Console numbers instead — clicks, impressions, CTR and
+   average position over the last 90 days, read on 23.08.2026. Proof beats
+   another picture of the same page. */
+const MOSAIC = [
+  { src: '/projects/mosaic/madame-1.webp', clientId: 1, w: 1200, h: 542, alt: 'Strona główna restauracji Madame Thai — sekcja powitalna z rezerwacją stolika', altEn: 'Madame Thai restaurant homepage — hero section with table booking' },
+  { src: '/projects/mosaic/staniax-1.webp', clientId: 2, w: 1200, h: 792, alt: 'Galeria realizacji metalizacji próżniowej na stronie B2B Staniax', altEn: 'Vacuum metallization project gallery on the Staniax B2B site' },
+  { src: '/projects/mosaic/asebot-1.webp', clientId: 3, w: 1200, h: 667, alt: 'Sekcja materiałów i dokumentacji na platformie ASE-BOT', altEn: 'Resources and documentation section of the ASE-BOT platform' },
+  { src: '/projects/mosaic/madame-m.webp', clientId: 1, w: 468, h: 372, alt: 'Widok mobilny strony restauracji Madame Thai', altEn: 'Madame Thai restaurant site on a phone' },
+  { src: '/projects/mosaic/staniax-2.webp', clientId: 2, w: 1200, h: 542, alt: 'Baza wiedzy i aktualności na stronie B2B Staniax', altEn: 'Knowledge base and news section on the Staniax B2B site' },
+  { src: '/projects/mosaic/asebot-2.webp', clientId: 3, w: 1200, h: 542, alt: 'Porównanie narzędzi tradingowych AI na platformie ASE-BOT', altEn: 'AI trading tools comparison on the ASE-BOT platform' },
+  { src: '/projects/mosaic/madame-2.webp', clientId: 1, w: 1200, h: 500, alt: 'Formularz rezerwacji stolika na stronie restauracji Madame Thai', altEn: 'Table booking form on the Madame Thai restaurant site' },
+  { src: '/projects/mosaic/staniax-m.webp', clientId: 2, w: 468, h: 372, alt: 'Widok mobilny strony B2B Staniax', altEn: 'Staniax B2B site on a phone' },
+  { kind: 'gsc', key: 'gsc-3', clientId: 3, clicks: '28', impressions: '7,66 tys.', impressionsEn: '7.66K', ctr: '0,4%', ctrEn: '0.4%', position: '28,9', positionEn: '28.9' },
+  { kind: 'gsc', key: 'gsc-1', clientId: 1, clicks: '175', impressions: '9,5 tys.', impressionsEn: '9.5K', ctr: '1,8%', ctrEn: '1.8%', position: '5,7', positionEn: '5.7' },
+  { kind: 'gsc', key: 'gsc-2', clientId: 2, clicks: '153', impressions: '6,24 tys.', impressionsEn: '6.24K', ctr: '2,5%', ctrEn: '2.5%', position: '10,3', positionEn: '10.3' },
+  { src: '/projects/mosaic/asebot-m.webp', clientId: 3, w: 468, h: 372, alt: 'Widok mobilny platformy ASE-BOT', altEn: 'ASE-BOT platform on a phone' }
+];
+
 export default function Portfolio() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoplay, setIsAutoplay] = useState(true);
   const [activeModal, setActiveModal] = useState(null);
   const lang = useLocale();
-
-  const handleScroll = (e) => {
-    const container = e.target;
-    const cards = container.querySelectorAll('.apple-card');
-    if (!cards || !cards.length) return;
-
-    const containerRect = container.getBoundingClientRect();
-    const containerCenterX = containerRect.left + containerRect.width / 2;
-
-    let closestIndex = 0;
-    let minDistance = Infinity;
-
-    cards.forEach((card, idx) => {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect.left + cardRect.width / 2;
-      const distance = Math.abs(containerCenterX - cardCenterX);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIndex = idx;
-      }
-    });
-
-    setActiveIndex(closestIndex);
-  };
-
-  const scrollTo = (index) => {
-    const container = document.getElementById('apple-carousel');
-    if (container) {
-      const cards = container.querySelectorAll('.apple-card');
-      if (cards[index]) {
-        const containerRect = container.getBoundingClientRect();
-        const cardRect = cards[index].getBoundingClientRect();
-        const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
-        container.scrollTo({
-          left: scrollOffset,
-          behavior: 'smooth'
-        });
-        setActiveIndex(index);
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (!isAutoplay) return;
-    const interval = setInterval(() => {
-      const nextIndex = (activeIndex + 1) % realizedWebsites.length;
-      scrollTo(nextIndex);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isAutoplay, activeIndex]);
 
   return (
     <section className="portfolio" id="portfolio" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
@@ -175,362 +147,103 @@ export default function Portfolio() {
         </Reveal>
       </div>
 
-      {/* Apple-style Carousel (Full Screen Width) */}
-      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
-        <RevealStagger 
-            id="apple-carousel"
-            onScroll={handleScroll}
-            style={{ 
-              display: 'flex', 
-              overflowX: 'auto', 
-              scrollSnapType: 'x mandatory', 
-              scrollbarWidth: 'none', 
-              msOverflowStyle: 'none', 
-              gap: '1.5rem',
-              paddingBottom: '2rem',
-              paddingLeft: 'calc(50vw - min(42.5vw, 600px))',
-              paddingRight: 'calc(50vw - min(42.5vw, 600px))',
-              scrollPaddingLeft: 'calc(50vw - min(42.5vw, 600px))' // Centers the cards perfectly
-            }}
-          >
-            <style jsx>{`
-              #apple-carousel::-webkit-scrollbar { display: none; }
-            `}</style>
-            
-            {realizedWebsites.map((item, index) => (
-              <RevealItem 
-                key={item.id} 
-                className="apple-card"
-                style={{
-                  flex: '0 0 min(85vw, 1200px)', // Max width 1200px or 85% of screen
-                  scrollSnapAlign: 'center',
-                  background: '#000000', 
-                  borderRadius: '36px',
-                  padding: '4rem 3.5rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  minHeight: '600px',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
+      {/* The wall. One column layout, natural aspect ratios, equal gutters —
+          the mechanics of ghost.org's theme gallery, measured rather than
+          guessed (5 columns x 386px, 16px gap, images at their own heights).
+          CSS multi-column does the balancing, so the column count can change
+          per breakpoint without re-chunking the array in JS.
+
+          It replaces the carousel, but nothing it used to say is gone: the
+          headline metric and its sentence are in the strip underneath, and the
+          full case studies still open in the same modal — now from a tile. */}
+      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0B1220', padding: '3.5rem 0 3rem' }}>
+        <div className="portfolio-mosaic">
+          {MOSAIC.map((tile) => {
+            const item = realizedWebsites.find((p) => p.id === tile.clientId);
+
+            if (tile.kind === 'gsc') {
+              return (
+                <button
+                  key={tile.key}
+                  type="button"
+                  className="portfolio-mosaic-tile portfolio-gsc"
+                  onClick={() => setActiveModal(item)}
+                  aria-label={`${item.brandName} — ${lang === 'pl' ? 'wyniki w Google Search Console, zobacz case study' : 'Google Search Console results, view case study'}`}
+                >
+                  <span className="portfolio-gsc-source">Google Search Console · {lang === 'pl' ? '90 dni' : '90 days'}</span>
+                  <span className="portfolio-gsc-brand">{item.brandName}</span>
+                  <span className="portfolio-gsc-grid">
+                    <span>
+                      <b>{tile.clicks}</b>
+                      {lang === 'pl' ? 'kliknięcia' : 'clicks'}
+                    </span>
+                    <span>
+                      <b>{lang === 'pl' ? tile.impressions : tile.impressionsEn}</b>
+                      {lang === 'pl' ? 'wyświetleń' : 'impressions'}
+                    </span>
+                    <span>
+                      <b>{lang === 'pl' ? tile.ctr : tile.ctrEn}</b>
+                      CTR
+                    </span>
+                    <span className="portfolio-gsc-hero">
+                      <b>{lang === 'pl' ? tile.position : tile.positionEn}</b>
+                      {lang === 'pl' ? 'średnia pozycja' : 'average position'}
+                    </span>
+                  </span>
+                </button>
+              );
+            }
+
+            return (
+              <button
+                key={tile.src}
+                type="button"
+                className="portfolio-mosaic-tile"
+                onClick={() => setActiveModal(item)}
+                aria-label={`${item.brandName} — ${lang === 'pl' ? 'zobacz case study' : 'view case study'}`}
               >
-                
-                {item.layout === 'center' ? (
-                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
-                    {/* Top Header Text (Centered above screenshot, no button) */}
-                    <div className="portfolio-text-container" style={{ maxWidth: item.id === 1 ? '720px' : '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
-                      <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
-                        {item.brandLogo}
-                      </div>
-                      <div style={{ 
-                        fontSize: item.id === 1 ? 'clamp(1.85rem, 3vw, 2.45rem)' : 'clamp(2.2rem, 4vw, 3.2rem)', 
-                        fontWeight: 700, 
-                        color: '#FFFFFF', 
-                        letterSpacing: '-0.03em', 
-                        lineHeight: 1.22, 
-                        marginBottom: '0' 
-                      }}>
-                        {item.id === 1 ? (
-                          lang === 'pl' 
-                            ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.' 
-                            : 'Building and scaling digital sales for the newly opened restaurant location.'
-                        ) : (
-                          `${item.metric} ${lang === 'pl' ? 'wzrostu odwiedzin organicznych po 1 miesiącu.' : 'increase in organic visits after 1 month.'}`
-                        )}
-                      </div>
-                    </div>
+                <img
+                  src={tile.src}
+                  alt={lang === 'pl' ? tile.alt : tile.altEn}
+                  width={tile.w}
+                  height={tile.h}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="portfolio-mosaic-overlay">
+                  <span className="portfolio-mosaic-brand">{item.brandName}</span>
+                  <span className="portfolio-mosaic-metric">{item.metric}</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
-                    {/* Centered 80% Width Image anchored FLUSH to bottom edge during pulse animation */}
-                    <motion.div 
-                      className="portfolio-image-container"
-                      animate={{ scaleY: [1, 1.03, 1] }}
-                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-                      style={{ 
-                        width: '80%', 
-                        height: '320px', 
-                        position: 'absolute',
-                        bottom: '-4.1rem', // Flush with bottom card boundary
-                        left: '10%',
-                        transformOrigin: 'bottom center', // Ensures bottom ALWAYS stays flush with card bottom
-                        borderTopLeftRadius: '24px', 
-                        borderTopRightRadius: '24px', 
-                        overflow: 'hidden', 
-                        boxShadow: '0 -20px 60px rgba(0,0,0,0.9)', 
-                        border: '1px solid rgba(255,255,255,0.18)',
-                        borderBottom: 'none',
-                        zIndex: 1
-                      }}
-                    >
-                      {item.largeImageMobile ? (
-                        <picture>
-                          <source srcSet={item.largeImageMobile} media="(max-width: 768px)" />
-                          <img 
-                            src={item.largeImage} 
-                            alt={(lang === 'en' ? (item.imgAltEn || item.imgAlt) : item.imgAlt) || item.brandName} title={(lang === 'en' ? (item.imgTitleEn || item.imgTitle) : item.imgTitle) || item.brandName} 
-                            className="portfolio-mobile-aware-img"
-                          />
-                        </picture>
-                      ) : (
-                        <img 
-                          src={item.largeImage} 
-                          alt={(lang === 'en' ? (item.imgAltEn || item.imgAlt) : item.imgAlt) || item.brandName} title={(lang === 'en' ? (item.imgTitleEn || item.imgTitle) : item.imgTitle) || item.brandName} 
-                          style={{ 
-                            width: '100%', 
-                            marginTop: '-75px', // Crops out browser Chrome/tabs UI at the top
-                            height: 'calc(100% + 75px)', 
-                            objectFit: 'cover', 
-                            objectPosition: 'top' 
-                          }} 
-                        />
-                      )}
-                    </motion.div>
-                  </div>
-                ) : item.layout === 'center-reverse' ? (
-                  <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
-                    {/* Centered 80% Width Image anchored FLUSH to TOP edge during pulse animation */}
-                    <motion.div 
-                      className="portfolio-image-container"
-                      animate={{ scaleY: [1, 1.03, 1] }}
-                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-                      style={{ 
-                        width: '80%', 
-                        height: '320px', 
-                        position: 'absolute',
-                        top: '-4.1rem', // Flush with TOP card boundary
-                        left: '10%',
-                        transformOrigin: 'top center', // Ensures top ALWAYS stays flush with card top
-                        borderBottomLeftRadius: '24px', 
-                        borderBottomRightRadius: '24px', 
-                        borderTopLeftRadius: '0',
-                        borderTopRightRadius: '0',
-                        overflow: 'hidden', 
-                        boxShadow: '0 20px 60px rgba(0,0,0,0.9)', 
-                        border: '1px solid rgba(255,255,255,0.18)',
-                        borderTop: 'none',
-                        zIndex: 1
-                      }}
-                    >
-                      <img 
-                        src={item.largeImage} 
-                        alt={(lang === 'en' ? (item.imgAltEn || item.imgAlt) : item.imgAlt) || item.brandName} title={(lang === 'en' ? (item.imgTitleEn || item.imgTitle) : item.imgTitle) || item.brandName} 
-                        style={{ 
-                          width: '100%', 
-                          height: '100%', 
-                          objectFit: 'cover', 
-                          objectPosition: 'top' 
-                        }} 
-                      />
-                    </motion.div>
-
-                    {/* Bottom Header Text */}
-                    <div className="portfolio-text-container" style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2, position: 'relative' }}>
-                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
-                        {item.id === 3 ? (lang === 'pl' ? '+8 113.8% Wzrost widoczności w Google w 3 miesiące.' : '+8 113.8% Organic Search Growth in 3 months.') : item.metricSubtitle}
-                      </div>
-                      
-                      {/* Position the logo absolutely below the headline so the headline doesn't shift up */}
-                      <div style={{ position: 'absolute', bottom: '-2.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
-                        {item.brandLogo}
-                      </div>
-                    </div>
-                  </div>
-                ) : item.layout === 'right-side' ? (
-                  <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%' }}>
-                    {/* Left Content (Staniax: Capped width to ensure clean spacing from right image) */}
-                    <div className="portfolio-text-container" style={{ flex: '0 0 42%', maxWidth: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
-                      <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
-                        {item.brandLogo}
-                      </div>
-                      
-                      {/* Large Headline filling space like Madame Thai */}
-                      <div style={{ 
-                        fontSize: 'clamp(2.2rem, 3.8vw, 3.5rem)', 
-                        fontWeight: 700, 
-                        color: '#FFFFFF', 
-                        letterSpacing: '-0.035em', 
-                        lineHeight: 1.18 
-                      }}>
-                        {item.id === 3 
-                          ? (lang === 'pl' ? '+8 113.8% Wzrost widoczności w Google w 3 miesiące.' : '+8 113.8% Organic Search Growth in 3 months.') 
-                          : (lang === 'pl' ? '2.8k+ wyświetleń w wyszukiwarce od zerowej widoczności.' : '2.8k+ organic search impressions from zero visibility.')
-                        }
-                      </div>
-                    </div>
-
-                    {/* Image anchored flush right, 80% of entire card height, right edge straight and pulled INWARD to decrease text gap */}
-                    <motion.div 
-                      className="portfolio-image-container"
-                      animate={{ scale: [1, 1.008, 1] }}
-                      transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-                      style={{ 
-                        position: 'absolute',
-                        right: '-1.5rem', 
-                        top: '10%',
-                        bottom: '10%',
-                        width: 'calc(56% + 1.5rem)',
-                        borderTopLeftRadius: '24px',
-                        borderBottomLeftRadius: '24px',
-                        borderTopRightRadius: '0',
-                        borderBottomRightRadius: '0',
-                        overflow: 'hidden',
-                        boxShadow: '-15px 0 40px rgba(0,0,0,0.5)',
-                        zIndex: 1
-                      }}
-                    >
-                      <img 
-                        src={item.desktopCard ? item.desktopCard.image : '/projects/kafelek-staniax-full.webp'} 
-                        alt={(lang === 'en' ? (item.imgAltEn || item.imgAlt) : item.imgAlt) || item.brandName} title={(lang === 'en' ? (item.imgTitleEn || item.imgTitle) : item.imgTitle) || item.brandName} 
-                        style={{ 
-                          width: '100%', 
-                          height: '100%', 
-                          objectFit: 'cover', 
-                          objectPosition: 'top left'
-                        }} 
-                      />
-                    </motion.div>
-                  </div>
-                ) : (
-                  <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', height: '100%', width: '100%' }}>
-                    
-                    {/* Left Content */}
-                    <div style={{ flex: '1 1 400px', maxWidth: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                      <div style={{ marginBottom: '2rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
-                        {item.brandLogo}
-                      </div>
-                      
-                      <div style={{ marginBottom: '3rem' }}>
-                        <div style={{ 
-                          fontSize: 'clamp(4.5rem, 8vw, 7rem)', 
-                          fontWeight: 700, 
-                          lineHeight: 1, 
-                          letterSpacing: '-0.04em',
-                          color: '#FFFFFF', // Pure white, no gradient
-                          marginBottom: '1rem'
-                        }}>
-                          {item.metric}
-                        </div>
-                        <div style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500, lineHeight: 1.6 }}>
-                          {lang === 'pl' ? 'Wzrost organiczny w Google' : item.metricSubtitle}
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <button
-                          className="btn btn-secondary"
-                          style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent', padding: '0.8rem 2rem', borderRadius: '50px' }}
-                          onClick={() => setActiveModal(item)}
-                        >
-                          {lang === 'pl' ? 'Zobacz Case Study' : 'View Case Study'}
-                        </button>
-                      </div>
-                    </div>
-                    
-                    {/* Right Visual (Mockups) */}
-                    <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', position: 'relative' }}>
-                      <motion.div 
-                        animate={{ y: [0, -15, 0] }}
-                        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-                        style={{ position: 'relative', width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                      >
-                         {item.rightVisual === 'desktop' ? (
-                            <div style={{ width: '100%', maxWidth: '650px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                              <img src={item.desktopCard.image} alt="Desktop preview" style={{ width: '100%', display: 'block' }} />
-                            </div>
-                         ) : (
-                            <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-                               {item.screens.map((screen, idx) => (
-                                 <motion.div 
-                                   key={idx} 
-                                   animate={{ y: [0, idx % 2 === 0 ? 10 : -10, 0] }}
-                                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity, delay: idx * 0.5 }}
-                                   style={{ 
-                                     width: '180px', 
-                                     height: '360px', 
-                                     borderRadius: '28px', 
-                                     overflow: 'hidden', 
-                                     boxShadow: '0 20px 50px rgba(0,0,0,0.6)', 
-                                     border: '6px solid #222',
-                                     transform: screen.transform
-                                   }}
-                                 >
-                                   <img src={screen.image} alt={screen.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                 </motion.div>
-                               ))}
-                            </div>
-                         )}
-                      </motion.div>
-                    </div>
-                  </div>
-                )}
+        {/* Every line the carousel cards showed, kept visible instead of hidden
+            behind a hover state. */}
+        <div className="container" style={{ maxWidth: '1440px' }}>
+          <RevealStagger className="portfolio-clients">
+            {realizedWebsites.map((item) => (
+              <RevealItem key={item.id} className="portfolio-client">
+                <span className="portfolio-client-logo">{item.brandLogo}</span>
+                <p className="portfolio-client-note">
+                  {item.id === 1
+                    ? (lang === 'pl'
+                        ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.'
+                        : 'Building and scaling digital sales for the newly opened restaurant location.')
+                    : (lang === 'pl'
+                        ? `${item.metric} wzrostu odwiedzin organicznych po 1 miesiącu.`
+                        : `${item.metric} increase in organic visits after 1 month.`)}
+                </p>
+                <button type="button" className="portfolio-client-cta" onClick={() => setActiveModal(item)}>
+                  {lang === 'pl' ? 'Zobacz case study' : 'View case study'} →
+                </button>
               </RevealItem>
             ))}
           </RevealStagger>
-          
-          {/* Pagination Controls (1:1 Apple Proportions from Screenshot) */}
-          <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
-            {/* Dots Pill Container */}
-            <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
-              {realizedWebsites.map((_, idx) => (
-                <motion.button
-                  key={idx}
-                  layout
-                  initial={false}
-                  onClick={() => scrollTo(idx)}
-                  animate={{
-                    width: activeIndex === idx ? '36px' : '8px',
-                    backgroundColor: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
-                    borderRadius: activeIndex === idx ? '8px' : '50%'
-                  }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 400,
-                    damping: 30
-                  }}
-                  style={{
-                    height: '8px',
-                    border: 'none',
-                    padding: 0,
-                    cursor: 'pointer'
-                  }}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Standalone Apple Play/Pause Button (44px) */}
-            <button 
-              onClick={() => setIsAutoplay(!isAutoplay)}
-              style={{ 
-                background: '#E8E8ED', 
-                border: 'none', 
-                borderRadius: '50%', 
-                width: '44px', 
-                height: '44px', 
-                cursor: 'pointer', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                padding: '0',
-                transition: 'background 0.2s ease, transform 0.2s ease'
-              }}
-              aria-label={isAutoplay ? 'Pause' : 'Play'}
-            >
-              {isAutoplay ? (
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none">
-                  <rect x="6" y="4" width="4" height="16" />
-                  <rect x="14" y="4" width="4" height="16" />
-                </svg>
-              ) : (
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              )}
-            </button>
-          </Reveal>
-
         </div>
+      </div>
+
 
       {/* Case Study Detail Modal (unchanged logic, just styled dark) */}
       {activeModal && (
