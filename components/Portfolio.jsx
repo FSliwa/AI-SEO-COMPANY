@@ -101,20 +101,23 @@ const realizedWebsites = [
   }
 ];
 
-/* Siedem kafelkow w dwoch wysokosciach: cztery sekcje hero stron glownych
+/* Dziewiec kafelkow w dwoch wysokosciach: szesc sekcji hero stron glownych
    klientow (1200x1080, wysoki wariant) i trzy prawdziwe zrzuty paneli
    Performance z Google Search Console (1600x726, niski wariant). Zadnych
    podstron i zadnych kart z liczbami - dowodem sa same panele. Kolejnosc
-   jest ulozona tak, zeby przy czterech kolumnach panel GSC wypadal pod hero
-   tej samej marki (Staniax, ASE-BOT). */
+   dobrana pod cztery kolumny: panel GSC laduje bezposrednio pod hero tej
+   samej marki (Staniax, ASE-BOT), a stosy wychodza niemal rowne
+   (1.8 / 1.8 / 1.35 / 1.8 szerokosci kolumny). */
 const MOSAIC = [
-  { src: '/projects/mosaic/mad-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
   { src: '/projects/mosaic/sta-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej Staniax — metalizacja próżniowa', altEn: 'Hero section of the Staniax vacuum metallization homepage' },
+  { src: '/projects/mosaic/mad-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
   { src: '/projects/mosaic/ase-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej platformy tradingowej ASE-BOT', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
   { src: '/projects/mosaic/tql-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
-  { src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' },
   { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
-  { src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 3 months' }
+  { src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
+  { src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 3 months' },
+  { src: '/projects/mosaic/fix-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
+  { src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' }
 ];
 
 export default function Portfolio() {
@@ -131,7 +134,7 @@ export default function Portfolio() {
   useEffect(() => {
     const calc = () => {
       const w = window.innerWidth;
-      // Maks. cztery stosy: przy siedmiu kafelkach piaty stalby pusty.
+      // Maks. cztery stosy - kolejnosc MOSAIC jest dobrana pod cztery kolumny.
       setCols(w >= 1024 ? 4 : w >= 640 ? 3 : 2);
     };
     calc();
