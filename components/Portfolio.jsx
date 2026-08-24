@@ -118,8 +118,8 @@ const MOSAIC = [
     alt: 'Sekcja hero strony AI SEO COMPANY — napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website — 3D SEO scene' },
 { src: '/projects/mosaic/ase-a-v2.webp', w: 1200, h: 700, alt: 'Pełna sekcja hero platformy tradingowej ASE-BOT — AI trading i analiza rynków', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
 { src: '/projects/mosaic/tql-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' , srcEn: '/projects/mosaic/tql-a-en.webp' },
-{ src: '/projects/mosaic/sta-a-v3.webp', w: 1200, h: 732, alt: 'Sekcja „Kim jesteśmy" strony Staniax — metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' , srcEn: '/projects/mosaic/sta-a-en2.webp' },
-{ src: '/projects/mosaic/own-blog-pl2.webp', srcEn: '/projects/mosaic/own-blog-en2.webp', w: 1200, h: 700,
+{ src: '/projects/mosaic/sta-a-v4.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax — metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' , srcEn: '/projects/mosaic/sta-a-en3.webp' },
+{ src: '/projects/mosaic/own-blog-pl3.webp', srcEn: '/projects/mosaic/own-blog-en3.webp', w: 1200, h: 840,
     alt: 'Blog AI SEO COMPANY — artykuły o SEO i web designie', altEn: 'AI SEO COMPANY blog — articles on SEO and web design' },
 { src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
@@ -163,9 +163,9 @@ export default function Portfolio() {
     if (cols === 5) {
       const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
       return [
-        ['elkat-a-v2', 'sta-a-v3', 'staniax'],
+        ['elkat-a-v2', 'sta-a-v4', 'staniax'],
         ['mad-a-v2', 'madamethai'],
-        ['own-hero-pl', 'own-blog-pl2', 'ai-seo-company'],
+        ['own-hero-pl', 'own-blog-pl3', 'ai-seo-company'],
         ['ase-a-v2', 'ase-bot'],
         ['tql-a', 'fix-a-v2'],
       ].map((stack) => stack.map((k) => byKey[k]));
