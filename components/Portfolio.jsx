@@ -109,11 +109,11 @@ const realizedWebsites = [
    samej marki (Staniax, Madame Thai, ASE-BOT), a stosy wychodza poszarpane
    jak u Ghosta (1.8 / 2.25 / 1.35 / 1.8 szerokosci kolumny). */
 const MOSAIC = [
-{ src: '/projects/mosaic/mad-a.webp', w: 1200, h: 970, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
-{ src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 840, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
+{ src: '/projects/mosaic/mad-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
+{ src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
 { src: '/projects/mosaic/ase-a.webp', w: 1200, h: 600, alt: 'Sekcja hero strony głównej platformy tradingowej ASE-BOT', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
 { src: '/projects/mosaic/fix-a.webp', w: 1200, h: 610, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
-{ src: '/projects/mosaic/sta-a.webp', w: 1200, h: 790, alt: 'Sekcja hero strony głównej Staniax — metalizacja próżniowa', altEn: 'Hero section of the Staniax vacuum metallization homepage' },
+{ src: '/projects/mosaic/sta-a.webp', w: 1200, h: 790, alt: 'Sekcja „Kim jesteśmy" strony Staniax — metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' },
 { src: '/projects/mosaic/tql-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
 { src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' },
@@ -156,8 +156,8 @@ export default function Portfolio() {
     if (cols === 5) {
       const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
       return [
-        ['mad-a', 'madamethai'],
-        ['elkat-a', 'tql-a'],
+        ['elkat-a', 'madamethai'],
+        ['mad-a', 'tql-a'],
         ['ase-a', 'ase-bot'],
         ['sta-a', 'staniax'],
         ['fix-a', 'ai-seo-company'],
@@ -196,13 +196,18 @@ export default function Portfolio() {
             </Link>
           </div>
           <div className="portfolio-head-visual">
-            <img
-              src="/projects/mosaic/feature.webp"
-              alt={lang === 'pl' ? 'Strona internetowa restauracji Madame Thai zaprojektowana przez AI SEO COMPANY' : 'Madame Thai restaurant website designed by AI SEO COMPANY'}
-              width={1600}
-              height={889}
-              loading="lazy"
-              decoding="async"
+            {/* Film z realizacji ASE-BOT (39,5 MB MP4 skompresowany do 1,9 MB,
+                1280 px, bez audio). Wyciszony autoplay w petli - bez kontrolek,
+                jak wizual w sekcji Ghosta. */}
+            <video
+              src="/projects/ase-bot-demo.mp4"
+              poster="/projects/mosaic/feature.webp"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label={lang === 'pl' ? 'Prezentacja platformy tradingowej ASE-BOT zaprojektowanej przez AI SEO COMPANY' : 'Showcase of the ASE-BOT trading platform designed by AI SEO COMPANY'}
             />
           </div>
         </Reveal>
