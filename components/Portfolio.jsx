@@ -112,15 +112,15 @@ const MOSAIC = [
 { src: '/projects/mosaic/sta-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej Staniax — metalizacja próżniowa', altEn: 'Hero section of the Staniax vacuum metallization homepage' },
 { src: '/projects/mosaic/mad-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
 { src: '/projects/mosaic/ase-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej platformy tradingowej ASE-BOT', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
-{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
 { src: '/projects/gsc/madamethai.webp', w: 1600, h: 726,
     alt: 'Panel Performance madamethai.pl w Google Search Console: 187 kliknięć i 10,1 tys. wyświetleń w 3 miesiące',
     altEn: 'Google Search Console performance panel for madamethai.pl: 187 clicks and 10.1K impressions over 3 months' },
 { src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 3 months' },
+{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
 { src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
-{ src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' },
-{ src: '/projects/mosaic/fix-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' }
+{ src: '/projects/mosaic/fix-a.webp', w: 1200, h: 1080, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
+{ src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' }
 ];
 
 export default function Portfolio() {
@@ -145,10 +145,23 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', calc);
   }, []);
 
-  /* Prosty round-robin: przy czterech kolumnach hero laduje na gorze stosu,
-     a panel GSC tej samej marki zaraz pod nim. Wyrownanie stosow do dolu
-     (align-items: end) robi poszarpana gorna krawedz - jak u Ghosta. */
+  /* Przy czterech kolumnach uklad jest recznie dobrany: kazda kolumna ma
+     dokladnie jeden panel GSC (zadnych dwoch jasnych paneli obok siebie),
+     marka stoi nad swoim wynikiem, a stosy naprzemiennie niskie i wysokie
+     (1.35 / 2.25 / 1.35 / 2.25 szerokosci kolumny) daja rytm poszarpanej
+     gornej krawedzi. Przy 3/2 kolumnach wystarcza round-robin - kolejnosc
+     MOSAIC jest dobrana tak, ze pary marka+wynik trafiaja do tej samej
+     kolumny takze przy trzech stosach. */
   const columns = (() => {
+    if (cols === 4) {
+      const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
+      return [
+        ['sta-a', 'staniax'],
+        ['mad-a', 'madamethai', 'fix-a'],
+        ['ase-a', 'ase-bot'],
+        ['tql-a', 'elkat-a', 'ai-seo-company'],
+      ].map((stack) => stack.map((k) => byKey[k]));
+    }
     const stacks = Array.from({ length: cols }, () => []);
     MOSAIC.forEach((tile, i) => stacks[i % cols].push(tile));
     return stacks;
