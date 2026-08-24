@@ -102,19 +102,19 @@ const realizedWebsites = [
 ];
 
 /* Dziesiec kafelkow w dwoch wysokosciach: szesc sekcji hero stron glownych
-   klientow (1200x800, szerszy wariant jak u Ghosta) i cztery prawdziwe zrzuty paneli
+   klientow (1200x700, proporcja 1.71:1 jak dominujace kafle u Ghosta) i cztery prawdziwe zrzuty paneli
    Performance z Google Search Console (1600x726, niski wariant). Zadnych
    podstron i zadnych kart z liczbami - dowodem sa same panele. Kolejnosc
    dobrana pod cztery kolumny: panel GSC laduje bezposrednio pod hero tej
    samej marki (Staniax, Madame Thai, ASE-BOT), a stosy wychodza poszarpane
    jak u Ghosta (1.8 / 2.25 / 1.35 / 1.8 szerokosci kolumny). */
 const MOSAIC = [
-{ src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 800, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
-{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 800, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
-{ src: '/projects/mosaic/mad-a.webp', w: 1200, h: 800, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
-{ src: '/projects/mosaic/ase-a.webp', w: 1200, h: 800, alt: 'Sekcja hero strony głównej platformy tradingowej ASE-BOT', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
-{ src: '/projects/mosaic/sta-a.webp', w: 1200, h: 800, alt: 'Sekcja hero strony głównej Staniax — metalizacja próżniowa', altEn: 'Hero section of the Staniax vacuum metallization homepage' },
-{ src: '/projects/mosaic/fix-a.webp', w: 1200, h: 800, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
+{ src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 700, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
+{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
+{ src: '/projects/mosaic/mad-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
+{ src: '/projects/mosaic/ase-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej platformy tradingowej ASE-BOT', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
+{ src: '/projects/mosaic/sta-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej Staniax — metalizacja próżniowa', altEn: 'Hero section of the Staniax vacuum metallization homepage' },
+{ src: '/projects/mosaic/fix-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
 { src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' },
 { src: '/projects/gsc/madamethai.webp', w: 1600, h: 726,
