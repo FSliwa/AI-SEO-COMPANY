@@ -3708,3 +3708,25 @@ textarea,
 [contenteditable='true'] {
   cursor: text !important;
 }
+
+
+/* --- Okruszki nawigacyjne: widoczny odpowiednik BreadcrumbList (wytyczne
+   danych strukturalnych: markup = widoczna tresc). Naglowek serwisu jest
+   fixed (89 px, z-index 1000), wiec pasek dostaje wlasny odstep od gory,
+   a sasiadujacy main oddaje swoj - bez podwojnej przerwy. */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 108px 24px 0;
+  font-size: 0.8rem;
+  color: #86868B;
+  position: relative;
+  z-index: 1;
+}
+.breadcrumbs a { color: #6E6E73; text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs [aria-current] { color: #1D1D1F; }
+.breadcrumbs + main.subpage-main { margin-top: -76px; }
