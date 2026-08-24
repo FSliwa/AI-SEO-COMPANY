@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { Link } from '@/i18n/routing';
 
 const realizedWebsites = [
   {
@@ -111,43 +112,107 @@ const realizedWebsites = [
    average position over the last 90 days, read on 23.08.2026. Proof beats
    another picture of the same page. */
 const MOSAIC = [
-  { src: '/projects/mosaic/madame-1.webp', clientId: 1, w: 1200, h: 542, alt: 'Strona główna restauracji Madame Thai — sekcja powitalna z rezerwacją stolika', altEn: 'Madame Thai restaurant homepage — hero section with table booking' },
-  { src: '/projects/mosaic/staniax-1.webp', clientId: 2, w: 1200, h: 792, alt: 'Galeria realizacji metalizacji próżniowej na stronie B2B Staniax', altEn: 'Vacuum metallization project gallery on the Staniax B2B site' },
-  { src: '/projects/mosaic/asebot-1.webp', clientId: 3, w: 1200, h: 667, alt: 'Sekcja materiałów i dokumentacji na platformie ASE-BOT', altEn: 'Resources and documentation section of the ASE-BOT platform' },
-  { src: '/projects/mosaic/madame-m.webp', clientId: 1, w: 468, h: 372, alt: 'Widok mobilny strony restauracji Madame Thai', altEn: 'Madame Thai restaurant site on a phone' },
-  { src: '/projects/mosaic/staniax-2.webp', clientId: 2, w: 1200, h: 542, alt: 'Baza wiedzy i aktualności na stronie B2B Staniax', altEn: 'Knowledge base and news section on the Staniax B2B site' },
-  { src: '/projects/mosaic/asebot-2.webp', clientId: 3, w: 1200, h: 542, alt: 'Porównanie narzędzi tradingowych AI na platformie ASE-BOT', altEn: 'AI trading tools comparison on the ASE-BOT platform' },
-  { src: '/projects/mosaic/madame-2.webp', clientId: 1, w: 1200, h: 500, alt: 'Formularz rezerwacji stolika na stronie restauracji Madame Thai', altEn: 'Table booking form on the Madame Thai restaurant site' },
-  { src: '/projects/mosaic/staniax-m.webp', clientId: 2, w: 468, h: 372, alt: 'Widok mobilny strony B2B Staniax', altEn: 'Staniax B2B site on a phone' },
-  { kind: 'gsc', key: 'gsc-3', clientId: 3, clicks: '28', impressions: '7,66 tys.', impressionsEn: '7.66K', ctr: '0,4%', ctrEn: '0.4%', position: '28,9', positionEn: '28.9' },
-  { kind: 'gsc', key: 'gsc-1', clientId: 1, clicks: '175', impressions: '9,5 tys.', impressionsEn: '9.5K', ctr: '1,8%', ctrEn: '1.8%', position: '5,7', positionEn: '5.7' },
-  { kind: 'gsc', key: 'gsc-2', clientId: 2, clicks: '153', impressions: '6,24 tys.', impressionsEn: '6.24K', ctr: '2,5%', ctrEn: '2.5%', position: '10,3', positionEn: '10.3' },
-  { src: '/projects/mosaic/asebot-m.webp', clientId: 3, w: 468, h: 372, alt: 'Widok mobilny platformy ASE-BOT', altEn: 'ASE-BOT platform on a phone' },
-  { src: '/projects/mosaic/tql-1.webp', href: 'https://www.tql.pl/pl/uslugi', brand: 'TQL', w: 1200, h: 667, alt: 'Katalog wdrożeń norm ISO na stronie TQL', altEn: 'Catalogue of ISO implementations on the TQL site' },
-  { src: '/projects/mosaic/tql-2.webp', href: 'https://www.tql.pl/pl/cennik', brand: 'TQL', w: 1200, h: 542, alt: 'Cennik wdrożeń ISO na stronie TQL', altEn: 'ISO implementation pricing on the TQL site' },
-  { src: '/projects/mosaic/tql-3.webp', href: 'https://www.tql.pl/pl/o-mnie', brand: 'TQL', w: 1200, h: 583, alt: 'Strona audytora wiodącego ISO w serwisie TQL', altEn: 'Lead ISO auditor page on the TQL site' },
-  { src: '/projects/mosaic/tql-m.webp', href: 'https://www.tql.pl/pl', brand: 'TQL', w: 468, h: 372, alt: 'Widok mobilny strony TQL', altEn: 'TQL site on a phone' }
+  // Szesnascie zrzutow prawdziwych stron klientow, w DWOCH wysokosciach
+  // (1200x800 i 1200x1080) - u Ghosta kafelki maja dokladnie dwa warianty
+  // wysokosci i to one buduja rytm sciany. Zadnych kart ze statystykami.
+  { src: '/projects/mosaic/mad-a.webp', clientId: 1, w: 1200, h: 1080, alt: 'Strona główna restauracji Madame Thai', altEn: 'Madame Thai restaurant homepage' },
+  { src: '/projects/mosaic/sta-a.webp', clientId: 2, w: 1200, h: 800, alt: 'Galeria realizacji metalizacji próżniowej na stronie Staniax', altEn: 'Vacuum metallization project gallery on the Staniax site' },
+  { src: '/projects/mosaic/ase-a.webp', clientId: 3, w: 1200, h: 1080, alt: 'Sekcja materiałów i dokumentacji platformy ASE-BOT', altEn: 'Resources and documentation section of the ASE-BOT platform' },
+  { src: '/projects/mosaic/tql-a.webp', href: 'https://www.tql.pl/pl/uslugi', brand: 'TQL', w: 1200, h: 800, alt: 'Katalog wdrożeń norm ISO na stronie TQL', altEn: 'Catalogue of ISO implementations on the TQL site' },
+  { src: '/projects/mosaic/mad-b.webp', clientId: 1, w: 1200, h: 800, alt: 'Formularz rezerwacji stolika w restauracji Madame Thai', altEn: 'Table booking form of the Madame Thai restaurant' },
+  { src: '/projects/mosaic/sta-b.webp', clientId: 2, w: 1200, h: 1080, alt: 'Baza wiedzy i aktualności na stronie B2B Staniax', altEn: 'Knowledge base and news section on the Staniax B2B site' },
+  { src: '/projects/mosaic/ase-b.webp', clientId: 3, w: 1200, h: 800, alt: 'Porównanie narzędzi tradingowych AI na platformie ASE-BOT', altEn: 'AI trading tools comparison on the ASE-BOT platform' },
+  { src: '/projects/mosaic/tql-b.webp', href: 'https://www.tql.pl/pl/cennik', brand: 'TQL', w: 1200, h: 1080, alt: 'Cennik wdrożeń ISO na stronie TQL', altEn: 'ISO implementation pricing on the TQL site' },
+  { src: '/projects/mosaic/mad-c.webp', clientId: 1, w: 1200, h: 1080, alt: 'Galeria dań na stronie restauracji Madame Thai', altEn: 'Dish gallery on the Madame Thai restaurant site' },
+  { src: '/projects/mosaic/sta-c.webp', clientId: 2, w: 1200, h: 800, alt: 'Artykuł techniczny o metalizacji próżniowej na stronie Staniax', altEn: 'Technical article about vacuum metallization on the Staniax site' },
+  { src: '/projects/mosaic/ase-c.webp', clientId: 3, w: 1200, h: 1080, alt: 'Biblioteka strategii i analiz rynkowych na platformie ASE-BOT', altEn: 'Library of trading strategies and market analysis on the ASE-BOT platform' },
+  { src: '/projects/mosaic/tql-c.webp', href: 'https://www.tql.pl/pl/o-mnie', brand: 'TQL', w: 1200, h: 800, alt: 'Strona audytora wiodącego ISO w serwisie TQL', altEn: 'Lead ISO auditor page on the TQL site' },
+  { src: '/projects/mosaic/mad-d.webp', clientId: 1, w: 1200, h: 800, alt: 'Rezerwacja stolika — widok formularza w serwisie Madame Thai', altEn: 'Table booking view on the Madame Thai site' },
+  { src: '/projects/mosaic/sta-d.webp', clientId: 2, w: 1200, h: 1080, alt: 'Artykuł o metalizacji próżniowej w branży beauty na stronie Staniax', altEn: 'Article on vacuum metallization in the beauty industry on the Staniax site' },
+  { src: '/projects/mosaic/ase-d.webp', clientId: 3, w: 1200, h: 800, alt: 'Przewodnik po kontraktach futures na platformie ASE-BOT', altEn: 'Futures trading guide on the ASE-BOT platform' },
+  { src: '/projects/mosaic/tql-d.webp', href: 'https://www.tql.pl/pl/uslugi/iso-9001-2015', brand: 'TQL', w: 1200, h: 1080, alt: 'Strona wdrożenia normy ISO 9001 w serwisie TQL', altEn: 'ISO 9001 implementation page on the TQL site' }
 ];
 
 export default function Portfolio() {
   const [activeModal, setActiveModal] = useState(null);
   const lang = useLocale();
 
+  /* Ghost renderuje pięć sztywnych stosów w DOM i wyrównuje je do DOŁU
+     (align-items: end). Że mają różną wysokość, górna krawędź ściany jest
+     poszarpana, a kontener ją przycina — to jest cały efekt. CSS multi-column
+     tego nie odtworzy, bo z definicji wyrównuje kolumny, więc liczbę stosów
+     trzeba znać w JS. */
+  const [cols, setCols] = useState(4);
+
+  useEffect(() => {
+    const calc = () => {
+      const w = window.innerWidth;
+      setCols(w >= 1400 ? 5 : w >= 1024 ? 4 : w >= 640 ? 3 : 2);
+    };
+    calc();
+    window.addEventListener('resize', calc);
+    return () => window.removeEventListener('resize', calc);
+  }, []);
+
+  /* Rozdział co n-ty kafelek dawał stosy 924/760/773/733/613 px — rozrzut 36%
+     wysokości ściany, czyli puste pola nad krótkimi kolumnami. U Ghosta rozrzut
+     to 17% (875-1058) i dlatego ich ściana jest gęsta, a poszarpana góra
+     subtelna. Kafelki idą więc zawsze do NAJNIŻSZEJ kolumny — wysokość liczona
+     z proporcji obrazu (karty GSC mają stałe 1200:667). */
+  const columns = (() => {
+    /* Zrzuty ida round-robin (rowna liczba na kolumne), a karty GSC wchodza
+       POJEDYNCZO do kolejnych kolumn i na roznej glebokosci. Wczesniejsze
+       rownowazenie wysokoscia sklejalo je w jeden rzad na dole - maja
+       identyczna proporcje, wiec algorytm wrzucal je kolejno do najnizszej
+       kolumny. U Ghosta kafelki sa przemieszane i o to tu chodzi. */
+    const shots = MOSAIC.filter((t) => t.kind !== 'gsc');
+    const cards = MOSAIC.filter((t) => t.kind === 'gsc');
+    const stacks = Array.from({ length: cols }, () => []);
+    shots.forEach((tile, i) => stacks[i % cols].push(tile));
+    const depths = [1, 2, 0, 2, 1];
+    cards.forEach((card, i) => {
+      const stack = stacks[(i * (cols > cards.length ? 2 : 1)) % cols];
+      const at = Math.min(depths[i % depths.length], stack.length);
+      stack.splice(at, 0, card);
+    });
+    return stacks;
+  })();
+
   return (
-    <section className="portfolio" id="portfolio" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
+    <section className="portfolio" id="portfolio" style={{ background: '#F5F5F7', padding: '7rem 0 5rem' }}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         
-        {/* Top Header Row */}
-        <Reveal className="section-header center" style={{ marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
-          <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZE WYNIKI' : 'OUR RESULTS'}
+        {/* Nagłówek w układzie Ghosta: mały eyebrow w kolorze akcentu, duży
+            nagłówek do lewej, akapit pod nim w wąskiej kolumnie. Treść bez
+            zmian - zmienia się tylko wyrównanie, skala i kolumna. */}
+        {/* Uklad jak w sekcji Ghosta nad ich sciana kafelkow: po lewej blok
+            tekstu (eyebrow, duzy naglowek z kursywa, akapit, link), po prawej
+            duzy wizual. U nich jest to panel ustawien z podgladem publikacji,
+            u nas realizacja klienta - ta sama rola: pokazac produkt, zanim
+            zacznie sie sciana miniatur. */}
+        <Reveal className="portfolio-head">
+          <div className="portfolio-head-text">
+            <div className="portfolio-eyebrow">{lang === 'pl' ? 'NASZE WYNIKI' : 'OUR RESULTS'}</div>
+            <h2 className="portfolio-title">
+              {lang === 'pl' ? <>Odkryj <em>nowości</em> naszych klientów</> : <>Explore <em>what’s new</em> for our clients</>}
+            </h2>
+            <p className="portfolio-lede">
+              {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}
+            </p>
+            <Link className="portfolio-more" href="/pozycjonowanie-stron-internetowych">
+              {lang === 'pl' ? 'Zobacz zakres współpracy' : 'See how we work'} →
+            </Link>
           </div>
-          <h2 style={{ color: '#1D1D1F', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
-            {lang === 'pl' ? 'Odkryj nowości naszych klientów' : 'Explore what’s new for our clients'}
-          </h2>
-          <p style={{ color: '#6E6E73', fontSize: '1.25rem', fontWeight: 500 }}>
-            {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}
-          </p>
+          <div className="portfolio-head-visual">
+            <img
+              src="/projects/mosaic/feature.webp"
+              alt={lang === 'pl' ? 'Strona internetowa restauracji Madame Thai zaprojektowana przez AI SEO COMPANY' : 'Madame Thai restaurant website designed by AI SEO COMPANY'}
+              width={1600}
+              height={889}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </Reveal>
       </div>
 
@@ -160,96 +225,26 @@ export default function Portfolio() {
           It replaces the carousel, but nothing it used to say is gone: the
           headline metric and its sentence are in the strip underneath, and the
           full case studies still open in the same modal — now from a tile. */}
-      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0B1220', padding: '3.5rem 0 3rem' }}>
-        <div className="portfolio-mosaic">
-          {MOSAIC.map((tile) => {
-            const item = realizedWebsites.find((p) => p.id === tile.clientId);
-
-            /* Tiles for a site we have no case study written for open the live
-               site instead of a modal. Rather that than invent a case study. */
-            if (tile.href) {
-              return (
-                <a
-                  key={tile.src}
-                  className="portfolio-mosaic-tile"
-                  href={tile.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={tile.src}
-                    alt={lang === 'pl' ? tile.alt : tile.altEn}
-                    width={tile.w}
-                    height={tile.h}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <span className="portfolio-mosaic-overlay">
-                    <span className="portfolio-mosaic-brand">{tile.brand}</span>
-                    <span className="portfolio-mosaic-metric">
-                      {lang === 'pl' ? 'zobacz stronę ↗' : 'view site ↗'}
-                    </span>
-                  </span>
-                </a>
-              );
-            }
-
-            if (tile.kind === 'gsc') {
-              return (
-                <button
-                  key={tile.key}
-                  type="button"
-                  className="portfolio-mosaic-tile portfolio-gsc"
-                  onClick={() => setActiveModal(item)}
-                  aria-label={`${item.brandName} — ${lang === 'pl' ? 'wyniki w Google Search Console, zobacz case study' : 'Google Search Console results, view case study'}`}
-                >
-                  <span className="portfolio-gsc-source">Google Search Console · {lang === 'pl' ? '90 dni' : '90 days'}</span>
-                  <span className="portfolio-gsc-brand">{item.brandName}</span>
-                  <span className="portfolio-gsc-grid">
-                    <span>
-                      <b>{tile.clicks}</b>
-                      {lang === 'pl' ? 'kliknięcia' : 'clicks'}
-                    </span>
-                    <span>
-                      <b>{lang === 'pl' ? tile.impressions : tile.impressionsEn}</b>
-                      {lang === 'pl' ? 'wyświetleń' : 'impressions'}
-                    </span>
-                    <span>
-                      <b>{lang === 'pl' ? tile.ctr : tile.ctrEn}</b>
-                      CTR
-                    </span>
-                    <span className="portfolio-gsc-hero">
-                      <b>{lang === 'pl' ? tile.position : tile.positionEn}</b>
-                      {lang === 'pl' ? 'średnia pozycja' : 'average position'}
-                    </span>
-                  </span>
-                </button>
-              );
-            }
-
-            return (
-              <button
-                key={tile.src}
-                type="button"
-                className="portfolio-mosaic-tile"
-                onClick={() => setActiveModal(item)}
-                aria-label={`${item.brandName} — ${lang === 'pl' ? 'zobacz case study' : 'view case study'}`}
-              >
-                <img
-                  src={tile.src}
-                  alt={lang === 'pl' ? tile.alt : tile.altEn}
-                  width={tile.w}
-                  height={tile.h}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span className="portfolio-mosaic-overlay">
-                  <span className="portfolio-mosaic-brand">{item.brandName}</span>
-                  <span className="portfolio-mosaic-metric">{item.metric}</span>
-                </span>
-              </button>
-            );
-          })}
+      <div style={{ position: 'relative', width: '100%', padding: '0 0 3rem' }}>
+        <div className="portfolio-mosaic" style={{ ['--mosaic-cols']: cols }}>
+          {columns.map((column, ci) => (
+          <div className="portfolio-mosaic-col" key={ci}>
+          {column.map((tile) => (
+            /* Sam obrazek: kafelek nic nie robi po kliknieciu. Case studies
+               otwiera pasek klientow pod sciana, wiec tresc nie znika. */
+            <figure className="portfolio-mosaic-tile" key={tile.src}>
+              <img
+                src={tile.src}
+                alt={lang === 'pl' ? tile.alt : tile.altEn}
+                width={tile.w}
+                height={tile.h}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          ))}
+          </div>
+          ))}
         </div>
 
         {/* Every line the carousel cards showed, kept visible instead of hidden

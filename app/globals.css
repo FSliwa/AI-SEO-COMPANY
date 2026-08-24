@@ -2706,7 +2706,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    the section's top and bottom thirds looked abandoned. Centred origin now: the
    copy sits above and below the artwork rather than beside it, so there is
    nothing to steer the lettering away from. */
-@media (min-width: 901px) {
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   .hero-en-bg {
     transform: translateX(var(--hero-pan, 0px)) scale(1.12);
   }
@@ -2797,7 +2797,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    the section's top and bottom thirds looked abandoned. Centred origin now: the
    copy sits above and below the artwork rather than beside it, so there is
    nothing to steer the lettering away from. */
-@media (min-width: 901px) {
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   .hero-en-bg {
     transform: translateX(var(--hero-pan, 0px)) scale(1.12);
   }
@@ -2922,7 +2922,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    the previous 15.5% did, is exactly what made the copy slide off the lettering
    as soon as the window aspect changed. max() keeps the padding legal on tall,
    narrow desktop windows, where the word runs off both edges anyway. */
-@media (min-width: 901px) {
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   /* The section keeps the full viewport height everywhere - shortening it
      was the wrong lever. The real defect on near-square windows is
      HORIZONTAL: the word's left edge sits at 50% - 55.1vh, which goes
@@ -3048,7 +3048,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   display: none;
 }
 
-@media (min-width: 901px) {
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   .hero-en-wide-only {
     display: inline;
   }
@@ -3225,7 +3225,11 @@ section, aside.pricing, aside.contact, aside.why-us {
     radial-gradient(circle at 40% 50%, #16202f, #0b1220 72%);
 }
 
-@media (max-width: 900px) {
+/* Także dla szerokich, ale PIONOWYCH okien (aspekt < 1:1): scena jest
+   skalowana wysokością, więc przy oknie wyższym niż szersze słowo robi się
+   szersze od ekranu i litery są ucinane. Kompozycja pasmowa ma stałą
+   wysokość pasma, więc działa przy każdych proporcjach. */
+@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
   /* Same reading as the desktop composition — copy, then the word, then the
      heading — rather than the scene sitting on top of everything. Full-bleed
      still cannot work at this width: the lettering is scaled by canvas height,
@@ -3419,7 +3423,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    English variant needs the section to grow with its content instead — otherwise
    the CTAs and half the copy are clipped below the fold. Scoped to .hero--en so
    the Polish hero keeps its existing behaviour exactly. */
-@media (max-width: 900px) {
+@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
   .hero.hero--en {
     /* .hero-en is positioned out of flow now, so it cannot push the section
        open the way it used to — the height has to be stated. 860px with the
@@ -3459,59 +3463,71 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 
 /* --- Portfolio: ściana realizacji (mozaika) ------------------------------
-   Mechanika z ghost.org, zmierzona na żywo: kolumny równej szerokości,
-   jednakowe rynny, obrazy w naturalnych proporcjach, bez podpisów. Tam było
-   5 kolumn po 386px i gap 16px na sztywno — tu multi-column, żeby liczba
-   kolumn zmieniała się z szerokością bez przeliczania tablicy w JS. */
+   Mechanika ghost.org, zmierzona na ich siatce: pięć stosów w gridzie,
+   gap 16px, obrazy w naturalnych proporcjach, bez podpisów i bez zaokrągleń.
+
+   Sedno efektu, którego multi-column NIE odtworzy: stosy są wyrównane do
+   DOŁU (align-items: end) i mają różną wysokość (u nich 1002/1058/875/940/880
+   przy 4,4,3,3,3 kafelkach), więc GÓRNA krawędź ściany jest poszarpana,
+   a kontener ją przycina. Multi-column z definicji wyrównuje kolumny — stąd
+   płaska krata zamiast mozaiki. Liczbę stosów ustala JS (Portfolio.jsx). */
 .portfolio-mosaic {
-  column-count: 2;
-  column-gap: 12px;
-  padding-inline: 12px;
+  display: grid;
+  grid-template-columns: repeat(var(--mosaic-cols, 4), minmax(0, 1fr));
+  align-items: end;
+  gap: 16px;
+  padding-inline: 24px;
   margin-bottom: 2.5rem;
+  /* Bez max-height: przy zrównoważonych stosach ściana i tak jest zwarta,
+     a przycinanie ucinało najwyższą kolumnę i robiło dziury zamiast mozaiki.
+     overflow zostaje na wypadek, gdyby stos wystawał po zaokrągleniach. */
+  overflow: hidden;
 }
 
-@media (min-width: 640px) {
-  .portfolio-mosaic { column-count: 3; column-gap: 16px; padding-inline: 16px; }
+@media (max-width: 639px) {
+  .portfolio-mosaic { gap: 10px; padding-inline: 12px; }
 }
 
-@media (min-width: 1024px) {
-  .portfolio-mosaic { column-count: 4; }
+.portfolio-mosaic-col {
+  display: grid;
+  gap: 16px;
+  align-content: end;
 }
 
-/* Cztery kolumny to sufit, nie pięć jak u Ghosta: mamy 12 kafelków, a przy
-   pięciu kolumnach wychodzi 2,4 na kolumnę i ściana robi się rzadka. Przy
-   czterech każda kolumna ma trzy kafelki — gęstość zgadza się z pierwowzorem
-   (17 zdjęć / 5 kolumn). Szeroki ekran dostaje szersze kafelki zamiast
-   dodatkowej kolumny. */
-@media (min-width: 1600px) {
-  .portfolio-mosaic { max-width: 1900px; margin-inline: auto; }
+/* Po zrównoważeniu stosów (LPT) różnice wysokości spadają do kilku procent
+   i górna krawędź robi się prawie płaska. Ghost ma 17% rozrzutu i to właśnie
+   ono daje wrażenie mozaiki — u niego czyta się dobrze, bo tło jest ciemne.
+   Na naszym jasnym tle przypadkowa dziura wygląda jak błąd, więc rozrzut
+   jest teraz sterowany: drobne, celowe przesunięcia kolumn. */
+.portfolio-mosaic-col:nth-child(2) { padding-top: 34px; }
+.portfolio-mosaic-col:nth-child(3) { padding-top: 14px; }
+.portfolio-mosaic-col:nth-child(4) { padding-top: 44px; }
+.portfolio-mosaic-col:nth-child(5) { padding-top: 22px; }
+
+@media (max-width: 639px) {
+  .portfolio-mosaic-col:nth-child(n) { padding-top: 0; }
+  .portfolio-mosaic-col:nth-child(2) { padding-top: 18px; }
 }
 
-/* Kafelek jest przyciskiem (otwiera case study), więc trzeba mu zdjąć całą
-   domyślną skórę przycisku, zanim zacznie wyglądać jak obrazek. */
+@media (max-width: 639px) {
+  .portfolio-mosaic-col { gap: 10px; }
+}
+
+/* Kafelek jest przyciskiem albo linkiem (case study / żywa strona), więc
+   trzeba mu zdjąć całą domyślną skórę, zanim zacznie wyglądać jak obrazek. */
+/* Kafelek to sam obrazek — nic się po kliknięciu nie dzieje, więc nie ma
+   kursora-wskaźnika ani stanu hover. Ghost trzyma je płasko: radius 0,
+   żadnego cienia ani ramki. */
 .portfolio-mosaic-tile {
   display: block;
   width: 100%;
+  margin: 0;
   padding: 0;
   border: 0;
   background: none;
-  font: inherit;
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
-  break-inside: avoid;
-  margin: 0 0 12px;
-  /* Bez tego Safari łamie kafelek między kolumnami mimo break-inside. */
-  -webkit-column-break-inside: avoid;
-  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (min-width: 640px) {
-  .portfolio-mosaic-tile { margin-bottom: 16px; }
+  border-radius: 0;
 }
 
 .portfolio-mosaic-tile img {
@@ -3520,56 +3536,20 @@ section, aside.pricing, aside.contact, aside.why-us {
   height: auto;
 }
 
-.portfolio-mosaic-tile:hover,
-.portfolio-mosaic-tile:focus-visible {
-  transform: scale(1.02);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
-  outline: none;
-}
 
-.portfolio-mosaic-tile:focus-visible {
-  box-shadow: 0 0 0 3px var(--color-cta), 0 18px 50px rgba(0, 0, 0, 0.55);
-}
 
 /* Marka i metryka wjeżdżają dopiero pod kursorem — na spoczynku ściana ma być
-   samymi ekranami, tak jak u Ghosta. */
-.portfolio-mosaic-overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 2.5rem 1rem 0.9rem;
-  background: linear-gradient(180deg, rgba(11, 18, 32, 0) 0%, rgba(11, 18, 32, 0.92) 100%);
-  opacity: 0;
-  transition: opacity 240ms ease;
-  text-align: left;
-}
+   samymi ekranami, tak jak u Ghosta. To jedyny efekt hover, jaki zostaje:
+   kafelek jest przyciskiem i musi się przyznać, że da się w niego kliknąć. */
 
-.portfolio-mosaic-tile:hover .portfolio-mosaic-overlay,
-.portfolio-mosaic-tile:focus-visible .portfolio-mosaic-overlay {
-  opacity: 1;
-}
 
-.portfolio-mosaic-brand {
-  color: #FFFFFF;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
 
-.portfolio-mosaic-metric {
-  color: var(--color-cta);
-  font-size: 0.78rem;
-  font-weight: 600;
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .portfolio-mosaic-tile,
-  .portfolio-mosaic-overlay { transition: none; }
-  .portfolio-mosaic-tile:hover,
-  .portfolio-mosaic-tile:focus-visible { transform: none; }
-}
+
+
+
+
+
 
 /* Pasek klientów pod ścianą: to tu mieszka tekst, który wcześniej niosły
    karty karuzeli — widoczny, nie schowany pod hover. */
@@ -3590,18 +3570,17 @@ section, aside.pricing, aside.contact, aside.why-us {
   align-items: flex-start;
   gap: 0.75rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(15, 23, 42, 0.12);
 }
 
-/* Loga klientów są narysowane w ciemnym kolorze pod jasne tło karuzeli;
-   na ciemnej ścianie trzeba je odwrócić — ten sam zabieg, co wcześniej. */
+/* Loga są narysowane w ciemnym kolorze i ściana wróciła na jasne tło sekcji,
+   więc odwracanie ich (potrzebne przy ciemnym pasie) jest już zbędne. */
 .portfolio-client-logo {
-  filter: brightness(0) invert(1);
   opacity: 0.9;
 }
 
 .portfolio-client-note {
-  color: rgba(255, 255, 255, 0.82);
+  color: #4B5563;
   font-size: 1rem;
   line-height: 1.5;
   margin: 0;
@@ -3619,61 +3598,75 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 .portfolio-client-cta:hover { text-decoration: underline; }
 
-/* Kafelek z danymi z Search Console. Wchodzi tam, gdzie klient miał dwa zrzuty
-   tego samego szablonu i ściana zaczynała się powtarzać — zamiast trzeciego
-   podobnego ekranu pokazuje dowód: kliknięcia, wyświetlenia, CTR i średnią
-   pozycję z ostatnich 90 dni. Proporcja jak u sąsiadów (1200:667), żeby rytm
-   kolumn się nie rozjechał. */
-.portfolio-gsc {
-  aspect-ratio: 1200 / 667;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 1.1rem 1.2rem;
+/* --- Nagłówek sekcji w układzie Ghosta: do lewej, wąska kolumna --- */
+.portfolio-head {
+  max-width: 1560px;
+  margin: 0 auto 3.5rem;
+  padding-inline: 24px;
   text-align: left;
-  background:
-    radial-gradient(circle at 88% 8%, rgba(216, 90, 48, 0.22) 0%, transparent 55%),
-    linear-gradient(160deg, #16202F 0%, #0E1726 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.portfolio-gsc-source {
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.portfolio-gsc-brand {
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #FFFFFF;
-}
-
-.portfolio-gsc-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.45rem 0.9rem;
+  gap: 2.5rem;
+  align-items: center;
 }
 
-.portfolio-gsc-grid > span {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.6rem;
-  line-height: 1.3;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.52);
+/* Dwie kolumny dopiero od 1024px — u Ghosta tekst zajmuje ok. 40% szerokości,
+   wizual resztę. Poniżej wizual schodzi pod tekst. */
+@media (min-width: 1024px) {
+  .portfolio-head {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 4rem;
+  }
 }
 
-.portfolio-gsc-grid b {
-  font-size: 1.05rem;
+.portfolio-head-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.18);
+}
+
+.portfolio-eyebrow {
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-cta);
+  margin-bottom: 1.25rem;
 }
 
-/* Pozycja to liczba, o którą w tym wykresie chodzi — dostaje pomarańcz sceny. */
-.portfolio-gsc-hero b { color: var(--color-cta); }
+.portfolio-title {
+  color: #1D1D1F;
+  font-size: clamp(2.4rem, 4.6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  margin: 0 0 1.25rem;
+  max-width: 16ch;
+}
+
+.portfolio-lede {
+  color: #6E6E73;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* Link pod akapitem — odpowiednik „Explore Ghost themes →". */
+.portfolio-more {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--color-cta);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.portfolio-more:hover { text-decoration: underline; }
+
+/* Kursywa na jednym słowie nagłówka (wzór Ghosta). */
+.portfolio-title em {
+  font-style: italic;
+  font-weight: 700;
+}
