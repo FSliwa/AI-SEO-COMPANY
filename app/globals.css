@@ -3627,6 +3627,24 @@ section, aside.pricing, aside.contact, aside.why-us {
   box-shadow: 0 30px 70px rgba(15, 23, 42, 0.18);
 }
 
+/* Film skaluje sie z kontenerem przy kazdej szerokosci i proporcji okna:
+   sztywny aspekt 16:9 rezerwuje miejsce zanim dojda metadane wideo
+   (bez skoku ukladu), object-fit dopina kadr do ramki. */
+.portfolio-head-visual video {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+/* W waskich oknach (uklad jednokolumnowy) wizual nie powinien dominowac
+   nad trescia - ogranicza go wysokosc okna, proporcja zostaje. */
+@media (max-width: 1023px) {
+  .portfolio-head-visual video {
+    max-height: 56vh;
+  }
+}
+
 .portfolio-eyebrow {
   font-size: 0.75rem;
   font-weight: 700;
