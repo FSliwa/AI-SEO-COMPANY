@@ -3672,8 +3672,8 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 
-/* --- Kursor jak w ilustracjach Ghosta: duzy czarny grot macOS z bialym
-   konturem i cieniem. Jeden kursor na calym serwisie (nadpisuje tez
+/* --- Kursor jak w ilustracjach Ghosta: bialy grot macOS z ciemnym
+   konturem i miekkim cieniem (jak kursor w ilustracjach na ghost.org). Jeden kursor na calym serwisie (nadpisuje tez
    cursor:pointer na linkach), hotspot w czubku strzalki (3,2 przy 24px).
    Pola tekstowe zachowuja karetke, bo bez niej nie da sie celowac
    w tekst. Na dotyku regula jest martwa - nic nie psuje. */
