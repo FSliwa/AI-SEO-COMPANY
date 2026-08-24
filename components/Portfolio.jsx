@@ -111,8 +111,8 @@ const realizedWebsites = [
 const MOSAIC = [
 { src: '/projects/mosaic/mad-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
 { src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
-{ src: '/projects/mosaic/ase-a.webp', w: 1200, h: 600, alt: 'Sekcja hero strony głównej platformy tradingowej ASE-BOT', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
-{ src: '/projects/mosaic/fix-a.webp', w: 1200, h: 610, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
+{ src: '/projects/mosaic/ase-a.webp', w: 1200, h: 700, alt: 'Pełna sekcja hero platformy tradingowej ASE-BOT — AI trading i analiza rynków', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
+{ src: '/projects/mosaic/fix-a.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/mosaic/sta-a.webp', w: 1200, h: 790, alt: 'Sekcja „Kim jesteśmy" strony Staniax — metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' },
 { src: '/projects/mosaic/tql-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
@@ -148,8 +148,8 @@ export default function Portfolio() {
      (tylko srodkowy-wysoki ma dwa hero), wierzcholki ponizej najwyzszego
      o +0.14 / 0 / +0.45 / +0.29 / +0.44 szerokosci kolumny. Nasze stosy:
      1.31 / 1.45 / 1.00 / 1.16 / 1.01 - odtwarzaja te przesuniecia co do
-     +-0.01 dzieki indywidualnym wysokosciom kafli hero (970/840/840/600/
-     790/610 przy szerokosci 1200). Kazda marka stoi nad swoim panelem
+     +-0.01 dzieki indywidualnym wysokosciom kafli hero (korekty klienta: ase-bot
+     z pelnym hero 700, Stef-Bud obnizony do 520; 970/840/840/700/790/520). Kazda marka stoi nad swoim panelem
      GSC (Madame Thai, ASE-BOT, Staniax), panele zamykaja kolumny od dolu.
      Ponizej 1280px round-robin: hero najpierw, GSC na koncu. */
   const columns = (() => {
