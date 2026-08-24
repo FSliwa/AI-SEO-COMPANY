@@ -3670,3 +3670,20 @@ section, aside.pricing, aside.contact, aside.why-us {
   font-style: italic;
   font-weight: 700;
 }
+
+
+/* --- Kursor jak w ilustracjach Ghosta: duzy czarny grot macOS z bialym
+   konturem i cieniem. Jeden kursor na calym serwisie (nadpisuje tez
+   cursor:pointer na linkach), hotspot w czubku strzalki (3,2 przy 24px).
+   Pola tekstowe zachowuja karetke, bo bez niej nie da sie celowac
+   w tekst. Na dotyku regula jest martwa - nic nie psuje. */
+*, *::before, *::after {
+  cursor: url('/cursors/arrow.png') 3 2, auto !important;
+  cursor: -webkit-image-set(url('/cursors/arrow.png') 1x, url('/cursors/arrow@2x.png') 2x) 3 2, auto !important;
+  cursor: image-set(url('/cursors/arrow.png') 1x, url('/cursors/arrow@2x.png') 2x) 3 2, auto !important;
+}
+input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']),
+textarea,
+[contenteditable='true'] {
+  cursor: text !important;
+}
