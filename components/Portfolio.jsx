@@ -109,18 +109,18 @@ const realizedWebsites = [
    samej marki (Staniax, Madame Thai, ASE-BOT), a stosy wychodza poszarpane
    jak u Ghosta (1.8 / 2.25 / 1.35 / 1.8 szerokosci kolumny). */
 const MOSAIC = [
-{ src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 700, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
-{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
 { src: '/projects/mosaic/mad-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
+{ src: '/projects/mosaic/elkat-a.webp', w: 1200, h: 900, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
 { src: '/projects/mosaic/ase-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej platformy tradingowej ASE-BOT', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
+{ src: '/projects/mosaic/fix-a.webp', w: 1200, h: 900, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/mosaic/sta-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej Staniax — metalizacja próżniowa', altEn: 'Hero section of the Staniax vacuum metallization homepage' },
-{ src: '/projects/mosaic/fix-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
+{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 700, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
 { src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' },
+{ src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 3 months' },
 { src: '/projects/gsc/madamethai.webp', w: 1600, h: 726,
     alt: 'Panel Performance madamethai.pl w Google Search Console: 187 kliknięć i 10,1 tys. wyświetleń w 3 miesiące',
-    altEn: 'Google Search Console performance panel for madamethai.pl: 187 clicks and 10.1K impressions over 3 months' },
-{ src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 3 months' }
+    altEn: 'Google Search Console performance panel for madamethai.pl: 187 clicks and 10.1K impressions over 3 months' }
 ];
 
 export default function Portfolio() {
@@ -145,22 +145,22 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', calc);
   }, []);
 
-  /* Przy czterech kolumnach uklad jest recznie dobrany: WSZYSTKIE panele
-     GSC leza w dolnym rzedzie (po jednym na kolumne), szczyty siatki to
-     Elkat i Madame Thai (naglowki wysokich stosow), a stosy ida
-     naprzemiennie 2.25 / 1.35 / 2.25 / 1.35 szerokosci kolumny - gorna
-     krawedz rwie sie jak u Ghosta, dol konczy sie rownym pasem wynikow.
-     Przy 3/2 kolumnach wystarcza round-robin - kolejnosc MOSAIC trzyma
-     hero na poczatku i panele GSC na koncu, wiec wyniki i tam laduja
-     na dole. */
+  /* Przy czterech kolumnach uklad jest recznie dobrany pod zrzut sciany
+     Ghosta: cztery ROZNE wysokosci stosow (1.62 / 1.79 / 1.04 / 1.20
+     szerokosci kolumny - u Ghosta 0.91 / 1.0 / 0.71 / 0.82 maksimum),
+     zadnych blizniaczych kolumn obok siebie. Roznice robia dwa wyzsze
+     kafle 1200x900 (Elkat, Stef-Bud) - tak jak u Ghosta czesc kafli
+     jest wyzsza. Panele GSC caly czas zamykaja kazda kolumne od dolu,
+     szczyty siatki to Madame Thai i Elkat. Przy 3/2 kolumnach
+     round-robin, kolejnosc MOSAIC: hero najpierw, GSC na koncu. */
   const columns = (() => {
     if (cols === 4) {
       const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
       return [
-        ['elkat-a', 'sta-a', 'staniax'],
-        ['tql-a', 'ai-seo-company'],
-        ['mad-a', 'fix-a', 'madamethai'],
+        ['mad-a', 'sta-a', 'staniax'],
+        ['elkat-a', 'tql-a', 'ai-seo-company'],
         ['ase-a', 'ase-bot'],
+        ['fix-a', 'madamethai'],
       ].map((stack) => stack.map((k) => byKey[k]));
     }
     const stacks = Array.from({ length: cols }, () => []);
@@ -187,7 +187,9 @@ export default function Portfolio() {
               {lang === 'pl' ? <>Odkryj <em>nowości</em> naszych klientów</> : <>Explore <em>what’s new</em> for our clients</>}
             </h2>
             <p className="portfolio-lede">
-              {lang === 'pl' ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów.' : 'Explore analytics-backed growth metrics across our client case studies.'}
+              {lang === 'pl'
+                ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów. Każdy kafelek to prawdziwy zrzut: strona zaprojektowana przez nasz zespół albo panel Google Search Console z kliknięciami, wyświetleniami i pozycjami. Tak wygląda pozycjonowanie stron rozliczane z realnych efektów, nie z obietnic.'
+                : 'Explore analytics-backed growth metrics across our client case studies. Every tile is a real screenshot: a website designed by our team or a Google Search Console panel with clicks, impressions and positions. This is SEO measured by real outcomes, not promises.'}
             </p>
             <Link className="portfolio-more" href="/pozycjonowanie-stron-internetowych">
               {lang === 'pl' ? 'Zobacz zakres współpracy' : 'See how we work'} →
