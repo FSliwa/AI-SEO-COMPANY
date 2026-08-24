@@ -2,12 +2,12 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'SEO Optimization Services & Digital Marketing for Agencies' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
-  description: locale === 'en' ? 'SEO optimization service and search engine marketing for B2B companies and agencies. Content marketing strategy and SEO digital marketing for growth. Your search engine optimisation agency.' : 'Kompleksowe pozycjonowanie stron internetowych. Skuteczne pozycjonowanie stron i pełna optymalizacja SEO — zdobywamy najwyższe pozycje w Google.',
+  description: locale === 'en' ? 'SEO optimization service, search engine and digital marketing for companies and agencies. Content strategy, growth. Your optimisation agency.' : 'Kompleksowe pozycjonowanie stron internetowych. Skuteczne pozycjonowanie stron i pełna optymalizacja SEO — zdobywamy najwyższe pozycje w Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
-      'x-default': 'https://www.ai-seo-company.pl/en/seo-services',
+      'x-default': 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
       'en': 'https://www.ai-seo-company.pl/en/seo-services'
     }
   },
@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import PozycjonowanieClient from '@/components/PozycjonowanieClient';
 
@@ -235,6 +236,7 @@ export default async function PozycjonowanieStronPage({ params }) {
   return (
     <>
       <Header />
+      <Breadcrumbs pl="Pozycjonowanie Stron Internetowych" en="SEO Services" />
       <PozycjonowanieClient faqData={faqData} portfolioCases={portfolioCases} carouselItems={carouselItems} />
       <Footer />
     </>

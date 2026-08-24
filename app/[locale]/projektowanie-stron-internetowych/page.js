@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/web-design' : 'https://www.ai-seo-company.pl/projektowanie-stron-internetowych',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/projektowanie-stron-internetowych',
-      'x-default': 'https://www.ai-seo-company.pl/en/web-design',
+      'x-default': 'https://www.ai-seo-company.pl/projektowanie-stron-internetowych',
       'en': 'https://www.ai-seo-company.pl/en/web-design'
     }
   },
@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import ProjektowanieClient from '@/components/ProjektowanieClient';
 
@@ -190,6 +191,7 @@ export default function ProjektowanieStronPage() {
   return (
     <>
       <Header />
+      <Breadcrumbs pl="Projektowanie Stron Internetowych" en="Web Design" />
       <ProjektowanieClient faqData={faqWebDesign} portfolioCases={webDesignPortfolioCases} carouselItems={webDesignCarouselItems} />
       <Footer />
     </>

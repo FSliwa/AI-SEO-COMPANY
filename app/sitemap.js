@@ -3,15 +3,17 @@ import { blogPosts } from '../lib/blogPosts';
 
 export default function sitemap() {
   const baseUrl = 'https://www.ai-seo-company.pl';
-  const currentDate = new Date().toISOString();
+  // Realne daty zamiast chwili requestu: identyczny, dynamiczny lastmod
+  // na 49 wpisach czynil sygnal bezwartosciowym dla Google (audyt 24.08).
+  const STATIC_LASTMOD = '2026-08-24';
 
   const allRoutes = [];
   const seen = new Set();
 
-  const push = (url, changeFrequency, priority) => {
+  const push = (url, changeFrequency, priority, lastModified = STATIC_LASTMOD) => {
     if (seen.has(url)) return;
     seen.add(url);
-    allRoutes.push({ url, lastModified: currentDate, changeFrequency, priority });
+    allRoutes.push({ url, lastModified, changeFrequency, priority });
   };
 
   // Static pages, plus any article that needed a localised slug
@@ -38,12 +40,12 @@ export default function sitemap() {
     // put a URL in the sitemap whose canonical pointed at the English version,
     // which reads as a contradiction: "index this" plus "no, index that".
     if (!post.enOnly) {
-      push(`${baseUrl}${(mapped && mapped.pl) || post.slug}`, 'weekly', 0.7);
+      push(`${baseUrl}${(mapped && mapped.pl) || post.slug}`, 'weekly', 0.7, post.date || STATIC_LASTMOD);
     }
 
     // Polish-only posts have no English page to advertise.
     if (!post.plOnly) {
-      push(`${baseUrl}/en${(mapped && mapped.en) || post.slug}`, 'weekly', 0.7);
+      push(`${baseUrl}/en${(mapped && mapped.en) || post.slug}`, 'weekly', 0.7, post.date || STATIC_LASTMOD);
     }
   });
 

@@ -6,6 +6,10 @@ export const routing = defineRouting({
   defaultLocale: 'pl',
   localePrefix: 'as-needed',
   localeDetection: false,
+  // Hreflang wylacznie w HTML (alternates w metadata) - naglowek Link:
+  // z middleware dublowal deklaracje. W next-intl v4 opcja zyje tutaj,
+  // nie w drugim argumencie createMiddleware.
+  alternateLinks: false,
   pathnames: {
     '/': '/',
     '/pozycjonowanie-stron-internetowych': {

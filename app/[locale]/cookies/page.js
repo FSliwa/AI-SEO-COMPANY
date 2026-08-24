@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/cookies' : 'https://www.ai-seo-company.pl/cookies',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/cookies',
-      'x-default': 'https://www.ai-seo-company.pl/en/cookies',
+      'x-default': 'https://www.ai-seo-company.pl/cookies',
       'en': 'https://www.ai-seo-company.pl/en/cookies'
     }
   },

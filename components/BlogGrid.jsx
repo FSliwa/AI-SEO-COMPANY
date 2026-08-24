@@ -98,6 +98,14 @@ export default function BlogGrid() {
           </div>
         </Reveal>
 
+        {/* Srodtytul naprawia hierarchie naglowkow: dotad po H1 szly od razu
+            H3 kart artykulow (przeskok flagowany w audycie 4.6). */}
+        <Reveal delay={0.05}>
+          <h2 style={{ fontSize: 'clamp(1.15rem, 2vw, 1.4rem)', fontWeight: 600, color: '#6E6E73', letterSpacing: '-0.01em', margin: '0 0 1.25rem' }}>
+            {lang === 'en' ? 'Latest articles' : 'Najnowsze artykuły'}
+          </h2>
+        </Reveal>
+
         <Reveal delay={0.1}>
           <Link href={heroData.slug} style={{ textDecoration: 'none' }}>
             <div className="hero-card" style={{ 

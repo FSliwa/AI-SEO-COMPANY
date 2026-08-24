@@ -3618,7 +3618,8 @@ section, aside.pricing, aside.contact, aside.why-us {
   }
 }
 
-.portfolio-head-visual img {
+.portfolio-head-visual img,
+.portfolio-head-visual video {
   display: block;
   width: 100%;
   height: auto;
@@ -3672,15 +3673,15 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 
-/* --- Kursor jak w ilustracjach Ghosta: zestaw Gunmetal Black z custom-cursor.com odrysowany wektorowo (grot-zagielek
-   + raczka na linkach), cialo #262E3F, kontur #14181F. Jeden kursor na calym serwisie (nadpisuje tez
+/* --- Kursor jak w ilustracjach Ghosta: grot z icons8 (id jLkEh2zFhThT, czarna strzalka; licencja icons8 wymaga
+   atrybucji - patrz CLAUDE.md) + raczka Gunmetal Black na linkach. Jeden kursor na calym serwisie (nadpisuje tez
    cursor:pointer na linkach), hotspot w czubku strzalki (4,3 przy 32px); 24 px byl nieodroznialny od systemowego.
    Pola tekstowe zachowuja karetke, bo bez niej nie da sie celowac
    w tekst. Na dotyku regula jest martwa - nic nie psuje. */
 *, *::before, *::after {
-  cursor: url('/cursors/arrow.png') 4 2, auto !important;
-  cursor: -webkit-image-set(url('/cursors/arrow.png') 1x, url('/cursors/arrow@2x.png') 2x) 4 2, auto !important;
-  cursor: image-set(url('/cursors/arrow.png') 1x, url('/cursors/arrow@2x.png') 2x) 4 2, auto !important;
+  cursor: url('/cursors/arrow.png') 1 1, auto !important;
+  cursor: -webkit-image-set(url('/cursors/arrow.png') 1x, url('/cursors/arrow@2x.png') 2x) 1 1, auto !important;
+  cursor: image-set(url('/cursors/arrow.png') 1x, url('/cursors/arrow@2x.png') 2x) 1 1, auto !important;
 }
 /* Raczka z tego samego zestawu Gunmetal Black na wszystkim, co klikalne
    (u zrodla zestaw ma dwa kursory: grot + wskazujaca dlon). */

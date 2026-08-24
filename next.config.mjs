@@ -35,6 +35,14 @@ const nextConfig = {
 
   async redirects() {
     return [
+      // Slug PL artykulu o lukach: middleware next-intl dawal 307
+      // (temporary) - Google nie przenosi sygnalow. Jawna regula przed
+      // middleware daje trwale 308.
+      {
+        source: '/blog/content-gap-analysis',
+        destination: '/blog/analiza-luk-contentowych',
+        permanent: true,
+      },
       // /pl and /pl/* never exist as pages (defaultLocale 'pl' is unprefixed,
       // localePrefix 'as-needed'). The next-intl middleware strips the prefix
       // with a temporary 307, so Google keeps the /pl/ URLs indexed. These two

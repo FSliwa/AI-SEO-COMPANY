@@ -47,7 +47,7 @@ export default function Footer() {
                 <li><Link href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron' : 'SEO Services'}</Link></li>
                 <li><Link href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</Link></li>
                 <li><Link href="/cennik-pozycjonowania">{navT('pricing')}</Link></li>
-                <li><Link href="/blog">Blog SEO</Link></li>
+                <li><Link href="/blog">{lang === 'en' ? 'SEO Blog' : 'Blog SEO'}</Link></li>
               </ul>
             </div>
             <div className="footer-col">

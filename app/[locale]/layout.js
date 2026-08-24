@@ -1,7 +1,34 @@
 import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
 import CookiesBanner from '@/components/CookiesBanner';
+
+
+// Wersja EN grafu: te same encje, angielskie pola tekstowe. Wczesniej /en
+// serwowal polski opis Organization i polska nazwe WebSite.
+function localizedJsonLd(locale) {
+  if (locale !== 'en') return jsonLdDataPl;
+  const data = JSON.parse(JSON.stringify(jsonLdDataPl));
+  for (const node of data['@graph']) {
+    if (node['@id'] === 'https://www.ai-seo-company.pl/#organization') {
+      node.description = 'Modern SEO agency in Warsaw. We design search-ready websites, run professional SEO audits and deliver effective search engine optimization.';
+      node.alternateName = 'SEO Agency Warsaw AI SEO COMPANY';
+    }
+    if (node['@type'] === 'WebSite') {
+      if (node.name) node.name = 'AI SEO COMPANY | SEO Agency Warsaw';
+      if (node.inLanguage) node.inLanguage = 'en-US';
+    }
+  }
+  return data;
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+// Rewalidacja co godzine - tresc marketingowa zmienia sie deployami.
+export const revalidate = 3600;
 
 export const metadata = {
   metadataBase: new URL('https://www.ai-seo-company.pl/'),
@@ -38,7 +65,7 @@ export const metadata = {
   },
 };
 
-const jsonLdData = {
+const jsonLdDataPl = {
   '@context': 'https://schema.org',
   '@graph': [
     {
@@ -101,6 +128,10 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
+  // Statyczne generowanie + ISR: bez tego next-intl czyta naglowki
+  // zadania i kazda strona renderuje sie na kazde wejscie
+  // (cache-control: no-store, TTFB 0,5-2 s - audyt 24.08).
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (
@@ -109,7 +140,7 @@ export default async function RootLayout({ children, params }) {
         <link rel="icon" href="/ai-seo-company-logotyp.svg" type="image/svg+xml" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localizedJsonLd(locale)) }}
         />
         {/* Consent Mode v2 defaults. This must execute before the gtag library
             loads, otherwise Analytics writes _ga cookies on first paint —

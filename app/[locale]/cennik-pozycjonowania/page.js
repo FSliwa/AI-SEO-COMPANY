@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-pricing' : 'https://www.ai-seo-company.pl/cennik-pozycjonowania',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/cennik-pozycjonowania',
-      'x-default': 'https://www.ai-seo-company.pl/en/seo-pricing',
+      'x-default': 'https://www.ai-seo-company.pl/cennik-pozycjonowania',
       'en': 'https://www.ai-seo-company.pl/en/seo-pricing'
     }
   },

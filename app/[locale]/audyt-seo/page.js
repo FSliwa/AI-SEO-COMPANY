@@ -1,13 +1,13 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Keyword Analysis, Search Engine Optimization Consultants' : 'Audyt SEO | Analiza i Optymalizacja SEO',
-  description: locale === 'en' ? 'Looking for expert search engine optimization consultants? Get professional seo keyword analysis and comprehensive search engine optimisation consultancy.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
+  title: locale === 'en' ? 'SEO Keyword Analysis, Search Engine Optimization Consultants' : 'Audyt SEO | Analiza i Optymalizacja SEO Strony w 14 Dni',
+  description: locale === 'en' ? 'Expert search engine optimization consultants. Professional SEO keyword analysis and comprehensive search engine optimisation consultancy.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-audit' : 'https://www.ai-seo-company.pl/audyt-seo',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/audyt-seo',
-      'x-default': 'https://www.ai-seo-company.pl/en/seo-audit',
+      'x-default': 'https://www.ai-seo-company.pl/audyt-seo',
       'en': 'https://www.ai-seo-company.pl/en/seo-audit'
     }
   },
@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import AudytClient from '@/components/AudytClient';
 
@@ -238,6 +239,7 @@ export default function AudytSeoPage() {
   return (
     <>
       <Header />
+      <Breadcrumbs pl="Audyt SEO" en="SEO Audit" />
       <AudytClient faqData={faqAudyt} portfolioCases={auditPortfolioCases} carouselItems={auditCarouselItems} />
       <Footer />
     </>

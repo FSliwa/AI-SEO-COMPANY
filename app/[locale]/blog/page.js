@@ -1,13 +1,13 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Blog | Content Marketing Guide | AI SEO COMPANY' : 'Blog | Poradnik SEO i Web Design | AI SEO COMPANY',
+  title: locale === 'en' ? 'SEO Blog | Content Marketing and Web Design Guides' : 'Blog SEO | Poradniki Pozycjonowania Stron i Web Designu',
   description: locale === 'en' ? 'Read the latest articles about content in marketing, search engine optimization SEO, and learn exactly what is SEO content with our expert search' : 'Czytaj najnowsze artykuły o SEO, analityce, budowaniu konwersji i projektowaniu. Zobacz nasz AI SEO COMPANY blog.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog' : 'https://www.ai-seo-company.pl/blog',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/blog',
-      'x-default': 'https://www.ai-seo-company.pl/en/blog',
+      'x-default': 'https://www.ai-seo-company.pl/blog',
       'en': 'https://www.ai-seo-company.pl/en/blog'
     }
   },
@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import BlogGrid from '@/components/BlogGrid';
@@ -47,6 +48,7 @@ export default async function BlogHubPage({ params }) {
   return (
     <>
       <Header />
+      <Breadcrumbs pl="Blog" en="Blog" />
       <main className="subpage-main" style={{ paddingTop: '100px', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
         <BlogGrid />
         <AppleFaq faqData={blogFaqData} title={locale === 'pl' ? 'Najczęściej zadawane pytania' : 'Frequently Asked Questions'} />

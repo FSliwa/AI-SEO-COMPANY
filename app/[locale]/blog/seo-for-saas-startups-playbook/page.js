@@ -3,7 +3,7 @@ import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: 'SEO for SaaS Startups: Playbook 2026 | AI SEO Company',
+    title: 'SEO for SaaS Startups: Playbook 2026',
     description: 'A product-led SEO playbook for SaaS startups: BOFU pages first, technical foundation, programmatic scale, and what it actually costs in 2026.',
     alternates: {
       canonical: `https://www.ai-seo-company.pl/en/blog/seo-for-saas-startups-playbook`,

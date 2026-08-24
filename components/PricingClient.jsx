@@ -1,6 +1,7 @@
 'use client';
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
@@ -77,6 +78,7 @@ export default function PricingClient() {
   return (
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
+      <Breadcrumbs pl="Cennik Pozycjonowania" en="SEO Pricing" />
       
       {/* Hero Banner */}
       <section style={{ paddingTop: '160px', paddingBottom: '40px', position: 'relative' }}>

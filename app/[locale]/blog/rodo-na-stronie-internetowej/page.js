@@ -3,7 +3,7 @@ import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: 'RODO na stronie internetowej: co musisz mieć | AI SEO',
+    title: 'RODO na stronie internetowej: co musisz mieć',
     description: 'Polityka prywatności, baner cookies i umowy powierzenia — co wdrożyć na stronie w 2026 roku, po wejściu w życie Prawa komunikacji elektronicznej.',
     alternates: {
       // Polish-only piece: the English canonical would have to point at a page

@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
       canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/terms' : 'https://www.ai-seo-company.pl/regulamin',
       languages: {
         'pl': 'https://www.ai-seo-company.pl/regulamin',
-        'x-default': 'https://www.ai-seo-company.pl/en/terms',
+        'x-default': 'https://www.ai-seo-company.pl/regulamin',
         'en': 'https://www.ai-seo-company.pl/en/terms'
       }
     },

@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/about-us' : 'https://www.ai-seo-company.pl/o-nas',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/o-nas',
-      'x-default': 'https://www.ai-seo-company.pl/en/about-us',
+      'x-default': 'https://www.ai-seo-company.pl/o-nas',
       'en': 'https://www.ai-seo-company.pl/en/about-us'
     }
   },

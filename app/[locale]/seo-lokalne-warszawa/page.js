@@ -2,12 +2,12 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'Local SEO Warsaw | Search Engine Optimization, SEO Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
-  description: locale === 'en' ? 'Local search engine optimization agency helping businesses rank higher in Google Maps. Need SEO near me? Our company team delivers proven local SEO services and results.' : 'Pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google i Profil Firmy, zdobądź klientów z okolicy, wyprzedź lokalną konkurencję.',
+  description: locale === 'en' ? 'Local search engine optimization agency for Google Maps rankings. Need SEO near me? Our company delivers proven local SEO services and results.' : 'Pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google i Profil Firmy, zdobądź klientów z okolicy, wyprzedź lokalną konkurencję.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
     languages: {
       'pl': 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
-      'x-default': 'https://www.ai-seo-company.pl/en/local-seo-warsaw',
+      'x-default': 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
       'en': 'https://www.ai-seo-company.pl/en/local-seo-warsaw'
     }
   },
@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Pricing from '@/components/Pricing';
@@ -22,7 +23,7 @@ import ServiceCarousel from '@/components/service/ServiceCarousel';
 import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
-import { useLocale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 
 const faqData = [
@@ -152,11 +153,17 @@ const carouselItems = [
   }
 ];
 
-export default function SeoLokalneWarszawaPage() {
-  const lang = useLocale();
+export default async function SeoLokalneWarszawaPage({ params }) {
+  // useLocale() w komponencie serwerowym czyta kontekst zadania i wymuszal
+  // dynamiczne renderowanie CALEJ trasy (jedyna nie-statyczna strona po
+  // wdrozeniu ISR). Locale bierzemy z params, jak na pozostalych stronach.
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const lang = locale;
   return (
     <>
       <Header />
+      <Breadcrumbs pl="SEO Lokalne Warszawa" en="Local SEO Warsaw" />
       <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
         
         {/* Hero Banner */}

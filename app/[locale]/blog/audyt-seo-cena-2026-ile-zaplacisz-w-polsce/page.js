@@ -1,6 +1,6 @@
 import Link from 'next/link';
 export const metadata = {
-  title: 'Audyt SEO cena 2026 — ile zapłacisz w Polsce? | AI SEO COMPANY',
+  title: 'Audyt SEO cena 2026 — ile zapłacisz w Polsce?',
   description: 'Sprawdź aktualne cenniki audytów SEO w Polsce na 2026 rok. Ile kosztuje audyt dla małej strony, sklepu e-commerce czy dużego serwisu?',
 };
 import Header from '@/components/Header';

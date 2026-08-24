@@ -58,7 +58,10 @@ export default function ArticleSchema({
         url: `${BASE}/ai-seo-company-logotyp-v2.png`
       }
     },
-    datePublished: resolvedDate || new Date().toISOString()
+    datePublished: resolvedDate || new Date().toISOString(),
+    // Data modyfikacji = data publikacji, dopoki tresc realnie sie nie
+    // zmienila (regula z CLAUDE.md: zadnych dat aktualizacji z sufitu).
+    dateModified: resolvedDate || new Date().toISOString()
   };
 
   const breadcrumbJsonLd = {
