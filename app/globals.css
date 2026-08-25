@@ -3730,3 +3730,30 @@ textarea,
 .breadcrumbs a:hover { text-decoration: underline; }
 .breadcrumbs [aria-current] { color: #1D1D1F; }
 .breadcrumbs + main.subpage-main { margin-top: -76px; }
+
+
+/* --- Kursor adaptujacy sie do tla -------------------------------------
+   Domyslnie ciemny grot (icons8) - serwis jest w wiekszosci jasny.
+   Na sekcjach o ciemnym tle (hero ze scena 3D, stopka, ciemne bloki CTA)
+   wchodzi jasny wariant tego samego ksztaltu: biale cialo + ciemny kontur
+   i cien. Regula jest czysto CSS-owa (kaskada po kontenerze sekcji), wiec
+   nie kosztuje ani jednego nasluchiwacza zdarzen i dziala takze przy
+   wylaczonym JS. Klasa .cursor-light pozwala oznaczyc dowolny nowy blok
+   o ciemnym tle bez ruszania tej reguly. */
+.hero, .hero *,
+.results, .results *,
+footer, footer *,
+.cursor-light, .cursor-light * {
+  cursor: url('/cursors/arrow-light.png') 1 1, auto !important;
+  cursor: -webkit-image-set(url('/cursors/arrow-light.png') 1x, url('/cursors/arrow-light@2x.png') 2x) 1 1, auto !important;
+  cursor: image-set(url('/cursors/arrow-light.png') 1x, url('/cursors/arrow-light@2x.png') 2x) 1 1, auto !important;
+}
+/* Raczka na linkach ma wysoki kontrast wlasnego konturu, wiec dziala na
+   obu tlach - w ciemnych sekcjach zostaje bez zmian. */
+.hero a, .hero button, .results a, .results button,
+footer a, footer button,
+.cursor-light a, .cursor-light button {
+  cursor: url('/cursors/pointer.png') 13 3, pointer !important;
+  cursor: -webkit-image-set(url('/cursors/pointer.png') 1x, url('/cursors/pointer@2x.png') 2x) 13 3, pointer !important;
+  cursor: image-set(url('/cursors/pointer.png') 1x, url('/cursors/pointer@2x.png') 2x) 13 3, pointer !important;
+}
