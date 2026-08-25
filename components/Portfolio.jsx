@@ -118,7 +118,7 @@ const MOSAIC = [
     alt: 'Sekcja hero strony AI SEO COMPANY — napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website — 3D SEO scene' },
 { src: '/projects/mosaic/ase-a-v2.webp', w: 1200, h: 700, alt: 'Pełna sekcja hero platformy tradingowej ASE-BOT — AI trading i analiza rynków', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
 { src: '/projects/mosaic/tql-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' , srcEn: '/projects/mosaic/tql-a-en.webp' },
-{ src: '/projects/mosaic/sta-blog-pl3.webp', w: 1200, h: 672,
+{ src: '/projects/mosaic/sta-blog-pl4.webp', w: 1200, h: 844,
     alt: 'Karty artykułów bazy wiedzy Staniax — metalizacja próżniowa i regeneracja odbłyśników', altEn: 'Staniax knowledge base — articles on vacuum metallization' },
 { src: '/projects/mosaic/sta-a-v4.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax — metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' , srcEn: '/projects/mosaic/sta-a-en3.webp' },
 { src: '/projects/mosaic/own-blog-pl3.webp', srcEn: '/projects/mosaic/own-blog-en3.webp', w: 1200, h: 840,
@@ -166,7 +166,7 @@ export default function Portfolio() {
     if (cols === 5) {
       const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
       return [
-        ['sta-a-v4', 'sta-blog-pl3', 'staniax'],
+        ['sta-a-v4', 'sta-blog-pl4', 'staniax'],
         ['mad-a-v2', 'madamethai'],
         ['own-hero-pl4', 'own-blog-pl3', 'ai-seo-company'],
         ['ase-a-v2', 'fix-a-v2', 'ase-bot'],
