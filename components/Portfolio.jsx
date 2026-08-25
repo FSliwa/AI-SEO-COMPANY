@@ -114,7 +114,7 @@ const MOSAIC = [
      prawdziwe panele GSC. */
 { src: '/projects/mosaic/elkat-a-v2.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
 { src: '/projects/mosaic/mad-a-v2.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
-{ src: '/projects/mosaic/own-hero-pl2.webp', srcEn: '/projects/mosaic/own-hero-en2.webp', w: 1200, h: 792,
+{ src: '/projects/mosaic/own-hero-pl3.webp', srcEn: '/projects/mosaic/own-hero-en3.webp', w: 1200, h: 792,
     alt: 'Sekcja hero strony AI SEO COMPANY — napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website — 3D SEO scene' },
 { src: '/projects/mosaic/ase-a-v2.webp', w: 1200, h: 700, alt: 'Pełna sekcja hero platformy tradingowej ASE-BOT — AI trading i analiza rynków', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
 { src: '/projects/mosaic/tql-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' , srcEn: '/projects/mosaic/tql-a-en.webp' },
@@ -168,7 +168,7 @@ export default function Portfolio() {
       return [
         ['sta-a-v4', 'sta-blog-pl', 'staniax'],
         ['mad-a-v2', 'madamethai'],
-        ['own-hero-pl2', 'own-blog-pl3', 'ai-seo-company'],
+        ['own-hero-pl3', 'own-blog-pl3', 'ai-seo-company'],
         ['ase-a-v2', 'fix-a-v2', 'ase-bot'],
         ['elkat-a-v2', 'tql-a', 'tql'],
       ].map((stack) => stack.map((k) => byKey[k]));
