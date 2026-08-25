@@ -17,7 +17,7 @@ export default function BlogLibrary() {
     tag: lang === 'pl' ? p.tagPl : p.tagEn,
     title: lang === 'pl' ? p.titlePl : p.titleEn,
     slug: p.slug,
-    image: p.image,
+    image: (lang === 'en' && p.imageEn) || p.image,
   });
 
   return (

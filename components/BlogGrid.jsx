@@ -74,8 +74,8 @@ export default function BlogGrid() {
     tag: lang === 'pl' ? p.tagPl : p.tagEn,
     title: lang === 'pl' ? p.titlePl : p.titleEn,
     slug: p.slug,
-    image: p.image,
-    heroImage: p.heroImage || p.image,
+    image: (lang === 'en' && p.imageEn) || p.image,
+    heroImage: (lang === 'en' && (p.heroImageEn || p.imageEn)) || p.heroImage || p.image,
   });
 
   if (!heroPost) return null;

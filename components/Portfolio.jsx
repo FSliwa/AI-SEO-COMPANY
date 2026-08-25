@@ -121,7 +121,7 @@ const MOSAIC = [
 { src: '/projects/mosaic/sta-blog-pl4.webp', w: 1200, h: 844,
     alt: 'Karty artykułów bazy wiedzy Staniax — metalizacja próżniowa i regeneracja odbłyśników', altEn: 'Staniax knowledge base — articles on vacuum metallization' },
 { src: '/projects/mosaic/sta-a-v4.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax — metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' , srcEn: '/projects/mosaic/sta-a-en3.webp' },
-{ src: '/projects/mosaic/own-blog-pl4.webp', srcEn: '/projects/mosaic/own-blog-en4.webp', w: 1200, h: 840,
+{ src: '/projects/mosaic/own-blog-pl5.webp', srcEn: '/projects/mosaic/own-blog-en4.webp', w: 1200, h: 840,
     alt: 'Blog AI SEO COMPANY — artykuły o SEO i web designie', altEn: 'AI SEO COMPANY blog — articles on SEO and web design' },
 { src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
@@ -168,7 +168,7 @@ export default function Portfolio() {
       return [
         ['sta-a-v4', 'sta-blog-pl4', 'staniax'],
         ['mad-a-v2', 'madamethai'],
-        ['own-hero-pl4', 'own-blog-pl4', 'ai-seo-company'],
+        ['own-hero-pl4', 'own-blog-pl5', 'ai-seo-company'],
         ['ase-a-v2', 'fix-a-v2', 'ase-bot'],
         ['elkat-a-v2', 'tql-a', 'tql'],
       ].map((stack) => stack.map((k) => byKey[k]));
