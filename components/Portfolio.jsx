@@ -266,6 +266,10 @@ export default function Portfolio() {
                     ? (lang === 'pl'
                         ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.'
                         : 'Building and scaling digital sales for the newly opened restaurant location.')
+                    : item.id === 2
+                    ? (lang === 'pl'
+                        ? `${item.metric} wzrostu odwiedzin organicznych po 1 miesiącu od startu z zerowej widoczności.`
+                        : `${item.metric} increase in organic visits after the first month, starting from zero visibility.`)
                     : (lang === 'pl'
                         ? `${item.metric} wzrostu odwiedzin organicznych po 1 miesiącu.`
                         : `${item.metric} increase in organic visits after 1 month.`)}
