@@ -16,20 +16,9 @@ export default function sitemap() {
     allRoutes.push({ url, lastModified, changeFrequency, priority });
   };
 
-  // Static pages, plus any article that needed a localised slug
-  Object.keys(routing.pathnames).forEach(route => {
-    const changeFrequency = route === '/' || route.startsWith('/blog') ? 'weekly' : 'monthly';
-    const priority = route === '/' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85;
-
-    // The English home page canonicalises to /en, so do not emit /en/ here —
-    // that URL 308-redirects and would put a non-canonical address in the sitemap.
-    const enSlug = routing.pathnames[route].en || route;
-    push(`${baseUrl}/en${enSlug === '/' ? '' : enSlug}`, changeFrequency, priority);
-
-    const plSlug = routing.pathnames[route].pl || route;
-    push(`${baseUrl}${plSlug === '/' ? '/' : plSlug}`, changeFrequency, priority);
-  });
-
+  // Artykuly ida PIERWSZE: dedup `seen` musi zablokowac wpis z petli pathnames
+  // (statyczny lastmod), a nie odwrotnie - inaczej kazdy artykul ze
+  // zlokalizowanym slugiem tracil realna date publikacji (regresja z 26.08).
   // blogPosts is the source of truth for articles. routing.pathnames only carries
   // the posts that needed a localised slug, so deriving article URLs from it alone
   // silently drops every new one — keep both sources in play.
@@ -47,6 +36,20 @@ export default function sitemap() {
     if (!post.plOnly) {
       push(`${baseUrl}/en${(mapped && mapped.en) || post.slug}`, 'weekly', 0.7, post.date || STATIC_LASTMOD);
     }
+  });
+
+  // Static pages, plus any article that needed a localised slug
+  Object.keys(routing.pathnames).forEach(route => {
+    const changeFrequency = route === '/' || route.startsWith('/blog') ? 'weekly' : 'monthly';
+    const priority = route === '/' ? 1.0 : route.startsWith('/blog/') ? 0.7 : 0.85;
+
+    // The English home page canonicalises to /en, so do not emit /en/ here —
+    // that URL 308-redirects and would put a non-canonical address in the sitemap.
+    const enSlug = routing.pathnames[route].en || route;
+    push(`${baseUrl}/en${enSlug === '/' ? '' : enSlug}`, changeFrequency, priority);
+
+    const plSlug = routing.pathnames[route].pl || route;
+    push(`${baseUrl}${plSlug === '/' ? '/' : plSlug}`, changeFrequency, priority);
   });
 
   return allRoutes;

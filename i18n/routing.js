@@ -87,6 +87,10 @@ export const routing = defineRouting({
     '/blog/content-gap-analysis': {
       pl: '/blog/analiza-luk-contentowych',
       en: '/blog/content-gap-analysis'
+    },
+    '/blog/technical-seo-audit-checklist': {
+      pl: '/blog/audyt-techniczny-seo',
+      en: '/blog/technical-seo-audit-checklist'
     }
   }
 });
