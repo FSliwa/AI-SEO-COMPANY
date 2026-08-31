@@ -169,10 +169,13 @@ export default function Hero() {
     // dalej razem - to naprawia takze "tekst w ogole bez animacji", ktory
     // bral sie z opoznien CSS uplywajacych na zegarze sciennym w tle.
     //
-    // 4250 ms = os czasu wjazdu zdekodowana z .splinecode (start z
-    // opoznieniem 1500 ms, ruchy po 1000 ms, ostatni odpalany na 3000 ms)
-    // + 250 ms marginesu na osadzenie.
-    const WJAZD_MS = 4250;
+    // Os czasu wjazdu zdekodowana z .splinecode konczy sie na 4000 ms
+    // (start z opoznieniem 1500 ms, ruchy po 1000 ms, ostatni odpalany na
+    // 3000 ms). Prog ustawiony 500 ms wczesniej - decyzja projektowa:
+    // tekst zaczyna wchodzic na ogonie ostatniego ruchu sceny, wiec wejscia
+    // zazebiaja sie zamiast nastepowac po sobie. Kierunki animacji odsuwaja
+    // tekst od artworku, wiec zazebienie nie grozi najazdem na litery.
+    const WJAZD_MS = 3750;
     let zatrzymano = false;
     try { app.stop(); zatrzymano = true; } catch (e) {}
     if (!zatrzymano) { setTimeout(() => koniec('bez-stop'), WJAZD_MS); return; }
