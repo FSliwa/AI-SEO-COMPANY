@@ -104,15 +104,56 @@ export default function Hero() {
   const t = useTranslations('hero');
   const copy = COPY[lang] || COPY.pl;
 
-  // The copy enters ONLY when the scene has painted its first frame — both run
-  // off this one state change, on the same curve and duration, so text and 3D
-  // arrive as a single movement. The timeout is not pacing, it is disaster
-  // recovery: if the network never delivers the scene, the hero must not stay
-  // blank forever.
+  // Dwa stany, bo to dwa rozne momenty. `sceneIn` = scena namalowala pierwsza
+  // klatke (fade kanwy). `copyIn` = scena SKONCZYLA swoja animacje wstepna -
+  // dopiero wtedy wchodzi tekst.
+  //
+  // Skad wiemy, ze skonczyla: nie z zegara. Stale czasowe w CSS zawodzily na
+  // dwa sposoby - na wolnym GPU scena jeszcze jechala, gdy tekst juz wszedl
+  // (najazd na litery), a w karcie w tle opoznienie CSS uplywalo niewidocznie
+  // i tekst pojawial sie bez zadnej animacji. Zamiast tego obserwujemy w petli
+  // rAF pozycje obiektow sceny (onLoad daje instancje Application z
+  // getAllObjects); tekst dostaje sygnal, gdy obiekty NAJPIERW sie poruszyly,
+  // a POTEM stoja nieruchomo przez ~450 ms. Scena animuje sie ta sama petla
+  // rAF, wiec w ukrytej karcie obie animacje stoja razem i po powrocie graja
+  // razem - synchronizacja jest z ruchu, nie z czasu.
   const [sceneIn, setSceneIn] = useState(false);
+  const [copyIn, setCopyIn] = useState(false);
+
+  const onSceneLoad = (app) => {
+    setSceneIn(true);
+    let objs = [];
+    try { objs = (app && app.getAllObjects && app.getAllObjects() || []).slice(0, 40); } catch (e) {}
+    if (!objs.length) {
+      // Scena bez odczytu obiektow: zostaje przyzwoity zegar.
+      setTimeout(() => setCopyIn(true), 4000);
+      return;
+    }
+    const t0 = performance.now();
+    let poprz = null;
+    let widzianoRuch = false;
+    let spokojOd = null;
+    const tik = (teraz) => {
+      const stan = objs.map(o => o.position ? o.position.x + o.position.y + o.position.z : 0);
+      if (poprz) {
+        let ruch = 0;
+        for (let i = 0; i < stan.length; i++) ruch += Math.abs(stan[i] - poprz[i]);
+        if (ruch > 0.5) { widzianoRuch = true; spokojOd = null; }
+        else if (spokojOd === null) spokojOd = teraz;
+      }
+      poprz = stan;
+      const gotowe =
+        (widzianoRuch && spokojOd !== null && teraz - spokojOd > 450) ||
+        teraz - t0 > 8000; // bezpiecznik: scena bez wykrywalnego ruchu
+      if (gotowe) { setCopyIn(true); return; }
+      requestAnimationFrame(tik);
+    };
+    requestAnimationFrame(tik);
+  };
 
   useEffect(() => {
-    const failsafe = setTimeout(() => setSceneIn(true), 15000);
+    // Katastrofa sieciowa: hero nie moze zostac pusty na zawsze.
+    const failsafe = setTimeout(() => { setSceneIn(true); setCopyIn(true); }, 15000);
     return () => clearTimeout(failsafe);
   }, []);
 
@@ -245,9 +286,9 @@ export default function Hero() {
       <div className={`hero-en-bg${sceneIn ? ' is-in' : ''}`} aria-hidden="true">
         <SceneErrorBoundary
           fallback={<div className="hero-en-orb" />}
-          onFail={() => setSceneIn(true)}
+          onFail={() => { setSceneIn(true); setCopyIn(true); }}
         >
-          <Spline scene={SCENE} onLoad={() => setSceneIn(true)} />
+          <Spline scene={SCENE} onLoad={onSceneLoad} />
         </SceneErrorBoundary>
       </div>
 
@@ -268,7 +309,7 @@ export default function Hero() {
       </noscript>
 
       <div className="hero-en">
-        <div ref={copyRef} className={`hero-en-copy${sceneIn ? ' is-in' : ''}`}>
+        <div ref={copyRef} className={`hero-en-copy${copyIn ? ' is-copy-in' : ''}`}>
           <div className="hero-en-top">
             {/* Same device as the paragraph below: the clause phones drop carries
                 no phrase of its own. "not on rankings" goes, and "rankings"

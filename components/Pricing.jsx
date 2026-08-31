@@ -32,7 +32,7 @@ export default function Pricing({ isMainContent = false }) {
               <p className="pricing-desc">{t('standardDesc')}</p>
               <div className="pricing-price">
                 <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
-                <div className="price-amount">{t('standardPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('standardPeriod')}</span></div>
+                <div className="price-amount"><span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>{t('standardPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('standardPeriod')}</span></div>
               </div>
             </div>
             <ul className="pricing-features">
@@ -64,7 +64,7 @@ export default function Pricing({ isMainContent = false }) {
               <p className="pricing-desc">{t('premiumDesc')}</p>
               <div className="pricing-price">
                 <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
-                <div className="price-amount">{t('premiumPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('premiumPeriod')}</span></div>
+                <div className="price-amount"><span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>{t('premiumPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('premiumPeriod')}</span></div>
               </div>
             </div>
             <ul className="pricing-features">
@@ -97,7 +97,7 @@ export default function Pricing({ isMainContent = false }) {
               <p className="pricing-desc">{t('boosterDesc')}</p>
               <div className="pricing-price">
                 <div className="price-label" style={{ color: 'var(--color-cta)', fontWeight: '700' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące' : 'Min. 3-month contract'}</div>
-                <div className="price-amount">{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
+                <div className="price-amount"><span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
               </div>
             </div>
             <ul className="pricing-features">

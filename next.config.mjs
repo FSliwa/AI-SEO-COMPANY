@@ -43,6 +43,28 @@ const nextConfig = {
         destination: '/blog/analiza-luk-contentowych',
         permanent: true,
       },
+      // Ten sam przypadek co wyzej: klucz trasy jest angielski, publiczny adres
+      // polski. Bez tej reguly next-intl oddawal 307 (tymczasowe), wiec stary
+      // adres zostawal w indeksie i nie przekazywal sygnalow.
+      {
+        source: '/blog/technical-seo-audit-checklist',
+        destination: '/blog/audyt-techniczny-seo',
+        permanent: true,
+      },
+      // Warianty /pl/* dla obu artykulow MUSZA stac przed ogolna regula
+      // '/pl/:path*' nizej - inaczej powstaje lancuch dwuskokowy
+      // (/pl/... -> 308 -> /blog/<klucz> -> 308 -> /blog/<slug-pl>),
+      // ktory playbook 4.6 wyklucza. Tu jeden skok prosto do celu.
+      {
+        source: '/pl/blog/content-gap-analysis',
+        destination: '/blog/analiza-luk-contentowych',
+        permanent: true,
+      },
+      {
+        source: '/pl/blog/technical-seo-audit-checklist',
+        destination: '/blog/audyt-techniczny-seo',
+        permanent: true,
+      },
       // /pl and /pl/* never exist as pages (defaultLocale 'pl' is unprefixed,
       // localePrefix 'as-needed'). The next-intl middleware strips the prefix
       // with a temporary 307, so Google keeps the /pl/ URLs indexed. These two

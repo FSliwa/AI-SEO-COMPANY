@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { postsForLocale } from '@/lib/blogPosts';
+import { Link } from '@/i18n/routing';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 
 export default function Blog() {
@@ -47,18 +48,24 @@ export default function Blog() {
                 </div>
                 <h3>{post.title}</h3>
                 <p>{post.desc}</p>
-                <a href={post.slug} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
+                {/* Link z i18n/routing, nie surowe <a>: post.slug to KLUCZ trasy
+                    (zawsze angielski), a nie publiczny adres. Przy <a href> ten
+                    klucz trafial do przegladarki doslownie, wiec na /en karty
+                    prowadzily w polskie sciezki - artykul enOnly konczyl sie
+                    pusta strona, a dwujezyczne laduly po polsku przez 307/308.
+                    Link tlumaczy klucz na sciezke wlasciwa dla jezyka. */}
+                <Link href={post.slug} className="btn btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
                   {t('btnRead')} <span className="sr-only">o {post.title}</span>
-                </a>
+                </Link>
               </div>
             </RevealItem>
           ))}
         </RevealStagger>
         
         <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <a href="/blog" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
+          <Link href="/blog" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: 600 }}>
             {lang === 'pl' ? 'Zobacz pełną bibliotekę' : 'View full library'}
-          </a>
+          </Link>
         </RevealItem>
       </div>
     </section>

@@ -1367,6 +1367,18 @@ section, aside.pricing, aside.contact, aside.why-us {
   margin-bottom: 1.5rem;
 }
 
+/* "od" / "from" przed kwota: mniejsze i lzejsze od liczby, siedzi na tej
+   samej linii bazowej. Inline-owy span dziedziczy zawijanie z .price-amount,
+   wiec na waskich kartach przedrostek lamie sie razem z kwota, a nie osobno. */
+.price-from {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-right: 0.45rem;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
 .pricing-features {
   list-style: none;
   margin-bottom: 2rem;
@@ -2721,7 +2733,8 @@ section, aside.pricing, aside.contact, aside.why-us {
     180deg,
     rgba(3, 7, 18, 0.82) 0%,
     rgba(3, 7, 18, 0.32) 14%,
-    rgba(3, 7, 18, 0) 26%,
+    rgba(3, 7, 18, 0.20) 26%,
+    rgba(3, 7, 18, 0) 33%,
     rgba(3, 7, 18, 0) 58%,
     rgba(3, 7, 18, 0.42) 74%,
     rgba(3, 7, 18, 0.88) 100%
@@ -2748,6 +2761,17 @@ section, aside.pricing, aside.contact, aside.why-us {
   to { transform: none; }
 }
 
+/* Wariant dla grupy NAD literami. Kierunek jest odwrocony celowo: przy wspolnym
+   heroCopyRise akapit startowal 26 px nizej, czyli 26 px BLIZEJ liter - z 28 px
+   zapasu zostawaly 2 px i tekst wchodzil w scene, a potem sie z niej wycofywal.
+   To bylo widac jako "tekst najezdza na animacje". Teraz kazda grupa dojezdza
+   do miejsca docelowego ODSUWAJAC sie od artworku: gorna z gory, dolna z dolu.
+   Kolizja przestaje byc mozliwa z konstrukcji, nie z dobranego marginesu. */
+@keyframes heroCopyRiseTop {
+  from { transform: translateY(-26px); }
+  to { transform: none; }
+}
+
 @keyframes heroCopyFade {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -2768,23 +2792,50 @@ section, aside.pricing, aside.contact, aside.why-us {
   transform: translateY(26px);
 }
 
-/* Same duration and the same curve as heroSceneIn on the canvas: the copy is
-   gated on the scene's first frame, so the two animations start together and
-   must move together. The fade used to be a quick 280ms for LCP's sake — moot
-   now that the copy waits for the scene anyway. */
-.hero-en-copy.is-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
+/* Klatka zerowa grupy gornej - lustrzana, zeby przed startem animacji tekst
+   takze byl odsuniety OD liter, a nie w ich strone. */
+.hero-en-copy :is(.hero-en-lead, .hero-en-body) {
+  transform: translateY(-26px);
+}
+
+/* Bramka .is-copy-in jest OSOBNA od .is-in kanwy i nadaje ja JavaScript
+   dopiero, gdy obiekty sceny najpierw sie PORUSZYLY, a potem stoja nieruchomo
+   ~450 ms (detekcja na pozycjach z getAllObjects w Hero.jsx, petla rAF
+   wspolna z animacja sceny). Zadnych zegarowych opoznien: stale czasowe
+   zawodzily na wolnym GPU (tekst wchodzil, gdy litery jeszcze jechaly przez
+   jego pas) i w karcie w tle (opoznienie CSS uplywalo niewidocznie i tekst
+   pojawial sie w ogole bez animacji). Ta sama bramka obejmuje linie
+   lukowego akapitu nizej - wczesniej mialy wlasna, wczesniejsza (250 ms od
+   pierwszej klatki sceny) i to one najezdzaly na litery podczas wjazdu. */
+.hero-en-copy.is-copy-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
   animation:
-    heroCopyRise 1000ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroCopyFade 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    heroCopyRise 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    heroCopyFade 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Grupa nad literami - ten sam czas i ta sama krzywa, przeciwny kierunek. */
+.hero-en-copy.is-copy-in :is(.hero-en-lead, .hero-en-body) {
+  animation-name: heroCopyRiseTop, heroCopyFade;
 }
 
 /* The stagger. Has to carry the same specificity as the shorthand above —
-   written as bare element classes it loses to `.hero-en-copy.is-in :is(...)`,
+   written as bare element classes it loses to `.hero-en-copy.is-copy-in :is(...)`,
    the shorthand resets delay to 0, and all four elements arrive at once. */
-.hero-en-copy.is-in .hero-en-lead { animation-delay: 80ms; }
-.hero-en-copy.is-in .hero-en-body { animation-delay: 200ms; }
-.hero-en-copy.is-in .hero-en-title { animation-delay: 320ms; }
-.hero-en-copy.is-in .hero-en-actions { animation-delay: 440ms; }
+.hero-en-copy.is-copy-in .hero-en-lead { animation-delay: 80ms; }
+.hero-en-copy.is-copy-in .hero-en-body { animation-delay: 200ms; }
+.hero-en-copy.is-copy-in .hero-en-title { animation-delay: 320ms; }
+.hero-en-copy.is-copy-in .hero-en-actions { animation-delay: 440ms; }
+
+/* Przy wylaczonych animacjach tekst nie ma na co czekac: wchodzi od razu
+   w stanie koncowym (regula przeniesiona ze starszego, usunietego duplikatu -
+   byla tam jedyna rzecza, ktorej nie mial blok zachowany). */
+@media (prefers-reduced-motion: reduce) {
+  .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-en-bg.is-in canvas {
@@ -2804,82 +2855,6 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 
-
-/* Scrim. Edges only — the copy is pinned to the top and bottom of the section
-   and the lettering owns the middle, so the artwork itself needs no cover at
-   all. Top stop clears the header, bottom stop the promise line, buttons and
-   partner row. */
-.hero-overlay--en {
-  background: linear-gradient(
-    180deg,
-    rgba(3, 7, 18, 0.82) 0%,
-    rgba(3, 7, 18, 0.32) 14%,
-    rgba(3, 7, 18, 0) 26%,
-    rgba(3, 7, 18, 0) 58%,
-    rgba(3, 7, 18, 0.42) 74%,
-    rgba(3, 7, 18, 0.88) 100%
-  );
-  z-index: 2;
-}
-
-/* Copy entrance, matched to the scene rather than picked by feel. Decoded from
-   hero .splinecode: its Start timeline opens on a 1500ms delay and its moves run
-   1000ms (two others at 2000 and 3000ms) on an eased curve. So the rise here is
-   1000ms on an ease-out, and the four elements stagger out to 1440ms — landing
-   with the scene's own lead-in rather than against it.
-
-   Two animations, not one, because of LCP. The rise is what carries the timing;
-   the fade is deliberately quick, since an element at opacity 0 does not count
-   as painted and a 1000ms fade on the heading would push Largest Contentful
-   Paint out by a second on a page we have spent this long tuning.
-
-   Plain CSS rather than the motion library on purpose: it runs without waiting
-   for hydration, and the server HTML carries no inline opacity:0 — so a crawler
-   that does not execute JavaScript still reads the copy as ordinary text. */
-@keyframes heroCopyRise {
-  from { transform: translateY(26px); }
-  to { transform: none; }
-}
-
-@keyframes heroCopyFade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Held at the animation's first frame until the scene reports its own first
-   frame, then both run off the same state change — one movement instead of the
-   copy settling seconds before the 3D turns up.
-
-   The cost is stated plainly because it is real: the copy is the LCP element,
-   and it now waits on a 34 MB download. On a cold visit that measured 10.7s.
-   The failsafe in Hero.jsx releases the copy anyway after 8s so the hero is
-   never permanently blank, and the noscript block in the markup hands it to the
-   finished state when there is no JavaScript at all. The proper fix is upstream:
-   shrink the scene in Spline. */
-.hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
-  opacity: 0;
-  transform: translateY(26px);
-}
-
-.hero-en-copy.is-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
-  animation:
-    heroCopyRise 1000ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroCopyFade 280ms ease-out both;
-}
-
-.hero-en-lead { animation-delay: 80ms; }
-.hero-en-body { animation-delay: 200ms; }
-.hero-en-title { animation-delay: 320ms; }
-.hero-en-actions { animation-delay: 440ms; }
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-
-}
 
 /* Stretched to the full section height and pushed apart, so the heading rides
    the top edge and the promise line the bottom, with the scene's lettering in
@@ -2959,16 +2934,21 @@ section, aside.pricing, aside.contact, aside.why-us {
   pointer-events: auto;
 }
 
-/* Three rows: everything above the lettering, the lettering's own band, and
-   everything below. Measured top edge is 30.4% of the section height and the
-   bottom edge 62.2%, consistent across both aspect ratios tested. The 8px and
-   16px are the gaps asked for — the paragraph sits just clear of the "S", close
-   enough to read as one block with it. */
+/* Trzy wiersze: wszystko nad literami, pasmo samych liter i wszystko pod nimi.
+   Zmierzona gorna krawedz liter to 30,4% wysokosci sekcji, dolna 63,3%
+   (pomiar skanem pikseli, nie na oko).
+
+   Odstepy sa CELOWO wieksze niz pierwotne 8/16 px. Scena ma wlasna animacje
+   wstepna i jej elementy nie stoja dokladnie tam, gdzie w stanie spoczynku -
+   przy 8 px prześwitu tekst wchodzil na litery za kazdym drgnieciem. Teraz
+   akapit ma 28 px zapasu, a naglowek 30 px. Suma dwoch pierwszych wierszy jest
+   taka sama jak wczesniej powiekszona o te 30 px, wiec pasmo liter zostaje
+   nietkniete tam, gdzie bylo. */
 .hero-en-copy {
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-rows: calc(30.4% - 8px) calc(31.8% + 24px) 1fr;
+  grid-template-rows: calc(30.4% - 28px) calc(31.8% + 58px) 1fr;
   align-items: start;
   justify-items: start;
 }
@@ -3078,7 +3058,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   clip-path: inset(-40% 100% -40% 0);
 }
 
-.hero-en-copy.is-in .hero-en-arc-line {
+.hero-en-copy.is-copy-in .hero-en-arc-line {
   animation:
     heroLineWipe 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
     heroLineTrack 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -3098,7 +3078,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 /* D: the two lines nearest the lettering breathe — a slow pulse of the same
    orange glow the static ramp already gives them. Values are a superset of the
    inline ramp so the pulse reads as brightening, never as a flicker. */
-.hero-en-copy.is-in .hero-en-arc-line--hot {
+.hero-en-copy.is-copy-in .hero-en-arc-line--hot {
   animation:
     heroLineWipe 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
     heroLineTrack 1100ms cubic-bezier(0.22, 1, 0.36, 1) both,
@@ -3127,8 +3107,8 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-en-copy .hero-en-arc-line,
-  .hero-en-copy.is-in .hero-en-arc-line,
-  .hero-en-copy.is-in .hero-en-arc-line--hot {
+  .hero-en-copy.is-copy-in .hero-en-arc-line,
+  .hero-en-copy.is-copy-in .hero-en-arc-line--hot {
     animation: none;
     clip-path: none;
   }
