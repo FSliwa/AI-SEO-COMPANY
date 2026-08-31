@@ -251,7 +251,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <p><strong>Pro Tip:</strong> <em>Check robots.txt for accidental blocks on AI crawlers such as GPTBot, OAI-SearchBot and Claude-SearchBot. Plenty of sites block these by default and never notice. Blocking them can be a deliberate business decision — it should never be an accident of configuration.</em></p>
 
               <h2 id="workflow">How Does the Audit Workflow Run Step by Step?</h2>
-              <p>This is how to perform a technical SEO audit end to end. The SEO audit steps below run in this order for a reason: audits should confirm that Google can reach a page before anyone optimises how fast it loads. <a href="https://seoxpert.io/guides/complete-technical-seo-audit" target="_blank" rel="noopener noreferrer">Seoxpert's audit framework</a> warns against the reverse order for good reason: performance work on a noindexed page produces nothing. Follow the sequence.</p>
+              <p>This is how to perform a technical SEO audit end to end. The SEO audit steps below run in this order for a reason: audits should confirm that Google can reach a page before anyone optimises how fast it loads. Seoxpert's audit framework warns against the reverse order for good reason: performance work on a noindexed page produces nothing. Follow the sequence.</p>
 
               <ol>
                 <li><strong>Crawl and sample.</strong> Run a full site crawl supported by Search Console data and server logs. Deliverable: a crawl inventory spreadsheet with every URL, its status, canonical and indexability.</li>
@@ -362,7 +362,6 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <h3>Industry guides</h3>
               <ul>
                 <li><a href="https://crawlraven.com/blog/technical-seo-audit-checklist" target="_blank" rel="noopener noreferrer">Technical SEO Audit Checklist 2026 | CrawlRaven</a></li>
-                <li><a href="https://seoxpert.io/guides/complete-technical-seo-audit" target="_blank" rel="noopener noreferrer">The Complete Technical SEO Audit: A 2026 Checklist | Seoxpert</a></li>
                 <li><a href="https://schema.org/docs/gs.html" target="_blank" rel="noopener noreferrer">Schema.org — Getting Started</a></li>
               </ul>
 

@@ -93,16 +93,21 @@ export default function ArticleTOC({ items = [] }) {
         }}>
           {items.map(({ id, title, label }) => (
             <li key={id} style={{ counterIncrement: 'toc' }}>
-              <button
-                onClick={() => scrollTo(id)}
+              {/* Prawdziwa kotwica, nie <button>: bez href crawler nie widzial
+                  powiazania pozycji spisu z sekcja, a bez JavaScriptu spis byl
+                  martwy. Plynne przewijanie zostaje w onClick; adres w pasku
+                  aktualizuje sie bez skoku przez replaceState. */}
+              <a
+                href={`#${id}`}
+                onClick={(e) => { e.preventDefault(); scrollTo(id); history.replaceState(null, '', `#${id}`); }}
                 style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
+                  display: 'block',
+                  textDecoration: 'none',
                   textAlign: 'left',
                   padding: '0.4rem 0.75rem',
                   borderRadius: '8px',
                   width: '100%',
+                  boxSizing: 'border-box',
                   fontSize: '0.9rem',
                   fontWeight: activeId === id ? 600 : 400,
                   color: activeId === id ? '#1D1D1F' : '#86868B',
@@ -112,7 +117,7 @@ export default function ArticleTOC({ items = [] }) {
                 }}
               >
                 {title || label}
-              </button>
+              </a>
             </li>
           ))}
         </ol>

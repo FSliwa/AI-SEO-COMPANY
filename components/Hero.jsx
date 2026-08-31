@@ -119,41 +119,99 @@ export default function Hero() {
   // razem - synchronizacja jest z ruchu, nie z czasu.
   const [sceneIn, setSceneIn] = useState(false);
   const [copyIn, setCopyIn] = useState(false);
+  // Spline trzyma onLoad z pierwszego renderu, wiec stan w domknieciu bylby
+  // przestarzaly - ref jest wspolny dla wszystkich renderow.
+  const tekstPokazanyRef = useRef(false);
+  const pokazTekst = () => { tekstPokazanyRef.current = true; setCopyIn(true); };
 
   const onSceneLoad = (app) => {
     setSceneIn(true);
-    let objs = [];
-    try { objs = (app && app.getAllObjects && app.getAllObjects() || []).slice(0, 40); } catch (e) {}
-    if (!objs.length) {
-      // Scena bez odczytu obiektow: zostaje przyzwoity zegar.
-      setTimeout(() => setCopyIn(true), 4000);
+
+    // Scena zaladowala sie PO bezpieczniku (zimny cache 36 MB potrafi
+    // przekroczyc 15 s) - tekst juz stoi, wiec wjazd NIE MOZE grac pod nim.
+    // Zostaje statyczna pierwsza klatka; to wlasnie ten przypadek wygladal
+    // u uzytkownika jak "tekst najezdza na animacje".
+    if (tekstPokazanyRef.current) {
+      try { app.stop(); } catch (e) {}
+      window.__heroSync = { sciezka: 'scena-po-bezpieczniku', tekstPoMs: 0 };
       return;
     }
-    const t0 = performance.now();
-    let poprz = null;
-    let widzianoRuch = false;
-    let spokojOd = null;
-    const tik = (teraz) => {
-      const stan = objs.map(o => o.position ? o.position.x + o.position.y + o.position.z : 0);
-      if (poprz) {
-        let ruch = 0;
-        for (let i = 0; i < stan.length; i++) ruch += Math.abs(stan[i] - poprz[i]);
-        if (ruch > 0.5) { widzianoRuch = true; spokojOd = null; }
-        else if (spokojOd === null) spokojOd = teraz;
-      }
-      poprz = stan;
-      const gotowe =
-        (widzianoRuch && spokojOd !== null && teraz - spokojOd > 450) ||
-        teraz - t0 > 8000; // bezpiecznik: scena bez wykrywalnego ruchu
-      if (gotowe) { setCopyIn(true); return; }
+
+    // Diagnostyka zostaje w produkcji: window.__heroSync pokazuje sciezke
+    // i moment wejscia tekstu na kazdej maszynie - bez zgadywania.
+    const diag = (window.__heroSync = { t0: performance.now(), sciezka: null, tekstPoMs: null });
+    const koniec = (sciezka) => {
+      if (diag.sciezka) return;
+      diag.sciezka = sciezka;
+      diag.tekstPoMs = Math.round(performance.now() - diag.t0);
+      pokazTekst();
+    };
+
+    // Dostepnosc jako para: CSS przy ograniczonym ruchu pokazuje tekst od
+    // razu, wiec scena nie moze grac wjazdu pod nim - zostaje zatrzymana.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      try { app.stop(); } catch (e) {}
+      koniec('ograniczony-ruch');
+      return;
+    }
+
+    // STEROWANIE zamiast pomiaru. Wczesniejsze podejscia MIERZYLY, kiedy
+    // scena skonczy wjazd (stale czasowe CSS, pozycje obiektow, roznice
+    // pikseli kanwy) i kazde rozjezdzalo sie na innej maszynie: stale nie
+    // znaja tempa GPU, pozycje nie widza ruchu kamery, a odczyt pikseli
+    // przegrywa loterie kolejnosci rAF z renderem i zwraca zera.
+    //
+    // Tu nie ma czego mierzyc, bo sami wyznaczamy start: scena staje
+    // (app.stop) i rusza (app.play) dopiero razem z naszym licznikiem.
+    // Licznik sumuje czas WYLACZNIE miedzy klatkami rAF - w tej samej
+    // domenie zegara, w ktorej Spline prowadzi swoja os czasu. W ukrytej
+    // karcie rAF nie tyka, wiec staja OBIE animacje i po powrocie graja
+    // dalej razem - to naprawia takze "tekst w ogole bez animacji", ktory
+    // bral sie z opoznien CSS uplywajacych na zegarze sciennym w tle.
+    //
+    // 4250 ms = os czasu wjazdu zdekodowana z .splinecode (start z
+    // opoznieniem 1500 ms, ruchy po 1000 ms, ostatni odpalany na 3000 ms)
+    // + 250 ms marginesu na osadzenie.
+    const WJAZD_MS = 4250;
+    let zatrzymano = false;
+    try { app.stop(); zatrzymano = true; } catch (e) {}
+    if (!zatrzymano) { setTimeout(() => koniec('bez-stop'), WJAZD_MS); return; }
+
+    const start = () => {
+      try { app.play(); } catch (e) {}
+      let suma = 0;
+      let poprzednia = null;
+      const tik = (teraz) => {
+        if (diag.sciezka) return;
+        if (poprzednia !== null) suma += Math.min(100, teraz - poprzednia);
+        poprzednia = teraz;
+        if (suma >= WJAZD_MS) { koniec('wspolny-zegar'); return; }
+        requestAnimationFrame(tik);
+      };
       requestAnimationFrame(tik);
     };
-    requestAnimationFrame(tik);
+
+    // Start dopiero w widocznej karcie: wjazd i tekst maja byc OBEJRZANE,
+    // nie odhaczone w tle.
+    if (document.visibilityState === 'visible') {
+      start();
+    } else {
+      const naPowrot = () => {
+        if (document.visibilityState !== 'visible') return;
+        document.removeEventListener('visibilitychange', naPowrot);
+        start();
+      };
+      document.addEventListener('visibilitychange', naPowrot);
+    }
   };
 
   useEffect(() => {
     // Katastrofa sieciowa: hero nie moze zostac pusty na zawsze.
-    const failsafe = setTimeout(() => { setSceneIn(true); setCopyIn(true); }, 15000);
+    // 9 s, nie 15: tekst to tresc i element LCP, scena to dekoracja. Na
+    // maszynach, gdzie 36 MB sceny inicjalizuje sie dluzej (zmierzono 60+ s
+    // przy malej ilosci wolnego dysku), tekst wchodzi ta sciezka, a spozniona
+    // scena zostaje zatrzymana na pierwszej klatce - patrz straznik wyzej.
+    const failsafe = setTimeout(() => { setSceneIn(true); pokazTekst(); }, 9000);
     return () => clearTimeout(failsafe);
   }, []);
 
@@ -286,7 +344,7 @@ export default function Hero() {
       <div className={`hero-en-bg${sceneIn ? ' is-in' : ''}`} aria-hidden="true">
         <SceneErrorBoundary
           fallback={<div className="hero-en-orb" />}
-          onFail={() => { setSceneIn(true); setCopyIn(true); }}
+          onFail={() => { setSceneIn(true); pokazTekst(); }}
         >
           <Spline scene={SCENE} onLoad={onSceneLoad} />
         </SceneErrorBoundary>
@@ -348,6 +406,13 @@ export default function Hero() {
                 produces "sprzedażKompleksowa" / "salesPremium", a token that is
                 in no dictionary and breaks the phrase at the seam. */}
             <h1 className="hero-en-title">
+              {/* Tekstowy ekwiwalent napisu "SEO" ze sceny 3D. Podmiot zdania
+                  istnial dotad wylacznie jako piksele artworku, wiec surowy
+                  HTML zaczynal H1 od srodka zdania ("ktore buduje sprzedaz") -
+                  crawler i czytnik ekranu dostawaly zdanie bez podmiotu. To
+                  jest alternatywa tekstowa realnie widocznej grafiki (WCAG),
+                  nie ukryta fraza: scena doslownie wyswietla slowo SEO. */}
+              <span className="sr-only">{lang === 'pl' ? 'SEO, ' : 'SEO '}</span>
               <span className="hero-en-title-display">{copy.display}</span>{' '}
               <span className="hero-en-title-sub">{copy.sub}</span>
             </h1>

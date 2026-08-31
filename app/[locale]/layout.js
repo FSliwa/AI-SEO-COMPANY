@@ -14,6 +14,7 @@ function localizedJsonLd(locale) {
     if (node['@id'] === 'https://www.ai-seo-company.pl/#organization') {
       node.description = 'Modern SEO agency in Warsaw. We design search-ready websites, run professional SEO audits and deliver effective search engine optimization.';
       node.alternateName = 'SEO Agency Warsaw AI SEO COMPANY';
+      if (node.areaServed && node.areaServed.name) node.areaServed.name = 'Warsaw and Poland';
     }
     if (node['@type'] === 'WebSite') {
       if (node.name) node.name = 'AI SEO COMPANY | SEO Agency Warsaw';
