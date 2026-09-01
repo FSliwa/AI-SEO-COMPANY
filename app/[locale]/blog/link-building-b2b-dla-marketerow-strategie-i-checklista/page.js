@@ -679,9 +679,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
     </article>
 
       {/* Formularz kontaktowy na stronie artykułu */}
-      <div id="kontakt">
-        <Contact />
-      </div>
+      <Contact />
       <Footer />
     </main>
   );

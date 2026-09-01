@@ -652,9 +652,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
         </div>
       </article>
 
-      <div id="kontakt">
-        <Contact />
-      </div>
+      <Contact />
       <Footer />
     </main>
   );

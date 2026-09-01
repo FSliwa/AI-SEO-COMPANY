@@ -234,9 +234,7 @@ export default async function ArticleLokalnePage({ params }) {
       )}
     </article>
 
-      <div id="kontakt">
-        <Contact />
-      </div>
+      <Contact />
       <Footer />
     </main>
   );

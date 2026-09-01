@@ -556,9 +556,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
         </div>
       </article>
 
-      <div id="kontakt">
-        <Contact />
-      </div>
+      <Contact />
       <Footer />
     </main>
   );

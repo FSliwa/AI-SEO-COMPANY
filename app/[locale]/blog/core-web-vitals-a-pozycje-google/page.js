@@ -219,9 +219,7 @@ export default async function ArticleCwvPage({ params }) {
       )}
     </article>
 
-      <div id="kontakt">
-        <Contact />
-      </div>
+      <Contact />
       <Footer />
     </main>
   );

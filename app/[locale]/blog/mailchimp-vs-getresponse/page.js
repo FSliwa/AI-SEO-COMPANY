@@ -497,7 +497,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Porada profesjonalisty: <em>Przed migracją wyślij kampanię reaktywacyjną do nieaktywnych kontaktów. Przenoszenie „martwej" bazy do nowego narzędzia obniży deliverability od pierwszego dnia i może trwale zaszkodzić reputacji domeny.</em></p>
 
-                  <p>Warto też pamiętać o kwestii <a href="https://fibly.pl/pomoc/klienci/profil-klienta" target="_blank" rel="noopener noreferrer">profilowania klientów i zgodności z danymi</a> przy imporcie bazy. Poprawne odwzorowanie pól zgód to nie tylko wymóg RODO, lecz też warunek działania segmentów i automatyzacji po migracji.</p>
+                  <p>Warto też pamiętać o kwestii <a href="https://fibly.pl/pomoc/klienci/profil-klienta" target="_blank" rel="nofollow noopener noreferrer">profilowania klientów i zgodności z danymi</a> przy imporcie bazy. Poprawne odwzorowanie pól zgód to nie tylko wymóg RODO, lecz też warunek działania segmentów i automatyzacji po migracji.</p>
 
                   <h2 id="jak-sprawdzilismy-te-dane">Jak sprawdziliśmy te dane?</h2>
                   
@@ -678,9 +678,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
         </div>
       </article>
 
-      <div id="kontakt">
-        <Contact />
-      </div>
+      <Contact />
       <Footer />
     </main>
   );

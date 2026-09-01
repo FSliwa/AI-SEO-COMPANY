@@ -270,7 +270,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
 
               <h2 id="oferta">10. AI SEO Company: ready analysis and implementation plan for your business</h2>
               <p>A DIY SEO competitor analysis takes 2–4 weeks and requires access to several paid tools at the same time. <a href="https://www.ai-seo-company.pl/" target="_blank" rel="noopener noreferrer">AI SEO Company</a> shortens this time and delivers not only a report but also a ready plan with priorities and implementation.</p>
-              <p>Cooperation formats tailored to different needs: one-time <Link href="/pozycjonowanie-stron-internetowych">SEO audit</Link>, monthly <Link href="/pozycjonowanie-stron-internetowych">website positioning subscription</Link>, or a website project with an SEO package. Book a free consultation and find out which topical clusters give you the greatest chance of growth within the next 6 months.</p>
+              <p>Cooperation formats tailored to different needs: one-time <Link href="/audyt-seo">SEO audit</Link>, monthly <Link href="/pozycjonowanie-stron-internetowych">website positioning subscription</Link>, or a website project with an SEO package. Book a free consultation and find out which topical clusters give you the greatest chance of growth within the next 6 months.</p>
 
               <h3>Useful sources and tools</h3>
               <ul>
@@ -518,7 +518,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
 
               <h2 id="oferta">10. AI SEO Company: gotowa analiza i plan wdrożenia dla Twojej firmy</h2>
               <p>Samodzielna analiza konkurencji SEO zajmuje 2–4 tygodnie i wymaga dostępu do kilku płatnych narzędzi jednocześnie. <a href="https://www.ai-seo-company.pl/" target="_blank" rel="noopener noreferrer">AI SEO Company</a> skraca ten czas i dostarcza nie tylko raport, ale też gotowy plan z priorytetami i wdrożeniem.</p>
-              <p>Formaty współpracy dopasowane do różnych potrzeb: jednorazowy <Link href="/pozycjonowanie-stron-internetowych">audyt SEO</Link>, miesięczna subskrypcja <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron</Link>, projekt strony z pakietem SEO. Umów bezpłatną konsultację i dowiedz się, które klastry tematyczne dają Ci największą szansę na wzrost w ciągu najbliższych 6 miesięcy.</p>
+              <p>Formaty współpracy dopasowane do różnych potrzeb: jednorazowy <Link href="/audyt-seo">audyt SEO</Link>, miesięczna subskrypcja <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron</Link>, projekt strony z pakietem SEO. Umów bezpłatną konsultację i dowiedz się, które klastry tematyczne dają Ci największą szansę na wzrost w ciągu najbliższych 6 miesięcy.</p>
 
               <h3>Przydatne źródła i narzędzia</h3>
               <ul>

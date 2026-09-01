@@ -55,6 +55,16 @@ const nextConfig = {
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
         ]
+      },
+      // Media lezace bezposrednio w korzeniu /public - poprzednia regula ich nie
+      // objela, wiec /og-image.jpg wciaz szlo z max-age=0. Wzorzec dopasowuje
+      // wylacznie jeden segment sciezki, zeby nie zlapac tras aplikacji.
+      // Uwaga: te pliki sa niezmienne z nazwy - podmiana wymaga nowej nazwy.
+      {
+        source: '/:file(og-image\\.jpg|black-hole-[^/]+\\.(?:mp4|webm|jpg|webp)|ai-seo-company-logotyp[^/]*\\.(?:png|svg))',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+        ]
       }
     ];
   },

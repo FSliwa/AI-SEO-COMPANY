@@ -150,7 +150,7 @@ export default async function ArticleUXAudit({ params }) {
                     <li>Measurement verification: GA4 event correctness, no duplicates, correct device segmentation.</li>
                     <li>Path and funnel analysis in GA4 Explorations: identifying the steps with the biggest drop-off.</li>
                     <li>Session recordings and heatmaps (e.g. Microsoft Clarity or Hotjar): visual context for the numbers.</li>
-                    <li>Traffic segmentation: new vs returning, mobile vs desktop, traffic sources. Define the segments before the funnel analysis, not after — customer profiles built in marketing tools help here, for example the <a href="https://fibly.pl/pomoc/klienci/profil-klienta" target="_blank" rel="noopener noreferrer">customer profile</a> in automation systems.</li>
+                    <li>Traffic segmentation: new vs returning, mobile vs desktop, traffic sources. Define the segments before the funnel analysis, not after — customer profiles built in marketing tools help here, for example the <a href="https://fibly.pl/pomoc/klienci/profil-klienta" target="_blank" rel="nofollow noopener noreferrer">customer profile</a> in automation systems.</li>
                   </ul>
 
                   <h3>Qualitative analysis</h3>
@@ -543,7 +543,7 @@ export default async function ArticleUXAudit({ params }) {
                     <li>Weryfikacja konfiguracji pomiaru: poprawność zdarzeń GA4, brak duplikatów, poprawny podział danych na urządzenia.</li>
                     <li>Analiza ścieżek i lejków w GA4 Explorations: identyfikacja kroków z największym odpływem.</li>
                     <li>Nagrania sesji i mapy cieplne (np. Microsoft Clarity lub Hotjar): wizualny kontekst dla danych liczbowych.</li>
-                    <li>Segmentacja ruchu: nowi vs. powracający, mobile vs. desktop, źródła ruchu. Segmenty warto zdefiniować przed analizą lejków, a nie po niej — pomocne są tu profile klienta budowane w narzędziach marketingowych, na przykład <a href="https://fibly.pl/pomoc/klienci/profil-klienta" target="_blank" rel="noopener noreferrer">profil klienta</a> w systemach do automatyzacji.</li>
+                    <li>Segmentacja ruchu: nowi vs. powracający, mobile vs. desktop, źródła ruchu. Segmenty warto zdefiniować przed analizą lejków, a nie po niej — pomocne są tu profile klienta budowane w narzędziach marketingowych, na przykład <a href="https://fibly.pl/pomoc/klienci/profil-klienta" target="_blank" rel="nofollow noopener noreferrer">profil klienta</a> w systemach do automatyzacji.</li>
                   </ul>
 
                   <h3>Analiza jakościowa</h3>
@@ -876,9 +876,7 @@ export default async function ArticleUXAudit({ params }) {
         </div>
       </article>
 
-      <div id="kontakt">
-        <Contact />
-      </div>
+      <Contact />
       <Footer />
     </main>
   );

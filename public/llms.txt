@@ -1,15 +1,78 @@
 # AI SEO COMPANY
 
-Welcome to the AI SEO COMPANY documentation for AI agents and language models.
+> Agencja SEO i web design z Warszawy. Pozycjonowanie stron, audyty SEO,
+> SEO lokalne i projektowanie stron dla firm B2B. Serwis dwujęzyczny:
+> polski pod adresami bez prefiksu, angielski pod /en.
 
-## Links
+## Fakty o firmie
 
-- [Home Page](https://ai-seo-company.pl/)
-- [Services](https://ai-seo-company.pl#uslugi)
-- [Portfolio](https://ai-seo-company.pl#portfolio)
-- [Blog](https://ai-seo-company.pl/blog)
-- [Contact](https://ai-seo-company.pl#kontakt)
+- Nazwa handlowa: AI SEO COMPANY
+- Podmiot prawny: AI SIGNALS COMPANY Prosta Spółka Akcyjna
+- KRS: 0001239983 · NIP: 5253090237 · REGON: 544761611
+- Adres: ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa, Polska
+- Kontakt: kontakt@ai-seo-company.pl · +48 518 815 055
+- Obszar działania: Warszawa i cała Polska; obsługa w języku polskim i angielskim
+- Model rozliczenia: abonament miesięczny, od 1 900 zł netto
 
-## About Us
+## Usługi
 
-AI SEO COMPANY is an advanced digital agency focusing on Technical SEO, Web Design, and AI-driven optimizations.
+- [Pozycjonowanie stron internetowych](https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych): Kompleksowe pozycjonowanie dla firm B2B: optymalizacja techniczna, treść, link building i raportowanie.
+- [Search engine optimization](https://www.ai-seo-company.pl/en/seo-services): Full-service SEO for B2B companies: technical optimisation, content, link building and reporting.
+- [Audyt SEO](https://www.ai-seo-company.pl/audyt-seo): Audyt techniczny i treściowy: indeksacja, Core Web Vitals, struktura nagłówków, frazy kluczowe, UX.
+- [SEO audit](https://www.ai-seo-company.pl/en/seo-audit): Technical and content audit: indexing, Core Web Vitals, heading structure, keyword research, UX.
+- [Cennik pozycjonowania stron](https://www.ai-seo-company.pl/cennik-pozycjonowania): Pakiety abonamentowe SEO Standard i SEO Premium z miesięczną subskrypcją.
+- [SEO pricing](https://www.ai-seo-company.pl/en/seo-pricing): Standard and Premium subscription packages, billed monthly.
+- [SEO lokalne w Warszawie](https://www.ai-seo-company.pl/seo-lokalne-warszawa): Wizytówka Google, spójność NAP, opinie i widoczność w Mapach Google.
+- [Local SEO in Warsaw](https://www.ai-seo-company.pl/en/local-seo-warsaw): Google Business Profile, NAP consistency, reviews and Google Maps visibility.
+- [Projektowanie stron internetowych](https://www.ai-seo-company.pl/projektowanie-stron-internetowych): Projekt i wdrożenie strony: UX/UI, wersja mobilna, optymalizacja pod konwersję.
+- [Web design](https://www.ai-seo-company.pl/en/web-design): Design and build: UX/UI, responsive layouts, conversion optimisation.
+
+## Strony główne i listingi
+
+- [Strona główna (PL)](https://www.ai-seo-company.pl/): oferta, realizacje, cennik, kontakt.
+- [Homepage (EN)](https://www.ai-seo-company.pl/en): services, case studies, pricing, contact.
+- [Blog (PL)](https://www.ai-seo-company.pl/blog) · [Blog (EN)](https://www.ai-seo-company.pl/en/blog): poradniki SEO, analityki i web designu.
+- [Biblioteka artykułów](https://www.ai-seo-company.pl/blog/biblioteka) · [Article library](https://www.ai-seo-company.pl/en/blog/library)
+- [O nas (PL)](https://www.ai-seo-company.pl/o-nas) · [About us (EN)](https://www.ai-seo-company.pl/en/about-us): zespół i autor publikacji.
+
+## Artykuły
+
+- [Wyniki wdrożeń SEO w 2026: dane GSC z pięciu domen](https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026): Zebrane w jednym miejscu wyniki pięciu wdrożeń SEO z 2026 roku: kliknięcia, wyświetlenia i pozycje z Google Search Console, z metodologią pomiaru.
+- [Storytelling marki: 5 wzorców dla B2B i mniejszych firm](https://www.ai-seo-company.pl/blog/storytelling-marki): Pięć wzorców storytellingu marki, framework czterech filarów i metryki, które sprawdzają, czy historia działa — dla B2B i mniejszych firm.
+- [Convert More Customers: 5 Brand Storytelling Patterns](https://www.ai-seo-company.pl/en/blog/brand-storytelling-patterns): Five brand storytelling patterns, a four-pillar framework, and the metrics to test whether the story works — built for B2B and smaller companies.
+- [Audyt techniczny SEO: checklista z progami liczbowymi](https://www.ai-seo-company.pl/blog/audyt-techniczny-seo): Jak zrobić audyt techniczny SEO, który kończy się listą napraw: crawl, indeksacja, progi Core Web Vitals i kryteria binarne zamiast ocen na oko.
+- [Technical SEO Audit Checklist for Digital Marketers](https://www.ai-seo-company.pl/en/blog/technical-seo-audit-checklist): Run a technical SEO audit that ends in a prioritized fix list: crawl, indexability, Core Web Vitals thresholds, and schema that still earns a result.
+- [RODO na stronie internetowej: co musisz mieć i jak to wdrożyć](https://www.ai-seo-company.pl/blog/rodo-na-stronie-internetowej): Polityka prywatności, baner cookies i umowy powierzenia — co wdrożyć na stronie w 2026 roku, po wejściu w życie Prawa komunikacji elektronicznej.
+- [Analiza luk contentowych: przewodnik praktyczny](https://www.ai-seo-company.pl/blog/analiza-luk-contentowych): Jak przeprowadzić analizę luk contentowych kończącą się backlogiem z priorytetami: wybór konkurentów, siedem typów luk, scoring i kwartalne powtórki.
+- [Content Gap Analysis: A Practical Guide for Marketing Teams](https://www.ai-seo-company.pl/en/blog/content-gap-analysis): Run a content gap analysis that ends in a prioritized roadmap: competitor selection, seven gap types, scoring by impact and effort, and quarterly re-r
+- [Audyt UX strony pod konwersję: przewodnik](https://www.ai-seo-company.pl/blog/audyt-ux-strony): Jak przeprowadzić audyt UX, który kończy się backlogiem z priorytetami: weryfikacja pomiaru, analiza lejków, testy z użytkownikami i pomiar efektu.
+- [Website UX Audit for Conversion: A Practical Guide](https://www.ai-seo-company.pl/en/blog/ux-audit-guide): How to run a UX audit that ends with a prioritized backlog: measurement verification, funnel analysis, user testing and effect measurement.
+- [SEO for SaaS Startups: Product-Led Playbook 2026](https://www.ai-seo-company.pl/en/blog/seo-for-saas-startups-playbook): A product-led SEO playbook for SaaS startups: BOFU pages first, technical foundation, programmatic scale, and what it actually costs in 2026.
+- [Mailchimp vs GetResponse: którą wybrać dla Twojej firmy?](https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse): Porównanie Mailchimp i GetResponse: ceny na progach od 500 do 25 000 kontaktów, funkcje, webinary, automatyzacja i próg opłacalności.
+- [Multi-Location SEO: Scale Local Visibility in 2026](https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility): A complete guide to scaling local visibility for multiple locations using single domains, GBP optimization, and programmatic local content.
+- [Google Tag Manager: Konfiguracja zdarzeń GA4 poradnik](https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik): Jak skonfigurować zdarzenia w Google Tag Manager dla GA4? Kompletny poradnik: dataLayer, wyzwalacze i testowanie.
+- [Best Marketing Attribution Tools for 2026: Full Buyer Guide](https://www.ai-seo-company.pl/en/blog/best-marketing-attribution-tools-for-2026): Discover the best marketing attribution tools and platforms. A comprehensive buyer guide for B2B, DTC, and agencies in 2026.
+- [VWO vs Optimizely: porównanie platform do testów A/B](https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie): VWO vs Optimizely — porównanie funkcji, cen, wdrożenia i zgodności z RODO. Sprawdź, która platforma do testów A/B pasuje do Twojego zespołu.
+- [VWO vs Optimizely: A/B testing platforms compared](https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie): VWO vs Optimizely — features, pricing, rollout and GDPR compared. Find out which A/B testing platform fits your team.
+- [Analiza konkurencji SEO: przewodnik krok po kroku](https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik): Zwiększ swoją widoczność w sieci z pomocą analizy konkurencji SEO. Dowiedz się, jak skutecznie porównać swoje wyniki z rywalami.
+- [SEO Competitor Analysis: A Step-by-Step Guide](https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide): Boost your online visibility with SEO competitor analysis. Learn how to effectively compare your results with rivals and build a winning strategy.
+- [Ile kosztuje strona www dla firmy: ceny i co zawierają](https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny): Prosta strona wizytówkowa w Polsce kosztuje od kilkuset złotych, ale profesjonalna strona to większy wydatek. Sprawdź, ile kosztuje strona www dla fir
+- [How much does a business website cost? Pricing](https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing): Wondering how much a business website costs? See our web design pricing and learn what affects the final cost of the project.
+- [Jak skutecznie pozyskiwać opinie w Google? Poradnik](https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik): Najskuteczniejsza metoda pozyskiwania opinii Google. Sprawdź, jak zbudować proces, który generuje recenzje.
+- [How to effectively get Google reviews? Guide](https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews): The most effective method of getting Google reviews. Check how to build a process that generates reviews.
+- [Tag kanoniczny SEO – czym jest, jak działa i jak go wdrożyć w 2026](https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026): Tag kanoniczny (rel=canonical) to fundament SEO. Zobacz, jak unikać duplikacji treści, chronić crawl budget i poprawnie go wdrażać.
+- [SEO Canonical Tag – what is it, how it works and how to implement it in 2026](https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026): The canonical tag (rel=canonical) is the foundation of SEO. See how to avoid duplicate content, protect crawl budget, and implement it correctly.
+- [Link building B2B dla marketerów: strategie i checklista](https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista): Skuteczny link building B2B opiera się na digital PR, partnerstwach i publikacjach eksperckich. Sprawdź, jak to robić.
+- [B2B Link Building for Marketers: Strategies and Checklist](https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist): Effective B2B link building is based on digital PR, partnerships, and expert publications. Check how to do it.
+- [Dlaczego responsywność i Core Web Vitals to klucz do wyższych pozycji w Google?](https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google): Dowiedz się, jak szybkość ładowania strony i doświadczenie użytkownika przekładają się bezpośrednio na pozycję w wyszukiwarce.
+- [Why responsiveness & Core Web Vitals are key to top Google rankings](https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings): Discover how page speed and user experience translate directly into higher organic positioning.
+- [SEO Lokalne dla firm w Warszawie - jak wygrać z konkurencją?](https://www.ai-seo-company.pl/blog/seo-lokalne-dla-firm-w-warszawie): Praktyczny poradnik jak zdominować lokalne wyniki wyszukiwania i zdobyć klientów z Twojej okolicy w Warszawie.
+- [Local SEO for businesses in Warsaw - how to beat the competition?](https://www.ai-seo-company.pl/en/blog/local-seo-for-companies): A practical guide on how to dominate local search results and get clients from your area in Warsaw.
+- [Ile kosztuje SEO w Polsce? Cennik i pakiety 2026](https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026): Rozkładamy na czynniki pierwsze ceny pozycjonowania w Polsce. Zobacz, ile kosztuje SEO dla różnych typów firm.
+- [How much does SEO cost in Poland? Pricing and packages 2026](https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026): We break down the prices of SEO in Poland. See how much SEO costs for different types of businesses.
+
+## Dokumenty
+
+- [Regulamin](https://www.ai-seo-company.pl/regulamin) · [Terms of service](https://www.ai-seo-company.pl/en/terms)
+- [Polityka prywatności i cookies](https://www.ai-seo-company.pl/cookies) · [Privacy and cookies](https://www.ai-seo-company.pl/en/cookies)
+
