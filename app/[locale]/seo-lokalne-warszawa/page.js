@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Local SEO Warsaw | Search Engine Optimization, SEO Near Me' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
-  description: locale === 'en' ? 'Local search engine optimization agency for Google Maps rankings. Need SEO near me? Our company delivers proven local SEO services and results.' : 'Pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google i Profil Firmy, zdobądź klientów z okolicy, wyprzedź lokalną konkurencję.',
+  title: locale === 'en' ? 'Local SEO Warsaw | Google Maps Visibility for Companies' : 'SEO Lokalne Warszawa | Pozycjonowanie Lokalne Firm',
+  description: locale === 'en' ? 'Local SEO agency for Google Maps rankings in Warsaw. We optimise your Google Business Profile, NAP consistency and reviews so nearby customers find you.' : 'Pozycjonowanie lokalne i SEO lokalne w Warszawie. Zdominuj Mapy Google i Profil Firmy, zdobądź klientów z okolicy, wyprzedź lokalną konkurencję.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/local-seo-warsaw' : 'https://www.ai-seo-company.pl/seo-lokalne-warszawa',
     languages: {
@@ -23,6 +23,7 @@ import ServiceCarousel from '@/components/service/ServiceCarousel';
 import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+import ServiceSchema from '@/components/ServiceSchema';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 
@@ -31,13 +32,13 @@ const faqData = [
     question: 'Kiedy zobaczę efekty pozycjonowania lokalnego w Warszawie?',
     questionEn: 'When will I see the effects of local SEO in Warsaw?',
     answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Zbudowanie solidnej, wiodącej pozycji w konkurencyjnych dzielnicach Warszawy to proces na 3-6 miesięcy.',
-    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. Building a solid, leading position in competitive Warsaw districts is a 3-6 month process. If you are looking for an seo agency near me or seo firms near me, we can help you build that solid position.'
+    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. Building a solid, leading position in competitive Warsaw districts is a 3-6 month process.'
   },
   {
     question: 'Czy muszę posiadać fizyczne biuro w Warszawie?',
     questionEn: 'Do I need a physical office in Warsaw?',
     answer: 'Google preferuje firmy z weryfikowalnym adresem fizycznym. Jeśli obsługujesz klientów mobilnie na terenie Warszawy (np. hydraulik, mobilny mechanik), możemy ukryć dokładny adres, konfigurując tzw. obszar świadczenia usług (Service Area Business).',
-    answerEn: 'Google prefers businesses with a verifiable physical address. If you serve clients mobile across Warsaw (e.g., plumber, mobile mechanic), we can hide the exact address by configuring a Service Area Business. This is crucial when potential customers search for seo near me or local services.'
+    answerEn: 'Google prefers businesses with a verifiable physical address. If you serve clients mobile across Warsaw (e.g., plumber, mobile mechanic), we can hide the exact address by configuring a Service Area Business.'
   },
   {
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
@@ -54,10 +55,10 @@ const portfolioCases = [
     title: 'Optymalizacja Profilu Firmy',
     titleEn: 'Business Profile Optimization',
     description: 'Konfigurujemy Twoją wizytówkę Google od A do Z. Wdrażamy odpowiednie słowa kluczowe, precyzyjne kategorie i system postów, który przyciąga uwagę klientów',
-    descriptionEn: 'As a top seo company near me, we configure your Google listing from A to Z. We implement the right keywords, precise categories, and a post system that attracts customers browsing Maps in Warsaw.',
+    descriptionEn: 'We configure your Google Business Profile from A to Z: the right keywords, precise categories and a posting system that reaches customers browsing Maps in Warsaw.',
     image: '/images/pozycjonowanie-lokalne-warszawa.jpg',
     imgAlt: 'Pozycjonowanie lokalne',
-    imgAltEn: 'Local search engine optimization companies near me - SEO company near me',
+    imgAltEn: 'Local SEO',
     imgTitle: 'Pozycjonowanie lokalne',
     imgTitleEn: 'Local SEO Company',
     gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
@@ -74,10 +75,10 @@ const portfolioCases = [
     title: 'Budowanie Autorytetu Lokalnego',
     titleEn: 'Building Local Authority',
     description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Gwarantujemy pełną spójność nazwy',
-    descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We guarantee complete consistency of Name, Address, and Phone (NAP), which is a powerful trust signal for Google. This consistency is what top search engine optimization companies near me focus on to build trust.',
+    descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We keep the Name, Address and Phone identical everywhere, which is a powerful trust signal for Google.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
-    imgAltEn: 'Top local SEO agency near me and SEO firms near me',
-    imgTitleEn: 'Local SEO agency near me',
+    imgAltEn: 'Local authority and NAP consistency',
+    imgTitleEn: 'Building local authority',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',
     metricLabel: 'Spójność NAP',
@@ -92,10 +93,10 @@ const portfolioCases = [
     title: 'Strategia Zbierania Opinii',
     titleEn: 'Review Collection Strategy',
     description: 'Wdrażamy w Twojej firmie zautomatyzowane procesy pozyskiwania pięciogwiazdkowych recenzji od zadowolonych klientów. Opinie to najważniejszy czynnik',
-    descriptionEn: 'We implement automated processes in your company for acquiring five-star reviews from satisfied customers. Reviews are the most important conversion factor (Social Proof) in the local market. When clients look for seo services near me, reviews are the ultimate conversion factor.',
+    descriptionEn: 'We implement automated processes for collecting reviews from satisfied customers. In local search, reviews are the strongest conversion factor there is.',
     image: '/images/unsplash-1522202176988-66273c2fd55f.jpg',
-    imgAltEn: 'Expert SEO services near me and local SEO near me',
-    imgTitleEn: 'Local SEO services near me',
+    imgAltEn: 'Review collection strategy',
+    imgTitleEn: 'Review collection strategy',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
     metric: '5.0',
     metricLabel: 'Średnia ocen',
@@ -162,6 +163,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
   const lang = locale;
   return (
     <>
+      <ServiceSchema variant="seo-lokalne" />
       <Header />
       <Breadcrumbs pl="SEO Lokalne Warszawa" en="Local SEO Warsaw" />
       <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -183,7 +185,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 marginBottom: '1rem', 
                 letterSpacing: '-0.04em'
               }}>
-                {lang === 'pl' ? 'SEO lokalne i pozycjonowanie lokalne Warszawa' : 'Local SEO Warsaw & Search Engine Optimization Near Me'}
+                {lang === 'pl' ? 'SEO lokalne i pozycjonowanie lokalne Warszawa' : 'Local SEO and Google Maps visibility in Warsaw'}
               </h1>
 
               <div style={{ 
@@ -265,22 +267,81 @@ export default async function SeoLokalneWarszawaPage({ params }) {
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 1' : 'RULE 1'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Finding Search Engine Optimization Companies Near Me'}</h3>
-                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>Over 46% of all Google searches have a local intent. Working with top seo company near me ensures clients are ready to call you. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Searches with local intent'}</h3>
+                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>Over 46% of all Google searches have a local intent, which means those customers are ready to call or visit straight away. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
               </RevealItem>
               
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 2' : 'RULE 2'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Widoczność Mobilna' : 'Partnering with an SEO Agency & SEO Firms Near Me'}</h3>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Widoczność Mobilna' : 'Mobile visibility'}</h3>
                 <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Dominacja na urządzeniach mobilnych to klucz w branżach lokalnych (gastronomia, usługi prawne, beauty), gdzie decyzje podejmuje się "w drodze".' : 'Mobile dominance is key in local industries (gastronomy, legal services, beauty), where decisions are made on the go.'}</p>
               </RevealItem>
               
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 3' : 'RULE 3'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'Utilizing Local SEO Services Near Me'}</h3>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'High conversion rate'}</h3>
                 <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Ruch z Map Google cechuje się jednym z najwyższych wskaźników konwersji ze wszystkich cyfrowych kanałów marketingowych.' : 'Traffic from Google Maps is characterized by one of the highest conversion rates of all digital marketing channels.'}</p>
               </RevealItem>
             </RevealStagger>
+          </div>
+        </section>
+
+        {/* Warszawa dzielnica po dzielnicy - tresc lokalna, ktorej nie da sie
+            przeniesc do innego miasta. Strona celowala we fraze lokalna, nie
+            majac ani jednej nazwy dzielnicy w tresci. */}
+        <section style={{ padding: '80px 0' }}>
+          <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+            <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3rem auto' }}>
+              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+                {lang === 'pl' ? 'Pozycjonowanie lokalne w Warszawie dzielnica po dzielnicy' : 'Local SEO in Warsaw, district by district'}
+              </h2>
+              <p style={{ fontSize: '1.1rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500, lineHeight: 1.6 }}>
+                {lang === 'pl'
+                  ? 'W pakiecie lokalnym Google największą wagę ma odległość użytkownika od firmy. Dlatego w Warszawie nie ma jednej strategii — inaczej wygląda walka o widoczność w Śródmieściu, a inaczej na Ursynowie.'
+                  : 'In the Google local pack, the distance between the user and the business carries the most weight. That is why Warsaw has no single strategy: competing in Srodmiescie looks nothing like competing in Ursynow.'}
+              </p>
+            </Reveal>
+            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
+                    {lang === 'pl' ? 'Śródmieście i Wola' : 'Srodmiescie and Wola'}
+                  </h3>
+                  <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.6 }}>
+                    {lang === 'pl' ? 'Najgęstszy rynek biurowy w Polsce. W promieniu kilometra od Ronda ONZ o te same frazy walczy kilkadziesiąt firm z jednej branży, więc o miejsce w pakiecie lokalnym nie decyduje już odległość, tylko liczba i świeżość opinii oraz kompletność wizytówki.' : 'The densest office market in Poland. Within a kilometre of Rondo ONZ dozens of companies from one industry compete for the same phrases, so the local pack is decided by the number and freshness of reviews and by profile completeness, not by distance.'}
+                  </p>
+                </RevealItem>
+                <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
+                    {lang === 'pl' ? 'Mokotów i Służewiec' : 'Mokotow and Sluzewiec'}
+                  </h3>
+                  <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.6 }}>
+                    {lang === 'pl' ? 'Dzielnica biurowa o wyraźnym rytmie dnia: szczyt wyszukiwań przypada na godziny pracy, a zapytania mają charakter „teraz i blisko". Kluczowe są aktualne godziny otwarcia, zdjęcia wnętrza i możliwość dojścia pieszo w kilka minut.' : 'An office district with a clear daily rhythm: searches peak during working hours and the intent is immediate and local. Accurate opening hours, interior photos and a few minutes\' walking distance decide the outcome.'}
+                  </p>
+                </RevealItem>
+                <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
+                    {lang === 'pl' ? 'Ursynów, Wilanów, Białołęka' : 'Ursynow, Wilanow and Bialoleka'}
+                  </h3>
+                  <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.6 }}>
+                    {lang === 'pl' ? 'Rynki mieszkaniowe: mniejsza konkurencja i wyższa konwersja niż w centrum. To tutaj najszybciej wchodzi się do TOP 3 Map, bo o wyniku decyduje promień i opinie od osób z sąsiedztwa.' : 'Residential markets with less competition and higher conversion than the centre. This is where a business reaches the Maps top three fastest, because proximity and neighbourhood reviews carry most of the weight.'}
+                  </p>
+                </RevealItem>
+                <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
+                    {lang === 'pl' ? 'Praga-Południe i Praga-Północ' : 'Praga-Poludnie and Praga-Polnoc'}
+                  </h3>
+                  <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.6 }}>
+                    {lang === 'pl' ? 'Gastronomia, rzemiosło i usługi. Konkurencja rośnie, ale nasycenie dobrze prowadzonymi wizytówkami wciąż jest niskie — regularne posty i odpowiedzi na opinie dają tu przewagę szybciej niż gdziekolwiek indziej w mieście.' : 'Restaurants, crafts and services. Competition is growing, but the share of well-run business profiles is still low, so regular posts and replies to reviews build an advantage faster here than anywhere else in the city.'}
+                  </p>
+                </RevealItem>
+            </RevealStagger>
+            <Reveal>
+              <p style={{ maxWidth: '820px', margin: '3rem auto 0 auto', color: '#333336', fontSize: '1.05rem', lineHeight: 1.65, textAlign: 'center' }}>
+                {lang === 'pl'
+                  ? 'Jeśli obsługujesz klientów w całym mieście i nie masz lokalu z obsługą, konfigurujemy wizytówkę jako Service Area Business z obszarem obejmującym wszystkie dzielnice — wtedy o widoczność walczymy zasięgiem i opiniami, a nie adresem.'
+                  : 'If you serve the whole city and have no walk-in location, we set the profile up as a Service Area Business covering every district — then visibility is won with service area and reviews rather than with an address.'}
+              </p>
+            </Reveal>
           </div>
         </section>
 
@@ -298,7 +359,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                    {lang === 'pl' ? 'Firma SEO w Twojej Okolicy' : 'SEO Company Near Me'}
+                    {lang === 'pl' ? 'Firma SEO w Twojej Okolicy' : 'A local SEO company'}
                   </h3>
                   <p style={{ color: '#333336', lineHeight: 1.6 }}>
                     {lang === 'pl' ? 'Znalezienie wiarygodnego partnera jest kluczowe. Zapewniamy eksperckie strategie dominacji na lokalnym rynku, trafiając do klientów szukających usług w Twojej okolicy.' : 'Finding a reliable partner is crucial. If you are searching for SEO near me, we provide expert strategies to dominate your local market.'}
@@ -306,7 +367,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 </RevealItem>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
-                    {lang === 'pl' ? 'Najlepsze Lokalne SEO' : 'Top SEO Near Me'}
+                    {lang === 'pl' ? 'Najlepsze Lokalne SEO' : 'Leading local SEO'}
                   </h3>
                   <p style={{ color: '#333336', lineHeight: 1.6 }}>
                     {lang === 'pl' ? 'Gwarantujemy, że Twoja firma zajmie wysokie pozycje w mapach i wynikach organicznych. Skorzystaj z naszych dedykowanych usług lokalnego SEO dopasowanych do Twojego obszaru.' : 'We ensure your business ranks highly in map packs and organic results. Benefit from our dedicated local SEO services tailored for your area.'}

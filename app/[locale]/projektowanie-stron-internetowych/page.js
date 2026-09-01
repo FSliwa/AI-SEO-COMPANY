@@ -18,6 +18,7 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import ProjektowanieClient from '@/components/ProjektowanieClient';
+import ServiceSchema from '@/components/ServiceSchema';
 
 const faqWebDesign = [
   {
@@ -190,6 +191,7 @@ const webDesignCarouselItems = [
 export default function ProjektowanieStronPage() {
   return (
     <>
+      <ServiceSchema variant="web-design" />
       <Header />
       <Breadcrumbs pl="Projektowanie Stron Internetowych" en="Web Design" />
       <ProjektowanieClient faqData={faqWebDesign} portfolioCases={webDesignPortfolioCases} carouselItems={webDesignCarouselItems} />

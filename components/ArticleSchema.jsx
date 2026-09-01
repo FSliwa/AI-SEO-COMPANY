@@ -40,18 +40,21 @@ export default function ArticleSchema({
     inLanguage: isEn ? 'en' : 'pl',
     // A named person carries more weight than an organisation for advisory
     // content, which is what Google's rater guidelines look for.
+    // Autor byl bytem-sierota: Person bez @id, url i sameAs, a strona autora nie
+    // istniala. Teraz wskazuje na trwaly wezel Person z /o-nas (AboutAuthor),
+    // a publisher na wezel #organization z layoutu - dzieki temu artykul, osoba
+    // i firma sa jedna spojna encja zamiast trzech niepowiazanych opisow.
     author: {
       '@type': 'Person',
+      '@id': `${BASE}/o-nas#filip-sliwa`,
       name: 'Filip Śliwa',
+      url: isEn ? `${BASE}/en/about-us` : `${BASE}/o-nas`,
       jobTitle: isEn ? 'SEO specialist' : 'Specjalista SEO',
-      worksFor: {
-        '@type': 'Organization',
-        name: 'AI SEO COMPANY',
-        url: `${BASE}/`
-      }
+      worksFor: { '@id': `${BASE}/#organization` }
     },
     publisher: {
       '@type': 'Organization',
+      '@id': `${BASE}/#organization`,
       name: 'AI SEO COMPANY',
       logo: {
         '@type': 'ImageObject',

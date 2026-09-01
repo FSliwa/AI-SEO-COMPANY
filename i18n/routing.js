@@ -91,6 +91,14 @@ export const routing = defineRouting({
     '/blog/technical-seo-audit-checklist': {
       pl: '/blog/audyt-techniczny-seo',
       en: '/blog/technical-seo-audit-checklist'
+    },
+    '/blog/audyt-ux-strony': {
+      pl: '/blog/audyt-ux-strony',
+      en: '/blog/ux-audit-guide'
+    },
+    '/blog/brand-storytelling-patterns': {
+      pl: '/blog/storytelling-marki',
+      en: '/blog/brand-storytelling-patterns'
     }
   }
 });

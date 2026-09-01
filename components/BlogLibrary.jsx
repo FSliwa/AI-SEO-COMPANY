@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { postsForLocale } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 
 export default function BlogLibrary() {
   const lang = useLocale();
@@ -63,12 +64,15 @@ export default function BlogLibrary() {
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     cursor: 'pointer'
                   }}>
-                    <div style={{ 
-                      height: '240px', 
-                      backgroundImage: `url(${data.image})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                    }} />
+                    <div style={{ position: 'relative', height: '240px' }}>
+                      <Image
+                        src={data.image}
+                        alt={data.title}
+                        fill
+                        sizes="(max-width: 700px) 100vw, 33vw"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
                     
                     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                       <span style={{ 

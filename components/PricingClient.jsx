@@ -97,7 +97,7 @@ export default function PricingClient() {
               letterSpacing: '-0.02em'
             }}>
               {lang === 'pl' ? 'Ile Kosztuje Pozycjonowanie Stron?' : 'How Much Does SEO Cost?'} <br />
-              <span style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Cennik Pozycjonowania 2026' : 'Pricing 2026'}</span>
+              <span style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Cennik pozycjonowania stron 2026' : 'Pricing 2026'}</span>
             </h1>
             <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
@@ -114,7 +114,7 @@ export default function PricingClient() {
           <Reveal>
             <div style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
               <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-text-dark)' }}>
-                {lang === 'pl' ? 'Co obejmuje nasz cennik pozycjonowania?' : 'What does our SEO pricing include?'}
+                {lang === 'pl' ? 'Co obejmuje nasz cennik pozycjonowania stron?' : 'What does our SEO pricing include?'}
               </h2>
               <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' }}>
                 {lang === 'pl' 

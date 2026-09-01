@@ -179,15 +179,23 @@ export default function Header() {
         </div>
       </header>
 
-      {/* KOTA Full-Screen Immersive Menu */}
-      {menuOpen && (
-        <div 
-          className="kota-fullscreen-menu"
-          style={{
-            clipPath: `circle(${menuExpanded ? '150vmax' : '0px'} at ${triggerPos.x}px ${triggerPos.y}px)`,
-            transition: 'clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1)'
-          }}
-        >
+      {/* KOTA Full-Screen Immersive Menu.
+          Menu bylo renderowane warunkowo ({menuOpen && ...}), przez co 12 linkow
+          nawigacji nie istnialo w HTML serwerowym - crawler dostawal z naglowka
+          tylko logo i #kontakt. Teraz markup jest zawsze w DOM, a widocznosc
+          steruje CSS. visibility:hidden usuwa menu z kolejnosci Tab i z drzewa
+          dostepnosci, gdy jest zamkniete, wiec zachowanie dla uzytkownika
+          klawiatury pozostaje bez zmian. */}
+      <div 
+        className="kota-fullscreen-menu"
+        aria-hidden={!menuOpen}
+        style={{
+          clipPath: `circle(${menuExpanded ? '150vmax' : '0px'} at ${triggerPos.x}px ${triggerPos.y}px)`,
+          transition: 'clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1)',
+          visibility: menuOpen ? 'visible' : 'hidden',
+          pointerEvents: menuOpen ? 'auto' : 'none'
+        }}
+      >
           {/* Header inside the menu to match placement */}
           <div 
             className="nav-container" 
@@ -274,8 +282,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-        </div>
-      )}
+      </div>
     </>
   );
 }

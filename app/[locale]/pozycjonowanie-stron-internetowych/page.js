@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Optimization Services & Digital Marketing for Agencies' : 'Pozycjonowanie Stron Internetowych | SEO dla Firm B2B',
-  description: locale === 'en' ? 'SEO optimization service, search engine and digital marketing for companies and agencies. Content strategy, growth. Your optimisation agency.' : 'Kompleksowe pozycjonowanie stron internetowych. Skuteczne pozycjonowanie stron i pełna optymalizacja SEO — zdobywamy najwyższe pozycje w Google.',
+  title: locale === 'en' ? 'SEO Optimization Services & Digital Marketing for Agencies' : 'Profesjonalne Pozycjonowanie Stron Internetowych | SEO B2B',
+  description: locale === 'en' ? 'SEO optimization service, search engine and digital marketing for companies and agencies. Content strategy, growth. Your optimisation agency.' : 'Profesjonalne pozycjonowanie stron internetowych dla firm B2B. Skuteczne pozycjonowanie stron i pełna optymalizacja SEO — zdobywamy pozycje w Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
@@ -18,6 +18,7 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import PozycjonowanieClient from '@/components/PozycjonowanieClient';
+import ServiceSchema from '@/components/ServiceSchema';
 
 const faqData = [
   {
@@ -235,6 +236,7 @@ export default async function PozycjonowanieStronPage({ params }) {
   const { locale } = await params;
   return (
     <>
+      <ServiceSchema variant="pozycjonowanie" />
       <Header />
       <Breadcrumbs pl="Pozycjonowanie Stron Internetowych" en="SEO Services" />
       <PozycjonowanieClient faqData={faqData} portfolioCases={portfolioCases} carouselItems={carouselItems} />

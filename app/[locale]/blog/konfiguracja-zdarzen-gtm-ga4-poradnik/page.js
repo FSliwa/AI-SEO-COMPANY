@@ -5,8 +5,12 @@ export async function generateMetadata({ params }) {
   title: locale === 'en' ? 'Google Tag Manager: GA4 Event Configuration Guide' : 'Google Tag Manager: Konfiguracja zdarzeń GA4',
   description: locale === 'en' ? 'How to configure events in Google Tag Manager for GA4? A complete guide on dataLayer, triggers, and testing.' : 'Jak skonfigurować zdarzenia w Google Tag Manager dla GA4? Kompletny poradnik: dataLayer, wyzwalacze i testowanie.',
   alternates: {
-    canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/google-tag-manager-ga4-events-guide` : `https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik`,
-    languages: articleLanguages('/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', 'https://www.ai-seo-company.pl/en/blog/google-tag-manager-ga4-events-guide')
+    // Wpis plOnly: angielski slug /en/blog/google-tag-manager-ga4-events-guide
+    // nigdy nie powstal, wiec canonical wskazywal adres zwracajacy 404. Oba
+    // locale prowadza teraz na wersje polska, a rendering /en jest noindex
+    // przez articleRobots ponizej - tak samo jak w /blog/rodo-na-stronie-internetowej.
+    canonical: 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik',
+    languages: articleLanguages('/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik')
   },
   robots: articleRobots('/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', locale),
 };

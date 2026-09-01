@@ -20,6 +20,7 @@ import Contact from '@/components/Contact';
 import AboutMission from '@/components/about/AboutMission';
 import AboutMethodology from '@/components/about/AboutMethodology';
 import AboutTeam from '@/components/about/AboutTeam';
+import AboutAuthor from '@/components/about/AboutAuthor';
 import AboutValues from '@/components/about/AboutValues';
 
 export default function ONasPage() {
@@ -30,6 +31,7 @@ export default function ONasPage() {
         <AboutMission />
         <AboutMethodology />
         <AboutTeam />
+        <AboutAuthor />
         <AboutValues />
         <Contact />
       </main>

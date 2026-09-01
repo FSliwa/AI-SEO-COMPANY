@@ -18,6 +18,7 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import AudytClient from '@/components/AudytClient';
+import ServiceSchema from '@/components/ServiceSchema';
 
 const faqAudyt = [
   {
@@ -238,6 +239,7 @@ const auditPortfolioCases = [
 export default function AudytSeoPage() {
   return (
     <>
+      <ServiceSchema variant="audyt-seo" />
       <Header />
       <Breadcrumbs pl="Audyt SEO" en="SEO Audit" />
       <AudytClient faqData={faqAudyt} portfolioCases={auditPortfolioCases} carouselItems={auditCarouselItems} />

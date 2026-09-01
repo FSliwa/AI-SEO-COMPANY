@@ -29,6 +29,32 @@ const nextConfig = {
           // later (payments, OAuth) for no gain here.
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin-allow-popups' }
         ]
+      },
+      // Pliki z /public szly z domyslnym `max-age=0, must-revalidate`, wiec
+      // przegladarka odpytywala serwer o kazdy obraz i o wideo przy kazdym
+      // wejsciu. Odpowiedzia bylo zwykle 304, ale to i tak pelny czas podrozy
+      // dla kilkunastu zasobow na kazdej podstronie. Optymalizator obrazow
+      // dziedziczy naglowek po pliku zrodlowym, wiec ta regula naprawia
+      // rowniez odpowiedzi /_next/image.
+      // Uwaga: te sciezki sa niezmienne z nazwy - podmiana grafiki wymaga
+      // nowej nazwy pliku albo parametru wersji.
+      {
+        source: '/images/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+        ]
+      },
+      {
+        source: '/projects/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+        ]
+      },
+      {
+        source: '/certificates/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+        ]
       }
     ];
   },

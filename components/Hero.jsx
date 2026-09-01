@@ -92,7 +92,7 @@ const COPY = {
       { t: ' Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.' },
       { t: ' Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.', wide: true }
     ],
-    display: 'które buduje sprzedaż',
+    display: 'Pozycjonowanie, które buduje sprzedaż',
     sub: 'Kompleksowa Agencja SEO i Marketingowa z Warszawy',
     ctaPrimary: 'Wyceń projekt',
     ctaSecondary: 'Zobacz portfolio'
@@ -409,13 +409,13 @@ export default function Hero() {
                 produces "sprzedażKompleksowa" / "salesPremium", a token that is
                 in no dictionary and breaks the phrase at the seam. */}
             <h1 className="hero-en-title">
-              {/* Tekstowy ekwiwalent napisu "SEO" ze sceny 3D. Podmiot zdania
-                  istnial dotad wylacznie jako piksele artworku, wiec surowy
-                  HTML zaczynal H1 od srodka zdania ("ktore buduje sprzedaz") -
-                  crawler i czytnik ekranu dostawaly zdanie bez podmiotu. To
-                  jest alternatywa tekstowa realnie widocznej grafiki (WCAG),
-                  nie ukryta fraza: scena doslownie wyswietla slowo SEO. */}
-              <span className="sr-only">{lang === 'pl' ? 'SEO, ' : 'SEO '}</span>
+              {/* EN: tekstowy ekwiwalent napisu "SEO" ze sceny 3D (WCAG) - bez
+                  niego surowy HTML zaczynal H1 od srodka zdania. PL go nie
+                  potrzebuje: naglowek ma wlasny, WIDOCZNY podmiot
+                  ("Pozycjonowanie, ktore buduje sprzedaz"), wiec zdanie jest
+                  pelne, a fraza glowna wrocila do H1 po przebudowie hero,
+                  ktora zepchnela ja do akapitow. */}
+              {lang !== 'pl' && <span className="sr-only">SEO </span>}
               <span className="hero-en-title-display">{copy.display}</span>{' '}
               <span className="hero-en-title-sub">{copy.sub}</span>
             </h1>

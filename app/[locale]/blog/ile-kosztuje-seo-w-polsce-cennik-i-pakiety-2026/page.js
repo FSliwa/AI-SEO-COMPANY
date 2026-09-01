@@ -416,9 +416,6 @@ export default async function ArticleCennikPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://majestic.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Majestic</a></span> — analiza profilu linków zewnętrznych; pozwala sprawdzić, skąd agencja pozyskuje linki i czy są wartościowe.</li>
               </ul>
 
-              <p style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#86868B', textAlign: 'center' }}>
-                Artykuł wygenerowany przez BabyLoveGrowth
-              </p>
               <BlogCTA 
                 locale={locale} 
                 currentSlug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" 
@@ -432,6 +429,7 @@ export default async function ArticleCennikPage({ params }) {
     </article>
 
       <Contact />
+      <Footer />
     </main>
   );
 }

@@ -31,40 +31,50 @@ export function generateStaticParams() {
 // Rewalidacja co godzine - tresc marketingowa zmienia sie deployami.
 export const revalidate = 3600;
 
-export const metadata = {
-  metadataBase: new URL('https://www.ai-seo-company.pl/'),
-  title: 'Agencja SEO Warszawa | Pozycjonowanie Stron | AI SEO COMPANY',
-  description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
-  icons: {
-    icon: [
-      { url: '/ai-seo-company-logotyp.svg?v=2', type: 'image/svg+xml', sizes: 'any' }
-    ],
-    shortcut: '/ai-seo-company-logotyp.svg?v=2',
-    apple: '/ai-seo-company-logotyp.svg?v=2',
-  },
-  openGraph: {
-    title: 'Agencja SEO Warszawa | Pozycjonowanie i Web Design',
-    description: 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe zoptymalizowane pod konwersję, audyt SEO i wysokie pozycje w Google.',
-    url: 'https://www.ai-seo-company.pl/',
-    siteName: 'AI SEO COMPANY',
-    locale: 'pl_PL',
-    type: 'website',
-    images: [
-      {
-        url: 'https://www.ai-seo-company.pl/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'AI SEO COMPANY | Agencja SEO Warszawa',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Agencja SEO Warszawa | Pozycjonowanie i Web Design',
-    description: 'Nowoczesna agencja SEO Warszawa. Strony i pozycjonowanie, które budują sprzedaż.',
-    images: ['https://www.ai-seo-company.pl/og-image.jpg'],
-  },
-};
+// Blok Open Graph byl statyczny i wspolny dla calego serwisu: og:url wskazywal
+// strone glowna na 50 z 52 podstron, og:title i og:description dziedziczyly opis
+// strony glownej po polsku (takze na /en), a og:locale zawsze mowil pl_PL.
+// Teraz layout ustawia tylko to, co faktycznie jest wspolne - obraz, nazwe
+// serwisu i locale zalezny od jezyka. og:title, og:description i og:url celowo
+// nie sa tu ustawiane: bez nich scrapery biora tytul i opis z metadanych danej
+// strony, czyli dokladnie te, ktore sa dla niej napisane.
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const isEn = locale === 'en';
+  return {
+    metadataBase: new URL('https://www.ai-seo-company.pl/'),
+    title: isEn
+      ? 'SEO Company, Marketing Agency | Search Engine Optimization'
+      : 'Agencja SEO Warszawa | Pozycjonowanie Stron | AI SEO COMPANY',
+    description: isEn
+      ? 'Modern SEO agency from Warsaw. We design websites that sell, run professional SEO audits and deliver measurable search engine optimization.'
+      : 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
+    icons: {
+      icon: [
+        { url: '/ai-seo-company-logotyp.svg?v=2', type: 'image/svg+xml', sizes: 'any' }
+      ],
+      shortcut: '/ai-seo-company-logotyp.svg?v=2',
+      apple: '/ai-seo-company-logotyp.svg?v=2',
+    },
+    openGraph: {
+      siteName: 'AI SEO COMPANY',
+      locale: isEn ? 'en_US' : 'pl_PL',
+      type: 'website',
+      images: [
+        {
+          url: 'https://www.ai-seo-company.pl/og-image.jpg',
+          width: 1024,
+          height: 1024,
+          alt: isEn ? 'AI SEO COMPANY | SEO Agency Warsaw' : 'AI SEO COMPANY | Agencja SEO Warszawa',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: ['https://www.ai-seo-company.pl/og-image.jpg'],
+    },
+  };
+}
 
 const jsonLdDataPl = {
   '@context': 'https://schema.org',

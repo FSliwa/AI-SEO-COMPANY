@@ -7,6 +7,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { postsForLocale } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 
 export default function BlogGrid() {
   const lang = useLocale();
@@ -122,13 +123,17 @@ export default function BlogGrid() {
               {/* Desktop: side-by-side, Mobile: stack */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', width: '100%' }}>
                 
-                <div style={{ 
-                  height: '100%', 
-                  minHeight: '350px',
-                  backgroundImage: `url(${heroData.heroImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }} />
+                {/* Bylo tlo CSS - miniatura nie istniala jako <img>, wiec nie
+                    trafiala do Google Images i nie miala tekstu alternatywnego. */}
+                <div style={{ position: 'relative', height: '100%', minHeight: '350px' }}>
+                  <Image
+                    src={heroData.heroImage}
+                    alt={heroData.title}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
                 
                 <div style={{ 
                   padding: 'clamp(2rem, 5vw, 4rem)', 
@@ -191,12 +196,15 @@ export default function BlogGrid() {
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     cursor: 'pointer'
                   }}>
-                    <div style={{ 
-                      height: '240px', 
-                      backgroundImage: `url(${data.image})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                    }} />
+                    <div style={{ position: 'relative', height: '240px' }}>
+                      <Image
+                        src={data.image}
+                        alt={data.title}
+                        fill
+                        sizes="(max-width: 700px) 100vw, 33vw"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
                     
                     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                       <span style={{ 
@@ -416,6 +424,30 @@ export default function BlogGrid() {
               </div>
             </div>
           </div>, document.body
+        )}
+
+        {/* Pelna lista pozostalych wpisow. Siatka wyzej pokazuje tylko cztery
+            najnowsze, wiec dziesiec artykulow nie mialo zadnego linku w HTML
+            serwerowym - Google odkrywal je dopiero przy renderowaniu JS. */}
+        {sortedPosts.length > 4 && (
+          <Reveal style={{ marginTop: '4rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+              {lang === 'pl' ? 'Wszystkie artykuły' : 'All articles'}
+            </h2>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '0.75rem 2rem' }}>
+              {sortedPosts.slice(4).map((post) => {
+                const d = getPostData(post);
+                return (
+                  <li key={post.slug} style={{ borderBottom: '1px solid #E5E5EA', paddingBottom: '0.75rem' }}>
+                    <Link href={post.slug} style={{ display: 'block', color: '#1D1D1F', textDecoration: 'none', fontWeight: 600, lineHeight: 1.4 }}>
+                      {d.title}
+                    </Link>
+                    <span style={{ fontSize: '0.8rem', color: '#6E6E73' }}>{d.tag} · {d.date}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </Reveal>
         )}
 
         {/* Intro text removed as requested */}
