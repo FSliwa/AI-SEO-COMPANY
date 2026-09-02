@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
+import { hash } from '@/lib/anchors';
 
 const realizedWebsites = [
   {
@@ -276,7 +277,7 @@ export default function Portfolio() {
                 </p>
                 {/* Kierunek od klienta: zadnych modali - CTA prowadzi wprost
                     do formularza kontaktowego na dole strony. */}
-                <a href="#kontakt" className="portfolio-client-cta">
+                <a href={hash('kontakt', lang)} className="portfolio-client-cta">
                   {lang === 'pl' ? 'Napisz, aby zobaczyć wyniki' : 'Get in touch to see the results'} →
                 </a>
               </RevealItem>
@@ -307,7 +308,7 @@ export default function Portfolio() {
               <a href={activeModal.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent' }}>
                 Odwiedź witrynę na żywo ↗
               </a>
-              <a href="#kontakt" className="btn btn-primary" onClick={() => setActiveModal(null)}>
+              <a href={hash('kontakt', lang)} className="btn btn-primary" onClick={() => setActiveModal(null)}>
                 Zamów stronę / SEO dla swojej firmy
               </a>
             </div>

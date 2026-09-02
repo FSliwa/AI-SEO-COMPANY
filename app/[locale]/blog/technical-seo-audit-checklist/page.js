@@ -27,6 +27,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
+import { homeHash } from '@/lib/anchors';
 
 export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
   const { locale } = await params;
@@ -677,7 +678,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               <p><Link href="/audyt-seo">Audyt SEO</Link> obejmuje ponad 50 punktów kontrolnych w trzech obszarach: technikalia z Core Web Vitals, treści z semantyką oraz profil linków. Do pracy potrzebujemy dostępów do Search Console i Analytics; wyniki dostajesz w 3–5 dni roboczych jako raport z listą błędów, oceną wpływu na widoczność, priorytetyzacją według stosunku efektu do pracochłonności i rekomendacjami w formie gotowej do przekazania deweloperowi. Po przekazaniu omawiamy go na konsultacji.</p>
               <p>Audyt prowadzimy w ramach abonamentu, obok pozostałych prac SEO; w wyjątkowych sytuacjach wyceniamy go jako samodzielne zlecenie, po uzgodnieniu zakresu przed startem. Wyniki zależą od punktu startowego i od tego, ile z listy napraw faktycznie zostanie wdrożone — żadna agencja nie może zagwarantować rezultatu.</p>
               <p>Największe marnotrawstwo, jakie widujemy, to zespoły przepisujące szablony pod Core Web Vitals, podczas gdy tag noindex albo reguła w robots.txt dalej wycina stronę z indeksu. Najpierw odkrywanie. Szybkość ma znaczenie dopiero wtedy, gdy Google stronę widzi.</p>
-              <p>Jeśli chcesz zacząć od diagnozy, zamów bezpłatną analizę SEO i potencjału obecnej marki przez <Link href="/#kontakt">formularz kontaktowy</Link> — na zapytania odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję wysyłamy w ciągu doby.</p>
+              <p>Jeśli chcesz zacząć od diagnozy, zamów bezpłatną analizę SEO i potencjału obecnej marki przez <Link href={homeHash('kontakt', locale)}>formularz kontaktowy</Link> — na zapytania odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję wysyłamy w ciągu doby.</p>
 
               <h2 id="faq">Najczęściej zadawane pytania</h2>
 

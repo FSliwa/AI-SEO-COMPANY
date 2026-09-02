@@ -24,6 +24,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
+import { homeHash } from '@/lib/anchors';
 
 const EXT = { color: 'var(--color-primary)', textDecoration: 'underline' };
 
@@ -290,7 +291,7 @@ export default async function ArticleRodoNaStronieInternetowej({ params }) {
 
               <p>Sens tego podziału jest praktyczny: prawnik pracuje na liście faktycznie działających narzędzi zamiast na opisie z pamięci, a Ty nie płacisz za politykę, która i tak rozjedzie się z kodem.</p>
 
-              <p>Jeśli chcesz zacząć od diagnozy, zamów bezpłatną analizę SEO i potencjału obecnej marki — na zapytanie odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję przygotowujemy w ciągu doby. Formularz znajdziesz na <Link href="/#kontakt">stronie głównej</Link>.</p>
+              <p>Jeśli chcesz zacząć od diagnozy, zamów bezpłatną analizę SEO i potencjału obecnej marki — na zapytanie odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję przygotowujemy w ciągu doby. Formularz znajdziesz na <Link href={homeHash('kontakt', locale)}>stronie głównej</Link>.</p>
 
               <h2 id="najczesciej-zadawane-pytania">Najczęściej zadawane pytania</h2>
 

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
+import { sectionId } from '@/lib/anchors';
 
 export default function Contact({ isMainContent = false }) {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack');
@@ -85,7 +86,7 @@ export default function Contact({ isMainContent = false }) {
   };
 
   return (
-    <Wrapper className="contact" id="kontakt" {...wrapperProps}>
+    <Wrapper className="contact" id={sectionId('kontakt', lang)} {...wrapperProps}>
       <div className="container">
         <RevealStagger className="contact-box">
           <RevealItem className="contact-info">

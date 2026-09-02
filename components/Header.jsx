@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '../i18n/routing';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
+import { hash, homeHash } from '@/lib/anchors';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -153,7 +154,7 @@ export default function Header() {
             </div>
 
             {/* Header Hire Us Pill Button */}
-            <a href="#kontakt" className="header-hire-btn" style={{
+            <a href={hash('kontakt', lang)} className="header-hire-btn" style={{
               background: scrolled ? '#000000' : '#FFFFFF',
               color: scrolled ? '#FFFFFF' : '#000000',
               transition: 'all 0.7s ease'
@@ -237,7 +238,7 @@ export default function Header() {
                 <Link href="/#why-us" onClick={closeMenu}>{t('results')}</Link>
               </li>
               <li style={{ '--delay': '0.15s' }}>
-                <Link href="/#uslugi" onClick={closeMenu}>{t('services')}</Link>
+                <Link href={homeHash('uslugi', lang)} onClick={closeMenu}>{t('services')}</Link>
               </li>
               <li style={{ '--delay': '0.2s' }}>
                 <Link href="/cennik-pozycjonowania" onClick={closeMenu}>{t('pricing')}</Link>
@@ -264,10 +265,10 @@ export default function Header() {
                 <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
               </li>
               <li style={{ '--delay': '0.6s' }}>
-                <Link href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
+                <Link href={homeHash('kontakt', lang)} onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
               </li>
               <li style={{ '--delay': '0.65s' }}>
-                <Link href="/#kontakt" onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
+                <Link href={homeHash('kontakt', lang)} onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
               </li>
             </ul>
 

@@ -19,6 +19,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import { Link } from '@/i18n/routing';
 import BlogCTA from '@/components/BlogCTA';
+import { hash } from '@/lib/anchors';
 
 export default async function ArticleLokalnePage({ params }) {
   const { locale } = await params;
@@ -97,7 +98,7 @@ export default async function ArticleLokalnePage({ params }) {
                 <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
                   <h3>Dominate your local market</h3>
                   <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>Let our experts position your business at the top of Google Maps.</p>
-                  <a href="#kontakt" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Get a Local SEO Quote</a>
+                  <a href={hash('kontakt', locale)} style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Get a Local SEO Quote</a>
                 </div>
               </div>
             </div>

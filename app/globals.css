@@ -642,7 +642,8 @@ section, aside.pricing, aside.contact, aside.why-us {
 #about-values {
   padding-bottom: 1.5rem !important;
 }
-#kontakt {
+#kontakt,
+#contact {
   padding-top: 1.5rem !important;
 }
 
@@ -2177,7 +2178,8 @@ section, aside.pricing, aside.contact, aside.why-us {
   #about-values {
     padding-bottom: 1rem !important;
   }
-  #kontakt {
+  #kontakt,
+#contact {
     padding-top: 1rem !important;
   }
 

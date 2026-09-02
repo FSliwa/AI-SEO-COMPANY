@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { sectionId } from '@/lib/anchors';
 
 export default function Services() {
   const lang = useLocale();
@@ -15,7 +16,7 @@ export default function Services() {
   }));
 
   return (
-    <section className="services" id="uslugi">
+    <section className="services" id={sectionId('uslugi', lang)}>
       <div className="container">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>

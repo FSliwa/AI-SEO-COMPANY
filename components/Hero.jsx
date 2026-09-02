@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
 import HeroArcText from './HeroArcText';
 import SceneErrorBoundary from './SceneErrorBoundary';
+import { hash } from '@/lib/anchors';
 
 /**
  * The Spline runtime is roughly 1.5 MB of JavaScript plus the scene itself.
@@ -421,7 +422,7 @@ export default function Hero() {
             </h1>
 
             <div className="hero-en-actions">
-              <a href="#kontakt" className="hero-en-cta">{copy.ctaPrimary} →</a>
+              <a href={hash('kontakt', lang)} className="hero-en-cta">{copy.ctaPrimary} →</a>
               <a href="#portfolio" className="hero-en-cta-secondary">{copy.ctaSecondary}</a>
             </div>
           </div>

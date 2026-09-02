@@ -2,6 +2,8 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { sectionId } from '@/lib/anchors';
+import { hash } from '@/lib/anchors';
 
 export default function Pricing({ isMainContent = false }) {
   const lang = useLocale();
@@ -11,7 +13,7 @@ export default function Pricing({ isMainContent = false }) {
   const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Cennik' };
 
   return (
-    <Wrapper className="pricing" id="cennik" {...wrapperProps}>
+    <Wrapper className="pricing" id={sectionId('cennik', lang)} {...wrapperProps}>
       <div className="container">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
@@ -54,7 +56,7 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
-            <a href="#kontakt" className="btn btn-secondary">{t('btnChoose')} <span className="sr-only"> {t('standardTitle')}</span></a>
+            <a href={hash('kontakt', lang)} className="btn btn-secondary">{t('btnChoose')} <span className="sr-only"> {t('standardTitle')}</span></a>
           </RevealItem>
 
           {/* Package 2 */}
@@ -86,7 +88,7 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
-            <a href="#kontakt" className="btn btn-secondary">{t('btnChoose')} <span className="sr-only"> {t('premiumTitle')}</span></a>
+            <a href={hash('kontakt', lang)} className="btn btn-secondary">{t('btnChoose')} <span className="sr-only"> {t('premiumTitle')}</span></a>
           </RevealItem>
 
           {/* Package 3 (Featured Booster Pack) */}
@@ -120,7 +122,7 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
-            <a href="#kontakt" className="btn btn-primary btn-glow" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: '600' }}>{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
+            <a href={hash('kontakt', lang)} className="btn btn-primary btn-glow" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: '600' }}>{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
           </RevealItem>
         </RevealStagger>
 

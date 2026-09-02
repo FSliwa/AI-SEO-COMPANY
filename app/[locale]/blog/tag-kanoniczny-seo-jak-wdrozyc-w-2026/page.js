@@ -19,6 +19,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import { Link } from '@/i18n/routing';
 import BlogCTA from '@/components/BlogCTA';
+import { homeHash } from '@/lib/anchors';
 
 export default async function ArticleCanonicalPage({ params }) {
   const { locale } = await params;
@@ -174,7 +175,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <p>Choosing a reliable <Link href="/o-nas">SEO partner</Link> is the foundation of success. At AI SEO COMPANY, we understand that without a healthy technical foundation, no off-site activities or the best content will bring the expected results.</p>
               <p>Before implementing a solid strategy, we conduct an <Link href="/audyt-seo">advanced SEO audit</Link>, which shows the real state of the site's structure – including the correctness of canonical tags, sitemap, and URL architecture. We support both <Link href="/seo-lokalne-warszawa">local positioning</Link> for smaller companies and clinics, as well as e-commerce projects.</p>
               <p>As part of the cooperation, we make sure that canonical tags, sitemap.xml, and store structure harmonize with each other. This is the safest way to stable visibility growth.</p>
-              <p>Do you want to check what canonical tags look like on your site? <Link href="/#kontakt">Schedule a free consultation</Link>.</p>
+              <p>Do you want to check what canonical tags look like on your site? <Link href={homeHash('kontakt', locale)}>Schedule a free consultation</Link>.</p>
               
               <p><span style={{ fontWeight: 'bold' }}>Also read:</span> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">How much does SEO cost in Poland? Pricing and packages 2026</Link></p>
             </div>
@@ -324,7 +325,7 @@ export default async function ArticleCanonicalPage({ params }) {
               
               <p>W ramach współpracy dbamy o to, by tagi kanoniczne, sitemap.xml oraz struktura sklepu ze sobą współgrały. To najbezpieczniejsza droga do stabilnego wzrostu widoczności.</p>
               
-              <p>Chcesz sprawdzić, jak wyglądają tagi kanoniczne na Twojej stronie? <Link href="/#kontakt">Umów bezpłatną konsultację</Link>.</p>
+              <p>Chcesz sprawdzić, jak wyglądają tagi kanoniczne na Twojej stronie? <Link href={homeHash('kontakt', locale)}>Umów bezpłatną konsultację</Link>.</p>
 
               <BlogCTA 
                 locale={locale} 

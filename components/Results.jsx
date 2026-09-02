@@ -3,12 +3,14 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal } from './ScrollReveal';
 import SceneBackdrop from './SceneBackdrop';
+import { sectionId } from '@/lib/anchors';
+import { hash } from '@/lib/anchors';
 
 export default function Results() {
   const lang = useLocale();
 
   return (
-    <section className="results" id="wyniki">
+    <section className="results" id={sectionId('wyniki', lang)}>
       {/* The scene carries its own near-black background baked into the file, so
           it can only live on a dark surface — this band is the one place on the
           page that already is one. It occupies the right side and is faded out
@@ -25,7 +27,7 @@ export default function Results() {
             <h2>{lang === 'pl' ? 'Chcesz osiągnąć podobne wyniki?' : 'Want to achieve similar results?'}</h2>
             <p>{lang === 'pl' ? 'Zamów bezpłatną analizę SEO i potencjału Twojej obecnej marki już teraz.' : 'Claim your free SEO audit and brand potential analysis now.'}</p>
           </div>
-          <a href="#kontakt" className="btn btn-primary" style={{ background: '#FFFFFF', color: '#0F172A', fontWeight: '700', boxShadow: 'none' }}>
+          <a href={hash('kontakt', lang)} className="btn btn-primary" style={{ background: '#FFFFFF', color: '#0F172A', fontWeight: '700', boxShadow: 'none' }}>
             {lang === 'pl' ? 'Zamów bezpłatny audyt' : 'Get Free Audit'}
           </a>
         </Reveal>

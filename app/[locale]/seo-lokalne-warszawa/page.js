@@ -26,6 +26,7 @@ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import ServiceSchema from '@/components/ServiceSchema';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
+import { hash } from '@/lib/anchors';
 
 const faqData = [
   {
@@ -226,7 +227,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               </p>
               
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="#kontakt" className="hero-btn-primary">
+                <a href={hash('kontakt', locale)} className="hero-btn-primary">
                   {lang === 'pl' ? 'Sprawdź Swój Potencjał' : 'Check Your Potential'} 
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>

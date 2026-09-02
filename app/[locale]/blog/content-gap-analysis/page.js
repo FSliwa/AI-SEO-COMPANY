@@ -27,6 +27,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
+import { homeHash } from '@/lib/anchors';
 
 export default async function ArticleContentGapAnalysis({ params }) {
   const { locale } = await params;
@@ -831,7 +832,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <p>Wyniki zależą od punktu wyjścia, konkurencyjności branży i tego, ile z backlogu faktycznie powstanie — <strong>żadna agencja nie zagwarantuje pozycji ani przychodu</strong>. Liczby z zakończonych projektów publikujemy w sekcji realizacji na <Link href="/">stronie głównej</Link>.</p>
 
-              <p>Jeśli chcesz zacząć od diagnozy, a nie od umowy, zamów bezpłatną analizę SEO i potencjału obecnej marki — pokazuje, gdzie leżą największe luki, zanim ustalimy zakres. Na zapytanie odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję przygotowujemy w ciągu doby. Zakres każdego pakietu opisuje <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link>, a brief możesz przesłać przez <a href="/#kontakt">formularz kontaktowy</a>.</p>
+              <p>Jeśli chcesz zacząć od diagnozy, a nie od umowy, zamów bezpłatną analizę SEO i potencjału obecnej marki — pokazuje, gdzie leżą największe luki, zanim ustalimy zakres. Na zapytanie odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję przygotowujemy w ciągu doby. Zakres każdego pakietu opisuje <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link>, a brief możesz przesłać przez <a href={homeHash('kontakt', locale)}>formularz kontaktowy</a>.</p>
 
               <h2 id="najczestsze-pytania">Najczęstsze pytania</h2>
 
