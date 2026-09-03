@@ -27,7 +27,7 @@ export default function Results() {
             <h2>{lang === 'pl' ? 'Chcesz osiągnąć podobne wyniki?' : 'Want to achieve similar results?'}</h2>
             <p>{lang === 'pl' ? 'Zamów bezpłatną analizę SEO i potencjału Twojej obecnej marki już teraz.' : 'Claim your free SEO audit and brand potential analysis now.'}</p>
           </div>
-          <a href={hash('kontakt', lang)} className="btn btn-primary" style={{ background: '#FFFFFF', color: '#0F172A', fontWeight: '700', boxShadow: 'none' }}>
+          <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="results_free_audit" style={{ background: '#FFFFFF', color: '#0F172A', fontWeight: '700', boxShadow: 'none' }}>
             {lang === 'pl' ? 'Zamów bezpłatny audyt' : 'Get Free Audit'}
           </a>
         </Reveal>

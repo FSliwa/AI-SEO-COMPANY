@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <>
       {/* KOTA Sticky / Floating Action Pill Button (Bottom Right) */}
-      <a href={hash('kontakt', lang)} className="kota-floating-cta">
+      <a href={hash('kontakt', lang)} className="kota-floating-cta" data-cta="floating">
         {lang === 'pl' ? 'Wyceń projekt →' : 'Start your project →'}
       </a>
 
@@ -63,9 +63,9 @@ export default function Footer() {
             <div className="footer-col">
               <p className="footer-heading">{lang === 'pl' ? 'Kontakt' : 'Contact'}</p>
               <ul className="footer-links">
-                <li><a href="tel:+48518815055">518 815 055</a></li>
-                <li><a href="mailto:kontakt@ai-seo-company.pl">kontakt@ai-seo-company.pl</a></li>
-                <li><Link href={homeHash('kontakt', lang)}>{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</Link></li>
+                <li><a href="tel:+48518815055" data-cta="footer">518 815 055</a></li>
+                <li><a href="mailto:kontakt@ai-seo-company.pl" data-cta="footer">kontakt@ai-seo-company.pl</a></li>
+                <li><Link href={homeHash('kontakt', lang)} data-cta="footer">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</Link></li>
                 <li><Link href="/cookies">{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</Link></li>
                 <li><Link href="/regulamin">{lang === 'pl' ? 'Regulamin' : 'Terms of Service'}</Link></li>
               </ul>

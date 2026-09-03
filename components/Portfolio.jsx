@@ -277,7 +277,7 @@ export default function Portfolio() {
                 </p>
                 {/* Kierunek od klienta: zadnych modali - CTA prowadzi wprost
                     do formularza kontaktowego na dole strony. */}
-                <a href={hash('kontakt', lang)} className="portfolio-client-cta">
+                <a href={hash('kontakt', lang)} className="portfolio-client-cta" data-cta="portfolio_client">
                   {lang === 'pl' ? 'Napisz, aby zobaczyć wyniki' : 'Get in touch to see the results'} →
                 </a>
               </RevealItem>

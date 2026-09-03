@@ -422,7 +422,7 @@ export default function Hero() {
             </h1>
 
             <div className="hero-en-actions">
-              <a href={hash('kontakt', lang)} className="hero-en-cta">{copy.ctaPrimary} →</a>
+              <a href={hash('kontakt', lang)} className="hero-en-cta" data-cta="hero">{copy.ctaPrimary} →</a>
               <a href="#portfolio" className="hero-en-cta-secondary">{copy.ctaSecondary}</a>
             </div>
           </div>

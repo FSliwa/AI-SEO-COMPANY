@@ -56,7 +56,7 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
-            <a href={hash('kontakt', lang)} className="btn btn-secondary">{t('btnChoose')} <span className="sr-only"> {t('standardTitle')}</span></a>
+            <a href={hash('kontakt', lang)} className="btn btn-secondary" data-cta="pricing" data-plan="standard">{t('btnChoose')} <span className="sr-only"> {t('standardTitle')}</span></a>
           </RevealItem>
 
           {/* Package 2 */}
@@ -88,7 +88,7 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
-            <a href={hash('kontakt', lang)} className="btn btn-secondary">{t('btnChoose')} <span className="sr-only"> {t('premiumTitle')}</span></a>
+            <a href={hash('kontakt', lang)} className="btn btn-secondary" data-cta="pricing" data-plan="premium">{t('btnChoose')} <span className="sr-only"> {t('premiumTitle')}</span></a>
           </RevealItem>
 
           {/* Package 3 (Featured Booster Pack) */}
@@ -122,7 +122,7 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
-            <a href={hash('kontakt', lang)} className="btn btn-primary btn-glow" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: '600' }}>{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
+            <a href={hash('kontakt', lang)} className="btn btn-primary btn-glow" data-cta="pricing" data-plan="booster" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: '600' }}>{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
           </RevealItem>
         </RevealStagger>
 

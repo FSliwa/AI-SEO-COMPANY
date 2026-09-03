@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
+import { track } from '@/lib/track';
 
 export default function CookiesBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -54,6 +55,12 @@ export default function CookiesBanner() {
     const newState = { essential: true, analytics, marketing };
     setConsentState(newState);
     applyConsentToGtag(newState);
+    // Odsetek odmów mówi, ile konwersji z reklam będzie modelowanych zamiast
+    // obserwowanych; przy odmowie zdarzenie idzie jako ping bez ciasteczek.
+    track('cookie_consent', {
+      analytics: analytics ? 'granted' : 'denied',
+      marketing: marketing ? 'granted' : 'denied',
+    });
     try {
       localStorage.setItem('cookiesConsentState', JSON.stringify(newState));
       localStorage.setItem('cookiesConsent', 'saved');

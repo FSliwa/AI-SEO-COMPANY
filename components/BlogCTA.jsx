@@ -69,7 +69,7 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
               ? (customCtaTextEn || 'Want to outpace your competition in search results? Leave us a message below and we will prepare a dedicated SEO strategy.')
               : (customCtaTextPl || 'Chcesz wyprzedzić konkurencję w wynikach wyszukiwania? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię SEO.')}
           </p>
-          <a href={hash('kontakt', activeLocale)} style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
+          <a href={hash('kontakt', activeLocale)} data-cta="blog_cta" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
             {lang === 'en' ? 'Consult Your Project' : 'Skonsultuj Projekt'}
           </a>
         </div>

@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
+import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 
 // Wartość konwersji przekazywana do Google Ads, żeby licytacja odróżniała
 // zapytanie o Premium od łowcy okazji. To miesięczna wartość kontraktu (USD,
@@ -19,22 +20,26 @@ const LEAD_VALUE_USD = {
 };
 const DEFAULT_LEAD_VALUE_USD = 490;
 
-// Jedno wejście dla wszystkich zdarzeń niestandardowych: bez gtag (blokada
-// skryptów, SSR) nic się nie dzieje. Zdarzenia trafiają do obu właściwości GA4
-// i do tagu Ads, bo gtag rozsyła je do każdej skonfigurowanej docelowej.
-function track(name, params) {
-  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-    window.gtag('event', name, params);
-  }
-}
+// Kliknięcia w telefon i e-mail mierzy components/AnalyticsEvents.jsx (jeden
+// nasłuch dla całej strony), tu zostają tylko zdarzenia samego formularza.
 
 export default function Contact({ isMainContent = false }) {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [service, setService] = useState('');
   const lang = useLocale();
   const t = useTranslations('contact');
+
+  // Przyciski „Wybierz" w cenniku prowadzą kotwicą do formularza; wcześniej
+  // wybrany pakiet ginął po drodze i użytkownik musiał wskazać go drugi raz.
+  // Zdarzenie pricing_plan_click wysyła AnalyticsEvents, tu tylko odbiór.
+  useEffect(() => {
+    const onPreselect = (e) => { if (e && e.detail) setService(e.detail); };
+    window.addEventListener(PRESELECT_PLAN_EVENT, onPreselect);
+    return () => window.removeEventListener(PRESELECT_PLAN_EVENT, onPreselect);
+  }, []);
 
   const Wrapper = isMainContent ? 'section' : 'aside';
   const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Kontakt' };
@@ -53,6 +58,11 @@ export default function Contact({ isMainContent = false }) {
     if (el.validity.typeMismatch) el.setCustomValidity(validationMessages.email);
     else if (el.tagName === 'SELECT') el.setCustomValidity(validationMessages.select);
     else el.setCustomValidity(validationMessages.required);
+    // Które pole zatrzymuje wysyłkę — diagnostyka tarcia na stronie docelowej.
+    track('form_validation_error', {
+      field: el.id || el.name || el.tagName.toLowerCase(),
+      reason: el.validity.typeMismatch ? 'type_mismatch' : 'required',
+    });
   };
 
   // Clear the override so the field can validate normally on the next attempt.
@@ -127,9 +137,16 @@ export default function Contact({ isMainContent = false }) {
       }
 
       e.target.reset(); // Clear the form
+      setService('');
       setTimeout(() => setFormSubmitted(false), 8000);
     } catch (err) {
       setErrorMessage(err.message);
+      // Pomiar rozszerzony GA4 liczy form_submit przed odpowiedzią API, więc bez
+      // tego zdarzenia awaria wysyłki wygląda w raportach jak porzucenie formularza.
+      track('form_error', {
+        error_message: String((err && err.message) || err).slice(0, 100),
+        plan: service || 'none',
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -148,8 +165,8 @@ export default function Contact({ isMainContent = false }) {
             
             <ul className="company-details">
               <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Adres:' : 'Address:'}</span> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
-              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Telefon:' : 'Phone:'}</span> <a href="tel:+48518815055" onClick={() => track('phone_click', { link_url: 'tel:+48518815055' })} style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
-              <li><span style={{ fontWeight: 'bold' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" onClick={() => track('email_click', { link_url: 'mailto:kontakt@ai-seo-company.pl' })} style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
+              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Telefon:' : 'Phone:'}</span> <a href="tel:+48518815055" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
+              <li><span style={{ fontWeight: 'bold' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
               <li><span style={{ fontWeight: 'bold' }}>NIP:</span> 5253090237</li>
               <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</span> {lang === 'pl' ? 'Zazwyczaj < 2 godziny' : 'Usually < 2 hours'}</li>
             </ul>
@@ -181,7 +198,7 @@ export default function Contact({ isMainContent = false }) {
 
             <div className="form-group">
               <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
-              <select id="service" name="service" className="form-select" onInvalid={handleInvalid} onInput={handleInput} onChange={(e) => { if (e.target.value) track('select_plan', { plan: e.target.value }); }}>
+              <select id="service" name="service" className="form-select" value={service} onInvalid={handleInvalid} onInput={handleInput} onChange={(e) => { setService(e.target.value); if (e.target.value) track('select_plan', { plan: e.target.value }); }}>
                 <option value="">{lang === 'pl' ? 'Wybierz pakiet (opcjonalnie)' : 'Select plan (optional)'}</option>
                 <option value="standard">{lang === 'pl' ? 'SEO Standard (1 900 zł netto/mies.)' : 'SEO Standard (€450 net/mo)'}</option>
                 <option value="premium">{lang === 'pl' ? 'SEO Premium (2 500 zł netto/mies.)' : 'SEO Premium (€590 net/mo)'}</option>

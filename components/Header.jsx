@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '../i18n/routing';
+import { track } from '@/lib/track';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
 import { hash, homeHash } from '@/lib/anchors';
 
@@ -18,6 +19,8 @@ export default function Header() {
 
   const toggleLang = (newLocale) => {
     if (lang === newLocale) return;
+    // Sesja z USA przełączająca /en na polski to sygnał złego targetowania reklam.
+    track('language_switch', { from: lang, to: newLocale, page_path: pathname });
     // Articles can be published in one language only. Swapping the locale on the
     // same path would land on a URL that does not exist in the target language,
     // or serve the wrong language under it, so fall back to the blog index.
@@ -154,7 +157,7 @@ export default function Header() {
             </div>
 
             {/* Header Hire Us Pill Button */}
-            <a href={hash('kontakt', lang)} className="header-hire-btn" style={{
+            <a href={hash('kontakt', lang)} className="header-hire-btn" data-cta="header" style={{
               background: scrolled ? '#000000' : '#FFFFFF',
               color: scrolled ? '#FFFFFF' : '#000000',
               transition: 'all 0.7s ease'
@@ -265,21 +268,21 @@ export default function Header() {
                 <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
               </li>
               <li style={{ '--delay': '0.6s' }}>
-                <Link href={homeHash('kontakt', lang)} onClick={closeMenu}>{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
+                <Link href={homeHash('kontakt', lang)} onClick={closeMenu} data-cta="menu">{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
               </li>
               <li style={{ '--delay': '0.65s' }}>
-                <Link href={homeHash('kontakt', lang)} onClick={closeMenu}>{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
+                <Link href={homeHash('kontakt', lang)} onClick={closeMenu} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
               </li>
             </ul>
 
             <div className="kota-fullscreen-footer" style={{ marginTop: 'auto' }}>
               <div className="footer-contact">
                 <span className="footer-label">{lang === 'pl' ? 'Napisz do nas' : 'Email Us'}</span>
-                <a href="mailto:kontakt@ai-seo-company.pl" className="footer-value">kontakt@ai-seo-company.pl</a>
+                <a href="mailto:kontakt@ai-seo-company.pl" className="footer-value" data-cta="menu">kontakt@ai-seo-company.pl</a>
               </div>
               <div className="footer-contact">
                 <span className="footer-label">{lang === 'pl' ? 'Zadzwoń' : 'Call us'}</span>
-                <a href="tel:+48518815055" className="footer-value">518 815 055</a>
+                <a href="tel:+48518815055" className="footer-value" data-cta="menu">518 815 055</a>
               </div>
             </div>
           </div>
