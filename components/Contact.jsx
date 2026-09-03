@@ -6,6 +6,19 @@ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
 
+// Wartość konwersji przekazywana do Google Ads, żeby licytacja odróżniała
+// zapytanie o Premium od łowcy okazji. To miesięczna wartość kontraktu (USD,
+// przeliczona z cen widocznych na stronie EN) — jeśli chcesz licytować pod
+// realną wartość oczekiwaną, przemnóż te liczby przez własny współczynnik
+// domknięcia sprzedaży.
+const LEAD_VALUE_USD = {
+  standard: 490,
+  premium: 640,
+  booster: 640,
+  custom: 640,
+};
+const DEFAULT_LEAD_VALUE_USD = 490;
+
 export default function Contact({ isMainContent = false }) {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack');
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -74,6 +87,23 @@ export default function Contact({ isMainContent = false }) {
           event_label: data.service || 'General Lead',
           value: 1,
         });
+
+        // Konwersja Google Ads. Milczy, dopóki konto nie istnieje i nie ma
+        // ustawionego identyfikatora oraz etykiety — dzięki temu nic nie strzela
+        // w próżnię przed założeniem tagu.
+        const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+        const adsLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL;
+        if (adsId && adsLabel) {
+          // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
+          // surowy e-mail nie opuszcza urządzenia. Podnosi dopasowanie konwersji
+          // tam, gdzie pliki cookie są ucięte (Safari, iOS).
+          window.gtag('set', 'user_data', { email: data.email });
+          window.gtag('event', 'conversion', {
+            send_to: `${adsId}/${adsLabel}`,
+            value: LEAD_VALUE_USD[data.service] ?? DEFAULT_LEAD_VALUE_USD,
+            currency: 'USD',
+          });
+        }
       }
 
       e.target.reset(); // Clear the form
@@ -131,8 +161,8 @@ export default function Contact({ isMainContent = false }) {
 
             <div className="form-group">
               <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
-              <select id="service" name="service" className="form-select" required onInvalid={handleInvalid} onInput={handleInput}>
-                <option value="">{lang === 'pl' ? 'Wybierz pakiet...' : 'Select plan...'}</option>
+              <select id="service" name="service" className="form-select" onInvalid={handleInvalid} onInput={handleInput}>
+                <option value="">{lang === 'pl' ? 'Wybierz pakiet (opcjonalnie)' : 'Select plan (optional)'}</option>
                 <option value="standard">{lang === 'pl' ? 'SEO Standard (1 900 zł netto/mies.)' : 'SEO Standard (€450 net/mo)'}</option>
                 <option value="premium">{lang === 'pl' ? 'SEO Premium (2 500 zł netto/mies.)' : 'SEO Premium (€590 net/mo)'}</option>
                 <option value="booster">{lang === 'pl' ? 'Booster Pack (2 500 zł netto — Strona za 0 zł)' : 'Booster Pack (€590 net — Free Website)'}</option>

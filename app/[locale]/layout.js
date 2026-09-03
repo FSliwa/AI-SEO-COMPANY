@@ -4,6 +4,11 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import CookiesBanner from '@/components/CookiesBanner';
 
+// Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
+// w HTML każdej strony z tagiem), więc może być w kodzie; zmienna środowiskowa
+// pozwala go podmienić bez commitu, np. przy zmianie konta.
+const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-18426058950';
+
 
 // Wersja EN grafu: te same encje, angielskie pola tekstowe. Wczesniej /en
 // serwowal polski opis Organization i polska nazwe WebSite.
@@ -162,6 +167,10 @@ export default async function RootLayout({ children, params }) {
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            /* RODO obowiązuje terytorialnie, więc blankietowe „denied" kosztowało
+               pomiar konwersji wszędzie tam, gdzie nie jest wymagane. EOG + UK +
+               Szwajcaria zachowują restrykcyjny domyślny stan i czekają na baner;
+               pozostałe regiony startują z granted. */
             gtag('consent', 'default', {
               ad_storage: 'denied',
               ad_user_data: 'denied',
@@ -169,7 +178,16 @@ export default async function RootLayout({ children, params }) {
               analytics_storage: 'denied',
               functionality_storage: 'granted',
               security_storage: 'granted',
-              wait_for_update: 500
+              wait_for_update: 500,
+              region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','IS','GB','CH']
+            });
+            gtag('consent', 'default', {
+              ad_storage: 'granted',
+              ad_user_data: 'granted',
+              ad_personalization: 'granted',
+              analytics_storage: 'granted',
+              functionality_storage: 'granted',
+              security_storage: 'granted'
             });
           `}
         </Script>
@@ -184,6 +202,7 @@ export default async function RootLayout({ children, params }) {
             gtag('js', new Date());
 
             gtag('config', 'G-WVVRW8FP30');
+            gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
           `}
         </Script>
       </head>
