@@ -88,16 +88,20 @@ export default function Contact({ isMainContent = false }) {
           value: 1,
         });
 
-        // Konwersja Google Ads. Milczy, dopóki konto nie istnieje i nie ma
-        // ustawionego identyfikatora oraz etykiety — dzięki temu nic nie strzela
-        // w próżnię przed założeniem tagu.
-        const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+        // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
+        // surowy e-mail nie opuszcza urządzenia. Dane trafiają do wszystkich
+        // skonfigurowanych tagów (GA4 + Google Ads) i podnoszą dopasowanie
+        // konwersji tam, gdzie pliki cookie są ucięte (Safari, iOS). Wymaga
+        // włączonego "User-provided data collection" w GA4 oraz
+        // allow_enhanced_conversions w konfiguracji tagu Ads (layout.js).
+        window.gtag('set', 'user_data', { email: data.email });
+
+        // Tagowa konwersja Google Ads. Milczy, dopóki nie ma etykiety akcji —
+        // konwersja form_submit jest importowana z GA4, więc etykieta jest
+        // potrzebna tylko przy osobnej akcji tagowej.
+        const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-18426058950';
         const adsLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL;
         if (adsId && adsLabel) {
-          // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
-          // surowy e-mail nie opuszcza urządzenia. Podnosi dopasowanie konwersji
-          // tam, gdzie pliki cookie są ucięte (Safari, iOS).
-          window.gtag('set', 'user_data', { email: data.email });
           window.gtag('event', 'conversion', {
             send_to: `${adsId}/${adsLabel}`,
             value: LEAD_VALUE_USD[data.service] ?? DEFAULT_LEAD_VALUE_USD,
