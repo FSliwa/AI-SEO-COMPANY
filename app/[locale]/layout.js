@@ -9,6 +9,12 @@ import CookiesBanner from '@/components/CookiesBanner';
 // pozwala go podmienić bez commitu, np. przy zmianie konta.
 const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-18426058950';
 
+// Druga właściwość GA4 (552660385, G-85M09H5733) należy do konta Google, które jest
+// właścicielem konta Google Ads 230-348-6643, więc łączy się z Ads bezpośrednio
+// (pierwsza, G-WVVRW8FP30, leży na innym loginie i takiego linku nie dostanie).
+// Pierwsza zostaje na stronie; gtag wysyła każde zdarzenie do obu konfiguracji.
+const GA4_ADS_ID = process.env.NEXT_PUBLIC_GA4_ADS_ID || 'G-85M09H5733';
+
 
 // Wersja EN grafu: te same encje, angielskie pola tekstowe. Wczesniej /en
 // serwowal polski opis Organization i polska nazwe WebSite.
@@ -202,6 +208,7 @@ export default async function RootLayout({ children, params }) {
             gtag('js', new Date());
 
             gtag('config', 'G-WVVRW8FP30');
+            gtag('config', '${GA4_ADS_ID}');
             gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
           `}
         </Script>

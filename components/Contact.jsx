@@ -19,6 +19,15 @@ const LEAD_VALUE_USD = {
 };
 const DEFAULT_LEAD_VALUE_USD = 490;
 
+// Jedno wejście dla wszystkich zdarzeń niestandardowych: bez gtag (blokada
+// skryptów, SSR) nic się nie dzieje. Zdarzenia trafiają do obu właściwości GA4
+// i do tagu Ads, bo gtag rozsyła je do każdej skonfigurowanej docelowej.
+function track(name, params) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', name, params);
+  }
+}
+
 export default function Contact({ isMainContent = false }) {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack');
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -82,10 +91,14 @@ export default function Contact({ isMainContent = false }) {
       
       // GA4 Event Tracking
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        // Zalecane parametry GA4 dla generate_lead (currency + value) – dzięki
+        // nim import do Google Ads może licytować pod wartość, nie pod sztukę.
         window.gtag('event', 'generate_lead', {
           event_category: 'Contact',
           event_label: data.service || 'General Lead',
-          value: 1,
+          plan: data.service || 'none',
+          currency: 'USD',
+          value: LEAD_VALUE_USD[data.service] ?? DEFAULT_LEAD_VALUE_USD,
         });
 
         // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
@@ -132,8 +145,8 @@ export default function Contact({ isMainContent = false }) {
             
             <ul className="company-details">
               <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Adres:' : 'Address:'}</span> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
-              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Telefon:' : 'Phone:'}</span> <a href="tel:+48518815055" style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
-              <li><span style={{ fontWeight: 'bold' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
+              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Telefon:' : 'Phone:'}</span> <a href="tel:+48518815055" onClick={() => track('phone_click', { link_url: 'tel:+48518815055' })} style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
+              <li><span style={{ fontWeight: 'bold' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" onClick={() => track('email_click', { link_url: 'mailto:kontakt@ai-seo-company.pl' })} style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
               <li><span style={{ fontWeight: 'bold' }}>NIP:</span> 5253090237</li>
               <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</span> {lang === 'pl' ? 'Zazwyczaj < 2 godziny' : 'Usually < 2 hours'}</li>
             </ul>
@@ -165,7 +178,7 @@ export default function Contact({ isMainContent = false }) {
 
             <div className="form-group">
               <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
-              <select id="service" name="service" className="form-select" onInvalid={handleInvalid} onInput={handleInput}>
+              <select id="service" name="service" className="form-select" onInvalid={handleInvalid} onInput={handleInput} onChange={(e) => { if (e.target.value) track('select_plan', { plan: e.target.value }); }}>
                 <option value="">{lang === 'pl' ? 'Wybierz pakiet (opcjonalnie)' : 'Select plan (optional)'}</option>
                 <option value="standard">{lang === 'pl' ? 'SEO Standard (1 900 zł netto/mies.)' : 'SEO Standard (€450 net/mo)'}</option>
                 <option value="premium">{lang === 'pl' ? 'SEO Premium (2 500 zł netto/mies.)' : 'SEO Premium (€590 net/mo)'}</option>
