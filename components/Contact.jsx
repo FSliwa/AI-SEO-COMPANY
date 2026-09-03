@@ -91,6 +91,17 @@ export default function Contact({ isMainContent = false }) {
       
       // GA4 Event Tracking
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
+        // surowy e-mail nie opuszcza urządzenia. Dane trafiają do wszystkich
+        // skonfigurowanych tagów (GA4 + Google Ads) i podnoszą dopasowanie
+        // konwersji tam, gdzie pliki cookie są ucięte (Safari, iOS). Wymaga
+        // włączonego "User-provided data collection" w GA4 oraz
+        // allow_enhanced_conversions w konfiguracji tagu Ads (layout.js).
+        // Musi być PRZED generate_lead: `set` dotyczy tylko kolejnych trafień,
+        // więc ustawione po zdarzeniu nie dopięłoby e-maila do konwersji,
+        // którą Google Ads importuje z GA4.
+        window.gtag('set', 'user_data', { email: data.email });
+
         // Zalecane parametry GA4 dla generate_lead (currency + value) – dzięki
         // nim import do Google Ads może licytować pod wartość, nie pod sztukę.
         window.gtag('event', 'generate_lead', {
@@ -100,14 +111,6 @@ export default function Contact({ isMainContent = false }) {
           currency: 'USD',
           value: LEAD_VALUE_USD[data.service] ?? DEFAULT_LEAD_VALUE_USD,
         });
-
-        // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
-        // surowy e-mail nie opuszcza urządzenia. Dane trafiają do wszystkich
-        // skonfigurowanych tagów (GA4 + Google Ads) i podnoszą dopasowanie
-        // konwersji tam, gdzie pliki cookie są ucięte (Safari, iOS). Wymaga
-        // włączonego "User-provided data collection" w GA4 oraz
-        // allow_enhanced_conversions w konfiguracji tagu Ads (layout.js).
-        window.gtag('set', 'user_data', { email: data.email });
 
         // Tagowa konwersja Google Ads. Milczy, dopóki nie ma etykiety akcji —
         // konwersja form_submit jest importowana z GA4, więc etykieta jest
