@@ -258,7 +258,7 @@ export default function ArticleAudytSeoCena2026Page() {
                 Realistyczny czas do pierwszych mierzalnych efektów to 4–6 miesięcy od wdrożenia rekomendacji, choć zależy od branży i tempa działań. Zmiany techniczne widać szybciej, wzrost ruchu organicznego — wolniej.
               </p>
               <p>
-                Wsparcie poaudytowe warto zaplanować z góry. Abonament miesięczny lub pakiet godzin konsultacyjnych pozwala reagować na zmiany algorytmu i monitorować efekty bez zlecania kolejnego pełnego audytu w ramach ogólnego <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron internetowych</Link>.
+                Wsparcie poaudytowe warto zaplanować z góry. Abonament miesięczny lub pakiet godzin konsultacyjnych pozwala reagować na zmiany algorytmu i monitorować efekty bez zlecania kolejnego pełnego audytu w ramach ogólnego <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron internetowych</Link>. Widełki takich abonamentów zebraliśmy w <Link href="/cennik-pozycjonowania">cenniku pozycjonowania</Link>.
               </p>
 
               <h2>Ile łącznie zapłacisz, uwzględniając usługi dodatkowe?</h2>

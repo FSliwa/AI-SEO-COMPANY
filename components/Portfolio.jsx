@@ -110,9 +110,10 @@ const realizedWebsites = [
    samej marki (Staniax, Madame Thai, ASE-BOT), a stosy wychodza poszarpane
    jak u Ghosta (1.8 / 2.25 / 1.35 / 1.8 szerokosci kolumny). */
 const MOSAIC = [
-  /* 12 kafli: siedem stron klientow + hero i blog wlasnej strony agencji
-     (zrzuty w OBU jezykach - srcEn przelacza wariant wg locale) + cztery
-     prawdziwe panele GSC. */
+  /* 15 kafli: osiem stron klientow + hero i blog wlasnej strony agencji
+     (zrzuty w OBU jezykach - srcEn przelacza wariant wg locale) + piec
+     prawdziwych paneli GSC. Tablica zasila obie wersje jezykowe naraz,
+     wiec nowy kafel wystarczy dopisac raz. */
 { src: '/projects/mosaic/elkat-a-v2.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
 { src: '/projects/mosaic/mad-a-v2.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
 { src: '/projects/mosaic/own-hero-pl4.webp', srcEn: '/projects/mosaic/own-hero-en4.webp', w: 1200, h: 752,
@@ -125,6 +126,9 @@ const MOSAIC = [
 { src: '/projects/mosaic/own-blog-pl7.webp', srcEn: '/projects/mosaic/own-blog-en6.webp', w: 1200, h: 840,
     alt: 'Blog AI SEO COMPANY — artykuły o SEO i web designie', altEn: 'AI SEO COMPANY blog — articles on SEO and web design' },
 { src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
+{ src: '/projects/mosaic/frazy-a.webp', w: 1200, h: 783,
+    alt: 'Podstrona Frazy Studio — biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
+    altEn: 'Frazy Studio page — an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
 { src: '/projects/gsc/madamethai.webp', w: 1600, h: 726,
     alt: 'Panel Performance madamethai.pl w Google Search Console: 187 kliknięć i 10,1 tys. wyświetleń w 3 miesiące',

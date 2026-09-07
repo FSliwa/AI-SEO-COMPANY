@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
+import { Link } from '@/i18n/routing';
 
 export default function ArticleCennikPage() {
   return (
@@ -49,7 +50,7 @@ export default function ArticleCennikPage() {
           <Reveal delay={0.2}>
             <div style={{ fontSize: '1.15rem', lineHeight: 1.6, color: '#333336' }}>
               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                Koszt pozycjonowania stron zależy od konkurencyjności branży, stanu technicznego witryny oraz zakresu prac content marketingowych i link buildingowych. Sprawdź, z jakimi budżetami należy się liczyć.
+                Koszt pozycjonowania stron zależy od konkurencyjności branży, stanu technicznego witryny oraz zakresu prac content marketingowych i link buildingowych. Sprawdź, z jakimi budżetami należy się liczyć, a konkretne stawki znajdziesz w naszym <Link href="/cennik-pozycjonowania">cenniku pozycjonowania stron</Link>.
               </p>
               
               <h2 style={{ fontSize: '1.5rem', color: '#1D1D1F', marginTop: '2.5rem', marginBottom: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
