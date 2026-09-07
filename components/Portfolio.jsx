@@ -159,24 +159,33 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', calc);
   }, []);
 
-  /* Uklad zmierzony ze zrzutu sciany ghost.org: PIEC stosow po dwa kafle
-     (tylko srodkowy-wysoki ma dwa hero), wierzcholki ponizej najwyzszego
-     o +0.14 / 0 / +0.45 / +0.29 / +0.44 szerokosci kolumny. Nasze stosy:
-     1.31 / 1.45 / 1.00 / 1.16 / 1.01 - odtwarzaja te przesuniecia co do
-     +-0.01 dzieki indywidualnym wysokosciom kafli hero (korekty klienta: ase-bot
-     z pelnym hero 700, Stef-Bud obnizony do 520; 970/840/840/700/790/520). Kazda marka stoi nad swoim panelem
-     GSC (Madame Thai, ASE-BOT, Staniax), panele zamykaja kolumny od dolu.
+  /* Uklad zmierzony ze zrzutu sciany ghost.org: piec stosow wyrownanych do
+     dolu, o roznej wysokosci, przez co gorna krawedz jest poszarpana.
+     Kazda marka stoi nad swoim panelem GSC (Madame Thai, ASE-BOT, Staniax),
+     panele zamykaja kolumny od dolu.
+
+     UWAGA - to jest pulapka, ktora juz raz zadziala: uklad piecio-kolumnowy
+     NIE czyta tablicy MOSAIC, tylko te sztywna liste kluczy. Dopisanie kafla
+     do MOSAIC bez dopisania go TUTAJ konczy sie tym, ze kafel jest w HTML z
+     serwera (SSR startuje z cols = 4 i idzie round-robinem), ale znika po
+     hydracji na kazdym ekranie >= 1280 px. Klucz to nazwa pliku bez
+     rozszerzenia. `filter(Boolean)` chroni przed literowka w kluczu -
+     wtedy kafel po prostu nie wejdzie, zamiast wywalic render.
+
+     Wysokosci stosow w jednostkach szerokosci kolumny (suma h/w kafli):
+     1.82 / 1.81 / 1.78 / 1.47 / 1.96. Kafel Frazy trafil do drugiej kolumny,
+     bo bez niego miala 1.15 i odstawala od reszty.
      Ponizej 1280px round-robin: hero najpierw, GSC na koncu. */
   const columns = (() => {
     if (cols === 5) {
       const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
       return [
         ['sta-a-v4', 'sta-blog-pl4', 'staniax'],
-        ['mad-a-v2', 'madamethai'],
+        ['frazy-a', 'mad-a-v2', 'madamethai'],
         ['own-hero-pl4', 'own-blog-pl7', 'ai-seo-company'],
         ['ase-a-v2', 'fix-a-v2', 'ase-bot'],
         ['elkat-a-v2', 'tql-a', 'tql'],
-      ].map((stack) => stack.map((k) => byKey[k]));
+      ].map((stack) => stack.map((k) => byKey[k])).map((stack) => stack.filter(Boolean));
     }
     const stacks = Array.from({ length: cols }, () => []);
     MOSAIC.forEach((tile, i) => stacks[i % cols].push(tile));
