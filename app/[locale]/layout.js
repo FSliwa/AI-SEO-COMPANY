@@ -1,4 +1,5 @@
 import '../globals.css';
+import ReactDOM from 'react-dom';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
@@ -156,6 +157,21 @@ export default async function RootLayout({ children, params }) {
   // (cache-control: no-store, TTFB 0,5-2 s - audyt 24.08).
   setRequestLocale(locale);
   const messages = await getMessages();
+
+  // Scena 3D sekcji hero. Bez preloadu pobieranie ruszalo dopiero z useEffect
+  // w Hero.jsx - czyli po sciagnieciu i sparsowaniu calego bundle'a i po
+  // hydracji. Tutaj startuje przy parsowaniu HTML.
+  //
+  // ReactDOM.preload, a nie <link> w JSX: React 19 hoistuje znaczniki zasobow
+  // do <head> wlasnym mechanizmem, wiec literal w JSX wychodzil w HTML DWA
+  // RAZY - raz zhoistowany, raz doslownie. Przegladarki deduplikuja preloady,
+  // wiec plik i tak leciał raz, ale duplikat w <head> na kazdej podstronie
+  // wylapuje kazdy audyt. To API emituje dokladnie jeden znacznik.
+  //
+  // Bez `crossOrigin`: zasob jest same-origin, a dodanie atrybutu zrobiloby
+  // z tego zapytanie CORS trafiajace w inny wpis cache niz fetch runtime'u -
+  // i wtedy plik zjechalby naprawde dwa razy.
+  ReactDOM.preload('/scene.splinecode.br', { as: 'fetch', fetchPriority: 'high' });
 
   return (
     <html lang={locale}>

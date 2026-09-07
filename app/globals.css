@@ -662,27 +662,11 @@ section, aside.pricing, aside.contact, aside.why-us {
   align-items: center;
 }
 
-.hero-video-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  opacity: 0.85;
-  filter: brightness(0.95) contrast(1.15);
-  pointer-events: none;
-}
-
-@media (max-width: 767px) {
-  .hero-video-bg {
-    display: none !important;
-  }
-}
+/* Reguly .hero-video-bg usuniete razem z samym <video>: scena Spline jest
+   jedynym tlem sekcji hero, a wideo bylo drugim pelnoekranowym podkladem,
+   ktorego nikt nie widzial pod spodem. Zrodla (black-hole-*.mp4/webm/jpg/webp)
+   usuniete z /public - jedyne pozostale trafienia byly w archiwalnych
+   raportach lhreport*.json, nie w kodzie. */
 
 .hero-overlay {
   position: absolute;
@@ -3198,13 +3182,16 @@ section, aside.pricing, aside.contact, aside.why-us {
 /* Rendered while the Spline chunk downloads, and the whole backdrop if the
    scene never loads. CSS gradients only — no JS, no image request — so the
    section always has a finished-looking background even offline. */
+/* Atrapa stojaca, dopoki nie zaladuje sie runtime Spline i sama scena. Byl tu
+   pomaranczowy gradient, przez ktory sekwencja ladowania wygladala tak:
+   pomaranczowe tlo -> czarne (atrapa znika, kanwa jeszcze przezroczysta) ->
+   wjazd sceny. Wypalone tlo sceny zmierzono na kanwie w siedmiu punktach i
+   wszedzie wynosi 0,0,0, sekcja tez ma #000000 - wiec czern skleja dwie
+   pierwsze fazy w jedna i usuwa blysk. Wyglad zaladowanej strony bez zmian. */
 .hero-en-orb {
   width: 100%;
   height: 100%;
-  background:
-    radial-gradient(circle at 68% 42%, rgba(216, 90, 48, 0.38), transparent 52%),
-    radial-gradient(circle at 88% 78%, rgba(255, 255, 255, 0.08), transparent 45%),
-    radial-gradient(circle at 40% 50%, #16202f, #0b1220 72%);
+  background: #000000;
 }
 
 /* Także dla szerokich, ale PIONOWYCH okien (aspekt < 1:1): scena jest

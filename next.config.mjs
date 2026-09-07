@@ -61,8 +61,25 @@ const nextConfig = {
       // wylacznie jeden segment sciezki, zeby nie zlapac tras aplikacji.
       // Uwaga: te pliki sa niezmienne z nazwy - podmiana wymaga nowej nazwy.
       {
-        source: '/:file(og-image\\.jpg|black-hole-[^/]+\\.(?:mp4|webm|jpg|webp)|ai-seo-company-logotyp[^/]*\\.(?:png|svg))',
+        source: '/:file(og-image\\.jpg|ai-seo-company-logotyp[^/]*\\.(?:png|svg))',
         headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+        ]
+      },
+      // Scena 3D sekcji hero, hostowana u nas zamiast na prod.spline.design.
+      // Powod: tamten CDN oddawal ja NIESKOMPRESOWANA - automatyczna kompresja
+      // CloudFront konczy sie na 10 MB, a plik ma 36 283 041 B, wiec kazdy
+      // uzytkownik pobieral pelne 36 MB (zmierzone 12,9 s przy 2,8 MB/s).
+      // Tutaj lezy wstepnie spakowany brotli -11: 4 894 079 B, czyli 7,4x mniej.
+      // Content-Encoding ustawiamy jawnie, bo plik JEST juz spakowany na dysku -
+      // przegladarka rozpakuje go w locie i runtime Spline dostanie identyczne
+      // bajty co wczesniej. Brotli obsluguja wszystkie przegladarki z WebGL2,
+      // ktorego Spline i tak wymaga, wiec negocjacja nie jest potrzebna.
+      {
+        source: '/scene.splinecode.br',
+        headers: [
+          { key: 'Content-Encoding', value: 'br' },
+          { key: 'Content-Type', value: 'application/json' },
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
         ]
       }

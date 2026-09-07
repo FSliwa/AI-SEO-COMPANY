@@ -23,7 +23,20 @@ const Spline = dynamic(() => import('@splinetool/react-spline'), {
   loading: () => <div className="hero-en-orb" />
 });
 
-const SCENE = 'https://prod.spline.design/IDQGjdWtbF-vstYN/scene.splinecode';
+/**
+ * Scena lezy u nas, nie na prod.spline.design. Tamten CDN oddawal plik
+ * nieskompresowany (36 283 041 B, brak Content-Encoding nawet przy naglowku
+ * `Accept-Encoding: br, gzip` - automatyczna kompresja CloudFront konczy sie na
+ * 10 MB). Kopia w /public jest wstepnie spakowana brotli -11 do 4 894 079 B,
+ * a naglowki z next.config.mjs deklaruja Content-Encoding, wiec przegladarka
+ * rozpakowuje ja w locie do identycznych bajtow.
+ *
+ * Adres wlasnej domeny zamiast obcej znosi tez cala klase problemow z
+ * preloadem: zapytanie jest same-origin, wiec wpis <link rel="preload"> z
+ * layoutu i pozniejszy fetch runtime'u trafiaja w ten sam wpis cache
+ * niezaleznie od trybu CORS - nie ma ryzyka podwojnego pobrania.
+ */
+const SCENE = '/scene.splinecode.br';
 
 /**
  * Hero copy per locale.
@@ -225,7 +238,10 @@ export default function Hero() {
   // a scene this size the serialisation costs seconds. Both are best-effort.
   useEffect(() => {
     import('@splinetool/react-spline').catch(() => {});
-    fetch(SCENE, { mode: 'cors', cache: 'force-cache' }).catch(() => {});
+    // Bez `mode: 'cors'` - scena jest teraz same-origin, a wymuszanie CORS
+    // rozdzielaloby wpisy cache miedzy tym rozgrzaniem, preloadem z <head>
+    // i wlasnym zapytaniem runtime'u.
+    fetch(SCENE, { cache: 'force-cache' }).catch(() => {});
   }, []);
 
   // Micro-parallax (wide screens, fine pointers, motion allowed): the copy
