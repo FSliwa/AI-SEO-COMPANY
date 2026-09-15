@@ -1,8 +1,8 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Keyword Analysis, Search Engine Optimization Consultants' : 'Audyt SEO | Analiza i Optymalizacja SEO Strony w 14 Dni',
-  description: locale === 'en' ? 'Expert search engine optimization consultants. Professional SEO keyword analysis and comprehensive search engine optimisation consultancy.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
+  title: locale === 'en' ? 'SEO Audit Services | Technical SEO Audit & Keyword Analysis' : 'Audyt SEO | Analiza i Optymalizacja SEO Strony w 14 Dni',
+  description: locale === 'en' ? 'SEO audit services by search engine optimization consultants: technical website audit, SEO keyword analysis and a prioritised fix list in plain English.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-audit' : 'https://www.ai-seo-company.pl/audyt-seo',
     languages: {

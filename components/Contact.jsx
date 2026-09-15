@@ -168,7 +168,7 @@ export default function Contact({ isMainContent = false }) {
               <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Telefon:' : 'Phone:'}</span> <a href="tel:+48518815055" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
               <li><span style={{ fontWeight: 'bold' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
               <li><span style={{ fontWeight: 'bold' }}>NIP:</span> 5253090237</li>
-              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</span> {lang === 'pl' ? 'Zazwyczaj < 2 godziny' : 'Usually < 2 hours'}</li>
+              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</span> {lang === 'pl' ? 'Zazwyczaj < 2 godziny w godz. 9–18' : 'Usually within 2 hours (9 am–6 pm CET), otherwise next business morning'}</li>
             </ul>
           </RevealItem>
 
@@ -176,7 +176,7 @@ export default function Contact({ isMainContent = false }) {
             <form className="contact-form" onSubmit={handleSubmit}>
             {formSubmitted && (
               <div style={{ background: '#EFF8E6', color: '#639922', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
-                {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Skontaktujemy się z Tobą w ciągu 2 godzin.' : '✓ Thank you! Your request has been received. We will contact you within 2 hours.'}
+                {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Odpowiemy w ciągu 2 godzin w godzinach pracy (9–18).' : '✓ Thank you! Your request has been received. We reply within 2 hours during business hours (9 am–6 pm CET), otherwise the next business morning.'}
               </div>
             )}
             
@@ -217,8 +217,7 @@ export default function Contact({ isMainContent = false }) {
                 name="message" 
                 className="form-textarea" 
                 rows="4" 
-                placeholder={lang === 'pl' ? 'Opisz w kilku słowach swoje cele, obecną stronę oraz wymagany termin...' : 'Briefly describe your goals, current website, and required timeline...'}
-                required
+                placeholder={lang === 'pl' ? 'Opcjonalnie: adres strony, cele i termin...' : 'Optional: your website URL, goals and timeline...'}
                 onInvalid={handleInvalid}
                 onInput={handleInput}
               ></textarea>

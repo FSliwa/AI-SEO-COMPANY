@@ -8,7 +8,7 @@ export async function POST(request) {
   try {
     const { name, email, service, message } = await request.json();
 
-    if (!name || !email || !message) {
+    if (!name || !email) {
       return NextResponse.json(
         { error: 'Brak wymaganych pól formularza.' },
         { status: 400 }
@@ -45,7 +45,7 @@ export async function POST(request) {
         <p><strong>Pakiet:</strong> ${service || 'Brak (Indywidualny)'}</p>
         <br />
         <p><strong>Wiadomość:</strong></p>
-        <p style="white-space: pre-wrap; background: #f4f4f5; padding: 16px; border-radius: 8px;">${message}</p>
+        <p style="white-space: pre-wrap; background: #f4f4f5; padding: 16px; border-radius: 8px;">${message || "—"}</p>
       `,
     });
 
