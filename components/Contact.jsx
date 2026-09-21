@@ -122,16 +122,17 @@ export default function Contact({ isMainContent = false }) {
           value: LEAD_VALUE_USD[data.service] ?? DEFAULT_LEAD_VALUE_USD,
         });
 
-        // Tagowa konwersja Google Ads. Milczy, dopóki nie ma etykiety akcji —
-        // konwersja form_submit jest importowana z GA4, więc etykieta jest
-        // potrzebna tylko przy osobnej akcji tagowej.
+        // Tagowa konwersja Google Ads — główna akcja „Formularz kontaktowy (tag)”
+        // (utworzona 21.09.2026, stała wartość 1 000 zł ustawiona po stronie Ads,
+        // więc nie wysyłamy value/currency). Tag liczy się także przy odmowie
+        // zgody w Consent Mode (modelowanie) i korzysta z user_data powyżej,
+        // czego import generate_lead z GA4 nie gwarantuje. Etykieta nie jest
+        // sekretem (siedzi w HTML każdej strony), stąd wartość domyślna w kodzie.
         const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-18426058950';
-        const adsLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL;
+        const adsLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL || 'iNguCJLcr4AdEMaxndJE';
         if (adsId && adsLabel) {
           window.gtag('event', 'conversion', {
             send_to: `${adsId}/${adsLabel}`,
-            value: LEAD_VALUE_USD[data.service] ?? DEFAULT_LEAD_VALUE_USD,
-            currency: 'USD',
           });
         }
       }
