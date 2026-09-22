@@ -36,8 +36,8 @@ const faqData = [
   {
     question: 'Czy pozycjonowanie stron gwarantuje pozycję nr 1 w Google?',
     questionEn: 'Do you guarantee the #1 position on Google search?',
-    answer: 'Żadna uczciwa agencja nie gwarantuje statycznej pozycji nr 1 ze względu na zmienność algorytmów Google. Gwarantujemy natomiast stały wzrost widoczności, jakościowego ruchu oraz optymalizację współczynnika konwersji (CRO).',
-    answerEn: 'No honest agency guarantees a static #1 position due to the volatility of Google\'s algorithms. However, we guarantee steady growth in visibility, quality traffic, and conversion rate optimization (CRO).'
+    answer: 'Nie. Żadna uczciwa agencja nie gwarantuje pozycji nr 1, bo o wynikach decyduje algorytm Google, nie my — a każdy, kto to obiecuje, sprzedaje Ci pewność, której nie ma. Deklarujemy to, co jest po naszej stronie: zakres prac, terminy i comiesięczny raport pokazujący, co zrobiliśmy i jak zmieniła się widoczność.',
+    answerEn: 'No. No honest agency guarantees the #1 position, because Google\'s algorithm decides the rankings, not us — anyone promising otherwise is selling you a certainty that does not exist. What we do commit to is what is on our side: the scope of work, the deadlines, and a monthly report showing what we did and how visibility changed.'
   },
   {
     question: 'Czym różni się pozycjonowanie od marketingu cyfrowego?',
