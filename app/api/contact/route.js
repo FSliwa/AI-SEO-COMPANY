@@ -94,6 +94,28 @@ export async function POST(request) {
     const leadData = `LEAD_DATA: lead_id=${leadId}; email=${emailNorm}; submitted_at=${attr.submitted_at}; gclid=${attr.gclid}; gbraid=${attr.gbraid}; wbraid=${attr.wbraid}; landing_path=${attr.landing_path}; first_seen=${attr.first_seen}; page_path=${attr.page_path}; utm_source=${attr.utm_source}; utm_medium=${attr.utm_medium}; utm_campaign=${attr.utm_campaign}; utm_term=${attr.utm_term}; utm_content=${attr.utm_content}`;
     const source = attr.gclid || attr.gbraid || attr.wbraid ? 'Google Ads (klik z reklamy)' : (attr.utm_source ? `utm: ${attr.utm_source}/${attr.utm_medium}` : 'organiczne / bezpośrednie');
 
+    // Trwały ślad leada MUSI powstać niezależnie od poczty. Wcześniej cała
+    // trasa wisiała na jednym `await resend.emails.send`: gdy Resend zwrócił
+    // błąd, leciało 500, użytkownik widział komunikat o awarii, webhook do
+    // arkusza nie był wołany (stał NIŻEJ, za mailem), a konwersja nie odpalała.
+    // Zgłoszenie znikało bez śladu. Przy 1–3 leadach miesięcznie to jedna
+    // trzecia miesiąca w koszu. Kolejność jest teraz odwrotna: najpierw zapis,
+    // potem poczta, a 500 leci dopiero gdy zawiodą OBA kanały.
+    let zapisany = false;
+    if (process.env.LEADS_WEBHOOK_URL) {
+      try {
+        const r = await fetch(process.env.LEADS_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...attr, lead_id: leadId, name: safe(name, 120), email: emailNorm, service: safe(service, 40), message: safe(message, 2000), status: 'new' }),
+        });
+        zapisany = r.ok;
+        if (!r.ok) console.error('Webhook arkusza leadów: HTTP', r.status);
+      } catch (e) {
+        console.error('Webhook arkusza leadów:', e);
+      }
+    }
+
     const { data, error } = await resend.emails.send({
       from: `AI SEO COMPANY <${fromEmail}>`,
       to: toEmails,
@@ -114,25 +136,21 @@ export async function POST(request) {
     });
 
     if (error) {
+      // Ostatnia deska ratunku: cały lead do logu runtime'u (Vercel →
+      // Functions → Logs). Brzydkie, ale odzyskiwalne — lepsze niż cisza.
+      // `leadData` niesie już gclid, więc da się z tego zrobić import offline.
       console.error('Błąd z API Resend:', error);
-      return NextResponse.json(
-        { error: `Nie udało się wysłać wiadomości (${error.message || 'błąd API'}). Skontaktuj się bezpośrednio: kontakt@ai-seo-company.pl` },
-        { status: 500 }
-      );
-    }
+      console.error(`LEAD_ODZYSK ${leadData}; name=${safe(name, 120)}; service=${safe(service, 40)}; message=${safe(message, 2000)}`);
 
-    // Opcjonalny wiersz w arkuszu leadów (Apps Script / Make webhook, env
-    // LEADS_WEBHOOK_URL). Best effort: błąd arkusza nie może zepsuć zgłoszenia.
-    if (process.env.LEADS_WEBHOOK_URL) {
-      try {
-        await fetch(process.env.LEADS_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...attr, lead_id: leadId, name: safe(name, 120), email: emailNorm, service: safe(service, 40), status: 'new' }),
-        });
-      } catch (e) {
-        console.error('Webhook arkusza leadów:', e);
+      if (!zapisany) {
+        // Oba kanały padły — dopiero teraz uczciwie mówimy o awarii.
+        return NextResponse.json(
+          { error: `Nie udało się wysłać wiadomości (${error.message || 'błąd API'}). Skontaktuj się bezpośrednio: kontakt@ai-seo-company.pl` },
+          { status: 500 }
+        );
       }
+      // Arkusz przyjął zgłoszenie — dla użytkownika to sukces i konwersja
+      // odpala. Nie każemy mu wysyłać drugi raz czegoś, co już mamy.
     }
 
     return NextResponse.json({ success: true, lead_id: leadId, id: data && data.id });

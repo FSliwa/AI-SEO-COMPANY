@@ -28,7 +28,6 @@ export async function generateMetadata({ params }) {
 };
 }
 
-import ReactDOM from 'react-dom';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -44,17 +43,23 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 export default function Home() {
-  // Scena 3D sekcji hero. Bez preloadu pobieranie ruszalo dopiero z useEffect
-  // w Hero.jsx - czyli po sciagnieciu i sparsowaniu calego bundle'a i po
-  // hydracji. Tutaj startuje przy parsowaniu HTML. Tylko tu, nie w layoucie:
-  // podstrony hero nie maja, a preload 4,9 MB z priorytetem high konkurowal
-  // tam z zasobami wlasnymi strony.
+  // BYL TU: ReactDOM.preload('/scene.splinecode.br', { fetchPriority: 'high' }).
+  // Usuniete 22.09.2026 po pomiarze na produkcji. Preload jest wskazowka dla
+  // przegladarki wystawiana przy parsowaniu HTML - NIE wie nic o viewporcie,
+  // wiec bramka telefonowa w Hero.jsx (ktora blokuje tylko MONTOWANIE sceny)
+  // go nie dotyczyla: telefon i tak ciagnal 4,8 MB z najwyzszym priorytetem.
+  // Zmierzone na zywej stronie: LCP 33,3 s, performance 31/100 na mobile,
+  // a elementem LCP byl tekst banera cookies - czyli uzytkownik z telefonu
+  // czekal ~33 s, zeby MOC kliknac zgode, bez ktorej tag konwersji nie odpala.
   //
-  // ReactDOM.preload, a nie <link> w JSX: React 19 hoistuje znaczniki zasobow
-  // do <head> wlasnym mechanizmem, wiec literal w JSX wychodzil w HTML DWA
-  // RAZY. Bez `crossOrigin`: zasob jest same-origin, a atrybut zrobilby z tego
-  // zapytanie CORS trafiajace w inny wpis cache niz fetch runtime'u.
-  ReactDOM.preload('/scene.splinecode.br', { as: 'fetch', fetchPriority: 'high' });
+  // Bez preloadu scena startuje z useEffect w Hero.jsx: na desktopie od razu,
+  // na telefonie dopiero w czasie bezczynnosci. Desktop traci ulamek sekundy
+  // na starcie sceny, mobile odzyskuje kilkanascie sekund do LCP.
+  //
+  // Gdyby wracac do preloadu: tylko przez <link media="(min-width: 901px)">,
+  // bo ReactDOM.preload nie przyjmuje `media`. Uwaga - React 19 hoistuje
+  // znaczniki zasobow do <head> wlasnym mechanizmem i literal w JSX wychodzil
+  // w HTML dwa razy.
   return (
     <>
       <Header />
