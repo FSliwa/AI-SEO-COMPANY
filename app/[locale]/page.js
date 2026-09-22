@@ -28,6 +28,7 @@ export async function generateMetadata({ params }) {
 };
 }
 
+import ReactDOM from 'react-dom';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -43,6 +44,17 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 export default function Home() {
+  // Scena 3D sekcji hero. Bez preloadu pobieranie ruszalo dopiero z useEffect
+  // w Hero.jsx - czyli po sciagnieciu i sparsowaniu calego bundle'a i po
+  // hydracji. Tutaj startuje przy parsowaniu HTML. Tylko tu, nie w layoucie:
+  // podstrony hero nie maja, a preload 4,9 MB z priorytetem high konkurowal
+  // tam z zasobami wlasnymi strony.
+  //
+  // ReactDOM.preload, a nie <link> w JSX: React 19 hoistuje znaczniki zasobow
+  // do <head> wlasnym mechanizmem, wiec literal w JSX wychodzil w HTML DWA
+  // RAZY. Bez `crossOrigin`: zasob jest same-origin, a atrybut zrobilby z tego
+  // zapytanie CORS trafiajace w inny wpis cache niz fetch runtime'u.
+  ReactDOM.preload('/scene.splinecode.br', { as: 'fetch', fetchPriority: 'high' });
   return (
     <>
       <Header />

@@ -1,5 +1,4 @@
 import '../globals.css';
-import ReactDOM from 'react-dom';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
@@ -158,20 +157,10 @@ export default async function RootLayout({ children, params }) {
   setRequestLocale(locale);
   const messages = await getMessages();
 
-  // Scena 3D sekcji hero. Bez preloadu pobieranie ruszalo dopiero z useEffect
-  // w Hero.jsx - czyli po sciagnieciu i sparsowaniu calego bundle'a i po
-  // hydracji. Tutaj startuje przy parsowaniu HTML.
-  //
-  // ReactDOM.preload, a nie <link> w JSX: React 19 hoistuje znaczniki zasobow
-  // do <head> wlasnym mechanizmem, wiec literal w JSX wychodzil w HTML DWA
-  // RAZY - raz zhoistowany, raz doslownie. Przegladarki deduplikuja preloady,
-  // wiec plik i tak leciał raz, ale duplikat w <head> na kazdej podstronie
-  // wylapuje kazdy audyt. To API emituje dokladnie jeden znacznik.
-  //
-  // Bez `crossOrigin`: zasob jest same-origin, a dodanie atrybutu zrobiloby
-  // z tego zapytanie CORS trafiajace w inny wpis cache niz fetch runtime'u -
-  // i wtedy plik zjechalby naprawde dwa razy.
-  ReactDOM.preload('/scene.splinecode.br', { as: 'fetch', fetchPriority: 'high' });
+  // Preload sceny 3D hero przeniesiony do app/[locale]/page.js: tylko strona
+  // glowna ma hero, a stad 4,9 MB leciało z fetchPriority=high na KAZDEJ
+  // podstronie - takze na landingach kampanii Ads (/cennik-pozycjonowania,
+  // /audyt-seo, ...), gdzie nikt tego pliku nie uzywa (Lighthouse 22.09).
 
   return (
     <html lang={locale}>

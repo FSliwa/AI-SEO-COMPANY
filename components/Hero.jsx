@@ -138,8 +138,49 @@ export default function Hero() {
   const tekstPokazanyRef = useRef(false);
   const pokazTekst = () => { tekstPokazanyRef.current = true; setCopyIn(true); };
 
+  // Uklad telefonu (ponizej 901 px lub proporcje wezsze niz 1:1 - ta sama
+  // bramka, ktora arkusz stylow przelacza na kompozycje mobilna). Tekst jest
+  // tam nad i pod pasem liter, nie na nim, wiec nie musi czekac na wjazd
+  // sceny - a scena (4,9 MB pliku + ~1,5 MB runtime'u) montuje sie dopiero,
+  // gdy strona ma czas wolny. Powod: Lighthouse mobile 22.09 dawal LCP 26-36 s
+  // i wynik 36-46/100, bo elementem LCP jest wlasnie ten tekst, a trzymala go
+  // bramka .is-copy-in do konca animacji sceny albo 9-sekundowy bezpiecznik.
+  // Strona glowna jest landingiem grupy P-Agencja SEO w Google Ads, gdzie
+  // "jakosc strony docelowej" wchodzi do Wyniku Jakosci. Desktop bez zmian.
+  // Start od `false` takze na desktopie: next/dynamic zaczyna sciagac chunk
+  // runtime'u juz przy pierwszym renderze, wiec domyslne `true` uruchomiloby
+  // 1,5 MB na telefonie zanim efekt zdazy je odwolac. Desktop dostaje `true`
+  // w pierwszym efekcie - jedna klatka roznicy.
+  const telefonRef = useRef(false);
+  const [montujScene, setMontujScene] = useState(false);
+  useEffect(() => {
+    const szeroki = window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)').matches;
+    if (szeroki) { setMontujScene(true); return; }
+    telefonRef.current = true;
+    setSceneIn(true);
+    pokazTekst();
+    // Save-Data albo 2G: scena w ogole nie schodzi - zostaje kula CSS.
+    const conn = navigator.connection;
+    if (conn && (conn.saveData || /(^|[^3-5])2g/.test(conn.effectiveType || ''))) return;
+    let idle = 0, timer = 0;
+    const start = () => setMontujScene(true);
+    if ('requestIdleCallback' in window) idle = window.requestIdleCallback(start, { timeout: 6000 });
+    else timer = window.setTimeout(start, 3000);
+    return () => {
+      if (idle) window.cancelIdleCallback(idle);
+      if (timer) window.clearTimeout(timer);
+    };
+  }, []);
+
   const onSceneLoad = (app) => {
     setSceneIn(true);
+
+    // Telefon: tekst stoi od razu poza pasem liter, wiec wjazd moze grac
+    // normalnie - nie ma czego synchronizowac ani czym najezdzac.
+    if (telefonRef.current) {
+      window.__heroSync = { sciezka: 'telefon-bez-czekania', tekstPoMs: 0 };
+      return;
+    }
 
     // Scena zaladowala sie PO bezpieczniku (zimny cache 36 MB potrafi
     // przekroczyc 15 s) - tekst juz stoi, wiec wjazd NIE MOZE grac pod nim.
@@ -237,6 +278,8 @@ export default function Hero() {
   // starts only after hydration finishes and the runtime has initialised — on
   // a scene this size the serialisation costs seconds. Both are best-effort.
   useEffect(() => {
+    // Telefon: rozgrzewka czekalaby na to samo co montaz - patrz bramka wyzej.
+    if (telefonRef.current) return;
     import('@splinetool/react-spline').catch(() => {});
     // Bez `mode: 'cors'` - scena jest teraz same-origin, a wymuszanie CORS
     // rozdzielaloby wpisy cache miedzy tym rozgrzaniem, preloadem z <head>
@@ -366,7 +409,7 @@ export default function Hero() {
           fallback={<div className="hero-en-orb" />}
           onFail={() => { setSceneIn(true); pokazTekst(); }}
         >
-          <Spline scene={SCENE} onLoad={onSceneLoad} />
+          {montujScene ? <Spline scene={SCENE} onLoad={onSceneLoad} /> : <div className="hero-en-orb" />}
         </SceneErrorBoundary>
       </div>
 
