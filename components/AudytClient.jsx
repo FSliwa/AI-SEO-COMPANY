@@ -21,7 +21,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
-              {lang === 'pl' ? 'AUDYT SEO' : 'SEO AUDIT'}
+              {lang === 'pl' ? 'Audyt SEO. Prawda zaboli.' : 'SEO AUDIT'}
             </div>
             
             <h1 style={{ 
@@ -68,7 +68,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Odkryj prawdziwe przyczyny braku widoczności. <span style={{ color: 'var(--color-cta)' }}>Nasz profesjonalny <span style={{ fontWeight: 'bold' }}>audyt SEO</span> weryfikuje ponad 50 krytycznych czynników technicznych, które blokują Twój potencjał w Google</span>.</>
+                ? <>Techniczny <span style={{ fontWeight: 'bold' }}>audyt SEO</span> strony lub sklepu w 3–5 dni roboczych: ponad 50 czynników, każdy błąd z priorytetem i instrukcją naprawy dla programisty. <span style={{ color: 'var(--color-cta)' }}>Bez PDF-a na 90 stron — lista napraw, którą ktoś przeczyta.</span> Wycena w 24 h, bez handlowca.</>
                 : <>Discover the real reasons for your lack of visibility. As top <strong>search engine optimization consultants</strong> providing expert <strong>search engine optimisation consultancy</strong>, <span style={{ color: 'var(--color-cta)' }}>we verify over 50 critical technical factors blocking your Google potential</span>.</>}
             </p>
             
@@ -124,6 +124,12 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.' : 'Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains.'}</p>
             </RevealItem>
           </RevealStagger>
+          {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_audyt_1">
+              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+            </a>
+          </div>
         </div>
       </section>
 

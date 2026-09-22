@@ -1,7 +1,7 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Audit Services | Technical SEO Audit & Keyword Analysis' : 'Audyt SEO | Analiza i Optymalizacja SEO Strony w 14 Dni',
+  title: locale === 'en' ? 'SEO Audit Services | Technical SEO Audit & Keyword Analysis' : 'Audyt SEO | Analiza i Optymalizacja SEO Strony w 5 Dni',
   description: locale === 'en' ? 'SEO audit services by search engine optimization consultants: technical website audit, SEO keyword analysis and a prioritised fix list in plain English.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-audit' : 'https://www.ai-seo-company.pl/audyt-seo',
@@ -26,6 +26,14 @@ const faqAudyt = [
     questionEn: 'What does a professional SEO audit include?',
     answer: 'Audyt SEO obejmuje ponad 50 punktów kontrolnych, w tym analizę Core Web Vitals, indeksację w Google, strukturę nagłówków i adresów URL, profil linków zwrotnych, badanie fraz kluczowych oraz wytyczne UX/CRO.',
     answerEn: 'An SEO audit covers over 50 checkpoints, including Core Web Vitals analysis, Google indexing, heading and URL structure, backlink profile, keyword research, and UX/CRO guidelines.'
+  },
+  {
+    // Intencja „audyt seo cena” (grupa P-Audyt SEO w Google Ads) — do 22.09
+    // strona nie miała ani słowa o koszcie audytu.
+    question: 'Ile kosztuje audyt SEO?',
+    questionEn: 'How much does an SEO audit cost?',
+    answer: 'Audyt SEO jest wliczony w każdy pakiet pozycjonowania (od 1 900 zł netto miesięcznie) — to od niego zaczynamy współpracę. Jako samodzielną usługę wyceniamy go indywidualnie, bo zakres zależy od wielkości serwisu: inny nakład wymaga strona firmowa z 20 podstronami, inny sklep z 5 000 produktów. Wycenę dostajesz w 24 h w dni robocze, bez rozmowy z handlowcem.',
+    answerEn: 'The SEO audit is included in every SEO package (from PLN 1,900 net per month) — it is where we start every engagement. As a standalone service it is quoted individually, because the scope depends on the size of the site: a 20-page company website and a 5,000-product store are different jobs. You get the quote within 24 h on business days, with no sales call.'
   },
   {
     question: 'Ile trwa przygotowanie audytu SEO?',

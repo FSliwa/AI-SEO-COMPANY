@@ -8,6 +8,7 @@ import Contact from '@/components/Contact';
 import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
+import { hash } from '@/lib/anchors';
 
 export default function PricingClient() {
   const lang = useLocale();
@@ -85,7 +86,7 @@ export default function PricingClient() {
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '850px' }}>
             <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'TRANSPARENTNA WYCENA' : 'TRANSPARENT PRICING'}
+              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'Cennik SEO. Jawny. Bez ściemy.' : 'TRANSPARENT PRICING'}
             </div>
             
             <h1 style={{ 
@@ -101,7 +102,7 @@ export default function PricingClient() {
             </h1>
             <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
-                ? 'Poznaj nasz cennik pozycjonowania stron 2026. Brak ukrytych opłat i skomplikowanych umów. Sprawdź pakiety i ceny SEO i płać za mierzalne wyniki w wyszukiwarkach.' 
+                ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc, bez ukrytych opłat — poniżej pełny cennik pozycjonowania stron 2026.' 
                 : 'Discover our SEO Pricing 2026. No hidden fees or complicated contracts. Check our packages and costs and pay for measurable search visibility growth.'}
             </p>
           </Reveal>
@@ -141,6 +142,12 @@ export default function PricingClient() {
               </p>
             </div>
           </Reveal>
+          {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_cennik_1">
+              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+            </a>
+          </div>
         </div>
       </section>
 

@@ -6,6 +6,7 @@ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
+import { readAttribution } from '@/lib/attribution';
 
 // Wartość konwersji przekazywana do Google Ads, żeby licytacja odróżniała
 // zapytanie o Premium od łowcy okazji. To miesięczna wartość kontraktu (USD,
@@ -29,6 +30,9 @@ export default function Contact({ isMainContent = false }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [service, setService] = useState('');
+  // Znacznik czasu montażu formularza: zgłoszenie wysłane w mniej niż 3 s od
+  // wyrenderowania strony to bot (route.js odrzuca je bez wysyłki maila).
+  const [openedAt] = useState(() => Date.now());
   const lang = useLocale();
   const t = useTranslations('contact');
 
@@ -76,11 +80,33 @@ export default function Contact({ isMainContent = false }) {
 
     try {
       const formData = new FormData(e.target);
+      // lead_id spina trzy miejsca: mail Resend, konwersję w Google Ads
+      // (transaction_id) i przyszły import konwersji offline po gclid.
+      const leadId = (typeof crypto !== 'undefined' && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+      const attribution = readAttribution();
       const data = {
         name: formData.get('name'),
         email: formData.get('email'),
         service: formData.get('service'),
         message: formData.get('message'),
+        // Honeypot: pole niewidoczne dla ludzi; boty wypełniają wszystko.
+        website: formData.get('website'),
+        lead_id: leadId,
+        submitted_at: new Date().toISOString(),
+        elapsed_ms: Date.now() - openedAt,
+        page_path: window.location.pathname,
+        gclid: attribution.gclid || '',
+        gbraid: attribution.gbraid || '',
+        wbraid: attribution.wbraid || '',
+        utm_source: attribution.utm_source || '',
+        utm_medium: attribution.utm_medium || '',
+        utm_campaign: attribution.utm_campaign || '',
+        utm_term: attribution.utm_term || '',
+        utm_content: attribution.utm_content || '',
+        landing_path: attribution.landing_path || '',
+        first_seen: attribution.first_seen || '',
       };
 
       const response = await fetch('/api/contact', {
@@ -98,7 +124,18 @@ export default function Contact({ isMainContent = false }) {
       }
 
       setFormSubmitted(true);
-      
+
+      // Zgłoszenie odrzucone po cichu (honeypot / za szybkie): bot widzi
+      // „sukces”, ale konwersji w Google Ads nie ma — inaczej pierwszy bot
+      // byłby pierwszą konwersją główną w koncie.
+      if (result && result.rejected) {
+        track('form_rejected', { reason: result.reason || 'spam' });
+        e.target.reset();
+        setService('');
+        setTimeout(() => setFormSubmitted(false), 8000);
+        return;
+      }
+
       // GA4 Event Tracking
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
         // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
@@ -115,6 +152,7 @@ export default function Contact({ isMainContent = false }) {
         // Zalecane parametry GA4 dla generate_lead (currency + value) – dzięki
         // nim import do Google Ads może licytować pod wartość, nie pod sztukę.
         window.gtag('event', 'generate_lead', {
+          transaction_id: leadId,
           event_category: 'Contact',
           event_label: data.service || 'General Lead',
           plan: data.service || 'none',
@@ -133,6 +171,8 @@ export default function Contact({ isMainContent = false }) {
         if (adsId && adsLabel) {
           window.gtag('event', 'conversion', {
             send_to: `${adsId}/${adsLabel}`,
+            // Deduplikacja i klucz do późniejszej korekty/kwalifikacji leada.
+            transaction_id: leadId,
           });
         }
       }
@@ -224,6 +264,14 @@ export default function Contact({ isMainContent = false }) {
               ></textarea>
             </div>
 
+            {/* Honeypot antyspamowy: pole poza ekranem, bez etykiety, ukryte
+                przed czytnikami; route.js odrzuca zgłoszenia z wypełnionym
+                „website”. Autouzupełnianie wyłączone, żeby przeglądarka nie
+                wpisała tu niczego prawdziwemu użytkownikowi. */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" defaultValue="" />
+            </div>
+
             {/* Art. 13 GDPR information duty: the form collects personal data,
                 so the notice has to appear where the data is entered, not only
                 in a policy the user may never open. */}
@@ -248,6 +296,13 @@ export default function Contact({ isMainContent = false }) {
             <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }} disabled={isSubmitting}>
               {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t('btnSend')}
             </button>
+            {/* „Co dalej” pod przyciskiem — to samo zdanie, które obiecują
+                nagłówki reklam („Bezpłatna wycena w 24 h”, „bez handlowca”). */}
+            <p style={{ fontSize: '0.8rem', lineHeight: 1.5, color: '#6E6E73', margin: '0.75rem 0 0 0', textAlign: 'center' }}>
+              {lang === 'pl'
+                ? 'Odpowiadamy w 24 h w dni robocze. Bez handlowca — odpisuje osoba, która robi SEO.'
+                : 'We reply within 24 h on business days. No sales rep — you hear from the person doing the SEO.'}
+            </p>
             </form>
           </RevealItem>
         </RevealStagger>

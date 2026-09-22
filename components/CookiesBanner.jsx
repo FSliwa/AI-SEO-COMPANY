@@ -65,6 +65,9 @@ export default function CookiesBanner() {
       localStorage.setItem('cookiesConsentState', JSON.stringify(newState));
       localStorage.setItem('cookiesConsent', 'saved');
     } catch (err) {}
+    // Atrybucja leada (lib/attribution.js): po zgodzie marketingowej dane
+    // sesji o kliknięciu z reklamy mogą przejść do ciasteczka 90-dniowego.
+    try { window.dispatchEvent(new CustomEvent('aiseo:consent', { detail: newState })); } catch (err) {}
     setIsVisible(false);
     setShowManageModal(false);
   };

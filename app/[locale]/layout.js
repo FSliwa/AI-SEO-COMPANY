@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import CookiesBanner from '@/components/CookiesBanner';
 import AnalyticsEvents from '@/components/AnalyticsEvents';
+import AttributionCapture from '@/components/AttributionCapture';
 
 // Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
 // w HTML każdej strony z tagiem), więc może być w kodzie; zmienna środowiskowa
@@ -224,6 +225,7 @@ export default async function RootLayout({ children, params }) {
           {children}
           <CookiesBanner />
           <AnalyticsEvents />
+          <AttributionCapture />
         </NextIntlClientProvider>
       </body>
     </html>

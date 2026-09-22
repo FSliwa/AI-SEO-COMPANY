@@ -21,7 +21,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
-              {lang === 'pl' ? 'POZYCJONOWANIE STRON' : 'SEO OPTIMIZATION'}
+              {/* PL: dosłowny hak z przypiętego nagłówka RSA grupy P-Pozycjonowanie w Google Ads (dopasowanie przekazu reklama ↔ strona). */}
+              {lang === 'pl' ? 'Pozycjonowanie stron bez bajek' : 'SEO OPTIMIZATION'}
             </div>
             
             <h1 style={{
@@ -68,7 +69,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Zbuduj trwałą przewagę konkurencyjną. Łączymy zaawansowane audyty techniczne i architekturę treści dopasowaną pod nowoczesną wyszukiwarkę. Nasza usługa to: <span style={{ fontWeight: 'bold' }} style={{ color: 'var(--color-cta)' }}>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</span>.</>
+                ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B — rozliczamy się z leadów i sprzedaży, nie z samych pozycji.</>
                 : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>SEO optimization service</strong> is unparalleled: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
             
@@ -136,6 +137,12 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               </p>
             </RevealItem>
           </RevealStagger>
+          {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_pozycjonowanie_1">
+              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+            </a>
+          </div>
         </div>
       </section>
 
@@ -178,6 +185,12 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 </p>
               </RevealItem>
             </RevealStagger>
+            {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_pozycjonowanie_2">
+                {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+              </a>
+            </div>
           </div>
         </section>
 

@@ -175,7 +175,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
             <Reveal>
             <div style={{ fontSize: '0.85rem', color: '#86868B', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>Search Engine Optimization - Local SEO Warsaw</div>
               <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
-                {lang === 'pl' ? 'MARKETING LOKALNY B2B & B2C' : 'LOCAL B2B & B2C MARKETING'}
+                {lang === 'pl' ? 'SEO Warszawa. Konkurent wyżej?' : 'LOCAL B2B & B2C MARKETING'}
               </div>
               
               <h1 style={{ 
@@ -222,7 +222,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 fontWeight: 400
               }}>
                 {lang === 'pl' 
-                  ? <>Wykorzystaj potęgę wyszukiwań lokalnych. Skuteczne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> pozwala skalować firmy, łącząc <span style={{ color: 'var(--color-cta)' }}>zaawansowaną analitykę ze sprawdzonymi strategiami</span>. Zdominuj swój rynek!</>
+                  ? <>Pozycjonowanie stron w Warszawie od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc. Wizytówka Google, Mapy i wyniki organiczne dla firm z Warszawy — skuteczne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> bez wieloletnich umów.</>
                   : <>Harness the power of local searches. Effective optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
               </p>
               
@@ -256,7 +256,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
               <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-                {lang === 'pl' ? 'Dlaczego pozycjonowanie lokalne ma znaczenie?' : 'Why Local SEO & Search Engine Optimization Matters'}
+                {lang === 'pl' ? 'Pozycjonowanie stron w Warszawie — dlaczego lokalnie?' : 'Why Local SEO & Search Engine Optimization Matters'}
               </h2>
               <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
                 {lang === 'pl'
@@ -284,6 +284,12 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Ruch z Map Google cechuje się jednym z najwyższych wskaźników konwersji ze wszystkich cyfrowych kanałów marketingowych.' : 'Traffic from Google Maps is characterized by one of the highest conversion rates of all digital marketing channels.'}</p>
               </RevealItem>
             </RevealStagger>
+            {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <a href={hash('kontakt', locale)} className="btn btn-primary" data-cta="service_mid_warszawa_1">
+                {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+              </a>
+            </div>
           </div>
         </section>
 
@@ -343,6 +349,12 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   : 'If you serve the whole city and have no walk-in location, we set the profile up as a Service Area Business covering every district — then visibility is won with service area and reviews rather than with an address.'}
               </p>
             </Reveal>
+            {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <a href={hash('kontakt', locale)} className="btn btn-primary" data-cta="service_mid_warszawa_2">
+                {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+              </a>
+            </div>
           </div>
         </section>
 
@@ -371,7 +383,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                     {lang === 'pl' ? 'Najlepsze Lokalne SEO' : 'Leading local SEO'}
                   </h3>
                   <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Gwarantujemy, że Twoja firma zajmie wysokie pozycje w mapach i wynikach organicznych. Skorzystaj z naszych dedykowanych usług lokalnego SEO dopasowanych do Twojego obszaru.' : 'We ensure your business ranks highly in map packs and organic results. Benefit from our dedicated local SEO services tailored for your area.'}
+                    {lang === 'pl' ? 'Nie obiecujemy pozycji — Google nas o zdanie nie pyta. Obiecujemy plan, robotę i comiesięczny raport z map i wyników organicznych. Dedykowane usługi lokalnego SEO dopasowane do Twojego obszaru.' : 'We do not promise rankings — Google does not ask our opinion. We promise a plan, the work and a monthly report on map packs and organic results. Dedicated local SEO services tailored to your area.'}
                   </p>
                 </RevealItem>
               </RevealStagger>
