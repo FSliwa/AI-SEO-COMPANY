@@ -29,8 +29,8 @@ export default function PricingClient() {
     {
       question: 'Czy muszę podpisywać umowę na dłuższy okres?',
       questionEn: 'Do I have to sign a long-term contract?',
-      answer: 'Nie. Pracujemy w modelu elastycznej subskrypcji miesięcznej z możliwością rezygnacji w każdej chwili. Umowy wieloletnie z karami za wcześniejsze zakończenie uznajemy za sposób na zatrzymanie klienta, którego nie da się zatrzymać wynikami.',
-      answerEn: 'No. We work on a flexible monthly subscription that you can cancel at any time. Multi-year contracts with early-termination penalties are, in our view, a way of holding on to a client that results alone cannot hold.'
+      answer: 'Nie w pakietach SEO Standard i SEO Premium: pracujemy w modelu elastycznej subskrypcji miesięcznej z możliwością rezygnacji w każdej chwili. Wyjątkiem jest Booster Pack z nową stroną WWW — tam umowa trwa minimum 3 miesiące. Umowy wieloletnie z karami za wcześniejsze zakończenie uznajemy za sposób na zatrzymanie klienta, którego nie da się zatrzymać wynikami.',
+      answerEn: 'Not for SEO Standard and SEO Premium: we work on a flexible monthly subscription that you can cancel at any time. The exception is the Booster Pack with a new website, which has a minimum 3-month contract. Multi-year contracts with early-termination penalties are, in our view, a way of holding on to a client that results alone cannot hold.'
     },
     {
       question: 'Czy audyt SEO jest wliczony w cenę pakietu?',
@@ -65,7 +65,7 @@ export default function PricingClient() {
     {
       question: 'Kiedy zobaczę pierwsze efekty pozycjonowania?',
       questionEn: 'When will I see the first SEO results?',
-      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. W standardowym podejściu agencji SEO stabilne pozycje na frazach komercyjnych to zakres 3–6 miesięcy, ale my jesteśmy w stanie osiągnąć ten efekt już w 2–3 miesiące (przy nowej domenie bez profilu linków czas ten może być nieco dłuższy). Pamiętaj jednak: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',
+      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. W podejściu każdej rzetelnej agencji SEO stabilne pozycje na frazach komercyjnych to zakres 3–6 miesięcy, a przy nowej domenie bez profilu linków dłużej. Pamiętaj jednak: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',
       answerEn: 'The first visibility movements usually appear after 4–8 weeks, once Google has re-crawled the technical fixes and new content. Stable positions on commercial phrases are a 3–6 month horizon, and longer for a new domain with no link profile. Anyone promising a Top 3 in a month is selling you risk, not a service.'
     },
     {
@@ -82,7 +82,7 @@ export default function PricingClient() {
       <Breadcrumbs pl="Cennik Pozycjonowania" en="SEO Pricing" />
       
       {/* Hero Banner */}
-      <section style={{ paddingTop: '160px', paddingBottom: '40px', position: 'relative' }}>
+      <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px', position: 'relative' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '850px' }}>
             <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
@@ -90,7 +90,7 @@ export default function PricingClient() {
             </div>
             
             <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4.2rem)', 
+              fontSize: 'clamp(2rem, 5vw, 4.2rem)', 
               fontWeight: 800, 
               lineHeight: 1.15, 
               color: 'var(--color-text-dark)', 
@@ -102,12 +102,26 @@ export default function PricingClient() {
             </h1>
             <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
-                ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc, bez ukrytych opłat — poniżej pełny cennik pozycjonowania stron 2026.' 
+                ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc w SEO Standard i Premium (Booster Pack: min. 3 miesiące), bez ukrytych opłat — poniżej pełny cennik pozycjonowania stron 2026.' 
                 : 'Discover our SEO Pricing 2026. No hidden fees or complicated contracts. Check our packages and costs and pay for measurable search visibility growth.'}
             </p>
+            {/* Przycisk i telefon w hero: 59% kliknięć z Google Ads trafia na ten landing,
+                a pierwszy przycisk był wcześniej na 4. ekranie telefonu (pomiar 24.09.2026). */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <a href={hash('kontakt', lang)} className="hero-btn-primary" data-cta="service_hero_cennik">
+                {lang === 'pl' ? 'Zamów wycenę — odpowiedź w 24 h' : 'Get a quote — reply within 24 h'}
+              </a>
+              <a href="tel:+48518815055" className="hero-btn-secondary" data-cta="service_hero_cennik_tel">
+                {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>
+
+      {/* Cennik zaraz pod hero: wcześniej karty pakietów były dopiero na 4,4
+          ekranu telefonu, pod blokiem tekstu. Tekst został, tylko niżej. */}
+      <Pricing isMainContent={true} />
 
       {/* SEO Content Section */}
       <section style={{ padding: '40px 0 80px 0' }}>
@@ -124,8 +138,8 @@ export default function PricingClient() {
               </p>
               <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' }}>
                 {lang === 'pl'
-                  ? 'Jako nowoczesna agencja marketingowa i SEO, nie ograniczamy się tylko do dodawania linków. Każdy z poniższych pakietów zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację wskaźników Core Web Vitals.'
-                  : 'As a modern marketing and SEO agency, we don\'t just build links. Each of the packages below includes a professional technical audit, unique content creation, B2B link building strategy, and Core Web Vitals optimization.'}
+                  ? 'Jako nowoczesna agencja marketingowa i SEO, nie ograniczamy się tylko do dodawania linków. Każdy z naszych pakietów zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację wskaźników Core Web Vitals.'
+                  : 'As a modern marketing and SEO agency, we don\'t just build links. Each of our packages includes a professional technical audit, unique content creation, B2B link building strategy, and Core Web Vitals optimization.'}
               </p>
               <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
                 {lang === 'pl' ? 'Dlaczego transparentne pakiety?' : 'Why transparent packages?'}
@@ -151,8 +165,6 @@ export default function PricingClient() {
         </div>
       </section>
 
-      <Pricing isMainContent={true} />
-      
       <AppleFaq faqData={faqData} title={lang === 'pl' ? "Częste pytania o wycenę" : "Frequently Asked Questions about Pricing"} />
       
       <Contact />

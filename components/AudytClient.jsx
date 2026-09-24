@@ -77,8 +77,8 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
                 {lang === 'pl' ? 'Zamów audyt strony' : 'Order website audit'} 
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href={lang === 'pl' ? '/#portfolio' : '/en#portfolio'} className="hero-btn-secondary">
-                {lang === 'pl' ? 'Zobacz case studies' : 'View case studies'}
+              <a href="tel:+48518815055" className="hero-btn-secondary" data-cta="service_hero_audit_tel">
+                {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
               </a>
             </div>
           </Reveal>
@@ -135,7 +135,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
 
       {/* Portfolio Section */}
       <SubpagePortfolio 
-        title={lang === 'pl' ? "Odkryj efekty naszych audytów" : "Discover our audit results"} 
+        title={lang === 'pl' ? "Co zwykle wykrywamy w audycie SEO" : "What an SEO audit usually uncovers"} 
         subtitle={lang === 'pl' ? "Najczęstsze błędy techniczne wykrywane podczas audytów oraz metody ich eliminacji" : "Most common technical errors detected during audits and how we eliminate them"}
         cases={portfolioCases} 
       />

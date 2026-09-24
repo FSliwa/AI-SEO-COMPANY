@@ -202,11 +202,11 @@ const carouselItems = [
   {
     number: '02 / STRATEGIA',
     numberEn: '02 / STRATEGY',
-    metric: 'TOP 3',
+    metric: 'ROI',
     title: 'Kluczowe frazy branżowe',
     titleEn: 'Key Industry Phrases',
-    description: 'Wprowadzamy Twoje flagowe produkty i usługi na podium wyników organicznych wyszukiwarki Google.',
-    descriptionEn: 'We bring your flagship products and services to the podium of organic Google search results.',
+    description: 'Budujemy widoczność flagowych produktów i usług na frazach, które sprzedają. Postęp widzisz co miesiąc w raporcie z wyników organicznych wyszukiwarki Google.',
+    descriptionEn: 'We build visibility for your flagship products and services on the phrases that sell. You see the progress every month in a report on organic Google search results.',
     width: 'min(75vw, 370px)'
   },
   {

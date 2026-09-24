@@ -83,10 +83,7 @@ const portfolioCases = [
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',
     metricLabel: 'Spójność NAP',
-    metricLabelEn: 'NAP Consistency',
-    metric2: 'Top 3',
-    metric2Label: 'Local Pack',
-    metric2LabelEn: 'Local Pack'
+    metricLabelEn: 'NAP Consistency'
   },
   {
     tag: 'OPINIE KLIENTÓW',
@@ -225,14 +222,20 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   ? <>Pozycjonowanie stron w Warszawie od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc. Wizytówka Google, Mapy i wyniki organiczne dla firm z Warszawy — skuteczne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> bez wieloletnich umów.</>
                   : <>Harness the power of local searches. Effective optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
               </p>
+              {/* Obietnice z nagłówków RSA w pierwszym ekranie. */}
+              <p style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: '#6E6E73' }}>
+                {lang === 'pl'
+                  ? '✓ Wizytówka Google w cenie · ✓ Raport co miesiąc · ✓ Odpowiedź w 24 h w dni robocze'
+                  : '✓ Google Business Profile included · ✓ Monthly report · ✓ Reply within 24 h on business days'}
+              </p>
               
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href={hash('kontakt', locale)} className="hero-btn-primary">
+                <a href={hash('kontakt', locale)} className="hero-btn-primary" data-cta="service_hero_warszawa">
                   {lang === 'pl' ? 'Sprawdź Swój Potencjał' : 'Check Your Potential'} 
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
-                <a href={lang === 'pl' ? '/#portfolio' : '/en#portfolio'} className="hero-btn-secondary">
-                  {lang === 'pl' ? 'Zobacz case studies' : 'View case studies'}
+                <a href="tel:+48518815055" className="hero-btn-secondary" data-cta="service_hero_warszawa_tel">
+                  {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
                 </a>
               </div>
             </Reveal>
@@ -394,8 +397,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <SubpagePortfolio
           title={lang === 'pl' ? 'Sektor Strategii Lokalnych' : 'Local Strategy Sector'}
           subtitle={lang === 'pl'
-            ? 'Poznaj kluczowe obszary, dzięki którym wprowadzamy firmy na szczyt wyników w Warszawie'
-            : 'The key areas of local search engine optimization we use to take companies to the top of the Warsaw results'}
+            ? 'Poznaj kluczowe obszary, w których budujemy widoczność firm w wynikach w Warszawie — przykładowe scenariusze, ilustracja metody, nie wyniki konkretnych klientów'
+            : 'The key areas of local search engine optimization we use to build companies\' visibility in the Warsaw results — illustrative scenarios of the method, not results of specific clients'}
           cases={portfolioCases}
           layout="vertical"
         />

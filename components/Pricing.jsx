@@ -82,7 +82,7 @@ export default function Pricing({ isMainContent = false }) {
                 <>
                   <li>Full technical & content SEO positioning</li>
                   <li>Enhanced mobile UX (mobile CTR optimization)</li>
-                  <li>Google Maps TOP 3 ranking management</li>
+                  <li>Google Business Profile management (fighting for the Maps TOP 3)</li>
                   <li>High-authority link building & expert content</li>
                   <li>Cancel anytime flexible policy</li>
                 </>
@@ -98,7 +98,7 @@ export default function Pricing({ isMainContent = false }) {
               <h3>{t('boosterTitle')}</h3>
               <p className="pricing-desc">{t('boosterDesc')}</p>
               <div className="pricing-price">
-                <div className="price-label" style={{ color: 'var(--color-cta)', fontWeight: '700' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące' : 'Min. 3-month contract'}</div>
+                <div className="price-label" style={{ color: 'var(--color-cta)', fontWeight: '700' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące (Standard i Premium: umowa miesięczna)' : 'Min. 3-month contract (Standard and Premium: monthly)'}</div>
                 <div className="price-amount"><span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
               </div>
             </div>

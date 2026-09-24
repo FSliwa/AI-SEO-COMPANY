@@ -223,7 +223,7 @@ export default function Contact({ isMainContent = false }) {
               <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Telefon:' : 'Phone:'}</span> <a href="tel:+48518815055" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
               <li><span style={{ fontWeight: 'bold' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
               <li><span style={{ fontWeight: 'bold' }}>NIP:</span> 5253090237</li>
-              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</span> {lang === 'pl' ? 'Zazwyczaj < 2 godziny w godz. 9–18' : 'Usually within 2 hours (9 am–6 pm CET), otherwise next business morning'}</li>
+              <li><span style={{ fontWeight: 'bold' }}>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</span> {lang === 'pl' ? 'Do 24 h w dni robocze, zwykle szybciej' : 'Within 24 h on business days, usually sooner'}</li>
             </ul>
           </RevealItem>
 
@@ -231,7 +231,7 @@ export default function Contact({ isMainContent = false }) {
             <form className="contact-form" method="post" onSubmit={handleSubmit}>
             {formSubmitted && (
               <div style={{ background: '#EFF8E6', color: '#639922', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
-                {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Odpowiemy w ciągu 2 godzin w godzinach pracy (9–18).' : '✓ Thank you! Your request has been received. We reply within 2 hours during business hours (9 am–6 pm CET), otherwise the next business morning.'}
+                {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Odpowiemy w ciągu 24 h w dni robocze, zwykle szybciej.' : '✓ Thank you! Your request has been received. We reply within 24 h on business days, usually sooner.'}
               </div>
             )}
             

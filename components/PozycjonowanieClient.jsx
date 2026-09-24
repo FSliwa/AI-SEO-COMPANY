@@ -69,8 +69,16 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B — rozliczamy się z leadów i sprzedaży, nie z samych pozycji.</>
+                ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B — raportujemy leady i sprzedaż, nie tylko pozycje.</>
                 : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>SEO optimization service</strong> is unparalleled: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
+            </p>
+
+            {/* Obietnice z nagłówków RSA w pierwszym ekranie — wcześniej
+                „Wizytówka Google w cenie” była dopiero na 7,8 ekranu telefonu. */}
+            <p style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: '#6E6E73' }}>
+              {lang === 'pl'
+                ? '✓ Wizytówka Google w cenie · ✓ Raport co miesiąc · ✓ Odpowiedź w 24 h w dni robocze'
+                : '✓ Google Business Profile included · ✓ Monthly report · ✓ Reply within 24 h on business days'}
             </p>
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
@@ -78,8 +86,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 {lang === 'pl' ? 'Rozpocznij współpracę' : 'Start collaboration'} 
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
-              <a href={lang === 'pl' ? '/#portfolio' : '/en#portfolio'} className="hero-btn-secondary">
-                {lang === 'pl' ? 'Zobacz case studies' : 'View case studies'}
+              <a href="tel:+48518815055" className="hero-btn-secondary" data-cta="service_hero_seo_tel">
+                {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
               </a>
             </div>
           </Reveal>
@@ -148,7 +156,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <SubpagePortfolio 
         title={lang === 'pl' ? "Scenariusze Wzrostu i Wyniki" : "Growth Scenarios and Results"} 
-        subtitle={lang === 'pl' ? "Sprawdzone wzorce skalowania widoczności i konwersji w modelu AI SEO" : "Proven patterns of visibility and conversion scaling in the AI Optimization model"}
+        subtitle={lang === 'pl' ? "Przykładowe scenariusze skalowania widoczności i konwersji w modelu AI SEO — ilustracja metody, nie wyniki konkretnych klientów" : "Illustrative scenarios of visibility and conversion scaling in the AI Optimization model — how the method works, not results of specific clients"}
         cases={portfolioCases} 
         layout="vertical"
       />

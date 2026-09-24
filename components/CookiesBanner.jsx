@@ -10,6 +10,11 @@ export default function CookiesBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [showManageModal, setShowManageModal] = useState(false);
   const [mounted, setMounted] = useState(false);
+  // Na telefonie pełny baner zajmował 335 z 823 px (41% ekranu) i zasłaniał
+  // dokładnie to, co obiecują reklamy: cenę, „umowę na miesiąc” i przycisk
+  // w hero. Wersja kompaktowa: jedno zdanie, dwa równorzędne przyciski
+  // w jednym rzędzie, „Dostosuj” jako link w tekście.
+  const [compact, setCompact] = useState(false);
   const lang = useLocale();
   const t = useTranslations('cookies');
 
@@ -31,6 +36,14 @@ export default function CookiesBanner() {
       ad_personalization: marketing ? 'granted' : 'denied'
     });
   };
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 600px)');
+    const sync = () => setCompact(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -128,25 +141,40 @@ export default function CookiesBanner() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'fixed',
-              bottom: '1.75rem',
+              bottom: compact ? '0.75rem' : '1.75rem',
               left: '50%',
-              width: '92%',
+              width: compact ? 'calc(100% - 1.5rem)' : '92%',
               maxWidth: '680px',
               background: 'rgba(15, 23, 42, 0.95)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               color: '#FFF',
-              padding: '1.5rem',
-              borderRadius: '24px',
+              padding: compact ? '0.8rem 0.9rem' : '1.5rem',
+              borderRadius: compact ? '16px' : '24px',
               boxShadow: '0 25px 60px rgba(0, 0, 0, 0.4)',
               border: '1px solid rgba(255, 255, 255, 0.15)',
               zIndex: 100000,
               display: 'flex',
               flexDirection: 'column',
-              gap: '1.25rem',
+              gap: compact ? '0.6rem' : '1.25rem',
               fontFamily: "'Inter', sans-serif"
             }}
           >
+            {compact ? (
+              <p style={{ margin: 0, fontSize: '0.8rem', lineHeight: 1.45, color: '#E2E8F0', fontWeight: 400 }}>
+                {t('textShort')}{' '}
+                <Link href="/cookies" style={{ color: '#38BDF8', textDecoration: 'underline', fontWeight: 500 }}>
+                  {t('policy')}
+                </Link>
+                {' · '}
+                <button
+                  onClick={() => setShowManageModal(true)}
+                  style={{ background: 'none', border: 'none', padding: 0, color: '#94A3B8', textDecoration: 'underline', font: 'inherit', cursor: 'pointer' }}
+                >
+                  {t('manage')}
+                </button>
+              </p>
+            ) : (
             <div>
               <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', marginBottom: '0.35rem' }}>
                 {t('title')}
@@ -158,20 +186,22 @@ export default function CookiesBanner() {
                 </Link>
               </p>
             </div>
+            )}
 
             {/* Equal Prominence Action Buttons (Strict EU GDPR Requirement) */}
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: compact ? '0.5rem' : '0.75rem', flexWrap: compact ? 'nowrap' : 'wrap', alignItems: compact ? 'stretch' : 'center' }}>
               <button 
                 onClick={handleDeclineOptional}
                 style={{
-                  flex: '1 1 140px',
+                  flex: compact ? '1 1 0' : '1 1 140px',
                   background: 'rgba(255, 255, 255, 0.1)',
                   border: '1px solid rgba(255, 255, 255, 0.25)',
                   color: '#FFFFFF',
-                  padding: '0.65rem 1.1rem',
+                  padding: compact ? '0.55rem 0.5rem' : '0.65rem 1.1rem',
+                  minHeight: compact ? '44px' : undefined,
                   borderRadius: '12px',
                   cursor: 'pointer',
-                  fontSize: '0.88rem',
+                  fontSize: compact ? '0.82rem' : '0.88rem',
                   fontWeight: 600,
                   textAlign: 'center',
                   transition: 'all 0.25s ease'
@@ -189,14 +219,15 @@ export default function CookiesBanner() {
               <button 
                 onClick={handleAcceptAll}
                 style={{
-                  flex: '1 1 140px',
+                  flex: compact ? '1 1 0' : '1 1 140px',
                   background: 'var(--color-primary)',
                   border: '1px solid var(--color-primary)',
                   color: '#FFFFFF',
-                  padding: '0.65rem 1.1rem',
+                  padding: compact ? '0.55rem 0.5rem' : '0.65rem 1.1rem',
+                  minHeight: compact ? '44px' : undefined,
                   borderRadius: '12px',
                   cursor: 'pointer',
-                  fontSize: '0.88rem',
+                  fontSize: compact ? '0.82rem' : '0.88rem',
                   fontWeight: 600,
                   textAlign: 'center',
                   boxShadow: '0 4px 16px rgba(24, 95, 165, 0.35)',
@@ -212,6 +243,7 @@ export default function CookiesBanner() {
                 {t('acceptAll')}
               </button>
 
+              {!compact && (
               <button
                 onClick={() => setShowManageModal(true)}
                 style={{
@@ -230,6 +262,7 @@ export default function CookiesBanner() {
               >
                 {t('manage')}
               </button>
+              )}
             </div>
           </motion.div>
         )}

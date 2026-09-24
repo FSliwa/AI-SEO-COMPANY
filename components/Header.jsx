@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '../i18n/routing';
 import { track } from '@/lib/track';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
-import { hash, homeHash } from '@/lib/anchors';
+import { hash, homeHash, sectionId } from '@/lib/anchors';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,6 +16,18 @@ export default function Header() {
   const t = useTranslations('nav');
   const pathname = usePathname();
   const router = useRouter();
+  // Podstrony z własnym formularzem (landingi Google Ads) wysyłały „Kontakt”
+  // i „Darmowa Wycena” na stronę główną: 7 MB sceny 3D zamiast formularza,
+  // który był kilka ekranów niżej. Gdy formularz jest na tej stronie, link
+  // przewija do niego; bez JS i na stronach bez formularza zostaje /#kontakt.
+  const goToContact = (e) => {
+    const local = document.getElementById(sectionId('kontakt', lang));
+    closeMenu();
+    if (!local) return;
+    e.preventDefault();
+    local.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try { window.history.replaceState(null, '', hash('kontakt', lang)); } catch (err) {}
+  };
 
   const toggleLang = (newLocale) => {
     if (lang === newLocale) return;
@@ -268,10 +280,10 @@ export default function Header() {
                 <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
               </li>
               <li style={{ '--delay': '0.6s' }}>
-                <Link href={homeHash('kontakt', lang)} onClick={closeMenu} data-cta="menu">{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
+                <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
               </li>
               <li style={{ '--delay': '0.65s' }}>
-                <Link href={homeHash('kontakt', lang)} onClick={closeMenu} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
+                <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
               </li>
             </ul>
 

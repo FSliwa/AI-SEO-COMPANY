@@ -115,6 +115,7 @@
   "cookies": {
     "title": "Cookie Consent (EU GDPR)",
     "text": "We use cookies and similar technologies to ensure core website functionality, analyze site traffic (Google Analytics), and optimize marketing campaigns in compliance with EU ePrivacy and GDPR directives.",
+    "textShort": "With your consent: cookies for analytics (Google Analytics) and ad measurement and personalisation (Google Ads).",
     "policy": "Privacy & Cookie Policy",
     "acceptAll": "Accept All",
     "declineAll": "Reject Optional",

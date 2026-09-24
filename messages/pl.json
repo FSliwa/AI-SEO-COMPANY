@@ -115,6 +115,7 @@
   "cookies": {
     "title": "Zgoda na pliki cookies (RODO / GDPR)",
     "text": "Używamy plików cookies i podobnych technologii w celu zapewnienia prawidłowego działania serwisu, analizy ruchu (Google Analytics) oraz optymalizacji kampanii marketingowych zgodnie z Dyrektywą ePrivacy i RODO (GDPR).",
+    "textShort": "Za Twoją zgodą: cookies do analityki (Google Analytics) oraz pomiaru i personalizacji reklam (Google Ads).",
     "policy": "Polityka Prywatności i Cookies",
     "acceptAll": "Zaakceptuj wszystkie",
     "declineAll": "Odrzuć opcjonalne",
