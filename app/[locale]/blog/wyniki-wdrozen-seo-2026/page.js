@@ -156,7 +156,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                 <li><strong>Wyświetlenia poprzedzają kliknięcia.</strong> Krzywa widoczności zawsze idzie w kolejności: indeksacja → wyświetlenia na dalekich pozycjach → pozycje → kliknięcia. Domena w fazie wyświetleń (jak ASE-BOT) nie jest porażką — jest w połowie procesu.</li>
                 <li><strong>Dane wygrywają z deklaracjami.</strong> Wybierając wykonawcę, proś o zrzuty z GSC z podanym oknem pomiaru i punktem startowym — dokładnie w tym formacie, w którym my publikujemy swoje.</li>
               </ul>
-              <p>Jeśli chcesz zobaczyć, jak te same metody wyglądałyby na Twojej domenie, zacznij od <Link href="/audyt-seo">audytu SEO</Link> albo sprawdź <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link> — na zapytania odpowiadamy zwykle w mniej niż dwie godziny.</p>
+              <p>Jeśli chcesz zobaczyć, jak te same metody wyglądałyby na Twojej domenie, zacznij od <Link href="/audyt-seo">audytu SEO</Link> albo sprawdź <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link> — na zapytania odpowiadamy do 24 h w dni robocze.</p>
 
               <h2 id="zrodla">Źródła</h2>
               <ul>
@@ -177,7 +177,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                 locale={locale}
                 currentSlug="/blog/wyniki-wdrozen-seo-2026"
                 customCtaTitlePl="Chcesz takie liczby u siebie?"
-                customCtaTextPl="Zamów bezpłatną analizę SEO swojej strony. Odpowiadamy w mniej niż dwie godziny, wstępną propozycję wysyłamy w ciągu doby."
+                customCtaTextPl="Zamów bezpłatną analizę SEO swojej strony. Odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze."
               />
             </div>
           </Reveal>

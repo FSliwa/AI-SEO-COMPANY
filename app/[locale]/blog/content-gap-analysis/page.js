@@ -472,7 +472,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
 
               <p>AI SEO COMPANY handles the full cycle: <Link href="/audyt-seo">SEO audit</Link> and content inventory, gap classification and prioritization, brief writing with AI-extraction requirements built in, execution support, and a reporting dashboard that shows ranking movement and conversions week by week. Engagements run either as a one-off project — audit plus roadmap delivery, quoted per scope — or inside a monthly subscription that covers ongoing gap monitoring and content execution alongside the rest of the SEO work. A content gap analysis works as a standalone project because its output is a roadmap your own team can execute — that is what separates it from a UX audit, which we run inside a package precisely because its findings need implementation to mean anything. Retainer clients can schedule a full re-run each quarter as part of the scope, so the roadmap stays current as competitors publish.</p>
 
-              <p>To start, book a discovery call. We reply to enquiries in under two hours and send an initial proposal within 24 hours; a scoped audit proposal follows the call, once we have seen your Search Console data and agreed the cluster scope, and you get a prioritized roadmap in week four. Visit the <Link href="/pozycjonowanie-stron-internetowych">SEO services page</Link> to see what&apos;s included at each engagement level.</p>
+              <p>To start, book a discovery call. We reply to enquiries and send an initial proposal within 24 h on business days; a scoped audit proposal follows the call, once we have seen your Search Console data and agreed the cluster scope, and you get a prioritized roadmap in week four. Visit the <Link href="/pozycjonowanie-stron-internetowych">SEO services page</Link> to see what&apos;s included at each engagement level.</p>
 
               <h2 id="frequently-asked-questions">Frequently asked questions</h2>
 
@@ -832,7 +832,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <p>Wyniki zależą od punktu wyjścia, konkurencyjności branży i tego, ile z backlogu faktycznie powstanie — <strong>żadna agencja nie zagwarantuje pozycji ani przychodu</strong>. Liczby z zakończonych projektów publikujemy w sekcji realizacji na <Link href="/">stronie głównej</Link>.</p>
 
-              <p>Jeśli chcesz zacząć od diagnozy, a nie od umowy, zamów bezpłatną analizę SEO i potencjału obecnej marki — pokazuje, gdzie leżą największe luki, zanim ustalimy zakres. Na zapytanie odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję przygotowujemy w ciągu doby. Zakres każdego pakietu opisuje <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link>, a brief możesz przesłać przez <a href={homeHash('kontakt', locale)}>formularz kontaktowy</a>.</p>
+              <p>Jeśli chcesz zacząć od diagnozy, a nie od umowy, zamów bezpłatną analizę SEO i potencjału obecnej marki — pokazuje, gdzie leżą największe luki, zanim ustalimy zakres. Na zapytanie odpowiadamy do 24 h w dni robocze, zwykle szybciej, a wstępną propozycję przygotowujemy w ciągu doby. Zakres każdego pakietu opisuje <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link>, a brief możesz przesłać przez <a href={homeHash('kontakt', locale)}>formularz kontaktowy</a>.</p>
 
               <h2 id="najczestsze-pytania">Najczęstsze pytania</h2>
 

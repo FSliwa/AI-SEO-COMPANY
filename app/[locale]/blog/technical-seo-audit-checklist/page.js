@@ -325,7 +325,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
 
               <p>The biggest waste we see is teams rewriting templates for Core Web Vitals while a noindex tag or a robots.txt rule is still sitting there removing the page from the index. Discovery first. Speed matters once Google can see the page.</p>
               <p>Audits run inside a monthly subscription alongside the rest of the SEO work; in exceptional cases we scope one as a standalone project, quoted per scope. You can see what each engagement level includes on the <Link href="/pozycjonowanie-stron-internetowych">SEO services page</Link>, where completed projects are published as growth models with the traffic and revenue changes behind them. Results depend on your starting position and how much of the fix list actually ships — no agency can guarantee an outcome.</p>
-              <p>To start, request a scoped <Link href="/audyt-seo">SEO audit</Link>. We reply to enquiries in under two hours and send an initial proposal within 24 hours.</p>
+              <p>To start, request a scoped <Link href="/audyt-seo">SEO audit</Link>. We reply to enquiries and send an initial proposal within 24 h on business days.</p>
 
               <h2 id="faq">Frequently Asked Questions</h2>
 
@@ -379,7 +379,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
                 locale={locale}
                 currentSlug="/blog/technical-seo-audit-checklist"
                 customCtaTitleEn="Need a technical audit?"
-                customCtaTextEn="Request a scoped SEO audit. We reply to enquiries in under two hours and send an initial proposal within 24 hours."
+                customCtaTextEn="Request a scoped SEO audit. We reply to enquiries and send an initial proposal within 24 h on business days."
               />
             </div>
           </Reveal>
@@ -678,7 +678,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               <p><Link href="/audyt-seo">Audyt SEO</Link> obejmuje ponad 50 punktów kontrolnych w trzech obszarach: technikalia z Core Web Vitals, treści z semantyką oraz profil linków. Do pracy potrzebujemy dostępów do Search Console i Analytics; wyniki dostajesz w 3–5 dni roboczych jako raport z listą błędów, oceną wpływu na widoczność, priorytetyzacją według stosunku efektu do pracochłonności i rekomendacjami w formie gotowej do przekazania deweloperowi. Po przekazaniu omawiamy go na konsultacji.</p>
               <p>Audyt prowadzimy w ramach abonamentu, obok pozostałych prac SEO; w wyjątkowych sytuacjach wyceniamy go jako samodzielne zlecenie, po uzgodnieniu zakresu przed startem. Wyniki zależą od punktu startowego i od tego, ile z listy napraw faktycznie zostanie wdrożone — żadna agencja nie może zagwarantować rezultatu.</p>
               <p>Największe marnotrawstwo, jakie widujemy, to zespoły przepisujące szablony pod Core Web Vitals, podczas gdy tag noindex albo reguła w robots.txt dalej wycina stronę z indeksu. Najpierw odkrywanie. Szybkość ma znaczenie dopiero wtedy, gdy Google stronę widzi.</p>
-              <p>Jeśli chcesz zacząć od diagnozy, zamów bezpłatną analizę SEO i potencjału obecnej marki przez <Link href={homeHash('kontakt', locale)}>formularz kontaktowy</Link> — na zapytania odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję wysyłamy w ciągu doby.</p>
+              <p>Jeśli chcesz zacząć od diagnozy, zamów bezpłatną analizę SEO i potencjału obecnej marki przez <Link href={homeHash('kontakt', locale)}>formularz kontaktowy</Link> — na zapytania odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze.</p>
 
               <h2 id="faq">Najczęściej zadawane pytania</h2>
 
@@ -731,7 +731,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
                 locale={locale}
                 currentSlug="/blog/technical-seo-audit-checklist"
                 customCtaTitlePl="Potrzebujesz audytu technicznego?"
-                customCtaTextPl="Zamów bezpłatną analizę SEO obecnej strony. Na zapytania odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję wysyłamy w ciągu doby."
+                customCtaTextPl="Zamów bezpłatną analizę SEO obecnej strony. Na zapytania odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze."
               />
             </div>
           </Reveal>

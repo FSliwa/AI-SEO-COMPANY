@@ -244,7 +244,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
               <p>We work on the second half: <Link href="/pozycjonowanie-stron-internetowych">website design and technical SEO</Link>, so the narrative lands on pages structured for readers and search engines alike. Writing the story itself stays with you or your copywriter — we don't sell narrative development as a service, and a story assembled by an agency that has never spoken to your customers tends to read like one.</p>
 
 
-              <p>If the story exists but isn't earning attention, a structured <Link href="/audyt-seo">SEO audit</Link> is usually a faster fix than a rewrite — it shows whether the problem is the words or the pages they sit on. We reply to enquiries in under two hours and send an initial proposal within 24 hours.</p>
+              <p>If the story exists but isn't earning attention, a structured <Link href="/audyt-seo">SEO audit</Link> is usually a faster fix than a rewrite — it shows whether the problem is the words or the pages they sit on. We reply to enquiries and send an initial proposal within 24 h on business days.</p>
 
               <h2 id="faq">Frequently Asked Questions</h2>
 
@@ -289,7 +289,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
                 locale={locale}
                 currentSlug="/blog/brand-storytelling-patterns"
                 customCtaTitleEn="Story ready, pages not?"
-                customCtaTextEn="Request a scoped SEO audit. We reply to enquiries in under two hours and send an initial proposal within 24 hours."
+                customCtaTextEn="Request a scoped SEO audit. We reply to enquiries and send an initial proposal within 24 h on business days."
               />
             </div>
           </Reveal>
@@ -511,7 +511,7 @@ function ArtykulStorytellingMarki({ locale }) {
               <h2 id="nasza-rola">Jak AI SEO COMPANY wspiera wdrożenie storytellingu</h2>
               <p>Storytelling w internecie ma ograniczenie, którego narracja offline nie zna: historia działa tylko wtedy, gdy ludzie znajdują stronę, na której mieszka. To jest praktyczne połączenie narracji z warstwą techniczną.</p>
               <p>My pracujemy nad tą drugą połową: <Link href="/pozycjonowanie-stron-internetowych">projektowaniem stron i technicznym SEO</Link>, żeby narracja lądowała na stronach zbudowanych i dla czytelników, i dla wyszukiwarek. Pisanie samej historii zostaje u Ciebie albo u Twojego copywritera — nie sprzedajemy tworzenia narracji jako usługi, a historia sklejona przez agencję, która nigdy nie rozmawiała z Twoimi klientami, zwykle właśnie tak się czyta.</p>
-              <p>Jeśli historia istnieje, ale nie zdobywa uwagi, ustrukturyzowany <Link href="/audyt-seo">audyt SEO</Link> jest zwykle szybszą naprawą niż przepisywanie — pokazuje, czy problemem są słowa, czy strony, na których stoją. Na zapytania odpowiadamy w mniej niż dwie godziny, a wstępną propozycję wysyłamy w ciągu doby.</p>
+              <p>Jeśli historia istnieje, ale nie zdobywa uwagi, ustrukturyzowany <Link href="/audyt-seo">audyt SEO</Link> jest zwykle szybszą naprawą niż przepisywanie — pokazuje, czy problemem są słowa, czy strony, na których stoją. Na zapytania odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze.</p>
 
               <h2 id="faq">Najczęściej zadawane pytania</h2>
 
@@ -556,7 +556,7 @@ function ArtykulStorytellingMarki({ locale }) {
                 locale={locale}
                 currentSlug="/blog/brand-storytelling-patterns"
                 customCtaTitlePl="Historia gotowa, strony nie?"
-                customCtaTextPl="Zamów ustrukturyzowany audyt SEO. Na zapytania odpowiadamy w mniej niż dwie godziny, wstępną propozycję wysyłamy w ciągu doby."
+                customCtaTextPl="Zamów ustrukturyzowany audyt SEO. Na zapytania odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze."
               />
             </div>
           </Reveal>

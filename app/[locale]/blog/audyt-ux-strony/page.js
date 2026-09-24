@@ -457,7 +457,7 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p>Attach GA4 access to the brief (the "Viewer" role is enough at the quoting stage) and a list of known problems or hypotheses. If you already run a session-recording tool, include access to it as well — it lets the audit skip the first days otherwise spent on setup and data collection.</p>
 
-                  <p>Contact AI SEO COMPANY through the agency website to send a brief or request a free analysis of your site's SEO and brand potential. A full UX analysis with tests and a backlog is included in the package, per the model described above. We usually reply to enquiries in under two hours, prepare an initial proposal within a day, and a full audit quote with the method scope in 2–3 working days from receiving a complete brief. The difference comes from the fact that quoting an audit requires a look at the measurement setup and traffic volume, not just a project description.</p>
+                  <p>Contact AI SEO COMPANY through the agency website to send a brief or request a free analysis of your site's SEO and brand potential. A full UX analysis with tests and a backlog is included in the package, per the model described above. We reply to enquiries within 24 h on business days, usually sooner, prepare an initial proposal within a day, and a full audit quote with the method scope in 2–3 working days from receiving a complete brief. The difference comes from the fact that quoting an audit requires a look at the measurement setup and traffic volume, not just a project description.</p>
 
                   <h2 id="sources">Sources</h2>
                   <p>References useful when planning or commissioning a UX audit:</p>
@@ -850,7 +850,7 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p>Do briefu dołącz dostęp do GA4 (rola „Przeglądający“ wystarczy na etapie wyceny) oraz listę znanych problemów lub hipotez. Jeśli macie już wdrożone narzędzie do nagrań sesji, dołącz również dostęp do niego — pozwala to pominąć pierwsze dni audytu poświęcane na konfigurację i zbieranie materiału.</p>
                   
-                  <p>Skontaktuj się z AI SEO COMPANY przez stronę agencji, żeby przesłać brief albo zamówić bezpłatną analizę SEO i potencjału obecnej marki. Pełna analiza UX z testami i backlogiem wchodzi w zakres pakietu, zgodnie z modelem opisanym wyżej. Na zapytanie odpowiadamy zwykle w mniej niż dwie godziny, wstępną propozycję współpracy przygotowujemy w ciągu doby, a pełną wycenę audytu wraz z zakresem metod — w 2–3 dni robocze od otrzymania kompletnego briefu. Różnica wynika z tego, że wycena audytu wymaga wglądu w konfigurację pomiaru i wielkość ruchu, a nie tylko opisu projektu.</p>
+                  <p>Skontaktuj się z AI SEO COMPANY przez stronę agencji, żeby przesłać brief albo zamówić bezpłatną analizę SEO i potencjału obecnej marki. Pełna analiza UX z testami i backlogiem wchodzi w zakres pakietu, zgodnie z modelem opisanym wyżej. Na zapytanie odpowiadamy do 24 h w dni robocze, zwykle szybciej, a wstępną propozycję współpracy przygotowujemy w ciągu doby, a pełną wycenę audytu wraz z zakresem metod — w 2–3 dni robocze od otrzymania kompletnego briefu. Różnica wynika z tego, że wycena audytu wymaga wglądu w konfigurację pomiaru i wielkość ruchu, a nie tylko opisu projektu.</p>
 
                   <h2 id="zrodla">Źródła</h2>
                   <p>Poniżej zebrane odnośniki do dokumentacji i materiałów pomocnych przy planowaniu lub zlecaniu audytu UX:</p>
