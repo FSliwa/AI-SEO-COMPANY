@@ -100,14 +100,14 @@ export default function PricingClient() {
               {lang === 'pl' ? 'Ile Kosztuje Pozycjonowanie Stron?' : 'How Much Does SEO Cost?'} <br />
               <span style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Cennik pozycjonowania stron 2026' : 'Pricing 2026'}</span>
             </h1>
-            <p style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
+            <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
                 ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc w SEO Standard i Premium (Booster Pack: min. 3 miesiące), bez ukrytych opłat — poniżej pełny cennik pozycjonowania stron 2026.' 
                 : 'Discover our SEO Pricing 2026. No hidden fees or complicated contracts. Check our packages and costs and pay for measurable search visibility growth.'}
             </p>
             {/* Przycisk i telefon w hero: 59% kliknięć z Google Ads trafia na ten landing,
                 a pierwszy przycisk był wcześniej na 4. ekranie telefonu (pomiar 24.09.2026). */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <div className="hero-cta-row" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href={hash('kontakt', lang)} className="hero-btn-primary" data-cta="service_hero_cennik">
                 {lang === 'pl' ? 'Zamów wycenę — odpowiedź w 24 h' : 'Get a quote — reply within 24 h'}
               </a>

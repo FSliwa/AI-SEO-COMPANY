@@ -3727,3 +3727,24 @@ footer a, footer a *, footer button, footer button *,
   cursor: -webkit-image-set(url('/cursors/pointer.png') 1x, url('/cursors/pointer@2x.png') 2x) 13 3, pointer !important;
   cursor: image-set(url('/cursors/pointer.png') 1x, url('/cursors/pointer@2x.png') 2x) 13 3, pointer !important;
 }
+
+
+/* Telefon: baner zgody na cookies jest przyklejony do dolu (position: fixed,
+   z-index 100000) i na 412x823 zajmuje pas 674-811 px. Po dodaniu przyciskow
+   do hero landingow Google Ads (24.09.2026) trafily one dokladnie w ten pas:
+   pomiar produkcji pokazal "Zamow wycene" na 683-742 px, czyli zakryte w 100 %,
+   a telefon w 88 %. Przy pierwszej wizycie - a wlasnie taka jest wizyta
+   z reklamy - przycisk byl wiec niewidoczny i nieklikalny.
+   Rozwiazanie bez zmiany tresci: na telefonie przyciski (i linia z obietnicami)
+   ida nad dlugi akapit opisowy, wiec stoja nad banerem i blizej kciuka.
+   Kolejnosc na telefonie: znacznik, naglowek, przyciski, linia ✓, akapit.
+   Desktop bez zmian - tam baner nie zaslania hero. */
+@media (max-width: 600px) {
+  div:has(> .hero-cta-row) {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-cta-row { order: 3; margin-bottom: 1.25rem; }
+  .hero-proof { order: 4; margin-top: 0 !important; margin-bottom: 1.25rem !important; }
+  .hero-lead { order: 5; margin-bottom: 0 !important; }
+}

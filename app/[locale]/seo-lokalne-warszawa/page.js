@@ -210,7 +210,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 )}
               </div>
 
-              <p style={{ 
+              <p className="hero-lead" style={{ 
                 fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
                 color: '#333336', 
                 lineHeight: 1.6, 
@@ -223,13 +223,13 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   : <>Harness the power of local searches. Effective optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
               </p>
               {/* Obietnice z nagłówków RSA w pierwszym ekranie. */}
-              <p style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: '#6E6E73' }}>
+              <p className="hero-proof" style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: '#6E6E73' }}>
                 {lang === 'pl'
                   ? '✓ Wizytówka Google w cenie · ✓ Raport co miesiąc · ✓ Odpowiedź w 24 h w dni robocze'
                   : '✓ Google Business Profile included · ✓ Monthly report · ✓ Reply within 24 h on business days'}
               </p>
               
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <div className="hero-cta-row" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                 <a href={hash('kontakt', locale)} className="hero-btn-primary" data-cta="service_hero_warszawa">
                   {lang === 'pl' ? 'Sprawdź Swój Potencjał' : 'Check Your Potential'} 
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
