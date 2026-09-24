@@ -10,7 +10,7 @@ const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key_for_build'
 // byłby pierwszą „konwersją” w koncie z zerem prawdziwych — i uczyłby
 // licytację. Trzy tanie bramki, bez zewnętrznych usług:
 // 1) honeypot `website` (pole poza ekranem) — boty wypełniają wszystko;
-// 2) czas od wyrenderowania formularza < 3 s — człowiek tyle nie zdąży;
+// 2) czas od wejścia na stronę < 3 s — człowiek tyle nie zdąży;
 // 3) higiena e-maila + domeny tymczasowe + limit 3 zgłoszenia / 10 min / IP.
 // Honeypot i tempo zwracają 200 { success, rejected } — bot widzi „sukces”,
 // a klient NIE odpala konwersji (Contact.jsx sprawdza `rejected`).
@@ -23,6 +23,17 @@ const RATE_MAX = 3;
 // Pamięć instancji serverless — wystarcza na Vercel, bo zimny start i tak
 // zeruje licznik rzadziej niż okno 10 min; nie jest to twarda ochrona.
 const rate = new Map();
+// Osobny kubełek na zapis odrzuceń: seria botów nie może zasypać arkusza
+// ani zjadać limitu człowieka za tym samym IP.
+const rejectLog = new Map();
+function rejectLogAllowed(ip) {
+  const now = Date.now();
+  const hits = (rejectLog.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  hits.push(now);
+  rejectLog.set(ip, hits);
+  if (rejectLog.size > 5000) rejectLog.clear();
+  return hits.length <= 2;
+}
 function rateLimited(ip) {
   const now = Date.now();
   const hits = (rate.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
@@ -34,9 +45,30 @@ function rateLimited(ip) {
 
 // Pola atrybucji przepuszczane do maila i arkusza — tylko znaki bezpieczne,
 // żeby gclid z reklamy nie mógł wstrzyknąć HTML-a do powiadomienia.
-const ATTR_FIELDS = ['lead_id', 'submitted_at', 'page_path', 'landing_path', 'first_seen', 'gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+const ATTR_FIELDS = ['lead_id', 'submitted_at', 'page_path', 'landing_path', 'first_seen', 'gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'consent_marketing'];
 const safe = (v, max = 200) => String(v ?? '').replace(/[<>"'`]/g, '').slice(0, max);
 const esc = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+// Ślad odrzuconego zgłoszenia: log runtime'u (Vercel → Logs) i, jeśli jest
+// arkusz, wiersz ze statusem `rejected:<powód>`. Awaria zapisu nie może
+// zmienić odpowiedzi dla bota, stąd pusty catch.
+async function logRejected(body, reason, ip) {
+  const attr = Object.fromEntries(ATTR_FIELDS.map((k) => [k, safe(body[k])]));
+  console.warn(`LEAD_ODRZUCONY reason=${reason}; elapsed_ms=${safe(body.elapsed_ms, 12)}; lead_id=${attr.lead_id}; page_path=${attr.page_path}; gclid=${attr.gclid ? 'tak' : 'nie'}`);
+  if (!process.env.LEADS_WEBHOOK_URL || !rejectLogAllowed(ip)) return;
+  try {
+    const r = await fetch(process.env.LEADS_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...attr, name: safe(body.name, 120), email: safe(body.email, 200), service: safe(body.service, 40), message: safe(body.message, 2000), elapsed_ms: safe(body.elapsed_ms, 12), status: `rejected:${reason}` }),
+      signal: AbortSignal.timeout(5000),
+    });
+    const j = await r.json().catch(() => null);
+    if (!(r.ok && j && j.ok === true)) console.warn('Webhook arkusza (odrzucone): brak zapisu', r.status, j ? (j.error || 'ok=false') : 'odpowiedź nie-JSON');
+  } catch (e) {
+    console.warn('Webhook arkusza (odrzucone):', e && e.name);
+  }
+}
 
 export async function POST(request) {
   try {
@@ -50,12 +82,18 @@ export async function POST(request) {
       );
     }
 
-    // Ciche odrzucenia (bot dostaje 200, konwersja nie odpala).
-    if (typeof body.website === 'string' && body.website.trim() !== '') {
-      return NextResponse.json({ success: true, rejected: true, reason: 'honeypot' }, { headers: { 'X-Lead-Status': 'rejected' } });
-    }
-    if (Number.isFinite(body.elapsed_ms) && body.elapsed_ms >= 0 && body.elapsed_ms < MIN_ELAPSED_MS) {
-      return NextResponse.json({ success: true, rejected: true, reason: 'too_fast' }, { headers: { 'X-Lead-Status': 'rejected' } });
+    // Ciche odrzucenia (bot dostaje 200, konwersja nie odpala). Odrzucenie
+    // nie może jednak znikać bez śladu: jeśli filtr kiedyś trafi człowieka,
+    // to przy 1–3 leadach miesięcznie tracimy realnego klienta i nie mamy
+    // czym tego udowodnić. Dlatego wpis do logu i wiersz w arkuszu z flagą —
+    // bez maila i bez konwersji.
+    const rejectReason = (typeof body.website === 'string' && body.website.trim() !== '')
+      ? 'honeypot'
+      : (Number.isFinite(body.elapsed_ms) && body.elapsed_ms >= 0 && body.elapsed_ms < MIN_ELAPSED_MS ? 'too_fast' : '');
+    if (rejectReason) {
+      const rejIp = (request.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
+      await logRejected(body, rejectReason, rejIp);
+      return NextResponse.json({ success: true, rejected: true, reason: rejectReason }, { headers: { 'X-Lead-Status': 'rejected' } });
     }
 
     const emailNorm = String(email).trim().toLowerCase();
@@ -91,7 +129,7 @@ export async function POST(request) {
     // Blok maszynowy pod import konwersji offline do Google Ads (arkusz
     // „Leady PL-Search”: Google Click ID + czas + wartość). Klucz=wartość w
     // jednej linii, żeby dało się go skopiować bez ręcznego przepisywania.
-    const leadData = `LEAD_DATA: lead_id=${leadId}; email=${emailNorm}; submitted_at=${attr.submitted_at}; gclid=${attr.gclid}; gbraid=${attr.gbraid}; wbraid=${attr.wbraid}; landing_path=${attr.landing_path}; first_seen=${attr.first_seen}; page_path=${attr.page_path}; utm_source=${attr.utm_source}; utm_medium=${attr.utm_medium}; utm_campaign=${attr.utm_campaign}; utm_term=${attr.utm_term}; utm_content=${attr.utm_content}`;
+    const leadData = `LEAD_DATA: lead_id=${leadId}; email=${emailNorm}; submitted_at=${attr.submitted_at}; gclid=${attr.gclid}; gbraid=${attr.gbraid}; wbraid=${attr.wbraid}; landing_path=${attr.landing_path}; first_seen=${attr.first_seen}; page_path=${attr.page_path}; utm_source=${attr.utm_source}; utm_medium=${attr.utm_medium}; utm_campaign=${attr.utm_campaign}; utm_term=${attr.utm_term}; utm_content=${attr.utm_content}; consent_marketing=${attr.consent_marketing}`;
     const source = attr.gclid || attr.gbraid || attr.wbraid ? 'Google Ads (klik z reklamy)' : (attr.utm_source ? `utm: ${attr.utm_source}/${attr.utm_medium}` : 'organiczne / bezpośrednie');
 
     // Trwały ślad leada MUSI powstać niezależnie od poczty. Wcześniej cała
@@ -108,9 +146,13 @@ export async function POST(request) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...attr, lead_id: leadId, name: safe(name, 120), email: emailNorm, service: safe(service, 40), message: safe(message, 2000), status: 'new' }),
+          signal: AbortSignal.timeout(8000),
         });
-        zapisany = r.ok;
-        if (!r.ok) console.error('Webhook arkusza leadów: HTTP', r.status);
+        // Apps Script zwraca 200 także przy odmowie (zły klucz, strona
+        // logowania, wyjątek w skrypcie) — o zapisie decyduje dopiero {ok:true}.
+        const j = await r.json().catch(() => null);
+        zapisany = r.ok && !!j && j.ok === true;
+        if (!zapisany) console.error('Webhook arkusza leadów: brak zapisu', r.status, j ? (j.error || 'ok=false') : 'odpowiedź nie-JSON (strona logowania/błędu Apps Script?)');
       } catch (e) {
         console.error('Webhook arkusza leadów:', e);
       }

@@ -214,9 +214,16 @@ export default async function RootLayout({ children, params }) {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-WVVRW8FP30');
-            gtag('config', '${GA4_ADS_ID}');
-            gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
+            /* Tylko domena produkcyjna. Podglądy *.vercel.app wysyłały dane do
+               produkcyjnego Ads i GA4 (Tag diagnostics, 24.09.2026), a localhost
+               mógłby dopisać konwersję testową do konta. Bez config zdarzenia
+               nie mają celu; konwersję Ads osobno blokuje flaga w Contact.jsx. */
+            window.__aiscTracking = /^(www\\.)?ai-seo-company\\.pl$/.test(location.hostname);
+            if (window.__aiscTracking) {
+              gtag('config', 'G-WVVRW8FP30');
+              gtag('config', '${GA4_ADS_ID}');
+              gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
+            }
           `}
         </Script>
       </head>

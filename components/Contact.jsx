@@ -1,28 +1,30 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
-import { readAttribution } from '@/lib/attribution';
+import { readAttribution, consentMarketing } from '@/lib/attribution';
 
-// Wartość konwersji przekazywana do Google Ads, żeby licytacja odróżniała
-// zapytanie o Premium od łowcy okazji. To miesięczna wartość kontraktu (USD,
-// przeliczona z cen widocznych na stronie EN) — jeśli chcesz licytować pod
-// realną wartość oczekiwaną, przemnóż te liczby przez własny współczynnik
-// domknięcia sprzedaży.
-const LEAD_VALUE_USD = {
-  standard: 490,
-  premium: 640,
-  booster: 640,
-  custom: 640,
+// Wartość zdarzenia generate_lead w GA4: miesięczna wartość pakietu netto
+// w PLN, tak jak w cenniku PL. Wcześniej szły tu kwoty w USD przeliczone
+// z cen EN, więc raporty GA4 mieszały waluty z resztą konta (PLN).
+// Konwersja Google Ads ma stałą wartość ustawioną po stronie Ads.
+const LEAD_VALUE_PLN = {
+  standard: 1900,
+  premium: 2500,
+  booster: 2500,
+  custom: 2500,
 };
-const DEFAULT_LEAD_VALUE_USD = 490;
+const DEFAULT_LEAD_VALUE_PLN = 1900;
 
 // Kliknięcia w telefon i e-mail mierzy components/AnalyticsEvents.jsx (jeden
 // nasłuch dla całej strony), tu zostają tylko zdarzenia samego formularza.
+
+// false w SSR i podczas hydratacji, true po niej — bez setState w efekcie.
+const noopSubscribe = () => () => {};
 
 export default function Contact({ isMainContent = false }) {
   const [selectedBudget, setSelectedBudget] = useState('Booster Pack');
@@ -30,9 +32,13 @@ export default function Contact({ isMainContent = false }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [service, setService] = useState('');
-  // Znacznik czasu montażu formularza: zgłoszenie wysłane w mniej niż 3 s od
-  // wyrenderowania strony to bot (route.js odrzuca je bez wysyłki maila).
+  // Znacznik czasu montażu formularza — zapas, gdy przeglądarka nie ma
+  // performance.now(). Zgłoszenie wysłane w mniej niż 3 s to bot.
   const [openedAt] = useState(() => Date.now());
+  // Do hydratacji formularz nie ma handlera onSubmit: kliknięcie wysłałoby go
+  // natywnie (imię i e-mail w adresie strony), a lead by przepadł. Przycisk
+  // odblokowuje się dopiero, gdy React przejmie formularz.
+  const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const lang = useLocale();
   const t = useTranslations('contact');
 
@@ -95,7 +101,12 @@ export default function Contact({ isMainContent = false }) {
         website: formData.get('website'),
         lead_id: leadId,
         submitted_at: new Date().toISOString(),
-        elapsed_ms: Date.now() - openedAt,
+        // Czas od wejścia na stronę, nie od hydratacji: na wolnym telefonie
+        // człowiek zdąży wypełnić formularz, zanim React go przejmie, i liczony
+        // od montażu wynik „< 3 s” odrzucał go jako bota.
+        elapsed_ms: (typeof performance !== 'undefined' && typeof performance.now === 'function')
+          ? Math.round(performance.now())
+          : Date.now() - openedAt,
         page_path: window.location.pathname,
         gclid: attribution.gclid || '',
         gbraid: attribution.gbraid || '',
@@ -107,6 +118,7 @@ export default function Contact({ isMainContent = false }) {
         utm_content: attribution.utm_content || '',
         landing_path: attribution.landing_path || '',
         first_seen: attribution.first_seen || '',
+        consent_marketing: consentMarketing(),
       };
 
       const response = await fetch('/api/contact', {
@@ -156,8 +168,8 @@ export default function Contact({ isMainContent = false }) {
           event_category: 'Contact',
           event_label: data.service || 'General Lead',
           plan: data.service || 'none',
-          currency: 'USD',
-          value: LEAD_VALUE_USD[data.service] ?? DEFAULT_LEAD_VALUE_USD,
+          currency: 'PLN',
+          value: LEAD_VALUE_PLN[data.service] ?? DEFAULT_LEAD_VALUE_PLN,
         });
 
         // Tagowa konwersja Google Ads — główna akcja „Formularz kontaktowy (tag)”
@@ -168,7 +180,9 @@ export default function Contact({ isMainContent = false }) {
         // sekretem (siedzi w HTML każdej strony), stąd wartość domyślna w kodzie.
         const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-18426058950';
         const adsLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL || 'iNguCJLcr4AdEMaxndJE';
-        if (adsId && adsLabel) {
+        // window.__aiscTracking === false poza domeną produkcyjną (layout.js):
+        // podglądy Vercel i localhost nie mogą dopisywać konwersji do konta.
+        if (adsId && adsLabel && window.__aiscTracking !== false) {
           window.gtag('event', 'conversion', {
             send_to: `${adsId}/${adsLabel}`,
             // Deduplikacja i klucz do późniejszej korekty/kwalifikacji leada.
@@ -214,7 +228,7 @@ export default function Contact({ isMainContent = false }) {
           </RevealItem>
 
           <RevealItem>
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" method="post" onSubmit={handleSubmit}>
             {formSubmitted && (
               <div style={{ background: '#EFF8E6', color: '#639922', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
                 {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Odpowiemy w ciągu 2 godzin w godzinach pracy (9–18).' : '✓ Thank you! Your request has been received. We reply within 2 hours during business hours (9 am–6 pm CET), otherwise the next business morning.'}
@@ -293,7 +307,7 @@ export default function Contact({ isMainContent = false }) {
               )}
             </p>
 
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }} disabled={isSubmitting}>
+            <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: (isSubmitting || !hydrated) ? 0.7 : 1, cursor: (isSubmitting || !hydrated) ? 'not-allowed' : 'pointer' }} disabled={isSubmitting || !hydrated}>
               {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t('btnSend')}
             </button>
             {/* „Co dalej” pod przyciskiem — to samo zdanie, które obiecują
