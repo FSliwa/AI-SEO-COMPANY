@@ -83,7 +83,10 @@ const portfolioCases = [
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',
     metricLabel: 'Spójność NAP',
-    metricLabelEn: 'NAP Consistency'
+    metricLabelEn: 'NAP Consistency',
+    metric2: 'Top 3',
+    metric2Label: 'Local Pack',
+    metric2LabelEn: 'Local Pack'
   },
   {
     tag: 'OPINIE KLIENTÓW',

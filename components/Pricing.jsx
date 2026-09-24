@@ -82,7 +82,7 @@ export default function Pricing({ isMainContent = false }) {
                 <>
                   <li>Full technical & content SEO positioning</li>
                   <li>Enhanced mobile UX (mobile CTR optimization)</li>
-                  <li>Google Business Profile management (fighting for the Maps TOP 3)</li>
+                  <li>Google Maps TOP 3 ranking management</li>
                   <li>High-authority link building & expert content</li>
                   <li>Cancel anytime flexible policy</li>
                 </>

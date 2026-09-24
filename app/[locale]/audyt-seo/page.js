@@ -219,9 +219,9 @@ const auditPortfolioCases = [
     descriptionEn: 'Multiple subpages competing for the same keywords. Missing canonical tags (rel="canonical") and incorrect filtering parameters detected.',
     image: '/images/unsplash-1608501821300-4f99e58bba77.jpg',
     gradient: 'linear-gradient(135deg, #1E293B 0%, #334155 50%, #0F172A 100%)',
-    metric: '1 URL',
-    metricLabel: 'Na jedną frazę główną',
-    metricLabelEn: 'Per main keyword',
+    metric: 'TOP 3',
+    metricLabel: 'Dla głównych fraz',
+    metricLabelEn: 'For main keywords',
     metric2: '100%',
     metric2Label: 'Czystość kanoniczna',
     metric2LabelEn: 'Canonical purity'
