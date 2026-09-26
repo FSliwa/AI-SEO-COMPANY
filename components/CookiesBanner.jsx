@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -44,6 +44,36 @@ export default function CookiesBanner() {
     mq.addEventListener('change', sync);
     return () => mq.removeEventListener('change', sync);
   }, []);
+
+  // Staly przycisk „Wycen projekt" (.kota-floating-cta z Footer.jsx) stoi w tym
+  // samym rogu co ten baner i ma nizszy z-index, wiec na telefonie byl przez
+  // niego zakryty w calosci. Zamiast przebijac go nad baner - baner nie moze
+  // byc zaslaniany - publikujemy wysokosc banera i CSS odsuwa przycisk w gore
+  // na czas, gdy baner jest widoczny.
+  const bannerRef = useRef(null);
+  const bannerShown = isVisible && !showManageModal;
+  useEffect(() => {
+    const root = document.documentElement;
+    const clear = () => {
+      document.body.classList.remove('has-cookie-banner');
+      root.style.removeProperty('--cookie-banner-h');
+    };
+    if (!bannerShown) return clear;
+    const el = bannerRef.current;
+    if (!el) return clear;
+    const publish = () => {
+      const h = Math.round(el.getBoundingClientRect().height);
+      if (h > 0) root.style.setProperty('--cookie-banner-h', h + 'px');
+      document.body.classList.add('has-cookie-banner');
+    };
+    publish();
+    const ro = new ResizeObserver(publish);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      clear();
+    };
+  }, [bannerShown, compact]);
 
   useEffect(() => {
     setMounted(true);
@@ -135,6 +165,7 @@ export default function CookiesBanner() {
       <AnimatePresence>
         {isVisible && !showManageModal && (
           <motion.div
+            ref={bannerRef}
             initial={{ opacity: 0, y: 40, x: '-50%' }}
             animate={{ opacity: 1, y: 0, x: '-50%' }}
             exit={{ opacity: 0, y: 30, x: '-50%' }}

@@ -1968,6 +1968,17 @@ section, aside.pricing, aside.contact, aside.why-us {
   box-shadow: 0 16px 40px rgba(216, 90, 48, 0.45);
 }
 
+/* Baner zgody jest fixed na dole ekranu z z-index 100000, a staly przycisk
+   „Wycen projekt" siedzi w tym samym rogu. Na 412x823 baner zajmowal pas
+   12-149 px od dolu i zakrywal przycisk w calosci - na telefonie, czyli na
+   polowie klikniec z reklam. Nadpisanie z-index: 90 w bloku 768 px kazalo mu
+   dodatkowo chowac sie pod trescia strony; usuniete, wraca bazowe 999.
+   CookiesBanner publikuje swoja wysokosc w --cookie-banner-h, wiec przycisk
+   odsuwa sie nad baner tylko na czas, gdy baner jest widoczny. */
+body.has-cookie-banner .kota-floating-cta {
+  bottom: calc(var(--cookie-banner-h, 150px) + 2.5rem);
+}
+
 /* --- Footer --- */
 .footer {
   background: #000000;
@@ -2189,7 +2200,6 @@ section, aside.pricing, aside.contact, aside.why-us {
     right: 1.25rem;
     padding: 0.65rem 1.2rem;
     font-size: 0.85rem;
-    z-index: 90;
   }
 
   /* Portfolio Mobile Card Adjustments */
