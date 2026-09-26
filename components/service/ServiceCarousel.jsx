@@ -76,7 +76,7 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                 transition: 'all 0.2s ease'
               }}
-              aria-label="Poprzedni slajd"
+              aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6" />
@@ -100,7 +100,7 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                 transition: 'all 0.2s ease'
               }}
-              aria-label="Następny slajd"
+              aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 18l6-6-6-6" />

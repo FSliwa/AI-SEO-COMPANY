@@ -27,7 +27,7 @@ export default function Footer() {
                 {t('desc')}
               </p>
               <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '1rem', lineHeight: '1.5' }}>
-                <p style={{ margin: 0 }}><strong>AI SEO Company</strong> to marka należąca do:</p>
+                <p style={{ margin: 0 }}><strong>AI SEO Company</strong> {lang === 'pl' ? 'to marka należąca do:' : 'is a brand of:'}</p>
                 {/* Art. 300(5) KSH: a prosta spółka akcyjna must state its firm,
                     registered office and address, the registry court and KRS
                     number, NIP, and the amount of share capital (kapitał akcyjny). */}

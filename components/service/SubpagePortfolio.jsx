@@ -32,7 +32,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '3.5rem', width: '100%' }}>
             <div style={{ maxWidth: '780px' }}>
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
-                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> NASZE REALIZACJE
+                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZE REALIZACJE' : 'OUR WORK'}
               </div>
               <h2 style={{ 
                 fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
@@ -162,6 +162,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                       alt={lang === 'pl' ? (c.imgAlt || c.title) : (c.imgAltEn || c.titleEn || c.imgAlt || c.title)}
                       title={lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title)}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1240px) 50vw, 620px"
                       style={{ objectFit: 'cover', display: 'block', transition: 'transform 0.7s ease' }} 
                     />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.85) 100%)' }} />
@@ -299,6 +300,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                       alt={lang === 'pl' ? (c.imgAlt || c.title || 'Realizacja SEO') : (c.imgAltEn || c.titleEn || c.imgAlt || c.title || 'SEO Case Study')}
                       title={lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title)}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1240px) 50vw, 620px"
                       style={{ objectFit: 'cover', display: 'block', zIndex: 2 }}
                     />
                     

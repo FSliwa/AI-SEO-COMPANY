@@ -75,26 +75,6 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
         ]
       },
       {
-        "@type": "Organization",
-        "@id": "https://www.ai-seo-company.pl/#organization",
-        "name": "AI SEO COMPANY",
-        "url": "https://www.ai-seo-company.pl/",
-        "telephone": "+48518815055",
-        "email": "kontakt@ai-seo-company.pl",
-        "vatID": "5253090237",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.ai-seo-company.pl/og-image.jpg"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "ul. Grzybowska 12/14",
-          "postalCode": "00-132",
-          "addressLocality": "Warszawa",
-          "addressCountry": "PL"
-        }
-      },
-      {
         "@type": "FAQPage",
         "@id": "https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse#faq",
         "inLanguage": "pl-PL",

@@ -305,7 +305,7 @@ export default function Testimonials() {
                         display: 'flex', justifyContent: 'center', alignItems: 'center',
                         border: 'none', cursor: 'pointer', outline: 'none'
                       }}
-                      aria-label={isExpanded ? "Zwiń opinię" : "Rozwiń opinię"}
+                      aria-label={lang === 'pl' ? (isExpanded ? 'Zwiń opinię' : 'Rozwiń opinię') : (isExpanded ? 'Collapse review' : 'Expand review')}
                     >
                       <svg 
                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"

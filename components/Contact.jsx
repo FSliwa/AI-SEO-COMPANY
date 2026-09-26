@@ -52,7 +52,7 @@ export default function Contact({ isMainContent = false }) {
   }, []);
 
   const Wrapper = isMainContent ? 'section' : 'aside';
-  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Kontakt' };
+  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': lang === 'pl' ? 'Kontakt' : 'Contact' };
 
   // Native constraint-validation bubbles follow the browser UI language, not the
   // page, so a Polish browser showed "Wypełnij to pole" on the English form.

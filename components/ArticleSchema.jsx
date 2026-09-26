@@ -1,4 +1,5 @@
 import { blogPosts } from '@/lib/blogPosts';
+import { routing } from '@/i18n/routing';
 
 const BASE = 'https://www.ai-seo-company.pl';
 
@@ -23,7 +24,17 @@ export default function ArticleSchema({
 
   const resolvedTitle = title || (post && (isEn ? post.titleEn : post.titlePl));
   const resolvedDesc = description || (post && (isEn ? post.descEn : post.descPl));
-  const resolvedUrl = url || (post && (isEn ? `/en${post.slug}` : post.slug)) || '/';
+  // Slugi bloga roznia sie miedzy jezykami i mieszkaja w mapie pathnames
+  // (np. /blog/analiza-konkurencji-seo-przewodnik -> /blog/seo-competitor-analysis-step-by-step-guide).
+  // Sklejanie `/en` + polski slug dawalo mainEntityOfPage i okruszki pod
+  // adresem, ktory nie jest kanoniczny i nie istnieje. Dotyczy to takze
+  // polskiej wersji: dla czesci wpisow klucz mapy != sciezka PL.
+  const localizedPath = (slug, locale) => {
+    const entry = routing.pathnames[slug];
+    if (!entry) return slug;
+    return typeof entry === 'string' ? entry : (entry[locale] || slug);
+  };
+  const resolvedUrl = url || (post && (isEn ? `/en${localizedPath(post.slug, 'en')}` : localizedPath(post.slug, 'pl'))) || '/';
   const resolvedDate = datePublished || (post && post.date);
   const resolvedImage = imageUrl || (post && (post.heroImage || post.image));
 
