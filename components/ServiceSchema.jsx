@@ -26,6 +26,7 @@ const USLUGI = {
     typ: 'Search engine optimization',
     url: { pl: `${BASE}/pozycjonowanie-stron-internetowych`, en: `${BASE}/en/seo-services` },
     cena: 1900,
+    cenaEn: 450,
   },
   'cennik': {
     pl: { name: 'Pakiety pozycjonowania stron', desc: 'Cennik pozycjonowania stron: abonamentowe pakiety SEO Standard i SEO Premium z miesięczną subskrypcją i możliwością rezygnacji.' },
@@ -33,6 +34,7 @@ const USLUGI = {
     typ: 'Search engine optimization',
     url: { pl: `${BASE}/cennik-pozycjonowania`, en: `${BASE}/en/seo-pricing` },
     cena: 1900,
+    cenaEn: 450,
   },
   'seo-lokalne': {
     pl: { name: 'SEO lokalne w Warszawie', desc: 'Pozycjonowanie lokalne: optymalizacja Wizytówki Google, spójność NAP, strategia opinii i widoczność w Mapach Google.' },
@@ -40,6 +42,7 @@ const USLUGI = {
     typ: 'Local SEO',
     url: { pl: `${BASE}/seo-lokalne-warszawa`, en: `${BASE}/en/local-seo-warsaw` },
     cena: 1900,
+    cenaEn: 450,
   },
   'web-design': {
     pl: { name: 'Projektowanie stron internetowych', desc: 'Projektowanie i wdrażanie stron internetowych: indywidualny projekt UX/UI, wersja mobilna i optymalizacja pod konwersję.' },
@@ -47,6 +50,7 @@ const USLUGI = {
     typ: 'Web design',
     url: { pl: `${BASE}/projektowanie-stron-internetowych`, en: `${BASE}/en/web-design` },
     cena: 1900,
+    cenaEn: 450,
   },
 };
 
@@ -72,16 +76,22 @@ export default function ServiceSchema({ variant }) {
     availableLanguage: ['pl', 'en'],
   };
 
-  if (u.cena) {
+  // Karty cennika i lista uslug w formularzu podaja na EN euro (450 / 590),
+  // a nie zlote - dane strukturalne musza deklarowac to samo, co widzi
+  // uzytkownik, inaczej Offer przeczy tresci strony.
+  const kwota = isEn ? u.cenaEn : u.cena;
+  const waluta = isEn ? 'EUR' : 'PLN';
+
+  if (kwota) {
     jsonLd.offers = {
       '@type': 'Offer',
-      priceCurrency: 'PLN',
-      price: u.cena,
+      priceCurrency: waluta,
+      price: kwota,
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
-        priceCurrency: 'PLN',
-        price: u.cena,
-        minPrice: u.cena,
+        priceCurrency: waluta,
+        price: kwota,
+        minPrice: kwota,
         unitCode: 'MON',
         valueAddedTaxIncluded: false,
       },

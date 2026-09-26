@@ -24,7 +24,7 @@ export default function PricingClient() {
       question: 'Ile kosztuje pozycjonowanie strony w 2026?',
       questionEn: 'How much does SEO for a website cost in 2026?',
       answer: 'W 2026 roku pozycjonowanie strony w AI SEO COMPANY kosztuje od 1 900 zł netto miesięcznie w pakiecie SEO Standard, a rozszerzony pakiet SEO Premium z optymalizacją konwersji to 2 500 zł netto miesięcznie. W tej samej kwocie 2 500 zł netto/mies. dostępny jest też Booster Pack, który przy umowie na minimum 3 miesiące obejmuje dodatkowo wykonanie nowej strony WWW. Wszystkie ceny są kwotami netto (+23% VAT), bez ukrytych opłat.',
-      answerEn: 'In 2026, SEO at AI SEO COMPANY starts at PLN 1,900 net per month with the SEO Standard package, while the extended SEO Premium package with conversion optimisation costs PLN 2,500 net per month. For the same PLN 2,500 net per month, the Booster Pack additionally includes building a brand-new website with a minimum 3-month contract. All prices are net (+23% VAT), with no hidden fees.'
+      answerEn: 'In 2026, SEO at AI SEO COMPANY starts at €450 net per month with the SEO Standard package, while the extended SEO Premium package with conversion optimisation costs €590 net per month. For the same €590 net per month, the Booster Pack additionally includes building a brand-new website with a minimum 3-month contract. All prices are net (+23% VAT), with no hidden fees.'
     },
     {
       question: 'Czy muszę podpisywać umowę na dłuższy okres?',
@@ -66,7 +66,7 @@ export default function PricingClient() {
       question: 'Kiedy zobaczę pierwsze efekty pozycjonowania?',
       questionEn: 'When will I see the first SEO results?',
       answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. W standardowym podejściu agencji SEO stabilne pozycje na frazach komercyjnych to zakres 3–6 miesięcy, ale my jesteśmy w stanie osiągnąć ten efekt już w 2–3 miesiące (przy nowej domenie bez profilu linków czas ten może być nieco dłuższy). Pamiętaj jednak: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',
-      answerEn: 'The first visibility movements usually appear after 4–8 weeks, once Google has re-crawled the technical fixes and new content. Stable positions on commercial phrases are a 3–6 month horizon, and longer for a new domain with no link profile. Anyone promising a Top 3 in a month is selling you risk, not a service.'
+      answerEn: 'The first visibility movements usually appear after 4–8 weeks, once Google has re-crawled the technical fixes and new content. In the standard agency approach, stable positions on commercial phrases are a 3–6 month horizon, but we are able to reach that result in 2–3 months (for a new domain with no link profile it may take a little longer). Remember, though: anyone promising a Top 3 in a month is selling you risk, not a service.'
     },
     {
       question: 'Potrzebuję też nowej strony — czy da się to połączyć z pozycjonowaniem?',
