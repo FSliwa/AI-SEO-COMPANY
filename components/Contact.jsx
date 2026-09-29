@@ -6,6 +6,7 @@ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
+import { ENTRY_OFFER, ENTRY_OFFER_PRICE_PLN } from '@/components/EntryOffer';
 import { readAttribution, consentMarketing } from '@/lib/attribution';
 
 // Wartość zdarzenia generate_lead w GA4: miesięczna wartość pakietu netto
@@ -17,6 +18,9 @@ const LEAD_VALUE_PLN = {
   premium: 2500,
   booster: 2500,
   custom: 2500,
+  // Oferta wejsciowa (components/EntryOffer.jsx): wartosc = cena audytu,
+  // nie pierwsza faktura abonamentu.
+  audyt: ENTRY_OFFER_PRICE_PLN,
 };
 const DEFAULT_LEAD_VALUE_PLN = 1900;
 
@@ -342,6 +346,9 @@ export default function Contact({ isMainContent = false }) {
                 <option value="premium">{lang === 'pl' ? 'SEO Premium (2 500 zł netto/mies.)' : 'SEO Premium (€590 net/mo)'}</option>
                 <option value="booster">{lang === 'pl' ? 'Booster Pack (2 500 zł netto — Strona za 0 zł)' : 'Booster Pack (€590 net — Free Website)'}</option>
                 <option value="custom">{lang === 'pl' ? 'Indywidualny zakres działania' : 'Custom Project'}</option>
+                {ENTRY_OFFER === 'audyt' && (
+                  <option value="audyt">{lang === 'pl' ? `Audyt SEO (${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} zł netto, odliczany od abonamentu)` : `SEO audit (PLN ${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} net, deducted from subscription)`}</option>
+                )}
               </select>
             </div>
 

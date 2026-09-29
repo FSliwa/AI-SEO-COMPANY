@@ -8,6 +8,7 @@ import Contact from '@/components/Contact';
 import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
+import EntryOffer from '@/components/EntryOffer';
 import { hash } from '@/lib/anchors';
 
 export default function PricingClient() {
@@ -121,6 +122,10 @@ export default function PricingClient() {
 
       {/* Cennik zaraz pod hero: wcześniej karty pakietów były dopiero na 4,4
           ekranu telefonu, pod blokiem tekstu. Tekst został, tylko niżej. */}
+      {/* Oferta wejsciowa tylko dla ruchu z reklam i tylko po wlaczeniu
+          NEXT_PUBLIC_ENTRY_OFFER=audyt - patrz components/EntryOffer.jsx. */}
+      <EntryOffer />
+
       <Pricing isMainContent={true} />
 
       {/* SEO Content Section */}
