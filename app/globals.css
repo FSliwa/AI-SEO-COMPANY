@@ -354,6 +354,39 @@ button, input, select, textarea {
   box-shadow: 0 8px 20px rgba(216, 90, 48, 0.35);
 }
 
+/* Logowanie do panelu klienta (obok „Wyceń projekt”). Ta sama wysokość
+   i krój co przycisk wyceny, ale obrys: to droga dla obecnych klientów,
+   nie główne wezwanie do działania (17.10.2026). */
+.header-login-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  /* 1px mniej niż przycisk wyceny: obrys dokłada po 1px z każdej strony. */
+  padding: calc(0.7rem - 1px) 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.header-login-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.header-login-btn:hover {
+  color: var(--color-cta) !important;
+  border-color: var(--color-cta) !important;
+}
+
+.header-login-btn:focus-visible {
+  outline: 2px solid var(--color-cta);
+  outline-offset: 3px;
+}
+
 /* KOTA Circular Menu Trigger */
 .kota-menu-trigger {
   width: 44px;
@@ -2078,6 +2111,14 @@ body.has-cookie-banner .kota-floating-cta {
   }
   .header-award-badges { display: none !important; }
   .header-hire-btn { display: none !important; } /* Hidden in header on mobile to prevent overcrowding */
+  /* Na telefonie sama ikona w kole 44x44, jak przycisk menu obok. */
+  .header-login-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+  .header-login-label { display: none; }
   .logo {
     font-size: 1.15rem !important;
   }

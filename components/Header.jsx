@@ -7,6 +7,19 @@ import { track } from '@/lib/track';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
 import { hash, homeHash, sectionId } from '@/lib/anchors';
 
+// Logowanie do paneli (klient i administrator) to osobna aplikacja na subdomenie.
+// NEXT_PUBLIC_PANEL_URL pozwala lokalnie wskazać panel na localhost.
+const PANEL_LOGIN_URL = `${process.env.NEXT_PUBLIC_PANEL_URL || 'https://panel.ai-seo-company.pl'}/logowanie`;
+
+function UserIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21a8 8 0 0 1 16 0" />
+    </svg>
+  );
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -168,6 +181,25 @@ export default function Header() {
               </button>
             </div>
 
+            {/* Logowanie do panelu klienta i panelu administratora. Drugorzędne
+                wobec „Wyceń projekt”, więc obrys zamiast wypełnienia. Na telefonie
+                zostaje sama ikona 44x44, bo „Wyceń projekt” jest tam ukryty
+                i nagłówek ma miejsce tylko na ikony (17.10.2026). */}
+            <a
+              href={PANEL_LOGIN_URL}
+              className="header-login-btn"
+              aria-label={lang === 'pl' ? 'Zaloguj się do panelu klienta' : 'Log in to the client portal'}
+              style={{
+                color: scrolled ? 'var(--color-text-dark)' : '#FFFFFF',
+                borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.35)',
+                background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
+                transition: 'all 0.7s ease'
+              }}
+            >
+              <UserIcon />
+              <span className="header-login-label">{lang === 'pl' ? 'Zaloguj się' : 'Log in'}</span>
+            </a>
+
             {/* Header Hire Us Pill Button */}
             <a href={hash('kontakt', lang)} className="header-hire-btn" data-cta="header" style={{
               background: scrolled ? '#000000' : '#FFFFFF',
@@ -284,6 +316,9 @@ export default function Header() {
               </li>
               <li style={{ '--delay': '0.65s' }}>
                 <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
+              </li>
+              <li style={{ '--delay': '0.7s' }}>
+                <a href={PANEL_LOGIN_URL} onClick={closeMenu}>{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</a>
               </li>
             </ul>
 
