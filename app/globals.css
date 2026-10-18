@@ -4211,3 +4211,30 @@ aside[id][tabindex="-1"]:focus {
     opacity: 1;
   }
 }
+
+/* ==== Naglowek na tabletach i telefonach poziomo (18.10.2026) ====
+   Pomiar na 26 rozmiarach ekranu: miedzy 769 a ok. 1100 px naglowek mial uklad
+   desktopowy (logo, dwie plakietki, PL/EN, "Zaloguj sie", "Wycen projekt", menu)
+   i sie nie miescil. Plakietki lamaly sie na dwie linie, a przy 810-844 px
+   (iPad Air, iPad Pro 11) "Wycen projekt" rozpadal sie na "Wyc / en / proje / kt".
+   Teraz tekst w pigulkach nigdy sie nie lamie, plakietki ustepuja miejsca do
+   1199 px, a logowanie do 1023 px ma sama ikone 44x44, jak na telefonie. */
+.badge-pill,
+.header-hire-btn,
+.header-login-btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 1199px) {
+  .header-award-badges { display: none !important; }
+}
+
+@media (max-width: 1023px) {
+  .header-login-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+  .header-login-label { display: none; }
+}
