@@ -118,7 +118,7 @@ export default function Process() {
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
               >
-                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.35rem' }}>
+                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.35rem' }}>
                   {tabs[activeTab]}
                 </div>
                 <span style={{ fontWeight: 'bold' }} style={{ fontSize: '1.05rem', color: '#0F172A', display: 'block', marginBottom: '0.35rem', fontFamily: "'Space Grotesk', system-ui, sans-serif" }}>

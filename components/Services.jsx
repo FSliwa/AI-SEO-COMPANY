@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { sectionId } from '@/lib/anchors';
@@ -27,16 +28,38 @@ export default function Services() {
         </Reveal>
 
         {/* KOTA 3 Pillars Row (Screenshot 1) */}
-        <RevealStagger className="kota-pillars-row" delay={0.2}>
+        {/* Znak ✕ stal w tym samym elemencie flex co karta, wiec karty 1 i 2
+            oddawaly mu 34 px (18 px znaku + 16 px odstepu): pomiar 05.10.2026
+            przy 1440 px dal 347 / 347 / 381 px. Teraz ✕ jest osobnym elementem
+            miedzy kartami, karty dziela szerokosc po rowno, a stretch na rzedzie
+            wyrownuje ich wysokosc (po zmianie: 353,1 x 3 przy 1440 px). ✕ to
+            ozdobnik, wiec aria-hidden - bez tego czytnik odczytywal sam znak.
+            ✕ to Reveal z opoznieniem karty po lewej (delayChildren 0,2 s
+            + 0,15 s na karte), zeby wjezdzal tuz za nia jak wczesniej, a nie
+            liczyl sie do kolejki staggera (przesunalby wejscie kart 2 i 3).
+            Ukrycie ✕ ponizej 1024 px (rzad sie zawija) wymaga reguly
+            w app/globals.css przy .kota-divider-x. */}
+        <RevealStagger className="kota-pillars-row" delay={0.2} style={{ alignItems: 'stretch' }}>
           {pillars.map((pillar, idx) => (
-            <RevealItem key={idx} style={{ display: 'flex', alignItems: 'center', flex: 1, gap: '1rem' }}>
-              <div className="kota-pillar-card">
-                <div className="kota-pillar-num">{pillar.num}</div>
-                <div style={{ fontSize: "1.25rem", fontWeight: 600, margin: "0.75rem 0" }}>{pillar.title}</div>
-                <p>{pillar.desc}</p>
-              </div>
-              {idx < pillars.length - 1 && <span className="kota-divider-x">✕</span>}
-            </RevealItem>
+            <Fragment key={idx}>
+              <RevealItem style={{ display: 'flex', flex: 1, minWidth: 260 }}>
+                <div className="kota-pillar-card">
+                  <div className="kota-pillar-num">{pillar.num}</div>
+                  <div style={{ fontSize: "1.25rem", fontWeight: 600, margin: "0.75rem 0" }}>{pillar.title}</div>
+                  <p>{pillar.desc}</p>
+                </div>
+              </RevealItem>
+              {idx < pillars.length - 1 && (
+                <Reveal
+                  className="kota-divider-x"
+                  aria-hidden="true"
+                  delay={0.2 + 0.15 * idx}
+                  style={{ flex: 'none', alignSelf: 'center' }}
+                >
+                  ✕
+                </Reveal>
+              )}
+            </Fragment>
           ))}
         </RevealStagger>
 

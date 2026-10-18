@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 
 const teamData = [
   {
@@ -90,7 +91,7 @@ export default function AboutTeam() {
         const scrollOffset = cards[index].offsetLeft - container.offsetLeft;
         container.scrollTo({
           left: scrollOffset,
-          behavior: 'smooth'
+          behavior: zachowaniePrzewijania()
         });
         setActiveIndex(index);
       }
@@ -123,8 +124,8 @@ export default function AboutTeam() {
               onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
               disabled={activeIndex === 0}
               style={{
-                width: '42px',
-                height: '42px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
                 background: activeIndex === 0 ? 'rgba(0,0,0,0.04)' : '#E8E8ED',
                 border: 'none',
@@ -135,7 +136,7 @@ export default function AboutTeam() {
                 color: activeIndex === 0 ? '#B0B0B5' : '#1D1D1F',
                 transition: 'all 0.25s ease'
               }}
-              aria-label="Previous slide"
+              aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6"/>
@@ -146,8 +147,8 @@ export default function AboutTeam() {
               onClick={() => scrollTo(Math.min(teamData.length - 1, activeIndex + 1))}
               disabled={activeIndex >= teamData.length - 1}
               style={{
-                width: '42px',
-                height: '42px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
                 background: activeIndex >= teamData.length - 1 ? 'rgba(0,0,0,0.04)' : '#E8E8ED',
                 border: 'none',
@@ -158,7 +159,7 @@ export default function AboutTeam() {
                 color: activeIndex >= teamData.length - 1 ? '#B0B0B5' : '#1D1D1F',
                 transition: 'all 0.25s ease'
               }}
-              aria-label="Next slide"
+              aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 18l6-6-6-6"/>
@@ -267,7 +268,7 @@ export default function AboutTeam() {
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '1.25rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                       <div className="testimonial-avatar" style={{
-                        width: '42px', height: '42px', borderRadius: '50%', background: '#000000',
+                        width: '44px', height: '44px', borderRadius: '50%', background: '#000000',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFF', fontWeight: 700, fontSize: '0.9rem'
                       }}>
                         {item.initials}

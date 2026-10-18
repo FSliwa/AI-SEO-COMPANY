@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
@@ -138,6 +138,83 @@ const MOSAIC = [
 { src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 3 months' }
 ];
 
+/* Uklad zmierzony ze zrzutu sciany ghost.org: piec stosow wyrownanych do
+   dolu, o roznej wysokosci, przez co gorna krawedz jest poszarpana.
+   Kazda marka stoi nad swoim panelem GSC (Madame Thai, ASE-BOT, Staniax),
+   panele zamykaja kolumny od dolu.
+
+   UWAGA - to jest pulapka, ktora juz raz zadziala: uklad piecio-kolumnowy
+   NIE czyta tablicy MOSAIC, tylko te sztywna liste kluczy. Dopisanie kafla
+   do MOSAIC bez dopisania go TUTAJ konczy sie tym, ze kafel jest w
+   wariantach 2/3/4 kolumn, ale nie ma go w wariancie 5 kolumn, czyli znika
+   na kazdym ekranie >= 1280 px. Klucz to nazwa pliku bez rozszerzenia.
+   `filter(Boolean)` chroni przed literowka w kluczu - wtedy kafel po prostu
+   nie wejdzie, zamiast wywalic render.
+
+   Wysokosci stosow w jednostkach szerokosci kolumny (suma h/w kafli):
+   1.82 / 1.81 / 1.78 / 1.47 / 1.96. Kafel Frazy trafil do drugiej kolumny,
+   bo bez niego miala 1.15 i odstawala od reszty.
+   Ponizej 1280px round-robin: hero najpierw, GSC na koncu. */
+function stosyDlaKolumn(cols) {
+  if (cols === 5) {
+    const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
+    return [
+      ['sta-a-v4', 'sta-blog-pl4', 'staniax'],
+      ['frazy-a', 'mad-a-v2', 'madamethai'],
+      ['own-hero-pl4', 'own-blog-pl7', 'ai-seo-company'],
+      ['ase-a-v2', 'fix-a-v2', 'ase-bot'],
+      ['elkat-a-v2', 'tql-a', 'tql'],
+    ].map((stack) => stack.map((k) => byKey[k])).map((stack) => stack.filter(Boolean));
+  }
+  const stacks = Array.from({ length: cols }, () => []);
+  MOSAIC.forEach((tile, i) => stacks[i % cols].push(tile));
+  return stacks;
+}
+
+/* Sciana w HTML z serwera od razu w kazdym wariancie (05.10.2026).
+   Bylo: useState(4) + useEffect z window.innerWidth, wiec serwer zawsze
+   renderowal 4 kolumny, a po hydracji JS przestawial je na 5 (>= 1280 px)
+   albo 2 (< 640 px). Zmierzone: sciana 925 -> 575 px przy 1440 i
+   259 -> 888 px przy 390, wszystko pod portfolio skakalo o -350 / +576 px.
+   Wejscie z kotwica /#kontakt (i #cennik, #blog, #wyniki, /en#contact)
+   konczylo przewijanie wg ukladu z serwera: przy 1440 naglowek wyceny
+   226 px nad oknem; to samo przy przejsciu Linkiem ze stopki podstrony.
+   Teraz kazdy wariant jest liczony raz na poziomie modulu (ten sam wynik na
+   serwerze i w przegladarce), a widoczny jest dokladnie jeden - wybiera go
+   @media w STYL_PORTFOLIO, wiec pierwsza klatka ma juz koncowa liczbe
+   kolumn i nic sie nie przelicza po hydracji ani przy resize.
+   Wybrane zamiast rezerwacji wysokosci w CSS (wzor z proporcji kafli trzeba
+   by przeliczac przy kazdej zmianie MOSAIC, a stale 575/888 px ucinaly
+   sciane przy 1920 i 430) i zamiast ponownego przewiniecia w JS (lata
+   skutek, nie przyczyne, i zalezy od kolejnosci zdarzen). Koszt: 45
+   dodatkowych <img> z display: none - loading="lazy" nie pobiera ich, bo
+   ukryty element nie ma pudelka, a ten sam adres i tak bylby z cache;
+   display: none zdejmuje je tez z drzewa dostepnosci. Progi @media to te
+   same co dawniej w JS (window.innerWidth i @media licza szerokosc okna
+   razem z paskiem przewijania). */
+const WARIANTY_SCIANY = [2, 3, 4, 5].map((cols) => ({ cols, columns: stosyDlaKolumn(cols) }));
+
+/* Arkusz komponentu: wybor wariantu sciany i przycisk pauzy filmu.
+   href + precedence = React 19 przenosi <style> do <head> (takze w HTML
+   z serwera), wiec reguly dzialaja od pierwszej klatki. Selektory z
+   [data-kolumny] maja wyzsza specyficznosc niz .portfolio-mosaic
+   { display: grid } w globals.css, kolejnosc arkuszy nie ma znaczenia.
+   Przycisk filmu: wypelnienie rgba(0,0,0,.6) na ciemnych klatkach filmu
+   ma tylko 1,0-2,1:1, dlatego biala obwodka (6,1-14,9:1 wobec zmierzonego
+   tla rogu); biala ikona na wypelnieniu 16,2-21:1. Globalny obrys fokusu
+   #185FA5 ginie na ciemnym filmie - tu bialy obrys z granatowa obwodka,
+   widoczny i na filmie, i na jasnym tle sekcji. */
+const STYL_PORTFOLIO = `
+.portfolio-mosaic[data-kolumny]{display:none}
+@media (max-width:639.98px){.portfolio-mosaic[data-kolumny="2"]{display:grid}}
+@media (min-width:640px) and (max-width:1023.98px){.portfolio-mosaic[data-kolumny="3"]{display:grid}}
+@media (min-width:1024px) and (max-width:1279.98px){.portfolio-mosaic[data-kolumny="4"]{display:grid}}
+@media (min-width:1280px){.portfolio-mosaic[data-kolumny="5"]{display:grid}}
+.portfolio-video-toggle{position:absolute;right:12px;bottom:12px;width:44px;height:44px;display:grid;place-items:center;padding:0;border-radius:50%;border:2px solid rgba(255,255,255,.85);background:rgba(0,0,0,.6);color:#fff;cursor:pointer;transition:background .2s ease}
+.portfolio-video-toggle:hover{background:rgba(0,0,0,.78)}
+.portfolio-video-toggle:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px #0F172A}
+`;
+
 export default function Portfolio() {
   const [activeModal, setActiveModal] = useState(null);
   const lang = useLocale();
@@ -145,55 +222,50 @@ export default function Portfolio() {
   /* Ghost renderuje pięć sztywnych stosów w DOM i wyrównuje je do DOŁU
      (align-items: end). Że mają różną wysokość, górna krawędź ściany jest
      poszarpana, a kontener ją przycina — to jest cały efekt. CSS multi-column
-     tego nie odtworzy, bo z definicji wyrównuje kolumny, więc liczbę stosów
-     trzeba znać w JS. */
-  const [cols, setCols] = useState(4);
+     tego nie odtworzy, bo z definicji wyrównuje kolumny, więc stosy dla
+     każdej liczby kolumn są gotowe w WARIANTY_SCIANY, a wybiera je @media. */
+
+  /* Film ASE-BOT: pauza i prefers-reduced-motion (05.10.2026).
+     Pomiar na :3106/:3107 (/ i /en, 1440 i 390): film 44 s startowal sam,
+     zapetlal sie, nie mial kontrolek ani przycisku, klik w film go nie
+     zatrzymywal, a przy reduce gral tak samo (t 2,48 -> 5,48 s w 3 s) -
+     WCAG 2.2.2. Przy reduce pause() przed pierwszym odtworzeniem kasuje
+     tez oczekujacy autoplay (flaga "can autoplay" w specyfikacji HTML).
+     setVideoPaused(v.paused) jest potrzebne, bo pause() na filmie, ktory
+     jeszcze nie wystartowal (poza kadrem), nie wysyla zdarzenia pause, a
+     zdarzenie play sprzed hydracji React tez przegapil. Dalej stan idzie
+     wylacznie za zdarzeniami filmu (onPlay/onPause), nie za kliknieciem. */
+  const videoRef = useRef(null);
+  const [videoPaused, setVideoPaused] = useState(false);
 
   useEffect(() => {
-    const calc = () => {
-      const w = window.innerWidth;
-      setCols(w >= 1280 ? 5 : w >= 1024 ? 4 : w >= 640 ? 3 : 2);
-    };
-    calc();
-    window.addEventListener('resize', calc);
-    return () => window.removeEventListener('resize', calc);
+    const v = videoRef.current;
+    if (!v) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Weryfikacja etapu 5 (14.10.2026): film stal na t=0 i pokazywal plakat
+      // z innego projektu (Chrome) albo czarny kadr (WebKit). Kadr z 20. sekundy
+      // pokazuje panel ASE-BOT; preload auto jest potrzebny w WebKit.
+      v.pause();
+      v.preload = 'auto';
+      v.currentTime = 20;
+    }
+    setVideoPaused(v.paused);
   }, []);
 
-  /* Uklad zmierzony ze zrzutu sciany ghost.org: piec stosow wyrownanych do
-     dolu, o roznej wysokosci, przez co gorna krawedz jest poszarpana.
-     Kazda marka stoi nad swoim panelem GSC (Madame Thai, ASE-BOT, Staniax),
-     panele zamykaja kolumny od dolu.
-
-     UWAGA - to jest pulapka, ktora juz raz zadziala: uklad piecio-kolumnowy
-     NIE czyta tablicy MOSAIC, tylko te sztywna liste kluczy. Dopisanie kafla
-     do MOSAIC bez dopisania go TUTAJ konczy sie tym, ze kafel jest w HTML z
-     serwera (SSR startuje z cols = 4 i idzie round-robinem), ale znika po
-     hydracji na kazdym ekranie >= 1280 px. Klucz to nazwa pliku bez
-     rozszerzenia. `filter(Boolean)` chroni przed literowka w kluczu -
-     wtedy kafel po prostu nie wejdzie, zamiast wywalic render.
-
-     Wysokosci stosow w jednostkach szerokosci kolumny (suma h/w kafli):
-     1.82 / 1.81 / 1.78 / 1.47 / 1.96. Kafel Frazy trafil do drugiej kolumny,
-     bo bez niego miala 1.15 i odstawala od reszty.
-     Ponizej 1280px round-robin: hero najpierw, GSC na koncu. */
-  const columns = (() => {
-    if (cols === 5) {
-      const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
-      return [
-        ['sta-a-v4', 'sta-blog-pl4', 'staniax'],
-        ['frazy-a', 'mad-a-v2', 'madamethai'],
-        ['own-hero-pl4', 'own-blog-pl7', 'ai-seo-company'],
-        ['ase-a-v2', 'fix-a-v2', 'ase-bot'],
-        ['elkat-a-v2', 'tql-a', 'tql'],
-      ].map((stack) => stack.map((k) => byKey[k])).map((stack) => stack.filter(Boolean));
+  const przelaczWideo = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      const odtwarzanie = v.play();
+      if (odtwarzanie && typeof odtwarzanie.catch === 'function') odtwarzanie.catch(() => {});
+    } else {
+      v.pause();
     }
-    const stacks = Array.from({ length: cols }, () => []);
-    MOSAIC.forEach((tile, i) => stacks[i % cols].push(tile));
-    return stacks;
-  })();
+  };
 
   return (
     <section className="portfolio" id="portfolio" style={{ background: '#F5F5F7', padding: '7rem 0 5rem' }}>
+      <style href="portfolio-sciana-wideo" precedence="default">{STYL_PORTFOLIO}</style>
       <div className="container" style={{ maxWidth: '1440px' }}>
         
         {/* Nagłówek w układzie Ghosta: mały eyebrow w kolorze akcentu, duży
@@ -221,18 +293,52 @@ export default function Portfolio() {
           </div>
           <div className="portfolio-head-visual">
             {/* Film z realizacji ASE-BOT (39,5 MB MP4 skompresowany do 1,9 MB,
-                1280 px, bez audio). Wyciszony autoplay w petli - bez kontrolek,
-                jak wizual w sekcji Ghosta. */}
-            <video
-              src="/projects/ase-bot-demo.mp4"
-              poster="/projects/mosaic/feature.webp"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label={lang === 'pl' ? 'Prezentacja platformy tradingowej ASE-BOT zaprojektowanej przez AI SEO COMPANY' : 'Showcase of the ASE-BOT trading platform designed by AI SEO COMPANY'}
-            />
+                1280 px, bez audio). Wyciszony autoplay w petli - bez kontrolek
+                przegladarki, jak wizual w sekcji Ghosta, ale z wlasnym
+                przyciskiem pauzy (WCAG 2.2.2, opis przy videoRef). */}
+            {/* Ramka ma dokladnie szerokosc filmu (ta sama formula co
+                .portfolio-head-visual video w globals.css), bo wrapper jest
+                position: static i szerszy od filmu: przy 1440x600 film ma
+                619 px w kolumnie 736 px, a przycisk liczony od wrappera
+                wypadal poza film (x 1336-1380 przy krawedzi filmu 1333). */}
+            <div style={{ position: 'relative', width: 'min(100%, calc(58vh * 16 / 9))', marginInline: 'auto' }}>
+              <video
+                ref={videoRef}
+                src="/projects/ase-bot-demo.mp4"
+                poster="/projects/mosaic/feature.webp"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                onPlay={() => setVideoPaused(false)}
+                onPause={() => setVideoPaused(true)}
+                onClick={przelaczWideo}
+                style={{ cursor: 'pointer' }}
+                aria-label={lang === 'pl' ? 'Prezentacja platformy tradingowej ASE-BOT zaprojektowanej przez AI SEO COMPANY' : 'Showcase of the ASE-BOT trading platform designed by AI SEO COMPANY'}
+              />
+              {/* Przelacznik wg wzorca ARIA: etykieta stala, stan niesie
+                  aria-pressed (wcisniety = film wstrzymany). Zmienna etykieta
+                  razem z aria-pressed dawalaby czytnikowi sprzeczny komunikat
+                  ("Odtworz wideo, wcisniety"). Ikona zmienia sie wizualnie. */}
+              <button
+                type="button"
+                className="portfolio-video-toggle"
+                onClick={przelaczWideo}
+                aria-pressed={videoPaused}
+                aria-label={lang === 'pl' ? 'Wstrzymaj wideo' : 'Pause video'}
+              >
+                {videoPaused ? (
+                  <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginLeft: '2px' }}>
+                    <path d="M7 4.5v15l12.5-7.5z" />
+                  </svg>
+                ) : (
+                  <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -247,7 +353,10 @@ export default function Portfolio() {
           headline metric and its sentence are in the strip underneath, and the
           full case studies still open in the same modal — now from a tile. */}
       <div style={{ position: 'relative', width: '100%', padding: '0 0 3rem' }}>
-        <div className="portfolio-mosaic" style={{ ['--mosaic-cols']: cols }}>
+        {/* Cztery warianty sciany (2/3/4/5 kolumn), widoczny jeden - wybiera
+            @media w STYL_PORTFOLIO (opis przy WARIANTY_SCIANY). */}
+        {WARIANTY_SCIANY.map(({ cols, columns }) => (
+        <div className="portfolio-mosaic" data-kolumny={cols} key={cols} style={{ ['--mosaic-cols']: cols }}>
           {columns.map((column, ci) => (
           <div className="portfolio-mosaic-col" key={ci}>
           {column.map((tile) => (
@@ -267,6 +376,7 @@ export default function Portfolio() {
           </div>
           ))}
         </div>
+        ))}
 
         {/* Every line the carousel cards showed, kept visible instead of hidden
             behind a hover state. */}

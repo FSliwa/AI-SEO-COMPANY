@@ -353,7 +353,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     </tr>
                     <tr>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Full-service (Ai-seo-company)</td>
-                      <td style={{ padding: '1rem' }}>Subscription model (from <span style={{ fontWeight: 'bold' }}>€440 net/month</span>)</td>
+                      <td style={{ padding: '1rem' }}>Subscription model (from <span style={{ fontWeight: 'bold' }}>€450 net/month</span>)</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, Next.js/React, CRM and payment integrations, SEO audit, optional SEO subscription; in the Booster Pack a <span style={{ fontWeight: 'bold' }}>new website for €0</span></td>
                       <td style={{ padding: '1rem' }}>Realistic delivery time</td>
                       <td style={{ padding: '1rem' }}>B2B companies, e-commerce</td>
@@ -422,9 +422,9 @@ export default async function ArticleWebsitePricingPage({ params }) {
               
               <p><span style={{ fontWeight: 'bold' }}>Current packages (net + VAT):</span></p>
               <ul>
-                <li><span style={{ fontWeight: 'bold' }}>SEO Standard</span> – <span style={{ fontWeight: 'bold' }}>€440 / month</span></li>
-                <li><span style={{ fontWeight: 'bold' }}>SEO Premium</span> – <span style={{ fontWeight: 'bold' }}>€580 / month</span></li>
-                <li><span style={{ fontWeight: 'bold' }}>Booster Pack</span> – <span style={{ fontWeight: 'bold' }}>€580 / month</span> (min. 3 months) – <span style={{ fontWeight: 'bold' }}>new professional website for €0</span> in the package + full positioning + SSL + server + technical care.</li>
+                <li><span style={{ fontWeight: 'bold' }}>SEO Standard</span> – <span style={{ fontWeight: 'bold' }}>€450 / month</span></li>
+                <li><span style={{ fontWeight: 'bold' }}>SEO Premium</span> – <span style={{ fontWeight: 'bold' }}>€590 / month</span></li>
+                <li><span style={{ fontWeight: 'bold' }}>Booster Pack</span> – <span style={{ fontWeight: 'bold' }}>€590 / month</span> (min. 3 months) – <span style={{ fontWeight: 'bold' }}>new professional website for €0</span> in the package + full positioning + SSL + server + technical care.</li>
               </ul>
               
               <p>If you’re planning a project, start with a free consultation. Prepare the business goal, list of key features, and examples of websites you like. Details of the offer and the option to schedule a call are available on the <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>website design</Link> page.</p>

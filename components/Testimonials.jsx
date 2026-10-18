@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 
 const reviewsData = [
   {
@@ -109,13 +110,13 @@ export default function Testimonials() {
 
   const scrollPrev = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+      carouselRef.current.scrollBy({ left: -400, behavior: zachowaniePrzewijania() });
     }
   };
 
   const scrollNext = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+      carouselRef.current.scrollBy({ left: 400, behavior: zachowaniePrzewijania() });
     }
   };
 
@@ -150,8 +151,8 @@ export default function Testimonials() {
               <button 
                 onClick={scrollPrev}
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '50%',
                   background: '#E8E8ED',
                   border: 'none',
@@ -163,7 +164,7 @@ export default function Testimonials() {
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
                 onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
-                aria-label="Previous"
+                aria-label={lang === 'pl' ? 'Poprzednia opinia' : 'Previous'}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 18l-6-6 6-6" />
@@ -173,8 +174,8 @@ export default function Testimonials() {
               <button 
                 onClick={scrollNext}
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '50%',
                   background: '#E8E8ED',
                   border: 'none',
@@ -186,7 +187,7 @@ export default function Testimonials() {
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
                 onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
-                aria-label="Next"
+                aria-label={lang === 'pl' ? 'Następna opinia' : 'Next'}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 18l6-6-6-6" />
@@ -299,11 +300,11 @@ export default function Testimonials() {
                     <button 
                       onClick={() => setExpandedIndex(isExpanded ? null : idx)}
                       style={{ 
-                        width: '36px', height: '36px', borderRadius: '50%', 
+                        width: '44px', height: '44px', flexShrink: 0, borderRadius: '50%', 
                         background: 'rgba(255,255,255,0.25)', 
                         backdropFilter: 'blur(10px)',
                         display: 'flex', justifyContent: 'center', alignItems: 'center',
-                        border: 'none', cursor: 'pointer', outline: 'none'
+                        border: 'none', cursor: 'pointer'
                       }}
                       aria-label={lang === 'pl' ? (isExpanded ? 'Zwiń opinię' : 'Rozwiń opinię') : (isExpanded ? 'Collapse review' : 'Expand review')}
                     >

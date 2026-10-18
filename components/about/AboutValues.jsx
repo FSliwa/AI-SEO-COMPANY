@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
+import { Fragment } from 'react';
 
 export default function AboutValues() {
   const lang = useLocale();
@@ -47,15 +48,21 @@ export default function AboutValues() {
 
         {/* KOTA 3 Pillars Row */}
         <RevealStagger className="kota-pillars-row" delay={0.2} style={{ alignItems: 'stretch' }}>
+          {/* Ten sam uklad co w Services.jsx (05.10.2026): ✕ byl w elemencie flex
+              karty, wiec karty 1 i 2 byly o 34 px wezsze od trzeciej (347 / 347 /
+              381 px przy 1440). Teraz ✕ jest osobnym, ozdobnym elementem miedzy
+              kartami (aria-hidden), a karty dziela szerokosc po rowno. */}
           {valuesData.map((pillar, idx) => (
-            <RevealItem key={idx} style={{ display: 'flex', alignItems: 'stretch', flex: 1, gap: '1rem' }}>
-              <div className="kota-pillar-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <div className="kota-pillar-num">{pillar.num}</div>
-                <h4>{pillar.title}</h4>
-                <p style={{ flex: 1 }}>{pillar.desc}</p>
-              </div>
-              {idx < valuesData.length - 1 && <span className="kota-divider-x" style={{ alignSelf: 'center' }}>✕</span>}
-            </RevealItem>
+            <Fragment key={idx}>
+              <RevealItem style={{ display: 'flex', alignItems: 'stretch', flex: 1, minWidth: 260 }}>
+                <div className="kota-pillar-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  <div className="kota-pillar-num">{pillar.num}</div>
+                  <h4>{pillar.title}</h4>
+                  <p style={{ flex: 1 }}>{pillar.desc}</p>
+                </div>
+              </RevealItem>
+              {idx < valuesData.length - 1 && <span className="kota-divider-x" aria-hidden="true" style={{ flex: 'none', alignSelf: 'center' }}>✕</span>}
+            </Fragment>
           ))}
         </RevealStagger>
 

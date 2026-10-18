@@ -117,27 +117,32 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <h2 id="jak-opinie-wplywaja-na-seo">How Google reviews impact SEO, CTR, and sales</h2>
                   <p>Reviews affect <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO visibility</Link> through three independent mechanisms: freshness signal, search result click-through rates (CTR) via stars, and content delivering unique keywords and sales arguments.</p>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '2rem' }}>
-                    <thead>
-                      <tr style={{ background: '#F5F5F7', textAlign: 'left' }}>
-                        <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Metric</th>
-                        <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Small Business Goal</th>
-                        <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Medium Business Goal</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>New reviews / month</td>
-                        <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>5–10</td>
-                        <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>15–30</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Average rating</td>
-                        <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>generally high</td>
-                        <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>≥ 4.5</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  {/* Opakowanie z wlasnym przewijaniem - tak samo jak dwie pozostale
+                      tabele tego wpisu. Bez niego tabela (636 px) wystawala poza
+                      ekran telefonu i byla ucinana przez overflow na <main>. */}
+                  <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '2rem' }}>
+                      <thead>
+                        <tr style={{ background: '#F5F5F7', textAlign: 'left' }}>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Metric</th>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Small Business Goal</th>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Medium Business Goal</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>New reviews / month</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>5–10</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>15–30</td>
+                        </tr>
+                        <tr>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Average rating</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>generally high</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>≥ 4.5</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
                   <h2 id="co-jest-zabronione">What is prohibited and the consequences of rule-breaking</h2>
                   <p>Google precisely defines what is not allowed. Violations do not end with a warning, but with immediate action from algorithms or moderators. Do not buy reviews, offer incentives, or set up review kiosks.</p>

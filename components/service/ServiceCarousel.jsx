@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { Reveal } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 
 export default function ServiceCarousel({ tag, title, subtitle, items }) {
   const lang = useLocale();
@@ -21,12 +22,12 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
 
   const scrollPrev = () => {
     if (!containerRef.current) return;
-    containerRef.current.scrollBy({ left: -420, behavior: 'smooth' });
+    containerRef.current.scrollBy({ left: -420, behavior: zachowaniePrzewijania() });
   };
 
   const scrollNext = () => {
     if (!containerRef.current) return;
-    containerRef.current.scrollBy({ left: 420, behavior: 'smooth' });
+    containerRef.current.scrollBy({ left: 420, behavior: zachowaniePrzewijania() });
   };
 
   return (

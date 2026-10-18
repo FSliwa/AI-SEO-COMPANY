@@ -112,6 +112,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif !important;
 }
 
+/* Naglowki bez pojedynczego wyrazu w ostatniej linii (05.10.2026). Pomiar na
+   10 szablonach x 39 okien: sierota w 32-39 widokach na szablon ("...ocena |
+   Google", "...bez ukrytych | kosztow", "Wycenmy | go!"). text-wrap: balance
+   wyrownuje dlugosc linii, nie zmieniajac tresci ani rozmiaru; przegladarki
+   bez obslugi (Safari < 17.5) lamia po staremu. Hero strony glownej jest
+   wylaczony - jego lamanie jest czescia zatwierdzonej kompozycji. */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+.hero-en-title,
+.hero-en-title * {
+  text-wrap: wrap;
+}
+
 /* KOTA Ambient Mesh Gradient Blur Overlay */
 body::before {
   content: '';
@@ -139,7 +154,10 @@ button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
   border: none;
-  outline: none;
+  /* outline: none usuniete (05.10.2026): zerowalo obrys fokusu wszystkich
+     przyciskow i pol, a arkusz mial tylko jedna regule :focus-visible - przy
+     nawigacji klawiatura fokus na ≡, PL/EN, FAQ, karuzelach i wysylce
+     formularza byl niewidoczny (WCAG 2.4.7). Wlasny obrys jest na koncu pliku. */
   background: none;
 }
 
@@ -221,6 +239,18 @@ button, input, select, textarea {
   transition: all var(--transition-normal);
   cursor: pointer;
   white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Na telefonie napis przycisku moze sie zlamac (05.10.2026). "Zapytaj o
+   wycene - odpowiedz w 24 h" ma w jednej linii 366 px: przy 320-375 px
+   przycisk wystawal poza ekran i byl uciety przez overflow na <main>. */
+@media (max-width: 480px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    text-wrap: balance;
+  }
 }
 
 .btn-primary {
@@ -280,6 +310,9 @@ button, input, select, textarea {
   font-weight: 700;
   color: var(--color-text-dark);
   letter-spacing: -0.02em;
+  /* min-height 44 px: prog dotykowy ze skilla viewports. Naglowek ma 102 px,
+     wiec logo nie podnosi jego wysokosci - rosnie tylko obszar klikalny. */
+  min-height: 44px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -292,7 +325,7 @@ button, input, select, textarea {
 }
 
 .badge-pill {
-  font-size: 0.725rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
@@ -334,6 +367,10 @@ button, input, select, textarea {
 
 .lang-btn.active {
   color: var(--color-text-dark);
+  /* Aktywny jezyk oznaczony nie tylko kolorem (WCAG 1.4.1, 05.10.2026). */
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
 }
 
 /* Header Hire Us Pill Button */
@@ -401,6 +438,9 @@ button, input, select, textarea {
   cursor: pointer;
   transition: all var(--transition-fast);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  /* Nie kurczy sie w ciasnym naglowku: przy 810-834 px flex sciskal go
+     ponizej progu dotyku 44 px. */
+  flex-shrink: 0;
 }
 
 .kota-menu-trigger:hover {
@@ -508,7 +548,10 @@ button, input, select, textarea {
 .kota-fullscreen-footer {
   margin-top: auto;
   display: flex;
-  gap: 4rem;
+  /* Zawijanie: po przywroceniu widocznosci (keyframes fadeInOverlay nizej)
+     przy 390 px adres e-mail i numer lamaly sie w srodku przy gap 4rem. */
+  flex-wrap: wrap;
+  gap: 1.25rem 4rem;
   opacity: 0;
   animation: fadeInOverlay 0.6s ease forwards;
   animation-delay: 0.8s;
@@ -524,12 +567,19 @@ button, input, select, textarea {
 
 .footer-label {
   font-size: 0.85rem;
-  color: #333336;
+  /* #333336 na tle menu #030712 mialo 1,60:1 - etykiety "Napisz do nas" /
+     "Zadzwon" byly praktycznie niewidoczne. #A1A1AA = 7,86:1. */
+  color: #A1A1AA;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .footer-value {
+  /* Prog dotykowy 44 px - bylo 29 px (sam wiersz tekstu). */
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  min-height: 44px;
   color: #FFFFFF;
   font-weight: 500;
   font-size: 1.1rem;
@@ -655,6 +705,15 @@ button, input, select, textarea {
 section, aside.pricing, aside.contact, aside.why-us {
   padding-top: 5.5rem !important;
   padding-bottom: 5.5rem !important;
+}
+
+/* Biblioteka wpisow nie ma okruszkow ani .subpage-hero, wiec jej pierwsza
+   sekcja dostawala ogolne 5,5 / 3,5 rem i H1 zaczynal sie pod stalym
+   naglowkiem (przy 390 i 768 px gorne 7 px liter pod paskiem). Odstep =
+   wysokosc naglowka + ten sam rytm sekcji. !important, bo regula ogolna
+   wyzej tez go ma (05.10.2026). */
+.blog-library-top {
+  padding-top: calc(89px + 5.5rem) !important;
 }
 
 .section-header {
@@ -966,11 +1025,23 @@ section, aside.pricing, aside.contact, aside.why-us {
   font-size: 1.5rem;
   color: var(--color-text-muted);
   font-weight: 300;
+  flex: none;
+  align-self: center;
+}
+
+/* Ponizej 1024 px rzad filarow sie zawija; osobny ✕ (Services.jsx,
+   AboutValues.jsx) zostawalby osierocony na koncu linii albo przy samej
+   krawedzi ekranu (5,7 px przy 320). To ozdobnik - w ukladzie pionowym go nie
+   ma (05.10.2026). */
+@media (max-width: 1023px) {
+  .kota-divider-x {
+    display: none;
+  }
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -1796,90 +1867,158 @@ section, aside.pricing, aside.contact, aside.why-us {
   padding: 7rem 0;
 }
 
-.blog-timeline-container {
-  position: relative;
-  max-width: 900px;
+/* --- Blog: indeks redakcyjny -------------------------------------------
+   Zastapil pionowa os czasu. Powod w components/Blog.jsx: kregoslup
+   i naprzemienne strony kodowaly nastepstwo, a tresc to trzy najnowsze
+   wpisy, czyli lista rankingowa, nie opowiesc. Doszedl koszt: 1735 px
+   wysokosci na trzy zajawki przy oknie 1280x800.
+
+   Caly wiersz jest linkiem, wiec cel dotykowy ma wysokosc wiersza, a nie
+   przycisku. Akcent pomaranczowy wystepuje w sekcji DOKLADNIE raz: kreska
+   przy najnowszym wpisie. */
+.blog-index {
+  max-width: 940px;
   margin: 0 auto;
-  padding: 2rem 0;
+  border-top: 1px solid var(--color-border);
 }
 
-.blog-timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(15, 23, 42, 0.12);
-  transform: translateX(-50%);
+.blog-index-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem 2.5rem;
+  align-items: baseline;
+  padding: 1.75rem 0 1.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+  /* Kreska akcentu jest tu przezroczysta, zeby wiersze nie przeskakiwaly
+     w poziomie po wyroznieniu najnowszego. */
+  border-left: 2px solid transparent;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
-.blog-timeline-item {
-  position: relative;
-  margin-bottom: 3.5rem;
-  width: 46%;
+.blog-index-row--latest {
+  border-left-color: var(--color-cta);
 }
 
-.blog-timeline-item.left {
-  left: 0;
+.blog-index-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
 }
 
-.blog-timeline-item.right {
-  left: 54%;
-}
-
-.blog-timeline-node {
-  position: absolute;
-  top: 1.5rem;
-  background: #FFFFFF;
-  border: 1px solid var(--color-border);
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-sm);
-  z-index: 2;
-}
-
-.blog-timeline-item.left .blog-timeline-node {
-  right: -25%;
-  transform: translateX(50%);
-}
-
-.blog-timeline-item.right .blog-timeline-node {
-  left: -25%;
-  transform: translateX(-50%);
-}
-
-.blog-timeline-date {
-  font-size: 0.75rem;
+.blog-index-title {
+  margin: 0;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(1.25rem, 2.1vw, 1.75rem);
   font-weight: 600;
-  color: var(--color-text-muted);
-}
-
-.blog-timeline-card {
-  background: #FFFFFF;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 2.25rem;
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition-fast);
-}
-
-.blog-timeline-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.blog-timeline-card h3 {
-  font-size: 1.2rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   color: var(--color-text-dark);
-  margin-bottom: 0.75rem;
-  line-height: 1.35;
+  transition: color var(--transition-fast);
 }
 
-.blog-timeline-card p {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.25rem;
+/* Tytul jest teraz <h3>, a globalna regula h1-h6 narzuca Inter z !important.
+   Jedyny sposob, zeby zostal krojem z projektu indeksu, to !important o wyzszej
+   specyficznosci - wyglad wiersza ma byc dokladnie taki jak przed zmiana tagu. */
+.blog-index .blog-index-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif !important;
 }
+
+/* Wezsze pole etykiety karuzeli "Dlaczego my" ponizej 360 px: slowo
+   "ROZPOZNAWALNOSC" (ok. 148 px) nie miescilo sie w 134 px i bylo ucinane, a
+   lamanie w srodku wyrazu (overflow-wrap: anywhere) rozbijalo je na dwie
+   czesci. Od 360 px w gore padding bez zmian. */
+@media (max-width: 359.98px) {
+  #whyus-carousel {
+    --whyus-tag-pad: 0.5rem;
+  }
+}
+
+.blog-index-standfirst {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  max-width: 68ch;
+}
+
+.blog-index-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.blog-index-time {
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+/* Hover jest dodatkiem, nie jedyna sciezka: wiersz jest linkiem niezaleznie
+   od wskaznika, a klawiatura ma wlasny widoczny stan nizej. */
+@media (hover: hover) {
+  .blog-index-row:hover {
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .blog-index-row:hover .blog-index-title {
+    color: var(--color-cta);
+  }
+}
+
+.blog-index-row:focus-visible {
+  outline: 2px solid var(--color-cta);
+  outline-offset: -2px;
+}
+
+.blog-index-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* Telefon: metryki schodza pod tytul i ida w jednej linii, zamiast sciskac
+   kolumne tytulu do polowy szerokosci. */
+@media (max-width: 767.98px) {
+  .blog-index-row {
+    /* minmax(0, 1fr), nie 1fr: przy powiekszonym tekscie (175-200% w
+       Samsung Internet / Firefox) niepodzielna metryka rozpychala kolumne
+       ponad ekran i tytul, zajawka i data byly ucinane. */
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 1.5rem 0 1.5rem 1rem;
+  }
+
+  .blog-index-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.75rem;
+    white-space: normal;
+  }
+
+  /* Czas i data lamia sie miedzy soba, nie w srodku daty. */
+  .blog-index-time,
+  .blog-index-date {
+    white-space: nowrap;
+  }
+
+  .blog-index-standfirst {
+    font-size: 0.95rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-index-row,
+  .blog-index-title {
+    transition: none;
+  }
+}
+
 
 /* --- 11. Contact Form --- */
 .contact {
@@ -1995,6 +2134,27 @@ section, aside.pricing, aside.contact, aside.why-us {
   transition: all var(--transition-fast);
 }
 
+/* Na telefonie i tablecie przycisk pojawia sie dopiero po przewinieciu
+   pierwszego ekranu (05.10.2026). Stal na stale w prawym dolnym rogu, a przy
+   360x640 i 375x667 to jest dokladnie miejsce H1 hero; na podstronach
+   zaslanial H1 albo zdanie wstepne (pomiar: 4-9 widokow na szablon). Pierwszy
+   ekran ma wlasne wezwanie do dzialania, wiec duplikat nic tam nie wnosi.
+   Ukryty jest od pierwszej klatki (bez mrugniecia przed hydracja); klase
+   .is-visible ustawia Footer.jsx, a blok <noscript> w tym samym pliku
+   przywraca przycisk, gdy JavaScript nie dziala. Prog 1279 px, nie 900:
+   przy 1024x768 przycisk ladowal na literze "O" napisu SEO, a w naglowku
+   i w hero sa juz dwa takie same wezwania. Od 1280 px - bez zmian. */
+@media (max-width: 1279px) {
+  /* :not(:focus) - przycisk z fokusem nie znika (inaczej przegladarka zdejmuje
+     fokus z ukrytego elementu, WCAG 2.4.7; przeglad 05.10.2026). */
+  .kota-floating-cta:not(.is-visible):not(:focus) {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    pointer-events: none;
+  }
+}
+
 .kota-floating-cta:hover {
   background: var(--color-cta);
   transform: translateY(-4px) scale(1.03);
@@ -2042,6 +2202,37 @@ body.has-cookie-banner .kota-floating-cta {
 .footer-links a {
   font-size: 0.9rem;
   transition: color var(--transition-fast);
+}
+
+/* Prog dotyku 44 px tylko tam, gdzie sie dotyka (05.10.2026): linki stopki
+   maja 17 px wysokosci, telefon i e-mail w boksie kontaktu 25 px. Na ekranach
+   dotykowych rosna do 44 px; przy myszy uklad zostaje bez zmian. */
+@media (pointer: coarse) {
+  .footer-links a,
+  .company-details a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* Powyzej 768 px wiersz kontaktu jest flexem w poziomie: przy linku 44 px
+     etykieta ("Telefon:") rozciagala sie i zostawala 9 px wyzej niz wartosc. */
+  .company-details li {
+    align-items: center;
+  }
+
+  /* Spis tresci wpisu (przycisk 20 px, pozycje 33 px) i rozwijane bloki
+     <details> (naglowek 30 px) - te same 44 px na ekranach dotykowych. */
+  .article-content nav > button,
+  details > summary {
+    min-height: 44px;
+  }
+
+  .article-content nav ol a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
 
 .footer-links a:hover {
@@ -2095,7 +2286,7 @@ body.has-cookie-banner .kota-floating-cta {
   .kota-deck-edge { display: none; }
   .kota-phone-trio { flex-wrap: wrap; }
   .kota-phone-card { width: 140px; }
-  .contact-box { grid-template-columns: 1fr; }
+  .contact-box { grid-template-columns: minmax(0, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .process-diagram-wrapper { display: none; }
   .process-grid-fallback { display: grid; }
@@ -2126,9 +2317,12 @@ body.has-cookie-banner .kota-floating-cta {
     padding: 0.3rem 0.6rem !important;
     font-size: 0.8rem !important;
   }
+  /* Prog dotykowy 44x44 (skill viewports / WCAG 2.5.5). Bylo 38x38: glowny
+     przycisk nawigacji na telefonie byl mniejszy niz na desktopie, czyli
+     dokladnie odwrotnie, niz powinien. Srednica rosnie o 6 px, ikona zostaje. */
   .kota-menu-trigger {
-    width: 38px !important;
-    height: 38px !important;
+    width: 44px !important;
+    height: 44px !important;
     font-size: 1.1rem !important;
   }
 
@@ -2162,39 +2356,6 @@ body.has-cookie-banner .kota-floating-cta {
   .mobile-toggle { display: block; }
   .footer-grid { grid-template-columns: 1fr; }
 
-  /* Blog Timeline Mobile Responsiveness */
-  .blog-timeline-container {
-    padding: 1rem 0;
-  }
-  .blog-timeline-line {
-    left: 0.75rem;
-    transform: none;
-  }
-  .blog-timeline-item {
-    width: 100% !important;
-    left: 0 !important;
-    padding-left: 2.5rem; /* Increased padding to separate from line */
-    margin-bottom: 2.5rem;
-  }
-  .blog-timeline-item.right {
-    left: 0 !important;
-  }
-  .blog-timeline-node {
-    position: relative !important; /* Fixes overlap by keeping it in the normal document flow */
-    display: inline-flex !important;
-    left: -1.75rem !important; /* Aligns horizontally with the vertical line */
-    right: auto !important;
-    top: 0 !important;
-    transform: none !important;
-    padding: 0.35rem 0.75rem;
-    margin-bottom: 0.75rem !important; /* Pushes the card below it down */
-    z-index: 10;
-  }
-  .blog-timeline-card {
-    padding: 1.5rem 1.25rem;
-    margin-top: 0 !important; /* Reset margin since node is relative now */
-  }
-
   /* Global Section & Container Spacing Optimization (Apple Style) */
   .container {
     padding-left: 1.25rem !important;
@@ -2203,6 +2364,9 @@ body.has-cookie-banner .kota-floating-cta {
   section, aside.pricing, aside.contact, aside.why-us {
     padding-bottom: 3.5rem !important;
     padding-top: 3.5rem !important;
+  }
+  .blog-library-top {
+    padding-top: calc(79px + 3.5rem) !important;
   }
   /* Subpage Hero mobile padding */
   .subpage-hero {
@@ -2222,7 +2386,10 @@ body.has-cookie-banner .kota-floating-cta {
   /* Modal & Contact Form Mobile Responsiveness */
   .contact-box {
     padding: 1.75rem 1.25rem !important;
-    grid-template-columns: 1fr;
+    /* minmax(0, 1fr), nie 1fr: sama "1fr" nie schodzi ponizej min-content
+       tresci (291 px - pole wyboru pakietu), wiec przy ekranie 320 px
+       formularz wystawal 12 px i przycisk wysylki byl uciety. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
   }
   .company-details li {
@@ -2241,6 +2408,7 @@ body.has-cookie-banner .kota-floating-cta {
     right: 1.25rem;
     padding: 0.65rem 1.2rem;
     font-size: 0.85rem;
+    min-height: 44px;
   }
 
   /* Portfolio Mobile Card Adjustments */
@@ -2474,6 +2642,15 @@ body.has-cookie-banner .kota-floating-cta {
   border-radius: 4px;
   font-family: monospace;
   font-size: 0.9em;
+}
+
+/* Blok kodu przewija sie w poziomie we wlasnej ramce (05.10.2026). Bez tego
+   dluga linia (np. fragment dataLayer we wpisie o GTM, 716 px) wystawala poza
+   ekran telefonu i byla ucinana przez overflow na <main> - koniec linii byl
+   nieosiagalny. */
+.article-content pre {
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .article-content table {
@@ -2866,8 +3043,13 @@ body.has-cookie-banner .kota-floating-cta {
 /* Przy wylaczonych animacjach tekst nie ma na co czekac: wchodzi od razu
    w stanie koncowym (regula przeniesiona ze starszego, usunietego duplikatu -
    byla tam jedyna rzecza, ktorej nie mial blok zachowany). */
+/* Drugi selektor (05.10.2026): sam pierwszy ma specyficznosc 0,2,0 i przegrywal
+   z regula wejscia `.hero-en-copy.is-copy-in :is(...)` (0,3,0) - w trybie
+   "ogranicz ruch" po nadaniu .is-copy-in tekst i tak wjezdzal z przesunieciem
+   26 px (pomiar: 8 animacji heroCopyRise/RiseTop w toku przy reduce). */
 @media (prefers-reduced-motion: reduce) {
-  .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
+  .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions),
+  .hero-en-copy.is-copy-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
     animation: none;
     opacity: 1;
     transform: none;
@@ -2947,14 +3129,47 @@ body.has-cookie-banner .kota-floating-cta {
      keeps reaching the right edge and the bottom of the screen, and no
      black gap can open. */
   .hero.hero--en {
-    --hero-pan: max(0px, calc(55.1vh - 50% + 20px));
+    /* PODLOGA WYSOKOSCI (05.10.2026). Cala kompozycja szeroka jest
+       skalibrowana na 1440x900 z zapasem -1,4 px: wiersz tekstu nad literami
+       to calc(30.4% - 28px) wysokosci sekcji, kolumna tekstu to 91,75%
+       wysokosci, a fonty licza sie z SZEROKOSCI okna. Ponizej 900 px
+       wysokosci pudelka kurczyly sie, tekst nie - przy 1366x650 zdanie
+       wstepne wychodzilo 63 px ponad ekran, akapit wchodzil pod naglowek,
+       H1 lamal sie na 3 linie, a przyciski CTA ladowaly POZA sekcja
+       (overflow: hidden), czyli byly nieosiagalne.
+
+       Sekcja nie schodzi wiec ponizej punktu projektowego: ma
+       max(100vh, 900px). Od 900 px w gore to dokladnie 100vh - nic sie nie
+       zmienia. Ponizej uklad zostaje taki jak przy 900 px, a strona po
+       prostu sie przewija. Wszystkie wymiary, ktore byly w vh, licza sie
+       teraz z --hero-h, zeby tekst, litery i pan zostaly zsynchronizowane
+       z realna wysokoscia sekcji, a nie z wysokoscia okna. */
+    --hero-h: max(100vh, 900px);
+    height: var(--hero-h);
+    min-height: var(--hero-h);
+    max-height: var(--hero-h);
+    --hero-pan: max(0px, calc(var(--hero-h) * 0.551 - 50% + 20px));
   }
 
   .hero-en {
     /* Same pan on the copy column, so text and lettering stay locked: when
        the pan is active both collapse to a flat 20px left margin. */
-    padding-left: max(1.25rem, calc(50% - 55.1vh + var(--hero-pan)));
-    padding-right: max(1.25rem, calc(50% - 36.65vh - var(--hero-pan)));
+    padding-left: max(1.25rem, calc(50% - var(--hero-h) * 0.551 + var(--hero-pan)));
+    padding-right: max(1.25rem, calc(50% - var(--hero-h) * 0.3665 - var(--hero-pan)));
+  }
+
+  /* GORNA GRUPA A NAGLOWEK STRONY (05.10.2026). Szerokosc tej grupy wynika z
+     jednej linii zdania wstepnego (max-content), a jego font liczy sie z
+     szerokosci okna: 16 px przy 1024-1185 px daje kolumne 664 px, w ktorej
+     akapit lamie sie na 6 linii zamiast 5. Grupa jest dosunieta do dolu
+     wiersza, wiec szosta linia wypychala ja w gore - tekst zaczynal sie na
+     51 px i wchodzil 11-14 px pod logo i pigulki naglowka (koniec na 65 px).
+     Kolumna, w ktorej grupa stoi, ma przy podlodze 900 px zawsze >= 826 px,
+     wiec grupa dostaje te sama minimalna szerokosc co przy 1280 px (717 px):
+     akapit wraca do 5 linii, a tekst zaczyna sie ok. 78 px. Od 1280 px w
+     gore grupa jest szersza niz 717 px - tam nic sie nie zmienia. */
+  .hero-en-top {
+    min-width: min(100%, 717px);
   }
 }
 
@@ -3164,6 +3379,22 @@ body.has-cookie-banner .kota-floating-cta {
   color: rgba(255, 255, 255, 0.72);
 }
 
+/* Zderzenie gornej grupy z naglowkiem strony, druga przyczyna (pierwsza:
+   min-width na .hero-en-top wyzej). Regula stoi PO regule bazowej, bo ma te
+   sama specyficznosc i musi ja nadpisac: od ok. 1460 px szerokosci akapit hero
+   rosnie do 16 px i grupa ma 190 px zamiast 182 px. Przy wysokosci sekcji
+   900-927 px (czyli w kazdym oknie nizszym niz 928 px, np. 1536x864 - ekran
+   Full HD ze skalowaniem 125%) tekst zaczynal sie na 63 px i wchodzil 2 px na
+   pigulki naglowka. W takich oknach akapit zostaje przy 15,12 px - dokladnie
+   tyle, ile ma w punkcie projektowym 1440x900 - i odstep wraca do 6 px.
+   Okna o wysokosci 928 px i wiecej (1680x1050, 1920x1080, 2560x1440) nie sa
+   objete ta regula: tam nic sie nie zmienia. */
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) and (max-height: 927px) {
+  .hero-en-body {
+    font-size: clamp(0.92rem, 1.05vw, 0.945rem);
+  }
+}
+
 .hero-en-actions {
   display: flex;
   flex-wrap: wrap;
@@ -3347,6 +3578,10 @@ body.has-cookie-banner .kota-floating-cta {
        slide the robot's left edge sits at 20px + 0.8833 x band height, so
        the clamp keeps ~8px of clearance at every width and band size. */
     max-width: calc(var(--m-band-h) * 0.8833 - 8px);
+    /* Przy proporcji dokladnie 1:1 pasuja oba zapytania (szerokie i pasmowe);
+       min-width z ukladu szerokiego wygrywal z max-width i w oknach 901-966 px
+       akapit wchodzil na robota. Ta regula stoi pozniej, wiec go zeruje. */
+    min-width: 0;
   }
 
   /* Row one ends 8px above the letters. Row two is the letters plus the
@@ -3373,6 +3608,9 @@ body.has-cookie-banner .kota-floating-cta {
 
   .hero-en-title-sub {
     font-size: 1rem;
+    /* Tylko w ukladzie telefonu: podtytul ma tu dwie linie i konczyl sie
+       samotnym "Warszawy" / "Companies". Szeroki uklad zostaje nietkniety. */
+    text-wrap: balance;
   }
 
   /* Type is a size down because the column is only 335px wide, but the leading
@@ -3459,7 +3697,17 @@ body.has-cookie-banner .kota-floating-cta {
        left ~240px of dead black under the buttons; sized to content the next
        section peeks above the fold instead, which is what tells a phone user
        there is more page. */
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + var(--m-band-h, 296px) * 0.2867 + 200px) !important;
+    /* DOLNA GRUPA MIERZONA (05.10.2026). Stale "+ 200px" to bylo 24 px odstepu
+       + 154 px na H1 z przyciskami + 22 px oddechu. Podtytul H1 lamie sie
+       jednak na dwie linie na kazdym telefonie, grupa ma 178-188 px i
+       przyciski byly uciete o 2-12 px (overflow: hidden). Teraz 154 px
+       zastepuje zmierzona wysokosc grupy (--m-bottom-h z Hero.jsx); max()
+       pilnuje, zeby sekcja nigdy nie byla nizsza niz dotad, a wartosc
+       zastepcza 184 px to pomiar polskiej wersji przy 375 px, zeby klatka
+       sprzed hydracji nie skakala. Realne wartosci ustawia jeszcze przed
+       pierwszym malowaniem skrypt wpisany w Hero.jsx zaraz za trescia
+       sekcji, wiec wartosci zastepcze widac tylko bez JavaScriptu. */
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px) !important;
     min-height: 0 !important;
     max-height: none !important;
     overflow: hidden !important;
@@ -3470,7 +3718,7 @@ body.has-cookie-banner .kota-floating-cta {
 
   /* The English fallback of the same height chain (see the band rule). */
   html[lang="en"] .hero.hero--en {
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + var(--m-band-h, 296px) * 0.2867 + 200px) !important;
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px) !important;
   }
 
   /* Absolutely positioned at the bottom of the section; once the columns stack
@@ -3490,7 +3738,9 @@ body.has-cookie-banner .kota-floating-cta {
    DOŁU (align-items: end) i mają różną wysokość (u nich 1002/1058/875/940/880
    przy 4,4,3,3,3 kafelkach), więc GÓRNA krawędź ściany jest poszarpana,
    a kontener ją przycina. Multi-column z definicji wyrównuje kolumny — stąd
-   płaska krata zamiast mozaiki. Liczbę stosów ustala JS (Portfolio.jsx). */
+   płaska krata zamiast mozaiki. Stosy dla 2/3/4/5 kolumn sa w HTML z serwera,
+   a widoczny wariant wybiera @media w Portfolio.jsx (STYL_PORTFOLIO, atrybut
+   data-kolumny) - bez zmiany ukladu po hydracji (05.10.2026). */
 .portfolio-mosaic {
   display: grid;
   grid-template-columns: repeat(var(--mosaic-cols, 4), minmax(0, 1fr));
@@ -3607,6 +3857,10 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 .portfolio-client-cta {
+  /* Prog dotykowy 44 px - bylo 25 px (sam wiersz tekstu). */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 0;
   border: 0;
   background: none;
@@ -3688,8 +3942,32 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 /* Link pod akapitem — odpowiednik „Explore Ghost themes →". */
+/* Kropki paginacji (WhyUs, O nas) maja 8 px wysokosci - zamierzony wyglad.
+   Pseudoelement powieksza SAM OBSZAR DOTYKU: w pionie do 44 px, w poziomie do
+   kropki + polowy przerwy z kazdej strony (kontener ma gap 12 px). Poprzednia
+   wersja dawala 44 px takze w poziomie przy rozstawie kropek 20 px - pola
+   sasiadow nachodzily o 24 px i dotkniecie kropki N wlaczalo slajd N+1
+   (przeglad 05.10.2026). Teraz pola sie stykaja, a nie nachodza. */
+.whyus-dot {
+  position: relative;
+}
+
+.whyus-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  right: -6px;
+  height: 44px;
+  transform: translateY(-50%);
+}
+
 .portfolio-more {
-  display: inline-block;
+  /* inline-flex + min-height zamiast inline-block: samo 1rem tekstu dawalo
+     26 px wysokosci celu, przy progu 44 px. Tekst nie zmienia pozycji. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   margin-top: 1.5rem;
   color: var(--color-cta);
   font-size: 1rem;
@@ -3746,7 +4024,11 @@ textarea,
   position: relative;
   z-index: 1;
 }
-.breadcrumbs a { color: #6E6E73; text-decoration: none; }
+.breadcrumbs a { color: #6E6E73; text-decoration: none; position: relative; }
+/* Obszar dotyku 44 px bez zmiany ukladu (okruszki maja 20 px wysokosci, a
+   ich polozenie jest sprzezone z marginesem <main>). Linki stoja obok siebie
+   w poziomie, wiec powiekszone pola nie nachodza na sasiadow. */
+.breadcrumbs a::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
 .breadcrumbs a:hover { text-decoration: underline; }
 .breadcrumbs [aria-current] { color: #1D1D1F; }
 .breadcrumbs + main.subpage-main { margin-top: -76px; }
@@ -3798,4 +4080,134 @@ footer a, footer a *, footer button, footer button *,
   .hero-cta-row { order: 3; margin-bottom: 1.25rem; }
   .hero-proof { order: 4; margin-top: 0 !important; margin-bottom: 1.25rem !important; }
   .hero-lead { order: 5; margin-bottom: 0 !important; }
+}
+
+/* --- prefers-reduced-motion: dwa przeoczenia (05.10.2026) -----------------
+   Pomiar w trybie "ogranicz ruch": animacje hero sa wylaczane poprawnie, ale
+   (1) scroll-behavior: smooth na <html> dzialal dalej - klikniecie kotwicy
+   przewijalo strone plynna animacja, (2) nieskonczony polysk plakietki
+   wyroznionego pakietu (shimmerGlow) nie byl objety zadnym blokiem reduce.
+   Blok stoi na koncu arkusza, bo ma te sama specyficznosc co reguly bazowe
+   i musi je nadpisac. Poza trybem reduce nic sie nie zmienia. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* !important tylko dlatego, ze regula bazowa plakietki tez go ma. */
+  .pricing-featured-badge,
+  .booster-badge {
+    animation: none !important;
+  }
+
+  /* Pokazanie plywajacego przycisku po przewinieciu - bez wjazdu o 8 px.
+     !important tylko dlatego, ze regula bazowa przejscia tez go ma. */
+  .kota-floating-cta {
+    transition: none !important;
+  }
+
+  .kota-floating-cta:not(.is-visible):not(:focus) {
+    transform: none;
+  }
+}
+
+
+/* --- Etap 5 audytu (05.10.2026): fokus, kotwice, menu ------------------- */
+
+/* Brakujace keyframes: .kota-fullscreen-footer odwoluje sie do fadeInOverlay
+   od poczatku, ale regula nigdy nie istniala, wiec blok "Napisz do nas /
+   Zadzwon" w menu zostawal na opacity 0 - niewidoczny, a klikalny i w
+   kolejnosci Tab (fokus na niewidocznym elemencie). */
+@keyframes fadeInOverlay {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Widoczny fokus klawiatury dla wszystkich elementow interaktywnych
+   (WCAG 2.4.7). :where() ma specyficznosc 0, wiec kazdy istniejacy, celowy
+   styl fokusu (np. wiersz indeksu bloga) dalej wygrywa. #185FA5 = 6,52:1 na
+   bialym i 6,03:1 na #F6F6F4. Tylko :focus-visible - klik mysza obrysu nie
+   pokazuje. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid #185FA5;
+  outline-offset: 2px;
+}
+
+/* Na ciemnych tlach (hero, przezroczysty naglowek nad hero, stopka, menu,
+   baner zgody, sekcja wynikow, karty opinii i realizacji) granatowy ma tylko
+   2,55-2,74:1 - tam obrys jest bialy (17,85:1). */
+.hero :focus-visible,
+body:has(.hero) .header:not(.scrolled) :focus-visible,
+.footer :focus-visible,
+.kota-fullscreen-menu :focus-visible,
+.cookie-banner :focus-visible,
+#wyniki :focus-visible,
+#results :focus-visible,
+#testimonials-carousel :focus-visible,
+#subpage-portfolio-carousel :focus-visible {
+  outline-color: #FFFFFF;
+}
+
+.cookie-manage-trigger:focus-visible {
+  outline-color: #FFFFFF;
+  outline-offset: -4px;
+}
+
+/* Weryfikacja etapu 5 (14.10.2026), regresja P1: karta wpisu na /blog i
+   /blog/biblioteka to <a> inline z jednym blokowym dzieckiem. Obrys z reguly
+   wyzej obejmowal tylko puste fragmenty inline (0 px widocznego fokusu), a
+   wczesniej domyslny outline:auto rysowal sie wokol karty. Obrys idzie wiec
+   na dziecko - karta siatki 4945 px przy 5,62:1. */
+.blog-grid a:focus-visible { outline: none; }
+.blog-grid a:focus-visible > div { outline: 3px solid #185FA5; outline-offset: 2px; }
+
+/* Weryfikacja etapu 5, P2: pierwsze bledne pole formularza przy "ogranicz
+   ruch" ladowalo pod stalym naglowkiem (natychmiastowe przewijanie dosuwa
+   pole do gornej krawedzi). 140 px = naglowek 79/89 px + etykieta + zapas. */
+.form-input, .form-select, .form-textarea { scroll-margin-top: 140px; }
+
+/* Weryfikacja etapu 5, P2: przy otwartym menu na telefonie (375x667) przycisk
+   "Zgoda" (fixed, z-index 9998) zaslanial numer telefonu w stopce menu -
+   dotkniecie otwieralo ustawienia cookies. Nad modalnym menu nie zostaje
+   nic klikalnego. */
+body:has(#menu-glowne[aria-hidden="false"]) .cookie-manage-trigger { visibility: hidden; }
+
+/* Kotwice (menu "Uslugi", "Kontakt", "Wyceń projekt") ustawialy sekcje na
+   0 px, a staly naglowek konczy sie na 79-89 px: etykieta sekcji ladowala pod
+   paskiem. scroll-margin-top przesuwa cel ponizej naglowka; sekcje maja juz
+   wlasny gorny odstep, wiec wystarcza roznica do wysokosci naglowka. */
+section[id],
+aside[id] {
+  scroll-margin-top: 48px;
+}
+
+@media (min-width: 1024px) {
+  section[id],
+  aside[id] {
+    scroll-margin-top: 16px;
+  }
+}
+
+/* Plywajacy przycisk znika, gdy na ekranie jest formularz kontaktu, do
+   ktorego prowadzi (przykrywal przycisk wysylki i pola). Klase nadaje
+   Footer.jsx; przycisk z fokusem zostaje widoczny. */
+/* Sekcja, na ktora przenosi fokus "Wyceń projekt" (tabindex -1 na czas
+   fokusu, lib/anchors.js), nie dostaje obrysu calego bloku - to cel skoku,
+   nie element interaktywny. */
+section[id][tabindex="-1"]:focus,
+aside[id][tabindex="-1"]:focus {
+  outline: none;
+}
+
+.kota-floating-cta.is-nad-formularzem:not(:focus) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kota-fullscreen-footer {
+    animation: none;
+    opacity: 1;
+  }
 }

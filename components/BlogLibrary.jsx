@@ -22,7 +22,7 @@ export default function BlogLibrary() {
   });
 
   return (
-    <section className="blog-grid" style={{ padding: '8rem 0 4rem 0', backgroundColor: 'var(--color-bg-surface)' }}>
+    <section className="blog-grid blog-library-top" style={{ paddingBottom: '4rem', backgroundColor: 'var(--color-bg-surface)' }}>
       <div className="container" style={{ margin: '0 auto' }}>
         <Reveal>
           <div style={{ marginBottom: '4rem', textAlign: 'left' }}>
@@ -76,7 +76,7 @@ export default function BlogLibrary() {
                     
                     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                       <span style={{ 
-                        fontSize: '0.7rem', 
+                        fontSize: '0.75rem', 
                         fontWeight: 600, 
                         color: '#86868B', 
                         textTransform: 'uppercase', 

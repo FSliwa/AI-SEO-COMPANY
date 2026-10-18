@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 
 function CountUpMetric({ value }) {
   const [displayValue, setDisplayValue] = useState(value);
@@ -55,10 +56,38 @@ function CountUpMetric({ value }) {
 export default function WhyUs({ isMainContent = false }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
+  const [najechane, setNajechane] = useState(false);
   const lang = useLocale();
 
+  // Ogranicz ruch (05.10.2026): pomiar przy prefers-reduced-motion: reduce
+  // pokazal przejscie slajdu co ok. 5,1 s mimo ustawienia - interwal nie
+  // sprawdzal preferencji. Startowy stan zostaje true (tak renderuje serwer,
+  // bez rozjazdu hydratacji), a efekt po zamontowaniu wylacza autoodtwarzanie
+  // i reaguje tez na zmiane ustawienia w trakcie wizyty. Przycisk "Wznow"
+  // nadal pozwala wlaczyc je swiadomie.
+  useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq.matches) setIsAutoplay(false);
+    const naZmiane = (e) => { if (e.matches) setIsAutoplay(false); };
+    mq.addEventListener('change', naZmiane);
+    return () => mq.removeEventListener('change', naZmiane);
+  }, []);
+
+  // Fokus klawiatury w sekcji (strzalki, kropki, sam kontener przewijania)
+  // trwale zatrzymuje rotacje, jak we wzorcu Carousel z WAI-ARIA APG - wznawia
+  // ja tylko przycisk. Pomiar 05.10.2026: fokus na kropce nie zatrzymywal
+  // przewijania. Klik mysza tez ustawia fokus w Chrome, ale bez :focus-visible,
+  // wiec go pomijamy - mysz obsluguje wstrzymanie przy najechaniu.
+  const zatrzymajPrzyFokusie = (e) => {
+    if (e.target.closest('[data-autoplay-toggle]')) return;
+    let zKlawiatury = true;
+    try { zKlawiatury = e.target.matches(':focus-visible'); } catch { /* brak :focus-visible - traktujemy jak klawiature */ }
+    if (zKlawiatury) setIsAutoplay(false);
+  };
+
   const Wrapper = isMainContent ? 'section' : 'aside';
-  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Dlaczego my' };
+  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': lang === 'pl' ? 'Dlaczego my' : 'Why us' };
 
   const whyUsCards = [
     {
@@ -160,7 +189,7 @@ export default function WhyUs({ isMainContent = false }) {
         const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
         container.scrollTo({
           left: scrollOffset,
-          behavior: 'smooth'
+          behavior: zachowaniePrzewijania()
         });
         setActiveIndex(index);
       }
@@ -177,17 +206,19 @@ export default function WhyUs({ isMainContent = false }) {
     scrollTo(nextIndex);
   };
 
+  // Najechanie mysza wstrzymuje przewijanie tylko na czas najechania (pomiar
+  // 05.10.2026: przy :hover slajdy dalej przesuwaly sie co 5 s).
   useEffect(() => {
-    if (!isAutoplay) return;
+    if (!isAutoplay || najechane) return;
     const interval = setInterval(() => {
       const nextIndex = (activeIndex + 1) % whyUsCards.length;
       scrollTo(nextIndex);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isAutoplay, activeIndex]);
+  }, [isAutoplay, najechane, activeIndex]);
 
   return (
-    <Wrapper className="why-us" id="why-us" style={{ background: '#F5F5F7', padding: '7rem 0', color: '#1D1D1F' }} {...wrapperProps}>
+    <Wrapper className="why-us" id="why-us" style={{ background: '#F5F5F7', padding: '7rem 0', color: '#1D1D1F' }} onFocus={zatrzymajPrzyFokusie} {...wrapperProps}>
       <div className="container" style={{ maxWidth: '1280px' }}>
         
         {/* Top Header Row with Apple-style Navigation Arrows */}
@@ -215,8 +246,8 @@ export default function WhyUs({ isMainContent = false }) {
               onClick={scrollPrev}
               disabled={activeIndex === 0}
               style={{
-                width: '40px',
-                height: '40px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
                 background: '#E8E8ED',
                 border: 'none',
@@ -227,7 +258,7 @@ export default function WhyUs({ isMainContent = false }) {
                 opacity: activeIndex === 0 ? 0.4 : 1,
                 transition: 'all 0.2s ease'
               }}
-              aria-label="Previous slide"
+              aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6" />
@@ -238,8 +269,8 @@ export default function WhyUs({ isMainContent = false }) {
               onClick={scrollNext}
               disabled={activeIndex === whyUsCards.length - 1}
               style={{
-                width: '40px',
-                height: '40px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
                 background: '#E8E8ED',
                 border: 'none',
@@ -250,7 +281,7 @@ export default function WhyUs({ isMainContent = false }) {
                 opacity: activeIndex === whyUsCards.length - 1 ? 0.4 : 1,
                 transition: 'all 0.2s ease'
               }}
-              aria-label="Next slide"
+              aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 18l6-6-6-6" />
@@ -261,7 +292,14 @@ export default function WhyUs({ isMainContent = false }) {
       </div>
 
       {/* Apple Productivity Carousel (Full Screen Width, aligned flush with container above) */}
-      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
+      {/* Najechanie liczymy na tym divie, a nie na #whyus-carousel: obejmuje
+          karty, kropki i przycisk pauzy, wiec przewijanie nie rusza sie spod
+          kursora w drodze do kropki (05.10.2026). */}
+      <div
+        style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}
+        onMouseEnter={() => setNajechane(true)}
+        onMouseLeave={() => setNajechane(false)}
+      >
         <RevealStagger 
           id="whyus-carousel"
           onScroll={handleScroll}
@@ -317,10 +355,10 @@ export default function WhyUs({ isMainContent = false }) {
                 alignItems: 'center',
                 position: 'relative',
                 overflow: 'hidden',
-                padding: '1.25rem 1rem',
+                padding: '1.25rem var(--whyus-tag-pad, 1rem)',
                 border: '1px solid rgba(0,0,0,0.03)'
               }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'normal' }}>
                   {item.tag}
                 </div>
                 <motion.div 
@@ -349,9 +387,15 @@ export default function WhyUs({ isMainContent = false }) {
         <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
           {/* Dots Pill Container */}
           <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
+            {/* Kropka ma 8 px wysokosci i tyle ma zostac - to jest ten wyglad.
+                Obszar dotyku powieksza pseudoelement .whyus-dot::after do 44 px
+                (prog ze skilla viewports). Nie padding: button ma animowana
+                szerokosc 8->36 px, a padding wszedlby do tej samej skrzynki
+                i rozjechal animacje. */}
             {whyUsCards.map((_, idx) => (
               <motion.button
                 key={idx}
+                className="whyus-dot"
                 layout
                 initial={false}
                 onClick={() => scrollTo(idx)}
@@ -371,13 +415,19 @@ export default function WhyUs({ isMainContent = false }) {
                   padding: 0,
                   cursor: 'pointer'
                 }}
-                aria-label={`Go to slide ${idx + 1}`}
+                aria-label={lang === 'pl' ? `Przejdź do slajdu ${idx + 1}` : `Go to slide ${idx + 1}`}
               />
             ))}
           </div>
 
           {/* Standalone Circular Play/Pause Button (44px) */}
-          <button 
+          {/* Etykieta zmienia sie ze stanem, dlatego bez aria-pressed: APG nie
+              pozwala laczyc obu (czytnik uslyszalby "Wznow przewijanie,
+              wcisniety"). data-autoplay-toggle wylacza ten przycisk z
+              zatrzymania przy fokusie, inaczej nie daloby sie nim wznowic
+              rotacji z klawiatury (05.10.2026). */}
+          <button
+            data-autoplay-toggle=""
             onClick={() => setIsAutoplay(!isAutoplay)}
             style={{ 
               background: '#E8E8ED', 
@@ -392,7 +442,9 @@ export default function WhyUs({ isMainContent = false }) {
               padding: '0',
               transition: 'background 0.2s ease, transform 0.2s ease'
             }}
-            aria-label={isAutoplay ? 'Pause' : 'Play'}
+            aria-label={isAutoplay
+              ? (lang === 'pl' ? 'Zatrzymaj przewijanie' : 'Pause')
+              : (lang === 'pl' ? 'Wznów przewijanie' : 'Play')}
           >
             {isAutoplay ? (
               <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none">

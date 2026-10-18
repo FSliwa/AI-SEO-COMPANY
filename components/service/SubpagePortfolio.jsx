@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 
 export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [], layout = "horizontal" }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
@@ -14,14 +15,14 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
   const scrollPrev = () => {
     const el = document.getElementById("subpage-portfolio-carousel");
     if (el) {
-      el.scrollBy({ left: -480, behavior: 'smooth' });
+      el.scrollBy({ left: -480, behavior: zachowaniePrzewijania() });
     }
   };
 
   const scrollNext = () => {
     const el = document.getElementById("subpage-portfolio-carousel");
     if (el) {
-      el.scrollBy({ left: 480, behavior: 'smooth' });
+      el.scrollBy({ left: 480, behavior: zachowaniePrzewijania() });
     }
   };
 
@@ -54,8 +55,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
               <button 
                 onClick={scrollPrev}
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '50%',
                   background: '#E8E8ED',
                   border: 'none',
@@ -67,7 +68,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
                 onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
-                aria-label="Poprzedni slajd"
+                aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 18l-6-6 6-6" />
@@ -77,8 +78,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
               <button 
                 onClick={scrollNext}
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '50%',
                   background: '#E8E8ED',
                   border: 'none',
@@ -90,7 +91,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
                 onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
-                aria-label="Następny slajd"
+                aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 18l6-6-6-6" />
@@ -216,13 +217,15 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     <button 
                       onClick={() => setExpandedIndex(isExpanded ? null : idx)}
                       style={{ 
-                        width: '36px', height: '36px', borderRadius: '50%', 
+                        width: '44px', height: '44px', flexShrink: 0, borderRadius: '50%', 
                         background: 'rgba(255,255,255,0.25)', 
                         backdropFilter: 'blur(10px)',
                         display: 'flex', justifyContent: 'center', alignItems: 'center',
-                        border: 'none', cursor: 'pointer', outline: 'none'
+                        border: 'none', cursor: 'pointer'
                       }}
-                      aria-label={isExpanded ? "Zwiń szczegóły" : "Rozwiń szczegóły"}
+                      aria-label={lang === 'pl'
+                        ? (isExpanded ? 'Zwiń szczegóły' : 'Rozwiń szczegóły')
+                        : (isExpanded ? 'Collapse details' : 'Expand details')}
                     >
                       <svg 
                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"

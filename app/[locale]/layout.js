@@ -2,9 +2,11 @@ import '../globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
+import { DEFAULT_ROBOTS } from '@/lib/blogPosts';
 import CookiesBanner from '@/components/CookiesBanner';
 import AnalyticsEvents from '@/components/AnalyticsEvents';
 import AttributionCapture from '@/components/AttributionCapture';
+import RuchUzytkownika from '@/components/RuchUzytkownika';
 
 // Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
 // w HTML każdej strony z tagiem), więc może być w kodzie; zmienna środowiskowa
@@ -20,17 +22,18 @@ const GA4_ADS_ID = process.env.NEXT_PUBLIC_GA4_ADS_ID || 'G-85M09H5733';
 
 // Wersja EN grafu: te same encje, angielskie pola tekstowe. Wczesniej /en
 // serwowal polski opis Organization i polska nazwe WebSite.
+// 14.10.2026: nazwa WebSite nie jest juz tlumaczona - to nazwa marki, a nie
+// tekst. Jedna encja #website miala dwie nazwy (PL i EN), obie ze sloganem.
+// Z tego samego powodu znika nadpisanie alternateName organizacji.
 function localizedJsonLd(locale) {
   if (locale !== 'en') return jsonLdDataPl;
   const data = JSON.parse(JSON.stringify(jsonLdDataPl));
   for (const node of data['@graph']) {
     if (node['@id'] === 'https://www.ai-seo-company.pl/#organization') {
       node.description = 'Modern SEO agency in Warsaw. We design search-ready websites, run professional SEO audits and deliver effective search engine optimization.';
-      node.alternateName = 'SEO Agency Warsaw AI SEO COMPANY';
       if (node.areaServed && node.areaServed.name) node.areaServed.name = 'Warsaw and Poland';
     }
     if (node['@type'] === 'WebSite') {
-      if (node.name) node.name = 'AI SEO COMPANY | SEO Agency Warsaw';
       if (node.inLanguage) node.inLanguage = 'en-US';
     }
   }
@@ -86,6 +89,16 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       images: ['https://www.ai-seo-company.pl/og-image.jpg'],
     },
+    // 14.10.2026: bez tej reguly Google moze pokazac podglad obrazu tylko
+    // w rozmiarze domyslnym; 'large' to samo zezwolenie na duzy podglad,
+    // obrazu nie tworzy. Duza karta Discover wymaga obrazu >= 1200 px, ktory
+    // nie jest logo. Taki obraz maja dzis tylko dane strukturalne czesci
+    // artykulow (BlogPosting.image): w tresci artykulow nie ma <img>, a
+    // og:image to ogolna grafika z logo (1024 px). Duza karta jest wiec
+    // mozliwa, ale niepewna. Nie zmienia indeksowania ani snippetow
+    // tekstowych. Artykuly nadpisuja robots przez articleRobots, ktory zwraca
+    // te sama stala (lib/blogPosts.js).
+    robots: DEFAULT_ROBOTS,
   };
 }
 
@@ -99,7 +112,9 @@ const jsonLdDataPl = {
       // The brand and the registered firm differ; both belong in the graph so the
       // entity resolves against public registers as well as the brand name.
       'legalName': 'AI SIGNALS COMPANY Prosta Spółka Akcyjna',
-      'alternateName': 'Agencja SEO Warszawa AI SEO COMPANY',
+      // 14.10.2026: usuniety alternateName 'Agencja SEO Warszawa AI SEO COMPANY'
+      // (fraza, a nie nazwa firmy). Google: Organization ma miec ten sam name
+      // i alternateName co nazwa witryny (WebSite nizej nie ma alternateName).
       'identifier': [
         { '@type': 'PropertyValue', 'propertyID': 'KRS', 'value': '0001239983' },
         { '@type': 'PropertyValue', 'propertyID': 'REGON', 'value': '544761611' }
@@ -117,7 +132,20 @@ const jsonLdDataPl = {
         'postalCode': '00-132',
         'addressCountry': 'PL'
       },
-      'vatID': 'PL5253090237',
+      // 14.10.2026: punkt adresowy budynku Grzybowska 12/14 z rejestru GUGiK
+      // (usluga UUG, stan 14.10.2026; rejestr nie geokoduje lokalu B-3).
+      // 7 miejsc po przecinku: Google wymaga co najmniej 5, a 21.00000 JSON
+      // zapisalby jako 21. Przy zmianie siedziby zmienic address i geo razem.
+      'geo': {
+        '@type': 'GeoCoordinates',
+        'latitude': 52.2370497,
+        'longitude': 20.9999951
+      },
+      // 14.10.2026: bylo 'vatID': 'PL5253090237', ale VIES zwraca dla tego
+      // numeru isValid: false, a spolki nie ma w wykazie VAT MF. NIP z KRS
+      // (ten sam co w stopce) to taxID. vatID przywrocic dopiero, gdy VIES
+      // potwierdzi rejestracje VAT-UE.
+      'taxID': '5253090237',
       'openingHoursSpecification': {
         '@type': 'OpeningHoursSpecification',
         'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -134,7 +162,10 @@ const jsonLdDataPl = {
       '@type': 'WebSite',
       '@id': 'https://www.ai-seo-company.pl/#website',
       'url': 'https://www.ai-seo-company.pl/',
-      'name': 'AI SEO COMPANY | Agencja SEO Warszawa',
+      // 14.10.2026: bylo 'AI SEO COMPANY | Agencja SEO Warszawa'. Google
+      // (Search Central, nazwy witryn) chce krotkiej nazwy marki bez sloganu,
+      // spojnej z og:site_name i Organization.name na wszystkich jezykach.
+      'name': 'AI SEO COMPANY',
       'publisher': {
         '@id': 'https://www.ai-seo-company.pl/#organization'
       },
@@ -229,8 +260,18 @@ export default async function RootLayout({ children, params }) {
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
         <NextIntlClientProvider messages={messages}>
-          {children}
-          <CookiesBanner />
+          {/* Baner zgody pierwszy w DOM (05.10.2026). Stal za <main> i <footer>,
+              wiec z klawiatury "Odrzuc opcjonalne" wypadalo dopiero po 62-64 Tab
+              na stronie glownej (48-54 na podstronach). Baner jest position:
+              fixed, wiec kolejnosc w DOM nie zmienia wygladu, a fokusu nie
+              przejmuje - po zmianie to 2.-3. Tab (symulacja w DOM, 390/1440 px).
+              Plywajacy przycisk zgody wychodzi portalem na koniec body
+              (CookiesBanner.jsx). Wewnatrz RuchUzytkownika, zeby wjazd banera
+              i skala okna preferencji tez respektowaly "ogranicz ruch". */}
+          <RuchUzytkownika>
+            <CookiesBanner />
+            {children}
+          </RuchUzytkownika>
           <AnalyticsEvents />
           <AttributionCapture />
         </NextIntlClientProvider>

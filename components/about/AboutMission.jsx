@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 
 function CountUpMetric({ value }) {
   const [displayValue, setDisplayValue] = useState(value);
@@ -55,7 +56,31 @@ function CountUpMetric({ value }) {
 export default function AboutMission() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
+  const [najechane, setNajechane] = useState(false);
   const lang = useLocale();
+
+  // Ta sama karuzela co WhyUs na stronie glownej i ten sam problem (05.10.2026):
+  // interwal co 5 s nie sprawdzal prefers-reduced-motion, najechania mysza ani
+  // fokusu klawiatury. Stan startowy true zgadza sie z renderem serwera; efekt
+  // po zamontowaniu wylacza autoodtwarzanie przy "ogranicz ruch".
+  useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq.matches) setIsAutoplay(false);
+    const naZmiane = (e) => { if (e.matches) setIsAutoplay(false); };
+    mq.addEventListener('change', naZmiane);
+    return () => mq.removeEventListener('change', naZmiane);
+  }, []);
+
+  // Fokus klawiatury w sekcji trwale zatrzymuje rotacje (wzorzec Carousel
+  // z WAI-ARIA APG), wznawia ja tylko przycisk. Fokus po kliknieciu mysza
+  // (bez :focus-visible) pomijamy - mysz obsluguje wstrzymanie przy najechaniu.
+  const zatrzymajPrzyFokusie = (e) => {
+    if (e.target.closest('[data-autoplay-toggle]')) return;
+    let zKlawiatury = true;
+    try { zKlawiatury = e.target.matches(':focus-visible'); } catch { /* brak :focus-visible - traktujemy jak klawiature */ }
+    if (zKlawiatury) setIsAutoplay(false);
+  };
 
   const aboutCards = [
     {
@@ -144,7 +169,7 @@ export default function AboutMission() {
         const scrollOffset = cardRect.left - containerRect.left + container.scrollLeft - (containerRect.width - cardRect.width) / 2;
         container.scrollTo({
           left: scrollOffset,
-          behavior: 'smooth'
+          behavior: zachowaniePrzewijania()
         });
         setActiveIndex(index);
       }
@@ -161,17 +186,18 @@ export default function AboutMission() {
     scrollTo(nextIndex);
   };
 
+  // Najechanie mysza wstrzymuje przewijanie tylko na czas najechania.
   useEffect(() => {
-    if (!isAutoplay) return;
+    if (!isAutoplay || najechane) return;
     const interval = setInterval(() => {
       const nextIndex = (activeIndex + 1) % aboutCards.length;
       scrollTo(nextIndex);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isAutoplay, activeIndex]);
+  }, [isAutoplay, najechane, activeIndex]);
 
   return (
-    <section className="why-us" id="about-mission" style={{ background: 'var(--color-bg-surface)', padding: '7rem 0', color: '#1D1D1F' }}>
+    <section className="why-us" id="about-mission" style={{ background: 'var(--color-bg-surface)', padding: '7rem 0', color: '#1D1D1F' }} onFocus={zatrzymajPrzyFokusie}>
       <div className="container" style={{ maxWidth: '1280px' }}>
         
         {/* Top Header Row with Apple-style Navigation Arrows */}
@@ -194,8 +220,8 @@ export default function AboutMission() {
               onClick={scrollPrev}
               disabled={activeIndex === 0}
               style={{
-                width: '40px',
-                height: '40px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
                 background: '#E8E8ED',
                 border: 'none',
@@ -206,7 +232,7 @@ export default function AboutMission() {
                 opacity: activeIndex === 0 ? 0.4 : 1,
                 transition: 'all 0.2s ease'
               }}
-              aria-label="Previous slide"
+              aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6" />
@@ -217,8 +243,8 @@ export default function AboutMission() {
               onClick={scrollNext}
               disabled={activeIndex === aboutCards.length - 1}
               style={{
-                width: '40px',
-                height: '40px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
                 background: '#E8E8ED',
                 border: 'none',
@@ -229,7 +255,7 @@ export default function AboutMission() {
                 opacity: activeIndex === aboutCards.length - 1 ? 0.4 : 1,
                 transition: 'all 0.2s ease'
               }}
-              aria-label="Next slide"
+              aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 18l6-6-6-6" />
@@ -240,7 +266,12 @@ export default function AboutMission() {
       </div>
 
       {/* Apple Productivity Carousel */}
-      <div style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
+      {/* Najechanie liczymy na tym divie: obejmuje karty, kropki i przycisk pauzy (05.10.2026). */}
+      <div
+        style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}
+        onMouseEnter={() => setNajechane(true)}
+        onMouseLeave={() => setNajechane(false)}
+      >
         <RevealStagger 
           id="about-mission-carousel"
           onScroll={handleScroll}
@@ -299,7 +330,7 @@ export default function AboutMission() {
                 padding: '1.25rem 1rem',
                 border: '1px solid rgba(0,0,0,0.03)'
               }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'nowrap' }}>
                   {item.tag}
                 </div>
                 <motion.div 
@@ -329,6 +360,7 @@ export default function AboutMission() {
           <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
             {aboutCards.map((_, idx) => (
               <motion.button
+                className="whyus-dot"
                 key={idx}
                 layout
                 initial={false}
@@ -349,12 +381,16 @@ export default function AboutMission() {
                   padding: 0,
                   cursor: 'pointer'
                 }}
-                aria-label={`Go to slide ${idx + 1}`}
+                aria-label={lang === 'pl' ? `Przejdź do slajdu ${idx + 1}` : `Go to slide ${idx + 1}`}
               />
             ))}
           </div>
 
-          <button 
+          {/* Etykieta zmienia sie ze stanem, dlatego bez aria-pressed (APG nie
+              pozwala laczyc obu). data-autoplay-toggle wylacza przycisk
+              z zatrzymania przy fokusie (05.10.2026). */}
+          <button
+            data-autoplay-toggle=""
             onClick={() => setIsAutoplay(!isAutoplay)}
             style={{ 
               background: '#E8E8ED', 
@@ -369,7 +405,9 @@ export default function AboutMission() {
               padding: '0',
               transition: 'background 0.2s ease, transform 0.2s ease'
             }}
-            aria-label={isAutoplay ? 'Pause' : 'Play'}
+            aria-label={isAutoplay
+              ? (lang === 'pl' ? 'Zatrzymaj przewijanie' : 'Pause')
+              : (lang === 'pl' ? 'Wznów przewijanie' : 'Play')}
           >
             {isAutoplay ? (
               <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none">

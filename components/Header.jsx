@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '../i18n/routing';
 import { track } from '@/lib/track';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
-import { hash, homeHash, sectionId } from '@/lib/anchors';
+import { hash, homeHash, przewinDoSekcji, przejdzDoSekcji } from '@/lib/anchors';
 
 // Logowanie do paneli (klient i administrator) to osobna aplikacja na subdomenie.
 // NEXT_PUBLIC_PANEL_URL pozwala lokalnie wskazać panel na localhost.
@@ -25,6 +25,14 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuExpanded, setMenuExpanded] = useState(false);
   const [triggerPos, setTriggerPos] = useState({ x: 0, y: 0 });
+  const triggerRef = useRef(null);
+  const closeRef = useRef(null);
+  const menuRef = useRef(null);
+  // Od klikniecia zamkniecia do ukrycia menu mija 700 ms animacji. W tym
+  // czasie pulapka fokusu nie moze juz dzialac: goToContact przenosi fokus
+  // do sekcji kontaktu, a straznik focusin cofalby go na ukrywany przycisk X.
+  const zamykanieRef = useRef(false);
+  const przywrocFokusRef = useRef(false);
   const lang = useLocale();
   const t = useTranslations('nav');
   const pathname = usePathname();
@@ -34,12 +42,9 @@ export default function Header() {
   // który był kilka ekranów niżej. Gdy formularz jest na tej stronie, link
   // przewija do niego; bez JS i na stronach bez formularza zostaje /#kontakt.
   const goToContact = (e) => {
-    const local = document.getElementById(sectionId('kontakt', lang));
     closeMenu();
-    if (!local) return;
+    if (!przewinDoSekcji('kontakt', lang)) return;
     e.preventDefault();
-    local.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    try { window.history.replaceState(null, '', hash('kontakt', lang)); } catch (err) {}
   };
 
   const toggleLang = (newLocale) => {
@@ -75,6 +80,8 @@ export default function Header() {
       const y = rect.top > 0 ? rect.top + rect.height / 2 : 40;
       
       setTriggerPos({ x, y });
+      zamykanieRef.current = false;
+      przywrocFokusRef.current = false;
       setMenuOpen(true);
       
       requestAnimationFrame(() => {
@@ -85,12 +92,87 @@ export default function Header() {
     }
   };
 
-  const closeMenu = () => {
+  // przywrocFokus === true tylko dla X i Escape: linki menu przekazuja tu
+  // zdarzenie klikniecia (onClick={closeMenu}) i nie maja zabierac fokusu.
+  const closeMenu = (przywrocFokus = false) => {
+    zamykanieRef.current = true;
+    przywrocFokusRef.current = przywrocFokus === true;
     setMenuExpanded(false);
     setTimeout(() => {
       setMenuOpen(false);
     }, 700);
   };
+
+  // Menu z klawiatury (05.10.2026). Pomiar etapu 5 (Chromium i WebKit, 390,
+  // 768, 1440): Escape nie zamykal menu; po otwarciu fokus zostawal na ≡ pod
+  // nakladka; 16. Tab (w Safari juz 1.) wychodzil na niewidoczne elementy
+  // strony pod spodem; po X fokus ladowal na BODY; strona pod menu
+  // przewijala sie kolkiem i PageDown.
+  // - Blokada na <html>, nie na <body>: html ma overflow-x: clip, wiec
+  //   overflow body nie przechodzi na viewport (body: 600 -> 3000 px,
+  //   html: 600 -> 600).
+  // - Pelna obsluga Taba zamiast pulapki tylko na krawedziach: Safari przy
+  //   domyslnych ustawieniach przeskakiwal z X od razu na pola formularza
+  //   (17/17 Tabow poza menu).
+  // - Fokus wraca na ≡ w sprzataniu efektu, czyli dopiero po ukryciu menu i
+  //   zdjeciu nasluchow - wczesniej straznik focusin cofnalby go do menu.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const root = document.documentElement;
+    const poprzedniOverflow = root.style.overflow;
+    const poprzedniGutter = root.style.scrollbarGutter;
+    // Zarezerwowane miejsce na pasek przewijania: bez tego strona pod
+    // rozwijajacym sie kolem przeskakuje o jego szerokosc (Windows).
+    if (window.innerWidth > root.clientWidth) root.style.scrollbarGutter = 'stable';
+    root.style.overflow = 'hidden';
+
+    let proby = 0;
+    let ramka = 0;
+    const ustawFokus = () => {
+      const el = closeRef.current;
+      if (!el || zamykanieRef.current) return;
+      el.focus({ preventScroll: true });
+      if (document.activeElement !== el && ++proby < 10) ramka = requestAnimationFrame(ustawFokus);
+    };
+    ustawFokus();
+
+    const onKeyDown = (e) => {
+      if (zamykanieRef.current || !menuRef.current) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeMenu(true);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const lista = [...menuRef.current.querySelectorAll('a[href], button:not([disabled])')];
+      if (!lista.length) return;
+      e.preventDefault();
+      const i = lista.indexOf(document.activeElement);
+      const krok = e.shiftKey ? -1 : 1;
+      const nastepny = i < 0 ? (e.shiftKey ? lista.length - 1 : 0) : (i + krok + lista.length) % lista.length;
+      lista[nastepny].focus();
+    };
+    const onFocusIn = (e) => {
+      if (zamykanieRef.current || !menuRef.current) return;
+      if (!menuRef.current.contains(e.target)) closeRef.current?.focus();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('focusin', onFocusIn);
+
+    return () => {
+      cancelAnimationFrame(ramka);
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('focusin', onFocusIn);
+      root.style.overflow = poprzedniOverflow;
+      root.style.scrollbarGutter = poprzedniGutter;
+      if (przywrocFokusRef.current) {
+        przywrocFokusRef.current = false;
+        triggerRef.current?.focus();
+      }
+    };
+    // closeMenu korzysta tylko z setterow i refow - nie musi byc zaleznoscia.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menuOpen]);
 
   return (
     <>
@@ -149,15 +231,23 @@ export default function Header() {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            {/* Language Switcher (PL | EN) */}
-            <div className="lang-switcher" style={{
+            {/* Language Switcher (PL | EN).
+                Aktywny jezyk byl oznaczony tylko kolorem (na podstronach
+                1,42:1 miedzy aktywnym a nieaktywnym), grupa nie miala nazwy,
+                a "EN" bez lang="en" czytnik wymawial polska synteza. Stan
+                niesie teraz aria-pressed, a separator "|" nie jest czytany
+                (05.10.2026). */}
+            <div className="lang-switcher" role="group" aria-label={lang === 'pl' ? 'Język strony' : 'Site language'} style={{
               background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255,255,255,0.1)',
               borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
               color: scrolled ? 'var(--color-text-dark)' : '#FFFFFF',
               transition: 'all 0.7s ease'
             }}>
               <button
+                type="button"
                 className={`lang-btn ${lang === 'pl' ? 'active' : ''}`}
+                aria-pressed={lang === 'pl'}
+                lang="pl"
                 style={{ 
                   color: lang === 'pl' ? (scrolled ? 'var(--color-text-dark)' : '#FFFFFF') : (scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
                   transition: 'color 0.7s ease' 
@@ -167,9 +257,12 @@ export default function Header() {
               >
                 PL
               </button>
-              <span style={{ opacity: 0.35 }}>|</span>
+              <span aria-hidden="true" style={{ opacity: 0.35 }}>|</span>
               <button
+                type="button"
                 className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+                aria-pressed={lang === 'en'}
+                lang="en"
                 style={{ 
                   color: lang === 'en' ? (scrolled ? 'var(--color-text-dark)' : '#FFFFFF') : (scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
                   transition: 'color 0.7s ease' 
@@ -200,8 +293,11 @@ export default function Header() {
               <span className="header-login-label">{lang === 'pl' ? 'Zaloguj się' : 'Log in'}</span>
             </a>
 
-            {/* Header Hire Us Pill Button */}
-            <a href={hash('kontakt', lang)} className="header-hire-btn" data-cta="header" style={{
+            {/* Header Hire Us Pill Button. Na stronach bez sekcji kontaktu
+                (regulamin, cookies) klikniecie zmienialo tylko adres na
+                #kontakt - przejdzDoSekcji przenosi wtedy na strone glowna
+                (05.10.2026). href bez zmian. */}
+            <a href={hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
               background: scrolled ? '#000000' : '#FFFFFF',
               color: scrolled ? '#FFFFFF' : '#000000',
               transition: 'all 0.7s ease'
@@ -209,8 +305,12 @@ export default function Header() {
               {t('cta')}
             </a>
 
-            {/* KOTA Circular Menu Toggle Trigger */}
+            {/* KOTA Circular Menu Toggle Trigger. Etykiety byly po angielsku
+                ("Toggle Menu") takze na stronach lang="pl" - czytnik czytal je
+                polska synteza; brakowalo tez aria-expanded i aria-controls
+                (05.10.2026). */}
             <button
+              ref={triggerRef}
               className="kota-menu-trigger"
               style={{
                 background: scrolled ? '#000000' : '#FFFFFF',
@@ -218,8 +318,10 @@ export default function Header() {
                 transition: 'all 0.7s ease'
               }}
               onClick={toggleMenu}
-              aria-label="Toggle Menu"
-              title="Toggle Menu"
+              aria-expanded={menuOpen}
+              aria-controls="menu-glowne"
+              aria-label={lang === 'pl' ? 'Otwórz menu' : 'Open menu'}
+              title={lang === 'pl' ? 'Otwórz menu' : 'Open menu'}
             >
               ≡
             </button>
@@ -233,9 +335,17 @@ export default function Header() {
           tylko logo i #kontakt. Teraz markup jest zawsze w DOM, a widocznosc
           steruje CSS. visibility:hidden usuwa menu z kolejnosci Tab i z drzewa
           dostepnosci, gdy jest zamkniete, wiec zachowanie dla uzytkownika
-          klawiatury pozostaje bez zmian. */}
+          klawiatury pozostaje bez zmian.
+          role="dialog" + aria-modal: otwarte menu przykrywa cala strone, a
+          czytnik nie wiedzial, ze tresc pod spodem jest niedostepna
+          (05.10.2026). */}
       <div 
+        ref={menuRef}
+        id="menu-glowne"
         className="kota-fullscreen-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
         aria-hidden={!menuOpen}
         style={{
           clipPath: `circle(${menuExpanded ? '150vmax' : '0px'} at ${triggerPos.x}px ${triggerPos.y}px)`,
@@ -263,11 +373,18 @@ export default function Header() {
               zIndex: 10
             }}
           >
+            {/* transitionProperty: regula .kota-menu-trigger ma transition: all,
+                wiec X dziedziczyl visibility menu z animacja i przez pierwsze
+                klatki mial computed visibility hidden - focus() po otwarciu
+                bywal ignorowany (WebKit: 1 z 3 prob). Animowane wlasciwosci
+                hovera (transform, tlo, kolor, cien) zostaja bez zmian. */}
             <button
+              ref={closeRef}
               className="kota-menu-trigger close-variant"
-              onClick={closeMenu}
-              aria-label="Close Menu"
-              title="Close Menu"
+              style={{ transitionProperty: 'transform, background-color, color, box-shadow' }}
+              onClick={() => closeMenu(true)}
+              aria-label={lang === 'pl' ? 'Zamknij menu' : 'Close menu'}
+              title={lang === 'pl' ? 'Zamknij menu' : 'Close menu'}
             >
               ✕
             </button>
@@ -280,47 +397,52 @@ export default function Header() {
               paddingTop: scrolled ? '0.9rem' : '1.35rem' 
             }}
           >
-            <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
-              <li style={{ '--delay': '0.1s' }}>
-                <Link href="/#why-us" onClick={closeMenu}>{t('results')}</Link>
-              </li>
-              <li style={{ '--delay': '0.15s' }}>
-                <Link href={homeHash('uslugi', lang)} onClick={closeMenu}>{t('services')}</Link>
-              </li>
-              <li style={{ '--delay': '0.2s' }}>
-                <Link href="/cennik-pozycjonowania" onClick={closeMenu}>{t('pricing')}</Link>
-              </li>
-              <li style={{ '--delay': '0.25s' }}>
-                <Link href="/#portfolio" onClick={closeMenu}>{t('process')}</Link>
-              </li>
-              <li style={{ '--delay': '0.3s' }}>
-                <Link href="/audyt-seo" onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</Link>
-              </li>
-              <li style={{ '--delay': '0.35s' }}>
-                <Link href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</Link>
-              </li>
-              <li style={{ '--delay': '0.4s' }}>
-                <Link href="/seo-lokalne-warszawa" onClick={closeMenu}>{lang === 'pl' ? 'Lokalne SEO' : 'Local SEO'}</Link>
-              </li>
-              <li style={{ '--delay': '0.45s' }}>
-                <Link href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</Link>
-              </li>
-              <li style={{ '--delay': '0.5s' }}>
-                <Link href="/blog" onClick={closeMenu}>{t('blog')}</Link>
-              </li>
-              <li style={{ '--delay': '0.55s' }}>
-                <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
-              </li>
-              <li style={{ '--delay': '0.6s' }}>
-                <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
-              </li>
-              <li style={{ '--delay': '0.65s' }}>
-                <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
-              </li>
-              <li style={{ '--delay': '0.7s' }}>
-                <a href={PANEL_LOGIN_URL} onClick={closeMenu}>{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</a>
-              </li>
-            </ul>
+            {/* Linki menu nie byly w zadnym <nav> - strona glowna miala 0
+                punktow orientacyjnych nawigacji (05.10.2026). W CSS nie ma
+                selektorow "> ul", wiec uklad sie nie zmienia. */}
+            <nav aria-label={lang === 'pl' ? 'Menu główne' : 'Main menu'}>
+              <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
+                <li style={{ '--delay': '0.1s' }}>
+                  <Link href="/#why-us" onClick={closeMenu}>{t('results')}</Link>
+                </li>
+                <li style={{ '--delay': '0.15s' }}>
+                  <Link href={homeHash('uslugi', lang)} onClick={closeMenu}>{t('services')}</Link>
+                </li>
+                <li style={{ '--delay': '0.2s' }}>
+                  <Link href="/cennik-pozycjonowania" onClick={closeMenu}>{t('pricing')}</Link>
+                </li>
+                <li style={{ '--delay': '0.25s' }}>
+                  <Link href="/#portfolio" onClick={closeMenu}>{t('process')}</Link>
+                </li>
+                <li style={{ '--delay': '0.3s' }}>
+                  <Link href="/audyt-seo" onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</Link>
+                </li>
+                <li style={{ '--delay': '0.35s' }}>
+                  <Link href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</Link>
+                </li>
+                <li style={{ '--delay': '0.4s' }}>
+                  <Link href="/seo-lokalne-warszawa" onClick={closeMenu}>{lang === 'pl' ? 'Lokalne SEO' : 'Local SEO'}</Link>
+                </li>
+                <li style={{ '--delay': '0.45s' }}>
+                  <Link href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</Link>
+                </li>
+                <li style={{ '--delay': '0.5s' }}>
+                  <Link href="/blog" onClick={closeMenu}>{t('blog')}</Link>
+                </li>
+                <li style={{ '--delay': '0.55s' }}>
+                  <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
+                </li>
+                <li style={{ '--delay': '0.6s' }}>
+                  <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
+                </li>
+                <li style={{ '--delay': '0.65s' }}>
+                  <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
+                </li>
+                <li style={{ '--delay': '0.7s' }}>
+                  <a href={PANEL_LOGIN_URL} onClick={closeMenu}>{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</a>
+                </li>
+              </ul>
+            </nav>
 
             <div className="kota-fullscreen-footer" style={{ marginTop: 'auto' }}>
               <div className="footer-contact">

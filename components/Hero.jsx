@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
@@ -154,19 +154,39 @@ export default function Hero() {
   const telefonRef = useRef(false);
   const [montujScene, setMontujScene] = useState(false);
   useEffect(() => {
-    const szeroki = window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)').matches;
-    if (szeroki) { setMontujScene(true); return; }
+    const bramka = window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)');
+    if (bramka.matches) { setMontujScene(true); return; }
     telefonRef.current = true;
     setSceneIn(true);
     pokazTekst();
-    // Save-Data albo 2G: scena w ogole nie schodzi - zostaje kula CSS.
+
+    // Okno poszerzone PO zaladowaniu (obrot tabletu, rozciagniecie okna obok
+    // innej aplikacji, panel podgladu): arkusz stylow przelacza sie wtedy na
+    // kompozycje szeroka, ktora cala stoi na literach sceny. Decyzja ponizej
+    // ("Save-Data albo 2G - bez sceny") zapadala raz, przy ladowaniu, wiec
+    // po poszerzeniu zostawal uklad szeroki z czarna dziura zamiast liter
+    // (zgloszenie 05.10.2026: effectiveType "2g" w waskim panelu). Sciezka
+    // szeroka przy ladowaniu nie zna reguly 2G wcale - tu ma byc tak samo.
+    // Oba nasluchy celowo, jak przy arcBody nizej: `change` nie zawsze odpala
+    // pod emulacja urzadzen; setMontujScene(true) jest idempotentne.
+    const poPoszerzeniu = () => { if (bramka.matches) setMontujScene(true); };
+    bramka.addEventListener('change', poPoszerzeniu);
+    window.addEventListener('resize', poPoszerzeniu);
+    const zdejmijNasluch = () => {
+      bramka.removeEventListener('change', poPoszerzeniu);
+      window.removeEventListener('resize', poPoszerzeniu);
+    };
+
+    // Save-Data albo 2G: scena w ogole nie schodzi - zostaje kula CSS
+    // (dopoki okno pozostaje waskie - patrz nasluch wyzej).
     const conn = navigator.connection;
-    if (conn && (conn.saveData || /(^|[^3-5])2g/.test(conn.effectiveType || ''))) return;
+    if (conn && (conn.saveData || /(^|[^3-5])2g/.test(conn.effectiveType || ''))) return zdejmijNasluch;
     let idle = 0, timer = 0;
     const start = () => setMontujScene(true);
     if ('requestIdleCallback' in window) idle = window.requestIdleCallback(start, { timeout: 6000 });
     else timer = window.setTimeout(start, 3000);
     return () => {
+      zdejmijNasluch();
       if (idle) window.cancelIdleCallback(idle);
       if (timer) window.clearTimeout(timer);
     };
@@ -352,11 +372,17 @@ export default function Hero() {
   // header gap at 20px and the letters gap at 8px at every width in both
   // languages. The static fallbacks in those rules cover the pre-hydration
   // frames; the observer also refires on the post-font-load reflow.
-  useEffect(() => {
+  // useLayoutEffect (05.10.2026): przy nawigacji klienckiej (<Link> z podstrony)
+  // skrypt inline nizej sie nie wykonuje - React wstawia go przez innerHTML -
+  // a useEffect biegl dopiero po pierwszym malowaniu, wiec sekcja przez klatke
+  // miala wysokosc z wartosci zastepczych (skok 179 px przy 768x1024).
+  // useLayoutEffect ustawia zmienne przed malowaniem w obu sciezkach.
+  useLayoutEffect(() => {
     const copy = copyRef.current;
     if (!copy) return;
     const section = copy.closest('.hero');
     const top = copy.querySelector('.hero-en-top');
+    const bottom = copy.querySelector('.hero-en-bottom');
     const header = document.querySelector('header');
     if (!section || !top) return;
     const apply = () => {
@@ -364,9 +390,19 @@ export default function Hero() {
       if (header) {
         section.style.setProperty('--m-head-h', `${Math.round(header.getBoundingClientRect().height)}px`);
       }
+      // Dolna grupa (H1 + przyciski) tez jest mierzona, nie zakladana. Wysokosc
+      // sekcji na telefonie miala wpisane na sztywno 154 px na te grupe, a
+      // podtytul H1 lamie sie na dwie linie na kazdym telefonie 320-440 px:
+      // grupa ma realnie 178-188 px i przyciski byly uciete o 2-12 px przez
+      // overflow: hidden sekcji. Grupa ma align-self: start, wiec jej wysokosc
+      // wynika z tresci, a nie z wysokosci wiersza - nie ma petli zwrotnej.
+      if (bottom) {
+        section.style.setProperty('--m-bottom-h', `${Math.ceil(bottom.getBoundingClientRect().height)}px`);
+      }
     };
     const ro = new ResizeObserver(apply);
     ro.observe(top);
+    if (bottom) ro.observe(bottom);
     if (header) ro.observe(header);
     apply();
     // The observer only delivers during rendering steps, which hidden
@@ -387,6 +423,7 @@ export default function Hero() {
     <section
       className="hero hero--en"
       id="hero"
+      suppressHydrationWarning
       style={{
         position: 'relative',
         width: '100%',
@@ -487,6 +524,26 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* (W trybie deweloperskim React 19 loguje przy nawigacji klienckiej
+          ostrzezenie "Encountered a script tag..." - to oczekiwane: na kliencie
+          te sama prace wykonuje useLayoutEffect wyzej, skrypt jest tylko dla
+          pierwszej klatki z HTML serwera. To nie jest blad hydracji.)
+          Pomiar PRZED pierwszym malowaniem. Wysokosc sekcji w ukladzie telefonu
+          liczy sie z trzech zmierzonych wartosci; dotad ustawial je dopiero
+          useEffect po hydracji, wiec pierwsza klatka szla na wartosciach
+          zastepczych skalibrowanych pod 375 px. Na tabletach w pionie
+          (744-1024 px) realny tekst jest o 120-150 px nizszy, sekcja kurczyla
+          sie po hydracji i przesuwala wszystko pod spodem: CLS 0,10-0,17.
+          Ten skrypt wykonuje sie w trakcie parsowania, zaraz za trescia
+          sekcji (arkusz stylow jest juz wczytany, bo blokuje skrypty), wiec
+          juz pierwsza klatka ma wlasciwa wysokosc. useEffect wyzej zostaje -
+          obsluguje zmiane rozmiaru okna i doladowanie fontu. */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: "(function(){try{var s=document.getElementById('hero');if(!s)return;var t=s.querySelector('.hero-en-top'),b=s.querySelector('.hero-en-bottom'),h=document.querySelector('header');if(t)s.style.setProperty('--m-copy-h',Math.round(t.getBoundingClientRect().height)+'px');if(b)s.style.setProperty('--m-bottom-h',Math.ceil(b.getBoundingClientRect().height)+'px');if(h)s.style.setProperty('--m-head-h',Math.round(h.getBoundingClientRect().height)+'px');}catch(e){}})();"
+        }}
+      />
 
       {/* Bottom-left: Our Partners (KOTA Style) */}
       <motion.div

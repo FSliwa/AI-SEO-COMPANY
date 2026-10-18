@@ -20,6 +20,15 @@ const LEAD_VALUE_PLN = {
 };
 const DEFAULT_LEAD_VALUE_PLN = 1900;
 
+// Tekst bledu pod polem (05.10.2026): kolor #B42318 ma kontrast 6,57:1 na
+// bialym tle .contact-box i 6,30:1 na tle pola #FAFAFA (prog 4,5:1). Ramka
+// w tym samym kolorze jest inline, bo regula .form-input:focus (globals.css)
+// ma te sama specyficznosc co selektor [aria-invalid] i zostawialaby skupione
+// bledne pole w kolorze rgb(24, 95, 165) zamiast koloru bledu.
+const KOLOR_BLEDU = '#B42318';
+const STYL_POLA_Z_BLEDEM = { borderColor: KOLOR_BLEDU };
+const STYL_TEKSTU_BLEDU = { color: KOLOR_BLEDU, fontSize: '0.875rem', lineHeight: 1.4, margin: '0.375rem 0 0' };
+
 // Kliknięcia w telefon i e-mail mierzy components/AnalyticsEvents.jsx (jeden
 // nasłuch dla całej strony), tu zostają tylko zdarzenia samego formularza.
 
@@ -32,6 +41,11 @@ export default function Contact({ isMainContent = false }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [service, setService] = useState('');
+  // Bledy walidacji per pole (klucz = id pola). 05.10.2026: jedyna informacja
+  // o bledzie byl natywny dymek przegladarki - po zniknieciu dymka pola nie
+  // mialy aria-invalid, aria-describedby, tekstu ani ramki bledu (audyt E5-13:
+  // ariaInvalid null, ramka pustego #email bez zmian rgba(15, 23, 42, 0.08)).
+  const [bledy, setBledy] = useState({});
   // Znacznik czasu montażu formularza — zapas, gdy przeglądarka nie ma
   // performance.now(). Zgłoszenie wysłane w mniej niż 3 s to bot.
   const [openedAt] = useState(() => Date.now());
@@ -68,6 +82,15 @@ export default function Contact({ isMainContent = false }) {
     if (el.validity.typeMismatch) el.setCustomValidity(validationMessages.email);
     else if (el.tagName === 'SELECT') el.setCustomValidity(validationMessages.select);
     else el.setCustomValidity(validationMessages.required);
+    // Zdarzenie invalid odpala sie dla KAZDEGO blednego pola naraz (zmierzone:
+    // name i email przy pustym formularzu), wiec tekst trafia pod kazde z nich.
+    // Bez scrollIntoView i bez recznego focus: przegladarka sama skupia pierwsze
+    // bledne pole i ustawia je na srodku ekranu (396/844 px, naglowek do 79 px).
+    const idPola = el.id;
+    if (idPola) {
+      const komunikat = el.validationMessage;
+      setBledy((b) => (b[idPola] === komunikat ? b : { ...b, [idPola]: komunikat }));
+    }
     // Które pole zatrzymuje wysyłkę — diagnostyka tarcia na stronie docelowej.
     track('form_validation_error', {
       field: el.id || el.name || el.tagName.toLowerCase(),
@@ -76,10 +99,24 @@ export default function Contact({ isMainContent = false }) {
   };
 
   // Clear the override so the field can validate normally on the next attempt.
-  const handleInput = (e) => e.target.setCustomValidity('');
+  // 05.10.2026: przy wpisywaniu znika tez tekst i ramka bledu pola; kolejna
+  // nieudana proba wyslania pokaze je od nowa (handleInvalid).
+  const handleInput = (e) => {
+    e.target.setCustomValidity('');
+    const idPola = e.target.id;
+    setBledy((b) => {
+      if (!b[idPola]) return b;
+      const reszta = { ...b };
+      delete reszta[idPola];
+      return reszta;
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Submit odpala sie tylko dla poprawnego formularza - stare bledy pol nie
+    // moga zostac na ekranie (05.10.2026).
+    setBledy({});
     setIsSubmitting(true);
     setErrorMessage('');
     setFormSubmitted(false);
@@ -229,26 +266,72 @@ export default function Contact({ isMainContent = false }) {
 
           <RevealItem>
             <form className="contact-form" method="post" onSubmit={handleSubmit}>
-            {formSubmitted && (
-              <div style={{ background: '#EFF8E6', color: '#639922', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
-                {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Odpowiemy w ciągu 24 h w dni robocze, zwykle szybciej.' : '✓ Thank you! Your request has been received. We reply within 24 h on business days, usually sooner.'}
-              </div>
-            )}
-            
-            {errorMessage && (
-              <div style={{ background: '#FEE2E2', color: '#DC2626', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
-                {lang === 'pl' ? 'Wystąpił błąd: ' : 'An error occurred: '} {errorMessage}
-              </div>
-            )}
+            {/* 05.10.2026: komunikaty wysylki byly zwyklymi divami bez role, wiec
+                czytnik ekranu nie oglaszal ani sukcesu, ani bledu. Kontenery
+                z role sa w DOM stale (puste nie zajmuja miejsca) - region live
+                wstawiony razem z trescia bywa nieogloszony. */}
+            <div role="status" aria-live="polite">
+              {formSubmitted && (
+                <div style={{ background: '#EFF8E6', color: '#639922', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
+                  {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Odpowiemy w ciągu 24 h w dni robocze, zwykle szybciej.' : '✓ Thank you! Your request has been received. We reply within 24 h on business days, usually sooner.'}
+                </div>
+              )}
+            </div>
 
+            <div role="alert">
+              {errorMessage && (
+                <div style={{ background: '#FEE2E2', color: '#DC2626', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
+                  {lang === 'pl' ? 'Wystąpił błąd: ' : 'An error occurred: '} {errorMessage}
+                </div>
+              )}
+            </div>
+
+            {/* Pola wymagane (05.10.2026): autoComplete name/email, bo brakowalo go
+                na 51 z 51 stron z formularzem (WCAG 1.3.5). Tekst bledu pod polem
+                istnieje tylko po nieudanej probie wyslania i jest powiazany
+                przez aria-describedby; bez role="alert" - dwa alerty naraz plus
+                natywny dymek dublowalyby ogloszenie, opis czyta sie przy
+                skupieniu pola. */}
             <div className="form-group">
               <label className="form-label" htmlFor="name">{t('nameLabel')}</label>
-              <input type="text" id="name" name="name" className="form-input" placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'} required onInvalid={handleInvalid} onInput={handleInput} />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autoComplete="name"
+                className="form-input"
+                placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'}
+                required
+                aria-invalid={bledy.name ? 'true' : undefined}
+                aria-describedby={bledy.name ? 'name-blad' : undefined}
+                style={bledy.name ? STYL_POLA_Z_BLEDEM : undefined}
+                onInvalid={handleInvalid}
+                onInput={handleInput}
+              />
+              {bledy.name && (
+                <p id="name-blad" className="form-error" style={STYL_TEKSTU_BLEDU}>{bledy.name}</p>
+              )}
             </div>
 
             <div className="form-group">
               <label className="form-label" htmlFor="email">{t('emailLabel')}</label>
-              <input type="email" id="email" name="email" className="form-input" placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'} required onInvalid={handleInvalid} onInput={handleInput} />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autoComplete="email"
+                className="form-input"
+                placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'}
+                required
+                aria-invalid={bledy.email ? 'true' : undefined}
+                aria-describedby={bledy.email ? 'email-blad' : undefined}
+                style={bledy.email ? STYL_POLA_Z_BLEDEM : undefined}
+                onInvalid={handleInvalid}
+                onInput={handleInput}
+              />
+              {bledy.email && (
+                <p id="email-blad" className="form-error" style={STYL_TEKSTU_BLEDU}>{bledy.email}</p>
+              )}
             </div>
 
             <div className="form-group">

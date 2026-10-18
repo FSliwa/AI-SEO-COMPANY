@@ -208,7 +208,7 @@ export default function BlogGrid() {
                     
                     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                       <span style={{ 
-                        fontSize: '0.7rem', 
+                        fontSize: '0.75rem', 
                         fontWeight: 600, 
                         color: '#86868B', 
                         textTransform: 'uppercase', 
@@ -288,7 +288,7 @@ export default function BlogGrid() {
         
         <RevealStagger style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))', 
           gap: '2rem', 
           marginBottom: '0' 
         }}>
@@ -434,7 +434,7 @@ export default function BlogGrid() {
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
               {lang === 'pl' ? 'Wszystkie artykuły' : 'All articles'}
             </h2>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '0.75rem 2rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '0.75rem 2rem' }}>
               {sortedPosts.slice(4).map((post) => {
                 const d = getPostData(post);
                 return (

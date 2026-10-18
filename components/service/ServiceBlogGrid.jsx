@@ -36,7 +36,7 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
           <Reveal delay={0.1}>
             <div style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', 
               backgroundColor: '#FFFFFF', 
               borderRadius: '28px', 
               overflow: 'hidden',

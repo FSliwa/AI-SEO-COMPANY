@@ -55,13 +55,22 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
         "@id": "https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse#article",
         "headline": "Mailchimp vs GetResponse: którą wybrać dla Twojej firmy?",
         "description": "Porównanie Mailchimp i GetResponse: ceny na progach od 500 do 25 000 kontaktów, funkcje, webinary, automatyzacja i próg opłacalności.",
+        // 14.10.2026: obraz wpisu z lib/blogPosts.js - jedyny artykul poza
+        // ArticleSchema nie mial zalecanego przez Google pola image.
+        "image": "https://www.ai-seo-company.pl/images/mailchimp-vs-getresponse.jpg",
         "inLanguage": "pl-PL",
         "datePublished": "2026-08-09",
         "dateModified": "2026-08-09",
+        // 14.10.2026: autor z @id i url jak w ArticleSchema pozostalych 32 wpisow,
+        // zeby Google polaczyl artykul z wezlem Person z /o-nas. jobTitle taki sam
+        // jak w AboutAuthor.jsx i ArticleSchema, zeby ta sama osoba (ten sam @id)
+        // nie miala w serwisie dwoch roznych stanowisk.
         "author": {
           "@type": "Person",
+          "@id": "https://www.ai-seo-company.pl/o-nas#filip-sliwa",
           "name": "Filip Śliwa",
-          "jobTitle": "Specjalista ds. SEO i strategii marketingu cyfrowego",
+          "url": "https://www.ai-seo-company.pl/o-nas",
+          "jobTitle": "Specjalista SEO",
           "worksFor": { "@id": "https://www.ai-seo-company.pl/#organization" }
         },
         "publisher": { "@id": "https://www.ai-seo-company.pl/#organization" },
@@ -135,6 +144,16 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
               "text": "Nie ma narzędzia, które wygrywa w każdej sytuacji. Wygrywa to dopasowane do rozmiaru listy i modelu sprzedaży: GetResponse przy listach powyżej 5 000 kontaktów oraz tam, gdzie potrzebne są webinary i lejki, Mailchimp przy małej bazie i szybkim starcie."
             }
           }
+        ]
+      },
+      // 14.10.2026: okruszki jak w ArticleSchema - to byl jedyny artykul bez
+      // BreadcrumbList. Pozycja 3 bez koncowego ukosnika, zgodnie z canonical.
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Strona Główna", "item": "https://www.ai-seo-company.pl/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.ai-seo-company.pl/blog" },
+          { "@type": "ListItem", "position": 3, "name": "Mailchimp vs GetResponse: którą wybrać dla Twojej firmy?", "item": "https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse" }
         ]
       }
     ]
