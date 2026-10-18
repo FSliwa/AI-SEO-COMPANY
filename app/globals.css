@@ -4238,3 +4238,34 @@ aside[id][tabindex="-1"]:focus {
   }
   .header-login-label { display: none; }
 }
+
+/* ==== Hero a naglowek na niskich ekranach desktopu (18.10.2026) ====
+   Pomiar wydania (1024x768 ... 1536x864): pierwsza linia akapitu hero
+   zachodzila 8-16 px na PL/EN i "Zaloguj sie", a przycisk CTA o 1-2 px na
+   logotypy partnerow. Przyczyna gorna: przyciski PL/EN dostaly 44 px (prog
+   dotyku) i pigulka przelacznika urosla do 59 px - najwyzszy element
+   naglowka. Kompozycja hero (pasy liczone od liter sceny) zostaje nietknieta:
+   pigulka traci pionowy padding (przyciski nadal 44 px, pigulka 46 px jak
+   "Wycen projekt"), a na ekranach do 1000 px wysokosci naglowek u gory strony
+   ma mniejszy odstep od krawedzi. Pasek partnerow schodzi o 12 px. */
+.lang-switcher {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .lang-switcher {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) and (max-height: 1000px) {
+  .header:not(.scrolled) {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .hero.hero--en .hero-partners-row {
+    bottom: 1.75rem !important;
+  }
+}
