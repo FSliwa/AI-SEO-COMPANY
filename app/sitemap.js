@@ -17,82 +17,82 @@ import { blogPosts } from '../lib/blogPosts';
 // glownej PL). Pol date w lib/blogPosts.js nie ruszac - zasilaja
 // datePublished/dateModified i widoczna date.
 const LASTMOD = {
-  // Stan na 14.10.2026 = daty ostatnich istotnych zmian, ktore SA na
-  // produkcji. Przy wdrozeniu zmienic na dzien (UTC) tego wdrozenia:
-  // - mailchimp: gdy wejda poprawki SEO z 14.10 (JSON-LD artykulu: autor
-  //   z @id, image, BreadcrumbList); dzis 26.09 = e3c3d49 (dane strukturalne);
-  // - '/', '/en': gdy wejdzie nowa zapowiedz bloga i portfolio z lokalnych
-  //   zmian (czas czytania zamiast tagu i daty, link do wszystkich wpisow);
-  // - how-much-...-pricing: gdy wejda ceny EUR 450/590 z lokalnych zmian.
-  'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse': '2026-09-26',
-  'https://www.ai-seo-company.pl/': '2026-09-24',
-  'https://www.ai-seo-company.pl/en': '2026-09-24',
-  'https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing': '2026-09-26',
+  // 20.10.2026 (to wdrozenie): title i description strony glownej PL; blok
+  // "Powiazane artykuly" z listy `related` w lib/blogPosts.js zmienia linki
+  // kazdego artykulu z BlogCTA; nowe linki do /seo-lokalne-warszawa i
+  // /audyt-seo w dwoch artykulach; link EN do polskiego poradnika GA4 zamiast
+  // jego pustej kopii /en. Lista = adresy, ktorych HTML rozni sie od
+  // produkcji (porownanie wszystkich 55 adresow z sitemapy). Pokrywa tez
+  // zalegle pozycje z 18.10 (JSON-LD mailchimp, ceny EUR w how-much-...-pricing).
+  'https://www.ai-seo-company.pl/': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/storytelling-marki': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/brand-storytelling-patterns': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/audyt-techniczny-seo': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/technical-seo-audit-checklist': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/rodo-na-stronie-internetowej': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/analiza-luk-contentowych': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/content-gap-analysis': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/audyt-ux-strony': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/ux-audit-guide': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/seo-for-saas-startups-playbook': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/best-marketing-attribution-tools-for-2026': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/seo-lokalne-dla-firm-w-warszawie': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/local-seo-for-companies': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026': '2026-10-20',
+  'https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026': '2026-10-20',
+
+  // e26f8bc (wdrozenie 18.10): nowa zapowiedz bloga i portfolio na stronie
+  // glownej EN - lastmod nie zostal wtedy zaktualizowany.
+  'https://www.ai-seo-company.pl/en': '2026-10-18',
 
   // e3c3d49 (26.09): podstrony EN (OUR WORK, EUR, Strategy & SEO) i
-  // mainEntityOfPage/BreadcrumbList 8 artykulow EN (osmy, how-much-...-
-  // pricing, ma pozniejsza zmiane - wyzej).
+  // mainEntityOfPage/BreadcrumbList artykulu canonical-tag EN (pozostale
+  // artykuly EN z tego wdrozenia maja pozniejsza zmiane - wyzej).
   'https://www.ai-seo-company.pl/en/seo-services': '2026-09-26',
   'https://www.ai-seo-company.pl/en/seo-audit': '2026-09-26',
   'https://www.ai-seo-company.pl/en/local-seo-warsaw': '2026-09-26',
   'https://www.ai-seo-company.pl/en/seo-pricing': '2026-09-26',
   'https://www.ai-seo-company.pl/en/web-design': '2026-09-26',
   'https://www.ai-seo-company.pl/en/about-us': '2026-09-26',
-  'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide': '2026-09-26',
-  'https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews': '2026-09-26',
   'https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026': '2026-09-26',
-  'https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist': '2026-09-26',
-  'https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings': '2026-09-26',
-  'https://www.ai-seo-company.pl/en/blog/local-seo-for-companies': '2026-09-26',
-  'https://www.ai-seo-company.pl/en/blog/how-much-does-seo-cost-pricing-packages-2026': '2026-09-26',
 
-  // 5277fe6, b6437fe, 10c3673 (24.09): cennik, hero i FAQ landingow,
-  // tekst o czasie odpowiedzi w artykulach ('/' i '/en' maja pozniejsza
-  // zmiane - wyzej).
+  // 5277fe6, b6437fe, 10c3673 (24.09): cennik, hero i FAQ landingow
+  // (artykuly, '/' i '/en' maja pozniejsza zmiane - wyzej).
   'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych': '2026-09-24',
   'https://www.ai-seo-company.pl/audyt-seo': '2026-09-24',
   'https://www.ai-seo-company.pl/seo-lokalne-warszawa': '2026-09-24',
   'https://www.ai-seo-company.pl/cennik-pozycjonowania': '2026-09-24',
   'https://www.ai-seo-company.pl/projektowanie-stron-internetowych': '2026-09-24',
-  'https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026': '2026-09-24',
-  'https://www.ai-seo-company.pl/blog/storytelling-marki': '2026-09-24',
-  'https://www.ai-seo-company.pl/en/blog/brand-storytelling-patterns': '2026-09-24',
-  'https://www.ai-seo-company.pl/blog/audyt-techniczny-seo': '2026-09-24',
-  'https://www.ai-seo-company.pl/en/blog/technical-seo-audit-checklist': '2026-09-24',
-  'https://www.ai-seo-company.pl/blog/rodo-na-stronie-internetowej': '2026-09-24',
-  'https://www.ai-seo-company.pl/blog/analiza-luk-contentowych': '2026-09-24',
-  'https://www.ai-seo-company.pl/en/blog/content-gap-analysis': '2026-09-24',
-  'https://www.ai-seo-company.pl/blog/audyt-ux-strony': '2026-09-24',
-  'https://www.ai-seo-company.pl/en/blog/ux-audit-guide': '2026-09-24',
 
   // 247bf6f (wdrozenie 22.09): akapit o gclid i aisc_attr w polityce cookies.
   'https://www.ai-seo-company.pl/cookies': '2026-09-22',
   'https://www.ai-seo-company.pl/en/cookies': '2026-09-22',
 
-  // f926b0d z 38861a8 (02.09): meta description EN bloga, link i meta
-  // description w dwoch artykulach PL.
+  // f926b0d z 38861a8 (02.09): meta description EN bloga.
   'https://www.ai-seo-company.pl/en/blog': '2026-09-02',
   'https://www.ai-seo-company.pl/en/blog/library': '2026-09-02',
-  'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik': '2026-09-02',
-  'https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny': '2026-09-02',
 
-  // 4a12a78 (01.09): AboutAuthor, listy bloga, usuniety tekst generatora,
-  // ArticleSchema z author @id.
+  // 4a12a78 (01.09): AboutAuthor, listy bloga.
   'https://www.ai-seo-company.pl/o-nas': '2026-09-01',
   'https://www.ai-seo-company.pl/blog': '2026-09-01',
   'https://www.ai-seo-company.pl/blog/biblioteka': '2026-09-01',
-  'https://www.ai-seo-company.pl/en/blog/seo-for-saas-startups-playbook': '2026-09-01',
-  'https://www.ai-seo-company.pl/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026': '2026-09-01',
-  'https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility': '2026-09-01',
-  'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik': '2026-09-01',
-  'https://www.ai-seo-company.pl/en/blog/best-marketing-attribution-tools-for-2026': '2026-09-01',
-  'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie': '2026-09-01',
-  'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie': '2026-09-01',
-  'https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik': '2026-09-01',
-  'https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026': '2026-09-01',
-  'https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista': '2026-09-01',
-  'https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google': '2026-09-01',
-  'https://www.ai-seo-company.pl/blog/seo-lokalne-dla-firm-w-warszawie': '2026-09-01',
 
   // a844ac6 (25.08): x-default regulaminu.
   'https://www.ai-seo-company.pl/regulamin': '2026-08-25',

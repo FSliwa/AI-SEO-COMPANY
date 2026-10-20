@@ -450,7 +450,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Website Positioning | SEO for B2B Companies</Link></li>
               </ul>
               
-              <BlogCTA />
+              <BlogCTA currentSlug="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" />
             </div>
           </Reveal>
         </div>
@@ -849,7 +849,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</Link></li>
               </ul>
               
-              <BlogCTA />
+              <BlogCTA currentSlug="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" />
             </div>
           </Reveal>
         </div>

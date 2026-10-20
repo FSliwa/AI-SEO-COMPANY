@@ -1,7 +1,7 @@
 'use client';
 import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { postsForLocale } from '@/lib/blogPosts';
+import { blogPosts, postsForLocale } from '@/lib/blogPosts';
 import { hash } from '@/lib/anchors';
 
 export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customCtaTitleEn, customCtaTextPl, customCtaTextEn }) {
@@ -9,9 +9,14 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
   // props, which previously left `locale` undefined and forced the Polish branch.
   const activeLocale = useLocale();
   const lang = locale || activeLocale;
-  // Get 2 related posts (excluding current)
-  const relatedPosts = postsForLocale(lang)
-    .filter(p => p.slug !== currentSlug)
+  // 2 powiazane wpisy: najpierw lista `related` z lib/blogPosts.js (tylko
+  // wpisy dostepne w tym jezyku), braki uzupelniaja najnowsze - jak dawniej.
+  const available = postsForLocale(lang).filter(p => p.slug !== currentSlug);
+  const current = blogPosts.find(p => p.slug === currentSlug);
+  const curated = (current?.related || [])
+    .map(slug => available.find(p => p.slug === slug))
+    .filter(Boolean);
+  const relatedPosts = [...curated, ...available.filter(p => !curated.includes(p))]
     .slice(0, 2);
 
   return (
