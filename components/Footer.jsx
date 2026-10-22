@@ -41,11 +41,24 @@ export default function Footer() {
   // zostaje widoczny). Na stronach bez formularza nic sie nie zmienia.
   // pathname w zaleznosciach: przy nawigacji bez przeladowania obserwator
   // szuka sekcji na nowej stronie.
+  //
+  // 22.10.2026: przycisk chowa sie tez, gdy na ekranie jest sekcja cennika
+  // albo inne wezwanie do formularza lub telefonu w tresci (hero landingu,
+  // "Wybierz" w kartach pakietow, CTA artykulu). Zrzuty 390x844 z produkcji:
+  // stal na opisie karty "SEO Standard" na /cennik-pozycjonowania. Dubel nic
+  // nie wnosi, gdy wlasciwy przycisk jest w widoku. Naglowek, menu i baner
+  // zgody sa pomijane - sa na ekranie zawsze, wiec przycisk nie pokazalby
+  // sie nigdy.
   const [nadFormularzem, setNadFormularzem] = useState(false);
   useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return;
     const kontakt = document.getElementById(sectionId('kontakt', lang));
-    if (!kontakt || typeof IntersectionObserver === 'undefined') return;
-    const cele = [kontakt, stopkaRef.current].filter(Boolean);
+    const cennik = document.getElementById(sectionId('cennik', lang));
+    const ctaWTresci = Array.from(
+      document.querySelectorAll('a[href*="#kontakt"], a[href*="#contact"], a[href^="tel:"]')
+    ).filter((a) => !a.classList.contains('kota-floating-cta') && !a.closest('header, nav, footer, .cookie-banner'));
+    const cele = [kontakt, cennik, stopkaRef.current, ...ctaWTresci].filter(Boolean);
+    if (!cele.length) return;
     const widoczne = new Set();
     const obserwator = new IntersectionObserver((wpisy) => {
       for (const wpis of wpisy) {
@@ -131,6 +144,20 @@ export default function Footer() {
                 <li><Link href={homeHash('kontakt', lang)} data-cta="footer">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</Link></li>
                 <li><Link href="/cookies">{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</Link></li>
                 <li><Link href="/regulamin">{lang === 'pl' ? 'Regulamin' : 'Terms of Service'}</Link></li>
+                {/* 22.10.2026: stale wejscie do ustawien zgody. Plywajaca
+                    pigulka "Zgoda" jest na telefonie i tablecie ukryta (zaslaniala
+                    cene na landingu Ads i przycisk wysylki formularza), wiec
+                    zmiana albo wycofanie zgody musi byc dostepne gdzie indziej
+                    - na kazdej stronie, tak samo latwo jak jej udzielenie. */}
+                <li>
+                  <button
+                    type="button"
+                    className="footer-link-btn"
+                    onClick={() => window.dispatchEvent(new CustomEvent('aiseo:ustawienia-zgody'))}
+                  >
+                    {lang === 'pl' ? 'Ustawienia cookies' : 'Cookie settings'}
+                  </button>
+                </li>
               </ul>
             </div>
           </div>

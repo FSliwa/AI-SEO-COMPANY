@@ -213,20 +213,26 @@ export default function Header() {
               </svg>
             </Link>
             
-            {/* Header Award Badges */}
+            {/* Plakietki zaufania (22.10.2026). Byly "Top Rated Agency"
+                i "Reviews 4.9★" bez zrodla. Teraz: ocena 5 z Fixly (zrodlo
+                wedlug wlasciciela; zrodlo w podpowiedzi title) i, tylko po
+                polsku, link do wynikow wdrozen z danymi GSC - wpis istnieje
+                tylko w PL. Widocznosc od 1200 px bez zmian (globals.css). */}
             <div className="header-award-badges">
-              <span className="badge-pill" style={{ 
+              <span className="badge-pill" title={lang === 'pl' ? 'Ocena 5/5 na Fixly' : '5/5 rating on Fixly'} style={{
                 color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
                 background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
                 borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
                 transition: 'all 0.7s ease'
-              }}>Top Rated Agency</span>
-              <span className="badge-pill" style={{ 
-                color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
-                background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
-                borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
-                transition: 'all 0.7s ease'
-              }}>Reviews 4.9★</span>
+              }}>Reviews 5★</span>
+              {lang === 'pl' && (
+                <Link href="/blog/wyniki-wdrozen-seo-2026" className="badge-pill badge-pill--link" style={{
+                  color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
+                  background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
+                  borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
+                  transition: 'all 0.7s ease'
+                }}>Wyniki 5 wdrożeń · dane GSC</Link>
+              )}
             </div>
           </div>
 

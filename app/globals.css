@@ -4269,3 +4269,65 @@ aside[id][tabindex="-1"]:focus {
     bottom: 1.75rem !important;
   }
 }
+
+/* ==== Nakladki na telefonie i ustawienia zgody w stopce (22.10.2026) ====
+   Zrzuty 390x844 z produkcji: pigulka "Zgoda" (90x44 px, lewy dolny rog)
+   zaslaniala cene "od 1 900 zl netto/mies." na landingu Ads i lewa czesc
+   przycisku wysylki formularza. Do 900 px pigulki nie ma; zgode zmienia sie
+   linkiem "Ustawienia cookies" w stopce (Footer.jsx -> CookiesBanner.jsx).
+   Na desktopie pigulka zostaje - lewy dolny rog to margines kontenera. */
+@media (max-width: 900px) {
+  .cookie-manage-trigger {
+    display: none !important;
+  }
+}
+
+.footer-links .footer-link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.footer-links .footer-link-btn:hover {
+  color: #FFFFFF;
+}
+
+.footer-links .footer-link-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (pointer: coarse) {
+  .footer-links .footer-link-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* Plakietka w naglowku jest linkiem (22.10.2026): mniejszy rozstaw liter
+   (dluzszy tekst niz dawne dwie plakietki), podkreslenie przy najechaniu,
+   widoczny fokus. */
+.badge-pill--link {
+  font-size: 0.75rem;
+  min-height: 0;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.badge-pill--link:hover {
+  text-decoration: underline;
+}
+
+.badge-pill--link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

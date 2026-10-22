@@ -16,6 +16,12 @@ export default function CookiesBanner() {
   // w hero. Wersja kompaktowa: jedno zdanie, dwa równorzędne przyciski
   // w jednym rzędzie, „Dostosuj” jako link w tekście.
   const [compact, setCompact] = useState(false);
+  // Od 901 px baner jest karta w prawym dolnym rogu (22.10.2026). Wysrodkowany
+  // pas 680 px przy 1440x900 zakrywal H1 strony glownej i przycisk "Wycen
+  // projekt" w hero, a na landingach druga polowe H1 - pierwsze wrazenie
+  // kazdego nowego goscia. Prawy dolny rog przy tej szerokosci to tlo sceny
+  // 3D albo pusty margines kontenera.
+  const [corner, setCorner] = useState(false);
   const lang = useLocale();
   const t = useTranslations('cookies');
 
@@ -40,10 +46,18 @@ export default function CookiesBanner() {
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 600px)');
-    const sync = () => setCompact(mq.matches);
+    const mqCorner = window.matchMedia('(min-width: 901px)');
+    const sync = () => {
+      setCompact(mq.matches);
+      setCorner(mqCorner.matches);
+    };
     sync();
     mq.addEventListener('change', sync);
-    return () => mq.removeEventListener('change', sync);
+    mqCorner.addEventListener('change', sync);
+    return () => {
+      mq.removeEventListener('change', sync);
+      mqCorner.removeEventListener('change', sync);
+    };
   }, []);
 
   // Staly przycisk „Wycen projekt" (.kota-floating-cta z Footer.jsx) stoi w tym
@@ -119,6 +133,19 @@ export default function CookiesBanner() {
   const handleAcceptAll = () => saveConsent(true, true);
   const handleDeclineOptional = () => saveConsent(false, false);
 
+  // Link "Ustawienia cookies" w stopce (22.10.2026) otwiera to samo okno co
+  // pigulka "Zgoda", ktora na telefonie i tablecie jest ukryta (globals.css).
+  // Fokus po zamknieciu wraca do elementu, ktory okno otworzyl.
+  const openerRef = useRef(null);
+  useEffect(() => {
+    const open = () => {
+      openerRef.current = document.activeElement;
+      setShowManageModal(true);
+    };
+    window.addEventListener('aiseo:ustawienia-zgody', open);
+    return () => window.removeEventListener('aiseo:ustawienia-zgody', open);
+  }, []);
+
   // Okno "Dostosuj preferencje" jako dialog modalny (05.10.2026). Pomiar
   // w Playwright: po otwarciu fokus zostawal na BODY, piaty Tab wychodzil
   // z okna na strone pod nim (Shift+Tab z X od razu na link "Regulamin"
@@ -189,6 +216,13 @@ export default function CookiesBanner() {
     }
     if (!wasOpenRef.current) return;
     wasOpenRef.current = false;
+    // Okno otwarte linkiem ze stopki: fokus wraca do tego linku.
+    const opener = openerRef.current;
+    openerRef.current = null;
+    if (opener && opener.isConnected && typeof opener.focus === 'function') {
+      opener.focus();
+      return;
+    }
     // Efekt biegnie po commicie, wiec nowy przycisk jest juz w DOM i ref
     // jest ustawiony (AnimatePresence dodaje wchodzace dziecko w tym samym
     // renderze). Bez requestAnimationFrame - w karcie w tle rAF stoi.
@@ -205,6 +239,12 @@ export default function CookiesBanner() {
   // Dostosuj preferencje"). Nazwa w stylu "Zgoda — Dostosuj preferencje" razem
   // z takim samym title dawala w drzewie AX opis = nazwa, czytany dwa razy.
   const fabText = t('title').split(' ')[0];
+
+  // Tresc zwarta (jedno zdanie, dwa przyciski w rzedzie, "Dostosuj" w tekscie)
+  // na telefonie i w karcie w rogu desktopu (22.10.2026). W rogu jest miejsce
+  // na ok. 360 px: H1 landingu /pozycjonowanie-stron-internetowych siega przy
+  // 1440 px do x = 1078, a pelny tekst w karcie tej szerokosci mial 8 linii.
+  const zwarty = compact || corner;
 
   return (
     <>
@@ -262,39 +302,40 @@ export default function CookiesBanner() {
         {isVisible && !showManageModal && (
           // Kontener nie mial role ani nazwy, wiec czytnik nie ogloszal, ze to
           // zgoda (05.10.2026). aria-label z istniejacego klucza "title" - w trybie
-          // compact (<= 600 px) tytulu nie widac i to jedyna nazwa obszaru.
+          // zwartym (telefon, rog desktopu) tytulu nie widac i to jedyna nazwa obszaru.
           // Bez aria-live: czytnik odczytywalby caly baner po kazdym wejsciu.
           <motion.div
             ref={bannerRef}
             className="cookie-banner"
             role="region"
             aria-label={t('title')}
-            initial={{ opacity: 0, y: 40, x: '-50%' }}
-            animate={{ opacity: 1, y: 0, x: '-50%' }}
-            exit={{ opacity: 0, y: 30, x: '-50%' }}
+            initial={{ opacity: 0, y: 40, x: corner ? 0 : '-50%' }}
+            animate={{ opacity: 1, y: 0, x: corner ? 0 : '-50%' }}
+            exit={{ opacity: 0, y: 30, x: corner ? 0 : '-50%' }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'fixed',
-              bottom: compact ? '0.75rem' : '1.75rem',
-              left: '50%',
-              width: compact ? 'calc(100% - 1.5rem)' : '92%',
-              maxWidth: '680px',
+              bottom: compact ? '0.75rem' : corner ? '1.5rem' : '1.75rem',
+              left: corner ? 'auto' : '50%',
+              right: corner ? '1.5rem' : 'auto',
+              width: compact ? 'calc(100% - 1.5rem)' : corner ? 'calc(100% - 3rem)' : '92%',
+              maxWidth: corner ? '360px' : '680px',
               background: 'rgba(15, 23, 42, 0.95)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               color: '#FFF',
-              padding: compact ? '0.8rem 0.9rem' : '1.5rem',
-              borderRadius: compact ? '16px' : '24px',
+              padding: zwarty ? '0.8rem 0.9rem' : '1.5rem',
+              borderRadius: zwarty ? '16px' : '24px',
               boxShadow: '0 25px 60px rgba(0, 0, 0, 0.4)',
               border: '1px solid rgba(255, 255, 255, 0.15)',
               zIndex: 100000,
               display: 'flex',
               flexDirection: 'column',
-              gap: compact ? '0.6rem' : '1.25rem',
+              gap: zwarty ? '0.6rem' : '1.25rem',
               fontFamily: "'Inter', sans-serif"
             }}
           >
-            {compact ? (
+            {zwarty ? (
               <p style={{ margin: 0, fontSize: '0.8rem', lineHeight: 1.45, color: '#E2E8F0', fontWeight: 400 }}>
                 {t('textShort')}{' '}
                 <Link href="/cookies" style={{ color: '#38BDF8', textDecoration: 'underline', fontWeight: 500 }}>
@@ -325,19 +366,19 @@ export default function CookiesBanner() {
             )}
 
             {/* Equal Prominence Action Buttons (Strict EU GDPR Requirement) */}
-            <div style={{ display: 'flex', gap: compact ? '0.5rem' : '0.75rem', flexWrap: compact ? 'nowrap' : 'wrap', alignItems: compact ? 'stretch' : 'center' }}>
+            <div style={{ display: 'flex', gap: zwarty ? '0.5rem' : '0.75rem', flexWrap: zwarty ? 'nowrap' : 'wrap', alignItems: zwarty ? 'stretch' : 'center' }}>
               <button 
                 onClick={handleDeclineOptional}
                 style={{
-                  flex: compact ? '1 1 0' : '1 1 140px',
+                  flex: zwarty ? '1 1 0' : '1 1 140px',
                   background: 'rgba(255, 255, 255, 0.1)',
                   border: '1px solid rgba(255, 255, 255, 0.25)',
                   color: '#FFFFFF',
-                  padding: compact ? '0.55rem 0.5rem' : '0.65rem 1.1rem',
-                  minHeight: compact ? '44px' : undefined,
+                  padding: zwarty ? '0.55rem 0.5rem' : '0.65rem 1.1rem',
+                  minHeight: zwarty ? '44px' : undefined,
                   borderRadius: '12px',
                   cursor: 'pointer',
-                  fontSize: compact ? '0.82rem' : '0.88rem',
+                  fontSize: zwarty ? '0.82rem' : '0.88rem',
                   fontWeight: 600,
                   textAlign: 'center',
                   transition: 'all 0.25s ease'
@@ -355,15 +396,15 @@ export default function CookiesBanner() {
               <button 
                 onClick={handleAcceptAll}
                 style={{
-                  flex: compact ? '1 1 0' : '1 1 140px',
+                  flex: zwarty ? '1 1 0' : '1 1 140px',
                   background: 'var(--color-primary)',
                   border: '1px solid var(--color-primary)',
                   color: '#FFFFFF',
-                  padding: compact ? '0.55rem 0.5rem' : '0.65rem 1.1rem',
-                  minHeight: compact ? '44px' : undefined,
+                  padding: zwarty ? '0.55rem 0.5rem' : '0.65rem 1.1rem',
+                  minHeight: zwarty ? '44px' : undefined,
                   borderRadius: '12px',
                   cursor: 'pointer',
-                  fontSize: compact ? '0.82rem' : '0.88rem',
+                  fontSize: zwarty ? '0.82rem' : '0.88rem',
                   fontWeight: 600,
                   textAlign: 'center',
                   boxShadow: '0 4px 16px rgba(24, 95, 165, 0.35)',
@@ -379,7 +420,7 @@ export default function CookiesBanner() {
                 {t('acceptAll')}
               </button>
 
-              {!compact && (
+              {!zwarty && (
               <button
                 ref={manageBtnRef}
                 type="button"

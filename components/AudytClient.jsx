@@ -127,7 +127,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_audyt_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w\u00a024\u00a0h' : 'Ask for a quote — reply within 24\u00a0h'}
             </a>
           </div>
         </div>

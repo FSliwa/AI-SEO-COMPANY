@@ -53,10 +53,13 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               lineHeight: 1.1,
               letterSpacing: '-0.02em'
             }}>
+              {/* 22.10.2026: zamiast "Organiczny Wzrost / Maksymalna Konwersja"
+                  (dwa hasla bez tresci, Title Case) - korzysc, o ktora pyta
+                  klient z reklamy. Bez liczb i obietnic wyniku. */}
               {lang === 'pl' ? (
-                <>Organiczny Wzrost<br/>Maksymalna Konwersja</>
+                <>Ruch z Google, który<br/>kończy się zapytaniem</>
               ) : (
-                <>Organic Growth<br/>Maximum Conversion</>
+                <>Search traffic that<br/>turns into enquiries</>
               )}
             </h2>
 
@@ -82,8 +85,11 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             </p>
             
             <div className="hero-cta-row" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              {/* Ta sama obietnica co przycisk formularza ("Odbierz bezplatna
+                  wycene"); "Rozpocznij wspolprace" brzmialo jak podpisanie
+                  umowy przy pierwszym kliknieciu (22.10.2026). */}
               <a href={hash('kontakt', lang)} className="hero-btn-primary" data-cta="service_hero_seo">
-                {lang === 'pl' ? 'Rozpocznij współpracę' : 'Start collaboration'} 
+                {lang === 'pl' ? 'Odbierz bezpłatną wycenę' : 'Get my free quote'}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
               <a href="tel:+48518815055" className="hero-btn-secondary" data-cta="service_hero_seo_tel">
@@ -148,7 +154,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_pozycjonowanie_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w\u00a024\u00a0h' : 'Ask for a quote — reply within 24\u00a0h'}
             </a>
           </div>
         </div>
@@ -196,7 +202,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
             <div style={{ textAlign: 'center', marginTop: '3rem' }}>
               <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_pozycjonowanie_2">
-                {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+                {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w\u00a024\u00a0h' : 'Ask for a quote — reply within 24\u00a0h'}
               </a>
             </div>
           </div>

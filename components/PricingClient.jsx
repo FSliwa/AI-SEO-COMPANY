@@ -109,7 +109,7 @@ export default function PricingClient() {
                 a pierwszy przycisk był wcześniej na 4. ekranie telefonu (pomiar 24.09.2026). */}
             <div className="hero-cta-row" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href={hash('kontakt', lang)} className="hero-btn-primary" data-cta="service_hero_cennik">
-                {lang === 'pl' ? 'Zamów wycenę — odpowiedź w 24 h' : 'Get a quote — reply within 24 h'}
+                {lang === 'pl' ? 'Zamów wycenę — odpowiedź w\u00a024\u00a0h' : 'Get a quote — reply within 24\u00a0h'}
               </a>
               <a href="tel:+48518815055" className="hero-btn-secondary" data-cta="service_hero_cennik_tel">
                 {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
@@ -159,7 +159,7 @@ export default function PricingClient() {
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_cennik_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w\u00a024\u00a0h' : 'Ask for a quote — reply within 24\u00a0h'}
             </a>
           </div>
         </div>
