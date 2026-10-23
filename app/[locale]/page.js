@@ -1,22 +1,29 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  // UWAGA na dlugosc tytulu PL: limit 580 px (20px Arial, pomiar canvasem).
-  // 20.10.2026: tytul pod nisze "agencja AI SEO" - w GSC (lip-paz 2026)
-  // "agencja ai seo warszawa" ma pozycje 5,8, "agencja pozycjonowanie ai
-  // warszawa" 18,6, "agencja seo ai" 38,1 przy 211 wyswietleniach, a dawny
-  // tytul ("Agencja SEO i Marketingowa Warszawa | Pozycjonowanie Stron",
-  // 572 px) nie mial "AI" - dopisanie go dawalo 597 px. Nowy: 560 px, czyli
-  // 20 px zapasu. Zostaja "pozycjonowanie stron" i "marketing"; "agencja
-  // marketingowa" przechodzi w calosci do opisu. Nie wydluzac bez pomiaru.
-  title: locale === 'en' ? 'SEO Company, Marketing Agency | Search Engine Optimization' : 'Agencja AI SEO Warszawa | Pozycjonowanie Stron i Marketing',
-  // PL: 945 px z 1000 i 146 znakow ze 150. "Sprawdz cennik i wyniki
-  // wdrozen" odsyla do sekcji Pricing i Results, ktore sa na tej stronie.
-  // Wczesniejsza wersja zaczynala sie od "Twoj projekt i strony to nasz
-  // priorytet" - zdanie bez informacji, ktore zajmowalo 1/4 opisu.
+  // 23.10.2026: title i description PL przywrocone po 2f04f61 (20.10, "Agencja
+  // AI SEO Warszawa | Pozycjonowanie Stron i Marketing"). Tamta wersja gubila
+  // frazy z listy wlasciciela dla strony glownej: "agencja seo" (sasiedztwo
+  // w title i description), "agencja seo warszawa", "projekt", "wzrost"
+  // (description) i slowo "marketingowa" (title). Zmiana tych dwoch stringow
+  // tylko po kontroli ~/Desktop/AI SEO COMPANY/narzedzia/kontrola-fraz.py.
+  //
+  // UWAGA na dlugosc tytulu PL: zmierzony 572 px przy limicie 580 px (20px
+  // Arial, pomiar canvasem). Zostaje 8 px zapasu, czyli mniej niz jeden znak.
+  // Kazde dopisanie wymaga usuniecia czegos innego - np. dopisanie "AI" daje
+  // 597 px i tytul ucina sie w SERP-ie. Dlatego "AI" trafilo do meta
+  // description ponizej, gdzie zapas wynosi ~70 px. Nie wydluzac tego stringa
+  // bez ponownego pomiaru.
+  title: locale === 'en' ? 'SEO Company, Marketing Agency | Search Engine Optimization' : 'Agencja SEO i Marketingowa Warszawa | Pozycjonowanie Stron',
+  // PL: dopisane "z AI" - jedyna wolna przestrzen na ten czlon w metadanych.
+  // Domena zawiera "ai" i Google juz wiaze z nim serwis (zapytanie "ai" dalo
+  // 337 wyswietlen w kwartale, "agencja seo ai" kolejne 79 przy zerze klikniec),
+  // ale ani tytul, ani opis go nie mialy - stad Meta 66% dla tej frazy przy
+  // HTML 86%. Wstawka jest czysto addytywna: 931 px z 1000 i 148 znakow ze 150,
+  // zadne dotychczasowe slowo nie znika.
   // EN bez zmian: skojarzenie z "ai" jest polskie (Polska 917 wyswietlen vs
   // USA 70), przenoszenie go na rynek angielski byloby zgadywaniem.
-  description: locale === 'en' ? 'Top SEO agency and marketing agency for companies. Search engine optimization from Warsaw, B2B focused. The SEO firm agencies rely on.' : 'Agencja AI SEO i agencja marketingowa z Warszawy. Pozycjonowanie stron z AI, audyt SEO i strony, które sprzedają. Sprawdź cennik i wyniki wdrożeń.',
+  description: locale === 'en' ? 'Top SEO agency and marketing agency for companies. Search engine optimization from Warsaw, B2B focused. The SEO firm agencies rely on.' : 'Twój projekt i strony to nasz priorytet. Agencja SEO Warszawa i agencja marketingowa. Pozycjonowanie stron z AI, które generuje realny wzrost firmy.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en' : 'https://www.ai-seo-company.pl/',
     languages: {

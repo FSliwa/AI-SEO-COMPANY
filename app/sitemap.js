@@ -17,7 +17,11 @@ import { blogPosts } from '../lib/blogPosts';
 // glownej PL). Pol date w lib/blogPosts.js nie ruszac - zasilaja
 // datePublished/dateModified i widoczna date.
 const LASTMOD = {
-  // 22.10.2026 (to wdrozenie): H2 i przycisk hero na landingach SEO
+  // 23.10.2026 (to wdrozenie): title i description strony glownej PL
+  // przywrocone do wersji sprzed 2f04f61 (frazy kluczowe wlasciciela).
+  'https://www.ai-seo-company.pl/': '2026-10-23',
+
+  // 22.10.2026 (f727335): H2 i przycisk hero na landingach SEO
   // i web designu (PL i EN). Pozostale zmiany wydania to naglowek, stopka,
   // baner zgody (elementy wspolne - nie licza sie) oraz twarde spacje w "24 h"
   // na /cennik-pozycjonowania i /audyt-seo (sama typografia, bez zmiany tresci).
@@ -33,7 +37,6 @@ const LASTMOD = {
   // jego pustej kopii /en. Lista = adresy, ktorych HTML rozni sie od
   // produkcji (porownanie wszystkich 55 adresow z sitemapy). Pokrywa tez
   // zalegle pozycje z 18.10 (JSON-LD mailchimp, ceny EUR w how-much-...-pricing).
-  'https://www.ai-seo-company.pl/': '2026-10-20',
   'https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026': '2026-10-20',
   'https://www.ai-seo-company.pl/blog/storytelling-marki': '2026-10-20',
   'https://www.ai-seo-company.pl/en/blog/brand-storytelling-patterns': '2026-10-20',
