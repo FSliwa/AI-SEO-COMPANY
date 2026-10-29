@@ -349,6 +349,7 @@ export default function Contact({ isMainContent = false }) {
                 <option value="booster">{lang === 'pl' ? 'Booster Pack (2 500 zł netto — Strona za 0 zł)' : 'Booster Pack (€590 net — Free Website)'}</option>
                 <option value="custom">{lang === 'pl' ? 'Indywidualny zakres działania' : 'Custom Project'}</option>
                 <option value="audyt-ai">{lang === 'pl' ? 'Audyt widoczności w AI (990 zł netto)' : 'AI visibility audit (€235 net)'}</option>
+                <option value="przeglad-agencji">{lang === 'pl' ? 'Bezpłatny przegląd po poprzedniej agencji (30 min)' : 'Free review after your previous agency (30 min)'}</option>
                 {ENTRY_OFFER === 'audyt' && (
                   <option value="audyt">{lang === 'pl' ? `Audyt SEO (${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} zł netto, odliczany od abonamentu)` : `SEO audit (PLN ${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} net, deducted from subscription)`}</option>
                 )}

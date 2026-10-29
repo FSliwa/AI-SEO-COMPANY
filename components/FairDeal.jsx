@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { Reveal } from './ScrollReveal';
+import { Link } from '../i18n/routing';
 
 // Warunki współpracy i zasady celu TOP 3 w jednym miejscu (decyzje D2 i plan przewagi
 // z 28.10.2026). Kotwice #uczciwa-umowa i #cel-top-3 są linkowane z FAQ cennika,
@@ -59,6 +60,11 @@ export default function FairDeal() {
             <ol style={list}>
               {fairRules[lang].map((r) => <li key={r}>{r}</li>)}
             </ol>
+            {lang === 'pl' && (
+              <p style={{ margin: '1.25rem 0 0', fontSize: '1rem', lineHeight: 1.6, color: '#333336' }}>
+                Odchodzisz od innej agencji? <Link href="/zmiana-agencji-seo" style={{ textDecoration: 'underline', fontWeight: 600 }}>Poradnik i checklista: jak zmienić agencję SEO bez kar i utraty pozycji</Link>.
+              </p>
+            )}
           </div>
         </Reveal>
         <Reveal>

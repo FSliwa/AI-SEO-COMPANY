@@ -40,6 +40,10 @@ export const routing = defineRouting({
       pl: '/sprawdz-widocznosc-w-ai',
       en: '/ai-visibility-check'
     },
+    '/zmiana-agencji-seo': {
+      pl: '/zmiana-agencji-seo',
+      en: '/changing-seo-agency'
+    },
     '/panel-klienta': {
       pl: '/panel-klienta',
       en: '/client-portal'

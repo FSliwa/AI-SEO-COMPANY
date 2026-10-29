@@ -17,9 +17,13 @@ import { blogPosts } from '../lib/blogPosts';
 // glownej PL). Pol date w lib/blogPosts.js nie ruszac - zasilaja
 // datePublished/dateModified i widoczna date.
 // Strony tylko po polsku (wersja EN zwraca 404): nie trafiaja do sitemapy w EN.
-const PL_ONLY = new Set(['/sprawdz-widocznosc-w-ai']);
+const PL_ONLY = new Set(['/sprawdz-widocznosc-w-ai', '/zmiana-agencji-seo']);
 
 const LASTMOD = {
+  // Etap 3 planu przewagi: poradnik /zmiana-agencji-seo (tylko PL) i link do niego w sekcji
+  // "Uczciwa umowa" na cenniku i /panel-klienta (tylko wersja PL). Data = dzien wdrozenia;
+  // jesli wdrozenie przesunie sie, poprawic.
+  'https://www.ai-seo-company.pl/zmiana-agencji-seo': '2026-10-29',
   // Etap 2 planu przewagi: oferta GEO /pozycjonowanie-w-ai, sprawdzarka AI, widocznosc w AI
   // w pakietach (Pricing na stronie glownej, cenniku, pozycjonowaniu, SEO lokalnym, projektowaniu),
   // pytanie o cene GEO w FAQ cennika, nowa opcja w formularzu kontaktu. Data = dzien wdrozenia.

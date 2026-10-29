@@ -44,6 +44,14 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
         ]
       },
+      // Checklista PDF z poradnika /zmiana-agencji-seo (link przychodzi e-mailem): poza indeksem Google.
+      {
+        source: '/pliki/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex' },
+          { key: 'Cache-Control', value: 'public, max-age=3600' }
+        ]
+      },
       {
         source: '/projects/:path*',
         headers: [
