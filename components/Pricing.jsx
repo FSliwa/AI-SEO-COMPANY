@@ -47,6 +47,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li>Podstawowa optymalizacja techniczna strony</li>
                   <li>Optymalizacja Wizytówki Google (Profil Firmy)</li>
                   <li>Do 20 fraz, 2 treści i 2 linki miesięcznie</li>
+                  <li>Widoczność w AI (ChatGPT, Google): opcja +490 zł netto/mies.</li>
                   <li>Comiesięczny raport pozycji i ruchu</li>
                   <li>Możliwość rezygnacji w każdej chwili</li>
                 </>
@@ -57,6 +58,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li>Core technical website optimization</li>
                   <li>Google Business Profile optimization</li>
                   <li>Up to 20 keywords, 2 content pieces and 2 links a month</li>
+                  <li>AI visibility (ChatGPT, Google): add-on +€115 net/mo</li>
                   <li>Monthly keyword ranking & traffic reports</li>
                   <li>Cancel anytime flexible policy</li>
                 </>
@@ -84,6 +86,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li>Prowadzenie Wizytówki Google (walka o TOP 3 Map)</li>
                   <li>Strategia link buildingu i rozbudowa artykułów</li>
                   <li>Do 50 fraz, 4 treści i 4 linki miesięcznie</li>
+                  <li>Widoczność w AI: 30 pytań co tydzień w ChatGPT i Google</li>
                   <li>Możliwość rezygnacji w każdej chwili</li>
                 </>
               ) : (
@@ -94,6 +97,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li>Google Maps TOP 3 ranking management</li>
                   <li>High-authority link building & expert content</li>
                   <li>Up to 50 keywords, 4 content pieces and 4 links a month</li>
+                  <li>AI visibility: 30 questions weekly in ChatGPT and Google</li>
                   <li>Cancel anytime flexible policy</li>
                 </>
               )}

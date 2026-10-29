@@ -16,7 +16,16 @@ import { blogPosts } from '../lib/blogPosts';
 // Klucz = pelny URL dokladnie jak w push() ('/' na koncu tylko dla strony
 // glownej PL). Pol date w lib/blogPosts.js nie ruszac - zasilaja
 // datePublished/dateModified i widoczna date.
+// Strony tylko po polsku (wersja EN zwraca 404): nie trafiaja do sitemapy w EN.
+const PL_ONLY = new Set(['/sprawdz-widocznosc-w-ai']);
+
 const LASTMOD = {
+  // Etap 2 planu przewagi: oferta GEO /pozycjonowanie-w-ai, sprawdzarka AI, widocznosc w AI
+  // w pakietach (Pricing na stronie glownej, cenniku, pozycjonowaniu, SEO lokalnym, projektowaniu),
+  // pytanie o cene GEO w FAQ cennika, nowa opcja w formularzu kontaktu. Data = dzien wdrozenia.
+  'https://www.ai-seo-company.pl/pozycjonowanie-w-ai': '2026-10-29',
+  'https://www.ai-seo-company.pl/en/ai-search-optimization': '2026-10-29',
+  'https://www.ai-seo-company.pl/sprawdz-widocznosc-w-ai': '2026-10-29',
   // 29.10.2026 (etap 1 planu przewagi): panel klienta w pakietach (Pricing na stronie
   // glownej, cenniku, pozycjonowaniu, SEO lokalnym i projektowaniu), nowa strona
   // /panel-klienta, sekcje "Uczciwa umowa" i "Cel TOP 3" na cenniku, dane GSC zamiast
@@ -162,7 +171,7 @@ export default function sitemap() {
     // The English home page canonicalises to /en, so do not emit /en/ here —
     // that URL 308-redirects and would put a non-canonical address in the sitemap.
     const enSlug = routing.pathnames[route].en || route;
-    push(`${baseUrl}/en${enSlug === '/' ? '' : enSlug}`, changeFrequency, priority);
+    if (!PL_ONLY.has(route)) push(`${baseUrl}/en${enSlug === '/' ? '' : enSlug}`, changeFrequency, priority);
 
     const plSlug = routing.pathnames[route].pl || route;
     push(`${baseUrl}${plSlug === '/' ? '/' : plSlug}`, changeFrequency, priority);

@@ -21,6 +21,8 @@ const LEAD_VALUE_PLN = {
   // Oferta wejsciowa (components/EntryOffer.jsx): wartosc = cena audytu,
   // nie pierwsza faktura abonamentu.
   audyt: ENTRY_OFFER_PRICE_PLN,
+  // Audyt widocznosci w AI (decyzja D6, 29.10.2026).
+  'audyt-ai': 990,
 };
 const DEFAULT_LEAD_VALUE_PLN = 1900;
 
@@ -346,6 +348,7 @@ export default function Contact({ isMainContent = false }) {
                 <option value="premium">{lang === 'pl' ? 'SEO Premium (2 500 zł netto/mies.)' : 'SEO Premium (€590 net/mo)'}</option>
                 <option value="booster">{lang === 'pl' ? 'Booster Pack (2 500 zł netto — Strona za 0 zł)' : 'Booster Pack (€590 net — Free Website)'}</option>
                 <option value="custom">{lang === 'pl' ? 'Indywidualny zakres działania' : 'Custom Project'}</option>
+                <option value="audyt-ai">{lang === 'pl' ? 'Audyt widoczności w AI (990 zł netto)' : 'AI visibility audit (€235 net)'}</option>
                 {ENTRY_OFFER === 'audyt' && (
                   <option value="audyt">{lang === 'pl' ? `Audyt SEO (${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} zł netto, odliczany od abonamentu)` : `SEO audit (PLN ${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} net, deducted from subscription)`}</option>
                 )}

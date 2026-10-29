@@ -71,6 +71,12 @@ export default function PricingClient() {
       answerEn: 'A standalone SEO audit starts at €350 net, and a Next.js website at €1,400 net. In the SEO packages the audit is included, and in the Booster Pack the new website is part of the monthly fee from €590 net (minimum 3-month contract). You get an exact quote for larger sites within 24 h on business days.'
     },
     {
+      question: 'Ile kosztuje pozycjonowanie w AI (ChatGPT, Google)?',
+      questionEn: 'How much does AI search optimization (ChatGPT, Google) cost?',
+      answer: 'Audyt widoczności w AI kosztuje 990 zł netto i jest zaliczany na pierwszy miesiąc abonamentu. Pomiar co tydzień i działania pod AI są w cenie SEO Premium, a do SEO Standard można je dodać za 490 zł netto miesięcznie. Wynik widzisz w zakładce Widoczność w AI w panelu klienta. <a href="/pozycjonowanie-w-ai" style="text-decoration:underline">Szczegóły pozycjonowania w AI</a>.',
+      answerEn: 'The AI visibility audit costs €235 net and is credited to your first monthly fee. Weekly measurement and AI-focused work are included in SEO Premium and can be added to SEO Standard for €115 net a month. You see the results in the AI visibility tab of the client portal. <a href="/en/ai-search-optimization" style="text-decoration:underline">More about AI search optimization</a>.'
+    },
+    {
       question: 'Kiedy zobaczę pierwsze efekty pozycjonowania?',
       questionEn: 'When will I see the first SEO results?',
       answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. Naszym celem jest TOP 3 dla uzgodnionych fraz lokalnych w 2–3 miesiące: postęp widzisz co tydzień w panelu klienta, a jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł (<a href="#cel-top-3" style="text-decoration:underline">zasady celu TOP 3</a>). Nie gwarantujemy pozycji nr 1, bo o kolejności decyduje Google. Pamiętaj: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',

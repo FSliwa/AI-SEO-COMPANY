@@ -32,6 +32,14 @@ export const routing = defineRouting({
       pl: '/projektowanie-stron-internetowych',
       en: '/web-design'
     },
+    '/pozycjonowanie-w-ai': {
+      pl: '/pozycjonowanie-w-ai',
+      en: '/ai-search-optimization'
+    },
+    '/sprawdz-widocznosc-w-ai': {
+      pl: '/sprawdz-widocznosc-w-ai',
+      en: '/ai-visibility-check'
+    },
     '/panel-klienta': {
       pl: '/panel-klienta',
       en: '/client-portal'
