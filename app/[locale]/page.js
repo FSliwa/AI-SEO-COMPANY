@@ -43,7 +43,7 @@ import Pricing from '@/components/Pricing';
 import WhyUs from '@/components/WhyUs';
 import Process from '@/components/Process';
 import Results from '@/components/Results';
-import Testimonials from '@/components/Testimonials';
+import PanelShowcase from '@/components/PanelShowcase';
 import Blog from '@/components/Blog';
 import HomeFaq from '@/components/HomeFaq';
 import Contact from '@/components/Contact';
@@ -77,7 +77,9 @@ export default function Home() {
         <Portfolio />
         <Pricing isMainContent={true} />
         <Results />
-        <Testimonials />
+        {/* 29.10.2026: panel klienta zamiast Testimonials (5 opinii bez nazw firm, decyzja D3).
+            Komponent Testimonials zostaje w repo na prawdziwe opinie z Google. */}
+        <PanelShowcase />
         <Blog />
         <HomeFaq />
         <Contact isMainContent={true} />

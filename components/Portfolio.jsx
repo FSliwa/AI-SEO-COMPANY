@@ -398,11 +398,18 @@ export default function Portfolio() {
                         ? `${item.metric} wzrostu odwiedzin organicznych po 1 miesiącu.`
                         : `${item.metric} increase in organic visits after 1 month.`)}
                 </p>
-                {/* Kierunek od klienta: zadnych modali - CTA prowadzi wprost
-                    do formularza kontaktowego na dole strony. */}
-                <a href={hash('kontakt', lang)} className="portfolio-client-cta" data-cta="portfolio_client">
-                  {lang === 'pl' ? 'Napisz, aby zobaczyć wyniki' : 'Get in touch to see the results'} →
-                </a>
+                {/* 29.10.2026: wyniki jawne zamiast "Napisz, aby zobaczyć wyniki" (D3).
+                    Liczby z GSC z oknem pomiaru sa we wpisie "Wyniki wdrozen SEO 2026"
+                    (tylko PL); po angielsku zostaje formularz. */}
+                {lang === 'pl' ? (
+                  <Link href="/blog/wyniki-wdrozen-seo-2026" className="portfolio-client-cta" data-cta="portfolio_client_results">
+                    Zobacz dane z Search Console →
+                  </Link>
+                ) : (
+                  <a href={hash('kontakt', lang)} className="portfolio-client-cta" data-cta="portfolio_client">
+                    Ask for the Search Console data →
+                  </a>
+                )}
               </RevealItem>
             ))}
           </RevealStagger>

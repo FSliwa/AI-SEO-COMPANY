@@ -92,42 +92,44 @@ export default function WhyUs({ isMainContent = false }) {
   const whyUsCards = [
     {
       id: 1,
-      tag: lang === 'pl' ? 'ZAUFANIE I KONWERSJA' : 'TRUST & CONVERSION',
-      metric: '81%',
-      title: lang === 'pl' ? 'Zaufanie klientów przed zakupem' : 'Client trust before purchase',
+      // 29.10.2026 (D3): karty z liczbami bez zrodla (81%, +80%, +23%, +310%) zastapione
+      // panelem klienta i danymi z Google Search Console z wpisu "Wyniki wdrozen SEO 2026".
+      tag: lang === 'pl' ? 'PANEL KLIENTA' : 'CLIENT PORTAL',
+      metric: '24/7',
+      title: lang === 'pl' ? 'Wyniki widoczne codziennie' : 'Results you can see every day',
       description: lang === 'pl' 
-        ? 'Statystyki jasno pokazują, że 81% klientów musi w pełni zaufać marce na podstawie jej wizerunku w sieci, zanim podejmie decyzję o zakupie. Nasz rygorystyczny proces projektowy UI/UX buduje u odbiorców poczucie bezpieczeństwa, co drastycznie zwiększa współczynnik konwersji i generuje więcej zapytań ofertowych.'
-        : 'Partnering with a professional SEO company and marketing agency is a critical step for growth. Our rigorous UI/UX design process instills immediate confidence, dramatically increasing conversion rates and generating more qualified inquiries.',
+        ? 'Każdy klient dostaje panel z danymi z Google Search Console, zapytaniami z formularza i telefonu, dziennikiem naszych prac i opisem każdej zmiany kodu strony. Widzisz wzrost zapytań i to, za co płacisz, zanim przyjdzie raport miesięczny.'
+        : 'Partnering with a professional SEO company and marketing agency is a critical step for growth. Every client gets a 24/7 portal with Google Search Console data, form and phone enquiries, a log of our work and a plain-language summary of every change to the site.',
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 2,
-      tag: lang === 'pl' ? 'ROZPOZNAWALNOŚĆ MARKI' : 'BRAND RECOGNITION',
-      metric: '+80%',
-      title: lang === 'pl' ? 'Wzrost rozpoznawalności firmy' : 'Significant brand recall boost',
+      tag: lang === 'pl' ? 'SEO LOKALNE' : 'LOCAL SEO',
+      metric: '187',
+      title: lang === 'pl' ? 'Wzrost widoczności lokalnej restauracji' : 'Local visibility growth for a restaurant',
       description: lang === 'pl'
-        ? 'Profesjonalny branding to kluczowe narzędzie sprzedażowe. Tworzymy unikalne, spójne systemy wizualne i nowoczesną architekturę designu, która zwiększa zapamiętywalność marki o 80%. Dzięki temu Twoja firma jednoznacznie wyróżnia się na tle konkurencji, budując pozycję lidera.'
-        : 'Professional branding is a critical sales tool. Most search engine optimisation companies stop at rankings and leave identity to somebody else; we treat the two as one project. We develop unique, cohesive visual systems and a modern design architecture that increase brand recall by 80%, so your company stands out definitively from competitors.',
+        ? 'Madame Thai, nowa strona lokalnej restauracji: 187 kliknięć i 10,1 tys. wyświetleń w Google w trzy miesiące (Google Search Console, stan na sierpień 2026). W gastronomii wzrost napędzają zapytania lokalne i Mapy.'
+        : 'Most search engine optimisation companies stop at rankings and leave identity to somebody else; we treat the two as one project. Madame Thai, a new website for a local restaurant: 187 clicks and 10.1k Google impressions in three months (Google Search Console, as of August 2026).',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 3,
-      tag: lang === 'pl' ? 'WPŁYW NA PRZYCHÓD' : 'REVENUE IMPACT',
-      metric: '+23%',
-      title: lang === 'pl' ? 'Średni wzrost przychodów' : 'Average revenue increase',
+      tag: lang === 'pl' ? 'B2B OD ZERA' : 'B2B FROM ZERO',
+      metric: '152',
+      title: lang === 'pl' ? 'Wzrost ruchu producenta B2B' : 'Traffic growth for a B2B manufacturer',
       description: lang === 'pl'
-        ? 'Sama obecność w sieci to za mało. Łączymy zaawansowane pozycjonowanie SEO z psychologią konwersji, aby zmaksymalizować Twoje zyski. Zastosowanie premium designu na wszystkich etapach ścieżki klienta przekłada się na udokumentowany średni wzrost przychodów firmy o 23%.'
-        : 'Merely being online is not enough. Unlike traditional SEO firms, we provide SEO for companies that combines advanced optimization with conversion psychology, translating to a documented average revenue increase of 23% for our partners.',
+        ? 'Staniax, producent z branży metalizacji próżniowej: od zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w trzy miesiące. Wzrost przyszedł z treści odpowiadających na pytania klientów przemysłowych, a nie z ogólnych fraz, na które młoda domena nie ma szans.'
+        : 'Merely being online is not enough. Unlike traditional SEO firms, we provide SEO for companies that combines advanced optimization with conversion psychology. Staniax, a vacuum metallising manufacturer: from zero visibility to 152 clicks and 6.34k impressions in three months.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 4,
-      tag: lang === 'pl' ? 'RUCH ORGANICZNY' : 'ORGANIC TRAFFIC',
-      metric: '+310%',
-      title: lang === 'pl' ? 'Dynamiczny wzrost wartościowego ruchu' : 'Dynamic high-intent traffic growth',
+      tag: lang === 'pl' ? 'NOWA DOMENA' : 'NEW DOMAIN',
+      metric: lang === 'pl' ? '28 dni' : '28 days',
+      title: lang === 'pl' ? 'Dynamiczny wzrost widoczności nowej strony' : 'Dynamic visibility growth for a new domain',
       description: lang === 'pl'
-        ? 'Optymalizujemy intencjonalne frazy komercyjne, dostarczając klientów z Google gotowych do zakupu.'
-        : 'We meticulously optimize for high-intent commercial keywords. As one of the top SEO optimization companies, we drive qualified buyers directly from Google who are ready to convert immediately, constructing a resilient visibility moat around your brand and capturing the most valuable market share.',
+        ? 'TQL, świeżo uruchomiona strona firmy wdrażającej normy ISO: pierwsze 296 wyświetleń i średnia pozycja 34,6 w 28 dni od startu. Optymalizujemy intencjonalne frazy komercyjne, dostarczając klientów z Google gotowych do zakupu.'
+        : 'We meticulously optimize for high-intent commercial keywords. As one of the top SEO optimization companies, we drive qualified buyers directly from Google. TQL, a freshly launched ISO consultancy website: its first 296 impressions and an average position of 34.6 within 28 days of launch.',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -136,8 +138,8 @@ export default function WhyUs({ isMainContent = false }) {
       metric: '99/100',
       title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google' : 'Lightning performance & Google score',
       description: lang === 'pl'
-        ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum.'
-        : 'Page speed is where businesses and search engine optimization agencies lose most rankings, so we treat it as a core deliverable: we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures ensure your site passes all Core Web Vitals with flying colors.',
+        ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum. Nasze strony ofertowe mają 98–99/100 w Lighthouse na telefonie (pomiar z 24.09.2026).'
+        : 'Page speed is where businesses and search engine optimization agencies lose most rankings, so we treat it as a core deliverable: we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures ensure your site passes all Core Web Vitals with flying colors. Our own service pages score 98–99/100 in mobile Lighthouse (measured on 24 September 2026).',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];

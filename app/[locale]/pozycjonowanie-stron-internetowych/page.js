@@ -24,8 +24,8 @@ const faqData = [
   {
     question: 'Ile trwa pozycjonowanie stron internetowych?',
     questionEn: 'How long does website optimization take?',
-    answer: 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Ustabilizowane wysokie pozycje na konkurencyjne frazy kluczowe buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy.',
-    answerEn: 'The first effects of visibility growth appear 4-8 weeks after technical optimization. Stabilized high rankings for competitive keywords are typically built over a 3 to 6 month horizon.'
+    answer: 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Dla uzgodnionych fraz lokalnych naszym celem jest TOP 3 w 2–3 miesiące, z postępem widocznym co tydzień w panelu klienta; jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. Na bardzo konkurencyjne frazy ogólnopolskie ustabilizowane wysokie pozycje buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy.',
+    answerEn: 'The first effects of visibility growth appear 4-8 weeks after technical optimization. For agreed local keywords our goal is a TOP 3 within 2–3 months, with progress visible weekly in the client portal; if we miss it after 3 months, the next month is on us. For highly competitive national keywords, stabilized high rankings are typically built over a 3 to 6 month horizon.'
   },
   {
     question: 'Czym różni się pozycjonowanie z AI od tradycyjnego SEO?',
@@ -36,8 +36,8 @@ const faqData = [
   {
     question: 'Czy pozycjonowanie stron gwarantuje pozycję nr 1 w Google?',
     questionEn: 'Do you guarantee the #1 position on Google search?',
-    answer: 'Nie. Żadna uczciwa agencja nie gwarantuje pozycji nr 1, bo o wynikach decyduje algorytm Google, nie my — a każdy, kto to obiecuje, sprzedaje Ci pewność, której nie ma. Deklarujemy to, co jest po naszej stronie: zakres prac, terminy i comiesięczny raport pokazujący, co zrobiliśmy i jak zmieniła się widoczność.',
-    answerEn: 'No. No honest agency guarantees the #1 position, because Google\'s algorithm decides the rankings, not us — anyone promising otherwise is selling you a certainty that does not exist. What we do commit to is what is on our side: the scope of work, the deadlines, and a monthly report showing what we did and how visibility changed.'
+    answer: 'Nie. Żadna uczciwa agencja nie gwarantuje pozycji nr 1, bo o wynikach decyduje algorytm Google, nie my — a każdy, kto to obiecuje, sprzedaje Ci pewność, której nie ma. Deklarujemy to, co jest po naszej stronie: zakres prac, terminy, panel klienta z danymi na bieżąco, comiesięczny raport pokazujący, co zrobiliśmy i jak zmieniła się widoczność, oraz cel TOP 3 dla uzgodnionych fraz lokalnych w 2–3 miesiące. Jeśli go nie osiągniemy, kolejny miesiąc pracujemy za 0 zł (<a href="/cennik-pozycjonowania#cel-top-3" style="text-decoration:underline">zasady celu TOP 3</a>).',
+    answerEn: 'No. No honest agency guarantees the #1 position, because Google\'s algorithm decides the rankings, not us — anyone promising otherwise is selling you a certainty that does not exist. What we do commit to is what is on our side: the scope of work, the deadlines, a client portal with live data, a monthly report showing what we did and how visibility changed, and a TOP 3 goal for agreed local keywords within 2–3 months. If we miss it, the next month is on us (<a href="/en/seo-pricing#cel-top-3" style="text-decoration:underline">TOP 3 goal rules</a>).'
   },
   {
     question: 'Czym różni się pozycjonowanie od marketingu cyfrowego?',

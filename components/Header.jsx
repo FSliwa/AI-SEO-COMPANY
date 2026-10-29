@@ -9,7 +9,7 @@ import { hash, homeHash, przewinDoSekcji, przejdzDoSekcji } from '@/lib/anchors'
 
 // Logowanie do paneli (klient i administrator) to osobna aplikacja na subdomenie.
 // NEXT_PUBLIC_PANEL_URL pozwala lokalnie wskazać panel na localhost.
-const PANEL_LOGIN_URL = `${process.env.NEXT_PUBLIC_PANEL_URL || 'https://panel.ai-seo-company.pl'}/logowanie`;
+import { PANEL_DEMO_URL, PANEL_LOGIN_URL } from '@/lib/panel';
 
 function UserIcon() {
   return (
@@ -213,18 +213,18 @@ export default function Header() {
               </svg>
             </Link>
             
-            {/* Plakietki zaufania (22.10.2026). Byly "Top Rated Agency"
-                i "Reviews 4.9★" bez zrodla. Teraz: ocena 5 z Fixly (zrodlo
-                wedlug wlasciciela; zrodlo w podpowiedzi title) i, tylko po
-                polsku, link do wynikow wdrozen z danymi GSC - wpis istnieje
-                tylko w PL. Widocznosc od 1200 px bez zmian (globals.css). */}
+            {/* Plakietki zaufania. 29.10.2026: "Reviews 5★" (Fixly, bez linku
+                do zrodla) zastapiona demo panelu klienta - decyzja D3 z planu
+                przewagi; wraca ocena Google, gdy bedzie 5+ opinii. Po polsku
+                dodatkowo link do wynikow wdrozen z danymi GSC (wpis tylko w PL).
+                Widocznosc od 1200 px bez zmian (globals.css). */}
             <div className="header-award-badges">
-              <span className="badge-pill" title={lang === 'pl' ? 'Ocena 5/5 na Fixly' : '5/5 rating on Fixly'} style={{
+              <a href={PANEL_DEMO_URL} className="badge-pill badge-pill--link" data-cta="header_panel_demo" style={{
                 color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
                 background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
                 borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
                 transition: 'all 0.7s ease'
-              }}>Reviews 5★</span>
+              }}>{lang === 'pl' ? 'Demo panelu klienta' : 'Client portal demo'}</a>
               {lang === 'pl' && (
                 <Link href="/blog/wyniki-wdrozen-seo-2026" className="badge-pill badge-pill--link" style={{
                   color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
@@ -445,7 +445,10 @@ export default function Header() {
                   <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
                 </li>
                 <li style={{ '--delay': '0.7s' }}>
-                  <a href={PANEL_LOGIN_URL} onClick={closeMenu}>{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</a>
+                  <Link href="/panel-klienta" onClick={closeMenu}>{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</Link>
+                </li>
+                <li style={{ '--delay': '0.75s' }}>
+                  <a href={PANEL_LOGIN_URL} onClick={closeMenu}>{lang === 'pl' ? 'Logowanie do panelu' : 'Portal login'}</a>
                 </li>
               </ul>
             </nav>

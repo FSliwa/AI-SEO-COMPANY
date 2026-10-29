@@ -32,8 +32,8 @@ const faqData = [
   {
     question: 'Kiedy zobaczę efekty pozycjonowania lokalnego w Warszawie?',
     questionEn: 'When will I see the effects of local SEO in Warsaw?',
-    answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Zbudowanie solidnej, wiodącej pozycji w konkurencyjnych dzielnicach Warszawy to proces na 3-6 miesięcy.',
-    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. Building a solid, leading position in competitive Warsaw districts is a 3-6 month process.'
+    answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Celem dla uzgodnionych fraz lokalnych jest TOP 3 w 2–3 miesiące: postęp widzisz co tydzień w panelu klienta, a jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. W najbardziej konkurencyjnych dzielnicach Warszawy zbudowanie wiodącej pozycji może potrwać 3-6 miesięcy.',
+    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. The goal for agreed local keywords is a TOP 3 within 2–3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us. In the most competitive Warsaw districts, building a leading position can take 3-6 months.'
   },
   {
     question: 'Czy muszę posiadać fizyczne biuro w Warszawie?',
@@ -389,7 +389,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                     {lang === 'pl' ? 'Najlepsze Lokalne SEO' : 'Leading local SEO'}
                   </h3>
                   <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Nie obiecujemy pozycji — Google nas o zdanie nie pyta. Obiecujemy plan, robotę i comiesięczny raport z map i wyników organicznych. Dedykowane usługi lokalnego SEO dopasowane do Twojego obszaru.' : 'We do not promise rankings — Google does not ask our opinion. We promise a plan, the work and a monthly report on map packs and organic results. Dedicated local SEO services tailored to your area.'}
+                    {lang === 'pl' ? 'Nie gwarantujemy pozycji nr 1 — Google nas o zdanie nie pyta. Obiecujemy plan, robotę, panel klienta z mapami i wynikami organicznymi na bieżąco, comiesięczny raport oraz cel TOP 3 dla uzgodnionych fraz w 2–3 miesiące. Dedykowane usługi lokalnego SEO dopasowane do Twojego obszaru.' : 'We do not guarantee the #1 spot — Google does not ask our opinion. We promise a plan, the work, a client portal with map pack and organic results, a monthly report and a TOP 3 goal for agreed keywords within 2–3 months. Dedicated local SEO services tailored to your area.'}
                   </p>
                 </RevealItem>
               </RevealStagger>

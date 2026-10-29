@@ -17,18 +17,33 @@ import { blogPosts } from '../lib/blogPosts';
 // glownej PL). Pol date w lib/blogPosts.js nie ruszac - zasilaja
 // datePublished/dateModified i widoczna date.
 const LASTMOD = {
+  // 29.10.2026 (etap 1 planu przewagi): panel klienta w pakietach (Pricing na stronie
+  // glownej, cenniku, pozycjonowaniu, SEO lokalnym i projektowaniu), nowa strona
+  // /panel-klienta, sekcje "Uczciwa umowa" i "Cel TOP 3" na cenniku, dane GSC zamiast
+  // statystyk bez zrodla na stronie glownej, jedna wersja celu TOP 3 w FAQ, ceny audytu
+  // i strony. Data = dzien wdrozenia; jesli wdrozenie przesunie sie, poprawic.
+  'https://www.ai-seo-company.pl/panel-klienta': '2026-10-29',
+  'https://www.ai-seo-company.pl/en/client-portal': '2026-10-29',
+  'https://www.ai-seo-company.pl/audyt-seo': '2026-10-29',
+  'https://www.ai-seo-company.pl/en/seo-audit': '2026-10-29',
+  'https://www.ai-seo-company.pl/seo-lokalne-warszawa': '2026-10-29',
+  'https://www.ai-seo-company.pl/en/local-seo-warsaw': '2026-10-29',
+  'https://www.ai-seo-company.pl/cennik-pozycjonowania': '2026-10-29',
+  'https://www.ai-seo-company.pl/en/seo-pricing': '2026-10-29',
+  'https://www.ai-seo-company.pl/en': '2026-10-29',
+
   // 23.10.2026 (to wdrozenie): title i description strony glownej PL
   // przywrocone do wersji sprzed 2f04f61 (frazy kluczowe wlasciciela).
-  'https://www.ai-seo-company.pl/': '2026-10-23',
+  'https://www.ai-seo-company.pl/': '2026-10-29',
 
   // 22.10.2026 (f727335): H2 i przycisk hero na landingach SEO
   // i web designu (PL i EN). Pozostale zmiany wydania to naglowek, stopka,
   // baner zgody (elementy wspolne - nie licza sie) oraz twarde spacje w "24 h"
   // na /cennik-pozycjonowania i /audyt-seo (sama typografia, bez zmiany tresci).
-  'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych': '2026-10-22',
-  'https://www.ai-seo-company.pl/en/seo-services': '2026-10-22',
-  'https://www.ai-seo-company.pl/projektowanie-stron-internetowych': '2026-10-22',
-  'https://www.ai-seo-company.pl/en/web-design': '2026-10-22',
+  'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych': '2026-10-29',
+  'https://www.ai-seo-company.pl/en/seo-services': '2026-10-29',
+  'https://www.ai-seo-company.pl/projektowanie-stron-internetowych': '2026-10-29',
+  'https://www.ai-seo-company.pl/en/web-design': '2026-10-29',
 
   // 20.10.2026 (2f04f61): title i description strony glownej PL; blok
   // "Powiazane artykuly" z listy `related` w lib/blogPosts.js zmienia linki
@@ -72,22 +87,15 @@ const LASTMOD = {
 
   // e26f8bc (wdrozenie 18.10): nowa zapowiedz bloga i portfolio na stronie
   // glownej EN - lastmod nie zostal wtedy zaktualizowany.
-  'https://www.ai-seo-company.pl/en': '2026-10-18',
 
   // e3c3d49 (26.09): podstrony EN (OUR WORK, EUR, Strategy & SEO) i
   // mainEntityOfPage/BreadcrumbList artykulu canonical-tag EN (pozostale
   // artykuly EN z tego wdrozenia maja pozniejsza zmiane - wyzej).
-  'https://www.ai-seo-company.pl/en/seo-audit': '2026-09-26',
-  'https://www.ai-seo-company.pl/en/local-seo-warsaw': '2026-09-26',
-  'https://www.ai-seo-company.pl/en/seo-pricing': '2026-09-26',
   'https://www.ai-seo-company.pl/en/about-us': '2026-09-26',
   'https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026': '2026-09-26',
 
   // 5277fe6, b6437fe, 10c3673 (24.09): cennik, hero i FAQ landingow
   // (artykuly, '/' i '/en' maja pozniejsza zmiane - wyzej).
-  'https://www.ai-seo-company.pl/audyt-seo': '2026-09-24',
-  'https://www.ai-seo-company.pl/seo-lokalne-warszawa': '2026-09-24',
-  'https://www.ai-seo-company.pl/cennik-pozycjonowania': '2026-09-24',
 
   // 247bf6f (wdrozenie 22.09): akapit o gclid i aisc_attr w polityce cookies.
   'https://www.ai-seo-company.pl/cookies': '2026-09-22',

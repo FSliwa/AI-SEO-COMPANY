@@ -9,6 +9,7 @@ import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
 import EntryOffer from '@/components/EntryOffer';
+import FairDeal from '@/components/FairDeal';
 import { hash } from '@/lib/anchors';
 
 export default function PricingClient() {
@@ -48,8 +49,8 @@ export default function PricingClient() {
     {
       question: 'Jak często dostaję raport z postępów?',
       questionEn: 'How often do I receive a progress report?',
-      answer: 'Co miesiąc otrzymujesz raport pozycji i ruchu. Raport pokazuje zmiany widoczności na monitorowanych frazach oraz ruch organiczny, żebyś mógł ocenić efekt niezależnie od naszych deklaracji. Dostęp do Google Search Console i Analytics pozostaje po Twojej stronie.',
-      answerEn: 'You receive a rankings and traffic report every month. It shows visibility changes on the tracked phrases and organic traffic, so you can judge the effect independently of what we claim. Access to Google Search Console and Analytics stays on your side.'
+      answer: 'Dane widzisz codziennie w panelu klienta: kliknięcia i wyświetlenia z Google Search Console, pozycje fraz tydzień po tygodniu, zapytania z formularza, telefonu i e-maila oraz dziennik naszych prac. Raz w miesiącu dostajesz raport pozycji i ruchu z wnioskami. Dostęp do Google Search Console i Analytics pozostaje po Twojej stronie. <a href="https://panel.ai-seo-company.pl/demo?utm_source=strona&utm_medium=referral&utm_campaign=panel_demo" style="text-decoration:underline">Zobacz demo panelu bez logowania</a>.',
+      answerEn: 'You see the data every day in the client portal: clicks and impressions from Google Search Console, keyword positions week by week, form, phone and email enquiries, and a log of our work. Once a month you also get a rankings and traffic report with conclusions. Access to Google Search Console and Analytics stays on your side. <a href="https://panel.ai-seo-company.pl/demo?utm_source=strona&utm_medium=referral&utm_campaign=panel_demo" style="text-decoration:underline">Open the portal demo, no login</a>.'
     },
     {
       question: 'Od czego zależy, ile zapłacę za pozycjonowanie?',
@@ -60,14 +61,20 @@ export default function PricingClient() {
     {
       question: 'Czym różnią się pakiety SEO Standard i SEO Premium?',
       questionEn: 'What is the difference between the SEO Standard and SEO Premium packages?',
-      answer: 'Oba pakiety obejmują ten sam fundament: audyt techniczny, treści, link building i SEO lokalne. Różnica leży w skali — liczbie monitorowanych fraz, ilości publikowanych treści i intensywności pozyskiwania odnośników. Premium ma sens przy szerszym asortymencie usług lub bardziej konkurencyjnej branży; przy jednej usłudze w niszy lokalnej Standard zwykle wystarcza.',
-      answerEn: 'Both packages share the same foundation: technical audit, content, link building and local SEO. The difference is scale — the number of tracked phrases, the volume of published content and the intensity of link acquisition. Premium makes sense for a broader service range or a more competitive niche; for a single service in a local niche, Standard is usually enough.'
+      answer: 'Oba pakiety obejmują ten sam fundament: audyt techniczny, treści, link building i SEO lokalne. Różnica leży w skali: Standard obejmuje do 20 fraz, 2 treści i 2 linki miesięcznie, Premium do 50 fraz, 4 treści i 4 linki miesięcznie. Premium ma sens przy szerszym asortymencie usług lub bardziej konkurencyjnej branży; przy jednej usłudze w niszy lokalnej Standard zwykle wystarcza.',
+      answerEn: 'Both packages share the same foundation: technical audit, content, link building and local SEO. The difference is scale: Standard covers up to 20 keywords, 2 content pieces and 2 links a month, Premium up to 50 keywords, 4 content pieces and 4 links a month. Premium makes sense for a broader service range or a more competitive niche; for a single service in a local niche, Standard is usually enough.'
+    },
+    {
+      question: 'Ile kosztuje samodzielny audyt SEO albo nowa strona internetowa?',
+      questionEn: 'How much is a standalone SEO audit or a new website?',
+      answer: 'Audyt SEO jako samodzielna usługa kosztuje od 1 490 zł netto, a strona internetowa w Next.js od 5 900 zł netto. W pakietach pozycjonowania audyt jest w cenie, a w Booster Pack nowa strona jest w abonamencie od 2 500 zł netto miesięcznie (umowa min. 3 miesiące). Dokładną wycenę większych serwisów dostajesz w 24 h w dni robocze.',
+      answerEn: 'A standalone SEO audit starts at €350 net, and a Next.js website at €1,400 net. In the SEO packages the audit is included, and in the Booster Pack the new website is part of the monthly fee from €590 net (minimum 3-month contract). You get an exact quote for larger sites within 24 h on business days.'
     },
     {
       question: 'Kiedy zobaczę pierwsze efekty pozycjonowania?',
       questionEn: 'When will I see the first SEO results?',
-      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. W standardowym podejściu agencji SEO stabilne pozycje na frazach komercyjnych to zakres 3–6 miesięcy, ale my jesteśmy w stanie osiągnąć ten efekt już w 2–3 miesiące (przy nowej domenie bez profilu linków czas ten może być nieco dłuższy). Pamiętaj jednak: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',
-      answerEn: 'The first visibility movements usually appear after 4–8 weeks, once Google has re-crawled the technical fixes and new content. In the standard agency approach, stable positions on commercial phrases are a 3–6 month horizon, but we are able to reach that result in 2–3 months (for a new domain with no link profile it may take a little longer). Remember, though: anyone promising a Top 3 in a month is selling you risk, not a service.'
+      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. Naszym celem jest TOP 3 dla uzgodnionych fraz lokalnych w 2–3 miesiące: postęp widzisz co tydzień w panelu klienta, a jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł (<a href="#cel-top-3" style="text-decoration:underline">zasady celu TOP 3</a>). Nie gwarantujemy pozycji nr 1, bo o kolejności decyduje Google. Pamiętaj: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',
+      answerEn: 'The first visibility movements usually appear after 4–8 weeks, once Google has re-crawled the technical fixes and new content. Our goal is a Google TOP 3 for agreed local keywords within 2–3 months: you track progress weekly in the client portal, and if we miss the goal after 3 months, the next month is on us (<a href="#cel-top-3" style="text-decoration:underline">TOP 3 goal rules</a>). We do not guarantee the #1 position, because Google decides the order. Remember: anyone promising a Top 3 in a month is selling you risk, not a service.'
     },
     {
       question: 'Potrzebuję też nowej strony — czy da się to połączyć z pozycjonowaniem?',
@@ -169,6 +176,8 @@ export default function PricingClient() {
           </div>
         </div>
       </section>
+
+      <FairDeal />
 
       <AppleFaq faqData={faqData} title={lang === 'pl' ? "Częste pytania o wycenę" : "Frequently Asked Questions about Pricing"} />
       

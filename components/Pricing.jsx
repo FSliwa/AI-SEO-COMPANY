@@ -4,6 +4,8 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { sectionId } from '@/lib/anchors';
 import { hash } from '@/lib/anchors';
+import { Link } from '../i18n/routing';
+import { PANEL_DEMO_URL } from '@/lib/panel';
 
 export default function Pricing({ isMainContent = false }) {
   const lang = useLocale();
@@ -40,17 +42,21 @@ export default function Pricing({ isMainContent = false }) {
             <ul className="pricing-features">
               {lang === 'pl' ? (
                 <>
+                  <li>Panel klienta 24/7: dane z Google, zapytania i dziennik prac</li>
                   <li>Kompleksowy audyt SEO i analiza konkurencji</li>
                   <li>Podstawowa optymalizacja techniczna strony</li>
                   <li>Optymalizacja Wizytówki Google (Profil Firmy)</li>
+                  <li>Do 20 fraz, 2 treści i 2 linki miesięcznie</li>
                   <li>Comiesięczny raport pozycji i ruchu</li>
                   <li>Możliwość rezygnacji w każdej chwili</li>
                 </>
               ) : (
                 <>
+                  <li>24/7 client portal: Google data, enquiries and a work log</li>
                   <li>Comprehensive SEO audit & competitor analysis</li>
                   <li>Core technical website optimization</li>
                   <li>Google Business Profile optimization</li>
+                  <li>Up to 20 keywords, 2 content pieces and 2 links a month</li>
                   <li>Monthly keyword ranking & traffic reports</li>
                   <li>Cancel anytime flexible policy</li>
                 </>
@@ -72,18 +78,22 @@ export default function Pricing({ isMainContent = false }) {
             <ul className="pricing-features">
               {lang === 'pl' ? (
                 <>
+                  <li>Panel klienta 24/7: dane z Google, zapytania i dziennik prac</li>
                   <li>Pełne pozycjonowanie techniczne i treściowe</li>
                   <li>Wzmocniony profil mobilny (wzrost CTR z telefonów)</li>
                   <li>Prowadzenie Wizytówki Google (walka o TOP 3 Map)</li>
                   <li>Strategia link buildingu i rozbudowa artykułów</li>
+                  <li>Do 50 fraz, 4 treści i 4 linki miesięcznie</li>
                   <li>Możliwość rezygnacji w każdej chwili</li>
                 </>
               ) : (
                 <>
+                  <li>24/7 client portal: Google data, enquiries and a work log</li>
                   <li>Full technical & content SEO positioning</li>
                   <li>Enhanced mobile UX (mobile CTR optimization)</li>
                   <li>Google Maps TOP 3 ranking management</li>
                   <li>High-authority link building & expert content</li>
+                  <li>Up to 50 keywords, 4 content pieces and 4 links a month</li>
                   <li>Cancel anytime flexible policy</li>
                 </>
               )}
@@ -107,6 +117,7 @@ export default function Pricing({ isMainContent = false }) {
               {lang === 'pl' ? (
                 <>
                   <li>Indywidualny projekt graficzny UX/UI (RWD)</li>
+                  <li>Panel klienta 24/7 od pierwszego dnia</li>
                   <li>Pełne pozycjonowanie SEO i audyt konkurencji</li>
                   <li>Optymalizacja i publikacje w Wizytówce Google</li>
                   <li>Certyfikat SSL, serwer i opieka techniczna</li>
@@ -115,6 +126,7 @@ export default function Pricing({ isMainContent = false }) {
               ) : (
                 <>
                   <li>Bespoke responsive UX/UI website design</li>
+                  <li>24/7 client portal from day one</li>
                   <li>Complete technical & content SEO suite</li>
                   <li>Google Maps optimization & weekly updates</li>
                   <li>SSL certificate, hosting & ongoing maintenance</li>
@@ -128,6 +140,12 @@ export default function Pricing({ isMainContent = false }) {
 
         <Reveal className="pricing-note">
           {t('note')}
+        </Reveal>
+        {/* Panel klienta to wyroznik oferty (analiza konkurencji 25.10.2026): 4 z 17 agencji maja panel, zadna nie pokazuje go bez logowania. */}
+        <Reveal className="pricing-panel-links">
+          <Link href="/panel-klienta" data-cta="pricing_panel_page">{lang === 'pl' ? 'Co widzisz w panelu klienta' : 'What you see in the client portal'}</Link>
+          <span aria-hidden="true"> · </span>
+          <a href={PANEL_DEMO_URL} data-cta="pricing_panel_demo">{lang === 'pl' ? 'Otwórz demo bez logowania' : 'Open the demo, no login'} →</a>
         </Reveal>
       </div>
     </Wrapper>

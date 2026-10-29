@@ -32,6 +32,10 @@ export const routing = defineRouting({
       pl: '/projektowanie-stron-internetowych',
       en: '/web-design'
     },
+    '/panel-klienta': {
+      pl: '/panel-klienta',
+      en: '/client-portal'
+    },
     '/o-nas': {
       pl: '/o-nas',
       en: '/about-us'

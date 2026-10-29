@@ -22,6 +22,12 @@ import ServiceSchema from '@/components/ServiceSchema';
 
 const faqWebDesign = [
   {
+    question: 'Ile kosztuje projektowanie strony internetowej?',
+    questionEn: 'How much does a website cost?',
+    answer: 'Strona firmowa w Next.js kosztuje od 5 900 zł netto. Cena zależy od liczby podstron, integracji (CRM, płatności) i treści do przygotowania. Stronę możesz też dostać w Booster Pack: nowa strona i pozycjonowanie w abonamencie od 2 500 zł netto miesięcznie przy umowie na minimum 3 miesiące. Wycenę dostajesz w 24 h w dni robocze.',
+    answerEn: 'A Next.js company website starts at €1,400 net. The price depends on the number of pages, integrations (CRM, payments) and the content to prepare. You can also get the website in the Booster Pack: a new website and SEO for a monthly fee from €590 net with a minimum 3-month contract. You get a quote within 24 h on business days.'
+  },
+  {
     question: 'Dlaczego strony w Next.js ładują się szybciej niż WordPress?',
     questionEn: 'Why do Next.js websites load faster than WordPress?',
     answer: 'Next.js wykorzystuje mechanizmy statycznego generowania (SSG) oraz renderowania po stronie serwera (SSR). Zamiast każdorazowo składać stronę z zapytań do bazy danych jak w WordPress, serwuje gotowe pliki prosto do przeglądarki klienta.',
