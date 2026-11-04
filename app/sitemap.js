@@ -20,6 +20,11 @@ import { blogPosts } from '../lib/blogPosts';
 const PL_ONLY = new Set(['/sprawdz-widocznosc-w-ai', '/zmiana-agencji-seo']);
 
 const LASTMOD = {
+  // 4.11.2026 (aktualizacja analizy konkurencji): liczby w realizacjach na stronie glownej
+  // zgodne z danymi GSC (Staniax, ASE-BOT jako projekt wlasny), plakietka pakietu Booster
+  // (Pricing na stronie glownej, cenniku, pozycjonowaniu, SEO lokalnym, projektowaniu),
+  // nowe funkcje i porownanie na /panel-klienta, projekty wlasne we wpisie z wynikami
+  // (te adresy maja nizej date 2026-11-04). Data = dzien wdrozenia; jesli sie przesunie, poprawic.
   // Etap 3 planu przewagi: poradnik /zmiana-agencji-seo (tylko PL) i link do niego w sekcji
   // "Uczciwa umowa" na cenniku i /panel-klienta (tylko wersja PL). Data = dzien wdrozenia;
   // jesli wdrozenie przesunie sie, poprawic.
@@ -35,28 +40,28 @@ const LASTMOD = {
   // /panel-klienta, sekcje "Uczciwa umowa" i "Cel TOP 3" na cenniku, dane GSC zamiast
   // statystyk bez zrodla na stronie glownej, jedna wersja celu TOP 3 w FAQ, ceny audytu
   // i strony. Data = dzien wdrozenia; jesli wdrozenie przesunie sie, poprawic.
-  'https://www.ai-seo-company.pl/panel-klienta': '2026-10-29',
-  'https://www.ai-seo-company.pl/en/client-portal': '2026-10-29',
+  'https://www.ai-seo-company.pl/panel-klienta': '2026-11-04',
+  'https://www.ai-seo-company.pl/en/client-portal': '2026-11-04',
   'https://www.ai-seo-company.pl/audyt-seo': '2026-10-29',
   'https://www.ai-seo-company.pl/en/seo-audit': '2026-10-29',
-  'https://www.ai-seo-company.pl/seo-lokalne-warszawa': '2026-10-29',
-  'https://www.ai-seo-company.pl/en/local-seo-warsaw': '2026-10-29',
-  'https://www.ai-seo-company.pl/cennik-pozycjonowania': '2026-10-29',
-  'https://www.ai-seo-company.pl/en/seo-pricing': '2026-10-29',
-  'https://www.ai-seo-company.pl/en': '2026-10-29',
+  'https://www.ai-seo-company.pl/seo-lokalne-warszawa': '2026-11-04',
+  'https://www.ai-seo-company.pl/en/local-seo-warsaw': '2026-11-04',
+  'https://www.ai-seo-company.pl/cennik-pozycjonowania': '2026-11-04',
+  'https://www.ai-seo-company.pl/en/seo-pricing': '2026-11-04',
+  'https://www.ai-seo-company.pl/en': '2026-11-04',
 
   // 23.10.2026 (to wdrozenie): title i description strony glownej PL
   // przywrocone do wersji sprzed 2f04f61 (frazy kluczowe wlasciciela).
-  'https://www.ai-seo-company.pl/': '2026-10-29',
+  'https://www.ai-seo-company.pl/': '2026-11-04',
 
   // 22.10.2026 (f727335): H2 i przycisk hero na landingach SEO
   // i web designu (PL i EN). Pozostale zmiany wydania to naglowek, stopka,
   // baner zgody (elementy wspolne - nie licza sie) oraz twarde spacje w "24 h"
   // na /cennik-pozycjonowania i /audyt-seo (sama typografia, bez zmiany tresci).
-  'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych': '2026-10-29',
-  'https://www.ai-seo-company.pl/en/seo-services': '2026-10-29',
-  'https://www.ai-seo-company.pl/projektowanie-stron-internetowych': '2026-10-29',
-  'https://www.ai-seo-company.pl/en/web-design': '2026-10-29',
+  'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych': '2026-11-04',
+  'https://www.ai-seo-company.pl/en/seo-services': '2026-11-04',
+  'https://www.ai-seo-company.pl/projektowanie-stron-internetowych': '2026-11-04',
+  'https://www.ai-seo-company.pl/en/web-design': '2026-11-04',
 
   // 20.10.2026 (2f04f61): title i description strony glownej PL; blok
   // "Powiazane artykuly" z listy `related` w lib/blogPosts.js zmienia linki
@@ -65,7 +70,7 @@ const LASTMOD = {
   // jego pustej kopii /en. Lista = adresy, ktorych HTML rozni sie od
   // produkcji (porownanie wszystkich 55 adresow z sitemapy). Pokrywa tez
   // zalegle pozycje z 18.10 (JSON-LD mailchimp, ceny EUR w how-much-...-pricing).
-  'https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026': '2026-10-20',
+  'https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026': '2026-11-04',
   'https://www.ai-seo-company.pl/blog/storytelling-marki': '2026-10-20',
   'https://www.ai-seo-company.pl/en/blog/brand-storytelling-patterns': '2026-10-20',
   'https://www.ai-seo-company.pl/blog/audyt-techniczny-seo': '2026-10-20',

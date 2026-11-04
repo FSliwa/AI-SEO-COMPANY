@@ -45,8 +45,8 @@ const realizedWebsites = [
     ),
     url: 'https://www.staniax.pl/',
     category: 'seo',
-    metric: '2.8k+',
-    metricSubtitle: 'organic search impressions from zero visibility.',
+    metric: '152 kliknięcia',
+    metricSubtitle: '152 clicks and 6.34k impressions in 3 months, from zero visibility.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'right-side',
@@ -63,7 +63,7 @@ const realizedWebsites = [
     imgTitle: 'Pozycjonowanie stron dla Staniax — wyniki agencji marketingowej',
     imgTitleEn: 'Staniax — B2B website rebuild and search visibility results',
     details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
-- Start od zerowej widoczności → 2,8 tys. wyświetleń i gwałtowny skokowy wzrost do ok. 100 wyświetleń dziennie.
+- Start od zerowej widoczności → 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące, w tym 2,8 tys. wyświetleń w pierwszym miesiącu (Google Search Console).
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
 - Wyższy współczynnik klikalności CTR na urządzeniach mobilnych — przygotowanie i wdrożenie wersji wielojęzycznych (/de i /en pod Niemcy i USA).`
   },
@@ -77,8 +77,8 @@ const realizedWebsites = [
     ),
     url: 'https://ase-bot.live/',
     category: 'seo',
-    metric: '+8 113.8%',
-    metricSubtitle: 'Organic Google Search Growth',
+    metric: '7,71 tys. wyświetleń',
+    metricSubtitle: 'Own project: 7.71k Google impressions in 3 months',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center-reverse',
@@ -87,7 +87,7 @@ const realizedWebsites = [
     desktopCard: {
       tag: 'FINTECH & GLOBAL SEO',
       title: 'AI FUTURES TRADING PLATFORM',
-      subtitle: '+8 113.8% Google Search Growth in hyper-competitive US market.',
+      subtitle: 'Own project: 7.71k Google impressions in 3 months in a competitive US niche.',
       image: '/projects/aisas-fintech-platform.webp',
       btnText: 'View Case Study'
     },
@@ -95,8 +95,8 @@ const realizedWebsites = [
     imgAltEn: 'AISAS fintech platform — the dashboard interface we designed for the US market launch',
     imgTitle: 'Pozycjonowanie stron dla platformy fintech — wyniki',
     imgTitleEn: 'AISAS fintech platform — design and organic growth results',
-    details: `Case Study 2 — Hiperkonkurencyjny rynek zagraniczny (ase-bot.live):
-- Skok od 0 do 4,8 tys. wyświetleń w kwartale (+8 113,8%) i wzrost w ostatnich 28 dniach o 244,7% (do 500 wyświetleń dziennie).
+    details: `Projekt własny — konkurencyjny rynek zagraniczny (ase-bot.live):
+- 7,71 tys. wyświetleń w 3 miesiące od startu domeny bez historii; domena jest w fazie wyświetleń, kliknięcia dopiero rosną (Google Search Console).
 - Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 — krok od TOP 20), „best futures trading platforms” (pozycja 61).
 - 2 tys. wyświetleń z USA. Strona główna osiąga CTR 4.62%. Link building i rozbudowa artykułów eksperckich pod rynek globalny.`
   }
@@ -392,11 +392,11 @@ export default function Portfolio() {
                         : 'Building and scaling digital sales for the newly opened restaurant location.')
                     : item.id === 2
                     ? (lang === 'pl'
-                        ? `${item.metric} wzrostu odwiedzin organicznych po 1 miesiącu od startu z zerowej widoczności.`
-                        : `${item.metric} increase in organic visits after the first month, starting from zero visibility.`)
+                        ? 'Z zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w Google w 3 miesiące (Search Console).'
+                        : 'From zero visibility to 152 clicks and 6.34k Google impressions in 3 months (Search Console).')
                     : (lang === 'pl'
-                        ? `${item.metric} wzrostu odwiedzin organicznych po 1 miesiącu.`
-                        : `${item.metric} increase in organic visits after 1 month.`)}
+                        ? 'Nasz własny projekt: 7,71 tys. wyświetleń w Google w 3 miesiące. Domena jest w fazie wyświetleń (Search Console).'
+                        : 'Our own project: 7.71k Google impressions in 3 months. The domain is still in the impressions phase (Search Console).')}
                 </p>
                 {/* 29.10.2026: wyniki jawne zamiast "Napisz, aby zobaczyć wyniki" (D3).
                     Liczby z GSC z oknem pomiaru sa we wpisie "Wyniki wdrozen SEO 2026"

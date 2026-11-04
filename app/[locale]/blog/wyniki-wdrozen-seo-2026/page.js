@@ -66,7 +66,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Agencje chętnie mówią o wynikach, rzadziej je pokazują. Ten raport zbiera w jednym miejscu dane z Google Search Console dla pięciu domen, nad którymi pracowaliśmy w 2026 roku — z kliknięciami, wyświetleniami i pozycjami, z zaznaczonym oknem pomiaru i z kontekstem startowym każdej z nich. Wszystkie liczby pochodzą z paneli GSC, których zrzuty publikujemy w portfolio; każdą można porównać ze źródłem.
+                Agencje chętnie mówią o wynikach, rzadziej je pokazują. Ten raport zbiera w jednym miejscu dane z Google Search Console dla pięciu domen, nad którymi pracowaliśmy w 2026 roku (trzy domeny klientów i dwa nasze własne projekty: ai-seo-company.pl i ase-bot.live) — z kliknięciami, wyświetleniami i pozycjami, z zaznaczonym oknem pomiaru i z kontekstem startowym każdej z nich. Wszystkie liczby pochodzą z paneli GSC, których zrzuty publikujemy w portfolio; każdą można porównać ze źródłem.
               </p>
 
               <h2 id="metodologia">Metodologia: skąd pochodzą liczby i jak je czytać</h2>
@@ -104,7 +104,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                     </tr>
                     <tr>
                       <td>ase-bot.live</td>
-                      <td>platforma AI tradingowa (SaaS)</td>
+                      <td>platforma AI tradingowa (SaaS, nasz własny projekt)</td>
                       <td>3 miesiące</td>
                       <td>7,71 tys. wyświetleń</td>
                     </tr>
@@ -130,7 +130,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
 
               <h2 id="staniax">Staniax: z zerowej widoczności do 152 kliknięć</h2>
               <p>Punkt startowy: producent z 25-letnim doświadczeniem w metalizacji próżniowej i zerową widocznością organiczną — domena nie zbierała ruchu z wyszukiwarki. Zakres pracy: nowa strona z architekturą pod frazy usługowe, baza wiedzy z artykułami technicznymi i uporządkowanie podstaw technicznych.</p>
-              <p>Wynik w GSC: <strong>152 kliknięcia i 6,34 tys. wyświetleń w trzy miesiące</strong>, przy czym ponad 2,8 tys. wzrostu odwiedzin organicznych przyszło już w pierwszym miesiącu od startu. W niszy B2B o niskim wolumenie zapytań to różnica między nieistnieniem a stałym strumieniem zapytań ofertowych.</p>
+              <p>Wynik w GSC: <strong>152 kliknięcia i 6,34 tys. wyświetleń w trzy miesiące</strong>, przy czym 2,8 tys. wyświetleń przyszło już w pierwszym miesiącu od startu. W niszy B2B o niskim wolumenie zapytań to różnica między nieistnieniem a stałym strumieniem zapytań ofertowych.</p>
               <p>Co zadecydowało: treści pisane pod realne pytania klientów przemysłowych (regeneracja odbłyśników, powłoki aluminiowe), nie pod ogólne frazy o wysokim wolumenie, na które młoda domena nie miała szans.</p>
 
               <h2 id="madame-thai">Madame Thai: 187 kliknięć dla lokalnej restauracji</h2>
@@ -138,7 +138,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
               <p>Wynik w GSC: <strong>187 kliknięć i 10,1 tys. wyświetleń w trzy miesiące</strong> — najwyższy wolumen wyświetleń w zestawieniu, typowy dla zapytań lokalnych o dużej częstotliwości. Dla lokalu liczy się końcówka tego lejka: kliknięcie w menu albo w trasę dojazdu.</p>
 
               <h2 id="ase-bot">ASE-BOT: 7,71 tys. wyświetleń w konkurencyjnej niszy</h2>
-              <p>Punkt startowy: platforma AI do tradingu — nisza konkurencyjna, anglojęzyczna i wrażliwa na zaufanie. Domena .live bez historii.</p>
+              <p>Punkt startowy: nasz własny projekt, platforma AI do tradingu — nisza konkurencyjna, anglojęzyczna i wrażliwa na zaufanie. Domena .live bez historii.</p>
               <p>Wynik w GSC: <strong>7,71 tys. wyświetleń w trzy miesiące</strong> — najwyższa ekspozycja w zestawieniu. To etap budowania widoczności: najpierw wyświetlenia na długim ogonie zapytań, potem pozycje, na końcu kliknięcia. Publikujemy tę domenę świadomie jako przykład środka drogi, nie ukończonego sukcesu.</p>
 
               <h2 id="tql">TQL: pierwsze pozycje w 28 dni od startu</h2>

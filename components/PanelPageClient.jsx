@@ -13,7 +13,8 @@ import { hash } from '@/lib/anchors';
 import { PANEL_DEMO_URL } from '@/lib/panel';
 
 // Podstrona panelu klienta (zadanie 1.1 planu przewagi). Opisuje tylko to, co panel
-// robi dziś (etap 1 panelu); nowe moduły dopisywać po wdrożeniu, nie wcześniej.
+// robi dziś (etapy 1–3 panelu, stan 4.11.2026); nowe moduły dopisywać po wdrożeniu, nie wcześniej.
+// Asystenta AI („Zapytaj o dane”) opisać dopiero, gdy działa na produkcji.
 const features = {
   pl: [
     { img: '/images/panel/przeglad.webp', title: 'Przegląd: zapytania, cel i ruch', text: 'Zapytania z formularza, telefonu i e-maila, cel na miesiąc z prognozą, kliknięcia i wyświetlenia z Google Search Console oraz komentarz opiekuna: co się stało, dlaczego i co dalej.' },
@@ -22,6 +23,12 @@ const features = {
     { img: '/images/panel/zmiany.webp', title: 'Zmiany na stronie opisane prostym językiem', text: 'AI czyta historię zmian w kodzie Twojej strony i pisze krótkie podsumowanie. Zespół sprawdza je przed publikacją, a Ty widzisz, co zmieniliśmy i po co.' },
     { img: '/images/panel/akceptacje.webp', title: 'Sprawy do akceptacji', text: 'Artykuły, zdjęcia i zmiany, które czekają na Twoją decyzję. Akceptujesz albo prosisz o poprawki jednym kliknięciem, a zespół od razu dostaje informację.' },
     { img: '/images/panel/raporty.webp', title: 'Raporty PDF', text: 'Raporty miesięczne i audyt startowy w jednym miejscu. Pliki leżą w prywatnym magazynie i pobierasz je w każdej chwili.' },
+    { img: '/images/panel/ai.webp', title: 'Widoczność w ChatGPT i AI co tydzień', text: 'Co poniedziałek zadajemy ChatGPT, Perplexity, Gemini i przeglądom AI w Google pytania Twoich klientów. Widzisz, w ilu odpowiedziach pada Twoja firma, kogo modele polecają zamiast Ciebie i z jakich stron korzystają. W SEO Premium albo za 490 zł netto miesięcznie do SEO Standard.' },
+    { img: '/images/panel/mapy.webp', title: 'Mapy Google z 49 punktów', text: 'Klient widzi inne wyniki w Mapach zależnie od tego, gdzie stoi. Sprawdzamy pozycję Twojej wizytówki w siatce 7×7 wokół adresu firmy co 14 dni.' },
+    { img: '/images/panel/linki.webp', title: 'Lista zdobytych linków', text: 'Każdy link z adresem strony, datą i rodzajem. Co tydzień automat sprawdza, czy link nadal jest na stronie. Lista zostaje u Ciebie także po zakończeniu współpracy.' },
+    { img: '/images/panel/wiadomosci.webp', title: 'Wiadomości do opiekuna i alerty', text: 'Każda sprawa ma swój wątek, a czas odpowiedzi zespołu widzisz w panelu. Alerty pokazują spadek kliknięć o 30%, spadek ważnej frazy i 14 dni bez nowego wpisu w dzienniku prac.' },
+    { img: '/images/panel/faktury.webp', title: 'Faktury, pakiet i wypowiedzenie', text: 'Faktury z terminem i statusem płatności do pobrania w PDF. Zmianę pakietu albo wypowiedzenie składasz w panelu i od razu dostajesz potwierdzenie e-mailem.' },
+    { img: '/images/panel/dane.webp', title: 'Twoje dane do pobrania i dla Twojego AI', text: 'Wszystko z panelu pobierzesz w CSV albo JSON. Token tylko do odczytu podłącza dane do arkusza, własnego skryptu albo do Claude przez MCP. Token widzi wyłącznie dane Twojej firmy.' },
   ],
   en: [
     { img: '/images/panel/przeglad.webp', title: 'Overview: enquiries, goal and traffic', text: 'Form, phone and email enquiries, a monthly goal with a forecast, clicks and impressions from Google Search Console, and a note from your account manager: what happened, why, and what comes next.' },
@@ -30,6 +37,33 @@ const features = {
     { img: '/images/panel/zmiany.webp', title: 'Site changes in plain language', text: 'AI reads the history of changes in your site code and writes a short summary. The team reviews it before publishing, so you see what changed and why.' },
     { img: '/images/panel/akceptacje.webp', title: 'Items to approve', text: 'Articles, photos and changes waiting for your decision. Approve or request changes in one click, and the team is notified straight away.' },
     { img: '/images/panel/raporty.webp', title: 'PDF reports', text: 'Monthly reports and the starting audit in one place, stored privately and available to download at any time.' },
+    { img: '/images/panel/ai.webp', title: 'Weekly visibility in ChatGPT and AI', text: 'Every Monday we ask ChatGPT, Perplexity, Gemini and Google AI overviews the questions your customers ask. You see how many answers mention your company, who the models recommend instead and which sites they use. Included in SEO Premium or added to SEO Standard.' },
+    { img: '/images/panel/mapy.webp', title: 'Google Maps from 49 points', text: 'People see different Maps results depending on where they stand. We check your Business Profile position on a 7×7 grid around your address every 14 days.' },
+    { img: '/images/panel/linki.webp', title: 'Every link we earn', text: 'Each link with the linking page, date and type. A weekly check confirms the link is still live. The list stays with you after we stop working together.' },
+    { img: '/images/panel/wiadomosci.webp', title: 'Messages and alerts', text: 'Every request has its own thread, and the team response time is shown in the portal. Alerts flag a 30% drop in clicks, a drop in a key phrase and 14 days without a new work log entry.' },
+    { img: '/images/panel/faktury.webp', title: 'Invoices, plan and cancellation', text: 'Invoices with due dates and payment status, ready to download as PDF. You change your plan or cancel in the portal and get an email confirmation straight away.' },
+    { img: '/images/panel/dane.webp', title: 'Your data, ready for your own AI', text: 'Download everything in the portal as CSV or JSON. A read-only token connects the data to a spreadsheet, your own script or Claude through MCP. The token sees only your company data.' },
+  ],
+};
+
+// Porównanie z typowymi formami raportowania na rynku, bez nazw agencji (stan 4.11.2026).
+const compare = {
+  head: {
+    pl: ['Co widzisz', 'Raport PDF raz w miesiącu', 'Typowy panel z pozycjami', 'Panel AI SEO COMPANY'],
+    en: ['What you see', 'Monthly PDF report', 'Typical rankings portal', 'AI SEO COMPANY portal'],
+  },
+  rows: [
+    { pl: 'Zapytania od klientów i koszt jednego zapytania', en: 'Customer enquiries and cost per enquiry', pdf: ['raz w miesiącu', 'monthly'], typ: ['rzadko', 'rarely'] },
+    { pl: 'Pozycje fraz tydzień po tygodniu z naszymi działaniami na osi', en: 'Weekly keyword positions with our work on the timeline', pdf: ['raz w miesiącu', 'monthly'], typ: ['pozycje bez działań', 'positions only'] },
+    { pl: 'Dziennik prac z godzinami i opis zmian na stronie z historii kodu', en: 'Work log with hours and site changes from the code history', pdf: ['skrót', 'summary'], typ: ['rzadko', 'rarely'] },
+    { pl: 'Akceptacje treści jednym kliknięciem', en: 'One-click content approvals', pdf: ['nie', 'no'], typ: ['rzadko', 'rarely'] },
+    { pl: 'Widoczność w ChatGPT, Gemini i przeglądach AI co tydzień', en: 'Weekly visibility in ChatGPT, Gemini and AI overviews', pdf: ['nie', 'no'], typ: ['nie', 'no'] },
+    { pl: 'Pozycje w Mapach Google z 49 punktów', en: 'Google Maps positions from 49 points', pdf: ['nie', 'no'], typ: ['nie', 'no'] },
+    { pl: 'Lista linków sprawdzana co tydzień', en: 'Link list checked every week', pdf: ['lista bez sprawdzania', 'list, unchecked'], typ: ['rzadko', 'rarely'] },
+    { pl: 'Alerty o spadkach i przerwach w pracy', en: 'Alerts on drops and work gaps', pdf: ['nie', 'no'], typ: ['rzadko', 'rarely'] },
+    { pl: 'Wiadomości z widocznym czasem odpowiedzi, faktury i wypowiedzenie', en: 'Messages with visible response time, invoices and cancellation', pdf: ['nie', 'no'], typ: ['część', 'some'] },
+    { pl: 'Eksport CSV i JSON, API i MCP', en: 'CSV and JSON export, API and MCP', pdf: ['nie', 'no'], typ: ['nie', 'no'] },
+    { pl: 'Demo bez logowania przed podpisaniem umowy', en: 'Demo without login before you sign', pdf: ['nie', 'no'], typ: ['nie', 'no'] },
   ],
 };
 
@@ -55,8 +89,8 @@ const faq = [
   {
     question: 'Co z danymi po zakończeniu współpracy?',
     questionEn: 'What happens to the data when we stop working together?',
-    answer: 'Raporty PDF pobierasz w każdej chwili, także przed odejściem. Search Console, Analytics i wizytówka Google są na Twoich kontach, więc historia danych zostaje u Ciebie. Szczegóły w zasadach uczciwej umowy poniżej.',
-    answerEn: 'You can download the PDF reports at any time, including before you leave. Search Console, Analytics and your Google Business Profile are in your accounts, so the data history stays with you. See the fair contract rules below.'
+    answer: 'Raporty PDF pobierasz w każdej chwili, także przed odejściem. Wszystkie dane z panelu (pozycje, zapytania, dziennik prac, linki, widoczność w AI) eksportujesz do CSV albo JSON jednym kliknięciem. Search Console, Analytics i wizytówka Google są na Twoich kontach, więc historia danych zostaje u Ciebie. Szczegóły w zasadach uczciwej umowy poniżej.',
+    answerEn: 'You can download the PDF reports at any time, including before you leave. Everything in the portal (positions, enquiries, work log, links, AI visibility) exports to CSV or JSON in one click. Search Console, Analytics and your Google Business Profile are in your accounts, so the data history stays with you. See the fair contract rules below.'
   },
 ];
 
@@ -122,6 +156,43 @@ export default function PanelPageClient() {
               </p>
             </div>
             <Image src="/images/panel/przeglad-telefon.webp" alt={lang === 'pl' ? 'Panel klienta na telefonie (dane przykładowe)' : 'Client portal on a phone (sample data)'} width={780} height={1688} sizes="(max-width: 760px) 70vw, 300px" style={{ width: '100%', maxWidth: '300px', height: 'auto', justifySelf: 'center', borderRadius: '28px', boxShadow: '0 20px 50px rgba(15, 23, 42, 0.16)' }} />
+          </Reveal>
+        </div>
+      </section>
+
+      <section style={{ padding: '0 0 80px' }} aria-labelledby="porownanie">
+        <div className="container" style={{ maxWidth: '1060px' }}>
+          <Reveal className="section-header">
+            <h2 id="porownanie">{lang === 'pl' ? 'Czego nie pokaże raport PDF' : 'What a PDF report will not show you'}</h2>
+            <p style={{ color: 'var(--color-text-muted)', maxWidth: '720px', margin: '0.75rem 0 0', lineHeight: 1.65 }}>
+              {lang === 'pl'
+                ? 'Porównanie z formami raportowania, które spotkasz u agencji SEO. Kolumna środkowa to panel, który pokazuje głównie pozycje fraz.'
+                : 'A comparison with the reporting you will find at SEO agencies. The middle column is a portal that mainly shows keyword positions.'}
+            </p>
+          </Reveal>
+          <Reveal style={{ marginTop: '2rem', overflowX: 'auto', background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.04)' }}>
+            <table style={{ width: '100%', minWidth: '640px', borderCollapse: 'collapse', fontSize: '0.98rem', lineHeight: 1.45 }}>
+              <thead>
+                <tr>
+                  {compare.head[lang].map((h, i) => (
+                    <th key={h} scope="col" style={{ textAlign: 'left', padding: '1rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.1)', color: i === 3 ? 'var(--color-primary)' : 'var(--color-text-dark)', fontWeight: 700 }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {compare.rows.map((r) => (
+                  <tr key={r.pl}>
+                    <th scope="row" style={{ textAlign: 'left', padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.06)', fontWeight: 600, color: 'var(--color-text-dark)' }}>{r[lang]}</th>
+                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.06)', color: '#5B6576' }}>{r.pdf[lang === 'pl' ? 0 : 1]}</td>
+                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.06)', color: '#5B6576' }}>{r.typ[lang === 'pl' ? 0 : 1]}</td>
+                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.06)', color: '#047857', fontWeight: 700 }}>{lang === 'pl' ? 'tak' : 'yes'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Reveal>
+          <Reveal style={{ display: 'flex', justifyContent: 'center', marginTop: '1.75rem' }}>
+            <a href={PANEL_DEMO_URL} className="btn btn-primary" data-cta="panel_page_compare_demo">{lang === 'pl' ? 'Sprawdź to w demo' : 'Check it in the demo'}</a>
           </Reveal>
         </div>
       </section>

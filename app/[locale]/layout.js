@@ -30,7 +30,7 @@ function localizedJsonLd(locale) {
   const data = JSON.parse(JSON.stringify(jsonLdDataPl));
   for (const node of data['@graph']) {
     if (node['@id'] === 'https://www.ai-seo-company.pl/#organization') {
-      node.description = 'Modern SEO agency in Warsaw. We design search-ready websites, run professional SEO audits and deliver effective search engine optimization.';
+      node.description = 'Modern SEO agency in Warsaw. We design search-ready websites, run professional SEO audits and deliver effective search engine optimization and AI search optimization (ChatGPT, Gemini, Google AI). Every client gets a 24/7 client portal with Google data and a public demo.';
       if (node.areaServed && node.areaServed.name) node.areaServed.name = 'Warsaw and Poland';
     }
     if (node['@type'] === 'WebSite') {
@@ -119,7 +119,7 @@ const jsonLdDataPl = {
         { '@type': 'PropertyValue', 'propertyID': 'KRS', 'value': '0001239983' },
         { '@type': 'PropertyValue', 'propertyID': 'REGON', 'value': '544761611' }
       ],
-      'description': 'Nowoczesna agencja SEO Warszawa. Projektujemy wyszukiwalne strony internetowe, przeprowadzamy profesjonalny audyt SEO i realizujemy skuteczne pozycjonowanie stron.',
+      'description': 'Nowoczesna agencja SEO Warszawa. Projektujemy wyszukiwalne strony internetowe, przeprowadzamy profesjonalny audyt SEO i realizujemy skuteczne pozycjonowanie stron oraz pozycjonowanie w AI (ChatGPT, Gemini, Google AI). Każdy klient dostaje panel klienta 24/7 z danymi z Google i publicznym demo.',
       'url': 'https://www.ai-seo-company.pl/',
       'logo': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.svg',
       'image': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.png',
@@ -156,7 +156,10 @@ const jsonLdDataPl = {
         '@type': 'AdministrativeArea',
         'name': 'Warszawa i Polska'
       },
-      'priceRange': '$$$'
+      'priceRange': '$$$',
+      // 4.11.2026: profile firmy poza stroną (modele AI i Google łączą je w jedną encję).
+      // Sortlist ma nazwę prawną; LinkedIn i Clutch dopisać po założeniu profili.
+      'sameAs': ['https://www.sortlist.co.uk/agency/ai-signals-company']
     },
     {
       '@type': 'WebSite',

@@ -1,8 +1,9 @@
 # AI SEO COMPANY
 
-> Agencja SEO i web design z Warszawy. Pozycjonowanie stron, audyty SEO,
-> SEO lokalne i projektowanie stron dla firm B2B. Serwis dwujęzyczny:
-> polski pod adresami bez prefiksu, angielski pod /en.
+> Agencja SEO i web design z Warszawy. Pozycjonowanie stron, pozycjonowanie
+> w AI (GEO), audyty SEO, SEO lokalne i projektowanie stron dla małych
+> i średnich firm. Każdy klient dostaje panel klienta 24/7 z publicznym demo.
+> Serwis dwujęzyczny: polski pod adresami bez prefiksu, angielski pod /en.
 
 ## Fakty o firmie
 
@@ -12,7 +13,23 @@
 - Adres: ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa, Polska
 - Kontakt: kontakt@ai-seo-company.pl · +48 518 815 055
 - Obszar działania: Warszawa i cała Polska; obsługa w języku polskim i angielskim
-- Model rozliczenia: abonament miesięczny, od 1 900 zł netto
+- Model rozliczenia: abonament miesięczny, od 1 900 zł netto (SEO Standard: 20 fraz, 2 treści, 2 linki miesięcznie; SEO Premium 2 500 zł: 50 fraz, 4 treści, 4 linki, pomiar widoczności w AI)
+- Umowa: miesięczna, wypowiedzenie e-mailem albo w panelu klienta, bez opłat aktywacyjnych i za wyjście; treści i zdobyte linki zostają u klienta; konta Google są na koncie klienta
+
+## Panel klienta
+
+- [Panel klienta (opis)](https://www.ai-seo-company.pl/panel-klienta) · [Client portal (EN)](https://www.ai-seo-company.pl/en/client-portal)
+- [Demo panelu bez logowania](https://panel.ai-seo-company.pl/demo): fikcyjna firma „Stolarnia Demo” na danych przykładowych.
+- Co widzi klient: zapytania od klientów z GA4 i koszt jednego zapytania, kliknięcia i pozycje fraz z Google Search Console, dziennik działań agencji, streszczenia zmian na stronie (z historii kodu), sprawy do akceptacji, cotygodniowy pomiar widoczności w ChatGPT, Perplexity, Gemini i przeglądach AI w Google, siatka pozycji w Mapach Google 7×7, lista zdobytych linków ze sprawdzaniem co tydzień, alerty o spadkach, wiadomości do opiekuna z czasem odpowiedzi, faktury, wypowiedzenie i zmiana pakietu.
+- Dane klienta: eksport CSV i JSON, REST API i serwer MCP z tokenem tylko do odczytu ([spis API](https://panel.ai-seo-company.pl/api/v1)).
+
+## Pozycjonowanie w AI (GEO)
+
+- [Pozycjonowanie w AI](https://www.ai-seo-company.pl/pozycjonowanie-w-ai) · [AI search optimization (EN)](https://www.ai-seo-company.pl/en/ai-search-optimization): audyt widoczności w AI 990 zł netto (zaliczany na pierwszy miesiąc abonamentu); GEO w SEO Premium, do SEO Standard dopłata 490 zł netto miesięcznie; wyniki co tydzień w panelu klienta.
+
+## Zmiana agencji
+
+- [Zmiana agencji SEO bez kar i utraty pozycji](https://www.ai-seo-company.pl/zmiana-agencji-seo): poradnik, checklista 32 punktów (konta Google, domena, treści, linki, dane) i bezpłatny przegląd po poprzedniej agencji (30 min).
 
 ## Usługi
 
@@ -20,7 +37,7 @@
 - [Search engine optimization](https://www.ai-seo-company.pl/en/seo-services): Full-service SEO for B2B companies: technical optimisation, content, link building and reporting.
 - [Audyt SEO](https://www.ai-seo-company.pl/audyt-seo): Audyt techniczny i treściowy: indeksacja, Core Web Vitals, struktura nagłówków, frazy kluczowe, UX.
 - [SEO audit](https://www.ai-seo-company.pl/en/seo-audit): Technical and content audit: indexing, Core Web Vitals, heading structure, keyword research, UX.
-- [Cennik pozycjonowania stron](https://www.ai-seo-company.pl/cennik-pozycjonowania): Pakiety abonamentowe SEO Standard i SEO Premium z miesięczną subskrypcją.
+- [Cennik pozycjonowania stron](https://www.ai-seo-company.pl/cennik-pozycjonowania): Pakiety SEO Standard (1 900 zł) i SEO Premium (2 500 zł netto miesięcznie) z limitami, Booster Pack z nową stroną, audyt SEO od 1 490 zł, strona www od 5 900 zł netto.
 - [SEO pricing](https://www.ai-seo-company.pl/en/seo-pricing): Standard and Premium subscription packages, billed monthly.
 - [SEO lokalne w Warszawie](https://www.ai-seo-company.pl/seo-lokalne-warszawa): Wizytówka Google, spójność NAP, opinie i widoczność w Mapach Google.
 - [Local SEO in Warsaw](https://www.ai-seo-company.pl/en/local-seo-warsaw): Google Business Profile, NAP consistency, reviews and Google Maps visibility.

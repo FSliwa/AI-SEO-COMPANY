@@ -231,7 +231,7 @@ export default function Header() {
                   background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
                   borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
                   transition: 'all 0.7s ease'
-                }}>Wyniki 5 wdrożeń · dane GSC</Link>
+                }}>Wyniki 5 domen · dane GSC</Link>
               )}
             </div>
           </div>
