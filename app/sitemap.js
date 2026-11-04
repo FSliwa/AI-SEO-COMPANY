@@ -32,9 +32,12 @@ const LASTMOD = {
   // Etap 2 planu przewagi: oferta GEO /pozycjonowanie-w-ai, sprawdzarka AI, widocznosc w AI
   // w pakietach (Pricing na stronie glownej, cenniku, pozycjonowaniu, SEO lokalnym, projektowaniu),
   // pytanie o cene GEO w FAQ cennika, nowa opcja w formularzu kontaktu. Data = dzien wdrozenia.
-  'https://www.ai-seo-company.pl/pozycjonowanie-w-ai': '2026-10-29',
-  'https://www.ai-seo-company.pl/en/ai-search-optimization': '2026-10-29',
-  'https://www.ai-seo-company.pl/sprawdz-widocznosc-w-ai': '2026-10-29',
+  // Etap 0 planu z filmu (ponizej): dane strukturalne Service+Offer na stronie GEO (PL i EN),
+  // nowa tresc, FAQ, WebApplication i title sprawdzarki. Data = dzien wdrozenia; jesli sie
+  // przesunie, poprawic (dotyczy tez wpisu mailchimp-vs-getresponse nizej).
+  'https://www.ai-seo-company.pl/pozycjonowanie-w-ai': '2026-11-04',
+  'https://www.ai-seo-company.pl/en/ai-search-optimization': '2026-11-04',
+  'https://www.ai-seo-company.pl/sprawdz-widocznosc-w-ai': '2026-11-04',
   // 29.10.2026 (etap 1 planu przewagi): panel klienta w pakietach (Pricing na stronie
   // glownej, cenniku, pozycjonowaniu, SEO lokalnym i projektowaniu), nowa strona
   // /panel-klienta, sekcje "Uczciwa umowa" i "Cel TOP 3" na cenniku, dane GSC zamiast
@@ -81,7 +84,8 @@ const LASTMOD = {
   'https://www.ai-seo-company.pl/blog/audyt-ux-strony': '2026-10-20',
   'https://www.ai-seo-company.pl/en/blog/ux-audit-guide': '2026-10-20',
   'https://www.ai-seo-company.pl/en/blog/seo-for-saas-startups-playbook': '2026-10-20',
-  'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse': '2026-10-20',
+  // Etap 0 planu z filmu: usuniety martwy link toolfit.io (404) w tresci i w zrodlach.
+  'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse': '2026-11-04',
   'https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility': '2026-10-20',
   'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik': '2026-10-20',
   'https://www.ai-seo-company.pl/en/blog/best-marketing-attribution-tools-for-2026': '2026-10-20',

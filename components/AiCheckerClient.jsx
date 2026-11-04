@@ -8,11 +8,35 @@ import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '../i18n/routing';
 import { track } from '@/lib/track';
 import { PANEL_DEMO_URL } from '@/lib/panel';
+import AppleFaq from '@/components/service/AppleFaq';
+import WebAppSchema from '@/components/WebAppSchema';
 
 // Sprawdzarka „Czy ChatGPT poleca Twoją firmę?” (zadanie 2.3). Pytania zadaje panel
 // (panel.ai-seo-company.pl/api/ai-check: DataForSEO, limit 3 na IP na dobę, raport e-mailem).
 const API = `${process.env.NEXT_PUBLIC_PANEL_URL || 'https://panel.ai-seo-company.pl'}/api/ai-check`;
 const LABELS = { chat_gpt: 'ChatGPT', gemini: 'Gemini' };
+
+// 4.11.2026 (etap 0 planu z filmu, A3): strona miała 292 słowa i 1 link wewnętrzny.
+// Treść opisuje dokładnie to, co robi panel (lib/ai-checker.ts: 3 pytania × ChatGPT
+// z wyszukiwaniem + Gemini, wykrycie nazwy albo domeny, limit 3 firmy na IP na dobę).
+// Frazy: „widoczność w ai” 90/mies., „ai visibility” 110 (Google Ads przez DataForSEO, 4.11.2026).
+const KROKI = [
+  ['Trzy pytania jak od klienta', 'Z branży i miasta układamy trzy pytania, np. „Jaką firmę z branży stolarz polecasz w mieście Warszawa? Podaj kilka nazw.”'],
+  ['Dwa modele, sześć odpowiedzi', 'Każde pytanie zadajemy ChatGPT z wyszukiwaniem w sieci ustawionym na Twoje miasto oraz Gemini. Razem to sześć odpowiedzi.'],
+  ['Szukamy Twojej firmy', 'W każdej odpowiedzi sprawdzamy, czy pada nazwa firmy albo adres strony, i zapisujemy źródła, na które powołuje się model.'],
+];
+const WYNIK = [
+  ['0 z 6', 'Modele nie łączą Twojej firmy z branżą i miastem. Częste przyczyny: słaba wizytówka Google, mało opinii, brak firmy w katalogach i zestawieniach, strona bez jasnego opisu usług i lokalizacji.'],
+  ['1–3 z 6', 'Firma pojawia się, ale nie w każdym pytaniu ani w każdym modelu. Zobacz źródła w odpowiedziach: to strony, na których warto mieć wzmiankę.'],
+  ['4–6 z 6', 'Modele wymieniają Twoją firmę. Sprawdzaj to regularnie, bo odpowiedzi zmieniają się z dnia na dzień.'],
+];
+const FAQ = [
+  { question: 'Czy sprawdzarka widoczności w AI jest darmowa?', answer: 'Tak. Zapytania do modeli opłacamy my, a Ty podajesz e-mail, na który wysyłamy pełny wynik. Z jednego adresu IP można sprawdzić 3 firmy na dobę.' },
+  { question: 'Dlaczego wynik różni się od tego, co widzę w ChatGPT?', answer: 'Pytamy przez API modeli, z wyszukiwaniem ustawionym na Twoje miasto. Aplikacja ChatGPT uwzględnia też historię rozmów, ustawienia i lokalizację użytkownika, a odpowiedzi zmieniają się z dnia na dzień. Traktuj wynik jako próbkę, nie jako stały ranking.' },
+  { question: 'Które modele sprawdzacie?', answer: 'W darmowym sprawdzeniu: ChatGPT z wyszukiwaniem w sieci i Gemini. W audycie widoczności w AI i w panelu klienta dochodzą Perplexity i przegląd AI w wynikach Google, a pytań jest 30.' },
+  { question: 'Co dzieje się z moimi danymi?', answer: 'Używamy ich tylko do przygotowania i wysłania wyniku oraz do odpowiedzi na Twoje pytania. Usuwamy je po 60 dniach. Odbiorcy to dostawcy poczty i pomiarów: Resend i DataForSEO.' },
+  { question: 'Jak zwiększyć widoczność w AI?', answer: 'Zacznij od wizytówki Google i opinii, potem zadbaj o wzmianki w źródłach, które modele cytują w Twojej branży, i o jasne odpowiedzi na pytania klientów na stronie. Sprawdź też, czy robots.txt nie blokuje botów OAI-SearchBot i PerplexityBot.' },
+];
 
 const field = { width: '100%', padding: '0.8rem 1rem', borderRadius: '14px', border: '1px solid rgba(15,23,42,0.15)', fontSize: '1rem', background: '#FFFFFF', color: '#0F172A' };
 const label = { display: 'block', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--color-text-dark)' };
@@ -144,8 +168,46 @@ export default function AiCheckerClient() {
               </p>
             </div>
           )}
+
+          <section aria-labelledby="ac-jak" style={{ marginTop: '4rem' }}>
+            <h2 id="ac-jak" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '1.25rem' }}>Jak działa sprawdzarka widoczności w AI</h2>
+            <ol style={{ ...card, margin: 0, paddingLeft: 'clamp(2.5rem, 6vw, 3.5rem)', display: 'grid', gap: '1rem', lineHeight: 1.6, color: '#333336' }}>
+              {KROKI.map(([h, p]) => (
+                <li key={h}><strong style={{ color: 'var(--color-text-dark)' }}>{h}.</strong> {p}</li>
+              ))}
+            </ol>
+          </section>
+
+          <section aria-labelledby="ac-wynik" style={{ marginTop: '3rem' }}>
+            <h2 id="ac-wynik" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '1.25rem' }}>Jak czytać wynik</h2>
+            <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))' }}>
+              {WYNIK.map(([h, p]) => (
+                <div key={h} style={{ ...card, padding: '1.5rem' }}>
+                  <h3 style={{ fontSize: '1.6rem', fontWeight: 800, margin: '0 0 0.5rem', color: 'var(--color-text-dark)' }}>{h}</h3>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: '#333336' }}>{p}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section aria-labelledby="ac-co-dalej" style={{ marginTop: '3rem' }}>
+            <h2 id="ac-co-dalej" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '1.25rem' }}>Co zrobić, gdy ChatGPT nie poleca Twojej firmy</h2>
+            <ul style={{ ...card, margin: 0, paddingLeft: 'clamp(2.5rem, 6vw, 3.5rem)', display: 'grid', gap: '0.85rem', lineHeight: 1.6, color: '#333336' }}>
+              <li>Uzupełnij wizytówkę Google i zbieraj opinie po każdej usłudze. Proces krok po kroku opisujemy w poradniku <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ textDecoration: 'underline' }}>jak pozyskiwać opinie Google</Link>.</li>
+              <li>Zadbaj o wzmianki w katalogach i zestawieniach, które modele cytują w Twojej branży. Ich adresy są w wyniku, w polu „Źródła”.</li>
+              <li>Opisz na stronie usługi, miasto i obszar działania prostymi zdaniami, które da się zacytować bez kontekstu.</li>
+              <li>Sprawdź, czy plik robots.txt nie blokuje botów OAI-SearchBot i PerplexityBot. Blokada wyklucza stronę z cytowań tych narzędzi.</li>
+              <li>Mierz zmiany regularnie. W <Link href="/pozycjonowanie-w-ai" style={{ textDecoration: 'underline' }}>pozycjonowaniu w AI</Link> sprawdzamy 30 pytań w ChatGPT, Perplexity, Gemini i Google co tydzień, a wynik widać w <Link href="/panel-klienta" style={{ textDecoration: 'underline' }}>panelu klienta</Link>.</li>
+            </ul>
+          </section>
         </div>
       </section>
+      <AppleFaq faqData={FAQ} title="Pytania o widoczność w AI" />
+      <WebAppSchema
+        name="Sprawdzarka widoczności w AI"
+        description="Bezpłatne narzędzie: zadaje ChatGPT i Gemini trzy pytania klientów z Twojej branży i miasta i pokazuje, czy wymieniają Twoją firmę."
+        url="https://www.ai-seo-company.pl/sprawdz-widocznosc-w-ai"
+      />
       <Footer />
     </main>
   );

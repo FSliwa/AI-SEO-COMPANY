@@ -6,7 +6,8 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   if (locale === 'en') return {};
   return {
-    title: 'Czy ChatGPT poleca Twoją firmę? Sprawdź za darmo',
+    // 4.11.2026: title pod „widoczność w ai” (90/mies., w VII.2026 590); H1 bez zmian.
+    title: 'Widoczność w AI: sprawdź, czy ChatGPT poleca Twoją firmę',
     description: 'Bezpłatna sprawdzarka widoczności w AI: zadajemy ChatGPT i Gemini pytania Twoich klientów i pokazujemy, czy wymieniają Twoją firmę. Wynik w 30 sekund.',
     alternates: { canonical: 'https://www.ai-seo-company.pl/sprawdz-widocznosc-w-ai' },
   };

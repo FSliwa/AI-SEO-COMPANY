@@ -52,6 +52,20 @@ const USLUGI = {
     cena: 1900,
     cenaEn: 450,
   },
+  // 4.11.2026: strona GEO pokazuje dwie ceny (audyt jednorazowy i doplata
+  // miesieczna do Standard), wiec zamiast jednego `cena` ma liste `oferty`.
+  // Kwoty jak w components/GeoPageClient.jsx (T.pl.offer / T.en.offer).
+  'geo': {
+    pl: { name: 'Pozycjonowanie w AI (GEO)', desc: 'Pozycjonowanie w AI: widoczność firmy w odpowiedziach ChatGPT, Gemini, Perplexity i przeglądów AI w Google, z cotygodniowym pomiarem w panelu klienta.' },
+    en: { name: 'AI search optimization (GEO)', desc: 'AI search optimization: getting your company mentioned in ChatGPT, Gemini, Perplexity and Google AI overviews, measured weekly in the client portal.' },
+    typ: 'Generative engine optimization',
+    url: { pl: `${BASE}/pozycjonowanie-w-ai`, en: `${BASE}/en/ai-search-optimization` },
+    cena: null,
+    oferty: [
+      { pl: 'Audyt widoczności w AI', en: 'AI visibility audit', cena: 990, cenaEn: 235, miesiecznie: false },
+      { pl: 'Dopłata do SEO Standard: pomiar i działania pod AI', en: 'Add-on to SEO Standard: AI measurement and actions', cena: 490, cenaEn: 115, miesiecznie: true },
+    ],
+  },
 };
 
 export default function ServiceSchema({ variant }) {
@@ -98,6 +112,30 @@ export default function ServiceSchema({ variant }) {
       availability: 'https://schema.org/InStock',
       url: u.url[isEn ? 'en' : 'pl'],
     };
+  }
+
+  if (u.oferty) {
+    jsonLd.offers = u.oferty.map((o) => {
+      const cena = isEn ? o.cenaEn : o.cena;
+      const offer = {
+        '@type': 'Offer',
+        name: isEn ? o.en : o.pl,
+        priceCurrency: waluta,
+        price: cena,
+        availability: 'https://schema.org/InStock',
+        url: u.url[isEn ? 'en' : 'pl'],
+      };
+      if (o.miesiecznie) {
+        offer.priceSpecification = {
+          '@type': 'UnitPriceSpecification',
+          priceCurrency: waluta,
+          price: cena,
+          unitCode: 'MON',
+          valueAddedTaxIncluded: false,
+        };
+      }
+      return offer;
+    });
   }
 
   return (

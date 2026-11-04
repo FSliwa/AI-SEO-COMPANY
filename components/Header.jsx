@@ -432,6 +432,12 @@ export default function Header() {
                 <li style={{ '--delay': '0.42s' }}>
                   <Link href="/pozycjonowanie-w-ai" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search'}</Link>
                 </li>
+                {/* Sprawdzarka istnieje tylko po polsku (EN = 404). */}
+                {lang === 'pl' && (
+                  <li style={{ '--delay': '0.43s' }}>
+                    <Link href="/sprawdz-widocznosc-w-ai" onClick={closeMenu}>Sprawdź widoczność w AI</Link>
+                  </li>
+                )}
                 <li style={{ '--delay': '0.45s' }}>
                   <Link href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</Link>
                 </li>

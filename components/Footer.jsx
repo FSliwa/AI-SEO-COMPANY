@@ -125,6 +125,12 @@ export default function Footer() {
                 <li><Link href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</Link></li>
                 <li><Link href="/cennik-pozycjonowania">{navT('pricing')}</Link></li>
                 <li><Link href="/blog">{lang === 'en' ? 'SEO Blog' : 'Blog SEO'}</Link></li>
+                {/* 4.11.2026 (etap 0 planu z filmu): /panel-klienta, sprawdzarka i poradnik
+                    o zmianie agencji mialy 1-2 linki wewnetrzne. Sprawdzarka i poradnik
+                    istnieja tylko po polsku (EN = 404), wiec w EN ich nie linkujemy. */}
+                <li><Link href="/panel-klienta">{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</Link></li>
+                {lang === 'pl' && <li><Link href="/sprawdz-widocznosc-w-ai">Sprawdź widoczność w AI</Link></li>}
+                {lang === 'pl' && <li><Link href="/zmiana-agencji-seo">Zmiana agencji SEO</Link></li>}
               </ul>
             </div>
             <div className="footer-col">
@@ -134,6 +140,7 @@ export default function Footer() {
                 <li><Link href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO i analiza' : 'SEO Audit & Analysis'}</Link></li>
                 <li><Link href="/projektowanie-stron-internetowych">{lang === 'pl' ? 'Projektowanie stron WWW' : 'Web Design'}</Link></li>
                 <li><Link href="/seo-lokalne-warszawa">{lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}</Link></li>
+                <li><Link href="/pozycjonowanie-w-ai">{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search Optimization'}</Link></li>
               </ul>
             </div>
             <div className="footer-col">

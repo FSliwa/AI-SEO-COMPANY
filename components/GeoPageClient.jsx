@@ -7,6 +7,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import AppleFaq from '@/components/service/AppleFaq';
+import ServiceSchema from '@/components/ServiceSchema';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { Link } from '../i18n/routing';
 import { hash } from '@/lib/anchors';
@@ -205,6 +206,7 @@ export default function GeoPageClient() {
       </section>
 
       <AppleFaq faqData={faq} title={lang === 'pl' ? 'Pytania o pozycjonowanie w AI' : 'Questions about AI search optimization'} />
+      <ServiceSchema variant="geo" />
       <Contact />
       <Footer />
     </main>

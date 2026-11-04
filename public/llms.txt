@@ -26,6 +26,7 @@
 ## Pozycjonowanie w AI (GEO)
 
 - [Pozycjonowanie w AI](https://www.ai-seo-company.pl/pozycjonowanie-w-ai) · [AI search optimization (EN)](https://www.ai-seo-company.pl/en/ai-search-optimization): audyt widoczności w AI 990 zł netto (zaliczany na pierwszy miesiąc abonamentu); GEO w SEO Premium, do SEO Standard dopłata 490 zł netto miesięcznie; wyniki co tydzień w panelu klienta.
+- [Sprawdzarka widoczności w AI](https://www.ai-seo-company.pl/sprawdz-widocznosc-w-ai): bezpłatne narzędzie po polsku. Zadaje ChatGPT (z wyszukiwaniem w sieci ustawionym na miasto firmy) i Gemini trzy pytania klientów z danej branży i miasta i pokazuje, czy wymieniają firmę oraz z jakich źródeł korzystają. Limit 3 firmy na adres IP na dobę.
 
 ## Zmiana agencji
 

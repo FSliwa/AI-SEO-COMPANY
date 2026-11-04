@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
-import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
+import { track, pageType, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { ENTRY_OFFER, ENTRY_OFFER_PRICE_PLN } from '@/components/EntryOffer';
 import { readAttribution, consentMarketing } from '@/lib/attribution';
 
@@ -213,6 +213,7 @@ export default function Contact({ isMainContent = false }) {
           plan: data.service || 'none',
           currency: 'PLN',
           value: LEAD_VALUE_PLN[data.service] ?? DEFAULT_LEAD_VALUE_PLN,
+          page_type: pageType(window.location.pathname),
         });
 
         // Tagowa konwersja Google Ads — główna akcja „Formularz kontaktowy (tag)”
