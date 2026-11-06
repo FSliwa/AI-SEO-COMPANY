@@ -242,15 +242,9 @@ export default function BlogGrid() {
             );
           })}
         </RevealStagger>
-        
-        <RevealItem style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-          <Link href="/blog/biblioteka" className="btn btn-primary" style={{ 
-            padding: '1.2rem 2.5rem', 
-            fontSize: '1.1rem', 
-          }}>
-            {lang === 'pl' ? 'Pełna biblioteka artykułów' : 'Full article library'}
-          </Link>
-        </RevealItem>
+        {/* BIB (5.11.2026; SA-12, CS-14, MSA-16): przycisk „Pełna biblioteka artykułów” usunięty.
+            /blog/biblioteka powtarzała listę z tej strony (te same artykuły), więc strona jest
+            scalona z /blog (308 w next.config.mjs), a link prowadziłby na przekierowanie. */}
       </div>
 
       <style jsx>{`

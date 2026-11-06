@@ -2,8 +2,10 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Core Web Vitals vs Google Rankings | SEO Guide' : 'Core Web Vitals a Pozycje w Google | Przewodnik SEO',
-  description: locale === 'en' ? 'Learn how Core Web Vitals (LCP, FID, CLS) impact your Google rankings. A practical optimization guide.' : 'Dowiedz się jak Core Web Vitals (LCP, FID, CLS) wpływają na pozycje Twojej strony w wyszukiwarce Google. Praktyczny przewodnik optymalizacji.',
+  // 5.11.2026 (PLAN-v2 5.2a nr 108, CWV-K; SA-10, SA-13): meta PL i EN bez „FID” (od 2024 metryka
+  // to INP, tresc artykulu juz o tym mowi) i title PL w polskiej pisowni. Tresc bez zmian; title EN bez zmian.
+  title: locale === 'en' ? 'Core Web Vitals vs Google Rankings | SEO Guide' : 'Core Web Vitals a pozycje w Google: przewodnik SEO',
+  description: locale === 'en' ? 'Learn how Core Web Vitals (LCP, INP, CLS) affect your Google rankings: thresholds, measurement and what to fix first.' : 'Jak Core Web Vitals (LCP, INP, CLS) wpływają na pozycje w Google: progi, pomiar i co poprawić najpierw. Praktyczny przewodnik.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings` : `https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google`,
     languages: articleLanguages('/blog/core-web-vitals-a-pozycje-google', 'https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google', 'https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings')

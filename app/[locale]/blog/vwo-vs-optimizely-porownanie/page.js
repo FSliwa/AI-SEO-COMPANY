@@ -36,7 +36,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
     { id: 'ograniczenia', title: 'Ograniczenia każdej platformy' },
     { id: 'wnioski', title: 'Kluczowe wnioski' },
     { id: 'kupic-czy-zlecic', title: 'Kiedy kupić platformę, a kiedy zlecić program eksperymentów agencji' },
-    { id: 'wsparcie-agencji', title: 'AI SEO Company wspiera wdrożenie programu eksperymentów' },
+    { id: 'wsparcie-agencji', title: 'AI SEO COMPANY wspiera wdrożenie programu eksperymentów' },
     { id: 'zrodla', title: 'Źródła i materiały do dalszego czytania' },
     { id: 'perspektywa-agencji', title: 'Perspektywa agencji: zakup platformy czy outsourcing' },
   ];
@@ -54,7 +54,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
     { id: 'ograniczenia', title: 'Limitations of Each Platform: What VWO and Optimizely Cannot Do' },
     { id: 'wnioski', title: 'Key Takeaways' },
     { id: 'kupic-czy-zlecic', title: 'When to Buy a Platform vs. When to Outsource the Experimentation Program to an Agency' },
-    { id: 'wsparcie-agencji', title: 'AI SEO Company Supports Experimentation Program Implementation' },
+    { id: 'wsparcie-agencji', title: 'AI SEO COMPANY Supports Experimentation Program Implementation' },
     { id: 'zrodla', title: 'Sources and Further Reading' },
     { id: 'perspektywa-agencji', title: 'Agency Perspective: When We Recommend Buying a Platform vs. Outsourcing the Experimentation Program' },
   ];
@@ -322,7 +322,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                       <tr><td>Who chooses Optimizely</td><td>Large organizations with engineering, need for feature flags and server-side testing, and budget from $36,000/year upwards</td></tr>
                       <tr><td>Key hidden cost</td><td>With Optimizely, add behavioral analytics tools (FullStory, Contentsquare) that replace VWO’s native features</td></tr>
                       <tr><td>What to confirm in the contract</td><td>MTU limit, DPA terms, EU data residency, support SLA, and possibility of a pilot before an annual contract</td></tr>
-                      <tr><td>Ai-seo-company</td><td>Offers an experimentation audit and 4-week pilot for teams that want results without building an internal stack</td></tr>
+                      <tr><td>AI SEO COMPANY</td><td>Offers an experimentation audit and 4-week pilot for teams that want results without building an internal stack</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -332,8 +332,8 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <p>Outsourcing the experimentation program is faster and cheaper when site traffic does not yet justify enterprise license costs, when there is no internal CRO specialist, or when you need results within a quarter rather than a year. An agency brings a ready process, tools, and experience from many implementations, shortening time to first insight from months to weeks.</p>
                 <p>One caveat: experiment data should remain under the client’s control. A good agency configures the environment so that you have full access to raw results regardless of who runs the program.</p>
 
-                <h2 id="wsparcie-agencji">AI SEO Company Supports Experimentation Program Implementation</h2>
-                <p>If after reading this article you already know you need A/B testing but do not have the time or resources to go through tool selection, implementation, and governance yourself, Ai-seo-company offers a concrete alternative.</p>
+                <h2 id="wsparcie-agencji">AI SEO COMPANY Supports Experimentation Program Implementation</h2>
+                <p>If after reading this article you already know you need A/B testing but do not have the time or resources to go through tool selection, implementation, and governance yourself, AI SEO COMPANY offers a concrete alternative.</p>
                 <p>Instead of months of configuration and license negotiations, we launch an experimentation pilot in 4 weeks: <Link href="/seo-audit">current site audit</Link>, tag and event configuration, first tests on key pages, and a report with insights. We also handle the technical side of GDPR compliance for session recordings and heatmaps, eliminating one of the main implementation risks.</p>
                 <p>For companies that want to improve both organic visibility and conversion at the same time, we combine the experimentation program with an SEO audit and technical optimization. Contact us via the <Link href="/">agency homepage</Link> to discuss a pilot scope tailored to your traffic and goals.</p>
 
@@ -602,7 +602,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                     <tr><td>Kto wybiera Optimizely</td><td>Duże organizacje z inżynierią, potrzebą feature flagów i testów server-side oraz budżetem od 36 000 USD/rok wzwyż.</td></tr>
                     <tr><td>Kluczowy koszt ukryty</td><td>Przy Optimizely dolicz narzędzia do analityki behawioralnej (FullStory, Contentsquare), które zastępują natywne funkcje VWO.</td></tr>
                     <tr><td>Co potwierdzić w umowie</td><td>Limit MTU, warunki DPA, lokalizacja danych w UE, SLA wsparcia i możliwość pilotu przed rocznym kontraktem.</td></tr>
-                    <tr><td>AI SEO Company</td><td>Oferuje audyt eksperymentacyjny i pilot 4-tygodniowy dla zespołów, które chcą wyników bez budowania wewnętrznego stosu.</td></tr>
+                    <tr><td>AI SEO COMPANY</td><td>Oferuje audyt eksperymentacyjny i pilot 4-tygodniowy dla zespołów, które chcą wyników bez budowania wewnętrznego stosu.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -612,8 +612,8 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               <p>Outsourcing programu eksperymentów jest szybszy i tańszy, gdy ruch na stronie nie uzasadnia jeszcze kosztu licencji enterprise, gdy brakuje wewnętrznego specjalisty CRO lub gdy potrzebujesz wyników w perspektywie kwartału, a nie roku. Agencja wnosi gotowy proces, narzędzia i doświadczenie z wielu wdrożeń, co skraca czas do pierwszego wniosku z miesięcy do tygodni.</p>
               <p>Jedno zastrzeżenie: dane eksperymentów powinny pozostać pod kontrolą klienta. Dobra agencja konfiguruje środowisko tak, żebyś miał pełny dostęp do surowych wyników niezależnie od tego, kto prowadzi program.</p>
 
-              <h2 id="wsparcie-agencji">AI SEO Company wspiera wdrożenie programu eksperymentów</h2>
-              <p>Jeśli po lekturze tego artykułu wiesz już, że potrzebujesz testów A/B, ale nie masz czasu ani zasobów, żeby samodzielnie przejść przez wybór narzędzia, wdrożenie i governance, AI SEO Company oferuje konkretną alternatywę.</p>
+              <h2 id="wsparcie-agencji">AI SEO COMPANY wspiera wdrożenie programu eksperymentów</h2>
+              <p>Jeśli po lekturze tego artykułu wiesz już, że potrzebujesz testów A/B, ale nie masz czasu ani zasobów, żeby samodzielnie przejść przez wybór narzędzia, wdrożenie i governance, AI SEO COMPANY oferuje konkretną alternatywę.</p>
               <p>Zamiast miesięcy konfiguracji i negocjacji licencyjnych, uruchamiamy pilot eksperymentacyjny w 4 tygodnie: <Link href="/audyt-seo">audyt bieżącej strony</Link>, konfiguracja tagów i eventów, pierwsze testy na kluczowych stronach i raport z wnioskami. Zajmujemy się też stroną techniczną zgodności z RODO przy nagraniach sesji i heatmapach, co eliminuje jedno z głównych ryzyk wdrożeniowych.</p>
               <p>Dla firm, które jednocześnie chcą poprawić widoczność organiczną i konwersję, łączymy program eksperymentów z audytem SEO i <Link href="/pozycjonowanie-stron-internetowych">optymalizacją techniczną</Link>. Skontaktuj się z nami przez <Link href="/">stronę główną agencji</Link>, żeby omówić zakres pilotu dopasowanego do Twojego ruchu i celów.</p>
 

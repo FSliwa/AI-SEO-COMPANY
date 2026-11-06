@@ -7,7 +7,7 @@ import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
 import { track, pageType, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { ENTRY_OFFER, ENTRY_OFFER_PRICE_PLN } from '@/components/EntryOffer';
-import { readAttribution, consentMarketing } from '@/lib/attribution';
+import { readAttribution, consentMarketing, SKAD_O_NAS_WIESZ } from '@/lib/attribution';
 
 // Wartość zdarzenia generate_lead w GA4: miesięczna wartość pakietu netto
 // w PLN, tak jak w cenniku PL. Wcześniej szły tu kwoty w USD przeliczone
@@ -162,6 +162,11 @@ export default function Contact({ isMainContent = false }) {
         landing_path: attribution.landing_path || '',
         first_seen: attribution.first_seen || '',
         consent_marketing: consentMarketing(),
+        // 5.11.2026 (ATR v2.2, PLAN-v2 9.3): domena odsyłacza z pierwszej odsłony
+        // sesji i deklaracja „Skąd o nas wiesz?”. landing_page_type, page_type
+        // i kanal liczy route.js (jednakowo dla każdego nadawcy).
+        first_referrer_host: attribution.first_referrer_host || '',
+        skad_o_nas_wiesz: formData.get('skad_o_nas_wiesz') || '',
       };
 
       const response = await fetch('/api/contact', {
@@ -354,6 +359,20 @@ export default function Contact({ isMainContent = false }) {
                 {ENTRY_OFFER === 'audyt' && (
                   <option value="audyt">{lang === 'pl' ? `Audyt SEO (${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} zł netto, odliczany od abonamentu)` : `SEO audit (PLN ${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} net, deducted from subscription)`}</option>
                 )}
+              </select>
+            </div>
+
+            {/* 5.11.2026 (ATR v2.2, PLAN-v2 9.3): opcjonalna deklaracja źródła
+                obok kanału technicznego (ścieżka ChatGPT → Mapy → wizytówka
+                technicznie daje „Profil Firmy”). Bez danych osobowych; do
+                arkusza idzie kod z lib/attribution.js (kolumna skad_o_nas_wiesz). */}
+            <div className="form-group">
+              <label className="form-label" htmlFor="skad_o_nas_wiesz">{lang === 'pl' ? 'Skąd o nas wiesz? (opcjonalnie)' : 'How did you hear about us? (optional)'}</label>
+              <select id="skad_o_nas_wiesz" name="skad_o_nas_wiesz" className="form-select" defaultValue="">
+                <option value="">{lang === 'pl' ? 'Wybierz (opcjonalnie)' : 'Select (optional)'}</option>
+                {SKAD_O_NAS_WIESZ.map((o) => (
+                  <option key={o.kod} value={o.kod}>{lang === 'pl' ? o.pl : o.en}</option>
+                ))}
               </select>
             </div>
 

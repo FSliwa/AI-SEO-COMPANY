@@ -2,8 +2,11 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'B2B Link Building - Strategies & Checklist for Marketers' : 'Link Building B2B - Strategie i Checklista dla Marketerów',
-  description: locale === 'en' ? 'Everything you need to know about B2B link acquisition. Discover effective link building methods that actually translate into Google visibility.' : 'Wszystko co musisz wiedzieć o pozyskiwaniu linków B2B. Odkryj skuteczne metody link buildingu, które faktycznie przekładają się na widoczność w Google.',
+  // 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 26; CS-15, SA-10): title PL (53 zn.) pod „linkowanie b2b”
+  // (GSC 68 wyśw., poz. 9,7) i „link building”, meta PL (124 zn.) z korekty SA-10. EN bez zmian.
+  // Zmiana title/meta = synchronizacja titlePl/descPl w lib/blogPosts.js (integracja).
+  title: locale === 'en' ? 'B2B Link Building - Strategies & Checklist for Marketers' : 'Linkowanie B2B: strategie link buildingu i checklista',
+  description: locale === 'en' ? 'Everything you need to know about B2B link acquisition. Discover effective link building methods that actually translate into Google visibility.' : 'Linkowanie B2B w praktyce: metody link buildingu, które przekładają się na widoczność w Google, i checklista dla marketerów.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist` : `https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`,
     languages: articleLanguages('/blog/link-building-b2b-dla-marketerow-strategie-i-checklista', 'https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista', 'https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist')
@@ -19,6 +22,13 @@ import Contact from '@/components/Contact';
 import ArticleTOC from '@/components/ArticleTOC';
 import { Reveal } from '@/components/ScrollReveal';
 import BlogCTA from '@/components/BlogCTA';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+import { LASTMOD } from '@/lib/lastmod';
+
+const BASE = 'https://www.ai-seo-company.pl';
+// 5.11.2026 (PLAN-v2 6.25 R1): checklista z tresci artykulu jako plik statyczny; /pliki/* ma
+// X-Robots-Tag: noindex (next.config.mjs), wiec PDF nie konkuruje z artykulem w wynikach.
+const CHECKLISTA_PDF = '/pliki/checklista-link-building-b2b.pdf';
 
 export default async function ArticleLinkBuildingB2bPage({ params }) {
   const { locale } = await params;
@@ -33,15 +43,40 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
     { id: 'outsourcing', title: 'Kiedy outsourcować link building i jak wybrać agencję?' },
     { id: 'ryzyka', title: 'Jakie ryzyka i błędy najczęściej psują programy link' },
     { id: 'digital-pr', title: 'Dlaczego digital PR i ekspertyza działają najlepiej w B2B?' },
+    { id: 'dane-wlasne-przyklad', title: 'Digital PR na danych własnych: nasz przykład' },
+    { id: 'wzmianki-ai', title: 'Wzmianki marki a odpowiedzi AI' },
     { id: 'wnioski', title: 'Kluczowe wnioski' },
-    { id: 'ai-seo-company', title: 'Jak podchodzimy do link buildingu w Ai-seo-company' },
+    { id: 'ai-seo-company', title: 'Jak podchodzimy do link buildingu w AI SEO COMPANY' },
     { id: 'wsparcie', title: 'Jak możemy wesprzeć Twój program link buildingu B2B?' }
   ];
+  // 5.11.2026: spis tresci byl renderowany bez pozycji (<ArticleTOC /> bez items) - pusty
+  // naglowek „Spis treści”. Teraz kazda wersja dostaje liste swoich H2 (id bez zmian).
+  const tocItemsEn = [
+    { id: 'czym-jest', title: 'What is B2B link building and how does it differ from B2C?' },
+    { id: 'dlaczego-linki', title: 'Why do links translate into sales results in B2B?' },
+    { id: 'rodzaje-linkow', title: 'What types of links have the most value in B2B?' },
+    { id: 'strategie', title: 'Effective B2B link building strategies step-by-step' },
+    { id: 'outreach', title: 'Outreach, personalization, and scaling the process' },
+    { id: 'jakosc-linku', title: 'How to assess link quality before adding it to your profile?' },
+    { id: 'roi', title: 'How to measure B2B link building ROI: metrics and costs' },
+    { id: 'outsourcing', title: 'When to outsource link building and how to choose an agency?' },
+    { id: 'ryzyka', title: 'What risks and mistakes most often ruin B2B link building programs?' },
+    { id: 'digital-pr', title: 'Why do digital PR and practical expertise work best in B2B?' },
+    { id: 'wnioski', title: 'Key takeaways' },
+    { id: 'ai-seo-company', title: 'How we approach B2B link building at AI SEO COMPANY' },
+    { id: 'wsparcie', title: 'How can we support your B2B link building program?' }
+  ];
+  // Link do P1 tylko po publikacji porownania (bramka PLAN-v2 6.0); przed nia zdanie znika.
+  const hrefP1 = hrefJesliOpublikowana('/porownania/pozycjonowanie-za-efekt-czy-abonament');
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" locale={locale} />
+      <ArticleSchema
+        slug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista"
+        locale={locale}
+        dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/b2b-link-building-strategies-checklist` : `${BASE}/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`]}
+      />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (
@@ -95,7 +130,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>Priorities in order: internal data, expert articles with a byline, ecosystem partnerships.</p>
 
               {/* ===== INTERACTIVE TOC ===== */}
-              <ArticleTOC />
+              <ArticleTOC items={tocItemsEn} />
 
               {/* ===== SECTION: Czym jest link building B2B ===== */}
               <h2 id="czym-jest">What is B2B link building and how does it differ from B2C?</h2>
@@ -305,7 +340,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                     <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Proprietary data as currency</td><td style={{ padding: '0.75rem' }}>One well-prepared industry report brings many natural backlinks.</td></tr>
                     <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Quality over volume</td><td style={{ padding: '0.75rem' }}>Editorial and partner links build topical authority; mass PBNs carry penalty risks.</td></tr>
                     <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Timeline and costs</td><td style={{ padding: '0.75rem' }}>Full effects appear over a longer period, indicative program cost is moderate.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Ai-seo-company</td><td style={{ padding: '0.75rem' }}>The agency runs B2B link building programs combining digital PR, linkable assets creation, and KPI reporting.</td></tr>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>AI SEO COMPANY</td><td style={{ padding: '0.75rem' }}>The agency runs B2B link building programs combining digital PR, linkable assets creation, and KPI reporting.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -317,17 +352,17 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>First 90 days: evaluation of outreach conversion, adjustment of the target publication list, report on initial KPIs for the board.</li>
               </ul>
 
-              {/* ===== SECTION: Ai-seo-company ===== */}
-              <h2 id="ai-seo-company">How we approach B2B link building at Ai-seo-company</h2>
+              {/* ===== SECTION: AI SEO COMPANY ===== */}
+              <h2 id="ai-seo-company">How we approach B2B link building at AI SEO COMPANY</h2>
               <p style={{ marginBottom: '1.5rem' }}>Every link building program begins with an <Link href="/audyt-seo">SEO audit</Link>: we check the current link profile, identify content gaps, and map existing partner relationships that can be activated immediately. Only on this basis do we design a linkable asset that has a real chance of being quoted in industry media.</p>
               <p style={{ marginBottom: '1.5rem' }}>The process looks like this: audit and competitor analysis, asset production (report, calculator, benchmark), outreach to selected editorial boards and partners, publication, and then monthly KPI reporting covering new referring domains, average DR, and organic traffic on supported pages.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company clients often observe revenue growth after implementing comprehensive SEO services, including <Link href="/pozycjonowanie-stron-internetowych">website positioning</Link>, link building programs, and conversion-optimized <Link href="/projektowanie-stron-internetowych">web design</Link>. A subscription model works well for long-term digital PR programs, while a one-time project is suitable for companies looking to test the approach.</p>
+              <p style={{ marginBottom: '1.5rem' }}>At AI SEO COMPANY we combine link building programs with <Link href="/pozycjonowanie-stron-internetowych">website positioning</Link> and conversion-optimized <Link href="/projektowanie-stron-internetowych">web design</Link>. A subscription model works well for long-term digital PR programs, while a one-time project is suitable for companies looking to test the approach.</p>
 
               {/* ===== SECTION: Wsparcie ===== */}
               <h2 id="wsparcie">How can we support your B2B link building program?</h2>
               <p style={{ marginBottom: '1.5rem' }}>B2B companies that want to build search engine authority without the risk of penalties and without wasting budget on mass outreach need a partner with access to the right editorial boards and a data-driven process. As an <Link href="/">SEO agency</Link> with experience in domestic <Link href="/pozycjonowanie-stron-internetowych">positioning</Link>, we understand the specifics of the market.</p>
               
-              <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company runs B2B link building campaigns combining digital PR, production of industry reports, personalized outreach, and transparent reporting. We work in a subscription model for companies planning a long-term program and in a project model for those wanting to start with a pilot. Every campaign begins with a free audit of the link profile and content gap analysis.</p>
+              <p style={{ marginBottom: '1.5rem' }}>AI SEO COMPANY runs B2B link building campaigns combining digital PR, production of industry reports, personalized outreach, and transparent reporting. We work in a subscription model for companies planning a long-term program and in a project model for those wanting to start with a pilot. Every campaign begins with a free audit of the link profile and content gap analysis.</p>
               <p style={{ marginBottom: '1.5rem' }}>If you want to know which publications your buyers read and how quickly you can get your first editorial links, contact us and schedule an initial consultation. We will prepare a campaign brief tailored to your industry and budget.</p>
 
               <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "#1D1D1F" }}>Useful tools and resources for further reading</div>
@@ -400,10 +435,10 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                Ekspertka od marketingu online przedstawia kompletny przewodnik - Link building B2B dla marketerów: strategia i checklista krok po kroku.
+                Kompletny przewodnik dla marketerów: strategie linkowania B2B i checklista krok po kroku, także do pobrania w PDF.
               </p>
 
-              <p style={{ marginBottom: '1.5rem' }}>Skuteczny link building B2B opiera się na trzech filarach: digital PR opartym na danych własnych, strategicznych partnerstwach branżowych i precyzyjnie wybranych publikacjach eksperckich. Masowy outreach do przypadkowych stron nie działa w B2B, bo decydjonariusze weryfikują Twoją firmę przez pryzmat tego, kto Cię cytuje, nie ile masz linków.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Skuteczny link building B2B opiera się na trzech filarach: digital PR opartym na danych własnych, strategicznych partnerstwach branżowych i precyzyjnie wybranych publikacjach eksperckich. Masowy outreach do przypadkowych stron nie działa w B2B, bo decyzjonariusze weryfikują Twoją firmę przez pryzmat tego, kto Cię cytuje, nie ile masz linków.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Trzy działania, które warto uruchomić w pierwszym miesiącu:</p>
               <ol>
@@ -414,7 +449,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>Priorytety w kolejności: dane własne, artykuły eksperckie z byline, partnerstwa ekosystemowe.</p>
 
               {/* ===== INTERACTIVE TOC ===== */}
-              <ArticleTOC />
+              <ArticleTOC items={tocItems} />
 
               {/* ===== SECTION: Czym jest link building B2B ===== */}
               <h2 id="czym-jest">Czym jest link building B2B i czym różni się od B2C?</h2>
@@ -553,7 +588,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                   </tbody>
                 </table>
               </div>
-              <p style={{ marginBottom: '1.5rem' }}>Orientacyjne widełki kosztów programu link buildingu w Polsce: rzetelny program digital PR + outreach zwykle kosztuje więcej niż tani, masowy linkbuilding, ale przynosi lepszy zwrot. Sprawdź szczegóły w naszym artykule: <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">ile kosztuje pozycjonowanie</Link> w 2026 roku. Przykładowe widełki: PR-owy koszt 3–10k zł/mies., outreach gościnny 2–6k zł/mies., mieszanka PR + outreach 5–15k zł/mies. (orientacyjnie).</p>
+              <p style={{ marginBottom: '1.5rem' }}>Orientacyjne widełki kosztów programu link buildingu w Polsce: rzetelny program digital PR + outreach zwykle kosztuje więcej niż tani, masowy linkbuilding, ale przynosi lepszy zwrot. Sprawdź szczegóły w naszym artykule: <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">ile kosztuje SEO</Link> w 2026 roku. Przykładowe widełki: PR-owy koszt 3–10k zł/mies., outreach gościnny 2–6k zł/mies., mieszanka PR + outreach 5–15k zł/mies. (orientacyjnie).</p>
 
               {/* ===== SECTION: Outsourcing ===== */}
               <h2 id="outsourcing">Kiedy outsourcować link building i jak wybrać agencję?</h2>
@@ -604,9 +639,38 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '0.5rem' }}>Najszybszy zwrot uwagi redakcji dają:</p>
               <ul>
                 <li>Odpowiedzi na zapytania dziennikarskie przez <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> lub <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> w ciągu 2–4 godzin.</li>
-                <li>Bylinedy z unikatową tezą, a nie artykuły przeglądowe dostępne wszędzie.</li>
+                <li>Artykuły z byline i unikatową tezą, a nie teksty przeglądowe dostępne wszędzie.</li>
                 <li>Transkrypcje i podsumowania podcastów branżowych, które redakcje chętnie linkują jako materiał źródłowy.</li>
               </ul>
+
+              {/* ===== SECTION: Dane własne (5.11.2026, PLAN-v2 6.25 R1, decyzje-blog nr 26) =====
+                  Liczby z profili 17 agencji (analiza-konkurencji-2026-10-25/profile, tabela 8.2 briefu P1),
+                  bez nazw agencji (D3, art. 16 UZNK). Bez wynikow linkowych, ktorych jeszcze nie ma. */}
+              <h2 id="dane-wlasne-przyklad">Digital PR na danych własnych: nasz przykład</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Rada „publikuj dane własne” jest prosta, dopóki nie trzeba wskazać danych, których nikt wcześniej nie zebrał. Pokażemy to na naszym przykładzie. W październiku 2026 sprawdziliśmy strony ofertowe, cenniki, regulaminy i profile w katalogach 17 agencji SEO działających w Polsce. Powstało zestawienie, którego nie było w jednym miejscu: według stanu na 25 października 2026 cenę „od” albo widełki publikuje 12 z 17 agencji, 11 rozlicza się bez komponentu za efekt, a okres wypowiedzenia podaje 6.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Dla redakcji takie liczby to materiał, który można zacytować z podaniem źródła, a dla programu linkowego powód, żeby ktoś do Ciebie podlinkował. Nie oceniamy jakości usług tych agencji i nie podajemy ich nazw: liczy się zbiorczy obraz rynku i jawna metoda.{hrefP1 && <> Zestawienie modeli rozliczeń opublikowaliśmy w porównaniu <Link href={hrefP1}>pozycjonowanie za efekt czy abonament</Link>.</>}</p>
+              <p style={{ marginBottom: '0.5rem' }}>Jak powtórzyć ten schemat u siebie:</p>
+              <ol>
+                <li>Wybierz pytanie, które klienci zadają handlowcom, a na które w branży brakuje liczb. U nas było to pytanie, jak agencje SEO naprawdę się rozliczają.</li>
+                <li>Zbieraj dane z jawnych źródeł i przy każdej liczbie zapisuj datę odczytu.</li>
+                <li>Opublikuj metodę i ograniczenia, na przykład to, czego nie oceniasz. Bez tego redakcja nie zacytuje liczby.</li>
+                <li>Dopiero potem wyślij pitch do 20–30 dziennikarzy i redaktorów, tak jak w strategii nr 1 opisanej wyżej.</li>
+              </ol>
+              <p style={{ marginBottom: '1.5rem' }}>Czego jeszcze nie wiemy: zestawienie jest świeże, więc nie podajemy liczby zdobytych linków ani cytowań. Efekt zmierzymy tak samo, jak radzimy w sekcji o ROI: liczbą nowych domen odsyłających i wzmianek o marce.</p>
+
+              {/* ===== SECTION: Wzmianki a AI (5.11.2026, PLAN-v2 6.25 R1; link do huba GEO, MSA-07/LW1) =====
+                  Fakt o zrodlach Perplexity: PLAN-v2 3.4 (pomiar DataForSEO 4.11.2026, pytanie o agencje SEO dla B2B). */}
+              <h2 id="wzmianki-ai">Wzmianki marki a odpowiedzi AI</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Link wzmacnia pozycje w Google. Wzmianka o marce, także bez linku, wpływa na coś jeszcze: na to, czy firma pojawi się w odpowiedzi asystenta AI. ChatGPT z wyszukiwaniem i Perplexity budują odpowiedź na podstawie stron, które znajdą w sieci, i wymieniają firmy, które na tych stronach występują.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Widać to w naszych pomiarach. 4 listopada 2026 zapytaliśmy Perplexity, jaką agencję SEO w Warszawie poleca dla firmy B2B. Wśród źródeł odpowiedzi były katalogi firm: clutch.co, sortlist.com i designrush.com. Dla programu linkowego to praktyczna wskazówka: strony, które asystenci cytują w Twojej kategorii, są celami outreachu tak samo ważnymi jak portale branżowe, nawet jeśli wpis nie daje linku dofollow.</p>
+              <p style={{ marginBottom: '0.5rem' }}>Jak sprawdzić to u siebie:</p>
+              <ul>
+                <li>Zadaj ChatGPT i Perplexity 10–20 pytań, które zadają Twoi kupujący. Metodę opisujemy w poradniku o <Link href="/blog/content-gap-analysis">analizie luk contentowych</Link>.</li>
+                <li>Zapisz domeny, które pojawiają się w źródłach odpowiedzi.</li>
+                <li>Porównaj je z własnym profilem linków i wzmianek. Domeny, na których Cię nie ma, to lista celów.</li>
+                <li>Powtarzaj pomiar regularnie, bo odpowiedzi zmieniają się z tygodnia na tydzień.</li>
+              </ul>
+              <p style={{ marginBottom: '1.5rem' }}>W usłudze <Link href="/pozycjonowanie-w-ai">pozycjonowania w AI</Link> robimy ten pomiar co tydzień: sprawdzamy, które strony cytują modele, i tam zdobywamy wzmianki o firmie.</p>
 
               {/* ===== SECTION: Wnioski ===== */}
               <h2 id="wnioski">Kluczowe wnioski</h2>
@@ -624,7 +688,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                     <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Dane własne jako waluta</td><td style={{ padding: '0.75rem' }}>Jeden dobrze przygotowany raport branżowy przynosi wiele naturalnych backlinków.</td></tr>
                     <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Jakość ponad wolumen</td><td style={{ padding: '0.75rem' }}>Linki editorialne i partnerskie budują autorytet tematyczny; masowe PBN niosą ryzyko kar.</td></tr>
                     <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Timeline i koszty</td><td style={{ padding: '0.75rem' }}>Pełne efekty pojawiają się po dłuższym czasie, orientacyjny koszt programu jest umiarkowany.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Ai-seo-company</td><td style={{ padding: '0.75rem' }}>Agencja prowadzi programy link buildingu B2B łączące digital PR, tworzenie linkable assets i raportowanie KPI.</td></tr>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>AI SEO COMPANY</td><td style={{ padding: '0.75rem' }}>Agencja prowadzi programy link buildingu B2B łączące digital PR, tworzenie linkable assets i raportowanie KPI.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -636,17 +700,19 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Pierwsze 90 dni: ocena konwersji outreachu, korekta listy publikacji docelowych, raport z pierwszych KPI dla zarządu.</li>
               </ul>
 
-              {/* ===== SECTION: Ai-seo-company ===== */}
-              <h2 id="ai-seo-company">Jak podchodzimy do link buildingu B2B w Ai-seo-company</h2>
+              <p style={{ marginBottom: '1.5rem' }}>Punkty kontrolne z tego poradnika, od pierwszego miesiąca przez ocenę jakości linku po pytania do agencji, zebraliśmy w jednym pliku do wydruku: <a href={CHECKLISTA_PDF} download>Checklista link buildingu B2B: 30 punktów (PDF)</a>.</p>
+
+              {/* ===== SECTION: AI SEO COMPANY ===== */}
+              <h2 id="ai-seo-company">Jak podchodzimy do link buildingu B2B w AI SEO COMPANY</h2>
               <p style={{ marginBottom: '1.5rem' }}>Każdy program link buildingu zaczyna się od <Link href="/audyt-seo">audytu SEO</Link>: sprawdzamy aktualny profil linkowy, identyfikujemy luki tematyczne i mapujemy istniejące relacje partnerskie, które można natychmiast aktywować. Dopiero na tej podstawie projektujemy linkable asset, który ma realną szansę na cytowanie w mediach branżowych.</p>
               <p style={{ marginBottom: '1.5rem' }}>Proces wygląda następująco: audyt i analiza konkurencji, produkcja zasobu (raport, kalkulator, benchmark), outreach do wyselekcjonowanych redakcji i partnerów, publikacja, a następnie miesięczne raportowanie KPI obejmujące nowe referring domains, średni DR i ruch organiczny na wspieranych stronach.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Klienci Ai-seo-company często obserwują wzrost przychodów po wdrożeniu kompleksowych usług SEO, w tym <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron</Link>, programów link buildingu oraz <Link href="/projektowanie-stron-internetowych">projektowania stron internetowych</Link> zoptymalizowanych pod konwersję. Model abonamentowy sprawdza się przy długoterminowych programach digital PR, natomiast projekt jednorazowy jest odpowiedni dla firm, które chcą przetestować podejście.</p>
+              <p style={{ marginBottom: '1.5rem' }}>W AI SEO COMPANY program link buildingu łączymy z <Link href="/pozycjonowanie-stron-internetowych">pozycjonowaniem stron</Link> i <Link href="/projektowanie-stron-internetowych">projektowaniem stron internetowych</Link> zoptymalizowanych pod konwersję. Model abonamentowy sprawdza się przy długoterminowych programach digital PR, natomiast projekt jednorazowy jest odpowiedni dla firm, które chcą przetestować podejście.</p>
 
               {/* ===== SECTION: Wsparcie ===== */}
               <h2 id="wsparcie">Jak możemy wesprzeć Twój program link buildingu B2B?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Firmy B2B, które chcą budować autorytet w wyszukiwarkach bez ryzyka kar i bez marnowania budżetu na masowy outreach, potrzebują partnera z dostępem do właściwych redakcji i procesem opartym na danych. Jako <Link href="/">agencja SEO</Link> z doświadczeniem w <Link href="/pozycjonowanie-stron-internetowych">pozycjonowaniu</Link> i krajowym, rozumiemy specyfikę polskiego rynku.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Firmy B2B, które chcą budować autorytet w wyszukiwarkach bez ryzyka kar i bez marnowania budżetu na masowy outreach, potrzebują partnera z dostępem do właściwych redakcji i procesem opartym na danych. Jako <Link href="/">agencja SEO</Link> z doświadczeniem w <Link href="/pozycjonowanie-stron-internetowych">pozycjonowaniu</Link> na rynku krajowym rozumiemy specyfikę polskiego rynku.</p>
               
-              <p style={{ marginBottom: '1.5rem' }}>Ai-seo-company prowadzi kampanie link buildingu B2B łączące digital PR, produkcję raportów branżowych, personalizowany outreach i przejrzyste raportowanie. Pracujemy w modelu abonamentowym dla firm planujących długoterminowy program oraz w modelu projektowym dla tych, które chcą zacząć od pilotażu. Każda kampania zaczyna się od bezpłatnego audytu profilu linkowego i analizy luk tematycznych.</p>
+              <p style={{ marginBottom: '1.5rem' }}>AI SEO COMPANY prowadzi kampanie link buildingu B2B łączące digital PR, produkcję raportów branżowych, personalizowany outreach i przejrzyste raportowanie. Pracujemy w modelu abonamentowym dla firm planujących długoterminowy program oraz w modelu projektowym dla tych, które chcą zacząć od pilotażu. Każda kampania zaczyna się od bezpłatnego audytu profilu linkowego i analizy luk tematycznych.</p>
               <p style={{ marginBottom: '1.5rem' }}>Jeśli chcesz wiedzieć, które publikacje czytają Twoi kupujący i jak szybko możesz zdobyć pierwsze editorialne linki, skontaktuj się z nami i umów wstępną konsultację. Przygotujemy brief kampanii dopasowany do Twojej branży i budżetu.</p>
 
               <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "#1D1D1F" }}>Przydatne narzędzia i źródła do dalszej lektury</div>

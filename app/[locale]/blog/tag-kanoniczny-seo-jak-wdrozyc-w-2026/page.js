@@ -2,8 +2,11 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'SEO Canonical Tag (rel=canonical) Guide 2026' : 'Tag Kanoniczny (rel=canonical) SEO w 2026 | Poradnik',
-  description: locale === 'en' ? 'The canonical tag (rel=canonical) is the foundation of SEO. See how to avoid duplicate content, protect crawl budget, and implement it correctly.' : 'Tag kanoniczny (rel=canonical) to fundament SEO. Zobacz, jak unikać duplikacji treści, chronić crawl budget i poprawnie go wdrażać.',
+  // 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 24; CS-15, MSA-17): title PL (60 zn.) pod „rel canonical”
+  // (GSC 36 wyśw., poz. 22,1), „link kanoniczny” i „adres kanoniczny”; meta PL (134 zn.) z decyzje-blog nr 24
+  // („Przykłady z Next.js” = nowy H2 z kodem tej strony). Test pre/post 6 tyg. (PLAN-v2 9.4). EN bez zmian.
+  title: locale === 'en' ? 'SEO Canonical Tag (rel=canonical) Guide 2026' : 'Rel canonical: link kanoniczny i adres kanoniczny w praktyce',
+  description: locale === 'en' ? 'The canonical tag (rel=canonical) is the foundation of SEO. See how to avoid duplicate content, protect crawl budget, and implement it correctly.' : 'Czym jest link kanoniczny (rel=canonical), jak ustawić adres kanoniczny i jak sprawdzić, który URL wybrał Google. Przykłady z Next.js.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026` : `https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`,
     languages: articleLanguages('/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026', 'https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026', 'https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026')
@@ -20,17 +23,24 @@ import ArticleTOC from '@/components/ArticleTOC';
 import { Link } from '@/i18n/routing';
 import BlogCTA from '@/components/BlogCTA';
 import { homeHash } from '@/lib/anchors';
+import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArticleCanonicalPage({ params }) {
   const { locale } = await params;
   const tocItems = [
     { id: 'czym-jest', title: locale === 'en' ? 'What is a canonical tag and how it works' : 'Czym jest tag kanoniczny i jak działa w praktyce' },
+    // 5.11.2026: trzy nowe H2 tylko w wersji PL (PAA i przyklad z Next.js) - w EN pozycji nie ma.
+    ...(locale === 'en' ? [] : [{ id: 'jak-oznaczyc', title: 'Jak oznaczyć stronę kanoniczną' }]),
     { id: 'kiedy-warto', title: locale === 'en' ? 'When to use (and when not to) rel="canonical"' : 'Kiedy warto (i kiedy nie) używać tagu rel="canonical"' },
     { id: 'a-przekierowania', title: locale === 'en' ? 'Canonical tag vs 301 redirects and noindex' : 'Tag kanoniczny a przekierowania 301 i dyrektywa noindex' },
     { id: 'jak-wdrozyc', title: locale === 'en' ? 'How to correctly implement canonical tag – 5 proven ways' : 'Jak poprawnie wdrożyć tag kanoniczny – 5 sprawdzonych' },
     { id: 'bledy', title: locale === 'en' ? 'Most common mistakes that destroy SEO effects' : 'Najczęstsze błędy, które niszczą efekty SEO' },
     { id: 'indeksowanie', title: locale === 'en' ? 'Canonical vs indexing and crawl budget' : 'Canonical a indeksowanie i crawl budget' },
     { id: 'ecommerce', title: locale === 'en' ? 'Canonical strategy in e-commerce and PrestaShop' : 'Strategia canonical w e-commerce i na platformach PrestaShop' },
+    ...(locale === 'en' ? [] : [
+      { id: 'nextjs', title: 'Canonical w Next.js: alternates.canonical na przykładzie naszej strony' },
+      { id: 'jak-sprawdzic', title: 'Jak sprawdzić, który URL Google uznał za kanoniczny' }
+    ]),
     { id: 'narzedzia', title: locale === 'en' ? 'Tools for checking and monitoring canonical tags' : 'Narzędzia do sprawdzania i monitorowania tagów kanonicznych' },
     { id: 'checklist', title: locale === 'en' ? 'Canonical implementation checklist – technical SEO step by' : 'Checklist wdrożenia canonical – techniczne SEO krok po kroku' },
     { id: 'oferta', title: locale === 'en' ? 'AI SEO COMPANY offer: technical audit and optimization' : 'Oferta AI SEO COMPANY: audyt techniczny i pakiety' }
@@ -39,7 +49,12 @@ export default async function ArticleCanonicalPage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026" locale={locale} />
+      {/* 5.11.2026: dateModified = LASTMOD; tresc PL realnie zmieniona (3 nowe H2), EN bez zmian. */}
+      <ArticleSchema
+        slug="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026"
+        locale={locale}
+        dateModified={locale === 'en' ? undefined : LASTMOD['https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026']}
+      />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (
@@ -224,6 +239,18 @@ export default async function ArticleCanonicalPage({ params }) {
 
               <p>Informuje on algorytmy wyszukiwarek: „To jest oficjalna, kanoniczna wersja tego materiału. Wszystkie inne wersje traktuj wyłącznie jako duplikaty i przekaż cały zebrany przez nie autorytet tutaj” (szczegóły opisują <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener noreferrer">oficjalne wytyczne Google – Consolidate duplicate URLs</a>). Google traktuje to jako silną wskazówkę, lecz jeśli strona z tagiem będzie np. zwracać błąd, algorytm i tak zignoruje nasze zalecenie i samodzielnie wybierze inny URL.</p>
 
+              {/* 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 24): H2 z PAA „Jak oznaczyć stronę kanoniczną”. */}
+              <h2 id="jak-oznaczyc">Jak oznaczyć stronę kanoniczną</h2>
+              <p>Krótka odpowiedź: w sekcji <code>&lt;head&gt;</code> każdej wersji strony dodaj <code>{'<link rel="canonical" href="…" />'}</code> z pełnym adresem wersji, którą chcesz widzieć w wynikach wyszukiwania. Na samej stronie kanonicznej znacznik wskazuje ją samą (self-referencing canonical).</p>
+              <ol>
+                <li>Wybierz jeden adres: z HTTPS, z właściwą wersją domeny (z www albo bez) i z jednolitym ukośnikiem na końcu.</li>
+                <li>Wpisz pełny, bezwzględny adres, a nie ścieżkę względną.</li>
+                <li>Sprawdź, czy adres kanoniczny zwraca kod 200 i nie ma dyrektywy noindex.</li>
+                <li>Zostaw jeden znacznik canonical na stronę. Gdy strona ma dwa różne, Google może zignorować oba.</li>
+                <li>Wzmocnij wskazówkę spójnymi sygnałami: ten sam adres w sitemapie, w linkach wewnętrznych i w znacznikach hreflang.</li>
+              </ol>
+              <p>Google traktuje <code>{'rel="canonical"'}</code> jako wskazówkę, a nie polecenie. W dokumentacji przekierowania i <code>{'rel="canonical"'}</code> są opisane jako silne sygnały, a obecność adresu w sitemapie jako słaby. Przy trwałej zmianie adresu wybieraj więc przekierowanie, a canonical zostaw dla wariantów, które muszą działać, na przykład adresów z parametrami UTM.</p>
+
               <h2 id="kiedy-warto">Kiedy warto (i kiedy nie) używać tagu rel="canonical"</h2>
               <p>Tag ten nie jest uniwersalnym plastrem na wszystkie problemy z witryną, ale przy odpowiednim użyciu potrafi uratować pozycje serwisu.</p>
 
@@ -300,6 +327,39 @@ export default async function ArticleCanonicalPage({ params }) {
               <p>Zlecając specjalistom <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie sklepu</Link>, najwięcej uwagi zawsze poświęca się filtrom i parametrom sesji. Tag kanoniczny na wygenerowanych adresach URL z parametrami powinien bezwzględnie wskazywać na „czystą” wersję docelowej kategorii.</p>
               
               <p>W tym miejscu warto poruszyć specyfikę niektórych popularnych platform. Właściciele e-commerce’ów nieustannie poszukują wiedzy, wpisując hasła takie jak <em>canonical url prestashop</em> czy <em>prestashop canonical url</em> w obawie przed duplikacją treści. Przy platformach takich jak PrestaShop zalecamy weryfikację, czy canonical jest generowany poprawnie – bardzo często problemy wynikają z gotowych modułów optymalizacyjnych lub z konfliktów zaszytych bezpośrednio w szablonie. W AI SEO COMPANY preferujemy implementację bezpośrednio w szablonie i kodzie witryny, aby uniknąć konfliktów w bazie danych. Takie podejście przyspiesza działanie sklepu i gwarantuje pewniejszą indeksację asortymentu.</p>
+
+              {/* 5.11.2026 (PLAN-v2 6.25 R1, CS-15 wariant a): prawdziwy fragment generateMetadata z tego pliku
+                  i znaczniki odczytane z HTML produkcji 4.11.2026 (dane/crawl-produkcja-2026-11-04.json). */}
+              <h2 id="nextjs">Canonical w Next.js: alternates.canonical na przykładzie naszej strony</h2>
+              <p>Nasza strona działa na Next.js (App Router) i nie wpisujemy canonicala ręcznie do HTML. Każda podstrona eksportuje funkcję <code>generateMetadata</code>, a Next.js zamienia pole <code>alternates.canonical</code> na znacznik w sekcji <code>&lt;head&gt;</code>. Tak wygląda fragment kodu tego artykułu:</p>
+              <pre><code>{`export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  return {
+    alternates: {
+      canonical: locale === 'en'
+        ? 'https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026'
+        : 'https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026',
+      languages: articleLanguages(/* adresy wersji PL i EN */),
+    },
+  };
+}`}</code></pre>
+              <p>W HTML-u polskiej wersji (odczyt 4 listopada 2026) wychodzą z tego cztery znaczniki:</p>
+              <pre><code>{`<link rel="canonical" href="https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026" />
+<link rel="alternate" hreflang="pl" href="https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026" />
+<link rel="alternate" hreflang="en" href="https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026" />
+<link rel="alternate" hreflang="x-default" href="https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026" />`}</code></pre>
+              <p>Trzy decyzje, które stoją za tym fragmentem:</p>
+              <ul>
+                <li>Pełny adres z HTTPS i www. Ta sama wersja domeny jest w sitemapie i w linkach wewnętrznych, więc sygnały się nie rozjeżdżają.</li>
+                <li>Każda wersja językowa wskazuje samą siebie, a powiązanie wersji PL i EN opisują znaczniki hreflang z pola <code>languages</code>. Wersja angielska nie ma canonicala na polską, bo to dwie różne strony, a nie duplikaty.</li>
+                <li>Stare adresy artykułów przekierowujemy na stałe (kod 308) zamiast zostawiać je jako duplikaty z canonicalem.</li>
+              </ul>
+
+              {/* 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 24): H2 z PAA. */}
+              <h2 id="jak-sprawdzic">Jak sprawdzić, który URL Google uznał za kanoniczny</h2>
+              <p>Najpewniejszym źródłem jest Google Search Console. Wklej adres w narzędzie do sprawdzania adresów URL i rozwiń szczegóły indeksowania strony. Zobaczysz dwa pola: adres kanoniczny zadeklarowany przez Ciebie i adres kanoniczny wybrany przez Google. Jeśli się różnią, Google nie przyjął Twojej wskazówki, zwykle dlatego, że inne sygnały (przekierowania, linki wewnętrzne, sitemapa) wskazują inny adres.</p>
+              <p>Dla całego serwisu otwórz raport Indeksowanie → Strony. Canonicala dotyczą dwa statusy: „Duplikat, Google wybrał inną stronę kanoniczną niż użytkownik” i „Duplikat, użytkownik nie oznaczył strony kanonicznej”. Status „Strona alternatywna z prawidłowym tagiem strony kanonicznej” jest w porządku: to duplikat, który poprawnie wskazuje oryginał.</p>
+              <p>Szybki test bez Search Console: otwórz źródło strony i wyszukaj słowo „canonical” albo w terminalu wpisz <code>curl -s https://twoja-domena.pl/adres | grep -i canonical</code>. Pokaże to, co deklarujesz, a nie to, co wybrał Google. Dla plików PDF sprawdź nagłówek HTTP <code>Link</code> poleceniem <code>curl -I</code>.</p>
 
               <h2 id="narzedzia">Narzędzia do sprawdzania i monitorowania tagów kanonicznych</h2>
               <p>Regularne monitorowanie to obowiązek administratora strony.</p>

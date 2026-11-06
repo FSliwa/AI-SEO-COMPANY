@@ -27,6 +27,14 @@ export async function generateMetadata({ params }) {
       url: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/mailchimp-vs-getresponse' : 'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse',
       locale: locale === 'en' ? 'en_US' : 'pl_PL',
       siteName: 'AI SEO COMPANY',
+      // SA-14 (5.11.2026): jedyna strona bez og:image - openGraph strony zastępuje cały
+      // openGraph layoutu, więc obraz trzeba podać tutaj. Wymiary odczytane z pliku (sips).
+      images: [{
+        url: 'https://www.ai-seo-company.pl/images/mailchimp-vs-getresponse.jpg',
+        width: 632,
+        height: 350,
+        alt: 'Porównanie Mailchimp i GetResponse',
+      }],
     }
   };
 }
@@ -42,7 +50,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
     { id: 'jak-sprawdzilismy-te-dane', title: 'Jak sprawdziliśmy te dane?' },
     { id: 'kluczowe-wnioski', title: 'Kluczowe wnioski' },
     { id: 'kiedy-warto-zlecic-decyzje-agencji', title: 'Kiedy warto zlecić decyzję agencji?' },
-    { id: 'jak-ai-seo-company-moze-ci-pomoc-przy-okazji-prac-nad-strona', title: 'Jak Ai-seo-company może Ci pomóc przy okazji prac nad stroną?' },
+    { id: 'jak-ai-seo-company-moze-ci-pomoc-przy-okazji-prac-nad-strona', title: 'Jak AI SEO COMPANY może Ci pomóc przy okazji prac nad stroną?' },
     { id: 'najczestsze-pytania-mailchimp-czy-getresponse', title: 'Najczęstsze pytania: Mailchimp czy GetResponse' },
     { id: 'uzyteczne-zrodla', title: 'Użyteczne źródła' }
   ];
@@ -452,7 +460,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
                     <li>E-maile transakcyjne to osobny, płatny dodatek rozliczany w pakietach wysyłek.</li>
                   </ul>
 
-                  <p><a href="https://www.mailercloud.com/blog/getresponse-vs-mailchimp/" target="_blank" rel="noopener noreferrer">Mailchimp jest przyjazny dla początkujących</a>, ale jego model cenowy potrafi zaskoczyć przy wzroście listy. Firmy, które zaczynają od darmowego planu i szybko rosną, często odkrywają, że przy 25 000 kontaktów płacą 271 € miesięcznie za plan Standard, podczas gdy porównywalny funkcjonalnie GetResponse Marketer kosztuje 799 zł — po przeliczeniu blisko o jedną trzecią mniej. Warto to skalkulować z wyprzedzeniem, zanim zbudujesz całą automatyzację w jednym narzędziu. W dyskusjach o migracjach Mailchimp opinie użytkowników krążą zwykle wokół tego samego wątku: nie braku funkcji, lecz tempa wzrostu rachunku.</p>
+                  <p><a href="https://www.mailercloud.com/blog/getresponse-vs-mailchimp" target="_blank" rel="noopener noreferrer">Mailchimp jest przyjazny dla początkujących</a>, ale jego model cenowy potrafi zaskoczyć przy wzroście listy. Firmy, które zaczynają od darmowego planu i szybko rosną, często odkrywają, że przy 25 000 kontaktów płacą 271 € miesięcznie za plan Standard, podczas gdy porównywalny funkcjonalnie GetResponse Marketer kosztuje 799 zł — po przeliczeniu blisko o jedną trzecią mniej. Warto to skalkulować z wyprzedzeniem, zanim zbudujesz całą automatyzację w jednym narzędziu. W dyskusjach o migracjach Mailchimp opinie użytkowników krążą zwykle wokół tego samego wątku: nie braku funkcji, lecz tempa wzrostu rachunku.</p>
 
                   <p>Kwestia rozliczania kontaktów nieaktywnych jest tu szczególnie ważna: Mailchimp liczy je do limitu planu. Regularne czyszczenie i archiwizowanie listy to nie opcja, lecz konieczność, jeśli chcesz kontrolować koszty — potrafi to obniżyć rachunek o jeden próg cenowy z dnia na dzień.</p>
 
@@ -496,7 +504,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Porada profesjonalisty: <em>Przed migracją wyślij kampanię reaktywacyjną do nieaktywnych kontaktów. Przenoszenie „martwej" bazy do nowego narzędzia obniży deliverability od pierwszego dnia i może trwale zaszkodzić reputacji domeny.</em></p>
 
-                  <p>Warto też pamiętać o kwestii <a href="https://fibly.pl/pomoc/klienci/profil-klienta" target="_blank" rel="nofollow noopener noreferrer">profilowania klientów i zgodności z danymi</a> przy imporcie bazy. Poprawne odwzorowanie pól zgód to nie tylko wymóg RODO, lecz też warunek działania segmentów i automatyzacji po migracji.</p>
+                  <p>Warto też pamiętać o kwestii <a href="https://fibly.pl/pomoc/klienci/profil-klienta/" target="_blank" rel="nofollow noopener noreferrer">profilowania klientów i zgodności z danymi</a> przy imporcie bazy. Poprawne odwzorowanie pól zgód to nie tylko wymóg RODO, lecz też warunek działania segmentów i automatyzacji po migracji.</p>
 
                   <h2 id="jak-sprawdzilismy-te-dane">Jak sprawdziliśmy te dane?</h2>
                   
@@ -567,7 +575,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Ceny platform zmieniają się regularnie — Mailchimp w styczniu 2026 r. obciął darmowy plan, a w kwietniu podniósł stawki o 11–13% użytkownikom starych planów, założonych przed majem 2019 r. Przed zakupem zawsze weryfikuj aktualne stawki bezpośrednio na stronach GetResponse i Mailchimp. Limity darmowych planów są szczególnie podatne na zmiany.</p>
 
-                  <p>Autorem i redaktorem tego porównania jest Filip Śliwa, specjalista ds. SEO i strategii marketingu cyfrowego w Ai-seo-company. Jako agencja z Warszawy realizujemy projekty pozycjonowania, projektowania stron i optymalizacji konwersji dla firm działających na rynku polskim.</p>
+                  <p>Autorem i redaktorem tego porównania jest Filip Śliwa, specjalista ds. SEO i strategii marketingu cyfrowego w AI SEO COMPANY. Jako agencja z Warszawy realizujemy projekty pozycjonowania, projektowania stron i optymalizacji konwersji dla firm działających na rynku polskim.</p>
 
                   <h2 id="kluczowe-wnioski">Kluczowe wnioski</h2>
                   
@@ -599,7 +607,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
                           <td>Przenoś nie tylko adresy e-mail, lecz też tagi, scoring i historię zgód, by automatyzacje działały poprawnie.</td>
                         </tr>
                         <tr>
-                          <td>Ai-seo-company</td>
+                          <td>AI SEO COMPANY</td>
                           <td>Przy optymalizacji lub budowie strony ustawiamy też formularze zapisu, landing pages i przekazywanie zgód do wybranej platformy.</td>
                         </tr>
                       </tbody>
@@ -616,15 +624,15 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Jedno, czego brakuje w większości porównań: uwzględnienie kosztu całkowitego posiadania (TCO). Cena wejścia to tylko część rachunku. Dochodzą płatne dodatki (webinary, e-maile transakcyjne, SMS), koszty integracji, czas konfiguracji i koszt migracji za rok, gdy lista urośnie. Planowanie strategii contentowej i kalendarza kampanii razem z wyborem narzędzia pozwala uniknąć sytuacji, w której platforma ogranicza strategię, zamiast ją wspierać.</p>
 
-                  <h2 id="jak-ai-seo-company-moze-ci-pomoc-przy-okazji-prac-nad-strona">Jak Ai-seo-company może Ci pomóc przy okazji prac nad stroną?</h2>
+                  <h2 id="jak-ai-seo-company-moze-ci-pomoc-przy-okazji-prac-nad-strona">Jak AI SEO COMPANY może Ci pomóc przy okazji prac nad stroną?</h2>
                   
                   <p>Wybór narzędzia to jedna decyzja, ale wzrost listy zależy od tego, co dzieje się na stronie, zanim ktokolwiek zostawi adres.</p>
 
-                  <p>W Ai-seo-company zajmujemy się pozycjonowaniem stron, audytami SEO, projektowaniem witryn i optymalizacją konwersji. W kontekście wyboru platformy mailingowej oznacza to konkretną pomoc: oceniamy, jak formularze zapisu, landing pages i zbieranie zgód działają na Twojej stronie, i dopasowujemy narzędzie do ruchu, który realnie generuje witryna. Bo lista adresowa rośnie przede wszystkim dzięki temu, co dzieje się przed zapisem — a to jest obszar SEO i UX. Warto przy tym pamiętać o zmianie po stronie wyszukiwarki: <strong>optymalizacja pod SGE</strong>, czyli Search Generative Experience SEO, staje się osobnym zagadnieniem, bo Google coraz częściej streszcza porównania narzędzi w odpowiedziach generatywnych i treść musi być cytowalna, nie tylko dobrze wypozycjonowana.</p>
+                  <p>W AI SEO COMPANY zajmujemy się pozycjonowaniem stron, audytami SEO, projektowaniem witryn i optymalizacją konwersji. W kontekście wyboru platformy mailingowej oznacza to konkretną pomoc: oceniamy, jak formularze zapisu, landing pages i zbieranie zgód działają na Twojej stronie, i dopasowujemy narzędzie do ruchu, który realnie generuje witryna. Bo lista adresowa rośnie przede wszystkim dzięki temu, co dzieje się przed zapisem — a to jest obszar SEO i UX. Warto przy tym pamiętać o zmianie po stronie wyszukiwarki: <strong>optymalizacja pod SGE</strong>, czyli Search Generative Experience SEO, staje się osobnym zagadnieniem, bo Google coraz częściej streszcza porównania narzędzi w odpowiedziach generatywnych i treść musi być cytowalna, nie tylko dobrze wypozycjonowana.</p>
 
                   <p>Jeśli planujesz optymalizację istniejącej strony albo budujemy ją dla Ciebie od zera, możemy przy tej okazji zająć się też warstwą mailingową: rozmieszczeniem i konstrukcją formularzy zapisu, spójnością landing pages z resztą serwisu oraz poprawnym przekazywaniem zgód do wybranej platformy. To ten sam projekt, a nie osobne zlecenie — i moment, w którym najtaniej ustawić te rzeczy poprawnie.</p>
 
-                  <p>Jeśli chcesz sprawdzić, jak Twoja strona zbiera adresy i co ogranicza wzrost listy, <Link href="/">skontaktuj się z Ai-seo-company</Link> i zamów bezpłatny audyt.</p>
+                  <p>Jeśli chcesz sprawdzić, jak Twoja strona zbiera adresy i co ogranicza wzrost listy, <Link href="/">skontaktuj się z AI SEO COMPANY</Link> i zamów bezpłatny audyt.</p>
 
                   <h2 id="najczestsze-pytania-mailchimp-czy-getresponse">Najczęstsze pytania: Mailchimp czy GetResponse</h2>
                   

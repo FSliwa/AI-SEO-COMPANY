@@ -3,8 +3,9 @@ import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { blogPosts, postsForLocale } from '@/lib/blogPosts';
 import { hash } from '@/lib/anchors';
+import { ctaDlaWpisu } from '@/lib/blogCta';
 
-export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customCtaTitleEn, customCtaTextPl, customCtaTextEn }) {
+export default function BlogCTA({ locale, currentSlug, klaster, customCtaTitlePl, customCtaTitleEn, customCtaTextPl, customCtaTextEn }) {
   // Fall back to the active locale: several call sites render <BlogCTA /> with no
   // props, which previously left `locale` undefined and forced the Polish branch.
   const activeLocale = useLocale();
@@ -18,6 +19,13 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
     .filter(Boolean);
   const relatedPosts = [...curated, ...available.filter(p => !curated.includes(p))]
     .slice(0, 2);
+  // BC1 (5.11.2026, CS-04): klaster z pola `cta` wpisu w lib/blogPosts.js (albo z propa
+  // `klaster` na stronie, która nie ma jeszcze wpisu, np. B1 przed publikacją partii 3).
+  // Z klastrem: link do strony klastra z data-cta="blog_cta_<klaster>", a tytuł i tekst
+  // z lib/blogCta.js zastępują customCta* (te mówią o formularzu „poniżej”). Bez klastra:
+  // dotychczasowy przycisk do #kontakt, tylko data-cta="blog_cta_kontakt" zamiast "blog_cta".
+  const cta = ctaDlaWpisu(klaster ?? current?.cta, currentSlug, lang);
+  const przyciskStyl = { display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' };
 
   return (
     <>
@@ -65,18 +73,24 @@ export default function BlogCTA({ locale, currentSlug, customCtaTitlePl, customC
       <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
         <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
           <p style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem', display: 'block' }}>
-            {lang === 'en' 
+            {cta ? cta.title : lang === 'en' 
               ? (customCtaTitleEn || 'Dominate your market') 
               : (customCtaTitlePl || 'Zdominuj swój rynek')}
           </p>
           <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
-            {lang === 'en' 
+            {cta ? cta.text : lang === 'en' 
               ? (customCtaTextEn || 'Want to outpace your competition in search results? Leave us a message below and we will prepare a dedicated SEO strategy.')
               : (customCtaTextPl || 'Chcesz wyprzedzić konkurencję w wynikach wyszukiwania? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię SEO.')}
           </p>
-          <a href={hash('kontakt', activeLocale)} data-cta="blog_cta" style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>
-            {lang === 'en' ? 'Consult Your Project' : 'Skonsultuj Projekt'}
-          </a>
+          {cta ? (
+            <Link href={cta.href} data-cta={`blog_cta_${cta.klaster}`} style={przyciskStyl}>
+              {cta.label}
+            </Link>
+          ) : (
+            <a href={hash('kontakt', activeLocale)} data-cta="blog_cta_kontakt" style={przyciskStyl}>
+              {lang === 'en' ? 'Consult Your Project' : 'Skonsultuj Projekt'}
+            </a>
+          )}
         </div>
       </div>
     </>

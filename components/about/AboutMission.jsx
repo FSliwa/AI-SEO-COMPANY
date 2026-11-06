@@ -88,9 +88,11 @@ export default function AboutMission() {
       tag: lang === 'pl' ? 'AI & DATA-DRIVEN' : 'AI & DATA-DRIVEN',
       metric: '100%',
       title: lang === 'pl' ? 'Strategia oparta na twardych danych' : 'Strategy based on hard data',
+      // 5.11.2026 (PLAN-v2 6.24, EEAT1; MSA-13): bez obietnicy „gwarantując najwyższą skuteczność”
+      // (nie gwarantujemy wyników - FairDeal, cel TOP 3); EN analogicznie.
       description: lang === 'pl' 
-        ? 'Nie zgadujemy. Wykorzystujemy zaawansowaną analitykę i algorytmy AI do precyzyjnego pozycjonowania i architektury treści, gwarantując najwyższą skuteczność działań.'
-        : 'We don’t guess. We use advanced analytics and AI algorithms for precise positioning and content architecture, guaranteeing maximum campaign effectiveness.',
+        ? 'Nie zgadujemy. Wykorzystujemy zaawansowaną analitykę i algorytmy AI do precyzyjnego pozycjonowania i architektury treści, żeby każda decyzja miała pokrycie w danych.'
+        : 'We don’t guess. We use advanced analytics and AI algorithms for precise positioning and content architecture, so that every decision is backed by data.',
       bgVisual: 'linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
@@ -209,8 +211,16 @@ export default function AboutMission() {
             <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Nie jesteśmy zwykłą agencją. Jesteśmy architektami Twojego wzrostu' : 'We are not just an agency. We are the architects of your growth'}
             </h1>
+            {/* 5.11.2026 (PLAN-v2 6.24, EEAT1; AV-05 po weryfikacji): pierwszy akapit = zdanie encji
+                (PL 59 słów), identyczne jak opis #organization w app/[locale]/layout.js, public/llms.txt
+                i opisy profili (Clutch, Sortlist, LinkedIn) - modele AI składają encję marki z tego
+                samego opisu. Zamiast frazy „Agencja SEO Warszawa (AI SEO COMPANY)” (frazy strony
+                głównej, strażnik fraz). Pomiar AI tylko w SEO Premium, cena = SEO Standard
+                (PricingClient, ServiceSchema: 1 900 zł / 450 EUR netto miesięcznie). */}
             <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
-              {lang === 'pl' ? 'O nas: Nie jesteśmy zwykłą agencją. Jako nowoczesna Agencja SEO Warszawa (AI SEO COMPANY), tworzymy rozwiązania poparte twardymi danymi analitycznymi. Faktycznie jesteśmy architektami Twojego wzrostu.' : 'About Us: As a professional SEO Firm, Marketing Agency and leading SEO Agency Warsaw (AI SEO COMPANY), we craft digital solutions backed by hard analytics. We are the architects of your digital growth.'}
+              {lang === 'pl'
+                ? 'AI SEO COMPANY to agencja SEO i pozycjonowania w AI (GEO) z Warszawy dla małych i średnich firm: pozycjonowanie stron i wizytówek Google, audyty SEO, strony w Next.js oraz, w SEO Premium, cotygodniowy pomiar widoczności w ChatGPT, Perplexity, Gemini i przeglądach AI Google. Każdy klient ma panel klienta 24/7, umowę miesięczną i jawny cennik od 1 900 zł netto miesięcznie.'
+                : 'AI SEO COMPANY is a Warsaw-based SEO and AI search optimization (GEO) agency for small and medium businesses: website and Google Business Profile SEO, SEO audits, Next.js websites and, in SEO Premium, weekly visibility tracking in ChatGPT, Perplexity, Gemini and Google AI Overviews. Every client gets a 24/7 client portal, a monthly contract and transparent pricing from €450 net a month.'}
             </p>
           </Reveal>
 
@@ -344,9 +354,12 @@ export default function AboutMission() {
 
               {/* Bottom Text Area */}
               <div style={{ marginTop: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-                <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.35, marginBottom: '0.5rem' }}>
+                {/* 5.11.2026 (PLAN-v2 6.24, SA-07): h3 -> h2 - karty stoją bezpośrednio pod H1, więc
+                    h3 był przeskokiem H1 -> H3. Wygląd bez zmian: wszystkie style inline, reguły
+                    .section-header h2 nie dotyczą kart karuzeli. */}
+                <h2 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.35, marginBottom: '0.5rem' }}>
                   {item.title}
-                </h3>
+                </h2>
                 <p style={{ fontSize: '0.94rem', color: '#424245', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
                   {item.description}
                 </p>

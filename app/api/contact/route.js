@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { kanalLeada, KANAL, SKAD_O_NAS_WIESZ } from '@/lib/attribution';
+import { pageType } from '@/lib/track';
 
 // Make sure to add RESEND_API_KEY in .env.local or Vercel Environment Variables
 const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key_for_build');
@@ -45,15 +47,32 @@ function rateLimited(ip) {
 
 // Pola atrybucji przepuszczane do maila i arkusza — tylko znaki bezpieczne,
 // żeby gclid z reklamy nie mógł wstrzyknąć HTML-a do powiadomienia.
-const ATTR_FIELDS = ['lead_id', 'submitted_at', 'page_path', 'landing_path', 'first_seen', 'gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'consent_marketing'];
+// 5.11.2026 (ATR v2.2, PLAN-v2 9.3): + first_referrer_host (sama domena
+// odsyłacza z lib/attribution.js) i skad_o_nas_wiesz (opcjonalna deklaracja
+// z Contact.jsx, tylko kody z listy).
+const ATTR_FIELDS = ['lead_id', 'submitted_at', 'page_path', 'landing_path', 'first_seen', 'gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'consent_marketing', 'first_referrer_host', 'skad_o_nas_wiesz'];
 const safe = (v, max = 200) => String(v ?? '').replace(/[<>"'`]/g, '').slice(0, max);
 const esc = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const SKAD_KODY = new Map(SKAD_O_NAS_WIESZ.map((o) => [o.kod, o.pl]));
+
+// Kolumny arkusza po ATR v2.2: pola z formularza + wyliczone tutaj, jednakowo dla
+// każdego nadawcy (Contact.jsx, tryb zapasowy sprawdzarki AI) i dla wierszy odrzuconych.
+// landing_page_type / page_type = ta sama klasyfikacja co page_type w GA4 (lib/track.js);
+// kanal zastępuje dawną jedną kategorię „organiczne / bezpośrednie”.
+function atrybucja(body) {
+  const attr = Object.fromEntries(ATTR_FIELDS.map((k) => [k, safe(body[k])]));
+  if (!SKAD_KODY.has(attr.skad_o_nas_wiesz)) attr.skad_o_nas_wiesz = '';
+  attr.landing_page_type = attr.landing_path ? pageType(attr.landing_path) : '';
+  attr.page_type = attr.page_path ? pageType(attr.page_path) : '';
+  attr.kanal = kanalLeada(attr);
+  return attr;
+}
 
 // Ślad odrzuconego zgłoszenia: log runtime'u (Vercel → Logs) i, jeśli jest
 // arkusz, wiersz ze statusem `rejected:<powód>`. Awaria zapisu nie może
 // zmienić odpowiedzi dla bota, stąd pusty catch.
 async function logRejected(body, reason, ip) {
-  const attr = Object.fromEntries(ATTR_FIELDS.map((k) => [k, safe(body[k])]));
+  const attr = atrybucja(body);
   console.warn(`LEAD_ODRZUCONY reason=${reason}; elapsed_ms=${safe(body.elapsed_ms, 12)}; lead_id=${attr.lead_id}; page_path=${attr.page_path}; gclid=${attr.gclid ? 'tak' : 'nie'}`);
   if (!process.env.LEADS_WEBHOOK_URL || !rejectLogAllowed(ip)) return;
   try {
@@ -105,7 +124,7 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Zbyt wiele zgłoszeń. Spróbuj ponownie za kilka minut.' }, { status: 429 });
     }
 
-    const attr = Object.fromEntries(ATTR_FIELDS.map((k) => [k, safe(body[k])]));
+    const attr = atrybucja(body);
     const leadId = attr.lead_id || `srv-${Date.now().toString(36)}`;
 
     // Default to kontakt@ai-seo-company.pl for sending notifications.
@@ -129,8 +148,14 @@ export async function POST(request) {
     // Blok maszynowy pod import konwersji offline do Google Ads (arkusz
     // „Leady PL-Search”: Google Click ID + czas + wartość). Klucz=wartość w
     // jednej linii, żeby dało się go skopiować bez ręcznego przepisywania.
-    const leadData = `LEAD_DATA: lead_id=${leadId}; email=${emailNorm}; submitted_at=${attr.submitted_at}; gclid=${attr.gclid}; gbraid=${attr.gbraid}; wbraid=${attr.wbraid}; landing_path=${attr.landing_path}; first_seen=${attr.first_seen}; page_path=${attr.page_path}; utm_source=${attr.utm_source}; utm_medium=${attr.utm_medium}; utm_campaign=${attr.utm_campaign}; utm_term=${attr.utm_term}; utm_content=${attr.utm_content}; consent_marketing=${attr.consent_marketing}`;
-    const source = attr.gclid || attr.gbraid || attr.wbraid ? 'Google Ads (klik z reklamy)' : (attr.utm_source ? `utm: ${attr.utm_source}/${attr.utm_medium}` : 'organiczne / bezpośrednie');
+    const leadData = `LEAD_DATA: lead_id=${leadId}; email=${emailNorm}; submitted_at=${attr.submitted_at}; gclid=${attr.gclid}; gbraid=${attr.gbraid}; wbraid=${attr.wbraid}; landing_path=${attr.landing_path}; first_seen=${attr.first_seen}; page_path=${attr.page_path}; utm_source=${attr.utm_source}; utm_medium=${attr.utm_medium}; utm_campaign=${attr.utm_campaign}; utm_term=${attr.utm_term}; utm_content=${attr.utm_content}; consent_marketing=${attr.consent_marketing}; kanal=${attr.kanal}; first_referrer_host=${attr.first_referrer_host}; landing_page_type=${attr.landing_page_type}; page_type=${attr.page_type}; skad_o_nas_wiesz=${attr.skad_o_nas_wiesz}`;
+    // ATR v2.2: kanał z lib/attribution.js (kanalLeada), ten sam co w kolumnie `kanal` arkusza
+    // (w mailu dla Ads zostaje dotychczasowy opis).
+    const source = attr.kanal === KANAL.ads ? 'Google Ads (klik z reklamy)' : attr.kanal;
+    const skadEtykieta = SKAD_KODY.get(attr.skad_o_nas_wiesz) || '';
+    // A3b (PLAN-v2 6.17): zgłoszenie z trybu zapasowego sprawdzarki AI trzeba obsłużyć
+    // ręcznie w 24 h robocze (obietnica na stronie), więc odróżnia się już w temacie.
+    const tematPrefix = service === 'ai_check' ? '[Sprawdzarka AI – tryb zapasowy]' : '[Formularz Wyceny]';
 
     // Trwały ślad leada MUSI powstać niezależnie od poczty. Wcześniej cała
     // trasa wisiała na jednym `await resend.emails.send`: gdy Resend zwrócił
@@ -162,13 +187,14 @@ export async function POST(request) {
       from: `AI SEO COMPANY <${fromEmail}>`,
       to: toEmails,
       replyTo: emailNorm,
-      subject: `[Formularz Wyceny] Nowe zapytanie od: ${safe(name, 80)} · ${leadId.slice(0, 8)}`,
+      subject: `${tematPrefix} Nowe zapytanie od: ${safe(name, 80)} · ${leadId.slice(0, 8)}`,
       html: `
         <h2>Nowe zapytanie ze strony AI SEO COMPANY</h2>
         <p><strong>Imię i Nazwisko:</strong> ${esc(name)}</p>
         <p><strong>E-mail:</strong> <a href="mailto:${esc(emailNorm)}">${esc(emailNorm)}</a></p>
         <p><strong>Pakiet:</strong> ${esc(service || 'Brak (Indywidualny)')}</p>
-        <p><strong>Źródło:</strong> ${esc(source)}${attr.landing_path ? ` · wejście: ${esc(attr.landing_path)}` : ''}</p>
+        <p><strong>Źródło:</strong> ${esc(source)}${attr.landing_path ? ` · wejście: ${esc(attr.landing_path)}` : ''}${attr.first_referrer_host ? ` · odsyłacz: ${esc(attr.first_referrer_host)}` : ''}</p>${skadEtykieta ? `
+        <p><strong>Skąd o nas wie (deklaracja):</strong> ${esc(skadEtykieta)}</p>` : ''}
         <br />
         <p><strong>Wiadomość:</strong></p>
         <p style="white-space: pre-wrap; background: #f4f4f5; padding: 16px; border-radius: 8px;">${esc(message || '—')}</p>

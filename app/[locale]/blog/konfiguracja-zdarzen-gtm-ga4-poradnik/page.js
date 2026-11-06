@@ -2,8 +2,11 @@ import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'Google Tag Manager: GA4 Event Configuration Guide' : 'Google Tag Manager: Konfiguracja zdarzeń GA4',
-  description: locale === 'en' ? 'How to configure events in Google Tag Manager for GA4? A complete guide on dataLayer, triggers, and testing.' : 'Jak skonfigurować zdarzenia w Google Tag Manager dla GA4? Kompletny poradnik: dataLayer, wyzwalacze i testowanie.',
+  // 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 14; CS-15, MSA-17): title PL (59 zn.) zaczyna sie od
+  // „Konfiguracja GA4” (GSC: „konfiguracja ga4” 27 wyśw., poz. 21,0), meta PL (135 zn.) z decyzje-blog nr 14.
+  // Wersja EN to strona-cien (noindex, canonical na PL) - bez zmian.
+  title: locale === 'en' ? 'Google Tag Manager: GA4 Event Configuration Guide' : 'Konfiguracja GA4 i GTM: zdarzenia i konwersje krok po kroku',
+  description: locale === 'en' ? 'How to configure events in Google Tag Manager for GA4? A complete guide on dataLayer, triggers, and testing.' : 'Jak skonfigurować zdarzenia GA4 w Google Tag Manager i oznaczyć lead jako zdarzenie kluczowe. Przykład z naszego wdrożenia z 4.11.2026.',
   alternates: {
     // Wpis plOnly: angielski slug /en/blog/google-tag-manager-ga4-events-guide
     // nigdy nie powstal, wiec canonical wskazywal adres zwracajacy 404. Oba
@@ -24,6 +27,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
+import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArticleGTM({ params }) {
   const { locale } = await params;
@@ -32,17 +36,24 @@ export default async function ArticleGTM({ params }) {
     { id: 'jak-testowac-i-debugowac-zdarzenia-w-gtm-i-ga4', title: 'Jak testować i debugować zdarzenia w GTM i GA4?' },
     { id: 'zaawansowane-zdarzenia-przez-datalayer-kiedy-i-jak-je-stosowac', title: 'Zaawansowane zdarzenia przez dataLayer: kiedy i jak je stosować?' },
     { id: 'jak-znalezc-zdarzenia-w-ga4-i-oznaczyc-je-jako-konwersje', title: 'Jak znaleźć zdarzenia w GA4 i oznaczyć je jako kluczowe zdarzenia?' },
+    { id: 'generate-lead-nasze-wdrozenie', title: 'generate_lead jako zdarzenie kluczowe: nasze wdrożenie' },
+    { id: 'wymiar-page-type', title: 'Wymiar niestandardowy: typ strony (page_type)' },
     { id: 'najczestsze-problemy-i-jak-je-szybko-naprawic', title: 'Najczęstsze problemy i jak je szybko naprawić' },
     { id: 'jak-zarzadzac-zdarzeniami-w-organizacji-katalog-nazewnictwo-i-dokumentacja', title: 'Jak zarządzać zdarzeniami w organizacji: katalog, nazewnictwo i dokumentacja' },
     { id: 'kiedy-warto-zlecic-wdrozenie-gtm-specjaliscie', title: 'Kiedy warto zlecić wdrożenie GTM specjaliście?' },
-    { id: 'ai-seo-company-wdrozenie-gtm-i-konfiguracja-zdarzen-dla-twojej-firmy', title: 'Ai-seo-company: wdrożenie GTM i konfiguracja zdarzeń dla Twojej firmy' },
+    { id: 'ai-seo-company-wdrozenie-gtm-i-konfiguracja-zdarzen-dla-twojej-firmy', title: 'AI SEO COMPANY: wdrożenie GTM i konfiguracja zdarzeń dla Twojej firmy' },
     { id: 'zrodla', title: 'Źródła' }
   ];
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik" locale={locale} />
+      {/* 5.11.2026: dateModified = LASTMOD (tresc PL realnie zmieniona: 2 nowe H2 z wdrozenia 4.11). */}
+      <ArticleSchema
+        slug="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik"
+        locale={locale}
+        dateModified={locale === 'en' ? undefined : LASTMOD['https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik']}
+      />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
@@ -102,7 +113,7 @@ export default async function ArticleGTM({ params }) {
                           <td>GTM Preview potwierdza odpalenie tagu; DebugView w GA4 potwierdza, że parametry dotarły poprawnie.</td>
                         </tr>
                         <tr>
-                          <td><strong>Ai-seo-company</strong></td>
+                          <td><strong>AI SEO COMPANY</strong></td>
                           <td>Oferuje kompleksowe wdrożenia GTM z dokumentacją, testami i szkoleniem zespołu.</td>
                         </tr>
                       </tbody>
@@ -255,6 +266,59 @@ window.dataLayer.push({
 
                   <p>Nie oznaczaj jako <strong>kluczowego zdarzenia</strong> każdego zdarzenia, które wydaje się ważne. <a href="https://ntpm.pl/google-analytics-events-jak-sledzic-zdarzenia-i-budowac-lepsze-raporty/" target="_blank" rel="noopener noreferrer">GA4 ma limit około 500 unikalnych nazw zdarzeń</a> na właściwość w przypadku strumieni aplikacji (app). Dla stron internetowych (web) limit formalnie nie obowiązuje lub jest znacznie wyższy. Co ważniejsze w praktyce, GA4 pozwala oznaczyć maksymalnie <strong>30 kluczowych zdarzeń na standardową właściwość</strong> (50 w GA4 360), planuj oznaczenia oszczędnie. Niezależnie od tego warto trzymać katalog zdarzeń możliwie mały. Zbyt wiele zdarzeń oznaczonych jako kluczowe zdarzenia utrudnia interpretację raportów i optymalizację kampanii w Google Ads.</p>
 
+                  {/* 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 14, MSA-17): dwa H2 z wlasnego wdrozenia 4.11.2026.
+                      Fakty: components/Contact.jsx (generate_lead po zapisie zgloszenia), lib/track.js (page_type),
+                      PLAN-v2 3.7 (zdarzenie kluczowe i wymiar „Typ strony” w GA4 od 4.11.2026, zgoda domyslnie „denied”). */}
+                  <h2 id="generate-lead-nasze-wdrozenie">generate_lead jako zdarzenie kluczowe: nasze wdrożenie</h2>
+                  <p>Pokażemy to na naszej stronie. Nie ma na niej kontenera GTM: serwis działa na Next.js, a zdarzenia wysyła gtag.js bezpośrednio z kodu formularza. Po stronie GA4 konfiguracja wygląda jednak tak samo jak przy tagu zdarzenia z GTM, a nazwa zdarzenia i parametry są identyczne.</p>
+                  <p>Gdy serwer potwierdzi zapisanie zgłoszenia z formularza kontaktowego, strona wysyła zalecane przez Google zdarzenie <code>generate_lead</code> z parametrami:</p>
+                  <ul>
+                    <li><code>transaction_id</code>: identyfikator zgłoszenia, ten sam, który trafia do e-maila i arkusza zgłoszeń, więc lead z GA4 da się dopasować do rozmowy handlowej;</li>
+                    <li><code>plan</code>: pakiet wybrany w formularzu, np. <code>standard</code> albo <code>premium</code>;</li>
+                    <li><code>value</code> i <code>currency</code>: miesięczna wartość pakietu netto w PLN, np. 1900 dla SEO Standard, żeby raporty i import do Google Ads liczyły wartość, a nie tylko sztuki;</li>
+                    <li><code>page_type</code>: typ strony, z której przyszło zgłoszenie (o nim w następnej sekcji).</li>
+                  </ul>
+
+                  <pre><code>{`window.gtag('event', 'generate_lead', {
+  transaction_id: leadId,
+  event_category: 'Contact',
+  plan: data.service || 'none',
+  currency: 'PLN',
+  value: LEAD_VALUE_PLN[data.service] ?? DEFAULT_LEAD_VALUE_PLN,
+  page_type: pageType(window.location.pathname),
+});`}</code></pre>
+
+                  <p>4 listopada 2026 oznaczyliśmy <code>generate_lead</code> jako kluczowe zdarzenie, tą samą ścieżką co wyżej: Administracja → Wyświetlanie danych → Zdarzenia. Dwie decyzje z tego wdrożenia, które warto skopiować:</p>
+                  <ul>
+                    <li>Zdarzenie idzie dopiero po odpowiedzi serwera, że zgłoszenie zapisano. Kliknięcie przycisku bez wysłanego formularza nie jest leadem, a zgłoszenia odrzucone przez filtr antyspamowy nie trafiają do GA4.</li>
+                    <li>W Polsce domyślny stan Consent Mode to odmowa zgody na analitykę, więc GA4 nie zapisze części zgłoszeń. Jeśli formularz zapisuje leady także w CRM albo w arkuszu, pełną liczbę bierz stamtąd, a GA4 traktuj jako źródło proporcji: kanałów i typów stron.</li>
+                  </ul>
+
+                  <h2 id="wymiar-page-type">Wymiar niestandardowy: typ strony (page_type)</h2>
+                  <p>Sama liczba leadów nie mówi, które strony je przyniosły. Dlatego każde zdarzenie wysyłane przez naszą funkcję <code>track()</code> dostaje parametr <code>page_type</code>, wyliczany ze ścieżki adresu: strona główna to <code>home</code>, cennik to <code>cennik</code>, strony usług to <code>usluga</code>, artykuł bloga to <code>blog</code>, porównanie to <code>porownanie</code>. Nowy szablon stron oznacza nową regułę w jednym miejscu kodu:</p>
+
+                  <pre><code>{String.raw`const PAGE_TYPES = [
+  [/^\/(en\/?)?$/, 'home'],
+  [/^(\/en)?\/(cennik-pozycjonowania|seo-pricing)(\/|$)/, 'cennik'],
+  [/^(\/en)?\/(porownania|comparisons)(\/|$)/, 'porownanie'],
+  [/^(\/en)?\/blog\/.+/, 'blog'],
+  // ...
+];
+
+export function pageType(pathname = '') {
+  for (const [re, type] of PAGE_TYPES) if (re.test(pathname)) return type;
+  return 'inne';
+}`}</code></pre>
+
+                  <p>Sam parametr nie wystarczy. Żeby zobaczyć go w raportach, trzeba go zarejestrować w GA4 jako wymiar niestandardowy:</p>
+                  <ol>
+                    <li>Administracja → Wyświetlanie danych → Definicje niestandardowe → Utwórz wymiar niestandardowy.</li>
+                    <li>Nazwa wymiaru: „Typ strony”, zakres: Zdarzenie, parametr zdarzenia: <code>page_type</code>.</li>
+                    <li>Zapisz. Wymiar nie działa wstecz: obejmie tylko zdarzenia zebrane po rejestracji.</li>
+                  </ol>
+                  <p>Wymiar „Typ strony” zarejestrowaliśmy 4 listopada 2026, razem z oznaczeniem zdarzenia kluczowego. Od tego dnia w raporcie zdarzeń kluczowych widać, czy leady przychodzą ze stron usług, z cennika czy z bloga. Pierwszy pełny miesiąc danych to listopad 2026, dlatego nie podajemy jeszcze liczb.</p>
+                  <p>Klienci naszych pakietów SEO widzą zapytania z GA4 (formularz, telefon, e-mail) na pierwszym ekranie panelu. Tak wyglądają <Link href="/panel-klienta">raporty w panelu klienta</Link>.</p>
+
                   <h2 id="najczestsze-problemy-i-jak-je-szybko-naprawic">Najczęstsze problemy i jak je szybko naprawić</h2>
                   <ol>
                     <li><strong>Tag odpala w GTM, ale brak zdarzenia w GA4.</strong> Sprawdź Measurement ID — czy wskazuje na właściwą właściwość? Otwórz DebugView i upewnij się, że przeglądarka jest w trybie debugowania. Sprawdź zakładkę Consent w GTM Preview, czy Consent Mode nie blokuje wysyłki. Pamiętaj, że Realtime ma opóźnienie kilku sekund.</li>
@@ -279,10 +343,12 @@ window.dataLayer.push({
 
                   <p>Decydenci powinni zadać sobie trzy pytania: czy wdrożenie wymaga zmian w backendzie, czy organizacja ma zasoby do utrzymania dokumentacji, i jakie ryzyko niesie błąd analityczny dla decyzji biznesowych. Gdy odpowiedź na pierwsze lub trzecie pytanie brzmi „tak“ — outsourcing jest tańszy niż naprawa błędów po fakcie.</p>
 
-                  <h2 id="ai-seo-company-wdrozenie-gtm-i-konfiguracja-zdarzen-dla-twojej-firmy">Ai-seo-company: wdrożenie GTM i konfiguracja zdarzeń dla Twojej firmy</h2>
+                  <p>Jeśli nie wiesz, czy obecny pomiar liczy leady poprawnie, sprawdź to przy okazji <Link href="/audyt-seo">audytu SEO</Link>: do audytu i tak potrzebujemy dostępu do Search Console i Analytics, więc rozjazdy między formularzem a GA4 wychodzą przy tej samej pracy.</p>
+
+                  <h2 id="ai-seo-company-wdrozenie-gtm-i-konfiguracja-zdarzen-dla-twojej-firmy">AI SEO COMPANY: wdrożenie GTM i konfiguracja zdarzeń dla Twojej firmy</h2>
                   <p>Zamiast spędzać tygodnie na konfiguracji i debugowaniu, możesz zlecić całość specjalistom, którzy robią to na co dzień.</p>
 
-                  <p><Link href="/" style={{ color: '#0066cc', textDecoration: 'underline' }}>Ai-seo-company</Link> realizuje kompleksowe wdrożenia GTM dla firm w Polsce: od audytu istniejącego kontenera, przez zaprojektowanie katalogu zdarzeń i implementację dataLayer.push dla kluczowych zdarzeń, po testy w Preview i DebugView oraz szkolenie Twojego zespołu. Każde wdrożenie kończy się dokumentacją gotową do przekazania wewnętrznemu analitykowi. Transparentny zakres prac oznacza, że przed startem wiesz dokładnie, co dostarczymy: które zdarzenia zostaną skonfigurowane, kto jest odpowiedzialny (developer, analityk, PM) i kiedy projekt zostanie zamknięty. Skontaktuj się z nami przez Ai-seo-company, by omówić zakres wdrożenia.</p>
+                  <p><Link href="/" style={{ color: '#0066cc', textDecoration: 'underline' }}>AI SEO COMPANY</Link> realizuje kompleksowe wdrożenia GTM dla firm w Polsce: od audytu istniejącego kontenera, przez zaprojektowanie katalogu zdarzeń i implementację dataLayer.push dla kluczowych zdarzeń, po testy w Preview i DebugView oraz szkolenie Twojego zespołu. Każde wdrożenie kończy się dokumentacją gotową do przekazania wewnętrznemu analitykowi. Transparentny zakres prac oznacza, że przed startem wiesz dokładnie, co dostarczymy: które zdarzenia zostaną skonfigurowane, kto jest odpowiedzialny (developer, analityk, PM) i kiedy projekt zostanie zamknięty. Skontaktuj się z nami przez formularz poniżej, by omówić zakres wdrożenia.</p>
 
                   <h2 id="zrodla">Źródła</h2>
                   <p>Poniższe zasoby warto mieć otwarte podczas implementacji:</p>

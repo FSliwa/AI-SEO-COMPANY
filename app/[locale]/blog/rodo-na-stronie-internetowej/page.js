@@ -1,4 +1,6 @@
 import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+// SA-14 (5.11.2026): 4 × <strong> na całych zdaniach (87–224 zn.) zawężone do kluczowego
+// fragmentu albo zdjęte (CLAUDE.md: nigdy całe zdanie > 80 zn.). Tekst bez zmian.
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -199,7 +201,7 @@ export default async function ArticleRodoNaStronieInternetowej({ params }) {
 
               <p>Porada profesjonalisty: <em>Otwórz stronę w trybie incognito, włącz narzędzia deweloperskie, zakładka Network, i odśwież. Jeśli żądania do domen analitycznych albo reklamowych lecą przed kliknięciem „akceptuj", masz problem techniczny — i to on, a nie treść polityki, będzie widoczny przy kontroli.</em></p>
 
-              <p>Jeśli korzystasz z Google Analytics 4, warto wiedzieć, że <strong>anonimizacja adresów IP jest w nim domyślna i nie da się jej wyłączyć ani skonfigurować</strong>. Parametr <code>anonymize_ip</code> pochodził z Universal Analytics, wyłączonego w 2023 roku — instrukcje każące go dodać są nieaktualne. Nie zwalnia to jednak z obowiązku zgody: GA4 nadal zapisuje identyfikatory w urządzeniu użytkownika, więc skrypt musi być blokowany do momentu jej udzielenia.</p>
+              <p>Jeśli korzystasz z Google Analytics 4, warto wiedzieć, że anonimizacja adresów IP jest w nim <strong>domyślna i nie da się jej wyłączyć</strong> ani skonfigurować. Parametr <code>anonymize_ip</code> pochodził z Universal Analytics, wyłączonego w 2023 roku — instrukcje każące go dodać są nieaktualne. Nie zwalnia to jednak z obowiązku zgody: GA4 nadal zapisuje identyfikatory w urządzeniu użytkownika, więc skrypt musi być blokowany do momentu jej udzielenia.</p>
 
               <h2 id="skad-biora-sie-te-obowiazki-trzy-porzadki-prawne">Skąd biorą się te obowiązki: trzy porządki prawne</h2>
 
@@ -211,13 +213,13 @@ export default async function ArticleRodoNaStronieInternetowej({ params }) {
 
               <p><strong>Cookies mają jeszcze inne źródło.</strong> Wymóg zgody na przechowywanie informacji w urządzeniu użytkownika pochodzi z dyrektywy 2002/58/WE, zwanej ePrivacy, wdrożonej w Polsce Prawem komunikacji elektronicznej. Dyrektywa, w odróżnieniu od rozporządzenia, wymaga transpozycji — stąd polski przepis, a nie bezpośrednie stosowanie. To jest właśnie powód, dla którego polityka cookies i polityka prywatności to dwa odrębne dokumenty: mają różne podstawy w dwóch różnych aktach.</p>
 
-              <p>Praktyczny wniosek: <strong>RODO odpowiada na pytanie „co robisz z danymi osobowymi", PKE na pytanie „czy wolno ci coś zapisać w cudzym urządzeniu", a polska ustawa z 2018 r. na pytanie „kto to kontroluje i jak wygląda skarga"</strong>. Dokument, który miesza te trzy porządki albo powołuje się tylko na jeden, będzie niekompletny niezależnie od tego, jak dobrze jest napisany.</p>
+              <p>Praktyczny wniosek: RODO odpowiada na pytanie „co robisz z danymi osobowymi", PKE na pytanie „czy wolno ci coś zapisać w cudzym urządzeniu", a polska ustawa z 2018 r. na pytanie „kto to kontroluje i jak wygląda skarga". Dokument, który miesza te trzy porządki albo powołuje się tylko na jeden, będzie niekompletny niezależnie od tego, jak dobrze jest napisany.</p>
 
               <h2 id="co-zmienilo-prawo-komunikacji-elektronicznej">Co zmieniło Prawo komunikacji elektronicznej</h2>
 
               <p>To najczęściej pomijana zmiana w dokumentach, które widzimy na stronach klientów.</p>
 
-              <p><strong>Ustawa z 12 lipca 2024 r. – Prawo komunikacji elektronicznej (Dz.U. 2024 poz. 1221) weszła w życie 10 listopada 2024 r. i zastąpiła Prawo telekomunikacyjne oraz część przepisów ustawy o świadczeniu usług drogą elektroniczną.</strong> Polityki prywatności i regulaminy newslettera powołujące się na przepisy uchylonej ustawy odsyłają dziś do stanu prawnego, który nie obowiązuje.</p>
+              <p>Ustawa z 12 lipca 2024 r. – <strong>Prawo komunikacji elektronicznej</strong> (Dz.U. 2024 poz. 1221) weszła w życie 10 listopada 2024 r. i zastąpiła Prawo telekomunikacyjne oraz część przepisów ustawy o świadczeniu usług drogą elektroniczną. Polityki prywatności i regulaminy newslettera powołujące się na przepisy uchylonej ustawy odsyłają dziś do stanu prawnego, który nie obowiązuje.</p>
 
               <p>Dwie rzeczy warte sprawdzenia w Twoich dokumentach:</p>
 
@@ -287,7 +289,7 @@ export default async function ArticleRodoNaStronieInternetowej({ params }) {
 
               <p>Po naszej stronie jest to, co da się zmierzyć w kodzie: inwentarz skryptów zewnętrznych działających na domenie. Powstaje przy okazji <Link href="/audyt-seo">audytu SEO</Link>, bo te same dane służą ocenie wydajności i poprawności pomiaru. Jeśli rozszerzysz zakres o warstwę zgód, sprawdzamy dodatkowo, które skrypty startują przed kliknięciem w banerze, i porządkujemy ich ładowanie w menedżerze tagów. Wykracza to poza zakres audytu opisany na stronie usługi, więc ustalamy je osobno przed startem.</p>
 
-              <p><strong>Treść polityki prywatności, ocena podstaw prawnych i umowy powierzenia to zakres prawnika.</strong> Nie przygotowujemy dokumentów prawnych, nie doradzamy w wyborze podstawy przetwarzania i nie sprzedajemy „wdrożenia RODO" jako produktu. Nie mamy też stałej współpracy z żadną kancelarią, więc wybór prawnika domyślnie należy do Ciebie, a nasz raport trafia do niego jako materiał wejściowy. Jeśli jednak wolisz nie szukać go samodzielnie, po wcześniejszym uzgodnieniu możemy <strong>podnająć kancelarię i koordynować całość prac</strong> — od przekazania raportu, przez zbieranie pytań po obu stronach, po pilnowanie terminów, żeby część techniczna i prawna nie rozjechały się w czasie. Rozliczamy to osobno od audytu i ustalamy przed startem. To nadal koordynacja, nie doradztwo prawne: za treść dokumentów odpowiada kancelaria, nie my.</p>
+              <p>Treść polityki prywatności, ocena podstaw prawnych i umowy powierzenia to <strong>zakres prawnika</strong>. Nie przygotowujemy dokumentów prawnych, nie doradzamy w wyborze podstawy przetwarzania i nie sprzedajemy „wdrożenia RODO" jako produktu. Nie mamy też stałej współpracy z żadną kancelarią, więc wybór prawnika domyślnie należy do Ciebie, a nasz raport trafia do niego jako materiał wejściowy. Jeśli jednak wolisz nie szukać go samodzielnie, po wcześniejszym uzgodnieniu możemy <strong>podnająć kancelarię i koordynować całość prac</strong> — od przekazania raportu, przez zbieranie pytań po obu stronach, po pilnowanie terminów, żeby część techniczna i prawna nie rozjechały się w czasie. Rozliczamy to osobno od audytu i ustalamy przed startem. To nadal koordynacja, nie doradztwo prawne: za treść dokumentów odpowiada kancelaria, nie my.</p>
 
               <p>Sens tego podziału jest praktyczny: prawnik pracuje na liście faktycznie działających narzędzi zamiast na opisie z pamięci, a Ty nie płacisz za politykę, która i tak rozjedzie się z kodem.</p>
 

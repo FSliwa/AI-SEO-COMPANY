@@ -9,6 +9,17 @@ const BASE = 'https://www.ai-seo-company.pl';
  * Pass `slug` and everything else is read from lib/blogPosts.js, so the
  * structured data cannot drift from what the listing shows. Individual props
  * still override the looked-up values when a page needs something different.
+ *
+ * 5.11.2026 (PLAN-v2 6.0; CB-05, CB-08) - propsy dla stron spoza bloga (porownania,
+ * spoke'i GEO, narzedzia). Bez nich wynik jest identyczny jak wczesniej:
+ * - type: '@type' wezla (domyslnie 'BlogPosting'; poza blogiem 'Article'),
+ * - breadcrumb: undefined = okruszki bloga (Strona Glowna > Blog > tytul) jak dotad;
+ *   null = bez BreadcrumbList - wtedy jedynym zrodlem jest <Breadcrumbs parent={...} />,
+ * - dateModified: domyslnie = datePublished (CLAUDE.md: bez dat "zaktualizowano" z sufitu);
+ *   na nowych stronach = LASTMOD z lib/lastmod.js, ta sama data co w <Byline />,
+ * - extra: obiekt dolaczany do wezla artykulu (about, hasPart, mainEntity, reviewedBy...).
+ * Przyklad: <ArticleSchema type="Article" breadcrumb={null} url="/porownania/seo-vs-geo"
+ *   title="..." description="..." datePublished="2026-11-23" dateModified={LASTMOD[...]} />
  */
 export default function ArticleSchema({
   slug,
@@ -17,7 +28,11 @@ export default function ArticleSchema({
   description,
   url,
   datePublished,
-  imageUrl
+  imageUrl,
+  type = 'BlogPosting',
+  breadcrumb,
+  dateModified,
+  extra
 }) {
   const post = slug ? blogPosts.find(p => p.slug === slug) : undefined;
   const isEn = locale === 'en';
@@ -40,7 +55,7 @@ export default function ArticleSchema({
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    '@type': type,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${BASE}${resolvedUrl}`
@@ -75,8 +90,9 @@ export default function ArticleSchema({
     datePublished: resolvedDate || new Date().toISOString(),
     // Data modyfikacji = data publikacji, dopoki tresc realnie sie nie
     // zmienila (regula z CLAUDE.md: zadnych dat aktualizacji z sufitu).
-    dateModified: resolvedDate || new Date().toISOString()
+    dateModified: dateModified || resolvedDate || new Date().toISOString()
   };
+  if (extra) Object.assign(jsonLd, extra);
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -106,7 +122,7 @@ export default function ArticleSchema({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify([jsonLd, breadcrumbJsonLd]) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb === null ? [jsonLd] : [jsonLd, breadcrumbJsonLd]) }}
     />
   );
 }

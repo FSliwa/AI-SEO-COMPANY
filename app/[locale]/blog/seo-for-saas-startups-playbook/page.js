@@ -39,9 +39,9 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
     { id: 'how-do-you-measure-seo-performance-and-run-cro-experiments-for-saas', title: 'How do you measure SEO performance and run CRO experiments for SaaS?' },
     { id: 'how-long-does-saas-seo-take-and-what-does-it-cost', title: 'How long does SaaS SEO take, and what does it cost?' },
     { id: 'three-public-growth-examples-you-can-replicate-right-now', title: 'Three public growth examples you can replicate right now' },
-    { id: 'how-ai-seo-company-executes-this-playbook-for-saas-clients', title: 'How AI SEO Company executes this playbook for SaaS clients' },
+    { id: 'how-ai-seo-company-executes-this-playbook-for-saas-clients', title: 'How AI SEO COMPANY executes this playbook for SaaS clients' },
     { id: 'what-most-saas-founders-get-wrong-about-organic-growth', title: 'What most SaaS founders get wrong about organic growth' },
-    { id: 'ai-seo-company-seo-execution-for-saas-teams-that-need-results-not-reports', title: 'AI SEO Company: SEO execution for SaaS teams that need results, not reports' },
+    { id: 'ai-seo-company-seo-execution-for-saas-teams-that-need-results-not-reports', title: 'AI SEO COMPANY: SEO execution for SaaS teams that need results, not reports' },
     { id: 'sources', title: 'Sources' }
   ];
 
@@ -485,9 +485,9 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
-              {/* ===== SECTION: How AI SEO Company Executes ===== */}
-              <h2 id="how-ai-seo-company-executes-this-playbook-for-saas-clients">How AI SEO Company executes this playbook for SaaS clients</h2>
-              <p>AI SEO Company's approach to SaaS SEO follows the same four-phase sequence described in this guide: technical foundation, product-shaped pages, programmatic scale with initial link plays, and content clusters with CRO. The difference is that the sequence runs against a fixed monthly retainer rather than ad hoc internal effort, which means the parallel timeline from the roadmap section is the default rather than the exception.</p>
+              {/* ===== SECTION: How AI SEO COMPANY Executes ===== */}
+              <h2 id="how-ai-seo-company-executes-this-playbook-for-saas-clients">How AI SEO COMPANY executes this playbook for SaaS clients</h2>
+              <p>AI SEO COMPANY's approach to SaaS SEO follows the same four-phase sequence described in this guide: technical foundation, product-shaped pages, programmatic scale with initial link plays, and content clusters with CRO. The difference is that the sequence runs against a fixed monthly retainer rather than ad hoc internal effort, which means the parallel timeline from the roadmap section is the default rather than the exception.</p>
               <p>What a typical first quarter looks like:</p>
               <ul>
                 <li><strong>Weeks 1–2:</strong> <Link href="/audyt-seo">Technical SEO audit</Link> — crawl, indexation, Core Web Vitals, canonicalization, and tracking setup. Delivered as a prioritized fix list, not a PDF report.</li>
@@ -514,8 +514,8 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               {/* ===== SECTION: CTA Section ===== */}
-              <h2 id="ai-seo-company-seo-execution-for-saas-teams-that-need-results-not-reports">AI SEO Company: SEO execution for SaaS teams that need results, not reports</h2>
-              <p>If your SaaS startup needs organic growth but does not have the internal team to execute a full SEO program, <Link href="/">AI SEO Company</Link> runs the playbook described in this guide as a managed service. The engagement starts with a technical audit and keyword map, moves to BOFU page production and link plays, and scales into programmatic content and CRO — on a fixed monthly retainer with transparent reporting on the metrics that matter: qualified leads and sign-ups from organic, not impressions.</p>
+              <h2 id="ai-seo-company-seo-execution-for-saas-teams-that-need-results-not-reports">AI SEO COMPANY: SEO execution for SaaS teams that need results, not reports</h2>
+              <p>If your SaaS startup needs organic growth but does not have the internal team to execute a full SEO program, <Link href="/">AI SEO COMPANY</Link> runs the playbook described in this guide as a managed service. The engagement starts with a technical audit and keyword map, moves to BOFU page production and link plays, and scales into programmatic content and CRO — on a fixed monthly retainer with transparent reporting on the metrics that matter: qualified leads and sign-ups from organic, not impressions.</p>
               <p>What sets the approach apart:</p>
               <ul>
                 <li>Product-led SEO, not content-led — the page types that convert are built first</li>
@@ -538,7 +538,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 <li><Link href="/blog/analiza-konkurencji-seo-przewodnik">SEO Competitor Analysis: A Step-by-Step Guide</Link></li>
                 <li><Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">SEO Canonical Tag Guide 2026</Link></li>
                 <li><Link href="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista">B2B Link Building: Strategies & Checklist</Link></li>
-                <li><Link href="/cennik-pozycjonowania">SEO Pricing — AI SEO Company</Link></li>
+                <li><Link href="/cennik-pozycjonowania">SEO Pricing — AI SEO COMPANY</Link></li>
               </ul>
 
               <BlogCTA 

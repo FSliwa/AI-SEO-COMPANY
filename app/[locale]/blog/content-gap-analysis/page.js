@@ -28,6 +28,8 @@ import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
 import { homeHash } from '@/lib/anchors';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArticleContentGapAnalysis({ params }) {
   const { locale } = await params;
@@ -96,7 +98,11 @@ export default async function ArticleContentGapAnalysis({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/content-gap-analysis" locale={locale} />
+      <ArticleSchema
+        slug="/blog/content-gap-analysis"
+        locale={locale}
+        dateModified={LASTMOD['https://www.ai-seo-company.pl/en/blog/content-gap-analysis']}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
@@ -319,7 +325,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
 
               <p><strong>Quick workflow recipe:</strong> Export Semrush Keyword Gap → paste into gap classification sheet → verify clusters against the SERP → filter for clusters with no existing page → sort by volume → brief the top 10 as new content → brief the next 20 as page updates.</p>
 
-              <p>For templates and long-form content resources, the <Link href="/blog/biblioteka">AI SEO COMPANY content library</Link> has audit frameworks you can adapt directly.</p>
+              <p>For an audit framework you can adapt directly, with a pass threshold for every check, see our <Link href="/blog/technical-seo-audit-checklist">technical SEO audit checklist</Link>.</p>
 
               <h2 id="how-to-prioritize-findings-and-build-a-roadmap">How to prioritize findings and build a roadmap</h2>
 
@@ -482,7 +488,8 @@ export default async function ArticleContentGapAnalysis({ params }) {
               <p><strong>How long before a content gap analysis shows results?</strong><br />
               Updating a thin page that already ranks in positions 5–15 tends to move within 4–8 weeks. A new topic cluster built from scratch takes 3–6 months before it produces meaningful organic traction.</p>
 
-              <p><strong>Do you need paid tools to run one?</strong><br />
+              {/* 5.11.2026 (SA-14): widoczne pytanie = name w FAQPage (wczesniej „…to run one?” wobec „…to run a content gap analysis?”). */}
+              <p><strong>Do you need paid tools to run a content gap analysis?</strong><br />
               No, but the free path stops short of one thing. Google Search Console and a crawler cover the inventory and page-level work in full. What you cannot get for free is the competitor side: Search Console reports only your own queries, so without a paid keyword tool you are limited to auditing what you already have and reading competitor pages by hand. That is enough to start; it is not enough to run step 2 as written.</p>
 
               <p><strong>Is a content gap analysis the same as a content audit?</strong><br />
@@ -514,7 +521,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
               <ul>
                 <li><Link href="/blog/seo-for-saas-startups-playbook">SEO for SaaS Startups: Product-Led Playbook</Link> — how the same clustering and BOFU logic applies to a product site</li>
                 <li><Link href="/blog/analiza-konkurencji-seo-przewodnik">SEO Competitor Analysis: A Step-by-Step Guide</Link> — the competitor selection in step 1, covered in full</li>
-                <li><Link href="/blog/biblioteka">Content Library | Strategies by Experts</Link> — audit frameworks and templates</li>
+                <li><Link href="/blog/technical-seo-audit-checklist">Technical SEO audit checklist</Link> — the audit framework with pass thresholds for every check</li>
               </ul>
 
               <BlogCTA
@@ -546,6 +553,9 @@ export default async function ArticleContentGapAnalysis({ params }) {
  * so itself. The English branch predates that decision and keeps its block.
  */
 function ArticleAnalizaLukContentowych({ locale }) {
+  // 5.11.2026 (decyzje-blog nr 7, PLAN-v2 W9): zdanie o hubie /narzedzia renderuje sie dopiero po publikacji
+  // partii 3 (bramka 6.0) - przed nia nie ma ani linku, ani tekstu obiecujacego nieistniejaca strone.
+  const hrefNarzedzia = hrefJesliOpublikowana('/narzedzia');
   const tocItems = [
     { id: 'co-obejmuje-analiza-luk-contentowych', title: 'Co obejmuje analiza luk contentowych' },
     { id: 'siedem-typow-luk', title: 'Siedem typów luk' },
@@ -568,6 +578,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
         locale={locale}
         url="/blog/analiza-luk-contentowych"
         datePublished="2026-08-18"
+        dateModified={LASTMOD['https://www.ai-seo-company.pl/blog/analiza-luk-contentowych']}
       />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
@@ -652,7 +663,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <p><strong>Luki formatowe</strong> wychodzą przy przeglądzie pierwszej dziesiątki. Jeśli każdy konkurent ma kalkulator, wideo albo szablon do pobrania, a Ty masz sam tekst, to jest luka niezależna od tego, jak dobry jest ten tekst.</p>
 
-              <p><strong>Luki widoczności w AI</strong> wymagają innej metody wykrywania: uruchom 10–20 promptów z Twojego obszaru w ChatGPT i Perplexity, zanotuj, kto jest cytowany i jaką strukturę mają cytowane strony.</p>
+              <p><strong>Luki widoczności w AI</strong> wymagają innej metody wykrywania: uruchom 10–20 promptów z Twojego obszaru w ChatGPT i Perplexity, zanotuj, kto jest cytowany i jaką strukturę mają cytowane strony. Jak u klientów zamykamy <Link href="/pozycjonowanie-w-ai">luki w odpowiedziach ChatGPT i Gemini</Link>, opisujemy na stronie usługi.</p>
 
               <h3>Uwaga o schematach FAQ i HowTo</h3>
 
@@ -759,6 +770,10 @@ function ArticleAnalizaLukContentowych({ locale }) {
               </div>
 
               <p><strong>Czego nie da się obejść:</strong> strony konkurencji. Search Console raportuje wyłącznie Twoje zapytania, więc bez płatnego narzędzia zostaje audyt tego, co już masz, i ręczne czytanie wyników. To wystarczy na start, ale nie wystarczy, żeby wykonać krok 2 tak, jak go opisaliśmy.</p>
+
+              {hrefNarzedzia && (
+                <p>Część kroków bez budżetu przyspieszą nasze <Link href={hrefNarzedzia}>darmowe narzędzia SEO i AI</Link>.</p>
+              )}
 
               <h2 id="priorytetyzacja-i-roadmapa">Priorytetyzacja i roadmapa</h2>
 

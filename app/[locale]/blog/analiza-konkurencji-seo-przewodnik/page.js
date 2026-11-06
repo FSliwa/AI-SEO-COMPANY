@@ -2,7 +2,9 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: locale === 'en' ? 'SEO Competitor Analysis: A Step-by-Step Guide' : 'Analiza Konkurencji SEO: Przewodnik Krok po Kroku',
+    // 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 18; SA-13 pisownia): title PL (59 zn.) z przykladem
+    // 17 agencji (nowy H2 z liczbami zbiorczymi, bez nazw - D3). Meta i wersja EN bez zmian (EN: tylko anchory SA-08).
+    title: locale === 'en' ? 'SEO Competitor Analysis: A Step-by-Step Guide' : 'Analiza konkurencji SEO: przewodnik z przykładem 17 agencji',
     description: locale === 'en' ? 'Boost your online visibility with SEO competitor analysis. Learn how to effectively compare your results with rivals and build a winning strategy.' : 'Zwiększ swoją widoczność w sieci z pomocą analizy konkurencji SEO. Dowiedz się, jak skutecznie porównać swoje wyniki z rywalami.',
     alternates: {
       canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide' : 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik',
@@ -19,6 +21,11 @@ import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import { Link } from '@/i18n/routing';
 import BlogCTA from '@/components/BlogCTA';
+import { LASTMOD } from '@/lib/lastmod';
+
+const BASE = 'https://www.ai-seo-company.pl';
+// 5.11.2026 (BL-08, EXT): stary adres poradnika Ahrefs przekierowywal (301) - wszystkie 4 linki na docelowy.
+const AHREFS_PORADNIK = 'https://ahrefs.com/blog/seo-competitor-analysis/';
 
 export default async function ArticleAnalizaKonkurencjiPage({ params }) {
   const { locale } = await params;
@@ -30,15 +37,20 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
     { id: 'backlinki', title: locale === 'en' ? 'How to analyze competitor backlinks' : 'Jak analizować backlinki konkurencji?' },
     { id: 'luki-tematyczne', title: locale === 'en' ? 'How to map content and find topical gaps' : 'Jak mapować treści i znajdować luki tematyczne?' },
     { id: 'plan-dzialan', title: locale === 'en' ? 'How to plan actions for 3–6 months' : 'Jak zaplanować działania na 3–6 miesięcy?' },
-    { id: 'ai-seo-company', title: locale === 'en' ? 'How AI SEO Company approaches competitor analysis' : 'Jak AI SEO Company podchodzi do analizy konkurencji?' },
+    ...(locale === 'en' ? [] : [{ id: 'przyklad-17-agencji', title: 'Przykład: 17 agencji SEO w liczbach (stan 11.2026)' }]),
+    { id: 'ai-seo-company', title: locale === 'en' ? 'How AI SEO COMPANY approaches competitor analysis' : 'Jak AI SEO COMPANY podchodzi do analizy konkurencji?' },
     { id: 'wnioski', title: locale === 'en' ? 'Key takeaways' : 'Kluczowe wnioski' },
-    { id: 'oferta', title: locale === 'en' ? 'AI SEO Company: ready analysis and plan for your business' : 'AI SEO Company: gotowa analiza i plan dla Twojej firmy' },
+    { id: 'oferta', title: locale === 'en' ? 'AI SEO COMPANY: ready analysis and plan for your business' : 'AI SEO COMPANY: gotowa analiza i plan dla Twojej firmy' },
   ];
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/analiza-konkurencji-seo-przewodnik" locale={locale} />
+      <ArticleSchema
+        slug="/blog/analiza-konkurencji-seo-przewodnik"
+        locale={locale}
+        dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/seo-competitor-analysis-step-by-step-guide` : `${BASE}/blog/analiza-konkurencji-seo-przewodnik`]}
+      />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (
@@ -158,7 +170,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <h2 id="backlinki">5. How to analyze competitor backlinks and set acquisition priorities</h2>
               <p>A competitor's backlink profile is a map of opportunities, not a list to copy. Before you start acquiring links you need to know which ones actually drive the rival's visibility.</p>
               <ol>
-                <li><strong>Export the backlink CSV.</strong> From <a href="https://ahrefs.com/blog/competitive-analysis/" target="_blank" rel="noopener noreferrer">Ahrefs</a> or SEMrush download the full backlink report. Columns: source URL, target URL, referring domain, DR/AS, anchor text, acquisition date, link type.</li>
+                <li><strong>Export the backlink CSV.</strong> From <a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs</a> or SEMrush download the full backlink report. Columns: source URL, target URL, referring domain, DR/AS, anchor text, acquisition date, link type.</li>
                 <li><strong>Filter unique referring domains.</strong> Remove duplicates from the same domain. One portal may link 50 times but counts as a single referring domain.</li>
                 <li><strong>Classify link type.</strong> Editorial (naturally placed in content) links have the highest value.</li>
                 <li><strong>Quality assessment.</strong> Filter by DR or AS (minimum 30 as a reference point for the Polish market), topical relevance, and page activity.</li>
@@ -227,8 +239,8 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 </table>
               </div>
 
-              <h2 id="ai-seo-company">8. How AI SEO Company approaches SEO competitor analysis</h2>
-              <p>The methodology of <a href="https://www.ai-seo-company.pl/" target="_blank" rel="noopener noreferrer">AI SEO Company</a> is based on combining data from multiple sources at the same time: GSC as the starting point, Ahrefs and Senuto for visibility and backlink analysis, Screaming Frog for crawling competitor structure and mapping the internal link graph.</p>
+              <h2 id="ai-seo-company">8. How AI SEO COMPANY approaches SEO competitor analysis</h2>
+              <p><Link href="/o-nas">{"AI SEO COMPANY's methodology"}</Link> is based on combining data from multiple sources at the same time: GSC as the starting point, Ahrefs and Senuto for visibility and backlink analysis, Screaming Frog for crawling competitor structure and mapping the internal link graph.</p>
               <p>What you receive when commissioning an analysis:</p>
               <ul>
                 <li>Inventory report: list of SEO competitors, Top Pages with traffic, backlink profile.</li>
@@ -268,15 +280,15 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 </table>
               </div>
 
-              <h2 id="oferta">10. AI SEO Company: ready analysis and implementation plan for your business</h2>
-              <p>A DIY SEO competitor analysis takes 2–4 weeks and requires access to several paid tools at the same time. <a href="https://www.ai-seo-company.pl/" target="_blank" rel="noopener noreferrer">AI SEO Company</a> shortens this time and delivers not only a report but also a ready plan with priorities and implementation.</p>
+              <h2 id="oferta">10. AI SEO COMPANY: ready analysis and implementation plan for your business</h2>
+              <p>A DIY SEO competitor analysis takes 2–4 weeks and requires access to several paid tools at the same time. We shorten this time with <Link href="/audyt-seo">our SEO audit</Link>, which delivers not only a report but also a ready plan with priorities and implementation.</p>
               <p>Cooperation formats tailored to different needs: one-time <Link href="/audyt-seo">SEO audit</Link>, monthly <Link href="/pozycjonowanie-stron-internetowych">website positioning subscription</Link>, or a website project with an SEO package. Book a free consultation and find out which topical clusters give you the greatest chance of growth within the next 6 months.</p>
 
               <h3>Useful sources and tools</h3>
               <ul>
                 <li><a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer">Google Search Central</a> — official technical documentation: indexing, Core Web Vitals, schema, content quality guidelines.</li>
                 <li><a href="https://www.senuto.com/pl/blog/" target="_blank" rel="noopener noreferrer">Senuto Blog</a> — practical guide to competitor analysis in SEO from the Polish market perspective.</li>
-                <li><a href="https://ahrefs.com/blog/competitive-analysis/" target="_blank" rel="noopener noreferrer">Ahrefs Blog: SEO Competitor Analysis</a> — detailed workflow for backlink and content gap analysis.</li>
+                <li><a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs Blog: SEO Competitor Analysis</a> — detailed workflow for backlink and content gap analysis.</li>
               </ul>
 
               <p><strong>Also read:</strong> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">How much does SEO cost in Poland? Pricing and packages 2026</Link></p>
@@ -361,7 +373,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 <li>Media: czy Top 10 zawiera strony z wideo, infografikami, tabelami? Brak multimediów przy konkurentach, którzy je mają, to sygnał do uzupełnienia.</li>
                 <li>Częstotliwość aktualizacji: sprawdź daty publikacji lub modyfikacji. Frazy z szybko rotującymi wynikami wymagają regularnych aktualizacji.</li>
               </ol>
-              <p>Analiza SERP powinna obejmować też wyniki niestandardowe: featured snippets, People Also Ask i AI Overviews. Cytowania w AI Overviews zwykle pochodzą ze stron z Top 10, więc kluczowa jest wysoce ustrukturyzowana treść (odpowiednia hierarchia nagłówków, punktory, zwięzłe definicje i listy).</p>
+              <p>Analiza SERP powinna obejmować też wyniki niestandardowe: featured snippets, People Also Ask i AI Overviews. Cytowania w AI Overviews zwykle pochodzą ze stron z Top 10, więc kluczowa jest wysoce ustrukturyzowana treść (odpowiednia hierarchia nagłówków, punktory, zwięzłe definicje i listy). Tę samą analizę konkurencji robimy w odpowiedziach ChatGPT i Perplexity w ramach <Link href="/pozycjonowanie-w-ai">pozycjonowania w AI</Link>: sprawdzamy, które firmy i strony cytują modele.</p>
 
               <h2 id="narzedzia">4. Jakie narzędzia wybrać do analizy SEO na rynku polskim?</h2>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
@@ -406,7 +418,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <h2 id="backlinki">5. Jak analizować backlinki konkurencji i ustalać priorytety pozyskiwania?</h2>
               <p>Profil backlinków konkurenta to mapa możliwości, nie lista do skopiowania. Zanim zaczniesz pozyskiwać linki, musisz wiedzieć, które z nich faktycznie napędzają widoczność rywala.</p>
               <ol>
-                <li><strong>Eksport backlink CSV.</strong> Z <a href="https://ahrefs.com/blog/competitive-analysis/" target="_blank" rel="noopener noreferrer">Ahrefs</a> lub SEMrush pobierz pełny raport backlinków dla każdej domeny.</li>
+                <li><strong>Eksport backlink CSV.</strong> Z <a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs</a> lub SEMrush pobierz pełny raport backlinków dla każdej domeny.</li>
                 <li><strong>Filtrowanie unikalnych referring domains.</strong> Usuń duplikaty z tej samej domeny. Jeden portal może linkować 50 razy, ale liczy się jako jedna referring domain.</li>
                 <li><strong>Klasyfikacja typu linku.</strong> Linki edytorskie (naturalnie umieszczone w treści) mają największą wartość.</li>
                 <li><strong>Ocena jakości.</strong> Filtruj po DR lub AS (minimum 30 dla rynku polskiego jako punkt odniesienia), tematyczności domeny linkującej i aktywności strony.</li>
@@ -475,8 +487,70 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 </table>
               </div>
 
-              <h2 id="ai-seo-company">8. Jak AI SEO Company podchodzi do analizy konkurencji SEO?</h2>
-              <p>Metodologia <a href="https://www.ai-seo-company.pl/" target="_blank" rel="noopener noreferrer">AI SEO Company</a> opiera się na łączeniu danych z wielu źródeł jednocześnie: GSC jako punkt wyjścia, Ahrefs i Senuto do analizy widoczności i backlinków, Screaming Frog do crawlu struktury konkurentów i mapowania grafu linków wewnętrznych.</p>
+              {/* 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 18): przyklad z liczbami zbiorczymi 17 agencji, bez nazw
+                  i ocen (D3, art. 16 UZNK). Zrodla: analiza-konkurencji-2026-10-25/profile/*.md (brief P1 p. 8.2: 11, 5, 6)
+                  i analiza-konkurencji-2026-11-04/wyniki.json (macierz 4.11.2026: 12, 13, 6, 10). Kolejne H2 przenumerowane. */}
+              <h2 id="przyklad-17-agencji">8. Przykład: 17 agencji SEO w liczbach (stan 11.2026)</h2>
+              <p>Tak wygląda wynik analizy konkurencji, gdy obok ruchu i linków porównujesz ofertę. W październiku i listopadzie 2026 przejrzeliśmy strony ofertowe, cenniki, regulaminy i profile w katalogach 17 agencji SEO działających w Polsce. Nie podajemy nazw i nie oceniamy jakości usług: poniżej są wyłącznie liczby zbiorcze. Naszej firmy nie wliczamy do 17.</p>
+              <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
+                  <caption style={{ captionSide: 'top', textAlign: 'left', fontWeight: 600, padding: '0 0 0.75rem' }}>Oferta 17 agencji SEO w Polsce: liczby zbiorcze, bez nazw</caption>
+                  <thead>
+                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                      <th scope="col" style={{ padding: '0.75rem' }}>Co sprawdziliśmy</th>
+                      <th scope="col" style={{ padding: '0.75rem' }}>Liczba agencji z 17</th>
+                      <th scope="col" style={{ padding: '0.75rem' }}>Odczyt</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                      <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Publikuje cenę SEO „od” albo widełki</th>
+                      <td style={{ padding: '0.75rem', fontWeight: 600 }}>12</td>
+                      <td style={{ padding: '0.75rem' }}>4.11.2026</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                      <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Rozlicza się bez komponentu za efekt (abonament, pula godzin, projekt)</th>
+                      <td style={{ padding: '0.75rem', fontWeight: 600 }}>11</td>
+                      <td style={{ padding: '0.75rem' }}>25.10.2026</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                      <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Uzależnia część wynagrodzenia od wyniku</th>
+                      <td style={{ padding: '0.75rem', fontWeight: 600 }}>5</td>
+                      <td style={{ padding: '0.75rem' }}>25.10.2026</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                      <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Publikuje okres wypowiedzenia umowy</th>
+                      <td style={{ padding: '0.75rem', fontWeight: 600 }}>6</td>
+                      <td style={{ padding: '0.75rem' }}>25.10.2026</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                      <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Ma na stronie usługę widoczności w AI (GEO, AEO, „SEO AI”)</th>
+                      <td style={{ padding: '0.75rem', fontWeight: 600 }}>13</td>
+                      <td style={{ padding: '0.75rem' }}>4.11.2026</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                      <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Podaje cenę usługi widoczności w AI</th>
+                      <td style={{ padding: '0.75rem', fontWeight: 600 }}>6</td>
+                      <td style={{ padding: '0.75rem' }}>4.11.2026</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                      <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Ma w Google co najmniej 100 opinii</th>
+                      <td style={{ padding: '0.75rem', fontWeight: 600 }}>co najmniej 10</td>
+                      <td style={{ padding: '0.75rem' }}>4.11.2026</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style={{ fontSize: '0.9rem', color: '#6E6E73' }}>Źródło: strony ofertowe, cenniki, regulaminy i profile w katalogach 17 agencji SEO; opracowanie AI SEO COMPANY, odczyty 25.10.2026 i 4.11.2026. Liczbę opinii w Google odczytaliśmy bez logowania; dla 3 agencji nie dało się jej potwierdzić.</p>
+              <p>Trzy wnioski metodyczne, które przeniesiesz na każdą branżę:</p>
+              <ul>
+                <li>Porównuj także ofertę, nie tylko widoczność. Narzędzia SEO pokażą ruch i linki, ale cenę, model rozliczenia i warunki umowy znajdziesz tylko na stronach konkurentów i w ich regulaminach.</li>
+                <li>Zapisuj datę odczytu przy każdej liczbie. Oferty zmieniają się szybko: między 25 października a 4 listopada 2026 część agencji z tej próby dodała nowe usługi i podstrony.</li>
+                <li>Szukaj luk, a nie tylko przewag. Usługę widoczności w AI ma na stronie 13 z 17 agencji, ale cenę podaje 6. Taką różnicę widać dopiero w tabeli.</li>
+              </ul>
+
+              <h2 id="ai-seo-company">9. Jak AI SEO COMPANY podchodzi do analizy konkurencji SEO?</h2>
+              <p>Podstawą jest <Link href="/o-nas">metodologia AI SEO COMPANY</Link>, która łączy dane z wielu źródeł jednocześnie: GSC jako punkt wyjścia, Ahrefs i Senuto do analizy widoczności i backlinków, Screaming Frog do crawlu struktury konkurentów i mapowania grafu linków wewnętrznych.</p>
               <p>Co otrzymujesz przy zleceniu analizy:</p>
               <ul>
                 <li>Raport inwentaryzacji: lista konkurentów SEO, Top Pages z ruchem, profil backlinków.</li>
@@ -486,7 +560,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               </ul>
               <p>W praktyce w 2–3 miesiące jesteśmy w stanie od zera postawić stronę i doprowadzić wybrane frazy do Top 3 — dzięki połączeniu szybkiej analizy konkurencji, optymalizacji technicznej i precyzyjnego contentu.</p>
 
-              <h2 id="wnioski">9. Kluczowe wnioski</h2>
+              <h2 id="wnioski">10. Kluczowe wnioski</h2>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
@@ -516,19 +590,19 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 </table>
               </div>
 
-              <h2 id="oferta">10. AI SEO Company: gotowa analiza i plan wdrożenia dla Twojej firmy</h2>
-              <p>Samodzielna analiza konkurencji SEO zajmuje 2–4 tygodnie i wymaga dostępu do kilku płatnych narzędzi jednocześnie. <a href="https://www.ai-seo-company.pl/" target="_blank" rel="noopener noreferrer">AI SEO Company</a> skraca ten czas i dostarcza nie tylko raport, ale też gotowy plan z priorytetami i wdrożeniem.</p>
+              <h2 id="oferta">11. AI SEO COMPANY: gotowa analiza i plan wdrożenia dla Twojej firmy</h2>
+              <p>Samodzielna analiza konkurencji SEO zajmuje 2–4 tygodnie i wymaga dostępu do kilku płatnych narzędzi jednocześnie. Krótszą drogą jest <Link href="/audyt-seo">audyt SEO</Link>: obejmuje między innymi luki treści wobec konkurencji i kończy się gotowym planem z priorytetami.</p>
               <p>Formaty współpracy dopasowane do różnych potrzeb: jednorazowy <Link href="/audyt-seo">audyt SEO</Link>, miesięczna subskrypcja <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron</Link>, projekt strony z pakietem SEO. Umów bezpłatną konsultację i dowiedz się, które klastry tematyczne dają Ci największą szansę na wzrost w ciągu najbliższych 6 miesięcy.</p>
 
               <h3>Przydatne źródła i narzędzia</h3>
               <ul>
                 <li><a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer">Google Search Central</a> — oficjalna dokumentacja techniczna: indeksacja, Core Web Vitals, schema, zasady jakości treści.</li>
                 <li><a href="https://www.senuto.com/pl/blog/" target="_blank" rel="noopener noreferrer">Senuto Blog</a> — praktyczny przewodnik analizy konkurencji w SEO z perspektywy rynku polskiego.</li>
-                <li><a href="https://ahrefs.com/blog/competitive-analysis/" target="_blank" rel="noopener noreferrer">Ahrefs Blog: SEO Competitor Analysis</a> — szczegółowy workflow analizy backlinków i content gap.</li>
+                <li><a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs Blog: SEO Competitor Analysis</a> — szczegółowy workflow analizy backlinków i content gap.</li>
               </ul>
 
-              <p><strong>Przeczytaj też:</strong> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">Ile kosztuje SEO w Polsce? Cennik i pakiety 2026</Link></p>
-              <p>Przeczytaj też: <Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">Tag kanoniczny SEO – czym jest i jak go wdrożyć w 2026</Link></p>
+              <p><strong>Przeczytaj też:</strong> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">Ile kosztuje SEO w 2026? Ceny agencji i od czego zależą</Link></p>
+              <p>Przeczytaj też: <Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">Rel canonical: link kanoniczny i adres kanoniczny w praktyce</Link></p>
 
               <BlogCTA
                 locale={locale}

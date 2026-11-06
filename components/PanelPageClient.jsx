@@ -8,9 +8,13 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import FairDeal from '@/components/FairDeal';
 import AppleFaq from '@/components/service/AppleFaq';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
+import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
 import { PANEL_DEMO_URL } from '@/lib/panel';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
 
 // Podstrona panelu klienta (zadanie 1.1 planu przewagi). Opisuje tylko to, co panel
 // robi dziś (etapy 1–3 panelu, stan 4.11.2026); nowe moduły dopisywać po wdrożeniu, nie wcześniej.
@@ -22,9 +26,9 @@ const features = {
     { img: '/images/panel/dzialania.webp', title: 'Dziennik prac', text: 'Każde działanie z datą, efektem, godzinami i osobą odpowiedzialną. Godziny pakietu sumują się na bieżąco.' },
     { img: '/images/panel/zmiany.webp', title: 'Zmiany na stronie opisane prostym językiem', text: 'AI czyta historię zmian w kodzie Twojej strony i pisze krótkie podsumowanie. Zespół sprawdza je przed publikacją, a Ty widzisz, co zmieniliśmy i po co.' },
     { img: '/images/panel/akceptacje.webp', title: 'Sprawy do akceptacji', text: 'Artykuły, zdjęcia i zmiany, które czekają na Twoją decyzję. Akceptujesz albo prosisz o poprawki jednym kliknięciem, a zespół od razu dostaje informację.' },
-    { img: '/images/panel/raporty.webp', title: 'Raporty PDF', text: 'Raporty miesięczne i audyt startowy w jednym miejscu. Pliki leżą w prywatnym magazynie i pobierasz je w każdej chwili.' },
-    { img: '/images/panel/ai.webp', title: 'Widoczność w ChatGPT i AI co tydzień', text: 'Co poniedziałek zadajemy ChatGPT, Perplexity, Gemini i przeglądom AI w Google pytania Twoich klientów. Widzisz, w ilu odpowiedziach pada Twoja firma, kogo modele polecają zamiast Ciebie i z jakich stron korzystają. W SEO Premium albo za 490 zł netto miesięcznie do SEO Standard.' },
-    { img: '/images/panel/mapy.webp', title: 'Mapy Google z 49 punktów', text: 'Klient widzi inne wyniki w Mapach zależnie od tego, gdzie stoi. Sprawdzamy pozycję Twojej wizytówki w siatce 7×7 wokół adresu firmy co 14 dni.' },
+    { img: '/images/panel/raporty.webp', title: 'Raporty PDF', text: 'Raporty miesięczne i audyt startowy w jednym miejscu. Pliki leżą w prywatnym magazynie i pobierasz je w każdej chwili.', dopisek: 'raporty' },
+    { img: '/images/panel/ai.webp', title: 'Widoczność w ChatGPT i AI co tydzień', text: 'Co poniedziałek zadajemy ChatGPT, Perplexity, Gemini i przeglądom AI w Google pytania Twoich klientów. Widzisz, w ilu odpowiedziach pada Twoja firma, kogo modele polecają zamiast Ciebie i z jakich stron korzystają. W SEO Premium albo za 490 zł netto miesięcznie do SEO Standard.', dopisek: 'ai' },
+    { img: '/images/panel/mapy.webp', title: 'Mapy Google z 49 punktów', text: 'Klient widzi inne wyniki w Mapach zależnie od tego, gdzie stoi. Sprawdzamy pozycję Twojej wizytówki w siatce 7×7 wokół adresu firmy co 14 dni.', dopisek: 'mapy' },
     { img: '/images/panel/linki.webp', title: 'Lista zdobytych linków', text: 'Każdy link z adresem strony, datą i rodzajem. Co tydzień automat sprawdza, czy link nadal jest na stronie. Lista zostaje u Ciebie także po zakończeniu współpracy.' },
     { img: '/images/panel/wiadomosci.webp', title: 'Wiadomości do opiekuna i alerty', text: 'Każda sprawa ma swój wątek, a czas odpowiedzi zespołu widzisz w panelu. Alerty pokazują spadek kliknięć o 30%, spadek ważnej frazy i 14 dni bez nowego wpisu w dzienniku prac.' },
     { img: '/images/panel/faktury.webp', title: 'Faktury, pakiet i wypowiedzenie', text: 'Faktury z terminem i statusem płatności do pobrania w PDF. Zmianę pakietu albo wypowiedzenie składasz w panelu i od razu dostajesz potwierdzenie e-mailem.' },
@@ -67,12 +71,21 @@ const compare = {
   ],
 };
 
+// 5.11.2026 (PLAN-v2 6.22, PK1; OP-11 po weryfikacji, link nr 28 z OP-04): odpowiedź o cenie
+// rozszerzona do 51 słów (zakładka AI tylko w SEO Premium albo +490 zł, jak karta wyżej) z linkiem
+// do cennika; nowe pytanie „Jak sprawdzić, czy agencja SEO naprawdę pracuje?” (52 słowa) tylko po
+// polsku (tylkoPl), wersja EN strony bez zmian. 0 zdań >= 8 słów wspólnych z Krótką odpowiedzią.
 const faq = [
   {
     question: 'Czy panel klienta jest w cenie?',
     questionEn: 'Is the client portal included in the price?',
-    answer: 'Tak. Panel dostaje każdy klient pakietów SEO Standard, SEO Premium i Booster Pack, bez dopłat i od pierwszego dnia współpracy.',
+    answer: 'Tak. Panel dostaje każdy klient pakietów SEO Standard, SEO Premium i Booster Pack, bez dopłat i od pierwszego dnia współpracy. Zakładka Widoczność w AI jest w cenie SEO Premium, a do SEO Standard można ją dodać za 490 zł netto miesięcznie. Zakres pakietów i zasady umowy opisujemy w <a href="/cennik-pozycjonowania" style="text-decoration:underline">cenniku pakietów SEO</a>.',
     answerEn: 'Yes. Every SEO Standard, SEO Premium and Booster Pack client gets the portal from day one, at no extra cost.'
+  },
+  {
+    tylkoPl: true,
+    question: 'Jak sprawdzić, czy agencja SEO naprawdę pracuje?',
+    answer: 'Poproś o trzy rzeczy: dziennik prac z datami, listę zmian na stronie i listę zdobytych linków z adresami. W naszym panelu klienta widzisz je na bieżąco, obok zapytań i pozycji fraz z Google Search Console. Miesięczny raport z pozycjonowania tego nie zastąpi, bo pokazuje wynik, a nie pracę, która do niego doprowadziła.'
   },
   {
     question: 'Skąd panel bierze dane?',
@@ -94,8 +107,39 @@ const faq = [
   },
 ];
 
+// 5.11.2026 (PLAN-v2 6.22, PK1; AV-10 po weryfikacji): H2 „Jak sprawdzić panel agencji przed
+// podpisaniem umowy: 6 pytań” - odpowiedź na listę kontrolną, którą Perplexity podaje przy pytaniu
+// Q06 („Agencja SEO z panelem klienta… którą wybrać?”, dane/llm.json 4.11.2026), bez nazw agencji.
+// Tylko PL. Odpowiedzi opisują wyłącznie funkcje z kart wyżej (stan panelu 4.11.2026); nie powielają
+// bloku FairDeal (zasady umowy) ani zdań kart, FAQ i Krótkiej odpowiedzi.
+const pytaniaPanelu = [
+  { q: 'Czy widzisz konkretne zadania z datą i wykonawcą?', a: 'Ogólne „prace optymalizacyjne” niczego nie dowodzą. W naszym dzienniku prac każdy wpis ma datę, efekt, liczbę godzin i osobę, która go wykonała.' },
+  { q: 'Czy widać zmiany na stronie, publikacje i zdobyte linki?', a: 'Każda zmiana powinna mieć opis, co zmieniono i po co, a każdy link adres strony, która linkuje. U nas oba widoki są w panelu, a linki co tydzień sprawdza automat.' },
+  { q: 'Czy panel pokazuje zapytania od klientów, a nie tylko pozycje?', a: 'Pozycje nie mówią, czy SEO przynosi klientów. Na pierwszym ekranie naszego panelu jest liczba zapytań z Google: z formularza, telefonu i e-maila.' },
+  { q: 'Czy jest cel na miesiąc i widać, jak idzie jego realizacja?', a: 'Bez celu nie ma czego rozliczać. W przeglądzie naszego panelu cel na miesiąc stoi obok prognozy, a alerty pokazują spadek kliknięć albo ważnej frazy.' },
+  { q: 'Czy wiesz, co agencja zrobi w kolejnym miesiącu?', a: 'Plan ma być zapisany, a nie tylko obiecany na spotkaniu. U nas opiekun opisuje w panelu, co się stało, dlaczego i co robimy dalej, a artykuły i zmiany czekające na Twoją decyzję widzisz w sprawach do akceptacji.' },
+  { q: 'Czy dane pochodzą z Twoich kont Google, a nie z autorskiego wskaźnika agencji?', a: 'Własnego wskaźnika agencji nie sprawdzisz u źródła. U nas kliknięcia i pozycje są z Twojej Google Search Console, a zapytania z Twojego GA4, więc każdą liczbę porównasz z oryginałem.' },
+];
+
 export default function PanelPageClient() {
   const lang = useLocale() === 'en' ? 'en' : 'pl';
+  // 5.11.2026 (PLAN-v2 6.0 i 6.22; OP-04 linki 29-30, reguła 6.0): dopiski z linkami w kartach,
+  // tylko PL. L1 (wizytówka, partia 2) i S1 (wzór raportu, partia 3) przez bramkę publikacji:
+  // przed partią L1 zostaje zwykłym tekstem (usługa istnieje w SEO Standard), a zdanie o wzorze
+  // raportu S1 nie renderuje się wcale (bez celu nie ma czego pokazać). Link do sprawdzarki (nr 31)
+  // dopiero po T0.2. Anchory „pozycjonowanie wizytówki Google” i „wzór raportu SEO” są
+  // zarezerwowane dla L1 i S1 (OP-04, ryzyka).
+  const hrefL1 = hrefJesliOpublikowana('/pozycjonowanie-wizytowki-google');
+  const hrefS1 = hrefJesliOpublikowana('/narzedzia/raport-seo');
+  const podkreslenie = { textDecoration: 'underline' };
+  const dopiski = {
+    ai: <> Na tych pomiarach opieramy <Link href="/pozycjonowanie-w-ai" style={podkreslenie}>pozycjonowanie w AI</Link>.</>,
+    mapy: (
+      <> To część naszego <Link href="/seo-lokalne-warszawa" style={podkreslenie}>SEO lokalnego</Link> i{' '}
+        {hrefL1 ? <Link href={hrefL1} style={podkreslenie}>pozycjonowania wizytówki Google</Link> : 'pozycjonowania wizytówki Google'}.</>
+    ),
+    raporty: hrefS1 ? <> Co powinno być w takim raporcie, pokazuje nasz <Link href={hrefS1} style={podkreslenie}>wzór raportu SEO</Link>.</> : null,
+  };
   return (
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
@@ -110,11 +154,23 @@ export default function PanelPageClient() {
             <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1.25rem', color: 'var(--color-text-dark)' }}>
               {lang === 'pl' ? 'Panel klienta: widzisz naszą pracę codziennie' : 'Client portal: see our work every day'}
             </h1>
-            <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '720px', margin: '0 auto 2rem', lineHeight: 1.65 }}>
-              {lang === 'pl'
-                ? 'Dane z Google, zapytania od klientów, dziennik naszych prac i opis każdej zmiany na stronie w jednym miejscu. Panel dostaje każdy klient AI SEO COMPANY, bez dopłat. Demo działa bez logowania, na danych przykładowych.'
-                : 'Google data, customer enquiries, a log of our work and a summary of every change to your site in one place. Every AI SEO COMPANY client gets the portal at no extra cost. The demo runs without login on sample data.'}
-            </p>
+            {/* 5.11.2026 (PLAN-v2 6.0 i 6.22, PK1; OP-11): w PL Krótka odpowiedź (50 słów, marka
+                w drugim zdaniu) zamiast leadu i podpis autora z datą = LASTMOD /panel-klienta.
+                Opakowanie ma klasę hero-lead, żeby na telefonie przyciski zostały nad długim tekstem
+                (reguła w globals.css „div:has(> .hero-cta-row)” - baner zgody). Kolor i rozmiar
+                tekstu inline, bo .section-header p nadpisałby wygląd AnswerBox. EN: lead bez zmian. */}
+            {lang === 'pl' ? (
+              <div className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto' }}>
+                <AnswerBox>
+                  <p style={{ margin: 0, color: '#333336', fontSize: '1.05rem', lineHeight: 1.65 }}>Panel klienta to strona, na której widzisz wyniki i pracę agencji SEO: zapytania od klientów, kliknięcia z Google Search Console, pozycje fraz tydzień po tygodniu, dziennik prac, zmiany na stronie i zdobyte linki. Dostaje go każdy klient AI SEO COMPANY bez dopłat, a demo działa bez logowania, na danych przykładowych.</p>
+                </AnswerBox>
+                <Byline sciezka="/panel-klienta" style={{ margin: '0 auto 1.5rem' }} />
+              </div>
+            ) : (
+              <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '720px', margin: '0 auto 2rem', lineHeight: 1.65 }}>
+                Google data, customer enquiries, a log of our work and a summary of every change to your site in one place. Every AI SEO COMPANY client gets the portal at no extra cost. The demo runs without login on sample data.
+              </p>
+            )}
             <div className="hero-cta-row" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href={PANEL_DEMO_URL} className="hero-btn-primary" data-cta="panel_page_demo">
                 {lang === 'pl' ? 'Otwórz demo bez logowania' : 'Open the demo, no login'}
@@ -141,7 +197,7 @@ export default function PanelPageClient() {
                 <Image src={f.img} alt={lang === 'pl' ? `${f.title} (dane przykładowe)` : `${f.title} (sample data)`} width={1600} height={1025} sizes="(max-width: 760px) 100vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', borderBottom: '1px solid rgba(0,0,0,0.06)' }} />
                 <div style={{ padding: '1.25rem 1.5rem 1.5rem' }}>
                   <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--color-text-dark)' }}>{f.title}</h3>
-                  <p style={{ margin: 0, lineHeight: 1.6, color: '#333336' }}>{f.text}</p>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: '#333336' }}>{f.text}{lang === 'pl' && f.dopisek ? dopiski[f.dopisek] : null}</p>
                 </div>
               </RevealItem>
             ))}
@@ -197,9 +253,27 @@ export default function PanelPageClient() {
         </div>
       </section>
 
+      {lang === 'pl' && (
+        <section style={{ padding: '0 0 80px' }} aria-labelledby="jak-sprawdzic-panel">
+          <div className="container" style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <Reveal style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
+              <h2 id="jak-sprawdzic-panel" style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)' }}>Jak sprawdzić panel agencji przed podpisaniem umowy: 6 pytań</h2>
+              <p style={{ margin: '0 0 1.25rem', lineHeight: 1.65, color: '#333336', fontSize: '1.05rem' }}>
+                Przed podpisaniem umowy poproś agencję o dostęp do panelu na danych przykładowych i przejdź sześć pytań poniżej. Nasz panel sprawdzisz od razu w <a href={PANEL_DEMO_URL} data-cta="panel_page_checklist_demo" style={podkreslenie}>demo bez logowania</a>.
+              </p>
+              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', fontSize: '1.05rem', lineHeight: 1.6, color: '#333336' }}>
+                {pytaniaPanelu.map((p) => (
+                  <li key={p.q}><strong style={{ color: 'var(--color-text-dark)' }}>{p.q}</strong> {p.a}</li>
+                ))}
+              </ol>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       <FairDeal />
 
-      <AppleFaq faqData={faq} title={lang === 'pl' ? 'Pytania o panel klienta' : 'Questions about the client portal'} />
+      <AppleFaq faqData={lang === 'pl' ? faq : faq.filter((f) => !f.tylkoPl)} title={lang === 'pl' ? 'Pytania o panel klienta' : 'Questions about the client portal'} />
 
       <Contact />
       <Footer />

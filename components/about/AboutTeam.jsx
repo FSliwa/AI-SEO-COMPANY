@@ -258,7 +258,9 @@ export default function AboutTeam() {
                     letterSpacing: '-0.015em',
                     marginBottom: '1.75rem'
                   }}>
-                    <span style={{ fontWeight: 'bold' }} style={{ fontWeight: 700, color: '#0F172A', marginRight: '0.35rem' }}>
+                    {/* 5.11.2026: usunięty zdublowany prop style={{ fontWeight: 'bold' }} (react/jsx-no-duplicate-props);
+                        wygrywał drugi, więc render bez zmian. */}
+                    <span style={{ fontWeight: 700, color: '#0F172A', marginRight: '0.35rem' }}>
                       {lang === 'pl' ? item.leadPl : item.leadEn}
                     </span>
                     {lang === 'pl' ? item.bodyPl : item.bodyEn}
@@ -274,7 +276,8 @@ export default function AboutTeam() {
                         {item.initials}
                       </div>
                       <div>
-                        <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1D1D1F', margin: 0, lineHeight: 1.2 }}>{lang === 'pl' ? item.name : (item.nameEn || item.name)}</h4>
+                        {/* 5.11.2026 (PLAN-v2 6.24, SA-07): h4 -> h3 (H2 sekcji -> H3 karty, bez przeskoku); styl inline bez zmian. */}
+                        <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1D1D1F', margin: 0, lineHeight: 1.2 }}>{lang === 'pl' ? item.name : (item.nameEn || item.name)}</h3>
                         <p style={{ fontSize: '0.8rem', color: '#6E6E73', margin: '2px 0 0 0' }}>
                           {lang === 'pl' ? item.role : (item.roleEn || item.role)}
                         </p>

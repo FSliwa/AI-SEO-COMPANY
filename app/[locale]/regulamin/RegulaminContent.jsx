@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import { Link } from '@/i18n/routing';
 
@@ -21,10 +22,16 @@ export default function RegulaminContent() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '120px', minHeight: '80vh', background: '#F5F5F7' }}>
+      {/* 5.11.2026 (PLAN-v2 6.24, okruszki na 6 stronach; SA-07 pkt 4): widoczne okruszki
+          + BreadcrumbList na /regulamin i /en/terms. Klasa subpage-main = ten sam odstęp pod
+          okruszkami co na /blog i /o-nas (globals.css: .breadcrumbs + main.subpage-main).
+          Title i meta strony bez zmian (SA-10). */}
+      <Breadcrumbs pl="Regulamin" en="Terms" />
+      <main className="subpage-main" style={{ paddingTop: '120px', minHeight: '80vh', background: '#F5F5F7' }}>
         <div className="container" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
+          {/* 5.11.2026 (PLAN-v2 6.25 ANK pkt 6, SA-13): zapis marki wielkimi literami („AI SEO COMPANY”), jak w całym serwisie. */}
           <h1 style={{ fontSize: '3rem', color: '#0F172A', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
-            {lang === 'pl' ? 'Regulamin świadczenia usług drogą elektroniczną' : 'Terms of Service for AI SEO Company Clients'}
+            {lang === 'pl' ? 'Regulamin świadczenia usług drogą elektroniczną' : 'Terms of Service for AI SEO COMPANY Clients'}
           </h1>
 
           <div style={{ color: '#334155', fontSize: '1.1rem', lineHeight: 1.8 }}>

@@ -6,6 +6,18 @@ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
 import { zachowaniePrzewijania } from '@/lib/ruch';
 
+// 5.11.2026 (ALT; OP-16, PLAN-v2 7): flaga decorative w danych karty = obraz dekoracyjny (abstrakcyjne
+// tło albo zdjęcie stockowe bez związku z treścią). Wtedy w wersji PL alt="" i bez atrybutu title,
+// zamiast kopii H3 karty (c.imgAlt || c.title). Dotyczy 13 obrazów na /audyt-seo, /pozycjonowanie-
+// stron-internetowych i /seo-lokalne-warszawa. Wersja EN bez zmian: jej alty (imgAltEn) niosą frazy
+// strażnika /en/* i czekają na tę samą decyzję co 3 alty PL z frazami chronionymi (D18).
+// Kalendarz planu: ALT = W7, a ten plik zmienia też BL6 (W1). false = wydanie bez zmiany altów
+// (flagi decorative w danych stron zostają i nic nie robią).
+// Recenzja 6.11.2026: ALT należy do wydania W7 (pomiar Keyword Checkera przed i po, PLAN-v2 7);
+// w wydaniu z BL6 (W1) musi być false. Przełączyć na true dopiero w wydaniu ALT.
+const ALT_DEKORACYJNE = false;
+const czyDekoracyjny = (c, lang) => ALT_DEKORACYJNE && Boolean(c.decorative) && lang === 'pl';
+
 export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [], layout = "horizontal" }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const lang = useLocale();
@@ -160,8 +172,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   <div style={{ position: 'absolute', inset: 0, zIndex: -1, overflow: 'hidden' }}>
                     <Image 
                       src={lang === 'pl' ? c.image : (c.imageEn || c.image)} 
-                      alt={lang === 'pl' ? (c.imgAlt || c.title) : (c.imgAltEn || c.titleEn || c.imgAlt || c.title)}
-                      title={lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title)}
+                      alt={czyDekoracyjny(c, lang) ? '' : (lang === 'pl' ? (c.imgAlt || c.title) : (c.imgAltEn || c.titleEn || c.imgAlt || c.title))}
+                      title={czyDekoracyjny(c, lang) ? undefined : (lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title))}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1240px) 50vw, 620px"
                       style={{ objectFit: 'cover', display: 'block', transition: 'transform 0.7s ease' }} 
@@ -300,8 +312,8 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   }}>
                     <Image 
                       src={lang === 'pl' ? c.image : (c.imageEn || c.image)} 
-                      alt={lang === 'pl' ? (c.imgAlt || c.title || 'Realizacja SEO') : (c.imgAltEn || c.titleEn || c.imgAlt || c.title || 'SEO Case Study')}
-                      title={lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title)}
+                      alt={czyDekoracyjny(c, lang) ? '' : (lang === 'pl' ? (c.imgAlt || c.title || 'Realizacja SEO') : (c.imgAltEn || c.titleEn || c.imgAlt || c.title || 'SEO Case Study'))}
+                      title={czyDekoracyjny(c, lang) ? undefined : (lang === 'pl' ? (c.imgTitle || c.title) : (c.imgTitleEn || c.titleEn || c.imgTitle || c.title))}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1240px) 50vw, 620px"
                       style={{ objectFit: 'cover', display: 'block', zIndex: 2 }}
@@ -337,8 +349,10 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
       </div>
 
       <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem', padding: '0 2rem' }}>
+        {/* 5.11.2026 (BL6; BL-06): na /en/seo-services, /en/seo-audit, /en/local-seo-warsaw i /en/web-design
+            przycisk prowadził do polskiej strony głównej. #portfolio istnieje też na /en (Portfolio.jsx). */}
         <a 
-          href="/#portfolio" 
+          href={lang === 'pl' ? '/#portfolio' : '/en#portfolio'} 
           className="btn" 
           style={{ 
             padding: '1.1rem 2.5rem', 

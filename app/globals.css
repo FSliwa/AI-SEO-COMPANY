@@ -1008,6 +1008,10 @@ section, aside.pricing, aside.contact, aside.why-us {
   margin-bottom: 1.5rem;
 }
 
+/* 5.11.2026 (PLAN-v2 6.24, SA-07): h3 dla kart wartości na /o-nas (AboutValues: H2 sekcji -> H3,
+   wcześniej h4 = przeskok). h4 zostaje dla Services.jsx. Te same wartości = wygląd bez zmian
+   (reset marginesów w * { margin: 0 }, font-family i text-wrap mają h3 i h4 wspólne). */
+.kota-pillar-card h3,
 .kota-pillar-card h4 {
   font-size: 1.6rem;
   font-weight: 700;

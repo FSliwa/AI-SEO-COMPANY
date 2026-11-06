@@ -6,6 +6,9 @@ export const routing = defineRouting({
   defaultLocale: 'pl',
   localePrefix: 'as-needed',
   localeDetection: false,
+  // T9 (TS-11, 5.11.2026): bez ciasteczka NEXT_LOCALE. Przy localeDetection: false nic go nie
+  // czytalo, a Set-Cookie w kazdej odpowiedzi HTML utrudnial cache i byl zbednym ciasteczkiem.
+  localeCookie: false,
   // Hreflang wylacznie w HTML (alternates w metadata) - naglowek Link:
   // z middleware dublowal deklaracje. W next-intl v4 opcja zyje tutaj,
   // nie w drugim argumencie createMiddleware.
@@ -36,14 +39,19 @@ export const routing = defineRouting({
       pl: '/pozycjonowanie-w-ai',
       en: '/ai-search-optimization'
     },
-    '/sprawdz-widocznosc-w-ai': {
-      pl: '/sprawdz-widocznosc-w-ai',
-      en: '/ai-visibility-check'
-    },
-    '/zmiana-agencji-seo': {
-      pl: '/zmiana-agencji-seo',
-      en: '/changing-seo-agency'
-    },
+    // Strony tylko po polsku (T1a, BL-01): zwykly string = slug EN taki sam jak PL, wiec
+    // /en/... trafia do strony, ktora robi notFound() -> 404 wprost, bez 307/308 na nieistniejacy
+    // slug EN. Lista stron tylko-PL: lib/plOnly.js.
+    '/sprawdz-widocznosc-w-ai': '/sprawdz-widocznosc-w-ai',
+    '/zmiana-agencji-seo': '/zmiana-agencji-seo',
+    // Nowe strony z PLAN-v2 (tylko PL, za bramka publikacji lib/publikacja.js). Klucze z '['
+    // nie trafiaja do sitemapy - jej adresy bierze lib/sitemapEntries.js z rejestru publikacji.
+    '/porownania': '/porownania',
+    '/porownania/[slug]': '/porownania/[slug]',
+    '/pozycjonowanie-w-ai/[slug]': '/pozycjonowanie-w-ai/[slug]',
+    '/pozycjonowanie-wizytowki-google': '/pozycjonowanie-wizytowki-google',
+    '/narzedzia': '/narzedzia',
+    '/narzedzia/[slug]': '/narzedzia/[slug]',
     '/panel-klienta': {
       pl: '/panel-klienta',
       en: '/client-portal'
@@ -63,10 +71,6 @@ export const routing = defineRouting({
     '/blog': {
       pl: '/blog',
       en: '/blog'
-    },
-    '/blog/biblioteka': {
-      pl: '/blog/biblioteka',
-      en: '/blog/library'
     },
     '/blog/jak-pozyskiwac-opinie-google-poradnik': {
       pl: '/blog/jak-pozyskiwac-opinie-google-poradnik',

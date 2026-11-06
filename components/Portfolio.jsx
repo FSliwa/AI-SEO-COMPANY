@@ -6,6 +6,9 @@ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
 
+// Film z realizacji ASE-BOT w naglowku sekcji (ladowany leniwie, opis przy wideoSrc nizej).
+const WIDEO_PORTFOLIO = '/projects/ase-bot-demo.mp4';
+
 const realizedWebsites = [
   {
     id: 1,
@@ -238,9 +241,35 @@ export default function Portfolio() {
   const videoRef = useRef(null);
   const [videoPaused, setVideoPaused] = useState(false);
 
+  /* 4.11.2026 (audyt techniczny planu z filmu): film 1 983 867 B schodzil w calosci
+     przy kazdym wejsciu na / i /en (PSI mobile i desktop: transfer 1 984 634 B, 206),
+     bo autoPlay ignoruje preload="metadata", a sekcja lezy kilka ekranow nizej.
+     Zrodlo dostaje dopiero, gdy sekcja jest 600 px od kadru; do tego czasu plakat.
+     5.11.2026 (PLAN-v2 rozdz. 7, TS4; TS-04 po weryfikacji: lataka T4 bez T3 - rozgrzewajacy
+     fetch sceny w Hero.jsx zostaje). Build weryfikacyjny, Playwright 1440x900 z WebGL bez
+     ctx.route: 0 zapytan mp4 przed przewinieciem, 6 234 257 B w 15 s (bylo ok. 8,2 MB).
+     Przegladarka bez IntersectionObserver dostaje film od razu, ale w timerze, a nie
+     synchronicznie w efekcie (regula react-hooks/set-state-in-effect). */
+  const [wideoSrc, setWideoSrc] = useState(null);
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    if (!('IntersectionObserver' in window)) {
+      const t = setTimeout(() => setWideoSrc(WIDEO_PORTFOLIO), 0);
+      return () => clearTimeout(t);
+    }
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      setWideoSrc(WIDEO_PORTFOLIO);
+    }, { rootMargin: '600px 0px' });
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || !wideoSrc) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       // Weryfikacja etapu 5 (14.10.2026): film stal na t=0 i pokazywal plakat
       // z innego projektu (Chrome) albo czarny kadr (WebKit). Kadr z 20. sekundy
@@ -250,7 +279,7 @@ export default function Portfolio() {
       v.currentTime = 20;
     }
     setVideoPaused(v.paused);
-  }, []);
+  }, [wideoSrc]);
 
   const przelaczWideo = () => {
     const v = videoRef.current;
@@ -304,7 +333,7 @@ export default function Portfolio() {
             <div style={{ position: 'relative', width: 'min(100%, calc(58vh * 16 / 9))', marginInline: 'auto' }}>
               <video
                 ref={videoRef}
-                src="/projects/ase-bot-demo.mp4"
+                src={wideoSrc ?? undefined}
                 poster="/projects/mosaic/feature.webp"
                 autoPlay
                 muted

@@ -38,9 +38,9 @@ export default async function ArticleMultiLocationSEO({ params }) {
     { id: 'how-internal-linking-and-governance-prevent-location-cannibalization', title: 'How internal linking and governance prevent location cannibalization' },
     { id: 'how-to-track-seo-performance-per-location', title: 'How to track SEO performance per location' },
     { id: 'audit-consolidation-and-migration-checklist-for-duplicate-pages', title: 'Audit, consolidation, and migration checklist for duplicate pages' },
-    { id: 'how-ai-seo-company-runs-multi-location-seo-programs', title: 'How Ai-seo-company runs multi-location SEO programs' },
+    { id: 'how-ai-seo-company-runs-multi-location-seo-programs', title: 'How AI SEO COMPANY runs multi-location SEO programs' },
     { id: 'what-we-keep-seeing-go-wrong-and-how-to-fix-it-fast', title: 'What we keep seeing go wrong — and how to fix it fast' },
-    { id: 'ai-seo-companys-multi-location-seo-services', title: 'Ai-seo-company\'s multi-location SEO services' },
+    { id: 'ai-seo-companys-multi-location-seo-services', title: 'AI SEO COMPANY\'s multi-location SEO services' },
     { id: 'sources', title: 'Sources' }
   ];
 
@@ -137,7 +137,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                           <td>Use UTM tags and unique phone numbers to attribute calls and conversions to individual locations in a central dashboard.</td>
                         </tr>
                         <tr>
-                          <td><strong>Ai-seo-company</strong></td>
+                          <td><strong>AI SEO COMPANY</strong></td>
                           <td>Provides audits, location page templates, GBP management, and measurement dashboards for multi-location programs of any scale.</td>
                         </tr>
                       </tbody>
@@ -147,7 +147,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   <ArticleTOC items={tocItems} />
                   
                   <h2 id="what-site-architecture-works-best-for-multi-location-seo">What site architecture works best for multi-location SEO?</h2>
-                  <p>The answer — and the starting point for most <strong>local SEO strategies</strong> at scale — is almost always a single domain with subfolders. <a href="https://www.searchengineland.com/multi-location-seo-structure-geographic-pages-483959" target="_blank" rel="noopener noreferrer">Search Engine Land&apos;s analysis of geographic page structure</a> confirms that fragmented strategies, whether subdomains or separate domains, dilute central domain authority and create compounding technical problems at scale. Every location page you build at <code>yourbrand.com/locations/chicago/</code> inherits the domain&apos;s authority. The same page at <code>chicago.yourbrand.com</code> starts from near zero.</p>
+                  <p>The answer — and the starting point for most <strong>local SEO strategies</strong> at scale — is almost always a single domain with subfolders. <a href="https://searchengineland.com/multi-location-seo-structure-geographic-pages-483959" target="_blank" rel="noopener noreferrer">Search Engine Land&apos;s analysis of geographic page structure</a> confirms that fragmented strategies, whether subdomains or separate domains, dilute central domain authority and create compounding technical problems at scale. Every location page you build at <code>yourbrand.com/locations/chicago/</code> inherits the domain&apos;s authority. The same page at <code>chicago.yourbrand.com</code> starts from near zero.</p>
                   
                   <h3>Comparing your three architecture options</h3>
                   
@@ -376,7 +376,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     <li>Monitor for crawl errors and coverage drops weekly for the first month.</li>
                   </ul>
                   
-                  <p>The <Link href="/seo-services">Ai-seo-company SEO services team</Link> handles programmatic deployments with a pre-launch QA gate that checks schema validity, canonical correctness, and content uniqueness thresholds before any location page goes live.</p>
+                  <p>The <Link href="/seo-services">AI SEO COMPANY SEO services team</Link> handles programmatic deployments with a pre-launch QA gate that checks schema validity, canonical correctness, and content uniqueness thresholds before any location page goes live.</p>
                   
                   <h2 id="how-internal-linking-and-governance-prevent-location-cannibalization">How internal linking and governance prevent location cannibalization</h2>
                   <p>Two location pages competing for the same query is a governance failure, not a technical one. It happens when no one owns the URL naming convention, when service pages and location pages target the same keywords, or when a regional hub page and a city page both try to rank for &quot;plumber in Dallas.&quot;</p>
@@ -393,7 +393,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   </ul>
                   
                   <h3>Handling overlapping service areas</h3>
-                  <p>When two locations are close enough to compete for the same local queries, the solution is differentiation, not deletion. Give each location page a distinct service emphasis, a different staff profile, and different local landmarks in the directions section. Use internal links to signal which page owns which intent: link &quot;plumbing repair in North Dallas&quot; to the Plano location, and &quot;plumbing repair in South Dallas&quot; to the Irving location. The <Link href="/blog/library">Ai-seo-company content library</Link> includes templates for location page differentiation in overlapping markets.</p>
+                  <p>When two locations are close enough to compete for the same local queries, the solution is differentiation, not deletion. Give each location page a distinct service emphasis, a different staff profile, and different local landmarks in the directions section. Use internal links to signal which page owns which intent: link &quot;plumbing repair in North Dallas&quot; to the Plano location, and &quot;plumbing repair in South Dallas&quot; to the Irving location. More guides on local and technical SEO are on our <Link href="/blog">SEO blog</Link>.</p>
                   
                   <p>Service-area pages for locations without a physical storefront need extra care. Only create them when there is genuine, business-backed coverage. A service-area page for a city where you have no staff, no customers, and no operations is a doorway page by another name.</p>
                   
@@ -490,8 +490,8 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   
                   <p>A redirect chain (A redirects to B, which redirects to C) loses link equity at each hop. Flatten all chains to a single redirect.</p>
                   
-                  <h2 id="how-ai-seo-company-runs-multi-location-seo-programs">How Ai-seo-company runs multi-location SEO programs</h2>
-                  <p>Ai-seo-company&apos;s approach to multi-location programs follows a staged process designed to eliminate the most common failure points before they compound.</p>
+                  <h2 id="how-ai-seo-company-runs-multi-location-seo-programs">How AI SEO COMPANY runs multi-location SEO programs</h2>
+                  <p>AI SEO COMPANY&apos;s approach to multi-location programs follows a staged process designed to eliminate the most common failure points before they compound.</p>
                   
                   <ul>
                     <li><strong>Discovery and audit:</strong> The engagement starts with a full technical and local SEO audit. Every location URL is inventoried, every GBP is checked for verification status and completeness, and the master NAP is compared against the top 50 citation sources. This surfaces the exact gaps before any content or technical work begins.</li>
@@ -504,7 +504,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   <h3>When to hire an agency vs. scale internally</h3>
                   <p><strong>SEO for franchises</strong> and multi-location brands follows the same playbook, but the execution model differs by scale. If you have fewer than 10 locations and a dedicated marketing manager with SEO experience, an in-house approach is viable with the right tools. Above 25 locations, the coordination overhead (GBP management, citation monitoring, content governance, technical QA) typically exceeds what a single in-house team can handle without a specialized partner. The inflection point is usually a combination of location count and the technical complexity of the existing site.</p>
                   
-                  <p>While the industry standard for a multi-location build phase is typically 3–6 months, Ai-seo-company&apos;s accelerated process completes the initial build phase (audit, template, GBP sync, citation cleanup, measurement setup) in just 2–3 months in most cases. This is followed by a monthly retainer for ongoing management, content, and reporting.</p>
+                  <p>While the industry standard for a multi-location build phase is typically 3–6 months, AI SEO COMPANY&apos;s accelerated process completes the initial build phase (audit, template, GBP sync, citation cleanup, measurement setup) in just 2–3 months in most cases. This is followed by a monthly retainer for ongoing management, content, and reporting.</p>
                   
                   <h2 id="what-we-keep-seeing-go-wrong-and-how-to-fix-it-fast">What we keep seeing go wrong — and how to fix it fast</h2>
                   <p>The same mistakes appear in nearly every multi-location audit, regardless of company size or industry.</p>
@@ -527,12 +527,12 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   
                   <p>The underlying principle is the one Entrepreneur&apos;s franchise SEO playbook keeps returning to: treat each location as a verified entity, not a keyword target. Entity signals — consistent data, original content, real reviews, corroborating citations — are what AI-driven local search rewards.</p>
                   
-                  <h2 id="ai-seo-companys-multi-location-seo-services">Ai-seo-company&apos;s multi-location SEO services</h2>
+                  <h2 id="ai-seo-companys-multi-location-seo-services">AI SEO COMPANY&apos;s multi-location SEO services</h2>
                   <p>Running a multi-location SEO program in-house means managing GBP verification, citation audits, schema validation, content governance, and location-level reporting simultaneously. Most marketing teams hit a ceiling around 15–20 locations where the coordination cost starts outpacing the output.</p>
                   
-                  <p>Ai-seo-company delivers the full program: <Link href="/seo-audit">technical SEO audits</Link> that surface every NAP inconsistency, duplicate page, and schema error before they compound; location page templates built with required unique content blocks; GBP management and citation sync through BrightLocal and Whitespark; and a Looker Studio measurement dashboard that gives corporate and local stakeholders their own view of performance.</p>
+                  <p>AI SEO COMPANY delivers the full program: <Link href="/seo-audit">technical SEO audits</Link> that surface every NAP inconsistency, duplicate page, and schema error before they compound; location page templates built with required unique content blocks; GBP management and citation sync through BrightLocal and Whitespark; and a Looker Studio measurement dashboard that gives corporate and local stakeholders their own view of performance.</p>
                   
-                  <p>The engagement starts with an audit. You get a prioritized action list, a master NAP repository, and a clear picture of which locations need the most work and why. While a typical agency needs 3–6 months for this, Ai-seo-company completes the build phase in 2–3 months in most cases, followed by ongoing management at whatever scale your network requires. Transparent monthly retainer pricing, no long-term lock-in.</p>
+                  <p>The engagement starts with an audit. You get a prioritized action list, a master NAP repository, and a clear picture of which locations need the most work and why. While a typical agency needs 3–6 months for this, AI SEO COMPANY completes the build phase in 2–3 months in most cases, followed by ongoing management at whatever scale your network requires. Transparent monthly retainer pricing, no long-term lock-in.</p>
                   
                   <p>If your locations are not showing up in map packs or AI-generated local recommendations, the audit will tell you exactly why. Request your multi-location SEO audit and get a clear starting point within days.</p>
                   
@@ -541,7 +541,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   
                   <p><strong>Tool recommendations by job:</strong></p>
                   <ul>
-                    <li><a href="https://www.searchengineland.com/multi-location-seo-structure-geographic-pages-483959" target="_blank" rel="noopener noreferrer">Multi-location SEO: How to structure geographic pages at scale</a></li>
+                    <li><a href="https://searchengineland.com/multi-location-seo-structure-geographic-pages-483959" target="_blank" rel="noopener noreferrer">Multi-location SEO: How to structure geographic pages at scale</a></li>
                     <li><a href="https://www.searchenginejournal.com/local-seo-multiple-locations/370704/" target="_blank" rel="noopener noreferrer">The Complete Guide To Local SEO For Multiple Locations</a></li>
                   </ul>
                   

@@ -1,15 +1,25 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link, usePathname, useRouter } from '../i18n/routing';
+import NextLink from 'next/link';
+import { Link, usePathname, useRouter, getPathname } from '../i18n/routing';
 import { track } from '@/lib/track';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
 import { hash, homeHash, przewinDoSekcji, przejdzDoSekcji } from '@/lib/anchors';
+import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
+import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
 
 // Logowanie do paneli (klient i administrator) to osobna aplikacja na subdomenie.
 // NEXT_PUBLIC_PANEL_URL pozwala lokalnie wskazać panel na localhost.
 import { PANEL_DEMO_URL, PANEL_LOGIN_URL } from '@/lib/panel';
+
+// A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
+// pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
+// Integracja 5.11.2026: także hub narzędzi i N1 (partia 3; celowo bez <Contact />, grupa narzedzia
+// pkt 8) - porównanie ze `sciezka` (szablon z wstawionym slugiem), bo pathname to '/narzedzia/[slug]'.
+const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/narzedzia', '/narzedzia/generator-llms-txt'];
 
 function UserIcon() {
   return (
@@ -37,6 +47,17 @@ export default function Header() {
   const t = useTranslations('nav');
   const pathname = usePathname();
   const router = useRouter();
+  const params = useParams();
+  // usePathname z next-intl zwraca na trasach dynamicznych SZABLON klucza routingu
+  // ('/porownania/[slug]'), a Link z takim hrefem bez params rzuca błąd przy renderze.
+  // sciezka = szablon z wstawionymi parametrami ('/porownania/seo-vs-geo'): nieznany klucz
+  // next-intl przepuszcza bez zmian, a EN_ZAMIENNIK (lib/plOnly.js) dopasowuje konkretną stronę.
+  const sciezka = pathname && pathname.includes('[')
+    ? pathname.replace(/\[(?:\.\.\.)?([^\]]+)\]/g, (_, klucz) => {
+      const v = params?.[klucz];
+      return Array.isArray(v) ? v.join('/') : String(v ?? '');
+    })
+    : pathname;
   // Podstrony z własnym formularzem (landingi Google Ads) wysyłały „Kontakt”
   // i „Darmowa Wycena” na stronę główną: 7 MB sceny 3D zamiast formularza,
   // który był kilka ekranów niżej. Gdy formularz jest na tej stronie, link
@@ -47,17 +68,43 @@ export default function Header() {
     e.preventDefault();
   };
 
-  const toggleLang = (newLocale) => {
-    if (lang === newLocale) return;
-    // Sesja z USA przełączająca /en na polski to sygnał złego targetowania reklam.
-    track('language_switch', { from: lang, to: newLocale, page_path: pathname });
+  // T1b (PLAN-v2 7, SA-05 z korektą, BL-01 pkt 3, CB-15; Integracja 5.11.2026): przełącznik
+  // języka to link <a>, a nie <button> z router.replace. Crawler widzi z każdej strony PL link
+  // do jej wersji EN (sekcja EN była nieosiągalna z linków: 0/29 URL-i od „/”). Cel:
+  // - artykuł bez tłumaczenia -> lista bloga (jak wcześniej toggleLang),
+  // - strona tylko-PL (lib/plOnly.js) -> odpowiednik EN z EN_ZAMIENNIK, spoke GEO -> hub, reszta -> /,
+  // - artykuł z rejestru publikacji bez wpisu w blogPosts (B1 przed partią 3, tylko podgląd) -> /blog,
+  // - inaczej ta sama strona w drugim języku.
+  // Dzięki temu klik EN nigdy nie kończy się 404 (wcześniej /en/sprawdz-widocznosc-w-ai = 404).
+  const celPrzelacznika = (loc) => {
+    if (loc === lang) return sciezka;
     // Articles can be published in one language only. Swapping the locale on the
     // same path would land on a URL that does not exist in the target language,
     // or serve the wrong language under it, so fall back to the blog index.
-    const post = blogPosts.find(p => p.slug === pathname);
-    const hasTranslation = !post || isPostAvailableIn(post, newLocale);
-    router.replace(hasTranslation ? pathname : '/blog', { locale: newLocale });
+    const post = blogPosts.find(p => p.slug === sciezka);
+    if (post) return isPostAvailableIn(post, loc) ? sciezka : '/blog';
+    if (loc === 'en') {
+      if (tylkoPl(sciezka)) return celPrzelacznikaEn(sciezka);
+      if (sciezka.startsWith('/blog/') && wpisPublikacji(sciezka)) return '/blog';
+    }
+    return sciezka;
   };
+  // Gotowy adres (np. '/cennik-pozycjonowania', '/en/seo-pricing') przez getPathname i zwykły
+  // next/link: Link z next-intl z propem locale dokleja prefiks domyślnego języka ('/pl/...'),
+  // a /pl/* to 308 (next.config.mjs). Przy localeDetection: false i bez ciasteczka języka
+  // prefiks nie jest potrzebny do przełączenia.
+  const hrefJezyka = (loc) => getPathname({ href: celPrzelacznika(loc), locale: loc });
+  const onLangClick = (newLocale) => {
+    if (lang === newLocale) return;
+    // Sesja z USA przełączająca /en na polski to sygnał złego targetowania reklam.
+    track('language_switch', { from: lang, to: newLocale, page_path: sciezka });
+  };
+  // Pozycja menu tylko wtedy, gdy strona istnieje w tym języku (tylko-PL nie w EN) i jest
+  // opublikowana (lib/publikacja.js); inaczej null (bez linku do 404).
+  const hrefMenu = (href) => ((lang === 'pl' || !tylkoPl(href)) ? hrefJesliOpublikowana(href) : null);
+  const hrefSprawdzarki = hrefMenu('/sprawdz-widocznosc-w-ai');
+  const hrefWizytowki = hrefMenu('/pozycjonowanie-wizytowki-google');
+  const hrefNarzedzi = hrefMenu('/narzedzia');
 
   useEffect(() => {
     const p = typeof window !== 'undefined' ? window.location.pathname : '';
@@ -242,42 +289,47 @@ export default function Header() {
                 1,42:1 miedzy aktywnym a nieaktywnym), grupa nie miala nazwy,
                 a "EN" bez lang="en" czytnik wymawial polska synteza. Stan
                 niesie teraz aria-pressed, a separator "|" nie jest czytany
-                (05.10.2026). */}
+                (05.10.2026). 5.11.2026 (T1b): przyciski zamienione na linki <a>
+                z hrefLang i lang; stan aktywny niesie aria-current. */}
             <div className="lang-switcher" role="group" aria-label={lang === 'pl' ? 'Język strony' : 'Site language'} style={{
               background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255,255,255,0.1)',
               borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
               color: scrolled ? 'var(--color-text-dark)' : '#FFFFFF',
               transition: 'all 0.7s ease'
             }}>
-              <button
-                type="button"
-                className={`lang-btn ${lang === 'pl' ? 'active' : ''}`}
-                aria-pressed={lang === 'pl'}
+              <NextLink
+                href={hrefJezyka('pl')}
+                hrefLang="pl"
                 lang="pl"
+                prefetch={false}
+                className={`lang-btn ${lang === 'pl' ? 'active' : ''}`}
+                aria-current={lang === 'pl' ? 'true' : undefined}
                 style={{ 
                   color: lang === 'pl' ? (scrolled ? 'var(--color-text-dark)' : '#FFFFFF') : (scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
                   transition: 'color 0.7s ease' 
                 }}
-                onClick={() => toggleLang('pl')}
+                onClick={() => onLangClick('pl')}
                 title="Polski"
               >
                 PL
-              </button>
+              </NextLink>
               <span aria-hidden="true" style={{ opacity: 0.35 }}>|</span>
-              <button
-                type="button"
-                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-                aria-pressed={lang === 'en'}
+              <NextLink
+                href={hrefJezyka('en')}
+                hrefLang="en"
                 lang="en"
+                prefetch={false}
+                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+                aria-current={lang === 'en' ? 'true' : undefined}
                 style={{ 
                   color: lang === 'en' ? (scrolled ? 'var(--color-text-dark)' : '#FFFFFF') : (scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
                   transition: 'color 0.7s ease' 
                 }}
-                onClick={() => toggleLang('en')}
+                onClick={() => onLangClick('en')}
                 title="English"
               >
                 EN
-              </button>
+              </NextLink>
             </div>
 
             {/* Logowanie do panelu klienta i panelu administratora. Drugorzędne
@@ -302,8 +354,9 @@ export default function Header() {
             {/* Header Hire Us Pill Button. Na stronach bez sekcji kontaktu
                 (regulamin, cookies) klikniecie zmienialo tylko adres na
                 #kontakt - przejdzDoSekcji przenosi wtedy na strone glowna
-                (05.10.2026). href bez zmian. */}
-            <a href={hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
+                (05.10.2026). 5.11.2026 (A3b/BL-02): na tych stronach takze href
+                prowadzi wprost do formularza strony glownej (bez JS i dla crawlera). */}
+            <a href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
               background: scrolled ? '#000000' : '#FFFFFF',
               color: scrolled ? '#FFFFFF' : '#000000',
               transition: 'all 0.7s ease'
@@ -429,13 +482,25 @@ export default function Header() {
                 <li style={{ '--delay': '0.4s' }}>
                   <Link href="/seo-lokalne-warszawa" onClick={closeMenu}>{lang === 'pl' ? 'Lokalne SEO' : 'Local SEO'}</Link>
                 </li>
+                {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
+                {hrefWizytowki && (
+                  <li style={{ '--delay': '0.41s' }}>
+                    <Link href={hrefWizytowki} onClick={closeMenu}>Pozycjonowanie wizytówki Google</Link>
+                  </li>
+                )}
                 <li style={{ '--delay': '0.42s' }}>
                   <Link href="/pozycjonowanie-w-ai" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search'}</Link>
                 </li>
-                {/* Sprawdzarka istnieje tylko po polsku (EN = 404). */}
-                {lang === 'pl' && (
+                {/* Sprawdzarka istnieje tylko po polsku (EN = 404; lista stron tylko-PL: lib/plOnly.js). */}
+                {hrefSprawdzarki && (
                   <li style={{ '--delay': '0.43s' }}>
-                    <Link href="/sprawdz-widocznosc-w-ai" onClick={closeMenu}>Sprawdź widoczność w AI</Link>
+                    <Link href={hrefSprawdzarki} onClick={closeMenu}>Sprawdź widoczność w AI</Link>
+                  </li>
+                )}
+                {/* Narzędzia (PLAN-v2 6.9): tylko PL i dopiero po publikacji partii 3. */}
+                {hrefNarzedzi && (
+                  <li style={{ '--delay': '0.44s' }}>
+                    <Link href={hrefNarzedzi} onClick={closeMenu}>Narzędzia</Link>
                   </li>
                 )}
                 <li style={{ '--delay': '0.45s' }}>

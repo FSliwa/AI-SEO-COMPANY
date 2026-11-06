@@ -1,9 +1,20 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/i18n/routing';
+import NextLink from 'next/link';
+import { Link, usePathname, useRouter, getPathname } from '@/i18n/routing';
 import { hash, homeHash, sectionId, przejdzDoSekcji } from '@/lib/anchors';
+import { tylkoPl } from '@/lib/plOnly';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+import { track } from '@/lib/track';
+
+// A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
+// pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
+// Integracja 5.11.2026: także hub narzędzi i N1 (partia 3; celowo bez <Contact />, grupa narzedzia
+// pkt 8) - porównanie ze `sciezka` (szablon z wstawionym slugiem), bo pathname to '/narzedzia/[slug]'.
+const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/narzedzia', '/narzedzia/generator-llms-txt'];
 
 export default function Footer() {
   const lang = useLocale();
@@ -11,7 +22,24 @@ export default function Footer() {
   const t = useTranslations('footer');
   const router = useRouter();
   const pathname = usePathname();
+  const params = useParams();
+  // Jak w Header.jsx: na trasach dynamicznych pathname to szablon ('/narzedzia/[slug]').
+  const sciezka = pathname && pathname.includes('[')
+    ? pathname.replace(/\[(?:\.\.\.)?([^\]]+)\]/g, (_, klucz) => {
+      const v = params?.[klucz];
+      return Array.isArray(v) ? v.join('/') : String(v ?? '');
+    })
+    : pathname;
   const stopkaRef = useRef(null);
+  // Link w stopce tylko do strony, która istnieje w tym języku (tylko-PL: lib/plOnly.js) i jest
+  // opublikowana (lib/publikacja.js); inaczej null = brak pozycji (bez linku do 404).
+  const hrefStopki = (href) => ((lang === 'pl' || !tylkoPl(href)) ? hrefJesliOpublikowana(href) : null);
+  const hrefSprawdzarki = hrefStopki('/sprawdz-widocznosc-w-ai');
+  const hrefZmianyAgencji = hrefStopki('/zmiana-agencji-seo');
+  const hrefPorownan = hrefStopki('/porownania');
+  const hrefNarzedzi = hrefStopki('/narzedzia');
+  const hrefWizytowki = hrefStopki('/pozycjonowanie-wizytowki-google');
+  const drugiJezyk = lang === 'pl' ? 'en' : 'pl';
 
   // Plywajacy przycisk na telefonie i tablecie pokazuje sie dopiero po
   // przewinieciu pierwszego ekranu: stojac od poczatku w prawym dolnym rogu
@@ -82,9 +110,10 @@ export default function Footer() {
       </noscript>
       {/* onClick: na stronach bez sekcji kontaktu (regulamin, cookies)
           przycisk zmienial tylko adres na #kontakt - teraz przenosi na strone
-          glowna do formularza (05.10.2026). href bez zmian. */}
+          glowna do formularza (05.10.2026). 5.11.2026 (A3b/BL-02): na tych
+          stronach takze href prowadzi wprost do formularza strony glownej. */}
       <a
-        href={hash('kontakt', lang)}
+        href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)}
         onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)}
         className={`kota-floating-cta${poPierwszymEkranie ? ' is-visible' : ''}${nadFormularzem ? ' is-nad-formularzem' : ''}`}
         data-cta="floating"
@@ -103,7 +132,7 @@ export default function Footer() {
                 {t('desc')}
               </p>
               <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '1rem', lineHeight: '1.5' }}>
-                <p style={{ margin: 0 }}><strong>AI SEO Company</strong> {lang === 'pl' ? 'to marka należąca do:' : 'is a brand of:'}</p>
+                <p style={{ margin: 0 }}><strong>AI SEO COMPANY</strong> {lang === 'pl' ? 'to marka należąca do:' : 'is a brand of:'}</p>
                 {/* Art. 300(5) KSH: a prosta spółka akcyjna must state its firm,
                     registered office and address, the registry court and KRS
                     number, NIP, and the amount of share capital (kapitał akcyjny). */}
@@ -127,10 +156,28 @@ export default function Footer() {
                 <li><Link href="/blog">{lang === 'en' ? 'SEO Blog' : 'Blog SEO'}</Link></li>
                 {/* 4.11.2026 (etap 0 planu z filmu): /panel-klienta, sprawdzarka i poradnik
                     o zmianie agencji mialy 1-2 linki wewnetrzne. Sprawdzarka i poradnik
-                    istnieja tylko po polsku (EN = 404), wiec w EN ich nie linkujemy. */}
+                    istnieja tylko po polsku (EN = 404), wiec w EN ich nie linkujemy.
+                    5.11.2026: lista stron tylko-PL z lib/plOnly.js, nowe strony PLAN-v2
+                    (Porownania 6.1, Narzedzia 6.9) dopiero po publikacji (lib/publikacja.js). */}
                 <li><Link href="/panel-klienta">{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</Link></li>
-                {lang === 'pl' && <li><Link href="/sprawdz-widocznosc-w-ai">Sprawdź widoczność w AI</Link></li>}
-                {lang === 'pl' && <li><Link href="/zmiana-agencji-seo">Zmiana agencji SEO</Link></li>}
+                {hrefSprawdzarki && <li><Link href={hrefSprawdzarki}>Sprawdź widoczność w AI</Link></li>}
+                {hrefZmianyAgencji && <li><Link href={hrefZmianyAgencji}>Zmiana agencji SEO</Link></li>}
+                {hrefPorownan && <li><Link href={hrefPorownan}>Porównania</Link></li>}
+                {hrefNarzedzi && <li><Link href={hrefNarzedzi}>Narzędzia</Link></li>}
+                {/* T1b (SA-05): stały link do drugiej wersji językowej - sekcja EN osiągalna z linków.
+                    next/link z gotowym adresem ('/' albo '/en'): Link z next-intl z propem locale
+                    dawał '/pl' (308). */}
+                <li>
+                  <NextLink
+                    href={getPathname({ href: '/', locale: drugiJezyk })}
+                    hrefLang={drugiJezyk}
+                    lang={drugiJezyk}
+                    prefetch={false}
+                    onClick={() => track('language_switch', { from: lang, to: drugiJezyk, page_path: pathname })}
+                  >
+                    {lang === 'pl' ? 'English version' : 'Wersja polska'}
+                  </NextLink>
+                </li>
               </ul>
             </div>
             <div className="footer-col">
@@ -140,6 +187,8 @@ export default function Footer() {
                 <li><Link href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO i analiza' : 'SEO Audit & Analysis'}</Link></li>
                 <li><Link href="/projektowanie-stron-internetowych">{lang === 'pl' ? 'Projektowanie stron WWW' : 'Web Design'}</Link></li>
                 <li><Link href="/seo-lokalne-warszawa">{lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}</Link></li>
+                {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
+                {hrefWizytowki && <li><Link href={hrefWizytowki}>Pozycjonowanie wizytówki Google</Link></li>}
                 <li><Link href="/pozycjonowanie-w-ai">{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search Optimization'}</Link></li>
               </ul>
             </div>

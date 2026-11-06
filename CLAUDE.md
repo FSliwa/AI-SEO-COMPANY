@@ -20,6 +20,23 @@ punkty. Przechodzić **przed commitem**, nie po.
 - [ ] **Wpis w `lib/blogPosts.js`** z `plOnly`/`enOnly`, jeśli artykuł istnieje
       tylko w jednym języku. Bez tego pusta wersja trafia do sitemapy jako strona
       bez treści.
+- [ ] **Artykuł jednojęzyczny (`plOnly`/`enOnly`) = slug na liście 308
+      w `next.config.mjs`** (reguły T8 na początku `redirects()`, przed `/pl/:path*`).
+      `plOnly` → lista `/en/blog/<slug>` → `/blog/<slug>`; `enOnly` → lista
+      `/blog/<slug>` i `/pl/blog/<slug>` → `/en/blog/<slug>`. Bez tego wersja w drugim
+      języku odpowiada 200 z noindex + canonical do innego adresu (sprzeczne sygnały,
+      TS-07). Wyjątek: artykuł za bramką publikacji (np. B1) sam zwraca 404 dla EN — nie
+      dopisywać go do listy.
+- [ ] **Nowa strona tylko-PL** (porównanie, narzędzie, spoke GEO, raport) = wpis
+      w `lib/publikacja.js` (partia, flaga, title, meta) i prefiks albo ścieżka
+      w `lib/plOnly.js`; w `i18n/routing.js` tylko zwykły string (slug EN = slug PL),
+      strona woła `wymagajStronyPl()` → `/en/...` = 404 wprost. Nigdy slugu EN dla
+      strony bez wersji EN: middleware zamienia 307 next-intl na 308, więc slug EN
+      utrwaliłby trwałe przekierowanie na 404 (BL-01, TS-06).
+- [ ] **Podgląd stron nieopublikowanych** tylko lokalnie:
+      `NEXT_PUBLIC_PODGLAD_PARTII=1 npm run build`. Nigdy w zmiennych Vercel —
+      flaga publikuje (sitemapa, linki, karty hubów, nawigacja) wszystkie zbudowane
+      partie naraz. Publikacja partii = `opublikowana: true` w `lib/publikacja.js`.
 - [ ] **Linki wewnętrzne**: do huba + 2–4 stron powiązanych, w obie strony.
 - [ ] **Autor, data, źródła** przy twierdzeniach z liczbami.
 - [ ] `npm run build` przechodzi.
@@ -41,6 +58,12 @@ Przed reakcją na flagę — zweryfikować u źródła.
   wyłącza tę kategorię (5.5, „poza nawigacją/stopką").
 - **„Too many headings"** na artykułach 4000+ słów ze spisem treści — kryterium
   playbooka dla długich tekstów jest spełnione.
+- **Łańcuch `http://ai-seo-company.pl` → `https://ai-seo-company.pl` →
+  `https://www.ai-seo-company.pl`** (2 skoki; flaga Seobility „błędne przekierowanie
+  WWW”) — Vercel zawsze najpierw przekierowuje HTTP → HTTPS na tym samym hoście,
+  zanim zadziała reguła domeny, więc w aplikacji tego nie skrócimy (SA-16, curl
+  5.11.2026). `http://www` i `https://` apeksu mają po 1 skoku. W profilach,
+  katalogach, wizytówce i stopkach maili zawsze pełny adres `https://www.…`.
 
 ## Czego nie wolno dopisywać dla punktów
 

@@ -7,6 +7,7 @@ import CookiesBanner from '@/components/CookiesBanner';
 import AnalyticsEvents from '@/components/AnalyticsEvents';
 import AttributionCapture from '@/components/AttributionCapture';
 import RuchUzytkownika from '@/components/RuchUzytkownika';
+import WebVitals from '@/components/WebVitals';
 
 // Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
 // w HTML każdej strony z tagiem), więc może być w kodzie; zmienna środowiskowa
@@ -30,7 +31,11 @@ function localizedJsonLd(locale) {
   const data = JSON.parse(JSON.stringify(jsonLdDataPl));
   for (const node of data['@graph']) {
     if (node['@id'] === 'https://www.ai-seo-company.pl/#organization') {
-      node.description = 'Modern SEO agency in Warsaw. We design search-ready websites, run professional SEO audits and deliver effective search engine optimization and AI search optimization (ChatGPT, Gemini, Google AI). Every client gets a 24/7 client portal with Google data and a public demo.';
+      // 5.11.2026 (PLAN-v2 6.24, E1; AV-05 po weryfikacji): zdanie encji EN, to samo co na
+      // /en/about-us i w profilach EN. Pomiar AI tylko w SEO Premium - nie „każdy klient”.
+      node.description = 'AI SEO COMPANY is a Warsaw-based SEO and AI search optimization (GEO) agency for small and medium businesses: website and Google Business Profile SEO, SEO audits, Next.js websites and, in SEO Premium, weekly visibility tracking in ChatGPT, Perplexity, Gemini and Google AI Overviews. Every client gets a 24/7 client portal, a monthly contract and transparent pricing from €450 net a month.';
+      // Te same tematy co w wersji PL, po angielsku (zasada tej funkcji: angielskie pola tekstowe).
+      node.knowsAbout = ['Search engine optimization', 'AI search optimization (GEO, Generative Engine Optimization)', 'Local SEO', 'SEO audit', 'Web design'];
       if (node.areaServed && node.areaServed.name) node.areaServed.name = 'Warsaw and Poland';
     }
     if (node['@type'] === 'WebSite') {
@@ -65,12 +70,17 @@ export async function generateMetadata({ params }) {
     description: isEn
       ? 'Modern SEO agency from Warsaw. We design websites that sell, run professional SEO audits and deliver measurable search engine optimization.'
       : 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
+    // 5.11.2026 (PLAN-v2 rozdz. 7, FAV; BL-10 po weryfikacji): iOS nie używa ikony SVG, a
+    // /favicon.ico i /apple-touch-icon.png zwracały 404. Oba pliki w public/ są wygenerowane
+    // z public/ai-seo-company-logotyp-v2.png (białe tło). SVG zostaje ikoną dla przeglądarek,
+    // które go obsługują; ICO dla starszych klientów i czystych logów.
     icons: {
       icon: [
+        { url: '/favicon.ico', sizes: '48x48' },
         { url: '/ai-seo-company-logotyp.svg?v=2', type: 'image/svg+xml', sizes: 'any' }
       ],
-      shortcut: '/ai-seo-company-logotyp.svg?v=2',
-      apple: '/ai-seo-company-logotyp.svg?v=2',
+      shortcut: '/favicon.ico',
+      apple: '/apple-touch-icon.png',
     },
     openGraph: {
       siteName: 'AI SEO COMPANY',
@@ -119,7 +129,11 @@ const jsonLdDataPl = {
         { '@type': 'PropertyValue', 'propertyID': 'KRS', 'value': '0001239983' },
         { '@type': 'PropertyValue', 'propertyID': 'REGON', 'value': '544761611' }
       ],
-      'description': 'Nowoczesna agencja SEO Warszawa. Projektujemy wyszukiwalne strony internetowe, przeprowadzamy profesjonalny audyt SEO i realizujemy skuteczne pozycjonowanie stron oraz pozycjonowanie w AI (ChatGPT, Gemini, Google AI). Każdy klient dostaje panel klienta 24/7 z danymi z Google i publicznym demo.',
+      // 5.11.2026 (PLAN-v2 6.24, E1; AV-05 po weryfikacji): jedno zdanie encji (59 słów) w JSON-LD,
+      // public/llms.txt, pierwszym akapicie /o-nas i w profilach Clutch, Sortlist, LinkedIn - modele
+      // AI składają encję z powtarzalnego opisu, a dotąd każde miejsce mówiło co innego. Zmiana
+      // dotyczy tylko <script> (strażnik fraz go pomija); title i description strony głównej bez zmian.
+      'description': 'AI SEO COMPANY to agencja SEO i pozycjonowania w AI (GEO) z Warszawy dla małych i średnich firm: pozycjonowanie stron i wizytówek Google, audyty SEO, strony w Next.js oraz, w SEO Premium, cotygodniowy pomiar widoczności w ChatGPT, Perplexity, Gemini i przeglądach AI Google. Każdy klient ma panel klienta 24/7, umowę miesięczną i jawny cennik od 1 900 zł netto miesięcznie.',
       'url': 'https://www.ai-seo-company.pl/',
       'logo': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.svg',
       'image': 'https://www.ai-seo-company.pl/ai-seo-company-logotyp-v2.png',
@@ -157,9 +171,27 @@ const jsonLdDataPl = {
         'name': 'Warszawa i Polska'
       },
       'priceRange': '$$$',
+      // 5.11.2026 (PLAN-v2 6.24, E1; AV-04 po weryfikacji): założyciel jako odwołanie do węzła
+      // Person z /o-nas (AUTHOR_ID w components/about/AboutAuthor.jsx - tamten plik jest
+      // 'use client', więc stałej nie importujemy do layoutu serwerowego, tylko powtarzamy adres).
+      'founder': { '@id': 'https://www.ai-seo-company.pl/o-nas#filip-sliwa' },
+      // Rozwinięcie skrótu GEO (AV-19): bez niego modele czytają „GEO” jako geotargetowanie.
+      'knowsAbout': [
+        'Pozycjonowanie stron',
+        'Pozycjonowanie w AI (GEO, Generative Engine Optimization)',
+        'SEO lokalne',
+        'Audyt SEO',
+        'Projektowanie stron internetowych'
+      ],
       // 4.11.2026: profile firmy poza stroną (modele AI i Google łączą je w jedną encję).
-      // Sortlist ma nazwę prawną; LinkedIn i Clutch dopisać po założeniu profili.
-      'sameAs': ['https://www.sortlist.co.uk/agency/ai-signals-company']
+      // 5.11.2026 (AV-04): + Clutch (profil cytowany przez Perplexity). Nazwę wyświetlaną
+      // „AI SEO COMPANY” (nazwa prawna w danych firmy) na obu profilach ustawia Filip (E1).
+      // Kolejne adresy dopisywać w dniu, w którym zwracają 200 i mają nazwę „AI SEO COMPANY”:
+      // LinkedIn firmy, kanał YouTube, Wikidata, Profil Firmy w Google (też jako hasMap, GBP-SA).
+      'sameAs': [
+        'https://www.sortlist.co.uk/agency/ai-signals-company',
+        'https://clutch.co/profile/ai-signals-company-prosta-sp-ka-akcyjna'
+      ]
     },
     {
       '@type': 'WebSite',
@@ -276,6 +308,8 @@ export default async function RootLayout({ children, params }) {
             {children}
           </RuchUzytkownika>
           <AnalyticsEvents />
+          {/* 5.11.2026 (RUM, TS-01): Core Web Vitals tylko do GA4 547365077. */}
+          <WebVitals />
           <AttributionCapture />
         </NextIntlClientProvider>
       </body>

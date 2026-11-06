@@ -57,7 +57,8 @@ export default function AboutValues() {
               <RevealItem style={{ display: 'flex', alignItems: 'stretch', flex: 1, minWidth: 260 }}>
                 <div className="kota-pillar-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <div className="kota-pillar-num">{pillar.num}</div>
-                  <h4>{pillar.title}</h4>
+                  {/* 5.11.2026 (PLAN-v2 6.24, SA-07): h4 -> h3; wygląd z reguły „.kota-pillar-card h3, .kota-pillar-card h4” w globals.css. */}
+                  <h3>{pillar.title}</h3>
                   <p style={{ flex: 1 }}>{pillar.desc}</p>
                 </div>
               </RevealItem>

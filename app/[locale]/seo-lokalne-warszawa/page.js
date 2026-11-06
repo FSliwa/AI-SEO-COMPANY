@@ -27,6 +27,16 @@ import ServiceSchema from '@/components/ServiceSchema';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
+import Image from 'next/image';
+import Byline from '@/components/Byline';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+
+// 5.11.2026 (LO1; PLAN-v2 6.21, OP-09, OP-10, AV-06/Z1, CB-16, OP-04) - strona chroniona: tylko
+// DODAWANIE w wersji PL (answer, nowe sekcje pod lang === 'pl'); answerEn i EN bez zmian poza kaflem Z1.
+// Nowe pytania mają tylkoPl: true - na /en/local-seo-warsaw zostają 3 pytania, na PL jest 6.
+// L1 (/pozycjonowanie-wizytowki-google) jest w partii 2: zdania z linkiem do niej renderują się
+// dopiero po publikacji (hrefJesliOpublikowana, reguła 6.0). Link do sprawdzarki - po T0.2.
+const HREF_L1 = hrefJesliOpublikowana('/pozycjonowanie-wizytowki-google');
 
 const faqData = [
   {
@@ -44,11 +54,39 @@ const faqData = [
   {
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
     questionEn: 'How does local SEO differ from traditional SEO?',
-    answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów.',
+    answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów. Oba podejścia łączymy: zakres ogólnopolski opisujemy na stronie o <a href="/pozycjonowanie-stron-internetowych" style="text-decoration:underline">pozycjonowaniu stron</a>.',
     answerEn: 'Local SEO (or local search engine optimization) focuses on the "Local Pack"—results from Google Maps—and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
+  },
+  {
+    // Nowe (LO1, OP-10): 40 słów; „ile kosztuje pozycjonowanie lokalne” 10/mies. (DataForSEO, 4.11.2026).
+    id: 'ile-kosztuje-pozycjonowanie-lokalne',
+    tylkoPl: true,
+    question: 'Ile kosztuje pozycjonowanie lokalne?',
+    answer: 'Pozycjonowanie lokalne jest w cenie każdego pakietu, od 1 900 zł netto miesięcznie w SEO Standard. Nie dopłacasz za optymalizację wizytówki Google ani za posty i odpowiedzi na opinie. Umowa jest miesięczna, a pełne porównanie pakietów znajdziesz w <a href="/cennik-pozycjonowania" style="text-decoration:underline">cenniku pozycjonowania</a>.',
+  },
+  {
+    // Nowe (LO1, OP-10): 44 słowa, bez liczby Senuto. Po T0.2 (POST /api/ai-check z pustym body = 400)
+    // link 19 na słowach „Sprawdź za darmo, czy ChatGPT poleca Twoją firmę” → /sprawdz-widocznosc-w-ai.
+    id: 'czy-chatgpt-poleca-firmy-lokalne',
+    tylkoPl: true,
+    question: 'Czy ChatGPT poleca firmy lokalne?',
+    answer: 'Coraz częściej tak. ChatGPT z wyszukiwaniem w sieci korzysta z wizytówek, opinii i katalogów firm, więc dobrze prowadzone SEO lokalne (ang. local SEO) pomaga też w odpowiedziach modeli. Sprawdź za darmo, czy ChatGPT poleca Twoją firmę, gdy klient pyta o usługę w Twoim mieście.',
+  },
+  {
+    // Nowe (LO1, CB-16): 45 słów (+7 z linkiem do L1 po jej publikacji); celowo inne zdania niż
+    // FAQ 6 na L1 („Czym różni się pozycjonowanie wizytówki od pozycjonowania strony?”).
+    // Zakres = karty i karuzela tej strony (kategorie, posty, NAP, nazwy dzielnic) + Z1 (opinie).
+    id: 'seo-lokalne-a-wizytowka-google',
+    tylkoPl: true,
+    question: 'Czy SEO lokalne obejmuje prowadzenie wizytówki Google?',
+    answer: 'Tak. Prowadzenie wizytówki Google jest w każdym naszym pakiecie SEO: uzupełniamy kategorie i usługi, dodajemy zdjęcia i posty, odpowiadamy na opinie i pilnujemy, żeby nazwa, adres i telefon były takie same jak w katalogach. Na stronie firmy dopisujemy treści z nazwami dzielnic, które wzmacniają widoczność w Mapach.'
+      + (HREF_L1 ? ` Więcej o tej części pracy: <a href="${HREF_L1}" style="text-decoration:underline">pozycjonowanie wizytówki Google</a>.` : ''),
   }
 ];
 
+// 5.11.2026 (ALT; OP-16): karty 2–3 to zdjęcia stockowe (kłódka na drzwiach, 3 osoby przy laptopach),
+// których alt PL był kopią H3 karty - decorative: true = w PL alt="" i bez title (SubpagePortfolio.jsx).
+// Karta 1 (alt i plik z frazą „pozycjonowanie lokalne”) bez zmian do D18; alty EN bez zmian.
 const portfolioCases = [
   {
     tag: 'WIZYTÓWKA GOOGLE (GBP)',
@@ -78,6 +116,7 @@ const portfolioCases = [
     description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Pilnujemy, żeby nazwa, adres i telefon były wszędzie identyczne — to mocny sygnał zaufania dla Google.',
     descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We keep the Name, Address and Phone identical everywhere, which is a powerful trust signal for Google.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
+    decorative: true,
     imgAltEn: 'Local authority and NAP consistency',
     imgTitleEn: 'Building local authority',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
@@ -96,12 +135,15 @@ const portfolioCases = [
     description: 'Wdrażamy w Twojej firmie zautomatyzowane procesy pozyskiwania pięciogwiazdkowych recenzji od zadowolonych klientów. Opinie to najważniejszy czynnik',
     descriptionEn: 'We implement automated processes for collecting reviews from satisfied customers. In local search, reviews are the strongest conversion factor there is.',
     image: '/images/unsplash-1522202176988-66273c2fd55f.jpg',
+    decorative: true,
     imgAltEn: 'Review collection strategy',
     imgTitleEn: 'Review collection strategy',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
-    metric: '5.0',
-    metricLabel: 'Średnia ocen',
-    metricLabelEn: 'Average rating',
+    // Z1 / AV-06 (5.11.2026): „Średnia ocen 5.0” nie miała źródła. Teraz proces, który obiecujemy
+    // (PLAN-v2 6.26, LOK: odpowiedź na każdą opinię ≤ 48 h), a nie wynik klienta.
+    metric: '≤ 48 h',
+    metricLabel: 'Odpowiedź na każdą opinię',
+    metricLabelEn: 'Reply to every review',
     metric2: 'Trust',
     metric2Label: 'Wiarygodność',
     metric2LabelEn: 'Credibility'
@@ -162,6 +204,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const lang = locale;
+  // FAQPage = pytania widoczne na stronie: PL 6, EN 3 (bez pytań tylkoPl).
+  const faqWidoczne = lang === 'pl' ? faqData : faqData.filter((f) => !f.tylkoPl);
   return (
     <>
       <ServiceSchema variant="seo-lokalne" />
@@ -241,6 +285,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
                 </a>
               </div>
+              {/* OP-14: autor i data (LASTMOD); na /en Byline nic nie renderuje. */}
+              <Byline sciezka="/seo-lokalne-warszawa" style={{ margin: '2rem 0 0' }} />
             </Reveal>
           </div>
         </section>
@@ -269,6 +315,13 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   ? 'Zrozum, jak zachowują się użytkownicy smartfonów poszukujący usług.'
                   : 'Understand how smartphone users behave when they search for services near them.'}
               </p>
+              {/* OP-09 (link 21): osłabia kanibalizację „pozycjonowanie stron warszawa” ze stroną główną;
+                  anchor zgodny z istniejącym „agencja seo warszawa” → /. Bez nowego H2 z „Warszawa” (G1). */}
+              {lang === 'pl' && (
+                <p style={{ fontSize: '1.05rem', color: '#333336', margin: '1rem auto 0 auto', lineHeight: 1.6 }}>
+                  Jeśli szukasz agencji do pozycjonowania całej strony, a nie tylko widoczności w okolicy, zobacz, jak pracuje nasza <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>agencja SEO w Warszawie</Link>.
+                </p>
+              )}
             </Reveal>
 
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
@@ -364,6 +417,42 @@ export default async function SeoLokalneWarszawaPage({ params }) {
           </div>
         </section>
 
+        {/* LO1 (OP-10, PLAN-v2 6.21): information gain z panelu - pomiar siatką 7×7 (49 punktów co 14 dni,
+            PanelPageClient.jsx:27). Tylko PL. Obraz = demo panelu, więc podpis „dane przykładowe”; od W4
+            skan GRID własnej wizytówki z datą skanu (zmiana obrazu i podpisu = dodanie treści). */}
+        {lang === 'pl' && (
+          <section style={{ padding: '80px 0' }}>
+            <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
+              <Reveal>
+                <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
+                  Jak mierzymy pozycjonowanie lokalne: siatka 7×7 w Mapach Google
+                </h2>
+                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.65, marginBottom: '2rem' }}>
+                  Pozycja wizytówki w Mapach Google zależy od tego, gdzie stoi szukający. Dlatego co 14 dni sprawdzamy ją w siatce 7×7, czyli w 49 punktach wokół adresu firmy, a wynik widzisz w panelu klienta jako mapę. Od razu widać, w których miejscach wokół firmy jesteś w TOP 3, a gdzie wizytówka jeszcze nie wchodzi do pakietu lokalnego.
+                </p>
+                <figure style={{ margin: 0 }}>
+                  <Image
+                    src="/images/panel/mapy.webp"
+                    alt="Zakładka Mapy Google w panelu klienta: dwie siatki 7×7 z pozycją wizytówki demonstracyjnej stolarni dla fraz „stolarz” i „meble na wymiar” (dane przykładowe)"
+                    width={1600}
+                    height={1025}
+                    sizes="(max-width: 960px) 100vw, 900px"
+                    style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '20px', boxShadow: '0 24px 60px rgba(15, 23, 42, 0.14)' }}
+                  />
+                  <figcaption style={{ marginTop: '0.75rem', fontSize: '0.9rem', lineHeight: 1.5, color: '#6E6E73' }}>
+                    Panel klienta, dane przykładowe: zielone punkty to miejsca, z których wizytówka jest w TOP 3 Map.
+                  </figcaption>
+                </figure>
+                {HREF_L1 && (
+                  <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.65, margin: '2rem 0 0 0' }}>
+                    Pracę nad samym Profilem Firmy w Google, od kategorii po posty i opinie, opisujemy osobno na stronie <Link href={HREF_L1} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>pozycjonowanie wizytówki Google</Link>.
+                  </p>
+                )}
+              </Reveal>
+            </div>
+          </section>
+        )}
+
         {/* Local SEO Strategy Section */}
         <section style={{ padding: '80px 0', background: '#F5F5F7' }}>
             <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
@@ -410,7 +499,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <Pricing />
 
         {/* FAQ Section */}
-        <AppleFaq faqData={faqData} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : "Local Search Engine Optimization FAQs"} />
+        <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : "Local Search Engine Optimization FAQs"} />
 
         <Contact />
       </main>

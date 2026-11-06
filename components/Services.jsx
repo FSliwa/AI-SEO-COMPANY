@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { sectionId } from '@/lib/anchors';
+import { Link } from '@/i18n/routing';
 
 export default function Services() {
   const lang = useLocale();
@@ -145,6 +146,24 @@ export default function Services() {
               )}
             </ul>
           </RevealItem>
+
+          {/* Card 4 - 5.11.2026 (HOME; PLAN-v2 6.24, MSA-07): strona główna nie linkowała w treści do huba GEO
+              (crawl 5.11: hub ma linki w treści tylko z cennika i sprawdzarki). Strona chroniona: tylko
+              dodanie, tylko PL (plan nie podaje tekstu EN), title/description bez zmian. Tekst 33 słowa,
+              celowo inny niż lead huba (playbook 5.5). Pełna szerokość siatki: 4. karta nie zostaje sama
+              w trzeciej kolumnie. Link do sprawdzarki dopiero po T0.2. */}
+          {lang === 'pl' && (
+            <RevealItem className="service-card" style={{ gridColumn: '1 / -1' }}>
+              <div className="service-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
+              </div>
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>Pozycjonowanie w AI (GEO)</h3>
+              <p style={{ maxWidth: '760px' }}>Klienci coraz częściej pytają ChatGPT i Gemini, jaką firmę wybrać. Mierzymy, czy modele wymieniają Twoją markę w odpowiedziach na pytania Twoich klientów, i poprawiamy strony, z których korzystają. Pomiar co tydzień w panelu.</p>
+              <Link href="/pozycjonowanie-w-ai" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' }}>
+                Zobacz, jak działa pozycjonowanie w AI →
+              </Link>
+            </RevealItem>
+          )}
         </RevealStagger>
       </div>
     </section>

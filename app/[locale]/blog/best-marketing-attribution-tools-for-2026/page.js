@@ -68,7 +68,7 @@ export default async function ArticleAttributionTools({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                The short answer: <a href="https://dreamdata.io/" target="_blank" rel="noopener noreferrer">Dreamdata</a> for B2B revenue attribution, <a href="https://www.triplewhale.com/" target="_blank" rel="noopener noreferrer">Triple Whale</a> for Shopify and DTC, <a href="https://www.callrail.com/" target="_blank" rel="noopener noreferrer">CallRail</a> for phone-lead and offline linking, <a href="https://www.ruleranalytics.com/" target="_blank" rel="noopener noreferrer">Ruler Analytics</a> for agencies needing closed-loop reporting, and <a href="https://business.adobe.com/products/analytics/adobe-analytics.html" target="_blank" rel="noopener noreferrer">Adobe Analytics</a> for enterprise teams that need full model control. These are among the best marketing attribution tools available today.
+                The short answer: <a href="https://dreamdata.io/" target="_blank" rel="noopener noreferrer">Dreamdata</a> for B2B revenue attribution, <a href="https://www.triplewhale.com/" target="_blank" rel="noopener noreferrer">Triple Whale</a> for Shopify and DTC, <a href="https://www.callrail.com/" target="_blank" rel="noopener noreferrer">CallRail</a> for phone-lead and offline linking, <a href="https://www.ruleranalytics.com/" target="_blank" rel="noopener noreferrer">Ruler Analytics</a> for agencies needing closed-loop reporting, and <a href="https://business.adobe.com/products/adobe-analytics.html" target="_blank" rel="noopener noreferrer">Adobe Analytics</a> for enterprise teams that need full model control. These are among the best marketing attribution tools available today.
               </p>
               
               <p>Here is the full breakdown by use case:</p>
@@ -85,7 +85,7 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><strong>Free baseline:</strong> Google Analytics 4 (GA4)</li>
               </ul>
               
-              <p>These leading attribution platforms and top marketing attribution software options cover the majority of use cases. Pick the “best for” match above, then run the vendor checklist in the how-to-choose section before signing anything. For teams that prefer a managed approach instead of self-serve tools, see the <Link href="/pozycjonowanie-stron-internetowych">B2B SEO & Marketing services</Link> offered by AI SEO Company.</p>
+              <p>These leading attribution platforms and top marketing attribution software options cover the majority of use cases. Pick the “best for” match above, then run the vendor checklist in the how-to-choose section before signing anything. For teams that prefer a managed approach instead of self-serve tools, see the <Link href="/pozycjonowanie-stron-internetowych">B2B SEO & Marketing services</Link> offered by AI SEO COMPANY.</p>
 
               <ArticleTOC items={tocItems} />
               
@@ -310,7 +310,7 @@ export default async function ArticleAttributionTools({ params }) {
               <p>Most decisions go wrong when teams evaluate tools before auditing their own data. Fix UTMs and CRM mapping first, learn how to measure marketing attribution properly, then select from the best marketing attribution tools and top marketing attribution software available.</p>
 
               <h2 id="partner">When hiring an attribution implementation partner makes more sense than going it alone</h2>
-              <p><Link href="/pozycjonowanie-stron-internetowych">AI SEO Company</Link> offers a managed path... If you want to start with a data audit, the <Link href="/audyt-seo">SEO audit service</Link> is the right first step.</p>
+              <p>AI SEO COMPANY offers a managed path through <Link href="/pozycjonowanie-stron-internetowych">our SEO services</Link>. If you want to start with a data audit, the <Link href="/audyt-seo">SEO audit service</Link> is the right first step.</p>
 
               <h2 id="sources">Useful sources for deeper reading</h2>
               <ul>
@@ -322,7 +322,7 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><a href="https://funnel.io/pricing" target="_blank" rel="noopener noreferrer">Funnel Pricing</a></li>
                 <li><a href="https://segmentstream.com/pricing" target="_blank" rel="noopener noreferrer">SegmentStream Pricing</a></li>
                 <li><a href="https://www.hubspot.com/pricing/marketing" target="_blank" rel="noopener noreferrer">HubSpot Marketing Hub Pricing</a></li>
-                <li><Link href="/pozycjonowanie-stron-internetowych">AI SEO Company – SEO & Analytics Services</Link></li>
+                <li><Link href="/pozycjonowanie-stron-internetowych">AI SEO COMPANY – SEO & Analytics Services</Link></li>
               </ul>
               
               <BlogCTA 

@@ -19,12 +19,20 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import AudytClient from '@/components/AudytClient';
 import ServiceSchema from '@/components/ServiceSchema';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+
+// 5.11.2026 (AU1; PLAN-v2 6.19, OP-07, OP-03, OP-04, OP-15, OP-16, MSA-02) - strona chroniona:
+// tylko DODAWANIE treści w wersji PL (answer), answerEn bez zmian. Nowe pytanie ma tylkoPl: true
+// (AudytClient je odfiltrowuje na /en/seo-audit). Audyt widoczności w AI linkuje do A5 dopiero po
+// jej publikacji, do tego czasu do huba (ten sam cel co w tabeli sekcji cenowej, bez konfliktu anchorów).
+// Pytanie o audyt dla firm z Warszawy - dopiero po D19 (adres biura). Link do sprawdzarki - po T0.2.
+const HREF_AUDYT_AI = hrefJesliOpublikowana('/pozycjonowanie-w-ai/audyt-widocznosci') ?? '/pozycjonowanie-w-ai';
 
 const faqAudyt = [
   {
     question: 'Co zawiera profesjonalny audyt SEO?',
     questionEn: 'What does a professional SEO audit include?',
-    answer: 'Audyt SEO obejmuje ponad 50 punktów kontrolnych, w tym analizę Core Web Vitals, indeksację w Google, strukturę nagłówków i adresów URL, profil linków zwrotnych, badanie fraz kluczowych oraz wytyczne UX/CRO.',
+    answer: 'Audyt SEO obejmuje ponad 50 punktów kontrolnych, w tym analizę Core Web Vitals, indeksację w Google, strukturę nagłówków i adresów URL, profil linków zwrotnych, badanie fraz kluczowych oraz wytyczne UX/CRO. Audyt SEO strony internetowej dzielimy na trzy obszary: technikę i Core Web Vitals, treści i semantykę oraz profil linków.',
     answerEn: 'An SEO audit covers over 50 checkpoints, including Core Web Vitals analysis, Google indexing, heading and URL structure, backlink profile, keyword research, and UX/CRO guidelines.'
   },
   {
@@ -50,7 +58,7 @@ const faqAudyt = [
   {
     question: 'Czy sam audyt wystarczy, czy potrzebne jest jeszcze wdrożenie?',
     questionEn: 'Is the audit alone enough, or is implementation also needed?',
-    answer: 'Audyt sam w sobie nie zmienia pozycji — jest diagnozą, nie leczeniem. Raport zawiera listę zadań uszeregowaną według wpływu i pracochłonności, więc możesz wdrożyć go własnym zespołem albo przekazać swojemu deweloperowi. Dopóki rekomendacje nie zostaną wdrożone, wynik audytu nie przełoży się na widoczność w wyszukiwarce.',
+    answer: 'Audyt sam w sobie nie zmienia pozycji — jest diagnozą, nie leczeniem. Raport zawiera listę zadań uszeregowaną według wpływu i pracochłonności, więc możesz wdrożyć go własnym zespołem albo przekazać swojemu deweloperowi. Dopóki rekomendacje nie zostaną wdrożone, wynik audytu nie przełoży się na widoczność w wyszukiwarce. Wdrożenie możesz zlecić nam w ramach <a href="/pozycjonowanie-stron-internetowych" style="text-decoration:underline">pozycjonowania stron internetowych</a>.',
     answerEn: 'An audit on its own does not change rankings — it is a diagnosis, not a treatment. The report lists tasks ranked by impact and effort, so your own team or your developer can implement it. Until the recommendations are applied, the audit will not translate into search visibility.'
   },
   {
@@ -62,7 +70,7 @@ const faqAudyt = [
   {
     question: 'Jakich dostępów potrzebujecie, żeby przeprowadzić audyt?',
     questionEn: 'What access do you need to run the audit?',
-    answer: 'Do rzetelnego audytu potrzebujemy dostępu do Google Search Console i Google Analytics — to jedyne źródła danych o Twojej domenie z pierwszej ręki. Przydaje się też dostęp do panelu CMS oraz informacja o hostingu, żeby zweryfikować czas odpowiedzi serwera i konfigurację przekierowań. Audyt jest możliwy bez tych dostępów, ale opiera się wtedy wyłącznie na danych zewnętrznych i jest mniej precyzyjny.',
+    answer: 'Do rzetelnego audytu potrzebujemy dostępu do Google Search Console i Google Analytics — to jedyne źródła danych o Twojej domenie z pierwszej ręki. Przydaje się też dostęp do panelu CMS oraz informacja o hostingu, żeby zweryfikować czas odpowiedzi serwera i konfigurację przekierowań. Audyt jest możliwy bez tych dostępów, ale opiera się wtedy wyłącznie na danych zewnętrznych i jest mniej precyzyjny. Jeśli konta prowadziła poprzednia agencja, zacznij od <a href="/zmiana-agencji-seo" style="text-decoration:underline">checklisty przejęcia kont od poprzedniej agencji</a>.',
     answerEn: 'A reliable audit needs access to Google Search Console and Google Analytics — the only first-party data about your domain. Access to the CMS and details about hosting also help, so we can verify server response times and redirect configuration. An audit is possible without them, but it then rests solely on third-party data and is less precise.'
   },
   {
@@ -86,8 +94,16 @@ const faqAudyt = [
   {
     question: 'Czym audyt SEO różni się od darmowego raportu z narzędzia online?',
     questionEn: 'How does an SEO audit differ from a free online tool report?',
-    answer: 'Darmowe narzędzia wykrywają błędy według sztywnej listy reguł i nie rozumieją kontekstu biznesowego. Pokażą, że brakuje słowa w tytule, ale nie ocenią, czy strona odpowiada na intencję zapytania, ani które z dwustu znalezionych usterek realnie wpływają na widoczność. Audyt to interpretacja tych danych: odsiew szumu, priorytetyzacja i decyzja, co zrobić najpierw — oraz czego świadomie nie ruszać.',
+    answer: 'Darmowe narzędzia wykrywają błędy według sztywnej listy reguł i nie rozumieją kontekstu biznesowego. Pokażą, że brakuje słowa w tytule, ale nie ocenią, czy strona odpowiada na intencję zapytania, ani które z dwustu znalezionych usterek realnie wpływają na widoczność. Audyt to interpretacja tych danych: odsiew szumu, priorytetyzacja i decyzja, co zrobić najpierw — oraz czego świadomie nie ruszać. Automatyczna analiza SEO z narzędzia to dobry punkt wyjścia, a w audycie zestawiamy jej wyniki z danymi z Twojego Google Search Console.',
     answerEn: 'Free tools flag issues against a fixed rule set and have no business context. They will tell you a word is missing from the title, but not whether the page answers search intent, nor which of the two hundred issues found actually affect visibility. An audit is the interpretation of that data: filtering out noise, prioritising, and deciding what to do first — and what to deliberately leave alone.'
+  },
+  {
+    // Nowe (AU1, OP-07): 46 słów; cena i zakres audytu AI = oferta w GeoPageClient.jsx (990 zł,
+    // 30 pytań w 4 źródłach, 5 konkurentów, 10 rekomendacji, zaliczany na abonament).
+    id: 'audyt-seo-a-widocznosc-w-ai',
+    tylkoPl: true,
+    question: 'Czy audyt SEO obejmuje widoczność w ChatGPT i AI?',
+    answer: `Klasyczny audyt SEO sprawdza widoczność w Google. Widoczność w ChatGPT, Gemini i Perplexity badamy osobno w <a href="${HREF_AUDYT_AI}" style="text-decoration:underline">audycie widoczności w AI</a> za 990 zł netto: 30 pytań w 4 źródłach, 5 konkurentów polecanych przez modele i 10 rekomendacji. Koszt tego audytu zaliczamy na pierwszy miesiąc abonamentu.`,
   }
 ];
 
@@ -135,6 +151,10 @@ const auditCarouselItems = [
   }
 ];
 
+// 5.11.2026 (ALT; OP-16, CLAUDE.md „alty opisują obraz”): karty 3–6 to abstrakcyjne tła, a ich alt
+// był kopią H3 karty. decorative: true = w PL alt="" i bez title (SubpagePortfolio.jsx). Karty 1–2
+// (alty i pliki z frazami „audyt seo” / „optymalizacja seo”) bez zmian do decyzji D18 i pomiaru
+// Keyword Checkera; alty EN (imgAltEn) też bez zmian.
 const auditPortfolioCases = [
   {
     tag: 'PROBLEM 01 / INDEKSACJA',
@@ -180,6 +200,7 @@ const auditPortfolioCases = [
     description: 'Brak oznaczeń semantycznych dla wyszukiwarek AI i Google (Rich Snippets), uniemożliwiający wyświetlanie ocen, cen i dostępności w wynikach Search.',
     descriptionEn: 'Lack of semantic markup for AI search engines and Google (Rich Snippets), preventing ratings, prices, and availability from showing in Search results.',
     image: '/images/unsplash-1597773150796-e5c14ebecbf5.jpg',
+    decorative: true,
     imageEn: '/images/search-engine-optimization-consultants.jpg',
     imgAltEn: 'expert search engine optimization consultants',
     imgTitleEn: 'search engine optimization consultants data analysis',
@@ -199,6 +220,7 @@ const auditPortfolioCases = [
     description: 'Wykrycie masowych przyrostów spamu i toksycznych domen odsyłających z filtrem depozycjonującym. Konieczność wdrożenia procedury Disavow Tool.',
     descriptionEn: 'Detection of massive spam spikes and toxic referring domains with a demotion filter. Necessitates implementing the Disavow Tool procedure through seo consultancy.',
     image: '/images/unsplash-1602536052359-ef94c21c5948.jpg',
+    decorative: true,
     imageEn: '/images/search-engine-optimisation-consultancy.jpg',
     imgAltEn: 'search engine optimisation consultancy and optimization',
     imgTitleEn: 'expert search engine optimisation consultancy and optimization',
@@ -218,6 +240,7 @@ const auditPortfolioCases = [
     description: 'Wielokrotne podstrony rywalizujące o te same frazy kluczowe. Wykryto brak tagów kanonicznych (rel="canonical") oraz błędne parametry filtrowania.',
     descriptionEn: 'Multiple subpages competing for the same keywords. Missing canonical tags (rel="canonical") and incorrect filtering parameters detected.',
     image: '/images/unsplash-1608501821300-4f99e58bba77.jpg',
+    decorative: true,
     gradient: 'linear-gradient(135deg, #1E293B 0%, #334155 50%, #0F172A 100%)',
     metric: 'TOP 3',
     metricLabel: 'Dla głównych fraz',
@@ -234,6 +257,7 @@ const auditPortfolioCases = [
     description: 'Niewłaściwa struktura semantyczna HTML, brak opisów alternatywnych ALT w obrazach i puste tagi meta title uniemożliwiające zrozumienie intencji zapytania.',
     descriptionEn: 'Improper HTML semantic structure, missing ALT text in images, and empty meta title tags preventing the understanding of query intent.',
     image: '/images/unsplash-1694852860772-ec8598c72c15.jpg',
+    decorative: true,
     gradient: 'linear-gradient(135deg, #311B92 0%, #4A148C 50%, #880E4F 100%)',
     metric: '100/100',
     metricLabel: 'Wskaźnik SEO',

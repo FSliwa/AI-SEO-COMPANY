@@ -9,9 +9,22 @@ import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { hash } from '@/lib/anchors';
+import Byline from '@/components/Byline';
+import CompareTable from '@/components/CompareTable';
+import { Link } from '@/i18n/routing';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+
+// 5.11.2026 (AU1; PLAN-v2 6.19, OP-07, OP-15, MSA-02) - strona chroniona: tylko DODAWANIE w wersji PL.
+// Audyt widoczności w AI: link do A5 po jej publikacji, wcześniej do huba GEO (reguła 6.0).
+const HREF_AUDYT_AI = hrefJesliOpublikowana('/pozycjonowanie-w-ai/audyt-widocznosci') ?? '/pozycjonowanie-w-ai';
+
+const tekstSekcji = { fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' };
+const linkSekcji = { textDecoration: 'underline' };
 
 export default function AudytClient({ faqData, portfolioCases, carouselItems }) {
   const lang = useLocale();
+  // FAQPage = pytania widoczne na stronie: PL 12, EN 11 (bez pytań tylkoPl).
+  const faqWidoczne = lang === 'pl' ? faqData : faqData.filter((f) => !f.tylkoPl);
 
   return (
     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -81,6 +94,8 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
                 {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
               </a>
             </div>
+            {/* OP-14: autor i data (LASTMOD); na /en Byline nic nie renderuje. */}
+            <Byline sciezka="/audyt-seo" style={{ margin: '2rem 0 0' }} />
           </Reveal>
         </div>
       </section>
@@ -136,12 +151,71 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
       {/* Portfolio Section */}
       <SubpagePortfolio 
         title={lang === 'pl' ? "Co zwykle wykrywamy w audycie SEO" : "What an SEO audit usually uncovers"} 
-        subtitle={lang === 'pl' ? "Najczęstsze błędy techniczne wykrywane podczas audytów oraz metody ich eliminacji" : "Most common technical errors detected during audits and how we eliminate them"}
+        subtitle={lang === 'pl' ? "Najczęstsze błędy techniczne wykrywane podczas audytów oraz metody ich eliminacji. Liczby na kartach to przykładowe scenariusze, nie wyniki konkretnych klientów." : "Most common technical errors detected during audits and how we eliminate them"}
         cases={portfolioCases} 
       />
 
+      {/* AU1 (OP-07 + MSA-02): cena i warianty audytu, tylko PL, po kartach, przed FAQ.
+          „audyt seo cena” 210/mies. (GSC 38 wyśw., poz. 68,7), „audyt strony internetowej” 720
+          (frazy.csv i DataForSEO, 4.11.2026). Ceny = FAQ tej strony, Pricing.jsx i oferta GeoPageClient.jsx.
+          Widełki rynkowe: widoczni.com/pozycjonowanie-cennik, curl 5.11.2026 (MSA-02); bez linku. */}
+      {lang === 'pl' && (
+        <section style={{ padding: '0 0 40px 0' }}>
+          <div className="container" style={{ maxWidth: '900px', margin: '0 auto', color: 'var(--color-text-main)' }}>
+            <Reveal>
+              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
+                Audyt SEO: cena i warianty
+              </h2>
+              <p style={tekstSekcji}>
+                Cena zależy od tego, czy potrzebujesz samej diagnozy, czy diagnozy razem z wdrożeniem. Trzy warianty, w których robimy audyt, zestawiliśmy w tabeli. Na rynku audyt SEO kosztuje od 500 do 5 000 zł (widoczni.com, odczyt 5.11.2026).
+              </p>
+              <CompareTable
+                id="warianty-audytu"
+                caption="Warianty audytu: cena netto, czas i zakres"
+                columns={[
+                  { key: 'wariant', label: 'Wariant' },
+                  { key: 'cena', label: 'Cena (netto)' },
+                  { key: 'czas', label: 'Czas' },
+                  { key: 'zakres', label: 'Co dostajesz' },
+                ]}
+                rows={[
+                  {
+                    id: 'samodzielny',
+                    wariant: 'Audyt SEO jako osobna usługa',
+                    cena: 'od 1 490 zł',
+                    czas: '3–5 dni roboczych',
+                    zakres: '50+ punktów kontrolnych, lista napraw z priorytetem i konsultacja omówieniowa',
+                  },
+                  {
+                    id: 'w-pakiecie',
+                    wariant: <>Audyt SEO w <Link href="/cennik-pozycjonowania" style={linkSekcji}>pakiecie pozycjonowania</Link></>,
+                    cena: 'w cenie pakietu od 1 900 zł/mies.',
+                    czas: 'na starcie współpracy',
+                    zakres: 'ten sam zakres, a do tego wdrożenie poprawek',
+                  },
+                  {
+                    id: 'ai',
+                    wariant: <Link href={HREF_AUDYT_AI} style={linkSekcji}>Audyt widoczności w AI</Link>,
+                    cena: '990 zł',
+                    czas: '5 dni roboczych',
+                    zakres: '30 pytań w 4 źródłach, 5 konkurentów polecanych przez modele i 10 rekomendacji',
+                  },
+                ]}
+                przypis="Ceny netto, do których doliczamy 23% VAT. Stan cen: listopad 2026."
+              />
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-text-main)', marginTop: '2.5rem', marginBottom: '1rem' }}>
+                Audyt strony internetowej a audyt SEO
+              </h3>
+              <p style={{ ...tekstSekcji, marginBottom: 0 }}>
+                Audyt strony internetowej (albo audyt strony www) to szersze pojęcie: może obejmować też użyteczność, dostępność i bezpieczeństwo. Audyt SEO strony internetowej sprawdza to, co decyduje o widoczności w Google: indeksację, szybkość, strukturę nagłówków, treści i linki. Ocenę użyteczności opisujemy osobno w <Link href="/blog/audyt-ux-strony" style={linkSekcji}>poradniku o audycie UX strony</Link>.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {/* FAQ Section */}
-      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Search Engine Optimization Consultants FAQs"} />
+      <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Najczęstsze pytania" : "Search Engine Optimization Consultants FAQs"} />
 
       <Contact />
     </main>

@@ -12,13 +12,24 @@ const BASE = 'https://www.ai-seo-company.pl';
 //
 // offers wypelniamy WYLACZNIE tam, gdzie kwota jest widoczna na stronie - dane
 // strukturalne maja odpowiadac tresci, wiec strona bez cennika nie deklaruje ceny.
+//
+// 5.11.2026 (SCH1; MSA-06, OP-17, SA-06): oferty = tresc strony. Lista `oferty` zamiast
+// jednego `cena`, gdy strona pokazuje kilka kwot. Pola oferty: pl/en (nazwa), cena/cenaEn,
+// miesiecznie (UnitPriceSpecification z unitCode MON), od (cena "od": PriceSpecification
+// z minPrice). Klucz z tylkoPl: true istnieje tylko po polsku - dla EN komponent zwraca null.
+// Przy zmianie ceny na stronie zmienic ja tez tutaj (i LASTMOD strony w lib/lastmod.js).
 const USLUGI = {
+  // Kwoty: "Jako samodzielna usluga kosztuje od 1 490 zl netto" / "starts at €350 net"
+  // (app/[locale]/audyt-seo/page.js, FAQ o cenie).
   'audyt-seo': {
     pl: { name: 'Audyt SEO', desc: 'Kompleksowy audyt SEO strony: analiza techniczna, indeksacja, Core Web Vitals, struktura nagłówków, frazy kluczowe i wytyczne UX.' },
     en: { name: 'SEO audit', desc: 'Comprehensive SEO audit: technical analysis, indexing, Core Web Vitals, heading structure, keyword research and UX guidelines.' },
     typ: 'SEO audit',
     url: { pl: `${BASE}/audyt-seo`, en: `${BASE}/en/seo-audit` },
     cena: null,
+    oferty: [
+      { pl: 'Audyt SEO jako samodzielna usługa', en: 'Standalone SEO audit', cena: 1490, cenaEn: 350, miesiecznie: false, od: true },
+    ],
   },
   'pozycjonowanie': {
     pl: { name: 'Pozycjonowanie stron internetowych', desc: 'Profesjonalne pozycjonowanie stron internetowych dla firm B2B: optymalizacja techniczna, treść, link building i raportowanie.' },
@@ -33,8 +44,14 @@ const USLUGI = {
     en: { name: 'SEO packages', desc: 'SEO pricing: Standard and Premium subscription packages with monthly billing and cancellation at any time.' },
     typ: 'Search engine optimization',
     url: { pl: `${BASE}/cennik-pozycjonowania`, en: `${BASE}/en/seo-pricing` },
-    cena: 1900,
-    cenaEn: 450,
+    cena: null,
+    // Trzy karty cennika (components/Pricing.jsx, messages/*.json: standardPrice,
+    // premiumPrice, boosterPrice): 1 900 / 2 500 / 2 500 zl netto mies., EN 450 / 590 / 590 EUR.
+    oferty: [
+      { pl: 'SEO Standard', en: 'SEO Standard', cena: 1900, cenaEn: 450, miesiecznie: true },
+      { pl: 'SEO Premium', en: 'SEO Premium', cena: 2500, cenaEn: 590, miesiecznie: true },
+      { pl: 'Booster Pack', en: 'Booster Pack', cena: 2500, cenaEn: 590, miesiecznie: true },
+    ],
   },
   'seo-lokalne': {
     pl: { name: 'SEO lokalne w Warszawie', desc: 'Pozycjonowanie lokalne: optymalizacja Wizytówki Google, spójność NAP, strategia opinii i widoczność w Mapach Google.' },
@@ -49,8 +66,14 @@ const USLUGI = {
     en: { name: 'Web design', desc: 'Web design and development: bespoke UX/UI, responsive layouts and conversion optimisation.' },
     typ: 'Web design',
     url: { pl: `${BASE}/projektowanie-stron-internetowych`, en: `${BASE}/en/web-design` },
-    cena: 1900,
-    cenaEn: 450,
+    cena: null,
+    // Kwoty z FAQ strony (app/[locale]/projektowanie-stron-internetowych/page.js): strona
+    // "od 5 900 zl netto" / "starts at €1,400 net" jednorazowo; Booster Pack 2 500 zl / 590 EUR mies.
+    // (wczesniej deklarowalismy 1 900 zl, czyli cene pozycjonowania - MSA-06, OP-17).
+    oferty: [
+      { pl: 'Strona internetowa', en: 'Company website', cena: 5900, cenaEn: 1400, miesiecznie: false, od: true },
+      { pl: 'Booster Pack', en: 'Booster Pack', cena: 2500, cenaEn: 590, miesiecznie: true },
+    ],
   },
   // 4.11.2026: strona GEO pokazuje dwie ceny (audyt jednorazowy i doplata
   // miesieczna do Standard), wiec zamiast jednego `cena` ma liste `oferty`.
@@ -66,6 +89,30 @@ const USLUGI = {
       { pl: 'Dopłata do SEO Standard: pomiar i działania pod AI', en: 'Add-on to SEO Standard: AI measurement and actions', cena: 490, cenaEn: 115, miesiecznie: true },
     ],
   },
+  // Nowe strony z PLAN-v2 (tylko PL, za bramka publikacji lib/publikacja.js).
+  // L1 (6.6; CB-02): wariant B ceny - pakiet SEO Standard od 1 900 zl netto mies. z wizytowka.
+  // Opis z briefu L1; zdanie o 49 punktach usunac, jesli siatki nie ma w SEO Standard (CB-02).
+  'wizytowka': {
+    tylkoPl: true,
+    pl: { name: 'Pozycjonowanie wizytówki Google', desc: 'Pozycjonowanie Profilu Firmy w Google: kategorie, usługi, opinie, posty i pomiar pozycji w Mapach Google z 49 punktów co 14 dni w panelu klienta.' },
+    typ: 'Google Business Profile optimization',
+    url: { pl: `${BASE}/pozycjonowanie-wizytowki-google` },
+    cena: null,
+    oferty: [
+      { pl: 'SEO Standard z prowadzeniem wizytówki', cena: 1900, miesiecznie: true },
+    ],
+  },
+  // A5 (6.7): audyt widocznosci w AI 990 zl netto jednorazowo (ta sama kwota co oferta 'geo').
+  'geo-audyt': {
+    tylkoPl: true,
+    pl: { name: 'Audyt widoczności w AI', desc: 'Audyt widoczności firmy w AI: 30 pytań klientów w ChatGPT, Perplexity, Gemini i przeglądzie AI w Google, źródła cytowań i plan działań na 90 dni.' },
+    typ: 'Generative engine optimization audit',
+    url: { pl: `${BASE}/pozycjonowanie-w-ai/audyt-widocznosci` },
+    cena: null,
+    oferty: [
+      { pl: 'Audyt widoczności w AI', cena: 990, miesiecznie: false },
+    ],
+  },
 };
 
 export default function ServiceSchema({ variant }) {
@@ -73,6 +120,7 @@ export default function ServiceSchema({ variant }) {
   const isEn = lang === 'en';
   const u = USLUGI[variant];
   if (!u) return null;
+  if (u.tylkoPl && isEn) return null;
 
   const t = isEn ? u.en : u.pl;
   const jsonLd = {
@@ -131,6 +179,14 @@ export default function ServiceSchema({ variant }) {
           priceCurrency: waluta,
           price: cena,
           unitCode: 'MON',
+          valueAddedTaxIncluded: false,
+        };
+      } else if (o.od) {
+        // Cena "od" (audyt, strona): kwota minimalna, ostateczna zalezy od zakresu.
+        offer.priceSpecification = {
+          '@type': 'PriceSpecification',
+          minPrice: cena,
+          priceCurrency: waluta,
           valueAddedTaxIncluded: false,
         };
       }

@@ -1,40 +1,84 @@
 'use client';
 
-import { useState, useId } from 'react';
+import { useState, useId, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 
-export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
+/* 5.11.2026 (ANC1; BL-03, CB-03, CB-04, PLAN-v2 6.0 i 6.16) - stale kotwice i jeden FAQPage:
+   - faqData[i].id / .idEn (opcjonalne): stale id pytania zamiast useId(), np.
+     { id: 'jak-dlugo-trwa-pozycjonowanie', idEn: 'how-long-does-seo-take', question, answer, ... }.
+     Przycisk dostaje id = kotwica, odpowiedz id = kotwica + '-odp'. Pole id nie trafia do JSON-LD.
+     Wejscie z #kotwica (takze #kotwica-odp) i zmiana hasha otwieraja to pytanie i przewijaja do niego.
+   - extraSchema: lista { question, answer, questionEn?, answerEn? } doklejana do TEGO SAMEGO
+     wezla FAQPage (hub GEO: 8 FAQ + 8 kart = 16 pytan w jednym FAQPage), bez renderowania.
+   - schema={false}: bez JSON-LD (gdy FAQPage na stronie generuje kto inny).
+   - sectionId: id na <section> (np. 'faq'); dwa AppleFaq na stronie = rozne id.
+   Bez tych pol HTML i JSON-LD istniejacych stron sa takie jak wczesniej. */
+const tekst = (lang, pl, en) => (lang === 'pl' ? pl : (en || pl));
+
+export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extraSchema = [], schema = true, sectionId }) {
   const lang = useLocale();
   const [openIndex, setOpenIndex] = useState(0);
   // Prefiks id z useId, nie sam indeks: drugi AppleFaq na stronie nie zderzy
   // sie w aria-controls / aria-labelledby.
   const uid = useId();
+  const kotwice = faqData.map((faq) => (lang === 'pl' ? faq.id : (faq.idEn ?? faq.id)) || null);
+  const kotwiceKlucz = kotwice.join('|');
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
 
+  // Otwarcie pytania z #kotwica: przy wejsciu i przy zmianie hasha (link w obrebie strony).
+  // Przewijamy po animacji (0,3 s), bo zamkniecie pierwszego pytania przesuwa uklad.
+  useEffect(() => {
+    if (!kotwiceKlucz.replace(/\|/g, '')) return undefined;
+    const lista = kotwiceKlucz.split('|');
+    let timer;
+    const otworzZHasha = () => {
+      let cel = '';
+      try { cel = decodeURIComponent(window.location.hash.slice(1)); } catch (e) { cel = window.location.hash.slice(1); }
+      if (!cel) return;
+      const index = lista.findIndex((k) => k && (k === cel || `${k}-odp` === cel));
+      if (index === -1) return;
+      setOpenIndex(index);
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const el = document.getElementById(lista[index]);
+        if (el) el.scrollIntoView({ behavior: zachowaniePrzewijania(), block: 'start' });
+      }, 350);
+    };
+    otworzZHasha();
+    window.addEventListener('hashchange', otworzZHasha);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('hashchange', otworzZHasha);
+    };
+  }, [kotwiceKlucz]);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((faq) => ({
+    mainEntity: [...faqData, ...extraSchema].map((faq) => ({
       '@type': 'Question',
-      name: lang === 'pl' ? faq.question : (faq.questionEn || faq.question),
+      name: tekst(lang, faq.question, faq.questionEn),
       acceptedAnswer: {
         '@type': 'Answer',
-        text: lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer)
+        text: tekst(lang, faq.answer, faq.answerEn)
       }
     }))
   };
 
   return (
-    <section style={{ padding: '6rem 0' }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <section id={sectionId} style={{ padding: '6rem 0' }}>
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
         <Reveal>
           <h2 style={{ 
@@ -52,8 +96,9 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {faqData.map((faq, index) => {
             const isOpen = openIndex === index;
-            const pytId = `${uid}-pyt-${index}`;
-            const odpId = `${uid}-odp-${index}`;
+            const kotwica = kotwice[index];
+            const pytId = kotwica || `${uid}-pyt-${index}`;
+            const odpId = kotwica ? `${kotwica}-odp` : `${uid}-odp-${index}`;
             return (
               <Reveal key={index} delay={index * 0.1}>
                 <div style={{ borderBottom: '1px solid #E5E5EA' }}>
@@ -83,6 +128,8 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania" }) {
                       cursor: 'pointer',
                       textAlign: 'left',
                       color: '#1D1D1F',
+                      // Tylko pytania z kotwica: odstep od przypietego naglowka (89 px) przy skoku do #id.
+                      ...(kotwica ? { scrollMarginTop: '110px' } : {}),
                     }}
                   >
                     <span 

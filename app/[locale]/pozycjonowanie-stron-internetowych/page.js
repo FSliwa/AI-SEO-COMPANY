@@ -20,17 +20,22 @@ import Footer from '@/components/Footer';
 import PozycjonowanieClient from '@/components/PozycjonowanieClient';
 import ServiceSchema from '@/components/ServiceSchema';
 
+// 5.11.2026 (PS1; PLAN-v2 6.20, OP-08, MSA-18, BL-03, OP-04) - strona chroniona: tylko DODAWANIE w wersji
+// PL (answer); answerEn bez zmian. Nowe pytanie ma tylkoPl: true (PozycjonowanieClient odfiltrowuje je na /en).
+// Stałe id pytania o czas pozycjonowania: kotwica z frazy.csv (dawniej #faq, nie istniała).
 const faqData = [
   {
+    id: 'jak-dlugo-trwa-pozycjonowanie',
+    idEn: 'how-long-does-seo-take',
     question: 'Ile trwa pozycjonowanie stron internetowych?',
     questionEn: 'How long does website optimization take?',
-    answer: 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Dla uzgodnionych fraz lokalnych naszym celem jest TOP 3 w 2–3 miesiące, z postępem widocznym co tydzień w panelu klienta; jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. Na bardzo konkurencyjne frazy ogólnopolskie ustabilizowane wysokie pozycje buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy.',
+    answer: 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Dla uzgodnionych fraz lokalnych naszym celem jest TOP 3 w 2–3 miesiące, z postępem widocznym co tydzień w panelu klienta; jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. Na bardzo konkurencyjne frazy ogólnopolskie ustabilizowane wysokie pozycje buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy. Przykład z naszych wdrożeń: świeżo uruchomiona strona firmy wdrażającej normy ISO miała po pierwszych 28 dniach 296 wyświetleń w Google przy średniej pozycji 34,6 (Google Search Console, stan na sierpień 2026). Pozostałe dane opisujemy w raporcie <a href="/blog/wyniki-wdrozen-seo-2026" style="text-decoration:underline">wyniki wdrożeń SEO w 2026</a>.',
     answerEn: 'The first effects of visibility growth appear 4-8 weeks after technical optimization. For agreed local keywords our goal is a TOP 3 within 2–3 months, with progress visible weekly in the client portal; if we miss it after 3 months, the next month is on us. For highly competitive national keywords, stabilized high rankings are typically built over a 3 to 6 month horizon.'
   },
   {
     question: 'Czym różni się pozycjonowanie z AI od tradycyjnego SEO?',
     questionEn: 'How does AI-driven strategy differ from traditional methods?',
-    answer: 'Analizujemy zapytania użytkowników w kontekście intencji wyszukiwania (Search Intent) oraz wyszukiwania semantycznego (LLM Search), optymalizując treści pod kątem tradycyjnego Google oraz wyszukiwarek AI (ChatGPT, Perplexity).',
+    answer: 'Analizujemy zapytania użytkowników w kontekście intencji wyszukiwania (Search Intent) oraz wyszukiwania semantycznego (LLM Search), optymalizując treści pod kątem tradycyjnego Google oraz wyszukiwarek AI (ChatGPT, Perplexity). Zakres, ceny i metodę cotygodniowego pomiaru w ChatGPT, Gemini i Perplexity opisujemy na stronie o <a href="/pozycjonowanie-w-ai" style="text-decoration:underline">pozycjonowaniu w AI (GEO)</a>.',
     answerEn: 'We analyze user queries in the context of Search Intent and semantic search (LLM Search), optimizing content for both traditional Google and AI search engines (ChatGPT, Perplexity).'
   },
   {
@@ -60,11 +65,22 @@ const faqData = [
   {
     question: 'Czy współpracujecie z zespołami in-house i innymi agencjami?',
     questionEn: 'Do you work with in-house teams and other agencies?',
-    answer: 'Tak, w obu układach. Zespołom in-house zwykle przejmujemy część techniczną — audyt, architekturę informacji, poprawki wydajnościowe — a redakcja i kampanie zostają po ich stronie. Agencjom kreatywnym i mediowym dostarczamy warstwę wyszukiwarkową w modelu white-label, bez kontaktu z ich klientem końcowym. W obu przypadkach zakres i podział odpowiedzialności ustalamy na piśmie przed startem.',
+    answer: 'Tak, w obu układach. Zespołom in-house zwykle przejmujemy część techniczną — audyt, architekturę informacji, poprawki wydajnościowe — a redakcja i kampanie zostają po ich stronie. Agencjom kreatywnym i mediowym dostarczamy warstwę wyszukiwarkową w modelu white-label, bez kontaktu z ich klientem końcowym. W obu przypadkach zakres i podział odpowiedzialności ustalamy na piśmie przed startem. Jeśli przejmujemy stronę po innej agencji, zaczynamy od checklisty z poradnika <a href="/zmiana-agencji-seo" style="text-decoration:underline">jak zmienić agencję SEO bez utraty pozycji</a>.',
     answerEn: 'Yes, in both setups. For in-house teams we usually take over the technical side — audits, information architecture and SEO services they have no spare capacity for — while editorial work and campaigns stay with them. For creative and media agencies we supply the search layer white-label, with no contact with their end client. Either way the scope and the split of responsibilities are agreed in writing before we start. Most partners who come to us already run digital marketing. SEO is simply the layer that makes everything else compound instead of resetting each time a budget stops.'
+  },
+  {
+    // Nowe (PS1, OP-08): 49 słów + link 10; „seo dla małych firm” 70/mies. (frazy.csv, 4.11.2026).
+    // Zakres SEO Standard = Pricing.jsx i FAQ cennika „Czym różnią się pakiety…”.
+    id: 'czy-pozycjonowanie-ma-sens-dla-malej-firmy',
+    tylkoPl: true,
+    question: 'Czy pozycjonowanie ma sens dla małej firmy?',
+    answer: 'Tak, jeśli klienci szukają Twojej usługi w Google. Mała firma zwykle zaczyna od SEO lokalnego i wizytówki Google, bo to najszybsze źródło pierwszych zapytań. SEO dla małych firm prowadzimy w pakiecie Standard: do 20 fraz, 2 treści i 2 linki miesięcznie, od 1 900 zł netto, z umową miesięczną (<a href="/cennik-pozycjonowania" style="text-decoration:underline">cennik pozycjonowania</a>).',
   }
 ];
 
+// 5.11.2026 (ALT; OP-16): wszystkie 7 obrazów to tła bez związku z treścią karty, a alt PL był kopią
+// H3 albo frazą („content marketing”). decorative: true = w PL alt="" i bez title (SubpagePortfolio.jsx).
+// Nazwy plików i alty EN (imgAltEn, frazy strażnika /en/seo-services) bez zmian.
 const portfolioCases = [
   {
     tag: 'SKALOWANIE SPRZEDAŻY',
@@ -74,6 +90,7 @@ const portfolioCases = [
     description: 'Strategiczna architektura informacji dla branż inżynieryjnych, usługowych i e-commerce. Model budowania wysokiej autorytatywności domeny od podstaw.',
     descriptionEn: 'As a top search optimization agency, we build strategic information architecture for engineering, services, and e-commerce. A model for building high domain authority from scratch.',
     image: '/images/content-marketing-unsplash-1693648793394-0b76b7eb042e.jpg',
+    decorative: true,
     imageEn: '/images/search-engine-marketing-seo-optimization-agency.jpg',
     imgAlt: 'content marketing',
     imgAltEn: 'search optimization agency team',
@@ -94,6 +111,7 @@ const portfolioCases = [
     description: 'Strategia Topic Clusters dla sklepu internetowego. Model eliminujący kanibalizację słów kluczowych i obniżający koszt pozyskania klienta (CAC).',
     descriptionEn: 'Topic Clusters strategy for an online store powered by our seo optimization service. A model eliminating keyword cannibalization and lowering Customer Acquisition Cost (CAC).',
     image: '/images/unsplash-1533134486753-c833f0ed4866.jpg',
+    decorative: true,
     imageEn: '/images/content-in-marketing-seo-agency.jpg',
     imgAltEn: 'Content in marketing strategy for SEO company growth',
     imgTitleEn: 'SEO company content marketing optimization results',
@@ -112,6 +130,7 @@ const portfolioCases = [
     description: 'Model pozycji dla sieci wielooddziałowych na ponad 20 miast w Polsce dzięki zoptymalizowanej strukturze podstron oraz wizytówek profilu Google.',
     descriptionEn: 'Ranking model for multi-branch networks across 20+ cities in Poland thanks to optimized subpage structures and Google Business Profiles.',
     image: '/images/unsplash-1710438399422-2fca27686bcd.jpg',
+    decorative: true,
     imageEn: '/images/seo-for-agencies.jpg',
     imgAltEn: 'search engine marketing and local seo optimization for agencies',
     imgTitleEn: 'search engine marketing strategies for agencies businesses',
@@ -130,6 +149,7 @@ const portfolioCases = [
     description: 'Pozycjonowanie trudnych fraz kluczowych o najwyższym inteńcie zakupowym na rynku globalnym, napędzające wzrost stałych przychodów subskrypcyjnych.',
     descriptionEn: 'Positioning highly competitive keywords with the highest purchase intent globally, driving steady MRR growth.',
     image: '/images/unsplash-1557264322-b44d383a2906.jpg',
+    decorative: true,
     imageEn: '/images/search-engine-optimisation-seo-and-digital-marketing-services.jpg',
     imgAltEn: 'Search engine optimisation and digital marketing SEO services dashboard',
     imgTitleEn: 'Search engine optimisation SEO digital marketing services results',
@@ -148,6 +168,7 @@ const portfolioCases = [
     description: 'Precyzyjna architektura treści odpowiadająca na zapytania użytkowników na każdym etapie decyzji finansowej, zmniejszająca koszty konwersji.',
     descriptionEn: 'Precise content architecture answering user queries at every stage of the financial decision, reducing conversion costs.',
     image: '/images/unsplash-1678366633407-7f49da199a42.jpg',
+    decorative: true,
     metric: '-48%',
     metricLabel: 'Redukcja kosztu konwersji',
     metricLabelEn: 'Conversion Cost Reduction',
@@ -163,6 +184,7 @@ const portfolioCases = [
     description: 'Wielojęzyczny audyt techniczny oraz rozbudowa klastrów treści generująca wysoki popyt na rynkach europejskich.',
     descriptionEn: 'Multilingual technical audit and content cluster expansion generating high demand in European markets through our search engine marketing.',
     image: '/images/unsplash-1526289034009-0240ddb68ce3.jpg',
+    decorative: true,
     metric: '+380%',
     metricLabel: 'Zapytań ofertowych i sprzedaży',
     metricLabelEn: 'Inquiries and Sales',
@@ -178,6 +200,7 @@ const portfolioCases = [
     description: 'Strategia pozyskiwania wartościowych odnośników editorialnych i budowania autorytetu domeny w segmentach marek premium.',
     descriptionEn: 'Strategy for acquiring valuable editorial links and building domain authority in premium brand segments.',
     image: '/images/unsplash-1567095751004-aa51a2690368.jpg',
+    decorative: true,
     metric: '+180%',
     metricLabel: 'Wzrost autorytetu domeny (DR)',
     metricLabelEn: 'Domain Authority (DR) Growth',

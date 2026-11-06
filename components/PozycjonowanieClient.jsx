@@ -11,9 +11,20 @@ import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
+import Byline from '@/components/Byline';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+
+// 5.11.2026 (PS1; PLAN-v2 6.20, OP-08, OP-18, OP-04) - strona chroniona: tylko DODAWANIE w wersji PL.
+// Bez nowych H2 z „Warszawa” do wyniku G1 (OP-09). Link do P2 dopiero po jej publikacji (reguła 6.0).
+const HREF_P2 = hrefJesliOpublikowana('/porownania/seo-vs-geo');
+
+const tekstSekcji = { color: '#333336', fontSize: '1.1rem', lineHeight: 1.65 };
+const linkSekcji = { color: 'var(--color-cta)', textDecoration: 'underline' };
 
 export default function PozycjonowanieClient({ faqData, portfolioCases, carouselItems }) {
   const lang = useLocale();
+  // FAQPage = pytania widoczne na stronie: PL 8, EN 7 (bez pytań tylkoPl).
+  const faqWidoczne = lang === 'pl' ? faqData : faqData.filter((f) => !f.tylkoPl);
 
   return (
     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -55,9 +66,10 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             }}>
               {/* 22.10.2026: zamiast "Organiczny Wzrost / Maksymalna Konwersja"
                   (dwa hasla bez tresci, Title Case) - korzysc, o ktora pyta
-                  klient z reklamy. Bez liczb i obietnic wyniku. */}
+                  klient z reklamy. Bez liczb i obietnic wyniku.
+                  5.11.2026 (OP-18): spacja przed <br/> - parsery sklejaly „którykończy”. */}
               {lang === 'pl' ? (
-                <>Ruch z Google, który<br/>kończy się zapytaniem</>
+                <>Ruch z Google, który{' '}<br/>kończy się zapytaniem</>
               ) : (
                 <>Search traffic that<br/>turns into enquiries</>
               )}
@@ -96,6 +108,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
               </a>
             </div>
+            {/* OP-14: autor i data (LASTMOD); na /en Byline nic nie renderuje. */}
+            <Byline sciezka="/pozycjonowanie-stron-internetowych" style={{ margin: '2rem 0 0' }} />
           </Reveal>
         </div>
       </section>
@@ -208,9 +222,41 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
           </div>
         </section>
 
+      {/* PS1 (OP-08, RAPORT on-page 5.4): tylko PL, po sekcji „Zaawansowane Strategie…”, przed cennikiem.
+          „pozycjonowanie strony w google” 1 000/mies. (frazy.csv), „skuteczne pozycjonowanie stron” 480,
+          „usługi seo” 480, „pozycjonowanie stron firmowych” 170 (DataForSEO, 4.11.2026),
+          „pozycjonowanie stron seo” 390 (autosugestia, 5.11.2026; PLAN-v2 4.10: 1× w akapicie pod H2). */}
+      {lang === 'pl' && (
+        <section style={{ padding: '80px 0' }}>
+          <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <Reveal>
+              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
+                Pozycjonowanie strony w Google: od czego zależy skuteczność
+              </h2>
+              <p style={tekstSekcji}>
+                Skuteczne pozycjonowanie stron firmowych opiera się na trzech rzeczach: stronie, którą Google szybko indeksuje, treściach odpowiadających na pytania klientów i linkach z serwisów o realnym ruchu. Pozycjonowanie strony w Google zaczynamy od <Link href="/audyt-seo" style={linkSekcji}>audytu SEO</Link> i listy fraz, które przynoszą zapytania. W panelu klienta co tydzień widzisz, jak pozycjonowanie stron SEO przekłada się na pozycje i zapytania.
+              </p>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-text-main)', marginTop: '2.5rem', marginBottom: '1rem' }}>
+                Pozycjonowanie stron w Google i w odpowiedziach AI
+              </h3>
+              <p style={tekstSekcji}>
+                Te same fundamenty decydują o tym, czy firmę wymieni ChatGPT albo przegląd AI w Google: modele składają odpowiedzi ze stron, które dobrze rankują i jasno odpowiadają na pytania. Dlatego pozycjonowanie stron w Google łączymy z pomiarem widoczności w AI, a zakres i ceny opisujemy na stronie <Link href="/pozycjonowanie-w-ai" style={linkSekcji}>pozycjonowanie w AI (GEO)</Link>.
+                {HREF_P2 && <> Jeśli dopiero porządkujesz pojęcia, sprawdź, <Link href={HREF_P2} style={linkSekcji}>czym SEO różni się od GEO</Link>.</>}
+              </p>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-text-main)', marginTop: '2.5rem', marginBottom: '1rem' }}>
+                Usługi SEO dla firm B2B i lokalnych
+              </h3>
+              <p style={tekstSekcji}>
+                Usługi SEO prowadzimy w dwóch modelach: dla firm B2B, które sprzedają w całej Polsce, i dla firm usługowych, które zdobywają klientów w swoim mieście. W drugim przypadku łączymy stronę z wizytówką Google, opiniami i Mapami. Ten zakres opisujemy osobno na stronie <Link href="/seo-lokalne-warszawa" style={linkSekcji}>SEO lokalne w Warszawie</Link>.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       <Pricing />
 
-      <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania o pozycjonowanie stron internetowych" : "Frequently Asked Questions About Our SEO Services"} />
+      <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Najczęstsze pytania o pozycjonowanie stron internetowych" : "Frequently Asked Questions About Our SEO Services"} />
 
       <Contact />
     </main>

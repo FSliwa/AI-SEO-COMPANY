@@ -3,7 +3,9 @@ import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-    title: 'Wyniki wdrożeń SEO w 2026: dane GSC z pięciu domen',
+    // 5.11.2026 (PLAN-v2 6.25 W7, decyzje-blog nr 1): title (55 zn.) pod „case study seo” (110/mies., W1);
+    // H1 i meta bez zmian. Zmiana title = synchronizacja titlePl w lib/blogPosts.js (integracja).
+    title: 'Case study SEO: wyniki pięciu wdrożeń w 2026 (dane GSC)',
     description: 'Zebrane w jednym miejscu wyniki pięciu wdrożeń SEO z 2026 roku: kliknięcia, wyświetlenia i pozycje z Google Search Console, z metodologią pomiaru.',
     alternates: {
       canonical: `https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026`,
@@ -21,6 +23,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
+import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArtykulWynikiWdrozen({ params }) {
   const { locale } = await params;
@@ -44,7 +47,11 @@ export default async function ArtykulWynikiWdrozen({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/wyniki-wdrozen-seo-2026" locale={locale} />
+      <ArticleSchema
+        slug="/blog/wyniki-wdrozen-seo-2026"
+        locale={locale}
+        dateModified={LASTMOD['https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026']}
+      />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
@@ -148,13 +155,14 @@ export default async function ArtykulWynikiWdrozen({ params }) {
               <h2 id="ai-seo-company">Nasza własna domena: laboratorium metod</h2>
               <p>Każdą metodę, którą stosujemy u klientów, najpierw testujemy na sobie — ai-seo-company.pl to młoda domena prowadzona dokładnie tym samym procesem: architektura pod klastry fraz, dwujęzyczność z hreflang, dane strukturalne, kadencja publikacji.</p>
               <p>Wynik w GSC: <strong>2,77 tys. wyświetleń w trzy miesiące</strong> od startu, z widocznością budowaną równolegle po polsku i angielsku. Publikujemy tę liczbę z tego samego powodu co pozostałe: agencja, która nie pokazuje własnych danych, prosi o zaufanie na kredyt.</p>
+              <p>Na tej samej domenie testujemy też <Link href="/pozycjonowanie-w-ai">pomiar widoczności w AI</Link>: sprawdzamy, czy ChatGPT i Perplexity wymieniają naszą markę w odpowiedziach na pytania, które zadają kupujący.</p>
 
               <h2 id="wnioski">Co z tych danych wynika dla Twojej strony</h2>
               <ul>
                 <li><strong>Nowa domena potrzebuje 4–12 tygodni na pierwsze rankingi</strong> — TQL pokazuje wejście w 28 dni, Staniax skok ruchu w pierwszym miesiącu. Obietnica „TOP 10 w dwa tygodnie" na świeżej domenie jest nierealna niezależnie od wykonawcy.</li>
                 <li><strong>Nisza wyznacza kształt krzywej.</strong> Restauracja zbiera dziesiątki tysięcy wyświetleń lokalnych; producent B2B setki — ale każde z tych zapytań jest warte wielokrotnie więcej. Porównuj wyniki w obrębie branży, nie między branżami.</li>
                 <li><strong>Wyświetlenia poprzedzają kliknięcia.</strong> Krzywa widoczności zawsze idzie w kolejności: indeksacja → wyświetlenia na dalekich pozycjach → pozycje → kliknięcia. Domena w fazie wyświetleń (jak ASE-BOT) nie jest porażką — jest w połowie procesu.</li>
-                <li><strong>Dane wygrywają z deklaracjami.</strong> Wybierając wykonawcę, proś o zrzuty z GSC z podanym oknem pomiaru i punktem startowym — dokładnie w tym formacie, w którym my publikujemy swoje.</li>
+                <li><strong>Dane wygrywają z deklaracjami.</strong> Wybierając wykonawcę, proś o zrzuty z GSC z podanym oknem pomiaru i punktem startowym — dokładnie w tym formacie, w którym my publikujemy swoje. Jeśli zmieniasz wykonawcę, przeczytaj, jak przebiega <Link href="/zmiana-agencji-seo">zmiana agencji SEO bez utraty pozycji</Link>.</li>
               </ul>
               <p>Jeśli chcesz zobaczyć, jak te same metody wyglądałyby na Twojej domenie, zacznij od <Link href="/audyt-seo">audytu SEO</Link> albo sprawdź <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link> — na zapytania odpowiadamy do 24 h w dni robocze.</p>
 
@@ -177,7 +185,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                 locale={locale}
                 currentSlug="/blog/wyniki-wdrozen-seo-2026"
                 customCtaTitlePl="Chcesz takie liczby u siebie?"
-                customCtaTextPl="Zamów bezpłatną analizę SEO swojej strony. Odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze."
+                customCtaTextPl="Zobacz, co obejmują pakiety pozycjonowania i ile kosztują. Na zapytania odpowiadamy do 24 h w dni robocze."
               />
             </div>
           </Reveal>

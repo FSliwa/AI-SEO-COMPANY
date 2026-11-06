@@ -3,9 +3,11 @@ import { articleLanguages, articleRobots } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
+    // 5.11.2026 (PLAN-v2 6.25 W6, decyzje-blog nr 4): title PL (51 zn.) - „i arkusz” = checklista do pobrania
+    // w PDF i XLSX (public/pliki/, X-Robots-Tag: noindex). Meta, H1 i wersja EN bez zmian.
     title: locale === 'en'
       ? 'Technical SEO Audit Checklist for Digital Marketers'
-      : 'Audyt techniczny SEO: checklista z progami liczbowymi',
+      : 'Audyt techniczny SEO: checklista z progami i arkusz',
     description: locale === 'en'
       ? 'Run a technical SEO audit that ends in a prioritized fix list: crawl, indexability, Core Web Vitals thresholds, and schema that still earns a result.'
       : 'Jak zrobić audyt techniczny SEO, który kończy się listą napraw: crawl, indeksacja, progi Core Web Vitals i kryteria binarne zamiast ocen na oko.',
@@ -28,6 +30,7 @@ import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
 import { homeHash } from '@/lib/anchors';
+import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
   const { locale } = await params;
@@ -401,6 +404,8 @@ function ArtykulAudytTechnicznySeo({ locale }) {
     { id: 'priorytety', title: 'Jak ustalić, co naprawić najpierw' },
     { id: 'raportowanie-rytm', title: 'Jak raportować wyniki i ustawić rytm audytów' },
     { id: 'najszybsze-wygrane', title: 'Najszybsze wygrane audytu technicznego' },
+    { id: 'checklista-pdf', title: 'Checklista SEO do pobrania (PDF)' },
+    { id: 'kiedy-zlecic', title: 'Kiedy zlecić audyt techniczny' },
     { id: 'jak-przeprowadzamy', title: 'Jak AI SEO COMPANY przeprowadza audyt' },
     { id: 'faq', title: 'Najczęściej zadawane pytania' },
     { id: 'zrodla', title: 'Źródła' }
@@ -413,6 +418,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
         slug="/blog/technical-seo-audit-checklist"
         locale={locale}
         url="/blog/audyt-techniczny-seo"
+        dateModified={LASTMOD['https://www.ai-seo-company.pl/blog/audyt-techniczny-seo']}
       />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
@@ -503,7 +509,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
                 <li><strong>Bezpieczeństwo, mobile i duplikacja.</strong> HTTPS bez mixed content, użyteczność mobilna, powtarzalne bloki treści.</li>
               </ul>
 
-              <p>Jedna warstwa doszła do tej listy niedawno: gotowość na wyszukiwanie AI. Chodzi o to, czy crawlery AI mają dostęp do treści, czy kluczowy tekst jest w HTML-u zamiast w JavaScripcie po stronie klienta, i czy strukturę da się wyekstrahować i zacytować w odpowiedzi generatywnej.</p>
+              <p>Jedna warstwa doszła do tej listy niedawno: gotowość na wyszukiwanie AI. Chodzi o to, czy crawlery AI mają dostęp do treści, czy kluczowy tekst jest w HTML-u zamiast w JavaScripcie po stronie klienta, i czy strukturę da się wyekstrahować i zacytować w odpowiedzi generatywnej. Ten obszar, czyli <Link href="/pozycjonowanie-w-ai">dostęp botów AI i plik llms.txt</Link>, rozwijamy w usłudze pozycjonowania w AI.</p>
 
               <p><strong>Porada profesjonalisty:</strong> <em>Sprawdź w robots.txt przypadkowe blokady botów AI — GPTBot, OAI-SearchBot, Claude-SearchBot. Sporo stron blokuje je domyślnie i nikt tego nie zauważa. Blokada może być świadomą decyzją biznesową — nigdy skutkiem ubocznym konfiguracji.</em></p>
 
@@ -673,10 +679,31 @@ function ArtykulAudytTechnicznySeo({ locale }) {
 
               <p>Żadna z tych rzeczy nie wymaga przebudowy, wszystkie pięć mieści się w jednym sprincie, a każda ma mierzalne „przed i po” do raportu.</p>
 
+              {/* 5.11.2026 (PLAN-v2 6.25 W6, decyzje-blog nr 4, MSA-17): checklista z tresci artykulu (30 punktow
+                  z tabel i list powyzej) w PDF i XLSX; /pliki/* ma X-Robots-Tag: noindex (next.config.mjs). */}
+              <h2 id="checklista-pdf">Checklista SEO do pobrania (PDF)</h2>
+              <p>Wszystkie progi z tego poradnika zebraliśmy w 30 punktach do odhaczenia: od robots.txt i sitemapy, przez czas odpowiedzi serwera i Core Web Vitals, po rytm audytów i definition of done.</p>
+              <ul>
+                <li><a href="/pliki/checklista-audytu-technicznego-seo.pdf" download>Checklista audytu technicznego SEO (PDF, 30 punktów)</a>: do wydruku i odhaczania.</li>
+                <li><a href="/pliki/checklista-audytu-technicznego-seo.xlsx" download>Arkusz audytu technicznego SEO (XLSX)</a>: te same punkty z kolumnami na wynik, uwagi i ocenę ICE; priorytet liczy się sam.</li>
+              </ul>
+              <p>Pliki pobierzesz bez podawania adresu e-mail.</p>
+
+              {/* 5.11.2026 (decyzje-blog nr 4): H2 + anchor „audyt SEO strony” -> /audyt-seo. */}
+              <h2 id="kiedy-zlecic">Kiedy zlecić audyt techniczny</h2>
+              <p>Dużą część tej checklisty zrobisz sam: crawl do 500 adresów, dane z Search Console i progi z tabel wyżej. Zewnętrzny audyt ma sens w czterech sytuacjach:</p>
+              <ul>
+                <li>przed migracją domeny, zmianą CMS albo przebudową szablonów, bo wtedy błąd w przekierowaniach albo przypadkowy noindex kosztuje najwięcej;</li>
+                <li>gdy ruch z Google spada, a przyczyny nie widać w treściach;</li>
+                <li>gdy serwis ma więcej adresów, niż obejmuje bezpłatny crawler, albo potrzebna jest analiza logów serwera;</li>
+                <li>gdy lista znalezisk jest gotowa, ale nikt w zespole nie ułoży jej w priorytety i paczki dla dewelopera.</li>
+              </ul>
+              <p>Jeśli rozpoznajesz swoją sytuację, zamów <Link href="/audyt-seo">audyt SEO strony</Link>. Zakres, czas realizacji i cenę opisujemy niżej.</p>
+
               <h2 id="jak-przeprowadzamy">Jak AI SEO COMPANY przeprowadza audyt</h2>
               <p>Nasz proces idzie w kolejności: crawl odkrywczy, triage indeksowalności, priorytetyzowana naprawa, weryfikacja, monitoring ciągły — z powodu opisanego wyżej: praca nad wydajnością stron, których Google nie widzi, wydaje budżet bez efektu.</p>
               <p><Link href="/audyt-seo">Audyt SEO</Link> obejmuje ponad 50 punktów kontrolnych w trzech obszarach: technikalia z Core Web Vitals, treści z semantyką oraz profil linków. Do pracy potrzebujemy dostępów do Search Console i Analytics; wyniki dostajesz w 3–5 dni roboczych jako raport z listą błędów, oceną wpływu na widoczność, priorytetyzacją według stosunku efektu do pracochłonności i rekomendacjami w formie gotowej do przekazania deweloperowi. Po przekazaniu omawiamy go na konsultacji.</p>
-              <p>Audyt prowadzimy w ramach abonamentu, obok pozostałych prac SEO; w wyjątkowych sytuacjach wyceniamy go jako samodzielne zlecenie, po uzgodnieniu zakresu przed startem. Wyniki zależą od punktu startowego i od tego, ile z listy napraw faktycznie zostanie wdrożone — żadna agencja nie może zagwarantować rezultatu.</p>
+              <p>Audyt jest w cenie każdego pakietu pozycjonowania i od niego zaczynamy współpracę. Jako samodzielna usługa kosztuje od 1 490 zł netto, a ostateczna cena zależy od wielkości serwisu. Wyniki zależą od punktu startowego i od tego, ile z listy napraw faktycznie zostanie wdrożone — żadna agencja nie może zagwarantować rezultatu.</p>
               <p>Największe marnotrawstwo, jakie widujemy, to zespoły przepisujące szablony pod Core Web Vitals, podczas gdy tag noindex albo reguła w robots.txt dalej wycina stronę z indeksu. Najpierw odkrywanie. Szybkość ma znaczenie dopiero wtedy, gdy Google stronę widzi.</p>
               <p>Jeśli chcesz zacząć od diagnozy, zamów bezpłatną analizę SEO i potencjału obecnej marki przez <Link href={homeHash('kontakt', locale)}>formularz kontaktowy</Link> — na zapytania odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze.</p>
 
@@ -686,7 +713,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               <p>Audyt pojedynczej domeny zajmuje zwykle od kilku dni do tygodnia, zależnie od wielkości serwisu i tego, czy obejmuje analizę logów. U nas standardowo 3–5 dni roboczych. Serwisy z milionami adresów wymagają podejścia modułowego zamiast jednego pełnego crawlu.</p>
 
               <h3>Ile kosztuje audyt SEO?</h3>
-              <p>Na polskim rynku audyty małych stron wyceniane są zwykle w przedziale kilkuset do dwóch tysięcy złotych, a rozbudowanych serwisów — od trzech do kilkunastu tysięcy. Rozpiętość bierze się z zakresu: sam crawl z automatu to co innego niż analiza logów, danych polowych i konsultacja wdrożeniowa. U nas audyt wchodzi w zakres abonamentu.</p>
+              <p>W zestawieniu 17 agencji SEO, które prowadzimy, jawne ceny audytu wynoszą od 300 zł do 12 000 zł netto (odczyt 4.11.2026). Rozpiętość bierze się z zakresu: sam crawl z automatu to co innego niż analiza logów, danych polowych i konsultacja wdrożeniowa. U nas audyt jest w cenie pakietów pozycjonowania, a jako samodzielna usługa kosztuje od 1 490 zł netto.</p>
 
               <h3>Jak często powtarzać audyt?</h3>
               <p>Lekki crawl co tydzień, pełny audyt co kwartał i dodatkowy crawl porównawczy natychmiast po każdym większym wdrożeniu, przebudowie albo migracji.</p>
@@ -731,7 +758,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
                 locale={locale}
                 currentSlug="/blog/technical-seo-audit-checklist"
                 customCtaTitlePl="Potrzebujesz audytu technicznego?"
-                customCtaTextPl="Zamów bezpłatną analizę SEO obecnej strony. Na zapytania odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze."
+                customCtaTextPl="Zobacz, co obejmuje audyt SEO strony i ile kosztuje. Na zapytania odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze."
               />
             </div>
           </Reveal>

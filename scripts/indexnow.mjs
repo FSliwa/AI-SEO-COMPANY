@@ -17,12 +17,22 @@ const args = process.argv.slice(2);
 const wyslij = args.includes('--wyslij');
 let urls = args.filter((a) => a.startsWith('https://'));
 
+// /sitemap.xml jest od T0.7 indeksem (<sitemapindex>) - schodzimy do sitemap segmentow.
+// Zwykla sitemapa (<urlset>) dziala jak wczesniej. SITEMAP_URL tylko do testu lokalnego.
+async function wpisyZSitemapy(adres, glebokosc = 0) {
+  const xml = await (await fetch(adres)).text();
+  if (xml.includes('<sitemapindex') && glebokosc === 0) {
+    const dzieci = [...xml.matchAll(/<sitemap>\s*<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    return (await Promise.all(dzieci.map((d) => wpisyZSitemapy(process.env.SITEMAP_BASE ? d.replace(`https://${HOST}`, process.env.SITEMAP_BASE) : d, 1)))).flat();
+  }
+  return [...xml.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)].map(([, loc, lastmod]) => ({ loc, lastmod }));
+}
+
 const i = args.indexOf('--lastmod');
 if (i !== -1) {
   const dzien = args[i + 1];
-  const xml = await (await fetch(`https://${HOST}/sitemap.xml`)).text();
-  const re = /<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g;
-  for (const [, loc, lastmod] of xml.matchAll(re)) if (lastmod.startsWith(dzien)) urls.push(loc);
+  const wpisy = await wpisyZSitemapy(process.env.SITEMAP_URL || `https://${HOST}/sitemap.xml`);
+  for (const { loc, lastmod } of wpisy) if (lastmod.startsWith(dzien)) urls.push(loc);
 }
 
 urls = [...new Set(urls)].filter((u) => new URL(u).host === HOST);

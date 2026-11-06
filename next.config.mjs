@@ -5,8 +5,20 @@ const withNextIntl = createNextIntlPlugin('./i18n.js');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 5.11.2026 (PLAN-v2 rozdz. 7, TS11; TS-11): bez naglowka X-Powered-By: Next.js. Nic nie
+  // zyskujemy na ujawnianiu frameworka, a skanery dostaja go za darmo.
+  poweredByHeader: false,
   turbopack: {
     root: path.resolve('.'),
+  },
+  experimental: {
+    // 5.11.2026 (PLAN-v2 rozdz. 7, „404”; TS-12, BL-05): app/global-not-found.js obsluguje
+    // adresy, ktore nie pasuja do zadnej trasy (/nie-istnieje-123, /en/xyz). Bez tej flagi
+    // Next oddawal domyslna strone 404 bez lang, bez H1 i bez jednego linku, a wariant
+    // z [...rest] + not-found renderowal nawigacje dopiero po hydracji i wolal funkcje przy
+    // kazdym skanie botow. Flaga jest eksperymentalna (Next 16.2.12): przy aktualizacji Next
+    // (SA17) sprawdzic curlem, ze /nie-istnieje-123 dalej ma H1 i linki w HTML z serwera.
+    globalNotFound: true,
   },
   // Security headers PageSpeed flagged as missing (23.08.2026). Deliberately
   // WITHOUT Content-Security-Policy: this site loads a third-party 3D scene and
@@ -27,7 +39,11 @@ const nextConfig = {
           // allow-popups rather than plain same-origin: bare same-origin severs
           // window.opener, which would break any third-party popup flow added
           // later (payments, OAuth) for no gain here.
-          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin-allow-popups' }
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin-allow-popups' },
+          // 5.11.2026 (TS11; TS-11): serwis nie uzywa kamery, mikrofonu, geolokalizacji,
+          // platnosci ani USB (w kodzie brak <iframe>, getUserMedia, geolocation,
+          // PaymentRequest). Widget wideo-rozmowy albo platnosci w przyszlosci = poluzowac tutaj.
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()' }
         ]
       },
       // Pliki z /public szly z domyslnym `max-age=0, must-revalidate`, wiec
@@ -96,6 +112,30 @@ const nextConfig = {
 
   async redirects() {
     return [
+      // 5.11.2026 (PLAN-v2 rozdz. 7, VAPP; TS-08 po weryfikacji, zamiast lataki T7 z noindex):
+      // alias produkcyjny ai-seo-company.vercel.app odpowiadal 200 kopia calego serwisu
+      // (canonical na www, bez noindex). noindex + canonical do innego adresu to sprzeczne
+      // sygnaly (jak w artykulach jednojezycznych nizej), wiec jedno trwale przekierowanie na
+      // www, ze sciezka i query. Pierwsza regula: host wygrywa z kazda regula sciezki, wiec
+      // alias nigdy nie oddaje tresci ani wlasnych przekierowan (cele wzgledne nizej
+      // zostawalyby na hoscie aliasu). Stary adres na aliasie (np. /en/blog/<slug PL>) ma
+      // 2 skoki: alias -> www, potem regula www - akceptowane, alias nie ma linkow.
+      // Tylko dokladny host aliasu - www i podglady *.vercel.app (git-…) bez zmian.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'ai-seo-company.vercel.app' }],
+        destination: 'https://www.ai-seo-company.pl/:path*',
+        permanent: true,
+      },
+      // 5.11.2026 (audyt techniczny planu z filmu): artykuly jednojezyczne odpowiadaly 200 takze
+      // w drugim jezyku (6-3583 slow, noindex + canonical + hreflang do wersji istniejacej) -
+      // sprzeczne sygnaly. Jedno trwale przekierowanie do jedynej wersji (takze z /pl/..., zeby nie
+      // bylo dwoch skokow przez regule '/pl/:path*'). Lista = plOnly/enOnly w lib/blogPosts.js;
+      // nowy artykul jednojezyczny = nowy slug tutaj.
+      ...['wyniki-wdrozen-seo-2026', 'rodo-na-stronie-internetowej', 'mailchimp-vs-getresponse', 'konfiguracja-zdarzen-gtm-ga4-poradnik']
+        .map((s) => ({ source: `/en/blog/${s}`, destination: `/blog/${s}`, permanent: true })),
+      ...['seo-for-saas-startups-playbook', 'multi-location-seo-scale-local-visibility', 'best-marketing-attribution-tools-for-2026']
+        .flatMap((s) => [`/blog/${s}`, `/pl/blog/${s}`].map((source) => ({ source, destination: `/en/blog/${s}`, permanent: true }))),
       // Slug PL artykulu o lukach: middleware next-intl dawal 307
       // (temporary) - Google nie przenosi sygnalow. Jawna regula przed
       // middleware daje trwale 308.
@@ -126,6 +166,28 @@ const nextConfig = {
         destination: '/blog/audyt-techniczny-seo',
         permanent: true,
       },
+      // 5.11.2026 (PLAN-v2 6.19 i 6.25; BL-12, SA-04, CS-05): stare adresy /pl/blog/* wskazuja
+      // WPROST cel koncowy, tak jak dwie reguly wyzej. Bez nich: /pl/... -> 308 /blog/<stary> ->
+      // 308 <cel> (2 skoki). Zasada: kazda regula /pl/<stary-slug> = ten sam cel co regula
+      // /<stary-slug> nizej; przy zmianie celu tamtej zmienic tez te.
+      // Cel artykulu cenowego = wariant C z 6.25 (artykul zostaje). Wariant A (G1/D14:
+      // 308 artykulu na /cennik-pozycjonowania) zmienia cel tutaj i w regule
+      // '/blog/ile-kosztuje-pozycjonowanie-2026' nizej.
+      {
+        source: '/pl/blog/ile-kosztuje-pozycjonowanie-2026',
+        destination: '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',
+        permanent: true,
+      },
+      {
+        source: '/pl/blog/audyt-seo-cena-2026-ile-zaplacisz-w-polsce',
+        destination: '/audyt-seo',
+        permanent: true,
+      },
+      {
+        source: '/pl/blog/biblioteka',
+        destination: '/blog',
+        permanent: true,
+      },
       // /pl and /pl/* never exist as pages (defaultLocale 'pl' is unprefixed,
       // localePrefix 'as-needed'). The next-intl middleware strips the prefix
       // with a temporary 307, so Google keeps the /pl/ URLs indexed. These two
@@ -147,15 +209,33 @@ const nextConfig = {
         destination: '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',
         permanent: true,
       },
+      // 5.11.2026 (PLAN-v2 6.19, AU1; MSA-02, SA-04, CS-05): stary wpis o cenie audytu
+      // prowadzil do artykulu o cenach pozycjonowania, a fraza „audyt seo cena” nalezy do
+      // /audyt-seo (tam jest sekcja „Audyt SEO: cena i warianty”). Cel = strona uslugi.
       {
         source: '/blog/audyt-seo-cena-2026-ile-zaplacisz-w-polsce',
-        destination: '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026',
+        destination: '/audyt-seo',
+        permanent: true,
+      },
+      // 5.11.2026 (PLAN-v2 6.25; SA-12, MSA-16, CS-14, decyzje-blog nr 36-37): „biblioteka”
+      // dublowala /blog (18 z 19 linkow wspolnych). Trasa znika z routingu, sitemapy i llms.txt;
+      // stare adresy jednym skokiem na liste artykulow.
+      {
+        source: '/blog/biblioteka',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/en/blog/library',
+        destination: '/en/blog',
         permanent: true,
       },
       // EN Blog URL fixes for Google Search Console (Permanent 308 Redirects)
+      // 5.11.2026: cel wprost /en/blog (bylo /en/blog/library, ktory sam przekierowuje -
+      // zostalby lancuch 2 skokow).
       {
         source: '/en/blog/biblioteka',
-        destination: '/en/blog/library',
+        destination: '/en/blog',
         permanent: true,
       },
       {
@@ -191,9 +271,10 @@ const nextConfig = {
         destination: '/en/blog/how-much-does-seo-cost-pricing-packages-2026',
         permanent: true,
       },
+      // 5.11.2026 (AU1, MSA-02): jak wersja PL - na strone audytu SEO, nie na artykul cenowy.
       {
         source: '/en/blog/audyt-seo-cena-2026-ile-zaplacisz-w-polsce',
-        destination: '/en/blog/how-much-does-seo-cost-pricing-packages-2026',
+        destination: '/en/seo-audit',
         permanent: true,
       },
       {

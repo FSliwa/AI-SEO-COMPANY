@@ -4,7 +4,9 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { captureAttribution, syncCookieFromSession } from '@/lib/attribution';
 
-// Zapisuje gclid/gbraid/wbraid i utm_* z adresu wejścia (lib/attribution.js).
+// Zapisuje gclid/gbraid/wbraid i utm_* z adresu wejścia (lib/attribution.js),
+// a od ATR v2.2 (5.11.2026) przy pierwszej odsłonie sesji także landing,
+// czas i domenę odsyłacza bez parametrów (tylko sessionStorage).
 // Montowany raz w layoucie; odpala się przy każdej zmianie ścieżki, bo
 // parametry z reklamy mogą trafić także na podstronę wewnętrzną.
 // CookiesBanner wysyła 'aiseo:consent' po zapisie zgody — wtedy dane sesji

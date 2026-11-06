@@ -2,7 +2,9 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'How Much Does a Business Website Cost in 2026?' : 'Ile kosztuje strona www dla firmy: ceny i co zawierają',
+  // 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 20): title PL (52 zn.) pod „ile kosztuje strona internetowa”
+  // (1 000/mies., frazy.csv:67) i „…dla firmy” (140, :68). Meta i wersja EN bez zmian (EN: tylko zapis marki i oferta).
+  title: locale === 'en' ? 'How Much Does a Business Website Cost in 2026?' : 'Ile kosztuje strona internetowa dla firmy? Ceny 2026',
   description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta wizytówka kosztuje kilkaset złotych, profesjonalna strona znacznie więcej. Sprawdź, ile kosztuje strona www dla firmy i co wpływa na cenę.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
@@ -20,6 +22,9 @@ import { Link } from '@/i18n/routing';
 
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
+import { LASTMOD } from '@/lib/lastmod';
+
+const BASE = 'https://www.ai-seo-company.pl';
 
 export default async function ArticleWebsitePricingPage({ params }) {
   const { locale } = await params;
@@ -34,7 +39,8 @@ export default async function ArticleWebsitePricingPage({ params }) {
     { id: 'dlaczego-warto', title: 'Dlaczego warto zainwestować w dobrze zaprojektowaną stronę?' },
     { id: 'kluczowe-wnioski', title: 'Kluczowe wnioski' },
     { id: 'strona-za-2-tys-czy-20-tys', title: 'Strona za 2 000 zł czy za 20 000 zł: co naprawdę ma' },
-    { id: 'ai-seo-company', title: 'Ai-seo-company: strona, która pracuje na Twój biznes od' },
+    { id: 'ai-seo-company', title: 'AI SEO COMPANY: strona, która pracuje na Twój biznes od pierwszego dnia' },
+    { id: 'strona-w-pakiecie', title: 'Strona w pakiecie z pozycjonowaniem' },
     { id: 'zrodla', title: 'Przydatne źródła i narzędzia do planowania budżetu' }
   ];
   const tocItemsEn = [
@@ -48,14 +54,18 @@ export default async function ArticleWebsitePricingPage({ params }) {
     { id: 'why-invest', title: "Why It's Worth Investing in a Well-Designed Website" },
     { id: 'key-takeaways', title: 'Key Takeaways' },
     { id: 'what-really-matters', title: 'A €450 Website or a €4,650 Website: What Really Matters?' },
-    { id: 'ai-seo-company-en', title: 'Ai-seo-company: A Website That Works for Your Business from' },
+    { id: 'ai-seo-company-en', title: 'AI SEO COMPANY: A Website That Works for Your Business from Day One' },
     { id: 'useful-sources', title: 'Useful Sources and Tools for Budget Planning' }
   ];
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" locale={locale} />
+      <ArticleSchema
+        slug="/blog/ile-kosztuje-strona-www-dla-firmy-ceny"
+        locale={locale}
+        dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/how-much-does-a-business-website-cost-pricing` : `${BASE}/blog/ile-kosztuje-strona-www-dla-firmy-ceny`]}
+      />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (
@@ -352,8 +362,8 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Moderate annual costs</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', fontWeight: 500 }}>Full-service (Ai-seo-company)</td>
-                      <td style={{ padding: '1rem' }}>Subscription model (from <span style={{ fontWeight: 'bold' }}>€450 net/month</span>)</td>
+                      <td style={{ padding: '1rem', fontWeight: 500 }}>Full-service (AI SEO COMPANY)</td>
+                      <td style={{ padding: '1rem' }}>Website from €1,400 net one-off, or the Booster Pack at €590 net/month with a new website (min. 3 months)</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, Next.js/React, CRM and payment integrations, SEO audit, optional SEO subscription; in the Booster Pack a <span style={{ fontWeight: 'bold' }}>new website for €0</span></td>
                       <td style={{ padding: '1rem' }}>Realistic delivery time</td>
                       <td style={{ padding: '1rem' }}>B2B companies, e-commerce</td>
@@ -363,7 +373,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 </table>
               </div>
 
-              <p>The <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ai-seo-company Agency</Link> package includes design in Next.js and React technologies, which deliver better Core Web Vitals than standard WordPress, directly translating into Google rankings and advertising costs. It also includes CRM and payment system integrations, a technical SEO audit as part of implementation, and the option of a monthly SEO subscription after the website launches.</p>
+              <p>The <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>AI SEO COMPANY</Link> package includes design in Next.js and React technologies, which deliver better Core Web Vitals than standard WordPress, directly translating into Google rankings and advertising costs. It also includes CRM and payment system integrations, a technical SEO audit as part of implementation, and the option of a monthly SEO subscription after the website launches.</p>
               
               <p>A freelancer is a good choice when you have a limited budget, a simple project, and time to manage the process yourself. A small agency offers more structure and usually better graphic design, but rarely provides advanced technical and SEO competencies in one place. Full-service makes sense when the website is meant to directly generate revenue and every week of delay or every percentage point of conversion has measurable value.</p>
 
@@ -403,7 +413,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Prepare the business goal, feature list, and reference website examples before requesting a quote.</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', fontWeight: 500 }}>Ai-seo-company as full-service</td>
+                      <td style={{ padding: '1rem', fontWeight: 500 }}>AI SEO COMPANY as full-service</td>
                       <td style={{ padding: '1rem' }}>Includes UX/UI, Next.js/React, CRM integrations, and SEO audit with the option of a monthly positioning subscription. In the Booster Pack the website is included in the subscription.</td>
                     </tr>
                   </tbody>
@@ -416,8 +426,8 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <p>The most common mistake? Treating the website as a one-time expense rather than an investment that requires maintenance. A website without regular updates, without <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO</Link>, and without analysis of user behavior ages faster than you think. After 2–3 years without technical care, most websites need a rebuild, not just a refresh.</p>
               <p>My advice is simple: before you ask about the price, decide what the website is supposed to do for you. If it only needs to confirm the company’s existence, a budget of <span style={{ fontWeight: 'bold' }}>€700–1,150</span> is enough. If it needs to attract clients and convert, plan a minimum of <span style={{ fontWeight: 'bold' }}>€2,300</span> and treat it as an investment with a measurable return.</p>
               
-              <h2 id="ai-seo-company-en">Ai-seo-company: A Website That Works for Your Business from Day One</h2>
-              <p>Most companies face a choice: a freelancer for a few hundred or thousand euros, a small agency, or full service. Ai-seo-company is the answer when the website should not only look good but generate traffic and inquiries.</p>
+              <h2 id="ai-seo-company-en">AI SEO COMPANY: A Website That Works for Your Business from Day One</h2>
+              <p>Most companies face a choice: a freelancer for a few hundred or thousand euros, a small agency, or full service. AI SEO COMPANY is the answer when the website should not only look good but generate traffic and inquiries.</p>
               <p>The offer includes design in Next.js and React with full Core Web Vitals optimization, custom UX/UI based on user journey analysis, CRM and payment system integrations, and an SEO audit as part of implementation. After the website launches, you can continue cooperation with a monthly <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>B2B website positioning</Link> subscription that maintains and builds organic visibility.</p>
               
               <p><span style={{ fontWeight: 'bold' }}>Current packages (net + VAT):</span></p>
@@ -751,8 +761,8 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Koszty roczne umiarkowane</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', fontWeight: 500 }}>Full-service (Ai-seo-company)</td>
-                      <td style={{ padding: '1rem' }}>model subskrypcyjny (od 1 900 zł netto/mies.)</td>
+                      <td style={{ padding: '1rem', fontWeight: 500 }}>Full-service (AI SEO COMPANY)</td>
+                      <td style={{ padding: '1rem' }}>strona od 5 900 zł netto jednorazowo albo Booster Pack 2 500 zł netto/mies. z nową stroną (min. 3 mies.)</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, Next.js/React, integracja CRM i płatności, audyt SEO, opcjonalna subskrypcja SEO; w pakiecie Booster Pack nowa strona WWW za 0 zł</td>
                       <td style={{ padding: '1rem' }}>Realistyczny czas realizacji</td>
                       <td style={{ padding: '1rem' }}>Firmy B2B, e-commerce</td>
@@ -762,7 +772,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 </table>
               </div>
 
-              <p>Pakiet <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ai-seo-company</Link> obejmuje projektowanie w technologiach Next.js i React, które zapewniają lepsze Core Web Vitals niż standardowy WordPress, co bezpośrednio przekłada się na pozycje w Google i koszty reklamy. Do tego dochodzi integracja z CRM i systemami płatności, audyt SEO techniczny jako element wdrożenia oraz opcja miesięcznej subskrypcji SEO po uruchomieniu strony. Szczegóły oferty projektowania stron dla firm są dostępne na <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>stronie usług</Link>.</p>
+              <p>Pakiet <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>AI SEO COMPANY</Link> obejmuje projektowanie w technologiach Next.js i React, które zapewniają lepsze Core Web Vitals niż standardowy WordPress, co bezpośrednio przekłada się na pozycje w Google i koszty reklamy. Do tego dochodzi integracja z CRM i systemami płatności, audyt SEO techniczny jako element wdrożenia oraz opcja miesięcznej subskrypcji SEO po uruchomieniu strony. Szczegóły oferty projektowania stron dla firm są dostępne na <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>stronie usług</Link>.</p>
               
               <p>Freelancer jest dobrym wyborem, gdy masz ograniczony budżet, prosty projekt i czas na samodzielne zarządzanie procesem. Mała agencja daje więcej struktury i zazwyczaj lepszy projekt graficzny, ale rzadko oferuje zaawansowane kompetencje techniczne i SEO w jednym miejscu. Full-service ma sens, gdy strona ma bezpośrednio generować przychody, a każdy tydzień opóźnienia lub każdy procent konwersji ma mierzalną wartość.</p>
 
@@ -802,7 +812,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Przygotuj cel biznesowy, listę funkcji i przykłady stron referencyjnych, zanim poprosisz o wycenę.</td>
                     </tr>
                     <tr>
-                      <td style={{ padding: '1rem', fontWeight: 500 }}>Ai-seo-company jako full-service</td>
+                      <td style={{ padding: '1rem', fontWeight: 500 }}>AI SEO COMPANY jako full-service</td>
                       <td style={{ padding: '1rem' }}>Obejmuje UX/UI, Next.js/React, integracje CRM i audyt SEO z opcją miesięcznej subskrypcji pozycjonowania. W pakiecie Booster Pack strona WWW jest wliczona w abonament.</td>
                     </tr>
                   </tbody>
@@ -815,10 +825,18 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <p>Najczęstszy błąd? Traktowanie strony jako jednorazowego wydatku, a nie inwestycji wymagającej utrzymania. Strona bez regularnych aktualizacji, bez <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO</Link> i bez analizy zachowań użytkowników starzeje się szybciej niż myślisz. Po 2–3 latach bez opieki technicznej większość stron wymaga przebudowy, a nie tylko odświeżenia.</p>
               <p>Moja rada jest prosta: zanim zapytasz o cenę, zdecyduj, co strona ma dla Ciebie robić. Jeśli ma tylko potwierdzać istnienie firmy, wystarczy budżet 3 000–5 000 zł. Jeśli ma przyciągać klientów i konwertować, zaplanuj minimum 10 000 zł i traktuj to jako inwestycję z mierzalnym zwrotem.</p>
               
-              <h2 id="ai-seo-company">Ai-seo-company: strona, która pracuje na Twój biznes od pierwszego dnia</h2>
-              <p>Większość firm staje przed wyborem: freelancer za kilka tysięcy złotych, mała agencja lub pełny serwis. Ai-seo-company jest odpowiedzią na sytuację, gdy strona ma nie tylko wyglądać, ale generować ruch i zapytania.</p>
+              <h2 id="ai-seo-company">AI SEO COMPANY: strona, która pracuje na Twój biznes od pierwszego dnia</h2>
+              <p>Większość firm staje przed wyborem: freelancer za kilka tysięcy złotych, mała agencja lub pełny serwis. AI SEO COMPANY jest odpowiedzią na sytuację, gdy strona ma nie tylko wyglądać, ale generować ruch i zapytania.</p>
               <p>Oferta obejmuje projektowanie w Next.js i React z pełną optymalizacją Core Web Vitals, custom UX/UI oparty na analizie ścieżek użytkownika, integracje z CRM i systemami płatności oraz audyt SEO jako element wdrożenia. Po uruchomieniu strony możesz kontynuować współpracę w modelu miesięcznej subskrypcji <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>pozycjonowania stron dla firm B2B</Link>, która utrzymuje i buduje widoczność organiczną.</p>
               
+              {/* 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 20): H2 „Strona w pakiecie z pozycjonowaniem”. Kwoty z oferty:
+                  app/[locale]/projektowanie-stron-internetowych/page.js (FAQ: od 5 900 zł netto, Booster Pack min. 3 mies.)
+                  i components/PricingClient.jsx (Booster Pack 2 500 zł netto/mies.). H2 z widelkami agencji z TOP 10 pominiety:
+                  ceny do zebrania w dniu pisania (decyzje-blog nr 20). */}
+              <h2 id="strona-w-pakiecie">Strona w pakiecie z pozycjonowaniem</h2>
+              <p>Stronę możesz kupić jednorazowo albo dostać w abonamencie razem z pozycjonowaniem. Strona firmowa w Next.js kosztuje u nas od 5 900 zł netto, a cena zależy od liczby podstron, integracji (CRM, płatności) i treści do przygotowania. W pakiecie Booster Pack nowa strona jest w cenie abonamentu za 2 500 zł netto miesięcznie, razem z pozycjonowaniem, przy umowie na minimum 3 miesiące.</p>
+              <p>Który wariant wybrać? Jednorazowy zakup ma sens, gdy SEO prowadzi już ktoś inny albo strona ma tylko potwierdzać istnienie firmy. Pakiet ma sens, gdy strona od pierwszego dnia ma zbierać ruch z Google: projekt i pozycjonowanie robi wtedy jeden zespół, więc serwisu nie trzeba przekazywać między wykonawcami.</p>
+
               <p><span style={{ fontWeight: 'bold' }}>Aktualne pakiety (netto + 23% VAT):</span></p>
               <ul>
                 <li><span style={{ fontWeight: 'bold' }}>SEO Standard</span> – 1 900 zł / mies.</li>
@@ -834,8 +852,8 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <ul>
                 <li><a href="https://home.pl" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje stworzenie strony internetowej? Poznaj przykładowe ceny — home.pl</a>: przegląd przedziałów cenowych dla podstawowych realizacji na polskim rynku.</li>
                 <li>Ile kosztuje utrzymanie strony internetowej? — zestawienie rocznych kosztów utrzymania dla różnych typów stron.</li>
-                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Projektowanie stron internetowych dla firm</Link> — szczegółowy opis oferty Ai-seo-company z zakresem prac i technologiami.</li>
-                <li><Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje SEO w Polsce? Cennik i pakiety 2026</Link> — zestawienie kosztów pozycjonowania jako uzupełnienie budżetu na stronę.</li>
+                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Projektowanie stron internetowych dla firm</Link> — szczegółowy opis oferty AI SEO COMPANY z zakresem prac i technologiami.</li>
+                <li><Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje SEO w 2026? Ceny agencji i od czego zależą</Link> — od czego zależy koszt pozycjonowania, jako uzupełnienie budżetu na stronę.</li>
                 <li><Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt SEO</Link> — opis usługi audytu technicznego, przydatny przed wdrożeniem lub migracją strony.</li>
               </ul>
               
@@ -844,7 +862,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <p><span style={{ fontWeight: 'bold' }}>Rekomendacja:</span></p>
               <ul>
                 <li><Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Cennik Pozycjonowania Stron 2026 | Pakiety i Ceny SEO</Link></li>
-                <li><Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile Kosztuje SEO w Polsce? Cennik i Pakiety 2026</Link></li>
+                <li><Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje SEO w 2026? Ceny agencji i od czego zależą</Link></li>
                 <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Projektowanie Stron Internetowych | Web Design dla Firm</Link></li>
                 <li><Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie Stron Internetowych | SEO dla Firm B2B</Link></li>
               </ul>

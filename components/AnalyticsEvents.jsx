@@ -11,7 +11,7 @@ import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 // automatycznie, a data-cta tylko nadaje mu czytelną nazwę.
 //
 // Zdarzenia:
-//   cta_click            {cta_location, cta_text, page_path}
+//   cta_click            {cta_location, cta_text, page_path}  (+ link_url dla BlogCTA klastra)
 //   pricing_plan_click   {plan, cta_location, page_path}  + ustawia pakiet w formularzu
 //   phone_click          {link_location, link_url, page_path}
 //   email_click          {link_location, link_url, page_path}
@@ -51,6 +51,18 @@ export default function AnalyticsEvents() {
         return;
       }
 
+      const text = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+
+      // BC1 (5.11.2026, CS-04 z korektą): BlogCTA klastra linkuje do strony usługi
+      // (data-cta="blog_cta_<klaster>"), a nie do #kontakt, więc warunek kotwicy kontaktu
+      // niżej zgubiłby to kliknięcie. Linki wewnętrzne z tym znacznikiem mierzymy tutaj,
+      // z link_url (cel zależy od bramki publikacji, np. hub GEO -> A5). Przycisk bez
+      // klastra (data-cta="blog_cta_kontakt", href="#kontakt") idzie dalej starą ścieżką.
+      if (href.startsWith('/') && a.closest('[data-cta^="blog_cta_"]')) {
+        track('cta_click', { cta_location: location, cta_text: text, page_path: pagePath, link_url: href });
+        return;
+      }
+
       const hashIndex = href.indexOf('#');
       const fragment = hashIndex >= 0 ? href.slice(hashIndex + 1) : '';
       if (!CONTACT_IDS.includes(fragment)) return;
@@ -61,7 +73,6 @@ export default function AnalyticsEvents() {
         window.dispatchEvent(new CustomEvent(PRESELECT_PLAN_EVENT, { detail: plan }));
         return;
       }
-      const text = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
       track('cta_click', { cta_location: location, cta_text: text, page_path: pagePath });
     };
 

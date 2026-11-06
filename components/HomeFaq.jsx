@@ -39,14 +39,25 @@ const faqHome = [
     questionEn: 'What do you need from us to get started?',
     answer: 'Dostępu do Google Search Console i Google Analytics — to jedyne źródła danych o Twojej domenie z pierwszej ręki. Przydaje się też dostęp do panelu strony i informacja o hostingu, żebyśmy mogli sprawdzić czas odpowiedzi serwera. Najważniejsza jest jednak jedna rzecz spoza narzędzi: lista pytań, które najczęściej zadają Wasi klienci. To najczystszy sygnał intencji, jaki istnieje, a nie znajdziecie go w żadnym narzędziu do fraz.',
     answerEn: 'Access to Google Search Console and Google Analytics — the only first-party data about your domain. Access to the CMS and details about hosting help too, so we can check server response times. The most valuable input, though, is not a tool: the list of questions your customers actually ask. That is the cleanest intent signal there is, and no keyword tool will give it to you.'
+  },
+  {
+    // 5.11.2026 (HOME; PLAN-v2 6.24, MSA-07): pytanie z linkiem do huba GEO. Tylko PL (tylkoPl),
+    // strona główna chroniona - tylko dodanie. Zakres i ceny = oferta w GeoPageClient.jsx i FAQ cennika
+    // (Premium w cenie, +490 zł netto/mies. do Standard). Link do sprawdzarki dopiero po T0.2.
+    id: 'pozycjonowanie-w-chatgpt-i-google-ai',
+    tylkoPl: true,
+    question: 'Czy pozycjonujecie firmy w ChatGPT i Google AI?',
+    answer: 'Tak. Co tydzień zadajemy ChatGPT, Perplexity, Gemini i przeglądowi AI w Google pytania, które zadają Twoi klienci, i sprawdzamy, czy w odpowiedziach pada nazwa albo strona Twojej firmy. Potem zdobywamy wzmianki w źródłach cytowanych przez modele. W SEO Premium to jest w cenie, a do SEO Standard dopłacasz 490 zł netto miesięcznie. Metodę opisujemy na stronie <a href="/pozycjonowanie-w-ai" style="text-decoration:underline">pozycjonowanie w AI</a>.',
   }
 ];
 
 export default function HomeFaq() {
   const lang = useLocale();
+  // FAQPage = pytania widoczne na stronie: PL 6, EN 5 (bez pytań tylkoPl).
+  const faqWidoczne = lang === 'pl' ? faqHome : faqHome.filter((f) => !f.tylkoPl);
   return (
     <AppleFaq
-      faqData={faqHome}
+      faqData={faqWidoczne}
       title={lang === 'pl' ? 'Najczęstsze pytania o współpracę' : 'Frequently Asked Questions'}
     />
   );

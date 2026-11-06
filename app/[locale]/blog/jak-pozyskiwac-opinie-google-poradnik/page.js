@@ -2,8 +2,10 @@ import { articleLanguages } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
-  title: locale === 'en' ? 'How to get Google Reviews? Guide 2026' : 'Jak pozyskiwać opinie Google? Poradnik 2026',
-  description: locale === 'en' ? 'The most effective method of getting Google reviews. Check how to build a process that automatically generates new reviews.' : 'Najskuteczniejsza metoda pozyskiwania opinii Google. Sprawdź, jak zbudować proces, który automatycznie generuje nowe recenzje.',
+  // 5.11.2026 (PLAN-v2 6.25 W7, decyzje-blog nr 22): title PL (55 zn.) pod „jak odpowiadać na opinie google”
+  // (90/mies., W1) i meta PL (130 zn.) z decyzje-blog nr 22. EN bez zmian (poza anchorem BL-11 i zapisem marki).
+  title: locale === 'en' ? 'How to get Google Reviews? Guide 2026' : 'Opinie Google: jak je zdobywać i jak odpowiadać (wzory)',
+  description: locale === 'en' ? 'The most effective method of getting Google reviews. Check how to build a process that automatically generates new reviews.' : 'Jak zdobywać opinie w Google bez łamania zasad i jak odpowiadać na pozytywne i negatywne. 6 wzorów odpowiedzi i proces po usłudze.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews` : `https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik`,
     languages: articleLanguages('/blog/jak-pozyskiwac-opinie-google-poradnik', 'https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik', 'https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews')
@@ -19,6 +21,13 @@ import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+import { LASTMOD } from '@/lib/lastmod';
+
+const BASE = 'https://www.ai-seo-company.pl';
+// 5.11.2026 (PLAN-v2 6.25 W7, decyzje-blog nr 22): link i CTA do L1 po publikacji partii 2;
+// do tego czasu ta sama tresc prowadzi do uslugi SEO lokalnego (prowadzenie wizytowki jest w kazdym pakiecie).
+const HREF_WIZYTOWKA = hrefJesliOpublikowana('/pozycjonowanie-wizytowki-google') ?? '/seo-lokalne-warszawa';
 
 export default async function ArticleReviewsPage({ params }) {
   const { locale } = await params;
@@ -28,13 +37,13 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'co-jest-zabronione', title: 'Co jest zabronione i jakie grożą konsekwencje za łamanie' },
     { id: 'proces-pozyskiwania-krok-po-kroku', title: 'Jak zbudować proces pozyskiwania opinii krok po kroku' },
     { id: 'szablony-wiadomosci', title: 'Szablony wiadomości, które faktycznie działają' },
-    { id: 'jak-odpowiadac', title: 'Jak odpowiadać na opinie, żeby zyskać wiarygodność' },
+    { id: 'jak-odpowiadac', title: 'Jak odpowiadać na opinie Google: 6 wzorów' },
     { id: 'falszywa-opinia', title: 'Gdy opinia jest fałszywa lub narusza zasady — co zrobić' },
     { id: 'automatyzacja-i-kpi', title: 'Automatyzacja i KPI: co mierzyć i jak testować' },
     { id: 'co-mowia-eksperci', title: 'Co mówią eksperci o personalizacji i automatyzacji w 2026' },
     { id: 'kluczowe-wnioski', title: 'Kluczowe wnioski' },
     { id: 'dlaczego-uczciwe-opinie', title: 'Dlaczego uczciwe opinie opłacają się bardziej, niż myślisz' },
-    { id: 'ai-seo-company-wdrozy', title: 'Ai-seo-company wdroży ten proces za Ciebie' }
+    { id: 'ai-seo-company-wdrozy', title: 'AI SEO COMPANY wdroży ten proces za Ciebie' }
   ];
 
   const tocItemsEn = [
@@ -49,13 +58,17 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'co-mowia-eksperci', title: 'What experts say about personalization and automation in' },
     { id: 'kluczowe-wnioski', title: 'Key Takeaways' },
     { id: 'dlaczego-uczciwe-opinie', title: 'Why honest reviews pay off more than you think' },
-    { id: 'ai-seo-company-wdrozy', title: 'Ai-seo-company will implement this process for you' }
+    { id: 'ai-seo-company-wdrozy', title: 'AI SEO COMPANY will implement this process for you' }
   ];
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/jak-pozyskiwac-opinie-google-poradnik" locale={locale} />
+      <ArticleSchema
+        slug="/blog/jak-pozyskiwac-opinie-google-poradnik"
+        locale={locale}
+        dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/how-to-get-google-reviews` : `${BASE}/blog/jak-pozyskiwac-opinie-google-poradnik`]}
+      />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
@@ -171,8 +184,8 @@ export default async function ArticleReviewsPage({ params }) {
                   <h2 id="dlaczego-uczciwe-opinie">Why honest reviews pay off more than you think</h2>
                   <p>Obsession with a perfect star rating is a trap. Profiles with a few negative reviews, where the company responds concretely and empathetically, often convert better than profiles with only 5 stars and no replies (as seen in our <Link href="/#portfolio" style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>).</p>
 
-                  <h2 id="ai-seo-company-wdrozy">Ai-seo-company will implement this process for you</h2>
-                  <p><Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>Ai-seo-company</Link> does exactly that. We do not sell guides, we implement processes. We configure CRM integration, prepare templates, build KPI dashboards, and manage review responses in 30-60 days (check our <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>free SEO audit</Link>.</p>
+                  <h2 id="ai-seo-company-wdrozy">AI SEO COMPANY will implement this process for you</h2>
+                  <p><Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>Our local SEO service in Warsaw</Link> does exactly that. We do not sell guides, we implement processes. We configure CRM integration, prepare templates, build KPI dashboards, and manage review responses in 30-60 days (check our <Link href="/cennik-pozycjonowania" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>free SEO audit</Link>.</p>
                 </>
               ) : (
                 <>
@@ -235,6 +248,7 @@ export default async function ArticleReviewsPage({ params }) {
                   
                   <p>Opinie klientów Google to też źródło UGC wspierające sprzedaż: recenzje eksponowane na stronie głównej lub kartach produktów skracają ścieżkę zakupową. Firma, która systematycznie zbiera 5–10 opinii miesięcznie, buduje przewagę rankingową trwalszą niż jednorazowa kampania zbierająca 50 recenzji w tydzień.</p>
                   <p>Systematyczny przyrost opinii daje lepszy sygnał rankingowy niż jednorazowy skok, który algorytmy Google traktują jako anomalię.</p>
+                  <p>Opinie liczą się też poza Mapami. ChatGPT z wyszukiwaniem korzysta z wizytówek, opinii i katalogów firm, dlatego prowadzoną wizytówkę z opiniami uwzględniamy także w <Link href="/pozycjonowanie-w-ai" style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowaniu w AI</Link>.</p>
 
                   <h2 id="co-jest-zabronione">Co jest zabronione i jakie grożą konsekwencje za łamanie zasad</h2>
                   <p>Google precyzyjnie określa, co jest niedozwolone. Naruszenia nie kończą się ostrzeżeniem, lecz natychmiastowym działaniem algorytmów lub moderatorów.</p>
@@ -287,8 +301,11 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <p><em>Porada profesjonalisty: Pytanie pomocnicze „Co najbardziej pomogło Ci w naszej współpracy?“ zamiast prośby o ocenę działa podwójnie: zwiększa długość recenzji i kieruje klienta na konkretne aspekty usługi, co podnosi wartość SEO opinii przez naturalne frazy kluczowe.</em></p>
 
-                  <h2 id="jak-odpowiadac">Jak odpowiadać na opinie, żeby zyskać wiarygodność</h2>
-                  <p>Odpowiedź na opinię to nie formalność. To treść widoczna dla wszystkich potencjalnych klientów, którzy czytają recenzje przed podjęciem decyzji. Dobra odpowiedź na negatywną recenzję często przekonuje do zakupu skuteczniej niż seria idealnych ocen (co świetnie widać w naszych <Link href="/#portfolio" style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>). Profesjonalne <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>zarządzanie opiniami Google</Link> to dzisiaj standard komunikacji z klientem.</p>
+                  {/* 5.11.2026 (PLAN-v2 6.25 W7, decyzje-blog nr 22): H2 „6 wzorów” pod „jak odpowiadać na opinie google”.
+                      Dwa przyklady z imionami (Pani Anna, Pan Tomasz) zastapione wzorami z miejscami do uzupelnienia -
+                      bez fikcyjnych klientow. Id bez zmian. Link do L1 przez bramke publikacji (HREF_WIZYTOWKA). */}
+                  <h2 id="jak-odpowiadac">Jak odpowiadać na opinie Google: 6 wzorów</h2>
+                  <p>Odpowiedź na opinię to nie formalność. To treść widoczna dla wszystkich potencjalnych klientów, którzy czytają recenzje przed podjęciem decyzji, a dobra odpowiedź na negatywną recenzję potrafi przekonać ich skuteczniej niż seria idealnych ocen. Profesjonalne <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>zarządzanie opiniami Google</Link> to dzisiaj standard komunikacji z klientem.</p>
                   
                   <p><span style={{ fontWeight: 'bold' }}>Zasady odpowiedzi:</span></p>
                   <ul>
@@ -296,27 +313,55 @@ export default async function ArticleReviewsPage({ params }) {
                     <li>Podpisuj się imieniem, nie tylko nazwą firmy.</li>
                     <li>Nigdy nie umieszczaj w odpowiedzi prywatnych danych klienta.</li>
                     <li>Nie wdawaj się w publiczne spory.</li>
+                    <li>Nie kopiuj tego samego tekstu pod każdą opinią. Klienci to zauważają.</li>
                   </ul>
 
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
-                    <span style={{ fontWeight: 'bold' }}>Przykład odpowiedzi na pozytywną recenzję:</span><br /><br />
-                    Dzień dobry Pani Anno,<br />
-                    Dziękujemy za tak miłą opinię! Cieszymy się, że doceniła Pani szybkość realizacji i dokładność naszej ekipy. Takie słowa bardzo nas motywują.<br />
-                    Pozdrawiamy,<br />
-                    Michał<br />
-                    [Nazwa firmy]
-                  </div>
-                  <p>Odpowiedź powinna być krótka, konkretna, z imieniem klienta i elementem, który wyróżnia usługę. Nie kopiuj tego samego szablonu do każdej pozytywnej recenzji – Google i klienci to zauważają.</p>
+                  <p>Poniżej 6 wzorów do skopiowania. W nawiasach kwadratowych są miejsca do uzupełnienia: zawsze dopisz konkret z recenzji, na którą odpowiadasz.</p>
 
+                  <h3>1. Pozytywna opinia z konkretem</h3>
                   <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
-                    <span style={{ fontWeight: 'bold' }}>Przykład odpowiedzi na negatywną recenzję:</span><br /><br />
-                    Dzień dobry Panie Tomaszu,<br />
-                    Przykro nam, że doświadczenie nie spełniło Pana oczekiwań. Chcielibyśmy to dokładnie wyjaśnić i naprawić. Prosimy o kontakt na adres [e-mail] lub telefon [numer] – chętnie porozmawiamy prywatnie.<br />
-                    Pozdrawiam,<br />
-                    Anna<br />
-                    [Nazwa firmy]
+                    Dzień dobry [Imię],<br />
+                    dziękujemy za opinię i za wzmiankę o [konkret z opinii, np. terminie albo dokładności]. Cieszymy się, że [nazwa usługi] spełniła oczekiwania. Do zobaczenia przy kolejnym zleceniu.<br />
+                    [Imię pracownika], [Nazwa firmy]
                   </div>
-                  <p>Zawsze przenoś rozmowę do kanału prywatnego. Nie tłumacz się publicznie, nie atakuj klienta i nie kwestionuj jego doświadczenia. Gdy problem zostanie rozwiązany, możesz uprzejmie zapytać klienta, czy chciałby zaktualizować opinię. Nie wywieraj presji: <em>„Cieszę się, że udało nam się rozwiązać problem. Jeśli chcesz, możesz zaktualizować swoją recenzję, ale oczywiście nie musisz.”</em></p>
+
+                  <h3>2. Same gwiazdki, bez komentarza</h3>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                    Dziękujemy za ocenę, [Imię]. Jeśli znów będzie potrzebna [nazwa usługi], jesteśmy pod numerem [telefon].<br />
+                    [Imię pracownika], [Nazwa firmy]
+                  </div>
+
+                  <h3>3. Opinia mieszana: pochwała i zastrzeżenie</h3>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                    Dzień dobry [Imię],<br />
+                    dziękujemy za szczerą opinię. Cieszymy się, że [to, co klient pochwalił], i przepraszamy za [to, co klient skrytykował]. Już [co konkretnie zmieniliście]. Jeśli da nam [Pan/Pani] jeszcze jedną szansę, prosimy o kontakt: [e-mail].<br />
+                    [Imię pracownika], [Nazwa firmy]
+                  </div>
+
+                  <h3>4. Negatywna opinia o usłudze</h3>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                    Dzień dobry [Imię],<br />
+                    przykro nam, że [nazwa usługi] nie spełniła oczekiwań. Chcemy wyjaśnić, co poszło nie tak, i naprawić sytuację. Prosimy o kontakt pod adresem [e-mail] albo numerem [telefon]. Chętnie porozmawiamy bezpośrednio.<br />
+                    [Imię pracownika], [Nazwa firmy]
+                  </div>
+                  <p>Zawsze przenoś rozmowę do kanału prywatnego. Nie tłumacz się publicznie, nie atakuj klienta i nie kwestionuj jego doświadczenia.</p>
+
+                  <h3>5. Opinia, której nie da się dopasować do żadnego klienta</h3>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                    Dzień dobry, nie możemy znaleźć tej wizyty w naszych zapisach. Zapraszamy do kontaktu pod adresem [e-mail], żebyśmy mogli wyjaśnić sytuację.<br />
+                    [Imię pracownika], [Nazwa firmy]
+                  </div>
+                  <p>Jeśli opinia narusza zasady Google, zgłoś ją według kroków z następnej sekcji.</p>
+
+                  <h3>6. Odpowiedź po rozwiązaniu problemu</h3>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                    Dzień dobry [Imię],<br />
+                    dziękujemy za rozmowę. Cieszymy się, że udało się rozwiązać [opis problemu]. Jeśli [Pan/Pani] zechce, może [Pan/Pani] zaktualizować opinię, ale oczywiście nie musi.<br />
+                    [Imię pracownika], [Nazwa firmy]
+                  </div>
+                  <p>Pytanie o aktualizację zadaj tylko raz i bez presji. Nigdy nie łącz go z rabatem ani inną korzyścią.</p>
+
+                  <p>Odpowiedź na każdą opinię w ciągu 48 godzin to stały element naszej pracy, gdy prowadzimy <Link href={HREF_WIZYTOWKA} style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie wizytówki Google</Link>.</p>
 
                   <h2 id="falszywa-opinia">Gdy opinia jest fałszywa lub narusza zasady — co zrobić</h2>
                   <ol>
@@ -387,9 +432,9 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Widzę regularnie ten sam schemat: firma inwestuje w <Link href="/pozycjonowanie-stron-internetowych" style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie</Link>, poprawia stronę, uruchamia reklamy, a potem traci klientów na etapie wizytówki Google, bo ma 12 opinii z 2021 roku i średnią 3,8. Potencjalny klient porównuje ją z konkurentem, który ma 90 recenzji z ostatnich 6 miesięcy i odpowiada na każdą z nich. Wybór jest oczywisty.</p>
                   <p>Procesowy model zbierania opinii, systematyczny, zautomatyzowany, zgodny z zasadami Google, jest też najodporniejszy na zmiany algorytmów (podobnie jak dbanie o <Link href="/blog/core-web-vitals-a-pozycje-google" style={{ color: '#0066cc', textDecoration: 'underline' }}>Core Web Vitals</Link> czy architekturę strony). Autentyczność nie jest romantycznym ideałem. Jest strategią, która po prostu działa dłużej. Dlatego <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO lokalne</Link> bez rzetelnego pozyskiwania opinii to zwykle przepalanie budżetu.</p>
 
-                  <h2 id="ai-seo-company-wdrozy">Ai-seo-company wdroży ten proces za Ciebie w 30–60 dni</h2>
+                  <h2 id="ai-seo-company-wdrozy">AI SEO COMPANY wdroży ten proces za Ciebie w 30–60 dni</h2>
                   <p>Czytasz ten artykuł, bo chcesz więcej opinii Google. Wiesz już, co robić. Pytanie brzmi: kto to wdroży, skonfiguruje trigger w CRM, przygotuje szablony, ustawi dashboard KPI i zadba o to, żeby cały proces działał bez Twojego codziennego nadzoru?</p>
-                  <p><span style={{ fontWeight: 'bold' }}>Ai-seo-company</span> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy (sprawdź nasze <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
+                  <p><span style={{ fontWeight: 'bold' }}>AI SEO COMPANY</span> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy (sprawdź nasze <Link href="/cennik-pozycjonowania" style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
                   
                   <p>Jeśli chcesz wiedzieć, od czego zacząć w Twoim konkretnym przypadku, zacznij od <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>bezpłatnego audytu SEO</Link>, który obejmuje też ocenę Profilu Firmy i aktualnego stanu opinii. Albo sprawdź pełną ofertę <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO dla firm</Link> i napisz do nas bezpośrednio.</p>
                 </>
@@ -411,7 +456,7 @@ export default async function ArticleReviewsPage({ params }) {
               <BlogCTA 
   locale={locale} 
   currentSlug="/blog/jak-pozyskiwac-opinie-google-poradnik" 
-  customCtaTextPl={<>Chcesz wyprzedzić konkurencję w wynikach wyszukiwania? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię, w tym <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>wdrożenie procesu zbierania opinii</Link>.</>}
+  customCtaTextPl={<>Chcesz wyprzedzić konkurencję w wynikach wyszukiwania? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię, w tym <Link href={HREF_WIZYTOWKA} style={{ color: '#0066cc', textDecoration: 'underline' }}>wdrożenie procesu zbierania opinii</Link>.</>}
 />
             </div>
           </Reveal>
