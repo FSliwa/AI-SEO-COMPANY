@@ -47,7 +47,7 @@ const top3Rules = {
 
 const card = { background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)', scrollMarginTop: '110px' };
 const h2 = { fontSize: '1.6rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--color-text-dark)' };
-const list = { margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.75rem', fontSize: '1.05rem', lineHeight: 1.6, color: '#333336' };
+const list = { margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.75rem', fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--color-text-main)' };
 
 export default function FairDeal() {
   const lang = useLocale() === 'en' ? 'en' : 'pl';
@@ -61,7 +61,7 @@ export default function FairDeal() {
               {fairRules[lang].map((r) => <li key={r}>{r}</li>)}
             </ol>
             {lang === 'pl' && (
-              <p style={{ margin: '1.25rem 0 0', fontSize: '1rem', lineHeight: 1.6, color: '#333336' }}>
+              <p style={{ margin: '1.25rem 0 0', fontSize: '1rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
                 Odchodzisz od innej agencji? <Link href="/zmiana-agencji-seo" style={{ textDecoration: 'underline', fontWeight: 600 }}>Poradnik i checklista: jak zmienić agencję SEO bez kar i utraty pozycji</Link>.
               </p>
             )}

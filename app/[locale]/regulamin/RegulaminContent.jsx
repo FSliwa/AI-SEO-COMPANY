@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import { Link } from '@/i18n/routing';
 
-const h2 = { marginTop: '2.5rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.4rem' };
+const h2 = { marginTop: '2.5rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.4rem' };
 const ul = { paddingLeft: '1.25rem', lineHeight: 1.7 };
 const a = { color: 'var(--color-primary)', textDecoration: 'underline' };
 
@@ -27,10 +27,10 @@ export default function RegulaminContent() {
           okruszkami co na /blog i /o-nas (globals.css: .breadcrumbs + main.subpage-main).
           Title i meta strony bez zmian (SA-10). */}
       <Breadcrumbs pl="Regulamin" en="Terms" />
-      <main className="subpage-main" style={{ paddingTop: '120px', minHeight: '80vh', background: '#F5F5F7' }}>
+      <main className="subpage-main" style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--w-papier-2)' }}>
         <div className="container" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
           {/* 5.11.2026 (PLAN-v2 6.25 ANK pkt 6, SA-13): zapis marki wielkimi literami („AI SEO COMPANY”), jak w całym serwisie. */}
-          <h1 style={{ fontSize: '3rem', color: '#0F172A', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
+          <h1 style={{ fontSize: '3rem', color: 'var(--w-tusz)', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
             {lang === 'pl' ? 'Regulamin świadczenia usług drogą elektroniczną' : 'Terms of Service for AI SEO COMPANY Clients'}
           </h1>
 
@@ -45,25 +45,25 @@ export default function RegulaminContent() {
 
                 <h2 style={h2}>§ 2. Definicje</h2>
                 <ul style={ul}>
-                  <li><strong>Serwis</strong> — strona internetowa dostępna pod adresem ai-seo-company.pl wraz z podstronami.</li>
-                  <li><strong>Usługobiorca</strong> — osoba fizyczna, osoba prawna lub jednostka organizacyjna korzystająca z Serwisu.</li>
-                  <li><strong>Usługa elektroniczna</strong> — świadczenie wykonywane bez jednoczesnej obecności stron, drogą przesyłania danych na indywidualne żądanie Usługobiorcy.</li>
+                  <li><strong>Serwis</strong> – strona internetowa dostępna pod adresem ai-seo-company.pl wraz z podstronami.</li>
+                  <li><strong>Usługobiorca</strong> – osoba fizyczna, osoba prawna lub jednostka organizacyjna korzystająca z Serwisu.</li>
+                  <li><strong>Usługa elektroniczna</strong> – świadczenie wykonywane bez jednoczesnej obecności stron, drogą przesyłania danych na indywidualne żądanie Usługobiorcy.</li>
                 </ul>
 
                 <h2 style={h2}>§ 3. Rodzaje i zakres usług świadczonych drogą elektroniczną</h2>
                 <p>Za pośrednictwem Serwisu Usługodawca świadczy nieodpłatnie następujące usługi elektroniczne:</p>
                 <ul style={ul}>
-                  <li><strong>Dostęp do treści Serwisu</strong> — przeglądanie stron informacyjnych, opisów usług i artykułów publikowanych na blogu.</li>
-                  <li><strong>Formularz kontaktowy</strong> — umożliwiający przesłanie zapytania ofertowego. Usługa ma charakter jednorazowy i kończy się z chwilą wysłania wiadomości lub zaprzestania jej wypełniania.</li>
+                  <li><strong>Dostęp do treści Serwisu</strong> – przeglądanie stron informacyjnych, opisów usług i artykułów publikowanych na blogu.</li>
+                  <li><strong>Formularz kontaktowy</strong> – umożliwiający przesłanie zapytania ofertowego. Usługa ma charakter jednorazowy i kończy się z chwilą wysłania wiadomości lub zaprzestania jej wypełniania.</li>
                 </ul>
-                <p>Usługi płatne — audyt SEO, pozycjonowanie stron, projektowanie stron internetowych — nie są świadczone drogą elektroniczną w rozumieniu niniejszego regulaminu. Ich zakres, cenę i termin określa odrębna umowa zawierana indywidualnie z klientem.</p>
+                <p>Usługi płatne – audyt SEO, pozycjonowanie stron, projektowanie stron internetowych – nie są świadczone drogą elektroniczną w rozumieniu niniejszego regulaminu. Ich zakres, cenę i termin określa odrębna umowa zawierana indywidualnie z klientem.</p>
 
                 <h2 style={h2}>§ 4. Wymagania techniczne</h2>
                 <p>Do korzystania z Serwisu niezbędne są:</p>
                 <ul style={ul}>
                   <li>urządzenie z dostępem do internetu,</li>
                   <li>aktualna wersja przeglądarki internetowej z obsługą JavaScript,</li>
-                  <li>aktywne konto poczty elektronicznej — w przypadku korzystania z formularza kontaktowego.</li>
+                  <li>aktywne konto poczty elektronicznej – w przypadku korzystania z formularza kontaktowego.</li>
                 </ul>
                 <p>Usługodawca informuje, że korzystanie z internetu wiąże się z ryzykiem, w szczególności możliwością działania szkodliwego oprogramowania. Zalecane jest stosowanie aktualnego oprogramowania zabezpieczającego.</p>
 
@@ -71,7 +71,7 @@ export default function RegulaminContent() {
                 <p>Usługobiorcę obowiązuje zakaz dostarczania treści o charakterze bezprawnym, w szczególności treści naruszających prawa osób trzecich, wzywających do nienawiści, obraźliwych, a także treści zawierających złośliwe oprogramowanie. Usługodawca może odmówić realizacji zapytania naruszającego ten zakaz.</p>
 
                 <h2 style={h2}>§ 6. Zawarcie i rozwiązanie umowy o świadczenie usług elektronicznych</h2>
-                <p>Umowa o świadczenie usługi dostępu do treści Serwisu zostaje zawarta z chwilą wejścia na stronę i rozwiązana z chwilą jej opuszczenia — bez składania dodatkowych oświadczeń.</p>
+                <p>Umowa o świadczenie usługi dostępu do treści Serwisu zostaje zawarta z chwilą wejścia na stronę i rozwiązana z chwilą jej opuszczenia – bez składania dodatkowych oświadczeń.</p>
                 <p>Umowa o świadczenie usługi formularza kontaktowego zostaje zawarta z chwilą rozpoczęcia wypełniania formularza i rozwiązana z chwilą wysłania wiadomości albo zaprzestania jej wypełniania. Korzystanie z obu usług jest w każdej chwili dobrowolne i może zostać przerwane bez podania przyczyny.</p>
 
                 <h2 style={h2}>§ 7. Tryb postępowania reklamacyjnego</h2>
@@ -105,25 +105,25 @@ export default function RegulaminContent() {
 
                 <h2 style={h2}>§ 2. Definitions</h2>
                 <ul style={ul}>
-                  <li><strong>Website</strong> — the website at ai-seo-company.pl together with its subpages.</li>
-                  <li><strong>User</strong> — a natural person, legal person or organisational unit using the Website.</li>
-                  <li><strong>Electronic service</strong> — a service performed without the simultaneous presence of the parties, by transmitting data at the User's individual request.</li>
+                  <li><strong>Website</strong> – the website at ai-seo-company.pl together with its subpages.</li>
+                  <li><strong>User</strong> – a natural person, legal person or organisational unit using the Website.</li>
+                  <li><strong>Electronic service</strong> – a service performed without the simultaneous presence of the parties, by transmitting data at the User's individual request.</li>
                 </ul>
 
                 <h2 style={h2}>§ 3. Types and scope of electronic services</h2>
                 <p>Through the Website the provider supplies the following services free of charge:</p>
                 <ul style={ul}>
-                  <li><strong>Access to Website content</strong> — browsing information pages, service descriptions and blog articles.</li>
-                  <li><strong>Contact form</strong> — allowing an enquiry to be sent. This is a one-off service ending when the message is sent or the form is abandoned.</li>
+                  <li><strong>Access to Website content</strong> – browsing information pages, service descriptions and blog articles.</li>
+                  <li><strong>Contact form</strong> – allowing an enquiry to be sent. This is a one-off service ending when the message is sent or the form is abandoned.</li>
                 </ul>
-                <p>Paid services — SEO audits, search engine optimisation and web design — are not provided by electronic means within the meaning of these terms. Their scope, price and schedule are set out in a separate agreement concluded individually with the client.</p>
+                <p>Paid services – SEO audits, search engine optimisation and web design – are not provided by electronic means within the meaning of these terms. Their scope, price and schedule are set out in a separate agreement concluded individually with the client.</p>
 
                 <h2 style={h2}>§ 4. Technical requirements</h2>
                 <p>Using the Website requires:</p>
                 <ul style={ul}>
                   <li>a device with internet access,</li>
                   <li>a current web browser with JavaScript enabled,</li>
-                  <li>an active e-mail account — when using the contact form.</li>
+                  <li>an active e-mail account – when using the contact form.</li>
                 </ul>
                 <p>The provider notes that using the internet carries risks, in particular exposure to malicious software. Keeping security software up to date is recommended.</p>
 

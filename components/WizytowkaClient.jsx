@@ -101,10 +101,10 @@ const sekcja = { padding: 'clamp(2.5rem, 6vw, 4rem) 0 0' };
 const kontener = { maxWidth: '850px', margin: '0 auto' };
 const h2Styl = { fontSize: 'clamp(1.6rem, 3.4vw, 2.2rem)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.02em', color: 'var(--color-text-dark)', margin: '0 0 1.25rem', scrollMarginTop: '110px' };
 const h3Styl = { fontSize: 'clamp(1.2rem, 2.4vw, 1.4rem)', fontWeight: 700, lineHeight: 1.3, color: 'var(--color-text-dark)', margin: '2rem 0 0.75rem' };
-const akapit = { fontSize: '1.08rem', lineHeight: 1.7, color: '#333336', margin: '0 0 1.1rem' };
+const akapit = { fontSize: '1.08rem', lineHeight: 1.7, color: 'var(--color-text-main)', margin: '0 0 1.1rem' };
 const lista = { ...akapit, paddingLeft: '1.25rem', display: 'grid', gap: '0.6rem' };
 const link = { color: 'var(--color-primary)', textDecoration: 'underline', fontWeight: 600 };
-const podpis = { fontSize: '0.88rem', lineHeight: 1.5, color: '#6E6E73', margin: '-0.4rem 0 1.25rem' };
+const podpis = { fontSize: '0.88rem', lineHeight: 1.5, color: 'var(--w-tusz-2)', margin: '-0.4rem 0 1.25rem' };
 const karta = { background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', padding: 'clamp(1.5rem, 4vw, 2.5rem)' };
 
 export default function WizytowkaClient({ faqData }) {
@@ -291,7 +291,7 @@ export default function WizytowkaClient({ faqData }) {
           </p>
           <div style={{ margin: '1.75rem 0 0' }}>
             <a href={kontakt} className="btn btn-primary" data-cta="service_cena_wizytowka" data-plan="standard">
-              Zapytaj o pakiet z wizytówką — odpowiedź w{' '}24{' '}h
+              Zapytaj o pakiet z wizytówką – odpowiedź w{' '}24{' '}h
             </a>
           </div>
         </div>

@@ -57,7 +57,7 @@ const FAQ = [
   { question: 'Jak zwiększyć widoczność w AI?', answer: 'Zacznij od wizytówki Google i opinii, potem zadbaj o wzmianki w źródłach, które modele cytują w Twojej branży, i o jasne odpowiedzi na pytania klientów na stronie. Sprawdź też, czy robots.txt nie blokuje botów OAI-SearchBot i PerplexityBot.' },
 ];
 
-const field = { width: '100%', padding: '0.8rem 1rem', borderRadius: '14px', border: '1px solid rgba(15,23,42,0.15)', fontSize: '1rem', background: '#FFFFFF', color: '#0F172A' };
+const field = { width: '100%', padding: '0.8rem 1rem', borderRadius: '14px', border: '1px solid rgba(15,23,42,0.15)', fontSize: '1rem', background: '#FFFFFF', color: 'var(--w-tusz)' };
 const label = { display: 'block', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--color-text-dark)' };
 const card = { background: '#FFFFFF', borderRadius: '28px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' };
 
@@ -82,7 +82,7 @@ export default function AiCheckerClient() {
           name: body.company,
           email: body.email,
           service: 'ai_check',
-          message: `Sprawdzarka AI (tryb zapasowy). Branża: ${body.industry}; miasto: ${body.city}; www: ${body.website || '—'}`,
+          message: `Sprawdzarka AI (tryb zapasowy). Branża: ${body.industry}; miasto: ${body.city}; www: ${body.website || '–'}`,
           website: body.nick,
           elapsed_ms: Date.now() - wejscie.current,
           submitted_at: new Date().toISOString(),
@@ -194,7 +194,7 @@ export default function AiCheckerClient() {
                 </div>
                 {/* Pole-pułapka dla botów: ukryte dla ludzi i czytników ekranu. */}
                 <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
-                <label style={{ gridColumn: '1 / -1', display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.9rem', lineHeight: 1.5, color: '#333336' }}>
+                <label style={{ gridColumn: '1 / -1', display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>
                   <input type="checkbox" name="consent" required style={{ marginTop: '0.25rem', width: 18, height: 18, flexShrink: 0 }} />
                   <span>
                     Zgadzam się na przetwarzanie podanych danych przez AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warszawa), żeby przygotować i wysłać wynik oraz odpowiedzieć na moje pytania. Dane usuwamy po 60 dniach. Odbiorcy: dostawcy poczty i pomiarów (Resend, DataForSEO). Szczegóły w <Link href="/cookies" style={{ textDecoration: 'underline' }}>polityce prywatności</Link>.
@@ -224,7 +224,7 @@ export default function AiCheckerClient() {
                   <li key={i} style={{ borderTop: i ? '1px solid rgba(15,23,42,0.08)' : 'none', paddingTop: i ? '1rem' : 0 }}>
                     <p style={{ margin: 0, fontWeight: 700, color: 'var(--color-text-dark)' }}>{LABELS[row.engine] || row.engine}: {row.prompt}</p>
                     <p style={{ margin: '0.25rem 0 0', fontWeight: 600, color: row.mentioned ? '#047857' : '#b3261e' }}>{row.mentioned ? 'Firma wymieniona' : 'Firma niewymieniona'}</p>
-                    <p style={{ margin: '0.25rem 0 0', lineHeight: 1.55, color: '#333336' }}>{row.excerpt || row.answer}</p>
+                    <p style={{ margin: '0.25rem 0 0', lineHeight: 1.55, color: 'var(--color-text-main)' }}>{row.excerpt || row.answer}</p>
                     {row.sources?.length > 0 && <p style={{ margin: '0.25rem 0 0', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Źródła: {row.sources.join(', ')}</p>}
                   </li>
                 ))}
@@ -246,7 +246,7 @@ export default function AiCheckerClient() {
 
           <section aria-labelledby="ac-jak" style={{ marginTop: '4rem' }}>
             <h2 id="ac-jak" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '1.25rem' }}>Jak działa sprawdzarka widoczności w AI</h2>
-            <ol style={{ ...card, margin: 0, paddingLeft: 'clamp(2.5rem, 6vw, 3.5rem)', display: 'grid', gap: '1rem', lineHeight: 1.6, color: '#333336' }}>
+            <ol style={{ ...card, margin: 0, paddingLeft: 'clamp(2.5rem, 6vw, 3.5rem)', display: 'grid', gap: '1rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
               {KROKI.map(([h, p]) => (
                 <li key={h}><strong style={{ color: 'var(--color-text-dark)' }}>{h}.</strong> {p}</li>
               ))}
@@ -259,7 +259,7 @@ export default function AiCheckerClient() {
               {WYNIK.map(([h, p]) => (
                 <div key={h} style={{ ...card, padding: '1.5rem' }}>
                   <h3 style={{ fontSize: '1.6rem', fontWeight: 800, margin: '0 0 0.5rem', color: 'var(--color-text-dark)' }}>{h}</h3>
-                  <p style={{ margin: 0, lineHeight: 1.6, color: '#333336' }}>{p}</p>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--color-text-main)' }}>{p}</p>
                 </div>
               ))}
             </div>
@@ -267,7 +267,7 @@ export default function AiCheckerClient() {
 
           <section aria-labelledby="ac-co-dalej" style={{ marginTop: '3rem' }}>
             <h2 id="ac-co-dalej" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 800, color: 'var(--color-text-dark)', marginBottom: '1.25rem' }}>Co zrobić, gdy ChatGPT nie poleca Twojej firmy</h2>
-            <ul style={{ ...card, margin: 0, paddingLeft: 'clamp(2.5rem, 6vw, 3.5rem)', display: 'grid', gap: '0.85rem', lineHeight: 1.6, color: '#333336' }}>
+            <ul style={{ ...card, margin: 0, paddingLeft: 'clamp(2.5rem, 6vw, 3.5rem)', display: 'grid', gap: '0.85rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
               {/* LW1, link 26 (on-page-seo RAPORT rozdz. 4): dopisek o SEO lokalnym. */}
               <li>Uzupełnij wizytówkę Google i zbieraj opinie po każdej usłudze, bo to podstawa <Link href="/seo-lokalne-warszawa" style={{ textDecoration: 'underline' }}>SEO lokalnego</Link>. Proces krok po kroku opisujemy w poradniku <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ textDecoration: 'underline' }}>jak pozyskiwać opinie Google</Link>.</li>
               <li>Zadbaj o wzmianki w katalogach i zestawieniach, które modele cytują w Twojej branży. Ich adresy są w wyniku, w polu „Źródła”.</li>

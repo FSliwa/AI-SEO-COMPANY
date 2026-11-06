@@ -310,10 +310,10 @@ const PLAN_WIERSZE = [
 ];
 
 const card = { background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' };
-const tekstStyl = { margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: '#333336' };
+const tekstStyl = { margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)' };
 const h3Styl = { fontSize: '1.15rem', fontWeight: 700, margin: '0 0 0.5rem', color: 'var(--color-text-dark)' };
 const linkStyl = { textDecoration: 'underline' };
-const przypisStyl = { margin: '0.6rem 0 0', fontSize: '0.85rem', lineHeight: 1.5, color: '#6E6E73' };
+const przypisStyl = { margin: '0.6rem 0 0', fontSize: '0.85rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' };
 
 function Karta({ k }) {
   return (
@@ -483,7 +483,7 @@ export default function GeoPageClient() {
               {pl && <a href={hash('kontakt', lang)} className="hero-btn-secondary" data-cta="geo_hero_audit">{t.ctaAudit}</a>}
             </div>
             {/* Autor i data = LASTMOD huba (PLAN-v2 6.0, OP-14); na EN Byline zwraca null. */}
-            <Byline sciezka="/pozycjonowanie-w-ai" style={{ margin: '1.5rem 0 0', order: 6 }} />
+            <Byline sciezka="/pozycjonowanie-w-ai" style={{ margin: '1.5rem auto 0', order: 6 }} />
           </Reveal>
         </div>
       </section>
@@ -496,7 +496,7 @@ export default function GeoPageClient() {
               {t.how.map(([h, p]) => (
                 <RevealItem key={h} style={{ ...card, padding: '1.25rem 1.5rem' }}>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.35rem', color: 'var(--color-text-dark)' }}>{h}</h3>
-                  <p style={{ margin: 0, lineHeight: 1.6, color: '#333336' }}>{p}</p>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--color-text-main)' }}>{p}</p>
                 </RevealItem>
               ))}
             </RevealStagger>
@@ -514,7 +514,7 @@ export default function GeoPageClient() {
           <Reveal className="section-header"><h2>{t.offerTitle}</h2></Reveal>
           {pl && (
             // OP-06: jedno zdanie bez kwot (17 słów) zamiast powtarzania cen z kart i FAQ; OP-04 link 23.
-            <Reveal style={{ maxWidth: '760px', margin: '1rem auto 0', textAlign: 'center' }}>
+            <Reveal style={{ maxWidth: '760px', margin: '1rem 0 0' }}>
               <p style={tekstStyl}>Pozycjonowanie AI rozliczamy na dwa sposoby: jednorazowym audytem albo stałym pomiarem i działaniami w miesięcznym <Link href="/cennik-pozycjonowania" style={linkStyl}>abonamencie SEO</Link>.</p>
             </Reveal>
           )}
@@ -527,11 +527,11 @@ export default function GeoPageClient() {
                 {pl && i === 0 && HREF.a5 ? (
                   // PLAN-v2 6.7 i 6.16: po publikacji A5 karta audytu = 2 zdania + link do A5.
                   <>
-                    <p style={{ margin: '1rem 0 0', lineHeight: 1.55, color: '#333336' }}>Jednorazowo sprawdzamy 30 pytań Twoich klientów w czterech źródłach, 5 konkurentów polecanych przez modele i strony, które modele cytują. Wynik z 10 rekomendacjami dostajesz w 5 dni roboczych, a kwotę zaliczamy na pierwszy miesiąc abonamentu.</p>
+                    <p style={{ margin: '1rem 0 0', lineHeight: 1.55, color: 'var(--color-text-main)' }}>Jednorazowo sprawdzamy 30 pytań Twoich klientów w czterech źródłach, 5 konkurentów polecanych przez modele i strony, które modele cytują. Wynik z 10 rekomendacjami dostajesz w 5 dni roboczych, a kwotę zaliczamy na pierwszy miesiąc abonamentu.</p>
                     <p style={{ margin: '0.75rem 0 0', fontWeight: 600 }}>Zakres i przykład wyniku: <Link href={HREF.a5} style={linkStyl}>audyt widoczności w AI</Link></p>
                   </>
                 ) : (
-                  <ul style={{ margin: '1rem 0 0', paddingLeft: '1.1rem', display: 'grid', gap: '0.45rem', lineHeight: 1.5, color: '#333336' }}>
+                  <ul style={{ margin: '1rem 0 0', paddingLeft: '1.1rem', display: 'grid', gap: '0.45rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>
                     {o.points.map((p) => <li key={p}>{p}</li>)}
                   </ul>
                 )}
@@ -557,7 +557,7 @@ export default function GeoPageClient() {
           <Reveal>
             <div style={{ ...card, borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
               <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--color-text-dark)' }}>{t.doTitle}</h2>
-              <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.75rem', fontSize: '1.05rem', lineHeight: 1.6, color: '#333336' }}>
+              <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.75rem', fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
                 {t.do.map((d) => <li key={d}>{d}</li>)}
               </ul>
             </div>
@@ -565,7 +565,7 @@ export default function GeoPageClient() {
           <Reveal>
             <div style={{ ...card, borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
               <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)' }}>{t.honestTitle}</h2>
-              <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: '#333336' }}>{t.honest}</p>
+              <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>{t.honest}</p>
             </div>
           </Reveal>
         </div>

@@ -36,12 +36,12 @@ const faqAudyt = [
     answerEn: 'An SEO audit covers over 50 checkpoints, including Core Web Vitals analysis, Google indexing, heading and URL structure, backlink profile, keyword research, and UX/CRO guidelines.'
   },
   {
-    // Intencja „audyt seo cena” (grupa P-Audyt SEO w Google Ads) — do 22.09
+    // Intencja „audyt seo cena” (grupa P-Audyt SEO w Google Ads) – do 22.09
     // strona nie miała ani słowa o koszcie audytu.
     question: 'Ile kosztuje audyt SEO?',
     questionEn: 'How much does an SEO audit cost?',
-    answer: 'Audyt SEO jest wliczony w każdy pakiet pozycjonowania (od 1 900 zł netto miesięcznie) — to od niego zaczynamy współpracę. Jako samodzielna usługa kosztuje od 1 490 zł netto, a ostateczna cena zależy od wielkości serwisu: inny nakład wymaga strona firmowa z 20 podstronami, inny sklep z 5 000 produktów. Wycenę dostajesz w 24 h w dni robocze, bez rozmowy z handlowcem.',
-    answerEn: 'The SEO audit is included in every SEO package (from PLN 1,900 net per month) — it is where we start every engagement. As a standalone service it starts at €350 net, and the final price depends on the size of the site: a 20-page company website and a 5,000-product store are different jobs. You get the quote within 24 h on business days, with no sales call.'
+    answer: 'Audyt SEO jest wliczony w każdy pakiet pozycjonowania (od 1 900 zł netto miesięcznie) – to od niego zaczynamy współpracę. Jako samodzielna usługa kosztuje od 1 490 zł netto, a ostateczna cena zależy od wielkości serwisu: inny nakład wymaga strona firmowa z 20 podstronami, inny sklep z 5 000 produktów. Wycenę dostajesz w 24 h w dni robocze, bez rozmowy z handlowcem.',
+    answerEn: 'The SEO audit is included in every SEO package (from PLN 1,900 net per month) – it is where we start every engagement. As a standalone service it starts at €350 net, and the final price depends on the size of the site: a 20-page company website and a 5,000-product store are different jobs. You get the quote within 24 h on business days, with no sales call.'
   },
   {
     question: 'Ile trwa przygotowanie audytu SEO?',
@@ -52,14 +52,14 @@ const faqAudyt = [
   {
     question: 'Czym różni się audyt techniczny od audytu treści?',
     questionEn: 'What is the difference between a technical audit and a content audit?',
-    answer: 'Audyt techniczny sprawdza, czy Google może stronę zaindeksować i szybko wczytać: Core Web Vitals, przekierowania, tagi kanoniczne, strukturę adresów URL i mapę witryny. Audyt treści ocenia, czy strona odpowiada na intencję zapytania: pokrycie tematu, strukturę nagłówków, kanibalizację fraz i luki wobec konkurencji. Pierwszy usuwa bariery, drugi buduje trafność — pełna optymalizacja SEO wymaga obu.',
-    answerEn: 'A technical audit checks whether Google can index and quickly load the site: Core Web Vitals, redirects, canonical tags, URL structure and the sitemap. A content audit assesses whether the page answers search intent: topic coverage, heading structure, keyword cannibalisation and gaps against competitors. The first removes barriers, the second builds relevance — full SEO optimization needs both.'
+    answer: 'Audyt techniczny sprawdza, czy Google może stronę zaindeksować i szybko wczytać: Core Web Vitals, przekierowania, tagi kanoniczne, strukturę adresów URL i mapę witryny. Audyt treści ocenia, czy strona odpowiada na intencję zapytania: pokrycie tematu, strukturę nagłówków, kanibalizację fraz i luki wobec konkurencji. Pierwszy usuwa bariery, drugi buduje trafność – pełna optymalizacja SEO wymaga obu.',
+    answerEn: 'A technical audit checks whether Google can index and quickly load the site: Core Web Vitals, redirects, canonical tags, URL structure and the sitemap. A content audit assesses whether the page answers search intent: topic coverage, heading structure, keyword cannibalisation and gaps against competitors. The first removes barriers, the second builds relevance – full SEO optimization needs both.'
   },
   {
     question: 'Czy sam audyt wystarczy, czy potrzebne jest jeszcze wdrożenie?',
     questionEn: 'Is the audit alone enough, or is implementation also needed?',
-    answer: 'Audyt sam w sobie nie zmienia pozycji — jest diagnozą, nie leczeniem. Raport zawiera listę zadań uszeregowaną według wpływu i pracochłonności, więc możesz wdrożyć go własnym zespołem albo przekazać swojemu deweloperowi. Dopóki rekomendacje nie zostaną wdrożone, wynik audytu nie przełoży się na widoczność w wyszukiwarce. Wdrożenie możesz zlecić nam w ramach <a href="/pozycjonowanie-stron-internetowych" style="text-decoration:underline">pozycjonowania stron internetowych</a>.',
-    answerEn: 'An audit on its own does not change rankings — it is a diagnosis, not a treatment. The report lists tasks ranked by impact and effort, so your own team or your developer can implement it. Until the recommendations are applied, the audit will not translate into search visibility.'
+    answer: 'Audyt sam w sobie nie zmienia pozycji – jest diagnozą, nie leczeniem. Raport zawiera listę zadań uszeregowaną według wpływu i pracochłonności, więc możesz wdrożyć go własnym zespołem albo przekazać swojemu deweloperowi. Dopóki rekomendacje nie zostaną wdrożone, wynik audytu nie przełoży się na widoczność w wyszukiwarce. Wdrożenie możesz zlecić nam w ramach <a href="/pozycjonowanie-stron-internetowych" style="text-decoration:underline">pozycjonowania stron internetowych</a>.',
+    answerEn: 'An audit on its own does not change rankings – it is a diagnosis, not a treatment. The report lists tasks ranked by impact and effort, so your own team or your developer can implement it. Until the recommendations are applied, the audit will not translate into search visibility.'
   },
   {
     question: 'Jak często należy powtarzać audyt SEO?',
@@ -70,8 +70,8 @@ const faqAudyt = [
   {
     question: 'Jakich dostępów potrzebujecie, żeby przeprowadzić audyt?',
     questionEn: 'What access do you need to run the audit?',
-    answer: 'Do rzetelnego audytu potrzebujemy dostępu do Google Search Console i Google Analytics — to jedyne źródła danych o Twojej domenie z pierwszej ręki. Przydaje się też dostęp do panelu CMS oraz informacja o hostingu, żeby zweryfikować czas odpowiedzi serwera i konfigurację przekierowań. Audyt jest możliwy bez tych dostępów, ale opiera się wtedy wyłącznie na danych zewnętrznych i jest mniej precyzyjny. Jeśli konta prowadziła poprzednia agencja, zacznij od <a href="/zmiana-agencji-seo" style="text-decoration:underline">checklisty przejęcia kont od poprzedniej agencji</a>.',
-    answerEn: 'A reliable audit needs access to Google Search Console and Google Analytics — the only first-party data about your domain. Access to the CMS and details about hosting also help, so we can verify server response times and redirect configuration. An audit is possible without them, but it then rests solely on third-party data and is less precise.'
+    answer: 'Do rzetelnego audytu potrzebujemy dostępu do Google Search Console i Google Analytics – to jedyne źródła danych o Twojej domenie z pierwszej ręki. Przydaje się też dostęp do panelu CMS oraz informacja o hostingu, żeby zweryfikować czas odpowiedzi serwera i konfigurację przekierowań. Audyt jest możliwy bez tych dostępów, ale opiera się wtedy wyłącznie na danych zewnętrznych i jest mniej precyzyjny. Jeśli konta prowadziła poprzednia agencja, zacznij od <a href="/zmiana-agencji-seo" style="text-decoration:underline">checklisty przejęcia kont od poprzedniej agencji</a>.',
+    answerEn: 'A reliable audit needs access to Google Search Console and Google Analytics – the only first-party data about your domain. Access to the CMS and details about hosting also help, so we can verify server response times and redirect configuration. An audit is possible without them, but it then rests solely on third-party data and is less precise.'
   },
   {
     question: 'Czy audyt SEO ma sens dla nowej strony, która nie ma jeszcze ruchu?',
@@ -94,8 +94,8 @@ const faqAudyt = [
   {
     question: 'Czym audyt SEO różni się od darmowego raportu z narzędzia online?',
     questionEn: 'How does an SEO audit differ from a free online tool report?',
-    answer: 'Darmowe narzędzia wykrywają błędy według sztywnej listy reguł i nie rozumieją kontekstu biznesowego. Pokażą, że brakuje słowa w tytule, ale nie ocenią, czy strona odpowiada na intencję zapytania, ani które z dwustu znalezionych usterek realnie wpływają na widoczność. Audyt to interpretacja tych danych: odsiew szumu, priorytetyzacja i decyzja, co zrobić najpierw — oraz czego świadomie nie ruszać. Automatyczna analiza SEO z narzędzia to dobry punkt wyjścia, a w audycie zestawiamy jej wyniki z danymi z Twojego Google Search Console.',
-    answerEn: 'Free tools flag issues against a fixed rule set and have no business context. They will tell you a word is missing from the title, but not whether the page answers search intent, nor which of the two hundred issues found actually affect visibility. An audit is the interpretation of that data: filtering out noise, prioritising, and deciding what to do first — and what to deliberately leave alone.'
+    answer: 'Darmowe narzędzia wykrywają błędy według sztywnej listy reguł i nie rozumieją kontekstu biznesowego. Pokażą, że brakuje słowa w tytule, ale nie ocenią, czy strona odpowiada na intencję zapytania, ani które z dwustu znalezionych usterek realnie wpływają na widoczność. Audyt to interpretacja tych danych: odsiew szumu, priorytetyzacja i decyzja, co zrobić najpierw – oraz czego świadomie nie ruszać. Automatyczna analiza SEO z narzędzia to dobry punkt wyjścia, a w audycie zestawiamy jej wyniki z danymi z Twojego Google Search Console.',
+    answerEn: 'Free tools flag issues against a fixed rule set and have no business context. They will tell you a word is missing from the title, but not whether the page answers search intent, nor which of the two hundred issues found actually affect visibility. An audit is the interpretation of that data: filtering out noise, prioritising, and deciding what to do first – and what to deliberately leave alone.'
   },
   {
     // Nowe (AU1, OP-07): 46 słów; cena i zakres audytu AI = oferta w GeoPageClient.jsx (990 zł,
@@ -166,7 +166,7 @@ const auditPortfolioCases = [
     image: '/images/audyt-seo-optymalizacja.jpg',
     imgAlt: 'Profesjonalny audyt SEO',
     imgTitle: 'Profesjonalny audyt SEO',
-    gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
+    gradient: 'linear-gradient(135deg, var(--w-tusz) 0%, #1E1B4B 50%, #312E81 100%)',
     metric: '-95%',
     metricLabel: 'Redukcja błędów',
     metricLabelEn: 'Error reduction',
@@ -241,7 +241,7 @@ const auditPortfolioCases = [
     descriptionEn: 'Multiple subpages competing for the same keywords. Missing canonical tags (rel="canonical") and incorrect filtering parameters detected.',
     image: '/images/unsplash-1608501821300-4f99e58bba77.jpg',
     decorative: true,
-    gradient: 'linear-gradient(135deg, #1E293B 0%, #334155 50%, #0F172A 100%)',
+    gradient: 'linear-gradient(135deg, #1E293B 0%, #334155 50%, var(--w-tusz) 100%)',
     metric: 'TOP 3',
     metricLabel: 'Dla głównych fraz',
     metricLabelEn: 'For main keywords',

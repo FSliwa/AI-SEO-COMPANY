@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 /**
  * The hero paragraph, wrapping around the top of the "S" below it.
  *
- * Every line curves — concentric arcs around the S's corner circle, whose
+ * Every line curves – concentric arcs around the S's corner circle, whose
  * radius is ~5.56% of the section height and whose centre sits r right of the
  * column and r below the letter top. Concentric spacing keeps the lines a
  * constant leading apart along the bend, and the innermost arc runs parallel
@@ -13,19 +13,19 @@ import { useEffect, useRef, useState } from 'react';
  *
  * Sweep per line: every line except the last takes exactly the sweep that
  * lands its tip on the column edge (sin theta = r / R), which grows naturally
- * towards the letter as the radii shrink — the first line included, with the
+ * towards the letter as the radii shrink – the first line included, with the
  * gentlest bend of the set; the last line takes the full capped sweep and
  * curls down the shoulder, stopping above the S's first bend.
  *
  * The type follows the curvature: the more a line bends, the larger and more
- * tracked-out its glyphs — scale and letter-spacing are both driven by the
+ * tracked-out its glyphs – scale and letter-spacing are both driven by the
  * line's sweep as a fraction of the cap, so the paragraph accelerates towards
  * the letterform. Leading scales with each line's own size, and the arc radii
  * are recomputed from those positions, so the geometry stays concentric.
  *
- * Wrapping, measuring and the curve all feed each other — bent lines carry
+ * Wrapping, measuring and the curve all feed each other – bent lines carry
  * more text (arc vs chord), scaled lines carry less, and the count moves the
- * radii — so the layout iterates until the line count settles.
+ * radii – so the layout iterates until the line count settles.
  *
  * SEO: the server renders the straight <p>; this replaces it client-side above
  * 901px only. No per-letter spans, no duplicated copy.
@@ -107,7 +107,7 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
       const words = text.split(/\s+/).filter(Boolean);
 
       // Geometry for a given line count. Scales depend on sweeps, sweeps on
-      // radii, radii on baselines, baselines on scales — two passes settle it.
+      // radii, radii on baselines, baselines on scales – two passes settle it.
       const geometry = count => {
         const last = Math.max(1, count - 1);
         let scales = Array(count).fill(1);
@@ -126,7 +126,7 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
             if (count < 2) return 0;
             if (i === last) return cap;
             // Tip pinned to the column edge (sin theta = r / R): the first line
-            // has the largest radius, so it gets the gentlest bend of the set —
+            // has the largest radius, so it gets the gentlest bend of the set –
             // the cascade now starts from the very top instead of from line two.
             return Math.asin(Math.min(1, r / (cy - yy)));
           });
@@ -177,7 +177,7 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
       }
 
       // The wrap can oscillate between two counts when a break lands exactly on
-      // a word boundary — the loop then exits with geometry built for the OTHER
+      // a word boundary – the loop then exits with geometry built for the OTHER
       // count, the last two lines sharing a clamped scale and the svg height
       // indexing past the array. The final rebuild pins the geometry to the
       // lines actually rendered; the capacity mismatch it leaves is a fraction
@@ -188,7 +188,7 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
 
       // Accent segmentation measured here rather than at render time, because
       // the chromatic ghosts ride the same textPath at a pixel startOffset and
-      // that offset must agree with the real glyph advance — so it is measured
+      // that offset must agree with the real glyph advance – so it is measured
       // with the line's own font and tracking, prefix by prefix.
       const phrases = ACCENT[lang] || ACCENT.pl;
       const segs = lines.map((line, li) => {
@@ -218,7 +218,7 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
 
   // Cursor proximity (real cursors only): the line nearest the pointer lifts
   // 10% in brightness and 30% in glow radius. Written as the two custom
-  // properties the line filters are already built from — including inside the
+  // properties the line filters are already built from – including inside the
   // heroGlowPulse keyframes, since a running animation beats any inline filter
   // and would otherwise swallow the hover on the two hot lines. The 300ms
   // transition lives on the class.

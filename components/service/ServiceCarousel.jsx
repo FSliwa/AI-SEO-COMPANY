@@ -32,7 +32,7 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
 
   return (
     <section style={{ padding: '80px 0 100px 0', overflow: 'hidden', position: 'relative' }}>
-      <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
+      <div className="container" style={{ margin: '0 auto' }}>
         {/* Header with Navigation Controls */}
         <div style={{ 
           display: 'flex', 
@@ -47,11 +47,11 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
                 <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {tag}
               </div>
-              <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.15 }}>
+              <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 700, color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.15 }}>
                 {title}
               </h2>
               {subtitle && (
-                <p style={{ fontSize: '1.15rem', color: '#6E6E73', marginTop: '0.75rem', fontWeight: 500, maxWidth: '650px' }}>
+                <p style={{ fontSize: '1.15rem', color: 'var(--w-tusz-2)', marginTop: '0.75rem', fontWeight: 500, maxWidth: '650px' }}>
                   {subtitle}
                 </p>
               )}
@@ -125,9 +125,9 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
             scrollbarWidth: 'none', 
             msOverflowStyle: 'none', 
             paddingBottom: '2rem',
-            paddingLeft: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)',
-            paddingRight: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)',
-            scrollPaddingLeft: 'calc((100vw - min(1240px, 100vw - 3rem)) / 2)'
+            paddingLeft: 'max(1.25rem, calc((100vw - var(--container-width)) / 2 + 1.5rem))',
+            paddingRight: 'max(1.25rem, calc((100vw - var(--container-width)) / 2 + 1.5rem))',
+            scrollPaddingLeft: 'max(1.25rem, calc((100vw - var(--container-width)) / 2 + 1.5rem))'
           }}
         >
           <style jsx>{`
@@ -165,14 +165,14 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
                     </div>
                   )}
                   {item.metric && (
-                    <div style={{ fontSize: '2.5rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '0.75rem', letterSpacing: '-0.04em' }}>
+                    <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '0.75rem', letterSpacing: '-0.04em' }}>
                       {lang === 'pl' ? item.metric : (item.metricEn || item.metric)}
                     </div>
                   )}
-                  <h3 style={{ fontSize: '1.45rem', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.25 }}>
+                  <h3 style={{ fontSize: '1.45rem', fontWeight: 700, color: 'var(--w-tusz)', letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.25 }}>
                     {lang === 'pl' ? item.title : (item.titleEn || item.title)}
                   </h3>
-                  <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.6, margin: 0 }}>
+                  <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6, margin: 0 }}>
                     {lang === 'pl' ? item.description : (item.descriptionEn || item.description)}
                   </p>
                 </div>

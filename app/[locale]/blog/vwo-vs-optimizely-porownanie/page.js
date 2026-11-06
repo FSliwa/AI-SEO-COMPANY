@@ -3,7 +3,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
     title: locale === 'en' ? 'VWO vs Optimizely: Which A/B Testing Platform Is Better?' : 'VWO vs Optimizely: porównanie platform do testów A/B',
-    description: locale === 'en' ? 'VWO vs Optimizely — feature, pricing, implementation, and GDPR comparison. See which A/B testing platform fits your team.' : 'VWO vs Optimizely — porównanie funkcji, cen, wdrożenia i zgodności z RODO. Sprawdź, która platforma do testów A/B pasuje do Twojego zespołu.',
+    description: locale === 'en' ? 'VWO vs Optimizely – feature, pricing, implementation, and GDPR comparison. See which A/B testing platform fits your team.' : 'VWO vs Optimizely – porównanie funkcji, cen, wdrożenia i zgodności z RODO. Sprawdź, która platforma do testów A/B pasuje do Twojego zespołu.',
     alternates: {
       canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie' : 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie',
       languages: articleLanguages('/blog/vwo-vs-optimizely-porownanie', 'https://www.ai-seo-company.pl/blog/vwo-vs-optimizely-porownanie', 'https://www.ai-seo-company.pl/en/blog/vwo-vs-optimizely-porownanie')
@@ -62,7 +62,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
   const tocItems = locale === 'en' ? tocItemsEn : tocItemsPl;
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <ArticleSchema slug="/blog/vwo-vs-optimizely-porownanie" locale={locale} />
 
@@ -70,17 +70,17 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 {locale === 'en' ? 'A/B Testing and CRO' : 'Testy A/B i CRO'}
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 {locale === 'en' ? 'August 04, 2026' : '04 Sierpnia 2026'}
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               {locale === 'en' ? 'VWO vs Optimizely: Which A/B Testing Platform Is Better for Most Marketing and E-commerce Teams?' : 'VWO vs Optimizely: porównanie platform do testów A/B'}
             </h1>
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -157,7 +157,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <p>Optimizely also has a visual editor, but its real strength lies elsewhere: server-side testing and feature flag management. A marketer without engineering support will quickly hit a wall.</p>
 
                 <h3>Behavioral analytics: heatmaps and session recordings</h3>
-                <p>This is one of the most important differentiating points. VWO natively combines A/B testing with heatmaps and session recordings, shortening the hypothesis–test–insight loop without the need to integrate external tools. You can see where users click, where they pause, and where you abandon forms — all in one interface.</p>
+                <p>This is one of the most important differentiating points. VWO natively combines A/B testing with heatmaps and session recordings, shortening the hypothesis–test–insight loop without the need to integrate external tools. You can see where users click, where they pause, and where you abandon forms – all in one interface.</p>
                 <p>The lack of native heatmaps and session recordings in Optimizely means you need to purchase additional tools such as FullStory or Contentsquare. This adds cost, another integration, and extra GDPR questions.</p>
 
                 <h3>Server-side, feature flags, and SDKs</h3>
@@ -340,7 +340,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <h2 id="zrodla">Sources and Further Reading</h2>
                 <p>Below is a summary of key sources used in the article. Pricing data and contract terms change: always verify them directly with the vendor before making a purchase decision.</p>
                 <ul>
-                  <li><a href="https://www.personizely.net/blog/vwo-vs-optimizely" target="_blank" rel="noopener noreferrer">VWO vs Optimizely: Features, Pricing, and Best Fit (Personizely)</a> — detailed functional comparison from a mid-market perspective</li>
+                  <li><a href="https://www.personizely.net/blog/vwo-vs-optimizely" target="_blank" rel="noopener noreferrer">VWO vs Optimizely: Features, Pricing, and Best Fit (Personizely)</a> – detailed functional comparison from a mid-market perspective</li>
                   <li><a href="https://www.conversionwax.com/vwo-pricing/" target="_blank" rel="noopener noreferrer">ConversionWax – VWO Pricing 2026</a></li>
                   <li><a href="https://www.mida.so/blog/how-much-is-vwo" target="_blank" rel="noopener noreferrer">Mida – How Much Does VWO Cost in 2026?</a></li>
                   <li><a href="https://www.vendr.com/marketplace/vwo" target="_blank" rel="noopener noreferrer">Vendr – VWO</a></li>
@@ -620,7 +620,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               <h2 id="zrodla">Źródła i materiały do dalszego czytania</h2>
               <p>Poniżej zestawienie kluczowych źródeł wykorzystanych w artykule. Dane cenowe i warunki umów zmieniają się: zawsze weryfikuj je bezpośrednio u vendora przed decyzją zakupową.</p>
               <ul>
-                <li><a href="https://www.personizely.net/blog/vwo-vs-optimizely" target="_blank" rel="noopener noreferrer">VWO vs Optimizely: Features, Pricing, and Best Fit (Personizely)</a> — szczegółowe porównanie funkcjonalne z perspektywy mid-market.</li>
+                <li><a href="https://www.personizely.net/blog/vwo-vs-optimizely" target="_blank" rel="noopener noreferrer">VWO vs Optimizely: Features, Pricing, and Best Fit (Personizely)</a> – szczegółowe porównanie funkcjonalne z perspektywy mid-market.</li>
                 <li><a href="https://www.conversionwax.com/vwo-pricing/" target="_blank" rel="noopener noreferrer">ConversionWax – VWO Pricing 2026</a></li>
                 <li><a href="https://www.mida.so/blog/how-much-is-vwo" target="_blank" rel="noopener noreferrer">Mida – How Much Does VWO Cost in 2026?</a></li>
                 <li><a href="https://www.vendr.com/marketplace/vwo" target="_blank" rel="noopener noreferrer">Vendr – VWO</a></li>

@@ -92,7 +92,7 @@ export default function GeneratorLlmsTxt() {
               Układ jest stały. Na górze nagłówek z nazwą firmy, jedyny obowiązkowy element. Pod nim cytat z krótkim opisem, a dalej sekcje z listami linków: tytuł podstrony w nawiasach kwadratowych, adres w okrągłych i po dwukropku zdanie o tym, co tam jest. Tak wygląda początek{' '}
               <a href="/llms.txt" style={s.podkreslenie}>naszego pliku llms.txt</a>:
             </p>
-            <pre style={{ ...s.karta, ...s.kod, padding: '1.25rem', margin: '0 0 0.5rem', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', color: '#1D1D1F' }}>
+            <pre style={{ ...s.karta, ...s.kod, padding: '1.25rem', margin: '0 0 0.5rem', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', color: 'var(--w-tusz)' }}>
               <code>{PRZYKLAD}</code>
             </pre>
             <p style={s.przypis}>Fragment pliku https://www.ai-seo-company.pl/llms.txt, stan na 5 listopada 2026.</p>

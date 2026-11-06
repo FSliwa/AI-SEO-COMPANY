@@ -85,7 +85,7 @@ html {
 
   /* Three full-bleed sections (Portfolio, Testimonials, WhyUs) size themselves
      with `width: 100vw`, and 100vw counts the scrollbar while the viewport does
-     not — so every page scrolled 8px sideways at tablet and desktop widths.
+     not – so every page scrolled 8px sideways at tablet and desktop widths.
      `clip` rather than `hidden`: hidden turns the element into a scroll
      container, which changes how descendants position themselves; clip just
      cuts the overflow. Measured before/after at 1440px: 1443 -> 1435 = the
@@ -350,7 +350,7 @@ button, input, select, textarea {
   box-shadow: var(--shadow-sm);
 }
 
-/* The PL/EN buttons rendered at 15x16 and 17x16 CSS pixels — the smallest hit
+/* The PL/EN buttons rendered at 15x16 and 17x16 CSS pixels – the smallest hit
    targets on the site and the ones a thumb misses most often. WCAG 2.2 (2.5.8)
    sets the floor at 24x24; Apple's guidance is 44x44. The type size is
    unchanged: the box grows around the label, so the header reads identically. */
@@ -739,7 +739,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   padding-top: 1.5rem !important;
 }
 
-/* --- 01. Hero Section (Full Viewport Height — KOTA style) --- */
+/* --- 01. Hero Section (Full Viewport Height – KOTA style) --- */
 .hero {
   height: 100vh;
   min-height: 100vh;
@@ -1721,7 +1721,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 }
 
 /* The shared container centres inside a 1240px max-width, which left the copy
-   222px in from the tile edge on a wide screen — a lot of empty tile before the
+   222px in from the tile edge on a wide screen – a lot of empty tile before the
    first word. Here it runs the full width with the same 32px the button carries
    as its own padding, so text and button sit the same distance from their
    respective edges. */
@@ -1748,7 +1748,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 /* Same reasoning as the hero: cursor-driven states need the events, touch
    devices must keep their scrolling. Anything the section places above this
-   (the call to action here) keeps working — it sits at a higher z-index. */
+   (the call to action here) keeps working – it sits at a higher z-index. */
 @media (hover: hover) and (pointer: fine) {
   .scene-backdrop {
     pointer-events: auto;
@@ -1783,7 +1783,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 /* Narrow screens drop it entirely. A scene keyed to the right-hand 62% has
    nothing left to show once the copy stacks to full width, and display:none
-   means the observer inside SceneBackdrop never fires — so phones do not
+   means the observer inside SceneBackdrop never fires – so phones do not
    download the 1.5 MB runtime for a decoration they would not see. */
 @media (max-width: 900px) {
   .results-scene {
@@ -2758,7 +2758,7 @@ body.has-cookie-banner .kota-floating-cta {
    aspect ratio exactly, so `object-fit: contain` never letterboxes and every
    percentage below maps 1:1 onto SVG user units. Sizing uses container query
    units (1cqw = 1% of the stage width = 14.4 SVG units), so the H1 keeps an
-   identical position and scale relative to the artwork at any resolution —
+   identical position and scale relative to the artwork at any resolution –
    no per-breakpoint overrides needed.
 
    Measured glyph anchors (SVG units -> % of height):
@@ -2831,7 +2831,7 @@ body.has-cookie-banner .kota-floating-cta {
 
 
 /* ---------------------------------------------------------------------------
-   PHONES ONLY — subpage hero heading
+   PHONES ONLY – subpage hero heading
    Deliberately 600px, not the 768px block above: 768 is iPad portrait, and this
    is meant for handsets only. Widest phone in portrait is ~430px.
 
@@ -2853,8 +2853,8 @@ body.has-cookie-banner .kota-floating-cta {
     line-height: 1.15 !important;
   }
 
-  /* The sub-headline sits two siblings after the H1 — a div on three pages, an
-     h2 on the SEO services page — and is fixed at 40px on phones. Left alone it
+  /* The sub-headline sits two siblings after the H1 – a div on three pages, an
+     h2 on the SEO services page – and is fixed at 40px on phones. Left alone it
      would now outrank the H1 it follows, so it scales with it. */
   .subpage-hero h1 + div + div,
   .subpage-hero h1 + div + h2 {
@@ -2864,7 +2864,7 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 /* ---------------------------------------------------------------------------
-   ENGLISH HERO — text-first layout
+   ENGLISH HERO – text-first layout
 
    Replaces the SVG-plus-overlay treatment on /en only; the Polish hero above is
    untouched. Two columns on desktop (copy left, 3D stage right), stacked on
@@ -2874,7 +2874,7 @@ body.has-cookie-banner .kota-floating-cta {
    --------------------------------------------------------------------------- */
 /* The scene sits behind everything in the section and covers it edge to edge.
    Its own opaque background becomes the section backdrop, which is why the
-   video and starfield are skipped on this locale — they would never be seen. */
+   video and starfield are skipped on this locale – they would never be seen. */
 .hero-en-bg {
   position: absolute;
   inset: 0;
@@ -2906,7 +2906,7 @@ body.has-cookie-banner .kota-floating-cta {
    they cannot share a clock: the copy must not wait on a 34 MB download, so it
    is anchored to page load and this to the scene's first frame.
 
-   Until then the canvas is transparent and the section's own black shows — which
+   Until then the canvas is transparent and the section's own black shows – which
    is the scene's background colour exactly, so there is nothing to notice.
 
    Opacity only, deliberately: the wide layout carries transform: scale(1.12) on
@@ -2932,7 +2932,7 @@ body.has-cookie-banner .kota-floating-cta {
   }
 }
 
-/* Scaled just enough to crop the dead grid the scene is composed with — at 1:1
+/* Scaled just enough to crop the dead grid the scene is composed with – at 1:1
    the section's top and bottom thirds looked abandoned. Centred origin now: the
    copy sits above and below the artwork rather than beside it, so there is
    nothing to steer the lettering away from. */
@@ -2942,7 +2942,7 @@ body.has-cookie-banner .kota-floating-cta {
   }
 }
 
-/* Scrim. Edges only — the copy is pinned to the top and bottom of the section
+/* Scrim. Edges only – the copy is pinned to the top and bottom of the section
    and the lettering owns the middle, so the artwork itself needs no cover at
    all. Top stop clears the header, bottom stop the promise line, buttons and
    partner row. */
@@ -2963,7 +2963,7 @@ body.has-cookie-banner .kota-floating-cta {
 /* Copy entrance, matched to the scene rather than picked by feel. Decoded from
    hero .splinecode: its Start timeline opens on a 1500ms delay and its moves run
    1000ms (two others at 2000 and 3000ms) on an eased curve. So the rise here is
-   1000ms on an ease-out, and the four elements stagger out to 1440ms — landing
+   1000ms on an ease-out, and the four elements stagger out to 1440ms – landing
    with the scene's own lead-in rather than against it.
 
    Two animations, not one, because of LCP. The rise is what carries the timing;
@@ -2972,7 +2972,7 @@ body.has-cookie-banner .kota-floating-cta {
    Paint out by a second on a page we have spent this long tuning.
 
    Plain CSS rather than the motion library on purpose: it runs without waiting
-   for hydration, and the server HTML carries no inline opacity:0 — so a crawler
+   for hydration, and the server HTML carries no inline opacity:0 – so a crawler
    that does not execute JavaScript still reads the copy as ordinary text. */
 @keyframes heroCopyRise {
   from { transform: translateY(26px); }
@@ -2996,7 +2996,7 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 /* Held at the animation's first frame until the scene reports its own first
-   frame, then both run off the same state change — one movement instead of the
+   frame, then both run off the same state change – one movement instead of the
    copy settling seconds before the 3D turns up.
 
    The cost is stated plainly because it is real: the copy is the LCP element,
@@ -3036,7 +3036,7 @@ body.has-cookie-banner .kota-floating-cta {
   animation-name: heroCopyRiseTop, heroCopyFade;
 }
 
-/* The stagger. Has to carry the same specificity as the shorthand above —
+/* The stagger. Has to carry the same specificity as the shorthand above –
    written as bare element classes it loses to `.hero-en-copy.is-copy-in :is(...)`,
    the shorthand resets delay to 0, and all four elements arrive at once. */
 .hero-en-copy.is-copy-in .hero-en-lead { animation-delay: 80ms; }
@@ -3067,7 +3067,7 @@ body.has-cookie-banner .kota-floating-cta {
   }
 }
 
-/* Scaled just enough to crop the dead grid the scene is composed with — at 1:1
+/* Scaled just enough to crop the dead grid the scene is composed with – at 1:1
    the section's top and bottom thirds looked abandoned. Centred origin now: the
    copy sits above and below the artwork rather than beside it, so there is
    nothing to steer the lettering away from. */
@@ -3178,7 +3178,7 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 /* The copy layer stretches across the whole section, so it was swallowing every
-   pointer event before the canvas underneath could see one — pointer-events on
+   pointer event before the canvas underneath could see one – pointer-events on
    the scene alone did nothing. Made transparent here and opted back in on the
    text and controls themselves, which keeps their links and text selection
    while everything around them reaches the scene. */
@@ -3251,8 +3251,8 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 /* The scene renders "SEO" as its centrepiece, in the same accent orange. The
-   headline keeps the word — it is the subject of the sentence, and the scene is
-   a 34 MB network dependency that must not be what makes the H1 grammatical —
+   headline keeps the word – it is the subject of the sentence, and the scene is
+   a 34 MB network dependency that must not be what makes the H1 grammatical –
    but stays white, so only one "SEO" on the screen is shouting. The hook is
    here in case the scene is ever swapped for one without lettering. */
 .hero-en-title-display .hero-en-title-kw {
@@ -3260,7 +3260,7 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 /* The keyword-bearing half of the H1. Smaller than the display line but still
-   well above the readability floor — it is a heading, not a caption. */
+   well above the readability floor – it is a heading, not a caption. */
 .hero-en-title-sub {
   font-size: clamp(1.05rem, 1.8vw, 1.4rem);
   font-weight: 500;
@@ -3290,7 +3290,7 @@ body.has-cookie-banner .kota-floating-cta {
   }
 }
 
-/* The arc variant is the same element with the same type metrics — HeroArcText
+/* The arc variant is the same element with the same type metrics – HeroArcText
    reads its computed font and line-height off this rule to lay the SVG out, so
    the two versions are typographically identical and only the baseline differs. */
 .hero-en-body--arc {
@@ -3331,7 +3331,7 @@ body.has-cookie-banner .kota-floating-cta {
   to { letter-spacing: var(--track, 0px); }
 }
 
-/* D: the two lines nearest the lettering breathe — a slow pulse of the same
+/* D: the two lines nearest the lettering breathe – a slow pulse of the same
    orange glow the static ramp already gives them. Values are a superset of the
    inline ramp so the pulse reads as brightening, never as a flicker. */
 .hero-en-copy.is-copy-in .hero-en-arc-line--hot {
@@ -3355,7 +3355,7 @@ body.has-cookie-banner .kota-floating-cta {
   transition: filter 300ms ease;
 }
 
-/* The chromatic ghosts get no glow of their own — they are fringes, not
+/* The chromatic ghosts get no glow of their own – they are fringes, not
    lights. */
 .hero-en-arc-ghost {
   pointer-events: none;
@@ -3406,7 +3406,7 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 /* Same hover as the buttons on the local-SEO hero: the accent colour wipes in
-   as a circle growing from the centre. Only the interaction is borrowed — the
+   as a circle growing from the centre. Only the interaction is borrowed – the
    pills keep the colours and shape they already had.
 
    The fill is a ::before at z-index -1 inside a z-index:1 stacking context,
@@ -3466,7 +3466,7 @@ body.has-cookie-banner .kota-floating-cta {
 }
 
 /* Rendered while the Spline chunk downloads, and the whole backdrop if the
-   scene never loads. CSS gradients only — no JS, no image request — so the
+   scene never loads. CSS gradients only – no JS, no image request – so the
    section always has a finished-looking background even offline. */
 /* Atrapa stojaca, dopoki nie zaladuje sie runtime Spline i sama scena. Byl tu
    pomaranczowy gradient, przez ktory sekwencja ladowania wygladala tak:
@@ -3485,8 +3485,8 @@ body.has-cookie-banner .kota-floating-cta {
    szersze od ekranu i litery są ucinane. Kompozycja pasmowa ma stałą
    wysokość pasma, więc działa przy każdych proporcjach. */
 @media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
-  /* Same reading as the desktop composition — copy, then the word, then the
-     heading — rather than the scene sitting on top of everything. Full-bleed
+  /* Same reading as the desktop composition – copy, then the word, then the
+     heading – rather than the scene sitting on top of everything. Full-bleed
      still cannot work at this width: the lettering is scaled by canvas height,
      so at 375 x 900 its half-width would be 500px against a 187px half-screen
      and only the middle of the "E" would be on screen. A band of its own gives
@@ -3499,11 +3499,11 @@ body.has-cookie-banner .kota-floating-cta {
      The section grows to 880px to buy that back without pushing the buttons
      under the sticky bar. */
   /* The word is sized by band HEIGHT (the camera holds a vertical FOV), so
-     a fixed 300px band meant one fixed letter width — right on a 375 screen,
+     a fixed 300px band meant one fixed letter width – right on a 375 screen,
      overflowing a 320 one and undersized on a 430. The band's height now
      follows the viewport instead: measured at 375, the word spans 1.13x the
      band height, so (100vw - 40px) / 1.13 keeps the letters at the content
-     width — the same span as the copy above and the heading below — on every
+     width – the same span as the copy above and the heading below – on every
      phone. All vertical offsets inside the band are fractions of it. */
   .hero.hero--en {
     --m-band-h: calc(88.5vw - 35.4px);
@@ -3513,7 +3513,7 @@ body.has-cookie-banner .kota-floating-cta {
     /* The whole chain hangs off one measured value: Hero.jsx observes the
        copy's real height and publishes it as --m-copy-h on the section (with
        the header's as --m-head-h), because the height changes with width,
-       locale and font loading — 199px for the Polish at 375, 177 at 390 —
+       locale and font loading – 199px for the Polish at 375, 177 at 390 –
        and any fixed number turns the difference into dead air under the
        header. Row one is header + 20px of air + the copy; the letters sit
        97px into the band and must start 8px under the copy, so the band's
@@ -3535,13 +3535,13 @@ body.has-cookie-banner .kota-floating-cta {
        the copy and the heading drift by only ~2px. */
     transform: scale(1.05);
     transform-origin: 100% 46.75%;
-    /* Bottom fade only — the 64%-75% dissolve under the letters is the
+    /* Bottom fade only – the 64%-75% dissolve under the letters is the
        approved look: the robot's legs melt into the black just before the
        heading, reading as staging rather than a crop. The band's top carries
        NO mask at all any more: every full-width vertical fade has to cross
        the robot's helmet somewhere (it spans the text boundary), and that
        crossing is exactly the "top is cut off" complaint. Instead the COPY
-       yields — the paragraph column stops left of the robot (see
+       yields – the paragraph column stops left of the robot (see
        .hero-en-top below), the same division of space the desktop layout
        uses, so there is simply nothing over the helmet to hide it from. */
     /* The fade ends BEFORE the heading: the letters bottom out at 61.17% of
@@ -3570,12 +3570,12 @@ body.has-cookie-banner .kota-floating-cta {
      desktop has 8px. These numbers are measured, not derived: the framebuffer
      was read back at 375x812 with reflection filtering, and the word sits at
      49.4%-59.3% of the section. (The derived 30.4%-62.2% canvas fractions do
-     not carry over — the mobile band's aspect reframes the scene.) */
+     not carry over – the mobile band's aspect reframes the scene.) */
   /* The copy column stops left of the robot. He stands in the right ~85px
      of the frame (helmet from x=300 at 375, and the framing widens from the
-     centre, so his left edge slides half a pixel right per viewport pixel —
+     centre, so his left edge slides half a pixel right per viewport pixel –
      hence 50vw in the clamp). With nothing of the paragraph over him, the
-     helmet needs no mask and shows from the crown — the same copy-left /
+     helmet needs no mask and shows from the crown – the same copy-left /
      robot-right split the desktop composition uses. */
   .hero-en-top {
     /* Column right edge = 20px margin + this. After the band's alignment
@@ -3590,7 +3590,7 @@ body.has-cookie-banner .kota-floating-cta {
 
   /* Row one ends 8px above the letters. Row two is the letters plus the
      desktop gaps (8 above, 16 below), which puts the heading back over the
-     tail of the leg fade — the approved staging. */
+     tail of the leg fade – the approved staging. */
   .hero-en-copy {
     grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px)) calc(24px + var(--m-band-h) * 0.2867) 1fr;
   }
@@ -3604,7 +3604,7 @@ body.has-cookie-banner .kota-floating-cta {
      shared sizes the first row pushed up under the header and the buttons were
      clipped off the bottom of the section. A notch down on all four sizes fits
      both languages in the same box. */
-  /* Down a notch again so "które buduje sprzedaż" sets on one line — at two it
+  /* Down a notch again so "które buduje sprzedaż" sets on one line – at two it
      added 30px to the bottom group and pushed the buttons under the fold. */
   .hero-en-title-display {
     font-size: clamp(1.7rem, 6.9vw, 2.2rem);
@@ -3618,8 +3618,8 @@ body.has-cookie-banner .kota-floating-cta {
   }
 
   /* Type is a size down because the column is only 335px wide, but the leading
-     ratios are the desktop ones — 1.55 on the promise line, 1.6 on the
-     paragraph — so the vertical rhythm reads the same rather than tighter. */
+     ratios are the desktop ones – 1.55 on the promise line, 1.6 on the
+     paragraph – so the vertical rhythm reads the same rather than tighter. */
   .hero-en-lead {
     font-size: 1rem;
     line-height: 1.55;
@@ -3637,7 +3637,7 @@ body.has-cookie-banner .kota-floating-cta {
     .hero-en-lead { font-size: 0.95rem; }
     .hero-en-body { font-size: 0.84rem; }
 
-    /* The pair measures 333px at the shared sizes — over even a 360 screen's
+    /* The pair measures 333px at the shared sizes – over even a 360 screen's
        320px column, so the second button dropped to a row of its own and the
        section's fixed height cut it off. Sized against the 320 screen's 280px
        column (the arrow icon and border ride along, so type alone was not
@@ -3653,7 +3653,7 @@ body.has-cookie-banner .kota-floating-cta {
 
   /* The one spacing that cannot match the wide layout, and only this one. At the
      shared 1.35rem sides the Polish pair measures 177 + 172 + 16 = 365px against
-     335px of column — 30px over, so the buttons wrapped to two rows and dropped
+     335px of column – 30px over, so the buttons wrapped to two rows and dropped
      below the fold. Sides come in to 0.85rem, which recovers 32px and puts them
      back on one row. Vertical padding, the gap between them, and the font size
      are all left at the desktop values, so only the inside of the pill differs
@@ -3664,10 +3664,10 @@ body.has-cookie-banner .kota-floating-cta {
     padding-right: 0.85rem;
   }
 
-  /* Nothing to push apart here — the canvas has its own band above the copy,
+  /* Nothing to push apart here – the canvas has its own band above the copy,
      so the two groups simply stack. */
   /* Almost nothing to do at this width. The canvas occupies 44%-70% and the copy
-     sits outside it, over the section's own backdrop — so the only job left is
+     sits outside it, over the section's own backdrop – so the only job left is
      taking the glare off the top edge, where the header floats. Scrimming the
      band itself would just dim the animation for no reason. */
   .hero-overlay--en {
@@ -3682,21 +3682,21 @@ body.has-cookie-banner .kota-floating-cta {
 
 /* The section's mobile rules (65vh, capped at 650px, overflow hidden) were tuned
    for the SVG hero, which scales down to fit. Text does not scale down, so the
-   English variant needs the section to grow with its content instead — otherwise
+   English variant needs the section to grow with its content instead – otherwise
    the CTAs and half the copy are clipped below the fold. Scoped to .hero--en so
    the Polish hero keeps its existing behaviour exactly. */
 @media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
   .hero.hero--en {
     /* .hero-en is positioned out of flow now, so it cannot push the section
-       open the way it used to — the height has to be stated. 860px with the
+       open the way it used to – the height has to be stated. 860px with the
        band at 31%-66% is where the competing demands settle at 375x812: the
        copy clear of the fixed header, the lettering wall to wall, the buttons
-       above the fold — and as little dead air under the header as the Polish
+       above the fold – and as little dead air under the header as the Polish
        text allows, since the copy is bottom-anchored to the 8px gap and all
        row-one surplus surfaces at the top. Taller screens use their own. */
     /* Height equal to the content, via the same measured chain: row one,
        then 109 to the heading (8px gap + the 86px letters + 16px), 154 for
-       the heading-and-buttons group and 22px of breathing room — row one
+       the heading-and-buttons group and 22px of breathing room – row one
        + 285. The old max(100svh, 860px) filled the whole screen and
        left ~240px of dead black under the buttons; sized to content the next
        section peeks above the fold instead, which is what tells a phone user
@@ -3741,7 +3741,7 @@ body.has-cookie-banner .kota-floating-cta {
    Sedno efektu, którego multi-column NIE odtworzy: stosy są wyrównane do
    DOŁU (align-items: end) i mają różną wysokość (u nich 1002/1058/875/940/880
    przy 4,4,3,3,3 kafelkach), więc GÓRNA krawędź ściany jest poszarpana,
-   a kontener ją przycina. Multi-column z definicji wyrównuje kolumny — stąd
+   a kontener ją przycina. Multi-column z definicji wyrównuje kolumny – stąd
    płaska krata zamiast mozaiki. Stosy dla 2/3/4/5 kolumn sa w HTML z serwera,
    a widoczny wariant wybiera @media w Portfolio.jsx (STYL_PORTFOLIO, atrybut
    data-kolumny) - bez zmiany ukladu po hydracji (05.10.2026). */
@@ -3770,7 +3770,7 @@ body.has-cookie-banner .kota-floating-cta {
 
 /* Po zrównoważeniu stosów (LPT) różnice wysokości spadają do kilku procent
    i górna krawędź robi się prawie płaska. Ghost ma 17% rozrzutu i to właśnie
-   ono daje wrażenie mozaiki — u niego czyta się dobrze, bo tło jest ciemne.
+   ono daje wrażenie mozaiki – u niego czyta się dobrze, bo tło jest ciemne.
    Na naszym jasnym tle przypadkowa dziura wygląda jak błąd, więc rozrzut
    jest teraz sterowany: drobne, celowe przesunięcia kolumn. */
 .portfolio-mosaic-col:nth-child(2) { padding-top: 34px; }
@@ -3789,7 +3789,7 @@ body.has-cookie-banner .kota-floating-cta {
 
 /* Kafelek jest przyciskiem albo linkiem (case study / żywa strona), więc
    trzeba mu zdjąć całą domyślną skórę, zanim zacznie wyglądać jak obrazek. */
-/* Kafelek to sam obrazek — nic się po kliknięciu nie dzieje, więc nie ma
+/* Kafelek to sam obrazek – nic się po kliknięciu nie dzieje, więc nie ma
    kursora-wskaźnika ani stanu hover. Ghost trzyma je płasko: radius 0,
    żadnego cienia ani ramki. */
 .portfolio-mosaic-tile {
@@ -3812,7 +3812,7 @@ body.has-cookie-banner .kota-floating-cta {
 
 
 
-/* Marka i metryka wjeżdżają dopiero pod kursorem — na spoczynku ściana ma być
+/* Marka i metryka wjeżdżają dopiero pod kursorem – na spoczynku ściana ma być
    samymi ekranami, tak jak u Ghosta. To jedyny efekt hover, jaki zostaje:
    kafelek jest przyciskiem i musi się przyznać, że da się w niego kliknąć. */
 
@@ -3826,7 +3826,7 @@ body.has-cookie-banner .kota-floating-cta {
 
 
 /* Pasek klientów pod ścianą: to tu mieszka tekst, który wcześniej niosły
-   karty karuzeli — widoczny, nie schowany pod hover. */
+   karty karuzeli – widoczny, nie schowany pod hover. */
 .portfolio-clients {
   display: grid;
   grid-template-columns: 1fr;
@@ -3887,7 +3887,7 @@ body.has-cookie-banner .kota-floating-cta {
   align-items: center;
 }
 
-/* Dwie kolumny dopiero od 1024px — u Ghosta tekst zajmuje ok. 40% szerokości,
+/* Dwie kolumny dopiero od 1024px – u Ghosta tekst zajmuje ok. 40% szerokości,
    wizual resztę. Poniżej wizual schodzi pod tekst. */
 @media (min-width: 1024px) {
   .portfolio-head {
@@ -3945,7 +3945,7 @@ body.has-cookie-banner .kota-floating-cta {
   max-width: 46ch;
 }
 
-/* Link pod akapitem — odpowiednik „Explore Ghost themes →". */
+/* Link pod akapitem – odpowiednik „Explore Ghost themes →". */
 /* Kropki paginacji (WhyUs, O nas) maja 8 px wysokosci - zamierzony wyglad.
    Pseudoelement powieksza SAM OBSZAR DOTYKU: w pionie do 44 px, w poziomie do
    kropki + polowy przerwy z kazdej strony (kontener ma gap 12 px). Poprzednia

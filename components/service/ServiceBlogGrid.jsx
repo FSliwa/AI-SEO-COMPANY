@@ -8,7 +8,7 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
   const lang = useLocale();
 
   return (
-    <section style={{ padding: '90px 0', backgroundColor: '#F5F5F7' }}>
+    <section style={{ padding: '90px 0', backgroundColor: 'var(--w-papier-2)' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <Reveal>
           <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
@@ -17,7 +17,7 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
           <h2 style={{ 
             fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', 
             fontWeight: 700, 
-            color: '#1D1D1F', 
+            color: 'var(--w-tusz)', 
             marginBottom: '1rem',
             letterSpacing: '-0.04em',
             lineHeight: 1.15
@@ -25,7 +25,7 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
             {title}
           </h2>
           {subtitle && (
-            <p style={{ fontSize: '1.15rem', color: '#6E6E73', marginBottom: '2.5rem', fontWeight: 500, maxWidth: '650px' }}>
+            <p style={{ fontSize: '1.15rem', color: 'var(--w-tusz-2)', marginBottom: '2.5rem', fontWeight: 500, maxWidth: '650px' }}>
               {subtitle}
             </p>
           )}
@@ -56,13 +56,13 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
                 <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.75rem' }}>
                   {heroItem.category}
                 </div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.25, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--w-tusz)', lineHeight: 1.25, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
                   {heroItem.title}
                 </h3>
-                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                   {heroItem.description}
                 </p>
-                <div style={{ fontSize: '0.85rem', color: '#86868B', fontWeight: 500 }}>
+                <div style={{ fontSize: '0.85rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                   {heroItem.date}
                 </div>
               </div>
@@ -97,14 +97,14 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
                     <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.6rem' }}>
                       {item.category}
                     </div>
-                    <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.3, letterSpacing: '-0.01em', marginBottom: '0.75rem' }}>
+                    <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--w-tusz)', lineHeight: 1.3, letterSpacing: '-0.01em', marginBottom: '0.75rem' }}>
                       {item.title}
                     </h3>
-                    <p style={{ color: '#6E6E73', fontSize: '0.95rem', lineHeight: 1.55, margin: 0 }}>
+                    <p style={{ color: 'var(--w-tusz-2)', fontSize: '0.95rem', lineHeight: 1.55, margin: 0 }}>
                       {item.description}
                     </p>
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: '#86868B', fontWeight: 500, marginTop: '1.5rem' }}>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--w-tusz-2)', fontWeight: 500, marginTop: '1.5rem' }}>
                     {item.date}
                   </div>
                 </div>

@@ -50,7 +50,7 @@ export default async function BlogHubPage({ params }) {
     <>
       <Header />
       <Breadcrumbs pl="Blog" en="Blog" />
-      <main className="subpage-main" style={{ paddingTop: '100px', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+      <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
         <BlogGrid />
         <AppleFaq faqData={blogFaqData} title={locale === 'pl' ? 'Najczęściej zadawane pytania' : 'Frequently Asked Questions'} />
         <BlogSeoText />

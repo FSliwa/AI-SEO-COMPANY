@@ -79,7 +79,7 @@ export default function PorownaniaHub() {
         <p style={{ margin: 0, fontSize: '1.15rem', lineHeight: 1.65, color: 'var(--color-text-muted)', maxWidth: '760px' }}>{HUB.lead}</p>
       </div>
 
-      <div className="container" style={{ maxWidth: '960px', margin: '0 auto', display: 'grid', gap: '1.5rem', paddingBottom: '3rem' }}>
+      <div className="container" style={{ maxWidth: '960px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1.5rem', paddingBottom: '3rem' }}>
         <div id="lista-porownan" role="region" aria-labelledby="lista-porownan-naglowek" style={{ scrollMarginTop: '110px' }}>
           <h2 id="lista-porownan-naglowek" style={h2Styl}>Porównania</h2>
           <div className={styles.siatkaKart}>
@@ -88,7 +88,7 @@ export default function PorownaniaHub() {
                 <h3 className={styles.kartaTytul}>
                   <Link href={`/porownania/${p.slug}`}>{p.nazwaKarty}</Link> <span aria-hidden="true">→</span>
                 </h3>
-                <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.6, color: '#333336' }}>{p.teaser}</p>
+                <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>{p.teaser}</p>
                 <p className={styles.kartaMeta}>
                   {p.kryteria} · aktualizacja: <time dateTime={p.updated}>{dataSlownie(p.updated)}</time>
                 </p>

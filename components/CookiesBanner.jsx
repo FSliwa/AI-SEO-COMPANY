@@ -236,7 +236,7 @@ export default function CookiesBanner() {
   // Preferences" - bez widocznego slowa, wiec komenda glosowa "kliknij Zgoda"
   // go nie trafiala. aria-label usuniety: nazwa = widoczny tekst (emoji ukryte
   // przed czytnikiem), a title zostaje podpowiedzia i opisem ("Zgoda, przycisk,
-  // Dostosuj preferencje"). Nazwa w stylu "Zgoda — Dostosuj preferencje" razem
+  // Dostosuj preferencje"). Nazwa w stylu "Zgoda – Dostosuj preferencje" razem
   // z takim samym title dawala w drzewie AX opis = nazwa, czytany dwa razy.
   const fabText = t('title').split(' ')[0];
 
@@ -284,7 +284,7 @@ export default function CookiesBanner() {
             transition: 'all 0.3s ease'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.background = '#0F172A';
+            e.currentTarget.style.background = 'var(--w-noc)';
             e.currentTarget.style.transform = 'translateY(-2px)';
           }}
           onMouseOut={(e) => {
@@ -320,7 +320,7 @@ export default function CookiesBanner() {
               right: corner ? '1.5rem' : 'auto',
               width: compact ? 'calc(100% - 1.5rem)' : corner ? 'calc(100% - 3rem)' : '92%',
               maxWidth: corner ? '360px' : '680px',
-              background: 'rgba(15, 23, 42, 0.95)',
+              background: 'rgba(10, 19, 55, 0.97)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               color: '#FFF',
@@ -338,7 +338,7 @@ export default function CookiesBanner() {
             {zwarty ? (
               <p style={{ margin: 0, fontSize: '0.8rem', lineHeight: 1.45, color: '#E2E8F0', fontWeight: 400 }}>
                 {t('textShort')}{' '}
-                <Link href="/cookies" style={{ color: '#38BDF8', textDecoration: 'underline', fontWeight: 500 }}>
+                <Link href="/cookies" style={{ color: 'var(--w-pomarancz)', textDecoration: 'underline', fontWeight: 500 }}>
                   {t('policy')}
                 </Link>
                 {' · '}
@@ -346,19 +346,19 @@ export default function CookiesBanner() {
                   ref={manageBtnRef}
                   type="button"
                   onClick={() => setShowManageModal(true)}
-                  style={{ background: 'none', border: 'none', padding: 0, color: '#94A3B8', textDecoration: 'underline', font: 'inherit', cursor: 'pointer' }}
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'rgba(255,255,255,0.74)', textDecoration: 'underline', font: 'inherit', cursor: 'pointer' }}
                 >
                   {t('manage')}
                 </button>
               </p>
             ) : (
             <div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', marginBottom: '0.35rem' }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--w-pomarancz)', marginBottom: '0.35rem' }}>
                 {t('title')}
               </div>
               <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.55, color: '#E2E8F0', fontWeight: 400 }}>
                 {t('text')}{' '}
-                <Link href="/cookies" style={{ color: '#38BDF8', textDecoration: 'underline', fontWeight: 500 }}>
+                <Link href="/cookies" style={{ color: 'var(--w-pomarancz)', textDecoration: 'underline', fontWeight: 500 }}>
                   {t('policy')}
                 </Link>
               </p>
@@ -428,7 +428,7 @@ export default function CookiesBanner() {
                 style={{
                   background: 'transparent',
                   border: 'none',
-                  color: '#94A3B8',
+                  color: 'rgba(255,255,255,0.74)',
                   padding: '0.65rem 0.75rem',
                   cursor: 'pointer',
                   fontSize: '0.83rem',
@@ -437,7 +437,7 @@ export default function CookiesBanner() {
                   transition: 'color 0.25s ease'
                 }}
                 onMouseOver={(e) => e.currentTarget.style.color = '#FFF'}
-                onMouseOut={(e) => e.currentTarget.style.color = '#94A3B8'}
+                onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.74)'}
               >
                 {t('manage')}
               </button>
@@ -484,7 +484,7 @@ export default function CookiesBanner() {
               transition={{ duration: 0.3, ease: 'easeOut' }}
               style={{
                 background: '#FFFFFF',
-                color: '#0F172A',
+                color: 'var(--w-tusz)',
                 padding: '2rem',
                 borderRadius: '24px',
                 maxWidth: '560px',
@@ -497,7 +497,7 @@ export default function CookiesBanner() {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-                <h3 id="cookie-prefs-title" style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: '#0F172A' }}>
+                <h3 id="cookie-prefs-title" style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: 'var(--w-tusz)' }}>
                   {t('manage')}
                 </h3>
                 {/* X mial 15x24 px i nazwe dostepna "✕" (05.10.2026). Teraz cel
@@ -514,7 +514,7 @@ export default function CookiesBanner() {
                     border: 'none',
                     fontSize: '1.25rem',
                     cursor: 'pointer',
-                    color: '#333336',
+                    color: 'var(--color-text-main)',
                     minWidth: '44px',
                     minHeight: '44px',
                     margin: '-5.5px -14px -5.5px 0',
@@ -528,7 +528,7 @@ export default function CookiesBanner() {
                 </button>
               </div>
 
-              <p style={{ fontSize: '0.88rem', color: '#333336', lineHeight: 1.5, marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '0.88rem', color: 'var(--color-text-main)', lineHeight: 1.5, marginBottom: '1.5rem' }}>
                 {t('text')}
               </p>
 
@@ -545,12 +545,12 @@ export default function CookiesBanner() {
               {/* Category 1: Essential */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem 0.75rem', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <span style={{ fontWeight: 600, fontSize: '0.95rem', color: '#0F172A', flex: '1 1 8rem', overflowWrap: 'normal' }}>{t('essentialTitle')}</span>
+                  <span style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--w-tusz)', flex: '1 1 8rem', overflowWrap: 'normal' }}>{t('essentialTitle')}</span>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#059669', background: '#D1FAE5', padding: '0.2rem 0.6rem', borderRadius: '9999px', whiteSpace: 'nowrap', flexShrink: 0 }}>
                     {lang === 'pl' ? 'Wymagane' : 'Always Active'}
                   </span>
                 </div>
-                <p style={{ margin: 0, fontSize: '0.82rem', color: '#333336', lineHeight: 1.45 }}>
+                <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--color-text-main)', lineHeight: 1.45 }}>
                   {t('essentialDesc')}
                 </p>
               </div>
@@ -558,7 +558,7 @@ export default function CookiesBanner() {
               {/* Category 2: Analytics */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem 0.75rem', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <label htmlFor="cookie-consent-analytics" style={{ fontWeight: 600, fontSize: '0.95rem', color: '#0F172A', flex: '1 1 8rem', overflowWrap: 'normal', cursor: 'pointer' }}>{t('analyticsTitle')}</label>
+                  <label htmlFor="cookie-consent-analytics" style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--w-tusz)', flex: '1 1 8rem', overflowWrap: 'normal', cursor: 'pointer' }}>{t('analyticsTitle')}</label>
                   <input
                     id="cookie-consent-analytics"
                     type="checkbox"
@@ -568,7 +568,7 @@ export default function CookiesBanner() {
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
                   />
                 </div>
-                <p id="cookie-consent-analytics-desc" style={{ margin: 0, fontSize: '0.82rem', color: '#333336', lineHeight: 1.45 }}>
+                <p id="cookie-consent-analytics-desc" style={{ margin: 0, fontSize: '0.82rem', color: 'var(--color-text-main)', lineHeight: 1.45 }}>
                   {t('analyticsDesc')}
                 </p>
               </div>
@@ -576,7 +576,7 @@ export default function CookiesBanner() {
               {/* Category 3: Marketing */}
               <div style={{ background: '#F8FAFC', padding: '1rem 1.25rem', borderRadius: '14px', marginBottom: '1.75rem', border: '1px solid #E2E8F0' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem 0.75rem', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                  <label htmlFor="cookie-consent-marketing" style={{ fontWeight: 600, fontSize: '0.95rem', color: '#0F172A', flex: '1 1 8rem', overflowWrap: 'normal', cursor: 'pointer' }}>{t('marketingTitle')}</label>
+                  <label htmlFor="cookie-consent-marketing" style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--w-tusz)', flex: '1 1 8rem', overflowWrap: 'normal', cursor: 'pointer' }}>{t('marketingTitle')}</label>
                   <input
                     id="cookie-consent-marketing"
                     type="checkbox"
@@ -586,7 +586,7 @@ export default function CookiesBanner() {
                     style={{ width: '18px', height: '18px', cursor: 'pointer', accentColor: 'var(--color-primary)' }}
                   />
                 </div>
-                <p id="cookie-consent-marketing-desc" style={{ margin: 0, fontSize: '0.82rem', color: '#333336', lineHeight: 1.45 }}>
+                <p id="cookie-consent-marketing-desc" style={{ margin: 0, fontSize: '0.82rem', color: 'var(--color-text-main)', lineHeight: 1.45 }}>
                   {t('marketingDesc')}
                 </p>
               </div>

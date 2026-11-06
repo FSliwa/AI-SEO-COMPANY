@@ -7,7 +7,7 @@ import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 // Zdarzenia GA4, których nie da się zebrać pomiarem rozszerzonym: wszystkie CTA
 // prowadzą kotwicą do tej samej sekcji kontaktowej (bez page_view), a linki
 // tel:/mailto: nie są dla GA4 „wychodzące". Jeden nasłuch na dokumencie zamiast
-// onClick w dziesięciu komponentach — dzięki temu nowy przycisk jest mierzony
+// onClick w dziesięciu komponentach – dzięki temu nowy przycisk jest mierzony
 // automatycznie, a data-cta tylko nadaje mu czytelną nazwę.
 //
 // Zdarzenia:

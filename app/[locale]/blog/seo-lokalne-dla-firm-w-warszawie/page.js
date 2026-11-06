@@ -43,7 +43,7 @@ export default async function ArticleLokalnePage({ params }) {
   const tocItems = locale === 'en' ? tocItemsEn : tocItemsPl;
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <ArticleSchema slug="/blog/seo-lokalne-dla-firm-w-warszawie" locale={locale} />
       
@@ -53,26 +53,26 @@ export default async function ArticleLokalnePage({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Local SEO
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 Jul 27, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Local SEO for Companies | 2026 Guide
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </div>
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Welcome to our <span style={{ fontWeight: 'bold' }}>Local SEO for Companies | 2026 Guide</span>. For service-based companies, local SEO is often the primary source of acquiring new clients. Learn how to optimize your Google Business Profile and local website structure to dominate your city's search results. This guide is written for B2B businesses with a physical footprint — offices, showrooms, service areas — rather than for consumer retail, where the ranking factors work differently.
+                Welcome to our <span style={{ fontWeight: 'bold' }}>Local SEO for Companies | 2026 Guide</span>. For service-based companies, local SEO is often the primary source of acquiring new clients. Learn how to optimize your Google Business Profile and local website structure to dominate your city's search results. This guide is written for B2B businesses with a physical footprint – offices, showrooms, service areas – rather than for consumer retail, where the ranking factors work differently.
               </p>
               <ArticleTOC items={tocItems} />
               
@@ -89,16 +89,16 @@ export default async function ArticleLokalnePage({ params }) {
               <p>Beyond your Google Business Profile, your business needs consistent representation across the broader internet. This is where Local Citations come into play. A local citation is any online mention of the name, address, and phone number (NAP) of your local business. Citations can occur on local business directories, on websites and apps, and on social platforms. When search engines like Google scan the web, they look for these consistent data points to verify your business's legitimacy. Having your business listed on reputable national directories (like Yelp or YellowPages) as well as highly specific local or industry niches (like a city chamber of commerce) significantly boosts your local trust score. However, inconsistency is a local SEO killer. If your phone number is different on Yelp compared to Google Maps, it creates confusion for the search algorithms, resulting in a lower ranking. Directory listings and NAP consistency checks are part of our <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO service in Warsaw</Link>.</p>
 
               <h2 id="localized-content">Creating Localized Content</h2>
-              <p>If you serve multiple cities or districts, relying solely on your homepage to rank for all of them is a flawed strategy. Instead, you must deploy localized landing pages and blog content. For instance, if you are a law firm in Warsaw, creating separate, highly detailed pages for "Divorce Lawyer Mokotow" or "Real Estate Attorney Ursynow" allows you to capture hyper-specific, high-intent traffic. This content shouldn't just be duplicated text with the city name swapped out. It needs to provide real local value—mentioning local landmarks, discussing local regulations, and showcasing case studies or testimonials from clients within that specific neighborhood. Additionally, maintaining an active blog where you discuss local events or industry news relevant to your community sends powerful localized signals to Google's ranking algorithms.</p>
+              <p>If you serve multiple cities or districts, relying solely on your homepage to rank for all of them is a flawed strategy. Instead, you must deploy localized landing pages and blog content. For instance, if you are a law firm in Warsaw, creating separate, highly detailed pages for "Divorce Lawyer Mokotow" or "Real Estate Attorney Ursynow" allows you to capture hyper-specific, high-intent traffic. This content shouldn't just be duplicated text with the city name swapped out. It needs to provide real local value – mentioning local landmarks, discussing local regulations, and showcasing case studies or testimonials from clients within that specific neighborhood. Additionally, maintaining an active blog where you discuss local events or industry news relevant to your community sends powerful localized signals to Google's ranking algorithms.</p>
 
               <h2 id="mobile-optimization">Mobile Optimization for Local Search</h2>
               <p>Over 60% of local searches are performed on mobile devices. When someone searches for a "restaurant near me" or an "emergency plumber," they are usually on the go and need immediate answers. If your website is not perfectly optimized for mobile, you will lose these high-converting leads instantly. Mobile optimization goes beyond simply having a responsive design. It involves ensuring lightning-fast load times (Core Web Vitals), making phone numbers clickable (click-to-call), and ensuring your address easily opens in a navigation app. A seamless mobile user experience reduces bounce rates, which in turn signals to Google that your website effectively satisfies user intent, further boosting your local ranking positions.</p>
 
-              <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
-                <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
+              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '4rem', paddingTop: '4rem' }}>
+                <div style={{ background: 'var(--w-papier-2)', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
                   <h3>Dominate your local market</h3>
-                  <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>Let our experts position your business at the top of Google Maps.</p>
-                  <a href={hash('kontakt', locale)} style={{ display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Get a Local SEO Quote</a>
+                  <p style={{ margin: 0, color: 'var(--w-tusz-2)', fontSize: '1.1rem', marginBottom: '2rem' }}>Let our experts position your business at the top of Google Maps.</p>
+                  <a href={hash('kontakt', locale)} style={{ display: 'inline-block', background: 'var(--w-tusz)', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' }}>Get a Local SEO Quote</a>
                 </div>
               </div>
             </div>
@@ -112,20 +112,20 @@ export default async function ArticleLokalnePage({ params }) {
           
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Lokalne SEO Warszawa
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 Jul 20, 2026
               </span>
             </div>
 
             {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page — do not demote it. */}
+                renders, so this is not a second H1 on the page – do not demote it. */}
               <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
-              color: '#1D1D1F', 
+              color: 'var(--w-tusz)', 
               marginBottom: '2rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
@@ -140,12 +140,12 @@ export default async function ArticleLokalnePage({ params }) {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </div>
             
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
-              <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+              <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                 Rynek usług w Warszawie charakteryzuje się ogromną konkurencją. Aby docierać do klientów lokalnych, samo posiadanie strony to za mało. Poniżej przedstawiamy kompletny Poradnik 2026: Jak Pozycjonować Firmę Lokalnie w Google?
               </p>
               <ArticleTOC items={tocItems} />
@@ -161,22 +161,22 @@ export default async function ArticleLokalnePage({ params }) {
               
               <ul>
                 <li>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: 'var(--w-tusz)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Wybierz odpowiednią kategorię główną.</span>
+                  <span style={{ fontSize: '1.15rem', color: 'var(--w-tusz)', fontWeight: 500 }}>Wybierz odpowiednią kategorię główną.</span>
                 </li>
                 <li>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: 'var(--w-tusz)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Dodaj fizyczny adres i precyzyjne godziny otwarcia.</span>
+                  <span style={{ fontSize: '1.15rem', color: 'var(--w-tusz)', fontWeight: 500 }}>Dodaj fizyczny adres i precyzyjne godziny otwarcia.</span>
                 </li>
                 <li>
-                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: '#1D1D1F', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ marginTop: '0.25rem', width: '20px', height: '20px', background: 'var(--w-tusz)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
-                  <span style={{ fontSize: '1.15rem', color: '#1D1D1F', fontWeight: 500 }}>Publikuj posty, oferty i zdjęcia bezpośrednio w wizytówce.</span>
+                  <span style={{ fontSize: '1.15rem', color: 'var(--w-tusz)', fontWeight: 500 }}>Publikuj posty, oferty i zdjęcia bezpośrednio w wizytówce.</span>
                 </li>
               </ul>
 

@@ -42,14 +42,14 @@ export default function PricingClient() {
     {
       question: 'Czy muszę podpisywać umowę na dłuższy okres?',
       questionEn: 'Do I have to sign a long-term contract?',
-      answer: 'Nie w pakietach SEO Standard i SEO Premium: pracujemy w modelu elastycznej subskrypcji miesięcznej z możliwością rezygnacji w każdej chwili. Wyjątkiem jest Booster Pack z nową stroną WWW — tam umowa trwa minimum 3 miesiące. Umowy wieloletnie z karami za wcześniejsze zakończenie uznajemy za sposób na zatrzymanie klienta, którego nie da się zatrzymać wynikami.',
+      answer: 'Nie w pakietach SEO Standard i SEO Premium: pracujemy w modelu elastycznej subskrypcji miesięcznej z możliwością rezygnacji w każdej chwili. Wyjątkiem jest Booster Pack z nową stroną WWW – tam umowa trwa minimum 3 miesiące. Umowy wieloletnie z karami za wcześniejsze zakończenie uznajemy za sposób na zatrzymanie klienta, którego nie da się zatrzymać wynikami.',
       answerEn: 'Not for SEO Standard and SEO Premium: we work on a flexible monthly subscription that you can cancel at any time. The exception is the Booster Pack with a new website, which has a minimum 3-month contract. Multi-year contracts with early-termination penalties are, in our view, a way of holding on to a client that results alone cannot hold.'
     },
     {
       question: 'Czy audyt SEO jest wliczony w cenę pakietu?',
       questionEn: 'Is the SEO audit included in the package price?',
-      answer: 'Tak. Każdy pakiet zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację techniczną. Audyt nie jest osobno płatnym dodatkiem — bez niego nie wiedzielibyśmy, od czego zacząć.',
-      answerEn: 'Yes. Every package includes a professional technical audit, original content production, a B2B link building strategy and technical optimisation. The audit is not a paid add-on — without it we would not know where to start.'
+      answer: 'Tak. Każdy pakiet zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację techniczną. Audyt nie jest osobno płatnym dodatkiem – bez niego nie wiedzielibyśmy, od czego zacząć.',
+      answerEn: 'Yes. Every package includes a professional technical audit, original content production, a B2B link building strategy and technical optimisation. The audit is not a paid add-on – without it we would not know where to start.'
     },
     {
       question: 'Czy SEO lokalne i wizytówka Google są dodatkowo płatne?',
@@ -113,8 +113,8 @@ export default function PricingClient() {
       answer: 'Opłaca się, gdy klienci szukają Twojej usługi w Google, a strona zamienia wizyty w zapytania. W naszych <a href="/blog/wyniki-wdrozen-seo-2026" style="text-decoration:underline">wdrożeniach z 2026 roku</a> lokalna restauracja zebrała 187 kliknięć, a producent B2B 152 kliknięcia w trzy miesiące (Google Search Console, stan na sierpień 2026). Kliknięcia to jeszcze nie przychód, dlatego opłacalność liczymy zapytaniami widocznymi w panelu klienta.',
     },
     {
-      question: 'Potrzebuję też nowej strony — czy da się to połączyć z pozycjonowaniem?',
-      questionEn: 'I also need a new website — can that be combined with SEO?',
+      question: 'Potrzebuję też nowej strony – czy da się to połączyć z pozycjonowaniem?',
+      questionEn: 'I also need a new website – can that be combined with SEO?',
       answer: 'Tak. Poza subskrypcją miesięczną oferujemy pakiet łączący pozycjonowanie z wykonaniem strony internetowej. Ma to przewagę porządkową: strona powstaje od razu z architekturą informacji i strukturą adresów przygotowaną pod wyszukiwarkę, więc nie trzeba później migrować URL-i ani przebudowywać nawigacji. Szczegóły w sekcji <a href="/projektowanie-stron-internetowych" style="text-decoration:underline">projektowanie stron internetowych</a>.',
       answerEn: 'Yes. Alongside the monthly subscription we offer a package combining SEO with building the website itself. That has a practical advantage: the site is built from the start with an information architecture and URL structure prepared for search, so there is no need to migrate URLs or rebuild navigation later. See <a href="/en/web-design" style="text-decoration:underline">web design</a> for details.'
     }
@@ -148,21 +148,21 @@ export default function PricingClient() {
             </h1>
             <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
-                ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc w SEO Standard i Premium (Booster Pack: min. 3 miesiące), bez ukrytych opłat — poniżej pełny cennik pozycjonowania stron 2026.' 
+                ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc w SEO Standard i Premium (Booster Pack: min. 3 miesiące), bez ukrytych opłat – poniżej pełny cennik pozycjonowania stron 2026.' 
                 : 'Discover our SEO Pricing 2026. No hidden fees or complicated contracts. Check our packages and costs and pay for measurable search visibility growth.'}
             </p>
             {/* Przycisk i telefon w hero: 59% kliknięć z Google Ads trafia na ten landing,
                 a pierwszy przycisk był wcześniej na 4. ekranie telefonu (pomiar 24.09.2026). */}
             <div className="hero-cta-row" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href={hash('kontakt', lang)} className="hero-btn-primary" data-cta="service_hero_cennik">
-                {lang === 'pl' ? 'Zamów wycenę — odpowiedź w\u00a024\u00a0h' : 'Get a quote — reply within 24\u00a0h'}
+                {lang === 'pl' ? 'Zamów wycenę – odpowiedź w\u00a024\u00a0h' : 'Get a quote – reply within 24\u00a0h'}
               </a>
               <a href="tel:+48518815055" className="hero-btn-secondary" data-cta="service_hero_cennik_tel">
                 {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
               </a>
             </div>
             {/* OP-14: autor i data (LASTMOD) pod leadem; na /en Byline nic nie renderuje. */}
-            <Byline sciezka="/cennik-pozycjonowania" style={{ margin: '2rem 0 0' }} />
+            <Byline sciezka="/cennik-pozycjonowania" style={{ margin: '2rem auto 0', order: 6 }} />
           </Reveal>
         </div>
       </section>
@@ -183,12 +183,12 @@ export default function PricingClient() {
               <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-text-dark)' }}>
                 {lang === 'pl' ? 'Co obejmuje nasz cennik pozycjonowania stron?' : 'What does our SEO pricing include?'}
               </h2>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
                 {lang === 'pl' 
                   ? 'Wybierając pakiety AI SEO COMPANY, inwestujesz w przewidywalny wzrost. Nasz cennik pozycjonowania stron internetowych został skonstruowany tak, aby zaspokoić potrzeby zarówno lokalnych biznesów B2C, jak i ogólnopolskich firm B2B.' 
                   : 'By choosing AI SEO COMPANY packages, you invest in predictable growth. Our website SEO pricing has been designed to meet the needs of both local B2C businesses and nationwide B2B companies.'}
               </p>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
                 {lang === 'pl'
                   ? 'Jako nowoczesna agencja marketingowa i SEO, nie ograniczamy się tylko do dodawania linków. Każdy z naszych pakietów zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację wskaźników Core Web Vitals.'
                   : 'As a modern marketing and SEO agency, we don\'t just build links. Each of our packages includes a professional technical audit, unique content creation, B2B link building strategy, and Core Web Vitals optimization.'}
@@ -196,12 +196,12 @@ export default function PricingClient() {
               <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
                 {lang === 'pl' ? 'Dlaczego transparentne pakiety?' : 'Why transparent packages?'}
               </h3>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>
                 {lang === 'pl'
                   ? 'Ukryte koszty i umowy na wiele lat to domena przestarzałych firm. Wierzymy, że dobra usługa broni się sama, a jasny i prosty cennik pozycjonowania to podstawa partnerskich relacji i najwyższego zwrotu z inwestycji (ROI).'
                   : 'Hidden costs and multi-year contracts are the domain of outdated companies. We believe a good service defends itself, and clear, simple SEO pricing is the foundation of partnership and the highest ROI.'}
               </p>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginTop: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginTop: '1.5rem' }}>
                 {lang === 'pl'
                   ? 'Zdajemy sobie sprawę, że każda branża charakteryzuje się odmienną specyfiką, unikalną grupą docelową oraz specyficznym cyklem decyzyjnym. Z tego powodu podchodzimy z ogromną elastycznością do optymalizacji strategii biznesowej naszych Klientów. Decydując się na inwestycję w profesjonalny marketing internetowy w postaci SEO, wybierasz model trwałego budowania kompetencji własnej marki. Wspólnie identyfikujemy kluczowe cele konwersji i obniżamy długofalowy koszt pozyskania leada poprzez precyzyjne dotarcie z ofertą do właściwych konsumentów w najbardziej sprzyjającym momencie ich procesu zakupowego.'
                   : 'We realize that every industry is characterized by its own specific nature, unique target audience, and specific decision-making cycle. For this reason, we approach the optimization of our Clients business strategies with great flexibility. By deciding to invest in professional internet marketing in the form of SEO, you choose a model of lasting brand competency building. Together, we identify key conversion goals and lower the long-term cost of lead acquisition by precisely reaching out with an offer to the right consumers at the most favorable moment of their purchasing process.'}
@@ -211,7 +211,7 @@ export default function PricingClient() {
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_cennik_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w\u00a024\u00a0h' : 'Ask for a quote — reply within 24\u00a0h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w\u00a024\u00a0h' : 'Ask for a quote – reply within 24\u00a0h'}
             </a>
           </div>
         </div>
@@ -229,20 +229,20 @@ export default function PricingClient() {
                 <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-text-dark)' }}>
                   Pozycjonowanie stron: cena, koszt i wycena w 2026
                 </h2>
-                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
                   <Link href="/pozycjonowanie-stron-internetowych" style={{ textDecoration: 'underline' }}>Pozycjonowanie stron</Link> kosztuje u nas od 1 900 zł netto miesięcznie. W SEO Standard dostajesz do 20 fraz, czyli średnio 95 zł netto za frazę, a w SEO Premium za 2 500 zł netto do 50 fraz, czyli 50 zł za frazę. Za samo wejście fraz do TOP 10 nie dopłacasz.
                 </p>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
                   Tanie pozycjonowanie stron: na czym oszczędzają najtańsze oferty
                 </h3>
-                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
                   Najtańsze oferty zwykle oszczędzają na tym, czego nie widać w raporcie: treściach, linkach z serwisów z realnym ruchem i poprawkach technicznych. Zanim porównasz ceny, sprawdź <a href="#uczciwa-umowa" style={{ textDecoration: 'underline' }}>w umowie</a> trzy rzeczy: ile fraz i treści dostajesz co miesiąc, czy konta Google są założone na Twoją firmę i ile trwa wypowiedzenie.
                 </p>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
                   Wycena pozycjonowania: czego potrzebujemy
                 </h3>
                 {/* Do potwierdzenia przez Filipa (OP-01): czy te trzy dane wystarczają do wyceny. */}
-                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: '#333336' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>
                   Do wyceny pozycjonowania wystarczą adres strony, lista usług albo kategorii, które chcesz promować, i obszar działania: miasto, region albo cała Polska. Na tej podstawie dobieramy pakiet i liczbę fraz. Jeśli strona ma problemy techniczne, zaczynamy od <Link href="/audyt-seo" style={{ textDecoration: 'underline' }}>audytu SEO</Link>, który w każdym pakiecie jest w cenie.
                 </p>
               </div>

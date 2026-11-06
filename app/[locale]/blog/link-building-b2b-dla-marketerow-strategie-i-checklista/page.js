@@ -70,7 +70,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
   const hrefP1 = hrefJesliOpublikowana('/porownania/pozycjonowanie-za-efekt-czy-abonament');
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <ArticleSchema
         slug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista"
@@ -84,10 +84,10 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
           
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 B2B Link Building
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 Jul 27, 2026
               </span>
             </div>
@@ -95,7 +95,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
-              color: '#1D1D1F', 
+              color: 'var(--w-tusz)', 
               marginBottom: '2rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
@@ -110,12 +110,12 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </div>
             
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
-              <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+              <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                 An online marketing expert presents a complete guide - B2B link building for marketers: a step-by-step strategy and checklist.
               </p>
 
@@ -123,8 +123,8 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               
               <p style={{ marginBottom: '1.5rem' }}>Three actions worth starting in the first month:</p>
               <ol>
-                <li><Link href="/audyt-seo">Audit</Link> existing relationships — check if partners, clients, and suppliers link to you correctly and if the links lead to the right pages (not just the homepage).</li>
-                <li>Preparation of one linkable asset — an industry report, ROI calculator, or benchmark based on internal data; this is currency for pitching to the media.</li>
+                <li><Link href="/audyt-seo">Audit</Link> existing relationships – check if partners, clients, and suppliers link to you correctly and if the links lead to the right pages (not just the homepage).</li>
+                <li>Preparation of one linkable asset – an industry report, ROI calculator, or benchmark based on internal data; this is currency for pitching to the media.</li>
                 <li>Identification of 15–20 industry publications read by your buyers and making initial contact with editors.</li>
               </ol>
               <p style={{ marginBottom: '1.5rem' }}>Priorities in order: internal data, expert articles with a byline, ecosystem partnerships.</p>
@@ -139,9 +139,9 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               
               <p style={{ marginBottom: '1.5rem' }}>Three typical goals of a B2B link program:</p>
               <ul>
-                <li>Visibility during purchasing research — appearing in search results for phrases buyers use during the supplier evaluation stage. A good <Link href="/pozycjonowanie-stron-internetowych">website positioning strategy</Link> is crucial here.</li>
-                <li>Brand trust — third-party confirmation that the company exists in a real industry ecosystem.</li>
-                <li>SEO support for product and offer pages — building authority for pages that directly convert.</li>
+                <li>Visibility during purchasing research – appearing in search results for phrases buyers use during the supplier evaluation stage. A good <Link href="/pozycjonowanie-stron-internetowych">website positioning strategy</Link> is crucial here.</li>
+                <li>Brand trust – third-party confirmation that the company exists in a real industry ecosystem.</li>
+                <li>SEO support for product and offer pages – building authority for pages that directly convert.</li>
               </ul>
 
               {/* ===== SECTION: Dlaczego linki ===== */}
@@ -151,7 +151,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>Metrics to look for in a link program:</p>
               <ul>
                 <li>Number of referring domains from publications thematically related to your industry.</li>
-                <li>Increase in branded search — more searches for the company name is a sign of growing recognition.</li>
+                <li>Increase in branded search – more searches for the company name is a sign of growing recognition.</li>
                 <li>Rankings for purchasing phrases for product and offer pages.</li>
                 <li>Referral traffic from specific publications and its quality (time on page, conversions).</li>
               </ul>
@@ -174,7 +174,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               {/* ===== SECTION: Strategie ===== */}
               <h2 id="strategie">Effective B2B link building strategies step-by-step</h2>
               
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Creating and promoting research-driven assets</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Creating and promoting research-driven assets</h3>
               <p style={{ marginBottom: '1.5rem' }}>An industry report, benchmark, or survey is the best currency for pitching. One well-prepared study can bring many natural backlinks from publications that quote your data themselves.</p>
               <p style={{ marginBottom: '0.5rem' }}>How to do it:</p>
               <ul>
@@ -185,13 +185,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>After publication, monitor mentions and requests for quotes using <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> or <a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a>.</li>
               </ul>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR and expert comments</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR and expert comments</h3>
               <p style={{ marginBottom: '1.5rem' }}>Digital PR in B2B is about providing unique data and practitioner comments. Industry editors are looking for experts with real experience, not PR releases. Practical process: register on platforms connecting journalists with experts (<a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a>, formerly HARO, and <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a>) and respond to queries within 2–4 hours of their appearance. Speed of response is key here.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Guest articles with a byline</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Guest articles with a byline</h3>
               <p style={{ marginBottom: '1.5rem' }}>Choose 5–10 publications that your buyers actually read. Propose a topic that solves a specific reader problem rather than promoting your company. Editorial boards reject pitches that sound like ads.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>4. Broken link building</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>4. Broken link building</h3>
               <p style={{ marginBottom: '1.5rem' }}>Find pages in your industry with broken links leading to non-existent resources, then propose your own resource as a replacement. Outreach conversion in this tactic is moderate and depends on segment alignment.</p>
               <p style={{ marginBottom: '0.5rem' }}>Broken link building checklist:</p>
               <ul>
@@ -201,13 +201,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Send a personalized message to the webmaster with a specific replacement proposal.</li>
               </ul>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>5. Ecosystem partnerships</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>5. Ecosystem partnerships</h3>
               <p style={{ marginBottom: '1.5rem' }}>Document all technology partners, integrators, and complementary service providers. Each of these partnerships is a potential link to an integration page, case study, or product page.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>6. Thought leadership and conference activity</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>6. Thought leadership and conference activity</h3>
               <p style={{ marginBottom: '1.5rem' }}>Speaking at industry conferences, participating in podcasts, and expert panels generate links from speaker profiles, event pages, and summary articles. In B2B, buyers often trust people more than companies, so building the personal brand of key experts directly supports the link program.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>7. Client case studies</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>7. Client case studies</h3>
               <p style={{ marginBottom: '1.5rem' }}>A joint case study with a client who is a recognizable brand brings a link from their site and simultaneously acts as a powerful sales argument. Propose mutual publication to the client: you describe the results, they link to your case study.</p>
               <p style={{ marginBottom: '1.5rem' }}>Pro tip: Before you start cold outreach, review existing business relationships. Partners, suppliers, and clients who already know you have a much higher response rate than cold contacts. Start with them and gather your first links without outreach costs.</p>
 
@@ -223,20 +223,20 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Criterion</th>
                       <th style={{ padding: '0.75rem' }}>High value</th>
                       <th style={{ padding: '0.75rem' }}>Low value / risk</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Thematic relevance</td><td style={{ padding: '0.75rem' }}>Site from the same industry</td><td style={{ padding: '0.75rem' }}>Unrelated general portal</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Domain DR (Ahrefs)</td><td style={{ padding: '0.75rem' }}>—</td><td style={{ padding: '0.75rem' }}>Below 20 with a suspicious profile</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Source organic traffic</td><td style={{ padding: '0.75rem' }}>Real traffic from search engines</td><td style={{ padding: '0.75rem' }}>Zero or artificial traffic</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Placement in content</td><td style={{ padding: '0.75rem' }}>Inline, in context</td><td style={{ padding: '0.75rem' }}>Footer, sidebar, link list</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Anchor text</td><td style={{ padding: '0.75rem' }}>Natural, descriptive</td><td style={{ padding: '0.75rem' }}>Mass exact-match</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Source link profile</td><td style={{ padding: '0.75rem' }}>Diverse, editorial</td><td style={{ padding: '0.75rem' }}>PBN schemes</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Reputational risk</td><td style={{ padding: '0.75rem' }}>Proud to show a client</td><td style={{ padding: '0.75rem' }}>Embarrassing to show a partner</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Thematic relevance</td><td style={{ padding: '0.75rem' }}>Site from the same industry</td><td style={{ padding: '0.75rem' }}>Unrelated general portal</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Domain DR (Ahrefs)</td><td style={{ padding: '0.75rem' }}>–</td><td style={{ padding: '0.75rem' }}>Below 20 with a suspicious profile</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Source organic traffic</td><td style={{ padding: '0.75rem' }}>Real traffic from search engines</td><td style={{ padding: '0.75rem' }}>Zero or artificial traffic</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Placement in content</td><td style={{ padding: '0.75rem' }}>Inline, in context</td><td style={{ padding: '0.75rem' }}>Footer, sidebar, link list</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Anchor text</td><td style={{ padding: '0.75rem' }}>Natural, descriptive</td><td style={{ padding: '0.75rem' }}>Mass exact-match</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Source link profile</td><td style={{ padding: '0.75rem' }}>Diverse, editorial</td><td style={{ padding: '0.75rem' }}>PBN schemes</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Reputational risk</td><td style={{ padding: '0.75rem' }}>Proud to show a client</td><td style={{ padding: '0.75rem' }}>Embarrassing to show a partner</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -255,17 +255,17 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Dimension</th>
                       <th style={{ padding: '0.75rem' }}>What to track</th>
                       <th style={{ padding: '0.75rem' }}>Frequency</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>New referring domains</td><td style={{ padding: '0.75rem' }}>Number and DR of new links</td><td style={{ padding: '0.75rem' }}>Weekly</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Organic traffic</td><td style={{ padding: '0.75rem' }}>Sessions and conversions on supported pages</td><td style={{ padding: '0.75rem' }}>Monthly</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Branded search</td><td style={{ padding: '0.75rem' }}>Volume of company name searches</td><td style={{ padding: '0.75rem' }}>Monthly</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Pipeline</td><td style={{ padding: '0.75rem' }}>Leads from organic assigned to campaigns</td><td style={{ padding: '0.75rem' }}>Quarterly</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>New referring domains</td><td style={{ padding: '0.75rem' }}>Number and DR of new links</td><td style={{ padding: '0.75rem' }}>Weekly</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Organic traffic</td><td style={{ padding: '0.75rem' }}>Sessions and conversions on supported pages</td><td style={{ padding: '0.75rem' }}>Monthly</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Branded search</td><td style={{ padding: '0.75rem' }}>Volume of company name searches</td><td style={{ padding: '0.75rem' }}>Monthly</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Pipeline</td><td style={{ padding: '0.75rem' }}>Leads from organic assigned to campaigns</td><td style={{ padding: '0.75rem' }}>Quarterly</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -273,7 +273,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Outsourcing ===== */}
               <h2 id="outsourcing">When to outsource link building and how to choose an agency?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Three signs it's worth reaching for an external partner — an experienced <Link href="/">SEO agency</Link>:</p>
+              <p style={{ marginBottom: '1.5rem' }}>Three signs it's worth reaching for an external partner – an experienced <Link href="/">SEO agency</Link>:</p>
               <ul>
                 <li>Lack of internal resources to conduct systematic outreach and produce expert content.</li>
                 <li>Need for faster access to a network of relationships with industry editors, which takes months to build from scratch.</li>
@@ -303,7 +303,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>Buying links and PBN networks are tactics that may bring a short-term ranking increase, but expose the domain to algorithmic or manual penalties. Industry experts consistently point out that earned links and partnerships yield better results in the long run. Professional <Link href="/pozycjonowanie-stron-internetowych">SEO optimization</Link> always prioritizes quality over volume.</p>
               <p style={{ marginBottom: '1.5rem' }}>Focusing links on the homepage instead of product, offer, and case study pages. In B2B, buyers land on specific pages via specific phrases, so authority should support these pages directly.</p>
               <p style={{ marginBottom: '1.5rem' }}>Contextually incorrect anchor texts in exact-match style for commercial phrases is one of the clearest manipulation signals for Google algorithms.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Lack of source diversification — a profile composed of links from one type of site (e.g., only directories) looks unnatural and does not build topical authority.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Lack of source diversification – a profile composed of links from one type of site (e.g., only directories) looks unnatural and does not build topical authority.</p>
               <p style={{ marginBottom: '1.5rem' }}>How to minimize risk: document every outreach, prefer editorial and partner links, diversify source site types, and regularly audit your link profile using <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> or <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a>.</p>
               <p style={{ marginBottom: '1.5rem' }}>Note: link building itself is not illegal. Legal issues and guideline violations arise with hidden payments for links without a sponsored tag and violating publisher rules. Transparency in relations with editorial boards protects both you and the partner.</p>
 
@@ -316,7 +316,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Experts from a company with a visible public profile (conferences, podcasts, articles) generate more journalist inquiries than anonymous brands.</li>
                 <li>Relationships with 15–30 editors from key publications provide scale and speed impossible to achieve through cold outreach to hundreds of contacts.</li>
               </ul>
-              <p style={{ marginBottom: '1.5rem' }}>Observation: Proprietary data — research, benchmarks, tools — are the best currency for pitching stories. One well-prepared report can generate far more natural backlinks than dozens of guest posts.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Observation: Proprietary data – research, benchmarks, tools – are the best currency for pitching stories. One well-prepared report can generate far more natural backlinks than dozens of guest posts.</p>
               <p style={{ marginBottom: '0.5rem' }}>The fastest return of editorial attention comes from:</p>
               <ul>
                 <li>Responses to journalist queries via <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> or <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> within 2–4 hours.</li>
@@ -330,17 +330,17 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Point</th>
                       <th style={{ padding: '0.75rem' }}>Details</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Digital PR as priority</td><td style={{ padding: '0.75rem' }}>Digital PR is indicated as one of the most effective link acquisition tactics.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Proprietary data as currency</td><td style={{ padding: '0.75rem' }}>One well-prepared industry report brings many natural backlinks.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Quality over volume</td><td style={{ padding: '0.75rem' }}>Editorial and partner links build topical authority; mass PBNs carry penalty risks.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Timeline and costs</td><td style={{ padding: '0.75rem' }}>Full effects appear over a longer period, indicative program cost is moderate.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>AI SEO COMPANY</td><td style={{ padding: '0.75rem' }}>The agency runs B2B link building programs combining digital PR, linkable assets creation, and KPI reporting.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Digital PR as priority</td><td style={{ padding: '0.75rem' }}>Digital PR is indicated as one of the most effective link acquisition tactics.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Proprietary data as currency</td><td style={{ padding: '0.75rem' }}>One well-prepared industry report brings many natural backlinks.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Quality over volume</td><td style={{ padding: '0.75rem' }}>Editorial and partner links build topical authority; mass PBNs carry penalty risks.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Timeline and costs</td><td style={{ padding: '0.75rem' }}>Full effects appear over a longer period, indicative program cost is moderate.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>AI SEO COMPANY</td><td style={{ padding: '0.75rem' }}>The agency runs B2B link building programs combining digital PR, linkable assets creation, and KPI reporting.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -365,21 +365,21 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>AI SEO COMPANY runs B2B link building campaigns combining digital PR, production of industry reports, personalized outreach, and transparent reporting. We work in a subscription model for companies planning a long-term program and in a project model for those wanting to start with a pilot. Every campaign begins with a free audit of the link profile and content gap analysis.</p>
               <p style={{ marginBottom: '1.5rem' }}>If you want to know which publications your buyers read and how quickly you can get your first editorial links, contact us and schedule an initial consultation. We will prepare a campaign brief tailored to your industry and budget.</p>
 
-              <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "#1D1D1F" }}>Useful tools and resources for further reading</div>
+              <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "var(--w-tusz)" }}>Useful tools and resources for further reading</div>
               <p style={{ marginBottom: '0.5rem' }}>Analysis and monitoring tools:</p>
               <ul>
-                <li><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> — link profile analysis, monitoring new and lost links, identifying targets for broken link building.</li>
-                <li><a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> — Authority Score, competitor analysis, tracking purchasing phrase rankings.</li>
-                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> — indexing verification, monitoring organic traffic on supported pages.</li>
-                <li><a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> (formerly HARO) — platform connecting journalists with experts.</li>
-                <li><a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> — database of journalists and industry editors.</li>
-                <li><a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a> / <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> — monitoring brand mentions and new links in real time.</li>
+                <li><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> – link profile analysis, monitoring new and lost links, identifying targets for broken link building.</li>
+                <li><a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> – Authority Score, competitor analysis, tracking purchasing phrase rankings.</li>
+                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> – indexing verification, monitoring organic traffic on supported pages.</li>
+                <li><a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> (formerly HARO) – platform connecting journalists with experts.</li>
+                <li><a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> – database of journalists and industry editors.</li>
+                <li><a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a> / <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> – monitoring brand mentions and new links in real time.</li>
               </ul>
 
               <p style={{ marginBottom: '1.5rem' }}>How to organize a pilot: choose one tactic (e.g., broken link building or partner outreach), define 10–15 targets, run the campaign for 4–6 weeks, and evaluate the response rate and publication conversion. Pilot results provide a real basis for a decision on the program's scale.</p>
 
-              <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "#1D1D1F" }}>Recommendation</div>
-              <p style={{ marginBottom: '1.5rem' }}><Link href="/">SEO Agency</Link> | Branding, Web Design & Positioning — AI SEO COMPANY</p>
+              <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "var(--w-tusz)" }}>Recommendation</div>
+              <p style={{ marginBottom: '1.5rem' }}><Link href="/">SEO Agency</Link> | Branding, Web Design & Positioning – AI SEO COMPANY</p>
               {/* Clear CTA Block */}
               <BlogCTA 
   locale={locale} 
@@ -401,20 +401,20 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
           
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Link Building B2B
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 Jul 27, 2026
               </span>
             </div>
 
             {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page — do not demote it. */}
+                renders, so this is not a second H1 on the page – do not demote it. */}
               <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
-              color: '#1D1D1F', 
+              color: 'var(--w-tusz)', 
               marginBottom: '2rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
@@ -429,12 +429,12 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </div>
             
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
-              <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+              <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                 Kompletny przewodnik dla marketerów: strategie linkowania B2B i checklista krok po kroku, także do pobrania w PDF.
               </p>
 
@@ -442,8 +442,8 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               
               <p style={{ marginBottom: '1.5rem' }}>Trzy działania, które warto uruchomić w pierwszym miesiącu:</p>
               <ol>
-                <li><Link href="/audyt-seo">Audyt</Link> istniejących relacji — sprawdź, czy partnerzy, klienci i dostawcy linkują do Ciebie poprawnie i czy linki prowadzą do właściwych stron (nie tylko do strony głównej).</li>
-                <li>Przygotowanie jednego linkable asset — raport branżowy, kalkulator ROI lub benchmark oparty na danych własnych; to waluta do pitchowania mediom.</li>
+                <li><Link href="/audyt-seo">Audyt</Link> istniejących relacji – sprawdź, czy partnerzy, klienci i dostawcy linkują do Ciebie poprawnie i czy linki prowadzą do właściwych stron (nie tylko do strony głównej).</li>
+                <li>Przygotowanie jednego linkable asset – raport branżowy, kalkulator ROI lub benchmark oparty na danych własnych; to waluta do pitchowania mediom.</li>
                 <li>Identyfikacja 15–20 publikacji branżowych czytanych przez Twoich kupujących i nawiązanie pierwszego kontaktu z redaktorami.</li>
               </ol>
               <p style={{ marginBottom: '1.5rem' }}>Priorytety w kolejności: dane własne, artykuły eksperckie z byline, partnerstwa ekosystemowe.</p>
@@ -458,9 +458,9 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               
               <p style={{ marginBottom: '1.5rem' }}>Trzy typowe cele programu linkowego w B2B:</p>
               <ul>
-                <li>Widoczność przy researchu zakupowym — pojawienie się w wynikach wyszukiwania na frazy, których używają kupujący na etapie oceny dostawców. Dobra <Link href="/pozycjonowanie-stron-internetowych">strategia pozycjonowania stron internetowych</Link> jest tu kluczowa.</li>
-                <li>Brand trust — potwierdzenie przez trzecią stronę, że firma istnieje w realnym ekosystemie branżowym.</li>
-                <li>Wsparcie SEO dla stron produktowych i ofertowych — budowanie autorytetu stron, które bezpośrednio konwertują.</li>
+                <li>Widoczność przy researchu zakupowym – pojawienie się w wynikach wyszukiwania na frazy, których używają kupujący na etapie oceny dostawców. Dobra <Link href="/pozycjonowanie-stron-internetowych">strategia pozycjonowania stron internetowych</Link> jest tu kluczowa.</li>
+                <li>Brand trust – potwierdzenie przez trzecią stronę, że firma istnieje w realnym ekosystemie branżowym.</li>
+                <li>Wsparcie SEO dla stron produktowych i ofertowych – budowanie autorytetu stron, które bezpośrednio konwertują.</li>
               </ul>
 
               {/* ===== SECTION: Dlaczego linki ===== */}
@@ -470,7 +470,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>Metryki, których warto szukać w programie linkowym:</p>
               <ul>
                 <li>Liczba referring domains z publikacji tematycznie powiązanych z Twoją branżą.</li>
-                <li>Wzrost branded search — więcej wyszukiwań nazwy firmy to sygnał rosnącej rozpoznawalności.</li>
+                <li>Wzrost branded search – więcej wyszukiwań nazwy firmy to sygnał rosnącej rozpoznawalności.</li>
                 <li>Pozycje na frazy zakupowe dla stron produktowych i ofertowych.</li>
                 <li>Ruch referencyjny z konkretnych publikacji i jego jakość (czas na stronie, konwersje).</li>
               </ul>
@@ -493,7 +493,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               {/* ===== SECTION: Strategie ===== */}
               <h2 id="strategie">Skuteczne strategie pozyskiwania linków B2B krok po kroku</h2>
               
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Tworzenie i promocja research-driven assets</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>1. Tworzenie i promocja research-driven assets</h3>
               <p style={{ marginBottom: '1.5rem' }}>Raport branżowy, benchmark lub badanie ankietowe to najlepsza waluta do pitchowania. Jedno dobrze przygotowane badanie może przynieść wiele naturalnych backlinków z publikacji, które same cytują Twoje dane.</p>
               <p style={{ marginBottom: '0.5rem' }}>Jak to zrobić:</p>
               <ul>
@@ -504,13 +504,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Po publikacji monitoruj wzmianki i prośby o cytowanie przez <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> lub <a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a>.</li>
               </ul>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR i komentarze eksperckie</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>2. Digital PR i komentarze eksperckie</h3>
               <p style={{ marginBottom: '1.5rem' }}>Digital PR w B2B polega na dostarczaniu unikalnych danych i komentarzy praktyków. Redaktorzy branżowi szukają ekspertów z realnym doświadczeniem, nie PR-owych komunikatów. Praktyczny proces: zarejestruj się w serwisach łączących dziennikarzy z ekspertami (<a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a>, dawniej HARO, oraz <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a>) i odpowiadaj na zapytania w ciągu 2–4 godzin od ich pojawienia się. Szybkość odpowiedzi jest tu kluczowa.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Artykuły gościnne z byline</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>3. Artykuły gościnne z byline</h3>
               <p style={{ marginBottom: '1.5rem' }}>Wybierz 5–10 publikacji, które Twoi kupujący rzeczywiście czytają. Zaproponuj temat, który rozwiązuje konkretny problem czytelnika, a nie promuje Twoją firmę. Redakcje odrzucają pitche, które brzmią jak reklamy.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>4. Broken link building</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>4. Broken link building</h3>
               <p style={{ marginBottom: '1.5rem' }}>Znajdź strony w Twojej branży z uszkodzonymi linkami prowadzącymi do nieistniejących zasobów, a następnie zaproponuj własny zasób jako zamiennik. Konwersja outreachu w tej taktyce jest umiarkowana i zależy od dopasowania segmentu.</p>
               <p style={{ marginBottom: '0.5rem' }}>Checklista broken link building:</p>
               <ul>
@@ -520,13 +520,13 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Wyślij spersonalizowaną wiadomość do webmastera z konkretną propozycją zamiany.</li>
               </ul>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>5. Partnerstwa ekosystemowe</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>5. Partnerstwa ekosystemowe</h3>
               <p style={{ marginBottom: '1.5rem' }}>Udokumentuj wszystkich partnerów technologicznych, integratorów i dostawców komplementarnych usług. Każde z tych partnerstw to potencjalny link do strony integracji, case study lub strony produktowej.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>6. Thought leadership i aktywność konferencyjna</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>6. Thought leadership i aktywność konferencyjna</h3>
               <p style={{ marginBottom: '1.5rem' }}>Wystąpienia na branżowych konferencjach, udział w podcastach i panelach eksperckich generują linki z profili prelegentów, stron wydarzeń i artykułów podsumowujących. W B2B kupujący często ufają ludziom bardziej niż firmom, więc budowanie marki osobistej kluczowych ekspertów bezpośrednio wspiera program linkowy.</p>
 
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1D1D1F', marginTop: '1.5rem', marginBottom: '0.5rem' }}>7. Case studies z klientami</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--w-tusz)', marginTop: '1.5rem', marginBottom: '0.5rem' }}>7. Case studies z klientami</h3>
               <p style={{ marginBottom: '1.5rem' }}>Wspólne case study z klientem, który jest rozpoznawalną marką, przynosi link z jego strony i jednocześnie działa jako potężny argument sprzedażowy. Zaproponuj klientowi wzajemną publikację: Ty opisujesz wyniki, on linkuje do Twojego case study.</p>
               <p style={{ marginBottom: '1.5rem' }}>Porada profesjonalisty: Zanim zaczniesz cold outreach, przejrzyj istniejące relacje biznesowe. Partnerzy, dostawcy i klienci, którzy już Cię znają, mają znacznie wyższy wskaźnik odpowiedzi niż zimne kontakty. Zacznij od nich i zbierz pierwsze linki bez kosztów outreachu.</p>
 
@@ -542,20 +542,20 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Kryterium</th>
                       <th style={{ padding: '0.75rem' }}>Wysoka wartość</th>
                       <th style={{ padding: '0.75rem' }}>Niska wartość / ryzyko</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Tematyczna zgodność</td><td style={{ padding: '0.75rem' }}>Strona z tej samej branży</td><td style={{ padding: '0.75rem' }}>Portal ogólnotematyczny bez związku</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>DR domeny (Ahrefs)</td><td style={{ padding: '0.75rem' }}>—</td><td style={{ padding: '0.75rem' }}>Poniżej 20 z podejrzanym profilem</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Ruch organiczny źródła</td><td style={{ padding: '0.75rem' }}>Realny ruch z wyszukiwarek</td><td style={{ padding: '0.75rem' }}>Zerowy lub sztuczny ruch</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Miejsce w treści</td><td style={{ padding: '0.75rem' }}>Inline, w kontekście</td><td style={{ padding: '0.75rem' }}>Stopka, sidebar, lista linków</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Anchor text</td><td style={{ padding: '0.75rem' }}>Naturalny, opisowy</td><td style={{ padding: '0.75rem' }}>Exact-match masowo</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Profil linków źródła</td><td style={{ padding: '0.75rem' }}>Zróżnicowany, editorialny</td><td style={{ padding: '0.75rem' }}>Schematy PBN</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Ryzyko reputacyjne</td><td style={{ padding: '0.75rem' }}>Chętnie pokażesz klientowi</td><td style={{ padding: '0.75rem' }}>Wstyd przy pokazaniu partnerowi</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Tematyczna zgodność</td><td style={{ padding: '0.75rem' }}>Strona z tej samej branży</td><td style={{ padding: '0.75rem' }}>Portal ogólnotematyczny bez związku</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>DR domeny (Ahrefs)</td><td style={{ padding: '0.75rem' }}>–</td><td style={{ padding: '0.75rem' }}>Poniżej 20 z podejrzanym profilem</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Ruch organiczny źródła</td><td style={{ padding: '0.75rem' }}>Realny ruch z wyszukiwarek</td><td style={{ padding: '0.75rem' }}>Zerowy lub sztuczny ruch</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Miejsce w treści</td><td style={{ padding: '0.75rem' }}>Inline, w kontekście</td><td style={{ padding: '0.75rem' }}>Stopka, sidebar, lista linków</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Anchor text</td><td style={{ padding: '0.75rem' }}>Naturalny, opisowy</td><td style={{ padding: '0.75rem' }}>Exact-match masowo</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Profil linków źródła</td><td style={{ padding: '0.75rem' }}>Zróżnicowany, editorialny</td><td style={{ padding: '0.75rem' }}>Schematy PBN</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Ryzyko reputacyjne</td><td style={{ padding: '0.75rem' }}>Chętnie pokażesz klientowi</td><td style={{ padding: '0.75rem' }}>Wstyd przy pokazaniu partnerowi</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -574,17 +574,17 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Wymiar</th>
                       <th style={{ padding: '0.75rem' }}>Co śledzić</th>
                       <th style={{ padding: '0.75rem' }}>Częstotliwość</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Nowe referring domains</td><td style={{ padding: '0.75rem' }}>Liczba i DR nowych linków</td><td style={{ padding: '0.75rem' }}>Tygodniowo</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Ruch organiczny</td><td style={{ padding: '0.75rem' }}>Sesje i konwersje na wspieranych stronach</td><td style={{ padding: '0.75rem' }}>Miesięcznie</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Branded search</td><td style={{ padding: '0.75rem' }}>Wolumen wyszukiwań nazwy firmy</td><td style={{ padding: '0.75rem' }}>Miesięcznie</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Pipeline</td><td style={{ padding: '0.75rem' }}>Leady z organiku przypisane do kampanii</td><td style={{ padding: '0.75rem' }}>Kwartalnie</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Nowe referring domains</td><td style={{ padding: '0.75rem' }}>Liczba i DR nowych linków</td><td style={{ padding: '0.75rem' }}>Tygodniowo</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Ruch organiczny</td><td style={{ padding: '0.75rem' }}>Sesje i konwersje na wspieranych stronach</td><td style={{ padding: '0.75rem' }}>Miesięcznie</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Branded search</td><td style={{ padding: '0.75rem' }}>Wolumen wyszukiwań nazwy firmy</td><td style={{ padding: '0.75rem' }}>Miesięcznie</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Pipeline</td><td style={{ padding: '0.75rem' }}>Leady z organiku przypisane do kampanii</td><td style={{ padding: '0.75rem' }}>Kwartalnie</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -592,7 +592,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Outsourcing ===== */}
               <h2 id="outsourcing">Kiedy outsourcować link building i jak wybrać agencję?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Trzy sygnały, że warto sięgnąć po zewnętrznego partnera — doświadczoną <Link href="/">agencję SEO Warszawa</Link> lub innego miasta:</p>
+              <p style={{ marginBottom: '1.5rem' }}>Trzy sygnały, że warto sięgnąć po zewnętrznego partnera – doświadczoną <Link href="/">agencję SEO Warszawa</Link> lub innego miasta:</p>
               <ul>
                 <li>Brak wewnętrznych zasobów do prowadzenia systematycznego outreachu i produkcji treści eksperckich.</li>
                 <li>Potrzeba szybszego dostępu do sieci relacji z redakcjami branżowymi, których budowanie od zera zajmuje miesiące.</li>
@@ -622,7 +622,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>Kupowanie linków i sieci PBN to taktyki, które mogą przynieść krótkoterminowy wzrost pozycji, ale narażają domenę na kary algorytmiczne lub manualne. Eksperci branżowi konsekwentnie wskazują, że earned links i partnerstwa dają lepsze wyniki w dłuższej perspektywie. Profesjonalna <Link href="/pozycjonowanie-stron-internetowych">optymalizacja SEO</Link> zawsze stawia jakość ponad wolumen.</p>
               <p style={{ marginBottom: '1.5rem' }}>Koncentracja linków na stronie głównej zamiast na stronach produktowych, ofertowych i case studies. W B2B kupujący trafiają na konkretne strony przez konkretne frazy, więc autorytet powinien wspierać te strony bezpośrednio.</p>
               <p style={{ marginBottom: '1.5rem' }}>Niezgodne z kontekstem anchor texty w stylu exact-match na komercyjne frazy to jeden z wyraźniejszych sygnałów manipulacji dla algorytmów Google.</p>
-              <p style={{ marginBottom: '1.5rem' }}>Brak dywersyfikacji źródeł — profil złożony z linków z jednego typu stron (np. wyłącznie katalogi) wygląda nienaturalnie i nie buduje autorytetu tematycznego.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Brak dywersyfikacji źródeł – profil złożony z linków z jednego typu stron (np. wyłącznie katalogi) wygląda nienaturalnie i nie buduje autorytetu tematycznego.</p>
               <p style={{ marginBottom: '1.5rem' }}>Jak minimalizować ryzyko: dokumentuj każdy outreach, preferuj linki editorialne i partnerskie, dywersyfikuj typy stron źródłowych i regularnie audytuj profil linkowy przez <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> lub <a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a>.</p>
               <p style={{ marginBottom: '1.5rem' }}>Nota: link building sam w sobie nie jest nielegalny. Problemy prawne i naruszenia wytycznych pojawiają się przy ukrytych płatnościach za linki bez oznaczenia sponsorowanego i przy naruszeniu zasad wydawców. Transparentność w relacjach z redakcjami chroni zarówno Ciebie, jak i partnera.</p>
 
@@ -635,7 +635,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li>Eksperci z firmy z widocznym profilem publicznym (konferencje, podcasty, artykuły) generują więcej zapytań dziennikarskich niż anonimowe marki.</li>
                 <li>Relacje z 15–30 redaktorami z kluczowych publikacji dają skalę i szybkość niemożliwą do osiągnięcia przez cold outreach do setek kontaktów.</li>
               </ul>
-              <p style={{ marginBottom: '1.5rem' }}>Obserwacja: Dane własne — badania, benchmarki, narzędzia — są najlepszą walutą do pitchowania historii. Jeden dobrze przygotowany raport może wygenerować znacznie więcej naturalnych backlinków niż dziesiątki postów gościnnych.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Obserwacja: Dane własne – badania, benchmarki, narzędzia – są najlepszą walutą do pitchowania historii. Jeden dobrze przygotowany raport może wygenerować znacznie więcej naturalnych backlinków niż dziesiątki postów gościnnych.</p>
               <p style={{ marginBottom: '0.5rem' }}>Najszybszy zwrot uwagi redakcji dają:</p>
               <ul>
                 <li>Odpowiedzi na zapytania dziennikarskie przez <a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> lub <a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> w ciągu 2–4 godzin.</li>
@@ -678,17 +678,17 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Punkt</th>
                       <th style={{ padding: '0.75rem' }}>Szczegóły</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Digital PR jako priorytet</td><td style={{ padding: '0.75rem' }}>Digital PR jest wskazywany jako jedna z najskuteczniejszych taktyk zdobywania linków.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Dane własne jako waluta</td><td style={{ padding: '0.75rem' }}>Jeden dobrze przygotowany raport branżowy przynosi wiele naturalnych backlinków.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Jakość ponad wolumen</td><td style={{ padding: '0.75rem' }}>Linki editorialne i partnerskie budują autorytet tematyczny; masowe PBN niosą ryzyko kar.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>Timeline i koszty</td><td style={{ padding: '0.75rem' }}>Pełne efekty pojawiają się po dłuższym czasie, orientacyjny koszt programu jest umiarkowany.</td></tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}><td style={{ padding: '0.75rem' }}>AI SEO COMPANY</td><td style={{ padding: '0.75rem' }}>Agencja prowadzi programy link buildingu B2B łączące digital PR, tworzenie linkable assets i raportowanie KPI.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Digital PR jako priorytet</td><td style={{ padding: '0.75rem' }}>Digital PR jest wskazywany jako jedna z najskuteczniejszych taktyk zdobywania linków.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Dane własne jako waluta</td><td style={{ padding: '0.75rem' }}>Jeden dobrze przygotowany raport branżowy przynosi wiele naturalnych backlinków.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Jakość ponad wolumen</td><td style={{ padding: '0.75rem' }}>Linki editorialne i partnerskie budują autorytet tematyczny; masowe PBN niosą ryzyko kar.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>Timeline i koszty</td><td style={{ padding: '0.75rem' }}>Pełne efekty pojawiają się po dłuższym czasie, orientacyjny koszt programu jest umiarkowany.</td></tr>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}><td style={{ padding: '0.75rem' }}>AI SEO COMPANY</td><td style={{ padding: '0.75rem' }}>Agencja prowadzi programy link buildingu B2B łączące digital PR, tworzenie linkable assets i raportowanie KPI.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -715,15 +715,15 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>AI SEO COMPANY prowadzi kampanie link buildingu B2B łączące digital PR, produkcję raportów branżowych, personalizowany outreach i przejrzyste raportowanie. Pracujemy w modelu abonamentowym dla firm planujących długoterminowy program oraz w modelu projektowym dla tych, które chcą zacząć od pilotażu. Każda kampania zaczyna się od bezpłatnego audytu profilu linkowego i analizy luk tematycznych.</p>
               <p style={{ marginBottom: '1.5rem' }}>Jeśli chcesz wiedzieć, które publikacje czytają Twoi kupujący i jak szybko możesz zdobyć pierwsze editorialne linki, skontaktuj się z nami i umów wstępną konsultację. Przygotujemy brief kampanii dopasowany do Twojej branży i budżetu.</p>
 
-              <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "#1D1D1F" }}>Przydatne narzędzia i źródła do dalszej lektury</div>
+              <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "var(--w-tusz)" }}>Przydatne narzędzia i źródła do dalszej lektury</div>
               <p style={{ marginBottom: '0.5rem' }}>Narzędzia do analizy i monitoringu:</p>
               <ul>
-                <li><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> — analiza profilu linkowego, monitoring nowych i utraconych linków, identyfikacja celów do broken link building.</li>
-                <li><a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> — Authority Score, analiza konkurencji, śledzenie pozycji na frazy zakupowe.</li>
-                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> — weryfikacja indeksacji, monitoring ruchu organicznego na wspieranych stronach.</li>
-                <li><a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> (dawniej HARO) — platforma łącząca dziennikarzy z ekspertami.</li>
-                <li><a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> — baza dziennikarzy i redaktorów branżowych.</li>
-                <li><a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a> / <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> — monitoring wzmianek o marce i nowych linków w czasie rzeczywistym.</li>
+                <li><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer">Ahrefs</a> – analiza profilu linkowego, monitoring nowych i utraconych linków, identyfikacja celów do broken link building.</li>
+                <li><a href="https://www.semrush.com/" target="_blank" rel="noopener noreferrer">Semrush</a> – Authority Score, analiza konkurencji, śledzenie pozycji na frazy zakupowe.</li>
+                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> – weryfikacja indeksacji, monitoring ruchu organicznego na wspieranych stronach.</li>
+                <li><a href="https://www.connectively.us/" target="_blank" rel="noopener noreferrer">Connectively</a> (dawniej HARO) – platforma łącząca dziennikarzy z ekspertami.</li>
+                <li><a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> – baza dziennikarzy i redaktorów branżowych.</li>
+                <li><a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a> / <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> – monitoring wzmianek o marce i nowych linków w czasie rzeczywistym.</li>
               </ul>
 
               <p style={{ marginBottom: '1.5rem' }}>Jak zorganizować pilotaż: wybierz jedną taktykę (np. broken link building lub outreach partnerski), zdefiniuj 10–15 celów, uruchom kampanię przez 4–6 tygodni i oceń wskaźnik odpowiedzi oraz konwersję do publikacji. Wyniki pilotażu dają realną podstawę do decyzji o skali programu.</p>

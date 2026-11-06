@@ -9,12 +9,12 @@ const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key_for_build'
 // --- Antyspam -------------------------------------------------------------
 // Każde zgłoszenie, które przejdzie tę trasę, staje się w Google Ads konwersją
 // główną o wartości 1 000 zł (tag w Contact.jsx). Bez filtra pierwszy bot
-// byłby pierwszą „konwersją” w koncie z zerem prawdziwych — i uczyłby
+// byłby pierwszą „konwersją” w koncie z zerem prawdziwych – i uczyłby
 // licytację. Trzy tanie bramki, bez zewnętrznych usług:
-// 1) honeypot `website` (pole poza ekranem) — boty wypełniają wszystko;
-// 2) czas od wejścia na stronę < 3 s — człowiek tyle nie zdąży;
+// 1) honeypot `website` (pole poza ekranem) – boty wypełniają wszystko;
+// 2) czas od wejścia na stronę < 3 s – człowiek tyle nie zdąży;
 // 3) higiena e-maila + domeny tymczasowe + limit 3 zgłoszenia / 10 min / IP.
-// Honeypot i tempo zwracają 200 { success, rejected } — bot widzi „sukces”,
+// Honeypot i tempo zwracają 200 { success, rejected } – bot widzi „sukces”,
 // a klient NIE odpala konwersji (Contact.jsx sprawdza `rejected`).
 // Cloudflare Turnstile świadomie pominięty: wymaga kluczy w Vercel.
 const MIN_ELAPSED_MS = 3000;
@@ -22,7 +22,7 @@ const DISPOSABLE = ['mailinator.com', 'tempmail.com', 'temp-mail.org', 'guerrill
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const RATE_MAX = 3;
-// Pamięć instancji serverless — wystarcza na Vercel, bo zimny start i tak
+// Pamięć instancji serverless – wystarcza na Vercel, bo zimny start i tak
 // zeruje licznik rzadziej niż okno 10 min; nie jest to twarda ochrona.
 const rate = new Map();
 // Osobny kubełek na zapis odrzuceń: seria botów nie może zasypać arkusza
@@ -45,7 +45,7 @@ function rateLimited(ip) {
   return hits.length > RATE_MAX;
 }
 
-// Pola atrybucji przepuszczane do maila i arkusza — tylko znaki bezpieczne,
+// Pola atrybucji przepuszczane do maila i arkusza – tylko znaki bezpieczne,
 // żeby gclid z reklamy nie mógł wstrzyknąć HTML-a do powiadomienia.
 // 5.11.2026 (ATR v2.2, PLAN-v2 9.3): + first_referrer_host (sama domena
 // odsyłacza z lib/attribution.js) i skad_o_nas_wiesz (opcjonalna deklaracja
@@ -104,7 +104,7 @@ export async function POST(request) {
     // Ciche odrzucenia (bot dostaje 200, konwersja nie odpala). Odrzucenie
     // nie może jednak znikać bez śladu: jeśli filtr kiedyś trafi człowieka,
     // to przy 1–3 leadach miesięcznie tracimy realnego klienta i nie mamy
-    // czym tego udowodnić. Dlatego wpis do logu i wiersz w arkuszu z flagą —
+    // czym tego udowodnić. Dlatego wpis do logu i wiersz w arkuszu z flagą –
     // bez maila i bez konwersji.
     const rejectReason = (typeof body.website === 'string' && body.website.trim() !== '')
       ? 'honeypot'
@@ -174,7 +174,7 @@ export async function POST(request) {
           signal: AbortSignal.timeout(8000),
         });
         // Apps Script zwraca 200 także przy odmowie (zły klucz, strona
-        // logowania, wyjątek w skrypcie) — o zapisie decyduje dopiero {ok:true}.
+        // logowania, wyjątek w skrypcie) – o zapisie decyduje dopiero {ok:true}.
         const j = await r.json().catch(() => null);
         zapisany = r.ok && !!j && j.ok === true;
         if (!zapisany) console.error('Webhook arkusza leadów: brak zapisu', r.status, j ? (j.error || 'ok=false') : 'odpowiedź nie-JSON (strona logowania/błędu Apps Script?)');
@@ -197,7 +197,7 @@ export async function POST(request) {
         <p><strong>Skąd o nas wie (deklaracja):</strong> ${esc(skadEtykieta)}</p>` : ''}
         <br />
         <p><strong>Wiadomość:</strong></p>
-        <p style="white-space: pre-wrap; background: #f4f4f5; padding: 16px; border-radius: 8px;">${esc(message || '—')}</p>
+        <p style="white-space: pre-wrap; background: #f4f4f5; padding: 16px; border-radius: 8px;">${esc(message || '–')}</p>
         <br />
         <p style="font-family: monospace; font-size: 12px; color: #6E6E73; word-break: break-all;">${esc(leadData)}</p>
       `,
@@ -205,19 +205,19 @@ export async function POST(request) {
 
     if (error) {
       // Ostatnia deska ratunku: cały lead do logu runtime'u (Vercel →
-      // Functions → Logs). Brzydkie, ale odzyskiwalne — lepsze niż cisza.
+      // Functions → Logs). Brzydkie, ale odzyskiwalne – lepsze niż cisza.
       // `leadData` niesie już gclid, więc da się z tego zrobić import offline.
       console.error('Błąd z API Resend:', error);
       console.error(`LEAD_ODZYSK ${leadData}; name=${safe(name, 120)}; service=${safe(service, 40)}; message=${safe(message, 2000)}`);
 
       if (!zapisany) {
-        // Oba kanały padły — dopiero teraz uczciwie mówimy o awarii.
+        // Oba kanały padły – dopiero teraz uczciwie mówimy o awarii.
         return NextResponse.json(
           { error: `Nie udało się wysłać wiadomości (${error.message || 'błąd API'}). Skontaktuj się bezpośrednio: kontakt@ai-seo-company.pl` },
           { status: 500 }
         );
       }
-      // Arkusz przyjął zgłoszenie — dla użytkownika to sukces i konwersja
+      // Arkusz przyjął zgłoszenie – dla użytkownika to sukces i konwersja
       // odpala. Nie każemy mu wysyłać drugi raz czegoś, co już mamy.
     }
 

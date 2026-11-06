@@ -36,7 +36,7 @@ const IKONY = [
 export default function PanelShowcase() {
   const lang = useLocale() === 'en' ? 'en' : 'pl';
   return (
-    <section className="panel-showcase cursor-light w-ciemne" id={lang === 'pl' ? 'panel-klienta' : 'client-portal'}>
+    <section className="panel-showcase cursor-light w-ciemne" data-petla="" id={lang === 'pl' ? 'panel-klienta' : 'client-portal'}>
       <div className="container panel-uklad">
         <Reveal className="section-header">
           <div className="section-tag">

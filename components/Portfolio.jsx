@@ -14,7 +14,7 @@ const realizedWebsites = [
     id: 1,
     brandName: 'MADAME THAI',
     brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         MADAME THAI
       </span>
     ),
@@ -27,14 +27,14 @@ const realizedWebsites = [
     layout: 'center',
     rightVisual: 'single-large',
     largeImage: '/projects/madame-thai-restaurant-website.webp',
-    imgAlt: 'Strona internetowa restauracji Madame Thai — projekt agencji SEO i marketingowej z Warszawy',
-    imgAltEn: 'Madame Thai restaurant website — the homepage we designed and built for their Warsaw location',
+    imgAlt: 'Strona internetowa restauracji Madame Thai – projekt agencji SEO i marketingowej z Warszawy',
+    imgAltEn: 'Madame Thai restaurant website – the homepage we designed and built for their Warsaw location',
     imgTitle: 'Projekt strony dla restauracji Madame Thai',
-    imgTitleEn: 'Madame Thai restaurant — website project',
+    imgTitleEn: 'Madame Thai restaurant – website project',
     largeImageMobile: '/images/madame-thai-mobile.webp',
-    details: `Część I — Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
+    details: `Część I – Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
-- Responsywna wersja strony (RWD): Poprawne działanie na telefonach i tabletach — eliminacja utraconych zapytań od klientów mobilnych.
+- Responsywna wersja strony (RWD): Poprawne działanie na telefonach i tabletach – eliminacja utraconych zapytań od klientów mobilnych.
 - Integracja narzędzi: Formularz kontaktowy, Google Analytics, linki social media, integracja z Hotres.
 - Stała opieka techniczna: Certyfikat bezpieczeństwa SSL, bieżące aktualizacje i brak przestojów w cenie.`
   },
@@ -42,7 +42,7 @@ const realizedWebsites = [
     id: 2,
     brandName: 'STANIAX',
     brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         STANIAX
       </span>
     ),
@@ -61,20 +61,20 @@ const realizedWebsites = [
       image: '/projects/staniax-b2b-industrial-website.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'Strona B2B dla Staniax — pozycjonowanie stron i optymalizacja SEO w branży przemysłowej',
-    imgAltEn: 'Staniax B2B industrial website — the product pages we rebuilt for their German and US markets',
-    imgTitle: 'Pozycjonowanie stron dla Staniax — wyniki agencji marketingowej',
-    imgTitleEn: 'Staniax — B2B website rebuild and search visibility results',
-    details: `Case Study 1 — Skalowanie widoczności od zera i optymalizacja konwersji:
+    imgAlt: 'Strona B2B dla Staniax – pozycjonowanie stron i optymalizacja SEO w branży przemysłowej',
+    imgAltEn: 'Staniax B2B industrial website – the product pages we rebuilt for their German and US markets',
+    imgTitle: 'Pozycjonowanie stron dla Staniax – wyniki agencji marketingowej',
+    imgTitleEn: 'Staniax – B2B website rebuild and search visibility results',
+    details: `Case Study 1 – Skalowanie widoczności od zera i optymalizacja konwersji:
 - Start od zerowej widoczności → 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące, w tym 2,8 tys. wyświetleń w pierwszym miesiącu (Google Search Console).
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
-- Wyższy współczynnik klikalności CTR na urządzeniach mobilnych — przygotowanie i wdrożenie wersji wielojęzycznych (/de i /en pod Niemcy i USA).`
+- Wyższy współczynnik klikalności CTR na urządzeniach mobilnych – przygotowanie i wdrożenie wersji wielojęzycznych (/de i /en pod Niemcy i USA).`
   },
   {
     id: 3,
     brandName: 'ASE-BOT',
     brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         ASE-BOT
       </span>
     ),
@@ -94,13 +94,13 @@ const realizedWebsites = [
       image: '/projects/aisas-fintech-platform.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'Platforma fintech z AI — pozycjonowanie stron na rynku zagranicznym',
-    imgAltEn: 'AISAS fintech platform — the dashboard interface we designed for the US market launch',
-    imgTitle: 'Pozycjonowanie stron dla platformy fintech — wyniki',
-    imgTitleEn: 'AISAS fintech platform — design and organic growth results',
-    details: `Projekt własny — konkurencyjny rynek zagraniczny (ase-bot.live):
+    imgAlt: 'Platforma fintech z AI – pozycjonowanie stron na rynku zagranicznym',
+    imgAltEn: 'AISAS fintech platform – the dashboard interface we designed for the US market launch',
+    imgTitle: 'Pozycjonowanie stron dla platformy fintech – wyniki',
+    imgTitleEn: 'AISAS fintech platform – design and organic growth results',
+    details: `Projekt własny – konkurencyjny rynek zagraniczny (ase-bot.live):
 - 7,71 tys. wyświetleń w 3 miesiące od startu domeny bez historii; domena jest w fazie wyświetleń, kliknięcia dopiero rosną (Google Search Console).
-- Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 — krok od TOP 20), „best futures trading platforms” (pozycja 61).
+- Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 – krok od TOP 20), „best futures trading platforms” (pozycja 61).
 - 2 tys. wyświetleń z USA. Strona główna osiąga CTR 4.62%. Link building i rozbudowa artykułów eksperckich pod rynek globalny.`
   }
 ];
@@ -120,18 +120,18 @@ const MOSAIC = [
 { src: '/projects/mosaic/elkat-a-v2.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
 { src: '/projects/mosaic/mad-a-v2.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
 { src: '/projects/mosaic/own-hero-pl4.webp', srcEn: '/projects/mosaic/own-hero-en4.webp', w: 1200, h: 752,
-    alt: 'Sekcja hero strony AI SEO COMPANY — napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website — 3D SEO scene' },
-{ src: '/projects/mosaic/ase-a-v2.webp', w: 1200, h: 700, alt: 'Pełna sekcja hero platformy tradingowej ASE-BOT — AI trading i analiza rynków', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
-{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej TQL — wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' , srcEn: '/projects/mosaic/tql-a-en.webp' },
+    alt: 'Sekcja hero strony AI SEO COMPANY – napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website – 3D SEO scene' },
+{ src: '/projects/mosaic/ase-a-v2.webp', w: 1200, h: 700, alt: 'Pełna sekcja hero platformy tradingowej ASE-BOT – AI trading i analiza rynków', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
+{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej TQL – wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' , srcEn: '/projects/mosaic/tql-a-en.webp' },
 { src: '/projects/mosaic/sta-blog-pl4.webp', w: 1200, h: 844,
-    alt: 'Karty artykułów bazy wiedzy Staniax — metalizacja próżniowa i regeneracja odbłyśników', altEn: 'Staniax knowledge base — articles on vacuum metallization' },
-{ src: '/projects/mosaic/sta-a-v4.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax — metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' , srcEn: '/projects/mosaic/sta-a-en3.webp' },
+    alt: 'Karty artykułów bazy wiedzy Staniax – metalizacja próżniowa i regeneracja odbłyśników', altEn: 'Staniax knowledge base – articles on vacuum metallization' },
+{ src: '/projects/mosaic/sta-a-v4.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax – metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' , srcEn: '/projects/mosaic/sta-a-en3.webp' },
 { src: '/projects/mosaic/own-blog-pl7.webp', srcEn: '/projects/mosaic/own-blog-en6.webp', w: 1200, h: 840,
-    alt: 'Blog AI SEO COMPANY — artykuły o SEO i web designie', altEn: 'AI SEO COMPANY blog — articles on SEO and web design' },
+    alt: 'Blog AI SEO COMPANY – artykuły o SEO i web designie', altEn: 'AI SEO COMPANY blog – articles on SEO and web design' },
 { src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/mosaic/frazy-a.webp', w: 1200, h: 783,
-    alt: 'Podstrona Frazy Studio — biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
-    altEn: 'Frazy Studio page — an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
+    alt: 'Podstrona Frazy Studio – biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
+    altEn: 'Frazy Studio page – an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
 { src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
 { src: '/projects/gsc/madamethai.webp', w: 1600, h: 726,
     alt: 'Panel Performance madamethai.pl w Google Search Console: 187 kliknięć i 10,1 tys. wyświetleń w 3 miesiące',
@@ -215,7 +215,7 @@ const STYL_PORTFOLIO = `
 @media (min-width:1280px){.portfolio-mosaic[data-kolumny="5"]{display:grid}}
 .portfolio-video-toggle{position:absolute;right:12px;bottom:12px;width:44px;height:44px;display:grid;place-items:center;padding:0;border-radius:50%;border:2px solid rgba(255,255,255,.85);background:rgba(0,0,0,.6);color:#fff;cursor:pointer;transition:background .2s ease}
 .portfolio-video-toggle:hover{background:rgba(0,0,0,.78)}
-.portfolio-video-toggle:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px #0F172A}
+.portfolio-video-toggle:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px var(--w-tusz)}
 `;
 
 export default function Portfolio() {
@@ -224,7 +224,7 @@ export default function Portfolio() {
 
   /* Ghost renderuje pięć sztywnych stosów w DOM i wyrównuje je do DOŁU
      (align-items: end). Że mają różną wysokość, górna krawędź ściany jest
-     poszarpana, a kontener ją przycina — to jest cały efekt. CSS multi-column
+     poszarpana, a kontener ją przycina – to jest cały efekt. CSS multi-column
      tego nie odtworzy, bo z definicji wyrównuje kolumny, więc stosy dla
      każdej liczby kolumn są gotowe w WARIANTY_SCIANY, a wybiera je @media. */
 
@@ -293,7 +293,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="portfolio" id="portfolio" style={{ background: '#F5F5F7', padding: '7rem 0 5rem' }}>
+    <section className="portfolio" id="portfolio" style={{ background: 'var(--w-papier-2)', padding: '7rem 0 5rem' }}>
       <style href="portfolio-sciana-wideo" precedence="default">{STYL_PORTFOLIO}</style>
       <div className="container" style={{ maxWidth: '1440px' }}>
         
@@ -317,7 +317,7 @@ export default function Portfolio() {
                 : 'Explore analytics-backed growth metrics across our client case studies. Every tile is a real screenshot: a website designed by our team or a Google Search Console panel with clicks, impressions and positions. This is SEO measured by real outcomes, not promises.'}
             </p>
             <Link className="portfolio-more" href="/pozycjonowanie-stron-internetowych">
-              {lang === 'pl' ? 'Zobacz zakres współpracy' : 'See how we work'} →
+              {lang === 'pl' ? 'Zobacz zakres współpracy' : 'See how we work'} →
             </Link>
           </div>
           <div className="portfolio-head-visual">
@@ -372,7 +372,7 @@ export default function Portfolio() {
         </Reveal>
       </div>
 
-      {/* The wall. One column layout, natural aspect ratios, equal gutters —
+      {/* The wall. One column layout, natural aspect ratios, equal gutters –
           the mechanics of ghost.org's theme gallery, measured rather than
           guessed (5 columns x 386px, 16px gap, images at their own heights).
           CSS multi-column does the balancing, so the column count can change
@@ -380,7 +380,7 @@ export default function Portfolio() {
 
           It replaces the carousel, but nothing it used to say is gone: the
           headline metric and its sentence are in the strip underneath, and the
-          full case studies still open in the same modal — now from a tile. */}
+          full case studies still open in the same modal – now from a tile. */}
       <div style={{ position: 'relative', width: '100%', padding: '0 0 3rem' }}>
         {/* Cztery warianty sciany (2/3/4/5 kolumn), widoczny jeden - wybiera
             @media w STYL_PORTFOLIO (opis przy WARIANTY_SCIANY). */}
@@ -432,11 +432,11 @@ export default function Portfolio() {
                     (tylko PL); po angielsku zostaje formularz. */}
                 {lang === 'pl' ? (
                   <Link href="/blog/wyniki-wdrozen-seo-2026" className="portfolio-client-cta" data-cta="portfolio_client_results">
-                    Zobacz dane z Search Console →
+                    Zobacz dane z Search Console →
                   </Link>
                 ) : (
                   <a href={hash('kontakt', lang)} className="portfolio-client-cta" data-cta="portfolio_client">
-                    Ask for the Search Console data →
+                    Ask for the Search Console data →
                   </a>
                 )}
               </RevealItem>

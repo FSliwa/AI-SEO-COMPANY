@@ -9,7 +9,7 @@ import { captureAttribution, syncCookieFromSession } from '@/lib/attribution';
 // czas i domenę odsyłacza bez parametrów (tylko sessionStorage).
 // Montowany raz w layoucie; odpala się przy każdej zmianie ścieżki, bo
 // parametry z reklamy mogą trafić także na podstronę wewnętrzną.
-// CookiesBanner wysyła 'aiseo:consent' po zapisie zgody — wtedy dane sesji
+// CookiesBanner wysyła 'aiseo:consent' po zapisie zgody – wtedy dane sesji
 // przechodzą do ciasteczka 90-dniowego (tylko przy zgodzie marketingowej).
 export default function AttributionCapture() {
   const pathname = usePathname();

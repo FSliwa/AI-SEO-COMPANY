@@ -18,7 +18,7 @@ import { hrefJesliOpublikowana } from '@/lib/publikacja';
 // Audyt widoczności w AI: link do A5 po jej publikacji, wcześniej do huba GEO (reguła 6.0).
 const HREF_AUDYT_AI = hrefJesliOpublikowana('/pozycjonowanie-w-ai/audyt-widocznosci') ?? '/pozycjonowanie-w-ai';
 
-const tekstSekcji = { fontSize: '1.1rem', lineHeight: 1.65, color: '#333336', marginBottom: '1.5rem' };
+const tekstSekcji = { fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' };
 const linkSekcji = { textDecoration: 'underline' };
 
 export default function AudytClient({ faqData, portfolioCases, carouselItems }) {
@@ -45,7 +45,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Audyt SEO — Analiza i Optymalizacja SEO' : 'SEO Audit Services — Technical SEO Audit & SEO Keyword Analysis'}
+              {lang === 'pl' ? 'Audyt SEO – Analiza i Optymalizacja SEO' : 'SEO Audit Services – Technical SEO Audit & SEO Keyword Analysis'}
             </h1>
 
             <div style={{ 
@@ -74,14 +74,14 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
 
             <p className="hero-lead" style={{ 
               fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
-              color: '#333336', 
+              color: 'var(--color-text-main)', 
               lineHeight: 1.6, 
               maxWidth: '700px', 
               margin: '0 auto 3rem auto',
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Techniczny <span style={{ fontWeight: 'bold' }}>audyt SEO</span> strony lub sklepu w 3–5 dni roboczych: ponad 50 czynników, każdy błąd z priorytetem i instrukcją naprawy dla programisty. <span style={{ color: 'var(--color-cta)' }}>Bez PDF-a na 90 stron — lista napraw, którą ktoś przeczyta.</span> Wycena w 24 h, bez handlowca.</>
+                ? <>Techniczny <span style={{ fontWeight: 'bold' }}>audyt SEO</span> strony lub sklepu w 3–5 dni roboczych: ponad 50 czynników, każdy błąd z priorytetem i instrukcją naprawy dla programisty. <span style={{ color: 'var(--color-cta)' }}>Bez PDF-a na 90 stron – lista napraw, którą ktoś przeczyta.</span> Wycena w 24 h, bez handlowca.</>
                 : <>Discover the real reasons for your lack of visibility. As top <strong>search engine optimization consultants</strong> providing expert <strong>search engine optimisation consultancy</strong>, <span style={{ color: 'var(--color-cta)' }}>we verify over 50 critical technical factors blocking your Google potential</span>.</>}
             </p>
             
@@ -95,7 +95,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               </a>
             </div>
             {/* OP-14: autor i data (LASTMOD); na /en Byline nic nie renderuje. */}
-            <Byline sciezka="/audyt-seo" style={{ margin: '2rem 0 0' }} />
+            <Byline sciezka="/audyt-seo" style={{ margin: '2rem auto 0', order: 6 }} />
           </Reveal>
         </div>
       </section>
@@ -115,34 +115,34 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
             <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Obszary Analizy Technicznej' : 'Technical Analysis Areas'}
             </h2>
-            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
               {lang === 'pl' ? 'Kompleksowa weryfikacja techniczna, strukturalna i semantyczna witryny.' : 'Comprehensive technical, structural, and semantic verification of your website.'}
             </p>
           </Reveal>
 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '2rem' }}>
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 1' : 'AREA 1'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technikalia & CWV' : 'Search Engine Optimization and Optimisation Consultancy'}</h3>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots. Expert search engine optimisation consultancy and optimization applied.'}</p>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots. Expert search engine optimisation consultancy and optimization applied.'}</p>
             </RevealItem>
             
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 2' : 'AREA 2'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Treści & Semantyka' : 'Content & Semantics'}</h3>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Weryfikacja intencji wyszukiwania (Search Intent), <span style={{ fontWeight: 'bold' }}>optymalizacja SEO</span> treści, analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.</> : 'Verification of search intent, analysis of keyword cannibalization and coverage of topical clusters.'}</p>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Weryfikacja intencji wyszukiwania (Search Intent), <span style={{ fontWeight: 'bold' }}>optymalizacja SEO</span> treści, analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.</> : 'Verification of search intent, analysis of keyword cannibalization and coverage of topical clusters.'}</p>
             </RevealItem>
             
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 3' : 'AREA 3'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profil Linków & Autorytet' : 'Link Profile & Authority'}</h3>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.' : 'Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains.'}</p>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.' : 'Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains.'}</p>
             </RevealItem>
           </RevealStagger>
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_audyt_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w\u00a024\u00a0h' : 'Ask for a quote — reply within 24\u00a0h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w\u00a024\u00a0h' : 'Ask for a quote – reply within 24\u00a0h'}
             </a>
           </div>
         </div>

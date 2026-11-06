@@ -40,7 +40,7 @@ function kluczLastmod(sciezka, en) {
   }
 }
 
-const styl = { margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color: '#6E6E73' };
+const styl = { margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' };
 
 export default function Byline({ sciezka, data, takzeEn = false, style }) {
   const lang = useLocale();

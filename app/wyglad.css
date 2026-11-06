@@ -22,17 +22,20 @@
   --w-noc-linia: rgba(243, 183, 156, 0.22);
   --w-noc-tekst: rgba(255, 255, 255, 0.74);
   --w-pomarancz: #D85A30;
-  --w-pomarancz-hover: #E8794F;
-  --w-pomarancz-tekst: #B8441E;
-  --w-pomarancz-gleboki: #9C3A17;
+  /* 7.11.2026: jeden pomarancz jak na produkcji (--color-cta z globals.css):
+     etykiety, linki, liczby i przyciski w #D85A30, najechanie #C24A22,
+     bialy tekst na przycisku - wczesniejsze ciemniejsze odcienie (#B8441E,
+     #9C3A17) wlasciciel odebral jako inny kolor. */
+  --w-pomarancz-hover: #C24A22;
+  --w-pomarancz-tekst: #D85A30;
+  --w-pomarancz-gleboki: #D85A30;
   --w-brzoskwinia: #F3B79C;
   --w-brzoskwinia-tlo: #FBE6DA;
-  --w-na-pomaranczu: #14110F;
+  --w-na-pomaranczu: #FFFFFF;
   --w-wzrost: #047857;
   --w-promien-karta: 28px;
   --w-promien-panel: 48px;
   --w-sekcja: clamp(80px, 10vw, 144px);
-  --w-mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   /* --- Stare tokeny serwisu przepiete na makiete (podstrony dziedzicza) --- */
   --color-bg-surface: var(--w-papier);
@@ -46,6 +49,7 @@
   --color-cta: var(--w-pomarancz);
   --color-cta-hover: var(--w-pomarancz-hover);
   --color-cta-glow: rgba(216, 90, 48, 0.28);
+  --color-growth: var(--w-wzrost);
   --color-border: var(--w-linia);
   --color-border-hover: rgba(216, 90, 48, 0.45);
   --shadow-cta: none;
@@ -58,6 +62,9 @@
 body {
   --font-inter: var(--font-geist);
   --font-space: var(--font-geist);
+  /* Tu, nie na :root: next/font ustawia --font-geist-mono na <body>, wiec na
+     :root var() bylby pusty i etykiety tracily mono (QA 7.11.2026). */
+  --w-mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-family: var(--font-geist), system-ui, -apple-system, sans-serif !important;
   background-color: var(--w-papier);
   color: var(--color-text-main);
@@ -100,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 .w-ciemne :focus-visible,
 .gory-oferta :focus-visible,
 .footer :focus-visible {
-  outline-color: var(--w-brzoskwinia) !important;
+  outline-color: var(--w-pomarancz) !important;
 }
 
 /* ---------- Przyciski ---------- */
@@ -200,7 +207,7 @@ h1, h2, h3, h4, h5, h6 {
 .w-ciemne .section-tag span.asterisk,
 .gory-oferta .section-tag,
 .gory-oferta .section-tag span.asterisk {
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
 }
 
 .section-header h2,
@@ -247,8 +254,12 @@ h1, h2, h3, h4, h5, h6 {
    ten sam rytm. */
 .portfolio,
 .panel-showcase,
-.pricing,
-.contact {
+section.pricing,
+aside.pricing,
+aside#kontakt.contact,
+section#kontakt.contact,
+aside#contact.contact,
+section#contact.contact {
   padding-top: var(--w-sekcja) !important;
   padding-bottom: var(--w-sekcja) !important;
 }
@@ -353,6 +364,16 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 720px;
 }
 
+.hero-makieta-tresc > .hero-makieta-h1 {
+  max-width: none;
+}
+
+.hero-makieta-h1,
+.hero-makieta-h1 span {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 .hero-makieta-h1 {
   display: flex;
   flex-direction: column;
@@ -379,14 +400,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-makieta-display-1 {
-  font-size: clamp(3.1rem, 7.2vw, 7rem);
+  font-size: min(clamp(3rem, 6.6vw, 6rem), calc((100vw - 48px) / 7));
   line-height: 0.95;
   letter-spacing: -0.06em;
   font-weight: 500;
 }
 
 .hero-makieta-display-2 {
-  font-size: clamp(2.2rem, 5vw, 4.9rem);
+  font-size: min(clamp(2.2rem, 4.6vw, 4.4rem), calc((100vw - 48px) / 9.4));
   line-height: 1.02;
   letter-spacing: -0.055em;
   font-weight: 500;
@@ -502,13 +523,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .gory-oferta .kota-pillar-num {
   font-family: var(--w-mono) !important;
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
   font-weight: 400 !important;
   letter-spacing: 0.08em;
 }
 
 .gory-oferta .kota-divider-x {
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
   opacity: 0.8;
 }
 
@@ -546,7 +567,7 @@ h1, h2, h3, h4, h5, h6 {
 .gory-oferta .service-card .service-icon {
   background: transparent !important;
   border: 1px solid var(--w-noc-linia) !important;
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
   box-shadow: none !important;
 }
 
@@ -584,7 +605,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
   background: none !important;
   font-size: 1.25rem;
   line-height: 1.2;
@@ -617,7 +638,7 @@ h1, h2, h3, h4, h5, h6 {
 .service-card--geo .service-icon { grid-row: 1 / span 3; align-self: start; }
 .service-card--geo h3 { margin: 0 !important; }
 .service-card--geo p { max-width: 640px !important; margin: 0; }
-.service-card--geo a { color: var(--w-brzoskwinia) !important; }
+.service-card--geo a { color: var(--w-pomarancz) !important; }
 .service-card--geo .oferta-ilustracja { grid-column: 3; grid-row: 1 / span 3; margin: 0; padding: 0; }
 
 /* ==========================================================================
@@ -906,7 +927,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 14px;
   border: 1px solid var(--w-noc-linia);
   background: rgba(255, 255, 255, 0.03);
-  color: var(--w-brzoskwinia);
+  color: var(--w-pomarancz);
   display: grid;
   place-items: center;
 }
@@ -928,14 +949,25 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Cennik (components/Pricing.jsx - takze na podstronach) --- */
 .pricing {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background-color: var(--w-noc) !important;
-  background-image:
-    url('/images/wyglad/kontury-1.webp'),
-    url('/images/wyglad/kontury-2.webp') !important;
-  background-repeat: no-repeat, no-repeat !important;
-  background-size: min(62vw, 900px) auto, min(64vw, 940px) auto !important;
-  background-position: left -12vw top 12%, right -10vw bottom -4% !important;
+  background-image: none !important;
   color: #FFFFFF;
+}
+
+/* Poziomice na pseudoelemencie - mozna je przesuwac transformacja
+   (animacja w sekcji RUCH na koncu pliku) bez przemalowywania sekcji. */
+.pricing::before {
+  content: '';
+  position: absolute;
+  inset: -4% -3%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url('/images/wyglad/kontury-1.webp') no-repeat left -12vw top 12% / min(62vw, 900px) auto,
+    url('/images/wyglad/kontury-2.webp') no-repeat right -10vw bottom -4% / min(64vw, 940px) auto;
 }
 
 .pricing .section-header {
@@ -963,7 +995,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .pricing .section-tag,
 .pricing .section-tag span.asterisk {
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
 }
 
 .pricing-card {
@@ -1047,7 +1079,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .pricing-panel-links,
 .pricing-panel-links a {
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
 }
 
 /* --- Blog i FAQ strony glownej: jasne panele na nocnym tle --- */
@@ -1073,18 +1105,8 @@ h1, h2, h3, h4, h5, h6 {
   max-width: none !important;
 }
 
-/* Poziomice w rogu panelu FAQ jak w makiecie */
-.w-noc-panele > section.faq-apple::after {
-  content: '';
-  position: absolute;
-  left: -2%;
-  bottom: -6%;
-  width: min(44%, 560px);
-  aspect-ratio: 1000 / 1371;
-  background: url('/images/wyglad/kontury-1.webp') no-repeat center / contain;
-  opacity: 0.28;
-  pointer-events: none;
-}
+/* Poziomice w panelu FAQ zdjete po QA (7.11.2026): w ukladzie z przyklejonym
+   tytulem wygladaly jak przypadkowa latka. */
 
 /* --- FAQ (components/service/AppleFaq.jsx - wszystkie strony) --- */
 .faq-apple-tytul {
@@ -1228,7 +1250,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .contact-info .section-tag,
 .contact-info .section-tag span.asterisk {
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
 }
 
 .company-details {
@@ -1289,7 +1311,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase;
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
 }
 
 .footer-col {
@@ -1304,7 +1326,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-links a:hover,
 .footer-links .footer-link-btn:hover {
-  color: var(--w-brzoskwinia) !important;
+  color: var(--w-pomarancz) !important;
 }
 
 .footer-bottom {
@@ -1460,5 +1482,1104 @@ h1, h2, h3, h4, h5, h6 {
   .w-przycisk:hover,
   .pricing-card:hover {
     transform: none;
+  }
+}
+
+/* ==========================================================================
+   KURSOR WG TLA (components/KursorWgTla.jsx, 7.11.2026)
+   JS mierzy jasnosc tla pod grotem i ustawia html[data-kursor-tlo]. Te
+   reguly maja wyzsza specyficznosc niz .cursor-light z globals.css, wiec
+   po zaladowaniu JS decyduje pomiar; bez JS zostaja stare reguly sekcji.
+   ========================================================================== */
+html[data-kursor-tlo="jasne"] *,
+html[data-kursor-tlo="jasne"] *::before,
+html[data-kursor-tlo="jasne"] *::after {
+  cursor: url('/cursors/arrow.png') 1 1, auto !important;
+  cursor: -webkit-image-set(url('/cursors/arrow.png') 1x, url('/cursors/arrow@2x.png') 2x) 1 1, auto !important;
+  cursor: image-set(url('/cursors/arrow.png') 1x, url('/cursors/arrow@2x.png') 2x) 1 1, auto !important;
+}
+
+html[data-kursor-tlo="ciemne"] *,
+html[data-kursor-tlo="ciemne"] *::before,
+html[data-kursor-tlo="ciemne"] *::after {
+  cursor: url('/cursors/arrow-white.png') 1 1, auto !important;
+  cursor: -webkit-image-set(url('/cursors/arrow-white.png') 1x, url('/cursors/arrow-white@2x.png') 2x) 1 1, auto !important;
+  cursor: image-set(url('/cursors/arrow-white.png') 1x, url('/cursors/arrow-white@2x.png') 2x) 1 1, auto !important;
+}
+
+html[data-kursor-tlo="jasne"] :is(a, button, [role='button'], select, summary, label[for]),
+html[data-kursor-tlo="jasne"] :is(a, button, [role='button']) * {
+  cursor: url('/cursors/pointer.png') 13 3, pointer !important;
+  cursor: -webkit-image-set(url('/cursors/pointer.png') 1x, url('/cursors/pointer@2x.png') 2x) 13 3, pointer !important;
+  cursor: image-set(url('/cursors/pointer.png') 1x, url('/cursors/pointer@2x.png') 2x) 13 3, pointer !important;
+}
+
+html[data-kursor-tlo="ciemne"] :is(a, button, [role='button'], select, summary, label[for]),
+html[data-kursor-tlo="ciemne"] :is(a, button, [role='button']) * {
+  cursor: url('/cursors/pointer-white.png') 13 3, pointer !important;
+  cursor: -webkit-image-set(url('/cursors/pointer-white.png') 1x, url('/cursors/pointer-white@2x.png') 2x) 13 3, pointer !important;
+  cursor: image-set(url('/cursors/pointer-white.png') 1x, url('/cursors/pointer-white@2x.png') 2x) 13 3, pointer !important;
+}
+
+html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']), textarea, [contenteditable='true']) {
+  cursor: text !important;
+}
+
+/* ==========================================================================
+   RUCH (7.11.2026) - animacje kafelkow, chmur i elementow
+   --------------------------------------------------------------------------
+   Zasady: tylko transform / translate / scale / opacity / filter (bez
+   wlasciwosci ukladu, bez CLS); wszystko wlacza sie wylacznie przy
+   prefers-reduced-motion: no-preference; petle stoja, gdy sekcja jest poza
+   ekranem (components/PetleWidoczne.jsx -> data-petla="poza"); animacje
+   zalezne od przewijania (animation-timeline) to ulepszenie dla przegladarek,
+   ktore je obsluguja (@supports) - pozostale pokazuja tresc bez ruchu.
+   Tekst H1 i leadu nie startuje z opacity 0 (LCP), tylko z przesuniecia.
+   ========================================================================== */
+:root {
+  --w-ruch-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --w-ruch-ease-wej: cubic-bezier(0.22, 1, 0.36, 1);
+  --w-ruch-krotki: 0.28s;
+  --w-ruch-sredni: 0.6s;
+  --w-ruch-dlugi: 1.1s;
+}
+
+/* Warstwy dekoracyjne istnieja zawsze (bez ruchu sa statyczne) */
+.gory-oferta > .pasek-klientow,
+.gory-oferta > .services {
+  position: relative;
+  z-index: 1;
+}
+
+.chmury-dryf {
+  --h: clamp(200px, 30vw, 460px);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--h) * -0.32);
+  height: var(--h);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.chmury-dryf > span,
+.mgla-dryf > span {
+  --k: calc(var(--h) * 2.6146);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(var(--k) * 3);
+  background: url('/images/wyglad/chmury.webp') repeat-x 0 0 / var(--k) 100%;
+  will-change: transform;
+}
+
+.chmury-dryf > span:nth-child(1) { opacity: 0.75; }
+.chmury-dryf > span:nth-child(2) {
+  top: 16%;
+  opacity: 0.45;
+  transform: scaleX(-1);
+}
+
+#why-us.why-us {
+  position: relative;
+  overflow-x: clip;
+}
+
+#why-us.why-us > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.mgla-dryf {
+  --h: clamp(180px, 24vw, 380px);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: clamp(110px, 15vw, 240px);
+  height: var(--h);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+/* Fale radiowe anteny w kontakcie (srodek nadajnika na grafice: 38,5 % x
+   i 35,4 % y rysunku antena-linie.webp, ktory ma szerokosc min(46vw, 640px)
+   i stoi w lewym dolnym rogu sekcji przesuniety o -4vw). */
+.contact {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.contact > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.contact::before,
+.contact::after {
+  --w: min(46vw, 640px);
+  content: '';
+  position: absolute;
+  left: calc(-4vw + var(--w) * 0.385);
+  bottom: calc(var(--w) * 0.382);
+  width: calc(var(--w) * 0.5);
+  aspect-ratio: 1;
+  margin: 0 0 calc(var(--w) * -0.25) calc(var(--w) * -0.25);
+  border-radius: 50%;
+  border: 1.5px solid var(--w-pomarancz);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
+  .contact::before,
+  .contact::after,
+  .mgla-dryf {
+    display: none;
+  }
+}
+
+/* ---------- Przejscia na najechanie (krotkie, takze bez preferencji ruchu
+   nie przeszkadzaja - ale i tak tylko przy no-preference) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .kota-pillar-card,
+  .whyus-card-item,
+  .portfolio-mosaic-tile,
+  .portfolio-client::before,
+  .panel-cecha-ikona,
+  .blog-index-row,
+  .blog-index-title,
+  .faq-apple-pytanie > span:first-child > span:last-child,
+  .pasek-klientow-nazwa,
+  .footer-links a,
+  .oferta-ilustracja,
+  .pricing-card,
+  .contact-form {
+    transition:
+      translate var(--w-ruch-sredni) var(--w-ruch-ease),
+      scale var(--w-ruch-sredni) var(--w-ruch-ease),
+      transform var(--w-ruch-sredni) var(--w-ruch-ease),
+      border-color var(--w-ruch-krotki) ease,
+      background-color var(--w-ruch-krotki) ease,
+      color var(--w-ruch-krotki) ease,
+      box-shadow var(--w-ruch-sredni) var(--w-ruch-ease),
+      filter var(--w-ruch-sredni) var(--w-ruch-ease),
+      opacity var(--w-ruch-krotki) ease !important;
+  }
+
+  .gory-oferta .kota-pillar-card:hover {
+    translate: 0 -6px;
+    border-color: rgba(216, 90, 48, 0.6) !important;
+  }
+
+  .gory-oferta .service-card:hover .oferta-ilustracja {
+    translate: 0 -10px;
+    filter: drop-shadow(0 14px 28px rgba(216, 90, 48, 0.35));
+  }
+
+  .whyus-card-item:hover {
+    translate: 0 -8px;
+    border-color: rgba(216, 90, 48, 0.45) !important;
+    box-shadow: 0 24px 48px rgba(30, 30, 30, 0.08) !important;
+  }
+
+  .portfolio-mosaic-tile:hover {
+    scale: 1.035;
+    box-shadow: 0 18px 40px rgba(30, 30, 30, 0.18);
+    z-index: 2;
+  }
+
+  .portfolio-client:hover::before {
+    scale: 1.3;
+    background: var(--w-pomarancz);
+  }
+
+  .panel-cecha:hover .panel-cecha-ikona {
+    border-color: var(--w-pomarancz);
+    background: rgba(216, 90, 48, 0.12);
+    scale: 1.06;
+  }
+
+  .blog-index-row:hover .blog-index-title {
+    color: var(--w-pomarancz) !important;
+    translate: 6px 0;
+  }
+
+  .faq-apple-pytanie:hover > span:first-child > span:last-child {
+    color: var(--w-pomarancz);
+  }
+
+  .pasek-klientow-nazwa:hover {
+    color: var(--w-tusz);
+    scale: 1.04;
+  }
+
+  .footer-links a:hover {
+    translate: 4px 0;
+  }
+
+  .w-przycisk--glowny:active,
+  .btn-primary:active {
+    scale: 0.97;
+  }
+}
+
+/* ---------- Wejscie hero i petle ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes w-wznies {
+    from { translate: 0 0.42em; }
+    to { translate: 0 0; }
+  }
+
+  @keyframes w-wznies-wygas {
+    from { opacity: 0; translate: 0 18px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+
+  @keyframes w-przybliz {
+    from { scale: 1.07; }
+    to { scale: 1; }
+  }
+
+  @keyframes w-rysuj {
+    from { stroke-dashoffset: 1; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes w-sygnal {
+    to { stroke-dashoffset: -0.6; }
+  }
+
+  @keyframes w-puls {
+    0%, 100% { scale: 1; opacity: 1; }
+    50% { scale: 1.6; opacity: 0.55; }
+  }
+
+  @keyframes w-dryf {
+    to { translate: calc(var(--k) * -1) 0; }
+  }
+
+  @keyframes w-unos {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -10px; }
+  }
+
+  @keyframes w-fala {
+    0% { scale: 0.35; opacity: 0.75; }
+    100% { scale: 1.9; opacity: 0; }
+  }
+
+  @keyframes w-kontury {
+    from { translate: 0 0; scale: 1; }
+    to { translate: 2.5vw -1.5vw; scale: 1.04; }
+  }
+
+  /* Hero: linie naglowka wjezdzaja od dolu bez wygaszania (LCP) */
+  .hero-makieta-display-1,
+  .hero-makieta-display-2,
+  .hero-makieta-lead,
+  .hero-makieta-body {
+    animation: w-wznies var(--w-ruch-dlugi) var(--w-ruch-ease-wej) both;
+  }
+  .hero-makieta-display-2 { animation-delay: 0.08s; }
+  .hero-makieta-lead { animation-delay: 0.16s; }
+  .hero-makieta-body { animation-delay: 0.22s; }
+
+  .hero-makieta-sub,
+  .hero-makieta-akcje {
+    animation: w-wznies-wygas var(--w-ruch-dlugi) var(--w-ruch-ease-wej) both;
+  }
+  .hero-makieta-akcje { animation-delay: 0.3s; }
+
+  .hero-makieta-grafika {
+    animation: w-przybliz 2.2s var(--w-ruch-ease) both;
+    transform-origin: 80% 100%;
+  }
+
+  .hero-makieta-luki .luk {
+    stroke-dasharray: 1;
+    animation: w-rysuj 1.8s var(--w-ruch-ease) 0.2s both;
+  }
+  .hero-makieta-luki .luk--sygnal {
+    stroke-dasharray: 0.012 0.018;
+    animation: w-sygnal 9s linear infinite;
+  }
+  .hero-makieta-luki .luk--gruby { animation-delay: 0.45s; }
+
+  .luk-kropka {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: w-puls 2.6s ease-in-out infinite;
+  }
+  .luk-kropka--2 { animation-delay: 1.3s; }
+
+  /* Chmury i mgla: dwie warstwy z roznymi predkosciami (paralaksa glebi) */
+  .chmury-dryf > span:nth-child(1) { animation: w-dryf 140s linear infinite; }
+  .chmury-dryf > span:nth-child(2) { animation: w-dryf 220s linear infinite reverse; }
+  .mgla-dryf > span { animation: w-dryf 260s linear infinite; }
+
+  /* Ilustracje oferty lekko unosza sie, kazda w innej fazie */
+  .gory-oferta .oferta-ilustracja { animation: w-unos 7s ease-in-out infinite; }
+  .gory-oferta .service-card:nth-child(2) .oferta-ilustracja { animation-delay: -2.3s; }
+  .gory-oferta .service-card:nth-child(3) .oferta-ilustracja { animation-delay: -4.6s; }
+  .gory-oferta .service-card--geo .oferta-ilustracja { animation-delay: -1.2s; }
+  .gory-oferta .service-card:hover .oferta-ilustracja { animation-play-state: paused; }
+
+  /* Panel klienta: warstwy oddychaja wzdluz swojej normalnej (translateZ
+     w tej samej transformacji co obrot), najechanie rozsuwa stos osobna
+     wlasciwoscia `translate`. Tylko uklad izometryczny (od 901 px). */
+  @keyframes w-oddech-warstwy {
+    0%, 100% { transform: perspective(2400px) rotateX(52deg) rotateZ(-32deg) translateZ(0); }
+    50% { transform: perspective(2400px) rotateX(52deg) rotateZ(-32deg) translateZ(16px); }
+  }
+  @media (min-width: 901px) {
+    .panel-warstwa {
+      animation: w-oddech-warstwy 6s ease-in-out infinite;
+      transition: translate var(--w-ruch-sredni) var(--w-ruch-ease), box-shadow var(--w-ruch-sredni) var(--w-ruch-ease);
+    }
+    .panel-warstwa--1 { animation-delay: -2s; }
+    .panel-warstwa--2 { animation-delay: -4s; }
+    .panel-stos:hover .panel-warstwa--0 { translate: 0 -34px; }
+    .panel-stos:hover .panel-warstwa--2 { translate: 0 30px; }
+  }
+
+  /* Fale radiowe anteny */
+  .contact::before { animation: w-fala 3.6s ease-out infinite; }
+  .contact::after { animation: w-fala 3.6s ease-out 1.8s infinite; }
+
+  /* Poziomice cennika dryfuja powoli */
+  .pricing::before { animation: w-kontury 26s ease-in-out infinite alternate; }
+
+  /* Petle stoja poza ekranem */
+  [data-petla="poza"] *,
+  [data-petla="poza"]::before,
+  [data-petla="poza"]::after,
+  [data-petla="poza"] *::before,
+  [data-petla="poza"] *::after {
+    animation-play-state: paused !important;
+  }
+}
+
+/* ---------- Wejscia sterowane przewijaniem (ulepszenie) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    /* Wejscia animuja `transform`, a najechania osobne wlasciwosci
+       `translate` / `scale` - inaczej zakonczona animacja (fill: both)
+       przykrylaby efekt najechania. */
+    @keyframes w-wejscie {
+      from { opacity: 0; transform: translateY(32px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes w-wejscie-skala {
+      from { opacity: 0; transform: translateY(24px) scale(0.94); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes w-paralaksa {
+      to { translate: 0 7%; }
+    }
+
+    @keyframes w-paralaksa-chmur {
+      to { translate: 0 -18%; }
+    }
+
+    /* Elementy bez wlasnego wejscia framer-motion (Reveal/RevealItem maja swoje). */
+    .pasek-klientow-nazwa,
+    .blog-index-row,
+    .footer-col {
+      animation: w-wejscie linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    .portfolio-mosaic-tile,
+    .oferta-ilustracja,
+    .panel-stos {
+      animation: w-wejscie-skala linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+
+    /* Ilustracje oferty: wejscie przewijaniem zamiast unoszenia w petli */
+    .gory-oferta .oferta-ilustracja {
+      animation: w-wejscie-skala linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+
+    .pasek-klientow-nazwa:nth-child(2) { animation-range: entry 8% entry 78%; }
+    .pasek-klientow-nazwa:nth-child(3) { animation-range: entry 16% entry 86%; }
+    .pasek-klientow-nazwa:nth-child(4) { animation-range: entry 24% entry 94%; }
+    .portfolio-mosaic-col:nth-child(even) .portfolio-mosaic-tile { animation-range: entry 10% entry 90%; }
+
+    /* Paralaksa: grafika hero zjezdza wolniej niz tresc, chmury w gore */
+    .hero-makieta-grafika img {
+      animation: w-paralaksa linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+
+    .chmury-dryf {
+      animation: w-paralaksa-chmur linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+
+/* ==========================================================================
+   POPRAWKI Z QA (7.11.2026) - numery uwag z raportu w nawiasach
+   ========================================================================== */
+
+/* (37/14) Rozmycie paska: w globals.css prefiks stal po wersji standardowej
+   i build zostawial tylko -webkit-. */
+.header.scrolled {
+  background: rgba(253, 249, 244, 0.94) !important;
+  backdrop-filter: blur(16px) saturate(1.2);
+}
+
+/* (7/57) Pasek naglowka trzyma kolumne tresci w obu stanach */
+.header .nav-container {
+  max-width: var(--container-width) !important;
+  margin-inline: auto !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+@media (max-width: 768px) {
+  .header .nav-container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+/* (25/62/96) Kontrolki naglowka bez cieni, jedna waga */
+.header-hire-btn,
+.kota-menu-trigger,
+.lang-switcher,
+.header-login-btn {
+  box-shadow: none !important;
+}
+
+.lang-switcher,
+.header-login-btn {
+  background: var(--w-karta) !important;
+}
+
+.lang-btn,
+.header-login-btn,
+.badge-pill {
+  font-weight: 500 !important;
+}
+
+@media (max-width: 420px) {
+  .lang-switcher {
+    margin-left: 10px;
+  }
+}
+
+/* (23/67) Menu pelnoekranowe miesci sie na ekranie */
+.kota-fullscreen-content {
+  padding-top: 104px !important;
+}
+
+.kota-fullscreen-links a {
+  font-size: clamp(1.75rem, 4.6vh, 3.25rem) !important;
+  line-height: 1.15 !important;
+}
+
+@media (min-width: 1024px) {
+  .kota-fullscreen-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 4rem;
+  }
+}
+
+.kota-fullscreen-menu .kota-menu-trigger {
+  background: var(--w-papier) !important;
+  color: var(--w-tusz) !important;
+}
+
+/* (77/21/56) Interlinia naglowkow: bez dziedziczenia 1,65 po body */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.12;
+}
+
+.panel-cecha h3,
+.pricing-header h3 {
+  line-height: 1.15 !important;
+}
+
+.article-content h2,
+.article-content h3 {
+  line-height: 1.25 !important;
+}
+
+/* (53/101) Wdowy w naglowkach */
+.section-header h2,
+.service-card h3,
+.panel-cecha h3,
+.whyus-card-item h3,
+.faq-apple-tytul,
+.portfolio-title,
+main h1 {
+  text-wrap: balance;
+}
+
+.section-header p,
+.hero-makieta-body,
+.service-card p,
+.panel-cecha p,
+.pricing-desc {
+  text-wrap: pretty;
+}
+
+/* (87) Dzielenie wyrazow w srodku tylko tam, gdzie nie ma innego wyjscia */
+table,
+#subpage-portfolio-carousel,
+#about-methodology-carousel,
+.section-header h2,
+.service-card h3,
+.faq-apple-tytul {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+/* (75) Naglowki podstron w lekkiej wadze makiety */
+main h1,
+main h2 {
+  font-weight: 500 !important;
+  letter-spacing: -0.04em !important;
+}
+
+main h3 {
+  letter-spacing: -0.025em;
+}
+
+/* (2/38) /en "Why us": drugi H2 to podtytul */
+.why-us .section-header h2 + h2 {
+  font-size: clamp(1.125rem, 1.5vw, 1.3rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.5 !important;
+  color: var(--w-tusz-2) !important;
+  margin-top: 0.75rem !important;
+}
+
+.section-header h2 + h2::after,
+.section-header h2.bez-kropki::after,
+.faq-apple-tytul.bez-kropki::after,
+.portfolio-title.bez-kropki::after {
+  content: none;
+}
+
+/* (3/39) Styk hero z pasmem chmur bez szwu */
+@media (min-width: 901px) {
+  .hero-makieta-grafika img {
+    top: auto !important;
+    bottom: 0 !important;
+    height: auto !important;
+    min-height: 100%;
+  }
+
+  .hero-makieta-grafika::after {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 92%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 92%);
+  }
+}
+
+/* (40) Hero 901-1280 px: tekst przed czasza anteny */
+@media (min-width: 901px) and (max-width: 1280px) {
+  .hero-makieta-lead,
+  .hero-makieta-body {
+    max-width: min(560px, 50vw) !important;
+  }
+
+  .hero-makieta-luki {
+    left: 46%;
+    top: -20%;
+  }
+}
+
+/* (47) Nazwy klientow czytelne na mgle */
+.pasek-klientow-nazwa {
+  color: rgba(30, 30, 30, 0.8);
+}
+
+.pasek-klientow-nazwa--madame {
+  font-weight: 400;
+}
+
+/* (19) Krotsze przejscie oferta -> swit */
+.gory-oferta .services {
+  padding-bottom: clamp(48px, 5vw, 72px) !important;
+}
+
+#why-us.why-us {
+  padding-top: clamp(240px, 32vw, 500px) !important;
+  background-position: center top -4vw !important;
+}
+
+/* (68) Etykieta i naglowek "Dlaczego my" na mgle */
+#why-us .section-header {
+  text-shadow: 0 0 18px var(--w-papier), 0 0 36px var(--w-papier);
+}
+
+/* (10/60) Rowne rzedy w trzech kolumnach oferty */
+@media (min-width: 901px) {
+  .gory-oferta .services-grid {
+    grid-template-rows: repeat(5, auto);
+  }
+
+  .gory-oferta .service-card:not(.service-card--geo) {
+    display: grid !important;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    justify-items: center;
+    row-gap: 0;
+  }
+
+  .gory-oferta .service-card:not(.service-card--geo) h3 {
+    align-self: end;
+  }
+}
+
+/* (35/71) Lista cech wysrodkowana pod opisem; lzejsze <strong> w EN */
+.gory-oferta .service-features {
+  align-self: center;
+  justify-self: center;
+  width: fit-content;
+  max-width: min(100%, 340px);
+}
+
+.gory-oferta .service-card p strong,
+.gory-oferta .service-card p span[style] {
+  font-weight: 500 !important;
+  color: #FFFFFF;
+}
+
+/* (48/27) Filary oferty */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .gory-oferta .kota-pillars-row {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .gory-oferta .kota-pillars-row > div {
+    min-width: 0 !important;
+  }
+
+  .gory-oferta .kota-divider-x {
+    display: none !important;
+  }
+
+  .gory-oferta .kota-pillar-card {
+    padding: 1.75rem 1.25rem !important;
+  }
+}
+
+.gory-oferta .kota-pillar-card {
+  border-radius: var(--w-promien-karta) !important;
+}
+
+.gory-oferta .kota-pillar-card > div:nth-child(2) {
+  font-weight: 500 !important;
+  letter-spacing: -0.03em;
+}
+
+/* (11/43/52) Karuzela "Dlaczego my": kropki i strzalki */
+.why-us button[aria-label]:not(.whyus-dot) {
+  background: transparent !important;
+  border: 1.5px solid var(--w-tusz) !important;
+  color: var(--w-tusz);
+}
+
+.why-us .whyus-dot {
+  border: 0 !important;
+}
+
+#whyus-carousel:focus-visible {
+  outline: 3px solid var(--w-pomarancz-tekst);
+  outline-offset: 4px;
+  border-radius: var(--w-promien-karta);
+}
+
+/* (5/57) Wyniki w kolumnie tresci */
+.results > .container {
+  max-width: var(--container-width) !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+/* (70) Mniej pustego granatu miedzy wynikami a panelem */
+.results {
+  padding-bottom: clamp(48px, 6vw, 96px) !important;
+}
+
+.results + .panel-showcase {
+  padding-top: clamp(48px, 6vw, 96px) !important;
+}
+
+/* (6/57) Realizacje w kolumnie tresci */
+.portfolio > .container {
+  max-width: var(--container-width) !important;
+}
+
+.portfolio-head,
+.portfolio-clients {
+  padding-inline: 0 !important;
+}
+
+@media (max-width: 639px) {
+  .portfolio-mosaic {
+    padding-inline: 20px;
+  }
+}
+
+/* (58) Wyroznione slowo w tytule realizacji w tej samej wadze */
+.portfolio-title em {
+  font-weight: inherit !important;
+}
+
+/* (59) Os klientow: wspolna linia bazowa */
+.portfolio-client-logo {
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-client-logo span {
+  color: var(--w-tusz) !important;
+}
+
+.portfolio-client-cta {
+  margin-top: auto;
+}
+
+/* (26/27) Film i kafle realizacji bez starych cieni */
+.portfolio-head-visual video,
+.portfolio-head-visual img {
+  box-shadow: none !important;
+  border-radius: var(--w-promien-karta) !important;
+}
+
+.portfolio-mosaic-tile {
+  border-radius: 12px !important;
+}
+
+/* (31) Panel klienta: szersza kolumna tekstu */
+@media (min-width: 1101px) {
+  .panel-uklad {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+}
+
+.panel-showcase .section-header h2 {
+  font-size: clamp(2.2rem, 3.2vw, 3rem) !important;
+}
+
+.panel-akcje .w-przycisk {
+  flex: 1 1 100%;
+}
+
+/* (12) Cien kart cennika liczony z calej siatki naraz (drop-shadow na
+   rodzicu): cien karty nie kladzie sie na sasiedniej. Karty sa animowane
+   framer-motion (transform = osobny kontekst warstw), wiec pseudoelement
+   z z-index -1 nie wystarczy. */
+.pricing-card,
+.pricing-card:hover {
+  box-shadow: none !important;
+}
+
+.pricing-grid {
+  filter: drop-shadow(0 26px 44px rgba(3, 6, 20, 0.42));
+}
+
+/* (16/44/85) Ceny w jednej linii */
+@media (min-width: 901px) {
+  .pricing-card .price-label {
+    min-height: 3.3em;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+/* (28/49) "netto / mies." */
+.price-amount > span:last-child {
+  letter-spacing: 0 !important;
+  white-space: nowrap;
+  margin-left: 0.2rem;
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .price-amount {
+    font-size: 1.75rem !important;
+  }
+}
+
+/* (29/50) Linki pod nota cennika */
+.pricing-panel-links {
+  text-align: center;
+  margin-top: 1.25rem !important;
+}
+
+.pricing-panel-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.pricing-note {
+  border-radius: var(--w-promien-karta) !important;
+}
+
+/* (13/69) Poziomice cennika: krawedzie bitmap wygaszone maska, bez
+   linii przez naglowek; dol sekcji przechodzi w granat */
+.pricing::before {
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 18% 42%, #000 40%, transparent 72%), radial-gradient(ellipse 50% 46% at 84% 82%, #000 40%, transparent 72%);
+  mask-image: radial-gradient(ellipse 50% 50% at 18% 42%, #000 40%, transparent 72%), radial-gradient(ellipse 50% 46% at 84% 82%, #000 40%, transparent 72%);
+}
+
+@media (max-width: 1100px) {
+  .pricing::before {
+    background-position: left -34vw top 34%, right -10vw bottom 0;
+  }
+}
+
+/* (30/52) Fokus na granacie */
+.pricing :focus-visible,
+.contact-info :focus-visible,
+.results :focus-visible {
+  outline-color: var(--w-pomarancz) !important;
+}
+
+/* (22) Lista wpisow w panelu bloga trzyma krawedzie panelu */
+.w-noc-panele .blog-index {
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* (32/65) FAQ: tytul przyklejony przy przewijaniu, poziomice mniejsze */
+.w-noc-panele > section.faq-apple {
+  overflow: clip;
+}
+
+@media (min-width: 901px) {
+  .faq-apple--panel .faq-apple-uklad > div:first-child {
+    position: sticky;
+    top: 120px;
+  }
+}
+
+/* (66) Gradient paneli konczy sie granatem kontaktu */
+.w-noc-panele {
+  background-color: var(--w-noc);
+  background-image: linear-gradient(180deg, var(--w-noc) 0%, #101A4A 45%, #18215F 80%, var(--w-noc) 100%);
+}
+
+/* (33) Pola formularza jednolite */
+.form-select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 3rem !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%231E1E1E' stroke-width='1.5'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 1.1rem center !important;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--w-tusz-2);
+  opacity: 1;
+}
+
+/* (24/64) Jeden system przyciskow */
+.btn {
+  min-height: 52px;
+  padding: 0.85rem 1.75rem !important;
+  font-size: 1.0625rem !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .panel-akcje .w-przycisk,
+  .results-content .w-przycisk {
+    flex: 1 1 100%;
+  }
+}
+
+/* (61) Jedna skala H2 na telefonie */
+@media (max-width: 600px) {
+  .section-header h2,
+  .portfolio-title,
+  .contact-info h2,
+  .results-text h2,
+  .faq-apple-tytul,
+  .why-us .section-header > h2:first-of-type,
+  .panel-showcase .section-header h2 {
+    font-size: 2.2rem !important;
+  }
+}
+
+/* (18/46) Baner zgody w palecie makiety */
+.cookie-banner {
+  background: rgba(10, 19, 55, 0.97) !important;
+  border-color: var(--w-noc-linia) !important;
+  box-shadow: 0 30px 80px rgba(3, 6, 20, 0.45) !important;
+}
+
+.cookie-banner a {
+  color: var(--w-pomarancz) !important;
+}
+
+.cookie-banner button {
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  font-weight: 500 !important;
+}
+
+/* (74) Przyciski hero podstron jak przyciski makiety */
+.hero-btn-primary {
+  background: var(--w-pomarancz) !important;
+  border: 1.5px solid var(--w-pomarancz) !important;
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
+  min-height: 52px;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+.hero-btn-primary:hover {
+  background: var(--w-pomarancz-hover) !important;
+  border-color: var(--w-pomarancz-hover) !important;
+}
+
+.hero-btn-primary::before,
+.hero-btn-secondary::before {
+  display: none !important;
+}
+
+.hero-btn-secondary {
+  background: transparent !important;
+  color: var(--w-tusz) !important;
+  border: 1.5px solid var(--w-tusz) !important;
+  font-weight: 500 !important;
+  min-height: 52px;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+.hero-btn-secondary:hover {
+  background: var(--w-tusz) !important;
+  color: var(--w-papier) !important;
+}
+
+@media (max-width: 600px) {
+  .hero-cta-row a {
+    flex: 1 1 100%;
+  }
+}
+
+/* (100) Pasek pod H1 podstron bez starego gradientu */
+.subpage-hero h1 + div {
+  width: 64px !important;
+  height: 3px !important;
+  background: var(--w-pomarancz) !important;
+  box-shadow: none !important;
+  border-radius: 2px;
+}
+
+/* (78) Okruszki w kolumnie tresci */
+.breadcrumbs {
+  max-width: var(--container-width) !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  color: var(--w-tusz-2);
+}
+
+.breadcrumbs a {
+  color: var(--w-tusz-2) !important;
+}
+
+.breadcrumbs [aria-current] {
+  color: var(--w-tusz) !important;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+/* (89/90) Artykuly na papierze, linki w akcencie, tabela w kolumnie */
+main:has(.article-content) {
+  background-color: var(--w-papier) !important;
+  color: var(--color-text-main) !important;
+}
+
+.article-content a {
+  color: var(--w-pomarancz) !important;
+  text-decoration-color: currentColor !important;
+}
+
+@media (min-width: 900px) {
+  .article-content table {
+    min-width: 100% !important;
+  }
+}
+
+/* (93) Fokus: karty bloga, przewijane karuzele, karty misji */
+.blog-grid a:focus-visible > div {
+  outline-color: var(--w-pomarancz) !important;
+}
+
+#service-carousel-scroll:focus-visible,
+#subpage-portfolio-carousel:focus-visible,
+#about-methodology-carousel:focus-visible,
+.grid-card:focus-visible {
+  outline: 3px solid var(--w-pomarancz);
+  outline-offset: 4px;
+}
+
+/* (81) /o-nas: sekcja wartosci z pelnym odstepem przed kontaktem */
+#about-values {
+  padding-bottom: var(--w-sekcja) !important;
+}
+
+/* (105) /o-nas: poziomice w pustej prawej czesci pierwszego ekranu */
+#about-mission.why-us {
+  background: var(--w-papier) url('/images/wyglad/kontury-2.webp') no-repeat right -8vw top 40px / min(46vw, 660px) auto !important;
+}
+
+/* (108) Okladki i zdjecia stockowe w cieplej tonacji zamiast neonowego fioletu */
+.blog-grid img,
+#subpage-portfolio-carousel img,
+#about-team-carousel img {
+  filter: grayscale(1) sepia(0.35) saturate(1.5) hue-rotate(-12deg) contrast(1.05);
+}
+
+/* Telefon: antena kreskowa w kontakcie pod formularzem */
+@media (max-width: 900px) {
+  aside#kontakt.contact,
+  section#kontakt.contact,
+  aside#contact.contact,
+  section#contact.contact {
+    padding-bottom: calc(var(--w-sekcja) + 40vw) !important;
+  }
+
+  .results {
+    padding-top: 52vw !important;
   }
 }

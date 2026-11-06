@@ -38,7 +38,7 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'proces-pozyskiwania-krok-po-kroku', title: 'Jak zbudować proces pozyskiwania opinii krok po kroku' },
     { id: 'szablony-wiadomosci', title: 'Szablony wiadomości, które faktycznie działają' },
     { id: 'jak-odpowiadac', title: 'Jak odpowiadać na opinie Google: 6 wzorów' },
-    { id: 'falszywa-opinia', title: 'Gdy opinia jest fałszywa lub narusza zasady — co zrobić' },
+    { id: 'falszywa-opinia', title: 'Gdy opinia jest fałszywa lub narusza zasady – co zrobić' },
     { id: 'automatyzacja-i-kpi', title: 'Automatyzacja i KPI: co mierzyć i jak testować' },
     { id: 'co-mowia-eksperci', title: 'Co mówią eksperci o personalizacji i automatyzacji w 2026' },
     { id: 'kluczowe-wnioski', title: 'Kluczowe wnioski' },
@@ -53,7 +53,7 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'proces-pozyskiwania-krok-po-kroku', title: 'How to build a review acquisition process step-by-step' },
     { id: 'szablony-wiadomosci', title: 'Message templates that actually work' },
     { id: 'jak-odpowiadac', title: 'How to reply to reviews to gain credibility' },
-    { id: 'falszywa-opinia', title: 'When a review is fake or violates rules — what to do' },
+    { id: 'falszywa-opinia', title: 'When a review is fake or violates rules – what to do' },
     { id: 'automatyzacja-i-kpi', title: 'Automation and KPIs: what to measure and test' },
     { id: 'co-mowia-eksperci', title: 'What experts say about personalization and automation in' },
     { id: 'kluczowe-wnioski', title: 'Key Takeaways' },
@@ -62,7 +62,7 @@ export default async function ArticleReviewsPage({ params }) {
   ];
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <ArticleSchema
         slug="/blog/jak-pozyskiwac-opinie-google-poradnik"
@@ -75,10 +75,10 @@ export default async function ArticleReviewsPage({ params }) {
           
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Google Business
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 {locale === 'en' ? 'July 31, 2026' : '31 Lipca 2026'}
               </span>
             </div>
@@ -86,7 +86,7 @@ export default async function ArticleReviewsPage({ params }) {
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
-              color: '#1D1D1F', 
+              color: 'var(--w-tusz)', 
               marginBottom: '2rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
@@ -100,19 +100,19 @@ export default async function ArticleReviewsPage({ params }) {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
             </div>
             
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
-              <p style={{ fontSize: '1.2rem', color: '#6E6E73', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto 3rem auto' }}>
+              <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto 3rem auto' }}>
                 {locale === 'en' 
                   ? 'Learning how to effectively get Google reviews is one of the most critical steps for local SEO success. Positive customer feedback builds immediate trust and improves your local map pack rankings.' 
                   : 'Pozyskiwanie opinii w Google to jeden z najważniejszych elementów skutecznego pozycjonowania lokalnego. Pozytywne recenzje klientów budują zaufanie i przekładają się bezpośrednio na wyższe pozycje w Mapach Google.'}
               </p>
               {locale === 'en' ? (
                 <>
-                  <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+                  <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                     The most effective method of getting Google reviews is a personalized request sent 24-48 hours after the completed service, with one visible link to leave a review. There is no secret here, but a specific process: a trigger in the CRM system, a personalized message, and one clear CTA.
                   </p>
                   <ArticleTOC items={tocItemsEn} />
@@ -136,22 +136,22 @@ export default async function ArticleReviewsPage({ params }) {
                   <div style={{ overflowX: 'auto' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '2rem' }}>
                       <thead>
-                        <tr style={{ background: '#F5F5F7', textAlign: 'left' }}>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Metric</th>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Small Business Goal</th>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Medium Business Goal</th>
+                        <tr style={{ background: 'var(--w-papier-2)', textAlign: 'left' }}>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Metric</th>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Small Business Goal</th>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Medium Business Goal</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>New reviews / month</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>5–10</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>15–30</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>New reviews / month</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>5–10</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>15–30</td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Average rating</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>generally high</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>≥ 4.5</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Average rating</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>generally high</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>≥ 4.5</td>
                         </tr>
                       </tbody>
                     </table>
@@ -169,7 +169,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <h2 id="jak-odpowiadac">How to reply to reviews to gain credibility</h2>
                   <p>Replying to a review is not a formality. It is content visible to all potential customers reading reviews before making a decision. Respond quickly (within 24-48h) and professionally.</p>
 
-                  <h2 id="falszywa-opinia">When a review is fake or violates rules — what to do</h2>
+                  <h2 id="falszywa-opinia">When a review is fake or violates rules – what to do</h2>
                   <p>Assess if the review actually violates Google's policies. Report it via the Business Profile panel (<a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>official Google support</a>), document everything, and reply neutrally publicly.</p>
 
                   <h2 id="automatyzacja-i-kpi">Automation and KPIs: what to measure and test</h2>
@@ -189,7 +189,7 @@ export default async function ArticleReviewsPage({ params }) {
                 </>
               ) : (
                 <>
-                  <p style={{ fontSize: '1.4rem', color: '#1D1D1F', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
+                  <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                     Najskuteczniejsza metoda pozyskiwania opinii Google to spersonalizowana prośba wysłana 24–48 godzin po zrealizowanej usłudze, z jednym widocznym linkiem do wystawienia recenzji. Nie ma tu żadnej tajemnicy, jest za to konkretny proces: trigger w systemie CRM po zmianie statusu na „zrealizowano”, wiadomość z imieniem klienta i nazwą usługi, jedno wyraźne CTA. Jeden follow-up po 7 dniach, jeśli klient nie zareagował. Koniec.
                   </p>
                   <ArticleTOC items={tocItems} />
@@ -215,32 +215,32 @@ export default async function ArticleReviewsPage({ params }) {
                   <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                       <thead>
-                        <tr style={{ background: '#F5F5F7' }}>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Metryka</th>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Cel dla małej firmy</th>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Cel dla średniej firmy</th>
+                        <tr style={{ background: 'var(--w-papier-2)' }}>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Metryka</th>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Cel dla małej firmy</th>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Cel dla średniej firmy</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Liczba nowych opinii miesięcznie</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>5–10</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>15–30</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Liczba nowych opinii miesięcznie</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>5–10</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>15–30</td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Średnia ocena</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>ocena powinna być ogólnie wysoka</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>≥ 4,5</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Średnia ocena</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>ocena powinna być ogólnie wysoka</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>≥ 4,5</td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Udział opinii z treścią</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>min. 70%</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>min. 75%</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Udział opinii z treścią</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>min. 70%</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>min. 75%</td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Tempo przyrostu</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>max. 3× średniej z ost. 3 mies.</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>max. 3–5× średniej z ost. 3 mies.</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Tempo przyrostu</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>max. 3× średniej z ost. 3 mies.</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>max. 3–5× średniej z ost. 3 mies.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -284,7 +284,7 @@ export default async function ArticleReviewsPage({ params }) {
                     <li>Nie pisz „zostaw 5 gwiazdek“. Pisz „zostaw szczery komentarz“.</li>
                   </ul>
                   
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
                     <span style={{ fontWeight: 'bold' }}>Wzór e-maila (24–48 h po usłudze):</span><br /><br />
                     Temat: Jak oceniasz naszą współpracę, [Imię]?<br /><br />
                     Cześć [Imię],<br /><br />
@@ -294,7 +294,7 @@ export default async function ArticleReviewsPage({ params }) {
                     Pozdrawiamy, [Imię pracownika], [Nazwa firmy]
                   </div>
 
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
                     <span style={{ fontWeight: 'bold' }}>Wzór SMS:</span><br /><br />
                     Cześć [Imię], dziękujemy za wczorajszą wizytę! Zostaw nam krótki komentarz: [LINK]. Zajmie 2 min. Dziękujemy!
                   </div>
@@ -319,27 +319,27 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Poniżej 6 wzorów do skopiowania. W nawiasach kwadratowych są miejsca do uzupełnienia: zawsze dopisz konkret z recenzji, na którą odpowiadasz.</p>
 
                   <h3>1. Pozytywna opinia z konkretem</h3>
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
                     Dzień dobry [Imię],<br />
                     dziękujemy za opinię i za wzmiankę o [konkret z opinii, np. terminie albo dokładności]. Cieszymy się, że [nazwa usługi] spełniła oczekiwania. Do zobaczenia przy kolejnym zleceniu.<br />
                     [Imię pracownika], [Nazwa firmy]
                   </div>
 
                   <h3>2. Same gwiazdki, bez komentarza</h3>
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
                     Dziękujemy za ocenę, [Imię]. Jeśli znów będzie potrzebna [nazwa usługi], jesteśmy pod numerem [telefon].<br />
                     [Imię pracownika], [Nazwa firmy]
                   </div>
 
                   <h3>3. Opinia mieszana: pochwała i zastrzeżenie</h3>
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
                     Dzień dobry [Imię],<br />
                     dziękujemy za szczerą opinię. Cieszymy się, że [to, co klient pochwalił], i przepraszamy za [to, co klient skrytykował]. Już [co konkretnie zmieniliście]. Jeśli da nam [Pan/Pani] jeszcze jedną szansę, prosimy o kontakt: [e-mail].<br />
                     [Imię pracownika], [Nazwa firmy]
                   </div>
 
                   <h3>4. Negatywna opinia o usłudze</h3>
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
                     Dzień dobry [Imię],<br />
                     przykro nam, że [nazwa usługi] nie spełniła oczekiwań. Chcemy wyjaśnić, co poszło nie tak, i naprawić sytuację. Prosimy o kontakt pod adresem [e-mail] albo numerem [telefon]. Chętnie porozmawiamy bezpośrednio.<br />
                     [Imię pracownika], [Nazwa firmy]
@@ -347,14 +347,14 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Zawsze przenoś rozmowę do kanału prywatnego. Nie tłumacz się publicznie, nie atakuj klienta i nie kwestionuj jego doświadczenia.</p>
 
                   <h3>5. Opinia, której nie da się dopasować do żadnego klienta</h3>
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
                     Dzień dobry, nie możemy znaleźć tej wizyty w naszych zapisach. Zapraszamy do kontaktu pod adresem [e-mail], żebyśmy mogli wyjaśnić sytuację.<br />
                     [Imię pracownika], [Nazwa firmy]
                   </div>
                   <p>Jeśli opinia narusza zasady Google, zgłoś ją według kroków z następnej sekcji.</p>
 
                   <h3>6. Odpowiedź po rozwiązaniu problemu</h3>
-                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid #E5E5EA', marginBottom: '2rem' }}>
+                  <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
                     Dzień dobry [Imię],<br />
                     dziękujemy za rozmowę. Cieszymy się, że udało się rozwiązać [opis problemu]. Jeśli [Pan/Pani] zechce, może [Pan/Pani] zaktualizować opinię, ale oczywiście nie musi.<br />
                     [Imię pracownika], [Nazwa firmy]
@@ -363,7 +363,7 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <p>Odpowiedź na każdą opinię w ciągu 48 godzin to stały element naszej pracy, gdy prowadzimy <Link href={HREF_WIZYTOWKA} style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie wizytówki Google</Link>.</p>
 
-                  <h2 id="falszywa-opinia">Gdy opinia jest fałszywa lub narusza zasady — co zrobić</h2>
+                  <h2 id="falszywa-opinia">Gdy opinia jest fałszywa lub narusza zasady – co zrobić</h2>
                   <ol>
                     <li><span style={{ fontWeight: 'bold' }}>Oceń, czy opinia faktycznie narusza regulamin Google.</span> Podstawy to spam, fałszywa treść, konflikt interesów itp. Niska ocena bez naruszenia regulaminu nie jest podstawą do usunięcia.</li>
                     <li><span style={{ fontWeight: 'bold' }}>Zgłoś opinię przez panel Profilu Firmy.</span> Wybierz właściwą kategorię naruszenia. Moderacja może potrwać kilka dni roboczych.</li>
@@ -378,37 +378,37 @@ export default async function ArticleReviewsPage({ params }) {
                   <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                       <thead>
-                        <tr style={{ background: '#F5F5F7' }}>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>KPI</th>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Cel</th>
-                          <th style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Jak mierzyć</th>
+                        <tr style={{ background: 'var(--w-papier-2)' }}>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>KPI</th>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Cel</th>
+                          <th style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Jak mierzyć</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Liczba wysłanych próśb</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Wszystkie zamknięte zlecenia</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>CRM / raport wysyłek</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Liczba wysłanych próśb</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Wszystkie zamknięte zlecenia</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>CRM / raport wysyłek</td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Współczynnik otwarcia e-maila</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>40–60%</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Platforma e-mail marketingu</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Współczynnik otwarcia e-maila</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>40–60%</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Platforma e-mail marketingu</td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Współczynnik kliknięcia linku</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>15%+</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>UTM + Google Analytics</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Współczynnik kliknięcia linku</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>15%+</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>UTM + Google Analytics</td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Współczynnik konwersji (opinia/wysłana)</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>8–15%</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Liczba nowych opinii / wysłane</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Współczynnik konwersji (opinia/wysłana)</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>8–15%</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Liczba nowych opinii / wysłane</td>
                         </tr>
                         <tr>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Średnia ocena nowych opinii</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>≥ 4,5</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid #E5E5EA' }}>Panel Profilu Firmy</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Średnia ocena nowych opinii</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>≥ 4,5</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Panel Profilu Firmy</td>
                         </tr>
                       </tbody>
                     </table>
@@ -441,9 +441,9 @@ export default async function ArticleReviewsPage({ params }) {
               )}
               
               
-              <div style={{ marginTop: '3rem', padding: '2rem', background: '#F9F9F9', borderRadius: '12px', border: '1px solid #E5E5EA' }}>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600, color: '#1D1D1F' }}>{locale === 'en' ? 'Useful sources & references' : 'Przydatne źródła i odniesienia'}</h3>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', color: '#333336' }}>
+              <div style={{ marginTop: '3rem', padding: '2rem', background: '#F9F9F9', borderRadius: '12px', border: '1px solid var(--w-linia)' }}>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600, color: 'var(--w-tusz)' }}>{locale === 'en' ? 'Useful sources & references' : 'Przydatne źródła i odniesienia'}</h3>
+                <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', color: 'var(--color-text-main)' }}>
                   <li style={{ marginBottom: '0.5rem' }}><a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>{locale === 'en' ? 'Google: How to get reviews on Google' : 'Google: Jak pozyskiwać opinie w Google'}</a></li>
                   <li style={{ marginBottom: '0.5rem' }}><a href="https://support.google.com/business/answer/4596773" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Google: Manage your reviews and ratings (Best practices)</a></li>
                   <li style={{ marginBottom: '0.5rem' }}><a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>{locale === 'en' ? 'Google: Prohibited and restricted content' : 'Google: Treści zabronione i podlegające ograniczeniom'}</a></li>

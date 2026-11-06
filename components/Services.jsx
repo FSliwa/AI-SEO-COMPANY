@@ -81,7 +81,7 @@ export default function Services() {
             <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Visual Identity'}</h3>
             <p>{lang === 'pl' 
               ? 'Projektujemy spójną tożsamość wizualną: logo, system kolorystyczny, typografię oraz kompletną księgę znaku dostosowaną do wymagań cyfrowych.' 
-              : <>We design the part <strong>search engine optimisation agencies</strong> usually outsource: cohesive visual identities — logo systems, color palettes, typography, and comprehensive digital brand guidelines.</>
+              : <>We design the part <strong>search engine optimisation agencies</strong> usually outsource: cohesive visual identities – logo systems, color palettes, typography, and comprehensive digital brand guidelines.</>
             }</p>
             <ul className="service-features">
               {lang === 'pl' ? (
@@ -106,7 +106,7 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Projektowanie stron i sklepów internetowych' : 'Web Design & E-Commerce Development'}</h3>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Projektowanie stron i sklepów internetowych' : <>Web Design &amp; <span style={{ whiteSpace: 'nowrap' }}>E-Commerce</span> Development</>}</h3>
             <p>{lang === 'pl'
               ? 'Tworzymy responsywne, niezwykle szybkie strony internetowe (UX/UI), zoptymalizowane pod najwyższe współczynniki konwersji i estetykę premium.'
               : 'As a full-service marketing agency, we engineer responsive, high-speed websites (UX/UI), optimized for top conversion rates and premium aesthetic appeal.'
@@ -170,7 +170,7 @@ export default function Services() {
               <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>Pozycjonowanie w AI (GEO)</h3>
               <p style={{ maxWidth: '760px' }}>Klienci coraz częściej pytają ChatGPT i Gemini, jaką firmę wybrać. Mierzymy, czy modele wymieniają Twoją markę w odpowiedziach na pytania Twoich klientów, i poprawiamy strony, z których korzystają. Pomiar co tydzień w panelu.</p>
               <Link href="/pozycjonowanie-w-ai" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' }}>
-                Zobacz, jak działa pozycjonowanie w AI →
+                Zobacz, jak działa pozycjonowanie w AI →
               </Link>
               <Ilustracja src="/images/wyglad/oferta-ai.webp" w={640} h={531} />
             </RevealItem>

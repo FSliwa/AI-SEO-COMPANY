@@ -17,17 +17,17 @@ strony używają nazw, nie surowych wartości.
 | `--w-linia` | `rgba(30,30,30,.12)` | obramowania, separatory |
 | `--w-noc` | `#0A1337` | ciemne sekcje: panel, cennik, kontakt (dół grafiki gór) |
 | `--w-noc-2` | `#0B0E26` | stopka |
-| `--w-pomarancz` | `#D85A30` | akcent marki: przyciski, kropki, ikony, linie wykresów, duże liczby |
-| `--w-pomarancz-hover` | `#E8794F` | najechanie na przycisk główny (jaśniej, kontrast tekstu rośnie) |
-| `--w-pomarancz-tekst` | `#B8441E` | mały tekst w kolorze akcentu na papierze: etykiety, linki (5,1:1) |
-| `--w-pomarancz-gleboki` | `#9C3A17` | liczby i numeracja na papierze (zastępuje `#3317B1`) |
-| `--w-brzoskwinia` | `#F3B79C` | akcent na granacie: etykiety, ikony, obrysy (zastępuje `#C3A4F0`) |
+| `--w-pomarancz` | `#D85A30` | jedyny pomarańcz marki (jak `--color-cta` na produkcji): przyciski, etykiety, linki, liczby, ikony, kropki, linie |
+| `--w-pomarancz-hover` | `#C24A22` | najechanie na przycisk główny (jak na produkcji) |
+| `--w-pomarancz-tekst`, `--w-pomarancz-gleboki` | `#D85A30` | aliasy tego samego koloru (od 7.11.2026; wcześniej ciemniejsze odcienie) |
+| `--w-brzoskwinia` | `#F3B79C` | tylko zaznaczenie tekstu i delikatne wypełnienia |
 | `--w-brzoskwinia-tlo` | `#FBE6DA` | jasne wypełnienia: aktywna zakładka, wyróżniony przycisk (zastępuje `#EBDDF9`) |
 | `--w-wzrost` | `#047857` | wyłącznie wzrost w danych |
 
-Przycisk główny: tło `--w-pomarancz`, tekst `#14110F` (4,9:1). Biały tekst na
-`#D85A30` ma 3,9:1 i nie przechodzi AA, dlatego makietowy „ciemny tekst na
-jasnym akcencie” zostaje.
+Przycisk główny: tło `#D85A30`, biały tekst, najechanie `#C24A22` — tak jak na
+produkcji (decyzja właściciela 7.11.2026). Uwaga: biały na `#D85A30` ma 3,9:1,
+a mały tekst w `#D85A30` na papierze 3,7:1 (próg AA dla zwykłego tekstu to 4,5:1).
+Na granacie `#D85A30` ma 4,7:1.
 
 Mapowanie fioletów makiety: `#C3A4F0`, `#B085E5` → brzoskwinia / pomarańcz,
 `#9E65E2`, `#8050BA` → pomarańcz, `#3317B1`, `#3C108C` → pomarańcz głęboki,
@@ -73,3 +73,29 @@ Mapowanie fioletów makiety: `#C3A4F0`, `#B085E5` → brzoskwinia / pomarańcz,
 - Ikony: obrysowe, 1,5 px, kolor akcentu. Bez emoji jako ikon.
 - Sceny Spline zniknęły ze strony głównej (dekoracja, 4,9 MB + runtime);
   komponenty zostają w repo.
+
+## Kursor
+
+Grot i rączka czarne albo białe zależnie od jasności tła pod kursorem
+(`components/KursorWgTla.jsx`): kolor tła elementu, piksel obrazka tła
+(`data-kursor="obraz"`) albo `<img>`. Ustawia `html[data-kursor-tlo]`.
+Bez JS działają stare reguły `.cursor-light`.
+
+## Ruch
+
+Tokeny: `--w-ruch-ease` `cubic-bezier(0.16,1,0.3,1)`, `--w-ruch-krotki` 0,28 s,
+`--w-ruch-sredni` 0,6 s, `--w-ruch-dlugi` 1,1 s. Wszystko tylko przy
+`prefers-reduced-motion: no-preference`, tylko transform/translate/scale/opacity.
+
+- Hero: linie H1, lead i akapit wjeżdżają od dołu (bez wygaszania — LCP),
+  etykieta i przyciski z wygaszeniem, grafika lekko się przybliża, łuki sygnału
+  rysują się, kropki pulsują, przerywany łuk „płynie”.
+- Chmury: dwie warstwy `chmury.webp` (bezszwowa tekstura) dryfują w przeciwne
+  strony nad pasem klientów, mgła w świcie nad „Dlaczego my”.
+- Kafelki: najechanie podnosi karty, ilustracje oferty unoszą się, stos panelu
+  oddycha (`translateZ`) i rozsuwa się po najechaniu, mozaika realizacji się
+  powiększa.
+- Wejścia przy przewijaniu: `animation-timeline: view()` z `@supports`
+  (ulepszenie; framer-motion `Reveal` zostaje tam, gdzie był).
+- Pętle stoją poza ekranem (`components/PetleWidoczne.jsx`, `data-petla`).
+- Fale radiowe anteny w kontakcie, dryf poziomic w cenniku.

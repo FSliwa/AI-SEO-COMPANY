@@ -18,9 +18,9 @@ export default function CookiesContent() {
           okruszkami co na /blog i /o-nas. Title i meta strony bez zmian (SA-10); H1 PL
           („Polityka prywatności i cookies”) zmienia Integracja w messages/pl.json. */}
       <Breadcrumbs pl="Polityka cookies" en="Cookies policy" />
-      <main className="subpage-main" style={{ paddingTop: '120px', minHeight: '80vh', background: '#F5F5F7' }}>
+      <main className="subpage-main" style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--w-papier-2)' }}>
         <div className="container" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
-          <h1 style={{ fontSize: '3rem', color: '#0F172A', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
+          <h1 style={{ fontSize: '3rem', color: 'var(--w-tusz)', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
             {t('title')}
           </h1>
           <div style={{ color: '#334155', fontSize: '1.1rem', lineHeight: 1.8 }}>
@@ -35,49 +35,49 @@ export default function CookiesContent() {
             <p style={{ marginTop: '2rem' }}>{lang === 'pl' ? 'Jeśli masz jakiekolwiek pytania lub wątpliwości dotyczące sposobu, w jaki zarządzamy plikami cookies lub przetwarzamy dane, nasz zespół wsparcia jest do Twojej dyspozycji. Zachęcamy do kontaktu w celu uzyskania szczegółowych wyjaśnień i pełnej transparentności naszych działań operacyjnych na każdym etapie.' : 'If you have any questions or concerns regarding how we manage cookies or process data, our support team is always at your disposal. We encourage you to contact us for detailed explanations and full transparency of our operational activities at every single stage of your journey.'}</p>
             {lang === 'pl' ? (
               <>
-                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>1. Czym są pliki cookies?</h2>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>1. Czym są pliki cookies?</h2>
                 <p>Pliki cookies (tzw. ciasteczka) to dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika Serwisu i przeznaczone są do korzystania ze stron internetowych Serwisu.</p>
-                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>2. Cele w jakich stosowane są cookies</h2>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>2. Cele w jakich stosowane są cookies</h2>
                 <p>Cookies używamy w celach analitycznych (Google Analytics), marketingowych (śledzenie konwersji i personalizacja reklam) oraz do zapewnienia prawidłowego funkcjonowania serwisu.</p>
                 <p>Jeśli trafisz na stronę z reklamy Google Ads, identyfikator kliknięcia (parametr <code>gclid</code>, <code>gbraid</code> lub <code>wbraid</code>) oraz parametry <code>utm_*</code> zapisujemy na czas sesji, a po wyrażeniu zgody marketingowej – w ciasteczku <code>aisc_attr</code> na 90 dni. Identyfikator dołączamy do zgłoszenia z formularza kontaktowego wyłącznie po to, aby zmierzyć skuteczność reklam (w tym przekazać do Google Ads informację, że zapytanie zakończyło się współpracą). Nie łączymy go z innymi danymi ani nie przekazujemy innym podmiotom.</p>
-                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>3. Zarządzanie plikami cookies</h2>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>3. Zarządzanie plikami cookies</h2>
                 <p>W wielu przypadkach oprogramowanie służące do przeglądania stron internetowych (przeglądarka internetowa) domyślnie dopuszcza przechowywanie plików cookies w urządzeniu końcowym Użytkownika. Użytkownicy Serwisu mogą dokonać w każdym czasie zmiany ustawień dotyczących plików cookies w swojej przeglądarce.</p>
-                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>4. Kontakt</h2>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>4. Kontakt</h2>
                 <p>W razie pytań dotyczących polityki cookies prosimy o <a href={homeHash('kontakt', lang)} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>kontakt</a>. Więcej o naszych usługach dowiesz się na stronach: <a href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>pozycjonowanie stron</a>, <a href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>projektowanie stron internetowych</a> oraz <a href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt SEO</a>.</p>
-                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>5. Zmiany w polityce cookies i prywatności</h2>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>5. Zmiany w polityce cookies i prywatności</h2>
                 <p>Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej polityce cookies, co może wynikać z rozwoju technologii internetowych, ewentualnych zmian prawa w zakresie ochrony danych osobowych oraz rozwoju naszego serwisu internetowego. O wszelkich zmianach będziemy informować w sposób widoczny i zrozumiały na naszej stronie głównej lub poprzez stosowne powiadomienia w przeglądarce. Użytkownicy zawsze mają nieograniczony dostęp do aktualnej wersji tego dokumentu na naszej witrynie. Dodatkowo, wszelkie modyfikacje wchodzą w życie z dniem ich publikacji, chyba że przepisy prawa stanowią inaczej. Przestrzeganie aktualnych dyrektyw jest dla nas najwyższym priorytetem, gwarantującym pełne bezpieczeństwo cyfrowe każdej interakcji.</p>
 
                 {/* Art. 13 RODO. Okresy przechowywania i kategorie odbiorców odpowiadają
                     faktycznemu stanowi serwisu (formularz kontaktowy + Google Analytics).
                     Do potwierdzenia przez dział prawny przy zmianie procesów. */}
-                <h2 style={{ marginTop: '3rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.75rem' }}>Polityka prywatności — informacja o przetwarzaniu danych osobowych</h2>
+                <h2 style={{ marginTop: '3rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.75rem' }}>Polityka prywatności – informacja o przetwarzaniu danych osobowych</h2>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Administrator danych</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Administrator danych</h3>
                 <p>Administratorem Twoich danych osobowych jest <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong> z siedzibą w Warszawie, ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego prowadzonego przez Sąd Rejonowy dla m.st. Warszawy w Warszawie pod numerem KRS 0001239983, NIP 5253090237, REGON 544761611.</p>
-                <p>Kontakt w sprawach ochrony danych: <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a> lub telefonicznie: <a href="tel:+48518815055" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>518 815 055</a>. Nie powołaliśmy Inspektora Ochrony Danych — we wszystkich sprawach dotyczących danych osobowych możesz kontaktować się bezpośrednio z administratorem.</p>
+                <p>Kontakt w sprawach ochrony danych: <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a> lub telefonicznie: <a href="tel:+48518815055" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>518 815 055</a>. Nie powołaliśmy Inspektora Ochrony Danych – we wszystkich sprawach dotyczących danych osobowych możesz kontaktować się bezpośrednio z administratorem.</p>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Cele i podstawy prawne przetwarzania</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Cele i podstawy prawne przetwarzania</h3>
                 <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
-                  <li><strong>Odpowiedź na zapytanie z formularza kontaktowego</strong> — podstawa: art. 6 ust. 1 lit. b RODO (działania podejmowane na Twoje żądanie przed zawarciem umowy) oraz art. 6 ust. 1 lit. f RODO (nasz prawnie uzasadniony interes polegający na prowadzeniu korespondencji handlowej).</li>
-                  <li><strong>Zawarcie i wykonanie umowy o świadczenie usług</strong> — podstawa: art. 6 ust. 1 lit. b RODO.</li>
-                  <li><strong>Wypełnienie obowiązków podatkowych i rachunkowych</strong> — podstawa: art. 6 ust. 1 lit. c RODO.</li>
-                  <li><strong>Analityka ruchu w serwisie (Google Analytics)</strong> — podstawa: art. 6 ust. 1 lit. a RODO, czyli Twoja zgoda wyrażona w banerze cookies. Do czasu jej udzielenia nie uruchamiamy skryptów analitycznych.</li>
-                  <li><strong>Ustalenie, dochodzenie lub obrona roszczeń</strong> — podstawa: art. 6 ust. 1 lit. f RODO.</li>
+                  <li><strong>Odpowiedź na zapytanie z formularza kontaktowego</strong> – podstawa: art. 6 ust. 1 lit. b RODO (działania podejmowane na Twoje żądanie przed zawarciem umowy) oraz art. 6 ust. 1 lit. f RODO (nasz prawnie uzasadniony interes polegający na prowadzeniu korespondencji handlowej).</li>
+                  <li><strong>Zawarcie i wykonanie umowy o świadczenie usług</strong> – podstawa: art. 6 ust. 1 lit. b RODO.</li>
+                  <li><strong>Wypełnienie obowiązków podatkowych i rachunkowych</strong> – podstawa: art. 6 ust. 1 lit. c RODO.</li>
+                  <li><strong>Analityka ruchu w serwisie (Google Analytics)</strong> – podstawa: art. 6 ust. 1 lit. a RODO, czyli Twoja zgoda wyrażona w banerze cookies. Do czasu jej udzielenia nie uruchamiamy skryptów analitycznych.</li>
+                  <li><strong>Ustalenie, dochodzenie lub obrona roszczeń</strong> – podstawa: art. 6 ust. 1 lit. f RODO.</li>
                 </ul>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Okres przechowywania danych</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Okres przechowywania danych</h3>
                 <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
-                  <li>Dane z formularza kontaktowego, które nie doprowadziły do zawarcia umowy — do 12 miesięcy od zakończenia korespondencji.</li>
-                  <li>Dane związane z realizacją umowy — przez czas jej trwania, a następnie przez okres przedawnienia roszczeń.</li>
-                  <li>Dokumentacja księgowa — 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku.</li>
-                  <li>Dane z cookies analitycznych — do 14 miesięcy od ostatniej wizyty albo do momentu wycofania zgody.</li>
+                  <li>Dane z formularza kontaktowego, które nie doprowadziły do zawarcia umowy – do 12 miesięcy od zakończenia korespondencji.</li>
+                  <li>Dane związane z realizacją umowy – przez czas jej trwania, a następnie przez okres przedawnienia roszczeń.</li>
+                  <li>Dokumentacja księgowa – 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku.</li>
+                  <li>Dane z cookies analitycznych – do 14 miesięcy od ostatniej wizyty albo do momentu wycofania zgody.</li>
                 </ul>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Odbiorcy danych i przekazywanie poza EOG</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Odbiorcy danych i przekazywanie poza EOG</h3>
                 <p>Twoje dane mogą być powierzane podmiotom przetwarzającym je na nasze zlecenie: dostawcy hostingu i infrastruktury serwerowej, dostawcy poczty elektronicznej, biuru rachunkowemu oraz dostawcy narzędzi analitycznych (Google Ireland Limited). Każdy z nich działa na podstawie umowy powierzenia przetwarzania.</p>
                 <p>W związku z korzystaniem z Google Analytics dane mogą być przekazywane do Stanów Zjednoczonych. Podstawą przekazania jest decyzja Komisji Europejskiej stwierdzająca odpowiedni stopień ochrony (EU–US Data Privacy Framework) lub standardowe klauzule umowne.</p>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Twoje prawa</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Twoje prawa</h3>
                 <p>Przysługuje Ci prawo do:</p>
                 <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
                   <li><strong>dostępu</strong> do swoich danych oraz otrzymania ich kopii,</li>
@@ -86,51 +86,51 @@ export default function CookiesContent() {
                   <li><strong>ograniczenia przetwarzania</strong>,</li>
                   <li><strong>przenoszenia danych</strong> do innego administratora,</li>
                   <li><strong>wniesienia sprzeciwu</strong> wobec przetwarzania opartego na prawnie uzasadnionym interesie,</li>
-                  <li><strong>cofnięcia zgody</strong> w dowolnym momencie — bez wpływu na zgodność z prawem przetwarzania dokonanego przed jej cofnięciem. Zgodę na cookies wycofasz w każdej chwili przyciskiem preferencji w rogu strony.</li>
+                  <li><strong>cofnięcia zgody</strong> w dowolnym momencie – bez wpływu na zgodność z prawem przetwarzania dokonanego przed jej cofnięciem. Zgodę na cookies wycofasz w każdej chwili przyciskiem preferencji w rogu strony.</li>
                 </ul>
                 <p>Jeżeli uznasz, że przetwarzamy Twoje dane niezgodnie z prawem, masz prawo wnieść skargę do organu nadzorczego: <strong>Prezes Urzędu Ochrony Danych Osobowych</strong>, ul. Stawki 2, 00-193 Warszawa.</p>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Dobrowolność podania danych i profilowanie</h3>
-                <p>Podanie danych jest dobrowolne, ale niezbędne, aby odpowiedzieć na zapytanie lub zawrzeć umowę — bez nich nie będziemy w stanie tego zrobić. Twoje dane nie służą do zautomatyzowanego podejmowania decyzji wywołujących wobec Ciebie skutki prawne, w tym do profilowania w rozumieniu art. 22 RODO.</p>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Dobrowolność podania danych i profilowanie</h3>
+                <p>Podanie danych jest dobrowolne, ale niezbędne, aby odpowiedzieć na zapytanie lub zawrzeć umowę – bez nich nie będziemy w stanie tego zrobić. Twoje dane nie służą do zautomatyzowanego podejmowania decyzji wywołujących wobec Ciebie skutki prawne, w tym do profilowania w rozumieniu art. 22 RODO.</p>
               </>
             ) : (
               <>
-                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>1. What are cookies?</h2>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>1. What are cookies?</h2>
                 <p>Cookies are IT data, in particular text files, which are stored on the Website User's end device and are intended for using the Website's pages.</p>
-                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>2. Purposes for which cookies are used</h2>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>2. Purposes for which cookies are used</h2>
                 <p>We use cookies for analytical purposes (Google Analytics), marketing (conversion tracking and ad personalization), and to ensure the proper functioning of the website.</p>
                 <p>If you arrive from a Google Ads advert, the click identifier (<code>gclid</code>, <code>gbraid</code> or <code>wbraid</code>) and <code>utm_*</code> parameters are kept for the session and, once you grant marketing consent, in the <code>aisc_attr</code> cookie for 90 days. The identifier is attached to your contact-form enquiry solely to measure advertising effectiveness (including reporting to Google Ads that an enquiry became a client). It is not combined with other data or shared with third parties.</p>
-                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.5rem' }}>3. Cookie management</h2>
+                <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>3. Cookie management</h2>
                 <p>In many cases, the software used for browsing websites (web browser) allows cookies to be stored on the User's end device by default. Website Users can change their cookie settings at any time in their browser.</p>
 
-                <h2 style={{ marginTop: '3rem', marginBottom: '1rem', color: '#0F172A', fontSize: '1.75rem' }}>Privacy policy — information on the processing of personal data</h2>
+                <h2 style={{ marginTop: '3rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.75rem' }}>Privacy policy – information on the processing of personal data</h2>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Data controller</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Data controller</h3>
                 <p>The controller of your personal data is <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong>, registered office at ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland, entered in the register of entrepreneurs of the National Court Register kept by the District Court for the Capital City of Warsaw under KRS number 0001239983, tax ID (NIP) 5253090237, statistical number (REGON) 544761611.</p>
-                <p>Data protection contact: <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a> or <a href="tel:+48518815055" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>+48 518 815 055</a>. We have not appointed a Data Protection Officer — please contact the controller directly on any data protection matter.</p>
+                <p>Data protection contact: <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a> or <a href="tel:+48518815055" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>+48 518 815 055</a>. We have not appointed a Data Protection Officer – please contact the controller directly on any data protection matter.</p>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Purposes and legal bases</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Purposes and legal bases</h3>
                 <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
-                  <li><strong>Answering enquiries sent through the contact form</strong> — Art. 6(1)(b) GDPR (steps taken at your request prior to entering into a contract) and Art. 6(1)(f) GDPR (our legitimate interest in conducting business correspondence).</li>
-                  <li><strong>Conclusion and performance of a service agreement</strong> — Art. 6(1)(b) GDPR.</li>
-                  <li><strong>Compliance with tax and accounting obligations</strong> — Art. 6(1)(c) GDPR.</li>
-                  <li><strong>Website analytics (Google Analytics)</strong> — Art. 6(1)(a) GDPR, your consent given in the cookie banner. Analytics scripts do not run until that consent is granted.</li>
-                  <li><strong>Establishing, exercising or defending legal claims</strong> — Art. 6(1)(f) GDPR.</li>
+                  <li><strong>Answering enquiries sent through the contact form</strong> – Art. 6(1)(b) GDPR (steps taken at your request prior to entering into a contract) and Art. 6(1)(f) GDPR (our legitimate interest in conducting business correspondence).</li>
+                  <li><strong>Conclusion and performance of a service agreement</strong> – Art. 6(1)(b) GDPR.</li>
+                  <li><strong>Compliance with tax and accounting obligations</strong> – Art. 6(1)(c) GDPR.</li>
+                  <li><strong>Website analytics (Google Analytics)</strong> – Art. 6(1)(a) GDPR, your consent given in the cookie banner. Analytics scripts do not run until that consent is granted.</li>
+                  <li><strong>Establishing, exercising or defending legal claims</strong> – Art. 6(1)(f) GDPR.</li>
                 </ul>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Retention periods</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Retention periods</h3>
                 <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
-                  <li>Contact form data that did not lead to a contract — up to 12 months after the correspondence ends.</li>
-                  <li>Data related to performing a contract — for its duration and then until claims become time-barred.</li>
-                  <li>Accounting records — 5 years from the end of the calendar year in which the tax payment deadline fell.</li>
-                  <li>Analytics cookie data — up to 14 months from your last visit, or until consent is withdrawn.</li>
+                  <li>Contact form data that did not lead to a contract – up to 12 months after the correspondence ends.</li>
+                  <li>Data related to performing a contract – for its duration and then until claims become time-barred.</li>
+                  <li>Accounting records – 5 years from the end of the calendar year in which the tax payment deadline fell.</li>
+                  <li>Analytics cookie data – up to 14 months from your last visit, or until consent is withdrawn.</li>
                 </ul>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Recipients and transfers outside the EEA</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Recipients and transfers outside the EEA</h3>
                 <p>Your data may be entrusted to processors acting on our instructions: hosting and server infrastructure providers, e-mail providers, our accounting office, and the provider of analytics tools (Google Ireland Limited). Each acts under a data processing agreement.</p>
                 <p>Because we use Google Analytics, data may be transferred to the United States on the basis of the European Commission adequacy decision (EU–US Data Privacy Framework) or standard contractual clauses.</p>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Your rights</h3>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Your rights</h3>
                 <p>You have the right to:</p>
                 <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
                   <li><strong>access</strong> your data and obtain a copy of it,</li>
@@ -143,8 +143,8 @@ export default function CookiesContent() {
                 </ul>
                 <p>If you believe we process your data unlawfully, you may lodge a complaint with the supervisory authority: <strong>President of the Personal Data Protection Office</strong> (Prezes Urzędu Ochrony Danych Osobowych), ul. Stawki 2, 00-193 Warsaw, Poland.</p>
 
-                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: '#0F172A', fontSize: '1.2rem' }}>Voluntary nature of providing data and profiling</h3>
-                <p>Providing your data is voluntary but necessary for us to answer your enquiry or enter into a contract — without it we cannot do so. Your data is not used for automated decision-making producing legal effects concerning you, including profiling within the meaning of Art. 22 GDPR.</p>
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Voluntary nature of providing data and profiling</h3>
+                <p>Providing your data is voluntary but necessary for us to answer your enquiry or enter into a contract – without it we cannot do so. Your data is not used for automated decision-making producing legal effects concerning you, including profiling within the meaning of Art. 22 GDPR.</p>
               </>
             )}
           </div>

@@ -55,7 +55,7 @@ const faqData = [
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
     questionEn: 'How does local SEO differ from traditional SEO?',
     answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów. Oba podejścia łączymy: zakres ogólnopolski opisujemy na stronie o <a href="/pozycjonowanie-stron-internetowych" style="text-decoration:underline">pozycjonowaniu stron</a>.',
-    answerEn: 'Local SEO (or local search engine optimization) focuses on the "Local Pack"—results from Google Maps—and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
+    answerEn: 'Local SEO (or local search engine optimization) focuses on the "Local Pack"–results from Google Maps – and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
   },
   {
     // Nowe (LO1, OP-10): 40 słów; „ile kosztuje pozycjonowanie lokalne” 10/mies. (DataForSEO, 4.11.2026).
@@ -102,7 +102,7 @@ const portfolioCases = [
     imgAltEn: 'Local SEO',
     imgTitle: 'Pozycjonowanie lokalne',
     imgTitleEn: 'Local SEO Company',
-    gradient: 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
+    gradient: 'linear-gradient(135deg, var(--w-tusz) 0%, #1E1B4B 50%, #312E81 100%)',
     metric: '+150%',
     metricLabel: 'Wyświetlenia',
     metricLabelEn: 'Views',
@@ -115,7 +115,7 @@ const portfolioCases = [
     tagEn: 'NAP SIGNALS & CITATIONS',
     title: 'Budowanie Autorytetu Lokalnego',
     titleEn: 'Building Local Authority',
-    description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Pilnujemy, żeby nazwa, adres i telefon były wszędzie identyczne — to mocny sygnał zaufania dla Google.',
+    description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Pilnujemy, żeby nazwa, adres i telefon były wszędzie identyczne – to mocny sygnał zaufania dla Google.',
     descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We keep the Name, Address and Phone identical everywhere, which is a powerful trust signal for Google.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
     decorative: true,
@@ -220,7 +220,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
           <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Reveal>
-            <div style={{ fontSize: '0.85rem', color: '#86868B', marginBottom: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>Search Engine Optimization - Local SEO Warsaw</div>
+            <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.75rem', color: 'var(--w-tusz-2)', marginBottom: '0.5rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 400 }}>Search Engine Optimization - Local SEO Warsaw</div>
               <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
                 {lang === 'pl' ? 'SEO Warszawa. Konkurent wyżej?' : 'LOCAL B2B & B2C MARKETING'}
               </div>
@@ -262,18 +262,18 @@ export default async function SeoLokalneWarszawaPage({ params }) {
 
               <p className="hero-lead" style={{ 
                 fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
-                color: '#333336', 
+                color: 'var(--color-text-main)', 
                 lineHeight: 1.6, 
                 maxWidth: '700px', 
                 margin: '0 auto 3rem auto',
                 fontWeight: 400
               }}>
                 {lang === 'pl' 
-                  ? <>Pozycjonowanie stron w Warszawie od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc. Wizytówka Google, Mapy i wyniki organiczne dla firm z Warszawy — skuteczne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> bez wieloletnich umów.</>
+                  ? <>Pozycjonowanie stron w Warszawie od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc. Wizytówka Google, Mapy i wyniki organiczne dla firm z Warszawy – skuteczne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> bez wieloletnich umów.</>
                   : <>Harness the power of local searches. Effective optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
               </p>
               {/* Obietnice z nagłówków RSA w pierwszym ekranie. */}
-              <p className="hero-proof" style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: '#6E6E73' }}>
+              <p className="hero-proof" style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: 'var(--w-tusz-2)' }}>
                 {lang === 'pl'
                   ? '✓ Wizytówka Google w cenie · ✓ Raport co miesiąc · ✓ Odpowiedź w 24 h w dni robocze'
                   : '✓ Google Business Profile included · ✓ Monthly report · ✓ Reply within 24 h on business days'}
@@ -289,7 +289,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 </a>
               </div>
               {/* OP-14: autor i data (LASTMOD); na /en Byline nic nie renderuje. */}
-              <Byline sciezka="/seo-lokalne-warszawa" style={{ margin: '2rem 0 0' }} />
+              <Byline sciezka="/seo-lokalne-warszawa" style={{ margin: '2rem auto 0', order: 6 }} />
             </Reveal>
           </div>
         </section>
@@ -310,10 +310,10 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <section style={{ padding: '120px 0' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-              <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-                {lang === 'pl' ? 'Pozycjonowanie stron w Warszawie — dlaczego lokalnie?' : 'Why Local SEO & Search Engine Optimization Matters'}
+              <h2 className={lang === 'pl' ? 'bez-kropki' : undefined} style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+                {lang === 'pl' ? 'Pozycjonowanie stron w Warszawie – dlaczego lokalnie?' : 'Why Local SEO & Search Engine Optimization Matters'}
               </h2>
-              <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+              <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
                 {lang === 'pl'
                   ? 'Zrozum, jak zachowują się użytkownicy smartfonów poszukujący usług.'
                   : 'Understand how smartphone users behave when they search for services near them.'}
@@ -321,35 +321,35 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               {/* OP-09 (link 21): osłabia kanibalizację „pozycjonowanie stron warszawa” ze stroną główną;
                   anchor zgodny z istniejącym „agencja seo warszawa” → /. Bez nowego H2 z „Warszawa” (G1). */}
               {lang === 'pl' && (
-                <p style={{ fontSize: '1.05rem', color: '#333336', margin: '1rem auto 0 auto', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '1.05rem', color: 'var(--color-text-main)', margin: '1rem auto 0 auto', lineHeight: 1.6 }}>
                   Jeśli szukasz agencji do pozycjonowania całej strony, a nie tylko widoczności w okolicy, zobacz, jak pracuje nasza <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>agencja SEO w Warszawie</Link>.
                 </p>
               )}
             </Reveal>
 
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 1' : 'RULE 1'}</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Searches with local intent'}</h3>
-                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>Over 46% of all Google searches have a local intent, which means those customers are ready to call or visit straight away. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
+                <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>Over 46% of all Google searches have a local intent, which means those customers are ready to call or visit straight away. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 2' : 'RULE 2'}</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Widoczność Mobilna' : 'Mobile visibility'}</h3>
-                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Dominacja na urządzeniach mobilnych to klucz w branżach lokalnych (gastronomia, usługi prawne, beauty), gdzie decyzje podejmuje się "w drodze".' : 'Mobile dominance is key in local industries (gastronomy, legal services, beauty), where decisions are made on the go.'}</p>
+                <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Dominacja na urządzeniach mobilnych to klucz w branżach lokalnych (gastronomia, usługi prawne, beauty), gdzie decyzje podejmuje się "w drodze".' : 'Mobile dominance is key in local industries (gastronomy, legal services, beauty), where decisions are made on the go.'}</p>
               </RevealItem>
               
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 3' : 'RULE 3'}</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'High conversion rate'}</h3>
-                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Ruch z Map Google cechuje się jednym z najwyższych wskaźników konwersji ze wszystkich cyfrowych kanałów marketingowych.' : 'Traffic from Google Maps is characterized by one of the highest conversion rates of all digital marketing channels.'}</p>
+                <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Ruch z Map Google cechuje się jednym z najwyższych wskaźników konwersji ze wszystkich cyfrowych kanałów marketingowych.' : 'Traffic from Google Maps is characterized by one of the highest conversion rates of all digital marketing channels.'}</p>
               </RevealItem>
             </RevealStagger>
             {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
             <div style={{ textAlign: 'center', marginTop: '3rem' }}>
               <a href={hash('kontakt', locale)} className="btn btn-primary" data-cta="service_mid_warszawa_1">
-                {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+                {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w 24 h' : 'Ask for a quote – reply within 24 h'}
               </a>
             </div>
           </div>
@@ -364,18 +364,18 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
                 {lang === 'pl' ? 'Pozycjonowanie lokalne w Warszawie dzielnica po dzielnicy' : 'Local SEO in Warsaw, district by district'}
               </h2>
-              <p style={{ fontSize: '1.1rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500, lineHeight: 1.6 }}>
+              <p style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500, lineHeight: 1.6 }}>
                 {lang === 'pl'
-                  ? 'W pakiecie lokalnym Google największą wagę ma odległość użytkownika od firmy. Dlatego w Warszawie nie ma jednej strategii — inaczej wygląda walka o widoczność w Śródmieściu, a inaczej na Ursynowie.'
+                  ? 'W pakiecie lokalnym Google największą wagę ma odległość użytkownika od firmy. Dlatego w Warszawie nie ma jednej strategii – inaczej wygląda walka o widoczność w Śródmieściu, a inaczej na Ursynowie.'
                   : 'In the Google local pack, the distance between the user and the business carries the most weight. That is why Warsaw has no single strategy: competing in Srodmiescie looks nothing like competing in Ursynow.'}
               </p>
             </Reveal>
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Śródmieście i Wola' : 'Srodmiescie and Wola'}
                   </h3>
-                  <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.6 }}>
+                  <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
                     {lang === 'pl' ? 'Najgęstszy rynek biurowy w Polsce. W promieniu kilometra od Ronda ONZ o te same frazy walczy kilkadziesiąt firm z jednej branży, więc o miejsce w pakiecie lokalnym nie decyduje już odległość, tylko liczba i świeżość opinii oraz kompletność wizytówki.' : 'The densest office market in Poland. Within a kilometre of Rondo ONZ dozens of companies from one industry compete for the same phrases, so the local pack is decided by the number and freshness of reviews and by profile completeness, not by distance.'}
                   </p>
                 </RevealItem>
@@ -383,7 +383,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Mokotów i Służewiec' : 'Mokotow and Sluzewiec'}
                   </h3>
-                  <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.6 }}>
+                  <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
                     {lang === 'pl' ? 'Dzielnica biurowa o wyraźnym rytmie dnia: szczyt wyszukiwań przypada na godziny pracy, a zapytania mają charakter „teraz i blisko". Kluczowe są aktualne godziny otwarcia, zdjęcia wnętrza i możliwość dojścia pieszo w kilka minut.' : 'An office district with a clear daily rhythm: searches peak during working hours and the intent is immediate and local. Accurate opening hours, interior photos and a few minutes\' walking distance decide the outcome.'}
                   </p>
                 </RevealItem>
@@ -391,7 +391,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Ursynów, Wilanów, Białołęka' : 'Ursynow, Wilanow and Bialoleka'}
                   </h3>
-                  <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.6 }}>
+                  <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
                     {lang === 'pl' ? 'Rynki mieszkaniowe: mniejsza konkurencja i wyższa konwersja niż w centrum. To tutaj najszybciej wchodzi się do TOP 3 Map, bo o wyniku decyduje promień i opinie od osób z sąsiedztwa.' : 'Residential markets with less competition and higher conversion than the centre. This is where a business reaches the Maps top three fastest, because proximity and neighbourhood reviews carry most of the weight.'}
                   </p>
                 </RevealItem>
@@ -399,22 +399,22 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Praga-Południe i Praga-Północ' : 'Praga-Poludnie and Praga-Polnoc'}
                   </h3>
-                  <p style={{ color: '#333336', fontSize: '1.05rem', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Gastronomia, rzemiosło i usługi. Konkurencja rośnie, ale nasycenie dobrze prowadzonymi wizytówkami wciąż jest niskie — regularne posty i odpowiedzi na opinie dają tu przewagę szybciej niż gdziekolwiek indziej w mieście.' : 'Restaurants, crafts and services. Competition is growing, but the share of well-run business profiles is still low, so regular posts and replies to reviews build an advantage faster here than anywhere else in the city.'}
+                  <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
+                    {lang === 'pl' ? 'Gastronomia, rzemiosło i usługi. Konkurencja rośnie, ale nasycenie dobrze prowadzonymi wizytówkami wciąż jest niskie – regularne posty i odpowiedzi na opinie dają tu przewagę szybciej niż gdziekolwiek indziej w mieście.' : 'Restaurants, crafts and services. Competition is growing, but the share of well-run business profiles is still low, so regular posts and replies to reviews build an advantage faster here than anywhere else in the city.'}
                   </p>
                 </RevealItem>
             </RevealStagger>
             <Reveal>
-              <p style={{ maxWidth: '820px', margin: '3rem auto 0 auto', color: '#333336', fontSize: '1.05rem', lineHeight: 1.65, textAlign: 'center' }}>
+              <p style={{ maxWidth: '820px', margin: '3rem auto 0 auto', color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.65, textAlign: 'center' }}>
                 {lang === 'pl'
-                  ? 'Jeśli obsługujesz klientów w całym mieście i nie masz lokalu z obsługą, konfigurujemy wizytówkę jako Service Area Business z obszarem obejmującym wszystkie dzielnice — wtedy o widoczność walczymy zasięgiem i opiniami, a nie adresem.'
-                  : 'If you serve the whole city and have no walk-in location, we set the profile up as a Service Area Business covering every district — then visibility is won with service area and reviews rather than with an address.'}
+                  ? 'Jeśli obsługujesz klientów w całym mieście i nie masz lokalu z obsługą, konfigurujemy wizytówkę jako Service Area Business z obszarem obejmującym wszystkie dzielnice – wtedy o widoczność walczymy zasięgiem i opiniami, a nie adresem.'
+                  : 'If you serve the whole city and have no walk-in location, we set the profile up as a Service Area Business covering every district – then visibility is won with service area and reviews rather than with an address.'}
               </p>
             </Reveal>
             {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
             <div style={{ textAlign: 'center', marginTop: '3rem' }}>
               <a href={hash('kontakt', locale)} className="btn btn-primary" data-cta="service_mid_warszawa_2">
-                {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w 24 h' : 'Ask for a quote — reply within 24 h'}
+                {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w 24 h' : 'Ask for a quote – reply within 24 h'}
               </a>
             </div>
           </div>
@@ -430,7 +430,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
                   Jak mierzymy pozycjonowanie lokalne: siatka 7×7 w Mapach Google
                 </h2>
-                <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.65, marginBottom: '2rem' }}>
+                <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.65, marginBottom: '2rem' }}>
                   Pozycja wizytówki w Mapach Google zależy od tego, gdzie stoi szukający. Dlatego co 14 dni sprawdzamy ją w siatce 7×7, czyli w 49 punktach wokół adresu firmy, a wynik widzisz w panelu klienta jako mapę. Od razu widać, w których miejscach wokół firmy jesteś w TOP 3, a gdzie wizytówka jeszcze nie wchodzi do pakietu lokalnego.
                 </p>
                 <figure style={{ margin: 0 }}>
@@ -440,14 +440,14 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                     width={1600}
                     height={1025}
                     sizes="(max-width: 960px) 100vw, 900px"
-                    style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '20px', boxShadow: '0 24px 60px rgba(15, 23, 42, 0.14)' }}
+                    style={{ width: '100%', height: 'auto', aspectRatio: '1600 / 940', objectFit: 'cover', objectPosition: 'top', display: 'block', borderRadius: '12px', boxShadow: 'none', border: '1px solid var(--w-linia)' }}
                   />
-                  <figcaption style={{ marginTop: '0.75rem', fontSize: '0.9rem', lineHeight: 1.5, color: '#6E6E73' }}>
+                  <figcaption style={{ marginTop: '0.75rem', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>
                     Panel klienta, dane przykładowe: zielone punkty to miejsca, z których wizytówka jest w TOP 3 Map.
                   </figcaption>
                 </figure>
                 {HREF_L1 && (
-                  <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.65, margin: '2rem 0 0 0' }}>
+                  <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.65, margin: '2rem 0 0 0' }}>
                     Pracę nad samym Profilem Firmy w Google, od kategorii po posty i opinie, opisujemy osobno na stronie <Link href={HREF_L1} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>pozycjonowanie wizytówki Google</Link>.
                   </p>
                 )}
@@ -457,22 +457,22 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         )}
 
         {/* Local SEO Strategy Section */}
-        <section style={{ padding: '80px 0', background: '#F5F5F7' }}>
+        <section style={{ padding: '80px 0', background: 'var(--w-papier-2)' }}>
             <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
               <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
                 <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
                   {lang === 'pl' ? 'Lokalna Optymalizacja Wyszukiwarek' : 'Local Search Engine Optimization'}
                 </h2>
-                <p style={{ fontSize: '1.1rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+                <p style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
                   {lang === 'pl' ? 'Zaawansowane strategie dla firm szukających lokalnych rozwiązań SEO.' : 'Advanced strategies for businesses looking for local SEO solutions.'}
                 </p>
               </Reveal>
-              <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+              <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                     {lang === 'pl' ? 'Firma SEO w Twojej Okolicy' : 'A local SEO company'}
                   </h3>
-                  <p style={{ color: '#333336', lineHeight: 1.6 }}>
+                  <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
                     {lang === 'pl' ? 'Znalezienie wiarygodnego partnera jest kluczowe. Zapewniamy eksperckie strategie dominacji na lokalnym rynku, trafiając do klientów szukających usług w Twojej okolicy.' : 'Finding a reliable partner is crucial. If you are searching for SEO near me, we provide expert strategies to dominate your local market.'}
                   </p>
                 </RevealItem>
@@ -480,8 +480,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                     {lang === 'pl' ? 'Najlepsze Lokalne SEO' : 'Leading local SEO'}
                   </h3>
-                  <p style={{ color: '#333336', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Nie gwarantujemy pozycji nr 1 — Google nas o zdanie nie pyta. Obiecujemy plan, robotę, panel klienta z mapami i wynikami organicznymi na bieżąco, comiesięczny raport oraz cel TOP 3 dla uzgodnionych fraz w 2–3 miesiące. Dedykowane usługi lokalnego SEO dopasowane do Twojego obszaru.' : 'We do not guarantee the #1 spot — Google does not ask our opinion. We promise a plan, the work, a client portal with map pack and organic results, a monthly report and a TOP 3 goal for agreed keywords within 2–3 months. Dedicated local SEO services tailored to your area.'}
+                  <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
+                    {lang === 'pl' ? 'Nie gwarantujemy pozycji nr 1 – Google nas o zdanie nie pyta. Obiecujemy plan, robotę, panel klienta z mapami i wynikami organicznymi na bieżąco, comiesięczny raport oraz cel TOP 3 dla uzgodnionych fraz w 2–3 miesiące. Dedykowane usługi lokalnego SEO dopasowane do Twojego obszaru.' : 'We do not guarantee the #1 spot – Google does not ask our opinion. We promise a plan, the work, a client portal with map pack and organic results, a monthly report and a TOP 3 goal for agreed keywords within 2–3 months. Dedicated local SEO services tailored to your area.'}
                   </p>
                 </RevealItem>
               </RevealStagger>
@@ -492,8 +492,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <SubpagePortfolio
           title={lang === 'pl' ? 'Sektor Strategii Lokalnych' : 'Local Strategy Sector'}
           subtitle={lang === 'pl'
-            ? 'Poznaj kluczowe obszary, w których budujemy widoczność firm w wynikach w Warszawie — przykładowe scenariusze, ilustracja metody, nie wyniki konkretnych klientów'
-            : 'The key areas of local search engine optimization we use to build companies\' visibility in the Warsaw results — illustrative scenarios of the method, not results of specific clients'}
+            ? 'Poznaj kluczowe obszary, w których budujemy widoczność firm w wynikach w Warszawie – przykładowe scenariusze, ilustracja metody, nie wyniki konkretnych klientów'
+            : 'The key areas of local search engine optimization we use to build companies\' visibility in the Warsaw results – illustrative scenarios of the method, not results of specific clients'}
           cases={portfolioCases}
           layout="vertical"
         />

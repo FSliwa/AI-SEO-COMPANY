@@ -20,7 +20,7 @@ const tabelaStyl = {
   borderCollapse: 'collapse',
   fontSize: '0.95rem',
   lineHeight: 1.5,
-  color: '#333336',
+  color: 'var(--color-text-main)',
   background: '#FFFFFF',
 };
 const captionStyl = {
@@ -35,23 +35,23 @@ const thKolumnaStyl = {
   textAlign: 'left',
   verticalAlign: 'bottom',
   padding: '0.75rem 1rem',
-  borderBottom: '2px solid #D2D2D7',
+  borderBottom: '2px solid var(--w-linia)',
   fontWeight: 700,
   color: 'var(--color-text-dark)',
-  background: '#F5F5F7',
+  background: 'var(--w-papier-2)',
 };
 const thWierszStyl = {
   textAlign: 'left',
   verticalAlign: 'top',
   padding: '0.75rem 1rem',
-  borderBottom: '1px solid #E5E5EA',
+  borderBottom: '1px solid var(--w-linia)',
   fontWeight: 600,
   color: 'var(--color-text-dark)',
 };
 const tdStyl = {
   verticalAlign: 'top',
   padding: '0.75rem 1rem',
-  borderBottom: '1px solid #E5E5EA',
+  borderBottom: '1px solid var(--w-linia)',
 };
 
 export default function CompareTable({ caption, columns, rows, id, przypis, minWidth }) {
@@ -88,7 +88,7 @@ export default function CompareTable({ caption, columns, rows, id, przypis, minW
           </tbody>
         </table>
       </div>
-      {przypis && <p style={{ margin: '0.6rem 0 0', fontSize: '0.85rem', lineHeight: 1.5, color: '#6E6E73' }}>{przypis}</p>}
+      {przypis && <p style={{ margin: '0.6rem 0 0', fontSize: '0.85rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>{przypis}</p>}
     </div>
   );
 }

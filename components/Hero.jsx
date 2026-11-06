@@ -28,22 +28,22 @@ import { hash } from '@/lib/anchors';
 /**
  * Hero copy per locale.
  *
- * Polish is not a translation of the English — it is the wording that was
+ * Polish is not a translation of the English – it is the wording that was
  * already on the Polish hero, redistributed. The old H1 read "Kompleksowa
  * Agencja SEO i Marketingowa z Warszawy. Twój projekt i strony to nasz
  * priorytet - skuteczne pozycjonowanie napędzające wzrost" and is preserved
  * whole across `sub` and `lead`. `display` and `body` were previously baked
- * into the SVG artwork as paths, so they existed as pixels and not as text —
+ * into the SVG artwork as paths, so they existed as pixels and not as text –
  * moving them here turns them into indexable HTML for the first time.
  *
  * `wide` clauses are the ones phones do not get. They deliberately carry no
  * keyword of their own: everything that ranks lives in the shared sentences, so
- * the shortened mobile rendering — the one mobile-first indexing reads — is not
+ * the shortened mobile rendering – the one mobile-first indexing reads – is not
  * missing a single phrase.
  */
 /* The lead and the body are segment lists now, not strings. Segments marked
    `wide: true` render inside .hero-en-wide-only spans, which phones (and the
-   squeezed near-square desktop) hide — so the two readings are maintained in
+   squeezed near-square desktop) hide – so the two readings are maintained in
    ONE place and the mobile text is a grammatical subsequence of the wide one
    by construction. The full wide string (also the arc's input) is derived by
    joining every segment, so the two variants cannot drift apart. Every cut is
@@ -112,24 +112,25 @@ export default function Hero() {
   const linia2 = lang === 'pl' ? displayReszta.join(' ') : copy.display;
 
   return (
-    <section className="hero-makieta" id="hero">
-      <div className="hero-makieta-grafika" aria-hidden="true">
+    <section className="hero-makieta" id="hero" data-petla="">
+      <div className="hero-makieta-grafika" aria-hidden="true" data-kursor="obraz">
         <Image
           src="/images/wyglad/hero-antena.webp"
           alt=""
           fill
           priority
-          sizes="(max-width: 900px) 100vw, 72vw"
+          data-kursor-zrodlo=""
+          sizes="100vw"
           style={{ objectFit: 'cover', objectPosition: 'right bottom' }}
         />
       </div>
       {/* Luki sygnalu z makiety - czysta dekoracja SVG, w pomaranczu zamiast fioletu. */}
       <svg className="hero-makieta-luki" viewBox="0 0 900 700" aria-hidden="true" focusable="false">
-        <path d="M120 690 C 160 380 360 120 700 30" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.35" />
-        <path d="M250 520 C 300 330 450 170 760 110" fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="6 8" opacity="0.5" />
-        <path d="M330 470 C 390 300 560 140 860 90" fill="none" stroke="currentColor" strokeWidth="9" strokeLinecap="round" opacity="0.9" />
-        <circle cx="474" cy="268" r="6" fill="currentColor" />
-        <circle cx="236" cy="420" r="4" fill="currentColor" opacity="0.7" />
+        <path className="luk luk--cienki" pathLength="1" d="M120 690 C 160 380 360 120 700 30" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.35" />
+        <path className="luk luk--sygnal" pathLength="1" d="M250 520 C 300 330 450 170 760 110" fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="0.012 0.018" opacity="0.5" />
+        <path className="luk luk--gruby" pathLength="1" d="M330 470 C 390 300 560 140 860 90" fill="none" stroke="currentColor" strokeWidth="9" strokeLinecap="round" opacity="0.9" />
+        <circle className="luk-kropka" cx="474" cy="268" r="6" fill="currentColor" />
+        <circle className="luk-kropka luk-kropka--2" cx="236" cy="420" r="4" fill="currentColor" opacity="0.7" />
       </svg>
 
       <div className="container hero-makieta-tresc">

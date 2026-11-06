@@ -12,12 +12,12 @@ const methodologyStages = [
     id: 1,
     brandName: 'KROK 1',
     brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         KROK 1
       </span>
     ),
     brandLogoEn: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         STEP 1
       </span>
     ),
@@ -33,12 +33,12 @@ const methodologyStages = [
     id: 2,
     brandName: 'KROK 2',
     brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         KROK 2
       </span>
     ),
     brandLogoEn: (
-      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         STEP 2
       </span>
     ),
@@ -56,12 +56,12 @@ const methodologyStages = [
     id: 3,
     brandName: 'KROK 3',
     brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         KROK 3
       </span>
     ),
     brandLogoEn: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
         STEP 3
       </span>
     ),
@@ -164,10 +164,10 @@ export default function AboutMethodology() {
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZA METODOLOGIA' : 'OUR METHODOLOGY'}
           </div>
-          <h2 style={{ color: '#1D1D1F', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
+          <h2 style={{ color: 'var(--w-tusz)', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
             {lang === 'pl' ? 'Trzy etapy do dominacji w Google' : 'Three steps to Google dominance'}
           </h2>
-          <p style={{ color: '#6E6E73', fontSize: '1.25rem', fontWeight: 500 }}>
+          <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.25rem', fontWeight: 500 }}>
             {lang === 'pl' ? 'Poznaj proces, dzięki któremu wprowadzamy marki na szczyt wyników wyszukiwania.' : 'Explore the process that takes brands to the top of search results.'}
           </p>
         </Reveal>
@@ -265,7 +265,6 @@ export default function AboutMethodology() {
                         alt="Project screenshot" 
                         fill
                         style={{ 
-                          marginTop: '-75px',
                           objectFit: 'cover', 
                           objectPosition: 'top' 
                         }} 
@@ -375,7 +374,7 @@ export default function AboutMethodology() {
           </RevealStagger>
           
           <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
-            <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: 'var(--w-papier-2)', borderRadius: '30px', alignItems: 'center' }}>
               {methodologyStages.map((_, idx) => (
                 <motion.button
                   className="whyus-dot"
@@ -385,7 +384,7 @@ export default function AboutMethodology() {
                   onClick={() => scrollTo(idx)}
                   animate={{
                     width: activeIndex === idx ? '36px' : '8px',
-                    backgroundColor: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
+                    backgroundColor: activeIndex === idx ? 'var(--w-tusz)' : '#B0B0B5',
                     borderRadius: activeIndex === idx ? '8px' : '50%'
                   }}
                   transition={{
@@ -411,7 +410,7 @@ export default function AboutMethodology() {
               data-autoplay-toggle=""
               onClick={() => setIsAutoplay(!isAutoplay)}
               style={{ 
-                background: '#E8E8ED', 
+                background: 'var(--w-papier-2)', 
                 border: 'none', 
                 borderRadius: '50%', 
                 width: '44px', 

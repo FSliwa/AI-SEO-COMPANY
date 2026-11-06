@@ -46,7 +46,7 @@ export default async function ArticleGTM({ params }) {
   ];
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       {/* 5.11.2026: dateModified = LASTMOD (tresc PL realnie zmieniona: 2 nowe H2 z wdrozenia 4.11). */}
       <ArticleSchema
@@ -60,10 +60,10 @@ export default async function ArticleGTM({ params }) {
           
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Analytics & GTM
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 {locale === 'en' ? 'August 07, 2026' : '07 Sierpnia 2026'}
               </span>
             </div>
@@ -71,7 +71,7 @@ export default async function ArticleGTM({ params }) {
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
-              color: '#1D1D1F', 
+              color: 'var(--w-tusz)', 
               marginBottom: '2rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
@@ -84,7 +84,7 @@ export default async function ArticleGTM({ params }) {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </div>
             
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -126,7 +126,7 @@ export default async function ArticleGTM({ params }) {
                   <p>Konfiguracja zdarzenia w GTM dla GA4 opiera się na typie tagu „Google Analytics: Zdarzenie GA4“ i wymaga kilku konkretnych kroków.</p>
 
                   <h3>Krok 1: Google Tag jako fundament</h3>
-                  <p>Zanim stworzysz jakikolwiek tag zdarzenia, kontener musi zawierać Google Tag z Measurement ID. Wejdź do GTM, utwórz nowy tag, wybierz typ Google Tag (dawniej „Google Analytics: Konfiguracja GA4") i wklej swój identyfikator Measurement ID (uwaga: w obecnym interfejsie GTM to pole nosi nazwę “Tag ID” lub “Identyfikator tagu”). Jako wyzwalacz przypisz Initialization – All Pages (nie zwykłe „All Pages") — dzięki temu Google Tag załaduje się przed wszystkimi pozostałymi tagami w kontenerze. Najlepiej przechowuj Measurement ID jako zmienną stałą (Constant Variable) o nazwie np. <code>GA4 - Measurement ID</code> — wtedy zmiana ID w jednym miejscu aktualizuje wszystkie tagi.</p>
+                  <p>Zanim stworzysz jakikolwiek tag zdarzenia, kontener musi zawierać Google Tag z Measurement ID. Wejdź do GTM, utwórz nowy tag, wybierz typ Google Tag (dawniej „Google Analytics: Konfiguracja GA4") i wklej swój identyfikator Measurement ID (uwaga: w obecnym interfejsie GTM to pole nosi nazwę “Tag ID” lub “Identyfikator tagu”). Jako wyzwalacz przypisz Initialization – All Pages (nie zwykłe „All Pages") – dzięki temu Google Tag załaduje się przed wszystkimi pozostałymi tagami w kontenerze. Najlepiej przechowuj Measurement ID jako zmienną stałą (Constant Variable) o nazwie np. <code>GA4 - Measurement ID</code> – wtedy zmiana ID w jednym miejscu aktualizuje wszystkie tagi.</p>
 
                   <h3>Krok 2: nowy tag zdarzenia</h3>
                   <p>Utwórz nowy tag, wybierz typ „Google Analytics: Zdarzenie GA4“. W polu <strong>Measurement ID</strong> wklej identyfikator (lub wskaż zmienną stałą, np. <code>&#123;&#123;GA4 - Measurement ID&#125;&#125;</code>). Wpisz nazwę zdarzenia, np. <code>form_submit</code>. Pamiętaj: GA4 rozróżnia wielkość liter, więc <code>Form_Submit</code> i <code>form_submit</code> to dwa różne zdarzenia w raportach.</p>
@@ -180,10 +180,10 @@ export default async function ArticleGTM({ params }) {
                   <h3>Krok 4: wyzwalacz</h3>
                   <p>Wybierz lub utwórz wyzwalacz. Najczęstsze typy:</p>
                   <ul>
-                    <li><strong>Kliknięcie linku</strong> — gdy śledzisz kliknięcia w CTA</li>
-                    <li><strong>Wysłanie formularza</strong> — dla leadów i rejestracji</li>
-                    <li><strong>Element widoczny</strong> — dla zdarzeń scroll depth lub widoczności sekcji</li>
-                    <li><strong>Custom Event</strong> — gdy <code>dataLayer.push</code> zawiera pole <code>event</code> z konkretną nazwą</li>
+                    <li><strong>Kliknięcie linku</strong> – gdy śledzisz kliknięcia w CTA</li>
+                    <li><strong>Wysłanie formularza</strong> – dla leadów i rejestracji</li>
+                    <li><strong>Element widoczny</strong> – dla zdarzeń scroll depth lub widoczności sekcji</li>
+                    <li><strong>Custom Event</strong> – gdy <code>dataLayer.push</code> zawiera pole <code>event</code> z konkretną nazwą</li>
                   </ul>
 
                   <h3>Przykład kodu dataLayer.push</h3>
@@ -201,7 +201,7 @@ window.dataLayer.push({
   }
 });`}</code></pre>
 
-                  <p>Jeśli push następuje po akcji użytkownika (np. kliknięcie przycisku), możesz go umieścić w handlerze zdarzenia — GTM odbierze go asynchronicznie.</p>
+                  <p>Jeśli push następuje po akcji użytkownika (np. kliknięcie przycisku), możesz go umieścić w handlerze zdarzenia – GTM odbierze go asynchronicznie.</p>
 
                   <p><em>Porada profesjonalisty: Trzymaj Measurement ID jako zmienną stałą w GTM, nigdy nie wklejaj go bezpośrednio do każdego tagu. Jeden błąd w ID oznacza utratę danych ze wszystkich tagów jednocześnie.</em></p>
 
@@ -210,14 +210,14 @@ window.dataLayer.push({
 
                   <p><strong>Kroki walidacji:</strong></p>
                   <ul>
-                    <li>Kliknij „Podgląd“ (Preview) w GTM — otworzy się nowa karta z Twoją stroną i panelem debugowania</li>
+                    <li>Kliknij „Podgląd“ (Preview) w GTM – otworzy się nowa karta z Twoją stroną i panelem debugowania</li>
                     <li>Wykonaj akcję, która powinna uruchomić tag (wypełnij formularz, kliknij link)</li>
-                    <li>W panelu GTM sprawdź, czy tag pojawił się w sekcji „Tags Fired“ — to potwierdza odpalenie</li>
+                    <li>W panelu GTM sprawdź, czy tag pojawił się w sekcji „Tags Fired“ – to potwierdza odpalenie</li>
                     <li>Przejdź do GA4 → Administracja (ikona zębatki) → Wyświetlanie danych → DebugView i poczekaj kilka sekund na pojawienie się zdarzenia</li>
                     <li>Kliknij nazwę zdarzenia w DebugView i sprawdź, czy wszystkie parametry mają oczekiwane wartości</li>
                   </ul>
 
-                  <p>GTM Preview pokazuje, że tag odpalił. DebugView pokazuje, czy parametry dotarły i zostały przetworzone po stronie Google. To kluczowa różnica — checklisty testowe obejmujące oba narzędzia minimalizują ryzyko błędów po publikacji.</p>
+                  <p>GTM Preview pokazuje, że tag odpalił. DebugView pokazuje, czy parametry dotarły i zostały przetworzone po stronie Google. To kluczowa różnica – checklisty testowe obejmujące oba narzędzia minimalizują ryzyko błędów po publikacji.</p>
 
                   <p><strong>Checklist testowy:</strong></p>
                   <ul>
@@ -225,7 +225,7 @@ window.dataLayer.push({
                     <li>Measurement ID w tagu zdarzenia wskazuje na właściwą właściwość GA4</li>
                     <li>Parametry w panelu „Values“ w GTM Preview mają oczekiwane wartości, nie <code>undefined</code></li>
                     <li>Zdarzenie pojawia się w DebugView, nie tylko w GTM Preview</li>
-                    <li>Consent Mode v2 nie blokuje wysyłki — od marca 2024 jest obowiązkowy dla ruchu z EEA/UK i wymaga obsługi czterech sygnałów: <code>ad_storage</code>, <code>analytics_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>. Sprawdź w zakładce Consent w GTM Preview, czy domyślny stan to <code>denied</code> i czy sygnały aktualizują się po interakcji z banerem cookies.</li>
+                    <li>Consent Mode v2 nie blokuje wysyłki – od marca 2024 jest obowiązkowy dla ruchu z EEA/UK i wymaga obsługi czterech sygnałów: <code>ad_storage</code>, <code>analytics_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>. Sprawdź w zakładce Consent w GTM Preview, czy domyślny stan to <code>denied</code> i czy sygnały aktualizują się po interakcji z banerem cookies.</li>
                     <li>Resetujesz cache przeglądarki między testami, by uniknąć fałszywych wyników</li>
                   </ul>
 
@@ -247,11 +247,11 @@ window.dataLayer.push({
   currency: 'PLN'
 });`}</code></pre>
 
-                  <p>Umieść ten kod w handlerze formularza kontaktowego lub na stronie podziękowania po wysłaniu zapytania. Pełny przykład zdarzenia purchase znajdziesz wyżej, w Kroku 4. Podobnie jak przy transakcjach, wartości leadów warto wypychać z backendu — po walidacji formularza po stronie serwera.</p>
+                  <p>Umieść ten kod w handlerze formularza kontaktowego lub na stronie podziękowania po wysłaniu zapytania. Pełny przykład zdarzenia purchase znajdziesz wyżej, w Kroku 4. Podobnie jak przy transakcjach, wartości leadów warto wypychać z backendu – po walidacji formularza po stronie serwera.</p>
 
                   <p><strong>Najlepsze praktyki:</strong></p>
                   <ul>
-                    <li>Nigdy nie nadpisuj <code>window.dataLayer</code> — zawsze używaj <code>window.dataLayer = window.dataLayer || []</code></li>
+                    <li>Nigdy nie nadpisuj <code>window.dataLayer</code> – zawsze używaj <code>window.dataLayer = window.dataLayer || []</code></li>
                     <li>Nie przesyłaj danych osobowych (imię, e-mail, telefon) przez dataLayer bez odpowiedniej anonimizacji</li>
                     <li>Trzymaj nazwy kluczy spójne między środowiskami (dev, staging, produkcja)</li>
                     <li>Gdy potrzebujesz nasłuchiwać konkretnego eventu, użyj Custom Event triggera z nazwą eventu zamiast polegać na kolejności asynchronicznej</li>
@@ -262,7 +262,7 @@ window.dataLayer.push({
                   <h2 id="jak-znalezc-zdarzenia-w-ga4-i-oznaczyc-je-jako-konwersje">Jak znaleźć zdarzenia w GA4 i oznaczyć je jako kluczowe zdarzenia?</h2>
                   <p>Po opublikowaniu kontenera zdarzenia pojawiają się w kilku miejscach w GA4. Najszybciej sprawdzisz je w Realtime (widok bieżący) lub DebugView. Po 24–48 godzinach trafią do standardowych raportów w sekcji Raporty → Zdarzenia.</p>
 
-                  <p>Aby oznaczyć zdarzenie jako kluczowe zdarzenie: przejdź do Administracja → Wyświetlanie danych → Zdarzenia, znajdź nazwę zdarzenia na liście i włącz przełącznik „Oznacz jako kluczowe zdarzenie”. Zmiana jest aktywna od momentu jej zapisania — nie działa wstecznie.</p>
+                  <p>Aby oznaczyć zdarzenie jako kluczowe zdarzenie: przejdź do Administracja → Wyświetlanie danych → Zdarzenia, znajdź nazwę zdarzenia na liście i włącz przełącznik „Oznacz jako kluczowe zdarzenie”. Zmiana jest aktywna od momentu jej zapisania – nie działa wstecznie.</p>
 
                   <p>Nie oznaczaj jako <strong>kluczowego zdarzenia</strong> każdego zdarzenia, które wydaje się ważne. <a href="https://ntpm.pl/google-analytics-events-jak-sledzic-zdarzenia-i-budowac-lepsze-raporty/" target="_blank" rel="noopener noreferrer">GA4 ma limit około 500 unikalnych nazw zdarzeń</a> na właściwość w przypadku strumieni aplikacji (app). Dla stron internetowych (web) limit formalnie nie obowiązuje lub jest znacznie wyższy. Co ważniejsze w praktyce, GA4 pozwala oznaczyć maksymalnie <strong>30 kluczowych zdarzeń na standardową właściwość</strong> (50 w GA4 360), planuj oznaczenia oszczędnie. Niezależnie od tego warto trzymać katalog zdarzeń możliwie mały. Zbyt wiele zdarzeń oznaczonych jako kluczowe zdarzenia utrudnia interpretację raportów i optymalizację kampanii w Google Ads.</p>
 
@@ -321,9 +321,9 @@ export function pageType(pathname = '') {
 
                   <h2 id="najczestsze-problemy-i-jak-je-szybko-naprawic">Najczęstsze problemy i jak je szybko naprawić</h2>
                   <ol>
-                    <li><strong>Tag odpala w GTM, ale brak zdarzenia w GA4.</strong> Sprawdź Measurement ID — czy wskazuje na właściwą właściwość? Otwórz DebugView i upewnij się, że przeglądarka jest w trybie debugowania. Sprawdź zakładkę Consent w GTM Preview, czy Consent Mode nie blokuje wysyłki. Pamiętaj, że Realtime ma opóźnienie kilku sekund.</li>
+                    <li><strong>Tag odpala w GTM, ale brak zdarzenia w GA4.</strong> Sprawdź Measurement ID – czy wskazuje na właściwą właściwość? Otwórz DebugView i upewnij się, że przeglądarka jest w trybie debugowania. Sprawdź zakładkę Consent w GTM Preview, czy Consent Mode nie blokuje wysyłki. Pamiętaj, że Realtime ma opóźnienie kilku sekund.</li>
                     <li><strong>Parametry mają wartość <code>undefined</code>.</strong> Zmienna GTM nie jest włączona lub klucz w <code>dataLayer.push</code> nie zgadza się z nazwą zmiennej w GTM. Sprawdź w panelu „Values“ w GTM Preview, co faktycznie zwraca zmienna. Upewnij się, że klucze w obiekcie push są w cudzysłowie i pisane dokładnie tak samo jak w konfiguracji zmiennej.</li>
-                    <li><strong>Konflikty kolejności pushów.</strong> Jeśli dane muszą być dostępne przy ładowaniu strony, push musi wystąpić nad snippetem GTM. Dla danych ładowanych asynchronicznie (np. po odpowiedzi API) użyj Custom Event triggera z konkretną nazwą eventu — GTM odbierze go w momencie push, nie przy ładowaniu strony.</li>
+                    <li><strong>Konflikty kolejności pushów.</strong> Jeśli dane muszą być dostępne przy ładowaniu strony, push musi wystąpić nad snippetem GTM. Dla danych ładowanych asynchronicznie (np. po odpowiedzi API) użyj Custom Event triggera z konkretną nazwą eventu – GTM odbierze go w momencie push, nie przy ładowaniu strony.</li>
                     <li><strong>Zdarzenie pojawia się podwójnie w GA4.</strong> Sprawdź, czy tag nie ma dwóch wyzwalaczy lub czy <code>dataLayer.push</code> nie jest wywoływany dwukrotnie (np. raz w kodzie strony, raz przez GTM). W GTM Preview sprawdź, ile razy tag pojawia się w sekcji „Tags Fired“.</li>
                     <li><strong>Błędy JavaScript w konsoli.</strong> Otwórz narzędzia deweloperskie przeglądarki (F12) i sprawdź zakładkę Console podczas wykonywania akcji. Błąd w skrypcie strony może uniemożliwić wykonanie push. Tymczasowo dodaj <code>console.log(window.dataLayer)</code> po pushu, by potwierdzić, że obiekt zawiera oczekiwane dane.</li>
                     <li><strong>Selektor CSS wyzwalacza nie działa.</strong> W GTM Preview kliknij element i sprawdź w zakładce „Click“ wartości zmiennych <code>Click Element</code>, <code>Click Classes</code>, <code>Click ID</code>. Porównaj je z warunkiem wyzwalacza i popraw selektor.</li>
@@ -332,16 +332,16 @@ export function pageType(pathname = '') {
                   <h2 id="jak-zarzadzac-zdarzeniami-w-organizacji-katalog-nazewnictwo-i-dokumentacja">Jak zarządzać zdarzeniami w organizacji: katalog, nazewnictwo i dokumentacja</h2>
                   <p>Brak spójności nazewnictwa i zbyt wiele kluczowych zdarzeń to najczęstsze przyczyny chaosu w raportach. Rozwiązaniem jest katalog zdarzeń prowadzony jako żywy dokument zespołowy.</p>
 
-                  <p>Konwencja nazewnictwa: <code>lower_snake_case</code> bez wyjątków, opcjonalne prefiksy tematyczne (<code>form_</code>, <code>video_</code>, <code>ecommerce_</code>) dla grup zdarzeń. Tę samą konwencję stosuj w każdym środowisku — dev, staging i produkcja muszą używać identycznych nazw, inaczej porównanie danych między środowiskami staje się niemożliwe.</p>
+                  <p>Konwencja nazewnictwa: <code>lower_snake_case</code> bez wyjątków, opcjonalne prefiksy tematyczne (<code>form_</code>, <code>video_</code>, <code>ecommerce_</code>) dla grup zdarzeń. Tę samą konwencję stosuj w każdym środowisku – dev, staging i produkcja muszą używać identycznych nazw, inaczej porównanie danych między środowiskami staje się niemożliwe.</p>
 
-                  <p>Przed każdą publikacją kontenera przeprowadź przegląd zmian z właścicielem katalogu. Wersjonuj dokumentację razem ze zmianami w GTM — notatka w wersji kontenera powinna wskazywać, które zdarzenia zostały dodane lub zmodyfikowane.</p>
+                  <p>Przed każdą publikacją kontenera przeprowadź przegląd zmian z właścicielem katalogu. Wersjonuj dokumentację razem ze zmianami w GTM – notatka w wersji kontenera powinna wskazywać, które zdarzenia zostały dodane lub zmodyfikowane.</p>
 
                   <h2 id="kiedy-warto-zlecic-wdrozenie-gtm-specjaliscie">Kiedy warto zlecić wdrożenie GTM specjaliście?</h2>
-                  <p>Prosty gtm event tracking — śledzenie kliknięć w przyciski, podstawowe formularze, scroll depth — jest w zasięgu każdego analityka z podstawami JavaScript i kilkoma godzinami na naukę GTM. Wewnętrzny zespół poradzi sobie, jeśli ma dostęp do jednego developera, który może szybko dodać <code>dataLayer.push</code> do kodu strony.</p>
+                  <p>Prosty gtm event tracking – śledzenie kliknięć w przyciski, podstawowe formularze, scroll depth – jest w zasięgu każdego analityka z podstawami JavaScript i kilkoma godzinami na naukę GTM. Wewnętrzny zespół poradzi sobie, jeśli ma dostęp do jednego developera, który może szybko dodać <code>dataLayer.push</code> do kodu strony.</p>
 
-                  <p>Sytuacja zmienia się przy wdrożeniach wymagających integracji backendowej. Jeśli <code>transaction_id</code> i <code>value</code> muszą pochodzić z serwera po potwierdzeniu płatności, potrzebujesz kogoś, kto rozumie zarówno architekturę aplikacji, jak i specyfikę dataLayer. Podobnie przy wielostronicowym e-commerce z dziesiątkami zdarzeń, złożoną atrybucją lub gdy organizacja nie ma żadnych procesów governance dla GTM — brak dokumentacji i kontroli wersji to prosta droga do sytuacji, w której nikt nie wie, co i dlaczego odpala.</p>
+                  <p>Sytuacja zmienia się przy wdrożeniach wymagających integracji backendowej. Jeśli <code>transaction_id</code> i <code>value</code> muszą pochodzić z serwera po potwierdzeniu płatności, potrzebujesz kogoś, kto rozumie zarówno architekturę aplikacji, jak i specyfikę dataLayer. Podobnie przy wielostronicowym e-commerce z dziesiątkami zdarzeń, złożoną atrybucją lub gdy organizacja nie ma żadnych procesów governance dla GTM – brak dokumentacji i kontroli wersji to prosta droga do sytuacji, w której nikt nie wie, co i dlaczego odpala.</p>
 
-                  <p>Decydenci powinni zadać sobie trzy pytania: czy wdrożenie wymaga zmian w backendzie, czy organizacja ma zasoby do utrzymania dokumentacji, i jakie ryzyko niesie błąd analityczny dla decyzji biznesowych. Gdy odpowiedź na pierwsze lub trzecie pytanie brzmi „tak“ — outsourcing jest tańszy niż naprawa błędów po fakcie.</p>
+                  <p>Decydenci powinni zadać sobie trzy pytania: czy wdrożenie wymaga zmian w backendzie, czy organizacja ma zasoby do utrzymania dokumentacji, i jakie ryzyko niesie błąd analityczny dla decyzji biznesowych. Gdy odpowiedź na pierwsze lub trzecie pytanie brzmi „tak“ – outsourcing jest tańszy niż naprawa błędów po fakcie.</p>
 
                   <p>Jeśli nie wiesz, czy obecny pomiar liczy leady poprawnie, sprawdź to przy okazji <Link href="/audyt-seo">audytu SEO</Link>: do audytu i tak potrzebujemy dostępu do Search Console i Analytics, więc rozjazdy między formularzem a GA4 wychodzą przy tej samej pracy.</p>
 
@@ -356,10 +356,10 @@ export function pageType(pathname = '') {
                     <li><a href="https://developers.google.com/analytics/devguides/collection/ga4/events" target="_blank" rel="noopener noreferrer">Set up events | Google Analytics | Google for Developers</a></li>
                     <li><a href="https://www.analyticsmania.com/post/google-tag-manager-event-tracking/" target="_blank" rel="noopener noreferrer">Google Tag Manager Event Tracking with Google Analytics (2026)</a></li>
                     <li><a href="https://ntpm.pl/google-analytics-events-jak-sledzic-zdarzenia-i-budowac-lepsze-raporty/" target="_blank" rel="noopener noreferrer">Google Analytics events – jak śledzić zdarzenia i budować lepsze raporty? - NTPM</a></li>
-                    <li><a href="https://cogny.com/docs/gtm-event-tracking" target="_blank" rel="noopener noreferrer">GTM Event Tracking & Setup Reference — Complete Implementation Guide | Cogny</a></li>
+                    <li><a href="https://cogny.com/docs/gtm-event-tracking" target="_blank" rel="noopener noreferrer">GTM Event Tracking & Setup Reference – Complete Implementation Guide | Cogny</a></li>
                   </ul>
                   
-                  <p>Do codziennej pracy z GTM najczęściej sięgaj po dokumentację na <code>developers.google.com</code> — znajdziesz tam specyfikacje techniczne dataLayer i listę zalecanych nazw zdarzeń. Panel <code>support.google.com</code> jest lepszy do szybkich instrukcji konfiguracyjnych bez zagłębiania się w kod.</p>
+                  <p>Do codziennej pracy z GTM najczęściej sięgaj po dokumentację na <code>developers.google.com</code> – znajdziesz tam specyfikacje techniczne dataLayer i listę zalecanych nazw zdarzeń. Panel <code>support.google.com</code> jest lepszy do szybkich instrukcji konfiguracyjnych bez zagłębiania się w kod.</p>
 
                   <BlogCTA 
                     locale={locale} 

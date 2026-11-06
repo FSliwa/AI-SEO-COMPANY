@@ -83,14 +83,14 @@ export default function BlogGrid() {
   const heroData = getPostData(heroPost);
 
   return (
-    <section className="blog-grid" style={{ padding: '4rem 0', backgroundColor: '#F5F5F7' }}>
+    <section className="blog-grid" style={{ padding: '4rem 0', backgroundColor: 'transparent' }}>
       <div className="container" style={{ margin: '0 auto' }}>
         <Reveal>
           <div style={{ textAlign: 'left', padding: '1rem 0 2rem 0' }}>
             <h1 style={{ 
               fontSize: 'clamp(3rem, 5vw, 4.5rem)', 
               fontWeight: 700, 
-              color: '#1D1D1F', 
+              color: 'var(--w-tusz)', 
               marginBottom: '0',
               letterSpacing: '-0.02em'
             }}>
@@ -102,7 +102,7 @@ export default function BlogGrid() {
         {/* Srodtytul naprawia hierarchie naglowkow: dotad po H1 szly od razu
             H3 kart artykulow (przeskok flagowany w audycie 4.6). */}
         <Reveal delay={0.05}>
-          <h2 style={{ fontSize: 'clamp(1.15rem, 2vw, 1.4rem)', fontWeight: 600, color: '#6E6E73', letterSpacing: '-0.01em', margin: '0 0 1.25rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.15rem, 2vw, 1.4rem)', fontWeight: 600, color: 'var(--w-tusz-2)', letterSpacing: '-0.01em', margin: '0 0 1.25rem' }}>
             {lang === 'en' ? 'Latest articles' : 'Najnowsze artykuły'}
           </h2>
         </Reveal>
@@ -144,7 +144,7 @@ export default function BlogGrid() {
                   <span style={{ 
                     fontSize: '0.75rem', 
                     fontWeight: 600, 
-                    color: '#86868B', 
+                    color: 'var(--w-tusz-2)', 
                     textTransform: 'uppercase', 
                     letterSpacing: '0.05em',
                     marginBottom: '1rem',
@@ -155,7 +155,7 @@ export default function BlogGrid() {
                   <h3 style={{ 
                     fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
                     fontWeight: 700, 
-                    color: '#1D1D1F', 
+                    color: 'var(--w-tusz)', 
                     lineHeight: 1.1,
                     marginBottom: '1.5rem',
                     letterSpacing: '-0.02em'
@@ -164,7 +164,7 @@ export default function BlogGrid() {
                   </h3>
                   <span style={{ 
                     fontSize: '0.9rem', 
-                    color: '#86868B',
+                    color: 'var(--w-tusz-2)',
                     fontWeight: 500
                   }}>
                     {heroData.date}
@@ -210,7 +210,7 @@ export default function BlogGrid() {
                       <span style={{ 
                         fontSize: '0.75rem', 
                         fontWeight: 600, 
-                        color: '#86868B', 
+                        color: 'var(--w-tusz-2)', 
                         textTransform: 'uppercase', 
                         letterSpacing: '0.05em',
                         marginBottom: '1rem'
@@ -220,7 +220,7 @@ export default function BlogGrid() {
                       <h3 style={{ 
                         fontSize: '1.25rem', 
                         fontWeight: 700, 
-                        color: '#1D1D1F', 
+                        color: 'var(--w-tusz)', 
                         lineHeight: 1.3,
                         marginBottom: '1.5rem',
                         letterSpacing: '-0.01em',
@@ -230,7 +230,7 @@ export default function BlogGrid() {
                       </h3>
                       <span style={{ 
                         fontSize: '0.85rem', 
-                        color: '#86868B',
+                        color: 'var(--w-tusz-2)',
                         fontWeight: 500
                       }}>
                         {data.date}
@@ -257,7 +257,7 @@ export default function BlogGrid() {
       <div className="container" style={{ paddingBottom: '0rem', paddingTop: '4rem' }}>
         <Reveal>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#1D1D1F', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.5rem, 1.5vw, 1rem)' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: 'var(--w-tusz)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.5rem, 1.5vw, 1rem)' }}>
               {lang === 'pl' ? 'Misja' : 'Mission'}
               <svg 
                   xmlns="http://www.w3.org/2000/svg" 
@@ -292,10 +292,13 @@ export default function BlogGrid() {
               <RevealItem key={card.id} style={isLast ? { gridColumn: '1 / -1' } : {}}>
                 <div 
                   className="grid-card" 
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedMissionCard(card); } }}
                   onClick={() => setExpandedMissionCard(card)}
                   style={{ 
                     display: 'flex', flexDirection: 'column', height: '100%', 
-                    backgroundColor: '#FFFFFF', borderRadius: '24px', 
+                    backgroundColor: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', 
                     padding: isLast ? 'clamp(2.5rem, 5vw, 4rem)' : '2.5rem', 
                     boxShadow: '0 4px 24px rgba(0,0,0,0.04)', 
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease', 
@@ -304,7 +307,7 @@ export default function BlogGrid() {
                     textAlign: isLast ? 'center' : 'left'
                   }}
                 >
-                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', gap: '0.5rem', lineHeight: 1 }}>
+                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', gap: '0.5rem', lineHeight: 1 }}>
                 {lang === 'pl' ? 'Misja' : 'Mission'}
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
@@ -326,19 +329,19 @@ export default function BlogGrid() {
               </span>
                   <h3 style={{ 
                     fontSize: isLast ? 'clamp(1.75rem, 4vw, 2.5rem)' : '1.4rem', 
-                    fontWeight: 700, color: '#1D1D1F', marginBottom: '1rem', 
+                    fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1rem', 
                     lineHeight: isLast ? 1.15 : 1.25, letterSpacing: '-0.02em',
                     maxWidth: isLast ? '800px' : 'none'
                   }}>
                     {lang === 'pl' ? card.titlePl : card.titleEn}
                   </h3>
-                  <p style={{ color: '#6E6E73', fontSize: isLast ? '1.1rem' : '1rem', lineHeight: isLast ? 1.7 : 1.6, maxWidth: isLast ? '850px' : 'none' }}>
+                  <p style={{ color: 'var(--w-tusz-2)', fontSize: isLast ? '1.1rem' : '1rem', lineHeight: isLast ? 1.7 : 1.6, maxWidth: isLast ? '850px' : 'none' }}>
                     {lang === 'pl' ? card.textPl : card.textEn}
                   </p>
                   
                   <div style={{ flexGrow: 1 }} />
                   <div style={{ 
-                    width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#F5F5F7', 
+                    width: '44px', height: '44px', borderRadius: '50%', backgroundColor: 'var(--w-papier-2)', 
                     display: 'flex', alignItems: 'center', justifyContent: 'center', 
                     marginTop: '1.5rem', alignSelf: isLast ? 'center' : 'flex-end',
                     transition: 'background-color 0.2s ease'
@@ -397,22 +400,22 @@ export default function BlogGrid() {
               )}
               
               <div style={{ padding: 'clamp(2rem, 5vw, 4rem)' }}>
-                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
+                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
                   {lang === 'pl' ? expandedMissionCard.tagPl : expandedMissionCard.tagEn}
                 </span>
-                <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
+                <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
                   {lang === 'pl' ? expandedMissionCard.titlePl : expandedMissionCard.titleEn}
                 </h3>
-                <p style={{ color: '#1D1D1F', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                <p style={{ color: 'var(--w-tusz)', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                   {lang === 'pl' ? expandedMissionCard.textPl : expandedMissionCard.textEn}
                 </p>
-                <p style={{ color: '#1D1D1F', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                <p style={{ color: 'var(--w-tusz)', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                   {lang === 'pl' ? introTextPl : introTextEn}
                 </p>
                 
-                <div style={{ height: '1px', backgroundColor: '#E5E5EA', margin: '2rem 0' }} />
+                <div style={{ height: '1px', backgroundColor: 'var(--w-linia)', margin: '2rem 0' }} />
                 
-                <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+                <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
                   {lang === 'pl' ? extraQualityTextPl : extraQualityTextEn}
                 </p>
               </div>
@@ -425,18 +428,18 @@ export default function BlogGrid() {
             serwerowym - Google odkrywal je dopiero przy renderowaniu JS. */}
         {sortedPosts.length > 4 && (
           <Reveal style={{ marginTop: '4rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
               {lang === 'pl' ? 'Wszystkie artykuły' : 'All articles'}
             </h2>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '0.75rem 2rem' }}>
               {sortedPosts.slice(4).map((post) => {
                 const d = getPostData(post);
                 return (
-                  <li key={post.slug} style={{ borderBottom: '1px solid #E5E5EA', paddingBottom: '0.75rem' }}>
-                    <Link href={post.slug} style={{ display: 'block', color: '#1D1D1F', textDecoration: 'none', fontWeight: 600, lineHeight: 1.4 }}>
+                  <li key={post.slug} style={{ borderBottom: '1px solid var(--w-linia)', paddingBottom: '0.75rem' }}>
+                    <Link href={post.slug} style={{ display: 'block', color: 'var(--w-tusz)', textDecoration: 'none', fontWeight: 600, lineHeight: 1.4 }}>
                       {d.title}
                     </Link>
-                    <span style={{ fontSize: '0.8rem', color: '#6E6E73' }}>{d.tag} · {d.date}</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--w-tusz-2)' }}>{d.tag} · {d.date}</span>
                   </li>
                 );
               })}

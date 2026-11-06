@@ -220,8 +220,10 @@ export default function WhyUs({ isMainContent = false }) {
   }, [isAutoplay, najechane, activeIndex]);
 
   return (
-    <Wrapper className="why-us" id="why-us" style={{ background: '#F5F5F7', padding: '7rem 0', color: '#1D1D1F' }} onFocus={zatrzymajPrzyFokusie} {...wrapperProps}>
-      <div className="container" style={{ maxWidth: '1280px' }}>
+    <Wrapper className="why-us" id="why-us" data-kursor="obraz" data-petla="" style={{ background: 'var(--w-papier-2)', padding: '7rem 0', color: 'var(--w-tusz)' }} onFocus={zatrzymajPrzyFokusie} {...wrapperProps}>
+      {/* 7.11.2026: mgla nad gorami w swicie (dekoracja, app/wyglad.css). */}
+      <div className="mgla-dryf" aria-hidden="true"><span /></div>
+      <div className="container">
         
         {/* Top Header Row with Apple-style Navigation Arrows */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '2rem' }}>
@@ -229,16 +231,16 @@ export default function WhyUs({ isMainContent = false }) {
             <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', fontWeight: 600 }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'DLACZEGO MY' : 'WHY US'}
             </div>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: 'var(--w-tusz)', marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie – agencja marketingowa nastawiona na wyniki' : 'An SEO and marketing agency for companies that measure pipeline, not rankings'}
             </h2>
             {lang === 'en' && (
-              <h2 style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: '0 0 1rem 0' }}>
-                Selected B2B projects delivered end to end — strategy, build and search visibility.
+              <h2 style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', fontWeight: 500, lineHeight: 1.6, margin: '0 0 1rem 0' }}>
+                Selected B2B projects delivered end to end – strategy, build and search visibility.
               </h2>
             )}
-            <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
-              {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych. Agencja SEO Warszawa to nasz adres, nie slogan — jako agencja marketingowa prowadzimy projekt, strony i pozycjonowanie w jednym zespole.' : 'We craft digital solutions backed by hard analytics and buyer psychology. Whether you call us an SEO firm or a search engine optimization agency, our job is the same: measurable pipeline growth.'}
+            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
+              {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych. Agencja SEO Warszawa to nasz adres, nie slogan – jako agencja marketingowa prowadzimy projekt, strony i pozycjonowanie w jednym zespole.' : 'We craft digital solutions backed by hard analytics and buyer psychology. Whether you call us an SEO firm or a search engine optimization agency, our job is the same: measurable pipeline growth.'}
             </p>
           </Reveal>
 
@@ -251,7 +253,7 @@ export default function WhyUs({ isMainContent = false }) {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: '#E8E8ED',
+                background: 'var(--w-papier-2)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
@@ -262,7 +264,7 @@ export default function WhyUs({ isMainContent = false }) {
               }}
               aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
@@ -274,7 +276,7 @@ export default function WhyUs({ isMainContent = false }) {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: '#E8E8ED',
+                background: 'var(--w-papier-2)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
@@ -285,7 +287,7 @@ export default function WhyUs({ isMainContent = false }) {
               }}
               aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
@@ -314,9 +316,9 @@ export default function WhyUs({ isMainContent = false }) {
             msOverflowStyle: 'none', 
             gap: '1.5rem',
             paddingBottom: '2rem',
-            paddingLeft: 'calc((100vw - min(1280px, 100vw - 4rem)) / 2)',
-            paddingRight: 'calc((100vw - min(1280px, 100vw - 4rem)) / 2)',
-            scrollPaddingLeft: 'calc((100vw - min(1280px, 100vw - 4rem)) / 2)'
+            paddingLeft: 'calc((100vw - min(var(--container-width) - 48px, 100vw - 48px)) / 2)',
+            paddingRight: 'calc((100vw - min(var(--container-width) - 48px, 100vw - 48px)) / 2)',
+            scrollPaddingLeft: 'calc((100vw - min(var(--container-width) - 48px, 100vw - 48px)) / 2)'
           }}
         >
           <style jsx>{`
@@ -366,7 +368,7 @@ export default function WhyUs({ isMainContent = false }) {
                 <motion.div 
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
-                  style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: 'var(--w-tusz)', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
                 >
                   <CountUpMetric value={item.metric} />
                 </motion.div>
@@ -374,10 +376,10 @@ export default function WhyUs({ isMainContent = false }) {
 
               {/* Bottom Text Area matching Apple's formatting */}
               <div style={{ marginTop: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-                <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.35, marginBottom: '0.5rem' }}>
+                <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: 'var(--w-tusz)', lineHeight: 1.35, marginBottom: '0.5rem' }}>
                   {item.title}
                 </h3>
-                <p style={{ fontSize: '0.94rem', color: '#424245', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
+                <p style={{ fontSize: '0.94rem', color: 'var(--color-text-main)', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
                   {item.description}
                 </p>
               </div>
@@ -388,7 +390,7 @@ export default function WhyUs({ isMainContent = false }) {
         {/* Bottom Pagination & Play Controls (1:1 Apple Proportions from Screenshot) */}
         <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
           {/* Dots Pill Container */}
-          <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: 'transparent', border: '1px solid var(--w-linia)', borderRadius: '30px', alignItems: 'center' }}>
             {/* Kropka ma 8 px wysokosci i tyle ma zostac - to jest ten wyglad.
                 Obszar dotyku powieksza pseudoelement .whyus-dot::after do 44 px
                 (prog ze skilla viewports). Nie padding: button ma animowana
@@ -403,7 +405,7 @@ export default function WhyUs({ isMainContent = false }) {
                 onClick={() => scrollTo(idx)}
                 animate={{
                   width: activeIndex === idx ? '36px' : '8px',
-                  backgroundColor: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
+                  backgroundColor: activeIndex === idx ? '#1E1E1E' : 'rgba(30,30,30,0.28)',
                   borderRadius: activeIndex === idx ? '8px' : '50%'
                 }}
                 transition={{
@@ -432,7 +434,7 @@ export default function WhyUs({ isMainContent = false }) {
             data-autoplay-toggle=""
             onClick={() => setIsAutoplay(!isAutoplay)}
             style={{ 
-              background: '#E8E8ED', 
+              background: 'transparent', border: '1.5px solid var(--w-tusz)', color: 'var(--w-tusz)', 
               border: 'none', 
               borderRadius: '50%', 
               width: '44px', 
@@ -449,12 +451,12 @@ export default function WhyUs({ isMainContent = false }) {
               : (lang === 'pl' ? 'Wznów przewijanie' : 'Play')}
           >
             {isAutoplay ? (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
                 <rect x="6" y="4" width="4" height="16" />
                 <rect x="14" y="4" width="4" height="16" />
               </svg>
             ) : (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1D1D1F" stroke="none" style={{ marginLeft: '2px' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none" style={{ marginLeft: '2px' }}>
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
             )}

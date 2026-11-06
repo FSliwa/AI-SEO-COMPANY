@@ -37,7 +37,7 @@ export default function AboutAuthor() {
       : ['Pozycjonowanie stron', 'Techniczne SEO', 'SEO lokalne', 'Analityka internetowa', 'Pozycjonowanie w AI (GEO, Generative Engine Optimization)'],
   };
 
-  const akapit = { fontSize: '1.05rem', lineHeight: 1.7, color: '#333336', marginBottom: '1rem' };
+  const akapit = { fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--color-text-main)', marginBottom: '1rem' };
   const link = { color: 'var(--color-primary)', textDecoration: 'underline' };
 
   return (
@@ -49,7 +49,7 @@ export default function AboutAuthor() {
       <div className="container" style={{ maxWidth: '820px', margin: '0 auto' }}>
         <Reveal>
           <div style={{ background: '#FFFFFF', borderRadius: '24px', padding: 'clamp(2rem, 5vw, 3rem)', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
-            <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#6E6E73', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1rem' }}>
               {isEn ? 'Who writes here' : 'Kto tu pisze'}
             </div>
             {/* 5.11.2026 (PLAN-v2 6.24, EEAT1; MSA-13 po weryfikacji): H2 „Filip Śliwa: kto prowadzi
@@ -62,7 +62,7 @@ export default function AboutAuthor() {
             <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.1rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '0.5rem' }}>
               {isEn ? 'Filip Śliwa: who runs your SEO' : 'Filip Śliwa: kto prowadzi Twoje SEO'}
             </h2>
-            <p style={{ fontSize: '1.05rem', color: '#6E6E73', fontWeight: 500, marginBottom: '1.5rem' }}>
+            <p style={{ fontSize: '1.05rem', color: 'var(--w-tusz-2)', fontWeight: 500, marginBottom: '1.5rem' }}>
               {isEn ? 'SEO specialist, AI SEO COMPANY' : 'Specjalista SEO, AI SEO COMPANY'}
             </p>
             {isEn ? (
@@ -90,7 +90,7 @@ export default function AboutAuthor() {
                 </p>
               </>
             )}
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#333336', margin: 0 }}>
+            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--color-text-main)', margin: 0 }}>
               {isEn ? 'Contact: ' : 'Kontakt: '}
               <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
                 kontakt@ai-seo-company.pl

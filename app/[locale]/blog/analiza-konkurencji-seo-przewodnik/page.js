@@ -44,7 +44,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
   ];
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <ArticleSchema
         slug="/blog/analiza-konkurencji-seo-przewodnik"
@@ -57,17 +57,17 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 SEO Analysis
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 August 03, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               SEO Competitor Analysis: A Step-by-Step Guide
             </h1>
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -104,12 +104,12 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <h2 id="6-krokow">2. How to conduct SEO competitor analysis in 6 steps</h2>
               <p>A professional SEO competitor analysis process consists of six concrete operational steps:</p>
               <ol>
-                <li><strong>Preparation and keyword selection</strong> — Input: a list of 20–30 business phrases from GSC or your own research. For a full keyword gap analysis and discovery of new opportunities, external tools such as Senuto or SEMrush are absolutely essential. Output: a sorted list of phrases with volume and difficulty.</li>
-                <li><strong>URL inventory and clusters</strong> — Input: competitor domains. Output: CSV of Top Pages with traffic, keywords, and URL structure. Tools: Ahrefs "Top Pages", SEMrush "Organic Research", Screaming Frog.</li>
-                <li><strong>SERP analysis</strong> — Checking dominant formats, content length, schema, and media for priority phrases.</li>
-                <li><strong>Quick backlink scan</strong> — Export of referring domains, filtering by quality and topicality, identification of the backlink gap.</li>
-                <li><strong>Content mapping and topical gaps</strong> — Grouping Top Pages into clusters and comparing them with your own visibility.</li>
-                <li><strong>Prioritization and action plan</strong> — Selection of 3 clusters (quick win, mid-term, long play) + a 3–6 month timeline.</li>
+                <li><strong>Preparation and keyword selection</strong> – Input: a list of 20–30 business phrases from GSC or your own research. For a full keyword gap analysis and discovery of new opportunities, external tools such as Senuto or SEMrush are absolutely essential. Output: a sorted list of phrases with volume and difficulty.</li>
+                <li><strong>URL inventory and clusters</strong> – Input: competitor domains. Output: CSV of Top Pages with traffic, keywords, and URL structure. Tools: Ahrefs "Top Pages", SEMrush "Organic Research", Screaming Frog.</li>
+                <li><strong>SERP analysis</strong> – Checking dominant formats, content length, schema, and media for priority phrases.</li>
+                <li><strong>Quick backlink scan</strong> – Export of referring domains, filtering by quality and topicality, identification of the backlink gap.</li>
+                <li><strong>Content mapping and topical gaps</strong> – Grouping Top Pages into clusters and comparing them with your own visibility.</li>
+                <li><strong>Prioritization and action plan</strong> – Selection of 3 clusters (quick win, mid-term, long play) + a 3–6 month timeline.</li>
               </ol>
               <p><strong>Pro tip:</strong> Start with 20–30 business phrases and focus on domains that appear in the Top 5 for at least 10 of them. This usually gives you 3–5 key SEO rivals rather than 20 domains that you can only analyze superficially.</p>
 
@@ -130,34 +130,34 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Tool</th>
                       <th style={{ padding: '0.75rem' }}>Main use</th>
                       <th style={{ padding: '0.75rem' }}>Pricing</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Senuto</td>
-                      <td style={{ padding: '0.75rem' }}>Organic visibility, PL keyword analysis — largest .pl database</td>
+                      <td style={{ padding: '0.75rem' }}>Organic visibility, PL keyword analysis – largest .pl database</td>
                       <td style={{ padding: '0.75rem' }}>Monthly subscription</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>SEMrush</td>
                       <td style={{ padding: '0.75rem' }}>Keyword gap, backlinks, SERP analysis, technical audit</td>
                       <td style={{ padding: '0.75rem' }}>Monthly subscription</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Ahrefs</td>
-                      <td style={{ padding: '0.75rem' }}>Backlinks, Top Pages, content gap — best backlink database</td>
+                      <td style={{ padding: '0.75rem' }}>Backlinks, Top Pages, content gap – best backlink database</td>
                       <td style={{ padding: '0.75rem' }}>Monthly subscription</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Google Search Console</td>
-                      <td style={{ padding: '0.75rem' }}>Own domain data — indexing, Core Web Vitals</td>
+                      <td style={{ padding: '0.75rem' }}>Own domain data – indexing, Core Web Vitals</td>
                       <td style={{ padding: '0.75rem' }}>Free</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Screaming Frog</td>
                       <td style={{ padding: '0.75rem' }}>URL structure crawl, H2/H3 extraction, technical audit</td>
                       <td style={{ padding: '0.75rem' }}>Free up to 500 URLs / license</td>
@@ -198,39 +198,39 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Task</th>
                       <th style={{ padding: '0.75rem' }}>Duration</th>
                       <th style={{ padding: '0.75rem' }}>KPI</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Technical audit + CWV fixes</td>
                       <td style={{ padding: '0.75rem' }}>Month 1</td>
                       <td style={{ padding: '0.75rem' }}>Improved CWV, no crawl errors</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Top Pages export + cluster map</td>
                       <td style={{ padding: '0.75rem' }}>Month 1</td>
                       <td style={{ padding: '0.75rem' }}>Ready cluster map</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Pillar + spoke publications (cluster 1)</td>
                       <td style={{ padding: '0.75rem' }}>Months 2–3</td>
                       <td style={{ padding: '0.75rem' }}>Cluster visibility growth</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Link building (clusters 1 and 2)</td>
                       <td style={{ padding: '0.75rem' }}>Months 2–4</td>
                       <td style={{ padding: '0.75rem' }}>+10–20 referring domains</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Cluster 2 publications + optimization</td>
                       <td style={{ padding: '0.75rem' }}>Months 3–4</td>
                       <td style={{ padding: '0.75rem' }}>Positions 11–20 → Top 10</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Scaling and optimizing clusters</td>
                       <td style={{ padding: '0.75rem' }}>Months 5–6</td>
                       <td style={{ padding: '0.75rem' }}>Organic traffic growth</td>
@@ -248,31 +248,31 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 <li>3–6 month plan template with tasks, owners, and KPIs.</li>
                 <li>List of technical priorities to implement (CWV, indexing, URL structure).</li>
               </ul>
-              <p>In practice, within 2–3 months we are able to build a site from scratch and bring selected phrases into the Top 3 — thanks to the combination of rapid competitor analysis, technical optimization, and precise content.</p>
+              <p>In practice, within 2–3 months we are able to build a site from scratch and bring selected phrases into the Top 3 – thanks to the combination of rapid competitor analysis, technical optimization, and precise content.</p>
 
               <h2 id="wnioski">9. Key takeaways</h2>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Point</th>
                       <th style={{ padding: '0.75rem' }}>Details</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Start with competitor identification</td>
                       <td style={{ padding: '0.75rem' }}>Select 3–5 domains that appear in the Top 5 for at least 10 of your business phrases.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Export and map clusters</td>
                       <td style={{ padding: '0.75rem' }}>Download Top Pages, group URLs semantically, and identify topical gaps.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Analyze backlinks via referring domains</td>
                       <td style={{ padding: '0.75rem' }}>What counts is the number of unique linking domains, not the total number of links.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Monitor cyclically</td>
                       <td style={{ padding: '0.75rem' }}>Quick check every month, full advantage map update every 3–4 months.</td>
                     </tr>
@@ -286,9 +286,9 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
 
               <h3>Useful sources and tools</h3>
               <ul>
-                <li><a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer">Google Search Central</a> — official technical documentation: indexing, Core Web Vitals, schema, content quality guidelines.</li>
-                <li><a href="https://www.senuto.com/pl/blog/" target="_blank" rel="noopener noreferrer">Senuto Blog</a> — practical guide to competitor analysis in SEO from the Polish market perspective.</li>
-                <li><a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs Blog: SEO Competitor Analysis</a> — detailed workflow for backlink and content gap analysis.</li>
+                <li><a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer">Google Search Central</a> – official technical documentation: indexing, Core Web Vitals, schema, content quality guidelines.</li>
+                <li><a href="https://www.senuto.com/pl/blog/" target="_blank" rel="noopener noreferrer">Senuto Blog</a> – practical guide to competitor analysis in SEO from the Polish market perspective.</li>
+                <li><a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs Blog: SEO Competitor Analysis</a> – detailed workflow for backlink and content gap analysis.</li>
               </ul>
 
               <p><strong>Also read:</strong> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">How much does SEO cost in Poland? Pricing and packages 2026</Link></p>
@@ -305,19 +305,19 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Analiza SEO
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 03 Sierpnia 2026
               </span>
             </div>
             {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page — do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+                renders, so this is not a second H1 on the page – do not demote it. */}
+              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Analiza konkurencji SEO: przewodnik krok po kroku
             </h1>
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -354,12 +354,12 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <h2 id="6-krokow">2. Jak przeprowadzić analizę konkurencji SEO w 6 krokach?</h2>
               <p>Profesjonalny proces analizy konkurencji SEO składa się z sześciu konkretnych kroków operacyjnych:</p>
               <ol>
-                <li><strong>Przygotowanie i wybór fraz</strong> — Wejście: lista 20–30 fraz biznesowych z GSC lub własnego researchu. Do pełnej analizy luk (keyword gap) narzędzia zewnętrzne takie jak Senuto czy SEMrush są absolutnie niezbędne. Wyjście: posortowana lista fraz z wolumenem i trudnością.</li>
-                <li><strong>Inwentaryzacja URL i klastry</strong> — Wejście: domeny konkurentów. Wyjście: CSV Top Pages z ruchem, frazami i strukturą URL. Narzędzia: Ahrefs „Top Pages", SEMrush „Organic Research", Screaming Frog.</li>
-                <li><strong>Analiza SERP</strong> — Sprawdzenie dominujących formatów, długości treści, schema i mediów dla priorytetowych fraz.</li>
-                <li><strong>Szybki skan backlinków</strong> — Eksport referring domains, filtracja po jakości i tematyczności, identyfikacja backlink gap.</li>
-                <li><strong>Mapowanie treści i luk tematycznych</strong> — Grupowanie Top Pages w klastry i porównanie z własną widocznością.</li>
-                <li><strong>Priorytetyzacja i plan działań</strong> — Wybór 3 klastrów (quick win, mid-term, long play) + timeline na 3–6 miesięcy.</li>
+                <li><strong>Przygotowanie i wybór fraz</strong> – Wejście: lista 20–30 fraz biznesowych z GSC lub własnego researchu. Do pełnej analizy luk (keyword gap) narzędzia zewnętrzne takie jak Senuto czy SEMrush są absolutnie niezbędne. Wyjście: posortowana lista fraz z wolumenem i trudnością.</li>
+                <li><strong>Inwentaryzacja URL i klastry</strong> – Wejście: domeny konkurentów. Wyjście: CSV Top Pages z ruchem, frazami i strukturą URL. Narzędzia: Ahrefs „Top Pages", SEMrush „Organic Research", Screaming Frog.</li>
+                <li><strong>Analiza SERP</strong> – Sprawdzenie dominujących formatów, długości treści, schema i mediów dla priorytetowych fraz.</li>
+                <li><strong>Szybki skan backlinków</strong> – Eksport referring domains, filtracja po jakości i tematyczności, identyfikacja backlink gap.</li>
+                <li><strong>Mapowanie treści i luk tematycznych</strong> – Grupowanie Top Pages w klastry i porównanie z własną widocznością.</li>
+                <li><strong>Priorytetyzacja i plan działań</strong> – Wybór 3 klastrów (quick win, mid-term, long play) + timeline na 3–6 miesięcy.</li>
               </ol>
               <p><strong>Porada profesjonalisty:</strong> Zacznij od 20–30 fraz biznesowych i skup się na domenach pojawiających się w Top 5 dla co najmniej 10 z nich. To zwykle 3–5 kluczowych rywali SEO, a nie 20 domen, które możesz przeanalizować tylko powierzchownie.</p>
 
@@ -379,34 +379,34 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Narzędzie</th>
                       <th style={{ padding: '0.75rem' }}>Główne zastosowanie</th>
                       <th style={{ padding: '0.75rem' }}>Koszt</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Senuto</td>
-                      <td style={{ padding: '0.75rem' }}>Widoczność organiczna, analiza fraz PL — największa baza danych dla domeny .pl</td>
+                      <td style={{ padding: '0.75rem' }}>Widoczność organiczna, analiza fraz PL – największa baza danych dla domeny .pl</td>
                       <td style={{ padding: '0.75rem' }}>Subskrypcja miesięczna</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>SEMrush</td>
                       <td style={{ padding: '0.75rem' }}>Keyword gap, backlinki, analiza SERP, audyt techniczny</td>
                       <td style={{ padding: '0.75rem' }}>Subskrypcja miesięczna</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Ahrefs</td>
-                      <td style={{ padding: '0.75rem' }}>Backlinki, Top Pages, content gap — najlepsza baza backlinków</td>
+                      <td style={{ padding: '0.75rem' }}>Backlinki, Top Pages, content gap – najlepsza baza backlinków</td>
                       <td style={{ padding: '0.75rem' }}>Subskrypcja miesięczna</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Google Search Console</td>
-                      <td style={{ padding: '0.75rem' }}>Dane własnej domeny — indeksacja, Core Web Vitals</td>
+                      <td style={{ padding: '0.75rem' }}>Dane własnej domeny – indeksacja, Core Web Vitals</td>
                       <td style={{ padding: '0.75rem' }}>Bezpłatne</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Screaming Frog</td>
                       <td style={{ padding: '0.75rem' }}>Crawl struktury URL, ekstrakcja H2/H3, audyt techniczny</td>
                       <td style={{ padding: '0.75rem' }}>Bezpłatny do 500 URL / licencja</td>
@@ -446,39 +446,39 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Zadanie</th>
                       <th style={{ padding: '0.75rem' }}>Czas trwania</th>
                       <th style={{ padding: '0.75rem' }}>KPI</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Audyt techniczny + poprawki CWV</td>
                       <td style={{ padding: '0.75rem' }}>Miesiąc 1</td>
                       <td style={{ padding: '0.75rem' }}>Poprawa CWV, brak błędów crawl</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Eksport Top Pages + mapa klastrów</td>
                       <td style={{ padding: '0.75rem' }}>Miesiąc 1</td>
                       <td style={{ padding: '0.75rem' }}>Gotowa mapa klastrów</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Publikacje pillar + spoke (klaster 1)</td>
                       <td style={{ padding: '0.75rem' }}>Miesiące 2–3</td>
                       <td style={{ padding: '0.75rem' }}>Wzrost widoczności klastra</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Linkbuilding (klaster 1 i 2)</td>
                       <td style={{ padding: '0.75rem' }}>Miesiące 2–4</td>
                       <td style={{ padding: '0.75rem' }}>+10–20 referring domains</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Publikacje klaster 2 + optymalizacja</td>
                       <td style={{ padding: '0.75rem' }}>Miesiące 3–4</td>
                       <td style={{ padding: '0.75rem' }}>Pozycje 11–20 → Top 10</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem' }}>Skalowanie i optymalizacja klastrów</td>
                       <td style={{ padding: '0.75rem' }}>Miesiące 5–6</td>
                       <td style={{ padding: '0.75rem' }}>Wzrost ruchu organicznego</td>
@@ -496,44 +496,44 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <caption style={{ captionSide: 'top', textAlign: 'left', fontWeight: 600, padding: '0 0 0.75rem' }}>Oferta 17 agencji SEO w Polsce: liczby zbiorcze, bez nazw</caption>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th scope="col" style={{ padding: '0.75rem' }}>Co sprawdziliśmy</th>
                       <th scope="col" style={{ padding: '0.75rem' }}>Liczba agencji z 17</th>
                       <th scope="col" style={{ padding: '0.75rem' }}>Odczyt</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Publikuje cenę SEO „od” albo widełki</th>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>12</td>
                       <td style={{ padding: '0.75rem' }}>4.11.2026</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Rozlicza się bez komponentu za efekt (abonament, pula godzin, projekt)</th>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>11</td>
                       <td style={{ padding: '0.75rem' }}>25.10.2026</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Uzależnia część wynagrodzenia od wyniku</th>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>5</td>
                       <td style={{ padding: '0.75rem' }}>25.10.2026</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Publikuje okres wypowiedzenia umowy</th>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>6</td>
                       <td style={{ padding: '0.75rem' }}>25.10.2026</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Ma na stronie usługę widoczności w AI (GEO, AEO, „SEO AI”)</th>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>13</td>
                       <td style={{ padding: '0.75rem' }}>4.11.2026</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Podaje cenę usługi widoczności w AI</th>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>6</td>
                       <td style={{ padding: '0.75rem' }}>4.11.2026</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <th scope="row" style={{ padding: '0.75rem', fontWeight: 400 }}>Ma w Google co najmniej 100 opinii</th>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>co najmniej 10</td>
                       <td style={{ padding: '0.75rem' }}>4.11.2026</td>
@@ -541,7 +541,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                   </tbody>
                 </table>
               </div>
-              <p style={{ fontSize: '0.9rem', color: '#6E6E73' }}>Źródło: strony ofertowe, cenniki, regulaminy i profile w katalogach 17 agencji SEO; opracowanie AI SEO COMPANY, odczyty 25.10.2026 i 4.11.2026. Liczbę opinii w Google odczytaliśmy bez logowania; dla 3 agencji nie dało się jej potwierdzić.</p>
+              <p style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)' }}>Źródło: strony ofertowe, cenniki, regulaminy i profile w katalogach 17 agencji SEO; opracowanie AI SEO COMPANY, odczyty 25.10.2026 i 4.11.2026. Liczbę opinii w Google odczytaliśmy bez logowania; dla 3 agencji nie dało się jej potwierdzić.</p>
               <p>Trzy wnioski metodyczne, które przeniesiesz na każdą branżę:</p>
               <ul>
                 <li>Porównuj także ofertę, nie tylko widoczność. Narzędzia SEO pokażą ruch i linki, ale cenę, model rozliczenia i warunki umowy znajdziesz tylko na stronach konkurentów i w ich regulaminach.</li>
@@ -558,31 +558,31 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 <li>Szablon planu na 3–6 miesięcy z zadaniami, ownerami i KPI.</li>
                 <li>Lista priorytetów technicznych do wdrożenia (CWV, indeksacja, struktura URL).</li>
               </ul>
-              <p>W praktyce w 2–3 miesiące jesteśmy w stanie od zera postawić stronę i doprowadzić wybrane frazy do Top 3 — dzięki połączeniu szybkiej analizy konkurencji, optymalizacji technicznej i precyzyjnego contentu.</p>
+              <p>W praktyce w 2–3 miesiące jesteśmy w stanie od zera postawić stronę i doprowadzić wybrane frazy do Top 3 – dzięki połączeniu szybkiej analizy konkurencji, optymalizacji technicznej i precyzyjnego contentu.</p>
 
               <h2 id="wnioski">10. Kluczowe wnioski</h2>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Punkt</th>
                       <th style={{ padding: '0.75rem' }}>Szczegóły</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Zacznij od identyfikacji konkurentów</td>
                       <td style={{ padding: '0.75rem' }}>Wybierz 3–5 domen, które pojawiają się w Top 5 dla co najmniej 10 Twoich fraz biznesowych.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Eksportuj i mapuj klastry</td>
                       <td style={{ padding: '0.75rem' }}>Pobierz Top Pages, pogrupuj URL semantycznie i zidentyfikuj luki tematyczne.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Analizuj backlinki przez referring domains</td>
                       <td style={{ padding: '0.75rem' }}>Liczy się liczba unikalnych domen linkujących, nie łączna liczba linków.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Monitoruj cyklicznie</td>
                       <td style={{ padding: '0.75rem' }}>Szybkie sprawdzenie co miesiąc, pełna aktualizacja mapy przewagi co 3–4 miesiące.</td>
                     </tr>
@@ -596,9 +596,9 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
 
               <h3>Przydatne źródła i narzędzia</h3>
               <ul>
-                <li><a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer">Google Search Central</a> — oficjalna dokumentacja techniczna: indeksacja, Core Web Vitals, schema, zasady jakości treści.</li>
-                <li><a href="https://www.senuto.com/pl/blog/" target="_blank" rel="noopener noreferrer">Senuto Blog</a> — praktyczny przewodnik analizy konkurencji w SEO z perspektywy rynku polskiego.</li>
-                <li><a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs Blog: SEO Competitor Analysis</a> — szczegółowy workflow analizy backlinków i content gap.</li>
+                <li><a href="https://developers.google.com/search" target="_blank" rel="noopener noreferrer">Google Search Central</a> – oficjalna dokumentacja techniczna: indeksacja, Core Web Vitals, schema, zasady jakości treści.</li>
+                <li><a href="https://www.senuto.com/pl/blog/" target="_blank" rel="noopener noreferrer">Senuto Blog</a> – praktyczny przewodnik analizy konkurencji w SEO z perspektywy rynku polskiego.</li>
+                <li><a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs Blog: SEO Competitor Analysis</a> – szczegółowy workflow analizy backlinków i content gap.</li>
               </ul>
 
               <p><strong>Przeczytaj też:</strong> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">Ile kosztuje SEO w 2026? Ceny agencji i od czego zależą</Link></p>

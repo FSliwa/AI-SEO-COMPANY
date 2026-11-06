@@ -16,7 +16,7 @@ const teamData = [
     metricBadge: 'Core Web Vitals 100/100',
     metricBadgeEn: 'Core Web Vitals 100/100',
     image: '/images/unsplash-1614729939124-032f0b56c9ce.jpg',
-    bgGradient: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+    bgGradient: 'linear-gradient(135deg, var(--w-tusz) 0%, #1E293B 100%)',
     leadPl: 'Błyskawiczne działanie i perfekcyjny kod.',
     leadEn: 'Lightning fast performance and perfect code.',
     bodyPl: 'Zespół deweloperski odpowiedzialny jest za wdrażanie nowoczesnych rozwiązań opartych na Next.js i architekturze serverless. Każda stworzona przez nas linijka kodu ma jeden cel: zapewnić Twojej stronie najwyższe noty w narzędziach Google i niesamowite doświadczenie dla użytkownika.',
@@ -108,10 +108,10 @@ export default function AboutTeam() {
             <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZ ZESPÓŁ' : 'OUR TEAM'}
             </div>
-            <h2 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', color: '#1D1D1F', letterSpacing: '-0.04em', lineHeight: 1.12, fontWeight: 700, marginBottom: '1.25rem' }}>
+            <h2 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.12, fontWeight: 700, marginBottom: '1.25rem' }}>
               {lang === 'pl' ? 'Ludzie, którzy napędzają Twój biznes' : 'The people who drive your business'}
             </h2>
-            <p style={{ color: '#6E6E73', fontSize: '1.15rem', lineHeight: 1.55, fontWeight: 500, margin: 0 }}>
+            <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.15rem', lineHeight: 1.55, fontWeight: 500, margin: 0 }}>
               {lang === 'pl' 
                 ? 'Poznaj filary naszego zespołu i zobacz, dlaczego potrafimy dostarczać tak wyjątkowe rezultaty w technologii, projektowaniu i optymalizacji.'
                 : 'Meet the pillars of our team and see why we deliver such exceptional results in technology, design, and optimization.'}
@@ -127,13 +127,13 @@ export default function AboutTeam() {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: activeIndex === 0 ? 'rgba(0,0,0,0.04)' : '#E8E8ED',
+                background: activeIndex === 0 ? 'rgba(0,0,0,0.04)' : 'var(--w-papier-2)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: activeIndex === 0 ? 'default' : 'pointer',
-                color: activeIndex === 0 ? '#B0B0B5' : '#1D1D1F',
+                color: activeIndex === 0 ? '#B0B0B5' : 'var(--w-tusz)',
                 transition: 'all 0.25s ease'
               }}
               aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
@@ -150,13 +150,13 @@ export default function AboutTeam() {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: activeIndex >= teamData.length - 1 ? 'rgba(0,0,0,0.04)' : '#E8E8ED',
+                background: activeIndex >= teamData.length - 1 ? 'rgba(0,0,0,0.04)' : 'var(--w-papier-2)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: activeIndex >= teamData.length - 1 ? 'default' : 'pointer',
-                color: activeIndex >= teamData.length - 1 ? '#B0B0B5' : '#1D1D1F',
+                color: activeIndex >= teamData.length - 1 ? '#B0B0B5' : 'var(--w-tusz)',
                 transition: 'all 0.25s ease'
               }}
               aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
@@ -234,7 +234,7 @@ export default function AboutTeam() {
                     background: 'rgba(255, 255, 255, 0.92)',
                     backdropFilter: 'blur(12px)',
                     WebkitBackdropFilter: 'blur(12px)',
-                    color: '#0F172A',
+                    color: 'var(--w-tusz)',
                     fontSize: '0.8rem',
                     fontWeight: 700,
                     padding: '0.4rem 0.9rem',
@@ -253,14 +253,14 @@ export default function AboutTeam() {
                 <div style={{ padding: '0 0.5rem 0.5rem 0.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <p style={{ 
                     fontSize: '1.08rem', 
-                    color: '#1D1D1F', 
+                    color: 'var(--w-tusz)', 
                     lineHeight: 1.55,
                     letterSpacing: '-0.015em',
                     marginBottom: '1.75rem'
                   }}>
                     {/* 5.11.2026: usunięty zdublowany prop style={{ fontWeight: 'bold' }} (react/jsx-no-duplicate-props);
                         wygrywał drugi, więc render bez zmian. */}
-                    <span style={{ fontWeight: 700, color: '#0F172A', marginRight: '0.35rem' }}>
+                    <span style={{ fontWeight: 700, color: 'var(--w-tusz)', marginRight: '0.35rem' }}>
                       {lang === 'pl' ? item.leadPl : item.leadEn}
                     </span>
                     {lang === 'pl' ? item.bodyPl : item.bodyEn}
@@ -277,8 +277,8 @@ export default function AboutTeam() {
                       </div>
                       <div>
                         {/* 5.11.2026 (PLAN-v2 6.24, SA-07): h4 -> h3 (H2 sekcji -> H3 karty, bez przeskoku); styl inline bez zmian. */}
-                        <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1D1D1F', margin: 0, lineHeight: 1.2 }}>{lang === 'pl' ? item.name : (item.nameEn || item.name)}</h3>
-                        <p style={{ fontSize: '0.8rem', color: '#6E6E73', margin: '2px 0 0 0' }}>
+                        <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--w-tusz)', margin: 0, lineHeight: 1.2 }}>{lang === 'pl' ? item.name : (item.nameEn || item.name)}</h3>
+                        <p style={{ fontSize: '0.8rem', color: 'var(--w-tusz-2)', margin: '2px 0 0 0' }}>
                           {lang === 'pl' ? item.role : (item.roleEn || item.role)}
                         </p>
                       </div>

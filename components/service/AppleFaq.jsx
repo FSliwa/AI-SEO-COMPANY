@@ -19,7 +19,7 @@ import { zachowaniePrzewijania } from '@/lib/ruch';
 const tekst = (lang, pl, en) => (lang === 'pl' ? pl : (en || pl));
 
 // 6.11.2026 (wyglad z makiety): klasy faq-apple-* dla app/wyglad.css (kolory i
-// typografia z tokenow zamiast wpisanych #1D1D1F / #333336). wariant="panel"
+// typografia z tokenow zamiast wpisanych var(--w-tusz) / var(--color-text-main)). wariant="panel"
 // (strona glowna): tytul po lewej, pytania po prawej z numeracja "01" - numer
 // to licznik CSS (app/wyglad.css), nie tekst w HTML; tresc pytan bez zmian.
 export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extraSchema = [], schema = true, sectionId, wariant }) {
@@ -106,7 +106,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
             const odpId = kotwica ? `${kotwica}-odp` : `${uid}-odp-${index}`;
             return (
               <Reveal key={index} delay={index * 0.1}>
-                <div className="faq-apple-pozycja" style={{ borderBottom: '1px solid #E5E5EA' }}>
+                <div className="faq-apple-pozycja" style={{ borderBottom: '1px solid var(--w-linia)' }}>
                   {/* Akordeon dostepny (05.10.2026). Pomiar na /, /en, cenniku i
                       stronach uslug (390 i 1440 px): przycisk bez aria-expanded
                       i aria-controls; zamkniete odpowiedzi mialy wysokosc 0 i
@@ -133,7 +133,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
                       border: 'none',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      color: '#1D1D1F',
+                      color: 'var(--w-tusz)',
                       // Tylko pytania z kotwica: odstep od przypietego naglowka (89 px) przy skoku do #id.
                       ...(kotwica ? { scrollMarginTop: '110px' } : {}),
                     }}
@@ -148,7 +148,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
                       className="faq-apple-ikona"
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      style={{ color: isOpen ? 'var(--color-primary)' : '#1D1D1F', flexShrink: 0 }}
+                      style={{ color: isOpen ? 'var(--color-primary)' : 'var(--w-tusz)', flexShrink: 0 }}
                     >
                       <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -180,7 +180,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
                     style={{ overflow: 'hidden' }}
                   >
                     <p
-                      style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}
+                      style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.6, margin: 0 }}
                       dangerouslySetInnerHTML={{ __html: lang === 'pl' ? faq.answer : (faq.answerEn || faq.answer) }}
                     />
                   </motion.div>

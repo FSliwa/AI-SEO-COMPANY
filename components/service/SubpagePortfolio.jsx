@@ -50,14 +50,14 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
               <h2 style={{ 
                 fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
                 fontWeight: 700, 
-                color: '#1D1D1F', 
+                color: 'var(--w-tusz)', 
                 letterSpacing: '-0.04em',
                 marginBottom: '1rem',
                 lineHeight: 1.15
               }}>
                 {title}
               </h2>
-              <p style={{ color: '#6E6E73', fontSize: '1.25rem', margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.25rem', margin: 0, fontWeight: 500, lineHeight: 1.5 }}>
                 {subtitle}
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  background: '#E8E8ED',
+                  background: 'transparent', border: '1.5px solid var(--w-tusz)',
                   border: 'none',
                   display: 'flex',
                   alignItems: 'center',
@@ -79,7 +79,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                 aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -93,7 +93,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  background: '#E8E8ED',
+                  background: 'transparent', border: '1.5px solid var(--w-tusz)',
                   border: 'none',
                   display: 'flex',
                   alignItems: 'center',
@@ -102,7 +102,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                 aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -154,15 +154,13 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                 transition: 'flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease',
                 minHeight: layout === 'vertical' ? '600px' : 'auto',
                 scrollSnapAlign: 'center',
-                background: '#000000', 
-                borderRadius: '36px',
+                background: 'var(--w-noc)', 
+                borderRadius: 'var(--w-promien-karta)',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                boxShadow: layout === 'vertical' 
-                  ? '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 20px -5px rgba(0, 0, 0, 0.1)'
-                  : '0 20px 40px -10px rgba(0, 0, 0, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: 'none',
+                border: '1px solid var(--w-noc-linia)',
                 position: 'relative'
               }}
             >
@@ -278,21 +276,21 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                       {lang === 'pl' ? c.title : (c.titleEn || c.title)}
                     </h3>
                     <p 
-                      style={{ color: '#86868B', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px', flex: 1 }}
+                      style={{ color: 'var(--w-tusz-2)', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '3rem', maxWidth: '500px', flex: 1 }}
                       dangerouslySetInnerHTML={{ __html: lang === 'pl' ? c.description : (c.descriptionEn || c.description) }}
                     />
                     
                     <div style={{ display: 'flex', gap: '3rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem' }}>
                       <div>
                         <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric}</div>
-                        <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                        <div style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                           {lang === 'pl' ? c.metricLabel : (c.metricLabelEn || c.metricLabel)}
                         </div>
                       </div>
                       {c.metric2 && (
                         <div>
                           <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric2}</div>
-                          <div style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+                          <div style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                             {lang === 'pl' ? c.metric2Label : (c.metric2LabelEn || c.metric2Label)}
                           </div>
                         </div>
@@ -305,7 +303,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     width: '45%', 
                     position: 'relative', 
                     overflow: 'hidden', 
-                    background: c.gradient || 'linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%)',
+                    background: c.gradient || 'linear-gradient(135deg, var(--w-tusz) 0%, #1E1B4B 50%, #312E81 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -353,28 +351,12 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
             przycisk prowadził do polskiej strony głównej. #portfolio istnieje też na /en (Portfolio.jsx). */}
         <a 
           href={lang === 'pl' ? '/#portfolio' : '/en#portfolio'} 
-          className="btn" 
+          className="btn btn-secondary" 
           style={{ 
-            padding: '1.1rem 2.5rem', 
-            fontSize: '1.1rem', 
-            fontWeight: 600, 
-            borderRadius: '50px',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.75rem',
-            background: '#1D1D1F',
-            color: '#FFFFFF',
-            textDecoration: 'none',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-            transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            textDecoration: 'none'
           }}
         >
           {lang === 'pl' ? 'Zobacz pełne portfolio wyników' : 'View full portfolio of results'}

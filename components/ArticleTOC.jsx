@@ -51,7 +51,7 @@ export default function ArticleTOC({ items = [] }) {
     <nav
       aria-label={lang === 'en' ? 'Table of contents' : 'Spis treści'}
       style={{
-        background: '#F5F5F7',
+        background: 'var(--w-papier-2)',
         borderRadius: '16px',
         padding: '1.5rem 2rem',
         marginBottom: '2.5rem',
@@ -76,7 +76,7 @@ export default function ArticleTOC({ items = [] }) {
         <span style={{
           fontSize: '0.85rem',
           fontWeight: 700,
-          color: '#1D1D1F',
+          color: 'var(--w-tusz)',
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
         }}>
@@ -140,7 +140,7 @@ export default function ArticleTOC({ items = [] }) {
                   boxSizing: 'border-box',
                   fontSize: '0.9rem',
                   fontWeight: activeId === id ? 600 : 400,
-                  color: activeId === id ? '#1D1D1F' : '#86868B',
+                  color: activeId === id ? 'var(--w-tusz)' : 'var(--w-tusz-2)',
                   backgroundColor: activeId === id ? 'rgba(29,29,31,0.06)' : 'transparent',
                   transition: 'all 0.2s ease',
                   lineHeight: 1.4,

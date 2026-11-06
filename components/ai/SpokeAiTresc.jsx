@@ -15,10 +15,10 @@ import { celLinku, spelniony } from './segmenty';
 const S = {
   h2: { fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', lineHeight: 1.2, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-text-dark)', margin: '3.5rem 0 1.25rem', scrollMarginTop: '110px' },
   h3: { fontSize: 'clamp(1.2rem, 2.4vw, 1.45rem)', lineHeight: 1.3, fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--color-text-dark)', margin: '2.25rem 0 0.75rem', scrollMarginTop: '110px' },
-  p: { fontSize: '1.08rem', lineHeight: 1.7, color: '#333336', margin: '0 0 1.1rem' },
-  lista: { margin: '0 0 1.25rem', paddingLeft: '1.4rem', display: 'grid', gap: '0.5rem', fontSize: '1.08rem', lineHeight: 1.65, color: '#333336' },
+  p: { fontSize: '1.08rem', lineHeight: 1.7, color: 'var(--color-text-main)', margin: '0 0 1.1rem' },
+  lista: { margin: '0 0 1.25rem', paddingLeft: '1.4rem', display: 'grid', gap: '0.5rem', fontSize: '1.08rem', lineHeight: 1.65, color: 'var(--color-text-main)' },
   link: { color: 'var(--color-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' },
-  podpis: { margin: '0.75rem 0 0', fontSize: '0.88rem', lineHeight: 1.5, color: '#6E6E73' },
+  podpis: { margin: '0.75rem 0 0', fontSize: '0.88rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' },
   karta: { background: '#FFFFFF', borderRadius: '20px', padding: 'clamp(1.1rem, 3vw, 1.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', margin: '1.5rem 0 2rem' },
 };
 
@@ -81,11 +81,11 @@ function Wykres({ tytul, slupki = [], podpis }) {
           const proc = s.z ? Math.round((s.wartosc / s.z) * 100) : 0;
           return (
             <div key={s.etykieta}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', fontSize: '0.95rem', lineHeight: 1.4, color: '#333336', marginBottom: '0.4rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', fontSize: '0.95rem', lineHeight: 1.4, color: 'var(--color-text-main)', marginBottom: '0.4rem' }}>
                 <span>{s.etykieta}</span>
                 <span style={{ fontWeight: 700, color: 'var(--color-text-dark)', whiteSpace: 'nowrap' }}>{s.wartosc} z {s.z} linków</span>
               </div>
-              <div aria-hidden="true" style={{ height: '12px', background: '#E5E5EA', borderRadius: '999px', overflow: 'hidden' }}>
+              <div aria-hidden="true" style={{ height: '12px', background: 'var(--w-linia)', borderRadius: '999px', overflow: 'hidden' }}>
                 <div style={{ width: `${proc}%`, height: '100%', background: 'var(--color-primary)', borderRadius: '999px' }} />
               </div>
             </div>

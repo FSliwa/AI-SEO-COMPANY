@@ -38,7 +38,7 @@ const odpowiedz = (dane, status = 200) => NextResponse.json(dane, { status, head
 
 export async function POST(request) {
   // Przegląd 6.11.2026: dopóki strona N1 nie jest opublikowana (lib/publikacja.js), endpoint nie
-  // pobiera cudzych stron — bez tego działałby jako publiczny pobieracz adresów bez interfejsu.
+  // pobiera cudzych stron – bez tego działałby jako publiczny pobieracz adresów bez interfejsu.
   if (!czyOpublikowana('/narzedzia/generator-llms-txt')) {
     return odpowiedz({ ok: false, error: 'Nie znaleziono.' }, 404);
   }

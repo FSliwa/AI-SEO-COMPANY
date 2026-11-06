@@ -18,7 +18,7 @@ import { hrefJesliOpublikowana } from '@/lib/publikacja';
 // Bez nowych H2 z „Warszawa” do wyniku G1 (OP-09). Link do P2 dopiero po jej publikacji (reguła 6.0).
 const HREF_P2 = hrefJesliOpublikowana('/porownania/seo-vs-geo');
 
-const tekstSekcji = { color: '#333336', fontSize: '1.1rem', lineHeight: 1.65 };
+const tekstSekcji = { color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.65 };
 const linkSekcji = { color: 'var(--color-cta)', textDecoration: 'underline' };
 
 export default function PozycjonowanieClient({ faqData, portfolioCases, carouselItems }) {
@@ -77,20 +77,20 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
             <p className="hero-lead" style={{ 
               fontSize: 'clamp(1.1rem, 2vw, 1.3rem)', 
-              color: '#333336', 
+              color: 'var(--color-text-main)', 
               lineHeight: 1.6, 
               maxWidth: '700px', 
               margin: '0 auto 3rem auto',
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B — raportujemy leady i sprzedaż, nie tylko pozycje.</>
+                ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B – raportujemy leady i sprzedaż, nie tylko pozycje.</>
                 : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>SEO optimization service</strong> is unparalleled: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
 
-            {/* Obietnice z nagłówków RSA w pierwszym ekranie — wcześniej
+            {/* Obietnice z nagłówków RSA w pierwszym ekranie – wcześniej
                 „Wizytówka Google w cenie” była dopiero na 7,8 ekranu telefonu. */}
-            <p className="hero-proof" style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: '#6E6E73' }}>
+            <p className="hero-proof" style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: 'var(--w-tusz-2)' }}>
               {lang === 'pl'
                 ? '✓ Wizytówka Google w cenie · ✓ Raport co miesiąc · ✓ Odpowiedź w 24 h w dni robocze'
                 : '✓ Google Business Profile included · ✓ Monthly report · ✓ Reply within 24 h on business days'}
@@ -109,7 +109,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               </a>
             </div>
             {/* OP-14: autor i data (LASTMOD); na /en Byline nic nie renderuje. */}
-            <Byline sciezka="/pozycjonowanie-stron-internetowych" style={{ margin: '2rem 0 0' }} />
+            <Byline sciezka="/pozycjonowanie-stron-internetowych" style={{ margin: '2rem auto 0', order: 6 }} />
           </Reveal>
         </div>
       </section>
@@ -127,40 +127,40 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Jak Działamy' : 'How We Work'}
             </h2>
-            <p style={{ fontSize: '1.2rem', color: '#6E6E73', margin: '0 auto', fontWeight: 500 }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
               {lang === 'pl' ? 'Trzyetapowa strategia wzrostu oparta na twardych danych analitycznych.' : 'A three-step growth strategy based on hard analytical data.'}
             </p>
           </Reveal>
 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '2rem' }}>
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 1' : 'STEP 1'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Audyt Techniczny & CWV' : 'Technical Audit & Search Engine Optimization'}
               </h3>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Eliminujemy błędy indeksowania, przyspieszamy ładowanie i poprawiamy architekturę linkowania wewnętrznego.' : 'We eliminate indexing errors, speed up loading times, and improve internal linking architecture.'}
               </p>
             </RevealItem>
             
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 2' : 'STEP 2'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Content Marketing' : 'Content Marketing & SEO Digital Strategy'}
               </h3>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' 
                   ? <>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania. Sprawdź nasz <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>poradnik o opiniach Google</Link>.</>
                   : <>We create topical clusters and semantic content answering user queries and search intent. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}
               </p>
             </RevealItem>
             
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 3' : 'STEP 3'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Budowanie Autorytetu' : 'Authority Building & Search Optimisation'}
               </h3>
-              <p style={{ color: '#333336', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' ? 'Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.' : 'We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain.'}
               </p>
             </RevealItem>
@@ -168,7 +168,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_pozycjonowanie_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w\u00a024\u00a0h' : 'Ask for a quote — reply within 24\u00a0h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w\u00a024\u00a0h' : 'Ask for a quote – reply within 24\u00a0h'}
             </a>
           </div>
         </div>
@@ -176,18 +176,18 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <SubpagePortfolio 
         title={lang === 'pl' ? "Scenariusze Wzrostu i Wyniki" : "Growth Scenarios and Results"} 
-        subtitle={lang === 'pl' ? "Przykładowe scenariusze skalowania widoczności i konwersji w modelu AI SEO — ilustracja metody, nie wyniki konkretnych klientów" : "Illustrative scenarios of visibility and conversion scaling in the AI Optimization model — how the method works, not results of specific clients"}
+        subtitle={lang === 'pl' ? "Przykładowe scenariusze skalowania widoczności i konwersji w modelu AI SEO – ilustracja metody, nie wyniki konkretnych klientów" : "Illustrative scenarios of visibility and conversion scaling in the AI Optimization model – how the method works, not results of specific clients"}
         cases={portfolioCases} 
         layout="vertical"
       />
 
-      <section style={{ padding: '80px 0', background: '#F5F5F7' }}>
+      <section style={{ padding: '80px 0', background: 'var(--w-papier-2)' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
               <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
                 {lang === 'pl' ? 'Zaawansowane Strategie Marketingu w Wyszukiwarkach' : 'Advanced Search Engine Optimization Marketing Strategies'}
               </h2>
-              <p style={{ fontSize: '1.1rem', color: '#6E6E73' }}>
+              <p style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', margin: '0 auto' }}>
                 {lang === 'pl' ? 'Sprawdzone metody optymalizacji i marketingu treści dla firm B2B.' : 'Proven search optimization services tailored for B2B growth.'}
               </p>
             </Reveal>
@@ -196,17 +196,17 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                   {lang === 'pl' ? 'Marketing Cyfrowy i Strategia Treści' : 'SEO for Agencies: Digital Search Marketing & Content Strategy'}
                 </h3>
-                <p style={{ color: '#333336', lineHeight: 1.6 }}>
+                <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
                   {lang === 'pl'
-                    ? 'Pracujemy z firmami, których klienci szukają długo, zanim w ogóle się odezwą — dlatego każdą współpracę zaczynamy od pytania, które zapytania realnie ich przyprowadzają. Treść planujemy pod konkretny etap tej ścieżki, a nie „bo trzeba publikować”: każdy tekst ma zadanie i sprawdzamy, czy je wykonuje. SEO, analitykę i marketing prowadzi jeden zespół, więc nic nie jest optymalizowane w oderwaniu od reszty. Działamy też jako zaplecze dla działów marketingu i innych agencji, którym brakuje rąk.'
-                    : <>We work with companies whose buyers research long before they contact anyone, so every engagement starts with one question: which queries actually bring those buyers in. We treat the role of content in marketing as part of the whole funnel rather than a separate channel, so each article has a job to do. One team covers SEO, digital marketing and analytics, which means nothing gets optimised in isolation. We also work as a search optimisation agency for in-house teams that need extra capacity — <strong>SEO for agencies</strong> and for marketing departments running lean. Where paid and organic overlap we plan them together: search marketing, digital PR and landing-page tests feeding the same pipeline.</>}
+                    ? 'Pracujemy z firmami, których klienci szukają długo, zanim w ogóle się odezwą – dlatego każdą współpracę zaczynamy od pytania, które zapytania realnie ich przyprowadzają. Treść planujemy pod konkretny etap tej ścieżki, a nie „bo trzeba publikować”: każdy tekst ma zadanie i sprawdzamy, czy je wykonuje. SEO, analitykę i marketing prowadzi jeden zespół, więc nic nie jest optymalizowane w oderwaniu od reszty. Działamy też jako zaplecze dla działów marketingu i innych agencji, którym brakuje rąk.'
+                    : <>We work with companies whose buyers research long before they contact anyone, so every engagement starts with one question: which queries actually bring those buyers in. We treat the role of content in marketing as part of the whole funnel rather than a separate channel, so each article has a job to do. One team covers SEO, digital marketing and analytics, which means nothing gets optimised in isolation. We also work as a search optimisation agency for in-house teams that need extra capacity – <strong>SEO for agencies</strong> and for marketing departments running lean. Where paid and organic overlap we plan them together: search marketing, digital PR and landing-page tests feeding the same pipeline.</>}
                 </p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
                   {lang === 'pl' ? 'Ekspertyza Wyszukiwarek' : 'Search Engine Expertise'}
                 </h3>
-                <p style={{ color: '#333336', lineHeight: 1.6 }}>
+                <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
                   {lang === 'pl'
                     ? 'Zapewniamy dogłębną analizę techniczną i ciągłe strategie podnoszące Twoje pozycje. Odkryj nasze kompleksowe usługi optymalizacji zaprojektowane dla zrównoważonego wzrostu. Jesteśmy wiodącą agencją SEO dla B2B, dedykowaną Twojemu długoterminowemu sukcesowi.'
                     : <><>We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive services as a leading <strong>optimization agency</strong> and <strong>search engine optimisation agency</strong> for B2B, dedicated to your long-term sustainable growth.</></>}
@@ -216,7 +216,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
             <div style={{ textAlign: 'center', marginTop: '3rem' }}>
               <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_pozycjonowanie_2">
-                {lang === 'pl' ? 'Zapytaj o wycenę — odpowiedź w\u00a024\u00a0h' : 'Ask for a quote — reply within 24\u00a0h'}
+                {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w\u00a024\u00a0h' : 'Ask for a quote – reply within 24\u00a0h'}
               </a>
             </div>
           </div>

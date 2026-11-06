@@ -51,14 +51,14 @@ export default function EntryOffer() {
   return (
     <section className="entry-offer" aria-label={lang === 'pl' ? 'Oferta wejściowa' : 'Entry offer'} style={{ padding: '0 0 2.5rem 0' }}>
       <div className="container" style={{ maxWidth: '850px' }}>
-        <div style={{ background: '#0F172A', color: '#FFFFFF', borderRadius: '24px', padding: '1.75rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
+        <div style={{ background: 'var(--w-tusz)', color: '#FFFFFF', borderRadius: '24px', padding: '1.75rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
           <p style={{ margin: 0, fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#94A3B8', fontWeight: 600 }}>
             {lang === 'pl' ? 'Nie musisz zaczynać od abonamentu' : 'You do not have to start with a subscription'}
           </p>
           <h2 style={{ margin: 0, fontSize: 'clamp(1.4rem, 3.4vw, 1.9rem)', lineHeight: 1.2, fontWeight: 700 }}>
             {lang === 'pl'
-              ? <>Audyt SEO za <span style={{ color: '#38BDF8' }}>{price} zł netto</span> — kwota odliczana od pierwszej faktury</>
-              : <>SEO audit for <span style={{ color: '#38BDF8' }}>PLN {price} net</span> — deducted from your first invoice</>}
+              ? <>Audyt SEO za <span style={{ color: '#38BDF8' }}>{price} zł netto</span> – kwota odliczana od pierwszej faktury</>
+              : <>SEO audit for <span style={{ color: '#38BDF8' }}>PLN {price} net</span> – deducted from your first invoice</>}
           </h2>
           <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.55, color: '#CBD5E1' }}>
             {lang === 'pl'

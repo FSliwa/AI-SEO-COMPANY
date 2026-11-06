@@ -25,18 +25,18 @@ export default function BlogCTA({ locale, currentSlug, klaster, customCtaTitlePl
   // z lib/blogCta.js zastępują customCta* (te mówią o formularzu „poniżej”). Bez klastra:
   // dotychczasowy przycisk do #kontakt, tylko data-cta="blog_cta_kontakt" zamiast "blog_cta".
   const cta = ctaDlaWpisu(klaster ?? current?.cta, currentSlug, lang);
-  const przyciskStyl = { display: 'inline-block', background: '#1D1D1F', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' };
+  const przyciskStyl = { display: 'inline-block', background: 'var(--w-tusz)', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '999px', fontSize: '1.05rem', fontWeight: 600, textDecoration: 'none' };
 
   return (
     <>
       {/* Named byline: matches the Person author in the BlogPosting schema.
-          TODO: extend with years of experience and specialisation — left out
+          TODO: extend with years of experience and specialisation – left out
           deliberately rather than invented. */}
-      <div style={{ marginTop: '3rem', padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', background: '#F9F9FB' }}>
-        <p style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 0.5rem 0' }}>
+      <div style={{ marginTop: '3rem', padding: '1.5rem', border: '1px solid var(--w-linia)', borderRadius: '12px', background: 'var(--w-papier-2)' }}>
+        <p style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 0.5rem 0' }}>
           {lang === 'en' ? 'Author' : 'Autor'}
         </p>
-        <p style={{ fontSize: '1rem', color: '#1D1D1F', fontWeight: 600, margin: '0 0 0.35rem 0' }}>
+        <p style={{ fontSize: '1rem', color: 'var(--w-tusz)', fontWeight: 600, margin: '0 0 0.35rem 0' }}>
           Filip Śliwa
         </p>
         <p style={{ fontSize: '0.95rem', color: '#4B5563', margin: 0, lineHeight: 1.55 }}>
@@ -47,22 +47,22 @@ export default function BlogCTA({ locale, currentSlug, klaster, customCtaTitlePl
       </div>
 
       <div style={{ marginTop: '3rem' }}>
-        <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: 600, color: '#1D1D1F' }}>
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)' }}>
           {lang === 'en' ? 'Related Articles' : 'Powiązane artykuły'}
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {/* The card stays fully clickable, but only the title sits inside the
-              anchor — wrapping the description too made the anchor text ~150
+              anchor – wrapping the description too made the anchor text ~150
               characters, which the crawl flagged. .stretched-link covers the
               card via ::after, so the look and the click target are unchanged. */}
           {relatedPosts.map(post => (
-            <div key={post.slug} style={{ position: 'relative', padding: '1.5rem', border: '1px solid #E5E5EA', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
-              <h4 style={{ fontSize: '1.1rem', color: '#1D1D1F', marginBottom: '0.5rem', fontWeight: 600 }}>
+            <div key={post.slug} style={{ position: 'relative', padding: '1.5rem', border: '1px solid var(--w-linia)', borderRadius: '12px', height: '100%', transition: 'border-color 0.2s', background: '#FFFFFF' }}>
+              <h4 style={{ fontSize: '1.1rem', color: 'var(--w-tusz)', marginBottom: '0.5rem', fontWeight: 600 }}>
                 <Link href={post.slug} className="stretched-link" style={{ textDecoration: 'none', color: 'inherit' }}>
                   {lang === 'en' ? post.titleEn : post.titlePl}
                 </Link>
               </h4>
-              <p style={{ color: '#86868B', fontSize: '0.95rem', margin: 0, lineHeight: 1.5 }}>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '0.95rem', margin: 0, lineHeight: 1.5 }}>
                 {lang === 'en' ? post.descEn : post.descPl}
               </p>
             </div>
@@ -70,14 +70,14 @@ export default function BlogCTA({ locale, currentSlug, klaster, customCtaTitlePl
         </div>
       </div>
 
-      <div style={{ borderTop: '1px solid #E5E5EA', marginTop: '4rem', paddingTop: '4rem' }}>
-        <div style={{ background: '#F5F5F7', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
+      <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '4rem', paddingTop: '4rem' }}>
+        <div style={{ background: 'var(--w-papier-2)', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
           <p style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem', display: 'block' }}>
             {cta ? cta.title : lang === 'en' 
               ? (customCtaTitleEn || 'Dominate your market') 
               : (customCtaTitlePl || 'Zdominuj swój rynek')}
           </p>
-          <p style={{ margin: 0, color: '#86868B', fontSize: '1.1rem', marginBottom: '2rem' }}>
+          <p style={{ margin: 0, color: 'var(--w-tusz-2)', fontSize: '1.1rem', marginBottom: '2rem' }}>
             {cta ? cta.text : lang === 'en' 
               ? (customCtaTextEn || 'Want to outpace your competition in search results? Leave us a message below and we will prepare a dedicated SEO strategy.')
               : (customCtaTextPl || 'Chcesz wyprzedzić konkurencję w wynikach wyszukiwania? Zostaw nam wiadomość poniżej, a przygotujemy dedykowaną strategię SEO.')}

@@ -128,10 +128,10 @@ export default function Footer() {
               <Link href="/" className="logo" style={{ color: '#FFFFFF', marginBottom: '1rem' }}>
                 AI SEO COMPANY
               </Link>
-              <p style={{ fontSize: '0.9rem', maxWidth: '320px', color: '#94A3B8' }}>
+              <p style={{ fontSize: '0.9rem', maxWidth: '320px', color: 'rgba(255,255,255,0.72)' }}>
                 {t('desc')}
               </p>
-              <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '1rem', lineHeight: '1.5' }}>
+              <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', marginTop: '1rem', lineHeight: '1.5' }}>
                 <p style={{ margin: 0 }}><strong>AI SEO COMPANY</strong> {lang === 'pl' ? 'to marka należąca do:' : 'is a brand of:'}</p>
                 {/* Art. 300(5) KSH: a prosta spółka akcyjna must state its firm,
                     registered office and address, the registry court and KRS

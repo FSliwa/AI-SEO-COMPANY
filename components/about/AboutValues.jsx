@@ -32,16 +32,16 @@ export default function AboutValues() {
   ];
 
   return (
-    <section className="services" id="about-values" style={{ background: '#F5F5F7', padding: '8rem 0' }}>
+    <section className="services" id="about-values" style={{ background: 'var(--w-papier-2)', padding: '8rem 0' }}>
       <div className="container">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZE WARTOŚCI' : 'OUR VALUES'}
           </div>
-          <h2 style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', color: '#1D1D1F', fontWeight: 700, letterSpacing: '-0.04em' }}>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', color: 'var(--w-tusz)', fontWeight: 700, letterSpacing: '-0.04em' }}>
             {lang === 'pl' ? 'Zasady, w oparciu o które budujemy sukces' : 'The principles upon which we build success'}
           </h2>
-          <p style={{ fontSize: '1.25rem', color: '#6E6E73', fontWeight: 500 }}>
+          <p style={{ fontSize: '1.25rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
             {lang === 'pl' ? 'Nasz kodeks postępowania gwarantujący niezmiennie wysoką jakość usług.' : 'Our code of conduct guaranteeing consistently high-quality services.'}
           </p>
         </Reveal>

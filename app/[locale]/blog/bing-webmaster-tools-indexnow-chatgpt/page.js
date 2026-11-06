@@ -107,7 +107,7 @@ export default async function ArtykulBingIndexNow({ params }) {
   };
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       {/* BlogPosting + BreadcrumbList (Strona główna › Blog › artykuł) jak w pozostałych wpisach. */}
       <ArticleSchema
@@ -124,18 +124,18 @@ export default async function ArtykulBingIndexNow({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Techniczne SEO
               </span>
             </div>
 
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               {H1}
             </h1>
 
             <Byline sciezka={SCIEZKA} data={DATA_ZMIANY} />
 
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -197,7 +197,7 @@ Content-Type: application/json; charset=utf-8
               <h3>Krok 3: odpowiedź serwera</h3>
               <div className="table-container">
                 <table>
-                  <caption style={{ captionSide: 'bottom', textAlign: 'left', fontSize: '0.85rem', color: '#6E6E73', paddingTop: '0.5rem' }}>
+                  <caption style={{ captionSide: 'bottom', textAlign: 'left', fontSize: '0.85rem', color: 'var(--w-tusz-2)', paddingTop: '0.5rem' }}>
                     Źródło: dokumentacja indexnow.org (odczyt: 5.11.2026).
                   </caption>
                   <thead>

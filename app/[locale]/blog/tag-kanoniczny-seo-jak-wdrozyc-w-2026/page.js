@@ -47,7 +47,7 @@ export default async function ArticleCanonicalPage({ params }) {
   ];
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       {/* 5.11.2026: dateModified = LASTMOD; tresc PL realnie zmieniona (3 nowe H2), EN bez zmian. */}
       <ArticleSchema
@@ -61,20 +61,20 @@ export default async function ArticleCanonicalPage({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Technical SEO
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 July 30, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               SEO Canonical Tag – what is it, how it works and how to implement it in 2026
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </div>
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -88,7 +88,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <h2 id="czym-jest">What is a canonical tag and how it works in practice</h2>
               <p>Many business owners ask themselves: <span style={{ fontWeight: 'bold' }}>canonical url what is it</span> in practice? Simply put, it is a short HTML snippet placed in the <code>&lt;head&gt;</code> section of a webpage. Its task is to indicate the official URL for a given content to search engine crawlers.</p>
               
-              <div style={{ backgroundColor: '#F5F5F7', padding: '1.5rem', borderRadius: '12px', marginBottom: '1.5rem', overflowX: 'auto' }}>
+              <div style={{ backgroundColor: 'var(--w-papier-2)', padding: '1.5rem', borderRadius: '12px', marginBottom: '1.5rem', overflowX: 'auto' }}>
                 <code>&lt;link rel="canonical" href="https://example.com/preferred-page/" /&gt;</code>
               </div>
               
@@ -117,24 +117,24 @@ export default async function ArticleCanonicalPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Mechanism</th>
                       <th style={{ padding: '0.75rem' }}>Action for bot</th>
                       <th style={{ padding: '0.75rem' }}>When to use</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>301 Redirect</td>
                       <td style={{ padding: '0.75rem' }}>Forces bot to move to a new address</td>
                       <td style={{ padding: '0.75rem' }}>Permanent address change, migration</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>rel="canonical"</td>
                       <td style={{ padding: '0.75rem' }}>Consolidates power under one specified address</td>
                       <td style={{ padding: '0.75rem' }}>Sorting parameters, category duplicates</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>noindex</td>
                       <td style={{ padding: '0.75rem' }}>Categorically forbids indexing</td>
                       <td style={{ padding: '0.75rem' }}>Cart, terms of service, search results</td>
@@ -200,22 +200,22 @@ export default async function ArticleCanonicalPage({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Techniczne SEO
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 30 Lipca 2026
               </span>
             </div>
             {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page — do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+                renders, so this is not a second H1 on the page – do not demote it. */}
+              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Tag kanoniczny SEO – czym jest, jak działa i jak go wdrożyć w 2026
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </div>
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -233,7 +233,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <h2 id="czym-jest">Czym jest tag kanoniczny i jak działa w praktyce</h2>
               <p>Wielu właścicieli biznesów internetowych na początku swojej drogi zadaje sobie pytanie: <span style={{ fontWeight: 'bold' }}>canonical url co to jest</span> w praktyce? Najprościej mówiąc, to krótki fragment kodu HTML umieszczany w sekcji <code>&lt;head&gt;</code> strony internetowej. Jego zadaniem jest wskazanie robotom indeksującym oficjalnego adresu URL dla danej treści.</p>
 
-              <div style={{ backgroundColor: '#F5F5F7', padding: '1.5rem', borderRadius: '12px', marginBottom: '1.5rem', overflowX: 'auto' }}>
+              <div style={{ backgroundColor: 'var(--w-papier-2)', padding: '1.5rem', borderRadius: '12px', marginBottom: '1.5rem', overflowX: 'auto' }}>
                 <code>&lt;link rel="canonical" href="https://przyklad.pl/preferowana-strona/" /&gt;</code>
               </div>
 
@@ -274,24 +274,24 @@ export default async function ArticleCanonicalPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '0.75rem' }}>Mechanizm</th>
                       <th style={{ padding: '0.75rem' }}>Działanie dla bota</th>
                       <th style={{ padding: '0.75rem' }}>Kiedy stosować</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>Przekierowanie 301</td>
                       <td style={{ padding: '0.75rem' }}>Zmusza bota do przejścia pod nowy adres</td>
                       <td style={{ padding: '0.75rem' }}>Trwała zmiana adresu, migracja</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>rel="canonical"</td>
                       <td style={{ padding: '0.75rem' }}>Konsoliduje moc pod jednym wskazanym adresem</td>
                       <td style={{ padding: '0.75rem' }}>Parametry sortowania, duplikaty kategorii</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '0.75rem', fontWeight: 600 }}>noindex</td>
                       <td style={{ padding: '0.75rem' }}>Kategorycznie zakazuje indeksowania</td>
                       <td style={{ padding: '0.75rem' }}>Koszyk, regulamin, wyniki wyszukiwania</td>

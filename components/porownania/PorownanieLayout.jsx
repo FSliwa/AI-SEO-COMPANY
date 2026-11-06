@@ -107,16 +107,16 @@ export default function PorownanieLayout({ porownanie: p }) {
             {p.h1}
           </h1>
           {p.ujawnienie && (
-            <p style={{ margin: '0 0 0.75rem', fontSize: '1rem', lineHeight: 1.5, color: '#333336' }}>{p.ujawnienie}</p>
+            <p style={{ margin: '0 0 0.75rem', fontSize: '1rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>{p.ujawnienie}</p>
           )}
           <Byline sciezka={`/porownania/${p.slug}`} data={p.updated} style={{ margin: '0 0 0.25rem' }} />
-          <p style={{ margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color: '#6E6E73' }}>{p.zrodlaDanych}</p>
+          <p style={{ margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>{p.zrodlaDanych}</p>
           <AnswerBox>
             <p className={styles.tresc} style={{ margin: 0 }} dangerouslySetInnerHTML={{ __html: p.answer }} />
           </AnswerBox>
         </div>
 
-        <div className="container" style={{ maxWidth: '860px', margin: '0 auto', display: 'grid', gap: '1.5rem' }}>
+        <div className="container" style={{ maxWidth: '860px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1.5rem' }}>
           {p.sections.map((s) => (
             <Sekcja key={s.id} sekcja={s} porownanie={p} />
           ))}

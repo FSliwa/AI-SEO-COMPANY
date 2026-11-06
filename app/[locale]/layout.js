@@ -210,6 +210,9 @@ const jsonLdDataPl = {
   ]
 };
 
+import KursorWgTla from '@/components/KursorWgTla';
+import PetleWidoczne from '@/components/PetleWidoczne';
+import Typografia from '@/components/Typografia';
 import Script from 'next/script';
 
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -244,7 +247,7 @@ export default async function RootLayout({ children, params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localizedJsonLd(locale)) }}
         />
         {/* Consent Mode v2 defaults. This must execute before the gtag library
-            loads, otherwise Analytics writes _ga cookies on first paint —
+            loads, otherwise Analytics writes _ga cookies on first paint –
             before the banner has been answered, which art. 173 of the Polish
             electronic communications law does not allow. The banner calls
             gtag('consent','update',…) once the user decides. */}
@@ -301,6 +304,9 @@ export default async function RootLayout({ children, params }) {
       </head>
       <body className={`${geist.variable} ${geistMono.variable}`}>
         <NextIntlClientProvider messages={messages}>
+          <KursorWgTla />
+          <PetleWidoczne />
+          <Typografia />
           {/* Baner zgody pierwszy w DOM (05.10.2026). Stal za <main> i <footer>,
               wiec z klawiatury "Odrzuc opcjonalne" wypadalo dopiero po 62-64 Tab
               na stronie glownej (48-54 na podstronach). Baner jest position:

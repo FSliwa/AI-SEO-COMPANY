@@ -29,7 +29,7 @@ const BASE = 'https://www.ai-seo-company.pl';
 export default async function ArticleWebsitePricingPage({ params }) {
   const { locale } = await params;
   const tocItemsPl = [
-    { id: 'szczegolowe-przedzialy', title: 'Ile kosztuje strona www — szczegółowe przedziały według typu' },
+    { id: 'szczegolowe-przedzialy', title: 'Ile kosztuje strona www – szczegółowe przedziały według typu' },
     { id: 'co-wplywa-na-cene', title: 'Co dokładnie wpływa na cenę strony internetowej?' },
     { id: 'co-jest-w-cenie', title: 'Co jest w cenie, a za co trzeba dopłacić?' },
     { id: 'jak-dlugo-trwa', title: 'Jak długo trwa realizacja strony i jakie są etapy?' },
@@ -59,7 +59,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
   ];
 
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#1D1D1F', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <ArticleSchema
         slug="/blog/ile-kosztuje-strona-www-dla-firmy-ceny"
@@ -72,21 +72,21 @@ export default async function ArticleWebsitePricingPage({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Web Design & Pricing
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 Aug 01, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               How Much Does a Business Website Cost? Pricing & What's Included (2026)
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </div>
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -96,7 +96,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               </p>
               
               <p>
-                If you’re just starting to plan your budget, set a minimum investment for a website that will actually work for your business — not just exist online.
+                If you’re just starting to plan your budget, set a minimum investment for a website that will actually work for your business – not just exist online.
               </p>
               
               <p><span style={{ fontWeight: 'bold' }}>Quick overview of typical market costs (2026):</span></p>
@@ -108,7 +108,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Advanced website with CRM integrations, payments, and multilingual support:</span> Pricing is individual and depends on project complexity</li>
               </ul>
               
-              <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
+              <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Professional tip:</span> If your project requires CRM integration, order automation, or a custom graphic design, talk to a full-service agency from the start. A freelancer may be cheaper at the beginning, but every scope change during the project can easily double the final bill.
               </div>
 
@@ -120,7 +120,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '800px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Website Type</th>
                       <th style={{ padding: '1rem' }}>One-time Cost (EUR net)</th>
                       <th style={{ padding: '1rem' }}>What's Usually Included</th>
@@ -130,7 +130,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>One-page</td>
                       <td style={{ padding: '1rem' }}>Depends on the provider and project specifics</td>
                       <td style={{ padding: '1rem' }}>Graphic design (template), 1 section on CMS, contact form, SSL</td>
@@ -138,7 +138,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Freelancers, events, campaigns</td>
                       <td style={{ padding: '1rem' }}>Moderate maintenance costs</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Brochure (up to 5 pages)</td>
                       <td style={{ padding: '1rem' }}>€300–1,200 net</td>
                       <td style={{ padding: '1rem' }}>Template or light custom design, CMS (WordPress), basic SEO, contact form</td>
@@ -146,7 +146,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Small service businesses, clinics</td>
                       <td style={{ padding: '1rem' }}>Moderate annual costs</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Conversion-focused landing page</td>
                       <td style={{ padding: '1rem' }}>Depends on individual quote</td>
                       <td style={{ padding: '1rem' }}>Custom design, A/B-ready structure, email tool integration</td>
@@ -154,7 +154,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>E-commerce, ad campaigns</td>
                       <td style={{ padding: '1rem' }}>Moderate maintenance costs</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Company website (10–20 pages)</td>
                       <td style={{ padding: '1rem' }}>Depends on project requirements</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, WordPress or Next.js, blog, basic <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO audit</Link></td>
@@ -162,7 +162,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>SMEs, B2B companies</td>
                       <td style={{ padding: '1rem' }}>Higher maintenance costs</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>WooCommerce / Shopify store</td>
                       <td style={{ padding: '1rem' }}>Price grows with feature complexity</td>
                       <td style={{ padding: '1rem' }}>Platform setup, product card design, payment gateway, SSL</td>
@@ -202,7 +202,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Support and SLA.</span> A service agreement with a guaranteed response time costs more than on-demand support. For companies where website downtime means lost sales, this is a necessity.</li>
               </ul>
               
-              <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
+              <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Professional tip:</span> The most commonly underestimated item is content. Clients assume they will "write it themselves," and then the project stalls for weeks because no one has time. Plan a copywriting budget upfront or agree with the provider that you will deliver the texts by a specific deadline written into the project schedule.
               </div>
 
@@ -221,39 +221,39 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Item</th>
                       <th style={{ padding: '1rem' }}>Simple Website (annual cost)</th>
                       <th style={{ padding: '1rem' }}>Advanced Website (annual cost)</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Domain</td>
                       <td style={{ padding: '1rem' }}>Usually low</td>
                       <td style={{ padding: '1rem' }}>Usually low</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Hosting / server</td>
                       <td style={{ padding: '1rem' }}>Moderate</td>
                       <td style={{ padding: '1rem' }}>May be higher depending on requirements</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>SSL certificate</td>
                       <td style={{ padding: '1rem' }}>Often included in hosting</td>
                       <td style={{ padding: '1rem' }}>May increase with website expansion</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>WordPress plugin licenses</td>
                       <td style={{ padding: '1rem' }}>Depends on needs</td>
                       <td style={{ padding: '1rem' }}>Depends on needs and features</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>SaaS subscription (e.g. Shopify)</td>
                       <td style={{ padding: '1rem' }}>Usually not applicable</td>
                       <td style={{ padding: '1rem' }}>Depends on platform and plan</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Technical support / maintenance</td>
                       <td style={{ padding: '1rem' }}>Varies</td>
                       <td style={{ padding: '1rem' }}>Higher for advanced websites</td>
@@ -296,7 +296,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               
               <p>When is saving not worth it? First and foremost on <span style={{ fontWeight: 'bold' }}>performance</span>. A website that loads in more than 3 seconds statistically loses a significant portion of visitors before they even see the offer. It's also not worth cutting basic technical SEO, because errors in URL structure, missing redirects, or an incorrect sitemap can block indexing for months. Poor UX leads to a low conversion rate, which means even strong organic traffic doesn’t turn into inquiries.</p>
               
-              <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
+              <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Professional tip:</span> Before deciding to cut costs, ask yourself one question: what is the value of one client acquired through the website? If it's €1,150, and investing an extra €700 in better UX increases conversion by 2 percentage points at 100 visits per month, the return on that investment will come within a few weeks.
               </div>
 
@@ -335,7 +335,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '800px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Package Class</th>
                       <th style={{ padding: '1rem' }}>Cost / Model</th>
                       <th style={{ padding: '1rem' }}>What's Included</th>
@@ -345,7 +345,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Freelancer (budget)</td>
                       <td style={{ padding: '1rem' }}>Costs depend on the project</td>
                       <td style={{ padding: '1rem' }}>Template, basic CMS, contact form, SSL</td>
@@ -353,7 +353,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Micro-businesses, startups</td>
                       <td style={{ padding: '1rem' }}>Low annual costs</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Small agency (mid-range)</td>
                       <td style={{ padding: '1rem' }}>Costs depend on scope</td>
                       <td style={{ padding: '1rem' }}>Light custom design, WordPress, basic SEO, training</td>
@@ -382,7 +382,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <p>Research on buying behavior shows that 81% of customers need full trust in a brand before making a purchase, and the website is the first place where that trust is built or lost.</p>
               <p>A concrete example: a real estate company that moved from an outdated WordPress website to a Next.js solution with an optimized content structure and <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local SEO</Link> can expect growth in organic traffic within 3–6 months of launch. The key point, however, is that simply changing technology without thoughtful UX and content will not deliver results.</p>
 
-              <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
+              <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Professional tip:</span> Measure website ROI through four indicators: organic traffic (Google Search Console), conversion rate (Google Analytics 4), average transaction or inquiry value, and bounce rate. If after 6 months none of these indicators have improved, the problem lies either in traffic quality or website UX.
               </div>
               
@@ -394,21 +394,21 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Point</th>
                       <th style={{ padding: '1rem' }}>Details</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Biggest impact on price</td>
                       <td style={{ padding: '1rem' }}>External integrations, dedicated design, and content are the items that most often double the quote.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Annual costs are mandatory</td>
                       <td style={{ padding: '1rem' }}>Maintaining a simple website is a moderate annual cost; an advanced website costs several thousand euros.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Brief before quoting</td>
                       <td style={{ padding: '1rem' }}>Prepare the business goal, feature list, and reference website examples before requesting a quote.</td>
                     </tr>
@@ -469,23 +469,23 @@ export default async function ArticleWebsitePricingPage({ params }) {
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#86868B', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                 Projektowanie & Cenniki
               </span>
-              <span style={{ fontSize: '0.9rem', color: '#86868B', fontWeight: 500 }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                 01 Sierpnia 2026
               </span>
             </div>
             {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page — do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#1D1D1F', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+                renders, so this is not a second H1 on the page – do not demote it. */}
+              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Ile kosztuje strona www dla firmy: ceny i co zawierają
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </div>
-            <div style={{ borderBottom: '1px solid #E5E5EA', marginBottom: '3rem' }}></div>
+            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -507,19 +507,19 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Rozbudowany serwis z integracjami CRM, płatnościami, wielojęzycznością:</span> wycena jest indywidualna i zależy od złożoności projektu</li>
               </ul>
               
-              <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
+              <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Jeśli Twój projekt wymaga integracji z systemem CRM, automatyzacji zamówień lub niestandardowego projektu graficznego, od razu rozmawiaj z agencją pełnego serwisu. Freelancer może być tańszy na starcie, ale każda zmiana zakresu w trakcie projektu potrafi podwoić końcowy rachunek.
               </div>
 
               <ArticleTOC items={tocItemsPl} />
 
-              <h2 id="szczegolowe-przedzialy">Ile kosztuje strona www — szczegółowe przedziały według typu</h2>
+              <h2 id="szczegolowe-przedzialy">Ile kosztuje strona www – szczegółowe przedziały według typu</h2>
               <p>Poniższa tabela pokazuje orientacyjne koszty rynkowe dla najczęściej zamawianych typów stron w Polsce. Wartości są podane jako zakresy, bo ostateczna cena zależy od wykonawcy, zakresu prac i wybranych funkcji.</p>
               
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '800px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Typ strony</th>
                       <th style={{ padding: '1rem' }}>Koszt jednorazowy (PLN netto)</th>
                       <th style={{ padding: '1rem' }}>Co zwykle jest wliczone</th>
@@ -529,7 +529,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>One-page</td>
                       <td style={{ padding: '1rem' }}>zależy od wybranego wykonawcy i specyfiki projektu</td>
                       <td style={{ padding: '1rem' }}>Projekt graficzny (szablon), 1 sekcja na CMS, formularz kontaktowy, SSL</td>
@@ -537,7 +537,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Freelancerzy, eventy, kampanie</td>
                       <td style={{ padding: '1rem' }}>Koszty utrzymania są umiarkowane</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Wizytówka (do 5 podstron)</td>
                       <td style={{ padding: '1rem' }}>1 300–5 000 zł netto (wg home.pl, podstawowa realizacja)</td>
                       <td style={{ padding: '1rem' }}>Szablon lub lekki custom, CMS (WordPress), podstawowe SEO, formularz</td>
@@ -545,7 +545,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Małe firmy usługowe, gabinety</td>
                       <td style={{ padding: '1rem' }}>Koszty roczne umiarkowane</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Landing page (konwersyjny)</td>
                       <td style={{ padding: '1rem' }}>zależy od indywidualnej wyceny</td>
                       <td style={{ padding: '1rem' }}>Custom design, A/B-ready struktura, integracja z narzędziem e-mail</td>
@@ -553,7 +553,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>E-commerce, kampanie reklamowe</td>
                       <td style={{ padding: '1rem' }}>Koszty utrzymania umiarkowane</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Strona firmowa (10–20 podstron)</td>
                       <td style={{ padding: '1rem' }}>wycena uzależniona od wymagań projektu</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, WordPress lub Next.js, blog, podstawowy <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt SEO</Link></td>
@@ -561,7 +561,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>MŚP, firmy B2B</td>
                       <td style={{ padding: '1rem' }}>Koszty utrzymania wyższe</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Sklep WooCommerce / Shopify</td>
                       <td style={{ padding: '1rem' }}>cena rośnie wraz ze skomplikowaniem funkcji</td>
                       <td style={{ padding: '1rem' }}>Konfiguracja platformy, projekt kart produktów, bramka płatności, SSL</td>
@@ -601,7 +601,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Wsparcie i SLA.</span> Umowa serwisowa z gwarantowanym czasem reakcji kosztuje więcej niż wsparcie dostępne na żądanie. Dla firm, gdzie przestój strony oznacza utratę sprzedaży, to konieczność.</li>
               </ul>
               
-              <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
+              <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Najczęściej niedoszacowaną pozycją są treści. Klienci zakładają, że "napiszą sami", a potem projekt stoi tygodniami, bo nikt nie ma czasu. Zaplanuj budżet na copywriting z góry lub uzgodnij z wykonawcą, że dostarczysz teksty w konkretnym terminie, wpisanym do harmonogramu projektu.
               </div>
 
@@ -620,39 +620,39 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Pozycja</th>
                       <th style={{ padding: '1rem' }}>Prosta strona (roczny koszt)</th>
                       <th style={{ padding: '1rem' }}>Rozbudowany serwis (roczny koszt)</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Domena (.pl)</td>
                       <td style={{ padding: '1rem' }}>koszt domeny jest zwykle niewielki</td>
                       <td style={{ padding: '1rem' }}>koszt domeny jest zwykle niewielki</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Hosting / serwer</td>
                       <td style={{ padding: '1rem' }}>koszty hostingu są umiarkowane</td>
                       <td style={{ padding: '1rem' }}>koszty hostingu mogą być wyższe w zależności od wymagań</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Certyfikat SSL</td>
                       <td style={{ padding: '1rem' }}>koszt może być wliczony w hosting</td>
                       <td style={{ padding: '1rem' }}>koszt może wzrastać wraz z rozbudową serwisu</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Licencje wtyczek WordPress</td>
                       <td style={{ padding: '1rem' }}>koszty zależne od potrzeb</td>
                       <td style={{ padding: '1rem' }}>koszty zależne od potrzeb i funkcji serwisu</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Abonament SaaS (np. Shopify)</td>
                       <td style={{ padding: '1rem' }}>zwykle nie dotyczy</td>
                       <td style={{ padding: '1rem' }}>opłata abonamentowa zależy od platformy i pakietu</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Wsparcie / serwis techniczny</td>
                       <td style={{ padding: '1rem' }}>koszty wsparcia mogą się różnić</td>
                       <td style={{ padding: '1rem' }}>koszty wsparcia są wyższe dla rozbudowanych serwisów</td>
@@ -695,7 +695,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               
               <p>Kiedy oszczędzanie się nie opłaca? Przede wszystkim na <span style={{ fontWeight: 'bold' }}>wydajności</span>. Strona ładująca się powyżej 3 sekund traci statystycznie znaczną część odwiedzających zanim zdążą zobaczyć ofertę. Nie warto też ciąć na podstawowym SEO technicznym, bo błędy w strukturze URL, brakujące przekierowania czy niepoprawna mapa strony potrafią zablokować indeksowanie na miesiące. Słaby UX to z kolei niski współczynnik konwersji, który sprawia, że nawet duży ruch organiczny nie przekłada się na zapytania.</p>
               
-              <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
+              <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Przed decyzją o oszczędzaniu zadaj sobie jedno pytanie: jaka jest wartość jednego pozyskanego klienta przez stronę? Jeśli to 5 000 zł, a zainwestowanie dodatkowych 3 000 zł w lepszy UX zwiększy konwersję o 2 punkty procentowe przy 100 odwiedzinach miesięcznie, zwrot z tej inwestycji nastąpi w ciągu kilku tygodni.
               </div>
 
@@ -734,7 +734,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '800px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Klasa pakietu</th>
                       <th style={{ padding: '1rem' }}>Koszt jednorazowy / model</th>
                       <th style={{ padding: '1rem' }}>Co jest wliczone</th>
@@ -744,7 +744,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Freelancer (budżetowy)</td>
                       <td style={{ padding: '1rem' }}>koszty uzależnione od projektu</td>
                       <td style={{ padding: '1rem' }}>Szablon, podstawowy CMS, formularz, SSL</td>
@@ -752,7 +752,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem' }}>Mikrofirmy, start-upy</td>
                       <td style={{ padding: '1rem' }}>Koszty roczne niewielkie</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Mała agencja (średnia)</td>
                       <td style={{ padding: '1rem' }}>koszty zależą od zakresu</td>
                       <td style={{ padding: '1rem' }}>Lekki custom design, WordPress, podstawowe SEO, szkolenie</td>
@@ -781,7 +781,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <p>Badania zachowań zakupowych wskazują, że 81% klientów potrzebuje pełnego zaufania do marki przed dokonaniem zakupu, a strona internetowa jest pierwszym miejscem, gdzie to zaufanie jest budowane lub tracone.</p>
               <p>Konkretny przykład: firma z branży nieruchomości, która przeszła z przestarzałej strony na WordPress na rozwiązanie oparte na Next.js z zoptymalizowaną strukturą treści i <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>lokalnym SEO</Link>, może oczekiwać wzrostu ruchu organicznego w ciągu 3–6 miesięcy od wdrożenia. Kluczowe jest jednak to, że sama zmiana technologii bez przemyślanego UX i treści nie przyniesie rezultatów.</p>
 
-              <div className="pro-tip" style={{ padding: '1.5rem', background: '#F5F5F7', borderRadius: '12px', borderLeft: '4px solid #1D1D1F', marginBottom: '2rem' }}>
+              <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Mierz ROI ze strony przez cztery wskaźniki: ruch organiczny (Google Search Console), współczynnik konwersji (Google Analytics 4), średnią wartość transakcji lub zapytania oraz współczynnik odrzuceń. Jeśli po 6 miesiącach żaden z tych wskaźników nie poprawił się, problem leży albo w jakości ruchu, albo w UX strony.
               </div>
               
@@ -793,21 +793,21 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <div style={{ overflowX: 'auto', marginBottom: '2rem' }}>
                 <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
                   <thead>
-                    <tr style={{ background: '#F5F5F7', borderBottom: '2px solid #E5E5EA' }}>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Punkt</th>
                       <th style={{ padding: '1rem' }}>Szczegóły</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Największy wpływ na cenę</td>
                       <td style={{ padding: '1rem' }}>Integracje zewnętrzne, dedykowany design i treści to pozycje, które najczęściej podwajają wycenę.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Koszty roczne to obowiązek</td>
                       <td style={{ padding: '1rem' }}>Utrzymanie prostej strony to umiarkowany koszt roczny; rozbudowany serwis to kilka tysięcy złotych.</td>
                     </tr>
-                    <tr style={{ borderBottom: '1px solid #E5E5EA' }}>
+                    <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Brief przed wyceną</td>
                       <td style={{ padding: '1rem' }}>Przygotuj cel biznesowy, listę funkcji i przykłady stron referencyjnych, zanim poprosisz o wycenę.</td>
                     </tr>
@@ -850,11 +850,11 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <p>Przed wysłaniem zapytania o wycenę warto przejrzeć kilka zasobów, które pomogą Ci przygotować brief i ocenić otrzymane oferty.</p>
               
               <ul>
-                <li><a href="https://home.pl" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje stworzenie strony internetowej? Poznaj przykładowe ceny — home.pl</a>: przegląd przedziałów cenowych dla podstawowych realizacji na polskim rynku.</li>
-                <li>Ile kosztuje utrzymanie strony internetowej? — zestawienie rocznych kosztów utrzymania dla różnych typów stron.</li>
-                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Projektowanie stron internetowych dla firm</Link> — szczegółowy opis oferty AI SEO COMPANY z zakresem prac i technologiami.</li>
-                <li><Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje SEO w 2026? Ceny agencji i od czego zależą</Link> — od czego zależy koszt pozycjonowania, jako uzupełnienie budżetu na stronę.</li>
-                <li><Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt SEO</Link> — opis usługi audytu technicznego, przydatny przed wdrożeniem lub migracją strony.</li>
+                <li><a href="https://home.pl" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje stworzenie strony internetowej? Poznaj przykładowe ceny – home.pl</a>: przegląd przedziałów cenowych dla podstawowych realizacji na polskim rynku.</li>
+                <li>Ile kosztuje utrzymanie strony internetowej? – zestawienie rocznych kosztów utrzymania dla różnych typów stron.</li>
+                <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Projektowanie stron internetowych dla firm</Link> – szczegółowy opis oferty AI SEO COMPANY z zakresem prac i technologiami.</li>
+                <li><Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje SEO w 2026? Ceny agencji i od czego zależą</Link> – od czego zależy koszt pozycjonowania, jako uzupełnienie budżetu na stronę.</li>
+                <li><Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt SEO</Link> – opis usługi audytu technicznego, przydatny przed wdrożeniem lub migracją strony.</li>
               </ul>
               
               <p>Jak z tych źródeł skorzystać przy przygotowaniu briefu? Zacznij od określenia celu biznesowego strony (sprzedaż, generowanie leadów, budowanie marki). Następnie wypisz 3–5 kluczowych ścieżek użytkownika, listę wymaganych integracji, przykłady stron referencyjnych i orientacyjny budżet. Taki brief pozwoli każdemu wykonawcy wycenić projekt na porównywalnych zasadach i skróci czas negocjacji o połowę.</p>

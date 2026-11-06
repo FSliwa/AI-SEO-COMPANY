@@ -199,7 +199,7 @@ export default function AboutMission() {
   }, [isAutoplay, najechane, activeIndex]);
 
   return (
-    <section className="why-us" id="about-mission" style={{ background: 'var(--color-bg-surface)', padding: '7rem 0', color: '#1D1D1F' }} onFocus={zatrzymajPrzyFokusie}>
+    <section className="why-us" id="about-mission" style={{ background: 'var(--color-bg-surface)', padding: '7rem 0', color: 'var(--w-tusz)' }} onFocus={zatrzymajPrzyFokusie}>
       <div className="container" style={{ maxWidth: '1280px' }}>
         
         {/* Top Header Row with Apple-style Navigation Arrows */}
@@ -208,7 +208,7 @@ export default function AboutMission() {
             <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', fontWeight: 600 }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'KIM JESTEŚMY' : 'WHO WE ARE'}
             </div>
-            <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: '#1D1D1F', marginBottom: '1rem' }}>
+            <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: 'var(--w-tusz)', marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Nie jesteśmy zwykłą agencją. Jesteśmy architektami Twojego wzrostu' : 'We are not just an agency. We are the architects of your growth'}
             </h1>
             {/* 5.11.2026 (PLAN-v2 6.24, EEAT1; AV-05 po weryfikacji): pierwszy akapit = zdanie encji
@@ -217,7 +217,7 @@ export default function AboutMission() {
                 samego opisu. Zamiast frazy „Agencja SEO Warszawa (AI SEO COMPANY)” (frazy strony
                 głównej, strażnik fraz). Pomiar AI tylko w SEO Premium, cena = SEO Standard
                 (PricingClient, ServiceSchema: 1 900 zł / 450 EUR netto miesięcznie). */}
-            <p style={{ fontSize: '1.2rem', color: '#6E6E73', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
               {lang === 'pl'
                 ? 'AI SEO COMPANY to agencja SEO i pozycjonowania w AI (GEO) z Warszawy dla małych i średnich firm: pozycjonowanie stron i wizytówek Google, audyty SEO, strony w Next.js oraz, w SEO Premium, cotygodniowy pomiar widoczności w ChatGPT, Perplexity, Gemini i przeglądach AI Google. Każdy klient ma panel klienta 24/7, umowę miesięczną i jawny cennik od 1 900 zł netto miesięcznie.'
                 : 'AI SEO COMPANY is a Warsaw-based SEO and AI search optimization (GEO) agency for small and medium businesses: website and Google Business Profile SEO, SEO audits, Next.js websites and, in SEO Premium, weekly visibility tracking in ChatGPT, Perplexity, Gemini and Google AI Overviews. Every client gets a 24/7 client portal, a monthly contract and transparent pricing from €450 net a month.'}
@@ -233,7 +233,7 @@ export default function AboutMission() {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: '#E8E8ED',
+                background: 'var(--w-papier-2)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
@@ -256,7 +256,7 @@ export default function AboutMission() {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: '#E8E8ED',
+                background: 'var(--w-papier-2)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
@@ -346,7 +346,7 @@ export default function AboutMission() {
                 <motion.div 
                   animate={{ scale: [1, 1.03, 1] }}
                   transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
-                  style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: '#1D1D1F', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: 'var(--w-tusz)', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
                 >
                   <CountUpMetric value={item.metric} />
                 </motion.div>
@@ -357,10 +357,10 @@ export default function AboutMission() {
                 {/* 5.11.2026 (PLAN-v2 6.24, SA-07): h3 -> h2 - karty stoją bezpośrednio pod H1, więc
                     h3 był przeskokiem H1 -> H3. Wygląd bez zmian: wszystkie style inline, reguły
                     .section-header h2 nie dotyczą kart karuzeli. */}
-                <h2 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#1D1D1F', lineHeight: 1.35, marginBottom: '0.5rem' }}>
+                <h2 style={{ fontSize: '1.18rem', fontWeight: 700, color: 'var(--w-tusz)', lineHeight: 1.35, marginBottom: '0.5rem' }}>
                   {item.title}
                 </h2>
-                <p style={{ fontSize: '0.94rem', color: '#424245', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
+                <p style={{ fontSize: '0.94rem', color: 'var(--color-text-main)', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
                   {item.description}
                 </p>
               </div>
@@ -370,7 +370,7 @@ export default function AboutMission() {
 
         {/* Bottom Pagination & Play Controls */}
         <Reveal delay={0.4} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '2.5rem' }}>
-          <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: '#E8E8ED', borderRadius: '30px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '12px', padding: '12px 24px', background: 'var(--w-papier-2)', borderRadius: '30px', alignItems: 'center' }}>
             {aboutCards.map((_, idx) => (
               <motion.button
                 className="whyus-dot"
@@ -380,7 +380,7 @@ export default function AboutMission() {
                 onClick={() => scrollTo(idx)}
                 animate={{
                   width: activeIndex === idx ? '36px' : '8px',
-                  backgroundColor: activeIndex === idx ? '#1D1D1F' : '#B0B0B5',
+                  backgroundColor: activeIndex === idx ? 'var(--w-tusz)' : '#B0B0B5',
                   borderRadius: activeIndex === idx ? '8px' : '50%'
                 }}
                 transition={{
@@ -406,7 +406,7 @@ export default function AboutMission() {
             data-autoplay-toggle=""
             onClick={() => setIsAutoplay(!isAutoplay)}
             style={{ 
-              background: '#E8E8ED', 
+              background: 'var(--w-papier-2)', 
               border: 'none', 
               borderRadius: '50%', 
               width: '44px', 

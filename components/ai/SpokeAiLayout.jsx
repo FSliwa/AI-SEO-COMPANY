@@ -38,7 +38,7 @@ const ID_FAQ = 'pytania';
 const ID_ZRODEL = 'lista-zrodel';
 
 const kontener = { maxWidth: '860px', margin: '0 auto' };
-const leadStyl = { fontSize: '1.12rem', lineHeight: 1.7, color: '#333336', margin: '0 0 1.5rem' };
+const leadStyl = { fontSize: '1.12rem', lineHeight: 1.7, color: 'var(--color-text-main)', margin: '0 0 1.5rem' };
 const kartaCta = { background: '#FFFFFF', borderRadius: '28px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', display: 'grid', gap: '1rem' };
 
 export default function SpokeAiLayout({ wpis }) {

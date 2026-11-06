@@ -16,7 +16,7 @@ import * as s from './styl';
 const API = '/api/llms-txt';
 const KOLOR = { ok: '#047857', uwaga: '#B45309', blad: '#b3261e' };
 const OCENA = { ok: 'OK', uwaga: 'Uwaga', blad: 'Problem' };
-const pole = { width: '100%', padding: '0.8rem 1rem', borderRadius: '14px', border: '1px solid rgba(15,23,42,0.15)', fontSize: '1rem', background: '#FFFFFF', color: '#0F172A' };
+const pole = { width: '100%', padding: '0.8rem 1rem', borderRadius: '14px', border: '1px solid rgba(15,23,42,0.15)', fontSize: '1rem', background: '#FFFFFF', color: 'var(--w-tusz)' };
 const malyPrzycisk = { padding: '0.6rem 1.1rem', fontSize: '0.95rem' };
 
 // Odmiana po polsku: 1 adres, 2-4 adresy, 5+ adresów (12-14 adresów).
@@ -77,7 +77,7 @@ function ListaAdresow({ id, tytul, opis, elementy }) {
       <ul style={{ ...s.lista, fontSize: '0.92rem', gap: '0.35rem' }}>
         {elementy.map((e) => (
           <li key={e.url} style={{ overflowWrap: 'anywhere' }}>
-            {e.url}{e.powod ? <span style={{ color: '#6E6E73' }}> · {e.powod}</span> : null}
+            {e.url}{e.powod ? <span style={{ color: 'var(--w-tusz-2)' }}> · {e.powod}</span> : null}
           </li>
         ))}
       </ul>
@@ -180,7 +180,7 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
                 bot: (
                   <>
                     {b.nazwa}
-                    <span style={{ display: 'block', fontWeight: 400, fontSize: '0.85rem', color: '#6E6E73' }}>{b.firma}: {b.rola}</span>
+                    <span style={{ display: 'block', fontWeight: 400, fontSize: '0.85rem', color: 'var(--w-tusz-2)' }}>{b.firma}: {b.rola}</span>
                   </>
                 ),
                 robots: komorkaRobots(b, sprawdzone),

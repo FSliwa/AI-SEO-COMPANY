@@ -162,7 +162,7 @@ export default function PanelPageClient() {
             {lang === 'pl' ? (
               <div className="hero-lead" style={{ maxWidth: '720px', margin: '0 auto' }}>
                 <AnswerBox>
-                  <p style={{ margin: 0, color: '#333336', fontSize: '1.05rem', lineHeight: 1.65 }}>Panel klienta to strona, na której widzisz wyniki i pracę agencji SEO: zapytania od klientów, kliknięcia z Google Search Console, pozycje fraz tydzień po tygodniu, dziennik prac, zmiany na stronie i zdobyte linki. Dostaje go każdy klient AI SEO COMPANY bez dopłat, a demo działa bez logowania, na danych przykładowych.</p>
+                  <p style={{ margin: 0, color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.65 }}>Panel klienta to strona, na której widzisz wyniki i pracę agencji SEO: zapytania od klientów, kliknięcia z Google Search Console, pozycje fraz tydzień po tygodniu, dziennik prac, zmiany na stronie i zdobyte linki. Dostaje go każdy klient AI SEO COMPANY bez dopłat, a demo działa bez logowania, na danych przykładowych.</p>
                 </AnswerBox>
                 <Byline sciezka="/panel-klienta" style={{ margin: '0 auto 1.5rem' }} />
               </div>
@@ -181,7 +181,7 @@ export default function PanelPageClient() {
             </div>
           </Reveal>
           <Reveal style={{ marginTop: '3rem' }}>
-            <Image src="/images/panel/przeglad.webp" alt={lang === 'pl' ? 'Przegląd w panelu klienta na danych przykładowych' : 'Client portal overview with sample data'} width={1600} height={1025} priority sizes="(max-width: 1100px) 100vw, 1060px" style={{ width: '100%', maxWidth: '1060px', height: 'auto', borderRadius: '20px', boxShadow: '0 24px 60px rgba(15, 23, 42, 0.14)' }} />
+            <Image src="/images/panel/przeglad.webp" alt={lang === 'pl' ? 'Przegląd w panelu klienta na danych przykładowych' : 'Client portal overview with sample data'} width={1600} height={1025} priority sizes="(max-width: 1100px) 100vw, 1060px" style={{ width: '100%', maxWidth: '1060px', height: 'auto', display: 'block', margin: '0 auto', borderRadius: '12px', boxShadow: 'none', border: '1px solid var(--w-linia)' }} />
           </Reveal>
         </div>
       </section>
@@ -197,7 +197,7 @@ export default function PanelPageClient() {
                 <Image src={f.img} alt={lang === 'pl' ? `${f.title} (dane przykładowe)` : `${f.title} (sample data)`} width={1600} height={1025} sizes="(max-width: 760px) 100vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', borderBottom: '1px solid rgba(0,0,0,0.06)' }} />
                 <div style={{ padding: '1.25rem 1.5rem 1.5rem' }}>
                   <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--color-text-dark)' }}>{f.title}</h3>
-                  <p style={{ margin: 0, lineHeight: 1.6, color: '#333336' }}>{f.text}{lang === 'pl' && f.dopisek ? dopiski[f.dopisek] : null}</p>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--color-text-main)' }}>{f.text}{lang === 'pl' && f.dopisek ? dopiski[f.dopisek] : null}</p>
                 </div>
               </RevealItem>
             ))}
@@ -205,7 +205,7 @@ export default function PanelPageClient() {
           <Reveal style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', alignItems: 'center', marginTop: '3rem', background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
             <div>
               <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)' }}>{lang === 'pl' ? 'Na telefonie też' : 'On your phone too'}</h2>
-              <p style={{ margin: 0, lineHeight: 1.65, color: '#333336', fontSize: '1.05rem' }}>
+              <p style={{ margin: 0, lineHeight: 1.65, color: 'var(--color-text-main)', fontSize: '1.05rem' }}>
                 {lang === 'pl'
                   ? 'Panel działa w przeglądarce telefonu bez instalowania aplikacji. Zapytania z ostatnich dni i sprawy do akceptacji sprawdzisz w dwie minuty.'
                   : 'The portal works in your phone browser without installing an app. You can check recent enquiries and pending approvals in two minutes.'}
@@ -258,10 +258,10 @@ export default function PanelPageClient() {
           <div className="container" style={{ maxWidth: '850px', margin: '0 auto' }}>
             <Reveal style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
               <h2 id="jak-sprawdzic-panel" style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)' }}>Jak sprawdzić panel agencji przed podpisaniem umowy: 6 pytań</h2>
-              <p style={{ margin: '0 0 1.25rem', lineHeight: 1.65, color: '#333336', fontSize: '1.05rem' }}>
+              <p style={{ margin: '0 0 1.25rem', lineHeight: 1.65, color: 'var(--color-text-main)', fontSize: '1.05rem' }}>
                 Przed podpisaniem umowy poproś agencję o dostęp do panelu na danych przykładowych i przejdź sześć pytań poniżej. Nasz panel sprawdzisz od razu w <a href={PANEL_DEMO_URL} data-cta="panel_page_checklist_demo" style={podkreslenie}>demo bez logowania</a>.
               </p>
-              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', fontSize: '1.05rem', lineHeight: 1.6, color: '#333336' }}>
+              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
                 {pytaniaPanelu.map((p) => (
                   <li key={p.q}><strong style={{ color: 'var(--color-text-dark)' }}>{p.q}</strong> {p.a}</li>
                 ))}

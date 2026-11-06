@@ -76,7 +76,9 @@ export default function Home() {
           (oferta przed "Dlaczego my", cennik za panelem klienta) i tla. */}
       <main>
         <Hero />
-        <div className="gory-oferta">
+        <div className="gory-oferta" data-kursor="obraz" data-petla="">
+          {/* 7.11.2026: dryfujace chmury nad pasmem klientow (dekoracja, app/wyglad.css). */}
+          <div className="chmury-dryf" aria-hidden="true"><span /><span /></div>
           <PasekKlientow />
           <Services />
         </div>
@@ -87,7 +89,7 @@ export default function Home() {
             Komponent Testimonials zostaje w repo na prawdziwe opinie z Google. */}
         <PanelShowcase />
         <Pricing isMainContent={true} />
-        <div className="w-noc-panele">
+        <div className="w-noc-panele" data-kursor="ciemne">
           <Blog />
           <HomeFaq />
         </div>

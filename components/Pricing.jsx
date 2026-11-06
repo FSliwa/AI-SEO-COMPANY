@@ -15,7 +15,7 @@ export default function Pricing({ isMainContent = false }) {
   const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Cennik' };
 
   return (
-    <Wrapper className="pricing" id={sectionId('cennik', lang)} {...wrapperProps}>
+    <Wrapper className="pricing" id={sectionId('cennik', lang)} data-petla="" {...wrapperProps}>
       <div className="container">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
@@ -23,7 +23,7 @@ export default function Pricing({ isMainContent = false }) {
           </div>
           <h2>{t('title')}</h2>
           <p>{t('subtitle')}</p>
-          <div style={{ marginTop: '1rem', display: 'inline-block', background: 'rgba(29, 29, 31, 0.05)', color: '#1D1D1F', padding: '0.5rem 1.2rem', borderRadius: '999px', fontSize: '0.9rem', fontWeight: 600 }}>
+          <div style={{ marginTop: '1rem', display: 'inline-block', background: 'rgba(29, 29, 31, 0.05)', color: 'var(--w-tusz)', padding: '0.5rem 1.2rem', borderRadius: '999px', fontSize: '0.9rem', fontWeight: 600 }}>
             {lang === 'pl' ? '✓ SEO Lokalne & Mapy Google w cenie każdego pakietu' : '✓ Local SEO & Google Maps included in all plans'}
           </div>
         </Reveal>
@@ -112,12 +112,12 @@ export default function Pricing({ isMainContent = false }) {
               <h3>{t('boosterTitle')}</h3>
               <p className="pricing-desc">{t('boosterDesc')}</p>
               <div className="pricing-price">
-                <div className="price-label" style={{ color: 'var(--color-cta)', fontWeight: '700' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące (Standard i Premium: umowa miesięczna)' : 'Min. 3-month contract (Standard and Premium: monthly)'}</div>
+                <div className="price-label" style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące (Standard i Premium: umowa miesięczna)' : 'Min. 3-month contract (Standard and Premium: monthly)'}</div>
                 <div className="price-amount"><span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
               </div>
             </div>
             <ul className="pricing-features">
-              <li><span style={{ fontWeight: 'bold', color: 'var(--color-growth)' }}>{t('boosterBadge')}</span></li>
+              <li><span style={{ fontWeight: 600, color: 'var(--color-growth)' }}>{t('boosterBadge')}</span></li>
               {lang === 'pl' ? (
                 <>
                   <li>Indywidualny projekt graficzny UX/UI (RWD)</li>
@@ -138,7 +138,7 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
-            <a href={hash('kontakt', lang)} className="btn btn-primary btn-glow" data-cta="pricing" data-plan="booster" style={{ padding: '1rem 2rem', fontSize: '1.05rem', fontWeight: '600' }}>{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
+            <a href={hash('kontakt', lang)} className="btn btn-primary btn-glow" data-cta="pricing" data-plan="booster">{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
           </RevealItem>
         </RevealStagger>
 
@@ -149,7 +149,7 @@ export default function Pricing({ isMainContent = false }) {
         <Reveal className="pricing-panel-links">
           <Link href="/panel-klienta" data-cta="pricing_panel_page">{lang === 'pl' ? 'Co widzisz w panelu klienta' : 'What you see in the client portal'}</Link>
           <span aria-hidden="true"> · </span>
-          <a href={PANEL_DEMO_URL} data-cta="pricing_panel_demo">{lang === 'pl' ? 'Otwórz demo bez logowania' : 'Open the demo, no login'} →</a>
+          <a href={PANEL_DEMO_URL} data-cta="pricing_panel_demo">{lang === 'pl' ? 'Otwórz demo bez logowania' : 'Open the demo, no login'} →</a>
         </Reveal>
       </div>
     </Wrapper>

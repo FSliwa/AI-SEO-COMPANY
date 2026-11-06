@@ -9,7 +9,7 @@ export default function Results() {
   const lang = useLocale();
 
   return (
-    <section className="results" id={sectionId('wyniki', lang)}>
+    <section className="results" id={sectionId('wyniki', lang)} data-kursor="obraz" data-kursor-przezroczyste="jasne">
       {/* 6.11.2026 (wyglad z makiety): scena Spline z prod.spline.design zdjeta -
           pas jest teraz przejsciem gor w noc (tlo w app/wyglad.css), a scena byla
           dekoracja. Komponent SceneBackdrop zostaje w repo. */}

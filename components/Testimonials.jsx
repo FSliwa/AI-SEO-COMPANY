@@ -19,8 +19,8 @@ const reviewsData = [
     image: '/images/unsplash-1635776062127-d379bfcba9f8.jpg',
     leadPl: 'Pełny rebrand B2B i 104% wzrostu ruchu w 3 miesiące.',
     leadEn: 'Full B2B rebrand and 104% traffic growth in 3 months.',
-    bodyPl: 'AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania — ruch organiczny wzrósł błyskawicznie, a klienci zachwycają się nowoczesną estetyką.',
-    bodyEn: 'AI SEO COMPANY executed a full rebrand of our platform and web deployment. The results blew away our expectations — organic traffic skyrocketed and clients love our modern aesthetics.',
+    bodyPl: 'AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania – ruch organiczny wzrósł błyskawicznie, a klienci zachwycają się nowoczesną estetyką.',
+    bodyEn: 'AI SEO COMPANY executed a full rebrand of our platform and web deployment. The results blew away our expectations – organic traffic skyrocketed and clients love our modern aesthetics.',
     metric: '+104%',
     metricLabel: 'Wzrost ruchu',
     metricLabelEn: 'Traffic Growth'
@@ -132,14 +132,14 @@ export default function Testimonials() {
               <h2 style={{ 
                 fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 
                 fontWeight: 700, 
-                color: '#1D1D1F', 
+                color: 'var(--w-tusz)', 
                 letterSpacing: '-0.04em',
                 marginBottom: '1rem',
                 lineHeight: 1.15
               }}>
                 {lang === 'pl' ? 'Doświadczenia i Rekomendacje' : 'Client Endorsements'}
               </h2>
-              <p style={{ color: '#6E6E73', fontSize: '1.25rem', margin: '0 auto', fontWeight: 500, lineHeight: 1.5 }}>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.25rem', margin: '0 auto', fontWeight: 500, lineHeight: 1.5 }}>
                 {lang === 'pl' 
                   ? 'Efekty, które budują zaufanie. Poznaj opinie partnerów i zobacz realne rezultaty.'
                   : 'Impact that builds trust. Explore feedback from our partners and see real results.'}
@@ -154,7 +154,7 @@ export default function Testimonials() {
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  background: '#E8E8ED',
+                  background: 'var(--w-papier-2)',
                   border: 'none',
                   display: 'flex',
                   alignItems: 'center',
@@ -163,7 +163,7 @@ export default function Testimonials() {
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'var(--w-papier-2)'}
                 aria-label={lang === 'pl' ? 'Poprzednia opinia' : 'Previous'}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -177,7 +177,7 @@ export default function Testimonials() {
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  background: '#E8E8ED',
+                  background: 'var(--w-papier-2)',
                   border: 'none',
                   display: 'flex',
                   alignItems: 'center',
@@ -186,7 +186,7 @@ export default function Testimonials() {
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = '#DCDCE0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#E8E8ED'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'var(--w-papier-2)'}
                 aria-label={lang === 'pl' ? 'Następna opinia' : 'Next'}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

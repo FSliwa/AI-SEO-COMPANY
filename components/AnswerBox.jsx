@@ -8,14 +8,14 @@
 // Tekst (string) trafia do jednego <p>; elementy renderują się bez opakowania.
 
 const pudelko = {
-  background: '#FFFFFF',
+  background: 'var(--w-karta)',
   borderLeft: '4px solid var(--color-primary)',
   borderRadius: '16px',
   padding: 'clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3vw, 1.75rem)',
-  boxShadow: '0 6px 24px rgba(0,0,0,0.05)',
+  boxShadow: 'none',
   margin: '0 0 2rem',
   textAlign: 'left',
-  color: '#333336',
+  color: 'var(--color-text-main)',
   fontSize: '1.05rem',
   lineHeight: 1.65,
 };

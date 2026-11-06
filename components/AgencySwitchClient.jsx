@@ -31,7 +31,7 @@ import { CHECKLIST, CHECKLIST_COUNT, CONTRACT_CHECKS, FAQ, STEPS } from '@/lib/a
 
 const card = { background: '#FFFFFF', borderRadius: '28px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' };
 const h2 = { fontSize: 'clamp(1.5rem, 3.2vw, 2rem)', fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1rem', color: 'var(--color-text-dark)' };
-const lead = { fontSize: '1.05rem', lineHeight: 1.65, color: '#333336', margin: '0 0 1.5rem' };
+const lead = { fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)', margin: '0 0 1.5rem' };
 const podkreslenie = { textDecoration: 'underline' };
 
 function preselectReview() {
@@ -61,7 +61,7 @@ export default function AgencySwitchClient() {
             <p className="hero-lead" style={{ fontSize: '1.15rem', color: 'var(--color-text-muted)', lineHeight: 1.65, maxWidth: '700px', margin: '0 auto 1.5rem' }}>
               Najwięcej kłopotów przy wypowiedzeniu umowy z agencją SEO sprawiają trzy rzeczy: konta Google założone na agencję, linki, które znikają razem z umową, i terminy wypowiedzenia. Poniżej sprawdzisz umowę, zabierzesz wszystko, co Twoje, i przejdziesz do nowej agencji bez przerwy w wynikach.
             </p>
-            <p style={{ fontSize: '1.05rem', color: '#333336', lineHeight: 1.6, maxWidth: '700px', margin: '0.75rem auto 1rem' }}>
+            <p style={{ fontSize: '1.05rem', color: 'var(--color-text-main)', lineHeight: 1.6, maxWidth: '700px', margin: '0.75rem auto 1rem' }}>
               AI SEO COMPANY przejmuje klientów po innych agencjach według checklisty {CHECKLIST_COUNT} punktów; bezpłatny przegląd po poprzedniej agencji trwa 30 minut.
             </p>
             <Byline sciezka="/zmiana-agencji-seo" style={{ margin: '0 auto 1.5rem' }} />
@@ -79,7 +79,7 @@ export default function AgencySwitchClient() {
             <div style={card}>
               <h2 style={h2}>Zanim wypowiesz umowę: 5 rzeczy do sprawdzenia</h2>
               <p style={lead}>Weź umowę i regulamin agencji. Te pięć punktów decyduje, ile zapłacisz i co zostanie u Ciebie.</p>
-              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', lineHeight: 1.6, color: '#333336' }}>
+              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
                 {CONTRACT_CHECKS.map((c) => (
                   <li key={c.title}><strong style={{ color: 'var(--color-text-dark)' }}>{c.title}.</strong> {c.text}</li>
                 ))}
@@ -92,7 +92,7 @@ export default function AgencySwitchClient() {
               <p style={{ ...lead, margin: '1.25rem 0 0', fontSize: '0.95rem' }}>
                 Prowadzisz jednoosobową działalność? Od 2021 roku możesz mieć część praw konsumenta, także przy umowie z agencją SEO. Kiedy tak jest, wyjaśniamy w pytaniach na końcu strony.
               </p>
-              <p style={{ ...lead, margin: '1rem 0 0', fontSize: '0.95rem', color: '#6E6E73' }}>
+              <p style={{ ...lead, margin: '1rem 0 0', fontSize: '0.95rem', color: 'var(--w-tusz-2)' }}>
                 To nie jest porada prawna. Okres i forma wypowiedzenia zależą od Twojej umowy.
               </p>
             </div>
@@ -101,7 +101,7 @@ export default function AgencySwitchClient() {
           <Reveal>
             <div style={card}>
               <h2 style={h2}>Wypowiedzenie umowy z agencją SEO krok po kroku</h2>
-              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', lineHeight: 1.6, color: '#333336' }}>
+              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
                 {STEPS.map((s) => (
                   <li key={s.title}><strong style={{ color: 'var(--color-text-dark)' }}>{s.title}.</strong> {s.text}</li>
                 ))}
@@ -117,7 +117,7 @@ export default function AgencySwitchClient() {
                 {CHECKLIST.map((g) => (
                   <div key={g.title}>
                     <h3 style={{ fontSize: '1.15rem', fontWeight: 700, margin: '0 0 0.6rem', color: 'var(--color-text-dark)' }}>{g.title}</h3>
-                    <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.5rem', lineHeight: 1.55, color: '#333336' }}>
+                    <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.5rem', lineHeight: 1.55, color: 'var(--color-text-main)' }}>
                       {g.items.map((i) => <li key={i}>{i}</li>)}
                     </ul>
                   </div>

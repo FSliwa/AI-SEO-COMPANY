@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'SEO Optimization Services & Digital Marketing for Agencies' : 'Profesjonalne Pozycjonowanie Stron Internetowych | SEO B2B',
-  description: locale === 'en' ? 'SEO optimization service, search engine and digital marketing for companies and agencies. Content strategy, growth. Your optimisation agency.' : 'Profesjonalne pozycjonowanie stron internetowych dla firm B2B. Skuteczne pozycjonowanie stron i pełna optymalizacja SEO — zdobywamy pozycje w Google.',
+  description: locale === 'en' ? 'SEO optimization service, search engine and digital marketing for companies and agencies. Content strategy, growth. Your optimisation agency.' : 'Profesjonalne pozycjonowanie stron internetowych dla firm B2B. Skuteczne pozycjonowanie stron i pełna optymalizacja SEO – zdobywamy pozycje w Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-services' : 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
     languages: {
@@ -41,32 +41,32 @@ const faqData = [
   {
     question: 'Czy pozycjonowanie stron gwarantuje pozycję nr 1 w Google?',
     questionEn: 'Do you guarantee the #1 position on Google search?',
-    answer: 'Nie. Żadna uczciwa agencja nie gwarantuje pozycji nr 1, bo o wynikach decyduje algorytm Google, nie my — a każdy, kto to obiecuje, sprzedaje Ci pewność, której nie ma. Deklarujemy to, co jest po naszej stronie: zakres prac, terminy, panel klienta z danymi na bieżąco, comiesięczny raport pokazujący, co zrobiliśmy i jak zmieniła się widoczność, oraz cel TOP 3 dla uzgodnionych fraz lokalnych w 2–3 miesiące. Jeśli go nie osiągniemy, kolejny miesiąc pracujemy za 0 zł (<a href="/cennik-pozycjonowania#cel-top-3" style="text-decoration:underline">zasady celu TOP 3</a>).',
-    answerEn: 'No. No honest agency guarantees the #1 position, because Google\'s algorithm decides the rankings, not us — anyone promising otherwise is selling you a certainty that does not exist. What we do commit to is what is on our side: the scope of work, the deadlines, a client portal with live data, a monthly report showing what we did and how visibility changed, and a TOP 3 goal for agreed local keywords within 2–3 months. If we miss it, the next month is on us (<a href="/en/seo-pricing#cel-top-3" style="text-decoration:underline">TOP 3 goal rules</a>).'
+    answer: 'Nie. Żadna uczciwa agencja nie gwarantuje pozycji nr 1, bo o wynikach decyduje algorytm Google, nie my – a każdy, kto to obiecuje, sprzedaje Ci pewność, której nie ma. Deklarujemy to, co jest po naszej stronie: zakres prac, terminy, panel klienta z danymi na bieżąco, comiesięczny raport pokazujący, co zrobiliśmy i jak zmieniła się widoczność, oraz cel TOP 3 dla uzgodnionych fraz lokalnych w 2–3 miesiące. Jeśli go nie osiągniemy, kolejny miesiąc pracujemy za 0 zł (<a href="/cennik-pozycjonowania#cel-top-3" style="text-decoration:underline">zasady celu TOP 3</a>).',
+    answerEn: 'No. No honest agency guarantees the #1 position, because Google\'s algorithm decides the rankings, not us – anyone promising otherwise is selling you a certainty that does not exist. What we do commit to is what is on our side: the scope of work, the deadlines, a client portal with live data, a monthly report showing what we did and how visibility changed, and a TOP 3 goal for agreed local keywords within 2–3 months. If we miss it, the next month is on us (<a href="/en/seo-pricing#cel-top-3" style="text-decoration:underline">TOP 3 goal rules</a>).'
   },
   {
     question: 'Czym różni się pozycjonowanie od marketingu cyfrowego?',
     questionEn: 'What is the difference between SEO and digital marketing?',
-    answer: 'Marketing cyfrowy to całość działań w kanałach online — reklama płatna, social media, e-mail, treści. Pozycjonowanie jest jednym z tych kanałów i odpowiada wyłącznie za widoczność w wynikach wyszukiwania. Różnica praktyczna dotyczy horyzontu: reklama przestaje przynosić kliknięcia w dniu wyłączenia budżetu, a pozycje zbudowane organicznie pracują dalej. Dlatego traktujemy oba kanały jako uzupełniające się, a nie konkurencyjne.',
-    answerEn: 'Digital marketing covers everything you do in online channels — paid ads, social, e-mail, content. SEO is one of those channels and answers only for visibility in search results. The practical difference is the horizon: paid stops delivering clicks the day the budget stops, while positions built organically keep working. That is why we treat SEO and digital marketing as complementary rather than competing, and why a plan combining search engine optimization and marketing usually beats either one on its own.'
+    answer: 'Marketing cyfrowy to całość działań w kanałach online – reklama płatna, social media, e-mail, treści. Pozycjonowanie jest jednym z tych kanałów i odpowiada wyłącznie za widoczność w wynikach wyszukiwania. Różnica praktyczna dotyczy horyzontu: reklama przestaje przynosić kliknięcia w dniu wyłączenia budżetu, a pozycje zbudowane organicznie pracują dalej. Dlatego traktujemy oba kanały jako uzupełniające się, a nie konkurencyjne.',
+    answerEn: 'Digital marketing covers everything you do in online channels – paid ads, social, e-mail, content. SEO is one of those channels and answers only for visibility in search results. The practical difference is the horizon: paid stops delivering clicks the day the budget stops, while positions built organically keep working. That is why we treat SEO and digital marketing as complementary rather than competing, and why a plan combining search engine optimization and marketing usually beats either one on its own.'
   },
   {
     question: 'Czy pozycjonowanie ma sens bez pozostałych działań marketingowych?',
     questionEn: 'Does SEO make sense without the rest of your marketing?',
-    answer: 'Ma, ale wolniej. Ruch z wyszukiwarki trafia na stronę, która musi go przekonać — jeśli oferta, dowody społeczne i ścieżka kontaktu są słabe, wyższa pozycja podniesie liczbę wizyt, a nie liczbę zapytań. Dlatego przy każdym wdrożeniu patrzymy również na konwersję, a nie wyłącznie na pozycje.',
-    answerEn: 'It does, but more slowly. Search traffic lands on a page that still has to convince — if the offer, the proof and the contact path are weak, a higher position raises visits rather than enquiries. Good SEO and marketing therefore get planned together: we look at conversion alongside rankings on every engagement, because seo marketing digital work only pays off when the page can close.'
+    answer: 'Ma, ale wolniej. Ruch z wyszukiwarki trafia na stronę, która musi go przekonać – jeśli oferta, dowody społeczne i ścieżka kontaktu są słabe, wyższa pozycja podniesie liczbę wizyt, a nie liczbę zapytań. Dlatego przy każdym wdrożeniu patrzymy również na konwersję, a nie wyłącznie na pozycje.',
+    answerEn: 'It does, but more slowly. Search traffic lands on a page that still has to convince – if the offer, the proof and the contact path are weak, a higher position raises visits rather than enquiries. Good SEO and marketing therefore get planned together: we look at conversion alongside rankings on every engagement, because seo marketing digital work only pays off when the page can close.'
   },
   {
     question: 'Czym właściwie jest SEO i skąd bierze się ta nazwa?',
     questionEn: 'What exactly is SEO, and where does the name come from?',
     answer: 'SEO to skrót od search engine optimization, czyli optymalizacji pod wyszukiwarki. Obejmuje trzy obszary: techniczny (czy wyszukiwarka może stronę zaindeksować i szybko wczytać), treściowy (czy strona odpowiada na intencję zapytania) oraz autorytet (czy inne serwisy się na nią powołują). Pominięcie któregokolwiek z nich zatrzymuje efekt pozostałych dwóch.',
-    answerEn: 'The acronym stands for search engine optimisation. SEO covers three areas: the technical one — whether a search engine can index and quickly load the page; the content one — whether the page answers the intent behind the query; and authority — whether other sites cite it. Skipping any of the three caps what the other two can achieve. Put plainly: there is no shortcut in SEO. Search engine optimization compounds, which is why we plan in quarters rather than weeks.'
+    answerEn: 'The acronym stands for search engine optimisation. SEO covers three areas: the technical one – whether a search engine can index and quickly load the page; the content one – whether the page answers the intent behind the query; and authority – whether other sites cite it. Skipping any of the three caps what the other two can achieve. Put plainly: there is no shortcut in SEO. Search engine optimization compounds, which is why we plan in quarters rather than weeks.'
   },
   {
     question: 'Czy współpracujecie z zespołami in-house i innymi agencjami?',
     questionEn: 'Do you work with in-house teams and other agencies?',
-    answer: 'Tak, w obu układach. Zespołom in-house zwykle przejmujemy część techniczną — audyt, architekturę informacji, poprawki wydajnościowe — a redakcja i kampanie zostają po ich stronie. Agencjom kreatywnym i mediowym dostarczamy warstwę wyszukiwarkową w modelu white-label, bez kontaktu z ich klientem końcowym. W obu przypadkach zakres i podział odpowiedzialności ustalamy na piśmie przed startem. Jeśli przejmujemy stronę po innej agencji, zaczynamy od checklisty z poradnika <a href="/zmiana-agencji-seo" style="text-decoration:underline">jak zmienić agencję SEO bez utraty pozycji</a>.',
-    answerEn: 'Yes, in both setups. For in-house teams we usually take over the technical side — audits, information architecture and SEO services they have no spare capacity for — while editorial work and campaigns stay with them. For creative and media agencies we supply the search layer white-label, with no contact with their end client. Either way the scope and the split of responsibilities are agreed in writing before we start. Most partners who come to us already run digital marketing. SEO is simply the layer that makes everything else compound instead of resetting each time a budget stops.'
+    answer: 'Tak, w obu układach. Zespołom in-house zwykle przejmujemy część techniczną – audyt, architekturę informacji, poprawki wydajnościowe – a redakcja i kampanie zostają po ich stronie. Agencjom kreatywnym i mediowym dostarczamy warstwę wyszukiwarkową w modelu white-label, bez kontaktu z ich klientem końcowym. W obu przypadkach zakres i podział odpowiedzialności ustalamy na piśmie przed startem. Jeśli przejmujemy stronę po innej agencji, zaczynamy od checklisty z poradnika <a href="/zmiana-agencji-seo" style="text-decoration:underline">jak zmienić agencję SEO bez utraty pozycji</a>.',
+    answerEn: 'Yes, in both setups. For in-house teams we usually take over the technical side – audits, information architecture and SEO services they have no spare capacity for – while editorial work and campaigns stay with them. For creative and media agencies we supply the search layer white-label, with no contact with their end client. Either way the scope and the split of responsibilities are agreed in writing before we start. Most partners who come to us already run digital marketing. SEO is simply the layer that makes everything else compound instead of resetting each time a budget stops.'
   },
   {
     // Nowe (PS1, OP-08): 49 słów + link 10; „seo dla małych firm” 70/mies. (frazy.csv, 4.11.2026).
@@ -228,8 +228,8 @@ const carouselItems = [
     metric: 'TOP 3',
     title: 'Kluczowe frazy branżowe',
     titleEn: 'Key Industry Phrases',
-    description: 'Wprowadzamy Twoje flagowe produkty i usługi na podium wyników organicznych wyszukiwarki Google — w 2–3 miesiące.',
-    descriptionEn: 'We bring your flagship products and services to the podium of organic Google search results — within 2–3 months.',
+    description: 'Wprowadzamy Twoje flagowe produkty i usługi na podium wyników organicznych wyszukiwarki Google – w 2–3 miesiące.',
+    descriptionEn: 'We bring your flagship products and services to the podium of organic Google search results – within 2–3 months.',
     width: 'min(75vw, 370px)'
   },
   {
