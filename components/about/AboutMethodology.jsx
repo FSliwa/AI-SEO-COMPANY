@@ -12,12 +12,12 @@ const methodologyStages = [
     id: 1,
     brandName: 'KROK 1',
     brandLogo: (
-      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         KROK 1
       </span>
     ),
     brandLogoEn: (
-      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         STEP 1
       </span>
     ),
@@ -33,12 +33,12 @@ const methodologyStages = [
     id: 2,
     brandName: 'KROK 2',
     brandLogo: (
-      <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         KROK 2
       </span>
     ),
     brandLogoEn: (
-      <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         STEP 2
       </span>
     ),
@@ -56,12 +56,12 @@ const methodologyStages = [
     id: 3,
     brandName: 'KROK 3',
     brandLogo: (
-      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         KROK 3
       </span>
     ),
     brandLogoEn: (
-      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         STEP 3
       </span>
     ),

@@ -268,7 +268,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                         fontWeight: 700, 
                         opacity: 0.1, 
                         lineHeight: 0.8,
-                        fontFamily: "'Space Grotesk', sans-serif"
+                        fontFamily: "var(--font-geist), sans-serif"
                       }}>
                         0{idx + 1}
                       </div>

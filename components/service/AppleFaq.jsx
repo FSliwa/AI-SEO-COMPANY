@@ -18,7 +18,12 @@ import { zachowaniePrzewijania } from '@/lib/ruch';
    Bez tych pol HTML i JSON-LD istniejacych stron sa takie jak wczesniej. */
 const tekst = (lang, pl, en) => (lang === 'pl' ? pl : (en || pl));
 
-export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extraSchema = [], schema = true, sectionId }) {
+// 6.11.2026 (wyglad z makiety): klasy faq-apple-* dla app/wyglad.css (kolory i
+// typografia z tokenow zamiast wpisanych #1D1D1F / #333336). wariant="panel"
+// (strona glowna): tytul po lewej, pytania po prawej z numeracja "01" - numer
+// to licznik CSS (app/wyglad.css), nie tekst w HTML; tresc pytan bez zmian.
+export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extraSchema = [], schema = true, sectionId, wariant }) {
+  const panel = wariant === 'panel';
   const lang = useLocale();
   const [openIndex, setOpenIndex] = useState(0);
   // Prefiks id z useId, nie sam indeks: drugi AppleFaq na stronie nie zderzy
@@ -72,19 +77,19 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
   };
 
   return (
-    <section id={sectionId} style={{ padding: '6rem 0' }}>
+    <section id={sectionId} className={`faq-apple${panel ? ' faq-apple--panel' : ''}`} style={{ padding: '6rem 0' }}>
       {schema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}
-      <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <div className="container" style={panel ? undefined : { maxWidth: '800px', margin: '0 auto' }}>
+        <div className="faq-apple-uklad">
         <Reveal>
-          <h2 style={{ 
+          <h2 className="faq-apple-tytul" style={{ 
             fontSize: 'clamp(2rem, 4vw, 3rem)', 
             fontWeight: 700, 
-            color: '#1D1D1F', 
             marginBottom: '3rem',
             textAlign: 'center',
             letterSpacing: '-0.02em'
@@ -101,7 +106,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
             const odpId = kotwica ? `${kotwica}-odp` : `${uid}-odp-${index}`;
             return (
               <Reveal key={index} delay={index * 0.1}>
-                <div style={{ borderBottom: '1px solid #E5E5EA' }}>
+                <div className="faq-apple-pozycja" style={{ borderBottom: '1px solid #E5E5EA' }}>
                   {/* Akordeon dostepny (05.10.2026). Pomiar na /, /en, cenniku i
                       stronach uslug (390 i 1440 px): przycisk bez aria-expanded
                       i aria-controls; zamkniete odpowiedzi mialy wysokosc 0 i
@@ -117,6 +122,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
                     aria-expanded={isOpen}
                     aria-controls={odpId}
                     onClick={() => toggleAccordion(index)}
+                    className="faq-apple-pytanie"
                     style={{
                       width: '100%',
                       display: 'flex',
@@ -132,11 +138,14 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
                       ...(kotwica ? { scrollMarginTop: '110px' } : {}),
                     }}
                   >
-                    <span 
-                      style={{ fontSize: '1.25rem', fontWeight: 600, paddingRight: '2rem' }}
-                      dangerouslySetInnerHTML={{ __html: lang === 'pl' ? faq.question : (faq.questionEn || faq.question) }}
-                    />
+                    <span style={{ paddingRight: '2rem' }}>
+                      <span
+                        style={{ fontSize: '1.25rem', fontWeight: 600 }}
+                        dangerouslySetInnerHTML={{ __html: lang === 'pl' ? faq.question : (faq.questionEn || faq.question) }}
+                      />
+                    </span>
                     <motion.div
+                      className="faq-apple-ikona"
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       style={{ color: isOpen ? 'var(--color-primary)' : '#1D1D1F', flexShrink: 0 }}
@@ -167,6 +176,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
                       collapsed: { opacity: 0, height: 0, marginBottom: 0 }
                     }}
                     transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    className="faq-apple-odp"
                     style={{ overflow: 'hidden' }}
                   >
                     <p
@@ -178,6 +188,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
               </Reveal>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

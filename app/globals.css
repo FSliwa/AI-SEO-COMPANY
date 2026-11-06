@@ -1914,7 +1914,7 @@ section, aside.pricing, aside.contact, aside.why-us {
 
 .blog-index-title {
   margin: 0;
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: var(--font-geist), system-ui, sans-serif;
   font-size: clamp(1.25rem, 2.1vw, 1.75rem);
   font-weight: 600;
   line-height: 1.25;
@@ -1927,7 +1927,7 @@ section, aside.pricing, aside.contact, aside.why-us {
    Jedyny sposob, zeby zostal krojem z projektu indeksu, to !important o wyzszej
    specyficznosci - wyglad wiersza ma byc dokladnie taki jak przed zmiana tagu. */
 .blog-index .blog-index-title {
-  font-family: 'Space Grotesk', system-ui, sans-serif !important;
+  font-family: var(--font-geist), system-ui, sans-serif !important;
 }
 
 /* Wezsze pole etykiety karuzeli "Dlaczego my" ponizej 360 px: slowo
@@ -2796,7 +2796,7 @@ body.has-cookie-banner .kota-floating-cta {
   right: 16.97%;
   width: 46%;
   margin: 0;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-weight: 400;
   color: var(--color-cta);
   text-align: right;

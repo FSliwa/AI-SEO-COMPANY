@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
 }
 
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
+import Hero, { PasekKlientow } from '@/components/Hero';
 import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
 import Pricing from '@/components/Pricing';
@@ -70,18 +70,27 @@ export default function Home() {
   return (
     <>
       <Header />
+      {/* 6.11.2026 (wyglad z makiety, DESIGN.md): kolejnosc sekcji jak w makiecie -
+          hero, klienci i oferta na pasmie gor, realizacje, panel, cennik, wiedza,
+          kontakt. Zadna sekcja nie zniknela; zmienila sie tylko kolejnosc
+          (oferta przed "Dlaczego my", cennik za panelem klienta) i tla. */}
       <main>
         <Hero />
+        <div className="gory-oferta">
+          <PasekKlientow />
+          <Services />
+        </div>
         <WhyUs isMainContent={true} />
-        <Services />
         <Portfolio />
-        <Pricing isMainContent={true} />
         <Results />
         {/* 29.10.2026: panel klienta zamiast Testimonials (5 opinii bez nazw firm, decyzja D3).
             Komponent Testimonials zostaje w repo na prawdziwe opinie z Google. */}
         <PanelShowcase />
-        <Blog />
-        <HomeFaq />
+        <Pricing isMainContent={true} />
+        <div className="w-noc-panele">
+          <Blog />
+          <HomeFaq />
+        </div>
         <Contact isMainContent={true} />
       </main>
       <Footer />

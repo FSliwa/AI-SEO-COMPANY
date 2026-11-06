@@ -332,7 +332,7 @@ export default function CookiesBanner() {
               display: 'flex',
               flexDirection: 'column',
               gap: zwarty ? '0.6rem' : '1.25rem',
-              fontFamily: "'Inter', sans-serif"
+              fontFamily: "var(--font-geist), sans-serif"
             }}
           >
             {zwarty ? (
@@ -493,7 +493,7 @@ export default function CookiesBanner() {
                 overflowY: 'auto',
                 boxShadow: '0 25px 60px rgba(0,0,0,0.3)',
                 position: 'relative',
-                fontFamily: "'Inter', sans-serif"
+                fontFamily: "var(--font-geist), sans-serif"
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>

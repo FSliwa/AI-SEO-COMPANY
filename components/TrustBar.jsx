@@ -7,28 +7,28 @@ export default function TrustBar() {
   const partners = [
     { 
       name: 'STANIAX', 
-      font: "'Space Grotesk', system-ui, sans-serif", 
+      font: "var(--font-geist), system-ui, sans-serif", 
       weight: 700, 
       tracking: '-0.02em',
       size: '1.25rem'
     },
     { 
       name: 'ASE-BOT', 
-      font: "'Inter', sans-serif", 
+      font: "var(--font-geist), sans-serif", 
       weight: 800, 
       tracking: '0.1em',
       size: '1.15rem'
     },
     { 
       name: 'MADAME THAI', 
-      font: "'Inter', sans-serif", 
+      font: "var(--font-geist), sans-serif", 
       weight: 400, 
       tracking: '0.15em',
       size: '1.1rem'
     },
     { 
       name: 'IRENEUSZ KOZERA', 
-      font: "'Space Grotesk', system-ui, sans-serif", 
+      font: "var(--font-geist), system-ui, sans-serif", 
       weight: 500, 
       tracking: '0.05em',
       size: '1.05rem' // slightly smaller to fit well

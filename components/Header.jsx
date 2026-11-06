@@ -32,6 +32,10 @@ function UserIcon() {
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  // 6.11.2026 (wyglad z makiety): hero strony glownej jest jasny (papier
+  // + antena), wiec naglowek ma ciemny tekst takze przed przewinieciem.
+  // `scrolled` steruje dalej tlem, szerokoscia i odstepami paska.
+  const naJasnym = true;
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuExpanded, setMenuExpanded] = useState(false);
   const [triggerPos, setTriggerPos] = useState({ x: 0, y: 0 });
@@ -249,7 +253,7 @@ export default function Header() {
                 }}
               >
                 {/* Text AI SEO COMPANY - dynamically changes color on scroll */}
-                <g fill={scrolled ? '#0F172A' : '#FFFFFF'} style={{ transition: 'fill 0.5s ease' }}>
+                <g fill={naJasnym ? '#0F172A' : '#FFFFFF'} style={{ transition: 'fill 0.5s ease' }}>
                   <path d="M 1386 282 L 1388 287 L 1394 296 L 1398 304 L 1413 328 L 1472 427 L 1476 434 L 1477 436 L 1477 529 L 1527 529 L 1527 436 L 1528 434 L 1529 432 L 1533 425 L 1543 408 L 1547 401 L 1583 341 L 1590 329 L 1594 322 L 1595 320 L 1595 315 L 1593 306 L 1593 303 L 1594 295 L 1595 291 L 1596 290 L 1596 288 L 1589 289 L 1581 291 L 1573 292 L 1564 293 L 1552 294 L 1551 297 L 1549 299 L 1542 313 L 1522 350 L 1507 380 L 1505 387 L 1504 389 L 1502 391 L 1499 386 L 1493 371 L 1492 369 L 1491 367 L 1484 354 L 1472 332 L 1448 288 L 1446 286 L 1445 283 Z M 1332 282 L 1332 426 L 1334 450 L 1333 461 L 1331 458 L 1329 454 L 1316 427 L 1309 415 L 1306 410 L 1303 405 L 1293 389 L 1238 301 L 1234 295 L 1219 295 L 1209 294 L 1202 293 L 1195 292 L 1190 291 L 1181 289 L 1177 288 L 1174 286 L 1172 286 L 1170 285 L 1170 529 L 1222 528 L 1222 410 L 1221 382 L 1219 362 L 1220 349 L 1222 352 L 1224 357 L 1228 366 L 1237 383 L 1242 392 L 1249 404 L 1258 419 L 1273 443 L 1325 526 L 1327 529 L 1383 529 L 1383 282 Z M 1079 282 L 1076 283 L 1064 290 L 1059 292 L 1054 294 L 1051 295 L 1048 296 L 1044 297 L 1040 298 L 1035 299 L 1022 300 L 1019 300 L 1009 300 L 1008 303 L 1005 314 L 1003 317 L 993 346 L 972 407 L 952 468 L 940 500 L 931 527 L 931 529 L 986 529 L 986 527 L 988 523 L 991 514 L 997 493 L 1003 475 L 1005 473 L 1094 474 L 1095 477 L 1097 483 L 1111 525 L 1112 529 L 1168 529 L 1167 526 L 1165 520 L 1162 511 L 1154 489 L 1139 446 L 1094 320 L 1087 300 L 1083 286 L 1081 282 Z M 1048 324 L 1049 328 L 1050 332 L 1053 343 L 1057 358 L 1061 372 L 1069 400 L 1080 432 L 1017 432 L 1018 429 L 1019 425 L 1026 406 L 1034 378 L 1038 363 L 1046 328 Z M 752 283 L 752 529 L 803 529 L 804 447 L 863 447 L 871 446 L 875 445 L 882 443 L 885 442 L 888 441 L 895 438 L 897 437 L 905 432 L 910 428 L 921 417 L 924 413 L 926 410 L 932 398 L 935 389 L 936 384 L 937 379 L 938 366 L 938 364 L 937 351 L 936 346 L 935 341 L 932 332 L 930 327 L 927 321 L 925 318 L 923 315 L 920 311 L 910 301 L 898 293 L 896 292 L 889 289 L 884 287 L 880 286 L 872 284 L 865 283 L 854 282 Z M 804 324 L 850 324 L 856 325 L 859 326 L 862 327 L 870 331 L 875 335 L 876 336 L 880 341 L 884 349 L 885 352 L 886 357 L 886 373 L 885 378 L 884 381 L 880 389 L 877 393 L 874 396 L 870 399 L 867 401 L 865 402 L 863 403 L 860 404 L 857 405 L 852 406 L 803 405 Z M 465 282 L 465 529 L 515 529 L 515 393 L 513 352 L 514 335 L 516 339 L 518 346 L 519 353 L 521 360 L 531 394 L 540 421 L 550 449 L 575 519 L 577 522 L 578 527 L 579 529 L 622 528 L 623 525 L 625 517 L 627 514 L 633 497 L 645 463 L 658 426 L 667 399 L 670 389 L 682 347 L 684 336 L 686 332 L 687 342 L 685 380 L 685 529 L 735 529 L 735 282 L 658 283 L 657 285 L 656 290 L 651 302 L 643 325 L 635 348 L 626 374 L 622 386 L 615 407 L 613 415 L 603 459 L 602 463 L 601 464 L 600 466 L 599 461 L 596 448 L 590 424 L 586 409 L 584 402 L 578 384 L 566 350 L 548 299 L 543 285 L 542 283 Z M 325 279 L 319 280 L 313 281 L 309 282 L 305 283 L 296 286 L 289 289 L 287 290 L 285 291 L 278 295 L 273 298 L 269 301 L 263 306 L 255 314 L 250 320 L 247 324 L 245 327 L 243 330 L 240 335 L 238 339 L 235 345 L 233 350 L 229 362 L 228 366 L 227 371 L 226 376 L 225 383 L 224 393 L 224 419 L 225 429 L 226 436 L 227 441 L 230 453 L 231 456 L 232 459 L 234 464 L 241 478 L 244 483 L 246 486 L 249 490 L 252 494 L 266 508 L 270 511 L 273 513 L 276 515 L 281 518 L 285 520 L 291 523 L 296 525 L 308 529 L 313 530 L 318 531 L 325 532 L 339 533 L 341 533 L 355 532 L 363 531 L 368 530 L 378 527 L 381 526 L 386 524 L 400 517 L 403 515 L 406 513 L 410 510 L 415 506 L 425 496 L 429 491 L 432 487 L 434 484 L 436 481 L 439 476 L 442 470 L 445 463 L 447 458 L 448 455 L 449 452 L 450 448 L 451 444 L 452 439 L 453 434 L 454 427 L 455 414 L 455 399 L 454 385 L 453 378 L 452 372 L 449 360 L 446 351 L 444 346 L 437 332 L 431 323 L 428 319 L 422 313 L 422 312 L 417 307 L 411 302 L 407 299 L 404 297 L 399 294 L 394 291 L 392 290 L 390 289 L 383 286 L 374 283 L 370 282 L 366 281 L 361 280 L 353 279 Z M 335 323 L 343 323 L 352 324 L 357 325 L 360 326 L 365 328 L 374 333 L 379 337 L 385 343 L 388 347 L 390 350 L 392 353 L 394 357 L 397 363 L 400 372 L 401 376 L 402 380 L 403 387 L 404 398 L 404 414 L 403 424 L 402 431 L 401 435 L 400 439 L 396 451 L 395 453 L 391 460 L 389 463 L 387 466 L 377 476 L 373 479 L 369 481 L 363 484 L 360 485 L 357 486 L 352 487 L 344 488 L 334 488 L 326 487 L 319 485 L 314 483 L 306 479 L 301 475 L 292 466 L 289 462 L 287 459 L 283 451 L 281 446 L 280 443 L 279 440 L 278 436 L 277 432 L 276 425 L 275 417 L 275 394 L 276 386 L 277 380 L 278 376 L 279 371 L 282 363 L 288 351 L 290 348 L 293 344 L 300 337 L 305 333 L 310 330 L 312 329 L 314 328 L 319 326 L 323 325 L 327 324 Z M 102 279 L 93 280 L 88 281 L 84 282 L 77 284 L 72 286 L 67 288 L 63 290 L 57 293 L 52 296 L 49 298 L 46 300 L 41 304 L 28 317 L 25 321 L 22 325 L 20 328 L 18 331 L 15 337 L 10 347 L 8 352 L 5 361 L 4 365 L 3 370 L 2 375 L 1 381 L 0 390 L 0 421 L 1 430 L 2 437 L 3 442 L 4 446 L 5 450 L 9 462 L 11 467 L 13 471 L 16 477 L 19 482 L 21 485 L 23 488 L 26 492 L 31 498 L 38 505 L 44 510 L 48 513 L 53 516 L 60 520 L 62 521 L 64 522 L 71 525 L 80 528 L 84 529 L 88 530 L 93 531 L 99 532 L 116 533 L 130 532 L 137 531 L 142 530 L 147 529 L 159 525 L 164 523 L 166 522 L 168 521 L 175 517 L 178 515 L 181 513 L 185 510 L 201 494 L 204 490 L 206 487 L 208 484 L 211 479 L 214 473 L 218 463 L 220 456 L 221 452 L 222 446 L 222 444 L 171 444 L 171 446 L 170 447 L 170 450 L 169 453 L 167 458 L 166 460 L 163 465 L 160 469 L 153 476 L 147 480 L 144 482 L 139 484 L 136 485 L 133 486 L 129 487 L 120 488 L 111 488 L 103 487 L 98 486 L 95 485 L 92 484 L 88 482 L 82 479 L 78 476 L 67 465 L 65 462 L 63 459 L 61 455 L 58 449 L 55 441 L 54 437 L 53 432 L 52 427 L 51 419 L 51 393 L 52 385 L 53 379 L 54 375 L 55 371 L 56 368 L 58 363 L 64 351 L 66 348 L 71 342 L 76 337 L 80 334 L 83 332 L 86 330 L 88 329 L 93 327 L 96 326 L 99 325 L 104 324 L 113 323 L 118 323 L 128 324 L 132 325 L 136 326 L 141 328 L 147 331 L 150 333 L 158 340 L 159 341 L 162 345 L 164 348 L 168 356 L 169 359 L 170 362 L 170 365 L 171 367 L 222 367 L 221 361 L 220 356 L 219 352 L 218 348 L 217 345 L 215 340 L 208 326 L 206 323 L 204 320 L 201 316 L 186 301 L 182 298 L 179 296 L 174 293 L 170 291 L 164 288 L 159 286 L 147 282 L 142 281 L 137 280 L 129 279 Z" fillRule="evenodd" />
                 </g>
 
@@ -267,16 +271,16 @@ export default function Header() {
                 Widocznosc od 1200 px bez zmian (globals.css). */}
             <div className="header-award-badges">
               <a href={PANEL_DEMO_URL} className="badge-pill badge-pill--link" data-cta="header_panel_demo" style={{
-                color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
-                background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
-                borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
+                color: naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
+                background: naJasnym ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
+                borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
                 transition: 'all 0.7s ease'
               }}>{lang === 'pl' ? 'Demo panelu klienta' : 'Client portal demo'}</a>
               {lang === 'pl' && (
                 <Link href="/blog/wyniki-wdrozen-seo-2026" className="badge-pill badge-pill--link" style={{
-                  color: scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
-                  background: scrolled ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
-                  borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
+                  color: naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
+                  background: naJasnym ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
+                  borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
                   transition: 'all 0.7s ease'
                 }}>Wyniki 5 domen · dane GSC</Link>
               )}
@@ -292,9 +296,9 @@ export default function Header() {
                 (05.10.2026). 5.11.2026 (T1b): przyciski zamienione na linki <a>
                 z hrefLang i lang; stan aktywny niesie aria-current. */}
             <div className="lang-switcher" role="group" aria-label={lang === 'pl' ? 'Język strony' : 'Site language'} style={{
-              background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255,255,255,0.1)',
-              borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
-              color: scrolled ? 'var(--color-text-dark)' : '#FFFFFF',
+              background: naJasnym ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255,255,255,0.1)',
+              borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
+              color: naJasnym ? 'var(--color-text-dark)' : '#FFFFFF',
               transition: 'all 0.7s ease'
             }}>
               <NextLink
@@ -305,7 +309,7 @@ export default function Header() {
                 className={`lang-btn ${lang === 'pl' ? 'active' : ''}`}
                 aria-current={lang === 'pl' ? 'true' : undefined}
                 style={{ 
-                  color: lang === 'pl' ? (scrolled ? 'var(--color-text-dark)' : '#FFFFFF') : (scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
+                  color: lang === 'pl' ? (naJasnym ? 'var(--color-text-dark)' : '#FFFFFF') : (naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
                   transition: 'color 0.7s ease' 
                 }}
                 onClick={() => onLangClick('pl')}
@@ -322,7 +326,7 @@ export default function Header() {
                 className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
                 aria-current={lang === 'en' ? 'true' : undefined}
                 style={{ 
-                  color: lang === 'en' ? (scrolled ? 'var(--color-text-dark)' : '#FFFFFF') : (scrolled ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
+                  color: lang === 'en' ? (naJasnym ? 'var(--color-text-dark)' : '#FFFFFF') : (naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
                   transition: 'color 0.7s ease' 
                 }}
                 onClick={() => onLangClick('en')}
@@ -341,9 +345,9 @@ export default function Header() {
               className="header-login-btn"
               aria-label={lang === 'pl' ? 'Zaloguj się do panelu klienta' : 'Log in to the client portal'}
               style={{
-                color: scrolled ? 'var(--color-text-dark)' : '#FFFFFF',
-                borderColor: scrolled ? 'var(--color-border)' : 'rgba(255,255,255,0.35)',
-                background: scrolled ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
+                color: naJasnym ? 'var(--color-text-dark)' : '#FFFFFF',
+                borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.35)',
+                background: naJasnym ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
                 transition: 'all 0.7s ease'
               }}
             >
@@ -357,8 +361,8 @@ export default function Header() {
                 (05.10.2026). 5.11.2026 (A3b/BL-02): na tych stronach takze href
                 prowadzi wprost do formularza strony glownej (bez JS i dla crawlera). */}
             <a href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
-              background: scrolled ? '#000000' : '#FFFFFF',
-              color: scrolled ? '#FFFFFF' : '#000000',
+              background: 'var(--w-pomarancz)',
+              color: 'var(--w-na-pomaranczu)',
               transition: 'all 0.7s ease'
             }}>
               {t('cta')}
@@ -372,8 +376,8 @@ export default function Header() {
               ref={triggerRef}
               className="kota-menu-trigger"
               style={{
-                background: scrolled ? '#000000' : '#FFFFFF',
-                color: scrolled ? '#FFFFFF' : '#000000',
+                background: naJasnym ? '#000000' : '#FFFFFF',
+                color: naJasnym ? '#FFFFFF' : '#000000',
                 transition: 'all 0.7s ease'
               }}
               onClick={toggleMenu}

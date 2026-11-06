@@ -1,42 +1,29 @@
 'use client';
 
-import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useTranslations, useLocale } from 'next-intl';
-import dynamic from 'next/dynamic';
-import HeroArcText from './HeroArcText';
-import SceneErrorBoundary from './SceneErrorBoundary';
+import { Fragment } from 'react';
+import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { hash } from '@/lib/anchors';
 
-/**
- * The Spline runtime is roughly 1.5 MB of JavaScript plus the scene itself.
- * ssr:false keeps both out of the server response and the initial bundle. Until
- * it resolves the CSS orb stands in, so the section never reflows.
+/*
+ * Hero strony glownej w ukladzie z makiety "Desktop - 2" (6.11.2026, DESIGN.md).
  *
- * Note the import path: `@splinetool/react-spline/next` is an async Server
- * Component, and this file is a client component (framer-motion, useLocale), so
- * that variant throws "is an async Client Component". The base export is the
- * client-side one and is what belongs here.
- */
-const Spline = dynamic(() => import('@splinetool/react-spline'), {
-  ssr: false,
-  loading: () => <div className="hero-en-orb" />
-});
-
-/**
- * Scena lezy u nas, nie na prod.spline.design. Tamten CDN oddawal plik
- * nieskompresowany (36 283 041 B, brak Content-Encoding nawet przy naglowku
- * `Accept-Encoding: br, gzip` - automatyczna kompresja CloudFront konczy sie na
- * 10 MB). Kopia w /public jest wstepnie spakowana brotli -11 do 4 894 079 B,
- * a naglowki z next.config.mjs deklaruja Content-Encoding, wiec przegladarka
- * rozpakowuje ja w locie do identycznych bajtow.
+ * Zmienil sie wyglad, nie tresc: H1, lead, akapit, oba przyciski i cztery
+ * nazwy klientow sa slowo w slowo te same co wczesniej (obiekt COPY nizej
+ * przeniesiony bez zmian, stary komponent w historii git: acd7fc6).
  *
- * Adres wlasnej domeny zamiast obcej znosi tez cala klase problemow z
- * preloadem: zapytanie jest same-origin, wiec wpis <link rel="preload"> z
- * layoutu i pozniejszy fetch runtime'u trafiaja w ten sam wpis cache
- * niezaleznie od trybu CORS - nie ma ryzyka podwojnego pobrania.
+ * Co odpadlo: scena Spline (4,9 MB pliku + ~1,5 MB runtime'u) i tekst na luku
+ * (HeroArcText). Oba byly dekoracja - scena dawala wielki napis "SEO", a luk
+ * byl tylko inna kompozycja tego samego akapitu, ktory serwer i tak oddawal
+ * jako zwykle <p>. Na ich miejscu jest statyczna grafika anteny (next/image,
+ * priority). Pliki SceneErrorBoundary, HeroArcText i SceneBackdrop zostaja
+ * w repo.
+ *
+ * Kolejnosc w H1 bez zmian ("Pozycjonowanie, ktore buduje sprzedaz" + podtytul):
+ * podtytul stoi wizualnie nad naglowkiem jako etykieta (CSS order), ale w DOM
+ * i dla robota zostaje za nim. EN: "SEO " bylo dotad sr-only, bo slowo dawala
+ * scena 3D - bez sceny jest widoczne.
  */
-const SCENE = '/scene.splinecode.br';
 
 /**
  * Hero copy per locale.
@@ -113,459 +100,88 @@ const COPY = {
   }
 };
 
+
 export default function Hero() {
   const lang = useLocale();
-  const t = useTranslations('hero');
   const copy = COPY[lang] || COPY.pl;
-
-  // Dwa stany, bo to dwa rozne momenty. `sceneIn` = scena namalowala pierwsza
-  // klatke (fade kanwy). `copyIn` = scena SKONCZYLA swoja animacje wstepna -
-  // dopiero wtedy wchodzi tekst.
-  //
-  // Skad wiemy, ze skonczyla: nie z zegara. Stale czasowe w CSS zawodzily na
-  // dwa sposoby - na wolnym GPU scena jeszcze jechala, gdy tekst juz wszedl
-  // (najazd na litery), a w karcie w tle opoznienie CSS uplywalo niewidocznie
-  // i tekst pojawial sie bez zadnej animacji. Zamiast tego obserwujemy w petli
-  // rAF pozycje obiektow sceny (onLoad daje instancje Application z
-  // getAllObjects); tekst dostaje sygnal, gdy obiekty NAJPIERW sie poruszyly,
-  // a POTEM stoja nieruchomo przez ~450 ms. Scena animuje sie ta sama petla
-  // rAF, wiec w ukrytej karcie obie animacje stoja razem i po powrocie graja
-  // razem - synchronizacja jest z ruchu, nie z czasu.
-  const [sceneIn, setSceneIn] = useState(false);
-  const [copyIn, setCopyIn] = useState(false);
-  // Spline trzyma onLoad z pierwszego renderu, wiec stan w domknieciu bylby
-  // przestarzaly - ref jest wspolny dla wszystkich renderow.
-  const tekstPokazanyRef = useRef(false);
-  const pokazTekst = () => { tekstPokazanyRef.current = true; setCopyIn(true); };
-
-  // Uklad telefonu (ponizej 901 px lub proporcje wezsze niz 1:1 - ta sama
-  // bramka, ktora arkusz stylow przelacza na kompozycje mobilna). Tekst jest
-  // tam nad i pod pasem liter, nie na nim, wiec nie musi czekac na wjazd
-  // sceny - a scena (4,9 MB pliku + ~1,5 MB runtime'u) montuje sie dopiero,
-  // gdy strona ma czas wolny. Powod: Lighthouse mobile 22.09 dawal LCP 26-36 s
-  // i wynik 36-46/100, bo elementem LCP jest wlasnie ten tekst, a trzymala go
-  // bramka .is-copy-in do konca animacji sceny albo 9-sekundowy bezpiecznik.
-  // Strona glowna jest landingiem grupy P-Agencja SEO w Google Ads, gdzie
-  // "jakosc strony docelowej" wchodzi do Wyniku Jakosci. Desktop bez zmian.
-  // Start od `false` takze na desktopie: next/dynamic zaczyna sciagac chunk
-  // runtime'u juz przy pierwszym renderze, wiec domyslne `true` uruchomiloby
-  // 1,5 MB na telefonie zanim efekt zdazy je odwolac. Desktop dostaje `true`
-  // w pierwszym efekcie - jedna klatka roznicy.
-  const telefonRef = useRef(false);
-  const [montujScene, setMontujScene] = useState(false);
-  useEffect(() => {
-    const bramka = window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)');
-    if (bramka.matches) { setMontujScene(true); return; }
-    telefonRef.current = true;
-    setSceneIn(true);
-    pokazTekst();
-
-    // Okno poszerzone PO zaladowaniu (obrot tabletu, rozciagniecie okna obok
-    // innej aplikacji, panel podgladu): arkusz stylow przelacza sie wtedy na
-    // kompozycje szeroka, ktora cala stoi na literach sceny. Decyzja ponizej
-    // ("Save-Data albo 2G - bez sceny") zapadala raz, przy ladowaniu, wiec
-    // po poszerzeniu zostawal uklad szeroki z czarna dziura zamiast liter
-    // (zgloszenie 05.10.2026: effectiveType "2g" w waskim panelu). Sciezka
-    // szeroka przy ladowaniu nie zna reguly 2G wcale - tu ma byc tak samo.
-    // Oba nasluchy celowo, jak przy arcBody nizej: `change` nie zawsze odpala
-    // pod emulacja urzadzen; setMontujScene(true) jest idempotentne.
-    const poPoszerzeniu = () => { if (bramka.matches) setMontujScene(true); };
-    bramka.addEventListener('change', poPoszerzeniu);
-    window.addEventListener('resize', poPoszerzeniu);
-    const zdejmijNasluch = () => {
-      bramka.removeEventListener('change', poPoszerzeniu);
-      window.removeEventListener('resize', poPoszerzeniu);
-    };
-
-    // Save-Data albo 2G: scena w ogole nie schodzi - zostaje kula CSS
-    // (dopoki okno pozostaje waskie - patrz nasluch wyzej).
-    const conn = navigator.connection;
-    if (conn && (conn.saveData || /(^|[^3-5])2g/.test(conn.effectiveType || ''))) return zdejmijNasluch;
-    let idle = 0, timer = 0;
-    const start = () => setMontujScene(true);
-    if ('requestIdleCallback' in window) idle = window.requestIdleCallback(start, { timeout: 6000 });
-    else timer = window.setTimeout(start, 3000);
-    return () => {
-      zdejmijNasluch();
-      if (idle) window.cancelIdleCallback(idle);
-      if (timer) window.clearTimeout(timer);
-    };
-  }, []);
-
-  const onSceneLoad = (app) => {
-    setSceneIn(true);
-
-    // Telefon: tekst stoi od razu poza pasem liter, wiec wjazd moze grac
-    // normalnie - nie ma czego synchronizowac ani czym najezdzac.
-    if (telefonRef.current) {
-      window.__heroSync = { sciezka: 'telefon-bez-czekania', tekstPoMs: 0 };
-      return;
-    }
-
-    // Scena zaladowala sie PO bezpieczniku (zimny cache 36 MB potrafi
-    // przekroczyc 15 s) - tekst juz stoi, wiec wjazd NIE MOZE grac pod nim.
-    // Zostaje statyczna pierwsza klatka; to wlasnie ten przypadek wygladal
-    // u uzytkownika jak "tekst najezdza na animacje".
-    if (tekstPokazanyRef.current) {
-      try { app.stop(); } catch (e) {}
-      window.__heroSync = { sciezka: 'scena-po-bezpieczniku', tekstPoMs: 0 };
-      return;
-    }
-
-    // Diagnostyka zostaje w produkcji: window.__heroSync pokazuje sciezke
-    // i moment wejscia tekstu na kazdej maszynie - bez zgadywania.
-    const diag = (window.__heroSync = { t0: performance.now(), sciezka: null, tekstPoMs: null });
-    const koniec = (sciezka) => {
-      if (diag.sciezka) return;
-      diag.sciezka = sciezka;
-      diag.tekstPoMs = Math.round(performance.now() - diag.t0);
-      pokazTekst();
-    };
-
-    // Dostepnosc jako para: CSS przy ograniczonym ruchu pokazuje tekst od
-    // razu, wiec scena nie moze grac wjazdu pod nim - zostaje zatrzymana.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      try { app.stop(); } catch (e) {}
-      koniec('ograniczony-ruch');
-      return;
-    }
-
-    // STEROWANIE zamiast pomiaru. Wczesniejsze podejscia MIERZYLY, kiedy
-    // scena skonczy wjazd (stale czasowe CSS, pozycje obiektow, roznice
-    // pikseli kanwy) i kazde rozjezdzalo sie na innej maszynie: stale nie
-    // znaja tempa GPU, pozycje nie widza ruchu kamery, a odczyt pikseli
-    // przegrywa loterie kolejnosci rAF z renderem i zwraca zera.
-    //
-    // Tu nie ma czego mierzyc, bo sami wyznaczamy start: scena staje
-    // (app.stop) i rusza (app.play) dopiero razem z naszym licznikiem.
-    // Licznik sumuje czas WYLACZNIE miedzy klatkami rAF - w tej samej
-    // domenie zegara, w ktorej Spline prowadzi swoja os czasu. W ukrytej
-    // karcie rAF nie tyka, wiec staja OBIE animacje i po powrocie graja
-    // dalej razem - to naprawia takze "tekst w ogole bez animacji", ktory
-    // bral sie z opoznien CSS uplywajacych na zegarze sciennym w tle.
-    //
-    // Os czasu wjazdu zdekodowana z .splinecode konczy sie na 4000 ms
-    // (start z opoznieniem 1500 ms, ruchy po 1000 ms, ostatni odpalany na
-    // 3000 ms). Prog ustawiony 500 ms wczesniej - decyzja projektowa:
-    // tekst zaczyna wchodzic na ogonie ostatniego ruchu sceny, wiec wejscia
-    // zazebiaja sie zamiast nastepowac po sobie. Kierunki animacji odsuwaja
-    // tekst od artworku, wiec zazebienie nie grozi najazdem na litery.
-    const WJAZD_MS = 3750;
-    let zatrzymano = false;
-    try { app.stop(); zatrzymano = true; } catch (e) {}
-    if (!zatrzymano) { setTimeout(() => koniec('bez-stop'), WJAZD_MS); return; }
-
-    const start = () => {
-      try { app.play(); } catch (e) {}
-      let suma = 0;
-      let poprzednia = null;
-      const tik = (teraz) => {
-        if (diag.sciezka) return;
-        if (poprzednia !== null) suma += Math.min(100, teraz - poprzednia);
-        poprzednia = teraz;
-        if (suma >= WJAZD_MS) { koniec('wspolny-zegar'); return; }
-        requestAnimationFrame(tik);
-      };
-      requestAnimationFrame(tik);
-    };
-
-    // Start dopiero w widocznej karcie: wjazd i tekst maja byc OBEJRZANE,
-    // nie odhaczone w tle.
-    if (document.visibilityState === 'visible') {
-      start();
-    } else {
-      const naPowrot = () => {
-        if (document.visibilityState !== 'visible') return;
-        document.removeEventListener('visibilitychange', naPowrot);
-        start();
-      };
-      document.addEventListener('visibilitychange', naPowrot);
-    }
-  };
-
-  useEffect(() => {
-    // Katastrofa sieciowa: hero nie moze zostac pusty na zawsze.
-    // 9 s, nie 15: tekst to tresc i element LCP, scena to dekoracja. Na
-    // maszynach, gdzie 36 MB sceny inicjalizuje sie dluzej (zmierzono 60+ s
-    // przy malej ilosci wolnego dysku), tekst wchodzi ta sciezka, a spozniona
-    // scena zostaje zatrzymana na pierwszej klatce - patrz straznik wyzej.
-    const failsafe = setTimeout(() => { setSceneIn(true); pokazTekst(); }, 9000);
-    return () => clearTimeout(failsafe);
-  }, []);
-
-  // Warm both halves of the load immediately, in parallel: the runtime module
-  // (~1.5 MB of JS) and the scene file itself. Without this the scene download
-  // starts only after hydration finishes and the runtime has initialised — on
-  // a scene this size the serialisation costs seconds. Both are best-effort.
-  useEffect(() => {
-    // Telefon: rozgrzewka czekalaby na to samo co montaz - patrz bramka wyzej.
-    if (telefonRef.current) return;
-    import('@splinetool/react-spline').catch(() => {});
-    // Bez `mode: 'cors'` - scena jest teraz same-origin, a wymuszanie CORS
-    // rozdzielaloby wpisy cache miedzy tym rozgrzaniem, preloadem z <head>
-    // i wlasnym zapytaniem runtime'u.
-    fetch(SCENE, { cache: 'force-cache' }).catch(() => {});
-  }, []);
-
-  // Micro-parallax (wide screens, fine pointers, motion allowed): the copy
-  // drifts a few pixels slower than the scene on scroll, which reads as depth.
-  // rAF-throttled, transform-only, and capped at 14px so it can never collide
-  // the text with the lettering band.
-  const copyRef = useRef(null);
-
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (!window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)').matches) return;
-    let raf = 0;
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const el = copyRef.current;
-        if (!el) return;
-        const y = Math.max(-14, Math.min(14, window.scrollY * -0.06));
-        el.style.transform = `translateY(${y.toFixed(1)}px)`;
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  // The arc is a wide-layout treatment only; phones keep the plain paragraph.
-  // Deliberately client-side: the server renders the straight <p>, so that is
-  // the markup a crawler reads and the copy never exists twice in the HTML.
-  const [arcBody, setArcBody] = useState(false);
-
-  useEffect(() => {
-    // Width alone is not enough: the scene is sized by canvas HEIGHT, so a
-    // narrow-but-tall desktop window (side-by-side with another app) overflows
-    // the width and squeezes the arc into a spiral. Below ~7:6 the stylesheet
-    // swaps to the phone composition, and the paragraph must follow it.
-    const query = window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)');
-    const sync = () => setArcBody(query.matches);
-    sync();
-
-    // Both listeners on purpose. The media query's own `change` event is the
-    // right signal but it does not always fire — under device emulation it
-    // stayed silent while the query itself already reported false, which left
-    // the arc rendered at 375px where the plain paragraph belongs. `resize` is
-    // the coarser net that catches those cases; sync() is idempotent, so the
-    // pair firing together costs nothing.
-    query.addEventListener('change', sync);
-    window.addEventListener('resize', sync);
-    return () => {
-      query.removeEventListener('change', sync);
-      window.removeEventListener('resize', sync);
-    };
-  }, []);
-
-  // The phone layout is measured, not guessed. The copy is bottom-anchored to
-  // the lettering band, so every pixel the paragraph does not fill surfaces as
-  // dead air under the header — and how much it fills changes with viewport
-  // width, locale and font loading (the Polish runs 199px at 375, 177px at
-  // 390). One observed height feeds the whole chain — row one, the band's top,
-  // the section height — through calc() in the stylesheet, which keeps the
-  // header gap at 20px and the letters gap at 8px at every width in both
-  // languages. The static fallbacks in those rules cover the pre-hydration
-  // frames; the observer also refires on the post-font-load reflow.
-  // useLayoutEffect (05.10.2026): przy nawigacji klienckiej (<Link> z podstrony)
-  // skrypt inline nizej sie nie wykonuje - React wstawia go przez innerHTML -
-  // a useEffect biegl dopiero po pierwszym malowaniu, wiec sekcja przez klatke
-  // miala wysokosc z wartosci zastepczych (skok 179 px przy 768x1024).
-  // useLayoutEffect ustawia zmienne przed malowaniem w obu sciezkach.
-  useLayoutEffect(() => {
-    const copy = copyRef.current;
-    if (!copy) return;
-    const section = copy.closest('.hero');
-    const top = copy.querySelector('.hero-en-top');
-    const bottom = copy.querySelector('.hero-en-bottom');
-    const header = document.querySelector('header');
-    if (!section || !top) return;
-    const apply = () => {
-      section.style.setProperty('--m-copy-h', `${Math.round(top.getBoundingClientRect().height)}px`);
-      if (header) {
-        section.style.setProperty('--m-head-h', `${Math.round(header.getBoundingClientRect().height)}px`);
-      }
-      // Dolna grupa (H1 + przyciski) tez jest mierzona, nie zakladana. Wysokosc
-      // sekcji na telefonie miala wpisane na sztywno 154 px na te grupe, a
-      // podtytul H1 lamie sie na dwie linie na kazdym telefonie 320-440 px:
-      // grupa ma realnie 178-188 px i przyciski byly uciete o 2-12 px przez
-      // overflow: hidden sekcji. Grupa ma align-self: start, wiec jej wysokosc
-      // wynika z tresci, a nie z wysokosci wiersza - nie ma petli zwrotnej.
-      if (bottom) {
-        section.style.setProperty('--m-bottom-h', `${Math.ceil(bottom.getBoundingClientRect().height)}px`);
-      }
-    };
-    const ro = new ResizeObserver(apply);
-    ro.observe(top);
-    if (bottom) ro.observe(bottom);
-    if (header) ro.observe(header);
-    apply();
-    // The observer only delivers during rendering steps, which hidden
-    // documents never run — a viewport resized in the background (device
-    // emulation, a backgrounded tab restored later) would keep stale numbers
-    // until the next paint. These two run apply() off plain events instead;
-    // getBoundingClientRect is synchronous and works hidden.
-    window.addEventListener('resize', apply);
-    document.addEventListener('visibilitychange', apply);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener('resize', apply);
-      document.removeEventListener('visibilitychange', apply);
-    };
-  }, []);
+  // Dwie linie jak w makiecie. PL: "Pozycjonowanie," / "które buduje sprzedaż".
+  // EN: "SEO" / "that drives sales" - tekst H1 identyczny z dotychczasowym
+  // ("SEO " bylo w nim jako sr-only).
+  const [displayPierwsze, ...displayReszta] = copy.display.split(' ');
+  const linia1 = lang === 'pl' ? displayPierwsze : 'SEO';
+  const linia2 = lang === 'pl' ? displayReszta.join(' ') : copy.display;
 
   return (
-    <section
-      className="hero hero--en"
-      id="hero"
-      suppressHydrationWarning
-      style={{
-        position: 'relative',
-        width: '100%',
-        minHeight: '100vh',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        // Measured off the canvas framebuffer at seven edge points: the scene's
-        // baked background is 0,0,0 at every one. Matching it means the band the
-        // canvas occupies on phones has no visible edge against the section.
-        backgroundColor: '#000000'
-      }}
-    >
-      {/* The scene is the section background on both locales now. The video and
-          the starfield are gone with it — they were a second full-screen
-          backdrop nobody could see underneath this one. */}
-      <div className={`hero-en-bg${sceneIn ? ' is-in' : ''}`} aria-hidden="true">
-        <SceneErrorBoundary
-          fallback={<div className="hero-en-orb" />}
-          onFail={() => { setSceneIn(true); pokazTekst(); }}
-        >
-          {montujScene ? <Spline scene={SCENE} onLoad={onSceneLoad} /> : <div className="hero-en-orb" />}
-        </SceneErrorBoundary>
+    <section className="hero-makieta" id="hero">
+      <div className="hero-makieta-grafika" aria-hidden="true">
+        <Image
+          src="/images/wyglad/hero-antena.webp"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 900px) 100vw, 72vw"
+          style={{ objectFit: 'cover', objectPosition: 'right bottom' }}
+        />
       </div>
+      {/* Luki sygnalu z makiety - czysta dekoracja SVG, w pomaranczu zamiast fioletu. */}
+      <svg className="hero-makieta-luki" viewBox="0 0 900 700" aria-hidden="true" focusable="false">
+        <path d="M120 690 C 160 380 360 120 700 30" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.35" />
+        <path d="M250 520 C 300 330 450 170 760 110" fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="6 8" opacity="0.5" />
+        <path d="M330 470 C 390 300 560 140 860 90" fill="none" stroke="currentColor" strokeWidth="9" strokeLinecap="round" opacity="0.9" />
+        <circle cx="474" cy="268" r="6" fill="currentColor" />
+        <circle cx="236" cy="420" r="4" fill="currentColor" opacity="0.7" />
+      </svg>
 
-      {/* Vignette, and on the wide layout the scrim that lifts the copy edges. */}
-      <div className="hero-overlay hero-overlay--en"></div>
+      <div className="container hero-makieta-tresc">
+        <h1 className="hero-makieta-h1">
+          <span className="hero-makieta-display">
+            <span className="hero-makieta-display-1">{linia1}</span>{' '}
+            <span className="hero-makieta-display-2">{linia2}</span>
+          </span>{' '}
+          <span className="hero-makieta-sub">{copy.sub}</span>
+        </h1>
 
-      {/* Two groups pinned above and below the scene's own lettering, which
-          occupies 30.4%-62.2% of the section height. The heading sits under the
-          artwork on purpose: the scene supplies the word "SEO", so the eye has
-          to meet it before "that drives sales" / "które buduje sprzedaż" or the
-          sentence comes out backwards.
+        {/* Segmenty `wide` chowaja sie na telefonie (jak dotad) - zadna fraza
+            z listy wlasciciela nie siedzi wylacznie w nich. */}
+        <p className="hero-makieta-lead">
+          {copy.leadSeg.map((s, i) =>
+            s.wide
+              ? <span key={i} className="hero-makieta-szeroki">{s.t}</span>
+              : <Fragment key={i}>{s.t}</Fragment>
+          )}
+        </p>
+        <p className="hero-makieta-body">
+          {copy.bodySeg.map((s, i) =>
+            s.wide
+              ? <span key={i} className="hero-makieta-szeroki">{s.t}</span>
+              : <Fragment key={i}>{s.t}</Fragment>
+          )}
+        </p>
 
-          Without JavaScript the copy would never get its entrance class and
-          would stay hidden, so the noscript block below hands it straight to
-          the finished state. */}
-      <noscript>
-        <style>{`.hero-en-copy :is(.hero-en-lead,.hero-en-body,.hero-en-title,.hero-en-actions){opacity:1;transform:none}`}</style>
-      </noscript>
-
-      <div className="hero-en">
-        <div ref={copyRef} className={`hero-en-copy${copyIn ? ' is-copy-in' : ''}`}>
-          <div className="hero-en-top">
-            {/* Same device as the paragraph below: the clause phones drop carries
-                no phrase of its own. "not on rankings" goes, and "rankings"
-                still appears 4 more times on the page; "to nasz priorytet" goes,
-                and "priorytet" survives elsewhere. Both readings are complete
-                sentences — the cut is at a clause boundary, not mid-thought. */}
-            <p className="hero-en-lead">
-              {copy.leadSeg.map((s, i) =>
-                s.wide
-                  ? <span key={i} className="hero-en-wide-only">{s.t}</span>
-                  : <Fragment key={i}>{s.t}</Fragment>
-              )}
-            </p>
-
-            {arcBody ? (
-              <HeroArcText
-                className="hero-en-body hero-en-body--arc"
-                text={copy.bodySeg.map(s => s.t).join('')}
-                lang={lang}
-              />
-            ) : (
-              <p className="hero-en-body">
-                {copy.bodySeg.map((s, i) =>
-                  s.wide
-                    ? <span key={i} className="hero-en-wide-only">{s.t}</span>
-                    : <Fragment key={i}>{s.t}</Fragment>
-                )}
-              </p>
-            )}
-          </div>
-
-          <div className="hero-en-bottom">
-            {/* The explicit space matters. These are inline spans blockified by
-                the flex column, so they read as separate lines on screen — but a
-                crawler concatenating inline text with no whitespace between them
-                produces "sprzedażKompleksowa" / "salesPremium", a token that is
-                in no dictionary and breaks the phrase at the seam. */}
-            <h1 className="hero-en-title">
-              {/* EN: tekstowy ekwiwalent napisu "SEO" ze sceny 3D (WCAG) - bez
-                  niego surowy HTML zaczynal H1 od srodka zdania. PL go nie
-                  potrzebuje: naglowek ma wlasny, WIDOCZNY podmiot
-                  ("Pozycjonowanie, ktore buduje sprzedaz"), wiec zdanie jest
-                  pelne, a fraza glowna wrocila do H1 po przebudowie hero,
-                  ktora zepchnela ja do akapitow. */}
-              {lang !== 'pl' && <span className="sr-only">SEO </span>}
-              <span className="hero-en-title-display">{copy.display}</span>{' '}
-              <span className="hero-en-title-sub">{copy.sub}</span>
-            </h1>
-
-            <div className="hero-en-actions">
-              <a href={hash('kontakt', lang)} className="hero-en-cta" data-cta="hero">{copy.ctaPrimary} →</a>
-              <a href="#portfolio" className="hero-en-cta-secondary">{copy.ctaSecondary}</a>
-            </div>
-          </div>
+        <div className="hero-makieta-akcje">
+          <a href={hash('kontakt', lang)} className="w-przycisk w-przycisk--glowny" data-cta="hero">{copy.ctaPrimary} →</a>
+          <a href="#portfolio" className="w-przycisk w-przycisk--obrys">{copy.ctaSecondary}</a>
         </div>
       </div>
-
-      {/* (W trybie deweloperskim React 19 loguje przy nawigacji klienckiej
-          ostrzezenie "Encountered a script tag..." - to oczekiwane: na kliencie
-          te sama prace wykonuje useLayoutEffect wyzej, skrypt jest tylko dla
-          pierwszej klatki z HTML serwera. To nie jest blad hydracji.)
-          Pomiar PRZED pierwszym malowaniem. Wysokosc sekcji w ukladzie telefonu
-          liczy sie z trzech zmierzonych wartosci; dotad ustawial je dopiero
-          useEffect po hydracji, wiec pierwsza klatka szla na wartosciach
-          zastepczych skalibrowanych pod 375 px. Na tabletach w pionie
-          (744-1024 px) realny tekst jest o 120-150 px nizszy, sekcja kurczyla
-          sie po hydracji i przesuwala wszystko pod spodem: CLS 0,10-0,17.
-          Ten skrypt wykonuje sie w trakcie parsowania, zaraz za trescia
-          sekcji (arkusz stylow jest juz wczytany, bo blokuje skrypty), wiec
-          juz pierwsza klatka ma wlasciwa wysokosc. useEffect wyzej zostaje -
-          obsluguje zmiane rozmiaru okna i doladowanie fontu. */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: "(function(){try{var s=document.getElementById('hero');if(!s)return;var t=s.querySelector('.hero-en-top'),b=s.querySelector('.hero-en-bottom'),h=document.querySelector('header');if(t)s.style.setProperty('--m-copy-h',Math.round(t.getBoundingClientRect().height)+'px');if(b)s.style.setProperty('--m-bottom-h',Math.ceil(b.getBoundingClientRect().height)+'px');if(h)s.style.setProperty('--m-head-h',Math.round(h.getBoundingClientRect().height)+'px');}catch(e){}})();"
-        }}
-      />
-
-      {/* Bottom-left: Our Partners (KOTA Style) */}
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 0.85, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
-        className="hero-partners-row"
-        style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '2.5rem', flexWrap: 'wrap' }}
-      >
-        <span className="hero-partner-item" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.1rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
-          STANIAX
-        </span>
-        <span className="hero-partner-item" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
-          ASE-BOT
-        </span>
-        <span className="hero-partner-item" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '0.95rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
-          MADAME THAI
-        </span>
-        <span className="hero-partner-item" style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 500, letterSpacing: '0.05em', fontSize: '0.9rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
-          IRENEUSZ KOZERA
-        </span>
-      </motion.div>
     </section>
+  );
+}
+
+/*
+ * Pasek klientow (dawniej .hero-partners-row w rogu hero). Te same cztery
+ * nazwy, teraz jako pas na chmurach miedzy hero a oferta - jak loga w makiecie.
+ * Renderowany w app/[locale]/page.js zaraz po <Hero />, wiec kolejnosc tresci
+ * w DOM sie nie zmienia.
+ */
+export function PasekKlientow() {
+  return (
+    <div className="pasek-klientow">
+      <div className="container pasek-klientow-wiersz">
+        <span className="pasek-klientow-nazwa pasek-klientow-nazwa--staniax">STANIAX</span>
+        <span className="pasek-klientow-nazwa pasek-klientow-nazwa--asebot">ASE-BOT</span>
+        <span className="pasek-klientow-nazwa pasek-klientow-nazwa--madame">MADAME THAI</span>
+        <span className="pasek-klientow-nazwa pasek-klientow-nazwa--kozera">IRENEUSZ KOZERA</span>
+      </div>
+    </div>
   );
 }

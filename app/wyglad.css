@@ -1,0 +1,1464 @@
+/* ==========================================================================
+   WYGLAD Z MAKIETY "Desktop - 2" (6.11.2026) - opis decyzji w DESIGN.md
+   --------------------------------------------------------------------------
+   Ladowany PO globals.css (app/[locale]/layout.js), wiec nadpisuje go bez
+   ruszania starych regul. Zmienia sie wyglad, nie tresc: zadna regula nie
+   ukrywa tekstu, ktory byl widoczny. Fiolety makiety zastapione pomaranczem
+   marki #D85A30. Wiele komponentow ma style inline - tam !important jest
+   jedynym sposobem nadpisania bez przepisywania JSX.
+   ========================================================================== */
+
+:root {
+  /* --- Tokeny makiety (DESIGN.md) --- */
+  --w-papier: #FDF9F4;
+  --w-papier-2: #F6EFE6;
+  --w-karta: #FFFCF8;
+  --w-tusz: #1E1E1E;
+  --w-tusz-2: #5E554D;
+  --w-linia: rgba(30, 30, 30, 0.12);
+  --w-noc: #0A1337;
+  --w-noc-2: #0B0E26;
+  --w-noc-karta: rgba(255, 255, 255, 0.04);
+  --w-noc-linia: rgba(243, 183, 156, 0.22);
+  --w-noc-tekst: rgba(255, 255, 255, 0.74);
+  --w-pomarancz: #D85A30;
+  --w-pomarancz-hover: #E8794F;
+  --w-pomarancz-tekst: #B8441E;
+  --w-pomarancz-gleboki: #9C3A17;
+  --w-brzoskwinia: #F3B79C;
+  --w-brzoskwinia-tlo: #FBE6DA;
+  --w-na-pomaranczu: #14110F;
+  --w-wzrost: #047857;
+  --w-promien-karta: 28px;
+  --w-promien-panel: 48px;
+  --w-sekcja: clamp(80px, 10vw, 144px);
+  --w-mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* --- Stare tokeny serwisu przepiete na makiete (podstrony dziedzicza) --- */
+  --color-bg-surface: var(--w-papier);
+  --color-bg-alt: var(--w-papier-2);
+  --color-card-bg: var(--w-karta);
+  --color-text-main: #2A2520;
+  --color-text-dark: var(--w-tusz);
+  --color-text-muted: var(--w-tusz-2);
+  --color-primary: var(--w-pomarancz-tekst);
+  --color-primary-light: var(--w-brzoskwinia);
+  --color-cta: var(--w-pomarancz);
+  --color-cta-hover: var(--w-pomarancz-hover);
+  --color-cta-glow: rgba(216, 90, 48, 0.28);
+  --color-border: var(--w-linia);
+  --color-border-hover: rgba(216, 90, 48, 0.45);
+  --shadow-cta: none;
+  --container-width: 1300px;
+}
+
+/* Fonty: next/font daje --font-geist i --font-geist-mono na <body>. Stare
+   nazwy wskazuja na Geist, wiec reguly globals.css i style inline z
+   var(--font-inter) / var(--font-space) dzialaja bez zmian. */
+body {
+  --font-inter: var(--font-geist);
+  --font-space: var(--font-geist);
+  font-family: var(--font-geist), system-ui, -apple-system, sans-serif !important;
+  background-color: var(--w-papier);
+  color: var(--color-text-main);
+}
+
+/* Poswiata z trzema kolorowymi plamami (fiolet, blekit, pomarancz) nie
+   pasuje do papieru makiety. */
+body::before {
+  background: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-geist), system-ui, sans-serif !important;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  color: var(--w-tusz);
+}
+
+::selection {
+  background: var(--w-brzoskwinia);
+  color: var(--w-na-pomaranczu);
+}
+
+/* Fokus: granat #185FA5 z globals.css nie istnieje w nowej palecie. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline-color: var(--w-pomarancz-tekst);
+}
+
+/* Kontrolki naglowka i strzalki karuzeli nie mialy widocznego obrysu
+   (pomiar Tab 6.11.2026: 0 px - takze na produkcji). */
+.header-hire-btn:focus-visible,
+.header-login-btn:focus-visible,
+.badge-pill--link:focus-visible,
+.kota-menu-trigger:focus-visible,
+.why-us button:focus-visible {
+  outline: 3px solid var(--w-pomarancz-tekst) !important;
+  outline-offset: 3px !important;
+}
+
+.w-ciemne :focus-visible,
+.gory-oferta :focus-visible,
+.footer :focus-visible {
+  outline-color: var(--w-brzoskwinia) !important;
+}
+
+/* ---------- Przyciski ---------- */
+.w-przycisk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 52px;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.w-przycisk--glowny,
+.btn-primary {
+  background-color: var(--w-pomarancz) !important;
+  color: var(--w-na-pomaranczu) !important;
+  border-color: var(--w-pomarancz) !important;
+  box-shadow: none !important;
+}
+
+.w-przycisk--glowny:hover,
+.btn-primary:hover {
+  background-color: var(--w-pomarancz-hover) !important;
+  border-color: var(--w-pomarancz-hover) !important;
+  color: var(--w-na-pomaranczu) !important;
+  transform: translateY(-2px);
+  box-shadow: none !important;
+}
+
+.w-przycisk--obrys,
+.btn-secondary {
+  background-color: transparent !important;
+  color: var(--w-tusz) !important;
+  border: 1.5px solid var(--w-tusz) !important;
+  box-shadow: none !important;
+}
+
+.w-przycisk--obrys:hover,
+.btn-secondary:hover {
+  background-color: var(--w-tusz) !important;
+  color: var(--w-papier) !important;
+  border-color: var(--w-tusz) !important;
+  transform: translateY(-2px);
+}
+
+.btn {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: 999px;
+}
+
+/* Na ciemnym tle obrys jasny */
+.w-ciemne .btn-secondary,
+.w-ciemne .w-przycisk--obrys,
+.gory-oferta .w-przycisk--obrys {
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.w-ciemne .btn-secondary:hover,
+.w-ciemne .w-przycisk--obrys:hover {
+  background-color: #FFFFFF !important;
+  color: var(--w-noc) !important;
+  border-color: #FFFFFF !important;
+}
+
+/* ---------- Etykiety sekcji (makieta: mono, wersaliki, pomarancz) ---------- */
+.section-tag,
+.portfolio-eyebrow {
+  font-family: var(--w-mono) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase;
+  color: var(--w-pomarancz-tekst) !important;
+  gap: 0.6rem;
+}
+
+.section-tag span.asterisk {
+  color: var(--w-pomarancz) !important;
+  font-size: 1rem;
+  font-family: var(--font-geist), sans-serif;
+}
+
+.w-ciemne .section-tag,
+.w-ciemne .section-tag span.asterisk,
+.gory-oferta .section-tag,
+.gory-oferta .section-tag span.asterisk {
+  color: var(--w-brzoskwinia) !important;
+}
+
+.section-header h2,
+.portfolio-title {
+  font-weight: 500 !important;
+  letter-spacing: -0.045em !important;
+  line-height: 1.04 !important;
+  font-size: clamp(2.4rem, 4.4vw, 4rem) !important;
+  color: var(--w-tusz);
+}
+
+/* Kropka po naglowku sekcji (makieta: "Nasza oferta."). Dekoracja - nie
+   jest tekstem w DOM. Znak "." zamiast kwadratu z tlem: tekst pseudoelementu
+   klei sie do ostatniego wyrazu, wiec kropka nigdy nie spada sama do nowej
+   linii. Tylko naglowki konczace sie wyrazem - te ze znakiem zapytania lub
+   wykrzyknikiem (wyniki, kontakt) jej nie dostaja. */
+.section-header h2::after,
+.portfolio-title::after,
+.faq-apple--panel .faq-apple-tytul::after,
+.w-kropka::after {
+  content: '.';
+  color: var(--w-pomarancz);
+  background: none;
+  width: auto;
+  height: auto;
+  margin: 0;
+  display: inline;
+}
+
+.results .section-header h2::after,
+.contact-info h2::after {
+  content: none;
+}
+
+.section-header p {
+  color: var(--w-tusz-2);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Odstep sekcji makiety. globals.css daje kazdej <section> 5,5 rem
+   z !important; tu tylko sekcje przebudowane wedlug makiety (klasa wygrywa
+   z selektorem typu). Cennik i kontakt sa tez na podstronach - tam dostaja
+   ten sam rytm. */
+.portfolio,
+.panel-showcase,
+.pricing,
+.contact {
+  padding-top: var(--w-sekcja) !important;
+  padding-bottom: var(--w-sekcja) !important;
+}
+
+#why-us.why-us,
+.results,
+.gory-oferta .services {
+  padding-bottom: var(--w-sekcja) !important;
+}
+
+/* ---------- Naglowek ---------- */
+.header.scrolled {
+  background: rgba(253, 249, 244, 0.9) !important;
+  border-bottom: 1px solid var(--w-linia) !important;
+  box-shadow: none !important;
+}
+
+.header-hire-btn {
+  font-weight: 500 !important;
+  border: 1.5px solid var(--w-pomarancz);
+}
+
+.header-hire-btn:hover {
+  background: var(--w-pomarancz-hover) !important;
+}
+
+.badge-pill {
+  font-family: var(--w-mono) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: transparent !important;
+  border-color: var(--w-linia) !important;
+  color: var(--w-tusz-2) !important;
+}
+
+.kota-menu-trigger {
+  background: var(--w-tusz) !important;
+  color: var(--w-papier) !important;
+}
+
+.kota-menu-trigger:hover {
+  background: var(--w-pomarancz) !important;
+  color: var(--w-na-pomaranczu) !important;
+}
+
+.kota-fullscreen-menu {
+  background: var(--w-noc) !important;
+}
+
+.kota-fullscreen-links a {
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: -0.045em !important;
+}
+
+/* ==========================================================================
+   HERO (components/Hero.jsx)
+   ========================================================================== */
+.hero-makieta {
+  position: relative;
+  min-height: min(100svh, 1000px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--w-papier);
+  padding-top: calc(96px + 4vh) !important;
+  padding-bottom: clamp(140px, 18vh, 220px) !important;
+  isolation: isolate;
+}
+
+.hero-makieta-grafika {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+/* Wtapia lewa czesc grafiki w papier, zeby tekst stal na jednolitym tle */
+.hero-makieta-grafika::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--w-papier) 0%, rgba(253, 249, 244, 0.86) 30%, rgba(253, 249, 244, 0) 56%);
+}
+
+.hero-makieta-luki {
+  position: absolute;
+  z-index: -1;
+  left: 33%;
+  top: -12%;
+  width: min(48vw, 760px);
+  height: auto;
+  color: var(--w-pomarancz);
+  pointer-events: none;
+}
+
+.hero-makieta-tresc {
+  width: 100%;
+}
+
+.hero-makieta-tresc > * {
+  max-width: 720px;
+}
+
+.hero-makieta-h1 {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 2rem;
+  color: var(--w-tusz);
+  text-wrap: initial;
+}
+
+.hero-makieta-sub {
+  order: -1;
+  font-family: var(--w-mono) !important;
+  font-size: clamp(0.75rem, 0.9vw, 0.875rem);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--w-pomarancz-tekst);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.hero-makieta-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-makieta-display-1 {
+  font-size: clamp(3.1rem, 7.2vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  font-weight: 500;
+}
+
+.hero-makieta-display-2 {
+  font-size: clamp(2.2rem, 5vw, 4.9rem);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  font-weight: 500;
+  margin-top: 0.1em;
+}
+
+.hero-makieta-lead {
+  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--w-tusz);
+  margin-bottom: 0.9rem;
+  max-width: 620px !important;
+}
+
+.hero-makieta-body {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--w-tusz-2);
+  max-width: 600px !important;
+}
+
+.hero-makieta-akcje {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 2.25rem;
+}
+
+/* ==========================================================================
+   PASMO GOR: pasek klientow + oferta (app/[locale]/page.js)
+   ========================================================================== */
+/* gory-oferta.webp zaczyna sie dokladnie tym wierszem grafiki, na ktorym
+   konczy sie hero (wiersz 640 zrodla, ta sama skala przy pelnej szerokosci),
+   a dol ma wtopiony granat --w-noc - bez szwu u gory i bez krawedzi u dolu. */
+.gory-oferta {
+  position: relative;
+  background-color: var(--w-noc);
+  background-image: url('/images/wyglad/gory-oferta.webp');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: top center;
+  color: #FFFFFF;
+}
+
+.pasek-klientow {
+  padding: clamp(48px, 7vw, 110px) 0 clamp(40px, 5vw, 80px);
+}
+
+.pasek-klientow-wiersz {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
+}
+
+.pasek-klientow-nazwa {
+  color: rgba(30, 30, 30, 0.62);
+  white-space: nowrap;
+  line-height: 1;
+  font-family: var(--font-geist), sans-serif;
+}
+
+.pasek-klientow-nazwa--staniax { font-size: clamp(1.4rem, 2.6vw, 2.5rem); font-weight: 800; letter-spacing: -0.045em; }
+.pasek-klientow-nazwa--asebot { font-size: clamp(1.15rem, 2vw, 1.85rem); font-weight: 700; letter-spacing: 0.12em; }
+.pasek-klientow-nazwa--madame { font-size: clamp(1.05rem, 1.8vw, 1.7rem); font-weight: 300; letter-spacing: 0.22em; }
+.pasek-klientow-nazwa--kozera { font-size: clamp(1rem, 1.7vw, 1.6rem); font-weight: 500; letter-spacing: 0.08em; font-family: var(--w-mono); }
+
+/* --- Oferta (components/Services.jsx) --- */
+.gory-oferta .services {
+  background: transparent !important;
+  color: #FFFFFF;
+  padding-top: clamp(64px, 11vw, 168px) !important;
+}
+
+.gory-oferta .services .section-header {
+  text-shadow: 0 2px 28px rgba(10, 19, 55, 0.55);
+}
+
+.services .section-header {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  max-width: 880px;
+}
+
+.services .section-header p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.gory-oferta .services .section-header h2 {
+  color: #FFFFFF;
+}
+
+.gory-oferta .services .section-header p {
+  color: var(--w-noc-tekst);
+}
+
+/* Trzy filary: cienkie komorki zamiast bialych kart */
+.gory-oferta .kota-pillar-card {
+  background: var(--w-noc-karta) !important;
+  border: 1px solid var(--w-noc-linia) !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  color: #FFFFFF;
+  backdrop-filter: blur(6px);
+}
+
+.gory-oferta .kota-pillar-card p {
+  color: var(--w-noc-tekst) !important;
+}
+
+.gory-oferta .kota-pillar-num {
+  font-family: var(--w-mono) !important;
+  color: var(--w-brzoskwinia) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.08em;
+}
+
+.gory-oferta .kota-divider-x {
+  color: var(--w-brzoskwinia) !important;
+  opacity: 0.8;
+}
+
+/* Kolumny uslug jak w makiecie: bez tla, rozdzielone pionowa linia */
+.gory-oferta .services-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin-top: clamp(48px, 6vw, 88px);
+}
+
+.gory-oferta .service-card {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0.5rem clamp(1.25rem, 3vw, 2.75rem) 0 !important;
+  color: #FFFFFF;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: none !important;
+}
+
+.gory-oferta .service-card + .service-card {
+  border-left: 1px solid rgba(255, 255, 255, 0.22) !important;
+}
+
+.gory-oferta .service-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.gory-oferta .service-card .service-icon {
+  background: transparent !important;
+  border: 1px solid var(--w-noc-linia) !important;
+  color: var(--w-brzoskwinia) !important;
+  box-shadow: none !important;
+}
+
+.gory-oferta .service-card h3 {
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
+  font-size: clamp(1.5rem, 2.3vw, 2.1rem) !important;
+  letter-spacing: -0.045em !important;
+  line-height: 1.1 !important;
+}
+
+.gory-oferta .service-card p {
+  color: var(--w-noc-tekst) !important;
+  max-width: 380px;
+}
+
+.gory-oferta .service-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  text-align: left;
+  border: 0 !important;
+}
+
+.gory-oferta .service-features li {
+  color: #FFFFFF !important;
+  font-size: 1.0625rem !important;
+  padding-left: 2.1rem !important;
+  position: relative;
+  margin-bottom: 0.9rem;
+}
+
+.gory-oferta .service-features li::before {
+  content: '✳' !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--w-brzoskwinia) !important;
+  background: none !important;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  width: auto !important;
+  height: auto !important;
+}
+
+.oferta-ilustracja {
+  display: block;
+  width: min(100%, 300px);
+  height: auto;
+  margin: auto auto 0;
+  padding-top: 2rem;
+}
+
+/* Karta GEO (tylko PL): pelna szerokosc, tekst + ilustracja obok */
+.gory-oferta .service-card.service-card--geo {
+  grid-column: 1 / -1;
+  border-left: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+  margin-top: clamp(40px, 5vw, 72px);
+  padding-top: clamp(40px, 5vw, 64px) !important;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(220px, 320px);
+  gap: 1rem 2.5rem;
+  align-items: center;
+  text-align: left;
+}
+
+.service-card--geo .service-icon { grid-row: 1 / span 3; align-self: start; }
+.service-card--geo h3 { margin: 0 !important; }
+.service-card--geo p { max-width: 640px !important; margin: 0; }
+.service-card--geo a { color: var(--w-brzoskwinia) !important; }
+.service-card--geo .oferta-ilustracja { grid-column: 3; grid-row: 1 / span 3; margin: 0; padding: 0; }
+
+/* ==========================================================================
+   DLACZEGO MY (components/WhyUs.jsx) - swit nad gorami, potem papier
+   ========================================================================== */
+/* gory-swit.webp ma wtopiony granat u gory (styk z oferta) i papier u dolu.
+   Tylko strona glowna (#why-us) - klasa .why-us jest tez na /o-nas
+   (AboutMission), gdzie nad sekcja nie ma oferty na granacie. */
+#why-us.why-us {
+  background-color: var(--w-papier) !important;
+  background-image: url('/images/wyglad/gory-swit.webp') !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% auto !important;
+  background-position: top center !important;
+  padding-top: clamp(300px, 42vw, 640px) !important;
+  color: var(--w-tusz) !important;
+}
+
+.why-us h2 {
+  color: var(--w-tusz) !important;
+  font-weight: 500 !important;
+}
+
+.why-us .section-header > h2:first-of-type {
+  font-size: clamp(2.4rem, 4.4vw, 4rem) !important;
+  letter-spacing: -0.045em !important;
+  line-height: 1.04 !important;
+}
+
+.why-us .section-header p,
+.why-us .section-header h2 + h2 {
+  color: var(--w-tusz-2) !important;
+}
+
+.why-us button[aria-label] {
+  background: transparent !important;
+  border: 1.5px solid var(--w-tusz) !important;
+}
+
+.whyus-card-item {
+  background: var(--w-karta) !important;
+  border: 1px solid var(--w-linia) !important;
+  box-shadow: none !important;
+  border-radius: var(--w-promien-karta) !important;
+}
+
+.whyus-card-item > div:first-child {
+  background: linear-gradient(160deg, var(--w-brzoskwinia-tlo) 0%, var(--w-papier) 85%) !important;
+  border: 0 !important;
+}
+
+.whyus-card-item > div:first-child > div:first-child {
+  font-family: var(--w-mono) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.14em !important;
+  color: var(--w-pomarancz-tekst) !important;
+}
+
+.whyus-card-item > div:first-child > div:nth-child(2) {
+  color: var(--w-pomarancz-gleboki) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.06em !important;
+}
+
+.whyus-card-item h3 {
+  color: var(--w-tusz) !important;
+  font-weight: 500 !important;
+  font-size: 1.3rem !important;
+  letter-spacing: -0.03em !important;
+}
+
+.whyus-card-item p {
+  color: var(--w-tusz-2) !important;
+}
+
+.why-us .whyus-dot {
+  background: var(--w-tusz) !important;
+}
+
+/* ==========================================================================
+   REALIZACJE (components/Portfolio.jsx)
+   ========================================================================== */
+.portfolio {
+  background: var(--w-papier) !important;
+}
+
+.portfolio-title em {
+  font-style: normal;
+  color: var(--w-pomarancz);
+}
+
+.portfolio-lede {
+  color: var(--w-tusz-2) !important;
+}
+
+.portfolio-more,
+.portfolio-client-cta {
+  color: var(--w-pomarancz-tekst) !important;
+  font-weight: 500 !important;
+}
+
+.portfolio-head-visual video,
+.portfolio-head-visual img {
+  border-radius: 24px !important;
+  border: 1px solid var(--w-linia);
+}
+
+.portfolio-mosaic-tile {
+  border-radius: 14px !important;
+}
+
+/* Klienci: jak lista realizacji w makiecie - kropka na osi i podpis mono */
+.portfolio-clients {
+  border-top: 1px solid var(--w-linia);
+  padding-top: 2.5rem;
+}
+
+.portfolio-client {
+  position: relative;
+  padding-left: 2.25rem !important;
+  border-left: 1.5px solid rgba(216, 90, 48, 0.35) !important;
+  border-top: 0 !important;
+  background: transparent !important;
+}
+
+.portfolio-client::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 0.35rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--w-papier);
+  border: 4px solid var(--w-pomarancz);
+}
+
+.portfolio-client-note {
+  color: var(--w-tusz-2) !important;
+}
+
+/* ==========================================================================
+   WYNIKI - CTA na przejsciu gor w noc (components/Results.jsx)
+   ========================================================================== */
+/* gory-noc.webp ma przezroczyste niebo nad szczytami: pod nim papier, ponizej
+   linii, od ktorej gory sa juz nieprzezroczyste (18 % wysokosci grafiki =
+   ~8,4vw), noc. Granica 12vw lezy w calosci pod gorami. */
+.results {
+  background-color: var(--w-noc) !important;
+  background-image:
+    url('/images/wyglad/gory-noc.webp'),
+    linear-gradient(180deg, var(--w-papier) 0, var(--w-papier) 12vw, var(--w-noc) 12vw) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% auto, 100% 100% !important;
+  background-position: top center !important;
+  padding-top: clamp(220px, 34vw, 520px) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+.results > .container {
+  background: transparent !important;
+}
+
+.results-content {
+  background: transparent !important;
+  border: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  text-align: left !important;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.results-text {
+  max-width: 720px;
+}
+
+.results-text h2 {
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
+  font-size: clamp(2rem, 3.6vw, 3.25rem) !important;
+  letter-spacing: -0.045em !important;
+  line-height: 1.05 !important;
+}
+
+.results-text p {
+  color: var(--w-noc-tekst) !important;
+  font-size: 1.125rem !important;
+}
+
+/* ==========================================================================
+   SEKCJE NOCNE: panel klienta, cennik, blog, FAQ, kontakt
+   ========================================================================== */
+.panel-showcase,
+.w-noc-sekcja {
+  background: var(--w-noc) !important;
+  color: #FFFFFF;
+}
+
+/* --- Panel klienta (components/PanelShowcase.jsx) --- */
+.panel-uklad {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr) minmax(0, 0.9fr);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: center;
+}
+
+.panel-showcase .section-header {
+  margin-bottom: 0 !important;
+}
+
+.panel-showcase .section-header h2 {
+  color: #FFFFFF !important;
+  font-size: clamp(2.2rem, 3.6vw, 3.5rem) !important;
+}
+
+.panel-showcase .section-header p {
+  color: var(--w-noc-tekst) !important;
+  font-size: 1.0625rem !important;
+}
+
+.panel-akcje {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* Stos zrzutow panelu w rzucie izometrycznym (makieta: warstwy AISEO) */
+.panel-stos {
+  position: relative;
+  height: clamp(420px, 44vw, 640px);
+  margin: 0;
+}
+
+.panel-warstwa {
+  position: absolute;
+  left: 6%;
+  width: 88%;
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  transform: perspective(2400px) rotateX(52deg) rotateZ(-32deg);
+  transform-origin: center;
+  border: 1px solid rgba(243, 183, 156, 0.45);
+  box-shadow:
+    0 2px 0 0 rgba(216, 90, 48, 0.85),
+    0 40px 70px rgba(2, 4, 18, 0.65);
+  background: #FFFFFF;
+}
+
+.panel-warstwa img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.panel-warstwa--0 { top: 0; z-index: 3; }
+.panel-warstwa--1 { top: 30%; z-index: 2; }
+.panel-warstwa--2 { top: 60%; z-index: 1; }
+
+.panel-cechy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3.5vw, 52px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panel-cecha {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.panel-cecha-ikona {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  border: 1px solid var(--w-noc-linia);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--w-brzoskwinia);
+  display: grid;
+  place-items: center;
+}
+
+.panel-cecha h3 {
+  color: #FFFFFF !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.035em;
+  margin: 0 0 0.4rem !important;
+}
+
+.panel-cecha p {
+  color: var(--w-noc-tekst) !important;
+  margin: 0 !important;
+  line-height: 1.55 !important;
+  font-size: 0.975rem;
+}
+
+/* --- Cennik (components/Pricing.jsx - takze na podstronach) --- */
+.pricing {
+  background-color: var(--w-noc) !important;
+  background-image:
+    url('/images/wyglad/kontury-1.webp'),
+    url('/images/wyglad/kontury-2.webp') !important;
+  background-repeat: no-repeat, no-repeat !important;
+  background-size: min(62vw, 900px) auto, min(64vw, 940px) auto !important;
+  background-position: left -12vw top 12%, right -10vw bottom -4% !important;
+  color: #FFFFFF;
+}
+
+.pricing .section-header {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricing .section-header h2 {
+  color: #FFFFFF !important;
+}
+
+.pricing .section-header p {
+  color: var(--w-noc-tekst) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.pricing .section-header > div:last-child {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--w-noc-linia);
+  font-weight: 500 !important;
+}
+
+.pricing .section-tag,
+.pricing .section-tag span.asterisk {
+  color: var(--w-brzoskwinia) !important;
+}
+
+.pricing-card {
+  background: var(--w-karta) !important;
+  border: 1.5px solid rgba(243, 183, 156, 0.0) !important;
+  border-radius: var(--w-promien-karta) !important;
+  box-shadow: 0 30px 80px rgba(3, 6, 20, 0.45) !important;
+  color: var(--w-tusz);
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+}
+
+.pricing-card.featured {
+  border-color: var(--w-pomarancz) !important;
+}
+
+.pricing-featured-badge {
+  background: var(--w-pomarancz) !important;
+  color: var(--w-na-pomaranczu) !important;
+  font-family: var(--w-mono) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.1em !important;
+  box-shadow: none !important;
+}
+
+.pricing-header h3 {
+  font-size: clamp(1.6rem, 2.2vw, 2.1rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.04em !important;
+  color: var(--w-tusz) !important;
+}
+
+.pricing-desc {
+  color: var(--w-tusz-2) !important;
+}
+
+.price-label {
+  font-family: var(--w-mono);
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.price-amount {
+  color: var(--w-tusz) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.04em !important;
+}
+
+.pricing-features li {
+  color: var(--w-tusz) !important;
+}
+
+.pricing-features li::before {
+  color: var(--w-pomarancz) !important;
+}
+
+.pricing-card .btn-secondary {
+  border-color: var(--w-pomarancz) !important;
+  color: var(--w-tusz) !important;
+  width: 100%;
+}
+
+.pricing-card .btn-secondary:hover {
+  background: var(--w-brzoskwinia-tlo) !important;
+  color: var(--w-tusz) !important;
+}
+
+.pricing-card .btn-primary {
+  width: 100%;
+}
+
+.pricing-note {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--w-noc-linia) !important;
+  color: var(--w-noc-tekst) !important;
+  box-shadow: none !important;
+}
+
+.pricing-panel-links,
+.pricing-panel-links a {
+  color: var(--w-brzoskwinia) !important;
+}
+
+/* --- Blog i FAQ strony glownej: jasne panele na nocnym tle --- */
+.w-noc-panele {
+  background: linear-gradient(180deg, var(--w-noc) 0%, #101A4A 55%, #1B2470 100%);
+  padding: clamp(24px, 3vw, 48px) 0 clamp(64px, 8vw, 120px);
+}
+
+.w-noc-panele > section.blog,
+.w-noc-panele > section.faq-apple {
+  padding: 0 !important;
+  margin: 0 auto clamp(24px, 3vw, 40px);
+  width: min(100% - 2 * clamp(16px, 4.7vw, 70px), 1300px);
+  background: var(--w-papier) !important;
+  border-radius: var(--w-promien-panel);
+  position: relative;
+  overflow: hidden;
+}
+
+.w-noc-panele > section.blog > .container,
+.w-noc-panele > section.faq-apple > .container {
+  padding: clamp(40px, 6vw, 88px) clamp(24px, 5vw, 80px) !important;
+  max-width: none !important;
+}
+
+/* Poziomice w rogu panelu FAQ jak w makiecie */
+.w-noc-panele > section.faq-apple::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  bottom: -6%;
+  width: min(44%, 560px);
+  aspect-ratio: 1000 / 1371;
+  background: url('/images/wyglad/kontury-1.webp') no-repeat center / contain;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+/* --- FAQ (components/service/AppleFaq.jsx - wszystkie strony) --- */
+.faq-apple-tytul {
+  font-size: clamp(2.2rem, 4vw, 3.5rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.045em !important;
+  line-height: 1.04 !important;
+  color: var(--w-tusz) !important;
+}
+
+.faq-apple-pozycja {
+  border-bottom: 1px solid var(--w-linia) !important;
+}
+
+.faq-apple-pytanie {
+  color: var(--w-tusz) !important;
+}
+
+.faq-apple-pytanie > span:first-child > span:last-child {
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
+}
+
+
+.faq-apple-ikona {
+  color: var(--w-pomarancz) !important;
+}
+
+.faq-apple-odp p {
+  color: var(--w-tusz-2) !important;
+}
+
+.faq-apple-odp a {
+  color: var(--w-pomarancz-tekst);
+}
+
+/* Wariant panelu (strona glowna): tytul po lewej, pytania po prawej z numeracja */
+.faq-apple--panel .faq-apple-uklad {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+  gap: clamp(32px, 5vw, 96px);
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.faq-apple--panel .faq-apple-tytul {
+  text-align: left !important;
+  font-size: clamp(2.2rem, 3.7vw, 3.6rem) !important;
+  margin-bottom: 0 !important;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+/* Numeracja "01" z licznika CSS - nie trafia do tekstu strony ani do
+   nazwy dostepnej przycisku. */
+.faq-apple--panel .faq-apple-uklad {
+  counter-reset: faq;
+}
+
+.faq-apple--panel .faq-apple-pozycja {
+  counter-increment: faq;
+}
+
+.faq-apple--panel .faq-apple-pytanie > span:first-child::before {
+  content: counter(faq, decimal-leading-zero);
+  display: block;
+  font-family: var(--w-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--w-pomarancz-gleboki);
+  margin-bottom: 0.35rem;
+}
+
+.faq-apple--panel .faq-apple-pytanie {
+  padding: 1.75rem 0 !important;
+}
+
+/* --- Blog na stronie glownej (components/Blog.jsx) --- */
+.blog .section-header h2 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem) !important;
+}
+
+.blog-index-row {
+  border-color: var(--w-linia) !important;
+}
+
+.blog-index-row--latest {
+  border-left-color: var(--w-pomarancz) !important;
+}
+
+.blog-index-title,
+.blog-index .blog-index-title {
+  font-family: var(--font-geist), sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--w-tusz) !important;
+}
+
+.blog-index-standfirst,
+.blog-index-date {
+  color: var(--w-tusz-2) !important;
+}
+
+.blog-index-time {
+  font-family: var(--w-mono);
+  color: var(--w-pomarancz-gleboki) !important;
+}
+
+/* --- Kontakt (components/Contact.jsx - takze na podstronach) --- */
+.contact {
+  background-color: var(--w-noc) !important;
+  background-image: url('/images/wyglad/antena-linie.webp') !important;
+  background-repeat: no-repeat !important;
+  background-size: min(46vw, 640px) auto !important;
+  background-position: left -4vw bottom 0 !important;
+  color: #FFFFFF;
+}
+
+.contact-box {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  align-items: start;
+}
+
+.contact-info h2 {
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
+  font-size: clamp(2.4rem, 4.4vw, 4rem) !important;
+  letter-spacing: -0.045em !important;
+  line-height: 1.04 !important;
+}
+
+.contact-info > p {
+  color: var(--w-noc-tekst) !important;
+}
+
+.contact-info .section-tag,
+.contact-info .section-tag span.asterisk {
+  color: var(--w-brzoskwinia) !important;
+}
+
+.company-details {
+  border-color: var(--w-noc-linia) !important;
+}
+
+.company-details li,
+.company-details li a {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.contact-form {
+  background: var(--w-karta) !important;
+  border-radius: var(--w-promien-karta) !important;
+  padding: clamp(24px, 3vw, 44px) !important;
+  box-shadow: 0 30px 80px rgba(3, 6, 20, 0.45) !important;
+  color: var(--w-tusz);
+}
+
+.form-label {
+  color: var(--w-tusz) !important;
+  font-weight: 500 !important;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: var(--w-papier-2) !important;
+  border: 1px solid var(--w-linia) !important;
+  border-radius: 12px !important;
+  color: var(--w-tusz) !important;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--w-pomarancz) !important;
+  box-shadow: 0 0 0 3px rgba(216, 90, 48, 0.18) !important;
+}
+
+/* ---------- Stopka ---------- */
+.footer {
+  background: var(--w-noc-2) !important;
+  color: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer .logo {
+  font-family: var(--font-geist), sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.03em;
+}
+
+.footer-heading,
+.footer-col h4 {
+  font-family: var(--w-mono) !important;
+  font-size: 0.75rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase;
+  color: var(--w-brzoskwinia) !important;
+}
+
+.footer-col {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: clamp(16px, 2vw, 32px);
+}
+
+.footer-links a,
+.footer-links .footer-link-btn {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.footer-links a:hover,
+.footer-links .footer-link-btn:hover {
+  color: var(--w-brzoskwinia) !important;
+}
+
+.footer-bottom {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+/* Plywajacy przycisk "Wyceń projekt" */
+.kota-floating-cta {
+  background: var(--w-pomarancz) !important;
+  color: var(--w-na-pomaranczu) !important;
+  font-weight: 500 !important;
+  box-shadow: 0 12px 30px rgba(10, 19, 55, 0.28) !important;
+}
+
+/* ==========================================================================
+   RESPONSYWNOSC
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .panel-uklad {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .panel-uklad > .section-header { grid-column: 1 / -1; }
+}
+
+@media (max-width: 900px) {
+  .hero-makieta {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding-top: calc(88px + 2rem) !important;
+    padding-bottom: 0 !important;
+  }
+
+  .hero-makieta-grafika {
+    position: relative;
+    inset: auto;
+    order: 2;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    margin-top: 2rem;
+  }
+
+  .hero-makieta-grafika::after {
+    background: linear-gradient(180deg, var(--w-papier) 0%, rgba(253, 249, 244, 0) 28%);
+  }
+
+  .hero-makieta-luki {
+    display: none;
+  }
+
+  .hero-makieta-szeroki {
+    display: none;
+  }
+
+  .gory-oferta .services-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .gory-oferta .service-card + .service-card {
+    border-left: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem !important;
+  }
+
+  .gory-oferta .service-card.service-card--geo {
+    grid-template-columns: minmax(0, 1fr);
+    text-align: center;
+    justify-items: center;
+  }
+
+  .service-card--geo .service-icon,
+  .service-card--geo .oferta-ilustracja {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .gory-oferta {
+    background-image: url('/images/wyglad/gory-oferta-900.webp');
+  }
+
+  #why-us.why-us {
+    background-image: url('/images/wyglad/gory-swit-900.webp') !important;
+    padding-top: 72vw !important;
+  }
+
+  .panel-uklad {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .panel-stos {
+    height: auto;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .panel-warstwa {
+    position: relative;
+    left: auto;
+    top: auto !important;
+    width: 100%;
+    transform: none;
+  }
+
+  .faq-apple--panel .faq-apple-uklad {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .w-noc-panele > section {
+    border-radius: 28px;
+  }
+
+  .contact {
+    background-size: 90vw auto !important;
+    background-position: center bottom !important;
+    padding-bottom: calc(var(--w-sekcja) + 40vw) !important;
+  }
+
+  .footer-col {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .results {
+    padding-top: 62vw !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .pasek-klientow-wiersz {
+    justify-content: center;
+    gap: 1.25rem 2rem;
+  }
+
+  /* Na telefonie nazwy klientow ida w dwa rzedy, a pas chmur na grafice ma
+     tylko ~80 px - drugi rzad wypadal na ciemne gory. Mgielny pas pod nazwami. */
+  .pasek-klientow {
+    background: linear-gradient(180deg, rgba(253, 249, 244, 0) 0%, rgba(253, 249, 244, 0.82) 22%, rgba(253, 249, 244, 0.82) 78%, rgba(253, 249, 244, 0) 100%);
+    padding: 36px 0 44px;
+  }
+
+  .hero-makieta-akcje .w-przycisk {
+    flex: 1 1 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .w-przycisk,
+  .pricing-card {
+    transition: none;
+  }
+  .w-przycisk:hover,
+  .pricing-card:hover {
+    transform: none;
+  }
+}

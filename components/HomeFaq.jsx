@@ -59,6 +59,7 @@ export default function HomeFaq() {
     <AppleFaq
       faqData={faqWidoczne}
       title={lang === 'pl' ? 'Najczęstsze pytania o współpracę' : 'Frequently Asked Questions'}
+      wariant="panel"
     />
   );
 }

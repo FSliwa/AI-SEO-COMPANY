@@ -5,6 +5,13 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { sectionId } from '@/lib/anchors';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
+
+// 6.11.2026 (wyglad z makiety): ilustracje kreskowe pod kolumnami oferty.
+// Dekoracja (alt=""), przebarwione z fioletu makiety na pomarancz marki.
+const Ilustracja = ({ src, w, h }) => (
+  <Image className="oferta-ilustracja" src={src} alt="" width={w} height={h} sizes="300px" loading="lazy" aria-hidden="true" />
+);
 
 export default function Services() {
   const lang = useLocale();
@@ -18,7 +25,7 @@ export default function Services() {
   }));
 
   return (
-    <section className="services" id={sectionId('uslugi', lang)}>
+    <section className="services cursor-light" id={sectionId('uslugi', lang)}>
       <div className="container">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
@@ -91,6 +98,7 @@ export default function Services() {
                 </>
               )}
             </ul>
+            <Ilustracja src="/images/wyglad/antena-linie.webp" w={1000} h={591} />
           </RevealItem>
 
           {/* Card 2 */}
@@ -118,6 +126,7 @@ export default function Services() {
                 </>
               )}
             </ul>
+            <Ilustracja src="/images/wyglad/oferta-www.webp" w={640} h={416} />
           </RevealItem>
 
           {/* Card 3 */}
@@ -145,6 +154,7 @@ export default function Services() {
                 </>
               )}
             </ul>
+            <Ilustracja src="/images/wyglad/oferta-seo.webp" w={640} h={433} />
           </RevealItem>
 
           {/* Card 4 - 5.11.2026 (HOME; PLAN-v2 6.24, MSA-07): strona główna nie linkowała w treści do huba GEO
@@ -153,7 +163,7 @@ export default function Services() {
               celowo inny niż lead huba (playbook 5.5). Pełna szerokość siatki: 4. karta nie zostaje sama
               w trzeciej kolumnie. Link do sprawdzarki dopiero po T0.2. */}
           {lang === 'pl' && (
-            <RevealItem className="service-card" style={{ gridColumn: '1 / -1' }}>
+            <RevealItem className="service-card service-card--geo" style={{ gridColumn: '1 / -1' }}>
               <div className="service-icon">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
               </div>
@@ -162,6 +172,7 @@ export default function Services() {
               <Link href="/pozycjonowanie-w-ai" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' }}>
                 Zobacz, jak działa pozycjonowanie w AI →
               </Link>
+              <Ilustracja src="/images/wyglad/oferta-ai.webp" w={640} h={531} />
             </RevealItem>
           )}
         </RevealStagger>

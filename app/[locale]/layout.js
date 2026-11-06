@@ -1,4 +1,5 @@
 import '../globals.css';
+import '../wyglad.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
@@ -211,10 +212,15 @@ const jsonLdDataPl = {
 
 import Script from 'next/script';
 
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space', display: 'swap' });
+// 6.11.2026 (wyglad z makiety, DESIGN.md): Geist zamiast Inter + Space Grotesk.
+// Podzbior latin-ext jest konieczny - Inter ladowany tylko z 'latin' nie mial
+// polskich liter i "ą ę ł ż" rysowal font zastepczy. Stare zmienne --font-inter
+// i --font-space wskazuja na Geist w app/wyglad.css, wiec reguly globals.css
+// i style w komponentach dzialaja bez zmian.
+const geist = Geist({ subsets: ['latin', 'latin-ext'], variable: '--font-geist', display: 'swap' });
+const geistMono = Geist_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-geist-mono', display: 'swap' });
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
@@ -293,7 +299,7 @@ export default async function RootLayout({ children, params }) {
           `}
         </Script>
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className={`${geist.variable} ${geistMono.variable}`}>
         <NextIntlClientProvider messages={messages}>
           {/* Baner zgody pierwszy w DOM (05.10.2026). Stal za <main> i <footer>,
               wiec z klawiatury "Odrzuc opcjonalne" wypadalo dopiero po 62-64 Tab

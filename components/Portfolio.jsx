@@ -14,7 +14,7 @@ const realizedWebsites = [
     id: 1,
     brandName: 'MADAME THAI',
     brandLogo: (
-      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         MADAME THAI
       </span>
     ),
@@ -42,7 +42,7 @@ const realizedWebsites = [
     id: 2,
     brandName: 'STANIAX',
     brandLogo: (
-      <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         STANIAX
       </span>
     ),
@@ -74,7 +74,7 @@ const realizedWebsites = [
     id: 3,
     brandName: 'ASE-BOT',
     brandLogo: (
-      <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
         ASE-BOT
       </span>
     ),
