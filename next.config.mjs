@@ -112,6 +112,10 @@ const nextConfig = {
 
   async redirects() {
     return [
+      // 6.11.2026: publikacja huba /narzedzia (lib/publikacja.js, partia 3). Dawny plan zakladal
+      // osobna sekcje /szablony - jej adresy prowadza do huba i jego podstron.
+      { source: '/szablony', destination: '/narzedzia#szablony', permanent: true },
+      { source: '/szablony/:slug', destination: '/narzedzia/:slug', permanent: true },
       // 5.11.2026 (PLAN-v2 rozdz. 7, VAPP; TS-08 po weryfikacji, zamiast lataki T7 z noindex):
       // alias produkcyjny ai-seo-company.vercel.app odpowiadal 200 kopia calego serwisu
       // (canonical na www, bez noindex). noindex + canonical do innego adresu to sprzeczne

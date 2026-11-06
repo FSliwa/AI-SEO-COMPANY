@@ -410,11 +410,11 @@ function SekcjePl() {
           <li>Jaki jest okres wypowiedzenia i czy są kary za wyjście?</li>
           <li>Czy treści, linki i konta zostaną po mojej stronie po zakończeniu umowy?</li>
         </ol>
-        {/* CS-02: do publikacji P6 (partia 4) link do /zmiana-agencji-seo, potem do P6. */}
-        {HREF.p6 ? (
+        {/* CS-02 (6.11.2026, publikacja P6): zdanie o zmianie agencji zostaje (strona chroniona -
+            tylko dodawanie), link do P6 dochodzi obok. */}
+        <p style={tekstStyl}>Jak przejąć konta, treści i linki od obecnej agencji, opisujemy w poradniku „<Link href="/zmiana-agencji-seo" style={linkStyl}>zmiana agencji SEO bez utraty pozycji</Link>”.</p>
+        {HREF.p6 && (
           <p style={tekstStyl}>Dobre odpowiedzi i czerwone flagi do 12 pytań opisujemy w poradniku <Link href={HREF.p6} style={linkStyl}>jak wybrać agencję SEO</Link>.</p>
-        ) : (
-          <p style={tekstStyl}>Jak przejąć konta, treści i linki od obecnej agencji, opisujemy w poradniku „<Link href="/zmiana-agencji-seo" style={linkStyl}>zmiana agencji SEO bez utraty pozycji</Link>”.</p>
         )}
         <h3 style={{ ...h3Styl, marginTop: '0.75rem' }}>Jak mierzymy efekt GEO</h3>
         <p style={tekstStyl}>
@@ -524,16 +524,13 @@ export default function GeoPageClient() {
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-text-dark)' }}>{o.name}</h3>
                 <p style={{ margin: '0.75rem 0 0', fontSize: '2rem', fontWeight: 800, color: 'var(--color-text-dark)' }}>{o.price}</p>
                 <p style={{ margin: 0, color: 'var(--color-text-muted)' }}>{o.unit}</p>
-                {pl && i === 0 && HREF.a5 ? (
-                  // PLAN-v2 6.7 i 6.16: po publikacji A5 karta audytu = 2 zdania + link do A5.
-                  <>
-                    <p style={{ margin: '1rem 0 0', lineHeight: 1.55, color: 'var(--color-text-main)' }}>Jednorazowo sprawdzamy 30 pytań Twoich klientów w czterech źródłach, 5 konkurentów polecanych przez modele i strony, które modele cytują. Wynik z 10 rekomendacjami dostajesz w 5 dni roboczych, a kwotę zaliczamy na pierwszy miesiąc abonamentu.</p>
-                    <p style={{ margin: '0.75rem 0 0', fontWeight: 600 }}>Zakres i przykład wyniku: <Link href={HREF.a5} style={linkStyl}>audyt widoczności w AI</Link></p>
-                  </>
-                ) : (
-                  <ul style={{ margin: '1rem 0 0', paddingLeft: '1.1rem', display: 'grid', gap: '0.45rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>
+                {/* 6.11.2026 (publikacja A5): lista punktow zostaje, link do A5 dochodzi pod nia
+                    (strona chroniona - tylko dodawanie; wczesniejszy wariant zamienial liste na akapit). */}
+                <ul style={{ margin: '1rem 0 0', paddingLeft: '1.1rem', display: 'grid', gap: '0.45rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>
                     {o.points.map((p) => <li key={p}>{p}</li>)}
                   </ul>
+                {pl && i === 0 && HREF.a5 && (
+                  <p style={{ margin: '0.75rem 0 0', fontWeight: 600 }}>Zakres i przykład wyniku: <Link href={HREF.a5} style={linkStyl}>audyt widoczności w AI</Link></p>
                 )}
               </RevealItem>
             ))}
