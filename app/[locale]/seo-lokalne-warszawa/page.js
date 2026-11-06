@@ -62,7 +62,9 @@ const faqData = [
     id: 'ile-kosztuje-pozycjonowanie-lokalne',
     tylkoPl: true,
     question: 'Ile kosztuje pozycjonowanie lokalne?',
-    answer: 'Pozycjonowanie lokalne jest w cenie każdego pakietu, od 1 900 zł netto miesięcznie w SEO Standard. Nie dopłacasz za optymalizację wizytówki Google ani za posty i odpowiedzi na opinie. Umowa jest miesięczna, a pełne porównanie pakietów znajdziesz w <a href="/cennik-pozycjonowania" style="text-decoration:underline">cenniku pozycjonowania</a>.',
+    // Poprawka 6.11.2026: zakres zgodny z listą pakietów (Pricing.jsx) – posty i odpowiedzi na opinie
+    // nie są wpisane do SEO Standard.
+    answer: 'Pozycjonowanie lokalne jest w cenie każdego pakietu, od 1 900 zł netto miesięcznie w SEO Standard, i obejmuje optymalizację wizytówki Google. Zakres stałego prowadzenia wizytówki (publikacje, odpowiedzi na opinie) zależy od pakietu. Umowa jest miesięczna, a pełne porównanie pakietów znajdziesz w <a href="/cennik-pozycjonowania" style="text-decoration:underline">cenniku pozycjonowania</a>.',
   },
   {
     // Nowe (LO1, OP-10): 44 słowa, bez liczby Senuto. Po T0.2 (POST /api/ai-check z pustym body = 400)
@@ -79,7 +81,7 @@ const faqData = [
     id: 'seo-lokalne-a-wizytowka-google',
     tylkoPl: true,
     question: 'Czy SEO lokalne obejmuje prowadzenie wizytówki Google?',
-    answer: 'Tak. Prowadzenie wizytówki Google jest w każdym naszym pakiecie SEO: uzupełniamy kategorie i usługi, dodajemy zdjęcia i posty, odpowiadamy na opinie i pilnujemy, żeby nazwa, adres i telefon były takie same jak w katalogach. Na stronie firmy dopisujemy treści z nazwami dzielnic, które wzmacniają widoczność w Mapach.'
+    answer: 'Tak. Optymalizacja wizytówki Google jest w każdym naszym pakiecie SEO: uzupełniamy kategorie i usługi i pilnujemy, żeby nazwa, adres i telefon były takie same jak w katalogach. Regularne publikacje i odpowiedzi na opinie są w pakietach z prowadzeniem wizytówki (porównanie w cenniku). Na stronie firmy dopisujemy treści z nazwami dzielnic, które wzmacniają widoczność w Mapach.'
       + (HREF_L1 ? ` Więcej o tej części pracy: <a href="${HREF_L1}" style="text-decoration:underline">pozycjonowanie wizytówki Google</a>.` : ''),
   }
 ];
@@ -141,9 +143,10 @@ const portfolioCases = [
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
     // Z1 / AV-06 (5.11.2026): „Średnia ocen 5.0” nie miała źródła. Teraz proces, który obiecujemy
     // (PLAN-v2 6.26, LOK: odpowiedź na każdą opinię ≤ 48 h), a nie wynik klienta.
-    metric: '≤ 48 h',
-    metricLabel: 'Odpowiedź na każdą opinię',
-    metricLabelEn: 'Reply to every review',
+    // Poprawka 6.11.2026: bez obietnicy czasu odpowiedzi (≤ 48 h) do potwierdzenia przez właściciela.
+    metric: 'Opinie',
+    metricLabel: 'Proces zbierania i odpowiedzi',
+    metricLabelEn: 'Collection and reply process',
     metric2: 'Trust',
     metric2Label: 'Wiarygodność',
     metric2LabelEn: 'Credibility'

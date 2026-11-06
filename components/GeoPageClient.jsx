@@ -271,11 +271,9 @@ const KARTY = [
   {
     id: 'reklama-w-chatgpt',
     pytanie: 'Czy reklama w ChatGPT to to samo co pozycjonowanie w AI?',
-    // Wariant 8a (CB-03, CB-10): fakty o reklamach OpenAI według wirtualnemedia.pl z 20.08.2026
-    // (start 24.08.2026 na 31 rynkach, w tym w Polsce; reklamy oznaczone, oddzielone od odpowiedzi,
-    // bez wpływu na jej treść). help.openai.com i openai.com zwracały 403 przy odczycie 5.11.2026.
-    odpowiedz: 'Nie. Reklama w ChatGPT to płatny, oznaczony komunikat oddzielony od odpowiedzi modelu, a pozycjonowanie w AI dotyczy samej odpowiedzi i źródeł, z których model korzysta. Według zapowiedzi OpenAI z sierpnia 2026 reklamy, dostępne także w Polsce, nie wpływają na treść odpowiedzi. Reklama znika po kampanii, a wzmianka w źródłach zostaje.',
-    zrodlo: { tekst: 'wirtualnemedia.pl, „ChatGPT Ads wkracza do Europy”', url: ZRODLO.reklamy, data: '20.08.2026' },
+    // Poprawka 6.11.2026: bez faktów o reklamach OpenAI ze źródła wtórnego (wirtualnemedia.pl);
+    // help.openai.com zwracało 403, a plan (6.5, CB-10) dopuszcza tylko strony OpenAI.
+    odpowiedz: 'Nie. Reklama to płatna emisja komunikatu, która działa, dopóki płacisz za kampanię. Pozycjonowanie w AI dotyczy samej odpowiedzi modelu: czy wymienia Twoją firmę i z jakich źródeł korzysta. Wzmianki w tych źródłach zostają po zakończeniu kampanii. Aktualne zasady reklam sprawdzaj w centrum pomocy OpenAI.',
     href: HREF.a2Reklama,
     anchor: 'Reklama w ChatGPT a pozycjonowanie',
   },

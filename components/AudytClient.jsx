@@ -167,7 +167,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
                 Audyt SEO: cena i warianty
               </h2>
               <p style={tekstSekcji}>
-                Cena zależy od tego, czy potrzebujesz samej diagnozy, czy diagnozy razem z wdrożeniem. Trzy warianty, w których robimy audyt, zestawiliśmy w tabeli. Na rynku audyt SEO kosztuje od 500 do 5 000 zł (widoczni.com, odczyt 5.11.2026).
+                Cena zależy od tego, czy potrzebujesz samej diagnozy, czy diagnozy razem z wdrożeniem. Trzy warianty, w których robimy audyt, zestawiliśmy w tabeli. Na rynku audyt SEO kosztuje zwykle od 500 do 5 000 zł (cenniki agencji SEO, odczyt 5.11.2026). Przed wyceną bezpłatnie oceniamy stronę i zakres, a pełny audyt z raportem jest płatny według tabeli.
               </p>
               <CompareTable
                 id="warianty-audytu"
