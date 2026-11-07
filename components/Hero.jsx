@@ -4,6 +4,7 @@ import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import HeroArcText from './HeroArcText';
 import SceneErrorBoundary from './SceneErrorBoundary';
 import { hash } from '@/lib/anchors';
@@ -193,6 +194,9 @@ export default function Hero() {
   }, []);
 
   const onSceneLoad = (app) => {
+    // 7.11.2026 (makieta): scena ma w pliku czarne tlo - zerujemy alfe, zeby robot
+    // stal na grafice nieba i gor z makiety (warstwa .hero-tlo-sceny pod kanwa).
+    try { app.setBackgroundColor('rgba(0,0,0,0)'); } catch (e) {}
     setSceneIn(true);
 
     // Telefon: tekst stoi od razu poza pasem liter, wiec wjazd moze grac
@@ -432,12 +436,44 @@ export default function Hero() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        // Measured off the canvas framebuffer at seven edge points: the scene's
-        // baked background is 0,0,0 at every one. Matching it means the band the
-        // canvas occupies on phones has no visible edge against the section.
-        backgroundColor: '#000000'
+        // 7.11.2026: tlo sekcji = papier makiety; scena 3D rysuje sie z przezroczystym
+        // tlem na grafice nieba i gor (.hero-tlo-sceny). Wczesniej #000000 pod czarna scene.
+        backgroundColor: 'var(--w-papier)'
       }}
     >
+      {/* 7.11.2026 (makieta "Desktop - 2"): tlo sceny z antena bez czaszy - robot 3D
+          zastepuje antene. Dolna krawedz grafiki = gorna krawedz pasma chmur oferty. */}
+      <div className="hero-tlo-sceny" aria-hidden="true" data-kursor="obraz">
+        <Image
+          src="/images/wyglad/hero-tlo.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          data-kursor-zrodlo=""
+          style={{ objectFit: 'cover', objectPosition: 'center bottom' }}
+        />
+      </div>
+
+      {/* Ruch satelity i sygnalu (dekoracja SVG, animacje w app/wyglad.css): orbita
+          z satelita, fale z punktu nadawania z grafiki i pakiety danych po lukach. */}
+      <svg className="hero-sygnal" viewBox="0 0 804 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <ellipse className="hero-sygnal-orbita" cx="430" cy="150" rx="330" ry="96" transform="rotate(-11 430 150)" />
+        <g className="hero-sygnal-fale">
+          <circle cx="395" cy="90" r="10" />
+          <circle cx="395" cy="90" r="10" />
+          <circle cx="395" cy="90" r="10" />
+        </g>
+        <circle className="hero-sygnal-pakiet hero-sygnal-pakiet--1" r="3.2" />
+        <circle className="hero-sygnal-pakiet hero-sygnal-pakiet--2" r="2.4" />
+        <g className="hero-satelita">
+          <rect x="-4" y="-3" width="8" height="6" rx="1.2" className="hero-satelita-korpus" />
+          <rect x="-15" y="-2" width="9" height="4" className="hero-satelita-panel" />
+          <rect x="6" y="-2" width="9" height="4" className="hero-satelita-panel" />
+          <circle cx="0" cy="-5" r="1.4" className="hero-satelita-antena" />
+        </g>
+      </svg>
+
       {/* The scene is the section background on both locales now. The video and
           the starfield are gone with it – they were a second full-screen
           backdrop nobody could see underneath this one. */}

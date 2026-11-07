@@ -37,7 +37,6 @@ export async function generateMetadata({ params }) {
 
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import PasAnteny from '@/components/PasAnteny';
 import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
 import Pricing from '@/components/Pricing';
@@ -72,15 +71,13 @@ export default function Home() {
     <>
       <Header />
       {/* 6.11.2026 (wyglad z makiety, DESIGN.md): kolejnosc sekcji jak w makiecie -
-          hero (robot 3D jak na produkcji, 7.11), antena i oferta na pasmie gor, realizacje,
+          hero (robot 3D z produkcji na tle sceny z antena, 7.11), oferta na pasmie gor, realizacje,
           panel, cennik, wiedza, kontakt. Zadna sekcja nie zniknela; zmienila sie tylko kolejnosc
           (oferta przed "Dlaczego my", cennik za panelem klienta) i tla. */}
       <main>
         <Hero />
         <div className="gory-oferta" data-kursor="obraz" data-petla="">
-          {/* 7.11.2026: pod hero z robotem 3D (jak na produkcji) pas z antena z makiety
-              w ruchu i dryfujace chmury - dekoracja, bez tekstu (components/PasAnteny.jsx). */}
-          <PasAnteny />
+          {/* 7.11.2026: dryfujace chmury na styku hero i oferty (dekoracja, app/wyglad.css). */}
           <div className="chmury-dryf" aria-hidden="true"><span /><span /></div>
           <Services />
         </div>

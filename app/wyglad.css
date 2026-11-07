@@ -295,7 +295,7 @@ section#contact.contact {
   background: var(--w-pomarancz-hover) !important;
 }
 
-.header.scrolled .badge-pill {
+.badge-pill {
   font-family: var(--w-mono) !important;
   font-size: 0.72rem !important;
   letter-spacing: 0.06em;
@@ -305,7 +305,7 @@ section#contact.contact {
   color: var(--w-tusz-2) !important;
 }
 
-.header.scrolled .kota-menu-trigger {
+.kota-menu-trigger {
   background: var(--w-tusz) !important;
   color: var(--w-papier) !important;
 }
@@ -343,11 +343,10 @@ section#contact.contact {
   background-image: url('/images/wyglad/gory-oferta.webp');
   background-repeat: no-repeat;
   background-size: 100% auto;
-  /* Grafika chmur zaczyna sie pod pasem anteny (ten sam wiersz zrodla, ta sama
-     skala przy pelnej szerokosci): pas ma wysokosc 100vw * 1035 / 1600. */
-  background-position: center var(--w-pas-anteny);
+  /* Grafika chmur zaczyna sie dokladnie tym wierszem zrodla, na ktorym konczy
+     sie tlo hero (wiersz 640), w tej samej skali przy pelnej szerokosci. */
+  background-position: center top;
   color: #FFFFFF;
-  --w-pas-anteny: 64.6875vw;
 }
 
 /* --- Oferta (components/Services.jsx) --- */
@@ -1390,7 +1389,7 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(var(--w-pas-anteny, 0px) - var(--h) * 0.32);
+  top: calc(var(--h) * -0.32);
   height: var(--h);
   overflow: hidden;
   pointer-events: none;
@@ -1749,8 +1748,8 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   box-shadow: none !important;
 }
 
-.header.scrolled .lang-switcher,
-.header.scrolled .header-login-btn {
+.lang-switcher,
+.header-login-btn {
   background: var(--w-karta) !important;
 }
 
@@ -2335,125 +2334,6 @@ main:has(.article-content) {
   }
 }
 
-/* ==========================================================================
-   PAS ANTENY pod hero z robotem (components/PasAnteny.jsx, 7.11.2026)
-   ========================================================================== */
-.pas-anteny {
-  position: relative;
-  z-index: 0;
-  background: #000000;
-  overflow: hidden;
-}
-
-.pas-anteny-scena {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1600 / 1035;
-}
-
-.pas-anteny-tlo,
-.pas-anteny-czasza,
-.pas-anteny-sygnal {
-  position: absolute;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-}
-
-.pas-anteny-czasza {
-  /* Lozysko elewacji: 83,08 % x 57,31 % kadru */
-  transform-origin: 83.08% 57.31%;
-}
-
-.pas-anteny-sygnal {
-  overflow: visible;
-  pointer-events: none;
-}
-
-.pas-anteny-fale circle {
-  fill: none;
-  stroke: var(--w-pomarancz);
-  stroke-width: 1.4;
-  vector-effect: non-scaling-stroke;
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.pas-anteny-tor {
-  fill: none;
-  stroke: none;
-}
-
-.pas-anteny-pakiet {
-  fill: var(--w-pomarancz);
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes w-czasza {
-    0% { rotate: -2.2deg; }
-    45% { rotate: 1.6deg; }
-    60% { rotate: 1.6deg; }
-    100% { rotate: -2.2deg; }
-  }
-
-  @keyframes w-fala-czaszy {
-    0% { opacity: 0; scale: 0.6; }
-    12% { opacity: 0.85; }
-    100% { opacity: 0; scale: 7; }
-  }
-
-  @keyframes w-pakiet {
-    0% { offset-distance: 0%; opacity: 0; }
-    10% { opacity: 1; }
-    85% { opacity: 1; }
-    100% { offset-distance: 100%; opacity: 0; }
-  }
-
-  @keyframes w-pas-wejscie {
-    from { scale: 1.06; }
-    to { scale: 1; }
-  }
-
-  .pas-anteny-czasza {
-    animation: w-czasza 14s cubic-bezier(0.45, 0, 0.25, 1) infinite;
-  }
-
-  .pas-anteny-fale circle {
-    animation: w-fala-czaszy 4.2s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
-  }
-  .pas-anteny-fale circle:nth-child(2) { animation-delay: 1.4s; }
-  .pas-anteny-fale circle:nth-child(3) { animation-delay: 2.8s; }
-
-  @supports (offset-path: path('M0 0 L1 1')) {
-    .pas-anteny-pakiet--1 {
-      offset-path: path('M505 175 C 430 150 360 110 300 40');
-      animation: w-pakiet 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-    .pas-anteny-pakiet--2 {
-      offset-path: path('M505 175 C 450 190 380 160 330 95');
-      animation: w-pakiet 3.2s cubic-bezier(0.4, 0, 0.6, 1) 1.6s infinite;
-    }
-  }
-
-  @supports ((animation-timeline: view()) and (animation-range: entry)) {
-    .pas-anteny-scena {
-      animation: w-pas-wejscie linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 50%;
-      transform-origin: 70% 60%;
-    }
-  }
-}
-
-@media (max-width: 900px) {
-  .gory-oferta {
-    --w-pas-anteny: 64.6875vw;
-  }
-}
-
 /* Cennik jak w makiecie (7.11.2026): etykieta kategorii nad nazwa pakietu i ikony
    obrysowe przy cechach zamiast znacznika. Ikony to maski SVG w kolorze akcentu. */
 .pricing-kategoria {
@@ -2533,4 +2413,200 @@ main:has(.article-content) {
 
 .faq-apple-kontakt a:hover {
   color: var(--w-pomarancz);
+}
+
+/* ==========================================================================
+   HERO v4 (7.11.2026): robot 3D z produkcji na tle sceny z antena z makiety
+   ========================================================================== */
+.hero-tlo-sceny {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero .hero-en-bg {
+  z-index: 1;
+}
+
+.hero .hero-en-orb {
+  background: transparent !important;
+}
+
+/* Winieta z produkcji byla ciemna pod bialy tekst; tu rozjasnienie pod jasny tekst
+   po lewej i u gory, zeby kopia stala na spokojnym tle. */
+.hero .hero-overlay,
+.hero .hero-overlay--en {
+  background: linear-gradient(180deg, rgba(253, 249, 244, 0.72) 0%, rgba(253, 249, 244, 0.2) 34%, rgba(253, 249, 244, 0) 60%) !important;
+  z-index: 2;
+}
+
+.hero .hero-en-copy :is(h1, p, .hero-en-cta-secondary) {
+  text-shadow: 0 1px 18px rgba(253, 249, 244, 0.85) !important;
+}
+
+.hero .hero-en-title-display {
+  color: var(--w-tusz) !important;
+}
+
+.hero .hero-en-lead {
+  color: var(--w-tusz) !important;
+}
+
+.hero .hero-en-body {
+  color: var(--w-tusz-2) !important;
+}
+
+.hero .hero-en-arc-line {
+  fill: var(--w-tusz-2) !important;
+}
+
+/* Chromatyczne "duchy" liter na luku (blekit i pomarancz obok tekstu) wygladaly na
+   ciemnym tle jak poswiata, na jasnym jak rozmazany druk - na scenie z makiety
+   zostaje sam tekst. Wyroznione frazy dalej w pomaranczowym gradiencie sceny. */
+.hero .hero-en-arc-ghost,
+.hero .hero-arc-scan {
+  display: none !important;
+}
+
+.hero .hero-en-cta {
+  background: var(--w-pomarancz) !important;
+  color: #FFFFFF !important;
+}
+
+.hero .hero-en-cta-secondary {
+  color: var(--w-tusz) !important;
+  border-color: var(--w-tusz) !important;
+}
+
+.hero .hero-en-cta-secondary:hover {
+  color: #FFFFFF !important;
+}
+
+.hero .hero-partner-item {
+  color: rgba(30, 30, 30, 0.78) !important;
+}
+
+.hero .hero-partner-item:hover {
+  color: var(--w-tusz) !important;
+  text-shadow: none !important;
+}
+
+.hero :focus-visible,
+body:has(.hero) .header:not(.scrolled) :focus-visible {
+  outline-color: var(--w-pomarancz) !important;
+}
+
+/* Sygnal i satelita */
+.hero-sygnal {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.hero-sygnal-orbita {
+  fill: none;
+  stroke: var(--w-pomarancz);
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.45;
+}
+
+.hero-sygnal-fale circle {
+  fill: none;
+  stroke: var(--w-pomarancz);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.hero-sygnal-pakiet {
+  fill: var(--w-pomarancz);
+  opacity: 0;
+}
+
+.hero-satelita-korpus {
+  fill: var(--w-tusz);
+}
+
+.hero-satelita-panel {
+  fill: var(--w-pomarancz);
+}
+
+.hero-satelita-antena {
+  fill: var(--w-tusz);
+}
+
+/* Bez animacji satelita stoi w punkcie orbity */
+.hero-satelita {
+  transform: translate(120px, 214px) rotate(-11deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes w-hero-fala {
+    0% { opacity: 0; scale: 0.6; }
+    12% { opacity: 0.8; }
+    100% { opacity: 0; scale: 9; }
+  }
+
+  @keyframes w-hero-pakiet {
+    0% { offset-distance: 0%; opacity: 0; }
+    12% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { offset-distance: 100%; opacity: 0; }
+  }
+
+  @keyframes w-hero-orbita {
+    from { offset-distance: 0%; }
+    to { offset-distance: 100%; }
+  }
+
+  .hero-sygnal-fale circle {
+    animation: w-hero-fala 4.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  }
+  .hero-sygnal-fale circle:nth-child(2) { animation-delay: 1.47s; }
+  .hero-sygnal-fale circle:nth-child(3) { animation-delay: 2.93s; }
+
+  @supports (offset-path: path('M0 0 L1 1')) {
+    /* Elipsa orbity (cx 430, cy 150, rx 330, ry 96) obrocona o -11 st. jako sciezka */
+    .hero-satelita {
+      transform: none;
+      offset-path: path('M 106 213 A 330 96 -11 1 1 754 87 A 330 96 -11 1 1 106 213');
+      offset-rotate: auto;
+      animation: w-hero-orbita 38s linear infinite;
+    }
+    .hero-sygnal-pakiet--1 {
+      offset-path: path('M395 90 C 470 60 560 70 640 120');
+      animation: w-hero-pakiet 3.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .hero-sygnal-pakiet--2 {
+      offset-path: path('M395 90 C 330 130 300 200 290 280');
+      animation: w-hero-pakiet 3.4s cubic-bezier(0.4, 0, 0.6, 1) 1.7s infinite;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-sygnal-orbita,
+  .hero-satelita {
+    display: none;
+  }
+}
+
+/* Hero v4: drugi przycisk z jasnym tlem (stoi na gorach), na telefonie mgla pod kopia */
+.hero .hero-en-cta-secondary {
+  background: rgba(253, 249, 244, 0.86) !important;
+}
+
+@media (max-width: 900px), (max-aspect-ratio: 1/1) {
+  .hero .hero-overlay,
+  .hero .hero-overlay--en {
+    background: linear-gradient(180deg, rgba(253, 249, 244, 0.55) 0%, rgba(253, 249, 244, 0.1) 30%, rgba(253, 249, 244, 0) 34%, rgba(253, 249, 244, 0) 60%, rgba(253, 249, 244, 0.6) 70%, rgba(253, 249, 244, 0.8) 90%, rgba(253, 249, 244, 0.35) 100%) !important;
+  }
 }

@@ -32,10 +32,9 @@ function UserIcon() {
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  // 7.11.2026: hero strony glownej wrocil do robota 3D na czarnym tle (jak na
-  // produkcji), wiec przed przewinieciem naglowek znowu ma jasny tekst.
-  // `scrolled` = podstrona albo przewiniecie > 40 px.
-  const naJasnym = scrolled;
+  // 7.11.2026: hero strony glownej = robot 3D na jasnym tle sceny z makiety,
+  // wiec naglowek ma ciemny tekst takze przed przewinieciem.
+  const naJasnym = true;
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuExpanded, setMenuExpanded] = useState(false);
   const [triggerPos, setTriggerPos] = useState({ x: 0, y: 0 });
