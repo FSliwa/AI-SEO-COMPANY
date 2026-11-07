@@ -66,13 +66,17 @@ Mapowanie fioletów makiety: `#C3A4F0`, `#B085E5` → brzoskwinia / pomarańcz,
 
 ## Grafika
 
-- Hero: antena na szczycie (`/images/wyglad/hero-antena.webp`), pasmo chmur
-  i gór pod ofertą (`gory-oferta.webp`), przejście w noc (`gory-noc.webp`).
+- Hero strony głównej: 1:1 z produkcji (robot, scena Spline 3D, Inter + Space
+  Grotesk tylko w `.hero`) - decyzja właściciela 7.11.2026.
+- Pod hero pas z anteną (`components/PasAnteny.jsx`): tło bez czaszy
+  (`antena-tlo.webp`, góra przechodzi w czerń hero) i sama czasza
+  (`antena-czasza.webp`) obracana w elewacji wokół łożyska (83,08 % / 57,31 %),
+  fale z ogniska i pakiety danych po łukach. Dalej pasmo chmur i gór pod ofertą
+  (`gory-oferta.webp`, przesunięte o wysokość pasa), przejście w noc (`gory-noc.webp`).
 - Ilustracje kreskowe oferty (`oferta-*.webp`), antena kreskowa w kontakcie
   (`antena-linie.webp`), poziomice w cenniku i FAQ (`kontury-*.webp`).
 - Ikony: obrysowe, 1,5 px, kolor akcentu. Bez emoji jako ikon.
-- Sceny Spline zniknęły ze strony głównej (dekoracja, 4,9 MB + runtime);
-  komponenty zostają w repo.
+- Scena Spline w hero zostaje (jak na produkcji); scena w sekcji wyników zdjęta.
 
 ## Kursor
 
@@ -99,3 +103,9 @@ Tokeny: `--w-ruch-ease` `cubic-bezier(0.16,1,0.3,1)`, `--w-ruch-krotki` 0,28 s,
   (ulepszenie; framer-motion `Reveal` zostaje tam, gdzie był).
 - Pętle stoją poza ekranem (`components/PetleWidoczne.jsx`, `data-petla`).
 - Fale radiowe anteny w kontakcie, dryf poziomic w cenniku.
+
+## Cennik
+
+Etykieta kategorii mono nad nazwą pakietu (`✳ SEO`, `✳ WWW + SEO`, aria-hidden),
+nagłówek karty wyśrodkowany, ikony obrysowe przy cechach (`li[data-ikona]`,
+maski SVG w `app/wyglad.css`) zamiast znacznika.

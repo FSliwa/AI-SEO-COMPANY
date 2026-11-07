@@ -215,7 +215,7 @@ import PetleWidoczne from '@/components/PetleWidoczne';
 import Typografia from '@/components/Typografia';
 import Script from 'next/script';
 
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Inter, Space_Grotesk } from 'next/font/google';
 
 // 6.11.2026 (wyglad z makiety, DESIGN.md): Geist zamiast Inter + Space Grotesk.
 // Podzbior latin-ext jest konieczny - Inter ladowany tylko z 'latin' nie mial
@@ -224,6 +224,11 @@ import { Geist, Geist_Mono } from 'next/font/google';
 // i style w komponentach dzialaja bez zmian.
 const geist = Geist({ subsets: ['latin', 'latin-ext'], variable: '--font-geist', display: 'swap' });
 const geistMono = Geist_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-geist-mono', display: 'swap' });
+// 7.11.2026: hero strony glownej 1:1 z produkcja (robot 3D) - jego teksty zostaja
+// w Inter i Space Grotesk. Zmienne --font-inter/--font-space przepina na nie
+// app/wyglad.css tylko wewnatrz .hero.
+const interHero = Inter({ subsets: ['latin', 'latin-ext'], variable: '--font-inter-oryg', display: 'swap' });
+const spaceHero = Space_Grotesk({ subsets: ['latin', 'latin-ext'], variable: '--font-space-oryg', display: 'swap' });
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
@@ -302,7 +307,7 @@ export default async function RootLayout({ children, params }) {
           `}
         </Script>
       </head>
-      <body className={`${geist.variable} ${geistMono.variable}`}>
+      <body className={`${geist.variable} ${geistMono.variable} ${interHero.variable} ${spaceHero.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <KursorWgTla />
           <PetleWidoczne />

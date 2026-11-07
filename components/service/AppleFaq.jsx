@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
 import { zachowaniePrzewijania } from '@/lib/ruch';
+import { hash } from '@/lib/anchors';
 
 /* 5.11.2026 (ANC1; BL-03, CB-03, CB-04, PLAN-v2 6.0 i 6.16) - stale kotwice i jeden FAQPage:
    - faqData[i].id / .idEn (opcjonalne): stale id pytania zamiast useId(), np.
@@ -96,6 +97,13 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
           }}>
             {title}
           </h2>
+          {/* 7.11.2026: wariant panelu (strona glowna) - odsylacz do formularza pod tytulem, jak w makiecie. */}
+          {panel && (
+            <p className="faq-apple-kontakt">
+              <span>{lang === 'pl' ? 'Masz inne pytanie?' : 'Another question?'}</span>
+              <a href={hash('kontakt', lang)} data-cta="faq_kontakt">{lang === 'pl' ? 'Skontaktuj się z nami' : 'Contact us'}{'\u00A0'}→</a>
+            </p>
+          )}
         </Reveal>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>

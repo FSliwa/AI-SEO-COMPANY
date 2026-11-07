@@ -24,6 +24,7 @@ function sierotki(korzen) {
     acceptNode(w) {
       for (let r = w.parentElement; r && r !== korzen; r = r.parentElement) {
         if (POMIN.has(r.tagName.toUpperCase())) return NodeFilter.FILTER_REJECT;
+        if (r.classList && r.classList.contains('hero')) return NodeFilter.FILTER_REJECT;
       }
       return / [aiouwzAIOUWZ] |^[aiouwzAIOUWZ] /.test(w.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
     },

@@ -76,11 +76,20 @@ body::before {
   background: none !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+:where(h1, h2, h3, h4, h5, h6):not(.hero *) {
   font-family: var(--font-geist), system-ui, sans-serif !important;
   font-weight: 500;
   letter-spacing: -0.035em;
   color: var(--w-tusz);
+}
+
+/* Hero strony glownej 1:1 z produkcja (robot 3D, 7.11.2026): wlasne fonty
+   i szerokosc kolumny sprzed przebudowy. */
+.hero {
+  --font-inter: var(--font-inter-oryg);
+  --font-space: var(--font-space-oryg);
+  --container-width: 1240px;
+  font-family: var(--font-inter-oryg), system-ui, -apple-system, sans-serif;
 }
 
 ::selection {
@@ -286,7 +295,7 @@ section#contact.contact {
   background: var(--w-pomarancz-hover) !important;
 }
 
-.badge-pill {
+.header.scrolled .badge-pill {
   font-family: var(--w-mono) !important;
   font-size: 0.72rem !important;
   letter-spacing: 0.06em;
@@ -296,7 +305,7 @@ section#contact.contact {
   color: var(--w-tusz-2) !important;
 }
 
-.kota-menu-trigger {
+.header.scrolled .kota-menu-trigger {
   background: var(--w-tusz) !important;
   color: var(--w-papier) !important;
 }
@@ -319,122 +328,8 @@ section#contact.contact {
 /* ==========================================================================
    HERO (components/Hero.jsx)
    ========================================================================== */
-.hero-makieta {
-  position: relative;
-  min-height: min(100svh, 1000px);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: var(--w-papier);
-  padding-top: calc(96px + 4vh) !important;
-  padding-bottom: clamp(140px, 18vh, 220px) !important;
-  isolation: isolate;
-}
-
-.hero-makieta-grafika {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-}
 
 /* Wtapia lewa czesc grafiki w papier, zeby tekst stal na jednolitym tle */
-.hero-makieta-grafika::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, var(--w-papier) 0%, rgba(253, 249, 244, 0.86) 30%, rgba(253, 249, 244, 0) 56%);
-}
-
-.hero-makieta-luki {
-  position: absolute;
-  z-index: -1;
-  left: 33%;
-  top: -12%;
-  width: min(48vw, 760px);
-  height: auto;
-  color: var(--w-pomarancz);
-  pointer-events: none;
-}
-
-.hero-makieta-tresc {
-  width: 100%;
-}
-
-.hero-makieta-tresc > * {
-  max-width: 720px;
-}
-
-.hero-makieta-tresc > .hero-makieta-h1 {
-  max-width: none;
-}
-
-.hero-makieta-h1,
-.hero-makieta-h1 span {
-  overflow-wrap: normal;
-  word-break: normal;
-}
-
-.hero-makieta-h1 {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 2rem;
-  color: var(--w-tusz);
-  text-wrap: initial;
-}
-
-.hero-makieta-sub {
-  order: -1;
-  font-family: var(--w-mono) !important;
-  font-size: clamp(0.75rem, 0.9vw, 0.875rem);
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--w-pomarancz-tekst);
-  margin-bottom: 1.25rem;
-  line-height: 1.5;
-}
-
-.hero-makieta-display {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-makieta-display-1 {
-  font-size: min(clamp(3rem, 6.6vw, 6rem), calc((100vw - 48px) / 7));
-  line-height: 0.95;
-  letter-spacing: -0.06em;
-  font-weight: 500;
-}
-
-.hero-makieta-display-2 {
-  font-size: min(clamp(2.2rem, 4.6vw, 4.4rem), calc((100vw - 48px) / 9.4));
-  line-height: 1.02;
-  letter-spacing: -0.055em;
-  font-weight: 500;
-  margin-top: 0.1em;
-}
-
-.hero-makieta-lead {
-  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
-  line-height: 1.5;
-  color: var(--w-tusz);
-  margin-bottom: 0.9rem;
-  max-width: 620px !important;
-}
-
-.hero-makieta-body {
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--w-tusz-2);
-  max-width: 600px !important;
-}
-
-.hero-makieta-akcje {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.875rem;
-  margin-top: 2.25rem;
-}
 
 /* ==========================================================================
    PASMO GOR: pasek klientow + oferta (app/[locale]/page.js)
@@ -448,33 +343,12 @@ section#contact.contact {
   background-image: url('/images/wyglad/gory-oferta.webp');
   background-repeat: no-repeat;
   background-size: 100% auto;
-  background-position: top center;
+  /* Grafika chmur zaczyna sie pod pasem anteny (ten sam wiersz zrodla, ta sama
+     skala przy pelnej szerokosci): pas ma wysokosc 100vw * 1035 / 1600. */
+  background-position: center var(--w-pas-anteny);
   color: #FFFFFF;
+  --w-pas-anteny: 64.6875vw;
 }
-
-.pasek-klientow {
-  padding: clamp(48px, 7vw, 110px) 0 clamp(40px, 5vw, 80px);
-}
-
-.pasek-klientow-wiersz {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.5rem 3rem;
-}
-
-.pasek-klientow-nazwa {
-  color: rgba(30, 30, 30, 0.62);
-  white-space: nowrap;
-  line-height: 1;
-  font-family: var(--font-geist), sans-serif;
-}
-
-.pasek-klientow-nazwa--staniax { font-size: clamp(1.4rem, 2.6vw, 2.5rem); font-weight: 800; letter-spacing: -0.045em; }
-.pasek-klientow-nazwa--asebot { font-size: clamp(1.15rem, 2vw, 1.85rem); font-weight: 700; letter-spacing: 0.12em; }
-.pasek-klientow-nazwa--madame { font-size: clamp(1.05rem, 1.8vw, 1.7rem); font-weight: 300; letter-spacing: 0.22em; }
-.pasek-klientow-nazwa--kozera { font-size: clamp(1rem, 1.7vw, 1.6rem); font-weight: 500; letter-spacing: 0.08em; font-family: var(--w-mono); }
 
 /* --- Oferta (components/Services.jsx) --- */
 .gory-oferta .services {
@@ -1130,7 +1004,6 @@ section#contact.contact {
   letter-spacing: -0.02em;
 }
 
-
 .faq-apple-ikona {
   color: var(--w-pomarancz) !important;
 }
@@ -1353,34 +1226,6 @@ section#contact.contact {
 }
 
 @media (max-width: 900px) {
-  .hero-makieta {
-    flex-direction: column;
-    align-items: stretch;
-    min-height: 0;
-    padding-top: calc(88px + 2rem) !important;
-    padding-bottom: 0 !important;
-  }
-
-  .hero-makieta-grafika {
-    position: relative;
-    inset: auto;
-    order: 2;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    margin-top: 2rem;
-  }
-
-  .hero-makieta-grafika::after {
-    background: linear-gradient(180deg, var(--w-papier) 0%, rgba(253, 249, 244, 0) 28%);
-  }
-
-  .hero-makieta-luki {
-    display: none;
-  }
-
-  .hero-makieta-szeroki {
-    display: none;
-  }
 
   .gory-oferta .services-grid {
     grid-template-columns: minmax(0, 1fr) !important;
@@ -1457,21 +1302,10 @@ section#contact.contact {
 }
 
 @media (max-width: 600px) {
-  .pasek-klientow-wiersz {
-    justify-content: center;
-    gap: 1.25rem 2rem;
-  }
 
   /* Na telefonie nazwy klientow ida w dwa rzedy, a pas chmur na grafice ma
      tylko ~80 px - drugi rzad wypadal na ciemne gory. Mgielny pas pod nazwami. */
-  .pasek-klientow {
-    background: linear-gradient(180deg, rgba(253, 249, 244, 0) 0%, rgba(253, 249, 244, 0.82) 22%, rgba(253, 249, 244, 0.82) 78%, rgba(253, 249, 244, 0) 100%);
-    padding: 36px 0 44px;
-  }
 
-  .hero-makieta-akcje .w-przycisk {
-    flex: 1 1 100%;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1545,7 +1379,7 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
 }
 
 /* Warstwy dekoracyjne istnieja zawsze (bez ruchu sa statyczne) */
-.gory-oferta > .pasek-klientow,
+
 .gory-oferta > .services {
   position: relative;
   z-index: 1;
@@ -1556,11 +1390,11 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(var(--h) * -0.32);
+  top: calc(var(--w-pas-anteny, 0px) - var(--h) * 0.32);
   height: var(--h);
   overflow: hidden;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .chmury-dryf > span,
@@ -1655,7 +1489,6 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   .blog-index-row,
   .blog-index-title,
   .faq-apple-pytanie > span:first-child > span:last-child,
-  .pasek-klientow-nazwa,
   .footer-links a,
   .oferta-ilustracja,
   .pricing-card,
@@ -1712,11 +1545,6 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
 
   .faq-apple-pytanie:hover > span:first-child > span:last-child {
     color: var(--w-pomarancz);
-  }
-
-  .pasek-klientow-nazwa:hover {
-    color: var(--w-tusz);
-    scale: 1.04;
   }
 
   .footer-links a:hover {
@@ -1780,43 +1608,6 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   }
 
   /* Hero: linie naglowka wjezdzaja od dolu bez wygaszania (LCP) */
-  .hero-makieta-display-1,
-  .hero-makieta-display-2,
-  .hero-makieta-lead,
-  .hero-makieta-body {
-    animation: w-wznies var(--w-ruch-dlugi) var(--w-ruch-ease-wej) both;
-  }
-  .hero-makieta-display-2 { animation-delay: 0.08s; }
-  .hero-makieta-lead { animation-delay: 0.16s; }
-  .hero-makieta-body { animation-delay: 0.22s; }
-
-  .hero-makieta-sub,
-  .hero-makieta-akcje {
-    animation: w-wznies-wygas var(--w-ruch-dlugi) var(--w-ruch-ease-wej) both;
-  }
-  .hero-makieta-akcje { animation-delay: 0.3s; }
-
-  .hero-makieta-grafika {
-    animation: w-przybliz 2.2s var(--w-ruch-ease) both;
-    transform-origin: 80% 100%;
-  }
-
-  .hero-makieta-luki .luk {
-    stroke-dasharray: 1;
-    animation: w-rysuj 1.8s var(--w-ruch-ease) 0.2s both;
-  }
-  .hero-makieta-luki .luk--sygnal {
-    stroke-dasharray: 0.012 0.018;
-    animation: w-sygnal 9s linear infinite;
-  }
-  .hero-makieta-luki .luk--gruby { animation-delay: 0.45s; }
-
-  .luk-kropka {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: w-puls 2.6s ease-in-out infinite;
-  }
-  .luk-kropka--2 { animation-delay: 1.3s; }
 
   /* Chmury i mgla: dwie warstwy z roznymi predkosciami (paralaksa glebi) */
   .chmury-dryf > span:nth-child(1) { animation: w-dryf 140s linear infinite; }
@@ -1890,7 +1681,7 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
     }
 
     /* Elementy bez wlasnego wejscia framer-motion (Reveal/RevealItem maja swoje). */
-    .pasek-klientow-nazwa,
+    
     .blog-index-row,
     .footer-col {
       animation: w-wejscie linear both;
@@ -1912,18 +1703,9 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
       animation-timeline: view();
       animation-range: entry 0% entry 80%;
     }
-
-    .pasek-klientow-nazwa:nth-child(2) { animation-range: entry 8% entry 78%; }
-    .pasek-klientow-nazwa:nth-child(3) { animation-range: entry 16% entry 86%; }
-    .pasek-klientow-nazwa:nth-child(4) { animation-range: entry 24% entry 94%; }
     .portfolio-mosaic-col:nth-child(even) .portfolio-mosaic-tile { animation-range: entry 10% entry 90%; }
 
     /* Paralaksa: grafika hero zjezdza wolniej niz tresc, chmury w gore */
-    .hero-makieta-grafika img {
-      animation: w-paralaksa linear both;
-      animation-timeline: scroll(root block);
-      animation-range: 0 100vh;
-    }
 
     .chmury-dryf {
       animation: w-paralaksa-chmur linear both;
@@ -1967,8 +1749,8 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   box-shadow: none !important;
 }
 
-.lang-switcher,
-.header-login-btn {
+.header.scrolled .lang-switcher,
+.header.scrolled .header-login-btn {
   background: var(--w-karta) !important;
 }
 
@@ -2008,7 +1790,7 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
 }
 
 /* (77/21/56) Interlinia naglowkow: bez dziedziczenia 1,65 po body */
-h1, h2, h3, h4, h5, h6 {
+:where(h1, h2, h3, h4, h5, h6):not(.hero *) {
   line-height: 1.12;
 }
 
@@ -2029,12 +1811,11 @@ h1, h2, h3, h4, h5, h6 {
 .whyus-card-item h3,
 .faq-apple-tytul,
 .portfolio-title,
-main h1 {
+main h1:not(.hero *) {
   text-wrap: balance;
 }
 
 .section-header p,
-.hero-makieta-body,
 .service-card p,
 .panel-cecha p,
 .pricing-desc {
@@ -2054,13 +1835,12 @@ table,
 }
 
 /* (75) Naglowki podstron w lekkiej wadze makiety */
-main h1,
-main h2 {
+main :is(h1, h2):not(.hero *) {
   font-weight: 500 !important;
   letter-spacing: -0.04em !important;
 }
 
-main h3 {
+main h3:not(.hero *) {
   letter-spacing: -0.025em;
 }
 
@@ -2082,41 +1862,10 @@ main h3 {
 }
 
 /* (3/39) Styk hero z pasmem chmur bez szwu */
-@media (min-width: 901px) {
-  .hero-makieta-grafika img {
-    top: auto !important;
-    bottom: 0 !important;
-    height: auto !important;
-    min-height: 100%;
-  }
-
-  .hero-makieta-grafika::after {
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 92%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 92%);
-  }
-}
 
 /* (40) Hero 901-1280 px: tekst przed czasza anteny */
-@media (min-width: 901px) and (max-width: 1280px) {
-  .hero-makieta-lead,
-  .hero-makieta-body {
-    max-width: min(560px, 50vw) !important;
-  }
-
-  .hero-makieta-luki {
-    left: 46%;
-    top: -20%;
-  }
-}
 
 /* (47) Nazwy klientow czytelne na mgle */
-.pasek-klientow-nazwa {
-  color: rgba(30, 30, 30, 0.8);
-}
-
-.pasek-klientow-nazwa--madame {
-  font-weight: 400;
-}
 
 /* (19) Krotsze przejscie oferta -> swit */
 .gory-oferta .services {
@@ -2184,6 +1933,8 @@ main h3 {
 
   .gory-oferta .kota-pillar-card {
     padding: 1.75rem 1.25rem !important;
+    min-width: 0 !important;
+    width: 100%;
   }
 }
 
@@ -2582,4 +2333,204 @@ main:has(.article-content) {
   .results {
     padding-top: 52vw !important;
   }
+}
+
+/* ==========================================================================
+   PAS ANTENY pod hero z robotem (components/PasAnteny.jsx, 7.11.2026)
+   ========================================================================== */
+.pas-anteny {
+  position: relative;
+  z-index: 0;
+  background: #000000;
+  overflow: hidden;
+}
+
+.pas-anteny-scena {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1600 / 1035;
+}
+
+.pas-anteny-tlo,
+.pas-anteny-czasza,
+.pas-anteny-sygnal {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.pas-anteny-czasza {
+  /* Lozysko elewacji: 83,08 % x 57,31 % kadru */
+  transform-origin: 83.08% 57.31%;
+}
+
+.pas-anteny-sygnal {
+  overflow: visible;
+  pointer-events: none;
+}
+
+.pas-anteny-fale circle {
+  fill: none;
+  stroke: var(--w-pomarancz);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.pas-anteny-tor {
+  fill: none;
+  stroke: none;
+}
+
+.pas-anteny-pakiet {
+  fill: var(--w-pomarancz);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes w-czasza {
+    0% { rotate: -2.2deg; }
+    45% { rotate: 1.6deg; }
+    60% { rotate: 1.6deg; }
+    100% { rotate: -2.2deg; }
+  }
+
+  @keyframes w-fala-czaszy {
+    0% { opacity: 0; scale: 0.6; }
+    12% { opacity: 0.85; }
+    100% { opacity: 0; scale: 7; }
+  }
+
+  @keyframes w-pakiet {
+    0% { offset-distance: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { offset-distance: 100%; opacity: 0; }
+  }
+
+  @keyframes w-pas-wejscie {
+    from { scale: 1.06; }
+    to { scale: 1; }
+  }
+
+  .pas-anteny-czasza {
+    animation: w-czasza 14s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+  }
+
+  .pas-anteny-fale circle {
+    animation: w-fala-czaszy 4.2s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  }
+  .pas-anteny-fale circle:nth-child(2) { animation-delay: 1.4s; }
+  .pas-anteny-fale circle:nth-child(3) { animation-delay: 2.8s; }
+
+  @supports (offset-path: path('M0 0 L1 1')) {
+    .pas-anteny-pakiet--1 {
+      offset-path: path('M505 175 C 430 150 360 110 300 40');
+      animation: w-pakiet 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .pas-anteny-pakiet--2 {
+      offset-path: path('M505 175 C 450 190 380 160 330 95');
+      animation: w-pakiet 3.2s cubic-bezier(0.4, 0, 0.6, 1) 1.6s infinite;
+    }
+  }
+
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .pas-anteny-scena {
+      animation: w-pas-wejscie linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+      transform-origin: 70% 60%;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .gory-oferta {
+    --w-pas-anteny: 64.6875vw;
+  }
+}
+
+/* Cennik jak w makiecie (7.11.2026): etykieta kategorii nad nazwa pakietu i ikony
+   obrysowe przy cechach zamiast znacznika. Ikony to maski SVG w kolorze akcentu. */
+.pricing-kategoria {
+  font-family: var(--w-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--w-pomarancz);
+  margin-bottom: 0.4rem;
+}
+
+.pricing-header {
+  text-align: center;
+}
+
+.pricing-header .pricing-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pricing-features li[data-ikona] {
+  position: relative;
+  padding-left: 2rem !important;
+}
+
+.pricing-features li[data-ikona]::before {
+  content: '' !important;
+  position: absolute;
+  left: 0;
+  top: 0.12em;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: var(--w-tusz-2) !important;
+  -webkit-mask: var(--ikona) center / contain no-repeat;
+  mask: var(--ikona) center / contain no-repeat;
+}
+
+.pricing-features li[data-ikona="panel"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%224%22%20width%3D%2218%22%20height%3D%2212%22%20rx%3D%221.5%22/%3E%3Cpath%20d%3D%22M8%2020h8M12%2016v4%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="audyt"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%226.5%22/%3E%3Cpath%20d%3D%22M20%2020l-4.2-4.2%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="tech"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%207h10M18%207h2M4%2017h4M12%2017h8%22/%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%227%22%20r%3D%222%22/%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%2217%22%20r%3D%222%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="suwaki"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%207h10M18%207h2M4%2017h4M12%2017h8%22/%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%227%22%20r%3D%222%22/%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%2217%22%20r%3D%222%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="pin"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2021s-6.5-5.6-6.5-11a6.5%206.5%200%200%201%2013%200c0%205.4-6.5%2011-6.5%2011z%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%222.3%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="warstwy"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l9%205-9%205-9-5%209-5z%22/%3E%3Cpath%20d%3D%22M3%2013l9%205%209-5%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="ai"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%225%22%20y%3D%228%22%20width%3D%2214%22%20height%3D%2211%22%20rx%3D%222%22/%3E%3Cpath%20d%3D%22M12%204v4M9%2013h.01M15%2013h.01M3%2013v2M21%2013v2%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="wykres"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2020h18%22/%3E%3Cpath%20d%3D%22M5%2016l4-5%204%203%206-7%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="tarcza"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l7%203v5c0%204.5-3%208-7%2010-4-2-7-5.5-7-10V6l7-3z%22/%3E%3Cpath%20d%3D%22M9%2012l2%202%204-4%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="telefon"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%227%22%20y%3D%223%22%20width%3D%2210%22%20height%3D%2218%22%20rx%3D%222%22/%3E%3Cpath%20d%3D%22M11%2018h2%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="link"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M10%2014a4%204%200%200%200%205.7%200l3-3a4%204%200%200%200-5.7-5.7l-1%201%22/%3E%3Cpath%20d%3D%22M14%2010a4%204%200%200%200-5.7%200l-3%203a4%204%200%200%200%205.7%205.7l1-1%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="www"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%224%22%20width%3D%2218%22%20height%3D%2216%22%20rx%3D%221.5%22/%3E%3Cpath%20d%3D%22M3%209h18M6.5%206.5h.01M9%206.5h.01%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="pedzel"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%204l6%206-8%208H6v-6l8-8z%22/%3E%3Cpath%20d%3D%22M12%206l6%206%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="nieskonczonosc"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M7%209c-3%200-4%201.5-4%203s1%203%204%203c3.5%200%206.5-6%2010-6%203%200%204%201.5%204%203s-1%203-4%203c-3.5%200-6.5-6-10-6z%22/%3E%3C/svg%3E"); }
+.pricing-features li[data-ikona="ptaszek"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%2012.5l4.5%204.5L19%207%22/%3E%3C/svg%3E"); }
+
+.faq-apple-kontakt {
+  display: grid;
+  gap: 0.3rem;
+  margin: 2.5rem 0 0;
+  padding-left: 1rem;
+  border-left: 1.5px solid var(--w-linia);
+}
+
+.faq-apple-kontakt span {
+  font-family: var(--w-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--w-tusz-2);
+}
+
+.faq-apple-kontakt a {
+  color: var(--w-tusz);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  width: fit-content;
+}
+
+.faq-apple-kontakt a:hover {
+  color: var(--w-pomarancz);
 }
