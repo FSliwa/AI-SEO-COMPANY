@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import GeneratorLlmsTxt from '@/components/narzedzia/GeneratorLlmsTxt';
 import SzablonRaport from '@/components/narzedzia/SzablonRaport';
+import { AudytSeoStrona, AutorytetStrona, KalkulatorStrona, MakietaStrona } from '@/components/narzedzia/StronyAplikacji';
 import { metadataStronyPl, parametryPl, wymagajStronyPl } from '@/lib/stronaPl';
 import { STRONY_NARZEDZI, metaStrony, stronaNarzedzia } from '@/lib/narzedzia';
 
@@ -15,6 +16,10 @@ export const dynamicParams = false;
 const KOMPONENTY = {
   'generator-llms-txt': GeneratorLlmsTxt,
   'raport-seo': SzablonRaport,
+  'audyt-seo': AudytSeoStrona,
+  'autorytet-domeny': AutorytetStrona,
+  'kalkulator-strat-seo': KalkulatorStrona,
+  'makieta-redesignu': MakietaStrona,
 };
 
 export function generateStaticParams() {
