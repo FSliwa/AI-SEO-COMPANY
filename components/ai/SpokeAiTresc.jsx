@@ -5,6 +5,7 @@
 // Hierarchia nagłówków: H2 sekcji -> H3 podsekcji, bez przeskoków. Tabele przez wspólny
 // CompareTable (przewija się tylko kontener na 390 px), obraz przez next/image z podpisem.
 // Linki wewnętrzne przez Link z @/i18n/routing; cel nieopublikowany = zwykły tekst (reguła 6.0).
+// 9.11.2026: prop locale ('pl' | 'en', domyślnie 'pl'); PL bez zmian, EN = angielskie etykiety i kotwice.
 
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -23,19 +24,19 @@ const S = {
 };
 
 /** id sekcji H2: kotwica z lib/anchors.js (np. 'zrodla') albo pole id wpisu. */
-export function idSekcji(s) {
-  return s.kotwica ? sectionId(s.kotwica, 'pl') : s.id;
+export function idSekcji(s, locale = 'pl') {
+  return s.kotwica ? sectionId(s.kotwica, locale === 'en' ? 'en' : 'pl') : s.id;
 }
 
 /** Segmenty tekstu (string | link warunkowy | fragment z warunkiem) jako węzły React. */
-export function Segmenty({ segs = [] }) {
+export function Segmenty({ segs = [], locale = 'pl' }) {
   return (
     <>
       {segs.map((s, i) => {
         if (typeof s === 'string') return s;
-        if (s && s.tresc) return spelniony(s.warunek) ? <Segmenty key={i} segs={s.tresc} /> : null;
+        if (s && s.tresc) return spelniony(s.warunek, locale) ? <Segmenty key={i} segs={s.tresc} locale={locale} /> : null;
         if (s && s.a) {
-          const cel = celLinku(s);
+          const cel = celLinku(s, locale);
           if (!cel) return s.a;
           return cel.startsWith('/')
             ? <Link key={i} href={cel} style={S.link}>{s.a}</Link>
@@ -52,15 +53,15 @@ export function Segmenty({ segs = [] }) {
  * pricing_plan_click i ustawia pakiet w formularzu Contact). Przycisk z celem przed publikacją
  * nie renderuje się wcale.
  */
-export function Przyciski({ przyciski = [], style }) {
+export function Przyciski({ przyciski = [], style, locale = 'pl' }) {
   return (
     <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center', ...style }}>
       {przyciski.map((b) => {
         const klasa = b.glowny ? 'btn btn-primary' : 'btn btn-secondary';
         if (b.kontakt) {
-          return <a key={b.tekst} href={hash('kontakt', 'pl')} className={klasa} data-plan={b.plan} data-cta={b.cta}>{b.tekst}</a>;
+          return <a key={b.tekst} href={hash('kontakt', locale === 'en' ? 'en' : 'pl')} className={klasa} data-plan={b.plan} data-cta={b.cta}>{b.tekst}</a>;
         }
-        const cel = celLinku(b);
+        const cel = celLinku(b, locale);
         if (!cel) return null;
         return cel.startsWith('/')
           ? <Link key={b.tekst} href={cel} className={klasa} data-cta={b.cta}>{b.tekst}</Link>
@@ -72,7 +73,7 @@ export function Przyciski({ przyciski = [], style }) {
 
 // Wykres słupkowy z liczbami w tekście (dostępny bez obrazu i bez alt): etykieta, „59 z 62”,
 // pasek proporcji ukryty dla czytników. Liczby wyłącznie z danych wpisu.
-function Wykres({ tytul, slupki = [], podpis }) {
+function Wykres({ tytul, slupki = [], podpis, locale = 'pl' }) {
   return (
     <figure style={S.karta}>
       <figcaption style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--color-text-dark)', margin: '0 0 1rem' }}>{tytul}</figcaption>
@@ -83,7 +84,7 @@ function Wykres({ tytul, slupki = [], podpis }) {
             <div key={s.etykieta}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', fontSize: '0.95rem', lineHeight: 1.4, color: 'var(--color-text-main)', marginBottom: '0.4rem' }}>
                 <span>{s.etykieta}</span>
-                <span style={{ fontWeight: 700, color: 'var(--color-text-dark)', whiteSpace: 'nowrap' }}>{s.wartosc} z {s.z} linków</span>
+                <span style={{ fontWeight: 700, color: 'var(--color-text-dark)', whiteSpace: 'nowrap' }}>{locale === 'en' ? <>{s.wartosc} of {s.z} links</> : <>{s.wartosc} z {s.z} linków</>}</span>
               </div>
               <div aria-hidden="true" style={{ height: '12px', background: 'var(--w-linia)', borderRadius: '999px', overflow: 'hidden' }}>
                 <div style={{ width: `${proc}%`, height: '100%', background: 'var(--color-primary)', borderRadius: '999px' }} />
@@ -106,53 +107,56 @@ function Obraz({ src, alt, width, height, podpis }) {
   );
 }
 
-function Blok({ blok }) {
-  if (!spelniony(blok.warunek)) return null;
-  if (blok.p) return <p style={S.p}><Segmenty segs={blok.p} /></p>;
+function Blok({ blok, locale }) {
+  if (!spelniony(blok.warunek, locale)) return null;
+  if (blok.p) return <p style={S.p}><Segmenty segs={blok.p} locale={locale} /></p>;
   if (blok.lista) {
     const Lista = blok.numerowana ? 'ol' : 'ul';
     return (
       <Lista style={S.lista}>
-        {blok.lista.map((li, i) => <li key={i}><Segmenty segs={li} /></li>)}
+        {blok.lista.map((li, i) => <li key={i}><Segmenty segs={li} locale={locale} /></li>)}
       </Lista>
     );
   }
   if (blok.tabela) return <CompareTable {...blok.tabela} />;
   if (blok.obraz) return <Obraz {...blok.obraz} />;
-  if (blok.wykres) return <Wykres {...blok.wykres} />;
+  if (blok.wykres) return <Wykres {...blok.wykres} locale={locale} />;
   return null;
 }
 
 // Data odczytu jak w components/Zrodla.jsx: '2026-11-05' -> '5.11.2026'.
-function dataOdczytu(data) {
+const MIESIACE_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+function dataOdczytu(data, en) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(data || '');
-  return m ? `${Number(m[3])}.${m[2]}.${m[1]}` : data;
+  if (!m) return data;
+  return en ? `${MIESIACE_EN[Number(m[2]) - 1]} ${Number(m[3])}, ${m[1]}` : `${Number(m[3])}.${m[2]}.${m[1]}`;
 }
 
-function ZrodloPodsekcji({ zrodlo }) {
+function ZrodloPodsekcji({ zrodlo, locale }) {
   if (!zrodlo) return null;
+  const en = locale === 'en';
   return (
     <p style={S.podpis}>
-      Źródło: <a href={zrodlo.url} rel="noopener" style={S.link}>{zrodlo.nazwa}</a>{zrodlo.data ? ` (odczyt: ${dataOdczytu(zrodlo.data)})` : ''}
+      {en ? 'Source: ' : 'Źródło: '}<a href={zrodlo.url} rel="noopener" style={S.link}>{zrodlo.nazwa}</a>{zrodlo.data ? (en ? ` (accessed ${dataOdczytu(zrodlo.data, true)})` : ` (odczyt: ${dataOdczytu(zrodlo.data)})`) : ''}
     </p>
   );
 }
 
 /** Sekcje H2 wpisu (z podsekcjami H3) w kolejności z lib/pytaniaAi.js. */
-export default function SpokeAiTresc({ sections = [] }) {
+export default function SpokeAiTresc({ sections = [], locale = 'pl' }) {
   return (
     <>
       {sections.map((s) => {
-        const id = idSekcji(s);
+        const id = idSekcji(s, locale);
         return (
           <section key={id} aria-labelledby={id}>
             <h2 id={id} style={S.h2}>{s.h2}</h2>
-            {(s.bloki || []).map((b, i) => <Blok key={i} blok={b} />)}
+            {(s.bloki || []).map((b, i) => <Blok key={i} blok={b} locale={locale} />)}
             {(s.podsekcje || []).map((ps, i) => (
               <div key={ps.id ?? i}>
                 <h3 id={ps.id} style={S.h3}>{ps.h3}</h3>
-                {(ps.bloki || []).map((b, j) => <Blok key={j} blok={b} />)}
-                <ZrodloPodsekcji zrodlo={ps.zrodlo} />
+                {(ps.bloki || []).map((b, j) => <Blok key={j} blok={b} locale={locale} />)}
+                <ZrodloPodsekcji zrodlo={ps.zrodlo} locale={locale} />
               </div>
             ))}
           </section>

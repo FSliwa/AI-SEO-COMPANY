@@ -1,15 +1,16 @@
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import PorownanieLayout from '@/components/porownania/PorownanieLayout';
-import { porownania, porownanieBySlug } from '@/lib/porownania';
+import { porownania } from '@/lib/porownania';
+import { porownanieDla } from '@/lib/porownania.en';
 import { metadataStronyPl, wymagajStronyPl, parametryPl } from '@/lib/stronaPl';
 
 // Strony porównań /porownania/[slug] (5.11.2026; PLAN-v2 7 SIL, 6.2–6.4, 6.14; TS-03).
-// Tylko PL: generateStaticParams zwraca { locale: 'pl', slug } WYŁĄCZNIE dla porównań, które
-// przechodzą bramkę publikacji (lib/publikacja.js). Kształt { locale, slug } jest obowiązkowy:
+// generateStaticParams zwraca { locale, slug } (pl i en, ten sam slug PL) WYŁĄCZNIE dla porównań,
+// które przechodzą bramkę publikacji (lib/publikacja.js); EN dla stron z wpisem w lib/stronyEn.js. Kształt { locale, slug } jest obowiązkowy:
 // samo { slug } daje 0 wygenerowanych ścieżek i 404 (TS-03, build 5.11.2026).
-// dynamicParams = false: nieznany i nieopublikowany slug = 404; /en/porownania/… = 404 wprost
-// (wymagajStronyPl), canonical bez hreflang (metadataStronyPl).
+// dynamicParams = false: nieznany i nieopublikowany slug = 404. Treść EN z lib/porownania.en.js
+// (porownanieDla); title/description EN z lib/stronyEn.js przez metadataStronyPl.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -18,7 +19,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { locale, slug } = await params;
-  const p = porownanieBySlug(slug);
+  const p = porownanieDla(slug, locale);
   if (!p) return {};
   return metadataStronyPl({ locale, sciezka: `/porownania/${slug}`, title: p.title, description: p.description });
 }
@@ -26,8 +27,8 @@ export async function generateMetadata({ params }) {
 export default async function PorownaniePage({ params }) {
   const { locale, slug } = await params;
   wymagajStronyPl(locale, `/porownania/${slug}`);
-  const p = porownanieBySlug(slug);
+  const p = porownanieDla(slug, locale);
   if (!p) notFound();
   setRequestLocale(locale);
-  return <PorownanieLayout porownanie={p} />;
+  return <PorownanieLayout porownanie={p} locale={locale} />;
 }

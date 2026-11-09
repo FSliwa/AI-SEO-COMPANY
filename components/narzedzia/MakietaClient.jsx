@@ -6,11 +6,13 @@
 // Makieta zawsze w <iframe sandbox=""> (bez skryptów, formularzy i dostępu do strony).
 
 import { useState } from 'react';
+import { useLocale } from 'next-intl';
 import { track } from '@/lib/track';
 import { wywolajNarzedzie } from '@/lib/narzedziaApi';
 import BramkaEmail from './BramkaEmail';
 import { Odblokowano, PasekDemo, Postep } from './Wspolne';
 
+const KROKI_EN = ['Fetching your website and its content', 'Capturing a screenshot of the current design', 'Designing a new section layout', 'Matching colors, typography and the mobile version', 'Assembling the mockup'];
 const KROKI = ['Pobieramy Twoją stronę i jej treści', 'Robimy zrzut obecnego wyglądu', 'Projektujemy nowy układ sekcji', 'Dopasowujemy kolory, typografię i wersję na telefon', 'Składamy makietę'];
 
 function Ramka({ html, tytul, wysokosc = 640, szerokosc = '100%' }) {
@@ -23,6 +25,7 @@ function Ramka({ html, tytul, wysokosc = 640, szerokosc = '100%' }) {
 }
 
 export default function MakietaClient() {
+  const en = useLocale() === 'en';
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null });
   const [widok, setWidok] = useState('komputer');
 
@@ -31,7 +34,7 @@ export default function MakietaClient() {
     const fd = new FormData(e.currentTarget);
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null });
     track('narzedzie_start', { narzedzie: 'makieta' });
-    const r = await wywolajNarzedzie('makieta', { url: String(fd.get('url') || ''), cel: String(fd.get('cel') || ''), nick: String(fd.get('nick') || '') }, 290_000);
+    const r = await wywolajNarzedzie('makieta', { url: String(fd.get('url') || ''), cel: String(fd.get('cel') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' }, 290_000);
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
     track('narzedzie_wynik', { narzedzie: 'makieta' });
     setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null });
@@ -43,37 +46,37 @@ export default function MakietaClient() {
       <PasekDemo />
       {stan.status !== 'done' && (
         <form className="narz-formularz" onSubmit={start}>
-          <label htmlFor="mak-url" className="narz-etykieta">Adres obecnej strony</label>
-          <input id="mak-url" name="url" required maxLength={300} placeholder="np. twojafirma.pl" className="narz-pole" inputMode="url" autoComplete="url" />
-          <label htmlFor="mak-cel" className="narz-etykieta">Co ma się poprawić? (opcjonalnie)</label>
-          <input id="mak-cel" name="cel" maxLength={300} placeholder="np. więcej telefonów od klientów, nowocześniejszy wygląd" className="narz-pole" />
+          <label htmlFor="mak-url" className="narz-etykieta">{en ? 'Current website address' : 'Adres obecnej strony'}</label>
+          <input id="mak-url" name="url" required maxLength={300} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
+          <label htmlFor="mak-cel" className="narz-etykieta">{en ? 'What should improve? (optional)' : 'Co ma się poprawić? (opcjonalnie)'}</label>
+          <input id="mak-cel" name="cel" maxLength={300} placeholder={en ? 'e.g. more phone calls from customers, a more modern look' : 'np. więcej telefonów od klientów, nowocześniejszy wygląd'} className="narz-pole" />
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_makieta_start">
-              {stan.status === 'loading' ? 'Projektuję…' : 'Zaprojektuj nową stronę'}
+              {stan.status === 'loading' ? (en ? 'Designing…' : 'Projektuję…') : (en ? 'Design a new website' : 'Zaprojektuj nową stronę')}
             </button>
           </div>
-          <p className="narz-mikro">Bez rejestracji. Makieta powstaje 1 do 3 minut. Do 2 makiet dziennie z jednego adresu IP.</p>
-          {stan.status === 'loading' && <Postep kroki={KROKI} co={25000} />}
+          <p className="narz-mikro">{en ? 'No signup. The mockup takes 1 to 3 minutes. Up to 2 mockups per day from one IP address.' : 'Bez rejestracji. Makieta powstaje 1 do 3 minut. Do 2 makiet dziennie z jednego adresu IP.'}</p>
+          {stan.status === 'loading' && <Postep kroki={en ? KROKI_EN : KROKI} co={25000} />}
           {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
         </form>
       )}
 
       {stan.status === 'done' && p && (
         <div className="narz-wynik" aria-live="polite">
-          <p className="narz-wynik-domena">Nowa strona główna: {p.nazwa}</p>
+          <p className="narz-wynik-domena">{en ? 'New homepage' : 'Nowa strona główna'}: {p.nazwa}</p>
           {!stan.pelny ? (
             <>
               <div className={`narz-porownanie-makiet${p.zrzut ? '' : ' narz-porownanie-makiet--bez-zrzutu'}`}>
                 {p.zrzut && (
                   <figure>
-                    <figcaption>Teraz</figcaption>
-                    <img src={p.zrzut} alt={`Obecna strona główna ${p.domena}`} loading="lazy" />
+                    <figcaption>{en ? 'Now' : 'Teraz'}</figcaption>
+                    <img src={p.zrzut} alt={en ? `Current homepage of ${p.domena}` : `Obecna strona główna ${p.domena}`} loading="lazy" />
                   </figure>
                 )}
                 <figure>
-                  <figcaption>Propozycja: pierwszy ekran</figcaption>
-                  <Ramka html={p.html} tytul={`Makieta: pierwszy ekran ${p.domena}`} wysokosc={520} />
+                  <figcaption>{en ? 'Proposal: first screen' : 'Propozycja: pierwszy ekran'}</figcaption>
+                  <Ramka html={p.html} tytul={en ? `Mockup: first screen of ${p.domena}` : `Makieta: pierwszy ekran ${p.domena}`} wysokosc={520} />
                 </figure>
               </div>
               <div className="narz-zablokowane">
@@ -83,10 +86,10 @@ export default function MakietaClient() {
                 <BramkaEmail
                   narzedzie="makieta"
                   id={stan.id}
-                  naglowek={`Odblokuj całą makietę (${p.sekcji} sekcji)`}
-                  opis="Pokażemy całą stronę, także na telefonie, i wyślemy link do makiety e-mailem, żeby pokazać ją wspólnikowi albo programiście."
-                  korzysci={['Wszystkie sekcje: usługi, przewagi, kontakt, stopka', 'Podgląd na komputerze i telefonie', 'Link ważny 60 dni']}
-                  przycisk="Pokaż całą makietę"
+                  naglowek={en ? `Unlock the full mockup (${p.sekcji} ${p.sekcji === 1 ? 'section' : 'sections'})` : `Odblokuj całą makietę (${p.sekcji} sekcji)`}
+                  opis={en ? 'We will show the whole page, mobile included, and email you a link to the mockup so you can show it to a partner or a developer.' : 'Pokażemy całą stronę, także na telefonie, i wyślemy link do makiety e-mailem, żeby pokazać ją wspólnikowi albo programiście.'}
+                  korzysci={en ? ['All sections: services, advantages, contact, footer', 'Desktop and mobile preview', 'Link valid for 60 days'] : ['Wszystkie sekcje: usługi, przewagi, kontakt, stopka', 'Podgląd na komputerze i telefonie', 'Link ważny 60 dni']}
+                  przycisk={en ? 'Show the full mockup' : 'Pokaż całą makietę'}
                   onOdblokowano={(pelny, newsletter) => setStan((s) => ({ ...s, pelny, newsletter }))}
                 />
               </div>
@@ -94,18 +97,18 @@ export default function MakietaClient() {
           ) : (
             <>
               <Odblokowano newsletter={stan.newsletter} />
-              <div className="narz-filtry" role="group" aria-label="Widok makiety">
-                {[['komputer', 'Komputer'], ['telefon', 'Telefon']].map(([k, t]) => (
+              <div className="narz-filtry" role="group" aria-label={en ? 'Mockup view' : 'Widok makiety'}>
+                {(en ? [['komputer', 'Desktop'], ['telefon', 'Mobile']] : [['komputer', 'Komputer'], ['telefon', 'Telefon']]).map(([k, t]) => (
                   <button key={k} type="button" aria-pressed={widok === k} onClick={() => setWidok(k)}>{t}</button>
                 ))}
               </div>
-              <Ramka html={stan.pelny.html} tytul={`Makieta strony ${p.domena}`} wysokosc={widok === 'telefon' ? 760 : 900} szerokosc={widok === 'telefon' ? '390px' : '100%'} />
+              <Ramka html={stan.pelny.html} tytul={en ? `Website mockup for ${p.domena}` : `Makieta strony ${p.domena}`} wysokosc={widok === 'telefon' ? 760 : 900} szerokosc={widok === 'telefon' ? '390px' : '100%'} />
               {stan.pelny.link && stan.pelny.link !== '#' && (
-                <p className="narz-mikro"><a href={stan.pelny.link} target="_blank" rel="noopener">Otwórz makietę w nowej karcie</a> (link wysłaliśmy też e-mailem).</p>
+                <p className="narz-mikro"><a href={stan.pelny.link} target="_blank" rel="noopener">{en ? 'Open the mockup in a new tab' : 'Otwórz makietę w nowej karcie'}</a> {en ? '(we have also emailed you the link).' : '(link wysłaliśmy też e-mailem).'}</p>
               )}
             </>
           )}
-          <p className="narz-mikro">Makieta to propozycja wyglądu z treści Twojej strony, a nie gotowa strona. Przed wdrożeniem dopasowujemy ją do marki, zdjęć i SEO.</p>
+          <p className="narz-mikro">{en ? 'The mockup is a design proposal built from your website’s content, not a finished website. Before launch we adapt it to your brand, photos and SEO.' : 'Makieta to propozycja wyglądu z treści Twojej strony, a nie gotowa strona. Przed wdrożeniem dopasowujemy ją do marki, zdjęć i SEO.'}</p>
         </div>
       )}
     </div>

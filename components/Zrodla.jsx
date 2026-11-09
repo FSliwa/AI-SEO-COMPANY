@@ -6,12 +6,17 @@
 // id domyślnie 'zrodla' (kotwica SEKCJE.zrodla w lib/anchors.js); strona, na której #zrodla
 // jest zajęte (A2), podaje inne id. data: 'RRRR-MM-DD' (wyświetlane jako 4.11.2026) albo gotowy tekst.
 
-function dataOdczytu(data) {
+// 9.11.2026: en = wersja angielska (nagłówek „Sources”, „accessed November 4, 2026”); bez en bajt w bajt jak wcześniej.
+const MIESIACE_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+function dataOdczytu(data, en) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(data || '');
-  return m ? `${Number(m[3])}.${m[2]}.${m[1]}` : data;
+  if (!m) return data;
+  return en ? `${MIESIACE_EN[Number(m[2]) - 1]} ${Number(m[3])}, ${m[1]}` : `${Number(m[3])}.${m[2]}.${m[1]}`;
 }
 
-export default function Zrodla({ zrodla, id = 'zrodla', naglowek = 'Źródła' }) {
+export default function Zrodla({ zrodla, id = 'zrodla', naglowek, en = false }) {
+  naglowek = naglowek ?? (en ? 'Sources' : 'Źródła');
   if (!zrodla || zrodla.length === 0) return null;
   return (
     <section aria-labelledby={id} style={{ margin: '2.5rem 0 0' }}>
@@ -22,7 +27,7 @@ export default function Zrodla({ zrodla, id = 'zrodla', naglowek = 'Źródła' }
         {zrodla.map((z) => (
           <li key={z.url}>
             <a href={z.url} rel="noopener" style={{ color: 'var(--color-primary)', textDecoration: 'underline', overflowWrap: 'anywhere' }}>{z.nazwa}</a>
-            {z.data && <> (odczyt: {dataOdczytu(z.data)})</>}
+            {z.data && (en ? <> (accessed {dataOdczytu(z.data, true)})</> : <> (odczyt: {dataOdczytu(z.data)})</>)}
           </li>
         ))}
       </ol>

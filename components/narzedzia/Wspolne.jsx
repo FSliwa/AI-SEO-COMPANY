@@ -3,6 +3,7 @@
 // Drobne elementy darmowych narzędzi: wskaźnik oceny 0-100, postęp oczekiwania, pasek trybu demo.
 
 import { useEffect, useState } from 'react';
+import { useLocale } from 'next-intl';
 import { DEMO } from '@/lib/narzedziaApi';
 
 export function kolorOceny(w) {
@@ -13,11 +14,12 @@ export function kolorOceny(w) {
 
 /** Pierścień z oceną 0-100 (SVG, bez biblioteki). */
 export function Ocena({ wynik, podpis, maly = false }) {
+  const en = useLocale() === 'en';
   const r = 52;
   const obwod = 2 * Math.PI * r;
   const w = Math.max(0, Math.min(100, Number(wynik) || 0));
   return (
-    <div className={`narz-ocena narz-ocena--${kolorOceny(w)}${maly ? ' narz-ocena--mala' : ''}`} role="img" aria-label={`${podpis ? `${podpis}: ` : ''}${w} na 100`}>
+    <div className={`narz-ocena narz-ocena--${kolorOceny(w)}${maly ? ' narz-ocena--mala' : ''}`} role="img" aria-label={`${podpis ? `${podpis}: ` : ''}${w} ${en ? 'out of' : 'na'} 100`}>
       <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
         <circle cx="60" cy="60" r={r} className="narz-ocena-tlo" />
         <circle cx="60" cy="60" r={r} className="narz-ocena-luk" strokeDasharray={obwod} strokeDashoffset={obwod * (1 - w / 100)} />
@@ -47,16 +49,18 @@ export function Postep({ kroki, co = 6000 }) {
 }
 
 export function PasekDemo() {
+  const en = useLocale() === 'en';
   if (!DEMO) return null;
-  return <p className="narz-demo" role="note">Tryb demo: przykładowe dane, bez połączenia z panelem.</p>;
+  return <p className="narz-demo" role="note">{en ? 'Demo mode: sample data, no connection to the panel.' : 'Tryb demo: przykładowe dane, bez połączenia z panelem.'}</p>;
 }
 
 /** Potwierdzenie po bramce, widoczne nad pełnym wynikiem (bramka znika razem z atrapą). */
 export function Odblokowano({ newsletter }) {
+  const en = useLocale() === 'en';
   return (
     <div className="narz-bramka narz-bramka--gotowe" role="status">
-      <p className="narz-bramka-tytul">Gotowe: pełny wynik jest poniżej, raport wysłaliśmy e-mailem.</p>
-      {newsletter === 'pending' && <p className="narz-bramka-opis">Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.</p>}
+      <p className="narz-bramka-tytul">{en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest poniżej, raport wysłaliśmy e-mailem.'}</p>
+      {newsletter === 'pending' && <p className="narz-bramka-opis">{en ? 'Check your inbox and confirm your newsletter signup. Without confirmation we will not send any issue.' : 'Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.'}</p>}
     </div>
   );
 }

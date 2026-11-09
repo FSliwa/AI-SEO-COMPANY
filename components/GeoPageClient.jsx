@@ -509,7 +509,7 @@ export default function GeoPageClient() {
       </section>
 
       {/* id tylko w PL (CB-04/CB-20): cel linków z cennika (A4), A2 i frazy.csv. */}
-      <section id={pl ? sectionId('ileKosztuje', 'pl') : undefined} style={{ padding: '40px 0 60px' }}>
+      <section id={sectionId('ileKosztuje', pl ? 'pl' : 'en')} style={{ padding: '40px 0 60px' }}>
         <div className="container">
           <Reveal className="section-header"><h2>{t.offerTitle}</h2></Reveal>
           {pl && (
@@ -531,6 +531,13 @@ export default function GeoPageClient() {
                   </ul>
                 {pl && i === 0 && HREF.a5 && (
                   <p style={{ margin: '0.75rem 0 0', fontWeight: 600 }}>Zakres i przykład wyniku: <Link href={HREF.a5} style={linkStyl}>audyt widoczności w AI</Link></p>
+                )}
+                {/* 9.11.2026: spoke'i A2 i A5 mają wersje EN (lib/stronyEn.js) - ten sam link w EN. */}
+                {!pl && i === 0 && HREF.a5 && (
+                  <p style={{ margin: '0.75rem 0 0', fontWeight: 600 }}>Scope and a sample result: <Link href={HREF.a5} style={linkStyl}>AI visibility audit</Link></p>
+                )}
+                {!pl && i === 0 && HREF.a2 && (
+                  <p style={{ margin: '0.5rem 0 0', fontWeight: 600 }}>Where ChatGPT finds the companies it recommends: <Link href={HREF.a2} style={linkStyl}>ChatGPT optimization guide</Link></p>
                 )}
               </RevealItem>
             ))}

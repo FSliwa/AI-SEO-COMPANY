@@ -488,7 +488,7 @@ export default function Header() {
                 {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
                 {hrefWizytowki && (
                   <li style={{ '--delay': '0.41s' }}>
-                    <Link href={hrefWizytowki} onClick={closeMenu}>Pozycjonowanie wizytówki Google</Link>
+                    <Link href={hrefWizytowki} onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie wizytówki Google' : 'Google Business Profile'}</Link>
                   </li>
                 )}
                 <li style={{ '--delay': '0.42s' }}>
@@ -497,13 +497,13 @@ export default function Header() {
                 {/* Sprawdzarka istnieje tylko po polsku (EN = 404; lista stron tylko-PL: lib/plOnly.js). */}
                 {hrefSprawdzarki && (
                   <li style={{ '--delay': '0.43s' }}>
-                    <Link href={hrefSprawdzarki} onClick={closeMenu}>Sprawdź widoczność w AI</Link>
+                    <Link href={hrefSprawdzarki} onClick={closeMenu}>{lang === 'pl' ? 'Sprawdź widoczność w AI' : 'AI Visibility Check'}</Link>
                   </li>
                 )}
                 {/* Narzędzia (PLAN-v2 6.9): tylko PL i dopiero po publikacji partii 3. */}
                 {hrefNarzedzi && (
                   <li style={{ '--delay': '0.44s' }}>
-                    <Link href={hrefNarzedzi} onClick={closeMenu}>Narzędzia</Link>
+                    <Link href={hrefNarzedzi} onClick={closeMenu}>{lang === 'pl' ? 'Narzędzia' : 'Free Tools'}</Link>
                   </li>
                 )}
                 <li style={{ '--delay': '0.45s' }}>

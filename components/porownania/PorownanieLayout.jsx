@@ -13,6 +13,7 @@ import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
 import styles from './porownania.module.css';
 
+// 9.11.2026: prop locale ('pl' | 'en'): dane EN z lib/porownania.en.js, ten sam układ.
 // Wspólny układ stron /porownania/[slug] (5.11.2026; PLAN-v2 7 SIL, 6.0, CB-08, CB-15).
 // Komponent serwerowy: treść (HTML z lib/porownania.js) jest w HTML z serwera, bez animacji
 // wejścia (bez Reveal), więc boty i czytniki widzą ją od razu, a LCP nie czeka na JS.
@@ -22,7 +23,6 @@ import styles from './porownania.module.css';
 // wystąpi (CB-15). Sekcje to <div>, nie <section>: globals.css daje każdemu <section> 5,5 rem
 // odstępu z !important.
 
-const KONTAKT = hash('kontakt', 'pl');
 
 function Html({ html, className = styles.tresc }) {
   if (!html) return null;
@@ -64,7 +64,8 @@ function Sekcja({ sekcja: s, porownanie: p }) {
   );
 }
 
-export function BlokCta({ cta, dataCta }) {
+export function BlokCta({ cta, dataCta, locale = 'pl' }) {
+  const KONTAKT = hash('kontakt', locale);
   return (
     <div className="container" style={{ maxWidth: '860px', margin: '0 auto', padding: '0 1.5rem 3rem' }}>
       <div className={styles.karta} style={{ display: 'grid', gap: '1rem', justifyItems: 'center', textAlign: 'center' }}>
@@ -91,12 +92,13 @@ export function BlokCta({ cta, dataCta }) {
   );
 }
 
-export default function PorownanieLayout({ porownanie: p }) {
+export default function PorownanieLayout({ porownanie: p, locale = 'pl' }) {
+  const en = locale === 'en';
   return (
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <Breadcrumbs pl={p.okruszek} en={p.okruszek} parent={{ href: '/porownania', pl: 'Porównania' }} />
-      <ComparisonSchema porownanie={p} />
+      <Breadcrumbs pl={p.okruszek} en={p.okruszek} parent={{ href: '/porownania', pl: 'Porównania', en: 'Comparisons' }} />
+      <ComparisonSchema porownanie={p} locale={locale} />
 
       <article>
         <div className="container" style={{ maxWidth: '860px', margin: '0 auto', paddingTop: 'clamp(1.5rem, 4vw, 2.5rem)', paddingBottom: '1.5rem' }}>
@@ -109,9 +111,9 @@ export default function PorownanieLayout({ porownanie: p }) {
           {p.ujawnienie && (
             <p style={{ margin: '0 0 0.75rem', fontSize: '1rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>{p.ujawnienie}</p>
           )}
-          <Byline sciezka={`/porownania/${p.slug}`} data={p.updated} style={{ margin: '0 0 0.25rem' }} />
+          <Byline sciezka={`/porownania/${p.slug}`} data={p.updated} takzeEn style={{ margin: '0 0 0.25rem' }} />
           <p style={{ margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>{p.zrodlaDanych}</p>
-          <AnswerBox>
+          <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
             <p className={styles.tresc} style={{ margin: 0 }} dangerouslySetInnerHTML={{ __html: p.answer }} />
           </AnswerBox>
         </div>
@@ -126,10 +128,10 @@ export default function PorownanieLayout({ porownanie: p }) {
       <AppleFaq faqData={p.faq} title={p.faqTytul} sectionId="pytania" />
 
       <div className="container" style={{ maxWidth: '860px', margin: '0 auto' }}>
-        <Zrodla zrodla={p.sources} />
+        <Zrodla zrodla={p.sources} en={en} />
       </div>
 
-      <BlokCta cta={p.cta} dataCta="porownanie_cta" />
+      <BlokCta cta={p.cta} dataCta="porownanie_cta" locale={locale} />
       <Contact isMainContent />
       <Footer />
     </main>

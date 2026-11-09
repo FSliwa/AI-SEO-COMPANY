@@ -3,9 +3,10 @@ import { generuj, BladZadania } from './generator';
 import { czyOpublikowana } from '@/lib/publikacja';
 
 // API generatora llms.txt i testu dostępu botów AI (N1, PLAN-v2 6.10; CB-09, CB-18; 5.11.2026).
-// POST { url } -> { ok, llmsTxt, boty[8], pominiete[], nieprzetworzone[], mapa, robots, ... }.
+// POST { url, lang? } -> { ok, llmsTxt, boty[8], pominiete[], nieprzetworzone[], mapa, robots, ... }.
 // Logika i ochrona przed SSRF: ./generator.js. Endpoint nie zapisuje adresów ani wyników
 // (bez bazy, bez logów z adresem). /api/ jest zablokowane w robots.txt (app/robots.js).
+// lang: 'pl' (domyślnie) albo 'en': komunikaty błędów i statusów w tym języku; brak lang = PL bez zmian.
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -36,32 +37,45 @@ function przekroczonyLimit(ip) {
 const NAGLOWKI = { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' };
 const odpowiedz = (dane, status = 200) => NextResponse.json(dane, { status, headers: NAGLOWKI });
 
+// Język z ciała zapytania (klon, żeby ciało dało się przeczytać drugi raz). Brak lub błąd = 'pl'.
+async function jezykZadania(request) {
+  try {
+    const dane = await request.clone().json();
+    return dane && dane.lang === 'en' ? 'en' : 'pl';
+  } catch {
+    return 'pl';
+  }
+}
+
 export async function POST(request) {
   // Przegląd 6.11.2026: dopóki strona N1 nie jest opublikowana (lib/publikacja.js), endpoint nie
   // pobiera cudzych stron – bez tego działałby jako publiczny pobieracz adresów bez interfejsu.
+  // Język znamy dopiero z ciała zapytania, więc komunikat 404 i 429 czyta go z klonu żądania.
+  const lang = await jezykZadania(request);
+  const en = lang === 'en';
   if (!czyOpublikowana('/narzedzia/generator-llms-txt')) {
-    return odpowiedz({ ok: false, error: 'Nie znaleziono.' }, 404);
+    return odpowiedz({ ok: false, error: en ? 'Not found.' : 'Nie znaleziono.' }, 404);
   }
   const start = Date.now();
   const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0].trim() || request.headers.get('x-real-ip') || 'nieznany';
   if (przekroczonyLimit(ip)) {
-    return odpowiedz({ ok: false, error: 'Wykorzystałeś dzienny limit 10 sprawdzeń z jednego adresu IP. Spróbuj jutro.' }, 429);
+    return odpowiedz({ ok: false, error: en ? 'You have used the daily limit of 10 checks per IP address. Please try again tomorrow.' : 'Wykorzystałeś dzienny limit 10 sprawdzeń z jednego adresu IP. Spróbuj jutro.' }, 429);
   }
 
   let body;
   try {
     body = await request.json();
   } catch {
-    return odpowiedz({ ok: false, error: 'Podaj adres strony, np. firma.pl.' }, 400);
+    return odpowiedz({ ok: false, error: en ? 'Enter a website address, e.g. company.com.' : 'Podaj adres strony, np. firma.pl.' }, 400);
   }
 
   try {
-    const wynik = await generuj(body && body.url, { start });
+    const wynik = await generuj(body && body.url, { start, lang });
     return odpowiedz(wynik);
   } catch (e) {
     if (e instanceof BladZadania) return odpowiedz({ ok: false, error: e.message }, e.status);
     // Bez adresu sprawdzanej strony w logu (zasada „bez zapisu danych”).
     console.error('llms-txt: nieoczekiwany błąd', e && e.name);
-    return odpowiedz({ ok: false, error: 'Coś poszło nie tak po naszej stronie. Spróbuj za chwilę.' }, 500);
+    return odpowiedz({ ok: false, error: en ? 'Something went wrong on our side. Please try again in a moment.' : 'Coś poszło nie tak po naszej stronie. Spróbuj za chwilę.' }, 500);
   }
 }

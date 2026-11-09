@@ -1,5 +1,6 @@
 import { defineRouting } from 'next-intl/routing';
 import { createNavigation } from 'next-intl/navigation';
+import { STRONY_EN } from '../lib/stronyEn';
 
 export const routing = defineRouting({
   locales: ['pl', 'en'],
@@ -39,19 +40,15 @@ export const routing = defineRouting({
       pl: '/pozycjonowanie-w-ai',
       en: '/ai-search-optimization'
     },
-    // Strony tylko po polsku (T1a, BL-01): zwykly string = slug EN taki sam jak PL, wiec
-    // /en/... trafia do strony, ktora robi notFound() -> 404 wprost, bez 307/308 na nieistniejacy
-    // slug EN. Lista stron tylko-PL: lib/plOnly.js.
-    '/sprawdz-widocznosc-w-ai': '/sprawdz-widocznosc-w-ai',
-    '/zmiana-agencji-seo': '/zmiana-agencji-seo',
-    // Nowe strony z PLAN-v2 (tylko PL, za bramka publikacji lib/publikacja.js). Klucze z '['
-    // nie trafiaja do sitemapy - jej adresy bierze lib/sitemapEntries.js z rejestru publikacji.
-    '/porownania': '/porownania',
-    '/porownania/[slug]': '/porownania/[slug]',
-    '/pozycjonowanie-w-ai/[slug]': '/pozycjonowanie-w-ai/[slug]',
-    '/pozycjonowanie-wizytowki-google': '/pozycjonowanie-wizytowki-google',
-    '/narzedzia': '/narzedzia',
-    '/narzedzia/[slug]': '/narzedzia/[slug]',
+    // Nowe strony z PLAN-v2 i darmowe narzędzia: od 9.11.2026 także po angielsku. Ścieżki EN
+    // w jednym miejscu (lib/stronyEn.js) i tu jako pary pl/en. Strony spod tras [slug] mają
+    // jawne klucze (inny slug EN); next-intl tłumaczy adres EN na wewnętrzny adres PL, więc
+    // strona [slug] zawsze dostaje slug PL i locale. Strony bez wpisu EN (zarezerwowane adresy)
+    // trafiają w szablon [slug] i dają 404 (dynamicParams = false).
+    ...Object.fromEntries(Object.entries(STRONY_EN).map(([pl, { en }]) => [pl, { pl, en }])),
+    '/porownania/[slug]': { pl: '/porownania/[slug]', en: '/comparisons/[slug]' },
+    '/pozycjonowanie-w-ai/[slug]': { pl: '/pozycjonowanie-w-ai/[slug]', en: '/ai-search-optimization/[slug]' },
+    '/narzedzia/[slug]': { pl: '/narzedzia/[slug]', en: '/tools/[slug]' },
     '/panel-klienta': {
       pl: '/panel-klienta',
       en: '/client-portal'

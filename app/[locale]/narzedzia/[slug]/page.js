@@ -8,9 +8,10 @@ import { STRONY_NARZEDZI, metaStrony, stronaNarzedzia } from '@/lib/narzedzia';
 
 // Strony pod /narzedzia/<slug> (PLAN-v2 6.10 N1 i 6.11 S1, partia 3 / W9; TS-03; 5.11.2026).
 // generateStaticParams w kształcie { locale: 'pl', slug } (samo { slug } daje 0 ścieżek i 404, TS-03)
-// i tylko dla stron po bramce publikacji; dynamicParams = false, więc reszta (EN, nieopublikowane,
+// i tylko dla stron po bramce publikacji; dynamicParams = false, więc reszta (nieopublikowane,
 // nieznane slugi, zarezerwowany S2 /narzedzia/umowa-na-pozycjonowanie) = 404.
-// Canonical bez hreflang, robots: DEFAULT_ROBOTS (lib/stronaPl.js).
+// Od 9.11.2026 strony mają wersję EN (/en/tools/<slug>, lib/stronyEn.js): komponent dostaje
+// locale z params (next-intl podaje slug PL także na adresie EN); canonical + hreflang z lib/stronaPl.js.
 export const dynamicParams = false;
 
 const KOMPONENTY = {
@@ -40,5 +41,5 @@ export default async function NarzedziePage({ params }) {
   const Komponent = KOMPONENTY[slug];
   if (!Komponent || !stronaNarzedzia(slug)) notFound();
   setRequestLocale(locale);
-  return <Komponent />;
+  return <Komponent locale={locale} />;
 }

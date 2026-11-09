@@ -160,10 +160,10 @@ export default function Footer() {
                     5.11.2026: lista stron tylko-PL z lib/plOnly.js, nowe strony PLAN-v2
                     (Porownania 6.1, Narzedzia 6.9) dopiero po publikacji (lib/publikacja.js). */}
                 <li><Link href="/panel-klienta">{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</Link></li>
-                {hrefSprawdzarki && <li><Link href={hrefSprawdzarki}>Sprawdź widoczność w AI</Link></li>}
-                {hrefZmianyAgencji && <li><Link href={hrefZmianyAgencji}>Zmiana agencji SEO</Link></li>}
-                {hrefPorownan && <li><Link href={hrefPorownan}>Porównania</Link></li>}
-                {hrefNarzedzi && <li><Link href={hrefNarzedzi}>Narzędzia</Link></li>}
+                {hrefSprawdzarki && <li><Link href={hrefSprawdzarki}>{lang === 'pl' ? 'Sprawdź widoczność w AI' : 'AI visibility check'}</Link></li>}
+                {hrefZmianyAgencji && <li><Link href={hrefZmianyAgencji}>{lang === 'pl' ? 'Zmiana agencji SEO' : 'Switching SEO agencies'}</Link></li>}
+                {hrefPorownan && <li><Link href={hrefPorownan}>{lang === 'pl' ? 'Porównania' : 'Comparisons'}</Link></li>}
+                {hrefNarzedzi && <li><Link href={hrefNarzedzi}>{lang === 'pl' ? 'Narzędzia' : 'Free tools'}</Link></li>}
                 {/* T1b (SA-05): stały link do drugiej wersji językowej - sekcja EN osiągalna z linków.
                     next/link z gotowym adresem ('/' albo '/en'): Link z next-intl z propem locale
                     dawał '/pl' (308). */}
@@ -188,7 +188,7 @@ export default function Footer() {
                 <li><Link href="/projektowanie-stron-internetowych">{lang === 'pl' ? 'Projektowanie stron WWW' : 'Web Design'}</Link></li>
                 <li><Link href="/seo-lokalne-warszawa">{lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}</Link></li>
                 {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
-                {hrefWizytowki && <li><Link href={hrefWizytowki}>Pozycjonowanie wizytówki Google</Link></li>}
+                {hrefWizytowki && <li><Link href={hrefWizytowki}>{lang === 'pl' ? 'Pozycjonowanie wizytówki Google' : 'Google Business Profile'}</Link></li>}
                 <li><Link href="/pozycjonowanie-w-ai">{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search Optimization'}</Link></li>
               </ul>
             </div>

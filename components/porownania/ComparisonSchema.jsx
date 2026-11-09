@@ -1,4 +1,5 @@
 import ArticleSchema from '@/components/ArticleSchema';
+import { hrefWJezyku } from '@/lib/linkiEn';
 
 const BASE = 'https://www.ai-seo-company.pl';
 
@@ -10,13 +11,15 @@ const BASE = 'https://www.ai-seo-company.pl';
  * więc na stronie nie ma okruszka „Blog” ani drugiego BreadcrumbList. FAQPage generuje AppleFaq.
  * WebPage.reviewedBy (radca prawny) dochodzi dopiero po przeglądzie D5 (PLAN-v2 6.3, 6.14).
  */
-export default function ComparisonSchema({ porownanie: p }) {
-  const url = `/porownania/${p.slug}`;
+export default function ComparisonSchema({ porownanie: p, locale = 'pl' }) {
+  const en = locale === 'en';
+  // EN: adres z lib/linkiEn.js (np. /en/comparisons/seo-vs-geo), inLanguage 'en'; PL bez zmian.
+  const url = en ? hrefWJezyku(`/porownania/${p.slug}`, 'en') : `/porownania/${p.slug}`;
   return (
     <ArticleSchema
       type="Article"
       breadcrumb={null}
-      locale="pl"
+      locale={en ? 'en' : 'pl'}
       url={url}
       title={p.h1}
       description={p.description}
