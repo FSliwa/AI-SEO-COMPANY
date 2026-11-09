@@ -109,3 +109,19 @@ Tokeny: `--w-ruch-ease` `cubic-bezier(0.16,1,0.3,1)`, `--w-ruch-krotki` 0,28 s,
 Etykieta kategorii mono nad nazwą pakietu (`✳ SEO`, `✳ WWW + SEO`, aria-hidden),
 nagłówek karty wyśrodkowany, ikony obrysowe przy cechach (`li[data-ikona]`,
 maski SVG w `app/wyglad.css`) zamiast znacznika.
+
+## Realizacje (portfolio)
+
+- Układ z makiety: etykieta „✳ Wybrane realizacje”, po lewej oś na łuku z klientami
+  (`role="tablist"`, strzałki/Home/End), po prawej karta: logo marki, „Widoczność w Google”,
+  zdanie o kliencie, przełącznik Wyświetlenia / Kliknięcia, wykres, dwie metryki, okres i źródło, link.
+- Dane tylko prawdziwe: krzywe z paneli Search Console klientów (`lib/realizacjeGsc.js`,
+  generator `scripts/wykresy-gsc.py`), metryki wprost z kafelków GSC. Bez procentów i bez
+  krzywych „na oko”. Dymek pokazuje wartości z „ok.”, bo to odczyt z wykresu.
+- Kolory: linia i pole pomarańcz `#D85A30` (pole 26 % → 0), metryki granat `--w-noc`,
+  aktywna zakładka biała pigułka, nieaktywne 50 % krycia.
+- Tło: pas z mglistymi górami (`gory-swit.webp` odbite w poziomie, maska do papieru).
+- Ruch: karta wchodzi od dołu, linia rysuje się od lewej (`clip-path`), przełącznik
+  przechodzi krzywą (`transition: d`), puls kropki aktywnej pauzowany poza ekranem;
+  przy `prefers-reduced-motion: reduce` brak animacji i przejść.
+- Telefon i tablet (≤ 900 px): oś zamienia się w przewijany rząd pigułek, karta w jednej kolumnie.

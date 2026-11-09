@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { Reveal } from './ScrollReveal';
+import Realizacje from './Realizacje';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
 
@@ -292,6 +293,96 @@ export default function Portfolio() {
     }
   };
 
+  /* Karty „Wybrane realizacje”. Zdania o Madame Thai, Staniax i ASE-BOT sa
+     tymi samymi zdaniami, ktore stały w pasku klientow pod sciana; TQL
+     dochodzi z liczbami z artykulu /blog/wyniki-wdrozen-seo-2026 (sekcja tql).
+     Metryki to kafelki z paneli GSC (te same zrzuty sa w scianie). */
+  const logo = (nazwa) => realizedWebsites.find((w) => w.brandName === nazwa)?.brandLogo;
+  const logoTql = (
+    <span style={{ fontFamily: 'var(--font-geist), sans-serif', fontWeight: 800, letterSpacing: '0.06em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      TQL
+    </span>
+  );
+  const pl = lang === 'pl';
+  const cta = (kotwica) => (pl ? (
+    <Link href={`/blog/wyniki-wdrozen-seo-2026#${kotwica}`} className="portfolio-client-cta" data-cta="portfolio_client_results">
+      Zobacz dane z Search Console →
+    </Link>
+  ) : (
+    <a href={hash('kontakt', lang)} className="portfolio-client-cta" data-cta="portfolio_client">
+      Ask for the Search Console data →
+    </a>
+  ));
+  const okres3 = pl ? 'Okres: 3 miesiące' : 'Period: 3 months';
+  const zrodloTyg = pl ? 'Źródło: Google Search Console, sumy tygodniowe' : 'Source: Google Search Console, weekly totals';
+  const zrodloDzien = pl ? 'Źródło: Google Search Console, dane dzienne' : 'Source: Google Search Console, daily data';
+  const pozycje = [
+    {
+      id: 'staniax',
+      nazwa: 'STANIAX',
+      logo: logo('STANIAX'),
+      tag: pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
+      opis: pl
+        ? 'Z zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w Google w 3 miesiące (Search Console).'
+        : 'From zero visibility to 152 clicks and 6.34k Google impressions in 3 months (Search Console).',
+      seria: 'staniax',
+      metryki: pl
+        ? [['6,34 tys.', 'wyświetleń w Google w 3 miesiące'], ['152', 'kliknięcia z wyszukiwarki w 3 miesiące']]
+        : [['6.34k', 'Google impressions in 3 months'], ['152', 'clicks from search in 3 months']],
+      okres: okres3,
+      zrodlo: zrodloTyg,
+      cta: cta('staniax'),
+    },
+    {
+      id: 'madame-thai',
+      nazwa: 'MADAME THAI',
+      logo: logo('MADAME THAI'),
+      tag: pl ? 'SEO LOKALNE / STRONA WWW' : 'LOCAL SEO / WEBSITE',
+      opis: pl
+        ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.'
+        : 'Building and scaling digital sales for the newly opened restaurant location.',
+      seria: 'madamethai',
+      metryki: pl
+        ? [['10,1 tys.', 'wyświetleń w Google w 3 miesiące'], ['187', 'kliknięć z wyszukiwarki w 3 miesiące']]
+        : [['10.1k', 'Google impressions in 3 months'], ['187', 'clicks from search in 3 months']],
+      okres: pl ? 'Okres: 3 miesiące, ruch od 27 lipca 2026' : 'Period: 3 months, traffic since 27 July 2026',
+      zrodlo: zrodloDzien,
+      cta: cta('madame-thai'),
+    },
+    {
+      id: 'tql',
+      nazwa: 'TQL',
+      logo: logoTql,
+      tag: pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
+      opis: pl
+        ? 'Firma wdrażająca normy ISO, strona świeżo uruchomiona: pierwsze wyświetlenia i pozycje w Google w 28 dni od startu (Search Console).'
+        : 'An ISO standards consultancy with a freshly launched website: first Google impressions and rankings within 28 days of launch (Search Console).',
+      seria: 'tql',
+      metryki: pl
+        ? [['296', 'wyświetleń w Google w pierwsze 28 dni'], ['34,6', 'średnia pozycja w Google po 28 dniach']]
+        : [['296', 'Google impressions in the first 28 days'], ['34.6', 'average Google position after 28 days']],
+      okres: pl ? 'Okres: pierwsze 28 dni od startu' : 'Period: first 28 days after launch',
+      zrodlo: zrodloDzien,
+      cta: cta('tql'),
+    },
+    {
+      id: 'ase-bot',
+      nazwa: 'ASE-BOT',
+      logo: logo('ASE-BOT'),
+      tag: pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO',
+      opis: pl
+        ? 'Nasz własny projekt: 7,71 tys. wyświetleń w Google w 3 miesiące. Domena jest w fazie wyświetleń (Search Console).'
+        : 'Our own project: 7.71k Google impressions in 3 months. The domain is still in the impressions phase (Search Console).',
+      seria: 'ase-bot',
+      metryki: pl
+        ? [['7,71 tys.', 'wyświetleń w Google w 3 miesiące'], ['28', 'kliknięć z wyszukiwarki w 3 miesiące']]
+        : [['7.71k', 'Google impressions in 3 months'], ['28', 'clicks from search in 3 months']],
+      okres: okres3,
+      zrodlo: zrodloTyg,
+      cta: cta('ase-bot'),
+    },
+  ];
+
   return (
     <section className="portfolio" id="portfolio" style={{ background: 'var(--w-papier-2)', padding: '7rem 0 5rem' }}>
       <style href="portfolio-sciana-wideo" precedence="default">{STYL_PORTFOLIO}</style>
@@ -372,6 +463,18 @@ export default function Portfolio() {
         </Reveal>
       </div>
 
+      {/* Wybrane realizacje w ukladzie makiety (os klientow + karta z wykresem
+          Search Console). Pas na pelna szerokosc, bo za nim sa mgliste gory
+          z makiety (app/wyglad.css, .realizacje-pas). */}
+      <div className="realizacje-pas" data-petla="">
+        <div className="container">
+          <div className="portfolio-eyebrow realizacje-etykieta">
+            <span aria-hidden="true">✳</span> {lang === 'pl' ? 'WYBRANE REALIZACJE' : 'SELECTED CASE STUDIES'}
+          </div>
+          <Realizacje pozycje={pozycje} lang={lang} etykieta={lang === 'pl' ? 'Wybrane realizacje' : 'Selected case studies'} />
+        </div>
+      </div>
+
       {/* The wall. One column layout, natural aspect ratios, equal gutters –
           the mechanics of ghost.org's theme gallery, measured rather than
           guessed (5 columns x 386px, 16px gap, images at their own heights).
@@ -407,42 +510,9 @@ export default function Portfolio() {
         </div>
         ))}
 
-        {/* Every line the carousel cards showed, kept visible instead of hidden
-            behind a hover state. */}
-        <div className="container" style={{ maxWidth: '1440px' }}>
-          <RevealStagger className="portfolio-clients">
-            {realizedWebsites.map((item) => (
-              <RevealItem key={item.id} className="portfolio-client">
-                <span className="portfolio-client-logo">{item.brandLogo}</span>
-                <p className="portfolio-client-note">
-                  {item.id === 1
-                    ? (lang === 'pl'
-                        ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.'
-                        : 'Building and scaling digital sales for the newly opened restaurant location.')
-                    : item.id === 2
-                    ? (lang === 'pl'
-                        ? 'Z zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w Google w 3 miesiące (Search Console).'
-                        : 'From zero visibility to 152 clicks and 6.34k Google impressions in 3 months (Search Console).')
-                    : (lang === 'pl'
-                        ? 'Nasz własny projekt: 7,71 tys. wyświetleń w Google w 3 miesiące. Domena jest w fazie wyświetleń (Search Console).'
-                        : 'Our own project: 7.71k Google impressions in 3 months. The domain is still in the impressions phase (Search Console).')}
-                </p>
-                {/* 29.10.2026: wyniki jawne zamiast "Napisz, aby zobaczyć wyniki" (D3).
-                    Liczby z GSC z oknem pomiaru sa we wpisie "Wyniki wdrozen SEO 2026"
-                    (tylko PL); po angielsku zostaje formularz. */}
-                {lang === 'pl' ? (
-                  <Link href="/blog/wyniki-wdrozen-seo-2026" className="portfolio-client-cta" data-cta="portfolio_client_results">
-                    Zobacz dane z Search Console →
-                  </Link>
-                ) : (
-                  <a href={hash('kontakt', lang)} className="portfolio-client-cta" data-cta="portfolio_client">
-                    Ask for the Search Console data →
-                  </a>
-                )}
-              </RevealItem>
-            ))}
-          </RevealStagger>
-        </div>
+        {/* 9.11.2026: pasek klientow (logo, zdanie, link do danych) przeniesiony
+            do kart „Wybrane realizacje” nad sciana - te same zdania i linki,
+            plus wykres z panelu GSC kazdego klienta. */}
       </div>
 
 
