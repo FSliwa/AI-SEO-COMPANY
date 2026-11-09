@@ -167,8 +167,8 @@ function Wykres({ klucz, lang, idPanelu }) {
     const nazwa = miara === 'wysw' ? (lang === 'pl' ? 'wyświetleń' : 'impressions') : (lang === 'pl' ? 'kliknięć' : 'clicks');
     const okres = tygodniowe ? (lang === 'pl' ? 'tygodniowo' : 'per week') : (lang === 'pl' ? 'dziennie' : 'per day');
     return lang === 'pl'
-      ? `Wykres ${nazwa} ${okres} od ${zakresDat(seria[0][0], seria[seria.length - 1][1], 'pl')}: na początku ${w[0]}, najwięcej ${w[m.najw]}, na końcu ${w[w.length - 1]}.`
-      : `Chart of ${nazwa} ${okres}, ${zakresDat(seria[0][0], seria[seria.length - 1][1], 'en')}: ${w[0]} at the start, ${w[m.najw]} at the peak, ${w[w.length - 1]} at the end.`;
+      ? `Wykres ${nazwa} ${okres}, ${zakresDat(seria[0][0], seria[seria.length - 1][1], 'pl')}: na początku ok. ${liczba(w[0], 'pl')}, najwięcej ok. ${liczba(w[m.najw], 'pl')}, na końcu ok. ${liczba(w[w.length - 1], 'pl')}.`
+      : `Chart of ${nazwa} ${okres}, ${zakresDat(seria[0][0], seria[seria.length - 1][1], 'en')}: approx. ${liczba(w[0], 'en')} at the start, approx. ${liczba(w[m.najw], 'en')} at the peak, approx. ${liczba(w[w.length - 1], 'en')} at the end.`;
   })();
 
   const najblizszy = (clientX) => {
@@ -241,12 +241,10 @@ function Wykres({ klucz, lang, idPanelu }) {
           {/* Etykiety w HTML, nie w SVG: przy preserveAspectRatio="none"
               tekst w SVG rozciągałby się razem z wykresem. */}
           {m.kreski.map((v) => (
-            <span key={v} className="realizacje-os-y" style={{ top: `${(m.sy(v) / WYS) * 100}%` }} aria-hidden="true">
-              {etykietaOsi(v, lang)}
-            </span>
+            <span key={v} className="realizacje-os-y" data-t={etykietaOsi(v, lang)} style={{ top: `${(m.sy(v) / WYS) * 100}%` }} aria-hidden="true" />
           ))}
           {model.etykiety.map(([x, t]) => (
-            <span key={t} className="realizacje-os-x" style={{ left: `${(x / SZER) * 100}%` }} aria-hidden="true">{t}</span>
+            <span key={t} className="realizacje-os-x" data-t={t} style={{ left: `${(x / SZER) * 100}%` }} aria-hidden="true" />
           ))}
           <div
             className="realizacje-dymek"
@@ -255,8 +253,8 @@ function Wykres({ klucz, lang, idPanelu }) {
             data-pion={py < 66 ? 'dol' : 'gora'}
             style={{ left: `${(px / SZER) * 100}%`, top: `${(py / WYS) * 100}%` }}
           >
-            <span className="realizacje-dymek-data">{zakresDat(seria[indeks][0], seria[indeks][1], lang)}</span>
-            <strong className="realizacje-dymek-wartosc">{okolo} {liczba(wartosc, lang)} {jednostka}</strong>
+            <span className="realizacje-dymek-data" data-t={zakresDat(seria[indeks][0], seria[indeks][1], lang)} />
+            <span className="realizacje-dymek-wartosc" data-t={`${okolo} ${liczba(wartosc, lang)} ${jednostka}`} />
           </div>
         </div>
         <figcaption className="sr-only" aria-live="polite">
@@ -352,6 +350,10 @@ export default function Realizacje({ pozycje, lang, etykieta }) {
         ))}
       </div>
 
+      {/* Bez JavaScriptu zakładki nie działają, więc wtedy widać wszystkie karty. */}
+      <noscript>
+        <style>{'.realizacje-karta[hidden]{display:grid!important;margin-top:56px}.realizacje-miary,.realizacje-dymek{display:none!important}'}</style>
+      </noscript>
       <div className="realizacje-karty">
         {pozycje.map((p, i) => (
           <div
@@ -363,7 +365,12 @@ export default function Realizacje({ pozycje, lang, etykieta }) {
             className="realizacje-karta"
           >
             <div className="realizacje-marka">{p.logo}</div>
-            <h3 className="realizacje-tytul">{lang === 'pl' ? 'Widoczność w Google' : 'Visibility in Google'}</h3>
+            {/* Nazwa klienta tylko dla czytników i wyszukiwarek: cztery karty
+                nie mają czterech identycznych nagłówków, a wygląd zostaje jak w makiecie. */}
+            <h3 className="realizacje-tytul">
+              <span className="sr-only">{p.nazwa}: </span>
+              {lang === 'pl' ? 'Widoczność w Google' : 'Visibility in Google'}
+            </h3>
             <p className="realizacje-opis">{p.opis}</p>
             <Wykres klucz={p.seria} lang={lang} idPanelu={`${baza}-panel-${p.id}`} />
             <dl className="realizacje-metryki">

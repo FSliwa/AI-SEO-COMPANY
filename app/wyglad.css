@@ -3159,3 +3159,11 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   .realizacje-zrodlo-kreska { display: none; }
   .realizacje-zrodlo > span:last-child { grid-column: 2; }
 }
+/* Etykiety osi i dymek rysowane z data-t: liczby z wykresu nie mieszają się
+   z tekstem strony (aria-hidden, opis wykresu jest w aria-label). */
+.realizacje-os-y::before,
+.realizacje-os-x::before,
+.realizacje-dymek-data::before,
+.realizacje-dymek-wartosc::before {
+  content: attr(data-t);
+}

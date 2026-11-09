@@ -305,9 +305,11 @@ export default function Portfolio() {
   );
   const pl = lang === 'pl';
   const cta = (kotwica) => (pl ? (
-    <Link href={`/blog/wyniki-wdrozen-seo-2026#${kotwica}`} className="portfolio-client-cta" data-cta="portfolio_client_results">
+    /* Zwykłe <a>: pełne przejście respektuje scroll-margin-top nagłówka artykułu
+       (przy Link z płynnym przewinięciem nagłówek klienta chował się pod paskiem). */
+    <a href={`/blog/wyniki-wdrozen-seo-2026#${kotwica}`} className="portfolio-client-cta" data-cta="portfolio_client_results">
       Zobacz dane z Search Console →
-    </Link>
+    </a>
   ) : (
     <a href={hash('kontakt', lang)} className="portfolio-client-cta" data-cta="portfolio_client">
       Ask for the Search Console data →
@@ -345,7 +347,7 @@ export default function Portfolio() {
       metryki: pl
         ? [['10,1 tys.', 'wyświetleń w Google w 3 miesiące'], ['187', 'kliknięć z wyszukiwarki w 3 miesiące']]
         : [['10.1k', 'Google impressions in 3 months'], ['187', 'clicks from search in 3 months']],
-      okres: pl ? 'Okres: 3 miesiące, ruch od 27 lipca 2026' : 'Period: 3 months, traffic since 27 July 2026',
+      okres: pl ? 'Okres: 3 miesiące, dane od 27 lipca 2026' : 'Period: 3 months, data since Jul 27, 2026',
       zrodlo: zrodloDzien,
       cta: cta('madame-thai'),
     },
@@ -361,7 +363,7 @@ export default function Portfolio() {
       metryki: pl
         ? [['296', 'wyświetleń w Google w pierwsze 28 dni'], ['34,6', 'średnia pozycja w Google po 28 dniach']]
         : [['296', 'Google impressions in the first 28 days'], ['34.6', 'average Google position after 28 days']],
-      okres: pl ? 'Okres: pierwsze 28 dni od startu' : 'Period: first 28 days after launch',
+      okres: pl ? 'Okres: pierwsze 28 dni od startu, dane od 5 sierpnia 2026' : 'Period: first 28 days after launch, data since Aug 5, 2026',
       zrodlo: zrodloDzien,
       cta: cta('tql'),
     },
