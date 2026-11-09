@@ -97,9 +97,14 @@ export default function AudytSeoClient() {
           </div>
           <ul className="narz-kategorie">
             {Object.entries(w.kategorie).map(([k, v]) => (
-              <li key={k}><Ocena wynik={v.wynik} podpis={KATEGORIE[k]} maly /></li>
+              <li key={k}>
+                {k === 'wydajnosc' && w.wydajnoscZmierzona === false
+                  ? <div className="narz-ocena narz-ocena--mala narz-ocena--brak" role="img" aria-label="Wydajność: brak pomiaru"><span className="narz-ocena-liczba" aria-hidden="true">–</span><span className="narz-ocena-podpis" aria-hidden="true">Wydajność: brak pomiaru</span></div>
+                  : <Ocena wynik={v.wynik} podpis={KATEGORIE[k]} maly />}
+              </li>
             ))}
           </ul>
+          {w.wydajnoscZmierzona === false && <p className="narz-psi">Pomiar szybkości z PageSpeed Insights był chwilowo niedostępny, więc wydajność nie wchodzi do oceny.</p>}
           {w.psi && (
             <p className="narz-psi">PageSpeed Insights (telefon): wydajność {w.psi.wydajnosc ?? '–'}, SEO {w.psi.seo ?? '–'}, dostępność {w.psi.dostepnosc ?? '–'}, dobre praktyki {w.psi.praktyki ?? '–'}.</p>
           )}

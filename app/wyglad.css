@@ -3377,3 +3377,5 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 }
 @keyframes narz-kreci { to { transform: rotate(360deg); } }
 @keyframes narz-wejscie { from { opacity: 0; transform: translateY(8px); } }
+
+.narz-ocena--brak { border: 10px solid rgba(30, 30, 30, 0.08); border-radius: 50%; box-sizing: border-box; }
