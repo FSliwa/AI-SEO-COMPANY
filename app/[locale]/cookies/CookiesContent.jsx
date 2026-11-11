@@ -77,6 +77,17 @@ export default function CookiesContent() {
                 <p>Twoje dane mogą być powierzane podmiotom przetwarzającym je na nasze zlecenie: dostawcy hostingu i infrastruktury serwerowej, dostawcy poczty elektronicznej, biuru rachunkowemu oraz dostawcy narzędzi analitycznych (Google Ireland Limited). Każdy z nich działa na podstawie umowy powierzenia przetwarzania.</p>
                 <p>W związku z korzystaniem z Google Analytics dane mogą być przekazywane do Stanów Zjednoczonych. Podstawą przekazania jest decyzja Komisji Europejskiej stwierdzająca odpowiedni stopień ochrony (EU–US Data Privacy Framework) lub standardowe klauzule umowne.</p>
 
+                {/* 11.11.2026: darmowe narzędzia (audyt SEO, autorytet domeny, widoczność w AI, kalkulator,
+                    makieta) i newsletter - stan zgodny z kodem panelu (tool_runs 60 dni, skrót IP, double
+                    opt-in, odbiorcy z lib/zgodyNarzedzi.js). Do potwierdzenia przez dział prawny. */}
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Darmowe narzędzia i newsletter</h3>
+                <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
+                  <li><strong>Wynik narzędzia wysłany e-mailem</strong> – gdy podasz adres e-mail i zaznaczysz zgodę na wysłanie wyniku, przetwarzamy adres e-mail, dane wpisane w formularz narzędzia (np. adres strony, nazwę firmy, branżę, miasto, liczby do kalkulatora) i wynik. Podstawa: art. 6 ust. 1 lit. b RODO (wysłanie wyniku na Twoje żądanie) oraz art. 6 ust. 1 lit. f RODO (odpowiedź na pytania dotyczące wyniku). Wyniki i adres e-mail usuwamy po 60 dniach.</li>
+                  <li><strong>Ochrona przed nadużyciami</strong> – z adresu IP zapisujemy wyłącznie jednokierunkowy skrót, aby stosować dzienne limity korzystania z narzędzi. Podstawa: art. 6 ust. 1 lit. f RODO.</li>
+                  <li><strong>Newsletter</strong> – tylko po zaznaczeniu osobnej, dobrowolnej zgody i potwierdzeniu zapisu linkiem z wiadomości (double opt-in). Zapisujemy adres e-mail, treść i wersję zgody, datę i źródło zapisu. Podstawa: art. 6 ust. 1 lit. a RODO. Zgodę wycofasz jednym kliknięciem w każdej wiadomości; dane newslettera przetwarzamy do czasu wycofania zgody. Wynik narzędzia otrzymasz także bez zapisu do newslettera.</li>
+                  <li><strong>Odbiorcy</strong> – adres e-mail przekazujemy wyłącznie dostawcy poczty (Resend). Dane wpisane w formularz narzędzia, w zależności od narzędzia, przekazujemy dostawcom analiz: Google (PageSpeed Insights), Ahrefs (Domain Rating), DataForSEO (odpowiedzi modeli AI i wyników Google), Anthropic (model Claude) oraz Microlink (zrzuty ekranu strony). Jeżeli dostawca przetwarza dane poza EOG, przekazanie odbywa się na podstawie decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony albo standardowych klauzul umownych.</li>
+                </ul>
+
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Twoje prawa</h3>
                 <p>Przysługuje Ci prawo do:</p>
                 <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
@@ -129,6 +140,14 @@ export default function CookiesContent() {
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Recipients and transfers outside the EEA</h3>
                 <p>Your data may be entrusted to processors acting on our instructions: hosting and server infrastructure providers, e-mail providers, our accounting office, and the provider of analytics tools (Google Ireland Limited). Each acts under a data processing agreement.</p>
                 <p>Because we use Google Analytics, data may be transferred to the United States on the basis of the European Commission adequacy decision (EU–US Data Privacy Framework) or standard contractual clauses.</p>
+
+                <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Free tools and newsletter</h3>
+                <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7 }}>
+                  <li><strong>Tool results sent by e-mail</strong> – when you enter your e-mail address and tick the consent to send the result, we process your e-mail address, the data you entered in the tool form (e.g. website address, company name, industry, city, calculator figures) and the result. Legal basis: Art. 6(1)(b) GDPR (sending the result at your request) and Art. 6(1)(f) GDPR (answering questions about the result). Results and e-mail addresses are deleted after 60 days.</li>
+                  <li><strong>Abuse prevention</strong> – we store only a one-way hash of your IP address to apply daily usage limits. Legal basis: Art. 6(1)(f) GDPR.</li>
+                  <li><strong>Newsletter</strong> – only after you tick a separate, voluntary consent and confirm the subscription with the link in our e-mail (double opt-in). We store your e-mail address, the text and version of the consent, and the date and source of the subscription. Legal basis: Art. 6(1)(a) GDPR. You can withdraw consent with one click in any e-mail; newsletter data is processed until you withdraw. You get the tool result without subscribing.</li>
+                  <li><strong>Recipients</strong> – your e-mail address is shared only with our e-mail provider (Resend). Depending on the tool, the data you enter in the tool form is shared with analysis providers: Google (PageSpeed Insights), Ahrefs (Domain Rating), DataForSEO (AI model answers and Google results), Anthropic (the Claude model) and Microlink (website screenshots). Where a provider processes data outside the EEA, the transfer relies on a European Commission adequacy decision or standard contractual clauses.</li>
+                </ul>
 
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Your rights</h3>
                 <p>You have the right to:</p>

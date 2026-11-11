@@ -164,7 +164,7 @@ export default function PorownaniaHub({ locale = 'pl' }) {
                 <Link href="/panel-klienta">Client portal</Link>: what you will see after you sign with us, from keyword positions to the work log.
               </li>
               <li>
-                <Link href="/cennik-pozycjonowania#uczciwa-umowa">A fair contract: six rules</Link> on the notice period, fees and ownership of accounts, content and links.
+                <Link href={{ pathname: '/cennik-pozycjonowania', hash: 'uczciwa-umowa' }}>A fair contract: six rules</Link> on the notice period, fees and ownership of accounts, content and links.
               </li>
             </ul>
           ) : (

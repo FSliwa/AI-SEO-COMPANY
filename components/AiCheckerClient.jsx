@@ -84,7 +84,7 @@ export default function AiCheckerClient() {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {en ? 'Free check' : 'Bezpłatne sprawdzenie'}
             </div>
             <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1rem', color: 'var(--color-text-dark)' }}>
-              {en ? 'Does ChatGPT recommend your business?' : 'Czy ChatGPT poleca Twoją firmę?'}
+              {en ? 'AI visibility check: does ChatGPT recommend your business?' : 'Czy ChatGPT poleca Twoją firmę?'}
             </h1>
             <p className="hero-lead" style={{ fontSize: '1.15rem', color: 'var(--color-text-muted)', lineHeight: 1.65, maxWidth: '680px', margin: '0 auto' }}>
               {en

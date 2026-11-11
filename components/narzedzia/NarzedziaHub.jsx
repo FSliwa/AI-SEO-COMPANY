@@ -16,6 +16,7 @@ import AnswerBox from '@/components/AnswerBox';
 import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
+import { hrefDlaLink } from '@/lib/linkiEn';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { BASE, SCIEZKA_HUBA } from '@/lib/narzedzia';
 import { H1_HUBA, faqHubaL, kartyHubaL } from '@/lib/narzedzia.en';
@@ -66,7 +67,7 @@ const wkrotce = {
   textTransform: 'uppercase',
 };
 
-function Karta({ karta, t }) {
+function Karta({ karta, t, locale }) {
   return (
     <article style={{ ...s.karta, padding: 'clamp(1.25rem, 3vw, 1.75rem)', display: 'flex', flexDirection: 'column' }}>
       {!karta.href && <p style={wkrotce}>{t.wkrotce}</p>}
@@ -74,7 +75,7 @@ function Karta({ karta, t }) {
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.75rem', margin: '0 0 0.6rem' }}>
         <h3 style={{ ...s.h3, margin: 0 }}>
           {karta.href ? (
-            <Link href={karta.href} data-cta={`narzedzia_${karta.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>{karta.nazwa}</Link>
+            <Link href={hrefDlaLink(karta.href, locale)} data-cta={`narzedzia_${karta.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>{karta.nazwa}</Link>
           ) : karta.nazwa}
         </h3>
         {karta.href && <span aria-hidden="true" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '1.2rem' }}>→</span>}
@@ -136,7 +137,7 @@ export default function NarzedziaHub({ locale = 'pl' }) {
               {t.pNarzedzia}
             </p>
             <div style={siatka}>
-              {narzedzia.map((k) => <Karta key={k.id} karta={k} t={t} />)}
+              {narzedzia.map((k) => <Karta key={k.id} karta={k} t={t} locale={locale} />)}
             </div>
           </section>
 
@@ -146,7 +147,7 @@ export default function NarzedziaHub({ locale = 'pl' }) {
               {t.pSzablony}
             </p>
             <div style={siatka}>
-              {szablony.map((k) => <Karta key={k.id} karta={k} t={t} />)}
+              {szablony.map((k) => <Karta key={k.id} karta={k} t={t} locale={locale} />)}
             </div>
           </section>
 

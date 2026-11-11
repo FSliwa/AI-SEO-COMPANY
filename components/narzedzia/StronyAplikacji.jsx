@@ -372,7 +372,7 @@ function MakietaEn() {
       slug="makieta-redesignu"
       tag="Free tool"
       schema={{ name: 'AI website redesign mockup', description: 'A free mockup generator: from the address of your current website it creates a proposal for a new homepage design on desktop and mobile, built from your business’s content.', category: 'DesignApplication' }}
-      odpowiedz="Enter your website address and in 1 to 3 minutes you will see a proposal for a new homepage: the section layout, typography, colors and a mobile version, built from the content you already have. We show the first screen right away and the whole mockup after you give an email address."
+      odpowiedz="Free website redesign mockup: enter your website address and in 1 to 3 minutes you will see a proposal for a new homepage: the section layout, typography, colors and a mobile version, built from the content you already have. We show the first screen right away and the whole mockup after you give an email address."
       faq={FAQ_MAKIETY_EN}
       tytulFaq="Questions about the redesign mockup"
     >

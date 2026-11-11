@@ -2,6 +2,7 @@ import { routing } from '@/i18n/routing';
 import { blogPosts } from '@/lib/blogPosts';
 import { BASE_URL } from '@/lib/sitemapEntries';
 import { czyOpublikowana, opublikowaneSciezki, wpisPublikacji } from '@/lib/publikacja';
+import { STRONY_EN } from '@/lib/stronyEn';
 
 // /llms.txt generowany z danych serwisu (T0.5, PLAN-v2 7; AV-05, AV-15 z korektą, AV-19, SA-12,
 // CB-09). Integracja 5.11.2026: zastępuje public/llms.txt (plik usunięty), żeby nowe strony
@@ -97,7 +98,8 @@ function trescLlms() {
       '',
       `- [Pozycjonowanie w AI](${url('/pozycjonowanie-w-ai')}) · [AI search optimization (EN)](${url('/en/ai-search-optimization')}): audyt widoczności w AI 990 zł netto (zaliczany na pierwszy miesiąc abonamentu); GEO w SEO Premium, do SEO Standard dopłata 490 zł netto miesięcznie; wyniki co tydzień w panelu klienta.`,
       ...geo,
-      `- [Sprawdzarka widoczności w AI](${url('/sprawdz-widocznosc-w-ai')}): bezpłatne narzędzie po polsku. Zadaje ChatGPT (z wyszukiwaniem w sieci ustawionym na miasto firmy) i Gemini trzy pytania klientów z danej branży i miasta i pokazuje, czy wymieniają firmę oraz z jakich źródeł korzystają. Limit 3 firmy na adres IP na dobę.`,
+      // 11.11.2026: nowa wersja sprawdzarki (5 silników AI, limit 2 firmy, wersja EN).
+      `- [Sprawdzarka widoczności w AI](${url('/sprawdz-widocznosc-w-ai')}) · [AI visibility checker (EN)](${url('/en/ai-visibility-check')}): bezpłatne narzędzie. Zadaje trzy pytania klientów z danej branży i miasta ChatGPT, Gemini, Perplexity, Claude i przeglądowi AI w Google i pokazuje, czy wymieniają firmę, kogo polecają zamiast niej i jakie źródła cytują. Limit 2 firmy na adres IP na dobę.`,
     ].join('\n'),
 
     porownania.length ? ['## Porównania', '', ...porownania].join('\n') : null,
@@ -124,6 +126,14 @@ function trescLlms() {
     ].join('\n'),
 
     narzedzia.length ? ['## Narzędzia i szablony', '', ...narzedzia].join('\n') : null,
+
+    // 11.11.2026: wersje angielskie nowych stron (lib/stronyEn.js), tylko opublikowane (jak sitemapa).
+    (() => {
+      const en = Object.entries(STRONY_EN)
+        .filter(([pl]) => czyOpublikowana(pl))
+        .map(([, w]) => pozycja(w.tytul, `/en${w.en}`, w.opis));
+      return en.length ? ['## English versions', '', ...en].join('\n') : null;
+    })(),
 
     `## Strony główne i listingi
 

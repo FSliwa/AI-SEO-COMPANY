@@ -87,7 +87,7 @@ export default function AgencySwitchClient() {
         <div className="container" style={{ maxWidth: '860px', margin: '0 auto', display: 'grid', gap: '2rem' }}>
           <Reveal>
             <div style={card}>
-              <h2 style={h2}>{t('Zanim wypowiesz umowę: 5 rzeczy do sprawdzenia', 'Before you terminate the contract: 5 things to check')}</h2>
+              <h2 style={h2}>{t('Zanim wypowiesz umowę: 5 rzeczy do sprawdzenia', 'Before switching SEO agencies: 5 things to check in the contract')}</h2>
               <p style={lead}>{t('Weź umowę i regulamin agencji. Te pięć punktów decyduje, ile zapłacisz i co zostanie u Ciebie.', 'Take the agency’s contract and terms of service. These five points decide how much you will pay and what stays with you.')}</p>
               <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
                 {D.CONTRACT_CHECKS.map((c) => (
@@ -152,7 +152,7 @@ export default function AgencySwitchClient() {
               </p>
               <p style={{ ...lead, margin: 0 }}>
                 {en
-                  ? <>With us, leaving is simple: a monthly contract, notice by email or with one button in the portal, no exit fees, and the list of links and all your data are available to download in the <Link href="/panel-klienta" style={podkreslenie}>client portal</Link> at any time. <Link href="/cennik-pozycjonowania#uczciwa-umowa" style={{ textDecoration: 'underline' }}>See our fair contract terms</Link>.</>
+                  ? <>With us, leaving is simple: a monthly contract, notice by email or with one button in the portal, no exit fees, and the list of links and all your data are available to download in the <Link href="/panel-klienta" style={podkreslenie}>client portal</Link> at any time. <Link href={{ pathname: '/cennik-pozycjonowania', hash: 'uczciwa-umowa' }} style={{ textDecoration: 'underline' }}>See our fair contract terms</Link>.</>
                   : <>U nas wyjście z umowy jest proste: umowa miesięczna, wypowiedzenie e-mailem albo jednym przyciskiem w panelu, bez opłat za wyjście, a lista linków i wszystkie dane są do pobrania w <Link href="/panel-klienta" style={podkreslenie}>panelu klienta</Link> w każdej chwili. <Link href="/cennik-pozycjonowania#uczciwa-umowa" style={{ textDecoration: 'underline' }}>Zobacz zasady uczciwej umowy</Link>.</>}
               </p>
               {(hrefP6 || hrefS1) && (

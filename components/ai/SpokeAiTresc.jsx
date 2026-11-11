@@ -9,6 +9,7 @@
 
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
+import { hrefDlaLink } from '@/lib/linkiEn';
 import CompareTable from '@/components/CompareTable';
 import { sectionId, hash } from '@/lib/anchors';
 import { celLinku, spelniony } from './segmenty';
@@ -39,7 +40,7 @@ export function Segmenty({ segs = [], locale = 'pl' }) {
           const cel = celLinku(s, locale);
           if (!cel) return s.a;
           return cel.startsWith('/')
-            ? <Link key={i} href={cel} style={S.link}>{s.a}</Link>
+            ? <Link key={i} href={hrefDlaLink(cel, locale)} style={S.link}>{s.a}</Link>
             : <a key={i} href={cel} style={S.link}>{s.a}</a>;
         }
         return null;
@@ -64,7 +65,7 @@ export function Przyciski({ przyciski = [], style, locale = 'pl' }) {
         const cel = celLinku(b, locale);
         if (!cel) return null;
         return cel.startsWith('/')
-          ? <Link key={b.tekst} href={cel} className={klasa} data-cta={b.cta}>{b.tekst}</Link>
+          ? <Link key={b.tekst} href={hrefDlaLink(cel, locale)} className={klasa} data-cta={b.cta}>{b.tekst}</Link>
           : <a key={b.tekst} href={cel} className={klasa} data-cta={b.cta}>{b.tekst}</a>;
       })}
     </div>

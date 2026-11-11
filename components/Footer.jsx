@@ -14,7 +14,8 @@ import { track } from '@/lib/track';
 // pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
 // Integracja 5.11.2026: także hub narzędzi i N1 (partia 3; celowo bez <Contact />, grupa narzedzia
 // pkt 8) - porównanie ze `sciezka` (szablon z wstawionym slugiem), bo pathname to '/narzedzia/[slug]'.
-const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/narzedzia', '/narzedzia/generator-llms-txt'];
+// 11.11.2026: także 4 strony aplikacji (bez <Contact />): przycisk prowadzi do formularza na stronie głównej.
+const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/narzedzia', '/narzedzia/generator-llms-txt', '/narzedzia/audyt-seo', '/narzedzia/autorytet-domeny', '/narzedzia/kalkulator-strat-seo', '/narzedzia/makieta-redesignu'];
 
 export default function Footer() {
   const lang = useLocale();

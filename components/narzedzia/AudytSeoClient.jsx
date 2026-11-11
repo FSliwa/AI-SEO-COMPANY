@@ -41,7 +41,7 @@ function KartaProblemu({ p, en }) {
   const kat = en ? KATEGORIE_EN : KATEGORIE;
   return (
     <li className={`narz-problem narz-problem--${p.waga}`}>
-      <p className="narz-problem-meta"><span className="narz-waga">{wagi[p.waga]}</span> · {kat[p.kategoria]}{p.liczba > 1 ? ` · ${p.liczba} ${en ? 'pages' : 'podstron'}` : ''}</p>
+      <p className="narz-problem-meta"><span className="narz-waga">{wagi[p.waga]}</span> · {kat[p.kategoria]}{p.liczba > 1 ? ` · ${en ? `${p.liczba} pages` : odmien(p.liczba, ['podstrona', 'podstrony', 'podstron'])}` : ''}</p>
       <h3 className="narz-problem-tytul">{p.tytul}</h3>
       <p className="narz-problem-opis">{p.opis}</p>
       <p className="narz-problem-fix"><strong>{en ? 'How to fix it:' : 'Jak naprawić:'}</strong> {p.jakNaprawic}</p>
@@ -105,7 +105,7 @@ export default function AudytSeoClient() {
               <p className="narz-wynik-opis">
                 {en ? (
                   <>We checked {w.stron} {w.stron === 1 ? 'page' : 'pages'} and found {liczbaProblemowEn(w.liczby.bledy + w.liczby.ostrzezenia + w.liczby.uwagi)}: {w.liczby.bledy} {w.liczby.bledy === 1 ? 'error' : 'errors'}, {w.liczby.ostrzezenia} {w.liczby.ostrzezenia === 1 ? 'warning' : 'warnings'} and {w.liczby.uwagi} {w.liczby.uwagi === 1 ? 'notice' : 'notices'}.</>
-                ) : (<>Sprawdziliśmy {w.stron} podstron. Znaleźliśmy {liczbaProblemow(w.liczby.bledy + w.liczby.ostrzezenia + w.liczby.uwagi)}: {odmien(w.liczby.bledy, ['błąd', 'błędy', 'błędów'])}, {odmien(w.liczby.ostrzezenia, ['ostrzeżenie', 'ostrzeżenia', 'ostrzeżeń'])} i {odmien(w.liczby.uwagi, ['uwagę', 'uwagi', 'uwag'])}.</>)}
+                ) : (<>Sprawdziliśmy {odmien(w.stron, ['podstronę', 'podstrony', 'podstron'])}. Znaleźliśmy {liczbaProblemow(w.liczby.bledy + w.liczby.ostrzezenia + w.liczby.uwagi)}: {odmien(w.liczby.bledy, ['błąd', 'błędy', 'błędów'])}, {odmien(w.liczby.ostrzezenia, ['ostrzeżenie', 'ostrzeżenia', 'ostrzeżeń'])} i {odmien(w.liczby.uwagi, ['uwagę', 'uwagi', 'uwag'])}.</>)}
               </p>
               <button type="button" className="narz-link" onClick={() => setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null })}>{en ? 'Check another site' : 'Sprawdź inną stronę'}</button>
             </div>

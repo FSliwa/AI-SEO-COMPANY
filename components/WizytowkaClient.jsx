@@ -189,7 +189,7 @@ export default function WizytowkaClient({ faqData }) {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {en ? 'Google Business Profile · Maps' : 'Profil Firmy w Google · Mapy'}
             </div>
             <h1 style={{ fontSize: 'clamp(2.1rem, 5vw, 3.4rem)', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1.5rem', color: 'var(--color-text-dark)' }}>
-              {en ? 'Google Business Profile optimization (Google Maps listing)' : 'Pozycjonowanie wizytówki Google (Profil Firmy w Google)'}
+              {en ? 'Google Business Profile optimization (Google Maps SEO)' : 'Pozycjonowanie wizytówki Google (Profil Firmy w Google)'}
             </h1>
           </Reveal>
 
