@@ -178,19 +178,12 @@ export default function Hero() {
       window.removeEventListener('resize', poPoszerzeniu);
     };
 
-    // Save-Data albo 2G: scena w ogole nie schodzi - zostaje kula CSS
-    // (dopoki okno pozostaje waskie - patrz nasluch wyzej).
-    const conn = navigator.connection;
-    if (conn && (conn.saveData || /(^|[^3-5])2g/.test(conn.effectiveType || ''))) return zdejmijNasluch;
-    let idle = 0, timer = 0;
-    const start = () => setMontujScene(true);
-    if ('requestIdleCallback' in window) idle = window.requestIdleCallback(start, { timeout: 6000 });
-    else timer = window.setTimeout(start, 3000);
-    return () => {
-      zdejmijNasluch();
-      if (idle) window.cancelIdleCallback(idle);
-      if (timer) window.clearTimeout(timer);
-    };
+    // 11.11.2026 (prosba Filipa): na telefonach i w oknach pionowych scena 3D nie
+    // schodzi wcale (1,5 MB runtime'u + 4,9 MB sceny i WebGL) - responsywnosc strony.
+    // Litery SEO, ktore daje scena, zastepuje statyczna grafika .hero-litery (te same
+    // litery wyciete ze sceny, ten sam uklad pasma). Scena montuje sie dopiero po
+    // poszerzeniu okna do ukladu szerokiego (nasluch wyzej).
+    return zdejmijNasluch;
   }, []);
 
   const onSceneLoad = (app) => {
@@ -521,7 +514,17 @@ export default function Hero() {
           fallback={<div className="hero-en-orb" />}
           onFail={() => { setSceneIn(true); pokazTekst(); }}
         >
-          {montujScene ? <Spline scene={SCENE} onLoad={onSceneLoad} /> : <div className="hero-en-orb" />}
+          {montujScene ? <Spline scene={SCENE} onLoad={onSceneLoad} /> : (
+            <>
+              <div className="hero-en-orb" />
+              {/* Uklad waski (telefon, okno pionowe): litery SEO jako grafika zamiast sceny 3D.
+                  Szeroki uklad dostaje w <source> pusty piksel, wiec nie pobiera pliku. */}
+              <picture className="hero-litery-ramka">
+                <source media="(min-width: 901px) and (min-aspect-ratio: 1/1)" srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+                <img className="hero-litery" src="/images/wyglad/hero-litery-seo.webp" alt="" width={950} height={324} fetchPriority="high" decoding="async" />
+              </picture>
+            </>
+          )}
         </SceneErrorBoundary>
       </div>
 

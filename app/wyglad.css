@@ -2562,13 +2562,36 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
    gor i nieba (zamiast kropkowanej orbity z satelita przez tekst).
    ========================================================================== */
 
-/* Robot wygasa ku dolowi. Element ma scale(1.12) wokol srodka, wiec procenty
-   maski licza sie od -6 % do 106 % wysokosci sekcji: pelna widocznosc do ok.
-   64 % sekcji (litery SEO koncza sie na 62,2 %), zero od ok. 94 %. */
+/* Robot siega do dolu sekcji jak wczesniej, a tylko jego dol wygasa we mgle.
+   Element ma scale(1.12) wokol srodka, wiec procenty maski licza sie od -6 % do
+   106 % wysokosci sekcji: pelna widocznosc do ok. 84 % sekcji, zero na jej dole. */
 @media (min-width: 901px) and (min-aspect-ratio: 1/1) {
   .hero .hero-en-bg {
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0, 0, 0, 0.62) 71%, rgba(0, 0, 0, 0.2) 81%, transparent 89%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0, 0, 0, 0.62) 71%, rgba(0, 0, 0, 0.2) 81%, transparent 89%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 80%, rgba(0, 0, 0, 0.72) 85%, rgba(0, 0, 0, 0.32) 90%, transparent 94.6%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 80%, rgba(0, 0, 0, 0.72) 85%, rgba(0, 0, 0, 0.32) 90%, transparent 94.6%);
+  }
+}
+
+/* Telefon i okno pionowe: statyczne litery SEO w pasmie sceny (bez 3D). Geometria
+   zmierzona na scenie przy 360, 390 i 430 px: lewa krawedz 16 px od ekranu,
+   szerokosc ok. 70 % pasma, gora na 31,6 % jego wysokosci. */
+.hero-en-bg > .hero-litery-ramka {
+  position: absolute !important;
+  inset: 0;
+  display: none !important;
+}
+
+@media (max-width: 900px), (max-aspect-ratio: 1/1) {
+  .hero-en-bg > .hero-litery-ramka {
+    display: block !important;
+  }
+
+  .hero-litery {
+    position: absolute;
+    left: 8.6%;
+    top: 31.6%;
+    width: 69.8%;
+    height: auto;
   }
 }
 
@@ -2585,10 +2608,6 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   z-index: 3;
   pointer-events: none;
   overflow: hidden;
-  /* Przy samej krawedzi mgla wygasa: tam zostaja chmury z dolu grafiki, ktore
-     z zalozenia makiety przechodza w pasmo chmur oferty bez szwu. */
-  -webkit-mask-image: linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.55) 7%, #000 18%);
-  mask-image: linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.55) 7%, #000 18%);
 }
 
 .hero-mgla::before {
@@ -2598,7 +2617,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   z-index: 1;
   /* Kolor rdzenia = gora pasma chmur oferty przy styku (zmierzone ok. rgb 241 230 224),
      nie papier: inaczej na styku sekcji zostaje jasny szew. */
-  background: radial-gradient(40% 80% at 85% 100%, rgba(242, 233, 227, 0.95) 0%, rgba(243, 235, 229, 0.82) 34%, rgba(246, 239, 234, 0.4) 62%, rgba(246, 239, 234, 0) 86%);
+  background: radial-gradient(42% 62% at 85% 100%, rgba(242, 233, 227, 0.97) 0%, rgba(243, 235, 229, 0.86) 36%, rgba(246, 239, 234, 0.42) 66%, rgba(246, 239, 234, 0) 90%);
 }
 
 .hero-mgla-chmury {
@@ -2631,6 +2650,49 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   --h: clamp(160px, 22vw, 380px);
   bottom: calc(var(--h) * 0.38);
   opacity: 0.42;
+}
+
+/* Styk hero z oferta: pas mgly w poprzek granicy sekcji (w .gory-oferta, z-index 4:
+   nad mgla i kanwa hero, pod kopia i nazwami klientow z-index 5). Szew nie ma gdzie
+   wyjsc: kazdy wiersz na styku lezy pod ta sama mgla, takze gdy chmury oferty
+   przesuwa paralaksa. Kolor = gora pasma chmur (ok. rgb 240 230 224). */
+.styk-mgla {
+  --s: clamp(200px, 26vw, 460px);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--s) * -0.58);
+  height: var(--s);
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(240, 230, 224, 0) 0%, rgba(240, 230, 224, 0.5) 34%, rgba(240, 230, 224, 0.62) 58%, rgba(240, 230, 224, 0.3) 78%, rgba(240, 230, 224, 0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 64%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 64%, transparent 100%);
+}
+
+.styk-mgla > span {
+  --h: var(--s);
+  --k: calc(var(--h) * 2.6146);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: calc(var(--k) * 3);
+  background: url('/images/wyglad/chmury.webp') repeat-x 0 0 / var(--k) 100%;
+  will-change: transform;
+  opacity: 0.85;
+}
+
+.styk-mgla > span:nth-child(2) {
+  top: 12%;
+  opacity: 0.55;
+  transform: scaleX(-1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .styk-mgla > span:nth-child(1) { animation: w-dryf 150s linear infinite; }
+  .styk-mgla > span:nth-child(2) { animation: w-dryf 230s linear infinite reverse; }
 }
 
 /* Samolot: warstwa pod kanwa sceny (z-index 1, przed .hero-en-bg w DOM), wiec

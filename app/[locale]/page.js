@@ -78,6 +78,8 @@ export default function Home() {
         <Hero />
         <div className="gory-oferta" data-kursor="obraz" data-petla="">
           {/* 7.11.2026: dryfujace chmury na styku hero i oferty (dekoracja, app/wyglad.css). */}
+          {/* 11.11.2026: pas mgly w poprzek granicy hero i oferty - przejscie bez szwu. */}
+          <div className="styk-mgla" aria-hidden="true"><span /><span /></div>
           <div className="chmury-dryf" aria-hidden="true"><span /><span /></div>
           <Services />
         </div>
