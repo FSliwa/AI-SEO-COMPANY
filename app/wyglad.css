@@ -2507,15 +2507,6 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   overflow: visible;
 }
 
-.hero-sygnal-orbita {
-  fill: none;
-  stroke: var(--w-pomarancz);
-  stroke-width: 1;
-  stroke-dasharray: 3 7;
-  vector-effect: non-scaling-stroke;
-  opacity: 0.45;
-}
-
 .hero-sygnal-fale circle {
   fill: none;
   stroke: var(--w-pomarancz);
@@ -2529,23 +2520,6 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 .hero-sygnal-pakiet {
   fill: var(--w-pomarancz);
   opacity: 0;
-}
-
-.hero-satelita-korpus {
-  fill: var(--w-tusz);
-}
-
-.hero-satelita-panel {
-  fill: var(--w-pomarancz);
-}
-
-.hero-satelita-antena {
-  fill: var(--w-tusz);
-}
-
-/* Bez animacji satelita stoi w punkcie orbity */
-.hero-satelita {
-  transform: translate(120px, 214px) rotate(-11deg);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -2562,11 +2536,6 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
     100% { offset-distance: 100%; opacity: 0; }
   }
 
-  @keyframes w-hero-orbita {
-    from { offset-distance: 0%; }
-    to { offset-distance: 100%; }
-  }
-
   .hero-sygnal-fale circle {
     animation: w-hero-fala 4.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
   }
@@ -2574,13 +2543,6 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   .hero-sygnal-fale circle:nth-child(3) { animation-delay: 2.93s; }
 
   @supports (offset-path: path('M0 0 L1 1')) {
-    /* Elipsa orbity (cx 430, cy 150, rx 330, ry 96) obrocona o -11 st. jako sciezka */
-    .hero-satelita {
-      transform: none;
-      offset-path: path('M 106 213 A 330 96 -11 1 1 754 87 A 330 96 -11 1 1 106 213');
-      offset-rotate: auto;
-      animation: w-hero-orbita 38s linear infinite;
-    }
     .hero-sygnal-pakiet--1 {
       offset-path: path('M395 90 C 470 60 560 70 640 120');
       animation: w-hero-pakiet 3.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -2592,9 +2554,189 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   }
 }
 
-@media (max-width: 900px) {
-  .hero-sygnal-orbita,
-  .hero-satelita {
+/* ==========================================================================
+   HERO v5 (11.11.2026): samolot w glebi nieba i mgla, w ktorej znika robot 3D
+   --------------------------------------------------------------------------
+   Prosba Filipa: dol postaci 3D ma sie wtapiac w chmury (wczesniej konczyl sie
+   twarda krawedzia sekcji i prostokatem sceny), a ruch w tle ma pasowac do
+   gor i nieba (zamiast kropkowanej orbity z satelita przez tekst).
+   ========================================================================== */
+
+/* Robot wygasa ku dolowi. Element ma scale(1.12) wokol srodka, wiec procenty
+   maski licza sie od -6 % do 106 % wysokosci sekcji: pelna widocznosc do ok.
+   64 % sekcji (litery SEO koncza sie na 62,2 %), zero od ok. 94 %. */
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
+  .hero .hero-en-bg {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0, 0, 0, 0.62) 71%, rgba(0, 0, 0, 0.2) 81%, transparent 89%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0, 0, 0, 0.62) 71%, rgba(0, 0, 0, 0.2) 81%, transparent 89%);
+  }
+}
+
+/* Mgla nad dolem sceny: gesty rdzen pod postacia (prawy dol) i trzy warstwy
+   chmur z pasma oferty (chmury.webp) dryfujace z roznymi predkosciami. Pod
+   kopia (z-index 5), nad kanwa (1) i winieta (2). Lewa strona prawie bez mgly:
+   gory z grafiki zostaja, a dol grafiki dalej styka sie z pasmem chmur oferty. */
+.hero-mgla {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46%;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+  /* Przy samej krawedzi mgla wygasa: tam zostaja chmury z dolu grafiki, ktore
+     z zalozenia makiety przechodza w pasmo chmur oferty bez szwu. */
+  -webkit-mask-image: linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.55) 7%, #000 18%);
+  mask-image: linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.55) 7%, #000 18%);
+}
+
+.hero-mgla::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Kolor rdzenia = gora pasma chmur oferty przy styku (zmierzone ok. rgb 241 230 224),
+     nie papier: inaczej na styku sekcji zostaje jasny szew. */
+  background: radial-gradient(40% 80% at 85% 100%, rgba(242, 233, 227, 0.95) 0%, rgba(243, 235, 229, 0.82) 34%, rgba(246, 239, 234, 0.4) 62%, rgba(246, 239, 234, 0) 86%);
+}
+
+.hero-mgla-chmury {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0.85) 68%, #000 80%);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0.85) 68%, #000 80%);
+}
+
+.hero-mgla-chmury > span {
+  --h: clamp(220px, 30vw, 520px);
+  --k: calc(var(--h) * 2.6146);
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--h) * -0.36);
+  height: var(--h);
+  width: calc(var(--k) * 3);
+  background: url('/images/wyglad/chmury.webp') repeat-x 0 0 / var(--k) 100%;
+  will-change: transform;
+}
+
+.hero-mgla-chmury > span:nth-child(2) {
+  bottom: calc(var(--h) * -0.1);
+  opacity: 0.75;
+  transform: scaleX(-1);
+}
+
+.hero-mgla-chmury > span:nth-child(3) {
+  --h: clamp(160px, 22vw, 380px);
+  bottom: calc(var(--h) * 0.38);
+  opacity: 0.42;
+}
+
+/* Samolot: warstwa pod kanwa sceny (z-index 1, przed .hero-en-bg w DOM), wiec
+   chowa sie za robotem i literami. Pas lotu = szczelina nad literami SEO
+   (30,4 % wysokosci sekcji). Trasa w poziomie liczona w vw (sekcja ma pelna
+   szerokosc): samolot 102vw -> -8vw, smuga rosnie od prawej w tym samym tempie
+   (scaleX od prawej krawedzi), wiec jej czolo zawsze stoi przy ogonie. */
+.hero-lot {
+  --lot-w: clamp(52px, 4.2vw, 76px);
+  position: absolute;
+  left: 0;
+  top: 28.6%;
+  width: 100%;
+  height: 0;
+  z-index: 1;
+  pointer-events: none;
+  rotate: -0.6deg;
+}
+
+.hero-lot-samolot {
+  position: absolute;
+  left: 0;
+  top: calc(var(--lot-w) * -0.25);
+  width: var(--lot-w);
+  height: auto;
+  overflow: visible;
+  translate: 102vw 0;
+  opacity: 0;
+}
+
+.hero-lot-smuga {
+  position: absolute;
+  left: calc(-8vw + var(--lot-w) * 0.86);
+  width: 110vw;
+  top: calc(var(--lot-w) * 0.06 - 8px);
+  height: 16px;
+  transform-origin: 100% 50%;
+  scale: 0 1;
+  opacity: 0;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.55) 30%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.55) 30%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
+}
+
+.hero-lot-smuga-cien,
+.hero-lot-smuga-rdzen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 999px;
+}
+
+.hero-lot-smuga-cien {
+  top: 4px;
+  height: 8px;
+  background: rgba(150, 122, 112, 0.22);
+  filter: blur(3px);
+}
+
+.hero-lot-smuga-rdzen {
+  top: 7px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.95);
+  filter: blur(0.4px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes w-hero-mgla {
+    from { opacity: 0.86; }
+    to { opacity: 1; }
+  }
+
+  .hero-mgla::before {
+    animation: w-hero-mgla 9s ease-in-out infinite alternate;
+  }
+  .hero-mgla-chmury > span:nth-child(1) { animation: w-dryf 120s linear infinite; }
+  .hero-mgla-chmury > span:nth-child(2) { animation: w-dryf 190s linear infinite reverse; }
+  .hero-mgla-chmury > span:nth-child(3) { animation: w-dryf 260s linear infinite; }
+
+  /* Przelot 0-60 % cyklu (42 s z 70 s), potem smuga sie rozplywa, potem cisza.
+     Samolot rosnie (podlatuje blizej): scale 0.6 -> 1. */
+  @keyframes w-hero-lot {
+    0% { translate: 102vw 0; opacity: 0; scale: 0.6; }
+    3% { opacity: 1; }
+    57% { opacity: 1; }
+    60% { translate: -8vw 0; opacity: 0; scale: 1; }
+    100% { translate: -8vw 0; opacity: 0; scale: 1; }
+  }
+
+  @keyframes w-hero-smuga {
+    0% { scale: 0 1; opacity: 0; }
+    3% { opacity: 1; }
+    60% { scale: 1 1; opacity: 1; }
+    78% { scale: 1 1; opacity: 0; }
+    100% { scale: 1 1; opacity: 0; }
+  }
+
+  .hero-lot-samolot {
+    animation: w-hero-lot 70s linear 2.5s infinite;
+  }
+  .hero-lot-smuga {
+    animation: w-hero-smuga 70s linear 2.5s infinite;
+  }
+}
+
+@media (max-width: 900px), (max-aspect-ratio: 1/1) {
+  .hero-lot {
     display: none;
   }
 }

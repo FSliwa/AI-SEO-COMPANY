@@ -427,6 +427,8 @@ export default function Hero() {
     <section
       className="hero hero--en"
       id="hero"
+      // 11.11.2026: petle hero (mgla, samolot, fale) stoja, gdy sekcja jest poza ekranem (PetleWidoczne).
+      data-petla=""
       suppressHydrationWarning
       style={{
         position: 'relative',
@@ -455,10 +457,10 @@ export default function Hero() {
         />
       </div>
 
-      {/* Ruch satelity i sygnalu (dekoracja SVG, animacje w app/wyglad.css): orbita
-          z satelita, fale z punktu nadawania z grafiki i pakiety danych po lukach. */}
+      {/* Ruch sygnalu (dekoracja SVG, animacje w app/wyglad.css): fale z punktu nadawania
+          z grafiki i pakiety danych po lukach. 11.11.2026: orbita z satelita zastapiona
+          samolotem (.hero-lot nizej), bo przecinala tekst i nie pasowala do sceny z gorami. */}
       <svg className="hero-sygnal" viewBox="0 0 804 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-        <ellipse className="hero-sygnal-orbita" cx="430" cy="150" rx="330" ry="96" transform="rotate(-11 430 150)" />
         <g className="hero-sygnal-fale">
           <circle cx="395" cy="90" r="10" />
           <circle cx="395" cy="90" r="10" />
@@ -466,13 +468,50 @@ export default function Hero() {
         </g>
         <circle className="hero-sygnal-pakiet hero-sygnal-pakiet--1" r="3.2" />
         <circle className="hero-sygnal-pakiet hero-sygnal-pakiet--2" r="2.4" />
-        <g className="hero-satelita">
-          <rect x="-4" y="-3" width="8" height="6" rx="1.2" className="hero-satelita-korpus" />
-          <rect x="-15" y="-2" width="9" height="4" className="hero-satelita-panel" />
-          <rect x="6" y="-2" width="9" height="4" className="hero-satelita-panel" />
-          <circle cx="0" cy="-5" r="1.4" className="hero-satelita-antena" />
-        </g>
       </svg>
+
+      {/* 11.11.2026: samolot ze smuga kondensacyjna w glebi nieba. Warstwa lezy POD kanwa
+          sceny 3D (przezroczyste tlo): samolot wylania sie zza robota i leci szczelina miedzy
+          tekstem a literami SEO (gorna krawedz liter = 30,4 % wysokosci sekcji), wiec nie
+          przecina tekstu. Smuga zostaje w miejscu i rozplywa sie. Animacje w app/wyglad.css. */}
+      <div className="hero-lot" aria-hidden="true">
+        <span className="hero-lot-smuga">
+          <span className="hero-lot-smuga-cien" />
+          <span className="hero-lot-smuga-rdzen" />
+        </span>
+        <svg className="hero-lot-samolot" viewBox="-64 -34 128 64" focusable="false">
+          <defs>
+            <linearGradient id="hero-lot-kadlub" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#a4a9b9" />
+              <stop offset="0.45" stopColor="#4f556a" />
+              <stop offset="1" stopColor="#23273a" />
+            </linearGradient>
+            <linearGradient id="hero-lot-skrzydlo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#c3c7d3" />
+              <stop offset="0.55" stopColor="#5a6075" />
+              <stop offset="1" stopColor="#2a2e40" />
+            </linearGradient>
+            <linearGradient id="hero-lot-silnik" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#b4b9c7" />
+              <stop offset="1" stopColor="#2a2e40" />
+            </linearGradient>
+          </defs>
+          <path d="M-4 -6 L18 -22 L24 -22 L12 -6 Z" fill="#3a3f52" />
+          <path d="M46 -6 L58 -12 L61 -12 L54 -6 Z" fill="#3a3f52" />
+          <path d="M36 -7 L50 -30 L58 -30 L54 -10 Z" fill="url(#hero-lot-kadlub)" />
+          <path d="M47 -25 L57 -25 L56 -21 L45 -21 Z" fill="#ef6a1f" />
+          <path d="M-60 2 C-58 -4 -50 -7 -38 -7 L38 -7 C46 -7 52 -9 58 -14 L60 -12 C56 -4 50 2 40 4 L-38 6 C-50 6 -58 5 -60 2 Z" fill="url(#hero-lot-kadlub)" />
+          <path d="M-50 -6 L36 -6" stroke="rgba(255,255,255,0.45)" strokeWidth="1" />
+          <path d="M-52 2.6 L38 1.2" stroke="#ef6a1f" strokeWidth="0.9" opacity="0.85" />
+          <path d="M-40 -2 L34 -2" stroke="rgba(255,255,255,0.6)" strokeWidth="1.1" strokeDasharray="1.4 2.2" />
+          <path d="M-55 -1 C-52 -4 -48 -4.6 -45 -4.6 L-45 -1.6 Z" fill="#c9d6e2" />
+          <path d="M44 1 L58 10 L62 10 L54 0 Z" fill="url(#hero-lot-skrzydlo)" />
+          <path d="M2 6 L10 6 L8 10 L4 10 Z" fill="#2a2e40" />
+          <ellipse cx="6" cy="12" rx="8" ry="3.4" fill="url(#hero-lot-silnik)" />
+          <ellipse cx="-1.6" cy="12" rx="1.5" ry="2.8" fill="#ef6a1f" opacity="0.9" />
+          <path d="M-10 3 L26 26 L34 26 L10 3 Z" fill="url(#hero-lot-skrzydlo)" />
+        </svg>
+      </div>
 
       {/* The scene is the section background on both locales now. The video and
           the starfield are gone with it – they were a second full-screen
@@ -488,6 +527,17 @@ export default function Hero() {
 
       {/* Vignette, and on the wide layout the scrim that lifts the copy edges. */}
       <div className="hero-overlay hero-overlay--en"></div>
+
+      {/* 11.11.2026: mgla, w ktorej znika dol robota (kanwa wygasa maska w app/wyglad.css).
+          Te same chmury co pasmo oferty nizej (chmury.webp), dryfujace w trzech warstwach,
+          i gesty rdzen pod postacia - przejscie do nastepnej sekcji bez krawedzi. */}
+      <div className="hero-mgla" aria-hidden="true">
+        <div className="hero-mgla-chmury">
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
 
       {/* Two groups pinned above and below the scene's own lettering, which
           occupies 30.4%-62.2% of the section height. The heading sits under the
