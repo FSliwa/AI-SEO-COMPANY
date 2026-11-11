@@ -2496,63 +2496,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   outline-color: var(--w-pomarancz) !important;
 }
 
-/* Sygnal i satelita */
-.hero-sygnal {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.hero-sygnal-fale circle {
-  fill: none;
-  stroke: var(--w-pomarancz);
-  stroke-width: 1.2;
-  vector-effect: non-scaling-stroke;
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.hero-sygnal-pakiet {
-  fill: var(--w-pomarancz);
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes w-hero-fala {
-    0% { opacity: 0; scale: 0.6; }
-    12% { opacity: 0.8; }
-    100% { opacity: 0; scale: 9; }
-  }
-
-  @keyframes w-hero-pakiet {
-    0% { offset-distance: 0%; opacity: 0; }
-    12% { opacity: 1; }
-    85% { opacity: 1; }
-    100% { offset-distance: 100%; opacity: 0; }
-  }
-
-  .hero-sygnal-fale circle {
-    animation: w-hero-fala 4.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
-  }
-  .hero-sygnal-fale circle:nth-child(2) { animation-delay: 1.47s; }
-  .hero-sygnal-fale circle:nth-child(3) { animation-delay: 2.93s; }
-
-  @supports (offset-path: path('M0 0 L1 1')) {
-    .hero-sygnal-pakiet--1 {
-      offset-path: path('M395 90 C 470 60 560 70 640 120');
-      animation: w-hero-pakiet 3.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-    .hero-sygnal-pakiet--2 {
-      offset-path: path('M395 90 C 330 130 300 200 290 280');
-      animation: w-hero-pakiet 3.4s cubic-bezier(0.4, 0, 0.6, 1) 1.7s infinite;
-    }
-  }
-}
+/* Sygnal (fale i pakiety z punktu nadawania) usuniety 11.11.2026 razem z lukami na grafice tla. */
 
 /* ==========================================================================
    HERO v5 (11.11.2026): samolot w glebi nieba i mgla, w ktorej znika robot 3D

@@ -440,7 +440,7 @@ export default function Hero() {
           zastepuje antene. Dolna krawedz grafiki = gorna krawedz pasma chmur oferty. */}
       <div className="hero-tlo-sceny" aria-hidden="true" data-kursor="obraz">
         <Image
-          src="/images/wyglad/hero-tlo.webp"
+          src="/images/wyglad/hero-tlo-v2.webp"
           alt=""
           fill
           priority
@@ -450,18 +450,9 @@ export default function Hero() {
         />
       </div>
 
-      {/* Ruch sygnalu (dekoracja SVG, animacje w app/wyglad.css): fale z punktu nadawania
-          z grafiki i pakiety danych po lukach. 11.11.2026: orbita z satelita zastapiona
-          samolotem (.hero-lot nizej), bo przecinala tekst i nie pasowala do sceny z gorami. */}
-      <svg className="hero-sygnal" viewBox="0 0 804 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-        <g className="hero-sygnal-fale">
-          <circle cx="395" cy="90" r="10" />
-          <circle cx="395" cy="90" r="10" />
-          <circle cx="395" cy="90" r="10" />
-        </g>
-        <circle className="hero-sygnal-pakiet hero-sygnal-pakiet--1" r="3.2" />
-        <circle className="hero-sygnal-pakiet hero-sygnal-pakiet--2" r="2.4" />
-      </svg>
+      {/* 11.11.2026 (prosba Filipa): bez polokregow i animacji sygnalu z etapu satelity - luki usuniete
+          z grafiki tla (hero-tlo-v2.webp), fale i pakiety (SVG .hero-sygnal) usuniete. Ruch w tle daje
+          samolot (.hero-lot nizej). */}
 
       {/* 11.11.2026: samolot ze smuga kondensacyjna w glebi nieba. Warstwa lezy POD kanwa
           sceny 3D (przezroczyste tlo): samolot wylania sie zza robota i leci szczelina miedzy
