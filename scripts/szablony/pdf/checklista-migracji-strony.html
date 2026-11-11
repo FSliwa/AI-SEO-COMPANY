@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Checklista migracji strony – AI SEO COMPANY</title>
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #FFFFFF; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 9.3pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .naglowek { display: flex; justify-content: space-between; font-size: 8pt; letter-spacing: 0.04em; color: #6E6E73; border-bottom: 1px solid #E5E1DC; padding-bottom: 5px; margin-bottom: 14px; }
+  .naglowek strong { color: #1D1D1F; }
+  h1 { font-size: 21pt; line-height: 1.15; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .podtytul { font-size: 11pt; color: #3A3A3C; margin: 0 0 12px; }
+  h2 { font-size: 12.5pt; margin: 14px 0 7px; padding-bottom: 4px; border-bottom: 2px solid #D85A30; break-after: avoid; page-break-after: avoid; }
+  h2 .nr { color: #D85A30; margin-right: 4px; }
+  p { margin: 0 0 6px; }
+  .ramka { border: 1px solid #E5E1DC; border-left: 3px solid #D85A30; border-radius: 4px; padding: 9px 12px; margin: 0 0 10px; background: #FFFFFF; break-inside: avoid; }
+  .ramka h3 { font-size: 10pt; margin: 0 0 5px; }
+  .ramka ol, .ramka ul { margin: 0; padding-left: 16px; }
+  .ramka li { margin: 0 0 2px; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 6px; }
+  th, td { border: 1px solid #E5E1DC; padding: 4px 6px; text-align: left; vertical-align: top; }
+  th { font-size: 8.4pt; font-weight: 700; background: #F7F5F2; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  td.cbk { width: 22px; text-align: center; }
+  .cb { display: inline-block; width: 10px; height: 10px; border: 1.5px solid #D85A30; border-radius: 2px; vertical-align: -1px; }
+  td.pole { height: 20px; }
+  td.kto { width: 92px; }
+  td.termin { width: 74px; }
+  .mapa td { height: 29px; font-size: 8.6pt; }
+  .mapa .lp { width: 24px; text-align: center; color: #6E6E73; }
+  .mapa .kod { width: 40px; }
+  .mapa .prio { width: 58px; }
+  .mapa .test { width: 92px; }
+  .przyklad td { color: #6E6E73; font-style: italic; }
+  .monitoring td { height: 22px; }
+  .monitoring td:first-child { width: 118px; font-weight: 600; }
+  .monitoring th.liczba { width: 84px; }
+  .maly { font-size: 8.2pt; color: #6E6E73; }
+  .nowa-strona { break-before: page; page-break-before: always; }
+  .stopka { margin-top: 18px; padding-top: 7px; border-top: 1px solid #E5E1DC; font-size: 8pt; color: #6E6E73; break-inside: avoid; }
+  .stopka span { display: block; margin: 0 0 2px; }
+  .stopka strong { color: #1D1D1F; }
+  .opcja { white-space: nowrap; margin-right: 8px; }
+  .opcja .cb { margin-right: 4px; }
+  .dziennik td { height: 26px; }
+</style>
+</head>
+<body>
+
+<div class="naglowek"><span><strong>AI SEO COMPANY</strong> · www.ai-seo-company.pl</span><span>Szablon do wydruku · wersja 11.2026</span></div>
+
+<h1>Checklista migracji strony</h1>
+<p class="podtytul">Migracja strony bez utraty pozycji: zadania przed migracją, w dniu wdrożenia i 8–12 tygodni po nim, mapa przekierowań 301 i tabela monitoringu.</p>
+
+<div class="ramka">
+  <h3>Jak korzystać z checklisty</h3>
+  <ol>
+    <li><strong>Opisz migrację</strong> na karcie poniżej. Rodzaj migracji decyduje, które punkty Cię dotyczą.</li>
+    <li><strong>Przypisz osoby i terminy</strong> przy każdym zadaniu. Zadanie bez właściciela zwykle zostaje niezrobione.</li>
+    <li><strong>Zbierz adresy i punkt odniesienia</strong> z Search Console i GA4, zanim cokolwiek zmienisz. Zapisz datę eksportu.</li>
+    <li><strong>Wypełnij mapę przekierowań</strong> (część D): jeden stary adres = jeden nowy, kod 301, priorytet.</li>
+    <li><strong>W dniu migracji</strong> przechodź część B w podanej kolejności i wpisuj wyniki testów.</li>
+    <li><strong>Raz w tygodniu przez 8–12 tygodni</strong> uzupełniaj tabelę monitoringu (część E). Każdy nowy błąd 404 dopisz do mapy.</li>
+  </ol>
+</div>
+
+<h2>Karta migracji</h2>
+<table>
+  <tbody>
+    <tr><th style="width:150px">Rodzaj migracji</th><td colspan="3"><span class="opcja"><span class="cb"></span>nowa domena</span> <span class="opcja"><span class="cb"></span>nowa subdomena</span> <span class="opcja"><span class="cb"></span>nowe adresy URL / CMS</span> <span class="opcja"><span class="cb"></span>HTTP → HTTPS</span> <span class="opcja"><span class="cb"></span>nowy wygląd lub hosting</span></td></tr>
+    <tr><th>Stara domena</th><td class="pole"></td><th style="width:140px">Nowa domena</th><td class="pole"></td></tr>
+    <tr><th>Adres kopii roboczej</th><td class="pole"></td><th>Data i godzina startu</th><td class="pole"></td></tr>
+    <tr><th>Odpowiedzialny SEO</th><td class="pole"></td><th>Programista</th><td class="pole"></td></tr>
+    <tr><th>Właściciel treści</th><td class="pole"></td><th>Data eksportu danych</th><td class="pole"></td></tr>
+  </tbody>
+</table>
+<p class="maly">Narzędzie zmiany adresu w Search Console dotyczy tylko przeniesienia na inną domenę lub subdomenę. Przy HTTP → HTTPS, www ↔ bez www i zmianie ścieżek w tej samej domenie wystarczą przekierowania i nowa mapa witryny.</p>
+
+<h2><span class="nr">A.</span> Przed migracją</h2>
+<table>
+  <thead><tr><th></th><th>Zadanie</th><th>Kto</th><th>Termin</th></tr></thead>
+  <tbody>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Pełna lista starych adresów URL: mapy witryny, logi serwera, Analytics, CMS, raport „Linki” w Search Console, crawl całej strony</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Obrazy, pliki PDF, skrypty i arkusze CSS dopisane do listy</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Eksport z Search Console (Skuteczność): strony i frazy z największą liczbą kliknięć</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Punkt odniesienia z GA4: ruch z wyszukiwarki i konwersje (wpisz w część E)</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Lista 20–50 kluczowych adresów do testów w dniu startu</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Lista stron, które linkują do starych adresów</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Mapa przekierowań 1:1 z kodem 301 (część D), bez przekierowań na stronę główną</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Treści bez odpowiednika oznaczone kodem 404 lub 410</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Kopia robocza zamknięta hasłem lub noindex; zapisane, co zdjąć w dniu startu</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Samoodwołujące się tagi kanoniczne na nowych adresach</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>hreflang wskazuje nowe adresy wersji językowych</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Dane strukturalne, tytuły i opisy meta przeniesione</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>GA4 i Menedżer tagów skonfigurowane, zdarzenia kluczowe przetestowane na kopii</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Nowa mapa witryny XML wyłącznie z adresami docelowymi</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Stara i nowa witryna zweryfikowane w Search Console (z www i bez www), plik disavow przeniesiony</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Core Web Vitals i formularze nowej wersji sprawdzone na kopii roboczej</td><td class="kto"></td><td class="termin"></td></tr>
+  </tbody>
+</table>
+
+<h2><span class="nr">B.</span> W dniu migracji (w tej kolejności)</h2>
+<table>
+  <thead><tr><th></th><th>Zadanie</th><th>Kto</th><th>Godzina</th></tr></thead>
+  <tbody>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Przekierowania z mapy wdrożone, zanim stara wersja przestanie odpowiadać</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Zdjęte blokady kopii roboczej: noindex, hasło, zbędne reguły Disallow</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>robots.txt nowej strony blokuje tylko to, co ma być niedostępne</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Tagi kanoniczne wskazują nowe adresy (nie kopię roboczą, nie starą domenę)</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Kluczowe adresy przetestowane: kod, cel przekierowania, tytuł, treść, formularz (np. „Sprawdzanie adresu URL”)</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Nowa mapa witryny przesłana w Search Console</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Narzędzie zmiany adresu uruchomione po wdrożeniu przekierowań (tylko nowa domena lub subdomena, konto właściciela obu usług)</td><td class="kto"></td><td class="termin"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>GA4 zbiera odsłony, zdarzenia kluczowe (formularz, telefon) się zapisują</td><td class="kto"></td><td class="termin"></td></tr>
+  </tbody>
+</table>
+
+<h2><span class="nr">C.</span> Po migracji (8–12 tygodni)</h2>
+<table>
+  <thead><tr><th></th><th style="width:78px">Kiedy</th><th>Zadanie</th><th>Kto</th></tr></thead>
+  <tbody>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Tydzień 1</td><td>Codzienny przegląd błędów 404 i raportu „Strony”, brakujące adresy dopisane do mapy</td><td class="kto"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Tydzień 1–2</td><td>Łańcuchy przekierowań skrócone do jednego skoku</td><td class="kto"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Tydzień 1–2</td><td>Linki wewnętrzne wskazują adresy docelowe, nie przekierowania</td><td class="kto"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Tydzień 2–4</td><td>Najważniejsze linki zewnętrzne zaktualizowane przez właścicieli stron</td><td class="kto"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Tydzień 1–4</td><td>Nowy adres w Profilu Firmy w Google, mediach społecznościowych i kampaniach reklamowych</td><td class="kto"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Co tydzień</td><td>Kliknięcia, wyświetlenia i pozycje kluczowych fraz w porównaniu z punktem odniesienia (część E)</td><td class="kto"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Min. 1 rok</td><td>Przekierowania i rejestracja starej domeny utrzymane (Google zaleca co najmniej rok)</td><td class="kto"></td></tr>
+  </tbody>
+</table>
+
+<div class="nowa-strona"></div>
+<h2><span class="nr">D.</span> Mapa przekierowań</h2>
+<div class="ramka">
+  <h3>Zasady</h3>
+  <ul>
+    <li><strong>Jeden skok:</strong> stary adres prowadzi od razu do adresu docelowego, bez łańcuchów.</li>
+    <li><strong>Kod 301 lub 308</strong> (stałe), nie 302 ani 307. Przekierowania po stronie serwera, nie w JavaScripcie.</li>
+    <li><strong>Najbliższy odpowiednik</strong> treściowy, nie strona główna. Brak odpowiednika = 404 albo 410.</li>
+    <li><strong>Jeden format adresów:</strong> HTTPS, ukośnik na końcu albo bez, małe litery, z www albo bez.</li>
+  </ul>
+</div>
+<table class="mapa">
+  <thead><tr><th class="lp">Lp.</th><th>Stary adres URL</th><th>Nowy adres URL</th><th class="kod">Kod</th><th class="prio">Priorytet</th><th class="test">Test (data, wynik)</th></tr></thead>
+  <tbody>
+    <tr class="przyklad"><td class="lp">np.</td><td>/oferta/strony-www.html</td><td>/projektowanie-stron/</td><td>301</td><td>Wysoki</td><td>12.01 · OK</td></tr>
+    <tr><td class="lp">1</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">2</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">3</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">4</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">5</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">6</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">7</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">8</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">9</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">10</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">11</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">12</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">13</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">14</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">15</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">16</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">17</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">18</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">19</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="lp">20</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<p class="maly">Priorytet: wysoki = adres z ruchem z Google lub linkami zewnętrznymi; średni = adres w strukturze serwisu; niski = pozostałe. Większy serwis: prowadź mapę w arkuszu z tymi samymi kolumnami.</p>
+
+<div class="nowa-strona"></div>
+<h2><span class="nr">E.</span> Monitoring tygodniowy</h2>
+<table class="monitoring">
+  <thead><tr><th>Tydzień</th><th style="width:58px">Data</th><th class="liczba">Kliknięcia z Google</th><th class="liczba">Wyświetlenia</th><th class="liczba">Błędy 404</th><th class="liczba">Zaindeksowane z nowej mapy</th><th>Uwagi</th></tr></thead>
+  <tbody>
+    <tr><td>Punkt odniesienia</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tydzień 12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<p class="maly">Wahania pozycji w pierwszych tygodniach są normalne: według Google przy średniej wielkości serwisie przeniesienie widoczności na nowe adresy trwa kilka tygodni lub dłużej. Niepokojący jest trwały spadek albo rosnąca liczba błędów 404.</p>
+
+<h2><span class="nr">F.</span> Dziennik problemów po migracji</h2>
+<table class="dziennik">
+  <thead><tr><th style="width:62px">Data</th><th style="width:34%">Problem (adres, objaw)</th><th style="width:22%">Przyczyna</th><th style="width:22%">Poprawka</th><th style="width:80px">Kto</th><th style="width:30px">OK</th></tr></thead>
+  <tbody>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
+  </tbody>
+</table>
+
+<div class="stopka">
+  <span><strong>www.ai-seo-company.pl/narzedzia/checklista-migracji-strony</strong><br>Źródła: Google Search Central „How to move a site”, Pomoc Search Console „Narzędzie zmiany adresu” (odczyt 11.11.2026)</span>
+  <span>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</span>
+</div>
+
+</body>
+</html>

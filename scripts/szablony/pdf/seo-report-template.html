@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Monthly SEO Report Template – AI SEO COMPANY</title>
+<!--
+  Source of public/pliki/seo-report-template.pdf (page /en/tools/seo-report-template, 2026-11-11).
+  English version of wzor-raportu-seo.html; content matches RaportEn in components/narzedzia/SzablonRaport.jsx:
+  5 sections, 6-metric table, 6 red flags.
+  Build:
+  "/Users/filipsliwa/Library/Caches/ms-playwright/chromium-1140/chrome-mac/Chromium.app/Contents/MacOS/Chromium" \
+    --headless=new --disable-gpu --no-pdf-header-footer \
+    --print-to-pdf=<repo>/public/pliki/seo-report-template.pdf file://<repo>/scripts/szablony/pdf/seo-report-template.html
+  Every .strona section starts a new A4 page; the "p. X of 5" labels are hard-coded,
+  so after editing the content check that the PDF still has 5 pages.
+-->
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #fff; color: #1D1D1F; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9.4pt; line-height: 1.42; }
+  .strona { break-before: page; }
+  .naglowek { display: flex; justify-content: space-between; font-size: 7.8pt; color: #6E6E73; padding-bottom: 1.8mm; border-bottom: 1px solid #E5E1DC; margin-bottom: 4mm; }
+  .naglowek b { color: #1D1D1F; letter-spacing: .02em; }
+  h1 { font-size: 22pt; line-height: 1.12; letter-spacing: -.015em; margin: 1mm 0 2.5mm; }
+  .lead { font-size: 10.5pt; color: #3A3A3C; margin: 0 0 1mm; }
+  h2 { font-size: 12.4pt; line-height: 1.25; margin: 5.5mm 0 2.6mm; padding-bottom: 1.6mm; border-bottom: 1.6px solid #D85A30; break-after: avoid; }
+  h2.tytul { font-size: 15.5pt; margin-top: 0; }
+  h3 { font-size: 10.4pt; margin: 3.8mm 0 1.4mm; break-after: avoid; }
+  h3 .nr, .kroki b.nr { color: #D85A30; }
+  p { margin: 0 0 2mm; }
+  .opis { color: #3A3A3C; }
+  .maly { font-size: 8.3pt; color: #6E6E73; margin: 0 0 1.6mm; }
+  .zle { font-size: 8.3pt; color: #6E6E73; margin: 1.2mm 0 0; }
+  .zle b { color: #B4441F; }
+  ol.kroki { margin: 0; padding-left: 5.2mm; }
+  ol.kroki li { margin: 0 0 1.6mm; padding-left: 1mm; }
+  ol.kroki li::marker { color: #D85A30; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.4pt; line-height: 1.32; }
+  th, td { border: 1px solid #E5E1DC; padding: 1.4mm 2mm; text-align: left; vertical-align: top; }
+  th { background: #FAF7F4; font-weight: 600; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  td.w { height: 7.4mm; }
+  td.ww { height: 8.6mm; }
+  td.wl { height: 8.2mm; }
+  .nw { white-space: nowrap; }
+  th .pod { display: block; font-weight: 400; white-space: nowrap; }
+  td.nr { width: 7mm; color: #6E6E73; text-align: center; }
+  td.etyk { width: 44%; font-weight: 600; }
+  tr.przyklad td { color: #6E6E73; font-style: italic; background: #FFFCFA; }
+  .cb { display: inline-block; width: 3.2mm; height: 3.2mm; border: 1.3px solid #D85A30; border-radius: .6mm; vertical-align: -.55mm; margin-right: 1.2mm; }
+  .opcje { white-space: nowrap; font-weight: 400; }
+  .opcje span + span { margin-left: 3mm; }
+  .pole { border: 1px solid #E5E1DC; border-radius: 1mm; padding: 1.6mm 2mm; }
+  .pole .tekst { font-size: 8.5pt; color: #6E6E73; margin-bottom: 1mm; }
+  .linia { border-bottom: 1px solid #CFC9C2; height: 6.6mm; }
+  .odsylacz { margin: 3mm 0 0; padding: 1.6mm 2.6mm; border-left: 2px solid #D85A30; background: #FFF7F2; font-size: 8.8pt; }
+  .flagi { list-style: none; margin: 0; padding: 0; }
+  .flagi li { display: flex; gap: 2mm; padding: 1.3mm 0; border-bottom: 1px solid #EFEBE6; break-inside: avoid; }
+  .flagi li .cb { flex: none; margin-top: .6mm; }
+  .flagi li b { display: block; }
+  .flagi li span.t { color: #3A3A3C; font-size: 8.6pt; }
+  .ocena { margin: 3mm 0 0; padding: 2.4mm 3mm; border: 1px solid rgba(216, 90, 48, .35); border-radius: 1.2mm; background: #FFF7F2; font-size: 8.9pt; }
+  .stopka { margin-top: 6mm; padding-top: 2mm; border-top: 1px solid #E5E1DC; font-size: 7.8pt; color: #6E6E73; display: flex; justify-content: space-between; gap: 4mm; }
+  .stopka b { color: #1D1D1F; }
+  .spis td:first-child { width: 14mm; color: #D85A30; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: how to use + report details -->
+<section>
+  <div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>p. 1 of 5</span></div>
+  <h1>Monthly SEO Report Template</h1>
+  <p class="lead">Five report sections with examples, a metrics table to fill in with data from Google Search Console and Google Analytics 4, and a red-flag checklist for whoever reads the report. Print the template, or send it to your agency as a list of what you expect to see in every monthly report.</p>
+
+  <h2>How to use this template</h2>
+  <ol class="kroki">
+    <li><b>Lead with the business result.</b> The first number is customer inquiries from Google (form, phone, email) and the cost per inquiry. Clicks, rankings and work done come after that.</li>
+    <li><b>Keep the summary to one page</b> (p. 2): the result against the goal, 3–5 causes with evidence, next month’s plan and the risks. Charts and keyword tables belong in an appendix or the client portal.</li>
+    <li><b>Give every number a source</b> the client can open on their own – ideally Search Console and Analytics accounts registered to the client’s email address.</li>
+    <li><b>Compare year over year.</b> Month-over-month growth during peak season is often just the calendar, not the effect of SEO.</li>
+    <li><b>Log every task with a date and a page URL</b> (p. 3). A task name on its own, such as “on-page optimization,” is not enough.</li>
+    <li><b>The last page is for the reader.</b> Check the agency’s report against this template and tick any red flags. Missing sections make good questions for your next meeting.</li>
+  </ol>
+
+  <h2>Report details</h2>
+  <table>
+    <tbody>
+      <tr><td class="etyk">Company and website</td><td class="ww"></td></tr>
+      <tr><td class="etyk">Report month</td><td class="ww"></td></tr>
+      <tr><td class="etyk">Prepared by (agency, account manager)</td><td class="ww"></td></tr>
+      <tr><td class="etyk">Date delivered</td><td class="ww"></td></tr>
+      <tr><td class="etyk">Goal for the month (number of customer inquiries)</td><td class="ww"></td></tr>
+      <tr><td class="etyk">Tracked keyword list: agreed on (date) / changes this month</td><td class="ww"></td></tr>
+      <tr><td class="etyk">The client owns the Search Console and GA4 accounts</td><td class="ww"><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="etyk">GA4 key events (form, phone, email) are working</td><td class="ww"><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span> <span class="maly">– if not, list it as a risk in section 5</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>What’s inside</h2>
+  <table class="spis">
+    <tbody>
+      <tr><td>p. 2</td><td>Monthly summary: sections 1, 2, 4 and 5 on a single page</td></tr>
+      <tr><td>p. 3</td><td>Section 3: work log and links acquired</td></tr>
+      <tr><td>p. 4</td><td>Metrics table from GA4 and Search Console – months to fill in, how to read each metric and its pitfalls</td></tr>
+      <tr><td>p. 5</td><td>For the reader: five-section check and red flags</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PAGE 2: summary (sections 1, 2, 4, 5) -->
+<section class="strona">
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 2 of 5</span></div>
+  <h2 class="tytul">Monthly summary <span style="font-weight:400;color:#6E6E73;font-size:10pt">– page 1 of the report, clear without any attachments</span></h2>
+
+  <h3><span class="nr">1.</span> Result against the goal</h3>
+  <table>
+    <thead><tr><th style="width:44%">Metric</th><th>This month</th><th>Goal</th><th>Same month last year</th><th>YoY change</th></tr></thead>
+    <tbody>
+      <tr><td>Customer inquiries from Google (form + phone + email)</td><td class="w"></td><td></td><td></td><td></td></tr>
+      <tr><td>Cost per inquiry</td><td class="w"></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="pole" style="margin-top:2mm">
+    <div class="tekst">The result in three sentences: what it was, how it compares with the goal and which way the trend is heading.<br><i>e.g. “More Google inquiries than a year ago, but below goal. Form fills are up. The trend has been rising for 3 months.”</i></div>
+    <div class="linia"></div><div class="linia"></div>
+  </div>
+
+  <h3><span class="nr">2.</span> What influenced the result: 3–5 causes, each with evidence</h3>
+  <p class="maly">Evidence: a dated Search Console screenshot, the go-live date of a change, or an algorithm update confirmed by Google.</p>
+  <table>
+    <thead><tr><th style="width:7mm">#</th><th style="width:38%">What changed</th><th style="width:14%">When</th><th style="width:18%">Pages</th><th>Evidence</th></tr></thead>
+    <tbody>
+      <tr class="przyklad"><td class="nr">e.g.</td><td>New pricing section on the service page; clicks on price keywords rising since then</td><td>mid-month</td><td>service page</td><td>dated Search Console screenshot</td></tr>
+      <tr><td class="nr">1</td><td class="w"></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">2</td><td class="w"></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">3</td><td class="w"></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">4</td><td class="w"></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">5</td><td class="w"></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p class="zle"><b>Not good enough:</b> “rankings went up thanks to optimization” – with no date and no page URL, it explains nothing.</p>
+
+  <p class="odsylacz"><b>3. Work done and its effect</b> – the full dated list is in the work log on p. 3.</p>
+
+  <h3><span class="nr">4.</span> Plan for next month: the 3 most important tasks</h3>
+  <table>
+    <thead><tr><th style="width:7mm">#</th><th style="width:36%">Task and what it covers</th><th style="width:28%">Expected effect</th><th>How you will know</th></tr></thead>
+    <tbody>
+      <tr class="przyklad"><td class="nr">e.g.</td><td>Pricing FAQ on the service page</td><td>more clicks on price keywords</td><td>Search Console, next report</td></tr>
+      <tr><td class="nr">1</td><td class="w"></td><td></td><td></td></tr>
+      <tr><td class="nr">2</td><td class="w"></td><td></td><td></td></tr>
+      <tr><td class="nr">3</td><td class="w"></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p class="zle"><b>Not good enough:</b> a plan with a single item, “further optimization” – it gives you nothing to check in the next report.</p>
+
+  <h3><span class="nr">5.</span> Risks and needs</h3>
+  <table>
+    <thead><tr><th style="width:42%">Risk or need</th><th style="width:38%">What is needed and from whom</th><th>By when</th></tr></thead>
+    <tbody>
+      <tr class="przyklad"><td>Technical fixes are waiting for a developer</td><td>developer access – client</td><td>date</td></tr>
+      <tr><td class="w"></td><td></td><td></td></tr>
+      <tr><td class="w"></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PAGE 3: section 3, work log -->
+<section class="strona">
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 3 of 5</span></div>
+  <h2 class="tytul"><span style="color:#D85A30">3.</span> Work done and its effect</h2>
+  <p class="opis">A dated list of work: new content, technical fixes, links acquired, changes to the Google Business Profile. For each item, name the page it concerns and say whether the effect is visible yet. Each entry should make clear what exactly was changed.</p>
+  <table>
+    <thead><tr><th style="width:18mm">Date</th><th style="width:21mm">Type</th><th>What exactly changed</th><th style="width:30mm">Page (URL)</th><th style="width:11mm">Hrs</th><th style="width:30mm">Effect</th></tr></thead>
+    <tbody>
+      <tr class="przyklad"><td>e.g.<br>Oct 14</td><td>content</td><td>Pricing section on the service page</td><td>service page URL</td><td></td><td>visible: clicks on price keywords rising</td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+      <tr><td class="wl"></td><td></td><td></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>visible</span><span><i class="cb"></i>not yet</span></span></td></tr>
+    </tbody>
+  </table>
+  <p class="maly" style="margin-top:1.6mm">Type: content, technical, link, Business Profile. <b>Not good enough:</b> task names alone, such as “on-page optimization,” with nothing about what changed or where.</p>
+  <div class="pole" style="margin-top:2.4mm"><div class="tekst" style="margin:0">Hours this month (if you pay by the hour): &nbsp;__________ &nbsp;of&nbsp; __________ &nbsp;in the contract</div></div>
+
+  <h3>Links acquired</h3>
+  <p class="maly">For every link: the URL, the date and its current status. Quality counts, not the number of links.</p>
+  <table>
+    <thead><tr><th>Linking page URL</th><th style="width:18mm">Date</th><th style="width:44mm">Target page</th><th style="width:30mm">Link still live</th></tr></thead>
+    <tbody>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PAGE 4: metrics table -->
+<section class="strona">
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 4 of 5</span></div>
+  <h2 class="tytul">Metrics table (appendix)</h2>
+  <p class="opis">Fill it in with data from GA4 and Google Search Console, and write the month names in the column headers. Count clicks and impressions without brand queries: in the Search Console Performance report, add a query filter that excludes your company name and its variants, including misspellings.</p>
+  <table>
+    <thead><tr><th style="width:33%">Metric</th><th style="width:19%">Source</th><th>Month<span class="pod">________</span></th><th>Month<span class="pod">________</span></th><th>Month<span class="pod">________</span></th><th>Last year<span class="pod">same month</span></th><th>Change<span class="pod">YoY</span></th></tr></thead>
+    <tbody>
+      <tr><td><b>Customer inquiries from Google – total</b></td><td>GA4: key events</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="padding-left:5mm">of which: form</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="padding-left:5mm">of which: phone</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="padding-left:5mm">of which: email</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><b>Cost per inquiry</b> (monthly SEO cost ÷ number of inquiries)</td><td>invoices, GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Clicks excluding brand queries</td><td>Search Console</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Impressions excluding brand queries</td><td>Search Console</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Agreed keywords in the TOP 3 (%)</td><td>Search Console or a rank tracker</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Agreed keywords in the TOP 10 (%)</td><td>Search Console or a rank tracker</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Business Profile: 7×7 grid points in the TOP 3 (%)</td><td>49-point measurement</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>AI answers that name the company (%)</td><td>fixed set of questions, weekly</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Links acquired: new / still live</td><td>link list (p. 3)</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>How to read the metrics and where the pitfalls are</h3>
+  <table>
+    <thead><tr><th style="width:28%">Metric</th><th style="width:22%">Source</th><th style="width:22%">How to read it</th><th>Pitfall</th></tr></thead>
+    <tbody>
+      <tr><td>Inquiries from Google (form, phone, email) and the cost per inquiry</td><td>GA4 (key events), invoices</td><td>The main result of the month</td><td>Without key events set up, this number does not exist</td></tr>
+      <tr><td>Clicks and impressions excluding brand queries</td><td>Google Search Console</td><td>Year-over-year trend</td><td>Brand queries inflate the result</td></tr>
+      <tr><td>Rankings of keywords from the agreed list</td><td>Search Console or a rank tracker</td><td>Share of keywords in the TOP 3 and TOP 10</td><td>With many keywords, the average position is misleading</td></tr>
+      <tr><td>Business Profile position in Maps</td><td>Measurement from 49 points (7×7 grid)</td><td>Percentage of points in the TOP 3</td><td>A single check from the office is a coincidence</td></tr>
+      <tr><td>Visibility in ChatGPT and AI Overviews</td><td>A fixed set of customer questions, weekly</td><td>Percentage of answers that name the company</td><td>A single question proves nothing</td></tr>
+      <tr><td>Links acquired</td><td>A list with the URL, date and status</td><td>Whether the link is still on the page</td><td>A link count that ignores link quality</td></tr>
+    </tbody>
+  </table>
+  <p class="maly" style="margin-top:2mm">Measure the Business Profile on a grid of points around the company address, because customers see different Maps results depending on where they are. ChatGPT answers change from day to day, so measure AI visibility with a fixed set of questions asked on a regular schedule. Record every change to the tracked keyword list in the report.</p>
+</section>
+
+<!-- PAGE 5: for the reader -->
+<section class="strona">
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 5 of 5</span></div>
+  <h2 class="tytul">For the reader: check your agency’s report</h2>
+  <p class="opis">Fill this in after every report. Missing sections and ticked flags are your questions for the next meeting.</p>
+
+  <h3>Does the report have all five sections?</h3>
+  <table>
+    <thead><tr><th>Section</th><th style="width:24mm">Month: ______</th><th style="width:24mm">Month: ______</th><th style="width:24mm">Month: ______</th></tr></thead>
+    <tbody>
+      <tr><td><b>1.</b> Result against the goal: inquiries, cost, goal, year-over-year comparison</td><td><i class="cb"></i></td><td><i class="cb"></i></td><td><i class="cb"></i></td></tr>
+      <tr><td><b>2.</b> 3–5 causes of change, each with evidence and a date</td><td><i class="cb"></i></td><td><i class="cb"></i></td><td><i class="cb"></i></td></tr>
+      <tr><td><b>3.</b> Work log with dates and page URLs</td><td><i class="cb"></i></td><td><i class="cb"></i></td><td><i class="cb"></i></td></tr>
+      <tr><td><b>4.</b> Plan: 3 tasks with the expected effect and how to check it</td><td><i class="cb"></i></td><td><i class="cb"></i></td><td><i class="cb"></i></td></tr>
+      <tr><td><b>5.</b> Risks and needs, including what the agency needs from you</td><td><i class="cb"></i></td><td><i class="cb"></i></td><td><i class="cb"></i></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Red flags</h3>
+  <ul class="flagi">
+    <li><i class="cb"></i><div><b>No number of customer inquiries.</b><span class="t">The report talks about traffic and rankings, but not about how many customers got in touch. Without key events in GA4, nobody knows whether SEO pays off.</span></div></li>
+    <li><i class="cb"></i><div><b>Rankings without a keyword list agreed at the start.</b><span class="t">The agency shows keywords where the site already ranks high, not the ones you agreed on. It is easy to build growth from such keywords that means nothing for sales.</span></div></li>
+    <li><i class="cb"></i><div><b>“Visibility” with no definition or source.</b><span class="t">Without the name of the tool, the method and the keyword list, you cannot verify a visibility chart or compare it with the previous period.</span></div></li>
+    <li><i class="cb"></i><div><b>No dated list of work done.</b><span class="t">If you do not know what was done and when, you cannot link a change in results to the agency’s work or to anything else.</span></div></li>
+    <li><i class="cb"></i><div><b>No year-over-year comparison.</b><span class="t">Month-over-month growth during peak season is often just the calendar, not the effect of SEO.</span></div></li>
+    <li><i class="cb"></i><div><b>Data only in a PDF.</b><span class="t">A report is no substitute for access to Search Console and Analytics on your own account. Without it, you are left with no data history when the contract ends.</span></div></li>
+  </ul>
+  <p class="ocena"><b>How to score it:</b> one flag is a reason to ask questions; several at once are a reason to talk about changing agencies. Some flags come from convenience rather than bad intent, so start with a conversation and ask for a report based on this template.</p>
+
+  <h3>Questions for your next meeting</h3>
+  <div class="linia"></div><div class="linia"></div><div class="linia"></div>
+
+  <p class="maly" style="margin-top:4mm">Want an outside view of your previous agency’s reports? Book a free 30-minute online review: <span class="nw">kontakt@ai-seo-company.pl</span>, <span class="nw">+48 518 815 055</span>.</p>
+
+  <footer class="stopka">
+    <span><b>www.ai-seo-company.pl/en/tools/seo-report-template</b></span>
+    <span>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</span>
+  </footer>
+</section>
+
+</body>
+</html>

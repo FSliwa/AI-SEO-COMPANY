@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import GeneratorLlmsTxt from '@/components/narzedzia/GeneratorLlmsTxt';
+import SzablonStrona from '@/components/narzedzia/SzablonStrona';
+import { szablonBySlug } from '@/lib/szablony';
 import SzablonRaport from '@/components/narzedzia/SzablonRaport';
 import { AudytSeoStrona, AutorytetStrona, KalkulatorStrona, MakietaStrona } from '@/components/narzedzia/StronyAplikacji';
 import { metadataStronyPl, parametryPl, wymagajStronyPl } from '@/lib/stronaPl';
@@ -32,14 +34,17 @@ export async function generateMetadata({ params }) {
   if (!stronaNarzedzia(slug)) return {};
   const sciezka = `/narzedzia/${slug}`;
   const { title, description } = metaStrony(sciezka);
-  return metadataStronyPl({ locale, sciezka, title, description, ogType: slug === 'raport-seo' ? 'article' : 'website' });
+  return metadataStronyPl({ locale, sciezka, title, description, ogType: slug === 'raport-seo' || szablonBySlug(slug) ? 'article' : 'website' });
 }
 
 export default async function NarzedziePage({ params }) {
   const { locale, slug } = await params;
   wymagajStronyPl(locale, `/narzedzia/${slug}`);
+  const szablon = szablonBySlug(slug);
   const Komponent = KOMPONENTY[slug];
-  if (!Komponent || !stronaNarzedzia(slug)) notFound();
+  if ((!Komponent && !szablon) || !stronaNarzedzia(slug)) notFound();
   setRequestLocale(locale);
+  // 11.11.2026: szablony do pobrania z lib/szablony renderuje wspólny SzablonStrona.
+  if (szablon) return <SzablonStrona dane={szablon} locale={locale} />;
   return <Komponent locale={locale} />;
 }

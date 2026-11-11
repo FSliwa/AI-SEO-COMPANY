@@ -266,6 +266,7 @@ export default function SzablonRaport({ locale = 'pl' }) {
             </p>
             <ChecklistForm
               endpoint={ENDPOINT_WZORU_RAPORTU}
+              plik="wzor-raportu-seo"
               plan="wzor_raportu_seo"
               kategoria="Template"
               idPrefiks="wr"
@@ -517,6 +518,7 @@ function RaportEn() {
             </p>
             <ChecklistForm
               endpoint={ENDPOINT_WZORU_RAPORTU}
+              plik="wzor-raportu-seo"
               plan="wzor_raportu_seo"
               kategoria="Template"
               idPrefiks="wr"

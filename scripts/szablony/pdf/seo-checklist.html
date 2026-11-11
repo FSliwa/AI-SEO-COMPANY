@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SEO checklist: 50 checks</title>
+<style>
+@page { size: A4; margin: 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 9pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.naglowek { font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2.5mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 6mm; }
+.naglowek b { color: #D85A30; }
+h1 { font-size: 20pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+.pod { font-size: 9.5pt; color: #48484A; margin: 0 0 4.5mm; }
+h2 { font-size: 13pt; margin: 0 0 2mm; padding-bottom: 1.6mm; border-bottom: 1.6pt solid #D85A30; display: inline-block; }
+h3 { font-size: 10.5pt; margin: 3mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.2pt solid #D85A30; display: inline-block; }
+.pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 3mm; }
+.pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+.pole span { white-space: nowrap; }
+.pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+.baza { display: grid; grid-template-columns: 1fr; gap: 2.5mm; }
+ol.kroki { margin: 0; padding-left: 5mm; }
+ol.kroki li { margin: 0 0 1.4mm; }
+.dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+ul.leg { list-style: none; margin: 0; padding: 0; }
+ul.leg li { margin: 0 0 1.6mm; }
+.box { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: 0.5mm; vertical-align: -0.4mm; margin-right: 1.2mm; background: #fff; }
+.prio { display: inline-block; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.4mm 1.4mm; border-radius: 1mm; border: 0.6pt solid #E5E1DC; color: #6E6E73; margin-right: 1mm; }
+.prio.w { color: #fff; background: #D85A30; border-color: #D85A30; }
+.prio.s { color: #D85A30; border-color: #D85A30; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 0.6pt solid #E5E1DC; padding: 1.4mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: #F7F5F2; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; color: #48484A; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+td.c { text-align: center; }
+table.podsum td { height: 6.4mm; vertical-align: middle; padding-top: 0.8mm; padding-bottom: 0.8mm; }
+table.podsum tr.razem td { font-weight: 700; background: #FBFAF8; }
+.obszar { break-before: page; page-break-before: always; }
+.opis { margin: 1mm 0 3mm; color: #48484A; font-size: 8.5pt; }
+.ile { color: #D85A30; font-weight: 700; white-space: nowrap; }
+table.lista td { padding: 1mm 1.4mm; }
+.nr { font-weight: 700; color: #D85A30; font-size: 8.5pt; }
+.pk { font-weight: 700; font-size: 8.5pt; line-height: 1.26; }
+.jak { font-size: 7.5pt; color: #48484A; margin-top: 0.4mm; line-height: 1.26; }
+.jak b { font-weight: 700; color: #1D1D1F; }
+.st { font-size: 7.2pt; line-height: 1.4; white-space: nowrap; }
+.st div { margin: 0 0 0.2mm; }
+.st .box { width: 2.6mm; height: 2.6mm; }
+.notatki { }
+code { font-family: inherit; font-size: 7.5pt; background: #F7F5F2; padding: 0 0.6mm; border-radius: 0.6mm; }
+.wynik { margin: 3mm 0 0; font-size: 8.5pt; }
+footer { margin-top: 7mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+footer p { margin: 0 0 0.8mm; }
+footer strong { color: #1D1D1F; }
+.sek { margin: 0 0 3.5mm; }
+</style>
+</head>
+<body>
+<div class="naglowek"><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</div>
+<h1>SEO checklist: 50 checks</h1>
+<p class="pod">Technical basics, on-page SEO, local SEO, AI readiness and measurement. Every check has a priority and a way to verify it. Version: November 2026.</p>
+<div class="pola sek"><div class="pole"><span>Website (URL)</span><i></i></div><div class="pole"><span>Review date</span><i></i></div><div class="pole"><span>Reviewed by</span><i></i></div><div class="pole"><span>Next review</span><i></i></div></div>
+<div class="sek">
+  <h3>How to use this template</h3>
+  <ol class="kroki"><li><strong>Record a baseline.</strong> non-brand clicks and customer inquiries (table at the bottom of this page).</li><li><strong>Collect access.</strong> Search Console, GA4, Google Business Profile, CMS, robots.txt. Missing access is your first finding.</li><li><strong>Work through areas A–E in order.</strong> and mark each check OK, needs work or N/A.</li><li><strong>Describe the problem.</strong> in the notes: the URL and the specific issue, e.g. “/contact: no H1.”</li><li><strong>Set the order.</strong> high priority first. Give every open check an owner and a deadline.</li><li><strong>Recheck.</strong> after the fixes and fill in the summary. Repeat the full list every quarter.</li></ol>
+</div>
+<div class="sek">
+  <h3>Statuses and priorities</h3>
+  <div class="dwie"><ul class="leg"><li><span class="box"></span><strong>OK</strong> – the check passes</li><li><span class="box"></span><strong>Fix</strong> – needs work: note the URL and the problem</li><li><span class="box"></span><strong>N/A</strong> – doesn’t apply to your business; leave it out of the score</li></ul><ul class="leg"><li><span class="prio w">high</span> blocks visibility in Google or Maps, or blocks measurement; do it first</li><li><span class="prio s">medium</span> holds results back, but the site works and is visible</li><li><span class="prio n">low</span> polishes the details; do it alongside other changes</li></ul></div>
+</div>
+<div class="sek">
+  <h3>Review summary</h3>
+  <table class="podsum">
+    <colgroup><col style="width:44mm"><col style="width:18mm"><col style="width:18mm"><col style="width:24mm"><col style="width:18mm"><col></colgroup>
+    <thead><tr><th>Area</th><th>Checks</th><th>OK</th><th>Needs work</th><th>N/A</th><th>Open high-priority checks</th></tr></thead>
+    <tbody><tr><td>A. Technical SEO basics</td><td class="c">10</td><td></td><td></td><td></td><td></td></tr><tr><td>B. On-page SEO</td><td class="c">14</td><td></td><td></td><td></td><td></td></tr><tr><td>C. Local SEO</td><td class="c">9</td><td></td><td></td><td></td><td></td></tr><tr><td>D. AI readiness</td><td class="c">8</td><td></td><td></td><td></td><td></td></tr><tr><td>E. Measurement</td><td class="c">9</td><td></td><td></td><td></td><td></td></tr><tr class="razem"><td>Total</td><td class="c">50</td><td></td><td></td><td></td><td></td></tr></tbody>
+  </table>
+</div>
+<div>
+  <h3>Baseline (check E9)</h3>
+  <div class="baza"><div class="pole"><span>Non-brand clicks (Search Console, last month)</span><i></i></div><div class="pole"><span>Customer inquiries (GA4 key events, last month)</span><i></i></div><div class="pole"><span>Date recorded</span><i></i></div></div>
+</div>
+
+<section class="obszar">
+  <h2>A. Technical SEO basics</h2>
+  <p class="opis">Whether Google can reach your pages, index them and display them well on a phone. For a deeper technical review, see the technical SEO audit checklist on ai-seo-company.pl. <span class="ile">10 checks</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">A1</td>
+        <td><div class="pk">The site runs on HTTPS, and http:// URLs redirect to https://</div><div class="jak"><b>How to check:</b> Type your address with http:// and confirm the browser lands on https:// with no warning.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A2</td>
+        <td><div class="pk">Only one version of the domain resolves (www or non-www), and the other redirects to it in a single hop</div><div class="jak"><b>How to check:</b> Open both versions. They should end on the same page without a redirect chain.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A3</td>
+        <td><div class="pk">robots.txt does not block pages you want in Google</div><div class="jak"><b>How to check:</b> Open yourdomain.com/robots.txt. Look for "Disallow: /" and for rules covering your service or blog folders.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A4</td>
+        <td><div class="pk">Important pages carry no noindex tag</div><div class="jak"><b>How to check:</b> Search Console → URL Inspection on the homepage and service pages: indexing should be allowed.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A5</td>
+        <td><div class="pk">The XML sitemap lists only canonical URLs that work, and robots.txt points to it</div><div class="jak"><b>How to check:</b> Open sitemap.xml and robots.txt (the "Sitemap:" line). Remove redirects, 404s and noindexed pages from the sitemap.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A6</td>
+        <td><div class="pk">Every page has a canonical tag pointing to itself or to the preferred version</div><div class="jak"><b>How to check:</b> View the page source (<code>rel="canonical"</code>) or run the free SEO audit.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A7</td>
+        <td><div class="pk">Internal links don’t point to 404 pages or pass through redirects</div><div class="jak"><b>How to check:</b> Use a crawler or the Pages report in Search Console. Fix the link at the source, not just the redirect.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A8</td>
+        <td><div class="pk">The site is easy to use on a phone: no sideways scrolling, readable text, buttons that are easy to tap</div><div class="jak"><b>How to check:</b> Open the homepage, a service page and the contact page on a phone. Submit the form end to end.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A9</td>
+        <td><div class="pk">Core Web Vitals pass: LCP within 2.5 s, INP under 200 ms, CLS under 0.1</div><div class="jak"><b>How to check:</b> Search Console → Core Web Vitals (real-user data). Use Lighthouse to find the causes.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A10</td>
+        <td><div class="pk">URLs are short and readable: words instead of random IDs</div><div class="jak"><b>How to check:</b> Scan the URLs in your sitemap. Never change working URLs without 301 redirects.</div></td>
+        <td><span class="prio n">low</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  
+</section>
+<section class="obszar">
+  <h2>B. On-page SEO: titles, descriptions, headings, content, links, images</h2>
+  <p class="opis">Whether every key page tells Google and your customers what it’s about, and whether links lead to it. <span class="ile">14 checks</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">B1</td>
+        <td><div class="pk">Every page has its own title that describes its content</div><div class="jak"><b>How to check:</b> Run a crawler or the free audit, sort the titles, and find duplicates and blanks.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B2</td>
+        <td><div class="pk">Titles lead with the most important information, don’t repeat words, and put the brand at the end</div><div class="jak"><b>How to check:</b> Check your listing in Google. Titles get truncated to fit the screen, so the key phrase can’t sit at the end of a long title.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B3</td>
+        <td><div class="pk">Key pages have a unique meta description that sums up the page and earns the click</div><div class="jak"><b>How to check:</b> Crawler: find empty and duplicate descriptions. Google sometimes shows a different snippet, so treat yours as a suggestion.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B4</td>
+        <td><div class="pk">Each page has one H1 that says what the page is about and includes the primary keyword</div><div class="jak"><b>How to check:</b> Use an SEO browser extension or view the source and count the h1 tags.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B5</td>
+        <td><div class="pk">H2 and H3 headings split the content into sections that answer customer questions</div><div class="jak"><b>How to check:</b> Read the headings alone. Do they tell you what the page covers?</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B6</td>
+        <td><div class="pk">The content matches search intent: scope, price and process for a service, a direct answer for a question</div><div class="jak"><b>How to check:</b> Search the keyword and compare the kind of pages in the top 10 with yours.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B7</td>
+        <td><div class="pk">The first paragraph answers the main question directly and includes the primary keyword</div><div class="jak"><b>How to check:</b> Read only the first paragraph. Does a customer already know what you offer and where?</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B8</td>
+        <td><div class="pk">No two pages compete for the same keyword (cannibalization)</div><div class="jak"><b>How to check:</b> Search Console → Performance → filter by query → Pages tab. Several URLs on one query call for a decision.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B9</td>
+        <td><div class="pk">Content is current: prices, service names, contact details and dates</div><div class="jak"><b>How to check:</b> Review service pages and pricing. Show an “updated” date on articles.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B10</td>
+        <td><div class="pk">Every important page gets internal links from other pages (menu, body copy, footer)</div><div class="jak"><b>How to check:</b> Crawler: find pages with no incoming links. Add a link from a closely related page.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B11</td>
+        <td><div class="pk">Link text describes the target page (“technical SEO audit,” not “click here”)</div><div class="jak"><b>How to check:</b> Review the links in the body copy of your key pages.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B12</td>
+        <td><div class="pk">Images have descriptive alt text that fits the page, with no keyword stuffing</div><div class="jak"><b>How to check:</b> Crawler: images without alt. Describe the image the way you would to someone who can’t see it.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B13</td>
+        <td><div class="pk">Image files have descriptive names, a modern format (WebP or AVIF) and set dimensions</div><div class="jak"><b>How to check:</b> Check file names in your media library and the Lighthouse report.</div></td>
+        <td><span class="prio n">low</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B14</td>
+        <td><div class="pk">It’s clear who is behind the site: company name, contact details, author of expert content</div><div class="jak"><b>How to check:</b> Check the footer, the About page and article bylines.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  
+</section>
+<section class="obszar">
+  <h2>C. Local SEO: Google Business Profile and NAP</h2>
+  <p class="opis">Whether your business is described consistently on your Google Business Profile, your website and directories. <span class="ile">9 checks</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">C1</td>
+        <td><div class="pk">The business has a verified Google Business Profile, one per location</div><div class="jak"><b>How to check:</b> Search your business name in Google and Maps. Report duplicates for removal or merging.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C2</td>
+        <td><div class="pk">The profile name is your real-world business name, with no added keywords, city or tagline</div><div class="jak"><b>How to check:</b> Compare it with your signage, invoices and website.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C3</td>
+        <td><div class="pk">The primary category says what the business is, and additional categories are kept to a minimum</div><div class="jak"><b>How to check:</b> Profile dashboard → categories. A category is a type of business, not a list of services.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C4</td>
+        <td><div class="pk">NAP (name, address, phone) is identical on your site, your profile and business directories</div><div class="jak"><b>How to check:</b> Copy the NAP from each place into one table and compare it character by character.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C5</td>
+        <td><div class="pk">A business that doesn’t serve customers at its address hides the address and sets a service area</div><div class="jak"><b>How to check:</b> Profile dashboard → location and service area.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C6</td>
+        <td><div class="pk">Opening hours are current, and holidays have special hours</div><div class="jak"><b>How to check:</b> Check the profile before every long weekend and public holiday.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C7</td>
+        <td><div class="pk">The site has a contact page with the NAP as text (not an image), a map and directions</div><div class="jak"><b>How to check:</b> Try to select the address with your mouse. If you can’t, it’s an image. Several locations: one page each.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C8</td>
+        <td><div class="pk">Reviews come in steadily, and each one gets a reply from the business</div><div class="jak"><b>How to check:</b> Profile dashboard → reviews. Reply to critical reviews too, factually and without customer details.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C9</td>
+        <td><div class="pk">The profile has current photos of the premises, team or work, and a complete list of services</div><div class="jak"><b>How to check:</b> Compare it with the profiles you see in the top three map results.</div></td>
+        <td><span class="prio n">low</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  
+</section>
+<section class="obszar">
+  <h2>D. AI readiness: bots, structured data, llms.txt</h2>
+  <p class="opis">Whether AI search engines can read your site. Google requires no special files for AI Overviews, so llms.txt is low priority. <span class="ile">8 checks</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">D1</td>
+        <td><div class="pk">robots.txt lets AI search bots in: OAI-SearchBot (ChatGPT), PerplexityBot, Claude-SearchBot</div><div class="jak"><b>How to check:</b> Open robots.txt. Look for these names and for a "User-agent: *" group with "Disallow: /".</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D2</td>
+        <td><div class="pk">Your decision on training bots (GPTBot, ClaudeBot, Google-Extended) is deliberate and written down</div><div class="jak"><b>How to check:</b> Note in the template whether you allow them. Blocking Google-Extended does not affect Google Search.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D3</td>
+        <td><div class="pk">Your firewall (WAF) or CDN doesn’t block the bots that robots.txt allows</div><div class="jak"><b>How to check:</b> Check the bot protection settings at your host or CDN, and your server logs.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D4</td>
+        <td><div class="pk">Key content (offer, prices, contact) is in the HTML, not only in images or PDF files</div><div class="jak"><b>How to check:</b> Select the text on the page and view the source. Text that exists only in a graphic is hard for any crawler to read.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D5</td>
+        <td><div class="pk">Organization or LocalBusiness structured data in JSON-LD matches what’s visible on the page</div><div class="jak"><b>How to check:</b> Rich Results Test or the schema.org validator. Name, address and phone as in your profile.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D6</td>
+        <td><div class="pk">The About page states clear facts: what you do, where and for whom</div><div class="jak"><b>How to check:</b> Read it as someone who has never heard of you. Your company description should read the same on your profile and social accounts.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D7</td>
+        <td><div class="pk">Answers to common customer questions (price, timing, process) are on the site in short, self-contained paragraphs</div><div class="jak"><b>How to check:</b> List the questions customers ask on the phone. Does each one have an answer on the site?</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D8</td>
+        <td><div class="pk">Optional: an llms.txt file at the site root with a company summary and links to key pages</div><div class="jak"><b>How to check:</b> Open yourdomain.com/llms.txt. Google doesn’t require it for AI Overviews, so do it after the checks above.</div></td>
+        <td><span class="prio n">low</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  
+</section>
+<section class="obszar">
+  <h2>E. Measurement: Search Console and GA4</h2>
+  <p class="opis">Whether you know how many inquiries search brings in, and whether you compare results using the same method. <span class="ile">9 checks</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">E1</td>
+        <td><div class="pk">Search Console covers the whole domain, and a company account is the owner</div><div class="jak"><b>How to check:</b> Search Console → Settings → Users and permissions. Your agency can have access, but not as the only owner.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E2</td>
+        <td><div class="pk">The sitemap is submitted in the Sitemaps report and shows no processing errors</div><div class="jak"><b>How to check:</b> Search Console → Sitemaps: status “Success” and the number of discovered URLs.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E3</td>
+        <td><div class="pk">The Pages report has been reviewed: key pages are indexed and exclusion reasons are understood</div><div class="jak"><b>How to check:</b> Search Console → Pages. Start with service and contact pages.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E4</td>
+        <td><div class="pk">GA4 runs on every page through a single tag, and the company owns the property</div><div class="jak"><b>How to check:</b> Google Tag Assistant preview or the Realtime report in GA4.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E5</td>
+        <td><div class="pk">GA4 key events track customer actions: form submissions, phone clicks and email clicks</div><div class="jak"><b>How to check:</b> GA4 → Admin → Key events. Submit a test form and check that the event shows up.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E6</td>
+        <td><div class="pk">GA4 is linked to Search Console</div><div class="jak"><b>How to check:</b> GA4 → Admin → Product links → Search Console links.</div></td>
+        <td><span class="prio n">low</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E7</td>
+        <td><div class="pk">The keyword list you track is agreed and written down, and you measure rankings the same way every month</div><div class="jak"><b>How to check:</b> Record keywords, location and device. Changing the method breaks comparisons.</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E8</td>
+        <td><div class="pk">A fixed set of customer questions is checked monthly in ChatGPT, Gemini, Perplexity and Google AI Overviews</div><div class="jak"><b>How to check:</b> Record the questions and the outcome: is your business named, and which sources are cited?</div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E9</td>
+        <td><div class="pk">A baseline is recorded before any changes, and results are compared year over year</div><div class="jak"><b>How to check:</b> Record the date, non-brand clicks and customer inquiries from GA4.</div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  <footer><p>Latest version of this checklist, a worked example and sources: <strong>www.ai-seo-company.pl/en/tools/seo-checklist</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p></footer>
+</section>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Checklista SEO: 50 punktów kontrolnych</title>
+<style>
+@page { size: A4; margin: 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 9pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.naglowek { font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2.5mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 6mm; }
+.naglowek b { color: #D85A30; }
+h1 { font-size: 20pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+.pod { font-size: 9.5pt; color: #48484A; margin: 0 0 4.5mm; }
+h2 { font-size: 13pt; margin: 0 0 2mm; padding-bottom: 1.6mm; border-bottom: 1.6pt solid #D85A30; display: inline-block; }
+h3 { font-size: 10.5pt; margin: 3mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.2pt solid #D85A30; display: inline-block; }
+.pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 3mm; }
+.pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+.pole span { white-space: nowrap; }
+.pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+.baza { display: grid; grid-template-columns: 1fr; gap: 2.5mm; }
+ol.kroki { margin: 0; padding-left: 5mm; }
+ol.kroki li { margin: 0 0 1.4mm; }
+.dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+ul.leg { list-style: none; margin: 0; padding: 0; }
+ul.leg li { margin: 0 0 1.6mm; }
+.box { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: 0.5mm; vertical-align: -0.4mm; margin-right: 1.2mm; background: #fff; }
+.prio { display: inline-block; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.4mm 1.4mm; border-radius: 1mm; border: 0.6pt solid #E5E1DC; color: #6E6E73; margin-right: 1mm; }
+.prio.w { color: #fff; background: #D85A30; border-color: #D85A30; }
+.prio.s { color: #D85A30; border-color: #D85A30; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 0.6pt solid #E5E1DC; padding: 1.4mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: #F7F5F2; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; color: #48484A; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+td.c { text-align: center; }
+table.podsum td { height: 6.4mm; vertical-align: middle; padding-top: 0.8mm; padding-bottom: 0.8mm; }
+table.podsum tr.razem td { font-weight: 700; background: #FBFAF8; }
+.obszar { break-before: page; page-break-before: always; }
+.opis { margin: 1mm 0 3mm; color: #48484A; font-size: 8.5pt; }
+.ile { color: #D85A30; font-weight: 700; white-space: nowrap; }
+table.lista td { padding: 1mm 1.4mm; }
+.nr { font-weight: 700; color: #D85A30; font-size: 8.5pt; }
+.pk { font-weight: 700; font-size: 8.5pt; line-height: 1.26; }
+.jak { font-size: 7.5pt; color: #48484A; margin-top: 0.4mm; line-height: 1.26; }
+.jak b { font-weight: 700; color: #1D1D1F; }
+.st { font-size: 7.2pt; line-height: 1.4; white-space: nowrap; }
+.st div { margin: 0 0 0.2mm; }
+.st .box { width: 2.6mm; height: 2.6mm; }
+.notatki { }
+code { font-family: inherit; font-size: 7.5pt; background: #F7F5F2; padding: 0 0.6mm; border-radius: 0.6mm; }
+.wynik { margin: 3mm 0 0; font-size: 8.5pt; }
+footer { margin-top: 7mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+footer p { margin: 0 0 0.8mm; }
+footer strong { color: #1D1D1F; }
+.sek { margin: 0 0 3.5mm; }
+</style>
+</head>
+<body>
+<div class="naglowek"><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</div>
+<h1>Checklista SEO: 50 punktów kontrolnych</h1>
+<p class="pod">Podstawy techniczne, on-page, SEO lokalne, gotowość na AI i pomiar. Każdy punkt ma priorytet i sposób sprawdzenia. Wersja: listopad 2026.</p>
+<div class="pola sek"><div class="pole"><span>Strona (adres)</span><i></i></div><div class="pole"><span>Data przeglądu</span><i></i></div><div class="pole"><span>Osoba sprawdzająca</span><i></i></div><div class="pole"><span>Następny przegląd</span><i></i></div></div>
+<div class="sek">
+  <h3>Jak korzystać z szablonu</h3>
+  <ol class="kroki"><li><strong>Zapisz stan wyjściowy.</strong> kliknięcia bez zapytań o markę i zapytania od klientów (tabela na dole strony).</li><li><strong>Zbierz dostępy.</strong> Search Console, GA4, panel wizytówki Google, CMS, robots.txt. Brak dostępu to pierwszy punkt do poprawy.</li><li><strong>Przejdź obszary A–E po kolei.</strong> i przy każdym punkcie zaznacz status: OK, do poprawy albo n/d.</li><li><strong>Opisz problem.</strong> w notatce: adres strony i konkretny błąd, np. „/kontakt: brak H1”.</li><li><strong>Ułóż kolejność.</strong> najpierw priorytet wysoki. Każdemu punktowi przypisz osobę i termin.</li><li><strong>Sprawdź ponownie.</strong> po wdrożeniu i uzupełnij podsumowanie. Całą listę powtarzaj co kwartał.</li></ol>
+</div>
+<div class="sek">
+  <h3>Statusy i priorytety</h3>
+  <div class="dwie"><ul class="leg"><li><span class="box"></span><strong>OK</strong> – punkt spełniony</li><li><span class="box"></span><strong>Popr.</strong> – do poprawy: w notatce wpisz adres strony i problem</li><li><span class="box"></span><strong>n/d</strong> – nie dotyczy Twojej firmy, nie licz w wyniku</li></ul><ul class="leg"><li><span class="prio w">wysoki</span> blokuje widoczność w Google, w Mapach albo pomiar; zrób najpierw</li><li><span class="prio s">średni</span> ogranicza wyniki, ale strona działa i jest widoczna</li><li><span class="prio n">niski</span> porządkuje szczegóły; zrób przy okazji innych zmian</li></ul></div>
+</div>
+<div class="sek">
+  <h3>Podsumowanie przeglądu</h3>
+  <table class="podsum">
+    <colgroup><col style="width:44mm"><col style="width:18mm"><col style="width:18mm"><col style="width:24mm"><col style="width:18mm"><col></colgroup>
+    <thead><tr><th>Obszar</th><th>Punkty</th><th>OK</th><th>Do poprawy</th><th>n/d</th><th>Otwarte z priorytetem wysokim</th></tr></thead>
+    <tbody><tr><td>A. Podstawy techniczne</td><td class="c">10</td><td></td><td></td><td></td><td></td></tr><tr><td>B. On-page</td><td class="c">14</td><td></td><td></td><td></td><td></td></tr><tr><td>C. SEO lokalne</td><td class="c">9</td><td></td><td></td><td></td><td></td></tr><tr><td>D. Gotowość na AI</td><td class="c">8</td><td></td><td></td><td></td><td></td></tr><tr><td>E. Pomiar</td><td class="c">9</td><td></td><td></td><td></td><td></td></tr><tr class="razem"><td>Razem</td><td class="c">50</td><td></td><td></td><td></td><td></td></tr></tbody>
+  </table>
+</div>
+<div>
+  <h3>Stan wyjściowy (punkt E9)</h3>
+  <div class="baza"><div class="pole"><span>Kliknięcia bez zapytań o markę (Search Console, ostatni miesiąc)</span><i></i></div><div class="pole"><span>Zapytania od klientów (zdarzenia kluczowe GA4, ostatni miesiąc)</span><i></i></div><div class="pole"><span>Data zapisu</span><i></i></div></div>
+</div>
+
+<section class="obszar">
+  <h2>A. Podstawy techniczne</h2>
+  <p class="opis">Czy Google może wejść na stronę, zaindeksować ją i wygodnie wyświetlić na telefonie. Głębszą analizę techniczną opisuje poradnik audytu technicznego SEO na ai-seo-company.pl. <span class="ile">10 punktów</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">A1</td>
+        <td><div class="pk">Strona działa na HTTPS, a adresy z http:// przekierowują na https://</div><div class="jak"><b>Jak sprawdzić:</b> Wpisz adres strony z http:// i sprawdź, czy przeglądarka przechodzi na https:// bez ostrzeżeń.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A2</td>
+        <td><div class="pk">Działa jedna wersja domeny (z www albo bez), a druga przekierowuje na nią jednym przekierowaniem</div><div class="jak"><b>Jak sprawdzić:</b> Otwórz obie wersje adresu. Obie mają kończyć się na tej samej stronie, bez łańcucha przekierowań.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A3</td>
+        <td><div class="pk">Plik robots.txt nie blokuje stron, które mają być w Google</div><div class="jak"><b>Jak sprawdzić:</b> Otwórz twojadomena.pl/robots.txt. Szukaj „Disallow: /” i reguł dla katalogów z ofertą lub blogiem.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A4</td>
+        <td><div class="pk">Ważne strony nie mają znacznika noindex</div><div class="jak"><b>Jak sprawdzić:</b> Search Console → Sprawdzenie adresu URL dla strony głównej i stron usług: indeksowanie ma być dozwolone.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A5</td>
+        <td><div class="pk">Mapa witryny XML zawiera tylko kanoniczne adresy, które działają, i jest wpisana do robots.txt</div><div class="jak"><b>Jak sprawdzić:</b> Otwórz sitemap.xml i robots.txt (linia „Sitemap:”). Usuń z mapy przekierowania, błędy 404 i strony z noindex.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A6</td>
+        <td><div class="pk">Każda strona ma tag canonical wskazujący na siebie albo na właściwą wersję</div><div class="jak"><b>Jak sprawdzić:</b> Podejrzyj źródło strony (<code>rel="canonical"</code>) albo uruchom darmowy audyt SEO.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A7</td>
+        <td><div class="pk">Linki wewnętrzne nie prowadzą do stron 404 ani przez przekierowania</div><div class="jak"><b>Jak sprawdzić:</b> Crawler albo raport Strony w Search Console. Popraw link u źródła, a nie tylko przekierowanie.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A8</td>
+        <td><div class="pk">Strona jest wygodna na telefonie: bez poziomego przewijania, z czytelnym tekstem i dużymi przyciskami</div><div class="jak"><b>Jak sprawdzić:</b> Otwórz stronę główną, stronę usługi i kontakt na telefonie. Wyślij formularz od początku do końca.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A9</td>
+        <td><div class="pk">Core Web Vitals w normie: LCP do 2,5 s, INP poniżej 200 ms, CLS poniżej 0,1</div><div class="jak"><b>Jak sprawdzić:</b> Search Console → Podstawowe wskaźniki internetowe (dane od użytkowników). Lighthouse służy do szukania przyczyn.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A10</td>
+        <td><div class="pk">Adresy URL są krótkie i czytelne: słowa zamiast losowych identyfikatorów</div><div class="jak"><b>Jak sprawdzić:</b> Przejrzyj adresy w mapie witryny. Nie zmieniaj działających adresów bez przekierowań 301.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Wynik obszaru: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>do poprawy ____ &nbsp; <span class="box"></span>n/d ____</p>
+  
+</section>
+<section class="obszar">
+  <h2>B. On-page: title, description, nagłówki, treść, linki, obrazy</h2>
+  <p class="opis">Czy każda ważna strona mówi Google i klientowi, o czym jest, i czy da się do niej dojść linkami. <span class="ile">14 punktów</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">B1</td>
+        <td><div class="pk">Każda strona ma własny title, który opisuje jej treść</div><div class="jak"><b>Jak sprawdzić:</b> Crawler albo darmowy audyt: posortuj tytuły, znajdź duplikaty i braki.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B2</td>
+        <td><div class="pk">Title zaczyna się od najważniejszej informacji, nie powtarza słów, a nazwa marki stoi na końcu</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdź swój wynik w Google. Google skraca tytuł do szerokości ekranu, więc fraza nie może być na końcu długiego tytułu.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B3</td>
+        <td><div class="pk">Ważne strony mają unikalny meta description, który streszcza treść i zachęca do kliknięcia</div><div class="jak"><b>Jak sprawdzić:</b> Crawler: znajdź puste i powtórzone opisy. Google czasem pokazuje inny fragment strony, więc opis to podpowiedź.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B4</td>
+        <td><div class="pk">Strona ma jeden nagłówek H1, który mówi, o czym jest, i zawiera frazę główną</div><div class="jak"><b>Jak sprawdzić:</b> Wtyczka SEO do przeglądarki albo źródło strony: policz znaczniki h1.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B5</td>
+        <td><div class="pk">Nagłówki H2 i H3 dzielą treść na sekcje, które odpowiadają na pytania klientów</div><div class="jak"><b>Jak sprawdzić:</b> Przeczytaj same nagłówki. Czy wystarczą, żeby zrozumieć, co jest na stronie?</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B6</td>
+        <td><div class="pk">Treść odpowiada na intencję frazy: przy usłudze zakres, cena i proces, przy pytaniu konkretna odpowiedź</div><div class="jak"><b>Jak sprawdzić:</b> Wpisz frazę w Google i porównaj typ stron z pierwszej dziesiątki ze swoją stroną.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B7</td>
+        <td><div class="pk">Pierwszy akapit odpowiada na główne pytanie wprost i zawiera frazę główną</div><div class="jak"><b>Jak sprawdzić:</b> Przeczytaj tylko pierwszy akapit. Czy klient wie już, co oferujesz i gdzie?</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B8</td>
+        <td><div class="pk">Dwie strony nie walczą o tę samą frazę (kanibalizacja)</div><div class="jak"><b>Jak sprawdzić:</b> Search Console → Skuteczność → filtr zapytania → karta Strony. Kilka adresów przy jednej frazie to sygnał do decyzji.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B9</td>
+        <td><div class="pk">Treść jest aktualna: ceny, nazwy usług, dane kontaktowe i daty</div><div class="jak"><b>Jak sprawdzić:</b> Przejrzyj strony usług i cennik. Przy artykułach pokaż datę aktualizacji.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B10</td>
+        <td><div class="pk">Każda ważna strona ma linki wewnętrzne z innych stron (menu, treść, stopka)</div><div class="jak"><b>Jak sprawdzić:</b> Crawler: znajdź strony bez linków przychodzących. Dodaj link z tematycznie bliskiej strony.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B11</td>
+        <td><div class="pk">Tekst linków opisuje stronę docelową („audyt SEO strony”, a nie „kliknij tutaj”)</div><div class="jak"><b>Jak sprawdzić:</b> Przejrzyj linki w treści najważniejszych stron.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B12</td>
+        <td><div class="pk">Obrazy mają opisowy tekst alternatywny (alt) dopasowany do strony, bez upychania fraz</div><div class="jak"><b>Jak sprawdzić:</b> Crawler: obrazy bez alt. Opisz obraz tak, jak opisałbyś go osobie, która go nie widzi.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B13</td>
+        <td><div class="pk">Pliki obrazów mają opisowe nazwy, nowoczesny format (WebP lub AVIF) i ustawione wymiary</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdź nazwy plików w bibliotece mediów i raport Lighthouse.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B14</td>
+        <td><div class="pk">Widać, kto stoi za stroną: nazwa firmy, kontakt, autor treści eksperckich</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdź stopkę, stronę „O nas” i podpisy artykułów.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Wynik obszaru: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>do poprawy ____ &nbsp; <span class="box"></span>n/d ____</p>
+  
+</section>
+<section class="obszar">
+  <h2>C. SEO lokalne: wizytówka Google i NAP</h2>
+  <p class="opis">Czy firma jest spójnie opisana w Profilu Firmy w Google, na stronie i w katalogach. <span class="ile">9 punktów</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">C1</td>
+        <td><div class="pk">Firma ma zweryfikowany Profil Firmy w Google, jeden na lokalizację</div><div class="jak"><b>Jak sprawdzić:</b> Wyszukaj nazwę firmy w Google i w Mapach. Zgłoś duplikaty do usunięcia lub scalenia.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C2</td>
+        <td><div class="pk">Nazwa w wizytówce to prawdziwa nazwa firmy, bez dopisanych fraz, miasta i haseł</div><div class="jak"><b>Jak sprawdzić:</b> Porównaj nazwę z szyldem, fakturą i stroną.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C3</td>
+        <td><div class="pk">Kategoria główna opisuje, czym firma jest, a kategorii dodatkowych jest jak najmniej</div><div class="jak"><b>Jak sprawdzić:</b> Panel wizytówki → kategorie. Kategoria to rodzaj firmy, a nie lista usług.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C4</td>
+        <td><div class="pk">NAP (nazwa, adres, telefon) jest identyczny na stronie, w wizytówce i w katalogach firm</div><div class="jak"><b>Jak sprawdzić:</b> Wpisz NAP z każdego miejsca do jednej tabeli i porównaj znak po znaku.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C5</td>
+        <td><div class="pk">Firma, która nie przyjmuje klientów pod adresem, ukrywa adres i ustawia obszar działania</div><div class="jak"><b>Jak sprawdzić:</b> Panel wizytówki → lokalizacja i obszar działalności.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C6</td>
+        <td><div class="pk">Godziny otwarcia są aktualne, a święta mają godziny specjalne</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdź wizytówkę przed każdym długim weekendem i świętami.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C7</td>
+        <td><div class="pk">Strona ma podstronę kontaktu z NAP zapisanym tekstem (nie obrazkiem), mapą i dojazdem</div><div class="jak"><b>Jak sprawdzić:</b> Spróbuj zaznaczyć adres myszką: jeśli się nie da, jest obrazkiem. Przy kilku lokalizacjach: osobna strona dla każdej.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C8</td>
+        <td><div class="pk">Opinie spływają na bieżąco, a każda ma odpowiedź firmy</div><div class="jak"><b>Jak sprawdzić:</b> Panel wizytówki → opinie. Odpowiadaj także na krytyczne, rzeczowo i bez danych klienta.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C9</td>
+        <td><div class="pk">Wizytówka ma aktualne zdjęcia miejsca, zespołu lub realizacji i uzupełnioną listę usług</div><div class="jak"><b>Jak sprawdzić:</b> Porównaj ją z wizytówkami firm z pierwszej trójki w Mapach.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Wynik obszaru: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>do poprawy ____ &nbsp; <span class="box"></span>n/d ____</p>
+  
+</section>
+<section class="obszar">
+  <h2>D. Gotowość na AI: boty, dane strukturalne, llms.txt</h2>
+  <p class="opis">Czy wyszukiwarki AI mogą odczytać stronę. Google nie wymaga specjalnych plików do przeglądów AI, więc llms.txt ma niski priorytet. <span class="ile">8 punktów</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">D1</td>
+        <td><div class="pk">robots.txt wpuszcza boty wyszukiwarek AI: OAI-SearchBot (ChatGPT), PerplexityBot, Claude-SearchBot</div><div class="jak"><b>Jak sprawdzić:</b> Otwórz robots.txt. Szukaj tych nazw oraz reguły „User-agent: *” z „Disallow: /”.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D2</td>
+        <td><div class="pk">Decyzja o botach treningowych (GPTBot, ClaudeBot, Google-Extended) jest świadoma i zapisana</div><div class="jak"><b>Jak sprawdzić:</b> Zapisz w szablonie, czy je wpuszczasz. Blokada Google-Extended nie wpływa na wyniki wyszukiwania Google.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D3</td>
+        <td><div class="pk">Zapora sieciowa (WAF) albo CDN nie blokuje botów, które wpuszcza robots.txt</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdź ustawienia ochrony przed botami u dostawcy hostingu lub CDN i logi serwera.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D4</td>
+        <td><div class="pk">Najważniejsze treści (oferta, ceny, kontakt) są w HTML, a nie tylko na grafikach lub w plikach PDF</div><div class="jak"><b>Jak sprawdzić:</b> Zaznacz tekst na stronie i podejrzyj źródło. Tekst zapisany tylko na grafice trudno odczytać każdemu robotowi.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D5</td>
+        <td><div class="pk">Dane strukturalne Organization lub LocalBusiness w JSON-LD są zgodne z tym, co widać na stronie</div><div class="jak"><b>Jak sprawdzić:</b> Test wyników z elementami rozszerzonymi albo walidator schema.org. Nazwa, adres i telefon jak w wizytówce.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D6</td>
+        <td><div class="pk">Strona „O nas” podaje jasne fakty: czym się zajmujecie, gdzie i dla kogo</div><div class="jak"><b>Jak sprawdzić:</b> Przeczytaj ją oczami kogoś, kto nie zna firmy. Opis firmy ma brzmieć tak samo w wizytówce i w profilach.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D7</td>
+        <td><div class="pk">Odpowiedzi na typowe pytania klientów (cena, czas, przebieg) są na stronie w krótkich, samodzielnych akapitach</div><div class="jak"><b>Jak sprawdzić:</b> Wypisz pytania, które klienci zadają przez telefon. Czy każde ma odpowiedź na stronie?</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D8</td>
+        <td><div class="pk">Opcjonalnie: plik llms.txt w katalogu głównym z opisem firmy i linkami do najważniejszych stron</div><div class="jak"><b>Jak sprawdzić:</b> Otwórz twojadomena.pl/llms.txt. Google nie wymaga go do przeglądów AI, więc zrób go po punktach wyżej.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Wynik obszaru: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>do poprawy ____ &nbsp; <span class="box"></span>n/d ____</p>
+  
+</section>
+<section class="obszar">
+  <h2>E. Pomiar: Search Console i GA4</h2>
+  <p class="opis">Czy wiesz, ile zapytań przynosi wyszukiwarka, i czy porównujesz wyniki tą samą metodą. <span class="ile">9 punktów</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">E1</td>
+        <td><div class="pk">Search Console obejmuje całą domenę, a właścicielem jest konto firmy</div><div class="jak"><b>Jak sprawdzić:</b> Search Console → Ustawienia → Użytkownicy i uprawnienia. Agencja może mieć dostęp, ale nie jako jedyny właściciel.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E2</td>
+        <td><div class="pk">Mapa witryny jest przesłana w raporcie Mapy witryn i nie ma błędów przetwarzania</div><div class="jak"><b>Jak sprawdzić:</b> Search Console → Mapy witryn: status „Sukces” i liczba wykrytych adresów.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E3</td>
+        <td><div class="pk">Raport Strony jest przejrzany: ważne strony są zaindeksowane, a powody wykluczeń zrozumiałe</div><div class="jak"><b>Jak sprawdzić:</b> Search Console → Strony. Zacznij od stron usług i kontaktu.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E4</td>
+        <td><div class="pk">GA4 działa na wszystkich stronach jednym tagiem, a usługa należy do firmy</div><div class="jak"><b>Jak sprawdzić:</b> Podgląd w Google Tag Assistant albo raport Czas rzeczywisty w GA4.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E5</td>
+        <td><div class="pk">Zdarzenia kluczowe w GA4 mierzą działania klientów: formularz, kliknięcie w telefon i w e-mail</div><div class="jak"><b>Jak sprawdzić:</b> GA4 → Administracja → Zdarzenia kluczowe. Wyślij testowy formularz i sprawdź, czy zdarzenie się pojawia.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E6</td>
+        <td><div class="pk">GA4 jest połączone z Search Console</div><div class="jak"><b>Jak sprawdzić:</b> GA4 → Administracja → Połączenia z usługami → Search Console.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E7</td>
+        <td><div class="pk">Lista fraz do śledzenia jest uzgodniona i zapisana, a pozycje mierzysz co miesiąc tą samą metodą</div><div class="jak"><b>Jak sprawdzić:</b> Zapisz frazy, lokalizację i urządzenie pomiaru. Zmiana metody psuje porównania.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E8</td>
+        <td><div class="pk">Stały zestaw pytań klientów sprawdzasz co miesiąc w ChatGPT, Gemini, Perplexity i przeglądach AI Google</div><div class="jak"><b>Jak sprawdzić:</b> Zapisz pytania i wynik: czy firma jest wymieniona i które źródła są cytowane.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E9</td>
+        <td><div class="pk">Stan wyjściowy jest zapisany przed zmianami, a wyniki porównujesz rok do roku</div><div class="jak"><b>Jak sprawdzić:</b> Zapisz datę, kliknięcia bez zapytań o markę i liczbę zapytań od klientów z GA4.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Wynik obszaru: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>do poprawy ____ &nbsp; <span class="box"></span>n/d ____</p>
+  <footer><p>Aktualna wersja checklisty, przykład wypełnienia i źródła: <strong>www.ai-seo-company.pl/narzedzia/checklista-seo</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p></footer>
+</section>
+</body>
+</html>

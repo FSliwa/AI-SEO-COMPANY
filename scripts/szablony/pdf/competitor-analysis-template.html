@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SEO competitor analysis template – AI SEO COMPANY</title>
+<!--
+  Źródło PDF public/pliki/competitor-analysis-template.pdf (strona www.ai-seo-company.pl/en/tools/competitor-analysis-template, 11.11.2026).
+  Treść zgodna z podglądem w lib/szablony/szablon-analizy-konkurencji-seo.js (en.podglad).
+  Generowanie:
+  "/Users/filipsliwa/Library/Caches/ms-playwright/chromium-1140/chrome-mac/Chromium.app/Contents/MacOS/Chromium" \
+    --headless=new --disable-gpu --no-pdf-header-footer \
+    --print-to-pdf=<repo>/public/pliki/competitor-analysis-template.pdf file://<repo>/scripts/szablony/pdf/competitor-analysis-template.html
+  Każda sekcja .strona zaczyna nową stronę A4; numery stron są wpisane ręcznie (6),
+  więc po zmianie treści sprawdź, czy PDF nadal ma 6 stron.
+-->
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #fff; color: #1D1D1F; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9.4pt; line-height: 1.42; }
+  .strona { break-before: page; }
+  .strona:first-of-type { break-before: auto; }
+  .naglowek { display: flex; justify-content: space-between; font-size: 7.8pt; color: #6E6E73; padding-bottom: 1.8mm; border-bottom: 1px solid #E5E1DC; margin-bottom: 4mm; }
+  .naglowek b { color: #1D1D1F; letter-spacing: .02em; }
+  h1 { font-size: 21pt; line-height: 1.12; letter-spacing: -.015em; margin: 1mm 0 2.5mm; }
+  .lead { font-size: 10.3pt; color: #3A3A3C; margin: 0 0 1mm; }
+  h2 { font-size: 12.4pt; line-height: 1.25; margin: 5mm 0 2.4mm; padding-bottom: 1.6mm; border-bottom: 1.6px solid #D85A30; break-after: avoid; }
+  h2:first-of-type { margin-top: 1mm; }
+  h2 .nr { color: #D85A30; }
+  h3 { font-size: 10.2pt; margin: 3.4mm 0 1.4mm; break-after: avoid; }
+  p { margin: 0 0 2mm; }
+  .maly { font-size: 8.3pt; color: #6E6E73; margin: 0 0 1.6mm; }
+  ol.kroki { margin: 0; padding-left: 5.2mm; }
+  ol.kroki li { margin: 0 0 1.2mm; padding-left: 1mm; }
+  ol.kroki li::marker { color: #D85A30; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.4pt; line-height: 1.3; table-layout: fixed; }
+  th, td { border: 1px solid #E5E1DC; padding: 1.3mm 1.8mm; text-align: left; vertical-align: top; }
+  th { background: #FAF7F4; font-weight: 600; }
+  th.c, td.c { text-align: center; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  td.w { height: 7.6mm; }
+  td.ww { height: 12.5mm; }
+  td.wd { height: 10.5mm; }
+  td.etyk { font-weight: 600; }
+  td.nr { color: #6E6E73; }
+  tr.suma td { background: #FFF7F2; font-weight: 700; }
+  .cb { display: inline-block; width: 3.2mm; height: 3.2mm; border: 1.3px solid #D85A30; border-radius: .6mm; vertical-align: -.55mm; margin-right: 1.2mm; }
+  .opcje { white-space: nowrap; }
+  .opcje span + span { margin-left: 3mm; }
+  .pola { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 6mm; margin: 0 0 3mm; }
+  .pole { font-size: 8.4pt; color: #6E6E73; }
+  .pole .linia { border-bottom: 1px solid #CFC9C2; height: 6.6mm; }
+  .linia { border-bottom: 1px solid #CFC9C2; height: 6.6mm; }
+  .skala { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4mm; margin: 0 0 1mm; }
+  .skala div { border: 1px solid #E5E1DC; border-radius: 1.2mm; padding: 1.8mm 2.2mm; font-size: 8.5pt; }
+  .skala b { display: block; color: #D85A30; font-size: 11pt; }
+  .odsylacz { margin: 3mm 0 0; padding: 1.6mm 2.6mm; border-left: 2px solid #D85A30; background: #FFF7F2; font-size: 8.7pt; }
+  .lista { list-style: none; margin: 0; padding: 0; }
+  .lista li { display: flex; gap: 2mm; padding: 1.4mm 0; border-bottom: 1px solid #EFEBE6; break-inside: avoid; }
+  .lista li .cb { flex: none; margin-top: .5mm; }
+  .stopka { margin-top: 6mm; padding-top: 2mm; border-top: 1px solid #E5E1DC; font-size: 7.8pt; color: #6E6E73; }
+  .stopka span { display: block; }
+  .stopka b { color: #1D1D1F; }
+</style>
+</head>
+<body>
+
+<section class="strona">
+  <div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>page 1 of 6</span></div>
+  <h1>SEO competitor analysis template</h1>
+  <p class="lead">A worksheet for your business and up to five competitors. You compare seven areas: Google rankings, Google Maps, AI answers, on-page content, technical basics, backlinks, and offer and pricing. Score each one from 0 to 2, then turn the gaps into an action list.</p>
+
+  <h2>How to use this template</h2>
+  <ol class="kroki"><li><b>Cover sheet.</b> Write down your business, market, date, and the location and device you check from. Add 10 keywords, ideally from Google Search Console.</li><li><b>Competitors.</b> Take the 3 domains seen most often in the top 10, the Google Maps leader and a company that ChatGPT or Perplexity recommends.</li><li><b>Google and Maps.</b> In a private window, check every keyword (table 1) and the 3-pack for 3 keywords with your city name (table 2).</li><li><b>AI answers.</b> Ask 5 customer questions in ChatGPT, Perplexity and Google. Record the companies named and the cited pages (table 3).</li><li><b>Competitor websites.</b> Fill in tables 4–7. Write the tool and date next to every number.</li><li><b>Scores.</b> Give 0–2 points using the scoring guide on page 5 and add them up (maximum 14 points per company).</li><li><b>Actions.</b> Put every gap where a competitor leads into part 8 with a priority, an owner and a deadline.</li></ol>
+
+  <h3>Scoring at a glance</h3>
+  <div class="skala"><div><b>0 points</b>missing or a serious gap</div><div><b>1 point</b>average</div><div><b>2 points</b>a clear advantage</div></div>
+
+  <h2><span class="nr">0.</span> Cover sheet</h2>
+  <div class="pola"><div class="pole">Business name and website<div class="linia"></div></div><div class="pole">Market (city, region or whole country)<div class="linia"></div></div><div class="pole">Date<div class="linia"></div></div><div class="pole">Filled in by<div class="linia"></div></div><div class="pole">Check location (e.g. Warsaw, Mokotów)<div class="linia"></div></div><div class="pole">Device (mobile / desktop)<div class="linia"></div></div></div>
+  <table><colgroup><col style="width:8%"><col><col style="width:36%"></colgroup>
+    <thead><tr><th></th><th>Name and website</th><th>Where you found it</th></tr></thead><tbody>
+    <tr><td class="w etyk">C1</td><td class="w"></td><td class="w"><span class="opcje"><span><i class="cb"></i>Google</span><span><i class="cb"></i>Maps</span><span><i class="cb"></i>AI</span></span></td></tr><tr><td class="w etyk">C2</td><td class="w"></td><td class="w"><span class="opcje"><span><i class="cb"></i>Google</span><span><i class="cb"></i>Maps</span><span><i class="cb"></i>AI</span></span></td></tr><tr><td class="w etyk">C3</td><td class="w"></td><td class="w"><span class="opcje"><span><i class="cb"></i>Google</span><span><i class="cb"></i>Maps</span><span><i class="cb"></i>AI</span></span></td></tr><tr><td class="w etyk">C4</td><td class="w"></td><td class="w"><span class="opcje"><span><i class="cb"></i>Google</span><span><i class="cb"></i>Maps</span><span><i class="cb"></i>AI</span></span></td></tr><tr><td class="w etyk">C5</td><td class="w"></td><td class="w"><span class="opcje"><span><i class="cb"></i>Google</span><span><i class="cb"></i>Maps</span><span><i class="cb"></i>AI</span></span></td></tr>
+  </tbody></table>
+  <p class="maly" style="margin-top:2.4mm">Directories and marketplaces in the results (list them here, not as competitors):</p>
+  <div class="linia"></div>
+  <p class="odsylacz">The step-by-step method (keywords, reading results, backlinks):<br><b>www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide</b></p>
+</section>
+
+<section class="strona">
+  <div class="naglowek"><span>SEO competitor analysis template</span><span>page 2 of 6</span></div>
+  <h2><span class="nr">1.</span> Google rankings: who ranks for your keywords</h2>
+  <p class="maly">List 10 keywords. For each, write the position in the top 10 (1–10) or “–”. In the last column, note the page type in the top 3 (service page, article, directory, store).</p>
+  <table><colgroup><col style="width:30%"><col style="width:8.5%"><col style="width:8.5%"><col style="width:8.5%"><col style="width:8.5%"><col style="width:8.5%"><col style="width:8.5%"><col></colgroup>
+    <thead><tr><th>Keyword</th><th class="c">You</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th><th>Page type in the top 3</th></tr></thead><tbody>
+    <tr><td class="w nr">1.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">2.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">3.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">4.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">5.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">6.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">7.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">8.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">9.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">10.</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr><td class="w etyk">Keywords in the top 10</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr class="suma"><td class="w">Score 0–2</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    </tbody></table>
+
+  <h2><span class="nr">2.</span> Google Maps: the local 3-pack</h2>
+  <p class="maly">Search 3 keywords that include your city or neighborhood and note who appears in the 3-pack. Then fill in the Business Profile details.</p>
+  <table><colgroup><col style="width:34%"><col><col><col></colgroup>
+    <thead><tr><th>Keyword with city name</th><th>Spot 1</th><th>Spot 2</th><th>Spot 3</th></tr></thead><tbody>
+    <tr><td class="w nr">1.</td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">2.</td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w nr">3.</td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+  </tbody></table>
+  <div style="height:2.4mm"></div>
+  <table><colgroup><col style="width:34%"><col><col><col><col><col><col></colgroup><thead><tr><th>Business Profile</th><th class="c">You</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th></tr></thead><tbody><tr><td class="w etyk">In the 3-pack (how many of 3 keywords)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Primary category</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Number of reviews</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Average rating</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Replies to reviews</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">Photos or posts in the last 3 months</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr class="suma"><td class="w">Score 0–2</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr></tbody></table>
+</section>
+
+<section class="strona">
+  <div class="naglowek"><span>SEO competitor analysis template</span><span>page 3 of 6</span></div>
+  <h2><span class="nr">3.</span> AI answers: who ChatGPT, Perplexity and Google recommend</h2>
+  <p class="maly">Ask 5 questions the way a customer would, e.g. “Which … company would you recommend in …?”. Write down the companies named and the pages cited as sources.</p>
+  <table><colgroup><col style="width:28%"><col><col><col><col style="width:20%"></colgroup>
+    <thead><tr><th>Customer question</th><th>ChatGPT</th><th>Perplexity</th><th>Google AI Overview</th><th>Cited sources</th></tr></thead><tbody>
+    <tr><td class="ww nr">1.</td><td class="ww"></td><td class="ww"></td><td class="ww"></td><td class="ww"></td></tr><tr><td class="ww nr">2.</td><td class="ww"></td><td class="ww"></td><td class="ww"></td><td class="ww"></td></tr><tr><td class="ww nr">3.</td><td class="ww"></td><td class="ww"></td><td class="ww"></td><td class="ww"></td></tr><tr><td class="ww nr">4.</td><td class="ww"></td><td class="ww"></td><td class="ww"></td><td class="ww"></td></tr><tr><td class="ww nr">5.</td><td class="ww"></td><td class="ww"></td><td class="ww"></td><td class="ww"></td></tr>
+  </tbody></table>
+  <div style="height:2.4mm"></div>
+  <table><colgroup><col style="width:34%"><col><col><col><col><col><col></colgroup><thead><tr><th>AI summary</th><th class="c">You</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th></tr></thead><tbody><tr><td class="w etyk">Questions where the name comes up (0–5)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Company site cited as a source</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr class="suma"><td class="w">Score 0–2</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr></tbody></table>
+
+  <h2><span class="nr">4.</span> On-page content</h2>
+  <p class="maly">Copy titles from Google’s results, not from the page code: Google can rewrite or truncate them.</p>
+  <table><colgroup><col style="width:34%"><col><col><col><col><col><col></colgroup><thead><tr><th>Page element</th><th class="c">You</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th></tr></thead><tbody><tr><td class="ww etyk">Homepage title in Google</td><td class="ww c"></td><td class="ww c"></td><td class="ww c"></td><td class="ww c"></td><td class="ww c"></td><td class="ww c"></td></tr><tr><td class="ww etyk">Main service page title</td><td class="ww c"></td><td class="ww c"></td><td class="ww c"></td><td class="ww c"></td><td class="ww c"></td><td class="ww c"></td></tr><tr><td class="w etyk">Separate service pages (number)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">City or neighborhood pages</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">Prices on the site</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">FAQ on service pages</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">Case studies or project write-ups</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">Guides or blog (date of latest post)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr class="suma"><td class="w">Score 0–2</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr></tbody></table>
+</section>
+
+<section class="strona">
+  <div class="naglowek"><span>SEO competitor analysis template</span><span>page 4 of 6</span></div>
+  <h2><span class="nr">5.</span> Technical basics</h2>
+  <p class="maly">Tick the box when the condition is met. Check speed in PageSpeed Insights (mobile result).</p>
+  <table><colgroup><col style="width:34%"><col><col><col><col><col><col></colgroup><thead><tr><th>Technical item</th><th class="c">You</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th></tr></thead><tbody><tr><td class="w etyk">HTTPS with no warnings</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">Easy to use on a phone</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">PageSpeed on mobile (result color)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">XML sitemap (sitemap.xml)</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">robots.txt doesn’t block key pages</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">Structured data (e.g. LocalBusiness, FAQ)</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr class="suma"><td class="w">Score 0–2</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr></tbody></table>
+
+  <h2><span class="nr">6.</span> Backlinks</h2>
+  <div class="pole">Tool and date checked<div class="linia"></div></div>
+  <p class="maly" style="margin-top:1.6mm">Only compare numbers from the same tool: every tool counts referring domains differently.</p>
+  <table><colgroup><col style="width:34%"><col><col><col><col><col><col></colgroup><thead><tr><th>Link profile</th><th class="c">You</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th></tr></thead><tbody><tr><td class="w etyk">Referring domains (number)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Strongest link sources (3 examples)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Local media, chambers, associations</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr><td class="w etyk">Directories and industry sites</td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td><td class="w c"><i class="cb"></i></td></tr><tr class="suma"><td class="w">Score 0–2</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr></tbody></table>
+
+  <h2><span class="nr">7.</span> Offer and pricing</h2>
+  <table><colgroup><col style="width:34%"><col><col><col><col><col><col></colgroup><thead><tr><th>Offer</th><th class="c">You</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th></tr></thead><tbody><tr><td class="w etyk">Pricing on the site (yes / from … / no)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Pricing model (package, hourly, quote)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">Contract length or minimum commitment</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">What makes the offer different, in one sentence</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr><td class="w etyk">First step (form, phone call, free quote)</td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td><td class="w c"></td></tr><tr class="suma"><td class="w">Score 0–2</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr></tbody></table>
+</section>
+
+<section class="strona">
+  <div class="naglowek"><span>SEO competitor analysis template</span><span>page 5 of 6</span></div>
+  <h2>Scoring guide: 0 to 2 points</h2>
+  <p class="maly">Score each area separately for yourself and for every competitor. If one area matters more for your business (e.g. Google Maps for local services), you can count it twice: mark it in the summary.</p>
+  <table><colgroup><col style="width:22%"><col><col><col></colgroup>
+    <thead><tr><th>Area</th><th>0 points</th><th>1 point</th><th>2 points</th></tr></thead><tbody>
+    <tr><td class="etyk">1. Google rankings</td><td>Outside the top 10 for all 10 keywords</td><td>Top 10 for 1–4 keywords</td><td>Top 10 for 5 or more keywords</td></tr><tr><td class="etyk">2. Google Maps</td><td>Not in the 3-pack, incomplete profile</td><td>In the 3-pack for some keywords, or a complete profile with few reviews</td><td>In the 3-pack for most keywords, with fresh reviews and photos</td></tr><tr><td class="etyk">3. AI answers</td><td>Not named in any answer</td><td>Named for 1–2 of the 5 questions</td><td>Named for 3–5 questions, or cited as a source</td></tr><tr><td class="etyk">4. On-page content</td><td>One page for all services, no FAQ or prices</td><td>Separate service pages, but thin or without examples</td><td>A detailed page for each service and location, with FAQ and case studies</td></tr><tr><td class="etyk">5. Technical basics</td><td>No HTTPS, or the site breaks on mobile</td><td>Works, but slow or missing a sitemap</td><td>Fast on mobile, with a sitemap and structured data</td></tr><tr><td class="etyk">6. Backlinks</td><td>Fewest referring domains in the set</td><td>Middle of the pack</td><td>Most referring domains, or links from media and industry sites</td></tr><tr><td class="etyk">7. Offer and pricing</td><td>No prices and no clear first step</td><td>“From” prices or packages without details</td><td>Clear prices or ranges, a defined scope and an easy first step</td></tr>
+  </tbody></table>
+
+  <h2>Score summary</h2>
+  <table><colgroup><col style="width:30%"><col style="width:12%"><col><col><col><col><col><col></colgroup>
+    <thead><tr><th>Area</th><th class="c">Weight ×2</th><th class="c">You</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th></tr></thead><tbody>
+    <tr><td class="w etyk">1. Google rankings</td><td class="w c"><i class="cb"></i></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w etyk">2. Google Maps</td><td class="w c"><i class="cb"></i></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w etyk">3. AI answers</td><td class="w c"><i class="cb"></i></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w etyk">4. On-page content</td><td class="w c"><i class="cb"></i></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w etyk">5. Technical basics</td><td class="w c"><i class="cb"></i></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w etyk">6. Backlinks</td><td class="w c"><i class="cb"></i></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr><tr><td class="w etyk">7. Offer and pricing</td><td class="w c"><i class="cb"></i></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+    <tr class="suma"><td class="w" colspan="2">Total (max 14, more with weights)</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+  </tbody></table>
+</section>
+
+<section class="strona">
+  <div class="naglowek"><span>SEO competitor analysis template</span><span>page 6 of 6</span></div>
+  <h2><span class="nr">8.</span> Conclusions and action list</h2>
+  <p class="maly">Start with the areas where you score 0 and a competitor scores 2. One action = one owner and one deadline.</p>
+  <table><colgroup><col style="width:17%"><col style="width:15%"><col><col style="width:9%"><col style="width:12%"><col style="width:11%"></colgroup>
+    <thead><tr><th>Gap (area)</th><th>Who does it better</th><th>Action</th><th>Priority</th><th>Owner</th><th>Deadline</th></tr></thead><tbody>
+    <tr><td class="wd nr">1.</td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td></tr><tr><td class="wd nr">2.</td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td></tr><tr><td class="wd nr">3.</td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td></tr><tr><td class="wd nr">4.</td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td></tr><tr><td class="wd nr">5.</td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td></tr><tr><td class="wd nr">6.</td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td></tr><tr><td class="wd nr">7.</td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td></tr><tr><td class="wd nr">8.</td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td><td class="wd"></td></tr>
+  </tbody></table>
+  <p class="maly" style="margin-top:2.4mm"><b>Priorities:</b> P1 – the competitor leads by 2 points and you can close the gap within a month; P2 – a 1–2 point gap that takes a quarter; P3 – everything else.</p>
+  <div class="pole">Next review (in 3 months, same keywords, questions and location):<div class="linia"></div></div>
+
+  <h3 style="margin-top:5mm">Before you close the analysis</h3>
+  <ul class="lista"><li><i class="cb"></i><span>Every number has the tool and the date next to it.</span></li><li><i class="cb"></i><span>All rankings were checked from the same location and device.</span></li><li><i class="cb"></i><span>Directories and marketplaces are listed separately, not as competitors.</span></li><li><i class="cb"></i><span>Every “0 for me, 2 for a competitor” gap has an action in the table above.</span></li><li><i class="cb"></i><span>The date of the next review is in the calendar.</span></li></ul>
+
+  <p class="odsylacz" style="margin-top:5mm">Want an outside team to run the analysis? Email <b>kontakt@ai-seo-company.pl</b> or call <b>+48 518 815 055</b>.</p>
+
+  <footer class="stopka">
+    <span><b>www.ai-seo-company.pl/en/tools/competitor-analysis-template</b></span>
+    <span>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</span>
+  </footer>
+</section>
+
+</body>
+</html>

@@ -3527,3 +3527,21 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 @keyframes narz-wejscie { from { opacity: 0; transform: translateY(8px); } }
 
 .narz-ocena--brak { border: 10px solid rgba(30, 30, 30, 0.08); border-radius: 50%; box-sizing: border-box; }
+
+/* ==========================================================================
+   SZABLONY DO POBRANIA (11.11.2026): HTML z lib/szablony renderowany przez
+   components/narzedzia/SzablonStrona.jsx (.szablon-tresc). Tabele przewijają się
+   w poziomie na telefonie, strona nie.
+   ========================================================================== */
+.szablon-tresc p { margin: 0 0 1rem; }
+.szablon-tresc h3 { font-size: 1.15rem; line-height: 1.35; font-weight: 700; margin: 1.5rem 0 0.5rem; color: var(--color-text-dark); }
+.szablon-tresc ul,
+.szablon-tresc ol { margin: 0 0 1rem; padding-left: 1.25rem; display: grid; gap: 0.45rem; }
+.szablon-tresc table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 0 0 1.25rem; font-size: 0.95rem; line-height: 1.5; }
+.szablon-tresc th,
+.szablon-tresc td { border: 1px solid #E5E1DC; padding: 0.55rem 0.7rem; text-align: left; vertical-align: top; min-width: 7rem; }
+.szablon-tresc th { background: #FBF7F2; font-weight: 700; color: var(--color-text-dark); }
+.szablon-tresc a { color: var(--color-primary); text-decoration: underline; }
+.szablon-tresc code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; background: #F4EFE9; padding: 0.1em 0.35em; border-radius: 6px; }
+/* Podgląd szablonu: punkty checklist mają własny znak ☐, więc bez kropek listy. */
+#podglad .szablon-tresc ul { list-style: none; padding-left: 0; }
