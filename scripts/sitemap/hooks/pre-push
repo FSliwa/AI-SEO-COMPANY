@@ -1,0 +1,15 @@
+#!/bin/sh
+# Kontrola dat lastmod przed pushem na main (opcjonalna; włączenie raz w repo:
+#   git config core.hooksPath scripts/sitemap/hooks
+# wyłączenie: git config --unset core.hooksPath). Pominięcie jednorazowe: git push --no-verify.
+# Opis: scripts/sitemap/README.md.
+while read lokalny_ref lokalny_sha zdalny_ref zdalny_sha; do
+  if [ "$zdalny_ref" = "refs/heads/main" ]; then
+    echo "pre-push: push na main - kontrola lib/lastmod.json (npm run lastmod:sprawdz)..."
+    npm run --silent lastmod:sprawdz || {
+      echo "pre-push: daty lastmod nieaktualne albo błąd kontroli sitemapy. Uruchom npm run wydanie i zacommituj lib/lastmod.json."
+      exit 1
+    }
+  fi
+done
+exit 0

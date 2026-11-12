@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev --experimental-https",
-    "build": "next build",
+    "build": "NEXT_PUBLIC_ZBUDOWANO=$(date -u +%Y-%m-%dT%H:%M:%SZ) next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "wydanie": "node scripts/sitemap/wydanie.mjs",
+    "lastmod:sprawdz": "node scripts/sitemap/wydanie.mjs --sprawdz",
+    "sitemap:waliduj": "node scripts/sitemap/waliduj.mjs",
+    "test:sitemap": "node --test \"scripts/sitemap/*.test.mjs\""
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.1.0",
