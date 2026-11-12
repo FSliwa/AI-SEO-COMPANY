@@ -625,27 +625,32 @@ export default function Hero() {
         }}
       />
 
-      {/* Bottom-left: Our Partners (KOTA Style) */}
-      <motion.div
+      {/* 12.11.2026: pasek klientow jak na makiecie (Desktop - 2): cztery loga w jednym
+          szarym odcieniu, rozlozone rowno w pasie mgly na styku hero i oferty.
+          Kolejnosc z makiety: Madame Thai, Ireneusz Kozera (wordmark w miejscu logo TQL z makiety: TQL nie jest potwierdzonym klientem), AI Signals (ASE-BOT), Staniax.
+          Loga: /images/klienci/ (webp z przezroczystoscia, ai-signals jako SVG). Nie sa
+          linkami - nazwy w tym miejscu tez nimi nie byly. Szeroki uklad: jeden rzad;
+          telefon (< 768 px): siatka 2x2 na cala szerokosc; tablet w pionie bez paska. */}
+      <motion.ul
+        className="hero-klienci"
+        aria-label={lang === 'en' ? 'Our clients' : 'Nasi klienci'}
         initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 0.85, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
-        className="hero-partners-row"
-        style={{ position: 'absolute', bottom: '2.5rem', left: '3vw', zIndex: 5, display: 'flex', alignItems: 'center', gap: '2.5rem', flexWrap: 'wrap' }}
       >
-        <span className="hero-partner-item" style={{ fontFamily: "var(--font-space), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.1rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
-          STANIAX
-        </span>
-        <span className="hero-partner-item" style={{ fontFamily: "var(--font-inter), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
-          ASE-BOT
-        </span>
-        <span className="hero-partner-item" style={{ fontFamily: "var(--font-inter), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '0.95rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
-          MADAME THAI
-        </span>
-        <span className="hero-partner-item" style={{ fontFamily: "var(--font-space), system-ui, sans-serif", fontWeight: 500, letterSpacing: '0.05em', fontSize: '0.9rem', color: '#FFFFFF', whiteSpace: 'nowrap', transition: 'all 0.3s ease', cursor: 'default' }}>
-          IRENEUSZ KOZERA
-        </span>
-      </motion.div>
+        <li className="hero-klient hero-klient--mt">
+          <Image unoptimized src="/images/klienci/madame-thai.webp" alt="Madame Thai" width={720} height={67} />
+        </li>
+        <li className="hero-klient hero-klient--ik">
+          <span className="hero-klient-tekst">IRENEUSZ KOZERA</span>
+        </li>
+        <li className="hero-klient hero-klient--ai">
+          <Image unoptimized src="/images/klienci/ai-signals.svg" alt="ASE-BOT (AI Signals)" width={224} height={47} />
+        </li>
+        <li className="hero-klient hero-klient--st">
+          <Image unoptimized src="/images/klienci/staniax.webp" alt="Staniax" width={720} height={129} />
+        </li>
+      </motion.ul>
     </section>
   );
 }

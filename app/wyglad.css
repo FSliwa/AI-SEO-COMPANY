@@ -2482,15 +2482,6 @@ main:has(.article-content) {
   color: #FFFFFF !important;
 }
 
-.hero .hero-partner-item {
-  color: rgba(30, 30, 30, 0.78) !important;
-}
-
-.hero .hero-partner-item:hover {
-  color: var(--w-tusz) !important;
-  text-shadow: none !important;
-}
-
 .hero :focus-visible,
 body:has(.hero) .header:not(.scrolled) :focus-visible {
   outline-color: var(--w-pomarancz) !important;
@@ -3545,3 +3536,106 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 .szablon-tresc code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; background: #F4EFE9; padding: 0.1em 0.35em; border-radius: 6px; }
 /* Podgląd szablonu: punkty checklist mają własny znak ☐, więc bez kropek listy. */
 #podglad .szablon-tresc ul { list-style: none; padding-left: 0; }
+
+
+/* ==========================================================================
+   12.11.2026: pasek klientow jak na makiecie + litery SEO na cala szerokosc (telefon)
+   --------------------------------------------------------------------------
+   1) Pasek: cztery loga w jednym szarym odcieniu (#85818C, pliki w
+      /images/klienci/), rowno rozlozone w pasie mgly na styku hero i oferty.
+      Makieta (Desktop - 2, szerokosc 1440): tekst od x=117 do x=1333, loga
+      283 / 133 / 223 / 240 px szerokosci, odstepy 106-123 px - stad 8,1 vw
+      marginesu i szerokosci w vw (19,65 / 9,24 / 15,5 / 16,7). Z-index 5 jak
+      dotad: nad mgla styku (4), pod nawigacja.
+   2) Telefon (< 768 px): siatka 2x2 na cala szerokosc (20 px marginesu jak
+      tekst) i litery SEO rozciagniete do tych samych 20 px po bokach.
+   Tablet w pionie i okna 768-900 px: pasek ukryty jak dotad, uklad bez zmian.
+   ========================================================================== */
+.hero-klienci {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  left: 8.1vw;
+  right: 8.1vw;
+  bottom: clamp(36px, 5.6vw, 96px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-klient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.hero-klient img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-klient--mt { width: 19.65vw; }
+.hero-klient--ik { width: auto; }
+.hero-klient-tekst { display: block; color: #85818C; font-family: var(--font-geist), system-ui, sans-serif; font-weight: 500; letter-spacing: 0.08em; font-size: clamp(0.85rem, 1.5vw, 1.5rem); line-height: 1; white-space: nowrap; }
+.hero-klient--ai { width: 15.5vw; }
+.hero-klient--st { width: 16.7vw; }
+
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
+  .hero-klienci {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-klienci {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    column-gap: 24px;
+    row-gap: 18px;
+    left: 20px;
+    right: 20px;
+    bottom: 14px;
+  }
+
+  .hero-klient--mt { width: 41vw; }
+  .hero-klient--ik { width: auto; }
+  .hero-klient-tekst { font-size: 3.4vw; }
+  .hero-klient--ai { width: 34vw; }
+  .hero-klient--st { width: 34vw; }
+
+  /* Litery SEO: widoczny napis od 20 px do 20 px (350 px na 390). Pasmo ma
+     scale(1,05) wokol prawej krawedzi, wiec w ukladzie przed skalowaniem:
+     lewa = 100% - (100% - 20px) / 1,05, szerokosc = (100% - 40px) / 1,05.
+     Gora bez zmian (31,6 %), litery rosna w dol. */
+  .hero-litery {
+    left: calc(100% - (100% - 20px) / 1.05);
+    width: calc((100% - 40px) / 1.05);
+  }
+
+  /* Wyzsze litery i pasek pod przyciskami: o tyle rosnie rzad pod literami i cala
+     sekcja (wzory skopiowane z globals.css, doliczone: wysokosc liter wiekszych
+     niz dotad = 9,11 vw - 13,64 px oraz pasek klientow 108 px). */
+  .hero.hero--en {
+    --m-lit-d: calc(9.11vw - 13.64px);
+    --m-klienci-h: 108px;
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px + var(--m-lit-d) + var(--m-klienci-h)) !important;
+  }
+
+  html[lang="en"] .hero.hero--en {
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px + var(--m-lit-d) + var(--m-klienci-h)) !important;
+  }
+
+  .hero-en-copy {
+    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px)) calc(24px + var(--m-band-h) * 0.2867 + var(--m-lit-d)) 1fr;
+  }
+
+  html[lang="en"] .hero-en-copy {
+    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px)) calc(24px + var(--m-band-h) * 0.2867 + var(--m-lit-d)) 1fr;
+  }
+}
