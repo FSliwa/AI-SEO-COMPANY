@@ -1,0 +1,142 @@
+/* ==== Baner zgody jako pasek u dolu ekranu (12.11.2026) ====
+   Pomiar e2e 11.11 przy 390x844: karta zajmowala dolne 149 px (PL) / 167 px
+   (EN) i zaslaniala glowny przycisk widocznosci w AI i kalkulatora. Pasek na
+   cala szerokosc: telefon = 2 linie tekstu + rzad dwoch rownych przyciskow
+   (cel <= 110 px), od 601 px jeden rzad. Tlo, obrys i cien nadpisuje
+   wyglad.css (.cookie-banner, !important) - tu ich nie dublujemy poza
+   wartosciami bazowymi na wypadek braku tamtego arkusza. */
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  background: rgba(10, 19, 55, 0.97);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  color: #FFFFFF;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px 16px 0 0;
+  padding: 0.625rem 0.75rem calc(0.625rem + env(safe-area-inset-bottom, 0px));
+  font-family: var(--font-geist), sans-serif;
+}
+
+.cookie-banner__wnetrze {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cookie-banner__tekst {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #E2E8F0;
+  font-weight: 400;
+  /* body ma overflow-wrap: anywhere - tu lamiemy tylko na spacjach. */
+  overflow-wrap: normal;
+}
+
+/* Link do polityki i przycisk ustawien wygladaja tak samo (kolor linku z
+   wyglad.css: #D85A30 na #0A1337 = 4,67:1). Para nie rozdziela sie miedzy
+   linie, wiec "Ustawienia" nie zostaje sama na trzeciej linii. */
+.cookie-banner__linki {
+  white-space: nowrap;
+}
+
+.cookie-banner__link {
+  color: var(--w-pomarancz);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
+button.cookie-banner__link {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+/* Dwie kolumny 1fr = obie rowne szerokoscia najdluzszej etykiety, ten sam
+   styl, ta sama wysokosc 44 px. */
+.cookie-banner__przyciski {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.cookie-banner__btn {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  color: #0A1337;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.cookie-banner__btn:hover {
+  background: #E2E8F0;
+  border-color: #E2E8F0;
+}
+
+@media (min-width: 601px) {
+  .cookie-banner {
+    border-radius: 0;
+    padding: 0.625rem 1.5rem calc(0.625rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .cookie-banner__wnetrze {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .cookie-banner__tekst {
+    flex: 1 1 auto;
+    font-size: 0.875rem;
+  }
+
+  .cookie-banner__przyciski {
+    flex: 0 0 auto;
+  }
+
+  .cookie-banner__btn {
+    padding: 0.5rem 1.25rem;
+  }
+}
+
+/* Co lezy przy dolnej krawedzi, nie moze zniknac pod paskiem. CookiesBanner
+   publikuje wysokosc paska w --cookie-banner-h i klase body.has-cookie-banner
+   tylko na czas, gdy pasek jest widoczny.
+   1) Zapas pod trescia: koniec strony (stopka) da sie przewinac nad pasek.
+   2) Fokus i kotwice nie laduja pod paskiem (WCAG 2.4.11).
+   3) Przyklejony pasek przycisku kalkulatora (.kalk-akcja, sticky bottom: 0,
+      KalkulatorClient.jsx) staje nad paskiem zgody zamiast pod nim. */
+body.has-cookie-banner {
+  padding-bottom: var(--cookie-banner-h, 0px);
+}
+
+html:has(> body.has-cookie-banner) {
+  scroll-padding-bottom: var(--cookie-banner-h, 0px);
+}
+
+body.has-cookie-banner .kalk-akcja {
+  bottom: var(--cookie-banner-h, 0px);
+}

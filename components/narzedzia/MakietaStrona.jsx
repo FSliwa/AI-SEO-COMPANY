@@ -7,6 +7,9 @@
 // Co dalej (Z-M6), FAQ 8 (Z-M7), ograniczenia, jak ocenić makietę, źródła, poradniki i inne narzędzia.
 // Fakty o działaniu: panel-fix/lib/narzedzia/makieta.ts (dane strony :38-65, zrzut :68-79, prompt :80-105,
 // podgląd do 2. sekcji :161-167), limit 2/IP (wspolne.ts LIMITY), link 60 dni (cron tool_runs).
+// 12.11.2026 (domknięcie, makieta): galeria „przed i po” na naszej stronie zamiast zrzutu z trybu demo (Z-M5)
+// oraz 2 sekcje: co makieta zmieniła u nas i jak przygotować stronę (logo z rel=icon, kolory hex z HTML:
+// panel-fix/lib/narzedzia/html.ts :78, :121-146).
 
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
@@ -22,21 +25,27 @@ const projektowanie = () => hrefJesliOpublikowana('/projektowanie-stron-internet
 const BRIEF = hrefJesliOpublikowana('/narzedzia/brief-strony-internetowej');
 const minuty = MAKIETA.minut.replace('-', ' do ');
 
-// Z-M5: przykład wyniku. Prawdziwej pary „przed i po” jeszcze nie mamy (link do makiety staniax.pl z 11.11
-// nie zachował się, a lokalnie nie ma klucza Anthropic), więc pokazujemy zrzuty z trybu demonstracyjnego
-// narzędzia i piszemy to wprost. Gdy właściciel strony zgodzi się na publikację, dopisać tu parę ze
-// zrzutami bez poprawek: { przed, po, domena, branza, data } (szablon podpisu w zmiany.md Z-M5).
-// Bez zrzutu demo na telefonie: HTML trybu demo (lib/narzedziaDemo.js) nie ma media queries i na 390 px
-// wygląda gorzej niż prawdziwa makieta (prompt wymaga wersji 360-1440 px), więc wprowadzałby w błąd.
-const DEMO = {
-  pl: {
-    komputer: { src: '/images/narzedzia/makieta/demo-wynik-komputer.webp', width: 1200, height: 1919 },
+// Z-M5: przykład „przed i po” na naszej stronie (bez zgody osób trzecich). Jedno prawdziwe uruchomienie na
+// produkcji 12.11.2026 14:50: POST panel /api/narzedzia/makieta { url: https://www.ai-seo-company.pl, cel: "",
+// lang: "pl" }, 200 w 90 s, run f2ea07c3-71e1-4cf2-b23c-9cad5d8f066c, 6 sekcji. Bez bramki e-mail, więc „po”
+// to podgląd (sekcja 1: nagłówek z menu i hero), czyli to, co narzędzie pokazuje każdemu od razu.
+// Zrzuty: Playwright (Chromium), „przed” = www.ai-seo-company.pl po kliknięciu „Odrzuć opcjonalne” w banerze
+// cookies i 9 s czekania na animacje; „po” = HTML podglądu bez zmian. Komputer 1280×800 (DPR 1), telefon
+// 390×844 (DPR 2, plik 780×1688). Pliki w public/images/narzedzia/makieta/ai-seo-company-*.webp.
+// Opisy w podpisach i sekcji „Co makieta zmieniła” odnoszą się tylko do tego, co widać na tych zrzutach.
+// Zrzuty z trybu demo (demo-wynik-komputer*.webp) nie są już używane na stronie.
+const PRZYKLAD = {
+  data: { pl: '12 listopada 2026', en: '12 November 2026' },
+  komputer: {
+    przed: { src: '/images/narzedzia/makieta/ai-seo-company-przed-komputer.webp', width: 1280, height: 800 },
+    po: { src: '/images/narzedzia/makieta/ai-seo-company-makieta-komputer.webp', width: 1280, height: 800 },
   },
-  en: {
-    komputer: { src: '/images/narzedzia/makieta/demo-wynik-komputer-en.webp', width: 1200, height: 1919 },
+  telefon: {
+    przed: { src: '/images/narzedzia/makieta/ai-seo-company-przed-telefon.webp', width: 780, height: 1688 },
+    po: { src: '/images/narzedzia/makieta/ai-seo-company-makieta-telefon.webp', width: 780, height: 1688 },
   },
 };
-const DATA_ZRZUTOW = { pl: '12.11.2026', en: 'November 12, 2026' };
+const ZRZUT_SCHEMA = { url: PRZYKLAD.komputer.po.src, width: PRZYKLAD.komputer.po.width, height: PRZYKLAD.komputer.po.height };
 
 const ZRODLA = [
   { url: 'https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes', nazwa: 'Google Search Central: Site moves with URL changes (przekierowania 301 przy zmianie adresów)', nazwaEn: 'Google Search Central: Site moves with URL changes (301 redirects when URLs change)', data: '2026-11-12' },
@@ -44,8 +53,20 @@ const ZRODLA = [
   { url: 'https://www.w3.org/TR/WCAG22/#contrast-minimum', nazwa: 'W3C: WCAG 2.2, kryterium 1.4.3 Contrast (Minimum), próg 4,5:1', nazwaEn: 'W3C: WCAG 2.2, success criterion 1.4.3 Contrast (Minimum), the 4.5:1 threshold', data: '2026-11-12' },
 ];
 
-const siatkaPrzykladu = { display: 'grid', gap: '1.5rem', marginTop: '1.25rem' };
 const cta = { marginTop: '1.25rem', textAlign: 'center' };
+// Para na komputer: jeden pod drugim, na pełną szerokość (zrzut 1280 px w kolumnie 420 px byłby nieczytelny).
+// Para na telefon: zawsze obok siebie, także na ekranie 390 px.
+const paraKomputer = { display: 'grid', gap: '0.5rem' };
+const paraTelefon = { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 'clamp(0.75rem, 3vw, 1.5rem)', alignItems: 'start', maxWidth: '560px', margin: '0 auto' };
+const ROZMIARY_KOMPUTER = '(max-width: 900px) 100vw, 860px';
+const ROZMIARY_TELEFON = '(max-width: 600px) 50vw, 280px';
+
+function Przed({ en }) {
+  return <strong>{en ? 'Before' : 'Przed'}:</strong>;
+}
+function Po({ en }) {
+  return <strong>{en ? 'After' : 'Po'}:</strong>;
+}
 
 // --- Makieta redesignu ------------------------------------------------------------------------
 
@@ -62,7 +83,7 @@ const FAQ_MAKIETY = [
 
 export function MakietaStrona({ locale = 'pl' } = {}) {
   if (locale === 'en') return <MakietaEn />;
-  const demo = DEMO.pl;
+  const { komputer, telefon } = PRZYKLAD;
   return (
     <Uklad
       slug="makieta-redesignu"
@@ -72,7 +93,7 @@ export function MakietaStrona({ locale = 'pl' } = {}) {
         description: 'Bezpłatny generator makiety: z adresu obecnej strony tworzy propozycję nowego wyglądu strony głównej na komputer i telefon, z treści firmy.',
         category: 'DesignApplication',
         featureList: ['Propozycja nowej strony głównej', 'Wersja na komputer i telefon', 'Tylko treści z Twojej strony'],
-        screenshot: { url: demo.komputer.src, width: demo.komputer.width, height: demo.komputer.height },
+        screenshot: ZRZUT_SCHEMA,
       }}
       lead={`Wpisz adres strony, a w ${minuty} minut AI zaprojektuje z jej treści nową stronę główną na komputer i telefon. Pierwszy ekran zobaczysz od razu, bez konta.`}
       narzedzie={<MakietaClient />}
@@ -96,15 +117,60 @@ export function MakietaStrona({ locale = 'pl' } = {}) {
         przypis="Co z tym zrobić: potraktuj makietę jak kierunek do rozmowy, czyli układ sekcji, hierarchię i kolory. Zdjęcia, teksty i SEO dopracowuje się przy wdrożeniu."
       />
 
-      <Sekcja id="przyklad" tytul="Przykład: jak wygląda wynik">
-        <p style={s.akapit}>Tak wygląda ekran wyniku na komputerze: pierwszy ekran nowej strony, a pod nim bramka do całej makiety. W prawdziwym wyniku obok stoi jeszcze zrzut Twojej obecnej strony (gdy usługa zrzutów odpowie); tryb demonstracyjny go nie robi. Zrzut pochodzi z trybu demonstracyjnego narzędzia: firma „Przykład Sp. z o.o.” i jej teksty są przykładowe, a nie wynikiem dla prawdziwej strony. Zrzut jest bez ręcznych poprawek. Prawdziwe pary „przed i po” pokażemy tu tylko za zgodą właścicieli tych stron.</p>
-        <div style={siatkaPrzykladu}>
+      <Sekcja id="przyklad" tytul="Przykład przed i po: nasza strona ai-seo-company.pl">
+        <p style={s.akapit}>Zamiast wymyślonej firmy pokazujemy prawdziwy wynik dla naszej własnej strony. {PRZYKLAD.data.pl} uruchomiliśmy narzędzie na adresie ai-seo-company.pl tak jak każdy użytkownik, bez wpisanego celu w polu „Co ma się poprawić?”. Makieta była gotowa po około półtorej minuty i ma 6 sekcji. Poniżej jest jej pierwszy ekran, czyli ta część, którą narzędzie pokazuje od razu, bez podawania e-maila.</p>
+        <p style={s.akapit}>Zrzuty obu wersji zrobiliśmy tą samą przeglądarką w tych samych rozmiarach ekranu: 1280 × 800 pikseli na komputerze i 390 × 844 na telefonie. Na obecnej stronie przed zrzutem kliknęliśmy „Odrzuć opcjonalne” w banerze cookies, żeby nie zasłaniał treści. Makiety nie poprawialiśmy ręcznie: to dokładnie ten kod, który zwróciło narzędzie.</p>
+        <h3 style={s.h3}>Na komputerze</h3>
+        <div style={paraKomputer}>
           <ZrzutWyniku
-            {...demo.komputer}
-            alt="Makieta redesignu strony w trybie demo: pierwszy ekran nowej strony głównej na komputerze i bramka do całej makiety"
-            podpis={`Ekran wyniku na komputerze: pierwszy ekran nowej strony od razu, reszta po podaniu e-maila. Tryb demo, zrzut z ${DATA_ZRZUTOW.pl}.`}
+            {...komputer.przed}
+            sizes={ROZMIARY_KOMPUTER}
+            alt="Obecna strona główna ai-seo-company.pl na komputerze: duża pomarańczowa grafika SEO, postać 3D i nagłówek w dolnej części ekranu"
+            podpis={<><Przed /> obecna strona główna na komputerze. Pierwszy ekran zajmuje grafika „SEO”, nagłówek H1 jest w dolnej części, a przyciski ucina krawędź ekranu.</>}
+          />
+          <ZrzutWyniku
+            {...komputer.po}
+            sizes={ROZMIARY_KOMPUTER}
+            alt="Makieta redesignu ai-seo-company.pl na komputerze: menu z czterema pozycjami, nagłówek Pozycjonowanie, które buduje sprzedaż, dwa przyciski i grafika po prawej"
+            podpis={<><Po /> pierwszy ekran makiety w tym samym rozmiarze. Nagłówek, krótszy opis i oba przyciski mieszczą się na ekranie, menu ma 4 widoczne pozycje, a obraz po prawej to nasza grafika do udostępniania w mediach społecznościowych.</>}
           />
         </div>
+        <h3 style={s.h3}>Na telefonie</h3>
+        <div style={paraTelefon}>
+          <ZrzutWyniku
+            {...telefon.przed}
+            sizes={ROZMIARY_TELEFON}
+            alt="Obecna strona główna ai-seo-company.pl na telefonie: krótki wstęp, grafika SEO, nagłówek i dwa przyciski"
+            podpis={<><Przed /> obecna strona na telefonie. Przyciski są widoczne bez przewijania.</>}
+          />
+          <ZrzutWyniku
+            {...telefon.po}
+            sizes={ROZMIARY_TELEFON}
+            alt="Makieta redesignu ai-seo-company.pl na telefonie: menu przewijane w bok, nagłówek, opis i dwa przyciski na całą szerokość"
+            podpis={<><Po /> makieta na telefonie. Menu przewija się w bok i czwarta pozycja jest ucięta, przyciski mają całą szerokość ekranu.</>}
+          />
+        </div>
+        <p style={s.przypis}>Zrzuty z {PRZYKLAD.data.pl}, bez ręcznych poprawek. Pozostałych 5 sekcji makiety tu nie pokazujemy, bo w narzędziu też są dostępne dopiero po podaniu e-maila.</p>
+      </Sekcja>
+
+      <Sekcja id="co-zmienila-makieta" tytul="Co makieta zmieniła na naszej stronie, a co trzeba poprawić">
+        <p style={s.akapit}>Oceniamy wynik tak samo, jak radzimy oceniać makietę swojej strony: osobno to, co jest lepsze, i to, czego przy wdrożeniu nie można zostawić tak jak w makiecie.</p>
+        <h3 style={s.h3}>Co jest lepsze</h3>
+        <ul style={s.lista}>
+          <li><strong>Obietnica i przyciski są wyżej.</strong> Na komputerze nagłówek „Pozycjonowanie, które buduje sprzedaż” i przyciski „Wyceń projekt” i „Zobacz portfolio” mieszczą się w pierwszym ekranie. Na obecnej stronie przyciski ucina dolna krawędź ekranu 1280 × 800.</li>
+          <li><strong>Menu widać od razu.</strong> Cztery pozycje (Usługi, Dlaczego my, Wyniki, Kontakt) zamiast przycisku, który otwiera menu na cały ekran.</li>
+          <li><strong>Tekst jest krótszy, ale nic nie zostało dopisane.</strong> Model wziął nasz nagłówek i podtytuł bez zmian, a opis skrócił z czterech zdań do dwóch i usunął słowo „masowo”. Nie dodał żadnej liczby, opinii ani obietnicy, której nie ma na stronie.</li>
+          <li><strong>Kolory zostały nasze.</strong> Pomarańczowy (#ef6a1f) i ciemny grafit (#2a2e40) to najczęstsze kolory w kodzie obecnej strony głównej, poza białym.</li>
+        </ul>
+        <h3 style={s.h3}>Co trzeba poprawić przy wdrożeniu</h3>
+        <ul style={s.lista}>
+          <li><strong>Zniknęły ważne elementy nagłówka.</strong> W makiecie nie ma przełącznika języka PL/EN, linku „Zaloguj się” do panelu klienta ani skrótów do demo panelu i wyników. Makieta projektuje jedną stronę główną i takie elementy trzeba dodać ręcznie.</li>
+          <li><strong>Menu na telefonie jest ucięte.</strong> Pozycje tworzą rząd przewijany w bok, a czwarta („Kontakt”) kończy się na krawędzi ekranu, więc nie każdy zauważy, że da się przewinąć.</li>
+          <li><strong>Logo jest za małe.</strong> Narzędzie bierze logo z ikony strony (favicon), a nie z nagłówka, i w makiecie wyszło wyraźnie mniejsze niż na obecnej stronie.</li>
+          <li><strong>Obraz nie pasuje do polskiej strony.</strong> Model nie tworzy zdjęć, więc w pierwszym ekranie użył naszej grafiki do udostępniania, która ma napis po angielsku.</li>
+          <li><strong>Strona straciła charakter.</strong> Duża grafika „SEO” i postać 3D wyróżniają obecną stronę. Makieta jest czytelniejsza, ale wygląda bardziej typowo.</li>
+        </ul>
+        <p style={s.akapit}>Wniosek dla nas: z makiety bierzemy konkretne zmiany w pierwszym ekranie, czyli przyciski wyżej i widoczne menu, a wygląd marki zostaje. Tak samo warto czytać makietę swojej strony: jako listę zmian do sprawdzenia, a nie projekt do skopiowania.</p>
       </Sekcja>
 
       <Sekcja id="jak-powstaje" tytul="Jak powstaje makieta: 3 kroki">
@@ -119,6 +185,20 @@ export function MakietaStrona({ locale = 'pl' } = {}) {
       <Sekcja id="zasady-tresci" tytul="Twoje treści, bez wymyślonych danych">
         <p style={s.akapit}>Model może skracać i porządkować Twoje teksty, ale nie wymyśla liczb, lat doświadczenia, opinii klientów, nagród, certyfikatów, cen, nazw klientów ani statystyk. Gdy czegoś na stronie brakuje, pomija ten element zamiast go zmyślać. Makieta jest plikiem bez skryptów i formularzy, wyświetlanym w zamkniętej ramce, a my tylko czytamy publiczną stronę główną, tak jak przeglądarka.</p>
         <p style={s.akapit}>Jedno ograniczenie: gdy strona pokazuje tekst dopiero po uruchomieniu JavaScriptu, model dostaje mniej treści i makieta wychodzi uboższa. Sprawdzisz to w <Link href={AUDYT} style={s.podkreslenie}>darmowym audycie SEO</Link> (reguła „Treść niewidoczna bez JavaScriptu”).</p>
+      </Sekcja>
+
+      <Sekcja id="przygotuj-strone" tytul="Jak przygotować stronę, żeby makieta wyszła lepsza">
+        <p style={s.akapit}>Model widzi tylko to, co narzędzie wyciągnie z kodu Twojej strony głównej. Kilka poprawek na obecnej stronie daje lepszą makietę, a przy okazji pomaga też w Google i w odpowiedziach AI:</p>
+        <ul style={s.lista}>
+          <li><strong>Nagłówek H1 i tytuł strony mówią, co robisz, dla kogo i gdzie.</strong> Model dostaje tytuł, opis meta i do 3 nagłówków H1. W naszym przykładzie wziął nagłówek H1 bez zmian, więc to on ustawia cały pierwszy ekran.</li>
+          <li><strong>Każda usługa ma własny nagłówek H2.</strong> Model dostaje do 12 nagłówków H2 i na nich buduje kolejne sekcje. Usługi wymienione w jednym długim akapicie łatwiej zgubić.</li>
+          <li><strong>Telefon i e-mail są zwykłym tekstem.</strong> Narzędzie szuka ich w treści strony. Numer pokazany tylko na obrazku albo ukryty w formularzu nie trafi do przycisku kontaktu w makiecie.</li>
+          <li><strong>Grafika do udostępniania (og:image) pasuje do strony.</strong> Obok logo to jedyny obraz, którego model może użyć. Jeśli to baner z napisem w innym języku albo ze starą ofertą, trafi do pierwszego ekranu, tak jak u nas.</li>
+          <li><strong>Ikona strony to czytelny znak.</strong> Logo w makiecie pochodzi z ikony strony (favicon albo apple-touch-icon). Jeśli ikoną jest sam symbol, makieta pokaże symbol zamiast pełnego logo.</li>
+          <li><strong>Kolory marki są zapisane w kodzie.</strong> Narzędzie bierze do 6 najczęstszych kolorów z kodu HTML strony głównej i z meta theme-color. Bez nich model sam dobiera spokojną paletę do branży.</li>
+          <li><strong>Menu ma krótkie nazwy.</strong> Do makiety trafia do 8 linków do Twoich podstron, każdy do 30 znaków. Dłuższe opisy w menu wypadają.</li>
+          <li><strong>Najważniejsza treść jest wysoko.</strong> Model dostaje do 6 000 znaków tekstu od początku strony, więc opis oferty i obszaru działania powinien być przed długimi tekstami SEO na dole.</li>
+        </ul>
       </Sekcja>
 
       <Sekcja id="kiedy-redesign" tytul="Kiedy warto zmienić wygląd strony">
@@ -193,7 +273,7 @@ const FAQ_MAKIETY_EN = [
 ];
 
 function MakietaEn() {
-  const demo = DEMO.en;
+  const { komputer, telefon } = PRZYKLAD;
   const minutyEn = MAKIETA.minut.replace('-', ' to ');
   return (
     <Uklad
@@ -205,7 +285,7 @@ function MakietaEn() {
         description: 'A free mockup generator: from the address of your current website it creates a proposal for a new homepage design on desktop and mobile, built from your business’s content.',
         category: 'DesignApplication',
         featureList: ['A new homepage proposal', 'Desktop and mobile version', 'Only content from your website'],
-        screenshot: { url: demo.komputer.src, width: demo.komputer.width, height: demo.komputer.height },
+        screenshot: ZRZUT_SCHEMA,
       }}
       lead={`Free website redesign mockup: enter your website address and in ${minutyEn} minutes AI designs a new homepage for desktop and mobile from your content. No account needed.`}
       narzedzie={<MakietaClient />}
@@ -229,15 +309,60 @@ function MakietaEn() {
         przypis="What to do with it: treat the mockup as a direction to discuss, that is the section layout, hierarchy and colors. Photos, copy and SEO are finished during the build."
       />
 
-      <Sekcja id="example" tytul="Example: what the result looks like">
-        <p style={s.akapit}>This is the result screen on desktop: the first screen of the new page and, below it, the gate to the whole mockup. In a real result a screenshot of your current page stands next to it (when the screenshot service responds); demo mode does not take one. The screenshot comes from the tool’s demo mode: the company “Example Ltd.” and its copy are samples, not a result for a real website. The screenshot is unedited. We will show real before-and-after pairs here only with the website owners’ consent.</p>
-        <div style={siatkaPrzykladu}>
+      <Sekcja id="example" tytul="Before and after: our own website, ai-seo-company.pl">
+        <p style={s.akapit}>Instead of a made-up company, here is a real result for our own website. On {PRZYKLAD.data.en} we ran the tool on ai-seo-company.pl the way any user would, with nothing typed in the “What should improve?” field. The mockup was ready after about a minute and a half and has 6 sections. Below is its first screen, the part the tool shows right away, before you enter an email. Our homepage is in Polish, so the mockup is in Polish too: the tool keeps the language of the website.</p>
+        <p style={s.akapit}>We captured both versions with the same browser at the same screen sizes: 1280 × 800 pixels on desktop and 390 × 844 on mobile. On the current website we clicked “Odrzuć opcjonalne” (Reject optional) in the cookie banner before the screenshot, so it would not cover the content. We did not edit the mockup by hand: it is exactly the code the tool returned.</p>
+        <h3 style={s.h3}>On desktop</h3>
+        <div style={paraKomputer}>
           <ZrzutWyniku
-            {...demo.komputer}
-            alt="Website redesign mockup in demo mode: the first screen of the new homepage on desktop and the gate to the whole mockup"
-            podpis={`The result screen on desktop: the first screen of the new page right away, the rest after you enter your email. Demo mode, screenshot from ${DATA_ZRZUTOW.en}.`}
+            {...komputer.przed}
+            sizes={ROZMIARY_KOMPUTER}
+            alt="The current ai-seo-company.pl homepage on desktop: a large orange SEO graphic, a 3D figure and the heading in the lower part of the screen"
+            podpis={<><Przed en /> the current homepage on desktop. The “SEO” graphic takes up the first screen, the H1 heading sits in the lower part and the buttons are cut off by the edge of the screen.</>}
+          />
+          <ZrzutWyniku
+            {...komputer.po}
+            sizes={ROZMIARY_KOMPUTER}
+            alt="The ai-seo-company.pl redesign mockup on desktop: a menu with four items, the heading, two buttons and a graphic on the right"
+            podpis={<><Po en /> the first screen of the mockup at the same size. The heading, a shorter description and both buttons fit on the screen, the menu shows 4 items and the image on the right is our social sharing graphic.</>}
           />
         </div>
+        <h3 style={s.h3}>On mobile</h3>
+        <div style={paraTelefon}>
+          <ZrzutWyniku
+            {...telefon.przed}
+            sizes={ROZMIARY_TELEFON}
+            alt="The current ai-seo-company.pl homepage on mobile: a short intro, the SEO graphic, the heading and two buttons"
+            podpis={<><Przed en /> the current website on mobile. The buttons are visible without scrolling.</>}
+          />
+          <ZrzutWyniku
+            {...telefon.po}
+            sizes={ROZMIARY_TELEFON}
+            alt="The ai-seo-company.pl redesign mockup on mobile: a menu that scrolls sideways, the heading, the description and two full-width buttons"
+            podpis={<><Po en /> the mockup on mobile. The menu scrolls sideways and the fourth item is cut off, the buttons span the full width of the screen.</>}
+          />
+        </div>
+        <p style={s.przypis}>Screenshots from {PRZYKLAD.data.en}, unedited. We do not show the other 5 sections of the mockup here, because in the tool they are also available only after you enter your email.</p>
+      </Sekcja>
+
+      <Sekcja id="what-the-mockup-changed" tytul="What the mockup changed on our website, and what needs fixing">
+        <p style={s.akapit}>We review the result the same way we suggest you review the mockup of your own website: what is better, and what cannot stay the way it is in the mockup when the site is built.</p>
+        <h3 style={s.h3}>What is better</h3>
+        <ul style={s.lista}>
+          <li><strong>The promise and the buttons are higher up.</strong> On desktop, the heading “Pozycjonowanie, które buduje sprzedaż” (SEO that builds sales) and the “Wyceń projekt” (Get a quote) and “Zobacz portfolio” (See the portfolio) buttons fit on the first screen. On the current website the buttons are cut off by the bottom edge of a 1280 × 800 screen.</li>
+          <li><strong>The menu is visible right away.</strong> Four items (Usługi, Dlaczego my, Wyniki, Kontakt: services, why us, results, contact) instead of a button that opens a full-screen menu.</li>
+          <li><strong>The copy is shorter, but nothing was added.</strong> The model kept our heading and subheading unchanged and shortened the description from four sentences to two, dropping the word “masowo” (en masse). It added no numbers, reviews or promises that are not on the website.</li>
+          <li><strong>The colors stayed ours.</strong> Orange (#ef6a1f) and dark graphite (#2a2e40) are the most frequent colors in the code of the current homepage, apart from white.</li>
+        </ul>
+        <h3 style={s.h3}>What needs fixing during the build</h3>
+        <ul style={s.lista}>
+          <li><strong>Important header elements are gone.</strong> The mockup has no PL/EN language switch, no “Zaloguj się” (Log in) link to the client panel and no shortcuts to the panel demo and the results. The mockup designs a single homepage, so elements like these have to be added by hand.</li>
+          <li><strong>The mobile menu is cut off.</strong> The items form a row that scrolls sideways, and the fourth one (“Kontakt”) ends at the edge of the screen, so not everyone will notice it can be scrolled.</li>
+          <li><strong>The logo is too small.</strong> The tool takes the logo from the site icon (favicon), not from the header, and in the mockup it came out noticeably smaller than on the current website.</li>
+          <li><strong>The image does not fit a Polish website.</strong> The model does not create photos, so on the first screen it used our social sharing graphic, which has English text on it.</li>
+          <li><strong>The website lost its character.</strong> The large “SEO” graphic and the 3D figure make the current website stand out. The mockup is easier to read, but looks more generic.</li>
+        </ul>
+        <p style={s.akapit}>Our takeaway: from the mockup we take specific changes to the first screen, that is the buttons higher up and a visible menu, while the brand’s look stays. Read the mockup of your own website the same way: as a list of changes to check, not a design to copy.</p>
       </Sekcja>
 
       <Sekcja id="how-it-works" tytul="How the mockup is made: 3 steps">
@@ -252,6 +377,20 @@ function MakietaEn() {
       <Sekcja id="content-rules" tytul="Your content, no invented data">
         <p style={s.akapit}>The model may shorten and reorganise your copy, but it does not invent numbers, years of experience, customer reviews, awards, certifications, prices, client names or statistics. If something is missing from your website, it leaves that element out instead of making it up. The mockup is a file with no scripts or forms, shown in a sandboxed frame, and we only read your public homepage, the way a browser does.</p>
         <p style={s.akapit}>One limit: if your website shows its text only after JavaScript runs, the model gets less content and the mockup comes out thinner. You can check this in the <Link href={AUDYT} style={s.podkreslenie}>free SEO audit</Link> (the “Content invisible without JavaScript” rule).</p>
+      </Sekcja>
+
+      <Sekcja id="prepare-your-website" tytul="How to prepare your website for a better mockup">
+        <p style={s.akapit}>The model only sees what the tool extracts from the code of your homepage. A few fixes on your current website give a better mockup, and they help with Google and AI answers along the way:</p>
+        <ul style={s.lista}>
+          <li><strong>The H1 heading and the page title say what you do, who for and where.</strong> The model gets the title, the meta description and up to 3 H1 headings. In our example it kept the H1 unchanged, so that heading sets the whole first screen.</li>
+          <li><strong>Every service has its own H2 heading.</strong> The model gets up to 12 H2 headings and builds the next sections from them. Services listed in one long paragraph are easier to lose.</li>
+          <li><strong>Your phone number and email address are plain text.</strong> The tool looks for them in the page content. A number shown only in an image or hidden in a form will not make it into the contact button of the mockup.</li>
+          <li><strong>Your social sharing image (og:image) fits the website.</strong> Apart from the logo, it is the only image the model can use. If it is a banner with text in another language or an old offer, it will end up on the first screen, as it did for us.</li>
+          <li><strong>Your site icon is a readable mark.</strong> The logo in the mockup comes from the site icon (favicon or apple-touch-icon). If the icon is only a symbol, the mockup will show the symbol instead of the full logo.</li>
+          <li><strong>Your brand colors are written in the code.</strong> The tool takes up to 6 of the most frequent colors from the HTML of your homepage and from the theme-color meta tag. Without them the model picks a calm palette for your industry.</li>
+          <li><strong>Your menu has short labels.</strong> Up to 8 links to your own pages make it into the mockup, each up to 30 characters long. Longer menu labels are dropped.</li>
+          <li><strong>The most important content comes first.</strong> The model gets up to 6,000 characters of text from the start of the page, so the description of your offer and service area should come before long SEO texts at the bottom.</li>
+        </ul>
       </Sekcja>
 
       <Sekcja id="when-to-redesign" tytul="When it is worth changing how your website looks">

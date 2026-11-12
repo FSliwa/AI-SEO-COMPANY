@@ -15,6 +15,9 @@
 // - <div>, nie <section> w wyniku: globals.css daje każdej <section> duży padding z !important.
 // - Pasek akcji przyklejony do dołu ekranu, dopóki widać formularz: na telefonie przycisk i bieżąca kwota
 //   są w pierwszym ekranie.
+// 12.11.2026 (domknięcie, agent kalkulator): przełącznik „Usługi / Sklep internetowy”. Sklep: te same pola
+// z etykietami dla sklepu (wartość koszyka, marża brutto) i opcjonalne „powroty”; wynik pokazuje marżę brutto,
+// utraconą sprzedaż i zamówienia (policzStraty z tryb: 'sklep'). Koszt i zwrot działają w obu trybach.
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
@@ -36,6 +39,9 @@ const liczbaEn = (v) => Number(String(v).replace(/[\s,]/g, ''));
 
 // Przykład „firma usługowa” (Z-K3) = podpowiedzi z pól formularza; ta sama stała liczy przykład na stronie.
 const PRZYKLAD = PRZYKLADY.usluga;
+const PS = PRZYKLADY.sklep;
+// Podpowiedź liczby w polu: PL z przecinkiem dziesiętnym, EN z kropką.
+const podp = (v, en) => (en ? String(v) : String(v).replace('.', ','));
 
 // Pakiety z cennika pozycjonowania (ceny netto miesięcznie z lib/narzedziaLiczby.js).
 const PAKIETY = ['seoStandard', 'seoPremium', 'boosterPack'];
@@ -57,14 +63,35 @@ const POLA_EN = [
   { k: 'marza', etykieta: 'Margin', pomoc: 'The share of revenue that stays as profit. 100% = we calculate revenue.', przyklad: '40', jednostka: '%' },
 ];
 
-const KLUCZE_URL = ['wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'udzialAi', 'widocznyWAi', 'pakiet', 'koszt', 'miesiace'];
+// Tryb sklepu: te same pola co wyżej (wartosc = średnia wartość zamówienia, marza = marża brutto) i opcjonalne
+// „powroty”. Mediana konwersji: ZRODLA_KALKULATORA[9] (Littledata, odczyt 12.11.2026).
+const POLA_SKLEP = [
+  { k: 'wyszukiwania', etykieta: 'Ile razy miesięcznie klienci szukają Twoich produktów w Google?', pomoc: 'Suma wyszukiwań fraz kategorii i produktów, np. „buty do biegania damskie”. Sprawdzisz w Planerze słów kluczowych Google Ads.', przyklad: podp(PS.wyszukiwania) },
+  { k: 'ruch', etykieta: 'Ile wejść z Google ma dziś sklep miesięcznie?', pomoc: 'Bezpłatny ruch z wyszukiwarki z Google Search Console albo GA4, bez reklam. Nie wiesz? Wpisz 0.', przyklad: podp(PS.ruch) },
+  { k: 'konwersja', etykieta: 'Współczynnik konwersji sklepu', pomoc: 'Zamówienia podzielone przez sesje, w procentach (GA4 albo panel sklepu). Dla porównania: mediana w 450 sklepach Shopify to 1,3% (Littledata, VIII-XI 2026).', przyklad: podp(PS.konwersja), jednostka: '%' },
+  { k: 'wartosc', etykieta: 'Średnia wartość zamówienia (koszyka)', pomoc: 'Przychód ze sprzedaży podzielony przez liczbę zamówień, z panelu sklepu albo GA4.', przyklad: podp(PS.wartosc), jednostka: 'zł' },
+  { k: 'marza', etykieta: 'Marża brutto', pomoc: 'Cena sprzedaży minus koszt zakupu towaru, w procentach ceny. Chcesz uwzględnić wysyłkę i prowizje płatności? Wpisz marżę po tych kosztach. 100% = liczymy przychód.', przyklad: podp(PS.marza), jednostka: '%' },
+  { k: 'powroty', etykieta: 'Ile % klientów kupuje ponownie? (opcjonalnie)', pomoc: 'Odsetek klientów z co najmniej dwoma zamówieniami w roku, z raportu klientów w panelu sklepu. Liczymy jedno dodatkowe zamówienie od każdego, kto wraca. Puste pole = tylko pierwsze zamówienie.', przyklad: podp(PS.powroty), jednostka: '%' },
+];
+
+const POLA_SKLEP_EN = [
+  { k: 'wyszukiwania', etykieta: 'How many times a month do customers search for your products on Google?', pomoc: 'The total of searches for your category and product keywords, e.g. “women’s running shoes”. You can check it in Google Ads Keyword Planner.', przyklad: podp(PS.wyszukiwania, true) },
+  { k: 'ruch', etykieta: 'How many visits from Google does your shop get per month today?', pomoc: 'Free search traffic from Google Search Console or GA4, without ads. Not sure? Enter 0.', przyklad: podp(PS.ruch, true) },
+  { k: 'konwersja', etykieta: 'Your shop’s conversion rate', pomoc: 'Orders divided by sessions, as a percentage (GA4 or your store admin). For comparison: the median across 450 Shopify stores is 1.3% (Littledata, August to November 2026).', przyklad: podp(PS.konwersja, true), jednostka: '%' },
+  { k: 'wartosc', etykieta: 'Average order value', pomoc: 'Sales revenue divided by the number of orders, from your store admin or GA4.', przyklad: podp(PS.wartosc, true), jednostka: 'PLN' },
+  { k: 'marza', etykieta: 'Gross margin', pomoc: 'Selling price minus the cost of goods, as a percentage of the price. Want to include shipping and payment fees? Enter the margin after those costs. 100% = we calculate revenue.', przyklad: podp(PS.marza, true), jednostka: '%' },
+  { k: 'powroty', etykieta: 'What % of customers buy again? (optional)', pomoc: 'The share of customers with at least two orders a year, from the customer report in your store admin. We count one extra order from each returning customer. Empty = first order only.', przyklad: podp(PS.powroty, true), jednostka: '%' },
+];
+
+const KLUCZE_URL = ['tryb', 'wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'powroty', 'udzialAi', 'widocznyWAi', 'pakiet', 'koszt', 'miesiace'];
 const WIDOCZNOSC = ['tak', 'nie', 'nie_wiem'];
-const POCZATEK = { wyszukiwania: '', ruch: '', konwersja: '', wartosc: '', marza: '', udzialAi: String(ZALOZENIA.udzialAiDomyslny), widocznyWAi: 'nie_wiem', pakiet: '', koszt: '', miesiace: String(ZWROT.miesiaceDoEfektu.domyslnie) };
+const POCZATEK = { tryb: 'uslugi', wyszukiwania: '', ruch: '', konwersja: '', wartosc: '', marza: '', powroty: '', udzialAi: String(ZALOZENIA.udzialAiDomyslny), widocznyWAi: 'nie_wiem', pakiet: '', koszt: '', miesiace: String(ZWROT.miesiaceDoEfektu.domyslnie) };
 
 // Wartości z adresu albo z przykładu -> stan formularza (teksty pól). Złe wartości pomija.
 function zParametrow(p) {
   const d = {};
-  for (const k of ['wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'koszt']) {
+  if (p.tryb === 'sklep' || p.tryb === 'uslugi') d.tryb = p.tryb;
+  for (const k of ['wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'powroty', 'koszt']) {
     if (p[k] !== undefined && p[k] !== '' && Number.isFinite(Number(p[k]))) d[k] = String(p[k]);
   }
   const ai = Number(p.udzialAi);
@@ -102,6 +129,14 @@ export function WstawPrzyklad({ przyklad = 'usluga', children }) {
 // bez `clip` odrzucą regułę i pasek zostanie zwykłym (nieprzyklejonym) wierszem.
 const CSS = `
 body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
+.kalk-tryb { grid-column: 1 / -1; margin: 0; padding: 0; border: 0; min-width: 0; }
+.kalk-tryb legend { padding: 0; margin-bottom: 0.45rem; }
+.kalk-tryb-opcje { display: inline-grid; grid-template-columns: repeat(2, auto); gap: 0.25rem; padding: 0.25rem; border-radius: 999px; background: var(--w-papier, #f6f4ef); }
+.kalk-tryb-opcje label { position: relative; display: block; cursor: pointer; }
+.kalk-tryb-opcje input { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
+.kalk-tryb-opcje span { display: block; height: 100%; padding: 0.5rem 1rem; border-radius: 999px; font-weight: 600; font-size: 0.95rem; color: var(--w-tusz-2); line-height: 1.3; text-align: center; }
+.kalk-tryb-opcje input:checked + span { background: #fff; color: var(--w-tusz); box-shadow: 0 1px 3px rgba(10, 19, 55, 0.12), 0 0 0 1px var(--w-pomarancz, #d85a30); }
+.kalk-tryb-opcje input:focus-visible + span { outline: 2px solid var(--w-pomarancz, #d85a30); outline-offset: 2px; }
 .kalk-start { grid-column: 1 / -1; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; align-items: baseline; }
 .kalk-tekstowy { padding: 0; border: 0; background: none; font: inherit; color: var(--w-pomarancz-tekst, #b4471f); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .kalk-akcja { position: sticky; bottom: 0; z-index: 3; margin: 0 calc(-1 * clamp(1.25rem, 4vw, 2.25rem)); padding: 0.75rem clamp(1.25rem, 4vw, 2.25rem); background: #fff; border-top: 1px solid rgba(10, 19, 55, 0.08); display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; justify-content: space-between; }
@@ -126,6 +161,8 @@ body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
 .kalk-minus { color: var(--n-zle); }
 .kalk-dalej { margin: 0; text-align: left; }
 @media (max-width: 600px) {
+  .kalk-tryb-opcje { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; }
+  .kalk-tryb-opcje span { padding: 0.55rem 0.5rem; border-radius: 12px; font-size: 0.9rem; }
   .kalk-akcja { flex-wrap: nowrap; gap: 0.75rem; padding-top: 0.55rem; padding-bottom: 0.55rem; }
   .kalk-akcja .btn { flex: 1 0 auto; padding: 0.7rem 1rem; white-space: nowrap; font-size: 0.95rem; }
   .kalk-biezacy { flex: 1 1 0; min-width: 0; font-size: 0.85rem; }
@@ -140,13 +177,15 @@ export default function KalkulatorClient() {
   const fmt = en ? zlEn : zl;
   const num = (n) => n.toLocaleString(en ? 'en-US' : 'pl-PL');
   const ulamek = (n) => n.toLocaleString(en ? 'en-US' : 'pl-PL', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  const pola = en ? POLA_EN : POLA;
-  const liczba = en ? liczbaEn : liczbaPl;
   const [dane, setDane] = useState(POCZATEK);
+  const sklep = dane.tryb === 'sklep';
+  const pola = sklep ? (en ? POLA_SKLEP_EN : POLA_SKLEP) : (en ? POLA_EN : POLA);
+  const liczba = en ? liczbaEn : liczbaPl;
   const [probowal, setProbowal] = useState(false);
   const wynikRef = useRef(null);
   const zgloszony = useRef(false);
   const zgloszonyZwrot = useRef(false);
+  const zgloszonySklep = useRef(false);
 
   // Z-06: wynik z linku albo z przykładu (liczy się lokalnie, więc pokazuje się od razu).
   useParametrUrl(KLUCZE_URL, (p) => setDane((d) => ({ ...d, ...zParametrow(p) })));
@@ -164,6 +203,8 @@ export default function KalkulatorClient() {
     marza: liczba(dane.marza),
     udzialAi: liczba(dane.udzialAi),
     widocznyWAi: dane.widocznyWAi,
+    // Tryb usług bez pól sklepu: te same dane i ten sam adres wyniku co przed 12.11.2026.
+    ...(dane.tryb === 'sklep' ? { tryb: 'sklep', ...(dane.powroty !== '' ? { powroty: liczba(dane.powroty) } : {}) } : {}),
   }), [dane, liczba]);
   const blad = bladDanych(wejscie, lang);
   const wynik = blad ? null : policzStraty(wejscie);
@@ -188,6 +229,10 @@ export default function KalkulatorClient() {
   const zmien = (k) => (e) => {
     const v = e.target.value;
     setDane((d) => ({ ...d, [k]: v }));
+    if (k === 'tryb' && v === 'sklep' && !zgloszonySklep.current) {
+      zgloszonySklep.current = true;
+      track('narzedzie_kalkulator_tryb', { tryb: v });
+    }
     if (k === 'pakiet' && !zgloszonyZwrot.current) {
       zgloszonyZwrot.current = true;
       track('narzedzie_kalkulator_zwrot', { pakiet: v });
@@ -262,9 +307,19 @@ export default function KalkulatorClient() {
       <style>{CSS}</style>
       <PasekDemo />
       <form className="narz-formularz narz-kalkulator" onSubmit={licz} noValidate>
+        <fieldset className="kalk-tryb">
+          <legend className="narz-etykieta">{en ? 'What do you sell?' : 'Co sprzedajesz?'}</legend>
+          <div className="kalk-tryb-opcje">
+            {(en ? [['uslugi', 'Services'], ['sklep', 'Online shop']] : [['uslugi', 'Usługi lub zlecenia'], ['sklep', 'Sklep internetowy']]).map(([v, t]) => (
+              <label key={v}><input type="radio" name="tryb" value={v} checked={dane.tryb === v} onChange={zmien('tryb')} data-cta={`narzedzie_kalkulator_tryb_${v}`} /><span>{t}</span></label>
+            ))}
+          </div>
+        </fieldset>
         <p className="narz-mikro kalk-start">
-          <span>{en ? 'Five numbers, the result updates as you type.' : 'Pięć liczb, wynik liczy się na bieżąco.'}</span>
-          <button type="button" className="kalk-tekstowy" data-cta="narzedzie_kalkulator_przyklad" onClick={() => setDane({ ...POCZATEK, ...zParametrow(PRZYKLAD) })}>
+          <span>{sklep
+            ? (en ? 'Five numbers and one optional, the result updates as you type.' : 'Pięć liczb i jedna opcjonalna, wynik liczy się na bieżąco.')
+            : (en ? 'Five numbers, the result updates as you type.' : 'Pięć liczb, wynik liczy się na bieżąco.')}</span>
+          <button type="button" className="kalk-tekstowy" data-cta="narzedzie_kalkulator_przyklad" onClick={() => setDane({ ...POCZATEK, ...zParametrow(sklep ? PS : PRZYKLAD) })}>
             {en ? 'Fill in an example' : 'Wstaw przykład'}
           </button>
         </p>
@@ -286,7 +341,9 @@ export default function KalkulatorClient() {
             : `Domyślnie ${ZALOZENIA.udzialAiDomyslny}%: prognoza Gartnera spadku wyszukiwań przez czaty AI do 2026. Ustaw swoją wartość. Im więcej pytań trafia do AI, tym mniej wejść jest do zdobycia, bo odpowiedzi AI rzadko kończą się kliknięciem.`}</p>
         </div>
         <fieldset className="narz-kalk-pole">
-          <legend className="narz-etykieta">{en ? 'Do ChatGPT, Gemini or Perplexity recommend your business today?' : 'Czy ChatGPT, Gemini albo Perplexity polecają dziś Twoją firmę?'}</legend>
+          <legend className="narz-etykieta">{sklep
+            ? (en ? 'Do ChatGPT, Gemini or Perplexity recommend your shop today?' : 'Czy ChatGPT, Gemini albo Perplexity polecają dziś Twój sklep?')
+            : (en ? 'Do ChatGPT, Gemini or Perplexity recommend your business today?' : 'Czy ChatGPT, Gemini albo Perplexity polecają dziś Twoją firmę?')}</legend>
           <div className="narz-wybor">
             {(en ? [['tak', 'Yes'], ['nie', 'No'], ['nie_wiem', 'Not sure']] : [['tak', 'Tak'], ['nie', 'Nie'], ['nie_wiem', 'Nie wiem']]).map(([v, t]) => (
               <label key={v}><input type="radio" name="widocznyWAi" value={v} checked={dane.widocznyWAi === v} onChange={zmien('widocznyWAi')} /> {t}</label>
@@ -310,14 +367,26 @@ export default function KalkulatorClient() {
       {wynik && (
         <div className="narz-wynik narz-kalk-wynik" id="wynik-kalkulatora">
           <h2 className="kalk-wynik-tytul" ref={wynikRef} tabIndex={-1}>{en ? 'Your result' : 'Twój wynik'}</h2>
-          <p className="narz-wynik-opis">{en ? 'Without a top 3 position on Google and without AI recommendations, you are losing an estimated' : 'Bez pozycji w TOP 3 Google i bez poleceń w AI tracisz szacunkowo'}</p>
+          <p className="narz-wynik-opis">{sklep
+            ? (en ? 'Without a top 3 position on Google and without AI recommendations, your shop is losing an estimated' : 'Bez pozycji w TOP 3 Google i bez poleceń w AI sklep traci szacunkowo')
+            : (en ? 'Without a top 3 position on Google and without AI recommendations, you are losing an estimated' : 'Bez pozycji w TOP 3 Google i bez poleceń w AI tracisz szacunkowo')}</p>
           <p className="narz-kwota">{fmt(wynik.min.zysk)} {en ? 'to' : 'do'} {fmt(wynik.max.zysk)}</p>
-          <p className="narz-wynik-opis">{en ? `in profit per month, or ${fmt(wynik.rocznieMin)} to ${fmt(wynik.rocznieMax)} per year. The range reflects differences between studies of clicks in Google and in AI answers (assumptions below).` : `zysku miesięcznie, czyli ${fmt(wynik.rocznieMin)} do ${fmt(wynik.rocznieMax)} rocznie. Widełki wynikają z różnic między badaniami kliknięć w Google i w odpowiedziach AI (założenia niżej).`}</p>
+          {sklep ? (
+            <p className="narz-wynik-opis">{en ? `in gross profit per month, or ${fmt(wynik.rocznieMin)} to ${fmt(wynik.rocznieMax)} per year, from ${fmt(wynik.min.przychod)} to ${fmt(wynik.max.przychod)} in lost sales a month. The range reflects differences between studies of clicks in Google and in AI answers (assumptions below).` : `marży brutto miesięcznie, czyli ${fmt(wynik.rocznieMin)} do ${fmt(wynik.rocznieMax)} rocznie, przy ${fmt(wynik.min.przychod)} do ${fmt(wynik.max.przychod)} utraconej sprzedaży miesięcznie. Widełki wynikają z różnic między badaniami kliknięć w Google i w odpowiedziach AI (założenia niżej).`}</p>
+          ) : (
+            <p className="narz-wynik-opis">{en ? `in profit per month, or ${fmt(wynik.rocznieMin)} to ${fmt(wynik.rocznieMax)} per year. The range reflects differences between studies of clicks in Google and in AI answers (assumptions below).` : `zysku miesięcznie, czyli ${fmt(wynik.rocznieMin)} do ${fmt(wynik.rocznieMax)} rocznie. Widełki wynikają z różnic między badaniami kliknięć w Google i w odpowiedziach AI (założenia niżej).`}</p>
+          )}
 
           <div className="narz-rozbicie">
             <div><p className="narz-rozbicie-etykieta">{en ? 'No Google rankings' : 'Brak pozycji w Google'}</p><p className="narz-rozbicie-kwota">{fmt(wynik.min.zyskSeo)} {en ? 'to' : 'do'} {fmt(wynik.max.zyskSeo)}</p><p className="narz-mikro">{num(wynik.min.wizytySeo)} {en ? 'to' : 'do'} {num(wynik.max.wizytySeo)} {en ? 'visits per month' : 'wejść miesięcznie'}</p></div>
             <div><p className="narz-rozbicie-etykieta">{en ? 'No AI recommendations' : 'Brak poleceń w AI'}</p><p className="narz-rozbicie-kwota">{fmt(wynik.min.zyskAi)} {en ? 'to' : 'do'} {fmt(wynik.max.zyskAi)}</p><p className="narz-mikro">{num(wynik.min.wizytyAi)} {en ? 'to' : 'do'} {num(wynik.max.wizytyAi)} {en ? 'visits from AI recommendations per month' : 'wejść z poleceń AI miesięcznie'}</p></div>
-            <div><p className="narz-rozbicie-etykieta">{en ? 'Lost customers' : 'Utraceni klienci'}</p><p className="narz-rozbicie-kwota">{num(wynik.min.klienci)} {en ? 'to' : 'do'} {num(wynik.max.klienci)}</p><p className="narz-mikro">{en ? 'per month' : 'miesięcznie'}</p></div>
+            {sklep ? (
+              <div><p className="narz-rozbicie-etykieta">{en ? 'Lost orders' : 'Utracone zamówienia'}</p><p className="narz-rozbicie-kwota">{num(wynik.min.zamowienia)} {en ? 'to' : 'do'} {num(wynik.max.zamowienia)}</p><p className="narz-mikro">{wejscie.powroty > 0
+                ? (en ? `per month, including ${num(wynik.min.klienci)} to ${num(wynik.max.klienci)} first orders from new customers` : `miesięcznie, w tym ${num(wynik.min.klienci)} do ${num(wynik.max.klienci)} pierwszych zamówień nowych klientów`)
+                : (en ? 'per month (first orders only)' : 'miesięcznie (tylko pierwsze zamówienia)')}</p></div>
+            ) : (
+              <div><p className="narz-rozbicie-etykieta">{en ? 'Lost customers' : 'Utraceni klienci'}</p><p className="narz-rozbicie-kwota">{num(wynik.min.klienci)} {en ? 'to' : 'do'} {num(wynik.max.klienci)}</p><p className="narz-mikro">{en ? 'per month' : 'miesięcznie'}</p></div>
+            )}
           </div>
 
           <div className="kalk-zwrot" role="region" aria-labelledby="kalk-zwrot-tytul">
@@ -386,8 +455,8 @@ export default function KalkulatorClient() {
             naglowek={en ? 'Email me the summary' : 'Wyślij zestawienie e-mailem'}
             opis={en ? 'We will send the result with the Google and AI breakdown and the assumptions, so you can come back to it when you plan your budget.' : 'Wyślemy wynik z rozbiciem na Google i AI oraz z założeniami, żeby wrócić do niego przy planowaniu budżetu.'}
             korzysci={en
-              ? ['The loss split between Google and AI', 'Customers lost per month', zwrot ? 'SEO cost and payback month' : 'A short action plan', 'Assumptions and sources in one place']
-              : ['Rozbicie straty na Google i AI', 'Liczba klientów miesięcznie', zwrot ? 'Koszt SEO i miesiąc zwrotu' : 'Krótki plan działań', 'Założenia i źródła w jednym miejscu']}
+              ? ['The loss split between Google and AI', dane.tryb === 'sklep' ? 'Lost orders and sales per month' : 'Customers lost per month', zwrot ? 'SEO cost and payback month' : 'A short action plan', 'Assumptions and sources in one place']
+              : ['Rozbicie straty na Google i AI', dane.tryb === 'sklep' ? 'Utracone zamówienia i sprzedaż miesięcznie' : 'Liczba klientów miesięcznie', zwrot ? 'Koszt SEO i miesiąc zwrotu' : 'Krótki plan działań', 'Założenia i źródła w jednym miejscu']}
             przycisk={en ? 'Send the summary' : 'Wyślij zestawienie'}
           />
         </div>

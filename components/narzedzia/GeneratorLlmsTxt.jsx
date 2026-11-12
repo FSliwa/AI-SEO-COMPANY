@@ -150,7 +150,14 @@ const CO_DOSTAJESZ_EN = [
 // Z-07: prawdziwy przebieg 12.11.2026 12:05 UTC (www.ai-seo-company.pl, kopia dev z kodem tej gałęzi), bez edycji
 // treści; przycięty pod tabelą botów, ukryte tylko przyklejone elementy (nagłówek, baner cookies).
 // Skrypt: prace-2026-11-11/lepsi/llms/skrypty/pw-zrzut-wyniku.mjs. WebP bezstratny, 65 KB.
-const ZRZUT = { src: '/narzedzia/generator-llms-txt-wynik.webp', width: 1137, height: 1580 };
+// hub-obrazy (12.11.2026): strona EN ma własny zrzut z interfejsem EN (/en/tools/llms-txt-generator, ten sam
+// przepis, przebieg 12.11.2026 13:52 UTC, www.ai-seo-company.pl po wydaniu 9d4d790, więc liczby adresów i linków
+// są wyższe niż na zrzucie PL). Skrypt: prace-2026-11-12/domkniecie/hub-obrazy/robocze/skrypty/pw-zrzut-llms-en.mjs.
+// WebP bezstratny, 62 KB.
+const ZRZUTY = {
+  pl: { src: '/narzedzia/generator-llms-txt-wynik.webp', width: 1137, height: 1580 },
+  en: { src: '/images/narzedzia/przyklady/llms-txt-generator-result.webp', width: 1137, height: 1605 },
+};
 
 // Z-05: te same fakty co na stronie.
 const FUNKCJE = ['Plik llms.txt z mapy strony, do 50 adresów z każdej sekcji', 'Sekcje według katalogów i wersji językowych, sekcja Optional', 'Edycja pliku przed pobraniem', 'Test robots.txt i kodu HTTP dla 8 botów AI', 'Ocena istniejącego pliku /llms.txt z liczbą linków'];
@@ -166,6 +173,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
   // Link PL z kotwicą (#ile-kosztuje) w EN dostaje kotwicę EN; Link lokalizuje tylko ścieżkę.
   const audyt = en ? (hrefJesliOpublikowana('/pozycjonowanie-w-ai/audyt-widocznosci') ?? `/pozycjonowanie-w-ai#${sectionId('ileKosztuje', 'en')}`) : hrefAudytuAi();
   const metaEn = STRONY_NARZEDZI_EN['generator-llms-txt'];
+  const ZRZUT = ZRZUTY[en ? 'en' : 'pl'];
 
   return (
     <main className={st.strona} style={s.main}>
@@ -225,7 +233,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
                 {...ZRZUT}
                 sizes="(max-width: 700px) 100vw, 640px"
                 alt={en ? 'llms.txt generator: the result for ai-seo-company.pl with the sitemap summary, the existing file check and the access test for 8 AI bots' : 'Generator llms.txt: wynik dla ai-seo-company.pl z mapą strony, oceną obecnego pliku i testem dostępu 8 botów AI'}
-                podpis={en ? 'The generator’s result for our own website from 12 November 2026 (Polish interface): sitemap, existing file and the 8-bot test. The ready file and the editor are below the table.' : 'Wynik generatora dla naszej strony z 12 listopada 2026: mapa strony, obecny plik i test 8 botów. Pod tabelą jest gotowy plik i edytor.'}
+                podpis={en ? 'The generator’s result for our own website from 12 November 2026: sitemap, existing file and the 8-bot test. The ready file and the editor are below the table.' : 'Wynik generatora dla naszej strony z 12 listopada 2026: mapa strony, obecny plik i test 8 botów. Pod tabelą jest gotowy plik i edytor.'}
               />
             </div>
           </CoDostajesz>

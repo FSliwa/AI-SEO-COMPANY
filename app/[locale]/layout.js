@@ -9,6 +9,7 @@ import AnalyticsEvents from '@/components/AnalyticsEvents';
 import AttributionCapture from '@/components/AttributionCapture';
 import RuchUzytkownika from '@/components/RuchUzytkownika';
 import WebVitals from '@/components/WebVitals';
+import NewsletterPopupLoader from '@/components/NewsletterPopupLoader';
 
 // Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
 // w HTML każdej strony z tagiem), więc może być w kodzie; zmienna środowiskowa
@@ -328,6 +329,9 @@ export default async function RootLayout({ children, params }) {
           {/* 5.11.2026 (RUM, TS-01): Core Web Vitals tylko do GA4 547365077. */}
           <WebVitals />
           <AttributionCapture />
+          {/* 12.11.2026: popup z lead magnetem (lib/popupOferty.js). Poza <main> i bez HTML z serwera
+              (renderuje null do wyzwolenia), więc odcisk stron do lastmod się nie zmienia. */}
+          <NewsletterPopupLoader />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -64,6 +64,8 @@ export function CollectionPageSchema({ url, name, description, language = 'pl', 
         url: pelnyUrl(e.url),
         name: e.name,
         ...(e.description ? { description: e.description } : {}),
+        // Miniatura wyniku karty huba (lib/narzedziaObrazy.js, 12.11.2026); szablony jej nie mają.
+        ...(e.image ? { image: pelnyUrl(e.image) } : {}),
       })),
     },
   };

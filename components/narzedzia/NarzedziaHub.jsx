@@ -12,7 +12,10 @@
 // - fraza z autosugestii „narzędzia seo google” (30, PLAN-v2 4.10) 1× w treści,
 // - liczby (reguły, limity, ceny) tylko z lib/narzedziaLiczby.js; ceny = kod strony (CENY).
 // 9.11.2026: prop locale ('pl' | 'en'); wersja EN (/en/tools) ma teksty w tym pliku (TEKSTY.en) i w lib/narzedzia.en.js.
+// 12.11.2026 (hub-obrazy): każda karta narzędzia ma miniaturę wyniku (WebP 720x450, lazy, alt i podpis
+// z lib/narzedziaObrazy.js), bo hub miał 0 obrazów wobec mediany 39 u konkurentów (A2).
 
+import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -28,8 +31,9 @@ import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
 import { STRONY_EN } from '@/lib/stronyEn';
 import { AUTORYTET_OPUBLIKOWANY, BASE, SCIEZKA_HUBA, hrefAudytuAi } from '@/lib/narzedzia';
 import { H1_HUBA, faqHubaL, kartyHubaL, stronaNarzedziaL, zrodlaKalkulatoraL } from '@/lib/narzedzia.en';
-import { AUDYT, GENERATOR, WIDOCZNOSC, cena, listaSilnikow } from '@/lib/narzedziaLiczby';
+import { AUDYT, AUTORYTET, GENERATOR, WIDOCZNOSC, cena, listaSilnikow } from '@/lib/narzedziaLiczby';
 import { PORADNIKI } from '@/lib/narzedzia/poradniki';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import AudytSeoClient from './AudytSeoClient';
 import Poradniki from './Poradniki';
 import st from './narzedzia.module.css';
@@ -75,7 +79,7 @@ const TEKSTY = {
       'kalkulator-strat-seo': () => 'liczy w Twojej przeglądarce z Twoich liczb i z badań CTR w Google oraz kliknięć z odpowiedzi AI. Każde badanie ma pod kalkulatorem źródło i datę odczytu, a wynik podajemy w widełkach, bo badania się różnią.',
       'makieta-redesignu': () => 'model Claude buduje stronę główną z treści, które znajdzie na Twojej stronie, i nie dopisuje opinii, liczb ani nagród, których tam nie ma. Zdjęcia, teksty i SEO dopracowuje się przy wdrożeniu.',
       'generator-llms-txt': () => `pobiera mapę strony (do ${GENERATOR.mapPodrzednych} map podrzędnych), wybiera do ${GENERATOR.adresow} adresów, po kilka z każdej sekcji, i sprawdza robots.txt i kod odpowiedzi serwera dla ${GENERATOR.botow} botów AI. Nie zapisuje adresu ani wyniku.`,
-      'autorytet-domeny': () => 'pokazuje Domain Rating by Ahrefs, czyli siłę profilu linków domeny w skali 0-100. Od 1 grudnia 2026 Ahrefs liczy DR w nowej wersji (DR4), więc wynik może być niższy niż w starszych zestawieniach.',
+      'autorytet-domeny': () => `liczy nasz wynik 0-100 z publicznego grafu linków Common Crawl (${AUTORYTET.okres.pl}): pozycję domeny w sieci linków, miejsce wśród domen .pl i różnicę do konkurentów. To nie jest DR Ahrefs ani DA Moz, a dane zmieniają się z kolejnym wydaniem grafu, nie z dnia na dzień.`,
     },
     h2Szablony: 'Szablony i checklisty do pobrania',
     pSzablony: 'Wzory w PDF pomagają zaplanować SEO i sprawdzić pracę agencji: od checklisty SEO, planu treści i strategii po raport miesięczny i listę rzeczy do odebrania przed zmianą agencji. Każdy wzór ma stronę z opisem, co zawiera i jak z niego korzystać. Podajesz tylko adres e-mail, a link do pliku przychodzi w ciągu minuty.',
@@ -126,7 +130,7 @@ const TEKSTY = {
       'kalkulator-strat-seo': () => 'it works in your browser with your numbers and with studies of Google CTR and clicks from AI answers. Every study is listed under the calculator with its source and the date we read it, and the result is a range because the studies differ.',
       'makieta-redesignu': () => 'the Claude model builds the homepage from the content it finds on your website and does not add reviews, numbers or awards that are not there. Photos, copy and SEO are finished during the build.',
       'generator-llms-txt': () => `it fetches your sitemap (up to ${GENERATOR.mapPodrzednych} child sitemaps), picks up to ${GENERATOR.adresow} URLs, a few from every section, and checks robots.txt and the server response code for ${GENERATOR.botow} AI bots. It stores neither the address nor the result.`,
-      'autorytet-domeny': () => 'it shows Domain Rating by Ahrefs, the strength of a domain’s link profile on a 0-100 scale. From 1 December 2026 Ahrefs calculates DR in a new version (DR4), so the result may be lower than in older reports.',
+      'autorytet-domeny': () => `it calculates our 0-100 score from the public Common Crawl link graph (${AUTORYTET.okres.en}): the domain’s position in the web of links, its rank among .pl domains and the gap to competitors. It is not Ahrefs DR or Moz DA, and the data changes with each graph release, not from day to day.`,
     },
     h2Szablony: 'Templates and checklists to download',
     pSzablony: 'PDF templates help you plan SEO and assess your agency’s work: from an SEO checklist, a content calendar and a strategy to a monthly report and the list of things to collect before you switch agencies. Each template has a page that explains what it contains and how to use it. You only give an email address, and the link to the file arrives within a minute.',
@@ -149,13 +153,23 @@ const TEKSTY = {
 };
 
 const malyTekst = { fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--color-text-main)', margin: '0.5rem 0 0' };
+const miniatura = { display: 'block', width: '100%', height: 'auto', aspectRatio: '16 / 10', borderRadius: '16px', border: '1px solid var(--color-border)', background: 'var(--color-bg-surface)' };
+const podpisMiniatury = { fontSize: '0.8rem', lineHeight: 1.4, color: 'var(--w-tusz-2)', margin: '0.4rem 0 0' };
 
 function Karta({ karta, t, locale }) {
   const narzedzie = karta.sekcja === 'narzedzia';
   // Karty narzędzi stoją pod H3 grupy (Z-H6), więc ich nazwa to H4; karty szablonów stoją pod H2.
   const Naglowek = narzedzie ? 'h4' : 'h3';
+  // hub-obrazy (12.11.2026): miniatura wyniku nad nazwą narzędzia (lib/narzedziaObrazy.js), pod pierwszym ekranem → lazy.
+  const obraz = narzedzie ? obrazKarty(karta.id, locale) : null;
   return (
     <article style={{ ...s.karta, padding: 'clamp(1.25rem, 3vw, 1.75rem)', display: 'flex', flexDirection: 'column' }}>
+      {obraz ? (
+        <figure style={{ margin: '0 0 1rem' }}>
+          <Image src={obraz.src} alt={obraz.alt} width={obraz.width} height={obraz.height} sizes="(max-width: 700px) calc(100vw - 72px), (max-width: 1100px) 50vw, 360px" loading="lazy" style={miniatura} />
+          <figcaption style={podpisMiniatury}>{obraz.podpis}</figcaption>
+        </figure>
+      ) : null}
       {/* Strzałka poza nagłówkiem, żeby nie trafiała do jego tekstu; karta bez linku = bez strzałki (reguła 6.0). */}
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.75rem', margin: '0 0 0.6rem' }}>
         <Naglowek style={{ ...s.h3, margin: 0 }}>
@@ -216,7 +230,9 @@ export default function NarzedziaHub({ locale = 'pl' }) {
   // Z-H8: CollectionPage z ItemList widocznych kart (ta sama kolejność co na stronie).
   const elementy = karty.filter((k) => k.href).map((k) => {
     const sciezka = k.href.split('#')[0];
-    return { name: k.nazwa, url: en ? hrefWJezyku(sciezka, 'en') ?? sciezka : sciezka, description: k.opis };
+    // image: miniatura karty (hub-obrazy); CollectionPageSchema przekazuje ją do ListItem (WebAppSchema.jsx, 12.11.2026).
+    const obraz = k.sekcja === 'narzedzia' ? obrazKarty(k.id, locale) : null;
+    return { name: k.nazwa, url: en ? hrefWJezyku(sciezka, 'en') ?? sciezka : sciezka, description: k.opis, ...(obraz ? { image: obraz.src } : {}) };
   });
 
   return (

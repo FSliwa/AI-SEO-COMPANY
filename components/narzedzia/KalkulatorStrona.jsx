@@ -9,6 +9,9 @@
 // renderuje policzStraty/policzZwrot, nic nie jest wpisane ręcznie), „Czego kalkulator nie policzy”
 // (Z-K2b), „Jak zmniejszyć stratę”, Poradniki (Z-03), wszystkie narzędzia i hub (Z-02), FAQ 4 -> 9 (Z-K4),
 // featureList (Z-05).
+// 12.11.2026 (domknięcie, agent kalkulator): tryb sklepu internetowego: sekcja „Kalkulator dla sklepu
+// internetowego” z przykładem liczonym modelem (PRZYKLADY.sklep), wpis w „Czego kalkulator nie policzy”,
+// 4 pytania FAQ dla sklepów, lead/odpowiedź/featureList. Konwersja sklepów: Littledata (ZRODLA_KALKULATORA[9]).
 
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
@@ -38,6 +41,10 @@ const uslugaTak = policzStraty({ ...PRZYKLADY.usluga, widocznyWAi: 'tak' });
 const uslugaZwrot = policzZwrot(usluga, CENY.seoStandard.pln);
 const remont = policzStraty(PRZYKLADY.remont);
 const remontZwrot = policzZwrot(remont, CENY.seoStandard.pln);
+const SK = PRZYKLADY.sklep;
+const sklep = policzStraty(SK);
+const sklepBezPowrotow = policzStraty({ ...SK, powroty: undefined });
+const sklepZwrot = policzZwrot(sklep, CENY.seoStandard.pln);
 
 // Link tylko do opublikowanej strony (i do istniejącej wersji EN); inaczej sam tekst. Klucz PL: <Link>
 // z i18n tłumaczy go sam (jak Poradniki.jsx).
@@ -86,6 +93,10 @@ function faqPl() {
     { id: 'nie-znam-konwersji', question: 'Co wpisać, gdy nie znam konwersji ani marży?', answer: 'Konwersję policzysz jako zapytania albo zamówienia z miesiąca podzielone przez wejścia na stronę z tego samego miesiąca. Bez danych wpisz wartość niższą, niż się spodziewasz: wynik będzie ostrożniejszy. Marża 100% pokaże przychód zamiast zysku.' },
     { id: 'czy-dane-gdzies-trafiaja', question: 'Czy wpisane liczby gdzieś trafiają?', answer: 'Wynik liczy Twoja przeglądarka i niczego nie wysyła, dopóki nie poprosisz o zestawienie e-mailem. Wtedy zapisujemy wpisane liczby (z kosztem SEO, jeśli go wybierzesz), wynik i adres e-mail na 60 dni, żeby wysłać raport.' },
     { id: 'dlaczego-strata-w-ai-mniejsza', question: 'Dlaczego strata w AI wychodzi mniejsza niż w Google?', answer: 'Bo z odpowiedzi AI rzadko się klika: według Pew w link w podsumowaniu AI klika się w 1% wizyt, a według Conductor wejścia z asystentów AI to 1,08% ruchu stron. Polecenie w ChatGPT czy Gemini daje dziś mniej wejść niż pozycja w TOP 3 Google. Z tego samego powodu wyższy udział pytań w AI zmniejsza wynik: zabiera popyt z Google i przenosi go do kanału, w którym mało kto klika.' },
+    { id: 'czy-dziala-dla-sklepu', question: 'Czy kalkulator działa dla sklepu internetowego?', answer: 'Tak. Wybierz „Sklep internetowy” nad formularzem. Wpisujesz liczbę wyszukiwań fraz kategorii i produktów, ruch z Google, konwersję sklepu, średnią wartość zamówienia, marżę brutto i opcjonalnie odsetek klientów, którzy kupują ponownie. Model wejść z Google i z AI jest ten sam co dla usług, a wynik pokazuje utraconą marżę brutto, sprzedaż i liczbę zamówień. Koszt SEO i miesiąc zwrotu liczą się tak samo.' },
+    { id: 'jaka-marza-w-sklepie', question: 'Jaką marżę wpisać dla sklepu?', answer: 'Marżę brutto: cenę sprzedaży minus koszt zakupu towaru, w procentach ceny. Kalkulator nie odejmuje wysyłki, prowizji płatności, zwrotów towaru ani kosztów reklam, więc jeśli chcesz je uwzględnić, wpisz marżę po tych kosztach. Marża 100% pokaże utraconą sprzedaż zamiast marży.' },
+    { id: 'powracajacy-klienci', question: 'Jak kalkulator liczy klientów, którzy wracają?', answer: `Jeśli podasz odsetek klientów kupujących ponownie, zakładamy jedno dodatkowe zamówienie w ciągu roku od każdego, kto wraca: przy ${SK.powroty}% jeden utracony nowy klient to ${(1 + SK.powroty / 100).toLocaleString('pl-PL')} zamówienia. Wielu stałych klientów kupuje częściej, więc to ostrożne założenie. Bez tego pola liczymy tylko pierwsze zamówienie. Odsetek znajdziesz w raporcie klientów w panelu sklepu: klienci z co najmniej dwoma zamówieniami w roku podzieleni przez wszystkich klientów.` },
+    { id: 'jaka-konwersja-sklepu', question: 'Jaka konwersja jest typowa dla sklepu internetowego?', answer: 'Według Littledata mediana w 450 sklepach Shopify (dane z GA4, sierpień-listopad 2026) to 1,3%, 20% najlepszych sklepów ma ponad 2,8%, a 10% najlepszych ponad 3,6%. W kalkulatorze wpisz swoją konwersję z GA4 albo z panelu sklepu: zamówienia podzielone przez sesje.' },
   ];
 }
 
@@ -99,14 +110,14 @@ export function KalkulatorStrona({ locale = 'pl' } = {}) {
       tag="Darmowy kalkulator"
       schema={{
         name: 'Kalkulator strat bez SEO i widoczności w AI',
-        description: 'Bezpłatny kalkulator: szacuje, ile zysku miesięcznie traci firma bez pozycji w TOP 3 Google i bez poleceń w odpowiedziach AI, na podstawie jej danych, badań CTR w Google i badań kliknięć z odpowiedzi AI, oraz po ilu miesiącach zwróci się koszt SEO.',
+        description: 'Bezpłatny kalkulator: szacuje, ile zysku miesięcznie traci firma albo sklep internetowy bez pozycji w TOP 3 Google i bez poleceń w odpowiedziach AI, na podstawie jej danych, badań CTR w Google i badań kliknięć z odpowiedzi AI, oraz po ilu miesiącach zwróci się koszt SEO.',
         category: 'FinanceApplication',
         screenshot: schemaZrzutu(ZRZUT.pl),
-        featureList: ['Strata w Google i w odpowiedziach AI', 'Widełki z badań kliknięć w Google i w odpowiedziach AI', 'Wynik w złotych miesięcznie i rocznie', 'Koszt SEO i miesiąc zwrotu dla pakietu z cennika albo własnej kwoty'],
+        featureList: ['Strata w Google i w odpowiedziach AI', 'Widełki z badań kliknięć w Google i w odpowiedziach AI', 'Wynik w złotych miesięcznie i rocznie', 'Koszt SEO i miesiąc zwrotu dla pakietu z cennika albo własnej kwoty', 'Tryb dla sklepu internetowego: wartość zamówienia, marża brutto i powracający klienci'],
       }}
-      lead="Wpisz pięć liczb ze swojej firmy, a kalkulator od razu pokaże w widełkach, ile zysku miesięcznie tracisz bez TOP 3 w Google i bez poleceń w AI. Po wyborze pakietu zobaczysz też, czy i kiedy SEO się zwróci."
+      lead="Wpisz pięć liczb ze swojej firmy albo sklepu internetowego, a kalkulator od razu pokaże w widełkach, ile zysku miesięcznie tracisz bez TOP 3 w Google i bez poleceń w AI. Po wyborze pakietu zobaczysz też, czy i kiedy SEO się zwróci."
       narzedzie={<KalkulatorClient />}
-      odpowiedz="Kalkulator szacuje, ile zysku miesięcznie trafia do konkurencji, gdy Twojej firmy nie ma w TOP 3 Google i w odpowiedziach ChatGPT czy Gemini. Liczy z Twoich danych: liczby wyszukiwań, obecnego ruchu, konwersji, wartości klienta i marży, oraz z jawnych założeń: badań CTR w Google, wpływu przeglądów AI i odsetka wejść z odpowiedzi AI. Wynik podaje w widełkach, a po podaniu kosztu SEO pokazuje bilans i miesiąc zwrotu."
+      odpowiedz="Kalkulator szacuje, ile zysku miesięcznie trafia do konkurencji, gdy Twojej firmy nie ma w TOP 3 Google i w odpowiedziach ChatGPT czy Gemini. Liczy z Twoich danych: liczby wyszukiwań, obecnego ruchu, konwersji, wartości klienta i marży, oraz z jawnych założeń: badań CTR w Google, wpływu przeglądów AI i odsetka wejść z odpowiedzi AI. Wynik podaje w widełkach, a po podaniu kosztu SEO pokazuje bilans i miesiąc zwrotu. Dla sklepów internetowych ma osobny tryb: liczy z wartości zamówienia, marży brutto i opcjonalnie odsetka klientów, którzy kupują ponownie."
       faq={faqPl()}
       tytulFaq="Pytania o kalkulator strat"
     >
@@ -117,6 +128,7 @@ export function KalkulatorStrona({ locale = 'pl' } = {}) {
           'Rozbicie na Google i odpowiedzi AI z liczbą wejść',
           'Liczbę klientów, których tracisz co miesiąc',
           'Koszt SEO i miesiąc zwrotu dla naszych pakietów albo Twojej kwoty',
+          'W trybie sklepu: utraconą marżę brutto, sprzedaż i liczbę zamówień',
           'Link, który odtwarza wynik z tymi samymi liczbami',
         ]}
         poEmailu={['Zestawienie e-mailem: wynik, założenia, źródła i krótki plan działań']}
@@ -168,12 +180,27 @@ export function KalkulatorStrona({ locale = 'pl' } = {}) {
         <p style={s.akapit}><WstawPrzyklad przyklad="remont" /></p>
       </Sekcja>
 
+      <Sekcja id="sklep-internetowy" tytul="Kalkulator dla sklepu internetowego">
+        <p style={s.akapit}>Nad formularzem wybierz „Sklep internetowy”. Model wejść z Google i z odpowiedzi AI zostaje ten sam co dla usług, zmieniają się dane i to, co pokazuje wynik.</p>
+        <ul style={s.lista}>
+          <li><strong>Średnia wartość zamówienia</strong> zamiast wartości klienta: przychód ze sprzedaży podzielony przez liczbę zamówień, z panelu sklepu albo z GA4.</li>
+          <li><strong>Marża brutto:</strong> cena sprzedaży minus koszt zakupu towaru, w procentach ceny. Wynik to utracona marża brutto, a obok niej utracona sprzedaż (przychód przed marżą). Chcesz uwzględnić wysyłkę, prowizje płatności i zwroty towaru? Wpisz marżę po tych kosztach.</li>
+          <li><strong>Konwersja sklepu:</strong> zamówienia podzielone przez sesje. Dla porównania: według Littledata mediana w 450 sklepach Shopify (dane z GA4, sierpień-listopad 2026) to 1,3%, a 10% najlepszych sklepów ma ponad 3,6%.</li>
+          <li><strong>Powracający klienci (pole opcjonalne):</strong> zakładamy, że klient, który wraca, składa w ciągu roku jedno dodatkowe zamówienie, więc utracony nowy klient to 1 + odsetek powrotów zamówień. To ostrożne założenie, bo część klientów wraca kilka razy. Puste pole oznacza tylko pierwsze zamówienie. Nie podajemy „typowego” odsetka, bo mocno zależy od branży: karmę dla psa kupuje się co miesiąc, sofę raz na lata.</li>
+          <li><strong>Koszt i zwrot</strong> liczą się tak samo jak dla usług: porównujemy koszt SEO z utraconą marżą brutto.</li>
+        </ul>
+        <p style={s.akapit}>Przykład: sklep ma frazy kategorii i produktów wpisywane {SK.wyszukiwania.toLocaleString('pl-PL')} razy w miesiącu i dostaje dziś z Google {SK.ruch.toLocaleString('pl-PL')} wejść. Konwersja to {SK.konwersja.toLocaleString('pl-PL')}%, średnie zamówienie {zl(SK.wartosc)}, marża brutto {SK.marza}%, a {SK.powroty}% klientów kupuje ponownie. Właściciel nie wie, czy AI poleca sklep. Strata: {zl(sklep.min.zysk)}–{zl(sklep.max.zysk)} marży brutto miesięcznie przy {zl(sklep.min.przychod)}–{zl(sklep.max.przychod)} utraconej sprzedaży, czyli {dzies(sklep.min.zamowienia)}–{dzies(sklep.max.zamowienia)} zamówienia miesięcznie. Bez powracających klientów strata wyniosłaby {zl(sklepBezPowrotow.min.zysk)}–{zl(sklepBezPowrotow.max.zysk)}.</p>
+        <p style={s.akapit}>Przy pakiecie SEO Standard (od {zl(st.pln)} netto miesięcznie) i pełnym efekcie po {sklepZwrot.miesiaceDoEfektu} miesiącach bilans miesięczny wynosi od {zZnakiem(sklepZwrot.min.bilans, zl)} do {zZnakiem(sklepZwrot.max.bilans, zl)}, a {miesiacZwrotuPl(sklepZwrot)}.{sklepZwrot.max.miesiacZwrotu !== null && sklepZwrot.min.miesiacZwrotu === null ? ' Wynik zależy więc od tego, który wariant kliknięć okaże się bliższy prawdy w Twojej branży, i kalkulator pokazuje to wprost.' : ''}</p>
+        <p style={s.akapit}><WstawPrzyklad przyklad="sklep" /></p>
+      </Sekcja>
+
       <Sekcja id="czego-nie-liczy" tytul="Czego kalkulator nie policzy">
         <ul style={s.lista}>
           <li><strong>Tego, ile straty naprawdę odzyskasz.</strong> Część o koszcie zakłada odzyskanie całej wyliczonej straty po wybranej liczbie miesięcy. Dlatego obok miesiąca zwrotu pokazujemy próg: jaka część straty wystarczy, żeby koszt się zwrócił.</li>
           <li><strong>Czasu dojścia do TOP 3.</strong> Wynik straty zakłada pozycje, które zwykle buduje się miesiącami. Kwota roczna to strata przy obecnym stanie, a nie prognoza wzrostu. Czas do pełnego efektu w części o koszcie ustawiasz sam.</li>
           <li><strong>Sezonowości i siły konkurencji.</strong> Liczymy średni miesiąc. Przy sezonowym popycie albo bardzo silnej konkurencji realna kwota będzie inna.</li>
           <li><strong>Ruchu z innych źródeł.</strong> Nie liczymy wizyt z reklam, wizytówki w Mapach Google ani poleceń poza internetem.</li>
+          <li><strong>Sprzedaży poza Twoim sklepem.</strong> W trybie sklepu nie liczymy Allegro, Amazona ani innych platform sprzedażowych, reklam produktowych Google ani bezpłatnych wyników w zakładce Zakupy. Liczymy pozycje w zwykłych wynikach Google i polecenia w AI.</li>
           <li><strong>Kosztów poza kwotą miesięczną.</strong> Kalkulator bierze cenę netto pakietu albo Twoją kwotę. Nie dolicza VAT ani Twojego czasu.</li>
           <li><strong>Dokładnej liczby wizyt z czatów AI.</strong> Nie ma publicznych danych o tym, ile wizyt daje jedno polecenie w ChatGPT. Dlatego część AI liczymy współczynnikiem z badań kliknięć w odpowiedziach AI ({AI_MIN}-{AI_MAX}%), a nie CTR pozycji w Google. To najmniej pewna część wyniku i dziś zwykle najmniejsza.</li>
         </ul>
@@ -209,6 +236,10 @@ function faqEn() {
     { id: 'i-do-not-know-my-conversion-rate', question: 'What should I enter if I do not know my conversion rate or margin?', answer: 'Your conversion rate is the month’s enquiries or orders divided by the visits to your site in the same month. Without data, enter a value lower than you expect: the result will be more cautious. A 100% margin shows revenue instead of profit.' },
     { id: 'where-does-my-data-go', question: 'Do the numbers I enter go anywhere?', answer: 'Your browser calculates the result and sends nothing until you ask for the summary by email. Then we store the numbers you entered (including the SEO cost, if you choose one), the result and your email address for 60 days so we can send the report.' },
     { id: 'why-is-the-ai-loss-smaller', question: 'Why is the AI loss smaller than the Google loss?', answer: 'Because people rarely click from AI answers: according to Pew, a link inside the AI summary is clicked in 1% of visits, and according to Conductor visits from AI assistants make up 1.08% of website traffic. A recommendation in ChatGPT or Gemini brings fewer visits today than a top 3 position in Google. For the same reason a higher share of questions asked in AI lowers the result: it moves demand from Google to a channel where few people click.' },
+    { id: 'does-it-work-for-an-online-shop', question: 'Does the calculator work for an online shop?', answer: 'Yes. Choose “Online shop” above the form. You enter the number of searches for your category and product keywords, traffic from Google, your shop’s conversion rate, average order value, gross margin and, optionally, the share of customers who buy again. The model of visits from Google and AI is the same as for services, and the result shows lost gross profit, sales and the number of orders. SEO cost and the payback month work the same way.' },
+    { id: 'what-margin-for-a-shop', question: 'What margin should I enter for a shop?', answer: 'Your gross margin: the selling price minus the cost of goods, as a percentage of the price. The calculator does not deduct shipping, payment fees, product returns or advertising costs, so if you want to include them, enter the margin after those costs. A 100% margin shows lost sales instead of margin.' },
+    { id: 'returning-customers', question: 'How does the calculator count returning customers?', answer: `If you enter the share of customers who buy again, we assume one extra order within a year from each returning customer: at ${SK.powroty}%, one lost new customer equals ${(1 + SK.powroty / 100).toLocaleString('en-US')} orders. Many loyal customers buy more often, so this is a cautious assumption. Without this field we count the first order only. You will find the share in the customer report of your store admin: customers with at least two orders in a year divided by all customers.` },
+    { id: 'typical-online-shop-conversion-rate', question: 'What conversion rate is typical for an online shop?', answer: 'According to Littledata, the median across 450 Shopify stores (GA4 data, August to November 2026) is 1.3%, the top 20% of stores are above 2.8% and the top 10% above 3.6%. In the calculator, enter your own conversion rate from GA4 or your store admin: orders divided by sessions.' },
   ];
 }
 
@@ -223,14 +254,14 @@ function KalkulatorEn() {
       tag="Free calculator"
       schema={{
         name: 'Calculator: profit lost without SEO and AI visibility',
-        description: 'A free calculator that estimates how much profit a business loses each month without top 3 Google positions and without recommendations in AI answers, based on its data, Google CTR studies and studies of clicks from AI answers, and after how many months the cost of SEO pays back.',
+        description: 'A free calculator that estimates how much profit a business or an online shop loses each month without top 3 Google positions and without recommendations in AI answers, based on its data, Google CTR studies and studies of clicks from AI answers, and after how many months the cost of SEO pays back.',
         category: 'FinanceApplication',
         screenshot: schemaZrzutu(ZRZUT.en),
-        featureList: ['Loss in Google and in AI answers', 'A range from studies of clicks in Google and in AI answers', 'Monthly and yearly result in PLN', 'SEO cost and payback month for a package from our pricing or your own amount'],
+        featureList: ['Loss in Google and in AI answers', 'A range from studies of clicks in Google and in AI answers', 'Monthly and yearly result in PLN', 'SEO cost and payback month for a package from our pricing or your own amount', 'Online shop mode: average order value, gross margin and returning customers'],
       }}
-      lead="Enter five numbers about your business and the calculator instantly shows the range of monthly profit you lose without a Google top 3 position and AI recommendations. Pick a package to also see whether and when SEO pays off."
+      lead="Enter five numbers about your business or online shop and the calculator instantly shows the range of monthly profit you lose without a Google top 3 position and AI recommendations. Pick a package to also see whether and when SEO pays off."
       narzedzie={<KalkulatorClient />}
-      odpowiedz="The calculator estimates how much profit goes to competitors each month when your business is not in Google’s top 3 or in ChatGPT and Gemini answers. It uses your data: the number of searches, current traffic, conversion rate, customer value and margin, plus open assumptions: Google CTR studies, the impact of AI Overviews and the share of visits from AI answers. The result is given as a range, and once you add the cost of SEO it shows the balance and the payback month."
+      odpowiedz="The calculator estimates how much profit goes to competitors each month when your business is not in Google’s top 3 or in ChatGPT and Gemini answers. It uses your data: the number of searches, current traffic, conversion rate, customer value and margin, plus open assumptions: Google CTR studies, the impact of AI Overviews and the share of visits from AI answers. The result is given as a range, and once you add the cost of SEO it shows the balance and the payback month. For online shops it has a separate mode that uses average order value, gross margin and, optionally, the share of customers who buy again."
       faq={faqEn()}
       tytulFaq="Questions about the loss calculator"
     >
@@ -241,6 +272,7 @@ function KalkulatorEn() {
           'The split between Google and AI answers, with the number of visits',
           'The number of customers you lose each month',
           'SEO cost and payback month for our packages or your own amount',
+          'In shop mode: lost gross profit, sales and number of orders',
           'A link that recreates the result with the same numbers',
         ]}
         poEmailu={['A summary by email: the result, assumptions, sources and a short action plan']}
@@ -292,12 +324,27 @@ function KalkulatorEn() {
         <p style={s.akapit}><WstawPrzyklad przyklad="remont" /></p>
       </Sekcja>
 
+      <Sekcja id="online-shop" tytul="The calculator for an online shop">
+        <p style={s.akapit}>Choose “Online shop” above the form. The model of visits from Google and from AI answers stays the same as for services; what changes is the data you enter and what the result shows.</p>
+        <ul style={s.lista}>
+          <li><strong>Average order value</strong> instead of customer value: sales revenue divided by the number of orders, from your store admin or GA4.</li>
+          <li><strong>Gross margin:</strong> the selling price minus the cost of goods, as a percentage of the price. The result is lost gross profit, shown next to lost sales (revenue before margin). Want to include shipping, payment fees and product returns? Enter the margin after those costs.</li>
+          <li><strong>Shop conversion rate:</strong> orders divided by sessions. For comparison: according to Littledata, the median across 450 Shopify stores (GA4 data, August to November 2026) is 1.3%, and the top 10% of stores are above 3.6%.</li>
+          <li><strong>Returning customers (optional field):</strong> we assume a returning customer places one extra order within a year, so a lost new customer equals 1 + the repeat share in orders. This is a cautious assumption, because some customers come back several times. An empty field means the first order only. We do not give a “typical” share, because it depends heavily on the industry: people buy dog food every month and a sofa once in years.</li>
+          <li><strong>Cost and payback</strong> work the same way as for services: we compare the cost of SEO with the lost gross profit.</li>
+        </ul>
+        <p style={s.akapit}>Example: a shop has category and product keywords typed {SK.wyszukiwania.toLocaleString('en-US')} times a month and gets {SK.ruch.toLocaleString('en-US')} visits from Google today. The conversion rate is {SK.konwersja}%, the average order {pln(SK.wartosc)}, the gross margin {SK.marza}%, and {SK.powroty}% of customers buy again. The owner does not know whether AI recommends the shop. The loss: {pln(sklep.min.zysk)}–{pln(sklep.max.zysk)} in gross profit per month on {pln(sklep.min.przychod)}–{pln(sklep.max.przychod)} in lost sales, or {dzies(sklep.min.zamowienia, true)}–{dzies(sklep.max.zamowienia, true)} orders a month. Without returning customers the loss would be {pln(sklepBezPowrotow.min.zysk)}–{pln(sklepBezPowrotow.max.zysk)}.</p>
+        <p style={s.akapit}>With the SEO Standard package (from {pln(st.pln)} net a month) and full effect after {sklepZwrot.miesiaceDoEfektu} months, the monthly balance is {zZnakiem(sklepZwrot.min.bilans, pln)} to {zZnakiem(sklepZwrot.max.bilans, pln)}, and {miesiacZwrotuEn(sklepZwrot)}.{sklepZwrot.max.miesiacZwrotu !== null && sklepZwrot.min.miesiacZwrotu === null ? ' So the answer depends on which click variant turns out closer to reality in your industry, and the calculator shows this openly.' : ''}</p>
+        <p style={s.akapit}><WstawPrzyklad przyklad="sklep" /></p>
+      </Sekcja>
+
       <Sekcja id="what-it-does-not-calculate" tytul="What the calculator does not calculate">
         <ul style={s.lista}>
           <li><strong>How much of the loss you will actually recover.</strong> The cost part assumes you recover the whole calculated loss after the number of months you choose. That is why next to the payback month we show the break-even share: how much of the loss is enough for the cost to pay back.</li>
           <li><strong>The time it takes to reach the top 3.</strong> The loss assumes positions that usually take months to build. The yearly figure is the loss at your current position, not a growth forecast. In the cost part you set the time to full effect yourself.</li>
           <li><strong>Seasonality and the strength of competitors.</strong> We calculate an average month. With seasonal demand or very strong competitors the real figure will be different.</li>
           <li><strong>Traffic from other sources.</strong> We do not count visits from ads, your Google Maps listing or offline referrals.</li>
+          <li><strong>Sales outside your shop.</strong> In shop mode we do not count Allegro, Amazon or other marketplaces, Google Shopping ads or free listings in the Shopping tab. We count positions in regular Google results and recommendations in AI.</li>
           <li><strong>Costs beyond the monthly amount.</strong> The calculator takes the net package price or your own amount. It does not add VAT or your own time.</li>
           <li><strong>The exact number of visits from AI chats.</strong> There is no public data on how many visits one ChatGPT recommendation brings. That is why we calculate the AI part with a rate from studies of clicks in AI answers ({AI_MIN}-{AI_MAX}%), not with Google ranking CTR. It is the least certain part of the result and today usually the smallest.</li>
         </ul>

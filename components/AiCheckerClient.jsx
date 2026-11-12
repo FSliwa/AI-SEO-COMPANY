@@ -44,6 +44,8 @@ import * as s from '@/components/narzedzia/styl';
 // panel; liczby i lista silników ze stałych lib/narzedziaLiczby.js (Z-00).
 // 12.11.2026 (S1-poprawki Z-W1…Z-W10, Z-02…Z-05): H1 z frazą, lead 2 zdania, „Co dostajesz za darmo”,
 // tabela metod z ograniczeniami, źródła z datą, FAQ 9, okruszek przez hub, poradniki i wszystkie narzędzia.
+// 12.11.2026 (domknięcie wobec RightBlogger): pytania do edycji przed sprawdzeniem (WidocznoscAiClient.jsx,
+// panel /api/narzedzia/widocznosc-ai/pytania); krok 1, tabela metod, ograniczenia, „od razu” i FAQ 10 to opisują.
 
 // LW1 (PLAN-v2 6.0, 6.2, 6.10): linki do nowych stron tylko przez bramkę publikacji. Zdanie
 // opisuje stronę, której przed publikacją nie ma, więc bez celu znika całe (nie zostaje tekst).
@@ -66,7 +68,7 @@ const AUDYT_EUR = cena('audytAi', 'en');
 // 12.11.2026: kroki według panelu narzedzia-poprawki (Z-W4): pytanie 3 ze strony, Gemini z wyszukiwaniem.
 // Frazy: „widoczność w ai” 90/mies., „ai visibility” 110 (Google Ads przez DataForSEO, 4.11.2026).
 const KROKI = [
-  ['Trzy pytania jak od klienta', 'Z branży i miasta układamy dwa pytania, np. „Jaką firmę z branży stolarz polecasz w mieście Warszawa? Podaj kilka nazw.”. Gdy podasz stronę www, a jej tytuł i opis nazywają konkretną usługę, trzecie pytanie układamy z nich, np. „Szukam: meble kuchenne na wymiar, Poznań. Którą firmę wybrać i dlaczego?”. Bez strony trzecie pytanie też powstaje z branży i miasta.'],
+  ['Trzy pytania jak od klienta', 'Z branży i miasta układamy dwa pytania, np. „Jaką firmę z branży stolarz polecasz w mieście Warszawa? Podaj kilka nazw.”. Gdy podasz stronę www, a jej tytuł i opis nazywają konkretną usługę, trzecie pytanie układamy z nich, np. „Szukam: meble kuchenne na wymiar, Poznań. Którą firmę wybrać i dlaczego?”. Bez strony trzecie pytanie też powstaje z branży i miasta. Zanim zadamy pytania, pokażemy je, a Ty możesz zmienić każde z nich, np. dopisać usługę albo dzielnicę. Nie wpisuj w nich nazwy firmy ani adresu strony, bo model powtórzyłby ją w odpowiedzi.'],
   [`${duzaLitera(ileSilnikow('pl'))} silników AI`, `Każde pytanie zadajemy ChatGPT z wyszukiwaniem w sieci ustawionym na Polskę (i Twoje miasto, jeśli je podasz), ${W.geminiZWyszukiwaniem ? 'Gemini z wyszukiwaniem Google' : 'Gemini z wiedzy modelu (bez wyszukiwania)'}, Perplexity i Claude z wyszukiwaniem, ${W.grok ? 'Grok z wiedzy modelu (bez wyszukiwania), ' : ''}a w Google sprawdzamy przegląd AI. Microsoft Copilot nie ma publicznego API, więc go nie odpytujemy i piszemy to w wyniku.`],
   ['Szukamy Twojej firmy', 'W każdej odpowiedzi sprawdzamy, czy pada nazwa firmy albo adres strony, i zapisujemy źródła, na które powołuje się model. Ocena 0-100 to odsetek odpowiedzi, w których firma się pojawia. Z odpowiedzi zbieramy też firmy, które modele wymieniają, i strony, które cytują.'],
 ];
@@ -80,6 +82,7 @@ const FAQ = [
   { question: 'Dlaczego wynik różni się od tego, co widzę w ChatGPT?', answer: 'Pytamy przez API modeli, z wyszukiwaniem w sieci (ChatGPT z lokalizacją Polska i Twoim miastem, jeśli je podasz). Aplikacja ChatGPT uwzględnia też historię rozmów, ustawienia i lokalizację użytkownika. Każde sprawdzenie to migawka: 3 pytania zadane jeden raz, a odpowiedzi zmieniają się między przebiegami i dniami. Traktuj wynik jako próbkę, nie jako stały ranking.' },
   { question: 'Które modele sprawdzacie?', answer: `W darmowym sprawdzeniu: ${SZUKAJA[0]} z wyszukiwaniem w sieci${W.geminiZWyszukiwaniem ? '' : ', Gemini z wiedzy modelu'}${W.grok ? ', Grok (z wiedzy modelu, bez wyszukiwania)' : ''} oraz przegląd AI w wynikach Google. Microsoft Copilot nie ma publicznego API, więc nie da się go sprawdzić automatycznie. W płatnym audycie widoczności w AI zadajemy 30 pytań zamiast 3.` },
   { question: 'Czy mogę sprawdzić firmę konkurenta?', answer: `Tak. Wpisz jej nazwę, branżę, miasto i stronę. Dwa pytania będą te same co dla Ciebie, a trzecie powstanie z jej strony, więc zobaczysz, czy modele wymieniają konkurenta częściej niż Ciebie. Limit to ${W.limitIp} firmy dziennie z jednego adresu IP.` },
+  { question: 'Czy mogę zmienić pytania, które zadajecie?', answer: 'Tak. Po wpisaniu danych firmy pokazujemy 3 proponowane pytania i każde możesz zmienić przed sprawdzeniem: dopisać usługę, dzielnicę albo zapytać tak, jak robią to Twoi klienci. Pytanie musi mieć od 10 do 200 znaków i nie może zawierać nazwy firmy, jej domeny ani adresu strony, bo model powtórzyłby je w odpowiedzi i zawyżył wynik. Polecenia dla modelu (np. „zignoruj instrukcje”) usuwamy. Gdy pytanie nie spełnia tych warunków, zadajemy pytanie zaproponowane i piszemy o tym w wyniku. Zmienione pytania są w wyniku oznaczone, a liczba pytań i limit sprawdzeń się nie zmieniają.' },
   { question: 'Czym różni się darmowe sprawdzenie od audytu widoczności w AI?', answer: `Darmowe sprawdzenie zadaje 3 pytania i pokazuje, czy pada nazwa firmy. W <a href="${HREF_AUDYT}">audycie widoczności w AI</a> (${AUDYT_PLN} netto) zadajemy 30 pytań Twoich klientów w ChatGPT, Perplexity, Gemini i przeglądzie AI Google, pokazujemy źródła cytowań i przygotowujemy plan na 90 dni.` },
   { question: 'Dlaczego przy mojej nazwie jest ostrzeżenie o ogólnych słowach?', answer: 'Jeśli nazwa firmy składa się tylko ze zwykłych słów (np. „Agencja SEO Warszawa” albo „AI SEO Company”), modele używają ich także w zwykłych zdaniach o branży. Wtedy liczymy wzmiankę tylko, gdy odpowiedź podaje adres Twojej strony albo zapisuje nazwę jak nazwę własną. Podaj adres strony, żeby wynik był dokładniejszy.' },
   { question: 'Kto widzi mój wynik?', answer: 'Wynik nie trafia do żadnego publicznego rankingu ani na naszą stronę. Zapisujemy go razem z danymi z formularza na 60 dni, żeby pokazać pełny wynik po podaniu e-maila i wysłać raport. Gdy podasz e-mail, dostajemy powiadomienie z podsumowaniem wyniku, żeby móc odpowiedzieć na Twoje pytania.' },
@@ -89,7 +92,7 @@ const FAQ = [
 
 // Wersja EN (9.11.2026, 12.11.2026): te same fakty, liczby i kolejność co w PL.
 const KROKI_EN = [
-  ['Three questions the way a customer asks them', 'From your industry and city we draft two questions, e.g. “Which company in the ‘carpenter’ industry do you recommend in Warsaw? Name a few.” If you add a page in English (e.g. company.com/en) whose title and description name a specific service, we build the third question from them, e.g. “I\'m looking for: fitted kitchens, Poznań. Which company should I choose and why?”. Without a website, the third question also comes from your industry and city.'],
+  ['Three questions the way a customer asks them', 'From your industry and city we draft two questions, e.g. “Which company in the ‘carpenter’ industry do you recommend in Warsaw? Name a few.” If you add a page in English (e.g. company.com/en) whose title and description name a specific service, we build the third question from them, e.g. “I\'m looking for: fitted kitchens, Poznań. Which company should I choose and why?”. Without a website, the third question also comes from your industry and city. Before we ask, we show you the questions and you can change any of them, e.g. add a service or a district. Do not put your business name or website address in them, because the model would repeat it in the answer.'],
   [`${duzaLitera(ileSilnikow('en'))} AI engines`, `We ask each question to ChatGPT with web search set to Poland (and your city, if you give one), ${W.geminiZWyszukiwaniem ? 'Gemini with Google Search' : 'Gemini from model knowledge (without web search)'}, Perplexity and Claude with web search, ${W.grok ? 'Grok from model knowledge (without web search), ' : ''}and we check Google AI Overviews. Microsoft Copilot has no public API, so we do not query it and we say so in the result.`],
   ['We look for your business', 'In every answer we check whether your company name or website address appears, and we record the sources the model cites. The 0-100 score is the share of answers in which your business appears. From the answers we also collect the businesses the models name and the sites they cite.'],
 ];
@@ -103,6 +106,7 @@ const FAQ_EN = [
   { question: 'Why does the result differ from what I see in ChatGPT?', answer: 'We ask through the models’ APIs, with web search (ChatGPT set to Poland and to your city, if you give one). The ChatGPT app also takes into account conversation history, settings and the user’s location. Each check is a snapshot: 3 questions asked once, and answers change between runs and from day to day. Treat the result as a sample, not a fixed ranking.' },
   { question: 'Which models do you check?', answer: `In the free check: ${SZUKAJA[1]} with web search${W.geminiZWyszukiwaniem ? '' : ', Gemini from model knowledge'}${W.grok ? ', Grok (from model knowledge, without web search)' : ''}, and Google AI Overviews. Microsoft Copilot has no public API, so it cannot be checked automatically. In the paid AI visibility audit we ask 30 questions instead of 3.` },
   { question: 'Can I check a competitor?', answer: `Yes. Enter its name, industry, city and website. Two questions will be the same as for you and the third will come from its website, so you will see whether the models name your competitor more often than you. The limit is ${W.limitIp} businesses per day from one IP address.` },
+  { question: 'Can I change the questions you ask?', answer: 'Yes. After you enter your business details, we show the 3 suggested questions and you can change any of them before the check: add a service, a district or ask the way your customers do. A question must be 10 to 200 characters long and cannot contain your business name, its domain or a website address, because the model would repeat them in the answer and inflate the score. We remove instructions for the model (e.g. “ignore the instructions”). If a question does not meet these rules, we ask the suggested question and say so in the result. Edited questions are marked in the result, and the number of questions and the check limit stay the same.' },
   { question: 'How is the free check different from the AI visibility audit?', answer: `The free check asks 3 questions and shows whether your business is named. In the <a href="${HREF_AUDYT_EN}">AI visibility audit</a> (${AUDYT_EUR} net) we ask 30 customer questions in ChatGPT, Perplexity, Gemini and Google AI Overviews, show who gets recommended instead of you and prepare a plan.` },
   { question: 'Why is there a note about generic words next to my business name?', answer: 'If your business name is made only of ordinary words (e.g. “SEO Agency Warsaw” or “AI SEO Company”), the models also use them in ordinary sentences about the industry. In that case we only count a mention when the answer gives your website address or writes the name as a proper name. Add your website for a more accurate result.' },
   { question: 'Who can see my result?', answer: 'The result does not go into any public ranking or onto our website. We store it with the form data for 60 days so we can show the full result after you enter your email and send the report. When you enter your email, we receive a notification with a summary of the result so we can answer your questions.' },
@@ -117,7 +121,7 @@ const TABELA = {
     columns: [{ key: 'k', label: 'Kryterium' }, { key: 'my', label: 'Pytania na żywo z wyszukiwaniem (nasza sprawdzarka)' }, { key: 'baza', label: 'Baza gotowych pytań' }, { key: 'model', label: 'Pytanie modelu bez wyszukiwania' }],
     rows: [
       { k: 'Skąd odpowiedź', my: `${SZUKAJA[0]} szukają w sieci w chwili pytania; przegląd AI z bieżących wyników Google`, baza: 'z odpowiedzi na pytania, które dostawca narzędzia zebrał wcześniej', model: 'z wiedzy, której model nauczył się przed publikacją' },
-      { k: 'Pytania', my: '3 pytania: 2 z Twojej branży i miasta, 1 z tytułu i opisu Twojej strony', baza: 'pytania z bazy dostawcy', model: 'zwykle pytania o markę' },
+      { k: 'Pytania', my: '3 pytania: 2 z Twojej branży i miasta, 1 z tytułu i opisu Twojej strony; każde możesz zmienić przed sprawdzeniem', baza: 'pytania z bazy dostawcy', model: 'zwykle pytania o markę' },
       { k: 'Mała firma lokalna', my: 'dostaje wynik, bo pytamy o branżę, miasto i Twoją ofertę', baza: 'gdy firmy nie ma w bazie, może nie być żadnego wyniku', model: 'model może nie znać firmy, choć wyszukiwarka by ją znalazła' },
       { k: 'Co widzisz', my: 'odpowiedzi, fragment ze wzmianką, firmy i źródła', baza: 'liczby wzmianek i tematy', model: 'odpowiedź albo ocenę modelu' },
     ],
@@ -127,21 +131,21 @@ const TABELA = {
     columns: [{ key: 'k', label: 'Criterion' }, { key: 'my', label: 'Live questions with web search (our checker)' }, { key: 'baza', label: 'A database of prepared questions' }, { key: 'model', label: 'Asking a model without web search' }],
     rows: [
       { k: 'Where the answer comes from', my: `${SZUKAJA[1]} search the web at the time of the question; AI Overviews from current Google results`, baza: 'answers to questions the tool provider collected earlier', model: 'what the model learned before it was released' },
-      { k: 'Questions', my: '3 questions: 2 from your industry and city, 1 from your website’s title and description', baza: 'questions from the provider’s database', model: 'usually questions about the brand' },
+      { k: 'Questions', my: '3 questions: 2 from your industry and city, 1 from your website’s title and description; you can edit each one before the check', baza: 'questions from the provider’s database', model: 'usually questions about the brand' },
       { k: 'A small local business', my: 'gets a result, because we ask about the industry, the city and your offer', baza: 'if the business is not in the database, there may be no result at all', model: 'the model may not know the business, even though a search engine would find it' },
       { k: 'What you see', my: 'answers, the excerpt with the mention, businesses and sources', baza: 'mention counts and topics', model: 'the model’s answer or rating' },
     ],
   },
 };
 const OGRANICZENIA = [
-  'Trzy pytania to próbka. Gdy nie podasz strony, wszystkie trzy układamy z branży i miasta, a przy niszowej ofercie wynik bywa wtedy niższy niż przy pytaniach o konkretną usługę. Podaj adres strony, a jedno pytanie ułożymy z jej tytułu i opisu.',
+  'Trzy pytania to próbka. Gdy nie podasz strony, wszystkie trzy układamy z branży i miasta, a przy niszowej ofercie wynik bywa wtedy niższy niż przy pytaniach o konkretną usługę. Podaj adres strony, a jedno pytanie ułożymy z jej tytułu i opisu. Możesz też przed sprawdzeniem zmienić pytania na takie, jakie zadają Twoi klienci.',
   'Silnik oznaczony w wyniku „bez wyszukiwania” odpowiada z wiedzy modelu. Ten wiersz mówi, czy model zna firmę, a nie, czy znajdzie ją w sieci.',
   'Nazwę firmy szukamy jako całe słowa. Gdy nazwa składa się z samych ogólnych słów (np. „Agencja SEO Warszawa”), liczymy wzmiankę tylko wtedy, gdy odpowiedź podaje adres Twojej strony albo zapisuje nazwę jak nazwę własną. Taki wynik może być zaniżony, więc przejrzyj fragmenty odpowiedzi w pełnym wyniku.',
   'Odpowiedzi zmieniają się z dnia na dzień. W dwóch przebiegach dla tej samej firmy dostaliśmy 18 i 36 punktów, dlatego porównuj wyniki z kilku sprawdzeń.',
   'Sprawdzarka jest ustawiona na rynek polski: ChatGPT i Claude szukają z lokalizacją Polska, a przegląd AI odczytujemy z wyników Google dla Polski. Dla firm działających tylko za granicą wynik jest mniej miarodajny.',
 ];
 const OGRANICZENIA_EN = [
-  'Three questions are a sample. If you do not add your website, all three come from your industry and city, and for a niche offer the score can then be lower than for questions about a specific service. Add your website and we build one question from its title and description.',
+  'Three questions are a sample. If you do not add your website, all three come from your industry and city, and for a niche offer the score can then be lower than for questions about a specific service. Add your website and we build one question from its title and description. You can also change the questions before the check to the ones your customers ask.',
   'An engine marked “no web search” in the result answers from model knowledge. That row tells you whether the model knows your business, not whether it would find it online.',
   'We look for your business name as whole words. If the name is made only of generic words (e.g. “SEO Agency Warsaw”), we count a mention only when the answer gives your website address or writes the name as a proper name. Such a score may be too low, so review the answer excerpts in the full result.',
   'Answers change from day to day. In two runs for the same business we got 18 and 36 points, so compare the results of several checks.',
@@ -213,12 +217,12 @@ export default function AiCheckerClient() {
             tytulOdRazu={en ? 'Right away, with no sign-up' : 'Od razu, bez rejestracji'}
             odRazu={en ? [
               'A score from 0 to 100, which is the share of answers that name your business.',
-              `A “named / not named” grid for every engine and each of the ${W.pytan} questions, plus the questions themselves (with the one built from your website marked).`,
+              `A “named / not named” grid for every engine and each of the ${W.pytan} questions, plus the questions themselves (with the one built from your website and the ones you edited marked).`,
               `The ${W.przedBramka.firm} businesses the models name most often and the ${W.przedBramka.domen} most cited sites, with the number of mentions.`,
               'If your business name is made only of generic words, the result tells you right away how we count mentions.',
             ] : [
               'Ocenę od 0 do 100, czyli odsetek odpowiedzi, w których pada Twoja firma.',
-              `Siatkę „wymieniona / niewymieniona” dla każdego silnika i każdego z ${W.pytan} pytań oraz treść pytań (z oznaczeniem pytania ułożonego z Twojej strony).`,
+              `Siatkę „wymieniona / niewymieniona” dla każdego silnika i każdego z ${W.pytan} pytań oraz treść pytań (z oznaczeniem pytania ułożonego z Twojej strony i pytań zmienionych przez Ciebie).`,
               `${W.przedBramka.firm} firm, które modele wymieniają najczęściej, i ${W.przedBramka.domen} najczęściej cytowanych stron, z liczbą wzmianek.`,
               'Gdy nazwa firmy składa się z samych ogólnych słów, wynik od razu mówi, jak liczymy wzmianki.',
             ]}
@@ -363,6 +367,7 @@ export default function AiCheckerClient() {
           screenshot={{ url: ZRZUT.en.src, width: ZRZUT.en.width, height: ZRZUT.en.height }}
           featureList={[
             '3 customer questions: 2 from your industry and city, 1 from your website',
+            'Questions you can edit before the check',
             `${SZUKAJA[1]} with web search`,
             ...(W.geminiZWyszukiwaniem ? [] : ['Gemini (model knowledge)']),
             ...(W.grok ? ['Grok (model knowledge)'] : []),
@@ -379,6 +384,7 @@ export default function AiCheckerClient() {
           screenshot={{ url: ZRZUT.pl.src, width: ZRZUT.pl.width, height: ZRZUT.pl.height }}
           featureList={[
             '3 pytania klientów: 2 z branży i miasta, 1 z treści Twojej strony',
+            'Pytania do edycji przed sprawdzeniem',
             `${SZUKAJA[0]} z wyszukiwaniem w sieci`,
             ...(W.geminiZWyszukiwaniem ? [] : ['Gemini (z wiedzy modelu)']),
             ...(W.grok ? ['Grok (z wiedzy modelu)'] : []),

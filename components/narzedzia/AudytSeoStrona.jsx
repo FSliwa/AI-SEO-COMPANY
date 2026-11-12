@@ -9,6 +9,9 @@
 // poradniki, inne narzędzia, FAQ 8. Liczby reguł i wag ze stałej AUDYT (lib/narzedziaLiczby.js), która
 // odpowiada panel-fix/lib/narzedzia/audyt.ts (REGULY, wagi :443, MNOZNIK_KARY :245, PROG_UDZIALU :247,
 // wydajność 0,7 × PSI :437) i psi.ts (2 przebiegi, mediana). Przykłady z testu: prace-2026-11-11/aplikacje/audyt/RAPORT.md §4.
+// 12.11.2026 (domknięcie, agent audyt): PSI = 3 pomiary naraz i mediana tych, które zdążą w 30 s (psi.ts PSI_AUDYTU,
+// pomiar: prace-2026-11-12/domkniecie/audyt/RAPORT.md), historia domeny przy wyniku i comiesięczny audyt e-mailem
+// (osobna zgoda po odblokowaniu). FAQ 9: nowe pytanie o zmianę oceny i comiesięczny audyt.
 
 import { Link } from '@/i18n/routing';
 import CompareTable from '@/components/CompareTable';
@@ -56,9 +59,10 @@ const FAQ_AUDYTU = [
   { id: 'audyt-a-pelny-audyt', question: 'Czym różni się darmowy audyt od płatnego audytu SEO?', answer: `Darmowy audyt sprawdza automatycznie do ${AUDYT.stron} podstron w ${AUDYT.regul} regułach. Płatny audyt SEO (od ${cena('audytSeo')} netto, 3-5 dni roboczych) obejmuje całą stronę, frazy, konkurencję, profil linków i dane z Search Console, a jego wynikiem jest plan zmian z priorytetami i wyceną.` },
   { id: 'czy-audyt-obciaza-strone', question: 'Czy audyt obciąża moją stronę?', answer: `Nie. Pobieramy do ${AUDYT.stron} podstron, po kilka naraz, z przedstawiającym się robotem AISEOCompanyAudit. To mniej niż jedna wizyta wyszukiwarki. Nie wysyłamy formularzy i nie logujemy się.` },
   { id: 'czy-moge-sprawdzic-konkurencje', question: 'Czy mogę sprawdzić stronę konkurencji?', answer: `Tak. Audyt działa dla każdej publicznej strony i nie wymaga potwierdzania, że jesteś jej właścicielem. Porównanie z 2-3 firmami z Twojej branży pokazuje, czy problem dotyczy tylko Ciebie. Limit to ${AUDYT.limitIp} audytów dziennie z jednego adresu IP.` },
-  { id: 'inny-wynik-niz-w-innych-narzedziach', question: 'Dlaczego wynik różni się od innych narzędzi SEO?', answer: `Każde narzędzie ma własny zestaw reguł i wag. Sprawdzamy do ${AUDYT.stron} podstron naraz, a nie tylko stronę główną, i dokładamy reguły gotowości na AI. Wynik PageSpeed to mediana dwóch pomiarów laboratoryjnych, ale i tak może się różnić od wyniku z innego dnia albo innego narzędzia. Porównuj listę problemów, a nie samą liczbę.` },
-  { id: 'jak-czesto-sprawdzac', question: 'Jak często sprawdzać stronę?', answer: 'Po każdej większej zmianie: nowym szablonie, migracji, wtyczce albo partii nowych podstron, a poza tym raz w miesiącu. Narzędzie nie pokazuje historii wyników, więc zachowaj raport z maila, żeby porównać kolejne audyty.' },
-  { id: 'co-z-wynikiem-audytu', question: 'Co dzieje się z adresem i wynikiem audytu?', answer: 'Zapisujemy adres strony i wynik, żeby pokazać pełną listę po podaniu e-maila i wysłać raport. Usuwamy je po 60 dniach. Zapis na newsletter jest osobny i dobrowolny. Szczegóły są w <a href="/cookies">polityce prywatności</a>.' },
+  { id: 'inny-wynik-niz-w-innych-narzedziach', question: 'Dlaczego wynik różni się od innych narzędzi SEO?', answer: `Każde narzędzie ma własny zestaw reguł i wag. Sprawdzamy do ${AUDYT.stron} podstron naraz, a nie tylko stronę główną, i dokładamy reguły gotowości na AI. Wynik PageSpeed to mediana trzech pomiarów laboratoryjnych, ale i tak może się różnić od wyniku z innego dnia albo innego narzędzia. Porównuj listę problemów, a nie samą liczbę.` },
+  { id: 'jak-czesto-sprawdzac', question: 'Jak często sprawdzać stronę?', answer: 'Po każdej większej zmianie: nowym szablonie, migracji, wtyczce albo partii nowych podstron, a poza tym raz w miesiącu. Comiesięczny audyt możesz włączyć po odblokowaniu pełnego wyniku, wtedy wyślemy go sami.' },
+  { id: 'zmiana-od-poprzedniego-audytu', question: 'Czy zobaczę, czy ocena się poprawiła?', answer: 'Tak. Jeśli tę domenę ktoś już sprawdzał, np. Ty przed poprawkami albo Twój programista, przy wyniku pokazujemy zmianę oceny i każdej kategorii, np. „+6 od audytu z 3.11”. Porównujemy same liczby: ocenę, kategorie i datę poprzedniego audytu, bez danych osoby, która go uruchomiła, i tylko audyty liczone tymi samymi regułami (od 12 listopada 2026). Po odblokowaniu wyniku możesz też zaznaczyć comiesięczny audyt: raz w miesiącu wyślemy ocenę ze zmianą oraz listę nowych i naprawionych problemów. Ruszy po potwierdzeniu adresu linkiem z maila (bez kliknięcia nic nie wyślemy), a wyłączysz go jednym kliknięciem w każdym mailu.' },
+  { id: 'co-z-wynikiem-audytu', question: 'Co dzieje się z adresem i wynikiem audytu?', answer: 'Zapisujemy adres strony i wynik, żeby pokazać pełną listę po podaniu e-maila i wysłać raport. Usuwamy je po 60 dniach. Liczby z wyniku (ocena i kategorie) służą też do pokazania zmiany przy kolejnym audycie tej domeny. Jeśli włączysz comiesięczny audyt, adres e-mail i domenę przechowujemy do czasu, aż go wyłączysz. Zapis na newsletter jest osobny i dobrowolny. Szczegóły są w <a href="/cookies">polityce prywatności</a>.' },
 ];
 
 export function AudytSeoStrona({ locale = 'pl' } = {}) {
@@ -93,11 +97,13 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
           'Cztery wyniki PageSpeed Insights na telefonie: wydajność, SEO, dostępność i dobre praktyki.',
           'Trzy najważniejsze problemy z opisem, instrukcją naprawy i przykładowymi adresami podstron.',
           'Link do wyniku, który otwiera audyt z wpisanym adresem (np. dla programisty).',
+          'Zmianę oceny i kategorii od poprzedniego audytu tej domeny, np. „+6 od audytu z 3.11”, jeśli ktoś już ją sprawdzał.',
         ]}
         poEmailu={[
           `Wszystkie znalezione problemy z adresami podstron (do ${AUDYT.stron} przy każdym problemie).`,
           'Filtr kategorii: technika, treść, wydajność, gotowość na AI.',
           'Raport na skrzynkę, który możesz przekazać programiście.',
+          'Jeśli chcesz: comiesięczny audyt tej domeny e-mailem, ze zmianą oceny oraz nowymi i naprawionymi problemami (osobna zgoda i potwierdzenie linkiem z maila, wyłączasz jednym kliknięciem).',
         ]}
       >
         <p style={{ ...s.akapit, marginTop: '1rem' }}><strong>Co z tym zrobić:</strong> zacznij od błędów, potem popraw ostrzeżenia. Uwagi naprawiaj przy okazji innych zmian. Po poprawkach uruchom audyt jeszcze raz i porównaj ocenę.</p>
@@ -118,7 +124,7 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
         <h3 style={s.h3}>Treść ({regul(R.tresc)}, {W.tresc}% oceny)</h3>
         <p style={s.akapit}>Tytuły i opisy meta (brak, długość, duplikaty), nagłówki H1 (brak albo kilka), ilość tekstu w HTML (poniżej 250 słów to ostrzeżenie), teksty alternatywne obrazów i znaczniki Open Graph, czyli podgląd strony w mediach społecznościowych.</p>
         <h3 style={s.h3}>Wydajność ({regul(R.wydajnosc)}, {W.wydajnosc}% oceny)</h3>
-        <p style={s.akapit}>Wynik Lighthouse na telefonie z Google PageSpeed Insights (mediana dwóch niezależnych pomiarów, bo pojedynczy potrafi różnić się o 10 punktów), LCP i CLS (z danych prawdziwych użytkowników, jeśli strona je ma), waga strony głównej z listą największych plików, obrazy do optymalizacji (format, wymiary, kompresja), obrazy bez width i height, czas odpowiedzi serwera i rozmiar HTML.</p>
+        <p style={s.akapit}>Wynik Lighthouse na telefonie z Google PageSpeed Insights (mediana trzech niezależnych pomiarów, bo pojedynczy potrafi różnić się o 10 punktów), LCP i CLS (z danych prawdziwych użytkowników, jeśli strona je ma), waga strony głównej z listą największych plików, obrazy do optymalizacji (format, wymiary, kompresja), obrazy bez width i height, czas odpowiedzi serwera i rozmiar HTML.</p>
         <h3 style={s.h3}>Gotowość na AI ({regul(R.ai)}, {W.ai}% oceny)</h3>
         <p style={s.akapit}>Czy tekst jest w HTML bez uruchamiania JavaScriptu (boty AI go nie uruchamiają), czy robots.txt wpuszcza GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot i Google-Extended, dane strukturalne firmy (Organization albo LocalBusiness) i poprawność JSON-LD, plik llms.txt i to, czy ma linki do podstron{llms ? <> (plik wygenerujesz w <Link href={llms} style={s.podkreslenie}>generatorze llms.txt</Link>)</> : null}.</p>
       </Sekcja>
@@ -159,7 +165,7 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
           <li><strong>Tytuły, opisy i nagłówki.</strong> Każda ważna podstrona potrzebuje własnego tytułu do ok. 60 znaków, opisu meta o długości 120-160 znaków i jednego nagłówka H1.</li>
           <li><strong>Waga i obrazy strony głównej.</strong> Zacznij od największych plików z listy w wyniku: obrazy zapisz w WebP albo AVIF w wymiarach, w jakich się wyświetlają, i dodaj im width i height. Film w tle zastąp plakatem albo lżejszą wersją.</li>
           <li><strong>Dostęp botów AI i dane firmy.</strong> Wpuść w robots.txt boty wyszukiwania AI (OAI-SearchBot, PerplexityBot, ChatGPT-User), dodaj na stronie głównej dane strukturalne Organization albo LocalBusiness i plik llms.txt z linkami do podstron.</li>
-          <li><strong>Sprawdź ponownie.</strong> Uruchom audyt po poprawkach. Pojedynczy pomiar PageSpeed potrafi się mocno różnić: 11 listopada 2026 jedenaście pomiarów naszej strony dało od 59 do 81 punktów. Dlatego bierzemy medianę dwóch pomiarów, która w tym samym teście mieściła się między 69 a 76. Mimo to oceniaj przede wszystkim zmianę listy błędów, a nie samą liczbę.</li>
+          <li><strong>Sprawdź ponownie.</strong> Uruchom audyt po poprawkach. Pojedynczy pomiar PageSpeed potrafi się mocno różnić: 11 listopada 2026 jedenaście pomiarów naszej strony dało od 59 do 81 punktów. Mediana dwóch pomiarów mieściła się w tym samym teście między 69 a 76, dlatego mierzymy trzy razy naraz i bierzemy medianę. Przy kolejnym audycie tej samej domeny wynik pokazuje zmianę od poprzedniego. Mimo to oceniaj przede wszystkim zmianę listy błędów, a nie samą liczbę.</li>
         </ol>
       </Sekcja>
 
@@ -203,7 +209,7 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
       <Sekcja id="ograniczenia-audytu" tytul="Czego darmowy audyt nie sprawdza">
         <ul style={s.lista}>
           <li>Sprawdzamy próbkę do {AUDYT.stron} podstron: stronę główną, linki z niej i adresy z mapy strony (do {AUDYT.mapPodrzednych} map podrzędnych). Wybieramy po kilka adresów z każdej wersji językowej i sekcji, np. /blog/ i /uslugi/, ale w dużym serwisie większość podstron zostaje poza audytem.</li>
-          <li>Szybkość mierzymy w PageSpeed Insights na telefonie, tylko dla strony głównej: dwa pomiary laboratoryjne i ich mediana. Gdy drugi pomiar nie zdąży (w naszym teście 11.11.2026: 5 z 24 audytów), wynik pochodzi z jednego pomiaru i to widać przy wyniku. Dane prawdziwych użytkowników (LCP, CLS) pokazujemy tylko wtedy, gdy Google je ma.</li>
+          <li>Szybkość mierzymy w PageSpeed Insights na telefonie, tylko dla strony głównej: trzy pomiary laboratoryjne naraz i mediana tych, które skończą się w ciągu 30 sekund. W naszym teście z 12.11.2026 co najmniej dwa pomiary zdążyły w 36 z 37 prób. Gdy zdąży tylko jeden, wynik pochodzi z jednego pomiaru i to widać przy wyniku. Dane prawdziwych użytkowników (LCP, CLS) pokazujemy tylko wtedy, gdy Google je ma.</li>
           <li>Czytamy HTML tak, jak wysyła go serwer, bez uruchamiania JavaScriptu, czyli tak jak większość botów AI. Treść dokładana skryptami może być w audycie niewidoczna, i to też jest wynik.</li>
           <li>Powtórzone tytuły i opisy wykrywamy tylko wśród sprawdzonych podstron, a reguły treści liczymy tylko na stronach bez noindex.</li>
           <li>Linki zewnętrzne sprawdzamy tylko pod kątem kodów 404 i 410, do 30 adresów i najwyżej 3 z jednej domeny. Pomijamy serwisy społecznościowe, które blokują roboty.</li>
@@ -247,9 +253,10 @@ const FAQ_AUDYTU_EN = [
   { id: 'free-audit-vs-paid-audit', question: 'How does the free audit differ from a paid SEO audit?', answer: `The free audit automatically checks up to ${AUDYT.stron} pages against ${AUDYT.regul} rules. A paid SEO audit (from ${cena('audytSeo', 'en')} net, 3 to 5 business days) covers the whole website, keywords, competitors, the link profile and Search Console data, and its result is a plan of changes with priorities and a quote.` },
   { id: 'does-the-audit-load-my-website', question: 'Does the audit put a load on my website?', answer: `No. We fetch up to ${AUDYT.stron} pages, a few at a time, with a self-identifying robot called AISEOCompanyAudit. That is less than a single visit from a search engine. We do not submit forms and we do not log in.` },
   { id: 'can-i-check-a-competitor', question: 'Can I check a competitor’s website?', answer: `Yes. The audit works for any public website and does not ask you to prove that you own it. Comparing yourself with 2-3 businesses in your industry shows whether a problem affects only you. The limit is ${AUDYT.limitIp} audits per day from one IP address.` },
-  { id: 'why-does-the-score-differ', question: 'Why does the score differ from other SEO tools?', answer: `Every tool has its own set of rules and weights. We check up to ${AUDYT.stron} pages at once, not just the home page, and add AI readiness rules. The PageSpeed score is the median of two lab runs, but it can still differ from a result taken on another day or in another tool. Compare the list of problems, not the number alone.` },
-  { id: 'how-often-to-check', question: 'How often should I check my website?', answer: 'After every major change: a new theme, a migration, a plugin or a batch of new pages, and otherwise once a month. The tool does not show a history of results, so keep the report from the email to compare later audits.' },
-  { id: 'what-happens-to-the-audit-data', question: 'What happens to the address and the audit result?', answer: 'We store the website address and the result so we can show the full list after you enter your email and send the report. We delete them after 60 days. Newsletter signup is separate and voluntary. Details are in the <a href="/en/cookies">privacy policy</a>.' },
+  { id: 'why-does-the-score-differ', question: 'Why does the score differ from other SEO tools?', answer: `Every tool has its own set of rules and weights. We check up to ${AUDYT.stron} pages at once, not just the home page, and add AI readiness rules. The PageSpeed score is the median of three lab runs, but it can still differ from a result taken on another day or in another tool. Compare the list of problems, not the number alone.` },
+  { id: 'how-often-to-check', question: 'How often should I check my website?', answer: 'After every major change: a new theme, a migration, a plugin or a batch of new pages, and otherwise once a month. You can turn on a monthly audit after you unlock the full result, and we will send it for you.' },
+  { id: 'change-since-the-last-audit', question: 'Will I see whether my score has improved?', answer: 'Yes. If someone has already checked this domain, for example you before the fixes or your developer, the result shows the change in the score and in each category, e.g. “+6 since the audit on 3 Nov”. We compare numbers only: the score, the categories and the date of the previous audit, with no data about the person who ran it, and only audits scored with the same rules (from 12 November 2026). After you unlock the result, you can also tick the monthly audit: once a month we will email you the score with the change and a list of new and fixed issues. It starts only after you confirm your address with the link in an email (without the click we send nothing), and you can turn it off with one click in any email.' },
+  { id: 'what-happens-to-the-audit-data', question: 'What happens to the address and the audit result?', answer: 'We store the website address and the result so we can show the full list after you enter your email and send the report. We delete them after 60 days. The numbers from the result (the score and the categories) are also used to show the change at the next audit of this domain. If you turn on the monthly audit, we keep your email address and the domain until you turn it off. Newsletter signup is separate and voluntary. Details are in the <a href="/en/cookies">privacy policy</a>.' },
 ];
 
 /** „21 rules”, „1 rule”. */
@@ -288,11 +295,13 @@ function AudytSeoEn() {
           'Four mobile PageSpeed Insights scores: performance, SEO, accessibility and best practices.',
           'The three most important issues with a description, fix instructions and sample page URLs.',
           'A link to the result that opens the audit with your address filled in (e.g. for your developer).',
+          'The change in the score and categories since the previous audit of this domain, e.g. “+6 since the audit on 3 Nov”, if someone has checked it before.',
         ]}
         poEmailu={[
           `Every issue we found with the affected page URLs (up to ${AUDYT.stron} per issue).`,
           'A category filter: technical, content, performance, AI readiness.',
           'A report in your inbox that you can hand to a developer.',
+          'If you want it: a monthly audit of this domain by email, with the change in the score and the new and fixed issues (separate consent and a confirmation link in an email, one click to turn it off).',
         ]}
       >
         <p style={{ ...s.akapit, marginTop: '1rem' }}><strong>What to do with it:</strong> start with the errors, then fix the warnings. Deal with the notices alongside other changes. Once you have made the fixes, run the audit again and compare the score.</p>
@@ -313,7 +322,7 @@ function AudytSeoEn() {
         <h3 style={s.h3}>Content ({rules(R.tresc)}, {W.tresc}% of the score)</h3>
         <p style={s.akapit}>Titles and meta descriptions (missing, length, duplicates), H1 headings (missing or more than one), the amount of text in the HTML (below 250 words is a warning), image alt text and Open Graph tags, which control how the page looks when shared on social media.</p>
         <h3 style={s.h3}>Performance ({rules(R.wydajnosc)}, {W.wydajnosc}% of the score)</h3>
-        <p style={s.akapit}>The mobile Lighthouse score from Google PageSpeed Insights (the median of two independent runs, because a single run can vary by 10 points), LCP and CLS (from real-user data, if the site has it), home page weight with a list of the largest files, images to optimise (format, size, compression), images without width and height, server response time and HTML size.</p>
+        <p style={s.akapit}>The mobile Lighthouse score from Google PageSpeed Insights (the median of three independent runs, because a single run can vary by 10 points), LCP and CLS (from real-user data, if the site has it), home page weight with a list of the largest files, images to optimise (format, size, compression), images without width and height, server response time and HTML size.</p>
         <h3 style={s.h3}>AI readiness ({rules(R.ai)}, {W.ai}% of the score)</h3>
         <p style={s.akapit}>Whether the text is in the HTML without running JavaScript (AI bots do not run it), whether robots.txt lets in GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot and Google-Extended, your company structured data (Organization or LocalBusiness) and valid JSON-LD, and an llms.txt file with links to your pages{llms ? <> (you can create one in the <Link href={llms} style={s.podkreslenie}>llms.txt generator</Link>)</> : null}.</p>
       </Sekcja>
@@ -354,7 +363,7 @@ function AudytSeoEn() {
           <li><strong>Titles, descriptions and headings.</strong> Every important page needs its own title of up to about 60 characters, a meta description of 120-160 characters and a single H1 heading.</li>
           <li><strong>Home page weight and images.</strong> Start with the largest files listed in the result: save images as WebP or AVIF at the size they are displayed, and give them width and height. Replace a background video with a poster image or a lighter version.</li>
           <li><strong>AI bot access and company data.</strong> Let AI search bots (OAI-SearchBot, PerplexityBot, ChatGPT-User) in through robots.txt, add Organization or LocalBusiness structured data to the home page and an llms.txt file with links to your pages.</li>
-          <li><strong>Check again.</strong> Run the audit after the fixes. A single PageSpeed measurement can vary a lot: on 11 November 2026 eleven runs on our own website gave between 59 and 81 points. That is why we take the median of two runs, which stayed between 69 and 76 in the same test. Even so, judge mainly the change in the list of errors, not the number alone.</li>
+          <li><strong>Check again.</strong> Run the audit after the fixes. A single PageSpeed measurement can vary a lot: on 11 November 2026 eleven runs on our own website gave between 59 and 81 points. In the same test the median of two runs stayed between 69 and 76, so we measure three times at once and take the median. At the next audit of the same domain, the result shows the change since the previous one. Even so, judge mainly the change in the list of errors, not the number alone.</li>
         </ol>
       </Sekcja>
 
@@ -398,7 +407,7 @@ function AudytSeoEn() {
       <Sekcja id="audit-limits" tytul="What the free audit does not check">
         <ul style={s.lista}>
           <li>We check a sample of up to {AUDYT.stron} pages: the home page, the links on it and URLs from the sitemap (up to {AUDYT.mapPodrzednych} child sitemaps). We pick a few URLs from every language version and section, e.g. /blog/ and /services/, but on a large website most pages stay outside the audit.</li>
-          <li>We measure speed in PageSpeed Insights on mobile, for the home page only: two lab runs and their median. If the second run does not finish in time (5 of 24 audits in our test on 11 Nov 2026), the result comes from a single run and the result says so. Real-user data (LCP, CLS) appears only if Google has it.</li>
+          <li>We measure speed in PageSpeed Insights on mobile, for the home page only: three lab runs at once and the median of those that finish within 30 seconds. In our test on 12 Nov 2026 at least two runs finished in 36 of 37 attempts. If only one finishes, the result comes from a single run and the result says so. Real-user data (LCP, CLS) appears only if Google has it.</li>
           <li>We read the HTML as the server sends it, without running JavaScript, the way most AI bots do. Content added by scripts may be invisible in the audit, and that is a finding in itself.</li>
           <li>We detect duplicate titles and descriptions only among the pages we checked, and we apply content rules only to pages without noindex.</li>
           <li>We check external links only for 404 and 410 codes, up to 30 URLs and no more than 3 per domain. We skip social networks, which block crawlers.</li>

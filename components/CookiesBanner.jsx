@@ -1,70 +1,86 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 import { track } from '@/lib/track';
+import './CookiesBanner.css';
+
+// Pasek zgody u dołu ekranu (12.11.2026). Pomiar e2e 11.11 przy 390x844:
+// pływająca karta zajmowała dolne 149 px (PL) / 167 px (EN) i przy pierwszej
+// wizycie zasłaniała główny przycisk widoczności w AI i kalkulatora strat.
+// Od 901 px karta w rogu (22.10.2026) przy 1280x720 nachodziła na przycisk
+// audytu i kalkulatora. Teraz jeden pasek na całą szerokość: na telefonie
+// dwie linie tekstu + dwa równe przyciski (~106 px), od 601 px jeden rząd
+// (~64 px przy 1280). Układ robi CSS (CookiesBanner.css), nie matchMedia, więc
+// nie ma przeskoku po hydratacji. Treść krótka, szczegóły w oknie ustawień
+// i polityce; te same fakty w PL i EN.
+const PASEK = {
+  pl: {
+    tekst: 'Cookies Google do statystyk i reklam używamy tylko za Twoją zgodą.',
+    polityka: 'Polityka cookies',
+    ustawienia: 'Ustawienia',
+  },
+  en: {
+    tekst: 'We use Google cookies for statistics and ads only with your consent.',
+    polityka: 'Cookie policy',
+    ustawienia: 'Settings',
+  },
+};
+
+// Google Consent Mode defaults to denied in the layout. Nothing here stored a
+// choice anywhere gtag could read it, so Analytics ran regardless of what the
+// user clicked; this pushes the decision through to Consent Mode.
+const applyConsentToGtag = ({ analytics, marketing }) => {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+  window.gtag('consent', 'update', {
+    analytics_storage: analytics ? 'granted' : 'denied',
+    ad_storage: marketing ? 'granted' : 'denied',
+    ad_user_data: marketing ? 'granted' : 'denied',
+    ad_personalization: marketing ? 'granted' : 'denied'
+  });
+};
+
+// Zapisany wybor (te same klucze co dotad: cookiesConsentState + cookiesConsent).
+// Czytany w inicjalizatorze stanu, nie w efekcie (react-hooks/set-state-in-effect,
+// 12.11.2026). Na serwerze window nie ma -> null; do zamontowania komponent
+// i tak renderuje null, wiec odczyt na kliencie nie daje rozjazdu hydratacji.
+const czytajZapisanaZgode = () => {
+  if (typeof window === 'undefined') return null;
+  try {
+    const parsed = JSON.parse(localStorage.getItem('cookiesConsentState') || 'null');
+    return parsed && typeof parsed === 'object' ? parsed : null;
+  } catch (err) {
+    return null;
+  }
+};
+
+const subskrypcjaPusta = () => () => {};
 
 export default function CookiesBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [showManageModal, setShowManageModal] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  // Na telefonie pełny baner zajmował 335 z 823 px (41% ekranu) i zasłaniał
-  // dokładnie to, co obiecują reklamy: cenę, „umowę na miesiąc” i przycisk
-  // w hero. Wersja kompaktowa: jedno zdanie, dwa równorzędne przyciski
-  // w jednym rzędzie, „Dostosuj” jako link w tekście.
-  const [compact, setCompact] = useState(false);
-  // Od 901 px baner jest karta w prawym dolnym rogu (22.10.2026). Wysrodkowany
-  // pas 680 px przy 1440x900 zakrywal H1 strony glownej i przycisk "Wycen
-  // projekt" w hero, a na landingach druga polowe H1 - pierwsze wrazenie
-  // kazdego nowego goscia. Prawy dolny rog przy tej szerokosci to tlo sceny
-  // 3D albo pusty margines kontenera.
-  const [corner, setCorner] = useState(false);
+  // false na serwerze i w hydratacji, true zaraz po niej (portal potrzebuje document).
+  const mounted = useSyncExternalStore(subskrypcjaPusta, () => true, () => false);
   const lang = useLocale();
   const t = useTranslations('cookies');
 
-  const [consentState, setConsentState] = useState({
+  const [zapisanaZgoda] = useState(czytajZapisanaZgode);
+  const [consentState, setConsentState] = useState(() => zapisanaZgoda || {
     essential: true,
     analytics: false,
     marketing: false
   });
 
-  // Google Consent Mode defaults to denied in the layout. Nothing here stored a
-  // choice anywhere gtag could read it, so Analytics ran regardless of what the
-  // user clicked; this pushes the decision through to Consent Mode.
-  const applyConsentToGtag = ({ analytics, marketing }) => {
-    if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
-    window.gtag('consent', 'update', {
-      analytics_storage: analytics ? 'granted' : 'denied',
-      ad_storage: marketing ? 'granted' : 'denied',
-      ad_user_data: marketing ? 'granted' : 'denied',
-      ad_personalization: marketing ? 'granted' : 'denied'
-    });
-  };
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 600px)');
-    const mqCorner = window.matchMedia('(min-width: 901px)');
-    const sync = () => {
-      setCompact(mq.matches);
-      setCorner(mqCorner.matches);
-    };
-    sync();
-    mq.addEventListener('change', sync);
-    mqCorner.addEventListener('change', sync);
-    return () => {
-      mq.removeEventListener('change', sync);
-      mqCorner.removeEventListener('change', sync);
-    };
-  }, []);
-
   // Staly przycisk „Wycen projekt" (.kota-floating-cta z Footer.jsx) stoi w tym
   // samym rogu co ten baner i ma nizszy z-index, wiec na telefonie byl przez
   // niego zakryty w calosci. Zamiast przebijac go nad baner - baner nie moze
   // byc zaslaniany - publikujemy wysokosc banera i CSS odsuwa przycisk w gore
-  // na czas, gdy baner jest widoczny.
+  // na czas, gdy baner jest widoczny. Ta sama zmienna (pasek stoi na bottom: 0,
+  // wiec wysokosc = zajety pas) daje w CookiesBanner.css zapas pod trescia
+  // strony i odsuwa przyklejony pasek przycisku kalkulatora.
   const bannerRef = useRef(null);
   const bannerShown = isVisible && !showManageModal;
   useEffect(() => {
@@ -88,26 +104,18 @@ export default function CookiesBanner() {
       ro.disconnect();
       clear();
     };
-  }, [bannerShown, compact]);
+  }, [bannerShown]);
 
   useEffect(() => {
-    setMounted(true);
-    try {
-      const saved = localStorage.getItem('cookiesConsentState');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        setConsentState(parsed);
-        // Consent Mode resets to denied on every page load, so a previously
-        // granted choice has to be replayed.
-        applyConsentToGtag(parsed);
-      } else {
-        const timer = setTimeout(() => setIsVisible(true), 1000);
-        return () => clearTimeout(timer);
-      }
-    } catch (err) {
-      setIsVisible(true);
+    if (zapisanaZgoda) {
+      // Consent Mode resets to denied on every page load, so a previously
+      // granted choice has to be replayed.
+      applyConsentToGtag(zapisanaZgoda);
+      return undefined;
     }
-  }, []);
+    const timer = setTimeout(() => setIsVisible(true), 1000);
+    return () => clearTimeout(timer);
+  }, [zapisanaZgoda]);
 
   const saveConsent = (analytics, marketing) => {
     const newState = { essential: true, analytics, marketing };
@@ -239,12 +247,7 @@ export default function CookiesBanner() {
   // Dostosuj preferencje"). Nazwa w stylu "Zgoda – Dostosuj preferencje" razem
   // z takim samym title dawala w drzewie AX opis = nazwa, czytany dwa razy.
   const fabText = t('title').split(' ')[0];
-
-  // Tresc zwarta (jedno zdanie, dwa przyciski w rzedzie, "Dostosuj" w tekscie)
-  // na telefonie i w karcie w rogu desktopu (22.10.2026). W rogu jest miejsce
-  // na ok. 360 px: H1 landingu /pozycjonowanie-stron-internetowych siega przy
-  // 1440 px do x = 1078, a pelny tekst w karcie tej szerokosci mial 8 linii.
-  const zwarty = compact || corner;
+  const pasek = PASEK[lang] || PASEK.pl;
 
   return (
     <>
@@ -297,151 +300,54 @@ export default function CookiesBanner() {
         document.body
       )}
 
-      {/* Main EU GDPR Cookie Banner (Equal Prominence Buttons) */}
+      {/* Pasek zgody (RODO / PKE art. 399): "Odrzuc opcjonalne" i "Zaakceptuj
+          wszystkie" to ta sama klasa - ten sam rozmiar, kolor i waga, w jednym
+          rzedzie, Odrzuc pierwszy. Ustawienia (okno z kategoriami, domyslnie
+          odznaczone) i polityka sa na pierwszej warstwie, w tekscie paska. */}
       <AnimatePresence>
         {isVisible && !showManageModal && (
           // Kontener nie mial role ani nazwy, wiec czytnik nie ogloszal, ze to
-          // zgoda (05.10.2026). aria-label z istniejacego klucza "title" - w trybie
-          // zwartym (telefon, rog desktopu) tytulu nie widac i to jedyna nazwa obszaru.
-          // Bez aria-live: czytnik odczytywalby caly baner po kazdym wejsciu.
+          // zgoda (05.10.2026). aria-label z istniejacego klucza "title" - tytulu
+          // nie widac i to jedyna nazwa obszaru. Bez aria-live: czytnik
+          // odczytywalby caly baner po kazdym wejsciu.
           <motion.div
             ref={bannerRef}
             className="cookie-banner"
             role="region"
             aria-label={t('title')}
-            initial={{ opacity: 0, y: 40, x: corner ? 0 : '-50%' }}
-            animate={{ opacity: 1, y: 0, x: corner ? 0 : '-50%' }}
-            exit={{ opacity: 0, y: 30, x: corner ? 0 : '-50%' }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              position: 'fixed',
-              bottom: compact ? '0.75rem' : corner ? '1.5rem' : '1.75rem',
-              left: corner ? 'auto' : '50%',
-              right: corner ? '1.5rem' : 'auto',
-              width: compact ? 'calc(100% - 1.5rem)' : corner ? 'calc(100% - 3rem)' : '92%',
-              maxWidth: corner ? '360px' : '680px',
-              background: 'rgba(10, 19, 55, 0.97)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              color: '#FFF',
-              padding: zwarty ? '0.8rem 0.9rem' : '1.5rem',
-              borderRadius: zwarty ? '16px' : '24px',
-              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.4)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              zIndex: 100000,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: zwarty ? '0.6rem' : '1.25rem',
-              fontFamily: "var(--font-geist), sans-serif"
-            }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 24 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            {zwarty ? (
-              <p style={{ margin: 0, fontSize: '0.8rem', lineHeight: 1.45, color: '#E2E8F0', fontWeight: 400 }}>
-                {t('textShort')}{' '}
-                <Link href="/cookies" style={{ color: 'var(--w-pomarancz)', textDecoration: 'underline', fontWeight: 500 }}>
-                  {t('policy')}
-                </Link>
-                {' · '}
-                <button
-                  ref={manageBtnRef}
-                  type="button"
-                  onClick={() => setShowManageModal(true)}
-                  style={{ background: 'none', border: 'none', padding: 0, color: 'rgba(255,255,255,0.74)', textDecoration: 'underline', font: 'inherit', cursor: 'pointer' }}
-                >
-                  {t('manage')}
+            <div className="cookie-banner__wnetrze">
+              <p className="cookie-banner__tekst">
+                {pasek.tekst}{' '}
+                <span className="cookie-banner__linki">
+                  <Link href="/cookies" className="cookie-banner__link">
+                    {pasek.polityka}
+                  </Link>
+                  <span aria-hidden="true"> · </span>
+                  <button
+                    ref={manageBtnRef}
+                    type="button"
+                    className="cookie-banner__link"
+                    aria-haspopup="dialog"
+                    onClick={() => setShowManageModal(true)}
+                  >
+                    {pasek.ustawienia}
+                  </button>
+                </span>
+              </p>
+
+              <div className="cookie-banner__przyciski">
+                <button type="button" className="cookie-banner__btn" onClick={handleDeclineOptional}>
+                  {t('declineAll')}
                 </button>
-              </p>
-            ) : (
-            <div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--w-pomarancz)', marginBottom: '0.35rem' }}>
-                {t('title')}
+                <button type="button" className="cookie-banner__btn" onClick={handleAcceptAll}>
+                  {t('acceptAll')}
+                </button>
               </div>
-              <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.55, color: '#E2E8F0', fontWeight: 400 }}>
-                {t('text')}{' '}
-                <Link href="/cookies" style={{ color: 'var(--w-pomarancz)', textDecoration: 'underline', fontWeight: 500 }}>
-                  {t('policy')}
-                </Link>
-              </p>
-            </div>
-            )}
-
-            {/* Equal Prominence Action Buttons (Strict EU GDPR Requirement) */}
-            <div style={{ display: 'flex', gap: zwarty ? '0.5rem' : '0.75rem', flexWrap: zwarty ? 'nowrap' : 'wrap', alignItems: zwarty ? 'stretch' : 'center' }}>
-              <button 
-                onClick={handleDeclineOptional}
-                style={{
-                  flex: zwarty ? '1 1 0' : '1 1 140px',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  border: '1px solid rgba(255, 255, 255, 0.25)',
-                  color: '#FFFFFF',
-                  padding: zwarty ? '0.55rem 0.5rem' : '0.65rem 1.1rem',
-                  minHeight: zwarty ? '44px' : undefined,
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  fontSize: zwarty ? '0.82rem' : '0.88rem',
-                  fontWeight: 600,
-                  textAlign: 'center',
-                  transition: 'all 0.25s ease'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                }}
-              >
-                {t('declineAll')}
-              </button>
-
-              <button 
-                onClick={handleAcceptAll}
-                style={{
-                  flex: zwarty ? '1 1 0' : '1 1 140px',
-                  background: 'var(--color-primary)',
-                  border: '1px solid var(--color-primary)',
-                  color: '#FFFFFF',
-                  padding: zwarty ? '0.55rem 0.5rem' : '0.65rem 1.1rem',
-                  minHeight: zwarty ? '44px' : undefined,
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  fontSize: zwarty ? '0.82rem' : '0.88rem',
-                  fontWeight: 600,
-                  textAlign: 'center',
-                  boxShadow: '0 4px 16px rgba(24, 95, 165, 0.35)',
-                  transition: 'all 0.25s ease'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background = '#144e88';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = 'var(--color-primary)';
-                }}
-              >
-                {t('acceptAll')}
-              </button>
-
-              {!zwarty && (
-              <button
-                ref={manageBtnRef}
-                type="button"
-                onClick={() => setShowManageModal(true)}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  color: 'rgba(255,255,255,0.74)',
-                  padding: '0.65rem 0.75rem',
-                  cursor: 'pointer',
-                  fontSize: '0.83rem',
-                  fontWeight: 500,
-                  textDecoration: 'underline',
-                  transition: 'color 0.25s ease'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.color = '#FFF'}
-                onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.74)'}
-              >
-                {t('manage')}
-              </button>
-              )}
             </div>
           </motion.div>
         )}
