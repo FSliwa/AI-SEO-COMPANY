@@ -349,6 +349,9 @@ export default async function ArticleContentGapAnalysis({ params }) {
               </ul>
 
               <p>The quarterly re-run does not restart this roadmap. Treat long-term items already in production as committed and let the fresh gap list compete only for the next quick-win and mid-term slots. Teams that re-prioritize everything each quarter rebuild the plan four times a year and never finish a cluster.</p>
+              {hrefJesliOpublikowana('/narzedzia/content-plan') && (
+                <p>To turn the roadmap into dated slots with a keyword, an owner and 30- and 90-day checks, use our <Link href="/narzedzia/content-plan">content calendar template</Link>.</p>
+              )}
 
               <p><strong>Governance checklist for each piece:</strong></p>
 
@@ -784,6 +787,9 @@ function ArticleAnalizaLukContentowych({ locale }) {
               <p><strong>Długi horyzont (miesiące 4–6 i dalej).</strong> Pełne klastry tematyczne dla luk domenowych: strona filarowa, teksty wspierające, architektura linkowania. <strong>To moment startu pracy, nie moment zwrotu</strong> – do tego dolicz 3–6 miesięcy na zbudowanie ruchu, czyli realny efekt między siódmym a dwunastym miesiącem.</p>
 
               <p>Kwartalne powtórzenie analizy nie resetuje tej roadmapy. Pozycje z długiego horyzontu, które są już w produkcji, traktuj jako zobowiązanie, a nową listę dopuszczaj tylko do konkurencji o kolejne sloty w dwóch pierwszych kategoriach. Zespoły, które co kwartał przestawiają wszystko, przebudowują plan cztery razy do roku i nie kończą żadnego klastra.</p>
+              {hrefJesliOpublikowana('/narzedzia/content-plan') && (
+                <p>Pozycje z roadmapy rozpisz w kalendarzu publikacji: z frazą, właścicielem, datą i pomiarem po 30 i 90 dniach. Pomoże w tym nasz <Link href="/narzedzia/content-plan">content plan: szablon na 3 miesiące</Link>.</p>
+              )}
 
               <p><strong>Checklista dla każdej pozycji:</strong></p>
 

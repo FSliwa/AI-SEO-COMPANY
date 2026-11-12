@@ -3,12 +3,19 @@
 // Formularz i wynik darmowego audytu SEO (/narzedzia/audyt-seo). API: panel /api/narzedzia/audyt-seo.
 // Przed e-mailem: ocena 1-100, cztery kategorie, liczby problemów, PageSpeed i 3 najważniejsze
 // problemy z instrukcją. Po e-mailu: wszystkie problemy z adresami podstron i raport na skrzynkę.
+// 12.11.2026 (S1-poprawki Z-A2, Z-A10, Z-06, agent audyt): linia „Dane:” pod przyciskiem, ?url= wypełnia pole
+// (bez startu), przykład do kliknięcia, link do wyniku, mediana pomiarów PSI przy wyniku, ramka z ofertą < 80.
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
 import { wywolajNarzedzie } from '@/lib/narzedziaApi';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+import { AUDYT, cena } from '@/lib/narzedziaLiczby';
+import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import BramkaEmail from './BramkaEmail';
+import LinkWyniku, { PrzykladAdresu } from './LinkWyniku';
 import { Ocena, Odblokowano, PasekDemo, Postep } from './Wspolne';
 
 export const KATEGORIE = { techniczne: 'Techniczne', tresc: 'Treść', wydajnosc: 'Wydajność', ai: 'Gotowość na AI' };
@@ -61,13 +68,20 @@ export default function AudytSeoClient() {
   const wagi = en ? WAGI_EN : WAGI;
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null });
   const [filtr, setFiltr] = useState('wszystkie');
+  const [adres, setAdres] = useState('');
+  const pole = useRef(null);
+  // ?url= tylko wypełnia pole (Z-06); audyt startuje dopiero po kliknięciu (limit IP).
+  useParametrUrl(['url'], ({ url }) => setAdres(url));
+  const pelnyAudyt = hrefJesliOpublikowana('/audyt-seo') ?? '/audyt-seo';
 
   async function start(e) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
+    const url = adres.trim();
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null });
+    zapiszParametry({ url });
     track('narzedzie_start', { narzedzie: 'audyt_seo' });
-    const r = await wywolajNarzedzie('audyt_seo', { url: String(fd.get('url') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' });
+    const r = await wywolajNarzedzie('audyt_seo', { url, nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' });
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
     track('narzedzie_wynik', { narzedzie: 'audyt_seo', wynik: r.podglad.wynik });
     setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null });
@@ -84,13 +98,16 @@ export default function AudytSeoClient() {
         <form className="narz-formularz" onSubmit={start}>
           <label htmlFor="audyt-url" className="narz-etykieta">{en ? 'Website address' : 'Adres strony'}</label>
           <div className="narz-bramka-wiersz">
-            <input id="audyt-url" name="url" required maxLength={300} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
+            <input ref={pole} id="audyt-url" name="url" required maxLength={300} value={adres} onChange={(e) => setAdres(e.target.value)} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_audyt_start">
               {stan.status === 'loading' ? (en ? 'Checking…' : 'Sprawdzam…') : (en ? 'Check your site for free' : 'Sprawdź stronę za darmo')}
             </button>
           </div>
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
-          <p className="narz-mikro">{en ? 'No signup. Up to 5 audits per day from one IP address. An audit usually takes 20 to 90 seconds.' : 'Bez rejestracji. Do 5 audytów dziennie z jednego adresu IP. Audyt trwa zwykle 20 do 90 sekund.'}</p>
+          <PrzykladAdresu onWybierz={(a) => { setAdres(a); pole.current?.focus(); }} />
+          <p className="narz-mikro">{en
+            ? `No sign-up. Up to ${AUDYT.limitIp} audits per day from one IP address. An audit usually takes 20 to 90 seconds. Data: our AISEOCompanyAudit crawler and Google PageSpeed Insights.`
+            : `Bez rejestracji. Do ${AUDYT.limitIp} audytów dziennie z jednego adresu IP. Audyt trwa zwykle 20 do 90 sekund. Dane: nasz robot AISEOCompanyAudit i Google PageSpeed Insights.`}</p>
           {stan.status === 'loading' && <Postep kroki={en ? KROKI_EN : KROKI} co={9000} />}
           {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
         </form>
@@ -107,7 +124,10 @@ export default function AudytSeoClient() {
                   <>We checked {w.stron} {w.stron === 1 ? 'page' : 'pages'} and found {liczbaProblemowEn(w.liczby.bledy + w.liczby.ostrzezenia + w.liczby.uwagi)}: {w.liczby.bledy} {w.liczby.bledy === 1 ? 'error' : 'errors'}, {w.liczby.ostrzezenia} {w.liczby.ostrzezenia === 1 ? 'warning' : 'warnings'} and {w.liczby.uwagi} {w.liczby.uwagi === 1 ? 'notice' : 'notices'}.</>
                 ) : (<>Sprawdziliśmy {odmien(w.stron, ['podstronę', 'podstrony', 'podstron'])}. Znaleźliśmy {liczbaProblemow(w.liczby.bledy + w.liczby.ostrzezenia + w.liczby.uwagi)}: {odmien(w.liczby.bledy, ['błąd', 'błędy', 'błędów'])}, {odmien(w.liczby.ostrzezenia, ['ostrzeżenie', 'ostrzeżenia', 'ostrzeżeń'])} i {odmien(w.liczby.uwagi, ['uwagę', 'uwagi', 'uwag'])}.</>)}
               </p>
-              <button type="button" className="narz-link" onClick={() => setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null })}>{en ? 'Check another site' : 'Sprawdź inną stronę'}</button>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.4rem 1.5rem' }}>
+                <button type="button" className="narz-link" onClick={() => setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null })}>{en ? 'Check another site' : 'Sprawdź inną stronę'}</button>
+                <LinkWyniku narzedzie="audyt_seo" parametry={{ url: adres.trim() || w.domena }} />
+              </div>
             </div>
           </div>
           <ul className="narz-kategorie">
@@ -123,7 +143,10 @@ export default function AudytSeoClient() {
           {w.psi && (
             <p className="narz-psi">{en
               ? <>PageSpeed Insights (mobile): performance {w.psi.wydajnosc ?? '–'}, SEO {w.psi.seo ?? '–'}, accessibility {w.psi.dostepnosc ?? '–'}, best practices {w.psi.praktyki ?? '–'}.</>
-              : <>PageSpeed Insights (telefon): wydajność {w.psi.wydajnosc ?? '–'}, SEO {w.psi.seo ?? '–'}, dostępność {w.psi.dostepnosc ?? '–'}, dobre praktyki {w.psi.praktyki ?? '–'}.</>}</p>
+              : <>PageSpeed Insights (telefon): wydajność {w.psi.wydajnosc ?? '–'}, SEO {w.psi.seo ?? '–'}, dostępność {w.psi.dostepnosc ?? '–'}, dobre praktyki {w.psi.praktyki ?? '–'}.</>}
+              {w.psi.przebiegi > 1 && w.psi.wydajnoscPomiary?.length > 1
+                ? (en ? ` Performance is the median of ${w.psi.przebiegi} runs (${w.psi.wydajnoscPomiary.join(' and ')}).` : ` Wydajność to mediana ${w.psi.przebiegi} pomiarów (${w.psi.wydajnoscPomiary.join(' i ')}).`)
+                : w.psi.przebiegi === 1 ? (en ? ' Performance comes from a single run; a single run can vary by about 10 points.' : ' Wydajność pochodzi z jednego pomiaru; pojedynczy pomiar może się różnić o ok. 10 punktów.') : null}</p>
           )}
 
           {stan.pelny && <Odblokowano newsletter={stan.newsletter} />}
@@ -158,6 +181,16 @@ export default function AudytSeoClient() {
                 przycisk={en ? 'Show the full audit' : 'Pokaż pełny audyt'}
                 onOdblokowano={(pelny, newsletter) => setStan((s) => ({ ...s, pelny, newsletter }))}
               />
+            </div>
+          )}
+
+          {w.wynik < 80 && (
+            <div className="narz-bramka" style={{ marginTop: '1.5rem' }}>
+              <p className="narz-bramka-tytul">{en ? 'Want every error fixed in the right order?' : 'Chcesz naprawić błędy we właściwej kolejności?'}</p>
+              <p className="narz-bramka-opis">{en
+                ? `A score below 80 means there are problems that limit your visibility. In an SEO audit (from ${cena('audytSeo', 'en')} net) you get every error with a priority and instructions for a developer.`
+                : `Ocena poniżej 80 oznacza problemy, które ograniczają widoczność. W audycie SEO (od ${cena('audytSeo')} netto) dostajesz każdy błąd z priorytetem i instrukcją dla programisty.`}</p>
+              <p style={{ margin: '0.75rem 0 0' }}><Link href={pelnyAudyt} className="btn btn-secondary" data-cta="audyt_wynik_oferta">{en ? 'See what the SEO audit covers' : 'Zobacz zakres audytu SEO'}</Link></p>
             </div>
           )}
         </div>

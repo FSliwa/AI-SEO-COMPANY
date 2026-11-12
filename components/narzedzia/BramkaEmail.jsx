@@ -8,6 +8,9 @@
 // - Zgoda na wysłanie wyniku jest konieczna (wynik idzie e-mailem); newsletter to osobny,
 //   niezaznaczony checkbox: wynik nie zależy od zapisu (RODO art. 7 ust. 4, decyzja Filipa 9.11.2026).
 // - Zdarzenia: narzedzie_bramka (widok), generate_lead (odblokowanie), newsletter_zapis.
+// - 12.11.2026 (decyzje właściciela Z-K5, autorytet): prop tylkoRaport = cały wynik jest już widoczny
+//   bez e-maila, bramka tylko wysyła raport. Zmienia domyślny przycisk i teksty potwierdzenia (bez
+//   „pokaż pełny wynik”). Domyślnie false: audyt, widoczność i makieta bez zmian.
 
 import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
@@ -16,10 +19,10 @@ import { track } from '@/lib/track';
 import { odblokuj } from '@/lib/narzedziaApi';
 import { ODBIORCY, ODBIORCY_EN, ZGODA_NEWSLETTER, ZGODA_NEWSLETTER_EN } from '@/lib/zgodyNarzedzi';
 
-export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [], przycisk, dane, konkurenci, dodatkowePola = null, onOdblokowano }) {
+export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [], przycisk, dane, konkurenci, dodatkowePola = null, onOdblokowano, tylkoRaport = false }) {
   const lang = useLocale();
   const en = lang === 'en';
-  przycisk = przycisk ?? (en ? 'Send and show the full result' : 'Wyślij i pokaż pełny wynik');
+  przycisk = przycisk ?? (tylkoRaport ? (en ? 'Send the report' : 'Wyślij raport') : (en ? 'Send and show the full result' : 'Wyślij i pokaż pełny wynik'));
   const [stan, setStan] = useState({ status: 'idle', blad: null });
   const ref = useRef(null);
   const widziana = useRef(false);
@@ -67,7 +70,7 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
   if (stan.status === 'done') {
     return (
       <div className="narz-bramka narz-bramka--gotowe" role="status">
-        <p className="narz-bramka-tytul">{en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest niżej, raport wysłaliśmy e-mailem.'}</p>
+        <p className="narz-bramka-tytul">{tylkoRaport ? (en ? 'Done: we have emailed you the report.' : 'Gotowe: raport wysłaliśmy e-mailem.') : (en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest niżej, raport wysłaliśmy e-mailem.')}</p>
         {stan.newsletter === 'pending' && <p className="narz-bramka-opis">{en ? 'Check your inbox and confirm your newsletter signup. Without confirmation we will not send any issue.' : 'Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.'}</p>}
       </div>
     );
@@ -115,7 +118,7 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
         <input type="checkbox" name="newsletter" />
         <span>{(en ? ZGODA_NEWSLETTER_EN : ZGODA_NEWSLETTER).tekst}</span>
       </label>
-      <p className="narz-bramka-mikro">{en ? 'The report reaches your inbox within a minute. You will also see the full result right here.' : 'Raport przychodzi na skrzynkę w ciągu minuty. Pełny wynik zobaczysz też od razu tutaj.'}</p>
+      <p className="narz-bramka-mikro">{tylkoRaport ? (en ? 'The report reaches your inbox within a minute.' : 'Raport przychodzi na skrzynkę w ciągu minuty.') : (en ? 'The report reaches your inbox within a minute. You will also see the full result right here.' : 'Raport przychodzi na skrzynkę w ciągu minuty. Pełny wynik zobaczysz też od razu tutaj.')}</p>
       {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
     </form>
   );

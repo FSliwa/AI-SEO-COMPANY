@@ -4,11 +4,16 @@
 // (treści strony + zrzut -> Claude -> HTML bez skryptów). Przed e-mailem: pierwszy ekran nowej
 // strony obok obecnej. Po e-mailu: cała makieta, podgląd na telefonie i link w mailu.
 // Makieta zawsze w <iframe sandbox=""> (bez skryptów, formularzy i dostępu do strony).
+// 12.11.2026 (S1-poprawki): pole „Co ma się poprawić” pod przyciskiem (Z-01b), przykład adresu i ?url=
+// tylko wypełnia pole, bez startu (Z-06; limit 2/IP i koszt makiety), link do wyniku przy wyniku.
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { track } from '@/lib/track';
 import { wywolajNarzedzie } from '@/lib/narzedziaApi';
+import { MAKIETA } from '@/lib/narzedziaLiczby';
+import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
+import LinkWyniku, { PrzykladAdresu } from './LinkWyniku';
 import BramkaEmail from './BramkaEmail';
 import { Odblokowano, PasekDemo, Postep } from './Wspolne';
 
@@ -28,13 +33,19 @@ export default function MakietaClient() {
   const en = useLocale() === 'en';
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null });
   const [widok, setWidok] = useState('komputer');
+  const [adres, setAdres] = useState('');
+  const poleRef = useRef(null);
+  useParametrUrl(['url'], ({ url }) => { if (poleRef.current && url) poleRef.current.value = url; });
 
   async function start(e) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
+    const url = String(fd.get('url') || '').trim();
+    setAdres(url);
+    zapiszParametry({ url });
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null });
     track('narzedzie_start', { narzedzie: 'makieta' });
-    const r = await wywolajNarzedzie('makieta', { url: String(fd.get('url') || ''), cel: String(fd.get('cel') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' }, 290_000);
+    const r = await wywolajNarzedzie('makieta', { url, cel: String(fd.get('cel') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' }, 290_000);
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
     track('narzedzie_wynik', { narzedzie: 'makieta' });
     setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null });
@@ -47,16 +58,17 @@ export default function MakietaClient() {
       {stan.status !== 'done' && (
         <form className="narz-formularz" onSubmit={start}>
           <label htmlFor="mak-url" className="narz-etykieta">{en ? 'Current website address' : 'Adres obecnej strony'}</label>
-          <input id="mak-url" name="url" required maxLength={300} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
-          <label htmlFor="mak-cel" className="narz-etykieta">{en ? 'What should improve? (optional)' : 'Co ma się poprawić? (opcjonalnie)'}</label>
-          <input id="mak-cel" name="cel" maxLength={300} placeholder={en ? 'e.g. more phone calls from customers, a more modern look' : 'np. więcej telefonów od klientów, nowocześniejszy wygląd'} className="narz-pole" />
+          <input ref={poleRef} id="mak-url" name="url" required maxLength={300} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
+          <PrzykladAdresu onWybierz={(a) => { if (poleRef.current) { poleRef.current.value = a; poleRef.current.focus(); } }} />
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_makieta_start">
               {stan.status === 'loading' ? (en ? 'Designing…' : 'Projektuję…') : (en ? 'Design a new website' : 'Zaprojektuj nową stronę')}
             </button>
           </div>
-          <p className="narz-mikro">{en ? 'No signup. The mockup takes 1 to 3 minutes. Up to 2 mockups per day from one IP address.' : 'Bez rejestracji. Makieta powstaje 1 do 3 minut. Do 2 makiet dziennie z jednego adresu IP.'}</p>
+          <p className="narz-mikro">{en ? `No signup. The mockup takes ${MAKIETA.minut.replace('-', ' to ')} minutes. Up to ${MAKIETA.limitIp} mockups per day from one IP address.` : `Bez rejestracji. Makieta powstaje ${MAKIETA.minut.replace('-', ' do ')} minut. Do ${MAKIETA.limitIp} makiet dziennie z jednego adresu IP.`}</p>
+          <label htmlFor="mak-cel" className="narz-etykieta">{en ? 'What should improve? (optional)' : 'Co ma się poprawić? (opcjonalnie)'}</label>
+          <input id="mak-cel" name="cel" maxLength={300} placeholder={en ? 'e.g. more phone calls from customers, a more modern look' : 'np. więcej telefonów od klientów, nowocześniejszy wygląd'} className="narz-pole" />
           {stan.status === 'loading' && <Postep kroki={en ? KROKI_EN : KROKI} co={25000} />}
           {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
         </form>
@@ -71,6 +83,7 @@ export default function MakietaClient() {
                 {p.zrzut && (
                   <figure>
                     <figcaption>{en ? 'Now' : 'Teraz'}</figcaption>
+                    {/* eslint-disable-next-line @next/next/no-img-element -- zrzut z zewnętrznej usługi (Microlink), dowolny host: next/image wymagałby listy domen */}
                     <img src={p.zrzut} alt={en ? `Current homepage of ${p.domena}` : `Obecna strona główna ${p.domena}`} loading="lazy" />
                   </figure>
                 )}
@@ -108,6 +121,7 @@ export default function MakietaClient() {
               )}
             </>
           )}
+          {adres ? <LinkWyniku narzedzie="makieta" parametry={{ url: adres }} /> : null}
           <p className="narz-mikro">{en ? 'The mockup is a design proposal built from your website’s content, not a finished website. Before launch we adapt it to your brand, photos and SEO.' : 'Makieta to propozycja wyglądu z treści Twojej strony, a nie gotowa strona. Przed wdrożeniem dopasowujemy ją do marki, zdjęć i SEO.'}</p>
         </div>
       )}

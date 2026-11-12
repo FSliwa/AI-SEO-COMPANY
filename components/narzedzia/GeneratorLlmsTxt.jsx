@@ -10,6 +10,10 @@
 //   (Breadcrumbs z parent); bez ArticleSchema,
 // - linki: hub GEO, A2 (warunkowo), sprawdzarka (po T0.2), /narzedzia, /llms.txt.
 // 9.11.2026: prop locale ('pl' domyślnie | 'en'); wersja EN pod /en/tools/llms-txt-generator.
+// 12.11.2026 S1-poprawki (sekcja 5 zmiany.md): lead → narzędzie → Krótka odpowiedź i byline (Z-01, Z-L1),
+// teksty zgodne z generatorem z 11.11 (Z-L0, z korektą weryfikacji: kontakt zostaje w „Strony”), Co dostajesz
+// (Z-04), H2 o poprawianiu pliku w edytorze (Z-L4), Poradniki (Z-03), Inne narzędzia i okruszek przez hub
+// (Z-02), FAQ 5 → 9 (Z-L3 + pytanie o edytor; dodatki tu, bo lib/narzedzia*.js to wspólne rejestry), featureList (Z-05).
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -26,8 +30,15 @@ import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
 import { sectionId } from '@/lib/anchors';
 import { STRONY_NARZEDZI_EN, FAQ_GENERATORA_EN } from '@/lib/narzedziaGeneratorRaport.en';
-import { BASE, FAQ_GENERATORA, RODZIC_OKRUSZKOW, SCIEZKA_HUBA, hrefAudytuAi, hrefSprawdzarki, stronaNarzedzia } from '@/lib/narzedzia';
+import { BASE, FAQ_GENERATORA, SCIEZKA_HUBA, hrefAudytuAi, hrefSprawdzarki, stronaNarzedzia } from '@/lib/narzedzia';
+import { GENERATOR, cena } from '@/lib/narzedziaLiczby';
 import LlmsTxtClient from './LlmsTxtClient';
+import PozostaleNarzedzia, { RODZIC_HUBA } from './PozostaleNarzedzia';
+import Poradniki from './Poradniki';
+import CoDostajesz from './CoDostajesz';
+import ZrzutWyniku from './ZrzutWyniku';
+import Sekcja from './Sekcja';
+import st from './narzedzia.module.css';
 import * as s from './styl';
 
 const SCIEZKA = '/narzedzia/generator-llms-txt';
@@ -45,26 +56,105 @@ const PRZYKLAD = `# AI SEO COMPANY
 - [Zmiana agencji SEO bez kar i utraty pozycji](https://www.ai-seo-company.pl/zmiana-agencji-seo): poradnik, checklista 32 punktów (konta Google, domena, treści, linki, dane) i bezpłatny przegląd po poprzedniej agencji (30 min).`;
 
 const TESTY = [
-  { co: 'Mapa strony', poCo: 'Źródło listy podstron: wpis Sitemap w robots.txt albo /sitemap.xml, także indeks map.', jak: 'Bez mapy plik zawiera tylko stronę główną. Dodaj sitemap.xml i zgłoś ją w Search Console.' },
+  { co: 'Mapa strony', poCo: `Źródło listy podstron: wpis Sitemap w robots.txt albo /sitemap.xml, także indeks map (do ${GENERATOR.mapPodrzednych} map podrzędnych). Przy ponad ${GENERATOR.adresow} adresach bierzemy po kilka z każdej mapy i sekcji, a nie pierwsze ${GENERATOR.adresow}. Kilka adresów z błędem zastępujemy innymi z tej samej sekcji.`, jak: 'Bez mapy plik zawiera tylko stronę główną. Dodaj sitemap.xml i zgłoś ją w Search Console.' },
   { co: 'Kod odpowiedzi i przekierowania', poCo: 'Do pliku trafiają tylko adresy, które zwracają kod 200.', jak: 'Adresy z kodem 3xx, 4xx i 5xx są na liście pominiętych razem z kodem.' },
   { co: 'noindex', poCo: 'Strona wyłączona z indeksu nie powinna trafiać do spisu.', jak: 'Pomijamy adresy z noindex w meta robots albo w nagłówku X-Robots-Tag.' },
   { co: 'Tytuł i opis', poCo: 'Z nich powstają wiersze pliku: link z tytułem i opis po dwukropku.', jak: 'Brak opisu = sam link. Uzupełnij meta description na tych podstronach.' },
+  { co: 'Sekcje pliku', poCo: 'Podstrony grupujemy według pierwszego członu adresu (Blog, Usługi) i wersji językowej (Wersja EN, Blog (EN)). Regulamin i polityki trafiają do sekcji „Optional”, którą model może pominąć. Kontakt zostaje w „Strony”.', jak: 'Sekcja potrzebuje co najmniej 2 podstron w mapie, pozostałe adresy trafiają do „Strony”. Nazwy sekcji i przydział linków zmienisz w edytorze przed pobraniem.' },
   { co: 'robots.txt dla 8 botów', poCo: 'Pokazuje, czy bot może pobrać stronę główną i ile sprawdzonych adresów blokuje.', jak: 'Blokada OAI-SearchBot albo PerplexityBot wyklucza stronę z wyników ChatGPT i Perplexity.' },
-  { co: 'Obecny plik /llms.txt', poCo: 'Pokazuje, czy strona ma już plik i czy zwraca go bez przekierowania.', jak: 'Kod 200 i nagłówek „# Nazwa” w pierwszym wierszu = plik jest na miejscu. HTML zamiast tekstu oznacza zły adres.' },
+  { co: 'Obecny plik /llms.txt', poCo: 'Pokazuje, czy strona ma już plik i czy zwraca go bez przekierowania.', jak: 'Kod 200 i nagłówek „# Nazwa” w pierwszym wierszu = plik jest na miejscu. Pokazujemy też liczbę linków do podstron: plik bez linków w formacie [nazwa](https://adres) oznaczamy jako błąd, bo nic modelowi nie wskaże. HTML zamiast tekstu oznacza zły adres.' },
   { co: 'Kod HTTP z User-Agentem bota', poCo: 'Wykrywa blokady zapory (WAF) i CDN, których nie widać w robots.txt.', jak: 'Kod 403 albo 429 dla bota przy 200 dla przeglądarki oznacza blokadę po stronie serwera.' },
 ];
 
 const TESTY_EN = [
-  { co: 'Sitemap', poCo: 'Source of the page list: the Sitemap entry in robots.txt or /sitemap.xml, including sitemap indexes.', jak: 'Without a sitemap, the file contains only the home page. Add sitemap.xml and submit it in Search Console.' },
+  { co: 'Sitemap', poCo: `Source of the page list: the Sitemap entry in robots.txt or /sitemap.xml, including sitemap indexes (up to ${GENERATOR.mapPodrzednych} child sitemaps). With more than ${GENERATOR.adresow} URLs, we take a few from every sitemap and section, not the first ${GENERATOR.adresow}. We replace a few URLs with errors with others from the same section.`, jak: 'Without a sitemap, the file contains only the home page. Add sitemap.xml and submit it in Search Console.' },
   { co: 'Response code and redirects', poCo: 'Only URLs that return code 200 go into the file.', jak: 'URLs with 3xx, 4xx and 5xx codes appear on the skipped list together with the code.' },
   { co: 'noindex', poCo: 'A page excluded from the index should not appear in the listing.', jak: 'We skip URLs with noindex in the meta robots tag or in the X-Robots-Tag header.' },
   { co: 'Title and description', poCo: 'They make up the lines of the file: a link with a title and a description after the colon.', jak: 'No description = a bare link. Add a meta description to those pages.' },
+  { co: 'File sections', poCo: 'We group pages by the first part of the URL (Blog, Services) and by language version (EN version, Blog (EN)). Terms and policies go to the "Optional" section, which a model may skip. The contact page stays in "Pages".', jak: 'A section needs at least 2 pages in the sitemap; the remaining URLs go to "Pages". You can rename sections and move links between them in the editor before downloading.' },
   { co: 'robots.txt for 8 bots', poCo: 'Shows whether a bot can fetch the home page and how many of the checked URLs it blocks.', jak: 'Blocking OAI-SearchBot or PerplexityBot excludes your site from ChatGPT and Perplexity results.' },
-  { co: 'Existing /llms.txt file', poCo: 'Shows whether the site already has the file and whether it is served without a redirect.', jak: 'Code 200 and a "# Name" heading on the first line = the file is in place. HTML instead of text means the wrong address.' },
+  { co: 'Existing /llms.txt file', poCo: 'Shows whether the site already has the file and whether it is served without a redirect.', jak: 'Code 200 and a "# Name" heading on the first line = the file is in place. We also show the number of links to your pages: a file with no links in the [name](https://address) format is marked as an error, because it points a model to nothing. HTML instead of text means the wrong address.' },
   { co: 'HTTP code with the bot User-Agent', poCo: 'Detects firewall (WAF) and CDN blocks that robots.txt does not show.', jak: 'Code 403 or 429 for the bot with 200 for a browser means a block on the server side.' },
 ];
 
 const PRZYKLAD_EN_NOTE = 'An excerpt of https://www.ai-seo-company.pl/llms.txt as of November 5, 2026 (the file itself is in Polish).';
+
+// Z-L3 (FAQ 5 → 8) + pytanie o edytor (Z-L4). Odpowiedź o „Optional” po weryfikacji 11.11: kontakt NIE
+// trafia do Optional (generator.js SLUG_OPCJONALNY), więc tekst z zmiany.md bez „oraz kontakt”.
+const FAQ_DODATKOWE = [
+  {
+    id: 'dlaczego-brakuje-podstron',
+    question: 'Dlaczego w pliku nie ma wszystkich moich podstron?',
+    answer: `Sprawdzamy do ${GENERATOR.adresow} adresów: przy większej mapie bierzemy po kilka z każdej mapy podrzędnej i sekcji (do ${GENERATOR.mapPodrzednych} map). Pomijamy adresy z kodem innym niż 200 i z noindex, a pod wynikiem pokazujemy listę pominiętych i tych, których nie zdążyliśmy sprawdzić w ${GENERATOR.sekund} sekund. Kilka adresów z błędem zastępujemy innymi z tej samej sekcji. Brakujące ważne podstrony dopisz ręcznie w tym samym formacie.`,
+  },
+  {
+    id: 'co-to-jest-sekcja-optional',
+    question: 'Co to jest sekcja „Optional”?',
+    answer: 'To sekcja opisana w specyfikacji llmstxt.org: linki, które model może pominąć, gdy ma mało miejsca. Generator wkłada tam regulamin oraz polityki prywatności i cookies, a kontakt i ważne podstrony zostawia w sekcjach wyżej. W edytorze pod wynikiem przeniesiesz do niej inne drugorzędne linki. Nazwy „Optional” nie tłumacz, bo to nazwa ze specyfikacji.',
+  },
+  {
+    id: 'czy-potrzebny-email',
+    question: 'Czy muszę podawać e-mail albo zakładać konto?',
+    answer: `Nie. Cały plik i test botów widzisz od razu na stronie, bez rejestracji i bez e-maila. Nie zapisujemy adresu ani wyniku. Limit to ${GENERATOR.limitIp} sprawdzeń dziennie z jednego adresu IP.`,
+  },
+  {
+    id: 'czy-moge-edytowac-plik',
+    question: 'Czy mogę zmienić plik przed pobraniem?',
+    answer: 'Tak. Pod wynikiem otwórz „Edytuj plik przed pobraniem”: odznaczysz linie, których nie chcesz w pliku, zmienisz nazwę, opis firmy, tytuły i opisy linków, kolejność i sekcje, a drugorzędne linki przeniesiesz do „Optional”. Przyciski „Kopiuj” i „Pobierz llms.txt” biorą plik już ze zmianami. Edycja działa w Twojej przeglądarce i niczego nie zapisujemy.',
+  },
+];
+
+const FAQ_DODATKOWE_EN = [
+  {
+    id: 'why-are-some-pages-missing',
+    question: 'Why are some of my pages missing from the file?',
+    answer: `We check up to ${GENERATOR.adresow} URLs: with a larger sitemap we take a few from every child sitemap and section (up to ${GENERATOR.mapPodrzednych} sitemaps). We skip URLs that return a code other than 200 or have noindex, and below the result we list the skipped URLs and those we did not manage to check within ${GENERATOR.sekund} seconds. We replace a few URLs with errors with others from the same section. Add any important missing pages by hand in the same format.`,
+  },
+  {
+    id: 'what-is-the-optional-section',
+    question: 'What is the "Optional" section?',
+    answer: 'It is a section defined in the llmstxt.org specification: links that a model may skip when it is short on context. The generator puts the terms and the privacy and cookie policies there, and keeps the contact page and important pages in the sections above. In the editor below the result, you can move other secondary links there. Do not translate the name "Optional", because it comes from the specification.',
+  },
+  {
+    id: 'do-i-need-an-email',
+    question: 'Do I need to give an email or create an account?',
+    answer: `No. You see the whole file and the bot test right away on the page, with no sign-up and no email. We do not store the address or the result. The limit is ${GENERATOR.limitIp} checks per day from one IP address.`,
+  },
+  {
+    id: 'can-i-edit-the-file',
+    question: 'Can I edit the file before downloading it?',
+    answer: 'Yes. Below the result, open "Edit the file before downloading": you can untick the lines you do not want in the file, change the name, the business description, link titles and descriptions, the order and the sections, and move secondary links to "Optional". The "Copy" and "Download llms.txt" buttons take the file with your changes. Editing happens in your browser and we store nothing.',
+  },
+];
+
+// Z-04: wszystko od razu, bez e-maila (jedna kolumna). Fakty z generator.js i LlmsTxtClient.jsx.
+const CO_DOSTAJESZ = [
+  'Cały plik llms.txt w formacie llmstxt.org: nagłówek z nazwą, opis firmy i sekcje z linkami do podstron.',
+  'Tytuł przy każdym linku i opis z meta description podstrony, jeśli go ma.',
+  'Sekcje według katalogów i wersji językowych, a regulamin i polityki w sekcji „Optional”.',
+  'Edytor przed pobraniem: odznaczanie linii, zmiana tytułów, opisów, kolejności i sekcji.',
+  `Test robots.txt i kodu HTTP dla ${GENERATOR.botow} botów AI z wnioskiem przy każdym.`,
+  'Ocenę obecnego pliku /llms.txt z liczbą linków do podstron.',
+  'Listę pominiętych adresów z powodem (kod HTTP, noindex) i link do wyniku do skopiowania.',
+];
+const CO_DOSTAJESZ_EN = [
+  'The whole llms.txt file in the llmstxt.org format: a heading with the name, a business description and sections with links to your pages.',
+  'A title for every link and a description from the page’s meta description, if it has one.',
+  'Sections by folder and language version, with terms and policies in the "Optional" section.',
+  'An editor before downloading: untick lines, change titles, descriptions, order and sections.',
+  `A robots.txt and HTTP code test for ${GENERATOR.botow} AI bots, with a conclusion for each.`,
+  'A check of the existing /llms.txt file, including its number of links to your pages.',
+  'A list of skipped URLs with the reason (HTTP code, noindex) and a link to the result you can copy.',
+];
+
+// Z-07: prawdziwy przebieg 12.11.2026 12:05 UTC (www.ai-seo-company.pl, kopia dev z kodem tej gałęzi), bez edycji
+// treści; przycięty pod tabelą botów, ukryte tylko przyklejone elementy (nagłówek, baner cookies).
+// Skrypt: prace-2026-11-11/lepsi/llms/skrypty/pw-zrzut-wyniku.mjs. WebP bezstratny, 65 KB.
+const ZRZUT = { src: '/narzedzia/generator-llms-txt-wynik.webp', width: 1137, height: 1580 };
+
+// Z-05: te same fakty co na stronie.
+const FUNKCJE = ['Plik llms.txt z mapy strony, do 50 adresów z każdej sekcji', 'Sekcje według katalogów i wersji językowych, sekcja Optional', 'Edycja pliku przed pobraniem', 'Test robots.txt i kodu HTTP dla 8 botów AI', 'Ocena istniejącego pliku /llms.txt z liczbą linków'];
+const FUNKCJE_EN = ['An llms.txt file from your sitemap, up to 50 URLs across all sections', 'Sections by folder and language version, an Optional section', 'Editing the file before downloading', 'robots.txt and HTTP code test for 8 AI bots', 'A check of the existing /llms.txt file, including its link count'];
 
 export default function GeneratorLlmsTxt({ locale = 'pl' }) {
   const en = locale === 'en';
@@ -78,9 +168,9 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
   const metaEn = STRONY_NARZEDZI_EN['generator-llms-txt'];
 
   return (
-    <main style={s.main}>
+    <main className={st.strona} style={s.main}>
       <Header />
-      <Breadcrumbs pl={strona.okruszek} en={metaEn.okruszek} parent={RODZIC_OKRUSZKOW} />
+      <Breadcrumbs pl={strona.okruszek} en={metaEn.okruszek} parent={RODZIC_HUBA} />
       {en ? (
         <WebAppSchema
           name="llms.txt generator and AI bot access test"
@@ -88,6 +178,8 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
           url={`${BASE}${SCIEZKA_EN}`}
           category="DeveloperApplication"
           language="en"
+          featureList={FUNKCJE_EN}
+          screenshot={{ url: ZRZUT.src, width: ZRZUT.width, height: ZRZUT.height }}
         />
       ) : (
         <WebAppSchema
@@ -95,10 +187,12 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
           description="Darmowe narzędzie: generuje plik llms.txt z mapy strony i sprawdza dostęp GPTBot, OAI-SearchBot, PerplexityBot i ClaudeBot w robots.txt."
           url={`${BASE}${SCIEZKA}`}
           category="DeveloperApplication"
+          featureList={FUNKCJE}
+          screenshot={{ url: ZRZUT.src, width: ZRZUT.width, height: ZRZUT.height }}
         />
       )}
 
-      <section style={s.hero}>
+      <section className={st.hero} style={s.hero}>
         <div className="container" style={s.kontener}>
           <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
             <div className="section-tag" style={s.tag}>
@@ -106,14 +200,37 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
             </div>
             <h1 style={s.h1}>{en ? metaEn.h1 : strona.h1}</h1>
           </Reveal>
-          <Byline sciezka={SCIEZKA} takzeEn data={en ? LASTMOD[`${BASE}${SCIEZKA}`] : undefined} style={{ textAlign: 'center' }} />
+          {/* Z-L1: lead nad formularzem (Z-01: lead → narzędzie → Krótka odpowiedź → byline). */}
+          <p className={st.lead} style={s.lead}>
+            {en
+              ? `Enter your website address and within ${GENERATOR.sekund} seconds at most you get the whole llms.txt file built from your sitemap and an access test for ${GENERATOR.botow} AI bots. No sign-up, no email.`
+              : `Wpisz adres strony, a w najwyżej ${GENERATOR.sekund} sekund dostaniesz cały plik llms.txt z mapy strony i test dostępu ${GENERATOR.botow} botów AI. Bez rejestracji i bez e-maila.`}
+          </p>
+          <LlmsTxtClient hrefSprawdzarki={sprawdzarka} hrefAudytu={audyt} />
+          <div style={s.poNarzedziu}>
           <AnswerBox etykieta={en ? 'Short answer' : undefined}>
             {en ? 'llms.txt is a Markdown file in the root of a website that points language models to its most important pages, each with a short description. It is a proposed standard (llmstxt.org), not a requirement: according to Ahrefs, no major model provider officially supports it. For ChatGPT, what matters more is whether AI bots can access your site in robots.txt. The generator checks both.' : 'llms.txt to plik w formacie Markdown w katalogu głównym strony, który wskazuje modelom językowym najważniejsze podstrony z krótkim opisem. To propozycja standardu (llmstxt.org), a nie wymóg: według analizy Ahrefs żaden duży dostawca modeli oficjalnie go nie obsługuje. Dla ChatGPT ważniejsze jest, czy boty AI mają dostęp do strony w robots.txt. Generator sprawdza oba elementy.'}
           </AnswerBox>
+          </div>
+          <Byline sciezka={SCIEZKA} takzeEn data={en ? LASTMOD[`${BASE}${SCIEZKA}`] : undefined} style={{ textAlign: 'center' }} />
 
-          <LlmsTxtClient hrefSprawdzarki={sprawdzarka} hrefAudytu={audyt} />
+          <CoDostajesz
+            locale={locale}
+            odRazu={en ? CO_DOSTAJESZ_EN : CO_DOSTAJESZ}
+            tytulOdRazu={en ? 'Right away, no email and no sign-up' : 'Od razu, bez e-maila i rejestracji'}
+            przypis={en ? 'There is nothing to unlock with an email: the whole result is on the page. We do not store the address or the result.' : 'Nie ma tu nic do odblokowania e-mailem: cały wynik jest na stronie. Nie zapisujemy adresu ani wyniku.'}
+          >
+            <div style={{ maxWidth: '640px', margin: '1.5rem auto 0' }}>
+              <ZrzutWyniku
+                {...ZRZUT}
+                sizes="(max-width: 700px) 100vw, 640px"
+                alt={en ? 'llms.txt generator: the result for ai-seo-company.pl with the sitemap summary, the existing file check and the access test for 8 AI bots' : 'Generator llms.txt: wynik dla ai-seo-company.pl z mapą strony, oceną obecnego pliku i testem dostępu 8 botów AI'}
+                podpis={en ? 'The generator’s result for our own website from 12 November 2026 (Polish interface): sitemap, existing file and the 8-bot test. The ready file and the editor are below the table.' : 'Wynik generatora dla naszej strony z 12 listopada 2026: mapa strony, obecny plik i test 8 botów. Pod tabelą jest gotowy plik i edytor.'}
+              />
+            </div>
+          </CoDostajesz>
 
-          <section aria-labelledby="co-to-jest-llms-txt" style={s.sekcja}>
+          <section aria-labelledby="co-to-jest-llms-txt" className={st.sekcja} style={s.sekcja}>
             <h2 id="co-to-jest-llms-txt" style={s.h2}>{en ? 'What is llms.txt (and llms-full.txt)' : 'Co to jest llms.txt (i llms-full.txt)'}</h2>
             {en ? (
               <>
@@ -121,7 +238,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
                   The llms.txt file lives at /llms.txt and describes a website for language models and AI agents that read pages on behalf of users. Jeremy Howard proposed the format in September 2024, and the current version of the specification (v2) is published at llmstxt.org.
                 </p>
                 <p style={s.akapit}>
-                  The layout is fixed. At the top is a heading with the company name, the only required element. Below it comes a blockquote with a short description, followed by sections with lists of links: the page title in square brackets, the URL in parentheses and, after a colon, a sentence about what is there. This is what the beginning of{' '}
+                  The layout is fixed. At the top is a heading with the company name, the only required element. Below it comes a blockquote with a short description, followed by sections with lists of links: the page title in square brackets, the URL in parentheses and, after a colon, a sentence about what is there. A section named &quot;Optional&quot; holds secondary links that a model may skip when it is short on context. This is what the beginning of{' '}
                   <a href="/llms.txt" style={s.podkreslenie}>our llms.txt file</a> looks like:
                 </p>
               </>
@@ -131,7 +248,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
                   Plik llms.txt leży pod adresem /llms.txt i opisuje serwis dla modeli językowych i agentów AI, które czytają strony w imieniu użytkowników. Format zaproponował Jeremy Howard we wrześniu 2024 roku, a aktualna wersja specyfikacji (v2) jest opublikowana na llmstxt.org.
                 </p>
                 <p style={s.akapit}>
-                  Układ jest stały. Na górze nagłówek z nazwą firmy, jedyny obowiązkowy element. Pod nim cytat z krótkim opisem, a dalej sekcje z listami linków: tytuł podstrony w nawiasach kwadratowych, adres w okrągłych i po dwukropku zdanie o tym, co tam jest. Tak wygląda początek{' '}
+                  Układ jest stały. Na górze nagłówek z nazwą firmy, jedyny obowiązkowy element. Pod nim cytat z krótkim opisem, a dalej sekcje z listami linków: tytuł podstrony w nawiasach kwadratowych, adres w okrągłych i po dwukropku zdanie o tym, co tam jest. Sekcja o nazwie „Optional” zbiera linki drugorzędne, które model może pominąć, gdy ma mało miejsca. Tak wygląda początek{' '}
                   <a href="/llms.txt" style={s.podkreslenie}>naszego pliku llms.txt</a>:
                 </p>
               </>
@@ -145,7 +262,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
             </p>
           </section>
 
-          <section aria-labelledby="czy-llms-txt-pomaga" style={s.sekcja}>
+          <section aria-labelledby="czy-llms-txt-pomaga" className={st.sekcja} style={s.sekcja}>
             <h2 id="czy-llms-txt-pomaga" style={s.h2}>{en ? 'Does llms.txt help in Google and ChatGPT?' : 'Czy llms.txt pomaga w Google i ChatGPT?'}</h2>
             {en ? (
               <>
@@ -190,10 +307,10 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
             )}
           </section>
 
-          <section aria-labelledby="co-sprawdza-generator" style={s.sekcja}>
+          <section aria-labelledby="co-sprawdza-generator" className={st.sekcja} style={s.sekcja}>
             <h2 id="co-sprawdza-generator" style={s.h2}>{en ? 'What the generator checks' : 'Co sprawdza generator'}</h2>
             <p style={s.akapit}>
-              {en ? 'The generator fetches your sitemap, checks up to 50 URLs and builds the file from them. At the same time it tests the access of 8 bots to the home page. The whole run takes 20 seconds at most. If your site responds slowly, you get a partial result and a list of the URLs we did not manage to check. We do not store the address or the result.' : 'Generator pobiera mapę strony, sprawdza do 50 adresów i składa z nich plik. Równolegle testuje dostęp 8 botów do strony głównej. Całość trwa najwyżej 20 sekund. Gdy strona odpowiada wolno, dostajesz wynik częściowy i listę adresów, których nie zdążyliśmy sprawdzić. Nie zapisujemy ani adresu, ani wyniku.'}
+              {en ? `The generator fetches your sitemap, picks up to ${GENERATOR.adresow} URLs (with a larger sitemap, a few from every section), checks them and builds the file from them. At the same time it tests the access of ${GENERATOR.botow} bots to the home page. The whole run takes ${GENERATOR.sekund} seconds at most. If your site responds slowly, you get a partial result and a list of the URLs we did not manage to check. We do not store the address or the result.` : `Generator pobiera mapę strony, wybiera do ${GENERATOR.adresow} adresów (przy większej mapie po kilka z każdej sekcji), sprawdza je i składa z nich plik. Równolegle testuje dostęp ${GENERATOR.botow} botów do strony głównej. Całość trwa najwyżej ${GENERATOR.sekund} sekund. Gdy strona odpowiada wolno, dostajesz wynik częściowy i listę adresów, których nie zdążyliśmy sprawdzić. Nie zapisujemy ani adresu, ani wyniku.`}
             </p>
             <CompareTable
               id="tabela-testow"
@@ -215,7 +332,35 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
             </p>
           </section>
 
-          <section aria-labelledby="jak-wdrozyc-llms-txt" style={s.sekcja}>
+          <Sekcja id={en ? 'improve-the-file' : 'jak-poprawic-plik'} tytul={en ? 'How to improve the file before uploading it' : 'Jak poprawić plik przed wgraniem'}>
+            <p style={s.akapit}>
+              {en
+                ? 'The generator builds the file from what your pages say about themselves in their title and meta description. Before you upload it, open the editor below the result and fix what an automated tool cannot judge:'
+                : 'Generator składa plik z tego, co podstrony mówią o sobie w title i meta description. Zanim wgrasz plik, otwórz edytor pod wynikiem i popraw to, czego automat nie oceni:'}
+            </p>
+            <ol style={s.lista}>
+              {(en ? [
+                'The description under the heading: one or two sentences about what you do, for whom and where. A model reads it right after the name.',
+                'Untick lines with no value for customers: login, cart, tags, search result pages.',
+                'Shorten titles that repeat the company name or are too long. A description should say what is on the page, not invite a click.',
+                'Move key pages to the top of their section, and move secondary ones to "Optional".',
+                'Add important pages that are missing (for example pages outside your sitemap) by hand, in the same format.',
+              ] : [
+                'Opis pod nagłówkiem: jedno-dwa zdania o tym, co robisz, dla kogo i gdzie. Model czyta go zaraz po nazwie.',
+                'Odznacz linie bez wartości dla klienta: logowanie, koszyk, tagi, strony wyników wyszukiwania.',
+                'Skróć tytuły, które powtarzają nazwę firmy albo są za długie. Opis ma mówić, co jest na podstronie, a nie zachęcać do kliknięcia.',
+                'Najważniejsze podstrony przesuń na początek sekcji, a drugorzędne przenieś do „Optional”.',
+                'Ważne podstrony, których brakuje (np. spoza mapy strony), dopisz ręcznie w tym samym formacie.',
+              ]).map((t) => <li key={t}>{t}</li>)}
+            </ol>
+            <p style={s.akapit}>
+              {en
+                ? 'The Copy and Download buttons take the file with your changes. The editor works in your browser: we do not send or store anything, so after you change your website, generate the file again.'
+                : 'Przyciski „Kopiuj” i „Pobierz llms.txt” biorą plik już ze zmianami. Edytor działa w Twojej przeglądarce: niczego nie wysyłamy ani nie zapisujemy, więc po zmianach na stronie wygeneruj plik ponownie.'}
+            </p>
+          </Sekcja>
+
+          <section aria-labelledby="jak-wdrozyc-llms-txt" className={st.sekcja} style={s.sekcja}>
             <h2 id="jak-wdrozyc-llms-txt" style={s.h2}>{en ? 'How to deploy llms.txt: WordPress, Next.js, Shopify' : 'Jak wdrożyć llms.txt: WordPress, Next.js, Shopify'}</h2>
             {en ? (
               <>
@@ -262,7 +407,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
             )}
           </section>
 
-          <section aria-labelledby="po-generatorze" style={{ ...s.sekcja, ...s.karta, display: 'grid', gap: '1rem' }}>
+          <section aria-labelledby="po-generatorze" className={`${st.sekcja} ${st.sekcjaKarta}`} style={{ ...s.sekcja, ...s.karta, display: 'grid', gap: '1rem' }}>
             <h2 id="po-generatorze" style={{ ...s.h2, marginBottom: 0 }}>{en ? 'File ready, but models still do not recommend your company?' : 'Plik gotowy, a modele dalej nie polecają firmy?'}</h2>
             <p style={{ ...s.akapit, margin: 0 }}>
               {en ? (
@@ -278,14 +423,17 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
               )}
             </p>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <Link href={audyt} className="btn btn-primary" data-cta="llms_audyt_tresc">{en ? 'AI visibility audit: €235 net' : 'Audyt widoczności w AI: 990 zł netto'}</Link>
+              <Link href={audyt} className="btn btn-primary" data-cta="llms_audyt_tresc">{en ? `AI visibility audit: ${cena('audytAi', 'en')} net` : `Audyt widoczności w AI: ${cena('audytAi')} netto`}</Link>
               {sprawdzarka && <Link href={sprawdzarka} className="btn btn-secondary" data-cta="llms_sprawdzarka_tresc">{en ? 'Check whether ChatGPT recommends your company' : 'Sprawdź, czy ChatGPT poleca Twoją firmę'}</Link>}
             </div>
           </section>
+
+          <Poradniki narzedzie={SCIEZKA} locale={locale} />
+          <PozostaleNarzedzia bez={SCIEZKA} locale={locale} />
         </div>
       </section>
 
-      <AppleFaq faqData={en ? FAQ_GENERATORA_EN : FAQ_GENERATORA} title={en ? 'Questions about llms.txt' : 'Pytania o llms.txt'} sectionId="pytania" />
+      <AppleFaq faqData={en ? [...FAQ_GENERATORA_EN, ...FAQ_DODATKOWE_EN] : [...FAQ_GENERATORA, ...FAQ_DODATKOWE]} title={en ? 'Questions about llms.txt' : 'Pytania o llms.txt'} sectionId="pytania" />
 
       <section style={{ paddingBottom: '4rem' }}>
         <div className="container" style={s.kontener}>

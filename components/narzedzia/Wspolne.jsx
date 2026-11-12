@@ -54,12 +54,13 @@ export function PasekDemo() {
   return <p className="narz-demo" role="note">{en ? 'Demo mode: sample data, no connection to the panel.' : 'Tryb demo: przykładowe dane, bez połączenia z panelem.'}</p>;
 }
 
-/** Potwierdzenie po bramce, widoczne nad pełnym wynikiem (bramka znika razem z atrapą). */
-export function Odblokowano({ newsletter }) {
+/** Potwierdzenie po bramce, widoczne nad pełnym wynikiem (bramka znika razem z atrapą).
+ *  tylkoRaport (12.11.2026, Z-K5, autorytet): wynik był widoczny bez e-maila, bramka tylko wysłała raport. */
+export function Odblokowano({ newsletter, tylkoRaport = false }) {
   const en = useLocale() === 'en';
   return (
     <div className="narz-bramka narz-bramka--gotowe" role="status">
-      <p className="narz-bramka-tytul">{en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest poniżej, raport wysłaliśmy e-mailem.'}</p>
+      <p className="narz-bramka-tytul">{tylkoRaport ? (en ? 'Done: we have emailed you the report.' : 'Gotowe: raport wysłaliśmy e-mailem.') : (en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest poniżej, raport wysłaliśmy e-mailem.')}</p>
       {newsletter === 'pending' && <p className="narz-bramka-opis">{en ? 'Check your inbox and confirm your newsletter signup. Without confirmation we will not send any issue.' : 'Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.'}</p>}
     </div>
   );

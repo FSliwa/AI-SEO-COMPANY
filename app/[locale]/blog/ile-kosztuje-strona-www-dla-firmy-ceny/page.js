@@ -450,7 +450,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO audit</Link></li>
               </ul>
               
-              <p>How to use these sources when preparing a brief? Start by defining the website’s business goal (sales, lead generation, brand building). Then list 3–5 key user paths, required integrations, reference website examples, and an approximate budget. Such a brief will allow every provider to quote the project on comparable terms and cut negotiation time in half.</p>
+              <p>How to use these sources when preparing a brief? Start by defining the website’s business goal (sales, lead generation, brand building). Then list 3–5 key user paths, required integrations, reference website examples, and an approximate budget. Such a brief will allow every provider to quote the project on comparable terms and cut negotiation time in half. A ready-made version with an SEO section is our <Link href="/narzedzia/brief-strony-internetowej">website brief template</Link>.</p>
               
               <p><span style={{ fontWeight: 'bold' }}>Recommendations:</span></p>
               <ul>
@@ -857,7 +857,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Audyt SEO</Link> – opis usługi audytu technicznego, przydatny przed wdrożeniem lub migracją strony.</li>
               </ul>
               
-              <p>Jak z tych źródeł skorzystać przy przygotowaniu briefu? Zacznij od określenia celu biznesowego strony (sprzedaż, generowanie leadów, budowanie marki). Następnie wypisz 3–5 kluczowych ścieżek użytkownika, listę wymaganych integracji, przykłady stron referencyjnych i orientacyjny budżet. Taki brief pozwoli każdemu wykonawcy wycenić projekt na porównywalnych zasadach i skróci czas negocjacji o połowę.</p>
+              <p>Jak z tych źródeł skorzystać przy przygotowaniu briefu? Zacznij od określenia celu biznesowego strony (sprzedaż, generowanie leadów, budowanie marki). Następnie wypisz 3–5 kluczowych ścieżek użytkownika, listę wymaganych integracji, przykłady stron referencyjnych i orientacyjny budżet. Taki brief pozwoli każdemu wykonawcy wycenić projekt na porównywalnych zasadach i skróci czas negocjacji o połowę. Gotowy wzór z częścią SEO znajdziesz w szablonie <Link href="/narzedzia/brief-strony-internetowej">brief strony internetowej</Link>.</p>
               
               <p><span style={{ fontWeight: 'bold' }}>Rekomendacja:</span></p>
               <ul>

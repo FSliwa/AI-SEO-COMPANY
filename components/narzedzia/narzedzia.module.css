@@ -1,0 +1,155 @@
+/* Wspólne klasy stron darmowych narzędzi (S1-poprawki, agent wspolne, 12.11.2026).
+   Moduł CSS zamiast app/wyglad.css: style inline (styl.js) nie mają @media, a globalnych
+   arkuszy strony narzędzi nie zmieniają (zasada fundamentu PLAN-v2). */
+
+/* Z-01b: na telefonie znacznik „✳ Darmowe narzędzie” nad H1 spycha formularz o ok. 40 px. */
+/* Telefon: app/globals.css daje każdej <section> padding-top 3.5rem !important; nad H1 stoją już okruszki,
+   więc w hero wystarczy 1.25rem (formularz wyżej o ok. 36 px). Lead mniejszy o 0.1rem (ok. 20 px). */
+@media (max-width: 600px) {
+  .strona :global(.section-tag) {
+    display: none;
+  }
+  .strona .hero {
+    padding-top: 1.25rem !important;
+  }
+  .strona .lead {
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+  }
+}
+
+/* Z-04: „Co dostajesz za darmo”: dwie kolumny, na telefonie jedna pod drugą. */
+.dwieKolumny {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+.jednaKolumna {
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (max-width: 700px) {
+  .dwieKolumny {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.kolumna {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 1.25rem 1.4rem;
+}
+.kolumnaZaEmailem {
+  background: var(--color-bg-surface);
+}
+.kolumna ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.45rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-main);
+}
+
+/* Z-02: siatka wszystkich narzędzi. */
+.siatka {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+.kafel {
+  display: block;
+  height: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  color: var(--color-text-main);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.kafel:hover,
+.kafel:focus-visible {
+  border-color: var(--color-primary);
+  background: var(--color-bg-surface);
+}
+.kafelNazwa {
+  display: block;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-bottom: 0.2rem;
+}
+.kafelOpis {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.kafelHub {
+  border-style: dashed;
+}
+
+/* Z-03: poradniki. */
+.poradniki {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Z-07: zrzut przykładowego wyniku. */
+.zrzut {
+  margin: 1.5rem 0 0;
+}
+.zrzut img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-surface);
+}
+
+/* Z-06: przycisk „Kopiuj link do wyniku” i przykład pod polem. */
+.linkWyniku {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 0;
+}
+.przyciskTekstowy {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.przyciskTekstowy:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Sekcje treści leżą wewnątrz <section> hero, a app/globals.css dokleja KAŻDEJ <section> padding
+   5.5rem (telefon 3.5rem) góra i dół z !important. Między H2 było więc ok. 230 px pustki (telefon 170 px),
+   a karta „Inne darmowe narzędzia” miała ok. 90 px pustego paska u góry. Odstęp między sekcjami daje
+   teraz tylko margin-top 3.5rem ze styl.js (sekcja), karta wraca do swojego paddingu ze styl.js (karta). */
+.sekcja {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.sekcjaKarta {
+  padding: clamp(1.5rem, 4vw, 2.5rem) !important;
+}

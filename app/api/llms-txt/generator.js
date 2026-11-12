@@ -12,6 +12,22 @@
 // HEAD = 200 robimy drugi, ucięty GET (maks. 64 KB nagłówka HTML) z tym samym timeoutem 4 s.
 // Adresy z przekierowaniem, kodem ≠ 200 albo noindex w nagłówku kończą się na HEAD.
 //
+// 11.11.2026 (A4 §5, benchmark z CommonNinja, SiteSpeakAI, xseek, Firecrawl):
+// - indeks map: czytamy do 20 map podrzędnych (wcześniej 5 pierwszych, przez co u nas brakowało
+//   /narzedzia, /porownania i ai-en), a limit 50 adresów dzielimy między mapy i sekcje
+//   (wybierzAdresy): każda sekcja ma przedstawicieli, strony główne języka głównego mają największą wagę,
+// - strony prawne (regulamin, polityki, cookies) trafiają do sekcji „## Optional”
+//   ze specyfikacji llmstxt.org (model może ją pominąć przy krótkim kontekście),
+// - wersje językowe: prefiks /en, /de... = osobna sekcja stron i osobne sekcje blogu/podsekcji
+//   („Wersja EN”, „Blog (EN)”); prefiks języka głównego (np. wszystko pod /pl) jest pomijany przy podziale,
+// - nazwy sekcji z polskimi znakami (słownik + słowa z tytułów stron sekcji, np. „Narzędzia”),
+// - zastępcy: adres odrzucony (404, przekierowanie, noindex, brak odpowiedzi) zastępujemy kolejnym
+//   z tej samej puli (mapa × język × sekcja), maks. 2 razy na adres i tylko przy zapasie czasu,
+//   żeby jedna martwa strona nie usuwała z pliku całej sekcji.
+// Weryfikacja 11.11.2026 (ten sam dzień): zastępcy dopiero po wszystkich wybranych adresach, maks. 20
+// razem i bez nich, gdy odrzucona jest ponad połowa adresów; mapy podrzędne tylko do 10 s od startu,
+// każda mapa pobierana raz; wzorce mapy i HTML w czasie liniowym; kontakt nie trafia do „Optional”.
+//
 // Ochrona przed SSRF (przegląd bezpieczeństwa przed wdrożeniem - CB-09 „ryzyka”):
 // - tylko http/https, tylko porty 80 i 443, bez loginu w adresie, bez localhost/.local/.internal,
 // - każdy adres IP sprawdzany W CHWILI POŁĄCZENIA (opcja lookup w node:http), więc zmiana DNS
@@ -33,11 +49,21 @@ export const LIMITY = {
   timeoutMs: 4000,
   limitGlobalnyMs: 20000,
   maxBajtow: 2 * 1024 * 1024,
+  maxBajtowMapyPodrzednej: 512 * 1024,
   maxBajtowHtml: 64 * 1024,
   maxBajtowRobots: 512 * 1024,
   maxPrzekierowan: 5,
-  maxMapPodrzednych: 5,
+  maxMapPodrzednych: 20,
+  wspolbieznoscMap: 4,
+  maxAdresowZMapy: 5000,
   maxPominietychNaLiscie: 60,
+  maxZastepcow: 2,
+  // Weryfikacja 11.11.2026: zastępców sprawdzamy dopiero po wszystkich wybranych adresach, najwyżej 20
+  // razem i tylko, gdy odrzucona jest co najwyżej połowa adresów (inaczej błąd jest systemowy, np. każda
+  // podstrona przekierowuje, i zastępcy tylko wydłużają czas).
+  maxZastepcowRazem: 20,
+  // Czas zostawiony na sprawdzanie adresów: mapy podrzędne czytamy najwyżej do limitGlobalnyMs minus tyle.
+  rezerwaNaStronyMs: 10000,
 };
 
 // Uczciwy User-Agent generatora (pobieranie mapy strony i podstron).
@@ -388,9 +414,13 @@ function dekodujTekst(bufor, contentType) {
 
 /** Tytuł, opis, meta robots i nazwa serwisu z początku dokumentu HTML. */
 export function metaZHtml(html) {
-  const wynik = { tytul: '', opis: '', robots: '', nazwaSerwisu: '', ogTytul: '', ogOpis: '' };
+  const wynik = { tytul: '', opis: '', robots: '', nazwaSerwisu: '', ogTytul: '', ogOpis: '', jezyk: '' };
   const t = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(html);
   if (t) wynik.tytul = czysc(t[1]);
+  // [^<>]{0,2000}: próba dopasowania kończy się na najbliższym < albo >, więc wiele „<html” bez „>”
+  // nie daje czasu kwadratowego (weryfikacja 11.11.2026).
+  const j = /<html\b[^<>]{0,2000}?\slang\s*=\s*["']?([a-zA-Z]{2,3}(?:[-_][a-zA-Z0-9]{2,8})?)/i.exec(html);
+  if (j) wynik.jezyk = j[1].toLowerCase().replace('_', '-');
   for (const [tag] of html.matchAll(/<meta\b[^>]*>/gi)) {
     const atr = {};
     for (const m of tag.matchAll(/([a-zA-Z:-]+)\s*=\s*("([^"]*)"|'([^']*)'|([^\s"'>]+))/g)) {
@@ -493,15 +523,273 @@ function tekstMapy(bufor) {
   return b.toString('utf-8');
 }
 
+// Weryfikacja 11.11.2026: wszystkie wzorce mapy działają w czasie liniowym. Mapę przysyła sprawdzana
+// strona, więc może być złośliwa albo zepsuta. Dawny wzorzec <loc>\s*…([^<\]]+?)\s*…<\/loc> przy
+// <loc> bez zamknięcia i ok. 300 spacjach blokował proces na ponad 25 s (wiele \s* nakładało się
+// na tę samą spację). Leniwe <url>…</url> przy 100 tys. niezamkniętych <url> w 512 KB trwało 5,6 s.
+const LOC = /<loc>((?:<!\[CDATA\[[^\]<]*\]\]>|[^<])*)<\/loc>/i;
+const wartoscLoc = (s) => dekodujEncje(s.replace(/<!\[CDATA\[|\]\]>/g, '')).trim();
+const OTWARCIE_BLOKU = /<(?:url|sitemap)(?=[\s/>])[^<>]{0,500}>/gi;
+
+/**
+ * Adresy z mapy albo indeksu map. lokacje[i] ma w zmiany[i] datę <lastmod> (ms, 0 = brak),
+ * a w priorytety[i] wartość <priority> (0–1, brak = 0,5). Wpisy <image:loc> itp. są pomijane.
+ */
 export function adresyZMapy(tekst) {
   const lokacje = [];
-  for (const m of tekst.matchAll(/<loc>\s*(?:<!\[CDATA\[)?\s*([^<\]]+?)\s*(?:\]\]>)?\s*<\/loc>/gi)) {
-    lokacje.push(dekodujEncje(m[1]).trim());
+  const zmiany = [];
+  const priorytety = [];
+  // Bloki <url>/<sitemap>: tekst dzielimy po znacznikach zamykających, a treść bloku zaczyna się
+  // za ostatnim otwarciem w danym kawałku (bez wyszukiwania wstecz, więc czas liniowy).
+  const kawalki = tekst.split(/<\/(?:url|sitemap)\s*>/i);
+  kawalki.pop(); // za ostatnim zamknięciem nie ma pełnego bloku
+  for (const kawalek of kawalki) {
+    let od = -1;
+    for (const m of kawalek.matchAll(OTWARCIE_BLOKU)) od = m.index + m[0].length;
+    if (od < 0) continue;
+    const blok = kawalek.slice(od);
+    const l = LOC.exec(blok);
+    if (!l || !wartoscLoc(l[1])) continue;
+    lokacje.push(wartoscLoc(l[1]));
+    zmiany.push(Date.parse((/<lastmod>([^<]*)<\/lastmod>/i.exec(blok)?.[1] || '').trim()) || 0);
+    const p = Number.parseFloat((/<priority>([^<]*)<\/priority>/i.exec(blok)?.[1] || '').trim());
+    priorytety.push(Number.isFinite(p) ? Math.min(Math.max(p, 0), 1) : 0.5);
   }
-  return { indeks: /<sitemapindex[\s>]/i.test(tekst), lokacje };
+  if (!lokacje.length) {
+    // Mapa bez bloków <url>/<sitemap> (niestandardowa albo ucięta): same <loc>, jak dawniej.
+    for (const m of tekst.matchAll(new RegExp(LOC.source, 'gi'))) {
+      if (!wartoscLoc(m[1])) continue;
+      lokacje.push(wartoscLoc(m[1]));
+      zmiany.push(0);
+      priorytety.push(0.5);
+    }
+  }
+  return { indeks: /<sitemapindex[\s>]/i.test(tekst), lokacje, zmiany, priorytety };
+}
+
+/** n elementów rozłożonych równo po liście (pierwszy i ostatni zawsze), w kolejności listy. */
+function rowno(lista, n) {
+  if (n >= lista.length) return lista;
+  if (n <= 0) return [];
+  if (n === 1) return [lista[0]];
+  return [...new Set(Array.from({ length: n }, (_, i) => Math.round((i * (lista.length - 1)) / (n - 1))))].map((i) => lista[i]);
+}
+
+/**
+ * Które mapy podrzędne czytać, gdy indeks ma ich więcej niż `limit`: najpierw po jednej z każdej
+ * „rodziny” (post-sitemap.xml, post-sitemap2.xml... to jedna rodzina), a gdy i tak jest ich za dużo,
+ * mapy rozłożone równo po indeksie (nie pierwsze N, bo strony ofertowe bywają w ostatnich mapach,
+ * np. poradnikprzedsiebiorcy.pl: 20 map artykułów, a „landingPages” na 25. miejscu). Wynik w kolejności indeksu.
+ */
+export function kolejnoscMap(adresy, limit = Infinity) {
+  const rodzina = (a) => a.toLowerCase().replace(/[?#].*$/, '').replace(/[-_]?\d+(?=\.xml(\.gz)?$)/, '');
+  const widziane = new Set();
+  const pierwsze = [];
+  const reszta = [];
+  adresy.forEach((a, i) => {
+    const r = rodzina(a);
+    if (widziane.has(r)) reszta.push(i);
+    else {
+      widziane.add(r);
+      pierwsze.push(i);
+    }
+  });
+  const wybrane = pierwsze.length >= limit ? rowno(pierwsze, limit) : [...pierwsze, ...rowno(reszta, limit - pierwsze.length)];
+  return wybrane.sort((a, b) => a - b).map((i) => adresy[i]);
 }
 
 const bezWww = (h) => hostBezNawiasow(h).toLowerCase().replace(/^www\./, '');
+
+// --- Sekcje i wybór adresów -----------------------------------------------------------------
+
+// Kody języków rozpoznawane jako prefiks wersji językowej (/en, /de, /pt-br). Lista zamknięta, żeby
+// sekcje typu /ai, /ux czy /qa nie stawały się „Wersją AI”.
+const JEZYKI = new Set('pl en de fr es it pt nl cs sk uk ru lt lv et fi sv no nb nn da hu ro bg hr sl sr el tr ja zh ko ar he'.split(' '));
+
+/** 'en', 'pt-br' albo '' (segment ścieżki nie jest kodem języka). */
+export function jezykSegmentu(segment) {
+  const s = String(segment || '').toLowerCase().replace('_', '-');
+  const m = /^([a-z]{2})(?:-[a-z]{2,4})?$/.exec(s);
+  return m && JEZYKI.has(m[1]) ? s : '';
+}
+
+const bazaJezyka = (k) => String(k || '').toLowerCase().split(/[-_]/)[0];
+
+function segmentySciezki(url) {
+  try {
+    return new URL(url).pathname.split('/').filter(Boolean).map((s) => s.toLowerCase());
+  } catch {
+    return [];
+  }
+}
+
+// Strony prawne i cookies: do „## Optional” (llmstxt.org: sekcję Optional model może pominąć).
+// Kontakt zostaje w „Strony” (weryfikacja 11.11.2026): adres i telefon to dane, o które ludzie pytają
+// asystentów AI, a nasz własny /llms.txt podaje je w „Fakty o firmie”, nie w sekcji drugorzędnej.
+// Tylko pierwszy poziom (po prefiksie języka) albo pod rodzicem typu /informacje, żeby usługa
+// /uslugi/regulaminy-sklepow ani wpis /blog/polityka-cookies-poradnik nie trafiły do Optional.
+const SLUG_OPCJONALNY = /^(polityka-(prywatnosci|cookies?|plikow-cookies?)(-.*)?|prywatnosc|cookies?|ciasteczka|regulamin(-.*)?|warunki-(korzystania|uslug|uzytkowania|sprzedazy)(-.*)?|klauzula-informacyjna(-.*)?|nota-prawna|informacje-prawne|deklaracja-dostepnosci|privacy|privacy-policy|privacy-notice|cookie-policy|cookies-policy|cookie-notice|terms|terms-of-(service|use)|terms-and-conditions|terms-conditions|tos|legal|legal-notice|imprint|impressum|datenschutz(erklaerung)?|agb|disclaimer|accessibility(-statement)?)$/;
+const RODZICE_PRAWNI = new Set(['informacje', 'info', 'prawne', 'legal', 'pomoc', 'help', 'o-nas', 'about', 'firma', 'company', 'strona', 'page', 'pages']);
+const TYTUL_PRAWNY = /^\s*(polityka (prywatności|cookies|plików cookies)|regulamin|klauzula informacyjna|nota prawna|privacy policy|cookie policy|cookies policy|terms (of|and) |impressum|datenschutz)/i;
+// Archiwa bez treści własnej: tagi i autorzy (kategorie zostają, w sklepach to ważne strony).
+const ARCHIWA = new Set(['tag', 'tags', 'tagi', 'author', 'authors', 'autor', 'autorzy']);
+
+/**
+ * Język główny strony: prefiks adresu strony głównej (tql.pl -> /pl), a gdy strona główna nie ma
+ * prefiksu, a w mapie są strony bez prefiksu, to '' (strony bez prefiksu = język główny, każdy prefiks
+ * = inna wersja). Gdy wszystko leży pod prefiksami: język z <html lang>, jeśli ma prefiks, albo najczęstszy.
+ */
+export function ustalJezykGlowny(adresy, { prefiksGlownej = '', jezykHtml = '' } = {}) {
+  if (prefiksGlownej) return prefiksGlownej;
+  const prefiksy = new Map();
+  let bezPrefiksu = 0;
+  for (const url of adresy) {
+    const seg = segmentySciezki(url);
+    if (!seg.length) continue;
+    const j = jezykSegmentu(seg[0]);
+    if (j) prefiksy.set(j, (prefiksy.get(j) || 0) + 1);
+    else bezPrefiksu += 1;
+  }
+  if (bezPrefiksu || !prefiksy.size) return '';
+  const html = [...prefiksy.keys()].find((j) => bazaJezyka(j) === bazaJezyka(jezykHtml));
+  if (html) return html;
+  return [...prefiksy.entries()].sort((a, b) => b[1] - a[1])[0][0];
+}
+
+/**
+ * Zwraca funkcję (url, tytuł?) -> { jezyk, sekcja, opcjonalna, archiwum, glebokosc }:
+ * jezyk = prefiks innej wersji językowej ('' = język główny), sekcja = pierwszy segment po prefiksie,
+ * gdy ma co najmniej 2 podstrony w `adresy` ('' = strony luźne), glebokosc = segmenty po prefiksie.
+ */
+export function klasyfikator(adresy, jezykGlowny = '') {
+  const glowny = bazaJezyka(jezykGlowny);
+  const rozbij = (url) => {
+    const seg = segmentySciezki(url);
+    const j = jezykSegmentu(seg[0]);
+    if (!j) return { seg, jezyk: '' };
+    return { seg: seg.slice(1), jezyk: bazaJezyka(j) === glowny ? '' : j };
+  };
+  const ilePod = new Map();
+  for (const url of adresy) {
+    const { seg, jezyk } = rozbij(url);
+    if (seg.length >= 2) ilePod.set(`${jezyk}/${seg[0]}`, (ilePod.get(`${jezyk}/${seg[0]}`) || 0) + 1);
+  }
+  return (url, tytul = '') => {
+    const { seg, jezyk } = rozbij(url);
+    const ostatni = seg[seg.length - 1] || '';
+    const opcjonalna = ((seg.length === 1 || (seg.length === 2 && RODZICE_PRAWNI.has(seg[0]))) && SLUG_OPCJONALNY.test(ostatni))
+      || (seg.length === 1 && TYTUL_PRAWNY.test(tytul));
+    const sekcja = seg.length && (ilePod.get(`${jezyk}/${seg[0]}`) || 0) >= 2 ? seg[0] : '';
+    return { jezyk, sekcja, opcjonalna, archiwum: ARCHIWA.has(seg[0]), glebokosc: seg.length };
+  };
+}
+
+/**
+ * Wybór maks. `limit` adresów z map strony. Zamiast pierwszych N adresów z pierwszych map dzielimy
+ * limit między pule: mapa × (wersja językowa, sekcja), z osobną pulą na strony do „Optional”
+ * i na archiwa. Każda pula dostaje najpierw 1 adres, potem sprawiedliwe napełnianie z wagami: w każdej
+ * rundzie pula dostaje do waga × runda adresów. Wagi: strony luźne języka głównego 4, sekcje języka głównego 2, strony luźne
+ * innej wersji 2, jej sekcje, archiwa i Optional po 1. W puli: <priority> malejąco, płytsze adresy
+ * najpierw, w sekcjach (blog, aktualności) nowsze <lastmod> najpierw, potem kolejność w mapie.
+ * mapy = [{ lokacje, zmiany?, priorytety? }]. Zwraca adresy w kolejności map.
+ */
+export function wybierzAdresy(mapy, { limit = LIMITY.maxUrli, czyDozwolony = () => true, stronaGlowna = null, prefiksGlownej = '', jezykHtml = '', en = false } = {}) {
+  const kandydaci = [];
+  const pominiete = [];
+  const widziane = new Set();
+  // Duplikaty po normalizacji (http/https, www, końcowy ukośnik) traktujemy jak jeden adres.
+  const kluczPor = (u) => `${bezWww(u.hostname)}${u.pathname.replace(/\/+$/, '')}${u.search}`;
+  mapy.forEach((m, iMapy) => {
+    m.lokacje.forEach((surowy, i) => {
+      let u;
+      try {
+        u = new URL(surowy);
+      } catch {
+        return;
+      }
+      u.hash = '';
+      const kp = kluczPor(u);
+      if (widziane.has(kp)) return;
+      widziane.add(kp);
+      if (!czyDozwolony(u)) {
+        pominiete.push({ url: u.toString(), powod: en ? 'different domain' : 'inna domena' });
+        return;
+      }
+      kandydaci.push({ url: u.toString(), mapa: iMapy, poz: i, zmiana: m.zmiany?.[i] || 0, priorytet: m.priorytety?.[i] ?? 0.5 });
+    });
+  });
+  const unikalnych = kandydaci.length + pominiete.length;
+  // Strona główna, której nie ma w mapie: dokładamy ją na początek (najważniejsza strona serwisu).
+  if (stronaGlowna && kandydaci.length) {
+    let u = null;
+    try {
+      u = new URL(stronaGlowna);
+    } catch { /* bez strony głównej */ }
+    if (u && !widziane.has(kluczPor(u))) kandydaci.unshift({ url: u.toString(), mapa: -1, poz: -1, zmiana: 0, priorytet: 1 });
+  }
+
+  const adresy = kandydaci.map((k) => k.url);
+  const jezykGlowny = ustalJezykGlowny(adresy, { prefiksGlownej, jezykHtml });
+  if (kandydaci.length <= limit) return { adresy, wszystkie: adresy, pominiete, jezykGlowny, unikalnych, pul: 0, zastepca: () => null };
+
+  const klasa = klasyfikator(adresy, jezykGlowny);
+  const pule = new Map();
+  for (const k of kandydaci) {
+    const c = klasa(k.url);
+    const typ = c.opcjonalna ? 'opt' : (c.archiwum ? 'arch' : '');
+    const klucz = `${Math.max(k.mapa, 0)}|${c.jezyk}|${typ || c.sekcja}`;
+    if (!pule.has(klucz)) {
+      let waga;
+      let ranga;
+      if (typ === 'opt') [waga, ranga] = [1, 5];
+      else if (typ === 'arch') [waga, ranga] = [1, 4];
+      else if (!c.jezyk) [waga, ranga] = c.sekcja ? [2, 1] : [4, 0];
+      else [waga, ranga] = c.sekcja ? [1, 3] : [2, 2];
+      pule.set(klucz, { waga, ranga, kolejnosc: pule.size, sekcja: Boolean(c.sekcja), lista: [], wziete: 0 });
+    }
+    pule.get(klucz).lista.push({ ...k, glebokosc: c.glebokosc });
+  }
+  const kolejka = [...pule.values()].sort((a, b) => a.ranga - b.ranga || a.kolejnosc - b.kolejnosc);
+  for (const p of kolejka) {
+    p.lista.sort((a, b) => b.priorytet - a.priorytet || a.glebokosc - b.glebokosc
+      || (p.sekcja ? b.zmiana - a.zmiana : 0) || a.mapa - b.mapa || a.poz - b.poz);
+  }
+  // Najpierw po 1 adresie z każdej puli (bez tego przy kilkunastu mapach wpisów pierwsze mapy
+  // z wagą 4 zużyłyby limit, zanim dostałaby coś mapa kalkulatorów z końca indeksu), potem wagi.
+  let zostalo = limit;
+  for (const p of kolejka) {
+    if (zostalo <= 0) break;
+    p.wziete = 1;
+    zostalo -= 1;
+  }
+  for (let runda = 1; zostalo > 0; runda += 1) {
+    let dodano = 0;
+    for (const p of kolejka) {
+      const cel = Math.min(p.lista.length, p.waga * runda);
+      while (p.wziete < cel && zostalo > 0) {
+        p.wziete += 1;
+        zostalo -= 1;
+        dodano += 1;
+      }
+    }
+    if (!dodano) break;
+  }
+  const wybrane = kolejka.flatMap((p) => p.lista.slice(0, p.wziete)).sort((a, b) => a.mapa - b.mapa || a.poz - b.poz);
+  // Zastępca dla odrzuconego adresu: następny niewzięty adres z tej samej puli (w jej kolejności),
+  // żeby 404 albo noindex jedynego przedstawiciela nie usuwał z pliku całej sekcji. Zastępca trafia
+  // do tej samej puli, więc on też może dostać zastępcę. null = pula wyczerpana albo adres spoza wyboru.
+  const pulaAdresu = new Map();
+  for (const p of kolejka) for (const k of p.lista.slice(0, p.wziete)) pulaAdresu.set(k.url, p);
+  const zastepca = (url) => {
+    const p = pulaAdresu.get(url);
+    if (!p || p.wziete >= p.lista.length) return null;
+    const k = p.lista[p.wziete];
+    p.wziete += 1;
+    pulaAdresu.set(k.url, p);
+    return k.url;
+  };
+  return { adresy: wybrane.map((k) => k.url), wszystkie: adresy, pominiete, jezykGlowny, unikalnych, pul: pule.size, zastepca };
+}
 
 // --- llms.txt -------------------------------------------------------------------------------
 
@@ -549,39 +837,93 @@ function skroc(s, max) {
   return `${(spacja > max * 0.6 ? ciecie.slice(0, spacja) : ciecie).replace(/[\s,;:.–-]+$/, '')}…`;
 }
 
-function nazwaSekcji(segment, lang = 'pl') {
-  if (/^[a-z]{2}(-[a-z]{2})?$/i.test(segment)) return `${lang === 'en' ? 'Version' : 'Wersja'} ${segment.toUpperCase()}`;
+// Nazwy częstych sekcji z polskimi znakami (slug ich nie ma).
+const NAZWY_SEKCJI = {
+  uslugi: 'Usługi', oferta: 'Oferta', narzedzia: 'Narzędzia', porownania: 'Porównania', aktualnosci: 'Aktualności',
+  wiadomosci: 'Wiadomości', artykuly: 'Artykuły', poradniki: 'Poradniki', poradnik: 'Poradnik', realizacje: 'Realizacje',
+  produkty: 'Produkty', produkt: 'Produkty', kategoria: 'Kategorie', kategorie: 'Kategorie', 'kategoria-produktu': 'Kategorie produktów',
+  sklep: 'Sklep', szkolenia: 'Szkolenia', kursy: 'Kursy', wydarzenia: 'Wydarzenia', 'baza-wiedzy': 'Baza wiedzy', wiedza: 'Wiedza',
+  slownik: 'Słownik', zespol: 'Zespół', kariera: 'Kariera', praca: 'Praca', 'oferty-pracy': 'Oferty pracy', galeria: 'Galeria',
+  opinie: 'Opinie', branze: 'Branże', rozwiazania: 'Rozwiązania', lokalizacje: 'Lokalizacje', miasta: 'Miasta',
+  szablony: 'Szablony', materialy: 'Materiały', zasoby: 'Zasoby', pytania: 'Pytania', faq: 'FAQ', cennik: 'Cennik',
+  przepisy: 'Przepisy', menu: 'Menu', blog: 'Blog', news: 'News', tag: 'Tagi', tagi: 'Tagi', tags: 'Tags',
+  ksiegowosc: 'Księgowość', nieruchomosci: 'Nieruchomości', ogloszenia: 'Ogłoszenia', porady: 'Porady', wspolpraca: 'Współpraca',
+  'uslugi-dodatkowe': 'Usługi dodatkowe', 'realizacje-projektow': 'Realizacje', 'centrum-wiedzy': 'Centrum wiedzy', 'do-pobrania': 'Do pobrania',
+  autor: 'Autorzy', autorzy: 'Autorzy', author: 'Authors', authors: 'Authors', docs: 'Docs',
+};
+
+const zlozLitery = (w) => w.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l').replace(/Ł/g, 'L').toLowerCase();
+
+/**
+ * Nazwa sekcji ze sluga: słownik, a dalej słowa z tytułów i opisów stron tej sekcji z przywróconymi znakami
+ * i wielkością liter („pozycjonowanie-w-ai” + tytuł „Pozycjonowanie w AI…” = „Pozycjonowanie w AI”).
+ */
+function nazwaSekcji(segment, tytuly = []) {
   let s = segment;
   try {
     s = decodeURIComponent(segment);
   } catch { /* zostaje */ }
-  s = s.replace(/[-_]+/g, ' ').trim();
-  return s.charAt(0).toUpperCase() + s.slice(1);
+  const zeSlownika = NAZWY_SEKCJI[s.toLowerCase()];
+  if (zeSlownika) return zeSlownika;
+  const slowaTytulow = new Map();
+  for (const t of tytuly) {
+    for (const w of String(t || '').split(/[^\p{L}\p{N}]+/u)) {
+      if (w && !slowaTytulow.has(zlozLitery(w))) slowaTytulow.set(zlozLitery(w), w);
+    }
+  }
+  const wynik = s.split(/[-_\s]+/).filter(Boolean).map((slowo) => {
+    const z = slowaTytulow.get(zlozLitery(slowo));
+    if (!z) return slowo.toLowerCase();
+    return z.length > 1 && z === z.toUpperCase() ? z : z.toLowerCase();
+  }).join(' ').replace(/[#[\]()]/g, '').slice(0, 60).trim();
+  // Slug z samych znaków typu „---” albo „#”: nagłówek nie może zostać pusty („## ”).
+  if (!wynik) return null;
+  return wynik.charAt(0).toUpperCase() + wynik.slice(1);
 }
 
 /**
  * Plik w formacie llmstxt.org: „# Nazwa”, „> opis”, sekcje „## …” z wierszami „- [Tytuł](url): opis”.
- * Sekcje według pierwszego segmentu ścieżki, gdy ma co najmniej 2 podstrony; reszta w „Strony”.
+ * Kolejność sekcji: strony języka głównego („Strony”), jego sekcje (pierwszy segment ścieżki z co
+ * najmniej 2 podstronami, np. „Blog”), potem każda inna wersja językowa („Wersja EN”, „Blog (EN)”)
+ * i na końcu „Optional” (strony prawne i cookies). Strona-spis sekcji (np. /blog) idzie na początek
+ * swojej sekcji. wszystkieAdresy (opcjonalnie) = cała mapa: liczba podstron sekcji liczona z niej, nie z próbki.
+ * jezykStrony (12.11.2026): język strony głównej (prefiks albo <html lang>). Nagłówki ogólne („Strony”,
+ * „Wersja EN”, „Strona główna”) idą za nim, a nie za językiem interfejsu: polska strona sprawdzana
+ * w interfejsie EN dostawała „Pages” obok „Pozycjonowanie w AI”. Strona po polsku = nagłówki PL,
+ * inny znany język = EN, nieznany = język interfejsu (jak dotąd).
  */
-export function zbudujLlmsTxt({ marka, opis, wpisy, lang = 'pl' }) {
-  const segment = (url) => new URL(url).pathname.split('/').filter(Boolean)[0] || '';
-  const ilePod = new Map();
-  for (const w of wpisy) {
-    const czesci = new URL(w.url).pathname.split('/').filter(Boolean);
-    if (czesci.length >= 2) ilePod.set(czesci[0], (ilePod.get(czesci[0]) || 0) + 1);
-  }
-  const sekcje = new Map([['', []]]);
-  for (const w of wpisy) {
-    const seg = segment(w.url);
-    const klucz = (ilePod.get(seg) || 0) >= 2 ? seg : '';
-    if (!sekcje.has(klucz)) sekcje.set(klucz, []);
-    sekcje.get(klucz).push(w);
-  }
+export function zbudujLlmsTxt({ marka, opis, wpisy, lang = 'pl', jezykGlowny = '', wszystkieAdresy = null, jezykStrony = '' }) {
+  const baza = bazaJezyka(jezykStrony);
+  const en = baza ? baza !== 'pl' : lang === 'en';
+  lang = en ? 'en' : 'pl';
+  const klasa = klasyfikator(wszystkieAdresy || wpisy.map((w) => w.url), jezykGlowny);
+  const jezyki = [];
+  const sekcje = new Map();
+  wpisy.forEach((w, i) => {
+    const c = klasa(w.url, w.tytul);
+    if (c.jezyk && !jezyki.includes(c.jezyk)) jezyki.push(c.jezyk);
+    const klucz = c.opcjonalna ? 'optional' : `${c.jezyk}|${c.sekcja}`;
+    if (!sekcje.has(klucz)) sekcje.set(klucz, { ...c, opcjonalna: c.opcjonalna, pierwszy: i, lista: [] });
+    // Strona główna (albo /en) i spis sekcji (np. /blog, /en/blog) na początek swojej sekcji.
+    sekcje.get(klucz).lista.push({ ...w, spis: c.glebokosc === 0 ? 2 : Number(Boolean(c.sekcja) && c.glebokosc === 1), i });
+  });
+  const ranga = (s) => (s.opcjonalna ? [1e9, 0] : [s.jezyk ? 1 + jezyki.indexOf(s.jezyk) : 0, s.sekcja ? 1 : 0]);
+  const kolejne = [...sekcje.values()].sort((a, b) => {
+    const [ra, rb] = [ranga(a), ranga(b)];
+    return ra[0] - rb[0] || ra[1] - rb[1] || a.pierwszy - b.pierwszy;
+  });
+
   const linie = [`# ${marka}`, ''];
   if (opis) linie.push(`> ${skroc(opis, 300)}`, '');
-  for (const [klucz, lista] of sekcje) {
-    if (!lista.length) continue;
-    linie.push(`## ${klucz ? nazwaSekcji(klucz, lang) : (lang === 'en' ? 'Pages' : 'Strony')}`, '');
+  for (const s of kolejne) {
+    const kod = s.jezyk.toUpperCase();
+    let naglowek;
+    if (s.opcjonalna) naglowek = 'Optional'; // nazwa ze specyfikacji llmstxt.org, nie tłumaczymy
+    else if (s.sekcja && nazwaSekcji(s.sekcja)) naglowek = `${nazwaSekcji(s.sekcja, s.lista.map((w) => `${w.tytul || ''} ${w.opis || ''}`))}${kod ? ` (${kod})` : ''}`;
+    else if (kod) naglowek = en ? `${kod} version` : `Wersja ${kod}`;
+    else naglowek = en ? 'Pages' : 'Strony';
+    linie.push(`## ${naglowek}`, '');
+    const lista = [...s.lista].sort((a, b) => b.spis - a.spis || a.i - b.i);
     for (const w of lista) {
       const o = w.opis ? `: ${skroc(w.opis, 200)}` : '';
       linie.push(`- [${nazwaLinku(w.tytul, marka, w.url, lang)}](${w.url})${o}`);
@@ -695,45 +1037,83 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
     }));
 
     const mapa = (async () => {
-      const kandydaci = robots.sitemapy
+      const zRobots = robots.sitemapy
         .map((s) => { try { return new URL(s, origin); } catch { return null; } })
         .filter((u) => u && tenSamHost(u))
-        .slice(0, 3)
-        .map((u) => u.toString());
-      if (!kandydaci.length) kandydaci.push(`${origin}/sitemap.xml`, `${origin}/sitemap_index.xml`, `${origin}/wp-sitemap.xml`);
-      const lokacje = [];
+        .map((u) => u.toString())
+        .filter((u, i, lista) => lista.indexOf(u) === i) // ten sam wpis Sitemap powtórzony w robots.txt
+        .slice(0, 3);
+      const kandydaci = zRobots.length ? zRobots : [`${origin}/sitemap.xml`, `${origin}/sitemap_index.xml`, `${origin}/wp-sitemap.xml`];
+      // Mapy podrzędne czytamy najwyżej do 10 s od startu (LIMITY.rezerwaNaStronyMs przed limitem 20 s),
+      // żeby na sprawdzenie adresów zostało co najmniej 10 s. Weryfikacja 11.11.2026: bez tego indeks
+      // 25 map po 3 s zajmował 15 s, a cały przebieg trwał 19,4 s zamiast 7,3 s.
+      const terminMap = termin - LIMITY.rezerwaNaStronyMs;
+      const czasMapy = () => Math.min(timeout(), terminMap - Date.now());
+      const pobierzMape = (adres, maxBajtow = LIMITY.maxBajtow, podrzedna = false) => pobierzZPrzekierowaniami(adres, {
+        czas: (a) => pobierz(a, { timeoutMs: podrzedna ? Math.max(czasMapy(), 1) : timeout(), maxBajtow, agenci, accept: 'application/xml,text/xml,*/*;q=0.8' }),
+      }, tenSamHost);
+      let uciete = false;
+      const mapy = [];
       let zrodlo = null;
       let razem = 0;
+      let wIndeksie = 0;
+      // Każdą mapę pobieramy raz: robots.txt często wymienia ten sam indeks dwa razy albo indeks i jego
+      // mapę podrzędną, a dwa indeksy mogą wskazywać te same mapy. Limit 20 map podrzędnych jest wspólny.
+      const pobraneMapy = new Set();
+      let podrzednychWybranych = 0;
+      const dodajMape = (z, ucieta) => {
+        let m = z;
+        if (z.lokacje.length > LIMITY.maxAdresowZMapy) {
+          // Z mapy bierzemy pierwsze 5000 adresów, więc liczba adresów w wyniku to dolna granica.
+          m = { lokacje: z.lokacje.slice(0, LIMITY.maxAdresowZMapy), zmiany: z.zmiany.slice(0, LIMITY.maxAdresowZMapy), priorytety: z.priorytety.slice(0, LIMITY.maxAdresowZMapy) };
+          uciete = true;
+        }
+        mapy.push(m);
+        razem += z.lokacje.length;
+        uciete = uciete || Boolean(ucieta);
+      };
       for (const kandydat of kandydaci) {
-        if (zostalo() < 1000 || lokacje.length >= LIMITY.maxUrli * 4) break;
-        const odp = await pobierzZPrzekierowaniami(kandydat, {
-          czas: (adres) => pobierz(adres, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtow, agenci, accept: 'application/xml,text/xml,*/*;q=0.8' }),
-        }, tenSamHost);
+        if (zostalo() < 1000) break;
+        // Zgadywane adresy (bez wpisu w robots.txt): wystarczy pierwszy, który zadziała.
+        if (!zRobots.length && mapy.length) break;
+        if (pobraneMapy.has(kandydat)) continue;
+        pobraneMapy.add(kandydat);
+        const odp = await pobierzMape(kandydat);
         if (!(odp.kod >= 200 && odp.kod < 300)) continue;
-        const { indeks, lokacje: znalezione } = adresyZMapy(tekstMapy(odp.cialo));
-        if (!znalezione.length) continue;
+        pobraneMapy.add(odp.url);
+        const z = adresyZMapy(tekstMapy(odp.cialo));
+        if (!z.lokacje.length) continue;
         zrodlo = zrodlo || odp.url;
-        if (!indeks) {
-          lokacje.push(...znalezione);
-          razem += znalezione.length;
+        if (!z.indeks) {
+          dodajMape(z, odp.uciete);
           continue;
         }
-        // Indeks map: 1 poziom w głąb, maks. 5 map podrzędnych, aż do zebrania adresów.
-        const podrzedne = znalezione.filter((s) => { try { return tenSamHost(new URL(s)); } catch { return false; } }).slice(0, LIMITY.maxMapPodrzednych);
-        for (const pod of podrzedne) {
-          if (zostalo() < 1000 || lokacje.length >= LIMITY.maxUrli * 4) break;
-          const o = await pobierzZPrzekierowaniami(pod, {
-            czas: (adres) => pobierz(adres, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtow, agenci, accept: 'application/xml,text/xml,*/*;q=0.8' }),
-          }, tenSamHost);
-          if (!(o.kod >= 200 && o.kod < 300)) continue;
-          const z = adresyZMapy(tekstMapy(o.cialo));
-          if (!z.indeks) {
-            lokacje.push(...z.lokacje);
-            razem += z.lokacje.length;
-          }
+        // Indeks map: 1 poziom w głąb, maks. 20 map podrzędnych (kolejnoscMap), pobieranych po 4 naraz,
+        // każda do 512 KB (ok. 3 tys. adresów; z mapy bierzemy najwyżej kilkanaście). Wszystkie trafiają
+        // do wyboru, więc żadna sekcja nie wypada w całości.
+        const podrzedne = [...new Set(z.lokacje.filter((s) => { try { return tenSamHost(new URL(s)); } catch { return false; } }))]
+          .filter((s) => !pobraneMapy.has(s));
+        wIndeksie += podrzedne.length;
+        const wybrane = kolejnoscMap(podrzedne, Math.max(LIMITY.maxMapPodrzednych - podrzednychWybranych, 0));
+        podrzednychWybranych += wybrane.length;
+        if (wybrane.length < podrzedne.length) uciete = true;
+        for (const pod of wybrane) pobraneMapy.add(pod);
+        const wyniki = await pula(wybrane.map((pod) => async () => {
+          // Mapa niepobrana z braku czasu albo przez timeout: liczba adresów jest dolną granicą.
+          if (czasMapy() < 1000) return { pominieta: true };
+          const o = await pobierzMape(pod, LIMITY.maxBajtowMapyPodrzednej, true);
+          if (o.blad === 'timeout') return { pominieta: true };
+          if (!(o.kod >= 200 && o.kod < 300)) return null;
+          const zz = adresyZMapy(tekstMapy(o.cialo));
+          if (zz.indeks || !zz.lokacje.length) return null;
+          return { ...zz, uciete: Boolean(o.uciete) };
+        }), LIMITY.wspolbieznoscMap, termin);
+        for (const zz of wyniki) {
+          if (zz && zz.pominieta) uciete = true;
+          else if (zz) dodajMape(zz, zz.uciete);
         }
       }
-      return { lokacje, zrodlo, razem };
+      return { mapy, zrodlo, razem, wIndeksie, uciete };
     })();
 
     // Obecny plik /llms.txt strony (FAQ N1: „po wdrożeniu sprawdź go w generatorze”). Bez podążania
@@ -754,37 +1134,33 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
         bajty: o.cialo ? o.cialo.length : 0,
         wiecejNiz: Boolean(o.uciete),
         naglowekH1: /^#\s+\S/.test(tekst.trimStart()),
+        // Linki Markdown [nazwa](https://...): plik bez nich nie wskazuje modelom żadnych podstron
+        // (Lighthouse 13 oznacza to jako błąd; staniax.pl 11.11.2026: 588 B, 0 linków).
+        // Nazwa linku do 300 znaków: bez limitu 64 KB samych „[” liczyło się 1,8 s (weryfikacja 11.11.2026).
+        linki: (tekst.match(/\[[^\]\n]{1,300}\]\(\s*https?:\/\/[^)\s]+/g) || []).length,
         html: /^\s*<(!doctype|html)/i.test(tekst),
       };
     })();
 
-    const [boty, { lokacje, zrodlo: mapaZrodlo, razem: wMapie }, obecnyPlik] = await Promise.all([testBotow, mapa, obecny]);
+    const [boty, { mapy, zrodlo: mapaZrodlo, razem: wMapie, wIndeksie, uciete: mapaUcieta }, obecnyPlik] = await Promise.all([testBotow, mapa, obecny]);
 
-    // 4. Adresy do sprawdzenia: ta sama domena, bez duplikatów, maks. 50.
-    const pominiete = [];
-    const widziane = new Set();
-    const doSprawdzenia = [];
-    for (const surowy of lokacje) {
-      let u;
-      try {
-        u = new URL(surowy);
-      } catch {
-        continue;
-      }
-      u.hash = '';
-      const klucz = u.toString();
-      if (widziane.has(klucz)) continue;
-      widziane.add(klucz);
-      if (!tenSamHost(u)) {
-        pominiete.push({ url: klucz, powod: en ? 'different domain' : 'inna domena' });
-        continue;
-      }
-      if (doSprawdzenia.length < LIMITY.maxUrli) doSprawdzenia.push(klucz);
-    }
-    if (!doSprawdzenia.length && glowna.kod >= 200 && glowna.kod < 300) doSprawdzenia.push(glowna.url);
+    // 4. Adresy do sprawdzenia: ta sama domena, bez duplikatów, maks. 50, po kilka z każdej mapy
+    //    i sekcji (wybierzAdresy). Strona główna spoza mapy dochodzi na początek.
+    const glownaOk = glowna.kod >= 200 && glowna.kod < 300;
+    const wybor = wybierzAdresy(mapy, {
+      limit: LIMITY.maxUrli,
+      czyDozwolony: tenSamHost,
+      stronaGlowna: glownaOk ? glowna.url : null,
+      prefiksGlownej: jezykSegmentu(glownaUrl.pathname.split('/').filter(Boolean)[0]),
+      jezykHtml: metaGlownej.jezyk,
+      en,
+    });
+    const pominiete = wybor.pominiete;
+    const doSprawdzenia = wybor.adresy;
+    if (!doSprawdzenia.length && glownaOk) doSprawdzenia.push(glowna.url);
 
     // 5. Każdy adres: HEAD (kod, przekierowanie, X-Robots-Tag), potem ucięty GET (tytuł, opis, meta robots).
-    const zadania = doSprawdzenia.map((url) => async () => {
+    const sprawdzAdres = async (url) => {
       let glowa = await pobierz(url, { metoda: 'HEAD', timeoutMs: timeout(), agenci, accept: 'text/html,*/*;q=0.8' });
       const bezHead = glowa.kod === 405 || glowa.kod === 501 || (!glowa.kod && glowa.blad !== 'timeout');
       if (bezHead) glowa = null;
@@ -807,24 +1183,71 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       const meta = metaZHtml(dekodujTekst(odpGet.cialo, typ));
       if (/noindex|\bnone\b/.test(meta.robots)) return { url, powod: en ? 'noindex (meta robots)' : 'noindex (meta robots)' };
       return { url, wpis: { url, tytul: meta.tytul || meta.ogTytul, opis: meta.opis || meta.ogOpis } };
-    });
-    const wyniki = await pula(zadania, LIMITY.wspolbieznosc, termin);
+    };
+    // Faza 1: wszystkie wybrane adresy. Zastępcy dopiero w fazie 2, żeby łańcuch zastępców jednego
+    // adresu nie zajmował miejsca w puli, kiedy inne wybrane adresy czekają (weryfikacja 11.11.2026).
+    const wyniki = await pula(doSprawdzenia.map((url) => () => sprawdzAdres(url)), LIMITY.wspolbieznosc, termin);
+    // Faza 2: odrzucony adres (powod) zastępujemy następnym z tej samej puli (wybor.zastepca): maks.
+    // LIMITY.maxZastepcow razy na adres, LIMITY.maxZastepcowRazem razem i tylko, gdy zostały co najmniej
+    // 2 timeouty (HEAD + GET) do limitu 20 s. Gdy odrzucona jest ponad połowa sprawdzonych adresów, błąd
+    // jest systemowy (np. każda podstrona przekierowuje na wersję z ukośnikiem) i zastępców nie szukamy:
+    // w symulacji takiego serwisu zastępcy podnosili liczbę zapytań z 63 do 165, a czas z 4,5 do 12,4 s.
+    const odrzuconych = wyniki.filter((w) => w && w.powod).length;
+    const sprawdzonych = wyniki.filter((w) => w && !w.nieprzetworzony).length;
+    if (odrzuconych && odrzuconych * 2 <= sprawdzonych) {
+      let budzet = LIMITY.maxZastepcowRazem;
+      const zadaniaZastepcow = [];
+      wyniki.forEach((w, i) => {
+        if (!w || !w.powod) return;
+        zadaniaZastepcow.push(async () => {
+          const odrzucone = [];
+          let biezacy = w;
+          for (let n = 0; n < LIMITY.maxZastepcow && biezacy.powod && budzet > 0 && zostalo() > 2 * LIMITY.timeoutMs; n += 1) {
+            const nastepny = wybor.zastepca(biezacy.url);
+            if (!nastepny) break;
+            budzet -= 1;
+            odrzucone.push({ url: biezacy.url, powod: biezacy.powod });
+            biezacy = await sprawdzAdres(nastepny);
+          }
+          wyniki[i] = { ...biezacy, odrzucone };
+        });
+      });
+      await pula(zadaniaZastepcow, LIMITY.wspolbieznosc, termin);
+    }
 
     const wpisy = [];
     const nieprzetworzone = [];
+    // Adresy faktycznie sprawdzone (z zastępcami, bez nieprzetworzonych): podstawa liczby
+    // „blokuje X z N sprawdzonych adresów” w tabeli botów.
+    const sprawdzoneAdresy = [];
+    let zastepcow = 0;
     wyniki.forEach((w, i) => {
-      if (!w || w.nieprzetworzony) nieprzetworzone.push(doSprawdzenia[i]);
-      else if (w.wpis) wpisy.push(w.wpis);
+      if (!w) {
+        nieprzetworzone.push(doSprawdzenia[i]);
+        return;
+      }
+      const odrzucone = w.odrzucone || [];
+      for (const o of odrzucone) {
+        pominiete.push(o);
+        sprawdzoneAdresy.push(o.url);
+      }
+      zastepcow += odrzucone.length;
+      if (w.nieprzetworzony) {
+        nieprzetworzone.push(w.url);
+        return;
+      }
+      sprawdzoneAdresy.push(w.url);
+      if (w.wpis) wpisy.push(w.wpis);
       else pominiete.push({ url: w.url, powod: w.powod });
     });
 
     const marka = nazwaMarki({ nazwaSerwisu: metaGlownej.nazwaSerwisu, tytuly: [metaGlownej.tytul, ...wpisy.map((w) => w.tytul)].filter(Boolean), host: glownaUrl.hostname });
-    const llmsTxt = zbudujLlmsTxt({ marka, opis: metaGlownej.opis || metaGlownej.ogOpis, wpisy, lang });
+    const llmsTxt = zbudujLlmsTxt({ marka, opis: metaGlownej.opis || metaGlownej.ogOpis, wpisy, lang, jezykGlowny: wybor.jezykGlowny, wszystkieAdresy: wybor.wszystkie.length ? wybor.wszystkie : null, jezykStrony: wybor.jezykGlowny || metaGlownej.jezyk });
 
     const tabelaBotow = boty.map(({ bot, wynikRobots, kod, blad }) => {
       const w = wniosekBota(bot, robotsStan, wynikRobots, kod, glowna.kod, blad, lang);
       const zablokowaneAdresy = robotsStan === 'jest'
-        ? doSprawdzenia.filter((u) => !sprawdzSciezke(robots, bot.token, new URL(u).pathname + new URL(u).search).dozwolona).length
+        ? sprawdzoneAdresy.filter((u) => !sprawdzSciezke(robots, bot.token, new URL(u).pathname + new URL(u).search).dozwolona).length
         : 0;
       return {
         nazwa: bot.nazwa,
@@ -847,7 +1270,22 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       czesciowy: nieprzetworzone.length > 0,
       czasMs: Date.now() - start,
       robots: { stan: robotsStan, kod: robotsOdp.kod || null },
-      mapa: { zrodlo: mapaZrodlo, adresow: wMapie, sprawdzone: doSprawdzenia.length - nieprzetworzone.length, limit: LIMITY.maxUrli },
+      // adresow = unikalne adresy ze wszystkich przeczytanych map (wMapie liczy też powtórzenia między mapami),
+      // map = przeczytane mapy z adresami, mapWIndeksie = mapy podrzędne wymienione w indeksie (0 = zwykła mapa),
+      // sekcji = pule, między które podzielono limit (0 = wszystkie adresy mieszczą się w limicie),
+      mapa: {
+        zrodlo: mapaZrodlo,
+        adresow: wybor.unikalnych || wMapie,
+        // sprawdzone = adresy faktycznie pobrane, razem z zastępcami (zastepcze = ilu odrzuconych zastąpiliśmy).
+        sprawdzone: sprawdzoneAdresy.length,
+        zastepcze: zastepcow,
+        limit: LIMITY.maxUrli,
+        map: mapy.length,
+        mapWIndeksie: wIndeksie,
+        sekcji: wybor.pul,
+        // true = mapa większa, niż czytamy (ponad 20 map podrzędnych albo ucięta mapa): adresow to dolna granica.
+        uciete: mapaUcieta,
+      },
       kodStronyGlownej: glowna.kod,
       obecnyPlik,
       boty: tabelaBotow,

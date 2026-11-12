@@ -29,6 +29,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { homeHash } from '@/lib/anchors';
 import { LASTMOD } from '@/lib/lastmod';
 
@@ -333,7 +334,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <h2 id="faq">Frequently Asked Questions</h2>
 
               <h3>We're migrating to a new domain. When should we audit?</h3>
-              <p>Twice: once on the staging environment before launch, to catch noindex tags and blocks that would otherwise ship to production, and again daily for the first four weeks after. A drop of 10–20% for two to six weeks is common and not by itself a sign of failure. No recovery after eight weeks means something is wrong with the redirect map or index coverage, and that is when you go looking rather than waiting.</p>
+              <p>Twice: once on the staging environment before launch, to catch noindex tags and blocks that would otherwise ship to production, and again daily for the first four weeks after. A drop of 10–20% for two to six weeks is common and not by itself a sign of failure. No recovery after eight weeks means something is wrong with the redirect map or index coverage, and that is when you go looking rather than waiting.{hrefJesliOpublikowana('/narzedzia/checklista-migracji-strony') && <> Every step is in our <Link href="/narzedzia/checklista-migracji-strony">website migration checklist</Link>.</>}</p>
 
               <h3>How long does a site audit take?</h3>
               <p>A single-domain audit typically takes a few days to a week, depending on site size and whether log-file analysis is included. An enterprise SEO audit on a site with millions of URLs takes longer and usually needs a modular approach rather than one full crawl.</p>
@@ -688,6 +689,9 @@ function ArtykulAudytTechnicznySeo({ locale }) {
                 <li><a href="/pliki/checklista-audytu-technicznego-seo.xlsx" download>Arkusz audytu technicznego SEO (XLSX)</a>: te same punkty z kolumnami na wynik, uwagi i ocenę ICE; priorytet liczy się sam.</li>
               </ul>
               <p>Pliki pobierzesz bez podawania adresu e-mail.</p>
+              {hrefJesliOpublikowana('/narzedzia/checklista-seo') && (
+                <p>Ogólną listę 50 punktów, także dla on-page, SEO lokalnego i gotowości na AI, znajdziesz w naszej <Link href="/narzedzia/checklista-seo">checkliście SEO do pobrania</Link>.</p>
+              )}
 
               {/* 5.11.2026 (decyzje-blog nr 4): H2 + anchor „audyt SEO strony” -> /audyt-seo. */}
               <h2 id="kiedy-zlecic">Kiedy zlecić audyt techniczny</h2>
@@ -719,7 +723,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               <p>Lekki crawl co tydzień, pełny audyt co kwartał i dodatkowy crawl porównawczy natychmiast po każdym większym wdrożeniu, przebudowie albo migracji.</p>
 
               <h3>Przenosimy się na nową domenę. Kiedy audytować?</h3>
-              <p>Dwa razy: raz na środowisku testowym przed startem – żeby złapać noindexy i blokady, które inaczej pojechałyby na produkcję – i potem codziennie przez pierwsze cztery tygodnie. Spadek ruchu o 10–20% przez dwa do sześciu tygodni bywa normalny i sam w sobie nie oznacza porażki. Brak odbicia po ośmiu tygodniach oznacza błąd w mapie przekierowań albo pokryciu indeksu – wtedy się szuka, a nie czeka.</p>
+              <p>Dwa razy: raz na środowisku testowym przed startem – żeby złapać noindexy i blokady, które inaczej pojechałyby na produkcję – i potem codziennie przez pierwsze cztery tygodnie. Spadek ruchu o 10–20% przez dwa do sześciu tygodni bywa normalny i sam w sobie nie oznacza porażki. Brak odbicia po ośmiu tygodniach oznacza błąd w mapie przekierowań albo pokryciu indeksu – wtedy się szuka, a nie czeka.{hrefJesliOpublikowana('/narzedzia/checklista-migracji-strony') && <> Kroki rozpisuje nasza <Link href="/narzedzia/checklista-migracji-strony">checklista migracji strony</Link>.</>}</p>
 
               <h3>Czym różni się checklista on-page od audytu technicznego?</h3>
               <p>Checklista on-page dotyczy elementów treści: tytułów, nagłówków, pokrycia fraz. Audyt techniczny obejmuje crawlowalność, indeksację, renderowanie i infrastrukturę – warstwy, do których poprawki w treści nie sięgają.</p>

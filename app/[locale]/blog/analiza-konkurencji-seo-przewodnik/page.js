@@ -20,6 +20,7 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import { Link } from '@/i18n/routing';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import BlogCTA from '@/components/BlogCTA';
 import { LASTMOD } from '@/lib/lastmod';
 
@@ -188,7 +189,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>Internal linking is an element most analyses overlook. Check how the competitor links between pillar and spoke pages. If their pillar page receives internal links from 20 spoke articles while yours receives only 3, that is where part of the advantage lies.</p>
 
               <h2 id="plan-dzialan">7. How to plan actions for 3–6 months after the analysis</h2>
-              <p>After the analysis you have data. Now you need a plan that turns it into concrete actions with deadlines and owners.</p>
+              <p>After the analysis you have data. Now you need a plan that turns it into concrete actions with deadlines and owners.{hrefJesliOpublikowana('/narzedzia/szablon-analizy-konkurencji-seo') && <> You can record the results and the action list in our <Link href="/narzedzia/szablon-analizy-konkurencji-seo">competitor analysis template</Link> (printable PDF).</>}</p>
               <ul>
                 <li>Select 3 clusters to attack: one <strong>quick win</strong> (phrases in positions 11–20, low difficulty), one <strong>mid-term play</strong> (positions 20–50, medium difficulty), and one <strong>long play</strong> (phrases below 50, high difficulty, high volume).</li>
                 <li>Set KPIs for each cluster: target position, estimated traffic, number of referring domains to acquire.</li>
@@ -436,7 +437,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>Wewnętrzne linkowanie to element, który większość analiz pomija. Sprawdź, jak konkurent linkuje między pillar a spoke pages. Jeśli jego strona pillar zbiera linki wewnętrzne z 20 artykułów spoke, a Twoja z 3, to właśnie tam leży część przewagi.</p>
 
               <h2 id="plan-dzialan">7. Jak zaplanować działania na 3–6 miesięcy po analizie?</h2>
-              <p>Po analizie masz dane. Teraz potrzebujesz planu, który zamienia je w konkretne działania z terminami i właścicielami.</p>
+              <p>Po analizie masz dane. Teraz potrzebujesz planu, który zamienia je w konkretne działania z terminami i właścicielami.{hrefJesliOpublikowana('/narzedzia/szablon-analizy-konkurencji-seo') && <> Wyniki i listę działań zapiszesz w naszym <Link href="/narzedzia/szablon-analizy-konkurencji-seo">szablonie analizy konkurencji</Link> (PDF do wydruku).</>}</p>
               <ul>
                 <li>Wybierz 3 klastry do ataku: jeden <strong>quick win</strong> (frazy z pozycji 11–20, mała trudność), jeden <strong>mid-term play</strong> (frazy z pozycji 20–50, średnia trudność) i jeden <strong>long play</strong> (frazy poniżej 50, wysoka trudność, duży wolumen).</li>
                 <li>Ustal KPI dla każdego klastra: docelowa pozycja, szacowany ruch, liczba referring domains do pozyskania.</li>
