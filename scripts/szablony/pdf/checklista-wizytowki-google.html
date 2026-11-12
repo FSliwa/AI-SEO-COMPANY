@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Checklista wizytówki Google: 40 punktów</title>
+<style>
+@page { size: A4; margin: 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 9pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.naglowek { font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2.5mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 6mm; }
+.naglowek b { color: #D85A30; }
+h1 { font-size: 20pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+.pod { font-size: 9.5pt; color: #48484A; margin: 0 0 4.5mm; }
+h2 { font-size: 13pt; margin: 0 0 2mm; padding-bottom: 1.6mm; border-bottom: 1.6pt solid #D85A30; display: inline-block; }
+h3 { font-size: 10.5pt; margin: 3mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.2pt solid #D85A30; display: inline-block; }
+.pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 3mm; }
+.pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+.pole span { white-space: nowrap; }
+.pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+ol.kroki { margin: 0; padding-left: 5mm; }
+ol.kroki li { margin: 0 0 1.4mm; }
+.dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+ul.leg { list-style: none; margin: 0; padding: 0; }
+ul.leg li { margin: 0 0 1.6mm; }
+.box { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: 0.5mm; vertical-align: -0.4mm; margin-right: 1.2mm; background: #fff; }
+.prio { display: inline-block; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.4mm 1.4mm; border-radius: 1mm; border: 0.6pt solid #E5E1DC; color: #6E6E73; margin-right: 1mm; }
+.prio.w { color: #fff; background: #D85A30; border-color: #D85A30; }
+.prio.s { color: #D85A30; border-color: #D85A30; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 0.6pt solid #E5E1DC; padding: 1.4mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: #F7F5F2; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; color: #48484A; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+td.c, th.c { text-align: center; }
+table.podsum td { height: 6.4mm; vertical-align: middle; padding-top: 0.8mm; padding-bottom: 0.8mm; }
+table.podsum tr.razem td { font-weight: 700; background: #FBFAF8; }
+.strona { break-before: page; page-break-before: always; }
+.opis { margin: 1mm 0 2.5mm; color: #48484A; font-size: 8.5pt; }
+.ile { color: #D85A30; font-weight: 700; white-space: nowrap; }
+table.lista td { padding: 0.9mm 1.3mm; }
+table.lista th { padding: 1.1mm 1.3mm; }
+h2, .opis { break-after: avoid; page-break-after: avoid; }
+.blok { margin-top: 4mm; }
+.blok:first-child { margin-top: 0; }
+.nr { font-weight: 700; color: #D85A30; font-size: 8.5pt; }
+.pk { font-weight: 700; font-size: 8pt; line-height: 1.2; }
+.jak { font-size: 7pt; color: #48484A; margin-top: 0.3mm; line-height: 1.2; }
+.jak b { font-weight: 700; color: #1D1D1F; }
+.st { font-size: 6.8pt; line-height: 1.22; white-space: nowrap; }
+.st div { margin: 0 0 0.2mm; }
+.st .box { width: 2.6mm; height: 2.6mm; }
+.wynik { margin: 2mm 0 0; font-size: 8.5pt; }
+.obszar2 { margin-top: 5mm; }
+table.karta td.l { width: 52mm; font-size: 8pt; color: #48484A; background: #FBFAF8; vertical-align: middle; }
+table.karta td { height: 8mm; vertical-align: middle; }
+table.karta td.opis-pole { height: 30mm; }
+table.karta .wyb { font-size: 8pt; }
+table.karta .wyb span { margin-right: 4mm; white-space: nowrap; }
+.mala { font-size: 7.2pt; color: #6E6E73; }
+table.puste td { height: 7.4mm; vertical-align: middle; font-size: 8pt; }
+table.puste th { font-size: 7pt; }
+table.puste td.m { color: #1D1D1F; }
+.sek { margin: 0 0 3.5mm; }
+footer { margin-top: 6mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+footer p { margin: 0 0 0.8mm; }
+footer strong { color: #1D1D1F; }
+</style>
+</head>
+<body>
+<div class="naglowek"><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</div>
+<h1>Checklista wizytówki Google: 40 punktów</h1>
+<p class="pod">Jak założyć, zweryfikować i prowadzić Profil Firmy w Google. Każdy punkt ma priorytet i sposób sprawdzenia. Wersja: listopad 2026.</p>
+<div class="pola sek"><div class="pole"><span>Firma</span><i></i></div><div class="pole"><span>Data przeglądu</span><i></i></div><div class="pole"><span>Osoba sprawdzająca</span><i></i></div><div class="pole"><span>Następny przegląd</span><i></i></div></div>
+<div class="sek">
+  <h3>Jak korzystać z szablonu</h3>
+  <ol class="kroki"><li><strong>Zacznij od karty danych firmy</strong> (strona 2): jedna wersja nazwy, adresu i telefonu to wzorzec do wszystkich kolejnych punktów.</li><li><strong>Przejdź obszary A i B przed założeniem profilu.</strong> Nazwy, adresu ani kategorii nie zmieniaj w trakcie weryfikacji.</li><li><strong>Przy każdym punkcie zaznacz status:</strong> OK, do poprawy albo n/d (nie dotyczy).</li><li><strong>Opisz problem w notatce:</strong> co jest nie tak, kto poprawia i do kiedy, np. „stary numer w 2 katalogach, recepcja, do piątku”.</li><li><strong>Najpierw priorytet wysoki,</strong> potem średni i niski. Spójność NAP sprawdź w tabeli na ostatniej stronie.</li><li><strong>Co miesiąc uzupełnij dziennik,</strong> a całą listę przejdź ponownie co kwartał i po każdej zmianie w firmie.</li></ol>
+</div>
+<div class="sek">
+  <h3>Statusy i priorytety</h3>
+  <div class="dwie"><ul class="leg"><li><span class="box"></span><strong>OK</strong> – punkt spełniony</li><li><span class="box"></span><strong>Popr.</strong> – do poprawy: w notatce wpisz problem, osobę i termin</li><li><span class="box"></span><strong>n/d</strong> – nie dotyczy Twojej firmy, nie licz w wyniku</li></ul><ul class="leg"><li><span class="prio w">wysoki</span> blokuje założenie, weryfikację albo widoczność w Mapach; zrób najpierw</li><li><span class="prio s">średni</span> ogranicza wyniki, ale profil działa</li><li><span class="prio n">niski</span> dopracowanie szczegółów; zrób przy okazji</li></ul></div>
+</div>
+<div>
+  <h3>Podsumowanie przeglądu</h3>
+  <table class="podsum">
+    <colgroup><col style="width:58mm"><col style="width:16mm"><col style="width:16mm"><col style="width:22mm"><col style="width:16mm"><col></colgroup>
+    <thead><tr><th>Obszar</th><th class="c">Punkty</th><th class="c">OK</th><th class="c">Do poprawy</th><th class="c">n/d</th><th>Otwarte z priorytetem wysokim</th></tr></thead>
+    <tbody><tr><td>A. Przygotowanie</td><td class="c">8</td><td></td><td></td><td></td><td></td></tr><tr><td>B. Założenie i weryfikacja</td><td class="c">7</td><td></td><td></td><td></td><td></td></tr><tr><td>C. Uzupełnienie profilu</td><td class="c">8</td><td></td><td></td><td></td><td></td></tr><tr><td>D. Opinie i posty</td><td class="c">6</td><td></td><td></td><td></td><td></td></tr><tr><td>E. Spójność NAP i strona</td><td class="c">6</td><td></td><td></td><td></td><td></td></tr><tr><td>F. Pomiar</td><td class="c">5</td><td></td><td></td><td></td><td></td></tr><tr class="razem"><td>Razem</td><td class="c">40</td><td></td><td></td><td></td><td></td></tr></tbody>
+  </table>
+</div>
+<section class="strona">
+  <h2>Karta danych firmy (wzorzec NAP)</h2>
+  <p class="opis">Jedna, wzorcowa wersja danych. Wpisuj je identycznie w profilu Google, na stronie i w katalogach (punkty A4–A7, C1–C4, E1–E6).</p>
+  <table class="karta">
+    <tbody><tr><td class="l">Nazwa firmy (jak na szyldzie i fakturach)</td><td></td></tr><tr><td class="l">Adres, linia 1 (ulica i numer)</td><td></td></tr><tr><td class="l">Adres, linia 2 (lokal, piętro)</td><td></td></tr><tr><td class="l">Kod pocztowy i miejscowość</td><td></td></tr><tr><td class="l">Telefon główny (pod kontrolą firmy)</td><td></td></tr><tr><td class="l">Telefony dodatkowe (do 2)</td><td></td></tr><tr><td class="l">Strona www (adres z https://, z UTM)</td><td></td></tr><tr><td class="l">Konto Google firmy (e-mail właściciela)</td><td></td></tr><tr><td class="l">Kategoria główna</td><td></td></tr><tr><td class="l">Kategorie dodatkowe (do 9, jak najmniej)</td><td></td></tr><tr><td class="l">Typ firmy</td><td><span class="wyb"><span><span class="box"></span>lokal (adres widoczny)</span><span><span class="box"></span>z dojazdem (adres ukryty)</span><span><span class="box"></span>hybrydowa</span></span></td></tr><tr><td class="l">Obszar działania (do 20 miast lub kodów)</td><td></td></tr><tr><td class="l">Godziny otwarcia</td><td></td></tr><tr><td class="l">Data otwarcia (miesiąc i rok)</td><td></td></tr>
+      <tr><td class="l">Opis firmy (do 750 znaków, bez linków, cen i promocji): co robisz, dla kogo, gdzie, od kiedy</td><td class="opis-pole"></td></tr>
+    </tbody>
+  </table>
+  <h3>Weryfikacja i dostępy</h3>
+  <p class="wyb" style="margin:0 0 2mm">Metoda: <span style="margin-right:4mm;white-space:nowrap"><span class="box"></span>telefon / SMS</span><span style="margin-right:4mm;white-space:nowrap"><span class="box"></span>e-mail</span><span style="margin-right:4mm;white-space:nowrap"><span class="box"></span>rozmowa wideo</span><span style="margin-right:4mm;white-space:nowrap"><span class="box"></span>nagranie wideo</span><span style="margin-right:4mm;white-space:nowrap"><span class="box"></span>pocztówka</span></p>
+  <div class="pola"><div class="pole"><span>Data zgłoszenia</span><i></i></div><div class="pole"><span>Data potwierdzenia (e-mail od Google)</span><i></i></div></div>
+  <table class="puste">
+    <colgroup><col style="width:50mm"><col style="width:76mm"><col style="width:20mm"><col></colgroup>
+    <thead><tr><th>Konto (e-mail)</th><th>Rola</th><th>Od kiedy</th><th>Uwagi</th></tr></thead>
+    <tbody><tr><td></td><td class="mala"><span class="box"></span>główny właściciel &nbsp;<span class="box"></span>właściciel &nbsp;<span class="box"></span>menedżer</td><td></td><td></td></tr><tr><td></td><td class="mala"><span class="box"></span>główny właściciel &nbsp;<span class="box"></span>właściciel &nbsp;<span class="box"></span>menedżer</td><td></td><td></td></tr><tr><td></td><td class="mala"><span class="box"></span>główny właściciel &nbsp;<span class="box"></span>właściciel &nbsp;<span class="box"></span>menedżer</td><td></td><td></td></tr><tr><td></td><td class="mala"><span class="box"></span>główny właściciel &nbsp;<span class="box"></span>właściciel &nbsp;<span class="box"></span>menedżer</td><td></td><td></td></tr></tbody>
+  </table>
+</section>
+<section class="strona"><div class="blok">
+  <h2>A. Przygotowanie: dane i konto, zanim założysz profil <span class="ile" style="font-size:9pt;font-weight:700">· 8 punktów</span></h2>
+  <table class="lista">
+    <colgroup><col style="width:8mm"><col style="width:109mm"><col style="width:15mm"><col style="width:13mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody><tr>
+        <td class="nr">A1</td>
+        <td><div class="pk">Firma może mieć Profil Firmy: obsługuje klientów w lokalu w godzinach pracy albo dojeżdża do nich</div><div class="jak"><b>Jak sprawdzić:</b> Sklep tylko internetowy, wirtualne biuro i skrytka pocztowa się nie kwalifikują. Biuro w coworkingu tylko z szyldem, obsługą klientów i pracownikami firmy na miejscu w godzinach pracy.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">A2</td>
+        <td><div class="pk">Profil będzie należał do konta Google firmy, a nie do prywatnego konta pracownika ani agencji</div><div class="jak"><b>Jak sprawdzić:</b> Załóż konto Google na firmowy adres e-mail (nie musi to być Gmail). Agencji albo freelancerowi dasz później rolę menedżera.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">A3</td>
+        <td><div class="pk">Sprawdzone, czy wizytówka firmy już nie istnieje</div><div class="jak"><b>Jak sprawdzić:</b> Wyszukaj nazwę firmy i miejscowość w Mapach Google. Profil niezweryfikowany: „Zgłoś prawo do tej firmy”. Zweryfikowany przez kogoś innego: poproś o prawa własności (obecny właściciel ma 3 dni na odpowiedź). Nie zakładaj drugiego profilu.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">A4</td>
+        <td><div class="pk">Nazwa firmy jest ustalona dokładnie tak, jak na szyldzie, stronie i fakturach</div><div class="jak"><b>Jak sprawdzić:</b> Bez fraz, miasta, haseł reklamowych, godzin i numeru telefonu. Formę prawną (np. sp. z o.o.) dopisz tylko wtedy, gdy stale używasz jej na szyldzie i w dokumentach.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">A5</td>
+        <td><div class="pk">Wybrany typ firmy: lokal z widocznym adresem, obszar działania z ukrytym adresem albo firma hybrydowa</div><div class="jak"><b>Jak sprawdzić:</b> Hydraulik pracujący z domu ukrywa adres i ustawia obszar działania. Adres pokazuje tylko firma, która przyjmuje pod nim klientów i ma tam stałe oznaczenie z nazwą.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">A6</td>
+        <td><div class="pk">Zapisany jeden wzorzec NAP: nazwa, adres i telefon w jednej wersji do użycia wszędzie</div><div class="jak"><b>Jak sprawdzić:</b> Wypełnij kartę danych firmy w szablonie. Telefon pod kontrolą firmy, w miarę możliwości lokalny zamiast centralnej infolinii, nigdy numer o podwyższonej opłacie.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">A7</td>
+        <td><div class="pk">Kategoria główna wybrana po sprawdzeniu firm z pakietu lokalnego, a dodatkowe tylko dla usług, które naprawdę świadczysz</div><div class="jak"><b>Jak sprawdzić:</b> Kategoria ma kończyć zdanie „Ta firma JEST…”, a nie „ta firma MA…”. Wpisz w Mapach swoją najważniejszą usługę i zapisz kategorie trzech pierwszych firm. Kategorii ma być jak najmniej.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">A8</td>
+        <td><div class="pk">Strona firmy jest dodana i zweryfikowana w Google Search Console</div><div class="jak"><b>Jak sprawdzić:</b> Google podaje, że to jeden z przypadków, w których profil bywa weryfikowany od razu. Search Console przyda się też do pomiaru ruchu z wyszukiwarki.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table></div><div class="blok">
+  <h2>B. Założenie i weryfikacja profilu <span class="ile" style="font-size:9pt;font-weight:700">· 7 punktów</span></h2>
+  <table class="lista">
+    <colgroup><col style="width:8mm"><col style="width:109mm"><col style="width:15mm"><col style="width:13mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody><tr>
+        <td class="nr">B1</td>
+        <td><div class="pk">Profil dodany przez business.google.com/add albo przejęty przyciskiem „Zgłoś prawo do tej firmy” w Mapach</div><div class="jak"><b>Jak sprawdzić:</b> Dodanie firmy i zgłoszenie praw jest bezpłatne. Google nie pobiera za to żadnej opłaty.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">B2</td>
+        <td><div class="pk">Adres i pinezka na mapie wskazują właściwy budynek, a numer lokalu jest w drugiej linii adresu</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdź pinezkę w widoku satelitarnym, zanim wybierzesz metodę weryfikacji. Po przeprowadzce profil trzeba zweryfikować ponownie.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">B3</td>
+        <td><div class="pk">Metoda weryfikacji wybrana z tych, które pokazuje profil, i przygotowana z wyprzedzeniem</div><div class="jak"><b>Jak sprawdzić:</b> Metody wybiera Google i nie da się ich zmienić: telefon lub SMS, e-mail, rozmowa wideo na żywo, nagranie wideo albo pocztówka. Jeśli możesz, wybierz wideo: Google je zaleca. Czasem trzeba przejść więcej niż jedną metodę.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">B4</td>
+        <td><div class="pk">Do weryfikacji wideo przygotowane dowody: oznaczenie firmy z zewnątrz, ulica, sprzęt i dostęp do części dla personelu</div><div class="jak"><b>Jak sprawdzić:</b> Rozmowa wideo na żywo działa tylko w godzinach otwarcia, a Ty musisz być w firmie. Pokaż szyld albo tablicę z nazwą ulicy, sprzęt z logo lub narzędzia i na przykład otwarcie drzwi kluczem.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">B5</td>
+        <td><div class="pk">Przy pocztówce nic w profilu się nie zmienia, dopóki nie wpiszesz kodu</div><div class="jak"><b>Jak sprawdzić:</b> Nie edytuj nazwy, adresu ani kategorii i nie zamawiaj nowego kodu: stary przestanie działać. Większość pocztówek dociera w 14 dni, a kod (5 cyfr) wygasa po 30 dniach.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">B6</td>
+        <td><div class="pk">Kod weryfikacyjny znasz tylko Ty</div><div class="jak"><b>Jak sprawdzić:</b> Google nigdy nie prosi o kod. Nie podawaj go nikomu, także agencji, która prowadzi profil. Przy weryfikacji telefonicznej odbierz połączenie sam: automatyczna centrala (IVR) nie odbierze kodu.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">B7</td>
+        <td><div class="pk">Weryfikacja potwierdzona e-mailem, a profil ma drugiego właściciela albo menedżera</div><div class="jak"><b>Jak sprawdzić:</b> Ocena Google trwa do 5 dni roboczych. Dodaj drugie konto firmowe jako właściciela, a agencję jako menedżera. Nowa osoba przez 7 dni nie może m.in. usuwać innych użytkowników ani zostać głównym właścicielem.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table></div><div class="blok">
+  <h2>C. Uzupełnienie profilu po weryfikacji <span class="ile" style="font-size:9pt;font-weight:700">· 8 punktów</span></h2>
+  <table class="lista">
+    <colgroup><col style="width:8mm"><col style="width:109mm"><col style="width:15mm"><col style="width:13mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody><tr>
+        <td class="nr">C1</td>
+        <td><div class="pk">Opis firmy mówi, co robisz, dla kogo, gdzie i od kiedy (do 750 znaków)</div><div class="jak"><b>Jak sprawdzić:</b> Bez linków, cen, promocji i list fraz. Pisz dla klienta, który widzi firmę pierwszy raz.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">C2</td>
+        <td><div class="pk">Godziny otwarcia są prawdziwe, a święta i dni wolne mają godziny specjalne</div><div class="jak"><b>Jak sprawdzić:</b> Firma, która działa tylko po umówieniu, nie podaje godzin. Godziny specjalne ustaw przed każdym długim weekendem i świętami.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">C3</td>
+        <td><div class="pk">Telefon i strona www prowadzą do tej firmy: numer pod jej kontrolą i jej własna strona z adresem https://</div><div class="jak"><b>Jak sprawdzić:</b> Bez przekierowań na stronę albo numer innej firmy. Możesz dodać do 2 dodatkowych numerów. Googlebot nie może być zablokowany na stronie.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">C4</td>
+        <td><div class="pk">Obszar działania ustawiony z miast lub kodów pocztowych, które naprawdę obsługujesz</div><div class="jak"><b>Jak sprawdzić:</b> Do 20 obszarów, w granicach około 2 godzin jazdy od siedziby. Promienia w kilometrach nie da się już ustawić. Dotyczy firm z dojazdem i hybrydowych, lokal bez dojazdu oznacza n/d.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">C5</td>
+        <td><div class="pk">Lista usług (albo menu, albo produkty) jest pełna i każda pozycja ma krótki opis</div><div class="jak"><b>Jak sprawdzić:</b> Każda usługa, którą świadczysz, osobno: co robisz, dla kogo i gdzie. Pełne i szczegółowe informacje pomagają Google dopasować profil do zapytań.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">C6</td>
+        <td><div class="pk">Zdjęcia: logo, zdjęcie główne, wejście z zewnątrz, wnętrze, zespół i realizacje</div><div class="jak"><b>Jak sprawdzić:</b> JPG lub PNG, od 10 KB do 5 MB, zalecane 720 × 720 px (minimum 250 × 250), ostre i bez mocnych filtrów. Film do 30 s i 75 MB. Zdjęcia są widoczne dopiero po weryfikacji.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">C7</td>
+        <td><div class="pk">Atrybuty i dane dodatkowe uzupełnione: dostępność, parking, płatności, data otwarcia, profile społecznościowe</div><div class="jak"><b>Jak sprawdzić:</b> Atrybuty zaznaczaj tylko zgodnie z prawdą. Datę otwarcia wpisujesz jako miesiąc i rok. Do każdej platformy społecznościowej dodasz jeden link.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">C8</td>
+        <td><div class="pk">Profil jest tak kompletny jak wizytówki trzech pierwszych firm w Mapach</div><div class="jak"><b>Jak sprawdzić:</b> Porównaj liczbę zdjęć, opinii i usług oraz wypełnione pola z profilami z pakietu lokalnego dla Twojej głównej usługi.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table></div><div class="blok">
+  <h2>D. Opinie i posty: stały proces zamiast akcji <span class="ile" style="font-size:9pt;font-weight:700">· 6 punktów</span></h2>
+  <table class="lista">
+    <colgroup><col style="width:8mm"><col style="width:109mm"><col style="width:15mm"><col style="width:13mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody><tr>
+        <td class="nr">D1</td>
+        <td><div class="pk">Link albo kod QR do prośby o opinię jest gotowy i wysyłany po każdej usłudze</div><div class="jak"><b>Jak sprawdzić:</b> Link wygenerujesz w profilu. Wyślij go e-mailem albo SMS-em w dniu zakończenia usługi albo wydrukuj kod QR na paragonie lub fakturze.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">D2</td>
+        <td><div class="pk">O opinię prosisz wszystkich klientów, bez nagród i bez podpowiadania treści</div><div class="jak"><b>Jak sprawdzić:</b> Zasady Map Google zakazują rabatów i prezentów za opinie, proszenia tylko zadowolonych klientów, nacisku na miejscu i limitów opinii dla pracowników.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">D3</td>
+        <td><div class="pk">Na każdą opinię jest odpowiedź w ciągu 48 godzin, także na krytyczną</div><div class="jak"><b>Jak sprawdzić:</b> Krótko, rzeczowo, bez promocji i bez danych klienta. Odpowiadać możesz dopiero po weryfikacji profilu. 48 godzin to nasz standard pracy, nie wymóg Google.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">D4</td>
+        <td><div class="pk">Opinie, które łamią zasady, są zgłaszane do Google, a nie „negocjowane” z autorem</div><div class="jak"><b>Jak sprawdzić:</b> Zgłoś opinię w profilu. Prośba o zmianę albo usunięcie opinii w zamian za rabat to też zachęta, której zasady zakazują.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">D5</td>
+        <td><div class="pk">Posty (aktualności, oferty, wydarzenia) pojawiają się co najmniej dwa razy w miesiącu</div><div class="jak"><b>Jak sprawdzić:</b> Nowa usługa, realizacja, oferta sezonowa, zmiana godzin. Każdy post z przyciskiem i linkiem do właściwej podstrony. Posty starsze niż 6 miesięcy trafiają do archiwum, chyba że mają zakres dat.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">D6</td>
+        <td><div class="pk">Nowe zdjęcia dodajesz co miesiąc</div><div class="jak"><b>Jak sprawdzić:</b> Realizacje, zmiany sezonowe, nowe osoby w zespole. Najnowsze zdjęcia pokazują się w profilu jako pierwsze.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table></div><div class="blok">
+  <h2>E. Spójność NAP i strona firmy <span class="ile" style="font-size:9pt;font-weight:700">· 6 punktów</span></h2>
+  <table class="lista">
+    <colgroup><col style="width:8mm"><col style="width:109mm"><col style="width:15mm"><col style="width:13mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody><tr>
+        <td class="nr">E1</td>
+        <td><div class="pk">NAP na stronie (stopka i kontakt) jest zapisany tekstem i identyczny jak w profilu</div><div class="jak"><b>Jak sprawdzić:</b> Spróbuj zaznaczyć adres myszką: jeśli się nie da, jest obrazkiem. Porównaj znak po znaku: „ul.”, numer lokalu, kod pocztowy, format telefonu.</div></td>
+        <td><span class="prio w">wysoki</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">E2</td>
+        <td><div class="pk">Strona kontaktu ma adres, mapę, dojazd i godziny, a przy kilku lokalizacjach każda ma własną podstronę</div><div class="jak"><b>Jak sprawdzić:</b> Podstrona lokalizacji z własną treścią: zespół, realizacje, dojazd. Ten sam tekst z podmienioną nazwą miasta nie działa.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">E3</td>
+        <td><div class="pk">Link do strony w profilu prowadzi na właściwą podstronę i ma parametry UTM</div><div class="jak"><b>Jak sprawdzić:</b> Na przykład ?utm_source=google&amp;utm_medium=organic&amp;utm_campaign=gbp: w GA4 odróżnisz wtedy wejścia z wizytówki od zwykłych wyników. Przy kilku lokalizacjach link do strony danej lokalizacji.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">E4</td>
+        <td><div class="pk">Dane strukturalne LocalBusiness w JSON-LD mają ten sam NAP i godziny co profil</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdź je w Teście wyników z elementami rozszerzonymi. Dane mają opisywać to, co widać na stronie.</div></td>
+        <td><span class="prio n">niski</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">E5</td>
+        <td><div class="pk">Katalogi firm, inne mapy i profile społecznościowe mają ten sam NAP</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdź m.in. Facebook, Bing Places, Apple Business Connect oraz katalogi ogólne i branżowe. Każde miejsce wpisz do tabeli NAP w szablonie.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">E6</td>
+        <td><div class="pk">Po zmianie adresu, telefonu albo nazwy wszystkie miejsca są poprawione w jednym terminie</div><div class="jak"><b>Jak sprawdzić:</b> Zacznij od profilu (przeprowadzka wymaga ponownej weryfikacji), potem strona, na końcu katalogi. Zapisz datę każdej poprawki.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table></div><div class="blok">
+  <h2>F. Pomiar i przegląd profilu <span class="ile" style="font-size:9pt;font-weight:700">· 5 punktów</span></h2>
+  <table class="lista">
+    <colgroup><col style="width:8mm"><col style="width:109mm"><col style="width:15mm"><col style="width:13mm"><col></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i jak go sprawdzić</th><th>Priorytet</th><th>Status</th><th>Notatki · kto · termin</th></tr></thead>
+    <tbody><tr>
+        <td class="nr">F1</td>
+        <td><div class="pk">Raz w miesiącu zapisujesz statystyki profilu: wyświetlenia, połączenia, prośby o trasę i kliknięcia w witrynę</div><div class="jak"><b>Jak sprawdzić:</b> Profil → Skuteczność. Wpisz liczby do dziennika w szablonie i porównuj miesiąc do miesiąca.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">F2</td>
+        <td><div class="pk">Pozycję w Mapach sprawdzasz dla 3–5 fraz z kilku miejsc, nie tylko z biura</div><div class="jak"><b>Jak sprawdzić:</b> Wynik zależy od odległości szukającego, więc jedno sprawdzenie przy biurze pokazuje lepszy obraz niż rzeczywisty. Zapisuj frazę, miejsce i datę.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">F3</td>
+        <td><div class="pk">Zmiany od Google i od użytkowników są przeglądane i zatwierdzane albo poprawiane</div><div class="jak"><b>Jak sprawdzić:</b> Sprawdzaj w profilu aktualizacje od Google i informacje, które Google zebrał, także z automatycznych połączeń i SMS-ów na numer firmy.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">F4</td>
+        <td><div class="pk">Raz w miesiącu sprawdzasz, czy ChatGPT, Gemini i Perplexity polecają firmę na pytania klientów</div><div class="jak"><b>Jak sprawdzić:</b> Zadaj te same 3–5 pytań, na przykład „polecisz hydraulika na Mokotowie?”. Zapisz, czy firma jest wymieniona i dokąd prowadzą linki.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr><tr>
+        <td class="nr">F5</td>
+        <td><div class="pk">Profil przechodzi pełny przegląd co kwartał i przed każdą zmianą w firmie</div><div class="jak"><b>Jak sprawdzić:</b> Godziny, usługi, zdjęcia, właściciele i menedżerowie. Usuń dostęp osobom, które już nie pracują z firmą.</div></td>
+        <td><span class="prio s">średni</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Popr.</div><div><span class="box"></span>n/d</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table></div>
+</section>
+<section class="strona">
+  <h2>Spójność NAP: tabela miejsc (punkty E1–E6)</h2>
+  <p class="opis">Przy każdym miejscu zaznacz, czy nazwa, adres i telefon są identyczne ze wzorcem z karty danych firmy. Różnicę opisz w ostatniej kolumnie.</p>
+  <table class="puste">
+    <colgroup><col style="width:40mm"><col style="width:42mm"><col style="width:14mm"><col style="width:14mm"><col style="width:14mm"><col></colgroup>
+    <thead><tr><th>Miejsce</th><th>Adres strony albo konto</th><th class="c">Nazwa</th><th class="c">Adres</th><th class="c">Telefon</th><th>Co poprawić · data poprawki</th></tr></thead>
+    <tbody><tr><td class="m">Profil Firmy w Google</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m">Strona: stopka</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m">Strona: kontakt</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m">Dane strukturalne LocalBusiness</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m">Facebook</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m">Bing Places</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m">Apple Business Connect</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m">Katalog firm:</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m">Katalog branżowy:</td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m"></td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr><tr><td class="m"></td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td></td></tr></tbody>
+  </table>
+  <div style="margin-top:6mm">
+  <h2>Dziennik miesięczny (punkty F1–F4)</h2>
+  <p class="opis">Statystyki z zakładki Skuteczność w profilu. Pozycję w Mapach zapisuj dla tej samej frazy i tych samych miejsc co miesiąc.</p>
+  <table class="puste">
+    <colgroup><col style="width:17mm"><col style="width:17mm"><col style="width:16mm"><col style="width:14mm"><col style="width:17mm"><col style="width:20mm"><col style="width:17mm"><col><col style="width:18mm"></colgroup>
+    <thead><tr><th>Miesiąc</th><th>Wyświetlenia</th><th>Połączenia</th><th>Trasy</th><th>Kliknięcia w witrynę</th><th>Nowe opinie / odpowiedzi</th><th>Posty / zdjęcia</th><th>Pozycja w Mapach (fraza, miejsce)</th><th>Polecenie w AI (tak / nie)</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>
+  </table>
+  </div>
+  <footer><p>Aktualna wersja checklisty, przykład wypełnienia i źródła Google: <strong>www.ai-seo-company.pl/narzedzia/checklista-wizytowki-google</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p></footer>
+</section>
+</body>
+</html>

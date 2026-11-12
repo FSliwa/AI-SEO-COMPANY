@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Dane strukturalne: wzory JSON-LD do wypełnienia</title>
+<style>
+@page { size: A4; margin: 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 9pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.naglowek { font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2.5mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 6mm; }
+.naglowek b { color: #D85A30; }
+h1 { font-size: 20pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+.pod { font-size: 9.5pt; color: #48484A; margin: 0 0 4.5mm; }
+h2 { font-size: 13pt; margin: 0 0 2mm; padding-bottom: 1.6mm; border-bottom: 1.6pt solid #D85A30; display: inline-block; }
+h3 { font-size: 10.5pt; margin: 3mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.2pt solid #D85A30; display: inline-block; }
+.pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 3mm; }
+.pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+.pole span { white-space: nowrap; }
+.pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+ol.kroki { margin: 0; padding-left: 5mm; }
+ol.kroki li { margin: 0 0 1.2mm; }
+.box { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: 0.5mm; vertical-align: -0.4mm; margin-right: 1.2mm; background: #fff; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 0.6pt solid #E5E1DC; padding: 1.1mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: #F7F5F2; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; color: #48484A; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+td.c { text-align: center; vertical-align: middle; }
+td.wpis { height: 6.6mm; }
+td.prop { font-family: Menlo, 'SFMono-Regular', Consolas, monospace; font-size: 7pt; color: #48484A; }
+table.dziennik td { height: 8mm; }
+.obszar { break-before: page; page-break-before: always; }
+.opis { margin: 1mm 0 3mm; color: #48484A; font-size: 8.5pt; }
+.sek { margin: 0 0 3.5mm; }
+.wzor { break-inside: avoid; page-break-inside: avoid; margin: 0 0 3.2mm; }
+.wzor-nag { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; margin: 0 0 1mm; }
+.wzor-nag > div:first-child { flex: 1; white-space: nowrap; }
+.wzor-nag b { font-size: 9.5pt; }
+.wzor-nag .gdzie { font-size: 8pt; color: #48484A; }
+.wzor-nag .wdr { font-size: 7.8pt; color: #48484A; white-space: nowrap; }
+pre.kod { margin: 0; font-family: Menlo, 'SFMono-Regular', Consolas, monospace; font-size: 7pt; line-height: 1.3; white-space: pre; background: #FBFAF8; border: 0.6pt solid #E5E1DC; border-left: 1.6pt solid #D85A30; border-radius: 1mm; padding: 1.8mm 2.6mm; color: #1D1D1F; }
+pre.kod .k { color: #1D1D1F; }
+pre.kod .v { color: #B4471F; font-weight: 600; }
+pre.kod .st { color: #6E6E73; }
+ul.lista { list-style: none; margin: 0; padding: 0; columns: 1; }
+ul.lista li { margin: 0 0 1.5mm; padding-left: 5mm; text-indent: -5mm; }
+.uwaga { font-size: 8pt; color: #48484A; margin: 1.5mm 0 0; }
+code { font-family: Menlo, 'SFMono-Regular', Consolas, monospace; font-size: 7.4pt; background: #F7F5F2; padding: 0 0.6mm; border-radius: 0.6mm; }
+.dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+footer { margin-top: 6mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+footer p { margin: 0 0 0.8mm; }
+footer strong { color: #1D1D1F; }
+</style>
+</head>
+<body>
+<div class="naglowek"><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</div>
+<h1>Dane strukturalne: wzory JSON-LD do wypełnienia</h1>
+<p class="pod">Karta danych firmy, mapa typów dla podstron, 7 wzorów schema.org w JSON-LD, lista kontrolna przed publikacją i dziennik testów. Zasady Google sprawdzone w dokumentacji 11.11.2026. Wersja: listopad 2026.</p>
+<div class="pola sek"><div class="pole"><span>Strona (adres)</span><i></i></div><div class="pole"><span>Data wdrożenia</span><i></i></div><div class="pole"><span>Osoba wdrażająca</span><i></i></div><div class="pole"><span>Następny przegląd</span><i></i></div></div>
+<div class="sek">
+  <h3>Jak korzystać z szablonu</h3>
+  <ol class="kroki"><li><strong>Spisz dane firmy</strong> w części 1: nazwa, adres i telefon dokładnie jak w Profilu Firmy w Google.</li><li><strong>Przypisz typy do stron</strong> w części 2 i wpisz adresy podstron, na których się pojawią.</li><li><strong>Skopiuj wzór z części 3</strong> i podmień wartości wyróżnione kolorem. Pola, które nie dotyczą firmy, usuń razem z przecinkiem.</li><li><strong>Wstaw kod</strong> w znacznik <code>&lt;script type="application/ld+json"&gt;</code> w head albo body strony lub wpisz dane we wtyczce SEO.</li><li><strong>Przetestuj</strong> w Teście wyników z elementami rozszerzonymi i walidatorze schema.org, potem przejdź listę z części 4.</li><li><strong>Zapisz wynik</strong> w dzienniku (część 5) i sprawdź stronę w Search Console narzędziem Sprawdzenie adresu URL.</li></ol>
+</div>
+<div>
+  <h3>Część 1. Dane firmy: jedno źródło dla kodu, strony i wizytówki</h3>
+  <p class="opis">Wpisz dane raz i kopiuj je stąd do wszystkich bloków JSON-LD. Te same wartości muszą być widoczne na stronie i w Profilu Firmy w Google.</p>
+  <table>
+    <colgroup><col style="width:62mm"><col style="width:46mm"><col></colgroup>
+    <thead><tr><th>Pole</th><th>Właściwość schema.org</th><th>Do wpisania</th></tr></thead>
+    <tbody><tr><td>Nazwa firmy (jak w Profilu Firmy w Google)</td><td class="prop">name</td><td class="wpis"></td></tr><tr><td>Pełna nazwa z rejestru, jeśli inna</td><td class="prop">legalName</td><td class="wpis"></td></tr><tr><td>Typ: najdokładniejszy podtyp LocalBusiness albo Organization</td><td class="prop">@type</td><td class="wpis"></td></tr><tr><td>Ulica i numer</td><td class="prop">address.streetAddress</td><td class="wpis"></td></tr><tr><td>Kod pocztowy i miejscowość</td><td class="prop">address.postalCode, addressLocality</td><td class="wpis"></td></tr><tr><td>Kraj (kod ISO)</td><td class="prop">address.addressCountry</td><td class="wpis"><span style="color:#8E8E93">PL</span></td></tr><tr><td>Telefon z kodem kraju</td><td class="prop">telephone</td><td class="wpis"><span style="color:#8E8E93">+48</span></td></tr><tr><td>E-mail</td><td class="prop">email</td><td class="wpis"></td></tr><tr><td>Adres strony głównej</td><td class="prop">url</td><td class="wpis"><span style="color:#8E8E93">https://</span></td></tr><tr><td>Logo, min. 112 × 112 px</td><td class="prop">logo</td><td class="wpis"><span style="color:#8E8E93">https://</span></td></tr><tr><td>Współrzędne, min. 5 miejsc po przecinku</td><td class="prop">geo.latitude, geo.longitude</td><td class="wpis"></td></tr><tr><td>Godziny otwarcia (format 24-godzinny)</td><td class="prop">openingHoursSpecification</td><td class="wpis"><span style="color:#8E8E93">pn–pt ________ sob ________ nd ________</span></td></tr><tr><td>Przedział cen, poniżej 100 znaków</td><td class="prop">priceRange</td><td class="wpis"></td></tr><tr><td>NIP i numer VAT UE (z prefiksem PL)</td><td class="prop">taxID, vatID</td><td class="wpis"></td></tr><tr><td>Profile firmy w innych serwisach (1)</td><td class="prop">sameAs</td><td class="wpis"><span style="color:#8E8E93">https://</span></td></tr><tr><td>Profile firmy w innych serwisach (2)</td><td class="prop">sameAs</td><td class="wpis"><span style="color:#8E8E93">https://</span></td></tr></tbody>
+  </table>
+</div>
+
+<section class="obszar">
+  <h2>Część 2. Mapa typów na stronie</h2>
+  <p class="opis">Zaznacz, które typy trafią na które podstrony, i wpisz ich adresy. Organization i WebSite wystarczy na stronie głównej.</p>
+  <table>
+    <colgroup><col style="width:30mm"><col style="width:40mm"><col><col style="width:18mm"><col style="width:17mm"></colgroup>
+    <thead><tr><th>Rodzaj strony</th><th>Adres na Twojej stronie</th><th>Typy JSON-LD</th><th>Wdrożone</th><th>Test OK</th></tr></thead>
+    <tbody><tr><td>Strona główna</td><td class="wpis" style="height:9mm"><code>/</code></td><td>Organization albo LocalBusiness, WebSite</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>O nas, kontakt</td><td class="wpis" style="height:9mm"></td><td>Organization albo LocalBusiness, jeśli nie ma ich na stronie głównej</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Strona placówki</td><td class="wpis" style="height:9mm"></td><td>LocalBusiness osobno dla każdej lokalizacji, BreadcrumbList</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Strona usługi</td><td class="wpis" style="height:9mm"></td><td>BreadcrumbList</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Wpis na blogu</td><td class="wpis" style="height:9mm"></td><td>Article, BreadcrumbList</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Strona autora</td><td class="wpis" style="height:9mm"></td><td>ProfilePage z Person</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Karta produktu</td><td class="wpis" style="height:9mm"></td><td>Product z Offer, BreadcrumbList</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Inna:</td><td class="wpis" style="height:9mm"></td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr></tbody>
+  </table>
+  <div class="sek" style="margin-top:4mm">
+    <h3>Ściąga: właściwości wymagane przez Google</h3>
+    <table>
+      <colgroup><col style="width:28mm"><col style="width:52mm"><col></colgroup>
+      <thead><tr><th>Typ</th><th>Wymagane</th><th>Najważniejsze zalecane</th></tr></thead>
+      <tbody><tr><td><strong>Organization</strong></td><td>brak</td><td>name, url, logo (min. 112 × 112 px), address, telephone, sameAs</td></tr><tr><td><strong>LocalBusiness</strong></td><td>name, address</td><td>telephone (z kodem kraju), url, geo (5+ miejsc), openingHoursSpecification, priceRange</td></tr><tr><td><strong>WebSite</strong></td><td>name, url</td><td>alternateName; tylko strona główna</td></tr><tr><td><strong>BreadcrumbList</strong></td><td>min. 2 × ListItem: position, name, item</td><td>ostatni element może być bez item</td></tr><tr><td><strong>Article</strong></td><td>brak</td><td>headline, image, datePublished, dateModified, author (Person z url)</td></tr><tr><td><strong>ProfilePage</strong></td><td>mainEntity (Person z name)</td><td>jobTitle, description, image, sameAs</td></tr><tr><td><strong>Product</strong></td><td>name + offers, review albo aggregateRating</td><td>karta sprzedawcy: także image; offers z price i priceCurrency</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="obszar">
+  <h2>Część 3. Wzory JSON-LD do podmiany</h2>
+  <p class="opis">Wartości do podmiany są wyróżnione kolorem. Szare (<code>@context</code>, <code>@type</code>, adresy schema.org) zostawiasz. Dane w kodzie muszą zgadzać się z tym, co widać na stronie.</p>
+<div class="wzor"><div class="wzor-nag"><div><b>3.1 Organization</b> <span class="gdzie">· strona główna albo „O nas” · wymagane: brak</span></div><div class="wdr"><span class="box"></span>wdrożone na: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"Organization"</span>,
+  <span class="k">"@id"</span>: <span class="v">"https://www.twojadomena.pl/#organizacja"</span>,
+  <span class="k">"name"</span>: <span class="v">"Nazwa Firmy"</span>,
+  <span class="k">"legalName"</span>: <span class="v">"Nazwa Firmy Sp. z o.o."</span>,
+  <span class="k">"url"</span>: <span class="v">"https://www.twojadomena.pl/"</span>,
+  <span class="k">"logo"</span>: <span class="v">"https://www.twojadomena.pl/logo.png"</span>,
+  <span class="k">"description"</span>: <span class="v">"Jedno zdanie o tym, czym zajmuje się firma."</span>,
+  <span class="k">"email"</span>: <span class="v">"kontakt@twojadomena.pl"</span>,
+  <span class="k">"telephone"</span>: <span class="v">"+48 22 000 00 00"</span>,
+  <span class="k">"address"</span>: {
+    <span class="k">"@type"</span>: <span class="st">"PostalAddress"</span>,
+    <span class="k">"streetAddress"</span>: <span class="v">"ul. Przykładowa 1"</span>,
+    <span class="k">"addressLocality"</span>: <span class="v">"Warszawa"</span>,
+    <span class="k">"postalCode"</span>: <span class="v">"00-001"</span>,
+    <span class="k">"addressCountry"</span>: <span class="v">"PL"</span>
+  },
+  <span class="k">"taxID"</span>: <span class="v">"0000000000"</span>,
+  <span class="k">"vatID"</span>: <span class="v">"PL0000000000"</span>,
+  <span class="k">"sameAs"</span>: [<span class="v">"https://www.linkedin.com/company/nazwa-firmy"</span>, <span class="v">"https://www.facebook.com/nazwafirmy"</span>]
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.2 WebSite</b> <span class="gdzie">· tylko strona główna · wymagane: name, url</span></div><div class="wdr"><span class="box"></span>wdrożone na: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"WebSite"</span>,
+  <span class="k">"name"</span>: <span class="v">"Nazwa Firmy"</span>,
+  <span class="k">"alternateName"</span>: <span class="v">"NF"</span>,
+  <span class="k">"url"</span>: <span class="v">"https://www.twojadomena.pl/"</span>
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.3 LocalBusiness (tu: Plumber)</b> <span class="gdzie">· strona główna lub placówki · wymagane: name, address</span></div><div class="wdr"><span class="box"></span>wdrożone na: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"Plumber"</span>,
+  <span class="k">"@id"</span>: <span class="v">"https://www.twojadomena.pl/#firma"</span>,
+  <span class="k">"name"</span>: <span class="v">"Nazwa Firmy"</span>,
+  <span class="k">"url"</span>: <span class="v">"https://www.twojadomena.pl/"</span>,
+  <span class="k">"image"</span>: <span class="v">"https://www.twojadomena.pl/zdjecia/siedziba.jpg"</span>,
+  <span class="k">"logo"</span>: <span class="v">"https://www.twojadomena.pl/logo.png"</span>,
+  <span class="k">"telephone"</span>: <span class="v">"+48 22 000 00 00"</span>,
+  <span class="k">"email"</span>: <span class="v">"kontakt@twojadomena.pl"</span>,
+  <span class="k">"address"</span>: {
+    <span class="k">"@type"</span>: <span class="st">"PostalAddress"</span>,
+    <span class="k">"streetAddress"</span>: <span class="v">"ul. Przykładowa 1"</span>,
+    <span class="k">"addressLocality"</span>: <span class="v">"Warszawa"</span>,
+    <span class="k">"postalCode"</span>: <span class="v">"00-001"</span>,
+    <span class="k">"addressCountry"</span>: <span class="v">"PL"</span>
+  },
+  <span class="k">"geo"</span>: { <span class="k">"@type"</span>: <span class="st">"GeoCoordinates"</span>, <span class="k">"latitude"</span>: <span class="v">52.231812</span>, <span class="k">"longitude"</span>: <span class="v">21.006012</span> },
+  <span class="k">"openingHoursSpecification"</span>: [
+    {
+      <span class="k">"@type"</span>: <span class="st">"OpeningHoursSpecification"</span>,
+      <span class="k">"dayOfWeek"</span>: [<span class="v">"Monday"</span>, <span class="v">"Tuesday"</span>, <span class="v">"Wednesday"</span>, <span class="v">"Thursday"</span>, <span class="v">"Friday"</span>],
+      <span class="k">"opens"</span>: <span class="v">"08:00"</span>,
+      <span class="k">"closes"</span>: <span class="v">"18:00"</span>
+    },
+    { <span class="k">"@type"</span>: <span class="st">"OpeningHoursSpecification"</span>, <span class="k">"dayOfWeek"</span>: <span class="v">"Saturday"</span>, <span class="k">"opens"</span>: <span class="v">"09:00"</span>, <span class="k">"closes"</span>: <span class="v">"14:00"</span> }
+  ],
+  <span class="k">"priceRange"</span>: <span class="v">"150-400 zł"</span>,
+  <span class="k">"sameAs"</span>: [<span class="v">"https://www.facebook.com/nazwafirmy"</span>]
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.4 BreadcrumbList</b> <span class="gdzie">· każda podstrona · wymagane: min. 2 × ListItem</span></div><div class="wdr"><span class="box"></span>wdrożone na: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"BreadcrumbList"</span>,
+  <span class="k">"itemListElement"</span>: [
+    { <span class="k">"@type"</span>: <span class="st">"ListItem"</span>, <span class="k">"position"</span>: <span class="v">1</span>, <span class="k">"name"</span>: <span class="v">"Strona główna"</span>, <span class="k">"item"</span>: <span class="v">"https://www.twojadomena.pl/"</span> },
+    { <span class="k">"@type"</span>: <span class="st">"ListItem"</span>, <span class="k">"position"</span>: <span class="v">2</span>, <span class="k">"name"</span>: <span class="v">"Usługi"</span>, <span class="k">"item"</span>: <span class="v">"https://www.twojadomena.pl/uslugi"</span> },
+    { <span class="k">"@type"</span>: <span class="st">"ListItem"</span>, <span class="k">"position"</span>: <span class="v">3</span>, <span class="k">"name"</span>: <span class="v">"Hydraulik awaryjny"</span> }
+  ]
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.5 Article</b> <span class="gdzie">· wpis na blogu · author jako osobny Person</span></div><div class="wdr"><span class="box"></span>wdrożone na: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"Article"</span>,
+  <span class="k">"headline"</span>: <span class="v">"Tytuł artykułu taki jak w nagłówku H1"</span>,
+  <span class="k">"image"</span>: [
+    <span class="v">"https://www.twojadomena.pl/blog/okladka-16x9.jpg"</span>,
+    <span class="v">"https://www.twojadomena.pl/blog/okladka-1x1.jpg"</span>
+  ],
+  <span class="k">"datePublished"</span>: <span class="v">"2026-11-11T08:00:00+01:00"</span>,
+  <span class="k">"dateModified"</span>: <span class="v">"2026-11-11T08:00:00+01:00"</span>,
+  <span class="k">"author"</span>: [
+    {
+      <span class="k">"@type"</span>: <span class="st">"Person"</span>,
+      <span class="k">"name"</span>: <span class="v">"Jan Kowalski"</span>,
+      <span class="k">"jobTitle"</span>: <span class="v">"Specjalista SEO"</span>,
+      <span class="k">"url"</span>: <span class="v">"https://www.twojadomena.pl/autorzy/jan-kowalski"</span>
+    }
+  ],
+  <span class="k">"publisher"</span>: { <span class="k">"@type"</span>: <span class="st">"Organization"</span>, <span class="k">"name"</span>: <span class="v">"Nazwa Firmy"</span>, <span class="k">"url"</span>: <span class="v">"https://www.twojadomena.pl/"</span> }
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.6 ProfilePage z Person</b> <span class="gdzie">· strona autora · wymagane: mainEntity, name</span></div><div class="wdr"><span class="box"></span>wdrożone na: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"ProfilePage"</span>,
+  <span class="k">"dateModified"</span>: <span class="v">"2026-11-11T08:00:00+01:00"</span>,
+  <span class="k">"mainEntity"</span>: {
+    <span class="k">"@type"</span>: <span class="st">"Person"</span>,
+    <span class="k">"name"</span>: <span class="v">"Jan Kowalski"</span>,
+    <span class="k">"jobTitle"</span>: <span class="v">"Specjalista SEO"</span>,
+    <span class="k">"description"</span>: <span class="v">"Jedno lub dwa zdania o doświadczeniu i specjalizacji autora."</span>,
+    <span class="k">"image"</span>: <span class="v">"https://www.twojadomena.pl/autorzy/jan-kowalski.jpg"</span>,
+    <span class="k">"worksFor"</span>: { <span class="k">"@type"</span>: <span class="st">"Organization"</span>, <span class="k">"name"</span>: <span class="v">"Nazwa Firmy"</span>, <span class="k">"url"</span>: <span class="v">"https://www.twojadomena.pl/"</span> },
+    <span class="k">"knowsAbout"</span>: [<span class="v">"SEO techniczne"</span>, <span class="v">"dane strukturalne"</span>],
+    <span class="k">"sameAs"</span>: [<span class="v">"https://www.linkedin.com/in/twoj-profil"</span>]
+  }
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.7 Product z Offer</b> <span class="gdzie">· karta produktu · wymagane: name i offers</span></div><div class="wdr"><span class="box"></span>wdrożone na: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"Product"</span>,
+  <span class="k">"name"</span>: <span class="v">"Nazwa produktu"</span>,
+  <span class="k">"image"</span>: [<span class="v">"https://www.twojadomena.pl/produkty/nazwa-produktu-1x1.jpg"</span>],
+  <span class="k">"description"</span>: <span class="v">"Krótki opis produktu taki jak na karcie."</span>,
+  <span class="k">"sku"</span>: <span class="v">"SKU-0001"</span>,
+  <span class="k">"brand"</span>: { <span class="k">"@type"</span>: <span class="st">"Brand"</span>, <span class="k">"name"</span>: <span class="v">"Marka"</span> },
+  <span class="k">"offers"</span>: {
+    <span class="k">"@type"</span>: <span class="st">"Offer"</span>,
+    <span class="k">"url"</span>: <span class="v">"https://www.twojadomena.pl/produkty/nazwa-produktu"</span>,
+    <span class="k">"price"</span>: <span class="v">149.99</span>,
+    <span class="k">"priceCurrency"</span>: <span class="v">"PLN"</span>,
+    <span class="k">"availability"</span>: <span class="st">"https://schema.org/InStock"</span>
+  }
+}</pre></div>
+</section>
+
+<section class="obszar">
+  <h2>Część 4. Lista kontrolna przed publikacją</h2>
+  <ul class="lista sek"><li><span class="box"></span>Test wyników z elementami rozszerzonymi bez błędów krytycznych</li><li><span class="box"></span>Walidator schema.org (validator.schema.org) bez błędów składni</li><li><span class="box"></span>Każda wartość z kodu jest widoczna na stronie: nazwa, adres, godziny, cena, autor</li><li><span class="box"></span>Nazwa, adres i telefon identyczne w kodzie, na stronie i w Profilu Firmy w Google</li><li><span class="box"></span>Wymagane właściwości wypełnione, żadnych wartości ze wzoru (twojadomena.pl, 00-001)</li><li><span class="box"></span>Najdokładniejszy pasujący typ, np. Dentist zamiast LocalBusiness</li><li><span class="box"></span>Brak własnych ocen w gwiazdkach w LocalBusiness i Organization</li><li><span class="box"></span>Logo i obrazy dostępne dla Googlebota, niezablokowane w robots.txt</li><li><span class="box"></span>Jeden blok na firmę: motyw i wtyczka nie dublują danych</li><li><span class="box"></span>Strona bez noindex, bez blokady w robots.txt i bez logowania</li><li><span class="box"></span>Po publikacji: Sprawdzenie adresu URL w Search Console</li><li><span class="box"></span>Termin przeglądu w kalendarzu: po każdej zmianie danych firmy, cen albo szablonu</li></ul>
+  <h2>Część 5. Dziennik testów</h2>
+  <table class="dziennik">
+    <colgroup><col style="width:20mm"><col style="width:48mm"><col style="width:30mm"><col><col style="width:34mm"></colgroup>
+    <thead><tr><th>Data</th><th>Adres strony</th><th>Narzędzie</th><th>Błędy i ostrzeżenia</th><th>Poprawka, kto</th></tr></thead>
+    <tbody><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle">TWR / walidator / URL</td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr></tbody>
+  </table>
+  <p class="uwaga">TWR = Test wyników z elementami rozszerzonymi, walidator = validator.schema.org, URL = Sprawdzenie adresu URL w Search Console. Po wdrożeniu obserwuj też raporty wyników rozszerzonych w Search Console.</p>
+  <div style="margin-top:4mm">
+    <h2>Część 6. Czego nie wdrażać dla efektu w Google (stan na 11.11.2026)</h2>
+    <table>
+      <colgroup><col style="width:62mm"><col><col style="width:28mm"></colgroup>
+      <thead><tr><th>Funkcja</th><th>Status</th><th>Od kiedy</th></tr></thead>
+      <tbody><tr><td>Wynik FAQ (FAQPage)</td><td>nie jest pokazywany (dokumentację usunięto w czerwcu 2026)</td><td>7.05.2026</td></tr><tr><td>Wynik HowTo</td><td>wycofany na telefonach i komputerach</td><td>13.09.2023</td></tr><tr><td>Pole wyszukiwania (SearchAction w WebSite)</td><td>wycofane, dokumentację usunięto</td><td>29.11.2024</td></tr><tr><td>Okruszki (BreadcrumbList)</td><td>działają tylko na komputerach: zostaw</td><td>22.01.2025</td></tr><tr><td>Gwiazdki z opinii o własnej firmie</td><td>strony z LocalBusiness i Organization nie kwalifikują się</td><td>reguła stała</td></tr><tr><td>Specjalne znaczniki „pod AI”</td><td>niepotrzebne do przeglądów AI i trybu AI</td><td>dokumentacja AI</td></tr></tbody>
+    </table>
+    <p class="uwaga">Istniejący kod FAQPage nie szkodzi i nie trzeba go pilnie usuwać, ale nie daje już efektu w wynikach Google.</p>
+  </div>
+  <footer><p>Aktualna wersja wzorów, objaśnienia pól i źródła Google: <strong>www.ai-seo-company.pl/narzedzia/dane-strukturalne-json-ld</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p></footer>
+</section>
+</body>
+</html>

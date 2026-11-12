@@ -5,13 +5,19 @@
 <title>Wzór miesięcznego raportu SEO – AI SEO COMPANY</title>
 <!--
   Źródło PDF public/pliki/wzor-raportu-seo.pdf (strona /narzedzia/raport-seo, 11.11.2026).
-  Treść zgodna z components/narzedzia/SzablonRaport.jsx: 5 sekcji, tabela 6 metryk, 6 czerwonych flag.
+  Treść zgodna z components/narzedzia/SzablonRaport.jsx: 5 sekcji, tabela 7 metryk, 6 czerwonych flag.
   Generowanie:
   "/Users/filipsliwa/Library/Caches/ms-playwright/chromium-1140/chrome-mac/Chromium.app/Contents/MacOS/Chromium" \
     --headless=new --disable-gpu --no-pdf-header-footer \
     --print-to-pdf=<repo>/public/pliki/wzor-raportu-seo.pdf file://<repo>/scripts/szablony/pdf/wzor-raportu-seo.html
-  Każda sekcja .strona zaczyna nową stronę A4; numery „str. X z 5” są wpisane ręcznie,
-  więc po zmianie treści sprawdź, czy PDF nadal ma 5 stron.
+  Każda sekcja .strona zaczyna nową stronę A4; numery „str. X z 6” są wpisane ręcznie,
+  więc po zmianie treści sprawdź, czy PDF nadal ma 6 stron.
+  11.11.2026 (przegląd merytoryczny): 6 stron zamiast 5 – tabela metryk (str. 4) dostała wiersze
+  skrzynka/CRM, Profil Firmy, wejścia z czatów AI, indeksacja i Core Web Vitals; „jak czytać”
+  i uwagi (zgoda w GA4, filtr marki, 16 miesięcy GSC, przegląd AI, progi CWV) na str. 5.
+  Wznowienie 11.11 wieczorem: str. 2 przelewała się na osobną stronę (7 stron) – „inny główny wynik”
+  w jednej linii, typowe przyczyny zmian przeniesione do uwag na str. 5, mniejsze odstępy h3;
+  tabela linków (str. 3) dostała kolumnę „Nowa domena” (playbook 6.3: domeny linkujące).
 -->
 <style>
   @page { size: A4; margin: 16mm; }
@@ -25,7 +31,7 @@
   .lead { font-size: 10.5pt; color: #3A3A3C; margin: 0 0 1mm; }
   h2 { font-size: 12.4pt; line-height: 1.25; margin: 5.5mm 0 2.6mm; padding-bottom: 1.6mm; border-bottom: 1.6px solid #D85A30; break-after: avoid; }
   h2.tytul { font-size: 15.5pt; margin-top: 0; }
-  h3 { font-size: 10.4pt; margin: 3.8mm 0 1.4mm; break-after: avoid; }
+  h3 { font-size: 10.4pt; margin: 3.4mm 0 1.4mm; break-after: avoid; }
   h3 .nr, .kroki b.nr { color: #D85A30; }
   p { margin: 0 0 2mm; }
   .opis { color: #3A3A3C; }
@@ -39,7 +45,7 @@
   th, td { border: 1px solid #E5E1DC; padding: 1.4mm 2mm; text-align: left; vertical-align: top; }
   th { background: #FAF7F4; font-weight: 600; }
   tr { break-inside: avoid; page-break-inside: avoid; }
-  td.w { height: 7.4mm; }
+  td.w { height: 6.6mm; }
   td.ww { height: 8.6mm; }
   td.wl { height: 8.2mm; }
   .nw { white-space: nowrap; }
@@ -69,15 +75,15 @@
 
 <!-- STRONA 1: jak korzystać + dane raportu -->
 <section>
-  <div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>str. 1 z 5</span></div>
+  <div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>str. 1 z 6</span></div>
   <h1>Wzór miesięcznego raportu SEO</h1>
-  <p class="lead">Pięć sekcji raportu z przykładami, tabela metryk do uzupełnienia danymi z Google Search Console i Google Analytics 4 oraz czerwone flagi dla osoby, która raport czyta. Wydrukuj wzór albo wyślij go agencji jako listę tego, czego oczekujesz w comiesięcznym raporcie.</p>
+  <p class="lead">Pięć sekcji raportu z przykładami, tabela metryk do uzupełnienia danymi z Search Console, GA4 i Profilu Firmy w Google oraz czerwone flagi dla osoby, która raport czyta. Wydrukuj wzór albo wyślij go agencji jako listę tego, czego oczekujesz w comiesięcznym raporcie.</p>
 
   <h2>Jak korzystać ze wzoru</h2>
   <ol class="kroki">
-    <li><b>Zacznij od wyniku biznesowego.</b> Pierwsza liczba to zapytania od klientów z Google (formularz, telefon, e-mail) i koszt jednego zapytania. Kliknięcia, pozycje i prace są dalej.</li>
+    <li><b>Zacznij od wyniku biznesowego.</b> Pierwsza liczba to zapytania od klientów z Google (formularz, telefon, e-mail) i koszt jednego zapytania, a w sklepie internetowym przychód i transakcje. Kliknięcia, pozycje i prace są dalej.</li>
     <li><b>Syntezę zmieść na jednej stronie</b> (str. 2): wynik względem celu, 3–5 przyczyn z dowodami, plan na kolejny miesiąc i ryzyka. Wykresy i tabele fraz trafiają do załącznika albo panelu.</li>
-    <li><b>Każdej liczbie podaj źródło</b>, które klient otworzy sam – najlepiej konto Search Console i Analytics założone na jego adres e-mail.</li>
+    <li><b>Każdej liczbie podaj źródło</b>, które klient otworzy sam – najlepiej konto Search Console i Analytics założone na jego adres e-mail. Liczbę zapytań z GA4 porównaj ze skrzynką albo CRM.</li>
     <li><b>Porównuj rok do roku.</b> Wzrost miesiąc do miesiąca w sezonie to często kalendarz, a nie efekt pozycjonowania.</li>
     <li><b>Prace wpisuj z datą i adresem podstrony</b> (str. 3). Sama nazwa zadania, np. „optymalizacja on-page”, nie wystarczy.</li>
     <li><b>Ostatnia strona jest dla czytającego.</b> Porównaj raport agencji ze wzorem i zaznacz czerwone flagi. Brakujące sekcje to pytania na najbliższe spotkanie.</li>
@@ -90,9 +96,10 @@
       <tr><td class="etyk">Miesiąc raportu</td><td class="ww"></td></tr>
       <tr><td class="etyk">Kto przygotował raport (agencja, opiekun)</td><td class="ww"></td></tr>
       <tr><td class="etyk">Data przekazania raportu</td><td class="ww"></td></tr>
-      <tr><td class="etyk">Cel na miesiąc (liczba zapytań od klientów)</td><td class="ww"></td></tr>
+      <tr><td class="etyk">Główny wynik i cel na miesiąc (np. liczba zapytań od klientów)</td><td class="ww"></td></tr>
       <tr><td class="etyk">Lista śledzonych fraz: uzgodniona dnia / zmiany w tym miesiącu</td><td class="ww"></td></tr>
       <tr><td class="etyk">Klient ma Search Console i GA4 na własnym koncie</td><td class="ww"><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
+      <tr><td class="etyk">Link do panelu albo dashboardu z danymi</td><td class="ww"></td></tr>
       <tr><td class="etyk">Zdarzenia kluczowe w GA4 (formularz, telefon, <span class="nw">e-mail</span>) działają</td><td class="ww"><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span> <span class="maly">– jeśli nie, wpisz to w sekcji 5 jako ryzyko</span></td></tr>
     </tbody>
   </table>
@@ -102,15 +109,16 @@
     <tbody>
       <tr><td>str. 2</td><td>Synteza miesiąca: sekcje 1, 2, 4 i 5 na jednej stronie</td></tr>
       <tr><td>str. 3</td><td>Sekcja 3: dziennik prac i zdobyte linki</td></tr>
-      <tr><td>str. 4</td><td>Tabela metryk z GA4 i Search Console – miesiące do uzupełnienia, sposób czytania i pułapki</td></tr>
-      <tr><td>str. 5</td><td>Dla czytającego: kontrola pięciu sekcji i czerwone flagi</td></tr>
+      <tr><td>str. 4</td><td>Tabela metryk z GA4, Search Console i Profilu Firmy – miesiące do uzupełnienia</td></tr>
+      <tr><td>str. 5</td><td>Jak czytać metryki, pułapki, progi Google i typowe przyczyny zmian</td></tr>
+      <tr><td>str. 6</td><td>Dla czytającego: kontrola pięciu sekcji i czerwone flagi</td></tr>
     </tbody>
   </table>
 </section>
 
 <!-- STRONA 2: synteza (sekcje 1, 2, 4, 5) -->
 <section class="strona">
-  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 2 z 5</span></div>
+  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 2 z 6</span></div>
   <h2 class="tytul">Synteza miesiąca <span style="font-weight:400;color:#6E6E73;font-size:10pt">– strona 1 raportu, zrozumiała bez załączników</span></h2>
 
   <h3><span class="nr">1.</span> Wynik względem celu</h3>
@@ -119,6 +127,7 @@
     <tbody>
       <tr><td>Zapytania od klientów z Google (formularz + telefon + <span class="nw">e-mail</span>)</td><td class="w"></td><td></td><td></td><td></td></tr>
       <tr><td>Koszt jednego zapytania</td><td class="w"></td><td></td><td></td><td></td></tr>
+      <tr><td>Inny główny wynik (np. przychód, połączenia): ________</td><td class="w"></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
   <div class="pole" style="margin-top:2mm">
@@ -139,7 +148,7 @@
       <tr><td class="nr">5</td><td class="w"></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
-  <p class="zle"><b>Źle:</b> „pozycje wzrosły dzięki optymalizacji” – bez daty i adresu strony takie zdanie niczego nie wyjaśnia.</p>
+  <p class="zle"><b>Źle:</b> „pozycje wzrosły dzięki optymalizacji” – bez daty i adresu strony takie zdanie niczego nie wyjaśnia. Typowe przyczyny zmian: str. 5.</p>
 
   <p class="odsylacz"><b>3. Wykonane prace i ich efekt</b> – pełna lista z datami w dzienniku prac na str. 3.</p>
 
@@ -168,7 +177,7 @@
 
 <!-- STRONA 3: sekcja 3, dziennik prac -->
 <section class="strona">
-  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 3 z 5</span></div>
+  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 3 z 6</span></div>
   <h2 class="tytul"><span style="color:#D85A30">3.</span> Wykonane prace i ich efekt</h2>
   <p class="opis">Lista prac z datami: nowe treści, poprawki techniczne, zdobyte linki, zmiany w wizytówce Google. Przy każdej pracy podaj podstronę, której dotyczy, i to, czy widać już efekt. Z wpisu ma wynikać, co dokładnie zmieniono.</p>
   <table>
@@ -193,24 +202,24 @@
   <div class="pole" style="margin-top:2.4mm"><div class="tekst" style="margin:0">Godziny w miesiącu (jeśli rozliczasz się za godziny): &nbsp;__________ &nbsp;z&nbsp; __________ &nbsp;przewidzianych w umowie</div></div>
 
   <h3>Zdobyte linki</h3>
-  <p class="maly">Przy każdym linku adres, data i stan. Liczy się jakość, a nie liczba linków.</p>
+  <p class="maly">Przy każdym linku adres, data i stan. Liczy się jakość i liczba nowych domen linkujących do ważnych podstron, a nie sama liczba linków.</p>
   <table>
-    <thead><tr><th>Adres strony z linkiem</th><th style="width:16mm">Data</th><th style="width:44mm">Podstrona docelowa</th><th style="width:30mm">Link nadal na stronie</th></tr></thead>
+    <thead><tr><th>Adres strony z linkiem</th><th style="width:16mm">Data</th><th style="width:38mm">Podstrona docelowa</th><th style="width:22mm">Nowa domena</th><th style="width:26mm">Link nadal na stronie</th></tr></thead>
     <tbody>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td><td><span class="opcje"><span><i class="cb"></i>tak</span><span><i class="cb"></i>nie</span></span></td></tr>
     </tbody>
   </table>
 </section>
 
 <!-- STRONA 4: tabela metryk -->
 <section class="strona">
-  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 4 z 5</span></div>
+  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 4 z 6</span></div>
   <h2 class="tytul">Tabela metryk (załącznik)</h2>
-  <p class="opis">Uzupełnij danymi z GA4 i Google Search Console, a w nagłówkach wpisz nazwy miesięcy. Kliknięcia i wyświetlenia licz bez zapytań o markę: w raporcie Skuteczność w Search Console dodaj filtr zapytań, które nie zawierają nazwy firmy i jej wariantów, także tych z literówkami.</p>
+  <p class="opis">Uzupełnij danymi z GA4, Google Search Console i Profilu Firmy w Google, a w nagłówkach wpisz nazwy miesięcy. Kliknięcia i wyświetlenia licz bez zapytań o markę (jak to zrobić, piszemy na str. 5).</p>
   <table>
     <thead><tr><th style="width:33%">Metryka</th><th style="width:19%">Źródło</th><th>M-c<span class="pod">________</span></th><th>M-c<span class="pod">________</span></th><th>M-c<span class="pod">________</span></th><th>Rok temu<span class="pod">ten sam m-c</span></th><th>Zmiana<span class="pod">r/r</span></th></tr></thead>
     <tbody>
@@ -218,35 +227,57 @@
       <tr><td style="padding-left:5mm">w tym formularz</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td style="padding-left:5mm">w tym telefon</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td style="padding-left:5mm">w tym e-mail</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td><b>Koszt jednego zapytania</b> (koszt SEO w miesiącu ÷ liczba zapytań)</td><td>faktury, GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="padding-left:5mm">zapytania, które naprawdę przyszły (do porównania z GA4)</td><td>skrzynka, CRM</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><b>Koszt jednego zapytania</b> (koszt SEO w miesiącu ÷ liczba zapytań)</td><td>faktury, skrzynka lub CRM</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>Kliknięcia bez zapytań o markę</td><td>Search Console</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>Wyświetlenia bez zapytań o markę</td><td>Search Console</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>Frazy z uzgodnionej listy w TOP 3 (%)</td><td>Search Console albo tracker pozycji</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>Frazy z uzgodnionej listy w TOP 10 (%)</td><td>Search Console albo tracker pozycji</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>Wizytówka: punkty siatki 7×7 w TOP 3 (%)</td><td>pomiar z 49 punktów</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Wizytówka: połączenia / wskazówki dojazdu</td><td>Profil Firmy: Skuteczność</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>Odpowiedzi AI z nazwą firmy (%)</td><td>stały zestaw pytań, co tydzień</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Zdobyte linki: nowe / nadal na stronie</td><td>lista linków (str. 3)</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Wejścia z czatów AI (np. chatgpt.com, perplexity.ai)</td><td>GA4: źródło sesji</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Zdobyte linki: nowe domeny linkujące / linki nadal na stronie</td><td>lista linków (str. 3)</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Ważne podstrony poza indeksem</td><td>Search Console: Indeksowanie stron</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Core Web Vitals na telefonie: LCP / INP / CLS</td><td>Search Console: raport Core Web Vitals</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
-
-  <h3>Jak czytać metryki i gdzie są pułapki</h3>
-  <table>
-    <thead><tr><th style="width:28%">Metryka</th><th style="width:22%">Źródło</th><th style="width:22%">Jak czytać</th><th>Pułapka</th></tr></thead>
-    <tbody>
-      <tr><td>Zapytania z Google (formularz, telefon, e-mail) i koszt jednego zapytania</td><td>GA4 (zdarzenia kluczowe), faktury</td><td>Główny wynik miesiąca</td><td>Bez skonfigurowanych zdarzeń kluczowych tej liczby nie ma</td></tr>
-      <tr><td>Kliknięcia i wyświetlenia bez zapytań o markę</td><td>Google Search Console</td><td>Trend rok do roku</td><td>Zapytania o markę zawyżają wynik</td></tr>
-      <tr><td>Pozycje fraz z uzgodnionej listy</td><td>Search Console albo tracker pozycji</td><td>Udział fraz w TOP 3 i TOP 10</td><td>Średnia pozycja myli przy dużej liczbie fraz</td></tr>
-      <tr><td>Pozycja wizytówki w Mapach</td><td>Pomiar z 49 punktów (siatka 7×7)</td><td>Odsetek punktów w TOP 3</td><td>Jeden pomiar z biura to przypadek</td></tr>
-      <tr><td>Widoczność w ChatGPT i przeglądach AI</td><td>Stały zestaw pytań klientów co tydzień</td><td>Odsetek odpowiedzi z nazwą firmy</td><td>Jedno pytanie nic nie dowodzi</td></tr>
-      <tr><td>Zdobyte linki</td><td>Lista z adresem, datą i stanem</td><td>Czy link nadal jest na stronie</td><td>Liczba linków bez ich jakości</td></tr>
-    </tbody>
-  </table>
-  <p class="maly" style="margin-top:2mm">Pozycję wizytówki mierz w siatce punktów wokół adresu firmy, bo klient widzi inne wyniki w Mapach zależnie od tego, gdzie stoi. Odpowiedzi ChatGPT zmieniają się z dnia na dzień, dlatego widoczność w AI mierz stałym zestawem pytań zadawanych regularnie. Każdą zmianę listy śledzonych fraz odnotuj w raporcie.</p>
+  <p class="maly" style="margin-top:2mm">Każdą zmianę listy śledzonych fraz odnotuj w raporcie. Wyniki z Map i z odpowiedzi AI opieraj na regularnych pomiarach, a nie na jednym sprawdzeniu. Gdy dwa źródła podają różne liczby (np. GA4 i skrzynka, Profil Firmy i GA4), wpisz obie i wyjaśnij różnicę.</p>
 </section>
 
-<!-- STRONA 5: dla czytającego -->
+<!-- STRONA 5: jak czytać metryki -->
 <section class="strona">
-  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 5 z 5</span></div>
+  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 5 z 6</span></div>
+  <h2 class="tytul">Jak czytać metryki i gdzie są pułapki</h2>
+  <table>
+    <thead><tr><th style="width:30%">Metryka</th><th style="width:30%">Jak czytać</th><th>Pułapka</th></tr></thead>
+    <tbody>
+      <tr><td>Zapytania z Google (formularz, telefon, e-mail) i koszt jednego zapytania</td><td>Główny wynik miesiąca</td><td>Bez zdarzeń kluczowych tej liczby nie ma, a GA4 pomija osoby, które odrzuciły pliki cookie</td></tr>
+      <tr><td>Kliknięcia i wyświetlenia bez zapytań o markę</td><td>Trend rok do roku</td><td>Zapytania o markę zawyżają wynik</td></tr>
+      <tr><td>Pozycje fraz z uzgodnionej listy</td><td>Udział fraz w TOP 3 i TOP 10</td><td>Średnia pozycja myli przy dużej liczbie fraz</td></tr>
+      <tr><td>Wizytówka w Mapach: pozycja i działania klientów</td><td>Odsetek punktów siatki w TOP 3, połączenia i wskazówki dojazdu</td><td>Jeden pomiar z biura to przypadek</td></tr>
+      <tr><td>Widoczność w ChatGPT i przeglądzie AI w Google</td><td>Odsetek odpowiedzi z nazwą firmy</td><td>Jedno pytanie nic nie dowodzi</td></tr>
+      <tr><td>Zdobyte linki</td><td>Nowe domeny linkujące do ważnych podstron i czy linki nadal są na stronie</td><td>Liczba linków bez ich jakości</td></tr>
+      <tr><td>Stan techniczny: indeksacja i Core Web Vitals</td><td>Ważne podstrony w indeksie; LCP do 2,5 s, INP do 200 ms, CLS do 0,1</td><td>Ocena 0–100 z PageSpeed to test, a nie dane od użytkowników</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Uwagi do danych</h3>
+  <ol class="kroki">
+    <li><b>Zapytania: GA4 i skrzynka.</b> GA4 nie pokazuje zdarzeń osób, które odrzuciły pliki cookie analityczne, a przy małym ruchu nie uzupełnia ich szacunkiem. Porównaj liczbę z GA4 z tym, co przyszło do skrzynki albo CRM. Kliknięcie w numer telefonu to jeszcze nie rozmowa.</li>
+    <li><b>Zapytania o markę.</b> W raporcie Skuteczność w Search Console użyj filtra zapytań z marką i bez marki (Google udostępnia go od listopada 2025 roku, ale nie w usługach dla podkatalogu albo subdomeny ani przy małym ruchu; zapytania przypisuje system oparty na AI, więc sprawdź przypisanie). Jeśli filtra nie ma, dodaj filtr zapytań, które nie zawierają nazwy firmy i jej wariantów, także z literówkami.</li>
+    <li><b>Historia danych.</b> Search Console przechowuje dane z ostatnich 16 miesięcy. Na porównanie rok do roku wystarczy, ale starszych danych nie odzyskasz – eksportuj je co miesiąc.</li>
+    <li><b>Mapy.</b> Klient widzi inne wyniki w Mapach zależnie od tego, gdzie stoi, więc pozycję wizytówki mierz w siatce punktów wokół adresu firmy. Połączenia, wskazówki dojazdu i kliknięcia prowadzące do witryny pokazuje Profil Firmy w sekcji Skuteczność.</li>
+    <li><b>Odpowiedzi AI.</b> Odpowiedzi ChatGPT zmieniają się z dnia na dzień, więc mierz je stałym zestawem pytań zadawanych regularnie. Search Console liczy kliknięcia z przeglądu AI razem z resztą wyników w Google, a raport o skuteczności w generatywnej AI (od 31.08.2026) pokazuje tylko wyświetlenia.</li>
+    <li><b>Technika.</b> Google uznaje za dobre LCP do 2,5 s, INP do 200 ms i CLS do 0,1, jeśli próg spełnia co najmniej 75% odsłon u prawdziwych użytkowników. Ocena 0–100 w PageSpeed Insights pochodzi z testu laboratoryjnego (Lighthouse), więc nie zastąpi raportu Core Web Vitals.</li>
+    <li><b>Przyczyny zmian (sekcja 2).</b> Najczęściej: zmiana na stronie (nowa treść, przebudowa, błąd po wdrożeniu), aktualizacja algorytmu potwierdzona w Google Search Status Dashboard, przegląd AI nad wynikami (pozycja stoi, kliknięć mniej), sezonowość, utracone linki albo konkurent, który przyspieszył. Przy spadku sprawdź je po kolei.</li>
+  </ol>
+  <p class="maly" style="margin-top:3mm">Źródła: Pomoc Google Analytics (zdarzenia kluczowe, tryb zgody, raport Zapytania), Google Search Central (filtr zapytań z marką, funkcje AI w wyszukiwarce), web.dev (Web Vitals), Pomoc Profilu Firmy w Google, Google Search Status Dashboard. Pełna lista z adresami: <span class="nw">www.ai-seo-company.pl/narzedzia/raport-seo</span></p>
+</section>
+
+<!-- STRONA 6: dla czytającego -->
+<section class="strona">
+  <div class="naglowek"><span>Wzór miesięcznego raportu SEO</span><span>str. 6 z 6</span></div>
   <h2 class="tytul">Dla czytającego: sprawdź raport agencji</h2>
   <p class="opis">Wypełnij po każdym raporcie. Brakujące sekcje i zaznaczone flagi to pytania na najbliższe spotkanie.</p>
 

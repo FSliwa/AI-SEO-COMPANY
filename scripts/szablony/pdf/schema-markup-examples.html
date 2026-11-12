@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Schema markup examples: JSON-LD templates</title>
+<style>
+@page { size: A4; margin: 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 9pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.naglowek { font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2.5mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 6mm; }
+.naglowek b { color: #D85A30; }
+h1 { font-size: 20pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+.pod { font-size: 9.5pt; color: #48484A; margin: 0 0 4.5mm; }
+h2 { font-size: 13pt; margin: 0 0 2mm; padding-bottom: 1.6mm; border-bottom: 1.6pt solid #D85A30; display: inline-block; }
+h3 { font-size: 10.5pt; margin: 3mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.2pt solid #D85A30; display: inline-block; }
+.pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 3mm; }
+.pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+.pole span { white-space: nowrap; }
+.pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+ol.kroki { margin: 0; padding-left: 5mm; }
+ol.kroki li { margin: 0 0 1.2mm; }
+.box { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: 0.5mm; vertical-align: -0.4mm; margin-right: 1.2mm; background: #fff; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 0.6pt solid #E5E1DC; padding: 1.1mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: #F7F5F2; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; color: #48484A; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+td.c { text-align: center; vertical-align: middle; }
+td.wpis { height: 6.6mm; }
+td.prop { font-family: Menlo, 'SFMono-Regular', Consolas, monospace; font-size: 7pt; color: #48484A; }
+table.dziennik td { height: 8mm; }
+.obszar { break-before: page; page-break-before: always; }
+.opis { margin: 1mm 0 3mm; color: #48484A; font-size: 8.5pt; }
+.sek { margin: 0 0 3.5mm; }
+.wzor { break-inside: avoid; page-break-inside: avoid; margin: 0 0 3.2mm; }
+.wzor-nag { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; margin: 0 0 1mm; }
+.wzor-nag > div:first-child { flex: 1; white-space: nowrap; }
+.wzor-nag b { font-size: 9.5pt; }
+.wzor-nag .gdzie { font-size: 8pt; color: #48484A; }
+.wzor-nag .wdr { font-size: 7.8pt; color: #48484A; white-space: nowrap; }
+pre.kod { margin: 0; font-family: Menlo, 'SFMono-Regular', Consolas, monospace; font-size: 7pt; line-height: 1.3; white-space: pre; background: #FBFAF8; border: 0.6pt solid #E5E1DC; border-left: 1.6pt solid #D85A30; border-radius: 1mm; padding: 1.8mm 2.6mm; color: #1D1D1F; }
+pre.kod .k { color: #1D1D1F; }
+pre.kod .v { color: #B4471F; font-weight: 600; }
+pre.kod .st { color: #6E6E73; }
+ul.lista { list-style: none; margin: 0; padding: 0; columns: 1; }
+ul.lista li { margin: 0 0 1.5mm; padding-left: 5mm; text-indent: -5mm; }
+.uwaga { font-size: 8pt; color: #48484A; margin: 1.5mm 0 0; }
+code { font-family: Menlo, 'SFMono-Regular', Consolas, monospace; font-size: 7.4pt; background: #F7F5F2; padding: 0 0.6mm; border-radius: 0.6mm; }
+.dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+footer { margin-top: 6mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+footer p { margin: 0 0 0.8mm; }
+footer strong { color: #1D1D1F; }
+</style>
+</head>
+<body>
+<div class="naglowek"><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</div>
+<h1>Schema markup examples: JSON-LD templates</h1>
+<p class="pod">A business data sheet, a page-type map, 7 schema.org templates in JSON-LD, a pre-publication checklist and a test log. Google’s rules checked against its documentation on 11 November 2026. Version: November 2026.</p>
+<div class="pola sek"><div class="pole"><span>Website (URL)</span><i></i></div><div class="pole"><span>Implementation date</span><i></i></div><div class="pole"><span>Implemented by</span><i></i></div><div class="pole"><span>Next review</span><i></i></div></div>
+<div class="sek">
+  <h3>How to use this template</h3>
+  <ol class="kroki"><li><strong>Collect your business details</strong> in part 1: name, address and phone exactly as on your Google Business Profile.</li><li><strong>Assign types to pages</strong> in part 2 and write down the URLs where each type will go.</li><li><strong>Copy a template from part 3</strong> and replace the highlighted values. Delete fields that don’t apply, together with their commas.</li><li><strong>Add the code</strong> in a <code>&lt;script type="application/ld+json"&gt;</code> tag in the head or body, or enter the details in your SEO plugin.</li><li><strong>Test it</strong> in the Rich Results Test and the Schema Markup Validator, then work through the checklist in part 4.</li><li><strong>Log the result</strong> in part 5 and check the page with URL Inspection in Search Console.</li></ol>
+</div>
+<div>
+  <h3>Part 1. Business details: one source for the code, the website and your profile</h3>
+  <p class="opis">Enter your details once and copy them from here into every JSON-LD block. The same values must be visible on the page and on your Google Business Profile.</p>
+  <table>
+    <colgroup><col style="width:62mm"><col style="width:46mm"><col></colgroup>
+    <thead><tr><th>Field</th><th>schema.org property</th><th>Your entry</th></tr></thead>
+    <tbody><tr><td>Business name (as on your Google Business Profile)</td><td class="prop">name</td><td class="wpis"></td></tr><tr><td>Registered legal name, if different</td><td class="prop">legalName</td><td class="wpis"></td></tr><tr><td>Type: the most specific LocalBusiness subtype, or Organization</td><td class="prop">@type</td><td class="wpis"></td></tr><tr><td>Street address</td><td class="prop">address.streetAddress</td><td class="wpis"></td></tr><tr><td>City, region and postcode</td><td class="prop">addressLocality, addressRegion, postalCode</td><td class="wpis"></td></tr><tr><td>Country (ISO code)</td><td class="prop">address.addressCountry</td><td class="wpis"></td></tr><tr><td>Phone with country code</td><td class="prop">telephone</td><td class="wpis"><span style="color:#8E8E93">+</span></td></tr><tr><td>Email</td><td class="prop">email</td><td class="wpis"></td></tr><tr><td>Home page URL</td><td class="prop">url</td><td class="wpis"><span style="color:#8E8E93">https://</span></td></tr><tr><td>Logo, at least 112 × 112 px</td><td class="prop">logo</td><td class="wpis"><span style="color:#8E8E93">https://</span></td></tr><tr><td>Coordinates, at least 5 decimal places</td><td class="prop">geo.latitude, geo.longitude</td><td class="wpis"></td></tr><tr><td>Opening hours (24-hour format)</td><td class="prop">openingHoursSpecification</td><td class="wpis"><span style="color:#8E8E93">Mon–Fri ________ Sat ________ Sun ________</span></td></tr><tr><td>Price range, under 100 characters</td><td class="prop">priceRange</td><td class="wpis"></td></tr><tr><td>Tax ID and VAT number</td><td class="prop">taxID, vatID</td><td class="wpis"></td></tr><tr><td>Business profile on another site (1)</td><td class="prop">sameAs</td><td class="wpis"><span style="color:#8E8E93">https://</span></td></tr><tr><td>Business profile on another site (2)</td><td class="prop">sameAs</td><td class="wpis"><span style="color:#8E8E93">https://</span></td></tr></tbody>
+  </table>
+</div>
+
+<section class="obszar">
+  <h2>Part 2. Page-type map</h2>
+  <p class="opis">Mark which types go on which pages and write down their URLs. Organization and WebSite only need to be on the home page.</p>
+  <table>
+    <colgroup><col style="width:30mm"><col style="width:40mm"><col><col style="width:18mm"><col style="width:17mm"></colgroup>
+    <thead><tr><th>Page type</th><th>URL on your site</th><th>JSON-LD types</th><th>Added</th><th>Test OK</th></tr></thead>
+    <tbody><tr><td>Home page</td><td class="wpis" style="height:9mm"><code>/</code></td><td>Organization or LocalBusiness, WebSite</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>About, contact</td><td class="wpis" style="height:9mm"></td><td>Organization or LocalBusiness, if not on the home page</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Location page</td><td class="wpis" style="height:9mm"></td><td>LocalBusiness for each location, BreadcrumbList</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Service page</td><td class="wpis" style="height:9mm"></td><td>BreadcrumbList</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Blog post</td><td class="wpis" style="height:9mm"></td><td>Article, BreadcrumbList</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Author page</td><td class="wpis" style="height:9mm"></td><td>ProfilePage with Person</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Product page</td><td class="wpis" style="height:9mm"></td><td>Product with Offer, BreadcrumbList</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr><tr><td>Other:</td><td class="wpis" style="height:9mm"></td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr></tbody>
+  </table>
+  <div class="sek" style="margin-top:4mm">
+    <h3>Cheat sheet: properties Google requires</h3>
+    <table>
+      <colgroup><col style="width:28mm"><col style="width:52mm"><col></colgroup>
+      <thead><tr><th>Type</th><th>Required</th><th>Key recommended</th></tr></thead>
+      <tbody><tr><td><strong>Organization</strong></td><td>none</td><td>name, url, logo (min. 112 × 112 px), address, telephone, sameAs</td></tr><tr><td><strong>LocalBusiness</strong></td><td>name, address</td><td>telephone (with country code), url, geo (5+ decimals), openingHoursSpecification, priceRange</td></tr><tr><td><strong>WebSite</strong></td><td>name, url</td><td>alternateName; home page only</td></tr><tr><td><strong>BreadcrumbList</strong></td><td>at least 2 × ListItem: position, name, item</td><td>the last item can skip item</td></tr><tr><td><strong>Article</strong></td><td>none</td><td>headline, image, datePublished, dateModified, author (Person with url)</td></tr><tr><td><strong>ProfilePage</strong></td><td>mainEntity (Person with name)</td><td>jobTitle, description, image, sameAs</td></tr><tr><td><strong>Product</strong></td><td>name + offers, review or aggregateRating</td><td>merchant listings: image too; offers with price and priceCurrency</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="obszar">
+  <h2>Part 3. JSON-LD templates to edit</h2>
+  <p class="opis">Values to replace are highlighted in colour. Leave the grey ones (<code>@context</code>, <code>@type</code>, schema.org URLs) as they are. The details in the code must match what’s visible on the page.</p>
+<div class="wzor"><div class="wzor-nag"><div><b>3.1 Organization</b> <span class="gdzie">· home page or About page · required: none</span></div><div class="wdr"><span class="box"></span>added on: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"Organization"</span>,
+  <span class="k">"@id"</span>: <span class="v">"https://www.example.com/#organization"</span>,
+  <span class="k">"name"</span>: <span class="v">"Your Company"</span>,
+  <span class="k">"legalName"</span>: <span class="v">"Your Company LLC"</span>,
+  <span class="k">"url"</span>: <span class="v">"https://www.example.com/"</span>,
+  <span class="k">"logo"</span>: <span class="v">"https://www.example.com/logo.png"</span>,
+  <span class="k">"description"</span>: <span class="v">"One sentence about what your company does."</span>,
+  <span class="k">"email"</span>: <span class="v">"hello@example.com"</span>,
+  <span class="k">"telephone"</span>: <span class="v">"+1 217 555 0100"</span>,
+  <span class="k">"address"</span>: {
+    <span class="k">"@type"</span>: <span class="st">"PostalAddress"</span>,
+    <span class="k">"streetAddress"</span>: <span class="v">"100 Example Avenue"</span>,
+    <span class="k">"addressLocality"</span>: <span class="v">"Springfield"</span>,
+    <span class="k">"addressRegion"</span>: <span class="v">"IL"</span>,
+    <span class="k">"postalCode"</span>: <span class="v">"62701"</span>,
+    <span class="k">"addressCountry"</span>: <span class="v">"US"</span>
+  },
+  <span class="k">"taxID"</span>: <span class="v">"00-0000000"</span>,
+  <span class="k">"sameAs"</span>: [<span class="v">"https://www.linkedin.com/company/your-company"</span>, <span class="v">"https://www.facebook.com/yourcompany"</span>]
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.2 WebSite</b> <span class="gdzie">· home page only · required: name, url</span></div><div class="wdr"><span class="box"></span>added on: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"WebSite"</span>,
+  <span class="k">"name"</span>: <span class="v">"Your Company"</span>,
+  <span class="k">"alternateName"</span>: <span class="v">"YC"</span>,
+  <span class="k">"url"</span>: <span class="v">"https://www.example.com/"</span>
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.3 LocalBusiness (here: Plumber)</b> <span class="gdzie">· home page or location page · required: name, address</span></div><div class="wdr"><span class="box"></span>added on: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"Plumber"</span>,
+  <span class="k">"@id"</span>: <span class="v">"https://www.example.com/#business"</span>,
+  <span class="k">"name"</span>: <span class="v">"Your Company"</span>,
+  <span class="k">"url"</span>: <span class="v">"https://www.example.com/"</span>,
+  <span class="k">"image"</span>: <span class="v">"https://www.example.com/photos/storefront.jpg"</span>,
+  <span class="k">"logo"</span>: <span class="v">"https://www.example.com/logo.png"</span>,
+  <span class="k">"telephone"</span>: <span class="v">"+1 217 555 0100"</span>,
+  <span class="k">"email"</span>: <span class="v">"hello@example.com"</span>,
+  <span class="k">"address"</span>: {
+    <span class="k">"@type"</span>: <span class="st">"PostalAddress"</span>,
+    <span class="k">"streetAddress"</span>: <span class="v">"100 Example Avenue"</span>,
+    <span class="k">"addressLocality"</span>: <span class="v">"Springfield"</span>,
+    <span class="k">"addressRegion"</span>: <span class="v">"IL"</span>,
+    <span class="k">"postalCode"</span>: <span class="v">"62701"</span>,
+    <span class="k">"addressCountry"</span>: <span class="v">"US"</span>
+  },
+  <span class="k">"geo"</span>: { <span class="k">"@type"</span>: <span class="st">"GeoCoordinates"</span>, <span class="k">"latitude"</span>: <span class="v">39.781721</span>, <span class="k">"longitude"</span>: <span class="v">-89.650148</span> },
+  <span class="k">"openingHoursSpecification"</span>: [
+    {
+      <span class="k">"@type"</span>: <span class="st">"OpeningHoursSpecification"</span>,
+      <span class="k">"dayOfWeek"</span>: [<span class="v">"Monday"</span>, <span class="v">"Tuesday"</span>, <span class="v">"Wednesday"</span>, <span class="v">"Thursday"</span>, <span class="v">"Friday"</span>],
+      <span class="k">"opens"</span>: <span class="v">"08:00"</span>,
+      <span class="k">"closes"</span>: <span class="v">"18:00"</span>
+    },
+    { <span class="k">"@type"</span>: <span class="st">"OpeningHoursSpecification"</span>, <span class="k">"dayOfWeek"</span>: <span class="v">"Saturday"</span>, <span class="k">"opens"</span>: <span class="v">"09:00"</span>, <span class="k">"closes"</span>: <span class="v">"14:00"</span> }
+  ],
+  <span class="k">"priceRange"</span>: <span class="v">"$$"</span>,
+  <span class="k">"sameAs"</span>: [<span class="v">"https://www.facebook.com/yourcompany"</span>]
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.4 BreadcrumbList</b> <span class="gdzie">· every subpage · required: at least 2 × ListItem</span></div><div class="wdr"><span class="box"></span>added on: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"BreadcrumbList"</span>,
+  <span class="k">"itemListElement"</span>: [
+    { <span class="k">"@type"</span>: <span class="st">"ListItem"</span>, <span class="k">"position"</span>: <span class="v">1</span>, <span class="k">"name"</span>: <span class="v">"Home"</span>, <span class="k">"item"</span>: <span class="v">"https://www.example.com/"</span> },
+    { <span class="k">"@type"</span>: <span class="st">"ListItem"</span>, <span class="k">"position"</span>: <span class="v">2</span>, <span class="k">"name"</span>: <span class="v">"Services"</span>, <span class="k">"item"</span>: <span class="v">"https://www.example.com/services"</span> },
+    { <span class="k">"@type"</span>: <span class="st">"ListItem"</span>, <span class="k">"position"</span>: <span class="v">3</span>, <span class="k">"name"</span>: <span class="v">"Emergency plumbing"</span> }
+  ]
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.5 Article</b> <span class="gdzie">· blog post · author as a separate Person</span></div><div class="wdr"><span class="box"></span>added on: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"Article"</span>,
+  <span class="k">"headline"</span>: <span class="v">"Article title, same as the H1"</span>,
+  <span class="k">"image"</span>: [<span class="v">"https://www.example.com/blog/cover-16x9.jpg"</span>, <span class="v">"https://www.example.com/blog/cover-1x1.jpg"</span>],
+  <span class="k">"datePublished"</span>: <span class="v">"2026-11-11T08:00:00-06:00"</span>,
+  <span class="k">"dateModified"</span>: <span class="v">"2026-11-11T08:00:00-06:00"</span>,
+  <span class="k">"author"</span>: [
+    {
+      <span class="k">"@type"</span>: <span class="st">"Person"</span>,
+      <span class="k">"name"</span>: <span class="v">"Jane Doe"</span>,
+      <span class="k">"jobTitle"</span>: <span class="v">"SEO Specialist"</span>,
+      <span class="k">"url"</span>: <span class="v">"https://www.example.com/authors/jane-doe"</span>
+    }
+  ],
+  <span class="k">"publisher"</span>: { <span class="k">"@type"</span>: <span class="st">"Organization"</span>, <span class="k">"name"</span>: <span class="v">"Your Company"</span>, <span class="k">"url"</span>: <span class="v">"https://www.example.com/"</span> }
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.6 ProfilePage with Person</b> <span class="gdzie">· author page · required: mainEntity, name</span></div><div class="wdr"><span class="box"></span>added on: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"ProfilePage"</span>,
+  <span class="k">"dateModified"</span>: <span class="v">"2026-11-11T08:00:00-06:00"</span>,
+  <span class="k">"mainEntity"</span>: {
+    <span class="k">"@type"</span>: <span class="st">"Person"</span>,
+    <span class="k">"name"</span>: <span class="v">"Jane Doe"</span>,
+    <span class="k">"jobTitle"</span>: <span class="v">"SEO Specialist"</span>,
+    <span class="k">"description"</span>: <span class="v">"One or two sentences about the author’s experience and focus."</span>,
+    <span class="k">"image"</span>: <span class="v">"https://www.example.com/authors/jane-doe.jpg"</span>,
+    <span class="k">"worksFor"</span>: { <span class="k">"@type"</span>: <span class="st">"Organization"</span>, <span class="k">"name"</span>: <span class="v">"Your Company"</span>, <span class="k">"url"</span>: <span class="v">"https://www.example.com/"</span> },
+    <span class="k">"knowsAbout"</span>: [<span class="v">"technical SEO"</span>, <span class="v">"structured data"</span>],
+    <span class="k">"sameAs"</span>: [<span class="v">"https://www.linkedin.com/in/your-profile"</span>]
+  }
+}</pre></div>
+<div class="wzor"><div class="wzor-nag"><div><b>3.7 Product with Offer</b> <span class="gdzie">· product page · required: name and offers</span></div><div class="wdr"><span class="box"></span>added on: ________________</div></div><pre class="kod">{
+  <span class="k">"@context"</span>: <span class="st">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="st">"Product"</span>,
+  <span class="k">"name"</span>: <span class="v">"Product name"</span>,
+  <span class="k">"image"</span>: [<span class="v">"https://www.example.com/products/product-name-1x1.jpg"</span>],
+  <span class="k">"description"</span>: <span class="v">"A short product description, as on the product page."</span>,
+  <span class="k">"sku"</span>: <span class="v">"SKU-0001"</span>,
+  <span class="k">"brand"</span>: { <span class="k">"@type"</span>: <span class="st">"Brand"</span>, <span class="k">"name"</span>: <span class="v">"Brand"</span> },
+  <span class="k">"offers"</span>: {
+    <span class="k">"@type"</span>: <span class="st">"Offer"</span>,
+    <span class="k">"url"</span>: <span class="v">"https://www.example.com/products/product-name"</span>,
+    <span class="k">"price"</span>: <span class="v">39.99</span>,
+    <span class="k">"priceCurrency"</span>: <span class="v">"USD"</span>,
+    <span class="k">"availability"</span>: <span class="st">"https://schema.org/InStock"</span>
+  }
+}</pre></div>
+</section>
+
+<section class="obszar">
+  <h2>Part 4. Pre-publication checklist</h2>
+  <ul class="lista sek"><li><span class="box"></span>Rich Results Test shows no critical errors</li><li><span class="box"></span>Schema Markup Validator (validator.schema.org) shows no syntax errors</li><li><span class="box"></span>Every value in the code is visible on the page: name, address, hours, price, author</li><li><span class="box"></span>Name, address and phone identical in the code, on the page and on your Google Business Profile</li><li><span class="box"></span>Required properties filled in, no placeholder values left (example.com, 62701)</li><li><span class="box"></span>The most specific matching type, such as Dentist rather than LocalBusiness</li><li><span class="box"></span>No star ratings about yourself in LocalBusiness or Organization</li><li><span class="box"></span>Logo and images crawlable by Googlebot, not blocked in robots.txt</li><li><span class="box"></span>One block per business: theme and plugin don’t duplicate it</li><li><span class="box"></span>Page has no noindex, isn’t blocked in robots.txt and isn’t behind a login</li><li><span class="box"></span>After publishing: URL Inspection in Search Console</li><li><span class="box"></span>Review date in the calendar: after any change to business details, prices or templates</li></ul>
+  <h2>Part 5. Test log</h2>
+  <table class="dziennik">
+    <colgroup><col style="width:20mm"><col style="width:48mm"><col style="width:30mm"><col><col style="width:34mm"></colgroup>
+    <thead><tr><th>Date</th><th>Page URL</th><th>Tool</th><th>Errors and warnings</th><th>Fix, owner</th></tr></thead>
+    <tbody><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle">RRT / validator / URL</td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr><tr><td></td><td></td><td style="color:#8E8E93;font-size:7pt;vertical-align:middle"></td><td></td><td></td></tr></tbody>
+  </table>
+  <p class="uwaga">RRT = Rich Results Test, validator = validator.schema.org, URL = URL Inspection in Search Console. After deployment, also monitor the rich result reports in Search Console.</p>
+  <div style="margin-top:4mm">
+    <h2>Part 6. What not to add for an effect in Google (as of 11 November 2026)</h2>
+    <table>
+      <colgroup><col style="width:62mm"><col><col style="width:28mm"></colgroup>
+      <thead><tr><th>Feature</th><th>Status</th><th>Since</th></tr></thead>
+      <tbody><tr><td>FAQ rich result (FAQPage)</td><td>no longer shown (documentation removed in June 2026)</td><td>7 May 2026</td></tr><tr><td>HowTo rich result</td><td>retired on mobile and desktop</td><td>13 Sep 2023</td></tr><tr><td>Sitelinks search box (SearchAction in WebSite)</td><td>retired, documentation removed</td><td>29 Nov 2024</td></tr><tr><td>Breadcrumbs (BreadcrumbList)</td><td>desktop results only: keep them</td><td>22 Jan 2025</td></tr><tr><td>Stars from reviews about your own business</td><td>pages with LocalBusiness or Organization aren’t eligible</td><td>standing rule</td></tr><tr><td>Special “AI” markup</td><td>not needed for AI Overviews or AI Mode</td><td>AI features docs</td></tr></tbody>
+    </table>
+    <p class="uwaga">Existing FAQPage markup doesn’t cause problems and there’s no rush to remove it, but it no longer has any effect in Google results.</p>
+  </div>
+  <footer><p>Latest version of these templates, field notes and Google sources: <strong>www.ai-seo-company.pl/en/tools/schema-markup-examples</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p></footer>
+</section>
+</body>
+</html>

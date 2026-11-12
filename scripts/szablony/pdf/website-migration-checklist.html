@@ -46,91 +46,108 @@
   .option { white-space: nowrap; margin-right: 8px; }
   .option .cb { margin-right: 4px; }
   .log td { height: 26px; }
+  .hosting td { padding: 3px 6px; }
+  .hosting td.cbk { width: 22px; }
+  .monitoring td:first-child, .tracker td:first-child { white-space: nowrap; }
 </style>
 </head>
 <body>
-
 <div class="header"><span><strong>AI SEO COMPANY</strong> · www.ai-seo-company.pl</span><span>Printable template · version 11.2026</span></div>
-
 <h1>Website migration checklist</h1>
-<p class="subtitle">Move a site without losing rankings: tasks for before the move, launch day and the 8–12 weeks after, plus a 301 redirect map and a weekly tracker.</p>
-
+<p class="subtitle">Move a site without losing rankings: tasks for before the move, launch day and the 8–12 weeks after, a hosting-only list, a 301 redirect map and a weekly tracker.</p>
 <div class="box">
   <h3>How to use this checklist</h3>
   <ol>
-    <li><strong>Describe the migration</strong> on the card below. The type of move decides which items apply to you.</li>
+    <li><strong>Describe the migration</strong> on the card below. The type of move decides which items apply to you. Hosting change only: the “New server only” box below part&nbsp;C plus the baseline, testing and monitoring is enough.</li>
     <li><strong>Assign owners and due dates</strong> to every task. Tasks without an owner are the ones that get skipped.</li>
     <li><strong>Collect URLs and a baseline</strong> from Search Console and GA4 before you change anything. Note the export date.</li>
-    <li><strong>Fill in the redirect map</strong> (part D): one old URL = one new URL, a 301 code and a priority.</li>
-    <li><strong>On launch day</strong>, work through part B in order and record each test result.</li>
-    <li><strong>Once a week for 8–12 weeks</strong>, update the tracker (part E). Add every new 404 to the map.</li>
+    <li><strong>Fill in the redirect map</strong> (part&nbsp;D): one old URL = one destination URL, a 301 code and a priority.</li>
+    <li><strong>On launch day</strong>, work through part&nbsp;B in order and record each test result.</li>
+    <li><strong>For the first 4 weeks</strong>, crawl the site and review errors daily; until week 12, update the tracker (part&nbsp;E) once a week. Add every new 404 to the map.</li>
   </ol>
 </div>
-
 <h2>Migration card</h2>
 <table>
   <tbody>
-    <tr><th style="width:150px">Type of migration</th><td colspan="3"><span class="option"><span class="cb"></span>new domain</span> <span class="option"><span class="cb"></span>new subdomain</span> <span class="option"><span class="cb"></span>new URLs / CMS</span> <span class="option"><span class="cb"></span>HTTP → HTTPS</span> <span class="option"><span class="cb"></span>redesign or new hosting</span></td></tr>
+    <tr><th style="width:150px">Type of migration</th><td colspan="3"><span class="option"><span class="cb"></span>new domain</span> <span class="option"><span class="cb"></span>new subdomain</span> <span class="option"><span class="cb"></span>new URLs / CMS</span> <span class="option"><span class="cb"></span>HTTP → HTTPS</span> <span class="option"><span class="cb"></span>new server or hosting</span> <span class="option"><span class="cb"></span>redesign</span></td></tr>
     <tr><th>Old domain</th><td class="field"></td><th style="width:140px">New domain</th><td class="field"></td></tr>
     <tr><th>Staging URL</th><td class="field"></td><th>Launch date and time</th><td class="field"></td></tr>
     <tr><th>SEO owner</th><td class="field"></td><th>Developer</th><td class="field"></td></tr>
     <tr><th>Content owner</th><td class="field"></td><th>Data export date</th><td class="field"></td></tr>
   </tbody>
 </table>
-<p class="small">The Search Console Change of Address tool applies only to moves to a different domain or subdomain. For HTTP → HTTPS, www ↔ non-www and path changes on the same domain, redirects and a new sitemap are enough.</p>
-
+<p class="small">The Search Console Change of Address tool applies only to moves to a different domain or subdomain; submit it for every variant of the old domain (www, non-www, subdomains). For HTTP → HTTPS, www ↔ non-www and path changes on the same domain, redirects and a new sitemap are enough.</p>
 <h2><span class="nr">A.</span> Before the move</h2>
 <table>
   <thead><tr><th></th><th>Task</th><th>Owner</th><th>Due</th></tr></thead>
   <tbody>
     <tr><td class="cbk"><span class="cb"></span></td><td>Complete list of old URLs: sitemaps, server logs, analytics, CMS, Search Console Links report, full site crawl</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Images, PDFs, JavaScript and CSS files added to the list</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Search Console export (Performance): pages and queries with the most clicks</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>GA4 baseline: organic traffic and conversions (enter in part E)</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Images, videos, PDFs, JavaScript and CSS files added to the list</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Search Console export: pages and queries with the most clicks (Performance), number of indexed pages (Pages)</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>GA4 baseline: organic traffic and key events (enter in part&nbsp;E)</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>List of 20–50 priority URLs to test on launch day</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>List of sites linking to old URLs</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>One-to-one 301 redirect map (part D), no redirects to the home page</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Redirect map (part&nbsp;D): every old URL to its closest match, a 301, no redirects to the home page</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>Content with no equivalent set to return 404 or 410</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Staging protected by password or noindex; note of what to remove at launch</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Staging protected by password, IP restriction or noindex (not Disallow alone); note of what to remove at launch</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Full staging crawl: status codes, noindex, canonical tags, links</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>Self-referencing canonical tags on new URLs</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>hreflang points to the new URLs of each language version</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>hreflang points to the new URLs, reciprocally across all language versions (x-default for unmatched languages)</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Internal links (menu, footer, body copy) changed to the new URLs, no redirects in between</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>Structured data, title tags and meta descriptions carried over</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>GA4 and Google Tag Manager set up, key events tested on staging</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>New XML sitemap with final destination URLs only</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Old and new sites verified in Search Console (www and non-www), disavow file uploaded</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Core Web Vitals and forms of the new version checked on staging</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>New XML sitemap with final destination URLs only; old sitemap kept for monitoring</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Old and new sites verified in Search Console in every variant (www and non-www, HTTP and HTTPS); verification file or meta tag on the new site; disavow file uploaded</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Purchased domain: no manual actions or URL removal requests left by the previous owner</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Server has headroom, because Google crawls more heavily than usual after launch; for a large site, hosting provider warned</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Speed of the new version measured on staging (Lighthouse) and compared with the old one; forms work</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Launch outside peak season; developer available for the whole launch day</td><td class="owner"></td><td class="due"></td></tr>
   </tbody>
 </table>
-
 <h2><span class="nr">B.</span> Launch day (in this order)</h2>
 <table>
   <thead><tr><th></th><th>Task</th><th>Owner</th><th>Time</th></tr></thead>
   <tbody>
     <tr><td class="cbk"><span class="cb"></span></td><td>Redirects from the map deployed before the old version stops responding</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Staging blocks removed: noindex, password, unneeded Disallow rules</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>robots.txt on the new site blocks only what should stay hidden</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Staging blocks removed: noindex, password, unneeded Disallow rules (WordPress: Settings → Reading, “Discourage search engines from indexing this site”)</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>robots.txt on the new site blocks only what should stay hidden; rules for Googlebot, Bingbot and AI crawlers (e.g. OAI-SearchBot) same as on the old site</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>Canonical tags point to the new URLs (not staging, not the old domain)</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>Priority URLs tested: status code, redirect target, title, content, forms (e.g. URL Inspection tool)</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>New sitemap submitted in Search Console</td><td class="owner"></td><td class="due"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Change of Address tool submitted after redirects are live (new domain or subdomain only, from an account that owns both properties)</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>New sitemap submitted in Search Console and listed in robots.txt (old one stays in Search Console for a few weeks)</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Change of Address tool submitted after redirects are live, for every variant of the old domain (new domain or subdomain only; one Google account with owner access to both properties)</td><td class="owner"></td><td class="due"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Bing Webmaster Tools: new site added, new sitemap submitted</td><td class="owner"></td><td class="due"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>GA4 collecting page views, key events (forms, calls) recorded</td><td class="owner"></td><td class="due"></td></tr>
   </tbody>
 </table>
-
 <h2><span class="nr">C.</span> After the move (8–12 weeks)</h2>
 <table>
-  <thead><tr><th></th><th style="width:78px">When</th><th>Task</th><th>Owner</th></tr></thead>
+  <thead><tr><th></th><th style="width:92px">When</th><th>Task</th><th>Owner</th></tr></thead>
   <tbody>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Week 1</td><td>Daily review of 404s and the Pages report, missing URLs added to the map</td><td class="owner"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Within 48 h</td><td>Comparison crawl of the live site against the staging crawl</td><td class="owner"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Weeks 1–4</td><td>Daily crawl of the new site, review of 404s and the Pages report, missing URLs added to the map</td><td class="owner"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>Weeks 1–2</td><td>Redirect chains collapsed to a single hop</td><td class="owner"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Weeks 1–2</td><td>Internal links point to final URLs, not redirects</td><td class="owner"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Weeks 1–2</td><td>Remaining internal links point to final URLs, not redirects</td><td class="owner"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>Weeks 2–4</td><td>Most valuable backlinks updated by the linking sites</td><td class="owner"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>Weeks 1–4</td><td>New URL in Google Business Profile, social profiles and ad campaigns</td><td class="owner"></td></tr>
-    <tr><td class="cbk"><span class="cb"></span></td><td>Every week</td><td>Clicks, impressions and priority query positions compared with the baseline (part E)</td><td class="owner"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Every week</td><td>Clicks, impressions and priority query positions compared with the baseline (part&nbsp;E); server logs or the Crawl stats report</td><td class="owner"></td></tr>
+    <tr><td class="cbk"><span class="cb"></span></td><td>Every month</td><td>AI answers: Google AI Overviews, ChatGPT and Perplexity still name the business for key questions</td><td class="owner"></td></tr>
     <tr><td class="cbk"><span class="cb"></span></td><td>1 year min.</td><td>Redirects and old domain registration kept (Google recommends at least a year)</td><td class="owner"></td></tr>
   </tbody>
 </table>
-
+<div class="box" style="margin-top:12px">
+  <h3>New server or hosting only (same URLs)</h3>
+  <table class="hosting">
+    <tbody>
+      <tr><td class="cbk"><span class="cb"></span></td><td>DNS record TTL lowered at least a week before the move (for example to a few hours)</td></tr>
+      <tr><td class="cbk"><span class="cb"></span></td><td>Copy on the new server tested before the DNS change: pages, images, forms, downloads</td></tr>
+      <tr><td class="cbk"><span class="cb"></span></td><td>Firewall and DoS protection don’t block Googlebot (check with the URL Inspection tool)</td></tr>
+      <tr><td class="cbk"><span class="cb"></span></td><td>Search Console verification works on the new server (HTML file or meta tag)</td></tr>
+      <tr><td class="cbk"><span class="cb"></span></td><td>Build-time blocks (noindex, Disallow) removed before the DNS records change</td></tr>
+      <tr><td class="cbk"><span class="cb"></span></td><td>Old hosting shut down only once it gets no traffic, Googlebot included</td></tr>
+    </tbody>
+  </table>
+  <p class="small" style="margin:4px 0 0">You don’t need redirects or the Change of Address tool. Do the baseline, priority URL tests and monitoring (parts&nbsp;A, B and E) the same way.</p>
+</div>
 <div class="new-page"></div>
 <h2><span class="nr">D.</span> Redirect map</h2>
 <div class="box">
@@ -138,14 +155,14 @@
   <ul>
     <li><strong>One hop:</strong> each old URL goes straight to its final destination, with no chains.</li>
     <li><strong>301 or 308</strong> (permanent), not 302 or 307. Server-side redirects, not JavaScript.</li>
-    <li><strong>Closest match</strong> in content, not the home page. No equivalent = 404 or 410.</li>
+    <li><strong>Closest match</strong> in content, not the home page. Pages merged into one can all point to it. No equivalent = 404 or 410.</li>
     <li><strong>One URL format:</strong> HTTPS, trailing slash or not, lowercase, www or non-www.</li>
   </ul>
 </div>
 <table class="map">
   <thead><tr><th class="lp">#</th><th>Old URL</th><th>New URL</th><th class="code">Code</th><th class="priority">Priority</th><th class="test">Test (date, result)</th></tr></thead>
   <tbody>
-    <tr class="example"><td class="lp">e.g.</td><td>/services/web-design.html</td><td>/web-design/</td><td>301</td><td>High</td><td>01/12 · OK</td></tr>
+    <tr class="example"><td class="lp">e.g.</td><td>/services/web-design.html</td><td>/web-design/</td><td>301</td><td>High</td><td>12 Jan · OK</td></tr>
     <tr><td class="lp">1</td><td></td><td></td><td></td><td></td><td></td></tr>
     <tr><td class="lp">2</td><td></td><td></td><td></td><td></td><td></td></tr>
     <tr><td class="lp">3</td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -169,11 +186,10 @@
   </tbody>
 </table>
 <p class="small">Priority: high = URL with Google traffic or backlinks; medium = URL in the site structure; low = everything else. For a larger site, keep the map in a spreadsheet with the same columns.</p>
-
 <div class="new-page"></div>
 <h2><span class="nr">E.</span> Weekly tracker</h2>
 <table class="tracker">
-  <thead><tr><th>Week</th><th style="width:58px">Date</th><th class="num">Google clicks</th><th class="num">Impressions</th><th class="num">404 errors</th><th class="num">Indexed from new sitemap</th><th>Notes</th></tr></thead>
+  <thead><tr><th>Week</th><th style="width:58px">Date</th><th class="num">Google clicks</th><th class="num">Impressions</th><th class="num">404 errors</th><th class="num">Indexed: new / old sitemap</th><th>Notes</th></tr></thead>
   <tbody>
     <tr><td>Baseline</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     <tr><td>Week 1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -190,8 +206,7 @@
     <tr><td>Week 12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
-<p class="small">Ranking movement in the first weeks is normal: according to Google, a medium-sized site can take a few weeks or more before the new URLs replace the old ones. Watch for a drop that sticks or a growing number of 404s.</p>
-
+<p class="small">Ranking movement in the first weeks is normal: according to Google, a medium-sized site can take a few weeks or more before the new URLs replace the old ones. Watch for a drop that sticks or a growing number of 404s. Indexed URLs from the new sitemap should rise while the old sitemap’s count falls.</p>
 <h2><span class="nr">F.</span> Post-migration issue log</h2>
 <table class="log">
   <thead><tr><th style="width:62px">Date</th><th style="width:34%">Issue (URL, symptom)</th><th style="width:22%">Cause</th><th style="width:22%">Fix</th><th style="width:80px">Owner</th><th style="width:30px">Done</th></tr></thead>
@@ -206,9 +221,8 @@
     <tr><td></td><td></td><td></td><td></td><td></td><td class="cbk"><span class="cb"></span></td></tr>
   </tbody>
 </table>
-
 <div class="footer">
-  <span><strong>www.ai-seo-company.pl/en/tools/website-migration-checklist</strong><br>Sources: Google Search Central "How to move a site", Search Console Help "Change of Address tool" (accessed November 11, 2026)</span>
+  <span><strong>www.ai-seo-company.pl/en/tools/website-migration-checklist</strong><br>Sources (accessed November 11, 2026): Google Search Central “How to move a site”, “Changing your hosting”, “Redirects and Google Search”, “Introduction to robots.txt”; Search Console Help “Change of Address tool”.</span>
   <span>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</span>
 </div>
 

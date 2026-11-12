@@ -49,7 +49,9 @@ table.lista td { padding: 1mm 1.4mm; }
 .st .box { width: 2.6mm; height: 2.6mm; }
 .notatki { }
 code { font-family: inherit; font-size: 7.5pt; background: #F7F5F2; padding: 0 0.6mm; border-radius: 0.6mm; }
-.wynik { margin: 3mm 0 0; font-size: 8.5pt; }
+.wynik { margin: 3mm 0 0; font-size: 8.5pt; display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+.wynik .marka { font-size: 7pt; color: #6E6E73; white-space: nowrap; }
+.wynik .marka b { color: #D85A30; letter-spacing: 0.06em; }
 footer { margin-top: 7mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
 footer p { margin: 0 0 0.8mm; }
 footer strong { color: #1D1D1F; }
@@ -63,7 +65,7 @@ footer strong { color: #1D1D1F; }
 <div class="pola sek"><div class="pole"><span>Website (URL)</span><i></i></div><div class="pole"><span>Review date</span><i></i></div><div class="pole"><span>Reviewed by</span><i></i></div><div class="pole"><span>Next review</span><i></i></div></div>
 <div class="sek">
   <h3>How to use this template</h3>
-  <ol class="kroki"><li><strong>Record a baseline.</strong> non-brand clicks and customer inquiries (table at the bottom of this page).</li><li><strong>Collect access.</strong> Search Console, GA4, Google Business Profile, CMS, robots.txt. Missing access is your first finding.</li><li><strong>Work through areas A–E in order.</strong> and mark each check OK, needs work or N/A.</li><li><strong>Describe the problem.</strong> in the notes: the URL and the specific issue, e.g. “/contact: no H1.”</li><li><strong>Set the order.</strong> high priority first. Give every open check an owner and a deadline.</li><li><strong>Recheck.</strong> after the fixes and fill in the summary. Repeat the full list every quarter.</li></ol>
+  <ol class="kroki"><li><strong>Record a baseline:</strong> non-brand clicks and customer inquiries (table at the bottom of this page).</li><li><strong>Collect access:</strong> Search Console, GA4, Google Business Profile, CMS, robots.txt. Missing access is your first finding.</li><li><strong>Work through areas A–E in order</strong> and mark each check OK, needs work or N/A.</li><li><strong>Describe the problem in the notes:</strong> the URL and the specific issue, e.g. “/contact: no H1.”</li><li><strong>Set the order:</strong> high priority first. Give every open check an owner and a deadline.</li><li><strong>Recheck</strong> after the fixes and fill in the summary. Repeat the full list every quarter.</li></ol>
 </div>
 <div class="sek">
   <h3>Statuses and priorities</h3>
@@ -79,7 +81,7 @@ footer strong { color: #1D1D1F; }
 </div>
 <div>
   <h3>Baseline (check E9)</h3>
-  <div class="baza"><div class="pole"><span>Non-brand clicks (Search Console, last month)</span><i></i></div><div class="pole"><span>Customer inquiries (GA4 key events, last month)</span><i></i></div><div class="pole"><span>Date recorded</span><i></i></div></div>
+  <div class="baza"><div class="pole"><span>Non-brand clicks (Search Console, last month)</span><i></i></div><div class="pole"><span>Customer inquiries (GA4 and inbox or CRM, last month)</span><i></i></div><div class="pole"><span>Date recorded</span><i></i></div></div>
 </div>
 
 <section class="obszar">
@@ -97,7 +99,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">A2</td>
-        <td><div class="pk">Only one version of the domain resolves (www or non-www), and the other redirects to it in a single hop</div><div class="jak"><b>How to check:</b> Open both versions. They should end on the same page without a redirect chain.</div></td>
+        <td><div class="pk">Only one version of the domain resolves (www or non-www), and the other redirects to it with a single permanent (301 or 308) redirect</div><div class="jak"><b>How to check:</b> Open both versions. They should end on the same page without a redirect chain.</div></td>
         <td><span class="prio w">high</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -115,13 +117,13 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">A5</td>
-        <td><div class="pk">The XML sitemap lists only canonical URLs that work, and robots.txt points to it</div><div class="jak"><b>How to check:</b> Open sitemap.xml and robots.txt (the "Sitemap:" line). Remove redirects, 404s and noindexed pages from the sitemap.</div></td>
+        <td><div class="pk">The XML sitemap lists only canonical URLs that work, and robots.txt points to it</div><div class="jak"><b>How to check:</b> Open sitemap.xml and robots.txt (the "Sitemap:" line). Remove redirects, 404s and noindexed pages from the sitemap. Only change lastmod when the content changes significantly.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">A6</td>
-        <td><div class="pk">Every page has a canonical tag pointing to itself or to the preferred version</div><div class="jak"><b>How to check:</b> View the page source (<code>rel="canonical"</code>) or run the free SEO audit.</div></td>
+        <td><div class="pk">Every page has a canonical tag pointing to itself or to the preferred version, and language versions are linked with reciprocal hreflang</div><div class="jak"><b>How to check:</b> Page source (<code>rel="canonical"</code>) or the free SEO audit. Google treats canonical as a signal, not a directive, so check URL Inspection in Search Console to see which URL it chose. With several languages, each version lists itself and the others; adding x-default is recommended.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -139,7 +141,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">A9</td>
-        <td><div class="pk">Core Web Vitals pass: LCP within 2.5 s, INP under 200 ms, CLS under 0.1</div><div class="jak"><b>How to check:</b> Search Console → Core Web Vitals (real-user data). Use Lighthouse to find the causes.</div></td>
+        <td><div class="pk">Core Web Vitals pass: LCP of 2.5 s or less, INP of 200 ms or less, CLS of 0.1 or less</div><div class="jak"><b>How to check:</b> Search Console → Core Web Vitals (real-user data, 75th percentile of visits). Use Lighthouse to find the causes.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -152,7 +154,7 @@ footer strong { color: #1D1D1F; }
       </tr>
     </tbody>
   </table>
-  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  <p class="wynik"><span>Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</span><span class="marka"><b>AI SEO COMPANY</b> · ai-seo-company.pl/en/tools/seo-checklist</span></p>
   
 </section>
 <section class="obszar">
@@ -170,7 +172,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">B2</td>
-        <td><div class="pk">Titles lead with the most important information, don’t repeat words, and put the brand at the end</div><div class="jak"><b>How to check:</b> Check your listing in Google. Titles get truncated to fit the screen, so the key phrase can’t sit at the end of a long title.</div></td>
+        <td><div class="pk">Titles lead with the most important information, don’t repeat words, and put the brand at the end</div><div class="jak"><b>How to check:</b> Check your listing in Google. There’s no character limit, but Google truncates titles to fit the screen, so the key phrase can’t sit at the end of a long title. Our free audit flags titles over 60 characters.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -182,8 +184,8 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">B4</td>
-        <td><div class="pk">Each page has one H1 that says what the page is about and includes the primary keyword</div><div class="jak"><b>How to check:</b> Use an SEO browser extension or view the source and count the h1 tags.</div></td>
-        <td><span class="prio w">high</span></td>
+        <td><div class="pk">Each page has one H1 that says what the page is about and includes the primary keyword</div><div class="jak"><b>How to check:</b> Use an SEO browser extension or view the source and count the h1 tags. Google doesn’t require a single H1, but one clear heading keeps the page tidy.</div></td>
+        <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
       </tr><tr>
@@ -194,7 +196,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">B6</td>
-        <td><div class="pk">The content matches search intent: scope, price and process for a service, a direct answer for a question</div><div class="jak"><b>How to check:</b> Search the keyword and compare the kind of pages in the top 10 with yours.</div></td>
+        <td><div class="pk">The content matches search intent: scope, price and process for a service, a direct answer for a question</div><div class="jak"><b>How to check:</b> Search the keyword and compare the kind of pages in the top 10 with yours. Add what they’re missing: your own data, an example, a price.</div></td>
         <td><span class="prio w">high</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -206,7 +208,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">B8</td>
-        <td><div class="pk">No two pages compete for the same keyword (cannibalization)</div><div class="jak"><b>How to check:</b> Search Console → Performance → filter by query → Pages tab. Several URLs on one query call for a decision.</div></td>
+        <td><div class="pk">Every important page has its own primary keyword, and no two pages compete for the same one (cannibalization)</div><div class="jak"><b>How to check:</b> Map it in a sheet: one keyword → one URL. Then Search Console → Performance → filter by query → Pages tab. Several URLs on one query call for a decision.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -218,13 +220,13 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">B10</td>
-        <td><div class="pk">Every important page gets internal links from other pages (menu, body copy, footer)</div><div class="jak"><b>How to check:</b> Crawler: find pages with no incoming links. Add a link from a closely related page.</div></td>
+        <td><div class="pk">Every important page gets internal links from other pages (menu, body copy, footer)</div><div class="jak"><b>How to check:</b> Crawler: find pages with no incoming links or more than 3 clicks from the homepage. Add a link from a closely related page.</div></td>
         <td><span class="prio w">high</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">B11</td>
-        <td><div class="pk">Link text describes the target page (“technical SEO audit,” not “click here”)</div><div class="jak"><b>How to check:</b> Review the links in the body copy of your key pages.</div></td>
+        <td><div class="pk">Link text describes the target page (“website SEO audit,” not “click here”)</div><div class="jak"><b>How to check:</b> Review the links in the body copy of your key pages.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -249,7 +251,7 @@ footer strong { color: #1D1D1F; }
       </tr>
     </tbody>
   </table>
-  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  <p class="wynik"><span>Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</span><span class="marka"><b>AI SEO COMPANY</b> · ai-seo-company.pl/en/tools/seo-checklist</span></p>
   
 </section>
 <section class="obszar">
@@ -303,7 +305,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">C8</td>
-        <td><div class="pk">Reviews come in steadily, and each one gets a reply from the business</div><div class="jak"><b>How to check:</b> Profile dashboard → reviews. Reply to critical reviews too, factually and without customer details.</div></td>
+        <td><div class="pk">Reviews come in steadily, and each one gets a reply from the business</div><div class="jak"><b>How to check:</b> Profile dashboard → reviews. Reply to critical reviews too, factually and without customer details. Never pay for reviews or offer discounts for them.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -316,19 +318,19 @@ footer strong { color: #1D1D1F; }
       </tr>
     </tbody>
   </table>
-  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  <p class="wynik"><span>Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</span><span class="marka"><b>AI SEO COMPANY</b> · ai-seo-company.pl/en/tools/seo-checklist</span></p>
   
 </section>
 <section class="obszar">
-  <h2>D. AI readiness: bots, structured data, llms.txt</h2>
-  <p class="opis">Whether AI search engines can read your site. Google requires no special files for AI Overviews, so llms.txt is low priority. <span class="ile">8 checks</span></p>
+  <h2>D. AI readiness: bot access, content and business details</h2>
+  <p class="opis">Whether AI search engines can read your site and find answers on it. Google Search doesn’t use llms.txt, so that file is low priority. <span class="ile">8 checks</span></p>
   <table class="lista">
     <colgroup><col style="width:9mm"><col style="width:101mm"><col style="width:16mm"><col style="width:15mm"><col></colgroup>
     <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
     <tbody>
       <tr>
         <td class="nr">D1</td>
-        <td><div class="pk">robots.txt lets AI search bots in: OAI-SearchBot (ChatGPT), PerplexityBot, Claude-SearchBot</div><div class="jak"><b>How to check:</b> Open robots.txt. Look for these names and for a "User-agent: *" group with "Disallow: /".</div></td>
+        <td><div class="pk">robots.txt lets AI search bots in: OAI-SearchBot (ChatGPT), PerplexityBot, Claude-SearchBot</div><div class="jak"><b>How to check:</b> Open robots.txt. Look for these names and for a "User-agent: *" group with "Disallow: /". In Search Console, also check Settings → Search generative AI: your site should be included (the default).</div></td>
         <td><span class="prio w">high</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -352,7 +354,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">D5</td>
-        <td><div class="pk">Organization or LocalBusiness structured data in JSON-LD matches what’s visible on the page</div><div class="jak"><b>How to check:</b> Rich Results Test or the schema.org validator. Name, address and phone as in your profile.</div></td>
+        <td><div class="pk">Organization or LocalBusiness structured data in JSON-LD matches what’s visible on the page</div><div class="jak"><b>How to check:</b> Rich Results Test or the schema.org validator. Name, address and phone as in your profile. Google doesn’t require this markup for AI Overviews, but it keeps your business details consistent.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
@@ -364,20 +366,20 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">D7</td>
-        <td><div class="pk">Answers to common customer questions (price, timing, process) are on the site in short, self-contained paragraphs</div><div class="jak"><b>How to check:</b> List the questions customers ask on the phone. Does each one have an answer on the site?</div></td>
+        <td><div class="pk">The site answers common customer questions (price, timing, process) directly and with specifics</div><div class="jak"><b>How to check:</b> List the questions customers ask on the phone and Google’s autocomplete suggestions for your service. Does each one have an answer on the site? Google doesn’t need text chopped into small chunks for AI: what counts is the answer itself.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">D8</td>
-        <td><div class="pk">Optional: an llms.txt file at the site root with a company summary and links to key pages</div><div class="jak"><b>How to check:</b> Open yourdomain.com/llms.txt. Google doesn’t require it for AI Overviews, so do it after the checks above.</div></td>
+        <td><div class="pk">Optional: an llms.txt file at the site root with a company summary and links to key pages</div><div class="jak"><b>How to check:</b> Open yourdomain.com/llms.txt. Google Search doesn’t use it, so do it after the checks above.</div></td>
         <td><span class="prio n">low</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
       </tr>
     </tbody>
   </table>
-  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  <p class="wynik"><span>Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</span><span class="marka"><b>AI SEO COMPANY</b> · ai-seo-company.pl/en/tools/seo-checklist</span></p>
   
 </section>
 <section class="obszar">
@@ -431,20 +433,20 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">E8</td>
-        <td><div class="pk">A fixed set of customer questions is checked monthly in ChatGPT, Gemini, Perplexity and Google AI Overviews</div><div class="jak"><b>How to check:</b> Record the questions and the outcome: is your business named, and which sources are cited?</div></td>
+        <td><div class="pk">A fixed set of customer questions is checked monthly in ChatGPT, Gemini, Perplexity and Google AI Overviews</div><div class="jak"><b>How to check:</b> Record the questions and the outcome: is your business named, and which sources are cited? For Google, the Generative AI performance report in Search Console shows impressions in AI Overviews and AI Mode.</div></td>
         <td><span class="prio s">medium</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">E9</td>
-        <td><div class="pk">A baseline is recorded before any changes, and results are compared year over year</div><div class="jak"><b>How to check:</b> Record the date, non-brand clicks and customer inquiries from GA4.</div></td>
+        <td><div class="pk">A baseline is recorded before any changes, and results are compared year over year</div><div class="jak"><b>How to check:</b> Record the date, non-brand clicks and customer inquiries. Count inquiries in your inbox or CRM too: when visitors decline cookies, GA4 can undercount them.</div></td>
         <td><span class="prio w">high</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
         <td class="notatki"></td>
       </tr>
     </tbody>
   </table>
-  <p class="wynik">Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+  <p class="wynik"><span>Area score: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</span></p>
   <footer><p>Latest version of this checklist, a worked example and sources: <strong>www.ai-seo-company.pl/en/tools/seo-checklist</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p></footer>
 </section>
 </body>

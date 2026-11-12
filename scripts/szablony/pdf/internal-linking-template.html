@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Internal linking strategy template and audit</title>
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #fff; color: #1D1D1F; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9.2pt; line-height: 1.38; }
+  .naglowek { display: flex; justify-content: space-between; font-size: 7.6pt; letter-spacing: .06em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 5mm; }
+  .naglowek b { color: #D85A30; }
+  h1 { font-size: 21pt; line-height: 1.12; letter-spacing: -.015em; margin: 0 0 2.5mm; }
+  .lead { font-size: 10pt; color: #3A3A3C; margin: 0 0 4mm; }
+  h2 { font-size: 12.2pt; line-height: 1.25; margin: 5mm 0 2mm; padding-bottom: 1.5mm; border-bottom: 1.6pt solid #D85A30; break-after: avoid; page-break-after: avoid; }
+  h2 .nr { color: #D85A30; }
+  h3 { font-size: 10pt; margin: 0 0 1.6mm; break-after: avoid; }
+  p { margin: 0 0 2mm; }
+  .wsk { font-size: 8.2pt; color: #6E6E73; margin: 0 0 2mm; break-after: avoid; }
+  .ramka { border: 0.8pt solid #E5E1DC; border-left: 2.4pt solid #D85A30; border-radius: 1.5mm; padding: 3mm 4mm 2mm; margin: 0 0 3.5mm; background: #FFFCFA; break-inside: avoid; }
+  .dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  ol.kroki { margin: 0; padding-left: 5mm; }
+  ol.kroki li { margin: 0 0 1.2mm; padding-left: 1mm; }
+  ol.kroki li::marker { color: #D85A30; font-weight: 700; }
+  ul.zasady { margin: 0; padding-left: 4mm; }
+  ul.zasady li { margin: 0 0 1.2mm; }
+  ul.zasady li::marker { color: #D85A30; }
+  .pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 4mm; }
+  .pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+  .pole span { white-space: nowrap; }
+  .pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.1pt; line-height: 1.28; margin: 0 0 2.5mm; }
+  th, td { border: 0.6pt solid #E5E1DC; padding: 1.3mm 1.8mm; text-align: left; vertical-align: top; }
+  th { background: #F7F5F2; font-size: 7.3pt; text-transform: uppercase; letter-spacing: .03em; color: #48484A; font-weight: 700; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  td.etyk { font-weight: 600; }
+  td.zr { color: #6E6E73; font-size: 7.6pt; }
+  td.w { height: 7.6mm; }
+  td.ww { height: 9.5mm; }
+  td.c { text-align: center; vertical-align: middle; }
+  td.nr { width: 7mm; font-weight: 700; color: #D85A30; }
+  tr.przyklad td { color: #6E6E73; font-style: italic; background: #FFFCFA; }
+  tr.hub td { background: #FBF3EF; font-weight: 600; }
+  .cb { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: .5mm; vertical-align: -.5mm; margin-right: 1.2mm; background: #fff; }
+  td .cb { margin: 0; }
+  .opcje { font-size: 7.4pt; line-height: 1.5; white-space: nowrap; }
+  .opcje div { margin: 0; }
+  .opcje .cb { width: 2.6mm; height: 2.6mm; margin-right: 1mm; }
+  .pk { font-weight: 700; font-size: 8.2pt; line-height: 1.25; }
+  .jak { font-size: 7.4pt; color: #48484A; margin-top: .4mm; line-height: 1.25; }
+  .blok { break-inside: avoid; page-break-inside: avoid; }
+  .nowa { break-before: page; page-break-before: always; }
+  .stopka { margin-top: 6mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+  .stopka p { margin: 0 0 .8mm; }
+  .stopka strong { color: #1D1D1F; }
+</style>
+</head>
+<body>
+<div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>Internal linking template · version 11.2026</span></div>
+<h1>Internal linking strategy template</h1>
+<p class="lead">A template to plan and control the links between your pages: page priorities, an anchor text register, a hub-and-spoke map, a link plan, a quarterly audit, decisions on orphan pages, and results and next steps. Fill it in by hand or in any PDF editor.</p>
+<div class="pola"><div class="pole"><span>Website (URL)</span><i></i></div><div class="pole"><span>Date prepared</span><i></i></div><div class="pole"><span>Owner</span><i></i></div><div class="pole"><span>Next audit due</span><i></i></div></div>
+
+<div class="dwie">
+<div class="ramka">
+<h3>How to use this template</h3>
+<ol class="kroki">
+<li><b>Record your baseline</b> (part 1): a crawler, your XML sitemap, the Links report in Search Console.</li>
+<li><b>Pick your priority pages</b> (part 2) and give each a priority from 1 to 3.</li>
+<li><b>Assign their anchors</b> in the register (part 3).</li>
+<li><b>Draw the hub-and-spoke map</b> (part 4): each hub and its spoke pages.</li>
+<li><b>Write the link plan</b> (part 5), starting with priority 1 pages.</li>
+<li><b>Every quarter</b>, run the audit (part 6) and decide on orphan pages (part 7).</li>
+<li><b>Measure the effect</b> (part 8) in Search Console.</li>
+</ol>
+</div>
+<div class="ramka">
+<h3>The rules in brief</h3>
+<ul class="zasady">
+<li>The hub links to every spoke, and every spoke links back to the hub.</li>
+<li>New content: a link to the hub and to 2–4 pages in the same cluster; the hub links to it on the day it goes live.</li>
+<li>Priority 1 pages get the most incoming internal links.</li>
+<li>Important pages sit no more than 3 clicks from the homepage.</li>
+<li>Anchor text is descriptive and concise; one anchor = one target page.</li>
+<li>Link to the canonical, final URL with no redirects; use an &lt;a href&gt; element, no nofollow.</li>
+</ul>
+</div>
+</div>
+
+<div class="blok"><h2><span class="nr">1.</span> Baseline and following quarters</h2>
+<p class="wsk">Record the values before your first changes, then every quarter using the same method. Quick check of up to 25 pages: the free SEO audit at ai-seo-company.pl.</p>
+<table>
+<colgroup><col style="width:36%"><col style="width:24%"><col style="width:10%"><col style="width:10%"><col style="width:10%"><col style="width:10%"></colgroup>
+<thead><tr><th>Metric</th><th>Source</th><th>Start</th><th>Q2</th><th>Q3</th><th>Q4</th></tr></thead>
+<tbody>
+<tr><td class="etyk">Date measured</td><td class="zr">–</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">URLs in the XML sitemap</td><td class="zr">sitemap.xml</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">URLs found by following links (200, indexable)</td><td class="zr">Crawler</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Orphan pages (sitemap only)</td><td class="zr">Crawler and sitemap</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Internal links to 4xx/5xx pages</td><td class="zr">Crawler, free SEO audit</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Internal links through redirects</td><td class="zr">Crawler (audit: chains only)</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Important pages deeper than 3 clicks</td><td class="zr">Crawler (crawl depth)</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Priority 1 pages among the most linked pages</td><td class="zr">Links report in Search Console</td><td class="w"></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">2.</span> Page priorities</h2>
+<p class="wsk">Priority 1: service pages, categories and content that bring in leads. Priority 2: pages that support sales. Priority 3: everything else. Target: how many incoming links the page should have, and from where.</p>
+<table>
+<colgroup><col style="width:27%"><col style="width:14%"><col style="width:15%"><col style="width:9%"><col style="width:11%"><col style="width:15%"><col style="width:9%"></colgroup>
+<thead><tr><th>Page URL</th><th>Type (service, category, hub, article)</th><th>Cluster</th><th>Priority</th><th>Incoming links today</th><th>Target</th><th>Click depth</th></tr></thead>
+<tbody>
+<tr class="przyklad"><td>Example: /bathroom-renovation</td><td>Service, hub</td><td>Bathroom renovation</td><td>1</td><td>4</td><td>Links from 5 cluster pages and the homepage</td><td>1</td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="blok"><h2><span class="nr">3.</span> Anchor text register</h2>
+<p class="wsk">Descriptive, reasonably concise anchor text, no keyword stuffing. The same anchor text never points to two different pages. For image links, the alt attribute is the anchor.</p>
+<table>
+<colgroup><col style="width:24%"><col style="width:24%"><col style="width:28%"><col style="width:24%"></colgroup>
+<thead><tr><th>Target page</th><th>Primary anchor</th><th>Allowed variants</th><th>Don’t use (belongs to another page)</th></tr></thead>
+<tbody>
+<tr class="przyklad"><td>/bathroom-renovation</td><td>bathroom renovation in Warsaw</td><td>bathroom renovation; how we run a bathroom renovation</td><td>“pricing” (belongs to /pricing)</td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">4.</span> Hub-and-spoke map</h2>
+<p class="wsk">One cluster = one primary keyword for the hub. Tick the links that already exist. An empty box = a link to add in part 5.</p>
+<table>
+<colgroup><col style="width:44%"><col style="width:14%"><col style="width:14%"><col style="width:28%"></colgroup>
+<thead><tr><th>Hub and spoke pages (URL)</th><th>Hub → spoke</th><th>Spoke → hub</th><th>Links to 2–4 cluster pages (which)</th></tr></thead>
+<tbody>
+<tr class="przyklad"><td>Example. Hub: /bathroom-renovation · spoke: /blog/bathroom-renovation-cost</td><td class="c">yes</td><td class="c">yes</td><td>tiles guide, Mokotów case study</td></tr>
+<tr class="hub"><td class="w">Cluster 1. Hub:</td><td></td><td></td><td>Primary keyword:</td></tr>
+<tr><td class="w">1.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">2.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">3.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">4.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr class="hub"><td class="w">Cluster 2. Hub:</td><td></td><td></td><td>Primary keyword:</td></tr>
+<tr><td class="w">1.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">2.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">3.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">4.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+</tbody></table></div>
+
+<div class="blok"><h2><span class="nr">5.</span> Link plan</h2>
+<p class="wsk">Start with links to priority 1 pages. Placement: B = body copy, M = menu, BC = breadcrumbs, F = footer, R = “related” block. A link in the body copy carries the most context.</p>
+<table>
+<colgroup><col style="width:6%"><col style="width:21%"><col style="width:21%"><col style="width:24%"><col style="width:9%"><col style="width:8%"><col style="width:11%"></colgroup>
+<thead><tr><th>No.</th><th>Source page</th><th>Target page</th><th>Anchor text</th><th>Placement</th><th>Live</th><th>Date</th></tr></thead>
+<tbody>
+<tr class="przyklad"><td>–</td><td>/blog/apartment-bathroom-renovation</td><td>/bathroom-renovation</td><td>bathroom renovation in Warsaw</td><td>B</td><td class="c">yes</td><td>12 Jan</td></tr>
+<tr><td class="nr">1</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">2</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">3</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">4</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">5</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">6</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">7</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">8</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">9</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">10</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">11</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">12</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+</tbody></table></div>
+
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">6.</span> Quarterly internal linking audit</h2>
+<p class="wsk">The same criteria every quarter and after every major change (migration, new menu, URL changes). In each quarter’s column, write OK or the number of issues. Move issues to part 5 or 7.</p>
+<table>
+<colgroup><col style="width:6%"><col style="width:58%"><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:9%"></colgroup>
+<thead><tr><th>No.</th><th>Criterion and how to check</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr></thead>
+<tbody>
+<tr><td class="nr">1</td><td><div class="pk">Every important page has a link from at least one other page</div><div class="jak">Crawler: sitemap URLs that no link points to.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">2</td><td><div class="pk">Important pages within 3 clicks of the homepage</div><div class="jak">Crawler: crawl depth report.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">3</td><td><div class="pk">Zero internal links to 4xx and 5xx pages</div><div class="jak">Crawler or the free SEO audit. Fix the link at the source.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">4</td><td><div class="pk">Links point to the final URL, with no redirects on the way</div><div class="jak">Crawler; the free audit flags redirect chains.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">5</td><td><div class="pk">Links point to canonical URLs, not duplicates</div><div class="jak">Compare the linked URL with the target page’s canonical tag.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">6</td><td><div class="pk">Priority 1 pages are among the most linked pages</div><div class="jak">Links report in Search Console (a sample, max. 1,000 rows) against part 2.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">7</td><td><div class="pk">Descriptive anchor text; one anchor points to one page</div><div class="jak">Anchor export from the crawler against the register in part 3.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">8</td><td><div class="pk">Links are &lt;a href&gt; elements present in the HTML, no onclick or &lt;span&gt; links</div><div class="jak">Page source, or the rendered HTML in URL Inspection.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">9</td><td><div class="pk">No important pages with a single incoming link, no pages overloaded with links</div><div class="jak">Crawler: incoming and outgoing links per page.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">10</td><td><div class="pk">Links to important pages without rel="nofollow"</div><div class="jak">Crawler: filter internal links with nofollow.</div></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="blok"><h2><span class="nr">7.</span> Orphan pages and decisions</h2>
+<p class="wsk">Link it: an important page, or one with impressions (positions 4–20). Merge: several weak pages on one topic (301). Remove: no traffic, links or value (410, or 301 to the parent page). Noindex: a page people need but search results don’t. Update the sitemap after each decision.</p>
+<table>
+<colgroup><col style="width:26%"><col style="width:15%"><col style="width:17%"><col style="width:26%"><col style="width:16%"></colgroup>
+<thead><tr><th>URL</th><th>How we know</th><th>Decision</th><th>Link from / 301 to</th><th>Owner, due date</th></tr></thead>
+<tbody>
+<tr><td class="ww"></td><td></td><td class="opcje"><div><span class="cb"></span>link it</div><div><span class="cb"></span>merge (301)</div><div><span class="cb"></span>remove (410)</div><div><span class="cb"></span>noindex</div></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td class="opcje"><div><span class="cb"></span>link it</div><div><span class="cb"></span>merge (301)</div><div><span class="cb"></span>remove (410)</div><div><span class="cb"></span>noindex</div></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td class="opcje"><div><span class="cb"></span>link it</div><div><span class="cb"></span>merge (301)</div><div><span class="cb"></span>remove (410)</div><div><span class="cb"></span>noindex</div></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td class="opcje"><div><span class="cb"></span>link it</div><div><span class="cb"></span>merge (301)</div><div><span class="cb"></span>remove (410)</div><div><span class="cb"></span>noindex</div></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">8.</span> Results and next steps</h2>
+<p class="wsk">In Search Console, compare 28 days before the change with 28 days after Google has recrawled the source pages. Incoming links: the Links report or your crawler.</p>
+<table>
+<colgroup><col style="width:28%"><col style="width:14%"><col style="width:19%"><col style="width:20%"><col style="width:19%"></colgroup>
+<thead><tr><th>Target page</th><th>Date links went live</th><th>Incoming links before / after</th><th>Clicks, 28 days before / after</th><th>Avg. position before / after</th></tr></thead>
+<tbody>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+</tbody></table>
+<h3 style="margin-top:4mm">Review findings and tasks for next quarter</h3>
+<p class="wsk">What worked, what didn’t, and why. Move tasks with an owner and a due date to part 5 or 7.</p>
+<table>
+<colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
+<thead><tr><th>Finding or task</th><th>Owner</th><th>Due date</th></tr></thead>
+<tbody>
+<tr><td class="w"></td><td></td><td></td></tr>
+<tr><td class="w"></td><td></td><td></td></tr>
+<tr><td class="w"></td><td></td><td></td></tr>
+<tr><td class="w"></td><td></td><td></td></tr>
+<tr><td class="w"></td><td></td><td></td></tr>
+</tbody></table>
+<div class="stopka"><p>Instructions, examples and Google sources: <strong>www.ai-seo-company.pl/en/tools/internal-linking-template</strong> · Check up to 25 pages for links to 4xx pages and redirects with the free SEO audit: <strong>www.ai-seo-company.pl/en/tools/free-seo-audit</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland</p></div>
+</div>
+</body>
+</html>

@@ -5,8 +5,10 @@
 <title>Content calendar template: 3-month plan – AI SEO COMPANY</title>
 <!--
   Source of public/pliki/content-calendar-template.pdf (page /en/tools/content-calendar-template, 11.11.2026).
-  Content matches lib/szablony/content-plan.js (EN preview: plan basics, topic backlog, 3-month calendar,
-  results sheet, pre-publish checklist) plus a quarterly review.
+  Content matches lib/szablony/content-plan.js (EN preview: 1 plan basics, 2 topic backlog with score V × C ÷ E,
+  3 3-month calendar, 4 results sheet with GA4, 5 pre-publish checklist, 6 quarterly review).
+  Review 11.11.2026: topic sources include Google autocomplete, one cluster = one URL, GA4 in results,
+  6 decisions at 90 days, checklist with information gain, answer-first headings and a fact check for AI-assisted text.
   Generate:
   "/Users/filipsliwa/Library/Caches/ms-playwright/chromium-1140/chrome-mac/Chromium.app/Contents/MacOS/Chromium" \
     --headless=new --disable-gpu --no-pdf-header-footer \
@@ -42,8 +44,8 @@
   table.kal th { font-size: 7.1pt; padding: 1.2mm 1.2mm; }
   table.kal td { padding: 1.1mm 1.2mm; }
   td.w { height: 9.6mm; }
-  td.wk { height: 13mm; }
-  td.wp { height: 10mm; }
+  td.wk { height: 12mm; }
+  td.wp { height: 7.8mm; }
   td.nr { color: #6E6E73; text-align: center; }
   td.tydz { color: #6E6E73; font-weight: 600; }
   tr.przyklad td { color: #6E6E73; font-style: italic; background: #FFFCFA; }
@@ -60,32 +62,32 @@
   .lista { list-style: none; margin: 0; padding: 0; }
   .lista li { display: flex; gap: 1mm; padding: 1.5mm 0; border-bottom: 1px solid #EFEBE6; break-inside: avoid; }
   .lista li .cb { margin-top: .5mm; }
-  .legenda { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 5mm; font-size: 8.3pt; }
+  .legenda { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.8mm 4mm; font-size: 8.1pt; }
   .legenda div { border-left: 2px solid #D85A30; padding: .6mm 0 .6mm 2.4mm; }
-  .legenda b { display: block; font-size: 8.5pt; }
+  .legenda b { display: block; font-size: 8.4pt; }
   .etapy { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
   .etapy div { border: 1px solid #E5E1DC; border-top: 2px solid #D85A30; border-radius: 1mm; padding: 2mm 2.4mm; font-size: 8.4pt; }
   .etapy b { display: block; font-size: 9pt; margin-bottom: .6mm; }
   .odsylacz { margin: 3mm 0 0; padding: 1.6mm 2.6mm; border-left: 2px solid #D85A30; background: #FFF7F2; font-size: 8.6pt; }
-  .stopka { margin-top: 7mm; padding-top: 2.4mm; border-top: 1px solid #E5E1DC; font-size: 8pt; color: #6E6E73; }
+  .stopka { margin-top: 6mm; padding-top: 2.4mm; border-top: 1px solid #E5E1DC; font-size: 8pt; color: #6E6E73; }
   .stopka b { color: #1D1D1F; }
 </style>
 </head>
 <body>
 
 <!-- PAGE 1: how to use, plan basics, quarter layout -->
-<div class="naglowek"><b>AI SEO COMPANY · www.ai-seo-company.pl</b><span>Content calendar template: 3 months</span></div>
+<div class="naglowek"><b>AI SEO COMPANY · www.ai-seo-company.pl</b><span>Content calendar template: 3-month plan</span></div>
 <h1>Content calendar template: 3-month plan</h1>
-<p class="lead">An SEO content plan for your blog and website. Each row is one piece of content with a primary keyword, search intent, format, target URL, internal links, an owner and Google Search Console results at 30 and 90 days.</p>
+<p class="lead">An SEO content plan for your blog and website. Each row is one piece of content with a primary keyword, search intent, format, target URL, internal links, an owner and results from Google Search Console at 30 and 90 days (plus GA4 inquiries at 90 days).</p>
 
 <h2>How to use this template</h2>
 <ol class="kroki">
-  <li><b>Set the basics</b> (part 1): the goal for the quarter, the audience, the service pages to support and a cadence your team can actually keep.</li>
-  <li><b>Build the topic backlog</b> (part 2) from Search Console, keyword research, customer questions and competitor gaps. Score each topic from 1 to 3.</li>
-  <li><b>Give each topic one primary keyword</b> and search it on Google to see which pages rank in the top ten. That tells you the intent and the format.</li>
+  <li><b>Set the basics</b> (part 1): the goal for the quarter, the audience, the service pages to support and a cadence your team can actually keep. Take topics and target pages from your SEO strategy if you have one.</li>
+  <li><b>Build the topic backlog</b> (part 2) from Search Console, keyword research, Google autocomplete and People also ask, customer questions and competitor gaps. Rate each topic from 1 to 3 on three scales and work out the score.</li>
+  <li><b>Give each topic one primary keyword</b> and search it on Google to see which pages rank in the top ten. That tells you the intent and the format. Keywords that share at least 4 of their top 10 results belong on one URL.</li>
   <li><b>Lay out the calendar</b> (part 3): month 1 – service pages and FAQs, month 2 – articles and comparisons, month 3 – case studies and updates.</li>
   <li><b>Run the checklist before publishing</b> (part 5), and on publish day add the 30-day and 90-day check dates.</li>
-  <li><b>Measure and decide</b> (part 4): filter the Search Console Performance report by URL, log the results and your decision. Review the quarter at the end.</li>
+  <li><b>Measure and decide</b> (part 4): filter the Search Console Performance report by URL, add GA4 inquiries at 90 days and log your decision. Review the quarter at the end (part 6).</li>
 </ol>
 
 <h2><span class="nr">1.</span> Plan basics</h2>
@@ -106,35 +108,36 @@
 
 <!-- PAGE 2: topic backlog -->
 <div class="strona">
-<div class="naglowek"><b>AI SEO COMPANY</b><span>Content calendar template: 3 months</span></div>
+<div class="naglowek"><b>AI SEO COMPANY</b><span>Content calendar template: 3-month plan</span></div>
 <h2 class="pierwszy"><span class="nr">2.</span> Topic backlog</h2>
-<p>Topics waiting for a slot. Score each one from 1 to 3: <b>V</b> – business value, <b>C</b> – chance to rank, <b>E</b> – effort (3 = high). Topics with the highest V + C and the lowest E go into the calendar first.</p>
+<p>Topics waiting for a slot. Score each one from 1 to 3: <b>V</b> – business value (can the topic bring in inquiries?), <b>C</b> – chance to rank, <b>E</b> – effort (3 = high). <b>Score = V × C ÷ E.</b> Topics with the highest score go into the calendar first.</p>
 <table>
-  <colgroup><col style="width:9mm"><col style="width:44mm"><col style="width:33mm"><col style="width:22mm"><col style="width:26mm"><col style="width:9mm"><col style="width:9mm"><col style="width:9mm"><col style="width:17mm"></colgroup>
-  <thead><tr><th>#</th><th>Topic</th><th>Primary keyword</th><th>Intent</th><th>Idea source</th><th>V</th><th>C</th><th>E</th><th>For month</th></tr></thead>
+  <colgroup><col style="width:10mm"><col style="width:38mm"><col style="width:31mm"><col style="width:21mm"><col style="width:24mm"><col style="width:9mm"><col style="width:9mm"><col style="width:9mm"><col style="width:12mm"><col style="width:15mm"></colgroup>
+  <thead><tr><th>#</th><th>Topic</th><th>Primary keyword</th><th>Intent</th><th>Idea source</th><th>V</th><th>C</th><th>E</th><th>Score</th><th>Month</th></tr></thead>
   <tbody>
-    <tr class="przyklad"><td class="nr">e.g.</td><td>How much does heat pump installation cost?</td><td>heat pump installation cost</td><td>commercial</td><td>customer questions</td><td>3</td><td>2</td><td>2</td><td>2</td></tr>
-    <tr><td class="nr w">1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">11</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="nr w">14</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr class="przyklad"><td class="nr">e.g.</td><td>How much does heat pump installation cost?</td><td>heat pump installation cost</td><td>commercial</td><td>customer questions</td><td>3</td><td>2</td><td>2</td><td>3</td><td>2</td></tr>
+    <tr><td class="nr w">1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">11</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="nr w">14</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
 
 <h3>Where to find topics</h3>
 <ul class="lista">
-  <li><span class="cb"></span><span><b>Search Console:</b> Performance report, Queries tab, sorted by impressions. Queries with impressions but few clicks.</span></li>
-  <li><span class="cb"></span><span><b>Keyword research:</b> how customers describe your services and what they ask. Keywords with the same intent make one topic.</span></li>
+  <li><span class="cb"></span><span><b>Search Console:</b> Performance report, Queries tab, sorted by impressions. Queries with impressions but few clicks: positions 4–20 mean expanding a page you have, lower positions with no dedicated page mean a new topic.</span></li>
+  <li><span class="cb"></span><span><b>Keyword research:</b> how customers describe your services, what they ask and in which months they search. Keywords that share at least 4 of their top 10 results = one topic and one URL (our working rule).</span></li>
+  <li><span class="cb"></span><span><b>Google autocomplete and People also ask:</b> your customers' exact wording. A long query usually becomes a heading or an FAQ question; it gets its own page only if the intent is different.</span></li>
   <li><span class="cb"></span><span><b>Customer questions:</b> from calls, emails and sales meetings. A question that keeps coming up is a topic for an FAQ or an article.</span></li>
   <li><span class="cb"></span><span><b>Competitor gaps:</b> topics that businesses ranking above you cover and you don't.</span></li>
 </ul>
@@ -142,7 +145,7 @@
 
 <!-- PAGE 3: calendar months 1 and 2 -->
 <div class="strona">
-<div class="naglowek"><b>AI SEO COMPANY</b><span>Content calendar template: 3 months</span></div>
+<div class="naglowek"><b>AI SEO COMPANY</b><span>Content calendar template: 3-month plan</span></div>
 <h2 class="pierwszy"><span class="nr">3.</span> Content calendar</h2>
 <p class="maly" style="margin:0 0 2mm">Intent: informational, commercial, transactional, local. Format: article, service page, FAQ, case study, comparison, update. Status: idea → brief → writing → editing → ready → published → needs update.</p>
 
@@ -172,12 +175,12 @@
     <tr class="akt"><td class="tydz wk">Update</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
-<p class="maly">Rule: one primary keyword, one URL. In the Internal links column, every article names the service page it points to.</p>
+<p class="maly">Rule: one primary keyword, one URL. In the Internal links column, every article names the service page it points to and 2–4 related pieces on the same topic. An FAQ on a service page gets no primary keyword of its own.</p>
 </div>
 
-<!-- PAGE 4: month 3 and results sheet -->
+<!-- PAGE 4: month 3, results sheet, decisions -->
 <div class="strona">
-<div class="naglowek"><b>AI SEO COMPANY</b><span>Content calendar template: 3 months</span></div>
+<div class="naglowek"><b>AI SEO COMPANY</b><span>Content calendar template: 3-month plan</span></div>
 <h3 style="margin-top:0"><span class="nr">Month 3</span> · proof and updates · from ______ to ______</h3>
 <table class="kal">
   <colgroup><col style="width:16mm"><col style="width:30mm"><col style="width:22mm"><col style="width:15mm"><col style="width:15mm"><col style="width:24mm"><col style="width:20mm"><col style="width:13mm"><col style="width:12mm"><col style="width:11mm"></colgroup>
@@ -191,20 +194,22 @@
   </tbody>
 </table>
 
-<h2><span class="nr">4.</span> Results sheet (Google Search Console)</h2>
-<p>Performance report → Page filter with the URL from your plan → date range starting on the publish date. Log clicks, impressions and average position at 30 and at 90 days. On the Queries tab, check whether the page shows up for the primary keyword in your plan.</p>
+<h2><span class="nr">4.</span> Results sheet (Search Console and GA4)</h2>
+<p>Search Console: Performance report → Page filter with the URL from your plan → date range starting on the publish date. Log clicks, impressions and average position at 30 and 90 days, and check on the Queries tab whether the page shows up for the primary keyword. At 90 days, add GA4 key events (for example forms or calls) from visits that started on that page.</p>
 <table class="kal">
-  <colgroup><col style="width:32mm"><col style="width:15mm"><col style="width:26mm"><col style="width:15mm"><col style="width:15mm"><col style="width:15mm"><col style="width:15mm"><col style="width:15mm"><col style="width:30mm"></colgroup>
-  <thead><tr><th>Target URL</th><th>Publish date</th><th>Primary keyword</th><th>Clicks at 30 days</th><th>Impres&shy;sions at 30 days</th><th>Clicks at 90 days</th><th>Impres&shy;sions at 90 days</th><th>Avg. position at 90 days</th><th>Decision</th></tr></thead>
+  <colgroup><col style="width:28mm"><col style="width:14mm"><col style="width:24mm"><col style="width:14mm"><col style="width:15mm"><col style="width:14mm"><col style="width:15mm"><col style="width:15mm"><col style="width:15mm"><col style="width:24mm"></colgroup>
+  <thead><tr><th>Target URL</th><th>Publish date</th><th>Primary keyword</th><th>Clicks at 30 days</th><th>Impres&shy;sions at 30 days</th><th>Clicks at 90 days</th><th>Impres&shy;sions at 90 days</th><th>Avg. position at 90 days</th><th>Inquiries (GA4) at 90 days</th><th>Decision</th></tr></thead>
   <tbody>
-    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="wp"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
   </tbody>
 </table>
 
@@ -213,33 +218,40 @@
   <div><b>No impressions</b>Check indexing with the URL Inspection tool and add internal links.</div>
   <div><b>Impressions for the keyword, few clicks</b>Rewrite the title and meta description, expand the content, add links from strong pages.</div>
   <div><b>Impressions for other queries</b>Change the keyword in the plan or rewrite the piece for the original intent.</div>
+  <div><b>Clicks are growing</b>Add a link to the service page and plan the next piece on the topic.</div>
+  <div><b>Clicks but no inquiries</b>Add a clear link to the service page and a call to action in the piece.</div>
   <div><b>Two URLs for the same keyword</b>Merge the pages (301 redirect) or separate their intents.</div>
 </div>
 </div>
 
 <!-- PAGE 5: checklist, quarterly review, footer -->
 <div class="strona">
-<div class="naglowek"><b>AI SEO COMPANY</b><span>Content calendar template: 3 months</span></div>
+<div class="naglowek"><b>AI SEO COMPANY</b><span>Content calendar template: 3-month plan</span></div>
 <h2 class="pierwszy"><span class="nr">5.</span> Pre-publish checklist</h2>
 <ul class="lista">
-  <li><span class="cb"></span><span>The primary keyword is in the page title, the H1 and the first paragraph.</span></li>
+  <li><span class="cb"></span><span>The primary keyword is in the page title, the H1 and the first paragraph. The title is about 50–60 characters: Google has no limit, but usually truncates longer titles.</span></li>
   <li><span class="cb"></span><span>The content matches the intent you see in Google's top ten results.</span></li>
+  <li><span class="cb"></span><span>The piece adds something the top ten don't have: your own data, an example, project photos, an expert's view.</span></li>
+  <li><span class="cb"></span><span>Under each question heading, the first one or two sentences answer directly, and numbers have a source.</span></li>
+  <li><span class="cb"></span><span>The author, date and sources are visible on the page.</span></li>
   <li><span class="cb"></span><span>No other URL on the site targets the same keyword.</span></li>
-  <li><span class="cb"></span><span>At least two existing pages link to the new piece.</span></li>
-  <li><span class="cb"></span><span>The new piece links to the right service page.</span></li>
+  <li><span class="cb"></span><span>At least two existing pages link to the new piece, and it links to the right service page and 2–4 related pieces on the same topic.</span></li>
   <li><span class="cb"></span><span>The meta description says what the reader will find and gives a reason to click.</span></li>
+  <li><span class="cb"></span><span>Any text drafted with AI has been fact-checked and edited by a person.</span></li>
   <li><span class="cb"></span><span>The publish date is in the calendar, and the 30-day and 90-day check dates are in the team calendar.</span></li>
+  <li><span class="cb"></span><span>In GA4, form submissions and clicks on your phone number are marked as key events (GA4 does not count them retroactively).</span></li>
   <li><span class="cb"></span><span>For updates: the "last updated" date changes only when the content has really changed.</span></li>
 </ul>
 
-<h2>Quarterly review</h2>
-<div class="pole"><div class="n">1</div><div class="t"><div class="e">Which pieces earned the most clicks at 90 days, and why?</div><div class="linia"></div><div class="linia"></div></div></div>
-<div class="pole"><div class="n">2</div><div class="t"><div class="e">Which pieces did not deliver, and what did you decide <span>(expand, rewrite the title, merge)</span>?</div><div class="linia"></div><div class="linia"></div></div></div>
+<h2><span class="nr">6.</span> Quarterly review</h2>
+<div class="pole"><div class="n">1</div><div class="t"><div class="e">Which pieces earned the most clicks and inquiries at 90 days, and why?</div><div class="linia"></div><div class="linia"></div></div></div>
+<div class="pole"><div class="n">2</div><div class="t"><div class="e">Which pieces did not deliver, and what did you decide <span>(expand, rewrite the title, merge, remove)</span>?</div><div class="linia"></div></div></div>
 <div class="pole"><div class="n">3</div><div class="t"><div class="e">Did you keep the cadence? If not, what cadence will you set for next quarter?</div><div class="linia"></div></div></div>
-<div class="pole"><div class="n">4</div><div class="t"><div class="e">Which pages are losing clicks year over year in Search Console and need an update?</div><div class="linia"></div><div class="linia"></div></div></div>
-<div class="pole"><div class="n">5</div><div class="t"><div class="e">Backlog topics for next quarter's calendar <span>(numbers from part 2)</span></div><div class="linia"></div></div></div>
+<div class="pole"><div class="n">4</div><div class="t"><div class="e">Which pages are losing clicks year over year, and do any two URLs show up for the same keyword?</div><div class="linia"></div></div></div>
+<div class="pole"><div class="n">5</div><div class="t"><div class="e">Do AI assistants and AI Overviews mention your business for the questions in your plan?</div><div class="linia"></div></div></div>
+<div class="pole"><div class="n">6</div><div class="t"><div class="e">Backlog topics for next quarter's calendar <span>(numbers from part 2)</span></div><div class="linia"></div></div></div>
 
-<div class="odsylacz">Search Console keeps data for the last 16 months, so you can compare year over year without exporting. Save older data in a spreadsheet.</div>
+<div class="odsylacz">Search Console keeps data for the last 16 months, so you can compare year over year without exporting. Save older data in a spreadsheet. Google counts traffic from AI Overviews and AI Mode in the same Performance report.</div>
 
 <div class="stopka">
   <b>Template and instructions online:</b> www.ai-seo-company.pl/en/tools/content-calendar-template<br>

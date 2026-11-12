@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SEO RFP template – AI SEO COMPANY</title>
+<!--
+  Source of public/pliki/seo-rfp-template.pdf (page /en/tools/seo-rfp-template, 11.11.2026).
+  Content matches the preview in lib/szablony/zapytanie-ofertowe-seo.js (10 parts + proposal scoring sheet).
+  Layout: page 1 = instructions (do not send), pages 2–5 = the RFP to send, page 6 = internal scoring.
+  CSS identical to zapytanie-ofertowe-seo-wzor.html (PL).
+  Generate:
+  "/Users/filipsliwa/Library/Caches/ms-playwright/chromium-1140/chrome-mac/Chromium.app/Contents/MacOS/Chromium" \
+    --headless=new --disable-gpu --no-pdf-header-footer --user-data-dir="$(mktemp -d)" \
+    --print-to-pdf=<repo>/public/pliki/seo-rfp-template.pdf file://<repo>/scripts/szablony/pdf/seo-rfp-template.html
+-->
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #fff; color: #1D1D1F; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9.3pt; line-height: 1.4; }
+  .naglowek { display: flex; justify-content: space-between; font-size: 7.8pt; color: #6E6E73; padding-bottom: 1.8mm; border-bottom: 1px solid #E5E1DC; margin-bottom: 5mm; }
+  .naglowek b { color: #1D1D1F; letter-spacing: .02em; }
+  h1 { font-size: 21pt; line-height: 1.12; letter-spacing: -.015em; margin: 0 0 2.5mm; }
+  .lead { font-size: 10.3pt; color: #3A3A3C; margin: 0 0 4mm; }
+  h2 { font-size: 12.2pt; line-height: 1.25; margin: 6mm 0 2.4mm; padding-bottom: 1.5mm; border-bottom: 1.6px solid #D85A30; break-after: avoid; page-break-after: avoid; }
+  h2 .nr { color: #D85A30; }
+  h3 { font-size: 10.2pt; margin: 3.5mm 0 1.4mm; break-after: avoid; }
+  p { margin: 0 0 2mm; }
+  .wsk { font-size: 8.3pt; color: #6E6E73; margin: 0 0 2mm; break-after: avoid; }
+  .ramka { border: 1px solid #E5E1DC; border-left: 3px solid #D85A30; border-radius: 1.5mm; padding: 3mm 4mm 2mm; margin: 0 0 3mm; background: #FFFCFA; }
+  .ramka h3 { margin-top: 0; }
+  ol.kroki { margin: 0; padding-left: 5mm; }
+  ol.kroki li { margin: 0 0 1.3mm; padding-left: 1mm; }
+  ol.kroki li::marker { color: #D85A30; font-weight: 700; }
+  ul.rady { margin: 0; padding-left: 4.5mm; }
+  ul.rady li { margin: 0 0 1.2mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.3pt; line-height: 1.3; margin: 0 0 2.5mm; }
+  th, td { border: 1px solid #E5E1DC; padding: 1.4mm 2mm; text-align: left; vertical-align: top; }
+  th { background: #FAF7F4; font-weight: 600; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  td.etyk { width: 40%; font-weight: 600; }
+  table.metryczka td.etyk { width: 21%; }
+  table.metryczka td.w { width: 29%; }
+  td.b { font-weight: 600; }
+  td.w { height: 8mm; }
+  td.ww { height: 11mm; }
+  td.wl { height: 12.6mm; }
+  td.www { height: 17mm; }
+  td.wn { height: 10mm; }
+  td.q { width: 7mm; font-weight: 700; color: #D85A30; text-align: center; }
+  td.sz { color: #6E6E73; }
+  tr.razem td { font-weight: 700; background: #FAF7F4; }
+  .cb { display: inline-block; width: 3.2mm; height: 3.2mm; border: 1.3px solid #D85A30; border-radius: .6mm; vertical-align: -.55mm; margin-right: 2mm; }
+  td .cb { margin: 0; }
+  td.c { text-align: center; width: 18mm; }
+  .opcje .cb { margin: 0 1mm 0 0; }
+  .opcje span.o { margin-right: 4mm; white-space: nowrap; }
+  ul.lista { list-style: none; margin: 0 0 2mm; padding: 0; }
+  ul.lista li { padding: 1.3mm 0; border-bottom: 1px solid #E5E1DC; break-inside: avoid; }
+  ul.lista li.z { padding-left: 5.2mm; text-indent: -5.2mm; }
+  .linia { display: inline-block; min-width: 60mm; border-bottom: 1px solid #C9C4BE; height: 4mm; vertical-align: -1mm; }
+  .blok { break-inside: avoid; page-break-inside: avoid; }
+  .nowa { break-before: page; page-break-before: always; }
+  .etykieta { display: inline-block; font-size: 7.6pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: #D85A30; border-radius: 1mm; padding: .8mm 2.2mm; margin-bottom: 2.5mm; }
+  .etykieta.szara { background: #6E6E73; }
+  .tytul-rfp { font-size: 17pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -.01em; }
+  .mail { font-size: 8.6pt; color: #3A3A3C; border: 1px dashed #E5E1DC; border-radius: 1.5mm; padding: 2.5mm 3.5mm; margin: 0 0 2.5mm; }
+  .mail b { color: #1D1D1F; }
+  .zastrz { font-size: 8.4pt; color: #3A3A3C; background: #FAF7F4; border-radius: 1.5mm; padding: 2.5mm 3.5mm; margin: 0 0 2.5mm; }
+  .stopka { margin-top: 7mm; padding-top: 2.5mm; border-top: 1px solid #E5E1DC; font-size: 7.8pt; color: #6E6E73; display: flex; justify-content: space-between; gap: 6mm; }
+  .stopka b { color: #1D1D1F; white-space: nowrap; }
+  .stopka span:last-child { text-align: right; }
+</style>
+</head>
+<body>
+<!-- ===================== PAGE 1: INSTRUCTIONS (do not send) ===================== -->
+<div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>SEO RFP template · version 11.2026</span></div>
+<span class="etykieta szara">Page 1: instructions for you – do not send this page to agencies</span>
+<h1>SEO RFP template: request for proposal</h1>
+<p class="lead">Fill in pages 2–5 and send the same RFP to 3–5 SEO agencies. You will get proposals for the same scope of work, in the same layout, with answers to the same questions. Keep page 6 to yourself: it is the proposal scoring sheet.</p>
+<div class="ramka">
+<h3>How to write an SEO RFP in 7 steps</h3>
+<ol class="kroki"><li><b>Agree on the goal and budget internally</b>: what should change in 12 months and what you can spend monthly.</li><li><b>Collect your baseline data</b> (part 3): Search Console clicks and GA4 leads for the last 12 months, migrations, your history with agencies. No data? Write "none" rather than guessing.</li><li><b>Describe the scope of work</b> (part 5): mark each area "required", "optional" or "out of scope".</li><li><b>Set your working requirements</b> (part 7): Google accounts owned by you, content rights, links stay, notice period, reports from your own data.</li><li><b>Pick 10–12 questions for agencies</b> (part 8) and tick them in the "Ask" column.</li><li><b>Define the proposal format, timeline and criteria</b> (parts 9–10). Set the weights before opening proposals.</li><li><b>Send the identical RFP to 3–5 agencies</b>. Share answers to questions with everyone at once.</li></ol>
+</div>
+<div class="blok"><h2>Before you send it: 6 rules</h2>
+<ul class="rady">
+<li><b>Set the goal in leads, not rankings.</b> Google says no one can guarantee a #1 ranking on Google. Ask what results the agency expects, in what timeframe and how it will measure them.</li>
+<li><b>Read-only access before the proposal.</b> Add agencies to Search Console as restricted users and to GA4 with the Viewer role. Remove access for those you do not hire.</li>
+<li><b>Accounts stay with your business.</b> Your business owns Search Console and GA4 (Administrator role). On your Google Business Profile, you are the primary owner and the agency is a manager.</li>
+<li><b>Give a budget or a range.</b> Otherwise one agency prices the minimum, another a large scope, and you cannot compare them.</li>
+<li><b>Allow 7–10 working days</b> for proposals, with an earlier deadline for questions and a decision date.</li>
+<li><b>Compare prices as a 12-month cost</b>: monthly fee × 12 + one-off costs. Do not automatically pick the cheapest proposal: the scope usually differs.</li>
+</ul></div>
+<div class="blok"><h2>Sample cover email</h2>
+<div class="mail"><b>Subject:</b> Request for proposal – SEO for [website]<br><br>Hello, we are looking for an agency to run SEO for our website [address] from [month]. Attached is our request for proposal with details of our business, goal, current site and scope of work. We are sending the same RFP to a few agencies. Please send any questions to this address by [date] and your proposal by [date]. We will invite shortlisted agencies to a call in the week of [date]. This request does not commit us to signing a contract.<br>Best regards, [name, role, phone]</div></div>
+<p class="wsk">This template is for private businesses that choose their own supplier. It is not a public-sector tender document or a template for grant-funded projects, and it is not legal advice: for a large contract, have a lawyer review it. A description of each part, an example and sources: www.ai-seo-company.pl/en/tools/seo-rfp-template</p>
+
+<!-- ===================== PAGES 2–5: THE RFP TO SEND ===================== -->
+<div class="nowa"></div>
+<span class="etykieta">To send to agencies</span>
+<h1 class="tytul-rfp">Request for proposal: search engine optimization (SEO)</h1>
+<table class="metryczka"><tbody>
+<tr><td class="etyk">Company</td><td class="w"></td><td class="etyk">Website</td><td class="w"></td></tr>
+<tr><td class="etyk">Date sent</td><td class="w"></td><td class="etyk">Proposal deadline</td><td class="w"></td></tr>
+</tbody></table>
+<div class="blok"><h2><span class="nr">1.</span> Company and contact</h2>
+<table><tbody><tr><td class="etyk">Industry and main services or products</td><td class="w"></td></tr><tr><td class="etyk">Company size and area served</td><td class="w"></td></tr><tr><td class="etyk">Contact person (name, role, email, phone)</td><td class="w"></td></tr><tr><td class="etyk">Who decides which agency to hire</td><td class="w"></td></tr></tbody></table></div>
+<div class="blok"><h2><span class="nr">2.</span> Goal</h2>
+<p class="wsk">A business result, not a ranking. If you do not track leads yet, say so: setting up key events in GA4 will be the first task.</p>
+<table><tbody><tr><td class="etyk">12-month business goal (one sentence)</td><td class="wl"></td></tr><tr><td class="etyk">How we measure it today (GA4, CRM, phone calls)</td><td class="w"></td></tr><tr><td class="etyk">Current value (for example monthly leads from organic search)</td><td class="w"></td></tr><tr><td class="etyk">Target value, or "please propose one"</td><td class="w"></td></tr><tr><td class="etyk">What success looks like after 3 months</td><td class="wl"></td></tr></tbody></table></div>
+<div class="blok"><h2><span class="nr">3.</span> Baseline</h2>
+<p class="wsk">Data for the last 12 months. Missing data is information too: write "none".</p>
+<table><tbody><tr><td class="etyk">CMS, number of pages, languages</td><td class="w"></td></tr><tr><td class="etyk">Non-brand clicks, last 12 months (Search Console)</td><td class="w"></td></tr><tr><td class="etyk">Monthly leads from organic search (GA4)</td><td class="w"></td></tr><tr><td class="etyk">Google Business Profile: primary category, number of reviews</td><td class="w"></td></tr><tr><td class="etyk">Migrations, redesigns, traffic drops (with dates)</td><td class="wl"></td></tr><tr><td class="etyk">Previous SEO work: who, for how long, what they did</td><td class="wl"></td></tr><tr><td class="etyk">Access for agencies before they quote</td><td class="opcje"><span class="o"><span class="cb"></span>Search Console (restricted user)</span><span class="o"><span class="cb"></span>GA4 (Viewer)</span><span class="o"><span class="cb"></span>no access</span></td></tr></tbody></table></div>
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">4.</span> Market and competitors</h2>
+<table><tbody><tr><td class="etyk">Area served: cities, countries, languages</td><td class="w"></td></tr><tr><td class="etyk">Services or categories in order of importance</td><td class="wl">1.<br>2.<br>3.</td></tr><tr><td class="etyk">3–5 competitors from Google results and Maps</td><td class="wl"></td></tr><tr><td class="etyk">What sets our business apart</td><td class="w"></td></tr><tr><td class="etyk">How customers find us today</td><td class="w"></td></tr></tbody></table></div>
+<div class="blok"><h2><span class="nr">5.</span> Scope of work to price</h2>
+<p class="wsk">For content and links, give a monthly number and describe what it means (for example the type and length of content, the kind of link sources).</p>
+<table><thead><tr><th>Area</th><th class="c">Required</th><th class="c">Optional</th><th class="c">Out of scope</th></tr></thead><tbody>
+<tr><td>SEO audit and fix plan</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Technical fixes (implemented, or recommendations for our developer)</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Service or category pages</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>New content – number per month: ________</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Links – number per month and source types: ________</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Local SEO and Google Business Profile</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>AI search visibility (ChatGPT, Google AI Overviews)</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Tracking: key events in GA4</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Monthly report and meeting</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Support for a migration or a new website</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Other: ________</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+</tbody></table></div>
+<div class="blok"><h2><span class="nr">6.</span> Our resources</h2>
+<table><tbody><tr><td class="etyk">Who approves changes and content, and how quickly</td><td class="w"></td></tr><tr><td class="etyk">Developer: in-house, external or none; hours per month</td><td class="w"></td></tr><tr><td class="etyk">Who writes or supplies content and photos</td><td class="w"></td></tr><tr><td class="etyk">Agency access to the CMS and hosting</td><td class="opcje"><span class="o"><span class="cb"></span>yes</span><span class="o"><span class="cb"></span>after we approve changes</span><span class="o"><span class="cb"></span>no</span></td></tr></tbody></table></div>
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">7.</span> Working requirements</h2>
+<p class="wsk">Tick the terms you expect. An agency that does not accept them should say so in its proposal.</p>
+<ul class="lista"><li class="z"><span class="cb"></span>Search Console, GA4, Tag Manager, Business Profile and ad account owned by our business; the agency gets permissions.</li><li class="z"><span class="cb"></span>Copyright in content, photos and graphics transferred to us, as set out in the contract.</li><li class="z"><span class="cb"></span>Links earned during the engagement stay after it ends; link list included in reports.</li><li class="z"><span class="cb"></span>No paid links or other practices that break Google's spam policies.</li><li class="z"><span class="cb"></span>Site changes only after our approval; change log kept.</li><li class="z"><span class="cb"></span>Monthly report based on our own Search Console and GA4 data.</li><li>Expected notice period: <span class="linia"></span></li><li>Other requirements: <span class="linia" style="min-width:110mm"></span></li></ul></div>
+<div class="blok"><h2><span class="nr">8.</span> Questions for agencies (answer in your proposal)</h2>
+<p class="wsk">Please answer in writing the questions ticked in the "Ask" column.</p>
+<table><thead><tr><th class="c">Ask</th><th>Question</th></tr></thead><tbody>
+<tr><td class="c"><span class="cb"></span></td><td>1. What results do you expect in our case, in what timeframe, and how will you measure them?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>2. What will you do in the first three months, and in what order?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>3. Who exactly will work on our site, and how will we communicate?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>4. Can you show us a sample report or a demo of your client portal?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>5. What experience do you have in our industry and our market (city, country, languages)?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>6. Do you follow Google Search Essentials, and where do your links come from?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>7. Will we approve site changes before release, and will we get a list of every change?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>8. How do you measure visibility in ChatGPT and Google AI Overviews?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>9. What exactly does the fee cover: how many keywords, pieces of content, links or hours a month?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>10. How long is the contract, what is the notice period, and are there exit fees?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>11. What happens if there is no progress after three months?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>12. Can we speak to a current or former client?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>13. Our own question: </td></tr>
+</tbody></table></div>
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">9.</span> Proposal and pricing format (completed by the agency)</h2>
+<table><tbody><tr><td class="etyk">Monthly fee excluding VAT</td><td class="w"></td></tr><tr><td class="etyk">One-off costs (audit, implementation, setup fee)</td><td class="w"></td></tr><tr><td class="etyk">What the fee covers: keywords, content, links, hours per month</td><td class="wl"></td></tr><tr><td class="etyk">Billing model: retainer, pay for results, mixed</td><td class="w"></td></tr><tr><td class="etyk">Contract term and notice period</td><td class="w"></td></tr><tr><td class="etyk">Plan for the first 3 months</td><td class="www"></td></tr><tr><td class="etyk">Account lead and how to reach them</td><td class="w"></td></tr><tr><td class="etyk">Sample report or portal demo</td><td class="opcje"><span class="o"><span class="cb"></span>attached</span><span class="o"><span class="cb"></span>link: ____________________</span></td></tr></tbody></table>
+<p>Proposal format: PDF, up to <span class="linia" style="min-width:12mm"></span> A4 pages, valid for at least <span class="linia" style="min-width:12mm"></span> days.</p></div>
+<div class="blok"><h2><span class="nr">10.</span> Timeline and selection</h2>
+<table><colgroup><col style="width:60%"><col style="width:40%"></colgroup><thead><tr><th>Stage</th><th>Deadline</th></tr></thead><tbody><tr><td>Questions from agencies</td><td class="w">by</td></tr><tr><td>Answers shared with all agencies</td><td class="w">by</td></tr><tr><td>Proposal deadline</td><td class="w">by</td></tr><tr><td>Calls with shortlisted agencies</td><td class="w"></td></tr><tr><td>Decision and reply to every agency</td><td class="w">by</td></tr></tbody></table>
+<table><colgroup><col style="width:60%"><col style="width:40%"></colgroup><thead><tr><th>Scoring criterion</th><th>Weight</th></tr></thead><tbody><tr><td>Understanding of the goal and a 3-month plan</td><td class="w">%</td></tr><tr><td>Scope and what the fee covers</td><td class="w">%</td></tr><tr><td>Tracking and reporting</td><td class="w">%</td></tr><tr><td>Contract terms and ownership (accounts, content, links)</td><td class="w">%</td></tr><tr><td>Team, experience and references</td><td class="w">%</td></tr><tr><td>AI search visibility and Google compliance</td><td class="w">%</td></tr><tr class="razem"><td>Total</td><td>100%</td></tr></tbody></table>
+<div class="zastrz"><b>Terms.</b> This request does not commit the company to accepting any proposal or signing a contract, and it is not a tender. The information in it is confidential and may be used only to prepare a proposal. Several agencies receive the same request; answers to questions are shared with all of them at the same time.</div></div>
+
+<!-- ===================== PAGE 6: PROPOSAL SCORING (internal) ===================== -->
+<div class="nowa"></div>
+<span class="etykieta szara">Internal use only – do not send to agencies</span>
+<div class="blok"><h2>Proposal scoring sheet</h2>
+<p class="wsk">Scale: 0 – no answer or a generic one, 1 – partial answer, 2 – specific answer backed by evidence (a report, an example, a contract clause). Points per criterion = weight × score. Change the suggested weights (grey) before you open the proposals, not after.</p>
+<table><colgroup><col style="width:34%"><col style="width:12%"><col style="width:9%"><col style="width:15%"><col style="width:15%"><col style="width:15%"></colgroup><thead><tr><th>Criterion</th><th>Suggested weight</th><th>Your weight</th><th>Agency A<br>score / points</th><th>Agency B<br>score / points</th><th>Agency C<br>score / points</th></tr></thead><tbody>
+<tr><td class="b">Understanding of the goal and a 3-month plan</td><td class="sz">25%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Scope and what the fee covers</td><td class="sz">20%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Tracking and reporting</td><td class="sz">15%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Contract terms and ownership</td><td class="sz">15%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Team, experience and references</td><td class="sz">15%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">AI search visibility and Google compliance</td><td class="sz">10%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr class="razem"><td>Score (sum of points)</td><td>100%</td><td></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">12-month cost (12 × monthly fee + one-off costs)</td><td></td><td></td><td class="ww"></td><td class="ww"></td><td class="ww"></td></tr>
+</tbody></table></div>
+<div class="blok"><h2>Red flags in proposals</h2>
+<table><colgroup><col style="width:70%"><col style="width:10%"><col style="width:10%"><col style="width:10%"></colgroup><thead><tr><th>Tick if present</th><th class="c">A</th><th class="c">B</th><th class="c">C</th></tr></thead><tbody>
+<tr><td>A guaranteed #1 ranking, or rankings within a short time</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>The same package for everyone, nothing about our site or goal</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>"Full-service SEO" with no number of content pieces, links or hours</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Rankings from the agency's tool only, no data from our Search Console and GA4</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Google accounts set up under the agency, links "rented" for the duration of the contract</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>A long contract with automatic renewal, or exit fees</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Promised "ChatGPT recommendations" with no measurement method</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+</tbody></table></div>
+<div class="blok"><h2>Call notes</h2>
+<table><colgroup><col style="width:16%"><col style="width:84%"></colgroup><tbody><tr><td class="q" style="width:16%">A</td><td class="wn"></td></tr><tr><td class="q" style="width:16%">B</td><td class="wn"></td></tr><tr><td class="q" style="width:16%">C</td><td class="wn"></td></tr></tbody></table>
+<p>Chosen agency: <span class="linia"></span> &nbsp; Decision date: <span class="linia" style="min-width:30mm"></span></p></div>
+<div class="stopka"><span><b>www.ai-seo-company.pl/en/tools/seo-rfp-template</b><br>Parts, example and sources on the template page.</span><span>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland</span></div>
+</body>
+</html>

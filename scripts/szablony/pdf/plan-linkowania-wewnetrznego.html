@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Plan linkowania wewnętrznego: szablon i audyt</title>
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #fff; color: #1D1D1F; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9.2pt; line-height: 1.38; }
+  .naglowek { display: flex; justify-content: space-between; font-size: 7.6pt; letter-spacing: .06em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 5mm; }
+  .naglowek b { color: #D85A30; }
+  h1 { font-size: 21pt; line-height: 1.12; letter-spacing: -.015em; margin: 0 0 2.5mm; }
+  .lead { font-size: 10pt; color: #3A3A3C; margin: 0 0 4mm; }
+  h2 { font-size: 12.2pt; line-height: 1.25; margin: 5mm 0 2mm; padding-bottom: 1.5mm; border-bottom: 1.6pt solid #D85A30; break-after: avoid; page-break-after: avoid; }
+  h2 .nr { color: #D85A30; }
+  h3 { font-size: 10pt; margin: 0 0 1.6mm; break-after: avoid; }
+  p { margin: 0 0 2mm; }
+  .wsk { font-size: 8.2pt; color: #6E6E73; margin: 0 0 2mm; break-after: avoid; }
+  .ramka { border: 0.8pt solid #E5E1DC; border-left: 2.4pt solid #D85A30; border-radius: 1.5mm; padding: 3mm 4mm 2mm; margin: 0 0 3.5mm; background: #FFFCFA; break-inside: avoid; }
+  .dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  ol.kroki { margin: 0; padding-left: 5mm; }
+  ol.kroki li { margin: 0 0 1.2mm; padding-left: 1mm; }
+  ol.kroki li::marker { color: #D85A30; font-weight: 700; }
+  ul.zasady { margin: 0; padding-left: 4mm; }
+  ul.zasady li { margin: 0 0 1.2mm; }
+  ul.zasady li::marker { color: #D85A30; }
+  .pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 4mm; }
+  .pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+  .pole span { white-space: nowrap; }
+  .pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.1pt; line-height: 1.28; margin: 0 0 2.5mm; }
+  th, td { border: 0.6pt solid #E5E1DC; padding: 1.3mm 1.8mm; text-align: left; vertical-align: top; }
+  th { background: #F7F5F2; font-size: 7.3pt; text-transform: uppercase; letter-spacing: .03em; color: #48484A; font-weight: 700; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  td.etyk { font-weight: 600; }
+  td.zr { color: #6E6E73; font-size: 7.6pt; }
+  td.w { height: 7.6mm; }
+  td.ww { height: 9.5mm; }
+  td.c { text-align: center; vertical-align: middle; }
+  td.nr { width: 7mm; font-weight: 700; color: #D85A30; }
+  tr.przyklad td { color: #6E6E73; font-style: italic; background: #FFFCFA; }
+  tr.hub td { background: #FBF3EF; font-weight: 600; }
+  .cb { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: .5mm; vertical-align: -.5mm; margin-right: 1.2mm; background: #fff; }
+  td .cb { margin: 0; }
+  .opcje { font-size: 7.4pt; line-height: 1.5; white-space: nowrap; }
+  .opcje div { margin: 0; }
+  .opcje .cb { width: 2.6mm; height: 2.6mm; margin-right: 1mm; }
+  .pk { font-weight: 700; font-size: 8.2pt; line-height: 1.25; }
+  .jak { font-size: 7.4pt; color: #48484A; margin-top: .4mm; line-height: 1.25; }
+  .blok { break-inside: avoid; page-break-inside: avoid; }
+  .nowa { break-before: page; page-break-before: always; }
+  .stopka { margin-top: 6mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+  .stopka p { margin: 0 0 .8mm; }
+  .stopka strong { color: #1D1D1F; }
+</style>
+</head>
+<body>
+<div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>Plan linkowania wewnętrznego · wersja 11.2026</span></div>
+<h1>Plan linkowania wewnętrznego</h1>
+<p class="lead">Szablon do zaplanowania i kontroli linków między podstronami: priorytety stron, słownik anchorów, mapa klastrów, plan nowych linków, kwartalny audyt, decyzje o stronach osieroconych, pomiar efektu i wnioski. Wypełnij długopisem albo w edytorze PDF.</p>
+<div class="pola"><div class="pole"><span>Strona (adres)</span><i></i></div><div class="pole"><span>Data przygotowania</span><i></i></div><div class="pole"><span>Osoba odpowiedzialna</span><i></i></div><div class="pole"><span>Termin kolejnego audytu</span><i></i></div></div>
+
+<div class="dwie">
+<div class="ramka">
+<h3>Jak korzystać z szablonu</h3>
+<ol class="kroki">
+<li><b>Zapisz stan wyjściowy</b> (część 1): crawler, mapa witryny, raport Linki w Search Console.</li>
+<li><b>Wybierz strony priorytetowe</b> (część 2) i nadaj im priorytet 1–3.</li>
+<li><b>Przypisz im anchory</b> w słowniku (część 3).</li>
+<li><b>Narysuj mapę klastrów</b> (część 4): hub i jego strony powiązane.</li>
+<li><b>Rozpisz nowe linki</b> (część 5), zaczynając od stron z priorytetem 1.</li>
+<li><b>Co kwartał</b> przejdź audyt (część 6) i zdecyduj o stronach osieroconych (część 7).</li>
+<li><b>Zmierz efekt</b> (część 8) w Search Console.</li>
+</ol>
+</div>
+<div class="ramka">
+<h3>Zasady w skrócie</h3>
+<ul class="zasady">
+<li>Hub linkuje do każdej strony powiązanej, a każda strona powiązana do huba.</li>
+<li>Nowa treść: link do huba i do 2–4 stron z tego samego klastra; hub linkuje do niej w dniu publikacji.</li>
+<li>Strony z priorytetem 1 mają najwięcej linków przychodzących.</li>
+<li>Ważne strony najwyżej 3 kliknięcia od strony głównej.</li>
+<li>Anchor opisowy i zwięzły; jeden anchor = jedna strona docelowa.</li>
+<li>Link do adresu kanonicznego i docelowego, bez przekierowań; element &lt;a href&gt;, bez nofollow.</li>
+</ul>
+</div>
+</div>
+
+<div class="blok"><h2><span class="nr">1.</span> Stan wyjściowy i kolejne kwartały</h2>
+<p class="wsk">Zapisz wartości przed pierwszymi zmianami, potem co kwartał tą samą metodą. Szybki test do 25 podstron: darmowy audyt SEO na ai-seo-company.pl.</p>
+<table>
+<colgroup><col style="width:36%"><col style="width:24%"><col style="width:10%"><col style="width:10%"><col style="width:10%"><col style="width:10%"></colgroup>
+<thead><tr><th>Wskaźnik</th><th>Źródło</th><th>Start</th><th>Kw. 2</th><th>Kw. 3</th><th>Kw. 4</th></tr></thead>
+<tbody>
+<tr><td class="etyk">Data pomiaru</td><td class="zr">–</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Adresy w mapie witryny</td><td class="zr">sitemap.xml</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Adresy znalezione po linkach (200, indeksowalne)</td><td class="zr">Crawler</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Strony osierocone (tylko w mapie witryny)</td><td class="zr">Crawler i mapa witryny</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Linki wewnętrzne do stron 4xx/5xx</td><td class="zr">Crawler, darmowy audyt SEO</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Linki wewnętrzne przez przekierowania</td><td class="zr">Crawler (audyt: tylko łańcuchy)</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Ważne strony głębiej niż 3 kliknięcia</td><td class="zr">Crawler (crawl depth)</td><td class="w"></td><td></td><td></td><td></td></tr>
+<tr><td class="etyk">Strony z priorytetem 1 wśród najczęściej linkowanych</td><td class="zr">Raport Linki w Search Console</td><td class="w"></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">2.</span> Priorytety stron</h2>
+<p class="wsk">Priorytet 1: strony usług, kategorie i treści, które przynoszą zapytania. Priorytet 2: strony wspierające sprzedaż. Priorytet 3: pozostałe. Cel: ile linków przychodzących ma mieć strona i skąd.</p>
+<table>
+<colgroup><col style="width:27%"><col style="width:14%"><col style="width:15%"><col style="width:9%"><col style="width:11%"><col style="width:15%"><col style="width:9%"></colgroup>
+<thead><tr><th>Adres strony</th><th>Typ (usługa, kategoria, hub, artykuł)</th><th>Klaster</th><th>Priorytet</th><th>Linki przych. dziś</th><th>Cel</th><th>Głębokość</th></tr></thead>
+<tbody>
+<tr class="przyklad"><td>Przykład: /remont-lazienki</td><td>Usługa, hub</td><td>Remont łazienki</td><td>1</td><td>4</td><td>Linki z 5 stron klastra i strony głównej</td><td>1</td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="blok"><h2><span class="nr">3.</span> Słownik anchorów</h2>
+<p class="wsk">Anchor opisowy, w miarę zwięzły, bez upychania fraz. Ten sam tekst linku nigdy nie prowadzi do dwóch różnych stron. Przy linku z obrazka anchorem jest atrybut alt.</p>
+<table>
+<colgroup><col style="width:24%"><col style="width:24%"><col style="width:28%"><col style="width:24%"></colgroup>
+<thead><tr><th>Strona docelowa</th><th>Anchor główny</th><th>Dozwolone warianty</th><th>Nie używać (należy do innej strony)</th></tr></thead>
+<tbody>
+<tr class="przyklad"><td>/remont-lazienki</td><td>remont łazienki w Warszawie</td><td>remont łazienki; jak prowadzimy remont łazienki</td><td>„cennik” (należy do /cennik)</td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">4.</span> Mapa klastrów: hub i strony powiązane</h2>
+<p class="wsk">Jeden klaster = jedna fraza główna huba. Zaznacz linki, które już są. Puste pole = link do dopisania w części 5.</p>
+<table>
+<colgroup><col style="width:44%"><col style="width:14%"><col style="width:14%"><col style="width:28%"></colgroup>
+<thead><tr><th>Hub i strony powiązane (adres)</th><th>Hub → strona</th><th>Strona → hub</th><th>Linki do 2–4 stron klastra (które)</th></tr></thead>
+<tbody>
+<tr class="przyklad"><td>Przykład. Hub: /remont-lazienki · strona: /blog/ile-kosztuje-remont-lazienki</td><td class="c">tak</td><td class="c">tak</td><td>płytki, realizacja Mokotów</td></tr>
+<tr class="hub"><td class="w">Klaster 1. Hub:</td><td></td><td></td><td>Fraza główna:</td></tr>
+<tr><td class="w">1.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">2.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">3.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">4.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr class="hub"><td class="w">Klaster 2. Hub:</td><td></td><td></td><td>Fraza główna:</td></tr>
+<tr><td class="w">1.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">2.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">3.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="w">4.</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td></td></tr>
+</tbody></table></div>
+
+<div class="blok"><h2><span class="nr">5.</span> Plan nowych linków</h2>
+<p class="wsk">Najpierw linki do stron z priorytetem 1. Miejsce: T = treść, M = menu, O = okruszki, S = stopka, P = blok „powiązane”. Link w treści daje najwięcej kontekstu.</p>
+<table>
+<colgroup><col style="width:6%"><col style="width:21%"><col style="width:21%"><col style="width:24%"><col style="width:9%"><col style="width:8%"><col style="width:11%"></colgroup>
+<thead><tr><th>Nr</th><th>Strona źródłowa</th><th>Strona docelowa</th><th>Tekst linku (anchor)</th><th>Miejsce</th><th>Wdrożone</th><th>Data</th></tr></thead>
+<tbody>
+<tr class="przyklad"><td>–</td><td>/blog/remont-lazienki-w-bloku</td><td>/remont-lazienki</td><td>remont łazienki w Warszawie</td><td>T</td><td class="c">tak</td><td>12.01</td></tr>
+<tr><td class="nr">1</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">2</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">3</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">4</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">5</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">6</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">7</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">8</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">9</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">10</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">11</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+<tr><td class="nr">12</td><td class="w"></td><td></td><td></td><td></td><td class="c"><span class="cb"></span></td><td></td></tr>
+</tbody></table></div>
+
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">6.</span> Audyt kwartalny</h2>
+<p class="wsk">Te same kryteria co kwartał i po każdej dużej zmianie (migracja, nowe menu, zmiana adresów). W kolumnie kwartału wpisz OK albo liczbę problemów. Problemy przenieś do części 5 albo 7.</p>
+<table>
+<colgroup><col style="width:6%"><col style="width:58%"><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:9%"></colgroup>
+<thead><tr><th>Nr</th><th>Kryterium i jak sprawdzić</th><th>Kw. 1</th><th>Kw. 2</th><th>Kw. 3</th><th>Kw. 4</th></tr></thead>
+<tbody>
+<tr><td class="nr">1</td><td><div class="pk">Każda ważna strona ma link z co najmniej jednej innej strony</div><div class="jak">Crawler: adresy z mapy witryny, do których nie prowadzi żaden link.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">2</td><td><div class="pk">Ważne strony najwyżej 3 kliknięcia od strony głównej</div><div class="jak">Crawler: raport głębokości (crawl depth).</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">3</td><td><div class="pk">Zero linków wewnętrznych do stron 4xx i 5xx</div><div class="jak">Crawler albo darmowy audyt SEO. Popraw link u źródła.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">4</td><td><div class="pk">Linki wskazują adres docelowy, bez przekierowań po drodze</div><div class="jak">Crawler; darmowy audyt pokazuje łańcuchy przekierowań.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">5</td><td><div class="pk">Linki prowadzą do adresów kanonicznych, nie do duplikatów</div><div class="jak">Porównaj adres w linku z tagiem canonical strony docelowej.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">6</td><td><div class="pk">Strony z priorytetem 1 w czołówce najczęściej linkowanych</div><div class="jak">Raport Linki w Search Console (próbka, maks. 1000 wierszy) wobec części 2.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">7</td><td><div class="pk">Anchory opisowe; jeden anchor prowadzi do jednej strony</div><div class="jak">Eksport anchorów z crawlera wobec słownika z części 3.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">8</td><td><div class="pk">Linki to elementy &lt;a href&gt; widoczne w HTML, bez onclick i &lt;span&gt;</div><div class="jak">Źródło strony albo wyrenderowany HTML w Sprawdzeniu adresu URL.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">9</td><td><div class="pk">Brak ważnych stron z jednym linkiem przychodzącym i stron przeładowanych linkami</div><div class="jak">Crawler: liczba linków przychodzących i wychodzących na stronę.</div></td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="nr">10</td><td><div class="pk">Linki do ważnych stron bez rel="nofollow"</div><div class="jak">Crawler: filtr linków wewnętrznych z nofollow.</div></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="blok"><h2><span class="nr">7.</span> Strony osierocone i decyzje</h2>
+<p class="wsk">Podlinkuj: strona ważna albo z wyświetleniami (pozycje 4–20). Połącz: kilka słabych stron o tym samym temacie (301). Usuń: brak ruchu, linków i wartości (410 albo 301 do strony nadrzędnej). Noindex: strona potrzebna ludziom, ale nie w wynikach. Po decyzji popraw mapę witryny.</p>
+<table>
+<colgroup><col style="width:26%"><col style="width:15%"><col style="width:17%"><col style="width:26%"><col style="width:16%"></colgroup>
+<thead><tr><th>Adres</th><th>Skąd wiemy</th><th>Decyzja</th><th>Skąd link / dokąd 301</th><th>Kto, do kiedy</th></tr></thead>
+<tbody>
+<tr><td class="ww"></td><td></td><td class="opcje"><div><span class="cb"></span>podlinkuj</div><div><span class="cb"></span>połącz 301</div><div><span class="cb"></span>usuń 410</div><div><span class="cb"></span>noindex</div></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td class="opcje"><div><span class="cb"></span>podlinkuj</div><div><span class="cb"></span>połącz 301</div><div><span class="cb"></span>usuń 410</div><div><span class="cb"></span>noindex</div></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td class="opcje"><div><span class="cb"></span>podlinkuj</div><div><span class="cb"></span>połącz 301</div><div><span class="cb"></span>usuń 410</div><div><span class="cb"></span>noindex</div></td><td></td><td></td></tr>
+<tr><td class="ww"></td><td></td><td class="opcje"><div><span class="cb"></span>podlinkuj</div><div><span class="cb"></span>połącz 301</div><div><span class="cb"></span>usuń 410</div><div><span class="cb"></span>noindex</div></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">8.</span> Pomiar efektu i wnioski</h2>
+<p class="wsk">Porównaj w Search Console 28 dni przed wdrożeniem z 28 dniami po ponownym odwiedzeniu stron źródłowych przez Google. Linki przychodzące: raport Linki albo crawler.</p>
+<table>
+<colgroup><col style="width:28%"><col style="width:14%"><col style="width:19%"><col style="width:20%"><col style="width:19%"></colgroup>
+<thead><tr><th>Strona docelowa</th><th>Data wdrożenia</th><th>Linki przych. przed / po</th><th>Kliknięcia 28 dni przed / po</th><th>Śr. pozycja przed / po</th></tr></thead>
+<tbody>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+<tr><td class="w"></td><td></td><td>/</td><td>/</td><td>/</td></tr>
+</tbody></table>
+<h3 style="margin-top:4mm">Wnioski z przeglądu i zadania na kolejny kwartał</h3>
+<p class="wsk">Co zadziałało, co nie i dlaczego. Zadania z datą i osobą odpowiedzialną przenieś do części 5 albo 7.</p>
+<table>
+<colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
+<thead><tr><th>Wniosek albo zadanie</th><th>Kto</th><th>Do kiedy</th></tr></thead>
+<tbody>
+<tr><td class="w"></td><td></td><td></td></tr>
+<tr><td class="w"></td><td></td><td></td></tr>
+<tr><td class="w"></td><td></td><td></td></tr>
+<tr><td class="w"></td><td></td><td></td></tr>
+<tr><td class="w"></td><td></td><td></td></tr>
+</tbody></table>
+<div class="stopka"><p>Instrukcja, przykłady i źródła Google: <strong>www.ai-seo-company.pl/narzedzia/linkowanie-wewnetrzne</strong> · Linki do stron 4xx i przekierowań do 25 podstron sprawdzisz w darmowym audycie SEO: <strong>www.ai-seo-company.pl/narzedzia/audyt-seo</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p></div>
+</div>
+</body>
+</html>

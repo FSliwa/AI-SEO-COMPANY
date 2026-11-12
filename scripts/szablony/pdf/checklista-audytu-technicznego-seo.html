@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Checklista audytu technicznego SEO: 30 punktów z progami</title>
+<!-- Źródło PDF public/pliki/checklista-audytu-technicznego-seo.pdf (odtworzone 11.11.2026; poprzedni PDF z 5.11.2026 nie miał źródła w repozytorium).
+     Ten sam zestaw 30 punktów co arkusz public/pliki/checklista-audytu-technicznego-seo.xlsx: zmieniasz punkt tutaj, zmień go też w arkuszu.
+     Reguły Google sprawdzone 11.11.2026: Search Central (robots/noindex, canonical, 301/308, sitemapy, hreflang, title, Googlebot 2 MB,
+     changelog: FAQ 7.05.2026, okruszki tylko na komputerach od 22.01.2025), web.dev (Core Web Vitals p75, TTFB 0,8 s).
+     Weryfikacja 11.11.2026: przewodnik SEO Google (kolejność i liczba nagłówków bez znaczenia dla wyszukiwarki),
+     pomoc Search Console PL (stany raportu Core Web Vitals: „Dobrej jakości”, „Wymagana poprawa”, „Słabej jakości”). -->
+<style>
+  @page { size: A4; margin: 14mm 14mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #FFFFFF; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 8.6pt; line-height: 1.32; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .naglowek { display: flex; justify-content: space-between; font-size: 7.8pt; letter-spacing: 0.04em; color: #6E6E73; border-bottom: 1px solid #E5E1DC; padding-bottom: 4px; margin-bottom: 11px; }
+  .naglowek strong { color: #D85A30; }
+  h1 { font-size: 18pt; line-height: 1.15; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .lead { font-size: 9.2pt; color: #3A3A3C; margin: 0 0 8px; }
+  .pola { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 22px; margin: 0 0 8px; }
+  .pole { display: flex; align-items: flex-end; gap: 6px; font-size: 8.2pt; color: #48484A; }
+  .pole span { white-space: nowrap; }
+  .pole i { flex: 1; border-bottom: 0.8px solid #B8B2AB; height: 15px; }
+  .legenda { font-size: 8pt; color: #48484A; margin: 0 0 4px; }
+  .legenda strong { color: #1D1D1F; }
+  h2 { font-size: 10.8pt; margin: 10px 0 4px; padding-bottom: 3px; border-bottom: 2px solid #D85A30; break-after: avoid; page-break-after: avoid; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border: 1px solid #E5E1DC; padding: 3px 4px; text-align: left; vertical-align: top; }
+  th { font-size: 6.9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: #48484A; background: #F7F5F2; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  td.nr { color: #D85A30; font-weight: 700; text-align: right; }
+  .pk { font-weight: 700; line-height: 1.26; }
+  .kr { font-size: 7.6pt; color: #48484A; margin-top: 1px; line-height: 1.28; }
+  .kr b { color: #1D1D1F; }
+  td.wyn { font-size: 6.9pt; line-height: 1.5; white-space: nowrap; }
+  .cb { display: inline-block; width: 8px; height: 8px; border: 1.3px solid #D85A30; border-radius: 1.5px; vertical-align: -1px; margin-right: 2px; }
+  th.c, td.c { text-align: center; }
+  .grupa { break-inside: auto; }
+  .koniec { break-inside: avoid; page-break-inside: avoid; margin-top: 12px; }
+  .koniec h2 { margin-top: 0; }
+  table.top td { height: 22px; }
+  table.top td.lp { width: 16px; color: #D85A30; font-weight: 700; text-align: right; }
+  .stopka { margin-top: 10px; padding-top: 6px; border-top: 1px solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; break-inside: avoid; page-break-inside: avoid; }
+  .stopka > span { display: block; margin: 0 0 2px; }
+  .stopka strong { color: #1D1D1F; }
+  .nw { white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="naglowek"><span><strong>AI SEO COMPANY</strong> · www.ai-seo-company.pl</span><span>Checklista do wydruku · wersja 11.2026</span></div>
+<h1>Checklista audytu technicznego SEO: 30 punktów z progami</h1>
+<p class="lead">Każdy punkt ma kryterium zaliczenia, więc dwie osoby dojdą do tego samego wyniku, a porównanie kwartał do kwartału zacznie coś znaczyć. Najpierw indeksacja, potem wydajność. Progi opierają się na poradniku „Audyt techniczny SEO: checklista z progami i arkusz” i dokumentacji Google; nasze reguły robocze oznaczamy wprost.</p>
+<div class="pola"><div class="pole"><span>Serwis (adres)</span><i></i></div><div class="pole"><span>Data audytu</span><i></i></div><div class="pole"><span>Osoba audytująca</span><i></i></div><div class="pole"><span>Następny pełny audyt</span><i></i></div></div>
+<p class="legenda"><strong>Wynik:</strong> TAK = spełnione, NIE = do naprawy, n/d = nie dotyczy. <strong>I, C, E:</strong> dla każdego NIE wpisz Impact, Confidence i Ease w skali 1–10; o kolejności napraw decyduje iloczyn I × C × E.</p>
+<div class="grupa">
+  <h2>Crawl i indeksacja</h2>
+  <table>
+    <colgroup><col style="width:20px"><col><col style="width:44px"><col style="width:21px"><col style="width:21px"><col style="width:21px"><col style="width:112px"></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i kryterium zaliczenia</th><th>Wynik</th><th class="c">I</th><th class="c">C</th><th class="c">E</th><th>Uwagi · adresy URL</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">1</td><td><div class="pk">Robots.txt ma poprawną składnię i nie blokuje stron, na których Ci zależy.</div><div class="kr"><b>Kryterium zaliczenia:</b> każde wykluczenie jest decyzją, nie skutkiem ubocznym konfiguracji. Strona, która ma zniknąć z wyników, dostaje noindex, a nie Disallow: zablokowanej strony Google nie pobierze, więc nie zobaczy noindex</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">2</td><td><div class="pk">Boty wyszukiwarek AI (OAI-SearchBot, Claude-SearchBot, PerplexityBot) mają dostęp w robots.txt i w zaporze (WAF, CDN).</div><div class="kr"><b>Kryterium zaliczenia:</b> blokada tylko jako zapisana decyzja biznesowa; decyzja o udostępnianiu treści do trenowania modeli (GPTBot, ClaudeBot, token Google-Extended) też jest zapisana. Blokada GPTBot nie usuwa strony z wyszukiwania ChatGPT, za nie odpowiada OAI-SearchBot</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">3</td><td><div class="pk">Tagi noindex, canonicale i nagłówki X-Robots-Tag nie usuwają stron z indeksu po cichu.</div><div class="kr"><b>Kryterium zaliczenia:</b> zero nieintencjonalnych noindex; canonical wskazuje adres 200 i indeksowalny. Canonical to dla Google mocny sygnał, nie polecenie: w narzędziu Sprawdzanie adresu URL zobacz, który adres Google wybrał</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">4</td><td><div class="pk">Sitemapa XML zawiera tylko adresy, które mają być w indeksie.</div><div class="kr"><b>Kryterium zaliczenia:</b> wyłącznie indeksowalne, kanoniczne adresy 200; zero adresów istniejących tylko w sitemapie; lastmod zmienia się tylko po istotnej zmianie treści (priority i changefreq Google pomija); przy kilku typach stron osobna sitemapa na typ, żeby pokrycie indeksu sprawdzać per sekcja</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">5</td><td><div class="pk">Kluczowa treść i linki są w HTML wysyłanym przez serwer. Po każdym większym wdrożeniu frontendowym sprawdzasz wyrenderowany HTML w narzędziu Sprawdzanie adresu URL.</div><div class="kr"><b>Kryterium zaliczenia:</b> treść główna i linki są w źródle strony i w wyrenderowanym HTML (boty AI zwykle nie uruchamiają JavaScriptu)</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">6</td><td><div class="pk">W serwisie powyżej kilku tysięcy adresów (próg roboczy) sprawdzasz w logach serwera albo w raporcie Statystyki indeksowania, na co boty wydają żądania.</div><div class="kr"><b>Kryterium zaliczenia:</b> parametry, łańcuchy przekierowań i strony noindex nie pochłaniają crawla</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="grupa">
+  <h2>Serwer, przekierowania i linki</h2>
+  <table>
+    <colgroup><col style="width:20px"><col><col style="width:44px"><col style="width:21px"><col style="width:21px"><col style="width:21px"><col style="width:112px"></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i kryterium zaliczenia</th><th>Wynik</th><th class="c">I</th><th class="c">C</th><th class="c">E</th><th>Uwagi · adresy URL</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">7</td><td><div class="pk">Czas odpowiedzi serwera.</div><div class="kr"><b>Kryterium zaliczenia:</b> średnio poniżej 0,5 s; 0,5–1 s obserwuj; powyżej 1 s napraw (próg roboczy z crawla; web.dev uznaje TTFB do 0,8 s za dobry)</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">8</td><td><div class="pk">Przekierowania hosta.</div><div class="kr"><b>Kryterium zaliczenia:</b> jedna wersja www/non-www i HTTP→HTTPS przez pojedyncze przekierowanie stałe (301 albo 308); zero łańcuchów i pętli</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">9</td><td><div class="pk">Waga i kompresja.</div><div class="kr"><b>Kryterium zaliczenia:</b> gzip lub brotli włączone; HTML poniżej 0,5 MB (próg roboczy; Googlebot pobiera pierwsze 2 MB pliku HTML, liczone bez kompresji)</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">10</td><td><div class="pk">Mixed content.</div><div class="kr"><b>Kryterium zaliczenia:</b> zero zasobów HTTP na stronach HTTPS</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">11</td><td><div class="pk">Linki wewnętrzne.</div><div class="kr"><b>Kryterium zaliczenia:</b> prowadzą prosto do adresu docelowego 200, nigdy przez przekierowanie</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">12</td><td><div class="pk">Martwe linki (wewnętrzne i wychodzące) i strony osierocone, które istnieją tylko w sitemapie.</div><div class="kr"><b>Kryterium zaliczenia:</b> zero</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">13</td><td><div class="pk">Głębokość kliknięć.</div><div class="kr"><b>Kryterium zaliczenia:</b> każda istotna strona osiągalna w 3 kliknięciach ze strony głównej (próg roboczy)</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">14</td><td><div class="pk">Anchory wewnętrzne.</div><div class="kr"><b>Kryterium zaliczenia:</b> identyczny anchor nigdy nie prowadzi do dwóch różnych stron</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">15</td><td><div class="pk">Rozkład linków wewnętrznych.</div><div class="kr"><b>Kryterium zaliczenia:</b> strony najważniejsze biznesowo mają najwięcej linków wewnętrznych</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="grupa">
+  <h2>Znaczniki, adresy, wersje językowe i dane strukturalne</h2>
+  <table>
+    <colgroup><col style="width:20px"><col><col style="width:44px"><col style="width:21px"><col style="width:21px"><col style="width:21px"><col style="width:112px"></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i kryterium zaliczenia</th><th>Wynik</th><th class="c">I</th><th class="c">C</th><th class="c">E</th><th>Uwagi · adresy URL</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">16</td><td><div class="pk">Title i meta description.</div><div class="kr"><b>Kryterium zaliczenia:</b> unikalne w całym serwisie, zero duplikatów i braków; title do ok. 60 znaków, opis do ok. 160. Google nie ma limitu znaków, ale ucina wynik do szerokości ekranu, więc najważniejsze słowa stoją na początku</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">17</td><td><div class="pk">Nagłówki.</div><div class="kr"><b>Kryterium zaliczenia:</b> jedno H1 na stronę, hierarchia H2/H3 bez przeskoków (reguła robocza). To porządek dla czytelników i czytników ekranu: Google nie ocenia kolejności ani liczby nagłówków</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">18</td><td><div class="pk">Higiena URL.</div><div class="kr"><b>Kryterium zaliczenia:</b> indeksowalne adresy bez parametrów dynamicznych i identyfikatorów sesji, słowa rozdzielone łącznikami; do 140 znaków i maksymalnie 5 poziomów katalogów (próg roboczy, nie limit Google)</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">19</td><td><div class="pk">Wersje językowe (jeśli są): hreflang wskazuje wersję bieżącą i wszystkie pozostałe, wzajemnie, plus x-default.</div><div class="kr"><b>Kryterium zaliczenia:</b> zero błędów wzajemności; hreflang prowadzi do adresów kanonicznych 200. Bez linku zwrotnego Google pomija adnotację</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">20</td><td><div class="pk">Kody odpowiedzi: usunięta strona zwraca 404 albo 410, a adres, którego nie ma, nie zwraca 200.</div><div class="kr"><b>Kryterium zaliczenia:</b> zero soft 404 w raporcie Strony w Search Console; przeniesiona treść ma przekierowanie 301 albo 308 na odpowiednik</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">21</td><td><div class="pk">Dane strukturalne: walidujesz typy, które nadal dają efekt (Article, Product z Offer, BreadcrumbList, VideoObject, Organization, LocalBusiness).</div><div class="kr"><b>Kryterium zaliczenia:</b> dane zgodne z widoczną treścią, zero błędów w teście wyników z elementami rozszerzonymi. Okruszki (BreadcrumbList) Google pokazuje od stycznia 2025 tylko na komputerach. Brak FAQ i HowTo nie jest błędem: wyniki FAQ Google wyłączył 7 maja 2026, HowTo we wrześniu 2023</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">22</td><td><div class="pk">HTTPS, telefon, kodowanie i duplikacja.</div><div class="kr"><b>Kryterium zaliczenia:</b> ważny certyfikat; strona użyteczna na telefonie (bez poziomego przewijania); kodowanie UTF-8 i atrybut lang zgodny z językiem strony; zero zduplikowanych stron i powtarzalnych bloków treści, a strony z jednego szablonu różnią się treścią i danymi, nie tylko nazwą miasta albo produktu</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="grupa">
+  <h2>Core Web Vitals (dane polowe, 75. percentyl wizyt)</h2>
+  <table>
+    <colgroup><col style="width:20px"><col><col style="width:44px"><col style="width:21px"><col style="width:21px"><col style="width:21px"><col style="width:112px"></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i kryterium zaliczenia</th><th>Wynik</th><th class="c">I</th><th class="c">C</th><th class="c">E</th><th>Uwagi · adresy URL</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">23</td><td><div class="pk">LCP: wyrenderowanie największego elementu treści.</div><div class="kr"><b>Kryterium zaliczenia:</b> do 2,5 s</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">24</td><td><div class="pk">INP: reakcja na interakcje użytkownika w całej wizycie (od marca 2024 zamiast FID).</div><div class="kr"><b>Kryterium zaliczenia:</b> do 200 ms</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">25</td><td><div class="pk">CLS: nieoczekiwane przesunięcia układu strony.</div><div class="kr"><b>Kryterium zaliczenia:</b> do 0,1</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">26</td><td><div class="pk">Raportujesz z danych polowych: raport Podstawowe wskaźniki internetowe w Search Console albo CrUX. Lighthouse służy do szukania przyczyn.</div><div class="kr"><b>Kryterium zaliczenia:</b> stan „Dobrej jakości” osobno dla telefonów i komputerów. FCP i TTFB to metryki pomocnicze, nie Core Web Vitals</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="grupa">
+  <h2>Priorytety i rytm</h2>
+  <table>
+    <colgroup><col style="width:20px"><col><col style="width:44px"><col style="width:21px"><col style="width:21px"><col style="width:21px"><col style="width:112px"></colgroup>
+    <thead><tr><th>Nr</th><th>Punkt kontrolny i kryterium zaliczenia</th><th>Wynik</th><th class="c">I</th><th class="c">C</th><th class="c">E</th><th>Uwagi · adresy URL</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">27</td><td><div class="pk">Każde znalezisko ma ocenę ICE: Impact (wpływ na leady lub przychód), Confidence (jak dobrze jest udokumentowane) i Ease (łatwość wdrożenia).</div><div class="kr"><b>Kryterium zaliczenia:</b> każdy czynnik 1–10, kolejność według iloczynu</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">28</td><td><div class="pk">Najpierw naprawiasz blokery indeksacji, dopiero potem wydajność.</div><div class="kr"><b>Kryterium zaliczenia:</b> zero otwartych blokerów indeksacji, zanim ruszy praca nad szybkością (praca nad stroną z noindex nic nie daje)</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">29</td><td><div class="pk">Rytm audytów: lekki crawl co tydzień, pełny audyt z analizą logów co kwartał, crawl porównawczy po każdym większym wdrożeniu, przebudowie albo migracji.</div><div class="kr"><b>Kryterium zaliczenia:</b> terminy są w kalendarzu i mają właściciela; crawl porównawczy do 48 godzin po wdrożeniu</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="nr">30</td><td><div class="pk">SEO jest w definition of done dla zmian frontendowych i infrastrukturalnych.</div><div class="kr"><b>Kryterium zaliczenia:</b> kody odpowiedzi (200, 301/308, 404/410) zgodne z intencją, meta robots i canonical bez nieintencjonalnych zmian, kluczowa treść w wyrenderowanym DOM, Core Web Vitals w ustalonym budżecie wydajności</div></td><td class="wyn"><div><span class="cb"></span>TAK</div><div><span class="cb"></span>NIE</div><div><span class="cb"></span>n/d</div></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="koniec">
+  <h2>Podsumowanie i 5 pierwszych napraw</h2>
+  <table>
+    <colgroup><col><col style="width:46px"><col style="width:46px"><col style="width:46px"><col style="width:46px"></colgroup>
+    <thead><tr><th>Obszar</th><th class="c">Punkty</th><th class="c">TAK</th><th class="c">NIE</th><th class="c">n/d</th></tr></thead>
+    <tbody>
+      <tr><td>Crawl i indeksacja</td><td class="c">6</td><td></td><td></td><td></td></tr>
+      <tr><td>Serwer, przekierowania i linki</td><td class="c">9</td><td></td><td></td><td></td></tr>
+      <tr><td>Znaczniki, adresy, wersje językowe i dane strukturalne</td><td class="c">7</td><td></td><td></td><td></td></tr>
+      <tr><td>Core Web Vitals (dane polowe, 75. percentyl wizyt)</td><td class="c">4</td><td></td><td></td><td></td></tr>
+      <tr><td>Priorytety i rytm</td><td class="c">4</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <table class="top" style="margin-top:8px">
+    <colgroup><col style="width:16px"><col style="width:30px"><col><col style="width:44px"><col style="width:80px"><col style="width:64px"></colgroup>
+    <thead><tr><th></th><th>Nr</th><th>Naprawa (co i na których adresach)</th><th class="c">ICE</th><th>Kto</th><th>Termin</th></tr></thead>
+    <tbody>
+      <tr><td class="lp">1</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="lp">2</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="lp">3</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="lp">4</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="lp">5</td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="stopka">
+  <span>Omówienie progów: poradnik „Audyt techniczny SEO: checklista z progami i arkusz”, <strong>www.ai-seo-company.pl/blog/audyt-techniczny-seo</strong> · arkusz z oceną ICE: <span class="nw">www.ai-seo-company.pl/pliki/checklista-audytu-technicznego-seo.xlsx</span></span>
+  <span>Reguły Google sprawdzone 11.11.2026 w dokumentacji Google Search Central i web.dev. Opracował: Filip Śliwa, AI SEO COMPANY.</span>
+  <span>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</span>
+</div>
+</body>
+</html>

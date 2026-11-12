@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Zapytanie ofertowe na SEO – wzór – AI SEO COMPANY</title>
+<!--
+  Źródło PDF public/pliki/zapytanie-ofertowe-seo-wzor.pdf (strona /narzedzia/zapytanie-ofertowe-seo, 11.11.2026).
+  Treść zgodna z podglądem w lib/szablony/zapytanie-ofertowe-seo.js (10 części + tabela oceny ofert).
+  Układ: strona 1 = instrukcja dla firmy (nie wysyłać), strony 2–5 = zapytanie do wysłania agencjom,
+  strona 6 = ocena ofert (do użytku wewnętrznego). CSS i marka jak w szablon-strategii-seo.html.
+  Generowanie:
+  "/Users/filipsliwa/Library/Caches/ms-playwright/chromium-1140/chrome-mac/Chromium.app/Contents/MacOS/Chromium" \
+    --headless=new --disable-gpu --no-pdf-header-footer --user-data-dir="$(mktemp -d)" \
+    --print-to-pdf=<repo>/public/pliki/zapytanie-ofertowe-seo-wzor.pdf file://<repo>/scripts/szablony/pdf/zapytanie-ofertowe-seo-wzor.html
+-->
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #fff; color: #1D1D1F; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9.3pt; line-height: 1.4; }
+  .naglowek { display: flex; justify-content: space-between; font-size: 7.8pt; color: #6E6E73; padding-bottom: 1.8mm; border-bottom: 1px solid #E5E1DC; margin-bottom: 5mm; }
+  .naglowek b { color: #1D1D1F; letter-spacing: .02em; }
+  h1 { font-size: 21pt; line-height: 1.12; letter-spacing: -.015em; margin: 0 0 2.5mm; }
+  .lead { font-size: 10.3pt; color: #3A3A3C; margin: 0 0 4mm; }
+  h2 { font-size: 12.2pt; line-height: 1.25; margin: 6mm 0 2.4mm; padding-bottom: 1.5mm; border-bottom: 1.6px solid #D85A30; break-after: avoid; page-break-after: avoid; }
+  h2 .nr { color: #D85A30; }
+  h3 { font-size: 10.2pt; margin: 3.5mm 0 1.4mm; break-after: avoid; }
+  p { margin: 0 0 2mm; }
+  .wsk { font-size: 8.3pt; color: #6E6E73; margin: 0 0 2mm; break-after: avoid; }
+  .ramka { border: 1px solid #E5E1DC; border-left: 3px solid #D85A30; border-radius: 1.5mm; padding: 3mm 4mm 2mm; margin: 0 0 3mm; background: #FFFCFA; }
+  .ramka h3 { margin-top: 0; }
+  ol.kroki { margin: 0; padding-left: 5mm; }
+  ol.kroki li { margin: 0 0 1.3mm; padding-left: 1mm; }
+  ol.kroki li::marker { color: #D85A30; font-weight: 700; }
+  ul.rady { margin: 0; padding-left: 4.5mm; }
+  ul.rady li { margin: 0 0 1.2mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.3pt; line-height: 1.3; margin: 0 0 2.5mm; }
+  th, td { border: 1px solid #E5E1DC; padding: 1.4mm 2mm; text-align: left; vertical-align: top; }
+  th { background: #FAF7F4; font-weight: 600; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  td.etyk { width: 40%; font-weight: 600; }
+  table.metryczka td.etyk { width: 21%; }
+  table.metryczka td.w { width: 29%; }
+  td.b { font-weight: 600; }
+  td.w { height: 8mm; }
+  td.ww { height: 11mm; }
+  td.wl { height: 12.6mm; }
+  td.www { height: 17mm; }
+  td.wn { height: 10mm; }
+  td.q { width: 7mm; font-weight: 700; color: #D85A30; text-align: center; }
+  td.sz { color: #6E6E73; }
+  tr.razem td { font-weight: 700; background: #FAF7F4; }
+  .cb { display: inline-block; width: 3.2mm; height: 3.2mm; border: 1.3px solid #D85A30; border-radius: .6mm; vertical-align: -.55mm; margin-right: 2mm; }
+  td .cb { margin: 0; }
+  td.c { text-align: center; width: 18mm; }
+  .opcje .cb { margin: 0 1mm 0 0; }
+  .opcje span.o { margin-right: 4mm; white-space: nowrap; }
+  ul.lista { list-style: none; margin: 0 0 2mm; padding: 0; }
+  ul.lista li { padding: 1.3mm 0; border-bottom: 1px solid #E5E1DC; break-inside: avoid; }
+  ul.lista li.z { padding-left: 5.2mm; text-indent: -5.2mm; }
+  .linia { display: inline-block; min-width: 60mm; border-bottom: 1px solid #C9C4BE; height: 4mm; vertical-align: -1mm; }
+  .blok { break-inside: avoid; page-break-inside: avoid; }
+  .nowa { break-before: page; page-break-before: always; }
+  .etykieta { display: inline-block; font-size: 7.6pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: #D85A30; border-radius: 1mm; padding: .8mm 2.2mm; margin-bottom: 2.5mm; }
+  .etykieta.szara { background: #6E6E73; }
+  .tytul-rfp { font-size: 17pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -.01em; }
+  .mail { font-size: 8.6pt; color: #3A3A3C; border: 1px dashed #E5E1DC; border-radius: 1.5mm; padding: 2.5mm 3.5mm; margin: 0 0 2.5mm; }
+  .mail b { color: #1D1D1F; }
+  .zastrz { font-size: 8.4pt; color: #3A3A3C; background: #FAF7F4; border-radius: 1.5mm; padding: 2.5mm 3.5mm; margin: 0 0 2.5mm; }
+  .stopka { margin-top: 7mm; padding-top: 2.5mm; border-top: 1px solid #E5E1DC; font-size: 7.8pt; color: #6E6E73; display: flex; justify-content: space-between; gap: 6mm; }
+  .stopka b { color: #1D1D1F; white-space: nowrap; }
+  .stopka span:last-child { text-align: right; }
+</style>
+</head>
+<body>
+<!-- ===================== STRONA 1: INSTRUKCJA (nie wysyłać) ===================== -->
+<div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>Zapytanie ofertowe na SEO · wzór · wersja 11.2026</span></div>
+<span class="etykieta szara">Strona 1: instrukcja dla Ciebie – nie wysyłaj jej agencjom</span>
+<h1>Zapytanie ofertowe na SEO – wzór do wypełnienia</h1>
+<p class="lead">Wypełnij strony 2–5 i wyślij to samo zapytanie 3–5 agencjom SEO. Dostaniesz oferty na ten sam zakres prac, w tym samym układzie, z odpowiedziami na te same pytania. Stronę 6 zostaw u siebie: to tabela do oceny ofert.</p>
+<div class="ramka">
+<h3>Jak napisać zapytanie ofertowe w 7 krokach</h3>
+<ol class="kroki"><li><b>Ustal cel i budżet w firmie</b>: co ma się zmienić w ciągu 12 miesięcy i ile możesz wydawać miesięcznie.</li><li><b>Zbierz dane o stanie wyjściowym</b> (część 3): kliknięcia z Search Console i zapytania od klientów z GA4 za 12 miesięcy, migracje, historia współpracy z agencjami. Brak danych? Wpisz „brak” zamiast zgadywać.</li><li><b>Opisz zakres prac</b> (część 5): przy każdym obszarze zaznacz „w ofercie”, „opcjonalnie” albo „poza zakresem”.</li><li><b>Wpisz warunki współpracy</b> (część 7): konta Google na firmie, prawa do treści, linki zostają, okres wypowiedzenia, raport z Twoich danych.</li><li><b>Wybierz 10–12 pytań do agencji</b> (część 8) i zaznacz je w kolumnie „Pytamy”.</li><li><b>Ustal formę oferty, terminy i kryteria</b> (części 9–10). Wagi kryteriów wpisz przed otwarciem ofert.</li><li><b>Wyślij identyczne zapytanie 3–5 agencjom</b>. Odpowiedzi na pytania przekazuj wszystkim naraz.</li></ol>
+</div>
+<div class="blok"><h2>Zanim wyślesz: 6 zasad</h2>
+<ul class="rady">
+<li><b>Cel w zapytaniach od klientów, nie w pozycjach.</b> Google pisze, że nikt nie może zagwarantować pierwszego miejsca w jego wynikach. Pytaj, jakich wyników agencja się spodziewa, w jakim czasie i jak je zmierzy.</li>
+<li><b>Dostęp przed ofertą tylko do odczytu.</b> Jeśli agencje mają zajrzeć do danych, dodaj je w Search Console jako użytkowników z ograniczonym dostępem, a w GA4 z rolą Przeglądający. Po wyborze usuń dostęp tym, które odpadły.</li>
+<li><b>Konta zostają na firmie.</b> Właścicielem Search Console i GA4 (rola Administrator) jest firma. W wizytówce Google firma jest głównym właścicielem, agencja menedżerem.</li>
+<li><b>Budżet albo widełki.</b> Bez nich jedna agencja wyceni minimum, a druga rozbudowany zakres, i oferty trudno porównać.</li>
+<li><b>Termin 7–10 dni roboczych</b> na ofertę, wcześniejszy termin na pytania i data decyzji.</li>
+<li><b>Ceny porównuj w koszcie 12 miesięcy</b>: kwota miesięczna × 12 + koszty jednorazowe. Nie wybieraj automatycznie najtańszej oferty – zwykle różni się zakres.</li>
+</ul></div>
+<div class="blok"><h2>Wzór e-maila do agencji</h2>
+<div class="mail"><b>Temat:</b> Zapytanie ofertowe – pozycjonowanie strony [adres strony]<br><br>Dzień dobry, szukamy agencji, która od [miesiąc] poprowadzi pozycjonowanie naszej strony [adres]. W załączniku przesyłam zapytanie ofertowe z opisem firmy, celu, stanu strony i zakresu prac. To samo zapytanie wysyłamy do kilku agencji. Pytania prosimy kierować na ten adres do [data], a ofertę przesłać do [data]. Wybrane agencje zaprosimy na rozmowę w tygodniu od [data]. Zapytanie nie zobowiązuje nas do zawarcia umowy.<br>Pozdrawiam, [imię i nazwisko, stanowisko, telefon]</div></div>
+<p class="wsk">Wzór jest przeznaczony dla firm, które same wybierają wykonawcę. Nie jest dokumentem w trybie zamówień publicznych ani do projektów z dotacji i nie jest poradą prawną – przy umowie na dużą kwotę pokaż ją prawnikowi. Opis każdej części, przykład wypełnienia i źródła: www.ai-seo-company.pl/narzedzia/zapytanie-ofertowe-seo</p>
+
+<!-- ===================== STRONY 2–5: ZAPYTANIE DO WYSŁANIA ===================== -->
+<div class="nowa"></div>
+<span class="etykieta">Do wysłania agencjom</span>
+<h1 class="tytul-rfp">Zapytanie ofertowe: pozycjonowanie strony (SEO)</h1>
+<table class="metryczka"><tbody>
+<tr><td class="etyk">Firma</td><td class="w"></td><td class="etyk">Adres strony</td><td class="w"></td></tr>
+<tr><td class="etyk">Data wysłania</td><td class="w"></td><td class="etyk">Termin złożenia oferty</td><td class="w"></td></tr>
+</tbody></table>
+<div class="blok"><h2><span class="nr">1.</span> Firma i kontakt</h2>
+<table><tbody><tr><td class="etyk">Branża i główne usługi lub produkty</td><td class="w"></td></tr><tr><td class="etyk">Wielkość firmy i obsługiwany obszar</td><td class="w"></td></tr><tr><td class="etyk">Osoba kontaktowa (imię i nazwisko, stanowisko, e-mail, telefon)</td><td class="w"></td></tr><tr><td class="etyk">Kto podejmuje decyzję o wyborze agencji</td><td class="w"></td></tr></tbody></table></div>
+<div class="blok"><h2><span class="nr">2.</span> Cel współpracy</h2>
+<p class="wsk">Wynik biznesowy, nie pozycja. Jeśli nie mierzysz zapytań od klientów, napisz to – pomiar w GA4 (zdarzenia kluczowe) będzie pierwszym zadaniem.</p>
+<table><tbody><tr><td class="etyk">Cel biznesowy na 12 miesięcy (jedno zdanie)</td><td class="wl"></td></tr><tr><td class="etyk">Jak go dziś mierzymy (GA4, CRM, telefony)</td><td class="w"></td></tr><tr><td class="etyk">Wartość dziś (np. zapytania od klientów z wyników organicznych miesięcznie)</td><td class="w"></td></tr><tr><td class="etyk">Wartość docelowa albo „prosimy o propozycję”</td><td class="w"></td></tr><tr><td class="etyk">Co będzie dla nas sukcesem po 3 miesiącach</td><td class="wl"></td></tr></tbody></table></div>
+<div class="blok"><h2><span class="nr">3.</span> Stan wyjściowy</h2>
+<p class="wsk">Dane z ostatnich 12 miesięcy. Brak danych też jest informacją: wpisz „brak”.</p>
+<table><tbody><tr><td class="etyk">System strony (CMS), liczba podstron, wersje językowe</td><td class="w"></td></tr><tr><td class="etyk">Kliknięcia z fraz bez nazwy firmy, ostatnie 12 miesięcy (Search Console)</td><td class="w"></td></tr><tr><td class="etyk">Zapytania od klientów z wyników organicznych miesięcznie (GA4)</td><td class="w"></td></tr><tr><td class="etyk">Wizytówka Google: kategoria główna, liczba opinii</td><td class="w"></td></tr><tr><td class="etyk">Migracje, zmiany strony, spadki ruchu (z datami)</td><td class="wl"></td></tr><tr><td class="etyk">Dotychczasowe SEO: kto, jak długo, co robił</td><td class="wl"></td></tr><tr><td class="etyk">Dostęp dla agencji przed ofertą</td><td class="opcje"><span class="o"><span class="cb"></span>Search Console (ograniczony dostęp)</span><span class="o"><span class="cb"></span>GA4 (Przeglądający)</span><span class="o"><span class="cb"></span>bez dostępu</span></td></tr></tbody></table></div>
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">4.</span> Rynek i konkurencja</h2>
+<table><tbody><tr><td class="etyk">Obszar działania: miasta, kraje, języki</td><td class="w"></td></tr><tr><td class="etyk">Usługi lub kategorie w kolejności ważności</td><td class="wl">1.<br>2.<br>3.</td></tr><tr><td class="etyk">3–5 konkurentów z wyników Google i Map</td><td class="wl"></td></tr><tr><td class="etyk">Co wyróżnia naszą firmę</td><td class="w"></td></tr><tr><td class="etyk">Jak dziś znajdują nas klienci</td><td class="w"></td></tr></tbody></table></div>
+<div class="blok"><h2><span class="nr">5.</span> Zakres prac do wyceny</h2>
+<p class="wsk">Przy treściach i linkach podaj liczbę miesięcznie i opis, co się za nią kryje (np. rodzaj i długość treści, rodzaj źródeł linków).</p>
+<table><thead><tr><th>Obszar</th><th class="c">W ofercie</th><th class="c">Opcjonalnie</th><th class="c">Poza zakresem</th></tr></thead><tbody>
+<tr><td>Audyt SEO i plan naprawczy</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Poprawki techniczne (wdrożenie albo zalecenia dla programisty)</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Strony usług lub kategorii</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Nowe treści – liczba miesięcznie: ________</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Linki – liczba miesięcznie i rodzaj źródeł: ________</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>SEO lokalne i wizytówka Google</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Widoczność w AI (ChatGPT, przegląd AI w Google)</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Pomiar: zdarzenia kluczowe w GA4</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Raport miesięczny i spotkanie</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Wsparcie przy migracji albo nowej stronie</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Inne: ________</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+</tbody></table></div>
+<div class="blok"><h2><span class="nr">6.</span> Zasoby po stronie firmy</h2>
+<table><tbody><tr><td class="etyk">Kto akceptuje zmiany i treści, w jakim czasie</td><td class="w"></td></tr><tr><td class="etyk">Programista: wewnętrzny, zewnętrzny albo brak; godziny miesięcznie</td><td class="w"></td></tr><tr><td class="etyk">Kto pisze lub dostarcza treści i zdjęcia</td><td class="w"></td></tr><tr><td class="etyk">Dostęp agencji do panelu strony i hostingu</td><td class="opcje"><span class="o"><span class="cb"></span>tak</span><span class="o"><span class="cb"></span>po akceptacji zmian</span><span class="o"><span class="cb"></span>nie</span></td></tr></tbody></table></div>
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">7.</span> Wymagania wobec współpracy</h2>
+<p class="wsk">Zaznacz warunki, których oczekujesz. Agencja, która ich nie akceptuje, powinna napisać to w ofercie.</p>
+<ul class="lista"><li class="z"><span class="cb"></span>Search Console, GA4, Menedżer tagów, wizytówka Google i konto reklamowe na firmie; agencja dostaje uprawnienia.</li><li class="z"><span class="cb"></span>Prawa autorskie do treści, zdjęć i grafik przechodzą na firmę (pola eksploatacji w umowie).</li><li class="z"><span class="cb"></span>Linki zdobyte w trakcie współpracy zostają po jej zakończeniu; lista linków w raporcie.</li><li class="z"><span class="cb"></span>Bez kupowania linków i innych praktyk niezgodnych z zasadami Google.</li><li class="z"><span class="cb"></span>Zmiany na stronie po naszej akceptacji; dziennik zmian.</li><li class="z"><span class="cb"></span>Raport co miesiąc z danych z naszej Search Console i GA4.</li><li>Oczekiwany okres wypowiedzenia: <span class="linia"></span></li><li>Inne wymagania: <span class="linia" style="min-width:110mm"></span></li></ul></div>
+<div class="blok"><h2><span class="nr">8.</span> Pytania do agencji (odpowiedzi w ofercie)</h2>
+<p class="wsk">Prosimy o odpowiedź na piśmie na pytania zaznaczone w kolumnie „Pytamy”.</p>
+<table><thead><tr><th class="c">Pytamy</th><th>Pytanie</th></tr></thead><tbody>
+<tr><td class="c"><span class="cb"></span></td><td>1. Jakich wyników spodziewacie się w naszym przypadku, w jakim czasie i jak je zmierzycie?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>2. Co zrobicie w pierwszych trzech miesiącach i w jakiej kolejności?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>3. Kto konkretnie będzie pracował nad naszą stroną i jak będziemy się kontaktować?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>4. Czy pokażecie przykładowy raport albo demo panelu?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>5. Jakie macie doświadczenie w naszej branży i na naszym rynku (miasto, kraj, języki)?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>6. Czy stosujecie się do podstawowych zasad wyszukiwarki Google i skąd zdobywacie linki?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>7. Czy będziemy akceptować zmiany na stronie przed wdrożeniem i czy dostaniemy listę wszystkich zmian?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>8. Jak mierzycie widoczność w ChatGPT i w przeglądzie AI w Google?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>9. Co dokładnie obejmuje cena: ile fraz, treści, linków lub godzin miesięcznie?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>10. Na jak długo jest umowa, jaki jest okres wypowiedzenia i czy są opłaty przy wyjściu?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>11. Co się stanie, jeśli po trzech miesiącach nie będzie postępu?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>12. Czy możemy porozmawiać z obecnym albo byłym klientem?</td></tr>
+<tr><td class="c"><span class="cb"></span></td><td>13. Własne pytanie: </td></tr>
+</tbody></table></div>
+<div class="nowa"></div>
+<div class="blok"><h2><span class="nr">9.</span> Forma oferty i wyceny (wypełnia agencja)</h2>
+<table><tbody><tr><td class="etyk">Cena netto miesięcznie</td><td class="w"></td></tr><tr><td class="etyk">Koszty jednorazowe (audyt, wdrożenie, opłata startowa)</td><td class="w"></td></tr><tr><td class="etyk">Co obejmuje cena: frazy, treści, linki, godziny miesięcznie</td><td class="wl"></td></tr><tr><td class="etyk">Model rozliczenia: abonament, za efekt, mieszany</td><td class="w"></td></tr><tr><td class="etyk">Okres umowy i okres wypowiedzenia</td><td class="w"></td></tr><tr><td class="etyk">Plan pierwszych 3 miesięcy</td><td class="www"></td></tr><tr><td class="etyk">Osoba prowadząca i sposób kontaktu</td><td class="w"></td></tr><tr><td class="etyk">Przykładowy raport albo demo panelu</td><td class="opcje"><span class="o"><span class="cb"></span>załączony</span><span class="o"><span class="cb"></span>link: ____________________</span></td></tr></tbody></table>
+<p>Forma oferty: PDF, do <span class="linia" style="min-width:12mm"></span> stron A4, ważna co najmniej <span class="linia" style="min-width:12mm"></span> dni.</p></div>
+<div class="blok"><h2><span class="nr">10.</span> Terminy i zasady wyboru</h2>
+<table><colgroup><col style="width:60%"><col style="width:40%"></colgroup><thead><tr><th>Etap</th><th>Termin</th></tr></thead><tbody><tr><td>Pytania od agencji</td><td class="w">do</td></tr><tr><td>Odpowiedzi przekazane wszystkim agencjom</td><td class="w">do</td></tr><tr><td>Termin złożenia ofert</td><td class="w">do</td></tr><tr><td>Rozmowy z wybranymi agencjami</td><td class="w"></td></tr><tr><td>Decyzja i informacja dla wszystkich agencji</td><td class="w">do</td></tr></tbody></table>
+<table><colgroup><col style="width:60%"><col style="width:40%"></colgroup><thead><tr><th>Kryterium oceny ofert</th><th>Waga</th></tr></thead><tbody><tr><td>Zrozumienie celu i plan na 3 miesiące</td><td class="w">%</td></tr><tr><td>Zakres i to, co obejmuje cena</td><td class="w">%</td></tr><tr><td>Pomiar i raportowanie</td><td class="w">%</td></tr><tr><td>Warunki umowy i własność (konta, treści, linki)</td><td class="w">%</td></tr><tr><td>Zespół, doświadczenie, referencje</td><td class="w">%</td></tr><tr><td>Widoczność w AI i zgodność z zasadami Google</td><td class="w">%</td></tr><tr class="razem"><td>Razem</td><td>100%</td></tr></tbody></table>
+<div class="zastrz"><b>Zastrzeżenia.</b> Zapytanie nie zobowiązuje firmy do wyboru żadnej oferty ani do zawarcia umowy i nie jest przetargiem. Informacje z zapytania są poufne i służą wyłącznie do przygotowania oferty. To samo zapytanie otrzymuje kilka agencji; odpowiedzi na pytania przekazujemy wszystkim jednocześnie.</div></div>
+
+<!-- ===================== STRONA 6: OCENA OFERT (wewnętrzna) ===================== -->
+<div class="nowa"></div>
+<span class="etykieta szara">Do użytku wewnętrznego – nie wysyłaj agencjom</span>
+<div class="blok"><h2>Tabela oceny ofert</h2>
+<p class="wsk">Skala: 0 – brak odpowiedzi albo ogólnik, 1 – odpowiedź częściowa, 2 – konkretna odpowiedź z dowodem (raport, przykład, zapis w umowie). Punkty za kryterium = waga × ocena. Proponowane wagi (szare) zmień przed otwarciem ofert, nie po.</p>
+<table><colgroup><col style="width:34%"><col style="width:12%"><col style="width:9%"><col style="width:15%"><col style="width:15%"><col style="width:15%"></colgroup><thead><tr><th>Kryterium</th><th>Propozycja wagi</th><th>Twoja waga</th><th>Agencja A<br>ocena / punkty</th><th>Agencja B<br>ocena / punkty</th><th>Agencja C<br>ocena / punkty</th></tr></thead><tbody>
+<tr><td class="b">Zrozumienie celu i plan na 3 miesiące</td><td class="sz">25%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Zakres i to, co obejmuje cena</td><td class="sz">20%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Pomiar i raportowanie</td><td class="sz">15%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Warunki umowy i własność</td><td class="sz">15%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Zespół, doświadczenie, referencje</td><td class="sz">15%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Widoczność w AI i zgodność z zasadami Google</td><td class="sz">10%</td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr class="razem"><td>Wynik (suma punktów)</td><td>100%</td><td></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="b">Koszt 12 miesięcy (12 × cena miesięczna + koszty jednorazowe)</td><td></td><td></td><td class="ww"></td><td class="ww"></td><td class="ww"></td></tr>
+</tbody></table></div>
+<div class="blok"><h2>Czerwone flagi w ofertach</h2>
+<table><colgroup><col style="width:70%"><col style="width:10%"><col style="width:10%"><col style="width:10%"></colgroup><thead><tr><th>Zaznacz, jeśli występuje</th><th class="c">A</th><th class="c">B</th><th class="c">C</th></tr></thead><tbody>
+<tr><td>Gwarancja pierwszego miejsca albo pozycji w krótkim terminie</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Ten sam pakiet dla każdego, bez odniesienia do naszej strony i celu</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>„Kompleksowa obsługa” bez liczby treści, linków albo godzin</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Raport tylko z pozycjami z narzędzia agencji, bez danych z naszej Search Console i GA4</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Konta Google zakładane na agencję, linki „wynajmowane” na czas umowy</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Długa umowa z automatycznym przedłużeniem albo opłaty za wyjście</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+<tr><td>Obietnica „poleceń w ChatGPT” bez metody pomiaru</td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td><td class="c"><span class="cb"></span></td></tr>
+</tbody></table></div>
+<div class="blok"><h2>Notatki z rozmów</h2>
+<table><colgroup><col style="width:16%"><col style="width:84%"></colgroup><tbody><tr><td class="q" style="width:16%">A</td><td class="wn"></td></tr><tr><td class="q" style="width:16%">B</td><td class="wn"></td></tr><tr><td class="q" style="width:16%">C</td><td class="wn"></td></tr></tbody></table>
+<p>Wybrana agencja: <span class="linia"></span> &nbsp; Data decyzji: <span class="linia" style="min-width:30mm"></span></p></div>
+<div class="stopka"><span><b>www.ai-seo-company.pl/narzedzia/zapytanie-ofertowe-seo</b><br>Opis części, przykład i źródła na stronie wzoru.</span><span>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</span></div>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>E-E-A-T checklist: 36 checks</title>
+<style>
+@page { size: A4; margin: 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 9pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.naglowek { font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2.5mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 6mm; }
+.naglowek b { color: #D85A30; }
+h1 { font-size: 20pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+.pod { font-size: 9.5pt; color: #48484A; margin: 0 0 4.5mm; }
+h2 { font-size: 13pt; margin: 0 0 2mm; padding-bottom: 1.6mm; border-bottom: 1.6pt solid #D85A30; display: block; width: fit-content; }
+h3 { font-size: 10.5pt; margin: 3mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.2pt solid #D85A30; display: block; width: fit-content; }
+.pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 3mm; }
+.pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+.pole span { white-space: nowrap; }
+.pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+ol.kroki { margin: 0; padding-left: 5mm; }
+ol.kroki li { margin: 0 0 1.2mm; }
+.dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+ul.leg { list-style: none; margin: 0; padding: 0; }
+ul.leg li { margin: 0 0 1.4mm; }
+.box { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: 0.5mm; vertical-align: -0.4mm; margin-right: 1.2mm; background: #fff; }
+.prio { display: inline-block; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.4mm 1.4mm; border-radius: 1mm; border: 0.6pt solid #E5E1DC; color: #6E6E73; margin-right: 1mm; }
+.prio.w { color: #fff; background: #D85A30; border-color: #D85A30; }
+.prio.s { color: #D85A30; border-color: #D85A30; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 0.6pt solid #E5E1DC; padding: 1.4mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: #F7F5F2; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; color: #48484A; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+td.c { text-align: center; }
+table.podsum td { height: 6.4mm; vertical-align: middle; padding-top: 0.8mm; padding-bottom: 0.8mm; }
+table.podsum tr.razem td { font-weight: 700; background: #FBFAF8; }
+table.puste td { height: 8mm; }
+table.k0 td { height: 8mm; padding-top: 0.8mm; padding-bottom: 0.8mm; vertical-align: middle; }
+.oc.rz .box { margin-left: 0; }
+.oc span.in { margin-right: 2mm; }
+table.puste td.pre { font-size: 7.8pt; color: #48484A; }
+.nowa { break-before: page; page-break-before: always; }
+.opis { margin: 1mm 0 3mm; color: #48484A; font-size: 8.5pt; }
+.ile { color: #D85A30; font-weight: 700; white-space: nowrap; }
+table.lista td { padding: 1mm 1.4mm; }
+.nr { font-weight: 700; color: #D85A30; font-size: 8.5pt; }
+.pk { font-weight: 700; font-size: 8.3pt; line-height: 1.24; }
+.jak { font-size: 7.3pt; color: #48484A; margin-top: 0.4mm; line-height: 1.25; }
+.jak b { font-weight: 700; color: #1D1D1F; }
+.pdst { font-size: 6.8pt; color: #8E8E93; white-space: nowrap; }
+.st { font-size: 7.2pt; line-height: 1.4; white-space: nowrap; }
+.st div { margin: 0 0 0.2mm; }
+.st .box { width: 2.6mm; height: 2.6mm; }
+.oc { font-size: 7.4pt; line-height: 1.5; white-space: nowrap; }
+.oc .box { width: 2.6mm; height: 2.6mm; }
+.wynik { margin: 2.5mm 0 0; font-size: 8.5pt; }
+.ramka { border-left: 1.6pt solid #D85A30; background: #FBFAF8; padding: 2mm 3mm; margin: 0 0 3.5mm; font-size: 8.2pt; color: #2C2C2E; }
+.ramka p { margin: 0 0 1mm; }
+.ramka p:last-child { margin: 0; }
+.pyt { margin: 0 0 2.5mm; padding-left: 5mm; font-size: 8.5pt; }
+.pyt li { margin: 0 0 1mm; }
+footer { margin-top: 6mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+footer p { margin: 0 0 0.8mm; }
+footer strong { color: #1D1D1F; }
+.sek { margin: 0 0 3.5mm; }
+h2, h3, .opis, .glowa { break-after: avoid; page-break-after: avoid; }
+.glowa { break-inside: avoid; page-break-inside: avoid; }
+.odstep { margin-top: 6mm; }
+</style>
+</head>
+<body>
+<div class="naglowek"><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</div>
+<h1>E-E-A-T checklist: 36 checks</h1>
+<p class="pod">Trust, authors, content, reputation and structured data. Every check has a priority, a way to verify it and a basis in Google’s documentation. Version: November 2026.</p>
+<div class="pola sek"><div class="pole"><span>Site (URL)</span><i></i></div><div class="pole"><span>Review date</span><i></i></div><div class="pole"><span>Reviewed by</span><i></i></div><div class="pole"><span>Next review</span><i></i></div></div>
+<div class="ramka"><p><strong>Trust matters most.</strong> Experience, expertise and authoritativeness support it, but content doesn’t have to show all of them at once.</p><p><strong>E-E-A-T itself isn’t a specific ranking factor.</strong> Google uses many signals; this list checks whether your site shows what a person deciding whether to trust you looks for.</p><p><strong>Quality raters don’t change rankings.</strong> Their guidelines help you see your site through a reader’s eyes.</p></div>
+<div class="sek">
+  <h3>How to use this template</h3>
+  <ol class="kroki"><li><strong>Pick the pages:</strong> homepage, About, Contact, 3–5 service pages and your 10 pages with the most Google traffic.</li><li><strong>Do step 0</strong> (below): decide whether your page topics are YMYL.</li><li><strong>Work through areas A–E</strong> and mark every check OK, needs work or N/A.</li><li><strong>Research your reputation</strong> with the searches in check D1 and record the results in the table on the last page.</li><li><strong>Describe the problem in the notes:</strong> the URL and specifics, e.g. “/blog/vat-2026: no byline, rates without a source.”</li><li><strong>Build the plan:</strong> high priority first, and for YMYL content B6 and C2 first. Give each action an owner and a deadline.</li></ol>
+</div>
+<div class="sek">
+  <h3>Statuses and priorities</h3>
+  <div class="dwie"><ul class="leg"><li><span class="box"></span><strong>OK</strong> – the check passes</li><li><span class="box"></span><strong>Fix</strong> – needs work: note the URL and the problem</li><li><span class="box"></span><strong>N/A</strong> – doesn’t apply, leave it out of the score</li></ul><ul class="leg"><li><span class="prio w">high</span> failure undermines trust or breaks Google’s rules; do it first</li><li><span class="prio s">medium</span> weakens how the site is assessed</li><li><span class="prio n">low</span> housekeeping</li></ul></div>
+</div>
+<div class="sek">
+  <h3>Step 0. Is the topic YMYL?</h3>
+  <p class="opis">YMYL covers topics where mistakes could harm people’s health, finances or safety, or society; most topics aren’t YMYL. For each group of pages, answer the two questions from Google’s rater guidelines (section 2.3). <strong>YMYL types:</strong> Health or safety · Financial security · Government, civics and society · Other topics that could hurt people.</p>
+  <ol class="pyt"><li>Would a careful person seek out experts or highly trusted sources here, because even minor inaccuracies could cause harm? If yes, the topic is likely YMYL.</li><li>Would most people be content with casually asking their friends about it? If yes, the topic is likely not YMYL.</li></ol>
+  <table class="puste k0">
+    <colgroup><col style="width:44mm"><col style="width:22mm"><col style="width:22mm"><col style="width:45mm"><col></colgroup>
+    <thead><tr><th>Group of pages (URL or section)</th><th>Question 1</th><th>Question 2</th><th>Is the topic YMYL?</th><th>Who writes and who reviews</th></tr></thead>
+    <tbody><tr><td></td><td class="oc"><span class="in"><span class="box"></span>yes</span><span class="in"><span class="box"></span>no</span></td><td class="oc"><span class="in"><span class="box"></span>yes</span><span class="in"><span class="box"></span>no</span></td><td class="oc"><span class="in"><span class="box"></span>clearly</span><span class="in"><span class="box"></span>maybe</span><span class="in"><span class="box"></span>no</span></td><td></td></tr><tr><td></td><td class="oc"><span class="in"><span class="box"></span>yes</span><span class="in"><span class="box"></span>no</span></td><td class="oc"><span class="in"><span class="box"></span>yes</span><span class="in"><span class="box"></span>no</span></td><td class="oc"><span class="in"><span class="box"></span>clearly</span><span class="in"><span class="box"></span>maybe</span><span class="in"><span class="box"></span>no</span></td><td></td></tr><tr><td></td><td class="oc"><span class="in"><span class="box"></span>yes</span><span class="in"><span class="box"></span>no</span></td><td class="oc"><span class="in"><span class="box"></span>yes</span><span class="in"><span class="box"></span>no</span></td><td class="oc"><span class="in"><span class="box"></span>clearly</span><span class="in"><span class="box"></span>maybe</span><span class="in"><span class="box"></span>no</span></td><td></td></tr></tbody>
+  </table>
+  <p class="wynik">Clearly YMYL: checks B6 and C2 go to the top of the list. No expert review yet? Don’t pretend there was one: say the page isn’t professional advice and schedule the review.</p>
+</div>
+
+<section class="odstep">
+  <div class="glowa"><h2>A. Trust: who is behind the site</h2>
+  <p class="opis">What the site says about itself: who is responsible for it, how to get in touch, whether selling is fair and safe, and whether claims are backed up. <span class="ile">8 checks</span></p></div>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:104mm"><col style="width:16mm"><col style="width:14mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">A1</td>
+        <td><div class="pk">The About page says who is responsible for the site: the full business or personal name, what you do, where you operate and who runs it</div><div class="jak"><b>How to check:</b> Read your About page as someone who has never heard of you. Within a minute they should know who is behind the content and the offer. <span class="pdst">Basis: Rater guidelines, 2.5.2</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">A2</td>
+        <td><div class="pk">Contact details are easy to find from every page: phone, email, address or service area, and company details</div><div class="jak"><b>How to check:</b> Check the footer and menu on the homepage, an article and a service page. A contact form alone isn’t enough for services or sales. <span class="pdst">Basis: Rater guidelines, 2.5.3</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">A3</td>
+        <td><div class="pk">If the site takes orders or payments, the terms, payment, returns and complaints policies and customer service contact are public</div><div class="jak"><b>How to check:</b> Go through the order path to the end. Note where a customer finds this information before paying. No online sales: N/A. <span class="pdst">Basis: Rater guidelines, 2.5.3 and 3.4</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">A4</td>
+        <td><div class="pk">The site is safe: HTTPS with no browser warnings, no suspicious redirects, forced downloads or ads posing as content</div><div class="jak"><b>How to check:</b> Open a few pages in a private window and on a phone. Our free SEO audit also checks HTTPS and the http:// redirect. <span class="pdst">Basis: Rater guidelines, 3.4 (safety)</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">A5</td>
+        <td><div class="pk">Claims about the business (number of clients, results, awards, certificates, “No. 1”) are backed by a source, a date or a document</div><div class="jak"><b>How to check:</b> List every number and award on your homepage and About page. Note where the proof is for each. No proof: remove it or make it specific. <span class="pdst">Basis: Rater guidelines, 3.3.1</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">A6</td>
+        <td><div class="pk">Reviews, testimonials and case studies on the site come from real customers and can be verified</div><div class="jak"><b>How to check:</b> Note the source of each testimonial: your Business Profile, an email, the client’s consent. A link to your Google Business Profile lets readers see every review. <span class="pdst">Basis: Rater guidelines, 3.3.2</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">A7</td>
+        <td><div class="pk">The offer says plainly what the customer gets: scope, price or how it’s quoted, timing and how to cancel</div><div class="jak"><b>How to check:</b> Read a service page as a customer would. Do you know what you’ll pay, or what the price depends on, and how to end the contract? <span class="pdst">Basis: Our practice</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">A8</td>
+        <td><div class="pk">Your business name, address, phone number and description match on your site, your Google Business Profile and your other profiles</div><div class="jak"><b>How to check:</b> Copy the details from each place into one table and compare them character by character. The same check is in the SEO checklist (C4). <span class="pdst">Basis: Our practice</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area result: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+</section>
+
+<section class="odstep">
+  <div class="glowa"><h2>B. Authors and experience: who created the content</h2>
+  <p class="opis">Who wrote the content, whether they’re a real person, whether they know the subject first-hand and whether a qualified person checked YMYL content. <span class="ile">8 checks</span></p></div>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:104mm"><col style="width:16mm"><col style="width:14mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">B1</td>
+        <td><div class="pk">Articles, guides and reviews carry an author byline wherever a reader might ask “who wrote this?”</div><div class="jak"><b>How to check:</b> Review your 10 pages with the most Google traffic. A service page can be credited to the company; an expert guide needs a named person. <span class="pdst">Basis: Google: helpful content (“Who”)</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">B2</td>
+        <td><div class="pk">The byline links to an author page: their role, what they do, what they write about, and contact details or a professional profile</div><div class="jak"><b>How to check:</b> Click the byline. If it isn’t a link or leads to an empty page, the check fails. <span class="pdst">Basis: Google: helpful content (“Who”)</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">B3</td>
+        <td><div class="pk">The author is a real person: no made-up names, AI-generated headshots or credentials they don’t hold</div><div class="jak"><b>How to check:</b> Compare the bio with the author’s professional profile. Google calls fabricated author profiles a form of deception that makes a page untrustworthy. <span class="pdst">Basis: Google: helpful content (“Who”)</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">B4</td>
+        <td><div class="pk">The bio gives verifiable facts instead of filler: job title, scope of work, projects, and a registration number for a regulated profession</div><div class="jak"><b>How to check:</b> Underline every sentence in the bio that can’t be checked (“passionate,” “expert with years of experience”). Replace it with facts or cut it. <span class="pdst">Basis: Rater guidelines, 3.4</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">B5</td>
+        <td><div class="pk">The content shows first-hand experience: your own photos, screenshots, data, a description of a test or an example from real work</div><div class="jak"><b>How to check:</b> For each guide, note what in it is yours and missing from other results. If there’s nothing, the page is summarizing others. <span class="pdst">Basis: Google: helpful content; guidelines, 3.4</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">B6</td>
+        <td><div class="pk">YMYL content (health, finance, safety, civic matters) is written or reviewed by a qualified person, and the page shows who reviewed it and when</div><div class="jak"><b>How to check:</b> Do step 0 first. For a YMYL topic, add a line such as “Reviewed by [name], [profession], [date]” under the content. Not YMYL: N/A. <span class="pdst">Basis: Rater guidelines, 3.4.1</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">B7</td>
+        <td><div class="pk">If AI played a substantial part in creating the content and a reader might ask “how was this made?”, the page explains it, and AI isn’t credited as the author</div><div class="jak"><b>How to check:</b> Write down an editorial rule: who fact-checks AI-assisted content. Google says an AI author byline is probably not the best way to show it. <span class="pdst">Basis: Google: AI-generated content (FAQ)</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">B8</td>
+        <td><div class="pk">The site sticks to its subjects: content covers what the business does and what its authors know</div><div class="jak"><b>How to check:</b> Group your articles by topic. Send anything outside your expertise, written only for search traffic, to review. <span class="pdst">Basis: Google: helpful content</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area result: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+</section>
+
+<section class="odstep">
+  <div class="glowa"><h2>C. Content: accuracy, sources and freshness</h2>
+  <p class="opis">Whether the content is accurate and sourced, whether dates tell the truth, whether the page adds something of its own and whether readers know how it was made. <span class="ile">8 checks</span></p></div>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:104mm"><col style="width:16mm"><col style="width:14mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">C1</td>
+        <td><div class="pk">Figures, regulations, recommendations and quotes have a source: a link to the original document, not to a summary</div><div class="jak"><b>How to check:</b> Highlight every number and every “according to…” in the text. Each needs a link or a named source with a date. <span class="pdst">Basis: Google: helpful content (expertise questions)</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">C2</td>
+        <td><div class="pk">The content has no easily verified errors, and on YMYL topics it matches established expert consensus</div><div class="jak"><b>How to check:</b> Ask someone in your field who didn’t write it to read it. Google itself suggests asking trusted people unaffiliated with your site. <span class="pdst">Basis: Google: helpful content (accuracy)</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">C3</td>
+        <td><div class="pk">The page shows a publication or update date with a label (“Published,” “Updated”)</div><div class="jak"><b>How to check:</b> Check articles and pages with data that changes: prices, rules, rates. A date without a label is unclear. <span class="pdst">Basis: Google: byline dates</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">C4</td>
+        <td><div class="pk">The update date only changes when the content changes substantially</div><div class="jak"><b>How to check:</b> Compare the “Updated” date with the revision history in your CMS. Google lists changing dates just to look fresh as a sign of search-engine-first content. <span class="pdst">Basis: Google: helpful content</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">C5</td>
+        <td><div class="pk">The content adds something of its own: data, an example, analysis or lessons from practice, rather than rewriting other sources</div><div class="jak"><b>How to check:</b> Compare the page with the top three Google results. List what you have that they don’t. An empty list fails the check. <span class="pdst">Basis: Google: helpful content (originality)</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">C6</td>
+        <td><div class="pk">The title and H1 describe the content accurately: no exaggeration, shock value or promises the text doesn’t keep</div><div class="jak"><b>How to check:</b> Read the title, then the text. Does the title promise something the page doesn’t deliver? <span class="pdst">Basis: Google: helpful content</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">C7</td>
+        <td><div class="pk">Where it matters, the content says how it was made: how you tested, how many things you checked, where the data comes from and what period it covers</div><div class="jak"><b>How to check:</b> Reviews, rankings, comparisons and data reports need a method section. A general how-to guide: often N/A. <span class="pdst">Basis: Google: helpful content (“How”)</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">C8</td>
+        <td><div class="pk">The writing is careful, with no typos or errors, and ads and pop-ups don’t cover the main content</div><div class="jak"><b>How to check:</b> Read the page on a phone. Check that you can reach the content without closing windows. <span class="pdst">Basis: Google: helpful content; guidelines, 2.4</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area result: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+</section>
+
+<section class="odstep">
+  <div class="glowa"><h2>D. Reputation: what others say about you</h2>
+  <p class="opis">What independent sources say about the business and its authors, what reviews look like and whether recommendations on the site disclose conflicts of interest. <span class="ile">7 checks</span></p></div>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:104mm"><col style="width:16mm"><col style="width:14mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">D1</td>
+        <td><div class="pk">You know what others say about the business: results for [business name -site:yourdomain.com] and [business name reviews -site:yourdomain.com]</div><div class="jak"><b>How to check:</b> Run both searches in Google, go through the first two pages of results and record your findings in the reputation table on the last page of the template. <span class="pdst">Basis: Rater guidelines, 3.3.3</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">D2</td>
+        <td><div class="pk">Authors have a footprint too: publications, talks, a professional profile, an entry in a professional register</div><div class="jak"><b>How to check:</b> Search for [author name + topic]. If nothing comes up, start with a professional profile and link to it from the bio. <span class="pdst">Basis: Rater guidelines, 3.3.4</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">D3</td>
+        <td><div class="pk">Your Google Business Profile and review sites have recent reviews, and the business replies to them, critical ones included</div><div class="jak"><b>How to check:</b> Business Profile → Reviews. Reply factually and leave out customer details. A few negative reviews are normal; what they say matters. <span class="pdst">Basis: Rater guidelines, 3.3.2</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">D4</td>
+        <td><div class="pk">The business doesn’t buy reviews, offer discounts or gifts for them, or post them from multiple accounts</div><div class="jak"><b>How to check:</b> Check how you ask for reviews: emails, flyers, discount codes. Google Maps policy bans paid and incentivized reviews. <span class="pdst">Basis: Google Maps content policy</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">D5</td>
+        <td><div class="pk">Recurring complaints have been looked into and the cause fixed</div><div class="jak"><b>How to check:</b> Group critical reviews and mentions by topic. A problem that keeps coming back has to be solved in the business, not in the copy. <span class="pdst">Basis: Rater guidelines, 3.3.2</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">D6</td>
+        <td><div class="pk">Independent sources mention the business or its authors: trade media, organizations, directories, events</div><div class="jak"><b>How to check:</b> List mentions from the last 12 months. Sponsored articles and your own social media profiles are not independent sources. <span class="pdst">Basis: Rater guidelines, 3.3.1</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">D7</td>
+        <td><div class="pk">Recommendations, rankings and reviews disclose conflicts of interest: your own product, an affiliate link, paid partnerships</div><div class="jak"><b>How to check:</b> Check every page that recommends a product or company. The disclosure belongs next to the content, not only in your terms. <span class="pdst">Basis: Rater guidelines, 3.4</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area result: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+</section>
+
+<section class="odstep">
+  <div class="glowa"><h2>E. Structured data: your business and authors described for Google</h2>
+  <p class="opis">JSON-LD markup that helps Google connect content to your business and its authors. It should describe what’s already visible on the page. <span class="ile">5 checks</span></p></div>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:104mm"><col style="width:16mm"><col style="width:14mm"><col></colgroup>
+    <thead><tr><th>No.</th><th>Check and how to verify it</th><th>Priority</th><th>Status</th><th>Notes · owner · deadline</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">E1</td>
+        <td><div class="pk">The homepage has Organization or LocalBusiness markup: name, logo, address, contact details and sameAs links to your business profiles</div><div class="jak"><b>How to check:</b> Use the Rich Results Test or the schema.org validator. Our free SEO audit checks whether this markup exists. <span class="pdst">Basis: Google: Organization structured data</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">E2</td>
+        <td><div class="pk">Articles have Article markup in which each author has a separate author field with the Person type and a url or sameAs</div><div class="jak"><b>How to check:</b> Run the schema.org validator on one article. The name in the markup must match the byline. <span class="pdst">Basis: Google: Article structured data</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">E3</td>
+        <td><div class="pk">The author page has ProfilePage markup with the author as its main subject (mainEntity)</div><div class="jak"><b>How to check:</b> Run the validator on the author page. With a single author, a Person node with a stable @id on the About page, referenced by your articles, is enough. <span class="pdst">Basis: Google: ProfilePage structured data</span></div></td>
+        <td><span class="prio n">low</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">E4</td>
+        <td><div class="pk">datePublished and dateModified in the markup match the dates visible on the page</div><div class="jak"><b>How to check:</b> Compare the JSON-LD with the date under the title. Dates must not be in the future. <span class="pdst">Basis: Google: byline dates</span></div></td>
+        <td><span class="prio s">medium</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="nr">E5</td>
+        <td><div class="pk">Structured data only describes what readers can see: no hidden authors, ratings or reviews</div><div class="jak"><b>How to check:</b> Compare every JSON-LD property with the page content. Google explicitly lists fake reviews in markup as not allowed. <span class="pdst">Basis: Google: general structured data guidelines</span></div></td>
+        <td><span class="prio w">high</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Fix</div><div><span class="box"></span>N/A</div></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik">Area result: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>needs work ____ &nbsp; <span class="box"></span>N/A ____</p>
+</section>
+
+<section class="nowa">
+  <h2>Reputation research (checks D1–D6)</h2>
+  <p class="opis">Run the searches in Google, go through the first two pages of results and record what you find. Count only sources independent of the business: media, organizations, review sites, forums. Skip your own profiles and sponsored articles.</p>
+  <table class="puste">
+    <colgroup><col style="width:52mm"><col style="width:50mm"><col style="width:20mm"><col></colgroup>
+    <thead><tr><th>Search or place</th><th>Source found (URL)</th><th>Tone</th><th>What to do about it</th></tr></thead>
+    <tbody><tr><td class="pre">[business name] -site:yourdomain.com</td><td></td><td class="oc"><span class="box"></span>+ <span class="box"></span>0 <span class="box"></span>−</td><td></td></tr><tr><td class="pre">[business name] reviews -site:yourdomain.com</td><td></td><td class="oc"><span class="box"></span>+ <span class="box"></span>0 <span class="box"></span>−</td><td></td></tr><tr><td class="pre">[author name] + topic</td><td></td><td class="oc"><span class="box"></span>+ <span class="box"></span>0 <span class="box"></span>−</td><td></td></tr><tr><td class="pre">Google Business Profile: reviews and replies</td><td></td><td class="oc"><span class="box"></span>+ <span class="box"></span>0 <span class="box"></span>−</td><td></td></tr><tr><td class="pre">Trade media, organizations and directories</td><td></td><td class="oc"><span class="box"></span>+ <span class="box"></span>0 <span class="box"></span>−</td><td></td></tr><tr><td class="pre"></td><td></td><td class="oc"><span class="box"></span>+ <span class="box"></span>0 <span class="box"></span>−</td><td></td></tr></tbody>
+  </table>
+  <h2 style="margin-top:6mm">Action plan</h2>
+  <p class="opis">Turn every “needs work” check into an action. High priority first; for YMYL content, B6 and C2 first. After the fix, recheck the item and update the summary below.</p>
+  <table class="puste">
+    <colgroup><col style="width:11mm"><col style="width:42mm"><col><col style="width:24mm"><col style="width:20mm"><col style="width:14mm"></colgroup>
+    <thead><tr><th>No.</th><th>Page URL</th><th>Action</th><th>Owner</th><th>Deadline</th><th>Done</th></tr></thead>
+    <tbody><tr><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr></tbody>
+  </table>
+  <h2 style="margin-top:6mm">Review summary</h2>
+  <table class="podsum">
+    <colgroup><col style="width:52mm"><col style="width:16mm"><col style="width:16mm"><col style="width:22mm"><col style="width:16mm"><col></colgroup>
+    <thead><tr><th>Area</th><th>Checks</th><th>OK</th><th>Needs work</th><th>N/A</th><th>Open high-priority checks</th></tr></thead>
+    <tbody><tr><td>A. Trust</td><td class="c">8</td><td></td><td></td><td></td><td></td></tr><tr><td>B. Authors and experience</td><td class="c">8</td><td></td><td></td><td></td><td></td></tr><tr><td>C. Content</td><td class="c">8</td><td></td><td></td><td></td><td></td></tr><tr><td>D. Reputation</td><td class="c">7</td><td></td><td></td><td></td><td></td></tr><tr><td>E. Structured data</td><td class="c">5</td><td></td><td></td><td></td><td></td></tr><tr class="razem"><td>Total</td><td class="c">36</td><td></td><td></td><td></td><td></td></tr></tbody>
+  </table>
+  <footer><p>Latest version of this checklist, a worked example and sources: <strong>www.ai-seo-company.pl/en/tools/e-e-a-t-checklist</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p></footer>
+</section>
+</body>
+</html>

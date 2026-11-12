@@ -6,13 +6,19 @@
 <!--
   Source of public/pliki/seo-report-template.pdf (page /en/tools/seo-report-template, 2026-11-11).
   English version of wzor-raportu-seo.html; content matches RaportEn in components/narzedzia/SzablonRaport.jsx:
-  5 sections, 6-metric table, 6 red flags.
+  5 sections, 7-metric table, 6 red flags.
   Build:
   "/Users/filipsliwa/Library/Caches/ms-playwright/chromium-1140/chrome-mac/Chromium.app/Contents/MacOS/Chromium" \
     --headless=new --disable-gpu --no-pdf-header-footer \
     --print-to-pdf=<repo>/public/pliki/seo-report-template.pdf file://<repo>/scripts/szablony/pdf/seo-report-template.html
-  Every .strona section starts a new A4 page; the "p. X of 5" labels are hard-coded,
-  so after editing the content check that the PDF still has 5 pages.
+  Every .strona section starts a new A4 page; the "p. X of 6" labels are hard-coded,
+  so after editing the content check that the PDF still has 6 pages.
+  2026-11-11 (content review, synced with the PL file): 6 pages instead of 5. The metrics table (p. 4)
+  gained rows for the inbox/CRM check, Business Profile actions, visits from AI chats, indexing and
+  Core Web Vitals; "how to read" and the data notes (GA4 consent, branded filter, 16 months of
+  Search Console data, AI Overviews, CWV thresholds, common causes of change) moved to p. 5; the links
+  table (p. 3) gained a "New domain" column (playbook 6.3). td.ww is 8.2 mm here (8.6 mm in PL) so that
+  page 1 still fits on one sheet.
 -->
 <style>
   @page { size: A4; margin: 16mm; }
@@ -26,7 +32,7 @@
   .lead { font-size: 10.5pt; color: #3A3A3C; margin: 0 0 1mm; }
   h2 { font-size: 12.4pt; line-height: 1.25; margin: 5.5mm 0 2.6mm; padding-bottom: 1.6mm; border-bottom: 1.6px solid #D85A30; break-after: avoid; }
   h2.tytul { font-size: 15.5pt; margin-top: 0; }
-  h3 { font-size: 10.4pt; margin: 3.8mm 0 1.4mm; break-after: avoid; }
+  h3 { font-size: 10.4pt; margin: 3.4mm 0 1.4mm; break-after: avoid; }
   h3 .nr, .kroki b.nr { color: #D85A30; }
   p { margin: 0 0 2mm; }
   .opis { color: #3A3A3C; }
@@ -40,8 +46,8 @@
   th, td { border: 1px solid #E5E1DC; padding: 1.4mm 2mm; text-align: left; vertical-align: top; }
   th { background: #FAF7F4; font-weight: 600; }
   tr { break-inside: avoid; page-break-inside: avoid; }
-  td.w { height: 7.4mm; }
-  td.ww { height: 8.6mm; }
+  td.w { height: 6.6mm; }
+  td.ww { height: 8.2mm; }
   td.wl { height: 8.2mm; }
   .nw { white-space: nowrap; }
   th .pod { display: block; font-weight: 400; white-space: nowrap; }
@@ -70,15 +76,15 @@
 
 <!-- PAGE 1: how to use + report details -->
 <section>
-  <div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>p. 1 of 5</span></div>
+  <div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>p. 1 of 6</span></div>
   <h1>Monthly SEO Report Template</h1>
-  <p class="lead">Five report sections with examples, a metrics table to fill in with data from Google Search Console and Google Analytics 4, and a red-flag checklist for whoever reads the report. Print the template, or send it to your agency as a list of what you expect to see in every monthly report.</p>
+  <p class="lead">Five report sections with examples, a metrics table for data from Search Console, GA4 and your Google Business Profile, and a red-flag checklist for whoever reads the report. Print the template, or send it to your agency as a list of what you expect in every monthly report.</p>
 
   <h2>How to use this template</h2>
   <ol class="kroki">
-    <li><b>Lead with the business result.</b> The first number is customer inquiries from Google (form, phone, email) and the cost per inquiry. Clicks, rankings and work done come after that.</li>
+    <li><b>Lead with the business result.</b> The first number is customer inquiries from Google (form, phone, email) and the cost per inquiry, or revenue and transactions for an online shop. Clicks, rankings and work done come later.</li>
     <li><b>Keep the summary to one page</b> (p. 2): the result against the goal, 3–5 causes with evidence, next month’s plan and the risks. Charts and keyword tables belong in an appendix or the client portal.</li>
-    <li><b>Give every number a source</b> the client can open on their own – ideally Search Console and Analytics accounts registered to the client’s email address.</li>
+    <li><b>Give every number a source</b> the client can open on their own – ideally Search Console and Analytics accounts registered to the client’s email address. Check the GA4 inquiry count against your inbox or CRM.</li>
     <li><b>Compare year over year.</b> Month-over-month growth during peak season is often just the calendar, not the effect of SEO.</li>
     <li><b>Log every task with a date and a page URL</b> (p. 3). A task name on its own, such as “on-page optimization,” is not enough.</li>
     <li><b>The last page is for the reader.</b> Check the agency’s report against this template and tick any red flags. Missing sections make good questions for your next meeting.</li>
@@ -91,9 +97,10 @@
       <tr><td class="etyk">Report month</td><td class="ww"></td></tr>
       <tr><td class="etyk">Prepared by (agency, account manager)</td><td class="ww"></td></tr>
       <tr><td class="etyk">Date delivered</td><td class="ww"></td></tr>
-      <tr><td class="etyk">Goal for the month (number of customer inquiries)</td><td class="ww"></td></tr>
+      <tr><td class="etyk">Main result and goal for the month (e.g. number of customer inquiries)</td><td class="ww"></td></tr>
       <tr><td class="etyk">Tracked keyword list: agreed on (date) / changes this month</td><td class="ww"></td></tr>
       <tr><td class="etyk">The client owns the Search Console and GA4 accounts</td><td class="ww"><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="etyk">Link to the portal or dashboard with the data</td><td class="ww"></td></tr>
       <tr><td class="etyk">GA4 key events (form, phone, email) are working</td><td class="ww"><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span> <span class="maly">– if not, list it as a risk in section 5</span></td></tr>
     </tbody>
   </table>
@@ -103,15 +110,16 @@
     <tbody>
       <tr><td>p. 2</td><td>Monthly summary: sections 1, 2, 4 and 5 on a single page</td></tr>
       <tr><td>p. 3</td><td>Section 3: work log and links acquired</td></tr>
-      <tr><td>p. 4</td><td>Metrics table from GA4 and Search Console – months to fill in, how to read each metric and its pitfalls</td></tr>
-      <tr><td>p. 5</td><td>For the reader: five-section check and red flags</td></tr>
+      <tr><td>p. 4</td><td>Metrics table from GA4, Search Console and your Business Profile – months to fill in</td></tr>
+      <tr><td>p. 5</td><td>How to read the metrics, pitfalls, Google thresholds and common causes of change</td></tr>
+      <tr><td>p. 6</td><td>For the reader: five-section check and red flags</td></tr>
     </tbody>
   </table>
 </section>
 
 <!-- PAGE 2: summary (sections 1, 2, 4, 5) -->
 <section class="strona">
-  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 2 of 5</span></div>
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 2 of 6</span></div>
   <h2 class="tytul">Monthly summary <span style="font-weight:400;color:#6E6E73;font-size:10pt">– page 1 of the report, clear without any attachments</span></h2>
 
   <h3><span class="nr">1.</span> Result against the goal</h3>
@@ -120,6 +128,7 @@
     <tbody>
       <tr><td>Customer inquiries from Google (form + phone + email)</td><td class="w"></td><td></td><td></td><td></td></tr>
       <tr><td>Cost per inquiry</td><td class="w"></td><td></td><td></td><td></td></tr>
+      <tr><td>Other main result (e.g. revenue, calls): ________</td><td class="w"></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
   <div class="pole" style="margin-top:2mm">
@@ -140,7 +149,7 @@
       <tr><td class="nr">5</td><td class="w"></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
-  <p class="zle"><b>Not good enough:</b> “rankings went up thanks to optimization” – with no date and no page URL, it explains nothing.</p>
+  <p class="zle"><b>Not good enough:</b> “rankings went up thanks to optimization” – with no date and no page URL, it explains nothing. Common causes of change: p. 5.</p>
 
   <p class="odsylacz"><b>3. Work done and its effect</b> – the full dated list is in the work log on p. 3.</p>
 
@@ -169,7 +178,7 @@
 
 <!-- PAGE 3: section 3, work log -->
 <section class="strona">
-  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 3 of 5</span></div>
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 3 of 6</span></div>
   <h2 class="tytul"><span style="color:#D85A30">3.</span> Work done and its effect</h2>
   <p class="opis">A dated list of work: new content, technical fixes, links acquired, changes to the Google Business Profile. For each item, name the page it concerns and say whether the effect is visible yet. Each entry should make clear what exactly was changed.</p>
   <table>
@@ -194,24 +203,24 @@
   <div class="pole" style="margin-top:2.4mm"><div class="tekst" style="margin:0">Hours this month (if you pay by the hour): &nbsp;__________ &nbsp;of&nbsp; __________ &nbsp;in the contract</div></div>
 
   <h3>Links acquired</h3>
-  <p class="maly">For every link: the URL, the date and its current status. Quality counts, not the number of links.</p>
+  <p class="maly">For every link: the URL, the date and its current status. What counts is quality and the number of new domains linking to key pages, not the link count itself.</p>
   <table>
-    <thead><tr><th>Linking page URL</th><th style="width:18mm">Date</th><th style="width:44mm">Target page</th><th style="width:30mm">Link still live</th></tr></thead>
+    <thead><tr><th>Linking page URL</th><th style="width:18mm">Date</th><th style="width:38mm">Target page</th><th style="width:22mm">New domain</th><th style="width:26mm">Link still live</th></tr></thead>
     <tbody>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
-      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
+      <tr><td class="w"></td><td></td><td></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td><td><span class="opcje"><span><i class="cb"></i>yes</span><span><i class="cb"></i>no</span></span></td></tr>
     </tbody>
   </table>
 </section>
 
 <!-- PAGE 4: metrics table -->
 <section class="strona">
-  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 4 of 5</span></div>
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 4 of 6</span></div>
   <h2 class="tytul">Metrics table (appendix)</h2>
-  <p class="opis">Fill it in with data from GA4 and Google Search Console, and write the month names in the column headers. Count clicks and impressions without brand queries: in the Search Console Performance report, add a query filter that excludes your company name and its variants, including misspellings.</p>
+  <p class="opis">Fill it in with data from GA4, Google Search Console and your Google Business Profile, and write the month names in the column headers. Count clicks and impressions without brand queries (p. 5 explains how).</p>
   <table>
     <thead><tr><th style="width:33%">Metric</th><th style="width:19%">Source</th><th>Month<span class="pod">________</span></th><th>Month<span class="pod">________</span></th><th>Month<span class="pod">________</span></th><th>Last year<span class="pod">same month</span></th><th>Change<span class="pod">YoY</span></th></tr></thead>
     <tbody>
@@ -219,35 +228,57 @@
       <tr><td style="padding-left:5mm">of which: form</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td style="padding-left:5mm">of which: phone</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td style="padding-left:5mm">of which: email</td><td>GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td><b>Cost per inquiry</b> (monthly SEO cost ÷ number of inquiries)</td><td>invoices, GA4</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="padding-left:5mm">inquiries that actually arrived (to compare with GA4)</td><td>inbox, CRM</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><b>Cost per inquiry</b> (monthly SEO cost ÷ number of inquiries)</td><td>invoices, inbox or CRM</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>Clicks excluding brand queries</td><td>Search Console</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>Impressions excluding brand queries</td><td>Search Console</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Agreed keywords in the TOP 3 (%)</td><td>Search Console or a rank tracker</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Agreed keywords in the TOP 10 (%)</td><td>Search Console or a rank tracker</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Business Profile: 7×7 grid points in the TOP 3 (%)</td><td>49-point measurement</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Agreed keywords in the top 3 (%)</td><td>Search Console or a rank tracker</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Agreed keywords in the top 10 (%)</td><td>Search Console or a rank tracker</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Business Profile: 7×7 grid points in the top 3 (%)</td><td>49-point measurement</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Business Profile: calls / direction requests</td><td>Business Profile: Performance</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
       <tr><td>AI answers that name the company (%)</td><td>fixed set of questions, weekly</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Links acquired: new / still live</td><td>link list (p. 3)</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Visits from AI chats (e.g. chatgpt.com, perplexity.ai)</td><td>GA4: session source</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Links acquired: new referring domains / links still live</td><td>link list (p. 3)</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Key pages not indexed</td><td>Search Console: Page indexing</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Core Web Vitals on mobile: LCP / INP / CLS</td><td>Search Console: Core Web Vitals report</td><td class="w"></td><td></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
-
-  <h3>How to read the metrics and where the pitfalls are</h3>
-  <table>
-    <thead><tr><th style="width:28%">Metric</th><th style="width:22%">Source</th><th style="width:22%">How to read it</th><th>Pitfall</th></tr></thead>
-    <tbody>
-      <tr><td>Inquiries from Google (form, phone, email) and the cost per inquiry</td><td>GA4 (key events), invoices</td><td>The main result of the month</td><td>Without key events set up, this number does not exist</td></tr>
-      <tr><td>Clicks and impressions excluding brand queries</td><td>Google Search Console</td><td>Year-over-year trend</td><td>Brand queries inflate the result</td></tr>
-      <tr><td>Rankings of keywords from the agreed list</td><td>Search Console or a rank tracker</td><td>Share of keywords in the TOP 3 and TOP 10</td><td>With many keywords, the average position is misleading</td></tr>
-      <tr><td>Business Profile position in Maps</td><td>Measurement from 49 points (7×7 grid)</td><td>Percentage of points in the TOP 3</td><td>A single check from the office is a coincidence</td></tr>
-      <tr><td>Visibility in ChatGPT and AI Overviews</td><td>A fixed set of customer questions, weekly</td><td>Percentage of answers that name the company</td><td>A single question proves nothing</td></tr>
-      <tr><td>Links acquired</td><td>A list with the URL, date and status</td><td>Whether the link is still on the page</td><td>A link count that ignores link quality</td></tr>
-    </tbody>
-  </table>
-  <p class="maly" style="margin-top:2mm">Measure the Business Profile on a grid of points around the company address, because customers see different Maps results depending on where they are. ChatGPT answers change from day to day, so measure AI visibility with a fixed set of questions asked on a regular schedule. Record every change to the tracked keyword list in the report.</p>
+  <p class="maly" style="margin-top:2mm">Record every change to the tracked keyword list in the report. Base Maps and AI results on regular measurements, not on a single check. When two sources give different numbers (e.g. GA4 and your inbox, or your Business Profile and GA4), enter both and explain the gap.</p>
 </section>
 
-<!-- PAGE 5: for the reader -->
+<!-- PAGE 5: how to read the metrics -->
 <section class="strona">
-  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 5 of 5</span></div>
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 5 of 6</span></div>
+  <h2 class="tytul">How to read the metrics and where the pitfalls are</h2>
+  <table>
+    <thead><tr><th style="width:30%">Metric</th><th style="width:30%">How to read it</th><th>Pitfall</th></tr></thead>
+    <tbody>
+      <tr><td>Inquiries from Google (form, phone, email) and the cost per inquiry</td><td>The main result of the month</td><td>Without key events this number does not exist, and GA4 leaves out people who declined cookies</td></tr>
+      <tr><td>Clicks and impressions excluding brand queries</td><td>Year-over-year trend</td><td>Brand queries inflate the result</td></tr>
+      <tr><td>Rankings of keywords from the agreed list</td><td>Share of keywords in the top 3 and top 10</td><td>With many keywords, the average position is misleading</td></tr>
+      <tr><td>Business Profile in Maps: ranking and customer actions</td><td>Percentage of grid points in the top 3, calls and direction requests</td><td>A single check from the office is a coincidence</td></tr>
+      <tr><td>Visibility in ChatGPT and Google AI Overviews</td><td>Percentage of answers that name the company</td><td>A single question proves nothing</td></tr>
+      <tr><td>Links acquired</td><td>New referring domains to key pages, and whether the links are still live</td><td>A link count that ignores link quality</td></tr>
+      <tr><td>Technical health: indexing and Core Web Vitals</td><td>Key pages indexed; LCP within 2.5 s, INP 200 ms or less, CLS 0.1 or less</td><td>A 0–100 PageSpeed score is a lab test, not real-user data</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Notes on the data</h3>
+  <ol class="kroki">
+    <li><b>Inquiries: GA4 and your inbox.</b> GA4 does not show events from people who declined analytics cookies, and on a small site it does not fill the gap with modeled data. Compare the GA4 number with what actually reached your inbox or CRM. A click on a phone number is not a call yet.</li>
+    <li><b>Brand queries.</b> In the Search Console Performance report, use the branded and non-branded queries filter (Google has offered it since November 2025, but not for URL-path or subdomain properties, or for low-traffic sites; an AI-assisted system classifies the queries, so check how they were assigned). If the filter is missing, add a query filter that excludes your company name and its variants, including misspellings.</li>
+    <li><b>Data history.</b> Search Console keeps data for the last 16 months. That is enough for a year-over-year comparison, but older data cannot be recovered – export it every month.</li>
+    <li><b>Maps.</b> Customers see different Maps results depending on where they are, so measure the Business Profile ranking on a grid of points around the company address. Calls, direction requests and website clicks are shown in the Performance section of the Business Profile.</li>
+    <li><b>AI answers.</b> ChatGPT answers change from day to day, so measure them with a fixed set of questions asked on a regular schedule. Search Console counts clicks from AI Overviews together with the rest of Google results; its generative AI performance report (since Aug 31, 2026) shows impressions only.</li>
+    <li><b>Technical health.</b> Google considers LCP within 2.5 s, INP of 200 ms or less and CLS of 0.1 or less to be good when at least 75% of real-user page loads meet the threshold. The 0–100 score in PageSpeed Insights comes from a lab test (Lighthouse), so it cannot replace the Core Web Vitals report.</li>
+    <li><b>Causes of change (section 2).</b> The most common: a change on the site (new content, a rebuild, a bug after a release), an algorithm update confirmed on the Google Search Status Dashboard, an AI Overview above the results (the ranking holds, clicks drop), seasonality, lost links, or a competitor that has picked up the pace. When results drop, check them one by one.</li>
+  </ol>
+  <p class="maly" style="margin-top:3mm">Sources: Google Analytics Help (key events, consent mode, Queries report), Google Search Central (branded queries filter, AI features in Search), web.dev (Web Vitals), Google Business Profile Help, Google Search Status Dashboard. Full list with URLs: <span class="nw">www.ai-seo-company.pl/en/tools/seo-report-template</span></p>
+</section>
+
+<!-- PAGE 6: for the reader -->
+<section class="strona">
+  <div class="naglowek"><span>Monthly SEO Report Template</span><span>p. 6 of 6</span></div>
   <h2 class="tytul">For the reader: check your agency’s report</h2>
   <p class="opis">Fill this in after every report. Missing sections and ticked flags are your questions for the next meeting.</p>
 
@@ -266,7 +297,7 @@
   <h3>Red flags</h3>
   <ul class="flagi">
     <li><i class="cb"></i><div><b>No number of customer inquiries.</b><span class="t">The report talks about traffic and rankings, but not about how many customers got in touch. Without key events in GA4, nobody knows whether SEO pays off.</span></div></li>
-    <li><i class="cb"></i><div><b>Rankings without a keyword list agreed at the start.</b><span class="t">The agency shows keywords where the site already ranks high, not the ones you agreed on. It is easy to build growth from such keywords that means nothing for sales.</span></div></li>
+    <li><i class="cb"></i><div><b>Rankings without a keyword list agreed at the start.</b><span class="t">The agency shows keywords where the site already ranks high, not the ones you agreed on. Growth built on such keywords can mean nothing for sales.</span></div></li>
     <li><i class="cb"></i><div><b>“Visibility” with no definition or source.</b><span class="t">Without the name of the tool, the method and the keyword list, you cannot verify a visibility chart or compare it with the previous period.</span></div></li>
     <li><i class="cb"></i><div><b>No dated list of work done.</b><span class="t">If you do not know what was done and when, you cannot link a change in results to the agency’s work or to anything else.</span></div></li>
     <li><i class="cb"></i><div><b>No year-over-year comparison.</b><span class="t">Month-over-month growth during peak season is often just the calendar, not the effect of SEO.</span></div></li>
