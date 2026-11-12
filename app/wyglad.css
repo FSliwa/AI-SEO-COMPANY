@@ -3579,8 +3579,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 }
 
 .hero-klient--mt { width: 19.65vw; }
-.hero-klient--ik { width: auto; }
-.hero-klient-tekst { display: block; color: #85818C; font-family: var(--font-geist), system-ui, sans-serif; font-weight: 500; letter-spacing: 0.08em; font-size: clamp(0.85rem, 1.5vw, 1.5rem); line-height: 1; white-space: nowrap; }
+.hero-klient--tql { width: 9.24vw; }
 .hero-klient--ai { width: 15.5vw; }
 .hero-klient--st { width: 16.7vw; }
 
@@ -3604,8 +3603,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   }
 
   .hero-klient--mt { width: 41vw; }
-  .hero-klient--ik { width: auto; }
-  .hero-klient-tekst { font-size: 3.4vw; }
+  .hero-klient--tql { width: 20vw; }
   .hero-klient--ai { width: 34vw; }
   .hero-klient--st { width: 34vw; }
 

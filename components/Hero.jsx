@@ -627,7 +627,7 @@ export default function Hero() {
 
       {/* 12.11.2026: pasek klientow jak na makiecie (Desktop - 2): cztery loga w jednym
           szarym odcieniu, rozlozone rowno w pasie mgly na styku hero i oferty.
-          Kolejnosc z makiety: Madame Thai, Ireneusz Kozera (wordmark w miejscu logo TQL z makiety: TQL nie jest potwierdzonym klientem), AI Signals (ASE-BOT), Staniax.
+          Kolejnosc z makiety: Madame Thai, TQL (potwierdzone przez wlasciciela 12.11.2026), AI Signals (ASE-BOT), Staniax.
           Loga: /images/klienci/ (webp z przezroczystoscia, ai-signals jako SVG). Nie sa
           linkami - nazwy w tym miejscu tez nimi nie byly. Szeroki uklad: jeden rzad;
           telefon (< 768 px): siatka 2x2 na cala szerokosc; tablet w pionie bez paska. */}
@@ -641,8 +641,8 @@ export default function Hero() {
         <li className="hero-klient hero-klient--mt">
           <Image unoptimized src="/images/klienci/madame-thai.webp" alt="Madame Thai" width={720} height={67} />
         </li>
-        <li className="hero-klient hero-klient--ik">
-          <span className="hero-klient-tekst">IRENEUSZ KOZERA</span>
+        <li className="hero-klient hero-klient--tql">
+          <Image unoptimized src="/images/klienci/tql.webp" alt="TQL" width={244} height={101} />
         </li>
         <li className="hero-klient hero-klient--ai">
           <Image unoptimized src="/images/klienci/ai-signals.svg" alt="ASE-BOT (AI Signals)" width={224} height={47} />
