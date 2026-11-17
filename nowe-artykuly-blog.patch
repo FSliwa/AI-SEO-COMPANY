@@ -1,0 +1,1027 @@
+diff -ruN -x node_modules -x .next -x '*.webp' a/app/[locale]/blog/agencja-seo-czy-google-ads/page.js b/app/[locale]/blog/agencja-seo-czy-google-ads/page.js
+--- a/app/[locale]/blog/agencja-seo-czy-google-ads/page.js	1970-01-01 00:00:00.000000000 +0000
++++ b/app/[locale]/blog/agencja-seo-czy-google-ads/page.js	2026-11-17 13:38:59.340959525 +0000
+@@ -0,0 +1,417 @@
++// Artykuł tylko-PL (plOnly w lib/blogPosts.js, 308 /en/blog/<slug> -> /blog/<slug> w next.config.mjs).
++// Treść: dokument „AI SEO – Agencja SEO czy Google Ads” (17.11.2026).
++// Zmiany względem dokumentu: title bez sufiksu marki, 56 zn. (CLAUDE.md); link do nieistniejącego
++// wpisu /blog/widocznosc-firmy-w-generatywnych-ai zastąpiony hubem /pozycjonowanie-w-ai; zapowiedzi
++// „przygotujemy w osobnym wpisie/przewodniku” zastąpione linkami do istniejących stron
++// (narzędzie /narzedzia/audyt-seo, porównanie /porownania/jak-wybrac-agencje-seo); dodany link
++// do porównania /porownania/seo-czy-google-ads (ten sam temat z danymi z naszej kampanii -
++// artykuł kieruje do niego, żeby obie strony nie konkurowały o to samo zapytanie).
++import { articleLanguages, articleRobots, blogPosts } from '@/lib/blogPosts';
++import { hrefJesliOpublikowana } from '@/lib/publikacja';
++import { LASTMOD } from '@/lib/lastmod';
++import Header from '@/components/Header';
++import Footer from '@/components/Footer';
++import Contact from '@/components/Contact';
++import ArticleSchema from '@/components/ArticleSchema';
++import ArticleTOC from '@/components/ArticleTOC';
++import AnswerBox from '@/components/AnswerBox';
++import Byline from '@/components/Byline';
++import Zrodla from '@/components/Zrodla';
++import BlogCTA from '@/components/BlogCTA';
++import { Reveal } from '@/components/ScrollReveal';
++import { Link } from '@/i18n/routing';
++
++const BASE = 'https://www.ai-seo-company.pl';
++const SCIEZKA = '/blog/agencja-seo-czy-google-ads';
++const URL_STRONY = `${BASE}${SCIEZKA}`;
++
++// Title 56 zn., meta 140 zn. - te same wartości co titlePl/descPl w lib/blogPosts.js.
++const TYTUL = 'Agencja SEO czy kampanie Google Ads? Co wybrać dla firmy';
++const OPIS = 'Agencja SEO czy kampanie Google Ads? Porównaj koszt, czas efektu i trwałość obu kanałów i sprawdź, kiedy je łączyć oraz jak wybrać partnera.';
++const H1 = 'Agencja SEO czy kampanie Google Ads – co wybrać dla firmy?';
++
++const DATA_PUBLIKACJI = blogPosts.find((p) => p.slug === SCIEZKA)?.date;
++const DATA_ZMIANY = LASTMOD[URL_STRONY] ?? DATA_PUBLIKACJI;
++
++const FAQ = [
++  {
++    pytanie: 'Czy reklamy w Google poprawiają pozycje w bezpłatnych wynikach?',
++    odpowiedz: 'Nie. Google deklaruje, że nikt nie może kupić lepszego miejsca w wynikach organicznych, a reklamodawcy nie dostają w nich żadnych przywilejów. Reklamy mogą jedynie pośrednio pomóc, na przykład dostarczając danych o skutecznych frazach.',
++  },
++  {
++    pytanie: 'Czy mogę zrezygnować z SEO, jeśli mam dobrze działające reklamy?',
++    odpowiedz: 'Możesz, ale wtedy cały ruch z wyszukiwarki zależy od budżetu. Gdy kampania się zatrzyma, zapytania z reklam znikają, a strona bez pozycji organicznych nie ma czym ich zastąpić.',
++  },
++  {
++    pytanie: 'Ile trzeba czekać na pierwsze efekty pozycjonowania?',
++    odpowiedz: 'Google podaje, że niektóre zmiany działają po kilku godzinach, a inne po kilku miesiącach. Rzetelny partner określi realne oczekiwania po analizie strony i konkurencji, a nie przed nią.',
++  },
++  {
++    pytanie: 'Od jakiej kampanii najlepiej zacząć przygodę z Google Ads?',
++    odpowiedz: 'Firmom usługowym zwykle najłatwiej zacząć od kampanii w sieci wyszukiwania, bo odpowiada na konkretne zapytania. Sklepy internetowe często rozważają kampanie produktowe lub Performance Max z danymi z Merchant Center.',
++  },
++  {
++    pytanie: 'Czy darmowy SEO checker wystarczy, żeby ocenić stronę?',
++    odpowiedz: 'Wystarczy do szybkiej kontroli i wychwycenia oczywistych błędów. Nie zastąpi jednak analizy treści, konkurencji i priorytetów, którą daje pełny audyt.',
++  },
++  {
++    pytanie: 'Do kogo powinno należeć konto reklamowe?',
++    odpowiedz: 'Do Twojej firmy. Partner powinien mieć dostęp jako użytkownik, dzięki czemu zachowujesz historię kampanii i dane niezależnie od tego, z kim współpracujesz.',
++  },
++  {
++    pytanie: 'Czy jedna firma powinna prowadzić i SEO, i reklamy?',
++    odpowiedz: 'Nie musi. Ważniejsze od tego, czy to jeden wykonawca, jest to, żeby oba zespoły wymieniały się danymi o frazach, stronach docelowych i konwersjach.',
++  },
++  {
++    pytanie: 'Co zrobić, gdy obecny wykonawca nie daje dostępu do danych?',
++    odpowiedz: 'Poproś o dostęp do Search Console, Analytics i konta reklamowego na piśmie. Jeśli to niemożliwe, potraktuj to jako poważny sygnał ostrzegawczy i zaplanuj przejęcie kont przed zmianą partnera.',
++  },
++  {
++    pytanie: 'Czy Wynik jakości decyduje o tym, ile zapłacę za kliknięcie?',
++    odpowiedz: 'Nie bezpośrednio. Google opisuje Wynik jakości jako narzędzie diagnostyczne, które nie jest składnikiem aukcji, ale pomaga znaleźć słabe reklamy i strony docelowe, a te już wpływają na ranking reklamy.',
++  },
++];
++
++const ZRODLA = [
++  { url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide', nazwa: 'Google Search Central: przewodnik SEO dla początkujących (SEO Starter Guide)' },
++  { url: 'https://developers.google.com/search/docs/fundamentals/do-i-need-seo', nazwa: 'Google Search Central: Czy potrzebujesz specjalisty SEO?' },
++  { url: 'https://www.google.com/search/howsearchworks/our-approach/ads-on-search/', nazwa: 'Google: zasady dotyczące reklam w wyszukiwarce (How Search Works)' },
++  { url: 'https://support.google.com/google-ads/answer/6366577', nazwa: 'Centrum pomocy Google Ads: ranking reklamy i aukcja' },
++  { url: 'https://support.google.com/google-ads/answer/6167118', nazwa: 'Centrum pomocy Google Ads: Wynik jakości' },
++  { url: 'https://support.google.com/google-ads/answer/6297', nazwa: 'Centrum pomocy Google Ads: koszt kliknięcia (CPC)' },
++  { url: 'https://support.google.com/google-ads/answer/2567043', nazwa: 'Centrum pomocy Google Ads: typy kampanii' },
++  { url: 'https://support.google.com/google-ads/answer/2453972', nazwa: 'Centrum pomocy Google Ads: wykluczające słowa kluczowe' },
++  { url: 'https://support.google.com/google-ads/answer/1722022', nazwa: 'Centrum pomocy Google Ads: śledzenie konwersji' },
++];
++
++const TOC = [
++  { id: 'w-skrocie', title: 'Najważniejsze informacje w skrócie' },
++  { id: 'agencja-seo', title: 'Czym zajmuje się agencja SEO?' },
++  { id: 'google-ads', title: 'Jak działają Google Ads i aukcja reklam?' },
++  { id: 'typy-kampanii', title: 'Jakie typy kampanii Google Ads warto znać?' },
++  { id: 'prowadzenie-kampanii', title: 'Na czym polega prowadzenie kampanii Google Ads?' },
++  { id: 'seo-a-reklamy', title: 'Czym różni się SEO od reklam w wyszukiwarce?' },
++  { id: 'laczenie', title: 'Kiedy łączyć SEO z kampaniami Google Ads?' },
++  { id: 'checker-czy-audyt', title: 'Od czego zacząć: SEO checker czy audyt SEO?' },
++  { id: 'wybor-partnera', title: 'Jak wybrać agencję SEO lub partnera do reklam?' },
++  { id: 'czerwone-flagi', title: 'Po czym poznać ryzykowną współpracę?' },
++  { id: 'koszt', title: 'Ile kosztuje współpraca z agencją SEO?' },
++  { id: 'pytania', title: 'Czego firmy najczęściej pytają o SEO i Google Ads?' },
++  { id: 'podsumowanie', title: 'Podsumowanie: fundament z SEO, tempo z reklam' },
++  { id: 'zrodla', title: 'Źródła' },
++];
++
++const W_SKROCIE = [
++  ['Dwa różne mechanizmy', 'SEO zdobywa pozycje w wynikach organicznych, Google Ads kupuje wyświetlenia w oznaczonych blokach reklamowych.'],
++  ['Płatność nie wpływa na ranking organiczny', 'Google deklaruje, że nikt nie może kupić lepszego miejsca w bezpłatnych wynikach, także reklamodawcy.'],
++  ['Czas efektu', 'Reklamy mogą się wyświetlać zaraz po zatwierdzeniu, a zmiany SEO według Google działają od kilku godzin do kilku miesięcy.'],
++  ['Trwałość', 'Ruch z reklam kończy się wraz z budżetem, a dobrze zoptymalizowana strona zwykle utrzymuje widoczność dłużej.'],
++  ['Koszt', 'W Google Ads płacisz najczęściej za kliknięcie (CPC), w SEO za pracę nad stroną, treściami i linkami.'],
++  ['Łączenie kanałów', 'Dane z kampanii pomagają wybrać frazy do SEO, a reklamy wypełniają lukę, zanim strona zdobędzie pozycje.'],
++  ['Start od diagnozy', 'Szybki SEO checker wskaże oczywiste błędy, ale priorytety ustala dopiero pełny audyt SEO.'],
++  ['Bezpieczna współpraca', 'Konta Google Ads, Search Console i Analytics powinny należeć do Twojej firmy, a partner ma tylko dostęp.'],
++];
++
++const TYPY_KAMPANII = [
++  ['Sieć wyszukiwania', 'Wyniki wyszukiwania Google', 'Pozyskiwanie zapytań, leadów i sprzedaży od osób, które aktywnie szukają usługi lub produktu'],
++  ['Performance Max', 'Wszystkie zasoby reklamowe Google z jednej kampanii', 'Kampania oparta na celach, z automatycznym ustalaniem stawek i rozdziałem budżetu'],
++  ['Produktowa (Shopping)', 'Wyniki wyszukiwania i karta Zakupy', 'Sklepy internetowe; wymaga konta Google Merchant Center'],
++  ['Sieć reklamowa (Display)', 'Strony, aplikacje i usługi Google', 'Zasięg, budowanie świadomości marki, remarketing'],
++  ['Wideo (YouTube)', 'YouTube i witryny partnerów wideo', 'Zasięg, wyświetlenia, a także kampanie nastawione na konwersje'],
++  ['Aplikacja', 'Wyszukiwarka, Google Play, YouTube, sieć reklamowa', 'Instalacje i zaangażowanie użytkowników aplikacji mobilnej'],
++];
++
++const PROWADZENIE = [
++  ['Konfiguracja konwersji', 'Zdefiniowanie wartościowych działań: zakup, formularz, telefon; poprawne tagi lub import z Google Analytics 4', 'Bez konwersji nie wiesz, które słowa i reklamy przynoszą klientów, a strategie automatyczne nie mają na czym się uczyć'],
++  ['Słowa kluczowe', 'Dobór fraz i typów dopasowania, podział na grupy reklam', 'Decyduje, przy jakich wyszukiwaniach reklama w ogóle wchodzi do aukcji'],
++  ['Wykluczające słowa kluczowe', 'Blokowanie zapytań, które nie pasują do oferty', 'Ogranicza płatne kliknięcia od osób, które i tak nie kupią'],
++  ['Reklamy i zasoby', 'Nagłówki, teksty, linki do podstron, numer telefonu, lokalizacja', 'Wpływają na klikalność i ranking reklamy'],
++  ['Budżet i stawki', 'Wybór strategii ustalania stawek, podział budżetu między kampanie', 'Kontrola kosztu pozyskania klienta'],
++  ['Testy', 'Porównywanie wersji reklam, stron docelowych i strategii', 'Pozwala poprawiać wyniki na podstawie danych, a nie przeczucia'],
++  ['Raportowanie', 'Koszt, konwersje, koszt konwersji, wnioski i plan zmian', 'Pokazuje, czy reklamy się opłacają'],
++];
++
++const SEO_VS_ADS = [
++  ['Czas efektu', 'Od kilku godzin do kilku miesięcy na pojedyncze zmiany; budowa widoczności to proces', 'Reklama może się wyświetlać krótko po uruchomieniu i zatwierdzeniu'],
++  ['Koszt', 'Praca nad stroną, treściami i linkami; kliknięcia z wyników organicznych są bezpłatne', 'Budżet reklamowy (najczęściej płatność za kliknięcie) plus ewentualnie obsługa konta'],
++  ['Trwałość', 'Pozycje zwykle utrzymują się po zakończeniu intensywnych prac, choć wymagają opieki', 'Ruch zatrzymuje się, gdy wyłączysz kampanię lub skończy się budżet'],
++  ['Kontrola', 'Nie decydujesz o pozycji, możesz tylko poprawiać jakość i trafność strony', 'Wybierasz frazy, lokalizacje, godziny, budżet i treść reklamy'],
++  ['Mierzenie', 'Google Search Console i Analytics; część danych o zapytaniach jest zagregowana', 'Szczegółowe dane o kosztach, kliknięciach i konwersjach w koncie reklamowym'],
++  ['Najlepsze zastosowanie', 'Długoterminowa widoczność, treści edukacyjne, budowanie zaufania', 'Szybki start, promocje, sezonowe szczyty, testowanie ofert'],
++];
++
++const CHECKER_VS_AUDYT = [
++  ['Czas', 'Minuty', 'Kilka dni pracy'],
++  ['Zakres', 'Typowe błędy techniczne i podstawowe elementy strony', 'Technika, treści, linki, konkurencja, intencja wyszukiwania'],
++  ['Kontekst biznesowy', 'Brak', 'Uwzględnia ofertę, rynek i cele firmy'],
++  ['Priorytety', 'Ogólne lub żadne', 'Lista zadań uszeregowana według wpływu'],
++  ['Do czego się nadaje', 'Szybka kontrola, monitoring zmian', 'Plan pozycjonowania i podstawa do decyzji o budżecie'],
++];
++
++const KRYTERIA_PARTNERA = [
++  ['Przejrzystość działań', 'Partner wyjaśnia, co i dlaczego zmienia, i prowadzi rejestr prac'],
++  ['Własność kont', 'Konta reklamowe i analityczne są na firmę klienta'],
++  ['Raporty', 'Ruch, konwersje i koszty, a nie same pozycje; wnioski i plan na kolejny okres'],
++  ['Mierniki sukcesu', 'Uzgodnione przed startem, powiązane z celem biznesowym'],
++  ['Warunki umowy', 'Jasny okres wypowiedzenia, własność treści po zakończeniu współpracy'],
++  ['Doświadczenie', 'Przykłady realizacji w podobnej branży lub skali'],
++];
++
++function Tabela({ naglowki, wiersze }) {
++  return (
++    <div className="table-container">
++      <table>
++        <thead>
++          <tr>{naglowki.map((n) => <th key={n} scope="col">{n}</th>)}</tr>
++        </thead>
++        <tbody>
++          {wiersze.map(([pierwsza, ...reszta]) => (
++            <tr key={pierwsza}>
++              <th scope="row">{pierwsza}</th>
++              {reszta.map((k, i) => <td key={i}>{k}</td>)}
++            </tr>
++          ))}
++        </tbody>
++      </table>
++    </div>
++  );
++}
++
++export async function generateMetadata({ params }) {
++  const { locale } = await params;
++  return {
++    title: TYTUL,
++    description: OPIS,
++    alternates: {
++      canonical: URL_STRONY,
++      languages: articleLanguages(SCIEZKA, URL_STRONY, null),
++    },
++    robots: articleRobots(SCIEZKA, locale),
++  };
++}
++
++export default async function ArtykulSeoCzyGoogleAds({ params }) {
++  const { locale } = await params;
++  if (locale === 'en') return null;
++
++  // Reguła 6.0: link tylko do strony, która zwraca 200 - inaczej zwykły tekst.
++  const hrefPorownanieAds = hrefJesliOpublikowana('/porownania/seo-czy-google-ads');
++  const hrefJakWybrac = hrefJesliOpublikowana('/porownania/jak-wybrac-agencje-seo');
++  const hrefNarzedzieAudyt = hrefJesliOpublikowana('/narzedzia/audyt-seo');
++  const hrefAiOverviews = blogPosts.some((p) => p.slug === '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews')
++    ? '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews'
++    : null;
++
++  const faqLd = {
++    '@context': 'https://schema.org',
++    '@type': 'FAQPage',
++    '@id': `${URL_STRONY}#pytania`,
++    inLanguage: 'pl-PL',
++    mainEntity: FAQ.map((f) => ({
++      '@type': 'Question',
++      name: f.pytanie,
++      acceptedAnswer: { '@type': 'Answer', text: f.odpowiedz },
++    })),
++  };
++
++  return (
++    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
++      <Header />
++      <ArticleSchema slug={SCIEZKA} locale={locale} dateModified={DATA_ZMIANY} />
++      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
++
++      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
++        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
++          <Reveal>
++            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
++              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
++                SEO i reklamy
++              </span>
++            </div>
++            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
++              {H1}
++            </h1>
++            <Byline sciezka={SCIEZKA} data={DATA_ZMIANY} />
++            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
++          </Reveal>
++
++          <Reveal delay={0.2}>
++            <div className="article-content">
++              <AnswerBox>
++                Agencja SEO buduje widoczność Twojej strony w bezpłatnych wynikach wyszukiwania, a kampanie Google Ads kupują miejsce w płatnych reklamach od pierwszego dnia. Oba kanały prowadzą do tej samej wyszukiwarki, ale działają według zupełnie innych reguł, mają inny koszt i inaczej znikają, gdy przestajesz w nie inwestować.
++              </AnswerBox>
++
++              <p className="lead">
++                Ten przewodnik pokazuje, czym się różnią, kiedy wybrać jeden z nich, a kiedy połączyć oba, oraz od czego zacząć: od szybkiego SEO checkera czy pełnego audytu SEO. Nie znajdziesz tu obietnic pierwszego miejsca w miesiąc. Znajdziesz za to opis mechanizmów, na które powołuje się sam Google, oraz pytania, które warto zadać każdemu partnerowi przed podpisaniem umowy.
++              </p>
++
++              <ArticleTOC items={TOC} />
++
++              <h2 id="w-skrocie">Najważniejsze informacje w skrócie</h2>
++              <Tabela naglowki={['Zasada', 'Szczegóły']} wiersze={W_SKROCIE} />
++
++              <h2 id="agencja-seo">Czym zajmuje się agencja SEO?</h2>
++              <p>Agencja SEO zajmuje się tym, żeby wyszukiwarka dobrze rozumiała Twoją stronę i pokazywała ją osobom, które szukają Twoich produktów lub usług. Przewodnik Google dla początkujących opisuje SEO właśnie jako pomaganie wyszukiwarkom w zrozumieniu treści i pomaganie użytkownikom w decyzji, czy warto wejść na daną stronę. Nie chodzi więc o oszukiwanie algorytmu, tylko o porządną stronę, sensowne treści i wiarygodność.</p>
++
++              <h3>Jak działa ranking organiczny Google</h3>
++              <p>Google najpierw odkrywa i indeksuje strony, a potem przy każdym zapytaniu wybiera te, które uzna za najbardziej przydatne. W przewodniku SEO Starter Guide Google pisze wprost, że nie ma sekretów, które automatycznie dają pierwsze miejsce. Na pozycję wpływa wiele sygnałów naraz: treść odpowiadająca intencji, techniczna dostępność strony, jej wygoda dla użytkownika i odnośniki z innych witryn.</p>
++              <p>Ważna różnica wobec reklam: wyniki organiczne nie są na sprzedaż. Google na stronach opisujących zasady wyszukiwarki deklaruje, że sprzedaje wyłącznie powierzchnię reklamową, a reklamodawcy nie dostają żadnych przywilejów w rankingu bezpłatnym.</p>
++
++              <h3>Co wchodzi w zakres pozycjonowania</h3>
++              <p>Zakres pracy różni się między firmami, ale dobra usługa obejmuje zwykle kilka stałych obszarów:</p>
++              <ul>
++                <li><strong>technika</strong> – indeksacja, szybkość ładowania, Core Web Vitals, przekierowania, linkowanie wewnętrzne,</li>
++                <li><strong>treści</strong> – dopasowanie podstron do intencji wyszukiwania, klastry tematyczne, odpowiedzi na pytania klientów,</li>
++                <li><strong>autorytet</strong> – zdobywanie linków z wiarygodnych serwisów,</li>
++                <li><strong>SEO lokalne</strong> – optymalizacja Profilu Firmy w Google (dawniej wizytówki) dla firm działających w konkretnym mieście,</li>
++                <li><strong>pomiar</strong> – raporty z Google Search Console i Google Analytics, a nie tylko lista pozycji.</li>
++              </ul>
++              <p>
++                Tak wygląda też nasze <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie stron internetowych</Link>: technika, treści, linki i Profil Firmy w Google w jednym procesie. Coraz częściej do tego zakresu dochodzi widoczność w odpowiedziach AI, którą opisujemy na stronie <Link href="/pozycjonowanie-w-ai">pozycjonowanie w AI</Link>
++                {hrefAiOverviews ? <> i w poradniku, <Link href={hrefAiOverviews}>jak zoptymalizować stronę pod Google AI Overviews</Link>.</> : '.'}
++              </p>
++
++              <h2 id="google-ads">Jak działają Google Ads i aukcja reklam?</h2>
++              <p>Google Ads to system reklamowy, w którym płacisz za wyświetlanie reklam w wyszukiwarce, na YouTube, w Gmailu i w witrynach partnerskich. Reklamy w wynikach wyszukiwania są wyraźnie oznaczone, więc użytkownik odróżnia je od wyników bezpłatnych. O tym, czy i gdzie reklama się pokaże, decyduje aukcja przeprowadzana przy każdym wyszukiwaniu.</p>
++
++              <h3>Aukcja i ranking reklamy</h3>
++              <p>Według Centrum pomocy Google Ads przy jednym wyszukiwaniu odbywa się osobna aukcja dla każdego miejsca reklamowego. Pozycję reklamy (ranking reklamy, Ad Rank) wyznacza kilka czynników jednocześnie:</p>
++              <ul>
++                <li>stawka, czyli maksymalna kwota, jaką chcesz zapłacić za kliknięcie,</li>
++                <li>jakość reklamy i strony docelowej,</li>
++                <li>progi rankingu reklamy, czyli minimalny poziom jakości wymagany na danej pozycji,</li>
++                <li>konkurencyjność aukcji,</li>
++                <li>kontekst wyszukiwania: zapytanie, lokalizacja, urządzenie, pora dnia, inne reklamy na stronie,</li>
++                <li>oczekiwany wpływ zasobów reklamy, takich jak numer telefonu czy dodatkowe linki.</li>
++              </ul>
++              <p>Google podkreśla, że dzięki trafnym reklamom i dobrym zasobom można wygrać wyższą pozycję nawet przy niższej stawce niż konkurencja. Sama kwota nie wystarczy, jeśli reklama i strona docelowa są słabe.</p>
++
++              <h3>Koszt kliknięcia</h3>
++              <p>W kampaniach w sieci wyszukiwania płacisz najczęściej za kliknięcie, czyli w modelu CPC (cost per click). Ustawiasz maksymalny CPC, ale zwykle płacisz mniej: Google pobiera tylko tyle, ile potrzeba, żeby przekroczyć próg rankingu i wynik reklamodawcy tuż pod Tobą. Wyjątki dotyczą części automatycznych strategii ustalania stawek, dlatego warto znać zasady wybranej strategii.</p>
++
++              <h3>Wynik jakości</h3>
++              <p>Wynik jakości (Quality Score) to ocena w skali od 1 do 10 przypisywana do słowa kluczowego. Składa się z trzech elementów: oczekiwanego współczynnika klikalności (CTR), trafności reklamy i jakości strony docelowej. Google zaznacza, że to narzędzie diagnostyczne, a nie bezpośredni składnik aukcji, więc traktuj go jako wskazówkę, co poprawić, a nie jako cel sam w sobie.</p>
++              <p>Tu widać pierwszy punkt styku z SEO. Szybka, czytelna i trafna strona docelowa pomaga zarówno w wynikach organicznych, jak i w ocenie jakości reklam.</p>
++
++              <h2 id="typy-kampanii">Jakie typy kampanii Google Ads warto znać?</h2>
++              <p>Kampanie Google Ads różnią się miejscem wyświetlania, formatem i celem. Poniższa tabela opiera się na aktualnym opisie typów kampanii w Centrum pomocy Google Ads (nazwy w interfejsie mogą się nieznacznie różnić w zależności od wersji językowej).</p>
++              <Tabela naglowki={['Typ kampanii', 'Gdzie się wyświetla', 'Do czego się nadaje']} wiersze={TYPY_KAMPANII} />
++              <p>Dla większości firm usługowych punktem wyjścia jest kampania w sieci wyszukiwania. Odpowiada na konkretne zapytania, więc najłatwiej porównać ją z ruchem organicznym i ocenić, które frazy przynoszą klientów.</p>
++
++              <h2 id="prowadzenie-kampanii">Na czym polega prowadzenie kampanii Google Ads?</h2>
++              <p>Prowadzenie kampanii Google Ads to stała praca, a nie jednorazowe ustawienie reklamy. Konto bez opieki potrafi szybko wydawać budżet na nietrafione zapytania, dlatego dobra obsługa zaczyna się od pomiaru, a kończy na regularnych decyzjach o budżecie.</p>
++              <Tabela naglowki={['Obszar', 'Co obejmuje', 'Dlaczego ma znaczenie']} wiersze={PROWADZENIE} />
++              <p>Konfiguracja konwersji to fundament. Centrum pomocy Google Ads wyjaśnia, że dane o konwersjach pozwalają ocenić skuteczność słów kluczowych i reklam, policzyć zwrot z inwestycji i korzystać z inteligentnych strategii ustalania stawek. Jeśli chcesz zrozumieć, jak mierzyć zdarzenia na stronie, zajrzyj do poradnika o <Link href="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik">konfiguracji zdarzeń GA4 w Google Tag Manager</Link>.</p>
++              <p>Z wykluczeniami trzeba uważać w obie strony. Google przypomina, że wykluczenia nie obejmują bliskich odmian słów, a zbyt długa lista może niepotrzebnie ograniczyć zasięg reklam.</p>
++              <p>Dobre prowadzenie kampanii Google Ads widać w raportach: zawierają nie tylko liczby, ale też wnioski i konkretne zmiany zaplanowane na kolejny miesiąc.</p>
++
++              <h3>Jak wygląda start współpracy przy kampaniach</h3>
++              <p>Pierwsze tygodnie to głównie przygotowanie, a nie optymalizacja. Specjalista sprawdza, czy pomiar konwersji działa, porządkuje strukturę konta i ustala z Tobą, co jest celem: liczba zapytań, sprzedaż czy koszt pozyskania klienta.</p>
++              <p>Potem przychodzi okres zbierania danych. Strategie automatyczne potrzebują czasu i konwersji, żeby nauczyć się, komu pokazywać reklamy, dlatego częste, nerwowe zmiany budżetu w pierwszym okresie zwykle szkodzą bardziej, niż pomagają.</p>
++              <p>Dopiero na tej podstawie zapadają decyzje o rozszerzeniu listy słów, nowych wykluczeniach i podziale budżetu. Dobrze, jeśli harmonogram przeglądów i zakres decyzji, które partner podejmuje samodzielnie, są zapisane w umowie.</p>
++
++              <h2 id="seo-a-reklamy">Czym różni się SEO od reklam w wyszukiwarce?</h2>
++              <p>Najprościej: w SEO inwestujesz w stronę, a w reklamach płacisz za dostęp do odbiorcy w danej chwili. Każdy z kanałów ma inne mocne strony, co dobrze widać w zestawieniu.</p>
++              <Tabela naglowki={['Kryterium', 'SEO', 'Google Ads']} wiersze={SEO_VS_ADS} />
++              <p>
++                Z tabeli nie wynika, że jeden kanał jest lepszy. Wynika z niej, że odpowiadają na inne potrzeby: SEO na pytanie, jak mieć stały dopływ zapytań, a kampanie Google Ads na pytanie, jak dostać je szybko i pod pełną kontrolą budżetu.
++                {hrefPorownanieAds && <> Liczby z naszej własnej kampanii, w tym koszt kliknięcia, zestawiliśmy w porównaniu <Link href={hrefPorownanieAds}>SEO czy Google Ads: koszty i czas efektu</Link>.</>}
++              </p>
++
++              <h3>Który kanał wybrać przy ograniczonym budżecie</h3>
++              <p>Jeśli budżet pozwala na jeden kanał, zadaj sobie trzy pytania: czy potrzebujesz klientów w ciągu najbliższych tygodni, czy ludzie w ogóle wpisują w wyszukiwarkę frazy związane z Twoją usługą i czy możesz poczekać kilka miesięcy na efekty, które później nie wymagają płacenia za każde kliknięcie?</p>
++              <p>Gdy liczy się szybki start albo testujesz nową usługę, rozsądniejsze bywają reklamy w sieci wyszukiwania z niewielkim, kontrolowanym budżetem. Gdy działasz w stabilnej branży i myślisz o perspektywie roku lub dłuższej, większy sens ma systematyczne SEO, bo każda dobrze przygotowana podstrona pracuje na kolejne miesiące.</p>
++              <p>Firmy lokalne często zaczynają od podstaw SEO lokalnego, czyli dopracowanego Profilu Firmy w Google i podstron usług dla konkretnego miasta. To stosunkowo niewielki zakres pracy, a reklamy można dołożyć później, gdy pojawią się dane o tym, które zapytania przynoszą klientów.</p>
++
++              <h2 id="laczenie">Kiedy łączyć pracę agencji SEO z kampaniami Google Ads?</h2>
++              <p>Połączenie obu kanałów ma sens wtedy, gdy dane z jednego poprawiają decyzje w drugim. Sama obecność w reklamach i w wynikach organicznych to za mało, jeśli zespoły nie wymieniają się wnioskami.</p>
++
++              <h3>Dane z kampanii jako podpowiedź dla SEO</h3>
++              <p>Raport wyszukiwanych haseł w Google Ads pokazuje, jakie zapytania faktycznie kończą się formularzem lub zakupem. To cenna wskazówka dla agencji przy wyborze fraz do pozycjonowania, bo zamiast zgadywać, możesz zainwestować w treści pod zapytania, które już udowodniły wartość.</p>
++              <p>Działa to też w drugą stronę. Frazy, na które strona ma już mocne pozycje organiczne, warto przeanalizować pod kątem budżetu reklamowego: czasem reklama na takie zapytanie zwiększa łączny ruch, a czasem dubluje to, co i tak przychodzi bezpłatnie.</p>
++
++              <h3>Nowa strona lub nowa oferta</h3>
++              <p>Nowa domena rzadko od razu zdobywa wysokie pozycje. Kampanie w sieci wyszukiwania pozwalają w tym czasie pozyskiwać klientów i sprawdzić, czy oferta i strona docelowa w ogóle konwertują. Po kilku miesiącach masz dane, które ułatwiają planowanie treści i struktury serwisu.</p>
++
++              <h3>Sezonowość i promocje</h3>
++              <p>Jeśli sprzedajesz produkty sezonowe albo prowadzisz krótką promocję, czekanie na efekty SEO nie ma sensu. Reklama pozwala zwiększyć zasięg na kilka tygodni i wyłączyć go, gdy sezon się kończy. Stałe podstrony sezonowe warto jednak pozycjonować z wyprzedzeniem, żeby w kolejnym roku mniej zależeć od budżetu.</p>
++              <p>Agencja SEO nie musi prowadzić reklam, żeby taka współpraca działała. Wystarczy, że ma wgląd w dane z konta reklamowego albo regularnie wymienia się wnioskami ze specjalistą od kampanii.</p>
++
++              <h2 id="checker-czy-audyt">Od czego zacząć: SEO checker czy audyt SEO?</h2>
++              <p>Zanim wydasz pierwsze złotówki na reklamy lub pozycjonowanie, sprawdź stan strony. Kiepska strona docelowa obniża skuteczność obu kanałów, więc diagnoza jest wspólnym punktem startu.</p>
++
++              <h3>SEO checker – narzędzia do szybkiej analizy</h3>
++              <p>
++                SEO checker to ogólne określenie automatycznych narzędzi, które w kilka minut skanują stronę i wskazują typowe problemy: brakujące tytuły, wolne ładowanie, błędy indeksacji. Na początek wystarczą darmowe narzędzia Google, takie jak Google Search Console i PageSpeed Insights.
++                {hrefNarzedzieAudyt && <> Szybką ocenę strony z listą błędów da też nasz <Link href={hrefNarzedzieAudyt}>darmowy audyt SEO online</Link>.</>}
++              </p>
++              <p>Ograniczenia są jednak istotne. Taki SEO checker nie zna Twojego biznesu, nie oceni, czy treść odpowiada na intencję klienta, i często traktuje drobiazgi tak samo poważnie jak błędy blokujące indeksację. Wynik w punktach nie mówi też, od czego zacząć ani ile dana poprawka jest warta.</p>
++
++              <h3>Kiedy potrzebny jest pełny audyt SEO</h3>
++              <p>Audyt SEO to ręczna analiza wsparta narzędziami, która kończy się listą zadań z priorytetami. Obejmuje technikę, treści, linki i konkurencję, a jego wynikiem jest plan, a nie tylko lista ostrzeżeń.</p>
++              <Tabela naglowki={['Kryterium', 'SEO checker', 'Pełny audyt SEO']} wiersze={CHECKER_VS_AUDYT} />
++              <p>Jeśli strona ma już ruch lub planujesz większą inwestycję, zamów <Link href="/audyt-seo">audyt SEO strony internetowej</Link>. Szczegółowe progi techniczne opisujemy w artykule <Link href="/blog/technical-seo-audit-checklist">audyt techniczny SEO</Link>.</p>
++
++              <h2 id="wybor-partnera">Jak wybrać agencję SEO lub partnera do reklam?</h2>
++              <p>Wybór partnera to decyzja na miesiące, więc warto ją oprzeć na konkretnych pytaniach, a nie na obietnicach z oferty. Google w poradniku dla właścicieli stron, którzy rozważają zatrudnienie specjalisty SEO, podsuwa listę pytań, które dobrze sprawdzają się także przy wyborze partnera do reklam.</p>
++
++              <h3>Pytania przed podpisaniem umowy</h3>
++              <ul>
++                <li>Czy możecie pokazać przykłady wcześniejszej pracy i wyników?</li>
++                <li>Czy stosujecie się do wytycznych Google Search Essentials?</li>
++                <li>Jakich efektów spodziewacie się i w jakim czasie oraz jak mierzycie sukces?</li>
++                <li>Czy macie doświadczenie w mojej branży i na moim rynku lokalnym?</li>
++                <li>Jak będziemy się komunikować i czy poinformujecie mnie o każdej zmianie na stronie z uzasadnieniem?</li>
++              </ul>
++              <p>
++                W przypadku reklam dopytaj dodatkowo, jak partner skonfiguruje konwersje, jak często przegląda wyszukiwane hasła i kto zatwierdza zmiany budżetu.
++                {hrefJakWybrac && <> Pełną listę dwunastu pytań z dobrymi odpowiedziami i czerwonymi flagami znajdziesz w porównaniu <Link href={hrefJakWybrac}>jak wybrać agencję SEO</Link>.</>}
++              </p>
++
++              <h3>Raportowanie i dostęp do kont</h3>
++              <p>Konto Google Ads powinno być założone na Twoją firmę i opłacane z Twojej karty lub faktury, a partner powinien mieć do niego dostęp jako użytkownik. To samo dotyczy Google Search Console, Google Analytics i Profilu Firmy w Google. Dzięki temu po zakończeniu współpracy zachowujesz historię kampanii i dane, a zmiana partnera nie oznacza startu od zera.</p>
++              <p>W naszych pakietach SEO zasada jest prosta: Search Console, Analytics, wizytówka, konto reklamowe i domena należą do klienta, a my mamy tylko dostęp. Jeśli myślisz o przejściu od obecnego wykonawcy, opisujemy ten proces na stronie o <Link href="/zmiana-agencji-seo">zmianie agencji SEO</Link>.</p>
++              <Tabela naglowki={['Kryterium', 'Na co zwrócić uwagę']} wiersze={KRYTERIA_PARTNERA} />
++
++              <h2 id="czerwone-flagi">Po czym poznać, że współpraca może być ryzykowna?</h2>
++              <p>Google opisuje sygnały, przy których warto się zatrzymać, zanim zlecisz komuś swoją stronę. Część z nich dotyczy SEO, ale zasada przejrzystości obowiązuje także w kampaniach.</p>
++              <ul>
++                <li><strong>Gwarancja pierwszego miejsca.</strong> Google pisze wprost, że nikt nie może zagwarantować pozycji nr 1, a obietnicę takiego wyniku traktuje jako powód, by poszukać kogoś innego.</li>
++                <li><strong>Rzekome specjalne relacje z Google.</strong> Płatne reklamy nie dają przywilejów w wynikach organicznych, więc obietnice szybszej indeksacji czy lepszych pozycji dzięki znajomościom są nieprawdziwe.</li>
++                <li><strong>Tajemniczość.</strong> Ostrożnie podchodź do firmy, która nie chce wyjaśnić, co zamierza zrobić na Twojej stronie.</li>
++                <li><strong>Brak dostępu do danych.</strong> Konto reklamowe założone na wykonawcę lub raporty bez wglądu do źródła danych utrudniają ocenę wyników i zmianę partnera.</li>
++                <li><strong>Nachalne oferty mailowe i schematy linków.</strong> Google zaleca dużą ostrożność wobec niezamówionych wiadomości od firm SEO i masowego zgłaszania stron do setek wyszukiwarek.</li>
++                <li><strong>Nadmiarowe uprawnienia.</strong> Przy samym audycie wystarczy zwykle dostęp do odczytu w Search Console, bez pełnych uprawnień.</li>
++              </ul>
++              <p>Przy reklamach dodatkową czerwoną flagą jest brak konfiguracji konwersji. Jeśli partner raportuje wyłącznie kliknięcia i wyświetlenia, nie wiesz, czy budżet przynosi klientów.</p>
++
++              <h2 id="koszt">Ile kosztuje współpraca z agencją SEO?</h2>
++              <p>Koszt zależy od zakresu pracy, konkurencji w branży i stanu strony, dlatego trudno podać jedną kwotę dla całego rynku. Przy porównywaniu ofert patrz na to, co dokładnie dostajesz co miesiąc: liczbę treści, linków, zakres prac technicznych i formę raportu.</p>
++              <p>W Google Ads koszt składa się z dwóch części. Pierwsza to budżet reklamowy płacony bezpośrednio Google, druga to ewentualne wynagrodzenie za obsługę konta. Budżetu reklamowego nie da się sensownie oszacować bez sprawdzenia kosztu kliknięć w Twojej branży i lokalizacji.</p>
++              <p>Aktualne pakiety pozycjonowania znajdziesz w naszym <Link href="/cennik-pozycjonowania">cenniku pozycjonowania</Link>, a szersze omówienie rynku w artykule <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">ile kosztuje SEO w Polsce</Link>.</p>
++
++              <h2 id="pytania">Czego firmy najczęściej pytają o SEO i Google Ads?</h2>
++              {FAQ.map((f) => (
++                <div key={f.pytanie}>
++                  <h3>{f.pytanie}</h3>
++                  <p>{f.odpowiedz}</p>
++                </div>
++              ))}
++
++              <h2 id="podsumowanie">Podsumowanie: fundament z SEO, tempo z reklam</h2>
++              <p>Wybór między SEO a reklamami rzadko jest wyborem jednego kanału kosztem drugiego. Agencja SEO pomaga zbudować stronę, która z czasem przyciąga klientów bez płacenia za każde kliknięcie, a kampanie Google Ads dają szybki dostęp do osób szukających Twojej oferty tu i teraz.</p>
++              <p>Zacznij od diagnozy strony, ustal mierzalne cele i wybierz partnera, który pracuje przejrzyście, a konta zostawia na Twojej firmie. Jeśli chcesz sprawdzić, jaki potencjał ma Twoja strona w wynikach organicznych, porozmawiaj z nami o <Link href="/audyt-seo">audycie SEO</Link> i planie działań.</p>
++
++              <Zrodla zrodla={ZRODLA} />
++
++              <BlogCTA locale={locale} currentSlug={SCIEZKA} />
++            </div>
++          </Reveal>
++        </div>
++      </article>
++
++      <Contact />
++      <Footer />
++    </main>
++  );
++}
+diff -ruN -x node_modules -x .next -x '*.webp' a/app/[locale]/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews/page.js b/app/[locale]/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews/page.js
+--- a/app/[locale]/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews/page.js	1970-01-01 00:00:00.000000000 +0000
++++ b/app/[locale]/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews/page.js	2026-11-17 13:39:04.022717966 +0000
+@@ -0,0 +1,514 @@
++// Artykuł tylko-PL (plOnly w lib/blogPosts.js, 308 /en/blog/<slug> -> /blog/<slug> w next.config.mjs).
++// Treść: dokument „AI SEO – Optymalizacja pod Google AI Overviews” (17.11.2026).
++// Zmiany względem dokumentu: title bez sufiksu marki (CLAUDE.md), meta skrócona do 136 zn.,
++// link do nieistniejącego wpisu /blog/widocznosc-firmy-w-generatywnych-ai zastąpiony hubem
++// /pozycjonowanie-w-ai i porównaniem SEO vs GEO, etykiety „Technika/Treść/…” w liście kontrolnej
++// jako H3 (hierarchia nagłówków), „Porada profesjonalisty” bez pogrubienia (CLAUDE.md, <strong>).
++import { articleLanguages, articleRobots, blogPosts } from '@/lib/blogPosts';
++import { hrefJesliOpublikowana } from '@/lib/publikacja';
++import { LASTMOD } from '@/lib/lastmod';
++import Header from '@/components/Header';
++import Footer from '@/components/Footer';
++import Contact from '@/components/Contact';
++import ArticleSchema from '@/components/ArticleSchema';
++import ArticleTOC from '@/components/ArticleTOC';
++import AnswerBox from '@/components/AnswerBox';
++import Byline from '@/components/Byline';
++import Zrodla from '@/components/Zrodla';
++import BlogCTA from '@/components/BlogCTA';
++import { Reveal } from '@/components/ScrollReveal';
++import { Link } from '@/i18n/routing';
++
++const BASE = 'https://www.ai-seo-company.pl';
++const SCIEZKA = '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews';
++const URL_STRONY = `${BASE}${SCIEZKA}`;
++
++// Title 59 zn., meta 136 zn. - te same wartości co titlePl/descPl w lib/blogPosts.js.
++const TYTUL = 'Jak zoptymalizować stronę pod Google AI Overviews i AI Mode';
++const OPIS = 'Google nie ma znaczników dla AI. Co decyduje o cytowaniu w AI Overviews, AI Mode i Perplexity: technika, treść, pomiar i plan na 30 dni.';
++const H1 = 'Jak zoptymalizować stronę pod Google AI Overviews, AI Mode i Perplexity? GEO/AEO w praktyce';
++
++const DATA_PUBLIKACJI = blogPosts.find((p) => p.slug === SCIEZKA)?.date;
++const DATA_ZMIANY = LASTMOD[URL_STRONY] ?? DATA_PUBLIKACJI;
++
++// FAQ: jedno źródło dla widocznego tekstu i FAQPage.
++const FAQ = [
++  {
++    pytanie: 'Czy mogę zapłacić, żeby moja strona pojawiła się w AI Overviews?',
++    odpowiedz: 'Nie. Cytowania w AI Overviews nie są produktem reklamowym. Strona musi być zindeksowana i kwalifikować się do snippetu, a o wyborze źródeł decydują systemy Google.',
++  },
++  {
++    pytanie: 'Jak pojawić się w AI Overviews, jeśli nie jestem w top 10?',
++    odpowiedz: 'Szansę zwiększa query fan-out: Google wysyła wiele zapytań cząstkowych, więc może zacytować stronę, która najlepiej odpowiada na jeden aspekt pytania. Twórz sekcje odpowiadające precyzyjnie na pytania szczegółowe.',
++  },
++  {
++    pytanie: 'Czy potrzebuję pliku llms.txt albo specjalnego schematu, żeby trafić do AI Overviews?',
++    odpowiedz: 'Według Google nie. Dokumentacja mówi, że nie trzeba tworzyć nowych plików dla AI ani specjalnych danych strukturalnych. Wystarczą standardowe praktyki SEO.',
++  },
++  {
++    pytanie: 'Czy zablokowanie Google-Extended usunie mnie z AI Overviews?',
++    odpowiedz: 'Nie. Google-Extended dotyczy trenowania modeli Gemini i groundingu w innych produktach Google. Nie wpływa na obecność w Google Search ani na ranking.',
++  },
++  {
++    pytanie: 'Jak sprawić, żeby Google nie pokazywał mojej treści w AI Overviews?',
++    odpowiedz: 'Użyj nosnippet, data-nosnippet lub max-snippet, a w skrajnym przypadku noindex. Pamiętaj, że te same ustawienia ograniczają też fragmenty w klasycznych wynikach.',
++  },
++  {
++    pytanie: 'Czy AI Overviews zmniejszają ruch na stronie?',
++    odpowiedz: 'To zależy od rodzaju zapytań. Proste pytania informacyjne mogą generować mniej kliknięć, a złożone – kliknięcia bardziej zaangażowanych użytkowników.',
++  },
++  {
++    pytanie: 'Czy AI Mode (Tryb AI) jest dostępny po polsku?',
++    odpowiedz: 'Według strony pomocy Google (stan na 1 listopada 2026 r.) Polska i język polski są na liście obsługiwanych krajów i języków. Część zaawansowanych funkcji ma dodatkowe wymagania.',
++  },
++  {
++    pytanie: 'Jak trafić do Perplexity, jeśli moja strona jest dobrze widoczna w Google?',
++    odpowiedz: 'Sprawdź, czy robots.txt i firewall przepuszczają PerplexityBota. Widoczność w Google nie przekłada się automatycznie na Perplexity AI, bo to osobny system z własnymi robotami.',
++  },
++  {
++    pytanie: 'Jak szybko zobaczę efekty zmian?',
++    odpowiedz: 'Nie ma stałego terminu. Google może potrzebować od kilku dni do kilku miesięcy na ponowne przeskanowanie, a Perplexity sygnalizuje do 24 godzin na uwzględnienie zmian w ustawieniach botów. Cytowania zależą też od konkurencji.',
++  },
++];
++
++// Daty odczytu (pole data) dopisać przy publikacji, jeśli są znane - bez nich lista pokazuje same źródła.
++const ZRODLA = [
++  { url: 'https://developers.google.com/search/docs/appearance/ai-features', nazwa: 'Google Search Central: AI features and your website' },
++  { url: 'https://blog.google/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)' },
++  { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode – dostępność i wymagania', data: '2026-11-01' },
++  { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność – sposób liczenia danych' },
++  { url: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers', nazwa: 'Google: przegląd typowych robotów Google (Google-Extended)' },
++  { url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content', nazwa: 'Google Search Central: Creating helpful, reliable, people-first content' },
++  { url: 'https://docs.perplexity.ai/guides/bots', nazwa: 'Perplexity Docs: dokumentacja robotów (PerplexityBot, Perplexity-User)' },
++  { url: 'https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work', nazwa: 'Perplexity Help Center: How does Perplexity work?' },
++];
++
++const TOC = [
++  { id: 'w-skrocie', title: 'Najważniejsze informacje w skrócie' },
++  { id: 'ai-overviews', title: 'Czym są Google AI Overviews i skąd biorą źródła?' },
++  { id: 'ai-mode', title: 'Jak działa Google AI Mode i czym jest query fan-out?' },
++  { id: 'geo-aeo', title: 'Czym jest GEO/AEO i gdzie zaczyna się praktyka?' },
++  { id: 'technika', title: 'Optymalizacja techniczna pod AI Overviews' },
++  { id: 'tresc', title: 'Jak pisać treści, żeby pojawić się w AI Overviews?' },
++  { id: 'dane-strukturalne', title: 'Czy dane strukturalne pomagają w AI Overviews?' },
++  { id: 'eeat', title: 'E-E-A-T, linkowanie wewnętrzne i multimedia' },
++  { id: 'tresc-ai-mode', title: 'Treść pod Google AI Mode i pytania uzupełniające' },
++  { id: 'perplexity', title: 'Jak trafić do odpowiedzi Perplexity AI?' },
++  { id: 'pomiar', title: 'Jak zmierzyć wpływ AI Overviews na ruch?' },
++  { id: 'lista-kontrolna', title: 'Lista kontrolna przed optymalizacją pod AI' },
++  { id: 'plan-30-dni', title: 'Plan wdrożenia na 30 dni' },
++  { id: 'pytania', title: 'Pytania o AI Overviews, AI Mode i Perplexity' },
++  { id: 'podsumowanie', title: 'Od indeksu do cytowania – podsumowanie' },
++  { id: 'zrodla', title: 'Źródła' },
++];
++
++const W_SKROCIE = [
++  ['Brak „magicznych” znaczników', 'Google nie wymaga osobnych plików, schematów ani znaczników dla funkcji AI. Liczy się indeksowanie i kwalifikacja do wyświetlenia z fragmentem.'],
++  ['Odpowiedź na początku sekcji', 'Pierwsze 1–2 zdania pod nagłówkiem powinny samodzielnie odpowiadać na pytanie z nagłówka.'],
++  ['Nagłówki jako pytania', 'H2 i H3 sformułowane tak, jak pytają użytkownicy, ułatwiają dopasowanie do zapytań cząstkowych (query fan-out).'],
++  ['Fakty ze źródłami', 'Liczby, daty i definicje z podanym źródłem są łatwiejsze do zacytowania niż ogólniki.'],
++  ['Kontrola fragmentów', 'Atrybuty nosnippet, data-nosnippet i max-snippet ograniczają to, co Google może pokazać, także w AI Overviews.'],
++  ['Google-Extended to nie SEO', 'Blokada Google-Extended nie wpływa na obecność w wyszukiwarce Google ani na ranking.'],
++  ['Perplexity rządzi się własnymi zasadami', 'O widoczności w Perplexity AI decyduje dostęp PerplexityBota, a nie Googlebota. Sprawdź też reguły WAF.'],
++  ['Mierz, zamiast zgadywać', 'Ruch z AI Overviews i AI Mode trafia do raportu Skuteczność w Search Console (typ „Web”). Perplexity widać w GA4 jako odesłanie.'],
++];
++
++const PLAN = [
++  ['Dni 1–5', 'Wybór 20–30 pytań kluczowych, pierwszy pomiar w Google, AI Mode i Perplexity, eksport danych z Search Console', 'Punkt odniesienia i lista priorytetów'],
++  ['Dni 6–10', 'Przegląd techniczny: indeksowanie, robots.txt, WAF, nosnippet/max-snippet, renderowanie JS', 'Lista błędów blokujących cytowania'],
++  ['Dni 11–15', 'Poprawki techniczne i dopuszczenie PerplexityBota; weryfikacja w Sprawdzaniu adresu URL', 'Strony dostępne i kwalifikujące się do snippetów'],
++  ['Dni 16–22', 'Przebudowa 5–10 kluczowych artykułów: nagłówki-pytania, odpowiedzi na początku sekcji, tabele, źródła, autor', 'Treści gotowe do cytowania'],
++  ['Dni 23–26', 'Dane strukturalne zgodne z treścią, linkowanie wewnętrzne w klastrze, obrazy i opisy', 'Lepszy kontekst tematyczny'],
++  ['Dni 27–30', 'Ponowny pomiar, konfiguracja raportu GA4 dla ruchu z AI, plan kolejnych 30 dni', 'Porównanie z punktem wyjścia i dalsze priorytety'],
++];
++
++const LISTA_KONTROLNA = [
++  ['Technika', [
++    'Strona jest zindeksowana (Sprawdzanie adresu URL w Search Console).',
++    'Robots.txt, CDN i firewall nie blokują Googlebota ani PerplexityBota.',
++    'Brak przypadkowych noindex, nosnippet i max-snippet:0.',
++    'Kluczowa treść jest widoczna w zrenderowanym HTML.',
++    'Strona działa szybko na urządzeniach mobilnych.',
++  ]],
++  ['Treść', [
++    'Nagłówki H2 i H3 są sformułowane jako pytania użytkowników.',
++    'Pierwsze 1–2 zdania każdej sekcji odpowiadają na pytanie z nagłówka.',
++    'Procedury są w listach numerowanych, porównania w tabelach.',
++    'Liczby i fakty mają podane źródła.',
++    'Data aktualizacji jest widoczna i odpowiada realnym zmianom.',
++  ]],
++  ['Wiarygodność i kontekst', [
++    'Artykuł ma podpisanego autora z biogramem.',
++    'Dane strukturalne są zgodne z widoczną treścią.',
++    'Strona jest powiązana linkami wewnętrznymi z klastrem tematycznym.',
++    'Ważne treści mają własne obrazy lub wideo z opisami.',
++  ]],
++  ['Pomiar', [
++    'Search Console jest zweryfikowana, a raport Skuteczność monitorowany co tydzień.',
++    'Prowadzisz dziennik testowych zapytań w Google i Perplexity.',
++    'GA4 wydziela ruch z Perplexity i innych asystentów AI.',
++  ]],
++];
++
++export async function generateMetadata({ params }) {
++  const { locale } = await params;
++  return {
++    title: TYTUL,
++    description: OPIS,
++    alternates: {
++      canonical: URL_STRONY,
++      languages: articleLanguages(SCIEZKA, URL_STRONY, null),
++    },
++    robots: articleRobots(SCIEZKA, locale),
++  };
++}
++
++export default async function ArtykulAiOverviews({ params }) {
++  const { locale } = await params;
++  if (locale === 'en') return null;
++
++  // Reguła 6.0: link tylko do strony, która zwraca 200 - inaczej zwykły tekst.
++  const hrefSeoVsGeo = hrefJesliOpublikowana('/porownania/seo-vs-geo');
++  const hrefAudytAi = hrefJesliOpublikowana('/pozycjonowanie-w-ai/audyt-widocznosci');
++
++  const faqLd = {
++    '@context': 'https://schema.org',
++    '@type': 'FAQPage',
++    '@id': `${URL_STRONY}#pytania`,
++    inLanguage: 'pl-PL',
++    mainEntity: FAQ.map((f) => ({
++      '@type': 'Question',
++      name: f.pytanie,
++      acceptedAnswer: { '@type': 'Answer', text: f.odpowiedz },
++    })),
++  };
++
++  return (
++    <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
++      <Header />
++      <ArticleSchema slug={SCIEZKA} locale={locale} dateModified={DATA_ZMIANY} />
++      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
++
++      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
++        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
++          <Reveal>
++            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
++              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
++                Pozycjonowanie w AI
++              </span>
++            </div>
++            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
++              {H1}
++            </h1>
++            <Byline sciezka={SCIEZKA} data={DATA_ZMIANY} />
++            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
++          </Reveal>
++
++          <Reveal delay={0.2}>
++            <div className="article-content">
++              <AnswerBox>
++                Jak zoptymalizować stronę pod Google AI Overviews, skoro Google mówi wprost, że nie ma do tego żadnych specjalnych znaczników? Odpowiedź jest mniej efektowna, niż obiecują poradniki z „sekretnymi trikami”: trzeba mieć stronę, którą Google może zaindeksować i pokazać z fragmentem, oraz treść, z której model łatwo wyciągnie konkretną, sprawdzalną odpowiedź.
++              </AnswerBox>
++
++              <p className="lead">
++                W tym przewodniku przechodzimy przez całą ścieżkę: od technicznych warunków wejścia, przez pisanie sekcji pod cytowanie, po Google AI Mode, Perplexity AI i pomiar w Search Console. Bez obietnic gwarancji, bo tych nie da nikt. Za to z konkretnymi krokami, które pozwalają działać bez zgadywania. Z listą kontrolną i planem na 30 dni, który możesz wdrożyć z małym zespołem.
++              </p>
++
++              <ArticleTOC items={TOC} />
++
++              <h2 id="w-skrocie">Najważniejsze informacje w skrócie</h2>
++              <div className="table-container">
++                <table>
++                  <thead>
++                    <tr>
++                      <th scope="col">Zasada</th>
++                      <th scope="col">Szczegóły</th>
++                    </tr>
++                  </thead>
++                  <tbody>
++                    {W_SKROCIE.map(([zasada, opis]) => (
++                      <tr key={zasada}>
++                        <th scope="row">{zasada}</th>
++                        <td>{opis}</td>
++                      </tr>
++                    ))}
++                  </tbody>
++                </table>
++              </div>
++
++              <h2 id="ai-overviews">Czym są Google AI Overviews (Przegląd od AI) i skąd biorą źródła?</h2>
++              <p>AI Overviews to generowane przez AI podsumowania nad wynikami Google, które streszczają temat i linkują do stron, na których można dowiedzieć się więcej. W polskim interfejsie funkcja pojawia się jako „Przegląd od AI”. Google zaznacza, że AI Overviews wyświetlają się tylko wtedy, gdy system uzna, że wnoszą coś ponad klasyczne wyniki – więc przy wielu zapytaniach ich po prostu nie ma.</p>
++              <p>To pierwsza ważna lekcja. Zanim zaczniesz cokolwiek zmieniać, sprawdź, czy przy Twoich kluczowych pytaniach podsumowanie w ogóle się pojawia. Przy zapytaniach nawigacyjnych („logowanie bank X”) lub prostych transakcyjnych zwykle go nie zobaczysz. Przy pytaniach „jak”, „dlaczego”, „co lepsze” – znacznie częściej.</p>
++
++              <h3>Skąd AI Overviews biorą cytowane strony</h3>
++              <p>Cytowania w AI Overviews pochodzą z indeksu Google. Dokumentacja Google Search Central mówi jasno: aby strona mogła pojawić się jako link pomocniczy w AI Overviews lub AI Mode, musi być zindeksowana i kwalifikować się do wyświetlenia w wyszukiwarce z fragmentem (snippetem). Nie ma dodatkowych wymagań technicznych.</p>
++              <p>W praktyce oznacza to, że optymalizacja pod AI Overviews nie zastępuje klasycznego SEO. Jest jego kontynuacją. Strona, która nie radzi sobie z indeksowaniem, nie trafi do podsumowania, nawet jeśli ma najlepszą treść w branży.</p>
++
++              <h3>Dlaczego cytowania różnią się od dziesięciu niebieskich linków</h3>
++              <p>Google opisuje, że AI Overviews i AI Mode mogą wysyłać wiele powiązanych zapytań do różnych podtematów i źródeł. Dzięki temu pokazują szerszy i bardziej zróżnicowany zestaw linków niż tradycyjne wyniki. Dla Ciebie to dobra wiadomość: strona, która nie jest w pierwszej trójce na główne zapytanie, może zostać zacytowana, bo najlepiej odpowiada na jedno z pytań cząstkowych.</p>
++
++              <h2 id="ai-mode">Jak działa Google AI Mode (Tryb AI) i czym jest query fan-out?</h2>
++              <p>Google AI Mode (po polsku „Tryb AI”) to osobny, konwersacyjny tryb wyszukiwarki dla pytań, które wymagają zgłębienia tematu, rozumowania lub porównań. Zamiast listy wyników dostajesz rozbudowaną odpowiedź z linkami do źródeł i możliwość zadawania pytań uzupełniających.</p>
++              <p>Kluczem do zrozumienia, jak działa AI Mode, jest technika query fan-out. W ogłoszeniu z 20 maja 2025 roku Google wyjaśnia, że AI Mode dzieli pytanie na podtematy i wysyła wiele zapytań jednocześnie, dzięki czemu przeszukuje sieć głębiej niż klasyczna wyszukiwarka.</p>
++
++              <h3>Query fan-out na przykładzie</h3>
++              <p>Załóżmy, że użytkownik pyta: „Jaką pompę ciepła wybrać do domu 150 m² na Mazowszu i ile to kosztuje z dotacją?”. AI Mode może rozbić to na kilka pytań cząstkowych:</p>
++              <ul>
++                <li>Jak dobrać moc pompy ciepła do powierzchni domu?</li>
++                <li>Pompa powietrzna czy gruntowa – różnice w kosztach i sprawności?</li>
++                <li>Jakie dotacje na pompę ciepła są dostępne w Polsce?</li>
++                <li>Ile kosztuje montaż pompy ciepła?</li>
++              </ul>
++              <p>Każde z tych pytań może być obsłużone przez inną stronę. Jeśli Twój artykuł ma osobną, jasno opisaną sekcję o doborze mocy, ma szansę stać się źródłem dla tego jednego elementu odpowiedzi. Dlatego struktura treści oparta na pytaniach jest dziś tak ważna.</p>
++
++              <h3>Czy AI Mode działa w Polsce?</h3>
++              <p>Według strony pomocy Google o AI Mode (stan na listopad 2026, sprawdzono 1 listopada 2026 r.) Polska znajduje się na liście obsługiwanych krajów, a język polski na liście obsługiwanych języków. Niektóre funkcje, np. najnowsze modele czy personalizacja, mają jednak osobne wymagania (wiek 18+, subskrypcja lub włączona historia) i nie wszystkie są dostępne w każdym kraju. Dostępność zmienia się szybko, więc przed planowaniem kampanii sprawdź aktualny stan na stronie pomocy Google.</p>
++              <p><em>Porada profesjonalisty:</em> AI Overviews i AI Mode mogą korzystać z różnych modeli i technik. Ta sama strona bywa cytowana w jednym miejscu, a pomijana w drugim. Testuj oba widoki osobno.</p>
++
++              <h2 id="geo-aeo">Czym jest GEO/AEO i gdzie zaczyna się praktyka?</h2>
++              <p>
++                GEO (Generative Engine Optimization) to optymalizacja pod wyszukiwarki generatywne, a AEO (Answer Engine Optimization) – pod systemy udzielające bezpośrednich odpowiedzi. GEO/AEO to więc wspólny parasol dla działań, które zwiększają szansę, że AI zacytuje Twoją stronę.
++                {hrefSeoVsGeo && <> Różnice między SEO a GEO w ośmiu kryteriach rozpisaliśmy w porównaniu <Link href={hrefSeoVsGeo}>SEO vs GEO</Link>.</>}
++                {' '}Całą usługę, z pomiarem widoczności w odpowiedziach modeli, opisujemy na stronie <Link href="/pozycjonowanie-w-ai">pozycjonowanie w AI</Link>.
++              </p>
++              <div className="table-container">
++                <table>
++                  <thead>
++                    <tr>
++                      <th scope="col">Skrót</th>
++                      <th scope="col">W skrócie</th>
++                    </tr>
++                  </thead>
++                  <tbody>
++                    <tr><th scope="row">SEO</th><td>Widoczność w klasycznych wynikach Google</td></tr>
++                    <tr><th scope="row">GEO</th><td>Cytowania w odpowiedziach generatywnych (AI Overviews, AI Mode, Perplexity)</td></tr>
++                    <tr><th scope="row">AEO</th><td>Bezpośrednia, zwięzła odpowiedź na konkretne pytanie</td></tr>
++                  </tbody>
++                </table>
++              </div>
++              <p>Tutaj skupiamy się na praktyce: co konkretnie zmienić na stronie, żeby zwiększyć szansę na cytowanie w Google i Perplexity AI.</p>
++
++              <h2 id="technika">Jak zoptymalizować stronę pod Google AI Overviews od strony technicznej?</h2>
++              <p>Wszystko zaczyna się od warunku, który Google wymienia jako konieczny: indeksowania i kwalifikacji do snippetu. Jeśli tu są luki, praca nad treścią nie przyniesie efektu.</p>
++
++              <h3>Indeksowalność i dostęp Googlebota</h3>
++              <p>Googlebot musi mieć dostęp do strony. Sprawdź:</p>
++              <ul>
++                <li>czy robots.txt nie blokuje ważnych sekcji (np. /blog/ albo katalogu z produktami),</li>
++                <li>czy CDN, firewall lub hosting nie odrzucają Googlebota (Google wymienia to wprost w zaleceniach),</li>
++                <li>czy strony nie mają przypadkowego noindex, np. po migracji z wersji testowej,</li>
++                <li>czy kanoniczne adresy wskazują właściwe wersje stron,</li>
++                <li>czy ważne podstrony są w mapie witryny XML.</li>
++              </ul>
++              <p>Najszybciej sprawdzisz to narzędziem Sprawdzanie adresu URL w Search Console. Jeśli potrzebujesz szerszego przeglądu, przejdź przez nasz <Link href="/blog/technical-seo-audit-checklist">audyt techniczny SEO</Link>.</p>
++
++              <h3>Snippety: nosnippet, data-nosnippet i max-snippet</h3>
++              <p>To najczęściej pomijany punkt. Google wymienia te same mechanizmy kontroli dla funkcji AI co dla zwykłych wyników:</p>
++              <ul>
++                <li><strong>nosnippet</strong> – blokuje pokazywanie fragmentu strony; strona z tym atrybutem nie zasili AI Overviews swoim tekstem,</li>
++                <li><strong>data-nosnippet</strong> – wyłącza z fragmentów tylko wybrany element HTML,</li>
++                <li><strong>max-snippet</strong> – ogranicza długość fragmentu,</li>
++                <li><strong>noindex</strong> – wyklucza stronę z indeksu, a więc i z AI Overviews.</li>
++              </ul>
++              <p>Zdarza się, że wtyczka SEO lub szablon ustawia max-snippet:0 albo nosnippet globalnie. Wtedy strona może rankować w klasycznych wynikach, ale nie zostanie wykorzystana jako fragment. Sprawdź nagłówki X-Robots-Tag i meta robots na kluczowych podstronach.</p>
++
++              <h3>Google-Extended a wyszukiwarka</h3>
++              <p>Google-Extended to token w robots.txt, którym decydujesz, czy treści pobrane przez Google mogą służyć do trenowania modeli Gemini i do groundingu w innych produktach Google. Dokumentacja Google mówi wprost, że Google-Extended nie wpływa na obecność witryny w Google Search i nie jest sygnałem rankingowym. Zablokowanie go nie wyłączy więc strony z AI Overviews – za to odpowiadają Googlebot, noindex i atrybuty snippetów.</p>
++
++              <h3>Renderowanie JavaScript i treść w HTML</h3>
++              <p>Google zaleca, aby ważne treści były dostępne w formie tekstowej. Jeśli kluczowe odpowiedzi ładują się dopiero po interakcji (zakładki, akordeony, „pokaż więcej” pobierane z API) albo są w obrazkach, model ma mniejszą szansę je wykorzystać. Sprawdź w Sprawdzaniu adresu URL zrenderowany HTML i upewnij się, że widać w nim treść, nie tylko szkielet strony. Przy stronach opartych na frameworkach JS rozważ renderowanie po stronie serwera dla treści informacyjnych.</p>
++
++              <h3>Szybkość i page experience</h3>
++              <p>Google wymienia dobre doświadczenie użytkownika na stronie jako jedną z praktyk wspierających widoczność w funkcjach AI. Wolna, przeładowana reklamami strona zniechęca użytkownika, który kliknął link z podsumowania, a to on ostatecznie konwertuje.</p>
++
++              <h2 id="tresc">Jak pisać treści, żeby pojawić się w AI Overviews?</h2>
++              <p>Optymalizacja treści pod AI Overviews sprowadza się do jednej zasady: każda sekcja powinna być samodzielną, gotową do zacytowania odpowiedzią na konkretne pytanie. Model nie czyta artykułu jak człowiek od początku do końca. Wyszukuje fragment, który najlepiej pasuje do pytania cząstkowego.</p>
++
++              <h3>Odpowiedź w pierwszym akapicie sekcji</h3>
++              <p>Pod każdym nagłówkiem H2 lub H3 umieść 1–2 zdania, które bezpośrednio odpowiadają na pytanie z nagłówka. Dopiero potem rozwijaj kontekst, przykłady i wyjątki.</p>
++              <p>Porównaj:</p>
++              <ul>
++                <li><strong>Słabo:</strong> „Temat kosztów montażu jest złożony i zależy od wielu czynników, o których opowiemy poniżej.”</li>
++                <li><strong>Dobrze:</strong> „Montaż pompy ciepła powietrze-woda w domu jednorodzinnym to zwykle koszt instalacji plus robocizna; ostateczna cena zależy od mocy urządzenia, rodzaju ogrzewania i stanu instalacji.”</li>
++              </ul>
++
++              <h3>Struktura pytań w H2 i H3</h3>
++              <p>Nagłówki pisz tak, jak użytkownik formułuje pytanie. „Ile kosztuje audyt SEO?” jest lepsze niż „Cennik”. „Jak dobrać moc pompy ciepła?” jest lepsze niż „Moc”. Dzięki temu łatwiej dopasować sekcję do zapytań cząstkowych generowanych przez query fan-out.</p>
++              <p>Skąd brać pytania? Z sekcji „Podobne pytania” w Google, z zapytań w Search Console, z rozmów działu sprzedaży i obsługi klienta. Systematyczny proces opisaliśmy w artykule o <Link href="/blog/content-gap-analysis">analizie luk contentowych</Link>.</p>
++
++              <h3>Listy kroków i tabele porównawcze</h3>
++              <p>Procedury zapisuj jako numerowane listy, a porównania jako tabele. Takie formaty mają jasną strukturę, którą łatwo przenieść do odpowiedzi. Przykładowo:</p>
++              <div className="table-container">
++                <table>
++                  <thead>
++                    <tr>
++                      <th scope="col">Element sekcji</th>
++                      <th scope="col">Co zawiera</th>
++                      <th scope="col">Po co</th>
++                    </tr>
++                  </thead>
++                  <tbody>
++                    <tr><th scope="row">Nagłówek-pytanie</th><td>Pytanie użytkownika</td><td>Dopasowanie do zapytania cząstkowego</td></tr>
++                    <tr><th scope="row">Odpowiedź (1–2 zdania)</th><td>Konkretna odpowiedź</td><td>Fragment gotowy do cytowania</td></tr>
++                    <tr><th scope="row">Rozwinięcie</th><td>Kontekst, wyjątki, przykład</td><td>Głębia i wiarygodność</td></tr>
++                    <tr><th scope="row">Lista lub tabela</th><td>Kroki, parametry, różnice</td><td>Łatwe przetwarzanie przez AI i ludzi</td></tr>
++                  </tbody>
++                </table>
++              </div>
++
++              <h3>Fakty z liczbami i źródłami</h3>
++              <p>Konkret wygrywa z ogólnikiem. Zamiast „wiele firm korzysta z AI” podaj liczbę, datę i źródło. Jeśli nie masz wiarygodnej liczby, nie wymyślaj jej – lepiej opisać mechanizm lub własne doświadczenie.</p>
++              <p>Najcenniejsze są dane własne: wyniki ankiety klientów, średnie czasy realizacji, ceny z cennika, wnioski z wdrożeń. Google w wytycznych o pomocnych treściach pyta wprost, czy treść zawiera oryginalne informacje, badania lub analizy. Unikalne dane trudno zastąpić cudzą stroną.</p>
++
++              <h3>Aktualność i daty aktualizacji</h3>
++              <p>Przy tematach, które się zmieniają (ceny, przepisy, dostępność funkcji), pokaż datę ostatniej aktualizacji i faktycznie aktualizuj treść. Google ostrzega jednak przed sztucznym zmienianiem dat bez istotnych zmian w treści. Zmieniaj datę wtedy, gdy zmieniasz merytorykę.</p>
++
++              <h2 id="dane-strukturalne">Czy dane strukturalne pomagają w AI Overviews?</h2>
++              <p>Dane strukturalne nie są biletem do AI Overviews. Google nie przewiduje specjalnego schematu schema.org dla funkcji AI i nie wymaga dodatkowych znaczników. Jednocześnie wśród zalecanych praktyk wymienia, by dane strukturalne były zgodne z widoczną treścią strony.</p>
++              <p>Jak więc z nich korzystać?</p>
++              <ul>
++                <li>Stosuj standardowe typy tam, gdzie pasują: Article, Product, Organization, LocalBusiness, BreadcrumbList.</li>
++                <li>Dbaj, by cena, dostępność, autor czy data w znacznikach były identyczne z tym, co widzi użytkownik.</li>
++                <li>Nie oznaczaj treści, których na stronie nie ma – to łamie wytyczne i podważa wiarygodność.</li>
++                <li>Dla sklepów i firm lokalnych aktualizuj Merchant Center i Profil Firmy w Google; Google wymienia to w zaleceniach dla funkcji AI.</li>
++              </ul>
++              <p>Dane strukturalne pomagają Google zrozumieć, czym jest strona i do kogo należy. To wsparcie, a nie dźwignia.</p>
++
++              <h2 id="eeat">Jak wzmocnić E-E-A-T, linkowanie wewnętrzne i multimedia?</h2>
++              <p>Cytowania w AI Overviews pochodzą ze stron, którym Google ufa w danym temacie. E-E-A-T (doświadczenie, wiedza ekspercka, autorytet, wiarygodność) nie jest bezpośrednim czynnikiem rankingowym, ale według Google pomaga systemom rozpoznawać dobre treści – a najważniejszym elementem jest zaufanie.</p>
++
++              <h3>Autorzy z prawdziwym doświadczeniem</h3>
++              <p>Podpisuj artykuły ekspertów, którzy faktycznie wykonują opisywaną pracę. Dodaj krótki biogram i stronę autora z doświadczeniem, certyfikatami lub realizacjami. Google ostrzega przed fałszywymi profilami twórców, np. z wygenerowanymi przez AI zdjęciami – to sygnał niskiej jakości, a nie autorytetu.</p>
++              <p>Pokazuj doświadczenie w treści: „W 2025 roku przeprowadziliśmy migrację sklepu na nową platformę i…” mówi więcej niż „eksperci zalecają”.</p>
++
++              <h3>Linkowanie wewnętrzne jako mapa tematu</h3>
++              <p>Google zaleca łatwą nawigację przez linki wewnętrzne. Zbuduj klaster: stronę główną tematu (np. usługę) i artykuły odpowiadające na pytania szczegółowe. Linkuj między nimi opisowymi anchorami.</p>
++
++              <h3>Obrazy i wideo</h3>
++              <p>Google zachęca do uzupełniania tekstu wysokiej jakości obrazami i filmami. Własne zdjęcia, schematy i krótkie wideo instruktażowe z opisowymi tekstami alternatywnymi oraz transkrypcją zwiększają wartość strony. Dotyczy to zwłaszcza pytań wizualnych, które użytkownicy zadają w AI Mode z pomocą zdjęcia lub kamery.</p>
++
++              <h2 id="tresc-ai-mode">Jak przygotować treść pod Google AI Mode i pytania uzupełniające?</h2>
++              <p>Google AI Mode różni się od AI Overviews tym, że rozmowa trwa dłużej. Użytkownik zadaje pytanie, dostaje odpowiedź, a potem dopytuje. Search Console traktuje każde pytanie uzupełniające jako nowe zapytanie, co dobrze pokazuje logikę trybu: każda tura to nowa szansa na cytowanie.</p>
++              <p>Co to oznacza w praktyce?</p>
++              <ul>
++                <li><strong>Pokryj ścieżkę decyzji, nie jedno pytanie.</strong> Jeśli piszesz o wyborze CRM, przewidź kolejne pytania: integracje, koszty wdrożenia, czas migracji, alternatywy.</li>
++                <li><strong>Dodawaj porównania i kryteria wyboru.</strong> Google wskazuje, że AI Mode sprawdza się przy porównaniach – tabela „opcja A vs B vs C” z jasnymi kryteriami to naturalny materiał na odpowiedź.</li>
++                <li><strong>Opisuj wyjątki i warunki brzegowe.</strong> „To rozwiązanie nie sprawdzi się, jeśli…” – takie zdania pomagają odpowiedzieć na doprecyzowujące pytania.</li>
++                <li><strong>Utrzymuj spójność między stronami.</strong> Jeśli cennik mówi jedno, a artykuł blogowy drugie, system może pominąć oba źródła albo zacytować nieaktualne.</li>
++              </ul>
++              <p><em>Porada profesjonalisty:</em> Zapisz 10 pytań, które klienci zadają przed zakupem, i przetestuj je w AI Mode po polsku. Zanotuj, które domeny są cytowane i jakich informacji brakuje w Twoich treściach. To gotowa lista tematów do uzupełnienia.</p>
++
++              <h2 id="perplexity">Jak trafić do odpowiedzi Perplexity AI?</h2>
++              <p>Perplexity AI to wyszukiwarka odpowiadająca w czasie rzeczywistym, która przy każdej odpowiedzi pokazuje numerowane przypisy z linkami do źródeł. Aby trafić do Perplexity, Twoja strona musi być dostępna dla jej robotów i zawierać treść, którą da się łatwo zacytować. Indeks Google nie ma tu znaczenia.</p>
++
++              <h3>PerplexityBot i Perplexity-User – czym się różnią</h3>
++              <p>Dokumentacja Perplexity opisuje dwa user-agenty:</p>
++              <ul>
++                <li><strong>PerplexityBot</strong> – służy do wyświetlania i linkowania stron w wynikach Perplexity. Według dokumentacji nie zbiera treści do trenowania modeli. Perplexity zaleca dopuszczenie go w robots.txt.</li>
++                <li><strong>Perplexity-User</strong> – pobiera stronę w imieniu użytkownika, gdy ten zada pytanie. Ponieważ żądanie pochodzi od użytkownika, ten fetcher zasadniczo ignoruje reguły robots.txt.</li>
++              </ul>
++              <p>Jeśli blokujesz PerplexityBota w robots.txt, ograniczasz szansę na pojawienie się w indeksie Perplexity. Minimalny wpis dopuszczający wygląda tak:</p>
++              <pre><code>{`User-agent: PerplexityBot
++Allow: /`}</code></pre>
++
++              <h3>WAF i Cloudflare – częsta przyczyna braku cytowań</h3>
++              <p>Robots.txt to nie wszystko. Firewall aplikacyjny potrafi zablokować bota, nawet jeśli robots.txt na to pozwala. Perplexity publikuje zakresy IP swoich robotów w plikach JSON i zaleca, by na ich podstawie tworzyć reguły zezwalające, łącząc dopasowanie user-agenta z weryfikacją IP. W Cloudflare dokumentacja zaznacza, że trybu Bot Fight Mode nie da się pominąć regułą WAF. Zmiany po stronie Perplexity mogą być widoczne nawet do 24 godzin.</p>
++
++              <h3>Perplexity SEO w praktyce</h3>
++              <p>Zasady treściowe są w dużej mierze wspólne z Google. Na co zwrócić uwagę szczególnie:</p>
++              <ul>
++                <li><strong>Jednoznaczne definicje i fakty.</strong> Perplexity buduje odpowiedź z wielu źródeł i przypisuje zdania do konkretnych przypisów. Zdanie z liczbą i źródłem łatwiej przypisać niż ogólnik.</li>
++                <li><strong>Aktualność.</strong> Wyszukiwanie w czasie rzeczywistym premiuje treści, które nadążają za zmianami.</li>
++                <li><strong>Czysty HTML.</strong> Treść widoczna bez logowania, bez pop-upów zasłaniających tekst i bez ładowania kluczowych informacji wyłącznie przez JavaScript.</li>
++                <li><strong>Spójność wzmianek.</strong> Opisy firmy w katalogach, mediach i na Twojej stronie powinny się zgadzać.</li>
++              </ul>
++              <p>Szersze tło, czyli jak modele językowe dobierają źródła i jak budować rozpoznawalność marki poza wyszukiwarką, opisujemy na stronie <Link href="/pozycjonowanie-w-ai">pozycjonowanie w AI</Link>.</p>
++
++              <h2 id="pomiar">Jak zmierzyć wpływ AI Overviews na ruch na stronie?</h2>
++              <p>Zacznij od Search Console. Według Google strony wyświetlane w AI Overviews i AI Mode są wliczane do ogólnego ruchu i raportowane w raporcie Skuteczność, w typie wyszukiwania „Web”. Nie ma osobnego filtra „tylko AI Overviews”, więc wnioski trzeba wyciągać pośrednio.</p>
++
++              <h3>Jak Search Console liczy AI Overviews i AI Mode</h3>
++              <p>Według pomocy Search Console:</p>
++              <ul>
++                <li><strong>AI Overviews:</strong> całe podsumowanie zajmuje jedną pozycję, a wszystkie linki w nim dostają tę samą pozycję. Kliknięcie w link do zewnętrznej strony liczy się jako kliknięcie.</li>
++                <li><strong>AI Mode:</strong> pozycja jest liczona według tych samych zasad co na zwykłej stronie wyników; pytanie uzupełniające to nowe zapytanie.</li>
++                <li><strong>Search Labs:</strong> dane z eksperymentów w Search Labs nie są uwzględniane.</li>
++              </ul>
++
++              <h3>Testowe zapytania i dziennik cytowań</h3>
++              <p>Search Console nie powie Ci, które zapytania wywołały podsumowanie z Twoim linkiem. Uzupełnij dane ręcznie:</p>
++              <ol>
++                <li>Wybierz 20–30 pytań kluczowych dla biznesu.</li>
++                <li>Raz w tygodniu sprawdzaj je w Google (AI Overviews), w AI Mode i w Perplexity AI – w oknie prywatnym, z polską lokalizacją.</li>
++                <li>Zapisuj w arkuszu: czy pojawiło się podsumowanie, czy Twoja domena jest cytowana, które domeny konkurencji są cytowane.</li>
++                <li>Porównuj trendy co miesiąc, a nie pojedyncze wyniki, bo odpowiedzi AI się zmieniają.</li>
++              </ol>
++              {hrefAudytAi && <p>Jeśli nie chcesz prowadzić takiego dziennika samodzielnie, zobacz, co obejmuje nasz <Link href={hrefAudytAi}>audyt widoczności w AI</Link>.</p>}
++
++              <h3>Perplexity w GA4 i jakość ruchu</h3>
++              <p>Ruch z Perplexity AI pojawia się w Google Analytics 4 jako odesłanie (źródło z domeną perplexity.ai). Utwórz eksplorację lub własną grupę kanałów, w której wydzielisz ruch z asystentów AI, i porównuj go z ruchem organicznym pod kątem zaangażowania i konwersji.</p>
++              <p>Google twierdzi, że kliknięcia z wyników z AI Overviews są wyższej jakości, bo użytkownicy częściej spędzają więcej czasu na stronie. Traktuj to jako hipotezę do sprawdzenia na własnych danych, nie jako pewnik. Patrz na konwersje, a nie tylko na kliknięcia.</p>
++
++              <h2 id="lista-kontrolna">Lista kontrolna: co sprawdzić przed optymalizacją pod AI?</h2>
++              <p>Ta lista zbiera najważniejsze punkty z całego artykułu w jednym miejscu. Przejdź przez nią dla 10–20 najważniejszych podstron.</p>
++              {LISTA_KONTROLNA.map(([grupa, punkty]) => (
++                <div key={grupa}>
++                  <h3>{grupa}</h3>
++                  <ul>
++                    {punkty.map((p) => <li key={p}>{p}</li>)}
++                  </ul>
++                </div>
++              ))}
++
++              <h2 id="plan-30-dni">Plan wdrożenia na 30 dni</h2>
++              <p>Plan zakłada mały zespół: jedną osobę od SEO, jedną od treści i dostęp do programisty na kilka godzin tygodniowo.</p>
++              <div className="table-container">
++                <table>
++                  <thead>
++                    <tr>
++                      <th scope="col">Okres</th>
++                      <th scope="col">Zadania</th>
++                      <th scope="col">Efekt</th>
++                    </tr>
++                  </thead>
++                  <tbody>
++                    {PLAN.map(([okres, zadania, efekt]) => (
++                      <tr key={okres}>
++                        <th scope="row">{okres}</th>
++                        <td>{zadania}</td>
++                        <td>{efekt}</td>
++                      </tr>
++                    ))}
++                  </tbody>
++                </table>
++              </div>
++              <p>Pamiętaj, że ponowne przeskanowanie strony przez Google może zająć od kilku dni do kilku miesięcy. Pomiar po 30 dniach pokazuje kierunek, nie ostateczny wynik.</p>
++
++              <h2 id="pytania">Jakie pytania najczęściej padają o AI Overviews, AI Mode i Perplexity?</h2>
++              {FAQ.map((f) => (
++                <div key={f.pytanie}>
++                  <h3>{f.pytanie}</h3>
++                  <p>{f.odpowiedz}</p>
++                </div>
++              ))}
++
++              <h2 id="podsumowanie">Od indeksu do cytowania – podsumowanie</h2>
++              <p>Jak zoptymalizować stronę pod Google AI Overviews? Najpierw upewnij się, że Google może ją zaindeksować i pokazać z fragmentem. Potem przebuduj treść tak, by każda sekcja zaczynała się od konkretnej odpowiedzi na pytanie z nagłówka, a fakty miały źródła. Na koniec mierz efekty w Search Console i w dzienniku testowych zapytań.</p>
++              <p>Google AI Mode wymaga szerszego pokrycia tematu, bo użytkownicy dopytują. Perplexity AI wymaga osobnego sprawdzenia dostępu dla PerplexityBota i reguł firewalla. GEO, AEO i klasyczne SEO nie są osobnymi światami – to jedna praca nad stroną, którą zarówno ludzie, jak i modele mogą łatwo zrozumieć i której mogą zaufać.</p>
++              <p>
++                Nie wiesz, od czego zacząć w Twojej branży? Zacznij od rzetelnego przeglądu. W ramach usługi <Link href="/audyt-seo">audyt SEO strony internetowej</Link> sprawdzimy indeksowanie, ustawienia snippetów, dostęp robotów i strukturę treści pod cytowania. Jeśli chcesz długofalowo budować widoczność w klasycznych wynikach i w odpowiedziach AI, zobacz nasze <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie stron internetowych</Link>. <a href="#kontakt">Skontaktuj się z nami</a> – odpowiadamy w 24 h w dni robocze.
++              </p>
++
++              <Zrodla zrodla={ZRODLA} />
++
++              <BlogCTA locale={locale} currentSlug={SCIEZKA} />
++            </div>
++          </Reveal>
++        </div>
++      </article>
++
++      <Contact />
++      <Footer />
++    </main>
++  );
++}
+diff -ruN -x node_modules -x .next -x '*.webp' a/lib/blogCta.js b/lib/blogCta.js
+--- a/lib/blogCta.js	2026-11-17 13:34:41.852769508 +0000
++++ b/lib/blogCta.js	2026-11-17 13:39:25.774823978 +0000
+@@ -153,6 +153,8 @@
+   '/blog/seo-lokalne-dla-firm-w-warszawie': 'lokalne',
+   '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026': 'ceny',
+   '/blog/bing-webmaster-tools-indexnow-chatgpt': 'ai',
++  '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews': 'ai',
++  '/blog/agencja-seo-czy-google-ads': 'audyt',
+   // bez klastra (#kontakt): mailchimp-vs-getresponse, vwo-vs-optimizely-porownanie,
+   // seo-for-saas-startups-playbook, multi-location-seo-scale-local-visibility,
+   // best-marketing-attribution-tools-for-2026
+diff -ruN -x node_modules -x .next -x '*.webp' a/lib/blogPosts.js b/lib/blogPosts.js
+--- a/lib/blogPosts.js	2026-11-17 13:34:41.852781219 +0000
++++ b/lib/blogPosts.js	2026-11-17 13:39:31.688961448 +0000
+@@ -18,6 +18,48 @@
+ // artykulow zsynchronizowane z ich title/meta 5.11.2026 (titlePl zasila tez headline
+ // w BlogPosting). Pol `date` nie zmieniamy (CLAUDE.md).
+ export const blogPosts = [
++  // 17.11.2026: dwa artykuły tylko-PL (dokumenty AI SEO). readMinPl liczony z tekstu artykułu
++  // (~200 słów/min) - po wdrożeniu można zweryfikować pomiarem z produkcji jak dla reszty wpisów.
++  // Obrazy kart: nowe pliki z opisowymi nazwami (kopie google-reviews-v2.png i
++  // search-engine-optimization-consultants.jpg), wolne na polskiej siatce.
++  {
++    date: '2026-11-17',
++    displayDatePl: '17 Listopada 2026',
++    displayDateEn: 'November 17, 2026',
++    tagPl: 'Pozycjonowanie w AI',
++    tagEn: 'AI search',
++    titlePl: 'Jak zoptymalizować stronę pod Google AI Overviews i AI Mode',
++    titleEn: '',
++    descPl: 'Google nie ma znaczników dla AI. Co decyduje o cytowaniu w AI Overviews, AI Mode i Perplexity: technika, treść, pomiar i plan na 30 dni.',
++    descEn: '',
++    slug: '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews',
++    related: ['/blog/technical-seo-audit-checklist', '/blog/content-gap-analysis', '/blog/agencja-seo-czy-google-ads'],
++    cta: 'ai',
++    readMinPl: 19,
++    image: '/images/abstract-glowing-light-streams.webp',
++    heroImage: '/images/abstract-glowing-light-streams.webp',
++    enOnly: false,
++    plOnly: true
++  },
++  {
++    date: '2026-11-17',
++    displayDatePl: '17 Listopada 2026',
++    displayDateEn: 'November 17, 2026',
++    tagPl: 'SEO i reklamy',
++    tagEn: 'SEO and ads',
++    titlePl: 'Agencja SEO czy kampanie Google Ads? Co wybrać dla firmy',
++    titleEn: '',
++    descPl: 'Agencja SEO czy kampanie Google Ads? Porównaj koszt, czas efektu i trwałość obu kanałów i sprawdź, kiedy je łączyć oraz jak wybrać partnera.',
++    descEn: '',
++    slug: '/blog/agencja-seo-czy-google-ads',
++    related: ['/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', '/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews'],
++    cta: 'audyt',
++    readMinPl: 18,
++    image: '/images/abstract-deep-blue-ink-swirls.webp',
++    heroImage: '/images/abstract-deep-blue-ink-swirls.webp',
++    enOnly: false,
++    plOnly: true
++  },
+   {
+     date: '2026-08-31',
+     displayDatePl: '31 Sierpnia 2026',
+diff -ruN -x node_modules -x .next -x '*.webp' a/lib/popupOferty.js b/lib/popupOferty.js
+--- a/lib/popupOferty.js	2026-11-17 13:34:41.853008262 +0000
++++ b/lib/popupOferty.js	2026-11-17 13:39:25.825835565 +0000
+@@ -76,6 +76,8 @@
+   'wyniki-wdrozen-seo-2026': ['checklista-seo', PL],
+   // AI i GEO (wpis za bramką publikacji; 404 odcina meta noindex w loaderze)
+   'bing-webmaster-tools-indexnow-chatgpt': ['narzedzie-widocznosc-ai', OBA],
++  'jak-zoptymalizowac-strone-pod-google-ai-overviews': ['narzedzie-widocznosc-ai', PL],
++  'agencja-seo-czy-google-ads': ['zapytanie-ofertowe-seo', PL],
+   // Pozostałe tematy (RODO, analityka, CRO, e-mail marketing) -> domyślna checklista SEO
+   'rodo-na-stronie-internetowej': ['checklista-seo', PL],
+   'konfiguracja-zdarzen-gtm-ga4-poradnik': ['checklista-seo', PL],
+diff -ruN -x node_modules -x .next -x '*.webp' a/next.config.mjs b/next.config.mjs
+--- a/next.config.mjs	2026-11-17 13:34:41.853967172 +0000
++++ b/next.config.mjs	2026-11-17 13:39:25.826653597 +0000
+@@ -136,7 +136,7 @@
+       // sprzeczne sygnaly. Jedno trwale przekierowanie do jedynej wersji (takze z /pl/..., zeby nie
+       // bylo dwoch skokow przez regule '/pl/:path*'). Lista = plOnly/enOnly w lib/blogPosts.js;
+       // nowy artykul jednojezyczny = nowy slug tutaj.
+-      ...['wyniki-wdrozen-seo-2026', 'rodo-na-stronie-internetowej', 'mailchimp-vs-getresponse', 'konfiguracja-zdarzen-gtm-ga4-poradnik']
++      ...['wyniki-wdrozen-seo-2026', 'rodo-na-stronie-internetowej', 'mailchimp-vs-getresponse', 'konfiguracja-zdarzen-gtm-ga4-poradnik', 'jak-zoptymalizowac-strone-pod-google-ai-overviews', 'agencja-seo-czy-google-ads']
+         .map((s) => ({ source: `/en/blog/${s}`, destination: `/blog/${s}`, permanent: true })),
+       ...['seo-for-saas-startups-playbook', 'multi-location-seo-scale-local-visibility', 'best-marketing-attribution-tools-for-2026']
+         .flatMap((s) => [`/blog/${s}`, `/pl/blog/${s}`].map((source) => ({ source, destination: `/en/blog/${s}`, permanent: true }))),
