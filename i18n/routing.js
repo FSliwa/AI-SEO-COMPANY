@@ -1,9 +1,36 @@
 import { defineRouting } from 'next-intl/routing';
 import { createNavigation } from 'next-intl/navigation';
 import { STRONY_EN } from '../lib/stronyEn';
+import { STRONY_DE, DE_AKTYWNE } from '../lib/stronyDe';
+
+// Wersja niemiecka (18.11.2026): przy DE_AKTYWNE = false (domyślnie, lib/stronyDe.js) routing jest
+// IDENTYCZNY jak przed dodaniem DE (te same locales i pathnames), więc /de = 404 i HTML PL/EN bez zmian.
+// Przy podglądzie (NEXT_PUBLIC_PODGLAD_DE=1) dochodzi locale 'de' i klucz 'de' w wpisach stron z
+// lib/stronyDe.js; trasy [slug] dostają szablon DE. Klucz bez wpisu 'de' next-intl zamienia na
+// szablon PL, dlatego middleware.js odrzuca (404) każdy adres /de/... spoza lib/stronyDe.js.
+const SZABLONY_DE = {
+  '/porownania/[slug]': '/vergleiche/[slug]',
+  '/pozycjonowanie-w-ai/[slug]': '/ki-suchoptimierung/[slug]',
+  '/narzedzia/[slug]': '/tools/[slug]',
+};
+function dodajDe(pathnames) {
+  if (!DE_AKTYWNE) return pathnames;
+  const wynik = {};
+  for (const [klucz, wpis] of Object.entries(pathnames)) {
+    const de = STRONY_DE[klucz]?.de ?? SZABLONY_DE[klucz];
+    // Ścieżka '/' jest zwykłym stringiem (wszystkie języki), reszta to obiekty {pl, en}.
+    wynik[klucz] = de && typeof wpis === 'object' ? { ...wpis, de } : wpis;
+  }
+  // Strony bez polskiego odpowiednika: klucz = ścieżka DE; pl/en wskazują tę samą ścieżkę,
+  // a strona woła notFound() dla locale innego niż 'de'.
+  for (const [klucz, w] of Object.entries(STRONY_DE)) {
+    if (w.tylkoDe && !wynik[klucz]) wynik[klucz] = { pl: klucz, en: klucz, de: w.de };
+  }
+  return wynik;
+}
 
 export const routing = defineRouting({
-  locales: ['pl', 'en'],
+  locales: DE_AKTYWNE ? ['pl', 'en', 'de'] : ['pl', 'en'],
   defaultLocale: 'pl',
   localePrefix: 'as-needed',
   localeDetection: false,
@@ -14,7 +41,7 @@ export const routing = defineRouting({
   // z middleware dublowal deklaracje. W next-intl v4 opcja zyje tutaj,
   // nie w drugim argumencie createMiddleware.
   alternateLinks: false,
-  pathnames: {
+  pathnames: dodajDe({
     '/': '/',
     '/pozycjonowanie-stron-internetowych': {
       pl: '/pozycjonowanie-stron-internetowych',
@@ -121,7 +148,7 @@ export const routing = defineRouting({
       pl: '/blog/vwo-vs-optimizely-porownanie',
       en: '/blog/vwo-vs-optimizely-comparison'
     }
-  }
+  })
 });
 
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing);

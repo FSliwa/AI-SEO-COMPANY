@@ -1,5 +1,7 @@
 import AiCheckerClient from '@/components/AiCheckerClient';
 import { wpisEn } from '@/lib/stronyEn';
+import KiSichtbarkeitPruefenDe from '@/components/de/KiSichtbarkeitPruefenDe';
+import { hreflangDe, metadataDe } from '@/lib/stronyDe';
 
 // Sprawdzarka zadaje pytania firmom z Polski. Od 9.11.2026 ma wersję EN (/en/ai-visibility-check,
 // tytuł i opis z lib/stronyEn.js), z hreflang w obie strony.
@@ -11,7 +13,9 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   const en = wpisEn(SCIEZKA);
   const urlEn = `${BASE}/en${en.en}`;
-  const languages = { pl: URL_PL, en: urlEn, 'x-default': URL_PL };
+  const languages = { pl: URL_PL, en: urlEn, ...hreflangDe(SCIEZKA), 'x-default': URL_PL };
+  // Version DE (18.11.2026, Gruppe de-geo): Titel, Beschreibung und H1 aus lib/stronyDe.js.
+  if (locale === 'de') return metadataDe(SCIEZKA, { languages: { pl: URL_PL, en: urlEn } });
   if (locale === 'en') {
     return {
       title: en.tytul,
@@ -38,6 +42,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function SprawdzWidocznoscPage() {
+export default async function SprawdzWidocznoscPage({ params }) {
+  const { locale } = await params;
+  if (locale === 'de') return <KiSichtbarkeitPruefenDe />;
   return <AiCheckerClient />;
 }

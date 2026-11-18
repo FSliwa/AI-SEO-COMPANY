@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "services": "Leistungen",
+    "portfolio": "Portfolio",
+    "pricing": "Preise",
+    "process": "Beispiele",
+    "results": "Ergebnisse",
+    "blog": "Blog",
+    "cta": "Angebot anfragen →"
+  },
+  "contact": {
+    "tag": "Projektanfrage",
+    "title": "Sie haben ein Projekt? Lassen Sie es uns kalkulieren.",
+    "subtitle": "Füllen Sie das kurze Formular aus. Sie erhalten innerhalb von 24 Stunden ein Angebot, das auf Ihr Vorhaben zugeschnitten ist.",
+    "nameLabel": "Vor- und Nachname",
+    "emailLabel": "E-Mail-Adresse",
+    "phoneLabel": "Telefonnummer",
+    "serviceLabel": "Gewünschte Leistung",
+    "budgetLabel": "Geplantes Budget",
+    "msgLabel": "Projektbeschreibung",
+    "btnSend": "Kostenloses Angebot anfordern →"
+  },
+  "footer": {
+    "desc": "Agentur für SEO, Generative Engine Optimization und Websites. Wir machen Unternehmen in Google und in KI-Antworten sichtbar.",
+    "rights": "© 2026 AI SEO COMPANY. Alle Rechte vorbehalten."
+  },
+  "cookies": {
+    "title": "Cookie-Einwilligung (DSGVO)",
+    "text": "Wir verwenden Cookies und ähnliche Technologien, um die Grundfunktionen der Website bereitzustellen, den Seitenverkehr zu analysieren (Google Analytics) und Werbekampagnen zu optimieren. Optionale Cookies setzen wir nur mit Ihrer Einwilligung, im Einklang mit DSGVO und ePrivacy-Vorgaben.",
+    "policy": "Datenschutzerklärung",
+    "acceptAll": "Alle akzeptieren",
+    "declineAll": "Optionale ablehnen",
+    "manage": "Einstellungen verwalten",
+    "save": "Einstellungen speichern",
+    "essentialTitle": "Notwendig (erforderlich)",
+    "essentialDesc": "Erforderlich für Verschlüsselung, Sicherheit und die grundlegende Navigation. Immer aktiv.",
+    "analyticsTitle": "Analyse",
+    "analyticsDesc": "Hilft uns, den Seitenverkehr auszuwerten und die Website zu verbessern.",
+    "marketingTitle": "Marketing",
+    "marketingDesc": "Dient dazu, die Wirkung von Werbung zu messen und passende Kampagnen auszuspielen."
+  },
+  "cookiesPage": {
+    "title": "Datenschutzerklärung",
+    "content": "Informationen zur Verwendung von Cookies für Analyse-, Funktions- und Marketingzwecke nach DSGVO."
+  }
+}

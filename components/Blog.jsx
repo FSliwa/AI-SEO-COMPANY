@@ -43,7 +43,9 @@ export default function Blog() {
   const t = useTranslations('blog');
 
   const wszystkie = postsForLocale(lang);
+  // bezGlownej (lib/blogPosts.js): wpis ukryty na liscie strony glownej decyzja wlasciciela z 18.11.2026.
   const posts = [...wszystkie]
+    .filter((p) => !p.bezGlownej)
     .sort((a, b) => dataJezyka(b, lang) - dataJezyka(a, lang))
     .slice(0, 3)
     .map((p) => ({

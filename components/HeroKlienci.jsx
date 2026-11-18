@@ -22,7 +22,7 @@ export default function HeroKlienci() {
     <div className="gory-klienci">
       <motion.ul
         className="hero-klienci"
-        aria-label={lang === 'en' ? 'Our clients' : 'Nasi klienci'}
+        aria-label={lang === 'en' ? 'Our clients' : lang === 'de' ? 'Unsere Kunden' : 'Nasi klienci'}
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}

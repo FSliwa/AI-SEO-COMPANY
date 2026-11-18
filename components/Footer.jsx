@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
+import { tr } from '@/lib/shellDe';
+import { maWersjeDe, STRONY_DE } from '@/lib/stronyDe';
 import NextLink from 'next/link';
 import { Link, usePathname, useRouter, getPathname } from '@/i18n/routing';
 import { hash, homeHash, sectionId, przejdzDoSekcji } from '@/lib/anchors';
-import { tylkoPl } from '@/lib/plOnly';
+import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { track } from '@/lib/track';
 import { GODZINY_TEKST } from '@/lib/godziny';
@@ -16,7 +18,7 @@ import { GODZINY_TEKST } from '@/lib/godziny';
 // Integracja 5.11.2026: także hub narzędzi i N1 (partia 3; celowo bez <Contact />, grupa narzedzia
 // pkt 8) - porównanie ze `sciezka` (szablon z wstawionym slugiem), bo pathname to '/narzedzia/[slug]'.
 // 11.11.2026: także 4 strony aplikacji (bez <Contact />): przycisk prowadzi do formularza na stronie głównej.
-const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/narzedzia', '/narzedzia/generator-llms-txt', '/narzedzia/audyt-seo', '/narzedzia/autorytet-domeny', '/narzedzia/kalkulator-strat-seo', '/narzedzia/makieta-redesignu'];
+const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/impressum', '/narzedzia', '/narzedzia/generator-llms-txt', '/narzedzia/audyt-seo', '/narzedzia/autorytet-domeny', '/narzedzia/kalkulator-strat-seo', '/narzedzia/makieta-redesignu'];
 
 export default function Footer() {
   const lang = useLocale();
@@ -35,7 +37,10 @@ export default function Footer() {
   const stopkaRef = useRef(null);
   // Link w stopce tylko do strony, która istnieje w tym języku (tylko-PL: lib/plOnly.js) i jest
   // opublikowana (lib/publikacja.js); inaczej null = brak pozycji (bez linku do 404).
-  const hrefStopki = (href) => ((lang === 'pl' || !tylkoPl(href)) ? hrefJesliOpublikowana(href) : null);
+  // DE: tylko strony z niemieckim odpowiednikiem (lib/stronyDe.js); naDe() dla stałych pozycji.
+  const deTylko = lang === 'de' && (STRONY_DE[sciezka]?.tylkoDe === true || !STRONY_DE[sciezka]);
+  const naDe = (href) => lang !== 'de' || maWersjeDe(href);
+  const hrefStopki = (href) => (lang === 'de' ? (maWersjeDe(href) ? href : null) : ((lang === 'pl' || !tylkoPl(href)) ? hrefJesliOpublikowana(href) : null));
   const hrefSprawdzarki = hrefStopki('/sprawdz-widocznosc-w-ai');
   const hrefZmianyAgencji = hrefStopki('/zmiana-agencji-seo');
   const hrefPorownan = hrefStopki('/porownania');
@@ -119,12 +124,12 @@ export default function Footer() {
           glowna do formularza (05.10.2026). 5.11.2026 (A3b/BL-02): na tych
           stronach takze href prowadzi wprost do formularza strony glownej. */}
       <a
-        href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)}
+        href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)}
         onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)}
         className={`kota-floating-cta${poPierwszymEkranie ? ' is-visible' : ''}${nadFormularzem ? ' is-nad-formularzem' : ''}`}
         data-cta="floating"
       >
-        {lang === 'pl' ? 'Wyceń projekt →' : 'Start your project →'}
+        {tr(lang, 'Wyceń projekt →', 'Start your project →')}
       </a>
 
       <footer className="footer" ref={stopkaRef}>
@@ -138,14 +143,14 @@ export default function Footer() {
                 {t('desc')}
               </p>
               <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', marginTop: '1rem', lineHeight: '1.5' }}>
-                <p style={{ margin: 0 }}><strong>AI SEO COMPANY</strong> {lang === 'pl' ? 'to marka należąca do:' : 'is a brand of:'}</p>
+                <p style={{ margin: 0 }}><strong>AI SEO COMPANY</strong> {tr(lang, 'to marka należąca do:', 'is a brand of:')}</p>
                 {/* Art. 300(5) KSH: a prosta spółka akcyjna must state its firm,
                     registered office and address, the registry court and KRS
                     number, NIP, and the amount of share capital (kapitał akcyjny). */}
                 <p style={{ margin: 0 }}>AI SIGNALS COMPANY Prosta Spółka Akcyjna</p>
-                <p style={{ margin: 0 }}>ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p>
+                <p style={{ margin: 0 }}>{lang === 'de' ? 'ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau' : 'ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa'}</p>
                 <p style={{ margin: 0 }}>
-                  {lang === 'pl' ? 'Sąd Rejonowy dla m.st. Warszawy w Warszawie' : 'District Court for the Capital City of Warsaw'}
+                  {tr(lang, 'Sąd Rejonowy dla m.st. Warszawy w Warszawie', 'District Court for the Capital City of Warsaw')}
                 </p>
                 <p style={{ margin: 0 }}>KRS: 0001239983</p>
                 <p style={{ margin: 0 }}>NIP: 5253090237</p>
@@ -154,26 +159,36 @@ export default function Footer() {
               </div>
             </div>
             <div className="footer-col">
-              <p className="footer-heading">{lang === 'pl' ? 'Nawigacja' : 'Navigation'}</p>
+              <p className="footer-heading">{tr(lang, 'Nawigacja', 'Navigation')}</p>
               <ul className="footer-links">
-                <li><Link href="/o-nas">{lang === 'pl' ? 'O nas (E-E-A-T)' : 'About Us'}</Link></li>
-                <li><Link href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron' : 'SEO Services'}</Link></li>
-                <li><Link href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</Link></li>
+                <li><Link href="/o-nas">{tr(lang, 'O nas (E-E-A-T)', 'About Us')}</Link></li>
+                <li><Link href="/pozycjonowanie-stron-internetowych">{tr(lang, 'Pozycjonowanie stron', 'SEO Services')}</Link></li>
+                <li><Link href="/audyt-seo">{tr(lang, 'Audyt SEO', 'SEO Audit')}</Link></li>
                 <li><Link href="/cennik-pozycjonowania">{navT('pricing')}</Link></li>
-                <li><Link href="/blog">{lang === 'en' ? 'SEO Blog' : 'Blog SEO'}</Link></li>
+                {naDe('/blog') && <li><Link href="/blog">{lang === 'en' ? 'SEO Blog' : 'Blog SEO'}</Link></li>}
                 {/* 4.11.2026 (etap 0 planu z filmu): /panel-klienta, sprawdzarka i poradnik
                     o zmianie agencji mialy 1-2 linki wewnetrzne. Sprawdzarka i poradnik
                     istnieja tylko po polsku (EN = 404), wiec w EN ich nie linkujemy.
                     5.11.2026: lista stron tylko-PL z lib/plOnly.js, nowe strony PLAN-v2
                     (Porownania 6.1, Narzedzia 6.9) dopiero po publikacji (lib/publikacja.js). */}
-                <li><Link href="/panel-klienta">{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</Link></li>
-                {hrefSprawdzarki && <li><Link href={hrefSprawdzarki}>{lang === 'pl' ? 'Sprawdź widoczność w AI' : 'AI visibility check'}</Link></li>}
-                {hrefZmianyAgencji && <li><Link href={hrefZmianyAgencji}>{lang === 'pl' ? 'Zmiana agencji SEO' : 'Switching SEO agencies'}</Link></li>}
-                {hrefPorownan && <li><Link href={hrefPorownan}>{lang === 'pl' ? 'Porównania' : 'Comparisons'}</Link></li>}
-                {hrefNarzedzi && <li><Link href={hrefNarzedzi}>{lang === 'pl' ? 'Narzędzia' : 'Free tools'}</Link></li>}
+                {naDe('/panel-klienta') && <li><Link href="/panel-klienta">{tr(lang, 'Panel klienta', 'Client Portal')}</Link></li>}
+                {hrefSprawdzarki && <li><Link href={hrefSprawdzarki}>{tr(lang, 'Sprawdź widoczność w AI', 'AI visibility check')}</Link></li>}
+                {hrefZmianyAgencji && <li><Link href={hrefZmianyAgencji}>{tr(lang, 'Zmiana agencji SEO', 'Switching SEO agencies')}</Link></li>}
+                {hrefPorownan && <li><Link href={hrefPorownan}>{tr(lang, 'Porównania', 'Comparisons')}</Link></li>}
+                {hrefNarzedzi && <li><Link href={hrefNarzedzi}>{tr(lang, 'Narzędzia', 'Free tools')}</Link></li>}
                 {/* T1b (SA-05): stały link do drugiej wersji językowej - sekcja EN osiągalna z linków.
                     next/link z gotowym adresem ('/' albo '/en'): Link z next-intl z propem locale
                     dawał '/pl' (308). */}
+                {lang === 'de' ? (
+                  <>
+                    <li>
+                      <NextLink href={getPathname({ href: deTylko ? '/' : sciezka, locale: 'pl' })} hrefLang="pl" lang="pl" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'pl', page_path: pathname })}>Wersja polska</NextLink>
+                    </li>
+                    <li>
+                      <NextLink href={getPathname({ href: deTylko ? '/' : (tylkoPl(sciezka) ? celPrzelacznikaEn(sciezka) : sciezka), locale: 'en' })} hrefLang="en" lang="en" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'en', page_path: pathname })}>English version</NextLink>
+                    </li>
+                  </>
+                ) : (
                 <li>
                   <NextLink
                     href={getPathname({ href: '/', locale: drugiJezyk })}
@@ -182,33 +197,42 @@ export default function Footer() {
                     prefetch={false}
                     onClick={() => track('language_switch', { from: lang, to: drugiJezyk, page_path: pathname })}
                   >
-                    {lang === 'pl' ? 'English version' : 'Wersja polska'}
+                    {tr(lang, 'English version', 'Wersja polska')}
                   </NextLink>
                 </li>
+                )}
+                {/* Wersja niemiecka: link tylko na stronach z niemieckim odpowiednikiem (lib/stronyDe.js), do tego odpowiednika
+                    (jak wpis DE w przełączniku języka w nagłówku); pozostałe strony PL/EN bez zmian. */}
+                {lang !== 'de' && maWersjeDe(sciezka) && (
+                  <li>
+                    <NextLink href={getPathname({ href: sciezka, locale: 'de' })} hrefLang="de" lang="de" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'de', page_path: pathname })}>Deutsche Version</NextLink>
+                  </li>
+                )}
               </ul>
             </div>
             <div className="footer-col">
-              <p className="footer-heading">{lang === 'pl' ? 'Usługi SEO' : 'SEO Services'}</p>
+              <p className="footer-heading">{lang === 'de' ? 'SEO Leistungen' : tr(lang, 'Usługi SEO', 'SEO Services')}</p>
               <ul className="footer-links">
-                <li><Link href="/pozycjonowanie-stron-internetowych">{lang === 'pl' ? 'Pozycjonowanie stron WWW' : 'Website SEO'}</Link></li>
-                <li><Link href="/audyt-seo">{lang === 'pl' ? 'Audyt SEO i analiza' : 'SEO Audit & Analysis'}</Link></li>
-                <li><Link href="/projektowanie-stron-internetowych">{lang === 'pl' ? 'Projektowanie stron WWW' : 'Web Design'}</Link></li>
-                <li><Link href="/seo-lokalne-warszawa">{lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}</Link></li>
+                <li><Link href="/pozycjonowanie-stron-internetowych">{tr(lang, 'Pozycjonowanie stron WWW', 'Website SEO')}</Link></li>
+                <li><Link href="/audyt-seo">{tr(lang, 'Audyt SEO i analiza', 'SEO Audit & Analysis')}</Link></li>
+                {naDe('/projektowanie-stron-internetowych') && <li><Link href="/projektowanie-stron-internetowych">{tr(lang, 'Projektowanie stron WWW', 'Web Design')}</Link></li>}
+                {naDe('/seo-lokalne-warszawa') && <li><Link href="/seo-lokalne-warszawa">{tr(lang, 'SEO Lokalne Warszawa', 'Local SEO Warsaw')}</Link></li>}
                 {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
-                {hrefWizytowki && <li><Link href={hrefWizytowki}>{lang === 'pl' ? 'Pozycjonowanie wizytówki Google' : 'Google Business Profile'}</Link></li>}
-                {hrefCopywritingu && <li><Link href={hrefCopywritingu}>{lang === 'pl' ? 'Copywriting SEO' : 'SEO Copywriting'}</Link></li>}
-                {hrefLinkBuildingu && <li><Link href={hrefLinkBuildingu}>{lang === 'pl' ? 'Link building' : 'Link Building'}</Link></li>}
-                <li><Link href="/pozycjonowanie-w-ai">{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search Optimization'}</Link></li>
+                {hrefWizytowki && <li><Link href={hrefWizytowki}>{tr(lang, 'Pozycjonowanie wizytówki Google', 'Google Business Profile')}</Link></li>}
+                {hrefCopywritingu && <li><Link href={hrefCopywritingu}>{tr(lang, 'Copywriting SEO', 'SEO Copywriting')}</Link></li>}
+                {hrefLinkBuildingu && <li><Link href={hrefLinkBuildingu}>{tr(lang, 'Link building', 'Link Building')}</Link></li>}
+                <li><Link href="/pozycjonowanie-w-ai">{tr(lang, 'Pozycjonowanie w AI', 'AI Search Optimization')}</Link></li>
               </ul>
             </div>
             <div className="footer-col">
-              <p className="footer-heading">{lang === 'pl' ? 'Kontakt' : 'Contact'}</p>
+              <p className="footer-heading">{tr(lang, 'Kontakt', 'Contact')}</p>
               <ul className="footer-links">
-                <li><a href="tel:+48518815055" data-cta="footer">518 815 055</a></li>
+                <li><a href="tel:+48518815055" data-cta="footer">{lang === 'de' ? '+48 518 815 055' : '518 815 055'}</a></li>
                 <li><a href="mailto:kontakt@ai-seo-company.pl" data-cta="footer">kontakt@ai-seo-company.pl</a></li>
-                <li><Link href={homeHash('kontakt', lang)} data-cta="footer">{lang === 'pl' ? 'Formularz Wyceny' : 'Get Proposal Form'}</Link></li>
-                <li><Link href="/cookies">{lang === 'pl' ? 'Polityka Prywatności' : 'Privacy Policy'}</Link></li>
-                <li><Link href="/regulamin">{lang === 'pl' ? 'Regulamin' : 'Terms of Service'}</Link></li>
+                <li><Link href={homeHash('kontakt', lang)} data-cta="footer">{tr(lang, 'Formularz Wyceny', 'Get Proposal Form')}</Link></li>
+                <li><Link href="/cookies">{tr(lang, 'Polityka Prywatności', 'Privacy Policy')}</Link></li>
+                <li><Link href="/regulamin">{tr(lang, 'Regulamin', 'Terms of Service')}</Link></li>
+                {lang === 'de' && <li><Link href="/impressum">Impressum</Link></li>}
                 {/* 22.10.2026: stale wejscie do ustawien zgody. Plywajaca
                     pigulka "Zgoda" jest na telefonie i tablecie ukryta (zaslaniala
                     cene na landingu Ads i przycisk wysylki formularza), wiec
@@ -220,7 +244,7 @@ export default function Footer() {
                     className="footer-link-btn"
                     onClick={() => window.dispatchEvent(new CustomEvent('aiseo:ustawienia-zgody'))}
                   >
-                    {lang === 'pl' ? 'Ustawienia cookies' : 'Cookie settings'}
+                    {tr(lang, 'Ustawienia cookies', 'Cookie settings')}
                   </button>
                 </li>
               </ul>

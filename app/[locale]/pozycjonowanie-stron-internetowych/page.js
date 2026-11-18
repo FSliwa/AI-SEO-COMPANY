@@ -1,5 +1,6 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return metadataDe('/pozycjonowanie-stron-internetowych', { languages: { pl: 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych', en: 'https://www.ai-seo-company.pl/en/seo-services' } });
   return {
   title: locale === 'en' ? 'SEO Optimization Services & Digital Marketing for Agencies' : 'Profesjonalne Pozycjonowanie Stron Internetowych | SEO B2B',
   description: locale === 'en' ? 'SEO optimization service, search engine and digital marketing for companies and agencies. Content strategy, growth. Your optimisation agency.' : 'Profesjonalne pozycjonowanie stron internetowych dla firm B2B. Skuteczne pozycjonowanie stron i pełna optymalizacja SEO – zdobywamy pozycje w Google.',
@@ -8,7 +9,8 @@ export async function generateMetadata({ params }) {
     languages: {
       'pl': 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
       'x-default': 'https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych',
-      'en': 'https://www.ai-seo-company.pl/en/seo-services'
+      'en': 'https://www.ai-seo-company.pl/en/seo-services',
+      ...hreflangDe('/pozycjonowanie-stron-internetowych')
     }
   },
 };
@@ -19,6 +21,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import PozycjonowanieClient from '@/components/PozycjonowanieClient';
 import ServiceSchema from '@/components/ServiceSchema';
+import SeoFuerUnternehmenDe from '@/components/de/SeoFuerUnternehmenDe';
+import { metadataDe, hreflangDe } from '@/lib/stronyDe';
 
 // 5.11.2026 (PS1; PLAN-v2 6.20, OP-08, MSA-18, BL-03, OP-04) - strona chroniona: tylko DODAWANIE w wersji
 // PL (answer); answerEn bez zmian. Nowe pytanie ma tylkoPl: true (PozycjonowanieClient odfiltrowuje je na /en).
@@ -258,6 +262,7 @@ const carouselItems = [
 
 export default async function PozycjonowanieStronPage({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <SeoFuerUnternehmenDe />;
   return (
     <>
       <ServiceSchema variant="pozycjonowanie" />

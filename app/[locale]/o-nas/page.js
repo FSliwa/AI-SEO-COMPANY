@@ -5,6 +5,7 @@
 // Okruszki: BreadcrumbList na /o-nas i /en/about-us.
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return metadataDe('/o-nas', { languages: { pl: 'https://www.ai-seo-company.pl/o-nas', en: 'https://www.ai-seo-company.pl/en/about-us' } });
   return {
   title: locale === 'en' ? 'About AI SEO COMPANY: Team, Method and Company Data' : 'AI SEO COMPANY: zespół, metoda pracy i dane firmy',
   description: locale === 'en' ? 'Meet the AI SEO COMPANY team from Warsaw: who runs your SEO, how we measure results and how to get in touch.' : 'Poznaj zespół i metodę pracy AI SEO COMPANY z Warszawy: kto prowadzi SEO, jak mierzymy wyniki i jak się z nami skontaktować.',
@@ -13,7 +14,8 @@ export async function generateMetadata({ params }) {
     languages: {
       'pl': 'https://www.ai-seo-company.pl/o-nas',
       'x-default': 'https://www.ai-seo-company.pl/o-nas',
-      'en': 'https://www.ai-seo-company.pl/en/about-us'
+      'en': 'https://www.ai-seo-company.pl/en/about-us',
+      ...hreflangDe('/o-nas')
     }
   },
 };
@@ -29,8 +31,12 @@ import AboutTeam from '@/components/about/AboutTeam';
 import AboutAuthor from '@/components/about/AboutAuthor';
 import AboutContent from '@/components/about/AboutContent';
 import AboutValues from '@/components/about/AboutValues';
+import UeberUnsDe from '@/components/de/UeberUnsDe';
+import { metadataDe, hreflangDe } from '@/lib/stronyDe';
 
-export default function ONasPage() {
+export default async function ONasPage({ params }) {
+  const { locale } = await params;
+  if (locale === 'de') return <UeberUnsDe />;
   return (
     <>
       <Header />

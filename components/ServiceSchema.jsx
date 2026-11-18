@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
+import { USLUGI_DE } from '@/lib/serviceSchema.de';
 
 const BASE = 'https://www.ai-seo-company.pl';
 
@@ -118,31 +119,40 @@ const USLUGI = {
 export default function ServiceSchema({ variant }) {
   const lang = useLocale();
   const isEn = lang === 'en';
+  // Wersja niemiecka (18.11.2026): dane z lib/serviceSchema.de.js; bez wpisu brak JSON-LD na /de.
+  const isDe = lang === 'de';
   const u = USLUGI[variant];
   if (!u) return null;
-  if (u.tylkoPl && isEn) return null;
+  if (u.tylkoPl && (isEn || isDe)) return null;
+  const de = isDe ? USLUGI_DE[variant] : null;
+  if (isDe && !de) return null;
+  // Euro dla EN i DE (kwoty z cenaEn), złoty tylko dla PL.
+  const eur = isEn || isDe;
+  const adres = de ? de.url : u.url[isEn ? 'en' : 'pl'];
 
-  const t = isEn ? u.en : u.pl;
+  const t = de ? { name: de.name, desc: de.desc } : isEn ? u.en : u.pl;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    '@id': `${u.url[isEn ? 'en' : 'pl']}#service`,
+    '@id': `${adres}#service`,
     name: t.name,
     description: t.desc,
     serviceType: u.typ,
-    url: u.url[isEn ? 'en' : 'pl'],
+    url: adres,
     provider: { '@id': `${BASE}/#organization` },
-    areaServed: isEn
+    areaServed: isDe
+      ? { '@type': 'AdministrativeArea', name: 'Deutschland, Österreich, Schweiz und Polen' }
+      : isEn
       ? { '@type': 'AdministrativeArea', name: 'Warsaw and Poland' }
       : { '@type': 'AdministrativeArea', name: 'Warszawa i Polska' },
-    availableLanguage: ['pl', 'en'],
+    availableLanguage: isDe ? ['de', 'pl', 'en'] : ['pl', 'en'],
   };
 
   // Karty cennika i lista uslug w formularzu podaja na EN euro (450 / 590),
   // a nie zlote - dane strukturalne musza deklarowac to samo, co widzi
   // uzytkownik, inaczej Offer przeczy tresci strony.
-  const kwota = isEn ? u.cenaEn : u.cena;
-  const waluta = isEn ? 'EUR' : 'PLN';
+  const kwota = eur ? u.cenaEn : u.cena;
+  const waluta = eur ? 'EUR' : 'PLN';
 
   if (kwota) {
     jsonLd.offers = {
@@ -158,20 +168,20 @@ export default function ServiceSchema({ variant }) {
         valueAddedTaxIncluded: false,
       },
       availability: 'https://schema.org/InStock',
-      url: u.url[isEn ? 'en' : 'pl'],
+      url: adres,
     };
   }
 
   if (u.oferty) {
-    jsonLd.offers = u.oferty.map((o) => {
-      const cena = isEn ? o.cenaEn : o.cena;
+    jsonLd.offers = u.oferty.map((o, i) => {
+      const cena = eur ? o.cenaEn : o.cena;
       const offer = {
         '@type': 'Offer',
-        name: isEn ? o.en : o.pl,
+        name: isDe ? (de.oferty?.[i]?.name ?? o.en) : isEn ? o.en : o.pl,
         priceCurrency: waluta,
         price: cena,
         availability: 'https://schema.org/InStock',
-        url: u.url[isEn ? 'en' : 'pl'],
+        url: adres,
       };
       if (o.miesiecznie) {
         offer.priceSpecification = {

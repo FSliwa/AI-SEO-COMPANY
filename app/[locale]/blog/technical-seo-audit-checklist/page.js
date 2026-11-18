@@ -640,7 +640,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
 
               <ul>
                 <li><strong>Crawler desktopowy</strong> do odkrywania – powinien flagować problemy z renderowaniem JS, bo współczesne frameworki potrafią ukryć treść przed botami niewykonującymi skryptów. Screaming Frog w wersji bezpłatnej crawluje do 500 adresów.</li>
-                <li><strong>Search Console i Bing Webmaster Tools</strong> – status indeksacji i błędy crawlowania prosto ze źródła. Search Console trzyma 16 miesięcy danych, czyli minimum potrzebne do porównania okresu z tym samym okresem rok wcześniej.</li>
+                <li><strong>Search Console i Bing Webmaster Tools</strong> – status indeksacji i błędy crawlowania prosto ze źródła. Search Console trzyma 16 miesięcy danych, czyli minimum potrzebne do porównania okresu z tym samym okresem rok wcześniej. Dodanie witryny do Bing i zgłaszanie zmian przez IndexNow opisujemy w poradniku <Link href="/blog/bing-webmaster-tools-indexnow-chatgpt">Bing Webmaster Tools i IndexNow</Link>.</li>
                 <li><strong>Lighthouse lub PageSpeed Insights</strong> do debugowania, w parze z raportem CWV albo CrUX do liczb, które faktycznie raportujesz.</li>
                 <li><strong>Analiza logów serwera</strong> – jak boty zachowują się naprawdę, a nie jak zakładasz; plus strony osierocone, do których crawler nigdy nie trafia. Kwartalnie wystarcza większości serwisów.</li>
                 <li><strong>Narzędzie crawlu ciągłego</strong>, które odpala się według harmonogramu – regresje wychodzą między audytami kwartalnymi, a nie na następnym.</li>

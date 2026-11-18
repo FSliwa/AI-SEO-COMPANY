@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { tr } from '@/lib/shellDe';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
@@ -73,15 +74,15 @@ export default function Contact({ isMainContent = false }) {
   }, []);
 
   const Wrapper = isMainContent ? 'section' : 'aside';
-  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': lang === 'pl' ? 'Kontakt' : 'Contact' };
+  const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': tr(lang, 'Kontakt', 'Contact') };
 
   // Native constraint-validation bubbles follow the browser UI language, not the
   // page, so a Polish browser showed "Wypełnij to pole" on the English form.
   // Supplying our own message per locale overrides that.
   const validationMessages = {
-    required: lang === 'pl' ? 'Wypełnij to pole.' : 'Please fill in this field.',
-    email: lang === 'pl' ? 'Podaj poprawny adres e-mail.' : 'Please enter a valid email address.',
-    select: lang === 'pl' ? 'Wybierz jedną z opcji.' : 'Please select one of the options.'
+    required: tr(lang, 'Wypełnij to pole.', 'Please fill in this field.'),
+    email: tr(lang, 'Podaj poprawny adres e-mail.', 'Please enter a valid email address.'),
+    select: tr(lang, 'Wybierz jedną z opcji.', 'Please select one of the options.')
   };
 
   const handleInvalid = (e) => {
@@ -148,6 +149,7 @@ export default function Contact({ isMainContent = false }) {
         // Czas od wejścia na stronę, nie od hydratacji: na wolnym telefonie
         // człowiek zdąży wypełnić formularz, zanim React go przejmie, i liczony
         // od montażu wynik „< 3 s” odrzucał go jako bota.
+        ...(lang === 'de' ? { lang: 'de' } : {}),
         elapsed_ms: (typeof performance !== 'undefined' && typeof performance.now === 'function')
           ? Math.round(performance.now())
           : Date.now() - openedAt,
@@ -181,7 +183,7 @@ export default function Contact({ isMainContent = false }) {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Wystąpił błąd podczas wysyłania.');
+        throw new Error(result.error || (lang === 'de' ? 'Beim Senden ist ein Fehler aufgetreten.' : 'Wystąpił błąd podczas wysyłania.'));
       }
 
       setFormSubmitted(true);
@@ -198,7 +200,8 @@ export default function Contact({ isMainContent = false }) {
       }
 
       // GA4 Event Tracking
-      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      // Wersja DE: zdarzenie z haszowanym e-mailem tylko po zgodzie marketingowej (§ 25 TDDDG, Art. 6 DSGVO).
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function' && (lang !== 'de' || consentMarketing() === 'granted')) {
         // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
         // surowy e-mail nie opuszcza urządzenia. Dane trafiają do wszystkich
         // skonfigurowanych tagów (GA4 + Google Ads) i podnoszą dopasowanie
@@ -270,12 +273,12 @@ export default function Contact({ isMainContent = false }) {
             <p>{t('subtitle')}</p>
             
             <ul className="company-details">
-              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{lang === 'pl' ? 'Adres:' : 'Address:'}</span> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
-              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{lang === 'pl' ? 'Telefon:' : 'Phone:'}</span> <a href="tel:+48518815055" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
+              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Adres:', 'Address:')}</span> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
+              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Telefon:', 'Phone:')}</span> <a href="tel:+48518815055" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{lang === 'pl' ? 'Godziny otwarcia:' : 'Opening hours:'}</span> {GODZINY_TEKST[lang === 'pl' ? 'pl' : 'en']}</li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>NIP:</span> 5253090237</li>
-              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{lang === 'pl' ? 'Czas odpowiedzi:' : 'Response Time:'}</span> {lang === 'pl' ? 'Do 24 h w dni robocze, zwykle szybciej' : 'Within 24 h on business days, usually sooner'}</li>
+              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Czas odpowiedzi:', 'Response Time:')}</span> {tr(lang, 'Do 24 h w dni robocze, zwykle szybciej', 'Within 24 h on business days, usually sooner')}</li>
             </ul>
           </RevealItem>
 
@@ -288,7 +291,7 @@ export default function Contact({ isMainContent = false }) {
             <div role="status" aria-live="polite">
               {formSubmitted && (
                 <div style={{ background: '#EFF8E6', color: '#639922', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
-                  {lang === 'pl' ? '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Odpowiemy w ciągu 24 h w dni robocze, zwykle szybciej.' : '✓ Thank you! Your request has been received. We reply within 24 h on business days, usually sooner.'}
+                  {tr(lang, '✓ Dziękujemy! Twoje zapytanie zostało wysłane. Odpowiemy w ciągu 24 h w dni robocze, zwykle szybciej.', '✓ Thank you! Your request has been received. We reply within 24 h on business days, usually sooner.')}
                 </div>
               )}
             </div>
@@ -296,7 +299,7 @@ export default function Contact({ isMainContent = false }) {
             <div role="alert">
               {errorMessage && (
                 <div style={{ background: '#FEE2E2', color: '#DC2626', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
-                  {lang === 'pl' ? 'Wystąpił błąd: ' : 'An error occurred: '} {errorMessage}
+                  {tr(lang, 'Wystąpił błąd: ', 'An error occurred: ')} {errorMessage}
                 </div>
               )}
             </div>
@@ -315,7 +318,7 @@ export default function Contact({ isMainContent = false }) {
                 name="name"
                 autoComplete="name"
                 className="form-input"
-                placeholder={lang === 'pl' ? 'Jan Kowalski' : 'John Smith'}
+                placeholder={tr(lang, 'Jan Kowalski', 'John Smith')}
                 required
                 aria-invalid={bledy.name ? 'true' : undefined}
                 aria-describedby={bledy.name ? 'name-blad' : undefined}
@@ -336,7 +339,7 @@ export default function Contact({ isMainContent = false }) {
                 name="email"
                 autoComplete="email"
                 className="form-input"
-                placeholder={lang === 'pl' ? 'jan@firma.pl' : 'john@company.com'}
+                placeholder={tr(lang, 'jan@firma.pl', 'john@company.com')}
                 required
                 aria-invalid={bledy.email ? 'true' : undefined}
                 aria-describedby={bledy.email ? 'email-blad' : undefined}
@@ -352,14 +355,14 @@ export default function Contact({ isMainContent = false }) {
             <div className="form-group">
               <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
               <select id="service" name="service" className="form-select" value={service} onInvalid={handleInvalid} onInput={handleInput} onChange={(e) => { setService(e.target.value); if (e.target.value) track('select_plan', { plan: e.target.value }); }}>
-                <option value="">{lang === 'pl' ? 'Wybierz pakiet (opcjonalnie)' : 'Select plan (optional)'}</option>
-                <option value="standard">{lang === 'pl' ? 'SEO Standard (1 900 zł netto/mies.)' : 'SEO Standard (€450 net/mo)'}</option>
-                <option value="premium">{lang === 'pl' ? 'SEO Premium (2 500 zł netto/mies.)' : 'SEO Premium (€590 net/mo)'}</option>
-                <option value="booster">{lang === 'pl' ? 'Booster Pack (2 500 zł netto – Strona za 0 zł)' : 'Booster Pack (€590 net – Free Website)'}</option>
-                <option value="custom">{lang === 'pl' ? 'Indywidualny zakres działania' : 'Custom Project'}</option>
-                <option value="audyt-ai">{lang === 'pl' ? 'Audyt widoczności w AI (990 zł netto)' : 'AI visibility audit (€235 net)'}</option>
-                <option value="przeglad-agencji">{lang === 'pl' ? 'Bezpłatny przegląd po poprzedniej agencji (30 min)' : 'Free review after your previous agency (30 min)'}</option>
-                {ENTRY_OFFER === 'audyt' && (
+                <option value="">{tr(lang, 'Wybierz pakiet (opcjonalnie)', 'Select plan (optional)')}</option>
+                <option value="standard">{tr(lang, 'SEO Standard (1 900 zł netto/mies.)', 'SEO Standard (€450 net/mo)')}</option>
+                <option value="premium">{tr(lang, 'SEO Premium (2 500 zł netto/mies.)', 'SEO Premium (€590 net/mo)')}</option>
+                <option value="booster">{tr(lang, 'Booster Pack (2 500 zł netto – Strona za 0 zł)', 'Booster Pack (€590 net – Free Website)')}</option>
+                <option value="custom">{tr(lang, 'Indywidualny zakres działania', 'Custom Project')}</option>
+                <option value="audyt-ai">{tr(lang, 'Audyt widoczności w AI (990 zł netto)', 'AI visibility audit (€235 net)')}</option>
+                <option value="przeglad-agencji">{tr(lang, 'Bezpłatny przegląd po poprzedniej agencji (30 min)', 'Free review after your previous agency (30 min)')}</option>
+                {ENTRY_OFFER === 'audyt' && lang !== 'de' && (
                   <option value="audyt">{lang === 'pl' ? `Audyt SEO (${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} zł netto, odliczany od abonamentu)` : `SEO audit (PLN ${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} net, deducted from subscription)`}</option>
                 )}
               </select>
@@ -370,11 +373,11 @@ export default function Contact({ isMainContent = false }) {
                 technicznie daje „Profil Firmy”). Bez danych osobowych; do
                 arkusza idzie kod z lib/attribution.js (kolumna skad_o_nas_wiesz). */}
             <div className="form-group">
-              <label className="form-label" htmlFor="skad_o_nas_wiesz">{lang === 'pl' ? 'Skąd o nas wiesz? (opcjonalnie)' : 'How did you hear about us? (optional)'}</label>
+              <label className="form-label" htmlFor="skad_o_nas_wiesz">{tr(lang, 'Skąd o nas wiesz? (opcjonalnie)', 'How did you hear about us? (optional)')}</label>
               <select id="skad_o_nas_wiesz" name="skad_o_nas_wiesz" className="form-select" defaultValue="">
-                <option value="">{lang === 'pl' ? 'Wybierz (opcjonalnie)' : 'Select (optional)'}</option>
+                <option value="">{tr(lang, 'Wybierz (opcjonalnie)', 'Select (optional)')}</option>
                 {SKAD_O_NAS_WIESZ.map((o) => (
-                  <option key={o.kod} value={o.kod}>{lang === 'pl' ? o.pl : o.en}</option>
+                  <option key={o.kod} value={o.kod}>{tr(lang, o.pl, o.en)}</option>
                 ))}
               </select>
             </div>
@@ -389,7 +392,7 @@ export default function Contact({ isMainContent = false }) {
                 name="message" 
                 className="form-textarea" 
                 rows="4" 
-                placeholder={lang === 'pl' ? 'Opcjonalnie: adres strony, cele i termin...' : 'Optional: your website URL, goals and timeline...'}
+                placeholder={tr(lang, 'Opcjonalnie: adres strony, cele i termin...', 'Optional: your website URL, goals and timeline...')}
                 onInvalid={handleInvalid}
                 onInput={handleInput}
               ></textarea>
@@ -415,6 +418,14 @@ export default function Contact({ isMainContent = false }) {
                   Przysługuje Ci dostęp do danych, ich sprostowanie, usunięcie oraz sprzeciw wobec przetwarzania.
                   Szczegóły znajdziesz w <Link href="/cookies" style={{ textDecoration: 'underline' }}>polityce prywatności</Link>.
                 </>
+              ) : lang === 'de' ? (
+                <>
+                  Verantwortlich für Ihre Daten ist AI SIGNALS COMPANY Prosta Spółka Akcyjna (Marke: AI SEO COMPANY), ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen.
+                  Wir verarbeiten die Formulardaten, um Ihre Anfrage zu beantworten und ein Angebot vorzubereiten. Wir senden sie per E-Mail an unser Team (E-Mail-Dienstleister: Resend) und speichern sie in einer Google-Tabelle.
+                  Nur wenn Sie im Cookie-Banner der Marketing-Einwilligung zugestimmt haben, übermittelt Ihr Browser nach dem Absenden an Google ein Anfrage-Ereignis mit gehashter E-Mail-Adresse, um die Wirkung von Werbung zu messen.
+                  Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten sowie auf Widerspruch gegen die Verarbeitung.
+                  Einzelheiten finden Sie in der <Link href="/cookies" style={{ textDecoration: 'underline' }}>Datenschutzerklärung</Link>.
+                </>
               ) : (
                 <>
                   The controller of your data is AI SIGNALS COMPANY Prosta Spółka Akcyjna (brand: AI SEO COMPANY), ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland.
@@ -427,14 +438,12 @@ export default function Contact({ isMainContent = false }) {
             </p>
 
             <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: (isSubmitting || !hydrated) ? 0.7 : 1, cursor: (isSubmitting || !hydrated) ? 'not-allowed' : 'pointer' }} disabled={isSubmitting || !hydrated}>
-              {isSubmitting ? (lang === 'pl' ? 'Wysyłanie...' : 'Sending...') : t('btnSend')}
+              {isSubmitting ? (tr(lang, 'Wysyłanie...', 'Sending...')) : t('btnSend')}
             </button>
             {/* „Co dalej” pod przyciskiem – to samo zdanie, które obiecują
                 nagłówki reklam („Bezpłatna wycena w 24 h”, „bez handlowca”). */}
             <p style={{ fontSize: '0.8rem', lineHeight: 1.5, color: 'var(--w-tusz-2)', margin: '0.75rem 0 0 0', textAlign: 'center' }}>
-              {lang === 'pl'
-                ? 'Odpowiadamy w 24 h w dni robocze. Bez handlowca – odpisuje osoba, która robi SEO.'
-                : 'We reply within 24 h on business days. No sales rep – you hear from the person doing the SEO.'}
+              {tr(lang, 'Odpowiadamy w 24 h w dni robocze. Bez handlowca – odpisuje osoba, która robi SEO.', 'We reply within 24 h on business days. No sales rep – you hear from the person doing the SEO.')}
             </p>
             </form>
           </RevealItem>

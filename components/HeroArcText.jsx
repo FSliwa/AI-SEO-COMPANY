@@ -58,7 +58,8 @@ const FILL_TO = 0.92;
 // SVG exists only client-side.
 const ACCENT = {
   pl: ['zaawansowane SEO', 'pozycjonowanie stron', 'agencja SEO'],
-  en: ['advanced SEO', 'brand strategy']
+  en: ['advanced SEO', 'brand strategy'],
+  de: ['KI SEO Agentur', 'Generative Engine Optimization']
 };
 
 // Split one line into plain/accent segments for tspan rendering.

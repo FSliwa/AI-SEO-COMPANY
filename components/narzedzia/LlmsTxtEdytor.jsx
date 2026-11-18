@@ -54,6 +54,27 @@ const T = {
     poczatek: (t) => `"${t}" is already at the start of the file.`,
     koniec: (t) => `"${t}" is already at the end of the file.`,
   },
+  de: {
+    nazwa: 'Name des Unternehmens oder der Website (Überschrift „# “)',
+    opis: 'Beschreibung unter der Überschrift („> “): 1 bis 2 Sätze dazu, was das Unternehmen tut',
+    sekcja: (i, n) => `Abschnitt ${i} von ${n}`,
+    nazwaSekcji: 'Name des Abschnitts',
+    opisOptional: '„Optional“ ist der Name aus der Spezifikation von llmstxt.org: Links, die ein Modell überspringen darf, wenn der Platz knapp ist. Der Abschnitt steht immer am Ende der Datei.',
+    calaSekcja: 'Ganzer Abschnitt in der Datei',
+    pusta: 'Der Abschnitt ist leer und kommt nicht in die Datei.',
+    wPliku: 'In der Datei',
+    tytul: 'Titel des Links',
+    opisLinku: 'Beschreibung nach dem Doppelpunkt',
+    wyzej: 'Nach oben',
+    nizej: 'Nach unten',
+    wyzejDla: (t) => `Nach oben verschieben: ${t}`,
+    nizejDla: (t) => `Nach unten verschieben: ${t}`,
+    doSekcji: 'Abschnitt',
+    nowaOptional: 'Optional (neuer Abschnitt am Ende)',
+    pozycja: (t, p) => `„${t}“: Abschnitt ${p.sekcja}, Position ${p.pozycja} von ${p.razem}.`,
+    poczatek: (t) => `„${t}“ steht schon am Anfang der Datei.`,
+    koniec: (t) => `„${t}“ steht schon am Ende der Datei.`,
+  },
 };
 
 const pole = { width: '100%', padding: '0.55rem 0.75rem', borderRadius: '10px', border: '1px solid rgba(15,23,42,0.18)', fontSize: '0.95rem', lineHeight: 1.45, background: '#FFFFFF', color: 'var(--w-tusz)', fontFamily: 'inherit' };
@@ -65,8 +86,8 @@ const wiersz = { display: 'grid', gap: '0.5rem', padding: '0.75rem 0', borderTop
 
 const tytulLinku = (l) => l.tytul.trim() || l.url;
 
-export default function LlmsTxtEdytor({ model, onZmiana, en = false }) {
-  const t = en ? T.en : T.pl;
+export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false }) {
+  const t = de ? T.de : en ? T.en : T.pl;
   const kontener = useRef(null);
   const doFokusu = useRef(null);
   const [komunikat, setKomunikat] = useState('');

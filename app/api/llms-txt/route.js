@@ -6,7 +6,7 @@ import { czyOpublikowana } from '@/lib/publikacja';
 // POST { url, lang? } -> { ok, llmsTxt, boty[8], pominiete[], nieprzetworzone[], mapa, robots, ... }.
 // Logika i ochrona przed SSRF: ./generator.js. Endpoint nie zapisuje adresów ani wyników
 // (bez bazy, bez logów z adresem). /api/ jest zablokowane w robots.txt (app/robots.js).
-// lang: 'pl' (domyślnie) albo 'en': komunikaty błędów i statusów w tym języku; brak lang = PL bez zmian.
+// lang: 'pl' (domyślnie), 'en' albo 'de': komunikaty błędów i statusów w tym języku; brak lang = PL bez zmian.
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -41,7 +41,7 @@ const odpowiedz = (dane, status = 200) => NextResponse.json(dane, { status, head
 async function jezykZadania(request) {
   try {
     const dane = await request.clone().json();
-    return dane && dane.lang === 'en' ? 'en' : 'pl';
+    return dane && (dane.lang === 'en' || dane.lang === 'de') ? dane.lang : 'pl';
   } catch {
     return 'pl';
   }
@@ -53,20 +53,21 @@ export async function POST(request) {
   // Język znamy dopiero z ciała zapytania, więc komunikat 404 i 429 czyta go z klonu żądania.
   const lang = await jezykZadania(request);
   const en = lang === 'en';
+  const de = lang === 'de';
   if (!czyOpublikowana('/narzedzia/generator-llms-txt')) {
-    return odpowiedz({ ok: false, error: en ? 'Not found.' : 'Nie znaleziono.' }, 404);
+    return odpowiedz({ ok: false, error: de ? 'Nicht gefunden.' : en ? 'Not found.' : 'Nie znaleziono.' }, 404);
   }
   const start = Date.now();
   const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0].trim() || request.headers.get('x-real-ip') || 'nieznany';
   if (przekroczonyLimit(ip)) {
-    return odpowiedz({ ok: false, error: en ? 'You have used the daily limit of 10 checks per IP address. Please try again tomorrow.' : 'Wykorzystałeś dzienny limit 10 sprawdzeń z jednego adresu IP. Spróbuj jutro.' }, 429);
+    return odpowiedz({ ok: false, error: de ? 'Sie haben das Tageslimit von 10 Prüfungen pro IP-Adresse ausgeschöpft. Bitte versuchen Sie es morgen wieder.' : en ? 'You have used the daily limit of 10 checks per IP address. Please try again tomorrow.' : 'Wykorzystałeś dzienny limit 10 sprawdzeń z jednego adresu IP. Spróbuj jutro.' }, 429);
   }
 
   let body;
   try {
     body = await request.json();
   } catch {
-    return odpowiedz({ ok: false, error: en ? 'Enter a website address, e.g. company.com.' : 'Podaj adres strony, np. firma.pl.' }, 400);
+    return odpowiedz({ ok: false, error: de ? 'Geben Sie die Adresse einer Website ein, z. B. firma.de.' : en ? 'Enter a website address, e.g. company.com.' : 'Podaj adres strony, np. firma.pl.' }, 400);
   }
 
   try {
@@ -76,6 +77,6 @@ export async function POST(request) {
     if (e instanceof BladZadania) return odpowiedz({ ok: false, error: e.message }, e.status);
     // Bez adresu sprawdzanej strony w logu (zasada „bez zapisu danych”).
     console.error('llms-txt: nieoczekiwany błąd', e && e.name);
-    return odpowiedz({ ok: false, error: en ? 'Something went wrong on our side. Please try again in a moment.' : 'Coś poszło nie tak po naszej stronie. Spróbuj za chwilę.' }, 500);
+    return odpowiedz({ ok: false, error: de ? 'Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es gleich noch einmal.' : en ? 'Something went wrong on our side. Please try again in a moment.' : 'Coś poszło nie tak po naszej stronie. Spróbuj za chwilę.' }, 500);
   }
 }

@@ -3,6 +3,8 @@ import { setRequestLocale } from 'next-intl/server';
 import PorownanieLayout from '@/components/porownania/PorownanieLayout';
 import { porownania } from '@/lib/porownania';
 import { porownanieDla } from '@/lib/porownania.en';
+import { porownanieDeBySlug } from '@/lib/porownania.de';
+import VergleichDe from '@/components/de/VergleichDe';
 import { metadataStronyPl, wymagajStronyPl, parametryPl } from '@/lib/stronaPl';
 
 // Strony porównań /porownania/[slug] (5.11.2026; PLAN-v2 7 SIL, 6.2–6.4, 6.14; TS-03).
@@ -19,7 +21,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { locale, slug } = await params;
-  const p = porownanieDla(slug, locale);
+  const p = locale === 'de' ? porownanieDeBySlug(slug) : porownanieDla(slug, locale);
   if (!p) return {};
   return metadataStronyPl({ locale, sciezka: `/porownania/${slug}`, title: p.title, description: p.description });
 }
@@ -27,8 +29,9 @@ export async function generateMetadata({ params }) {
 export default async function PorownaniePage({ params }) {
   const { locale, slug } = await params;
   wymagajStronyPl(locale, `/porownania/${slug}`);
-  const p = porownanieDla(slug, locale);
+  const p = locale === 'de' ? porownanieDeBySlug(slug) : porownanieDla(slug, locale);
   if (!p) notFound();
   setRequestLocale(locale);
+  if (locale === 'de') return <VergleichDe porownanie={p} />;
   return <PorownanieLayout porownanie={p} locale={locale} />;
 }

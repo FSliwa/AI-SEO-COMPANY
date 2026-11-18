@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "tag": "AI SEO COMPANY",
+    "title1": "SEO und KI-Sichtbarkeit, die ",
+    "titleHighlight": "Anfragen bringt",
+    "subtitle": "Wir verbinden technisches SEO, Content und Generative Engine Optimization, damit Ihr Unternehmen in Google und in den Antworten von ChatGPT, Gemini und Perplexity genannt wird.",
+    "btnPrimary": "Angebot anfragen",
+    "btnSecondary": "Referenzen ansehen",
+    "rating": "5/5 Kundenbewertung auf Fixly",
+    "awards": "Bewertungen 5★ (Fixly)",
+    "caseTitle": "Wachstum der organischen Google-Sichtbarkeit",
+    "caseDesc": "SEO und Content-Architektur für die Plattform ASE-BOT: von 0 auf 4,8 Tsd. Impressionen pro Quartal.",
+    "pill1": "+100 Impressionen/Tag",
+    "pill2": "Website im Paket inklusive"
+  },
+  "trust": {
+    "tag": "Unsere Kunden & Partner"
+  },
+  "services": {
+    "tag": "UNSERE LEISTUNGEN",
+    "title": "SEO-Strategien, die Marken in Google und in KI-Antworten sichtbar machen",
+    "subtitle": "Wir verbinden Markenstrategie, Webdesign und SEO-Architektur zu einem Fundament für nachhaltiges Wachstum.",
+    "pillars": [
+      {
+        "num": "01 –",
+        "title": "Brand Clarity",
+        "desc": "Strategische Entscheidungen, die Ihre Marke im Markt klar positionieren."
+      },
+      {
+        "num": "02 –",
+        "title": "Creative Craft",
+        "desc": "Selbstbewusstes, sorgfältig gestaltetes Design, das sich abhebt."
+      },
+      {
+        "num": "03 –",
+        "title": "Commercial Momentum",
+        "desc": "Skalierbare Websysteme, ausgerichtet auf schnelle Verkaufsergebnisse."
+      }
+    ]
+  },
+  "results": {
+    "tag": "UNSERE ERGEBNISSE",
+    "title": "Projekte: Websites mit messbarer Wirkung",
+    "subtitle": "Wachstumskennzahlen aus unseren Projekten, belegt durch Analysedaten.",
+    "btnView": "Projekt ansehen →"
+  },
+  "pricing": {
+    "tag": "PREISE",
+    "title": "Transparente Pakete ohne versteckte Kosten",
+    "subtitle": "Wählen Sie ein flexibles Monatsabo oder den Booster Pack mit neuer Website im Paket.",
+    "standardTitle": "SEO Standard",
+    "standardPrice": "450 €",
+    "standardPeriod": "netto / Monat",
+    "standardDesc": "SEO für Ihre Website mit flexiblem Monatsabo und jederzeitiger Kündigung.",
+    "premiumTitle": "SEO Premium",
+    "premiumPrice": "590 €",
+    "premiumPeriod": "netto / Monat",
+    "premiumDesc": "Vollständiges SEO-Management mit Conversion-Optimierung (CRO) und KI-gestützter Content-Architektur.",
+    "boosterTitle": "Booster Pack",
+    "boosterPrice": "590 €",
+    "boosterPeriod": "netto / Monat",
+    "boosterBadge": "NEUE WEBSITE IM PAKET INKLUSIVE",
+    "boosterDesc": "Neue Website im Paket bei einer Laufzeit von 3 Monaten, kombiniert mit vollständiger SEO-Betreuung.",
+    "btnChoose": "Paket wählen",
+    "note": "Alle Preise netto (zzgl. MwSt.). Flexible Abos ohne lange Bindung (Ausnahme: Booster Pack, mindestens 3 Monate)."
+  },
+  "whyUs": {
+    "tag": "Warum wir",
+    "title": "Ergebnisorientierte Projekte mit Fokus auf Design und Funktion",
+    "subtitle": "Wir entwickeln digitale Lösungen auf Basis harter Analysedaten und Kaufpsychologie.",
+    "stat1": "der Verbraucher müssen einer Marke vertrauen, bevor sie kaufen.",
+    "stat2": "mehr Markenerinnerung durch ein einheitliches visuelles System.",
+    "stat3": "durchschnittlich mehr Umsatz durch abgestimmte SEO- und Web-Kommunikation."
+  },
+  "process": {
+    "tag": "VORGEHEN",
+    "title": "Unser Weg von der Marke zur Website",
+    "subtitle": "Wir übersetzen Markenidentität in digitale Erlebnisse, die auf Conversion ausgelegt sind."
+  },
+  "testimonials": {
+    "tag": "STIMMEN",
+    "title": "Kundenerfahrungen und Empfehlungen"
+  },
+  "blog": {
+    "tag": "BLOG & ARTIKEL",
+    "title": "Trends und Einblicke",
+    "subtitle": "Fachartikel, mit denen Sie die Konkurrenz in der organischen Suche überholen.",
+    "btnRead": "Artikel lesen →"
+  }
+}
