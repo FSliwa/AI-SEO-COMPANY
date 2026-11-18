@@ -1,6 +1,7 @@
 // Hero stron szablonów (12.11.2026): etykieta, H1, dowolne dzieci (byline, odpowiedź, przycisk)
 // po lewej i makieta dokumentu z pierwszej strony PDF po prawej (dekoracja, aria-hidden).
 // Obraz: public/images/narzedzia/szablony/<slug>-<pl|en>.webp (600x850, render 1. strony PDF).
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów (nie CSS strony głównej)
 import Image from 'next/image';
 import './szablony.css';
 

@@ -27,9 +27,13 @@ import { PRZYKLADY, ZALOZENIA, ZWROT, bladDanych, policzStraty, policzZwrot } fr
 import { CENY } from '@/lib/narzedziaLiczby';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import { SPRAWDZARKA_DZIALA } from '@/lib/publikacja';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 import BramkaEmail from './BramkaEmail';
 import LinkWyniku from './LinkWyniku';
 import { PasekDemo } from './Wspolne';
+import Zwin from './Zwin';
+import './ruch-b.css';
+import { czasTokenu } from './wyjscie';
 
 const zl = (n) => `${Math.round(n).toLocaleString('pl-PL')} zł`;
 const zlEn = (n) => `PLN ${Math.round(n).toLocaleString('en-US')}`;
@@ -115,7 +119,7 @@ export function WstawPrzyklad({ przyklad = 'usluga', children }) {
       data-cta="narzedzie_kalkulator_przyklad"
       onClick={() => {
         window.dispatchEvent(new CustomEvent('kalkulator-przyklad', { detail: dane }));
-        document.getElementById('narzedzie')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('narzedzie')?.scrollIntoView({ behavior: zachowaniePrzewijania(), block: 'start' });
       }}
     >
       {children ?? (en ? 'Fill in the form with these numbers' : 'Wypełnij formularz tymi danymi')}
@@ -171,6 +175,36 @@ body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
 }
 `;
 
+const nie_ruchu = () => typeof window === 'undefined' || !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/** Kwota straty. Po kliknięciu „Policz” (zmiana `tick`) liczby dochodzą raz do wartości końcowej (480 ms, od 70%, żeby
+ *  liczba cyfr i szerokość linii się nie zmieniały). Przy wpisywaniu (zmiana wartości) kwota reaguje natychmiast,
+ *  pod prefers-reduced-motion: reduce zawsze. Tekst w DOM to zawsze bieżąca wartość. */
+function Kwota({ min, max, fmt, slowo, tick }) {
+  const [p, setP] = useState(1);
+  const [widziany, setWidziany] = useState(tick);
+  // Zmiana tick: p ustawiamy na 0,7 jeszcze w tym samym renderze (wzorzec "state from props"), więc pierwsza klatka
+  // nie pokazuje wartości końcowej i nie ma mignięcia 100% -> 70% -> 100%. Pod reduce zostaje 1 (bez animacji).
+  if (tick !== widziany) {
+    setWidziany(tick);
+    if (!nie_ruchu()) setP(0.7);
+  }
+  useEffect(() => {
+    if (p !== 0.7) return undefined;
+    const czas = czasTokenu('--r-d-wynik', 480);
+    const t0 = performance.now();
+    let id = 0;
+    const krok = (t) => {
+      const x = Math.min(1, (t - t0) / czas);
+      setP(0.7 + 0.3 * (1 - (1 - x) ** 4));
+      if (x < 1) id = requestAnimationFrame(krok);
+    };
+    id = requestAnimationFrame(krok);
+    return () => cancelAnimationFrame(id);
+  }, [widziany]); // eslint-disable-line react-hooks/exhaustive-deps -- start tylko po zmianie tick
+  return <p className="narz-kwota">{fmt(min * p)} {slowo} {fmt(max * p)}</p>;
+}
+
 export default function KalkulatorClient() {
   const en = useLocale() === 'en';
   const lang = en ? 'en' : 'pl';
@@ -182,7 +216,21 @@ export default function KalkulatorClient() {
   const pola = sklep ? (en ? POLA_SKLEP_EN : POLA_SKLEP) : (en ? POLA_EN : POLA);
   const liczba = en ? liczbaEn : liczbaPl;
   const [probowal, setProbowal] = useState(false);
+  const [licznik, setLicznik] = useState(0); // kolejne „Policz”: uruchamia dojście kwoty (Kwota)
+  const [blysk, setBlysk] = useState(0); // wypełnienie przykładem: pola rozjaśniają się raz
   const wynikRef = useRef(null);
+  const poleSklepPowroty = (en ? POLA_SKLEP_EN : POLA_SKLEP).find((x) => x.k === 'powroty');
+  // Jedno pole formularza; `key` z licznikiem wypełnień wstawia klasę rozjaśnienia od nowa przy każdym „Wstaw przykład”.
+  const poleFormularza = (p) => (
+    <div key={p.k} className="narz-kalk-pole">
+      <label htmlFor={`k-${p.k}`} className="narz-etykieta">{p.etykieta}</label>
+      <div className="narz-z-jednostka">
+        <input key={blysk} id={`k-${p.k}`} name={p.k} value={dane[p.k]} onChange={zmien(p.k)} inputMode="decimal" autoComplete="off" placeholder={`${en ? 'e.g.' : 'np.'} ${p.przyklad}`} className={`narz-pole${blysk ? ' kalk-wypelnione' : ''}`} aria-describedby={`k-${p.k}-pomoc`} />
+        {p.jednostka && <span aria-hidden="true">{p.jednostka}</span>}
+      </div>
+      <p id={`k-${p.k}-pomoc`} className="narz-mikro">{p.pomoc}</p>
+    </div>
+  );
   const zgloszony = useRef(false);
   const zgloszonyZwrot = useRef(false);
   const zgloszonySklep = useRef(false);
@@ -190,7 +238,7 @@ export default function KalkulatorClient() {
   // Z-06: wynik z linku albo z przykładu (liczy się lokalnie, więc pokazuje się od razu).
   useParametrUrl(KLUCZE_URL, (p) => setDane((d) => ({ ...d, ...zParametrow(p) })));
   useEffect(() => {
-    const wstaw = (e) => setDane(() => ({ ...POCZATEK, ...zParametrow(e.detail ?? PRZYKLAD) }));
+    const wstaw = (e) => { setDane(() => ({ ...POCZATEK, ...zParametrow(e.detail ?? PRZYKLAD) })); setBlysk((b) => b + 1); };
     window.addEventListener('kalkulator-przyklad', wstaw);
     return () => window.removeEventListener('kalkulator-przyklad', wstaw);
   }, []);
@@ -207,7 +255,13 @@ export default function KalkulatorClient() {
     ...(dane.tryb === 'sklep' ? { tryb: 'sklep', ...(dane.powroty !== '' ? { powroty: liczba(dane.powroty) } : {}) } : {}),
   }), [dane, liczba]);
   const blad = bladDanych(wejscie, lang);
-  const wynik = blad ? null : policzStraty(wejscie);
+  const wynik = useMemo(() => (blad ? null : policzStraty(wejscie)), [blad, wejscie]);
+  // Ostatni poprawny wynik: potrzebny, gdy wynik się zwija po wpisaniu błędnej wartości (Zwin trzyma treść 200 ms).
+  const [ostWynik, setOstWynik] = useState(null);
+  if (wynik && wynik !== ostWynik) setOstWynik(wynik);
+  const W = wynik ?? ostWynik;
+  const [ostBlad, setOstBlad] = useState('');
+  if (blad && blad !== ostBlad) setOstBlad(blad);
   const wypelnione = ['wyszukiwania', 'konwersja', 'wartosc', 'marza'].every((k) => dane[k] !== '');
 
   const koszt = PAKIETY.includes(dane.pakiet) ? CENY[dane.pakiet].pln : dane.pakiet === 'wlasny' ? liczba(dane.koszt) : NaN;
@@ -244,8 +298,9 @@ export default function KalkulatorClient() {
     setProbowal(true);
     if (blad) return;
     zapiszParametry(parametryWyniku());
-    wynikRef.current?.focus();
-    wynikRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setLicznik((n) => n + 1);
+    wynikRef.current?.focus({ preventScroll: true });
+    wynikRef.current?.scrollIntoView({ behavior: zachowaniePrzewijania(), block: 'start' });
   }
 
   function parametryWyniku() {
@@ -319,20 +374,12 @@ export default function KalkulatorClient() {
           <span>{sklep
             ? (en ? 'Five numbers and one optional, the result updates as you type.' : 'Pięć liczb i jedna opcjonalna, wynik liczy się na bieżąco.')
             : (en ? 'Five numbers, the result updates as you type.' : 'Pięć liczb, wynik liczy się na bieżąco.')}</span>
-          <button type="button" className="kalk-tekstowy" data-cta="narzedzie_kalkulator_przyklad" onClick={() => setDane({ ...POCZATEK, ...zParametrow(sklep ? PS : PRZYKLAD) })}>
+          <button type="button" className="kalk-tekstowy" data-cta="narzedzie_kalkulator_przyklad" onClick={() => { setDane({ ...POCZATEK, ...zParametrow(sklep ? PS : PRZYKLAD) }); setBlysk((b) => b + 1); }}>
             {en ? 'Fill in an example' : 'Wstaw przykład'}
           </button>
         </p>
-        {pola.map((p) => (
-          <div key={p.k} className="narz-kalk-pole">
-            <label htmlFor={`k-${p.k}`} className="narz-etykieta">{p.etykieta}</label>
-            <div className="narz-z-jednostka">
-              <input id={`k-${p.k}`} name={p.k} value={dane[p.k]} onChange={zmien(p.k)} inputMode="decimal" autoComplete="off" placeholder={`${en ? 'e.g.' : 'np.'} ${p.przyklad}`} className="narz-pole" aria-describedby={`k-${p.k}-pomoc`} />
-              {p.jednostka && <span aria-hidden="true">{p.jednostka}</span>}
-            </div>
-            <p id={`k-${p.k}-pomoc`} className="narz-mikro">{p.pomoc}</p>
-          </div>
-        ))}
+        {pola.filter((p) => p.k !== 'powroty').map(poleFormularza)}
+        <Zwin otwarte={sklep}>{poleFormularza(poleSklepPowroty)}</Zwin>
         <div className="narz-kalk-pole">
           <label htmlFor="k-udzialAi" className="narz-etykieta">{en ? 'What share of customers ask AI instead of Google?' : 'Jaka część klientów pyta AI zamiast Google?'} <strong>{dane.udzialAi}%</strong></label>
           <input id="k-udzialAi" type="range" min="0" max="60" step="5" value={dane.udzialAi} onChange={zmien('udzialAi')} className="narz-suwak" />
@@ -359,33 +406,34 @@ export default function KalkulatorClient() {
           <button type="submit" className="btn btn-primary" data-cta="narzedzie_kalkulator_licz">{en ? 'Calculate my loss' : 'Policz, ile tracę'}</button>
         </div>
         <div className="kalk-pod-akcja">
-          {(probowal || wypelnione) && blad && <p role="alert" className="narz-blad">{blad}</p>}
+          <Zwin otwarte={Boolean((probowal || wypelnione) && blad)}><p role="alert" className="narz-blad">{blad || ostBlad}</p></Zwin>
           <p className="narz-mikro">{en ? 'Calculated in your browser, no sign-up. The assumptions and sources are further down the page.' : 'Liczymy w przeglądarce, bez rejestracji. Założenia i źródła są niżej na stronie.'}</p>
         </div>
       </form>
 
-      {wynik && (
+      <Zwin otwarte={Boolean(wynik)} className="r-zwin--karta">
+      {W && (
         <div className="narz-wynik narz-kalk-wynik" id="wynik-kalkulatora">
           <h2 className="kalk-wynik-tytul" ref={wynikRef} tabIndex={-1}>{en ? 'Your result' : 'Twój wynik'}</h2>
           <p className="narz-wynik-opis">{sklep
             ? (en ? 'Without a top 3 position on Google and without AI recommendations, your shop is losing an estimated' : 'Bez pozycji w TOP 3 Google i bez poleceń w AI sklep traci szacunkowo')
             : (en ? 'Without a top 3 position on Google and without AI recommendations, you are losing an estimated' : 'Bez pozycji w TOP 3 Google i bez poleceń w AI tracisz szacunkowo')}</p>
-          <p className="narz-kwota">{fmt(wynik.min.zysk)} {en ? 'to' : 'do'} {fmt(wynik.max.zysk)}</p>
+          <Kwota min={W.min.zysk} max={W.max.zysk} fmt={fmt} slowo={en ? 'to' : 'do'} tick={licznik} />
           {sklep ? (
-            <p className="narz-wynik-opis">{en ? `in gross profit per month, or ${fmt(wynik.rocznieMin)} to ${fmt(wynik.rocznieMax)} per year, from ${fmt(wynik.min.przychod)} to ${fmt(wynik.max.przychod)} in lost sales a month. The range reflects differences between studies of clicks in Google and in AI answers (assumptions below).` : `marży brutto miesięcznie, czyli ${fmt(wynik.rocznieMin)} do ${fmt(wynik.rocznieMax)} rocznie, przy ${fmt(wynik.min.przychod)} do ${fmt(wynik.max.przychod)} utraconej sprzedaży miesięcznie. Widełki wynikają z różnic między badaniami kliknięć w Google i w odpowiedziach AI (założenia niżej).`}</p>
+            <p className="narz-wynik-opis">{en ? `in gross profit per month, or ${fmt(W.rocznieMin)} to ${fmt(W.rocznieMax)} per year, from ${fmt(W.min.przychod)} to ${fmt(W.max.przychod)} in lost sales a month. The range reflects differences between studies of clicks in Google and in AI answers (assumptions below).` : `marży brutto miesięcznie, czyli ${fmt(W.rocznieMin)} do ${fmt(W.rocznieMax)} rocznie, przy ${fmt(W.min.przychod)} do ${fmt(W.max.przychod)} utraconej sprzedaży miesięcznie. Widełki wynikają z różnic między badaniami kliknięć w Google i w odpowiedziach AI (założenia niżej).`}</p>
           ) : (
-            <p className="narz-wynik-opis">{en ? `in profit per month, or ${fmt(wynik.rocznieMin)} to ${fmt(wynik.rocznieMax)} per year. The range reflects differences between studies of clicks in Google and in AI answers (assumptions below).` : `zysku miesięcznie, czyli ${fmt(wynik.rocznieMin)} do ${fmt(wynik.rocznieMax)} rocznie. Widełki wynikają z różnic między badaniami kliknięć w Google i w odpowiedziach AI (założenia niżej).`}</p>
+            <p className="narz-wynik-opis">{en ? `in profit per month, or ${fmt(W.rocznieMin)} to ${fmt(W.rocznieMax)} per year. The range reflects differences between studies of clicks in Google and in AI answers (assumptions below).` : `zysku miesięcznie, czyli ${fmt(W.rocznieMin)} do ${fmt(W.rocznieMax)} rocznie. Widełki wynikają z różnic między badaniami kliknięć w Google i w odpowiedziach AI (założenia niżej).`}</p>
           )}
 
           <div className="narz-rozbicie">
-            <div><p className="narz-rozbicie-etykieta">{en ? 'No Google rankings' : 'Brak pozycji w Google'}</p><p className="narz-rozbicie-kwota">{fmt(wynik.min.zyskSeo)} {en ? 'to' : 'do'} {fmt(wynik.max.zyskSeo)}</p><p className="narz-mikro">{num(wynik.min.wizytySeo)} {en ? 'to' : 'do'} {num(wynik.max.wizytySeo)} {en ? 'visits per month' : 'wejść miesięcznie'}</p></div>
-            <div><p className="narz-rozbicie-etykieta">{en ? 'No AI recommendations' : 'Brak poleceń w AI'}</p><p className="narz-rozbicie-kwota">{fmt(wynik.min.zyskAi)} {en ? 'to' : 'do'} {fmt(wynik.max.zyskAi)}</p><p className="narz-mikro">{num(wynik.min.wizytyAi)} {en ? 'to' : 'do'} {num(wynik.max.wizytyAi)} {en ? 'visits from AI recommendations per month' : 'wejść z poleceń AI miesięcznie'}</p></div>
+            <div><p className="narz-rozbicie-etykieta">{en ? 'No Google rankings' : 'Brak pozycji w Google'}</p><p className="narz-rozbicie-kwota">{fmt(W.min.zyskSeo)} {en ? 'to' : 'do'} {fmt(W.max.zyskSeo)}</p><p className="narz-mikro">{num(W.min.wizytySeo)} {en ? 'to' : 'do'} {num(W.max.wizytySeo)} {en ? 'visits per month' : 'wejść miesięcznie'}</p></div>
+            <div><p className="narz-rozbicie-etykieta">{en ? 'No AI recommendations' : 'Brak poleceń w AI'}</p><p className="narz-rozbicie-kwota">{fmt(W.min.zyskAi)} {en ? 'to' : 'do'} {fmt(W.max.zyskAi)}</p><p className="narz-mikro">{num(W.min.wizytyAi)} {en ? 'to' : 'do'} {num(W.max.wizytyAi)} {en ? 'visits from AI recommendations per month' : 'wejść z poleceń AI miesięcznie'}</p></div>
             {sklep ? (
-              <div><p className="narz-rozbicie-etykieta">{en ? 'Lost orders' : 'Utracone zamówienia'}</p><p className="narz-rozbicie-kwota">{num(wynik.min.zamowienia)} {en ? 'to' : 'do'} {num(wynik.max.zamowienia)}</p><p className="narz-mikro">{wejscie.powroty > 0
-                ? (en ? `per month, including ${num(wynik.min.klienci)} to ${num(wynik.max.klienci)} first orders from new customers` : `miesięcznie, w tym ${num(wynik.min.klienci)} do ${num(wynik.max.klienci)} pierwszych zamówień nowych klientów`)
+              <div><p className="narz-rozbicie-etykieta">{en ? 'Lost orders' : 'Utracone zamówienia'}</p><p className="narz-rozbicie-kwota">{num(W.min.zamowienia)} {en ? 'to' : 'do'} {num(W.max.zamowienia)}</p><p className="narz-mikro">{wejscie.powroty > 0
+                ? (en ? `per month, including ${num(W.min.klienci)} to ${num(W.max.klienci)} first orders from new customers` : `miesięcznie, w tym ${num(W.min.klienci)} do ${num(W.max.klienci)} pierwszych zamówień nowych klientów`)
                 : (en ? 'per month (first orders only)' : 'miesięcznie (tylko pierwsze zamówienia)')}</p></div>
             ) : (
-              <div><p className="narz-rozbicie-etykieta">{en ? 'Lost customers' : 'Utraceni klienci'}</p><p className="narz-rozbicie-kwota">{num(wynik.min.klienci)} {en ? 'to' : 'do'} {num(wynik.max.klienci)}</p><p className="narz-mikro">{en ? 'per month' : 'miesięcznie'}</p></div>
+              <div><p className="narz-rozbicie-etykieta">{en ? 'Lost customers' : 'Utraceni klienci'}</p><p className="narz-rozbicie-kwota">{num(W.min.klienci)} {en ? 'to' : 'do'} {num(W.max.klienci)}</p><p className="narz-mikro">{en ? 'per month' : 'miesięcznie'}</p></div>
             )}
           </div>
 
@@ -406,7 +454,7 @@ export default function KalkulatorClient() {
                 </label>
               </div>
             </fieldset>
-            {dane.pakiet === 'wlasny' && (
+            <Zwin otwarte={dane.pakiet === 'wlasny'}>
               <div className="narz-kalk-pole">
                 <label htmlFor="k-koszt" className="narz-etykieta">{en ? 'Monthly SEO cost (net)' : 'Miesięczny koszt SEO (netto)'}</label>
                 <div className="narz-z-jednostka">
@@ -415,8 +463,8 @@ export default function KalkulatorClient() {
                 </div>
                 {bladKosztu && <p role="alert" className="narz-blad">{bladKosztu}</p>}
               </div>
-            )}
-            {dane.pakiet && (
+            </Zwin>
+            <Zwin otwarte={Boolean(dane.pakiet)}>
               <div className="narz-kalk-pole">
                 <label htmlFor="k-miesiace" className="narz-etykieta">{en ? 'After how many months will SEO reach full effect?' : 'Po ilu miesiącach SEO da pełny efekt?'} <strong>{dane.miesiace}</strong></label>
                 <input id="k-miesiace" type="range" min={ZWROT.miesiaceDoEfektu.min} max={ZWROT.miesiaceDoEfektu.max} step="1" value={dane.miesiace} onChange={zmien('miesiace')} className="narz-suwak" />
@@ -424,9 +472,9 @@ export default function KalkulatorClient() {
                   ? `Default ${ZWROT.miesiaceDoEfektu.domyslnie}: our assumption, not a study result. Until then the recovered profit grows evenly. With a new domain or strong competitors, set more.`
                   : `Domyślnie ${ZWROT.miesiaceDoEfektu.domyslnie}: nasze założenie, nie wynik badania. Do tego czasu odzyskany zysk rośnie równo. Przy nowej domenie albo silnej konkurencji ustaw więcej.`}</p>
               </div>
-            )}
+            </Zwin>
             {zwrot && (
-              <>
+              <div className="r-zwin" data-otwarte=""><div className="kalk-zwrot-wnetrze">
                 <div className="kalk-zwrot-liczby">
                   <div><p className="narz-rozbicie-etykieta">{en ? 'Monthly balance at full effect' : 'Bilans miesięczny przy pełnym efekcie'}</p><p className="narz-rozbicie-kwota"><span className={klasa(zwrot.min.bilans)}>{zeZnakiem(zwrot.min.bilans)}</span> {en ? 'to' : 'do'} <span className={klasa(zwrot.max.bilans)}>{zeZnakiem(zwrot.max.bilans)}</span></p></div>
                   <div><p className="narz-rozbicie-etykieta">{en ? 'Balance of the first 12 months' : 'Bilans pierwszych 12 miesięcy'}</p><p className="narz-rozbicie-kwota"><span className={klasa(zwrot.min.bilansRok)}>{zeZnakiem(zwrot.min.bilansRok)}</span> {en ? 'to' : 'do'} <span className={klasa(zwrot.max.bilansRok)}>{zeZnakiem(zwrot.max.bilansRok)}</span></p></div>
@@ -435,7 +483,7 @@ export default function KalkulatorClient() {
                 <p className="narz-mikro" role="status">{wniosek} {en
                   ? `This is arithmetic on your numbers, not a promise: we assume you recover the whole calculated loss after ${zwrot.miesiaceDoEfektu} months, and SEO results take months.`
                   : `To arytmetyka na Twoich liczbach, nie obietnica: zakładamy odzyskanie całej wyliczonej straty po ${zwrot.miesiaceDoEfektu} miesiącach, a efekty SEO przychodzą po miesiącach.`}</p>
-              </>
+              </div></div>
             )}
             <p className="narz-mikro kalk-dalej">{en ? 'Package details: ' : 'Zakres pakietów: '}<Link href="/cennik-pozycjonowania" className="narz-link">{en ? 'SEO pricing' : 'cennik pozycjonowania'}</Link>{en ? '. What we do each month: ' : '. Co robimy co miesiąc: '}<Link href="/pozycjonowanie-stron-internetowych" className="narz-link">{en ? 'SEO services' : 'pozycjonowanie stron'}</Link>.</p>
           </div>
@@ -461,6 +509,7 @@ export default function KalkulatorClient() {
           />
         </div>
       )}
+      </Zwin>
     </div>
   );
 }

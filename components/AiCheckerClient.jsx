@@ -4,7 +4,6 @@ import { useLocale } from 'next-intl';
 import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '../i18n/routing';
 import { PANEL_DEMO_URL } from '@/lib/panel';
 import AppleFaq from '@/components/service/AppleFaq';
@@ -172,7 +171,7 @@ export default function AiCheckerClient() {
       <section className={st.hero} style={{ paddingTop: 'clamp(112px, 12vw, 152px)', paddingBottom: '80px' }}>
         <Ozdoba rodzaj="ai" />
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ margin: '0 0 1.25rem' }}>
+          <div className="section-header" style={{ margin: '0 0 1.25rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {en ? 'Free check' : 'Bezpłatne sprawdzenie'}
             </div>
@@ -186,7 +185,7 @@ export default function AiCheckerClient() {
                 ? `We check whether ${listaSilnikow('en')} name your business when a customer asks three typical questions. Results within 2 minutes, no sign-up.`
                 : `Sprawdzimy, czy ${listaSilnikow('pl')} wymieniają Twoją firmę, gdy klient zadaje trzy typowe pytania. Wynik, czyli Twoją widoczność w AI (ang. AI visibility), zobaczysz w ciągu 2 minut, bez rejestracji.`}
             </p>
-          </Reveal>
+          </div>
 
           <WidocznoscAiClient />
 

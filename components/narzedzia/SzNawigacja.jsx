@@ -4,6 +4,7 @@
 // pigułek pod Headerem. Etykiety to teksty H2 ze strony (nie nowa treść). Gdy `items` brak,
 // spis czyta H2 z [data-sz-tresc] po zamontowaniu (SzablonRaport).
 import { useEffect, useRef, useState } from 'react';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 
 export default function SzNawigacja({ items: poczatkowe = null, etykieta }) {
   const [items, setItems] = useState(poczatkowe || []);
@@ -34,11 +35,12 @@ export default function SzNawigacja({ items: poczatkowe = null, etykieta }) {
   }, [poczatkowe]);
 
   // Pasek pigułek na telefonie: aktywna pigułka na środku (tylko przewijanie paska, nie strony).
+  // 18.11.2026 (anim-system): behavior z zachowaniePrzewijania() (pod prefers-reduced-motion: reduce skok zamiast animacji).
   useEffect(() => {
     const ul = lista.current;
     if (!ul || ul.scrollWidth <= ul.clientWidth) return;
     const a = ul.querySelector('[aria-current="true"]');
-    if (a) ul.scrollTo({ left: a.offsetLeft - ul.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' });
+    if (a) ul.scrollTo({ left: a.offsetLeft - ul.clientWidth / 2 + a.offsetWidth / 2, behavior: zachowaniePrzewijania() });
   }, [aktywna]);
 
   return (
