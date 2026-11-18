@@ -198,10 +198,11 @@ export default function Footer() {
                   </NextLink>
                 </li>
                 )}
-                {/* Wersja niemiecka: link do strony głównej DE tylko przy aktywnej wersji DE (lib/stronyDe.js). */}
-                {lang !== 'de' && maWersjeDe('/') && (
+                {/* Wersja niemiecka: link tylko na stronach z niemieckim odpowiednikiem (lib/stronyDe.js), do tego odpowiednika
+                    (jak wpis DE w przełączniku języka w nagłówku); pozostałe strony PL/EN bez zmian. */}
+                {lang !== 'de' && maWersjeDe(sciezka) && (
                   <li>
-                    <NextLink href={getPathname({ href: '/', locale: 'de' })} hrefLang="de" lang="de" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'de', page_path: pathname })}>Deutsche Version</NextLink>
+                    <NextLink href={getPathname({ href: sciezka, locale: 'de' })} hrefLang="de" lang="de" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'de', page_path: pathname })}>Deutsche Version</NextLink>
                   </li>
                 )}
               </ul>
