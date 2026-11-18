@@ -1,0 +1,105 @@
+/* ==========================================================================
+   PLYNNOSC (18.11.2026) - wydajnosc przewijania i odpornosc hero.
+   Osobny plik, zeby nie mieszac sie z wyglad.css (uklad hero, menu).
+   Zasady: bez zmiany wygladu; tylko transform/opacity; praca poza ekranem stoi.
+   ========================================================================== */
+
+/* Plakat sceny 3D: patrz components/Hero.jsx. Siedzi pod kanwa w .hero-en-bg
+   (dziedziczy skale i maske kontenera, wiec lezy tam, gdzie scena). `contain` trzyma
+   wysokosc sceny, tak jak robi to kamera przy szerokich proporcjach. */
+.hero-en-bg > .hero-scena-plakat {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  object-position: 50% 50%;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.6s ease;
+}
+
+/* Ladowanie: plakat wchodzi dopiero po 0,9 s - szybka scena nie miga. */
+.hero-en-bg > .hero-scena-plakat.is-on {
+  opacity: 1;
+  transition: opacity 0.6s ease 0.9s;
+}
+
+/* Utrata kontekstu: kanwa jest pusta, plakat od razu. */
+.hero-en-bg > .hero-scena-plakat.is-lost {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+/* Puls liczby w "Dlaczego my": ten sam ruch co wczesniej w framer-motion
+   (scale 1 -> 1.03 -> 1, 5 s, ease-in-out, w petli), ale na kompozytorze. Petla stoi,
+   gdy sekcja jest poza ekranem (regula [data-petla="poza"] w wyglad.css) i przy
+   ograniczonym ruchu. */
+@media (prefers-reduced-motion: no-preference) {
+  .whyus-metric-puls {
+    animation: whyus-puls 5s ease-in-out infinite;
+  }
+}
+
+@keyframes whyus-puls {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.03; }
+}
+
+/* ==========================================================================
+   content-visibility: sekcje strony glownej pod pierwszym ekranem nie licza stylow,
+   ukladu ani malowania, dopoki nie zbliza sie do ekranu (pomiar: -44 % czasu
+   UpdateLayoutTree przy przewijaniu na telefonie). `auto` w contain-intrinsic-size
+   zapamietuje prawdziwa wysokosc po pierwszym wyrenderowaniu, a wartosci startowe
+   sa zmierzone, wiec nie ma skoku paska przewijania ani CLS.
+   Pominiete celowo: .portfolio (okno modalne position: fixed - zawieranie ukladu
+   przypieloby je do sekcji), hero i pas oferty (nad zgieciem / chmury na styku sekcji).
+   Zawartosc zostaje w DOM i w HTML z serwera: wyszukiwanie na stronie, kotwice (#cennik,
+   #kontakt) i roboty widza to samo.
+   Zakres: tylko strona glowna (main z .hero--en).
+   ========================================================================== */
+main:has(> .hero--en) > :is(#why-us, .results, .panel-showcase, .pricing, .w-noc-panele, .contact) {
+  content-visibility: auto;
+}
+/* Wartosci = wysokosc zawartosci (bez paddingu) zmierzona w przegladarce. */
+main:has(> .hero--en) > #why-us { contain-intrinsic-size: auto 1280px; }
+main:has(> .hero--en) > .results { contain-intrinsic-size: auto 180px; }
+main:has(> .hero--en) > .panel-showcase { contain-intrinsic-size: auto 635px; }
+main:has(> .hero--en) > .pricing { contain-intrinsic-size: auto 1480px; }
+main:has(> .hero--en) > .w-noc-panele { contain-intrinsic-size: auto 2060px; }
+main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 940px; }
+
+@media (max-width: 1100px) {
+  main:has(> .hero--en) > #why-us { contain-intrinsic-size: auto 1150px; }
+  main:has(> .hero--en) > .results { contain-intrinsic-size: auto 150px; }
+  main:has(> .hero--en) > .panel-showcase { contain-intrinsic-size: auto 900px; }
+  main:has(> .hero--en) > .pricing { contain-intrinsic-size: auto 1550px; }
+  main:has(> .hero--en) > .w-noc-panele { contain-intrinsic-size: auto 1930px; }
+  main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 975px; }
+}
+
+@media (max-width: 900px) {
+  main:has(> .hero--en) > .results { contain-intrinsic-size: auto 190px; }
+  main:has(> .hero--en) > .panel-showcase { contain-intrinsic-size: auto 2200px; }
+  main:has(> .hero--en) > .pricing { contain-intrinsic-size: auto 2300px; }
+  main:has(> .hero--en) > .w-noc-panele { contain-intrinsic-size: auto 2090px; }
+  main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 1430px; }
+}
+
+@media (max-width: 600px) {
+  main:has(> .hero--en) > #why-us { contain-intrinsic-size: auto 1480px; }
+  main:has(> .hero--en) > .results { contain-intrinsic-size: auto 260px; }
+  main:has(> .hero--en) > .panel-showcase { contain-intrinsic-size: auto 1800px; }
+  main:has(> .hero--en) > .pricing { contain-intrinsic-size: auto 3460px; }
+  main:has(> .hero--en) > .w-noc-panele { contain-intrinsic-size: auto 2660px; }
+  main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 1660px; }
+}
+
+/* Warstwy chmur sekcji, ktorych nie widac (data-petla="poza" ustawia PetleWidoczne z zapasem
+   300 px): bez malowania i bez kafli w pamieci. Ma to sens, bo kazda taka warstwa to pas
+   3 x szerokosc obrazka (do ok. 3600 x 460 px) z `will-change: transform`. Animacja jest
+   spauzowana osobna regula, wiec po powrocie chmury stoja tam, gdzie je zostawiono. */
+[data-petla="poza"] :is(.chmury-dryf, .mgla-dryf, .hero-mgla-chmury, .styk-mgla, .tlo-gory-chmury) > span {
+  visibility: hidden;
+}

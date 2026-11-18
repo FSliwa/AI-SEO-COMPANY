@@ -1,0 +1,406 @@
+/* ==========================================================================
+   ROZWINIETE MENU (components/Header.jsx), przebudowa 18.11.2026.
+   Wlasciciel: uporzadkowac uklad linkow po rozwinieciu, zeby latwiej poruszac sie po stronie.
+   Tokeny z app/wyglad.css / DESIGN.md (--w-noc, --w-pomarancz, --w-brzoskwinia, --w-noc-linia),
+   typografia Geist (dziedziczona z body), etykieta grupy = etykieta sekcji z DESIGN.md
+   (mono, 0,8125 rem, wersaliki, 0,14 em). Ruch: tylko opacity + transform, 240 ms.
+   Klasa kota-fullscreen-menu zostaje (tlo z wyglad.css, fokus bialy, ukrywanie przycisku cookies);
+   jej clip-path (kolo z globals.css) wylaczony nizej.
+   ========================================================================== */
+
+.kota-fullscreen-menu.menu-ov {
+  clip-path: none !important;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.24s cubic-bezier(0.22, 1, 0.36, 1), transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kota-fullscreen-menu.menu-ov.is-open {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- pasek: jezyk (lewo), X (prawo); X stoi nad przyciskiem ≡ strony --- */
+.menu-pasek {
+  flex: none;
+}
+
+.menu-pasek-wew {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  height: 80px;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-jezyk {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 2px;
+}
+
+.menu-jezyk-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 40px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-jezyk-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-jezyk-link[aria-current] {
+  background: var(--w-papier);
+  color: var(--w-tusz);
+}
+
+.menu-jezyk-kreska {
+  display: none;
+}
+
+/* --- przewijana czesc: tylko ona sie przewija, pasek i stopka stoja --- */
+.menu-przewijanie {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+.menu-tresc {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem 2rem;
+}
+
+.menu-siatka {
+  display: block;
+}
+
+.menu-kolumna {
+  display: contents;
+}
+
+/* --- grupa --- */
+.menu-grupa {
+  break-inside: avoid;
+  margin: 0 0 1.75rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
+.menu-ov.is-open .menu-grupa {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--i, 0) * 28ms);
+}
+
+.menu-grupa-nazwa {
+  margin: 0 0 0.5rem;
+  padding: 0 0 0.75rem;
+  border-bottom: 1px solid var(--w-noc-linia);
+  font-family: var(--w-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--w-brzoskwinia);
+}
+
+.menu-grupa-przycisk {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 52px;
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-szewron {
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.35rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.2s ease;
+}
+
+.menu-grupa-przycisk[aria-expanded="true"] .menu-szewron {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+
+.menu-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-lista[hidden] {
+  display: none;
+}
+
+.menu-lista a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.3rem 0;
+  color: #fff;
+  font-size: clamp(1.0625rem, 0.98rem + 0.3vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-lista a:hover {
+  color: var(--w-brzoskwinia);
+  transform: translateX(4px);
+}
+
+.menu-lista a[aria-current="page"] {
+  color: var(--w-brzoskwinia);
+}
+
+.menu-lista a[aria-current="page"]::after {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--w-pomarancz);
+}
+
+.menu-lista a:focus-visible,
+.menu-jezyk-link:focus-visible,
+.menu-cta:focus-visible,
+.menu-przycisk:focus-visible,
+.menu-kontakt-wartosc:focus-visible {
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* --- stopka: CTA, logowanie, kontakt (zawsze widoczna) --- */
+.menu-stopka {
+  flex: none;
+  border-top: 1px solid var(--w-noc-linia);
+}
+
+.menu-stopka-wew {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.menu-akcje {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.menu-cta,
+.menu-przycisk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-cta {
+  background: var(--w-pomarancz-przycisk, #C94E24);
+  color: var(--w-na-pomaranczu);
+}
+
+.menu-cta:hover {
+  background: var(--w-pomarancz-hover);
+}
+
+.menu-przycisk {
+  border: 1.5px solid rgba(255, 255, 255, 0.32);
+  color: #fff;
+}
+
+.menu-przycisk:hover {
+  border-color: var(--w-brzoskwinia);
+  color: var(--w-brzoskwinia);
+}
+
+.menu-kontakt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.5rem;
+}
+
+.menu-kontakt-poz {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-kontakt-etykieta {
+  font-family: var(--w-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A1A1AA;
+}
+
+.menu-kontakt-wartosc {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.menu-kontakt-wartosc:hover {
+  color: var(--w-brzoskwinia);
+}
+
+/* --- tablet: dwie kolumny --- */
+@media (min-width: 768px) {
+  .menu-siatka {
+    column-count: 2;
+    column-gap: 3rem;
+  }
+}
+
+/* --- desktop: cztery kolumny, grupy w kolejnosci waznosci od lewej --- */
+@media (min-width: 1100px) {
+  .menu-siatka {
+    column-count: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 3rem;
+    align-items: start;
+  }
+
+  .menu-kolumna {
+    display: block;
+  }
+
+  .menu-tresc {
+    padding-top: 1.25rem;
+  }
+}
+
+/* --- telefon: jedna kolumna, grupy zwijane, stopka zwarta --- */
+@media (max-width: 767px) {
+  .menu-pasek-wew {
+    height: 72px;
+    padding: 0 1.25rem;
+  }
+
+  .menu-tresc {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .menu-grupa {
+    margin: 0;
+    border-top: 1px solid var(--w-noc-linia);
+  }
+
+  .menu-kolumna:first-child > .menu-grupa:first-child {
+    border-top: 0;
+  }
+
+  .menu-grupa-nazwa {
+    margin: 0;
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .menu-lista {
+    padding-bottom: 0.5rem;
+  }
+
+  .menu-stopka-wew {
+    padding: 0.75rem 1.25rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    gap: 0.5rem;
+  }
+
+  .menu-akcje {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .menu-cta {
+    flex: 1 1 100%;
+  }
+
+  .menu-przycisk {
+    flex: 1 1 auto;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .menu-kontakt {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0 1rem;
+  }
+
+  .menu-kontakt-etykieta {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kota-fullscreen-menu.menu-ov,
+  .menu-grupa,
+  .menu-lista a,
+  .menu-szewron {
+    transition: none !important;
+  }
+
+  /* Bez ruchu: menu i grupy bez przesuniecia (szewron to stan, nie ruch, wiec zostaje obrocony). */
+  .kota-fullscreen-menu.menu-ov,
+  .menu-grupa,
+  .menu-lista a:hover {
+    transform: none !important;
+  }
+}

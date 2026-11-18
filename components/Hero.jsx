@@ -40,6 +40,23 @@ const Spline = dynamic(() => import('@splinetool/react-spline'), {
 const SCENE = '/scene.splinecode.br';
 
 /**
+ * 18.11.2026 (plynnosc): kiedy scena 3D nie ma sensu. Ograniczony ruch (WCAG 2.3.3),
+ * Save-Data, lacze 2G, <= 2 GB pamieci albo <= 2 rdzenie: WebGL na takim sprzecie szarpie
+ * przewijanie i bywa wylaczany przez system (samoodswiezenie karty). Wtedy hero dostaje
+ * statyczny plakat, a tekst wchodzi od razu. Brak API (Safari, Firefox) = scena jak dotad.
+ */
+function malaMocLubOszczedzanie() {
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
+    const lacze = navigator.connection;
+    if (lacze && (lacze.saveData || /(^|-)2g$/.test(lacze.effectiveType || ''))) return true;
+    if (navigator.deviceMemory && navigator.deviceMemory <= 2) return true;
+    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) return true;
+  } catch (e) {}
+  return false;
+}
+
+/**
  * Hero copy per locale.
  *
  * Polish is not a translation of the English – it is the wording that was
@@ -139,6 +156,61 @@ export default function Hero() {
   const tekstPokazanyRef = useRef(false);
   const pokazTekst = () => { tekstPokazanyRef.current = true; setCopyIn(true); };
 
+  // 18.11.2026 (plynnosc): cykl zycia sceny 3D. Zrodlo zgloszenia "przewijanie szarpie,
+  // a po samoodswiezeniu grafika hero znika" - patrz RAPORT.md w folderze wyglad/plynnosc.
+  //  1) Scena renderowala sie bez przerwy takze po zjechaniu z hero (WebGL w tle pod cala
+  //     reszta strony = zjedzony watek glowny i GPU przy kazdym przewinieciu). Teraz
+  //     app.stop()/app.play() (to czysta pauza petli renderowania, os czasu zostaje) wg
+  //     widocznosci sekcji.
+  //  2) Utrata kontekstu WebGL (GPU, malo pamieci, uspienie karty) zostawiala pusta kanwe
+  //     na zawsze: hero bez robota i liter. Teraz: plakat (statyczna grafika) pod kanwa,
+  //     wznowienie po `webglcontextrestored`, a gdy przegladarka nie odda kontekstu przez
+  //     4 s - ponowny montaz sceny (najwyzej 2 razy), nigdy przeladowanie strony.
+  const appRef = useRef(null);
+  const widocznaRef = useRef(true);
+  const wystartowalaRef = useRef(false);
+  // Scena zaladowana, ale plakat schodzi dopiero, gdy hero jest na ekranie (przywrocone
+  // przewiniecie po odswiezeniu: wczesniej zdejmowal plakat przy ukrytej scenie).
+  const zaladowanaRef = useRef(false);
+  const ponownyMontazRef = useRef(0);
+  const [sceneKey, setSceneKey] = useState(0);
+  const [sceneLost, setSceneLost] = useState(false);
+  const [sceneLoaded, setSceneLoaded] = useState(false);
+  const synchronizujScene = () => {
+    const app = appRef.current;
+    if (!app) return;
+    try {
+      if (!widocznaRef.current) app.stop();
+      else if (wystartowalaRef.current) app.play();
+    } catch (e) {}
+  };
+  const podepnijUtrateKontekstu = (app) => {
+    const kanwa = app && app.canvas;
+    if (!kanwa || kanwa.dataset.heroKontekst) return;
+    kanwa.dataset.heroKontekst = '1';
+    let zegar = 0;
+    kanwa.addEventListener('webglcontextlost', (e) => {
+      e.preventDefault();
+      setSceneLost(true);
+      clearTimeout(zegar);
+      zegar = setTimeout(() => {
+        if (ponownyMontazRef.current >= 2) return;
+        ponownyMontazRef.current += 1;
+        appRef.current = null;
+        wystartowalaRef.current = false;
+        zaladowanaRef.current = false;
+        setSceneLoaded(false);
+        setSceneKey((k) => k + 1);
+      }, 4000);
+    });
+    kanwa.addEventListener('webglcontextrestored', () => {
+      clearTimeout(zegar);
+      setSceneLost(false);
+      try { app.requestRender(); } catch (e) {}
+      synchronizujScene();
+    });
+  };
+
   // Uklad telefonu (ponizej 901 px lub proporcje wezsze niz 1:1 - ta sama
   // bramka, ktora arkusz stylow przelacza na kompozycje mobilna). Tekst jest
   // tam nad i pod pasem liter, nie na nim, wiec nie musi czekac na wjazd
@@ -154,9 +226,23 @@ export default function Hero() {
   // w pierwszym efekcie - jedna klatka roznicy.
   const telefonRef = useRef(false);
   const [montujScene, setMontujScene] = useState(false);
+  const [tylkoPlakat, setTylkoPlakat] = useState(false);
   useEffect(() => {
     const bramka = window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)');
-    if (bramka.matches) { setMontujScene(true); return; }
+    if (bramka.matches) {
+      // Slaby sprzet / oszczednosc danych / ograniczony ruch: tylko plakat, bez 1,5 MB runtime'u,
+      // 4,9 MB sceny i WebGL. Tresc ta sama dla wszystkich, zmienia sie wylacznie dekoracja.
+      if (malaMocLubOszczedzanie()) {
+        telefonRef.current = true; // pomija rozgrzewke pobierania nizej
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- decyzja zalezy od API przegladarki, serwer jej nie zna
+        setTylkoPlakat(true);
+        setSceneIn(true);
+        pokazTekst();
+        return;
+      }
+      setMontujScene(true);
+      return;
+    }
     telefonRef.current = true;
     setSceneIn(true);
     pokazTekst();
@@ -170,7 +256,7 @@ export default function Hero() {
     // szeroka przy ladowaniu nie zna reguly 2G wcale - tu ma byc tak samo.
     // Oba nasluchy celowo, jak przy arcBody nizej: `change` nie zawsze odpala
     // pod emulacja urzadzen; setMontujScene(true) jest idempotentne.
-    const poPoszerzeniu = () => { if (bramka.matches) setMontujScene(true); };
+    const poPoszerzeniu = () => { if (bramka.matches && !malaMocLubOszczedzanie()) setMontujScene(true); };
     bramka.addEventListener('change', poPoszerzeniu);
     window.addEventListener('resize', poPoszerzeniu);
     const zdejmijNasluch = () => {
@@ -191,10 +277,18 @@ export default function Hero() {
     // stal na grafice nieba i gor z makiety (warstwa .hero-tlo-sceny pod kanwa).
     try { app.setBackgroundColor('rgba(0,0,0,0)'); } catch (e) {}
     setSceneIn(true);
+    setSceneLost(false);
+    zaladowanaRef.current = true;
+    setSceneLoaded(widocznaRef.current);
+    appRef.current = app;
+    podepnijUtrateKontekstu(app);
+    // Strona otwarta juz nizej (przywrocone przewiniecie po odswiezeniu): scena od razu stoi.
+    synchronizujScene();
 
     // Telefon: tekst stoi od razu poza pasem liter, wiec wjazd moze grac
     // normalnie - nie ma czego synchronizowac ani czym najezdzac.
     if (telefonRef.current) {
+      wystartowalaRef.current = true;
       window.__heroSync = { sciezka: 'telefon-bez-czekania', tekstPoMs: 0 };
       return;
     }
@@ -253,7 +347,9 @@ export default function Hero() {
     if (!zatrzymano) { setTimeout(() => koniec('bez-stop'), WJAZD_MS); return; }
 
     const start = () => {
-      try { app.play(); } catch (e) {}
+      // play() tylko, gdy hero jest na ekranie; inaczej ruszy z obserwatora widocznosci.
+      wystartowalaRef.current = true;
+      synchronizujScene();
       let suma = 0;
       let poprzednia = null;
       const tik = (teraz) => {
@@ -288,6 +384,20 @@ export default function Hero() {
     // scena zostaje zatrzymana na pierwszej klatce - patrz straznik wyzej.
     const failsafe = setTimeout(() => { setSceneIn(true); pokazTekst(); }, 9000);
     return () => clearTimeout(failsafe);
+  }, []);
+
+  // Pauza renderowania sceny, gdy hero jest poza ekranem (zapas 120 px, zeby wznowienie
+  // zdazylo przed wjazdem sekcji). Patrz komentarz przy synchronizujScene.
+  useEffect(() => {
+    const sekcja = document.getElementById('hero');
+    if (!sekcja || typeof IntersectionObserver === 'undefined') return undefined;
+    const io = new IntersectionObserver((wpisy) => {
+      for (const w of wpisy) widocznaRef.current = w.isIntersecting;
+      synchronizujScene();
+      if (widocznaRef.current && zaladowanaRef.current) setSceneLoaded(true);
+    }, { rootMargin: '120px 0px' });
+    io.observe(sekcja);
+    return () => io.disconnect();
   }, []);
 
   // Warm both halves of the load immediately, in parallel: the runtime module
@@ -501,11 +611,28 @@ export default function Hero() {
           the starfield are gone with it – they were a second full-screen
           backdrop nobody could see underneath this one. */}
       <div className={`hero-en-bg${sceneIn ? ' is-in' : ''}`} aria-hidden="true">
+        {/* 18.11.2026 (plynnosc): plakat = ostatnia klatka sceny (robot + litery) jako grafika pod
+            kanwa. Widoczny tylko, gdy sceny nie ma na ekranie: ladowanie dluzsze niz ~0,9 s,
+            blad pobierania albo utrata kontekstu WebGL. Hero nigdy nie zostaje puste. Nie jest
+            elementem LCP (tlo sekcji jest wieksze), a obraz jest dekoracja (alt pusty). */}
+        {(montujScene || tylkoPlakat) && (
+          // eslint-disable-next-line @next/next/no-img-element -- dekoracyjny plakat pod kanwa, rozmiar i priorytet ustawione recznie
+          <img
+            className={`hero-scena-plakat${tylkoPlakat || sceneLost ? ' is-lost' : (!sceneLoaded ? ' is-on' : '')}`}
+            src="/images/wyglad/hero-scena-plakat.webp"
+            alt=""
+            width={1440}
+            height={900}
+            decoding="async"
+            fetchPriority="low"
+          />
+        )}
         <SceneErrorBoundary
+          key={sceneKey}
           fallback={<div className="hero-en-orb" />}
           onFail={() => { setSceneIn(true); pokazTekst(); }}
         >
-          {montujScene ? <Spline scene={SCENE} onLoad={onSceneLoad} /> : (
+          {montujScene ? <Spline key={sceneKey} scene={SCENE} onLoad={onSceneLoad} /> : (
             <>
               <div className="hero-en-orb" />
               {/* Uklad waski (telefon, okno pionowe): litery SEO jako grafika zamiast sceny 3D.
@@ -532,6 +659,12 @@ export default function Hero() {
           <span />
         </div>
       </div>
+      {/* 18.11.2026 (hero-home): kolejnosc warstw od tylu: niebo i gory (.hero-tlo-sceny),
+          scena 3D z literami (.hero-en-bg), animowane chmury (.hero-mgla, przedostatnia
+          warstwa) i na koncu STATYCZNA mgla (.hero-mgla-przod), ktora zakrywa miejsce, gdzie
+          chmury sie zaczynaja, i wtapia hero w nastepna sekcje. Tekst (z-index 5) lezy nad
+          wszystkim. */}
+      <div className="hero-mgla-przod" aria-hidden="true" />
 
       {/* Two groups pinned above and below the scene's own lettering, which
           occupies 30.4%-62.2% of the section height. The heading sits under the

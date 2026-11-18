@@ -14,6 +14,7 @@ import CompareTable from '@/components/CompareTable';
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import PowiazaneUslugi from '@/components/service/PowiazaneUslugi';
+import TloGory from '@/components/TloGory';
 
 // 5.11.2026 (AU1; PLAN-v2 6.19, OP-07, OP-15, MSA-02) - strona chroniona: tylko DODAWANIE w wersji PL.
 // Audyt widoczności w AI: link do A5 po jej publikacji, wcześniej do huba GEO (reguła 6.0).
@@ -31,7 +32,8 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       
       {/* Hero Banner - Apple Style */}
-      <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+      <section className="subpage-hero tlo-gory-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+        <TloGory />
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>

@@ -18,7 +18,7 @@ export default function PetleWidoczne() {
     if (!sekcje.length) return undefined;
     const obserwator = new IntersectionObserver((wpisy) => {
       for (const w of wpisy) w.target.setAttribute('data-petla', w.isIntersecting ? 'w' : 'poza');
-    }, { rootMargin: '120px 0px' });
+    }, { rootMargin: '300px 0px' }); // 300 px (18.11.2026): warstwy chmur wystaja do ok. 190 px poza sekcje
     sekcje.forEach((s) => obserwator.observe(s));
     return () => obserwator.disconnect();
   }, [sciezka]);

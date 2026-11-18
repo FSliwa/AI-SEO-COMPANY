@@ -44,11 +44,11 @@ const LINKI = [
 const styl = {
   main: { position: 'relative', zIndex: 1, minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '64px 0' },
   logo: { display: 'inline-block', marginBottom: '48px' },
-  h1: { fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.15, color: 'var(--color-text-dark)', fontWeight: 700 },
+  h1: { fontSize: 'clamp(2.25rem, 0.9rem + 3vw, 3rem)', lineHeight: 1.15, color: 'var(--color-text-dark)', fontWeight: 700 },
   podtytul: { marginTop: '8px', fontSize: '1.125rem', color: 'var(--color-text-muted)' },
   lead: { marginTop: '24px', maxWidth: '560px', color: 'var(--color-text-main)' },
-  lista: { listStyle: 'none', marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px', maxWidth: '720px' },
-  link: { display: 'block', padding: '14px 18px', borderRadius: 'var(--radius-sm)', background: 'var(--color-card-bg)', border: '1px solid var(--color-border)', color: 'var(--color-text-dark)', fontWeight: 600 },
+  lista: { listStyle: 'none', marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', maxWidth: '720px' },
+  link: { display: 'flex', alignItems: 'center', minHeight: '56px', padding: '14px 18px', borderRadius: 'var(--radius-sm)', background: 'var(--color-card-bg)', border: '1px solid var(--color-border)', color: 'var(--color-text-dark)', fontWeight: 600 },
   en: { marginTop: '32px', color: 'var(--color-text-muted)' },
   enLink: { color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' },
 };
