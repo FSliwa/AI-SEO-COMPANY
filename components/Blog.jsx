@@ -36,7 +36,6 @@ function wpisy(n) {
   return 'wpisów';
 }
 
-const dataJezyka = (p, lang) => new Date((lang === 'en' && p.dateEn) || (lang === 'pl' && p.datePl) || p.date);
 
 export default function Blog() {
   const lang = useLocale();
@@ -46,7 +45,7 @@ export default function Blog() {
   // bezGlownej (lib/blogPosts.js): wpis ukryty na liscie strony glownej decyzja wlasciciela z 18.11.2026.
   const posts = [...wszystkie]
     .filter((p) => !p.bezGlownej)
-    .sort((a, b) => dataJezyka(b, lang) - dataJezyka(a, lang))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3)
     .map((p) => ({
       date: lang === 'pl' ? p.displayDatePl : p.displayDateEn,

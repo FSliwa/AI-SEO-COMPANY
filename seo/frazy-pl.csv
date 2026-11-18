@@ -759,7 +759,7 @@ template content planner,10,10,0,,copy,informacyjna/narzędzie,szablon,/narzedzi
 test seo strony,10,10,5.14,HIGH,_inne,,,,pominięta,frazy.csv,nieprzypisane
 umowa na pozycjonowanie strony internetowej,10,10,4.49,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
 umowa o pozycjonowanie strony internetowej wzór,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
-vwo vs optimizely,10,10,0,,_inne,,,,pominięta,"frazy.csv; fraza strony: /blog/vwo-vs-optimizely-porownanie,/en/blog/vwo-vs-optimizely-porownanie",nieprzypisane
+vwo vs optimizely,10,10,0,,_inne,,,,pominięta,"frazy.csv; fraza strony: /blog/vwo-vs-optimizely-porownanie,/en/blog/vwo-vs-optimizely-comparison",nieprzypisane
 wizytówka google maps cena,10,10,5.24,HIGH,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
 wizytówka google opinie,10,10,2.39,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
 wordpress czy wix,10,10,0,MEDIUM,_inne,,,,pominięta,frazy.csv,nieprzypisane
