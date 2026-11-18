@@ -21,6 +21,7 @@ import { track } from '@/lib/track';
 import { odblokuj } from '@/lib/narzedziaApi';
 import { ODBIORCY, ODBIORCY_EN, ZGODA_NEWSLETTER, ZGODA_NEWSLETTER_EN } from '@/lib/zgodyNarzedzi';
 import Zwin from './Zwin';
+import { SIEDZIBA } from '@/lib/firma';
 
 export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [], przycisk, dane, konkurenci, dodatkowePola = null, onOdblokowano, tylkoRaport = false }) {
   const lang = useLocale();
@@ -119,11 +120,11 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
         <input type="checkbox" name="zgodaWynik" required disabled={zostaje} />
         {en ? (
           <span>
-            Email me this result. Controller: AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warsaw, Poland). We will use your data to send the result and answer your questions, and delete it after 60 days. Recipients: {ODBIORCY_EN[narzedzie]}. Details in the <Link href="/cookies">privacy policy</Link>.
+            Email me this result. Controller: AI SIGNALS COMPANY P.S.A. ({SIEDZIBA.ulica}, Warsaw, Poland). We will use your data to send the result and answer your questions, and delete it after 60 days. Recipients: {ODBIORCY_EN[narzedzie]}. Details in the <Link href="/cookies">privacy policy</Link>.
           </span>
         ) : (
         <span>
-          Wyślijcie mi ten wynik e-mailem. Administrator: AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warszawa). Dane wykorzystamy, żeby wysłać wynik i odpowiedzieć na pytania, i usuniemy po 60 dniach. Odbiorcy: {ODBIORCY[narzedzie]}. Szczegóły w <Link href="/cookies">polityce prywatności</Link>.
+          Wyślijcie mi ten wynik e-mailem. Administrator: AI SIGNALS COMPANY P.S.A. ({SIEDZIBA.ulica}, Warszawa). Dane wykorzystamy, żeby wysłać wynik i odpowiedzieć na pytania, i usuniemy po 60 dniach. Odbiorcy: {ODBIORCY[narzedzie]}. Szczegóły w <Link href="/cookies">polityce prywatności</Link>.
         </span>
         )}
       </label>

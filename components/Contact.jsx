@@ -7,6 +7,7 @@ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { sectionId } from '@/lib/anchors';
 import { GODZINY_TEKST } from '@/lib/godziny';
+import { BIURO, SIEDZIBA, ETYKIETY, adresLinia } from '@/lib/firma';
 import { track, pageType, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { ENTRY_OFFER, ENTRY_OFFER_PRICE_PLN } from '@/components/EntryOffer';
 import { readAttribution, consentMarketing, SKAD_O_NAS_WIESZ } from '@/lib/attribution';
@@ -273,7 +274,7 @@ export default function Contact({ isMainContent = false }) {
             <p>{t('subtitle')}</p>
             
             <ul className="company-details">
-              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Adres:', 'Address:')}</span> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
+              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{ETYKIETY.biuro[lang]}:</span> {adresLinia(BIURO, lang)}</li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Telefon:', 'Phone:')}</span> <a href="tel:+48518815055" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Godziny otwarcia:', 'Opening hours:')}</span> {GODZINY_TEKST[lang]}</li>
@@ -412,7 +413,7 @@ export default function Contact({ isMainContent = false }) {
             <p style={{ fontSize: '0.8rem', lineHeight: 1.5, color: 'var(--w-tusz-2)', margin: '0 0 1rem 0' }}>
               {lang === 'pl' ? (
                 <>
-                  Administratorem Twoich danych jest AI SIGNALS COMPANY Prosta Spółka Akcyjna (marka AI SEO COMPANY), ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa.
+                  Administratorem Twoich danych jest AI SIGNALS COMPANY Prosta Spółka Akcyjna (marka AI SEO COMPANY), {adresLinia(SIEDZIBA, 'pl')}.
                   Dane z formularza przetwarzamy, żeby odpowiedzieć na zapytanie i przygotować ofertę. Wysyłamy je e-mailem do naszego zespołu (dostawca poczty: Resend) i zapisujemy w arkuszu Google.
                   Po wysłaniu formularza przeglądarka przekazuje Google zdarzenie zapytania z zahaszowanym adresem e-mail, żeby mierzyć skuteczność reklam.
                   Przysługuje Ci dostęp do danych, ich sprostowanie, usunięcie oraz sprzeciw wobec przetwarzania.
@@ -420,7 +421,7 @@ export default function Contact({ isMainContent = false }) {
                 </>
               ) : lang === 'de' ? (
                 <>
-                  Verantwortlich für Ihre Daten ist AI SIGNALS COMPANY Prosta Spółka Akcyjna (Marke: AI SEO COMPANY), ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen.
+                  Verantwortlich für Ihre Daten ist AI SIGNALS COMPANY Prosta Spółka Akcyjna (Marke: AI SEO COMPANY), {adresLinia(SIEDZIBA, 'de')}, Polen.
                   Wir verarbeiten die Formulardaten, um Ihre Anfrage zu beantworten und ein Angebot vorzubereiten. Wir senden sie per E-Mail an unser Team (E-Mail-Dienstleister: Resend) und speichern sie in einer Google-Tabelle.
                   Nur wenn Sie im Cookie-Banner der Marketing-Einwilligung zugestimmt haben, übermittelt Ihr Browser nach dem Absenden an Google ein Anfrage-Ereignis mit gehashter E-Mail-Adresse, um die Wirkung von Werbung zu messen.
                   Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten sowie auf Widerspruch gegen die Verarbeitung.
@@ -428,7 +429,7 @@ export default function Contact({ isMainContent = false }) {
                 </>
               ) : (
                 <>
-                  The controller of your data is AI SIGNALS COMPANY Prosta Spółka Akcyjna (brand: AI SEO COMPANY), ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland.
+                  The controller of your data is AI SIGNALS COMPANY Prosta Spółka Akcyjna (brand: AI SEO COMPANY), {SIEDZIBA.ulica}, {SIEDZIBA.kod} Warsaw, Poland.
                   We process the form data to answer your enquiry and prepare an offer. We send it by e-mail to our team (e-mail provider: Resend) and store it in a Google spreadsheet.
                   After you submit the form, your browser passes Google an enquiry event with your hashed e-mail address, to measure ad performance.
                   You have the right to access, rectify and erase your data, and to object to processing.

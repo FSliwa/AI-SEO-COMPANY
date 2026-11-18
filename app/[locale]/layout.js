@@ -12,6 +12,7 @@ import RuchUzytkownika from '@/components/RuchUzytkownika';
 import WebVitals from '@/components/WebVitals';
 import NewsletterPopupLoader from '@/components/NewsletterPopupLoader';
 import { GODZINY_JSONLD } from '@/lib/godziny';
+import { BIURO } from '@/lib/firma';
 import { STRONY_DE } from '@/lib/stronyDe';
 
 // Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
@@ -164,19 +165,18 @@ const jsonLdDataPl = {
       'telephone': '+48518815055',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': 'ul. Grzybowska 12/14 lok. B-3',
+        'streetAddress': BIURO.ulica,
         'addressLocality': 'Warszawa',
-        'postalCode': '00-132',
+        'postalCode': BIURO.kod,
         'addressCountry': 'PL'
       },
-      // 14.10.2026: punkt adresowy budynku Grzybowska 12/14 z rejestru GUGiK
-      // (usluga UUG, stan 14.10.2026; rejestr nie geokoduje lokalu B-3).
-      // 7 miejsc po przecinku: Google wymaga co najmniej 5, a 21.00000 JSON
-      // zapisalby jako 21. Przy zmianie siedziby zmienic address i geo razem.
+      // 18.11.2026: adres i punkt to BIURO (Grzybowska 5A, adres Profilu Firmy w Google), z lib/firma.js;
+      // siedziba z KRS (12/14 lok. B-3) jest tylko w danych spolki. Punkt z rejestru GUGiK (usluga UUG).
+      // 7 miejsc po przecinku: Google wymaga co najmniej 5. Przy zmianie biura zmienic lib/firma.js.
       'geo': {
         '@type': 'GeoCoordinates',
-        'latitude': 52.2370497,
-        'longitude': 20.9999951
+        'latitude': BIURO.lat,
+        'longitude': BIURO.lon
       },
       // 14.10.2026: bylo 'vatID': 'PL5253090237', ale VIES zwraca dla tego
       // numeru isValid: false, a spolki nie ma w wykazie VAT MF. NIP z KRS

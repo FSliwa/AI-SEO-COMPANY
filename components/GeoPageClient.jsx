@@ -16,6 +16,7 @@ import { Link } from '../i18n/routing';
 import { hash, sectionId } from '@/lib/anchors';
 import { hrefJesliOpublikowana, SPRAWDZARKA_DZIALA } from '@/lib/publikacja';
 import { PANEL_DEMO_URL } from '@/lib/panel';
+import { BIURO, adresLinia } from '@/lib/firma';
 
 // Oferta GEO dla małych firm (zadanie 2.2 planu przewagi, decyzja D6: audyt 990 zł zaliczany
 // na abonament, monitoring w Premium, dopłata 490 zł do Standard). Wolumeny fraz (DataForSEO,
@@ -398,7 +399,7 @@ function SekcjePl() {
 
       {/* CS-02, OP-05: 180–250 słów, „agencja GEO” 2×, adres jak w LocalBusiness (layout.js). */}
       <SekcjaTekstowa title="Agencja GEO i SEO AI: jak wybrać i co robimy">
-        <p style={tekstStyl}>AI SEO COMPANY to agencja SEO AI z Warszawy (ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa). Łączymy pozycjonowanie stron z pracą nad widocznością w ChatGPT, Gemini i przeglądach AI, czyli z tym, czym zajmuje się agencja GEO. Pracujemy z firmami z Warszawy i całej Polski na umowie miesięcznej. Zobacz <Link href="/cennik-pozycjonowania" style={linkStyl}>cennik pozycjonowania</Link> i <a href={PANEL_DEMO_URL} data-cta="geo_agencja_demo" style={linkStyl}>demo panelu</a> bez logowania.</p>
+        <p style={tekstStyl}>AI SEO COMPANY to agencja SEO AI z Warszawy ({adresLinia(BIURO, 'pl')}). Łączymy pozycjonowanie stron z pracą nad widocznością w ChatGPT, Gemini i przeglądach AI, czyli z tym, czym zajmuje się agencja GEO. Pracujemy z firmami z Warszawy i całej Polski na umowie miesięcznej. Zobacz <Link href="/cennik-pozycjonowania" style={linkStyl}>cennik pozycjonowania</Link> i <a href={PANEL_DEMO_URL} data-cta="geo_agencja_demo" style={linkStyl}>demo panelu</a> bez logowania.</p>
         <h3 style={{ ...h3Styl, marginTop: '0.75rem' }}>Co robi agencja GEO co miesiąc</h3>
         <p style={tekstStyl}>Rzetelna agencja GEO co miesiąc powtarza pomiar na tych samych pytaniach, poprawia profile firmy w katalogach i w Mapach, dopisuje treści z odpowiedziami na pytania klientów i pilnuje danych strukturalnych. U nas w SEO Premium to 2 działania miesięcznie pod AI i pomiar 30 pytań co tydzień.</p>
         <h3 style={{ ...h3Styl, marginTop: '0.75rem' }}>8 pytań do agencji GEO przed podpisaniem umowy</h3>

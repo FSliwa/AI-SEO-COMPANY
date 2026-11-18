@@ -47,7 +47,8 @@ export default function UeberUnsDe() {
           zeilen={[
             ['Marke', FIRMA.marke],
             ['Unternehmen', FIRMA.rechtsname],
-            ['Anschrift', `${FIRMA.strasse}, ${FIRMA.ort}`],
+            ['Sitz der Gesellschaft', `${FIRMA.strasse}, ${FIRMA.ort}`],
+            ['Büroanschrift', FIRMA.buero],
             ['Registergericht', FIRMA.gericht],
             ['KRS', FIRMA.krs],
             ['NIP', FIRMA.nip],

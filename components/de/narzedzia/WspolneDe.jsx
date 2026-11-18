@@ -16,6 +16,7 @@ import { DEMO, odblokuj } from '@/lib/narzedziaApi';
 import { linkZParametrami } from '@/lib/narzedzia/parametrUrl';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import Zwin from '@/components/narzedzia/Zwin';
+import { SIEDZIBA } from '@/lib/firma';
 import '@/app/ruch.css'; // tokeny i utility ruchu (jak components/narzedzia/Zwin.jsx)
 
 export function kolorOceny(w) {
@@ -167,7 +168,7 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
       <label className="narz-zgoda">
         <input type="checkbox" name="zgodaWynik" required {...WALID_DE} />
         <span>
-          Bitte senden Sie mir dieses Ergebnis per E-Mail. Verantwortlicher: AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warschau, Polen). Wir verwenden Ihre Daten, um das Ergebnis zu senden und Ihre Fragen zu beantworten, und löschen sie nach 60 Tagen. Empfänger: {ODBIORCY_DE[narzedzie]}. Details in der <Link href="/cookies">Datenschutzerklärung</Link>.
+          Bitte senden Sie mir dieses Ergebnis per E-Mail. Verantwortlicher: AI SIGNALS COMPANY P.S.A. ({SIEDZIBA.ulica}, Warschau, Polen). Wir verwenden Ihre Daten, um das Ergebnis zu senden und Ihre Fragen zu beantworten, und löschen sie nach 60 Tagen. Empfänger: {ODBIORCY_DE[narzedzie]}. Details in der <Link href="/cookies">Datenschutzerklärung</Link>.
         </span>
       </label>
       <p className="narz-bramka-mikro">{tylkoRaport ? 'Der Bericht erreicht Ihr Postfach innerhalb einer Minute.' : 'Der Bericht erreicht Ihr Postfach innerhalb einer Minute. Das vollständige Ergebnis sehen Sie außerdem sofort hier.'}</p>

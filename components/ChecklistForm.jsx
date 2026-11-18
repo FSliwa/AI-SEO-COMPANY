@@ -22,6 +22,7 @@ import { useState } from 'react';
 import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
+import { SIEDZIBA } from '@/lib/firma';
 
 const API = `${process.env.NEXT_PUBLIC_PANEL_URL || 'https://panel.ai-seo-company.pl'}/api/checklista`;
 const field = { width: '100%', padding: '0.8rem 1rem', borderRadius: '14px', border: '1px solid rgba(15,23,42,0.15)', fontSize: '1rem', background: '#FFFFFF', color: 'var(--w-tusz)' };
@@ -38,7 +39,7 @@ const EN = {
   loading: 'Sending…',
   blad: 'Sending failed. Please try again in a moment.',
   brakPolaczenia: 'No connection. Check your internet and try again.',
-  zgoda: (przedmiot) => `I agree to AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warsaw, Poland) processing my email address to send ${przedmiot} and to answer my questions. You will not be added to a mailing list. Details in the `,
+  zgoda: (przedmiot) => `I agree to AI SIGNALS COMPANY P.S.A. (${SIEDZIBA.ulica}, Warsaw, Poland) processing my email address to send ${przedmiot} and to answer my questions. You will not be added to a mailing list. Details in the `,
   polityka: 'privacy policy',
 };
 
@@ -90,7 +91,7 @@ export default function ChecklistForm({
       <label style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>
         <input type="checkbox" name="consent" required style={{ marginTop: '0.25rem', width: 18, height: 18, flexShrink: 0 }} />
         <span>
-          {en ? EN.zgoda(przedmiot) : `Zgadzam się na przetwarzanie adresu e-mail przez AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warszawa), żeby wysłać ${przedmiot} i odpowiedzieć na moje pytania. Nie zapisujemy Cię na listę mailingową. Szczegóły w `}<Link href="/cookies" style={{ textDecoration: 'underline' }}>{en ? EN.polityka : 'polityce prywatności'}</Link>.
+          {en ? EN.zgoda(przedmiot) : `Zgadzam się na przetwarzanie adresu e-mail przez AI SIGNALS COMPANY P.S.A. (${SIEDZIBA.ulica}, Warszawa), żeby wysłać ${przedmiot} i odpowiedzieć na moje pytania. Nie zapisujemy Cię na listę mailingową. Szczegóły w `}<Link href="/cookies" style={{ textDecoration: 'underline' }}>{en ? EN.polityka : 'polityce prywatności'}</Link>.
         </span>
       </label>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>

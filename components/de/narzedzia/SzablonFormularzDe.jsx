@@ -9,6 +9,7 @@ import { WALID_DE } from '@/lib/walidacjaDe';
 import { useState } from 'react';
 import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
+import { SIEDZIBA } from '@/lib/firma';
 
 const field = { width: '100%', padding: '0.8rem 1rem', borderRadius: '14px', border: '1px solid rgba(15,23,42,0.15)', fontSize: '1rem', background: '#FFFFFF', color: 'var(--w-tusz)' };
 
@@ -41,7 +42,7 @@ export default function SzablonFormularzDe({ endpoint, plik, plan, idPrefiks, et
       <label style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>
         <input type="checkbox" name="consent" required {...WALID_DE} style={{ marginTop: '0.25rem', width: 18, height: 18, flexShrink: 0 }} />
         <span>
-          Ich willige ein, dass AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warschau, Polen) meine E-Mail-Adresse verarbeitet, um mir {przedmiot} zu senden und meine Fragen zu beantworten. Ich werde nicht in einen Mailverteiler eingetragen. Details in der <Link href="/cookies" style={{ textDecoration: 'underline' }}>Datenschutzerklärung</Link>.
+          Ich willige ein, dass AI SIGNALS COMPANY P.S.A. ({SIEDZIBA.ulica}, Warschau, Polen) meine E-Mail-Adresse verarbeitet, um mir {przedmiot} zu senden und meine Fragen zu beantworten. Ich werde nicht in einen Mailverteiler eingetragen. Details in der <Link href="/cookies" style={{ textDecoration: 'underline' }}>Datenschutzerklärung</Link>.
         </span>
       </label>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>

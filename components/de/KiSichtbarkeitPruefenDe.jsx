@@ -37,6 +37,7 @@ import * as s from '@/components/narzedzia/styl';
 import { BylineDe, faqFuerAppleFaq } from '@/components/de/GeoBausteineDe';
 import { KOPF, ODER_NACH_EMAIL, SCHRITTE, METHODE, LESEN, WEITER, WEITER_LINKS, QUELLEN, WEITERE_TOOLS, FAQ, SCHEMA, STAND, SCHLUESSEL, listeEngines } from '@/lib/de/kiSichtbarkeit';
 import { hrefDe } from '@/lib/stronyDe';
+import { SIEDZIBA } from '@/lib/firma';
 
 const W = WIDOCZNOSC;
 const PYTAMY = W.grok ? 'ChatGPT, Gemini, Perplexity, Claude und Grok' : 'ChatGPT, Gemini, Perplexity und Claude';
@@ -241,7 +242,7 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
       <label className="narz-zgoda">
         <input type="checkbox" name="zgodaWynik" required />
         <span lang="de">
-          Bitte senden Sie mir dieses Ergebnis per E-Mail. Verantwortlicher: AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warschau, Polen). Wir verwenden Ihre Daten, um das Ergebnis zu senden und Ihre Fragen zu beantworten, und löschen sie nach 60 Tagen. Empfänger: E-Mail-Dienstleister (Resend) und Anbieter von KI-Modellen (DataForSEO, Anthropic). Einzelheiten in der <Link href="/cookies">Datenschutzerklärung</Link>.
+          Bitte senden Sie mir dieses Ergebnis per E-Mail. Verantwortlicher: AI SIGNALS COMPANY P.S.A. ({SIEDZIBA.ulica}, Warschau, Polen). Wir verwenden Ihre Daten, um das Ergebnis zu senden und Ihre Fragen zu beantworten, und löschen sie nach 60 Tagen. Empfänger: E-Mail-Dienstleister (Resend) und Anbieter von KI-Modellen (DataForSEO, Anthropic). Einzelheiten in der <Link href="/cookies">Datenschutzerklärung</Link>.
         </span>
       </label>
       <p className="narz-bramka-mikro">Der Bericht erreicht Ihren Posteingang innerhalb einer Minute. Das vollständige Ergebnis sehen Sie außerdem sofort hier.</p>

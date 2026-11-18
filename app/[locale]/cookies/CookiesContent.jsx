@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import { homeHash } from '@/lib/anchors';
+import { SIEDZIBA, adresLinia } from '@/lib/firma';
 
 export default function CookiesContent() {
   const lang = useLocale();
@@ -54,7 +55,7 @@ export default function CookiesContent() {
                 <h2 style={{ marginTop: '3rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.75rem' }}>Polityka prywatności – informacja o przetwarzaniu danych osobowych</h2>
 
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Administrator danych</h3>
-                <p>Administratorem Twoich danych osobowych jest <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong> z siedzibą w Warszawie, ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego prowadzonego przez Sąd Rejonowy dla m.st. Warszawy w Warszawie pod numerem KRS 0001239983, NIP 5253090237, REGON 544761611.</p>
+                <p>Administratorem Twoich danych osobowych jest <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong> z siedzibą w Warszawie, {adresLinia(SIEDZIBA, 'pl')}, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego prowadzonego przez Sąd Rejonowy dla m.st. Warszawy w Warszawie pod numerem KRS 0001239983, NIP 5253090237, REGON 544761611.</p>
                 <p>Kontakt w sprawach ochrony danych: <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a> lub telefonicznie: <a href="tel:+48518815055" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>518 815 055</a>. Nie powołaliśmy Inspektora Ochrony Danych – we wszystkich sprawach dotyczących danych osobowych możesz kontaktować się bezpośrednio z administratorem.</p>
 
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Cele i podstawy prawne przetwarzania</h3>
@@ -123,7 +124,7 @@ export default function CookiesContent() {
                 <h2 style={{ marginTop: '3rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.75rem' }}>Privacy policy – information on the processing of personal data</h2>
 
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Data controller</h3>
-                <p>The controller of your personal data is <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong>, registered office at ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland, entered in the register of entrepreneurs of the National Court Register kept by the District Court for the Capital City of Warsaw under KRS number 0001239983, tax ID (NIP) 5253090237, statistical number (REGON) 544761611.</p>
+                <p>The controller of your personal data is <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong>, registered office at {SIEDZIBA.ulica}, {SIEDZIBA.kod} Warsaw, Poland, entered in the register of entrepreneurs of the National Court Register kept by the District Court for the Capital City of Warsaw under KRS number 0001239983, tax ID (NIP) 5253090237, statistical number (REGON) 544761611.</p>
                 <p>Data protection contact: <a href="mailto:kontakt@ai-seo-company.pl" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a> or <a href="tel:+48518815055" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>+48 518 815 055</a>. We have not appointed a Data Protection Officer – please contact the controller directly on any data protection matter.</p>
 
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Purposes and legal bases</h3>

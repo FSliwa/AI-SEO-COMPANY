@@ -12,6 +12,7 @@ import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { track } from '@/lib/track';
 import { GODZINY_TEKST } from '@/lib/godziny';
+import { BIURO, SIEDZIBA, ETYKIETY, adresLinia } from '@/lib/firma';
 
 // A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
 // pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
@@ -148,7 +149,7 @@ export default function Footer() {
                     registered office and address, the registry court and KRS
                     number, NIP, and the amount of share capital (kapitał akcyjny). */}
                 <p style={{ margin: 0 }}>AI SIGNALS COMPANY Prosta Spółka Akcyjna</p>
-                <p style={{ margin: 0 }}>{lang === 'de' ? 'ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau' : 'ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa'}</p>
+                <p style={{ margin: 0 }}>{ETYKIETY.siedziba[lang]}: {adresLinia(SIEDZIBA, lang)}</p>
                 <p style={{ margin: 0 }}>
                   {tr(lang, 'Sąd Rejonowy dla m.st. Warszawy w Warszawie', 'District Court for the Capital City of Warsaw')}
                 </p>
@@ -229,6 +230,7 @@ export default function Footer() {
               <ul className="footer-links">
                 <li><a href="tel:+48518815055" data-cta="footer">{lang === 'de' ? '+48 518 815 055' : '518 815 055'}</a></li>
                 <li><a href="mailto:kontakt@ai-seo-company.pl" data-cta="footer">kontakt@ai-seo-company.pl</a></li>
+                <li>{ETYKIETY.biuro[lang]}: {adresLinia(BIURO, lang)}</li>
                 <li><Link href={homeHash('kontakt', lang)} data-cta="footer">{tr(lang, 'Formularz Wyceny', 'Get Proposal Form')}</Link></li>
                 <li><Link href="/cookies">{tr(lang, 'Polityka Prywatności', 'Privacy Policy')}</Link></li>
                 <li><Link href="/regulamin">{tr(lang, 'Regulamin', 'Terms of Service')}</Link></li>

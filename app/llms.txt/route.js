@@ -3,6 +3,7 @@ import { blogPosts } from '@/lib/blogPosts';
 import { BASE_URL } from '@/lib/sitemapEntries';
 import { czyOpublikowana, opublikowaneSciezki, wpisPublikacji } from '@/lib/publikacja';
 import { STRONY_EN } from '@/lib/stronyEn';
+import { BIURO, SIEDZIBA, adresLinia } from '@/lib/firma';
 
 // /llms.txt generowany z danych serwisu (T0.5, PLAN-v2 7; AV-05, AV-15 z korektą, AV-19, SA-12,
 // CB-09). Integracja 5.11.2026: zastępuje public/llms.txt (plik usunięty), żeby nowe strony
@@ -75,7 +76,8 @@ function trescLlms() {
 - Nazwa handlowa: AI SEO COMPANY
 - Podmiot prawny: AI SIGNALS COMPANY Prosta Spółka Akcyjna
 - KRS: 0001239983 · NIP: 5253090237 · REGON: 544761611
-- Adres: ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa, Polska
+- Biuro: ${adresLinia(BIURO, 'pl')}, Polska
+- Siedziba rejestrowa: ${adresLinia(SIEDZIBA, 'pl')}, Polska
 - Kontakt: kontakt@ai-seo-company.pl · +48 518 815 055
 - Obszar działania: Warszawa i cała Polska; obsługa w języku polskim i angielskim
 - Model rozliczenia: abonament miesięczny, od 1 900 zł netto (SEO Standard: 20 fraz, 2 treści, 2 linki miesięcznie; SEO Premium 2 500 zł: 50 fraz, 4 treści, 4 linki, pomiar widoczności w AI)

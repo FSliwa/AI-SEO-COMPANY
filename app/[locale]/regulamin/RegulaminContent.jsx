@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import { Link } from '@/i18n/routing';
+import { SIEDZIBA, adresLinia } from '@/lib/firma';
 import { AUDYT, WIDOCZNOSC, MAKIETA, KALKULATOR, AUTORYTET } from '@/lib/narzedziaLiczby';
 
 const h2 = { marginTop: '2.5rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.4rem' };
@@ -41,7 +42,7 @@ export default function RegulaminContent() {
                 <p>Regulamin określa zasady korzystania z serwisu internetowego ai-seo-company.pl oraz warunki świadczenia usług drogą elektroniczną, zgodnie z art. 8 ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną.</p>
 
                 <h2 style={h2}>§ 1. Usługodawca</h2>
-                <p>Usługodawcą jest <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong> z siedzibą w Warszawie, ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego prowadzonego przez Sąd Rejonowy dla m.st. Warszawy w Warszawie pod numerem KRS 0001239983, NIP 5253090237, REGON 544761611.</p>
+                <p>Usługodawcą jest <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong> z siedzibą w Warszawie, {adresLinia(SIEDZIBA, 'pl')}, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego prowadzonego przez Sąd Rejonowy dla m.st. Warszawy w Warszawie pod numerem KRS 0001239983, NIP 5253090237, REGON 544761611.</p>
                 <p>Kontakt: <a href="mailto:kontakt@ai-seo-company.pl" style={a}>kontakt@ai-seo-company.pl</a>, tel. <a href="tel:+48518815055" style={a}>518 815 055</a>.</p>
 
                 <h2 style={h2}>§ 2. Definicje</h2>
@@ -106,7 +107,7 @@ export default function RegulaminContent() {
                 <p>These terms set out the rules for using the ai-seo-company.pl website and the conditions for providing services by electronic means, pursuant to art. 8 of the Polish Act of 18 July 2002 on Providing Services by Electronic Means.</p>
 
                 <h2 style={h2}>§ 1. Service provider</h2>
-                <p>The service provider is <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong>, registered office at ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland, entered in the register of entrepreneurs of the National Court Register kept by the District Court for the Capital City of Warsaw under KRS number 0001239983, NIP 5253090237, REGON 544761611.</p>
+                <p>The service provider is <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong>, registered office at {SIEDZIBA.ulica}, {SIEDZIBA.kod} Warsaw, Poland, entered in the register of entrepreneurs of the National Court Register kept by the District Court for the Capital City of Warsaw under KRS number 0001239983, NIP 5253090237, REGON 544761611.</p>
                 <p>Contact: <a href="mailto:kontakt@ai-seo-company.pl" style={a}>kontakt@ai-seo-company.pl</a>, phone <a href="tel:+48518815055" style={a}>+48 518 815 055</a>.</p>
 
                 <h2 style={h2}>§ 2. Definitions</h2>

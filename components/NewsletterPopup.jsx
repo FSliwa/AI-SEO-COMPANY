@@ -26,6 +26,7 @@ import Link from 'next/link';
 import { track } from '@/lib/track';
 import { zapiszDecyzje } from '@/lib/popupOferty';
 import { tekstyOferty } from '@/lib/popupTeksty';
+import { SIEDZIBA } from '@/lib/firma';
 import { ZGODA_NEWSLETTER_SZABLON, ZGODA_NEWSLETTER_SZABLON_EN } from '@/lib/zgodyNarzedzi';
 
 const API = `${process.env.NEXT_PUBLIC_PANEL_URL || 'https://panel.ai-seo-company.pl'}/api/szablony`;
@@ -41,7 +42,7 @@ const T = {
     zamknij: 'Zamknij',
     obietnica: 'Newsletter: co 2 tygodnie jedna zmiana w Google lub AI i jeden szablon.',
     przedmiot: 'szablon',
-    zgoda: (przedmiot) => `Zgadzam się na przetwarzanie adresu e-mail przez AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warszawa), żeby wysłać ${przedmiot} i odpowiedzieć na moje pytania. Nie zapisujemy Cię na listę mailingową. Szczegóły w `,
+    zgoda: (przedmiot) => `Zgadzam się na przetwarzanie adresu e-mail przez AI SIGNALS COMPANY P.S.A. (${SIEDZIBA.ulica}, Warszawa), żeby wysłać ${przedmiot} i odpowiedzieć na moje pytania. Nie zapisujemy Cię na listę mailingową. Szczegóły w `,
     polityka: 'polityce prywatności',
     polityka_href: '/cookies',
     ok: 'Wysłane. Sprawdź skrzynkę (także folder Oferty albo Spam): link do PDF przyjdzie w ciągu minuty.',
@@ -60,7 +61,7 @@ const T = {
     zamknij: 'Close',
     obietnica: 'Newsletter: every 2 weeks, one change in Google or AI search and one template.',
     przedmiot: 'the template',
-    zgoda: (przedmiot) => `I agree to AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warsaw, Poland) processing my email address to send ${przedmiot} and to answer my questions. You will not be added to a mailing list. Details in the `,
+    zgoda: (przedmiot) => `I agree to AI SIGNALS COMPANY P.S.A. (${SIEDZIBA.ulica}, Warsaw, Poland) processing my email address to send ${przedmiot} and to answer my questions. You will not be added to a mailing list. Details in the `,
     polityka: 'privacy policy',
     polityka_href: '/en/cookies',
     ok: 'Sent. Check your inbox (including the Promotions or Spam folder): the link to the PDF will arrive within a minute.',
