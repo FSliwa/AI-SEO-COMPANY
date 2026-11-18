@@ -271,7 +271,7 @@ export default async function ArtykulGoogleAiMode({ params }) {
               <p>
                 Jeśli prowadzisz firmę lokalną, zacznij od wizytówki, bo Google wymienia aktualny Profil Firmy w zaleceniach dla funkcji AI.
                 {hrefWizytowka && <> Jak to robimy, opisaliśmy na stronie <Link href={hrefWizytowka}>pozycjonowanie wizytówki Google</Link>.</>}
-                {' '}Warunki techniczne z kroku pierwszego dokładniej rozpisuje nasz <Link href="/blog/technical-seo-audit-checklist">audyt techniczny SEO</Link>.
+                {' '}Warunki techniczne z kroku pierwszego dokładniej rozpisuje nasz <Link href="/blog/technical-seo-audit-checklist">audyt techniczny SEO</Link>. Indeksację w Bing, czyli drugiej dużej wyszukiwarce, opisujemy w poradniku <Link href="/blog/bing-webmaster-tools-indexnow-chatgpt">Bing Webmaster Tools i IndexNow</Link>.
               </p>
 
               <h2 id="pomiar">Jak sprawdzić, czy Google AI Mode cytuje Twoją stronę?</h2>
