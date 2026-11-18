@@ -471,7 +471,7 @@ export default function Portfolio() {
       <div className="realizacje-pas" data-petla="">
         <div className="container">
           <div className="portfolio-eyebrow realizacje-etykieta">
-            <span aria-hidden="true">✳</span> {lang === 'pl' ? 'WYBRANE REALIZACJE' : 'SELECTED CASE STUDIES'}
+            <span className="asterisk" aria-hidden="true">✳</span> {lang === 'pl' ? 'WYBRANE REALIZACJE' : 'SELECTED CASE STUDIES'}
           </div>
           <Realizacje pozycje={pozycje} lang={lang} etykieta={lang === 'pl' ? 'Wybrane realizacje' : 'Selected case studies'} />
         </div>
@@ -526,7 +526,7 @@ export default function Portfolio() {
             <div style={{ fontSize: '2rem', marginBottom: '0.25rem', fontWeight: 700 }} style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{activeModal.brandName}</div>
             <p style={{ fontSize: '1rem', color: 'var(--color-primary)', marginBottom: '1.5rem', fontWeight: '600' }}>
               <a href={activeModal.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
-                {activeModal.url} ↗
+                {activeModal.url} <span className="ico-ne" aria-hidden="true">↗</span>
               </a>
             </p>
             <div style={{ fontSize: '3.5rem', fontWeight: '700', background: activeModal.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '1.5rem', lineHeight: 1 }}>
@@ -537,7 +537,7 @@ export default function Portfolio() {
             </div>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <a href={activeModal.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'transparent' }}>
-                Odwiedź witrynę na żywo ↗
+                Odwiedź witrynę na żywo <span className="ico-ne" aria-hidden="true">↗</span>
               </a>
               <a href={hash('kontakt', lang)} className="btn btn-primary" onClick={() => setActiveModal(null)}>
                 Zamów stronę / SEO dla swojej firmy

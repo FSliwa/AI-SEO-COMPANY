@@ -512,7 +512,7 @@ export default function Hero() {
                   Szeroki uklad dostaje w <source> pusty piksel, wiec nie pobiera pliku. */}
               <picture className="hero-litery-ramka">
                 <source media="(min-width: 901px) and (min-aspect-ratio: 1/1)" srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
-                <img className="hero-litery" src="/images/wyglad/hero-litery-seo.webp" alt="" width={950} height={324} fetchPriority="high" decoding="async" />
+                <img className="hero-litery" src="/images/wyglad/hero-litery-seo.webp" alt="" width={956} height={324} fetchPriority="high" decoding="async" />
               </picture>
             </>
           )}
@@ -624,33 +624,6 @@ export default function Hero() {
           __html: "(function(){try{var s=document.getElementById('hero');if(!s)return;var t=s.querySelector('.hero-en-top'),b=s.querySelector('.hero-en-bottom'),h=document.querySelector('header');if(t)s.style.setProperty('--m-copy-h',Math.round(t.getBoundingClientRect().height)+'px');if(b)s.style.setProperty('--m-bottom-h',Math.ceil(b.getBoundingClientRect().height)+'px');if(h)s.style.setProperty('--m-head-h',Math.round(h.getBoundingClientRect().height)+'px');}catch(e){}})();"
         }}
       />
-
-      {/* 12.11.2026: pasek klientow jak na makiecie (Desktop - 2): cztery loga w jednym
-          szarym odcieniu, rozlozone rowno w pasie mgly na styku hero i oferty.
-          Kolejnosc z makiety: Madame Thai, TQL (potwierdzone przez wlasciciela 12.11.2026), AI Signals (ASE-BOT), Staniax.
-          Loga: /images/klienci/ (webp z przezroczystoscia, ai-signals jako SVG). Nie sa
-          linkami - nazwy w tym miejscu tez nimi nie byly. Szeroki uklad: jeden rzad;
-          telefon (< 768 px): siatka 2x2 na cala szerokosc; tablet w pionie bez paska. */}
-      <motion.ul
-        className="hero-klienci"
-        aria-label={lang === 'en' ? 'Our clients' : 'Nasi klienci'}
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
-      >
-        <li className="hero-klient hero-klient--mt">
-          <Image unoptimized src="/images/klienci/madame-thai.webp" alt="Madame Thai" width={720} height={67} />
-        </li>
-        <li className="hero-klient hero-klient--tql">
-          <Image unoptimized src="/images/klienci/tql.webp" alt="TQL" width={244} height={101} />
-        </li>
-        <li className="hero-klient hero-klient--ai">
-          <Image unoptimized src="/images/klienci/ai-signals.svg" alt="ASE-BOT (AI Signals)" width={224} height={47} />
-        </li>
-        <li className="hero-klient hero-klient--st">
-          <Image unoptimized src="/images/klienci/staniax.webp" alt="Staniax" width={720} height={129} />
-        </li>
-      </motion.ul>
     </section>
   );
 }

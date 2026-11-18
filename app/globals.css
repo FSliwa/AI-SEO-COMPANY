@@ -1944,7 +1944,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   font-size: 1rem;
   line-height: 1.55;
   color: var(--color-text-muted);
-  max-width: 68ch;
+  max-width: var(--w-miara, 54ch);
 }
 
 .blog-index-meta {
@@ -2457,8 +2457,7 @@ body.has-cookie-banner .kota-floating-cta {
     margin-top: 1.5rem !important;
   }
 
-  /* Hide asterisk on mobile */
-  .asterisk { display: none !important; }
+  /* Gwiazdka .asterisk na telefonie: dawniej ukrywana tu; teraz ma tę samą ikonę SVG co desktop (blok „Ikony SVG” na końcu pliku). */
 
   /* Apple Testimonial Mobile Card Adjustments */
   .apple-testimonial-card {
@@ -4334,4 +4333,53 @@ aside[id][tabindex="-1"]:focus {
 .badge-pill--link:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Ikony SVG zamiast znaków emoji (12.11.2026)
+   Znaki ✳ (U+2733) i ↗ (U+2197) mają wariant emoji: iOS i Android rysują je
+   jako kolorową (zieloną) ikonkę, desktop jako zwykły glif. Rysujemy je
+   maską SVG w kolorze currentColor, więc wyglądają tak samo wszędzie.
+   Znak zostaje w DOM (tekst dla botów/SEO), tylko jest wyparty poza ramkę.
+   ========================================================================== */
+:root {
+  --ico-ast: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07' stroke='%23000' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+  --ico-ne: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 17.5l11-11M8 6.5h9.5V16' stroke='%23000' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.asterisk,
+.ico-ne {
+  display: inline-block !important;
+  flex: none;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  vertical-align: -0.12em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: -9999px;
+  font-size: inherit;
+  background-color: currentColor;
+  -webkit-mask: var(--ico-ast) center / 100% 100% no-repeat;
+  mask: var(--ico-ast) center / 100% 100% no-repeat;
+}
+
+.ico-ne {
+  width: 0.85em;
+  height: 0.85em;
+  margin-left: 0.2em;
+  -webkit-mask-image: var(--ico-ne);
+  mask-image: var(--ico-ne);
+}
+
+/* Punkty list „✳” w ofercie (wyglad.css dawał content: '✳'). */
+html body .gory-oferta .service-features li::before {
+  content: '' !important;
+  width: 1.1rem !important;
+  height: 1.1rem !important;
+  top: 0.42em !important;
+  background: currentColor !important;
+  -webkit-mask: var(--ico-ast) center / contain no-repeat;
+  mask: var(--ico-ast) center / contain no-repeat;
+  font-size: 0 !important;
 }

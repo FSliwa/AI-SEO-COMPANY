@@ -37,6 +37,7 @@ export async function generateMetadata({ params }) {
 
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import HeroKlienci from '@/components/HeroKlienci';
 import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
 import Pricing from '@/components/Pricing';
@@ -81,6 +82,8 @@ export default function Home() {
           {/* 11.11.2026: pas mgly w poprzek granicy hero i oferty - przejscie bez szwu. */}
           <div className="styk-mgla" aria-hidden="true"><span /><span /></div>
           <div className="chmury-dryf" aria-hidden="true"><span /><span /></div>
+          {/* 12.11.2026: pasek klientow w przeplywie, na pasie mgly pod hero (makieta). */}
+          <HeroKlienci />
           <Services />
         </div>
         <WhyUs isMainContent={true} />

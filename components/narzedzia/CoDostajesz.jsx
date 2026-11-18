@@ -6,6 +6,7 @@
 // Treść per narzędzie: Z-A3, Z-W5, Z-M2, Z-K5 (kalkulator: e-mail tylko wysyła zestawienie).
 
 import { Sekcja } from './Sekcja';
+import Ikona from './Ikony';
 import st from './narzedzia.module.css';
 import * as s from './styl';
 
@@ -29,12 +30,14 @@ export default function CoDostajesz({
       <div className={`${st.dwieKolumny}${jedna ? ` ${st.jednaKolumna}` : ''}`}>
         {odRazu.length > 0 && (
           <div className={st.kolumna}>
+            <span className={st.kolumnaIkona}><Ikona nazwa="bolt" /></span>
             <h3 style={s.h3Kolumny}>{tytulOdRazu ?? (en ? 'Right away, no email needed' : 'Od razu, bez e-maila')}</h3>
             <ul>{odRazu.map((x, i) => <li key={i}>{x}</li>)}</ul>
           </div>
         )}
         {poEmailu.length > 0 && (
           <div className={`${st.kolumna} ${st.kolumnaZaEmailem}`}>
+            <span className={st.kolumnaIkona}><Ikona nazwa="koperta" /></span>
             <h3 style={s.h3Kolumny}>{tytulPoEmailu ?? (en ? 'After you enter your email' : 'Po podaniu e-maila')}</h3>
             <ul>{poEmailu.map((x, i) => <li key={i}>{x}</li>)}</ul>
           </div>

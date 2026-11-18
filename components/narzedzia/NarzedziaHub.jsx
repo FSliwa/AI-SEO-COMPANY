@@ -36,6 +36,7 @@ import { PORADNIKI } from '@/lib/narzedzia/poradniki';
 import { obrazKarty } from '@/lib/narzedziaObrazy';
 import AudytSeoClient from './AudytSeoClient';
 import Poradniki from './Poradniki';
+import Ikona, { ikonaNarzedzia } from './Ikony';
 import st from './narzedzia.module.css';
 import * as s from './styl';
 
@@ -156,41 +157,46 @@ const malyTekst = { fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--color-t
 const miniatura = { display: 'block', width: '100%', height: 'auto', aspectRatio: '16 / 10', borderRadius: '16px', border: '1px solid var(--color-border)', background: 'var(--color-bg-surface)' };
 const podpisMiniatury = { fontSize: '0.8rem', lineHeight: 1.4, color: 'var(--w-tusz-2)', margin: '0.4rem 0 0' };
 
-function Karta({ karta, t, locale }) {
+function Karta({ karta, t, locale, i = 0 }) {
   const narzedzie = karta.sekcja === 'narzedzia';
   // Karty narzędzi stoją pod H3 grupy (Z-H6), więc ich nazwa to H4; karty szablonów stoją pod H2.
   const Naglowek = narzedzie ? 'h4' : 'h3';
   // hub-obrazy (12.11.2026): miniatura wyniku nad nazwą narzędzia (lib/narzedziaObrazy.js), pod pierwszym ekranem → lazy.
   const obraz = narzedzie ? obrazKarty(karta.id, locale) : null;
   return (
-    <article style={{ ...s.karta, padding: 'clamp(1.25rem, 3vw, 1.75rem)', display: 'flex', flexDirection: 'column' }}>
+    <article className={`${st.kartaHuba}${narzedzie ? '' : ` ${st.kartaSzablonu}`}`} style={{ '--i': i % 6 }}>
       {obraz ? (
-        <figure style={{ margin: '0 0 1rem' }}>
-          <Image src={obraz.src} alt={obraz.alt} width={obraz.width} height={obraz.height} sizes="(max-width: 700px) calc(100vw - 72px), (max-width: 1100px) 50vw, 360px" loading="lazy" style={miniatura} />
+        <figure className={st.miniatura}>
+          <div className={st.miniaturaRamka}>
+            <Image src={obraz.src} alt={obraz.alt} width={obraz.width} height={obraz.height} sizes="(max-width: 700px) calc(100vw - 72px), (max-width: 1100px) 50vw, 540px" loading="lazy" />
+          </div>
           <figcaption style={podpisMiniatury}>{obraz.podpis}</figcaption>
         </figure>
-      ) : null}
+      ) : (
+        <div className={st.miniKartka} aria-hidden="true" data-k={i % 3}><i /><b /><b /><b /><u /></div>
+      )}
       {/* Strzałka poza nagłówkiem, żeby nie trafiała do jego tekstu; karta bez linku = bez strzałki (reguła 6.0). */}
-      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.75rem', margin: '0 0 0.6rem' }}>
+      <div className={st.kartaNaglowek}>
+        <span className={st.kafelIkona} aria-hidden="true"><Ikona nazwa={narzedzie ? ikonaNarzedzia(karta.id) : 'szablon'} /></span>
         <Naglowek style={{ ...s.h3, margin: 0 }}>
           {karta.href ? (
-            <Link href={hrefDlaLink(karta.href, locale)} data-cta={`narzedzia_${karta.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>{karta.nazwa}</Link>
+            <Link href={hrefDlaLink(karta.href, locale)} data-cta={`narzedzia_${karta.id}`} className={st.kartaLink} style={{ color: 'inherit', textDecoration: 'none' }}>{karta.nazwa}</Link>
           ) : karta.nazwa}
         </Naglowek>
-        {karta.href && <span aria-hidden="true" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '1.2rem' }}>→</span>}
+        {karta.href && <span aria-hidden="true" className={st.strzalka}><Ikona nazwa="strzalka" rozmiar={20} /></span>}
       </div>
       <p style={{ ...s.akapit, margin: 0, fontSize: '1rem' }}>{karta.opis}</p>
       {narzedzie && karta.odRazu ? (
-        <>
-          <p style={{ ...malyTekst, marginTop: '0.85rem' }}><strong>{t.odRazu}</strong> {karta.odRazu}.</p>
+        <div className={st.odRazuBlok}>
+          <p style={malyTekst}><strong>{t.odRazu}</strong> {karta.odRazu}.</p>
           <p style={malyTekst}>{karta.poEmailu ? <><strong>{t.poEmailu}</strong> {karta.poEmailu}.</> : <strong>{t.bezEmaila}</strong>}</p>
-        </>
+        </div>
       ) : null}
     </article>
   );
 }
 
-const siatka = { display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))' };
+
 
 // Poradniki huba: pierwszy poradnik każdego narzędzia + drugi z widoczności i audytu (bez powtórzeń).
 function poradnikiHuba() {
@@ -236,7 +242,7 @@ export default function NarzedziaHub({ locale = 'pl' }) {
   });
 
   return (
-    <main className={st.strona} style={s.main}>
+    <main className={`${st.strona} ${st.hub}`} style={s.main}>
       <Header />
       <Breadcrumbs pl="Narzędzia" en="Tools" />
       <CollectionPageSchema url={urlHuba} name={H1} description={opisHuba} language={en ? 'en' : 'pl'} elementy={elementy} />
@@ -249,7 +255,7 @@ export default function NarzedziaHub({ locale = 'pl' }) {
             </div>
             <h1 style={s.h1}>{H1}</h1>
           </Reveal>
-          <p className={st.lead} style={s.lead}>{t.lead(szablony.length)}</p>
+          <p className={st.lead} style={{ ...s.lead, margin: '0 auto 1.5rem' }}>{t.lead(szablony.length)}</p>
 
           {/* Z-H7: pole darmowego audytu SEO w hubie (ten sam klient co na stronie audytu, bez automatycznego startu). */}
           {hrefAudytu ? (
@@ -276,9 +282,9 @@ export default function NarzedziaHub({ locale = 'pl' }) {
             </p>
             {grupy.map((g) => (
               <div key={g.id}>
-                <h3 id={`grupa-${g.id}`} style={{ ...s.h3, margin: '1.75rem 0 0.85rem' }}>{t.grupy[g.id]}</h3>
-                <div style={siatka}>
-                  {g.karty.map((k) => <Karta key={k.id} karta={k} t={t} locale={locale} />)}
+                <h3 id={`grupa-${g.id}`} className={st.grupaH3} style={{ ...s.h3, margin: '2rem 0 1rem' }}>{t.grupy[g.id]}</h3>
+                <div className={st.siatkaHub}>
+                  {g.karty.map((k, n) => <Karta key={k.id} karta={k} t={t} locale={locale} i={n} />)}
                 </div>
               </div>
             ))}
@@ -318,8 +324,8 @@ export default function NarzedziaHub({ locale = 'pl' }) {
             <p style={s.akapit}>
               {t.pSzablony}
             </p>
-            <div style={siatka}>
-              {szablony.map((k) => <Karta key={k.id} karta={k} t={t} locale={locale} />)}
+            <div className={st.siatkaSzablonow}>
+              {szablony.map((k, n) => <Karta key={k.id} karta={k} t={t} locale={locale} i={n} />)}
             </div>
           </section>
 

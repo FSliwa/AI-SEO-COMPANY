@@ -12,6 +12,7 @@ import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
 import Byline from '@/components/Byline';
+import TloGory from '@/components/TloGory';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 
 // 5.11.2026 (PS1; PLAN-v2 6.20, OP-08, OP-18, OP-04) - strona chroniona: tylko DODAWANIE w wersji PL.
@@ -28,7 +29,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
   return (
     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
-      <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+      <section className="subpage-hero tlo-gory-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+        <TloGory />
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>

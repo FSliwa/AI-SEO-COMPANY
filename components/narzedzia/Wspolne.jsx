@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { DEMO } from '@/lib/narzedziaApi';
+import st from './narzedzia.module.css';
 
 export function kolorOceny(w) {
   if (w >= 80) return 'dobra';
@@ -24,7 +25,7 @@ export function Ocena({ wynik, podpis, maly = false }) {
         <circle cx="60" cy="60" r={r} className="narz-ocena-tlo" />
         <circle cx="60" cy="60" r={r} className="narz-ocena-luk" strokeDasharray={obwod} strokeDashoffset={obwod * (1 - w / 100)} />
       </svg>
-      <span className="narz-ocena-liczba" aria-hidden="true">{w}</span>
+      <span className="narz-ocena-liczba" aria-hidden="true" style={{ '--cel': w }}>{w}</span>
       {podpis && <span className="narz-ocena-podpis" aria-hidden="true">{podpis}</span>}
     </div>
   );
@@ -38,13 +39,21 @@ export function Postep({ kroki, co = 6000 }) {
     return () => clearInterval(t);
   }, [kroki.length, co]);
   return (
-    <ol className="narz-postep" aria-live="polite">
-      {kroki.map((k, n) => (
-        <li key={k} className={n < i ? 'zrobione' : n === i ? 'teraz' : ''} aria-current={n === i ? 'step' : undefined}>
-          {k}
-        </li>
-      ))}
-    </ol>
+    <div className={st.postepBlok}>
+      <div className={st.pasek} style={{ '--p': (i + 0.5) / kroki.length }} aria-hidden="true"><i /></div>
+      <ol className="narz-postep" aria-live="polite">
+        {kroki.map((k, n) => (
+          <li key={k} className={n < i ? 'zrobione' : n === i ? 'teraz' : ''} aria-current={n === i ? 'step' : undefined}>
+            {k}
+          </li>
+        ))}
+      </ol>
+      {/* Szkielet wyniku: tylko kształty, rezerwuje miejsce i uspokaja czekanie (aria-hidden, shimmer w CSS). */}
+      <div className={st.szkielet} aria-hidden="true">
+        <span className={st.szkPierscien} />
+        <span className={st.szkLinie}><i /><i /><i /></span>
+      </div>
+    </div>
   );
 }
 

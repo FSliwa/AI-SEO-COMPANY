@@ -474,7 +474,7 @@ section#contact.contact {
 }
 
 .gory-oferta .service-features li::before {
-  content: '✳' !important;
+  content: '' !important; /* ikona: maska SVG w globals.css (blok „Ikony SVG”) */
   position: absolute;
   left: 0;
   top: 0;
@@ -3541,24 +3541,29 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 /* ==========================================================================
    12.11.2026: pasek klientow jak na makiecie + litery SEO na cala szerokosc (telefon)
    --------------------------------------------------------------------------
-   1) Pasek: cztery loga w jednym szarym odcieniu (#85818C, pliki w
-      /images/klienci/), rowno rozlozone w pasie mgly na styku hero i oferty.
-      Makieta (Desktop - 2, szerokosc 1440): tekst od x=117 do x=1333, loga
-      283 / 133 / 223 / 240 px szerokosci, odstepy 106-123 px - stad 8,1 vw
-      marginesu i szerokosci w vw (19,65 / 9,24 / 15,5 / 16,7). Z-index 5 jak
-      dotad: nad mgla styku (4), pod nawigacja.
+   1) Pasek (components/HeroKlienci.jsx): cztery loga w jednym szarym odcieniu
+      (#85818C, pliki w /images/klienci/), w NORMALNYM przeplywie na gorze
+      .gory-oferta, na pasie mgly pod hero. Makieta (Desktop - 2, 1440 px): dol
+      hero y=892, srodek logotypow y=1097 (205 px = 14,2 vw pod hero), etykieta
+      "CO ROBIMY" y=1352 (255 px = 17,7 vw pod logami). Stad: padding-top paska
+      12,4 vw (+ polowa wysokosci rzedu ~27 px = 205 px) i padding-top oferty
+      15 vw (+ ok. 21 px naglowka sekcji, etykieta ~250 px nad logami). Wszystko w vw z clampami, wiec proporcje trzymaja sie na 1000-1920 px.
+      Tekst makiety od x=117 do x=1333, loga 283 / 133 / 223 / 240 px,
+      odstepy 106-123 px - stad 8,1 vw marginesu i szerokosci w vw.
    2) Telefon (< 768 px): siatka 2x2 na cala szerokosc (20 px marginesu jak
       tekst) i litery SEO rozciagniete do tych samych 20 px po bokach.
    Tablet w pionie i okna 768-900 px: pasek ukryty jak dotad, uklad bez zmian.
    ========================================================================== */
-.hero-klienci {
+.gory-klienci {
   display: none;
-  position: absolute;
+  position: relative;
+  /* Nad pasem mgly styku (z-index 4), pod nawigacja. */
   z-index: 5;
-  left: 8.1vw;
-  right: 8.1vw;
-  bottom: clamp(36px, 5.6vw, 96px);
-  margin: 0;
+}
+
+.hero-klienci {
+  display: flex;
+  margin: 0 8.1vw;
   padding: 0;
   list-style: none;
   align-items: center;
@@ -3584,22 +3589,48 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 .hero-klient--st { width: 16.7vw; }
 
 @media (min-width: 901px) and (min-aspect-ratio: 1/1) {
-  .hero-klienci {
-    display: flex;
+  .gory-klienci {
+    display: block;
+    padding-top: clamp(96px, 12.4vw, 220px);
+  }
+
+  .gory-oferta .gory-klienci + .services {
+    padding-top: clamp(96px, 15vw, 260px) !important;
   }
 }
 
 @media (max-width: 767px) {
+  .gory-klienci {
+    display: block;
+    padding-top: 28px;
+  }
+
+  /* Na telefonie pasmo gor jest nizsze i ciemnieje tuz pod hero: pas mgly
+     (jak .styk-mgla) pod logotypami trzyma kontrast bez zmiany ich koloru. */
+  .gory-klienci::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: -28px;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(240, 230, 224, 0) 0%, rgba(240, 230, 224, 0.9) 22%, rgba(240, 230, 224, 0.9) 72%, rgba(240, 230, 224, 0) 100%);
+  }
+
+  .gory-oferta .gory-klienci + .services {
+    padding-top: 72px !important;
+  }
+
   .hero-klienci {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-items: center;
     column-gap: 24px;
-    row-gap: 18px;
-    left: 20px;
-    right: 20px;
-    bottom: 14px;
+    row-gap: 22px;
+    margin: 0 20px;
   }
 
   .hero-klient--mt { width: 41vw; }
@@ -3616,17 +3647,16 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
     width: calc((100% - 40px) / 1.05);
   }
 
-  /* Wyzsze litery i pasek pod przyciskami: o tyle rosnie rzad pod literami i cala
-     sekcja (wzory skopiowane z globals.css, doliczone: wysokosc liter wiekszych
-     niz dotad = 9,11 vw - 13,64 px oraz pasek klientow 108 px). */
+  /* Wyzsze litery: o tyle rosnie rzad pod literami i cala sekcja (wzory
+     skopiowane z globals.css, doliczone: wysokosc liter wiekszych niz dotad =
+     9,11 vw - 13,64 px). Pasek klientow stoi poza hero (HeroKlienci). */
   .hero.hero--en {
-    --m-lit-d: calc(9.11vw - 13.64px);
-    --m-klienci-h: 108px;
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px + var(--m-lit-d) + var(--m-klienci-h)) !important;
+    --m-lit-d: calc(9.11vw - 3.64px);
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px + var(--m-lit-d)) !important;
   }
 
   html[lang="en"] .hero.hero--en {
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px + var(--m-lit-d) + var(--m-klienci-h)) !important;
+    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px + var(--m-lit-d)) !important;
   }
 
   .hero-en-copy {
@@ -3635,5 +3665,144 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 
   html[lang="en"] .hero-en-copy {
     grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px)) calc(24px + var(--m-band-h) * 0.2867 + var(--m-lit-d)) 1fr;
+  }
+}
+
+/* ==========================================================================
+   12.11.2026: rytm pionowy podstron (poza stroną główną, która ma własne pasma gór)
+   --------------------------------------------------------------------------
+   Skala: zwykła sekcja 88 / 88 px (globals.css), pasma kolorowe (cennik, kontakt)
+   72-112 px zamiast 80-144 px, a pierwsza sekcja po okruszkach i hero podstrony
+   55 px dołem zamiast 88. Dotąd: sekcja jasna (88) + pasmo ciemne (144) dawały 232 px
+   pustki, hero + kolejna sekcja 256-274 px, koniec artykułu + kontakt 344 px.
+   Zmienna --w-sekcja jest też używana w regule telefonu (kontakt: + 40vw na antenę),
+   więc zmiana jednego tokenu przesuwa wszystko spójnie.
+   ========================================================================== */
+main:not(:has(.gory-oferta)) {
+  --w-sekcja: clamp(72px, 7.8vw, 112px);
+}
+
+nav.breadcrumbs + section,
+.subpage-hero {
+  padding-bottom: clamp(40px, 3.9vw, 56px) !important;
+}
+
+/* Artykuł (blog, porównania) tuż przed kontaktem: jego własny dolny odstęp
+   (120 px inline) nie dokłada się już do paddingu pasma kontaktu. */
+article:has(+ aside.contact),
+article:has(+ section.contact) {
+  padding-bottom: clamp(48px, 5vw, 72px) !important;
+}
+
+/* ==========================================================================
+   12.11.2026: poprawki telefonu (hero strony glownej i okruszki)
+   --------------------------------------------------------------------------
+   - Litery SEO schodza o 10 px nizej (pasmo + maska razem, wiec ich dol dalej
+     gasnie tak samo); --m-lit-d wyzej dostal +10 px, wiec naglowek i wysokosc
+     sekcji przesuwaja sie o tyle samo. Dotad dol akapitu dotykal gornej
+     krawedzi liter (odstep ok. 8 px liczony od ramki linii, wizualnie 0).
+   - Okruszki 3-poziomowe (hub AI) lamaly slowa w srodku ("Pozycjonowani/e w AI"):
+     elementy nie dziela sie, a rzad zawija sie calymi pozycjami.
+   - Wizytowka Google: padding-top hero z inline (136 px) przegrywa z !important
+     z globals.css (56 px na telefonie), przez co eyebrow siedzial na okruszkach.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .hero-en-bg {
+    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + 18px - var(--m-band-h) * 0.3233);
+  }
+
+  html[lang="en"] .hero-en-bg {
+    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + 18px - var(--m-band-h) * 0.3233);
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+
+  .breadcrumbs > a,
+  .breadcrumbs > span {
+    white-space: nowrap;
+  }
+
+  main.subpage-main > section[style*="clamp(136px, 14vw, 166px)"] {
+    padding-top: 100px !important;
+  }
+}
+
+/* ==========================================================================
+   13.11.2026: poprawki z analizy designu (prace-2026-11-12/final/analiza/POPRAWKI.md)
+   --------------------------------------------------------------------------
+   P0-1  skala H1: 3 poziomy zamiast 9 (hero uslugowe 96 px i strona glowna bez zmian)
+   P0-2  wyciszony tekst na granatowych kartach (2,5:1 -> 10:1)
+   P1-3  dlugosc linii w tresci ok. 66-72 znakow (token --w-miara)
+   P1-4  tokeny odstepow zaokraglone do siatki 8 px
+   Tylko rozmiar, kolor i odstep: tresc, H1, schema i linki bez zmian.
+   ========================================================================== */
+:root {
+  --w-h1: clamp(2.25rem, 1rem + 4vw, 4.25rem);       /* 36 -> 68 px: huby, narzedzia, cennik, AI, zmiana agencji, blog hub */
+  --w-h1-art: clamp(2.25rem, 0.9rem + 3vw, 3.25rem); /* 36 -> 52 px: artykuly, porownania, szablony, wizytowka */
+  --w-h2-sub: clamp(1.75rem, 0.9rem + 2.3vw, 3rem);  /* 28 -> 48 px: H2 sekcji pod H1 poziomu 68 px */
+  --w-miara: 54ch;                                   /* szerokosc akapitu: w Geist 1ch = 0,66em, wiec 54ch to ok. 66-72 znakow w linii (68ch dawalo 85-98) */
+}
+
+/* P0-1. Poziom 52 px stoi PRZED poziomem 68 px: /pozycjonowanie-w-ai ma jednoczesnie
+   .section-header h1 i inline clamp(2.1rem, 5vw, 3.4rem) i ma dostac 68 px. */
+main:not(:has(.gory-oferta)) article h1:not(.hero *),
+main:not(:has(.gory-oferta)) > .container > h1:not(.hero *),
+main:not(:has(.gory-oferta)) h1[style*="clamp(2.1rem, 5vw, 3.4rem)"]:not(.hero *),
+main:not(:has(.gory-oferta)) .sz-h1 {
+  font-size: var(--w-h1-art) !important;
+  line-height: 1.1 !important;
+}
+
+main:not(:has(.gory-oferta)) :is(.section-header, .blog-grid) h1:not(.hero *) {
+  font-size: var(--w-h1) !important;
+  line-height: 1.08 !important;
+}
+
+main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.hero *) {
+  font-size: var(--w-h2-sub) !important;
+}
+
+/* P0-2. --w-tusz-2 to wyciszony tekst na papierze; na --w-noc dawal 2,5:1.
+   Dwa zapisy atrybutu: z serwera (bez spacji) i po nawigacji w przegladarce (ze spacja). */
+:is([style*="background:var(--w-noc)"], [style*="background: var(--w-noc)"])
+  :is([style*="color:var(--w-tusz-2)"], [style*="color: var(--w-tusz-2)"]) {
+  color: var(--w-noc-tekst) !important;
+}
+
+/* P1-3. Zerowa specyficznosc (:where): regula dziala tylko tam, gdzie akapit nie ma
+   wlasnego max-width z klasy ani z inline; hero i naglowki sekcji zostaja jak byly. */
+:where(main :is(section, article), .sz) :where(p, li):where(:not([class])):where(:not(.hero *, .subpage-hero *, .sz-hero *, .contact *, .answer-box *)) {
+  max-width: var(--w-miara);
+}
+
+:where(main) :where(p, li):where([style*="text-align:center"], [style*="text-align: center"]):where(:not(.hero *, .subpage-hero *, .sz-hero *, .contact *, .answer-box *)),
+:where(main) :where([style*="text-align:center"], [style*="text-align: center"]) :where(p, li):where(:not([class])):where(:not(.hero *, .subpage-hero *, .sz-hero *, .contact *, .answer-box *)) {
+  margin-inline: auto !important; /* inline margin: 0 0 1rem na akapitach wygrywal i wysrodkowany tekst siedzial przy lewej krawedzi */
+}
+
+/* P1-4. round() tylko tam, gdzie przegladarka je zna (Chrome 125, Safari 15.4, Firefox 118);
+   starsze zostaja przy plynnych wartosciach zdefiniowanych wyzej. */
+@supports (width: round(nearest, 10px, 8px)) {
+  :root {
+    --w-sekcja: round(nearest, clamp(80px, 10vw, 144px), 8px);
+  }
+
+  main:not(:has(.gory-oferta)) {
+    --w-sekcja: round(nearest, clamp(72px, 7.8vw, 112px), 8px);
+  }
+
+  nav.breadcrumbs + section,
+  .subpage-hero {
+    padding-bottom: round(nearest, clamp(40px, 3.9vw, 56px), 8px) !important;
+  }
+
+  article:has(+ aside.contact),
+  article:has(+ section.contact) {
+    padding-bottom: round(nearest, clamp(48px, 5vw, 72px), 8px) !important;
   }
 }

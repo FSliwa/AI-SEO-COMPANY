@@ -35,7 +35,9 @@ import ChecklistForm from '@/components/ChecklistForm';
 import ArticleSchema from '@/components/ArticleSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import Zrodla from '@/components/Zrodla';
-import { Reveal } from '@/components/ScrollReveal';
+import SzHero from './SzHero';
+import SzNawigacja from './SzNawigacja';
+import './szablony.css';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
 import { LASTMOD } from '@/lib/lastmod';
@@ -118,7 +120,7 @@ export default function SzablonRaport({ locale = 'pl' }) {
   const powiazane = POWIAZANE.map((p) => ({ ...p, cel: hrefJesliOpublikowana(p.href) })).filter((p) => p.cel);
 
   return (
-    <main style={s.main}>
+    <main className="sz">
       <Header />
       <Breadcrumbs pl={strona.okruszek} en={strona.okruszek} parent={RODZIC_OKRUSZKOW} />
       <ArticleSchema
@@ -140,45 +142,45 @@ export default function SzablonRaport({ locale = 'pl' }) {
         }}
       />
 
-      <section style={s.hero}>
-        <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
-            <div className="section-tag" style={s.tag}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> Poradnik i wzór PDF
-            </div>
-            <h1 style={s.h1}>{strona.h1}</h1>
-          </Reveal>
-          <Byline sciezka={SCIEZKA} data={dataZmiany} style={{ textAlign: 'center' }} />
+      <SzHero tag="Poradnik i wzór PDF
+            " h1={strona.h1} slug="raport-seo" locale="pl">
+          <Byline sciezka={SCIEZKA} data={dataZmiany} />
           <AnswerBox>
             Miesięczny raport SEO powinien zaczynać się od wyniku biznesowego, czyli liczby zapytań od klientów i ich kosztu, a dopiero potem pokazywać kliknięcia, pozycje i wykonane prace. Dobry raport mieści syntezę na jednej stronie: wynik względem celu, 3–5 przyczyn z dowodami, plan na kolejny miesiąc i ryzyka. Szczegółowe dane trzymaj w panelu albo dashboardzie.
           </AnswerBox>
+      </SzHero>
 
-          <aside aria-label="Darmowa ocena strony" style={{ ...s.karta, padding: 'clamp(1.1rem, 3vw, 1.5rem)', background: '#FFF7F2', boxShadow: 'none', border: '1px solid rgba(216, 90, 48, 0.25)' }}>
-            <p style={{ ...s.akapit, fontWeight: 700, color: 'var(--color-text-dark)', margin: '0 0 0.4rem' }}>Szukasz darmowego raportu SEO swojej strony?</p>
-            <p style={{ ...s.akapit, margin: 0 }}>
+      <div className="sz-uklad">
+        <SzNawigacja etykieta="Spis treści strony" />
+        <div className="sz-tresc" data-sz-tresc>
+
+          <aside aria-label="Darmowa ocena strony" className="sz-aside">
+            <p className="sz-akapit" style={{ fontWeight: 700, color: 'var(--color-text-dark)', margin: '0 0 0.4rem' }}>Szukasz darmowego raportu SEO swojej strony?</p>
+            <p className="sz-akapit" style={{ margin: 0 }}>
               Ocena samej strony to audyt, a nie raport. Raport pokazuje efekty pracy agencji w danym miesiącu, a audyt jednorazowo diagnozuje stronę i kończy się listą poprawek.
               {darmowyAudyt ? (
                 <>
                   {' '}Stronę sprawdzisz w naszym{' '}
-                  <Link href={darmowyAudyt} style={s.podkreslenie}>darmowym audycie SEO</Link>: do 25 podstron, ocena od 1 do 100 i lista błędów z instrukcją naprawy.
+                  <Link href={darmowyAudyt} className="sz-link">darmowym audycie SEO</Link>: do 25 podstron, ocena od 1 do 100 i lista błędów z instrukcją naprawy.
                 </>
               ) : null}
               {' '}Co obejmuje pełny audyt wykonywany przez specjalistę i ile kosztuje, piszemy na stronie{' '}
-              <Link href="/audyt-seo" style={s.podkreslenie}>audytu SEO</Link>.
+              <Link href="/audyt-seo" className="sz-link">audytu SEO</Link>.
               {sprawdzarka ? (
                 <>
                   {' '}Bezpłatnie możesz też od razu{' '}
-                  <Link href={sprawdzarka} style={s.podkreslenie}>sprawdzić widoczność firmy w ChatGPT</Link>.
+                  <Link href={sprawdzarka} className="sz-link">sprawdzić widoczność firmy w ChatGPT</Link>.
                 </>
               ) : null}
             </p>
           </aside>
 
-          <section aria-labelledby="raport-a-audyt" style={s.sekcja}>
-            <h2 id="raport-a-audyt" style={s.h2}>Raport SEO a audyt SEO: dwa różne dokumenty</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="raport-a-audyt" className="sz-sekcja">
+            <h2 id="raport-a-audyt" className="sz-h2">Raport SEO a audyt SEO: dwa różne dokumenty</h2>
+            <p className="sz-akapit">
               Raport i audyt bywają mylone nawet w ofertach agencji, choć odpowiadają na inne pytania. Raport SEO powstaje regularnie przez cały czas współpracy i pokazuje, ile przyszło zapytań, skąd wzięły się zmiany i co zespół zrobi w kolejnym miesiącu. Audyt to diagnoza wykonywana raz, na starcie albo po dużej zmianie, np. przebudowie serwisu.
             </p>
+            <div className="sz-tabela">
             <CompareTable
               id="tabela-raport-audyt"
               caption="Raport SEO i audyt SEO w czterech punktach"
@@ -189,62 +191,64 @@ export default function SzablonRaport({ locale = 'pl' }) {
               ]}
               rows={RAPORT_A_AUDYT.map((r) => ({ ...r, id: r.cecha }))}
             />
-            <p style={s.akapit}>
+            </div>
+            <p className="sz-akapit">
               Dobry raport odwołuje się do audytu: pokazuje, które poprawki z listy już wdrożono i co dały. Jeśli co miesiąc dostajesz tę samą listę błędów, to nie jest raport z pracy, tylko powtarzany audyt.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Oba dokumenty się uzupełniają. Audyt na starcie daje listę zadań na pierwsze miesiące, a kolejne raporty pokazują, jak ta lista się skraca i co to zmienia w ruchu i zapytaniach. Bez audytu agencja nie ma planu, z którym raport mógłby się porównać.
             </p>
           </section>
 
-          <section aria-labelledby="piec-sekcji" style={s.sekcja}>
-            <h2 id="piec-sekcji" style={s.h2}>5 sekcji dobrego raportu miesięcznego</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="piec-sekcji" className="sz-sekcja">
+            <h2 id="piec-sekcji" className="sz-h2">5 sekcji dobrego raportu miesięcznego</h2>
+            <p className="sz-akapit">
               Układ pochodzi ze struktury raportu miesięcznego z naszego playbooka SEO. Pierwsza strona to synteza, a wykresy i tabele fraz idą do załącznika albo panelu. Podobnie jest zbudowany komentarz miesięczny w naszym panelu klienta (przykład niżej).
             </p>
 
-            <h3 id="sekcja-wynik" style={s.h3}>1. Wynik względem celu</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-wynik" className="sz-h3">1. Wynik względem celu</h3>
+            <p className="sz-akapit">
               Raport zaczyna się od liczby, na której zależy firmie. W firmie usługowej to zwykle zapytania od klientów z wyników organicznych (formularz, telefon, e-mail) i koszt jednego zapytania. W sklepie internetowym będą to przychód i liczba transakcji z Google, a w firmie lokalnej dochodzą połączenia i wyświetlenia wskazówek dojazdu z Profilu Firmy w Google. Obok stoi cel na miesiąc i ten sam miesiąc rok wcześniej. Porównanie rok do roku odsiewa sezonowość: słabszy grudzień nie oznacza spadku, jeśli jest lepszy od zeszłorocznego. Wystarczą trzy zdania: jaki był wynik, jak wypada względem celu i w którą stronę idzie trend.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Liczbę zapytań sprawdzaj w dwóch miejscach: w zdarzeniach kluczowych GA4 i w skrzynce albo CRM, do którego trafiają zgłoszenia. GA4 nie pokazuje zdarzeń osób, które odrzuciły pliki cookie analityczne, a przy małym ruchu nie uzupełnia ich szacunkiem, więc zwykle widzi mniej zapytań, niż naprawdę przyszło. Kliknięcie w numer telefonu to też jeszcze nie rozmowa. Jeśli możesz, dopisz, ile zapytań pasowało do oferty i ile skończyło się umową. Gdy firma w ogóle nie mierzy zapytań, pierwszy raport powinien wskazać to jako ryzyko i zaproponować konfigurację zdarzeń kluczowych w GA4.
             </p>
 
-            <h3 id="sekcja-przyczyny" style={s.h3}>2. Co wpłynęło na wynik</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-przyczyny" className="sz-h3">2. Co wpłynęło na wynik</h3>
+            <p className="sz-akapit">
               Tu agencja podaje 3–5 przyczyn zmian, każdą z dowodem. Dowodem jest zrzut z Google Search Console z zaznaczoną datą, data wdrożenia zmiany na stronie albo aktualizacja algorytmu potwierdzona przez Google. Zdanie „pozycje wzrosły dzięki optymalizacji” bez daty i adresu strony niczego nie wyjaśnia. Dobra przyczyna mówi, co się zmieniło, kiedy i na których podstronach, np. „nowa sekcja z cenami na stronie usługi, wdrożona w połowie miesiąca; od tego dnia rosną kliknięcia z fraz o cenę”. Najczęściej przyczyną jest:
             </p>
-            <ul style={s.lista}>
+            <ul className="sz-lista">
               {PRZYCZYNY.map((p) => <li key={p}>{p}</li>)}
             </ul>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Przy spadku dobry raport sprawdza te przyczyny po kolei, zamiast od razu obwiniać Google.
             </p>
 
-            <h3 id="sekcja-prace" style={s.h3}>3. Wykonane prace i ich efekt</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-prace" className="sz-h3">3. Wykonane prace i ich efekt</h3>
+            <p className="sz-akapit">
               Lista prac z datami: nowe treści, poprawki techniczne, zdobyte linki, zmiany w wizytówce Google. Przy każdej pozycji warto wskazać podstronę, której dotyczy, i to, czy widać już efekt. Same nazwy zadań, np. „optymalizacja on-page”, nie wystarczą: z raportu ma wynikać, co dokładnie zmieniono. Jeśli rozliczasz się za godziny, raport powinien je podawać. Na takie informacje nie trzeba czekać do końca miesiąca: w naszym{' '}
-              <Link href="/panel-klienta" style={s.podkreslenie}>panelu klienta</Link>{' '}
+              <Link href="/panel-klienta" className="sz-link">panelu klienta</Link>{' '}
               zapytania i dziennik prac są aktualizowane codziennie, a pozycje fraz co tydzień.
             </p>
 
-            <h3 id="sekcja-plan" style={s.h3}>4. Plan na kolejny miesiąc</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-plan" className="sz-h3">4. Plan na kolejny miesiąc</h3>
+            <p className="sz-akapit">
               Trzy najważniejsze zadania na następny miesiąc, wybrane z listy wszystkich zaplanowanych prac. Przy każdym: czego dotyczy, jaki efekt ma dać i po czym go poznasz. Plan z jednym punktem „dalsza optymalizacja” nie daje Ci nic do sprawdzenia. Dobry plan pozwala w kolejnym raporcie porównać zapowiedzi z wykonaniem.
             </p>
 
-            <h3 id="sekcja-ryzyka" style={s.h3}>5. Ryzyka i potrzeby</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-ryzyka" className="sz-h3">5. Ryzyka i potrzeby</h3>
+            <p className="sz-akapit">
               Rzeczy, które mogą zatrzymać wyniki, i to, czego agencja potrzebuje od Ciebie: dostęp do strony albo programisty, akceptacja treści, budżet na artykuły, odpowiedzi na pytania o ofertę. Tu trafiają też zmiany poza kontrolą agencji, np. nowy konkurent w Mapach. Sekcja ryzyk chroni obie strony, bo problem zgłoszony w raporcie nikogo nie zaskoczy za trzy miesiące.
             </p>
           </section>
 
-          <section aria-labelledby="metryki" style={s.sekcja}>
-            <h2 id="metryki" style={s.h2}>Jakie metryki pokazać i skąd je wziąć</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="metryki" className="sz-sekcja">
+            <h2 id="metryki" className="sz-h2">Jakie metryki pokazać i skąd je wziąć</h2>
+            <p className="sz-akapit">
               Każda liczba w raporcie powinna mieć źródło, które możesz otworzyć sam, najlepiej na koncie założonym na Twój adres e-mail. Tabela zbiera siedem metryk, które pozwalają ocenić pozycjonowanie, i pułapki, przez które wynik łatwo pokazać lepszym, niż jest. Gdy dwa źródła podają różne liczby, np. GA4 i skrzynka albo Profil Firmy i GA4, raport pokazuje obie i wyjaśnia różnicę, zamiast wybierać korzystniejszą.
             </p>
+            <div className="sz-tabela">
             <CompareTable
               id="tabela-metryk"
               caption="Metryki miesięcznego raportu SEO"
@@ -256,30 +260,31 @@ export default function SzablonRaport({ locale = 'pl' }) {
               ]}
               rows={METRYKI.map((m) => ({ ...m, id: m.metryka }))}
             />
-            <p style={s.akapit}>
+            </div>
+            <p className="sz-akapit">
               Zapytania o markę odfiltrujesz w raporcie Skuteczność w Search Console. Od listopada 2025 roku Google udostępnia tam wbudowany filtr zapytań z marką i bez marki, ale nie dla każdej usługi: nie ma go w usługach dla podkatalogu albo subdomeny ani w witrynach ze zbyt małą liczbą zapytań i wyświetleń. Zapytania przypisuje system Google oparty na AI i zdarzają mu się pomyłki, więc warto sprawdzić przypisanie. Jeśli filtra nie widzisz, dodaj filtr zapytań, które nie zawierają nazwy firmy i jej wariantów, także tych z literówkami. Ruch z marki rośnie razem z rozpoznawalnością, reklamą i poleceniami, więc mówi niewiele o pracy nad pozycjonowaniem.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Search Console przechowuje dane z ostatnich 16 miesięcy. To wystarczy do porównania rok do roku, ale starszej historii już nie odzyskasz, dlatego dane warto co miesiąc eksportować albo trzymać w panelu.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Listę fraz do śledzenia warto ustalić przed startem. Powinny się na niej znaleźć frazy, którymi klienci szukają Twoich usług, a nie tylko te, na które strona już jest widoczna. Każdą zmianę listy w trakcie współpracy raport powinien odnotować.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Metryki z Map i z odpowiedzi AI rzadko trafiają do raportów agencji, a dotyczą miejsc, w których klienci też szukają firm. Klient widzi inne wyniki w Mapach Google zależnie od tego, gdzie stoi, dlatego pozycję wizytówki mierzy się w siatce punktów wokół adresu firmy, a nie z jednego miejsca. Połączenia, wskazówki dojazdu i kliknięcia prowadzące do witryny pokazuje sam Profil Firmy w sekcji Skuteczność. Odpowiedzi ChatGPT zmieniają się z dnia na dzień, więc widoczność w AI mierzy się stałym zestawem pytań zadawanych regularnie. Search Console pomoże tylko częściowo: kliknięcia z przeglądu AI liczy razem z resztą wyników w Google, a raport o skuteczności w generatywnej AI, dostępny dla wszystkich witryn od 31 sierpnia 2026 roku, pokazuje same wyświetlenia w przeglądach AI i trybie AI. W GA4 zobaczysz za to wejścia z czatów, np. ze źródła chatgpt.com albo perplexity.ai. Jak to robimy, opisujemy na stronie{' '}
-              {hubGeo ? <Link href={hubGeo} style={s.podkreslenie}>pozycjonowanie w AI</Link> : 'pozycjonowanie w AI'}.
+              {hubGeo ? <Link href={hubGeo} className="sz-link">pozycjonowanie w AI</Link> : 'pozycjonowanie w AI'}.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Na stan techniczny w raporcie wystarczą dwie informacje: czy ważne podstrony są w indeksie (raport Indeksowanie stron w Search Console) i czy strona mieści się w progach Core Web Vitals. Google uznaje za dobre LCP do 2,5 s, INP do 200 ms i CLS do 0,1, jeśli próg spełnia co najmniej 75% odsłon u prawdziwych użytkowników. Ocena od 0 do 100 w PageSpeed Insights pochodzi z testu laboratoryjnego (Lighthouse), a nie od klientów, więc nie zastąpi danych od użytkowników z raportu Core Web Vitals.
             </p>
           </section>
 
-          <section aria-labelledby="przyklad-z-panelu" style={s.sekcja}>
-            <h2 id="przyklad-z-panelu" style={s.h2}>Przykład: tak wygląda raport w panelu klienta</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="przyklad-z-panelu" className="sz-sekcja">
+            <h2 id="przyklad-z-panelu" className="sz-h2">Przykład: tak wygląda raport w panelu klienta</h2>
+            <p className="sz-akapit">
               Dwa ekrany z demo naszego panelu klienta, na danych przykładowych fikcyjnej firmy „Stolarnia Demo”. Na przeglądzie miesiąca komentarz opiekuna ma trzy części: co się stało, dlaczego i co dalej, czyli sekcje 1, 2 i 4 wzoru. Kafelki pod komentarzem pokazują wynik względem celu: zapytania od klientów z podziałem na formularz, telefon i e-mail, kliknięcia z Google, frazy w TOP 3 i średnią pozycję. Pierwsza liczba to zapytania od klientów, a nie pozycje czy ruch: tak samo powinien zaczynać się każdy raport. Kafelki porównują wynik z poprzednim miesiącem. W raporcie miesięcznym dodaj do tego ten sam miesiąc rok wcześniej, bo dopiero to odsiewa sezonowość.
             </p>
-            <figure style={{ margin: '0 0 2rem' }}>
+            <figure className="sz-figura">
               <Image
                 src="/images/panel/przeglad.webp"
                 alt="Przegląd miesiąca w demo panelu klienta: komentarz opiekuna w trzech częściach i kafelki z zapytaniami od klientów, kliknięciami z Google, frazami w TOP 3 i średnią pozycją"
@@ -288,12 +293,12 @@ export default function SzablonRaport({ locale = 'pl' }) {
                 sizes="(max-width: 900px) 100vw, 860px"
                 style={obraz}
               />
-              <figcaption style={s.przypis}>Przegląd miesiąca w panelu klienta. Dane przykładowe.</figcaption>
+              <figcaption className="sz-przypis">Przegląd miesiąca w panelu klienta. Dane przykładowe.</figcaption>
             </figure>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               W zakładce Raporty leżą raporty miesięczne w PDF i audyt startowy. PDF powtarza to, co widać w panelu, i dochodzi do niego komentarz zespołu. Raport nie jest więc jedynym miejscem z danymi: liczby sprawdzisz w każdej chwili, bez czekania na koniec miesiąca.
             </p>
-            <figure style={{ margin: '0 0 1.5rem' }}>
+            <figure className="sz-figura">
               <Image
                 src="/images/panel/raporty.webp"
                 alt="Zakładka Raporty w demo panelu klienta: lista raportów miesięcznych PDF z liczbą zapytań i kliknięć oraz audyt startowy, każdy z przyciskiem pobrania"
@@ -302,35 +307,37 @@ export default function SzablonRaport({ locale = 'pl' }) {
                 sizes="(max-width: 900px) 100vw, 860px"
                 style={obraz}
               />
-              <figcaption style={s.przypis}>Lista raportów PDF w panelu klienta. Dane przykładowe.</figcaption>
+              <figcaption className="sz-przypis">Lista raportów PDF w panelu klienta. Dane przykładowe.</figcaption>
             </figure>
-            <p style={s.akapit}>
-              <a href={PANEL_DEMO_URL} style={s.podkreslenie} data-cta="raport_demo">Otwórz demo panelu bez logowania</a> i przejdź do zakładek Przegląd i Raporty.
+            <p className="sz-akapit">
+              <a href={PANEL_DEMO_URL} className="sz-link" data-cta="raport_demo">Otwórz demo panelu bez logowania</a> i przejdź do zakładek Przegląd i Raporty.
             </p>
           </section>
 
-          <section aria-labelledby="czerwone-flagi" style={s.sekcja}>
-            <h2 id="czerwone-flagi" style={s.h2}>Czerwone flagi w raportach agencji SEO</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="czerwone-flagi" className="sz-sekcja">
+            <h2 id="czerwone-flagi" className="sz-h2">Czerwone flagi w raportach agencji SEO</h2>
+            <p className="sz-akapit">
               Sześć sygnałów, że raport ukrywa brak wyników albo brak pracy. Jeden to powód do pytań. Kilka naraz to powód do rozmowy o zmianie agencji. Część z nich wynika z wygody, a nie ze złej woli: łatwiej przesłać eksport z narzędzia niż napisać komentarz. Zacznij więc od rozmowy i poproś o raport według wzoru, który znajdziesz niżej.
             </p>
-            <ol style={s.lista}>
+            <ol className="sz-lista">
               {FLAGI.map(([tytul, opis]) => (
                 <li key={tytul}><strong style={{ color: 'var(--color-text-dark)' }}>{tytul}.</strong> {opis}</li>
               ))}
             </ol>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Rozpoznajesz kilka z nich u siebie? Przeczytaj,{' '}
-              <Link href="/zmiana-agencji-seo" style={s.podkreslenie}>jak zmienić agencję SEO bez utraty pozycji</Link>, i zabierz dane, zanim wypowiesz umowę. Możesz też umówić bezpłatny przegląd po poprzedniej agencji (30 minut online).
+              <Link href="/zmiana-agencji-seo" className="sz-link">jak zmienić agencję SEO bez utraty pozycji</Link>, i zabierz dane, zanim wypowiesz umowę. Możesz też umówić bezpłatny przegląd po poprzedniej agencji (30 minut online).
             </p>
             <a href={kontakt} data-plan="przeglad-agencji" className="btn btn-secondary" data-cta="raport_przeglad">Umów bezpłatny przegląd</a>
           </section>
 
-          <section id="wzor" aria-labelledby="pobierz-wzor" style={{ ...s.sekcja, ...s.karta, scrollMarginTop: '110px' }}>
-            <h2 id="pobierz-wzor" style={s.h2}>Pobierz wzór raportu SEO (PDF)</h2>
-            <p style={s.akapit}>
+          <section id="wzor" aria-labelledby="pobierz-wzor" className="sz-sekcja sz-sekcja--bez sz-pobierz"><div>
+            <h2 id="pobierz-wzor" className="sz-h2">Pobierz wzór raportu SEO (PDF)</h2>
+            <p className="sz-akapit">
               Wzór ma pięć sekcji opisanych wyżej i tabelę metryk do uzupełnienia danymi z Search Console, Analytics i Profilu Firmy w Google. Wydrukuj go albo wyślij agencji jako listę tego, czego oczekujesz w comiesięcznym raporcie. Przed podpisaniem umowy zapytaj, które sekcje wzoru znajdziesz w raportach agencji. Po kilku miesiącach współpracy porównaj otrzymane raporty ze wzorem: brakujące sekcje to dobre pytania na najbliższe spotkanie.
             </p>
+            </div>
+            <div className="sz-pobierz__form">
             <ChecklistForm
               endpoint={ENDPOINT_WZORU_RAPORTU}
               plik="wzor-raportu-seo"
@@ -343,20 +350,21 @@ export default function SzablonRaport({ locale = 'pl' }) {
               przedmiot="wzór raportu SEO"
               cta="wzor_raportu_submit"
             />
+            </div>
           </section>
 
           {powiazane.length > 0 && (
-            <section aria-labelledby="powiazane-h" style={s.sekcja}>
-              <h2 id="powiazane-h" style={s.h2}>Powiązane szablony i narzędzia</h2>
-              <ul style={s.lista}>
+            <section aria-labelledby="powiazane-h" className="sz-sekcja sz-sekcja--bez">
+              <h2 id="powiazane-h" className="sz-h2">Powiązane szablony i narzędzia</h2>
+              <ul className="sz-powiazane">
                 {powiazane.map((p) => (
-                  <li key={p.href}><Link href={p.cel} style={s.podkreslenie}>{p.pl}</Link>: {p.opisPl}</li>
+                  <li key={p.href}><Link href={p.cel} className="sz-link">{p.pl}</Link>: {p.opisPl}</li>
                 ))}
               </ul>
             </section>
           )}
         </div>
-      </section>
+      </div>
 
       <AppleFaq faqData={faqRaportu()} title="Pytania o raport SEO" sectionId="pytania" />
       <section style={{ paddingBottom: '2rem' }}>
@@ -410,7 +418,7 @@ function RaportEn() {
   const powiazane = POWIAZANE.map((p) => ({ ...p, cel: hrefJesliOpublikowana(p.href) })).filter((p) => p.cel);
 
   return (
-    <main style={s.main}>
+    <main className="sz">
       <Header />
       <Breadcrumbs pl={strona.okruszek} en={meta.okruszek} parent={RODZIC_OKRUSZKOW} />
       <ArticleSchema
@@ -433,45 +441,45 @@ function RaportEn() {
         }}
       />
 
-      <section style={s.hero}>
-        <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
-            <div className="section-tag" style={s.tag}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> Guide and PDF template
-            </div>
-            <h1 style={s.h1}>{meta.h1}</h1>
-          </Reveal>
-          <Byline sciezka={SCIEZKA} takzeEn data={dataZmiany} style={{ textAlign: 'center' }} />
+      <SzHero tag="Guide and PDF template
+            " h1={meta.h1} slug="raport-seo" locale="en">
+          <Byline sciezka={SCIEZKA} takzeEn data={dataZmiany} />
           <AnswerBox etykieta="Short answer">
             A monthly SEO report should open with the business result: the number of customer inquiries and the cost per inquiry. Clicks, rankings and work done come after that. A good report fits its summary on one page: the result against the goal, 3–5 causes with evidence, next month&apos;s plan and the risks. Detailed data belongs in a portal or dashboard.
           </AnswerBox>
+      </SzHero>
 
-          <aside aria-label="Free website assessment" style={{ ...s.karta, padding: 'clamp(1.1rem, 3vw, 1.5rem)', background: '#FFF7F2', boxShadow: 'none', border: '1px solid rgba(216, 90, 48, 0.25)' }}>
-            <p style={{ ...s.akapit, fontWeight: 700, color: 'var(--color-text-dark)', margin: '0 0 0.4rem' }}>Looking for a free SEO report on your website?</p>
-            <p style={{ ...s.akapit, margin: 0 }}>
+      <div className="sz-uklad">
+        <SzNawigacja etykieta="On this page" />
+        <div className="sz-tresc" data-sz-tresc>
+
+          <aside aria-label="Free website assessment" className="sz-aside">
+            <p className="sz-akapit" style={{ fontWeight: 700, color: 'var(--color-text-dark)', margin: '0 0 0.4rem' }}>Looking for a free SEO report on your website?</p>
+            <p className="sz-akapit" style={{ margin: 0 }}>
               Assessing the site itself is an audit, not a report. A report shows the effects of an agency&apos;s work in a given month, while an audit is a one-time diagnosis of the site that ends with a list of fixes.
               {darmowyAudyt ? (
                 <>
                   {' '}You can check your site with our{' '}
-                  <Link href={darmowyAudyt} style={s.podkreslenie}>free SEO audit</Link>: up to 25 pages, a score from 1 to 100 and a list of errors with instructions on how to fix them.
+                  <Link href={darmowyAudyt} className="sz-link">free SEO audit</Link>: up to 25 pages, a score from 1 to 100 and a list of errors with instructions on how to fix them.
                 </>
               ) : null}
               {' '}What a full audit by a specialist covers and how much it costs is described on the{' '}
-              <Link href="/audyt-seo" style={s.podkreslenie}>SEO audit</Link> page.
+              <Link href="/audyt-seo" className="sz-link">SEO audit</Link> page.
               {sprawdzarka ? (
                 <>
                   {' '}You can also{' '}
-                  <Link href={sprawdzarka} style={s.podkreslenie}>check your company&apos;s visibility in ChatGPT</Link> for free right away.
+                  <Link href={sprawdzarka} className="sz-link">check your company&apos;s visibility in ChatGPT</Link> for free right away.
                 </>
               ) : null}
             </p>
           </aside>
 
-          <section aria-labelledby="raport-a-audyt" style={s.sekcja}>
-            <h2 id="raport-a-audyt" style={s.h2}>SEO report vs. SEO audit: two different documents</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="raport-a-audyt" className="sz-sekcja">
+            <h2 id="raport-a-audyt" className="sz-h2">SEO report vs. SEO audit: two different documents</h2>
+            <p className="sz-akapit">
               The report and the audit get mixed up even in agency offers, although they answer different questions. An SEO report is produced regularly for as long as you work with the agency and shows how many inquiries came in, where the changes came from and what the team will do next month. An audit is a diagnosis done once, at the start or after a major change such as a site rebuild.
             </p>
+            <div className="sz-tabela">
             <CompareTable
               id="tabela-raport-audyt"
               caption="SEO report and SEO audit in four points"
@@ -482,62 +490,64 @@ function RaportEn() {
               ]}
               rows={RAPORT_A_AUDYT_EN.map((r) => ({ ...r, id: r.cecha }))}
             />
-            <p style={s.akapit}>
+            </div>
+            <p className="sz-akapit">
               A good report refers back to the audit: it shows which fixes from the list have already been implemented and what they achieved. If you get the same list of errors every month, that is not a report on work done, just a repeated audit.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               The two documents complement each other. An audit at the start gives a task list for the first months, and subsequent reports show how that list shrinks and what it changes in traffic and inquiries. Without an audit, the agency has no plan to compare the report against.
             </p>
           </section>
 
-          <section aria-labelledby="piec-sekcji" style={s.sekcja}>
-            <h2 id="piec-sekcji" style={s.h2}>5 sections of a good monthly report</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="piec-sekcji" className="sz-sekcja">
+            <h2 id="piec-sekcji" className="sz-h2">5 sections of a good monthly report</h2>
+            <p className="sz-akapit">
               The layout comes from the monthly report structure in our SEO playbook. The first page is the summary, while charts and keyword tables go into an appendix or the portal. The monthly comment in our client portal is built the same way (example below).
             </p>
 
-            <h3 id="sekcja-wynik" style={s.h3}>1. Result against the goal</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-wynik" className="sz-h3">1. Result against the goal</h3>
+            <p className="sz-akapit">
               The report starts with the number the company cares about. For a service business, that is usually customer inquiries from organic results (form, phone, email) and the cost per inquiry. For an online shop, it is revenue and the number of transactions from Google, and a local business should add calls and direction requests from its Google Business Profile. Next to it sit the monthly goal and the same month a year earlier. A year-over-year comparison filters out seasonality: a weaker December is not a decline if it beats last year&apos;s. Three sentences are enough: what the result was, how it compares with the goal and which way the trend is going.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Check the number of inquiries in two places: GA4 key events and the inbox or CRM where the inquiries land. GA4 does not show events from people who declined analytics cookies, and on a small site it does not fill the gap with modeled data, so it usually sees fewer inquiries than actually came in. A click on a phone number is not a call yet, either. If you can, add how many inquiries matched your offer and how many turned into a contract. If the company does not measure inquiries at all, the first report should flag that as a risk and propose setting up key events in GA4.
             </p>
 
-            <h3 id="sekcja-przyczyny" style={s.h3}>2. What influenced the result</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-przyczyny" className="sz-h3">2. What influenced the result</h3>
+            <p className="sz-akapit">
               This is where the agency gives 3–5 causes of the changes, each with evidence. Evidence is a Google Search Console screenshot with the date marked, the date a change went live on the site, or an algorithm update confirmed by Google. The sentence “rankings rose thanks to optimization” with no date and no page URL explains nothing. A good cause says what changed, when and on which pages, for example “a new pricing section on the service page, deployed mid-month; clicks on price-related keywords have been rising since that day”. The most common causes are:
             </p>
-            <ul style={s.lista}>
+            <ul className="sz-lista">
               {PRZYCZYNY_EN.map((p) => <li key={p}>{p}</li>)}
             </ul>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               When results drop, a good report works through these causes one by one instead of blaming Google straight away.
             </p>
 
-            <h3 id="sekcja-prace" style={s.h3}>3. Work done and its effect</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-prace" className="sz-h3">3. Work done and its effect</h3>
+            <p className="sz-akapit">
               A list of work with dates: new content, technical fixes, links acquired, changes to the Google Business Profile. For each item it is worth naming the page it concerns and whether the effect is already visible. Task names alone, such as “on-page optimization”, are not enough: the report should make clear what exactly was changed. If you pay by the hour, the report should state the hours. You do not have to wait until the end of the month for this kind of information: in our{' '}
-              <Link href="/panel-klienta" style={s.podkreslenie}>client portal</Link>,{' '}
+              <Link href="/panel-klienta" className="sz-link">client portal</Link>,{' '}
               inquiries and the work log are updated daily and keyword rankings weekly.
             </p>
 
-            <h3 id="sekcja-plan" style={s.h3}>4. Plan for the next month</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-plan" className="sz-h3">4. Plan for the next month</h3>
+            <p className="sz-akapit">
               The three most important tasks for next month, chosen from the list of all planned work. For each one: what it concerns, what effect it should have and how you will know. A plan with a single item, “further optimization”, gives you nothing to check. A good plan lets you compare what was announced with what was delivered in the next report.
             </p>
 
-            <h3 id="sekcja-ryzyka" style={s.h3}>5. Risks and needs</h3>
-            <p style={s.akapit}>
+            <h3 id="sekcja-ryzyka" className="sz-h3">5. Risks and needs</h3>
+            <p className="sz-akapit">
               Things that could stall results, and what the agency needs from you: access to the site or a developer, content approval, a budget for articles, answers to questions about your offer. Changes outside the agency&apos;s control also go here, such as a new competitor in Maps. A risk section protects both sides, because a problem flagged in a report will not surprise anyone three months later.
             </p>
           </section>
 
-          <section aria-labelledby="metryki" style={s.sekcja}>
-            <h2 id="metryki" style={s.h2}>Which metrics to show and where to get them</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="metryki" className="sz-sekcja">
+            <h2 id="metryki" className="sz-h2">Which metrics to show and where to get them</h2>
+            <p className="sz-akapit">
               Every number in a report should have a source you can open yourself, ideally on an account registered to your email address. The table collects seven metrics that let you judge SEO, along with the traps that make it easy to present a result as better than it is. When two sources give different numbers, such as GA4 and your inbox, or your Business Profile and GA4, the report shows both and explains the gap instead of picking the more flattering one.
             </p>
+            <div className="sz-tabela">
             <CompareTable
               id="tabela-metryk"
               caption="Metrics of a monthly SEO report"
@@ -549,30 +559,31 @@ function RaportEn() {
               ]}
               rows={METRYKI_EN.map((m) => ({ ...m, id: m.metryka }))}
             />
-            <p style={s.akapit}>
+            </div>
+            <p className="sz-akapit">
               You can filter out brand queries in the Performance report in Search Console. Since November 2025, Google has offered a built-in branded and non-branded queries filter there, but not for every property: it is not available for URL-path or subdomain properties, or for sites without enough queries and impressions. Queries are classified by an AI-assisted Google system that sometimes gets them wrong, so it is worth checking how they were assigned. If you do not see the filter, add a query filter that excludes the company name and its variants, including misspelled ones. Brand traffic grows with recognition, advertising and word of mouth, so it says little about the SEO work.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Search Console keeps data for the last 16 months. That is enough for a year-over-year comparison, but older history cannot be recovered, so export the data every month or keep it in a portal.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               It is worth agreeing the list of keywords to track before you start. It should include the phrases customers use to look for your services, not only the ones the site is already visible for. The report should note every change to the list while you work together.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Metrics from Maps and from AI answers rarely make it into agency reports, yet they cover places where customers also look for companies. A customer sees different results in Google Maps depending on where they stand, so a Business Profile ranking is measured on a grid of points around the company address, not from a single spot. Calls, direction requests and website clicks are shown in the Business Profile itself, in its Performance section. ChatGPT answers change from day to day, so AI visibility is measured with a fixed set of questions asked regularly. Search Console only helps in part: it counts clicks from AI Overviews together with the rest of Google results, and its generative AI performance report, available to all sites since August 31, 2026, shows only impressions in AI Overviews and AI Mode. GA4, on the other hand, shows visits from AI chats, for example from the source chatgpt.com or perplexity.ai. We describe how we do it on the{' '}
-              {hubGeo ? <Link href={hubGeo} style={s.podkreslenie}>AI search optimization</Link> : 'AI search optimization'} page.
+              {hubGeo ? <Link href={hubGeo} className="sz-link">AI search optimization</Link> : 'AI search optimization'} page.
             </p>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               For technical health, a report needs just two things: whether key pages are indexed (the Page indexing report in Search Console) and whether the site meets the Core Web Vitals thresholds. Google considers LCP within 2.5 s, INP of 200 ms or less and CLS of 0.1 or less to be good when at least 75% of real-user page loads meet the threshold. The 0–100 score in PageSpeed Insights comes from a lab test (Lighthouse), not from customers, so it cannot replace the real-user data in the Core Web Vitals report.
             </p>
           </section>
 
-          <section aria-labelledby="przyklad-z-panelu" style={s.sekcja}>
-            <h2 id="przyklad-z-panelu" style={s.h2}>Example: what a report looks like in the client portal</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="przyklad-z-panelu" className="sz-sekcja">
+            <h2 id="przyklad-z-panelu" className="sz-h2">Example: what a report looks like in the client portal</h2>
+            <p className="sz-akapit">
               Two screens from the demo of our client portal, using sample data for a fictional company, &quot;Stolarnia Demo&quot;. On the monthly overview, the account manager&apos;s comment has three parts: what happened, why and what next, which are sections 1, 2 and 4 of the template. The tiles under the comment show the result against the goal: customer inquiries split into form, phone and email, clicks from Google, keywords in the top 3 and the average position. The first number is customer inquiries, not rankings or traffic: every report should start that way. The tiles compare the result with the previous month. In a monthly report, add the same month a year earlier as well, because only that filters out seasonality.
             </p>
-            <figure style={{ margin: '0 0 2rem' }}>
+            <figure className="sz-figura">
               <Image
                 src="/images/panel/przeglad.webp"
                 alt="Monthly overview in the client portal demo: the account manager's comment in three parts and tiles with customer inquiries, clicks from Google, keywords in the top 3 and the average position"
@@ -581,12 +592,12 @@ function RaportEn() {
                 sizes="(max-width: 900px) 100vw, 860px"
                 style={obraz}
               />
-              <figcaption style={s.przypis}>Monthly overview in the client portal. Sample data; the demo interface is in Polish.</figcaption>
+              <figcaption className="sz-przypis">Monthly overview in the client portal. Sample data; the demo interface is in Polish.</figcaption>
             </figure>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               The Reports tab holds the monthly PDF reports and the starting audit. The PDF repeats what you see in the portal and adds the team&apos;s comment. So the report is not the only place with data: you can check the numbers at any time, without waiting for the end of the month.
             </p>
-            <figure style={{ margin: '0 0 1.5rem' }}>
+            <figure className="sz-figura">
               <Image
                 src="/images/panel/raporty.webp"
                 alt="Reports tab in the client portal demo: a list of monthly PDF reports with the number of inquiries and clicks, plus the starting audit, each with a download button"
@@ -595,35 +606,37 @@ function RaportEn() {
                 sizes="(max-width: 900px) 100vw, 860px"
                 style={obraz}
               />
-              <figcaption style={s.przypis}>List of PDF reports in the client portal. Sample data; the demo interface is in Polish.</figcaption>
+              <figcaption className="sz-przypis">List of PDF reports in the client portal. Sample data; the demo interface is in Polish.</figcaption>
             </figure>
-            <p style={s.akapit}>
-              <a href={PANEL_DEMO_URL} style={s.podkreslenie} data-cta="raport_demo">Open the portal demo without logging in</a> and go to the Overview and Reports tabs.
+            <p className="sz-akapit">
+              <a href={PANEL_DEMO_URL} className="sz-link" data-cta="raport_demo">Open the portal demo without logging in</a> and go to the Overview and Reports tabs.
             </p>
           </section>
 
-          <section aria-labelledby="czerwone-flagi" style={s.sekcja}>
-            <h2 id="czerwone-flagi" style={s.h2}>Red flags in SEO agency reports</h2>
-            <p style={s.akapit}>
+          <section aria-labelledby="czerwone-flagi" className="sz-sekcja">
+            <h2 id="czerwone-flagi" className="sz-h2">Red flags in SEO agency reports</h2>
+            <p className="sz-akapit">
               Six signs that a report is hiding a lack of results or a lack of work. One is a reason to ask questions. Several at once are a reason to talk about changing agencies. Some of them come from convenience rather than bad intent: it is easier to send an export from a tool than to write a commentary. So start with a conversation and ask for a report based on the template you will find below.
             </p>
-            <ol style={s.lista}>
+            <ol className="sz-lista">
               {FLAGI_EN.map(([tytul, opis]) => (
                 <li key={tytul}><strong style={{ color: 'var(--color-text-dark)' }}>{tytul}.</strong> {opis}</li>
               ))}
             </ol>
-            <p style={s.akapit}>
+            <p className="sz-akapit">
               Do you recognize several of them in your own reports? Read{' '}
-              <Link href="/zmiana-agencji-seo" style={s.podkreslenie}>how to switch SEO agencies without losing rankings</Link>, and take your data with you before you terminate the contract. You can also book a free 30-minute online review of your previous agency&apos;s work.
+              <Link href="/zmiana-agencji-seo" className="sz-link">how to switch SEO agencies without losing rankings</Link>, and take your data with you before you terminate the contract. You can also book a free 30-minute online review of your previous agency&apos;s work.
             </p>
             <a href={kontakt} data-plan="przeglad-agencji" className="btn btn-secondary" data-cta="raport_przeglad">Book a free review</a>
           </section>
 
-          <section id="wzor" aria-labelledby="pobierz-wzor" style={{ ...s.sekcja, ...s.karta, scrollMarginTop: '110px' }}>
-            <h2 id="pobierz-wzor" style={s.h2}>Download an SEO report template (PDF)</h2>
-            <p style={s.akapit}>
+          <section id="wzor" aria-labelledby="pobierz-wzor" className="sz-sekcja sz-sekcja--bez sz-pobierz"><div>
+            <h2 id="pobierz-wzor" className="sz-h2">Download an SEO report template (PDF)</h2>
+            <p className="sz-akapit">
               The template has the five sections described above and a metrics table to fill in with data from Search Console, Analytics and your Google Business Profile. Print it or send it to an agency as a list of what you expect in the monthly report. Before signing a contract, ask which sections of the template you will find in the agency&apos;s reports. After a few months of working together, compare the reports you have received with the template: missing sections make good questions for your next meeting.
             </p>
+            </div>
+            <div className="sz-pobierz__form">
             <ChecklistForm
               endpoint={ENDPOINT_WZORU_RAPORTU}
               plik="wzor-raportu-seo"
@@ -636,20 +649,21 @@ function RaportEn() {
               przedmiot="an SEO report template"
               cta="wzor_raportu_submit"
             />
+            </div>
           </section>
 
           {powiazane.length > 0 && (
-            <section aria-labelledby="powiazane-h" style={s.sekcja}>
-              <h2 id="powiazane-h" style={s.h2}>Related templates and tools</h2>
-              <ul style={s.lista}>
+            <section aria-labelledby="powiazane-h" className="sz-sekcja sz-sekcja--bez">
+              <h2 id="powiazane-h" className="sz-h2">Related templates and tools</h2>
+              <ul className="sz-powiazane">
                 {powiazane.map((p) => (
-                  <li key={p.href}><Link href={p.cel} style={s.podkreslenie}>{p.en}</Link>: {p.opisEn}</li>
+                  <li key={p.href}><Link href={p.cel} className="sz-link">{p.en}</Link>: {p.opisEn}</li>
                 ))}
               </ul>
             </section>
           )}
         </div>
-      </section>
+      </div>
 
       <AppleFaq faqData={faqRaportuEn()} title="Questions about the SEO report" sectionId="pytania" />
       <section style={{ paddingBottom: '2rem' }}>

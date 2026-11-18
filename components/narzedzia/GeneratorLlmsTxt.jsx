@@ -38,6 +38,8 @@ import Poradniki from './Poradniki';
 import CoDostajesz from './CoDostajesz';
 import ZrzutWyniku from './ZrzutWyniku';
 import Sekcja from './Sekcja';
+import Ozdoba from './Ozdoba';
+import NawBok from './NawBok';
 import st from './narzedzia.module.css';
 import * as s from './styl';
 
@@ -201,8 +203,9 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
       )}
 
       <section className={st.hero} style={s.hero}>
+        <Ozdoba rodzaj="llms" />
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
+          <Reveal className="section-header" style={{ margin: '0 0 1rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {en ? 'Free tool' : 'Darmowe narzędzie'}
             </div>
@@ -220,8 +223,9 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
             {en ? 'llms.txt is a Markdown file in the root of a website that points language models to its most important pages, each with a short description. It is a proposed standard (llmstxt.org), not a requirement: according to Ahrefs, no major model provider officially supports it. For ChatGPT, what matters more is whether AI bots can access your site in robots.txt. The generator checks both.' : 'llms.txt to plik w formacie Markdown w katalogu głównym strony, który wskazuje modelom językowym najważniejsze podstrony z krótkim opisem. To propozycja standardu (llmstxt.org), a nie wymóg: według analizy Ahrefs żaden duży dostawca modeli oficjalnie go nie obsługuje. Dla ChatGPT ważniejsze jest, czy boty AI mają dostęp do strony w robots.txt. Generator sprawdza oba elementy.'}
           </AnswerBox>
           </div>
-          <Byline sciezka={SCIEZKA} takzeEn data={en ? LASTMOD[`${BASE}${SCIEZKA}`] : undefined} style={{ textAlign: 'center' }} />
+          <Byline sciezka={SCIEZKA} takzeEn data={en ? LASTMOD[`${BASE}${SCIEZKA}`] : undefined} />
 
+          <div className={st.tresc} id="nw-tresc"><div className={st.trescGlowna}>
           <CoDostajesz
             locale={locale}
             odRazu={en ? CO_DOSTAJESZ_EN : CO_DOSTAJESZ}
@@ -239,7 +243,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
           </CoDostajesz>
 
           <section aria-labelledby="co-to-jest-llms-txt" className={st.sekcja} style={s.sekcja}>
-            <h2 id="co-to-jest-llms-txt" style={s.h2}>{en ? 'What is llms.txt (and llms-full.txt)' : 'Co to jest llms.txt (i llms-full.txt)'}</h2>
+            <h2 id="co-to-jest-llms-txt" className={st.h2} style={s.h2}>{en ? 'What is llms.txt (and llms-full.txt)' : 'Co to jest llms.txt (i llms-full.txt)'}</h2>
             {en ? (
               <>
                 <p style={s.akapit}>
@@ -438,6 +442,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
 
           <Poradniki narzedzie={SCIEZKA} locale={locale} />
           <PozostaleNarzedzia bez={SCIEZKA} locale={locale} />
+          </div><NawBok rootId="nw-tresc" /></div>
         </div>
       </section>
 

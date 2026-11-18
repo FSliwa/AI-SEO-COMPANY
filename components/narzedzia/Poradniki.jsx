@@ -23,7 +23,7 @@ export default function Poradniki({ narzedzie, pozycje, locale = 'pl', tytul, id
   const idSekcji = id ?? (en ? 'guides' : 'poradniki');
   return (
     <section aria-labelledby={idSekcji} className={st.sekcja} style={s.sekcja}>
-      <h2 id={idSekcji} style={s.h2}>{tytul ?? (en ? 'Guides for this tool' : 'Poradniki do tego narzędzia')}</h2>
+      <h2 id={idSekcji} className={st.h2} style={s.h2}>{tytul ?? (en ? 'Guides for this tool' : 'Poradniki do tego narzędzia')}</h2>
       <ul className={st.poradniki}>
         {lista.map((p) => {
           const [t, opis] = en ? p.en : p.pl;

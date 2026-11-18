@@ -29,6 +29,7 @@ import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
 import Image from 'next/image';
 import Byline from '@/components/Byline';
+import TloGory from '@/components/TloGory';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 
 // 5.11.2026 (LO1; PLAN-v2 6.21, OP-09, OP-10, AV-06/Z1, CB-16, OP-04) - strona chroniona: tylko
@@ -217,7 +218,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
       <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
         
         {/* Hero Banner */}
-        <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+        <section className="subpage-hero tlo-gory-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+          <TloGory />
           <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Reveal>
             <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.75rem', color: 'var(--w-tusz-2)', marginBottom: '0.5rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 400 }}>Search Engine Optimization - Local SEO Warsaw</div>

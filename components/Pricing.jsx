@@ -32,7 +32,7 @@ export default function Pricing({ isMainContent = false }) {
           {/* Package 1 */}
           <RevealItem className="pricing-card">
             <div className="pricing-header">
-              <div className="pricing-kategoria" aria-hidden="true">✳ SEO</div>
+              <div className="pricing-kategoria" aria-hidden="true"><span className="asterisk">✳</span> SEO</div>
               <h3>{t('standardTitle')}</h3>
               <p className="pricing-desc">{t('standardDesc')}</p>
               <div className="pricing-price">
@@ -71,7 +71,7 @@ export default function Pricing({ isMainContent = false }) {
           {/* Package 2 */}
           <RevealItem className="pricing-card">
             <div className="pricing-header">
-              <div className="pricing-kategoria" aria-hidden="true">✳ SEO</div>
+              <div className="pricing-kategoria" aria-hidden="true"><span className="asterisk">✳</span> SEO</div>
               <h3>{t('premiumTitle')}</h3>
               <p className="pricing-desc">{t('premiumDesc')}</p>
               <div className="pricing-price">
@@ -111,7 +111,7 @@ export default function Pricing({ isMainContent = false }) {
           <RevealItem className="pricing-card featured">
             <span className="pricing-featured-badge">{lang === 'pl' ? 'STRONA WWW W CENIE' : 'WEBSITE INCLUDED'}</span>
             <div className="pricing-header">
-              <div className="pricing-kategoria" aria-hidden="true">✳ WWW + SEO</div>
+              <div className="pricing-kategoria" aria-hidden="true"><span className="asterisk">✳</span> WWW + SEO</div>
               <h3>{t('boosterTitle')}</h3>
               <p className="pricing-desc">{t('boosterDesc')}</p>
               <div className="pricing-price">

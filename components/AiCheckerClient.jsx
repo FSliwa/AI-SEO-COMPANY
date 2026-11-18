@@ -30,6 +30,8 @@ const ZRZUT = {
   en: { src: '/images/narzedzia/przyklady/ai-visibility-check-example-result.webp', width: 1200, height: 1647 },
 };
 import { Sekcja } from '@/components/narzedzia/Sekcja';
+import Ozdoba from '@/components/narzedzia/Ozdoba';
+import NawBok from '@/components/narzedzia/NawBok';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import * as s from '@/components/narzedzia/styl';
 
@@ -152,7 +154,7 @@ const OGRANICZENIA_EN = [
   'The checker is set up for the Polish market: ChatGPT and Claude search with the location set to Poland, and we read AI Overviews from Google results for Poland. For businesses that operate only abroad the result is less reliable.',
 ];
 
-const card = { background: '#FFFFFF', borderRadius: '28px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' };
+const card = s.karta;
 const kartaListy = { ...card, margin: 0, paddingLeft: 'clamp(2.5rem, 6vw, 3.5rem)', display: 'grid', gap: '1rem', lineHeight: 1.6, color: 'var(--color-text-main)' };
 
 export default function AiCheckerClient() {
@@ -167,9 +169,10 @@ export default function AiCheckerClient() {
       {/* Z-02 pkt 3 / Z-W8: okruszek przez hub (BreadcrumbList 3 poziomy jak pozostałe narzędzia). */}
       <Breadcrumbs pl="Sprawdź widoczność w AI" en="AI Visibility Check" parent={RODZIC_HUBA} />
 
-      <section className={st.hero} style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '80px' }}>
+      <section className={st.hero} style={{ paddingTop: 'clamp(112px, 12vw, 152px)', paddingBottom: '80px' }}>
+        <Ozdoba rodzaj="ai" />
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 1.25rem' }}>
+          <Reveal className="section-header" style={{ margin: '0 0 1.25rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {en ? 'Free check' : 'Bezpłatne sprawdzenie'}
             </div>
@@ -178,7 +181,7 @@ export default function AiCheckerClient() {
               {en ? 'AI visibility check: does ChatGPT recommend your business?' : 'Widoczność w AI: sprawdź, czy ChatGPT poleca Twoją firmę'}
             </h1>
             {/* Z-W2: lead 2 zdania; lista silników ze stałej (Grok dopisze się sam). */}
-            <p className={st.lead} style={{ ...s.lead, margin: '0 auto' }}>
+            <p className={st.lead} style={s.lead}>
               {en
                 ? `We check whether ${listaSilnikow('en')} name your business when a customer asks three typical questions. Results within 2 minutes, no sign-up.`
                 : `Sprawdzimy, czy ${listaSilnikow('pl')} wymieniają Twoją firmę, gdy klient zadaje trzy typowe pytania. Wynik zobaczysz w ciągu 2 minut, bez rejestracji.`}
@@ -211,6 +214,7 @@ export default function AiCheckerClient() {
           <Byline sciezka={SCIEZKA} takzeEn style={{ margin: '1rem 0 0' }} />
 
           {/* Z-W5 + Z-W9 (decyzja właściciela): granica „od razu / po e-mailu” zgodna z podglądem panelu. */}
+          <div className={st.tresc} id="nw-tresc"><div className={st.trescGlowna}>
           <CoDostajesz
             locale={locale}
             id="ac-za-darmo"
@@ -351,6 +355,7 @@ export default function AiCheckerClient() {
           {/* Z-03, Z-02: poradniki i wszystkie darmowe narzędzia z hubem. */}
           <Poradniki narzedzie={SCIEZKA} locale={locale} />
           <PozostaleNarzedzia bez={SCIEZKA} locale={locale} />
+          </div><NawBok rootId="nw-tresc" /></div>
         </div>
       </section>
       <AppleFaq faqData={en ? FAQ_EN : FAQ} title={en ? 'Questions about AI visibility' : 'Pytania o widoczność w AI'} />

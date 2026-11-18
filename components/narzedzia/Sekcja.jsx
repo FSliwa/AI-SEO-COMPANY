@@ -6,7 +6,7 @@ import * as s from './styl';
 export function Sekcja({ id, tytul, children, style }) {
   return (
     <section aria-labelledby={id} className={st.sekcja} style={style ? { ...s.sekcja, ...style } : s.sekcja}>
-      <h2 id={id} style={s.h2}>{tytul}</h2>
+      <h2 id={id} className={st.h2} style={s.h2}>{tytul}</h2>
       {children}
     </section>
   );

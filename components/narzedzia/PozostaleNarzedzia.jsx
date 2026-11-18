@@ -8,6 +8,7 @@
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana, SPRAWDZARKA_DZIALA } from '@/lib/publikacja';
 import { AUDYT, AUTORYTET, GENERATOR, MAKIETA, listaSilnikow } from '@/lib/narzedziaLiczby';
+import Ikona, { ikonaNarzedzia } from './Ikony';
 import st from './narzedzia.module.css';
 import * as s from './styl';
 
@@ -51,11 +52,12 @@ export default function PozostaleNarzedzia({ bez, locale = 'pl', tytul }) {
   const id = en ? 'more-tools' : 'inne-narzedzia';
   return (
     <section aria-labelledby={id} className={`${st.sekcja} ${st.sekcjaKarta}`} style={{ ...s.sekcja, ...s.karta }}>
-      <h2 id={id} style={{ ...s.h2, marginBottom: '1rem' }}>{tytul ?? (en ? 'More free tools' : 'Inne darmowe narzędzia')}</h2>
+      <h2 id={id} className={st.h2} style={{ ...s.h2, marginBottom: '1rem' }}>{tytul ?? (en ? 'More free tools' : 'Inne darmowe narzędzia')}</h2>
       <ul className={st.siatka}>
         {linki.map((n) => (
           <li key={n.href}>
             <Link href={n.href} className={st.kafel}>
+              <span className={st.kafelIkona}><Ikona nazwa={ikonaNarzedzia(n.href)} /></span>
               <span className={st.kafelNazwa}>{n.nazwa}</span>
               <span className={st.kafelOpis}>{n.opis}</span>
             </Link>
@@ -64,6 +66,7 @@ export default function PozostaleNarzedzia({ bez, locale = 'pl', tytul }) {
         {hub && (
           <li>
             <Link href={hub} className={`${st.kafel} ${st.kafelHub}`}>
+              <span className={st.kafelIkona}><Ikona nazwa="szablon" /></span>
               <span className={st.kafelNazwa}>{en ? 'All free tools and templates' : 'Wszystkie darmowe narzędzia i szablony'}</span>
               <span className={st.kafelOpis}>{en ? 'the full list, with SEO templates to download' : 'pełna lista razem z szablonami SEO do pobrania'}</span>
             </Link>

@@ -10,6 +10,7 @@ import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { hash } from '@/lib/anchors';
+import TloGory from '@/components/TloGory';
 
 export default function ProjektowanieClient({ faqData, portfolioCases, carouselItems }) {
   const lang = useLocale();
@@ -18,7 +19,8 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       
       {/* Hero Banner - Apple Style */}
-      <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+      <section className="subpage-hero tlo-gory-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+        <TloGory />
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>

@@ -19,6 +19,9 @@ import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
+import Ozdoba from './Ozdoba';
+import NawBok from './NawBok';
+import { ikonaNarzedzia } from './Ikony';
 import { BASE, RODZIC_OKRUSZKOW, stronaNarzedzia } from '@/lib/narzedzia';
 import { stronaNarzedziaL } from '@/lib/narzedzia.en';
 import { hrefWJezyku } from '@/lib/linkiEn';
@@ -49,8 +52,9 @@ export function Uklad({ slug, tag, schema, lead, narzedzie, odpowiedz, children,
         {...(en ? { language: 'en' } : {})}
       />
       <section className={st.hero} style={s.hero}>
+        <Ozdoba rodzaj={ikonaNarzedzia(slug)} />
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
+          <Reveal className="section-header" style={{ margin: '0 0 1rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {tag}
             </div>
@@ -63,7 +67,10 @@ export function Uklad({ slug, tag, schema, lead, narzedzie, odpowiedz, children,
               {krotka ? <div style={s.poNarzedziu}>{krotka}</div> : null}
             </>
           ) : krotka}
-          {children}
+          <div className={st.tresc} id="nw-tresc">
+            <div className={st.trescGlowna}>{children}</div>
+            <NawBok rootId="nw-tresc" />
+          </div>
         </div>
       </section>
       <AppleFaq faqData={faq} title={tytulFaq} sectionId="pytania" />
