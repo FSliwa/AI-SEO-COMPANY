@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 
@@ -14,6 +14,7 @@ import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 //   cta_click            {cta_location, cta_text, page_path}  (+ link_url dla BlogCTA klastra)
 //   pricing_plan_click   {plan, cta_location, page_path}  + ustawia pakiet w formularzu
 //   phone_click          {link_location, link_url, page_path}
+//   page_view            {page_location (origin + pathname, bez query), page_title}  (tylko nawigacja kliencka)
 //   email_click          {link_location, link_url, page_path}
 //   view_contact_section {section_id, page_path}   (raz na odsłonę strony)
 //   view_pricing         {section_id, page_path}   (raz na odsłonę strony)
@@ -34,6 +35,27 @@ function locationOf(el) {
 
 export default function AnalyticsEvents() {
   const pathname = usePathname();
+
+  // 18.11.2026 (audyt B1, para do przełączenia konta): jedno page_view na zmianę trasy po stronie klienta.
+  // Pierwsze wejście pomija: początkowe page_view wysyła gtag('config') z layoutu. Zależność tylko od
+  // pathname, więc history.replaceState z samym ?query (narzędzia: zapiszParametry) niczego nie wysyła.
+  // Adres bez query (origin + pathname); tytuł z document.title po chwili, bo Next podmienia go po commicie.
+  const poprzedniaSciezka = useRef(null);
+  useEffect(() => {
+    if (poprzedniaSciezka.current === null) {
+      poprzedniaSciezka.current = pathname;
+      return undefined;
+    }
+    if (poprzedniaSciezka.current === pathname) return undefined;
+    poprzedniaSciezka.current = pathname;
+    const t = setTimeout(() => {
+      track('page_view', {
+        page_location: `${window.location.origin}${window.location.pathname}`,
+        page_title: document.title,
+      });
+    }, 100);
+    return () => clearTimeout(t);
+  }, [pathname]);
 
   useEffect(() => {
     const onClick = (e) => {
