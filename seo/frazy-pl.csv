@@ -1,0 +1,792 @@
+fraza,wol_PL,wolumen_suma,cpc_usd_max,konkurencja_ads,klaster,intencja,typ_strony,url_docelowy,status,zrodlo,uwagi
+ai mode,18100,18100,0.9,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+opinie google,12100,12100,1.59,LOW,opinie,nawigacyjna/informacyjna,poradnik,/blog/jak-pozyskiwac-opinie-google-poradnik,istniejąca,fraza strony: /blog/jak-pozyskiwac-opinie-google-poradnik,SERP: sam Google/nawigacja do opinii o firmach; tylko poradnik 'jak zdobywać'
+seo,12100,12100,5.94,MEDIUM,_szum,,,,pominięta,strażnik fraz; fraza strony: /,"marki, szum, poza ofertą"
+strony,12100,12100,2.24,LOW,_szum,,,,pominięta,strażnik fraz; fraza strony: /,"marki, szum, poza ofertą"
+wizytówka google,9900,9900,3.47,LOW,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+geo,8100,8100,0.23,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+projekt,6600,6600,0.65,LOW,_szum,,,,pominięta,strażnik fraz; fraza strony: /,"marki, szum, poza ofertą"
+pozycjonowanie stron,5400,5400,21.96,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,"autosugestia Google; frazy.csv; strażnik fraz; fraza strony: /,/pozycjonowanie-stron-internetowych",fraza chroniona strażnikiem
+tworzenie stron internetowych,4400,4400,8.98,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,frazy.csv; fraza strony: /projektowanie-stron-internetowych,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+wzrost,4400,4400,0.32,LOW,_szum,,,,pominięta,strażnik fraz; fraza strony: /,"marki, szum, poza ofertą"
+agencja marketingowa,3600,3600,5.68,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,frazy.csv; strażnik fraz; fraza strony: /,fraza chroniona strażnikiem
+seo co to,2900,2900,1.18,LOW,definicje,informacyjna,poradnik,/blog/co-to-jest-seo,nowa,frazy.csv,TOFU definicyjne: AI Overview zjada kliknięcia (playbook 8.4)
+zapytanie ofertowe,2900,2900,1.81,LOW,szablon-rfp,informacyjna,szablon,/narzedzia/zapytanie-ofertowe-seo,istniejąca,fraza strony: /narzedzia/zapytanie-ofertowe-seo,"fraza ogólna (nie SEO): SERP nie-SEO, niska zgodność intencji"
+agencja seo,2400,2400,12.31,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google; frazy.csv; strażnik fraz; fraza strony: /,fraza chroniona strażnikiem
+bing webmaster tools,2400,2400,2.7,LOW,bing,informacyjna,poradnik,/blog/bing-webmaster-tools-indexnow-chatgpt,nowa,frazy.csv,gated do czasu weryfikacji treści (PLAN-v2)
+google ai mode,2400,2400,1.18,LOW,ai-mode,informacyjna,poradnik,/blog/google-ai-mode-jak-sie-pojawic,nowa,frazy.csv,"trend świeży, SERP niestabilny; sprawdzić SERP"
+pozycjonowanie stron toruń,1900,1900,0,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych,1900,1900,8.82,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv; strażnik fraz; fraza strony: /projektowanie-stron-internetowych,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+surfer seo,1900,1900,1.44,MEDIUM,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+tryb ai google,1900,1900,0.87,LOW,ai-mode,informacyjna,poradnik,/blog/google-ai-mode-jak-sie-pojawic,nowa,frazy.csv,"trend świeży, SERP niestabilny; sprawdzić SERP"
+ubersuggest,1900,1900,7.58,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+verseo,1900,1900,1.57,MEDIUM,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+widoczni,1900,1900,2.96,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+ai overview,1600,1600,2.57,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv,
+ai overviews,1600,1600,2.57,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google; frazy.csv,
+audyt seo,1600,1600,6.82,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv; strażnik fraz; fraza strony: /audyt-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+aeo,1300,1300,4.42,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv,
+icea,1300,1300,0.57,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+pozycjonowanie stron internetowych,1300,1300,22.97,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv; strażnik fraz; fraza strony: /pozycjonowanie-stron-internetowych,fraza chroniona strażnikiem
+screaming frog,1300,1300,7.48,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+ile kosztuje strona internetowa,1000,1000,2.42,MEDIUM,wd-cena,komercyjna,poradnik,/blog/ile-kosztuje-strona-www-dla-firmy-ceny,istniejąca,frazy.csv; fraza strony: /blog/ile-kosztuje-strona-www-dla-firmy-ceny,
+pozycjonowanie stron w google,1000,1000,22.56,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie strony w google,1000,1000,22.56,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv; fraza strony: /pozycjonowanie-stron-internetowych,fraza chroniona strażnikiem
+pozycjonowanie wizytówki google,1000,1000,8.56,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google; frazy.csv; fraza strony: /pozycjonowanie-wizytowki-google,opinie google = SERP informacyjny/nawigacyjny
+cennik pozycjonowania,880,880,5.08,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,frazy.csv; strażnik fraz; fraza strony: /cennik-pozycjonowania,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+chatgpt atlas,880,880,0.22,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+co to jest seo,880,880,1.07,LOW,definicje,informacyjna,poradnik,/blog/co-to-jest-seo,nowa,frazy.csv,TOFU definicyjne: AI Overview zjada kliknięcia (playbook 8.4)
+copywriting seo,880,880,1.6,MEDIUM,copywriting,komercyjna,usługa/poradnik,/copywriting-seo,nowa,autosugestia Google,SERP: agencje contentowe
+delante,880,880,6.26,MEDIUM,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+freelancer seo,880,880,7.78,MEDIUM,freelancer,komercyjna,porównanie,/porownania/agencja-seo-czy-freelancer,nowa,frazy.csv,
+pozycjonowanie cena,880,880,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv; fraza strony: /cennik-pozycjonowania,fraza chroniona strażnikiem
+pozycjonowanie stron cennik,880,880,8.75,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google; frazy.csv; fraza strony: /cennik-pozycjonowania,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+pozycjonowanie stron poznań,880,880,13.41,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+semcore,880,880,2.7,MEDIUM,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+wizytówka google moja firma,880,880,4.8,LOW,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+core web vitals,880,880,3.06,LOW,_inne,,,,pominięta,"fraza strony: /blog/core-web-vitals-a-pozycje-google,/en/blog/core-web-vitals-google-rankings",nieprzypisane
+agencja marketingowa warszawa,720,720,4.81,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google; frazy.csv; fraza strony: /,fraza chroniona strażnikiem
+ai seo,720,720,11.71,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,"frazy.csv; fraza strony: /en/ai-search-optimization,/pozycjonowanie-w-ai",
+blog seo,720,720,1.35,MEDIUM,blogseo,informacyjna,poradnik,/blog,istniejąca,fraza strony: /blog,
+bluerank,720,720,3.02,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+link building,720,720,5.09,MEDIUM,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google; fraza strony: /blog/link-building-b2b-dla-marketerow-strategie-i-checklista,blog B2B istnieje: nie dublować
+neuronwriter,720,720,0.26,MEDIUM,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+pozycjonowanie lokalne,720,720,10.91,MEDIUM,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google; frazy.csv; strażnik fraz; fraza strony: /seo-lokalne-warszawa,bez klonów miast
+pozycjonowanie poznań,720,720,10.78,MEDIUM,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie sklepu internetowego,720,720,40.62,MEDIUM,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google; frazy.csv,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie stron katowice,720,720,1.48,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron warszawa,720,720,23.63,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-stron-internetowych,fraza chroniona strażnikiem
+pozycjonowanie warszawa,720,720,8.17,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-stron-internetowych,fraza chroniona strażnikiem
+seo ai,720,720,11.71,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-w-ai,
+agencja seo warszawa,590,590,9.98,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google; frazy.csv; strażnik fraz; fraza strony: /,fraza chroniona strażnikiem
+llms.txt,590,590,1.24,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google; frazy.csv; fraza strony: /narzedzia/generator-llms-txt,
+narzędzia seo,590,590,2.68,MEDIUM,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,frazy.csv,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+pozycjonowanie kraków,590,590,10.55,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron kraków,590,590,6.89,MEDIUM,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron wrocław,590,590,12.92,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron łódź,590,590,10.95,MEDIUM,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+strony internetowe dla firm,590,590,10.46,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,frazy.csv; fraza strony: /projektowanie-stron-internetowych,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+widoczni opinie,590,590,2.68,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+agencja seo poznań,480,480,4.44,MEDIUM,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo wrocław,480,480,5.63,MEDIUM,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+chatgpt vs gemini,480,480,0.95,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+ile kosztuje pozycjonowanie,480,480,3.45,MEDIUM,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,"frazy.csv; strażnik fraz; fraza strony: /blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026,/cennik-pozycjonowania",kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+optymalizacja seo,480,480,3.24,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; strażnik fraz; fraza strony: /audyt-seo,fraza chroniona strażnikiem
+pozycjonowanie stron częstochowa,480,480,5.46,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron firmy,480,480,76.08,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron google,480,480,20.84,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron internetowych poznań,480,480,7.91,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron koszt,480,480,11.15,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron rzeszów,480,480,0,LOW,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron www cennik,480,480,5.06,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+pozycjonowanie wrocław,480,480,7.94,MEDIUM,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+schema org,480,480,0,LOW,szablon-dane,informacyjna,szablon,/narzedzia/dane-strukturalne-json-ld,istniejąca,frazy.csv,blog dane-strukturalne-schema-org planowany: jeden URL na klaster
+strona internetowa dla firmy,480,480,12.38,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+verseo opinie,480,480,2.2,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+audyt seo poznań,390,390,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+audyt ux,390,390,4.42,LOW,ux,informacyjna,poradnik,/blog/audyt-ux-strony,istniejąca,frazy.csv; fraza strony: /blog/audyt-ux-strony,
+geo seo,390,390,4.84,HIGH,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv; fraza strony: /porownania/seo-vs-geo,
+ile kosztuje pozycjonowanie strony,390,390,5.16,MEDIUM,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,frazy.csv; fraza strony: /cennik-pozycjonowania,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+jak założyć wizytówkę google,390,390,2.56,LOW,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,fraza strony: /narzedzia/checklista-wizytowki-google,opinie google = SERP informacyjny/nawigacyjny
+marketing b2b,390,390,5.49,MEDIUM,marketing-off,informacyjna,poradnik,"/blog (istniejące: marketing restauracji, case study)",istniejąca,frazy.csv,poza rdzeniem usług
+pozycjonowanie ai,390,390,16.48,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-w-ai,
+pozycjonowanie sklepu,390,390,32.94,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,frazy.csv,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie stron białystok,390,390,12.2,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron bydgoszcz,390,390,0,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron lublin,390,390,18.71,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron olsztyn,390,390,4.89,LOW,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron szczecin,390,390,4.8,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo poznań,390,390,4.92,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo warszawa,390,390,7.54,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google; frazy.csv; fraza strony: /,fraza chroniona strażnikiem
+wizytówka google jak zrobić,390,390,1.78,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+wycena pozycjonowania,390,390,0,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,frazy.csv; fraza strony: /cennik-pozycjonowania,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+alternatywa dla chatgpt,320,320,0.73,MEDIUM,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+content plan,320,320,3.86,MEDIUM,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google; fraza strony: /narzedzia/content-plan,copywriting seo = osobny klaster usługi (nowy)
+content planner,320,320,3.86,MEDIUM,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+content planning,320,320,3.86,MEDIUM,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+google ai overview,320,320,1.01,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv,
+pozycjonowanie stron gdańsk,320,320,5.64,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron gdynia,320,320,0,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron kielce,320,320,4.37,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron radom,320,320,6.94,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron seo,320,320,23.27,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron www poznań,320,320,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+senuto cennik,320,320,0.33,MEDIUM,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+analiza konkurencji,320,320,4.7,MEDIUM,t-competitor,informacyjna,szablon,/blog/analiza-konkurencji-seo-przewodnik,istniejąca,fraza strony: /blog/analiza-konkurencji-seo-przewodnik,
+agencja seo katowice,260,260,9.39,MEDIUM,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+cena pozycjonowania strony,260,260,3.55,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+co to jest geografia,260,260,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+darmowy audyt seo,260,260,3.27,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /narzedzia/audyt-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+generative engine optimization,260,260,7.08,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,"frazy.csv; fraza strony: /en/ai-search-optimization,/pozycjonowanie-w-ai",
+pozycjonowanie lokalne strony,260,260,9.24,LOW,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google,bez klonów miast
+pozycjonowanie stron gliwice,260,260,0,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie w ai,260,260,14.4,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google; frazy.csv; fraza strony: /pozycjonowanie-w-ai,
+projektowanie stron internetowych warszawa,260,260,6.62,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv; fraza strony: /projektowanie-stron-internetowych,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+ranking agencji seo,260,260,12.35,MEDIUM,ranking,komercyjna,porównanie,/porownania/ranking-agencji-seo,nowa,autosugestia Google; frazy.csv,ryzyko: autopromocja; wymaga jawnej metodologii
+seo kraków,260,260,8.39,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo lokalne,260,260,9.33,MEDIUM,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google; frazy.csv; strażnik fraz; fraza strony: /seo-lokalne-warszawa,bez klonów miast
+seo wrocław,260,260,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja ai,210,210,5.15,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-w-ai,
+agencja seo kraków,210,210,5.96,MEDIUM,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo olsztyn,210,210,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo sem,210,210,30.07,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+audyt seo cena,210,210,4.3,MEDIUM,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /audyt-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo online,210,210,6.26,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+darmowe narzędzia seo,210,210,0.6,LOW,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,frazy.csv,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+indexnow,210,210,66,LOW,bing,informacyjna,poradnik,/blog/bing-webmaster-tools-indexnow-chatgpt,nowa,frazy.csv,gated do czasu weryfikacji treści (PLAN-v2)
+polityka cookies,210,210,4.64,LOW,_szum,,,,pominięta,fraza strony: /cookies,"marki, szum, poza ofertą"
+pozycjonowanie stron chorzów,210,210,0,LOW,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych warszawa,210,210,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv; fraza strony: /pozycjonowanie-stron-internetowych,fraza chroniona strażnikiem
+pozycjonowanie stron internetowych łódź,210,210,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron oferta,210,210,19.76,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+pozycjonowanie w mapach google,210,210,3.77,MEDIUM,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-wizytowki-google,bez klonów miast
+pozycjonowanie wizytówki google cena,210,210,5.68,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+projektowanie stron internetowych poznań,210,210,5.2,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja geo,170,170,8.75,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv,
+agencja seo ai,170,170,13.42,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google; frazy.csv,
+agencja seo bydgoszcz,170,170,14.16,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo gdańsk,170,170,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+co to jest geoda,170,170,0.09,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+dane strukturalne test,170,170,0,LOW,szablon-dane,informacyjna,szablon,/narzedzia/dane-strukturalne-json-ld,istniejąca,autosugestia Google,blog dane-strukturalne-schema-org planowany: jeden URL na klaster
+ile kosztuje pozycjonowanie sklepu internetowego,170,170,8.38,MEDIUM,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+ile kosztuje strona internetowa dla firmy,170,170,2.94,HIGH,wd-cena,komercyjna,poradnik,/blog/ile-kosztuje-strona-www-dla-firmy-ceny,istniejąca,autosugestia Google; frazy.csv; fraza strony: /blog/ile-kosztuje-strona-www-dla-firmy-ceny,
+pozycjonowanie lokalne warszawa,170,170,6.81,LOW,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,frazy.csv; fraza strony: /seo-lokalne-warszawa,bez klonów miast
+pozycjonowanie stron internetowych bydgoszcz,170,170,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron sopot,170,170,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron w niemczech,170,170,5.99,MEDIUM,niemcy,komercyjna,usługa,/pozycjonowanie-stron-w-niemczech,nowa,autosugestia Google,tylko jeśli powstaje wersja DE (spójność)
+pozycjonowanie stron wordpress,170,170,2.26,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie w chatgpt,170,170,9.49,MEDIUM,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-w-ai/chatgpt,
+projektowanie i tworzenie stron internetowych,170,170,5.28,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych bydgoszcz,170,170,6.74,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych lublin,170,170,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych rzeszów,170,170,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych wrocław,170,170,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+raport seo,170,170,4.32,MEDIUM,szablon-raport,informacyjna,szablon,/narzedzia/raport-seo,istniejąca,frazy.csv; fraza strony: /narzedzia/raport-seo,
+senuto opinie,170,170,0.3,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+seo company,170,170,4.94,LOW,agencja,komercyjna,usługa,/,istniejąca,frazy.csv; strażnik fraz; fraza strony: /en,fraza chroniona strażnikiem
+seo firm,170,170,4.94,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo optimization services,170,170,6.88,LOW,agencja,komercyjna,usługa,/,istniejąca,frazy.csv,fraza chroniona strażnikiem
+sprawdzenie pozycji strony w google,170,170,1.4,MEDIUM,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,autosugestia Google,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+strategia seo,170,170,0,LOW,szablon-strat,informacyjna,szablon,/narzedzia/szablon-strategii-seo,istniejąca,frazy.csv; fraza strony: /narzedzia/szablon-strategii-seo,
+test szybkości strony,170,170,1.95,LOW,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,frazy.csv,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+wizytówka google logowanie,170,170,4.32,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+wizytówka google maps,170,170,3.57,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+agencja seo bielsko biała,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo gliwice,140,140,8.75,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo lublin,140,140,7.84,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo szczecin,140,140,3.21,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo łódź,140,140,5.17,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+audyt seo strony,140,140,8.81,MEDIUM,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+dane strukturalne,140,140,0,LOW,szablon-dane,informacyjna,szablon,/narzedzia/dane-strukturalne-json-ld,istniejąca,autosugestia Google; frazy.csv; fraza strony: /narzedzia/dane-strukturalne-json-ld,blog dane-strukturalne-schema-org planowany: jeden URL na klaster
+ile kosztuje seo,140,140,8.67,MEDIUM,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google; frazy.csv; fraza strony: /blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+konsultacje seo cennik,140,140,0,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+link building seo,140,140,2.3,MEDIUM,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+linkowanie wewnętrzne,140,140,0,LOW,t-links,informacyjna,szablon,/narzedzia/linkowanie-wewnetrzne,istniejąca,autosugestia Google; fraza strony: /narzedzia/linkowanie-wewnetrzne,
+najlepsza agencja seo,140,140,25.44,HIGH,ranking,komercyjna,porównanie,/porownania/ranking-agencji-seo,nowa,autosugestia Google; frazy.csv,ryzyko: autopromocja; wymaga jawnej metodologii
+najlepsze agencje seo,140,140,25.44,HIGH,ranking,komercyjna,porównanie,/porownania/ranking-agencji-seo,nowa,frazy.csv,ryzyko: autopromocja; wymaga jawnej metodologii
+pozycjonowanie seo cennik,140,140,3.08,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+pozycjonowanie sklepu shoper,140,140,7.88,MEDIUM,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,frazy.csv,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie stron bielsko,140,140,5.27,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron elbląg,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron gorzów,140,140,11.05,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych białystok,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych gdańsk,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych gliwice,140,140,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych katowice,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych kraków,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych lublin,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych rzeszów,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych toruń,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych wrocław,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron jasło,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron poradnik,140,140,0.38,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron ruda śląska,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron tworzenie stron www agencja seo agencja marketingowa,140,140,6.98,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+pozycjonowanie stron w niemieckim google,140,140,0,HIGH,niemcy,komercyjna,usługa,/pozycjonowanie-stron-w-niemczech,nowa,autosugestia Google,tylko jeśli powstaje wersja DE (spójność)
+pozycjonowanie stron za granicą,140,140,17.03,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie strony firmowej,140,140,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie wizytówki google moja firma,140,140,17.5,HIGH,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+pozycjonowanie za efekt,140,140,24.44,MEDIUM,efekt,komercyjna,porównanie,/porownania/pozycjonowanie-za-efekt-czy-abonament,istniejąca,autosugestia Google; frazy.csv; fraza strony: /porownania/pozycjonowanie-za-efekt-czy-abonament,
+profesjonalne pozycjonowanie stron,140,140,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+projektowanie stron internetowych gorzów,140,140,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych katowice,140,140,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+semcore opinie,140,140,5.69,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+seobility,140,140,1.95,MEDIUM,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+seogroup,140,140,2.12,HIGH,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+sprawdzanie pozycji w google,140,140,1.8,MEDIUM,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,frazy.csv,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+tanie pozycjonowanie stron,140,140,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+tanie pozycjonowanie stron cennik,140,140,8.43,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+wizytówka google cena,140,140,3.93,HIGH,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+abcx agencja seo projektowanie i pozycjonowanie stron internetowych w google,110,110,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+agencja seo gdynia,110,110,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo kielce,110,110,10.41,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo rybnik,110,110,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo sosnowiec,110,110,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo toruń,110,110,11.42,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+ai visibility,110,110,20.35,MEDIUM,aivis,narzędzie,narzędzie/usługa,/sprawdz-widocznosc-w-ai,istniejąca,frazy.csv; fraza strony: /sprawdz-widocznosc-w-ai,
+audyt seo cennik,110,110,3.2,MEDIUM,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+audyt seo co to,110,110,0,LOW,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /audyt-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo sklepu,110,110,0,LOW,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /audyt-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo sklepu internetowego,110,110,0,MEDIUM,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo strony internetowej,110,110,8.11,MEDIUM,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo wrocław,110,110,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+case study seo,110,110,2.78,LOW,marketing-off,informacyjna,poradnik,"/blog (istniejące: marketing restauracji, case study)",istniejąca,fraza strony: /blog/wyniki-wdrozen-seo-2026,poza rdzeniem usług
+co to jest geodezja,110,110,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+co to jest geologia,110,110,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+delante agencja seo sem ai,110,110,0,MEDIUM,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+delante opinie,110,110,0,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+firma seo,110,110,16.23,LOW,agencja,komercyjna,usługa,/,istniejąca,frazy.csv; fraza strony: /,fraza chroniona strażnikiem
+jak dobrać słowa kluczowe,110,110,5.97,MEDIUM,t-keyword,informacyjna,szablon,/narzedzia/dobor-slow-kluczowych,istniejąca,fraza strony: /narzedzia/dobor-slow-kluczowych,
+konsultacje seo dla firm,110,110,0,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+link building co to,110,110,4.3,LOW,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+llm seo,110,110,5.83,LOW,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,frazy.csv,
+makieta strony internetowej,110,110,1.8,LOW,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,autosugestia Google; fraza strony: /narzedzia/makieta-redesignu,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+marketing restauracji,110,110,9.6,MEDIUM,marketing-off,informacyjna,poradnik,"/blog (istniejące: marketing restauracji, case study)",istniejąca,frazy.csv,poza rdzeniem usług
+optymalizacja seo cena,110,110,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie dla firm,110,110,0,HIGH,branze,komercyjna,usługa,/seo-dla-branz (hub) + strony branżowe tylko z case study,nowa,frazy.csv,doorway bez danych branżowych
+pozycjonowanie i optymalizacja stron,110,110,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie sklepu prestashop,110,110,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,frazy.csv,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie stron hoteli,110,110,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron internetowych bielsko,110,110,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych opole,110,110,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron internetowych ruda śląska,110,110,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron kędzierzyn koźle,110,110,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron niemcy,110,110,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron po angielsku,110,110,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron samemu,110,110,4.53,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron siedlce,110,110,1.56,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron tanio,110,110,23.38,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron trójmiasto,110,110,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron www lublin,110,110,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie strony sklepu internetowego,110,110,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie wizytówki google cennik,110,110,10.18,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+projektowanie stron internetowych cennik,110,110,2.93,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google; frazy.csv; fraza strony: /projektowanie-stron-internetowych,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+projektowanie stron internetowych gdańsk,110,110,6.71,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych wordpress,110,110,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+seo firma,110,110,16.14,HIGH,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+szkolenie seo poznań,110,110,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+szkolenie seo warszawa,110,110,0,MEDIUM,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+widoczność w ai,110,110,10.08,LOW,aivis,narzędzie,narzędzie/usługa,/sprawdz-widocznosc-w-ai,istniejąca,frazy.csv; fraza strony: /sprawdz-widocznosc-w-ai,
+wizytówka google jak założyć,110,110,3.19,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+agencja seo białystok,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo bytom,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo chorzów,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo dąbrowa górnicza,90,90,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+agencja seo opole,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo ruda śląska,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo rzeszów,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo tychy,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+analiza słów kluczowych,90,90,1.61,LOW,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,autosugestia Google,
+audyt seo co to jest,90,90,0,LOW,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo krok po kroku,90,90,0,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo online darmowy,90,90,2.83,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo warszawa,90,90,13.2,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /audyt-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt treści,90,90,0,LOW,t-caudit,informacyjna,szablon,/narzedzia/szablon-audytu-tresci,istniejąca,autosugestia Google; fraza strony: /narzedzia/szablon-audytu-tresci,
+co to jest geo,90,90,1.87,MEDIUM,_szum,,,,pominięta,autosugestia Google; frazy.csv; fraza strony: /porownania/seo-vs-geo,"marki, szum, poza ofertą"
+dane strukturalne google,90,90,0,LOW,szablon-dane,informacyjna,szablon,/narzedzia/dane-strukturalne-json-ld,istniejąca,autosugestia Google,blog dane-strukturalne-schema-org planowany: jeden URL na klaster
+ile kosztuje audyt seo,90,90,0,MEDIUM,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /audyt-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+ile kosztuje pozycjonowanie strony w google,90,90,7.93,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,frazy.csv,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+jak sprawdzić pozycję strony,90,90,1.65,LOW,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,frazy.csv,
+jak wybrać firmę seo,90,90,0,LOW,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,frazy.csv; fraza strony: /porownania/jak-wybrac-agencje-seo,
+kurs seo warszawa,90,90,0,HIGH,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+najlepsza agencja seo w polsce,90,90,0,HIGH,ranking,komercyjna,porównanie,/porownania/ranking-agencji-seo,nowa,autosugestia Google,ryzyko: autopromocja; wymaga jawnej metodologii
+optymalizacja seo wordpress,90,90,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pakiety seo,90,90,10.06,HIGH,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,frazy.csv,
+pozycjonowanie hotelu,90,90,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie sklepu internetowego cennik,90,90,0,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+pozycjonowanie stron co to,90,90,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron legionowo,90,90,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron mysłowice,90,90,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron na google,90,90,12.52,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron płock,90,90,0,LOW,_miasta,,,,pominięta,frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron szkolenie,90,90,2.66,MEDIUM,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+pozycjonowanie stron w google za darmo,90,90,3.94,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron za darmo,90,90,8.49,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie wizytówki google katowice,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych białystok,90,90,4.3,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych dla firm,90,90,4.93,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych gdynia,90,90,5.47,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych kielce,90,90,1.15,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych krosno,90,90,0,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych legnica,90,90,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych tarnów,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych toruń,90,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+rel canonical,90,90,0,LOW,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,fraza strony: /blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026,
+seo dla e commerce,90,90,0,LOW,branze,komercyjna,usługa,/seo-dla-branz (hub) + strony branżowe tylko z case study,nowa,frazy.csv,doorway bez danych branżowych
+seo dla firm,90,90,44.22,MEDIUM,branze,komercyjna,usługa,/seo-dla-branz (hub) + strony branżowe tylko z case study,nowa,autosugestia Google,doorway bez danych branżowych
+seo dla sklepów internetowych,90,90,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,frazy.csv,doorway jeśli per platforma (shoper itd.)
+seo firmy,90,90,26.88,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo gdańsk,90,90,9.14,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo vs geo,90,90,2.92,MEDIUM,seo-geo,informacyjna,porównanie,/porownania/seo-vs-geo,istniejąca,"autosugestia Google; frazy.csv; fraza strony: /en/comparisons/seo-vs-geo,/porownania/seo-vs-geo",
+sprawdzanie pozycji strony,90,90,2.72,MEDIUM,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,frazy.csv,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+strona internetowa dla firmy budowlanej,90,90,7.96,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+strona internetowa firmy,90,90,13.68,MEDIUM,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+szkolenie seo gdańsk,90,90,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+webflow vs wordpress,90,90,1.51,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+agencja seo co to,70,70,0,LOW,definicje,informacyjna,poradnik,/blog/co-to-jest-seo,nowa,autosugestia Google; frazy.csv,TOFU definicyjne: AI Overview zjada kliknięcia (playbook 8.4)
+agencja seo elbląg,70,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo jaworzno,70,70,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+agencja seo tarnów,70,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+ai overviews google,70,70,0.64,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+analiza konkurencji seo,70,70,3.66,LOW,t-competitor,informacyjna,szablon,/blog/analiza-konkurencji-seo-przewodnik,istniejąca,autosugestia Google; fraza strony: /blog/analiza-konkurencji-seo-przewodnik,
+analiza seo strony,70,70,6.04,MEDIUM,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,frazy.csv,
+audyt seo darmowy,70,70,2.97,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo google,70,70,3.14,LOW,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo koszt,70,70,0,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo shoper,70,70,3.17,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo za darmo,70,70,2.41,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+autorytet domeny,70,70,0,LOW,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,autosugestia Google; fraza strony: /narzedzia/autorytet-domeny,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+cennik seo,70,70,6.85,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google; fraza strony: /blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+co to jest geometria kół,70,70,0.26,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+co to jest geoportal,70,70,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+co to jest geowłóknina,70,70,0.58,HIGH,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+generator schema,70,70,1.1,LOW,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,frazy.csv,
+lead generation b2b,70,70,13.68,MEDIUM,marketing-off,informacyjna,poradnik,"/blog (istniejące: marketing restauracji, case study)",istniejąca,frazy.csv,poza rdzeniem usług
+link building marketplace,70,70,6.18,MEDIUM,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+marketing przemysłowy,70,70,4.77,MEDIUM,marketing-off,informacyjna,poradnik,"/blog (istniejące: marketing restauracji, case study)",istniejąca,frazy.csv,poza rdzeniem usług
+migracja strony,70,70,0,LOW,t-migr,informacyjna,szablon,/narzedzia/checklista-migracji-strony,istniejąca,autosugestia Google; fraza strony: /narzedzia/checklista-migracji-strony,
+na czym polega pozycjonowanie,70,70,5.39,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+optymalizacja seo strony,70,70,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie lokalne firmy,70,70,0,LOW,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google,bez klonów miast
+pozycjonowanie lokalne google,70,70,10.76,LOW,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google,bez klonów miast
+pozycjonowanie lokalne seo,70,70,0,LOW,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google,bez klonów miast
+pozycjonowanie lokalne wrocław,70,70,0,LOW,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie sklepu woocommerce,70,70,8.93,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,frazy.csv,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie stron co to jest,70,70,0.78,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron ełk,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron freelancer,70,70,7.98,HIGH,freelancer,komercyjna,porównanie,/porownania/agencja-seo-czy-freelancer,nowa,autosugestia Google,
+pozycjonowanie stron google cennik,70,70,0,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+pozycjonowanie stron internetowych uk,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron jak,70,70,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron krok po kroku,70,70,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron kurs,70,70,1.61,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron lokalnych,70,70,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron lubin,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron medycznych,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron mielec,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron oświęcim,70,70,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron piaseczno,70,70,10.03,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron piła,70,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron pruszków,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron rumia,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron stargard,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron starogard gdański,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron swarzędz,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron tczew,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron uk,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie strony w google koszt,70,70,10.68,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie usług,70,70,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie w llm,70,70,4.3,MEDIUM,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,frazy.csv,
+projektowanie stron internetowych bielsko biała,70,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych kalisz,70,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych kurs,70,70,1.18,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+ranking agencji marketingowych,70,70,3.58,LOW,ranking,komercyjna,porównanie,/porownania/ranking-agencji-seo,nowa,frazy.csv,ryzyko: autopromocja; wymaga jawnej metodologii
+rodo na stronie internetowej,70,70,0,MEDIUM,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,fraza strony: /blog/rodo-na-stronie-internetowej,
+seo dla małych firm,70,70,14.87,MEDIUM,branze,komercyjna,usługa,/seo-dla-branz (hub) + strony branżowe tylko z case study,nowa,autosugestia Google; frazy.csv,doorway bez danych branżowych
+seo pod ai,70,70,8.32,LOW,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,frazy.csv,
+skuteczne pozycjonowanie sklepu internetowego,70,70,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google,doorway jeśli per platforma (shoper itd.)
+specjalista seo wrocław,70,70,8.48,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+sunrise system opinie,70,70,0,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+tanie pozycjonowanie sklepu internetowego,70,70,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google,doorway jeśli per platforma (shoper itd.)
+usługi seo cennik,70,70,0,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+wizytówka google co to,70,70,0,LOW,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+wizytówka google ile kosztuje,70,70,3.2,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+konfiguracja ga4,70,70,0,LOW,_inne,,,,pominięta,fraza strony: /blog/konfiguracja-zdarzen-gtm-ga4-poradnik,nieprzypisane
+agencja marketingowa b2b,50,50,11.35,HIGH,agencja,komercyjna,usługa,/,istniejąca,frazy.csv,fraza chroniona strażnikiem
+agencja seo cennik,50,50,3.49,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+agencja seo kalisz,50,50,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+agencja seo praca,50,50,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+answer engine optimization,50,50,3.89,HIGH,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,"frazy.csv; fraza strony: /en/ai-search-optimization,/porownania/seo-vs-geo",
+audyt seo home,50,50,4.39,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo jak zrobić,50,50,0.91,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo lublin,50,50,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+audyt seo strony www,50,50,8.92,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+bezpłatny audyt seo,50,50,5.42,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+bizzit pozycjonowanie stron,50,50,3.02,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+brief strony internetowej,50,50,0,LOW,t-brief,informacyjna,szablon,/narzedzia/brief-dla-copywritera,istniejąca,autosugestia Google; fraza strony: /narzedzia/brief-strony-internetowej,
+checklista seo,50,50,0,MEDIUM,t-seochecklist,informacyjna,szablon,/narzedzia/checklista-seo,istniejąca,"autosugestia Google; frazy.csv; fraza strony: /blog/audyt-techniczny-seo,/narzedzia/checklista-seo",
+co to jest geometria brwi,50,50,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+darmowy audyt seo online,50,50,2.05,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+firma seo warszawa,50,50,14.13,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+jak działa pozycjonowanie,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+jak wybrać agencję seo,50,50,0,LOW,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /porownania/jak-wybrac-agencje-seo,
+jak zrobić audyt seo,50,50,0.43,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,frazy.csv; fraza strony: /blog/audyt-techniczny-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+konsultant seo warszawa,50,50,0,LOW,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,autosugestia Google,
+link building agency,50,50,0,MEDIUM,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+link building services,50,50,0,HIGH,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+llms txt generator,50,50,0.76,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,frazy.csv; fraza strony: /narzedzia/generator-llms-txt,
+llms.txt generator,50,50,0.76,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google; fraza strony: /en/tools/llms-txt-generator,
+migracja strony internetowej,50,50,2.42,HIGH,t-migr,informacyjna,szablon,/narzedzia/checklista-migracji-strony,istniejąca,autosugestia Google,
+optymalizacja seo prestashop,50,50,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pikseo agencja marketingowa seo google ads social media,50,50,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie abonament,50,50,9.02,HIGH,efekt,komercyjna,porównanie,/porownania/pozycjonowanie-za-efekt-czy-abonament,istniejąca,frazy.csv; fraza strony: /porownania/pozycjonowanie-za-efekt-czy-abonament,
+pozycjonowanie lokalne co to,50,50,2.91,LOW,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google; frazy.csv; fraza strony: /seo-lokalne-warszawa,bez klonów miast
+pozycjonowanie pod ai,50,50,18.04,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie płatność za efekt,50,50,24.55,HIGH,efekt,komercyjna,porównanie,/porownania/pozycjonowanie-za-efekt-czy-abonament,istniejąca,frazy.csv; fraza strony: /porownania/pozycjonowanie-za-efekt-czy-abonament,
+pozycjonowanie sklepu internetowego prestashop,50,50,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie sklepu internetowego shoper,50,50,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie stron ai,50,50,19.32,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron brzeg,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron chrzanów,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron gorlice,50,50,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron grodzisk mazowiecki,50,50,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron głogów,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron internetowych zielona góra,50,50,6.64,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron jak to zrobić,50,50,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron kancelarii,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron lodz,50,50,5.68,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron nauka,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron otwock,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron shoper,50,50,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie stron szczecinek,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron w usa,50,50,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron wadowice,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron września,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron za efekt,50,50,8.57,HIGH,efekt,komercyjna,porównanie,/porownania/pozycjonowanie-za-efekt-czy-abonament,istniejąca,autosugestia Google; frazy.csv; fraza strony: /porownania/pozycjonowanie-za-efekt-czy-abonament,
+pozycjonowanie stron żyrardów,50,50,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+profesjonalny audyt seo,50,50,0,LOW,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+projektowanie nowoczesnych stron internetowych,50,50,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+projektowanie stron internetowych gliwice,50,50,2.76,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych nowy targ,50,50,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych olsztyn,50,50,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych opole,50,50,10.69,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo pozycjonowanie sklepu internetowego,50,50,0,,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google,doorway jeśli per platforma (shoper itd.)
+seo vs sem,50,50,0.31,MEDIUM,seo-vs,komercyjna,porównanie,/porownania/seo-czy-google-ads,istniejąca,frazy.csv; fraza strony: /porownania/seo-czy-google-ads,
+seohost cennik domen,50,50,1.23,LOW,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+sprawdzenie pozycji w google,50,50,1.73,HIGH,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,autosugestia Google,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+strona internetowa dla firmy szkoleniowej,50,50,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+szkolenia seo dla firm,50,50,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+szkolenia seo wrocław,50,50,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+szkolenie seo dla firm,50,50,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+szkolenie seo wrocław,50,50,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+wizytówka google jak usunąć,50,50,0,LOW,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+agencja seo pruszków,40,40,0,LOW,agencja,komercyjna,usługa,/,istniejąca,frazy.csv,fraza chroniona strażnikiem
+ai overviews co to,40,40,0.01,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google; frazy.csv,
+audyt seo online free,40,40,2.09,MEDIUM,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt techniczny seo,40,40,0,MEDIUM,wybor,mieszana,poradnik,/blog (istniejące) / /porownania/jak-wybrac-agencje-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /blog/audyt-techniczny-seo,
+audyt ux strony,40,40,0,HIGH,ux,informacyjna,poradnik,/blog/audyt-ux-strony,istniejąca,frazy.csv; fraza strony: /blog/audyt-ux-strony,
+audyt widoczności w ai,40,40,0,MEDIUM,aivis,narzędzie,narzędzie/usługa,/sprawdz-widocznosc-w-ai,istniejąca,fraza strony: /pozycjonowanie-w-ai/audyt-widocznosci,
+brief dla copywritera,40,40,0,LOW,copywriting,komercyjna,usługa/poradnik,/copywriting-seo,nowa,autosugestia Google; fraza strony: /narzedzia/brief-dla-copywritera,SERP: agencje contentowe
+dobór słów kluczowych,40,40,3.92,LOW,t-keyword,informacyjna,szablon,/narzedzia/dobor-slow-kluczowych,istniejąca,autosugestia Google,
+ekspert seo wrocław,40,40,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+firma seo wrocław,40,40,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+geo pozycjonowanie,40,40,5.51,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+llms.txt co to,40,40,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google; frazy.csv; fraza strony: /narzedzia/generator-llms-txt,
+lokalne pozycjonowanie ile kosztuje,40,40,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+najlepsze pozycjonowanie stron,40,40,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+optymalizacja seo co to,40,40,1.97,MEDIUM,definicje,informacyjna,poradnik,/blog/co-to-jest-seo,nowa,autosugestia Google,TOFU definicyjne: AI Overview zjada kliknięcia (playbook 8.4)
+pozycjonowanie czy google ads,40,40,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv; fraza strony: /porownania/seo-czy-google-ads,fraza chroniona strażnikiem
+pozycjonowanie restauracji,40,40,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie sklepu internetowego koszt,40,40,4.94,HIGH,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google; frazy.csv,doorway jeśli per platforma (shoper itd.)
+pozycjonowanie stron kutno,40,40,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron mińsk mazowiecki,40,40,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron podwykonawca,40,40,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron praca,40,40,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron ranking firm,40,40,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie wizytówki google warszawa,40,40,10.52,LOW,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+praca seo warszawa,40,40,0.32,HIGH,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+projektowanie stron internetowych konin,40,40,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych niemcy,40,40,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych nowy sącz,40,40,6.64,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych studia,40,40,0,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+regulamin świadczenia usług,40,40,0.4,LOW,_szum,,,,pominięta,fraza strony: /regulamin,"marki, szum, poza ofertą"
+seo dla lekarzy,40,40,0,HIGH,branze,komercyjna,usługa,/seo-dla-branz (hub) + strony branżowe tylko z case study,nowa,frazy.csv,doorway bez danych branżowych
+seo llm,40,40,0,MEDIUM,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,frazy.csv,
+seo zaawansowany audyt,40,40,0,LOW,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+skąd chatgpt bierze informacje,40,40,0,LOW,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-w-ai/chatgpt,
+specjalista seo kraków,40,40,8.6,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+specjalista seo poznań,40,40,1.89,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+sprawdź pozycję strony w google,40,40,1.23,HIGH,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,frazy.csv,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+strona internetowa dla firmy transportowej,40,40,0,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+strona internetowa dla małej firmy,40,40,3.2,HIGH,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+umowa na pozycjonowanie,40,40,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+agencja marketingowa michumedia warszawa,30,30,1.8,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+agencja marketingowa warszawa praca,30,30,0.32,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+agencja seo tarnowskie góry,30,30,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+audyt seo checklista,30,30,0,,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google; frazy.csv; fraza strony: /blog/audyt-techniczny-seo,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo definicja,30,30,0,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo rzeszów,30,30,0,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+chatgpt seo,30,30,7.81,LOW,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,"autosugestia Google; frazy.csv; fraza strony: /en/ai-search-optimization/chatgpt,/pozycjonowanie-w-ai/chatgpt",
+chatgpt vs perplexity,30,30,0,LOW,_szum,,,,pominięta,frazy.csv,"marki, szum, poza ofertą"
+co powinien zawierać raport seo,30,30,0,HIGH,szablon-raport,informacyjna,szablon,/narzedzia/raport-seo,istniejąca,frazy.csv,
+co zawiera audyt seo,30,30,0,MEDIUM,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,frazy.csv,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+czy pozycjonowanie ma sens,30,30,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv; fraza strony: /porownania/pozycjonowanie-za-efekt-czy-abonament,fraza chroniona strażnikiem
+dane strukturalne seo,30,30,0,LOW,szablon-dane,informacyjna,szablon,/narzedzia/dane-strukturalne-json-ld,istniejąca,autosugestia Google,blog dane-strukturalne-schema-org planowany: jeden URL na klaster
+darmowy audyt seo strony,30,30,5.42,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+dobra agencja seo,30,30,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+freelancer seo warszawa,30,30,0,MEDIUM,freelancer,komercyjna,porównanie,/porownania/agencja-seo-czy-freelancer,nowa,autosugestia Google,
+ile kosztuje pozycjonowanie wizytówki google,30,30,4.75,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google; frazy.csv; fraza strony: /pozycjonowanie-wizytowki-google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+jak długo trwa pozycjonowanie,30,30,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv,fraza chroniona strażnikiem
+jak długo trwa pozycjonowanie strony,30,30,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv,fraza chroniona strażnikiem
+linkowanie wewnętrzne seo,30,30,0,LOW,t-links,informacyjna,szablon,/narzedzia/linkowanie-wewnetrzne,istniejąca,autosugestia Google,
+migracja strony wordpress,30,30,0,LOW,t-migr,informacyjna,szablon,/narzedzia/checklista-migracji-strony,istniejąca,autosugestia Google,
+najlepsze narzędzia seo,30,30,0,,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,frazy.csv,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+pikseo agencja marketingowa seo google ads social media bydgoszcz,30,30,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+plik llms.txt,30,30,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,frazy.csv; fraza strony: /narzedzia/generator-llms-txt,
+pozycjonowanie lokalne w google,30,30,0,MEDIUM,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google,bez klonów miast
+pozycjonowanie stron agencja,30,30,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron bełchatów cennik,30,30,0,MEDIUM,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+pozycjonowanie stron cieszyn,30,30,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron luboń,30,30,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron mazowieckie,30,30,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron opinie,30,30,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron ostrów,30,30,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron prawników,30,30,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron sochaczew,30,30,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron top 3,30,30,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+projektowanie graficzne stron internetowych,30,30,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+projektowanie stron i sklepów internetowych,30,30,12.61,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,autosugestia Google,doorway jeśli per platforma (shoper itd.)
+projektowanie stron internetowych bielsko,30,30,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych cena,30,30,2.01,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych kościerzyna,30,30,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych olkusz,30,30,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych siedlce,30,30,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych zakopane,30,30,1.8,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+raport z pozycjonowania,30,30,0,LOW,_inne,,,,pominięta,frazy.csv,nieprzypisane
+seo vs google ads,30,30,0,LOW,seo-vs,komercyjna,porównanie,/porownania/seo-czy-google-ads,istniejąca,"autosugestia Google; frazy.csv; fraza strony: /en/comparisons/seo-vs-google-ads,/porownania/seo-czy-google-ads",
+seo w ai,30,30,4.42,MEDIUM,_inne,,,,pominięta,frazy.csv,nieprzypisane
+specjalista seo warszawa,30,30,8.66,MEDIUM,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+staż seo kraków,30,30,7.28,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+strona internetowa dla firmy cena,30,30,3.96,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+ahrefs cena,20,20,0,LOW,_inne,,,,pominięta,frazy.csv,nieprzypisane
+audyt seo co zawiera,20,20,0,,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+audyt seo home pl,20,20,2.03,HIGH,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+c e a t e c,20,20,0,LOW,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+co to jest ai overview,20,20,0,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv,
+co to jest geografia i czym się zajmuje,20,20,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+freelancer seo kraków,20,20,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+freelancer seo wrocław,20,20,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie bez umowy,20,20,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv; fraza strony: /porownania/pozycjonowanie-za-efekt-czy-abonament,fraza chroniona strażnikiem
+pozycjonowanie lokalne lublin,20,20,0,LOW,_miasta,,,,pominięta,autosugestia Google; frazy.csv,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron allegro,20,20,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron czy warto,20,20,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron efekt,20,20,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron kujawsko pomorskie,20,20,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron lubelskie,20,20,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron wielkopolskie,20,20,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie w wyszukiwarkach ai,20,20,12.11,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv,fraza chroniona strażnikiem
+projektowanie stron internetowych praca,20,20,1.05,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych sosnowiec,20,20,18.76,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+projektowanie stron internetowych tomaszów mazowiecki,20,20,0,,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych zielona góra,20,20,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+ranking agencji seo w polsce,20,20,3.8,HIGH,ranking,komercyjna,porównanie,/porownania/ranking-agencji-seo,nowa,autosugestia Google,ryzyko: autopromocja; wymaga jawnej metodologii
+samodzielny audyt seo,20,20,0,,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+seo b2b,20,20,9.03,LOW,_inne,,,,pominięta,autosugestia Google; frazy.csv,nieprzypisane
+seo czy google ads,20,20,0,MEDIUM,seo-vs,komercyjna,porównanie,/porownania/seo-czy-google-ads,istniejąca,frazy.csv; fraza strony: /porownania/seo-czy-google-ads,
+seo dla ai,20,20,4.46,MEDIUM,branze,komercyjna,usługa,/seo-dla-branz (hub) + strony branżowe tylko z case study,nowa,frazy.csv,doorway bez danych branżowych
+seo dla startupów,20,20,0,,branze,komercyjna,usługa,/seo-dla-branz (hub) + strony branżowe tylko z case study,nowa,frazy.csv,doorway bez danych branżowych
+seo firm near me,20,20,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+wizytówka google firmy,20,20,5.07,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+wizytówka google jak edytować,20,20,1.68,LOW,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+agencja marketingowa ai,10,10,3.1,HIGH,agencja,komercyjna,usługa,/,istniejąca,frazy.csv,fraza chroniona strażnikiem
+agencja reklamowa seo,10,10,0,HIGH,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+agencja seo lodz,10,10,0,HIGH,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+agencja seo polska,10,10,19.18,HIGH,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+agencja seo puławy,10,10,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+agencja seo skierniewice,10,10,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+agencje seo polska,10,10,19.18,HIGH,agencja,komercyjna,usługa,/,istniejąca,frazy.csv,fraza chroniona strażnikiem
+ahrefs vs semrush,10,10,0,MEDIUM,_inne,,,,pominięta,frazy.csv,nieprzypisane
+ai overviews and more,10,10,0,,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+ai overviews and more in search labs,10,10,0,,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+ai overviews app,10,10,0,,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+ai overviews in google search,10,10,0,,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+ai overviews in search,10,10,0,,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+ai overviews in search labs,10,10,0,,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+ai overviews logo,10,10,0,LOW,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+ai overviews vs ai mode,10,10,0,,ai-mode,informacyjna,poradnik,/blog/google-ai-mode-jak-sie-pojawic,nowa,autosugestia Google,"trend świeży, SERP niestabilny; sprawdzić SERP"
+ai seo agency,10,10,3.74,HIGH,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv,
+ai seo company,10,10,2.44,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv; fraza strony: /o-nas,
+b2b seo agency,10,10,1.68,MEDIUM,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+b2b seo consultant,10,10,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+b2b seo services,10,10,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+b2b seo statistics,10,10,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+b2b seo strategy,10,10,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+brief seo,10,10,0,HIGH,t-brief,informacyjna,szablon,/narzedzia/brief-dla-copywritera,istniejąca,frazy.csv,
+brief strony internetowej przykład,10,10,0,HIGH,t-brief,informacyjna,szablon,/narzedzia/brief-dla-copywritera,istniejąca,autosugestia Google,
+chatgpt seo optimization,10,10,0,HIGH,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,autosugestia Google,
+chatgpt seo prompts,10,10,2.86,HIGH,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,autosugestia Google,
+chatgpt seo services,10,10,0,LOW,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,autosugestia Google,
+chatgpt seo skills,10,10,2.46,MEDIUM,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,autosugestia Google,
+chatgpt seo tool,10,10,0,,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,autosugestia Google,
+checkliste seo,10,10,0,LOW,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+co to jest geo w marketingu,10,10,0.67,MEDIUM,seo-geo,informacyjna,porównanie,/porownania/seo-vs-geo,istniejąca,frazy.csv; fraza strony: /porownania/seo-vs-geo,
+content plan example,10,10,0,,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+content plan template,10,10,5.87,HIGH,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+content plan template google sheets,10,10,0,,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+content plan tool,10,10,0,HIGH,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+content planner google sheets,10,10,0,HIGH,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+content planner notion,10,10,0.38,HIGH,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+content planner template google sheets,10,10,0,,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+czy pozycjonowanie stron jest trudne,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+darmowa wycena pozycjonowania,10,10,0,,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,frazy.csv,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+darmowy audyt seo opinie,10,10,0,,audyt,komercyjna,usługa/narzędzie,/audyt-seo,istniejąca,autosugestia Google,rozdzielić: usługa /audyt-seo vs narzędzie /narzedzia/audyt-seo
+delante agencja seo sem,10,10,6.46,HIGH,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+delante agencja seo sem ai opinie,10,10,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+epic agency projektowanie i tworzenie stron internetowych dla firm,10,10,0,,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+gemini seo,10,10,0,LOW,_inne,,,,pominięta,frazy.csv,nieprzypisane
+generative engine optimization agency,10,10,0,,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv,
+generator llms txt,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+generator llms.txt,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google; fraza strony: /narzedzia/generator-llms-txt,
+generator meta description,10,10,1.37,HIGH,_inne,,,,pominięta,frazy.csv,nieprzypisane
+geo agency,10,10,3.43,HIGH,_inne,,,,pominięta,frazy.csv,nieprzypisane
+google ai overviews and ai mode,10,10,0,,ai-mode,informacyjna,poradnik,/blog/google-ai-mode-jak-sie-pojawic,nowa,autosugestia Google,"trend świeży, SERP niestabilny; sprawdzić SERP"
+ile kosztuje optymalizacja seo,10,10,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+ile kosztuje seo strony,10,10,0,HIGH,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+jak sprawdzić autorytet domeny,10,10,0,LOW,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,autosugestia Google,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+kalkulator seo,10,10,0,HIGH,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,autosugestia Google; frazy.csv,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+kurs seo kraków,10,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+link building cena,10,10,2.37,HIGH,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+link building gadget to ae2,10,10,0,,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+link building jobs,10,10,0.41,MEDIUM,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+link building meaning,10,10,0,LOW,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+link building specialist,10,10,0,HIGH,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+link building tool semrush,10,10,0,,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+link building tools free,10,10,0,,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,autosugestia Google,blog B2B istnieje: nie dublować
+linkowanie wewnętrzne co to,10,10,0,LOW,t-links,informacyjna,szablon,/narzedzia/linkowanie-wewnetrzne,istniejąca,autosugestia Google,
+llms txt and llms full txt,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt checker,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt example,10,10,1.09,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt file,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt generator free,10,10,0,HIGH,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt generator github,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt generator online,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt generator wordpress,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt google,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt how to,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt how to create,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt how to use,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt standard,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt tool,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt vs mcp,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt vscode,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms txt wordpress,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms.txt vs agents.md,10,10,0,,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+llms.txt vs robots.txt,10,10,0,LOW,llms,nawigacyjna/narzędzie,narzędzie,/narzedzia/generator-llms-txt,istniejąca,autosugestia Google,
+mailchimp vs getresponse,10,10,0,,_inne,,,,pominięta,frazy.csv; fraza strony: /blog/mailchimp-vs-getresponse,nieprzypisane
+makieta strony internetowej online,10,10,0,,narzedzia,narzędzie,narzędzie,/narzedzia (hub) + 6 narzędzi,istniejąca,autosugestia Google,sprawdzanie pozycji = narzędzie zaplanowane (nie wdrożone)
+najgorsza agencja seo,10,10,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+najlepsza agencja seo ai,10,10,0,MEDIUM,ranking,komercyjna,porównanie,/porownania/ranking-agencji-seo,nowa,autosugestia Google; frazy.csv,ryzyko: autopromocja; wymaga jawnej metodologii
+optymalizacja seo co to jest,10,10,0,LOW,definicje,informacyjna,poradnik,/blog/co-to-jest-seo,nowa,autosugestia Google,TOFU definicyjne: AI Overview zjada kliknięcia (playbook 8.4)
+optymalizacja seo koszt,10,10,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+perplexity seo,10,10,0,LOW,_inne,,,,pominięta,frazy.csv,nieprzypisane
+pikseo agencja marketingowa seo google ads social media bydgoszcz opinie,10,10,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pikseo agencja marketingowa seo google ads social media poznań,10,10,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pikseo agencja marketingowa seo google ads social media zdjęcia,10,10,0,,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+plan seo,10,10,0,HIGH,_inne,,,,pominięta,frazy.csv,nieprzypisane
+pozycjonowanie biura rachunkowego,10,10,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie lokalne cena,10,10,5.73,LOW,lokalne,komercyjna,usługa lokalna,/seo-lokalne-warszawa,istniejąca,autosugestia Google; frazy.csv; fraza strony: /seo-lokalne-warszawa,bez klonów miast
+pozycjonowanie seo kraków,10,10,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+pozycjonowanie stron cennik forum,10,10,0,MEDIUM,cennik,komercyjna,usługa/pytanie,/cennik-pozycjonowania,istniejąca,autosugestia Google,kanibalizacja z blogiem ile-kosztuje-seo (zasada G1)
+pozycjonowanie stron facebook,10,10,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron html,10,10,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron internetowych co to,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron jak zrobić,10,10,2.65,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron józefów,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron londyn,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron malbork,10,10,0,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron myślenice,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron olx,10,10,0,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron pl,10,10,13.42,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron praca zarobki,10,10,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron ranking,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron reda,10,10,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron ryczałt,10,10,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron tworzenie stron www agencja seo agencja marketingowa opinie,10,10,0,MEDIUM,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+pozycjonowanie stron zakopane,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron zarobki,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+pozycjonowanie stron ząbki,10,10,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie stron łomianki,10,10,0,,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie strony w google samemu,10,10,2.41,HIGH,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,autosugestia Google; frazy.csv,fraza chroniona strażnikiem
+pozycjonowanie wizytówki google forum,10,10,4.72,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+praca seo gdańsk,10,10,0.53,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+projektowanie stron internetowych helion,10,10,0,,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych html,10,10,0,,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych jak zacząć,10,10,0.92,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych książka,10,10,0,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych kurs online,10,10,0,,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych lodz,10,10,128.26,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych online,10,10,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych pkd,10,10,0.24,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych pkwiu,10,10,0,,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych program,10,10,1.83,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych ryczałt,10,10,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych stawka ryczałtu,10,10,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych uk,10,10,0,,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych za darmo,10,10,3.45,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych zarobki,10,10,0,LOW,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+projektowanie stron internetowych zduńska wola,10,10,0,,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+semrush cena,10,10,0.03,MEDIUM,_inne,,,,pominięta,frazy.csv,nieprzypisane
+semrush vs ahrefs,10,10,0,MEDIUM,_inne,,,,pominięta,frazy.csv,nieprzypisane
+seo agency poland,10,10,14.64,MEDIUM,_inne,,,,pominięta,frazy.csv,nieprzypisane
+seo ai tools,10,10,4.66,HIGH,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv,
+seo b2b marketing,10,10,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+seo chatgpt,10,10,0,LOW,chatgpt,komercyjna,usługa/hub,/pozycjonowanie-w-ai/chatgpt,istniejąca,frazy.csv; fraza strony: /pozycjonowanie-w-ai/chatgpt,
+seo copywriting kurs darmowy,10,10,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+seo copywriting tools,10,10,0,LOW,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+seo firm delhi,10,10,2.35,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm dubai,10,10,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm graphite,10,10,0,,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm in delhi,10,10,2.35,MEDIUM,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm in mumbai,10,10,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm india,10,10,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm melbourne,10,10,0,,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm mumbai,10,10,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm singapore,10,10,0,LOW,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo firm sydney,10,10,0,,agencja,komercyjna,usługa,/,istniejąca,autosugestia Google,fraza chroniona strażnikiem
+seo law firm,10,10,0,LOW,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+seo praca warszawa,10,10,0,MEDIUM,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+seo services firm,10,10,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+seo services poland,10,10,0,MEDIUM,_inne,,,,pominięta,frazy.csv,nieprzypisane
+seo vibes warszawa,10,10,1.48,LOW,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+seo vs aeo,10,10,0,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,frazy.csv; fraza strony: /porownania/seo-vs-geo,
+seo vs geo business impact,10,10,0,,seo-geo,informacyjna,porównanie,/porownania/seo-vs-geo,istniejąca,autosugestia Google,
+seo vs geo marketing,10,10,0,LOW,seo-geo,informacyjna,porównanie,/porownania/seo-vs-geo,istniejąca,autosugestia Google,
+seo vs geo meaning,10,10,0,,seo-geo,informacyjna,porównanie,/porownania/seo-vs-geo,istniejąca,autosugestia Google,
+seo vs geo vs aeo,10,10,1.97,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+seo vs geo vs aeo vs aio,10,10,50.12,MEDIUM,geo,komercyjna,usługa/hub,/pozycjonowanie-w-ai,istniejąca,autosugestia Google,
+seo vs geo vs aio,10,10,0,,seo-geo,informacyjna,porównanie,/porownania/seo-vs-geo,istniejąca,autosugestia Google,
+seo vs ppc,10,10,0,LOW,seo-vs,komercyjna,porównanie,/porownania/seo-czy-google-ads,istniejąca,frazy.csv; fraza strony: /porownania/seo-czy-google-ads,
+shoper czy woocommerce,10,10,0,LOW,sklep,komercyjna,usługa,/pozycjonowanie-sklepu-internetowego,nowa,frazy.csv,doorway jeśli per platforma (shoper itd.)
+soro seo vs google ads,10,10,0,HIGH,seo-vs,komercyjna,porównanie,/porownania/seo-czy-google-ads,istniejąca,autosugestia Google,
+sprawdzanie przekierowań,10,10,0,LOW,_inne,,,,pominięta,frazy.csv,nieprzypisane
+sprawdzenie seo strony,10,10,0,HIGH,_inne,,,,pominięta,frazy.csv,nieprzypisane
+staż seo warszawa,10,10,0.12,HIGH,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+storytelling marki,10,10,0,LOW,_inne,,,,pominięta,fraza strony: /blog/storytelling-marki,nieprzypisane
+strona internetowa dla firmy za darmo,10,10,8.33,HIGH,webdesign,komercyjna,usługa,/projektowanie-stron-internetowych,istniejąca,autosugestia Google,"SERP zdominowany przez kreatory i agencje; wąskie pozycjonowanie ""dla firm B2B"""
+strona internetowa dla twojej firmy,10,10,5.71,HIGH,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+surfer seo cennik,10,10,0.95,MEDIUM,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+template content planner,10,10,0,,copy,informacyjna/narzędzie,szablon,/narzedzia/content-plan,istniejąca,autosugestia Google,copywriting seo = osobny klaster usługi (nowy)
+test seo strony,10,10,5.14,HIGH,_inne,,,,pominięta,frazy.csv,nieprzypisane
+umowa na pozycjonowanie strony internetowej,10,10,4.49,MEDIUM,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+umowa o pozycjonowanie strony internetowej wzór,10,10,0,LOW,pozycjonowanie,komercyjna,usługa,/pozycjonowanie-stron-internetowych,istniejąca,frazy.csv,fraza chroniona strażnikiem
+vwo vs optimizely,10,10,0,,_inne,,,,pominięta,"frazy.csv; fraza strony: /blog/vwo-vs-optimizely-porownanie,/en/blog/vwo-vs-optimizely-porownanie",nieprzypisane
+wizytówka google maps cena,10,10,5.24,HIGH,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+wizytówka google opinie,10,10,2.39,MEDIUM,wizytowka,mieszana,usługa/poradnik,/pozycjonowanie-wizytowki-google,istniejąca,autosugestia Google,opinie google = SERP informacyjny/nawigacyjny
+wordpress czy wix,10,10,0,MEDIUM,_inne,,,,pominięta,frazy.csv,nieprzypisane
+wypowiedzenie umowy pozycjonowania wzór,10,10,0,LOW,zmiana,komercyjna,poradnik,/zmiana-agencji-seo,istniejąca,frazy.csv,
+google tag manager ga4,10,10,0,LOW,_inne,,,,pominięta,fraza strony: /blog/konfiguracja-zdarzen-gtm-ga4-poradnik,nieprzypisane
+link building b2b,10,10,0,LOW,linkbuilding,mieszana,usługa/poradnik,/pozycjonowanie-w-ai-link-building,nowa,fraza strony: /blog/link-building-b2b-dla-marketerow-strategie-i-checklista,blog B2B istnieje: nie dublować
+tag canonical,10,10,0,LOW,_inne,,,,pominięta,fraza strony: /blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026,nieprzypisane
+wyniki seo,10,10,0,,_inne,,,,pominięta,fraza strony: /blog/wyniki-wdrozen-seo-2026,nieprzypisane
+wypowiedzenie umowy pozycjonowania,10,10,0,,zmiana,komercyjna,poradnik,/zmiana-agencji-seo,istniejąca,fraza strony: /zmiana-agencji-seo,
+analiza luk contentowych,brak danych,brak danych,,,,,,/blog/analiza-luk-contentowych,istniejąca (fraza strony bez danych o popycie),fraza strony: /blog/analiza-luk-contentowych,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+content gap analiza,brak danych,brak danych,,,,,,/blog/analiza-luk-contentowych,istniejąca (fraza strony bez danych o popycie),fraza strony: /blog/analiza-luk-contentowych,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+core web vitals a seo,brak danych,brak danych,,,,,,/blog/core-web-vitals-a-pozycje-google,istniejąca (fraza strony bez danych o popycie),fraza strony: /blog/core-web-vitals-a-pozycje-google,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+jak zdobyć opinie google,brak danych,brak danych,,,,,,/blog/jak-pozyskiwac-opinie-google-poradnik,istniejąca (fraza strony bez danych o popycie),fraza strony: /blog/jak-pozyskiwac-opinie-google-poradnik,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+seo lokalne dla firm,brak danych,brak danych,,,,,,/blog/seo-lokalne-dla-firm-w-warszawie,istniejąca (fraza strony bez danych o popycie),fraza strony: /blog/seo-lokalne-dla-firm-w-warszawie,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+seo lokalne warszawa,brak danych,brak danych,,,,,,/blog/seo-lokalne-dla-firm-w-warszawie,istniejąca (fraza strony bez danych o popycie),"fraza strony: /blog/seo-lokalne-dla-firm-w-warszawie,/seo-lokalne-warszawa",Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+darmowe narzędzia seo i ai,brak danych,brak danych,,,,,,/narzedzia,istniejąca (fraza strony bez danych o popycie),fraza strony: /narzedzia,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+e-e-a-t,brak danych,brak danych,,,,,,/narzedzia/checklista-e-e-a-t,istniejąca (fraza strony bez danych o popycie),fraza strony: /narzedzia/checklista-e-e-a-t,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+kalkulator strat seo,brak danych,brak danych,,,,,,/narzedzia/kalkulator-strat-seo,istniejąca (fraza strony bez danych o popycie),fraza strony: /narzedzia/kalkulator-strat-seo,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+szablon analizy konkurencji,brak danych,brak danych,,,,,,/narzedzia/szablon-analizy-konkurencji-seo,istniejąca (fraza strony bez danych o popycie),fraza strony: /narzedzia/szablon-analizy-konkurencji-seo,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+panel klienta agencji seo,brak danych,brak danych,,,,,,/panel-klienta,istniejąca (fraza strony bez danych o popycie),fraza strony: /panel-klienta,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+porównania przed wyborem agencji seo i modelu współpracy,brak danych,brak danych,,,,,,/porownania,istniejąca (fraza strony bez danych o popycie),fraza strony: /porownania,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+audyt geo,brak danych,brak danych,,,,,,/pozycjonowanie-w-ai/audyt-widocznosci,istniejąca (fraza strony bez danych o popycie),fraza strony: /pozycjonowanie-w-ai/audyt-widocznosci,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+widoczność w chatgpt,brak danych,brak danych,,,,,,/pozycjonowanie-w-ai/chatgpt,istniejąca (fraza strony bez danych o popycie),fraza strony: /pozycjonowanie-w-ai/chatgpt,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+pozycjonowanie firmy w chatgpt,brak danych,brak danych,,,,,,/pozycjonowanie-w-ai/chatgpt,istniejąca (fraza strony bez danych o popycie),fraza strony: /pozycjonowanie-w-ai/chatgpt,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+widoczność strony w ai,brak danych,brak danych,,,,,,/sprawdz-widocznosc-w-ai,istniejąca (fraza strony bez danych o popycie),fraza strony: /sprawdz-widocznosc-w-ai,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+widoczność marki w ai,brak danych,brak danych,,,,,,/sprawdz-widocznosc-w-ai,istniejąca (fraza strony bez danych o popycie),fraza strony: /sprawdz-widocznosc-w-ai,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+sprawdź czy chatgpt poleca twoją firmę,brak danych,brak danych,,,,,,/sprawdz-widocznosc-w-ai,istniejąca (fraza strony bez danych o popycie),fraza strony: /sprawdz-widocznosc-w-ai,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+sprawdzanie widoczności w ai,brak danych,brak danych,,,,,,/sprawdz-widocznosc-w-ai,istniejąca (fraza strony bez danych o popycie),fraza strony: /sprawdz-widocznosc-w-ai,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+zmiana agencji seo,brak danych,brak danych,,,,,,/zmiana-agencji-seo,istniejąca (fraza strony bez danych o popycie),fraza strony: /zmiana-agencji-seo,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)
+zmiana firmy seo,brak danych,brak danych,,,,,,/zmiana-agencji-seo,istniejąca (fraza strony bez danych o popycie),fraza strony: /zmiana-agencji-seo,Keyword Planner nie zwrócił wolumenu (<10/mies. lub fraza poza bazą)

@@ -1,0 +1,830 @@
+fraza,wol_DE,wol_AT,wol_CH,wolumen_suma,cpc_usd_max,konkurencja_ads,klaster,intencja,typ_strony,url_docelowy,status,zrodlo,uwagi
+google unternehmensprofil,12100,0,0,12100,7.81,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),seed/lista,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo agentur,3600,590,590,4780,31.92,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+webdesign agentur,2900,390,480,3770,16.49,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+seo agentur münchen,2400,210,10,2620,27.68,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+geo agentur,1300,880,70,2250,23.01,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+llms.txt,1600,210,210,2020,1.69,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google; fraza strony: /narzedzia/generator-llms-txt,
+seo agentur wien,210,1600,10,1820,11.47,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+generative engine optimization,1300,170,210,1680,10.26,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),"autosugestia Google; fraza strony: /en/ai-search-optimization,/pozycjonowanie-w-ai","""geo"" w DE często = geografia; potwierdzić SERP"
+domain authority checker,1300,0,0,1300,4.36,,da,narzędzie,narzędzie,/de/tools/domain-autoritaet-pruefen,nowa (wersja DE),fraza strony: /en/tools/domain-authority-checker,
+keyword recherche,1300,0,0,1300,6.25,,t-keyword,informacyjna,szablon,/de/tools/keyword-recherche-vorlage,nowa (wersja DE),seed/lista,
+seo berater,1000,140,110,1250,20.37,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+geo optimierung,1000,140,90,1230,13.58,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo ji hoon,880,90,90,1060,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+core web vitals,1000,0,0,1000,5.69,,_inne,,,,pominięta,"fraza strony: /blog/core-web-vitals-a-pozycje-google,/en/blog/core-web-vitals-google-rankings",nieprzypisane
+e-e-a-t,1000,0,0,1000,0,,t-eeat,informacyjna,szablon,/de/tools/e-e-a-t-checkliste,nowa (wersja DE),fraza strony: /narzedzia/checklista-e-e-a-t,
+local seo,720,90,140,950,16.09,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google; strażnik fraz; fraza strony: /en/local-seo-warsaw,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo optimization,720,90,140,950,16.09,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+webdesign agentur berlin,880,10,10,900,8.99,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur wien,10,880,10,900,7.63,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo audit,590,50,140,780,7.19,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo agentur düsseldorf,720,10,10,740,30.14,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur stuttgart,720,10,10,740,7.35,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+ai seo,720,0,0,720,23.04,,_inne,,,,pominięta,"fraza strony: /en/ai-search-optimization,/pozycjonowanie-w-ai",nieprzypisane
+canonical tag,720,0,0,720,1.51,,_inne,,,,pominięta,fraza strony: /en/blog/canonical-tag-seo-guide-2026,nieprzypisane
+local seo freelancer,590,10,10,610,8.96,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo agentur hamburg,590,10,10,610,22.98,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website relaunch,480,70,40,590,16.6,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+geo agentur münchen,390,170,10,570,49.79,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+geo agentur wien,170,390,10,570,6.35,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo vs geo,390,70,90,550,6.41,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),"autosugestia Google; fraza strony: /en/comparisons/seo-vs-geo,/porownania/seo-vs-geo","""geo"" w DE często = geografia; potwierdzić SERP"
+seo agentur frankfurt,480,10,10,500,15.41,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur hannover,480,10,10,500,10.5,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur köln,480,10,10,500,28.31,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur frankfurt,480,10,10,500,2.67,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+geo vs seo,480,0,0,480,6.4,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),fraza strony: /en/comparisons/seo-vs-geo,"""geo"" w DE często = geografia; potwierdzić SERP"
+schema markup,480,0,0,480,0,,t-schema,informacyjna,szablon,/de/tools/schema-markup-beispiele,nowa (wersja DE),seed/lista,
+strukturierte daten,480,0,0,480,0,,t-schema,informacyjna,szablon,/de/tools/schema-markup-beispiele,nowa (wersja DE),seed/lista,
+ki seo,390,30,20,440,10.94,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+local seo agentur,390,30,20,440,15.54,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo audit for website,390,10,40,440,5.52,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit of website,390,10,40,440,5.52,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit site,390,10,40,440,5.52,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit website,390,10,40,440,5.52,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo agentur schweiz,30,10,390,430,29.99,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur zürich,70,10,320,400,28.41,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+chatgpt seo,390,0,0,390,10.34,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),"fraza strony: /en/ai-search-optimization/chatgpt,/pozycjonowanie-w-ai/chatgpt","""geo"" w DE często = geografia; potwierdzić SERP"
+ki seo agentur,260,10,70,340,20.72,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo agentur nürnberg,320,10,10,340,18.81,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+ki sichtbarkeit,210,50,30,290,14.87,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo agentur augsburg,260,10,10,280,8.04,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur karlsruhe,260,10,10,280,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur mannheim,260,10,10,280,14.55,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur heilbronn,260,0,10,270,11.23,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur osnabrück,260,10,0,270,35.32,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur stuttgart,260,10,0,270,11.18,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+lokale seo,210,20,30,260,21.17,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo agentur rosenheim,260,0,0,260,19.88,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur in meiner nähe,210,30,10,250,5.83,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur deutschland,210,10,20,240,67.83,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur graz,10,210,10,230,6.36,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur hamburg,210,10,10,230,15.61,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur mainz,210,0,10,220,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+redaktionsplan vorlage,170,20,20,210,6.22,LOW,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),autosugestia Google,
+backlinks aufbauen,210,0,0,210,15.92,,_inne,,,,pominięta,seed/lista,nieprzypisane
+technisches seo,210,0,0,210,10.42,,_inne,,,,pominięta,seed/lista,nieprzypisane
+llms.txt generator,170,20,10,200,5.29,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google; fraza strony: /en/tools/llms-txt-generator,
+seo kosten,170,10,20,200,8.17,LOW,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+content plan vorlage,140,40,10,190,4.54,HIGH,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),autosugestia Google,
+local seo agentur gmbh,170,10,10,190,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo agentur bremen,170,10,10,190,25.72,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur dortmund,170,10,10,190,7.95,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur leipzig,170,10,10,190,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo analyse kostenlos,170,10,10,190,7.82,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit tools,140,10,40,190,7.63,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo berater münchen,170,10,10,190,13.09,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo für onlineshop,170,10,10,190,47.19,MEDIUM,shop,komercyjna,usługa,/de/seo-fuer-onlineshops,nowa (wersja DE),autosugestia Google,doorway jeśli per vertical bez danych
+seo für onlineshops,170,10,10,190,47.19,MEDIUM,shop,komercyjna,usługa,/de/seo-fuer-onlineshops,nowa (wersja DE),autosugestia Google,doorway jeśli per vertical bez danych
+seo optimierung agentur,170,10,10,190,25.82,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+local seo services,140,10,30,180,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo berater berlin,170,10,0,180,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo für kleine unternehmen,140,10,20,170,9.81,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo onlineshop,140,20,10,170,33.03,MEDIUM,shop,komercyjna,usługa,/de/seo-fuer-onlineshops,nowa (wersja DE),autosugestia Google,doorway jeśli per vertical bez danych
+seo texte schreiben,170,0,0,170,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),seed/lista,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo vs sea,170,0,0,170,24,,vs,komercyjna,porównanie,/de/vergleiche/seo-oder-google-ads,nowa (wersja DE),seed/lista,
+b2b seo agentur,140,10,10,160,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur basel,10,10,140,160,4.68,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur dresden,140,10,10,160,9.3,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur essen,140,10,10,160,52.5,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur freiburg,140,10,10,160,5.03,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo optimierung kosten,140,10,10,160,14.03,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+webdesign agentur köln,140,10,10,160,8.36,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur regensburg,140,10,0,150,18.57,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo berater hamburg,140,0,10,150,1.24,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo berater stuttgart,140,0,10,150,4.26,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website relaunch agentur,110,10,30,150,46.19,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+seo agentur aschaffenburg,140,0,0,140,9.09,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur wiesbaden,140,0,0,140,7.82,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website relaunch seo,90,10,40,140,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+b2b seo,140,0,0,140,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),seed/lista,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo preise,140,0,0,140,6.39,,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),seed/lista,
+geo optimierung website,110,10,10,130,11.62,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+interne verlinkung,110,10,10,130,0,LOW,t-links,informacyjna,szablon,/de/tools/interne-verlinkung-vorlage,nowa (wersja DE),autosugestia Google,
+ki sichtbarkeit messen,110,10,10,130,17.13,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+local seo hamburg,110,10,10,130,13.75,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo near me,110,10,10,130,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo agentur heidelberg,110,10,10,130,13.65,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur luzern,10,10,110,130,7.47,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur österreich,10,110,10,130,10.67,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo berater wien,10,110,10,130,14.68,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo kostenlos testen,110,10,10,130,6.79,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo polen,110,10,10,130,27.72,HIGH,polen,komercyjna,usługa,/de/seo-agentur-polen,nowa (wersja DE),autosugestia Google,wolumen znikomy; trafna intencja; nie robić stron per kategoria
+webdesign agentur augsburg,110,10,10,130,3.84,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur basel,10,10,110,130,19.72,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur düsseldorf,110,10,10,130,7.02,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur schweiz,10,10,110,130,16.44,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+local seo tool,90,10,20,120,8.11,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo agentur bonn,110,10,0,120,15.93,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur chemnitz,110,10,0,120,2.33,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur erfurt,110,10,0,120,37.29,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur koblenz,110,0,10,120,4.93,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur steiermark,10,110,0,120,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur würzburg,110,0,10,120,17.19,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo audit agentur,90,20,10,120,47.33,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo berater köln,110,10,0,120,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+b2b seo berater,90,10,10,110,25.43,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+beste geo agentur,70,30,10,110,24.45,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+generative engine optimization deutsch,90,10,10,110,7.58,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+geo agentur berlin,90,10,10,110,21.83,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+google unternehmensprofil optimieren,90,10,10,110,4.86,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo agentur bielefeld,90,10,10,110,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur kosten,90,10,10,110,4.84,LOW,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo agentur münchen seo erfolg gmbh,90,10,10,110,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur winterthur,10,10,90,110,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo texte agentur,90,10,10,110,15.42,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+was kostet seo,90,10,10,110,7.15,LOW,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+webdesign agentur dortmund,90,10,10,110,14.31,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur leipzig,90,10,10,110,4.5,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur zürich,10,10,90,110,9.55,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+wie lange dauert seo,90,10,10,110,0,LOW,dauer,informacyjna,poradnik,/de/blog/wie-lange-dauert-seo,nowa (wersja DE),autosugestia Google,
+content audit,110,0,0,110,0,,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),seed/lista,
+ux audit,110,0,0,110,12.36,,_inne,,,,pominięta,fraza strony: /en/blog/ux-audit-guide,nieprzypisane
+seo agentur bern,10,0,90,100,11.87,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur ludwigsburg,90,10,0,100,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur münster,90,10,0,100,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur oldenburg,90,10,0,100,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur ulm,90,10,0,100,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+interne verlinkungen seo,70,10,10,90,0,LOW,t-links,informacyjna,szablon,/de/tools/interne-verlinkung-vorlage,nowa (wersja DE),autosugestia Google,
+ki seo optimierung,70,10,10,90,17.05,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+ki sichtbarkeitscheck,70,10,10,90,19.29,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+linkaufbau agentur,70,10,10,90,24.03,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+local seo checker,70,10,10,90,12.06,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+relaunch einer website,70,10,10,90,17.23,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+seo agentur böblingen,70,10,10,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur darmstadt,90,0,0,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur kiel,90,0,0,90,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur linz,10,70,10,90,10.8,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur preise,70,10,10,90,7.23,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo agentur st gallen,10,10,70,90,4.85,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo analyse tool kostenlos,70,10,10,90,7.25,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo checkliste,70,10,10,90,19.36,LOW,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo kosten monatlich,70,10,10,90,10.11,LOW,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo mit ki,70,10,10,90,14.34,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo premium agentur,70,10,10,90,2.74,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo unternehmen,70,10,10,90,26.01,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+webdesign agentur bamberg,90,0,0,90,1.33,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur dresden,70,10,10,90,3.77,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur in der nähe,70,10,10,90,9.82,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+ki suchmaschinenoptimierung,90,0,0,90,13.21,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),seed/lista,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo agentur bochum,70,10,0,80,39.43,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur esslingen,70,10,0,80,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur potsdam,70,0,10,80,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur reutlingen,70,10,0,80,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur zug,10,0,70,80,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo audit free,50,10,20,80,7.21,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit service,50,10,20,80,0,LOW,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+webdesign agentur kiel,70,10,0,80,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo münchen,50,10,10,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo report,50,10,10,70,2.29,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+responsive webdesign agentur,50,10,10,70,6.16,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+seo agentur aachen,70,0,0,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur in der nähe,50,10,10,70,21.99,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur kassel,50,10,10,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur lübeck,70,0,0,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo audit kosten,50,10,10,70,6.1,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+social media content plan vorlage,50,10,10,70,0,HIGH,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),autosugestia Google,
+webdesign agentur aschaffenburg,70,0,0,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur bern,10,10,50,70,5.11,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur bremen,50,10,10,70,2.35,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur chemnitz,70,0,0,70,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur deutschland,50,10,10,70,12.59,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur freiburg,50,10,10,70,7.66,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur kassel,50,10,10,70,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur luzern,10,10,50,70,5.06,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur rosenheim,50,10,10,70,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website relaunch checkliste,50,10,10,70,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+canonical tag seo,70,0,0,70,2.95,,_inne,,,,pominięta,fraza strony: /en/blog/canonical-tag-seo-guide-2026,nieprzypisane
+interne verlinkung seo,70,0,0,70,0,,t-links,informacyjna,szablon,/de/tools/interne-verlinkung-vorlage,nowa (wersja DE),seed/lista,
+linkaufbau,70,0,0,70,17.14,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),seed/lista,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+geo optimierung ki,40,10,10,60,16.47,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+llms.txt checker,40,10,10,60,1.41,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms.txt erstellen,40,10,10,60,1.23,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+local seo for dentists,40,10,10,60,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo frankfurt,50,10,0,60,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo google,40,10,10,60,4.95,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+seo agentur braunschweig,50,10,0,60,15.98,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur für ärzte,30,20,10,60,82.21,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur offenbach,50,0,10,60,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur paderborn,50,10,0,60,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur sindelfingen,50,10,0,60,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur thurgau,10,10,40,60,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur vorarlberg,10,40,10,60,6.53,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur wuppertal,50,10,0,60,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo audit report tools,30,10,20,60,5.99,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo beratung kosten,40,10,10,60,7.13,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo content agentur,30,20,10,60,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo für unternehmen,40,10,10,60,5.01,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+was kostet seo optimierung,40,10,10,60,7.61,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+webdesign agentur hannover,50,10,0,60,3.42,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur karlsruhe,50,10,0,60,4.99,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website relaunch kosten,40,10,10,60,10.95,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+generative engine optimization tools,30,10,10,50,24.69,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+geo agentur schweiz,10,10,30,50,10.77,LOW,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+joomla seo agentur,30,10,10,50,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+ki seo tools,30,10,10,50,8.55,HIGH,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),autosugestia Google,intencja = narzędzia AI do SEO (inna niż GEO)
+llms txt datei,30,10,10,50,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms txt file,30,10,10,50,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms.txt beispiel,30,10,10,50,2.69,MEDIUM,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+local seo expert,30,10,10,50,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo for law firms,30,10,10,50,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo tipps,30,10,10,50,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+onpage seo checkliste,30,10,10,50,7.81,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+page seo audit,30,10,10,50,8.02,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+redaktionsplan social media vorlage kostenlos,30,10,10,50,4.91,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+relaunch website aktivierung,30,10,10,50,5.55,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+seo agentur bamberg,40,0,10,50,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur digitaleffects gmbh,30,10,10,50,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur für kleine unternehmen,30,10,10,50,2.24,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur für online shops,30,10,10,50,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur für onlineshops,30,10,10,50,0,MEDIUM,shop,komercyjna,usługa,/de/seo-fuer-onlineshops,nowa (wersja DE),autosugestia Google,doorway jeśli per vertical bez danych
+seo agentur gelsenkirchen,50,0,0,50,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur günstig,30,10,10,50,32.08,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur hamm,40,10,0,50,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur hanau,50,0,0,50,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur innsbruck,10,30,10,50,0,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur konstanz,30,10,10,50,6.92,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur krefeld,50,0,0,50,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur leverkusen,40,10,0,50,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur neuss,40,0,10,50,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur rostock,50,0,0,50,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur schweiz ea eagle digital,0,0,50,50,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur tirol,10,30,10,50,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur tübingen,50,0,0,50,7.52,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo audit online tool,40,0,10,50,8.3,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit tool online,40,0,10,50,8.3,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo betreuung kosten,30,10,10,50,0,LOW,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo für lokale unternehmen,40,10,0,50,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo ki kostenlos,30,10,10,50,8.49,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo relaunch checkliste,30,10,10,50,5.22,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+top seo agentur,30,10,10,50,0,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+webdesign agentur bochum,40,0,10,50,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur braunschweig,50,0,0,50,2.75,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur essen,40,10,0,50,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur esslingen,50,0,0,50,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur ulm,50,0,0,50,10.84,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur vorarlberg,10,30,10,50,0,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+content gap analyse,50,0,0,50,0,,_inne,,,,pominięta,seed/lista,nieprzypisane
+konkurrenzanalyse seo,50,0,0,50,0,,t-competitor,informacyjna,szablon,/de/tools/konkurrenzanalyse-vorlage,nowa (wersja DE),seed/lista,
+konkurrenzanalyse vorlage,50,0,0,50,0,,t-competitor,informacyjna,szablon,/de/tools/konkurrenzanalyse-vorlage,nowa (wersja DE),seed/lista,
+best seo audit tool free,20,10,10,40,3.59,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+beste seo agentur schweiz,10,0,30,40,7.33,LOW,auswahl,komercyjna,porównanie,/de/vergleiche/seo-agentur-auswaehlen,nowa (wersja DE),autosugestia Google,
+beste webdesign agentur deutschland,20,10,10,40,6.52,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+content plan vorlage excel,20,10,10,40,2,HIGH,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),autosugestia Google,
+content plan vorlage kostenlos,20,10,10,40,2.39,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+einmalige seo optimierung kosten,20,10,10,40,6.15,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+ferras branding agentur webdesign employer branding,10,20,10,40,12.18,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+generative engine optimization how to dominate ai search,20,10,10,40,8.52,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+ki für seo,20,10,10,40,14.6,HIGH,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),autosugestia Google,intencja = narzędzia AI do SEO (inna niż GEO)
+ki sichtbarkeit erhöhen,20,10,10,40,23.93,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+ki sichtbarkeit prüfen,20,10,10,40,15.13,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+llms.txt example,20,10,10,40,1.09,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms.txt was ist das,20,10,10,40,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+local seo bayern,40,0,0,40,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo bremen,40,0,0,40,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo checklist,20,10,10,40,0,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google; fraza strony: /en/tools/local-seo-checklist,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+local seo checkliste,20,10,10,40,0,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+local seo for contractors,20,10,10,40,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo listing,20,10,10,40,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo management,20,10,10,40,0,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo map,20,10,10,40,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo ranking checker,20,10,10,40,5.59,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo services for small business,20,10,10,40,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo specialist,20,10,10,40,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo tracker,20,10,10,40,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo wien,10,30,0,40,3.79,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo yoast,20,10,10,40,1.65,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+lohnt sich seoul,20,10,10,40,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+premium webdesign agentur,20,10,10,40,0,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+redaktionsplan vorlage 2026,20,10,10,40,0,HIGH,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),autosugestia Google,
+redaktionsplan vorlage excel,20,10,10,40,2.18,LOW,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),autosugestia Google,
+seo agentur aargau,10,0,30,40,10.42,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur duisburg,40,0,0,40,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur erlangen,40,0,0,40,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur für zahnärzte,20,10,10,40,0,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur fürth,40,0,0,40,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur in berlin,20,10,10,40,13.22,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur ingolstadt,40,0,0,40,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur jena,40,0,0,40,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur kempten,40,0,0,40,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur magdeburg,40,0,0,40,20.4,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur mönchengladbach,40,0,0,40,14.7,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur niederösterreich,10,30,0,40,35.12,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur nrw,40,0,0,40,27.47,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur oberhausen,40,0,0,40,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur oberösterreich,10,30,0,40,5.64,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur offenburg,30,0,10,40,3.03,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur passau,20,10,10,40,2.49,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur pforzheim,40,0,0,40,6.44,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur siegen,40,0,0,40,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur trier,30,10,0,40,4.59,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur vergleich,20,10,10,40,34.07,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur wels,10,20,10,40,6.32,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo analyse website kostenlos,20,10,10,40,4.64,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit check,20,10,10,40,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit free online,20,10,10,40,4.44,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit free tool,20,10,10,40,4.04,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit online,20,10,10,40,5.9,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit online free,20,10,10,40,4.44,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit report,20,10,10,40,5.73,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit tool free,20,10,10,40,4.04,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit white label,20,10,10,40,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo vs geo vs aeo,20,10,10,40,0,LOW,seo-vs-geo,informacyjna,porównanie,/de/vergleiche/seo-vs-geo,nowa (wersja DE),autosugestia Google,
+seoschmiede ki,20,10,10,40,0,MEDIUM,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+was kostet eine seo agentur,20,10,10,40,0,LOW,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+was kostet seo im monat,20,10,10,40,17.17,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+webdesign agentur hanau,40,0,0,40,4.44,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur ludwigsburg,40,0,0,40,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur lübeck,30,10,0,40,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur preise,20,10,10,40,6.9,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+webdesign agentur regensburg,30,10,0,40,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur st gallen,10,0,30,40,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur thüringen,20,10,10,40,5.15,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur wallenhorst,30,10,0,40,5.12,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur würzburg,30,0,10,40,2.44,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website relaunch bedeutung,20,10,10,40,4,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+website relaunch projektplan,20,10,10,40,7.03,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+wie lange dauert es bis seo maßnahmen greifen,20,10,10,40,0,LOW,dauer,informacyjna,poradnik,/de/blog/wie-lange-dauert-seo,nowa (wersja DE),autosugestia Google,
+polnische suchmaschine,40,0,0,40,0,,polen,komercyjna,usługa,/de/seo-agentur-polen,nowa (wersja DE),seed/lista,wolumen znikomy; trafna intencja; nie robić stron per kategoria
+seo ki tools,40,0,0,40,9.69,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),seed/lista,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo strategie erstellen,40,0,0,40,2.2,,t-strategy,informacyjna,szablon,/de/tools/seo-strategie-vorlage,nowa (wersja DE),seed/lista,
+seo und ki,40,0,0,40,8.64,,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),seed/lista,intencja = narzędzia AI do SEO (inna niż GEO)
+audit seo ecommerce,10,10,10,30,6.34,MEDIUM,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+best seo audit tools,10,10,10,30,0,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+beste ki für seo,10,10,10,30,13.64,HIGH,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),autosugestia Google,intencja = narzędzia AI do SEO (inna niż GEO)
+content audit vorlage,10,10,10,30,0,LOW,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),autosugestia Google,
+convact seo agentur,10,10,10,30,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+elementor interne verlinkung,10,10,10,30,0,LOW,t-links,informacyjna,szablon,/de/tools/interne-verlinkung-vorlage,nowa (wersja DE),autosugestia Google,
+generative engine optimization definition,10,10,10,30,0,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+generative engine optimization marketing,10,10,10,30,0,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+generative engine optimization pdf,10,10,10,30,0,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+generative engine optimization vs answer engine optimization,10,10,10,30,0,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+generative engine optimization vs seo,10,10,10,30,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+geo agentur deutschland,10,10,10,30,69.02,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+geo optimierung bedeutung,10,10,10,30,3.7,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+google ki seo,10,10,10,30,6.95,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+interne verlinkung wordpress,10,10,10,30,0,LOW,t-links,informacyjna,szablon,/de/tools/interne-verlinkung-vorlage,nowa (wersja DE),autosugestia Google,
+joofy webdesign agentur göttingen,20,10,0,30,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+ki für seo optimierung,10,10,10,30,11.09,MEDIUM,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),autosugestia Google,intencja = narzędzia AI do SEO (inna niż GEO)
+ki für seo texte,10,10,10,30,0,HIGH,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),autosugestia Google,intencja = narzędzia AI do SEO (inna niż GEO)
+ki seo geo,10,10,10,30,6.93,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+ki seo texte,10,10,10,30,0,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+ki seoschmiede,10,10,10,30,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+ki und seo,10,10,10,30,6.36,HIGH,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),autosugestia Google,intencja = narzędzia AI do SEO (inna niż GEO)
+kim yi seo,10,10,10,30,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+lighthouse seo audit,10,10,10,30,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+llms txt generator free,10,10,10,30,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms txt generator github,10,10,10,30,0,,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms txt generator online,10,10,10,30,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms txt generator wordpress,10,10,10,30,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms txt vs mcp,10,10,10,30,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms.txt vs agents.md,10,10,10,30,0,,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms.txt vs robots.txt,10,10,10,30,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms.txt wordpress,10,10,10,30,0,LOW,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+local seo best practices,10,10,10,30,3.85,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo blog,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo citations,10,10,10,30,0,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo course,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo definition,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo denver,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo directories,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo düsseldorf,30,0,0,30,6.77,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo examples,10,10,10,30,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo expert near me,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo factors,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo for doctors,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo google maps,10,10,10,30,14.13,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo google my business,10,10,10,30,4.79,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo guide,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo guy,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo heat map,10,10,10,30,3.64,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo how to,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo in denver,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo jobs,10,10,10,30,0.63,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+local seo keyword research,10,10,10,30,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo keywords,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo kosten,10,10,10,30,0,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+local seo köln,20,0,10,30,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo link building,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo logo,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo marketing,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo meaning,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo nap,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo new york,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo new york city,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo news,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo nyc,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo nürnberg,20,10,0,30,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo optimierung,10,10,10,30,8.09,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo outsourcing,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo partners,10,10,10,30,0,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo pricing,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo results,10,10,10,30,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo rockets,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo search,10,10,10,30,15.71,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo services near me,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo strategies,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google; fraza strony: /en/blog/local-seo-for-companies,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo tips,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo tools free,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo toronto,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo va,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo virginia,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo vs seo,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo website,10,10,10,30,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo white label,10,10,10,30,0,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo wordpress,10,10,10,30,7.42,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+lohnt sich seo,10,10,10,30,0,LOW,dauer,informacyjna,poradnik,/de/blog/wie-lange-dauert-seo,nowa (wersja DE),autosugestia Google,
+lohnt sich yoast seo premium,10,10,10,30,0,MEDIUM,dauer,informacyjna,poradnik,/de/blog/wie-lange-dauert-seo,nowa (wersja DE),autosugestia Google,
+polene seoul,10,10,10,30,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+professionelle webdesign agentur,10,10,10,30,14.57,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+projektplan website relaunch vorlage,10,10,10,30,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+redaktionsplan vorlage 2025,10,10,10,30,0,,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),autosugestia Google,
+seo agentur appenzell,10,0,20,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur erfahrungen,10,10,10,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur gründen,10,10,10,30,0,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur hildesheim,20,0,10,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur in deutschland,10,10,10,30,0,HIGH,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur jobs,10,10,10,30,1.86,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo agentur landshut,30,0,0,30,18.03,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur lörrach,20,0,10,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur recklinghausen,30,0,0,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur thüringen,30,0,0,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur was ist das,10,10,10,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur witten,30,0,0,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur wolfsburg,20,0,10,30,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo analyse kosten,10,10,10,30,0,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo analyse online kostenlos,10,10,10,30,2.18,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit agent,10,10,10,30,1.61,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit ai,10,10,10,30,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit analysis website,20,0,10,30,5.82,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit analyze website,20,0,10,30,5.82,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit and reporting tool,10,10,10,30,6.68,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit claude,10,10,10,30,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit claude skill,10,10,10,30,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit cost,10,10,10,30,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit example,10,10,10,30,17.39,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit free website,10,10,10,30,35.88,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit github,10,10,10,30,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit google,10,10,10,30,2.78,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit ki,10,10,10,30,4.04,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit kostenlos,10,10,10,30,8.34,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit list,10,10,10,30,3.46,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit meaning,10,10,10,30,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit neil patel,10,10,10,30,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit price,10,10,10,30,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit pro,10,10,10,30,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit prompt,10,10,10,30,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit report format,10,10,10,30,3.59,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit report sample,10,10,10,30,3.59,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit report template,10,10,10,30,3.59,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit screaming frog,10,10,10,30,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit skill,10,10,10,30,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit skill claude,10,10,10,30,6.29,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit template,10,10,10,30,2.86,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit website free,10,10,10,30,5.71,MEDIUM,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit wien,10,20,0,30,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo joong ki,10,10,10,30,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo kosten pro monat,10,10,10,30,8.99,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo marketing ki,10,10,10,30,0,HIGH,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),autosugestia Google,intencja = narzędzia AI do SEO (inna niż GEO)
+seo marketing kosten,10,10,10,30,11.95,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo maßnahmen checkliste,10,10,10,30,0,HIGH,t-seochecklist,informacyjna,szablon,/de/tools/seo-checkliste,nowa (wersja DE),autosugestia Google,
+seo optimierung website kosten,10,10,10,30,5.61,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo quick audit,10,10,10,30,0,,_inne,,,,pominięta,autosugestia Google,nieprzypisane
+seo sea kosten,10,10,10,30,0,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo strategie vorlage,10,10,10,30,0,LOW,t-strategy,informacyjna,szablon,/de/tools/seo-strategie-vorlage,nowa (wersja DE),autosugestia Google,
+seo strategien für kleine unternehmen,10,10,10,30,6.38,HIGH,t-strategy,informacyjna,szablon,/de/tools/seo-strategie-vorlage,nowa (wersja DE),autosugestia Google,
+seo und ki optimierung,10,10,10,30,14.88,HIGH,kiseo,informacyjna,poradnik,/de/blog/ki-fuer-seo,nowa (wersja DE),autosugestia Google,intencja = narzędzia AI do SEO (inna niż GEO)
+seo vs geo vs aio,10,10,10,30,0,,seo-vs-geo,informacyjna,porównanie,/de/vergleiche/seo-vs-geo,nowa (wersja DE),autosugestia Google,
+seo vs google ads,10,10,10,30,0,LOW,vs,komercyjna,porównanie,/de/vergleiche/seo-oder-google-ads,nowa (wersja DE),"autosugestia Google; fraza strony: /en/comparisons/seo-vs-google-ads,/porownania/seo-czy-google-ads",
+seo website kosten,10,10,10,30,18.86,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+vercel seo audit,10,10,10,30,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+webdesign agentur aachen,20,10,0,30,5.83,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur bielefeld,20,10,0,30,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur erfurt,30,0,0,30,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur frankfurt am main,30,0,0,30,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur für kleine unternehmen,20,10,0,30,0,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur gründen,10,10,10,30,0,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur heilbronn,30,0,0,30,3.86,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur konstanz,10,10,10,30,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur kosten,10,10,10,30,4.05,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+webdesign agentur rostock,30,0,0,30,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur seo,10,10,10,30,0,,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur zug,10,0,20,30,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website konzeption und relaunch,10,10,10,30,0,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+website launch announcement,10,10,10,30,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+website relaunch was ist das,10,10,10,30,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+wie lange dauert es von seoul nach busan,10,10,10,30,0,LOW,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+wordpress website relaunch,10,10,10,30,13.71,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+yoast local seo plugin,10,10,10,30,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+yoast seo kosten,10,10,10,30,3.16,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+yoast seo premium kosten,10,10,10,30,3.57,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+youtube seo agentur,10,10,10,30,10.66,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+chatgpt optimierung,30,0,0,30,0.36,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),seed/lista,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo agentur finden,30,0,0,30,39.99,,auswahl,komercyjna,porównanie,/de/vergleiche/seo-agentur-auswaehlen,nowa (wersja DE),seed/lista,
+technical seo audit,30,0,0,30,4.34,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),fraza strony: /en/blog/technical-seo-audit-checklist,
+audit seo c est quoi,10,0,10,20,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+audit seo def,10,0,10,20,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+audit seo en ligne,10,0,10,20,0,HIGH,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+audit seo site internet,10,0,10,20,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+b2b seo audit services,10,0,10,20,0,,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+best seo audit,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+beste ki seo agentur,10,10,0,20,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+fiverr local seo,10,10,0,20,9.14,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+generative engine optimization vs aeo,10,0,10,20,0,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+generative engine optimization was ist das,10,10,0,20,5.09,MEDIUM,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+interne verlinkung html,10,10,0,20,0,,t-links,informacyjna,szablon,/de/tools/interne-verlinkung-vorlage,nowa (wersja DE),autosugestia Google,
+jin ki joo seo kang joon,10,0,10,20,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+jtl seo agentur,10,10,0,20,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+ki seon gyeom run on,10,0,10,20,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+ki sichtbarkeit testen,10,10,0,20,14.04,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+lastenheft website relaunch,10,10,0,20,5.54,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+linkaufbau agentur münchen,10,0,10,20,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+llms txt vscode,10,10,0,20,0,,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+local seo academy,10,0,10,20,2.54,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo agency london,10,10,0,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo audit free,10,10,0,20,0,,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+local seo backlinks,10,0,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo basics,10,0,10,20,2.55,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo bible,10,10,0,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo bot,10,0,10,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo business listings,10,10,0,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo claude skill,10,0,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo company in india,10,10,0,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo extension,10,0,10,20,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo github,10,0,10,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo grid,10,0,10,20,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo guide 2026,10,10,0,20,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo hong kong,10,0,10,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo icon,10,0,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo images,10,0,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo in 2026,0,10,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo in digital marketing,10,10,0,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo kent,10,10,0,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo ki,10,10,0,20,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+local seo lead generation,10,0,10,20,2.81,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo london,10,0,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo manager,10,10,0,20,15.11,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo mistakes,10,10,0,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo pack,10,10,0,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo packages,10,0,10,20,15.52,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo phoenix,10,10,0,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo plan,10,10,0,20,16.51,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo rank math,10,0,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo ranking factors 2026,10,0,10,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo reddit,10,0,10,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo services new york,10,0,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo test,10,0,10,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo uk,10,10,0,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo wikipedia,10,0,10,20,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo youtube,10,0,10,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+park ki seo,10,0,10,20,0,LOW,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+projektmanagement website relaunch,10,10,0,20,0,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+redaktionsplan vorlage kostenlos,10,10,0,20,0,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+semrush audit seo,0,10,10,20,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo agentur dachau,20,0,0,20,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur definition,10,10,0,20,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur eschborn,20,0,0,20,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur flensburg,20,0,0,20,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur fulda,20,0,0,20,5.25,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur gießen,20,0,0,20,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur göppingen,20,0,0,20,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur herford,20,0,0,20,3.87,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur kärnten,10,10,0,20,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur lüneburg,20,0,0,20,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur mallorca,10,10,0,20,7.4,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur minden,20,0,0,20,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur neuwied,20,0,0,20,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur polen,10,0,10,20,0,LOW,polen,komercyjna,usługa,/de/seo-agentur-polen,nowa (wersja DE),autosugestia Google,wolumen znikomy; trafna intencja; nie robić stron per kategoria
+seo agentur rastatt,20,0,0,20,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur remscheid,20,0,0,20,7.33,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur thiess,10,10,0,20,2.88,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo audit api,10,0,10,20,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit backlinko,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit chatgpt,10,0,10,20,0,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo audit claude code,10,0,10,20,4.83,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit dashboard,10,10,0,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit dubai,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit example pdf,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit experts,10,0,10,20,13.75,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit extension,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit fiverr,10,0,10,20,0,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit free online tool,10,0,10,20,0,,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit free report,10,0,10,20,0,,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit google analytics,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit gratuit,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit hubspot,10,0,10,20,0,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit icon,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit images,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit io,10,10,0,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit london,10,10,0,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit manchester,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit n8n,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit nedir,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit pdf,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit presentation,10,10,0,20,2.07,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit prestashop,10,0,10,20,3.52,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit report free,10,0,10,20,4.53,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit skill claude code,10,10,0,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit skill github,10,10,0,20,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit template google sheet,10,0,10,20,0,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit test,10,10,0,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit tools list,10,0,10,20,5.81,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit uk,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit with claude,10,0,10,20,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit wordpress,10,10,0,20,0,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo berater basel,10,0,10,20,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo keyword analyse kostenlos,10,0,10,20,4.34,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo ki choon,10,0,10,20,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo ki won,10,0,10,20,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo ki young,10,0,10,20,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo ki young sweet home,10,0,10,20,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo kosten per maand,10,0,10,20,0,,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo kostenlose tools,10,10,0,20,0,HIGH,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo optimalisatie kosten,10,0,10,20,0,,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo specialist kosten,10,0,10,20,0,,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo texte kosten,10,10,0,20,0,HIGH,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo texte schreiben lassen kosten,10,0,10,20,0,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo vs geo business impact,10,0,10,20,0,,seo-vs-geo,informacyjna,porównanie,/de/vergleiche/seo-vs-geo,nowa (wersja DE),autosugestia Google,
+shin seul ki seo do ah,10,0,10,20,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+webdesign agentur darmstadt,20,0,0,20,6,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur fellbach,20,0,0,20,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur hessen,10,10,0,20,0,,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur osnabrück,20,0,0,20,11.85,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur passau,10,10,0,20,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur speyer,20,0,0,20,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur tirol,10,10,0,20,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur waiblingen,20,0,0,20,5.47,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur winterthur,0,0,20,20,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur wuppertal,20,0,0,20,6.98,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+website relaunch ankündigung beispiel,10,10,0,20,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+website relaunch definition,10,10,0,20,0,,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+yext local seo,10,0,10,20,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+yoast seo audit,10,0,10,20,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+core web vitals optimieren,20,0,0,20,4.04,,_inne,,,,pominięta,seed/lista,nieprzypisane
+domain autorität,20,0,0,20,0,,da,narzędzie,narzędzie,/de/tools/domain-autoritaet-pruefen,nowa (wersja DE),seed/lista,
+seo audit checkliste,20,0,0,20,4.82,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),seed/lista,
+seo für startups,20,0,0,20,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),seed/lista,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+basic seo audit,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+empress ki kim seo hyung,10,0,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+empress ki seo yi sook,10,0,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+free seo audit uk,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+geo agentur hamburg,10,0,0,10,9.32,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+href seo audit,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+jeffli seo audit skill,10,0,0,10,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+jev seo audit,10,0,0,10,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+ki sichtbarkeit gelbe seiten,10,0,0,10,5.42,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+ki sichtbarkeitscheck gelbe seiten,10,0,0,10,9.57,HIGH,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+lee min ki seo hyun jin,10,0,0,10,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+llms txt generator shopify,10,0,0,10,0,,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+llms txt generator tool,10,0,0,10,0,,llms,narzędzie,narzędzie,/de/tools/llms-txt-generator,nowa (wersja DE),autosugestia Google,
+local seo agency in delhi,0,10,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo agency new york,10,0,0,10,8.93,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo audit checklist,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+local seo case study,10,0,0,10,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo company in kolkata,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo company in noida,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo dallas,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo dashboard,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo digital marketing,0,0,10,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo dortmund,10,0,0,10,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+local seo expert in islamabad,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo expert in pakistan,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo for taxi company,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo full form,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo help,10,0,0,10,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo houston,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo interview questions,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo jobs remote,10,0,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+local seo landing pages,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo là gì,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo malaysia,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo neil patel,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo on page,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo orlando,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo ottawa,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo oxnard,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo plugin,10,0,0,10,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo portfolio,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo quotes,10,0,0,10,0,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo rankers,10,0,0,10,0,MEDIUM,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo services in usa,10,0,0,10,0,HIGH,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo tools and tips,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo tutorial,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo udemy,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo university,0,0,10,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo upwork,0,10,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo vancouver wa,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo visibility,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo vs google my business,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo vs national seo,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo vs traditional seo,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo webinar,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo website design,10,0,0,10,0,LOW,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo website optimization,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo what is it,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+local seo yucaipa,10,0,0,10,0,,lokal,komercyjna,usługa/poradnik,/de/google-unternehmensprofil-optimieren,nowa (wersja DE),autosugestia Google,DACH-lokalność nie pasuje do Warszawy; poradnik
+relaunch external website,10,0,0,10,0,,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+rezensionen für webdesign agentur hamburg,10,0,0,10,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+sco ki baithak kahan hui,0,0,10,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo agentur aalen,10,0,0,10,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur allgäu,10,0,0,10,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur ansbach,10,0,0,10,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur bad tölz,10,0,0,10,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur celle,10,0,0,10,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur coburg,10,0,0,10,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur gelnhausen,10,0,0,10,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur gifhorn,10,0,0,10,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur göttingen,10,0,0,10,3.19,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur ilmenau,10,0,0,10,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur in köln,10,0,0,10,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur in münchen,10,0,0,10,8.49,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur neu ulm,10,0,0,10,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo agentur neumarkt,10,0,0,10,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur oberursel,10,0,0,10,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur ravensburg,10,0,0,10,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur rheinmain,10,0,0,10,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur saarland,10,0,0,10,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur schwabach,10,0,0,10,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur speyer,10,0,0,10,0,MEDIUM,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur uelzen,10,0,0,10,0,LOW,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo agentur waiblingen,10,0,0,10,0,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),autosugestia Google,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo audit & ai visibility tool,10,0,0,10,0,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit ai tool,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit and website optimization services,10,0,0,10,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit blog,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit checker free,0,0,10,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit download,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit excel template,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit for hvac,10,0,0,10,0,,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit fürth,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit generator,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit github claude,10,0,0,10,0,LOW,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit jobs,10,0,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo audit moz,10,0,0,10,4.61,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit my website,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit of my website,10,0,0,10,0,,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit optimizer,0,0,10,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit prompt for claude,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit rank math,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit report generator,10,0,0,10,0,MEDIUM,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit report pdf,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit report sample pdf,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit tool free online,10,0,0,10,0,,audit-kostenlos,narzędzie,narzędzie,/de/tools/kostenloser-seo-audit,nowa (wersja DE),autosugestia Google,SERP: Sistrix/Seobility/Ryte (narzędzia z DR 70+); przewaga: AI-sichtbarkeit w audycie
+seo audit ubersuggest,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit upwork,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit vancouver,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo audit worksheet,10,0,0,10,3.12,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+seo bamberg kosten,10,0,0,10,0,LOW,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+seo eun ki,10,0,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo freelancer kosten,10,0,0,10,3.44,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo ki job kaise paye,0,0,10,10,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo ki joo,0,10,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo ki salary kitni hoti hai,0,0,10,10,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo ki secret wife,10,0,0,10,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo ki solteiros ilhados e desesperados,0,0,10,10,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo ki tae,10,0,0,10,0,LOW,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+seo local o que é,10,0,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo local quebec,10,0,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo mane ki,0,0,10,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+seo uitbesteden kosten,10,0,0,10,3.67,MEDIUM,kosten,komercyjna,poradnik,/de/seo-kosten,nowa (wersja DE),autosugestia Google,
+seo vs google ads which is better,10,0,0,10,0,,vs,komercyjna,porównanie,/de/vergleiche/seo-oder-google-ads,nowa (wersja DE),autosugestia Google,
+sev ki sabji recipe,10,0,0,10,0,,_szum,,,,pominięta,autosugestia Google,"marki, szum, poza ofertą"
+soro seo vs google ads,10,0,0,10,0,,vs,komercyjna,porównanie,/de/vergleiche/seo-oder-google-ads,nowa (wersja DE),autosugestia Google,
+topshop website relaunch,10,0,0,10,0,,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur coburg,10,0,0,10,0,,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur duisburg,10,0,0,10,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur erlangen,10,0,0,10,0,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur fürth,10,0,0,10,5.15,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur gießen,10,0,0,10,4.34,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur göttingen,10,0,0,10,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur krefeld,10,0,0,10,14.79,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur leonberg,10,0,0,10,0,,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur lüneburg,10,0,0,10,2.42,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur oberösterreich,0,10,0,10,0,HIGH,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur offenbach,10,0,0,10,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur paderborn,10,0,0,10,8.41,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur potsdam,10,0,0,10,2.08,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+webdesign agentur recklinghausen,10,0,0,10,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur saarland,10,0,0,10,3.42,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur schorndorf,10,0,0,10,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur siegen,10,0,0,10,0,LOW,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur trier,10,0,0,10,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur tübingen,10,0,0,10,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+webdesign agentur winnenden,10,0,0,10,0,MEDIUM,webdesign,komercyjna,usługa,/de/webdesign (+ Relaunch-Checkliste jako szablon),nowa (wersja DE),autosugestia Google,SERP: lokalne agencje; relaunch = szablon migracji
+website ki seo kaise kare,10,0,0,10,0,,geoagentur,komercyjna,usługa/hub,/de/ki-suchoptimierung (hub GEO DE),nowa (wersja DE),autosugestia Google,"""geo"" w DE często = geografia; potwierdzić SERP"
+website relaunch augsburg,10,0,0,10,0,HIGH,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website relaunch hamburg,10,0,0,10,0,MEDIUM,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+website relaunch karlsruhe,10,0,0,10,0,,_miasta,,,,pominięta,autosugestia Google,strony miejskie = doorway bez lokalnych danych (playbook 7.2)
+zadro seo audit,10,0,0,10,0,HIGH,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+zadroweb seo audit,10,0,0,10,0,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),autosugestia Google,
+content kalender vorlage,10,0,0,10,0,,t-redaktion,informacyjna,szablon,/de/tools/redaktionsplan-vorlage,nowa (wersja DE),seed/lista,
+mailchimp vs getresponse,10,0,0,10,0,,_inne,,,,pominięta,fraza strony: /blog/mailchimp-vs-getresponse,nieprzypisane
+seo agentur erfolgsbasiert,10,0,0,10,11.65,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),seed/lista,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo audit erstellen,10,0,0,10,4.48,,audit,komercyjna,usługa,/de/seo-audit,nowa (wersja DE),seed/lista,
+seo erfolgsabhängig,10,0,0,10,0,,_inne,,,,pominięta,seed/lista,nieprzypisane
+seo für b2b,10,0,0,10,25.1,,agentur,komercyjna,usługa,/de (strona główna DE),nowa (wersja DE),seed/lista,"głowa rynku DACH: agencje lokalne z DR 60+, CPC wysokie"
+seo reporting vorlage,10,0,0,10,0,,_inne,,,,pominięta,seed/lista,nieprzypisane
+seo retainer,10,0,0,10,0,,_inne,,,,pominięta,fraza strony: /en/comparisons/pay-for-results-vs-monthly-retainer,nieprzypisane
+webdesign agentur polen,10,0,0,10,0,,polen,komercyjna,usługa,/de/seo-agentur-polen,nowa (wersja DE),seed/lista,wolumen znikomy; trafna intencja; nie robić stron per kategoria
+webdesign polen,10,0,0,10,0,,polen,komercyjna,usługa,/de/seo-agentur-polen,nowa (wersja DE),seed/lista,wolumen znikomy; trafna intencja; nie robić stron per kategoria
+wettbewerbsanalyse seo,10,0,0,10,0,,t-competitor,informacyjna,szablon,/de/tools/konkurrenzanalyse-vorlage,nowa (wersja DE),seed/lista,
