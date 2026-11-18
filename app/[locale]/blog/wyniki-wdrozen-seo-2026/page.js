@@ -38,7 +38,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
     { id: 'staniax', title: 'Staniax: z zerowej widoczności do 152 kliknięć' },
     { id: 'madame-thai', title: 'Madame Thai: 187 kliknięć dla lokalnej restauracji' },
     { id: 'ase-bot', title: 'ASE-BOT: 7,71 tys. wyświetleń w konkurencyjnej niszy' },
-    { id: 'tql', title: 'TQL: pierwsze pozycje w 28 dni od startu' },
+    { id: 'tql', title: 'TQL: pierwsze pozycje w 18 dni od startu' },
     { id: 'ai-seo-company', title: 'Nasza własna domena: laboratorium metod' },
     { id: 'wnioski', title: 'Co z tych danych wynika dla Twojej strony' },
     { id: 'zrodla', title: 'Źródła' }
@@ -106,7 +106,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                     <tr>
                       <td>madamethai.pl</td>
                       <td>restauracja (usługi lokalne)</td>
-                      <td>3 miesiące</td>
+                      <td>26 dni (27.07-21.08.2026)</td>
                       <td>187 kliknięć, 10,1 tys. wyświetleń</td>
                     </tr>
                     <tr>
@@ -118,14 +118,14 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                     <tr>
                       <td>tql.pl</td>
                       <td>wdrożenia norm ISO (B2B, usługi)</td>
-                      <td>28 dni od startu</td>
-                      <td>296 wyświetleń, pozycja średnia 34,6</td>
+                      <td>18 dni od startu (5-22.08.2026)</td>
+                      <td>296 wyświetleń, 2 kliknięcia, pozycja średnia 34,6</td>
                     </tr>
                     <tr>
                       <td>ai-seo-company.pl</td>
                       <td>agencja SEO (nasza własna domena)</td>
-                      <td>3 miesiące</td>
-                      <td>2,77 tys. wyświetleń</td>
+                      <td>ok. 4 tygodnie (26.07-21.08.2026)</td>
+                      <td>2,77 tys. wyświetleń, 8 kliknięć, pozycja średnia 60,9</td>
                     </tr>
                   </tbody>
                 </table>
@@ -137,29 +137,29 @@ export default async function ArtykulWynikiWdrozen({ params }) {
 
               <h2 id="staniax">Staniax: z zerowej widoczności do 152 kliknięć</h2>
               <p>Punkt startowy: producent z 25-letnim doświadczeniem w metalizacji próżniowej i zerową widocznością organiczną – domena nie zbierała ruchu z wyszukiwarki. Zakres pracy: nowa strona z architekturą pod frazy usługowe, baza wiedzy z artykułami technicznymi i uporządkowanie podstaw technicznych.</p>
-              <p>Wynik w GSC: <strong>152 kliknięcia i 6,34 tys. wyświetleń w trzy miesiące</strong>, przy czym 2,8 tys. wyświetleń przyszło już w pierwszym miesiącu od startu. W niszy B2B o niskim wolumenie zapytań to różnica między nieistnieniem a stałym strumieniem zapytań ofertowych.</p>
+              <p>Wynik w GSC: <strong>152 kliknięcia i 6,34 tys. wyświetleń w trzy miesiące</strong>, przy czym ok. 1,1 tys. wyświetleń przyszło w pierwszym miesiącu od startu, a 2,8 tys. po siedmiu tygodniach. W niszy B2B o niskim wolumenie zapytań to różnica między nieistnieniem a stałym strumieniem zapytań ofertowych.</p>
               <p>Co zadecydowało: treści pisane pod realne pytania klientów przemysłowych (regeneracja odbłyśników, powłoki aluminiowe), nie pod ogólne frazy o wysokim wolumenie, na które młoda domena nie miała szans.</p>
 
               <h2 id="madame-thai">Madame Thai: 187 kliknięć dla lokalnej restauracji</h2>
-              <p>Punkt startowy: lokalna restauracja tajska z nową stroną. W gastronomii o widoczności decyduje intencja lokalna – zapytania „kuchnia tajska + miasto" i ruch z map.</p>
-              <p>Wynik w GSC: <strong>187 kliknięć i 10,1 tys. wyświetleń w trzy miesiące</strong> – najwyższy wolumen wyświetleń w zestawieniu, typowy dla zapytań lokalnych o dużej częstotliwości. Dla lokalu liczy się końcówka tego lejka: kliknięcie w menu albo w trasę dojazdu.</p>
+              <p>Punkt startowy: lokalna restauracja tajska z nową stroną. W gastronomii o widoczności decyduje intencja lokalna – zapytania „kuchnia tajska + miasto" w wyszukiwarce Google.</p>
+              <p>Wynik w GSC: <strong>187 kliknięć i 10,1 tys. wyświetleń w 26 dni (27.07-21.08.2026)</strong> – najwyższy wolumen wyświetleń w zestawieniu, typowy dla zapytań lokalnych o dużej częstotliwości. Dla lokalu liczy się końcówka tego lejka: kliknięcie w menu albo w trasę dojazdu.</p>
 
               <h2 id="ase-bot">ASE-BOT: 7,71 tys. wyświetleń w konkurencyjnej niszy</h2>
               <p>Punkt startowy: nasz własny projekt, platforma AI do tradingu – nisza konkurencyjna, anglojęzyczna i wrażliwa na zaufanie. Domena .live bez historii.</p>
-              <p>Wynik w GSC: <strong>7,71 tys. wyświetleń w trzy miesiące</strong> – najwyższa ekspozycja w zestawieniu. To etap budowania widoczności: najpierw wyświetlenia na długim ogonie zapytań, potem pozycje, na końcu kliknięcia. Publikujemy tę domenę świadomie jako przykład środka drogi, nie ukończonego sukcesu.</p>
+              <p>Wynik w GSC: <strong>7,71 tys. wyświetleń w trzy miesiące</strong> – drugi wynik wyświetleń w zestawieniu. To etap budowania widoczności: najpierw wyświetlenia na długim ogonie zapytań, potem pozycje, na końcu kliknięcia. Publikujemy tę domenę świadomie jako przykład środka drogi, nie ukończonego sukcesu.</p>
 
-              <h2 id="tql">TQL: pierwsze pozycje w 28 dni od startu</h2>
-              <p>Punkt startowy: firma wdrażająca normy ISO, strona świeżo uruchomiona. Okno pomiaru celowo krótkie – 28 dni od startu – bo pokazuje najciekawszy moment: jak szybko Google zaczyna wystawiać nową domenę.</p>
-              <p>Wynik w GSC: <strong>296 wyświetleń i średnia pozycja 34,6 w pierwsze 28 dni</strong>. Pozycja w czwartej dziesiątce miesiąc po starcie to punkt wyjścia do pracy o pozycje w pierwszej dziesiątce – nie jej koniec; wartością tego pomiaru jest tempo wejścia do indeksu i pierwszych rankingów.</p>
+              <h2 id="tql">TQL: pierwsze pozycje w 18 dni od startu</h2>
+              <p>Punkt startowy: firma wdrażająca normy ISO, strona świeżo uruchomiona. Okno pomiaru celowo krótkie – 18 dni od startu (5-22.08.2026) – bo pokazuje najciekawszy moment: jak szybko Google zaczyna wystawiać nową domenę.</p>
+              <p>Wynik w GSC: <strong>296 wyświetleń, 2 kliknięcia i średnia pozycja 34,6 w pierwszych 18 dniach (5-22.08.2026)</strong>. Pozycja w czwartej dziesiątce niecałe trzy tygodnie po starcie to punkt wyjścia do pracy o pozycje w pierwszej dziesiątce – nie jej koniec; wartością tego pomiaru jest tempo wejścia do indeksu i pierwszych rankingów.</p>
 
               <h2 id="ai-seo-company">Nasza własna domena: laboratorium metod</h2>
               <p>Każdą metodę, którą stosujemy u klientów, najpierw testujemy na sobie – ai-seo-company.pl to młoda domena prowadzona dokładnie tym samym procesem: architektura pod klastry fraz, dwujęzyczność z hreflang, dane strukturalne, kadencja publikacji.</p>
-              <p>Wynik w GSC: <strong>2,77 tys. wyświetleń w trzy miesiące</strong> od startu, z widocznością budowaną równolegle po polsku i angielsku. Publikujemy tę liczbę z tego samego powodu co pozostałe: agencja, która nie pokazuje własnych danych, prosi o zaufanie na kredyt.</p>
+              <p>Wynik w GSC: <strong>2,77 tys. wyświetleń i 8 kliknięć w ok. 4 tygodnie (26.07-21.08.2026)</strong>, przy średniej pozycji 60,9, z widocznością budowaną równolegle po polsku i angielsku. Publikujemy tę liczbę z tego samego powodu co pozostałe: agencja, która nie pokazuje własnych danych, prosi o zaufanie na kredyt.</p>
               <p>Na tej samej domenie testujemy też <Link href="/pozycjonowanie-w-ai">pomiar widoczności w AI</Link>: sprawdzamy, czy ChatGPT i Perplexity wymieniają naszą markę w odpowiedziach na pytania, które zadają kupujący.</p>
 
               <h2 id="wnioski">Co z tych danych wynika dla Twojej strony</h2>
               <ul>
-                <li><strong>Nowa domena potrzebuje 4–12 tygodni na pierwsze rankingi</strong> – TQL pokazuje wejście w 28 dni, Staniax skok ruchu w pierwszym miesiącu. Obietnica „TOP 10 w dwa tygodnie" na świeżej domenie jest nierealna niezależnie od wykonawcy.</li>
+                <li><strong>Nowa domena zwykle potrzebuje 4–8 tygodni na pierwsze rankingi (nasze obserwacje, bez gwarancji)</strong> – TQL pokazuje wejście w 18 dni, Staniax skok ruchu w pierwszym miesiącu. Obietnica „TOP 10 w dwa tygodnie" na świeżej domenie jest nierealna niezależnie od wykonawcy.</li>
                 <li><strong>Nisza wyznacza kształt krzywej.</strong> Restauracja zbiera dziesiątki tysięcy wyświetleń lokalnych; producent B2B setki – ale każde z tych zapytań jest warte wielokrotnie więcej. Porównuj wyniki w obrębie branży, nie między branżami.</li>
                 <li><strong>Wyświetlenia poprzedzają kliknięcia.</strong> Krzywa widoczności zawsze idzie w kolejności: indeksacja → wyświetlenia na dalekich pozycjach → pozycje → kliknięcia. Domena w fazie wyświetleń (jak ASE-BOT) nie jest porażką – jest w połowie procesu.</li>
                 <li><strong>Dane wygrywają z deklaracjami.</strong> Wybierając wykonawcę, proś o zrzuty z GSC z podanym oknem pomiaru i punktem startowym – dokładnie w tym formacie, w którym my publikujemy swoje. Jeśli zmieniasz wykonawcę, przeczytaj, jak przebiega <Link href="/zmiana-agencji-seo">zmiana agencji SEO bez utraty pozycji</Link>.</li>
@@ -169,10 +169,10 @@ export default async function ArtykulWynikiWdrozen({ params }) {
               <h2 id="zrodla">Źródła</h2>
               <ul>
                 <li>Google Search Console, raport Skuteczność – panele domen staniax.pl, madamethai.pl, ase-bot.live, tql.pl i ai-seo-company.pl; zrzuty opublikowane w sekcji realizacji na <Link href="/">stronie głównej</Link></li>
-                <li>Okna pomiaru: 3 miesiące (staniax, madamethai, ase-bot, ai-seo-company) oraz 28 dni od startu (tql); stan na sierpień 2026</li>
+                <li>Okna pomiaru: 3 miesiące (staniax, ase-bot), 26 dni (madamethai, 27.07-21.08.2026), ok. 4 tygodnie (ai-seo-company, 26.07-21.08.2026) oraz 18 dni od startu (tql, 5-22.08.2026); dane z 21-22.08.2026</li>
               </ul>
 
-              <p><em>Ostatnia weryfikacja: sierpień 2026. Liczby odpowiadają opublikowanym zrzutom GSC na tę datę; raport aktualizujemy wraz z kolejnymi oknami pomiaru.</em></p>
+              <p><em>Ostatnia weryfikacja: 18 listopada 2026 (okna pomiaru sprawdzone ze zrzutami GSC). Liczby pochodzą z danych z 21-22.08.2026; kolejna aktualizacja raportu: grudzień 2026.</em></p>
 
               <h2 id="polecane">Polecane</h2>
               <ul>

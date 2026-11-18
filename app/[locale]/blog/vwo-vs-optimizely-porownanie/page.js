@@ -36,7 +36,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
     { id: 'ograniczenia', title: 'Ograniczenia każdej platformy' },
     { id: 'wnioski', title: 'Kluczowe wnioski' },
     { id: 'kupic-czy-zlecic', title: 'Kiedy kupić platformę, a kiedy zlecić program eksperymentów agencji' },
-    { id: 'wsparcie-agencji', title: 'AI SEO COMPANY wspiera wdrożenie programu eksperymentów' },
+    { id: 'wsparcie-agencji', title: 'AI SEO COMPANY a optymalizacja konwersji (CRO)' },
     { id: 'zrodla', title: 'Źródła i materiały do dalszego czytania' },
     { id: 'perspektywa-agencji', title: 'Perspektywa agencji: zakup platformy czy outsourcing' },
   ];
@@ -54,7 +54,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
     { id: 'ograniczenia', title: 'Limitations of Each Platform: What VWO and Optimizely Cannot Do' },
     { id: 'wnioski', title: 'Key Takeaways' },
     { id: 'kupic-czy-zlecic', title: 'When to Buy a Platform vs. When to Outsource the Experimentation Program to an Agency' },
-    { id: 'wsparcie-agencji', title: 'AI SEO COMPANY Supports Experimentation Program Implementation' },
+    { id: 'wsparcie-agencji', title: 'AI SEO COMPANY and Conversion Optimization (CRO)' },
     { id: 'zrodla', title: 'Sources and Further Reading' },
     { id: 'perspektywa-agencji', title: 'Agency Perspective: When We Recommend Buying a Platform vs. Outsourcing the Experimentation Program' },
   ];
@@ -140,9 +140,9 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                       <tr><td>SDKs (web, mobile, server)</td><td>Web, mobile, server SDKs</td><td>Extensive SDKs for multiple languages</td><td>-</td></tr>
                       <tr><td>Data warehouse integrations</td><td>Yes (limited)</td><td>Yes, warehouse-native</td><td>-</td></tr>
                       <tr><td>Statistical engine</td><td>SmartStats (Bayesian)</td><td>Stats Engine (sequential)</td><td>-</td></tr>
-                      <tr><td>Pricing model</td><td>Orientative pricing / quote after registration, plans starting from approx. $300/month (depending on MTU)</td><td>No public pricing, custom quotes (entry threshold ~$36,000/year)</td><td>-</td></tr>
-                      <tr><td>Approximate annual cost</td><td>From low tens of thousands of USD to several tens of thousands of USD</td><td>From ~$36,000/year upwards</td><td>-</td></tr>
-                      <tr><td>Support / SLA</td><td>24/7 chat and email, dedicated account manager on higher plans</td><td>Enterprise SLA, dedicated CSM</td><td>-</td></tr>
+                      <tr><td>Pricing model</td><td>No public pricing (quote on request); third-party comparisons cite roughly $300/month (unverified, ask for an offer)</td><td>No public pricing, custom quotes (market estimate, unconfirmed by Optimizely: ~$36,000/year)</td><td>-</td></tr>
+                      <tr><td>Approximate annual cost</td><td>From low tens of thousands of USD to several tens of thousands of USD</td><td>Market estimate: ~$36,000/year upwards</td><td>-</td></tr>
+                      <tr><td>Support / SLA</td><td>24x5 on Growth and Pro, 24x7 on Enterprise (per wingify.com/pricing)</td><td>Enterprise SLA, dedicated CSM</td><td>-</td></tr>
                       <tr><td>GDPR / data residency</td><td>EU data residency options, DPA available</td><td>EU data residency, SOC 2, DPA available</td><td>-</td></tr>
                     </tbody>
                   </table>
@@ -153,12 +153,12 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <h2 id="roznice">Where They Really Differ: Features That Matter Day-to-Day</h2>
 
                 <h3>Visual editor and time to first test</h3>
-                <p>VWO was designed with the marketer who does not want to write code in mind. The WYSIWYG editor lets you change headlines, button colors, or section layouts without involving a developer. Result: first experiments often go live within one or two days of inserting the snippet. For roughly 80% of teams running tests on websites and landing pages, VWO delivers faster time-to-value precisely because of this combination of tools.</p>
+                <p>VWO was designed with the marketer who does not want to write code in mind. The WYSIWYG editor lets you change headlines, button colors, or section layouts without involving a developer. Result: first experiments often go live within one or two days of inserting the snippet. For most marketing-led teams without engineers, VWO delivers faster time-to-value precisely because of this combination of tools.</p>
                 <p>Optimizely also has a visual editor, but its real strength lies elsewhere: server-side testing and feature flag management. A marketer without engineering support will quickly hit a wall.</p>
 
                 <h3>Behavioral analytics: heatmaps and session recordings</h3>
                 <p>This is one of the most important differentiating points. VWO natively combines A/B testing with heatmaps and session recordings, shortening the hypothesis–test–insight loop without the need to integrate external tools. You can see where users click, where they pause, and where you abandon forms – all in one interface.</p>
-                <p>The lack of native heatmaps and session recordings in Optimizely means you need to purchase additional tools such as FullStory or Contentsquare. This adds cost, another integration, and extra GDPR questions.</p>
+                <p>As of 18 Nov 2026, heatmaps and session recordings in Optimizely require an integration with tools such as Contentsquare, FullStory, Mouseflow or Clarity. This adds cost, another integration, and extra GDPR questions.</p>
 
                 <h3>Server-side, feature flags, and SDKs</h3>
                 <p>Optimizely offers extensive SDKs for many programming languages, multi-environment feature flag management, and advanced approval workflows. This makes sense for an experimentation program that covers the backend, mobile apps, and recommendation systems. Optimizely delivers the greatest value where backend experimentation and strict feature flag governance are required.</p>
@@ -170,13 +170,13 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <p>Choosing an experimentation platform is essentially a decision about organizational maturity: an enterprise tool without an experimentation process becomes an expensive snippet on the page.</p>
 
                 <h2 id="koszty">How Much It Costs: Licensing Models and What to Negotiate</h2>
-                <p>VWO publishes orientative pricing (details are often visible after registration or in a conversation with a sales representative). Entry-level plans usually start from approximately $300 per month (depending on the number of Monthly Tracked Users), and higher tiers scale with MTU volume. For organizations with around 500,000 MTU, the annual cost typically falls in the low tens of thousands of dollars. At 5 million MTU you enter enterprise pricing that requires a custom quote.</p>
+                <p>VWO does not publish prices on its pricing page (a demo or quote is required). Third-party comparisons cite entry-level plans from approximately $300 per month (an unverified estimate; ask for a quote), and higher tiers scale with the number of Monthly Tracked Users (MTU). For organizations with around 500,000 MTU, third-party estimates put the annual cost in the low tens of thousands of dollars. At 5 million MTU you enter enterprise pricing that requires a custom quote.</p>
                 <p>Sources: <a href="https://www.conversionwax.com/vwo-pricing/" target="_blank" rel="noopener noreferrer">ConversionWax – VWO Pricing 2026</a>, <a href="https://www.mida.so/blog/how-much-is-vwo" target="_blank" rel="noopener noreferrer">Mida – How Much Does VWO Cost in 2026?</a>, <a href="https://www.vendr.com/marketplace/vwo" target="_blank" rel="noopener noreferrer">Vendr</a>.</p>
                 
-                <p>Optimizely does not publish pricing. The market-estimated entry threshold is around $36,000 per year, and real enterprise contracts often exceed this amount several times over. Every conversation starts with a sales process.<br />
+                <p>Optimizely does not publish pricing. The entry threshold estimated by the market (not confirmed by Optimizely) is around $36,000 per year, and real enterprise contracts often exceed this amount several times over. Every conversation starts with a sales process.<br />
                 Sources: <a href="https://gostellar.app/blog/how-much-does-optimizely-cost" target="_blank" rel="noopener noreferrer">GoStellar – Optimizely Pricing 2026</a>, <a href="https://www.conversionwax.com/optimizely-pricing/" target="_blank" rel="noopener noreferrer">ConversionWax – Optimizely Pricing</a>.</p>
                 
-                <p>Worth knowing: in 2025–2026 VWO restricted / discontinued its free plan after the acquisition by Everstone Capital. If you previously used the free version, check the current terms before planning your budget.<br />
+                <p>Worth knowing: VWO is phasing out its free Starter plan (new users get a 30-day trial, per Mida, May 2026), after Everstone Capital took a majority stake in Wingify in 2025. If you previously used the free version, check the current terms before planning your budget.<br />
                 Sources: <a href="https://techcrunch.com/2025/01/23/everstone-acquires-bootstrapped-indian-startup-wingify-for-200m/" target="_blank" rel="noopener noreferrer">TechCrunch – Everstone acquires Wingify</a>, <a href="https://www.mida.so/blog/vwo-free-plan" target="_blank" rel="noopener noreferrer">Mida – VWO Free Starter Plan Is Ending</a>.</p>
 
                 <p><strong>What to negotiate in the contract:</strong></p>
@@ -269,7 +269,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
 
                 <h2 id="obserwacje-agencji">Agency Observations: Typical Implementation Issues and Migration Costs</h2>
                 <p>The most common scenario we observe with clients: tool purchased, snippet inserted, first tests launched, and after three months the experimentation program dies. The reason is always the same: lack of governance and lack of a person responsible for the hypothesis backlog.</p>
-                <p>Experts recommend VWO for teams that need fast CRO results, and Optimizely for companies running hundreds of experiments per year with a dedicated engineering team. In practice we see organizations buy Optimizely too early and then pay for an enterprise license whose capabilities they use at only 20%.</p>
+                <p>Experts recommend VWO for teams that need fast CRO results, and Optimizely for companies running hundreds of experiments per year with a dedicated engineering team. A pattern often observed in the industry (practitioner opinions) is that organizations buy Optimizely too early and then pay for an enterprise license whose capabilities they use only in part.</p>
 
                 <p><strong>Typical migration problems between platforms:</strong></p>
                 <ul>
@@ -282,12 +282,12 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <p>When is it worth outsourcing the experimentation program to an agency instead of buying a tool? When there is no internal CRO specialist, when traffic is too low to justify enterprise license costs, or when you need results within 4–6 weeks rather than 4–6 months.</p>
 
                 <h2 id="wsparcie">How VWO and Optimizely Support Customers: Support and SLAs</h2>
-                <p>VWO offers 24/7 support via chat and email on all paid plans. Higher license levels include a dedicated customer success manager and onboarding support. Users on industry forums consistently praise response times and the quality of technical support answers.</p>
+                <p>VWO support is 24x5 on the Growth and Pro plans and 24x7 on Enterprise (per wingify.com/pricing, read 18 Nov 2026). Higher license levels include a dedicated customer success manager and onboarding support. Users on industry forums consistently praise response times and the quality of technical support answers.</p>
                 <p>Optimizely directs support through an enterprise model: dedicated Customer Success Manager, contract-tailored SLAs, and access to a knowledge base. Support quality is high, but access to fast technical help depends on contract level. On a standard plan, response times can be longer than with VWO.</p>
                 <p>Practical difference: with VWO a marketer can resolve most issues independently via chat. With Optimizely, complex technical questions often require escalation to an engineer, which lengthens resolution time.</p>
 
                 <h2 id="recenzje">What Users Say: Reviews and Real-World Use Cases</h2>
-                <p>On platforms such as G2 and Capterra, VWO receives ratings around 4.3–4.5/5, with users most frequently citing the ease of the visual editor and the value of behavioral analytics as main advantages. Criticism mainly concerns limitations in advanced targeting and the price of higher plans.</p>
+                <p>In user reviews on platforms such as G2 and Capterra, users most frequently cite the ease of the visual editor and the value of behavioral analytics as main advantages. Criticism mainly concerns limitations in advanced targeting and the price of higher plans.</p>
                 <p>Optimizely is rated similarly in star terms, but the review profile is different: enterprise users praise feature depth and Stats Engine, while smaller teams regularly point to the steep learning curve and the need to involve engineers for every configuration change.</p>
                 <p>A characteristic pattern from Reddit and industry forum discussions: companies that switched from Optimizely to VWO report shorter time to launch a test and lower total cost. Companies that moved in the opposite direction usually did so because of the need for large-scale server-side testing or feature flags.</p>
 
@@ -302,7 +302,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
 
                 <p><strong>Optimizely:</strong></p>
                 <ul>
-                  <li>Lack of native heatmaps and session recordings means higher TCO and additional GDPR questions when integrating external tools</li>
+                  <li>Heatmaps and session recordings require integrations (as of 18 Nov 2026), which means higher TCO and additional GDPR questions when integrating external tools</li>
                   <li>The implementation curve is steep: without a dedicated engineer the platform does not realize its potential</li>
                   <li>Price and sales process exclude mid-market companies without a large experimentation budget</li>
                   <li>Product offering changes after successive acquisitions may affect the feature roadmap</li>
@@ -319,10 +319,10 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                     </thead>
                     <tbody>
                       <tr><td>Who chooses VWO</td><td>Marketing and e-commerce teams with a reasonable budget and without dedicated experimentation engineers</td></tr>
-                      <tr><td>Who chooses Optimizely</td><td>Large organizations with engineering, need for feature flags and server-side testing, and budget from $36,000/year upwards</td></tr>
+                      <tr><td>Who chooses Optimizely</td><td>Large organizations with engineering, need for feature flags and server-side testing, and a budget around $36,000/year or more (market estimate)</td></tr>
                       <tr><td>Key hidden cost</td><td>With Optimizely, add behavioral analytics tools (FullStory, Contentsquare) that replace VWO’s native features</td></tr>
                       <tr><td>What to confirm in the contract</td><td>MTU limit, DPA terms, EU data residency, support SLA, and possibility of a pilot before an annual contract</td></tr>
-                      <tr><td>AI SEO COMPANY</td><td>Offers an experimentation audit and 4-week pilot for teams that want results without building an internal stack</td></tr>
+                      <tr><td>AI SEO COMPANY</td><td>In SEO Premium (from EUR 590 net/month) we run conversion optimization (CRO); the scope of A/B tests is set after the SEO audit (from EUR 350 net)</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -332,10 +332,10 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                 <p>Outsourcing the experimentation program is faster and cheaper when site traffic does not yet justify enterprise license costs, when there is no internal CRO specialist, or when you need results within a quarter rather than a year. An agency brings a ready process, tools, and experience from many implementations, shortening time to first insight from months to weeks.</p>
                 <p>One caveat: experiment data should remain under the client’s control. A good agency configures the environment so that you have full access to raw results regardless of who runs the program.</p>
 
-                <h2 id="wsparcie-agencji">AI SEO COMPANY Supports Experimentation Program Implementation</h2>
-                <p>If after reading this article you already know you need A/B testing but do not have the time or resources to go through tool selection, implementation, and governance yourself, AI SEO COMPANY offers a concrete alternative.</p>
-                <p>Instead of months of configuration and license negotiations, we launch an experimentation pilot in 4 weeks: <Link href="/seo-audit">current site audit</Link>, tag and event configuration, first tests on key pages, and a report with insights. We also handle the technical side of GDPR compliance for session recordings and heatmaps, eliminating one of the main implementation risks.</p>
-                <p>For companies that want to improve both organic visibility and conversion at the same time, we combine the experimentation program with an SEO audit and technical optimization. Contact us via the <Link href="/">agency homepage</Link> to discuss a pilot scope tailored to your traffic and goals.</p>
+                <h2 id="wsparcie-agencji">AI SEO COMPANY and Conversion Optimization (CRO)</h2>
+                <p>If after reading this article you already know you need A/B testing but do not have the time or resources to go through tool selection, implementation, and governance yourself, you can rely on our SEO offer.</p>
+                <p>In SEO Premium (from EUR 590 net/month) we run conversion optimization (CRO); we scope the A/B tests after the <Link href="/seo-audit">SEO audit</Link> (from EUR 350 net). We do not sell testing platforms as a separate service, and GDPR work for session recordings and heatmaps needs a separate quote and legal advice.</p>
+                <p>For companies that want to improve both organic visibility and conversion at the same time, we combine conversion optimization with an SEO audit and technical optimization. Contact us via the <Link href="/">agency homepage</Link> to discuss a scope tailored to your traffic and goals.</p>
 
                 <h2 id="zrodla">Sources and Further Reading</h2>
                 <p>Below is a summary of key sources used in the article. Pricing data and contract terms change: always verify them directly with the vendor before making a purchase decision.</p>
@@ -423,9 +423,9 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                     <tr><td>SDK (web, mobile, server)</td><td>Web, mobile, server SDK</td><td>Rozbudowane SDK dla wielu języków</td><td>-</td></tr>
                     <tr><td>Integracje z hurtownią danych</td><td>Tak (ograniczone)</td><td>Tak, warehouse-native</td><td>-</td></tr>
                     <tr><td>Silnik statystyczny</td><td>SmartStats (bayesowski)</td><td>Stats Engine (sekwencyjny)</td><td>-</td></tr>
-                    <tr><td>Model cenowy</td><td>Orientacyjny cennik / wycena po rejestracji, poziomy od ok. 300 USD/mies. (w zależności od MTU)</td><td>Brak publicznego cennika, wycena indywidualna (próg wejścia ~36 000 USD/rok)</td><td>-</td></tr>
-                    <tr><td>Orientacyjny koszt roczny</td><td>Od kilkunastu tysięcy USD do kilkudziesięciu tysięcy USD</td><td>Od ~36 000 USD/rok wzwyż</td><td>-</td></tr>
-                    <tr><td>Wsparcie / SLA</td><td>24/7 czat i e-mail, dedykowany opiekun w wyższych planach</td><td>Enterprise SLA, dedykowany CM</td><td>-</td></tr>
+                    <tr><td>Model cenowy</td><td>Ceny niepubliczne (wycena na zapytanie); zewnętrzne zestawienia podają ok. 300 USD/mies. (nieweryfikowalne, zapytaj o ofertę)</td><td>Brak publicznego cennika, wycena indywidualna (szacunek rynkowy, niepotwierdzony przez Optimizely: ~36 000 USD/rok)</td><td>-</td></tr>
+                    <tr><td>Orientacyjny koszt roczny</td><td>Od kilkunastu tysięcy USD do kilkudziesięciu tysięcy USD</td><td>Szacunek rynkowy: ~36 000 USD/rok wzwyż</td><td>-</td></tr>
+                    <tr><td>Wsparcie / SLA</td><td>24x5 w planach Growth i Pro, 24x7 w Enterprise (wg wingify.com/pricing)</td><td>Enterprise SLA, dedykowany CM</td><td>-</td></tr>
                     <tr><td>RODO / lokalizacja danych</td><td>Opcje EU data residency, DPA dostępne</td><td>EU data residency, SOC 2, DPA dostępne</td><td>-</td></tr>
                   </tbody>
                 </table>
@@ -436,12 +436,12 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               <h2 id="roznice">Gdzie naprawdę się różnią: funkcje, które mają znaczenie na co dzień</h2>
 
               <h3>Edytor wizualny i szybkość do pierwszego testu</h3>
-              <p>VWO projektowano z myślą o marketerze, który nie chce pisać kodu. Edytor WYSIWYG pozwala zmienić nagłówek, kolor przycisku czy układ sekcji bez angażowania dewelopera. Wynik: pierwsze eksperymenty często ruszają w ciągu jednego lub dwóch dni od wklejenia snippetu. Dla około 80% zespołów prowadzących testy na stronach i landing page’ach VWO daje szybszy czas do wartości właśnie dzięki tej kombinacji narzędzi.</p>
+              <p>VWO projektowano z myślą o marketerze, który nie chce pisać kodu. Edytor WYSIWYG pozwala zmienić nagłówek, kolor przycisku czy układ sekcji bez angażowania dewelopera. Wynik: pierwsze eksperymenty często ruszają w ciągu jednego lub dwóch dni od wklejenia snippetu. Dla większości zespołów marketingowych bez inżynierów VWO daje szybszy czas do wartości właśnie dzięki tej kombinacji narzędzi.</p>
               <p>Optimizely też ma edytor wizualny, ale jego prawdziwa siła leży gdzie indziej: w testach po stronie serwera i zarządzaniu flagami funkcji. Marketer bez wsparcia inżynieryjnego szybko trafi na ścianę.</p>
 
               <h3>Analityka behawioralna: heatmapy i nagrania sesji</h3>
               <p>To jeden z najważniejszych punktów różnicujących. VWO łączy testy A/B z heatmapami i nagraniami sesji natywnie, co skraca pętlę hipoteza-test-wniosek bez konieczności integrowania zewnętrznych narzędzi. Widzisz, gdzie użytkownicy klikają, gdzie się zatrzymują i gdzie porzucają formularz, wszystko w jednym interfejsie.</p>
-              <p>Brak natywnych heatmap i nagrań w Optimizely oznacza konieczność dokupienia narzędzi takich jak FullStory czy Contentsquare. To dodatkowy koszt, dodatkowa integracja i dodatkowe pytania o RODO.</p>
+              <p>Wg stanu z 18.11.2026 heatmapy i nagrania w Optimizely wymagają integracji z narzędziami takimi jak Contentsquare, FullStory, Mouseflow czy Clarity. To dodatkowy koszt, dodatkowa integracja i dodatkowe pytania o RODO.</p>
 
               <h3>Server-side, feature flags i SDK</h3>
               <p>Optimizely oferuje rozbudowane SDK dla wielu języków programowania, wielośrodowiskowe zarządzanie flagami i zaawansowane przepływy zatwierdzeń. To ma sens przy programie eksperymentów obejmującym backend, aplikacje mobilne i systemy rekomendacji. Optimizely przynosi największą wartość tam, gdzie potrzebne jest eksperymentowanie backendowe i ścisłe zarządzanie flagami funkcji.</p>
@@ -453,10 +453,10 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               <p>Wybór platformy eksperymentacyjnej to w istocie decyzja o dojrzałości organizacyjnej: narzędzie enterprise bez procesu eksperymentacyjnego staje się drogim snippetem na stronie.</p>
 
               <h2 id="koszty">Ile to kosztuje w Polsce: modele licencyjne i co negocjować</h2>
-              <p>VWO publikuje orientacyjny cennik (szczegóły często widoczne po rejestracji lub w rozmowie z handlowcem). Plany startowe zaczynają się zwykle od około 300 USD miesięcznie (w zależności od liczby MTU), a wyższe poziomy skalują się wraz z liczbą testowanych użytkowników miesięcznie (MTU). Dla organizacji z ruchem rzędu 500 000 MTU koszt roczny mieści się zwykle w przedziale kilkunastu tysięcy dolarów. Przy 5 milionach MTU wchodzisz w widełki enterprise wymagające indywidualnej wyceny.</p>
+              <p>VWO nie publikuje cen na stronie cennika (wymagane demo lub wycena). Zewnętrzne zestawienia podają plany startowe od około 300 USD miesięcznie (szacunek nieweryfikowalny, zapytaj o ofertę), a wyższe poziomy skalują się wraz z liczbą testowanych użytkowników miesięcznie (MTU). Dla organizacji z ruchem rzędu 500 000 MTU zewnętrzne szacunki mówią o kilkunastu tysiącach dolarów rocznie. Przy 5 milionach MTU wchodzisz w widełki enterprise wymagające indywidualnej wyceny.</p>
               <p>Źródła danych cenowych: <a href="https://www.conversionwax.com/vwo-pricing/" target="_blank" rel="noopener noreferrer">ConversionWax – VWO Pricing 2026</a>, <a href="https://www.mida.so/blog/how-much-is-vwo" target="_blank" rel="noopener noreferrer">Mida – How Much Does VWO Cost in 2026?</a>, <a href="https://www.vendr.com/marketplace/vwo" target="_blank" rel="noopener noreferrer">Vendr</a>.</p>
-              <p>Optimizely nie publikuje cennika. Próg wejścia szacowany przez rynek to około 36 000 USD rocznie, a realne kontrakty enterprise często przekraczają tę kwotę kilkukrotnie. Każda rozmowa zaczyna się od procesu sprzedażowego. Źródła: <a href="https://gostellar.app/blog/how-much-does-optimizely-cost" target="_blank" rel="noopener noreferrer">GoStellar – Optimizely Pricing 2026</a>, <a href="https://www.conversionwax.com/optimizely-pricing/" target="_blank" rel="noopener noreferrer">ConversionWax – Optimizely Pricing</a>.</p>
-              <p>Warto wiedzieć: w 2025–2026 roku VWO ograniczyło / wycofało darmowy plan po przejęciu przez Everstone Capital. Jeśli korzystałeś z bezpłatnej wersji, sprawdź aktualne warunki przed planowaniem budżetu. Źródła: <a href="https://techcrunch.com/2025/01/23/everstone-acquires-bootstrapped-indian-startup-wingify-for-200m/" target="_blank" rel="noopener noreferrer">TechCrunch – przejęcie Wingify</a>, <a href="https://www.mida.so/blog/vwo-free-plan" target="_blank" rel="noopener noreferrer">Mida – VWO Free Starter Plan Is Ending</a>.</p>
+              <p>Optimizely nie publikuje cennika. Próg wejścia szacowany przez rynek (niepotwierdzony przez Optimizely) to około 36 000 USD rocznie, a realne kontrakty enterprise często przekraczają tę kwotę kilkukrotnie. Każda rozmowa zaczyna się od procesu sprzedażowego. Źródła: <a href="https://gostellar.app/blog/how-much-does-optimizely-cost" target="_blank" rel="noopener noreferrer">GoStellar – Optimizely Pricing 2026</a>, <a href="https://www.conversionwax.com/optimizely-pricing/" target="_blank" rel="noopener noreferrer">ConversionWax – Optimizely Pricing</a>.</p>
+              <p>Warto wiedzieć: VWO wygasza darmowy plan Starter (nowi użytkownicy dostają 30-dniowy trial, wg Mida, maj 2026), po objęciu większościowego udziału w Wingify przez Everstone Capital w 2025 roku. Jeśli korzystałeś z bezpłatnej wersji, sprawdź aktualne warunki przed planowaniem budżetu. Źródła: <a href="https://techcrunch.com/2025/01/23/everstone-acquires-bootstrapped-indian-startup-wingify-for-200m/" target="_blank" rel="noopener noreferrer">TechCrunch – przejęcie Wingify</a>, <a href="https://www.mida.so/blog/vwo-free-plan" target="_blank" rel="noopener noreferrer">Mida – VWO Free Starter Plan Is Ending</a>.</p>
 
               <p><strong>Co negocjować w umowie:</strong></p>
               <ul>
@@ -548,7 +548,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
 
               <h2 id="obserwacje-agencji">Obserwacje agencji: typowe problemy wdrożeniowe i koszty migracji</h2>
               <p>Najczęstszy scenariusz, który obserwujemy u klientów: narzędzie kupione, snippet wklejony, pierwsze testy uruchomione, a po trzech miesiącach program eksperymentów zamiera. Powód jest zawsze ten sam: brak governance i brak osoby odpowiedzialnej za backlog hipotez.</p>
-              <p>Eksperci rekomendują VWO dla zespołów potrzebujących szybkich wyników CRO, a Optimizely dla firm prowadzących setki eksperymentów rocznie z dedykowanym zespołem inżynieryjnym. W praktyce widzimy, że organizacje kupują Optimizely na wyrost, a potem płacą za licencję enterprise, której możliwości wykorzystują w 20%.</p>
+              <p>Eksperci rekomendują VWO dla zespołów potrzebujących szybkich wyników CRO, a Optimizely dla firm prowadzących setki eksperymentów rocznie z dedykowanym zespołem inżynieryjnym. Często obserwowany w branży wzorzec (opinie praktyków) to kupowanie Optimizely na wyrost, a potem płacenie za licencję enterprise, której możliwości wykorzystuje się tylko częściowo.</p>
 
               <p><strong>Typowe problemy migracji między platformami:</strong></p>
               <ul>
@@ -561,12 +561,12 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               <p>Kiedy warto zlecić program eksperymentów agencji zamiast kupować narzędzie? Gdy brakuje wewnętrznego CRO specialisty, gdy ruch jest zbyt mały, by uzasadnić koszt licencji enterprise, lub gdy potrzebujesz wyników w ciągu 4-6 tygodni, a nie 4-6 miesięcy.</p>
 
               <h2 id="wsparcie">Jak VWO i Optimizely obsługują klientów: wsparcie i SLA</h2>
-              <p>VWO oferuje wsparcie 24/7 przez czat i e-mail we wszystkich płatnych planach. W wyższych poziomach licencji dostępny jest dedykowany opiekun klienta i wsparcie przy onboardingu. Użytkownicy na forach branżowych konsekwentnie chwalą czas reakcji i jakość odpowiedzi technicznego supportu.</p>
+              <p>Wsparcie VWO to 24x5 w planach Growth i Pro oraz 24x7 w Enterprise (wg wingify.com/pricing, odczyt 18.11.2026). W wyższych poziomach licencji dostępny jest dedykowany opiekun klienta i wsparcie przy onboardingu. Użytkownicy na forach branżowych konsekwentnie chwalą czas reakcji i jakość odpowiedzi technicznego supportu.</p>
               <p>Optimizely kieruje wsparcie przez model enterprise: dedykowany Customer Success Manager, SLA dopasowane do kontraktu i dostęp do bazy wiedzy. Jakość wsparcia jest wysoka, ale dostęp do szybkiej pomocy technicznej zależy od poziomu kontraktu. Przy standardowym planie czas oczekiwania na odpowiedź może być dłuższy niż w VWO.</p>
               <p>Praktyczna różnica: przy VWO marketer może samodzielnie rozwiązać większość problemów przez czat. Przy Optimizely złożone pytania techniczne często wymagają eskalacji do inżyniera, co wydłuża czas rozwiązania.</p>
 
               <h2 id="recenzje">Co mówią użytkownicy: recenzje i rzeczywiste przypadki użycia</h2>
-              <p>Na platformach takich jak G2 i Capterra VWO zbiera oceny w okolicach 4,3-4,5/5, a użytkownicy najczęściej wymieniają łatwość obsługi edytora wizualnego i wartość analityki behawioralnej jako główne zalety. Krytyka dotyczy głównie ograniczeń zaawansowanego targetowania i ceny wyższych planów.</p>
+              <p>W opiniach użytkowników na platformach takich jak G2 i Capterra najczęściej wymieniane są łatwość obsługi edytora wizualnego i wartość analityki behawioralnej jako główne zalety VWO. Krytyka dotyczy głównie ograniczeń zaawansowanego targetowania i ceny wyższych planów.</p>
               <p>Optimizely oceniany jest podobnie pod względem gwiazdek, ale profil recenzji jest inny: użytkownicy enterprise chwalą głębię funkcji i Stats Engine, natomiast mniejsze zespoły regularnie wskazują na stromą krzywą uczenia się i konieczność zaangażowania inżynierów przy każdej zmianie konfiguracji.</p>
               <p>Charakterystyczny wzorzec z dyskusji na Reddit i forach branżowych: firmy, które przeszły z Optimizely na VWO, raportują krótszy czas do uruchomienia testu i niższy koszt całkowity. Firmy, które przeszły w drugą stronę, zwykle robiły to z powodu potrzeby testów server-side lub feature flagów na dużą skalę.</p>
 
@@ -581,7 +581,7 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
 
               <p><strong>Optimizely:</strong></p>
               <ul>
-                <li>Brak natywnych heatmap i nagrań sesji oznacza wyższy TCO i dodatkowe pytania o RODO przy integracji zewnętrznych narzędzi.</li>
+                <li>Heatmapy i nagrania sesji wymagają integracji (stan na 18.11.2026), co oznacza wyższy TCO i dodatkowe pytania o RODO przy integracji zewnętrznych narzędzi.</li>
                 <li>Krzywa wdrożeniowa jest stroma: bez dedykowanego inżyniera platforma nie wykorzystuje swojego potencjału.</li>
                 <li>Cena i proces sprzedażowy wykluczają mid-market bez dużego budżetu eksperymentacyjnego.</li>
                 <li>Zmiany w ofercie produktowej po kolejnych akwizycjach mogą wpływać na roadmapę funkcji.</li>
@@ -599,10 +599,10 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
                   </thead>
                   <tbody>
                     <tr><td>Kto wybiera VWO</td><td>Zespoły marketingowe i e-commerce z budżetem na racjonalnym poziomie i bez dedykowanych inżynierów eksperymentacyjnych.</td></tr>
-                    <tr><td>Kto wybiera Optimizely</td><td>Duże organizacje z inżynierią, potrzebą feature flagów i testów server-side oraz budżetem od 36 000 USD/rok wzwyż.</td></tr>
+                    <tr><td>Kto wybiera Optimizely</td><td>Duże organizacje z inżynierią, potrzebą feature flagów i testów server-side oraz budżetem rzędu 36 000 USD/rok lub więcej (szacunek rynkowy).</td></tr>
                     <tr><td>Kluczowy koszt ukryty</td><td>Przy Optimizely dolicz narzędzia do analityki behawioralnej (FullStory, Contentsquare), które zastępują natywne funkcje VWO.</td></tr>
                     <tr><td>Co potwierdzić w umowie</td><td>Limit MTU, warunki DPA, lokalizacja danych w UE, SLA wsparcia i możliwość pilotu przed rocznym kontraktem.</td></tr>
-                    <tr><td>AI SEO COMPANY</td><td>Oferuje audyt eksperymentacyjny i pilot 4-tygodniowy dla zespołów, które chcą wyników bez budowania wewnętrznego stosu.</td></tr>
+                    <tr><td>AI SEO COMPANY</td><td>W SEO Premium (od 2 500 zł netto/mies.) prowadzimy optymalizację konwersji (CRO); zakres testów A/B ustalamy po audycie SEO (od 1 490 zł netto).</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -612,10 +612,10 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               <p>Outsourcing programu eksperymentów jest szybszy i tańszy, gdy ruch na stronie nie uzasadnia jeszcze kosztu licencji enterprise, gdy brakuje wewnętrznego specjalisty CRO lub gdy potrzebujesz wyników w perspektywie kwartału, a nie roku. Agencja wnosi gotowy proces, narzędzia i doświadczenie z wielu wdrożeń, co skraca czas do pierwszego wniosku z miesięcy do tygodni.</p>
               <p>Jedno zastrzeżenie: dane eksperymentów powinny pozostać pod kontrolą klienta. Dobra agencja konfiguruje środowisko tak, żebyś miał pełny dostęp do surowych wyników niezależnie od tego, kto prowadzi program.</p>
 
-              <h2 id="wsparcie-agencji">AI SEO COMPANY wspiera wdrożenie programu eksperymentów</h2>
-              <p>Jeśli po lekturze tego artykułu wiesz już, że potrzebujesz testów A/B, ale nie masz czasu ani zasobów, żeby samodzielnie przejść przez wybór narzędzia, wdrożenie i governance, AI SEO COMPANY oferuje konkretną alternatywę.</p>
-              <p>Zamiast miesięcy konfiguracji i negocjacji licencyjnych, uruchamiamy pilot eksperymentacyjny w 4 tygodnie: <Link href="/audyt-seo">audyt bieżącej strony</Link>, konfiguracja tagów i eventów, pierwsze testy na kluczowych stronach i raport z wnioskami. Zajmujemy się też stroną techniczną zgodności z RODO przy nagraniach sesji i heatmapach, co eliminuje jedno z głównych ryzyk wdrożeniowych.</p>
-              <p>Dla firm, które jednocześnie chcą poprawić widoczność organiczną i konwersję, łączymy program eksperymentów z audytem SEO i <Link href="/pozycjonowanie-stron-internetowych">optymalizacją techniczną</Link>. Skontaktuj się z nami przez <Link href="/">stronę główną agencji</Link>, żeby omówić zakres pilotu dopasowanego do Twojego ruchu i celów.</p>
+              <h2 id="wsparcie-agencji">AI SEO COMPANY a optymalizacja konwersji (CRO)</h2>
+              <p>Jeśli po lekturze tego artykułu wiesz już, że potrzebujesz testów A/B, ale nie masz czasu ani zasobów, żeby samodzielnie przejść przez wybór narzędzia, wdrożenie i governance, możesz oprzeć się na naszej ofercie SEO.</p>
+              <p>W pakiecie SEO Premium (od 2 500 zł netto/mies.) prowadzimy optymalizację konwersji (CRO); zakres testów A/B ustalamy po <Link href="/audyt-seo">audycie SEO</Link> (od 1 490 zł netto). Nie sprzedajemy platform do testów jako osobnej usługi, a wdrożenie nagrań sesji i heatmap od strony RODO wymaga osobnej wyceny i konsultacji prawnej.</p>
+              <p>Dla firm, które jednocześnie chcą poprawić widoczność organiczną i konwersję, łączymy optymalizację konwersji z audytem SEO i <Link href="/pozycjonowanie-stron-internetowych">optymalizacją techniczną</Link>. Skontaktuj się z nami przez <Link href="/">stronę główną agencji</Link>, żeby omówić zakres współpracy dopasowany do Twojego ruchu i celów.</p>
 
               <h2 id="zrodla">Źródła i materiały do dalszego czytania</h2>
               <p>Poniżej zestawienie kluczowych źródeł wykorzystanych w artykule. Dane cenowe i warunki umów zmieniają się: zawsze weryfikuj je bezpośrednio u vendora przed decyzją zakupową.</p>

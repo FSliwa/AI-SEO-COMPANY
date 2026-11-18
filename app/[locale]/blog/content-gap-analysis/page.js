@@ -226,7 +226,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
 
               <p>Plenty of gap-analysis advice still recommends adding FAQ or HowTo markup as a quick win. That advice is out of date, and it matters here because it changes what belongs in a brief.</p>
 
-              <p>Google withdrew HowTo rich results from desktop in September 2023. FAQ rich results were restricted to authoritative government and health sites in August 2023 and deprecated entirely on 7 May 2026 – the Search Console report and Rich Results Test support were removed in June 2026, and Search Console API support in August 2026. Neither markup type produces a search feature today.</p>
+              <p>Google withdrew HowTo rich results from desktop in September 2023. FAQ rich results were restricted to authoritative government and health sites in August 2023 and deprecated entirely on 7 May 2026; Google removed the feature documentation on 12 June 2026. Neither markup type produces a search feature today.</p>
 
               <p>Three practical consequences:</p>
 
@@ -236,7 +236,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
                 <li><strong>Treat &bdquo;schema helps AI citations&rdquo; as unsettled.</strong> Google states that no special structured data is required to appear in AI Overviews or AI Mode. Microsoft has said markup helps its models interpret content for Copilot. Until that resolves, structure your pages for readers and parsers – headings, definitions, numbered steps – rather than betting a brief on one vendor&apos;s behavior.</li>
               </ul>
 
-              <p>If you have dashboards or BigQuery exports pulling FAQ appearance data from the Search Console API, those calls stopped returning data in August 2026 and need rewriting.</p>
+              <p>FAQ rich results are no longer shown, so any dashboard that still tracks FAQ appearance in Search Console should be reviewed and the metric dropped.</p>
 
               <h2 id="how-to-run-a-content-gap-analysis-step-by-step">How to run a content gap analysis, step by step</h2>
 
@@ -447,7 +447,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
                 <li><strong>Week 4 (handoff and governance):</strong> Assign owners, set editorial standards, confirm structured data requirements, and establish the reporting dashboard</li>
               </ul>
 
-              <p>Results depend on your starting authority, competitive density, and how much of the roadmap actually gets published – no agency can guarantee ranking or revenue outcomes. Figures from completed projects, including the traffic and revenue changes behind them, are published as <Link href="/pozycjonowanie-stron-internetowych">growth models on our services page</Link> – the SaaS and fintech models are the closest fit if you are running this analysis on a product site.</p>
+              <p>Results depend on your starting authority, competitive density, and how much of the roadmap actually gets published – no agency can guarantee ranking or revenue outcomes. Illustrative growth models, including SaaS and fintech scenarios, are on our <Link href="/pozycjonowanie-stron-internetowych">services page</Link>; they are scenarios, not client figures.</p>
 
               <p>Reporting splits along the same lines afterwards. The monthly performance review is the client-facing deliverable – rankings, traffic and conversions for the clusters in scope – and the quarterly re-run refreshes the gap list and the roadmap. The weekly ranking check stays with whoever owns the pages day to day: it is a signal to act on, not a document to file.</p>
 
@@ -479,7 +479,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
 
               <p>Running the analysis is step one. Turning a 200-item gap list into published, ranking content that converts is where most in-house teams stall, usually because briefs are vague, owners aren&apos;t assigned, or the technical side (structured data, canonicals, internal linking) gets skipped.</p>
 
-              <p>AI SEO COMPANY handles the full cycle: <Link href="/audyt-seo">SEO audit</Link> and content inventory, gap classification and prioritization, brief writing with AI-extraction requirements built in, execution support, and a reporting dashboard that shows ranking movement and conversions week by week. Engagements run either as a one-off project – audit plus roadmap delivery, quoted per scope – or inside a monthly subscription that covers ongoing gap monitoring and content execution alongside the rest of the SEO work. A content gap analysis works as a standalone project because its output is a roadmap your own team can execute – that is what separates it from a UX audit, which we run inside a package precisely because its findings need implementation to mean anything. Retainer clients can schedule a full re-run each quarter as part of the scope, so the roadmap stays current as competitors publish.</p>
+              <p>AI SEO COMPANY handles the full cycle: <Link href="/audyt-seo">SEO audit</Link> and content inventory, gap classification and prioritization, brief writing with AI-extraction requirements built in, execution support, and a reporting dashboard that shows ranking movement and conversions week by week. The audit is included in every SEO package; as a standalone service it starts at EUR 350 net. The scope, including a quarterly re-run of the analysis, is agreed individually so the roadmap stays current as competitors publish.</p>
 
               <p>To start, book a discovery call. We reply to enquiries and send an initial proposal within 24 h on business days; a scoped audit proposal follows the call, once we have seen your Search Console data and agreed the cluster scope, and you get a prioritized roadmap in week four. Visit the <Link href="/pozycjonowanie-stron-internetowych">SEO services page</Link> to see what&apos;s included at each engagement level.</p>
 
@@ -512,7 +512,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
               <p><strong>Google documentation</strong></p>
 
               <ul>
-                <li>Google Search Central – FAQPage structured data, deprecation notice dated 7 May 2026; Search Console and Rich Results Test support removed June 2026, API support removed August 2026</li>
+                <li>Google Search Central – FAQPage structured data, FAQ rich results no longer shown from 7 May 2026, feature documentation removed 12 June 2026 (changelog, read 18 November 2026)</li>
                 <li>Google Search Central – HowTo structured data deprecated on desktop, September 2023</li>
                 <li>Google Search Central – AI features guidance: no special structured data is required for AI Overviews or AI Mode</li>
               </ul>
@@ -672,7 +672,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <p>Wiele poradników nadal zaleca dodawanie znaczników FAQ jako szybkiej wygranej. Ta rada jest nieaktualna i ma znaczenie praktyczne, bo zmienia zawartość briefu.</p>
 
-              <p>Google wycofał wyniki rozszerzone HowTo z desktopu we wrześniu 2023, a FAQ ograniczył wtedy do witryn rządowych i zdrowotnych, po czym <strong>7 maja 2026 wycofał je całkowicie</strong>. Raportowanie w Search Console i obsługa w Rich Results Test zniknęły w czerwcu 2026, obsługa w API – w sierpniu 2026.</p>
+              <p>Google wycofał wyniki rozszerzone HowTo z desktopu we wrześniu 2023, a FAQ ograniczył do witryn rządowych i zdrowotnych 8 sierpnia 2023 (HowTo zniknęło z desktopu 13 września 2023), po czym <strong>7 maja 2026 wycofał je całkowicie</strong>; dokumentację tej funkcji Google usunął 12 czerwca 2026.</p>
 
               <p>Trzy wnioski:</p>
 
@@ -682,7 +682,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
                 <li><strong>Wpływ schemy na cytowalność w AI traktuj jako nierozstrzygnięty.</strong> Google mówi, że dla AI Overviews i AI Mode żadne dedykowane dane strukturalne nie są wymagane. Microsoft twierdzi, że markup pomaga jego modelom w Copilocie. Dopóki to się nie wyjaśni, buduj strukturę pod czytelnika i parser, nie pod zachowanie jednego dostawcy.</li>
               </ul>
 
-              <p>Jeśli macie eksporty do BigQuery albo dashboardy pobierające dane o wyglądzie FAQ z API Search Console, przestały zwracać wyniki w sierpniu 2026.</p>
+              <p>Wyniki rozszerzone FAQ nie są już wyświetlane, więc dashboardy śledzące wygląd FAQ w Search Console warto przejrzeć i usunąć ten wskaźnik.</p>
 
               <h2 id="polska-specyfika-co-zmienia-rynek">Polska specyfika: co zmienia rynek</h2>
 
@@ -875,7 +875,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
               <h2 id="zrodla">Źródła</h2>
 
               <ul>
-                <li>Google Search Central – dane strukturalne FAQPage, nota o wycofaniu z 7 maja 2026; obsługa w Search Console i Rich Results Test usunięta w czerwcu 2026, w API – w sierpniu 2026</li>
+                <li>Google Search Central – dane strukturalne FAQPage, wyniki rozszerzone FAQ niewyświetlane od 7 maja 2026, dokumentacja funkcji usunięta 12 czerwca 2026 (changelog Google, odczyt 18.11.2026)</li>
                 <li>Google Search Central – dane strukturalne HowTo wycofane na desktopie, wrzesień 2023</li>
                 <li>Google Search Central – wytyczne dla funkcji AI: dla AI Overviews i AI Mode nie są wymagane żadne dedykowane dane strukturalne</li>
                 <li>Google Search Central – polityka spamowa, sekcja scaled content abuse</li>

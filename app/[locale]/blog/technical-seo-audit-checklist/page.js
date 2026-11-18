@@ -137,7 +137,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <ul>
                 <li><strong>Crawlability and robots rules.</strong> Robots.txt syntax, server response codes, and whether bots can reach the pages that matter.</li>
                 <li><strong>Sitemaps and discovery.</strong> XML sitemap validity, segmentation by content type, and whether it contains only indexable 200 URLs.</li>
-                <li><strong>Crawl budget.</strong> Where bots actually spend their requests. On any site past a few thousand URLs, parameter URLs, redirect chains and noindexed pages quietly absorb crawl that should go to pages you update. Manage it from log data or the Crawl Stats report, not from intuition.</li>
+                <li><strong>Crawl budget.</strong> Where bots actually spend their requests. On very large sites (Google points to roughly 1 million+ pages, or 10,000+ with daily changes), parameter URLs, redirect chains and noindexed pages quietly absorb crawl that should go to pages you update. Manage it from log data or the Crawl Stats report, not from intuition.</li>
                 <li><strong>Indexing signals.</strong> Noindex tags, canonical conflicts, and X-Robots-Tag headers that quietly remove pages from the index.</li>
                 <li><strong>Rendering and JavaScript.</strong> Whether Google sees server-rendered content or has to execute JS to find your text. Verify with the rendered-HTML view in URL Inspection after every significant front-end deploy, not once a year.</li>
                 <li><strong>Redirects and link health.</strong> Broken links, redirect chains, and orphan pages that exist only in the sitemap. Also check the distribution: your commercially important pages should have the most internal links pointing at them, and in most audits they do not.</li>
@@ -250,7 +250,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
 
               <h3>A note on FAQ and HowTo markup</h3>
               <p>Plenty of audit checklists still ask you to validate FAQ and HowTo schema. That instruction is obsolete and worth removing from your template.</p>
-              <p>Google withdrew HowTo rich results from desktop in September 2023. FAQ rich results were restricted to government and health sites in August 2023 and deprecated entirely on 7 May 2026 – the Search Console report and Rich Results Test support went in June 2026, and API support in August 2026. Neither type produces a search feature today.</p>
+              <p>Google withdrew HowTo rich results from desktop in September 2023. FAQ rich results were restricted to government and health sites in August 2023 and deprecated entirely on 7 May 2026; Google removed the feature documentation on 12 June 2026. Neither type produces a search feature today.</p>
               <p><code>FAQPage</code> remains a valid Schema.org type and existing markup can stay; Google has said unused structured data causes no problems. But it is no longer something to flag as a gap in an audit. Validate what still earns a result: Article, Product with Offer, BreadcrumbList, VideoObject, Organization.</p>
 
               <p><strong>Pro Tip:</strong> <em>Check robots.txt for accidental blocks on AI crawlers such as GPTBot, OAI-SearchBot and Claude-SearchBot. Plenty of sites block these by default and never notice. Blocking them can be a deliberate business decision – it should never be an accident of configuration.</em></p>
@@ -328,7 +328,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               </ul>
 
               <p>The biggest waste we see is teams rewriting templates for Core Web Vitals while a noindex tag or a robots.txt rule is still sitting there removing the page from the index. Discovery first. Speed matters once Google can see the page.</p>
-              <p>Audits run inside a monthly subscription alongside the rest of the SEO work; in exceptional cases we scope one as a standalone project, quoted per scope. You can see what each engagement level includes on the <Link href="/pozycjonowanie-stron-internetowych">SEO services page</Link>, where completed projects are published as growth models with the traffic and revenue changes behind them. Results depend on your starting position and how much of the fix list actually ships – no agency can guarantee an outcome.</p>
+              <p>The audit is included in every SEO package; as a standalone service it starts at EUR 350 net. You can see what each engagement level includes on the <Link href="/pozycjonowanie-stron-internetowych">SEO services page</Link>, where example growth models are shown (illustrative scenarios, not client results); measured Search Console data for real projects is in the portfolio. Results depend on your starting position and how much of the fix list actually ships – no agency can guarantee an outcome.</p>
               <p>To start, request a scoped <Link href="/audyt-seo">SEO audit</Link>. We reply to enquiries and send an initial proposal within 24 h on business days.</p>
 
               <h2 id="faq">Frequently Asked Questions</h2>
@@ -359,7 +359,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <h3>Google documentation</h3>
               <ul>
                 <li>Google Search Central – Core Web Vitals; INP replaced FID as a Core Web Vital in March 2024</li>
-                <li>Google Search Central – FAQPage structured data, deprecation notice dated 7 May 2026; Search Console and Rich Results Test support removed June 2026, API support August 2026</li>
+                <li>Google Search Central – FAQPage structured data: FAQ rich results no longer shown from 7 May 2026, feature documentation removed 12 June 2026 (changelog, read 18 November 2026)</li>
                 <li>Google Search Central – HowTo structured data deprecated on desktop, September 2023</li>
                 <li>Google Search Console Help – 16-month data retention</li>
               </ul>
@@ -501,7 +501,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               <ul>
                 <li><strong>Crawlowalność i reguły robots.</strong> Składnia robots.txt, kody odpowiedzi serwera i to, czy boty docierają do stron, na których Ci zależy.</li>
                 <li><strong>Sitemapy i odkrywanie.</strong> Poprawność sitemap XML, segmentacja po typie treści i to, czy zawierają wyłącznie indeksowalne adresy z kodem 200.</li>
-                <li><strong>Budżet indeksowania.</strong> Na co boty realnie wydają swoje żądania. W serwisie powyżej kilku tysięcy adresów URL-e z parametrami, łańcuchy przekierowań i strony noindex po cichu pochłaniają crawl, który powinien iść na strony aktualizowane. Zarządzaj tym na podstawie logów serwera albo raportu Statystyki indeksowania – nie intuicji.</li>
+                <li><strong>Budżet indeksowania.</strong> Na co boty realnie wydają swoje żądania. W dużych serwisach (Google wskazuje orientacyjnie 1 mln+ adresów albo 10 000+ ze zmianami codziennie) URL-e z parametrami, łańcuchy przekierowań i strony noindex po cichu pochłaniają crawl, który powinien iść na strony aktualizowane. Zarządzaj tym na podstawie logów serwera albo raportu Statystyki indeksowania – nie intuicji.</li>
                 <li><strong>Sygnały indeksacji.</strong> Tagi noindex, konflikty canonicali i nagłówki X-Robots-Tag, które po cichu usuwają strony z indeksu.</li>
                 <li><strong>Renderowanie i JavaScript.</strong> Czy Google widzi treść wyrenderowaną po stronie serwera, czy musi wykonać skrypty, żeby dotrzeć do tekstu. Sprawdzaj podglądem wyrenderowanego HTML w URL Inspection po każdym większym wdrożeniu frontendowym, nie raz do roku.</li>
                 <li><strong>Przekierowania i kondycja linków.</strong> Martwe linki, łańcuchy przekierowań i strony osierocone, które istnieją tylko w sitemapie. Sprawdź też rozkład: strony biznesowo najważniejsze powinny mieć najwięcej linków wewnętrznych – w większości audytów nie mają.</li>
@@ -616,7 +616,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
 
               <h3>Nota o znacznikach FAQ i HowTo</h3>
               <p>Wiele checklist wciąż każe walidować schemę FAQ i HowTo. Ta instrukcja jest nieaktualna i warto ją usunąć z szablonu.</p>
-              <p>Google wycofał wyniki rozszerzone HowTo na desktopie we wrześniu 2023. Wyniki FAQ ograniczył do stron rządowych i medycznych w sierpniu 2023, a <strong>7 maja 2026 wycofał całkowicie</strong> – raport w Search Console zniknął w czerwcu 2026, wsparcie w API w sierpniu 2026. Żaden z tych typów nie daje dziś wyniku w wyszukiwarce.</p>
+              <p>Google wycofał wyniki rozszerzone HowTo na desktopie we wrześniu 2023. Wyniki FAQ ograniczył do stron rządowych i medycznych w sierpniu 2023, a <strong>7 maja 2026 wycofał całkowicie</strong>, a dokumentację tej funkcji usunął 12 czerwca 2026. Żaden z tych typów nie daje dziś wyniku w wyszukiwarce.</p>
               <p><code>FAQPage</code> pozostaje poprawnym typem Schema.org i istniejący markup może zostać – nieużywane dane strukturalne nie szkodzą. Ale to już nie jest brak do wykazania w audycie. Waliduj to, co nadal daje efekt: Article, Product z Offer, BreadcrumbList, Organization.</p>
 
               <h2 id="krok-po-kroku">Jak zrobić audyt SEO krok po kroku</h2>
@@ -739,7 +739,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               <h3>Dokumentacja Google</h3>
               <ul>
                 <li>Google Search Central – Core Web Vitals; INP zastąpił FID jako metryka CWV w marcu 2024</li>
-                <li>Google Search Central – dane strukturalne FAQPage, nota o wycofaniu z 7 maja 2026; raport w Search Console i teście wyników rozszerzonych usunięty w czerwcu 2026, wsparcie API w sierpniu 2026</li>
+                <li>Google Search Central – dane strukturalne FAQPage, nota o wycofaniu z 7 maja 2026; dokumentacja funkcji usunięta 12 czerwca 2026 (changelog Google, odczyt 18.11.2026)</li>
                 <li>Google Search Central – dane strukturalne HowTo, wycofanie na desktopie wrzesień 2023</li>
                 <li>Centrum pomocy Search Console – 16 miesięcy przechowywania danych</li>
               </ul>

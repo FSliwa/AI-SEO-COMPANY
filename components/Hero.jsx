@@ -66,8 +66,8 @@ const SCENE = '/scene.splinecode.br';
 const COPY = {
   en: {
     leadSeg: [
-      { t: 'We do what search engine optimisation companies rarely do: report on pipeline' },
-      { t: ', not on rankings', wide: true },
+      { t: 'We do what search engine optimisation companies rarely do: report on enquiries and visibility from your own Google accounts' },
+      { t: ', not on rankings alone', wide: true },
       { t: '.' }
     ],
     bodySeg: [
@@ -105,7 +105,7 @@ const COPY = {
       { t: '.' },
       { t: ' Prowadzimy te trzy obszary razem, a nie jako osobne projekty.', wide: true },
       { t: ' Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.' },
-      { t: ' Rozliczamy się z realnego wzrostu firmy i raportujemy sprzedaż, nie same pozycje w wyszukiwarce.', wide: true }
+      { t: ' Raportujemy zapytania i widoczność z Twoich kont Google, nie same pozycje; rozliczamy się w stałym abonamencie z jawnym celem TOP 3.', wide: true }
     ],
     display: 'Pozycjonowanie, które buduje sprzedaż',
     sub: 'Kompleksowa Agencja SEO i Marketingowa z Warszawy',

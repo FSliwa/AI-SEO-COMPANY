@@ -31,8 +31,8 @@ const faqHome = [
   {
     question: 'Czy pracujecie z firmami spoza Polski?',
     questionEn: 'Do you work with companies outside Poland?',
-    answer: 'Tak. Prowadzimy projekty w języku polskim i angielskim, a nasze portfolio obejmuje między innymi platformę fintech pozycjonowaną na rynku amerykańskim. Przy rynkach zagranicznych badanie fraz robimy osobno dla każdego kraju – tłumaczenie polskiej listy słowo w słowo nie działa, bo ludzie w różnych krajach pytają o to samo w inny sposób.',
-    answerEn: 'Yes. We run projects in Polish and English, and our portfolio includes a fintech platform ranked in the US market. For foreign markets we research keywords separately per country – translating a Polish list word for word does not work, because people in different countries phrase the same need differently.'
+    answer: 'Tak. Prowadzimy projekty w języku polskim i angielskim, w tym własny projekt ASE-BOT pozycjonowany po angielsku. Przy rynkach zagranicznych badanie fraz robimy osobno dla każdego kraju – tłumaczenie polskiej listy słowo w słowo nie działa, bo ludzie w różnych krajach pytają o to samo w inny sposób.',
+    answerEn: 'Yes. We run projects in Polish and English, including our own ASE-BOT project optimised in English. For foreign markets we research keywords separately per country – translating a Polish list word for word does not work, because people in different countries phrase the same need differently.'
   },
   {
     question: 'Czego potrzebujecie od nas, żeby zacząć?',

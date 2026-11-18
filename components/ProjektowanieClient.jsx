@@ -162,7 +162,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
       {/* Portfolio Section */}
       <SubpagePortfolio 
         title={lang === 'pl' ? "Standardy Architektury Web Design" : "Web Design Architecture Standards"} 
-        subtitle={lang === 'pl' ? "Nowoczesne wzorce projektowe łączące estetykę z maksymalizacją zapytań" : "Modern design patterns combining aesthetics with inquiry maximization"}
+        subtitle={lang === 'pl' ? "Nowoczesne wzorce projektowe łączące estetykę z maksymalizacją zapytań. Liczby na kartach to przykładowe scenariusze, nie wyniki konkretnych klientów." : "Modern design patterns combining aesthetics with inquiry maximization. Figures on the cards are illustrative scenarios, not results of specific clients."}
         cases={portfolioCases} 
         layout="vertical"
       />

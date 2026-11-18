@@ -117,7 +117,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
                     </tr>
                     <tr>
                       <td>Conversion comes last, not first</td>
-                      <td>Recall → preference → conversion. Story-led pages win on returning visitors and branded search, not on week-one tests.</td>
+                      <td>Recall → preference → conversion. Our working hypothesis (to be measured): story-led pages win on returning visitors and branded search, not on week-one tests.</td>
                     </tr>
                     <tr>
                       <td>Authenticity is testable</td>
@@ -176,7 +176,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
               <p>The structural idea worth stealing from big brands isn't their budget. It's their discipline: one conflict, one hero, one proof point, repeated everywhere instead of reinvented each quarter.</p>
 
               <h2 id="examples">Brand storytelling examples worth studying</h2>
-              <p>Patterns are easier to copy when you can see them working. Three brand story examples, one per pattern a smaller company can realistically run.</p>
+              <p>Patterns are easier to copy when you can see them working. Three brand story examples, one per pattern a smaller company can realistically run. They are illustrative models built on fictional companies, not case studies of real brands.</p>
               <p><strong>Functional – a B2B scheduling vendor.</strong> Every case study opens with the same sentence shape: "This clinic was losing eleven appointments a week to no-shows nobody was tracking." No adjectives, no mission language. The conflict is a number the prospect can check against their own calendar. Cost to produce: one customer interview.</p>
               <p><strong>Mission-driven – an outdoor equipment brand.</strong> The commitment is specific and auditable – a fixed share of revenue directed to environmental work, published annually – rather than a statement about caring for the planet. Smaller brands miss this by picking a value instead of a commitment. A value is a sentence; a commitment has a number and a date.</p>
               <p><strong>Founder – a two-person agency.</strong> The story is one afternoon: the moment the founder quit a job after watching a client get billed for work nobody performed. It runs on the About page, opens sales calls, and never changes. Cost to produce: nothing, because the material was already there.</p>
@@ -388,7 +388,7 @@ function ArtykulStorytellingMarki({ locale }) {
                     </tr>
                     <tr>
                       <td>Konwersja przychodzi ostatnia</td>
-                      <td>Zapamiętanie → preferencja → konwersja. Strony oparte na historii wygrywają na powracających i na zapytaniach brandowych, nie w testach z pierwszego tygodnia.</td>
+                      <td>Zapamiętanie → preferencja → konwersja. Zakładamy (hipoteza, do zmierzenia), że strony oparte na historii wygrywają na powracających i na zapytaniach brandowych, nie w testach z pierwszego tygodnia.</td>
                     </tr>
                     <tr>
                       <td>Autentyczność da się przetestować</td>
@@ -447,7 +447,7 @@ function ArtykulStorytellingMarki({ locale }) {
               <p>Strukturalna idea warta podebrania dużym markom to nie ich budżet, lecz dyscyplina: jeden konflikt, jeden bohater, jeden dowód – powtarzane wszędzie, zamiast wymyślane od nowa co kwartał.</p>
 
               <h2 id="przyklady">Przykłady storytellingu marki warte analizy</h2>
-              <p>Wzorce łatwiej kopiować, gdy widać je w działaniu. Trzy przykłady – po jednym na wzorzec, który mniejsza firma realnie udźwignie.</p>
+              <p>Wzorce łatwiej kopiować, gdy widać je w działaniu. Trzy przykłady – po jednym na wzorzec, który mniejsza firma realnie udźwignie. To przykłady modelowe, zilustrowane na wymyślonych firmach, a nie opisy realnych marek.</p>
               <p><strong>Funkcjonalny – dostawca B2B systemu rezerwacji.</strong> Każde case study otwiera to samo zdanie: „Ta przychodnia traciła tygodniowo jedenaście wizyt przez nieodwołane terminy, których nikt nie śledził". Zero przymiotników, zero języka misji. Konflikt jest liczbą, którą potencjalny klient może sprawdzić we własnym kalendarzu. Koszt produkcji: jeden wywiad z klientem.</p>
               <p><strong>Misyjny – marka sprzętu outdoorowego.</strong> Zobowiązanie jest konkretne i audytowalne – stały procent przychodu na cele środowiskowe, publikowany co roku – a nie deklaracja troski o planetę. Mniejsze marki gubią to, wybierając wartość zamiast zobowiązania. Wartość to zdanie; zobowiązanie ma liczbę i datę.</p>
               <p><strong>Założycielski – dwuosobowa agencja.</strong> Historia to jedno popołudnie: moment, w którym założyciel odszedł z pracy po tym, jak zobaczył fakturę wystawioną klientowi za pracę, której nikt nie wykonał. Działa na stronie „O nas", otwiera rozmowy handlowe i nigdy się nie zmienia. Koszt produkcji: zero, bo materiał już był.</p>

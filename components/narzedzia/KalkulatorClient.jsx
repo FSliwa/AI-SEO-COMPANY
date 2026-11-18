@@ -337,8 +337,8 @@ export default function KalkulatorClient() {
           <label htmlFor="k-udzialAi" className="narz-etykieta">{en ? 'What share of customers ask AI instead of Google?' : 'Jaka część klientów pyta AI zamiast Google?'} <strong>{dane.udzialAi}%</strong></label>
           <input id="k-udzialAi" type="range" min="0" max="60" step="5" value={dane.udzialAi} onChange={zmien('udzialAi')} className="narz-suwak" />
           <p className="narz-mikro">{en
-            ? `Default ${ZALOZENIA.udzialAiDomyslny}%: Gartner’s forecast of a drop in search volume to AI chatbots by 2026. Set your own value. The more questions go to AI, the fewer visits there are to win, because AI answers rarely end with a click.`
-            : `Domyślnie ${ZALOZENIA.udzialAiDomyslny}%: prognoza Gartnera spadku wyszukiwań przez czaty AI do 2026. Ustaw swoją wartość. Im więcej pytań trafia do AI, tym mniej wejść jest do zdobycia, bo odpowiedzi AI rzadko kończą się kliknięciem.`}</p>
+            ? `Default ${ZALOZENIA.udzialAiDomyslny}%: our cautious assumption (in 2024 Gartner forecast a 25% fall in traditional search volume by 2026, which we have not verified). Set your own value. The more questions go to AI, the fewer visits there are to win, because AI answers rarely end with a click.`
+            : `Domyślnie ${ZALOZENIA.udzialAiDomyslny}%: nasze ostrożne założenie (Gartner w 2024 r. prognozował spadek wolumenu wyszukiwań w klasycznych wyszukiwarkach o 25% do 2026 r., czego nie sprawdziliśmy). Ustaw swoją wartość. Im więcej pytań trafia do AI, tym mniej wejść jest do zdobycia, bo odpowiedzi AI rzadko kończą się kliknięciem.`}</p>
         </div>
         <fieldset className="narz-kalk-pole">
           <legend className="narz-etykieta">{sklep

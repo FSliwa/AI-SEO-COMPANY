@@ -5,7 +5,7 @@ export async function generateMetadata({ params }) {
   // 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 20): title PL (52 zn.) pod „ile kosztuje strona internetowa”
   // (1 000/mies., frazy.csv:67) i „…dla firmy” (140, :68). Meta i wersja EN bez zmian (EN: tylko zapis marki i oferta).
   title: locale === 'en' ? 'How Much Does a Business Website Cost in 2026?' : 'Ile kosztuje strona internetowa dla firmy? Ceny 2026',
-  description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta wizytówka kosztuje kilkaset złotych, profesjonalna strona znacznie więcej. Sprawdź, ile kosztuje strona www dla firmy i co wpływa na cenę.',
+  description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta wizytówka kosztuje najczęściej od 1 300 do 5 000 zł netto, profesjonalna strona znacznie więcej. Sprawdź, ile kosztuje strona www dla firmy i co wpływa na cenę.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
     languages: articleLanguages('/blog/ile-kosztuje-strona-www-dla-firmy-ceny', 'https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny', 'https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing')
@@ -150,7 +150,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Conversion-focused landing page</td>
                       <td style={{ padding: '1rem' }}>Depends on individual quote</td>
                       <td style={{ padding: '1rem' }}>Custom design, A/B-ready structure, email tool integration</td>
-                      <td style={{ padding: '1rem' }}>Realistic delivery time</td>
+                      <td style={{ padding: '1rem' }}>lower end of the ranges in the stages described below</td>
                       <td style={{ padding: '1rem' }}>E-commerce, ad campaigns</td>
                       <td style={{ padding: '1rem' }}>Moderate maintenance costs</td>
                     </tr>
@@ -158,7 +158,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Company website (10–20 pages)</td>
                       <td style={{ padding: '1rem' }}>Depends on project requirements</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, WordPress or Next.js, blog, basic <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO audit</Link></td>
-                      <td style={{ padding: '1rem' }}>Realistic delivery time</td>
+                      <td style={{ padding: '1rem' }}>per the stages described below (14–61 working days in total)</td>
                       <td style={{ padding: '1rem' }}>SMEs, B2B companies</td>
                       <td style={{ padding: '1rem' }}>Higher maintenance costs</td>
                     </tr>
@@ -174,7 +174,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Advanced website with integrations</td>
                       <td style={{ padding: '1rem' }}>Depends on scale and integrations</td>
                       <td style={{ padding: '1rem' }}>Dedicated design, Next.js/React, CRM, multilingual support, performance testing</td>
-                      <td style={{ padding: '1rem' }}>Realistic delivery time</td>
+                      <td style={{ padding: '1rem' }}>upper end of the ranges in the stages described below, longer with many integrations</td>
                       <td style={{ padding: '1rem' }}>Large companies, SaaS platforms</td>
                       <td style={{ padding: '1rem' }}>High annual costs</td>
                     </tr>
@@ -195,7 +195,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Custom functionality.</span> A contact form is about an hour of work. A user login system, client panel, or quote calculator can take several weeks of development.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Integrations with external systems.</span> Connecting to a CRM (e.g. HubSpot, Salesforce), ERP system, or payment gateway requires programming work and testing. Each integration typically costs an extra <span style={{ fontWeight: 'bold' }}>€450–1,850</span>.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Platform and CMS.</span> WordPress is cheaper to implement but has performance limitations. Next.js or React deliver better performance and Core Web Vitals, but require an experienced developer, which increases the hourly rate.</li>
-                <li><span style={{ fontWeight: 'bold' }}>E-commerce: WooCommerce vs. Shopify.</span> WooCommerce on WordPress has a lower starting cost but higher maintenance and update costs. Shopify shifts part of the cost into a monthly subscription (from $32/month), reducing the one-time implementation expense.</li>
+                <li><span style={{ fontWeight: 'bold' }}>E-commerce: WooCommerce vs. Shopify.</span> WooCommerce on WordPress has a lower starting cost but higher maintenance and update costs. Shopify shifts part of the cost into a monthly subscription (from USD 29/month billed annually, USD 39 billed monthly; price shown in local currency, checked 18 Nov 2026), reducing the one-time implementation expense.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Performance and Core Web Vitals.</span> Optimization for Google metrics (LCP, CLS, INP) is a separate work stage. A website that loads in under 2.5 seconds requires thoughtful architecture from the start, not last-minute fixes.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Content and photos.</span> Copywriting and a photo session are often overlooked budget items that should be planned individually.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Multilingual support.</span> Each language version requires not only translation but separate CMS configuration, hreflang, SEO, and testing. Adding an extra language can significantly increase implementation cost depending on the scope of translations and configuration.</li>
@@ -349,7 +349,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Freelancer (budget)</td>
                       <td style={{ padding: '1rem' }}>Costs depend on the project</td>
                       <td style={{ padding: '1rem' }}>Template, basic CMS, contact form, SSL</td>
-                      <td style={{ padding: '1rem' }}>Realistic delivery time</td>
+                      <td style={{ padding: '1rem' }}>depends on the contractor's availability, stages described below</td>
                       <td style={{ padding: '1rem' }}>Micro-businesses, startups</td>
                       <td style={{ padding: '1rem' }}>Low annual costs</td>
                     </tr>
@@ -357,7 +357,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Small agency (mid-range)</td>
                       <td style={{ padding: '1rem' }}>Costs depend on scope</td>
                       <td style={{ padding: '1rem' }}>Light custom design, WordPress, basic SEO, training</td>
-                      <td style={{ padding: '1rem' }}>Realistic delivery time</td>
+                      <td style={{ padding: '1rem' }}>per the stages described below (14–61 working days in total)</td>
                       <td style={{ padding: '1rem' }}>SMEs, service companies</td>
                       <td style={{ padding: '1rem' }}>Moderate annual costs</td>
                     </tr>
@@ -365,7 +365,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Full-service (AI SEO COMPANY)</td>
                       <td style={{ padding: '1rem' }}>Website from €1,400 net one-off, or the Booster Pack at €590 net/month with a new website (min. 3 months)</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, Next.js/React, CRM and payment integrations, SEO audit, optional SEO subscription; in the Booster Pack a <span style={{ fontWeight: 'bold' }}>new website for €0</span></td>
-                      <td style={{ padding: '1rem' }}>Realistic delivery time</td>
+                      <td style={{ padding: '1rem' }}>per the stages described below (14–61 working days in total)</td>
                       <td style={{ padding: '1rem' }}>B2B companies, e-commerce</td>
                       <td style={{ padding: '1rem' }}>Higher annual costs</td>
                     </tr>
@@ -373,13 +373,13 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 </table>
               </div>
 
-              <p>The <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>AI SEO COMPANY</Link> package includes design in Next.js and React technologies, which deliver better Core Web Vitals than standard WordPress, directly translating into Google rankings and advertising costs. It also includes CRM and payment system integrations, a technical SEO audit as part of implementation, and the option of a monthly SEO subscription after the website launches.</p>
+              <p>The <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>AI SEO COMPANY</Link> package includes design in Next.js and React technologies, which usually make good Core Web Vitals easier to achieve, supporting Google visibility and the quality of ad landing pages. It also includes CRM and payment system integrations, a technical SEO audit as part of implementation, and the option of a monthly SEO subscription after the website launches.</p>
               
               <p>A freelancer is a good choice when you have a limited budget, a simple project, and time to manage the process yourself. A small agency offers more structure and usually better graphic design, but rarely provides advanced technical and SEO competencies in one place. Full-service makes sense when the website is meant to directly generate revenue and every week of delay or every percentage point of conversion has measurable value.</p>
 
               <h2 id="why-invest">Why It's Worth Investing in a Well-Designed Website</h2>
               <p>A website is not a cost that needs to be minimized. It is a sales channel that works 24 hours a day.</p>
-              <p>Research on buying behavior shows that 81% of customers need full trust in a brand before making a purchase, and the website is the first place where that trust is built or lost.</p>
+              <p>According to the 2019 Edelman Trust Barometer Special Report: Brand Trust, 81% of consumers say they must be able to trust a brand to do the right thing before they buy from it, and the website is the first place where that trust is built or lost.</p>
               <p>A concrete example: a real estate company that moved from an outdated WordPress website to a Next.js solution with an optimized content structure and <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local SEO</Link> can expect growth in organic traffic within 3–6 months of launch. The key point, however, is that simply changing technology without thoughtful UX and content will not deliver results.</p>
 
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
@@ -500,8 +500,8 @@ export default async function ArticleWebsitePricingPage({ params }) {
               
               <p><span style={{ fontWeight: 'bold' }}>Krótki przegląd typowych kosztów rynkowych (2026):</span></p>
               <ul>
-                <li><span style={{ fontWeight: 'bold' }}>One-page / landing page:</span> najczęściej spotykany zakres dla podstawowych realizacji to 1 300–5 000 zł netto (wg <a href="https://home.pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>home.pl</a> i innych źródeł rynkowych)</li>
-                <li><span style={{ fontWeight: 'bold' }}>Strona wizytówkowa (do 5 podstron):</span> najczęściej spotykany przedział cenowy według home.pl to około 1 300–5 000 zł netto dla podstawowych realizacji</li>
+                <li><span style={{ fontWeight: 'bold' }}>One-page / landing page:</span> najczęściej spotykany zakres dla podstawowych realizacji to 1 300–5 000 zł netto (nasz szacunek na podstawie ofert wykonawców na rynku, nie cennik jednego dostawcy; one-page zwykle w dolnej części przedziału, wizytówka w wyższej)</li>
+                <li><span style={{ fontWeight: 'bold' }}>Strona wizytówkowa (do 5 podstron):</span> najczęściej spotykany przedział cenowy to według naszego szacunku około 1 300–5 000 zł netto dla podstawowych realizacji</li>
                 <li><span style={{ fontWeight: 'bold' }}>Strona firmowa (10–20 podstron):</span> koszt jest uzależniony od funkcjonalności i technologii</li>
                 <li><span style={{ fontWeight: 'bold' }}>Sklep WooCommerce / Shopify (do 100 SKU):</span> cena rośnie wraz z liczbą wymaganych funkcji i integracji</li>
                 <li><span style={{ fontWeight: 'bold' }}>Rozbudowany serwis z integracjami CRM, płatnościami, wielojęzycznością:</span> wycena jest indywidualna i zależy od złożoności projektu</li>
@@ -531,33 +531,33 @@ export default async function ArticleWebsitePricingPage({ params }) {
                   <tbody>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>One-page</td>
-                      <td style={{ padding: '1rem' }}>zależy od wybranego wykonawcy i specyfiki projektu</td>
+                      <td style={{ padding: '1rem' }}>1 300–5 000 zł netto (szacunek własny dla podstawowej realizacji)</td>
                       <td style={{ padding: '1rem' }}>Projekt graficzny (szablon), 1 sekcja na CMS, formularz kontaktowy, SSL</td>
-                      <td style={{ padding: '1rem' }}>Termin realizacji jest krótki</td>
+                      <td style={{ padding: '1rem' }}>dolna część widełek z etapów opisanych poniżej</td>
                       <td style={{ padding: '1rem' }}>Freelancerzy, eventy, kampanie</td>
                       <td style={{ padding: '1rem' }}>Koszty utrzymania są umiarkowane</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Wizytówka (do 5 podstron)</td>
-                      <td style={{ padding: '1rem' }}>1 300–5 000 zł netto (wg home.pl, podstawowa realizacja)</td>
+                      <td style={{ padding: '1rem' }}>1 300–5 000 zł netto (szacunek własny dla podstawowej realizacji)</td>
                       <td style={{ padding: '1rem' }}>Szablon lub lekki custom, CMS (WordPress), podstawowe SEO, formularz</td>
-                      <td style={{ padding: '1rem' }}>Termin realizacji w kilku tygodniach</td>
+                      <td style={{ padding: '1rem' }}>kilka tygodni</td>
                       <td style={{ padding: '1rem' }}>Małe firmy usługowe, gabinety</td>
                       <td style={{ padding: '1rem' }}>Koszty roczne umiarkowane</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Landing page (konwersyjny)</td>
-                      <td style={{ padding: '1rem' }}>zależy od indywidualnej wyceny</td>
+                      <td style={{ padding: '1rem' }}>wycena indywidualna; strona nastawiona na leady zaczyna się zwykle od kilku tysięcy zł netto, u nas strona od 5 900 zł netto</td>
                       <td style={{ padding: '1rem' }}>Custom design, A/B-ready struktura, integracja z narzędziem e-mail</td>
-                      <td style={{ padding: '1rem' }}>Realistyczny czas realizacji</td>
+                      <td style={{ padding: '1rem' }}>dolna część widełek z etapów opisanych poniżej</td>
                       <td style={{ padding: '1rem' }}>E-commerce, kampanie reklamowe</td>
                       <td style={{ padding: '1rem' }}>Koszty utrzymania umiarkowane</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Strona firmowa (10–20 podstron)</td>
-                      <td style={{ padding: '1rem' }}>wycena uzależniona od wymagań projektu</td>
+                      <td style={{ padding: '1rem' }}>wycena indywidualna; u nas strona od 5 900 zł netto, cena zależy od liczby podstron, integracji i treści</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, WordPress lub Next.js, blog, podstawowy <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt SEO</Link></td>
-                      <td style={{ padding: '1rem' }}>Realistyczny czas realizacji</td>
+                      <td style={{ padding: '1rem' }}>zgodnie z etapami opisanymi poniżej (łącznie 14–61 dni roboczych)</td>
                       <td style={{ padding: '1rem' }}>MŚP, firmy B2B</td>
                       <td style={{ padding: '1rem' }}>Koszty utrzymania wyższe</td>
                     </tr>
@@ -573,7 +573,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Rozbudowany serwis z integracjami</td>
                       <td style={{ padding: '1rem' }}>cena zależy od skali i integracji</td>
                       <td style={{ padding: '1rem' }}>Dedykowany design, Next.js/React, CRM, wielojęzyczność, testy wydajności</td>
-                      <td style={{ padding: '1rem' }}>Realistyczny czas realizacji</td>
+                      <td style={{ padding: '1rem' }}>górna część widełek z etapów opisanych poniżej, przy wielu integracjach dłużej</td>
                       <td style={{ padding: '1rem' }}>Duże firmy, platformy SaaS</td>
                       <td style={{ padding: '1rem' }}>Koszty roczne wysokie</td>
                     </tr>
@@ -583,7 +583,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               
               <p>Kilka komentarzy, które nie zmieszczą się w tabeli. Cena sklepu rośnie przede wszystkim wraz z liczbą kategorii produktów i wymaganymi integracjami, a nie samą liczbą SKU. Sklep z 50 produktami, ale z integracją z systemem ERP i automatyczną synchronizacją stanów magazynowych, kosztuje więcej niż sklep z 300 produktami bez żadnych połączeń zewnętrznych. Podobnie strona firmowa z dedykowanym systemem rezerwacji online potrafi wyjść drożej niż prosty sklep na <a href="https://www.shopify.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Shopify</a>.</p>
               
-              <p>Warto też wiedzieć, że home.pl podaje popularny przedział 1 300–5 000 zł netto dla podstawowych realizacji, co pokrywa się z rynkową rzeczywistością dla prostych stron wizytówkowych i one-page’ów.</p>
+              <p>Warto też wiedzieć, że popularny przedział 1 300–5 000 zł netto (nasz szacunek) dotyczy podstawowych realizacji, co pokrywa się z rynkową rzeczywistością dla prostych stron wizytówkowych i one-page’ów.</p>
 
               <h2 id="co-wplywa-na-cene">Co dokładnie wpływa na cenę strony internetowej?</h2>
               <p>Wycena strony to nie magia. Każda pozycja w ofercie wykonawcy wynika z konkretnego nakładu pracy lub licencji. Oto dziesięć elementów, które mają największy wpływ na końcowy koszt.</p>
@@ -594,7 +594,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Funkcjonalności niestandardowe.</span> Formularz kontaktowy to godzina pracy. System logowania użytkowników, panel klienta czy kalkulator ofertowy to kilka tygodni developmentu.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Integracje z zewnętrznymi systemami.</span> Połączenie z CRM (np. HubSpot, Salesforce), systemem ERP lub bramką płatności wymaga pracy programistycznej i testów. Każda integracja to realnie 2 000–8 000 zł ekstra.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Platforma i CMS.</span> WordPress jest tańszy we wdrożeniu, ale ma ograniczenia wydajnościowe. Next.js lub React dają lepszą wydajność i Core Web Vitals, ale wymagają doświadczonego developera, co podnosi stawkę godzinową.</li>
-                <li><span style={{ fontWeight: 'bold' }}>E-commerce: WooCommerce vs. Shopify.</span> WooCommerce na WordPress to niższy koszt startowy, ale wyższe koszty utrzymania i aktualizacji. Shopify przenosi część kosztów do miesięcznego abonamentu (od 32 USD/mies.), redukując jednorazowy wydatek na wdrożenie.</li>
+                <li><span style={{ fontWeight: 'bold' }}>E-commerce: WooCommerce vs. Shopify.</span> WooCommerce na WordPress to niższy koszt startowy, ale wyższe koszty utrzymania i aktualizacji. Shopify przenosi część kosztów do miesięcznego abonamentu (od 29 USD/mies. przy płatności rocznej, 39 USD przy miesięcznej; cena w PLN zależy od kraju, odczyt cennika 18.11.2026), redukując jednorazowy wydatek na wdrożenie.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Wydajność i Core Web Vitals.</span> Optymalizacja pod wskaźniki Google (LCP, CLS, INP) to osobny etap pracy. Strona, która ładuje się poniżej 2,5 sekundy, wymaga przemyślanej architektury od początku, a nie poprawek na końcu.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Treści i zdjęcia.</span> Copywriting i sesja fotograficzna to często pomijane koszty w budżecie, które należy uwzględnić indywidualnie w zależności od potrzeb.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Wielojęzyczność.</span> Każda wersja językowa to nie tylko tłumaczenie, ale osobna konfiguracja CMS, hreflang, SEO i testy. Dodanie dodatkowego języka może znacząco zwiększyć koszt wdrożenia, w zależności od zakresu tłumaczeń i konfiguracji.</li>
@@ -748,7 +748,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Freelancer (budżetowy)</td>
                       <td style={{ padding: '1rem' }}>koszty uzależnione od projektu</td>
                       <td style={{ padding: '1rem' }}>Szablon, podstawowy CMS, formularz, SSL</td>
-                      <td style={{ padding: '1rem' }}>Realistyczny czas realizacji</td>
+                      <td style={{ padding: '1rem' }}>zależy od dostępności wykonawcy, etapy opisane poniżej</td>
                       <td style={{ padding: '1rem' }}>Mikrofirmy, start-upy</td>
                       <td style={{ padding: '1rem' }}>Koszty roczne niewielkie</td>
                     </tr>
@@ -756,7 +756,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Mała agencja (średnia)</td>
                       <td style={{ padding: '1rem' }}>koszty zależą od zakresu</td>
                       <td style={{ padding: '1rem' }}>Lekki custom design, WordPress, podstawowe SEO, szkolenie</td>
-                      <td style={{ padding: '1rem' }}>Realistyczny czas realizacji</td>
+                      <td style={{ padding: '1rem' }}>zgodnie z etapami opisanymi poniżej (łącznie 14–61 dni roboczych)</td>
                       <td style={{ padding: '1rem' }}>MŚP, firmy usługowe</td>
                       <td style={{ padding: '1rem' }}>Koszty roczne umiarkowane</td>
                     </tr>
@@ -764,7 +764,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Full-service (AI SEO COMPANY)</td>
                       <td style={{ padding: '1rem' }}>strona od 5 900 zł netto jednorazowo albo Booster Pack 2 500 zł netto/mies. z nową stroną (min. 3 mies.)</td>
                       <td style={{ padding: '1rem' }}>Custom UX/UI, Next.js/React, integracja CRM i płatności, audyt SEO, opcjonalna subskrypcja SEO; w pakiecie Booster Pack nowa strona WWW za 0 zł</td>
-                      <td style={{ padding: '1rem' }}>Realistyczny czas realizacji</td>
+                      <td style={{ padding: '1rem' }}>zgodnie z etapami opisanymi poniżej (łącznie 14–61 dni roboczych)</td>
                       <td style={{ padding: '1rem' }}>Firmy B2B, e-commerce</td>
                       <td style={{ padding: '1rem' }}>Koszty roczne wyższe</td>
                     </tr>
@@ -772,13 +772,13 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 </table>
               </div>
 
-              <p>Pakiet <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>AI SEO COMPANY</Link> obejmuje projektowanie w technologiach Next.js i React, które zapewniają lepsze Core Web Vitals niż standardowy WordPress, co bezpośrednio przekłada się na pozycje w Google i koszty reklamy. Do tego dochodzi integracja z CRM i systemami płatności, audyt SEO techniczny jako element wdrożenia oraz opcja miesięcznej subskrypcji SEO po uruchomieniu strony. Szczegóły oferty projektowania stron dla firm są dostępne na <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>stronie usług</Link>.</p>
+              <p>Pakiet <Link href="/" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>AI SEO COMPANY</Link> obejmuje projektowanie w technologiach Next.js i React, które zwykle ułatwiają osiągnięcie dobrych Core Web Vitals, co wspiera widoczność w Google i jakość strony docelowej reklam. Do tego dochodzi integracja z CRM i systemami płatności, audyt SEO techniczny jako element wdrożenia oraz opcja miesięcznej subskrypcji SEO po uruchomieniu strony. Szczegóły oferty projektowania stron dla firm są dostępne na <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>stronie usług</Link>.</p>
               
               <p>Freelancer jest dobrym wyborem, gdy masz ograniczony budżet, prosty projekt i czas na samodzielne zarządzanie procesem. Mała agencja daje więcej struktury i zazwyczaj lepszy projekt graficzny, ale rzadko oferuje zaawansowane kompetencje techniczne i SEO w jednym miejscu. Full-service ma sens, gdy strona ma bezpośrednio generować przychody, a każdy tydzień opóźnienia lub każdy procent konwersji ma mierzalną wartość.</p>
 
               <h2 id="dlaczego-warto">Dlaczego warto zainwestować w dobrze zaprojektowaną stronę?</h2>
               <p>Strona internetowa to nie koszt, który trzeba zminimalizować. To kanał sprzedaży, który pracuje 24 godziny na dobę.</p>
-              <p>Badania zachowań zakupowych wskazują, że 81% klientów potrzebuje pełnego zaufania do marki przed dokonaniem zakupu, a strona internetowa jest pierwszym miejscem, gdzie to zaufanie jest budowane lub tracone.</p>
+              <p>Według raportu Edelman Trust Barometer Special Report: Brand Trust z 2019 roku 81% konsumentów deklaruje, że musi ufać, iż marka postąpi właściwie, zanim u niej kupi, a strona internetowa jest pierwszym miejscem, gdzie to zaufanie jest budowane lub tracone.</p>
               <p>Konkretny przykład: firma z branży nieruchomości, która przeszła z przestarzałej strony na WordPress na rozwiązanie oparte na Next.js z zoptymalizowaną strukturą treści i <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>lokalnym SEO</Link>, może oczekiwać wzrostu ruchu organicznego w ciągu 3–6 miesięcy od wdrożenia. Kluczowe jest jednak to, że sama zmiana technologii bez przemyślanego UX i treści nie przyniesie rezultatów.</p>
 
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
@@ -821,9 +821,9 @@ export default async function ArticleWebsitePricingPage({ params }) {
 
               <h2 id="strona-za-2-tys-czy-20-tys">Strona za 2 000 zł czy za 20 000 zł: co naprawdę ma znaczenie?</h2>
               <p>Przez lata obserwuję jeden powtarzający się schemat: klient wybiera najtańszą ofertę, strona powstaje w 2 tygodnie, a po 6 miesiącach wraca z pytaniem, dlaczego nikt jej nie odwiedza i dlaczego nie ma zapytań. Odpowiedź jest zwykle prosta: bo strona nie była zaprojektowana z myślą o użytkowniku ani o Google.</p>
-              <p>Nie twierdzę, że drogie zawsze znaczy lepsze. Widziałem projekty za 30 000 zł, które były technicznymi katastrofami. Ale jest pewna granica, poniżej której nie da się zrobić czegoś, co naprawdę działa. Ta granica to dziś około 3 000–4 000 zł dla najprostszych przypadków i 8 000–10 000 zł dla strony, która ma generować leady w konkurencyjnej branży.</p>
+              <p>Nie twierdzę, że drogie zawsze znaczy lepsze. Widziałem projekty za 30 000 zł, które były technicznymi katastrofami. Ale jest pewna granica, poniżej której nie da się zrobić czegoś, co naprawdę działa. Ta granica to dziś, moim zdaniem, około 3 000–4 000 zł dla najprostszych przypadków i 8 000–10 000 zł dla strony, która ma generować leady w konkurencyjnej branży. Rynkowe widełki 1 300–5 000 zł dotyczą prostych wizytówek, a w AI SEO COMPANY strona zaczyna się od 5 900 zł netto.</p>
               <p>Najczęstszy błąd? Traktowanie strony jako jednorazowego wydatku, a nie inwestycji wymagającej utrzymania. Strona bez regularnych aktualizacji, bez <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO</Link> i bez analizy zachowań użytkowników starzeje się szybciej niż myślisz. Po 2–3 latach bez opieki technicznej większość stron wymaga przebudowy, a nie tylko odświeżenia.</p>
-              <p>Moja rada jest prosta: zanim zapytasz o cenę, zdecyduj, co strona ma dla Ciebie robić. Jeśli ma tylko potwierdzać istnienie firmy, wystarczy budżet 3 000–5 000 zł. Jeśli ma przyciągać klientów i konwertować, zaplanuj minimum 10 000 zł i traktuj to jako inwestycję z mierzalnym zwrotem.</p>
+              <p>Moja rada jest prosta: zanim zapytasz o cenę, zdecyduj, co strona ma dla Ciebie robić. Jeśli ma tylko potwierdzać istnienie firmy, wystarczy budżet 3 000–5 000 zł. Jeśli ma przyciągać klientów i konwertować, zaplanuj, jak sugeruję jako autor, minimum 10 000 zł i traktuj to jako inwestycję z mierzalnym zwrotem.</p>
               
               <h2 id="ai-seo-company">AI SEO COMPANY: strona, która pracuje na Twój biznes od pierwszego dnia</h2>
               <p>Większość firm staje przed wyborem: freelancer za kilka tysięcy złotych, mała agencja lub pełny serwis. AI SEO COMPANY jest odpowiedzią na sytuację, gdy strona ma nie tylko wyglądać, ale generować ruch i zapytania.</p>
@@ -850,7 +850,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <p>Przed wysłaniem zapytania o wycenę warto przejrzeć kilka zasobów, które pomogą Ci przygotować brief i ocenić otrzymane oferty.</p>
               
               <ul>
-                <li><a href="https://home.pl" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje stworzenie strony internetowej? Poznaj przykładowe ceny – home.pl</a>: przegląd przedziałów cenowych dla podstawowych realizacji na polskim rynku.</li>
+                <li><a href="https://home.pl" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje stworzenie strony internetowej? Poznaj przykładowe ceny – home.pl</a>: ogólny kontekst rynkowy (strona nie podaje przedziału 1 300–5 000 zł; ten przedział to nasz szacunek, odczyt 18.11.2026).</li>
                 <li>Ile kosztuje utrzymanie strony internetowej? – zestawienie rocznych kosztów utrzymania dla różnych typów stron.</li>
                 <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Projektowanie stron internetowych dla firm</Link> – szczegółowy opis oferty AI SEO COMPANY z zakresem prac i technologiami.</li>
                 <li><Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ile kosztuje SEO w 2026? Ceny agencji i od czego zależą</Link> – od czego zależy koszt pozycjonowania, jako uzupełnienie budżetu na stronę.</li>

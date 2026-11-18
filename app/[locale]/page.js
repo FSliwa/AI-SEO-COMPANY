@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
   // zadne dotychczasowe slowo nie znika.
   // EN bez zmian: skojarzenie z "ai" jest polskie (Polska 917 wyswietlen vs
   // USA 70), przenoszenie go na rynek angielski byloby zgadywaniem.
-  description: locale === 'en' ? 'Top SEO agency and marketing agency for companies. Search engine optimization from Warsaw, B2B focused. The SEO firm agencies rely on.' : 'Twój projekt i strony to nasz priorytet. Agencja SEO Warszawa i agencja marketingowa. Pozycjonowanie stron z AI, które generuje realny wzrost firmy.',
+  description: locale === 'en' ? 'SEO agency and marketing agency for companies in Warsaw. One of the search engine optimization agencies for B2B, with a client portal.' : 'Twój projekt i strony to nasz priorytet. Agencja SEO Warszawa i agencja marketingowa. Pozycjonowanie stron z AI, które generuje realny wzrost firmy.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en' : 'https://www.ai-seo-company.pl/',
     languages: {

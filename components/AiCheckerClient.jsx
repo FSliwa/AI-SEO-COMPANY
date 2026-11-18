@@ -309,7 +309,7 @@ export default function AiCheckerClient() {
                     Check that your robots.txt file does not block the OAI-SearchBot and PerplexityBot crawlers. Blocking them excludes your site from those tools’ citations.
                     {HREF_N1 && <> AI bot access to your site is also checked by our free <Link href={HREF_N1} style={s.podkreslenie}>llms.txt generator</Link>.</>}
                   </li>
-                  <li>Measure changes regularly. In <Link href="/pozycjonowanie-w-ai" style={s.podkreslenie}>AI search optimization</Link> we check 30 questions in ChatGPT, Perplexity, Gemini and Google every week, and you can see the result in the <Link href="/panel-klienta" style={s.podkreslenie}>client portal</Link>.</li>
+                  <li>Measure changes regularly. In <Link href="/pozycjonowanie-w-ai" style={s.podkreslenie}>AI search optimization</Link> we check 30 questions in ChatGPT, Perplexity, Gemini and Google every month in a report; weekly measurement in the <Link href="/panel-klienta" style={s.podkreslenie}>client portal</Link> is an add-on of €115 net a month to SEO Standard (included in SEO Premium).</li>
                 </>
               ) : (
                 <>
@@ -324,7 +324,7 @@ export default function AiCheckerClient() {
                     Sprawdź, czy plik robots.txt nie blokuje botów OAI-SearchBot i PerplexityBot. Blokada wyklucza stronę z cytowań tych narzędzi.
                     {HREF_N1 && <> Dostęp botów AI do strony sprawdza też nasz bezpłatny <Link href={HREF_N1} style={s.podkreslenie}>generator llms.txt</Link>.</>}
                   </li>
-                  <li>Mierz zmiany regularnie. W <Link href="/pozycjonowanie-w-ai" style={s.podkreslenie}>pozycjonowaniu w AI</Link> sprawdzamy 30 pytań w ChatGPT, Perplexity, Gemini i Google co tydzień, a wynik widać w <Link href="/panel-klienta" style={s.podkreslenie}>panelu klienta</Link>.</li>
+                  <li>Mierz zmiany regularnie. W <Link href="/pozycjonowanie-w-ai" style={s.podkreslenie}>pozycjonowaniu w AI</Link> sprawdzamy 30 pytań w ChatGPT, Perplexity, Gemini i Google co miesiąc w raporcie; pomiar co tydzień w <Link href="/panel-klienta" style={s.podkreslenie}>panelu klienta</Link> to dopłata 490 zł netto miesięcznie do SEO Standard (w cenie SEO Premium).</li>
                 </>
               )}
             </ul>
@@ -336,14 +336,14 @@ export default function AiCheckerClient() {
             <ul style={s.lista}>
               {en ? (
                 <>
-                  <li>Method as of 12 November 2026, described from the checker’s code: ChatGPT (gpt-4.1-mini), Gemini (gemini-2.5-flash) and Perplexity (sonar) through the DataForSEO API, Claude through the Anthropic API with its web search tool, and AI Overviews from Google results for Poland (DataForSEO). The ChatGPT and Gemini apps your customers use may run newer models.</li>
+                  <li>Method as of 12 November 2026, described from the checker’s code: ChatGPT (gpt-4.1-mini), Gemini (gemini-2.5-flash until November 30, 2026; from December 1, 2026 Google redirects requests to this model to gemini-3.5-flash-lite, per its deprecations page read on November 18, 2026, and we will update the name after the migration) and Perplexity (sonar) through the DataForSEO API, Claude through the Anthropic API with its web search tool, and AI Overviews from Google results for Poland (DataForSEO). The ChatGPT and Gemini apps your customers use may run newer models.</li>
                   <li>Control run on 11 November 2026: for the same business, Gemini with Google Search named it in 3 of 3 answers, while earlier that day, without web search, it named it in 0 of 3. That is why Gemini now asks with web search.</li>
                   <li>Microsoft Copilot: no public API for querying its answers (as of 12 November 2026).</li>
                   <li>Data retention: 60 days; data recipients are listed in the FAQ below.</li>
                 </>
               ) : (
                 <>
-                  <li>Metoda według kodu sprawdzarki, stan z 12.11.2026: ChatGPT (gpt-4.1-mini), Gemini (gemini-2.5-flash) i Perplexity (sonar) odpytujemy przez API DataForSEO, Claude przez API Anthropic z narzędziem wyszukiwania w sieci, a przegląd AI odczytujemy z wyników Google dla Polski (DataForSEO). Aplikacje ChatGPT i Gemini, z których korzystają klienci, mogą używać nowszych modeli.</li>
+                  <li>Metoda według kodu sprawdzarki, stan z 12.11.2026: ChatGPT (gpt-4.1-mini), Gemini (do 30.11.2026 gemini-2.5-flash; od 1.12.2026 Google przekierowuje żądania do tego modelu na gemini-3.5-flash-lite, według jego strony o wycofywaniu modeli, odczyt 18.11.2026, a nazwę zaktualizujemy po migracji) i Perplexity (sonar) odpytujemy przez API DataForSEO, Claude przez API Anthropic z narzędziem wyszukiwania w sieci, a przegląd AI odczytujemy z wyników Google dla Polski (DataForSEO). Aplikacje ChatGPT i Gemini, z których korzystają klienci, mogą używać nowszych modeli.</li>
                   <li>Przebieg kontrolny 11.11.2026: tę samą firmę Gemini z wyszukiwaniem Google wymienił w 3 z 3 odpowiedzi, a wcześniej tego dnia, bez wyszukiwania, w 0 z 3. Dlatego Gemini pyta teraz z wyszukiwaniem.</li>
                   <li>Microsoft Copilot: brak publicznego API do odpytywania odpowiedzi (stan 12.11.2026).</li>
                   <li>Przechowywanie danych: 60 dni; odbiorców danych wymieniamy w pytaniach niżej.</li>

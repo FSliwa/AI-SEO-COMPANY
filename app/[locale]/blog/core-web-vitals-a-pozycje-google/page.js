@@ -60,12 +60,12 @@ export default async function ArticleCwvPage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Core Web Vitals is an official Google ranking factor. Websites that load instantly and are free of annoying layout shifts achieve higher positions and significantly higher dwell time. Here is our guide: Core Web Vitals and Google rankings in 2026.
+                Core Web Vitals measure page experience, which Google says aligns with what its core ranking systems reward. Good scores help but do not guarantee higher rankings. Here is our guide: Core Web Vitals and Google rankings in 2026.
               </p>
               <ArticleTOC items={tocItems} />
               
               <h2 id="dlaczego-przejmowac-sie">Why should you care about Core Web Vitals at all?</h2>
-              <p>Loading speed is no longer just a nice addition - it has become a requirement. According to official Google data, a delay in page load of just 1 to 3 seconds increases the probability of a user abandoning it by over 32%.</p>
+              <p>Loading speed is no longer just a nice addition - it has become a requirement. According to a 2017 Google/SOASTA study (mobile data), going from 1 to 3 seconds of load time raises the probability of a bounce by 32% (<a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google</a>).</p>
               <p>Moreover, the Google algorithm rewards websites in organic search results that are lightweight and flawlessly coded. A faster site means a lower crawl budget cost, which favors faster indexing of new content on your blog or offer subpages.</p>
 
               <h2 id="kluczowe-wskazniki">Key indicators (CWV Metrics) and their optimization</h2>
@@ -147,7 +147,7 @@ export default async function ArticleCwvPage({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Core Web Vitals to oficjalny czynnik rankingowy Google. Witryny, które ładują się natychmiastowo i pozbawione są irytujących przesunięć elementów, osiągają wyższe pozycje oraz znacznie wyższy czas przebywania na stronie. Przedstawiamy przewodnik: Core Web Vitals a pozycje w Google w 2026 roku.
+                Core Web Vitals to metryki doświadczenia na stronie, które według Google są zgodne z tym, co nagradzają jego główne systemy rankingowe. Dobre wyniki pomagają, ale nie gwarantują wyższych pozycji. Przedstawiamy przewodnik: Core Web Vitals a pozycje w Google w 2026 roku.
               </p>
 
               <ArticleTOC items={tocItems} />
@@ -156,7 +156,7 @@ export default async function ArticleCwvPage({ params }) {
                 Dlaczego w ogóle przejmować się Core Web Vitals?
               </h2>
               <p>
-                Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według oficjalnych danych Google, opóźnienie w załadowaniu strony zaledwie o 1 do 3 sekund zwiększa prawdopodobieństwo porzucenia jej przez użytkownika o ponad 32%.
+                Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według badania Google i SOASTA z 2017 roku (dane mobilne) wydłużenie ładowania strony z 1 do 3 sekund zwiększa prawdopodobieństwo odrzucenia o 32% (<a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google</a>).
               </p>
               <p>
                 Co więcej, algorytm Google premiuje w bezpłatnych wynikach wyszukiwania serwisy, które są lekkie i bezbłędnie zakodowane. Szybsza strona oznacza mniejszy koszt tzw. crawl budget, co sprzyja szybszej indeksacji nowych treści na Twoim blogu czy podstronach ofertowych.
@@ -203,7 +203,7 @@ export default async function ArticleCwvPage({ params }) {
                 Samo zmniejszanie rozmiaru obrazków nie pomoże, jeśli serwer odpowiada zbyt wolno (wskaźnik TTFB - Time to First Byte). Migracja na nowocześniejsze architektury (takie jak Jamstack, Next.js App Router z React Server Components) sprawia, że cały ciężar przetwarzania logiki bazy danych wykonywany jest raz na serwerze i dystrybuowany na węzły sieci CDN na całym świecie.
               </p>
               <p>
-                Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co praktycznie gwarantuje zdobycie 100 punktów w teście PageSpeed Insights i deklasuje ociężałe monolityczne CMSy oparte o wtyczki. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Analiza Core Web Vitals to jeden z etapów naszego <Link href="/audyt-seo">audytu SEO</Link>. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
+                Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co ułatwia osiągnięcie wysokiego wyniku w PageSpeed Insights, ale wynik zależy też od obrazów, skryptów zewnętrznych i układu strony. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Analiza Core Web Vitals to jeden z etapów naszego <Link href="/audyt-seo">audytu SEO</Link>. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
               </p>
 
               <BlogCTA 

@@ -119,12 +119,12 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>Check the Top 10 for every priority phrase and answer five questions:</p>
               <ol>
                 <li>Dominant format: Are these guides (pillar content), how-to articles, product pages, comparison tables, or category pages?</li>
-                <li>Average content length: Count words on 3–5 Top 5 pages. If 2000+ word articles dominate, a short post has no chance.</li>
-                <li>Schema and Rich Results: Do you see FAQ, How-To, Product schema, or featured snippets in the SERP? If yes, implementing the right markup is a quick win.</li>
+                <li>Average content length: Count words on 3–5 Top 5 pages. Treat length as a signal of format: if 2000+ word articles dominate, check which subtopics you are missing, not how many words you need (Google has no preferred word count).</li>
+                <li>Schema and Rich Results: Do you see featured snippets, Product, Breadcrumb or video results in the SERP? (FAQ and How-To rich results are no longer displayed by Google.)</li>
                 <li>Media: Do Top 10 pages contain video, infographics, or tables? Lack of multimedia when competitors have them is a signal to fill the gap.</li>
                 <li>Update frequency: Check publication or modification dates. Phrases with rapidly rotating results require regular updates.</li>
               </ol>
-              <p>SERP analysis should also cover non-standard results: featured snippets, People Also Ask, and AI Overviews. Citations in AI Overviews usually come from Top 10 pages, so highly structured content (proper heading hierarchy, bullet points, concise definitions, and lists) is crucial.</p>
+              <p>SERP analysis should also cover non-standard results: featured snippets, People Also Ask, and AI Overviews. Citations in AI Overviews often, though not always, come from pages ranking in the Top 10, so highly structured content (proper heading hierarchy, bullet points, concise definitions, and lists) is crucial.</p>
               <p><strong>Practical rule:</strong> if the Top 10 shows guides plus comparison tables, your strategy must combine both formats in one document rather than choosing just one.</p>
 
               <h2 id="narzedzia">4. Which tools to choose for SEO analysis on the Polish market</h2>
@@ -369,12 +369,12 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>Sprawdź Top 10 dla każdej frazy priorytetowej i odpowiedz na pięć pytań:</p>
               <ol>
                 <li>Dominujący format: czy to przewodniki (pillar content), artykuły poradnikowe, strony produktowe, tabele porównawcze, czy może strony kategorii?</li>
-                <li>Średnia długość treści: policz słowa dla 3–5 stron z Top 5. Jeśli dominują artykuły 2000+ słów, krótki wpis nie ma szans.</li>
-                <li>Schema i Rich Results: czy w SERP widać FAQ, How-To, Product schema, featured snippets? Jeśli tak, wdrożenie odpowiedniego znacznika to szybka wygrana.</li>
+                <li>Średnia długość treści: policz słowa dla 3–5 stron z Top 5. Długość traktuj jako sygnał formatu: jeśli dominują artykuły 2000+ słów, sprawdź, czy brakuje Ci podtematów, nie liczby słów (Google nie ma preferowanej liczby słów).</li>
+                <li>Schema i Rich Results: czy w SERP widać featured snippets, Product, Breadcrumb lub wideo? (FAQ i How-To nie są już wyświetlane przez Google jako wyniki rozszerzone.)</li>
                 <li>Media: czy Top 10 zawiera strony z wideo, infografikami, tabelami? Brak multimediów przy konkurentach, którzy je mają, to sygnał do uzupełnienia.</li>
                 <li>Częstotliwość aktualizacji: sprawdź daty publikacji lub modyfikacji. Frazy z szybko rotującymi wynikami wymagają regularnych aktualizacji.</li>
               </ol>
-              <p>Analiza SERP powinna obejmować też wyniki niestandardowe: featured snippets, People Also Ask i AI Overviews. Cytowania w AI Overviews zwykle pochodzą ze stron z Top 10, więc kluczowa jest wysoce ustrukturyzowana treść (odpowiednia hierarchia nagłówków, punktory, zwięzłe definicje i listy). Tę samą analizę konkurencji robimy w odpowiedziach ChatGPT i Perplexity w ramach <Link href="/pozycjonowanie-w-ai">pozycjonowania w AI</Link>: sprawdzamy, które firmy i strony cytują modele.</p>
+              <p>Analiza SERP powinna obejmować też wyniki niestandardowe: featured snippets, People Also Ask i AI Overviews. Cytowania w AI Overviews często, choć nie zawsze, pochodzą ze stron z Top 10, więc kluczowa jest wysoce ustrukturyzowana treść (odpowiednia hierarchia nagłówków, punktory, zwięzłe definicje i listy). Tę samą analizę konkurencji robimy w odpowiedziach ChatGPT i Perplexity w ramach <Link href="/pozycjonowanie-w-ai">pozycjonowania w AI</Link>: sprawdzamy, które firmy i strony cytują modele.</p>
 
               <h2 id="narzedzia">4. Jakie narzędzia wybrać do analizy SEO na rynku polskim?</h2>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
@@ -592,7 +592,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               </div>
 
               <h2 id="oferta">11. AI SEO COMPANY: gotowa analiza i plan wdrożenia dla Twojej firmy</h2>
-              <p>Samodzielna analiza konkurencji SEO zajmuje 2–4 tygodnie i wymaga dostępu do kilku płatnych narzędzi jednocześnie. Krótszą drogą jest <Link href="/audyt-seo">audyt SEO</Link>: obejmuje między innymi luki treści wobec konkurencji i kończy się gotowym planem z priorytetami.</p>
+              <p>Samodzielna analiza konkurencji SEO zajmuje 2–4 tygodnie i wymaga dostępu do kilku płatnych narzędzi jednocześnie. Krótszą drogą jest <Link href="/audyt-seo">audyt SEO</Link>: kończy się gotowym planem z priorytetami.</p>
               <p>Formaty współpracy dopasowane do różnych potrzeb: jednorazowy <Link href="/audyt-seo">audyt SEO</Link>, miesięczna subskrypcja <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania stron</Link>, projekt strony z pakietem SEO. Umów bezpłatną konsultację i dowiedz się, które klastry tematyczne dają Ci największą szansę na wzrost w ciągu najbliższych 6 miesięcy.</p>
 
               <h3>Przydatne źródła i narzędzia</h3>

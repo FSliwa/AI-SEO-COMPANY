@@ -88,7 +88,7 @@ const TEKSTY = {
     h2Dalej: 'Gdy wynik pokaże problem',
     dalejA: 'Błędy w audycie, zablokowany bot albo brak firmy w odpowiedziach modeli to sygnał, od którego zaczyna się praca, a nie jej koniec. Błędy strony naprawiamy w',
     linkAudytPlatny: 'audycie SEO',
-    dalejB: ', a w usłudze pozycjonowania w AI co tydzień mierzymy obecność firmy w ChatGPT, Perplexity, Gemini i przeglądzie AI Google i pracujemy nad źródłami, z których korzystają modele. Szczegóły i ceny opisujemy na stronie',
+    dalejB: ', a w usłudze pozycjonowania w AI co miesiąc w raporcie (co tydzień w panelu za dopłatą 490 zł netto miesięcznie) mierzymy obecność firmy w ChatGPT, Perplexity, Gemini i przeglądzie AI Google i pracujemy nad źródłami, z których korzystają modele. Szczegóły i ceny opisujemy na stronie',
     linkGeo: 'pozycjonowanie w AI',
     ceny: (h) => (
       <>
@@ -139,7 +139,7 @@ const TEKSTY = {
     h2Dalej: 'When the result shows a problem',
     dalejA: 'Errors in the audit, a blocked bot or your business missing from model answers is where the work starts, not where it ends. We fix website errors in an',
     linkAudytPlatny: 'SEO audit',
-    dalejB: ', and in our AI search optimization service we measure every week how often your business appears in ChatGPT, Perplexity, Gemini and Google AI Overviews, and we work on the sources the models draw on. Details and prices are on the page',
+    dalejB: ', and in our AI search optimization service we measure every month in a report (every week in the portal for an add-on of €115 net a month) how often your business appears in ChatGPT, Perplexity, Gemini and Google AI Overviews, and we work on the sources the models draw on. Details and prices are on the page',
     linkGeo: 'AI search optimization',
     ceny: (h) => (
       <>

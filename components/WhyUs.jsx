@@ -108,28 +108,28 @@ export default function WhyUs({ isMainContent = false }) {
       metric: '187',
       title: lang === 'pl' ? 'Wzrost widoczności lokalnej restauracji' : 'Local visibility growth for a restaurant',
       description: lang === 'pl'
-        ? 'Madame Thai, nowa strona lokalnej restauracji: 187 kliknięć i 10,1 tys. wyświetleń w Google w trzy miesiące (Google Search Console, stan na sierpień 2026). W gastronomii wzrost napędzają zapytania lokalne i Mapy.'
-        : 'Most search engine optimisation companies stop at rankings and leave identity to somebody else; we treat the two as one project. Madame Thai, a new website for a local restaurant: 187 clicks and 10.1k Google impressions in three months (Google Search Console, as of August 2026).',
+        ? 'Madame Thai, nowa strona lokalnej restauracji: 187 kliknięć i 10,1 tys. wyświetleń w Google w 26 dni (27.07-21.08.2026, Google Search Console). W gastronomii wzrost napędzają zapytania lokalne i Mapy.'
+        : 'Most search engine optimisation companies stop at rankings and leave identity to somebody else; we treat the two as one project. Madame Thai, a new website for a local restaurant: 187 clicks and 10.1k Google impressions in 26 days (27 Jul-21 Aug 2026, Google Search Console).',
       bgVisual: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 3,
       tag: lang === 'pl' ? 'B2B OD ZERA' : 'B2B FROM ZERO',
       metric: '152',
-      title: lang === 'pl' ? 'Wzrost ruchu producenta B2B' : 'Traffic growth for a B2B manufacturer',
+      title: lang === 'pl' ? 'Wzrost widoczności producenta B2B' : 'Visibility growth for a B2B manufacturer',
       description: lang === 'pl'
-        ? 'Staniax, producent z branży metalizacji próżniowej: od zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w trzy miesiące. Wzrost przyszedł z treści odpowiadających na pytania klientów przemysłowych, a nie z ogólnych fraz, na które młoda domena nie ma szans.'
-        : 'Merely being online is not enough. Unlike traditional SEO firms, we provide SEO for companies that combines advanced optimization with conversion psychology. Staniax, a vacuum metallising manufacturer: from zero visibility to 152 clicks and 6.34k impressions in three months.',
+        ? 'Staniax, producent z branży metalizacji próżniowej: od zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w 92 dni (22.05-21.08.2026); tygodniowe wyświetlenia wzrosły ze 103 do ok. 750 przy 10-15 kliknięciach tygodniowo. Wzrost widoczności przyszedł z treści odpowiadających na pytania klientów przemysłowych, a nie z ogólnych fraz, na które młoda domena nie ma szans.'
+        : 'Merely being online is not enough. Unlike traditional SEO firms, we provide SEO for companies that combines advanced optimization with conversion psychology. Staniax, a vacuum metallising manufacturer: from zero visibility to 152 clicks and 6.34k impressions in 92 days (22 May-21 Aug 2026), with weekly impressions rising from 103 to about 750 at roughly 10-15 clicks a week.',
       bgVisual: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {
       id: 4,
       tag: lang === 'pl' ? 'NOWA DOMENA' : 'NEW DOMAIN',
-      metric: lang === 'pl' ? '28 dni' : '28 days',
+      metric: lang === 'pl' ? '18 dni' : '18 days',
       title: lang === 'pl' ? 'Dynamiczny wzrost widoczności nowej strony' : 'Dynamic visibility growth for a new domain',
       description: lang === 'pl'
-        ? 'TQL, świeżo uruchomiona strona firmy wdrażającej normy ISO: pierwsze 296 wyświetleń i średnia pozycja 34,6 w 28 dni od startu. Optymalizujemy intencjonalne frazy komercyjne, dostarczając klientów z Google gotowych do zakupu.'
-        : 'We meticulously optimize for high-intent commercial keywords. As one of the top SEO optimization companies, we drive qualified buyers directly from Google. TQL, a freshly launched ISO consultancy website: its first 296 impressions and an average position of 34.6 within 28 days of launch.',
+        ? 'TQL, świeżo uruchomiona strona firmy wdrażającej normy ISO: pierwsze 296 wyświetleń i średnia pozycja 34,6 w pierwszych 18 dniach od startu (5-22.08.2026). Optymalizujemy intencjonalne frazy komercyjne, dostarczając klientów z Google gotowych do zakupu.'
+        : 'We meticulously optimize for high-intent commercial keywords. As one of the top SEO optimization companies, we drive qualified buyers directly from Google. TQL, a freshly launched ISO consultancy website: its first 296 impressions and an average position of 34.6 in the first 18 days after launch (5-22 Aug 2026).',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {

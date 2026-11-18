@@ -46,7 +46,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li data-ikona="panel">Panel klienta 24/7: dane z Google, zapytania i dziennik prac</li>
                   <li data-ikona="audyt">Kompleksowy audyt SEO i analiza konkurencji</li>
                   <li data-ikona="tech">Podstawowa optymalizacja techniczna strony</li>
-                  <li data-ikona="pin">Optymalizacja Wizytówki Google (Profil Firmy)</li>
+                  <li data-ikona="pin">Wizytówka Google (Profil Firmy): optymalizacja, posty 2 razy w miesiącu, odpowiedzi na opinie</li>
                   <li data-ikona="warstwy">Do 20 fraz, 2 treści i 2 linki miesięcznie</li>
                   <li data-ikona="ai">Widoczność w AI (ChatGPT, Google): opcja +490 zł netto/mies.</li>
                   <li data-ikona="wykres">Comiesięczny raport pozycji i ruchu</li>
@@ -57,7 +57,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li data-ikona="panel">24/7 client portal: Google data, enquiries and a work log</li>
                   <li data-ikona="audyt">Comprehensive SEO audit & competitor analysis</li>
                   <li data-ikona="tech">Core technical website optimization</li>
-                  <li data-ikona="pin">Google Business Profile optimization</li>
+                  <li data-ikona="pin">Google Business Profile: optimization, two posts a month, review replies</li>
                   <li data-ikona="warstwy">Up to 20 keywords, 2 content pieces and 2 links a month</li>
                   <li data-ikona="ai">AI visibility (ChatGPT, Google): add-on +€115 net/mo</li>
                   <li data-ikona="warstwy">Monthly keyword ranking & traffic reports</li>
@@ -76,7 +76,7 @@ export default function Pricing({ isMainContent = false }) {
               <p className="pricing-desc">{t('premiumDesc')}</p>
               <div className="pricing-price">
                 <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
-                <div className="price-amount"><span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>{t('premiumPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('premiumPeriod')}</span></div>
+                <div className="price-amount">{t('premiumPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('premiumPeriod')}</span></div>
               </div>
             </div>
             <ul className="pricing-features">
@@ -116,7 +116,7 @@ export default function Pricing({ isMainContent = false }) {
               <p className="pricing-desc">{t('boosterDesc')}</p>
               <div className="pricing-price">
                 <div className="price-label" style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące (Standard i Premium: umowa miesięczna)' : 'Min. 3-month contract (Standard and Premium: monthly)'}</div>
-                <div className="price-amount"><span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
+                <div className="price-amount">{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
               </div>
             </div>
             <ul className="pricing-features">
@@ -135,7 +135,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li data-ikona="www">Bespoke responsive UX/UI website design</li>
                   <li data-ikona="panel">24/7 client portal from day one</li>
                   <li data-ikona="tech">Complete technical & content SEO suite</li>
-                  <li data-ikona="pin">Google Maps optimization & weekly updates</li>
+                  <li data-ikona="pin">Google Business Profile optimization and monthly posts</li>
                   <li data-ikona="tarcza">SSL certificate, hosting & ongoing maintenance</li>
                   <li data-ikona="nieskonczonosc">No hidden setup or maintenance fees</li>
                 </>
