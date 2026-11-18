@@ -559,6 +559,21 @@ export default function Header() {
                 onClick={() => onLangClick('en')}
                 title="English"
               >EN</NextLink>
+              {maWersjeDe(sciezka) && (
+                <>
+                  <span aria-hidden="true" className="menu-jezyk-kreska" />
+                  <NextLink
+                    href={hrefJezyka('de')}
+                    hrefLang="de"
+                    lang="de"
+                    prefetch={false}
+                    className="menu-jezyk-link"
+                    aria-current={lang === 'de' ? 'true' : undefined}
+                    onClick={() => onLangClick('de')}
+                    title="Deutsch"
+                  >DE</NextLink>
+                </>
+              )}
             </div>
             {/* transitionProperty: regula .kota-menu-trigger ma transition: all, wiec X
                 dziedziczyl visibility menu z animacja i przez pierwsze klatki mial
