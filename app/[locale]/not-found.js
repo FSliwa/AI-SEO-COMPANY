@@ -40,7 +40,7 @@ export default function NotFound() {
         <div className="container">
           <h1>{pl ? 'Nie ma takiej strony (404)' : 'Page not found (404)'}</h1>
           <p>{pl ? 'Adres mógł się zmienić. Zobacz najczęściej odwiedzane strony:' : 'The address may have changed. Try one of these pages:'}</p>
-          <ul>
+          <ul className="nf-linki">
             {linki.map(([href, label]) => (
               <li key={href}><Link href={href}>{label}</Link></li>
             ))}

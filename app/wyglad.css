@@ -27,7 +27,10 @@
      bialy tekst na przycisku - wczesniejsze ciemniejsze odcienie (#B8441E,
      #9C3A17) wlasciciel odebral jako inny kolor. */
   --w-pomarancz-hover: #C24A22;
-  --w-pomarancz-tekst: #D85A30;
+  /* W03 (18.11): kontrast WCAG. Przycisk #C94E24 = bialy 4,57:1; tekst i linki na jasnym
+     #BE461F = 4,5:1+ na papierze i papierze-2; na granacie zostaje #D85A30 (4,67:1). */
+  --w-pomarancz-przycisk: #C94E24;
+  --w-pomarancz-tekst: #BE461F;
   --w-pomarancz-gleboki: #D85A30;
   --w-brzoskwinia: #F3B79C;
   --w-brzoskwinia-tlo: #FBE6DA;
@@ -46,7 +49,7 @@
   --color-text-muted: var(--w-tusz-2);
   --color-primary: var(--w-pomarancz-tekst);
   --color-primary-light: var(--w-brzoskwinia);
-  --color-cta: var(--w-pomarancz);
+  --color-cta: var(--w-pomarancz-przycisk);
   --color-cta-hover: var(--w-pomarancz-hover);
   --color-cta-glow: rgba(216, 90, 48, 0.28);
   --color-growth: var(--w-wzrost);
@@ -142,7 +145,7 @@ body::before {
 
 .w-przycisk--glowny,
 .btn-primary {
-  background-color: var(--w-pomarancz) !important;
+  background-color: var(--w-pomarancz-przycisk) !important;
   color: var(--w-na-pomaranczu) !important;
   border-color: var(--w-pomarancz) !important;
   box-shadow: none !important;
@@ -835,12 +838,12 @@ section#contact.contact {
 .pricing::before {
   content: '';
   position: absolute;
-  inset: -4% -3%;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
   background:
-    url('/images/wyglad/kontury-1.webp') no-repeat left -12vw top 12% / min(62vw, 900px) auto,
-    url('/images/wyglad/kontury-2.webp') no-repeat right -10vw bottom -4% / min(64vw, 940px) auto;
+    url('/images/wyglad/kontury-1.webp') no-repeat left 0 top 6% / min(40vw, 560px) auto,
+    url('/images/wyglad/kontury-2.webp') no-repeat right 0 bottom 2% / min(40vw, 560px) auto;
 }
 
 .pricing .section-header {
@@ -888,7 +891,7 @@ section#contact.contact {
 }
 
 .pricing-featured-badge {
-  background: var(--w-pomarancz) !important;
+  background: var(--w-pomarancz-przycisk) !important;
   color: var(--w-na-pomaranczu) !important;
   font-family: var(--w-mono) !important;
   font-weight: 500 !important;
@@ -1208,7 +1211,7 @@ section#contact.contact {
 
 /* Plywajacy przycisk "Wyceń projekt" */
 .kota-floating-cta {
-  background: var(--w-pomarancz) !important;
+  background: var(--w-pomarancz-przycisk) !important;
   color: var(--w-na-pomaranczu) !important;
   font-weight: 500 !important;
   box-shadow: 0 12px 30px rgba(10, 19, 55, 0.28) !important;
@@ -1603,7 +1606,7 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
 
   @keyframes w-kontury {
     from { translate: 0 0; scale: 1; }
-    to { translate: 2.5vw -1.5vw; scale: 1.04; }
+    to { translate: 0 -1.2vw; scale: 1; }
   }
 
   /* Hero: linie naglowka wjezdzaja od dolu bez wygaszania (LCP) */
@@ -2092,16 +2095,29 @@ main h3:not(.hero *) {
   border-radius: var(--w-promien-karta) !important;
 }
 
-/* (13/69) Poziomice cennika: krawedzie bitmap wygaszone maska, bez
-   linii przez naglowek; dol sekcji przechodzi w granat */
+/* (13/69, W01) Poziomice cennika maja poczatek i koniec: wzor siedzi tylko
+   w bocznych polach sekcji (maska pozioma wygasza srodek, wiec nie przecina
+   kart ani listy cech), a pionowa wygasza gore i dol. Zadna linia nie wchodzi
+   z krawedzi okna. */
+.pricing {
+  overflow: clip;
+}
+
 .pricing::before {
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 18% 42%, #000 40%, transparent 72%), radial-gradient(ellipse 50% 46% at 84% 82%, #000 40%, transparent 72%);
-  mask-image: radial-gradient(ellipse 50% 50% at 18% 42%, #000 40%, transparent 72%), radial-gradient(ellipse 50% 46% at 84% 82%, #000 40%, transparent 72%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 70%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, transparent 22%, transparent 78%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 70%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, transparent 22%, transparent 78%, #000 94%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.pricing-card {
+  isolation: isolate;
 }
 
 @media (max-width: 1100px) {
   .pricing::before {
-    background-position: left -34vw top 34%, right -10vw bottom 0;
+    background-position: left 0 top 4%, right 0 bottom 0;
+    background-size: min(46vw, 420px) auto, min(46vw, 420px) auto;
   }
 }
 
@@ -2201,7 +2217,7 @@ main h3:not(.hero *) {
 
 /* (74) Przyciski hero podstron jak przyciski makiety */
 .hero-btn-primary {
-  background: var(--w-pomarancz) !important;
+  background: var(--w-pomarancz-przycisk) !important;
   border: 1.5px solid var(--w-pomarancz) !important;
   color: #FFFFFF !important;
   font-weight: 500 !important;
@@ -2469,7 +2485,7 @@ main:has(.article-content) {
 }
 
 .hero .hero-en-cta {
-  background: var(--w-pomarancz) !important;
+  background: var(--w-pomarancz-przycisk) !important;
   color: #FFFFFF !important;
 }
 
@@ -3865,13 +3881,8 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
     mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
   }
 
-  /* Tekst: wartosci z 1440x900 (62,4 / 22,4 / 19,2 / 15,12 / 16 px) / 900 px. */
-  .hero .hero-en-title-display { font-size: calc(var(--hero-h) * 0.0693); }
-  .hero .hero-en-title-sub { font-size: calc(var(--hero-h) * 0.0249); }
-  .hero .hero-en-lead { font-size: calc(var(--hero-h) * 0.02133); }
-  .hero .hero-en-body { font-size: calc(var(--hero-h) * 0.0168); }
-  .hero .hero-en-cta,
-  .hero .hero-en-cta-secondary { font-size: calc(var(--hero-h) * 0.01778); }
+  /* Rozmiary tekstu hero (18.11, hero-home) licza sie w bloku "HERO v6" na koncu
+     arkusza, dla wszystkich szerokich ukladow (nie tylko od 1600 px). */
 
   /* Pasek klientow: rzad do 1440 px, loga jak na 1440 px (vw -> px). */
   .hero-klienci {
@@ -3884,4 +3895,410 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
   .hero-klient--st { width: 240px; }
   .gory-klienci { padding-top: 178px; }
   .gory-oferta .gory-klienci + .services { padding-top: 216px !important; }
+}
+
+/* Okna > 2400 px: niebo i gory na cala szerokosc, bez bocznych maskowanych krawedzi. */
+@media (min-width: 2400px) and (min-aspect-ratio: 1/1) {
+  .hero .hero-tlo-sceny {
+    width: 100%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero.hero--en::before { content: none; }
+}
+
+/* ==========================================================================
+   HERO v6 (18.11.2026, klucz hero-home) - uwagi wlasciciela i Patryka
+   --------------------------------------------------------------------------
+   1) WARSTWY (od tylu): niebo i gory (.hero-tlo-sceny), scena 3D z postacia i
+      literami (.hero-en-bg), animowane chmury (.hero-mgla = PRZEDOSTATNIA),
+      statyczna mgla (.hero-mgla-przod = OSTATNIA, kryje poczatek chmur i wtapia
+      hero w nastepna sekcje), tekst (z-index 5). Szew z zrzutu 1: chmury mialy
+      twarda GORNA krawedz (kontener 46 % z overflow: hidden obcinal druga
+      warstwe chmur). Teraz gorna krawedz chmur jest wygaszona maska pionowa
+      (jedna maska zlozona z pozioma), a statyczna mgla zaczyna sie wyzej niz one.
+   2) HIERARCHIA (szeroki uklad): litery SEO sa elementem graficznym, pod nimi
+      tekst od najwiekszego do najmniejszego: H1, pomaranczowy podtytul, zdanie
+      wstepne, akapit, przyciski. Tresc i poziomy naglowkow bez zmian; kolejnosc
+      wizualna dają `order` w kolumnie flex (grupy .hero-en-top / -bottom to
+      display: contents), wiec kolejnosc w HTML zostaje.
+   3) MARGINESY: kolumna tekstu stoi na lewej krawedzi tresci naglowka
+      (kontener 1240 px + 1,5 rem), a scena jest przesunieta o --hero-pan tak, by
+      lewa krawedz liter lezala na tej samej linii.
+   4) DUZE I NIETYPOWE OKNA: wszystkie rozmiary z --hero-h = clamp(700px, 100vh,
+      1000px) (z podlogami px), wiec 2000x1115, 1920x961, 1728x1000, 1512x860,
+      2560x1440 i 1366x768 maja te same proporcje tekst : litery.
+   Zmierzone (skan pikseli, 9 rozmiarow okien): litery SEO = lewa krawedz
+   50 % - 0,572 H, prawa 50 % + 0,403 H, gora 0,394 H, dol 0,623 H.
+   ========================================================================== */
+
+/* Warstwy: wszystkie szerokosci. */
+.hero-mgla {
+  height: 62%;
+}
+
+.hero-mgla::before {
+  content: none;
+}
+
+.hero-mgla-chmury {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 22%, #000 40%), linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0.85) 68%, #000 80%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 22%, #000 40%), linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0.85) 68%, #000 80%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Ostatnia warstwa: STATYCZNA mgla. Gora przezroczysta i wyzsza niz chmury (nie
+   ma szwu), dol w kolorze pasma chmur oferty (ok. rgb 246 238 233), pod
+   postacia gestszy rdzen. Bez animacji i bez zasobow: sam gradient. */
+.hero-mgla-przod {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 66%;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 58% at 85% 100%, rgba(243, 235, 229, 0.96) 0%, rgba(244, 236, 231, 0.7) 38%, rgba(246, 238, 233, 0.24) 70%, rgba(246, 238, 233, 0) 92%),
+    linear-gradient(180deg, rgba(246, 238, 233, 0) 0%, rgba(246, 238, 233, 0.09) 40%, rgba(246, 238, 233, 0.23) 76%, rgba(246, 238, 233, 0.46) 100%);
+}
+
+/* Podtytul H1 (pomaranczowy): ciemniejszy odcien dla kontrastu AA (4,5:1+) na jasnej mgle. */
+.hero .hero-en-title-sub {
+  color: #B3421D;
+}
+
+/* Szeroki uklad. */
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
+  .hero.hero--en {
+    --hero-h: clamp(720px, 100vh, 1000px);
+    --hero-up: calc(var(--hero-h) * 0.06);
+    --hero-lewa: max(1.5rem, calc(50vw - 596px));
+    --hero-pan: max(-5vw, calc(var(--hero-lewa) - 50vw + var(--hero-h) * 0.572));
+    min-height: var(--hero-h) !important;
+  }
+
+  /* Scena wyzej o 6 % wysokosci: pod literami miesci sie caly tekst. Kanwa
+     ma scale(1,12), wiec zapas 6 % u dolu pokrywa to przesuniecie. */
+  .hero-en-bg {
+    transform: translate(var(--hero-pan, 0px), calc(var(--hero-up) * -1)) scale(1.12);
+  }
+
+  /* Samolot leci w pustym niebie nad literami. */
+  .hero-lot {
+    top: calc(var(--hero-h) * 0.25 - var(--hero-up));
+  }
+
+  .hero .hero-overlay,
+  .hero .hero-overlay--en {
+    background:
+      linear-gradient(180deg, rgba(253, 249, 244, 0.7) 0%, rgba(253, 249, 244, 0) 22%),
+      radial-gradient(62% 40% at 32% 86%, rgba(250, 242, 236, 0.6) 0%, rgba(250, 242, 236, 0) 100%) !important;
+  }
+
+  .hero-en {
+    padding-left: max(1.5rem, calc(50% - var(--hero-h) * 0.572 + var(--hero-pan, 0px)));
+    padding-right: 1.5rem;
+  }
+
+  /* Kolumna: pod literami, od najwiekszego do najmniejszego. */
+  .hero-en-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    grid-template-rows: none;
+    padding-top: calc(var(--hero-h) * 0.653 - var(--hero-up));
+    gap: calc(var(--hero-h) * 0.011);
+  }
+
+  .hero-en-top,
+  .hero-en-bottom {
+    display: contents;
+  }
+
+  .hero-en-copy :is(.hero-en-title, .hero-en-lead, .hero-en-body, .hero-en-actions) {
+    max-width: calc(var(--hero-h) * 0.975);
+  }
+
+  .hero-en-title { order: 1; }
+  .hero-en-lead { order: 2; }
+  .hero-en-body { order: 3; }
+  .hero-en-actions { order: 4; margin-top: calc(var(--hero-h) * 0.012); }
+
+  .hero .hero-en-title-display {
+    font-size: clamp(2rem, calc(var(--hero-h) * 0.05), 3.6rem);
+    line-height: 1.06;
+  }
+
+  .hero .hero-en-title-sub {
+    font-size: clamp(1.05rem, calc(var(--hero-h) * 0.0245), 1.8rem);
+    line-height: 1.25;
+  }
+
+  .hero .hero-en-lead {
+    font-size: clamp(0.95rem, calc(var(--hero-h) * 0.0205), 1.5rem);
+    line-height: 1.5;
+  }
+
+  .hero .hero-en-body {
+    font-size: clamp(0.9rem, calc(var(--hero-h) * 0.0165), 1.25rem);
+    line-height: 1.58;
+  }
+
+  .hero .hero-en-cta,
+  .hero .hero-en-cta-secondary {
+    font-size: clamp(0.9375rem, calc(var(--hero-h) * 0.0165), 1.2rem);
+    min-height: clamp(44px, calc(var(--hero-h) * 0.05), 56px);
+    padding: 0.7rem 1.3rem;
+  }
+
+  /* Wejscie: naglowek i przyciski widac od pierwszej klatki (LCP, CTA nad
+     zagieciem); zdanie wstepne i akapit wjezdzaja z dolu razem ze scena. */
+  .hero-en-copy :is(.hero-en-title, .hero-en-actions),
+  .hero-en-copy.is-copy-in :is(.hero-en-title, .hero-en-actions) {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero-en-copy.is-copy-in :is(.hero-en-lead, .hero-en-body) {
+    animation-name: heroCopyRise, heroCopyFade;
+  }
+
+  .hero-en-copy.is-copy-in .hero-en-lead { animation-delay: 80ms; }
+  .hero-en-copy.is-copy-in .hero-en-body { animation-delay: 200ms; }
+}
+
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) and (prefers-reduced-motion: no-preference) {
+  .hero-en-copy :is(.hero-en-lead, .hero-en-body) {
+    transform: translateY(26px);
+  }
+}
+
+/* Telefon i okno pionowe: litery SEO sa statycznym obrazem w pasmie. Maska z
+   globals.css (gasniecie od 61 % pasma, uzasadnione nogami robota 3D) ucinala dol
+   liter (zrzut 4). Tu nie ma robota, wiec maski nie ma, a mgla zaczyna sie pod
+   literami (nie nachodzi na nie). */
+@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
+  .hero-en-bg {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero-mgla,
+  .hero-mgla-przod {
+    height: 32%;
+  }
+}
+
+/* Telefon (< 768 px): cztery loga klientow w JEDNYM rzedzie, rowna waga
+   optyczna (waski napis Madame Thai szerszy, kursywne TQL wezsze). Suma
+   szerokosci 80 vw, reszta to odstepy (space-between) w kolumnie 100 vw - 40 px:
+   przy 360 px odstep ok. 10 px, przy 430 px ok. 15 px. */
+@media (max-width: 767px) {
+  .hero-klienci {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 0;
+    row-gap: 0;
+    margin: 0 20px;
+  }
+
+  .hero-klient {
+    flex: 0 0 auto;
+  }
+
+  .hero-klient--mt { width: 26vw; }
+  .hero-klient--tql { width: 12vw; }
+  .hero-klient--ai { width: 21vw; }
+  .hero-klient--st { width: 21vw; }
+}
+
+/* W03: na ciemnych tlach tekst i obwodki zostaja w jasniejszym #D85A30 (4,67:1 na granacie). */
+.pricing, .footer, .kota-fullscreen-menu, .results, #wyniki, .contact-box, [style*="background:var(--w-noc)"], [style*="background: var(--w-noc)"] {
+  --w-pomarancz-tekst: #D85A30;
+  --color-cta: #D85A30;
+}
+.pricing .btn-primary, .contact .btn-primary, .footer .btn-primary {
+  background-color: var(--w-pomarancz-przycisk) !important;
+}
+
+/* ==========================================================================
+   WIZUALNA NAPRAWA 18.11.2026 (klucz wizualny-naprawa): spojnosc pomiedzy
+   stronami. Tylko rozmiar, odstep, obrys i stany; teksty bez zmian.
+   ========================================================================== */
+:root {
+  --w-r-karta: 28px;
+  --w-r-wew: 16px;
+  --w-r-pole: 12px;
+  --w-cien-karty: 0 1px 2px rgba(30, 30, 30, 0.06), 0 12px 32px rgba(30, 30, 30, 0.06);
+  --w-sekcja-pion: clamp(64px, 5vw + 32px, 112px);
+}
+
+/* W05: ten sam rytm pionowy na home i podstronach (64-112 px) */
+:root,
+main:not(:has(.gory-oferta)) {
+  --w-sekcja: var(--w-sekcja-pion);
+}
+@supports (width: round(nearest, 10px, 8px)) {
+  :root,
+  main:not(:has(.gory-oferta)) {
+    --w-sekcja: round(nearest, var(--w-sekcja-pion), 8px);
+  }
+}
+
+/* W04: jedna skala typografii (nadpisuje tokeny z bloku 13.11) */
+:root {
+  --w-h1: clamp(2.25rem, 1rem + 4vw, 4.25rem);       /* 36-68 px: huby, narzedzia, cennik (poprzeczka jakosci) */
+  --w-h1-art: clamp(2.25rem, 0.9rem + 3vw, 3.25rem); /* 36-52 px: artykuly, porownania, szablony */
+  --w-h2-sub: clamp(1.75rem, 1rem + 2vw, 2.8rem);    /* 28-44,8 px: kazdy H2 sekcji */
+  --w-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);    /* 20-24 px */
+}
+main h2:not(.hero *):not(.hero-en-copy *):not(.pricing-card *):not(.portfolio-title):not([class*="tlo-gory"]) {
+  text-wrap: balance;
+}
+main :is(h1, h2, h3):not(.hero *) { text-wrap: balance; }
+main :is(p, li):not(.hero *) { text-wrap: pretty; }
+main section :is(h2)[style*="font-size"]:not(.hero *):not(.pricing-card *):not(.tlo-gory-hero *):not(.hero-en-copy *) {
+  font-size: var(--w-h2-sub) !important;
+  line-height: 1.12 !important;
+}
+main section :is(h3)[style*="font-size"]:not(.hero *):not(.pricing-card *):not(.sz-hero *) {
+  font-size: var(--w-h3) !important;
+}
+
+/* W07: jedna wysokosc i waga przyciskow */
+.btn {
+  min-height: 48px;
+  padding-inline: 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 9999px;
+}
+.btn--sm,
+.header .btn {
+  min-height: 44px;
+  font-size: 0.9rem;
+  padding-inline: 20px;
+}
+
+/* W08: promienie i cien kart */
+:is(.service-card, .whyus-card-item, .kota-pillar-card, .pricing-note, .powiazane-karta, .panel-karta) {
+  border-radius: var(--w-r-karta) !important;
+}
+
+/* W09: Powiazane uslugi: wzorzec jak "Inne darmowe narzedzia" */
+.powiazane { padding-block: var(--w-sekcja-pion); }
+.powiazane-kontener { max-width: 1100px; margin-inline: auto; }
+.powiazane-h2 {
+  font-size: var(--w-h2-sub);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--w-tusz);
+  margin: 0 0 1.5rem;
+}
+.powiazane-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.powiazane-karta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  min-height: 150px;
+  padding: 24px 56px 24px 24px;
+  background: var(--w-karta, #FFFFFF);
+  border: 1px solid var(--w-linia);
+  border-radius: var(--w-r-karta);
+  color: var(--w-tusz-2);
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.powiazane-tytul {
+  font-size: var(--w-h3);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--w-tusz);
+}
+.powiazane-strzalka {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--w-pomarancz-tekst);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .powiazane-karta { transition: translate 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+  .powiazane-strzalka { transition: translate 0.25s ease; }
+  .powiazane-karta:hover .powiazane-strzalka { translate: 4px 0; }
+}
+.powiazane-karta:hover { translate: 0 -4px; box-shadow: var(--w-cien-karty); border-color: rgba(216, 90, 48, 0.45); }
+
+/* W21: te same stany najechania i fokusu na kartach uslug i pakietow */
+@media (prefers-reduced-motion: no-preference) {
+  .service-card, .pricing-card { transition: translate 0.25s ease, border-color 0.25s ease; }
+}
+.service-card:hover { translate: 0 -4px; }
+.service-card:focus-within,
+.pricing-card:focus-within { outline: 2px solid #185FA5; outline-offset: 2px; }
+
+/* W12: cele dotyku. Powiekszenie przez pseudoelement/padding z ujemnym marginesem, bez zmiany ukladu */
+.breadcrumbs a, .byline a {
+  position: relative;
+}
+.breadcrumbs a::after, .byline a::after {
+  content: '';
+  position: absolute;
+  inset: -12px -6px;
+}
+input[type="checkbox"] {
+  inline-size: 24px;
+  block-size: 24px;
+  accent-color: var(--w-pomarancz-przycisk);
+}
+label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-items: center; gap: 0.6rem; }
+.footer-links a { display: inline-block; padding-block: 4px; }
+.footer-links { gap: 0.5rem; }
+
+/* W13: dlugosc linii w tresci */
+:is(.hero-lead, .section-header p, article p) { max-width: var(--w-miara, 68ch); }
+
+/* W15: obramowanie pol formularza 3:1 (WCAG 1.4.11) */
+.form-input, .form-select, .form-textarea { border-color: #8C8279 !important; }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--w-pomarancz-tekst) !important; }
+@media (max-width: 900px) {
+  .form-input, .form-select, .form-textarea, input, select, textarea { font-size: 16px; }
+}
+
+/* W16: stopka, jedna skala tekstu */
+.footer a, .footer p, .footer li, .footer button { font-size: 0.875rem; line-height: 1.7; }
+.footer-col h4, .footer-col .footer-heading { font-size: 1rem !important; }
+
+/* W19: tabele na telefonie: cien na krawedzi przewijania i kolumna naglowkowa */
+.tabela-przewijana {
+  background:
+    linear-gradient(to right, var(--w-papier) 30%, transparent) left / 24px 100% no-repeat local,
+    linear-gradient(to left, var(--w-papier) 30%, transparent) right / 24px 100% no-repeat local,
+    linear-gradient(to right, rgba(30, 30, 30, 0.14), transparent) left / 12px 100% no-repeat scroll,
+    linear-gradient(to left, rgba(30, 30, 30, 0.14), transparent) right / 12px 100% no-repeat scroll;
+  scroll-snap-type: x proximity;
+}
+
+/* W19b: kolumna naglowkowa przylega do lewej */
+.tabela-przewijana th[scope="row"] { position: sticky; left: 0; z-index: 1; background: var(--w-papier-2, #F6EFE6); }
+
+/* W10: 404 (siatka linkow rowna) */
+.nf-linki { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.nf-linki a { min-height: 56px; display: flex; align-items: center; justify-content: center; text-align: center; }
+
+/* W02: plywajacy przycisk z marginesem bezpiecznego obszaru */
+.kota-floating-cta {
+  right: max(1rem, env(safe-area-inset-right)) !important;
+  bottom: max(1rem, env(safe-area-inset-bottom)) !important;
 }

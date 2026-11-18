@@ -51,16 +51,19 @@ export default function PowiazaneUslugi({ locale = 'pl', bez, items = [], tytul 
   if (!linki.length) return null;
   const id = en ? 'related-services' : 'powiazane-uslugi';
   return (
-    <section aria-labelledby={id} style={{ padding: '56px 0' }}>
-      <div className="container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <h2 id={id} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.4rem)', fontWeight: 700, color: 'var(--color-text-dark)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
+    <section aria-labelledby={id} className="powiazane">
+      <div className="container powiazane-kontener">
+        <h2 id={id} className="powiazane-h2">
           {tytul ?? (en ? 'Related services' : 'Powiązane usługi')}
         </h2>
-        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: '1rem', gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, ${linki.length === 1 ? 420 : 260}px), 1fr))` }}>
+        <ul className="powiazane-lista" style={{ gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, ${linki.length === 1 ? 420 : 260}px), 1fr))` }}>
           {linki.map((l) => (
-            <li key={l.href} style={{ background: 'var(--w-karta, #FFFFFF)', border: '1px solid var(--w-linia)', borderRadius: '28px', padding: '24px', color: 'var(--color-text-main)', fontSize: '1rem', lineHeight: 1.6 }}>
-              <Link href={l.cel} style={{ display: 'block', marginBottom: '0.4rem', color: 'var(--color-cta)', fontWeight: 700, fontSize: '1.1rem', textDecoration: 'underline' }}>{l.dane[0].charAt(0).toUpperCase() + l.dane[0].slice(1)}</Link>
-              {l.dane[1]}
+            <li key={l.href}>
+              <Link href={l.cel} className="powiazane-karta">
+                <span className="powiazane-tytul">{l.dane[0].charAt(0).toUpperCase() + l.dane[0].slice(1)}</span>
+                <span className="powiazane-opis">{l.dane[1]}</span>
+                <span className="powiazane-strzalka" aria-hidden="true">{'\u2192'}</span>
+              </Link>
             </li>
           ))}
         </ul>

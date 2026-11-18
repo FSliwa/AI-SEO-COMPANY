@@ -1,5 +1,6 @@
 import '../globals.css';
 import '../wyglad.css';
+import '../plynnosc.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';

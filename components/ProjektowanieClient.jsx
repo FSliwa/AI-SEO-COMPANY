@@ -28,7 +28,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               {lang === 'pl' ? 'WEBDESIGN & DEVELOPMENT' : 'WEBDESIGN & DEVELOPMENT'}
             </div>
             
-            <h1 style={{ 
+            <h1 className={lang === 'pl' ? 'tlo-gory-h1--dlugi' : undefined} style={{ 
               fontSize: 'clamp(3.5rem, 7vw, 6rem)', 
               fontWeight: 700, 
               lineHeight: 1.05, 

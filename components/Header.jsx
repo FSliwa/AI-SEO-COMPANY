@@ -10,10 +10,15 @@ import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
 import { hash, homeHash, przewinDoSekcji, przejdzDoSekcji } from '@/lib/anchors';
 import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
 import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
+// 18.11.2026 (menu): style rozwiniętego menu (grupy, kolumny, ruch) w osobnym pliku.
+import './HeaderMenu.css';
 
 // Logowanie do paneli (klient i administrator) to osobna aplikacja na subdomenie.
 // NEXT_PUBLIC_PANEL_URL pozwala lokalnie wskazać panel na localhost.
 import { PANEL_DEMO_URL, PANEL_LOGIN_URL } from '@/lib/panel';
+
+// Czas zamkniecia menu (ms): musi byc rowny przejsciu w components/HeaderMenu.css (.menu-ov, 240 ms).
+const CZAS_ZAMKNIECIA_MENU = 260;
 
 // A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
 // pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
@@ -38,11 +43,14 @@ export default function Header() {
   const naJasnym = true;
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuExpanded, setMenuExpanded] = useState(false);
-  const [triggerPos, setTriggerPos] = useState({ x: 0, y: 0 });
+  // Telefon (do 767 px): grupy menu zwijane. Na serwerze i do hydracji false = wszystkie grupy
+  // rozwiniete w HTML (crawler widzi komplet linkow), zwijanie dopiero po stronie klienta.
+  const [kompakt, setKompakt] = useState(false);
+  const [otwarteGrupy, setOtwarteGrupy] = useState(['start']);
   const triggerRef = useRef(null);
   const closeRef = useRef(null);
   const menuRef = useRef(null);
-  // Od klikniecia zamkniecia do ukrycia menu mija 700 ms animacji. W tym
+  // Od klikniecia zamkniecia do ukrycia menu mija ok. 260 ms animacji. W tym
   // czasie pulapka fokusu nie moze juz dzialac: goToContact przenosi fokus
   // do sekcji kontaktu, a straznik focusin cofalby go na ukrywany przycisk X.
   const zamykanieRef = useRef(false);
@@ -112,6 +120,72 @@ export default function Header() {
   const hrefCopywritingu = hrefMenu('/copywriting-seo');
   const hrefLinkBuildingu = hrefMenu('/link-building');
   const hrefNarzedzi = hrefMenu('/narzedzia');
+  // Porownania i zmiana agencji (strony z 6-18.11.2026) byly tylko w stopce.
+  const hrefPorownan = hrefMenu('/porownania');
+  const hrefZmianyAgencji = hrefMenu('/zmiana-agencji-seo');
+  // Szablony mieszkaja w sekcji #szablony huba narzedzi (lib/narzedzia.js).
+  // Kotwica jako osobne pole: Link next-intl lokalizuje sciezke tylko dla obiektu {pathname, hash}.
+
+  // 18.11.2026 (menu): linki rozwinietego menu pogrupowane. Dane w jednym miejscu: ta sama
+  // lista zasila uklad kolumnowy na desktopie i zwijane grupy na telefonie. Kolejnosc = wazność
+  // (Zacznij tutaj, Uslugi, ...). Grupa bez linkow (strona tylko-PL w EN, nieopublikowana) znika.
+  // Etykiety grup to zwykly tekst (nie naglowki): outline strony i licznik fraz bez zmian.
+  const pl = lang === 'pl';
+  const grupyMenu = [
+    { id: 'start', etykieta: pl ? 'Zacznij tutaj' : 'Start here', linki: [
+      { id: 'uslugi', href: homeHash('uslugi', lang), tekst: t('services') },
+      { id: 'cennik', href: '/cennik-pozycjonowania', tekst: t('pricing') },
+      { id: 'wyniki', href: '/#why-us', tekst: t('results') },
+      { id: 'przyklady', href: '/#portfolio', tekst: t('process') },
+    ] },
+    { id: 'uslugi', etykieta: pl ? 'Usługi' : 'Services', linki: [
+      { id: 'pozycjonowanie', href: '/pozycjonowanie-stron-internetowych', tekst: pl ? 'Pozycjonowanie' : 'SEO Services' },
+      // Lokalne SEO zaraz po Pozycjonowaniu: kontrola fraz liczy „pozycjonowanie lokalne” takze
+      // na styku sasiednich pozycji menu (jak w poprzednim ukladzie), wiec ta kolejnosc ja utrzymuje.
+      { id: 'lokalne', href: '/seo-lokalne-warszawa', tekst: pl ? 'Lokalne SEO' : 'Local SEO' },
+      { id: 'audyt', href: '/audyt-seo', tekst: pl ? 'Audyt SEO' : 'SEO Audit' },
+      // L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2.
+      { id: 'wizytowka', href: hrefWizytowki, tekst: pl ? 'Pozycjonowanie wizytówki Google' : 'Google Business Profile' },
+      { id: 'copywriting', href: hrefCopywritingu, tekst: pl ? 'Copywriting SEO' : 'SEO Copywriting' },
+      { id: 'linkbuilding', href: hrefLinkBuildingu, tekst: pl ? 'Link building' : 'Link Building' },
+      { id: 'strony', href: '/projektowanie-stron-internetowych', tekst: pl ? 'Tworzenie Stron' : 'Web Design' },
+    ] },
+    { id: 'ai', etykieta: pl ? 'Widoczność w AI' : 'AI visibility', linki: [
+      { id: 'ai-poz', href: '/pozycjonowanie-w-ai', tekst: pl ? 'Pozycjonowanie w AI' : 'AI Search' },
+      // Sprawdzarka istnieje tylko po polsku (EN = 404; lista stron tylko-PL: lib/plOnly.js).
+      { id: 'sprawdzarka', href: hrefSprawdzarki, tekst: pl ? 'Sprawdź widoczność w AI' : 'AI Visibility Check' },
+    ] },
+    { id: 'narzedzia', etykieta: pl ? 'Narzędzia i szablony' : 'Tools and templates', linki: [
+      // Narzędzia (PLAN-v2 6.9): tylko PL i dopiero po publikacji partii 3.
+      { id: 'narzedzia', href: hrefNarzedzi, tekst: pl ? 'Narzędzia' : 'Free Tools' },
+      { id: 'szablony', href: hrefNarzedzi, hash: 'szablony', tekst: pl ? 'Szablony' : 'Templates' },
+    ] },
+    { id: 'wiedza', etykieta: pl ? 'Wiedza' : 'Knowledge', linki: [
+      { id: 'blog', href: '/blog', tekst: t('blog') },
+      { id: 'porownania', href: hrefPorownan, tekst: pl ? 'Porównania' : 'Comparisons' },
+      { id: 'zmiana', href: hrefZmianyAgencji, tekst: pl ? 'Zmiana agencji SEO' : 'Switching SEO agencies' },
+    ] },
+    { id: 'firma', etykieta: pl ? 'Firma i klient' : 'Company and clients', linki: [
+      { id: 'onas', href: '/o-nas', tekst: pl ? 'O Nas' : 'About Us' },
+      { id: 'panel', href: '/panel-klienta', tekst: pl ? 'Panel klienta' : 'Client Portal' },
+    ] },
+  ].map((g) => ({ ...g, linki: g.linki.filter((l) => l.href) })).filter((g) => g.linki.length > 0);
+  // Kolumny desktopu (>= 1100 px); splaszczone daja kolejnosc grup z telefonu i tabletu.
+  const kolumnyMenu = [['start'], ['uslugi'], ['ai', 'narzedzia'], ['wiedza', 'firma']]
+    .map((ids) => ids.map((id) => grupyMenu.find((g) => g.id === id)).filter(Boolean))
+    .filter((k) => k.length > 0);
+  // Strona bez kotwicy, na ktorej jestesmy: oznaczana aria-current="page" i otwierana na telefonie.
+  const jestAktualna = (href) => !href.includes('#') && href === sciezka;
+  const grupaAktualna = grupyMenu.find((g) => g.linki.some((l) => jestAktualna(l.href)))?.id;
+  const przelaczGrupe = (id) => setOtwarteGrupy((o) => (o.includes(id) ? o.filter((x) => x !== id) : [...o, id]));
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const ustaw = () => setKompakt(mq.matches);
+    ustaw();
+    mq.addEventListener('change', ustaw);
+    return () => mq.removeEventListener('change', ustaw);
+  }, []);
 
   useEffect(() => {
     const p = typeof window !== 'undefined' ? window.location.pathname : '';
@@ -120,24 +194,21 @@ export default function Header() {
       setScrolled(isSubpage || window.scrollY > 40);
     };
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = (e) => {
+  const toggleMenu = () => {
     if (menuOpen) {
       closeMenu();
     } else {
-      const rect = e.currentTarget.getBoundingClientRect();
-      // Ensure we get valid coordinates, default to top right if something fails
-      const x = rect.left > 0 ? rect.left + rect.width / 2 : window.innerWidth - 40;
-      const y = rect.top > 0 ? rect.top + rect.height / 2 : 40;
-      
-      setTriggerPos({ x, y });
       zamykanieRef.current = false;
       przywrocFokusRef.current = false;
+      // Telefon: otwarta grupa startowa i ta ze strona, na ktorej jestesmy.
+      setOtwarteGrupy(grupaAktualna ? ['start', grupaAktualna] : ['start']);
       setMenuOpen(true);
-      
+      // Dwie ramki: najpierw element z visibility:visible i stanem poczatkowym,
+      // dopiero potem klasa is-open, zeby przejscie (opacity + transform) ruszylo.
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setMenuExpanded(true);
@@ -154,7 +225,7 @@ export default function Header() {
     setMenuExpanded(false);
     setTimeout(() => {
       setMenuOpen(false);
-    }, 700);
+    }, CZAS_ZAMKNIECIA_MENU);
   };
 
   // Menu z klawiatury (05.10.2026). Pomiar etapu 5 (Chromium i WebKit, 390,
@@ -198,7 +269,8 @@ export default function Header() {
         return;
       }
       if (e.key !== 'Tab') return;
-      const lista = [...menuRef.current.querySelectorAll('a[href], button:not([disabled])')];
+      // Tylko widoczne: w zwinietej grupie (telefon) linki maja display:none i nie przyjmuja fokusu.
+      const lista = [...menuRef.current.querySelectorAll('a[href], button:not([disabled])')].filter((el) => el.getClientRects().length > 0);
       if (!lista.length) return;
       e.preventDefault();
       const i = lista.indexOf(document.activeElement);
@@ -364,7 +436,7 @@ export default function Header() {
                 (05.10.2026). 5.11.2026 (A3b/BL-02): na tych stronach takze href
                 prowadzi wprost do formularza strony glownej (bez JS i dla crawlera). */}
             <a href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
-              background: 'var(--w-pomarancz)',
+              background: 'var(--w-pomarancz-przycisk)',
               color: 'var(--w-na-pomaranczu)',
               transition: 'all 0.7s ease'
             }}>
@@ -395,166 +467,136 @@ export default function Header() {
         </div>
       </header>
 
-      {/* KOTA Full-Screen Immersive Menu.
-          Menu bylo renderowane warunkowo ({menuOpen && ...}), przez co 12 linkow
-          nawigacji nie istnialo w HTML serwerowym - crawler dostawal z naglowka
-          tylko logo i #kontakt. Teraz markup jest zawsze w DOM, a widocznosc
-          steruje CSS. visibility:hidden usuwa menu z kolejnosci Tab i z drzewa
-          dostepnosci, gdy jest zamkniete, wiec zachowanie dla uzytkownika
-          klawiatury pozostaje bez zmian.
-          role="dialog" + aria-modal: otwarte menu przykrywa cala strone, a
-          czytnik nie wiedzial, ze tresc pod spodem jest niedostepna
-          (05.10.2026). */}
-      <div 
+      {/* Rozwiniete menu (przebudowa 18.11.2026). Zostaje z poprzedniej wersji:
+          markup zawsze w DOM (crawler widzi linki w HTML serwerowym; visibility:hidden
+          usuwa menu z kolejnosci Tab i drzewa dostepnosci, gdy zamkniete), role="dialog" +
+          aria-modal, pulapka Tab i Escape (useEffect wyzej), klasa kota-fullscreen-menu
+          (tlo, kolory fokusu, ukrywanie przycisku cookies). Nowe: grupy linkow z krotkimi
+          etykietami (zwykly tekst + aria-labelledby, bez naglowkow), kolumny na desktopie,
+          zwijane grupy na telefonie, CTA i kontakt w stopce, przelacznik jezyka, ruch
+          opacity + transform 240 ms. Style: components/HeaderMenu.css. */}
+      <div
         ref={menuRef}
         id="menu-glowne"
-        className="kota-fullscreen-menu"
+        className={`kota-fullscreen-menu menu-ov${menuExpanded ? ' is-open' : ''}`}
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
         aria-hidden={!menuOpen}
         style={{
-          clipPath: `circle(${menuExpanded ? '150vmax' : '0px'} at ${triggerPos.x}px ${triggerPos.y}px)`,
-          transition: 'clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1)',
           visibility: menuOpen ? 'visible' : 'hidden',
           pointerEvents: menuOpen ? 'auto' : 'none'
         }}
       >
-          {/* Header inside the menu to match placement */}
-          <div 
-            className="nav-container" 
-            style={{ 
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              left: 0,
-              maxWidth: scrolled ? 'var(--container-width)' : '100%', 
-              padding: scrolled ? '0 1.5rem' : '0 3vw',
-              margin: '0 auto',
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              paddingTop: scrolled ? '0.9rem' : '1.35rem',
-              height: scrolled ? 'auto' : 'auto',
-              zIndex: 10
-            }}
-          >
-            {/* transitionProperty: regula .kota-menu-trigger ma transition: all,
-                wiec X dziedziczyl visibility menu z animacja i przez pierwsze
-                klatki mial computed visibility hidden - focus() po otwarciu
-                bywal ignorowany (WebKit: 1 z 3 prob). Animowane wlasciwosci
-                hovera (transform, tlo, kolor, cien) zostaja bez zmian. */}
+        <div className="menu-pasek">
+          <div className="menu-pasek-wew">
+            <div className="menu-jezyk" role="group" aria-label={pl ? 'Język strony' : 'Site language'}>
+              <NextLink
+                href={hrefJezyka('pl')}
+                hrefLang="pl"
+                lang="pl"
+                prefetch={false}
+                className="menu-jezyk-link"
+                aria-current={lang === 'pl' ? 'true' : undefined}
+                onClick={() => onLangClick('pl')}
+                title="Polski"
+              >PL</NextLink>
+              <span aria-hidden="true" className="menu-jezyk-kreska" />
+              <NextLink
+                href={hrefJezyka('en')}
+                hrefLang="en"
+                lang="en"
+                prefetch={false}
+                className="menu-jezyk-link"
+                aria-current={lang === 'en' ? 'true' : undefined}
+                onClick={() => onLangClick('en')}
+                title="English"
+              >EN</NextLink>
+            </div>
+            {/* transitionProperty: regula .kota-menu-trigger ma transition: all, wiec X
+                dziedziczyl visibility menu z animacja i przez pierwsze klatki mial
+                computed visibility hidden - focus() po otwarciu bywal ignorowany
+                (WebKit: 1 z 3 prob) (05.10.2026). */}
             <button
               ref={closeRef}
               className="kota-menu-trigger close-variant"
               style={{ transitionProperty: 'transform, background-color, color, box-shadow' }}
               onClick={() => closeMenu(true)}
-              aria-label={lang === 'pl' ? 'Zamknij menu' : 'Close menu'}
-              title={lang === 'pl' ? 'Zamknij menu' : 'Close menu'}
+              aria-label={pl ? 'Zamknij menu' : 'Close menu'}
+              title={pl ? 'Zamknij menu' : 'Close menu'}
             >
               ✕
             </button>
           </div>
+        </div>
 
-          <div 
-            className="kota-fullscreen-content container"
-            style={{ 
-              justifyContent: 'flex-start',
-              paddingTop: scrolled ? '0.9rem' : '1.35rem' 
-            }}
-          >
-            {/* Linki menu nie byly w zadnym <nav> - strona glowna miala 0
-                punktow orientacyjnych nawigacji (05.10.2026). W CSS nie ma
-                selektorow "> ul", wiec uklad sie nie zmienia. */}
-            <nav aria-label={lang === 'pl' ? 'Menu główne' : 'Main menu'}>
-              <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
-                <li style={{ '--delay': '0.1s' }}>
-                  <Link href="/#why-us" onClick={closeMenu}>{t('results')}</Link>
-                </li>
-                <li style={{ '--delay': '0.15s' }}>
-                  <Link href={homeHash('uslugi', lang)} onClick={closeMenu}>{t('services')}</Link>
-                </li>
-                <li style={{ '--delay': '0.2s' }}>
-                  <Link href="/cennik-pozycjonowania" onClick={closeMenu}>{t('pricing')}</Link>
-                </li>
-                <li style={{ '--delay': '0.25s' }}>
-                  <Link href="/#portfolio" onClick={closeMenu}>{t('process')}</Link>
-                </li>
-                <li style={{ '--delay': '0.3s' }}>
-                  <Link href="/audyt-seo" onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</Link>
-                </li>
-                <li style={{ '--delay': '0.35s' }}>
-                  <Link href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</Link>
-                </li>
-                <li style={{ '--delay': '0.4s' }}>
-                  <Link href="/seo-lokalne-warszawa" onClick={closeMenu}>{lang === 'pl' ? 'Lokalne SEO' : 'Local SEO'}</Link>
-                </li>
-                {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
-                {hrefWizytowki && (
-                  <li style={{ '--delay': '0.41s' }}>
-                    <Link href={hrefWizytowki} onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie wizytówki Google' : 'Google Business Profile'}</Link>
-                  </li>
-                )}
-                {hrefCopywritingu && (
-                  <li style={{ '--delay': '0.417s' }}>
-                    <Link href={hrefCopywritingu} onClick={closeMenu}>{lang === 'pl' ? 'Copywriting SEO' : 'SEO Copywriting'}</Link>
-                  </li>
-                )}
-                {hrefLinkBuildingu && (
-                  <li style={{ '--delay': '0.419s' }}>
-                    <Link href={hrefLinkBuildingu} onClick={closeMenu}>{lang === 'pl' ? 'Link building' : 'Link Building'}</Link>
-                  </li>
-                )}
-                <li style={{ '--delay': '0.42s' }}>
-                  <Link href="/pozycjonowanie-w-ai" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search'}</Link>
-                </li>
-                {/* Sprawdzarka istnieje tylko po polsku (EN = 404; lista stron tylko-PL: lib/plOnly.js). */}
-                {hrefSprawdzarki && (
-                  <li style={{ '--delay': '0.43s' }}>
-                    <Link href={hrefSprawdzarki} onClick={closeMenu}>{lang === 'pl' ? 'Sprawdź widoczność w AI' : 'AI Visibility Check'}</Link>
-                  </li>
-                )}
-                {/* Narzędzia (PLAN-v2 6.9): tylko PL i dopiero po publikacji partii 3. */}
-                {hrefNarzedzi && (
-                  <li style={{ '--delay': '0.44s' }}>
-                    <Link href={hrefNarzedzi} onClick={closeMenu}>{lang === 'pl' ? 'Narzędzia' : 'Free Tools'}</Link>
-                  </li>
-                )}
-                <li style={{ '--delay': '0.45s' }}>
-                  <Link href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</Link>
-                </li>
-                <li style={{ '--delay': '0.5s' }}>
-                  <Link href="/blog" onClick={closeMenu}>{t('blog')}</Link>
-                </li>
-                <li style={{ '--delay': '0.55s' }}>
-                  <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
-                </li>
-                <li style={{ '--delay': '0.6s' }}>
-                  <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
-                </li>
-                <li style={{ '--delay': '0.65s' }}>
-                  <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
-                </li>
-                <li style={{ '--delay': '0.7s' }}>
-                  <Link href="/panel-klienta" onClick={closeMenu}>{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</Link>
-                </li>
-                <li style={{ '--delay': '0.75s' }}>
-                  <a href={PANEL_LOGIN_URL} onClick={closeMenu}>{lang === 'pl' ? 'Logowanie do panelu' : 'Portal login'}</a>
-                </li>
-              </ul>
-            </nav>
-
-            <div className="kota-fullscreen-footer" style={{ marginTop: 'auto' }}>
-              <div className="footer-contact">
-                <span className="footer-label">{lang === 'pl' ? 'Napisz do nas' : 'Email Us'}</span>
-                <a href="mailto:kontakt@ai-seo-company.pl" className="footer-value" data-cta="menu">kontakt@ai-seo-company.pl</a>
+        <div className="menu-przewijanie">
+          <div className="menu-tresc">
+            {/* Linki menu w <nav> (05.10.2026): punkt orientacyjny nawigacji. */}
+            <nav aria-label={pl ? 'Menu główne' : 'Main menu'}>
+              <div className="menu-siatka">
+                {kolumnyMenu.map((kol, ki) => (
+                  <div className="menu-kolumna" key={ki}>
+                    {kol.map((g) => {
+                      const otwarta = !kompakt || otwarteGrupy.includes(g.id);
+                      const idEt = `menu-gr-${g.id}`;
+                      return (
+                        <div className="menu-grupa" key={g.id} style={{ '--i': grupyMenu.indexOf(g) }}>
+                          {kompakt ? (
+                            <button
+                              type="button"
+                              id={idEt}
+                              className="menu-grupa-nazwa menu-grupa-przycisk"
+                              aria-expanded={otwarta}
+                              aria-controls={`${idEt}-lista`}
+                              onClick={() => przelaczGrupe(g.id)}
+                            >
+                              <span>{g.etykieta}</span>
+                              <span className="menu-szewron" aria-hidden="true" />
+                            </button>
+                          ) : (
+                            <p id={idEt} className="menu-grupa-nazwa">{g.etykieta}</p>
+                          )}
+                          <ul id={`${idEt}-lista`} className="menu-lista" aria-labelledby={idEt} hidden={!otwarta}>
+                            {g.linki.map((l) => (
+                              <li key={l.id}>
+                                <Link
+                                  href={l.hash ? { pathname: l.href, hash: l.hash } : l.href}
+                                  onClick={closeMenu}
+                                  aria-current={!l.hash && jestAktualna(l.href) ? 'page' : undefined}
+                                >{l.tekst}</Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
               </div>
-              <div className="footer-contact">
-                <span className="footer-label">{lang === 'pl' ? 'Zadzwoń' : 'Call us'}</span>
-                <a href="tel:+48518815055" className="footer-value" data-cta="menu">518 815 055</a>
+            </nav>
+          </div>
+        </div>
+
+        <div className="menu-stopka">
+          <div className="menu-stopka-wew">
+            <div className="menu-akcje">
+              <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu" className="menu-cta">{pl ? 'Darmowa Wycena' : 'Free Quote'}</Link>
+              <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu" className="menu-przycisk">{pl ? 'Kontakt' : 'Contact'}</Link>
+              <a href={PANEL_LOGIN_URL} onClick={closeMenu} className="menu-przycisk">{pl ? 'Logowanie do panelu' : 'Portal login'}</a>
+            </div>
+            <div className="menu-kontakt">
+              <div className="menu-kontakt-poz">
+                <span className="menu-kontakt-etykieta">{pl ? 'Napisz do nas' : 'Email Us'}</span>
+                <a href="mailto:kontakt@ai-seo-company.pl" className="menu-kontakt-wartosc" data-cta="menu">kontakt@ai-seo-company.pl</a>
+              </div>
+              <div className="menu-kontakt-poz">
+                <span className="menu-kontakt-etykieta">{pl ? 'Zadzwoń' : 'Call us'}</span>
+                <a href="tel:+48518815055" className="menu-kontakt-wartosc" data-cta="menu">518 815 055</a>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </>
   );
