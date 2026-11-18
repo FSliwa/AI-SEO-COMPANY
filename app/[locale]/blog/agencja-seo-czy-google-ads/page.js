@@ -272,6 +272,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
               <p>
                 Tak wygląda też nasze <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie stron internetowych</Link>: technika, treści, linki i Profil Firmy w Google w jednym procesie. Coraz częściej do tego zakresu dochodzi widoczność w odpowiedziach AI, którą opisujemy na stronie <Link href="/pozycjonowanie-w-ai">pozycjonowanie w AI</Link>
                 {hrefAiOverviews ? <> i w poradniku, <Link href={hrefAiOverviews}>jak zoptymalizować stronę pod Google AI Overviews</Link>.</> : '.'}
+                {' '}W Trybie AI Google liczy kliknięcia inaczej, opisujemy to w artykule <Link href="/blog/google-ai-mode-jak-sie-pojawic">Google AI Mode</Link>.
               </p>
 
               <h2 id="google-ads">Jak działają Google Ads i aukcja reklam?</h2>
@@ -294,7 +295,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
 
               <h3>Wynik jakości</h3>
               <p>Wynik jakości (Quality Score) to ocena w skali od 1 do 10 przypisywana do słowa kluczowego. Składa się z trzech elementów: oczekiwanego współczynnika klikalności (CTR), trafności reklamy i jakości strony docelowej. Google zaznacza, że to narzędzie diagnostyczne, a nie bezpośredni składnik aukcji, więc traktuj go jako wskazówkę, co poprawić, a nie jako cel sam w sobie.</p>
-              <p>Tu widać pierwszy punkt styku z SEO. Szybka, czytelna i trafna strona docelowa pomaga zarówno w wynikach organicznych, jak i w ocenie jakości reklam.</p>
+              <p>Tu widać pierwszy punkt styku z SEO. Szybka, czytelna i trafna strona docelowa pomaga zarówno w wynikach organicznych, jak i w ocenie jakości reklam. Jak ją zaplanować, od treści i wyboru CMS po hosting i koszty, opisujemy w poradniku o <Link href="/blog/landing-page-tworzenie-cms-hosting-cena">tworzeniu landing page</Link>.</p>
 
               <h2 id="typy-kampanii">Jakie typy kampanii Google Ads warto znać?</h2>
               <p>Kampanie Google Ads różnią się miejscem wyświetlania, formatem i celem. Poniższa tabela opiera się na opisie typów kampanii w Centrum pomocy Google Ads (stan na 18.11.2026) i obejmuje te, z którymi firmy spotykają się najczęściej. Google rozwija ofertę, więc w koncie możesz zobaczyć też węższe typy, a nazwy w interfejsie mogą się różnić.</p>
@@ -353,7 +354,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
               <h3>Kiedy potrzebny jest pełny audyt SEO</h3>
               <p>Audyt SEO to ręczna analiza wsparta narzędziami, która kończy się listą zadań z priorytetami. Obejmuje technikę, treści, linki i konkurencję, a jego wynikiem jest plan, a nie tylko lista ostrzeżeń.</p>
               <Tabela naglowki={['Kryterium', 'SEO checker', 'Pełny audyt SEO']} wiersze={CHECKER_VS_AUDYT} />
-              <p>Jeśli strona ma już ruch lub planujesz większą inwestycję, zamów <Link href="/audyt-seo">audyt SEO strony internetowej</Link>. Szczegółowe progi techniczne opisujemy w artykule <Link href="/blog/technical-seo-audit-checklist">audyt techniczny SEO</Link>.</p>
+              <p>Jeśli strona ma już ruch lub planujesz większą inwestycję, zamów <Link href="/audyt-seo">audyt SEO strony internetowej</Link>. Szczegółowe progi techniczne opisujemy w poradniku <Link href="/blog/technical-seo-audit-checklist">jak zrobić audyt SEO</Link>.</p>
 
               <h2 id="wybor-partnera">Jak wybrać agencję SEO lub partnera do reklam?</h2>
               <p>Wybór partnera to decyzja na miesiące, więc warto ją oprzeć na konkretnych pytaniach, a nie na obietnicach z oferty. Google w poradniku dla właścicieli stron, którzy rozważają zatrudnienie specjalisty SEO, podsuwa listę pytań, które dobrze sprawdzają się także przy wyborze partnera do reklam.</p>
@@ -369,6 +370,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
               <p>
                 W przypadku reklam dopytaj dodatkowo, jak partner skonfiguruje konwersje, jak często przegląda wyszukiwane hasła i kto zatwierdza zmiany budżetu.
                 {hrefJakWybrac && <> Pełną listę dwunastu pytań z dobrymi odpowiedziami i czerwonymi flagami znajdziesz w porównaniu <Link href={hrefJakWybrac}>jak wybrać agencję SEO</Link>.</>}
+                {' '}Pozostałe zestawienia kryteriów, kosztów i ryzyk są w dziale <Link href="/porownania">porównania przed wyborem agencji SEO</Link>.
               </p>
 
               <h3>Raportowanie i dostęp do kont</h3>
@@ -403,7 +405,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
 
               <h2 id="podsumowanie">Podsumowanie: fundament z SEO, tempo z reklam</h2>
               <p>Wybór między SEO a reklamami rzadko jest wyborem jednego kanału kosztem drugiego. Agencja SEO pomaga zbudować stronę, która z czasem przyciąga klientów bez płacenia za każde kliknięcie, a kampanie Google Ads dają szybki dostęp do osób szukających Twojej oferty tu i teraz.</p>
-              <p>Zacznij od diagnozy strony, ustal mierzalne cele i wybierz partnera, który pracuje przejrzyście, a konta zostawia na Twojej firmie. Jeśli chcesz sprawdzić, jaki potencjał ma Twoja strona w wynikach organicznych, porozmawiaj z nami o <Link href="/audyt-seo">audycie SEO</Link> i planie działań.</p>
+              <p>Zacznij od diagnozy strony, ustal mierzalne cele i wybierz partnera, który pracuje przejrzyście, a konta zostawia na Twojej firmie. Jeśli chcesz sprawdzić, jaki potencjał ma Twoja strona w wynikach organicznych, porozmawiaj z nami o audycie SEO i planie działań.</p>
 
               <Zrodla zrodla={ZRODLA} />
 

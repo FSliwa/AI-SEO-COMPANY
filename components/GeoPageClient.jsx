@@ -77,9 +77,9 @@ const ZRODLO = {
 const T = {
   pl: {
     tag: 'Pozycjonowanie w AI · GEO',
-    h1: 'Pozycjonowanie w AI: Twoja firma w odpowiedziach ChatGPT i Google',
+    h1: 'Pozycjonowanie w AI: Twoja firma w ChatGPT i Google AI Overview',
     // Krótka odpowiedź (59 słów, PLAN-v2 6.16: CB-22 + rozwinięcie GEO z AV-19) zastępuje lead.
-    answer: 'Pozycjonowanie w AI (GEO, Generative Engine Optimization) to praca nad tym, żeby ChatGPT, Gemini, Perplexity i przegląd AI w Google wymieniały Twoją firmę, gdy klient pyta o usługę. AI SEO COMPANY z Warszawy co tydzień zadaje modelom 30 pytań Twoich klientów, pokazuje wynik w panelu klienta i pracuje na źródłach, z których modele korzystają. Audyt kosztuje 990 zł netto.',
+    answer: 'Pozycjonowanie w AI (GEO, Generative Engine Optimization) to praca nad tym, żeby ChatGPT, Gemini, Perplexity i przegląd AI w Google (AI Overview) wymieniały Twoją firmę, gdy klient pyta o usługę. AI SEO COMPANY z Warszawy co tydzień zadaje modelom 30 pytań Twoich klientów, pokazuje wynik w panelu klienta i pracuje na źródłach, z których modele korzystają. Audyt kosztuje 990 zł netto.',
     ctaCheck: 'Sprawdź za darmo, czy ChatGPT Cię poleca',
     ctaAudit: 'Audyt AI za 990 zł netto',
     howTitle: 'Jak mierzymy widoczność w AI',
@@ -160,7 +160,8 @@ const faq = [
     // Pierwsze zdanie przeredagowane (bez 10 słów wspólnych z Krótką odpowiedzią, SA-01, playbook 5.5);
     // dopiski OP-05 i AV-19 + link do P2 (MSA-05).
     answer: 'To praca nad tym, żeby modele językowe, takie jak ChatGPT, Gemini czy Perplexity, i przeglądy AI w Google podawały nazwę Twojej firmy, kiedy ktoś szuka usługi z Twojej branży. Modele składają odpowiedź ze stron, które znajdą, więc liczą się wzmianki w tych źródłach, treści odpowiadające na pytania i spójne dane firmy. Tę samą usługę nazywa się też GEO (generative engine optimization), LLM SEO albo SEO pod AI. Te same działania kryją się pod skrótami AEO (answer engine optimization), AIO i LLMO.'
-      + jesli(HREF.p2, (h) => ` Czym GEO różni się od SEO, pokazujemy w ${aWew(h, 'porównaniu SEO i GEO')}.`),
+      + jesli(HREF.p2, (h) => ` Czym GEO różni się od SEO, pokazujemy w ${aWew(h, 'porównaniu SEO i GEO')}.`)
+      + ` Jak działa i jak mierzyć ${aWew('/blog/google-ai-mode-jak-sie-pojawic', 'Google AI Mode')}, opisujemy w osobnym poradniku.`,
     // AV-19: rozwinięcie GEO w treści widocznej także na EN (lead + ta odpowiedź = 2 wystąpienia).
     answerEn: 'It is work to make language models such as ChatGPT, Gemini or Perplexity, and the AI overviews in Google, mention your company when a customer asks about a service. Models assemble answers from the pages they find, so mentions in those sources, content that answers questions, and consistent business data all matter. GEO stands for generative engine optimization and has nothing to do with geotargeting; the same work also goes by AEO (answer engine optimization), AIO and LLMO.'
   },

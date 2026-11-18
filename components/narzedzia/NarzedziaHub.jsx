@@ -17,6 +17,7 @@
 // 18.11.2026 (mockupy): miniatury to ilustracje wyniku z Figmy (WebP 720, 1080 i 1440 px przez srcSet, zwykły <img>
 // zamiast next/image, żeby gotowe pliki szły bez drugiej kompresji); podpis „Podgląd wyniku (przykładowe dane)”.
 
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów (nie CSS strony głównej)
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -25,7 +26,6 @@ import AnswerBox from '@/components/AnswerBox';
 import Zrodla from '@/components/Zrodla';
 import { CollectionPageSchema } from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { hrefDlaLink, hrefWJezyku } from '@/lib/linkiEn';
 import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
@@ -70,8 +70,8 @@ const TEKSTY = {
       { href: '/narzedzia/kalkulator-strat-seo', link: 'Policz, ile kosztują braki.', tekst: ' Kalkulator przelicza Twoje liczby na zysk, który trafia do konkurencji, osobno dla Google i dla odpowiedzi AI, i pokazuje, w którym miesiącu koszt SEO się zwraca.' },
       { href: '/narzedzia/generator-llms-txt', link: 'Sprawdź dostęp botów AI.', tekst: ' Generator pokaże, czy robots.txt albo serwer nie blokują botów ChatGPT, Perplexity czy Claude, i da gotowy plik llms.txt. To propozycja formatu (llmstxt.org), a nie standard wyszukiwarek, więc traktuj plik jako dodatek do otwartego dostępu, a nie gwarancję widoczności.' },
     ],
-    poKrokach: 'Jeśli planujesz nową stronę, makieta w kilka minut pokaże, jak mogłaby wyglądać strona główna zbudowana z Twoich treści.',
-    linkMakieta: 'Zobacz makietę nowej strony',
+    poKrokach: 'Jeśli planujesz nową stronę, wypróbuj narzędzie, które w kilka minut pokaże, jak mogłaby wyglądać strona główna zbudowana z Twoich treści:',
+    linkMakieta: 'makieta strony internetowej z AI',
     h2Dane: 'Skąd narzędzia biorą dane i jakie mają ograniczenia',
     krotko: { 'audyt-seo': 'Darmowy audyt SEO', 'sprawdzarka-ai': 'Widoczność w AI', 'kalkulator-strat-seo': 'Kalkulator strat', 'makieta-redesignu': 'Makieta nowej strony', 'generator-llms-txt': 'Generator llms.txt', 'autorytet-domeny': 'Autorytet domeny' },
     pDane: 'Każde narzędzie pokazuje wynik z prawdziwego sprawdzenia, bez wymyślonych liczb. Oto, co dokładnie robi i gdzie kończy się jego zasięg.',
@@ -253,12 +253,13 @@ export default function NarzedziaHub({ locale = 'pl' }) {
 
       <section className={st.hero} style={s.hero}>
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
+          {/* 18.11.2026 (anim-system): bez Reveal (framer): H1 jest LCP, wchodzi własnym translate z CSS (nw-wznies). */}
+          <div className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
             </div>
             <h1 style={s.h1}>{H1}</h1>
-          </Reveal>
+          </div>
           <p className={st.lead} style={{ ...s.lead, margin: '0 auto 1.5rem' }}>{t.lead(szablony.length)}</p>
 
           {/* Z-H7: pole darmowego audytu SEO w hubie (ten sam klient co na stronie audytu, bez automatycznego startu). */}

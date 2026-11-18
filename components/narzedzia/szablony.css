@@ -5,7 +5,7 @@
    Zastępuje style inline z styl.js i reguły .szablon-tresc z wyglad.css (wyższa specyficzność).
    ========================================================================== */
 .sz {
-  --sz-ease: var(--w-ruch-ease, cubic-bezier(0.16, 1, 0.3, 1));
+  --sz-ease: var(--r-ease); /* 18.11.2026 (anim-system): jedna krzywa i czasy z app/ruch.css (--r-*) */
   --sz-cien: 0 24px 60px rgba(10, 19, 55, 0.1);
   background: var(--w-papier);
   color: var(--color-text-main);
@@ -74,7 +74,7 @@ body:has(.sz) { overflow-x: clip; }
 .sz-nav__lista a {
   display: block; padding: 12px 14px; border-radius: 999px; font-size: 0.875rem; line-height: 1.3; white-space: nowrap; max-width: 70vw; overflow: hidden; text-overflow: ellipsis;
   color: var(--w-tusz-2); text-decoration: none; border: 1px solid var(--w-linia); background: var(--w-karta);
-  transition: background var(--w-ruch-krotki, 0.28s) var(--sz-ease), color var(--w-ruch-krotki, 0.28s) var(--sz-ease), border-color var(--w-ruch-krotki, 0.28s) var(--sz-ease);
+  transition: background var(--r-d-std) var(--sz-ease), color var(--r-d-std) var(--sz-ease), border-color var(--r-d-std) var(--sz-ease);
 }
 .sz-nav__lista a:hover { color: var(--w-tusz); border-color: var(--w-brzoskwinia); }
 .sz-nav__lista a[aria-current='true'] { background: var(--w-brzoskwinia-tlo); color: var(--w-tusz); border-color: rgba(243, 183, 156, 0.8); font-weight: 600; }
@@ -107,7 +107,7 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 .sz-przypis { font-size: 0.9rem; line-height: 1.55; color: var(--w-tusz-2); margin: 0.6rem 0 0; }
 .sz-link, .sz-tresc a:not(.btn), .szablon-tresc a {
   color: var(--w-tusz); text-decoration: underline; text-decoration-color: var(--w-pomarancz); text-decoration-thickness: 2px; text-underline-offset: 3px;
-  transition: text-decoration-color var(--w-ruch-krotki, 0.28s) var(--sz-ease), color var(--w-ruch-krotki, 0.28s) var(--sz-ease);
+  transition: text-decoration-color var(--r-d-std) var(--sz-ease), color var(--r-d-std) var(--sz-ease);
 }
 .sz-link:hover, .sz-tresc a:not(.btn):hover, .szablon-tresc a:hover { color: var(--w-pomarancz-hover); text-decoration-color: currentColor; }
 
@@ -131,7 +131,7 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 .sz-tabela > div { margin: 0 !important; }
 .sz-tabela table { background: transparent !important; }
 .sz-tabela caption { padding-left: 1rem !important; padding-top: 0.5rem !important; }
-.sz-tabela tbody tr { transition: background var(--w-ruch-krotki, 0.28s) var(--sz-ease); }
+.sz-tabela tbody tr { transition: background var(--r-d-std) var(--sz-ease); }
 .sz-tabela tbody tr:hover { background: rgba(251, 230, 218, 0.45); }
 .sz-tabela tbody tr:last-child th, .sz-tabela tbody tr:last-child td { border-bottom: 0 !important; }
 
@@ -162,13 +162,15 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 .sz-powiazane { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); font-size: 0.95rem; line-height: 1.5; color: var(--w-tusz-2); }
 .sz-powiazane > li {
   position: relative; padding: 1.1rem 3rem 1.1rem 1.25rem; border: 1px solid var(--w-linia); border-radius: 20px; background: var(--w-karta);
-  transition: transform var(--w-ruch-krotki, 0.28s) var(--sz-ease), border-color var(--w-ruch-krotki, 0.28s) var(--sz-ease);
+  transition: transform var(--r-d-std) var(--sz-ease), border-color var(--r-d-std) var(--sz-ease);
 }
-.sz-powiazane > li::after { content: ''; position: absolute; right: 1.1rem; top: 1rem; width: 1.1rem; height: 1.1rem; background: var(--w-pomarancz); -webkit-mask: var(--ico-ne) center / contain no-repeat; mask: var(--ico-ne) center / contain no-repeat; transition: transform var(--w-ruch-krotki, 0.28s) var(--sz-ease); }
+.sz-powiazane > li::after { content: ''; position: absolute; right: 1.1rem; top: 1rem; width: 1.1rem; height: 1.1rem; background: var(--w-pomarancz); -webkit-mask: var(--ico-ne) center / contain no-repeat; mask: var(--ico-ne) center / contain no-repeat; transition: transform var(--r-d-std) var(--sz-ease); }
 .sz-powiazane > li:hover { border-color: var(--w-brzoskwinia); transform: translateY(-3px); }
 .sz-powiazane > li:hover::after { transform: translate(2px, -2px); }
 .sz-powiazane a { display: block; padding-block: 9px; margin-top: -9px; margin-bottom: calc(0.25rem - 9px); font-weight: 600; font-size: 1.0625rem; color: var(--w-tusz); }
 .sz-powiazane a::before { content: ''; position: absolute; inset: 0; border-radius: 20px; }
+/* dwukropek między tytułem a opisem zostaje w DOM (ten sam tekst co przed redesignem), ale w karcie nie jest widoczny */
+.sz-dwukropek { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* Zrzuty paneli (raport-seo) jak kartka dokumentu */
 .sz-figura { margin: 0 0 2rem; }
@@ -192,36 +194,32 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 
 /* ---------- Ruch ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  /* Hero: wejście elementów transformem; H1 bez opacity 0 (LCP) */
-  .sz-hero__tekst > :not(.sz-h1) { animation: sz-wej 0.7s var(--sz-ease) both; }
-  .sz-hero__tekst > .sz-tag { animation-delay: 0.02s; }
-  .sz-hero__tekst > .byline { animation-delay: 0.1s; }
-  .sz-hero__tekst > .answer-box { animation-delay: 0.16s; }
-  .sz-hero__tekst > .sz-cta { animation-delay: 0.24s; }
-  .sz-h1 { animation: sz-wej-h1 0.7s var(--sz-ease) both; }
-  .sz-tlo::before { animation: sz-dryf 120s ease-in-out infinite alternate; }
-  .sz-podglad .sz-arkusz { transition: transform 0.6s var(--sz-ease); }
-  .sz-arkusz--przod { animation: sz-wej-arkusz 0.9s var(--sz-ease) backwards; }
-  .sz-arkusz--tyl { animation: sz-rozsun 0.9s var(--sz-ease) 0.1s backwards; --x: 10px; --y: -5px; --r: 3deg; }
-  .sz-arkusz--tyl2 { animation: sz-rozsun 0.9s var(--sz-ease) 0.18s backwards; --x: 20px; --y: -10px; --r: 6deg; }
+  /* Hero: wejście elementów samym przesunięciem (bez opacity: .answer-box p bywa LCP, nie może startować przezroczysty),
+     400 ms, stagger 50 ms (tag 0, byline 50, odpowiedź 100, przycisk 150). H1 bez zmian: tylko translate. */
+  .sz-hero__tekst > :not(.sz-h1) { animation: sz-wej var(--r-d-wej) var(--sz-ease) both; }
+  .sz-hero__tekst > .byline { animation-delay: var(--r-stagger); }
+  .sz-hero__tekst > .answer-box { animation-delay: calc(var(--r-stagger) * 2); }
+  .sz-hero__tekst > .sz-cta { animation-delay: calc(var(--r-stagger) * 3); }
+  .sz-h1 { animation: sz-wej-h1 var(--r-d-wej) var(--sz-ease) both; }
+  /* Tło i arkusz są statyczne (bez pętli sz-dryf i sz-unos). Arkusze: wejście 480/400 ms, rozsunięcie co 60 ms. */
+  .sz-podglad .sz-arkusz { transition: transform var(--r-d-std) var(--sz-ease); }
+  .sz-arkusz--przod { animation: sz-wej-arkusz var(--r-d-wynik) var(--sz-ease) backwards; }
+  .sz-arkusz--tyl { animation: sz-rozsun var(--r-d-wej) var(--sz-ease) 60ms backwards; --x: 10px; --y: -5px; --r: 3deg; }
+  .sz-arkusz--tyl2 { animation: sz-rozsun var(--r-d-wej) var(--sz-ease) 120ms backwards; --x: 20px; --y: -10px; --r: 6deg; }
   .sz-podglad:hover .sz-arkusz--tyl { transform: translate(18px, -8px) rotate(4.5deg); }
   .sz-podglad:hover .sz-arkusz--tyl2 { transform: translate(36px, -14px) rotate(9deg); }
   .sz-podglad:hover .sz-arkusz--przod { transform: translateY(-6px) rotate(-1deg); }
-  @media (min-width: 1100px) {
-    .sz-arkusz--przod { animation: sz-wej-arkusz 0.9s var(--sz-ease) backwards, sz-unos 9s ease-in-out 1s infinite; }
-  }
-  [data-petla='poza'] .sz-tlo::before { animation-play-state: paused; }
 
-  /* Karty i kafelki: hover */
-  .sz-pobierz__form { transition: border-color var(--w-ruch-krotki, 0.28s) var(--sz-ease), box-shadow var(--w-ruch-krotki, 0.28s) var(--sz-ease); }
+  /* Formularz pobrania */
+  .sz-pobierz__form { transition: border-color var(--r-d-std) var(--sz-ease), box-shadow var(--r-d-std) var(--sz-ease); }
   .sz-pobierz__form:focus-within { border-color: var(--w-pomarancz); }
 
-  /* Wejścia sterowane przewijaniem (ulepszenie; bez wsparcia treść jest od razu widoczna) */
+  /* Wejścia sterowane przewijaniem: klatki r-wej z app/ruch.css (opacity 0, 12 px, zakres entry 0-35%).
+     Ulepszenie: bez wsparcia treść jest od razu widoczna. Pozostałe wpisy listy powiązanych z krokiem 8%. */
   @supports ((animation-timeline: view()) and (animation-range: entry 0% cover 30%)) {
-    .sz-sekcja, .sz-faq, .sz-aside { animation: sz-wej-scroll linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
-    .sz-powiazane > li { animation: sz-wej-scroll linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
-    .sz-powiazane > li:nth-child(2n) { animation-range: entry 8% entry 68%; }
-    .sz-powiazane > li:nth-child(3n) { animation-range: entry 16% entry 76%; }
+    .sz-sekcja, .sz-faq, .sz-aside, .sz-powiazane > li { animation: r-wej linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+    .sz-powiazane > li:nth-child(2n) { animation-range: entry 8% entry 43%; }
+    .sz-powiazane > li:nth-child(3n) { animation-range: entry 16% entry 51%; }
     .sz-nav__postep { display: block; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--w-pomarancz); transform-origin: left; animation: sz-postep linear both; animation-timeline: scroll(root); }
   }
   @media (min-width: 1100px) {
@@ -231,13 +229,10 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
     }
   }
 }
-@keyframes sz-wej { from { opacity: 0; transform: translateY(14px); } }
-@keyframes sz-wej-h1 { from { transform: translateY(14px); } }
-@keyframes sz-wej-arkusz { from { transform: translateY(24px); } }
+@keyframes sz-wej { from { translate: 0 var(--r-dy-m); } }
+@keyframes sz-wej-h1 { from { translate: 0 var(--r-dy-m); } }
+@keyframes sz-wej-arkusz { from { transform: translateY(var(--r-dy-l)); } }
 @keyframes sz-rozsun { from { transform: translate(0, 0) rotate(0); } to { transform: translate(var(--x), var(--y)) rotate(var(--r)); } }
-@keyframes sz-unos { 50% { transform: translateY(-7px); } }
-@keyframes sz-dryf { to { transform: translate3d(-6%, 4%, 0); } }
-@keyframes sz-wej-scroll { from { opacity: 0.001; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 @keyframes sz-postep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes sz-postep-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 

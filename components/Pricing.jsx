@@ -88,7 +88,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li data-ikona="pin">Prowadzenie Wizytówki Google (walka o TOP 3 Map)</li>
                   <li data-ikona="link">Strategia link buildingu i rozbudowa artykułów</li>
                   <li data-ikona="warstwy">Do 50 fraz, 4 treści i 4 linki miesięcznie</li>
-                  <li data-ikona="ai">Widoczność w AI: 30 pytań co tydzień w ChatGPT i Google</li>
+                  <li data-ikona="ai">Widoczność w AI: 30 pytań co tydzień w ChatGPT, Perplexity, Gemini i przeglądzie AI Google</li>
                   <li data-ikona="tarcza">Możliwość rezygnacji w każdej chwili</li>
                 </>
               ) : (
@@ -99,7 +99,7 @@ export default function Pricing({ isMainContent = false }) {
                   <li data-ikona="pin">Google Maps TOP 3 ranking management</li>
                   <li data-ikona="link">High-authority link building & expert content</li>
                   <li data-ikona="warstwy">Up to 50 keywords, 4 content pieces and 4 links a month</li>
-                  <li data-ikona="ai">AI visibility: 30 questions weekly in ChatGPT and Google</li>
+                  <li data-ikona="ai">AI visibility: 30 questions weekly in ChatGPT, Perplexity, Gemini and Google AI Overviews</li>
                   <li data-ikona="tarcza">Cancel anytime flexible policy</li>
                 </>
               )}

@@ -91,6 +91,13 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
   const kontener = useRef(null);
   const doFokusu = useRef(null);
   const [komunikat, setKomunikat] = useState('');
+  // Ostatnio przesunięty link: krótkie podświetlenie wiersza (opacity nakładki, ruch.css pakiet C).
+  const [przesuniety, setPrzesuniety] = useState(null);
+  useEffect(() => {
+    if (!przesuniety) return undefined;
+    const t = setTimeout(() => setPrzesuniety(null), 1000);
+    return () => clearTimeout(t);
+  }, [przesuniety]);
 
   // Po przesunięciu link zmienia miejsce w DOM (inna sekcja = nowy element), więc fokus wraca tu.
   useEffect(() => {
@@ -108,6 +115,7 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
       return;
     }
     doFokusu.current = { id: link.id, akcja: kierunek < 0 ? 'gora' : 'dol' };
+    setPrzesuniety(link.id);
     onZmiana(nowy);
     setKomunikat(t.pozycja(tytulLinku(link), pozycja(nowy, link.id)));
   }
@@ -116,6 +124,7 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
     const nowy = doSekcji(model, link.id, cel);
     if (nowy === model) return;
     doFokusu.current = { id: link.id, akcja: 'sekcja' };
+    setPrzesuniety(link.id);
     onZmiana(nowy);
     setKomunikat(t.pozycja(tytulLinku(link), pozycja(nowy, link.id)));
   }
@@ -127,11 +136,11 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
     <div ref={kontener} style={{ display: 'grid', gap: '1rem', marginTop: '1rem' }}>
       <label style={etykieta}>
         {t.nazwa}
-        <input type="text" value={model.nazwa} maxLength={120} onChange={(e) => onZmiana({ ...model, nazwa: e.target.value })} style={pole} />
+        <input type="text" value={model.nazwa} maxLength={120} onChange={(e) => onZmiana({ ...model, nazwa: e.target.value })} className="c-pole" style={pole} />
       </label>
       <label style={etykieta}>
         {t.opis}
-        <textarea value={model.opis} rows={3} maxLength={400} onChange={(e) => onZmiana({ ...model, opis: e.target.value })} style={{ ...pole, resize: 'vertical' }} />
+        <textarea value={model.opis} rows={3} maxLength={400} onChange={(e) => onZmiana({ ...model, opis: e.target.value })} className="c-pole" style={{ ...pole, resize: 'vertical' }} />
       </label>
 
       <div>
@@ -139,7 +148,7 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
           const opt = czyOptional(sek);
           const wszystkie = sek.linki.length > 0 && sek.linki.every((l) => l.wPliku);
           return (
-            <fieldset key={sek.id} style={sekcjaStyl}>
+            <fieldset key={sek.id} className="r-stan" style={{ ...sekcjaStyl, '--i': Math.min(i, 5) }}>
               <legend style={{ padding: '0 0.4rem', fontSize: '0.8rem', fontWeight: 700, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                 {opt ? OPTIONAL : t.sekcja(i + 1, n)}
               </legend>
@@ -149,7 +158,7 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
                 ) : (
                   <label style={{ ...etykieta, flex: '1 1 220px' }}>
                     {t.nazwaSekcji}
-                    <input type="text" value={sek.nazwa} maxLength={80} onChange={(e) => onZmiana(zmienSekcje(model, sek.id, { nazwa: e.target.value }))} style={pole} />
+                    <input type="text" value={sek.nazwa} maxLength={80} onChange={(e) => onZmiana(zmienSekcje(model, sek.id, { nazwa: e.target.value }))} className="c-pole" style={pole} />
                   </label>
                 )}
                 {sek.linki.length > 0 && (
@@ -166,7 +175,7 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
                   {sek.linki.map((l) => {
                     const idUrl = `llms-e-${l.id}-url`;
                     return (
-                      <li key={l.id} style={{ ...wiersz, opacity: l.wPliku ? 1 : 0.6 }}>
+                      <li key={l.id} className="llms-wiersz" data-przesuniety={przesuniety === l.id ? '' : undefined} style={{ ...wiersz, opacity: l.wPliku ? 1 : 0.6 }}>
                         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', minWidth: 0 }}>
                           <label style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', fontSize: '0.88rem', fontWeight: 600, whiteSpace: 'nowrap', minHeight: '28px' }}>
                             <input type="checkbox" checked={l.wPliku} aria-describedby={idUrl} onChange={(e) => onZmiana(zmienLink(model, l.id, { wPliku: e.target.checked }))} style={{ width: '1.15rem', height: '1.15rem' }} />
@@ -176,17 +185,17 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
                         </div>
                         <label style={etykieta}>
                           {t.tytul}
-                          <input type="text" value={l.tytul} maxLength={160} aria-describedby={idUrl} onChange={(e) => onZmiana(zmienLink(model, l.id, { tytul: e.target.value }))} style={pole} />
+                          <input type="text" value={l.tytul} maxLength={160} aria-describedby={idUrl} onChange={(e) => onZmiana(zmienLink(model, l.id, { tytul: e.target.value }))} className="c-pole" style={pole} />
                         </label>
                         <label style={etykieta}>
                           {t.opisLinku}
-                          <textarea value={l.opis} rows={2} maxLength={400} aria-describedby={idUrl} onChange={(e) => onZmiana(zmienLink(model, l.id, { opis: e.target.value }))} style={{ ...pole, resize: 'vertical' }} />
+                          <textarea value={l.opis} rows={2} maxLength={400} aria-describedby={idUrl} onChange={(e) => onZmiana(zmienLink(model, l.id, { opis: e.target.value }))} className="c-pole" style={{ ...pole, resize: 'vertical' }} />
                         </label>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center' }}>
-                          <button type="button" style={maly} data-link={l.id} data-akcja="gora" aria-label={t.wyzejDla(tytulLinku(l))} onClick={() => ruch(l, -1)}>
+                          <button type="button" className="llms-maly" style={maly} data-link={l.id} data-akcja="gora" aria-label={t.wyzejDla(tytulLinku(l))} onClick={() => ruch(l, -1)}>
                             <span aria-hidden="true">↑ </span>{t.wyzej}
                           </button>
-                          <button type="button" style={maly} data-link={l.id} data-akcja="dol" aria-label={t.nizejDla(tytulLinku(l))} onClick={() => ruch(l, 1)}>
+                          <button type="button" className="llms-maly" style={maly} data-link={l.id} data-akcja="dol" aria-label={t.nizejDla(tytulLinku(l))} onClick={() => ruch(l, 1)}>
                             <span aria-hidden="true">↓ </span>{t.nizej}
                           </button>
                           <label style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', fontSize: '0.88rem', fontWeight: 600, flex: '1 1 200px', minWidth: 0 }}>

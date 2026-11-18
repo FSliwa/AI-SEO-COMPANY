@@ -8,6 +8,7 @@ import Pricing from '@/components/Pricing';
 import ServiceCarousel from '@/components/service/ServiceCarousel';
 import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
+import PowiazaneUslugi from '@/components/service/PowiazaneUslugi';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
@@ -38,7 +39,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               {lang === 'pl' ? 'Pozycjonowanie stron bez bajek' : 'SEO OPTIMIZATION'}
             </div>
             
-            <h1 style={{
+            <h1 className={lang === 'en' ? 'tlo-gory-h1--dlugi' : undefined} style={{
               fontSize: 'clamp(3.5rem, 7vw, 6rem)',
               fontWeight: 700,
               lineHeight: 1.05,
@@ -152,8 +153,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               </h3>
               <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>
                 {lang === 'pl' 
-                  ? <>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania. Sprawdź nasz <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>poradnik o opiniach Google</Link>.</>
-                  : <>We create topical clusters and semantic content answering user queries and search intent. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}
+                  ? <>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania. Sprawdź nasz <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>poradnik o opiniach Google</Link>. Zasady pisania tych tekstów: <Link href="/copywriting-seo" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>copywriting SEO</Link>.</>
+                  : <>We create topical clusters and semantic content answering user queries and search intent. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>Google reviews guide</Link>. How we write this content: <Link href="/copywriting-seo" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>SEO copywriting</Link>.</>}
               </p>
             </RevealItem>
             
@@ -163,7 +164,9 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 {lang === 'pl' ? 'Budowanie Autorytetu' : 'Authority Building & Search Optimisation'}
               </h3>
               <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>
-                {lang === 'pl' ? 'Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny.' : 'We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain.'}
+                {lang === 'pl'
+                  ? <>Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny. Zakres i ceny: <Link href="/link-building" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>link building</Link>.</>
+                  : <>We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain. Scope and pricing: <Link href="/link-building" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>link building services</Link>.</>}
               </p>
             </RevealItem>
           </RevealStagger>
@@ -257,6 +260,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
       )}
 
       <Pricing />
+
+      <PowiazaneUslugi locale={lang} bez="/pozycjonowanie-stron-internetowych" items={lang === 'pl' ? ['/audyt-seo', '/projektowanie-stron-internetowych', '/porownania'] : ['/audyt-seo', '/projektowanie-stron-internetowych', '/porownania']} />
 
       <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Najczęstsze pytania o pozycjonowanie stron internetowych" : "Frequently Asked Questions About Our SEO Services"} />
 

@@ -136,9 +136,9 @@ const nextConfig = {
       // sprzeczne sygnaly. Jedno trwale przekierowanie do jedynej wersji (takze z /pl/..., zeby nie
       // bylo dwoch skokow przez regule '/pl/:path*'). Lista = plOnly/enOnly w lib/blogPosts.js;
       // nowy artykul jednojezyczny = nowy slug tutaj.
-      ...['wyniki-wdrozen-seo-2026', 'rodo-na-stronie-internetowej', 'mailchimp-vs-getresponse', 'konfiguracja-zdarzen-gtm-ga4-poradnik', 'jak-zoptymalizowac-strone-pod-google-ai-overviews', 'agencja-seo-czy-google-ads']
+      ...['wyniki-wdrozen-seo-2026', 'rodo-na-stronie-internetowej', 'mailchimp-vs-getresponse', 'konfiguracja-zdarzen-gtm-ga4-poradnik', 'jak-zoptymalizowac-strone-pod-google-ai-overviews', 'agencja-seo-czy-google-ads', 'google-ai-mode-jak-sie-pojawic', 'landing-page-tworzenie-cms-hosting-cena']
         .map((s) => ({ source: `/en/blog/${s}`, destination: `/blog/${s}`, permanent: true })),
-      ...['seo-for-saas-startups-playbook', 'multi-location-seo-scale-local-visibility', 'best-marketing-attribution-tools-for-2026']
+      ...['seo-for-saas-startups-playbook', 'multi-location-seo-scale-local-visibility', 'best-marketing-attribution-tools-for-2026', 'how-long-does-seo-take']
         .flatMap((s) => [`/blog/${s}`, `/pl/blog/${s}`].map((source) => ({ source, destination: `/en/blog/${s}`, permanent: true }))),
       // Slug PL artykulu o lukach: middleware next-intl dawal 307
       // (temporary) - Google nie przenosi sygnalow. Jawna regula przed

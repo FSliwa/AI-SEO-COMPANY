@@ -1,11 +1,8 @@
-'use client';
-
-import { useEffect } from 'react';
 import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from '@/i18n/routing';
-import { track } from '@/lib/track';
 
 // 5.11.2026 (PLAN-v2 rozdz. 7, „404”; lataka T6 - tylko ten plik, bez [...rest]; BL-05, TS-12):
 // UI dla notFound() wywolanego w istniejacej trasie [locale] - np. /en/sprawdz-widocznosc-w-ai
@@ -14,20 +11,21 @@ import { track } from '@/lib/track';
 // Status 404 i noindex bez zmian. W Next 16.2.12 z serwera wychodzi tu powloka __next_error__,
 // a naglowek, H1 i linki pojawiaja sie po hydracji - kryterium sprawdzac Playwrightem, nie curlem.
 //
-// page_404 (BL-05): raz w miesiacu eksploracja GA4 547365077 „page_404 x referrer spoza
-// ai-seo-company.pl”; kazdy adres z zewnetrznym odsylaczem dostaje regule 308 w next.config.mjs
-// do najblizszego odpowiednika (playbook 6.1 pkt 4).
+// 18.11.2026 (audyt S-34, S-40): usunieto 'use client' i zdarzenie page_404 (GA4 nie dostawalo go
+// z powloki bledu), dodano metadata (title, noindex). 404 mierzyc w GSC > Ustawienia > Statystyki
+// indeksowania > Wedlug odpowiedzi oraz w logach Vercel.
+export async function generateMetadata() {
+  const lang = await getLocale();
+  return {
+    title: lang === 'en' ? 'Page not found (404) – AI SEO COMPANY' : lang === 'de' ? 'Seite nicht gefunden (404) – AI SEO COMPANY' : 'Nie ma takiej strony (404) – AI SEO COMPANY',
+    robots: { index: false },
+  };
+}
+
 export default function NotFound() {
   const lang = useLocale();
   const de = lang === 'de';
   const pl = lang !== 'en' && !de;
-
-  useEffect(() => {
-    track('page_404', {
-      page_path: window.location.pathname,
-      referrer: document.referrer || '(direct)',
-    });
-  }, []);
 
   // Klucze tras z i18n/routing.js - Link sam podstawia slug EN.
   const linki = de
@@ -43,7 +41,7 @@ export default function NotFound() {
         <div className="container">
           <h1>{de ? 'Seite nicht gefunden (404)' : pl ? 'Nie ma takiej strony (404)' : 'Page not found (404)'}</h1>
           <p>{de ? 'Die Adresse hat sich möglicherweise geändert. Diese Seiten werden am häufigsten besucht:' : pl ? 'Adres mógł się zmienić. Zobacz najczęściej odwiedzane strony:' : 'The address may have changed. Try one of these pages:'}</p>
-          <ul>
+          <ul className="nf-linki">
             {linki.map(([href, label]) => (
               <li key={href}><Link href={href}>{label}</Link></li>
             ))}

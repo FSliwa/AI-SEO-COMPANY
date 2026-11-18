@@ -42,6 +42,13 @@ for (const [pl, { en }] of Object.entries(STRONY_EN)) {
 // Nazwa middleware.js zostaje (bez zmiany na proxy.js) - ostrzezenie Next 16 w logu buildu
 // jest znane i nie blokuje.
 export default function middleware(request) {
+  // 18.11.2026 (audyt S-35): adres z wielkimi literami (/Audyt-SEO) = osobny adres z tą samą treścią;
+  // trwale przekierowujemy na małe litery (matcher pomija /api, /_next, /_vercel i pliki z kropką).
+  if (request.nextUrl.pathname !== request.nextUrl.pathname.toLowerCase()) {
+    const url = request.nextUrl.clone();
+    url.pathname = url.pathname.toLowerCase();
+    return NextResponse.redirect(url, 308);
+  }
   const sciezka = request.nextUrl.pathname.replace(/\/+$/, '');
   if (ADRESY_DE && (sciezka === '/de' || sciezka.startsWith('/de/'))) {
     const wpis = ADRESY_DE.get(sciezka);

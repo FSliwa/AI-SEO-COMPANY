@@ -13,7 +13,8 @@ import Image from 'next/image';
  * Kolejnosc z makiety: Madame Thai, TQL (potwierdzone przez wlasciciela
  * 12.11.2026), AI Signals (ASE-BOT), Staniax. Loga: /images/klienci/.
  * Nie sa linkami - nazwy w tym miejscu tez nimi nie byly. Szeroki uklad:
- * jeden rzad; telefon (< 768 px): siatka 2x2; tablet w pionie bez paska.
+ * jeden rzad; telefon (< 768 px): tez jeden rzad (od 18.11.2026, wszystkie cztery
+ * loga w jednej linii, szerokosci w vw w app/wyglad.css); tablet w pionie bez paska.
  */
 export default function HeroKlienci() {
   const lang = useLocale();

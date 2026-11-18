@@ -143,8 +143,8 @@ export default function PricingClient() {
               marginBottom: '1.5rem', 
               letterSpacing: '-0.02em'
             }}>
-              {lang === 'pl' ? 'Ile Kosztuje Pozycjonowanie Stron?' : 'How Much Does SEO Cost?'} <br />
-              <span style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Cennik pozycjonowania stron 2026' : 'Pricing 2026'}</span>
+              {lang === 'pl' ? 'Ile kosztuje pozycjonowanie?' : 'How Much Does SEO Cost?'} <br />
+              <span style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Cennik pozycjonowania stron 2026' : 'SEO Pricing 2026'}</span>
             </h1>
             <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
@@ -190,8 +190,8 @@ export default function PricingClient() {
               </p>
               <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
                 {lang === 'pl'
-                  ? 'Jako nowoczesna agencja marketingowa i SEO, nie ograniczamy się tylko do dodawania linków. Każdy z naszych pakietów zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację wskaźników Core Web Vitals.'
-                  : 'As a modern marketing and SEO agency, we don\'t just build links. Each of our packages includes a professional technical audit, unique content creation, B2B link building strategy, and Core Web Vitals optimization.'}
+                  ? <>Jako nowoczesna agencja marketingowa i SEO, nie ograniczamy się tylko do dodawania linków. Każdy z naszych pakietów zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację wskaźników Core Web Vitals. Jak wygląda u nas <Link href="/link-building" style={{ textDecoration: 'underline' }}>link building</Link>: 2 linki miesięcznie w Standard i 4 w Premium. Jak powstają teksty, opisujemy na stronie o <Link href="/copywriting-seo" style={{ textDecoration: 'underline' }}>copywritingu SEO</Link>.</>
+                  : <>As a modern marketing and SEO agency, we don&apos;t just build links. Each of our packages includes a professional technical audit, unique content creation, B2B link building strategy, and Core Web Vitals optimization. How <Link href="/link-building" style={{ textDecoration: 'underline' }}>link building services</Link> work with us: 2 links a month in Standard and 4 in Premium. How the content is written: <Link href="/copywriting-seo" style={{ textDecoration: 'underline' }}>SEO copywriting</Link>.</>}
               </p>
               <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
                 {lang === 'pl' ? 'Dlaczego transparentne pakiety?' : 'Why transparent packages?'}
@@ -230,7 +230,7 @@ export default function PricingClient() {
                   Pozycjonowanie stron: cena, koszt i wycena w 2026
                 </h2>
                 <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
-                  <Link href="/pozycjonowanie-stron-internetowych" style={{ textDecoration: 'underline' }}>Pozycjonowanie stron</Link> kosztuje u nas od 1 900 zł netto miesięcznie. W SEO Standard dostajesz do 20 fraz, czyli średnio 95 zł netto za frazę, a w SEO Premium za 2 500 zł netto do 50 fraz, czyli 50 zł za frazę. Za samo wejście fraz do TOP 10 nie dopłacasz.
+                  <Link href="/pozycjonowanie-stron-internetowych" style={{ textDecoration: 'underline' }}>Pozycjonowanie stron</Link> kosztuje u nas od 1 900 zł netto miesięcznie. W SEO Standard dostajesz do 20 fraz, czyli średnio 95 zł netto za frazę, a w SEO Premium za 2 500 zł netto do 50 fraz, czyli 50 zł za frazę. Za samo wejście fraz do TOP 10 nie dopłacasz. Zastanawiasz się, czy zamiast tego wybrać reklamy? Sprawdź, <Link href="/blog/agencja-seo-czy-google-ads" style={{ textDecoration: 'underline' }}>agencja SEO czy Google Ads</Link>.
                 </p>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
                   Tanie pozycjonowanie stron: na czym oszczędzają najtańsze oferty

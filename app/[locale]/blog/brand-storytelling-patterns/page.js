@@ -326,6 +326,7 @@ function ArtykulStorytellingMarki({ locale }) {
         slug="/blog/brand-storytelling-patterns"
         locale={locale}
         url="/blog/storytelling-marki"
+        datePublished="2026-08-31"
       />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>

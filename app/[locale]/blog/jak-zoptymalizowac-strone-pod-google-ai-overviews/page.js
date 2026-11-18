@@ -77,12 +77,12 @@ const FAQ = [
 const ZRODLA = [
   { url: 'https://developers.google.com/search/docs/appearance/ai-features', nazwa: 'Google Search Central: AI features and your website', data: '2026-11-18' },
   { url: 'https://support.google.com/websearch/answer/14901683?hl=pl', nazwa: 'Pomoc Google: Przegląd od AI w wynikach wyszukiwania', data: '2026-11-18' },
-  { url: 'https://blog.google/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)', data: '2026-11-18' },
+  { url: 'https://blog.google/products-and-platforms/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)', data: '2026-11-18' },
   { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode – dostępność i wymagania', data: '2026-11-18' },
   { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność – sposób liczenia danych', data: '2026-11-18' },
   { url: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers', nazwa: 'Google: przegląd typowych robotów Google (Google-Extended)', data: '2026-11-18' },
   { url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content', nazwa: 'Google Search Central: Creating helpful, reliable, people-first content', data: '2026-11-18' },
-  { url: 'https://docs.perplexity.ai/guides/bots', nazwa: 'Perplexity Docs: dokumentacja robotów (PerplexityBot, Perplexity-User)', data: '2026-11-18' },
+  { url: 'https://docs.perplexity.ai/docs/resources/perplexity-crawlers', nazwa: 'Perplexity Docs: dokumentacja robotów (PerplexityBot, Perplexity-User)', data: '2026-11-18' },
   { url: 'https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work', nazwa: 'Perplexity Help Center: How does Perplexity work?', data: '2026-11-18' },
 ];
 
@@ -253,7 +253,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <p>Google opisuje, że AI Overviews i AI Mode mogą wysyłać wiele powiązanych zapytań do różnych podtematów i źródeł. Dzięki temu pokazują szerszy i bardziej zróżnicowany zestaw linków niż tradycyjne wyniki. Dla Ciebie to dobra wiadomość: strona, która nie jest w pierwszej trójce na główne zapytanie, może zostać zacytowana, bo najlepiej odpowiada na jedno z pytań cząstkowych.</p>
 
               <h2 id="ai-mode">Jak działa Google AI Mode (Tryb AI) i czym jest query fan-out?</h2>
-              <p>Google AI Mode (po polsku „Tryb AI”) to osobny, konwersacyjny tryb wyszukiwarki dla bardziej złożonych pytań, które wymagają zgłębienia tematu. Zamiast listy wyników dostajesz rozbudowaną odpowiedź z linkami do źródeł i możliwość zadawania pytań uzupełniających.</p>
+              <p>Google AI Mode (po polsku „Tryb AI”) to osobny, konwersacyjny tryb wyszukiwarki dla bardziej złożonych pytań, które wymagają zgłębienia tematu. Zamiast listy wyników dostajesz rozbudowaną odpowiedź z linkami do źródeł i możliwość zadawania pytań uzupełniających. Osobny przewodnik o <Link href="/blog/google-ai-mode-jak-sie-pojawic">Google AI Mode</Link>: dostępność, różnice względem przeglądu AI i pomiar w Search Console.</p>
               <p>Kluczem do zrozumienia, jak działa AI Mode, jest technika query fan-out. W ogłoszeniu z 20 maja 2025 roku Google wyjaśnia, że AI Mode dzieli pytanie na podtematy i wysyła wiele zapytań jednocześnie, dzięki czemu przeszukuje sieć głębiej niż klasyczna wyszukiwarka.</p>
 
               <h3>Query fan-out na przykładzie</h3>
@@ -274,7 +274,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <p>
                 GEO (Generative Engine Optimization) to optymalizacja pod wyszukiwarki generatywne, a AEO (Answer Engine Optimization) – pod systemy udzielające bezpośrednich odpowiedzi. GEO/AEO to więc wspólny parasol dla działań, które zwiększają szansę, że AI zacytuje Twoją stronę.
                 {hrefSeoVsGeo && <> Różnice między SEO a GEO w ośmiu kryteriach rozpisaliśmy w porównaniu <Link href={hrefSeoVsGeo}>SEO vs GEO</Link>.</>}
-                {' '}Całą usługę, z pomiarem widoczności w odpowiedziach modeli, opisujemy na stronie <Link href="/pozycjonowanie-w-ai">pozycjonowanie w AI</Link>.
+                {' '}Całą usługę, z pomiarem widoczności w odpowiedziach modeli, opisujemy na stronie <Link href="/pozycjonowanie-w-ai">optymalizacja pod AI Overview</Link>.
               </p>
               <div className="table-container">
                 <table>
@@ -305,7 +305,7 @@ export default async function ArtykulAiOverviews({ params }) {
                 <li>czy kanoniczne adresy wskazują właściwe wersje stron,</li>
                 <li>czy ważne podstrony są w mapie witryny XML.</li>
               </ul>
-              <p>Najszybciej sprawdzisz to narzędziem Sprawdzanie adresu URL w Search Console. Jeśli potrzebujesz szerszego przeglądu, przejdź przez nasz <Link href="/blog/technical-seo-audit-checklist">audyt techniczny SEO</Link>.</p>
+              <p>Najszybciej sprawdzisz to narzędziem Sprawdzanie adresu URL w Search Console. Jeśli potrzebujesz szerszego przeglądu, zobacz poradnik <Link href="/blog/technical-seo-audit-checklist">jak zrobić audyt SEO</Link> z progami technicznymi.</p>
 
               <h3>Snippety: nosnippet, data-nosnippet i max-snippet</h3>
               <p>To najczęściej pomijany punkt. Google wymienia te same mechanizmy kontroli dla funkcji AI co dla zwykłych wyników:</p>
@@ -428,7 +428,7 @@ Allow: /`}</code></pre>
                 <li><strong>Spójność wzmianek.</strong> Opisy firmy w katalogach, mediach i na Twojej stronie powinny się zgadzać.</li>
               </ul>
               {hrefBoty && <p>Dostęp botów AI do swojej strony możesz sprawdzić w <Link href={hrefBoty}>bezpłatnym teście dostępu botów AI</Link>.</p>}
-              <p>Szersze tło, czyli jak modele językowe dobierają źródła i jak budować rozpoznawalność marki poza wyszukiwarką, opisujemy w ramach naszej <Link href="/pozycjonowanie-w-ai">usługi pozycjonowania w AI</Link>.</p>
+              <p>Szersze tło, czyli jak modele językowe dobierają źródła i jak budować rozpoznawalność marki poza wyszukiwarką, opisujemy w ramach naszej <Link href="/pozycjonowanie-w-ai">usługi pozycjonowania w AI i AI Overview</Link>.</p>
 
               <h2 id="pomiar">Jak zmierzyć wpływ AI Overviews na ruch na stronie?</h2>
               <p>Zacznij od Search Console. Według Google strony wyświetlane w AI Overviews i AI Mode są wliczane do ogólnego ruchu i raportowane w raporcie Skuteczność, w typie wyszukiwania „Web”. Nie ma osobnego filtra „tylko AI Overviews”, więc wnioski trzeba wyciągać pośrednio.</p>

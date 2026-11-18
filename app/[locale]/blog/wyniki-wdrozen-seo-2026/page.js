@@ -137,7 +137,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
 
               <h2 id="staniax">Staniax: z zerowej widoczności do 152 kliknięć</h2>
               <p>Punkt startowy: producent z 25-letnim doświadczeniem w metalizacji próżniowej i zerową widocznością organiczną – domena nie zbierała ruchu z wyszukiwarki. Zakres pracy: nowa strona z architekturą pod frazy usługowe, baza wiedzy z artykułami technicznymi i uporządkowanie podstaw technicznych.</p>
-              <p>Wynik w GSC: <strong>152 kliknięcia i 6,34 tys. wyświetleń w trzy miesiące</strong>, przy czym ok. 1,1 tys. wyświetleń przyszło w pierwszym miesiącu od startu, a 2,8 tys. po siedmiu tygodniach. W niszy B2B o niskim wolumenie zapytań to różnica między nieistnieniem a stałym strumieniem zapytań ofertowych.</p>
+              <p>Wynik w GSC: <strong>152 kliknięcia i 6,34 tys. wyświetleń w trzy miesiące</strong>, przy czym ok. 1,1 tys. wyświetleń przyszło w pierwszym miesiącu od startu, a ok. 2,5 tys. po siedmiu tygodniach (do 10.07.2026). W niszy B2B o niskim wolumenie zapytań to różnica między nieistnieniem a stałym strumieniem zapytań ofertowych.</p>
               <p>Co zadecydowało: treści pisane pod realne pytania klientów przemysłowych (regeneracja odbłyśników, powłoki aluminiowe), nie pod ogólne frazy o wysokim wolumenie, na które młoda domena nie miała szans.</p>
 
               <h2 id="madame-thai">Madame Thai: 187 kliknięć dla lokalnej restauracji</h2>

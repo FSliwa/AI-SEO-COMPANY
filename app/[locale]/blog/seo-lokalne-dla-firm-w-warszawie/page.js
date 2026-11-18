@@ -77,7 +77,7 @@ export default async function ArticleLokalnePage({ params }) {
               <ArticleTOC items={tocItems} />
               
               <h2 id="wizytowka-google">Google Business Profile (Google Maps)</h2>
-              <p>Your Google Business Profile is the absolute foundation of local visibility. Ensure your NAP (Name, Address, Phone) data is perfectly consistent across the web. Regularly add high-quality photos, respond to all reviews (both positive and negative), and utilize Google Posts to share updates.</p>
+              <p>Your Google Business Profile is the absolute foundation of local visibility. Ensure your NAP (Name, Address, Phone) data is perfectly consistent across the web. Regularly add high-quality photos, respond to all reviews (both positive and negative), and utilize Google Posts to share updates. A step-by-step list is in our free <Link href="/narzedzia/checklista-wizytowki-google">local SEO checklist</Link>.</p>
 
               <h2 id="optymalizacja-strony">On-Page Local Optimization</h2>
               <p>Your website must clearly communicate your service areas. Create dedicated subpages for different districts or nearby cities. Include localized keywords in your H1 tags, meta titles, and naturally within the body content. Embedding a Google Map on your contact page helps users find you; it is not a confirmed ranking signal.</p>
@@ -93,6 +93,8 @@ export default async function ArticleLokalnePage({ params }) {
 
               <h2 id="mobile-optimization">Mobile Optimization for Local Search</h2>
               <p>Most local searches happen on the go, on mobile devices (check the device split for your own domain in Google Search Console). When someone searches for a "restaurant near me" or an "emergency plumber," they are usually on the go and need immediate answers. If your website is not perfectly optimized for mobile, you will lose these high-converting leads instantly. Mobile optimization goes beyond simply having a responsive design. It involves ensuring lightning-fast load times (Core Web Vitals), making phone numbers clickable (click-to-call), and ensuring your address easily opens in a navigation app. A seamless mobile user experience keeps visitors on your site and helps them convert; Google does not confirm bounce rate as a ranking factor, but it does measure page experience (Core Web Vitals).</p>
+
+              <BlogCTA locale={locale} currentSlug="/blog/seo-lokalne-dla-firm-w-warszawie" />
 
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '4rem', paddingTop: '4rem' }}>
                 <div style={{ background: 'var(--w-papier-2)', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
@@ -156,7 +158,7 @@ export default async function ArticleLokalnePage({ params }) {
 
               <h2 id="optymalizacja-profilu-firmy-w-google-gbp">Optymalizacja Profilu Firmy w Google (GBP)</h2>
               <p>
-                Profil Firmy w Google (dawniej Google Moja Firma) to darmowe narzędzie i absolutny fundament lokalnego SEO. Jeśli Twoja firma nie ma założonej i zweryfikowanej wizytówki, tracisz widoczność w Mapach i w wynikach lokalnych (brak własnej wizytówki to brak głównego elementu lokalnych wyników).
+                Profil Firmy w Google (dawniej Google Moja Firma) to darmowe narzędzie i absolutny fundament lokalnego SEO. Jeśli Twoja firma nie ma założonej i zweryfikowanej wizytówki, tracisz widoczność w Mapach i w wynikach lokalnych (brak własnej wizytówki to brak głównego elementu lokalnych wyników). Listę kroków znajdziesz w darmowej checkliście: <Link href="/narzedzia/checklista-wizytowki-google">jak założyć wizytówkę Google</Link>.
               </p>
               
               <ul>

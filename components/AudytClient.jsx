@@ -13,6 +13,8 @@ import Byline from '@/components/Byline';
 import CompareTable from '@/components/CompareTable';
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
+import PowiazaneUslugi from '@/components/service/PowiazaneUslugi';
+import TloGory from '@/components/TloGory';
 
 // 5.11.2026 (AU1; PLAN-v2 6.19, OP-07, OP-15, MSA-02) - strona chroniona: tylko DODAWANIE w wersji PL.
 // Audyt widoczności w AI: link do A5 po jej publikacji, wcześniej do huba GEO (reguła 6.0).
@@ -30,7 +32,8 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       
       {/* Hero Banner - Apple Style */}
-      <section className="subpage-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+      <section className="subpage-hero tlo-gory-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
+        <TloGory />
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
@@ -45,7 +48,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Audyt SEO – Analiza i Optymalizacja SEO' : 'SEO Audit Services – Technical SEO Audit & SEO Keyword Analysis'}
+              {lang === 'pl' ? 'Audyt SEO – Analiza i Optymalizacja SEO' : 'SEO Audit Services: Technical Audit and SEO Keyword Analysis'}
             </h1>
 
             <div style={{ 
@@ -136,7 +139,9 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
             <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 3' : 'AREA 3'}</div>
               <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profil Linków & Autorytet' : 'Link Profile & Authority'}</h3>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI.' : 'Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains.'}</p>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl'
+                ? <>Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI. Co dalej z profilem linków: <Link href="/link-building" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>link building</Link> w pakietach SEO.</>
+                : <>Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains. What comes next for your link profile: <Link href="/link-building" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>link building services</Link> in our SEO packages.</>}</p>
             </RevealItem>
           </RevealStagger>
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
@@ -213,6 +218,8 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
           </div>
         </section>
       )}
+
+      <PowiazaneUslugi locale={lang} bez="/audyt-seo" items={lang === 'pl' ? ['/projektowanie-stron-internetowych', '/cennik-pozycjonowania', '/porownania'] : ['/pozycjonowanie-stron-internetowych', '/cennik-pozycjonowania', '/projektowanie-stron-internetowych']} />
 
       {/* FAQ Section */}
       <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Najczęstsze pytania" : "Search Engine Optimization Consultants FAQs"} />

@@ -43,8 +43,11 @@ const BASE_ABOVE_TOP = 12;
 const THETA_CAP = 0;
 // The line-to-line crescendo STAYS (only the curvature was retired): glyphs
 // grow and track out towards the last line, straight baselines or not.
-const SCALE_GAIN = 0.3;
-const TRACK_GAIN = 0.055;
+// 18.11.2026 (hero-home): crescendo wylaczone (0). Hierarchia tekstu w hero idzie od
+// najwiekszego do najmniejszego, a narastanie rozmiaru ku ostatniej linii odwracalo ja
+// wewnatrz akapitu. Akapit ma jednolity rozmiar i tracking.
+const SCALE_GAIN = 0;
+const TRACK_GAIN = 0;
 // Text brightness ramp, first line to last - the crescendo's second axis.
 const FILL_FROM = 0.62;
 const FILL_TO = 0.92;
@@ -285,8 +288,9 @@ export default function HeroArcText({ text, className = '', lang = 'pl' }) {
             {/* The scene's orange, lifted towards its highlight at the right
                 end - the direction the lettering's own lighting runs. */}
             <linearGradient id="hero-arc-accent" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#D85A30" />
-              <stop offset="1" stopColor="#FF8A65" />
+              {/* 18.11.2026: ciemniejszy pomarancz (kontrast ~4,6:1 na mgle, wczesniej #D85A30 -> #FF8A65 dawalo 3,6 -> 2,2:1 przy tekscie 16 px). */}
+              <stop offset="0" stopColor="#A53A17" />
+              <stop offset="1" stopColor="#BC4620" />
             </linearGradient>
             {/* Holo-scan: a 36px band of light that runs down the paragraph
                 every 8.5s (the travel itself takes ~1.7s of that). SMIL on the

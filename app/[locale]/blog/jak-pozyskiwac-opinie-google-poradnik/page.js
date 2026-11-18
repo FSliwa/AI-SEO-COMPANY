@@ -92,7 +92,7 @@ export default async function ArticleReviewsPage({ params }) {
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
-              {locale === 'en' ? 'How to effectively get Google reviews? Guide 2026' : 'Jak skutecznie pozyskiwać opinie w Google? Poradnik 2026'}
+              {locale === 'en' ? 'How to get Google reviews: a 2026 guide with message templates' : 'Opinie Google: jak je zdobywać i jak odpowiadać (poradnik 2026)'}
             </h1>
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
@@ -129,7 +129,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>A Google review is user-generated content (UGC) linked to a Google Business Profile. It appears in several places simultaneously: on the Google Maps listing, in the <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>Local Pack</Link> for local queries, and in the Google Business Profile panel, and in Google Ads extensions.</p>
 
                   <h2 id="jak-opinie-wplywaja-na-seo">How Google reviews impact SEO, CTR, and sales</h2>
-                  <p>Reviews affect <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO visibility</Link> through three independent mechanisms: freshness signal, search result click-through rates (CTR) via stars, and content delivering unique keywords and sales arguments.</p>
+                  <p>Reviews are one of the levers of <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO strategies</Link> and affect visibility through three independent mechanisms: freshness signal, search result click-through rates (CTR) via stars, and content delivering unique keywords and sales arguments.</p>
                   {/* Opakowanie z wlasnym przewijaniem - tak samo jak dwie pozostale
                       tabele tego wpisu. Bez niego tabela (636 px) wystawala poza
                       ekran telefonu i byla ucinana przez overflow na <main>. */}
@@ -185,7 +185,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Obsession with a perfect star rating is a trap. Profiles with a few negative reviews, where the company responds concretely and empathetically, can look more credible than profiles with only 5 stars and no replies.</p>
 
                   <h2 id="ai-seo-company-wdrozy">AI SEO COMPANY will implement this process for you</h2>
-                  <p><Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>Our local SEO service in Warsaw</Link> does exactly that. We do not sell guides, we implement processes. We assess your Business Profile and review status within local SEO; CRM integrations and automated review requests are quoted separately (check our <Link href="/cennik-pozycjonowania" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a free analysis of your site.</p>
+                  <p><Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>Our local SEO service in Warsaw</Link> does exactly that. We do not sell guides, we implement processes. We assess your Business Profile and review status within local SEO; CRM integrations and automated review requests are quoted separately (check our <Link href="/cennik-pozycjonowania" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a free analysis of your site, and set up your listing first with the <Link href="/narzedzia/checklista-wizytowki-google" style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO checklist</Link>.</p>
                 </>
               ) : (
                 <>
@@ -361,7 +361,7 @@ export default async function ArticleReviewsPage({ params }) {
                   </div>
                   <p>Pytanie o aktualizację zadaj tylko raz i bez presji. Nigdy nie łącz go z rabatem ani inną korzyścią.</p>
 
-                  <p>Odpowiedź na każdą opinię w ciągu 48 godzin to stały element naszej pracy, gdy prowadzimy <Link href={HREF_WIZYTOWKA} style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie wizytówki Google</Link>.</p>
+                  <p>Odpowiedź na każdą opinię w ciągu 48 godzin to stały element naszej pracy, gdy prowadzimy <Link href={HREF_WIZYTOWKA} style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie wizytówki Google</Link>. Samą wizytówkę uzupełnisz według darmowej checklisty: <Link href="/narzedzia/checklista-wizytowki-google" style={{ color: '#0066cc', textDecoration: 'underline' }}>jak założyć wizytówkę Google</Link>.</p>
 
                   <h2 id="falszywa-opinia">Gdy opinia jest fałszywa lub narusza zasady – co zrobić</h2>
                   <ol>

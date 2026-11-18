@@ -23,6 +23,7 @@
 // - różnice między źródłami: raport pokazuje obie liczby (playbook 11, PLAN-v2 9.1a); filtr marki
 //   tylko dla usług bez podkatalogu/subdomeny i z dużym ruchem (blog Google 20.11.2025).
 
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów (nie CSS strony głównej)
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

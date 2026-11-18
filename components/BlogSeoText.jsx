@@ -46,7 +46,7 @@ export default function BlogSeoText() {
             </p>
             <h3 style={{ color: 'var(--w-tusz)', fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Link Building B2B i Budowanie Autorytetu</h3>
             <p style={{ marginBottom: '1.5rem' }}>
-              Budowanie autorytetu domeny jest kluczowe dla rankowania na najbardziej konkurencyjne frazy. W naszych obszernnych przewodnikach badamy nowoczesne, w pełni bezpieczne (white-hat) strategie pozyskiwania linków, stworzone specjalnie dla firm B2B. Dowiedz się, jak cyfrowy PR, strategiczny outreach i wysokiej jakości publikacje gościnne mogą drastycznie zwiększyć Twoją widoczność organiczną, bez ryzyka filtrów algorytmicznych. Dzielimy się naszymi autorskimi procedurami identyfikacji wartościowych miejsc na linki oraz przeprowadzania skutecznej analizy luk (backlink gap analysis), abyś mógł wyprzedzić konkurencję.
+              Budowanie autorytetu domeny jest kluczowe dla rankowania na najbardziej konkurencyjne frazy. W naszych obszernych przewodnikach badamy nowoczesne, w pełni bezpieczne (white-hat) strategie pozyskiwania linków, stworzone specjalnie dla firm B2B. Dowiedz się, jak cyfrowy PR, strategiczny outreach i wysokiej jakości publikacje gościnne mogą drastycznie zwiększyć Twoją widoczność organiczną, bez ryzyka filtrów algorytmicznych. Dzielimy się naszymi autorskimi procedurami identyfikacji wartościowych miejsc na linki oraz przeprowadzania skutecznej analizy luk (backlink gap analysis), abyś mógł wyprzedzić konkurencję.
             </p>
             <h3 style={{ color: 'var(--w-tusz)', fontSize: '1.5rem', marginBottom: '1rem', fontWeight: '600' }}>Projektowanie Nastawione na Konwersję (UX/CRO)</h3>
             <p>

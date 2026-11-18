@@ -44,6 +44,8 @@ export default function Footer() {
   const hrefPorownan = hrefStopki('/porownania');
   const hrefNarzedzi = hrefStopki('/narzedzia');
   const hrefWizytowki = hrefStopki('/pozycjonowanie-wizytowki-google');
+  const hrefCopywritingu = hrefStopki('/copywriting-seo');
+  const hrefLinkBuildingu = hrefStopki('/link-building');
   const drugiJezyk = lang === 'pl' ? 'en' : 'pl';
 
   // Plywajacy przycisk na telefonie i tablecie pokazuje sie dopiero po
@@ -90,7 +92,9 @@ export default function Footer() {
     const ctaWTresci = Array.from(
       document.querySelectorAll('a[href*="#kontakt"], a[href*="#contact"], a[href^="tel:"]')
     ).filter((a) => !a.classList.contains('kota-floating-cta') && !a.closest('header, nav, footer, .cookie-banner'));
-    const cele = [kontakt, cennik, stopkaRef.current, ...ctaWTresci].filter(Boolean);
+    // W02 (18.11): przycisk nie zaslania miniatur portfolio, wynikow ani cennika
+    const sekcjeTresci = Array.from(document.querySelectorAll('.portfolio, .results, .pricing'));
+    const cele = [kontakt, cennik, stopkaRef.current, ...ctaWTresci, ...sekcjeTresci].filter(Boolean);
     if (!cele.length) return;
     const widoczne = new Set();
     const obserwator = new IntersectionObserver((wpisy) => {
@@ -211,6 +215,8 @@ export default function Footer() {
                 {naDe('/seo-lokalne-warszawa') && <li><Link href="/seo-lokalne-warszawa">{tr(lang, 'SEO Lokalne Warszawa', 'Local SEO Warsaw')}</Link></li>}
                 {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
                 {hrefWizytowki && <li><Link href={hrefWizytowki}>{tr(lang, 'Pozycjonowanie wizytówki Google', 'Google Business Profile')}</Link></li>}
+                {hrefCopywritingu && <li><Link href={hrefCopywritingu}>{tr(lang, 'Copywriting SEO', 'SEO Copywriting')}</Link></li>}
+                {hrefLinkBuildingu && <li><Link href={hrefLinkBuildingu}>{tr(lang, 'Link building', 'Link Building')}</Link></li>}
                 <li><Link href="/pozycjonowanie-w-ai">{tr(lang, 'Pozycjonowanie w AI', 'AI Search Optimization')}</Link></li>
               </ul>
             </div>

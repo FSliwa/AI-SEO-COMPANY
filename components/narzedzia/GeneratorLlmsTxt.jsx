@@ -24,7 +24,6 @@ import CompareTable from '@/components/CompareTable';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
@@ -205,12 +204,12 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
       <section className={st.hero} style={s.hero}>
         <Ozdoba rodzaj="llms" />
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ margin: '0 0 1rem' }}>
+          <div className="section-header" style={{ margin: '0 0 1rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {en ? 'Free tool' : 'Darmowe narzędzie'}
             </div>
             <h1 style={s.h1}>{en ? metaEn.h1 : strona.h1}</h1>
-          </Reveal>
+          </div>
           {/* Z-L1: lead nad formularzem (Z-01: lead → narzędzie → Krótka odpowiedź → byline). */}
           <p className={st.lead} style={s.lead}>
             {en

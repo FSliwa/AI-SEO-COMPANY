@@ -2684,6 +2684,31 @@ body.has-cookie-banner .kota-floating-cta {
   margin-bottom: 2.5rem;
 }
 
+/* Jeden styl tabel w artykułach (CompareTable i zwykłe tabele): zawijanie tekstu,
+   na telefonie tabela ma 560 px i przewija się w kontenerze. */
+.article-content .tabela-artykulu table { min-width: 0 !important; margin-bottom: 0; font-size: 0.95rem; }
+.article-content .tabela-artykulu th,
+.article-content .tabela-artykulu td { white-space: normal; max-width: none; padding: 0.75rem 1rem; }
+.article-content .tabela-artykulu th { font-weight: 700; }
+@media (max-width: 899px) {
+  .article-content .tabela-artykulu table { min-width: 560px !important; }
+}
+
+/* Podpis tabeli i wskazówka przewijania (CompareTable) */
+.tabela-przewijana {
+  background:
+    linear-gradient(to right, var(--w-papier, #FDF9F4) 30%, rgba(253, 249, 244, 0)) 0 0 / 40px 100% no-repeat local,
+    linear-gradient(to left, var(--w-papier, #FDF9F4) 30%, rgba(253, 249, 244, 0)) 100% 0 / 40px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0)) 0 0 / 14px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0)) 100% 0 / 14px 100% no-repeat scroll;
+}
+.tabela-wskazowka { display: none; margin: 0.5rem 0 0; font-size: 0.8rem; color: var(--w-tusz-2, #555); }
+@media (max-width: 899px) {
+  .tabela-wskazowka { display: block; }
+  .tabela-wskazowka::after { content: 'Przewiń tabelę w bok'; }
+  html[lang='en'] .tabela-wskazowka::after { content: 'Scroll the table sideways'; }
+}
+
 /* Scroll margin for anchor links */
 .article-content h2[id], .article-content h3[id] {
   scroll-margin-top: 100px;
@@ -4383,3 +4408,6 @@ html body .gory-oferta .service-features li::before {
   mask: var(--ico-ast) center / contain no-repeat;
   font-size: 0 !important;
 }
+
+/* Cel dotykowy min. 24 px dla linku „Ustawienia cookies” (WCAG 2.5.8). */
+.footer-link-btn { min-height: 24px; display: inline-flex; align-items: center; }

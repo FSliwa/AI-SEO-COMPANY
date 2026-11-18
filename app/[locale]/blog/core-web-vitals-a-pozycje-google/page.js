@@ -29,6 +29,11 @@ export default async function ArticleCwvPage({ params }) {
     { id: 'kluczowe-wskazniki', title: 'Kluczowe wskaźniki (Metryki CWV) i ich optymalizacja' },
     { id: 'znaczenie-ttfb', title: 'Znaczenie TTFB i renderowania serwerowego (SSR)' }
   ];
+  const tocItemsEn = [
+    { id: 'dlaczego-przejmowac-sie', title: 'Why should you care about Core Web Vitals at all?' },
+    { id: 'kluczowe-wskazniki', title: 'Key indicators (CWV Metrics) and their optimization' },
+    { id: 'znaczenie-ttfb', title: 'The importance of TTFB and Server-Side Rendering (SSR)' }
+  ];
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -62,10 +67,10 @@ export default async function ArticleCwvPage({ params }) {
               <p className="lead">
                 Core Web Vitals measure page experience, which Google says aligns with what its core ranking systems reward. Good scores help but do not guarantee higher rankings. Here is our guide: Core Web Vitals and Google rankings in 2026.
               </p>
-              <ArticleTOC items={tocItems} />
+              <ArticleTOC items={tocItemsEn} />
               
               <h2 id="dlaczego-przejmowac-sie">Why should you care about Core Web Vitals at all?</h2>
-              <p>Loading speed is no longer just a nice addition - it has become a requirement. According to a 2017 Google/SOASTA study (mobile data), going from 1 to 3 seconds of load time raises the probability of a bounce by 32% (<a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google</a>).</p>
+              <p>Loading speed is no longer just a nice addition - it has become a requirement. According to a 2017 Google/SOASTA study (mobile data), going from 1 to 3 seconds of load time raises the probability of a bounce by 32% (<a href="https://web.archive.org/web/20251226035614/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google (archive)</a>).</p>
               <p>Moreover, the Google algorithm rewards websites in organic search results that are lightweight and flawlessly coded. A faster site means a lower crawl budget cost, which favors faster indexing of new content on your blog or offer subpages.</p>
 
               <h2 id="kluczowe-wskazniki">Key indicators (CWV Metrics) and their optimization</h2>
@@ -92,7 +97,7 @@ export default async function ArticleCwvPage({ params }) {
 
               <h2 id="znaczenie-ttfb">The importance of TTFB and Server-Side Rendering (SSR)</h2>
               <p>Simply reducing image sizes will not help if the server responds too slowly (TTFB). Migrating to more modern architectures (such as Next.js App Router with React Server Components) means that the entire burden of database logic processing is done once on the server and distributed.</p>
-              <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas. A Core Web Vitals review is one of the steps of our <Link href="/audyt-seo">SEO audit</Link>.</p>
+              <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas. A Core Web Vitals review is one of the steps of our <Link href="/audyt-seo">SEO audit</Link>. For a quick check of the whole site, run the <Link href="/narzedzia/audyt-seo">free SEO audit</Link>.</p>
 
               <BlogCTA 
   locale={locale} 
@@ -156,7 +161,7 @@ export default async function ArticleCwvPage({ params }) {
                 Dlaczego w ogóle przejmować się Core Web Vitals?
               </h2>
               <p>
-                Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według badania Google i SOASTA z 2017 roku (dane mobilne) wydłużenie ładowania strony z 1 do 3 sekund zwiększa prawdopodobieństwo odrzucenia o 32% (<a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google</a>).
+                Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według badania Google i SOASTA z 2017 roku (dane mobilne) wydłużenie ładowania strony z 1 do 3 sekund zwiększa prawdopodobieństwo odrzucenia o 32% (<a href="https://web.archive.org/web/20251226035614/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google (archiwum)</a>).
               </p>
               <p>
                 Co więcej, algorytm Google premiuje w bezpłatnych wynikach wyszukiwania serwisy, które są lekkie i bezbłędnie zakodowane. Szybsza strona oznacza mniejszy koszt tzw. crawl budget, co sprzyja szybszej indeksacji nowych treści na Twoim blogu czy podstronach ofertowych.
@@ -203,7 +208,7 @@ export default async function ArticleCwvPage({ params }) {
                 Samo zmniejszanie rozmiaru obrazków nie pomoże, jeśli serwer odpowiada zbyt wolno (wskaźnik TTFB - Time to First Byte). Migracja na nowocześniejsze architektury (takie jak Jamstack, Next.js App Router z React Server Components) sprawia, że cały ciężar przetwarzania logiki bazy danych wykonywany jest raz na serwerze i dystrybuowany na węzły sieci CDN na całym świecie.
               </p>
               <p>
-                Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co ułatwia osiągnięcie wysokiego wyniku w PageSpeed Insights, ale wynik zależy też od obrazów, skryptów zewnętrznych i układu strony. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Analiza Core Web Vitals to jeden z etapów naszego <Link href="/audyt-seo">audytu SEO</Link>. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
+                Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co ułatwia osiągnięcie wysokiego wyniku w PageSpeed Insights, ale wynik zależy też od obrazów, skryptów zewnętrznych i układu strony. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Analiza Core Web Vitals to jeden z etapów naszego <Link href="/audyt-seo">audytu SEO</Link>. Szybką kontrolę całej witryny zrobisz w <Link href="/narzedzia/audyt-seo">darmowym audycie SEO</Link>. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
               </p>
 
               <BlogCTA 

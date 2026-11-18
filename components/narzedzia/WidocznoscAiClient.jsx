@@ -22,15 +22,18 @@
 // zmienionego pytania albo null (zaproponowane). Panel sprawdza je jeszcze raz i oznacza w wyniku
 // (zrodloPytan „uzytkownik”, uwagiPytan). Starszy panel bez trasy /pytania: start od razu, jak dotąd.
 
-import { useRef, useState } from 'react';
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów (nie CSS strony głównej)
+import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { track } from '@/lib/track';
 import { DEMO, PANEL_API, wywolajNarzedzie } from '@/lib/narzedziaApi';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import { WIDOCZNOSC, listaSilnikow } from '@/lib/narzedziaLiczby';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 import BramkaEmail from './BramkaEmail';
 import LinkWyniku from './LinkWyniku';
 import { Ocena, Odblokowano, PasekDemo, Postep } from './Wspolne';
+import './ruch-c.css';
 
 const PYTAMY = WIDOCZNOSC.grok ? ['ChatGPT, Gemini, Perplexity, Claude and Grok', 'ChatGPT, Gemini, Perplexity, Claude i Grok'] : ['ChatGPT, Gemini, Perplexity and Claude', 'ChatGPT, Gemini, Perplexity i Claude'];
 const KROKI_EN = ['Sending 3 customer questions to the AI engines', `Asking ${PYTAMY[0]}`, 'Checking Google AI Overviews', 'Looking for your business in the answers and sources'];
@@ -142,9 +145,11 @@ function opisBramki(p, en, top, topZr) {
   return `Pokażemy ${lacz(co, false)}. Raport wyślemy e-mailem.`;
 }
 
-function Znak({ stan, en }) {
-  if (stan === 'brak') return <span className="narz-znak narz-znak--brak" title={en ? 'Google did not show an AI Overview' : 'Google nie pokazał przeglądu AI'}>–</span>;
-  return stan ? <span className="narz-znak narz-znak--tak" aria-label={en ? 'mentioned' : 'wymieniona'}>✓</span> : <span className="narz-znak narz-znak--nie" aria-label={en ? 'not mentioned' : 'niewymieniona'}>✕</span>;
+// 18.11.2026 (anim-narzedzia-c): znaczniki wchodzą staggerem 50 ms (r-stan, --i = numer pytania, maks. 6 kroków).
+function Znak({ stan, en, i = 0 }) {
+  const ruch = { '--i': i };
+  if (stan === 'brak') return <span className="narz-znak narz-znak--brak r-stan" style={ruch} title={en ? 'Google did not show an AI Overview' : 'Google nie pokazał przeglądu AI'}>–</span>;
+  return stan ? <span className="narz-znak narz-znak--tak r-stan" style={ruch} aria-label={en ? 'mentioned' : 'wymieniona'}>✓</span> : <span className="narz-znak narz-znak--nie r-stan" style={ruch} aria-label={en ? 'not mentioned' : 'niewymieniona'}>✕</span>;
 }
 
 export default function WidocznoscAiClient() {
@@ -158,6 +163,7 @@ export default function WidocznoscAiClient() {
   const [bledyPytan, setBledyPytan] = useState([null, null, null]);
   const [mapaDemo, setMapaDemo] = useState(null);
   const formRef = useRef(null);
+  const pelnyRef = useRef(null);
   const pytaniaRef = useRef(null);
 
   // Z-06: ?firma= (albo ?marka=), ?branza=, ?miasto=, ?url= (strona www) tylko wypełniają pola.
@@ -166,6 +172,11 @@ export default function WidocznoscAiClient() {
     const f = formRef.current;
     for (const [k, v] of Object.entries(pola)) if (v && f?.elements[k]) f.elements[k].value = v.slice(0, Number(f.elements[k].maxLength) > 0 ? Number(f.elements[k].maxLength) : 200);
   });
+
+  // Po odblokowaniu przewijamy do początku pełnych odpowiedzi (smooth tylko bez reduce).
+  useEffect(() => {
+    if (stan.pelny) pelnyRef.current?.scrollIntoView({ block: 'start', behavior: zachowaniePrzewijania() });
+  }, [stan.pelny]);
 
   // Krok 1: dane firmy -> 3 proponowane pytania (bez kosztów). Gdy panel nie ma trasy /pytania albo
   // nie odpowiada, sprawdzamy od razu z pytaniami zaproponowanymi przez panel (zachowanie sprzed 12.11).
@@ -260,7 +271,7 @@ export default function WidocznoscAiClient() {
           </div>
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
-            <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading' || stan.status === 'pytania'} data-cta="ai_check_submit">
+            <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading' || stan.status === 'pytania'} aria-busy={stan.status === 'loading' || stan.status === 'pytania' ? 'true' : undefined} data-cta="ai_check_submit">
               {stan.status === 'loading' ? (en ? 'Asking the AI models… (up to 2 min)' : 'Pytamy modele AI… (do 2 min)') : stan.status === 'pytania' ? (en ? 'Drafting the questions…' : 'Układamy pytania…') : (en ? 'Check your AI visibility for free' : 'Sprawdź widoczność w AI za darmo')}
             </button>
           </div>
@@ -272,7 +283,7 @@ export default function WidocznoscAiClient() {
       )}
 
       {stan.status !== 'done' && propozycje && (
-        <form ref={pytaniaRef} className="narz-formularz" onSubmit={zadajPytania} noValidate aria-labelledby="ai-pytania-tytul">
+        <form ref={pytaniaRef} className="narz-formularz r-stan" onSubmit={zadajPytania} noValidate aria-labelledby="ai-pytania-tytul">
           <div>
             <h2 id="ai-pytania-tytul" className="narz-h2" style={{ marginTop: 0 }}>{en ? 'We will ask the AI models these 3 questions' : 'Te 3 pytania zadamy modelom AI'}</h2>
             <p className="narz-mikro" style={{ marginTop: 0 }}>
@@ -290,7 +301,7 @@ export default function WidocznoscAiClient() {
             const dlugosc = zwin(q).length;
             const idOpis = `ai-pytanie-${i}-opis`;
             return (
-              <div key={i}>
+              <div key={i} className="r-stan" style={{ '--i': i + 1 }}>
                 <label htmlFor={`ai-pytanie-${i}`} className="narz-etykieta">
                   {en ? 'Question' : 'Pytanie'} {i + 1} <span style={OPCJONALNIE}>({ETYKIETA_ZRODLA[zrodlo][en ? 1 : 0]})</span>
                 </label>
@@ -304,13 +315,13 @@ export default function WidocznoscAiClient() {
                   readOnly={stan.status === 'loading'}
                   aria-invalid={bledyPytan[i] ? 'true' : undefined}
                   aria-describedby={idOpis}
-                  className="narz-pole"
+                  className="narz-pole c-pole"
                   style={{ resize: 'vertical', lineHeight: 1.45, fieldSizing: 'content', minHeight: '4.5rem' }}
                 />
                 <div id={idOpis} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '0.25rem 1rem' }}>
                   {bledyPytan[i] ? <p className="narz-blad" role="alert" style={{ margin: '0.25rem 0 0' }}>{bledyPytan[i]}</p> : <span />}
                   <span className="narz-mikro" style={{ display: 'inline-flex', gap: '1rem', alignItems: 'baseline', color: dlugosc > PYTANIE.max ? 'var(--n-zle)' : undefined }}>
-                    {zmienione && stan.status !== 'loading' && <button type="button" className="narz-link" onClick={() => zmienPytanie(i, propozycje.pytania[i])}>{en ? 'Restore the suggestion' : 'Przywróć propozycję'}</button>}
+                    {zmienione && <button type="button" className="narz-link" disabled={stan.status === 'loading'} onClick={() => zmienPytanie(i, propozycje.pytania[i])}>{en ? 'Restore the suggestion' : 'Przywróć propozycję'}</button>}
                     <span aria-label={en ? `${dlugosc} of ${PYTANIE.max} characters` : `${dlugosc} z ${PYTANIE.max} znaków`}>{dlugosc}/{PYTANIE.max}</span>
                   </span>
                 </div>
@@ -318,7 +329,7 @@ export default function WidocznoscAiClient() {
             );
           })}
           <div className="narz-kalk-akcja">
-            <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="ai_check_run">
+            <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta="ai_check_run">
               {stan.status === 'loading' ? (en ? 'Asking the AI models… (up to 2 min)' : 'Pytamy modele AI… (do 2 min)') : (en ? 'Ask these questions' : 'Zadaj te pytania')}
             </button>
           </div>
@@ -357,9 +368,9 @@ export default function WidocznoscAiClient() {
                   <tr key={s.id} className={s.dostepny ? '' : 'niedostepny'}>
                     <th scope="row"><span className="narz-silnik">{s.etykieta}</span><span className="narz-mikro">{s.opis}{s.dostepny && s.wyszukiwanie === false && !/wyszukiwania|web search/i.test(s.opis) ? (en ? ' · no web search' : ' · bez wyszukiwania') : ''}</span></th>
                     {s.dostepny
-                      ? p.pytania.map((q) => {
+                      ? p.pytania.map((q, qi) => {
                         const c = p.siatka.find((x) => x.silnik === s.id && x.pytanie === q);
-                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} en={en} /> : '–'}</td>;
+                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} en={en} i={qi} /> : '–'}</td>;
                       })
                       : <td colSpan={p.pytania.length} className="narz-mikro">{s.powod}</td>}
                     <td>{s.dostepny ? `${s.wzmianki}/${s.odpowiedzi}` : '–'}</td>
@@ -381,7 +392,7 @@ export default function WidocznoscAiClient() {
           </details>
 
           {!stan.pelny && (top.length > 0 || topZr.length > 0) && (
-            <div className="narz-pelne-ai">
+            <div key="top" className="narz-pelne-ai">
               {top.length > 0 && (
                 <div role="region" aria-labelledby="ai-top-firmy">
                   <h2 id="ai-top-firmy" className="narz-h2">{en ? 'Who the models name most often' : 'Kogo modele wymieniają najczęściej'}</h2>
@@ -406,9 +417,9 @@ export default function WidocznoscAiClient() {
           )}
 
           {!stan.pelny ? (
-            <div className="narz-zablokowane">
-              <ul className="narz-problemy narz-zamglone" aria-hidden="true">
-                {[1, 2, 3].map((i) => (
+            <div key="bramka" className="narz-zablokowane">
+              <ul className="narz-problemy narz-zamglone wid-atrapa" aria-hidden="true">
+                {Array.from({ length: Math.min(12, Math.max(3, Number(p.odpowiedzi) || 3)) }, (_, i) => i + 1).map((i) => (
                   <li key={i} className="narz-problem"><p className="narz-problem-tytul narz-atrapa">{en ? 'Who the model recommends instead of your business' : 'Kogo poleca model zamiast Twojej firmy'}</p><p className="narz-problem-opis narz-atrapa">{en ? 'An excerpt of the answer and the pages the AI cites' : 'Fragment odpowiedzi i strony, na które powołuje się AI'}</p></li>
                 ))}
               </ul>
@@ -425,7 +436,7 @@ export default function WidocznoscAiClient() {
               />
             </div>
           ) : (
-            <div className="narz-pelne-ai">
+            <div key="pelny" ref={pelnyRef} className="narz-pelne-ai c-skok">
               <Odblokowano newsletter={stan.newsletter} />
               {stan.pelny.konkurenci?.length > 0 && (
                 <div role="region" aria-labelledby="ai-konkurenci">

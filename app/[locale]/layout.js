@@ -1,5 +1,6 @@
 import '../globals.css';
 import '../wyglad.css';
+import '../plynnosc.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
@@ -181,12 +182,9 @@ const jsonLdDataPl = {
       // (ten sam co w stopce) to taxID. vatID przywrocic dopiero, gdy VIES
       // potwierdzi rejestracje VAT-UE.
       'taxID': '5253090237',
-      'openingHoursSpecification': {
-        '@type': 'OpeningHoursSpecification',
-        'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        'opens': '09:00',
-        'closes': '18:00'
-      },
+      // 18.11.2026: usunieto openingHoursSpecification (pn-pt 9-18). Godziny nie sa widoczne
+      // nigdzie na stronie, a znacznik musi opisywac tresc widoczna. Przywrocic razem z widoczna
+      // informacja w stopce/Kontakcie, gdy wlasciciel potwierdzi godziny.
       'areaServed': {
         '@type': 'AdministrativeArea',
         'name': 'Warszawa i Polska'

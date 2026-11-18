@@ -68,6 +68,8 @@ export default function WhyUs({ isMainContent = false }) {
   useEffect(() => {
     if (!window.matchMedia) return;
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // Jednorazowe wylaczenie autoodtwarzania po zamontowaniu: stan startowy musi byc true (zgodnosc z SSR).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (mq.matches) setIsAutoplay(false);
     const naZmiane = (e) => { if (e.matches) setIsAutoplay(false); };
     mq.addEventListener('change', naZmiane);
@@ -365,13 +367,15 @@ export default function WhyUs({ isMainContent = false }) {
                 <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'normal' }}>
                   {item.tag}
                 </div>
-                <motion.div 
-                  animate={{ scale: [1, 1.03, 1] }}
-                  transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }}
+                {/* 18.11.2026 (plynnosc): puls liczby to animacja CSS (app/plynnosc.css), nie petla
+                    framer-motion - ta zapisywala style inline w kazdej klatce na kazdej karcie, takze
+                    poza ekranem (2000 zapisow na jedno przewiniecie strony). Wyglad i tempo bez zmian. */}
+                <div
+                  className="whyus-metric-puls"
                   style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: 'var(--w-tusz)', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
                 >
                   <CountUpMetric value={item.metric} />
-                </motion.div>
+                </div>
               </div>
 
               {/* Bottom Text Area matching Apple's formatting */}

@@ -7,7 +7,6 @@ import { useTranslations, useLocale } from 'next-intl';
 export default function Process() {
   const [activeTab, setActiveTab] = useState(0);
   const [activeStep, setActiveStep] = useState(3); // Default step 4 (UX & UI Design)
-  const [rotation, setRotation] = useState(0);
   const sectionRef = useRef(null);
   const lang = useLocale();
   const t = useTranslations('process');
@@ -42,21 +41,51 @@ export default function Process() {
     { num: '6', title: 'Launch & Support', desc: 'We launch your site, verify in Google, and provide ongoing support.' },
   ];
 
+  // Obrot kola od przewijania. Wczesniej kazde zdarzenie scroll wolalo setRotation, czyli
+  // przerenderowanie calego komponentu (6 wezlow, AnimatePresence) wiele razy na klatke.
+  // Teraz: jedna zmienna CSS --rot na obudowie kola, zapis najwyzej raz na klatke (rAF),
+  // nasluch tylko gdy sekcja jest blisko ekranu (IntersectionObserver), bez renderu Reacta.
+  const diagramRef = useRef(null);
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
+    const section = sectionRef.current;
+    const diagram = diagramRef.current;
+    if (!section || !diagram) return undefined;
+    let raf = 0;
+    let ostatnia = -1;
+    const zapisz = () => {
+      raf = 0;
+      const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const totalDistance = windowHeight + rect.height;
       const currentPos = windowHeight - rect.top;
       const progress = Math.min(Math.max(currentPos / totalDistance, 0), 1);
-      
-      setRotation(progress * 240);
+      const kat = Math.round(progress * 240 * 10) / 10;
+      if (kat === ostatnia) return;
+      ostatnia = kat;
+      diagram.style.setProperty('--rot', String(kat));
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(zapisz); };
+    let nasluch = false;
+    const wlacz = () => {
+      if (nasluch) return;
+      nasluch = true;
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      onScroll();
+    };
+    const wylacz = () => {
+      if (!nasluch) return;
+      nasluch = false;
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+    zapisz();
+    if (typeof IntersectionObserver === 'undefined') { wlacz(); return wylacz; }
+    const io = new IntersectionObserver((wpisy) => {
+      for (const w of wpisy) { if (w.isIntersecting) wlacz(); else wylacz(); }
+    }, { rootMargin: '200px 0px' });
+    io.observe(section);
+    return () => { io.disconnect(); wylacz(); if (raf) cancelAnimationFrame(raf); };
   }, []);
 
   return (
@@ -98,14 +127,14 @@ export default function Process() {
         </div>
 
         {/* Interactive Rotating Circular Ring Workflow */}
-        <div className="process-diagram-wrapper">
+        <div className="process-diagram-wrapper" ref={diagramRef}>
           {/* Ambient Background Glow */}
           <div className="process-ambient-glow"></div>
 
           {/* Center Circle Ring Line (82% diameter) */}
           <div 
             className="process-circle-ring"
-            style={{ transform: `rotate(${rotation}deg)` }}
+            style={{ transform: 'rotate(calc(var(--rot, 0) * 1deg))' }}
           ></div>
 
           {/* Central Description Box with Cross-Fade Transition */}
@@ -121,7 +150,7 @@ export default function Process() {
                 <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.35rem' }}>
                   {tabs[activeTab]}
                 </div>
-                <span style={{ fontWeight: 'bold' }} style={{ fontSize: '1.05rem', color: 'var(--w-tusz)', display: 'block', marginBottom: '0.35rem', fontFamily: "var(--font-geist), system-ui, sans-serif" }}>
+                <span style={{ fontSize: '1.05rem', color: 'var(--w-tusz)', display: 'block', marginBottom: '0.35rem', fontFamily: "var(--font-geist), system-ui, sans-serif" }}>
                   0{steps[activeStep].num}. {steps[activeStep].title}
                 </span>
                 <p style={{ margin: 0, fontSize: '0.83rem', color: 'var(--color-text-main)', lineHeight: '1.5' }}>
@@ -137,8 +166,7 @@ export default function Process() {
             style={{ 
               position: 'absolute', 
               inset: 0, 
-              transform: `rotate(${rotation}deg)`,
-              transition: 'transform 0.05s linear',
+              transform: 'rotate(calc(var(--rot, 0) * 1deg))',
               pointerEvents: 'none'
             }}
           >
@@ -173,8 +201,7 @@ export default function Process() {
                   <div 
                     className="process-node-inner"
                     style={{ 
-                      transform: `rotate(${-rotation}deg)`,
-                      transition: 'transform 0.05s linear'
+                      transform: 'rotate(calc(var(--rot, 0) * -1deg))'
                     }}
                   >
                     <span className="process-node-num">0{step.num}.</span>

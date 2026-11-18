@@ -48,7 +48,7 @@ export default async function ArticleUXAudit({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/audyt-ux-strony" locale={locale} url={locale === 'en' ? '/en/blog/ux-audit-guide' : undefined} />
+      <ArticleSchema slug="/blog/audyt-ux-strony" locale={locale} url={locale === 'en' ? '/en/blog/ux-audit-guide' : undefined} datePublished={locale === 'en' ? '2026-08-31' : undefined} />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
@@ -230,7 +230,7 @@ export default async function ArticleUXAudit({ params }) {
                     </table>
                   </div>
 
-                  <p>The quick review ends with a prioritised report and works on a small budget, or when you need one path diagnosed before deciding on a wider scope. The full audit delivers the complete set from the list above – choose it before a redesign, or when abandonment is high and nobody knows what causes it.</p>
+                  <p>The quick review ends with a prioritised report and works on a small budget, or when you need one path diagnosed before deciding on a wider scope. The full audit delivers the complete set from the list above – choose it before a redesign (our free <Link href="/narzedzia/makieta-redesignu">website redesign mockup</Link> shows what a new homepage could look like), or when abandonment is high and nobody knows what causes it.</p>
 
                   <p>Whether a full audit closes in a week or takes a month is decided by three things, not by site size: the number of paths in scope, the state of measurement (reconfiguring GA4 events can absorb the first week) and whether user tests need external recruitment or participants from the client's own base will do. A store with one funnel and correctly configured analytics can be audited in a week; a site with five funnels, multiple language variants and measurement in need of repair takes the full four.</p>
 
@@ -569,7 +569,7 @@ export default async function ArticleUXAudit({ params }) {
                     <li>Analiza formularzy: pola powodujące porzucenia, komunikaty błędów, walidacja inline.</li>
                     <li>Ścieżka zakupowa: liczba kroków, spójność CTA, obsługa błędów płatności.</li>
                     <li>Analiza zaufania: widoczność opinii, certyfikatów bezpieczeństwa, polityki zwrotów.</li>
-                    <li>Testy propozycji wartości: czy nagłówek strony głównej lub landing page’a odpowiada na pytanie „dlaczego tu, dlaczego teraz“.</li>
+                    <li>Testy propozycji wartości: czy nagłówek strony głównej lub landing page’a odpowiada na pytanie „dlaczego tu, dlaczego teraz“ (jak zbudować taką stronę, opisujemy w poradniku o <Link href="/blog/landing-page-tworzenie-cms-hosting-cena">tworzeniu landing page</Link>).</li>
                   </ul>
 
                   <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
@@ -623,7 +623,7 @@ export default async function ArticleUXAudit({ params }) {
                     </table>
                   </div>
 
-                  <p>Szybki audyt kończy się raportem z priorytetami i sprawdza się przy małym budżecie albo gdy potrzebujesz diagnozy jednej ścieżki, zanim zdecydujesz o szerszym zakresie. Pełny audyt dostarcza komplet materiałów z listy powyżej – wybierz go przed redesignem albo wtedy, gdy porzucenia są wysokie i nie wiadomo, co je powoduje.</p>
+                  <p>Szybki audyt kończy się raportem z priorytetami i sprawdza się przy małym budżecie albo gdy potrzebujesz diagnozy jednej ścieżki, zanim zdecydujesz o szerszym zakresie. Pełny audyt dostarcza komplet materiałów z listy powyżej – wybierz go przed redesignem (jak mogłaby wyglądać nowa strona główna, pokaże darmowa <Link href="/narzedzia/makieta-redesignu">makieta strony internetowej</Link>) albo wtedy, gdy porzucenia są wysokie i nie wiadomo, co je powoduje.</p>
                   
                   <p>O tym, czy pełny audyt zamknie się w tygodniu, czy zajmie miesiąc, decydują trzy rzeczy, nie wielkość serwisu: liczba ścieżek objętych analizą, stan pomiaru (rekonfiguracja zdarzeń GA4 potrafi pochłonąć pierwszy tydzień) oraz to, czy testy z użytkownikami wymagają rekrutacji z zewnątrz, czy wystarczą uczestnicy z bazy klienta. Sklep z jednym lejkiem i poprawnie skonfigurowaną analityką da się zaudytować w tydzień; serwis z pięcioma lejkami, wieloma wariantami językowymi i pomiarem do naprawy zajmie pełne cztery.</p>
 

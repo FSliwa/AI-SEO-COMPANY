@@ -26,7 +26,7 @@
 /* Scena = pudelko grafiki tla (1600x1194) w tej samej skali co "cover": szerokosc to
    max(szerokosc hero, 420/1194*1600 = 563 px), prawy dol jak "100% 100%". */
 .tlo-gory-scena {
-  --k: 0.66;
+  --k: var(--tg-k, 0.66);
   position: absolute;
   right: 0;
   bottom: 0;
@@ -57,18 +57,21 @@
    (k=.5) dostaje wlasne pietro: padding hero = wysokosc czaszy nad dolem (0.381 szer.) minus czesc, ktora wchodzi obok tekstu. */
 @media (min-width: 601px) and (max-width: 1099px) {
   .subpage-hero.tlo-gory-hero { padding-bottom: max(190px, calc(38.1vw - 30px)) !important; }
-  .tlo-gory-scena { --k: 0.5; }
+}
+@media (min-width: 601px) and (max-width: 899px) {
+  .tlo-gory-hero { --tg-k: 0.5; }
 }
 
 /* Desktop: czasza z prawej, tresc (srodek, max 700 px) jej nie dotyka. */
-@media (min-width: 1100px) { .tlo-gory-scena { --k: 0.42; } }
-@media (min-width: 1400px) { .tlo-gory-scena { --k: 0.5; } }
-@media (min-width: 1500px) { .tlo-gory-scena { --k: 0.58; } }
+@media (min-width: 900px) { .tlo-gory-hero { --tg-k: 0.36; } }
+@media (min-width: 1100px) { .tlo-gory-hero { --tg-k: 0.42; } }
+@media (min-width: 1400px) { .tlo-gory-hero { --tg-k: 0.5; } }
+@media (min-width: 1600px) { .tlo-gory-hero { --tg-k: 0.58; } }
 
 @media (max-width: 600px) {
   /* telefon: czasza stoi nad podstawa, wiec tresc konczy sie nad nia (bez nakladania) */
   .subpage-hero.tlo-gory-hero { padding-bottom: 280px !important; }
-  .tlo-gory-scena { --k: 0.72; }
+  .tlo-gory-hero { --tg-k: 0.72; }
   /* oba przyciski tej samej szerokosci, rowno w kolumnie */
   .tlo-gory-hero a.hero-btn-primary,
   .tlo-gory-hero a.hero-btn-secondary { width: 100%; max-width: 420px; box-sizing: border-box; justify-content: center; margin-left: auto; margin-right: auto; }
@@ -149,4 +152,139 @@
 @keyframes tlo-gory-kolys {
   0%, 100% { transform: scale(var(--k)) rotate(-0.8deg); }
   50% { transform: scale(var(--k)) rotate(0.8deg); }
+}
+
+/* DUZE EKRANY (18.11.2026): powyzej 1680 px scena (grafika gor + czasza) stoi na
+   srodkowym pudelku 1680 px (proporcje jak na 1680), a nie rozciaga sie do 3440 px
+   (rozdmuchana, rozmazana czasza, szwy). Boki pudelka gasna w mgle i papier.
+   Poniżej 1680 px nic sie nie zmienia (pudelko = cala szerokosc). */
+@media (min-width: 1600px) {
+  .tlo-gory-obraz {
+    left: auto;
+    width: min(100cqw, 1680px);
+    right: calc((100cqw - min(100cqw, 1680px)) / 2);
+    height: min(100%, 504px);
+  }
+  .tlo-gory-scena {
+    width: min(100cqw, 1680px);
+    right: calc((100cqw - min(100cqw, 1680px)) / 2);
+  }
+}
+@media (min-width: 1681px) {
+  .tlo-gory-obraz {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 30%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 30%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+  .tlo-gory-scena {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+}
+
+/* ==========================================================================
+   HERO PODSTRON USLUGOWYCH NA LAPTOPACH I DUZYCH EKRANACH (18.11.2026, uslugi-hero)
+   --------------------------------------------------------------------------
+   Przyczyna "gory widac tylko na jednej stronie": H1 i H2 stały w 96 / 64 px (clamp
+   z min. 3,5 rem i vw bez limitu wysokosci), wiec naglowek mial 3-4 wiersze, hero
+   mialo 1209-1315 px, a pas gor (przyklejony do dolu sekcji) lądowal 860-1040 px pod
+   gorna krawedzia, czyli pod zagieciem okna 900-1115 px. Czasza (wysoko nad pasem)
+   byla widoczna, gory i przyciski nie. Widac je bylo tylko tam, gdzie H1 mial 2 wiersze
+   (/en/web-design). Markup i obrazy sa na wszystkich 6 adresach identyczne.
+   Naprawa: rozmiary plynne z szerokoscia i WYSOKOSCIA okna, H1 w max. 2 wierszach
+   (text-wrap: balance), gorny odstep = wysokosc naglowka + szczelina, dol hero tak, by
+   pas gor byl w pierwszym ekranie. Dziala od 601 px; telefon (<= 600 px) bez zmian.
+   ========================================================================== */
+@media (min-width: 601px) {
+  .subpage-hero.tlo-gory-hero {
+    --tg-h1: clamp(2.4rem, min(6.2vw, 7vh), 4.5rem);
+    --tg-h1-krok: 1;
+    --tg-h2: clamp(1.45rem, min(3.6vw, 4.6vh), 2.6rem);
+    --tg-lead: clamp(1rem, min(2vw, 2.45vh), 1.25rem);
+    --tg-pb: max(190px, calc(38.1vw - 30px));
+    /* lewa krawedz czaszy (px od lewej okna) i dostepna szerokosc srodkowej kolumny tekstu */
+    --tg-w: min(100vw, 1680px);
+    --tg-dl: calc((100vw - var(--tg-w)) / 2 + var(--tg-w) * (0.55125 + 0.3438 * (1 - var(--tg-k))));
+    padding-top: clamp(20px, 3.2vh, 44px) !important;
+    padding-bottom: var(--tg-pb) !important;
+    /* pas gor ma byc w pierwszym ekranie: hero nie wyzsze niz okno minus gorny pas strony */
+  }
+
+  .tlo-gory-hero > .container {
+    max-width: min(1180px, 100% - 3rem) !important;
+  }
+
+  .tlo-gory-hero h1 {
+    font-size: calc(var(--tg-h1) * var(--tg-h1-krok)) !important;
+    line-height: 1.06 !important;
+    max-width: 19em;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-wrap: balance;
+  }
+
+  .tlo-gory-hero h1 + div + div,
+  .tlo-gory-hero h1 + div + h2 {
+    font-size: var(--tg-h2) !important;
+    line-height: 1.12 !important;
+    margin-bottom: clamp(0.75rem, 1.8vh, 1.25rem) !important;
+    text-wrap: balance;
+  }
+
+  .tlo-gory-hero h1 + div {
+    margin-bottom: clamp(1rem, 2.2vh, 1.75rem) !important;
+  }
+
+  .tlo-gory-hero .section-tag {
+    margin-bottom: clamp(0.75rem, 1.8vh, 1.25rem) !important;
+    scroll-margin-top: calc(var(--w-naglowek, 96px) + 16px);
+  }
+
+  .tlo-gory-hero h1 ~ p:not(.hero-proof):not(.byline) {
+    font-size: var(--tg-lead) !important;
+    line-height: 1.5 !important;
+    max-width: min(700px, 46vw) !important;
+    margin-bottom: clamp(0.9rem, 2vh, 1.6rem) !important;
+  }
+
+  .tlo-gory-hero .hero-lead { margin-bottom: 0.9rem !important; }
+
+  .tlo-gory-hero .hero-proof {
+    margin: 0 auto clamp(0.9rem, 2vh, 1.5rem) auto !important;
+    font-size: clamp(0.82rem, 1.5vh, 0.95rem) !important;
+  }
+
+  .tlo-gory-hero .byline {
+    margin: clamp(0.75rem, 1.6vh, 1.25rem) auto 0 !important;
+  }
+}
+
+/* Laptop / desktop (od 900 px): czasza stoi wysoko nad pasem gor. Wysokosc czaszy nad dolem
+   sekcji = (0,2271 + 0,3063 k) x szerokosc sceny (k = skala czaszy, pivot w jej podstawie),
+   wiec hero ma min-height = ta wysokosc + gorna czesc (znacznik + H1), dzieki czemu czasza
+   nigdy nie wchodzi na naglowek, a pas gor wchodzi do pierwszego ekranu. Tresc pod H1 jest
+   waska (srodek) i konczy sie na lewo od czaszy. */
+@media (min-width: 900px) {
+  .subpage-hero.tlo-gory-hero {
+    --tg-pb: clamp(110px, 17vh, 200px);
+    min-height: calc(var(--tg-w) * (0.2271 + 0.3063 * var(--tg-k)) + clamp(230px, 31vh, 300px));
+  }
+  .tlo-gory-hero h1 ~ p:not(.hero-proof):not(.byline) { max-width: min(620px, max(380px, calc(2 * (var(--tg-dl) - 50vw) - 24px))) !important; }
+}
+
+/* Dlugi H1 (np. 65 znakow "Tworzenie stron internetowych i projektowanie stron internetowych"):
+   o stopien mniejszy, zeby na desktopie zmiescil sie w 2 wierszach. Klasa ustawiana w JSX. */
+@media (min-width: 901px) {
+  .tlo-gory-hero h1.tlo-gory-h1--dlugi { --tg-h1-krok: 0.84; max-width: 21em; }
+}
+
+/* Tablet pionowy (601-899 px): czasza ma wlasne pietro pod trescia (dol hero = jej wysokosc nad dolem + 12 px). */
+@media (min-width: 601px) and (max-width: 899px) {
+  .subpage-hero.tlo-gory-hero { --tg-pb: calc(100vw * (0.2271 + 0.3063 * var(--tg-k)) + 12px); }
+}
+
+/* Telefon: dlugi H1 o stopien mniejszy (4 wiersze spychaly przyciski pod zagiecie 844 px). */
+@media (max-width: 600px) {
+  .tlo-gory-hero h1.tlo-gory-h1--dlugi { font-size: calc(var(--w-h1) * 0.84) !important; }
 }

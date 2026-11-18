@@ -4,8 +4,8 @@ export async function generateMetadata({ params }) {
   return {
   // 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 20): title PL (52 zn.) pod „ile kosztuje strona internetowa”
   // (1 000/mies., frazy.csv:67) i „…dla firmy” (140, :68). Meta i wersja EN bez zmian (EN: tylko zapis marki i oferta).
-  title: locale === 'en' ? 'How Much Does a Business Website Cost in 2026?' : 'Ile kosztuje strona internetowa dla firmy? Ceny 2026',
-  description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta wizytówka kosztuje najczęściej od 1 300 do 5 000 zł netto, profesjonalna strona znacznie więcej. Sprawdź, ile kosztuje strona www dla firmy i co wpływa na cenę.',
+  title: locale === 'en' ? 'How Much Does a Website Cost? Business Pricing 2026' : 'Ile kosztuje strona internetowa dla firmy? Ceny 2026',
+  description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta wizytówka kosztuje według naszego szacunku 1 300–5 000 zł netto, profesjonalna więcej. Sprawdź, ile kosztuje strona www dla firmy i co wpływa na cenę.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
     languages: articleLanguages('/blog/ile-kosztuje-strona-www-dla-firmy-ceny', 'https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny', 'https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing')
@@ -80,7 +80,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              How Much Does a Business Website Cost? Pricing & What's Included (2026)
+              How Much Does a Website Cost? Business Website Pricing and What's Included (2026)
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -437,7 +437,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Booster Pack</span> – <span style={{ fontWeight: 'bold' }}>€590 / month</span> (min. 3 months) – <span style={{ fontWeight: 'bold' }}>new professional website for €0</span> in the package + full positioning + SSL + server + technical care.</li>
               </ul>
               
-              <p>If you’re planning a project, start with a free consultation. Prepare the business goal, list of key features, and examples of websites you like. Details of the offer and the option to schedule a call are available on the <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>website design</Link> page.</p>
+              <p>If you’re planning a project, start with a free consultation. Prepare the business goal, list of key features, and examples of websites you like. Details of the offer and the option to schedule a call are available on the <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>website design</Link> page. Before the call you can also generate a free <Link href="/narzedzia/makieta-redesignu" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>website redesign mockup</Link> of your homepage.</p>
 
               <h2 id="useful-sources">Useful Sources and Tools for Budget Planning</h2>
               <p>Before sending a quote request, it’s worth reviewing a few resources that will help you prepare a brief and evaluate the offers you receive.</p>
@@ -479,7 +479,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
             {/* The English branch above has its own <h1>. Only one of the two branches ever
                 renders, so this is not a second H1 on the page – do not demote it. */}
               <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Ile kosztuje strona www dla firmy: ceny i co zawierają
+              Ile kosztuje strona internetowa dla firmy: ceny i co zawierają
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -506,6 +506,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Sklep WooCommerce / Shopify (do 100 SKU):</span> cena rośnie wraz z liczbą wymaganych funkcji i integracji</li>
                 <li><span style={{ fontWeight: 'bold' }}>Rozbudowany serwis z integracjami CRM, płatnościami, wielojęzycznością:</span> wycena jest indywidualna i zależy od złożoności projektu</li>
               </ul>
+              <p>Od czego zależy cena samej strony docelowej i jak wybrać dla niej CMS i hosting, wyjaśniamy w poradniku o <Link href="/blog/landing-page-tworzenie-cms-hosting-cena">tworzeniu landing page</Link>.</p>
               
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Jeśli Twój projekt wymaga integracji z systemem CRM, automatyzacji zamówień lub niestandardowego projektu graficznego, od razu rozmawiaj z agencją pełnego serwisu. Freelancer może być tańszy na starcie, ale każda zmiana zakresu w trakcie projektu potrafi podwoić końcowy rachunek.
@@ -666,7 +667,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 </table>
               </div>
 
-              <p>Miesięczna subskrypcja SEO to osobna kategoria. Jeśli chcesz, żeby strona przyciągała ruch organiczny, samo wdrożenie to dopiero początek. Szczegółowe zestawienie kosztów pozycjonowania znajdziesz w artykule <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>ile kosztuje SEO w Polsce</Link>.</p>
+              <p>Miesięczna subskrypcja SEO to osobna kategoria. Jeśli chcesz, żeby strona przyciągała ruch organiczny, samo wdrożenie to dopiero początek. Szczegółowe zestawienie kosztów pozycjonowania znajdziesz w artykule <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>ile kosztuje SEO w Polsce</Link>. Zanim zamówisz stronę, możesz też zobaczyć, jak mogłaby wyglądać: <Link href="/narzedzia/makieta-redesignu" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>makieta strony internetowej</Link> z AI powstaje za darmo.</p>
 
               <h2 id="jak-dlugo-trwa">Jak długo trwa realizacja strony i jakie są etapy?</h2>
               <p>Czas realizacji zależy od złożoności projektu, ale też od tego, jak szybko klient dostarcza materiały. Poniżej realistyczny harmonogram dla typowych projektów.</p>

@@ -216,7 +216,21 @@ export default function KursorWgTla() {
       if (!ramka) ramka = requestAnimationFrame(zmierz);
     };
     // Przewijanie przesuwa tlo pod nieruchoma mysza.
-    const przewiniecie = () => { if (!ramka) ramka = requestAnimationFrame(zmierz); };
+    // Pomiar (2x elementFromPoint + getComputedStyle w gore drzewa) wymusza przeliczenie
+    // stylow, wiec nie robimy go w kazdej klatce przewijania: najwyzej co ~140 ms, plus
+    // jeden koncowy pomiar po zatrzymaniu. Kolor grotu spoznia sie o ulamek sekundy,
+    // przewijanie nie dostaje dodatkowej pracy na klatke.
+    let czasPomiaru = 0;
+    let zegarPrzew = 0;
+    const przewiniecie = () => {
+      if (ramka || zegarPrzew) return;
+      const wolne = Math.max(0, 140 - (performance.now() - czasPomiaru));
+      zegarPrzew = window.setTimeout(() => {
+        zegarPrzew = 0;
+        czasPomiaru = performance.now();
+        if (!ramka) ramka = requestAnimationFrame(zmierz);
+      }, wolne);
+    };
     // Mapy jasnosci grafik tla wczytujemy zawczasu (te pliki i tak sa juz
     // pobrane przez CSS), zeby pierwszy ruch nad grafika nie czekal.
     const rozgrzej = () => {
@@ -234,6 +248,7 @@ export default function KursorWgTla() {
       window.removeEventListener('pointermove', ruch);
       window.removeEventListener('scroll', przewiniecie);
       if (ramka) cancelAnimationFrame(ramka);
+      clearTimeout(zegarPrzew);
       clearTimeout(ponow);
       if ('cancelIdleCallback' in window) window.cancelIdleCallback(bezczynnosc); else clearTimeout(bezczynnosc);
       delete root.dataset.kursorTlo;

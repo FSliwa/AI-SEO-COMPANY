@@ -24,6 +24,7 @@ export async function generateMetadata({ params }) {
 import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
+import Byline from '@/components/Byline';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
@@ -72,6 +73,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Technical SEO Audit Checklist for Digital Marketers
             </h1>
+            <Byline sciezka="/blog/audyt-techniczny-seo" takzeEn data={LASTMOD['https://www.ai-seo-company.pl/en/blog/technical-seo-audit-checklist']} style={{ margin: '0 0 1.5rem' }} />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
@@ -436,6 +438,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Audyt techniczny SEO: checklista z progami liczbowymi
             </h1>
+            <Byline sciezka="/blog/audyt-techniczny-seo" data={LASTMOD['https://www.ai-seo-company.pl/blog/audyt-techniczny-seo']} style={{ margin: '0 0 1.5rem' }} />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
@@ -717,7 +720,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               <p>Audyt pojedynczej domeny zajmuje zwykle od kilku dni do tygodnia, zależnie od wielkości serwisu i tego, czy obejmuje analizę logów. U nas standardowo 3–5 dni roboczych. Serwisy z milionami adresów wymagają podejścia modułowego zamiast jednego pełnego crawlu.</p>
 
               <h3>Ile kosztuje audyt SEO?</h3>
-              <p>W zestawieniu 17 agencji SEO, które prowadzimy, jawne ceny audytu wynoszą od 300 zł do 12 000 zł netto (odczyt 4.11.2026). Rozpiętość bierze się z zakresu: sam crawl z automatu to co innego niż analiza logów, danych polowych i konsultacja wdrożeniowa. U nas audyt jest w cenie pakietów pozycjonowania, a jako samodzielna usługa kosztuje od 1 490 zł netto.</p>
+              <p>W naszym zestawieniu 17 agencji SEO działających w Polsce (bez nas), jawne ceny audytu wynoszą od 300 zł do 12 000 zł netto (odczyt 4.11.2026). Rozpiętość bierze się z zakresu: sam crawl z automatu to co innego niż analiza logów, danych polowych i konsultacja wdrożeniowa. U nas audyt jest w cenie pakietów pozycjonowania, a jako samodzielna usługa kosztuje od 1 490 zł netto.</p>
 
               <h3>Jak często powtarzać audyt?</h3>
               <p>Lekki crawl co tydzień, pełny audyt co kwartał i dodatkowy crawl porównawczy natychmiast po każdym większym wdrożeniu, przebudowie albo migracji.</p>

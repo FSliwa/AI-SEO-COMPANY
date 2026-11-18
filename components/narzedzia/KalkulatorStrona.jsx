@@ -259,7 +259,7 @@ function KalkulatorEn() {
         screenshot: schemaZrzutu(ZRZUT.en),
         featureList: ['Loss in Google and in AI answers', 'A range from studies of clicks in Google and in AI answers', 'Monthly and yearly result in PLN', 'SEO cost and payback month for a package from our pricing or your own amount', 'Online shop mode: average order value, gross margin and returning customers'],
       }}
-      lead="Enter five numbers about your business or online shop and the calculator instantly shows the range of monthly profit you lose without a Google top 3 position and AI recommendations. Pick a package to also see whether and when SEO pays off."
+      lead="Enter five numbers about your business or online shop and the calculator instantly shows the range of monthly profit you lose without a Google top 3 position and AI recommendations. Pick a package and it works as an SEO ROI calculator too: you see the monthly balance after the SEO cost and the month in which SEO pays back."
       narzedzie={<KalkulatorClient />}
       odpowiedz="The calculator estimates how much profit goes to competitors each month when your business is not in Google’s top 3 or in ChatGPT and Gemini answers. It uses your data: the number of searches, current traffic, conversion rate, customer value and margin, plus open assumptions: Google CTR studies, the impact of AI Overviews and the share of visits from AI answers. The result is given as a range, and once you add the cost of SEO it shows the balance and the payback month. For online shops it has a separate mode that uses average order value, gross margin and, optionally, the share of customers who buy again."
       faq={faqEn()}

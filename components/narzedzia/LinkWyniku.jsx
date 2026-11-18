@@ -8,6 +8,8 @@
 //   <LinkWyniku narzedzie="audyt_seo" parametry={{ url: adres }} />
 //   <LinkWyniku narzedzie="kalkulator" tryb="wynik" parametry={{ klienci: 40, wartosc: 2000 }} />
 // Zdarzenie: narzedzie_link_wyniku { narzedzie }.
+// 18.11.2026 (anim-system): potwierdzenie wchodzi z ✓ (SVG) i ruchem 240 ms (.r-stan--ok, app/ruch.css); tekst zostaje
+// widoczny (bez auto-znikania), żeby jego zniknięcie nie przesuwało zdania obok.
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
@@ -42,13 +44,13 @@ async function kopiuj(tekst) {
 
 export default function LinkWyniku({ parametry, narzedzie, tryb = 'wypelnij', tekst, className }) {
   const en = useLocale() === 'en';
-  const [stan, setStan] = useState({ status: 'idle', link: '' });
+  const [stan, setStan] = useState({ status: 'idle', link: '', n: 0 });
 
   async function klik() {
     const link = linkZParametrami(parametry);
     if (!link) return;
     const ok = await kopiuj(link);
-    setStan({ status: ok ? 'ok' : 'blad', link });
+    setStan((x) => ({ status: ok ? 'ok' : 'blad', link, n: x.n + 1 }));
     if (narzedzie) track('narzedzie_link_wyniku', { narzedzie });
   }
 
@@ -62,7 +64,12 @@ export default function LinkWyniku({ parametry, narzedzie, tryb = 'wypelnij', te
         {tekst ?? (en ? 'Copy link to this result' : 'Kopiuj link do wyniku')}
       </button>
       <span className="narz-mikro" role="status" aria-live="polite">
-        {stan.status === 'ok' ? (en ? 'Link copied. ' : 'Skopiowano link. ') : null}
+        {stan.status === 'ok' ? (
+          <span key={stan.n} className="r-stan--ok">
+            <svg className="r-ok-znak" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            {en ? 'Link copied. ' : 'Skopiowano link. '}
+          </span>
+        ) : null}
         {stan.status === 'blad' ? (en ? 'Copy failed, select the link: ' : 'Nie udało się skopiować, zaznacz link: ') : null}
         {stan.status === 'blad' ? <input readOnly value={stan.link} aria-label={en ? 'Link to the result' : 'Link do wyniku'} className="narz-pole" onFocus={(e) => e.target.select()} /> : null}
         {stan.status !== 'idle' ? opis : null}

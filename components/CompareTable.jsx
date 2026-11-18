@@ -24,12 +24,12 @@ const tabelaStyl = {
   background: '#FFFFFF',
 };
 const captionStyl = {
-  captionSide: 'top',
   textAlign: 'left',
   fontWeight: 700,
   fontSize: '1rem',
+  lineHeight: 1.4,
   color: 'var(--color-text-dark)',
-  padding: '0 0 0.75rem',
+  margin: '1.5rem 0 0.75rem',
 };
 const thKolumnaStyl = {
   textAlign: 'left',
@@ -58,17 +58,20 @@ export default function CompareTable({ caption, columns, rows, id, przypis, minW
   const [pierwsza, ...reszta] = columns;
   const szerokosc = minWidth ?? (columns.length > 2 ? columns.length * 170 : undefined);
   const etykieta = typeof caption === 'string' ? caption : undefined;
+  const idPodpisu = id ? `${id}-podpis` : undefined;
 
   return (
     <div style={{ margin: '0 0 2rem' }}>
+      {caption && <p id={idPodpisu} style={captionStyl}>{caption}</p>}
       <div
+        className="tabela-przewijana"
         role="region"
         aria-label={etykieta}
+        aria-labelledby={etykieta ? undefined : idPodpisu}
         tabIndex={0}
         style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', maxWidth: '100%' }}
       >
         <table id={id} style={szerokosc ? { ...tabelaStyl, minWidth: `${szerokosc}px` } : tabelaStyl}>
-          {caption && <caption style={captionStyl}>{caption}</caption>}
           <thead>
             <tr>
               {columns.map((c) => (
@@ -88,6 +91,7 @@ export default function CompareTable({ caption, columns, rows, id, przypis, minW
           </tbody>
         </table>
       </div>
+      {szerokosc && <p className="tabela-wskazowka" aria-hidden="true" />}
       {przypis && <p style={{ margin: '0.6rem 0 0', fontSize: '0.85rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>{przypis}</p>}
     </div>
   );
