@@ -4,6 +4,8 @@
 // link do nieistniejącego wpisu /blog/widocznosc-firmy-w-generatywnych-ai zastąpiony hubem
 // /pozycjonowanie-w-ai i porównaniem SEO vs GEO, etykiety „Technika/Treść/…” w liście kontrolnej
 // jako H3 (hierarchia nagłówków), „Porada profesjonalisty” bez pogrubienia (CLAUDE.md, <strong>).
+// Recenzja 18.11.2026: fakty sprawdzone u źródeł pierwotnych (daty odczytu w ZRODLA), AnswerBox 48 słów,
+// FAQ 43-62 słowa, H1 bez „GEO/AEO” (intencja huba i porównania SEO vs GEO), dopisane linki do narzędzi.
 import { articleLanguages, articleRobots, blogPosts } from '@/lib/blogPosts';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
@@ -26,7 +28,7 @@ const URL_STRONY = `${BASE}${SCIEZKA}`;
 // Title 59 zn., meta 136 zn. - te same wartości co titlePl/descPl w lib/blogPosts.js.
 const TYTUL = 'Jak zoptymalizować stronę pod Google AI Overviews i AI Mode';
 const OPIS = 'Google nie ma znaczników dla AI. Co decyduje o cytowaniu w AI Overviews, AI Mode i Perplexity: technika, treść, pomiar i plan na 30 dni.';
-const H1 = 'Jak zoptymalizować stronę pod Google AI Overviews, AI Mode i Perplexity? GEO/AEO w praktyce';
+const H1 = 'Jak zoptymalizować stronę pod Google AI Overviews, AI Mode i Perplexity?';
 
 const DATA_PUBLIKACJI = blogPosts.find((p) => p.slug === SCIEZKA)?.date;
 const DATA_ZMIANY = LASTMOD[URL_STRONY] ?? DATA_PUBLIKACJI;
@@ -35,52 +37,53 @@ const DATA_ZMIANY = LASTMOD[URL_STRONY] ?? DATA_PUBLIKACJI;
 const FAQ = [
   {
     pytanie: 'Czy mogę zapłacić, żeby moja strona pojawiła się w AI Overviews?',
-    odpowiedz: 'Nie. Cytowania w AI Overviews nie są produktem reklamowym. Strona musi być zindeksowana i kwalifikować się do snippetu, a o wyborze źródeł decydują systemy Google.',
+    odpowiedz: 'Dokumentacja Google opisuje tylko jeden warunek: strona ma być zindeksowana i kwalifikować się do wyświetlenia z fragmentem. Nie opisuje opłaty ani zgłoszenia, które gwarantowałyby cytowanie. Reklamy w Google Ads to osobny kanał, a o wyborze źródeł w podsumowaniu decydują systemy Google, nie reklamodawca.',
   },
   {
     pytanie: 'Jak pojawić się w AI Overviews, jeśli nie jestem w top 10?',
-    odpowiedz: 'Szansę zwiększa query fan-out: Google wysyła wiele zapytań cząstkowych, więc może zacytować stronę, która najlepiej odpowiada na jeden aspekt pytania. Twórz sekcje odpowiadające precyzyjnie na pytania szczegółowe.',
+    odpowiedz: 'Szansę zwiększa query fan-out. Według Google AI Overviews i AI Mode wysyłają wiele powiązanych zapytań do różnych podtematów, więc pokazują szerszy zestaw linków niż klasyczne wyniki. Strona spoza pierwszej dziesiątki może zostać zacytowana, jeśli najlepiej odpowiada na jedno pytanie cząstkowe. To szansa, nie gwarancja, dlatego pisz osobne sekcje z jasnymi odpowiedziami na pytania szczegółowe.',
   },
   {
     pytanie: 'Czy potrzebuję pliku llms.txt albo specjalnego schematu, żeby trafić do AI Overviews?',
-    odpowiedz: 'Według Google nie. Dokumentacja mówi, że nie trzeba tworzyć nowych plików dla AI ani specjalnych danych strukturalnych. Wystarczą standardowe praktyki SEO.',
+    odpowiedz: 'Według Google nie. Dokumentacja funkcji AI mówi, że nie trzeba tworzyć nowych plików ani znaczników dla AI i że nie ma specjalnego schematu schema.org, który należy dodać. Wystarczą standardowe praktyki SEO: indeksowanie, treść łatwa do zacytowania i dane strukturalne zgodne z widoczną treścią. Plik llms.txt nie jest więc warunkiem pojawienia się w AI Overviews.',
   },
   {
     pytanie: 'Czy zablokowanie Google-Extended usunie mnie z AI Overviews?',
-    odpowiedz: 'Nie. Google-Extended dotyczy trenowania modeli Gemini i groundingu w innych produktach Google. Nie wpływa na obecność w Google Search ani na ranking.',
+    odpowiedz: 'Nie. Google-Extended to token w robots.txt, który ogranicza użycie treści do trenowania modeli Gemini i do groundingu w Gemini oraz Vertex AI. Według dokumentacji nie wpływa na obecność strony w Google Search i nie jest sygnałem rankingowym. Za obecność w AI Overviews odpowiadają indeksowanie, Googlebot i ustawienia snippetów, takie jak nosnippet, max-snippet i noindex.',
   },
   {
     pytanie: 'Jak sprawić, żeby Google nie pokazywał mojej treści w AI Overviews?',
-    odpowiedz: 'Użyj nosnippet, data-nosnippet lub max-snippet, a w skrajnym przypadku noindex. Pamiętaj, że te same ustawienia ograniczają też fragmenty w klasycznych wynikach.',
+    odpowiedz: 'Użyj nosnippet, data-nosnippet lub max-snippet, a w skrajnym przypadku noindex. Pierwsze trzy ograniczają fragmenty strony, data-nosnippet dotyczy tylko wybranego elementu, a noindex usuwa stronę z indeksu. Te same ustawienia działają w klasycznych wynikach, więc ograniczysz tam fragmenty lub widoczność. Po zmianie sprawdź stronę w Sprawdzaniu adresu URL i poczekaj na ponowne przeskanowanie.',
   },
   {
     pytanie: 'Czy AI Overviews zmniejszają ruch na stronie?',
-    odpowiedz: 'To zależy od rodzaju zapytań. Proste pytania informacyjne mogą generować mniej kliknięć, a złożone – kliknięcia bardziej zaangażowanych użytkowników.',
+    odpowiedz: 'To zależy od rodzaju zapytań i nie ma jednej odpowiedzi. Google twierdzi, że kliknięcia z wyników z AI Overviews są wyższej jakości, a użytkownicy częściej spędzają więcej czasu na stronie. To deklaracja Google, a nie niezależne badanie. Sprawdź to na własnych danych: porównaj w Search Console kliknięcia i CTR dla pytań informacyjnych oraz konwersje z ruchu organicznego przed zmianą i po niej.',
   },
   {
     pytanie: 'Czy AI Mode (Tryb AI) jest dostępny po polsku?',
-    odpowiedz: 'Według strony pomocy Google (stan na 1 listopada 2026 r.) Polska i język polski są na liście obsługiwanych krajów i języków. Część zaawansowanych funkcji ma dodatkowe wymagania.',
+    odpowiedz: 'Tak. Według strony pomocy Google (odczyt 18 listopada 2026 r.) Polska i język polski są na liście obsługiwanych krajów i języków AI Mode. Część funkcji ma osobne wymagania, na przykład wiek 18+, subskrypcję albo włączoną historię wyszukiwania, i nie wszystkie są dostępne w każdym kraju. Dostępność szybko się zmienia, więc przed planowaniem działań sprawdź aktualną listę.',
   },
   {
     pytanie: 'Jak trafić do Perplexity, jeśli moja strona jest dobrze widoczna w Google?',
-    odpowiedz: 'Sprawdź, czy robots.txt i firewall przepuszczają PerplexityBota. Widoczność w Google nie przekłada się automatycznie na Perplexity AI, bo to osobny system z własnymi robotami.',
+    odpowiedz: 'Sprawdź, czy robots.txt i firewall przepuszczają PerplexityBota. Perplexity zaleca dopuszczenie go w robots.txt oraz zezwolenie na jego zakresy IP, które publikuje w pliku JSON. Widoczność w Google nie przekłada się automatycznie na Perplexity, bo to osobny system z własnym robotem. Zmiany w robots.txt mogą zacząć działać do 24 godzin po wprowadzeniu.',
   },
   {
     pytanie: 'Jak szybko zobaczę efekty zmian?',
-    odpowiedz: 'Nie ma stałego terminu. Google może potrzebować od kilku dni do kilku miesięcy na ponowne przeskanowanie, a Perplexity sygnalizuje do 24 godzin na uwzględnienie zmian w ustawieniach botów. Cytowania zależą też od konkurencji.',
+    odpowiedz: 'Nie ma stałego terminu. Google może potrzebować od kilku dni do kilku miesięcy na ponowne przeskanowanie strony, a Perplexity podaje, że zmiany w robots.txt mogą zacząć działać do 24 godzin. Cytowania zależą też od konkurencji i zmieniają się z czasem, dlatego porównuj trendy co miesiąc, a nie pojedyncze wyniki, i nie obiecuj sobie efektu po tygodniu.',
   },
 ];
 
-// Daty odczytu (pole data) dopisać przy publikacji, jeśli są znane - bez nich lista pokazuje same źródła.
+// Daty odczytu = dzień sprawdzenia źródła pierwotnego przy recenzji (18.11.2026).
 const ZRODLA = [
-  { url: 'https://developers.google.com/search/docs/appearance/ai-features', nazwa: 'Google Search Central: AI features and your website' },
-  { url: 'https://blog.google/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)' },
-  { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode – dostępność i wymagania', data: '2026-11-01' },
-  { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność – sposób liczenia danych' },
-  { url: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers', nazwa: 'Google: przegląd typowych robotów Google (Google-Extended)' },
-  { url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content', nazwa: 'Google Search Central: Creating helpful, reliable, people-first content' },
-  { url: 'https://docs.perplexity.ai/guides/bots', nazwa: 'Perplexity Docs: dokumentacja robotów (PerplexityBot, Perplexity-User)' },
-  { url: 'https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work', nazwa: 'Perplexity Help Center: How does Perplexity work?' },
+  { url: 'https://developers.google.com/search/docs/appearance/ai-features', nazwa: 'Google Search Central: AI features and your website', data: '2026-11-18' },
+  { url: 'https://support.google.com/websearch/answer/14901683?hl=pl', nazwa: 'Pomoc Google: Przegląd od AI w wynikach wyszukiwania', data: '2026-11-18' },
+  { url: 'https://blog.google/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)', data: '2026-11-18' },
+  { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode – dostępność i wymagania', data: '2026-11-18' },
+  { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność – sposób liczenia danych', data: '2026-11-18' },
+  { url: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers', nazwa: 'Google: przegląd typowych robotów Google (Google-Extended)', data: '2026-11-18' },
+  { url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content', nazwa: 'Google Search Central: Creating helpful, reliable, people-first content', data: '2026-11-18' },
+  { url: 'https://docs.perplexity.ai/guides/bots', nazwa: 'Perplexity Docs: dokumentacja robotów (PerplexityBot, Perplexity-User)', data: '2026-11-18' },
+  { url: 'https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work', nazwa: 'Perplexity Help Center: How does Perplexity work?', data: '2026-11-18' },
 ];
 
 const TOC = [
@@ -170,6 +173,8 @@ export default async function ArtykulAiOverviews({ params }) {
   // Reguła 6.0: link tylko do strony, która zwraca 200 - inaczej zwykły tekst.
   const hrefSeoVsGeo = hrefJesliOpublikowana('/porownania/seo-vs-geo');
   const hrefAudytAi = hrefJesliOpublikowana('/pozycjonowanie-w-ai/audyt-widocznosci');
+  const hrefBoty = hrefJesliOpublikowana('/narzedzia/generator-llms-txt');
+  const hrefSprawdzarka = hrefJesliOpublikowana('/sprawdz-widocznosc-w-ai');
 
   const faqLd = {
     '@context': 'https://schema.org',
@@ -207,11 +212,11 @@ export default async function ArtykulAiOverviews({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <AnswerBox>
-                Jak zoptymalizować stronę pod Google AI Overviews, skoro Google mówi wprost, że nie ma do tego żadnych specjalnych znaczników? Odpowiedź jest mniej efektowna, niż obiecują poradniki z „sekretnymi trikami”: trzeba mieć stronę, którą Google może zaindeksować i pokazać z fragmentem, oraz treść, z której model łatwo wyciągnie konkretną, sprawdzalną odpowiedź.
+                Żeby zoptymalizować stronę pod Google AI Overviews, zadbaj o dwie rzeczy: stronę, którą Google może zaindeksować i pokazać z fragmentem, oraz sekcje z konkretną, sprawdzalną odpowiedzią na pytanie z nagłówka. Google potwierdza, że nie wymaga do tego specjalnych znaczników, plików ani schematów. Resztę załatwia klasyczne SEO i pomiar.
               </AnswerBox>
 
               <p className="lead">
-                W tym przewodniku przechodzimy przez całą ścieżkę: od technicznych warunków wejścia, przez pisanie sekcji pod cytowanie, po Google AI Mode, Perplexity AI i pomiar w Search Console. Bez obietnic gwarancji, bo tych nie da nikt. Za to z konkretnymi krokami, które pozwalają działać bez zgadywania. Z listą kontrolną i planem na 30 dni, który możesz wdrożyć z małym zespołem.
+                W tym przewodniku o optymalizacji pod Google AI Overviews przechodzimy przez całą ścieżkę: od technicznych warunków wejścia, przez pisanie sekcji pod cytowanie, po Google AI Mode, Perplexity AI i pomiar w Search Console. Bez obietnic gwarancji, bo tych nie da nikt. Za to z konkretnymi krokami, które pozwalają działać bez zgadywania. Z listą kontrolną i planem na 30 dni, który możesz wdrożyć z małym zespołem.
               </p>
 
               <ArticleTOC items={TOC} />
@@ -237,8 +242,8 @@ export default async function ArtykulAiOverviews({ params }) {
               </div>
 
               <h2 id="ai-overviews">Czym są Google AI Overviews (Przegląd od AI) i skąd biorą źródła?</h2>
-              <p>AI Overviews to generowane przez AI podsumowania nad wynikami Google, które streszczają temat i linkują do stron, na których można dowiedzieć się więcej. W polskim interfejsie funkcja pojawia się jako „Przegląd od AI”. Google zaznacza, że AI Overviews wyświetlają się tylko wtedy, gdy system uzna, że wnoszą coś ponad klasyczne wyniki – więc przy wielu zapytaniach ich po prostu nie ma.</p>
-              <p>To pierwsza ważna lekcja. Zanim zaczniesz cokolwiek zmieniać, sprawdź, czy przy Twoich kluczowych pytaniach podsumowanie w ogóle się pojawia. Przy zapytaniach nawigacyjnych („logowanie bank X”) lub prostych transakcyjnych zwykle go nie zobaczysz. Przy pytaniach „jak”, „dlaczego”, „co lepsze” – znacznie częściej.</p>
+              <p>AI Overviews to generowane przez AI podsumowania nad wynikami Google, które streszczają temat i linkują do stron, na których można dowiedzieć się więcej. W polskim interfejsie funkcja pojawia się jako „Przegląd od AI”. Według strony pomocy Google funkcja pojawia się wtedy, gdy systemy uznają, że generatywna AI może być szczególnie pomocna – więc przy wielu zapytaniach podsumowania po prostu nie ma.</p>
+              <p>To pierwsza ważna lekcja. Zanim zaczniesz cokolwiek zmieniać, sprawdź, czy przy Twoich kluczowych pytaniach podsumowanie w ogóle się pojawia. Nie zakładaj z góry, które zapytania je wywołują. Sprawdź to własnym testem, który opisujemy w sekcji o pomiarze.</p>
 
               <h3>Skąd AI Overviews biorą cytowane strony</h3>
               <p>Cytowania w AI Overviews pochodzą z indeksu Google. Dokumentacja Google Search Central mówi jasno: aby strona mogła pojawić się jako link pomocniczy w AI Overviews lub AI Mode, musi być zindeksowana i kwalifikować się do wyświetlenia w wyszukiwarce z fragmentem (snippetem). Nie ma dodatkowych wymagań technicznych.</p>
@@ -248,7 +253,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <p>Google opisuje, że AI Overviews i AI Mode mogą wysyłać wiele powiązanych zapytań do różnych podtematów i źródeł. Dzięki temu pokazują szerszy i bardziej zróżnicowany zestaw linków niż tradycyjne wyniki. Dla Ciebie to dobra wiadomość: strona, która nie jest w pierwszej trójce na główne zapytanie, może zostać zacytowana, bo najlepiej odpowiada na jedno z pytań cząstkowych.</p>
 
               <h2 id="ai-mode">Jak działa Google AI Mode (Tryb AI) i czym jest query fan-out?</h2>
-              <p>Google AI Mode (po polsku „Tryb AI”) to osobny, konwersacyjny tryb wyszukiwarki dla pytań, które wymagają zgłębienia tematu, rozumowania lub porównań. Zamiast listy wyników dostajesz rozbudowaną odpowiedź z linkami do źródeł i możliwość zadawania pytań uzupełniających.</p>
+              <p>Google AI Mode (po polsku „Tryb AI”) to osobny, konwersacyjny tryb wyszukiwarki dla bardziej złożonych pytań, które wymagają zgłębienia tematu. Zamiast listy wyników dostajesz rozbudowaną odpowiedź z linkami do źródeł i możliwość zadawania pytań uzupełniających.</p>
               <p>Kluczem do zrozumienia, jak działa AI Mode, jest technika query fan-out. W ogłoszeniu z 20 maja 2025 roku Google wyjaśnia, że AI Mode dzieli pytanie na podtematy i wysyła wiele zapytań jednocześnie, dzięki czemu przeszukuje sieć głębiej niż klasyczna wyszukiwarka.</p>
 
               <h3>Query fan-out na przykładzie</h3>
@@ -262,7 +267,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <p>Każde z tych pytań może być obsłużone przez inną stronę. Jeśli Twój artykuł ma osobną, jasno opisaną sekcję o doborze mocy, ma szansę stać się źródłem dla tego jednego elementu odpowiedzi. Dlatego struktura treści oparta na pytaniach jest dziś tak ważna.</p>
 
               <h3>Czy AI Mode działa w Polsce?</h3>
-              <p>Według strony pomocy Google o AI Mode (stan na listopad 2026, sprawdzono 1 listopada 2026 r.) Polska znajduje się na liście obsługiwanych krajów, a język polski na liście obsługiwanych języków. Niektóre funkcje, np. najnowsze modele czy personalizacja, mają jednak osobne wymagania (wiek 18+, subskrypcja lub włączona historia) i nie wszystkie są dostępne w każdym kraju. Dostępność zmienia się szybko, więc przed planowaniem kampanii sprawdź aktualny stan na stronie pomocy Google.</p>
+              <p>Według strony pomocy Google o AI Mode (odczyt 18 listopada 2026 r.) Polska znajduje się na liście obsługiwanych krajów, a język polski na liście obsługiwanych języków. Niektóre funkcje, np. personalizacja czy najnowsze modele, mają jednak osobne wymagania (wiek 18+, subskrypcja, włączona historia wyszukiwania) i nie wszystkie są dostępne w każdym kraju. Dostępność zmienia się szybko, więc przed planowaniem kampanii sprawdź aktualny stan na stronie pomocy Google.</p>
               <p><em>Porada profesjonalisty:</em> AI Overviews i AI Mode mogą korzystać z różnych modeli i technik. Ta sama strona bywa cytowana w jednym miejscu, a pomijana w drugim. Testuj oba widoki osobno.</p>
 
               <h2 id="geo-aeo">Czym jest GEO/AEO i gdzie zaczyna się praktyka?</h2>
@@ -295,7 +300,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <p>Googlebot musi mieć dostęp do strony. Sprawdź:</p>
               <ul>
                 <li>czy robots.txt nie blokuje ważnych sekcji (np. /blog/ albo katalogu z produktami),</li>
-                <li>czy CDN, firewall lub hosting nie odrzucają Googlebota (Google wymienia to wprost w zaleceniach),</li>
+                <li>czy CDN lub hosting nie odrzucają Googlebota (Google każe sprawdzić, czy infrastruktura też zezwala na crawling),</li>
                 <li>czy strony nie mają przypadkowego noindex, np. po migracji z wersji testowej,</li>
                 <li>czy kanoniczne adresy wskazują właściwe wersje stron,</li>
                 <li>czy ważne podstrony są w mapie witryny XML.</li>
@@ -305,7 +310,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <h3>Snippety: nosnippet, data-nosnippet i max-snippet</h3>
               <p>To najczęściej pomijany punkt. Google wymienia te same mechanizmy kontroli dla funkcji AI co dla zwykłych wyników:</p>
               <ul>
-                <li><strong>nosnippet</strong> – blokuje pokazywanie fragmentu strony; strona z tym atrybutem nie zasili AI Overviews swoim tekstem,</li>
+                <li><strong>nosnippet</strong> – blokuje pokazywanie fragmentu strony, więc ogranicza też użycie jej tekstu w AI Overviews,</li>
                 <li><strong>data-nosnippet</strong> – wyłącza z fragmentów tylko wybrany element HTML,</li>
                 <li><strong>max-snippet</strong> – ogranicza długość fragmentu,</li>
                 <li><strong>noindex</strong> – wyklucza stronę z indeksu, a więc i z AI Overviews.</li>
@@ -375,31 +380,31 @@ export default async function ArtykulAiOverviews({ params }) {
               <p>Dane strukturalne pomagają Google zrozumieć, czym jest strona i do kogo należy. To wsparcie, a nie dźwignia.</p>
 
               <h2 id="eeat">Jak wzmocnić E-E-A-T, linkowanie wewnętrzne i multimedia?</h2>
-              <p>Cytowania w AI Overviews pochodzą ze stron, którym Google ufa w danym temacie. E-E-A-T (doświadczenie, wiedza ekspercka, autorytet, wiarygodność) nie jest bezpośrednim czynnikiem rankingowym, ale według Google pomaga systemom rozpoznawać dobre treści – a najważniejszym elementem jest zaufanie.</p>
+              <p>Google nie publikuje osobnych kryteriów wyboru źródeł do AI Overviews, ale w wytycznych o pomocnych treściach stawia na zaufanie. E-E-A-T (doświadczenie, wiedza ekspercka, autorytet, wiarygodność) nie jest bezpośrednim czynnikiem rankingowym, ale według Google pomaga systemom rozpoznawać dobre treści – a najważniejszym elementem jest zaufanie.</p>
 
               <h3>Autorzy z prawdziwym doświadczeniem</h3>
               <p>Podpisuj artykuły ekspertów, którzy faktycznie wykonują opisywaną pracę. Dodaj krótki biogram i stronę autora z doświadczeniem, certyfikatami lub realizacjami. Google ostrzega przed fałszywymi profilami twórców, np. z wygenerowanymi przez AI zdjęciami – to sygnał niskiej jakości, a nie autorytetu.</p>
-              <p>Pokazuj doświadczenie w treści: „W 2025 roku przeprowadziliśmy migrację sklepu na nową platformę i…” mówi więcej niż „eksperci zalecają”.</p>
+              <p>Pokazuj doświadczenie w treści: opis tego, co faktycznie zrobiono i z jakim skutkiem, mówi więcej niż „eksperci zalecają”.</p>
 
               <h3>Linkowanie wewnętrzne jako mapa tematu</h3>
               <p>Google zaleca łatwą nawigację przez linki wewnętrzne. Zbuduj klaster: stronę główną tematu (np. usługę) i artykuły odpowiadające na pytania szczegółowe. Linkuj między nimi opisowymi anchorami.</p>
 
               <h3>Obrazy i wideo</h3>
-              <p>Google zachęca do uzupełniania tekstu wysokiej jakości obrazami i filmami. Własne zdjęcia, schematy i krótkie wideo instruktażowe z opisowymi tekstami alternatywnymi oraz transkrypcją zwiększają wartość strony. Dotyczy to zwłaszcza pytań wizualnych, które użytkownicy zadają w AI Mode z pomocą zdjęcia lub kamery.</p>
+              <p>Google zachęca do uzupełniania tekstu wysokiej jakości obrazami i filmami. Własne zdjęcia, schematy i krótkie wideo instruktażowe z opisowymi tekstami alternatywnymi oraz transkrypcją zwiększają wartość strony.</p>
 
               <h2 id="tresc-ai-mode">Jak przygotować treść pod Google AI Mode i pytania uzupełniające?</h2>
               <p>Google AI Mode różni się od AI Overviews tym, że rozmowa trwa dłużej. Użytkownik zadaje pytanie, dostaje odpowiedź, a potem dopytuje. Search Console traktuje każde pytanie uzupełniające jako nowe zapytanie, co dobrze pokazuje logikę trybu: każda tura to nowa szansa na cytowanie.</p>
               <p>Co to oznacza w praktyce?</p>
               <ul>
                 <li><strong>Pokryj ścieżkę decyzji, nie jedno pytanie.</strong> Jeśli piszesz o wyborze CRM, przewidź kolejne pytania: integracje, koszty wdrożenia, czas migracji, alternatywy.</li>
-                <li><strong>Dodawaj porównania i kryteria wyboru.</strong> Google wskazuje, że AI Mode sprawdza się przy porównaniach – tabela „opcja A vs B vs C” z jasnymi kryteriami to naturalny materiał na odpowiedź.</li>
+                <li><strong>Dodawaj porównania i kryteria wyboru.</strong> Użytkownicy często dopytują o różnice, więc tabela „opcja A vs B vs C” z jasnymi kryteriami to naturalny materiał na odpowiedź.</li>
                 <li><strong>Opisuj wyjątki i warunki brzegowe.</strong> „To rozwiązanie nie sprawdzi się, jeśli…” – takie zdania pomagają odpowiedzieć na doprecyzowujące pytania.</li>
                 <li><strong>Utrzymuj spójność między stronami.</strong> Jeśli cennik mówi jedno, a artykuł blogowy drugie, system może pominąć oba źródła albo zacytować nieaktualne.</li>
               </ul>
               <p><em>Porada profesjonalisty:</em> Zapisz 10 pytań, które klienci zadają przed zakupem, i przetestuj je w AI Mode po polsku. Zanotuj, które domeny są cytowane i jakich informacji brakuje w Twoich treściach. To gotowa lista tematów do uzupełnienia.</p>
 
               <h2 id="perplexity">Jak trafić do odpowiedzi Perplexity AI?</h2>
-              <p>Perplexity AI to wyszukiwarka odpowiadająca w czasie rzeczywistym, która przy każdej odpowiedzi pokazuje numerowane przypisy z linkami do źródeł. Aby trafić do Perplexity, Twoja strona musi być dostępna dla jej robotów i zawierać treść, którą da się łatwo zacytować. Indeks Google nie ma tu znaczenia.</p>
+              <p>Perplexity AI to wyszukiwarka odpowiadająca w czasie rzeczywistym, która przy każdej odpowiedzi pokazuje numerowane przypisy z linkami do źródeł. Aby trafić do Perplexity, Twoja strona musi być dostępna dla jej robotów i zawierać treść, którą da się łatwo zacytować. Perplexity korzysta z własnych robotów, więc dostęp Googlebota niczego tu nie rozstrzyga.</p>
 
               <h3>PerplexityBot i Perplexity-User – czym się różnią</h3>
               <p>Dokumentacja Perplexity opisuje dwa user-agenty:</p>
@@ -412,17 +417,18 @@ export default async function ArtykulAiOverviews({ params }) {
 Allow: /`}</code></pre>
 
               <h3>WAF i Cloudflare – częsta przyczyna braku cytowań</h3>
-              <p>Robots.txt to nie wszystko. Firewall aplikacyjny potrafi zablokować bota, nawet jeśli robots.txt na to pozwala. Perplexity publikuje zakresy IP swoich robotów w plikach JSON i zaleca, by na ich podstawie tworzyć reguły zezwalające, łącząc dopasowanie user-agenta z weryfikacją IP. W Cloudflare dokumentacja zaznacza, że trybu Bot Fight Mode nie da się pominąć regułą WAF. Zmiany po stronie Perplexity mogą być widoczne nawet do 24 godzin.</p>
+              <p>Robots.txt to nie wszystko. Firewall aplikacyjny potrafi zablokować bota, nawet jeśli robots.txt na to pozwala. Perplexity publikuje zakresy IP swoich robotów w plikach JSON i zaleca, by na ich podstawie tworzyć reguły zezwalające, łącząc dopasowanie user-agenta z weryfikacją IP. W Cloudflare dokumentacja zaznacza, że trybu Bot Fight Mode nie da się pominąć regułą WAF. Zmiany w ustawieniach robots.txt mogą zacząć działać do 24 godzin po wprowadzeniu.</p>
 
               <h3>Perplexity SEO w praktyce</h3>
               <p>Zasady treściowe są w dużej mierze wspólne z Google. Na co zwrócić uwagę szczególnie:</p>
               <ul>
-                <li><strong>Jednoznaczne definicje i fakty.</strong> Perplexity buduje odpowiedź z wielu źródeł i przypisuje zdania do konkretnych przypisów. Zdanie z liczbą i źródłem łatwiej przypisać niż ogólnik.</li>
-                <li><strong>Aktualność.</strong> Wyszukiwanie w czasie rzeczywistym premiuje treści, które nadążają za zmianami.</li>
+                <li><strong>Jednoznaczne definicje i fakty.</strong> Każda odpowiedź Perplexity ma numerowane przypisy z linkami do źródeł. Zdanie z liczbą, datą i źródłem łatwiej zacytować niż ogólnik.</li>
+                <li><strong>Aktualność.</strong> Perplexity przeszukuje internet na bieżąco, więc nieaktualne dane i daty są ryzykiem. Aktualizuj to, co się zmienia.</li>
                 <li><strong>Czysty HTML.</strong> Treść widoczna bez logowania, bez pop-upów zasłaniających tekst i bez ładowania kluczowych informacji wyłącznie przez JavaScript.</li>
                 <li><strong>Spójność wzmianek.</strong> Opisy firmy w katalogach, mediach i na Twojej stronie powinny się zgadzać.</li>
               </ul>
-              <p>Szersze tło, czyli jak modele językowe dobierają źródła i jak budować rozpoznawalność marki poza wyszukiwarką, opisujemy na stronie <Link href="/pozycjonowanie-w-ai">pozycjonowanie w AI</Link>.</p>
+              {hrefBoty && <p>Dostęp botów AI do swojej strony możesz sprawdzić w <Link href={hrefBoty}>bezpłatnym teście dostępu botów AI</Link>.</p>}
+              <p>Szersze tło, czyli jak modele językowe dobierają źródła i jak budować rozpoznawalność marki poza wyszukiwarką, opisujemy w ramach naszej <Link href="/pozycjonowanie-w-ai">usługi pozycjonowania w AI</Link>.</p>
 
               <h2 id="pomiar">Jak zmierzyć wpływ AI Overviews na ruch na stronie?</h2>
               <p>Zacznij od Search Console. Według Google strony wyświetlane w AI Overviews i AI Mode są wliczane do ogólnego ruchu i raportowane w raporcie Skuteczność, w typie wyszukiwania „Web”. Nie ma osobnego filtra „tylko AI Overviews”, więc wnioski trzeba wyciągać pośrednio.</p>
@@ -444,6 +450,8 @@ Allow: /`}</code></pre>
                 <li>Porównuj trendy co miesiąc, a nie pojedyncze wyniki, bo odpowiedzi AI się zmieniają.</li>
               </ol>
               {hrefAudytAi && <p>Jeśli nie chcesz prowadzić takiego dziennika samodzielnie, zobacz, co obejmuje nasz <Link href={hrefAudytAi}>audyt widoczności w AI</Link>.</p>}
+
+              {hrefSprawdzarka && <p>Pierwszy szybki odczyt, czy modele wymieniają Twoją firmę, daje bezpłatna <Link href={hrefSprawdzarka}>sprawdzarka widoczności w AI</Link>. Nie zastępuje ona ręcznego dziennika dla AI Overviews, bo dotyczy innych systemów.</p>}
 
               <h3>Perplexity w GA4 i jakość ruchu</h3>
               <p>Ruch z Perplexity AI pojawia się w Google Analytics 4 jako odesłanie (źródło z domeną perplexity.ai). Utwórz eksplorację lub własną grupę kanałów, w której wydzielisz ruch z asystentów AI, i porównuj go z ruchem organicznym pod kątem zaangażowania i konwersji.</p>
