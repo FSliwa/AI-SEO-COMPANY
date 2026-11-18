@@ -1,32 +1,27 @@
-import Image from 'next/image';
-import { Seite, Hero, Abschnitt, Absatz, Liste, Karten, Preise, Referenzen, CtaZeile, Faq } from './UslugiBausteine';
-import { Reveal } from '@/components/ScrollReveal';
-import { HOME_LEAD, HOME_LEISTUNGEN, HOME_VORTEILE, HOME_SCHRITTE, HOME_FAQ } from '@/lib/de/home';
-import { REFERENZEN } from '@/lib/de/referenzen';
-import { wpisDe, maWersjeDe } from '@/lib/stronyDe';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Contact from '@/components/Contact';
+import Hero from '@/components/Hero';
+import HeroKlienci from '@/components/HeroKlienci';
+import { Abschnitt, Absatz, Liste, Karten, Preise, Referenzen, CtaZeile, Faq } from './UslugiBausteine';
+import { HOME_LEISTUNGEN, HOME_VORTEILE, HOME_SCHRITTE, HOME_FAQ } from '@/lib/de/home';
+import { maWersjeDe } from '@/lib/stronyDe';
 
 export default function HomeDe() {
-  const w = wpisDe('/');
   const leistungen = HOME_LEISTUNGEN.filter((l) => maWersjeDe(l.schluessel)).map((l) => ({ ...l, href: l.schluessel }));
   return (
     <>
-      <Seite krumen={null}>
-        <Hero
-          kicker="AI SEO COMPANY · Warschau"
-          h1={w.h1}
-          lead={HOME_LEAD}
-          beweis="✓ Monatsvertrag ohne lange Bindung · ✓ Kundenportal ab Tag 1 · ✓ Website im Paket inklusive (Booster Pack)"
-          cta="Angebot anfragen"
-        />
-        <Reveal>
-          <ul aria-label="Kunden und Projekte" style={{ listStyle: 'none', margin: '0 auto 70px', padding: '0 16px', maxWidth: '980px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '1.5rem 3rem', opacity: 0.8 }}>
-            {REFERENZEN.map((r) => (
-              <li key={r.id} style={{ display: 'flex', alignItems: 'center' }}>
-                <Image unoptimized src={r.logo} alt={r.name} width={r.logoW} height={r.logoH} style={{ height: 'auto', width: 'auto', maxHeight: '32px', maxWidth: '150px', objectFit: 'contain', filter: 'grayscale(1)' }} />
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+      <Header />
+      {/* 18.11.2026 (scalenie): ta sama kompozycja hero co PL/EN (components/Hero.jsx, teksty DE w COPY.de),
+          pasek klientow (HeroKlienci) na pasie mgly; dalej sekcje DE bez 3D, bloga i panelu. */}
+      <main>
+        <Hero />
+        <div className="gory-oferta" data-kursor="obraz" data-petla="">
+          <div className="styk-mgla" aria-hidden="true"><span /><span /></div>
+          <div className="chmury-dryf" aria-hidden="true"><span /><span /></div>
+          <HeroKlienci />
+        </div>
+        <div style={{ paddingTop: '70px', color: 'var(--color-text-main)', overflowX: 'hidden' }}>
 
         <Karten id="uslugi" titel="Unsere Leistungen" untertitel="SEO-Strategien, die Marken in Google und in KI-Antworten sichtbar machen." items={leistungen} />
 
@@ -44,7 +39,10 @@ export default function HomeDe() {
         <Karten titel="Unser Vorgehen" untertitel="Von der Analyse bis zur Messung in Google und in KI-Antworten." items={HOME_SCHRITTE} spalten={240} />
 
         <Faq eintraege={HOME_FAQ} titel="Häufige Fragen zur Zusammenarbeit" />
-      </Seite>
+        </div>
+        <Contact isMainContent={true} />
+      </main>
+      <Footer />
     </>
   );
 }

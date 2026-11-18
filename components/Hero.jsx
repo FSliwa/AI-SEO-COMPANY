@@ -130,6 +130,27 @@ const COPY = {
     sub: 'Kompleksowa Agencja SEO i Marketingowa z Warszawy',
     ctaPrimary: 'Wyceń projekt',
     ctaSecondary: 'Zobacz portfolio'
+  },
+  // DE (18.11.2026): teksty z lib/de/home.js (HOME_LEAD) i registry lib/stronyDe.js (H1 =
+  // sr-only "SEO " ze sceny + display + sub). Kolejnosc jak w PL/EN: H1, podtytul (sub, w H1),
+  // lead, body, przyciski. Fakty jak na polskiej stronie glownej (konta Google klienta,
+  // Monatsvertrag, ceny w EUR); nic nowego.
+  de: {
+    leadSeg: [
+      { t: 'Wir berichten über Anfragen und Sichtbarkeit aus Ihren eigenen Google-Konten' },
+      { t: ', nicht nur über Positionen', wide: true },
+      { t: '.' }
+    ],
+    bodySeg: [
+      { t: 'Wir sind eine KI SEO Agentur aus Warschau: Wir verbinden technisches SEO, Content und Generative Engine Optimization, damit Ihr Unternehmen in Google und in den Antworten von ChatGPT, Gemini und Perplexity genannt wird.' },
+      { t: ' SEO Audit, B2B SEO und Messung der KI-Sichtbarkeit' },
+      { t: ', mit Monatsvertrag und Preisen in Euro', wide: true },
+      { t: '.' }
+    ],
+    display: 'und KI-Sichtbarkeit',
+    sub: 'für Unternehmen im DACH-Raum',
+    ctaPrimary: 'Angebot anfragen',
+    ctaSecondary: 'Referenzen ansehen'
   }
 };
 
