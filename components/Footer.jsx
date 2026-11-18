@@ -155,7 +155,7 @@ export default function Footer() {
                 <p style={{ margin: 0 }}>KRS: 0001239983</p>
                 <p style={{ margin: 0 }}>NIP: 5253090237</p>
                 <p style={{ margin: 0 }}>REGON: 544761611</p>
-                <p style={{ margin: 0 }}>{lang === 'pl' ? 'Godziny otwarcia: ' : 'Opening hours: '}{GODZINY_TEKST[lang === 'pl' ? 'pl' : 'en']}</p>
+                <p style={{ margin: 0 }}>{tr(lang, 'Godziny otwarcia:', 'Opening hours:')} {GODZINY_TEKST[lang]}</p>
               </div>
             </div>
             <div className="footer-col">

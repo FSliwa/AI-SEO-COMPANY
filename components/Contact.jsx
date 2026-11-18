@@ -276,7 +276,7 @@ export default function Contact({ isMainContent = false }) {
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Adres:', 'Address:')}</span> ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Telefon:', 'Phone:')}</span> <a href="tel:+48518815055" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>518 815 055</a></li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>E-mail:</span> <a href="mailto:kontakt@ai-seo-company.pl" data-cta="contact" style={{ color: 'inherit', textDecoration: 'underline' }}>kontakt@ai-seo-company.pl</a></li>
-              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{lang === 'pl' ? 'Godziny otwarcia:' : 'Opening hours:'}</span> {GODZINY_TEKST[lang === 'pl' ? 'pl' : 'en']}</li>
+              <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Godziny otwarcia:', 'Opening hours:')}</span> {GODZINY_TEKST[lang]}</li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>NIP:</span> 5253090237</li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Czas odpowiedzi:', 'Response Time:')}</span> {tr(lang, 'Do 24 h w dni robocze, zwykle szybciej', 'Within 24 h on business days, usually sooner')}</li>
             </ul>

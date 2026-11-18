@@ -24,8 +24,13 @@ const CSP_REPORT_ONLY = [
   // panel.ai-seo-company.pl: formularze (checklista, szablony, narzedzia, monitoring audytu).
   // Reszta: wysylka zdarzen GA4 (region1.google-analytics.com, region1.analytics.google.com),
   // Ads (pagead2.googlesyndication.com, www.google.com/ccm, ad.doubleclick.net, stats.g.doubleclick.net).
-  "connect-src 'self' https://panel.ai-seo-company.pl https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://ad.doubleclick.net https://pagead2.googlesyndication.com https://www.googleadservices.com https://www.google.com https://www.google.pl https://google.com",
-  "media-src 'self'",
+  // www.gstatic.com: dekoder Draco (draco_wasm_wrapper.js, draco_decoder.wasm) pobierany przez
+  // runtime Spline po wyrenderowaniu sceny 3D na stronie glownej PL, EN i DE (zmierzone 18.11.2026,
+  // c-scalenie; to jedyne naruszenie connect-src poza raportem C5).
+  "connect-src 'self' https://panel.ai-seo-company.pl https://www.gstatic.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://ad.doubleclick.net https://pagead2.googlesyndication.com https://www.googleadservices.com https://www.google.com https://www.google.pl https://google.com",
+  // data: - wideo mp4 w URI data: tworzone przez runtime sceny 3D (zmierzone 18.11.2026, c-scalenie,
+  // na / /en /de po dodaniu gstatic wyzej).
+  "media-src 'self' data:",
   "worker-src 'self' blob:",
   "frame-src 'self'",
   "object-src 'none'",
