@@ -35,7 +35,7 @@ export default async function ArticleAttributionTools({ params }) {
     { id: 'how-to-pick', title: 'How do you pick the right attribution tool for your team?' },
     { id: 'mta-vs-mmm', title: 'MTA vs MMM vs incrementality: which measurement approach do you actually need?' },
     { id: 'key-takeaways', title: 'Key Takeaways' },
-    { id: 'data', title: 'What the data actually says about choosing attribution tools' },
+    { id: 'data', title: 'How to choose: audit your data before you pick an attribution tool' },
     { id: 'partner', title: 'When hiring an attribution implementation partner makes more sense than going it alone' },
     { id: 'sources', title: 'Useful sources for deeper reading' }
   ];
@@ -77,7 +77,7 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><strong>DTC / e-commerce:</strong> Triple Whale (pixel-based, Shopify-native) or Northbeam (creative-level paid-media depth)</li>
                 <li><strong>Call tracking and offline attribution:</strong> CallRail (SMB to mid-market) or Invoca (enterprise AI-driven call analytics)</li>
                 <li><strong>Agency and multi-client reporting:</strong> Ruler Analytics or WhatConverts</li>
-                <li><strong>Enterprise MTA + analytics:</strong> Adobe Analytics or LeadsRx (note: LeadsRx will no longer be available after October 30, 2026)</li>
+                <li><strong>Enterprise MTA + analytics:</strong> Adobe Analytics (note: LeadsRx was discontinued on October 30, 2026 and is no longer an option)</li>
                 <li><strong>Data pipeline / ETL:</strong> Funnel (feeds other attribution tools)</li>
                 <li><strong>Mobile app attribution:</strong> AppsFlyer</li>
                 <li><strong>Measurement + budget automation:</strong> SegmentStream</li>
@@ -208,16 +208,6 @@ export default async function ArticleAttributionTools({ params }) {
                       <td>SMB / Agencies</td>
                     </tr>
                     <tr>
-                      <td>LeadsRx</td>
-                      <td>Mid-market cross-channel</td>
-                      <td>Custom pricing (product ends Oct 30, 2026)</td>
-                      <td>Multi-touch, algorithmic</td>
-                      <td>Ad platforms, CRMs, analytics tools</td>
-                      <td>Cross-channel identity matching</td>
-                      <td>Self-serve + support</td>
-                      <td>Mid-market / Enterprise</td>
-                    </tr>
-                    <tr>
                       <td>HubSpot Marketing Attribution</td>
                       <td>Existing HubSpot customers</td>
                       <td>Included in higher HubSpot plans</td>
@@ -271,7 +261,7 @@ export default async function ArticleAttributionTools({ params }) {
                 </table>
               </div>
               
-              <p>A note on methodology: Pricing figures come from publicly listed plans or vendor-sourced ranges as of mid-2026. These multi-touch attribution tools and best tools for marketing ROI should always be validated against your own conversion data during a trial period. For a deeper data audit before choosing any tool, start with an <Link href="/audyt-seo">SEO and analytics audit</Link>.</p>
+              <p>A note on methodology: Pricing figures come from publicly listed plans or vendor-sourced ranges as of mid-2026 (not re-checked on 18 November 2026; confirm current prices with each vendor). These multi-touch attribution tools and best tools for marketing ROI should always be validated against your own conversion data during a trial period. For a deeper data audit before choosing any tool, start with an <Link href="/audyt-seo">SEO and analytics audit</Link>.</p>
 
               <h2 id="vendor-profiles">Vendor profiles: strengths, limitations, and who each tool actually fits</h2>
               
@@ -306,11 +296,11 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><strong>Budget for implementation:</strong> The software cost is often only half the equation; reserve time and budget for proper onboarding and engineering support.</li>
               </ul>
 
-              <h2 id="data">What the data actually says about choosing attribution tools</h2>
+              <h2 id="data">How to choose: audit your data before you pick an attribution tool</h2>
               <p>Most decisions go wrong when teams evaluate tools before auditing their own data. Fix UTMs and CRM mapping first, learn how to measure marketing attribution properly, then select from the best marketing attribution tools and top marketing attribution software available.</p>
 
               <h2 id="partner">When hiring an attribution implementation partner makes more sense than going it alone</h2>
-              <p>AI SEO COMPANY offers a managed path through <Link href="/pozycjonowanie-stron-internetowych">our SEO services</Link>. If you want to start with a data audit, the <Link href="/audyt-seo">SEO audit service</Link> is the right first step.</p>
+              <p>We do not resell or implement attribution platforms. If you want to start with a data audit, the <Link href="/audyt-seo">SEO audit service</Link> (from €350 net, included in every SEO package) is the right first step.</p>
 
               <h2 id="sources">Useful sources for deeper reading</h2>
               <ul>
@@ -329,7 +319,7 @@ export default async function ArticleAttributionTools({ params }) {
                 locale={locale} 
                 currentSlug="/blog/best-marketing-attribution-tools-for-2026" 
                 customCtaTitleEn="Need help with attribution?"
-                customCtaTextEn="We will conduct a free technical audit of your analytics and show you how to improve your tracking accuracy."
+                customCtaTextEn="We will review your analytics setup as part of an SEO audit (from €350 net, included in every SEO package) and show you how to improve your tracking accuracy."
               />
             </div>
           </Reveal>

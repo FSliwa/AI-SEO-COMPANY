@@ -26,8 +26,8 @@ export default function BlogGrid() {
       id: 'metodologia',
       tagPl: 'METODOLOGIA', tagEn: 'METHODOLOGY',
       titlePl: 'Twarde dane i testy A/B', titleEn: 'Hard data and A/B tests',
-      textPl: 'Każdy opublikowany przez nas wpis jest wynikiem głębokiej analizy danych, licznych testów A/B i wielomiesięcznych kampanii w wysoce konkurencyjnych niszach, co sprawia, że nasze wnioski opierają się na twardych, rynkowych realiach.',
-      textEn: 'Every post we publish is the result of deep data analysis, numerous A/B tests, and multi-month campaigns in highly competitive niches, meaning our conclusions are based on hard, market realities.',
+      textPl: 'Nasze wpisy opierają się na danych z Google Search Console i dokumentacji Google; dane własne oznaczamy datami i oknami pomiaru.',
+      textEn: 'Our posts are based on Google Search Console data and Google documentation; we label our own data with dates and measurement windows.',
       image: '/images/skuteczna-optymalizacja-seo.jpg'
     },
     {
@@ -42,8 +42,8 @@ export default function BlogGrid() {
       id: 'rezultaty',
       tagPl: 'REZULTATY', tagEn: 'RESULTS',
       titlePl: 'Bądź o krok przed konkurencją', titleEn: 'Stay one step ahead',
-      textPl: 'Nie czekaj dłużej, zacznij aplikować nasze rozwiązania i patrz, jak rosną Twoje słupki w Google Analytics oraz Google Search Console. Bądź konsekwentny, cierpliwy i metodyczny, a z naszą pomocą z pewnością osiągniesz zaplanowane cele biznesowe i wizerunkowe, wyprzedzając konkurencję o lata świetlne.',
-      textEn: 'Do not wait any longer, start applying our solutions today and watch your metrics grow in Google Analytics and GSC. Be consistent, patient, and methodical, and with our help you will certainly achieve your planned business and image goals, leaving your competition light years behind.',
+      textPl: 'Nie czekaj dłużej, zacznij aplikować nasze rozwiązania i patrz, jak rosną Twoje słupki w Google Analytics oraz Google Search Console. Bądź konsekwentny, cierpliwy i metodyczny: to zwiększa szanse na osiągnięcie zaplanowanych celów biznesowych i wizerunkowych.',
+      textEn: 'Do not wait any longer, start applying our solutions today and watch your metrics grow in Google Analytics and GSC. Be consistent, patient, and methodical, and that increases your chances of reaching your planned business and image goals.',
       image: '/images/unsplash-1620121692029-d088224ddc74.jpg'
     }
   ];

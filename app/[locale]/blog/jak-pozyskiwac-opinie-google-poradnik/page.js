@@ -113,20 +113,20 @@ export default async function ArticleReviewsPage({ params }) {
               {locale === 'en' ? (
                 <>
                   <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                    The most effective method of getting Google reviews is a personalized request sent 24-48 hours after the completed service, with one visible link to leave a review. There is no secret here, but a specific process: a trigger in the CRM system, a personalized message, and one clear CTA.
+                    A method that works well in practice for getting Google reviews is a personalized request sent 24-48 hours after the completed service, with one visible link to leave a review. There is no secret here, but a specific process: a trigger in the CRM system, a personalized message, and one clear CTA.
                   </p>
                   <ArticleTOC items={tocItemsEn} />
                   
                   <p>Three rules whose violation ruins the whole effort:</p>
                   <ul>
-                    <li>Never ask for "5 stars" or a specific rating. <a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Google policies explicitly forbid this</a>.</li>
+                    <li>Do not ask for a specific rating such as "5 stars": <a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Google forbids incentives for reviews and biased reviews</a>, and an open question gets more honest content.</li>
                     <li>Never offer rewards, discounts, or any benefits in exchange for a positive review.</li>
                     <li>Never buy reviews. The risk is not only the removal of the review but restricting the entire profile.</li>
                   </ul>
                   <p><em>Pro tip: Instead of "Leave us a review," write: "How do you rate our cooperation? Your honest comment will take 2 minutes and help us a lot." An open question instead of a rating request increases both conversion and review quality.</em></p>
 
                   <h2 id="gdzie-wyswietlaja-sie-opinie">Where Google reviews appear and why it matters</h2>
-                  <p>A Google review is user-generated content (UGC) linked to a Google Business Profile. It appears in several places simultaneously: on the Google Maps listing, in the <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>Local Pack</Link> for local queries, in the star ratings visible directly in organic search results, and in Google Ads extensions.</p>
+                  <p>A Google review is user-generated content (UGC) linked to a Google Business Profile. It appears in several places simultaneously: on the Google Maps listing, in the <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>Local Pack</Link> for local queries, and in the Google Business Profile panel, and in Google Ads extensions.</p>
 
                   <h2 id="jak-opinie-wplywaja-na-seo">How Google reviews impact SEO, CTR, and sales</h2>
                   <p>Reviews affect <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>local SEO visibility</Link> through three independent mechanisms: freshness signal, search result click-through rates (CTR) via stars, and content delivering unique keywords and sales arguments.</p>
@@ -158,7 +158,7 @@ export default async function ArticleReviewsPage({ params }) {
                   </div>
 
                   <h2 id="co-jest-zabronione">What is prohibited and the consequences of rule-breaking</h2>
-                  <p>Google precisely defines what is not allowed. Violations do not end with a warning, but with immediate action from algorithms or moderators. Do not buy reviews, offer incentives, or set up review kiosks.</p>
+                  <p>Google precisely defines what is not allowed. Violations do not end with a warning, but with immediate action from algorithms or moderators. Do not buy reviews or offer incentives, and avoid logging customers into their Google accounts on company devices (conflict-of-interest and filter risk).</p>
 
                   <h2 id="proces-pozyskiwania-krok-po-kroku">How to build a review acquisition process step-by-step</h2>
                   <p>An effective process does not happen overnight. Implement it in phases: <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>Audit</Link> (days 1-14), Startup (days 15-45), and Optimization (days 46-90).</p>
@@ -182,21 +182,21 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Effective Google review acquisition requires a personalized CRM-based process, a safe growth pace, and full compliance with Google policies.</p>
 
                   <h2 id="dlaczego-uczciwe-opinie">Why honest reviews pay off more than you think</h2>
-                  <p>Obsession with a perfect star rating is a trap. Profiles with a few negative reviews, where the company responds concretely and empathetically, often convert better than profiles with only 5 stars and no replies (as seen in our <Link href="/#portfolio" style={{ color: '#0066cc', textDecoration: 'underline' }}>case studies</Link>).</p>
+                  <p>Obsession with a perfect star rating is a trap. Profiles with a few negative reviews, where the company responds concretely and empathetically, can look more credible than profiles with only 5 stars and no replies.</p>
 
                   <h2 id="ai-seo-company-wdrozy">AI SEO COMPANY will implement this process for you</h2>
-                  <p><Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>Our local SEO service in Warsaw</Link> does exactly that. We do not sell guides, we implement processes. We configure CRM integration, prepare templates, build KPI dashboards, and manage review responses in 30-60 days (check our <Link href="/cennik-pozycjonowania" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>free SEO audit</Link>.</p>
+                  <p><Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>Our local SEO service in Warsaw</Link> does exactly that. We do not sell guides, we implement processes. We assess your Business Profile and review status within local SEO; CRM integrations and automated review requests are quoted separately (check our <Link href="/cennik-pozycjonowania" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO packages</Link>). You can also start with a free analysis of your site.</p>
                 </>
               ) : (
                 <>
                   <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                    Najskuteczniejsza metoda pozyskiwania opinii Google to spersonalizowana prośba wysłana 24–48 godzin po zrealizowanej usłudze, z jednym widocznym linkiem do wystawienia recenzji. Nie ma tu żadnej tajemnicy, jest za to konkretny proces: trigger w systemie CRM po zmianie statusu na „zrealizowano”, wiadomość z imieniem klienta i nazwą usługi, jedno wyraźne CTA. Jeden follow-up po 7 dniach, jeśli klient nie zareagował. Koniec.
+                    Metoda, która dobrze sprawdza się w praktyce przy pozyskiwaniu opinii Google, to spersonalizowana prośba wysłana 24–48 godzin po zrealizowanej usłudze, z jednym widocznym linkiem do wystawienia recenzji. Nie ma tu żadnej tajemnicy, jest za to konkretny proces: trigger w systemie CRM po zmianie statusu na „zrealizowano”, wiadomość z imieniem klienta i nazwą usługi, jedno wyraźne CTA. Jeden follow-up po 7 dniach, jeśli klient nie zareagował. Koniec.
                   </p>
                   <ArticleTOC items={tocItems} />
 
                   <p>Trzy zasady, których złamanie przekreśla cały wysiłek:</p>
                   <ul>
-                    <li>Nigdy nie proś o „5 gwiazdek“ ani konkretną ocenę. <a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Zasady Google to wprost zakazują</a>.</li>
+                    <li>Nie proś o konkretną ocenę, np. „5 gwiazdek“. <a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Google zakazuje zachęt za opinie i opinii nieobiektywnych</a>, a pytanie otwarte daje szczerszą treść.</li>
                     <li>Nigdy nie oferuj nagród, rabatów ani żadnych korzyści w zamian za pozytywną recenzję.</li>
                     <li>Nigdy nie kupuj opinii. Ryzyko to nie tylko usunięcie recenzji, ale ograniczenie całego profilu.</li>
                   </ul>
@@ -204,7 +204,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <p><em>Porada profesjonalisty: Zamiast „Zostaw nam opinię“ napisz: „Jak oceniasz naszą współpracę? Twój szczery komentarz zajmie 2 minuty i bardzo nam pomoże.“ Pytanie otwarte zamiast prośby o ocenę podnosi zarówno konwersję, jak i jakość treści recenzji.</em></p>
 
                   <h2 id="gdzie-wyswietlaja-sie-opinie">Gdzie wyświetlają się opinie Google i dlaczego to ważne</h2>
-                  <p>Opinia Google to treść tworzona przez użytkownika (UGC) powiązana z Profilem Firmy w Google (Google Business Profile). Wyświetla się w kilku miejscach jednocześnie: w wizytówce w Mapach Google, w sekcji <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>wyników lokalnych (Local Pack)</Link> przy zapytaniach z intencją lokalną, w gwiazdkach widocznych bezpośrednio w organicznych wynikach wyszukiwania oraz w rozszerzeniach reklam Google Ads.</p>
+                  <p>Opinia Google to treść tworzona przez użytkownika (UGC) powiązana z Profilem Firmy w Google (Google Business Profile). Wyświetla się w kilku miejscach jednocześnie: w wizytówce w Mapach Google, w sekcji <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>wyników lokalnych (Local Pack)</Link> przy zapytaniach z intencją lokalną, w panelu wizytówki Profilu Firmy oraz w rozszerzeniach reklam Google Ads.</p>
                   <p>Dla zapytań z lokalną intencją, takich jak „restauracja Warszawa“ czy „dentysta Kraków“, Google priorytetowo traktuje wizytówki z większą liczbą aktualnych opinii. Liczba i świeżość recenzji to ważne sygnały rankingowe, ale nie działają w izolacji – algorytm bierze pod uwagę także średnią ocen, proximity (bliskość lokalizacji), relevance (zgodność kategorii i treści z zapytaniem), <Link href="/blog/seo-lokalne-dla-firm-w-warszawie#strategia-nap-name-address-phone" style={{ color: '#0066cc', textDecoration: 'underline' }}>kompletność danych NAP</Link> oraz poziom engagementu (odpowiedzi na opinie, zdjęcia, aktualizacje profilu).</p>
                   <p>Profil z większą liczbą aktualnych recenzji i dobrą średnią ocen ma wyraźną przewagę nad profilem z małą liczbą recenzji, nawet jeśli ten drugi ma nieco wyższą średnią. Świeżość i regularny przyrost opinii często waży więcej niż sama ocena, bo Google traktuje je jako dowód aktywnego, żyjącego biznesu.</p>
                   <p>Opinie wspierają też SEO przez unikalną treść, która zawiera naturalne frazy długiego ogona. Klient, który pisze „świetna pizza na Mokotowie, szybka dostawa“, tworzy treść, której żaden copywriter nie napisałby lepiej pod kątem lokalnych zapytań.</p>
@@ -258,7 +258,7 @@ export default async function ArticleReviewsPage({ params }) {
                     <li>Oferowanie rabatów, darmowych produktów, punktów lojalnościowych ani żadnych innych korzyści w zamian za wystawienie opinii, nawet jeśli nie precyzujesz, że ma być pozytywna.</li>
                     <li>Prośba o konkretną ocenę gwiazdkową, np. „Zostaw nam 5 gwiazdek“.</li>
                     <li>Proszenie pracowników, rodziny ani znajomych o wystawianie recenzji.</li>
-                    <li>Zbieranie opinii na urządzeniach firmowych lub kioskach w lokalu, gdzie klient loguje się na swoje konto Google.</li>
+                    <li>Logowanie klientów na ich konta Google na urządzeniach firmy (kioski, tablety w lokalu): ryzyko konfliktu interesów i filtrów Google.</li>
                   </ul>
                   <p><span style={{ fontWeight: 'bold' }}>Konsekwencje techniczne i reputacyjne:</span></p>
                   <p>Nagłe skoki liczby recenzji włączają filtry Google. Opinie mogą zostać odfiltrowane i nie pojawić się publicznie, a profil może otrzymać ograniczenia widoczności. Użytkownicy, którzy odkryją, że firma kupuje recenzje, reagują falą negatywnych opinii, które są już trudne do usunięcia. Reputacyjny koszt wpadki wielokrotnie przewyższa krótkoterminowy zysk z kilku fałszywych gwiazdek. W razie podejrzenia nałożenia filtrów lub spadku widoczności, zalecamy profesjonalny <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>audyt wizytówki Google</Link>.</p>
@@ -432,11 +432,11 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Widzę regularnie ten sam schemat: firma inwestuje w <Link href="/pozycjonowanie-stron-internetowych" style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie</Link>, poprawia stronę, uruchamia reklamy, a potem traci klientów na etapie wizytówki Google, bo ma 12 opinii z 2021 roku i średnią 3,8. Potencjalny klient porównuje ją z konkurentem, który ma 90 recenzji z ostatnich 6 miesięcy i odpowiada na każdą z nich. Wybór jest oczywisty.</p>
                   <p>Procesowy model zbierania opinii, systematyczny, zautomatyzowany, zgodny z zasadami Google, jest też najodporniejszy na zmiany algorytmów (podobnie jak dbanie o <Link href="/blog/core-web-vitals-a-pozycje-google" style={{ color: '#0066cc', textDecoration: 'underline' }}>Core Web Vitals</Link> czy architekturę strony). Autentyczność nie jest romantycznym ideałem. Jest strategią, która po prostu działa dłużej. Dlatego <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>SEO lokalne</Link> bez rzetelnego pozyskiwania opinii to zwykle przepalanie budżetu.</p>
 
-                  <h2 id="ai-seo-company-wdrozy">AI SEO COMPANY wdroży ten proces za Ciebie w 30–60 dni</h2>
-                  <p>Czytasz ten artykuł, bo chcesz więcej opinii Google. Wiesz już, co robić. Pytanie brzmi: kto to wdroży, skonfiguruje trigger w CRM, przygotuje szablony, ustawi dashboard KPI i zadba o to, żeby cały proces działał bez Twojego codziennego nadzoru?</p>
-                  <p><span style={{ fontWeight: 'bold' }}>AI SEO COMPANY</span> robi dokładnie to. Nie sprzedajemy poradników, wdrażamy procesy (sprawdź nasze <Link href="/cennik-pozycjonowania" style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Konfigurujemy integrację CRM z automatyczną wysyłką próśb o opinie, przygotowujemy spersonalizowane szablony e-mail i SMS dostosowane do Twojej branży, budujemy dashboard KPI z kluczowymi wskaźnikami i zarządzamy odpowiedziami na recenzje. Całość zamknięta w 30–60 dni, z raportem wyników i rekomendacjami po pierwszym kwartale.</p>
+                  <h2 id="ai-seo-company-wdrozy">AI SEO COMPANY wdroży ten proces za Ciebie</h2>
+                  <p>Czytasz ten artykuł, bo chcesz więcej opinii Google. Wiesz już, co robić. Pytanie brzmi: kto to poprowadzi i zadba o to, żeby proces działał bez Twojego codziennego nadzoru?</p>
+                  <p><span style={{ fontWeight: 'bold' }}>AI SEO COMPANY</span> wspiera ten proces w ramach <Link href="/pozycjonowanie-wizytowki-google" style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowania wizytówki Google</Link> (sprawdź nasze <Link href="/cennik-pozycjonowania" style={{ color: '#0066cc', textDecoration: 'underline' }}>pakiety SEO</Link>). Ocenę Profilu Firmy i stanu opinii oraz zakres działań ustalamy indywidualnie; integracje z CRM i automatyczną wysyłkę próśb o opinie wyceniamy osobno.</p>
                   
-                  <p>Jeśli chcesz wiedzieć, od czego zacząć w Twoim konkretnym przypadku, zacznij od <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>bezpłatnego audytu SEO</Link>, który obejmuje też ocenę Profilu Firmy i aktualnego stanu opinii. Albo sprawdź pełną ofertę <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO dla firm</Link> i napisz do nas bezpośrednio.</p>
+                  <p>Jeśli chcesz wiedzieć, od czego zacząć w Twoim konkretnym przypadku, zacznij od bezpłatnej analizy strony; ocenę Profilu Firmy i opinii robimy w ramach pozycjonowania wizytówki Google. Albo sprawdź pełną ofertę <Link href="/seo-lokalne-warszawa" style={{ color: '#0066cc', textDecoration: 'underline' }}>lokalnego SEO dla firm</Link> i napisz do nas bezpośrednio.</p>
                 </>
               )}
               

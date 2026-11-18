@@ -2,7 +2,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
   title: locale === 'en' ? 'SEO Audit Services | Technical SEO Audit & Keyword Analysis' : 'Audyt SEO | Analiza i Optymalizacja SEO Strony w 5 Dni',
-  description: locale === 'en' ? 'SEO audit services by search engine optimization consultants: technical website audit, SEO keyword analysis and a prioritised fix list in plain English.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne, a skuteczna optymalizacja SEO błyskawicznie poprawi pozycje Twojej strony w wynikach Google.',
+  description: locale === 'en' ? 'SEO audit services by search engine optimization consultants: technical website audit, SEO keyword analysis and a prioritised fix list in plain English.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne i dostaniesz listę napraw z priorytetami, a po jej wdrożeniu optymalizacja SEO poprawi widoczność Twojej strony w wynikach Google.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/seo-audit' : 'https://www.ai-seo-company.pl/audyt-seo',
     languages: {
@@ -114,8 +114,8 @@ const auditCarouselItems = [
     metric: '99 / 100',
     title: 'PageSpeed & Core Web Vitals',
     titleEn: 'PageSpeed & Core Web Vitals',
-    description: 'Usuwamy render-blocking JavaScript i wdrażamy kompresję zdjęć Next-Gen (WebP/AVIF).',
-    descriptionEn: 'We eliminate render-blocking JavaScript and optimize WebP/AVIF image rendering.',
+    description: 'Wskazujemy i priorytetyzujemy render-blocking JavaScript oraz zdjęcia do kompresji w formatach Next-Gen (WebP/AVIF); wdrożenie możesz zlecić w pozycjonowaniu.',
+    descriptionEn: 'We identify and prioritise render-blocking JavaScript and images to compress to WebP/AVIF; you can order the implementation within SEO services.',
     width: 'min(85vw, 460px)'
   },
   {
@@ -125,8 +125,8 @@ const auditCarouselItems = [
     metricEn: '0 Errors',
     title: 'Optymalizacja Crawl Budget',
     titleEn: 'Crawl Budget Optimization',
-    description: 'Usuwamy pętle przekierowań, zduplikowane tagi canonical oraz podstrony ze statusem 404.',
-    descriptionEn: 'We remove redirect loops, duplicated canonical tags, and 404 status subpages.',
+    description: 'Wskazujemy i priorytetyzujemy pętle przekierowań, zduplikowane tagi canonical oraz podstrony ze statusem 404; wdrożenie możesz zlecić w pozycjonowaniu.',
+    descriptionEn: 'We identify and prioritise redirect loops, duplicated canonical tags, and 404 status pages; you can order the fixes within SEO services.',
     width: 'min(75vw, 370px)'
   },
   {
@@ -135,8 +135,8 @@ const auditCarouselItems = [
     metric: 'HTML5',
     title: 'Hierarchia Nagłówków & Schema',
     titleEn: 'Heading Hierarchy & Schema',
-    description: 'Układamy poprawną strukturę H1-H3 oraz wdrażamy mikrodane Schema.org.',
-    descriptionEn: 'We structure proper H1-H3 hierarchy and implement Schema.org microdata.',
+    description: 'Wskazujemy poprawną strukturę H1-H3 oraz brakujące lub błędne mikrodane Schema.org; wdrożenie możesz zlecić w pozycjonowaniu.',
+    descriptionEn: 'We specify the correct H1-H3 hierarchy and flag missing or invalid Schema.org microdata; you can order the implementation within SEO services.',
     width: 'min(80vw, 410px)'
   },
   {
@@ -197,8 +197,8 @@ const auditPortfolioCases = [
     tagEn: 'PROBLEM 03 / STRUCTURED DATA',
     title: 'Brak Mikrodanych Schema.org',
     titleEn: 'Missing Schema.org Microdata',
-    description: 'Brak oznaczeń semantycznych dla wyszukiwarek AI i Google (Rich Snippets), uniemożliwiający wyświetlanie ocen, cen i dostępności w wynikach Search.',
-    descriptionEn: 'Lack of semantic markup for AI search engines and Google (Rich Snippets), preventing ratings, prices, and availability from showing in Search results.',
+    description: 'Brak lub błędne dane strukturalne obniżają szanse na wyniki rozszerzone (oceny, ceny, dostępność); do funkcji AI w Google nie są wymagane.',
+    descriptionEn: 'Missing or invalid structured data lowers the chance of rich results (ratings, prices, availability); it is not required for Google AI features.',
     image: '/images/unsplash-1597773150796-e5c14ebecbf5.jpg',
     decorative: true,
     imageEn: '/images/search-engine-optimization-consultants.jpg',
@@ -217,8 +217,8 @@ const auditPortfolioCases = [
     tagEn: 'PROBLEM 04 / TOXIC LINKS',
     title: 'Ryzyko Filtrów Algorytmicznych',
     titleEn: 'Algorithmic Filter Risk',
-    description: 'Wykrycie masowych przyrostów spamu i toksycznych domen odsyłających z filtrem depozycjonującym. Konieczność wdrożenia procedury Disavow Tool.',
-    descriptionEn: 'Detection of massive spam spikes and toxic referring domains with a demotion filter. Necessitates implementing the Disavow Tool procedure through seo consultancy.',
+    description: 'Wykrycie masowych przyrostów spamu i toksycznych domen odsyłających z filtrem depozycjonującym. Disavow Tool rozważamy tylko przy masowym spamie i ręcznej akcji.',
+    descriptionEn: 'Detection of massive spam spikes and toxic referring domains with a demotion filter. We consider the Disavow Tool only for massive spam and a manual action, through seo consultancy.',
     image: '/images/unsplash-1602536052359-ef94c21c5948.jpg',
     decorative: true,
     imageEn: '/images/search-engine-optimisation-consultancy.jpg',

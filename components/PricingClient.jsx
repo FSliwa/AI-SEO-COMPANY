@@ -106,11 +106,11 @@ export default function PricingClient() {
     },
     {
       // Nowe (C2, MSA-18): „czy pozycjonowanie się opłaca” 70/mies. (DataForSEO, 4.11.2026), 56 słów.
-      // Liczby z /blog/wyniki-wdrozen-seo-2026 (GSC, okno 3 miesiące, stan na sierpień 2026).
+      // Liczby z /blog/wyniki-wdrozen-seo-2026 (GSC, okresy pomiaru podane przy liczbach, stan na sierpień 2026).
       id: 'czy-pozycjonowanie-sie-oplaca',
       tylkoPl: true,
       question: 'Czy pozycjonowanie się opłaca?',
-      answer: 'Opłaca się, gdy klienci szukają Twojej usługi w Google, a strona zamienia wizyty w zapytania. W naszych <a href="/blog/wyniki-wdrozen-seo-2026" style="text-decoration:underline">wdrożeniach z 2026 roku</a> lokalna restauracja zebrała 187 kliknięć, a producent B2B 152 kliknięcia w trzy miesiące (Google Search Console, stan na sierpień 2026). Kliknięcia to jeszcze nie przychód, dlatego opłacalność liczymy zapytaniami widocznymi w panelu klienta.',
+      answer: 'Opłaca się, gdy klienci szukają Twojej usługi w Google, a strona zamienia wizyty w zapytania. W naszych <a href="/blog/wyniki-wdrozen-seo-2026" style="text-decoration:underline">wdrożeniach z 2026 roku</a> lokalna restauracja zebrała 187 kliknięć w 26 dni, a producent B2B 152 kliknięcia w 92 dni (Google Search Console, dane z 27.07-21.08.2026 i 22.05-21.08.2026). Kliknięcia to jeszcze nie przychód, dlatego opłacalność liczymy zapytaniami widocznymi w panelu klienta.',
     },
     {
       question: 'Potrzebuję też nowej strony – czy da się to połączyć z pozycjonowaniem?',

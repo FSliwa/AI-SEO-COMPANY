@@ -82,7 +82,7 @@ const faqData = [
     id: 'seo-lokalne-a-wizytowka-google',
     tylkoPl: true,
     question: 'Czy SEO lokalne obejmuje prowadzenie wizytówki Google?',
-    answer: 'Tak. Optymalizacja wizytówki Google jest w każdym naszym pakiecie SEO: uzupełniamy kategorie i usługi i pilnujemy, żeby nazwa, adres i telefon były takie same jak w katalogach. Regularne publikacje i odpowiedzi na opinie są w pakietach z prowadzeniem wizytówki (porównanie w cenniku). Na stronie firmy dopisujemy treści z nazwami dzielnic, które wzmacniają widoczność w Mapach.'
+    answer: 'Tak. Optymalizacja wizytówki Google jest w każdym naszym pakiecie SEO: uzupełniamy kategorie i usługi i pilnujemy, żeby nazwa, adres i telefon były takie same jak w katalogach. Posty co najmniej dwa razy w miesiącu i odpowiedzi na opinie w 48 godzin są w pakietach SEO Standard i Premium (porównanie w cenniku). Na stronie firmy dopisujemy treści z nazwami dzielnic, które wzmacniają widoczność w Mapach.'
       + (HREF_L1 ? ` Więcej o tej części pracy: <a href="${HREF_L1}" style="text-decoration:underline">pozycjonowanie wizytówki Google</a>.` : ''),
   }
 ];
@@ -135,8 +135,8 @@ const portfolioCases = [
     tagEn: 'CUSTOMER REVIEWS',
     title: 'Strategia Zbierania Opinii',
     titleEn: 'Review Collection Strategy',
-    description: 'Wdrażamy w Twojej firmie zautomatyzowane procesy pozyskiwania pięciogwiazdkowych recenzji od zadowolonych klientów. Opinie to najważniejszy czynnik',
-    descriptionEn: 'We implement automated processes for collecting reviews from satisfied customers. In local search, reviews are the strongest conversion factor there is.',
+    description: 'Wdrażamy proces prośby o opinię po każdej usłudze, do każdego klienta, z bezpośrednim linkiem i odpowiedzią na każdą recenzję, zgodnie z zasadami Google (bez selekcji klientów i bez zachęt). Opinie to ważny sygnał',
+    descriptionEn: 'We set up a process that asks every customer for a review after each job, with a direct link and a reply to every review, in line with Google policy (no customer filtering, no incentives). In local search, reviews are an important signal.',
     image: '/images/unsplash-1522202176988-66273c2fd55f.jpg',
     decorative: true,
     imgAltEn: 'Review collection strategy',
@@ -170,11 +170,11 @@ const carouselItems = [
   {
     number: '02 / MAPY',
     numberEn: '02 / MAPS',
-    metric: 'GMB',
+    metric: 'Profil Firmy',
     title: 'Konfiguracja Wizytówki',
     titleEn: 'Profile Configuration',
-    description: 'Przejmujemy kontrolę nad Twoim Profilem w Google, uzupełniając go o odpowiednie frazy i tagi.',
-    descriptionEn: 'We take control of your Google Profile, completing it with the right keywords and tags.',
+    description: 'Konfigurujemy Twój Profil Firmy w Google z dostępem menedżera (właścicielem pozostajesz Ty), uzupełniając go o odpowiednie frazy i tagi.',
+    descriptionEn: 'We set up your Google Business Profile with manager access (you remain the owner), completing it with the right keywords and tags.',
     width: 'min(75vw, 360px)'
   },
   {
@@ -333,7 +333,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 1' : 'RULE 1'}</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Searches with local intent'}</h3>
-                <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Ponad 46% wszystkich wyszukiwań w Google ma intencję lokalną. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>Over 46% of all Google searches have a local intent, which means those customers are ready to call or visit straight away. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
+                <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Duża część wyszukiwań w Google ma intencję lokalną, a Google pokazuje w nich pakiet lokalny z Mapami. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>A large share of searches have local intent, and Google shows a local pack with Maps for them. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
               </RevealItem>
               
               <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
@@ -345,7 +345,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 3' : 'RULE 3'}</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'High conversion rate'}</h3>
-                <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Ruch z Map Google cechuje się jednym z najwyższych wskaźników konwersji ze wszystkich cyfrowych kanałów marketingowych.' : 'Traffic from Google Maps is characterized by one of the highest conversion rates of all digital marketing channels.'}</p>
+                <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Zapytania z Map często kończą się telefonem lub wizytą; mierzymy to w panelu klienta (połączenia, trasy).' : 'Searches in Maps often end in a call or a visit; we measure this in the client portal (calls, directions).'}</p>
               </RevealItem>
             </RevealStagger>
             {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}

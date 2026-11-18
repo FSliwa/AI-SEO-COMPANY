@@ -406,15 +406,17 @@ export default function Contact({ isMainContent = false }) {
             <p style={{ fontSize: '0.8rem', lineHeight: 1.5, color: 'var(--w-tusz-2)', margin: '0 0 1rem 0' }}>
               {lang === 'pl' ? (
                 <>
-                  Administratorem Twoich danych jest AI SEO COMPANY, ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa.
-                  Dane z formularza przetwarzamy wyłącznie po to, żeby odpowiedzieć na Twoje zapytanie.
+                  Administratorem Twoich danych jest AI SIGNALS COMPANY Prosta Spółka Akcyjna (marka AI SEO COMPANY), ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa.
+                  Dane z formularza przetwarzamy, żeby odpowiedzieć na zapytanie i przygotować ofertę. Wysyłamy je e-mailem do naszego zespołu (dostawca poczty: Resend) i zapisujemy w arkuszu Google.
+                  Po wysłaniu formularza przeglądarka przekazuje Google zdarzenie zapytania z zahaszowanym adresem e-mail, żeby mierzyć skuteczność reklam.
                   Przysługuje Ci dostęp do danych, ich sprostowanie, usunięcie oraz sprzeciw wobec przetwarzania.
                   Szczegóły znajdziesz w <Link href="/cookies" style={{ textDecoration: 'underline' }}>polityce prywatności</Link>.
                 </>
               ) : (
                 <>
-                  The controller of your data is AI SEO COMPANY, ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland.
-                  Data from this form is processed solely to answer your enquiry.
+                  The controller of your data is AI SIGNALS COMPANY Prosta Spółka Akcyjna (brand: AI SEO COMPANY), ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw, Poland.
+                  We process the form data to answer your enquiry and prepare an offer. We send it by e-mail to our team (e-mail provider: Resend) and store it in a Google spreadsheet.
+                  After you submit the form, your browser passes Google an enquiry event with your hashed e-mail address, to measure ad performance.
                   You have the right to access, rectify and erase your data, and to object to processing.
                   Details are in our <Link href="/cookies" style={{ textDecoration: 'underline' }}>privacy policy</Link>.
                 </>

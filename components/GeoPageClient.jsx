@@ -69,6 +69,7 @@ const HREF = {
 const ZRODLO = {
   senuto: 'https://insight.senuto.com/aio-report-2/',
   ahrefs: 'https://ahrefs.com/blog/what-is-llms-txt/',
+  googleGuide: 'https://developers.google.com/search/docs/fundamentals/ai-optimization-guide',
   googleAi: 'https://developers.google.com/search/blog/2023/02/google-search-and-ai-content?hl=pl',
   reklamy: 'https://www.wirtualnemedia.pl/chatgpt-ads-wkracza-do-europy-openai-uruchamia-reklamy-na-31-rynkach,7320465018964096a',
 };
@@ -101,7 +102,7 @@ const T = {
     do: [
       'Wzmianki o firmie w miejscach, z których korzystają modele: katalogi branżowe, portale z opiniami, media lokalne.',
       'Treści, które odpowiadają wprost na pytania klientów, z konkretnymi liczbami, cenami i miejscem działania.',
-      'Spójne dane firmy (nazwa, adres, telefon) wszędzie, dane strukturalne i plik llms.txt.',
+      'Spójne dane firmy (nazwa, adres, telefon) wszędzie, dane strukturalne zgodne z treścią strony i opcjonalnie plik llms.txt (Google go nie używa).',
       'Szybka strona, którą boty AI mogą odczytać bez JavaScriptu, i prowadzona wizytówka Google z opiniami.',
     ],
     honestTitle: 'Czego nie obiecujemy',
@@ -135,7 +136,7 @@ const T = {
     do: [
       'Mentions of your company where the models look: industry directories, review sites, local media.',
       'Content that directly answers customer questions, with concrete numbers, prices and service area.',
-      'Consistent business data (name, address, phone) everywhere, structured data and an llms.txt file.',
+      'Consistent business data (name, address, phone) everywhere, structured data that matches the page, and optionally an llms.txt file (Google does not use it).',
       'A fast site AI bots can read without JavaScript, and a managed Google Business Profile with reviews.',
     ],
     honestTitle: 'What we do not promise',
@@ -224,7 +225,7 @@ const KARTY = [
     id: 'skad-chatgpt-bierze-firmy',
     pytanie: 'Skąd ChatGPT bierze firmy, które poleca?',
     // CB-01: 11 odpowiedzi na 10 pytań; linki prowadzą do wyszukiwania w Mapach (nie „do wizytówek”).
-    odpowiedz: 'W testach z 4 i 5 listopada 2026 poprosiliśmy ChatGPT z wyszukiwaniem o polecenie firmy w 10 pytaniach, od agencji SEO po stolarza i hydraulika. W 11 odpowiedziach 59 z 62 linków prowadziło do Map Google. Przy pytaniach o ceny i rankingi model cytował strony www, w tym nasz cennik. Perplexity sięgał po katalogi i rankingi.',
+    odpowiedz: 'W testach z 4 i 5 listopada 2026 poprosiliśmy ChatGPT z wyszukiwaniem o polecenie firmy w 10 pytaniach, od agencji SEO po stolarza i hydraulika. W 11 odpowiedziach 59 z 62 linków prowadziło do Map Google. Przy pytaniach o ceny i rankingi model cytował strony www, w tym nasz cennik. Perplexity cytował głównie artykuły i opisy usług pod konkretne pytanie, a przy pytaniu o agencję B2B także katalogi firm (Clutch, Sortlist). To wyniki jednego modelu API, więc nie są rankingiem aplikacji ChatGPT.',
     zrodlo: { tekst: 'pomiar własny przez API DataForSEO, 4–5.11.2026 (metoda pod tabelą pomiaru).' },
     href: HREF.a2Zrodla,
     anchor: 'Źródła i metoda pomiaru',
@@ -247,8 +248,8 @@ const KARTY = [
   {
     id: 'llms-txt',
     pytanie: 'Co to jest llms.txt i czy pomaga?',
-    odpowiedz: 'llms.txt to plik w formacie Markdown ze spisem najważniejszych podstron dla modeli językowych. To propozycja standardu, a nie wymóg: według analizy Ahrefs żaden duży dostawca modeli oficjalnie go nie obsługuje, a Google nie używa go w wyszukiwarce. Plik kosztuje niewiele, ale ważniejsze jest, czy boty AI mają dostęp do strony w robots.txt.',
-    zrodlo: { tekst: 'Ahrefs, „What Is llms.txt, and Should You Care About It?”', url: ZRODLO.ahrefs, data: 'odczyt 5.11.2026' },
+    odpowiedz: 'llms.txt to plik w formacie Markdown ze spisem najważniejszych podstron dla modeli językowych. To propozycja standardu, a nie wymóg: Google w oficjalnym poradniku (2026) pisze, że jego wyszukiwarka takich plików nie używa, a według analizy Ahrefs żaden duży dostawca modeli oficjalnie go nie obsługuje. Plik kosztuje niewiele, ale ważniejsze jest, czy boty AI mają dostęp do strony w robots.txt.',
+    zrodlo: { tekst: 'Google Search Central, „Optimizing for generative AI features” (oraz Ahrefs, „What Is llms.txt…”, odczyt 5.11.2026)', url: ZRODLO.googleGuide, data: 'odczyt 18.11.2026' },
     href: HREF.n1,
     anchor: 'Generator llms.txt i test botów AI',
   },
@@ -256,7 +257,7 @@ const KARTY = [
     id: 'przeglad-ai-w-google',
     pytanie: 'Jak trafić do przeglądu AI w Google?',
     // CB-21 (próba 30 fraz, nie „cała branża”); ostatnie zdanie bez obietnicy o „każdej podstronie”.
-    odpowiedz: 'Przegląd AI pokazał się przy wszystkich 30 frazach z naszej próby (SEO, pozycjonowanie w AI, ceny i narzędzia; Google PL, 4.11.2026). W 21 z nich Google podał źródła: 153 odnośniki do 91 domen. Cytowane są akapity, które odpowiadają na pytanie wprost, dlatego nasze nowe i aktualizowane podstrony otwiera krótka odpowiedź pod nagłówkiem.',
+    odpowiedz: 'Przegląd AI pokazał się przy wszystkich 30 frazach z naszej próby (SEO, pozycjonowanie w AI, ceny i narzędzia; Google PL, 4.11.2026). W 21 z nich Google podał źródła: 153 odnośniki do 91 domen. Google nie wymaga pisania pod AI ani dzielenia treści na kawałki; krótka odpowiedź pod nagłówkiem to nasz standard czytelności, który ułatwia też zacytowanie.',
     zrodlo: { tekst: 'pomiar własny przez API DataForSEO (Google PL, komputer, TOP 10 i przegląd AI), 4.11.2026.' },
     href: HREF.b2,
     anchor: 'Przegląd od AI: jak trafić do źródeł',
@@ -264,7 +265,7 @@ const KARTY = [
   {
     id: 'jak-sprawdzic-czy-chatgpt-poleca',
     pytanie: 'Jak sprawdzić, czy ChatGPT poleca Twoją firmę?',
-    odpowiedz: 'Zadaj ChatGPT z włączonym wyszukiwaniem kilka pytań, które zadają Twoi klienci, na przykład „Polecisz stolarza na Woli?”, i zapisz, czy pada nazwa firmy i jakie strony model podaje jako źródła. Jedno pytanie nic nie dowodzi, bo odpowiedzi się zmieniają. Nasza bezpłatna sprawdzarka zrobi to za Ciebie w ChatGPT i Gemini.',
+    odpowiedz: 'Zadaj ChatGPT z włączonym wyszukiwaniem kilka pytań, które zadają Twoi klienci, na przykład „Polecisz stolarza na Woli?”, i zapisz, czy pada nazwa firmy i jakie strony model podaje jako źródła. Jedno pytanie nic nie dowodzi, bo odpowiedzi się zmieniają. Nasza bezpłatna sprawdzarka zrobi to za Ciebie w ChatGPT, Gemini, Perplexity, Claude i przeglądzie AI w Google.',
     href: HREF.sprawdzarka,
     anchor: 'Sprawdź za darmo',
   },
@@ -304,7 +305,7 @@ const PLAN_KOLUMNY = [
 ];
 const PLAN_WIERSZE = [
   { id: 't1', okres: 'Tydzień 1', robimy: 'Ustalamy z Tobą 30 pytań i robimy pomiar bazowy we wszystkich czterech źródłach.', panel: 'Pierwszy wynik i listę stron, które modele cytują w Twojej branży.' },
-  { id: 't2-4', okres: 'Tygodnie 2–4', robimy: 'Audyt i poprawki techniczne: dostęp botów, dane strukturalne, llms.txt, te same dane firmy w katalogach.', panel: 'Dziennik prac i sprawy do akceptacji.' },
+  { id: 't2-4', okres: 'Tygodnie 2–4', robimy: 'Audyt i poprawki techniczne: dostęp botów, dane strukturalne, te same dane firmy w katalogach, opcjonalnie llms.txt.', panel: 'Dziennik prac i sprawy do akceptacji.' },
   { id: 'm2', okres: 'Miesiąc 2', robimy: 'Treści, które odpowiadają na pytania klientów, i uzupełniona wizytówka Google.', panel: 'Nowe podstrony i zmianę wyniku tydzień po tygodniu.' },
   { id: 'm3', okres: 'Miesiąc 3', robimy: 'Wzmianki w katalogach i serwisach, które modele cytują, oraz porównanie z pomiarem bazowym.', panel: 'Zmianę odsetka odpowiedzi z nazwą firmy od startu.' },
 ];
@@ -368,7 +369,7 @@ function SekcjePl() {
           rows={POMIAR_WIERSZE}
           przypis="Metoda: odpowiedzi pobrane przez API DataForSEO z ChatGPT (gpt-4.1-mini z wyszukiwaniem w sieci, lokalizacja wyszukiwania Warszawa, także dla pytań o Kraków i Poznań) i z Perplexity (sonar), jedna odpowiedź na pytanie. Pytanie o naszą markę (5 linków, 0 do Map) i porady bez wyszukiwania liczymy osobno. Przegląd AI: wyniki Google PL na komputerze, 4.11.2026."
         />
-        <p style={tekstStyl}>Wniosek: ChatGPT przy poleceniu podaje zwykle adres i godziny otwarcia, a link prowadzi do Map Google, gdzie klient widzi wizytówkę. Dla firmy usługowej pierwszym krokiem jest więc zadbana wizytówka, a dla agencji i firm B2B profile w katalogach i rankingach, z których korzysta Perplexity. Strona z jawnym cennikiem bywa cytowana przy pytaniach o ceny.</p>
+        <p style={tekstStyl}>Wniosek: ChatGPT przy poleceniu podaje zwykle adres i godziny otwarcia, a link prowadzi do Map Google, gdzie klient widzi wizytówkę. Dla firmy usługowej pierwszym krokiem jest więc zadbana wizytówka, a dla agencji i firm B2B profile w katalogach i treści odpowiadające wprost na pytania, z których korzysta Perplexity. Strona z jawnym cennikiem bywa cytowana przy pytaniach o ceny.</p>
       </SekcjaTekstowa>
 
       <SekcjaTekstowa title="Dla kogo jest pozycjonowanie w AI, a kiedy jeszcze nie">
@@ -427,8 +428,8 @@ function SekcjePl() {
       <SekcjaTekstowa title="Co wdrażamy technicznie">
         <ul style={{ ...tekstStyl, paddingLeft: '1.25rem', display: 'grid', gap: '0.6rem' }}>
           <li>Dostęp dla botów AI: sprawdzamy, czy robots.txt i zapora serwera nie blokują GPTBot, OAI-SearchBot, PerplexityBot ani ClaudeBot.</li>
-          <li>Plik llms.txt z krótkim opisem firmy, cenami i listą kluczowych adresów.</li>
-          <li>Dane strukturalne zgodne z tym, co widać na stronie: firma z adresem, usługi z cenami, pytania z odpowiedziami i okruszki.</li>
+          <li>Opcjonalnie plik llms.txt z krótkim opisem firmy i listą kluczowych adresów. Google go nie używa i nie wymaga go do przeglądu AI (<a href={ZRODLO.googleGuide} rel="noopener" style={linkStyl}>poradnik Google Search Central</a>, odczyt 18.11.2026), więc robimy go tylko tam, gdzie korzystają z niego inne narzędzia.</li>
+          <li>Dane strukturalne zgodne z tym, co widać na stronie: firma z adresem, usługi z cenami, pytania z odpowiedziami i okruszki. Nie są wymagane do przeglądu AI, ale pomagają w wynikach rozszerzonych.</li>
           <li>
             Bing Webmaster Tools i IndexNow, żeby nowe i zmienione podstrony szybciej trafiały do indeksu Bing.
             {HREF.b1 && <> Jak to ustawić: <Link href={HREF.b1} style={linkStyl}>konfiguracja Bing Webmaster Tools i IndexNow</Link>.</>}

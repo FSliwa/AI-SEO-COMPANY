@@ -87,7 +87,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             }}>
               {lang === 'pl' 
                 ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B – raportujemy leady i sprzedaż, nie tylko pozycje.</>
-                : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>SEO optimization service</strong> is unparalleled: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
+                : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>SEO optimization service</strong> comes with a client portal and a clear TOP 3 goal: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
 
             {/* Obietnice z nagłówków RSA w pierwszym ekranie – wcześniej
@@ -178,7 +178,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <SubpagePortfolio 
         title={lang === 'pl' ? "Scenariusze Wzrostu i Wyniki" : "Growth Scenarios and Results"} 
-        subtitle={lang === 'pl' ? "Przykładowe scenariusze skalowania widoczności i konwersji w modelu AI SEO – ilustracja metody, nie wyniki konkretnych klientów" : "Illustrative scenarios of visibility and conversion scaling in the AI Optimization model – how the method works, not results of specific clients"}
+        subtitle={lang === 'pl' ? "Przykładowe scenariusze skalowania widoczności i konwersji w modelu AI SEO – ilustracja metody, nie wyniki konkretnych klientów. Liczby na kartach to założenia modelu, nie pomiary; rzeczywiste wyniki z datami pomiaru pokazujemy w portfolio" : "Illustrative scenarios of visibility and conversion scaling in the AI Optimization model – how the method works, not results of specific clients. Figures on the cards are model assumptions, not measurements; real results with measurement dates are in our portfolio"}
         cases={portfolioCases} 
         layout="vertical"
       />
@@ -210,8 +210,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 </h3>
                 <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
                   {lang === 'pl'
-                    ? 'Zapewniamy dogłębną analizę techniczną i ciągłe strategie podnoszące Twoje pozycje. Odkryj nasze kompleksowe usługi optymalizacji zaprojektowane dla zrównoważonego wzrostu. Jesteśmy wiodącą agencją SEO dla B2B, dedykowaną Twojemu długoterminowemu sukcesowi.'
-                    : <><>We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive services as a leading <strong>optimization agency</strong> and <strong>search engine optimisation agency</strong> for B2B, dedicated to your long-term sustainable growth.</></>}
+                    ? 'Zapewniamy dogłębną analizę techniczną i ciągłe strategie podnoszące Twoje pozycje. Odkryj nasze kompleksowe usługi optymalizacji zaprojektowane dla zrównoważonego wzrostu. Jesteśmy agencją SEO dla B2B z panelem klienta, dedykowaną Twojemu długoterminowemu sukcesowi.'
+                    : <><>We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive services as an <strong>optimization agency</strong> and <strong>search engine optimisation agency</strong> for B2B, dedicated to your long-term sustainable growth.</></>}
                 </p>
               </RevealItem>
             </RevealStagger>

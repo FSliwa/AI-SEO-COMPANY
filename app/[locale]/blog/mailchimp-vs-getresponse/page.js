@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
     title: locale === 'en' ? 'Mailchimp vs GetResponse 2026: Pricing, Features, Choice' : 'Mailchimp vs GetResponse 2026: ceny, funkcje, wybór',
-    description: locale === 'en' ? 'Mailchimp or GetResponse? Compare pricing, features, webinars, and the list threshold where GetResponse becomes cheaper.' : 'Mailchimp czy GetResponse? Aktualne ceny z sierpnia 2026, porównanie funkcji i webinarów oraz próg listy, przy którym GetResponse staje się tańszy.',
+    description: locale === 'en' ? 'Mailchimp or GetResponse? Compare pricing, features, webinars, and the list threshold where GetResponse becomes cheaper.' : 'Mailchimp czy GetResponse? Ceny z 9 sierpnia 2026, porównanie funkcji i webinarów oraz próg listy, przy którym GetResponse staje się tańszy.',
     alternates: {
       // The English URL has no article body yet, so it points at the Polish
       // version rather than at itself – a self-canonical would ask Google to
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       type: 'article',
       title: locale === 'en' ? 'Mailchimp vs GetResponse 2026: Pricing, Features, Choice' : 'Mailchimp vs GetResponse 2026: ceny, funkcje, wybór',
-      description: locale === 'en' ? 'Mailchimp or GetResponse? Compare pricing, features, webinars, and the list threshold where GetResponse becomes cheaper.' : 'Aktualne ceny z sierpnia 2026, porównanie funkcji i webinarów oraz próg listy, przy którym GetResponse staje się tańszy.',
+      description: locale === 'en' ? 'Mailchimp or GetResponse? Compare pricing, features, webinars, and the list threshold where GetResponse becomes cheaper.' : 'Ceny z 9 sierpnia 2026, porównanie funkcji i webinarów oraz próg listy, przy którym GetResponse staje się tańszy.',
       url: locale === 'en' ? 'https://www.ai-seo-company.pl/en/blog/mailchimp-vs-getresponse' : 'https://www.ai-seo-company.pl/blog/mailchimp-vs-getresponse',
       locale: locale === 'en' ? 'en_US' : 'pl_PL',
       siteName: 'AI SEO COMPANY',
@@ -229,7 +229,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <h2 id="mailchimp-vs-getresponse-szybkie-porownanie-i-przyklady-cenowe">Mailchimp vs GetResponse: szybkie porównanie i przykłady cenowe</h2>
                   
-                  <p>Poniższa tabela zestawia funkcje Mailchimp vs GetResponse oraz koszty obu platform według wymiarów, które najczęściej decydują o wyborze. Stawki wejściowe, strukturę planów i limity zweryfikowano bezpośrednio na cennikach getresponse.com/pricing i mailchimp.com/pricing 9 sierpnia 2026 r. Ceny na wyższych progach listy pochodzą z publikowanych zestawień powołujących się na te cenniki. Przed zakupem potwierdź je w kalkulatorze dostawcy – obie platformy zmieniają cenniki kilka razy w roku.</p>
+                  <p>Poniższa tabela zestawia funkcje Mailchimp vs GetResponse oraz koszty obu platform według wymiarów, które najczęściej decydują o wyborze. Stawki wejściowe, strukturę planów i limity zweryfikowano bezpośrednio na cennikach getresponse.com/pricing i mailchimp.com/pricing 9 sierpnia 2026 r. Ceny na wyższych progach listy pochodzą z publikowanych zestawień powołujących się na te cenniki. Limity darmowego konta GetResponse, ceny dodatku webinarowego i kolumny w PLN nie zostały ponownie zweryfikowane 18.11.2026, więc traktuj je orientacyjnie. Przed zakupem potwierdź je w kalkulatorze dostawcy – obie platformy zmieniają cenniki kilka razy w roku.</p>
 
                   <div className="table-container">
                     <table>
@@ -443,7 +443,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
                     <li>Najszybszy onboarding spośród popularnych platform.</li>
                     <li>Rozwinięte wsparcie sztucznej inteligencji dzięki wbudowanym narzędziom Intuit Assist (pomoc w optymalizacji czasu wysyłki i tworzeniu treści).</li>
                     <li>Ponad 300 integracji w marketplace, w tym Shopify, WooCommerce, Salesforce i Zapier.</li>
-                    <li>Customer Journey Builder do budowania sekwencji automatycznych – dostępny od planu Standard.</li>
+                    <li>Marketing Automation Flows (dawniej Customer Journey Builder) do budowania sekwencji automatycznych – od planu Essentials (do 4 kroków), pełna wersja w planach Standard i Premium.</li>
                     <li>Rozbudowane szablony i edytor wizualny dopracowany pod kątem UX.</li>
                     <li>Funkcje Marketing CRM dostępne szeroko, nie tylko w najwyższych pakietach, a raportowanie i segmentacja pogłębiają się wraz z planem.</li>
                     <li>Płynne przejście na wyższy plan bez zmiany narzędzia, gdy lista rośnie.</li>
@@ -472,7 +472,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
                   <ol>
                     <li>Określ rozmiar listy teraz i za 12 miesięcy. Przy prognozowanym wzroście powyżej 5 000 kontaktów GetResponse będzie tańszy przy porównywalnych funkcjach.</li>
                     <li>Sprawdź, czy potrzebujesz webinarów. Jeśli tak, GetResponse to jedyna z tych dwóch platform z natywnym rozwiązaniem – ale wyceń plan Creator albo dodatek webinarowy, nie plan podstawowy.</li>
-                    <li>Oceń złożoność automatyzacji. Proste sekwencje powitalne: oba narzędzia (w Mailchimp od planu Standard, w GetResponse jeden workflow już w Starterze). Wieloetapowe lejki ze scoringiem: GetResponse od planu Marketer.</li>
+                    <li>Oceń złożoność automatyzacji. Proste sekwencje powitalne: oba narzędzia (w Mailchimp już od planu Essentials – do 4 kroków, w GetResponse jeden workflow już w Starterze). Wieloetapowe lejki ze scoringiem: GetResponse od planu Marketer.</li>
                     <li>Zweryfikuj integracje z Twoim sklepem lub CRM. Mailchimp ma szerszy marketplace; GetResponse oferuje głębsze integracje z e-commerce.</li>
                     <li>Sprawdź zgodność z RODO i możliwość eksportu historii zgód. Dla polskich firm to wymóg, nie opcja.</li>
                     <li>Zapytaj o politykę rozliczania kontaktów nieaktywnych, zanim podpiszesz umowę.</li>
@@ -628,11 +628,11 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
                   
                   <p>Wybór narzędzia to jedna decyzja, ale wzrost listy zależy od tego, co dzieje się na stronie, zanim ktokolwiek zostawi adres.</p>
 
-                  <p>W AI SEO COMPANY zajmujemy się pozycjonowaniem stron, audytami SEO, projektowaniem witryn i optymalizacją konwersji. W kontekście wyboru platformy mailingowej oznacza to konkretną pomoc: oceniamy, jak formularze zapisu, landing pages i zbieranie zgód działają na Twojej stronie, i dopasowujemy narzędzie do ruchu, który realnie generuje witryna. Bo lista adresowa rośnie przede wszystkim dzięki temu, co dzieje się przed zapisem – a to jest obszar SEO i UX. Warto przy tym pamiętać o zmianie po stronie wyszukiwarki: <strong>optymalizacja pod SGE</strong>, czyli Search Generative Experience SEO, staje się osobnym zagadnieniem, bo Google coraz częściej streszcza porównania narzędzi w odpowiedziach generatywnych i treść musi być cytowalna, nie tylko dobrze wypozycjonowana.</p>
+                  <p>W AI SEO COMPANY zajmujemy się pozycjonowaniem stron, audytami SEO, projektowaniem witryn i optymalizacją konwersji. W kontekście wyboru platformy mailingowej oznacza to konkretną pomoc: oceniamy, jak formularze zapisu, landing pages i zbieranie zgód działają na Twojej stronie, i dopasowujemy narzędzie do ruchu, który realnie generuje witryna. Bo lista adresowa rośnie przede wszystkim dzięki temu, co dzieje się przed zapisem – a to jest obszar SEO i UX. Warto przy tym pamiętać o zmianie po stronie wyszukiwarki: <strong>optymalizacja pod AI Overviews i AI Mode</strong> (dawniej SGE, Search Generative Experience) staje się osobnym zagadnieniem, bo Google coraz częściej streszcza porównania narzędzi w odpowiedziach generatywnych i treść musi być cytowalna, nie tylko dobrze wypozycjonowana.</p>
 
                   <p>Jeśli planujesz optymalizację istniejącej strony albo budujemy ją dla Ciebie od zera, możemy przy tej okazji zająć się też warstwą mailingową: rozmieszczeniem i konstrukcją formularzy zapisu, spójnością landing pages z resztą serwisu oraz poprawnym przekazywaniem zgód do wybranej platformy. To ten sam projekt, a nie osobne zlecenie – i moment, w którym najtaniej ustawić te rzeczy poprawnie.</p>
 
-                  <p>Jeśli chcesz sprawdzić, jak Twoja strona zbiera adresy i co ogranicza wzrost listy, <Link href="/">skontaktuj się z AI SEO COMPANY</Link> i zamów bezpłatny audyt.</p>
+                  <p>Jeśli chcesz sprawdzić, jak Twoja strona zbiera adresy i co ogranicza wzrost listy, <Link href="/">skontaktuj się z AI SEO COMPANY</Link> i zamów bezpłatną analizę SEO i potencjału Twojej strony.</p>
 
                   <h2 id="najczestsze-pytania-mailchimp-czy-getresponse">Najczęstsze pytania: Mailchimp czy GetResponse</h2>
                   

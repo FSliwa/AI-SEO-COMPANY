@@ -26,9 +26,9 @@ import BlogSeoText from '@/components/BlogSeoText';
 const blogFaqData = [
   {
     question: 'Jak często publikujecie Najnowsze Artykuły?',
-    answer: 'Nasz Blog SEO i Web Design jest aktualizowany regularnie. Publikujemy nowe poradniki, strategie oraz analizy minimum raz w tygodniu, abyś zawsze miał dostęp do najświeższej i przetestowanej wiedzy rynkowej wprost z pierwszej ręki.',
+    answer: 'Nasz Blog SEO i Web Design jest aktualizowany regularnie. Publikujemy poradniki, strategie oraz analizy regularnie; ostatnie aktualizacje widać na liście wpisów.',
     questionEn: 'How often do you publish Latest Articles?',
-    answerEn: 'Our SEO and Web Design Blog is updated regularly. We publish new guides, strategies, and analyses at least once a week to ensure you always have access to the freshest and proven market knowledge.'
+    answerEn: 'Our SEO and Web Design Blog is updated regularly. We publish guides, strategies, and analyses regularly; the latest updates are visible in the post list.'
   },
   {
     question: 'Czy ten Poradnik SEO jest w pełni darmowy?',

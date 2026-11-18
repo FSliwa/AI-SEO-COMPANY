@@ -392,7 +392,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
 
                 <h3 id="llms-txt-shopify" style={s.h3}>Shopify</h3>
                 <p style={s.akapit}>
-                  Shopify is a hosted platform: you cannot upload a file to the domain root over FTP. The Shopify community describes two workarounds: a custom llms.txt.liquid theme template, or a redirect from /llms.txt to a file added in the Files section. Shopify has not described this in its official documentation, so after making the change, open the file address in a browser. A file served at /llms.txt without a redirect is the safer choice.
+                  Shopify is a hosted platform: you cannot upload a file to the domain root over FTP. Since May 2026 Shopify stores serve a default /llms.txt (the same content as /agents.md), and you can replace it with a theme template named llms.txt.liquid under Online Store, Themes, Edit code (Shopify developer changelog, 28 May 2026). After making the change, open the file address in a browser.
                 </p>
               </>
             ) : (
@@ -413,7 +413,7 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
 
             <h3 id="llms-txt-shopify" style={s.h3}>Shopify</h3>
             <p style={s.akapit}>
-              Shopify to platforma hostowana: nie wgrasz pliku przez FTP do katalogu głównego domeny. Społeczność Shopify opisuje dwa obejścia: własny szablon motywu llms.txt.liquid albo przekierowanie adresu /llms.txt na plik dodany w sekcji Pliki. Shopify nie opisał tego w oficjalnej dokumentacji, więc po zmianie otwórz adres pliku w przeglądarce. Pewniejszy jest plik dostępny pod /llms.txt bez przekierowania.
+              Shopify to platforma hostowana: nie wgrasz pliku przez FTP do katalogu głównego domeny. Od maja 2026 sklepy Shopify mają domyślny plik /llms.txt (z taką samą treścią jak /agents.md), a możesz go zastąpić szablonem motywu o nazwie llms.txt.liquid w sekcji Sklep internetowy, Motywy, Edytuj kod (dziennik zmian Shopify dla deweloperów, 28.05.2026). Po zmianie otwórz adres pliku w przeglądarce.
             </p>
               </>
             )}

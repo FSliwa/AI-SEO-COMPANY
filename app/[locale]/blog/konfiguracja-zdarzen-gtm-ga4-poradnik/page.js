@@ -114,7 +114,7 @@ export default async function ArticleGTM({ params }) {
                         </tr>
                         <tr>
                           <td><strong>AI SEO COMPANY</strong></td>
-                          <td>Oferuje kompleksowe wdrożenia GTM z dokumentacją, testami i szkoleniem zespołu.</td>
+                          <td>Zakres pomiaru (GA4, zdarzenia, konwersje) ustala w ramach audytu SEO i pakietów pozycjonowania; samodzielne wdrożenie GTM wycenia indywidualnie.</td>
                         </tr>
                       </tbody>
                     </table>
@@ -348,7 +348,7 @@ export function pageType(pathname = '') {
                   <h2 id="ai-seo-company-wdrozenie-gtm-i-konfiguracja-zdarzen-dla-twojej-firmy">AI SEO COMPANY: wdrożenie GTM i konfiguracja zdarzeń dla Twojej firmy</h2>
                   <p>Zamiast spędzać tygodnie na konfiguracji i debugowaniu, możesz zlecić całość specjalistom, którzy robią to na co dzień.</p>
 
-                  <p><Link href="/" style={{ color: '#0066cc', textDecoration: 'underline' }}>AI SEO COMPANY</Link> realizuje kompleksowe wdrożenia GTM dla firm w Polsce: od audytu istniejącego kontenera, przez zaprojektowanie katalogu zdarzeń i implementację dataLayer.push dla kluczowych zdarzeń, po testy w Preview i DebugView oraz szkolenie Twojego zespołu. Każde wdrożenie kończy się dokumentacją gotową do przekazania wewnętrznemu analitykowi. Transparentny zakres prac oznacza, że przed startem wiesz dokładnie, co dostarczymy: które zdarzenia zostaną skonfigurowane, kto jest odpowiedzialny (developer, analityk, PM) i kiedy projekt zostanie zamknięty. Skontaktuj się z nami przez formularz poniżej, by omówić zakres wdrożenia.</p>
+                  <p><Link href="/" style={{ color: '#0066cc', textDecoration: 'underline' }}>AI SEO COMPANY</Link> ustala zakres pomiaru (GA4, zdarzenia, konwersje) w ramach <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>audytu SEO</Link> i pakietów pozycjonowania; samodzielne wdrożenie GTM wyceniamy indywidualnie. Przed startem ustalamy, które zdarzenia zostaną skonfigurowane, kto jest odpowiedzialny (developer, analityk, PM) i kiedy projekt zostanie zamknięty. Skontaktuj się z nami przez formularz poniżej, by omówić zakres.</p>
 
                   <h2 id="zrodla">Źródła</h2>
                   <p>Poniższe zasoby warto mieć otwarte podczas implementacji:</p>

@@ -239,8 +239,8 @@ export default function WizytowkaClient({ faqData }) {
           <h3 style={h3Styl}>{en ? 'Relevance: primary category, services and description' : 'Trafność: kategoria główna, usługi i opis'}</h3>
           <p style={akapit}>
             {en
-              ? 'Relevance describes how closely a profile matches the search term. According to Google, complete and detailed business information helps here. The single biggest lever is the primary category, because it tells Google what the business mainly does. Secondary categories describe the rest of your offer, and a list of services with short descriptions catches queries that no category covers. We write the business description for the customer: what you do, for whom and in which area.'
-              : 'Trafność mówi, jak dokładnie profil pasuje do wpisanego hasła. Według Google pomagają w niej kompletne i szczegółowe informacje o firmie. Największą pojedynczą dźwignią jest kategoria główna, bo to ona mówi Google, czym firma zajmuje się przede wszystkim. Kategorie dodatkowe opisują resztę oferty, a lista usług z krótkimi opisami łapie zapytania, których nie pokrywa żadna kategoria. Opis firmy piszemy dla klienta: co robisz, dla kogo i w jakim obszarze.'}
+              ? 'Relevance describes how closely a profile matches the search term. According to Google, complete and detailed business information helps here. According to industry studies (not Google), the primary category is one of the stronger signals, because it tells Google what the business mainly does. Secondary categories describe the rest of your offer, and a list of services with short descriptions catches queries that no category covers. We write the business description for the customer: what you do, for whom and in which area.'
+              : 'Trafność mówi, jak dokładnie profil pasuje do wpisanego hasła. Według Google pomagają w niej kompletne i szczegółowe informacje o firmie. Według badań branżowych (nie Google) jednym z silniejszych sygnałów jest kategoria główna, bo to ona mówi Google, czym firma zajmuje się przede wszystkim. Kategorie dodatkowe opisują resztę oferty, a lista usług z krótkimi opisami łapie zapytania, których nie pokrywa żadna kategoria. Opis firmy piszemy dla klienta: co robisz, dla kogo i w jakim obszarze.'}
           </p>
           <p style={akapit}>
             {en
@@ -407,18 +407,18 @@ export default function WizytowkaClient({ faqData }) {
           <h2 id={idCena} style={h2Styl}>{en ? 'How much Google Business Profile optimization costs' : 'Ile kosztuje pozycjonowanie wizytówki Google'}</h2>
           {en ? (
             <p style={akapit}>
-              Agencies and freelancers usually manage a profile on its own for PLN 100–600 per month, and from PLN 800 in competitive industries. Our SEO Standard package costs <strong>from €450 net per month</strong>, because besides the profile it covers website optimization, up to 20 keywords, 2 pieces of content and 2 links per month{SIATKA_W_SEO_STANDARD ? ', plus Maps ranking measurement from 49 points every 14 days' : ''}. The contract is monthly.
+              Agencies and freelancers usually manage a profile on its own for PLN 100–600 per month, and from PLN 800 in competitive industries. Our SEO Standard package costs <strong>from PLN 1,900 net per month (about €450)</strong>, because besides the profile it covers website optimization, up to 20 keywords, 2 pieces of content and 2 links per month{SIATKA_W_SEO_STANDARD ? ', plus Maps ranking measurement from 49 points every 14 days' : ''}. The contract is monthly.
             </p>
           ) : (
             <p style={akapit}>
               Samą wizytówkę agencje i freelancerzy prowadzą zwykle za 100–600 zł miesięcznie, w konkurencyjnych branżach od 800 zł. Nasz pakiet SEO Standard kosztuje <strong>od 1 900 zł netto miesięcznie</strong>, bo poza wizytówką obejmuje optymalizację strony, do 20 fraz, 2 treści i 2 linki miesięcznie{SIATKA_W_SEO_STANDARD ? ' oraz pomiar pozycji w Mapach z 49 punktów co 14 dni' : ''}. Umowa jest miesięczna.
             </p>
           )}
-          <p style={podpis}>{en ? 'Market ranges: guide on dawidgicala.pl, checked on November 5, 2026' : 'Widełki rynkowe: poradnik dawidgicala.pl, sprawdzone 5.11.2026'}</p>
+          <p style={podpis}>{en ? 'Indicative market ranges from a single guide (dawidgicala.pl), checked on November 5, 2026; not a survey of price lists' : 'Widełki orientacyjne z jednego poradnika (dawidgicala.pl), sprawdzone 5.11.2026; nie jest to przegląd cenników'}</p>
           <p style={akapit}>
             {en
-              ? 'Perplexity, asked on November 4, 2026 who optimizes Google Business Profiles in Warsaw and what it costs, divides the market in a similar way. According to that answer, simple management of the profile alone costs around PLN 250–600 net per month, while local SEO covering the profile, website, reviews and links usually costs PLN 1,000–2,500 net per month. Our package falls in the second range.'
-              : 'Podobnie dzieli rynek Perplexity zapytany 4.11.2026, kto w Warszawie pozycjonuje wizytówki Google i ile to kosztuje. Według tej odpowiedzi prosta obsługa samej wizytówki kosztuje około 250–600 zł netto miesięcznie, a lokalne SEO obejmujące wizytówkę, stronę, opinie i linki zwykle 1 000–2 500 zł netto miesięcznie. Nasz pakiet mieści się w drugim przedziale.'}
+              ? 'For comparison, an AI tool (not a price list): Perplexity, asked on November 4, 2026 who optimizes Google Business Profiles in Warsaw and what it costs, divides the market in a similar way. According to that answer, simple management of the profile alone costs around PLN 250–600 net per month, while local SEO covering the profile, website, reviews and links usually costs PLN 1,000–2,500 net per month. Our package falls in the second range.'
+              : 'Dla porównania odpowiedź narzędzia AI (nie cennik): Perplexity zapytany 4.11.2026, kto w Warszawie pozycjonuje wizytówki Google i ile to kosztuje. Według tej odpowiedzi prosta obsługa samej wizytówki kosztuje około 250–600 zł netto miesięcznie, a lokalne SEO obejmujące wizytówkę, stronę, opinie i linki zwykle 1 000–2 500 zł netto miesięcznie. Nasz pakiet mieści się w drugim przedziale.'}
           </p>
 
           <CompareTable
@@ -474,7 +474,7 @@ export default function WizytowkaClient({ faqData }) {
 
           <CompareTable
             id={idEl('chatgpt-linki-do-map', 'chatgpt-links-to-maps')}
-            caption={en ? 'Where the links in ChatGPT answers lead (Nov 4–5, 2026)' : 'Dokąd prowadzą linki w odpowiedziach ChatGPT (4–5.11.2026)'}
+            caption={en ? 'Where the links lead in answers of our gpt-4.1-mini API test (Nov 4–5, 2026)' : 'Dokąd prowadzą linki w odpowiedziach naszego testu API gpt-4.1-mini (4–5.11.2026)'}
             columns={en
               ? [
                   { key: 'pytanie', label: 'Type of question' },

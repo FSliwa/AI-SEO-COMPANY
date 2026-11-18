@@ -50,7 +50,7 @@ const realizedWebsites = [
     url: 'https://www.staniax.pl/',
     category: 'seo',
     metric: '152 kliknięcia',
-    metricSubtitle: '152 clicks and 6.34k impressions in 3 months, from zero visibility.',
+    metricSubtitle: '152 clicks and 6.34k impressions in 92 days, from zero visibility.',
     gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'right-side',
@@ -67,7 +67,7 @@ const realizedWebsites = [
     imgTitle: 'Pozycjonowanie stron dla Staniax – wyniki agencji marketingowej',
     imgTitleEn: 'Staniax – B2B website rebuild and search visibility results',
     details: `Case Study 1 – Skalowanie widoczności od zera i optymalizacja konwersji:
-- Start od zerowej widoczności → 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące, w tym 2,8 tys. wyświetleń w pierwszym miesiącu (Google Search Console).
+- Start od zerowej widoczności → 152 kliknięcia i 6,34 tys. wyświetleń w 92 dni (22.05-21.08.2026), w tym ok. 1,1 tys. wyświetleń w pierwszym miesiącu (Google Search Console).
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
 - Wyższy współczynnik klikalności CTR na urządzeniach mobilnych – przygotowanie i wdrożenie wersji wielojęzycznych (/de i /en pod Niemcy i USA).`
   },
@@ -82,7 +82,7 @@ const realizedWebsites = [
     url: 'https://ase-bot.live/',
     category: 'seo',
     metric: '7,71 tys. wyświetleń',
-    metricSubtitle: 'Own project: 7.71k Google impressions in 3 months',
+    metricSubtitle: 'Own project: 7.71k Google impressions in 92 days',
     gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     meshBg: 'radial-gradient(circle at 85% 50%, rgba(168, 85, 247, 0.45) 0%, rgba(56, 189, 248, 0.35) 40%, rgba(255, 255, 255, 1) 75%)',
     layout: 'center-reverse',
@@ -91,7 +91,7 @@ const realizedWebsites = [
     desktopCard: {
       tag: 'FINTECH & GLOBAL SEO',
       title: 'AI FUTURES TRADING PLATFORM',
-      subtitle: 'Own project: 7.71k Google impressions in 3 months in a competitive US niche.',
+      subtitle: 'Own project: 7.71k Google impressions in 92 days in a competitive US niche.',
       image: '/projects/aisas-fintech-platform.webp',
       btnText: 'View Case Study'
     },
@@ -100,7 +100,7 @@ const realizedWebsites = [
     imgTitle: 'Pozycjonowanie stron dla platformy fintech – wyniki',
     imgTitleEn: 'AISAS fintech platform – design and organic growth results',
     details: `Projekt własny – konkurencyjny rynek zagraniczny (ase-bot.live):
-- 7,71 tys. wyświetleń w 3 miesiące od startu domeny bez historii; domena jest w fazie wyświetleń, kliknięcia dopiero rosną (Google Search Console).
+- 7,71 tys. wyświetleń w 92 dni (22.05-21.08.2026) od startu domeny bez historii; po szczycie w lipcu tygodniowe wyświetlenia spadły, a kliknięć jest niewiele (28 w całym okresie; Google Search Console).
 - Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 – krok od TOP 20), „best futures trading platforms” (pozycja 61).
 - 2 tys. wyświetleń z USA. Strona główna osiąga CTR 4.62%. Link building i rozbudowa artykułów eksperckich pod rynek globalny.`
   }
@@ -133,13 +133,13 @@ const MOSAIC = [
 { src: '/projects/mosaic/frazy-a.webp', w: 1200, h: 783,
     alt: 'Podstrona Frazy Studio – biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
     altEn: 'Frazy Studio page – an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
-{ src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 3 months' },
+{ src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 92 dni', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 92 days' },
 { src: '/projects/gsc/madamethai.webp', w: 1600, h: 726,
-    alt: 'Panel Performance madamethai.pl w Google Search Console: 187 kliknięć i 10,1 tys. wyświetleń w 3 miesiące',
-    altEn: 'Google Search Console performance panel for madamethai.pl: 187 clicks and 10.1K impressions over 3 months' },
-{ src: '/projects/gsc/tql.webp', w: 1600, h: 726, alt: 'Panel Performance tql.pl w Google Search Console: 296 wyświetleń, pozycja 34,6 w 28 dni', altEn: 'Google Search Console performance panel for tql.pl: 296 impressions, position 34.6 over 28 days' },
+    alt: 'Panel Performance madamethai.pl w Google Search Console: 187 kliknięć i 10,1 tys. wyświetleń w 26 dni',
+    altEn: 'Google Search Console performance panel for madamethai.pl: 187 clicks and 10.1K impressions over 26 days' },
+{ src: '/projects/gsc/tql.webp', w: 1600, h: 726, alt: 'Panel Performance tql.pl w Google Search Console: 296 wyświetleń, pozycja 34,6 w 18 dni', altEn: 'Google Search Console performance panel for tql.pl: 296 impressions, position 34.6 over 18 days' },
 { src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' },
-{ src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 3 months' }
+{ src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 92 dni', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 92 days' }
 ];
 
 /* Uklad zmierzony ze zrzutu sciany ghost.org: piec stosow wyrownanych do
@@ -315,7 +315,7 @@ export default function Portfolio() {
       Ask for the Search Console data →
     </a>
   ));
-  const okres3 = pl ? 'Okres: 3 miesiące' : 'Period: 3 months';
+  const okres3 = pl ? 'Okres: 92 dni, 22.05-21.08.2026' : 'Period: 92 days, 22 May-21 Aug 2026';
   const zrodloTyg = pl ? 'Źródło: Google Search Console, sumy tygodniowe' : 'Source: Google Search Console, weekly totals';
   const zrodloDzien = pl ? 'Źródło: Google Search Console, dane dzienne' : 'Source: Google Search Console, daily data';
   const pozycje = [
@@ -325,12 +325,12 @@ export default function Portfolio() {
       logo: logo('STANIAX'),
       tag: pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
       opis: pl
-        ? 'Z zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w Google w 3 miesiące (Search Console).'
-        : 'From zero visibility to 152 clicks and 6.34k Google impressions in 3 months (Search Console).',
+        ? 'Z zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w Google w 92 dni (Search Console).'
+        : 'From zero visibility to 152 clicks and 6.34k Google impressions in 92 days (Search Console).',
       seria: 'staniax',
       metryki: pl
-        ? [['6,34 tys.', 'wyświetleń w Google w 3 miesiące'], ['152', 'kliknięcia z wyszukiwarki w 3 miesiące']]
-        : [['6.34k', 'Google impressions in 3 months'], ['152', 'clicks from search in 3 months']],
+        ? [['6,34 tys.', 'wyświetleń w Google w 92 dni'], ['152', 'kliknięcia z wyszukiwarki w 92 dni']]
+        : [['6.34k', 'Google impressions in 92 days'], ['152', 'clicks from search in 92 days']],
       okres: okres3,
       zrodlo: zrodloTyg,
       cta: cta('staniax'),
@@ -345,9 +345,9 @@ export default function Portfolio() {
         : 'Building and scaling digital sales for the newly opened restaurant location.',
       seria: 'madamethai',
       metryki: pl
-        ? [['10,1 tys.', 'wyświetleń w Google w 3 miesiące'], ['187', 'kliknięć z wyszukiwarki w 3 miesiące']]
-        : [['10.1k', 'Google impressions in 3 months'], ['187', 'clicks from search in 3 months']],
-      okres: pl ? 'Okres: 3 miesiące, dane od 27 lipca 2026' : 'Period: 3 months, data since Jul 27, 2026',
+        ? [['10,1 tys.', 'wyświetleń w Google w 26 dni'], ['187', 'kliknięć z wyszukiwarki w 26 dni']]
+        : [['10.1k', 'Google impressions in 26 days'], ['187', 'clicks from search in 26 days']],
+      okres: pl ? 'Okres: 26 dni, 27.07-21.08.2026' : 'Period: 26 days, 27 Jul-21 Aug 2026',
       zrodlo: zrodloDzien,
       cta: cta('madame-thai'),
     },
@@ -357,13 +357,13 @@ export default function Portfolio() {
       logo: logoTql,
       tag: pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
       opis: pl
-        ? 'Firma wdrażająca normy ISO, strona świeżo uruchomiona: pierwsze wyświetlenia i pozycje w Google w 28 dni od startu (Search Console).'
-        : 'An ISO standards consultancy with a freshly launched website: first Google impressions and rankings within 28 days of launch (Search Console).',
+        ? 'Firma wdrażająca normy ISO, strona świeżo uruchomiona: pierwsze wyświetlenia i pozycje w Google w pierwszych 18 dniach od startu (Search Console).'
+        : 'An ISO standards consultancy with a freshly launched website: first Google impressions and rankings within the first 18 days of launch (Search Console).',
       seria: 'tql',
       metryki: pl
-        ? [['296', 'wyświetleń w Google w pierwsze 28 dni'], ['34,6', 'średnia pozycja w Google po 28 dniach']]
-        : [['296', 'Google impressions in the first 28 days'], ['34.6', 'average Google position after 28 days']],
-      okres: pl ? 'Okres: pierwsze 28 dni od startu, dane od 5 sierpnia 2026' : 'Period: first 28 days after launch, data since Aug 5, 2026',
+        ? [['296', 'wyświetleń w Google w pierwsze 18 dni'], ['34,6', 'średnia pozycja w Google w tym okresie']]
+        : [['296', 'Google impressions in the first 18 days'], ['34.6', 'average Google position in that period']],
+      okres: pl ? 'Okres: pierwsze 18 dni, 5-22.08.2026' : 'Period: first 18 days, 5-22 Aug 2026',
       zrodlo: zrodloDzien,
       cta: cta('tql'),
     },
@@ -373,12 +373,12 @@ export default function Portfolio() {
       logo: logo('ASE-BOT'),
       tag: pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO',
       opis: pl
-        ? 'Nasz własny projekt: 7,71 tys. wyświetleń w Google w 3 miesiące. Domena jest w fazie wyświetleń (Search Console).'
-        : 'Our own project: 7.71k Google impressions in 3 months. The domain is still in the impressions phase (Search Console).',
+        ? 'Nasz własny projekt: 7,71 tys. wyświetleń w Google w 92 dni, ze szczytem w lipcu i spadkiem w sierpniu (Search Console).'
+        : 'Our own project: 7.71k Google impressions in 92 days, peaking in July and falling in August (Search Console).',
       seria: 'ase-bot',
       metryki: pl
-        ? [['7,71 tys.', 'wyświetleń w Google w 3 miesiące'], ['28', 'kliknięć z wyszukiwarki w 3 miesiące']]
-        : [['7.71k', 'Google impressions in 3 months'], ['28', 'clicks from search in 3 months']],
+        ? [['7,71 tys.', 'wyświetleń w Google w 92 dni'], ['28', 'kliknięć z wyszukiwarki w 92 dni']]
+        : [['7.71k', 'Google impressions in 92 days'], ['28', 'clicks from search in 92 days']],
       okres: okres3,
       zrodlo: zrodloTyg,
       cta: cta('ase-bot'),

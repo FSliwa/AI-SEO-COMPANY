@@ -96,8 +96,8 @@ const faq = [
   {
     question: 'Kto widzi moje dane?',
     questionEn: 'Who can see my data?',
-    answer: 'Tylko osoby z Twojej firmy, które dodamy do panelu, i nasz zespół. Każda firma widzi wyłącznie swoje dane: rozdzielenie pilnuje sama baza danych, a nie tylko interfejs. Dane i pliki są przechowywane w Unii Europejskiej (Frankfurt). Logujesz się kontem Google albo e-mailem i hasłem.',
-    answerEn: 'Only the people from your company we add to the portal, and our team. Each company sees only its own data: the database itself enforces the separation, not just the interface. Data and files are stored in the European Union (Frankfurt). You sign in with a Google account or with email and password.'
+    answer: 'Tylko osoby z Twojej firmy, które dodamy do panelu, i nasz zespół. Każda firma widzi wyłącznie swoje dane: rozdzielenie pilnuje sama baza danych, a nie tylko interfejs. Baza danych jest w Unii Europejskiej (Frankfurt). Logujesz się kontem Google albo e-mailem i hasłem.',
+    answerEn: 'Only the people from your company we add to the portal, and our team. Each company sees only its own data: the database itself enforces the separation, not just the interface. The database is hosted in the European Union (Frankfurt). You sign in with a Google account or with email and password.'
   },
   {
     question: 'Co z danymi po zakończeniu współpracy?',
@@ -222,8 +222,8 @@ export default function PanelPageClient() {
             <h2 id="porownanie">{lang === 'pl' ? 'Czego nie pokaże raport PDF' : 'What a PDF report will not show you'}</h2>
             <p style={{ color: 'var(--color-text-muted)', maxWidth: '720px', margin: '0.75rem 0 0', lineHeight: 1.65 }}>
               {lang === 'pl'
-                ? 'Porównanie z formami raportowania, które spotkasz u agencji SEO. Kolumna środkowa to panel, który pokazuje głównie pozycje fraz.'
-                : 'A comparison with the reporting you will find at SEO agencies. The middle column is a portal that mainly shows keyword positions.'}
+                ? 'Porównanie z formami raportowania, które spotkasz u agencji SEO, na podstawie przeglądu cenników i opisów usług 17 agencji w Polsce (stan na 25.10.2026). Kolumna środkowa to uproszczony typowy panel, który pokazuje głównie pozycje fraz; część agencji oferuje więcej.'
+                : 'A comparison with the reporting you will find at SEO agencies, based on a review of the price lists and service descriptions of 17 agencies in Poland (as of 25 October 2026). The middle column is a simplified typical portal that mainly shows keyword positions; some agencies offer more.'}
             </p>
           </Reveal>
           <Reveal style={{ marginTop: '2rem', overflowX: 'auto', background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.04)' }}>

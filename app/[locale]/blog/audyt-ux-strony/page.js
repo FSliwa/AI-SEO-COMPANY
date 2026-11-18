@@ -244,7 +244,7 @@ export default async function ArticleUXAudit({ params }) {
                   <p>Website UX testing tools fall into three groups: quantitative analytics, recordings and heatmaps, and user testing. The list below is a starting point, not a requirement – any tool that exports user paths and lets you watch a session is fit for this work.</p>
 
                   <ul>
-                    <li><strong>GA4 Explorations (path exploration):</strong> visualising behaviour sequences, identifying abandonment points.</li>
+                    <li><strong>GA4 Explorations (funnel exploration):</strong> visualising behaviour sequences, identifying abandonment points.</li>
                     <li><strong>Microsoft Clarity:</strong> free session recordings and heatmaps, with form-field masking in settings.</li>
                     <li><strong>Hotjar:</strong> session recordings, heatmaps, on-site surveys.</li>
                     <li><strong>Lighthouse / PageSpeed Insights:</strong> performance and Core Web Vitals audits.</li>
@@ -255,13 +255,13 @@ export default async function ArticleUXAudit({ params }) {
                   <p><strong>Session recordings and GDPR.</strong> Whatever tool you choose, recording user behaviour is personal data processing and requires a legal basis. The built-in field masking in Clarity and Hotjar limits the risk of leaking sensitive data, but does not release you from obtaining consent, disclosing in the privacy policy and signing a data processing agreement with the vendor. Treat privacy configuration as the first step of tool rollout, not an option to enable later.</p>
 
                   <h3>How to use GA4 Explorations without the usual traps?</h3>
-                  <p><a href="https://support.google.com/analytics/answer/9327974?hl=en" target="_blank" rel="noopener noreferrer">Path exploration in GA4 visualises behaviour sequences, supports open and closed modes and limits the report to a maximum of 10 steps</a>, which affects how users are counted. Users only count when they perform the steps in the defined order, so a skipped step is not treated as abandonment but as non-qualification for the path.</p>
+                  <p><a href="https://support.google.com/analytics/answer/9327974?hl=en" target="_blank" rel="noopener noreferrer">Funnel exploration in GA4 visualises the steps users take, supports open and closed funnels and limits the report to a maximum of 10 steps</a>, which affects how users are counted. Users only count when they perform the steps in the defined order, so a skipped step is not treated as abandonment but as non-qualification for the path.</p>
 
                   <p>A practical shortcut to a checkout exploration:</p>
                   <ol>
-                    <li>Go to GA4 → Explore → Path exploration.</li>
+                    <li>Go to GA4 → Explore → Funnel exploration.</li>
                     <li>Choose the <strong>closed</strong> mode if you are analysing a specific funnel (e.g. cart → shipping details → payment → confirmation).</li>
-                    <li>Limit the path to a maximum of 10 steps; more are not supported.</li>
+                    <li>Limit the funnel to a maximum of 10 steps; more are not supported. (Path exploration, a different report, shows the sequences users actually follow and has no closed mode.)</li>
                     <li>Before interpreting results, confirm in DebugView that events on every step are recorded correctly.</li>
                     <li>Break the path down by device – in the right-hand panel choose the <strong>Breakdown</strong> dimension → <em>Device category</em>; payment-step drop-off is often noticeably higher on mobile than on desktop. Mind this dimension's limitation: a user is assigned to the device on which they <strong>entered</strong> the path and stays in that bucket on all subsequent steps. Someone who browsed on a phone and paid on a computer counts as mobile at purchase too – in stores with frequent device switching this inflates mobile conversion and deflates desktop.</li>
                   </ol>
@@ -373,7 +373,7 @@ export default async function ArticleUXAudit({ params }) {
                         <tr>
                           <td>Funnel audit with data analysis</td>
                           <td>approx. PLN 2,000–4,000</td>
-                          <td>Heuristics, GA4 explorations, session recordings, evidence-backed backlog. The most commonly ordered scope – the market average sits around PLN 3,000</td>
+                          <td>Heuristics, GA4 explorations, session recordings, evidence-backed backlog. The most commonly ordered scope</td>
                         </tr>
                         <tr>
                           <td>Full audit with user testing</td>
@@ -428,11 +428,11 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p><strong>We do not sell UX audits as a standalone service</strong> – a deliberate decision, because a report alone does not move the metrics. UX analysis enters our work at two moments, in both cases as part of a package, not a separate invoice:</p>
                   <ul>
-                    <li><strong>When taking over an existing site</strong> – at the start of <Link href="/pozycjonowanie-stron-internetowych">SEO work</Link>, together with the <Link href="/audyt-seo">SEO audit</Link>, within the monthly subscription. Both analyses draw on the same Search Console and Analytics data, so run in parallel they do not duplicate work, and findings from one adjust priorities in the other.</li>
+                    <li><strong>When taking over an existing site</strong> – at the start of <Link href="/pozycjonowanie-stron-internetowych">SEO work</Link>, together with the <Link href="/audyt-seo">SEO audit</Link>, within the SEO Premium subscription. Both analyses draw on the same Search Console and Analytics data, so run in parallel they do not duplicate work, and findings from one adjust priorities in the other.</li>
                     <li><strong>When building a new site</strong> – as part of the <Link href="/projektowanie-stron-internetowych">design and build process</Link>, in a package covering the site and its SEO. There we do not diagnose existing faults – we design the path so they do not appear, then verify the assumptions with data after launch.</li>
                   </ul>
 
-                  <p>In both cases UX analysis is part of the monthly scope, not a line item. Which package covers which scope is shown in the <Link href="/cennik-pozycjonowania">pricing</Link> – the main differences are whether conversion optimisation is included and whether a new site is part of the deal.</p>
+                  <p>In both cases UX analysis is part of a package, not a line item: conversion optimisation is part of SEO Premium and the UX/UI design of a new site is part of the Booster Pack; SEO Standard covers SEO only, without UX analysis. Details are in the <Link href="/cennik-pozycjonowania">pricing</Link>.</p>
 
                   <p>In simple cases – one conversion path, measurement that needs no repair, test participants from the client's own base – we close the full analysis in a week. Four weeks is the timeline for sites with multiple funnels, language variants or measurement needing reconfiguration, not the default.</p>
 
@@ -457,17 +457,17 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p>Attach GA4 access to the brief (the "Viewer" role is enough at the quoting stage) and a list of known problems or hypotheses. If you already run a session-recording tool, include access to it as well – it lets the audit skip the first days otherwise spent on setup and data collection.</p>
 
-                  <p>Contact AI SEO COMPANY through the agency website to send a brief or request a free analysis of your site's SEO and brand potential. A full UX analysis with tests and a backlog is included in the package, per the model described above. We reply to enquiries within 24 h on business days, usually sooner, prepare an initial proposal within a day, and a full audit quote with the method scope in 2–3 working days from receiving a complete brief. The difference comes from the fact that quoting an audit requires a look at the measurement setup and traffic volume, not just a project description.</p>
+                  <p>Contact AI SEO COMPANY through the agency website to send a brief or request a free analysis of your site's SEO and brand potential. We run UX analysis only as part of a site project (Booster Pack) and of conversion optimisation in SEO Premium; the scope is agreed in the brief. We reply to enquiries within 24 h on business days, usually sooner.</p>
 
                   <h2 id="sources">Sources</h2>
                   <p>References useful when planning or commissioning a UX audit:</p>
                   <ul>
-                    <li><a href="https://support.google.com/analytics/answer/9327974?hl=en" target="_blank" rel="noopener noreferrer">GA4 Path exploration</a></li>
+                    <li><a href="https://support.google.com/analytics/answer/9327974?hl=en" target="_blank" rel="noopener noreferrer">GA4 Funnel exploration</a></li>
                     <li><a href="https://en.wikipedia.org/wiki/Confirmation_bias" target="_blank" rel="noopener noreferrer">Confirmation bias – Wikipedia</a></li>
                     <li>Nielsen Norman Group – the ten usability heuristics and the five-user rule in testing</li>
                     <li>W3C – Web Content Accessibility Guidelines (WCAG) 2.2, recommendation since October 2023</li>
                     <li>Google Search Central – Core Web Vitals; INP replaced FID as a Core Web Vital in March 2024</li>
-                    <li>Price ranges: a compilation of public price lists of Polish agencies and comparison services, as of August 2026 – from approx. PLN 400 for a diagnostic audit to PLN 15,000–25,000 for a full research sprint</li>
+                    <li>Price ranges: a compilation of public price lists of Polish agencies and comparison services, as of August 2026 – from approx. PLN 400 for a diagnostic audit to PLN 15,000 for a full audit with user testing; a working compilation, indicative values</li>
                   </ul>
 
                   <p><em>Last reviewed: August 2026. Core Web Vitals thresholds and the WCAG version reflect documentation as of that date.</em></p>
@@ -637,7 +637,7 @@ export default async function ArticleUXAudit({ params }) {
                   <p>Narzędzia do testów UX witryn dzielą się na trzy grupy: analityka ilościowa, nagrania i mapy cieplne oraz testy z użytkownikami. Poniższa lista to punkt wyjścia, nie wymóg – każde narzędzie, które eksportuje ścieżki użytkowników i pozwala obejrzeć sesję, nadaje się do tej pracy.</p>
 
                   <ul>
-                    <li><strong>GA4 Explorations (Eksploracja ścieżki):</strong> wizualizacja sekwencji zachowań, identyfikacja punktów porzucenia.</li>
+                    <li><strong>GA4 Explorations (Eksploracja lejka):</strong> wizualizacja sekwencji zachowań, identyfikacja punktów porzucenia.</li>
                     <li><strong>Microsoft Clarity:</strong> bezpłatne nagrania sesji i mapy cieplne, z maskowaniem treści pól formularzy w ustawieniach.</li>
                     <li><strong>Hotjar:</strong> nagrania sesji, mapy cieplne, ankiety na stronie.</li>
                     <li><strong>Lighthouse / PageSpeed Insights:</strong> audyt wydajności i Core Web Vitals.</li>
@@ -648,13 +648,13 @@ export default async function ArticleUXAudit({ params }) {
                   <p><strong>Nagrania sesji a RODO.</strong> Niezależnie od wybranego narzędzia rejestrowanie zachowań użytkownika jest przetwarzaniem danych osobowych i wymaga podstawy prawnej. Wbudowane maskowanie pól, które oferują Clarity i Hotjar, ogranicza ryzyko wycieku danych wrażliwych, ale nie zwalnia z obowiązku uzyskania zgody, poinformowania w polityce prywatności i zawarcia umowy powierzenia z dostawcą. Traktuj konfigurację prywatności jako pierwszy krok wdrożenia narzędzia, a nie jako opcję do włączenia później.</p>
 
                   <h3>Jak używać GA4 Explorations bez typowych pułapek?</h3>
-                  <p><a href="https://support.google.com/analytics/answer/9327974?hl=pl" target="_blank" rel="noopener noreferrer">Eksploracja ścieżki w GA4 wizualizuje sekwencje zachowań, obsługuje tryby otwarty i zamknięty oraz ogranicza raport do maksymalnie 10 kroków</a>, co wpływa na sposób zliczania użytkowników. Użytkownicy są liczeni tylko wtedy, gdy wykonają kroki w określonej kolejności, więc pominięty krok nie jest traktowany jako porzucenie, lecz jako brak kwalifikacji do ścieżki.</p>
+                  <p><a href="https://support.google.com/analytics/answer/9327974?hl=pl" target="_blank" rel="noopener noreferrer">Eksploracja lejka w GA4 wizualizuje kolejne kroki użytkowników, obsługuje lejek otwarty i zamknięty oraz ogranicza raport do maksymalnie 10 kroków</a>, co wpływa na sposób zliczania użytkowników. Użytkownicy są liczeni tylko wtedy, gdy wykonają kroki w określonej kolejności, więc pominięty krok nie jest traktowany jako porzucenie, lecz jako brak kwalifikacji do ścieżki.</p>
 
                   <p>Praktyczny skrót do stworzenia eksploracji zakupowej:</p>
                   <ol>
-                    <li>Wejdź w GA4 → Eksploracje → Eksploracja ścieżki.</li>
+                    <li>Wejdź w GA4 → Eksploracje → Eksploracja lejka.</li>
                     <li>Wybierz tryb <strong>zamknięty</strong>, jeśli analizujesz konkretny lejek (np. koszyk → dane dostawy → płatność → potwierdzenie).</li>
-                    <li>Ogranicz ścieżkę do maksymalnie 10 kroków; więcej kroków nie jest obsługiwanych.</li>
+                    <li>Ogranicz lejek do maksymalnie 10 kroków; więcej kroków nie jest obsługiwanych. (Eksploracja ścieżki to inny raport: pokazuje sekwencje, które użytkownicy faktycznie przechodzą, i nie ma trybu zamkniętego.)</li>
                     <li>Przed interpretacją wyników sprawdź w DebugView, czy zdarzenia na każdym kroku są rejestrowane poprawnie.</li>
                     <li>Rozbij ścieżkę według urządzenia – w panelu po prawej wybierz wymiar <strong>Podział</strong> → <em>Kategoria urządzenia</em>; odpływ na etapie płatności bywa na mobile zauważalnie wyższy niż na komputerze. Pamiętaj o ograniczeniu tego wymiaru: użytkownik zostaje przypisany do urządzenia, na którym <strong>wszedł</strong> na ścieżkę, i pozostaje w tym zestawieniu na wszystkich kolejnych krokach. Ktoś, kto przeglądał ofertę na telefonie, a zapłacił na komputerze, policzy się jako mobilny również przy zakupie – w sklepach z częstym przenoszeniem sesji między urządzeniami zawyża to konwersję mobile i zaniża desktopową.</li>
                   </ol>
@@ -766,7 +766,7 @@ export default async function ArticleUXAudit({ params }) {
                         <tr>
                           <td>Audyt lejka z analizą danych</td>
                           <td>ok. 2 000–4 000 zł</td>
-                          <td>Heurystyka, eksploracje GA4, nagrania sesji, backlog z dowodami. Najczęściej zamawiany zakres – średnia rynkowa mieści się w okolicach 3 000 zł</td>
+                          <td>Heurystyka, eksploracje GA4, nagrania sesji, backlog z dowodami. Najczęściej zamawiany zakres</td>
                         </tr>
                         <tr>
                           <td>Pełny audyt z testami użytkowników</td>
@@ -794,7 +794,7 @@ export default async function ArticleUXAudit({ params }) {
                   <h2 id="przykladowy-przebieg-audytu-od-diagnozy-do-decyzji">Przykładowy przebieg audytu: od diagnozy do decyzji</h2>
                   <p>Poniższy scenariusz składa się z problemów, które w audytach sklepów internetowych powtarzają się najczęściej. Nie jest opisem konkretnego wdrożenia – pokazuje kolejność decyzji i sposób, w jaki jedna metoda uzupełnia drugą. Konkretne wyniki naszych projektów, wraz z liczbami, znajdziesz w sekcji realizacji na <Link href="/">stronie głównej</Link>.</p>
 
-                  <p>Punkt wyjścia: sklep internetowy z wysokim odsetkiem porzuceń na kroku rejestracji konta. Eksploracja ścieżki w GA4 pokazuje, na którym kroku znika największa część użytkowników. Nagrania sesji dodają kontekst, którego dane liczbowe nie mają – na przykład powtarzające się kliknięcia w to samo pole, cofanie się i zamknięcie karty.</p>
+                  <p>Punkt wyjścia: sklep internetowy z wysokim odsetkiem porzuceń na kroku rejestracji konta. Eksploracja lejka w GA4 pokazuje, na którym kroku znika największa część użytkowników. Nagrania sesji dodają kontekst, którego dane liczbowe nie mają – na przykład powtarzające się kliknięcia w to samo pole, cofanie się i zamknięcie karty.</p>
 
                   <p><strong>Działania:</strong></p>
                   <ul>
@@ -821,11 +821,11 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p><strong>Nie sprzedajemy audytu UX jako osobnej usługi</strong> – i to jest świadoma decyzja, bo sam raport nie zmienia wskaźników. Analiza UX wchodzi u nas w dwa momenty, w obu jako element pakietu, nie osobna faktura:</p>
                   <ul>
-                    <li><strong>Przy przejęciu istniejącej strony</strong> – na starcie <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania</Link> razem z <Link href="/audyt-seo">audytem SEO</Link>, w ramach abonamentu miesięcznego. Obie analizy korzystają z tych samych danych z Search Console i Analytics, więc prowadzone równolegle nie dublują pracy, a wnioski z jednej korygują priorytety w drugiej.</li>
+                    <li><strong>Przy przejęciu istniejącej strony</strong> – na starcie <Link href="/pozycjonowanie-stron-internetowych">pozycjonowania</Link> razem z <Link href="/audyt-seo">audytem SEO</Link>, w ramach abonamentu SEO Premium. Obie analizy korzystają z tych samych danych z Search Console i Analytics, więc prowadzone równolegle nie dublują pracy, a wnioski z jednej korygują priorytety w drugiej.</li>
                     <li><strong>Przy budowie nowej strony</strong> – jako część procesu <Link href="/projektowanie-stron-internetowych">projektowania i wdrożenia</Link>, w pakiecie obejmującym stronę i pozycjonowanie. Wtedy nie diagnozujemy istniejących błędów, tylko projektujemy ścieżkę tak, żeby ich nie było, a po uruchomieniu weryfikujemy założenia danymi.</li>
                   </ul>
 
-                  <p>W obu przypadkach analiza UX jest częścią miesięcznego zakresu, a nie osobną pozycją na fakturze. Który pakiet obejmuje który zakres, pokazuje <Link href="/cennik-pozycjonowania">cennik pakietów</Link> – różnią się głównie tym, czy dochodzi optymalizacja konwersji i czy w cenie jest nowa strona.</p>
+                  <p>W obu przypadkach analiza UX jest częścią pakietu, a nie osobną pozycją na fakturze: optymalizacja konwersji wchodzi w SEO Premium, a projekt UX/UI nowej strony w Booster Pack; SEO Standard obejmuje pozycjonowanie bez analizy UX. Szczegóły pokazuje <Link href="/cennik-pozycjonowania">cennik pakietów</Link>.</p>
 
                   <p>W prostych przypadkach – jedna ścieżka konwersji, pomiar niewymagający naprawy, testy na uczestnikach z bazy klienta – pełną analizę zamykamy w tydzień. Cztery tygodnie to termin dla serwisów z wieloma lejkami, wariantami językowymi albo pomiarem do rekonfiguracji, a nie domyślny czas realizacji.</p>
 
@@ -850,17 +850,17 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p>Do briefu dołącz dostęp do GA4 (rola „Przeglądający“ wystarczy na etapie wyceny) oraz listę znanych problemów lub hipotez. Jeśli macie już wdrożone narzędzie do nagrań sesji, dołącz również dostęp do niego – pozwala to pominąć pierwsze dni audytu poświęcane na konfigurację i zbieranie materiału.</p>
                   
-                  <p>Skontaktuj się z AI SEO COMPANY przez stronę agencji, żeby przesłać brief albo zamówić bezpłatną analizę SEO i potencjału obecnej marki. Pełna analiza UX z testami i backlogiem wchodzi w zakres pakietu, zgodnie z modelem opisanym wyżej. Na zapytanie odpowiadamy do 24 h w dni robocze, zwykle szybciej, a wstępną propozycję współpracy przygotowujemy w ciągu doby, a pełną wycenę audytu wraz z zakresem metod – w 2–3 dni robocze od otrzymania kompletnego briefu. Różnica wynika z tego, że wycena audytu wymaga wglądu w konfigurację pomiaru i wielkość ruchu, a nie tylko opisu projektu.</p>
+                  <p>Skontaktuj się z AI SEO COMPANY przez stronę agencji, żeby przesłać brief albo zamówić bezpłatną analizę SEO i potencjału obecnej marki. Analizę UX prowadzimy tylko jako element projektu strony (Booster Pack) i optymalizacji konwersji w SEO Premium; zakres uzgadniamy w briefie. Na zapytanie odpowiadamy do 24 h w dni robocze, zwykle szybciej.</p>
 
                   <h2 id="zrodla">Źródła</h2>
                   <p>Poniżej zebrane odnośniki do dokumentacji i materiałów pomocnych przy planowaniu lub zlecaniu audytu UX:</p>
                   <ul>
-                    <li><a href="https://support.google.com/analytics/answer/9327974?hl=pl" target="_blank" rel="noopener noreferrer">GA4 Eksploracja ścieżki</a></li>
+                    <li><a href="https://support.google.com/analytics/answer/9327974?hl=pl" target="_blank" rel="noopener noreferrer">GA4 Eksploracja lejka</a></li>
                     <li><a href="https://pl.wikipedia.org/wiki/Efekt_potwierdzenia" target="_blank" rel="noopener noreferrer">Efekt potwierdzenia – Wikipedia</a></li>
                     <li>Nielsen Norman Group – dziesięć heurystyk użyteczności oraz reguła pięciu użytkowników w testach</li>
                     <li>W3C – Web Content Accessibility Guidelines (WCAG) 2.2, rekomendacja z października 2023</li>
                     <li>Google Search Central – Core Web Vitals; INP zastąpił FID jako Core Web Vital w marcu 2024</li>
-                    <li>Widełki cenowe: zestawienie publicznych cenników polskich agencji i serwisów porównawczych, stan na sierpień 2026 – od ok. 400 zł za audyt diagnostyczny do 15 000–25 000 zł za pełny sprint badawczy</li>
+                    <li>Widełki cenowe: zestawienie publicznych cenników polskich agencji i serwisów porównawczych, stan na sierpień 2026 – od ok. 400 zł za audyt diagnostyczny do 15 000 zł za pełny audyt z testami użytkowników; zestawienie robocze, wartości orientacyjne</li>
                   </ul>
 
                   <p><em>Ostatnia aktualizacja: sierpień 2026. Progi Core Web Vitals i wersja WCAG odpowiadają stanowi dokumentacji na tę datę.</em></p>

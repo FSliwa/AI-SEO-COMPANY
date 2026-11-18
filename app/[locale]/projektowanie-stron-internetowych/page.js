@@ -30,8 +30,8 @@ const faqWebDesign = [
   {
     question: 'Dlaczego strony w Next.js ładują się szybciej niż WordPress?',
     questionEn: 'Why do Next.js websites load faster than WordPress?',
-    answer: 'Next.js wykorzystuje mechanizmy statycznego generowania (SSG) oraz renderowania po stronie serwera (SSR). Zamiast każdorazowo składać stronę z zapytań do bazy danych jak w WordPress, serwuje gotowe pliki prosto do przeglądarki klienta.',
-    answerEn: 'Next.js uses Static Site Generation (SSG) and Server-Side Rendering (SSR). Instead of rebuilding the page from database queries every time like WordPress, it serves ready files straight to the client\'s browser.'
+    answer: 'Next.js wykorzystuje mechanizmy statycznego generowania (SSG) oraz renderowania po stronie serwera (SSR). Domyślnie serwuje wstępnie wygenerowane strony, a WordPress bez pamięci podręcznej składa stronę z zapytań do bazy danych przy każdym żądaniu.',
+    answerEn: 'Next.js uses Static Site Generation (SSG) and Server-Side Rendering (SSR). By default it serves pre-generated pages, while WordPress without a page cache builds the page from database queries on every request.'
   },
   {
     question: 'Czy po zmianie strony nie spadną mi pozycje w Google?',
@@ -62,9 +62,9 @@ const webDesignPortfolioCases = [
     metric: '0.3s',
     metricLabel: 'Czas reakcji',
     metricLabelEn: 'Response Time',
-    metric2: '100/100',
-    metric2Label: 'Ocena w Google',
-    metric2LabelEn: 'Google Score'
+    metric2: '98-99/100',
+    metric2Label: 'Lighthouse na telefonie (pomiar 24.09.2026)',
+    metric2LabelEn: 'Mobile Lighthouse (measured 24 Sep 2026)'
   },
   {
     tag: 'SPÓJNY WIZERUNEK MARKI',
@@ -87,8 +87,8 @@ const webDesignPortfolioCases = [
     tagEn: 'SECURITY',
     title: 'Niezawodna Architektura Bez Wtyczek',
     titleEn: 'Reliable Architecture Without Plugins',
-    description: 'Zapomnij o dziurawych systemach, ciągłych aktualizacjach i awariach. Nasze nowoczesne podejście oddziela treść od kodu, zapewniając pełną odporność na',
-    descriptionEn: 'Forget about leaky systems, constant updates, and failures. Our modern approach separates content from code, ensuring full resistance to attacks and guaranteeing trouble-free operation.',
+    description: 'Zapomnij o dziurawych systemach, ciągłych aktualizacjach i awariach. Nasze nowoczesne podejście oddziela treść od kodu, zmniejszając powierzchnię ataku. Stronę monitorujemy, a dostępność raportujemy z pomiaru.',
+    descriptionEn: 'Forget about leaky systems, constant updates, and failures. Our modern approach separates content from code, which reduces the attack surface. We monitor the site and report measured uptime.',
     image: '/images/unsplash-1678366633407-7f49da199a42.jpg',
     gradient: 'linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)',
     metric: '99.99%',
@@ -103,16 +103,16 @@ const webDesignPortfolioCases = [
     tagEn: 'ACCESSIBILITY',
     title: 'Zgodność ze Standardami WCAG',
     titleEn: 'WCAG Standard Compliance',
-    description: 'Twoja strona będzie przyjazna dla każdego. Tworzymy serwisy, które są czytelne, responsywne i spełniają restrykcyjne wymogi prawne dotyczące dostępności',
-    descriptionEn: 'Your site will be friendly to everyone. We create services that are legible, responsive, and meet strict legal requirements for digital accessibility for institutions and corporations.',
+    description: 'Twoja strona będzie przyjazna dla każdego. Tworzymy serwisy, które są czytelne, responsywne i projektujemy zgodnie z WCAG 2.2 AA, a dostępność sprawdzamy audytem przed odbiorem; wymogi prawne zależą od rodzaju usługi',
+    descriptionEn: 'Your site will be friendly to everyone. We create services that are legible, responsive, and designed to WCAG 2.2 AA, verified with an accessibility audit before handover; legal requirements depend on the type of service.',
     image: '/images/unsplash-1709377058964-929af7f2d02f.jpg',
     gradient: 'linear-gradient(135deg, #7C2D12 0%, #C2410C 50%, #EA580C 100%)',
-    metric: 'WCAG 2.1',
-    metricLabel: 'Pełna zgodność',
-    metricLabelEn: 'Full Compliance',
-    metric2: '100%',
-    metric2Label: 'Czytelność',
-    metric2LabelEn: 'Readability'
+    metric: 'WCAG 2.2',
+    metricLabel: 'Poziom AA (cel projektu)',
+    metricLabelEn: 'Level AA (design target)',
+    metric2: 'Audyt',
+    metric2Label: 'Dostępności przed odbiorem',
+    metric2LabelEn: 'Accessibility check before handover'
   },
   {
     tag: 'ANIMACJE',
@@ -174,10 +174,10 @@ const webDesignCarouselItems = [
     number: '03 / BEZPIECZEŃSTWO',
     numberEn: '03 / SECURITY',
     metric: '100%',
-    title: 'Brak Awarji',
+    title: 'Brak Awarii',
     titleEn: 'No Crashes',
-    description: 'Bezpieczna technologia, która eliminuje ryzyko włamań znane z przestarzałych systemów szablonowych.',
-    descriptionEn: 'Secure technology that eliminates the risk of hacks known from outdated template systems.',
+    description: 'Technologia bez wtyczek i bez publicznej bazy danych ogranicza ryzyko włamań znane z przestarzałych systemów szablonowych.',
+    descriptionEn: 'Technology with no plugins and no public database reduces the risk of hacks known from outdated template systems.',
     width: 'min(80vw, 430px)',
     minHeight: '380px'
   },

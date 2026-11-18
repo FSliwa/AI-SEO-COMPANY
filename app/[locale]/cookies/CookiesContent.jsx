@@ -39,7 +39,8 @@ export default function CookiesContent() {
                 <p>Pliki cookies (tzw. ciasteczka) to dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika Serwisu i przeznaczone są do korzystania ze stron internetowych Serwisu.</p>
                 <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>2. Cele w jakich stosowane są cookies</h2>
                 <p>Cookies używamy w celach analitycznych (Google Analytics), marketingowych (śledzenie konwersji i personalizacja reklam) oraz do zapewnienia prawidłowego funkcjonowania serwisu.</p>
-                <p>Jeśli trafisz na stronę z reklamy Google Ads, identyfikator kliknięcia (parametr <code>gclid</code>, <code>gbraid</code> lub <code>wbraid</code>) oraz parametry <code>utm_*</code> zapisujemy na czas sesji, a po wyrażeniu zgody marketingowej – w ciasteczku <code>aisc_attr</code> na 90 dni. Identyfikator dołączamy do zgłoszenia z formularza kontaktowego wyłącznie po to, aby zmierzyć skuteczność reklam (w tym przekazać do Google Ads informację, że zapytanie zakończyło się współpracą). Nie łączymy go z innymi danymi ani nie przekazujemy innym podmiotom.</p>
+                <p>Jeśli trafisz na stronę z reklamy Google Ads, identyfikator kliknięcia (parametr <code>gclid</code>, <code>gbraid</code> lub <code>wbraid</code>) oraz parametry <code>utm_*</code> zapisujemy na czas sesji, a po wyrażeniu zgody marketingowej – w ciasteczku <code>aisc_attr</code> na 90 dni. Identyfikator dołączamy do zgłoszenia z formularza kontaktowego wyłącznie po to, aby zmierzyć skuteczność reklam (w tym przekazać do Google Ads informację, że zapytanie zakończyło się współpracą). Poza naszym arkuszem zgłoszeń i Google (Google Ads, Google Analytics) nie przekazujemy go innym podmiotom.</p>
+                <p>Jak działa zgoda na cookies Google: skrypt Google (gtag.js) ładuje się na każdej podstronie w trybie zgody Google (Consent Mode). W krajach Europejskiego Obszaru Gospodarczego, w Wielkiej Brytanii i w Szwajcarii zgody analityczna i reklamowa mają domyślnie wartość „odmowa”: do czasu Twojej decyzji (i po odmowie) nie zapisujemy ciasteczek analitycznych ani reklamowych Google, ale Google może otrzymywać zdarzenia bez ciasteczek (adres odwiedzanej strony, adres IP i dane przeglądarki). W pozostałych krajach zgody startują jako „udzielona”, więc ciasteczka Google mogą zostać ustawione od pierwszej wizyty, jeszcze przed wyborem w banerze. Wybór z banera stosujemy od chwili jego dokonania i zapamiętujemy w pamięci przeglądarki (localStorage); zgodę zmienisz w każdej chwili. Po wysłaniu formularza kontaktowego przeglądarka przekazuje Google (Analytics i Ads) zdarzenie „zapytanie” razem z adresem e-mail zahaszowanym w przeglądarce (konwersje rozszerzone), niezależnie od wyboru w banerze; zakres, w jakim Google może użyć tych danych do reklam, wynika ze zgody marketingowej ustawionej w trybie zgody Google.</p>
                 <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>3. Zarządzanie plikami cookies</h2>
                 <p>W wielu przypadkach oprogramowanie służące do przeglądania stron internetowych (przeglądarka internetowa) domyślnie dopuszcza przechowywanie plików cookies w urządzeniu końcowym Użytkownika. Użytkownicy Serwisu mogą dokonać w każdym czasie zmiany ustawień dotyczących plików cookies w swojej przeglądarce.</p>
                 <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>4. Kontakt</h2>
@@ -61,7 +62,8 @@ export default function CookiesContent() {
                   <li><strong>Odpowiedź na zapytanie z formularza kontaktowego</strong> – podstawa: art. 6 ust. 1 lit. b RODO (działania podejmowane na Twoje żądanie przed zawarciem umowy) oraz art. 6 ust. 1 lit. f RODO (nasz prawnie uzasadniony interes polegający na prowadzeniu korespondencji handlowej).</li>
                   <li><strong>Zawarcie i wykonanie umowy o świadczenie usług</strong> – podstawa: art. 6 ust. 1 lit. b RODO.</li>
                   <li><strong>Wypełnienie obowiązków podatkowych i rachunkowych</strong> – podstawa: art. 6 ust. 1 lit. c RODO.</li>
-                  <li><strong>Analityka ruchu w serwisie (Google Analytics)</strong> – podstawa: art. 6 ust. 1 lit. a RODO, czyli Twoja zgoda wyrażona w banerze cookies. Do czasu jej udzielenia nie uruchamiamy skryptów analitycznych.</li>
+                  <li><strong>Analityka ruchu w serwisie (Google Analytics)</strong> – podstawa: art. 6 ust. 1 lit. a RODO, czyli Twoja zgoda wyrażona w banerze cookies. Skrypt Google ładuje się z ustawieniem zgody „odmowa” (w EOG, Wielkiej Brytanii i Szwajcarii): do czasu Twojej zgody nie zapisujemy ciasteczek analitycznych, a Google może otrzymywać zdarzenia bez ciasteczek. Poza tym obszarem zgoda startuje jako udzielona. Szczegóły w punkcie 2.</li>
+                  <li><strong>Pomiar skuteczności reklam Google Ads</strong> (ciasteczko <code>aisc_attr</code> na 90 dni, identyfikator kliknięcia dołączany do zgłoszenia z formularza, konwersje rozszerzone) – podstawa: art. 6 ust. 1 lit. a RODO, czyli zgoda marketingowa wyrażona w banerze cookies.</li>
                   <li><strong>Ustalenie, dochodzenie lub obrona roszczeń</strong> – podstawa: art. 6 ust. 1 lit. f RODO.</li>
                 </ul>
 
@@ -71,10 +73,11 @@ export default function CookiesContent() {
                   <li>Dane związane z realizacją umowy – przez czas jej trwania, a następnie przez okres przedawnienia roszczeń.</li>
                   <li>Dokumentacja księgowa – 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku.</li>
                   <li>Dane z cookies analitycznych – do 14 miesięcy od ostatniej wizyty albo do momentu wycofania zgody.</li>
+                  <li>Ciasteczko <code>aisc_attr</code> (atrybucja reklam) – 90 dni od zapisu albo do momentu wycofania zgody marketingowej.</li>
                 </ul>
 
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Odbiorcy danych i przekazywanie poza EOG</h3>
-                <p>Twoje dane mogą być powierzane podmiotom przetwarzającym je na nasze zlecenie: dostawcy hostingu i infrastruktury serwerowej, dostawcy poczty elektronicznej, biuru rachunkowemu oraz dostawcy narzędzi analitycznych (Google Ireland Limited). Każdy z nich działa na podstawie umowy powierzenia przetwarzania.</p>
+                <p>Twoje dane mogą być powierzane podmiotom przetwarzającym je na nasze zlecenie: dostawcy hostingu i infrastruktury serwerowej, dostawcy poczty elektronicznej (Resend, przez którego wysyłamy zgłoszenia z formularza kontaktowego do naszego zespołu), dostawcy arkuszy i skryptów (Google), w którym zapisujemy zgłoszenia z formularza (także zgłoszenia odrzucone jako spam, razem z treścią wiadomości), biuru rachunkowemu oraz dostawcy narzędzi analitycznych i reklamowych (Google Ireland Limited: Google Analytics i Google Ads). Każdy z nich działa na podstawie umowy powierzenia przetwarzania.</p>
                 <p>W związku z korzystaniem z Google Analytics dane mogą być przekazywane do Stanów Zjednoczonych. Podstawą przekazania jest decyzja Komisji Europejskiej stwierdzająca odpowiedni stopień ochrony (EU–US Data Privacy Framework) lub standardowe klauzule umowne.</p>
 
                 {/* 11.11.2026: darmowe narzędzia (audyt SEO, autorytet domeny, widoczność w AI, kalkulator,
@@ -99,7 +102,7 @@ export default function CookiesContent() {
                   <li><strong>ograniczenia przetwarzania</strong>,</li>
                   <li><strong>przenoszenia danych</strong> do innego administratora,</li>
                   <li><strong>wniesienia sprzeciwu</strong> wobec przetwarzania opartego na prawnie uzasadnionym interesie,</li>
-                  <li><strong>cofnięcia zgody</strong> w dowolnym momencie – bez wpływu na zgodność z prawem przetwarzania dokonanego przed jej cofnięciem. Zgodę na cookies wycofasz w każdej chwili przyciskiem preferencji w rogu strony.</li>
+                  <li><strong>cofnięcia zgody</strong> w dowolnym momencie – bez wpływu na zgodność z prawem przetwarzania dokonanego przed jej cofnięciem. Zgodę na cookies wycofasz w każdej chwili przyciskiem „Ustawienia” w banerze albo linkiem „Ustawienia cookies” w stopce strony.</li>
                 </ul>
                 <p>Jeżeli uznasz, że przetwarzamy Twoje dane niezgodnie z prawem, masz prawo wnieść skargę do organu nadzorczego: <strong>Prezes Urzędu Ochrony Danych Osobowych</strong>, ul. Stawki 2, 00-193 Warszawa.</p>
 
@@ -112,7 +115,8 @@ export default function CookiesContent() {
                 <p>Cookies are IT data, in particular text files, which are stored on the Website User's end device and are intended for using the Website's pages.</p>
                 <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>2. Purposes for which cookies are used</h2>
                 <p>We use cookies for analytical purposes (Google Analytics), marketing (conversion tracking and ad personalization), and to ensure the proper functioning of the website.</p>
-                <p>If you arrive from a Google Ads advert, the click identifier (<code>gclid</code>, <code>gbraid</code> or <code>wbraid</code>) and <code>utm_*</code> parameters are kept for the session and, once you grant marketing consent, in the <code>aisc_attr</code> cookie for 90 days. The identifier is attached to your contact-form enquiry solely to measure advertising effectiveness (including reporting to Google Ads that an enquiry became a client). It is not combined with other data or shared with third parties.</p>
+                <p>If you arrive from a Google Ads advert, the click identifier (<code>gclid</code>, <code>gbraid</code> or <code>wbraid</code>) and <code>utm_*</code> parameters are kept for the session and, once you grant marketing consent, in the <code>aisc_attr</code> cookie for 90 days. The identifier is attached to your contact-form enquiry solely to measure advertising effectiveness (including reporting to Google Ads that an enquiry became a client). Apart from our enquiry spreadsheet and Google (Google Ads, Google Analytics), it is not shared with third parties.</p>
+                <p>How the Google cookie consent works: the Google script (gtag.js) loads on every page in Google Consent Mode. In the European Economic Area, the United Kingdom and Switzerland the analytics and advertising consents default to “denied”: until you decide (and after you refuse) we do not store Google analytics or advertising cookies, but Google may still receive cookieless events (the address of the page you visit, your IP address and browser data). In all other countries the consents start as “granted”, so Google cookies may be set from your first visit, before you make a choice in the banner. We apply your choice in the banner from the moment you make it and remember it in your browser storage (localStorage); you can change it at any time. After you submit the contact form, your browser sends Google (Analytics and Ads) an “enquiry” event together with your e-mail address hashed in the browser (enhanced conversions), regardless of your choice in the banner; the extent to which Google may use this data for advertising follows the marketing consent set in Google Consent Mode.</p>
                 <h2 style={{ marginTop: '2rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.5rem' }}>3. Cookie management</h2>
                 <p>In many cases, the software used for browsing websites (web browser) allows cookies to be stored on the User's end device by default. Website Users can change their cookie settings at any time in their browser.</p>
 
@@ -127,7 +131,8 @@ export default function CookiesContent() {
                   <li><strong>Answering enquiries sent through the contact form</strong> – Art. 6(1)(b) GDPR (steps taken at your request prior to entering into a contract) and Art. 6(1)(f) GDPR (our legitimate interest in conducting business correspondence).</li>
                   <li><strong>Conclusion and performance of a service agreement</strong> – Art. 6(1)(b) GDPR.</li>
                   <li><strong>Compliance with tax and accounting obligations</strong> – Art. 6(1)(c) GDPR.</li>
-                  <li><strong>Website analytics (Google Analytics)</strong> – Art. 6(1)(a) GDPR, your consent given in the cookie banner. Analytics scripts do not run until that consent is granted.</li>
+                  <li><strong>Website analytics (Google Analytics)</strong> – Art. 6(1)(a) GDPR, your consent given in the cookie banner. The Google script loads with consent set to “denied” (in the EEA, the United Kingdom and Switzerland): until you consent we do not store analytics cookies, although Google may still receive cookieless events. Outside that area consent starts as granted. Details in section 2.</li>
+                  <li><strong>Measuring Google Ads performance</strong> (the <code>aisc_attr</code> cookie for 90 days, the click identifier attached to the contact-form enquiry, enhanced conversions) – Art. 6(1)(a) GDPR, your marketing consent given in the cookie banner.</li>
                   <li><strong>Establishing, exercising or defending legal claims</strong> – Art. 6(1)(f) GDPR.</li>
                 </ul>
 
@@ -137,10 +142,11 @@ export default function CookiesContent() {
                   <li>Data related to performing a contract – for its duration and then until claims become time-barred.</li>
                   <li>Accounting records – 5 years from the end of the calendar year in which the tax payment deadline fell.</li>
                   <li>Analytics cookie data – up to 14 months from your last visit, or until consent is withdrawn.</li>
+                  <li>The <code>aisc_attr</code> cookie (ad attribution) – 90 days from being set, or until marketing consent is withdrawn.</li>
                 </ul>
 
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Recipients and transfers outside the EEA</h3>
-                <p>Your data may be entrusted to processors acting on our instructions: hosting and server infrastructure providers, e-mail providers, our accounting office, and the provider of analytics tools (Google Ireland Limited). Each acts under a data processing agreement.</p>
+                <p>Your data may be entrusted to processors acting on our instructions: hosting and server infrastructure providers, e-mail providers (Resend, through which contact-form enquiries are sent to our team), the provider of spreadsheets and scripts (Google), where we store contact-form enquiries (including enquiries rejected as spam, with the message text), our accounting office, and the provider of analytics and advertising tools (Google Ireland Limited: Google Analytics and Google Ads). Each acts under a data processing agreement.</p>
                 <p>Because we use Google Analytics, data may be transferred to the United States on the basis of the European Commission adequacy decision (EU–US Data Privacy Framework) or standard contractual clauses.</p>
 
                 <h3 style={{ marginTop: '2rem', marginBottom: '0.75rem', color: 'var(--w-tusz)', fontSize: '1.2rem' }}>Free tools and newsletter</h3>
@@ -162,7 +168,7 @@ export default function CookiesContent() {
                   <li><strong>restriction of processing</strong>,</li>
                   <li><strong>data portability</strong> to another controller,</li>
                   <li><strong>object</strong> to processing based on legitimate interest,</li>
-                  <li><strong>withdraw consent</strong> at any time, without affecting the lawfulness of processing carried out before withdrawal. Cookie consent can be withdrawn at any moment using the preferences button in the corner of the page.</li>
+                  <li><strong>withdraw consent</strong> at any time, without affecting the lawfulness of processing carried out before withdrawal. Cookie consent can be withdrawn at any moment with the “Settings” button in the banner or the “Cookie settings” link in the page footer.</li>
                 </ul>
                 <p>If you believe we process your data unlawfully, you may lodge a complaint with the supervisory authority: <strong>President of the Personal Data Protection Office</strong> (Prezes Urzędu Ochrony Danych Osobowych), ul. Stawki 2, 00-193 Warsaw, Poland.</p>
 

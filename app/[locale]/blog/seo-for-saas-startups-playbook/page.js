@@ -281,8 +281,8 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               </div>
 
               <h3>On-page SEO checklist for SaaS pages</h3>
-              <p>Every product page and comparison page needs: an H1 that matches the searcher's query phrasing, a meta title under 60 characters with the primary keyword near the front, a meta description that includes a benefit and a CTA, and intent-aligned H2s that answer the questions a buyer would actually ask.</p>
-              <p><strong>Structured data in 2026 – what changed.</strong> Two of the most commonly recommended schema types no longer produce anything in Google Search. HowTo rich results were removed from mobile in August 2023 and desktop in September 2023, and the documentation has since been retired entirely. FAQ rich results were deprecated on 7 May 2026, ending the last remaining eligibility for government and health sites; Search Console reporting and Rich Results Test support end in June 2026, and Search Console API support ends in August 2026. If you have automated dashboards or BigQuery exports pulling FAQ appearance data, update those calls now.</p>
+              <p>Every product page and comparison page needs: an H1 that matches the searcher's query phrasing, a meta title of about 55–60 characters (Google truncates by pixel width, not by character count) with the primary keyword near the front, a meta description that includes a benefit and a CTA, and intent-aligned H2s that answer the questions a buyer would actually ask.</p>
+              <p><strong>Structured data in 2026 – what changed.</strong> Two of the most commonly recommended schema types no longer produce anything in Google Search. HowTo rich results were removed from mobile in August 2023 and desktop in September 2023, and the documentation has since been retired entirely. FAQ rich results were deprecated on 7 May 2026, ending the last remaining eligibility for government and health sites, and Google removed the FAQ documentation in June 2026 (see Google&apos;s documentation updates log). Secondary sources report that Search Console reporting and Rich Results Test support for FAQ ended in June 2026 and Search Console API support in August 2026; Google&apos;s own pages do not confirm those two dates. If you have automated dashboards or BigQuery exports pulling FAQ appearance data, update those calls now.</p>
               <p>What this means practically:</p>
               <ul>
                 <li><strong>Do not add <code>FAQPage</code> or <code>HowTo</code> markup expecting a SERP effect.</strong> Neither is a ranking factor and neither renders a rich result. <code>FAQPage</code> remains a valid Schema.org type and existing markup can stay in place without harm – Google has stated that unused structured data does not cause problems – but it is no longer a reason to restructure a page.</li>
@@ -293,7 +293,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               <h3>Docs strategy and GitBook</h3>
               <p>Documentation is one of the most underrated ranking assets in SaaS SEO. A well-structured docs site ranks for long-tail feature queries that no blog post would target. Use GitBook or a similar docs platform that outputs clean, crawlable HTML. Set up a dedicated subdomain (docs.yourproduct.com) or subdirectory (/docs/) and include it in your XML sitemap. A subdirectory is generally the safer default for a young domain, since it consolidates signals on one host. Index docs pages that answer real user questions; noindex changelog pages and internal admin docs. Superseded version pages need a deliberate decision rather than a blanket rule – see the canonicalization section below.</p>
-              <p>There is a real shift in how software buyers discover tools, and it is worth planning for. G2's 2026 AI Search Insight Report – a survey of 1,076 B2B decision makers fielded in March 2026 – found that B2B buyers increasingly begin research with AI assistants rather than with Google, and that AI-surfaced information regularly leads them to shortlist vendors they had not previously considered. The report's central finding is about trust: buyers act on AI recommendations but look for corroboration, and third-party review platforms are the signal they check most. The operational takeaway is therefore not "add more schema" but "make sure your product's claims are consistent and verifiable across your own docs, your comparison pages, and your review profiles," because that is the corpus these systems draw on.</p>
+              <p>There is a real shift in how software buyers discover tools, and it is worth planning for. <a href="https://learn.g2.com/g2-2026-ai-search-insight-report" target="_blank" rel="noopener noreferrer">G2's 2026 AI Search Insight Report</a> – a survey of 1,076 B2B decision makers fielded in March 2026 – found that B2B buyers increasingly begin research with AI assistants rather than with Google, and that AI-surfaced information regularly leads them to shortlist vendors they had not previously considered. The report's central finding is about trust: buyers act on AI recommendations but look for corroboration, and third-party review platforms are the signal they check most. The operational takeaway is therefore not "add more schema" but "make sure your product's claims are consistent and verifiable across your own docs, your comparison pages, and your review profiles," because that is the corpus these systems draw on.</p>
 
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
@@ -425,7 +425,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                   <tbody>
                     <tr><td>Founder-led + tools only</td><td>€100–300 (tooling)</td><td>One SEO tool seat, GSC and GA4. Enough for technical fixes and 2–3 BOFU pages a month if a founder has real hours to give.</td></tr>
                     <tr><td>Freelancer or fractional SEO</td><td>€400–1,200</td><td>Strategy, technical audit, and briefs. You still write and ship the pages.</td></tr>
-                    <tr><td>Agency retainer</td><td>from €450</td><td>Audit, content production, link acquisition, and reporting. Ships pages without your team writing them.</td></tr>
+                    <tr><td>Agency retainer</td><td>from €450</td><td>Our SEO Standard (€450 net per month): up to 20 keywords, 2 pieces of content and 2 links per month, audit included. Conversion optimisation (CRO) is part of SEO Premium at €590 net.</td></tr>
                     <tr><td>Senior in-house hire</td><td>€2,500–5,500 fully loaded</td><td>One person, full-time. Deepest product context, but no content or link capacity without additional budget.</td></tr>
                   </tbody>
                 </table>
@@ -487,7 +487,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               {/* ===== SECTION: How AI SEO COMPANY Executes ===== */}
               <h2 id="how-ai-seo-company-executes-this-playbook-for-saas-clients">How AI SEO COMPANY executes this playbook for SaaS clients</h2>
-              <p>AI SEO COMPANY's approach to SaaS SEO follows the same four-phase sequence described in this guide: technical foundation, product-shaped pages, programmatic scale with initial link plays, and content clusters with CRO. The difference is that the sequence runs against a fixed monthly retainer rather than ad hoc internal effort, which means the parallel timeline from the roadmap section is the default rather than the exception.</p>
+              <p>AI SEO COMPANY's approach to SaaS SEO follows the same four-phase sequence described in this guide: technical foundation, product-shaped pages, programmatic scale with initial link plays, and content clusters with CRO (CRO is part of SEO Premium). The difference is that the sequence runs against a fixed monthly retainer rather than ad hoc internal effort, which means the parallel timeline from the roadmap section is the default rather than the exception.</p>
               <p>What a typical first quarter looks like:</p>
               <ul>
                 <li><strong>Weeks 1–2:</strong> <Link href="/audyt-seo">Technical SEO audit</Link> – crawl, indexation, Core Web Vitals, canonicalization, and tracking setup. Delivered as a prioritized fix list, not a PDF report.</li>
@@ -515,7 +515,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               {/* ===== SECTION: CTA Section ===== */}
               <h2 id="ai-seo-company-seo-execution-for-saas-teams-that-need-results-not-reports">AI SEO COMPANY: SEO execution for SaaS teams that need results, not reports</h2>
-              <p>If your SaaS startup needs organic growth but does not have the internal team to execute a full SEO program, <Link href="/">AI SEO COMPANY</Link> runs the playbook described in this guide as a managed service. The engagement starts with a technical audit and keyword map, moves to BOFU page production and link plays, and scales into programmatic content and CRO – on a fixed monthly retainer with transparent reporting on the metrics that matter: qualified leads and sign-ups from organic, not impressions.</p>
+              <p>If your SaaS startup needs organic growth but does not have the internal team to execute a full SEO program, <Link href="/">AI SEO COMPANY</Link> runs the playbook described in this guide as a managed service. The engagement starts with a technical audit and keyword map, moves to BOFU page production and link plays, and scales into programmatic content and, in the SEO Premium package, CRO – on a fixed monthly retainer with transparent reporting on the metrics that matter: qualified leads and sign-ups from organic, not impressions.</p>
               <p>What sets the approach apart:</p>
               <ul>
                 <li>Product-led SEO, not content-led – the page types that convert are built first</li>
@@ -523,7 +523,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 <li>Reporting on pipeline, not on traffic</li>
                 <li>CEE-based pricing that makes managed SEO accessible to startups that would be priced out by a Western European or North American agency</li>
               </ul>
-              <p>Start with a free technical audit: <Link href="/audyt-seo">request an SEO audit</Link> and we will show you exactly what is blocking your organic growth and what the first 90 days would look like.</p>
+              <p>Start with an SEO audit (from €350 net, included in every SEO package): <Link href="/audyt-seo">request an SEO audit</Link> and we will show you exactly what is blocking your organic growth and what the first 90 days would look like.</p>
 
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
@@ -538,6 +538,11 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 <li><Link href="/blog/analiza-konkurencji-seo-przewodnik">SEO Competitor Analysis: A Step-by-Step Guide</Link></li>
                 <li><Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">SEO Canonical Tag Guide 2026</Link></li>
                 <li><Link href="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista">B2B Link Building: Strategies & Checklist</Link></li>
+                <li><a href="https://developers.google.com/search/updates" target="_blank" rel="noopener noreferrer">Google Search Central – Documentation updates (FAQ rich results, read 2026-11-18)</a></li>
+                <li><a href="https://learn.g2.com/g2-2026-ai-search-insight-report" target="_blank" rel="noopener noreferrer">G2 – 2026 AI Search Insight Report (read 2026-11-18)</a></li>
+                <li><a href="https://www.canva.com/templates/" target="_blank" rel="noopener noreferrer">Canva – Templates (example of use-case pages)</a></li>
+                <li><a href="https://webflow.com/integrations" target="_blank" rel="noopener noreferrer">Webflow – Integrations (example of integration pages)</a></li>
+                <li><a href="https://docs.stripe.com/" target="_blank" rel="noopener noreferrer">Stripe – Documentation (example of docs as a ranking asset)</a></li>
                 <li><Link href="/cennik-pozycjonowania">SEO Pricing – AI SEO COMPANY</Link></li>
               </ul>
 
@@ -545,7 +550,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 locale={locale} 
                 currentSlug="/blog/seo-for-saas-startups-playbook" 
                 customCtaTitleEn="Ready to build your SaaS SEO engine?"
-                customCtaTextEn="We will run a free technical audit and show you exactly which BOFU pages to build first for your product."
+                customCtaTextEn="We will run an SEO audit (from €350 net, included in every SEO package) and show you exactly which BOFU pages to build first for your product."
               />
             </div>
           </Reveal>

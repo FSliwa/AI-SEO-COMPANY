@@ -82,7 +82,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
             }}>
               {lang === 'pl' 
                 ? <>Techniczny <span style={{ fontWeight: 'bold' }}>audyt SEO</span> strony lub sklepu w 3–5 dni roboczych: ponad 50 czynników, każdy błąd z priorytetem i instrukcją naprawy dla programisty. <span style={{ color: 'var(--color-cta)' }}>Bez PDF-a na 90 stron – lista napraw, którą ktoś przeczyta.</span> Wycena w 24 h, bez handlowca.</>
-                : <>Discover the real reasons for your lack of visibility. As top <strong>search engine optimization consultants</strong> providing expert <strong>search engine optimisation consultancy</strong>, <span style={{ color: 'var(--color-cta)' }}>we verify over 50 critical technical factors blocking your Google potential</span>.</>}
+                : <>Discover the real reasons for your lack of visibility. As <strong>search engine optimization consultants</strong> providing expert <strong>search engine optimisation consultancy</strong>, <span style={{ color: 'var(--color-cta)' }}>we verify over 50 critical technical factors blocking your Google potential</span>.</>}
             </p>
             
             <div className="hero-cta-row" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
@@ -167,7 +167,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
                 Audyt SEO: cena i warianty
               </h2>
               <p style={tekstSekcji}>
-                Cena zależy od tego, czy potrzebujesz samej diagnozy, czy diagnozy razem z wdrożeniem. Trzy warianty, w których robimy audyt, zestawiliśmy w tabeli. Na rynku audyt SEO kosztuje zwykle od 500 do 5 000 zł (cenniki agencji SEO, odczyt 5.11.2026). Przed wyceną bezpłatnie oceniamy stronę i zakres, a pełny audyt z raportem jest płatny według tabeli.
+                Cena zależy od tego, czy potrzebujesz samej diagnozy, czy diagnozy razem z wdrożeniem. Trzy warianty, w których robimy audyt SEO, zestawiliśmy w tabeli. Przed wyceną bezpłatnie oceniamy stronę i zakres, a pełny audyt z raportem jest płatny według tabeli.
               </p>
               <CompareTable
                 id="warianty-audytu"
