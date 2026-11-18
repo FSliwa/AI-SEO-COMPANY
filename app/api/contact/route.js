@@ -90,13 +90,18 @@ async function logRejected(body, reason, ip) {
 }
 
 export async function POST(request) {
+  // Wersja niemiecka (18.11.2026): formularz z /de wysyła lang: 'de' (page_path też zaczyna się od /de).
+  // Tylko dla DE: komunikaty błędów po niemiecku, znacznik [DE] w temacie maila, pole lang w arkuszu.
+  // Dla PL i EN odpowiedzi i treść maila bez zmian.
+  let jezykDe = false;
   try {
     const body = await request.json();
+    jezykDe = body.lang === 'de' || /^\/de(\/|$)/.test(String(body.page_path || ''));
     const { name, email, service, message } = body;
 
     if (!name || !email) {
       return NextResponse.json(
-        { error: 'Brak wymaganych pól formularza.' },
+        { error: jezykDe ? 'Bitte füllen Sie die Pflichtfelder aus.' : 'Brak wymaganych pól formularza.' },
         { status: 400 }
       );
     }
@@ -117,11 +122,11 @@ export async function POST(request) {
 
     const emailNorm = String(email).trim().toLowerCase();
     if (!EMAIL_RE.test(emailNorm) || DISPOSABLE.includes(emailNorm.split('@')[1])) {
-      return NextResponse.json({ error: 'Podaj poprawny, stały adres e-mail.' }, { status: 400 });
+      return NextResponse.json({ error: jezykDe ? 'Bitte geben Sie eine gültige, dauerhafte E-Mail-Adresse an.' : 'Podaj poprawny, stały adres e-mail.' }, { status: 400 });
     }
     const ip = (request.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
     if (rateLimited(ip)) {
-      return NextResponse.json({ error: 'Zbyt wiele zgłoszeń. Spróbuj ponownie za kilka minut.' }, { status: 429 });
+      return NextResponse.json({ error: jezykDe ? 'Zu viele Anfragen. Bitte versuchen Sie es in einigen Minuten erneut.' : 'Zbyt wiele zgłoszeń. Spróbuj ponownie za kilka minut.' }, { status: 429 });
     }
 
     const attr = atrybucja(body);
@@ -155,7 +160,7 @@ export async function POST(request) {
     const skadEtykieta = SKAD_KODY.get(attr.skad_o_nas_wiesz) || '';
     // A3b (PLAN-v2 6.17): zgłoszenie z trybu zapasowego sprawdzarki AI trzeba obsłużyć
     // ręcznie w 24 h robocze (obietnica na stronie), więc odróżnia się już w temacie.
-    const tematPrefix = service === 'ai_check' ? '[Sprawdzarka AI – tryb zapasowy]' : '[Formularz Wyceny]';
+    const tematPrefix = (service === 'ai_check' ? '[Sprawdzarka AI – tryb zapasowy]' : '[Formularz Wyceny]') + (jezykDe ? ' [DE]' : '');
 
     // Trwały ślad leada MUSI powstać niezależnie od poczty. Wcześniej cała
     // trasa wisiała na jednym `await resend.emails.send`: gdy Resend zwrócił
@@ -170,7 +175,7 @@ export async function POST(request) {
         const r = await fetch(process.env.LEADS_WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...attr, lead_id: leadId, name: safe(name, 120), email: emailNorm, service: safe(service, 40), message: safe(message, 2000), status: 'new' }),
+          body: JSON.stringify({ ...attr, lead_id: leadId, name: safe(name, 120), email: emailNorm, service: safe(service, 40), message: safe(message, 2000), status: 'new', ...(jezykDe ? { lang: 'de' } : {}) }),
           signal: AbortSignal.timeout(8000),
         });
         // Apps Script zwraca 200 także przy odmowie (zły klucz, strona
@@ -213,7 +218,7 @@ export async function POST(request) {
       if (!zapisany) {
         // Oba kanały padły – dopiero teraz uczciwie mówimy o awarii.
         return NextResponse.json(
-          { error: `Nie udało się wysłać wiadomości (${error.message || 'błąd API'}). Skontaktuj się bezpośrednio: kontakt@ai-seo-company.pl` },
+          { error: jezykDe ? 'Die Nachricht konnte nicht gesendet werden. Bitte schreiben Sie uns direkt: kontakt@ai-seo-company.pl' : `Nie udało się wysłać wiadomości (${error.message || 'błąd API'}). Skontaktuj się bezpośrednio: kontakt@ai-seo-company.pl` },
           { status: 500 }
         );
       }
@@ -225,7 +230,7 @@ export async function POST(request) {
   } catch (error) {
     console.error('Błąd podczas przetwarzania zapytania:', error);
     return NextResponse.json(
-      { error: 'Wystąpił błąd serwera. Spróbuj ponownie później.' },
+      { error: jezykDe ? 'Es ist ein Serverfehler aufgetreten. Bitte versuchen Sie es später erneut.' : 'Wystąpił błąd serwera. Spróbuj ponownie później.' },
       { status: 500 }
     );
   }

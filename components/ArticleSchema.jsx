@@ -63,7 +63,7 @@ export default function ArticleSchema({
     headline: resolvedTitle,
     description: resolvedDesc,
     image: resolvedImage ? `${BASE}${resolvedImage}` : `${BASE}/og-image.jpg`,
-    inLanguage: isEn ? 'en' : 'pl',
+    inLanguage: locale === 'de' ? 'de' : isEn ? 'en' : 'pl',
     // A named person carries more weight than an organisation for advisory
     // content, which is what Google's rater guidelines look for.
     // Autor byl bytem-sierota: Person bez @id, url i sameAs, a strona autora nie
@@ -74,8 +74,8 @@ export default function ArticleSchema({
       '@type': 'Person',
       '@id': `${BASE}/o-nas#filip-sliwa`,
       name: 'Filip Śliwa',
-      url: isEn ? `${BASE}/en/about-us` : `${BASE}/o-nas`,
-      jobTitle: isEn ? 'SEO specialist' : 'Specjalista SEO',
+      url: locale === 'de' ? `${BASE}/de/ueber-uns` : isEn ? `${BASE}/en/about-us` : `${BASE}/o-nas`,
+      jobTitle: locale === 'de' ? 'SEO-Spezialist' : isEn ? 'SEO specialist' : 'Specjalista SEO',
       worksFor: { '@id': `${BASE}/#organization` }
     },
     publisher: {

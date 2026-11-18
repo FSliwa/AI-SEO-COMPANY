@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>SEO Checkliste: 50 Punkte</title>
+<!-- Quelle von public/pliki/de/seo-checkliste.pdf (Seite /de/tools/seo-checkliste, 18.11.2026). Erzeugt von scripts/szablony/pdf-de.mjs
+     aus lib/szablony/checklista-seo.de.js (PUNKTY_DE). Nicht von Hand bearbeiten: Änderungen in der Datendatei vornehmen und neu erzeugen. -->
+<style>
+@page { size: A4; margin: 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1D1D1F; font-size: 9pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.naglowek { font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6E73; padding-bottom: 2.5mm; border-bottom: 0.6pt solid #E5E1DC; margin-bottom: 6mm; }
+.naglowek b { color: #D85A30; }
+h1 { font-size: 20pt; line-height: 1.15; margin: 0 0 2mm; letter-spacing: -0.01em; }
+.pod { font-size: 9.5pt; color: #48484A; margin: 0 0 4.5mm; }
+h2 { font-size: 13pt; margin: 0 0 2mm; padding-bottom: 1.6mm; border-bottom: 1.6pt solid #D85A30; display: inline-block; }
+h3 { font-size: 10.5pt; margin: 3mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.2pt solid #D85A30; display: inline-block; }
+.pola { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; margin: 0 0 3mm; }
+.pole { display: flex; align-items: flex-end; gap: 2mm; font-size: 8.5pt; color: #48484A; }
+.pole span { white-space: nowrap; }
+.pole i { flex: 1; border-bottom: 0.6pt solid #B8B2AB; height: 5mm; }
+.baza { display: grid; grid-template-columns: 1fr; gap: 2.5mm; }
+ol.kroki { margin: 0; padding-left: 5mm; }
+ol.kroki li { margin: 0 0 1.4mm; }
+.dwie { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+ul.leg { list-style: none; margin: 0; padding: 0; }
+ul.leg li { margin: 0 0 1.6mm; }
+.box { display: inline-block; width: 3mm; height: 3mm; border: 1pt solid #D85A30; border-radius: 0.5mm; vertical-align: -0.4mm; margin-right: 1.2mm; background: #fff; }
+.prio { display: inline-block; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.4mm 1.4mm; border-radius: 1mm; border: 0.6pt solid #E5E1DC; color: #6E6E73; margin-right: 1mm; }
+.prio.w { color: #fff; background: #D85A30; border-color: #D85A30; }
+.prio.s { color: #D85A30; border-color: #D85A30; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 0.6pt solid #E5E1DC; padding: 1.4mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: #F7F5F2; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.04em; color: #48484A; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+td.c { text-align: center; }
+table.podsum td { height: 6.4mm; vertical-align: middle; padding-top: 0.8mm; padding-bottom: 0.8mm; }
+table.podsum tr.razem td { font-weight: 700; background: #FBFAF8; }
+.obszar { break-before: page; page-break-before: always; }
+.opis { margin: 1mm 0 3mm; color: #48484A; font-size: 8.5pt; }
+.ile { color: #D85A30; font-weight: 700; white-space: nowrap; }
+table.lista td { padding: 1mm 1.4mm; }
+.nr { font-weight: 700; color: #D85A30; font-size: 8.5pt; }
+.pk { font-weight: 700; font-size: 8.5pt; line-height: 1.26; }
+.jak { font-size: 7.5pt; color: #48484A; margin-top: 0.4mm; line-height: 1.26; }
+.jak b { font-weight: 700; color: #1D1D1F; }
+.st { font-size: 7.2pt; line-height: 1.4; white-space: nowrap; }
+.st div { margin: 0 0 0.2mm; }
+.st .box { width: 2.6mm; height: 2.6mm; }
+.notatki { }
+code { font-family: inherit; font-size: 7.5pt; background: #F7F5F2; padding: 0 0.6mm; border-radius: 0.6mm; }
+.wynik { margin: 3mm 0 0; font-size: 8.5pt; display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+.wynik .marka { font-size: 7pt; color: #6E6E73; white-space: nowrap; }
+.wynik .marka b { color: #D85A30; letter-spacing: 0.06em; }
+footer { margin-top: 7mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; font-size: 7.6pt; color: #6E6E73; }
+footer p { margin: 0 0 0.8mm; }
+footer strong { color: #1D1D1F; }
+.sek { margin: 0 0 3.5mm; }
+</style>
+</head>
+<body>
+<div class="naglowek"><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</div>
+<h1>SEO Checkliste: 50 Punkte</h1>
+<p class="pod">Technische Grundlagen, On-Page SEO, lokales SEO, KI-Tauglichkeit und Messung. Jeder Punkt hat eine Priorität und eine Möglichkeit zur Überprüfung. Stand: November 2026.</p>
+<div class="pola sek"><div class="pole"><span>Website (URL)</span><i></i></div><div class="pole"><span>Datum der Prüfung</span><i></i></div><div class="pole"><span>Geprüft von</span><i></i></div><div class="pole"><span>Nächste Prüfung</span><i></i></div></div>
+<div class="sek">
+  <h3>So nutzen Sie diese Vorlage</h3>
+  <ol class="kroki"><li><strong>Ausgangswert festhalten:</strong> Klicks ohne Markenanfragen und Kundenanfragen (Tabelle am Ende dieser Seite).</li><li><strong>Zugänge sammeln:</strong> Search Console, GA4, Google Unternehmensprofil, CMS, robots.txt. Fehlende Zugänge sind Ihr erster Befund.</li><li><strong>Bereiche A–E der Reihe nach durchgehen</strong> und jeden Punkt als OK, Handlungsbedarf oder n. z. markieren.</li><li><strong>Das Problem in den Notizen beschreiben:</strong> die URL und das konkrete Problem, z. B. „/kontakt: keine H1“.</li><li><strong>Reihenfolge festlegen:</strong> hohe Priorität zuerst. Geben Sie jedem offenen Punkt eine verantwortliche Person und einen Termin.</li><li><strong>Erneut prüfen</strong> nach den Korrekturen und die Übersicht ausfüllen. Die ganze Liste jedes Quartal wiederholen.</li></ol>
+</div>
+<div class="sek">
+  <h3>Status und Prioritäten</h3>
+  <div class="dwie"><ul class="leg"><li><span class="box"></span><strong>OK</strong> – der Punkt ist erfüllt</li><li><span class="box"></span><strong>Handeln</strong> – Handlungsbedarf: URL und Problem notieren</li><li><span class="box"></span><strong>n. z.</strong> – trifft auf Ihr Unternehmen nicht zu; aus der Wertung lassen</li></ul><ul class="leg"><li><span class="prio w">hoch</span> blockiert die Sichtbarkeit in Google oder Maps oder die Messung; zuerst erledigen</li><li><span class="prio s">mittel</span> bremst Ergebnisse, aber die Website funktioniert und ist sichtbar</li><li><span class="prio n">niedrig</span> schleift Details; zusammen mit anderen Änderungen erledigen</li></ul></div>
+</div>
+<div class="sek">
+  <h3>Übersicht der Prüfung</h3>
+  <table class="podsum">
+    <colgroup><col style="width:44mm"><col style="width:18mm"><col style="width:18mm"><col style="width:26mm"><col style="width:16mm"><col></colgroup>
+    <thead><tr><th>Bereich</th><th>Punkte</th><th>OK</th><th>Handlungsbedarf</th><th>n. z.</th><th>Offene Punkte mit hoher Priorität</th></tr></thead>
+    <tbody><tr><td>A. Technische Grundlagen</td><td class="c">10</td><td></td><td></td><td></td><td></td></tr><tr><td>B. On-Page SEO</td><td class="c">14</td><td></td><td></td><td></td><td></td></tr><tr><td>C. Lokales SEO</td><td class="c">9</td><td></td><td></td><td></td><td></td></tr><tr><td>D. KI-Tauglichkeit</td><td class="c">8</td><td></td><td></td><td></td><td></td></tr><tr><td>E. Messung</td><td class="c">9</td><td></td><td></td><td></td><td></td></tr><tr class="razem"><td>Gesamt</td><td class="c">50</td><td></td><td></td><td></td><td></td></tr></tbody>
+  </table>
+</div>
+<div>
+  <h3>Ausgangswert (Punkt E9)</h3>
+  <div class="baza"><div class="pole"><span>Klicks ohne Markenanfragen (Search Console, letzter Monat)</span><i></i></div><div class="pole"><span>Kundenanfragen (GA4 und Postfach oder CRM, letzter Monat)</span><i></i></div><div class="pole"><span>Datum der Erfassung</span><i></i></div></div>
+</div>
+
+<section class="obszar">
+  <h2>A. Technische Grundlagen</h2>
+  <p class="opis">Ob Google Ihre Seiten erreicht, indexiert und auf dem Smartphone gut darstellt. Für eine tiefere technische Prüfung nutzen Sie den SEO Audit auf ai-seo-company.pl. <span class="ile">10 Punkte</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:99mm"><col style="width:17mm"><col style="width:17mm"><col></colgroup>
+    <thead><tr><th>Nr.</th><th>Punkt und wie Sie ihn prüfen</th><th>Priorität</th><th>Status</th><th>Notizen · Verantwortliche · Termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">A1</td>
+        <td><div class="pk">Die Website läuft über HTTPS, und Adressen mit http:// leiten auf https:// weiter</div><div class="jak"><b>So prüfen Sie es:</b> Geben Sie die Adresse mit http:// ein und prüfen Sie, ob der Browser ohne Warnung auf https:// wechselt.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A2</td>
+        <td><div class="pk">Es ist nur eine Version der Domain erreichbar (mit oder ohne www), und die andere leitet mit einer einzigen dauerhaften Weiterleitung (301 oder 308) auf sie um</div><div class="jak"><b>So prüfen Sie es:</b> Öffnen Sie beide Versionen. Beide müssen auf derselben Seite enden, ohne Weiterleitungskette.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A3</td>
+        <td><div class="pk">Die robots.txt sperrt keine Seiten, die in Google erscheinen sollen</div><div class="jak"><b>So prüfen Sie es:</b> Öffnen Sie ihredomain.de/robots.txt. Suchen Sie „Disallow: /“ und Regeln für Verzeichnisse mit Angebot oder Blog.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A4</td>
+        <td><div class="pk">Wichtige Seiten tragen kein noindex</div><div class="jak"><b>So prüfen Sie es:</b> Search Console → URL-Prüfung für Startseite und Leistungsseiten: Die Indexierung muss erlaubt sein.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A5</td>
+        <td><div class="pk">Die XML-Sitemap enthält nur kanonische Adressen, die funktionieren, und ist in der robots.txt eingetragen</div><div class="jak"><b>So prüfen Sie es:</b> Öffnen Sie sitemap.xml und robots.txt (Zeile „Sitemap:“). Entfernen Sie Weiterleitungen, 404-Fehler und Seiten mit noindex aus der Sitemap. Ändern Sie lastmod nur bei einer wesentlichen Änderung des Inhalts.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A6</td>
+        <td><div class="pk">Jede Seite hat ein Canonical-Tag, das auf sich selbst oder auf die richtige Version zeigt, und Sprachversionen verbindet ein gegenseitiges hreflang</div><div class="jak"><b>So prüfen Sie es:</b> Quelltext der Seite (<code>rel="canonical"</code>) oder der kostenlose SEO Audit. Canonical ist für Google ein Signal und kein Befehl, schauen Sie daher in der Search Console (URL-Prüfung) nach, welche Adresse es gewählt hat. Bei mehreren Sprachen verweist jede Version auf sich und auf die übrigen; sinnvoll ist ein Eintrag x-default.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A7</td>
+        <td><div class="pk">Interne Links führen nicht auf 404-Seiten und nicht über Weiterleitungen</div><div class="jak"><b>So prüfen Sie es:</b> Crawler oder der Bericht „Seiten“ in der Search Console. Korrigieren Sie den Link an der Quelle, nicht nur die Weiterleitung.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A8</td>
+        <td><div class="pk">Die Website ist auf dem Smartphone bequem nutzbar: ohne horizontales Scrollen, mit lesbarem Text und großen Buttons</div><div class="jak"><b>So prüfen Sie es:</b> Öffnen Sie Startseite, eine Leistungsseite und den Kontakt auf dem Smartphone. Senden Sie das Formular von Anfang bis Ende ab.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A9</td>
+        <td><div class="pk">Core Web Vitals im grünen Bereich: LCP bis 2,5 s, INP bis 200 ms, CLS bis 0,1</div><div class="jak"><b>So prüfen Sie es:</b> Search Console → Core Web Vitals (Daten von Nutzern, 75. Perzentil der Besuche). Lighthouse dient der Suche nach Ursachen.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">A10</td>
+        <td><div class="pk">Adressen (URLs) sind kurz und lesbar: Wörter statt zufälliger Kennungen</div><div class="jak"><b>So prüfen Sie es:</b> Sehen Sie die Adressen in der Sitemap durch. Ändern Sie funktionierende Adressen nie ohne 301-Weiterleitungen.</div></td>
+        <td><span class="prio n">niedrig</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik"><span>Wertung des Bereichs: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>Handlungsbedarf ____ &nbsp; <span class="box"></span>n. z. ____</span></p>
+  <footer><p>Aktuelle Fassung dieser Checkliste mit Beispiel und Quellen: <strong>www.ai-seo-company.pl/de/tools/seo-checkliste</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen</p></footer>
+</section>
+
+<section class="obszar">
+  <h2>B. On-Page SEO</h2>
+  <p class="opis">Titel, Beschreibungen, Überschriften, Inhalt, interne Links und Bilder: ob jede Seite klar sagt, worum es geht. <span class="ile">14 Punkte</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:99mm"><col style="width:17mm"><col style="width:17mm"><col></colgroup>
+    <thead><tr><th>Nr.</th><th>Punkt und wie Sie ihn prüfen</th><th>Priorität</th><th>Status</th><th>Notizen · Verantwortliche · Termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">B1</td>
+        <td><div class="pk">Jede Seite hat einen eigenen Titel, der ihren Inhalt beschreibt</div><div class="jak"><b>So prüfen Sie es:</b> Crawler oder kostenloser Audit: Titel sortieren, Duplikate und fehlende Titel finden.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B2</td>
+        <td><div class="pk">Der Titel beginnt mit der wichtigsten Information, wiederholt keine Wörter, und der Markenname steht am Ende</div><div class="jak"><b>So prüfen Sie es:</b> Prüfen Sie das Ergebnis in Google. Eine Zeichengrenze gibt es nicht, aber Google kürzt lange Titel auf die Bildschirmbreite, setzen Sie das Keyword also nicht ans Ende. Unser Audit warnt ab 60 Zeichen.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B3</td>
+        <td><div class="pk">Wichtige Seiten haben eine eindeutige Meta-Beschreibung, die den Inhalt zusammenfasst und zum Klicken anregt</div><div class="jak"><b>So prüfen Sie es:</b> Crawler: leere und doppelte Beschreibungen finden. Google zeigt manchmal einen anderen Ausschnitt der Seite, die Beschreibung ist also ein Vorschlag.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B4</td>
+        <td><div class="pk">Die Seite hat eine H1-Überschrift, die sagt, worum es geht, und das Haupt-Keyword enthält</div><div class="jak"><b>So prüfen Sie es:</b> SEO-Erweiterung im Browser oder Quelltext der Seite: h1-Tags zählen. Google verlangt keine einzelne H1, aber sie ordnet die Seite.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B5</td>
+        <td><div class="pk">H2- und H3-Überschriften gliedern den Inhalt in Abschnitte, die Fragen der Kunden beantworten</div><div class="jak"><b>So prüfen Sie es:</b> Lesen Sie nur die Überschriften. Reichen sie, um zu verstehen, was auf der Seite steht?</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B6</td>
+        <td><div class="pk">Der Inhalt beantwortet die Intention des Keywords: bei einer Leistung Umfang, Preis und Ablauf, bei einer Frage eine konkrete Antwort</div><div class="jak"><b>So prüfen Sie es:</b> Geben Sie das Keyword bei Google ein und vergleichen Sie den Typ der Seiten in den Top 10 mit Ihrer Seite. Ergänzen Sie, was dort fehlt: eigene Daten, ein Beispiel, einen Preis.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B7</td>
+        <td><div class="pk">Der erste Absatz beantwortet die Hauptfrage direkt und enthält das Haupt-Keyword</div><div class="jak"><b>So prüfen Sie es:</b> Lesen Sie nur den ersten Absatz. Weiß der Kunde schon, was Sie anbieten und wo?</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B8</td>
+        <td><div class="pk">Jede wichtige Seite hat ihr eigenes Haupt-Keyword, und zwei Seiten konkurrieren nicht um dasselbe Keyword (Kannibalisierung)</div><div class="jak"><b>So prüfen Sie es:</b> Tabelle: Keyword → eine Adresse. Search Console → Leistung → Filter für Suchanfragen → Tab „Seiten“: Mehrere Adressen für ein Keyword erfordern eine Entscheidung.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B9</td>
+        <td><div class="pk">Der Inhalt ist aktuell: Preise, Namen der Leistungen, Kontaktdaten und Daten</div><div class="jak"><b>So prüfen Sie es:</b> Sehen Sie Leistungsseiten und Preisliste durch. Zeigen Sie bei Artikeln das Datum der Aktualisierung.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B10</td>
+        <td><div class="pk">Jede wichtige Seite hat interne Links von anderen Seiten (Menü, Text, Footer)</div><div class="jak"><b>So prüfen Sie es:</b> Crawler: Seiten ohne eingehende Links und mehr als 3 Klicks von der Startseite entfernt finden. Ergänzen Sie einen Link von einer thematisch nahen Seite.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B11</td>
+        <td><div class="pk">Der Linktext beschreibt die Zielseite („SEO Audit der Website“, nicht „hier klicken“)</div><div class="jak"><b>So prüfen Sie es:</b> Sehen Sie die Links im Text der wichtigsten Seiten durch.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B12</td>
+        <td><div class="pk">Bilder haben einen beschreibenden Alternativtext (alt), der zur Seite passt, ohne Keyword-Stuffing</div><div class="jak"><b>So prüfen Sie es:</b> Crawler: Bilder ohne alt. Beschreiben Sie das Bild so, wie Sie es einer Person beschreiben, die es nicht sieht.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B13</td>
+        <td><div class="pk">Bilddateien haben beschreibende Namen, ein modernes Format (WebP oder AVIF) und gesetzte Abmessungen</div><div class="jak"><b>So prüfen Sie es:</b> Prüfen Sie Dateinamen in der Mediathek und den Bericht von Lighthouse.</div></td>
+        <td><span class="prio n">niedrig</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">B14</td>
+        <td><div class="pk">Es ist sichtbar, wer hinter der Website steht: Firmenname, Kontakt, Autor bei Fachtexten</div><div class="jak"><b>So prüfen Sie es:</b> Prüfen Sie Footer, die Seite „Über uns“ und die Unterschriften der Artikel.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik"><span>Wertung des Bereichs: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>Handlungsbedarf ____ &nbsp; <span class="box"></span>n. z. ____</span></p>
+  <footer><p>Aktuelle Fassung dieser Checkliste mit Beispiel und Quellen: <strong>www.ai-seo-company.pl/de/tools/seo-checkliste</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen</p></footer>
+</section>
+
+<section class="obszar">
+  <h2>C. Lokales SEO</h2>
+  <p class="opis">Google Unternehmensprofil, einheitliches NAP, Bewertungen und Kontaktseite: ob Ihr Unternehmen in Maps und im Web einheitlich beschrieben wird. <span class="ile">9 Punkte</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:99mm"><col style="width:17mm"><col style="width:17mm"><col></colgroup>
+    <thead><tr><th>Nr.</th><th>Punkt und wie Sie ihn prüfen</th><th>Priorität</th><th>Status</th><th>Notizen · Verantwortliche · Termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">C1</td>
+        <td><div class="pk">Das Unternehmen hat ein verifiziertes Google Unternehmensprofil, eines pro Standort</div><div class="jak"><b>So prüfen Sie es:</b> Suchen Sie den Firmennamen in Google und in Maps. Melden Sie Duplikate zur Entfernung oder Zusammenführung.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C2</td>
+        <td><div class="pk">Der Name im Profil ist der echte Firmenname, ohne angehängte Keywords, Stadt und Slogans</div><div class="jak"><b>So prüfen Sie es:</b> Vergleichen Sie den Namen mit Firmenschild, Rechnung und Website.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C3</td>
+        <td><div class="pk">Die Hauptkategorie beschreibt, was das Unternehmen ist, und es gibt so wenige zusätzliche Kategorien wie möglich</div><div class="jak"><b>So prüfen Sie es:</b> Profil-Dashboard → Kategorien. Eine Kategorie ist die Art des Unternehmens, keine Liste von Leistungen.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C4</td>
+        <td><div class="pk">NAP (Name, Adresse, Telefonnummer) ist auf der Website, im Profil und in Branchenverzeichnissen identisch</div><div class="jak"><b>So prüfen Sie es:</b> Tragen Sie das NAP von jeder Stelle in eine Tabelle ein und vergleichen Sie Zeichen für Zeichen.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C5</td>
+        <td><div class="pk">Ein Unternehmen, das keine Kunden an der Adresse empfängt, blendet die Adresse aus und legt ein Einsatzgebiet fest</div><div class="jak"><b>So prüfen Sie es:</b> Profil-Dashboard → Standort und Einsatzgebiet.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C6</td>
+        <td><div class="pk">Die Öffnungszeiten sind aktuell, und Feiertage haben besondere Zeiten</div><div class="jak"><b>So prüfen Sie es:</b> Prüfen Sie das Profil vor jedem langen Wochenende und vor Feiertagen.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C7</td>
+        <td><div class="pk">Die Website hat eine Kontaktseite mit dem NAP als Text (nicht als Bild), mit Karte und Anfahrt</div><div class="jak"><b>So prüfen Sie es:</b> Versuchen Sie, die Adresse mit der Maus zu markieren: Geht das nicht, ist sie ein Bild. Bei mehreren Standorten: eine eigene Seite für jeden.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C8</td>
+        <td><div class="pk">Bewertungen kommen laufend, und jede hat eine Antwort des Unternehmens</div><div class="jak"><b>So prüfen Sie es:</b> Profil-Dashboard → Bewertungen. Antworten Sie auch auf kritische, sachlich und ohne Daten der Kunden. Zahlen Sie nicht für Bewertungen und gewähren Sie dafür keine Rabatte.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">C9</td>
+        <td><div class="pk">Das Profil hat aktuelle Fotos des Ortes, des Teams oder von Projekten und eine ausgefüllte Liste der Leistungen</div><div class="jak"><b>So prüfen Sie es:</b> Vergleichen Sie es mit den Profilen der Unternehmen auf den ersten drei Plätzen in Maps.</div></td>
+        <td><span class="prio n">niedrig</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik"><span>Wertung des Bereichs: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>Handlungsbedarf ____ &nbsp; <span class="box"></span>n. z. ____</span></p>
+  <footer><p>Aktuelle Fassung dieser Checkliste mit Beispiel und Quellen: <strong>www.ai-seo-company.pl/de/tools/seo-checkliste</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen</p></footer>
+</section>
+
+<section class="obszar">
+  <h2>D. KI-Tauglichkeit</h2>
+  <p class="opis">Zugriff von KI-Bots, Inhalt im HTML, Antworten auf Kundenfragen und einheitliche Unternehmensdaten. <span class="ile">8 Punkte</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:99mm"><col style="width:17mm"><col style="width:17mm"><col></colgroup>
+    <thead><tr><th>Nr.</th><th>Punkt und wie Sie ihn prüfen</th><th>Priorität</th><th>Status</th><th>Notizen · Verantwortliche · Termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">D1</td>
+        <td><div class="pk">Die robots.txt lässt die Bots der KI-Suchmaschinen zu: OAI-SearchBot (ChatGPT), PerplexityBot, Claude-SearchBot</div><div class="jak"><b>So prüfen Sie es:</b> Öffnen Sie die robots.txt. Suchen Sie diese Namen und eine Regel „User-agent: *“ mit „Disallow: /“. Prüfen Sie in der Search Console außerdem Einstellungen → Generative KI in der Suche: Die Website soll einbezogen sein (das ist die Standardeinstellung).</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D2</td>
+        <td><div class="pk">Die Entscheidung über Trainings-Bots (GPTBot, ClaudeBot, Google-Extended) ist bewusst getroffen und festgehalten</div><div class="jak"><b>So prüfen Sie es:</b> Halten Sie in der Vorlage fest, ob Sie sie zulassen. Eine Sperre von Google-Extended hat keinen Einfluss auf die Suchergebnisse von Google.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D3</td>
+        <td><div class="pk">Firewall (WAF) oder CDN blockieren keine Bots, die die robots.txt zulässt</div><div class="jak"><b>So prüfen Sie es:</b> Prüfen Sie die Einstellungen zum Bot-Schutz bei Hosting-Anbieter oder CDN und die Logs des Servers.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D4</td>
+        <td><div class="pk">Die wichtigsten Inhalte (Angebot, Preise, Kontakt) stehen im HTML und nicht nur in Grafiken oder PDF-Dateien</div><div class="jak"><b>So prüfen Sie es:</b> Markieren Sie Text auf der Seite und sehen Sie den Quelltext an. Text, der nur in einer Grafik steht, ist für jeden Roboter schwer zu lesen.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D5</td>
+        <td><div class="pk">Strukturierte Daten vom Typ Organization oder LocalBusiness in JSON-LD stimmen mit dem überein, was auf der Seite zu sehen ist</div><div class="jak"><b>So prüfen Sie es:</b> Test für Rich-Suchergebnisse oder der Validator von schema.org. Name, Adresse und Telefon wie im Profil. Google verlangt diese Daten für KI-Übersichten nicht, aber sie ordnen die Beschreibung des Unternehmens.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D6</td>
+        <td><div class="pk">Die Seite „Über uns“ nennt klare Fakten: womit Sie sich beschäftigen, wo und für wen</div><div class="jak"><b>So prüfen Sie es:</b> Lesen Sie sie mit den Augen von jemandem, der das Unternehmen nicht kennt. Die Beschreibung des Unternehmens soll im Profil und in sozialen Netzwerken genauso klingen.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D7</td>
+        <td><div class="pk">Auf der Website stehen Antworten auf typische Kundenfragen (Preis, Dauer, Ablauf), direkt und konkret geschrieben</div><div class="jak"><b>So prüfen Sie es:</b> Notieren Sie die Fragen, die Kunden am Telefon stellen, und die Google-Vorschläge zum Namen der Leistung. Hat jede eine Antwort auf der Website? Google verlangt keine Aufteilung des Textes in kurze Stücke für KI: Es zählt die Antwort selbst.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">D8</td>
+        <td><div class="pk">Optional: eine Datei llms.txt im Stammverzeichnis mit Beschreibung des Unternehmens und Links zu den wichtigsten Seiten</div><div class="jak"><b>So prüfen Sie es:</b> Öffnen Sie ihredomain.de/llms.txt. Die Google-Suche nutzt sie nicht, erledigen Sie sie also nach den Punkten oben.</div></td>
+        <td><span class="prio n">niedrig</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik"><span>Wertung des Bereichs: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>Handlungsbedarf ____ &nbsp; <span class="box"></span>n. z. ____</span></p>
+  <footer><p>Aktuelle Fassung dieser Checkliste mit Beispiel und Quellen: <strong>www.ai-seo-company.pl/de/tools/seo-checkliste</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen</p></footer>
+</section>
+
+<section class="obszar">
+  <h2>E. Messung</h2>
+  <p class="opis">Search Console, GA4 und beobachtete Keywords: ob Sie messen, wie viele Anfragen die Suche bringt. <span class="ile">9 Punkte</span></p>
+  <table class="lista">
+    <colgroup><col style="width:9mm"><col style="width:99mm"><col style="width:17mm"><col style="width:17mm"><col></colgroup>
+    <thead><tr><th>Nr.</th><th>Punkt und wie Sie ihn prüfen</th><th>Priorität</th><th>Status</th><th>Notizen · Verantwortliche · Termin</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="nr">E1</td>
+        <td><div class="pk">Die Search Console umfasst die ganze Domain, und Inhaber ist das Konto des Unternehmens</div><div class="jak"><b>So prüfen Sie es:</b> Search Console → Einstellungen → Nutzer und Berechtigungen. Die Agentur kann Zugriff haben, aber nicht als alleiniger Inhaber.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E2</td>
+        <td><div class="pk">Die Sitemap ist im Bericht „Sitemaps“ eingereicht und zeigt keine Verarbeitungsfehler</div><div class="jak"><b>So prüfen Sie es:</b> Search Console → Sitemaps: Status „Erfolgreich“ und Zahl der erkannten Adressen.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E3</td>
+        <td><div class="pk">Der Bericht „Seiten“ ist durchgesehen: Wichtige Seiten sind indexiert, und die Gründe für Ausschlüsse sind verständlich</div><div class="jak"><b>So prüfen Sie es:</b> Search Console → Seiten. Beginnen Sie mit Leistungsseiten und Kontakt.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E4</td>
+        <td><div class="pk">GA4 läuft auf allen Seiten mit einem Tag, und die Property gehört dem Unternehmen</div><div class="jak"><b>So prüfen Sie es:</b> Vorschau im Google Tag Assistant oder der Echtzeitbericht in GA4.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E5</td>
+        <td><div class="pk">Schlüsselereignisse in GA4 messen Handlungen der Kunden: Formular, Klick auf das Telefon und auf die E-Mail-Adresse</div><div class="jak"><b>So prüfen Sie es:</b> GA4 → Verwaltung → Schlüsselereignisse. Senden Sie ein Testformular und prüfen Sie, ob das Ereignis erscheint.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E6</td>
+        <td><div class="pk">GA4 ist mit der Search Console verknüpft</div><div class="jak"><b>So prüfen Sie es:</b> GA4 → Verwaltung → Produktverknüpfungen → Search Console.</div></td>
+        <td><span class="prio n">niedrig</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E7</td>
+        <td><div class="pk">Die Liste der beobachteten Keywords ist abgestimmt und festgehalten, und Sie messen die Positionen jeden Monat mit derselben Methode</div><div class="jak"><b>So prüfen Sie es:</b> Halten Sie Keywords, Standort und Gerät der Messung fest. Ein Methodenwechsel verdirbt Vergleiche.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E8</td>
+        <td><div class="pk">Einen festen Satz von Kundenfragen prüfen Sie jeden Monat in ChatGPT, Gemini, Perplexity und den AI Overviews von Google</div><div class="jak"><b>So prüfen Sie es:</b> Halten Sie Fragen und Ergebnis fest: Wird das Unternehmen genannt, und welche Quellen werden zitiert? Impressionen der Seite in AI Overviews und im KI-Modus zeigt der Leistungsbericht zu generativer KI in der Search Console.</div></td>
+        <td><span class="prio s">mittel</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr><tr>
+        <td class="nr">E9</td>
+        <td><div class="pk">Der Ausgangszustand ist vor den Änderungen festgehalten, und Sie vergleichen Ergebnisse von Jahr zu Jahr</div><div class="jak"><b>So prüfen Sie es:</b> Halten Sie Datum, Klicks ohne Markenanfragen und die Zahl der Kundenanfragen fest. Zählen Sie sie auch im Postfach oder CRM: Bei abgelehnter Cookie-Einwilligung kann GA4 sie zu niedrig ausweisen.</div></td>
+        <td><span class="prio w">hoch</span></td>
+        <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
+        <td class="notatki"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="wynik"><span>Wertung des Bereichs: <span class="box"></span>OK ____ &nbsp; <span class="box"></span>Handlungsbedarf ____ &nbsp; <span class="box"></span>n. z. ____</span></p>
+  <footer><p>Aktuelle Fassung dieser Checkliste mit Beispiel und Quellen: <strong>www.ai-seo-company.pl/de/tools/seo-checkliste</strong></p><p>AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen</p></footer>
+</section>
+</body>
+</html>

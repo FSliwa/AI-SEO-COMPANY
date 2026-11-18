@@ -2,8 +2,17 @@ import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 import { STRONY_EN } from './lib/stronyEn';
+import { DE_AKTYWNE, mapaAdresowDe } from './lib/stronyDe';
 
 const intl = createMiddleware(routing);
+
+// Wersja niemiecka (18.11.2026, lib/stronyDe.js): next-intl zamienia klucz routingu bez wpisu 'de'
+// na szablon PL, więc /de/audyt-seo (strona bez niemieckiego odpowiednika) dostałby treść PL.
+// Przy aktywnej wersji DE każdy adres /de... spoza rejestru kończy się 404 (rewrite na trasę
+// de-404, która woła notFound() w układzie z locale de), a adres bez gotowej treści (gotowa: false)
+// trafia na trasę de-platzhalter (powłoka + notatka, noindex). Przy wyłączonej wersji DE ten kod nie
+// działa: /de/... trafia w trasy PL i daje 404 jak dotąd.
+const ADRESY_DE = DE_AKTYWNE ? mapaAdresowDe() : null;
 
 // 9.11.2026: strony z lib/stronyEn.js pod trasami [slug] mają slug EN inny niż PL. Szablon
 // /en/comparisons/[slug] przyjąłby też slug PL (/en/comparisons/pozycjonowanie-za-efekt-czy-abonament
@@ -34,6 +43,15 @@ for (const [pl, { en }] of Object.entries(STRONY_EN)) {
 // jest znane i nie blokuje.
 export default function middleware(request) {
   const sciezka = request.nextUrl.pathname.replace(/\/+$/, '');
+  if (ADRESY_DE && (sciezka === '/de' || sciezka.startsWith('/de/'))) {
+    const wpis = ADRESY_DE.get(sciezka);
+    // Adres spoza rejestru = 404; adres z rejestru, ale bez gotowej treści DE = strona-zastępnik.
+    if (!wpis || !wpis.gotowa) {
+      const url = request.nextUrl.clone();
+      url.pathname = wpis ? '/de/de-platzhalter' : '/de/de-404';
+      return NextResponse.rewrite(url);
+    }
+  }
   const cel = SLUG_PL_POD_EN.get(sciezka);
   if (cel && cel !== sciezka) {
     const url = request.nextUrl.clone();

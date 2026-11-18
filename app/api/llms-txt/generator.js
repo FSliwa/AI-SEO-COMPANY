@@ -77,52 +77,60 @@ const UA_PRZEGLADARKI = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWe
 // HTTP (Google pobiera strony zwykłymi crawlerami), więc dla niego jest tylko test robots.txt.
 export const BOTY = [
   {
-    nazwa: 'GPTBot', token: 'gptbot', firma: 'OpenAI', rola: 'trening modeli', rolaEn: 'model training',
+    nazwa: 'GPTBot', token: 'gptbot', firma: 'OpenAI', rola: 'trening modeli', rolaEn: 'model training', rolaDe: 'Modelltraining',
     ua: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot',
     skutekBlokady: 'Treści nie trafią do trenowania modeli OpenAI. Według OpenAI nie wpływa to na wyszukiwanie w ChatGPT.',
     skutekBlokadyEn: 'Your content will not be used to train OpenAI models. According to OpenAI, this does not affect search in ChatGPT.',
+    skutekBlokadyDe: 'Ihre Inhalte werden nicht für das Training von OpenAI-Modellen verwendet. Laut OpenAI hat das keinen Einfluss auf die Suche in ChatGPT.',
   },
   {
-    nazwa: 'OAI-SearchBot', token: 'oai-searchbot', firma: 'OpenAI', rola: 'wyszukiwanie w ChatGPT', rolaEn: 'ChatGPT search',
+    nazwa: 'OAI-SearchBot', token: 'oai-searchbot', firma: 'OpenAI', rola: 'wyszukiwanie w ChatGPT', rolaEn: 'ChatGPT search', rolaDe: 'ChatGPT-Suche',
     ua: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot',
     skutekBlokady: 'ChatGPT nie pokaże strony w wynikach wyszukiwania. To najważniejszy bot dla widoczności w ChatGPT.',
     skutekBlokadyEn: 'ChatGPT will not show the site in its search results. This is the most important bot for visibility in ChatGPT.',
+    skutekBlokadyDe: 'ChatGPT zeigt die Website nicht in den Suchergebnissen an. Das ist der wichtigste Bot für die Sichtbarkeit in ChatGPT.',
   },
   {
-    nazwa: 'ChatGPT-User', token: 'chatgpt-user', firma: 'OpenAI', rola: 'wizyty na prośbę użytkownika', rolaEn: 'visits on user request',
+    nazwa: 'ChatGPT-User', token: 'chatgpt-user', firma: 'OpenAI', rola: 'wizyty na prośbę użytkownika', rolaEn: 'visits on user request', rolaDe: 'Besuche auf Anfrage von Nutzern',
     ua: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot',
     skutekBlokady: 'Według OpenAI reguły robots.txt mogą nie obowiązywać tego agenta, bo działa na prośbę użytkownika.',
     skutekBlokadyEn: 'According to OpenAI, robots.txt rules may not apply to this agent because it acts on a user\'s request.',
+    skutekBlokadyDe: 'Laut OpenAI gelten die Regeln der robots.txt für diesen Agenten möglicherweise nicht, weil er im Auftrag eines Nutzers handelt.',
   },
   {
-    nazwa: 'PerplexityBot', token: 'perplexitybot', firma: 'Perplexity', rola: 'wyniki w Perplexity', rolaEn: 'results in Perplexity',
+    nazwa: 'PerplexityBot', token: 'perplexitybot', firma: 'Perplexity', rola: 'wyniki w Perplexity', rolaEn: 'results in Perplexity', rolaDe: 'Ergebnisse in Perplexity',
     ua: 'Mozilla/5.0 (compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)',
     skutekBlokady: 'Perplexity nie pokaże strony w wynikach i nie poda do niej linku.',
     skutekBlokadyEn: 'Perplexity will not show the site in its results or link to it.',
+    skutekBlokadyDe: 'Perplexity zeigt die Website nicht in den Ergebnissen an und verlinkt sie nicht.',
   },
   {
-    nazwa: 'ClaudeBot', token: 'claudebot', firma: 'Anthropic', rola: 'trening modeli', rolaEn: 'model training',
+    nazwa: 'ClaudeBot', token: 'claudebot', firma: 'Anthropic', rola: 'trening modeli', rolaEn: 'model training', rolaDe: 'Modelltraining',
     ua: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)',
     skutekBlokady: 'Treści nie trafią do trenowania modeli Anthropic.',
     skutekBlokadyEn: 'Your content will not be used to train Anthropic models.',
+    skutekBlokadyDe: 'Ihre Inhalte werden nicht für das Training von Anthropic-Modellen verwendet.',
   },
   {
-    nazwa: 'Claude-SearchBot', token: 'claude-searchbot', firma: 'Anthropic', rola: 'wyszukiwanie w Claude', rolaEn: 'Claude search',
+    nazwa: 'Claude-SearchBot', token: 'claude-searchbot', firma: 'Anthropic', rola: 'wyszukiwanie w Claude', rolaEn: 'Claude search', rolaDe: 'Claude-Suche',
     ua: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-SearchBot/1.0; +Claude-SearchBot@anthropic.com)',
     skutekBlokady: 'Strona może rzadziej pojawiać się w odpowiedziach Claude z wyszukiwaniem.',
     skutekBlokadyEn: 'The site may appear less often in Claude answers that use search.',
+    skutekBlokadyDe: 'Die Website erscheint möglicherweise seltener in Antworten von Claude, die die Suche nutzen.',
   },
   {
-    nazwa: 'Google-Extended', token: 'google-extended', firma: 'Google', rola: 'Gemini (trening i grounding)', rolaEn: 'Gemini (training and grounding)',
+    nazwa: 'Google-Extended', token: 'google-extended', firma: 'Google', rola: 'Gemini (trening i grounding)', rolaEn: 'Gemini (training and grounding)', rolaDe: 'Gemini (Training und Grounding)',
     ua: null,
     skutekBlokady: 'Google nie użyje treści w Gemini. Według Google nie wpływa to na wyniki wyszukiwania.',
     skutekBlokadyEn: 'Google will not use your content in Gemini. According to Google, this does not affect search results.',
+    skutekBlokadyDe: 'Google nutzt Ihre Inhalte nicht in Gemini. Laut Google hat das keinen Einfluss auf die Suchergebnisse.',
   },
   {
-    nazwa: 'Bingbot', token: 'bingbot', firma: 'Microsoft', rola: 'indeks Bing', rolaEn: 'Bing index',
+    nazwa: 'Bingbot', token: 'bingbot', firma: 'Microsoft', rola: 'indeks Bing', rolaEn: 'Bing index', rolaDe: 'Bing-Index',
     ua: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36',
     skutekBlokady: 'Strona wypadnie z indeksu Bing.',
     skutekBlokadyEn: 'The site will drop out of the Bing index.',
+    skutekBlokadyDe: 'Die Website fällt aus dem Bing-Index.',
   },
 ];
 
@@ -230,18 +238,19 @@ function adresDozwolony(u) {
  */
 export async function przygotujAdres(wejscie, lang = 'pl') {
   const en = lang === 'en';
+  const de = lang === 'de';
   let s = String(wejscie ?? '').trim();
-  if (!s) throw new BladZadania(400, en ? 'Enter a website address, e.g. company.com.' : 'Podaj adres strony, np. firma.pl.');
-  if (s.length > 300) throw new BladZadania(400, en ? 'The address is too long.' : 'Adres jest za długi.');
+  if (!s) throw new BladZadania(400, de ? 'Geben Sie die Adresse einer Website ein, z. B. firma.de.' : en ? 'Enter a website address, e.g. company.com.' : 'Podaj adres strony, np. firma.pl.');
+  if (s.length > 300) throw new BladZadania(400, de ? 'Die Adresse ist zu lang.' : en ? 'The address is too long.' : 'Adres jest za długi.');
   if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(s)) s = `https://${s}`;
   let u;
   try {
     u = new URL(s);
   } catch {
-    throw new BladZadania(400, en ? 'That does not look like a website address. Enter e.g. company.com.' : 'To nie wygląda na adres strony. Wpisz np. firma.pl.');
+    throw new BladZadania(400, de ? 'Das sieht nicht nach einer Website-Adresse aus. Geben Sie z. B. firma.de ein.' : en ? 'That does not look like a website address. Enter e.g. company.com.' : 'To nie wygląda na adres strony. Wpisz np. firma.pl.');
   }
   if (!adresDozwolony(u)) {
-    throw new BladZadania(400, en ? 'We only check public websites at http(s) addresses on a standard port, with no local or private addresses.' : 'Sprawdzamy tylko publiczne strony pod adresem http(s) na standardowym porcie, bez adresów lokalnych i prywatnych.');
+    throw new BladZadania(400, de ? 'Wir prüfen nur öffentliche Websites unter http(s)-Adressen auf einem Standardport, keine lokalen oder privaten Adressen.' : en ? 'We only check public websites at http(s) addresses on a standard port, with no local or private addresses.' : 'Sprawdzamy tylko publiczne strony pod adresem http(s) na standardowym porcie, bez adresów lokalnych i prywatnych.');
   }
   const host = hostBezNawiasow(u.hostname);
   if (!net.isIP(host)) {
@@ -249,10 +258,10 @@ export async function przygotujAdres(wejscie, lang = 'pl') {
     try {
       adresy = await dns.promises.lookup(host, { all: true, verbatim: true });
     } catch {
-      throw new BladZadania(400, en ? 'We could not find that domain. Check the spelling of the address.' : 'Nie znaleźliśmy takiej domeny. Sprawdź pisownię adresu.');
+      throw new BladZadania(400, de ? 'Wir konnten diese Domain nicht finden. Prüfen Sie die Schreibweise der Adresse.' : en ? 'We could not find that domain. Check the spelling of the address.' : 'Nie znaleźliśmy takiej domeny. Sprawdź pisownię adresu.');
     }
     if (!adresy.length || adresy.some((a) => ipZablokowany(a.address))) {
-      throw new BladZadania(400, en ? 'That address points to a private network. We only check public websites.' : 'Ten adres prowadzi do sieci prywatnej. Sprawdzamy tylko publiczne strony.');
+      throw new BladZadania(400, de ? 'Diese Adresse führt in ein privates Netzwerk. Wir prüfen nur öffentliche Websites.' : en ? 'That address points to a private network. We only check public websites.' : 'Ten adres prowadzi do sieci prywatnej. Sprawdzamy tylko publiczne strony.');
     }
   }
   return new URL(`${u.protocol}//${u.host}/`);
@@ -693,7 +702,7 @@ export function klasyfikator(adresy, jezykGlowny = '') {
  * najpierw, w sekcjach (blog, aktualności) nowsze <lastmod> najpierw, potem kolejność w mapie.
  * mapy = [{ lokacje, zmiany?, priorytety? }]. Zwraca adresy w kolejności map.
  */
-export function wybierzAdresy(mapy, { limit = LIMITY.maxUrli, czyDozwolony = () => true, stronaGlowna = null, prefiksGlownej = '', jezykHtml = '', en = false } = {}) {
+export function wybierzAdresy(mapy, { limit = LIMITY.maxUrli, czyDozwolony = () => true, stronaGlowna = null, prefiksGlownej = '', jezykHtml = '', en = false, de = false } = {}) {
   const kandydaci = [];
   const pominiete = [];
   const widziane = new Set();
@@ -712,7 +721,7 @@ export function wybierzAdresy(mapy, { limit = LIMITY.maxUrli, czyDozwolony = () 
       if (widziane.has(kp)) return;
       widziane.add(kp);
       if (!czyDozwolony(u)) {
-        pominiete.push({ url: u.toString(), powod: en ? 'different domain' : 'inna domena' });
+        pominiete.push({ url: u.toString(), powod: de ? 'andere Domain' : en ? 'different domain' : 'inna domena' });
         return;
       }
       kandydaci.push({ url: u.toString(), mapa: iMapy, poz: i, zmiana: m.zmiany?.[i] || 0, priorytet: m.priorytety?.[i] ?? 0.5 });
@@ -823,7 +832,7 @@ function nazwaLinku(tytul, marka, url, lang = 'pl') {
     try {
       slug = decodeURIComponent(ostatni);
     } catch { /* zostaje */ }
-    nazwa = slug.replace(/\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' ').trim() || (lang === 'en' ? 'Home page' : 'Strona główna');
+    nazwa = slug.replace(/\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' ').trim() || (lang === 'de' ? 'Startseite' : lang === 'en' ? 'Home page' : 'Strona główna');
     nazwa = nazwa.charAt(0).toUpperCase() + nazwa.slice(1);
   }
   return nazwa.replace(/\[/g, '(').replace(/\]/g, ')').slice(0, 120);
@@ -894,8 +903,10 @@ function nazwaSekcji(segment, tytuly = []) {
  */
 export function zbudujLlmsTxt({ marka, opis, wpisy, lang = 'pl', jezykGlowny = '', wszystkieAdresy = null, jezykStrony = '' }) {
   const baza = bazaJezyka(jezykStrony);
-  const en = baza ? baza !== 'pl' : lang === 'en';
-  lang = en ? 'en' : 'pl';
+  // Niemiecki: strona w języku DE (albo interfejs DE przy nieznanym języku strony) dostaje nagłówki po niemiecku.
+  const de = baza ? baza === 'de' : lang === 'de';
+  const en = !de && (baza ? baza !== 'pl' : lang === 'en');
+  lang = de ? 'de' : en ? 'en' : 'pl';
   const klasa = klasyfikator(wszystkieAdresy || wpisy.map((w) => w.url), jezykGlowny);
   const jezyki = [];
   const sekcje = new Map();
@@ -920,8 +931,8 @@ export function zbudujLlmsTxt({ marka, opis, wpisy, lang = 'pl', jezykGlowny = '
     let naglowek;
     if (s.opcjonalna) naglowek = 'Optional'; // nazwa ze specyfikacji llmstxt.org, nie tłumaczymy
     else if (s.sekcja && nazwaSekcji(s.sekcja)) naglowek = `${nazwaSekcji(s.sekcja, s.lista.map((w) => `${w.tytul || ''} ${w.opis || ''}`))}${kod ? ` (${kod})` : ''}`;
-    else if (kod) naglowek = en ? `${kod} version` : `Wersja ${kod}`;
-    else naglowek = en ? 'Pages' : 'Strony';
+    else if (kod) naglowek = de ? `${kod}-Version` : en ? `${kod} version` : `Wersja ${kod}`;
+    else naglowek = de ? 'Seiten' : en ? 'Pages' : 'Strony';
     linie.push(`## ${naglowek}`, '');
     const lista = [...s.lista].sort((a, b) => b.spis - a.spis || a.i - b.i);
     for (const w of lista) {
@@ -939,22 +950,23 @@ const KODY_BLOKADY = new Set([401, 403, 406, 429, 451, 503]);
 
 function wniosekBota(bot, robotsStan, wynikRobots, kod, kodPrzegladarki, blad, lang = 'pl') {
   const en = lang === 'en';
+  const de = lang === 'de';
   if (robotsStan === 'niedostepny') {
-    return { ocena: 'blad', tekst: en ? 'robots.txt returns a server error or does not respond. Under RFC 9309, bots may then assume they are not allowed to fetch anything.' : 'robots.txt odpowiada błędem serwera albo nie odpowiada. Według RFC 9309 boty mogą wtedy uznać, że nie wolno pobierać niczego.' };
+    return { ocena: 'blad', tekst: de ? 'Die robots.txt liefert einen Serverfehler oder antwortet nicht. Nach RFC 9309 dürfen Bots dann annehmen, dass sie nichts abrufen dürfen.' : en ? 'robots.txt returns a server error or does not respond. Under RFC 9309, bots may then assume they are not allowed to fetch anything.' : 'robots.txt odpowiada błędem serwera albo nie odpowiada. Według RFC 9309 boty mogą wtedy uznać, że nie wolno pobierać niczego.' };
   }
   if (!wynikRobots.dozwolona) {
-    return { ocena: 'blad', tekst: en ? `Blocked in robots.txt. ${bot.skutekBlokadyEn}` : `Zablokowany w robots.txt. ${bot.skutekBlokady}` };
+    return { ocena: 'blad', tekst: de ? `In der robots.txt gesperrt. ${bot.skutekBlokadyDe}` : en ? `Blocked in robots.txt. ${bot.skutekBlokadyEn}` : `Zablokowany w robots.txt. ${bot.skutekBlokady}` };
   }
   if (!bot.ua) {
-    return { ocena: 'ok', tekst: en ? 'Allowed in robots.txt. Google-Extended has no separate User-Agent, so the HTTP test does not apply.' : 'Dozwolony w robots.txt. Google-Extended nie ma osobnego User-Agenta, więc test HTTP nie dotyczy.' };
+    return { ocena: 'ok', tekst: de ? 'In der robots.txt erlaubt. Google-Extended hat keinen eigenen User-Agent, daher entfällt der HTTP-Test.' : en ? 'Allowed in robots.txt. Google-Extended has no separate User-Agent, so the HTTP test does not apply.' : 'Dozwolony w robots.txt. Google-Extended nie ma osobnego User-Agenta, więc test HTTP nie dotyczy.' };
   }
-  if (blad) return { ocena: 'uwaga', tekst: blad === 'timeout' ? (en ? 'No response within 4 s. Check again.' : 'Brak odpowiedzi w 4 s. Sprawdź ponownie.') : (en ? 'Could not connect. Check again.' : 'Nie udało się połączyć. Sprawdź ponownie.') };
-  if (kod >= 200 && kod < 300) return { ocena: 'ok', tekst: en ? 'Access OK: robots.txt allows it and the page returns code 200.' : 'Dostęp OK: robots.txt pozwala, a strona odpowiada kodem 200.' };
-  if (kod >= 300 && kod < 400) return { ocena: 'uwaga', tekst: en ? `The bot gets a redirect (${kod}) while a browser does not. Check the server rules for this User-Agent.` : `Bot dostaje przekierowanie (${kod}), choć przeglądarka nie. Sprawdź reguły serwera dla tego User-Agenta.` };
+  if (blad) return { ocena: 'uwaga', tekst: blad === 'timeout' ? (de ? 'Keine Antwort innerhalb von 4 s. Bitte erneut prüfen.' : en ? 'No response within 4 s. Check again.' : 'Brak odpowiedzi w 4 s. Sprawdź ponownie.') : (de ? 'Verbindung nicht möglich. Bitte erneut prüfen.' : en ? 'Could not connect. Check again.' : 'Nie udało się połączyć. Sprawdź ponownie.') };
+  if (kod >= 200 && kod < 300) return { ocena: 'ok', tekst: de ? 'Zugriff in Ordnung: Die robots.txt erlaubt ihn, und die Seite antwortet mit Code 200.' : en ? 'Access OK: robots.txt allows it and the page returns code 200.' : 'Dostęp OK: robots.txt pozwala, a strona odpowiada kodem 200.' };
+  if (kod >= 300 && kod < 400) return { ocena: 'uwaga', tekst: de ? `Der Bot erhält eine Weiterleitung (${kod}), ein Browser nicht. Prüfen Sie die Serverregeln für diesen User-Agent.` : en ? `The bot gets a redirect (${kod}) while a browser does not. Check the server rules for this User-Agent.` : `Bot dostaje przekierowanie (${kod}), choć przeglądarka nie. Sprawdź reguły serwera dla tego User-Agenta.` };
   if (kodPrzegladarki >= 200 && kodPrzegladarki < 300 && (KODY_BLOKADY.has(kod) || kod >= 400)) {
-    return { ocena: 'blad', tekst: en ? `robots.txt allows it, but the server or CDN returns code ${kod} to the bot and 200 to a browser. Check your firewall (WAF) and bot protection settings.` : `robots.txt pozwala, ale serwer albo CDN odpowiada botowi kodem ${kod}, a przeglądarce 200. Sprawdź zaporę (WAF) i ustawienia ochrony przed botami.` };
+    return { ocena: 'blad', tekst: de ? `Die robots.txt erlaubt ihn, aber Server oder CDN antworten dem Bot mit Code ${kod} und einem Browser mit 200. Prüfen Sie Ihre Firewall (WAF) und die Einstellungen des Bot-Schutzes.` : en ? `robots.txt allows it, but the server or CDN returns code ${kod} to the bot and 200 to a browser. Check your firewall (WAF) and bot protection settings.` : `robots.txt pozwala, ale serwer albo CDN odpowiada botowi kodem ${kod}, a przeglądarce 200. Sprawdź zaporę (WAF) i ustawienia ochrony przed botami.` };
   }
-  return { ocena: 'uwaga', tekst: en ? `The page returns code ${kod} to a browser as well. Fix the home page first.` : `Strona odpowiada kodem ${kod} także przeglądarce. Najpierw napraw stronę główną.` };
+  return { ocena: 'uwaga', tekst: de ? `Die Seite antwortet auch einem Browser mit Code ${kod}. Beheben Sie zuerst die Startseite.` : en ? `The page returns code ${kod} to a browser as well. Fix the home page first.` : `Strona odpowiada kodem ${kod} także przeglądarce. Najpierw napraw stronę główną.` };
 }
 
 // --- Główna funkcja -------------------------------------------------------------------------
@@ -981,6 +993,7 @@ async function pula(zadania, n, termin) {
  */
 export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {}) {
   const en = lang === 'en';
+  const de = lang === 'de';
   const termin = start + LIMITY.limitGlobalnyMs;
   const zostalo = () => termin - Date.now();
   const timeout = () => Math.max(Math.min(LIMITY.timeoutMs, zostalo()), 1);
@@ -997,12 +1010,12 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       czas: (adres) => pobierz(adres, { ua: UA_PRZEGLADARKI, timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowHtml, agenci, accept: 'text/html,*/*;q=0.8' }),
     });
     if (glowna.blad === 'adres niedozwolony' || glowna.blad === 'adres prywatny') {
-      throw new BladZadania(400, en ? 'The site redirects to a private network. We only check public websites.' : 'Strona przekierowuje do sieci prywatnej. Sprawdzamy tylko publiczne strony.');
+      throw new BladZadania(400, de ? 'Die Website leitet in ein privates Netzwerk weiter. Wir prüfen nur öffentliche Websites.' : en ? 'The site redirects to a private network. We only check public websites.' : 'Strona przekierowuje do sieci prywatnej. Sprawdzamy tylko publiczne strony.');
     }
     if (!glowna.kod) {
       throw new BladZadania(502, glowna.blad === 'timeout'
-        ? (en ? 'The site did not respond within 4 s. Check the address and try again.' : 'Strona nie odpowiedziała w 4 s. Sprawdź adres i spróbuj ponownie.')
-        : (en ? 'Could not connect to the site. Check the address and try again.' : 'Nie udało się połączyć ze stroną. Sprawdź adres i spróbuj ponownie.'));
+        ? (de ? 'Die Website hat nicht innerhalb von 4 s geantwortet. Prüfen Sie die Adresse und versuchen Sie es erneut.' : en ? 'The site did not respond within 4 s. Check the address and try again.' : 'Strona nie odpowiedziała w 4 s. Sprawdź adres i spróbuj ponownie.')
+        : (de ? 'Verbindung zur Website nicht möglich. Prüfen Sie die Adresse und versuchen Sie es erneut.' : en ? 'Could not connect to the site. Check the address and try again.' : 'Nie udało się połączyć ze stroną. Sprawdź adres i spróbuj ponownie.'));
     }
     const glownaUrl = new URL(glowna.url);
     const hostStrony = bezWww(glownaUrl.hostname);
@@ -1154,6 +1167,7 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       prefiksGlownej: jezykSegmentu(glownaUrl.pathname.split('/').filter(Boolean)[0]),
       jezykHtml: metaGlownej.jezyk,
       en,
+      de,
     });
     const pominiete = wybor.pominiete;
     const doSprawdzenia = wybor.adresy;
@@ -1165,23 +1179,23 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       const bezHead = glowa.kod === 405 || glowa.kod === 501 || (!glowa.kod && glowa.blad !== 'timeout');
       if (bezHead) glowa = null;
       if (glowa) {
-        if (!glowa.kod) return { url, powod: en ? 'no response within 4 s' : 'brak odpowiedzi w 4 s' };
-        if (glowa.kod >= 300 && glowa.kod < 400) return { url, powod: en ? `redirect (${glowa.kod})` : `przekierowanie (${glowa.kod})` };
-        if (glowa.kod !== 200) return { url, powod: en ? `code ${glowa.kod}` : `kod ${glowa.kod}` };
-        if (/noindex/i.test(String(glowa.naglowki['x-robots-tag'] || ''))) return { url, powod: en ? 'noindex (X-Robots-Tag header)' : 'noindex (nagłówek X-Robots-Tag)' };
+        if (!glowa.kod) return { url, powod: de ? 'keine Antwort innerhalb von 4 s' : en ? 'no response within 4 s' : 'brak odpowiedzi w 4 s' };
+        if (glowa.kod >= 300 && glowa.kod < 400) return { url, powod: de ? `Weiterleitung (${glowa.kod})` : en ? `redirect (${glowa.kod})` : `przekierowanie (${glowa.kod})` };
+        if (glowa.kod !== 200) return { url, powod: de ? `Code ${glowa.kod}` : en ? `code ${glowa.kod}` : `kod ${glowa.kod}` };
+        if (/noindex/i.test(String(glowa.naglowki['x-robots-tag'] || ''))) return { url, powod: de ? 'noindex (Header X-Robots-Tag)' : en ? 'noindex (X-Robots-Tag header)' : 'noindex (nagłówek X-Robots-Tag)' };
         const typHead = String(glowa.naglowki['content-type'] || '');
-        if (typHead && !/html/i.test(typHead)) return { url, powod: en ? `not an HTML page (${typHead.split(';')[0]})` : `nie jest stroną HTML (${typHead.split(';')[0]})` };
+        if (typHead && !/html/i.test(typHead)) return { url, powod: de ? `keine HTML-Seite (${typHead.split(';')[0]})` : en ? `not an HTML page (${typHead.split(';')[0]})` : `nie jest stroną HTML (${typHead.split(';')[0]})` };
       }
       if (zostalo() < 500) return { url, nieprzetworzony: true };
       const odpGet = await pobierz(url, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowHtml, agenci, accept: 'text/html,*/*;q=0.8' });
-      if (!odpGet.kod) return { url, powod: odpGet.blad === 'timeout' ? (en ? 'no response within 4 s' : 'brak odpowiedzi w 4 s') : (en ? 'connection error' : 'błąd połączenia') };
-      if (odpGet.kod >= 300 && odpGet.kod < 400) return { url, powod: en ? `redirect (${odpGet.kod})` : `przekierowanie (${odpGet.kod})` };
-      if (odpGet.kod !== 200) return { url, powod: en ? `code ${odpGet.kod}` : `kod ${odpGet.kod}` };
-      if (/noindex/i.test(String(odpGet.naglowki['x-robots-tag'] || ''))) return { url, powod: en ? 'noindex (X-Robots-Tag header)' : 'noindex (nagłówek X-Robots-Tag)' };
+      if (!odpGet.kod) return { url, powod: odpGet.blad === 'timeout' ? (de ? 'keine Antwort innerhalb von 4 s' : en ? 'no response within 4 s' : 'brak odpowiedzi w 4 s') : (de ? 'Verbindungsfehler' : en ? 'connection error' : 'błąd połączenia') };
+      if (odpGet.kod >= 300 && odpGet.kod < 400) return { url, powod: de ? `Weiterleitung (${odpGet.kod})` : en ? `redirect (${odpGet.kod})` : `przekierowanie (${odpGet.kod})` };
+      if (odpGet.kod !== 200) return { url, powod: de ? `Code ${odpGet.kod}` : en ? `code ${odpGet.kod}` : `kod ${odpGet.kod}` };
+      if (/noindex/i.test(String(odpGet.naglowki['x-robots-tag'] || ''))) return { url, powod: de ? 'noindex (Header X-Robots-Tag)' : en ? 'noindex (X-Robots-Tag header)' : 'noindex (nagłówek X-Robots-Tag)' };
       const typ = String(odpGet.naglowki['content-type'] || '');
-      if (typ && !/html/i.test(typ)) return { url, powod: en ? `not an HTML page (${typ.split(';')[0]})` : `nie jest stroną HTML (${typ.split(';')[0]})` };
+      if (typ && !/html/i.test(typ)) return { url, powod: de ? `keine HTML-Seite (${typ.split(';')[0]})` : en ? `not an HTML page (${typ.split(';')[0]})` : `nie jest stroną HTML (${typ.split(';')[0]})` };
       const meta = metaZHtml(dekodujTekst(odpGet.cialo, typ));
-      if (/noindex|\bnone\b/.test(meta.robots)) return { url, powod: en ? 'noindex (meta robots)' : 'noindex (meta robots)' };
+      if (/noindex|\bnone\b/.test(meta.robots)) return { url, powod: de ? 'noindex (meta robots)' : en ? 'noindex (meta robots)' : 'noindex (meta robots)' };
       return { url, wpis: { url, tytul: meta.tytul || meta.ogTytul, opis: meta.opis || meta.ogOpis } };
     };
     // Faza 1: wszystkie wybrane adresy. Zastępcy dopiero w fazie 2, żeby łańcuch zastępców jednego
@@ -1252,7 +1266,7 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       return {
         nazwa: bot.nazwa,
         firma: bot.firma,
-        rola: en ? bot.rolaEn : bot.rola,
+        rola: de ? bot.rolaDe : en ? bot.rolaEn : bot.rola,
         robots: robotsStan === 'niedostepny' ? 'niedostępny' : (wynikRobots.dozwolona ? 'dozwolony' : 'zablokowany'),
         regula: wynikRobots.regula,
         wlasnaGrupa: wynikRobots.wlasnaGrupa,

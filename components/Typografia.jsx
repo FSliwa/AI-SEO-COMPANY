@@ -48,6 +48,8 @@ export default function Typografia() {
   useEffect(() => {
     kropki();
     const start = () => {
+      // Sierotki to reguła polska (a, i, o, u, w, z); w tekście niemieckim nie ma jednoliterowych spójników.
+      if (document.documentElement.lang === 'de') return;
       document.querySelectorAll('main, footer').forEach(sierotki);
     };
     const id = 'requestIdleCallback' in window ? window.requestIdleCallback(start, { timeout: 1500 }) : window.setTimeout(start, 300);

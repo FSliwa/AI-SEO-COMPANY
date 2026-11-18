@@ -19,7 +19,8 @@ import { track } from '@/lib/track';
 // do najblizszego odpowiednika (playbook 6.1 pkt 4).
 export default function NotFound() {
   const lang = useLocale();
-  const pl = lang !== 'en';
+  const de = lang === 'de';
+  const pl = lang !== 'en' && !de;
 
   useEffect(() => {
     track('page_404', {
@@ -29,7 +30,9 @@ export default function NotFound() {
   }, []);
 
   // Klucze tras z i18n/routing.js - Link sam podstawia slug EN.
-  const linki = pl
+  const linki = de
+    ? [['/pozycjonowanie-stron-internetowych', 'B2B SEO'], ['/pozycjonowanie-w-ai', 'Generative Engine Optimization'], ['/cennik-pozycjonowania', 'SEO Kosten'], ['/audyt-seo', 'SEO Audit'], ['/', 'Startseite']]
+    : pl
     ? [['/pozycjonowanie-stron-internetowych', 'Pozycjonowanie stron'], ['/pozycjonowanie-w-ai', 'Pozycjonowanie w AI'], ['/cennik-pozycjonowania', 'Cennik pozycjonowania'], ['/audyt-seo', 'Audyt SEO'], ['/blog', 'Blog']]
     : [['/pozycjonowanie-stron-internetowych', 'SEO services'], ['/pozycjonowanie-w-ai', 'AI search optimization'], ['/cennik-pozycjonowania', 'SEO pricing'], ['/audyt-seo', 'SEO audit'], ['/blog', 'Blog']];
 
@@ -38,8 +41,8 @@ export default function NotFound() {
       <Header />
       <main className="subpage-main" style={{ paddingTop: '140px', minHeight: '70vh' }}>
         <div className="container">
-          <h1>{pl ? 'Nie ma takiej strony (404)' : 'Page not found (404)'}</h1>
-          <p>{pl ? 'Adres mógł się zmienić. Zobacz najczęściej odwiedzane strony:' : 'The address may have changed. Try one of these pages:'}</p>
+          <h1>{de ? 'Seite nicht gefunden (404)' : pl ? 'Nie ma takiej strony (404)' : 'Page not found (404)'}</h1>
+          <p>{de ? 'Die Adresse hat sich möglicherweise geändert. Diese Seiten werden am häufigsten besucht:' : pl ? 'Adres mógł się zmienić. Zobacz najczęściej odwiedzane strony:' : 'The address may have changed. Try one of these pages:'}</p>
           <ul>
             {linki.map(([href, label]) => (
               <li key={href}><Link href={href}>{label}</Link></li>

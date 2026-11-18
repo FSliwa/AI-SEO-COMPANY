@@ -5,7 +5,7 @@ import Image from 'next/image';
 import './szablony.css';
 
 export default function SzHero({ tag, h1, slug, locale = 'pl', children }) {
-  const src = `/images/narzedzia/szablony/${slug}-${locale === 'en' ? 'en' : 'pl'}.webp`;
+  const src = `/images/narzedzia/szablony/${slug}-${locale === 'en' || locale === 'de' ? locale : 'pl'}.webp`;
   return (
     <section className="sz-hero" data-petla="">
       <div className="sz-tlo" aria-hidden="true" />

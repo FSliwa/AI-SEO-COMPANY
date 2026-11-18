@@ -10,6 +10,7 @@ import AttributionCapture from '@/components/AttributionCapture';
 import RuchUzytkownika from '@/components/RuchUzytkownika';
 import WebVitals from '@/components/WebVitals';
 import NewsletterPopupLoader from '@/components/NewsletterPopupLoader';
+import { STRONY_DE } from '@/lib/stronyDe';
 
 // Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
 // w HTML każdej strony z tagiem), więc może być w kodzie; zmienna środowiskowa
@@ -29,6 +30,19 @@ const GA4_ADS_ID = process.env.NEXT_PUBLIC_GA4_ADS_ID || 'G-85M09H5733';
 // tekst. Jedna encja #website miala dwie nazwy (PL i EN), obie ze sloganem.
 // Z tego samego powodu znika nadpisanie alternateName organizacji.
 function localizedJsonLd(locale) {
+  // Wersja niemiecka (18.11.2026): te same encje, niemieckie pola tekstowe, inLanguage de-DE.
+  if (locale === 'de') {
+    const de = JSON.parse(JSON.stringify(jsonLdDataPl));
+    for (const node of de['@graph']) {
+      if (node['@id'] === 'https://www.ai-seo-company.pl/#organization') {
+        node.description = 'AI SEO COMPANY ist eine SEO Agentur aus Warschau mit Schwerpunkt Generative Engine Optimization (GEO) für kleine und mittlere Unternehmen: B2B SEO, SEO Audits, Optimierung für Antworten von ChatGPT, Perplexity, Gemini und Google AI Overviews sowie Websites auf Basis von Next.js. Transparente Preise ab 450 € netto pro Monat.';
+        node.knowsAbout = ['Suchmaschinenoptimierung (SEO)', 'Generative Engine Optimization (GEO)', 'B2B SEO', 'SEO Audit', 'Webdesign'];
+        if (node.areaServed && node.areaServed.name) node.areaServed.name = 'Polen (DACH-Raum auf Anfrage)';
+      }
+      if (node['@type'] === 'WebSite' && node.inLanguage) node.inLanguage = 'de-DE';
+    }
+    return de;
+  }
   if (locale !== 'en') return jsonLdDataPl;
   const data = JSON.parse(JSON.stringify(jsonLdDataPl));
   for (const node of data['@graph']) {
@@ -64,12 +78,17 @@ export const revalidate = 3600;
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isDe = locale === 'de';
   return {
     metadataBase: new URL('https://www.ai-seo-company.pl/'),
-    title: isEn
+    title: isDe
+      ? STRONY_DE['/'].tytul
+      : isEn
       ? 'SEO Company, Marketing Agency | Search Engine Optimization'
       : 'Agencja SEO Warszawa | Pozycjonowanie Stron | AI SEO COMPANY',
-    description: isEn
+    description: isDe
+      ? STRONY_DE['/'].opis
+      : isEn
       ? 'Modern SEO agency from Warsaw. We design websites that sell, run professional SEO audits and deliver measurable search engine optimization.'
       : 'Nowoczesna agencja SEO Warszawa. Projektujemy marki i strony internetowe, które sprzedają. Kompleksowe pozycjonowanie stron, audyt SEO i web design.',
     // 5.11.2026 (PLAN-v2 rozdz. 7, FAV; BL-10 po weryfikacji): iOS nie używa ikony SVG, a
@@ -86,14 +105,14 @@ export async function generateMetadata({ params }) {
     },
     openGraph: {
       siteName: 'AI SEO COMPANY',
-      locale: isEn ? 'en_US' : 'pl_PL',
+      locale: isDe ? 'de_DE' : isEn ? 'en_US' : 'pl_PL',
       type: 'website',
       images: [
         {
           url: 'https://www.ai-seo-company.pl/og-image.jpg',
           width: 1024,
           height: 1024,
-          alt: isEn ? 'AI SEO COMPANY | SEO Agency Warsaw' : 'AI SEO COMPANY | Agencja SEO Warszawa',
+          alt: isDe ? 'AI SEO COMPANY | SEO Agentur Warschau' : isEn ? 'AI SEO COMPANY | SEO Agency Warsaw' : 'AI SEO COMPANY | Agencja SEO Warszawa',
         },
       ],
     },

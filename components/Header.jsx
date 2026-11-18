@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
+import { tr } from '@/lib/shellDe';
+import { maWersjeDe, STRONY_DE } from '@/lib/stronyDe';
 import NextLink from 'next/link';
 import { Link, usePathname, useRouter, getPathname } from '../i18n/routing';
 import { track } from '@/lib/track';
@@ -20,7 +22,7 @@ import { PANEL_DEMO_URL, PANEL_LOGIN_URL } from '@/lib/panel';
 // Integracja 5.11.2026: także hub narzędzi i N1 (partia 3; celowo bez <Contact />, grupa narzedzia
 // pkt 8) - porównanie ze `sciezka` (szablon z wstawionym slugiem), bo pathname to '/narzedzia/[slug]'.
 // 11.11.2026: także 4 strony aplikacji (bez <Contact />): przycisk prowadzi do formularza na stronie głównej.
-const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/narzedzia', '/narzedzia/generator-llms-txt', '/narzedzia/audyt-seo', '/narzedzia/autorytet-domeny', '/narzedzia/kalkulator-strat-seo', '/narzedzia/makieta-redesignu'];
+const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/impressum', '/narzedzia', '/narzedzia/generator-llms-txt', '/narzedzia/audyt-seo', '/narzedzia/autorytet-domeny', '/narzedzia/kalkulator-strat-seo', '/narzedzia/makieta-redesignu'];
 
 function UserIcon() {
   return (
@@ -82,6 +84,9 @@ export default function Header() {
   // Dzięki temu klik EN nigdy nie kończy się 404 (wcześniej /en/sprawdz-widocznosc-w-ai = 404).
   const celPrzelacznika = (loc) => {
     if (loc === lang) return sciezka;
+    // Wersja niemiecka (18.11.2026): strona tylko-DE (Impressum, SEO Agentur Polen) nie ma PL ani EN,
+    // więc przełącznik wraca na stronę główną; reszta jak dotąd (klucz routingu jest wspólny).
+    if (lang === 'de' && (STRONY_DE[sciezka]?.tylkoDe || sciezka === '/de-platzhalter' || sciezka === '/de-404')) return '/';
     // Articles can be published in one language only. Swapping the locale on the
     // same path would land on a URL that does not exist in the target language,
     // or serve the wrong language under it, so fall back to the blog index.
@@ -105,14 +110,16 @@ export default function Header() {
   };
   // Pozycja menu tylko wtedy, gdy strona istnieje w tym języku (tylko-PL nie w EN) i jest
   // opublikowana (lib/publikacja.js); inaczej null (bez linku do 404).
-  const hrefMenu = (href) => ((lang === 'pl' || !tylkoPl(href)) ? hrefJesliOpublikowana(href) : null);
+  // DE: pozycja menu tylko dla strony z niemieckim odpowiednikiem (lib/stronyDe.js).
+  const naDe = (href) => lang !== 'de' || maWersjeDe(href);
+  const hrefMenu = (href) => (lang === 'de' ? (maWersjeDe(href) ? href : null) : ((lang === 'pl' || !tylkoPl(href)) ? hrefJesliOpublikowana(href) : null));
   const hrefSprawdzarki = hrefMenu('/sprawdz-widocznosc-w-ai');
   const hrefWizytowki = hrefMenu('/pozycjonowanie-wizytowki-google');
   const hrefNarzedzi = hrefMenu('/narzedzia');
 
   useEffect(() => {
     const p = typeof window !== 'undefined' ? window.location.pathname : '';
-    const isSubpage = p !== '/' && p !== '/pl' && p !== '/en' && p !== '/pl/' && p !== '/en/';
+    const isSubpage = p !== '/' && p !== '/pl' && p !== '/en' && p !== '/de' && p !== '/pl/' && p !== '/en/' && p !== '/de/';
     const handleScroll = () => {
       setScrolled(isSubpage || window.scrollY > 40);
     };
@@ -239,8 +246,8 @@ export default function Header() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link href="/" className="logo" aria-label={lang === 'pl' ? 'Strona główna AI SEO COMPANY' : 'AI SEO COMPANY homepage'} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
-              <span className="sr-only">{lang === 'pl' ? 'Strona główna AI SEO COMPANY' : 'AI SEO COMPANY homepage'}</span>
+            <Link href="/" className="logo" aria-label={tr(lang, 'Strona główna AI SEO COMPANY', 'AI SEO COMPANY homepage')} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+              <span className="sr-only">{tr(lang, 'Strona główna AI SEO COMPANY', 'AI SEO COMPANY homepage')}</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 240 1802 294" 
@@ -270,12 +277,12 @@ export default function Header() {
                 dodatkowo link do wynikow wdrozen z danymi GSC (wpis tylko w PL).
                 Widocznosc od 1200 px bez zmian (globals.css). */}
             <div className="header-award-badges">
-              <a href={PANEL_DEMO_URL} className="badge-pill badge-pill--link" data-cta="header_panel_demo" style={{
+              {lang !== 'de' && (<a href={PANEL_DEMO_URL} className="badge-pill badge-pill--link" data-cta="header_panel_demo" style={{
                 color: naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
                 background: naJasnym ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255,255,255,0.1)',
                 borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
                 transition: 'all 0.7s ease'
-              }}>{lang === 'pl' ? 'Demo panelu klienta' : 'Client portal demo'}</a>
+              }}>{tr(lang, 'Demo panelu klienta', 'Client portal demo')}</a>)}
               {lang === 'pl' && (
                 <Link href="/blog/wyniki-wdrozen-seo-2026" className="badge-pill badge-pill--link" style={{
                   color: naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.85)',
@@ -295,7 +302,7 @@ export default function Header() {
                 niesie teraz aria-pressed, a separator "|" nie jest czytany
                 (05.10.2026). 5.11.2026 (T1b): przyciski zamienione na linki <a>
                 z hrefLang i lang; stan aktywny niesie aria-current. */}
-            <div className="lang-switcher" role="group" aria-label={lang === 'pl' ? 'Język strony' : 'Site language'} style={{
+            <div className="lang-switcher" role="group" aria-label={tr(lang, 'Język strony', 'Site language')} style={{
               background: naJasnym ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255,255,255,0.1)',
               borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.2)',
               color: naJasnym ? 'var(--color-text-dark)' : '#FFFFFF',
@@ -306,7 +313,7 @@ export default function Header() {
                 hrefLang="pl"
                 lang="pl"
                 prefetch={false}
-                className={`lang-btn ${lang === 'pl' ? 'active' : ''}`}
+                className={`lang-btn ${tr(lang, 'active', '')}`}
                 aria-current={lang === 'pl' ? 'true' : undefined}
                 style={{ 
                   color: lang === 'pl' ? (naJasnym ? 'var(--color-text-dark)' : '#FFFFFF') : (naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'), 
@@ -334,16 +341,39 @@ export default function Header() {
               >
                 EN
               </NextLink>
+              {/* Wersja niemiecka: przycisk tylko dla strony z niemieckim odpowiednikiem i tylko przy aktywnej wersji DE (lib/stronyDe.js). */}
+              {maWersjeDe(sciezka) && (
+                <>
+                  <span aria-hidden="true" style={{ opacity: 0.35 }}>|</span>
+                  <NextLink
+                    href={hrefJezyka('de')}
+                    hrefLang="de"
+                    lang="de"
+                    prefetch={false}
+                    className={`lang-btn ${lang === 'de' ? 'active' : ''}`}
+                    aria-current={lang === 'de' ? 'true' : undefined}
+                    style={{
+                      color: lang === 'de' ? (naJasnym ? 'var(--color-text-dark)' : '#FFFFFF') : (naJasnym ? 'var(--color-text-muted)' : 'rgba(255,255,255,0.5)'),
+                      transition: 'color 0.7s ease'
+                    }}
+                    onClick={() => onLangClick('de')}
+                    title="Deutsch"
+                  >
+                    DE
+                  </NextLink>
+                </>
+              )}
             </div>
 
             {/* Logowanie do panelu klienta i panelu administratora. Drugorzędne
                 wobec „Wyceń projekt”, więc obrys zamiast wypełnienia. Na telefonie
                 zostaje sama ikona 44x44, bo „Wyceń projekt” jest tam ukryty
                 i nagłówek ma miejsce tylko na ikony (17.10.2026). */}
+            {lang !== 'de' && (
             <a
               href={PANEL_LOGIN_URL}
               className="header-login-btn"
-              aria-label={lang === 'pl' ? 'Zaloguj się do panelu klienta' : 'Log in to the client portal'}
+              aria-label={tr(lang, 'Zaloguj się do panelu klienta', 'Log in to the client portal')}
               style={{
                 color: naJasnym ? 'var(--color-text-dark)' : '#FFFFFF',
                 borderColor: naJasnym ? 'var(--color-border)' : 'rgba(255,255,255,0.35)',
@@ -352,15 +382,16 @@ export default function Header() {
               }}
             >
               <UserIcon />
-              <span className="header-login-label">{lang === 'pl' ? 'Zaloguj się' : 'Log in'}</span>
+              <span className="header-login-label">{tr(lang, 'Zaloguj się', 'Log in')}</span>
             </a>
+            )}
 
             {/* Header Hire Us Pill Button. Na stronach bez sekcji kontaktu
                 (regulamin, cookies) klikniecie zmienialo tylko adres na
                 #kontakt - przejdzDoSekcji przenosi wtedy na strone glowna
                 (05.10.2026). 5.11.2026 (A3b/BL-02): na tych stronach takze href
                 prowadzi wprost do formularza strony glownej (bez JS i dla crawlera). */}
-            <a href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
+            <a href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
               background: 'var(--w-pomarancz)',
               color: 'var(--w-na-pomaranczu)',
               transition: 'all 0.7s ease'
@@ -383,8 +414,8 @@ export default function Header() {
               onClick={toggleMenu}
               aria-expanded={menuOpen}
               aria-controls="menu-glowne"
-              aria-label={lang === 'pl' ? 'Otwórz menu' : 'Open menu'}
-              title={lang === 'pl' ? 'Otwórz menu' : 'Open menu'}
+              aria-label={tr(lang, 'Otwórz menu', 'Open menu')}
+              title={tr(lang, 'Otwórz menu', 'Open menu')}
             >
               ≡
             </button>
@@ -446,8 +477,8 @@ export default function Header() {
               className="kota-menu-trigger close-variant"
               style={{ transitionProperty: 'transform, background-color, color, box-shadow' }}
               onClick={() => closeMenu(true)}
-              aria-label={lang === 'pl' ? 'Zamknij menu' : 'Close menu'}
-              title={lang === 'pl' ? 'Zamknij menu' : 'Close menu'}
+              aria-label={tr(lang, 'Zamknij menu', 'Close menu')}
+              title={tr(lang, 'Zamknij menu', 'Close menu')}
             >
               ✕
             </button>
@@ -463,7 +494,7 @@ export default function Header() {
             {/* Linki menu nie byly w zadnym <nav> - strona glowna miala 0
                 punktow orientacyjnych nawigacji (05.10.2026). W CSS nie ma
                 selektorow "> ul", wiec uklad sie nie zmienia. */}
-            <nav aria-label={lang === 'pl' ? 'Menu główne' : 'Main menu'}>
+            <nav aria-label={tr(lang, 'Menu główne', 'Main menu')}>
               <ul className="kota-fullscreen-links" style={{ marginTop: 0 }}>
                 <li style={{ '--delay': '0.1s' }}>
                   <Link href="/#why-us" onClick={closeMenu}>{t('results')}</Link>
@@ -478,66 +509,76 @@ export default function Header() {
                   <Link href="/#portfolio" onClick={closeMenu}>{t('process')}</Link>
                 </li>
                 <li style={{ '--delay': '0.3s' }}>
-                  <Link href="/audyt-seo" onClick={closeMenu}>{lang === 'pl' ? 'Audyt SEO' : 'SEO Audit'}</Link>
+                  <Link href="/audyt-seo" onClick={closeMenu}>{tr(lang, 'Audyt SEO', 'SEO Audit')}</Link>
                 </li>
                 <li style={{ '--delay': '0.35s' }}>
-                  <Link href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie' : 'SEO Services'}</Link>
+                  <Link href="/pozycjonowanie-stron-internetowych" onClick={closeMenu}>{tr(lang, 'Pozycjonowanie', 'SEO Services')}</Link>
                 </li>
+                {naDe('/seo-lokalne-warszawa') && (
                 <li style={{ '--delay': '0.4s' }}>
-                  <Link href="/seo-lokalne-warszawa" onClick={closeMenu}>{lang === 'pl' ? 'Lokalne SEO' : 'Local SEO'}</Link>
+                  <Link href="/seo-lokalne-warszawa" onClick={closeMenu}>{tr(lang, 'Lokalne SEO', 'Local SEO')}</Link>
                 </li>
+                )}
                 {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
                 {hrefWizytowki && (
                   <li style={{ '--delay': '0.41s' }}>
-                    <Link href={hrefWizytowki} onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie wizytówki Google' : 'Google Business Profile'}</Link>
+                    <Link href={hrefWizytowki} onClick={closeMenu}>{tr(lang, 'Pozycjonowanie wizytówki Google', 'Google Business Profile')}</Link>
                   </li>
                 )}
                 <li style={{ '--delay': '0.42s' }}>
-                  <Link href="/pozycjonowanie-w-ai" onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search'}</Link>
+                  <Link href="/pozycjonowanie-w-ai" onClick={closeMenu}>{tr(lang, 'Pozycjonowanie w AI', 'AI Search')}</Link>
                 </li>
                 {/* Sprawdzarka istnieje tylko po polsku (EN = 404; lista stron tylko-PL: lib/plOnly.js). */}
                 {hrefSprawdzarki && (
                   <li style={{ '--delay': '0.43s' }}>
-                    <Link href={hrefSprawdzarki} onClick={closeMenu}>{lang === 'pl' ? 'Sprawdź widoczność w AI' : 'AI Visibility Check'}</Link>
+                    <Link href={hrefSprawdzarki} onClick={closeMenu}>{tr(lang, 'Sprawdź widoczność w AI', 'AI Visibility Check')}</Link>
                   </li>
                 )}
                 {/* Narzędzia (PLAN-v2 6.9): tylko PL i dopiero po publikacji partii 3. */}
                 {hrefNarzedzi && (
                   <li style={{ '--delay': '0.44s' }}>
-                    <Link href={hrefNarzedzi} onClick={closeMenu}>{lang === 'pl' ? 'Narzędzia' : 'Free Tools'}</Link>
+                    <Link href={hrefNarzedzi} onClick={closeMenu}>{tr(lang, 'Narzędzia', 'Free Tools')}</Link>
                   </li>
                 )}
+                {naDe('/projektowanie-stron-internetowych') && (
                 <li style={{ '--delay': '0.45s' }}>
-                  <Link href="/projektowanie-stron-internetowych" onClick={closeMenu}>{lang === 'pl' ? 'Tworzenie Stron' : 'Web Design'}</Link>
+                  <Link href="/projektowanie-stron-internetowych" onClick={closeMenu}>{tr(lang, 'Tworzenie Stron', 'Web Design')}</Link>
                 </li>
+                )}
+                {naDe('/blog') && (
                 <li style={{ '--delay': '0.5s' }}>
                   <Link href="/blog" onClick={closeMenu}>{t('blog')}</Link>
                 </li>
+                )}
                 <li style={{ '--delay': '0.55s' }}>
-                  <Link href="/o-nas" onClick={closeMenu}>{lang === 'pl' ? 'O Nas' : 'About Us'}</Link>
+                  <Link href="/o-nas" onClick={closeMenu}>{tr(lang, 'O Nas', 'About Us')}</Link>
                 </li>
                 <li style={{ '--delay': '0.6s' }}>
-                  <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Kontakt' : 'Contact'}</Link>
+                  <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{tr(lang, 'Kontakt', 'Contact')}</Link>
                 </li>
                 <li style={{ '--delay': '0.65s' }}>
-                  <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{lang === 'pl' ? 'Darmowa Wycena' : 'Free Quote'}</Link>
+                  <Link href={homeHash('kontakt', lang)} onClick={goToContact} data-cta="menu">{tr(lang, 'Darmowa Wycena', 'Free Quote')}</Link>
                 </li>
+                {naDe('/panel-klienta') && (
                 <li style={{ '--delay': '0.7s' }}>
-                  <Link href="/panel-klienta" onClick={closeMenu}>{lang === 'pl' ? 'Panel klienta' : 'Client Portal'}</Link>
+                  <Link href="/panel-klienta" onClick={closeMenu}>{tr(lang, 'Panel klienta', 'Client Portal')}</Link>
                 </li>
+                )}
+                {lang !== 'de' && (
                 <li style={{ '--delay': '0.75s' }}>
-                  <a href={PANEL_LOGIN_URL} onClick={closeMenu}>{lang === 'pl' ? 'Logowanie do panelu' : 'Portal login'}</a>
+                  <a href={PANEL_LOGIN_URL} onClick={closeMenu}>{tr(lang, 'Logowanie do panelu', 'Portal login')}</a>
                 </li>
+                )}
               </ul>
             </nav>
 
             <div className="kota-fullscreen-footer" style={{ marginTop: 'auto' }}>
               <div className="footer-contact">
-                <span className="footer-label">{lang === 'pl' ? 'Napisz do nas' : 'Email Us'}</span>
+                <span className="footer-label">{tr(lang, 'Napisz do nas', 'Email Us')}</span>
                 <a href="mailto:kontakt@ai-seo-company.pl" className="footer-value" data-cta="menu">kontakt@ai-seo-company.pl</a>
               </div>
               <div className="footer-contact">
-                <span className="footer-label">{lang === 'pl' ? 'Zadzwoń' : 'Call us'}</span>
+                <span className="footer-label">{tr(lang, 'Zadzwoń', 'Call us')}</span>
                 <a href="tel:+48518815055" className="footer-value" data-cta="menu">518 815 055</a>
               </div>
             </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslations, useLocale } from 'next-intl';
+import { tr } from '@/lib/shellDe';
 import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 import { track } from '@/lib/track';
@@ -27,6 +28,12 @@ const PASEK = {
     tekst: 'We use Google cookies for statistics and ads only with your consent.',
     polityka: 'Cookie policy',
     ustawienia: 'Settings',
+  },
+  // Wersja niemiecka (18.11.2026): te same fakty; Einwilligung = zgoda, Datenschutz = polityka prywatności.
+  de: {
+    tekst: 'Google-Cookies für Statistik und Werbung verwenden wir nur mit Ihrer Einwilligung.',
+    polityka: 'Datenschutzerklärung',
+    ustawienia: 'Einstellungen',
   },
 };
 
@@ -413,7 +420,7 @@ export default function CookiesBanner() {
                 <button
                   ref={closeBtnRef}
                   type="button"
-                  aria-label={lang === 'pl' ? 'Zamknij' : 'Close'}
+                  aria-label={tr(lang, 'Zamknij', 'Close')}
                   onClick={() => setShowManageModal(false)}
                   style={{
                     background: 'none',
@@ -453,7 +460,7 @@ export default function CookiesBanner() {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem 0.75rem', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
                   <span style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--w-tusz)', flex: '1 1 8rem', overflowWrap: 'normal' }}>{t('essentialTitle')}</span>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#059669', background: '#D1FAE5', padding: '0.2rem 0.6rem', borderRadius: '9999px', whiteSpace: 'nowrap', flexShrink: 0 }}>
-                    {lang === 'pl' ? 'Wymagane' : 'Always Active'}
+                    {tr(lang, 'Wymagane', 'Always Active')}
                   </span>
                 </div>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--color-text-main)', lineHeight: 1.45 }}>

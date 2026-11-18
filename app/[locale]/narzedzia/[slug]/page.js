@@ -7,6 +7,11 @@ import SzablonRaport from '@/components/narzedzia/SzablonRaport';
 import { AudytSeoStrona, AutorytetStrona, KalkulatorStrona, MakietaStrona } from '@/components/narzedzia/StronyAplikacji';
 import { metadataStronyPl, parametryPl, wymagajStronyPl } from '@/lib/stronaPl';
 import { STRONY_NARZEDZI, metaStrony, stronaNarzedzia } from '@/lib/narzedzia';
+import { szablonDe } from '@/lib/szablony/de';
+import AudytSeoStronaDe from '@/components/de/narzedzia/AudytSeoStronaDe';
+import GeneratorLlmsTxtDe from '@/components/de/narzedzia/GeneratorLlmsTxtDe';
+import AutorytetStronaDe from '@/components/de/narzedzia/AutorytetStronaDe';
+import SzablonStronaDe from '@/components/de/narzedzia/SzablonStronaDe';
 
 // Strony pod /narzedzia/<slug> (PLAN-v2 6.10 N1 i 6.11 S1, partia 3 / W9; TS-03; 5.11.2026).
 // generateStaticParams w kształcie { locale: 'pl', slug } (samo { slug } daje 0 ścieżek i 404, TS-03)
@@ -25,6 +30,14 @@ const KOMPONENTY = {
   'makieta-redesignu': MakietaStrona,
 };
 
+// Wersja niemiecka (18.11.2026, DE_OPUBLIKOWANE w lib/stronyDe.js): trzy narzędzia i dwa szablony mają strony DE
+// (components/de/narzedzia, lib/szablony/*.de.js). Metadane DE składa metadataStronyPl (lib/stronaPl.js) z rejestru stronyDe.
+const KOMPONENTY_DE = {
+  'generator-llms-txt': GeneratorLlmsTxtDe,
+  'audyt-seo': AudytSeoStronaDe,
+  'autorytet-domeny': AutorytetStronaDe,
+};
+
 export function generateStaticParams() {
   return parametryPl('/narzedzia/', STRONY_NARZEDZI.map((s) => s.slug));
 }
@@ -40,6 +53,14 @@ export async function generateMetadata({ params }) {
 export default async function NarzedziePage({ params }) {
   const { locale, slug } = await params;
   wymagajStronyPl(locale, `/narzedzia/${slug}`);
+  if (locale === 'de') {
+    setRequestLocale(locale);
+    const szDe = szablonDe(slug);
+    if (szDe) return <SzablonStronaDe dane={szDe} />;
+    const KomponentDe = KOMPONENTY_DE[slug];
+    if (!KomponentDe) notFound();
+    return <KomponentDe />;
+  }
   const szablon = szablonBySlug(slug);
   const Komponent = KOMPONENTY[slug];
   if ((!Komponent && !szablon) || !stronaNarzedzia(slug)) notFound();

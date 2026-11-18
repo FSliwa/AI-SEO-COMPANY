@@ -1,5 +1,6 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return metadataDe('/audyt-seo', { languages: { pl: 'https://www.ai-seo-company.pl/audyt-seo', en: 'https://www.ai-seo-company.pl/en/seo-audit' } });
   return {
   title: locale === 'en' ? 'SEO Audit Services | Technical SEO Audit & Keyword Analysis' : 'Audyt SEO | Analiza i Optymalizacja SEO Strony w 5 Dni',
   description: locale === 'en' ? 'SEO audit services by search engine optimization consultants: technical website audit, SEO keyword analysis and a prioritised fix list in plain English.' : 'Kompleksowy audyt SEO. Znajdziemy błędy techniczne i dostaniesz listę napraw z priorytetami, a po jej wdrożeniu optymalizacja SEO poprawi widoczność Twojej strony w wynikach Google.',
@@ -8,7 +9,8 @@ export async function generateMetadata({ params }) {
     languages: {
       'pl': 'https://www.ai-seo-company.pl/audyt-seo',
       'x-default': 'https://www.ai-seo-company.pl/audyt-seo',
-      'en': 'https://www.ai-seo-company.pl/en/seo-audit'
+      'en': 'https://www.ai-seo-company.pl/en/seo-audit',
+      ...hreflangDe('/audyt-seo')
     }
   },
 };
@@ -18,6 +20,8 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import AudytClient from '@/components/AudytClient';
+import SeoAuditDe from '@/components/de/SeoAuditDe';
+import { metadataDe, hreflangDe } from '@/lib/stronyDe';
 import ServiceSchema from '@/components/ServiceSchema';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 
@@ -268,7 +272,9 @@ const auditPortfolioCases = [
   }
 ];
 
-export default function AudytSeoPage() {
+export default async function AudytSeoPage({ params }) {
+  const { locale } = await params;
+  if (locale === 'de') return <SeoAuditDe />;
   return (
     <>
       <ServiceSchema variant="audyt-seo" />

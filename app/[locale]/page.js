@@ -1,5 +1,6 @@
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return metadataDe('/', { languages: { pl: 'https://www.ai-seo-company.pl/', en: 'https://www.ai-seo-company.pl/en' } });
   return {
   // 23.10.2026: title i description PL przywrocone po 2f04f61 (20.10, "Agencja
   // AI SEO Warszawa | Pozycjonowanie Stron i Marketing"). Tamta wersja gubila
@@ -29,7 +30,8 @@ export async function generateMetadata({ params }) {
     languages: {
       'pl': 'https://www.ai-seo-company.pl/',
       'x-default': 'https://www.ai-seo-company.pl/',
-      'en': 'https://www.ai-seo-company.pl/en'
+      'en': 'https://www.ai-seo-company.pl/en',
+      ...hreflangDe('/')
     }
   },
 };
@@ -49,8 +51,12 @@ import Blog from '@/components/Blog';
 import HomeFaq from '@/components/HomeFaq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import HomeDe from '@/components/de/HomeDe';
+import { metadataDe, hreflangDe } from '@/lib/stronyDe';
 
-export default function Home() {
+export default async function Home({ params }) {
+  const { locale } = await params;
+  if (locale === 'de') return <HomeDe />;
   // BYL TU: ReactDOM.preload('/scene.splinecode.br', { fetchPriority: 'high' }).
   // Usuniete 22.09.2026 po pomiarze na produkcji. Preload jest wskazowka dla
   // przegladarki wystawiana przy parsowaniu HTML - NIE wie nic o viewporcie,
