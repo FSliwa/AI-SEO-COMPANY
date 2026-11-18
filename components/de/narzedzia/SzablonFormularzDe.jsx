@@ -26,7 +26,7 @@ export default function SzablonFormularzDe({ endpoint, plik, plan, idPrefiks, et
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) return setState({ status: 'error', error: data.error || 'Das Senden hat nicht geklappt. Bitte versuchen Sie es gleich noch einmal.' });
-      track('generate_lead', { event_category: kategoria, plan, currency: 'PLN', value: 100 });
+      track('generate_lead', { lead_source: 'template', event_category: kategoria, plan, currency: 'PLN', value: 100 });
       setState({ status: 'done', error: null });
     } catch {
       setState({ status: 'error', error: 'Keine Verbindung. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.' });

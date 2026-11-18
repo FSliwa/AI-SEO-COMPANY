@@ -10,6 +10,7 @@
 // Texte (Schritte, FAQ, Grenzen) kommen aus lib/de/kiSichtbarkeit.js.
 
 import { useEffect, useRef, useState } from 'react';
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów
 import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
@@ -18,7 +19,6 @@ import AppleFaq from '@/components/service/AppleFaq';
 import AnswerBox from '@/components/AnswerBox';
 import CompareTable from '@/components/CompareTable';
 import WebAppSchema from '@/components/WebAppSchema';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
 import { DEMO, PANEL_API, wywolajNarzedzie, odblokuj } from '@/lib/narzedziaApi';
@@ -26,6 +26,9 @@ import { useParametrUrl, zapiszParametry, linkZParametrami } from '@/lib/narzedz
 import { WIDOCZNOSC } from '@/lib/narzedziaLiczby';
 import { maWersjeDe, STRONY_DE } from '@/lib/stronyDe';
 import { Postep } from '@/components/narzedzia/Wspolne';
+import Zwin from '@/components/narzedzia/Zwin';
+import { zachowaniePrzewijania } from '@/lib/ruch';
+import '@/components/narzedzia/ruch-c.css';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
 import { Sekcja } from '@/components/narzedzia/Sekcja';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
@@ -113,9 +116,11 @@ function opisBramki(p, top, topZr) {
   return `Wir zeigen ${lacz(co)} und senden Ihnen den Bericht per E-Mail.`;
 }
 
-function Znak({ stan }) {
-  if (stan === 'brak') return <span className="narz-znak narz-znak--brak" title="Google hat keine AI Overview angezeigt">–</span>;
-  return stan ? <span className="narz-znak narz-znak--tak" aria-label="genannt">✓</span> : <span className="narz-znak narz-znak--nie" aria-label="nicht genannt">✕</span>;
+// 18.11.2026 (anim-narzedzia-c): znaczniki wchodzą staggerem 50 ms (r-stan, --i = numer pytania, maks. 6 kroków).
+function Znak({ stan, i = 0 }) {
+  const ruch = { '--i': i };
+  if (stan === 'brak') return <span className="narz-znak narz-znak--brak r-stan" style={ruch} title="Google hat keine AI Overview angezeigt">–</span>;
+  return stan ? <span className="narz-znak narz-znak--tak r-stan" style={ruch} aria-label="genannt">✓</span> : <span className="narz-znak narz-znak--nie r-stan" style={ruch} aria-label="nicht genannt">✕</span>;
 }
 
 function kolorOceny(w) {
@@ -172,6 +177,7 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
   const [stan, setStan] = useState({ status: 'idle', blad: null });
   const ref = useRef(null);
   const widziana = useRef(false);
+  const potwRef = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -198,23 +204,21 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
       nick: String(fd.get('nick') || ''),
       lang: 'de',
     };
-    setStan({ status: 'loading', blad: null });
+    setStan((x) => ({ status: 'loading', blad: x.blad })); // tekst poprzedniego błędu zostaje na czas zwijania
     const r = await odblokuj(body);
     if (!r.ok) return setStan({ status: 'error', blad: r.blad });
-    track('generate_lead', { event_category: 'Narzędzia', plan: 'widocznosc_ai', currency: 'PLN', value: 50 });
+    track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: 'widocznosc_ai', currency: 'PLN', value: 50 });
     setStan({ status: 'done', blad: null });
     return onOdblokowano?.(r.pelny);
   }
 
-  if (stan.status === 'done') {
-    return (
-      <div className="narz-bramka narz-bramka--gotowe" role="status">
-        <p className="narz-bramka-tytul">Fertig: Das vollständige Ergebnis steht unten, und den Bericht haben wir Ihnen per E-Mail gesendet.</p>
-      </div>
-    );
-  }
+  const gotowe = stan.status === 'done';
+  // Po wysłaniu fokus idzie na potwierdzenie (formularz traci przycisk, bez tego fokus ląduje na BODY).
+  useEffect(() => { if (gotowe) potwRef.current?.focus({ preventScroll: true }); }, [gotowe]);
 
   return (
+    <>
+    <Zwin otwarte={!gotowe} wejscie={false}>
     <form ref={ref} className="narz-bramka" onSubmit={wyslij} aria-labelledby="bramka-widocznosc-ai-de">
       <div className="narz-bramka-glowa">
         <span className="narz-bramka-ikona" aria-hidden="true">
@@ -229,7 +233,7 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
       <div className="narz-bramka-wiersz">
         <label htmlFor="email-widocznosc-ai-de" className="sr-only">E-Mail-Adresse</label>
         <input id="email-widocznosc-ai-de" name="email" type="email" required maxLength={200} autoComplete="email" inputMode="email" placeholder="ihre@email.de" className="narz-pole" />
-        <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_widocznosc_ai_odblokuj">
+        <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta="narzedzie_widocznosc_ai_odblokuj">
           {stan.status === 'loading' ? 'Wird gesendet …' : przycisk}
         </button>
       </div>
@@ -241,8 +245,15 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
         </span>
       </label>
       <p className="narz-bramka-mikro">Der Bericht erreicht Ihren Posteingang innerhalb einer Minute. Das vollständige Ergebnis sehen Sie außerdem sofort hier.</p>
-      {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
+      <Zwin otwarte={stan.status === 'error'}><p role="alert" className="narz-blad">{stan.blad}</p></Zwin>
     </form>
+    </Zwin>
+    {gotowe && (
+      <div className="narz-bramka narz-bramka--gotowe r-stan" role="status" ref={potwRef} tabIndex={-1}>
+        <p className="narz-bramka-tytul">Fertig: Das vollständige Ergebnis steht unten, und den Bericht haben wir Ihnen per E-Mail gesendet.</p>
+      </div>
+    )}
+    </>
   );
 }
 
@@ -254,7 +265,13 @@ function PruefTool() {
   const [bledyPytan, setBledyPytan] = useState([null, null, null]);
   const [mapaDemo, setMapaDemo] = useState(null);
   const formRef = useRef(null);
+  const pelnyRef = useRef(null);
   const pytaniaRef = useRef(null);
+
+  // Po odblokowaniu przewijamy do początku pełnych odpowiedzi (smooth tylko bez reduce).
+  useEffect(() => {
+    if (stan.pelny) pelnyRef.current?.scrollIntoView({ block: 'start', behavior: zachowaniePrzewijania() });
+  }, [stan.pelny]);
 
   // ?firma=, ?branza=, ?miasto=, ?url= füllen nur die Felder aus (kein Start: Limit pro IP und API-Kosten).
   useParametrUrl(['firma', 'marka', 'branza', 'miasto', 'url'], (w) => {
@@ -353,7 +370,7 @@ function PruefTool() {
           </div>
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
-            <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading' || stan.status === 'pytania'} data-cta="ai_check_submit">
+            <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading' || stan.status === 'pytania'} aria-busy={stan.status === 'loading' || stan.status === 'pytania' ? 'true' : undefined} data-cta="ai_check_submit">
               {stan.status === 'loading' ? 'Wir fragen die KI-Modelle … (bis 2 Min.)' : stan.status === 'pytania' ? 'Fragen werden formuliert …' : 'KI-Sichtbarkeit kostenlos prüfen'}
             </button>
           </div>
@@ -369,7 +386,7 @@ function PruefTool() {
       )}
 
       {stan.status !== 'done' && propozycje && (
-        <form ref={pytaniaRef} className="narz-formularz" onSubmit={zadajPytania} noValidate aria-labelledby="ai-pytania-tytul">
+        <form ref={pytaniaRef} className="narz-formularz r-stan" onSubmit={zadajPytania} noValidate aria-labelledby="ai-pytania-tytul">
           <div>
             <h2 id="ai-pytania-tytul" className="narz-h2" style={{ marginTop: 0 }}>Diese 3 Fragen stellen wir den KI-Modellen</h2>
             <p className="narz-mikro" style={{ marginTop: 0 }}>
@@ -385,7 +402,7 @@ function PruefTool() {
             const dlugosc = zwin(q).length;
             const idOpis = `ai-pytanie-${i}-opis`;
             return (
-              <div key={i}>
+              <div key={i} className="r-stan" style={{ '--i': i + 1 }}>
                 <label htmlFor={`ai-pytanie-${i}`} className="narz-etykieta">
                   Frage {i + 1} <span style={OPCJONALNIE}>({ETYKIETA_ZRODLA[zrodlo]})</span>
                 </label>
@@ -399,13 +416,13 @@ function PruefTool() {
                   readOnly={stan.status === 'loading'}
                   aria-invalid={bledyPytan[i] ? 'true' : undefined}
                   aria-describedby={idOpis}
-                  className="narz-pole"
+                  className="narz-pole c-pole"
                   style={{ resize: 'vertical', lineHeight: 1.45, fieldSizing: 'content', minHeight: '4.5rem' }}
                 />
                 <div id={idOpis} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '0.25rem 1rem' }}>
                   {bledyPytan[i] ? <p className="narz-blad" role="alert" style={{ margin: '0.25rem 0 0' }}>{bledyPytan[i]}</p> : <span />}
                   <span className="narz-mikro" style={{ display: 'inline-flex', gap: '1rem', alignItems: 'baseline', color: dlugosc > PYTANIE.max ? 'var(--n-zle)' : undefined }}>
-                    {zmienione && stan.status !== 'loading' && <button type="button" className="narz-link" onClick={() => zmienPytanie(i, propozycje.pytania[i])}>Vorschlag wiederherstellen</button>}
+                    {zmienione && <button type="button" className="narz-link" disabled={stan.status === 'loading'} onClick={() => zmienPytanie(i, propozycje.pytania[i])}>Vorschlag wiederherstellen</button>}
                     <span aria-label={`${dlugosc} von ${PYTANIE.max} Zeichen`}>{dlugosc}/{PYTANIE.max}</span>
                   </span>
                 </div>
@@ -413,7 +430,7 @@ function PruefTool() {
             );
           })}
           <div className="narz-kalk-akcja">
-            <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="ai_check_run">
+            <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta="ai_check_run">
               {stan.status === 'loading' ? 'Wir fragen die KI-Modelle … (bis 2 Min.)' : 'Diese Fragen stellen'}
             </button>
           </div>
@@ -450,9 +467,9 @@ function PruefTool() {
                   <tr key={x.id} className={x.dostepny ? '' : 'niedostepny'}>
                     <th scope="row"><span className="narz-silnik">{x.etykieta}</span><span className="narz-mikro">{x.opis}{x.dostepny && x.wyszukiwanie === false && !/wyszukiwania|web search|Websuche/i.test(x.opis) ? ' · ohne Websuche' : ''}</span></th>
                     {x.dostepny
-                      ? p.pytania.map((q) => {
+                      ? p.pytania.map((q, qi) => {
                         const c = p.siatka.find((g) => g.silnik === x.id && g.pytanie === q);
-                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} /> : '–'}</td>;
+                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} i={qi} /> : '–'}</td>;
                       })
                       : <td colSpan={p.pytania.length} className="narz-mikro">{x.powod}</td>}
                     <td>{x.dostepny ? `${x.wzmianki}/${x.odpowiedzi}` : '–'}</td>
@@ -474,7 +491,7 @@ function PruefTool() {
           </details>
 
           {!stan.pelny && (top.length > 0 || topZr.length > 0) && (
-            <div className="narz-pelne-ai">
+            <div key="top" className="narz-pelne-ai">
               {top.length > 0 && (
                 <div role="region" aria-labelledby="ai-top-firmy">
                   <h2 id="ai-top-firmy" className="narz-h2">Wen die Modelle am häufigsten nennen</h2>
@@ -499,9 +516,9 @@ function PruefTool() {
           )}
 
           {!stan.pelny ? (
-            <div className="narz-zablokowane">
-              <ul className="narz-problemy narz-zamglone" aria-hidden="true">
-                {[1, 2, 3].map((i) => (
+            <div key="bramka" className="narz-zablokowane">
+              <ul className="narz-problemy narz-zamglone wid-atrapa" aria-hidden="true">
+                {Array.from({ length: Math.min(12, Math.max(3, Number(p.odpowiedzi) || 3)) }, (_, i) => i + 1).map((i) => (
                   <li key={i} className="narz-problem"><p className="narz-problem-tytul narz-atrapa">Wen das Modell statt Ihres Unternehmens empfiehlt</p><p className="narz-problem-opis narz-atrapa">Ein Ausschnitt der Antwort und die Seiten, auf die sich die KI beruft</p></li>
                 ))}
               </ul>
@@ -515,8 +532,8 @@ function PruefTool() {
               />
             </div>
           ) : (
-            <div className="narz-pelne-ai">
-              <div className="narz-bramka narz-bramka--gotowe" role="status">
+            <div key="pelny" ref={pelnyRef} className="narz-pelne-ai c-skok">
+              <div className="narz-bramka narz-bramka--gotowe r-stan" role="status">
                 <p className="narz-bramka-tytul">Fertig: Das vollständige Ergebnis steht unten, und den Bericht haben wir Ihnen per E-Mail gesendet.</p>
               </div>
               {stan.pelny.konkurenci?.length > 0 && (
@@ -567,13 +584,13 @@ export default function KiSichtbarkeitPruefenDe() {
       <section className={st.hero} style={{ paddingTop: 'clamp(112px, 12vw, 152px)', paddingBottom: '80px' }}>
         <Ozdoba rodzaj="ai" />
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ margin: '0 0 1.25rem' }}>
+          <div className="section-header" style={{ margin: '0 0 1.25rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {KOPF.tag}
             </div>
             <h1 lang="de" style={{ ...s.h1, hyphens: 'auto', overflowWrap: 'break-word' }}>{reg.h1}</h1>
             <p lang="de" className={st.lead} style={s.lead}>{KOPF.lead}</p>
-          </Reveal>
+          </div>
 
           <PruefTool />
 

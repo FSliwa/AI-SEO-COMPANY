@@ -1,7 +1,7 @@
 // Niemiecka strona szablonu do pobrania (18.11.2026, de-narzedzia): /de/tools/redaktionsplan-vorlage i /de/tools/seo-checkliste.
 // Odpowiednik components/narzedzia/SzablonStrona.jsx (PL/EN) z tekstami DE. Komponent serwerowy. Dane: lib/szablony/*.de.js
 // scalone w lib/szablony/de.js (kontrakt jak w lib/szablony/README.md, klucz `de`). Schema: Article z hasPart DigitalDocument
-// (inLanguage de), opcjonalnie HowTo z krokami, FAQPage (AppleFaq), BreadcrumbList (Breadcrumbs). Brak linku do huba
+// (inLanguage de), (HowTo usuniety 18.11.2026: kroki nie sa widoczne na stronie) FAQPage (AppleFaq), BreadcrumbList (Breadcrumbs). Brak linku do huba
 // /narzedzia (nie ma strony DE w fazie startowej), więc okruszki 2-poziomowe.
 
 import Header from '@/components/Header';
@@ -15,7 +15,9 @@ import SzHero from '@/components/narzedzia/SzHero';
 import SzNawigacja from '@/components/narzedzia/SzNawigacja';
 import '@/components/narzedzia/szablony.css';
 import { Link } from '@/i18n/routing';
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
+import { dataTresci, pierwszaPublikacja } from '@/lib/lastmod';
 import { BASE, ENDPOINT_SZABLONOW } from '@/lib/narzedzia';
 import { ZrodlaDe, dataDlugaDe } from './UkladDe';
 import SzablonFormularzDe from './SzablonFormularzDe';
@@ -40,19 +42,11 @@ export default function SzablonStronaDe({ dane }) {
   const wpis = wpisDe(klucz);
   const url = urlDe(klucz);
   const sciezka = url ? url.replace(BASE, '') : `/de/tools/${dane.slug}`;
-  const data = dane.opublikowanoDe ?? '2026-11-18';
+  // Daty z jednego źródła (lib/lastmod.json, ustawia je `npm run wydanie`); do pierwszego wydania DE
+  // zapas to data publikacji z danych szablonu.
+  const dataPubl = (url && pierwszaPublikacja(url)) || dane.opublikowanoDe || '2026-11-18';
+  const data = (url && dataTresci(url)) || dataPubl;
   const powiazane = (d.powiazane || []).filter((p) => maWersjeDe(p.href));
-
-  const howTo = d.kroki && d.kroki.length
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'HowTo',
-        '@id': `${BASE}${sciezka}#howto`,
-        name: d.h1,
-        inLanguage: 'de',
-        step: d.kroki.map((k, i) => ({ '@type': 'HowToStep', position: i + 1, name: k.name, text: k.text })),
-      }
-    : null;
 
   const spis = [
     ...d.sekcje.map((sek) => ({ id: sek.id, label: sek.h2 })),
@@ -71,7 +65,7 @@ export default function SzablonStronaDe({ dane }) {
         url={sciezka}
         title={wpis?.h1 ?? d.h1}
         description={d.lead}
-        datePublished={data}
+        datePublished={dataPubl}
         dateModified={data}
         extra={{
           hasPart: {
@@ -82,7 +76,6 @@ export default function SzablonStronaDe({ dane }) {
           },
         }}
       />
-      {howTo && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />}
 
       <SzHero tag={d.tag} h1={wpis?.h1 ?? d.h1} slug={dane.slug} locale="de">
         <p className="byline" style={{ margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>
@@ -147,7 +140,7 @@ export default function SzablonStronaDe({ dane }) {
               <ul className="sz-powiazane">
                 {powiazane.map((p) => (
                   <li key={p.href}>
-                    <Link href={p.href}>{p.tekst}</Link>{p.opis ? `: ${p.opis}` : ''}
+                    <Link href={p.href}>{p.tekst}</Link>{p.opis ? <><span className="sz-dwukropek">: </span>{p.opis}</> : ''}
                   </li>
                 ))}
               </ul>

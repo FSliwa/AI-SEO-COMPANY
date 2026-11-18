@@ -15,6 +15,8 @@ import { track } from '@/lib/track';
 import { DEMO, odblokuj } from '@/lib/narzedziaApi';
 import { linkZParametrami } from '@/lib/narzedzia/parametrUrl';
 import st from '@/components/narzedzia/narzedzia.module.css';
+import Zwin from '@/components/narzedzia/Zwin';
+import '@/app/ruch.css'; // tokeny i utility ruchu (jak components/narzedzia/Zwin.jsx)
 
 export function kolorOceny(w) {
   if (w >= 80) return 'dobra';
@@ -47,6 +49,7 @@ export function Postep({ kroki, co = 6000 }) {
     return () => clearInterval(t);
   }, [kroki.length, co]);
   return (
+    <Zwin otwarte className={st.postepOkno}>
     <div className={st.postepBlok}>
       <div className={st.pasek} style={{ '--p': (i + 0.5) / kroki.length }} aria-hidden="true"><i /></div>
       <ol className="narz-postep" aria-live="polite">
@@ -61,6 +64,7 @@ export function Postep({ kroki, co = 6000 }) {
         <span className={st.szkLinie}><i /><i /><i /></span>
       </div>
     </div>
+    </Zwin>
   );
 }
 
@@ -70,9 +74,9 @@ export function PasekDemo() {
 }
 
 /** Potwierdzenie po bramce; tylkoRaport = wynik był widoczny bez e-maila. */
-export function Odblokowano({ tylkoRaport = false }) {
+export function Odblokowano({ tylkoRaport = false, potwRef = null }) {
   return (
-    <div className="narz-bramka narz-bramka--gotowe" role="status">
+    <div className="narz-bramka narz-bramka--gotowe r-stan" role="status" ref={potwRef} tabIndex={potwRef ? -1 : undefined}>
       <p className="narz-bramka-tytul">{tylkoRaport ? 'Fertig: Wir haben Ihnen den Bericht per E-Mail geschickt.' : 'Fertig: Das vollständige Ergebnis steht unten, den Bericht haben wir Ihnen per E-Mail geschickt.'}</p>
     </div>
   );
@@ -90,6 +94,7 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
   const [stan, setStan] = useState({ status: 'idle', blad: null });
   const ref = useRef(null);
   const widziana = useRef(false);
+  const potwRef = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -118,22 +123,24 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
       ...(dane ? { dane } : {}),
       ...(konkurenci ? { konkurenci: konkurenci(fd) } : {}),
     };
-    setStan({ status: 'loading', blad: null });
+    setStan((x) => ({ status: 'loading', blad: x.blad })); // tekst poprzedniego błędu zostaje na czas zwijania
     const r = await odblokuj(body);
     if (!r.ok) {
       setStan({ status: 'error', blad: r.blad });
       return;
     }
-    track('generate_lead', { event_category: 'Narzędzia', plan: narzedzie, currency: 'PLN', value: 50 });
+    track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: narzedzie, currency: 'PLN', value: 50 });
     setStan({ status: 'done', blad: null });
     onOdblokowano?.(r.pelny, r.newsletter);
   }
 
-  if (stan.status === 'done') {
-    return <Odblokowano tylkoRaport={tylkoRaport} />;
-  }
+  const gotowe = stan.status === 'done';
+  // Po wysłaniu fokus idzie na potwierdzenie (formularz traci przycisk, bez tego fokus ląduje na BODY).
+  useEffect(() => { if (gotowe) potwRef.current?.focus({ preventScroll: true }); }, [gotowe]);
 
   return (
+    <>
+    <Zwin otwarte={!gotowe} wejscie={false}>
     <form ref={ref} className="narz-bramka" onSubmit={wyslij} aria-labelledby={`bramka-${narzedzie}`}>
       <div className="narz-bramka-glowa">
         <span className="narz-bramka-ikona" aria-hidden="true">
@@ -152,7 +159,7 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
       <div className="narz-bramka-wiersz">
         <label htmlFor={`email-${narzedzie}`} className="sr-only">E-Mail-Adresse</label>
         <input id={`email-${narzedzie}`} name="email" type="email" required {...WALID_DE} maxLength={200} autoComplete="email" inputMode="email" placeholder="sie@beispiel.de" className="narz-pole" />
-        <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta={`narzedzie_${narzedzie}_odblokuj`}>
+        <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta={`narzedzie_${narzedzie}_odblokuj`}>
           {stan.status === 'loading' ? 'Wird gesendet…' : przycisk}
         </button>
       </div>
@@ -164,8 +171,11 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
         </span>
       </label>
       <p className="narz-bramka-mikro">{tylkoRaport ? 'Der Bericht erreicht Ihr Postfach innerhalb einer Minute.' : 'Der Bericht erreicht Ihr Postfach innerhalb einer Minute. Das vollständige Ergebnis sehen Sie außerdem sofort hier.'}</p>
-      {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
+      <Zwin otwarte={stan.status === 'error'}><p role="alert" className="narz-blad">{stan.blad}</p></Zwin>
     </form>
+    </Zwin>
+    {gotowe && <Odblokowano tylkoRaport={tylkoRaport} potwRef={potwRef} />}
+    </>
   );
 }
 
@@ -196,13 +206,13 @@ async function kopiuj(tekst) {
 
 /** „Link zum Ergebnis kopieren”: adres bieżącej strony z parametrami (tryb 'wypelnij': link tylko wypełnia pole). */
 export function LinkWyniku({ parametry, narzedzie, tekst, className }) {
-  const [stan, setStan] = useState({ status: 'idle', link: '' });
+  const [stan, setStan] = useState({ status: 'idle', link: '', n: 0 });
 
   async function klik() {
     const link = linkZParametrami(parametry);
     if (!link) return;
     const ok = await kopiuj(link);
-    setStan({ status: ok ? 'ok' : 'blad', link });
+    setStan((x) => ({ status: ok ? 'ok' : 'blad', link, n: x.n + 1 }));
     if (narzedzie) track('narzedzie_link_wyniku', { narzedzie });
   }
 
@@ -212,7 +222,12 @@ export function LinkWyniku({ parametry, narzedzie, tekst, className }) {
         {tekst ?? 'Link zum Ergebnis kopieren'}
       </button>
       <span className="narz-mikro" role="status" aria-live="polite">
-        {stan.status === 'ok' ? 'Link kopiert. ' : null}
+        {stan.status === 'ok' ? (
+          <span key={stan.n} className="r-stan--ok">
+            <svg className="r-ok-znak" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            Link kopiert.{' '}
+          </span>
+        ) : null}
         {stan.status === 'blad' ? 'Kopieren fehlgeschlagen, markieren Sie den Link: ' : null}
         {stan.status === 'blad' ? <input readOnly value={stan.link} aria-label="Link zum Ergebnis" className="narz-pole" onFocus={(e) => e.target.select()} /> : null}
         {stan.status !== 'idle' ? 'Der Link öffnet das Tool mit der eingetragenen Adresse. Die Prüfung startet erst, wenn Sie auf den Button klicken.' : null}

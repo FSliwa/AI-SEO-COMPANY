@@ -3,13 +3,13 @@
 // strony DE w fazie startowej, więc brak rodzica. Źródła pod treścią w formacie DE („Abruf: 05.11.2026”).
 // Sekcja, CoDostajesz, ZrzutWyniku: te same komponenty co PL/EN (teksty dostają jako propsy).
 
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AnswerBox from '@/components/AnswerBox';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
-import { Reveal } from '@/components/ScrollReveal';
 import Ozdoba from '@/components/narzedzia/Ozdoba';
 import Ikona, { ikonaNarzedzia } from '@/components/narzedzia/Ikony';
 import { Link as IntlLink } from '@/i18n/routing';
@@ -99,12 +99,12 @@ export function UkladDe({ klucz, tag, h1, okruszek, zrodla, schema, lead, narzed
       <section className={st.hero} style={s.hero}>
         <Ozdoba rodzaj={ikonaNarzedzia(klucz)} />
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ margin: '0 0 1rem' }}>
+          <div className="section-header" style={{ margin: '0 0 1rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {tag}
             </div>
             <h1 style={s.h1}>{h1}</h1>
-          </Reveal>
+          </div>
           {lead ? <p className={st.lead} style={s.lead}>{lead}</p> : null}
           {narzedzie}
           {odpowiedz ? <div style={s.poNarzedziu}><AnswerBox etykieta="Kurzantwort">{odpowiedz}</AnswerBox></div> : null}

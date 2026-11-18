@@ -5,7 +5,7 @@
 // daje komunikaty, wnioski o botach i nagłówki pliku po niemiecku). Edytor pliku: LlmsTxtEdytor (prop de) i llmsTxtPlik.js.
 
 import { WALID_DE } from '@/lib/walidacjaDe';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 import CompareTable from '@/components/CompareTable';
 import { track } from '@/lib/track';
@@ -17,6 +17,7 @@ import { parsujLlmsTxt, policz, zlozLlmsTxt } from '@/components/narzedzia/llmsT
 import { LinkWyniku, PrzykladAdresu } from './WspolneDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import * as s from '@/components/narzedzia/styl';
+import '@/components/narzedzia/ruch-c.css';
 
 const API = '/api/llms-txt';
 const KOLOR = { ok: '#047857', uwaga: '#B45309', blad: '#b3261e' };
@@ -90,11 +91,24 @@ function ListaAdresow({ id, tytul, opis, elementy }) {
 export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = null }) {
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null });
   const [skopiowano, setSkopiowano] = useState(false);
+  const [pobrano, setPobrano] = useState(false);
   const [adres, setAdres] = useState('');
   const [edycja, setEdycja] = useState({ model: null, zmieniony: false });
   const poleRef = useRef(null);
 
   // ?url= tylko wypełnia pole, bez startu (limit 10 sprawdzeń na IP).
+  // Potwierdzenia znikają po 3 s (kopiowanie) i 2,5 s (pobranie); nie zależą od animationend.
+  useEffect(() => {
+    if (!skopiowano) return undefined;
+    const t = setTimeout(() => setSkopiowano(false), 3000);
+    return () => clearTimeout(t);
+  }, [skopiowano]);
+  useEffect(() => {
+    if (!pobrano) return undefined;
+    const t = setTimeout(() => setPobrano(false), 2500);
+    return () => clearTimeout(t);
+  }, [pobrano]);
+
   useParametrUrl(['url'], ({ url }) => {
     if (url && poleRef.current) poleRef.current.value = url;
   });
@@ -105,8 +119,10 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
     const wpisany = String(fd.get('url') || '').trim();
     setStan({ status: 'loading', blad: null, wynik: null });
     setSkopiowano(false);
+    setPobrano(false);
     setAdres(wpisany);
     zapiszParametry({ url: wpisany });
+    track('narzedzie_start', { narzedzie: 'llms_txt' });
     try {
       const res = await fetch(API, {
         method: 'POST',
@@ -118,6 +134,7 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
         setStan({ status: 'error', blad: data.error || 'Wir konnten die Website nicht prüfen. Bitte versuchen Sie es gleich noch einmal.', wynik: null });
         return;
       }
+      track('narzedzie_wynik', { narzedzie: 'llms_txt' });
       track('llms_generate', {
         boty_zablokowane: data.boty.filter((b) => b.ocena === 'blad').length,
         adresy_w_pliku: data.wPliku,
@@ -162,18 +179,18 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
   const maOpis = Boolean(w) && /^> \S/m.test(plik);
 
   return (
-    <div>
+    <div className="llms-narz">
       <form onSubmit={onSubmit} style={{ ...s.karta, display: 'grid', gap: '1rem' }} aria-describedby="llms-opis-formularza">
         <div>
           <label htmlFor="llms-adres" style={{ display: 'block', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--color-text-dark)' }}>Adresse Ihrer Website</label>
-          <input ref={poleRef} id="llms-adres" name="url" type="text" inputMode="url" autoComplete="url" required {...WALID_DE} minLength={4} maxLength={300} placeholder="z. B. firma.de" style={pole} />
+          <input ref={poleRef} id="llms-adres" name="url" type="text" inputMode="url" autoComplete="url" required {...WALID_DE} minLength={4} maxLength={300} placeholder="z. B. firma.de" className="c-pole" style={pole} />
           <PrzykladAdresu onWybierz={(a) => { if (poleRef.current) { poleRef.current.value = a; poleRef.current.focus(); } }} />
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-          <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="llms_generate_submit">
+          <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta="llms_generate_submit">
             {stan.status === 'loading' ? `Sitemap und Bots werden geprüft… (bis zu ${GENERATOR.sekund} s)` : 'llms.txt erstellen'}
           </button>
-          {stan.status === 'error' && <p role="alert" style={{ margin: 0, color: '#b3261e' }}>{stan.blad}</p>}
+          {stan.status === 'error' && <p role="alert" className="llms-wchodzi" style={{ margin: 0, color: '#b3261e' }}>{stan.blad}</p>}
         </div>
         <p id="llms-opis-formularza" style={{ ...s.przypis, margin: 0 }}>
           {`Die ganze Datei sofort, ohne E-Mail. Wir rufen Ihre Sitemap ab (bis zu ${GENERATOR.mapPodrzednych} untergeordnete Sitemaps), wählen bis zu ${GENERATOR.adresow} Adressen aus (bei einer größeren Sitemap einige aus jedem Abschnitt) und prüfen ${GENERATOR.botow} KI-Bots. Vor dem Download können Sie Links, Beschreibungen und Reihenfolge ändern. Wir speichern weder die Adresse noch das Ergebnis. Limit: ${GENERATOR.limitIp} Prüfungen pro Tag und IP-Adresse.`}
@@ -182,7 +199,7 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
 
       <div aria-live="polite">
         {stan.status === 'done' && w && (
-          <section aria-labelledby="llms-wynik" className={`${st.sekcja} ${st.sekcjaKarta}`} style={{ ...s.karta, marginTop: '1.5rem' }}>
+          <section aria-labelledby="llms-wynik" className={`${st.sekcja} ${st.sekcjaKarta} r-stan`} style={{ ...s.karta, marginTop: '1.5rem' }}>
             <h2 id="llms-wynik" style={s.h2}>Ergebnis für {host(w.strona)}</h2>
             <p style={s.akapit}>
               {w.mapa.zrodlo
@@ -231,7 +248,7 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
               {`Sehen Sie die Datei durch, bevor Sie sie hochladen.${maOptional ? ' AGB und Richtlinien stehen im Abschnitt „## Optional“, den ein Modell überspringen darf, wenn der Platz knapp ist.' : ''} ${edycja.model ? 'Im Editor unten deaktivieren Sie' : 'Entfernen Sie'} Unterseiten ohne Wert für Kunden (Login, Tags), ${maOpis ? 'prüfen Sie den Satz unter der Überschrift dazu, was das Unternehmen tut' : 'ergänzen Sie unter der Überschrift einen Satz dazu, was das Unternehmen tut (im Format „> Ein Satz“)'}, und laden Sie die Datei als /llms.txt hoch.`}
             </p>
             {edycja.model && (
-              <details id="llms-edytor" style={{ border: '1px solid rgba(15,23,42,0.12)', borderRadius: '16px', padding: '0.85rem clamp(0.6rem, 2.5vw, 1rem)', margin: '0 0 1rem', background: 'var(--color-bg-surface)' }}>
+              <details id="llms-edytor" className="llms-edytor" style={{ border: '1px solid rgba(15,23,42,0.12)', borderRadius: '16px', padding: '0.85rem clamp(0.6rem, 2.5vw, 1rem)', margin: '0 0 1rem', background: 'var(--color-bg-surface)' }}>
                 <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--color-text-dark)', lineHeight: 1.45 }}>
                   Datei vor dem Download bearbeiten
                   <span style={{ display: 'block', fontWeight: 400, fontSize: '0.9rem', color: 'var(--w-tusz-2)' }}>
@@ -247,18 +264,29 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
               value={plik}
               rows={14}
               aria-label="Erzeugte Datei llms.txt"
-              style={{ ...pole, ...s.kod, resize: 'vertical', whiteSpace: 'pre', overflowX: 'auto' }}
+              className="c-pole" style={{ ...pole, ...s.kod, resize: 'vertical', whiteSpace: 'pre', overflowX: 'auto' }}
             />
             {liczby && (
-              <p role="status" style={{ ...s.przypis, margin: '0.5rem 0 0' }}>
+              <p role="status" key={`${liczby.wPliku}-${liczby.sekcji}-${liczby.odznaczone}`} className="llms-wchodzi" style={{ ...s.przypis, margin: '0.5rem 0 0' }}>
                 {`Datei nach Ihren Änderungen: ${links(liczby.wPliku)} in ${liczby.sekcji} ${liczby.sekcji === 1 ? 'Abschnitt' : 'Abschnitten'}${liczby.odznaczone ? `, ${liczby.odznaczone} deaktiviert` : ''}.`}
               </p>
             )}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '0.75rem', alignItems: 'center' }}>
               <button type="button" className="btn btn-primary" style={malyPrzycisk} onClick={kopiuj} data-cta="llms_copy">Kopieren</button>
-              <button type="button" className="btn btn-secondary" style={malyPrzycisk} onClick={() => pobierzPlik(plik)} data-cta={edycja.zmieniony ? 'llms_download_edited' : 'llms_download'}>llms.txt herunterladen</button>
+              <button type="button" className="btn btn-secondary" style={malyPrzycisk} onClick={() => { pobierzPlik(plik); setPobrano(true); }} data-cta={edycja.zmieniony ? 'llms_download_edited' : 'llms_download'}>
+                <svg className={pobrano ? 'llms-pobrano llms-pobrano-znak' : 'llms-pobrano-znak'} style={pobrano ? undefined : { visibility: 'hidden' }} viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                llms.txt herunterladen
+              </button>
               {edycja.zmieniony && <button type="button" className={st.przyciskTekstowy} onClick={przywroc}>Alle Änderungen zurücknehmen</button>}
-              {skopiowano && <span role="status" style={{ color: '#047857', fontWeight: 600 }}>Kopiert</span>}
+              <span role="status" aria-live="polite">
+                {skopiowano && (
+                  <span className="r-stan--ok" style={{ color: '#047857', fontWeight: 600 }}>
+                    <svg className="r-ok-znak" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Kopiert
+                  </span>
+                )}
+              </span>
             </div>
             <LinkWyniku narzedzie="llms_txt" parametry={{ url: adres || w.strona }} />
 
