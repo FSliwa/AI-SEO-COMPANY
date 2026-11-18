@@ -11,6 +11,7 @@ import AttributionCapture from '@/components/AttributionCapture';
 import RuchUzytkownika from '@/components/RuchUzytkownika';
 import WebVitals from '@/components/WebVitals';
 import NewsletterPopupLoader from '@/components/NewsletterPopupLoader';
+import { GODZINY_JSONLD } from '@/lib/godziny';
 
 // Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
 // w HTML każdej strony z tagiem), więc może być w kodzie; zmienna środowiskowa
@@ -163,9 +164,10 @@ const jsonLdDataPl = {
       // (ten sam co w stopce) to taxID. vatID przywrocic dopiero, gdy VIES
       // potwierdzi rejestracje VAT-UE.
       'taxID': '5253090237',
-      // 18.11.2026: usunieto openingHoursSpecification (pn-pt 9-18). Godziny nie sa widoczne
-      // nigdzie na stronie, a znacznik musi opisywac tresc widoczna. Przywrocic razem z widoczna
-      // informacja w stopce/Kontakcie, gdy wlasciciel potwierdzi godziny.
+      // 18.11.2026: godziny z Profilu Firmy w Google (pon-sob 7:00-23:00, niedziela zamkniete),
+      // te same co widoczny tekst w stopce i w Kontakcie (lib/godziny.js: jedno zrodlo).
+      // Poprzedni wariant pn-pt 9-18 nie byl nigdzie widoczny i zostal usuniety.
+      'openingHoursSpecification': GODZINY_JSONLD,
       'areaServed': {
         '@type': 'AdministrativeArea',
         'name': 'Warszawa i Polska'

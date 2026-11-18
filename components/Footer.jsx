@@ -9,6 +9,7 @@ import { hash, homeHash, sectionId, przejdzDoSekcji } from '@/lib/anchors';
 import { tylkoPl } from '@/lib/plOnly';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { track } from '@/lib/track';
+import { GODZINY_TEKST } from '@/lib/godziny';
 
 // A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
 // pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
@@ -149,6 +150,7 @@ export default function Footer() {
                 <p style={{ margin: 0 }}>KRS: 0001239983</p>
                 <p style={{ margin: 0 }}>NIP: 5253090237</p>
                 <p style={{ margin: 0 }}>REGON: 544761611</p>
+                <p style={{ margin: 0 }}>{lang === 'pl' ? 'Godziny otwarcia: ' : 'Opening hours: '}{GODZINY_TEKST[lang === 'pl' ? 'pl' : 'en']}</p>
               </div>
             </div>
             <div className="footer-col">

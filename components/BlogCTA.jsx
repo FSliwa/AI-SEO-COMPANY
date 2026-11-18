@@ -44,6 +44,11 @@ export default function BlogCTA({ locale, currentSlug, klaster, customCtaTitlePl
             ? 'SEO specialist at AI SEO COMPANY. Works on technical optimisation and search visibility strategy for B2B companies.'
             : 'Specjalista SEO w AI SEO COMPANY. Zajmuje się optymalizacją techniczną i strategią widoczności w wyszukiwarce dla firm B2B.'}
         </p>
+        <p style={{ fontSize: '0.9rem', margin: '0.6rem 0 0 0' }}>
+          <Link href={{ pathname: '/o-nas', hash: lang === 'en' ? 'how-our-content-is-made' : 'jak-powstaja-tresci' }} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+            {lang === 'en' ? 'How our content is made' : 'Jak powstają nasze treści'}
+          </Link>
+        </p>
       </div>
 
       <div style={{ marginTop: '3rem' }}>

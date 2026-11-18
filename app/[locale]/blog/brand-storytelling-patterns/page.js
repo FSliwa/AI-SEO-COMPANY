@@ -1,4 +1,4 @@
-import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+import { articleLanguages, articleRobots, articleDates } from '@/lib/blogPosts';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -30,6 +30,7 @@ import { Link } from '@/i18n/routing';
 
 export default async function ArticleBrandStorytellingPatterns({ params }) {
   const { locale } = await params;
+  const dataPubl = articleDates('/blog/brand-storytelling-patterns', locale);
 
   if (locale === 'pl') {
     return <ArtykulStorytellingMarki locale={locale} />;
@@ -54,7 +55,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/brand-storytelling-patterns" locale={locale} />
+      <ArticleSchema slug="/blog/brand-storytelling-patterns" locale={locale} datePublished={dataPubl.iso} />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
@@ -64,7 +65,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
                 Content strategy
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                August 30, 2026
+                {dataPubl.label}
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
@@ -303,6 +304,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
 }
 
 function ArtykulStorytellingMarki({ locale }) {
+  const dataPubl = articleDates('/blog/brand-storytelling-patterns', locale);
   const tocItems = [
     { id: 'storytelling-a-historia-marki', title: 'Czym storytelling marki różni się od historii marki?' },
     { id: 'dlaczego-wygrywa-z-lista-cech', title: 'Dlaczego storytelling wygrywa z listą cech produktu?' },
@@ -326,7 +328,7 @@ function ArtykulStorytellingMarki({ locale }) {
         slug="/blog/brand-storytelling-patterns"
         locale={locale}
         url="/blog/storytelling-marki"
-        datePublished="2026-08-31"
+        datePublished={dataPubl.iso}
       />
 
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
@@ -337,7 +339,7 @@ function ArtykulStorytellingMarki({ locale }) {
                 Strategia treści
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                31 Sierpnia 2026
+                {dataPubl.label}
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>

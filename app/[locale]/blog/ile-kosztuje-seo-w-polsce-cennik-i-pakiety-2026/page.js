@@ -1,4 +1,4 @@
-import { articleLanguages } from '@/lib/blogPosts';
+import { articleLanguages, articleDates } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -32,6 +32,7 @@ const BASE = 'https://www.ai-seo-company.pl';
 
 export default async function ArticleCennikPage({ params }) {
   const { locale } = await params;
+  const dataPubl = articleDates('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', locale);
   const tocItemsPl = [
     { id: 'szybki-przegl-d-typowych-bud-et-w', title: 'Ile kosztuje SEO w agencjach: co pokazują cenniki' },
     { id: 'dla-roznych-firm', title: 'Ile kosztuje pozycjonowanie dla różnych typów firm?' },
@@ -67,6 +68,7 @@ export default async function ArticleCennikPage({ params }) {
       <ArticleSchema
         slug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026"
         locale={locale}
+        datePublished={dataPubl.iso}
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/how-much-does-seo-cost-pricing-packages-2026` : `${BASE}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`]}
       />
       
@@ -80,7 +82,7 @@ export default async function ArticleCennikPage({ params }) {
                 Strategy & Pricing
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                Jul 25, 2026
+                {dataPubl.label}
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
@@ -136,7 +138,7 @@ export default async function ArticleCennikPage({ params }) {
                 Budżet SEO
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                15 Lipca 2026
+                {dataPubl.label}
               </span>
             </div>
 

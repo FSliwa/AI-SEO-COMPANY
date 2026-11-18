@@ -1,4 +1,4 @@
-import { articleLanguages } from '@/lib/blogPosts';
+import { articleLanguages, articleDates } from '@/lib/blogPosts';
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   return {
@@ -23,6 +23,7 @@ import { hash } from '@/lib/anchors';
 
 export default async function ArticleLokalnePage({ params }) {
   const { locale } = await params;
+  const dataPubl = articleDates('/blog/seo-lokalne-dla-firm-w-warszawie', locale);
   const tocItemsPl = [
     { id: 'czym-w-a-ciwie-jest-pozycjonowanie-lokalne-local-seo', title: 'Czym właściwie jest pozycjonowanie lokalne (Local SEO)?' },
     { id: 'optymalizacja-profilu-firmy-w-google-gbp', title: 'Optymalizacja Profilu Firmy w Google (GBP)' },
@@ -45,7 +46,7 @@ export default async function ArticleLokalnePage({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/seo-lokalne-dla-firm-w-warszawie" locale={locale} />
+      <ArticleSchema slug="/blog/seo-lokalne-dla-firm-w-warszawie" locale={locale} datePublished={dataPubl.iso} />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (
@@ -57,7 +58,7 @@ export default async function ArticleLokalnePage({ params }) {
                 Local SEO
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                Jul 27, 2026
+                {dataPubl.label}
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
@@ -118,7 +119,7 @@ export default async function ArticleLokalnePage({ params }) {
                 Lokalne SEO Warszawa
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                Jul 20, 2026
+                {dataPubl.label}
               </span>
             </div>
 

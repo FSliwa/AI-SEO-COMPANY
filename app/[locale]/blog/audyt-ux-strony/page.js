@@ -1,4 +1,4 @@
-import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+import { articleLanguages, articleRobots, articleDates } from '@/lib/blogPosts';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -24,6 +24,7 @@ import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleUXAudit({ params }) {
   const { locale } = await params;
+  const dataPubl = articleDates('/blog/audyt-ux-strony', locale);
   const tocItems = locale === 'en' ? [
     { id: 'what-a-full-ux-audit-should-include', title: 'What should a full website UX audit include?' },
     { id: 'how-a-ux-audit-runs-step-by-step', title: 'How does a UX audit run, step by step?' },
@@ -48,7 +49,7 @@ export default async function ArticleUXAudit({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/audyt-ux-strony" locale={locale} url={locale === 'en' ? '/en/blog/ux-audit-guide' : undefined} datePublished={locale === 'en' ? '2026-08-31' : undefined} />
+      <ArticleSchema slug="/blog/audyt-ux-strony" locale={locale} url={locale === 'en' ? '/en/blog/ux-audit-guide' : undefined} datePublished={dataPubl.iso} />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
@@ -59,7 +60,7 @@ export default async function ArticleUXAudit({ params }) {
                 UX i konwersja
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                {locale === 'en' ? 'August 31, 2026' : '12 Sierpnia 2026'}
+                {dataPubl.label}
               </span>
             </div>
 

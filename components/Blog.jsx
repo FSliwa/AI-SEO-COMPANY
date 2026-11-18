@@ -36,13 +36,15 @@ function wpisy(n) {
   return 'wpisów';
 }
 
+const dataJezyka = (p, lang) => new Date((lang === 'en' && p.dateEn) || (lang === 'pl' && p.datePl) || p.date);
+
 export default function Blog() {
   const lang = useLocale();
   const t = useTranslations('blog');
 
   const wszystkie = postsForLocale(lang);
   const posts = [...wszystkie]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .sort((a, b) => dataJezyka(b, lang) - dataJezyka(a, lang))
     .slice(0, 3)
     .map((p) => ({
       date: lang === 'pl' ? p.displayDatePl : p.displayDateEn,

@@ -116,6 +116,10 @@ export const routing = defineRouting({
     '/blog/brand-storytelling-patterns': {
       pl: '/blog/storytelling-marki',
       en: '/blog/brand-storytelling-patterns'
+    },
+    '/blog/vwo-vs-optimizely-porownanie': {
+      pl: '/blog/vwo-vs-optimizely-porownanie',
+      en: '/blog/vwo-vs-optimizely-comparison'
     }
   }
 });

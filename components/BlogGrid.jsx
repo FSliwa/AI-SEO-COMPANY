@@ -9,6 +9,8 @@ import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 
+const dataJezyka = (p, lang) => new Date((lang === 'en' && p.dateEn) || (lang === 'pl' && p.datePl) || p.date);
+
 export default function BlogGrid() {
   const lang = useLocale();
   const [expandedMissionCard, setExpandedMissionCard] = useState(null);
@@ -60,7 +62,7 @@ export default function BlogGrid() {
 
   // Sort all posts by date (newest first)
   const sortedPosts = postsForLocale(lang)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .sort((a, b) => dataJezyka(b, lang) - dataJezyka(a, lang));
 
   // Display only 4 posts (1 hero + 3 grid) on the main blog page
   const displayPosts = sortedPosts.slice(0, 4);

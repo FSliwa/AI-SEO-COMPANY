@@ -3,6 +3,37 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./i18n.js');
 
+// Zrodla z kodu i z ruchu zmierzonego Playwrightem 18.11.2026 (RAPORT c-daty-slug): kazdy wpis ma
+// uzasadnienie w komentarzu. Skrypty i style inline sa potrzebne (Next.js wstrzykuje skrypty
+// startowe, layout ma inline gtag, komponenty uzywaja style={{}}), wiec 'unsafe-inline' zostaje
+// do czasu przejscia na nonce.
+const CSP_REPORT_ONLY = [
+  "default-src 'self'",
+  // 'unsafe-eval': runtime Spline (hero strony glownej, parser wyrazen sceny) - zmierzone jako
+  // jedyne naruszenie script-src na / i /en po wylaczeniu reszty. www.googletagmanager.com: gtag/js
+  // (layout.js). googleads.g.doubleclick.net, www.googleadservices.com, www.google.com: skrypty
+  // Google Ads ladowane przez gtag po zgodzie (conversion + remarketing).
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com",
+  "style-src 'self' 'unsafe-inline'",
+  // Piksele Google Analytics i Ads (obrazy 1x1): zrodla zmierzone po zgodzie na cookies oraz
+  // wg przewodnika Google dla tagu (developers.google.com/tag-platform/security/guides/csp).
+  // www.google.<TLD>: Google wybiera domene kraju (u nas zmierzone .pl); gosc z innego kraju
+  // moze dac pojedyncze naruszenie dla jego TLD.
+  "img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://ad.doubleclick.net https://pagead2.googlesyndication.com https://www.googleadservices.com https://www.google.com https://www.google.pl https://*.analytics.google.com https://google.com",
+  "font-src 'self'",
+  // panel.ai-seo-company.pl: formularze (checklista, szablony, narzedzia, monitoring audytu).
+  // Reszta: wysylka zdarzen GA4 (region1.google-analytics.com, region1.analytics.google.com),
+  // Ads (pagead2.googlesyndication.com, www.google.com/ccm, ad.doubleclick.net, stats.g.doubleclick.net).
+  "connect-src 'self' https://panel.ai-seo-company.pl https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://ad.doubleclick.net https://pagead2.googlesyndication.com https://www.googleadservices.com https://www.google.com https://www.google.pl https://google.com",
+  "media-src 'self'",
+  "worker-src 'self' blob:",
+  "frame-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+].join('; ');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // 5.11.2026 (PLAN-v2 rozdz. 7, TS11; TS-11): bez naglowka X-Powered-By: Next.js. Nic nie
@@ -20,10 +51,15 @@ const nextConfig = {
     // (SA17) sprawdzic curlem, ze /nie-istnieje-123 dalej ma H1 i linki w HTML z serwera.
     globalNotFound: true,
   },
-  // Security headers PageSpeed flagged as missing (23.08.2026). Deliberately
-  // WITHOUT Content-Security-Policy: this site loads a third-party 3D scene and
-  // styles nearly every element inline, so a strict policy would blank the hero
-  // the moment it shipped. CSP belongs in a separate, report-only rollout.
+  // Security headers PageSpeed flagged as missing (23.08.2026). Bez egzekwowanego
+  // Content-Security-Policy: serwis laduje scene 3D i stylizuje prawie kazdy element inline, wiec
+  // scisla polityka zgasilaby hero od razu po wdrozeniu.
+  // 18.11.2026 (decyzja C5, audyt produkcji S-37): najpierw Content-Security-Policy-Report-Only
+  // (CSP_REPORT_ONLY nizej, bez wplywu na dzialanie strony). Raportow nie wysylamy nigdzie
+  // (brak report-uri / report-to): naruszenia widac tylko w konsoli przegladarki. Egzekwowanie
+  // (zmiana klucza na Content-Security-Policy) dopiero po okresie obserwacji i po sprawdzeniu
+  // konsoli na wszystkich typach stron; przy zmianie zrodel (nowy skrypt, font, ramka, API)
+  // zaktualizowac liste nizej.
   async headers() {
     return [
       {
@@ -34,6 +70,7 @@ const nextConfig = {
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains' },
           // Nothing on the site is meant to be framed elsewhere.
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Content-Security-Policy-Report-Only', value: CSP_REPORT_ONLY },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           // allow-popups rather than plain same-origin: bare same-origin severs
@@ -250,6 +287,14 @@ const nextConfig = {
       {
         source: '/en/blog/seo-lokalne-dla-firm-w-warszawie',
         destination: '/en/blog/local-seo-for-companies',
+        permanent: true,
+      },
+      // 18.11.2026 (decyzja C6, audyt produkcji S-44): angielski adres bez polskiego wyrazu
+      // „porownanie”. Jedno trwale przekierowanie (308) prosto na nowy adres; wersja PL
+      // (/blog/vwo-vs-optimizely-porownanie) bez zmian.
+      {
+        source: '/en/blog/vwo-vs-optimizely-porownanie',
+        destination: '/en/blog/vwo-vs-optimizely-comparison',
         permanent: true,
       },
       {
