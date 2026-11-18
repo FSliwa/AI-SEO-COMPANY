@@ -29,7 +29,7 @@ const faqData = [
     idEn: 'how-long-does-seo-take',
     question: 'Ile trwa pozycjonowanie stron internetowych?',
     questionEn: 'How long does website optimization take?',
-    answer: 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Dla uzgodnionych fraz lokalnych naszym celem jest TOP 3 w 2–3 miesiące, z postępem widocznym co tydzień w panelu klienta; jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. Na bardzo konkurencyjne frazy ogólnopolskie ustabilizowane wysokie pozycje buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy. Przykład z naszych wdrożeń: świeżo uruchomiona strona firmy wdrażającej normy ISO miała po pierwszych 28 dniach 296 wyświetleń w Google przy średniej pozycji 34,6 (Google Search Console, stan na sierpień 2026). Pozostałe dane opisujemy w raporcie <a href="/blog/wyniki-wdrozen-seo-2026" style="text-decoration:underline">wyniki wdrożeń SEO w 2026</a>.',
+    answer: 'Pierwsze efekty wzrostu widoczności pojawiają się po 4-8 tygodniach od optymalizacji technicznej. Dla uzgodnionych fraz lokalnych naszym celem jest TOP 3 w 2–3 miesiące, z postępem widocznym co tydzień w panelu klienta; jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. Na bardzo konkurencyjne frazy ogólnopolskie ustabilizowane wysokie pozycje buduje się zazwyczaj w horyzoncie 3 do 6 miesięcy. Przykład z naszych wdrożeń: świeżo uruchomiona strona firmy wdrażającej normy ISO miała w pierwszych 18 dniach (5-22.08.2026) 296 wyświetleń w Google przy średniej pozycji 34,6 (Google Search Console). Pozostałe dane opisujemy w raporcie <a href="/blog/wyniki-wdrozen-seo-2026" style="text-decoration:underline">wyniki wdrożeń SEO w 2026</a>.',
     answerEn: 'The first effects of visibility growth appear 4-8 weeks after technical optimization. For agreed local keywords our goal is a TOP 3 within 2–3 months, with progress visible weekly in the client portal; if we miss it after 3 months, the next month is on us. For highly competitive national keywords, stabilized high rankings are typically built over a 3 to 6 month horizon. We compare these timeframes with Google\u2019s statements and our client data in our article on how long SEO takes.'
   },
   {
@@ -146,7 +146,7 @@ const portfolioCases = [
     tagEn: 'SAAS TECH MODEL',
     title: 'Optymalizacja Pod Zapytania BOFU',
     titleEn: 'BOFU Query Optimization',
-    description: 'Pozycjonowanie trudnych fraz kluczowych o najwyższym inteńcie zakupowym na rynku globalnym, napędzające wzrost stałych przychodów subskrypcyjnych.',
+    description: 'Pozycjonowanie trudnych fraz kluczowych o najwyższej intencji zakupowej na rynku globalnym, napędzające wzrost stałych przychodów subskrypcyjnych.',
     descriptionEn: 'Positioning highly competitive keywords with the highest purchase intent globally, driving steady MRR growth.',
     image: '/images/unsplash-1557264322-b44d383a2906.jpg',
     decorative: true,

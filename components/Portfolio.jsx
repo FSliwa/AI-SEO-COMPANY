@@ -138,7 +138,7 @@ const MOSAIC = [
     alt: 'Panel Performance madamethai.pl w Google Search Console: 187 kliknięć i 10,1 tys. wyświetleń w 26 dni',
     altEn: 'Google Search Console performance panel for madamethai.pl: 187 clicks and 10.1K impressions over 26 days' },
 { src: '/projects/gsc/tql.webp', w: 1600, h: 726, alt: 'Panel Performance tql.pl w Google Search Console: 296 wyświetleń, pozycja 34,6 w 18 dni', altEn: 'Google Search Console performance panel for tql.pl: 296 impressions, position 34.6 over 18 days' },
-{ src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń w 3 miesiące', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions over 3 months' },
+{ src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń (26.07-21.08.2026)', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions (26 Jul-21 Aug 2026)' },
 { src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 92 dni', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 92 days' }
 ];
 

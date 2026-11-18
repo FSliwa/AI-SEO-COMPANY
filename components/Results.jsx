@@ -3,7 +3,6 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal } from './ScrollReveal';
 import { sectionId } from '@/lib/anchors';
-import { hash } from '@/lib/anchors';
 
 export default function Results() {
   const lang = useLocale();
@@ -18,10 +17,10 @@ export default function Results() {
         <Reveal className="results-content">
           <div className="results-text">
             <h2>{lang === 'pl' ? 'Chcesz osiągnąć podobne wyniki?' : 'Want to achieve similar results?'}</h2>
-            <p>{lang === 'pl' ? 'Zamów bezpłatną analizę SEO i potencjału Twojej obecnej marki już teraz.' : 'Claim your free SEO audit and brand potential analysis now.'}</p>
+            <p>{lang === 'pl' ? 'Sprawdź, co blokuje Twoją stronę w Google: darmowy audyt SEO online w 49 regułach albo wycena pełnego audytu w 24 h.' : 'Find out what holds your site back: run the free online SEO audit (49 rules) or request a quote for a full audit within 24 h.'}</p>
           </div>
-          <a href={hash('kontakt', lang)} className="w-przycisk w-przycisk--glowny" data-cta="results_free_audit">
-            {lang === 'pl' ? 'Zamów bezpłatny audyt' : 'Get Free Audit'}
+          <a href={lang === 'pl' ? '/narzedzia/audyt-seo' : '/en/tools/free-seo-audit'} className="w-przycisk w-przycisk--glowny" data-cta="results_free_audit">
+            {lang === 'pl' ? 'Sprawdź stronę za darmo' : 'Run the free audit'}
           </a>
         </Reveal>
       </div>

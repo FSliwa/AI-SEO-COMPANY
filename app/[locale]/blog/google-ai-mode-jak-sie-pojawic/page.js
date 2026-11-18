@@ -59,7 +59,7 @@ const FAQ = [
 const ZRODLA = [
   { url: 'https://developers.google.com/search/docs/appearance/ai-features', nazwa: 'Google Search Central: AI features and your website', data: '2026-11-18' },
   { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode, dostępność i wymagania', data: '2026-11-18' },
-  { url: 'https://blog.google/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode (20 maja 2025)', data: '2026-11-18' },
+  { url: 'https://blog.google/products-and-platforms/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode (20 maja 2025)', data: '2026-11-18' },
   { url: 'https://blog.google/products-and-platforms/products/search/ai-mode-expands-languages-locations/', nazwa: 'Google Blog: AI Mode w ponad 35 nowych językach i ponad 40 krajach (7 października 2025)', data: '2026-11-18' },
   { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność, AI Overviews i AI Mode', data: '2026-11-18' },
   { url: 'https://support.google.com/websearch/answer/14901683?hl=pl', nazwa: 'Pomoc Google: Przegląd od AI w wynikach wyszukiwania', data: '2026-11-18' },

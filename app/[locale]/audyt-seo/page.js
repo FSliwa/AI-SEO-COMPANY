@@ -41,7 +41,7 @@ const faqAudyt = [
     question: 'Ile kosztuje audyt SEO?',
     questionEn: 'How much does an SEO audit cost?',
     answer: 'Audyt SEO jest wliczony w każdy pakiet pozycjonowania (od 1 900 zł netto miesięcznie) – to od niego zaczynamy współpracę. Jako samodzielna usługa kosztuje od 1 490 zł netto, a ostateczna cena zależy od wielkości serwisu: inny nakład wymaga strona firmowa z 20 podstronami, inny sklep z 5 000 produktów. Wycenę dostajesz w 24 h w dni robocze, bez rozmowy z handlowcem.',
-    answerEn: 'The SEO audit is included in every SEO package (from PLN 1,900 net per month) – it is where we start every engagement. As a standalone service it starts at €350 net, and the final price depends on the size of the site: a 20-page company website and a 5,000-product store are different jobs. You get the quote within 24 h on business days, with no sales call.'
+    answerEn: 'The SEO audit is included in every SEO package (from PLN 1,900 / €450 net per month) – it is where we start every engagement. As a standalone service it starts at €350 net, and the final price depends on the size of the site: a 20-page company website and a 5,000-product store are different jobs. You get the quote within 24 h on business days, with no sales call.'
   },
   {
     question: 'Ile trwa przygotowanie audytu SEO?',

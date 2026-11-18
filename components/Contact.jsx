@@ -213,6 +213,7 @@ export default function Contact({ isMainContent = false }) {
         // nim import do Google Ads może licytować pod wartość, nie pod sztukę.
         window.gtag('event', 'generate_lead', {
           transaction_id: leadId,
+          lead_source: 'contact_form',
           event_category: 'Contact',
           event_label: data.service || 'General Lead',
           plan: data.service || 'none',

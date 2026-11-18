@@ -370,6 +370,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
               <p>
                 W przypadku reklam dopytaj dodatkowo, jak partner skonfiguruje konwersje, jak często przegląda wyszukiwane hasła i kto zatwierdza zmiany budżetu.
                 {hrefJakWybrac && <> Pełną listę dwunastu pytań z dobrymi odpowiedziami i czerwonymi flagami znajdziesz w porównaniu <Link href={hrefJakWybrac}>jak wybrać agencję SEO</Link>.</>}
+                {' '}Pozostałe zestawienia kryteriów, kosztów i ryzyk są w dziale <Link href="/porownania">porównania przed wyborem agencji SEO</Link>.
               </p>
 
               <h3>Raportowanie i dostęp do kont</h3>

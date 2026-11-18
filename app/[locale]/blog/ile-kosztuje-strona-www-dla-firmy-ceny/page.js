@@ -4,7 +4,7 @@ export async function generateMetadata({ params }) {
   return {
   // 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 20): title PL (52 zn.) pod „ile kosztuje strona internetowa”
   // (1 000/mies., frazy.csv:67) i „…dla firmy” (140, :68). Meta i wersja EN bez zmian (EN: tylko zapis marki i oferta).
-  title: locale === 'en' ? 'How Much Does a Business Website Cost in 2026?' : 'Ile kosztuje strona internetowa dla firmy? Ceny 2026',
+  title: locale === 'en' ? 'How Much Does a Website Cost? Business Pricing 2026' : 'Ile kosztuje strona internetowa dla firmy? Ceny 2026',
   description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta wizytówka kosztuje według naszego szacunku 1 300–5 000 zł netto, profesjonalna więcej. Sprawdź, ile kosztuje strona www dla firmy i co wpływa na cenę.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
@@ -80,7 +80,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              How Much Does a Business Website Cost? Pricing & What's Included (2026)
+              How Much Does a Website Cost? Business Website Pricing and What's Included (2026)
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>

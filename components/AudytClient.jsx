@@ -48,7 +48,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Audyt SEO – Analiza i Optymalizacja SEO' : 'SEO Audit Services – Technical SEO Audit & SEO Keyword Analysis'}
+              {lang === 'pl' ? 'Audyt SEO – Analiza i Optymalizacja SEO' : 'SEO Audit Services: Technical Audit and SEO Keyword Analysis'}
             </h1>
 
             <div style={{ 
@@ -219,7 +219,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
         </section>
       )}
 
-      <PowiazaneUslugi locale={lang} bez="/audyt-seo" items={lang === 'pl' ? ['/projektowanie-stron-internetowych', '/cennik-pozycjonowania'] : ['/pozycjonowanie-stron-internetowych', '/cennik-pozycjonowania', '/projektowanie-stron-internetowych']} />
+      <PowiazaneUslugi locale={lang} bez="/audyt-seo" items={lang === 'pl' ? ['/projektowanie-stron-internetowych', '/cennik-pozycjonowania', '/porownania'] : ['/pozycjonowanie-stron-internetowych', '/cennik-pozycjonowania', '/projektowanie-stron-internetowych']} />
 
       {/* FAQ Section */}
       <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Najczęstsze pytania" : "Search Engine Optimization Consultants FAQs"} />

@@ -35,6 +35,10 @@ const USLUGI = {
     pl: ['SEO lokalne w Warszawie', 'widoczność w Mapach i wynikach lokalnych dla firm usługowych'],
     en: ['local SEO in Warsaw', 'visibility in Maps and local results for service businesses'],
   },
+  '/porownania': {
+    pl: ['porównania przed wyborem agencji SEO', 'kryteria, koszty i ryzyka obok siebie'],
+    en: ['SEO comparisons', 'criteria, costs and risks side by side'],
+  },
   '/pozycjonowanie-wizytowki-google': {
     pl: ['pozycjonowanie wizytówki Google', 'Profil Firmy, opinie i pozycje w Mapach'],
     en: ['Google Business Profile optimization', 'your profile, reviews and Maps positions'],

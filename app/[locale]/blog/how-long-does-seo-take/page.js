@@ -81,13 +81,13 @@ const TOC = [
   { id: 'how-to-tell-it-works', title: 'How can you tell SEO is working before rankings move?' },
   { id: 'is-seo-worth-it', title: 'Is SEO worth it if it takes months?' },
   { id: 'faq', title: 'Questions about how long SEO takes' },
-  { id: 'sources', title: 'Sources' },
+  { id: 'zrodla', title: 'Sources' },
 ];
 
 const ZRODLA = [
   { url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide', nazwa: 'Google Search Central: SEO Starter Guide', data: '2026-11-18' },
   { url: 'https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl', nazwa: 'Google Search Central: Ask Google to recrawl your URLs', data: '2026-11-18' },
-  { url: 'https://ahrefs.com/blog/how-long-does-it-take-to-rank/', nazwa: 'Ahrefs: How Long Does It Take to Rank in Google? (15 May 2025)', data: '2026-11-18' },
+  { url: 'https://ahrefs.com/blog/how-long-does-it-take-to-rank-in-google-and-how-old-are-top-ranking-pages/', nazwa: 'Ahrefs: How Long Does It Take to Rank in Google? (15 May 2025)', data: '2026-11-18' },
   { url: 'https://search.google.com/search-console', nazwa: 'Google Search Console: the source of our client series (screens published in our portfolio)', data: '2026-08-21' },
 ];
 
@@ -181,7 +181,7 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
                 Longer than for an established site, and the independent data is sobering. Ahrefs (article dated 15 May 2025) found that 1.74% of newly published pages reached the top 10 within a year in a sample of 1 million random URLs seen in September 2023. A second method, on 2 million URLs created in October 2023, gave 6.11%, which the authors consider the fairer figure. The average page ranking first was 5 years old, and 72.9% of top-10 pages were more than 3 years old. Ahrefs also reports that 40.82% of pages that reached the top 10 did so in their first month, so speed is possible but unusual.
               </p>
               <p>
-                Our own sites show the same pattern on a smaller scale. The table lists four sites whose Search Console data is already published in our portfolio. Two caveats: these are short windows of 18 days to 13 weeks, and impressions are not rankings. Figures are read from the daily chart of the Search Console panel and scaled to the totals shown in the panel, so weekly values are approximate.
+                For software companies, the order of work for a young domain is laid out in our <Link href="/blog/seo-for-saas-startups-playbook">SEO for SaaS startups playbook</Link>. Our own sites show the same pattern on a smaller scale. The table lists four sites whose Search Console data is already published in our portfolio. Two caveats: these are short windows of 18 days to 13 weeks, and impressions are not rankings. Figures are read from the daily chart of the Search Console panel and scaled to the totals shown in the panel, so weekly values are approximate.
               </p>
               <div className="tabela-artykulu">
               <CompareTable
@@ -247,7 +247,7 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
               <h2 id="is-seo-worth-it">Is SEO worth it if it takes months?</h2>
               <p>
                 That depends on what a customer is worth to you and on what you would pay for the same traffic in ads. SEO costs you time up front and then does not bill per click; ads start at once and stop when the budget stops.
-                {hrefPorownanieOrEmpty(hrefPorownanie)} Our packages start at €450 net a month on a monthly contract with cancellation at any time, so you can judge the first months on data before committing to a longer plan. Find out <Link href="/cennik-pozycjonowania">how much does SEO cost</Link> with us, package by package.
+                {hrefPorownanieOrEmpty(hrefPorownanie)} Our packages start at €450 net a month on a monthly contract with cancellation at any time, so you can judge the first months on data before committing to a longer plan. Find out <Link href="/cennik-pozycjonowania">how much does SEO cost</Link> with us, package by package, and use the <Link href="/narzedzia/kalkulator-strat-seo">SEO ROI calculator</Link> to put your own numbers on the wait. Before you pick an agency, read the <Link href="/porownania">SEO comparisons</Link>.
               </p>
 
               <h2 id="faq">Questions about how long SEO takes</h2>

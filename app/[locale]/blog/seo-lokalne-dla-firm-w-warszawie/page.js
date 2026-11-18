@@ -94,6 +94,8 @@ export default async function ArticleLokalnePage({ params }) {
               <h2 id="mobile-optimization">Mobile Optimization for Local Search</h2>
               <p>Most local searches happen on the go, on mobile devices (check the device split for your own domain in Google Search Console). When someone searches for a "restaurant near me" or an "emergency plumber," they are usually on the go and need immediate answers. If your website is not perfectly optimized for mobile, you will lose these high-converting leads instantly. Mobile optimization goes beyond simply having a responsive design. It involves ensuring lightning-fast load times (Core Web Vitals), making phone numbers clickable (click-to-call), and ensuring your address easily opens in a navigation app. A seamless mobile user experience keeps visitors on your site and helps them convert; Google does not confirm bounce rate as a ranking factor, but it does measure page experience (Core Web Vitals).</p>
 
+              <BlogCTA locale={locale} currentSlug="/blog/seo-lokalne-dla-firm-w-warszawie" />
+
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '4rem', paddingTop: '4rem' }}>
                 <div style={{ background: 'var(--w-papier-2)', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
                   <h3>Dominate your local market</h3>

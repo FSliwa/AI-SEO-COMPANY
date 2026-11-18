@@ -139,7 +139,7 @@ function Formularz({ oferta, t, params, idPola, poleRef, onWyslano }) {
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) return setStan({ status: 'error', blad: data.error || t.blad, newsletter });
       zapiszDecyzje('wyslano');
-      track('generate_lead', { event_category: 'Popup', plan: `popup_${oferta.id}`, currency: 'PLN', value: 100 });
+      track('generate_lead', { lead_source: 'popup', event_category: 'Popup', plan: `popup_${oferta.id}`, currency: 'PLN', value: 100 });
       // Komunikat o newsletterze wg odpowiedzi panelu ('pending' | 'confirmed' | null), nie wg checkboxa:
       // panel bez tej zmiany (albo z błędem zapisu) wyśle sam PDF i nie obiecujemy linku potwierdzenia.
       setStan({ status: 'done', blad: null, newsletter: newsletter ? (data.newsletter ?? null) : null });

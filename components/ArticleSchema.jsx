@@ -1,5 +1,6 @@
 import { blogPosts } from '@/lib/blogPosts';
 import { routing } from '@/i18n/routing';
+import { dataTresci, pierwszaPublikacja } from '@/lib/lastmod';
 
 const BASE = 'https://www.ai-seo-company.pl';
 
@@ -51,6 +52,12 @@ export default function ArticleSchema({
   };
   const resolvedUrl = url || (post && (isEn ? `/en${localizedPath(post.slug, 'en')}` : localizedPath(post.slug, 'pl'))) || '/';
   const resolvedDate = datePublished || (post && post.date);
+  // 18.11.2026: daty z jednego zrodla (lib/lastmod.json), zadnego new Date() w znaczniku.
+  const adresPelny = `${BASE}${resolvedUrl}`;
+  const dataPubl = resolvedDate || pierwszaPublikacja(adresPelny) || dataTresci(adresPelny);
+  let dataMod = dateModified || dataTresci(adresPelny) || dataPubl;
+  // dateModified nie moze byc wczesniejsza niz datePublished (Article structured data).
+  if (dataPubl && dataMod && String(dataMod).slice(0, 10) < String(dataPubl).slice(0, 10)) dataMod = dataPubl;
   const resolvedImage = imageUrl || (post && (post.heroImage || post.image));
 
   const jsonLd = {
@@ -87,10 +94,10 @@ export default function ArticleSchema({
         url: `${BASE}/ai-seo-company-logotyp-v2.png`
       }
     },
-    datePublished: resolvedDate || new Date().toISOString(),
+    datePublished: dataPubl,
     // Data modyfikacji = data publikacji, dopoki tresc realnie sie nie
     // zmienila (regula z CLAUDE.md: zadnych dat aktualizacji z sufitu).
-    dateModified: dateModified || resolvedDate || new Date().toISOString()
+    dateModified: dataMod
   };
   if (extra) Object.assign(jsonLd, extra);
 

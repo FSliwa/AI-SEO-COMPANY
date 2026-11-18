@@ -288,7 +288,7 @@ export default async function ArtykulLandingPage({ params }) {
               <Tabela etykieta="Najważniejsze zasady w skrócie" naglowki={['Zasada', 'Szczegóły']} wiersze={W_SKROCIE} />
 
               <h2 id="czym-jest">Czym jest landing page i jakie są jego rodzaje?</h2>
-              <p>Strona docelowa, czyli po angielsku landing page, to adres, na który trafia użytkownik po kliknięciu reklamy, linku w newsletterze albo wyniku wyszukiwania. Od zwykłej podstrony odróżnia ją to, że ma jeden mierzalny cel i ogranicza wszystko, co od niego odciąga. Zwykle nie ma pełnego menu, a treść prowadzi czytelnika od problemu do konkretnej akcji.</p>
+              <p>Strona docelowa, czyli po angielsku landing page, to adres, na który trafia użytkownik po kliknięciu reklamy, linku w newsletterze (jak wybrać narzędzie do newslettera: <Link href="/blog/mailchimp-vs-getresponse">Mailchimp czy GetResponse</Link>) albo wyniku wyszukiwania. Od zwykłej podstrony odróżnia ją to, że ma jeden mierzalny cel i ogranicza wszystko, co od niego odciąga. Zwykle nie ma pełnego menu, a treść prowadzi czytelnika od problemu do konkretnej akcji.</p>
               <p>W praktyce wyróżnia się kilka typów, które różnią się celem i długością. Wybór typu warto zrobić przed pisaniem treści, bo od niego zależy układ sekcji i to, co mierzysz.</p>
               <Tabela etykieta="Rodzaje landing page" naglowki={['Typ', 'Główny cel', 'Typowe elementy', 'Kiedy się sprawdza']} wiersze={TYPY} />
               <p>Typ strony zmienia też długość treści. Krótki click-through może mieć kilka akapitów, a strona sprzedażowa droższej usługi B2B zwykle potrzebuje więcej sekcji: odpowiedzi na obiekcje, opisu procesu i przykładów realizacji.</p>

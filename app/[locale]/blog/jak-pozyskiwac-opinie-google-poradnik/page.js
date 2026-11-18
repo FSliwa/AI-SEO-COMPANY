@@ -92,7 +92,7 @@ export default async function ArticleReviewsPage({ params }) {
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
-              {locale === 'en' ? 'How to effectively get Google reviews? Guide 2026' : 'Jak skutecznie pozyskiwać opinie w Google? Poradnik 2026'}
+              {locale === 'en' ? 'How to get Google reviews: a 2026 guide with message templates' : 'Opinie Google: jak je zdobywać i jak odpowiadać (poradnik 2026)'}
             </h1>
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>

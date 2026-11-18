@@ -97,6 +97,7 @@ const COPY = {
       { t: ' design and advanced SEO make your business remembered and chosen' },
       { t: ' at massive scale', wide: true },
       { t: '.' },
+      { t: ' Poland SEO and websites for B2B companies: one team for brand, site and search.' },
       { t: ' We combine all three rather than treating them as separate projects.', wide: true }
     ],
     display: 'that drives sales',
@@ -122,6 +123,7 @@ const COPY = {
       { t: '.' },
       { t: ' Prowadzimy te trzy obszary razem, a nie jako osobne projekty.', wide: true },
       { t: ' Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie.' },
+      { t: ' Jako agencja marketingowa z Warszawy łączymy SEO, projekt strony i markę w jednym zespole.' },
       { t: ' Raportujemy zapytania i widoczność z Twoich kont Google, nie same pozycje; rozliczamy się w stałym abonamencie z jawnym celem TOP 3.', wide: true }
     ],
     display: 'Pozycjonowanie, które buduje sprzedaż',
@@ -554,6 +556,7 @@ export default function Hero() {
           alt=""
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
           data-kursor-zrodlo=""
           style={{ objectFit: 'cover', objectPosition: 'center bottom' }}

@@ -232,6 +232,7 @@ export default function KalkulatorClient() {
     </div>
   );
   const zgloszony = useRef(false);
+  const zgloszonyStart = useRef(false);
   const zgloszonyZwrot = useRef(false);
   const zgloszonySklep = useRef(false);
 
@@ -297,6 +298,10 @@ export default function KalkulatorClient() {
     e.preventDefault();
     setProbowal(true);
     if (blad) return;
+    if (!zgloszonyStart.current) {
+      zgloszonyStart.current = true;
+      track('narzedzie_start', { narzedzie: 'kalkulator' });
+    }
     zapiszParametry(parametryWyniku());
     setLicznik((n) => n + 1);
     wynikRef.current?.focus({ preventScroll: true });

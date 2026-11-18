@@ -193,6 +193,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <p>Do you want to check what canonical tags look like on your site? <Link href={homeHash('kontakt', locale)}>Schedule a free consultation</Link>.</p>
               
               <p><span style={{ fontWeight: 'bold' }}>Also read:</span> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">How much does SEO cost in Poland? Pricing and packages 2026</Link></p>
+              <BlogCTA locale={locale} currentSlug="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026" />
             </div>
           </Reveal>
         </div>

@@ -17,6 +17,7 @@ import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 //   email_click          {link_location, link_url, page_path}
 //   view_contact_section {section_id, page_path}   (raz na odsłonę strony)
 //   view_pricing         {section_id, page_path}   (raz na odsłonę strony)
+//   outbound_click / panel_click {link_domain, link_url (bez query), cta_location, page_path}
 
 const CONTACT_IDS = ['kontakt', 'contact'];
 const PRICING_IDS = ['cennik', 'pricing'];
@@ -27,6 +28,7 @@ function locationOf(el) {
   const landmark = el.closest('section[id], aside[id], footer, header, nav');
   if (landmark && landmark.id) return landmark.id;
   if (landmark) return landmark.tagName.toLowerCase();
+  if (el.closest('article')) return 'article';
   return 'unknown';
 }
 
@@ -49,6 +51,23 @@ export default function AnalyticsEvents() {
       if (href.startsWith('mailto:')) {
         track('email_click', { link_location: location, link_url: href, page_path: pagePath });
         return;
+      }
+
+      // 18.11.2026 (audyt S-38, S-39): linki wychodzące i do panelu klienta. Bez doklejania parametrów
+      // do linków (pomiar nie zmienia linków SEO); link_url bez query. Wewnętrzne adresy absolutne
+      // (ten sam host) idą dalej.
+      if (/^https?:\/\//.test(href)) {
+        let u = null;
+        try { u = new URL(href); } catch { u = null; }
+        if (u && u.host !== window.location.host) {
+          track(u.host === 'panel.ai-seo-company.pl' ? 'panel_click' : 'outbound_click', {
+            link_domain: u.host,
+            link_url: href.split('?')[0],
+            cta_location: location,
+            page_path: pagePath,
+          });
+          return;
+        }
       }
 
       const text = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);

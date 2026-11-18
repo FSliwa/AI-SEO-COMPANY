@@ -261,7 +261,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <Pricing />
 
-      <PowiazaneUslugi locale={lang} bez="/pozycjonowanie-stron-internetowych" items={lang === 'pl' ? ['/audyt-seo', '/projektowanie-stron-internetowych'] : ['/audyt-seo', '/projektowanie-stron-internetowych']} />
+      <PowiazaneUslugi locale={lang} bez="/pozycjonowanie-stron-internetowych" items={lang === 'pl' ? ['/audyt-seo', '/projektowanie-stron-internetowych', '/porownania'] : ['/audyt-seo', '/projektowanie-stron-internetowych', '/porownania']} />
 
       <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Najczęstsze pytania o pozycjonowanie stron internetowych" : "Frequently Asked Questions About Our SEO Services"} />
 

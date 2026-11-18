@@ -48,7 +48,7 @@ export default async function ArticleUXAudit({ params }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <ArticleSchema slug="/blog/audyt-ux-strony" locale={locale} url={locale === 'en' ? '/en/blog/ux-audit-guide' : undefined} />
+      <ArticleSchema slug="/blog/audyt-ux-strony" locale={locale} url={locale === 'en' ? '/en/blog/ux-audit-guide' : undefined} datePublished={locale === 'en' ? '2026-08-31' : undefined} />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>

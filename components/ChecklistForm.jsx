@@ -74,7 +74,7 @@ export default function ChecklistForm({
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) return setState({ status: 'error', error: data.error || (en ? EN.blad : 'Nie udało się wysłać. Spróbuj za chwilę.') });
-      track('generate_lead', { event_category: kategoria, plan, currency: 'PLN', value: 100 });
+      track('generate_lead', { lead_source: 'template', event_category: kategoria, plan, currency: 'PLN', value: 100 });
       setState({ status: 'done', error: null });
     } catch {
       setState({ status: 'error', error: en ? EN.brakPolaczenia : 'Brak połączenia. Sprawdź internet i spróbuj ponownie.' });

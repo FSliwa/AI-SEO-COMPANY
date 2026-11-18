@@ -29,6 +29,11 @@ export default async function ArticleCwvPage({ params }) {
     { id: 'kluczowe-wskazniki', title: 'Kluczowe wskaźniki (Metryki CWV) i ich optymalizacja' },
     { id: 'znaczenie-ttfb', title: 'Znaczenie TTFB i renderowania serwerowego (SSR)' }
   ];
+  const tocItemsEn = [
+    { id: 'dlaczego-przejmowac-sie', title: 'Why should you care about Core Web Vitals at all?' },
+    { id: 'kluczowe-wskazniki', title: 'Key indicators (CWV Metrics) and their optimization' },
+    { id: 'znaczenie-ttfb', title: 'The importance of TTFB and Server-Side Rendering (SSR)' }
+  ];
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -62,10 +67,10 @@ export default async function ArticleCwvPage({ params }) {
               <p className="lead">
                 Core Web Vitals measure page experience, which Google says aligns with what its core ranking systems reward. Good scores help but do not guarantee higher rankings. Here is our guide: Core Web Vitals and Google rankings in 2026.
               </p>
-              <ArticleTOC items={tocItems} />
+              <ArticleTOC items={tocItemsEn} />
               
               <h2 id="dlaczego-przejmowac-sie">Why should you care about Core Web Vitals at all?</h2>
-              <p>Loading speed is no longer just a nice addition - it has become a requirement. According to a 2017 Google/SOASTA study (mobile data), going from 1 to 3 seconds of load time raises the probability of a bounce by 32% (<a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google</a>).</p>
+              <p>Loading speed is no longer just a nice addition - it has become a requirement. According to a 2017 Google/SOASTA study (mobile data), going from 1 to 3 seconds of load time raises the probability of a bounce by 32% (<a href="https://web.archive.org/web/20251226035614/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google (archive)</a>).</p>
               <p>Moreover, the Google algorithm rewards websites in organic search results that are lightweight and flawlessly coded. A faster site means a lower crawl budget cost, which favors faster indexing of new content on your blog or offer subpages.</p>
 
               <h2 id="kluczowe-wskazniki">Key indicators (CWV Metrics) and their optimization</h2>
@@ -156,7 +161,7 @@ export default async function ArticleCwvPage({ params }) {
                 Dlaczego w ogóle przejmować się Core Web Vitals?
               </h2>
               <p>
-                Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według badania Google i SOASTA z 2017 roku (dane mobilne) wydłużenie ładowania strony z 1 do 3 sekund zwiększa prawdopodobieństwo odrzucenia o 32% (<a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google</a>).
+                Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według badania Google i SOASTA z 2017 roku (dane mobilne) wydłużenie ładowania strony z 1 do 3 sekund zwiększa prawdopodobieństwo odrzucenia o 32% (<a href="https://web.archive.org/web/20251226035614/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google (archiwum)</a>).
               </p>
               <p>
                 Co więcej, algorytm Google premiuje w bezpłatnych wynikach wyszukiwania serwisy, które są lekkie i bezbłędnie zakodowane. Szybsza strona oznacza mniejszy koszt tzw. crawl budget, co sprzyja szybszej indeksacji nowych treści na Twoim blogu czy podstronach ofertowych.

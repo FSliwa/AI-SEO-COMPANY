@@ -236,7 +236,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 marginBottom: '1rem', 
                 letterSpacing: '-0.04em'
               }}>
-                {lang === 'pl' ? 'SEO lokalne i pozycjonowanie lokalne Warszawa' : 'Local SEO and Google Maps visibility in Warsaw'}
+                {lang === 'pl' ? 'SEO lokalne i pozycjonowanie lokalne w Warszawie' : 'Local SEO and Google Maps visibility in Warsaw'}
               </h1>
 
               <div style={{ 
@@ -504,7 +504,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         {/* Pricing */}
         <Pricing />
 
-        <PowiazaneUslugi locale={lang} bez="/seo-lokalne-warszawa" items={lang === 'pl' ? ['/audyt-seo', '/pozycjonowanie-wizytowki-google'] : ['/pozycjonowanie-stron-internetowych', '/cennik-pozycjonowania', '/pozycjonowanie-wizytowki-google']} />
+        <PowiazaneUslugi locale={lang} bez="/seo-lokalne-warszawa" items={lang === 'pl' ? ['/audyt-seo', '/pozycjonowanie-wizytowki-google', '/porownania'] : ['/pozycjonowanie-stron-internetowych', '/cennik-pozycjonowania', '/pozycjonowanie-wizytowki-google']} />
 
         {/* FAQ Section */}
         <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : "Local Search Engine Optimization FAQs"} />

@@ -168,6 +168,7 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
     setPobrano(false);
     setAdres(wpisany);
     zapiszParametry({ url: wpisany });
+    track('narzedzie_start', { narzedzie: 'llms_txt' });
     try {
       const res = await fetch(API, {
         method: 'POST',
@@ -184,6 +185,7 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
         adresy_w_pliku: data.wPliku,
         czesciowy: data.czesciowy ? 'tak' : 'nie',
       });
+      track('narzedzie_wynik', { narzedzie: 'llms_txt' });
       setEdycja({ model: parsujLlmsTxt(data.llmsTxt), zmieniony: false });
       setStan({ status: 'done', blad: null, wynik: data });
     } catch {

@@ -10,6 +10,7 @@ import AppleFaq from '@/components/service/AppleFaq';
 import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { hash } from '@/lib/anchors';
+import { Link } from '@/i18n/routing';
 import TloGory from '@/components/TloGory';
 import PowiazaneUslugi from '@/components/service/PowiazaneUslugi';
 
@@ -36,7 +37,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Tworzenie stron internetowych i projektowanie stron internetowych' : 'Web Design & Development'}
+              {lang === 'pl' ? 'Tworzenie i projektowanie stron internetowych' : 'Web design agency: web design and development for B2B companies'}
             </h1>
 
             <div style={{ 
@@ -73,7 +74,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
             }}>
               {lang === 'pl' 
                 ? <>Profesjonalne <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> to inwestycja w stabilny fundament. <span style={{ color: 'var(--color-cta)' }}>Tworzymy nowoczesne i szybkie strony B2B w Next.js, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów</span>.</> 
-                : <>Professional Web Design and Development is an investment in a stable foundation. <span style={{ color: 'var(--color-cta)' }}>We create fast Business Websites that protect against attacks and turn organic traffic into customers</span>.</>}
+                : <>We are a web design agency in Warsaw. Professional Web Design and Development is an investment in a stable foundation. <span style={{ color: 'var(--color-cta)' }}>We create fast Business Websites that protect against attacks and turn organic traffic into customers</span>.</>}
             </p>
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
@@ -155,6 +156,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wdrożenie i Skalowanie Sprzedaży' : 'Deployment and Sales Scaling'}</div>
               <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Tworzenie stron internetowych kończymy wdrożeniem gotowego projektu w bezpiecznym i niezawodnym środowisku, dbając o zoptymalizowanie ścieżek zakupowych klienta (generowanie leadów).' : 'We transition the ready design into a secure and reliable environment, ensuring optimized customer purchase paths (lead generation).'}</p>
+              {lang === 'pl' && <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55, marginTop: '1rem' }}>Wymogi prawne wobec stron firmowych (cookies, formularze, polityka prywatności) opisujemy w poradniku <Link href="/blog/rodo-na-stronie-internetowej" style={{ textDecoration: 'underline' }}>RODO na stronie internetowej</Link>.</p>}
             </RevealItem>
           </RevealStagger>
         </div>

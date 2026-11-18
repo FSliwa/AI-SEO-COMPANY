@@ -143,7 +143,7 @@ export default function PricingClient() {
               marginBottom: '1.5rem', 
               letterSpacing: '-0.02em'
             }}>
-              {lang === 'pl' ? 'Ile Kosztuje Pozycjonowanie Stron?' : 'How Much Does SEO Cost?'} <br />
+              {lang === 'pl' ? 'Ile kosztuje pozycjonowanie?' : 'How Much Does SEO Cost?'} <br />
               <span style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Cennik pozycjonowania stron 2026' : 'SEO Pricing 2026'}</span>
             </h1>
             <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>

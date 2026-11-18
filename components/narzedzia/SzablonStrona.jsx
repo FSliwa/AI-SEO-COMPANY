@@ -2,7 +2,7 @@
 // Komponent serwerowy. Treść PL i EN w pliku danych lib/szablony/<slug>.js (kontrakt niżej
 // i w lib/szablony/README.md), więc nowy szablon = nowy plik danych + wpisy w rejestrach.
 // Plik PDF idzie e-mailem przez panel (/api/szablony, ChecklistForm z propem plik), jak checklista
-// zmiany agencji. Schema: Article z hasPart DigitalDocument, opcjonalnie HowTo z krokami,
+// zmiany agencji. Schema: Article z hasPart DigitalDocument (HowTo usuniety 18.11.2026: kroki nie sa widoczne na stronie),
 // FAQPage (AppleFaq), BreadcrumbList przez /narzedzia (Breadcrumbs z parent).
 //
 // Kontrakt danych (dane.pl i dane.en mają te same klucze):
@@ -61,17 +61,6 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
     // EN: tylko cele z wersją angielską (artykuł tylko po polsku dałby /en/blog/... = 404).
     .filter((p) => p.cel && (!en || hrefWJezyku(p.cel, 'en')));
 
-  const howTo = d.kroki && d.kroki.length
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'HowTo',
-        '@id': `${BASE}${url}#howto`,
-        name: d.h1,
-        inLanguage: en ? 'en' : 'pl',
-        step: d.kroki.map((k, i) => ({ '@type': 'HowToStep', position: i + 1, name: k.name, text: k.text })),
-      }
-    : null;
-
   const spis = [
     ...d.sekcje.map((sek) => ({ id: sek.id, label: sek.h2 })),
     ...(d.podglad ? [{ id: 'podglad', label: d.podglad.h2 }] : []),
@@ -101,7 +90,6 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
           },
         }}
       />
-      {howTo && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />}
 
       <SzHero tag={d.tag} h1={d.h1} slug={dane.slug} locale={locale}>
         <Byline sciezka={sciezkaPl} takzeEn data={en ? dataZmiany : undefined} />

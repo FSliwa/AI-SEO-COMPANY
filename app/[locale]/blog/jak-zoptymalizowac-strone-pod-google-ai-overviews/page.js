@@ -77,12 +77,12 @@ const FAQ = [
 const ZRODLA = [
   { url: 'https://developers.google.com/search/docs/appearance/ai-features', nazwa: 'Google Search Central: AI features and your website', data: '2026-11-18' },
   { url: 'https://support.google.com/websearch/answer/14901683?hl=pl', nazwa: 'Pomoc Google: Przegląd od AI w wynikach wyszukiwania', data: '2026-11-18' },
-  { url: 'https://blog.google/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)', data: '2026-11-18' },
+  { url: 'https://blog.google/products-and-platforms/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)', data: '2026-11-18' },
   { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode – dostępność i wymagania', data: '2026-11-18' },
   { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność – sposób liczenia danych', data: '2026-11-18' },
   { url: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers', nazwa: 'Google: przegląd typowych robotów Google (Google-Extended)', data: '2026-11-18' },
   { url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content', nazwa: 'Google Search Central: Creating helpful, reliable, people-first content', data: '2026-11-18' },
-  { url: 'https://docs.perplexity.ai/guides/bots', nazwa: 'Perplexity Docs: dokumentacja robotów (PerplexityBot, Perplexity-User)', data: '2026-11-18' },
+  { url: 'https://docs.perplexity.ai/docs/resources/perplexity-crawlers', nazwa: 'Perplexity Docs: dokumentacja robotów (PerplexityBot, Perplexity-User)', data: '2026-11-18' },
   { url: 'https://www.perplexity.ai/help-center/en/articles/10352895-how-does-perplexity-work', nazwa: 'Perplexity Help Center: How does Perplexity work?', data: '2026-11-18' },
 ];
 
