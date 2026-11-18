@@ -169,6 +169,8 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 .sz-powiazane > li:hover::after { transform: translate(2px, -2px); }
 .sz-powiazane a { display: block; padding-block: 9px; margin-top: -9px; margin-bottom: calc(0.25rem - 9px); font-weight: 600; font-size: 1.0625rem; color: var(--w-tusz); }
 .sz-powiazane a::before { content: ''; position: absolute; inset: 0; border-radius: 20px; }
+/* dwukropek między tytułem a opisem zostaje w DOM (ten sam tekst co przed redesignem), ale w karcie nie jest widoczny */
+.sz-dwukropek { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* Zrzuty paneli (raport-seo) jak kartka dokumentu */
 .sz-figura { margin: 0 0 2rem; }
@@ -231,7 +233,7 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
     }
   }
 }
-@keyframes sz-wej { from { opacity: 0; transform: translateY(14px); } }
+@keyframes sz-wej { from { opacity: 0.001; transform: translateY(14px); } }
 @keyframes sz-wej-h1 { from { transform: translateY(14px); } }
 @keyframes sz-wej-arkusz { from { transform: translateY(24px); } }
 @keyframes sz-rozsun { from { transform: translate(0, 0) rotate(0); } to { transform: translate(var(--x), var(--y)) rotate(var(--r)); } }

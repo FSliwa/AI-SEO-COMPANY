@@ -163,7 +163,7 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
               <ul className="sz-powiazane">
                 {powiazane.map((p) => (
                   <li key={p.href}>
-                    <Link href={hrefDlaLink(p.cel, locale)}>{p.tekst}</Link>{p.opis ? `: ${p.opis}` : ''}
+                    <Link href={hrefDlaLink(p.cel, locale)}>{p.tekst}</Link>{p.opis ? <><span className="sz-dwukropek">: </span>{p.opis}</> : ''}
                   </li>
                 ))}
               </ul>
