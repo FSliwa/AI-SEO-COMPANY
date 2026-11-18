@@ -3806,3 +3806,82 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
     padding-bottom: round(nearest, clamp(48px, 5vw, 72px), 8px) !important;
   }
 }
+
+/* ==========================================================================
+   DUZE EKRANY (18.11.2026, klucz duze-ekrany) - TYLKO od 1600 px szerokosci.
+   --------------------------------------------------------------------------
+   Powod: na 1920-3440 px wysokosc hero rosla z oknem (100vh), litery SEO i
+   scena rosly razem z nia, a tekst stal w limitach px (H1 62 px, lead 19 px),
+   loga paska klientow liczyly sie w vw bez limitu. Tutaj:
+   1) hero ma wysokosc clamp(700px, 100vh, 1000px) - nigdy mniej niz 700, wiec
+      na oknie 2000x720 przycisk CTA jest nad zagieciem, a nigdy wiecej niz
+      1000, wiec kompozycja nie rozdyma sie na 1440 px wysokosci;
+   2) tekst hero skaluje sie z --hero-h (wartosci z 1440x900 / 900 px), wiec
+      proporcje tekst : litery zostaja jak na 1440x900;
+   3) tlo (grafika nieba i gor) i scena stoja na srodkowej "scenie" o
+      szerokosci max 1,78 x --hero-h, a boki dopelnia gradient w kolorze
+      nieba i mgly (pelna szerokosc okna, bez szwow);
+   4) pasek klientow: rzad max 1440 px, loga w px z 1440 px, wysrodkowane.
+   Nic w tym bloku nie dziala ponizej 1600 px (uklady <= 1440 bez zmian).
+   ========================================================================== */
+@media (min-width: 1600px) and (min-aspect-ratio: 1/1) {
+  .hero.hero--en {
+    --hero-h: clamp(700px, 100vh, 1000px);
+    --hero-scena: min(100%, calc(var(--hero-h) * 1.78));
+    /* inline style sekcji ma minHeight: 100vh, a min-height wygrywa z max-height */
+    min-height: var(--hero-h) !important;
+  }
+
+  /* Boki poza scena: niebo -> mgla (kolory z krawedzi grafiki tla). */
+  .hero.hero--en::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(250, 241, 237) 0%, rgb(249, 241, 236) 55%, rgb(246, 238, 232) 78%, rgb(242, 233, 227) 100%);
+  }
+
+  .hero .hero-tlo-sceny,
+  .hero .hero-en-bg {
+    left: 50%;
+    right: auto;
+    width: var(--hero-scena);
+    translate: -50% 0;
+  }
+
+  /* Scena 3D: poziome gasniecie krawedzi (obiekt wchodzacy z prawej nie jest
+     ucinany twardo w srodku strony) razem z istniejaca maska dolu. */
+  .hero .hero-en-bg {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 88%, transparent 100%), linear-gradient(180deg, #000 0%, #000 80%, rgba(0, 0, 0, 0.72) 85%, rgba(0, 0, 0, 0.32) 90%, transparent 94.6%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 88%, transparent 100%), linear-gradient(180deg, #000 0%, #000 80%, rgba(0, 0, 0, 0.72) 85%, rgba(0, 0, 0, 0.32) 90%, transparent 94.6%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  /* Miekkie krawedzie sceny grafiki tla (nie ma twardego pionowego szwu). */
+  .hero .hero-tlo-sceny {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  }
+
+  /* Tekst: wartosci z 1440x900 (62,4 / 22,4 / 19,2 / 15,12 / 16 px) / 900 px. */
+  .hero .hero-en-title-display { font-size: calc(var(--hero-h) * 0.0693); }
+  .hero .hero-en-title-sub { font-size: calc(var(--hero-h) * 0.0249); }
+  .hero .hero-en-lead { font-size: calc(var(--hero-h) * 0.02133); }
+  .hero .hero-en-body { font-size: calc(var(--hero-h) * 0.0168); }
+  .hero .hero-en-cta,
+  .hero .hero-en-cta-secondary { font-size: calc(var(--hero-h) * 0.01778); }
+
+  /* Pasek klientow: rzad do 1440 px, loga jak na 1440 px (vw -> px). */
+  .hero-klienci {
+    width: min(1207px, 100% - 2 * clamp(32px, 4vw, 96px));
+    margin: 0 auto;
+  }
+  .hero-klient--mt { width: 283px; }
+  .hero-klient--tql { width: 133px; }
+  .hero-klient--ai { width: 223px; }
+  .hero-klient--st { width: 240px; }
+  .gory-klienci { padding-top: 178px; }
+  .gory-oferta .gory-klienci + .services { padding-top: 216px !important; }
+}

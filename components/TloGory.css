@@ -150,3 +150,32 @@
   0%, 100% { transform: scale(var(--k)) rotate(-0.8deg); }
   50% { transform: scale(var(--k)) rotate(0.8deg); }
 }
+
+/* DUZE EKRANY (18.11.2026): powyzej 1680 px scena (grafika gor + czasza) stoi na
+   srodkowym pudelku 1680 px (proporcje jak na 1680), a nie rozciaga sie do 3440 px
+   (rozdmuchana, rozmazana czasza, szwy). Boki pudelka gasna w mgle i papier.
+   Poniżej 1680 px nic sie nie zmienia (pudelko = cala szerokosc). */
+@media (min-width: 1600px) {
+  .tlo-gory-obraz {
+    left: auto;
+    width: min(100cqw, 1680px);
+    right: calc((100cqw - min(100cqw, 1680px)) / 2);
+    height: min(100%, 504px);
+  }
+  .tlo-gory-scena {
+    width: min(100cqw, 1680px);
+    right: calc((100cqw - min(100cqw, 1680px)) / 2);
+  }
+}
+@media (min-width: 1681px) {
+  .tlo-gory-obraz {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 30%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 30%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+  .tlo-gory-scena {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+}
