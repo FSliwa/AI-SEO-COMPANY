@@ -7,24 +7,34 @@
 // 12.11.2026 (S1-poprawki): pole „Co ma się poprawić” pod przyciskiem (Z-01b), przykład adresu i ?url=
 // tylko wypełnia pole, bez startu (Z-06; limit 2/IP i koszt makiety), link do wyniku przy wyniku.
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { track } from '@/lib/track';
 import { wywolajNarzedzie } from '@/lib/narzedziaApi';
 import { MAKIETA } from '@/lib/narzedziaLiczby';
+import { zachowaniePrzewijania } from '@/lib/ruch';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import LinkWyniku, { PrzykladAdresu } from './LinkWyniku';
 import BramkaEmail from './BramkaEmail';
 import { Odblokowano, PasekDemo, Postep } from './Wspolne';
+import './ruch-c.css';
 
 const KROKI_EN = ['Fetching your website and its content', 'Capturing a screenshot of the current design', 'Designing a new section layout', 'Matching colors, typography and the mobile version', 'Assembling the mockup'];
 const KROKI = ['Pobieramy Twoją stronę i jej treści', 'Robimy zrzut obecnego wyglądu', 'Projektujemy nowy układ sekcji', 'Dopasowujemy kolory, typografię i wersję na telefon', 'Składamy makietę'];
 
+// 18.11.2026 (anim-narzedzia-c): ramka ze szkieletem pod spodem; iframe wchodzi (opacity) po onLoad albo po 4 s
+// (zapas), więc wolne ładowanie nie wygląda na pustą ramkę. Wysokość daje iframe, szkielet tylko ją wypełnia.
 function Ramka({ html, tytul, wysokosc = 640, szerokosc = '100%' }) {
+  const [gotowa, setGotowa] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setGotowa(true), 4000);
+    return () => clearTimeout(t);
+  }, []);
   return (
-    <div className="narz-ramka" style={{ ['--szer']: szerokosc }}>
+    <div className="narz-ramka mak-ramka" data-gotowa={gotowa ? '' : undefined} style={{ ['--szer']: szerokosc }}>
       <div className="narz-ramka-pasek" aria-hidden="true"><span /><span /><span /></div>
-      <iframe title={tytul} srcDoc={html} sandbox="" loading="lazy" referrerPolicy="no-referrer" style={{ height: wysokosc }} />
+      <div className="mak-ramka-szk" aria-hidden="true" />
+      <iframe title={tytul} srcDoc={html} sandbox="" loading="lazy" referrerPolicy="no-referrer" onLoad={() => setGotowa(true)} style={{ height: wysokosc }} />
     </div>
   );
 }
@@ -35,7 +45,19 @@ export default function MakietaClient() {
   const [widok, setWidok] = useState('komputer');
   const [adres, setAdres] = useState('');
   const poleRef = useRef(null);
+  const wynikRef = useRef(null);
+  // Rezerwa wysokości na czas zamiany podglądu + bramki w pełną makietę (krótsza o kilkaset px na telefonie):
+  // treść pod narzędziem stoi w miejscu, a rezerwę zdejmujemy po dojechaniu przewijania do początku wyniku.
+  const [rezerwa, setRezerwa] = useState(0);
   useParametrUrl(['url'], ({ url }) => { if (poleRef.current && url) poleRef.current.value = url; });
+
+  // Po odblokowaniu pokazujemy początek pełnego wyniku (komunikat + makieta), bez skoku: smooth tylko bez reduce.
+  useEffect(() => {
+    if (!stan.pelny) return undefined;
+    wynikRef.current?.scrollIntoView({ block: 'start', behavior: zachowaniePrzewijania() });
+    const t = setTimeout(() => setRezerwa(0), 1200);
+    return () => clearTimeout(t);
+  }, [stan.pelny]);
 
   async function start(e) {
     e.preventDefault();
@@ -62,7 +84,7 @@ export default function MakietaClient() {
           <PrzykladAdresu onWybierz={(a) => { if (poleRef.current) { poleRef.current.value = a; poleRef.current.focus(); } }} />
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
-            <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_makieta_start">
+            <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta="narzedzie_makieta_start">
               {stan.status === 'loading' ? (en ? 'Designing…' : 'Projektuję…') : (en ? 'Design a new website' : 'Zaprojektuj nową stronę')}
             </button>
           </div>
@@ -75,11 +97,11 @@ export default function MakietaClient() {
       )}
 
       {stan.status === 'done' && p && (
-        <div className="narz-wynik" aria-live="polite">
+        <div ref={wynikRef} className="narz-wynik c-skok" aria-live="polite" style={rezerwa ? { minHeight: rezerwa, alignContent: 'start' } : undefined}>
           <p className="narz-wynik-domena">{en ? 'New homepage' : 'Nowa strona główna'}: {p.nazwa}</p>
           {!stan.pelny ? (
             <>
-              <div className={`narz-porownanie-makiet${p.zrzut ? '' : ' narz-porownanie-makiet--bez-zrzutu'}`}>
+              <div key="przed-bramka" className={`narz-porownanie-makiet${p.zrzut ? '' : ' narz-porownanie-makiet--bez-zrzutu'}`}>
                 {p.zrzut && (
                   <figure>
                     <figcaption>{en ? 'Now' : 'Teraz'}</figcaption>
@@ -92,7 +114,7 @@ export default function MakietaClient() {
                   <Ramka html={p.html} tytul={en ? `Mockup: first screen of ${p.domena}` : `Makieta: pierwszy ekran ${p.domena}`} wysokosc={520} />
                 </figure>
               </div>
-              <div className="narz-zablokowane">
+              <div key="bramka" className="narz-zablokowane mak-zablok">
                 <div className="narz-zamglone narz-makieta-atrapa" aria-hidden="true">
                   {Array.from({ length: Math.min(4, Math.max(1, (p.sekcji || 4) - 1)) }, (_, i) => <div key={i} />)}
                 </div>
@@ -103,19 +125,19 @@ export default function MakietaClient() {
                   opis={en ? 'We will show the whole page, mobile included, and email you a link to the mockup so you can show it to a partner or a developer.' : 'Pokażemy całą stronę, także na telefonie, i wyślemy link do makiety e-mailem, żeby pokazać ją wspólnikowi albo programiście.'}
                   korzysci={en ? ['All sections: services, advantages, contact, footer', 'Desktop and mobile preview', 'Link valid for 60 days'] : ['Wszystkie sekcje: usługi, przewagi, kontakt, stopka', 'Podgląd na komputerze i telefonie', 'Link ważny 60 dni']}
                   przycisk={en ? 'Show the full mockup' : 'Pokaż całą makietę'}
-                  onOdblokowano={(pelny, newsletter) => setStan((s) => ({ ...s, pelny, newsletter }))}
+                  onOdblokowano={(pelny, newsletter) => { setRezerwa(wynikRef.current?.offsetHeight || 0); setStan((s) => ({ ...s, pelny, newsletter })); }}
                 />
               </div>
             </>
           ) : (
             <>
-              <Odblokowano newsletter={stan.newsletter} />
-              <div className="narz-filtry" role="group" aria-label={en ? 'Mockup view' : 'Widok makiety'}>
+              <Odblokowano key="odblokowano" newsletter={stan.newsletter} />
+              <div key="filtry" className="narz-filtry" role="group" aria-label={en ? 'Mockup view' : 'Widok makiety'}>
                 {(en ? [['komputer', 'Desktop'], ['telefon', 'Mobile']] : [['komputer', 'Komputer'], ['telefon', 'Telefon']]).map(([k, t]) => (
                   <button key={k} type="button" aria-pressed={widok === k} onClick={() => setWidok(k)}>{t}</button>
                 ))}
               </div>
-              <Ramka html={stan.pelny.html} tytul={en ? `Website mockup for ${p.domena}` : `Makieta strony ${p.domena}`} wysokosc={widok === 'telefon' ? 760 : 900} szerokosc={widok === 'telefon' ? '390px' : '100%'} />
+              <Ramka key="pelna-ramka" html={stan.pelny.html} tytul={en ? `Website mockup for ${p.domena}` : `Makieta strony ${p.domena}`} wysokosc={widok === 'telefon' ? 760 : 900} szerokosc={widok === 'telefon' ? '390px' : '100%'} />
               {stan.pelny.link && stan.pelny.link !== '#' && (
                 <p className="narz-mikro"><a href={stan.pelny.link} target="_blank" rel="noopener">{en ? 'Open the mockup in a new tab' : 'Otwórz makietę w nowej karcie'}</a> {en ? '(we have also emailed you the link).' : '(link wysłaliśmy też e-mailem).'}</p>
               )}

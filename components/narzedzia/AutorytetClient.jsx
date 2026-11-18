@@ -14,7 +14,7 @@
 // Limit panelu: 20 domen na IP na dobę (własna + każdy konkurent).
 // Parametry adresu (Z-06): ?url=domena&porownaj=a.pl,b.pl tylko WYPEŁNIAJĄ pola, bez automatycznego startu.
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { track } from '@/lib/track';
 import { wywolajNarzedzie } from '@/lib/narzedziaApi';
@@ -23,6 +23,9 @@ import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import BramkaEmail from './BramkaEmail';
 import LinkWyniku, { PrzykladAdresu } from './LinkWyniku';
 import { PasekDemo, Postep } from './Wspolne';
+import Zwin from './Zwin';
+import { czasWyjscia, przewinDoNarzedzia } from './wyjscie';
+import './ruch-b.css';
 
 const PUSTE = ['', '', ''];
 
@@ -48,6 +51,12 @@ export default function AutorytetClient() {
   const en = useLocale() === 'en';
   const [pola, setPola] = useState({ domena: '', k: PUSTE });
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null });
+  // Powrót do formularza: wynik najpierw się zwija (Zwin), dopiero potem stan wraca do pustego (anim-narzedzia-b).
+  const [wychodzi, setWychodzi] = useState(false);
+  const naglowekWyniku = useRef(null);
+  // Po wyniku fokus idzie na domenę w nagłówku wyniku (formularz zostaje odmontowany, bez tego fokus ląduje na BODY).
+  useEffect(() => { if (stan.status === 'done') naglowekWyniku.current?.focus({ preventScroll: true }); }, [stan.status]);
+  const [powrot, setPowrot] = useState(false);
   const poleRef = useRef(null);
   const konkurentRef = useRef(null);
 
@@ -82,8 +91,14 @@ export default function AutorytetClient() {
   }
 
   function edytuj(doKonkurentow = false) {
-    setStan({ status: 'idle', blad: null, id: null, podglad: null });
-    setTimeout(() => (doKonkurentow ? konkurentRef.current : poleRef.current)?.focus(), 0);
+    setPowrot(true);
+    setWychodzi(true);
+    setTimeout(() => {
+      setStan({ status: 'idle', blad: null, id: null, podglad: null });
+      setWychodzi(false);
+      przewinDoNarzedzia();
+      setTimeout(() => (doKonkurentow ? konkurentRef.current : poleRef.current)?.focus({ preventScroll: true }), 30);
+    }, czasWyjscia());
   }
 
   const p = stan.podglad;
@@ -128,11 +143,14 @@ export default function AutorytetClient() {
   return (
     <div className="narz-app" id="narzedzie">
       <PasekDemo />
-      {stan.status !== 'done' && (
+      {/* Formularz i wynik zajmują tę samą komórkę siatki: podczas przejścia nakładają się (zanikanie i wejście), więc żaden
+          z nich nie zmienia położenia drugiego i lista wyniku nie ucieka w dół (CLS). */}
+      <div className="narz-faza">
+      <Zwin otwarte={stan.status !== 'done'} wejscie={powrot} className="r-zwin--karta">
         <form className="narz-formularz" onSubmit={start}>
           <label htmlFor="dr-domena" className="narz-etykieta">{en ? 'Your domain' : 'Twoja domena'}</label>
           <div className="narz-bramka-wiersz">
-            <input ref={poleRef} id="dr-domena" name="domena" required maxLength={300} value={pola.domena} onChange={(e) => setPola((x) => ({ ...x, domena: e.target.value }))} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
+            <input ref={poleRef} id="dr-domena" name="domena" required maxLength={300} aria-invalid={stan.status === 'error' ? 'true' : undefined} aria-describedby={stan.status === 'error' ? 'dr-blad' : undefined} value={pola.domena} onChange={(e) => setPola((x) => ({ ...x, domena: e.target.value }))} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_dr_start">
               {stan.status === 'loading' ? (en ? 'Checking…' : 'Sprawdzam…') : (en ? 'Check authority' : 'Sprawdź autorytet')}
             </button>
@@ -166,10 +184,11 @@ export default function AutorytetClient() {
           </p>
           <p className="narz-mikro"><Podpis en={en} />{en ? '. This is our own metric, not Ahrefs DR or Moz DA.' : '. To nasza metryka, a nie DR Ahrefs ani DA Moz.'}</p>
           {stan.status === 'loading' && <Postep kroki={en ? ['Looking up the domain in the Common Crawl link graph', 'Calculating the score from its position in the graph', 'Comparing with competitors'] : ['Szukamy domeny w grafie linków Common Crawl', 'Liczymy wynik z pozycji w grafie', 'Porównujemy z konkurentami']} co={1200} />}
-          {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
+          {stan.status === 'error' && <p id="dr-blad" role="alert" className="narz-blad">{stan.blad}</p>}
         </form>
-      )}
+      </Zwin>
 
+      <Zwin otwarte={stan.status === 'done' && !wychodzi} className="r-zwin--karta">
       {stan.status === 'done' && p && (
         <div className="narz-wynik" aria-live="polite">
           <div className="narz-wynik-glowa">
@@ -178,7 +197,7 @@ export default function AutorytetClient() {
               <span className="narz-dr-skala">{en ? 'out of 100' : 'na 100'}</span>
             </div>
             <div>
-              <p className="narz-wynik-domena">{p.domena}</p>
+              <p className="narz-wynik-domena" ref={naglowekWyniku} tabIndex={-1}>{p.domena}</p>
               {/* Stany bez dokładnego wyniku: tytuł z klienta, wyjaśnienie z panelu (p.tekst), a tekst zapasowy tylko,
                   gdy panel go nie poda (demo). Weryfikacja 12.11.2026: wcześniej to samo wyjaśnienie było dwa razy. */}
               {opisFlagi && (
@@ -309,6 +328,8 @@ export default function AutorytetClient() {
           />
         </div>
       )}
+      </Zwin>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,37 @@
+/* ==========================================================================
+   RUCH pakietu B (18.11.2026): darmowy audyt SEO, autorytet domeny, kalkulator strat.
+   Tokeny i klasy bazowe: app/ruch.css (--r-*, .r-zwin, .r-stan, .r-vt). Import w trzech *Client.jsx.
+   Zasady: tylko opacity/translate/scale/filter (wyjątki: grid-template-rows w Zwin, jednorazowy
+   background-color pola); cały ruch w prefers-reduced-motion: no-preference; stan końcowy zawsze poprawny.
+   ========================================================================== */
+
+/* Karty (formularz, wynik) w Zwin: cień karty ma sięgać poza ramkę, więc zapas przycinania jest większy niż 6 px. */
+.narz-app .r-zwin--karta > * { overflow-clip-margin: 28px; }
+
+/* Pole z błędem odpowiedzi: obrys w kolorze błędu (aria-invalid ustawia JSX; fokus zostaje pomarańczowy). */
+.narz-app .narz-pole[aria-invalid='true']:not(:focus-visible) { border-color: var(--n-zle); }
+@media (prefers-reduced-motion: no-preference) {
+  .narz-app .narz-pole { transition: border-color var(--r-d-std) var(--r-ease); }
+}
+
+/* Lista wyniku audytu: trzy problemy, potwierdzenie i monitoring, reszta (po odblokowaniu). */
+.narz-app .audyt-lista { display: grid; gap: 1rem; }
+
+/* Kalkulator: pola wypełnione przykładem rozjaśniają się raz (tło brzoskwiniowe -> białe). */
+@keyframes kalk-wypelnione { from { background-color: var(--w-brzoskwinia-tlo, #fbe6da); } }
+@media (prefers-reduced-motion: no-preference) {
+  .narz-app .narz-pole.kalk-wypelnione { animation: kalk-wypelnione var(--r-d-std) var(--r-ease) both; }
+  /* Kwota po „Policz”: delikatne wejście (liczby dochodzą w komponencie Kwota, bez zmiany układu). */
+  .narz-app .narz-kwota { font-variant-numeric: tabular-nums; }
+}
+
+/* Kalkulator: bloki warunkowe (pakiet, własna kwota, miesiące) w siatce formularza zajmują cały wiersz. */
+.narz-app .kalk-zwrot > .r-zwin { min-width: 0; }
+.narz-app .narz-kalkulator > .r-zwin { min-width: 0; }
+
+/* Blok zwrotu (koszt, bilans, wniosek) wchodzi jako jeden wiersz siatki kalk-zwrot. */
+.narz-app .kalk-zwrot-wnetrze { display: grid; gap: 0.9rem; }
+
+/* Formularz i wynik w jednej komórce siatki (patrz komentarz w *Client.jsx): przejście bez przesuwania sąsiada. */
+.narz-app .narz-faza { display: grid; }
+.narz-app .narz-faza > .r-zwin { grid-area: 1 / 1; min-width: 0; }

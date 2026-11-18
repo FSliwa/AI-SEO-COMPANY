@@ -9,7 +9,7 @@
 // tylko liczby domeny z panelu) i comiesięczny audyt: osobny, niezaznaczony checkbox po odblokowaniu wyniku,
 // POST panel /api/narzedzia/monitoring z id audytu, tym samym e-mailem i zgodą (treść = ZGODA_MONITORINGU w panelu).
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
@@ -20,6 +20,9 @@ import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import BramkaEmail from './BramkaEmail';
 import LinkWyniku, { PrzykladAdresu } from './LinkWyniku';
 import { Ocena, Odblokowano, PasekDemo, Postep } from './Wspolne';
+import Zwin from './Zwin';
+import { czasWyjscia, przewinDoNarzedzia } from './wyjscie';
+import './ruch-b.css';
 
 export const KATEGORIE = { techniczne: 'Techniczne', tresc: 'Treść', wydajnosc: 'Wydajność', ai: 'Gotowość na AI' };
 const KATEGORIE_EN = { techniczne: 'Technical', tresc: 'Content', wydajnosc: 'Performance', ai: 'AI readiness' };
@@ -121,7 +124,7 @@ function Monitoring({ id, email, domena, en }) {
     const juz = stan.wynik.status === 'juz';
     const kiedy = dataPelna(juz ? stan.wynik.nastepny : stan.wynik.wygasa, en);
     return (
-      <div className="narz-bramka narz-bramka--gotowe" role="status" style={{ marginTop: '1rem' }}>
+      <div className="narz-bramka narz-bramka--gotowe r-stan" role="status">
         <p className="narz-bramka-tytul">{juz
           ? (en ? `The monthly audit of ${domena} was already on for this address.` : `Comiesięczny audyt domeny ${domena} był już włączony dla tego adresu.`)
           : (en ? 'One more step: confirm it in your email.' : 'Jeszcze jeden krok: potwierdź w e-mailu.')}</p>
@@ -133,7 +136,7 @@ function Monitoring({ id, email, domena, en }) {
   }
 
   return (
-    <form className="narz-bramka" onSubmit={wyslij} style={{ marginTop: '1rem' }} aria-labelledby="monitoring-tytul">
+    <form className="narz-bramka" onSubmit={wyslij} aria-labelledby="monitoring-tytul">
       <div>
         <p id="monitoring-tytul" className="narz-bramka-tytul">{en ? 'Want to see whether the score improves?' : 'Chcesz wiedzieć, czy ocena rośnie?'}</p>
         <p className="narz-bramka-opis">{en
@@ -188,8 +191,13 @@ export default function AudytSeoClient() {
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, historia: null });
   const [filtr, setFiltr] = useState('wszystkie');
   const [adres, setAdres] = useState('');
+  // Powrót do formularza: wynik najpierw się zwija (Zwin), dopiero potem stan wraca do pustego (anim-narzedzia-b).
+  const [wychodzi, setWychodzi] = useState(false);
+  const [powrot, setPowrot] = useState(false);
   const pole = useRef(null);
-  // Adres z bramki e-mail (BramkaEmail go nie zwraca): odczyt z formularza w chwili wysłania, do monitoringu.
+  const naglowekWyniku = useRef(null);
+  // Po wyniku fokus idzie na nagłówek listy (formularz zostaje odmontowany, bez tego fokus ląduje na BODY).
+  useEffect(() => { if (stan.status === 'done') naglowekWyniku.current?.focus({ preventScroll: true }); }, [stan.status]);
   const emailBramki = useRef('');
   // ?url= tylko wypełnia pole (Z-06); audyt startuje dopiero po kliknięciu (limit IP).
   useParametrUrl(['url'], ({ url }) => setAdres(url));
@@ -208,18 +216,37 @@ export default function AudytSeoClient() {
     setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null, historia: r.historia ?? (DEMO ? historiaDemo(r.podglad) : null) });
   }
 
+  function wroc() {
+    setPowrot(true);
+    setWychodzi(true);
+    setTimeout(() => {
+      setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, historia: null });
+      setWychodzi(false);
+      setFiltr('wszystkie');
+      przewinDoNarzedzia();
+      setTimeout(() => pole.current?.focus({ preventScroll: true }), 30);
+    }, czasWyjscia());
+  }
+
   const w = stan.pelny ?? stan.podglad;
   const problemy = stan.pelny ? stan.pelny.problemy : stan.podglad?.problemy ?? [];
   const widoczne = filtr === 'wszystkie' ? problemy : problemy.filter((p) => p.kategoria === filtr);
+  // Przy pełnym wyniku bez filtra lista dzieli się na trzy pierwsze (jak w podglądzie) i resztę pod bramką.
+  const podzial = Boolean(stan.pelny); // filtry stoją pod trzema pierwszymi problemami, więc położenie listy nie zależy od filtra
+  const gora = podzial ? widoczne.slice(0, 3) : widoczne;
+  const dol = podzial ? widoczne.slice(3) : [];
 
   return (
     <div className="narz-app" id="narzedzie">
       <PasekDemo />
-      {stan.status !== 'done' && (
+      {/* Formularz i wynik zajmują tę samą komórkę siatki: podczas przejścia nakładają się (zanikanie i wejście), więc żaden
+          z nich nie zmienia położenia drugiego i lista wyniku nie ucieka w dół (CLS). */}
+      <div className="narz-faza">
+      <Zwin otwarte={stan.status !== 'done'} wejscie={powrot} className="r-zwin--karta">
         <form className="narz-formularz" onSubmit={start}>
           <label htmlFor="audyt-url" className="narz-etykieta">{en ? 'Website address' : 'Adres strony'}</label>
           <div className="narz-bramka-wiersz">
-            <input ref={pole} id="audyt-url" name="url" required maxLength={300} value={adres} onChange={(e) => setAdres(e.target.value)} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
+            <input ref={pole} id="audyt-url" name="url" required maxLength={300} aria-invalid={stan.status === 'error' ? 'true' : undefined} aria-describedby={stan.status === 'error' ? 'audyt-blad' : undefined} value={adres} onChange={(e) => setAdres(e.target.value)} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_audyt_start">
               {stan.status === 'loading' ? (en ? 'Checking…' : 'Sprawdzam…') : (en ? 'Check your site for free' : 'Sprawdź stronę za darmo')}
             </button>
@@ -230,10 +257,11 @@ export default function AudytSeoClient() {
             ? `No sign-up. Up to ${AUDYT.limitIp} audits per day from one IP address. An audit usually takes 20 to 90 seconds. Data: our AISEOCompanyAudit crawler and Google PageSpeed Insights.`
             : `Bez rejestracji. Do ${AUDYT.limitIp} audytów dziennie z jednego adresu IP. Audyt trwa zwykle 20 do 90 sekund. Dane: nasz robot AISEOCompanyAudit i Google PageSpeed Insights.`}</p>
           {stan.status === 'loading' && <Postep kroki={en ? KROKI_EN : KROKI} co={9000} />}
-          {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
+          {stan.status === 'error' && <p id="audyt-blad" role="alert" className="narz-blad">{stan.blad}</p>}
         </form>
-      )}
+      </Zwin>
 
+      <Zwin otwarte={stan.status === 'done' && !wychodzi} className="r-zwin--karta">
       {stan.status === 'done' && w && (
         <div className="narz-wynik" aria-live="polite">
           <div className="narz-wynik-glowa">
@@ -247,7 +275,7 @@ export default function AudytSeoClient() {
               </p>
               {stan.historia && <Historia h={stan.historia} en={en} />}
               <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.4rem 1.5rem' }}>
-                <button type="button" className="narz-link" onClick={() => setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, historia: null })}>{en ? 'Check another site' : 'Sprawdź inną stronę'}</button>
+                <button type="button" className="narz-link" onClick={wroc}>{en ? 'Check another site' : 'Sprawdź inną stronę'}</button>
                 <LinkWyniku narzedzie="audyt_seo" parametry={{ url: adres.trim() || w.domena }} />
               </div>
             </div>
@@ -276,23 +304,28 @@ export default function AudytSeoClient() {
                 : w.psi.przebiegi === 1 ? (en ? ' Performance comes from a single run; a single run can vary by about 10 points.' : ' Wydajność pochodzi z jednego pomiaru; pojedynczy pomiar może się różnić o ok. 10 punktów.') : null}</p>
           )}
 
-          {stan.pelny && <Odblokowano newsletter={stan.newsletter} />}
-          {stan.pelny && stan.id && <Monitoring id={stan.id} email={stan.email} domena={w.domena} en={en} />}
-          <h2 className="narz-h2">{stan.pelny ? (en ? 'All issues' : 'Wszystkie problemy') : (en ? 'Top issues' : 'Najważniejsze problemy')}</h2>
-          {stan.pelny && (
-            <div className="narz-filtry" role="group" aria-label={en ? 'Category filter' : 'Filtr kategorii'}>
-              {['wszystkie', ...Object.keys(KATEGORIE)].map((k) => (
-                <button key={k} type="button" aria-pressed={filtr === k} onClick={() => setFiltr(k)}>{k === 'wszystkie' ? (en ? 'All' : 'Wszystkie') : kat[k]}</button>
-              ))}
-            </div>
-          )}
-          <ul className="narz-problemy">{widoczne.map((p) => <KartaProblemu key={p.id} p={p} en={en} />)}</ul>
+          <h2 className="narz-h2" ref={naglowekWyniku} tabIndex={-1}>{stan.pelny ? (en ? 'All issues' : 'Wszystkie problemy') : (en ? 'Top issues' : 'Najważniejsze problemy')}</h2>
+          {/* Po odblokowaniu: pierwsze trzy problemy zostają na miejscu, potwierdzenie i monitoring wchodzą w miejsce bramki,
+              a reszta listy pod nimi. Nic nie wstawia się nad listą, więc nic, co widać na ekranie, nie ucieka w dół. */}
+          <div className="audyt-lista">
+            <ul className="narz-problemy">{gora.map((p) => <KartaProblemu key={p.id} p={p} en={en} />)}</ul>
+            {stan.pelny && <Odblokowano newsletter={stan.newsletter} />}
+            {stan.pelny && stan.id && <Monitoring id={stan.id} email={stan.email} domena={w.domena} en={en} />}
+            {stan.pelny && (
+              <div className="narz-filtry" role="group" aria-label={en ? 'Category filter' : 'Filtr kategorii'}>
+                {['wszystkie', ...Object.keys(KATEGORIE)].map((k) => (
+                  <button key={k} type="button" aria-pressed={filtr === k} onClick={() => setFiltr(k)}>{k === 'wszystkie' ? (en ? 'All' : 'Wszystkie') : kat[k]}</button>
+                ))}
+              </div>
+            )}
+            {dol.length > 0 && <ul className="narz-problemy">{dol.map((p) => <KartaProblemu key={p.id} p={p} en={en} />)}</ul>}
+          </div>
           {problemy.length === 0 && <p className="narz-wynik-opis">{en ? 'We found no issues in the scope we checked.' : 'W sprawdzonym zakresie nie znaleźliśmy problemów.'}</p>}
 
           {!stan.pelny && stan.podglad.zablokowane.length > 0 && (
             <div className="narz-zablokowane" onSubmitCapture={(e) => { if (e.target instanceof HTMLFormElement) emailBramki.current = String(new FormData(e.target).get('email') || '').trim(); }}>
               <ul className="narz-problemy narz-zamglone" aria-hidden="true">
-                {stan.podglad.zablokowane.slice(0, 4).map((p) => (
+                {stan.podglad.zablokowane.slice(0, 12).map((p) => (
                   <li key={p.id} className={`narz-problem narz-problem--${p.waga}`}>
                     <p className="narz-problem-meta"><span className="narz-waga">{wagi[p.waga]}</span> · {kat[p.kategoria]}</p>
                     <p className="narz-problem-tytul narz-atrapa">{en ? 'Issue description and fix instructions' : 'Opis problemu i instrukcja naprawy'}</p>
@@ -326,6 +359,8 @@ export default function AudytSeoClient() {
           )}
         </div>
       )}
+      </Zwin>
+      </div>
     </div>
   );
 }

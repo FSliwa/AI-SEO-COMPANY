@@ -11,6 +11,8 @@
 // - 12.11.2026 (decyzje właściciela Z-K5, autorytet): prop tylkoRaport = cały wynik jest już widoczny
 //   bez e-maila, bramka tylko wysyła raport. Zmienia domyślny przycisk i teksty potwierdzenia (bez
 //   „pokaż pełny wynik”). Domyślnie false: audyt, widoczność i makieta bez zmian.
+// - 18.11.2026 (anim-system): formularz zwija się (Zwin, 200 ms) zamiast znikać skokiem, potwierdzenie wchodzi
+//   (.r-stan), wiersz błędu rozwija się (Zwin + .narz-blad z app/ruch.css), przycisk ma aria-busy.
 
 import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
@@ -18,6 +20,7 @@ import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
 import { odblokuj } from '@/lib/narzedziaApi';
 import { ODBIORCY, ODBIORCY_EN, ZGODA_NEWSLETTER, ZGODA_NEWSLETTER_EN } from '@/lib/zgodyNarzedzi';
+import Zwin from './Zwin';
 
 export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [], przycisk, dane, konkurenci, dodatkowePola = null, onOdblokowano, tylkoRaport = false }) {
   const lang = useLocale();
@@ -26,6 +29,7 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
   const [stan, setStan] = useState({ status: 'idle', blad: null });
   const ref = useRef(null);
   const widziana = useRef(false);
+  const potwRef = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -55,7 +59,7 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
       ...(dane ? { dane } : {}),
       ...(konkurenci ? { konkurenci: konkurenci(fd) } : {}),
     };
-    setStan({ status: 'loading', blad: null });
+    setStan((x) => ({ status: 'loading', blad: x.blad })); // tekst poprzedniego błędu zostaje na czas zwijania
     const r = await odblokuj(body);
     if (!r.ok) {
       setStan({ status: 'error', blad: r.blad });
@@ -67,24 +71,33 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
     onOdblokowano?.(r.pelny, r.newsletter);
   }
 
-  if (stan.status === 'done') {
-    return (
-      <div className="narz-bramka narz-bramka--gotowe" role="status">
+  const gotowe = stan.status === 'done';
+  // Po wysłaniu fokus idzie na potwierdzenie (formularz traci przycisk, bez tego fokus ląduje na BODY).
+  useEffect(() => { if (gotowe) potwRef.current?.focus({ preventScroll: true }); }, [gotowe]);
+  // tylkoRaport: formularz NIE zwija się (zmiana 1032 -> 90 px dawała CLS 0,17 / 0,72), tylko zostaje na miejscu
+  // z wyłączonymi polami i potwierdzeniem w nagłówku; wysokość bramki prawie się nie zmienia.
+  const zostaje = tylkoRaport && gotowe;
+  const tytulPotw = en ? 'Done: we have emailed you the report.' : 'Gotowe: raport wysłaliśmy e-mailem.';
+  const potwierdzenie = (
+    <div className="narz-bramka narz-bramka--gotowe r-stan" role="status" ref={potwRef} tabIndex={-1}>
         <p className="narz-bramka-tytul">{tylkoRaport ? (en ? 'Done: we have emailed you the report.' : 'Gotowe: raport wysłaliśmy e-mailem.') : (en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest niżej, raport wysłaliśmy e-mailem.')}</p>
         {stan.newsletter === 'pending' && <p className="narz-bramka-opis">{en ? 'Check your inbox and confirm your newsletter signup. Without confirmation we will not send any issue.' : 'Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.'}</p>}
       </div>
-    );
-  }
+  );
 
   return (
-    <form ref={ref} className="narz-bramka" onSubmit={wyslij} aria-labelledby={`bramka-${narzedzie}`}>
+    <>
+    <Zwin otwarte={tylkoRaport ? true : !gotowe} wejscie={false}>
+    <form ref={ref} className={`narz-bramka${zostaje ? ' narz-bramka--gotowe' : ''}`} onSubmit={wyslij} aria-labelledby={`bramka-${narzedzie}`}>
       <div className="narz-bramka-glowa">
         <span className="narz-bramka-ikona" aria-hidden="true">
           <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
         </span>
         <div>
-          <p id={`bramka-${narzedzie}`} className="narz-bramka-tytul">{naglowek}</p>
-          {opis && <p className="narz-bramka-opis">{opis}</p>}
+          {zostaje
+            ? <p id={`bramka-${narzedzie}`} className="narz-bramka-tytul" role="status" ref={potwRef} tabIndex={-1}>{tytulPotw}</p>
+            : <p id={`bramka-${narzedzie}`} className="narz-bramka-tytul">{naglowek}</p>}
+          {opis && <p className="narz-bramka-opis">{zostaje && stan.newsletter === 'pending' ? (en ? 'Check your inbox and confirm your newsletter signup. Without confirmation we will not send any issue.' : 'Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.') : opis}</p>}
         </div>
       </div>
       {korzysci.length > 0 && (
@@ -95,15 +108,15 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
       {dodatkowePola}
       <div className="narz-bramka-wiersz">
         <label htmlFor={`email-${narzedzie}`} className="sr-only">{en ? 'Email address' : 'Adres e-mail'}</label>
-        <input id={`email-${narzedzie}`} name="email" type="email" required maxLength={200} autoComplete="email" inputMode="email" placeholder={en ? 'you@example.com' : 'twoj@email.pl'} className="narz-pole" />
-        <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta={`narzedzie_${narzedzie}_odblokuj`}>
-          {stan.status === 'loading' ? (en ? 'Sending…' : 'Wysyłam…') : przycisk}
+        <input id={`email-${narzedzie}`} name="email" type="email" required maxLength={200} disabled={zostaje} autoComplete="email" inputMode="email" placeholder={en ? 'you@example.com' : 'twoj@email.pl'} className="narz-pole" />
+        <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading' || zostaje} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta={`narzedzie_${narzedzie}_odblokuj`}>
+          {stan.status === 'loading' ? (en ? 'Sending…' : 'Wysyłam…') : zostaje ? (en ? 'Sent' : 'Wysłano') : przycisk}
         </button>
       </div>
       {/* Pole-pułapka dla botów: ukryte dla ludzi i czytników ekranu. */}
       <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
       <label className="narz-zgoda">
-        <input type="checkbox" name="zgodaWynik" required />
+        <input type="checkbox" name="zgodaWynik" required disabled={zostaje} />
         {en ? (
           <span>
             Email me this result. Controller: AI SIGNALS COMPANY P.S.A. (ul. Grzybowska 12/14 lok. B-3, Warsaw, Poland). We will use your data to send the result and answer your questions, and delete it after 60 days. Recipients: {ODBIORCY_EN[narzedzie]}. Details in the <Link href="/cookies">privacy policy</Link>.
@@ -115,11 +128,14 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
         )}
       </label>
       <label className="narz-zgoda narz-zgoda--newsletter">
-        <input type="checkbox" name="newsletter" />
+        <input type="checkbox" name="newsletter" disabled={zostaje} />
         <span>{(en ? ZGODA_NEWSLETTER_EN : ZGODA_NEWSLETTER).tekst}</span>
       </label>
       <p className="narz-bramka-mikro">{tylkoRaport ? (en ? 'The report reaches your inbox within a minute.' : 'Raport przychodzi na skrzynkę w ciągu minuty.') : (en ? 'The report reaches your inbox within a minute. You will also see the full result right here.' : 'Raport przychodzi na skrzynkę w ciągu minuty. Pełny wynik zobaczysz też od razu tutaj.')}</p>
-      {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
+      <Zwin otwarte={stan.status === 'error'}><p role="alert" className="narz-blad">{stan.blad}</p></Zwin>
     </form>
+    </Zwin>
+    {gotowe && !tylkoRaport && potwierdzenie}
+    </>
   );
 }

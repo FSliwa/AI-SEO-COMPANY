@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { DEMO } from '@/lib/narzedziaApi';
+import Zwin from './Zwin';
 import st from './narzedzia.module.css';
 
 export function kolorOceny(w) {
@@ -31,7 +32,8 @@ export function Ocena({ wynik, podpis, maly = false }) {
   );
 }
 
-/** Kroki oczekiwania: przełączają się co `co` ms (czas orientacyjny), ostatni czeka na wynik. */
+/** Kroki oczekiwania: przełączają się co `co` ms (czas orientacyjny), ostatni czeka na wynik.
+ *  18.11.2026 (anim-system): blok rozwija się (Zwin, 400 ms), więc formularz nie skacze o 260-400 px. */
 export function Postep({ kroki, co = 6000 }) {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -39,6 +41,7 @@ export function Postep({ kroki, co = 6000 }) {
     return () => clearInterval(t);
   }, [kroki.length, co]);
   return (
+    <Zwin otwarte className={st.postepOkno}>
     <div className={st.postepBlok}>
       <div className={st.pasek} style={{ '--p': (i + 0.5) / kroki.length }} aria-hidden="true"><i /></div>
       <ol className="narz-postep" aria-live="polite">
@@ -54,6 +57,7 @@ export function Postep({ kroki, co = 6000 }) {
         <span className={st.szkLinie}><i /><i /><i /></span>
       </div>
     </div>
+    </Zwin>
   );
 }
 
@@ -68,7 +72,7 @@ export function PasekDemo() {
 export function Odblokowano({ newsletter, tylkoRaport = false }) {
   const en = useLocale() === 'en';
   return (
-    <div className="narz-bramka narz-bramka--gotowe" role="status">
+    <div className="narz-bramka narz-bramka--gotowe r-stan" role="status">
       <p className="narz-bramka-tytul">{tylkoRaport ? (en ? 'Done: we have emailed you the report.' : 'Gotowe: raport wysłaliśmy e-mailem.') : (en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest poniżej, raport wysłaliśmy e-mailem.')}</p>
       {newsletter === 'pending' && <p className="narz-bramka-opis">{en ? 'Check your inbox and confirm your newsletter signup. Without confirmation we will not send any issue.' : 'Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.'}</p>}
     </div>

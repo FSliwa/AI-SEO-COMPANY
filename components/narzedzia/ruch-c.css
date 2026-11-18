@@ -1,0 +1,94 @@
+/* ==========================================================================
+   RUCH pakiet C (18.11.2026, anim-narzedzia-c): makieta redesignu, generator llms.txt, widoczność AI.
+   Tokeny i klatki z app/ruch.css (--r-*, r-stan, r-wej). Import w MakietaClient, LlmsTxtClient i
+   WidocznoscAiClient. Cały ruch nieistotny w prefers-reduced-motion: no-preference (opt-in): pod
+   reduce stan końcowy pojawia się od razu. Tylko transform/translate/scale/opacity (wyjątki opisane).
+   ========================================================================== */
+
+/* ---------- Wspólne: przycisk w trakcie pracy (aria-busy) ----------
+   Cienki pasek pod napisem przycisku, bez zmiany rozmiaru. Pętla to loader (dozwolona). Pod reduce:
+   statyczny pasek (stan "pracuję" widać bez ruchu). */
+.c-zajety { position: relative; overflow: hidden; }
+.c-zajety[aria-busy='true']::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: currentColor; opacity: 0.55; transform-origin: left center; transform: scaleX(0.4);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .c-zajety[aria-busy='true']::after { animation: c-zajety 1600ms var(--r-ease) infinite; }
+  @keyframes c-zajety {
+    0% { transform: translateX(-100%) scaleX(0.4); }
+    100% { transform: translateX(100%) scaleX(0.4); }
+  }
+}
+
+/* ---------- Wspólne: pole z błędem ---------- */
+.c-pole[aria-invalid='true'] { border-color: var(--n-zle, #b3261e) !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .c-pole { transition: box-shadow var(--r-d-std) var(--r-ease), border-color var(--r-d-std) var(--r-ease); }
+}
+.c-pole:focus-visible { box-shadow: 0 0 0 3px rgba(216, 90, 48, 0.2); }
+
+/* ---------- Makieta: ramka z szkieletem, przełącznik szerokości, kafle przykładów ---------- */
+.mak-ramka { position: relative; }
+.mak-ramka-szk { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  /* przełącznik Komputer/Telefon: animowana tylko szerokość ramki (400 ms), wysokość iframe ustawia się od razu */
+  .mak-ramka { transition: width var(--r-d-wej) var(--r-ease); }
+  .mak-ramka iframe { transition: opacity var(--r-d-std) var(--r-ease); }
+  /* iframe wchodzi po onLoad; do tego czasu szkielet rezerwuje miejsce (wysokość daje iframe) */
+  .mak-ramka:not([data-gotowa]) iframe { opacity: 0; }
+  .mak-ramka:not([data-gotowa]) .mak-ramka-szk { display: block; }
+  .mak-ramka-szk {
+    position: absolute; inset: 34px 0 0; pointer-events: none;
+    background: linear-gradient(180deg, var(--w-papier, #fdf9f4) 0%, var(--w-papier-2, #f5ede3) 100%);
+  }
+  .mak-ramka-szk::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.7) 50%, transparent 70%);
+    transform: translateX(-100%); animation: c-szk 1.8s var(--r-ease) infinite;
+  }
+  @keyframes c-szk { to { transform: translateX(100%); } }
+
+  /* kafle przykładów (MakietaPrzyklady): hover tylko translate, przełącznik widoku wchodzi opacity */
+  .mak-panel { animation: mak-panel var(--r-d-std) var(--r-ease) both; }
+  @keyframes mak-panel { from { opacity: 0; } }
+}
+/* atrapa makiety rezerwuje wysokość pełnej treści (CLS kroku bramki) */
+.mak-zablok .narz-makieta-atrapa div { min-height: 120px; }
+
+/* ---------- Widoczność AI ---------- */
+/* atrapa odpowiedzi: wiersze o wysokości zbliżonej do prawdziwych (CLS kroku bramki) */
+.wid-atrapa > li { min-height: 7.5rem; }
+
+/* ---------- llms.txt: formularz, wynik, edytor, potwierdzenia ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .llms-narz .btn {
+    transition: background-color var(--r-d-std) var(--r-ease), border-color var(--r-d-std) var(--r-ease), color var(--r-d-std) var(--r-ease), box-shadow var(--r-d-std) var(--r-ease), transform var(--r-d-std) var(--r-ease), translate var(--r-d-mikro) var(--r-ease), scale var(--r-d-mikro) var(--r-ease), opacity var(--r-d-mikro) var(--r-ease);
+  }
+  .llms-narz .btn:active:not(:disabled) { scale: 0.98; }
+  .llms-narz .btn:disabled { opacity: 0.7; }
+  .llms-maly { transition: box-shadow var(--r-d-mikro) var(--r-ease), scale var(--r-d-mikro) var(--r-ease); }
+  .llms-maly:active { scale: 0.97; }
+  .llms-wiersz { transition: opacity var(--r-d-std) var(--r-ease); }
+  /* blok pojawiający się po akcji (np. liczby po zmianie pliku) */
+  .llms-wchodzi { animation: r-stan-blad var(--r-d-std) var(--r-ease) both; }
+  /* przesunięty link: krótkie podświetlenie (opacity nakładki, bez zmiany układu) */
+  .llms-wiersz { position: relative; }
+  .llms-wiersz[data-przesuniety]::before {
+    content: ''; position: absolute; inset: 0 -0.4rem; border-radius: 10px; pointer-events: none;
+    background: rgba(216, 90, 48, 0.1); animation: llms-podswietl var(--r-d-wynik) var(--r-ease) both;
+  }
+  @keyframes llms-podswietl { 0% { opacity: 1; } 100% { opacity: 0; } }
+  /* przycisk Pobierz: znak potwierdzenia wchodzi razem z przyciskiem */
+  .llms-pobrano { animation: r-stan-blad var(--r-d-std) var(--r-ease) both; }
+  /* details edytora: płynne rozwijanie (Chrome/Edge 129+, reszta otwiera natychmiast) */
+  @supports (interpolate-size: allow-keywords) and selector(::details-content) {
+    .llms-edytor { interpolate-size: allow-keywords; }
+    .llms-edytor::details-content { block-size: 0; overflow: clip; transition: block-size var(--r-d-wej) var(--r-ease), content-visibility var(--r-d-wej) allow-discrete; }
+    .llms-edytor[open]::details-content { block-size: auto; }
+  }
+}
+.llms-pobrano-znak { display: inline-block; vertical-align: -2px; margin-right: 0.35em; }
+
+/* przewijanie do początku pełnego wyniku po odblokowaniu: zapas na nagłówek serwisu */
+.c-skok { scroll-margin-top: 5.5rem; }

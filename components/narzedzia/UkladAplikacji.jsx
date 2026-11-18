@@ -11,6 +11,7 @@
 // <main> dostaje klasę modułu narzedzia.module.css (.strona): na telefonie (≤ 600 px) chowa znacznik
 // „✳ Darmowe narzędzie” nad H1. Okruszki zawsze przez hub (RODZIC_OKRUSZKOW, 3 poziomy).
 
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów (nie CSS strony głównej)
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -18,7 +19,6 @@ import AnswerBox from '@/components/AnswerBox';
 import Zrodla from '@/components/Zrodla';
 import WebAppSchema from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
-import { Reveal } from '@/components/ScrollReveal';
 import Ozdoba from './Ozdoba';
 import NawBok from './NawBok';
 import { ikonaNarzedzia } from './Ikony';
@@ -54,12 +54,13 @@ export function Uklad({ slug, tag, schema, lead, narzedzie, odpowiedz, children,
       <section className={st.hero} style={s.hero}>
         <Ozdoba rodzaj={ikonaNarzedzia(slug)} />
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ margin: '0 0 1rem' }}>
+          {/* 18.11.2026 (anim-system): bez Reveal (framer, opacity 0 -> 1): H1 jest LCP, a wchodzi własnym translate z CSS (nw-wznies). */}
+          <div className="section-header" style={{ margin: '0 0 1rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {tag}
             </div>
             <h1 style={s.h1}>{strona.h1}</h1>
-          </Reveal>
+          </div>
           {lead ? <p className={st.lead} style={s.lead}>{lead}</p> : null}
           {narzedzie ? (
             <>

@@ -17,6 +17,7 @@
 // 18.11.2026 (mockupy): miniatury to ilustracje wyniku z Figmy (WebP 720, 1080 i 1440 px przez srcSet, zwykły <img>
 // zamiast next/image, żeby gotowe pliki szły bez drugiej kompresji); podpis „Podgląd wyniku (przykładowe dane)”.
 
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów (nie CSS strony głównej)
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -25,7 +26,6 @@ import AnswerBox from '@/components/AnswerBox';
 import Zrodla from '@/components/Zrodla';
 import { CollectionPageSchema } from '@/components/WebAppSchema';
 import AppleFaq from '@/components/service/AppleFaq';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { hrefDlaLink, hrefWJezyku } from '@/lib/linkiEn';
 import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
@@ -253,12 +253,13 @@ export default function NarzedziaHub({ locale = 'pl' }) {
 
       <section className={st.hero} style={s.hero}>
         <div className="container" style={s.kontener}>
-          <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
+          {/* 18.11.2026 (anim-system): bez Reveal (framer): H1 jest LCP, wchodzi własnym translate z CSS (nw-wznies). */}
+          <div className="section-header" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
             <div className="section-tag" style={s.tag}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
             </div>
             <h1 style={s.h1}>{H1}</h1>
-          </Reveal>
+          </div>
           <p className={st.lead} style={{ ...s.lead, margin: '0 auto 1.5rem' }}>{t.lead(szablony.length)}</p>
 
           {/* Z-H7: pole darmowego audytu SEO w hubie (ten sam klient co na stronie audytu, bez automatycznego startu). */}

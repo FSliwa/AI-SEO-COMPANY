@@ -1,0 +1,51 @@
+/* Kafelki „przed i po” (MakietaPrzyklady.jsx). Tokeny z app/wyglad.css (--w-*), bez własnych kolorów. */
+.lista { display: grid; gap: clamp(1.25rem, 3vw, 2rem); margin: 1.5rem 0 0; }
+.kafel {
+  background: var(--w-papier);
+  border: 0;
+  border-radius: var(--w-promien-karta);
+  padding: clamp(1rem, 3vw, 1.75rem);
+  min-width: 0;
+}
+.naglowek { margin: 0 0 1rem; }
+.nazwa { font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem); line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 0.35rem; color: var(--w-tusz); }
+.meta { font-size: 0.95rem; line-height: 1.55; color: var(--w-tusz-2); margin: 0 0 0.25rem; }
+.meta a { color: var(--w-tusz); text-decoration: underline; text-underline-offset: 3px; }
+.meta a:hover { color: var(--w-pomarancz-hover); }
+.meta a:focus-visible { outline: 2px solid var(--w-pomarancz); outline-offset: 3px; border-radius: 4px; }
+
+.grupa { position: relative; border: 0; padding: 0; margin: 0; min-width: 0; }
+.legenda { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.radio { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; }
+.przelacznik {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0 1.25rem; margin: 0 0.5rem 1rem 0;
+  border-radius: 999px; border: 1px solid var(--w-linia);
+  background: var(--w-papier); color: var(--w-tusz);
+  font-size: 0.95rem; font-weight: 500; cursor: pointer;
+  transition: background-color var(--r-d-std) var(--r-ease), color var(--r-d-std) var(--r-ease), border-color var(--r-d-std) var(--r-ease);
+}
+.przelacznik:hover { border-color: var(--w-pomarancz); }
+.radio:checked + .przelacznik,
+.grupa:not(:has(.radio:checked)) .radioK + .przelacznik { background: var(--w-pomarancz-hover); border-color: var(--w-pomarancz-hover); color: var(--w-na-pomaranczu); }
+.radio:focus-visible + .przelacznik { outline: 2px solid var(--w-tusz); outline-offset: 3px; }
+
+.panel { display: none; margin: 0; }
+.radioK:checked ~ .panelKomputer,
+.radioT:checked ~ .panelTelefon,
+.grupa:not(:has(.radio:checked)) .panelKomputer { display: block; }
+.link1440 { color: var(--w-tusz); text-decoration: underline; text-underline-offset: 3px; }
+/* Wąski ekran: bez wyboru użytkownika domyślnie telefon (zrzut komputera 1280 px byłby nieczytelny). */
+@media (max-width: 599px) {
+  .grupa:not(:has(.radio:checked)) .panelKomputer { display: none; }
+  .grupa:not(:has(.radio:checked)) .panelTelefon { display: block; }
+  .grupa:not(:has(.radio:checked)) .radioK + .przelacznik { background: var(--w-papier); border-color: var(--w-linia); color: var(--w-tusz); }
+  .grupa:not(:has(.radio:checked)) .radioT + .przelacznik { background: var(--w-pomarancz-hover); border-color: var(--w-pomarancz-hover); color: var(--w-na-pomaranczu); }
+}
+.obrazKomputer, .obrazTelefon { display: block; width: 100%; height: auto; margin: 0 auto; border-radius: clamp(14px, 3vw, 24px); }
+.obrazKomputer { max-width: 860px; }
+.obrazTelefon { max-width: 760px; }
+.podpis { display: grid; gap: 0.5rem; margin: 0.9rem auto 0; max-width: 860px; font-size: 0.95rem; line-height: 1.6; color: var(--w-tusz-2); }
+.podpis strong { color: var(--w-tusz); }
+
+@media (prefers-reduced-motion: reduce) { .przelacznik { transition: none; } }

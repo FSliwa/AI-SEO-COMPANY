@@ -15,6 +15,7 @@
 //   kroki?: [{ name, text }] (HowTo), plikNazwa (nazwa dokumentu w schema)
 // Pola wspólne: slug, plik (id dla panelu), sciezkaEn, opublikowano, updated, obraz?.
 
+import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów (nie CSS strony głównej)
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';

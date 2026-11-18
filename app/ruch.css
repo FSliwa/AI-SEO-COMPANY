@@ -1,0 +1,131 @@
+/* ==========================================================================
+   RUCH: system animacji stron narzędzi i szablonów (18.11.2026, pakiet A, anim-system).
+   Wg prace/narzedzia/anim-analiza/SPEC.md. Dokumentacja: prace/narzedzia/anim-system/UZYCIE.md.
+   Plik NOWY, import w app/[locale]/layout.js zaraz po wyglad.css. Docelowo do scalenia z wyglad.css
+   (blok :root i utility przenieść 1:1, --w-ruch-* zdefiniować jako aliasy --r-*).
+
+   Zasady: tylko transform/translate/scale/opacity/filter/clip-path (wyjątek: grid-template-rows i
+   interpolate-size dla rozwijania); cały ruch nieistotny w prefers-reduced-motion: no-preference
+   (pod reduce stan końcowy od razu); treść LCP nigdy nie startuje z opacity 0; nic nie zapętla się
+   poza loaderami; bez JS i bez wsparcia przeglądarki treść jest widoczna.
+   ========================================================================== */
+
+/* ---------- 1. Tokeny ---------- */
+:root {
+  /* krzywe: jedna rodzina expo */
+  --r-ease: cubic-bezier(0.16, 1, 0.3, 1);      /* wejścia, stany, hover, rozwijanie */
+  --r-ease-in: cubic-bezier(0.7, 0, 0.84, 0);   /* tylko wyjścia: zwijanie, znikanie */
+  /* czasy */
+  --r-d-mikro: 140ms;   /* kolor, obrys, wciśnięcie przycisku */
+  --r-d-std: 240ms;     /* hover karty, zakładka, spis, błąd, potwierdzenie */
+  --r-d-wej: 400ms;     /* wejście sekcji, rozwijanie bloku, pasek */
+  --r-d-wynik: 480ms;   /* wejście karty wyniku, deblur atrapy */
+  --r-d-wyj: 200ms;     /* wyjścia (zwijanie, znikanie) */
+  /* dystanse */
+  --r-dy-s: 8px;
+  --r-dy-m: 12px;
+  --r-dy-l: 16px;
+  /* stagger */
+  --r-stagger: 50ms;    /* max 60 ms; maks. 6 kroków (min(var(--i), 5)) */
+}
+
+/* ---------- 2. Klatki kluczowe (nazwy globalne, do użycia też z modułów przez :global(nazwa)) ---------- */
+@keyframes r-wej { from { opacity: 0; translate: 0 var(--r-dy-m); } }
+@keyframes r-stan { from { opacity: 0; translate: 0 var(--r-dy-m); } }
+@keyframes r-stan-blad { from { opacity: 0; translate: 0 var(--r-dy-s); } }
+@keyframes r-wznies { from { translate: 0 var(--r-dy-m); } }
+
+/* ---------- 3. .r-wej: reveal przy przewijaniu (bloki POZA pierwszym ekranem) ----------
+   Bez wsparcia animation-timeline treść jest od razu widoczna (stan statyczny). Nie używać na H1,
+   leadzie ani innych kandydatach na LCP. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) and (animation-range: entry 0% entry 35%) {
+    .r-wej { animation: r-wej linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+    .r-wej:nth-child(2n) { animation-range: entry 3% entry 38%; }
+    .r-wej:nth-child(3n) { animation-range: entry 6% entry 41%; }
+  }
+}
+
+/* ---------- 4. .r-stan / .r-stan--blad / .r-stan--ok: wejście nowo zamontowanego bloku ----------
+   animation (nie transition), więc działa na świeżo zamontowanym elemencie bez JS. Wiersz listy:
+   style={{ '--i': n }} (stagger 50 ms, maks. 6 kroków). */
+@media (prefers-reduced-motion: no-preference) {
+  .r-stan { animation: r-stan var(--r-d-wynik) var(--r-ease) both; animation-delay: calc(min(var(--i, 0), 5) * var(--r-stagger)); }
+  .r-stan--blad, .r-stan--ok { animation: r-stan-blad var(--r-d-std) var(--r-ease) both; }
+}
+
+/* ---------- 5. .r-zwin: rozwijanie/zwijanie bloku bez skoku (grid-template-rows) ----------
+   Dziecko bezpośrednie to jedyny element wewnątrz. data-otwarte = otwarte. Montaż z data-otwarte
+   animuje wejście (@starting-style), chyba że dodano data-bez-wej. Wysokość przez grid-template-rows
+   to świadomy wyjątek od "tylko kompozytor"; samo animowanie NIE zmniejsza CLS (zmniejsza skok). */
+.r-zwin { display: grid; grid-template-rows: 0fr; }
+.r-zwin > * { min-height: 0; contain: layout style; overflow: clip; overflow-clip-margin: 6px; } /* margines: nie ucina obrysu fokusu */
+@media (prefers-reduced-motion: no-preference) {
+  .r-zwin { transition: grid-template-rows var(--r-d-wyj) var(--r-ease-in), opacity var(--r-d-wyj) var(--r-ease-in); opacity: 0; }
+  .r-zwin[data-otwarte] { grid-template-rows: 1fr; opacity: 1; transition-duration: var(--r-d-wej), var(--r-d-std); transition-timing-function: var(--r-ease), var(--r-ease); }
+  @starting-style { .r-zwin[data-otwarte]:not([data-bez-wej]) { grid-template-rows: 0fr; opacity: 0; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .r-zwin[data-otwarte] { grid-template-rows: 1fr; opacity: 1; }
+}
+
+/* ---------- 7. Hover, aktywność, fokus (zakres .strona, .sz, .narz-app: nie globalnie) ----------
+   Nadpisuje `transition: all 0.45s` z .btn (globals.css) tylko na stronach narzędzi. Fokus (outline)
+   zawsze natychmiastowy i widoczny. */
+@media (prefers-reduced-motion: no-preference) {
+  :is(.strona, .sz, .narz-app) .btn {
+    transition: background-color var(--r-d-std) var(--r-ease), border-color var(--r-d-std) var(--r-ease), color var(--r-d-std) var(--r-ease), box-shadow var(--r-d-std) var(--r-ease), transform var(--r-d-std) var(--r-ease), translate var(--r-d-mikro) var(--r-ease), scale var(--r-d-mikro) var(--r-ease), opacity var(--r-d-mikro) var(--r-ease);
+  }
+  :is(.strona, .sz, .narz-app) .btn:active:not(:disabled) { scale: 0.98; }
+  .narz-filtry button { transition: border-color var(--r-d-mikro) var(--r-ease), background-color var(--r-d-mikro) var(--r-ease), box-shadow var(--r-d-mikro) var(--r-ease), scale var(--r-d-mikro) var(--r-ease); }
+  .narz-filtry button:active { scale: 0.97; }
+  .narz-link { transition: color var(--r-d-mikro) var(--r-ease), text-decoration-color var(--r-d-mikro) var(--r-ease); }
+}
+@media (hover: hover) { .narz-filtry button:not([aria-pressed='true']):hover { border-color: rgba(216, 90, 48, 0.45); } }
+
+@media (prefers-reduced-motion: reduce) { :is(.strona, .sz, .narz-app) .btn { transition: none; } }
+:is(.strona, .sz, .narz-app) .btn:disabled { opacity: 0.7; }
+
+/* ---------- 8. Wspólne bloki .narz-* (z wyglad.css; ten plik ładuje się później) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* karta wyniku: jedna definicja (dotąd narz-wejscie 0,5 s krzywa 0,2/0,7/0,2/1 + nadpisanie 0,6 s) */
+  .narz-wynik { animation: r-stan var(--r-d-wynik) var(--r-ease) both; }
+  .narz-slupki-pasek { animation: none; }
+  /* błąd formularza (role=alert): wejście 240 ms, bez potrząsania */
+  .narz-blad { animation: r-stan-blad var(--r-d-std) var(--r-ease) both; }
+  /* atrapa -> pełna treść: deblur zamiast twardej zamiany */
+  .narz-zamglone { transition: filter var(--r-d-wynik) var(--r-ease), opacity var(--r-d-wynik) var(--r-ease); }
+  /* lista wyniku: wiersze wchodzą staggerem 50 ms (--i z JSX, domyślnie z pozycji; maks. 6 kroków) */
+  .narz-problemy:not(.narz-zamglone) > li { animation: r-stan var(--r-d-wynik) var(--r-ease) both; animation-delay: calc(min(var(--i, 0), 5) * var(--r-stagger)); }
+  .narz-problemy > li:nth-child(2) { --i: 1; }
+  .narz-problemy > li:nth-child(3) { --i: 2; }
+  .narz-problemy > li:nth-child(4) { --i: 3; }
+  .narz-problemy > li:nth-child(5) { --i: 4; }
+  .narz-problemy > li:nth-child(n + 6) { --i: 5; }
+  /* postęp: kroki zmieniają kolor/znacznik płynnie (loader narz-kreci zostaje) */
+  .narz-postep li { transition: color var(--r-d-std) var(--r-ease); }
+  .narz-postep li::before { transition: background-color var(--r-d-std) var(--r-ease), border-color var(--r-d-std) var(--r-ease), box-shadow var(--r-d-std) var(--r-ease); }
+  /* pierścień oceny: łuk rysuje CSS animation (nw-luk), więc stara transition z wyglad.css niepotrzebna */
+  .narz-ocena-luk { transition: none; }
+}
+
+/* Ocena (pierścień): stały rozmiar, więc licznik @property nie przelicza układu strony (Layout w kroku wejścia wyniku). */
+.narz-ocena { contain: layout paint style; }
+.narz-ocena-liczba::after { display: inline-block; min-width: 3ch; text-align: center; }
+
+/* ---------- 9. Potwierdzenia: .r-stan--ok (inline-block, bo translate nie działa na inline) + znak ✓ jako SVG ---------- */
+.r-stan--ok { display: inline-block; }
+.r-ok-znak { display: inline-block; vertical-align: -2px; margin-right: 0.35em; color: var(--n-ok, #047857); }
+
+/* Atrapa z bramką: wrapper Zwin jest dzieckiem siatki, więc przejmuje pozycję dawnego formularza bramki. */
+.narz-zablokowane > .r-zwin { position: relative; z-index: 1; align-self: start; }
+
+/* ---------- 10. details: rozwijanie bez skoku (progressive enhancement: Chrome/Edge 129+) ----------
+   Bez wsparcia details otwiera się natychmiast (poprawny fallback). interpolate-size tylko w zakresie narzędzi. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (interpolate-size: allow-keywords) and selector(::details-content) {
+    :is(.strona, .sz, .narz-app) { interpolate-size: allow-keywords; }
+    :is(.strona, .sz, .narz-app) details::details-content { block-size: 0; overflow: clip; transition: block-size var(--r-d-wej) var(--r-ease), content-visibility var(--r-d-wej) allow-discrete; }
+    :is(.strona, .sz, .narz-app) details[open]::details-content { block-size: auto; }
+  }
+}
