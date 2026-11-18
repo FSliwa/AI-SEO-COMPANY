@@ -150,7 +150,7 @@ const COPY = {
     display: 'und KI-Sichtbarkeit',
     sub: 'für Unternehmen im DACH-Raum',
     ctaPrimary: 'Angebot anfragen',
-    ctaSecondary: 'Referenzen ansehen'
+    ctaSecondary: 'Referenzen'
   }
 };
 

@@ -73,7 +73,7 @@ function kontrolaStrony(url, r, bledy) {
   const robots = (/<meta[^>]*name="robots"[^>]*content="([^"]+)"/i.exec(r.body) || [])[1] || '';
   if (/noindex/i.test(robots) || /noindex/i.test(r.headers.get('x-robots-tag') || '')) bledy.push(`${url}: noindex`);
   const lang = (/<html[^>]*\slang="([^"]+)"/i.exec(r.body) || [])[1];
-  const oczekiwany = /^https:\/\/[^/]+\/en(\/|$)/.test(url) ? 'en' : 'pl';
+  const oczekiwany = /^https:\/\/[^/]+\/en(\/|$)/.test(url) ? 'en' : /^https:\/\/[^/]+\/de(\/|$)/.test(url) ? 'de' : 'pl';
   if (!lang || !lang.startsWith(oczekiwany)) bledy.push(`${url}: <html lang="${lang}"> zamiast ${oczekiwany}`);
 }
 

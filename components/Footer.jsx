@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { tr } from '@/lib/shellDe';
-import { maWersjeDe } from '@/lib/stronyDe';
+import { maWersjeDe, STRONY_DE } from '@/lib/stronyDe';
 import NextLink from 'next/link';
 import { Link, usePathname, useRouter, getPathname } from '@/i18n/routing';
 import { hash, homeHash, sectionId, przejdzDoSekcji } from '@/lib/anchors';
-import { tylkoPl } from '@/lib/plOnly';
+import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { track } from '@/lib/track';
 
@@ -37,6 +37,7 @@ export default function Footer() {
   // Link w stopce tylko do strony, która istnieje w tym języku (tylko-PL: lib/plOnly.js) i jest
   // opublikowana (lib/publikacja.js); inaczej null = brak pozycji (bez linku do 404).
   // DE: tylko strony z niemieckim odpowiednikiem (lib/stronyDe.js); naDe() dla stałych pozycji.
+  const deTylko = lang === 'de' && (STRONY_DE[sciezka]?.tylkoDe === true || !STRONY_DE[sciezka]);
   const naDe = (href) => lang !== 'de' || maWersjeDe(href);
   const hrefStopki = (href) => (lang === 'de' ? (maWersjeDe(href) ? href : null) : ((lang === 'pl' || !tylkoPl(href)) ? hrefJesliOpublikowana(href) : null));
   const hrefSprawdzarki = hrefStopki('/sprawdz-widocznosc-w-ai');
@@ -146,7 +147,7 @@ export default function Footer() {
                     registered office and address, the registry court and KRS
                     number, NIP, and the amount of share capital (kapitał akcyjny). */}
                 <p style={{ margin: 0 }}>AI SIGNALS COMPANY Prosta Spółka Akcyjna</p>
-                <p style={{ margin: 0 }}>ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa</p>
+                <p style={{ margin: 0 }}>{lang === 'de' ? 'ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau' : 'ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa'}</p>
                 <p style={{ margin: 0 }}>
                   {tr(lang, 'Sąd Rejonowy dla m.st. Warszawy w Warszawie', 'District Court for the Capital City of Warsaw')}
                 </p>
@@ -179,10 +180,10 @@ export default function Footer() {
                 {lang === 'de' ? (
                   <>
                     <li>
-                      <NextLink href={getPathname({ href: '/', locale: 'pl' })} hrefLang="pl" lang="pl" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'pl', page_path: pathname })}>Wersja polska</NextLink>
+                      <NextLink href={getPathname({ href: deTylko ? '/' : sciezka, locale: 'pl' })} hrefLang="pl" lang="pl" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'pl', page_path: pathname })}>Wersja polska</NextLink>
                     </li>
                     <li>
-                      <NextLink href={getPathname({ href: '/', locale: 'en' })} hrefLang="en" lang="en" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'en', page_path: pathname })}>English version</NextLink>
+                      <NextLink href={getPathname({ href: deTylko ? '/' : (tylkoPl(sciezka) ? celPrzelacznikaEn(sciezka) : sciezka), locale: 'en' })} hrefLang="en" lang="en" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'en', page_path: pathname })}>English version</NextLink>
                     </li>
                   </>
                 ) : (
@@ -224,7 +225,7 @@ export default function Footer() {
             <div className="footer-col">
               <p className="footer-heading">{tr(lang, 'Kontakt', 'Contact')}</p>
               <ul className="footer-links">
-                <li><a href="tel:+48518815055" data-cta="footer">518 815 055</a></li>
+                <li><a href="tel:+48518815055" data-cta="footer">{lang === 'de' ? '+48 518 815 055' : '518 815 055'}</a></li>
                 <li><a href="mailto:kontakt@ai-seo-company.pl" data-cta="footer">kontakt@ai-seo-company.pl</a></li>
                 <li><Link href={homeHash('kontakt', lang)} data-cta="footer">{tr(lang, 'Formularz Wyceny', 'Get Proposal Form')}</Link></li>
                 <li><Link href="/cookies">{tr(lang, 'Polityka Prywatności', 'Privacy Policy')}</Link></li>

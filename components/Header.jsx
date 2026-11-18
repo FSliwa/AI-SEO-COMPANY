@@ -662,7 +662,7 @@ export default function Header() {
               </div>
               <div className="menu-kontakt-poz">
                 <span className="menu-kontakt-etykieta">{tr(lang, 'Zadzwoń', 'Call us')}</span>
-                <a href="tel:+48518815055" className="menu-kontakt-wartosc" data-cta="menu">518 815 055</a>
+                <a href="tel:+48518815055" className="menu-kontakt-wartosc" data-cta="menu">{lang === 'de' ? '+48 518 815 055' : '518 815 055'}</a>
               </div>
             </div>
           </div>
