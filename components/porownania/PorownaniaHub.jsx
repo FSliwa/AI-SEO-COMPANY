@@ -158,7 +158,7 @@ export default function PorownaniaHub({ locale = 'pl' }) {
           {en ? (
             <ul className={styles.tresc} style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.75rem' }}>
               <li>
-                <Link href="/zmiana-agencji-seo">Switching SEO agencies without penalties</Link>: a {CHECKLIST_COUNT}-point checklist of what to take from your current agency before you terminate the contract.
+                <Link href="/zmiana-agencji-seo">Switching SEO agency without penalties</Link>: a {CHECKLIST_COUNT}-point checklist of what to take from your current agency before you terminate the contract.
               </li>
               <li>
                 <Link href="/panel-klienta">Client portal</Link>: what you will see after you sign with us, from keyword positions to the work log.

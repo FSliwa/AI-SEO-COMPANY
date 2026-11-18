@@ -269,7 +269,7 @@ const FAQ_MAKIETY_EN = [
   { id: 'does-ai-change-my-content', question: 'Does the AI change my content?', answer: 'The model shortens and reorganises the copy from your website and is instructed not to add numbers, reviews, awards, prices or client names, but there is no guarantee it always follows that instruction. It is still worth reviewing the copy before launch, because the mockup shows a direction, not finished content.' },
   { id: 'do-i-need-an-account', question: 'Do I need an account or a credit card?', answer: `No. You see the first screen of the mockup without signing up. For the whole mockup you only need an email address, to which we send the link. The limit is ${MAKIETA.limitIp} mockups per day from one IP address.` },
   { id: 'what-language', question: 'What language is the mockup in?', answer: 'The same language as your website: a Polish website gets a Polish mockup and an English website an English one.' },
-  { id: 'how-much-does-a-new-website-cost', question: 'How much does a new website based on the mockup cost?', answer: `It depends on the number of pages, integrations and content. We build a Next.js company website from ${cena('strona', 'en')} net and prepare a quote within 24 hours on business days. The scope is described on our <a href="/en/web-design">web design</a> page.` },
+  { id: 'how-much-does-a-new-website-cost', question: 'How much does a website redesign cost?', answer: `The mockup is free. The website redesign cost depends on the number of pages, integrations and content. We build a Next.js company website from ${cena('strona', 'en')} net and prepare a quote within 24 hours on business days. The scope is described on our <a href="/en/web-design">web design</a> page.` },
 ];
 
 function MakietaEn() {
@@ -287,7 +287,7 @@ function MakietaEn() {
         featureList: ['A new homepage proposal', 'Desktop and mobile version', 'Only content from your website'],
         screenshot: ZRZUT_SCHEMA,
       }}
-      lead={`Free website redesign mockup: enter your website address and in ${minutyEn} minutes AI designs a new homepage for desktop and mobile from your content. No account needed.`}
+      lead={`Free website redesign mockup: enter your website address and in ${minutyEn} minutes AI designs a new homepage for desktop and mobile from your content. No account needed. Building the new website with us costs from ${cena('strona', 'en')} net.`}
       narzedzie={<MakietaClient />}
       odpowiedz="A redesign mockup is a proposal for a new homepage that an AI model builds from the content already on your website: your name, headings, menu, service descriptions, contact details and colors. It shows the section layout, typography, colors and a mobile version. It is a direction to discuss with a developer, not a finished website: you see the first screen right away and the whole mockup after you enter your email."
       faq={FAQ_MAKIETY_EN}

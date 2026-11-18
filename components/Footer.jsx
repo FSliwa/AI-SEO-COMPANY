@@ -40,6 +40,8 @@ export default function Footer() {
   const hrefPorownan = hrefStopki('/porownania');
   const hrefNarzedzi = hrefStopki('/narzedzia');
   const hrefWizytowki = hrefStopki('/pozycjonowanie-wizytowki-google');
+  const hrefCopywritingu = hrefStopki('/copywriting-seo');
+  const hrefLinkBuildingu = hrefStopki('/link-building');
   const drugiJezyk = lang === 'pl' ? 'en' : 'pl';
 
   // Plywajacy przycisk na telefonie i tablecie pokazuje sie dopiero po
@@ -190,6 +192,8 @@ export default function Footer() {
                 <li><Link href="/seo-lokalne-warszawa">{lang === 'pl' ? 'SEO Lokalne Warszawa' : 'Local SEO Warsaw'}</Link></li>
                 {/* L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2. */}
                 {hrefWizytowki && <li><Link href={hrefWizytowki}>{lang === 'pl' ? 'Pozycjonowanie wizytówki Google' : 'Google Business Profile'}</Link></li>}
+                {hrefCopywritingu && <li><Link href={hrefCopywritingu}>{lang === 'pl' ? 'Copywriting SEO' : 'SEO Copywriting'}</Link></li>}
+                {hrefLinkBuildingu && <li><Link href={hrefLinkBuildingu}>{lang === 'pl' ? 'Link building' : 'Link Building'}</Link></li>}
                 <li><Link href="/pozycjonowanie-w-ai">{lang === 'pl' ? 'Pozycjonowanie w AI' : 'AI Search Optimization'}</Link></li>
               </ul>
             </div>

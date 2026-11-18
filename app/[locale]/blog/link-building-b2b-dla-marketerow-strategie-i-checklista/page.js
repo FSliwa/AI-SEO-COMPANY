@@ -139,7 +139,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               
               <p style={{ marginBottom: '1.5rem' }}>Three typical goals of a B2B link program:</p>
               <ul>
-                <li>Visibility during purchasing research – appearing in search results for phrases buyers use during the supplier evaluation stage. A good <Link href="/pozycjonowanie-stron-internetowych">website positioning strategy</Link> is crucial here.</li>
+                <li>Visibility during purchasing research – appearing in search results for phrases buyers use during the supplier evaluation stage. A good <Link href="/pozycjonowanie-stron-internetowych">website positioning strategy</Link> is crucial here, and so is tidy <Link href="/narzedzia/linkowanie-wewnetrzne">internal linking strategy</Link> that passes the earned authority on to your service pages.</li>
                 <li>Brand trust – third-party confirmation that the company exists in a real industry ecosystem.</li>
                 <li>SEO support for product and offer pages – building authority for pages that directly convert.</li>
               </ul>
@@ -356,7 +356,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <h2 id="ai-seo-company">How we approach B2B link building at AI SEO COMPANY</h2>
               <p style={{ marginBottom: '1.5rem' }}>Every link building program begins with an <Link href="/audyt-seo">SEO audit</Link>: we check the current link profile, identify content gaps, and map existing partner relationships that can be activated immediately. Only on this basis do we design a linkable asset that has a real chance of being quoted in industry media.</p>
               <p style={{ marginBottom: '1.5rem' }}>The process looks like this: audit and competitor analysis, asset production (report, calculator, benchmark), outreach to selected editorial boards and partners, publication, and then monthly KPI reporting covering new referring domains, average DR, and organic traffic on supported pages.</p>
-              <p style={{ marginBottom: '1.5rem' }}>At AI SEO COMPANY we combine link building programs with <Link href="/pozycjonowanie-stron-internetowych">website positioning</Link> and conversion-optimized <Link href="/projektowanie-stron-internetowych">web design</Link>. Link building is part of the SEO packages, while larger digital PR programs are quoted individually.</p>
+              <p style={{ marginBottom: '1.5rem' }}>At AI SEO COMPANY we combine link building programs with <Link href="/pozycjonowanie-stron-internetowych">website positioning</Link> and conversion-optimized <Link href="/projektowanie-stron-internetowych">web design</Link>. <Link href="/link-building">Link building services</Link> are part of the SEO packages, while larger digital PR programs are quoted individually.</p>
 
               {/* ===== SECTION: Wsparcie ===== */}
               <h2 id="wsparcie">How can we support your B2B link building program?</h2>
@@ -706,7 +706,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <h2 id="ai-seo-company">Jak podchodzimy do link buildingu B2B w AI SEO COMPANY</h2>
               <p style={{ marginBottom: '1.5rem' }}>Każdy program link buildingu zaczyna się od <Link href="/audyt-seo">audytu SEO</Link>: sprawdzamy aktualny profil linkowy, identyfikujemy luki tematyczne i mapujemy istniejące relacje partnerskie, które można natychmiast aktywować. Dopiero na tej podstawie projektujemy linkable asset, który ma realną szansę na cytowanie w mediach branżowych.</p>
               <p style={{ marginBottom: '1.5rem' }}>Proces wygląda następująco: audyt i analiza konkurencji, produkcja zasobu (raport, kalkulator, benchmark), outreach do wyselekcjonowanych redakcji i partnerów, publikacja, a następnie miesięczne raportowanie KPI obejmujące nowe referring domains, średni DR i ruch organiczny na wspieranych stronach.</p>
-              <p style={{ marginBottom: '1.5rem' }}>W AI SEO COMPANY program link buildingu łączymy z <Link href="/pozycjonowanie-stron-internetowych">pozycjonowaniem stron</Link> i <Link href="/projektowanie-stron-internetowych">projektowaniem stron internetowych</Link> zoptymalizowanych pod konwersję. Link building wchodzi w skład pakietów SEO, a większe programy digital PR wyceniamy indywidualnie.</p>
+              <p style={{ marginBottom: '1.5rem' }}>W AI SEO COMPANY program link buildingu łączymy z <Link href="/pozycjonowanie-stron-internetowych">pozycjonowaniem stron</Link> i <Link href="/projektowanie-stron-internetowych">projektowaniem stron internetowych</Link> zoptymalizowanych pod konwersję. <Link href="/link-building">Link building</Link> wchodzi w skład pakietów SEO, a większe programy digital PR wyceniamy indywidualnie. Zdobyty autorytet trzeba jeszcze przekazać dalej, dlatego zadbaj o uporządkowane <Link href="/narzedzia/linkowanie-wewnetrzne">linkowanie wewnętrzne</Link>.</p>
 
               {/* ===== SECTION: Wsparcie ===== */}
               <h2 id="wsparcie">Jak możemy wesprzeć Twój program link buildingu B2B?</h2>

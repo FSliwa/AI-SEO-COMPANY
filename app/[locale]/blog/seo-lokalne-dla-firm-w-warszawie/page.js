@@ -77,7 +77,7 @@ export default async function ArticleLokalnePage({ params }) {
               <ArticleTOC items={tocItems} />
               
               <h2 id="wizytowka-google">Google Business Profile (Google Maps)</h2>
-              <p>Your Google Business Profile is the absolute foundation of local visibility. Ensure your NAP (Name, Address, Phone) data is perfectly consistent across the web. Regularly add high-quality photos, respond to all reviews (both positive and negative), and utilize Google Posts to share updates.</p>
+              <p>Your Google Business Profile is the absolute foundation of local visibility. Ensure your NAP (Name, Address, Phone) data is perfectly consistent across the web. Regularly add high-quality photos, respond to all reviews (both positive and negative), and utilize Google Posts to share updates. A step-by-step list is in our free <Link href="/narzedzia/checklista-wizytowki-google">local SEO checklist</Link>.</p>
 
               <h2 id="optymalizacja-strony">On-Page Local Optimization</h2>
               <p>Your website must clearly communicate your service areas. Create dedicated subpages for different districts or nearby cities. Include localized keywords in your H1 tags, meta titles, and naturally within the body content. Embedding a Google Map on your contact page helps users find you; it is not a confirmed ranking signal.</p>
@@ -156,7 +156,7 @@ export default async function ArticleLokalnePage({ params }) {
 
               <h2 id="optymalizacja-profilu-firmy-w-google-gbp">Optymalizacja Profilu Firmy w Google (GBP)</h2>
               <p>
-                Profil Firmy w Google (dawniej Google Moja Firma) to darmowe narzędzie i absolutny fundament lokalnego SEO. Jeśli Twoja firma nie ma założonej i zweryfikowanej wizytówki, tracisz widoczność w Mapach i w wynikach lokalnych (brak własnej wizytówki to brak głównego elementu lokalnych wyników).
+                Profil Firmy w Google (dawniej Google Moja Firma) to darmowe narzędzie i absolutny fundament lokalnego SEO. Jeśli Twoja firma nie ma założonej i zweryfikowanej wizytówki, tracisz widoczność w Mapach i w wynikach lokalnych (brak własnej wizytówki to brak głównego elementu lokalnych wyników). Listę kroków znajdziesz w darmowej checkliście: <Link href="/narzedzia/checklista-wizytowki-google">jak założyć wizytówkę Google</Link>.
               </p>
               
               <ul>

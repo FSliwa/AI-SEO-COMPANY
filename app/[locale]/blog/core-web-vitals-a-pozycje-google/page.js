@@ -92,7 +92,7 @@ export default async function ArticleCwvPage({ params }) {
 
               <h2 id="znaczenie-ttfb">The importance of TTFB and Server-Side Rendering (SSR)</h2>
               <p>Simply reducing image sizes will not help if the server responds too slowly (TTFB). Migrating to more modern architectures (such as Next.js App Router with React Server Components) means that the entire burden of database logic processing is done once on the server and distributed.</p>
-              <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas. A Core Web Vitals review is one of the steps of our <Link href="/audyt-seo">SEO audit</Link>.</p>
+              <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas. A Core Web Vitals review is one of the steps of our <Link href="/audyt-seo">SEO audit</Link>. For a quick check of the whole site, run the <Link href="/narzedzia/audyt-seo">free SEO audit</Link>.</p>
 
               <BlogCTA 
   locale={locale} 
@@ -203,7 +203,7 @@ export default async function ArticleCwvPage({ params }) {
                 Samo zmniejszanie rozmiaru obrazków nie pomoże, jeśli serwer odpowiada zbyt wolno (wskaźnik TTFB - Time to First Byte). Migracja na nowocześniejsze architektury (takie jak Jamstack, Next.js App Router z React Server Components) sprawia, że cały ciężar przetwarzania logiki bazy danych wykonywany jest raz na serwerze i dystrybuowany na węzły sieci CDN na całym świecie.
               </p>
               <p>
-                Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co ułatwia osiągnięcie wysokiego wyniku w PageSpeed Insights, ale wynik zależy też od obrazów, skryptów zewnętrznych i układu strony. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Analiza Core Web Vitals to jeden z etapów naszego <Link href="/audyt-seo">audytu SEO</Link>. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
+                Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co ułatwia osiągnięcie wysokiego wyniku w PageSpeed Insights, ale wynik zależy też od obrazów, skryptów zewnętrznych i układu strony. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Analiza Core Web Vitals to jeden z etapów naszego <Link href="/audyt-seo">audytu SEO</Link>. Szybką kontrolę całej witryny zrobisz w <Link href="/narzedzia/audyt-seo">darmowym audycie SEO</Link>. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
               </p>
 
               <BlogCTA 

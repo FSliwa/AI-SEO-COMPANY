@@ -501,7 +501,7 @@ export default function WizytowkaClient({ faqData }) {
           <p style={akapit}>
             {en ? 'That is where we start with' : 'Od tego samego zaczynamy'}{' '}
             {en
-              ? (hrefA2 ? <Link href={hrefA2} style={link}>ChatGPT optimization</Link> : 'ChatGPT optimization')
+              ? (hrefA2 ? <Link href={hrefA2} style={link}>ChatGPT SEO</Link> : 'ChatGPT SEO')
               : (hrefA2 ? <Link href={hrefA2} style={link}>pozycjonowanie w ChatGPT</Link> : 'pozycjonowanie w ChatGPT')}
             {en ? ': a Business Profile and a website with a clear offer and price.' : ': od wizytówki i strony z jasną ofertą i ceną.'}
           </p>

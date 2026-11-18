@@ -33,6 +33,7 @@ import { LASTMOD } from '@/lib/lastmod';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { BASE, ENDPOINT_SZABLONOW, RODZIC_OKRUSZKOW } from '@/lib/narzedzia';
 import { hrefDlaLink, hrefWJezyku } from '@/lib/linkiEn';
+import { kotwicaLinku } from '@/lib/frazyLinkow';
 
 function Html({ html }) {
   if (!html) return null;
@@ -163,7 +164,7 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
               <ul className="sz-powiazane">
                 {powiazane.map((p) => (
                   <li key={p.href}>
-                    <Link href={hrefDlaLink(p.cel, locale)}>{p.tekst}</Link>{p.opis ? `: ${p.opis}` : ''}
+                    <Link href={hrefDlaLink(p.cel, locale)}>{kotwicaLinku(p.href, locale, p.tekst)}</Link>{p.opis ? `: ${p.opis}` : ''}
                   </li>
                 ))}
               </ul>

@@ -11,6 +11,7 @@ import SubpagePortfolio from '@/components/service/SubpagePortfolio';
 import { Reveal, RevealStagger, RevealItem } from '@/components/ScrollReveal';
 import { hash } from '@/lib/anchors';
 import TloGory from '@/components/TloGory';
+import PowiazaneUslugi from '@/components/service/PowiazaneUslugi';
 
 export default function ProjektowanieClient({ faqData, portfolioCases, carouselItems }) {
   const lang = useLocale();
@@ -35,7 +36,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Projektowanie stron internetowych' : 'Web Design & Development'}
+              {lang === 'pl' ? 'Tworzenie stron internetowych i projektowanie stron internetowych' : 'Web Design & Development'}
             </h1>
 
             <div style={{ 
@@ -71,7 +72,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Profesjonalne <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> to inwestycja w stabilny fundament. <span style={{ color: 'var(--color-cta)' }}>Tworzymy nowoczesne i szybkie strony B2B, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów</span>.</> 
+                ? <>Profesjonalne <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> to inwestycja w stabilny fundament. <span style={{ color: 'var(--color-cta)' }}>Tworzymy nowoczesne i szybkie strony B2B w Next.js, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów</span>.</> 
                 : <>Professional Web Design and Development is an investment in a stable foundation. <span style={{ color: 'var(--color-cta)' }}>We create fast Business Websites that protect against attacks and turn organic traffic into customers</span>.</>}
             </p>
             
@@ -125,7 +126,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 3' : 'PILLAR 3'}</div>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Fundament pod SEO' : 'SEO Foundation'}</div>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Od pierwszego dnia strona jest zoptymalizowana pod Google (szybkość wczytywania, tagi strukturalne). Tworzymy solidną bazę, gotową na bezkompromisowe pozycjonowanie stron.' : 'From day one, the site is optimized for Google (loading speed, structured tags). We create a solid base, ready for uncompromising SEO.'}</p>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Od pierwszego dnia strona jest zoptymalizowana pod Google (szybkość wczytywania, tagi strukturalne). Tworzenie stron internetowych z myślą o SEO daje solidną bazę, gotową na bezkompromisowe pozycjonowanie stron.' : 'From day one, the site is optimized for Google (loading speed, structured tags). We create a solid base, ready for uncompromising SEO.'}</p>
             </RevealItem>
           </RevealStagger>
         </div>
@@ -153,7 +154,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
             </RevealItem>
             <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wdrożenie i Skalowanie Sprzedaży' : 'Deployment and Sales Scaling'}</div>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Gotowy projekt przenosimy do bezpiecznego i niezawodnego środowiska, dbając o zoptymalizowanie ścieżek zakupowych klienta (generowanie leadów).' : 'We transition the ready design into a secure and reliable environment, ensuring optimized customer purchase paths (lead generation).'}</p>
+              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Tworzenie stron internetowych kończymy wdrożeniem gotowego projektu w bezpiecznym i niezawodnym środowisku, dbając o zoptymalizowanie ścieżek zakupowych klienta (generowanie leadów).' : 'We transition the ready design into a secure and reliable environment, ensuring optimized customer purchase paths (lead generation).'}</p>
             </RevealItem>
           </RevealStagger>
         </div>
@@ -173,6 +174,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
       {/* FAQ Section */}
       <AppleFaq faqData={faqData} title={lang === 'pl' ? "Najczęstsze pytania" : "Frequently Asked Questions"} />
 
+      <PowiazaneUslugi locale={lang} bez="/projektowanie-stron-internetowych" items={['/pozycjonowanie-stron-internetowych', '/audyt-seo', '/cennik-pozycjonowania']} />
       <Contact />
     </main>
   );

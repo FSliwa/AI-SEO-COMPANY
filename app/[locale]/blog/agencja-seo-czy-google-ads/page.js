@@ -272,6 +272,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
               <p>
                 Tak wygląda też nasze <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie stron internetowych</Link>: technika, treści, linki i Profil Firmy w Google w jednym procesie. Coraz częściej do tego zakresu dochodzi widoczność w odpowiedziach AI, którą opisujemy na stronie <Link href="/pozycjonowanie-w-ai">pozycjonowanie w AI</Link>
                 {hrefAiOverviews ? <> i w poradniku, <Link href={hrefAiOverviews}>jak zoptymalizować stronę pod Google AI Overviews</Link>.</> : '.'}
+                {' '}W Trybie AI Google liczy kliknięcia inaczej, opisujemy to w artykule <Link href="/blog/google-ai-mode-jak-sie-pojawic">Google AI Mode</Link>.
               </p>
 
               <h2 id="google-ads">Jak działają Google Ads i aukcja reklam?</h2>
@@ -353,7 +354,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
               <h3>Kiedy potrzebny jest pełny audyt SEO</h3>
               <p>Audyt SEO to ręczna analiza wsparta narzędziami, która kończy się listą zadań z priorytetami. Obejmuje technikę, treści, linki i konkurencję, a jego wynikiem jest plan, a nie tylko lista ostrzeżeń.</p>
               <Tabela naglowki={['Kryterium', 'SEO checker', 'Pełny audyt SEO']} wiersze={CHECKER_VS_AUDYT} />
-              <p>Jeśli strona ma już ruch lub planujesz większą inwestycję, zamów <Link href="/audyt-seo">audyt SEO strony internetowej</Link>. Szczegółowe progi techniczne opisujemy w artykule <Link href="/blog/technical-seo-audit-checklist">audyt techniczny SEO</Link>.</p>
+              <p>Jeśli strona ma już ruch lub planujesz większą inwestycję, zamów <Link href="/audyt-seo">audyt SEO strony internetowej</Link>. Szczegółowe progi techniczne opisujemy w poradniku <Link href="/blog/technical-seo-audit-checklist">jak zrobić audyt SEO</Link>.</p>
 
               <h2 id="wybor-partnera">Jak wybrać agencję SEO lub partnera do reklam?</h2>
               <p>Wybór partnera to decyzja na miesiące, więc warto ją oprzeć na konkretnych pytaniach, a nie na obietnicach z oferty. Google w poradniku dla właścicieli stron, którzy rozważają zatrudnienie specjalisty SEO, podsuwa listę pytań, które dobrze sprawdzają się także przy wyborze partnera do reklam.</p>
@@ -403,7 +404,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
 
               <h2 id="podsumowanie">Podsumowanie: fundament z SEO, tempo z reklam</h2>
               <p>Wybór między SEO a reklamami rzadko jest wyborem jednego kanału kosztem drugiego. Agencja SEO pomaga zbudować stronę, która z czasem przyciąga klientów bez płacenia za każde kliknięcie, a kampanie Google Ads dają szybki dostęp do osób szukających Twojej oferty tu i teraz.</p>
-              <p>Zacznij od diagnozy strony, ustal mierzalne cele i wybierz partnera, który pracuje przejrzyście, a konta zostawia na Twojej firmie. Jeśli chcesz sprawdzić, jaki potencjał ma Twoja strona w wynikach organicznych, porozmawiaj z nami o <Link href="/audyt-seo">audycie SEO</Link> i planie działań.</p>
+              <p>Zacznij od diagnozy strony, ustal mierzalne cele i wybierz partnera, który pracuje przejrzyście, a konta zostawia na Twojej firmie. Jeśli chcesz sprawdzić, jaki potencjał ma Twoja strona w wynikach organicznych, porozmawiaj z nami o audycie SEO i planie działań.</p>
 
               <Zrodla zrodla={ZRODLA} />
 

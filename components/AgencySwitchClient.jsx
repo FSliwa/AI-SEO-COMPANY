@@ -49,6 +49,7 @@ export default function AgencySwitchClient() {
   const D = en ? EN : { CHECKLIST, CHECKLIST_COUNT, CONTRACT_CHECKS, FAQ, STEPS };
   const kontakt = hash('kontakt', locale);
   const hrefP1 = hrefJesliOpublikowana('/porownania/pozycjonowanie-za-efekt-czy-abonament');
+  const hrefFreelancera = hrefJesliOpublikowana('/porownania/agencja-seo-czy-freelancer');
   const hrefP6 = hrefJesliOpublikowana('/porownania/jak-wybrac-agencje-seo');
   const hrefS1 = hrefJesliOpublikowana('/narzedzia/raport-seo');
   return (
@@ -96,8 +97,8 @@ export default function AgencySwitchClient() {
               </ol>
               <p style={{ ...lead, margin: '1.25rem 0 0' }}>
                 {en
-                  ? <>When you switch agencies, also compare the {hrefP1 ? <Link href={hrefP1} style={podkreslenie}>billing model (pay for results or monthly retainer)</Link> : 'billing model (pay for results or monthly retainer)'}: in the new contract it determines what you pay for.</>
-                  : <>Zmieniając agencję, porównaj też {hrefP1 ? <Link href={hrefP1} style={podkreslenie}>model rozliczenia (za efekt czy abonament)</Link> : 'model rozliczenia (za efekt czy abonament)'}: w nowej umowie decyduje on o tym, za co płacisz.</>}
+                  ? <>When you switch agencies, also compare the {hrefP1 ? <Link href={hrefP1} style={podkreslenie}>billing model (pay for results or monthly retainer)</Link> : 'billing model (pay for results or monthly retainer)'}: in the new contract it determines what you pay for.{hrefFreelancera ? <> Switching to a freelancer? See <Link href={hrefFreelancera} style={podkreslenie}>SEO agency vs freelancer</Link>.</> : null}</>
+                  : <>Zmieniając agencję, porównaj też {hrefP1 ? <Link href={hrefP1} style={podkreslenie}>model rozliczenia (za efekt czy abonament)</Link> : 'model rozliczenia (za efekt czy abonament)'}: w nowej umowie decyduje on o tym, za co płacisz.{hrefFreelancera ? <> Zmieniasz agencję na freelancera? Sprawdź, <Link href={hrefFreelancera} style={podkreslenie}>kiedy freelancer SEO jest lepszym wyborem</Link>.</> : null}</>}
               </p>
               {/* 5.11.2026 (OP-12, akceptacja „0 zdań powtórzonych na stronie”): akapit powtarzał
                   dwa zdania odpowiedzi FAQ o prawach konsumenta - szczegóły zostają tylko w FAQ. */}

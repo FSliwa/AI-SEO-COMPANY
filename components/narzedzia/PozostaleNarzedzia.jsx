@@ -18,9 +18,9 @@ export const RODZIC_HUBA = { href: '/narzedzia', pl: 'Narzędzia', en: 'Tools' }
 /** Kolejność = kolejność na stronach. href to klucz PL (Link sam tłumaczy na adres EN). */
 export const NARZEDZIA = [
   { href: '/narzedzia/audyt-seo', pl: ['Darmowy audyt SEO', `ocena 1-100 i lista błędów dla do ${AUDYT.stron} podstron`], en: ['Free SEO audit', `a 1-100 score and a list of errors for up to ${AUDYT.stron} pages`] },
-  { href: '/sprawdz-widocznosc-w-ai', pl: ['Widoczność w AI', `czy ${listaSilnikow('pl')} wymieniają Twoją firmę`], en: ['AI visibility check', `whether ${listaSilnikow('en')} name your business`] },
+  { href: '/sprawdz-widocznosc-w-ai', pl: ['Sprawdzarka AI visibility', `czy ${listaSilnikow('pl')} wymieniają Twoją firmę`], en: ['AI visibility check', `whether ${listaSilnikow('en')} name your business`] },
   { href: '/narzedzia/kalkulator-strat-seo', pl: ['Kalkulator strat bez SEO', 'ile zysku miesięcznie tracisz bez TOP 3 w Google i poleceń w AI'], en: ['SEO loss calculator', 'the monthly profit you lose without a Google top 3 position and AI recommendations'] },
-  { href: '/narzedzia/makieta-redesignu', pl: ['Makieta nowej strony', `nowa strona główna z AI w ${MAKIETA.minut} minuty, z Twoich treści`], en: ['Website redesign mockup', `a new AI homepage design in ${MAKIETA.minut} minutes, built from your content`] },
+  { href: '/narzedzia/makieta-redesignu', pl: ['Makieta strony internetowej', `nowa strona główna z AI w ${MAKIETA.minut} minuty, z Twoich treści`], en: ['Website redesign mockup', `a new AI homepage design in ${MAKIETA.minut} minutes, built from your content`] },
   { href: '/narzedzia/generator-llms-txt', pl: ['Generator llms.txt', `plik llms.txt z mapy strony i test dostępu ${GENERATOR.botow} botów AI`], en: ['llms.txt generator', `an llms.txt file from your sitemap and an access test for ${GENERATOR.botow} AI bots`] },
   { href: '/narzedzia/autorytet-domeny', pl: ['Autorytet domeny', `wynik 0-100 z grafu linków Common Crawl i porównanie z maksymalnie ${AUTORYTET.konkurentow} konkurentami`], en: ['Domain authority checker', `a 0-100 score from the Common Crawl link graph, compared with up to ${AUTORYTET.konkurentow} competitors`] },
 ];
@@ -67,7 +67,7 @@ export default function PozostaleNarzedzia({ bez, locale = 'pl', tytul }) {
           <li>
             <Link href={hub} className={`${st.kafel} ${st.kafelHub}`}>
               <span className={st.kafelIkona}><Ikona nazwa="szablon" /></span>
-              <span className={st.kafelNazwa}>{en ? 'All free tools and templates' : 'Wszystkie darmowe narzędzia i szablony'}</span>
+              <span className={st.kafelNazwa}>{en ? 'All free SEO tools and AI tools' : 'Wszystkie darmowe narzędzia i szablony'}</span>
               <span className={st.kafelOpis}>{en ? 'the full list, with SEO templates to download' : 'pełna lista razem z szablonami SEO do pobrania'}</span>
             </Link>
           </li>

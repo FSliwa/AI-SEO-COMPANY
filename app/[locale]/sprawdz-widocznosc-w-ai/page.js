@@ -31,9 +31,9 @@ export async function generateMetadata({ params }) {
   }
   return {
     // 4.11.2026: title pod „widoczność w ai” (90/mies., w VII.2026 590); H1 bez zmian.
-    title: 'Widoczność w AI: sprawdź, czy ChatGPT poleca Twoją firmę',
+    title: 'Widoczność w AI (AI visibility): czy ChatGPT poleca firmę',
     // 9.11.2026: audyt w 5 silnikach AI (WidocznoscAiClient).
-    description: 'Bezpłatna sprawdzarka widoczności w AI: pytania Twoich klientów zadajemy ChatGPT, Gemini, Perplexity, Claude i Google i pokazujemy, czy wymieniają Twoją firmę.',
+    description: 'Bezpłatna sprawdzarka widoczności w AI: pytania klientów zadajemy ChatGPT, Gemini, Perplexity, Claude i Google i pokazujemy, czy wymieniają Twoją firmę.',
     alternates: { canonical: URL_PL, languages },
   };
 }

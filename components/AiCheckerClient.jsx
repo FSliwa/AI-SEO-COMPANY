@@ -178,13 +178,13 @@ export default function AiCheckerClient() {
             </div>
             {/* Z-W1: H1 = title (fraza „Widoczność w AI”), dawne pytanie zostaje w nagłówku. */}
             <h1 style={s.h1}>
-              {en ? 'AI visibility check: does ChatGPT recommend your business?' : 'Widoczność w AI: sprawdź, czy ChatGPT poleca Twoją firmę'}
+              {en ? 'AI visibility check: does ChatGPT recommend your business?' : 'Widoczność w AI (AI visibility): czy ChatGPT poleca firmę'}
             </h1>
             {/* Z-W2: lead 2 zdania; lista silników ze stałej (Grok dopisze się sam). */}
             <p className={st.lead} style={s.lead}>
               {en
                 ? `We check whether ${listaSilnikow('en')} name your business when a customer asks three typical questions. Results within 2 minutes, no sign-up.`
-                : `Sprawdzimy, czy ${listaSilnikow('pl')} wymieniają Twoją firmę, gdy klient zadaje trzy typowe pytania. Wynik zobaczysz w ciągu 2 minut, bez rejestracji.`}
+                : `Sprawdzimy, czy ${listaSilnikow('pl')} wymieniają Twoją firmę, gdy klient zadaje trzy typowe pytania. Wynik, czyli Twoją widoczność w AI (ang. AI visibility), zobaczysz w ciągu 2 minut, bez rejestracji.`}
             </p>
           </Reveal>
 

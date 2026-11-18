@@ -188,7 +188,7 @@ export default async function ArticleCanonicalPage({ params }) {
 
               <h2 id="oferta">AI SEO COMPANY offer: technical audit and optimization packages</h2>
               <p>Choosing a reliable <Link href="/o-nas">SEO partner</Link> is the foundation of success. At AI SEO COMPANY, we understand that without a healthy technical foundation, no off-site activities or the best content will bring the expected results.</p>
-              <p>Before implementing a solid strategy, we conduct an <Link href="/audyt-seo">advanced SEO audit</Link>, which shows the real state of the site's structure – including the correctness of canonical tags, sitemap, and URL architecture. We support both <Link href="/seo-lokalne-warszawa">local positioning</Link> for smaller companies and clinics, as well as e-commerce projects.</p>
+              <p>Before implementing a solid strategy, we conduct an <Link href="/audyt-seo">advanced SEO audit</Link>, which shows the real state of the site's structure – including the correctness of canonical tags, sitemap, and URL architecture. We support both <Link href="/seo-lokalne-warszawa">local positioning</Link> for smaller companies and clinics, as well as e-commerce projects. If the new address comes from a domain or URL change, go through the free <Link href="/narzedzia/checklista-migracji-strony">website migration checklist</Link> as well.</p>
               <p>As part of the cooperation, we make sure that canonical tags, sitemap.xml, and store structure harmonize with each other. This is the safest way to stable visibility growth.</p>
               <p>Do you want to check what canonical tags look like on your site? <Link href={homeHash('kontakt', locale)}>Schedule a free consultation</Link>.</p>
               
@@ -381,7 +381,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <h2 id="oferta">Oferta AI SEO COMPANY: audyt techniczny i pakiety optymalizacji</h2>
               <p>Wybór rzetelnej <Link href="/o-nas">agencji SEO</Link> to podstawa sukcesu. W AI SEO COMPANY rozumiemy, że bez zdrowego fundamentu technicznego żadne działania off-site ani najlepszy content nie przyniosą zakładanych rezultatów.</p>
               
-              <p>Przed wdrożeniem stałej strategii przeprowadzamy <Link href="/audyt-seo">zaawansowany audyt SEO</Link>, który pokazuje rzeczywisty stan struktury witryny – w tym poprawność tagów kanonicznych, mapy witryny i architektury adresów URL. Obsługujemy zarówno <Link href="/seo-lokalne-warszawa">pozycjonowanie lokalne</Link> mniejszych firm i gabinetów, jak i projekty e-commerce.</p>
+              <p>Przed wdrożeniem stałej strategii przeprowadzamy <Link href="/audyt-seo">zaawansowany audyt SEO</Link>, który pokazuje rzeczywisty stan struktury witryny – w tym poprawność tagów kanonicznych, mapy witryny i architektury adresów URL. Obsługujemy zarówno <Link href="/seo-lokalne-warszawa">pozycjonowanie lokalne</Link> mniejszych firm i gabinetów, jak i projekty e-commerce. Jeśli nowe adresy wynikają ze zmiany domeny albo struktury URL, przejdź też darmową checklistę: <Link href="/narzedzia/checklista-migracji-strony">migracja strony</Link>.</p>
               
               <p>W ramach współpracy dbamy o to, by tagi kanoniczne, sitemap.xml oraz struktura sklepu ze sobą współgrały. To najbezpieczniejsza droga do stabilnego wzrostu widoczności.</p>
               

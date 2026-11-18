@@ -108,6 +108,9 @@ export default function Header() {
   const hrefMenu = (href) => ((lang === 'pl' || !tylkoPl(href)) ? hrefJesliOpublikowana(href) : null);
   const hrefSprawdzarki = hrefMenu('/sprawdz-widocznosc-w-ai');
   const hrefWizytowki = hrefMenu('/pozycjonowanie-wizytowki-google');
+  // 18.11.2026 (lista airSlate): nowe strony usług, z wersją EN.
+  const hrefCopywritingu = hrefMenu('/copywriting-seo');
+  const hrefLinkBuildingu = hrefMenu('/link-building');
   const hrefNarzedzi = hrefMenu('/narzedzia');
 
   useEffect(() => {
@@ -490,6 +493,16 @@ export default function Header() {
                 {hrefWizytowki && (
                   <li style={{ '--delay': '0.41s' }}>
                     <Link href={hrefWizytowki} onClick={closeMenu}>{lang === 'pl' ? 'Pozycjonowanie wizytówki Google' : 'Google Business Profile'}</Link>
+                  </li>
+                )}
+                {hrefCopywritingu && (
+                  <li style={{ '--delay': '0.417s' }}>
+                    <Link href={hrefCopywritingu} onClick={closeMenu}>{lang === 'pl' ? 'Copywriting SEO' : 'SEO Copywriting'}</Link>
+                  </li>
+                )}
+                {hrefLinkBuildingu && (
+                  <li style={{ '--delay': '0.419s' }}>
+                    <Link href={hrefLinkBuildingu} onClick={closeMenu}>{lang === 'pl' ? 'Link building' : 'Link Building'}</Link>
                   </li>
                 )}
                 <li style={{ '--delay': '0.42s' }}>

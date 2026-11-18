@@ -31,6 +31,7 @@ import Image from 'next/image';
 import Byline from '@/components/Byline';
 import TloGory from '@/components/TloGory';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
+import PowiazaneUslugi from '@/components/service/PowiazaneUslugi';
 
 // 5.11.2026 (LO1; PLAN-v2 6.21, OP-09, OP-10, AV-06/Z1, CB-16, OP-04) - strona chroniona: tylko
 // DODAWANIE w wersji PL (answer, nowe sekcje pod lang === 'pl'); answerEn i EN bez zmian poza kaflem Z1.
@@ -44,7 +45,7 @@ const faqData = [
     question: 'Kiedy zobaczę efekty pozycjonowania lokalnego w Warszawie?',
     questionEn: 'When will I see the effects of local SEO in Warsaw?',
     answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Celem dla uzgodnionych fraz lokalnych jest TOP 3 w 2–3 miesiące: postęp widzisz co tydzień w panelu klienta, a jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. W najbardziej konkurencyjnych dzielnicach Warszawy zbudowanie wiodącej pozycji może potrwać 3-6 miesięcy.',
-    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. The goal for agreed local keywords is a TOP 3 within 2–3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us. In the most competitive Warsaw districts, building a leading position can take 3-6 months.'
+    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. The goal for agreed local keywords is a TOP 3 within 2–3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us. In the most competitive Warsaw districts, building a leading position can take 3-6 months. More on timelines: <a href="/en/blog/how-long-does-seo-take">how long does SEO take</a>.'
   },
   {
     question: 'Czy muszę posiadać fizyczne biuro w Warszawie?',
@@ -502,6 +503,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
 
         {/* Pricing */}
         <Pricing />
+
+        <PowiazaneUslugi locale={lang} bez="/seo-lokalne-warszawa" items={lang === 'pl' ? ['/audyt-seo', '/pozycjonowanie-wizytowki-google'] : ['/pozycjonowanie-stron-internetowych', '/cennik-pozycjonowania', '/pozycjonowanie-wizytowki-google']} />
 
         {/* FAQ Section */}
         <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : "Local Search Engine Optimization FAQs"} />
