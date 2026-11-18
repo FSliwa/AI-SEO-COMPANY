@@ -506,6 +506,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}>Sklep WooCommerce / Shopify (do 100 SKU):</span> cena rośnie wraz z liczbą wymaganych funkcji i integracji</li>
                 <li><span style={{ fontWeight: 'bold' }}>Rozbudowany serwis z integracjami CRM, płatnościami, wielojęzycznością:</span> wycena jest indywidualna i zależy od złożoności projektu</li>
               </ul>
+              <p>Od czego zależy cena samej strony docelowej i jak wybrać dla niej CMS i hosting, wyjaśniamy w poradniku o <Link href="/blog/landing-page-tworzenie-cms-hosting-cena">tworzeniu landing page</Link>.</p>
               
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Jeśli Twój projekt wymaga integracji z systemem CRM, automatyzacji zamówień lub niestandardowego projektu graficznego, od razu rozmawiaj z agencją pełnego serwisu. Freelancer może być tańszy na starcie, ale każda zmiana zakresu w trakcie projektu potrafi podwoić końcowy rachunek.

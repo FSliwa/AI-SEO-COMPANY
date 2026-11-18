@@ -569,7 +569,7 @@ export default async function ArticleUXAudit({ params }) {
                     <li>Analiza formularzy: pola powodujące porzucenia, komunikaty błędów, walidacja inline.</li>
                     <li>Ścieżka zakupowa: liczba kroków, spójność CTA, obsługa błędów płatności.</li>
                     <li>Analiza zaufania: widoczność opinii, certyfikatów bezpieczeństwa, polityki zwrotów.</li>
-                    <li>Testy propozycji wartości: czy nagłówek strony głównej lub landing page’a odpowiada na pytanie „dlaczego tu, dlaczego teraz“.</li>
+                    <li>Testy propozycji wartości: czy nagłówek strony głównej lub landing page’a odpowiada na pytanie „dlaczego tu, dlaczego teraz“ (jak zbudować taką stronę, opisujemy w poradniku o <Link href="/blog/landing-page-tworzenie-cms-hosting-cena">tworzeniu landing page</Link>).</li>
                   </ul>
 
                   <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>

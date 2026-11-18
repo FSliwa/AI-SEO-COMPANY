@@ -6,6 +6,9 @@
 // /#kontakt -> #kontakt (formularz jest na tej stronie); etykieta „Porada praktyka” pogrubiona tylko
 // przy pierwszym wystąpieniu (CLAUDE.md); liczby W3Techs sprawdzone u źródła 18.11.2026;
 // lista „Powiązane artykuły” z dokumentu przeniesiona do pola `related` (BlogCTA).
+// 18.11.2026 (przegląd): cena Booster Pack bez „od” (kod: od:false); złagodzone twierdzenia o „zaufaniu
+// domeny”, ostrzeżeniach przeglądarek i optymalizacji stawek (brak źródła); link do /narzedzia/makieta-redesignu;
+// fraza „tworzenie strony internetowej” zostaje stronie /projektowanie-stron-internetowych.
 import { articleLanguages, articleRobots, blogPosts } from '@/lib/blogPosts';
 import { LASTMOD } from '@/lib/lastmod';
 import Header from '@/components/Header';
@@ -35,7 +38,7 @@ const DATA_ZMIANY = LASTMOD[URL_STRONY] ?? DATA_PUBLIKACJI;
 const FAQ = [
   {
     pytanie: 'Czy landing page może być częścią istniejącej strony?',
-    odpowiedz: 'Tak, i często to najlepsze rozwiązanie. Strona w tej samej domenie korzysta z jej zaufania, a analityka i zgody są wspólne dla całego serwisu.',
+    odpowiedz: 'Tak, i często to najlepsze rozwiązanie. Landing w tej samej domenie można połączyć linkami z resztą serwisu, a analityka i zgody są wspólne dla całego serwisu.',
   },
   {
     pytanie: 'Ile trwa przygotowanie strony docelowej?',
@@ -276,7 +279,7 @@ export default async function ArtykulLandingPage({ params }) {
               </AnswerBox>
 
               <p className="lead">
-                Choć landing page wygląda prościej niż serwis firmowy, jego tworzenie wymaga tych samych decyzji co tworzenie strony internetowej: wybór CMS, hostingu, sposobu pomiaru i zasad indeksowania. W tym poradniku przechodzimy przez każdą z nich po kolei, tak abyś mógł zaplanować projekt, oszacować budżet i uniknąć poprawek po starcie kampanii.
+                Choć landing page wygląda prościej niż serwis firmowy, jego tworzenie wymaga tych samych decyzji co budowa całego serwisu: wybór CMS, hostingu, sposobu pomiaru i zasad indeksowania. W tym poradniku przechodzimy przez każdą z nich po kolei, tak abyś mógł zaplanować projekt, oszacować budżet i uniknąć poprawek po starcie kampanii.
               </p>
 
               <ArticleTOC items={TOC} />
@@ -291,12 +294,12 @@ export default async function ArtykulLandingPage({ params }) {
               <p>Typ strony zmienia też długość treści. Krótki click-through może mieć kilka akapitów, a strona sprzedażowa droższej usługi B2B zwykle potrzebuje więcej sekcji: odpowiedzi na obiekcje, opisu procesu i przykładów realizacji.</p>
 
               <h2 id="landing-a-strona-firmowa">Czym różni się landing page od pełnej strony firmowej?</h2>
-              <p>Serwis firmowy odpowiada na wiele pytań naraz: kim jesteś, co oferujesz, jak się z Tobą skontaktować i dlaczego warto Ci zaufać. Strona docelowa odpowiada na jedno pytanie, dopasowane do konkretnego źródła ruchu. Tworzenie strony internetowej z wieloma podstronami to inwestycja w długoterminową widoczność, a pojedynczy landing jest narzędziem do konkretnej kampanii lub oferty.</p>
+              <p>Serwis firmowy odpowiada na wiele pytań naraz: kim jesteś, co oferujesz, jak się z Tobą skontaktować i dlaczego warto Ci zaufać. Strona docelowa odpowiada na jedno pytanie, dopasowane do konkretnego źródła ruchu. Pełny serwis z wieloma podstronami to inwestycja w długoterminową widoczność, a pojedynczy landing jest narzędziem do konkretnej kampanii lub oferty.</p>
               <Tabela etykieta="Landing page a pełna strona firmowa" naglowki={['Kryterium', 'Landing page', 'Pełna strona firmowa']} wiersze={LANDING_VS_STRONA} />
-              <p>Nie musisz wybierać jednego z dwóch rozwiązań. Wiele firm prowadzi serwis główny, a landingi publikuje jako osobne adresy w tej samej domenie, co upraszcza analitykę i nie rozprasza autorytetu domeny.</p>
+              <p>Nie musisz wybierać jednego z dwóch rozwiązań. Wiele firm prowadzi serwis główny, a landingi publikuje jako osobne adresy w tej samej domenie, co upraszcza analitykę i utrzymanie.</p>
 
-              <h3>Kiedy zamiast landingu wybrać tworzenie strony internetowej?</h3>
-              <p>Jeśli dopiero planujesz tworzenie strony internetowej od zera, zacznij od serwisu, który opisze całą ofertę. Landingi dobudujesz później pod konkretne kampanie, a każdy z nich skorzysta z zaufania, jakie domena już zbudowała. Zakres i technologię takiego projektu opisujemy w naszej <Link href="/projektowanie-stron-internetowych">ofercie tworzenia stron</Link>.</p>
+              <h3>Kiedy zamiast landingu zbudować pełny serwis?</h3>
+              <p>Jeśli dopiero zaczynasz od zera, zacznij od serwisu, który opisze całą ofertę. Landingi dobudujesz później pod konkretne kampanie i połączysz je linkami z resztą strony. Zakres i technologię takiego projektu opisujemy w naszej <Link href="/projektowanie-stron-internetowych">ofercie tworzenia stron</Link>.</p>
 
               <h2 id="elementy">Z jakich elementów składa się skuteczna strona docelowa?</h2>
               <p>Dobry landing page nie jest zbiorem efektownych sekcji, tylko logicznym argumentem prowadzącym do decyzji. Google Ads w pomocy dotyczącej Wyniku jakości zaleca, aby strona dokładnie odzwierciedlała reklamę, miała przydatne i unikalne treści, była łatwa w nawigacji i dobrze działała na telefonach.</p>
@@ -329,13 +332,14 @@ export default async function ArtykulLandingPage({ params }) {
                   <li key={nazwa}><strong>{nazwa}.</strong> {opis}</li>
                 ))}
               </ol>
+              <p>Zanim zlecisz projekt, możesz sprawdzić kierunek wizualny: nasze bezpłatne <Link href="/narzedzia/makieta-redesignu">narzędzie do makiety nowej strony</Link> buduje w 1–3 minuty propozycję strony głównej na komputer i telefon na podstawie treści Twojej firmy, bez konta i karty.</p>
 
               <h3>Treść przed projektem graficznym</h3>
               <p>Kolejność „najpierw tekst, potem grafika” wydaje się oczywista, a mimo to wiele projektów zaczyna się od wyboru szablonu. Efekt to sekcje dopasowane do wyglądu, a nie do argumentów, oraz akapity skracane na siłę, żeby zmieściły się w ramce.</p>
               <p>Dobrym punktem wyjścia jest lista pytań, które klienci zadają handlowcom przed zakupem. Każde z nich to kandydat na sekcję landing page’a albo na krótką odpowiedź pod formularzem.</p>
 
               <h3>Analityka i konwersje</h3>
-              <p>W Google Analytics 4 najważniejsze akcje oznacza się jako kluczowe zdarzenia, a standardowa usługa pozwala oznaczyć ich do 30. Kluczowe zdarzenia można wykorzystać do tworzenia konwersji w Google Ads, co pozwala systemowi optymalizować stawki pod realne zapytania, a nie samo kliknięcie.</p>
+              <p>W Google Analytics 4 najważniejsze akcje oznacza się jako kluczowe zdarzenia, a standardowa usługa pozwala oznaczyć ich do 30. Kluczowe zdarzenia można wykorzystać do tworzenia konwersji w Google Ads, co pozwala optymalizować kampanię pod realne działania użytkowników, a nie samo kliknięcie.</p>
               <p>Konfigurację krok po kroku opisaliśmy w poradniku o <Link href="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik">zdarzeniach GA4 w Google Tag Manager</Link>.</p>
 
               <h3>Testy A/B bez szkody dla SEO</h3>
@@ -367,11 +371,11 @@ export default async function ArtykulLandingPage({ params }) {
               <Tabela etykieta="Rodzaje hostingu" naglowki={['Rodzaj', 'Charakterystyka', 'Dla kogo', 'Na co uważać']} wiersze={HOSTING} />
 
               <h3>CDN, SSL i kopie zapasowe</h3>
-              <p>Sieć CDN przechowuje kopie plików na serwerach w wielu lokalizacjach, dzięki czemu użytkownik pobiera je z bliższego węzła. Certyfikat SSL i adres HTTPS są dziś standardem, a przeglądarki ostrzegają przed formularzami wysyłanymi bez szyfrowania.</p>
+              <p>Sieć CDN przechowuje kopie plików na serwerach w wielu lokalizacjach, dzięki czemu użytkownik pobiera je z bliższego węzła. Certyfikat SSL i adres HTTPS są dziś standardem, zwłaszcza na stronach z formularzami.</p>
               <p>Kopie zapasowe powinny być wykonywane automatycznie i przechowywane poza głównym serwerem. Sprawdź też, jak szybko da się przywrócić stronę, bo sama kopia bez przetestowanej procedury odtwarzania niewiele daje.</p>
 
               <h3>Lokalizacja serwera i wsparcie</h3>
-              <p>Jeśli Twoi klienci są w Polsce, serwer lub węzeł CDN blisko nich skraca czas odpowiedzi. Przy danych osobowych z formularzy zwróć uwagę, gdzie dostawca je przetwarza i czy zawiera umowę powierzenia.</p>
+              <p>Jeśli Twoi klienci są w Polsce, serwer lub węzeł CDN blisko nich skraca czas odpowiedzi. Przy danych osobowych z formularzy zwróć uwagę, gdzie dostawca je przetwarza i czy podpisze z Tobą umowę powierzenia przetwarzania danych.</p>
               <p>Przy wyborze zwróć uwagę na trzy rzeczy: czas reakcji wsparcia, możliwość zwiększenia zasobów bez migracji i dostęp do logów serwera. Hosting strony internetowej, który zawodzi w dniu startu kampanii, kosztuje więcej niż różnica w abonamencie.</p>
 
               <h2 id="seo">Jak zadbać o SEO strony od pierwszego dnia?</h2>
@@ -411,7 +415,7 @@ export default async function ArtykulLandingPage({ params }) {
               <p>Zapytaj też, kto będzie właścicielem domeny, kodu i konta analitycznego. Tani landing page, którego nie możesz przenieść do innego dostawcy, bywa najdroższy w dłuższym okresie.</p>
 
               <h3>Punkt odniesienia z naszego cennika</h3>
-              <p>W <Link href="/cennik-pozycjonowania">cenniku AI SEO Company</Link> strona firmowa w Next.js kosztuje od 5 900 zł netto, a samodzielny audyt SEO od 1 490 zł netto. Pakiet Booster Pack, od 2 500 zł netto miesięcznie przy umowie na minimum 3 miesiące, obejmuje nową stronę WWW za 0 zł w pakiecie oraz certyfikat SSL, serwer i opiekę techniczną.</p>
+              <p>W <Link href="/cennik-pozycjonowania">cenniku AI SEO Company</Link> strona firmowa w Next.js kosztuje od 5 900 zł netto, a samodzielny audyt SEO od 1 490 zł netto. Pakiet Booster Pack, 2 500 zł netto miesięcznie przy umowie na minimum 3 miesiące, obejmuje nową stronę WWW za 0 zł w pakiecie oraz certyfikat SSL, serwer i opiekę techniczną.</p>
               <p>Landing page nie ma w cenniku osobnej pozycji, dlatego najprościej opisać cel i zakres w <a href="#kontakt">formularzu wyceny</a>. Zanim zdecydujesz, czy wydać budżet na płatny ruch, czy na pozycjonowanie, przeczytaj też porównanie <Link href="/blog/agencja-seo-czy-google-ads">agencja SEO czy Google Ads</Link>.</p>
 
               <h2 id="bledy">Jakich błędów unikać przed publikacją i po niej?</h2>

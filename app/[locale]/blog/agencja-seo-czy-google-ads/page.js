@@ -295,7 +295,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
 
               <h3>Wynik jakości</h3>
               <p>Wynik jakości (Quality Score) to ocena w skali od 1 do 10 przypisywana do słowa kluczowego. Składa się z trzech elementów: oczekiwanego współczynnika klikalności (CTR), trafności reklamy i jakości strony docelowej. Google zaznacza, że to narzędzie diagnostyczne, a nie bezpośredni składnik aukcji, więc traktuj go jako wskazówkę, co poprawić, a nie jako cel sam w sobie.</p>
-              <p>Tu widać pierwszy punkt styku z SEO. Szybka, czytelna i trafna strona docelowa pomaga zarówno w wynikach organicznych, jak i w ocenie jakości reklam.</p>
+              <p>Tu widać pierwszy punkt styku z SEO. Szybka, czytelna i trafna strona docelowa pomaga zarówno w wynikach organicznych, jak i w ocenie jakości reklam. Jak ją zaplanować, od treści i wyboru CMS po hosting i koszty, opisujemy w poradniku o <Link href="/blog/landing-page-tworzenie-cms-hosting-cena">tworzeniu landing page</Link>.</p>
 
               <h2 id="typy-kampanii">Jakie typy kampanii Google Ads warto znać?</h2>
               <p>Kampanie Google Ads różnią się miejscem wyświetlania, formatem i celem. Poniższa tabela opiera się na opisie typów kampanii w Centrum pomocy Google Ads (stan na 18.11.2026) i obejmuje te, z którymi firmy spotykają się najczęściej. Google rozwija ofertę, więc w koncie możesz zobaczyć też węższe typy, a nazwy w interfejsie mogą się różnić.</p>
