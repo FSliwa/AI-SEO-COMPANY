@@ -14,8 +14,9 @@
 // 9.11.2026: prop locale ('pl' | 'en'); wersja EN (/en/tools) ma teksty w tym pliku (TEKSTY.en) i w lib/narzedzia.en.js.
 // 12.11.2026 (hub-obrazy): każda karta narzędzia ma miniaturę wyniku (WebP 720x450, lazy, alt i podpis
 // z lib/narzedziaObrazy.js), bo hub miał 0 obrazów wobec mediany 39 u konkurentów (A2).
+// 18.11.2026 (mockupy): miniatury to ilustracje wyniku z Figmy (WebP 720, 1080 i 1440 px przez srcSet, zwykły <img>
+// zamiast next/image, żeby gotowe pliki szły bez drugiej kompresji); podpis „Podgląd wyniku (przykładowe dane)”.
 
-import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -154,7 +155,8 @@ const TEKSTY = {
 };
 
 const malyTekst = { fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--color-text-main)', margin: '0.5rem 0 0' };
-const miniatura = { display: 'block', width: '100%', height: 'auto', aspectRatio: '16 / 10', borderRadius: '16px', border: '1px solid var(--color-border)', background: 'var(--color-bg-surface)' };
+// Szerokość ramki miniatury: 1 kolumna do 699 px (ekran minus 80 px), 2 kolumny do 1199 px (ok. 42% ekranu), dalej stałe 504 px.
+const ROZMIARY_MINIATURY = '(max-width: 699px) calc(100vw - 80px), (max-width: 1199px) 42vw, 504px';
 const podpisMiniatury = { fontSize: '0.8rem', lineHeight: 1.4, color: 'var(--w-tusz-2)', margin: '0.4rem 0 0' };
 
 function Karta({ karta, t, locale, i = 0 }) {
@@ -162,13 +164,15 @@ function Karta({ karta, t, locale, i = 0 }) {
   // Karty narzędzi stoją pod H3 grupy (Z-H6), więc ich nazwa to H4; karty szablonów stoją pod H2.
   const Naglowek = narzedzie ? 'h4' : 'h3';
   // hub-obrazy (12.11.2026): miniatura wyniku nad nazwą narzędzia (lib/narzedziaObrazy.js), pod pierwszym ekranem → lazy.
+  // mockupy (18.11.2026): gotowe pliki 720w / 1080w / 1440w z Figmy; width/height trzymają proporcję 16:10 (bez CLS).
   const obraz = narzedzie ? obrazKarty(karta.id, locale) : null;
   return (
     <article className={`${st.kartaHuba}${narzedzie ? '' : ` ${st.kartaSzablonu}`}`} style={{ '--i': i % 6 }}>
       {obraz ? (
         <figure className={st.miniatura}>
           <div className={st.miniaturaRamka}>
-            <Image src={obraz.src} alt={obraz.alt} width={obraz.width} height={obraz.height} sizes="(max-width: 700px) calc(100vw - 72px), (max-width: 1100px) 50vw, 540px" loading="lazy" />
+            {/* eslint-disable-next-line @next/next/no-img-element -- pliki WebP w trzech szerokościach podajemy wprost (srcSet), bez optymalizatora */}
+            <img src={obraz.src} srcSet={obraz.srcSet} sizes={ROZMIARY_MINIATURY} alt={obraz.alt} width={obraz.width} height={obraz.height} loading="lazy" decoding="async" />
           </div>
           <figcaption style={podpisMiniatury}>{obraz.podpis}</figcaption>
         </figure>
