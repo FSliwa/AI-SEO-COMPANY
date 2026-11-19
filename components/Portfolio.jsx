@@ -106,13 +106,13 @@ const realizedWebsites = [
   }
 ];
 
-/* Dziewiec kafelkow: zrzuty pierwszego ekranu stron klientow i wlasnej
+/* Dziesiec kafelkow: zrzuty pierwszego ekranu stron klientow i wlasnej
    strony agencji (szerokosc 1200 px, wysokosci 520-970 px zaleznie od
    zrzutu). Dane z Search Console sa wyzej jako wykresy kart „Wybrane
    realizacje”, dlatego paneli GSC (kiedys 5 kafli) w scianie juz nie ma;
    pliki public/projects/gsc/*.webp zostaja jako wejscie skryptu
-   scripts/wykresy-gsc.py. Zrzuty 19.11.2026 (dziewiec kafli po wstrzymaniu kafla Babushkina Academy): 1440x900 CSS px, DPR 2, krop
-   i skalowanie do 1200 px w Figmie, WebP ok. 70-90 KB. Nazwa pliku to klucz
+   scripts/wykresy-gsc.py. Zrzuty 19.11.2026 (dziesiec kafli; kafel Babushkina Academy dolozony 19.11.2026 po zgodzie klienta): 1440x900 CSS px, DPR 2, krop
+   i skalowanie do 1200 px (Figma; kafel Babushkina: PIL, ta sama skala), WebP ok. 70-90 KB. Nazwa pliku to klucz
    kafla w stosyDlaKolumn - przy kazdej zmianie pliku zmien tez klucz tam. */
 const MOSAIC = [
 { src: '/projects/mosaic/elkat-a-v2.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
@@ -131,7 +131,10 @@ const MOSAIC = [
 { src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/mosaic/frazy-a.webp', w: 1200, h: 783,
     alt: 'Podstrona Frazy Studio – biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
-    altEn: 'Frazy Studio page – an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' }
+    altEn: 'Frazy Studio page – an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
+{ src: '/projects/mosaic/andrianna-a.webp', w: 1200, h: 750,
+    alt: 'Sekcja hero strony Babushkina Academy – makijaż permanentny i szkolenia PMU w Warszawie, nagłówek „Beauty with precision” i portret kobiety',
+    altEn: 'Hero section of the Babushkina Academy website – permanent makeup and PMU training in Warsaw, “Beauty with precision” headline and a portrait of a woman' }
 ];
 
 /* Uklady stosow dla 2, 3, 4 i 5 kolumn. Stosy sa wyrownane do DOLU
@@ -139,14 +142,15 @@ const MOSAIC = [
    krawedz, a kontener ja przycina (jak u Ghosta). Klucz = nazwa pliku bez
    rozszerzenia (klucz kafla z wariantem srcEn to nazwa pliku wersji PL).
 
-   Uklad liczony 19.11.2026 przeszukaniem wszystkich podzialow 9 kafli
-   (wysokosc stosu = suma h/w kafli + przerwy ok. 0,06 szerokosci kolumny):
-   5 kolumn: 1 / 2 / 2 / 2 / 2 kafle (9 kafli nie da sie podzielic na pary;
-             samotny Elkat 0,81 to poszarpana krawedz, reszta 1,19-1,39)
-   4 kolumny: 2 / 2 / 3 / 2 kafle, 1,52 / 1,46 / 1,71 / 1,43 (rozrzut 17%)
-   3 kolumny: 3 / 3 / 3 kafle, 2,06 / 2,07 / 2,05 (rozrzut 1%)
-   2 kolumny: 4 / 5 kafli, 3,09 / 3,15 (rozrzut 2%)
-   Pojedynczy kafel tworzy stos tylko przy 5 kolumnach.
+   Uklad liczony 19.11.2026 przeszukaniem wszystkich podzialow 10 kafli
+   (wysokosc stosu = suma h/w kafli + przerwy ok. 0,06 szerokosci kolumny),
+   bez stosu z jednym kaflem, kolejnosc kolumn naprzemienna (nizszy/wyzszy):
+   5 kolumn: 2 / 2 / 2 / 2 / 2 kafle, 1,30 / 1,43 / 1,29 / 1,41 / 1,31 (rozrzut 9%)
+   4 kolumny: 2 / 3 / 2 / 3 kafle, 1,57 / 1,91 / 1,46 / 1,87 (rozrzut 23%:
+              minimum dla 10 kafli w 4 kolumnach bez samotnego kafla)
+   3 kolumny: 3 / 4 / 3 kafle, 2,21 / 2,47 / 2,19 (rozrzut 12%)
+   2 kolumny: 5 / 5 kafli, 3,46 / 3,46 (rozrzut 0%)
+   Pojedynczy kafel nie tworzy stosu w zadnym wariancie.
 
    UWAGA - pulapka, ktora juz raz zadziala: uklady NIE czytaja tablicy MOSAIC
    tylko te sztywne listy kluczy. Kafel dopisany do MOSAIC, a nie do listy,
@@ -157,26 +161,26 @@ const MOSAIC = [
    trzymaj listy zgodne z MOSAIC: nowy kafel dopisz do wszystkich czterech. */
 const UKLADY_STOSOW = {
   5: [
-    ['elkat-a-v2'],
-    ['mad-a-v2', 'own-hero-pl4'],
-    ['ase-a-v4', 'tql-a-v2'],
-    ['sta-a-v4', 'frazy-a'],
-    ['own-blog-pl8', 'fix-a-v2'],
+    ['elkat-a-v2', 'fix-a-v2'],
+    ['tql-a-v2', 'sta-a-v4'],
+    ['mad-a-v2', 'ase-a-v4'],
+    ['own-blog-pl8', 'frazy-a'],
+    ['own-hero-pl4', 'andrianna-a'],
   ],
   4: [
-    ['elkat-a-v2', 'frazy-a'],
-    ['mad-a-v2', 'tql-a-v2'],
-    ['own-hero-pl4', 'ase-a-v4', 'fix-a-v2'],
-    ['sta-a-v4', 'own-blog-pl8'],
+    ['elkat-a-v2', 'mad-a-v2'],
+    ['own-hero-pl4', 'ase-a-v4', 'andrianna-a'],
+    ['tql-a-v2', 'own-blog-pl8'],
+    ['sta-a-v4', 'fix-a-v2', 'frazy-a'],
   ],
   3: [
-    ['elkat-a-v2', 'mad-a-v2', 'fix-a-v2'],
-    ['own-hero-pl4', 'sta-a-v4', 'frazy-a'],
-    ['ase-a-v4', 'tql-a-v2', 'own-blog-pl8'],
+    ['elkat-a-v2', 'frazy-a', 'andrianna-a'],
+    ['own-hero-pl4', 'ase-a-v4', 'own-blog-pl8', 'fix-a-v2'],
+    ['mad-a-v2', 'tql-a-v2', 'sta-a-v4'],
   ],
   2: [
-    ['elkat-a-v2', 'mad-a-v2', 'tql-a-v2', 'own-blog-pl8'],
-    ['own-hero-pl4', 'ase-a-v4', 'sta-a-v4', 'fix-a-v2', 'frazy-a'],
+    ['elkat-a-v2', 'mad-a-v2', 'own-hero-pl4', 'fix-a-v2', 'frazy-a'],
+    ['ase-a-v4', 'tql-a-v2', 'sta-a-v4', 'own-blog-pl8', 'andrianna-a'],
   ],
 };
 
