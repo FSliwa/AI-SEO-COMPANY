@@ -1313,13 +1313,6 @@ section#contact.contact {
   }
 }
 
-@media (max-width: 600px) {
-
-  /* Na telefonie nazwy klientow ida w dwa rzedy, a pas chmur na grafice ma
-     tylko ~80 px - drugi rzad wypadal na ciemne gory. Mgielny pas pod nazwami. */
-
-}
-
 @media (prefers-reduced-motion: reduce) {
   .w-przycisk,
   .pricing-card {
@@ -2458,110 +2451,16 @@ main:has(.article-content) {
   z-index: 0;
 }
 
-.hero .hero-en-bg {
-  z-index: 1;
-}
-
-.hero .hero-en-orb {
-  background: transparent !important;
-}
-
 /* Winieta z produkcji byla ciemna pod bialy tekst; tu rozjasnienie pod jasny tekst
    po lewej i u gory, zeby kopia stala na spokojnym tle. */
-.hero .hero-overlay,
-.hero .hero-overlay--en {
+.hero .hero-overlay {
   background: linear-gradient(180deg, rgba(253, 249, 244, 0.72) 0%, rgba(253, 249, 244, 0.2) 34%, rgba(253, 249, 244, 0) 60%) !important;
   z-index: 2;
-}
-
-.hero .hero-en-copy :is(h1, p, .hero-en-cta-secondary) {
-  text-shadow: 0 1px 18px rgba(253, 249, 244, 0.85) !important;
-}
-
-.hero .hero-en-title-display {
-  color: var(--w-tusz) !important;
-}
-
-.hero .hero-en-lead {
-  color: var(--w-tusz) !important;
-}
-
-.hero .hero-en-body {
-  color: var(--w-tusz-2) !important;
-}
-
-.hero .hero-en-arc-line {
-  fill: var(--w-tusz-2) !important;
-}
-
-/* Chromatyczne "duchy" liter na luku (blekit i pomarancz obok tekstu) wygladaly na
-   ciemnym tle jak poswiata, na jasnym jak rozmazany druk - na scenie z makiety
-   zostaje sam tekst. Wyroznione frazy dalej w pomaranczowym gradiencie sceny. */
-.hero .hero-en-arc-ghost,
-.hero .hero-arc-scan {
-  display: none !important;
-}
-
-.hero .hero-en-cta {
-  background: var(--w-pomarancz-przycisk) !important;
-  color: #FFFFFF !important;
-}
-
-.hero .hero-en-cta-secondary {
-  color: var(--w-tusz) !important;
-  border-color: var(--w-tusz) !important;
-}
-
-.hero .hero-en-cta-secondary:hover {
-  color: #FFFFFF !important;
 }
 
 .hero :focus-visible,
 body:has(.hero) .header:not(.scrolled) :focus-visible {
   outline-color: var(--w-pomarancz) !important;
-}
-
-/* Sygnal (fale i pakiety z punktu nadawania) usuniety 11.11.2026 razem z lukami na grafice tla. */
-
-/* ==========================================================================
-   HERO v5 (11.11.2026): mgla (samolot usuniety 18.11.2026), w ktorej znika robot 3D
-   --------------------------------------------------------------------------
-   Prosba Filipa: dol postaci 3D ma sie wtapiac w chmury (wczesniej konczyl sie
-   twarda krawedzia sekcji i prostokatem sceny), a ruch w tle ma pasowac do
-   gor i nieba (zamiast kropkowanej orbity z satelita przez tekst).
-   ========================================================================== */
-
-/* Robot siega do dolu sekcji jak wczesniej, a tylko jego dol wygasa we mgle.
-   Element ma scale(1.12) wokol srodka, wiec procenty maski licza sie od -6 % do
-   106 % wysokosci sekcji: pelna widocznosc do ok. 84 % sekcji, zero na jej dole. */
-@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
-  .hero .hero-en-bg {
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 80%, rgba(0, 0, 0, 0.72) 85%, rgba(0, 0, 0, 0.32) 90%, transparent 94.6%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 80%, rgba(0, 0, 0, 0.72) 85%, rgba(0, 0, 0, 0.32) 90%, transparent 94.6%);
-  }
-}
-
-/* Telefon i okno pionowe: statyczne litery SEO w pasmie sceny (bez 3D). Geometria
-   zmierzona na scenie przy 360, 390 i 430 px: lewa krawedz 16 px od ekranu,
-   szerokosc ok. 70 % pasma, gora na 31,6 % jego wysokosci. */
-.hero-en-bg > .hero-litery-ramka {
-  position: absolute !important;
-  inset: 0;
-  display: none !important;
-}
-
-@media (max-width: 900px), (max-aspect-ratio: 1/1) {
-  .hero-en-bg > .hero-litery-ramka {
-    display: block !important;
-  }
-
-  .hero-litery {
-    position: absolute;
-    left: 8.6%;
-    top: 31.6%;
-    width: 69.8%;
-    height: auto;
-  }
 }
 
 /* Mgla nad dolem sceny: gesty rdzen pod postacia (prawy dol) i trzy warstwy
@@ -2680,14 +2579,8 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   .hero-mgla-chmury > span:nth-child(3) { animation: w-dryf 260s linear infinite; }
 }
 
-/* Hero v4: drugi przycisk z jasnym tlem (stoi na gorach), na telefonie mgla pod kopia */
-.hero .hero-en-cta-secondary {
-  background: rgba(253, 249, 244, 0.86) !important;
-}
-
 @media (max-width: 900px), (max-aspect-ratio: 1/1) {
-  .hero .hero-overlay,
-  .hero .hero-overlay--en {
+  .hero .hero-overlay {
     background: linear-gradient(180deg, rgba(253, 249, 244, 0.55) 0%, rgba(253, 249, 244, 0.1) 30%, rgba(253, 249, 244, 0) 34%, rgba(253, 249, 244, 0) 60%, rgba(253, 249, 244, 0.6) 70%, rgba(253, 249, 244, 0.8) 90%, rgba(253, 249, 244, 0.35) 100%) !important;
   }
 }
@@ -3585,34 +3478,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   .hero-klient--ai { width: 34vw; }
   .hero-klient--st { width: 34vw; }
 
-  /* Litery SEO: widoczny napis od 20 px do 20 px (350 px na 390). Pasmo ma
-     scale(1,05) wokol prawej krawedzi, wiec w ukladzie przed skalowaniem:
-     lewa = 100% - (100% - 20px) / 1,05, szerokosc = (100% - 40px) / 1,05.
-     Gora bez zmian (31,6 %), litery rosna w dol. */
-  .hero-litery {
-    left: calc(100% - (100% - 20px) / 1.05);
-    width: calc((100% - 40px) / 1.05);
-  }
-
-  /* Wyzsze litery: o tyle rosnie rzad pod literami i cala sekcja (wzory
-     skopiowane z globals.css, doliczone: wysokosc liter wiekszych niz dotad =
-     9,11 vw - 13,64 px). Pasek klientow stoi poza hero (HeroKlienci). */
-  .hero.hero--en {
-    --m-lit-d: calc(9.11vw - 3.64px);
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px + var(--m-lit-d)) !important;
-  }
-
-  html[lang="en"] .hero.hero--en {
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px + var(--m-lit-d)) !important;
-  }
-
-  .hero-en-copy {
-    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px)) calc(24px + var(--m-band-h) * 0.2867 + var(--m-lit-d)) 1fr;
-  }
-
-  html[lang="en"] .hero-en-copy {
-    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px)) calc(24px + var(--m-band-h) * 0.2867 + var(--m-lit-d)) 1fr;
-  }
+  /* 19.11.2026: stala wysokosc hero z czasow liter SEO usunieta; hero v8 ma wysokosc z tresci (components/Hero.css). */
 }
 
 /* ==========================================================================
@@ -3653,15 +3519,6 @@ article:has(+ section.contact) {
    - Wizytowka Google: padding-top hero z inline (136 px) przegrywa z !important
      z globals.css (56 px na telefonie), przez co eyebrow siedzial na okruszkach.
    ========================================================================== */
-@media (max-width: 767px) {
-  .hero-en-bg {
-    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + 18px - var(--m-band-h) * 0.3233);
-  }
-
-  html[lang="en"] .hero-en-bg {
-    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + 18px - var(--m-band-h) * 0.3233);
-  }
-}
 
 @media (max-width: 768px) {
   .breadcrumbs {
@@ -3772,7 +3629,7 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
    Nic w tym bloku nie dziala ponizej 1600 px (uklady <= 1440 bez zmian).
    ========================================================================== */
 @media (min-width: 1600px) and (min-aspect-ratio: 1/1) {
-  .hero.hero--en {
+  .hero.hero--narz {
     --hero-h: clamp(700px, 100vh, 1000px);
     --hero-scena: min(100%, calc(var(--hero-h) * 1.78));
     /* inline style sekcji ma minHeight: 100vh, a min-height wygrywa z max-height */
@@ -3780,7 +3637,7 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
   }
 
   /* Boki poza scena: niebo -> mgla (kolory z krawedzi grafiki tla). */
-  .hero.hero--en::before {
+  .hero.hero--narz::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -3789,21 +3646,11 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
     background: linear-gradient(180deg, rgb(250, 241, 237) 0%, rgb(249, 241, 236) 55%, rgb(246, 238, 232) 78%, rgb(242, 233, 227) 100%);
   }
 
-  .hero .hero-tlo-sceny,
-  .hero .hero-en-bg {
+  .hero .hero-tlo-sceny {
     left: 50%;
     right: auto;
     width: var(--hero-scena);
     translate: -50% 0;
-  }
-
-  /* Scena 3D: poziome gasniecie krawedzi (obiekt wchodzacy z prawej nie jest
-     ucinany twardo w srodku strony) razem z istniejaca maska dolu. */
-  .hero .hero-en-bg {
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 88%, transparent 100%), linear-gradient(180deg, #000 0%, #000 80%, rgba(0, 0, 0, 0.72) 85%, rgba(0, 0, 0, 0.32) 90%, transparent 94.6%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 88%, transparent 100%), linear-gradient(180deg, #000 0%, #000 80%, rgba(0, 0, 0, 0.72) 85%, rgba(0, 0, 0, 0.32) 90%, transparent 94.6%);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
   }
 
   /* Miekkie krawedzie sceny grafiki tla (nie ma twardego pionowego szwu). */
@@ -3835,7 +3682,7 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
     -webkit-mask-image: none;
     mask-image: none;
   }
-  .hero.hero--en::before { content: none; }
+  .hero.hero--narz::before { content: none; }
 }
 
 /* ==========================================================================
@@ -3896,13 +3743,10 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
 }
 
 /* Podtytul H1 (pomaranczowy): ciemniejszy odcien dla kontrastu AA (4,5:1+) na jasnej mgle. */
-.hero .hero-en-title-sub {
-  color: #B3421D;
-}
 
 /* Szeroki uklad. */
 @media (min-width: 901px) and (min-aspect-ratio: 1/1) {
-  .hero.hero--en {
+  .hero.hero--narz {
     --hero-h: clamp(720px, 100vh, 1000px);
     --hero-up: calc(var(--hero-h) * 0.06);
     --hero-lewa: max(1.5rem, calc(50vw - 596px));
@@ -3910,161 +3754,22 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
     min-height: var(--hero-h) !important;
   }
 
-  /* Scena wyzej o 6 % wysokosci: pod literami miesci sie caly tekst. Kanwa
-     ma scale(1,12), wiec zapas 6 % u dolu pokrywa to przesuniecie. */
-  .hero-en-bg {
-    transform: translate(var(--hero-pan, 0px), calc(var(--hero-up) * -1)) scale(1.12);
-  }
-
-  .hero .hero-overlay,
-  .hero .hero-overlay--en {
+  .hero .hero-overlay {
     background:
       linear-gradient(180deg, rgba(253, 249, 244, 0.7) 0%, rgba(253, 249, 244, 0) 22%),
       radial-gradient(62% 40% at 32% 86%, rgba(250, 242, 236, 0.6) 0%, rgba(250, 242, 236, 0) 100%) !important;
   }
 
-  .hero-en {
-    padding-left: max(1.5rem, calc(50% - var(--hero-h) * 0.572 + var(--hero-pan, 0px)));
-    padding-right: 1.5rem;
-  }
-
   /* Kolumna: pod literami, od najwiekszego do najmniejszego. */
-  .hero-en-copy {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    grid-template-rows: none;
-    padding-top: calc(var(--hero-h) * 0.653 - var(--hero-up));
-    gap: calc(var(--hero-h) * 0.011);
-  }
-
-  .hero-en-top,
-  .hero-en-bottom {
-    display: contents;
-  }
-
-  .hero-en-copy :is(.hero-en-title, .hero-en-lead, .hero-en-body, .hero-en-actions) {
-    max-width: calc(var(--hero-h) * 0.975);
-  }
-
-  .hero-en-title { order: 1; }
-  .hero-en-lead { order: 2; }
-  .hero-en-body { order: 3; }
-  .hero-en-actions { order: 4; margin-top: calc(var(--hero-h) * 0.012); }
-
-  .hero .hero-en-title-display {
-    font-size: clamp(2rem, calc(var(--hero-h) * 0.05), 3.6rem);
-    line-height: 1.06;
-  }
-
-  .hero .hero-en-title-sub {
-    font-size: clamp(1.05rem, calc(var(--hero-h) * 0.0245), 1.8rem);
-    line-height: 1.25;
-  }
-
-  .hero .hero-en-lead {
-    font-size: clamp(0.95rem, calc(var(--hero-h) * 0.0205), 1.5rem);
-    line-height: 1.5;
-  }
-
-  .hero .hero-en-body {
-    font-size: clamp(0.9rem, calc(var(--hero-h) * 0.0165), 1.25rem);
-    line-height: 1.58;
-  }
-
-  .hero .hero-en-cta,
-  .hero .hero-en-cta-secondary {
-    font-size: clamp(0.9375rem, calc(var(--hero-h) * 0.0165), 1.2rem);
-    min-height: clamp(44px, calc(var(--hero-h) * 0.05), 56px);
-    padding: 0.7rem 1.3rem;
-  }
-
-  /* Wejscie tekstu: patrz blok "Wejscie tekstu hero" nizej (19.11.2026, hero-v7). Przyciski
-     na szerokim ukladzie widac od pierwszej klatki (CTA nad zagieciem). */
-  .hero-en-copy :is(.hero-en-title, .hero-en-actions),
-  .hero-en-copy.is-copy-in :is(.hero-en-title, .hero-en-actions) {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
-
-  .hero-en-body-wrap {
-    order: 3;
-    max-width: calc(var(--hero-h) * 0.975);
-  }
-}
-
-/* ==========================================================================
-   Wejscie tekstu hero (hero-v7): H1, podtytul, zdanie wstepne i akapit jedna
-   choreografia. Czysty CSS od pierwszego malowania (bez czekania na hydracje
-   i scene 3D). Kolejnosc: H1 (0 ms), podtytul (70), zdanie (140), akapit (210);
-   690 ms, ostatni konczy sie po 210+690 = 900 ms. Ta sama krzywa i dystans (26 px) co
-   heroCopyRise w globals.css. Tekst jest w HTML z serwera, animuje sie tylko
-   przezroczystosc i przesuniecie. Przyciski poza sekwencja (szeroki uklad:
-   widoczne od razu; waski: wchodza jak dotad po hydracji).
-   ========================================================================== */
-.hero-en-body-wrap {
-  width: 100%;
-}
-
-/* Akapit lub jego wersja lukowa (HeroArcText) leza w stalym opakowaniu, ktore
-   sie animuje: podmiana <p> na SVG po hydracji nie restartuje wejscia. */
-.hero .hero-en-copy .hero-en-body-wrap > .hero-en-body {
-  opacity: 1;
-  transform: none;
-  animation: none;
-}
-
-/* Linie akapitu lukowego bez wlasnego wipe'a (wchodzily dopiero po scenie). */
-section.hero .hero-en-copy .hero-en-arc-line {
-  clip-path: none;
-  animation: none;
 }
 
 /* Naglowek jest widoczny, animuja sie jego dwa wiersze. */
-section.hero .hero-en-copy .hero-en-title {
-  opacity: 1;
-  transform: none;
-  animation: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  section.hero .hero-en-copy .hero-en-title-display,
-  section.hero .hero-en-copy .hero-en-title-sub,
-  section.hero .hero-en-copy .hero-en-lead,
-  section.hero .hero-en-copy .hero-en-body-wrap {
-    animation:
-      heroCopyRise 690ms cubic-bezier(0.22, 1, 0.36, 1) both,
-      heroCopyFade 690ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  section.hero .hero-en-copy .hero-en-title-sub { animation-delay: 70ms; }
-  section.hero .hero-en-copy .hero-en-lead { animation-delay: 140ms; }
-  section.hero .hero-en-copy .hero-en-body-wrap { animation-delay: 210ms; }
-
-  /* Pulsujaca poswiata dwoch linii najblizej liter zostaje jak byla. */
-  section.hero .hero-en-copy .hero-en-arc-line--hot {
-    animation: heroGlowPulse 5.5s ease-in-out 2s infinite;
-  }
-}
-
-/* Lead i body: stan spoczynku widoczny (bez ruchu i bez bramki sceny). */
-section.hero .hero-en-copy .hero-en-lead,
-section.hero .hero-en-copy .hero-en-body-wrap {
-  opacity: 1;
-  transform: none;
-}
 
 /* Telefon i okno pionowe: litery SEO sa statycznym obrazem w pasmie. Maska z
    globals.css (gasniecie od 61 % pasma, uzasadnione nogami robota 3D) ucinala dol
    liter (zrzut 4). Tu nie ma robota, wiec maski nie ma, a mgla zaczyna sie pod
    literami (nie nachodzi na nie). */
 @media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
-  .hero-en-bg {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
 
   .hero-mgla,
   .hero-mgla-przod {
@@ -4137,15 +3842,8 @@ main:not(:has(.gory-oferta)) {
   --w-h2-sub: clamp(1.75rem, 1rem + 2vw, 2.8rem);    /* 28-44,8 px: kazdy H2 sekcji */
   --w-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);    /* 20-24 px */
 }
-main h2:not(.hero *):not(.hero-en-copy *):not(.pricing-card *):not(.portfolio-title):not([class*="tlo-gory"]) {
-  text-wrap: balance;
-}
 main :is(h1, h2, h3):not(.hero *) { text-wrap: balance; }
 main :is(p, li):not(.hero *) { text-wrap: pretty; }
-main section :is(h2)[style*="font-size"]:not(.hero *):not(.pricing-card *):not(.tlo-gory-hero *):not(.hero-en-copy *) {
-  font-size: var(--w-h2-sub) !important;
-  line-height: 1.12 !important;
-}
 main section :is(h3)[style*="font-size"]:not(.hero *):not(.pricing-card *):not(.sz-hero *) {
   font-size: var(--w-h3) !important;
 }

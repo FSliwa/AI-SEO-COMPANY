@@ -57,32 +57,17 @@ import { metadataDe, hreflangDe } from '@/lib/stronyDe';
 export default async function Home({ params }) {
   const { locale } = await params;
   if (locale === 'de') return <HomeDe />;
-  // BYL TU: ReactDOM.preload('/scene.splinecode.br', { fetchPriority: 'high' }).
-  // Usuniete 22.09.2026 po pomiarze na produkcji. Preload jest wskazowka dla
-  // przegladarki wystawiana przy parsowaniu HTML - NIE wie nic o viewporcie,
-  // wiec bramka telefonowa w Hero.jsx (ktora blokuje tylko MONTOWANIE sceny)
-  // go nie dotyczyla: telefon i tak ciagnal 4,8 MB z najwyzszym priorytetem.
-  // Zmierzone na zywej stronie: LCP 33,3 s, performance 31/100 na mobile,
-  // a elementem LCP byl tekst banera cookies - czyli uzytkownik z telefonu
-  // czekal ~33 s, zeby MOC kliknac zgode, bez ktorej tag konwersji nie odpala.
-  //
-  // Bez preloadu scena startuje z useEffect w Hero.jsx: na desktopie od razu,
-  // na telefonie dopiero w czasie bezczynnosci. Desktop traci ulamek sekundy
-  // na starcie sceny, mobile odzyskuje kilkanascie sekund do LCP.
-  //
-  // Gdyby wracac do preloadu: tylko przez <link media="(min-width: 901px)">,
-  // bo ReactDOM.preload nie przyjmuje `media`. Uwaga - React 19 hoistuje
-  // znaczniki zasobow do <head> wlasnym mechanizmem i literal w JSX wychodzil
-  // w HTML dwa razy.
+  // Hero bez sceny 3D (19.11.2026, hero v8): zadnego preloadu sceny ani runtime'u Spline.
+  // Dawniejsze preloady sceny (4,8 MB) wylaczono juz 22.09.2026, bo wydluzaly LCP na telefonie do ~33 s.
   return (
     <>
       <Header />
       {/* 6.11.2026 (wyglad z makiety, DESIGN.md): kolejnosc sekcji jak w makiecie -
-          hero (robot 3D z produkcji na tle sceny z antena, 7.11), oferta na pasmie gor, realizacje,
+          hero (kolumna kafli z narzedziami na tle gor, 19.11), oferta na pasmie gor, realizacje,
           panel, cennik, wiedza, kontakt. Zadna sekcja nie zniknela; zmienila sie tylko kolejnosc
           (oferta przed "Dlaczego my", cennik za panelem klienta) i tla. */}
       <main>
-        <Hero />
+        <Hero locale={locale} />
         <div className="gory-oferta" data-kursor="obraz" data-petla="">
           {/* 7.11.2026: dryfujace chmury na styku hero i oferty (dekoracja, app/wyglad.css). */}
           {/* 11.11.2026: pas mgly w poprzek granicy hero i oferty - przejscie bez szwu. */}

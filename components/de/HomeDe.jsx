@@ -12,10 +12,10 @@ export default function HomeDe() {
   return (
     <>
       <Header />
-      {/* 18.11.2026 (scalenie): ta sama kompozycja hero co PL/EN (components/Hero.jsx, teksty DE w COPY.de),
-          pasek klientow (HeroKlienci) na pasie mgly; dalej sekcje DE bez 3D, bloga i panelu. */}
+      {/* 18.11.2026 (scalenie): ta sama kompozycja hero co PL/EN (components/Hero.jsx, teksty DE w lib/heroNarzedzia.js, 4 kafle z istniejaca strona DE),
+          pasek klientow (HeroKlienci) na pasie mgly; dalej sekcje DE bez bloga i panelu. */}
       <main>
-        <Hero />
+        <Hero locale="de" />
         <div className="gory-oferta" data-kursor="obraz" data-petla="">
           <div className="styk-mgla" aria-hidden="true"><span /><span /></div>
           <div className="chmury-dryf" aria-hidden="true"><span /><span /></div>

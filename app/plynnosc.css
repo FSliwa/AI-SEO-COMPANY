@@ -1,36 +1,4 @@
-/* ==========================================================================
-   PLYNNOSC (18.11.2026) - wydajnosc przewijania i odpornosc hero.
-   Osobny plik, zeby nie mieszac sie z wyglad.css (uklad hero, menu).
-   Zasady: bez zmiany wygladu; tylko transform/opacity; praca poza ekranem stoi.
-   ========================================================================== */
-
-/* Plakat sceny 3D: patrz components/Hero.jsx. Siedzi pod kanwa w .hero-en-bg
-   (dziedziczy skale i maske kontenera, wiec lezy tam, gdzie scena). `contain` trzyma
-   wysokosc sceny, tak jak robi to kamera przy szerokich proporcjach. */
-.hero-en-bg > .hero-scena-plakat {
-  position: absolute;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain;
-  object-position: 50% 50%;
-  opacity: 0;
-  pointer-events: none;
-  user-select: none;
-  transition: opacity 0.6s ease;
-}
-
-/* Ladowanie: plakat wchodzi dopiero po 0,9 s - szybka scena nie miga. */
-.hero-en-bg > .hero-scena-plakat.is-on {
-  opacity: 1;
-  transition: opacity 0.6s ease 0.9s;
-}
-
 /* Utrata kontekstu: kanwa jest pusta, plakat od razu. */
-.hero-en-bg > .hero-scena-plakat.is-lost {
-  opacity: 1;
-  transition: opacity 0.15s ease;
-}
 
 /* Puls liczby w "Dlaczego my": ten sam ruch co wczesniej w framer-motion
    (scale 1 -> 1.03 -> 1, 5 s, ease-in-out, w petli), ale na kompozytorze. Petla stoi,
@@ -57,43 +25,43 @@
    przypieloby je do sekcji), hero i pas oferty (nad zgieciem / chmury na styku sekcji).
    Zawartosc zostaje w DOM i w HTML z serwera: wyszukiwanie na stronie, kotwice (#cennik,
    #kontakt) i roboty widza to samo.
-   Zakres: tylko strona glowna (main z .hero--en).
+   Zakres: tylko strona glowna (main z .hero--narz).
    ========================================================================== */
-main:has(> .hero--en) > :is(#why-us, .results, .panel-showcase, .pricing, .w-noc-panele, .contact) {
+main:has(> .hero--narz) > :is(#why-us, .results, .panel-showcase, .pricing, .w-noc-panele, .contact) {
   content-visibility: auto;
 }
 /* Wartosci = wysokosc zawartosci (bez paddingu) zmierzona w przegladarce. */
-main:has(> .hero--en) > #why-us { contain-intrinsic-size: auto 1280px; }
-main:has(> .hero--en) > .results { contain-intrinsic-size: auto 180px; }
-main:has(> .hero--en) > .panel-showcase { contain-intrinsic-size: auto 635px; }
-main:has(> .hero--en) > .pricing { contain-intrinsic-size: auto 1480px; }
-main:has(> .hero--en) > .w-noc-panele { contain-intrinsic-size: auto 2060px; }
-main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 940px; }
+main:has(> .hero--narz) > #why-us { contain-intrinsic-size: auto 1280px; }
+main:has(> .hero--narz) > .results { contain-intrinsic-size: auto 180px; }
+main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 635px; }
+main:has(> .hero--narz) > .pricing { contain-intrinsic-size: auto 1480px; }
+main:has(> .hero--narz) > .w-noc-panele { contain-intrinsic-size: auto 2060px; }
+main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 940px; }
 
 @media (max-width: 1100px) {
-  main:has(> .hero--en) > #why-us { contain-intrinsic-size: auto 1150px; }
-  main:has(> .hero--en) > .results { contain-intrinsic-size: auto 150px; }
-  main:has(> .hero--en) > .panel-showcase { contain-intrinsic-size: auto 900px; }
-  main:has(> .hero--en) > .pricing { contain-intrinsic-size: auto 1550px; }
-  main:has(> .hero--en) > .w-noc-panele { contain-intrinsic-size: auto 1930px; }
-  main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 975px; }
+  main:has(> .hero--narz) > #why-us { contain-intrinsic-size: auto 1150px; }
+  main:has(> .hero--narz) > .results { contain-intrinsic-size: auto 150px; }
+  main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 900px; }
+  main:has(> .hero--narz) > .pricing { contain-intrinsic-size: auto 1550px; }
+  main:has(> .hero--narz) > .w-noc-panele { contain-intrinsic-size: auto 1930px; }
+  main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 975px; }
 }
 
 @media (max-width: 900px) {
-  main:has(> .hero--en) > .results { contain-intrinsic-size: auto 190px; }
-  main:has(> .hero--en) > .panel-showcase { contain-intrinsic-size: auto 2200px; }
-  main:has(> .hero--en) > .pricing { contain-intrinsic-size: auto 2300px; }
-  main:has(> .hero--en) > .w-noc-panele { contain-intrinsic-size: auto 2090px; }
-  main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 1430px; }
+  main:has(> .hero--narz) > .results { contain-intrinsic-size: auto 190px; }
+  main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 2200px; }
+  main:has(> .hero--narz) > .pricing { contain-intrinsic-size: auto 2300px; }
+  main:has(> .hero--narz) > .w-noc-panele { contain-intrinsic-size: auto 2090px; }
+  main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 1430px; }
 }
 
 @media (max-width: 600px) {
-  main:has(> .hero--en) > #why-us { contain-intrinsic-size: auto 1480px; }
-  main:has(> .hero--en) > .results { contain-intrinsic-size: auto 260px; }
-  main:has(> .hero--en) > .panel-showcase { contain-intrinsic-size: auto 1800px; }
-  main:has(> .hero--en) > .pricing { contain-intrinsic-size: auto 3460px; }
-  main:has(> .hero--en) > .w-noc-panele { contain-intrinsic-size: auto 2660px; }
-  main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 1660px; }
+  main:has(> .hero--narz) > #why-us { contain-intrinsic-size: auto 1480px; }
+  main:has(> .hero--narz) > .results { contain-intrinsic-size: auto 260px; }
+  main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 1800px; }
+  main:has(> .hero--narz) > .pricing { contain-intrinsic-size: auto 3460px; }
+  main:has(> .hero--narz) > .w-noc-panele { contain-intrinsic-size: auto 2660px; }
+  main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 1660px; }
 }
 
 /* Warstwy chmur sekcji, ktorych nie widac (data-petla="poza" ustawia PetleWidoczne z zapasem
@@ -110,12 +78,6 @@ main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 940px; }
    Tylko szeroki uklad i ruch dozwolony; bez wsparcia osi dziala zapasowy JS w Hero.jsx. */
 @media (min-width: 901px) and (min-aspect-ratio: 1/1) and (prefers-reduced-motion: no-preference) {
   @supports ((animation-timeline: scroll()) and (animation-range: 0px 233px)) {
-    @keyframes hero-parallax { to { translate: 0 -14px; } }
-    section.hero .hero-en-copy {
-      animation: hero-parallax linear both;
-      animation-timeline: scroll(root block);
-      animation-range: 0px 233px;
-    }
   }
   /* Pauza poswiaty linii (heroGlowPulse) na czas przewijania [data-przewija] zmierzono i ODRZUCONO:
      przy CPU x6 daje 250-280 ms przerwy w prezentacji klatek na starcie przewijania (x1/x4: odstep

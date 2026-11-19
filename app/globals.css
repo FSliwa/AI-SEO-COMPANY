@@ -122,11 +122,6 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
-.hero-en-title,
-.hero-en-title * {
-  text-wrap: wrap;
-}
-
 /* KOTA Ambient Mesh Gradient Blur Overlay */
 body::before {
   content: '';
@@ -737,36 +732,6 @@ section, aside.pricing, aside.contact, aside.why-us {
 #kontakt,
 #contact {
   padding-top: 1.5rem !important;
-}
-
-/* --- 01. Hero Section (Full Viewport Height – KOTA style) --- */
-.hero {
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
-  padding-top: 5rem;
-  padding-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
-  color: #FFFFFF;
-  background-color: #030712;
-  display: flex;
-  align-items: center;
-}
-
-/* Reguly .hero-video-bg usuniete razem z samym <video>: scena Spline jest
-   jedynym tlem sekcji hero, a wideo bylo drugim pelnoekranowym podkladem,
-   ktorego nikt nie widzial pod spodem. Zrodla (black-hole-*.mp4/webm/jpg/webp)
-   usuniete z /public - jedyne pozostale trafienia byly w archiwalnych
-   raportach lhreport*.json, nie w kodzie. */
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(3, 7, 18, 0.1) 0%, rgba(3, 7, 18, 0.55) 85%),
-              linear-gradient(to bottom, rgba(3, 7, 18, 0.3) 0%, rgba(3, 7, 18, 0.75) 100%);
-  z-index: 2;
-  pointer-events: none;
 }
 
 
@@ -1738,58 +1703,7 @@ section, aside.pricing, aside.contact, aside.why-us {
   pointer-events: auto;
 }
 
-/* Generic backdrop mechanics, shared by any section that takes a scene. */
-.scene-backdrop {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Same reasoning as the hero: cursor-driven states need the events, touch
-   devices must keep their scrolling. Anything the section places above this
-   (the call to action here) keeps working – it sits at a higher z-index. */
-@media (hover: hover) and (pointer: fine) {
-  .scene-backdrop {
-    pointer-events: auto;
-  }
-}
-
-.scene-backdrop > *,
-.scene-backdrop canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-}
-
-/* Right-hand half only, faded out before it reaches the copy. The fade also
-   covers the tonal gap between the section's navy and the near-black baked into
-   the scene, so the two never meet at a hard edge. */
-/* Faded on every edge, not just towards the copy. The band is shorter than the
-   scene's composition wants, so without the vertical pair the top and bottom
-   rows of tiles end on a hard cut against the section border. Two gradients
-   composited to an intersection: a pixel shows only where both allow it. */
-.results-scene {
-  left: 38%;
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, #000 26%),
-    linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(90deg, transparent 0%, #000 26%),
-    linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
-  mask-composite: intersect;
-}
-
-/* Narrow screens drop it entirely. A scene keyed to the right-hand 62% has
-   nothing left to show once the copy stacks to full width, and display:none
-   means the observer inside SceneBackdrop never fires – so phones do not
-   download the 1.5 MB runtime for a decoration they would not see. */
-@media (max-width: 900px) {
-  .results-scene {
-    display: none;
-  }
-}
+/* 19.11.2026: mechanika tla ze scena 3D (.scene-backdrop, .results-scene) usunieta razem ze sceną Spline. */
 
 .results-content {
   display: flex;
@@ -2328,20 +2242,6 @@ body.has-cookie-banner .kota-floating-cta {
     width: 44px !important;
     height: 44px !important;
     font-size: 1.1rem !important;
-  }
-
-  /* Hero Section Height & Content Spacing Optimization (Mobile Only) */
-  .hero {
-    height: 65vh !important; /* Reduced to bring partners row closer to SVG */
-    min-height: 480px !important;
-    max-height: 650px !important;
-    padding-top: 4.5rem !important;
-    padding-bottom: 2rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    position: relative !important;
-    overflow: hidden !important;
   }
 
   .hero-partners-row {
@@ -2887,102 +2787,15 @@ body.has-cookie-banner .kota-floating-cta {
   }
 }
 
-/* ---------------------------------------------------------------------------
-   ENGLISH HERO – text-first layout
-
-   Replaces the SVG-plus-overlay treatment on /en only; the Polish hero above is
-   untouched. Two columns on desktop (copy left, 3D stage right), stacked on
-   phones. Every size uses clamp() with an absolute floor, which is the fix for
-   the defect the container-query version had: 1.69cqw resolved to 6px at 375px
-   because cqw scales with the artwork and text has no lower bound in that unit.
-   --------------------------------------------------------------------------- */
-/* The scene sits behind everything in the section and covers it edge to edge.
-   Its own opaque background becomes the section backdrop, which is why the
-   video and starfield are skipped on this locale – they would never be seen. */
-.hero-en-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* The scene has cursor-driven states, which it can only run if the canvas
-   actually receives pointer events. Restricted to devices that have a real
-   cursor: on a touchscreen the same setting hands every swipe over the hero to
-   the WebGL canvas instead of to the page, and the section stops scrolling.
-   The copy sits at z-index 5, so links and text selection are unaffected. */
-@media (hover: hover) and (pointer: fine) {
-  .hero-en-bg {
-    pointer-events: auto;
-  }
-}
-
-.hero-en-bg > *,
-.hero-en-bg canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-}
-
-/* The scene appears the instant its download finishes, which next to copy that
-   eased in a second earlier reads as a glitch rather than an entrance. Same
-   curve and duration as the copy, so the two belong to one system even though
-   they cannot share a clock: the copy must not wait on a 34 MB download, so it
-   is anchored to page load and this to the scene's first frame.
-
-   Until then the canvas is transparent and the section's own black shows – which
-   is the scene's background colour exactly, so there is nothing to notice.
-
-   Opacity only, deliberately: the wide layout carries transform: scale(1.12) on
-   this element and the whole copy-alignment geometry is measured against it, so
-   a keyframe touching transform would quietly break the column. */
-.hero-en-bg canvas {
-  opacity: 0;
-}
-
-.hero-en-bg.is-in canvas {
-  animation: heroSceneIn 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes heroSceneIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-en-bg.is-in canvas {
-    animation: none;
-    opacity: 1;
-  }
-}
-
 /* Scaled just enough to crop the dead grid the scene is composed with – at 1:1
    the section's top and bottom thirds looked abandoned. Centred origin now: the
    copy sits above and below the artwork rather than beside it, so there is
    nothing to steer the lettering away from. */
-@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
-  .hero-en-bg {
-    transform: translateX(var(--hero-pan, 0px)) scale(1.12);
-  }
-}
 
 /* Scrim. Edges only – the copy is pinned to the top and bottom of the section
    and the lettering owns the middle, so the artwork itself needs no cover at
    all. Top stop clears the header, bottom stop the promise line, buttons and
    partner row. */
-.hero-overlay--en {
-  background: linear-gradient(
-    180deg,
-    rgba(3, 7, 18, 0.82) 0%,
-    rgba(3, 7, 18, 0.32) 14%,
-    rgba(3, 7, 18, 0.20) 26%,
-    rgba(3, 7, 18, 0) 33%,
-    rgba(3, 7, 18, 0) 58%,
-    rgba(3, 7, 18, 0.42) 74%,
-    rgba(3, 7, 18, 0.88) 100%
-  );
-  z-index: 2;
-}
 
 /* Copy entrance, matched to the scene rather than picked by feel. Decoded from
    hero .splinecode: its Start timeline opens on a 1500ms delay and its moves run
@@ -2998,10 +2811,6 @@ body.has-cookie-banner .kota-floating-cta {
    Plain CSS rather than the motion library on purpose: it runs without waiting
    for hydration, and the server HTML carries no inline opacity:0 – so a crawler
    that does not execute JavaScript still reads the copy as ordinary text. */
-@keyframes heroCopyRise {
-  from { transform: translateY(26px); }
-  to { transform: none; }
-}
 
 /* Wariant dla grupy NAD literami. Kierunek jest odwrocony celowo: przy wspolnym
    heroCopyRise akapit startowal 26 px nizej, czyli 26 px BLIZEJ liter - z 28 px
@@ -3009,118 +2818,15 @@ body.has-cookie-banner .kota-floating-cta {
    To bylo widac jako "tekst najezdza na animacje". Teraz kazda grupa dojezdza
    do miejsca docelowego ODSUWAJAC sie od artworku: gorna z gory, dolna z dolu.
    Kolizja przestaje byc mozliwa z konstrukcji, nie z dobranego marginesu. */
-@keyframes heroCopyRiseTop {
-  from { transform: translateY(-26px); }
-  to { transform: none; }
-}
-
-@keyframes heroCopyFade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Held at the animation's first frame until the scene reports its own first
-   frame, then both run off the same state change – one movement instead of the
-   copy settling seconds before the 3D turns up.
-
-   The cost is stated plainly because it is real: the copy is the LCP element,
-   and it now waits on a 34 MB download. On a cold visit that measured 10.7s.
-   The failsafe in Hero.jsx releases the copy anyway after 8s so the hero is
-   never permanently blank, and the noscript block in the markup hands it to the
-   finished state when there is no JavaScript at all. The proper fix is upstream:
-   shrink the scene in Spline. */
-.hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
-  opacity: 0;
-  transform: translateY(26px);
-}
 
 /* Klatka zerowa grupy gornej - lustrzana, zeby przed startem animacji tekst
    takze byl odsuniety OD liter, a nie w ich strone. */
-.hero-en-copy :is(.hero-en-lead, .hero-en-body) {
-  transform: translateY(-26px);
-}
-
-/* Bramka .is-copy-in jest OSOBNA od .is-in kanwy i nadaje ja JavaScript
-   dopiero, gdy obiekty sceny najpierw sie PORUSZYLY, a potem stoja nieruchomo
-   ~450 ms (detekcja na pozycjach z getAllObjects w Hero.jsx, petla rAF
-   wspolna z animacja sceny). Zadnych zegarowych opoznien: stale czasowe
-   zawodzily na wolnym GPU (tekst wchodzil, gdy litery jeszcze jechaly przez
-   jego pas) i w karcie w tle (opoznienie CSS uplywalo niewidocznie i tekst
-   pojawial sie w ogole bez animacji). Ta sama bramka obejmuje linie
-   lukowego akapitu nizej - wczesniej mialy wlasna, wczesniejsza (250 ms od
-   pierwszej klatki sceny) i to one najezdzaly na litery podczas wjazdu. */
-.hero-en-copy.is-copy-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
-  animation:
-    heroCopyRise 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroCopyFade 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
 
 /* Grupa nad literami - ten sam czas i ta sama krzywa, przeciwny kierunek. */
-.hero-en-copy.is-copy-in :is(.hero-en-lead, .hero-en-body) {
-  animation-name: heroCopyRiseTop, heroCopyFade;
-}
-
-/* The stagger. Has to carry the same specificity as the shorthand above –
-   written as bare element classes it loses to `.hero-en-copy.is-copy-in :is(...)`,
-   the shorthand resets delay to 0, and all four elements arrive at once. */
-.hero-en-copy.is-copy-in .hero-en-lead { animation-delay: 80ms; }
-.hero-en-copy.is-copy-in .hero-en-body { animation-delay: 200ms; }
-.hero-en-copy.is-copy-in .hero-en-title { animation-delay: 320ms; }
-.hero-en-copy.is-copy-in .hero-en-actions { animation-delay: 440ms; }
 
 /* Przy wylaczonych animacjach tekst nie ma na co czekac: wchodzi od razu
    w stanie koncowym (regula przeniesiona ze starszego, usunietego duplikatu -
    byla tam jedyna rzecza, ktorej nie mial blok zachowany). */
-/* Drugi selektor (05.10.2026): sam pierwszy ma specyficznosc 0,2,0 i przegrywal
-   z regula wejscia `.hero-en-copy.is-copy-in :is(...)` (0,3,0) - w trybie
-   "ogranicz ruch" po nadaniu .is-copy-in tekst i tak wjezdzal z przesunieciem
-   26 px (pomiar: 8 animacji heroCopyRise/RiseTop w toku przy reduce). */
-@media (prefers-reduced-motion: reduce) {
-  .hero-en-copy :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions),
-  .hero-en-copy.is-copy-in :is(.hero-en-lead, .hero-en-body, .hero-en-title, .hero-en-actions) {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-en-bg.is-in canvas {
-    animation: none;
-    opacity: 1;
-  }
-}
-
-/* Scaled just enough to crop the dead grid the scene is composed with – at 1:1
-   the section's top and bottom thirds looked abandoned. Centred origin now: the
-   copy sits above and below the artwork rather than beside it, so there is
-   nothing to steer the lettering away from. */
-@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
-  .hero-en-bg {
-    transform: translateX(var(--hero-pan, 0px)) scale(1.12);
-  }
-}
-
-
-
-/* Stretched to the full section height and pushed apart, so the heading rides
-   the top edge and the promise line the bottom, with the scene's lettering in
-   the gap between them. Top padding clears the fixed header; bottom padding
-   clears the absolutely-positioned partner row. */
-/* Absolutely positioned so it shares one coordinate space with the canvas: both
-   resolve against the section's padding box, which means a percentage here and a
-   percentage of the scene's framing are the same number. As a flex child it was
-   offset by the section's own 5.5rem padding and the two could not be lined up. */
-.hero-en {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  max-width: none;
-  margin: 0;
-  padding: 0 clamp(1.25rem, 3.4vw, 3.5rem);
-  display: flex;
-  flex-direction: column;
-}
 
 /* Three flat children rather than two wrappers: the heading takes margin-top
    auto, which pins it and the buttons after it to the bottom edge while the
@@ -3144,617 +2850,48 @@ body.has-cookie-banner .kota-floating-cta {
    the previous 15.5% did, is exactly what made the copy slide off the lettering
    as soon as the window aspect changed. max() keeps the padding legal on tall,
    narrow desktop windows, where the word runs off both edges anyway. */
-@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
-  /* The section keeps the full viewport height everywhere - shortening it
-     was the wrong lever. The real defect on near-square windows is
-     HORIZONTAL: the word's left edge sits at 50% - 55.1vh, which goes
-     negative once the window is narrower than ~1.13 x its height, so the
-     "S" ran off the left side. --hero-pan is exactly the shortfall (plus a
-     20px margin), clamped to zero, so classic screens are untouched and
-     squarer ones slide the framing right until the word is fully visible.
-     The canvas is a full-viewport box scaled 1.12, so even at maximum pan
-     its edges still overhang the viewport on all four sides: the artwork
-     keeps reaching the right edge and the bottom of the screen, and no
-     black gap can open. */
-  .hero.hero--en {
-    /* PODLOGA WYSOKOSCI (05.10.2026). Cala kompozycja szeroka jest
-       skalibrowana na 1440x900 z zapasem -1,4 px: wiersz tekstu nad literami
-       to calc(30.4% - 28px) wysokosci sekcji, kolumna tekstu to 91,75%
-       wysokosci, a fonty licza sie z SZEROKOSCI okna. Ponizej 900 px
-       wysokosci pudelka kurczyly sie, tekst nie - przy 1366x650 zdanie
-       wstepne wychodzilo 63 px ponad ekran, akapit wchodzil pod naglowek,
-       H1 lamal sie na 3 linie, a przyciski CTA ladowaly POZA sekcja
-       (overflow: hidden), czyli byly nieosiagalne.
 
-       Sekcja nie schodzi wiec ponizej punktu projektowego: ma
-       max(100vh, 900px). Od 900 px w gore to dokladnie 100vh - nic sie nie
-       zmienia. Ponizej uklad zostaje taki jak przy 900 px, a strona po
-       prostu sie przewija. Wszystkie wymiary, ktore byly w vh, licza sie
-       teraz z --hero-h, zeby tekst, litery i pan zostaly zsynchronizowane
-       z realna wysokoscia sekcji, a nie z wysokoscia okna. */
-    --hero-h: max(100vh, 900px);
-    height: var(--hero-h);
-    min-height: var(--hero-h);
-    max-height: var(--hero-h);
-    --hero-pan: max(0px, calc(var(--hero-h) * 0.551 - 50% + 20px));
-  }
 
-  .hero-en {
-    /* Same pan on the copy column, so text and lettering stay locked: when
-       the pan is active both collapse to a flat 20px left margin. */
-    padding-left: max(1.25rem, calc(50% - var(--hero-h) * 0.551 + var(--hero-pan)));
-    padding-right: max(1.25rem, calc(50% - var(--hero-h) * 0.3665 - var(--hero-pan)));
-  }
-
-  /* GORNA GRUPA A NAGLOWEK STRONY (05.10.2026). Szerokosc tej grupy wynika z
-     jednej linii zdania wstepnego (max-content), a jego font liczy sie z
-     szerokosci okna: 16 px przy 1024-1185 px daje kolumne 664 px, w ktorej
-     akapit lamie sie na 6 linii zamiast 5. Grupa jest dosunieta do dolu
-     wiersza, wiec szosta linia wypychala ja w gore - tekst zaczynal sie na
-     51 px i wchodzil 11-14 px pod logo i pigulki naglowka (koniec na 65 px).
-     Kolumna, w ktorej grupa stoi, ma przy podlodze 900 px zawsze >= 826 px,
-     wiec grupa dostaje te sama minimalna szerokosc co przy 1280 px (717 px):
-     akapit wraca do 5 linii, a tekst zaczyna sie ok. 78 px. Od 1280 px w
-     gore grupa jest szersza niz 717 px - tam nic sie nie zmienia. */
-  .hero-en-top {
-    min-width: min(100%, 717px);
-  }
-}
-
-/* The copy layer stretches across the whole section, so it was swallowing every
-   pointer event before the canvas underneath could see one – pointer-events on
-   the scene alone did nothing. Made transparent here and opted back in on the
-   text and controls themselves, which keeps their links and text selection
-   while everything around them reaches the scene. */
-.hero-en {
-  pointer-events: none;
-}
-
-.hero-en-copy > * {
-  pointer-events: auto;
-}
-
-/* Trzy wiersze: wszystko nad literami, pasmo samych liter i wszystko pod nimi.
-   Zmierzona gorna krawedz liter to 30,4% wysokosci sekcji, dolna 63,3%
-   (pomiar skanem pikseli, nie na oko).
-
-   Odstepy sa CELOWO wieksze niz pierwotne 8/16 px. Scena ma wlasna animacje
-   wstepna i jej elementy nie stoja dokladnie tam, gdzie w stanie spoczynku -
-   przy 8 px prześwitu tekst wchodzil na litery za kazdym drgnieciem. Teraz
-   akapit ma 28 px zapasu, a naglowek 30 px. Suma dwoch pierwszych wierszy jest
-   taka sama jak wczesniej powiekszona o te 30 px, wiec pasmo liter zostaje
-   nietkniete tam, gdzie bylo. */
-.hero-en-copy {
-  flex: 1;
-  min-height: 0;
-  display: grid;
-  grid-template-rows: calc(30.4% - 28px) calc(31.8% + 58px) 1fr;
-  align-items: start;
-  justify-items: start;
-}
+/* 19.11.2026 (hero v8): reguly wysokosci i ukladu dawnego hero ze sceną 3D (--hero-h, --m-band-h, wysokosc liczona z liter SEO)
+   usuniete; uklad hero jest w components/Hero.css. */
 
 /* Bottom-aligned in its row, so the gap to the lettering stays 8px whatever the
    paragraph wraps to. */
-.hero-en-top {
-  grid-row: 1;
-  align-self: end;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.hero-en-bottom {
-  grid-row: 3;
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  align-items: flex-start;
-}
-
-
-/* The copy has no scrim panel under it, so it carries its own contrast for the
-   frames where a lit part of the scene drifts behind it. */
-.hero-en-copy :is(h1, p, .hero-en-cta-secondary) {
-  text-shadow: 0 1px 16px rgba(3, 7, 18, 0.9);
-}
-
-.hero-en-title {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.hero-en-title-display {
-  font-size: clamp(2.4rem, 4.8vw, 3.9rem);
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  color: #FFFFFF;
-}
-
-/* The scene renders "SEO" as its centrepiece, in the same accent orange. The
-   headline keeps the word – it is the subject of the sentence, and the scene is
-   a 34 MB network dependency that must not be what makes the H1 grammatical –
-   but stays white, so only one "SEO" on the screen is shouting. The hook is
-   here in case the scene is ever swapped for one without lettering. */
-.hero-en-title-display .hero-en-title-kw {
-  color: inherit;
-}
 
 /* The keyword-bearing half of the H1. Smaller than the display line but still
    well above the readability floor – it is a heading, not a caption. */
-.hero-en-title-sub {
-  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--color-cta);
-}
-
-.hero-en-lead {
-  margin: 0;
-  font-size: clamp(1rem, 1.35vw, 1.2rem);
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.92);
-}
 
 /* Second tier under the promise line: same column, dimmer and a size down, so
    the two read as lead and supporting paragraph rather than one grey block. */
 /* Wide-screen-only connective clauses. They carry no keywords by design: what
    is hidden on a phone is what mobile-first indexing would not read anyway. */
-.hero-en-wide-only {
-  display: none;
-}
-
-@media (min-width: 901px) and (min-aspect-ratio: 1/1) {
-  .hero-en-wide-only {
-    display: inline;
-  }
-}
-
-/* The arc variant is the same element with the same type metrics – HeroArcText
-   reads its computed font and line-height off this rule to lay the SVG out, so
-   the two versions are typographically identical and only the baseline differs. */
-.hero-en-body--arc {
-  width: 100%;
-}
-
-.hero-en-arc-line {
-  fill: rgba(255, 255, 255, 0.72);
-  font: inherit;
-  /* Final letter-spacing comes from the component as --track; the entrance
-     animates from compressed to that value (HUD-style expansion). */
-  letter-spacing: var(--track, 0px);
-}
-
-/* A + B: before the scene's first frame the lines are held masked and
-   compressed; when .is-in lands, each line wipes open left-to-right (from its
-   arc tip towards the flat run) while its tracking expands to target. The
-   negative vertical insets keep the curved tips outside the clip untouched.
-   Staggered by line index, on the same bezier as everything else in this hero. */
-.hero-en-copy .hero-en-arc-line {
-  clip-path: inset(-40% 100% -40% 0);
-}
-
-.hero-en-copy.is-copy-in .hero-en-arc-line {
-  animation:
-    heroLineWipe 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroLineTrack 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: calc(250ms + var(--line-i, 0) * 110ms);
-}
-
-@keyframes heroLineWipe {
-  from { clip-path: inset(-40% 100% -40% 0); }
-  to { clip-path: inset(-40% 0% -40% 0); }
-}
-
-@keyframes heroLineTrack {
-  from { letter-spacing: 0px; }
-  to { letter-spacing: var(--track, 0px); }
-}
 
 /* D: the two lines nearest the lettering breathe – a slow pulse of the same
    orange glow the static ramp already gives them. Values are a superset of the
    inline ramp so the pulse reads as brightening, never as a flicker. */
-.hero-en-copy.is-copy-in .hero-en-arc-line--hot {
-  animation:
-    heroLineWipe 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroLineTrack 1100ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    heroGlowPulse 5.5s ease-in-out 2s infinite;
-}
 
 /* The two custom properties are the cursor-proximity hooks (HeroArcText sets
    them on the nearest line). They must live INSIDE the keyframes too: on the
    two hot lines this animation runs forever and a running animation beats any
    inline filter, so a hover written only inline would never show there. */
-@keyframes heroGlowPulse {
-  0%, 100% { filter: brightness(var(--nb, 1)) drop-shadow(0 0 calc(12px * var(--ng, 1)) rgba(216, 90, 48, 0.3)); }
-  50% { filter: brightness(var(--nb, 1)) drop-shadow(0 0 calc(22px * var(--ng, 1)) rgba(216, 90, 48, 0.55)); }
-}
 
 /* Cursor proximity eases in and out rather than snapping. */
-.hero-en-arc-line {
-  transition: filter 300ms ease;
-}
 
 /* The chromatic ghosts get no glow of their own – they are fringes, not
    lights. */
-.hero-en-arc-ghost {
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-en-copy .hero-en-arc-line,
-  .hero-en-copy.is-copy-in .hero-en-arc-line,
-  .hero-en-copy.is-copy-in .hero-en-arc-line--hot {
-    animation: none;
-    clip-path: none;
-  }
-
-  /* The scan is motion; SMIL cannot see media queries, so its host element
-     is hidden instead. */
-  .hero-arc-scan {
-    display: none;
-  }
-}
-
-.hero-en-body {
-  margin: 0;
-  font-size: clamp(0.92rem, 1.05vw, 1rem);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-/* Zderzenie gornej grupy z naglowkiem strony, druga przyczyna (pierwsza:
-   min-width na .hero-en-top wyzej). Regula stoi PO regule bazowej, bo ma te
-   sama specyficznosc i musi ja nadpisac: od ok. 1460 px szerokosci akapit hero
-   rosnie do 16 px i grupa ma 190 px zamiast 182 px. Przy wysokosci sekcji
-   900-927 px (czyli w kazdym oknie nizszym niz 928 px, np. 1536x864 - ekran
-   Full HD ze skalowaniem 125%) tekst zaczynal sie na 63 px i wchodzil 2 px na
-   pigulki naglowka. W takich oknach akapit zostaje przy 15,12 px - dokladnie
-   tyle, ile ma w punkcie projektowym 1440x900 - i odstep wraca do 6 px.
-   Okna o wysokosci 928 px i wiecej (1680x1050, 1920x1080, 2560x1440) nie sa
-   objete ta regula: tam nic sie nie zmienia. */
-@media (min-width: 901px) and (min-aspect-ratio: 1/1) and (max-height: 927px) {
-  .hero-en-body {
-    font-size: clamp(0.92rem, 1.05vw, 0.945rem);
-  }
-}
-
-.hero-en-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-/* Same hover as the buttons on the local-SEO hero: the accent colour wipes in
-   as a circle growing from the centre. Only the interaction is borrowed – the
-   pills keep the colours and shape they already had.
-
-   The fill is a ::before at z-index -1 inside a z-index:1 stacking context,
-   which paints it above the button's own background but below its label, so a
-   white pill works the same way the dark one does over there. */
-.hero-en-cta,
-.hero-en-cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 0.9rem 1.35rem;
-  border-radius: var(--radius-full);
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-.hero-en-cta::before,
-.hero-en-cta-secondary::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--color-cta);
-  z-index: -1;
-  clip-path: circle(0% at 50% 50%);
-  transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-en-cta:hover::before,
-.hero-en-cta-secondary:hover::before {
-  clip-path: circle(150% at 50% 50%);
-}
-
-.hero-en-cta {
-  background: #FFFFFF;
-  color: #0F172A;
-}
-
-.hero-en-cta:hover {
-  color: #FFFFFF;
-}
-
-.hero-en-cta-secondary {
-  background: transparent;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-.hero-en-cta-secondary:hover {
-  color: #FFFFFF;
-  border-color: var(--color-cta);
-}
-
-/* Rendered while the Spline chunk downloads, and the whole backdrop if the
-   scene never loads. CSS gradients only – no JS, no image request – so the
-   section always has a finished-looking background even offline. */
-/* Atrapa stojaca, dopoki nie zaladuje sie runtime Spline i sama scena. Byl tu
-   pomaranczowy gradient, przez ktory sekwencja ladowania wygladala tak:
-   pomaranczowe tlo -> czarne (atrapa znika, kanwa jeszcze przezroczysta) ->
-   wjazd sceny. Wypalone tlo sceny zmierzono na kanwie w siedmiu punktach i
-   wszedzie wynosi 0,0,0, sekcja tez ma #000000 - wiec czern skleja dwie
-   pierwsze fazy w jedna i usuwa blysk. Wyglad zaladowanej strony bez zmian. */
-.hero-en-orb {
-  width: 100%;
-  height: 100%;
-  background: #000000;
-}
 
 /* Także dla szerokich, ale PIONOWYCH okien (aspekt < 1:1): scena jest
    skalowana wysokością, więc przy oknie wyższym niż szersze słowo robi się
    szersze od ekranu i litery są ucinane. Kompozycja pasmowa ma stałą
    wysokość pasma, więc działa przy każdych proporcjach. */
-@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
-  /* Same reading as the desktop composition – copy, then the word, then the
-     heading – rather than the scene sitting on top of everything. Full-bleed
-     still cannot work at this width: the lettering is scaled by canvas height,
-     so at 375 x 900 its half-width would be 500px against a 187px half-screen
-     and only the middle of the "E" would be on screen. A band of its own gives
-     the canvas an aspect near the desktop one, where the whole word fits.
-     Placed lower than the desktop 30.4% because the header eats the top of the
-     first row and the copy needs the space. */
-  /* Measured on the device width: the lettering comes to 1.238x the band's
-     height, so at the old 26% band (213px) the word covered 70% of a 375px
-     screen. 35% of an 880px section is 308px, which puts the word edge to edge.
-     The section grows to 880px to buy that back without pushing the buttons
-     under the sticky bar. */
-  /* The word is sized by band HEIGHT (the camera holds a vertical FOV), so
-     a fixed 300px band meant one fixed letter width – right on a 375 screen,
-     overflowing a 320 one and undersized on a 430. The band's height now
-     follows the viewport instead: measured at 375, the word spans 1.13x the
-     band height, so (100vw - 40px) / 1.13 keeps the letters at the content
-     width – the same span as the copy above and the heading below – on every
-     phone. All vertical offsets inside the band are fractions of it. */
-  .hero.hero--en {
-    --m-band-h: calc(88.5vw - 35.4px);
-  }
 
-  .hero-en-bg {
-    /* The whole chain hangs off one measured value: Hero.jsx observes the
-       copy's real height and publishes it as --m-copy-h on the section (with
-       the header's as --m-head-h), because the height changes with width,
-       locale and font loading – 199px for the Polish at 375, 177 at 390 –
-       and any fixed number turns the difference into dead air under the
-       header. Row one is header + 20px of air + the copy; the letters sit
-       97px into the band and must start 8px under the copy, so the band's
-       top is that row minus 89. Fallbacks equal the measured Polish 375x812
-       values, so pre-hydration frames render in place. */
-    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + 8px - var(--m-band-h) * 0.3233);
-    height: var(--m-band-h);
-    bottom: auto;
-    /* Neither a slide nor a wider canvas: sliding left opened a black gap
-       at the right edge, and widening the canvas broke the scene's own
-       framing (the letters shrank - the scene stops scaling purely by
-       height once the aspect leaves its calibrated range). Instead the
-       full-width canvas scales 5% about its right edge: the S's natural
-       left edge (50vw - 0.5083 x band, i.e. 34-40px) lands on the 20px
-       content margin - the factor is ~1.049-1.050 at every phone width
-       because the whole geometry is proportional - while the right side
-       of the artwork stays pinned to the screen edge. The vertical origin
-       sits at the letters' centre (46.75% of the band), so their gaps to
-       the copy and the heading drift by only ~2px. */
-    transform: scale(1.05);
-    transform-origin: 100% 46.75%;
-    /* Bottom fade only – the 64%-75% dissolve under the letters is the
-       approved look: the robot's legs melt into the black just before the
-       heading, reading as staging rather than a crop. The band's top carries
-       NO mask at all any more: every full-width vertical fade has to cross
-       the robot's helmet somewhere (it spans the text boundary), and that
-       crossing is exactly the "top is cut off" complaint. Instead the COPY
-       yields – the paragraph column stops left of the robot (see
-       .hero-en-top below), the same division of space the desktop layout
-       uses, so there is simply nothing over the helmet to hide it from. */
-    /* The fade ends BEFORE the heading: the letters bottom out at 61.17% of
-       the band and the heading starts 16px under that line (row two is
-       24px + 0.2867 x band), so fading from +4px to +12px leaves the word
-       untouched and guarantees 4px of clear black above the heading at
-       every band size - the stops mix % and px through calc on purpose. */
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 calc(61.17% + 3px), transparent calc(61.17% + 9px));
-    mask-image: linear-gradient(180deg, #000 0%, #000 calc(61.17% + 3px), transparent calc(61.17% + 9px));
-  }
-
-  /* Same chain with the English fallback: the EN copy is 22px shorter at
-     375, and until the observer publishes the real height these static
-     fallbacks are what keeps the pre-hydration frame from jumping. */
-  html[lang="en"] .hero-en-bg {
-    top: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + 8px - var(--m-band-h) * 0.3233);
-  }
-
-  /* No mobile-only side padding: the shared clamp already lands on the same
-     1.25rem floor here, so the copy sits on the identical margin as the wide
-     layout rather than on a second value that happened to match. */
-
-  /* Keyed to the LETTERING, not to the canvas band. The band runs 38%-73% of
-     the section, but the word inside it carries the scene's own empty margin,
-     so rows pinned to the band edges read as a ~100px visual gap where the
-     desktop has 8px. These numbers are measured, not derived: the framebuffer
-     was read back at 375x812 with reflection filtering, and the word sits at
-     49.4%-59.3% of the section. (The derived 30.4%-62.2% canvas fractions do
-     not carry over – the mobile band's aspect reframes the scene.) */
-  /* The copy column stops left of the robot. He stands in the right ~85px
-     of the frame (helmet from x=300 at 375, and the framing widens from the
-     centre, so his left edge slides half a pixel right per viewport pixel –
-     hence 50vw in the clamp). With nothing of the paragraph over him, the
-     helmet needs no mask and shows from the crown – the same copy-left /
-     robot-right split the desktop composition uses. */
-  .hero-en-top {
-    /* Column right edge = 20px margin + this. After the band's alignment
-       slide the robot's left edge sits at 20px + 0.8833 x band height, so
-       the clamp keeps ~8px of clearance at every width and band size. */
-    max-width: calc(var(--m-band-h) * 0.8833 - 8px);
-    /* Przy proporcji dokladnie 1:1 pasuja oba zapytania (szerokie i pasmowe);
-       min-width z ukladu szerokiego wygrywal z max-width i w oknach 901-966 px
-       akapit wchodzil na robota. Ta regula stoi pozniej, wiec go zeruje. */
-    min-width: 0;
-  }
-
-  /* Row one ends 8px above the letters. Row two is the letters plus the
-     desktop gaps (8 above, 16 below), which puts the heading back over the
-     tail of the leg fade – the approved staging. */
-  .hero-en-copy {
-    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px)) calc(24px + var(--m-band-h) * 0.2867) 1fr;
-  }
-
-  html[lang="en"] .hero-en-copy {
-    grid-template-rows: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px)) calc(24px + var(--m-band-h) * 0.2867) 1fr;
-  }
-
-  /* Polish runs about 25% longer than the English for the same meaning, and
-     "które buduje sprzedaż" is twice the length of "that drives sales". At the
-     shared sizes the first row pushed up under the header and the buttons were
-     clipped off the bottom of the section. A notch down on all four sizes fits
-     both languages in the same box. */
-  /* Down a notch again so "które buduje sprzedaż" sets on one line – at two it
-     added 30px to the bottom group and pushed the buttons under the fold. */
-  .hero-en-title-display {
-    font-size: clamp(1.7rem, 6.9vw, 2.2rem);
-  }
-
-  .hero-en-title-sub {
-    font-size: 1rem;
-    /* Tylko w ukladzie telefonu: podtytul ma tu dwie linie i konczyl sie
-       samotnym "Warszawy" / "Companies". Szeroki uklad zostaje nietkniety. */
-    text-wrap: balance;
-  }
-
-  /* Type is a size down because the column is only 335px wide, but the leading
-     ratios are the desktop ones – 1.55 on the promise line, 1.6 on the
-     paragraph – so the vertical rhythm reads the same rather than tighter. */
-  .hero-en-lead {
-    font-size: 1rem;
-    line-height: 1.55;
-  }
-
-  .hero-en-body {
-    font-size: 0.88rem;
-    line-height: 1.6;
-  }
-
-  /* Safety valve for 320-360px devices: the Polish paragraph wraps a line
-     longer there and, bottom-anchored to the lettering, would run under the
-     fixed header. One step down keeps the same leading ratio. */
-  @media (max-width: 360px) {
-    .hero-en-lead { font-size: 0.95rem; }
-    .hero-en-body { font-size: 0.84rem; }
-
-    /* The pair measures 333px at the shared sizes – over even a 360 screen's
-       320px column, so the second button dropped to a row of its own and the
-       section's fixed height cut it off. Sized against the 320 screen's 280px
-       column (the arrow icon and border ride along, so type alone was not
-       enough): ~270px total, one row everywhere in the 320-360 range. */
-    .hero-en-actions { gap: 10px; }
-    .hero-en-cta,
-    .hero-en-cta-secondary {
-      font-size: 0.8125rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
-  }
-
-  /* The one spacing that cannot match the wide layout, and only this one. At the
-     shared 1.35rem sides the Polish pair measures 177 + 172 + 16 = 365px against
-     335px of column – 30px over, so the buttons wrapped to two rows and dropped
-     below the fold. Sides come in to 0.85rem, which recovers 32px and puts them
-     back on one row. Vertical padding, the gap between them, and the font size
-     are all left at the desktop values, so only the inside of the pill differs
-     and every gap between elements is identical. */
-  .hero-en-cta,
-  .hero-en-cta-secondary {
-    padding-left: 0.85rem;
-    padding-right: 0.85rem;
-  }
-
-  /* Nothing to push apart here – the canvas has its own band above the copy,
-     so the two groups simply stack. */
-  /* Almost nothing to do at this width. The canvas occupies 44%-70% and the copy
-     sits outside it, over the section's own backdrop – so the only job left is
-     taking the glare off the top edge, where the header floats. Scrimming the
-     band itself would just dim the animation for no reason. */
-  .hero-overlay--en {
-    background: linear-gradient(
-      180deg,
-      rgba(3, 7, 18, 0.55) 0%,
-      rgba(3, 7, 18, 0) 12%,
-      rgba(3, 7, 18, 0) 100%
-    );
-  }
-}
 
 /* The section's mobile rules (65vh, capped at 650px, overflow hidden) were tuned
    for the SVG hero, which scales down to fit. Text does not scale down, so the
    English variant needs the section to grow with its content instead – otherwise
-   the CTAs and half the copy are clipped below the fold. Scoped to .hero--en so
+   the CTAs and half the copy are clipped below the fold. Scoped to .hero--narz so
    the Polish hero keeps its existing behaviour exactly. */
-@media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
-  .hero.hero--en {
-    /* .hero-en is positioned out of flow now, so it cannot push the section
-       open the way it used to – the height has to be stated. 860px with the
-       band at 31%-66% is where the competing demands settle at 375x812: the
-       copy clear of the fixed header, the lettering wall to wall, the buttons
-       above the fold – and as little dead air under the header as the Polish
-       text allows, since the copy is bottom-anchored to the 8px gap and all
-       row-one surplus surfaces at the top. Taller screens use their own. */
-    /* Height equal to the content, via the same measured chain: row one,
-       then 109 to the heading (8px gap + the 86px letters + 16px), 154 for
-       the heading-and-buttons group and 22px of breathing room – row one
-       + 285. The old max(100svh, 860px) filled the whole screen and
-       left ~240px of dead black under the buttons; sized to content the next
-       section peeks above the fold instead, which is what tells a phone user
-       there is more page. */
-    /* DOLNA GRUPA MIERZONA (05.10.2026). Stale "+ 200px" to bylo 24 px odstepu
-       + 154 px na H1 z przyciskami + 22 px oddechu. Podtytul H1 lamie sie
-       jednak na dwie linie na kazdym telefonie, grupa ma 178-188 px i
-       przyciski byly uciete o 2-12 px (overflow: hidden). Teraz 154 px
-       zastepuje zmierzona wysokosc grupy (--m-bottom-h z Hero.jsx); max()
-       pilnuje, zeby sekcja nigdy nie byla nizsza niz dotad, a wartosc
-       zastepcza 184 px to pomiar polskiej wersji przy 375 px, zeby klatka
-       sprzed hydracji nie skakala. Realne wartosci ustawia jeszcze przed
-       pierwszym malowaniem skrypt wpisany w Hero.jsx zaraz za trescia
-       sekcji, wiec wartosci zastepcze widac tylko bez JavaScriptu. */
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 233px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px) !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    overflow: hidden !important;
-    align-items: flex-start !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
 
-  /* The English fallback of the same height chain (see the band rule). */
-  html[lang="en"] .hero.hero--en {
-    height: calc(var(--m-head-h, 83px) + 20px + var(--m-copy-h, 205px) + var(--m-band-h, 296px) * 0.2867 + 24px + max(154px, var(--m-bottom-h, 184px)) + 22px) !important;
-  }
-
-  /* Absolutely positioned at the bottom of the section; once the columns stack
-     it lands on top of the copy. */
-  .hero.hero--en .hero-partners-row {
-    display: none !important;
-  }
-}
 
 
 
@@ -4070,10 +3207,7 @@ textarea,
    nie kosztuje ani jednego nasluchiwacza zdarzen i dziala takze przy
    wylaczonym JS. Klasa .cursor-light pozwala oznaczyc dowolny nowy blok
    o ciemnym tle bez ruszania tej reguly. */
-.hero, .hero *,
-.results, .results *,
-footer, footer *,
-.cursor-light, .cursor-light * {
+.hero *, .results, .results *, footer, footer *, .cursor-light, .cursor-light * {
   cursor: url('/cursors/arrow-white.png') 1 1, auto !important;
   cursor: -webkit-image-set(url('/cursors/arrow-white.png') 1x, url('/cursors/arrow-white@2x.png') 2x) 1 1, auto !important;
   cursor: image-set(url('/cursors/arrow-white.png') 1x, url('/cursors/arrow-white@2x.png') 2x) 1 1, auto !important;
@@ -4293,7 +3427,7 @@ aside[id][tabindex="-1"]:focus {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
   }
-  .hero.hero--en .hero-partners-row {
+  .hero.hero--narz .hero-partners-row {
     bottom: 1.75rem !important;
   }
 }

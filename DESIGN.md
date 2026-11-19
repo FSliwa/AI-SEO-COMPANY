@@ -1,8 +1,8 @@
-# DESIGN.md — AI SEO COMPANY (wygląd z makiety „Desktop - 2”, 6.11.2026)
+# DESIGN.md - AI SEO COMPANY (wygląd z makiety „Desktop - 2”, 6.11.2026)
 
 Źródło: makieta `Desktop - 2.svg` (1440 × 7138). Fiolety makiety zastąpione
 pomarańczem marki `#D85A30`, który był już na stronie. Treść, sekcje i podstrony
-bez zmian — zmienia się tylko wygląd. Tokeny w `app/wyglad.css` (`:root`),
+bez zmian - zmienia się tylko wygląd. Tokeny w `app/wyglad.css` (`:root`),
 strony używają nazw, nie surowych wartości.
 
 ## Kolor
@@ -24,7 +24,7 @@ strony używają nazw, nie surowych wartości.
 | `--w-brzoskwinia-tlo` | `#FBE6DA` | jasne wypełnienia: aktywna zakładka, wyróżniony przycisk (zastępuje `#EBDDF9`) |
 | `--w-wzrost` | `#047857` | wyłącznie wzrost w danych |
 
-Przycisk główny: tło `#D85A30`, biały tekst, najechanie `#C24A22` — tak jak na
+Przycisk główny: tło `#D85A30`, biały tekst, najechanie `#C24A22` - tak jak na
 produkcji (decyzja właściciela 7.11.2026). Uwaga: biały na `#D85A30` ma 3,9:1,
 a mały tekst w `#D85A30` na papierze 3,7:1 (próg AA dla zwykłego tekstu to 4,5:1).
 Na granacie `#D85A30` ma 4,7:1.
@@ -42,7 +42,7 @@ Mapowanie fioletów makiety: `#C3A4F0`, `#B085E5` → brzoskwinia / pomarańcz,
   1,6 · lead 1,125 rem · H3 1,5 rem · H2 `clamp(2.4rem, 4.4vw, 4rem)` / 1,04 ·
   H1 `clamp(3rem, 6.6vw, 6rem)` / 0,98. Nagłówki 500, odstęp −0,04 em.
 - Kropka akcentu po nagłówku sekcji (makieta: „Nasza oferta.”) jako
-  dekoracyjny kwadrat `::after` — nie zmienia tekstu w DOM.
+  dekoracyjny kwadrat `::after` - nie zmienia tekstu w DOM.
 
 ## Odstępy i kształt
 
@@ -66,8 +66,10 @@ Mapowanie fioletów makiety: `#C3A4F0`, `#B085E5` → brzoskwinia / pomarańcz,
 
 ## Grafika
 
-- Hero strony głównej: 1:1 z produkcji (robot, scena Spline 3D, Inter + Space
-  Grotesk tylko w `.hero`) - decyzja właściciela 7.11.2026.
+- Hero strony głównej (19.11.2026, wariant A „hero v8”): tekst po lewej, po prawej jasny panel z dryfującą
+  kolumną siedmiu kafli (sześć narzędzi i panel klienta), granatowy napis SEO za kaflami od 1200 px, góry,
+  chmury i mgła z dawnego hero; robota 3D (Spline) i pomarańczowego napisu SEO już nie ma. Inter + Space
+  Grotesk tylko w `.hero`. Pliki: `components/Hero*.jsx`, `components/Hero.css`, `lib/heroNarzedzia.js`.
 - Pod hero pas z anteną (`components/PasAnteny.jsx`): tło bez czaszy
   (`antena-tlo.webp`, góra przechodzi w czerń hero) i sama czasza
   (`antena-czasza.webp`) obracana w elewacji wokół łożyska (83,08 % / 57,31 %),
@@ -76,7 +78,7 @@ Mapowanie fioletów makiety: `#C3A4F0`, `#B085E5` → brzoskwinia / pomarańcz,
 - Ilustracje kreskowe oferty (`oferta-*.webp`), antena kreskowa w kontakcie
   (`antena-linie.webp`), poziomice w cenniku i FAQ (`kontury-*.webp`).
 - Ikony: obrysowe, 1,5 px, kolor akcentu. Bez emoji jako ikon.
-- Scena Spline w hero zostaje (jak na produkcji); scena w sekcji wyników zdjęta.
+- Sceny Spline nie ma nigdzie (hero od 19.11.2026, sekcja wyników od 6.11.2026).
 
 ## Kursor
 
@@ -91,7 +93,7 @@ Tokeny: `--w-ruch-ease` `cubic-bezier(0.16,1,0.3,1)`, `--w-ruch-krotki` 0,28 s,
 `--w-ruch-sredni` 0,6 s, `--w-ruch-dlugi` 1,1 s. Wszystko tylko przy
 `prefers-reduced-motion: no-preference`, tylko transform/translate/scale/opacity.
 
-- Hero: linie H1, lead i akapit wjeżdżają od dołu (bez wygaszania — LCP),
+- Hero: linie H1, lead i akapit wjeżdżają od dołu (bez wygaszania - LCP),
   etykieta i przyciski z wygaszeniem, grafika lekko się przybliża, łuki sygnału
   rysują się, kropki pulsują, przerywany łuk „płynie”.
 - Chmury: dwie warstwy `chmury.webp` (bezszwowa tekstura) dryfują w przeciwne
