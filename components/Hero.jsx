@@ -196,6 +196,7 @@ export default function Hero() {
   const zaladowanaRef = useRef(false);
   const ponownyMontazRef = useRef(0);
   const przewijanieRef = useRef(false);
+  const petlaWstrzymanaRef = useRef(false);
   const [sceneKey, setSceneKey] = useState(0);
   const [sceneLost, setSceneLost] = useState(false);
   const [sceneLoaded, setSceneLoaded] = useState(false);
@@ -203,8 +204,25 @@ export default function Hero() {
     const app = appRef.current;
     if (!app) return;
     try {
-      if (!widocznaRef.current || przewijanieRef.current) app.stop();
-      else if (wystartowalaRef.current) app.play();
+      const r = app._renderer;
+      if (!widocznaRef.current) {
+        // Poza ekranem: pelna pauza (petla + zdarzenia), jak dotad.
+        petlaWstrzymanaRef.current = false;
+        app.stop();
+      } else if (app.isStopped) {
+        // Wznowienie po pelnej pauzie, ale nie w trakcie przewijania.
+        if (wystartowalaRef.current && !przewijanieRef.current) app.play();
+      } else if (r && typeof r.setAnimationLoop === 'function') {
+        // Przewijanie w obrebie hero: wstrzymujemy TYLKO petle renderu. app.stop()/play()
+        // robi _eventManager.pause()/resume() i restartuje zdarzenia startu (intro grane od nowa).
+        if (przewijanieRef.current && !petlaWstrzymanaRef.current) {
+          r.setAnimationLoop(null);
+          petlaWstrzymanaRef.current = true;
+        } else if (!przewijanieRef.current && petlaWstrzymanaRef.current) {
+          r.setAnimationLoop(app.render);
+          petlaWstrzymanaRef.current = false;
+        }
+      }
     } catch (e) {}
   };
   const podepnijUtrateKontekstu = (app) => {
