@@ -5,13 +5,21 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { sectionId } from '@/lib/anchors';
 import { Link } from '@/i18n/routing';
-import Image from 'next/image';
 
 // 6.11.2026 (wyglad z makiety): ilustracje kreskowe pod kolumnami oferty.
 // Dekoracja (alt=""), przebarwione z fioletu makiety na pomarancz marki.
-const Ilustracja = ({ src, w, h }) => (
-  <Image className="oferta-ilustracja" src={src} alt="" width={w} height={h} sizes="300px" loading="lazy" aria-hidden="true" />
-);
+// 19.11.2026: prawdziwie wieksza rozdzielczosc (oryginal 1536x1024 z makiety, warianty 640 i 960 px)
+// jako <picture> z AVIF i WebP. Nowe nazwy -v2, bo /images ma cache immutable na rok.
+const Ilustracja = ({ baza, w, h }) => {
+  const szer = [640, 960];
+  const zestaw = (rozszerzenie) => szer.map((x) => `${baza}-v2-${x}.${rozszerzenie} ${x}w`).join(', ');
+  return (
+    <picture>
+      <source type="image/avif" srcSet={zestaw('avif')} sizes="300px" />
+      <img className="oferta-ilustracja" src={`${baza}-v2-640.webp`} srcSet={zestaw('webp')} sizes="300px" alt="" width={w} height={h} loading="lazy" decoding="async" aria-hidden="true" />
+    </picture>
+  );
+};
 
 export default function Services() {
   const lang = useLocale();
@@ -98,7 +106,7 @@ export default function Services() {
                 </>
               )}
             </ul>
-            <Ilustracja src="/images/wyglad/antena-linie.webp" w={1000} h={591} />
+            <Ilustracja baza="/images/wyglad/antena-linie" w={640} h={379} />
           </RevealItem>
 
           {/* Card 2 */}
@@ -126,7 +134,7 @@ export default function Services() {
                 </>
               )}
             </ul>
-            <Ilustracja src="/images/wyglad/oferta-www.webp" w={640} h={416} />
+            <Ilustracja baza="/images/wyglad/oferta-www" w={640} h={416} />
           </RevealItem>
 
           {/* Card 3 */}
@@ -154,7 +162,7 @@ export default function Services() {
                 </>
               )}
             </ul>
-            <Ilustracja src="/images/wyglad/oferta-seo.webp" w={640} h={433} />
+            <Ilustracja baza="/images/wyglad/oferta-seo" w={640} h={433} />
           </RevealItem>
 
           {/* Card 4 - 5.11.2026 (HOME; PLAN-v2 6.24, MSA-07): strona główna nie linkowała w treści do huba GEO
@@ -172,7 +180,7 @@ export default function Services() {
               <Link href="/pozycjonowanie-w-ai" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' }}>
                 Zobacz, jak działa pozycjonowanie w AI →
               </Link>
-              <Ilustracja src="/images/wyglad/oferta-ai.webp" w={640} h={531} />
+              <Ilustracja baza="/images/wyglad/oferta-ai" w={640} h={531} />
             </RevealItem>
           )}
         </RevealStagger>

@@ -4,7 +4,6 @@ import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import HeroArcText from './HeroArcText';
 import SceneErrorBoundary from './SceneErrorBoundary';
 import { hash } from '@/lib/anchors';
@@ -196,6 +195,7 @@ export default function Hero() {
   // przewiniecie po odswiezeniu: wczesniej zdejmowal plakat przy ukrytej scenie).
   const zaladowanaRef = useRef(false);
   const ponownyMontazRef = useRef(0);
+  const przewijanieRef = useRef(false);
   const [sceneKey, setSceneKey] = useState(0);
   const [sceneLost, setSceneLost] = useState(false);
   const [sceneLoaded, setSceneLoaded] = useState(false);
@@ -203,7 +203,7 @@ export default function Hero() {
     const app = appRef.current;
     if (!app) return;
     try {
-      if (!widocznaRef.current) app.stop();
+      if (!widocznaRef.current || przewijanieRef.current) app.stop();
       else if (wystartowalaRef.current) app.play();
     } catch (e) {}
   };
@@ -437,6 +437,40 @@ export default function Hero() {
     fetch(SCENE, { cache: 'force-cache' }).catch(() => {});
   }, []);
 
+  // 19.11.2026 (hero-szarpanie): scena 3D stoi na czas przewijania. Petla Spline (6 ms JS na klatke
+  // + GPU) trzymala watek glowny w hero tak, ze przy wolniejszym CPU aktualizacje sceny i tekstu
+  // przychodzily co kilkaset ms. Zdarzenia wejscia (wheel/touchmove/klawisze) dochodza jako zadania
+  // od razu, a samo `scroll` tylko w kroku renderowania, wiec nie wolno polegac wylacznie na nim.
+  // Dopiero po zakonczeniu wjazdu sceny (tekstPokazanyRef), zeby nie rozjechac zegara wjazdu.
+  useEffect(() => {
+    const sekcja = document.getElementById('hero');
+    const KLAWISZE = new Set([' ', 'PageDown', 'PageUp', 'ArrowDown', 'ArrowUp', 'Home', 'End']);
+    let zegar = 0;
+    const naRuch = (e) => {
+      if (e.type === 'keydown' && !KLAWISZE.has(e.key)) return;
+      if (!tekstPokazanyRef.current || !appRef.current) return;
+      if (!przewijanieRef.current) {
+        przewijanieRef.current = true;
+        synchronizujScene();
+        if (sekcja) sekcja.dataset.przewija = '1';
+      }
+      clearTimeout(zegar);
+      zegar = setTimeout(() => {
+        przewijanieRef.current = false;
+        synchronizujScene();
+        if (sekcja) delete sekcja.dataset.przewija;
+      }, 250);
+    };
+    const zdarzenia = ['wheel', 'touchmove', 'keydown', 'scroll'];
+    zdarzenia.forEach((z) => window.addEventListener(z, naRuch, { passive: true }));
+    return () => {
+      zdarzenia.forEach((z) => window.removeEventListener(z, naRuch));
+      clearTimeout(zegar);
+      przewijanieRef.current = false;
+      if (sekcja) delete sekcja.dataset.przewija;
+    };
+  }, []);
+
   // Micro-parallax (wide screens, fine pointers, motion allowed): the copy
   // drifts a few pixels slower than the scene on scroll, which reads as depth.
   // rAF-throttled, transform-only, and capped at 14px so it can never collide
@@ -446,6 +480,9 @@ export default function Hero() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (!window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)').matches) return;
+    // 19.11.2026: gdy przegladarka zna os przewijania, parallax robi CSS (plynnosc.css); ten JS
+    // zostaje tylko jako zapas. Ten sam warunek co @supports w arkuszu.
+    if (typeof CSS !== 'undefined' && CSS.supports('(animation-timeline: scroll()) and (animation-range: 0px 233px)')) return;
     let raf = 0;
     const onScroll = () => {
       if (raf) return;
@@ -572,16 +609,24 @@ export default function Hero() {
       {/* 7.11.2026 (makieta "Desktop - 2"): tlo sceny z antena bez czaszy - robot 3D
           zastepuje antene. Dolna krawedz grafiki = gorna krawedz pasma chmur oferty. */}
       <div className="hero-tlo-sceny" aria-hidden="true" data-kursor="obraz">
-        <Image
-          src="/images/wyglad/hero-tlo-v2.webp"
-          alt=""
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          data-kursor-zrodlo=""
-          style={{ objectFit: 'cover', objectPosition: 'center bottom' }}
-        />
+        {/* 19.11.2026: <picture> zamiast next/image: gotowy plik nie przechodzi juz drugiej kompresji
+            stratnej (optymalizator Next q75). AVIF z WebP jako rezerwa, fetchPriority high zostaje
+            (obraz jest w HTML z SSR, wiec skaner preload widzi go bez <link>). */}
+        <picture>
+          <source type="image/avif" srcSet="/images/wyglad/hero-tlo-v3-1200.avif 1200w, /images/wyglad/hero-tlo-v3-1600.avif 1600w" sizes="100vw" />
+          <img
+            src="/images/wyglad/hero-tlo-v3-1600.webp"
+            srcSet="/images/wyglad/hero-tlo-v3-1200.webp 1200w, /images/wyglad/hero-tlo-v3-1600.webp 1600w"
+            sizes="100vw"
+            alt=""
+            width={1600}
+            height={1194}
+            fetchPriority="high"
+            decoding="async"
+            data-kursor-zrodlo=""
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center bottom' }}
+          />
+        </picture>
       </div>
 
       {/* 11.11.2026 (prosba Filipa): bez polokregow i animacji sygnalu z etapu satelity - luki usuniete
