@@ -63,7 +63,7 @@ const TESTY = [
   { co: 'noindex', poCo: 'Strona wyłączona z indeksu nie powinna trafiać do spisu.', jak: 'Pomijamy adresy z noindex w meta robots albo w nagłówku X-Robots-Tag.' },
   { co: 'Tytuł i opis', poCo: 'Z nich powstają wiersze pliku: link z tytułem i opis po dwukropku.', jak: 'Brak opisu = sam link. Uzupełnij meta description na tych podstronach.' },
   { co: 'Sekcje pliku', poCo: 'Podstrony grupujemy według pierwszego członu adresu (Blog, Usługi) i wersji językowej (Wersja EN, Blog (EN)). Regulamin i polityki trafiają do sekcji „Optional”, którą model może pominąć. Kontakt zostaje w „Strony”.', jak: 'Sekcja potrzebuje co najmniej 2 podstron w mapie, pozostałe adresy trafiają do „Strony”. Nazwy sekcji i przydział linków zmienisz w edytorze przed pobraniem.' },
-  { co: 'robots.txt dla 8 botów', poCo: 'Pokazuje, czy bot może pobrać stronę główną i ile sprawdzonych adresów blokuje.', jak: 'Blokada OAI-SearchBot albo PerplexityBot wyklucza stronę z wyników ChatGPT i Perplexity.' },
+  { co: 'robots.txt dla 7 botów AI i Bingbot', poCo: 'Pokazuje, czy bot może pobrać stronę główną i ile sprawdzonych adresów blokuje.', jak: 'Blokada OAI-SearchBot albo PerplexityBot wyklucza stronę z wyników ChatGPT i Perplexity.' },
   { co: 'Obecny plik /llms.txt', poCo: 'Pokazuje, czy strona ma już plik i czy zwraca go bez przekierowania.', jak: 'Kod 200 i nagłówek „# Nazwa” w pierwszym wierszu = plik jest na miejscu. Pokazujemy też liczbę linków do podstron: plik bez linków w formacie [nazwa](https://adres) oznaczamy jako błąd, bo nic modelowi nie wskaże. HTML zamiast tekstu oznacza zły adres.' },
   { co: 'Kod HTTP z User-Agentem bota', poCo: 'Wykrywa blokady zapory (WAF) i CDN, których nie widać w robots.txt.', jak: 'Kod 403 albo 429 dla bota przy 200 dla przeglądarki oznacza blokadę po stronie serwera.' },
 ];
@@ -74,7 +74,7 @@ const TESTY_EN = [
   { co: 'noindex', poCo: 'A page excluded from the index should not appear in the listing.', jak: 'We skip URLs with noindex in the meta robots tag or in the X-Robots-Tag header.' },
   { co: 'Title and description', poCo: 'They make up the lines of the file: a link with a title and a description after the colon.', jak: 'No description = a bare link. Add a meta description to those pages.' },
   { co: 'File sections', poCo: 'We group pages by the first part of the URL (Blog, Services) and by language version (EN version, Blog (EN)). Terms and policies go to the "Optional" section, which a model may skip. The contact page stays in "Pages".', jak: 'A section needs at least 2 pages in the sitemap; the remaining URLs go to "Pages". You can rename sections and move links between them in the editor before downloading.' },
-  { co: 'robots.txt for 8 bots', poCo: 'Shows whether a bot can fetch the home page and how many of the checked URLs it blocks.', jak: 'Blocking OAI-SearchBot or PerplexityBot excludes your site from ChatGPT and Perplexity results.' },
+  { co: 'robots.txt for 7 AI bots and Bingbot', poCo: 'Shows whether a bot can fetch the home page and how many of the checked URLs it blocks.', jak: 'Blocking OAI-SearchBot or PerplexityBot excludes your site from ChatGPT and Perplexity results.' },
   { co: 'Existing /llms.txt file', poCo: 'Shows whether the site already has the file and whether it is served without a redirect.', jak: 'Code 200 and a "# Name" heading on the first line = the file is in place. We also show the number of links to your pages: a file with no links in the [name](https://address) format is marked as an error, because it points a model to nothing. HTML instead of text means the wrong address.' },
   { co: 'HTTP code with the bot User-Agent', poCo: 'Detects firewall (WAF) and CDN blocks that robots.txt does not show.', jak: 'Code 403 or 429 for the bot with 200 for a browser means a block on the server side.' },
 ];
@@ -97,7 +97,7 @@ const FAQ_DODATKOWE = [
   {
     id: 'czy-potrzebny-email',
     question: 'Czy muszę podawać e-mail albo zakładać konto?',
-    answer: `Nie. Cały plik i test botów widzisz od razu na stronie, bez rejestracji i bez e-maila. Nie zapisujemy adresu ani wyniku. Limit to ${GENERATOR.limitIp} sprawdzeń dziennie z jednego adresu IP.`,
+    answer: `Nie. Cały plik i test botów widzisz od razu na stronie, bez rejestracji i bez e-maila. Nie zapisujemy adresu ani wyniku. Limit to ${GENERATOR.limitIp} sprawdzeń dziennie z jednego adresu IP (limit orientacyjny).`,
   },
   {
     id: 'czy-moge-edytowac-plik',
@@ -120,7 +120,7 @@ const FAQ_DODATKOWE_EN = [
   {
     id: 'do-i-need-an-email',
     question: 'Do I need to give an email or create an account?',
-    answer: `No. You see the whole file and the bot test right away on the page, with no sign-up and no email. We do not store the address or the result. The limit is ${GENERATOR.limitIp} checks per day from one IP address.`,
+    answer: `No. You see the whole file and the bot test right away on the page, with no sign-up and no email. We do not store the address or the result. The limit is ${GENERATOR.limitIp} checks per day from one IP address (an approximate limit).`,
   },
   {
     id: 'can-i-edit-the-file',
@@ -135,7 +135,7 @@ const CO_DOSTAJESZ = [
   'Tytuł przy każdym linku i opis z meta description podstrony, jeśli go ma.',
   'Sekcje według katalogów i wersji językowych, a regulamin i polityki w sekcji „Optional”.',
   'Edytor przed pobraniem: odznaczanie linii, zmiana tytułów, opisów, kolejności i sekcji.',
-  `Test robots.txt i kodu HTTP dla ${GENERATOR.botow} botów AI z wnioskiem przy każdym.`,
+  `Test robots.txt i kodu HTTP dla ${GENERATOR.botowAi} botów AI i Bingbot z wnioskiem przy każdym.`,
   'Ocenę obecnego pliku /llms.txt z liczbą linków do podstron.',
   'Listę pominiętych adresów z powodem (kod HTTP, noindex) i link do wyniku do skopiowania.',
 ];
@@ -144,7 +144,7 @@ const CO_DOSTAJESZ_EN = [
   'A title for every link and a description from the page’s meta description, if it has one.',
   'Sections by folder and language version, with terms and policies in the "Optional" section.',
   'An editor before downloading: untick lines, change titles, descriptions, order and sections.',
-  `A robots.txt and HTTP code test for ${GENERATOR.botow} AI bots, with a conclusion for each.`,
+  `A robots.txt and HTTP code test for ${GENERATOR.botowAi} AI bots and Bingbot, with a conclusion for each.`,
   'A check of the existing /llms.txt file, including its number of links to your pages.',
   'A list of skipped URLs with the reason (HTTP code, noindex) and a link to the result you can copy.',
 ];
@@ -162,8 +162,8 @@ const ZRZUTY = {
 };
 
 // Z-05: te same fakty co na stronie.
-const FUNKCJE = ['Plik llms.txt z mapy strony, do 50 adresów z każdej sekcji', 'Sekcje według katalogów i wersji językowych, sekcja Optional', 'Edycja pliku przed pobraniem', 'Test robots.txt i kodu HTTP dla 8 botów AI', 'Ocena istniejącego pliku /llms.txt z liczbą linków'];
-const FUNKCJE_EN = ['An llms.txt file from your sitemap, up to 50 URLs across all sections', 'Sections by folder and language version, an Optional section', 'Editing the file before downloading', 'robots.txt and HTTP code test for 8 AI bots', 'A check of the existing /llms.txt file, including its link count'];
+const FUNKCJE = ['Plik llms.txt z mapy strony, do 50 adresów z każdej sekcji', 'Sekcje według katalogów i wersji językowych, sekcja Optional', 'Edycja pliku przed pobraniem', 'Test robots.txt i kodu HTTP dla 7 botów AI i Bingbot', 'Ocena istniejącego pliku /llms.txt z liczbą linków'];
+const FUNKCJE_EN = ['An llms.txt file from your sitemap, up to 50 URLs across all sections', 'Sections by folder and language version, an Optional section', 'Editing the file before downloading', 'robots.txt and HTTP code test for 7 AI bots and Bingbot', 'A check of the existing /llms.txt file, including its link count'];
 
 // Partia 2 (p2-llms, 18.11.2026): sekcja „llms.txt example” tylko w wersji EN. Wersja PL ma już fragment pliku
 // w sekcji „Co to jest llms.txt”, a polskie frazy z przykładem mają wolumen 10/mies., więc PL bez zmian.
@@ -220,8 +220,8 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
           {/* Z-L1: lead nad formularzem (Z-01: lead → narzędzie → Krótka odpowiedź → byline). */}
           <p className={st.lead} style={s.lead}>
             {en
-              ? `Enter your website address and within ${GENERATOR.sekund} seconds at most you get the whole llms.txt file built from your sitemap and an access test for ${GENERATOR.botow} AI bots. No sign-up, no email.`
-              : `Wpisz adres strony, a w najwyżej ${GENERATOR.sekund} sekund dostaniesz cały plik llms.txt z mapy strony i test dostępu ${GENERATOR.botow} botów AI. Bez rejestracji i bez e-maila.`}
+              ? `Enter your website address and within ${GENERATOR.sekund} seconds at most you get the whole llms.txt file built from your sitemap and an access test for ${GENERATOR.botowAi} AI bots and Bingbot. No sign-up, no email.`
+              : `Wpisz adres strony, a w najwyżej ${GENERATOR.sekund} sekund dostaniesz cały plik llms.txt z mapy strony i test dostępu ${GENERATOR.botowAi} botów AI i Bingbot. Bez rejestracji i bez e-maila.`}
           </p>
           <LlmsTxtClient hrefSprawdzarki={sprawdzarka} hrefAudytu={audyt} />
           <div style={s.poNarzedziu}>
@@ -242,8 +242,8 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
               <ZrzutWyniku
                 {...ZRZUT}
                 sizes="(max-width: 700px) 100vw, 640px"
-                alt={en ? 'llms.txt generator: the result for ai-seo-company.pl with the sitemap summary, the existing file check and the access test for 8 AI bots' : 'Generator llms.txt: wynik dla ai-seo-company.pl z mapą strony, oceną obecnego pliku i testem dostępu 8 botów AI'}
-                podpis={en ? 'The generator’s result for our own website from 12 November 2026: sitemap, existing file and the 8-bot test. The ready file and the editor are below the table.' : 'Wynik generatora dla naszej strony z 12 listopada 2026: mapa strony, obecny plik i test 8 botów. Pod tabelą jest gotowy plik i edytor.'}
+                alt={en ? 'llms.txt generator: the result for ai-seo-company.pl with the sitemap summary, the existing file check and the access test for 7 AI bots and Bingbot' : 'Generator llms.txt: wynik dla ai-seo-company.pl z mapą strony, oceną obecnego pliku i testem dostępu 8 botów AI'}
+                podpis={en ? 'The generator’s result for our own website from 12 November 2026: sitemap, existing file and the 7-AI-bot and Bingbot test. The ready file and the editor are below the table.' : 'Wynik generatora dla naszej strony z 12 listopada 2026: mapa strony, obecny plik i test 8 botów. Pod tabelą jest gotowy plik i edytor.'}
               />
             </div>
           </CoDostajesz>
@@ -326,7 +326,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
                 <li>whether the address returns an HTML page instead of text, which means the file is missing or the address is wrong.</li>
               </ul>
               <p style={s.akapit}>
-                Next to the file check, the tool tests robots.txt for {GENERATOR.botow} bots ({BOTY_NAZWY}) and requests the home page with each bot&apos;s User-Agent (all except Google-Extended, which has no User-Agent of its own and gets only the robots.txt test). It does not judge the wording of your summary or notes.
+                Next to the file check, the tool tests robots.txt for {GENERATOR.botowAi} AI bots and Bingbot ({BOTY_NAZWY}) and requests the home page with each bot&apos;s User-Agent (all except Google-Extended, which has no User-Agent of its own and gets only the robots.txt test). It does not judge the wording of your summary or notes.
               </p>
               <p style={s.akapit}>
                 One honest caveat: the file is not a ranking factor. As explained in the <a href="#czy-llms-txt-pomaga" style={s.podkreslenie}>section on Google and ChatGPT</a> below, Ahrefs found no statement from OpenAI, Anthropic or Google that their crawlers read it, and Google&apos;s John Mueller said the file was not created with search in mind.
@@ -345,7 +345,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
                   Signals from Google are mixed. The Chrome team added an llms.txt check to its experimental Lighthouse audits, while Google&apos;s John Mueller explained that the file was not created with search in mind. Gemini&apos;s access to content is governed separately, by the Google-Extended entry in robots.txt.
                 </p>
                 <p style={s.akapit}>
-                  Our conclusion: llms.txt is a cheap add-on, not a strategy. Preparing the file costs little and breaks nothing, but whether ChatGPT, Perplexity or Claude cite your site is decided by their bots&apos; access and by content that can be quoted. That is why the generator also tests robots.txt and server responses for 8 bots. If you care about recommendations in model answers, start with{' '}
+                  Our conclusion: llms.txt is a cheap add-on, not a strategy. Preparing the file costs little and breaks nothing, but whether ChatGPT, Perplexity or Claude cite your site is decided by their bots&apos; access and by content that can be quoted. That is why the generator also tests robots.txt and server responses for 7 AI bots and Bingbot. If you care about recommendations in model answers, start with{' '}
                   {hubGeo ? <Link href={hubGeo} style={s.podkreslenie}>AI search optimization</Link> : 'AI search optimization'}
                   {a2 ? (
                     <>
@@ -365,7 +365,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
               Sygnały z Google są sprzeczne. Zespół Chrome dodał sprawdzanie llms.txt do eksperymentalnych audytów Lighthouse, a John Mueller z Google tłumaczył, że plik nie powstał z myślą o wyszukiwaniu. Dostęp Gemini do treści reguluje się osobno, wpisem Google-Extended w robots.txt.
             </p>
             <p style={s.akapit}>
-              Nasz wniosek: llms.txt to tani dodatek, a nie strategia. Przygotowanie pliku kosztuje niewiele i niczego nie psuje, ale o tym, czy ChatGPT, Perplexity albo Claude zacytują stronę, decyduje dostęp ich botów i treść, którą da się zacytować. Dlatego generator testuje też robots.txt i odpowiedzi serwera dla 8 botów. Jeśli zależy Ci na poleceniach w odpowiedziach modeli, zacznij od{' '}
+              Nasz wniosek: llms.txt to tani dodatek, a nie strategia. Przygotowanie pliku kosztuje niewiele i niczego nie psuje, ale o tym, czy ChatGPT, Perplexity albo Claude zacytują stronę, decyduje dostęp ich botów i treść, którą da się zacytować. Dlatego generator testuje też robots.txt i odpowiedzi serwera dla 7 botów AI i Bingbot. Jeśli zależy Ci na poleceniach w odpowiedziach modeli, zacznij od{' '}
               {hubGeo ? <Link href={hubGeo} style={s.podkreslenie}>pozycjonowania w AI</Link> : 'pozycjonowania w AI'}
               {a2 ? (
                 <>
@@ -382,7 +382,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
           <section aria-labelledby="co-sprawdza-generator" className={st.sekcja} style={s.sekcja}>
             <h2 id="co-sprawdza-generator" style={s.h2}>{en ? 'What the generator checks' : 'Co sprawdza generator'}</h2>
             <p style={s.akapit}>
-              {en ? `The generator fetches your sitemap, picks up to ${GENERATOR.adresow} URLs (with a larger sitemap, a few from every section), checks them and builds the file from them. At the same time it tests the access of ${GENERATOR.botow} bots to the home page. The whole run takes ${GENERATOR.sekund} seconds at most. If your site responds slowly, you get a partial result and a list of the URLs we did not manage to check. We do not store the address or the result.` : `Generator pobiera mapę strony, wybiera do ${GENERATOR.adresow} adresów (przy większej mapie po kilka z każdej sekcji), sprawdza je i składa z nich plik. Równolegle testuje dostęp ${GENERATOR.botow} botów do strony głównej. Całość trwa najwyżej ${GENERATOR.sekund} sekund. Gdy strona odpowiada wolno, dostajesz wynik częściowy i listę adresów, których nie zdążyliśmy sprawdzić. Nie zapisujemy ani adresu, ani wyniku.`}
+              {en ? `The generator fetches your sitemap, picks up to ${GENERATOR.adresow} URLs (with a larger sitemap, a few from every section), checks them and builds the file from them. At the same time it tests the access of ${GENERATOR.botowAi} AI bots and Bingbot to the home page. The whole run takes ${GENERATOR.sekund} seconds at most. If your site responds slowly, you get a partial result and a list of the URLs we did not manage to check. We do not store the address or the result.` : `Generator pobiera mapę strony, wybiera do ${GENERATOR.adresow} adresów (przy większej mapie po kilka z każdej sekcji), sprawdza je i składa z nich plik. Równolegle testuje dostęp ${GENERATOR.botowAi} botów AI i Bingbot do strony głównej. Całość trwa najwyżej ${GENERATOR.sekund} sekund. Gdy strona odpowiada wolno, dostajesz wynik częściowy i listę adresów, których nie zdążyliśmy sprawdzić. Nie zapisujemy ani adresu, ani wyniku.`}
             </p>
             <CompareTable
               id="tabela-testow"

@@ -108,10 +108,10 @@ function liniaNaZywo(en) {
   const n = WIDOCZNOSC.limitIp;
   if (en) {
     const szukaja = WIDOCZNOSC.geminiZWyszukiwaniem ? 'ChatGPT, Gemini, Perplexity and Claude search the web' : 'ChatGPT, Perplexity and Claude search the web, Gemini answers from model knowledge';
-    return `No sign-up. Up to ${n} businesses per day from one IP address. We ask live through the APIs: ${szukaja}, and we check AI Overviews in Google results for Poland.${WIDOCZNOSC.grok ? ' Grok answers from model knowledge, without web search.' : ''}`;
+    return `No sign-up. Up to ${n} businesses per day from one IP address. We ask live through the APIs: ${szukaja}, and we check AI Overviews in Google results for Poland.${WIDOCZNOSC.grok ? ' Grok answers from model knowledge, without web search.' : ''} ChatGPT here means an OpenAI model with web search through the API; answers in the ChatGPT app may differ.`;
   }
   const szukaja = WIDOCZNOSC.geminiZWyszukiwaniem ? 'ChatGPT, Gemini, Perplexity i Claude szukają w sieci' : 'ChatGPT, Perplexity i Claude szukają w sieci, Gemini odpowiada z wiedzy modelu';
-  return `Bez rejestracji. Do ${n} firm dziennie z jednego adresu IP. Pytamy na żywo przez API: ${szukaja}, a przegląd AI sprawdzamy w wynikach Google dla Polski.${WIDOCZNOSC.grok ? ' Grok odpowiada z wiedzy modelu, bez wyszukiwania.' : ''}`;
+  return `Bez rejestracji. Do ${n} firm dziennie z jednego adresu IP. Pytamy na żywo przez API: ${szukaja}, a przegląd AI sprawdzamy w wynikach Google dla Polski.${WIDOCZNOSC.grok ? ' Grok odpowiada z wiedzy modelu, bez wyszukiwania.' : ''} ChatGPT to tu model OpenAI z wyszukiwaniem przez API; odpowiedzi aplikacji ChatGPT mogą się różnić.`;
 }
 
 // Dopisek przy polach opcjonalnych mniejszy niż etykieta: w 2 kolumnach na telefonie etykieta mieści się w 1 wierszu.
@@ -135,12 +135,12 @@ function opisBramki(p, en, top, topZr) {
   const resztaZrodel = Math.max(0, (p.zrodel ?? 0) - topZr.length);
   if (en) {
     const co = [`the text of ${p.odpowiedzi} answers`, 'the sources of each answer'];
-    if (resztaFirm) co.push(top.length ? `the remaining businesses (${resztaFirm})` : `the names of the ${resztaFirm} businesses the models mention`);
+    if (resztaFirm) co.push(top.length ? `the remaining businesses (${resztaFirm})` : `the businesses found in the answers (${resztaFirm}), detected automatically from the answer text`);
     if (resztaZrodel) co.push(`the remaining cited sites (${resztaZrodel})`);
     return `We will show ${lacz(co, true)}, and email you the report.`;
   }
   const co = [`treść ${p.odpowiedzi} odpowiedzi`, 'źródła każdej z nich'];
-  if (resztaFirm) co.push(top.length ? `pozostałe firmy (${resztaFirm})` : `nazwy ${resztaFirm} ${odmiana(resztaFirm, ['firmy', 'firm', 'firm'])}, które wymieniają modele`);
+  if (resztaFirm) co.push(top.length ? `pozostałe firmy (${resztaFirm})` : `firmy znalezione w odpowiedziach (${resztaFirm}), wykrywane automatycznie z treści odpowiedzi`);
   if (resztaZrodel) co.push(`pozostałe cytowane strony (${resztaZrodel})`);
   return `Pokażemy ${lacz(co, false)}. Raport wyślemy e-mailem.`;
 }
@@ -429,15 +429,15 @@ export default function WidocznoscAiClient() {
                 naglowek={en ? 'See all answers and sources' : 'Zobacz wszystkie odpowiedzi i źródła'}
                 opis={opisBramki(p, en, top, topZr)}
                 korzysci={en
-                  ? [`Full answers: ${listaSilnikow('en')}`, 'The excerpt that names your business and the sources of each answer', 'All businesses and sites the models cite, plus the report by email']
-                  : [`Pełne odpowiedzi: ${listaSilnikow('pl')}`, 'Fragment, w którym pada Twoja firma, i źródła każdej odpowiedzi', 'Wszystkie firmy i strony, które cytują modele, oraz raport e-mailem']}
+                  ? [`Full answers: ${listaSilnikow('en')}`, p.wzmianki > 0 ? 'The excerpt that names your business and the sources of each answer' : 'Excerpts of the answers and the sources of each answer', 'All businesses and sites the models cite, plus the report by email']
+                  : [`Pełne odpowiedzi: ${listaSilnikow('pl')}`, p.wzmianki > 0 ? 'Fragment, w którym pada Twoja firma, i źródła każdej odpowiedzi' : 'Fragmenty odpowiedzi i źródła każdej z nich', 'Wszystkie firmy i strony, które cytują modele, oraz raport e-mailem']}
                 przycisk={en ? 'Show the AI answers' : 'Pokaż odpowiedzi AI'}
-                onOdblokowano={(pelny, newsletter) => setStan((s) => ({ ...s, pelny: DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny, newsletter }))}
+                onOdblokowano={(pelny, newsletter, mailOk) => setStan((s) => ({ ...s, pelny: DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny, newsletter, mailOk }))}
               />
             </div>
           ) : (
             <div key="pelny" ref={pelnyRef} className="narz-pelne-ai c-skok">
-              <Odblokowano newsletter={stan.newsletter} />
+              <Odblokowano newsletter={stan.newsletter} mailOk={stan.mailOk} />
               {stan.pelny.konkurenci?.length > 0 && (
                 <div role="region" aria-labelledby="ai-konkurenci">
                   <h2 id="ai-konkurenci" className="narz-h2">{en ? 'Who the models name' : 'Kogo modele wymieniają'}</h2>

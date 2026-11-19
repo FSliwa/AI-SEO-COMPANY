@@ -267,7 +267,7 @@ export default function AudytSeoClientDe() {
               der Rest der Liste folgt darunter. Nichts wird über der Liste eingefügt. */}
           <div className="audyt-lista">
             <ul className="narz-problemy">{gora.map((p) => <KartaProblemu key={p.id} p={p} />)}</ul>
-            {stan.pelny && <Odblokowano />}
+            {stan.pelny && <Odblokowano mailOk={stan.mailOk} />}
             {stan.pelny && stan.id && <Monitoring id={stan.id} email={stan.email} domena={w.domena} />}
             {stan.pelny && (
               <div className="narz-filtry" role="group" aria-label="Kategoriefilter">
@@ -298,11 +298,29 @@ export default function AudytSeoClientDe() {
                 opis="Wir zeigen Ihnen die vollständige Liste hier und senden Ihnen einen Bericht per E-Mail, den Sie direkt an Ihre Entwicklerin oder Ihren Entwickler weitergeben können."
                 korzysci={['Jedes Problem mit Anleitung zur Behebung', 'Die betroffenen Unterseiten', 'Prioritäten: von Fehlern bis zu Hinweisen']}
                 przycisk="Vollständiges Audit anzeigen"
-                onOdblokowano={(pelny) => {
+                onOdblokowano={(pelny, newsletter, mailOk) => {
                   const email = emailBramki.current;
-                  setStan((s) => ({ ...s, pelny, email }));
+                  setStan((s) => ({ ...s, pelny, email, mailOk }));
                 }}
               />
+            </div>
+          )}
+
+          {/* Bis zu drei Probleme: nichts ist gesperrt, die Schranke sendet nur den Bericht (tylkoRaport); darunter folgt das monatliche Audit. */}
+          {!stan.pelny && stan.podglad.zablokowane.length === 0 && stan.id && (
+            <div onSubmitCapture={(e) => { if (e.target instanceof HTMLFormElement) emailBramki.current = String(new FormData(e.target).get('email') || '').trim(); }}>
+              <BramkaEmail
+                narzedzie="audyt_seo"
+                id={stan.id}
+                tylkoRaport
+                naglowek="Bericht per E-Mail senden"
+                opis="Das ganze Ergebnis steht oben. Wir senden es Ihnen als Bericht mit Anleitungen zur Behebung per E-Mail, den Sie direkt an Ihre Entwicklerin oder Ihren Entwickler weitergeben können."
+                onOdblokowano={(pelny, newsletter, mailOk) => {
+                  const email = emailBramki.current;
+                  setStan((s) => ({ ...s, raportWyslany: true, email, mailOk }));
+                }}
+              />
+              {stan.raportWyslany && stan.mailOk !== false && <Monitoring id={stan.id} email={stan.email} domena={w.domena} />}
             </div>
           )}
 

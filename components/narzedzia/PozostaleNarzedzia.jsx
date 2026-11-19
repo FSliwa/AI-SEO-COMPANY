@@ -21,7 +21,7 @@ export const NARZEDZIA = [
   { href: '/sprawdz-widocznosc-w-ai', pl: ['Sprawdzarka AI visibility', `czy ${listaSilnikow('pl')} wymieniają Twoją firmę`], en: ['AI visibility check', `whether ${listaSilnikow('en')} name your business`] },
   { href: '/narzedzia/kalkulator-strat-seo', pl: ['Kalkulator strat bez SEO', 'ile zysku miesięcznie tracisz bez TOP 3 w Google i poleceń w AI'], en: ['SEO loss calculator', 'the monthly profit you lose without a Google top 3 position and AI recommendations'] },
   { href: '/narzedzia/makieta-redesignu', pl: ['Makieta strony internetowej', `nowa strona główna z AI w ${MAKIETA.minut} minuty, z Twoich treści`], en: ['Website redesign mockup', `a new AI homepage design in ${MAKIETA.minut} minutes, built from your content`] },
-  { href: '/narzedzia/generator-llms-txt', pl: ['Generator llms.txt', `plik llms.txt z mapy strony i test dostępu ${GENERATOR.botow} botów AI`], en: ['llms.txt generator', `an llms.txt file from your sitemap and an access test for ${GENERATOR.botow} AI bots`] },
+  { href: '/narzedzia/generator-llms-txt', pl: ['Generator llms.txt', `plik llms.txt z mapy strony i test dostępu ${GENERATOR.botowAi} botów AI i Bingbot`], en: ['llms.txt generator', `an llms.txt file from your sitemap and an access test for ${GENERATOR.botowAi} AI bots and Bingbot`] },
   { href: '/narzedzia/autorytet-domeny', pl: ['Autorytet domeny', `wynik 0-100 z grafu linków Common Crawl i porównanie z maksymalnie ${AUTORYTET.konkurentow} konkurentami`], en: ['Domain authority checker', `a 0-100 score from the Common Crawl link graph, compared with up to ${AUTORYTET.konkurentow} competitors`] },
 ];
 

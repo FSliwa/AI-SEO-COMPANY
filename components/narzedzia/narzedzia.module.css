@@ -179,25 +179,34 @@
   --nw-cien-panel: 0 24px 60px rgba(10, 19, 55, 0.1);
   --nw-obrys-panel: rgba(243, 183, 156, 0.55);
   counter-reset: nw;
-}
-
-/* --- Hero: ciepła mgła jak na stronie głównej + siatka kropek za panelem narzędzia --- */
-.hero {
-  position: relative;
   isolation: isolate;
 }
-.hero::before {
+
+/* --- Hero: ciepła mgła jak na stronie głównej + siatka kropek za panelem narzędzia ---
+   19.11.2026 (poprawki audytu 3, tło): mgła rysowała się w ::before sekcji .hero, a ta zaczyna się ok. 129 px pod
+   górą strony (pod nagłówkiem i okruszkami), więc gradient miał twardą poziomą krawędź pod okruszkami. Warstwa
+   siedzi teraz na całej <main> (od samej góry strony), środki elips są przesunięte o te 129 px (te same miejsca
+   co wcześniej względem treści), a miękka maska u góry (przezroczysta pod nagłówkiem, pełna od 200 px) jest siatką bezpieczeństwa, gdyby odległość się zmieniła
+   (np. dłuższe okruszki w dwóch wierszach). Pseudoelement jest pozycjonowany absolutnie: bez wpływu na układ i CLS. */
+.strona {
+  position: relative;
+}
+.strona::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
-  height: min(1000px, 100%);
+  height: 1130px;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60% 50% at 78% 8%, rgba(243, 183, 156, 0.38), transparent 70%),
-    radial-gradient(50% 45% at 10% 0%, rgba(251, 230, 218, 0.9), transparent 65%);
-  -webkit-mask-image: linear-gradient(#000 60%, transparent);
-  mask-image: linear-gradient(#000 60%, transparent);
+    radial-gradient(60% 500px at 78% 209px, rgba(243, 183, 156, 0.38), transparent 70%),
+    radial-gradient(50% 450px at 10% 129px, rgba(251, 230, 218, 0.9), transparent 65%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 40px, #000 200px, #000 64%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 40px, #000 200px, #000 64%, transparent 100%);
+}
+.hero {
+  position: relative;
+  isolation: isolate;
 }
 .hero :global(.section-tag) { justify-content: flex-start; }
 .hero > :global(.container) > *:not(.tresc) { max-width: 820px; }

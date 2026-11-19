@@ -16,12 +16,18 @@
 /* ---------- Hero ---------- */
 .sz-hero { position: relative; isolation: isolate; padding: clamp(28px, 4vw, 56px) 0 clamp(40px, 6vw, 72px); padding: round(nearest, clamp(28px, 4vw, 56px), 8px) 0 round(nearest, clamp(40px, 6vw, 72px), 8px); margin-top: -1px; }
 .sz-tlo {
-  position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+  /* 19.11.2026 (poprawki audytu 3, tło): warstwa zaczynała się na górze sekcji hero, ok. 128 px pod górą strony
+     (pod nagłówkiem i okruszkami), więc gradient miał twardą poziomą krawędź pod okruszkami. Teraz sięga 160 px
+     w górę (poza nagłówek) i ma miękką maskę u góry. Gradienty przeliczone tak, by zostały w tych samych miejscach
+     względem hero (H = wysokość hero, wysokość warstwy = H + 160 px): środek y = 6% * H + 160 px = 6% * (H + 160)
+     + 150,4 px, promień pionowy 55% * H = 55% * (H + 160) - 88 px (drugi: 45% * H = 45% * (H + 160) - 72 px),
+     koniec maski 72% * H + 160 px = 72% * (H + 160) + 44,8 px. Pozycjonowanie absolutne: bez wpływu na układ i CLS. */
+  position: absolute; inset: -160px 0 0 0; z-index: -1; pointer-events: none; overflow: hidden;
   background:
-    radial-gradient(60% 55% at 80% 6%, rgba(243, 183, 156, 0.38), transparent 70%),
-    radial-gradient(50% 45% at 8% 0%, rgba(251, 230, 218, 0.9), transparent 65%);
-  -webkit-mask-image: linear-gradient(#000 72%, transparent);
-  mask-image: linear-gradient(#000 72%, transparent);
+    radial-gradient(60% calc(55% - 88px) at 80% calc(6% + 150px), rgba(243, 183, 156, 0.38), transparent 70%),
+    radial-gradient(50% calc(45% - 72px) at 8% 160px, rgba(251, 230, 218, 0.9), transparent 65%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 40px, #000 200px, #000 calc(72% + 45px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 40px, #000 200px, #000 calc(72% + 45px), transparent 100%);
 }
 .sz-tlo::before {
   content: ''; position: absolute; inset: -20% -10% 0; opacity: 0.7;

@@ -55,13 +55,13 @@ function L({ href, en = false, children }) {
 const coKtory = Math.round(100 / PRZYKLADY.usluga.konwersja);
 
 // Z-07: zrzut wyniku kalkulatora dla przykładu „firma remontowa” (PRZYKLADY.remont, udział AI 25%, widoczność
-// w AI „nie”, pakiet SEO Standard, pełny efekt po 12 miesiącach), z 12.11.2026, bez ręcznych poprawek; tylko część
+// w AI „nie”, pakiet SEO Standard, pełny efekt po 12 miesiącach), z 19.11.2026 (poprzedni zrzut z 12.11 sprzed zmiany modelu zastąpiony nowymi plikami z datą w nazwie: /images jest cache'owane rok), bez ręcznych poprawek; tylko część
 // widoczna bez e-maila. Kalkulator liczy w przeglądarce, więc to prawdziwe wyliczenie dla danych przykładowych.
 // Po zmianie cennika (CENY), założeń (ZALOZENIA/ZWROT) albo PRZYKLADY.remont zrobić zrzut ponownie
-// (scratchpad/pw-zrzuty/zrzuty.mjs), bo liczby na obrazie przestaną się zgadzać z tekstem przykładu.
+// (ai-seo-prace/poprawki-audyt3/narzedzia-strona/zrzut-kalk.cjs), bo liczby na obrazie przestaną się zgadzać z tekstem przykładu.
 const ZRZUT = {
-  pl: { src: '/images/narzedzia/przyklady/kalkulator-strat-seo-przykladowy-wynik.webp', width: 1200, height: 1771 },
-  en: { src: '/images/narzedzia/przyklady/seo-loss-calculator-example-result.webp', width: 1200, height: 1789 },
+  pl: { src: '/images/narzedzia/przyklady/kalkulator-strat-seo-przykladowy-wynik-2026-11-19.webp', width: 1200, height: 1793 },
+  en: { src: '/images/narzedzia/przyklady/seo-loss-calculator-example-result-2026-11-19.webp', width: 1200, height: 1793 },
 };
 const schemaZrzutu = (z) => ({ url: z.src, width: z.width, height: z.height });
 const R = PRZYKLADY.remont;
@@ -111,7 +111,7 @@ export function KalkulatorStrona({ locale = 'pl' } = {}) {
       schema={{
         name: 'Kalkulator strat bez SEO i widoczności w AI',
         description: 'Bezpłatny kalkulator: szacuje, ile zysku miesięcznie traci firma albo sklep internetowy bez pozycji w TOP 3 Google i bez poleceń w odpowiedziach AI, na podstawie jej danych, badań CTR w Google i badań kliknięć z odpowiedzi AI, oraz po ilu miesiącach zwróci się koszt SEO.',
-        category: 'FinanceApplication',
+        category: 'BusinessApplication',
         screenshot: schemaZrzutu(ZRZUT.pl),
         featureList: ['Strata w Google i w odpowiedziach AI', 'Widełki z badań kliknięć w Google i w odpowiedziach AI', 'Wynik w złotych miesięcznie i rocznie', 'Koszt SEO i miesiąc zwrotu dla pakietu z cennika albo własnej kwoty', 'Tryb dla sklepu internetowego: wartość zamówienia, marża brutto i powracający klienci'],
       }}
@@ -139,7 +139,7 @@ export function KalkulatorStrona({ locale = 'pl' } = {}) {
             {...ZRZUT.pl}
             sizes="(max-width: 700px) 100vw, 640px"
             alt="Kalkulator strat SEO: przykładowe wyliczenie straty zysku z rozbiciem na Google, AI i klientów oraz koszt i miesiąc zwrotu pakietu SEO Standard"
-            podpis={`Przykładowe wyliczenie dla firmy remontowej z przykładu niżej: ${R.wyszukiwania.toLocaleString('pl-PL')} wyszukiwań, ${R.ruch} wejść z Google, ${R.konwersja}% konwersji, zlecenie ${R.wartosc.toLocaleString('pl-PL')} zł, marża ${R.marza}%, pakiet SEO Standard i pełny efekt po 12 miesiącach. Liczby są przykładowe, to nie wynik prawdziwej firmy. Zrzut z 12.11.2026 (ceny z tego dnia).`}
+            podpis={`Przykładowe wyliczenie dla firmy remontowej z przykładu niżej: ${R.wyszukiwania.toLocaleString('pl-PL')} wyszukiwań, ${R.ruch} wejść z Google, ${R.konwersja}% konwersji, zlecenie ${R.wartosc.toLocaleString('pl-PL')} zł, marża ${R.marza}%, pakiet SEO Standard i pełny efekt po 12 miesiącach. Liczby są przykładowe, to nie wynik prawdziwej firmy. Zrzut z 19.11.2026 (ceny z tego dnia).`}
           />
         </div>
       </CoDostajesz>
@@ -147,7 +147,7 @@ export function KalkulatorStrona({ locale = 'pl' } = {}) {
       <Sekcja id="jak-liczymy" tytul="Jak liczymy stratę">
         <ol style={s.lista}>
           <li><strong>Potencjał w Google:</strong> wyszukiwania pomniejszone o część, która trafia do asystentów AI, razy średni CTR pozycji 1-3 (First Page Sage, raport z 22.09.2026, dane z USA): {ctrPl(ZALOZENIA.ctrTop3.ostrozny)}% w wariancie ostrożnym (średnia ze wszystkich zapytań, także tych z odpowiedzią AI) i {ctrPl(ZALOZENIA.ctrTop3.optymistyczny)}% w optymistycznym (zapytania bez odpowiedzi AI).</li>
-          <li><strong>Przeglądy AI w Google:</strong> przy {proc(ZALOZENIA.aio.udzialWyszukiwan)}% wyszukiwań kliknięcia spadają z {proc(ZALOZENIA.aio.ctrBez)}% do {proc(ZALOZENIA.aio.ctrZ)}% wizyt, więc obniżamy CTR proporcjonalnie.</li>
+          <li><strong>Przeglądy AI w Google:</strong> przy {proc(ZALOZENIA.aio.udzialWyszukiwan)}% wyszukiwań kliknięcia spadają z {proc(ZALOZENIA.aio.ctrBez)}% do {proc(ZALOZENIA.aio.ctrZ)}% wizyt, więc obniżamy CTR proporcjonalnie. Wariant ostrożny już zawiera odpowiedzi AI w CTR, a obniżamy go dodatkowo, więc jest zaniżony. Dane CTR i Pew dotyczą USA.</li>
           <li><strong>Strata w Google</strong> to potencjał minus Twój obecny ruch z Google (nie mniej niż zero).</li>
           <li><strong>Strata w AI:</strong> część pytań zadawanych asystentom AI razy odsetek pytających, którzy wchodzą potem na stronę polecanej firmy: {AI_MIN}% w wariancie ostrożnym (Pew Research Center: w link w samym podsumowaniu AI klika się w 1% wizyt) i {AI_MAX}% w optymistycznym (Similarweb: mniej niż ok. 3% wyszukiwań w trybie AI Google kończy się kliknięciem w inną stronę). To kilka razy mniej niż CTR pozycji 1-3 w Google. Liczymy ją tylko wtedy, gdy modele nie polecają dziś Twojej firmy.</li>
           <li><strong>Odpowiedź „nie wiem”:</strong> liczymy {proc(ZALOZENIA.ai.nieWiem.ostrozny)}% straty w AI w wariancie ostrożnym i całą w optymistycznym, bo asystenci polecają niewiele firm: według SOCi (2026) ChatGPT poleca 1,2% lokalizacji firm, a Google pokazuje 35,9% w pakiecie lokalnym.</li>
@@ -211,7 +211,7 @@ export function KalkulatorStrona({ locale = 'pl' } = {}) {
           <li><strong>Sprawdź, co blokuje stronę.</strong> <L href="/narzedzia/audyt-seo">Darmowy audyt SEO</L> przejdzie do {AUDYT.stron} podstron w {AUDYT.regul} regułach i pokaże błędy, które przeszkadzają Google i botom AI.</li>
           <li><strong>Zamień „nie wiem” na odpowiedź.</strong> <L href="/sprawdz-widocznosc-w-ai">Sprawdzarka widoczności w AI</L> zada pytania klientów modelom AI i pokaże, czy wymieniają Twoją firmę. Wtedy wpiszesz w kalkulator „tak” albo „nie” zamiast „nie wiem”.</li>
           <li><strong>Zacznij od fraz z największym popytem.</strong> Porównaj swoje podstrony z TOP 3 dla tych fraz: treść, odpowiedzi na pytania klientów, opinie, szybkość. Jak to zrobić krok po kroku, opisujemy w <L href="/blog/analiza-konkurencji-seo-przewodnik">przewodniku po analizie konkurencji</L>.</li>
-          <li><strong>Wpuść boty AI.</strong> <L href="/narzedzia/generator-llms-txt">Generator llms.txt</L> sprawdzi, czy {GENERATOR.botow} botów AI może wejść na stronę, i przygotuje plik llms.txt.</li>
+          <li><strong>Wpuść boty AI.</strong> <L href="/narzedzia/generator-llms-txt">Generator llms.txt</L> sprawdzi, czy {GENERATOR.botowAi} botów AI i Bingbot mogą wejść na stronę, i przygotuje plik llms.txt.</li>
           <li><strong>Policz jeszcze raz.</strong> Wpisz nowe liczby z Google Search Console po kilku miesiącach pracy i porównaj stratę z kosztem pakietu.</li>
         </ol>
       </Sekcja>
@@ -255,7 +255,7 @@ function KalkulatorEn() {
       schema={{
         name: 'Calculator: profit lost without SEO and AI visibility',
         description: 'A free calculator that estimates how much profit a business or an online shop loses each month without top 3 Google positions and without recommendations in AI answers, based on its data, Google CTR studies and studies of clicks from AI answers, and after how many months the cost of SEO pays back.',
-        category: 'FinanceApplication',
+        category: 'BusinessApplication',
         screenshot: schemaZrzutu(ZRZUT.en),
         featureList: ['Loss in Google and in AI answers', 'A range from studies of clicks in Google and in AI answers', 'Monthly and yearly result in PLN', 'SEO cost and payback month for a package from our pricing or your own amount', 'Online shop mode: average order value, gross margin and returning customers'],
       }}
@@ -283,7 +283,7 @@ function KalkulatorEn() {
             {...ZRZUT.en}
             sizes="(max-width: 700px) 100vw, 640px"
             alt="SEO loss calculator: an example calculation of lost profit split into Google, AI and customers, with the cost and payback month of the SEO Standard package"
-            podpis={`An example calculation for the renovation company from the example below: ${R.wyszukiwania.toLocaleString('en-US')} searches, ${R.ruch} visits from Google, ${R.konwersja}% conversion, a PLN ${R.wartosc.toLocaleString('en-US')} job, ${R.marza}% margin, the SEO Standard package and full effect after 12 months. The numbers are illustrative, not a real company's result. Screenshot from November 12, 2026 (prices as of that day).`}
+            podpis={`An example calculation for the renovation company from the example below: ${R.wyszukiwania.toLocaleString('en-US')} searches, ${R.ruch} visits from Google, ${R.konwersja}% conversion, a PLN ${R.wartosc.toLocaleString('en-US')} job, ${R.marza}% margin, the SEO Standard package and full effect after 12 months. The numbers are illustrative, not a real company's result. Screenshot from November 19, 2026 (prices as of that day).`}
           />
         </div>
       </CoDostajesz>
@@ -291,7 +291,7 @@ function KalkulatorEn() {
       <Sekcja id="how-we-calculate" tytul="How we calculate the loss">
         <ol style={s.lista}>
           <li><strong>Potential in Google:</strong> searches minus the share that goes to AI assistants, times the average CTR of positions 1-3 (First Page Sage, report of 22 September 2026, US data): {ctrEn(ZALOZENIA.ctrTop3.ostrozny)}% in the cautious variant (average over all queries, including those with an AI answer) and {ctrEn(ZALOZENIA.ctrTop3.optymistyczny)}% in the optimistic one (queries without an AI answer).</li>
-          <li><strong>Google AI Overviews:</strong> for {proc(ZALOZENIA.aio.udzialWyszukiwan)}% of searches, clicks fall from {proc(ZALOZENIA.aio.ctrBez)}% to {proc(ZALOZENIA.aio.ctrZ)}% of visits, so we lower CTR proportionally.</li>
+          <li><strong>Google AI Overviews:</strong> for {proc(ZALOZENIA.aio.udzialWyszukiwan)}% of searches, clicks fall from {proc(ZALOZENIA.aio.ctrBez)}% to {proc(ZALOZENIA.aio.ctrZ)}% of visits, so we lower CTR proportionally. The cautious variant already includes AI answers in its CTR and we lower it further, so it is deliberately understated. The CTR and Pew data come from the US.</li>
           <li><strong>Loss in Google</strong> is the potential minus your current Google traffic (never less than zero).</li>
           <li><strong>Loss in AI:</strong> the share of questions asked to AI assistants times the share of people who then visit the recommended business’s website: {AI_MIN}% in the cautious variant (Pew Research Center: a link inside the AI summary is clicked in 1% of visits) and {AI_MAX}% in the optimistic one (Similarweb: fewer than about 3% of Google AI Mode searches end with a click to another website). That is several times less than the CTR of positions 1-3 in Google. We count it only if the models do not recommend your business today.</li>
           <li><strong>“Not sure” answer:</strong> we count {proc(ZALOZENIA.ai.nieWiem.ostrozny)}% of the AI loss in the cautious variant and all of it in the optimistic one, because assistants recommend few businesses: according to SOCi (2026), ChatGPT recommends 1.2% of business locations, while Google shows 35.9% in the local pack.</li>
@@ -355,7 +355,7 @@ function KalkulatorEn() {
           <li><strong>Find what holds your site back.</strong> The <L en href="/narzedzia/audyt-seo">free SEO audit</L> checks up to {AUDYT.stron} pages against {AUDYT.regul} rules and shows the errors that get in the way of Google and AI bots.</li>
           <li><strong>Replace “not sure” with an answer.</strong> The <L en href="/sprawdz-widocznosc-w-ai">AI visibility check</L> asks AI models your customers’ questions and shows whether they mention your business. Then you can answer “yes” or “no” in the calculator instead of “not sure”.</li>
           <li><strong>Start with the keywords with the most demand.</strong> Compare your pages with the top 3 for those keywords: content, answers to customer questions, reviews, speed. Our <L en href="/blog/analiza-konkurencji-seo-przewodnik">competitor analysis guide</L> shows how, step by step.</li>
-          <li><strong>Let AI bots in.</strong> The <L en href="/narzedzia/generator-llms-txt">llms.txt generator</L> checks whether {GENERATOR.botow} AI bots can access your site and prepares an llms.txt file.</li>
+          <li><strong>Let AI bots in.</strong> The <L en href="/narzedzia/generator-llms-txt">llms.txt generator</L> checks whether {GENERATOR.botowAi} AI bots and Bingbot can access your site and prepares an llms.txt file.</li>
           <li><strong>Calculate again.</strong> Enter new numbers from Google Search Console after a few months of work and compare the loss with the package cost.</li>
         </ol>
       </Sekcja>

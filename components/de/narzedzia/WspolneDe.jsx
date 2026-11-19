@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
 import { DEMO, odblokuj } from '@/lib/narzedziaApi';
+import { tekstPotwierdzenia } from '@/lib/narzedziaPotwierdzenie';
 import { linkZParametrami } from '@/lib/narzedzia/parametrUrl';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import Zwin from '@/components/narzedzia/Zwin';
@@ -76,10 +77,11 @@ export function PasekDemo() {
 }
 
 /** Potwierdzenie po bramce; tylkoRaport = wynik był widoczny bez e-maila. */
-export function Odblokowano({ tylkoRaport = false, potwRef = null }) {
+export function Odblokowano({ tylkoRaport = false, potwRef = null, mailOk }) {
+  const potw = tekstPotwierdzenia({ lang: 'de', tylkoRaport, mailOk });
   return (
     <div className="narz-bramka narz-bramka--gotowe r-stan" role="status" ref={potwRef} tabIndex={potwRef ? -1 : undefined}>
-      <p className="narz-bramka-tytul">{tylkoRaport ? 'Fertig: Wir haben Ihnen den Bericht per E-Mail geschickt.' : 'Fertig: Das vollständige Ergebnis steht unten, den Bericht haben wir Ihnen per E-Mail geschickt.'}</p>
+      <p className="narz-bramka-tytul">{potw.tytul}</p>
     </div>
   );
 }
@@ -132,8 +134,8 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
       return;
     }
     track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: narzedzie, currency: 'PLN', value: 50 });
-    setStan({ status: 'done', blad: null });
-    onOdblokowano?.(r.pelny, r.newsletter);
+    setStan({ status: 'done', blad: null, mailOk: r.mailOk }); // mailOk === false: Bericht nicht versendet
+    onOdblokowano?.(r.pelny, r.newsletter, r.mailOk);
   }
 
   const gotowe = stan.status === 'done';
@@ -142,7 +144,7 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
 
   return (
     <>
-    <Zwin otwarte={!gotowe} wejscie={false}>
+    <Zwin otwarte={!gotowe || (tylkoRaport && stan.mailOk === false)} wejscie={false}>
     <form ref={ref} className="narz-bramka" onSubmit={wyslij} aria-labelledby={`bramka-${narzedzie}`}>
       <div className="narz-bramka-glowa">
         <span className="narz-bramka-ikona" aria-hidden="true">
@@ -176,7 +178,7 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
       <Zwin otwarte={stan.status === 'error'}><p role="alert" className="narz-blad">{stan.blad}</p></Zwin>
     </form>
     </Zwin>
-    {gotowe && <Odblokowano tylkoRaport={tylkoRaport} potwRef={potwRef} />}
+    {gotowe && <Odblokowano tylkoRaport={tylkoRaport} potwRef={potwRef} mailOk={stan.mailOk} />}
     </>
   );
 }

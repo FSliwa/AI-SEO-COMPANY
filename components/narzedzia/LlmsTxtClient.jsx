@@ -246,8 +246,8 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
         {/* Z-L1 + Z-01 pkt 4: opis pod przyciskiem; „wybieramy do 50” = plik (zastępcy za adresy z błędem są ponad to). */}
         <p id="llms-opis-formularza" style={{ ...s.przypis, margin: 0 }}>
           {en
-            ? `The whole file right away, no email. We fetch your sitemap (up to ${GENERATOR.mapPodrzednych} child sitemaps), pick up to ${GENERATOR.adresow} URLs (with a larger sitemap, a few from every section) and check ${GENERATOR.botow} AI bots. Before downloading, you can edit the links, descriptions and order. We do not store the address or the result. Limit: ${GENERATOR.limitIp} checks per day from one IP address.`
-            : `Cały plik od razu, bez e-maila. Pobieramy mapę strony (do ${GENERATOR.mapPodrzednych} map podrzędnych), wybieramy do ${GENERATOR.adresow} adresów (przy większej mapie po kilka z każdej sekcji) i sprawdzamy ${GENERATOR.botow} botów AI. Przed pobraniem możesz zmienić linki, opisy i kolejność. Nie zapisujemy adresu ani wyniku. Limit: ${GENERATOR.limitIp} sprawdzeń dziennie z jednego adresu IP.`}
+            ? `The whole file right away, no email. We fetch your sitemap (up to ${GENERATOR.mapPodrzednych} child sitemaps), pick up to ${GENERATOR.adresow} URLs (with a larger sitemap, a few from every section) and check ${GENERATOR.botowAi} AI bots and Bingbot. Before downloading, you can edit the links, descriptions and order. We do not store the address or the result. Limit: ${GENERATOR.limitIp} checks per day from one IP address.`
+            : `Cały plik od razu, bez e-maila. Pobieramy mapę strony (do ${GENERATOR.mapPodrzednych} map podrzędnych), wybieramy do ${GENERATOR.adresow} adresów (przy większej mapie po kilka z każdej sekcji) i sprawdzamy ${GENERATOR.botowAi} botów AI i Bingbot. Przed pobraniem możesz zmienić linki, opisy i kolejność. Nie zapisujemy adresu ani wyniku. Limit: ${GENERATOR.limitIp} sprawdzeń dziennie z jednego adresu IP.`}
         </p>
       </form>
 

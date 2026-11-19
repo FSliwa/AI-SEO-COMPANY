@@ -125,13 +125,13 @@ export default function MakietaClient() {
                   opis={en ? 'We will show the whole page, mobile included, and email you a link to the mockup so you can show it to a partner or a developer.' : 'Pokażemy całą stronę, także na telefonie, i wyślemy link do makiety e-mailem, żeby pokazać ją wspólnikowi albo programiście.'}
                   korzysci={en ? ['All sections: services, advantages, contact, footer', 'Desktop and mobile preview', 'Link valid for 60 days'] : ['Wszystkie sekcje: usługi, przewagi, kontakt, stopka', 'Podgląd na komputerze i telefonie', 'Link ważny 60 dni']}
                   przycisk={en ? 'Show the full mockup' : 'Pokaż całą makietę'}
-                  onOdblokowano={(pelny, newsletter) => { setRezerwa(wynikRef.current?.offsetHeight || 0); setStan((s) => ({ ...s, pelny, newsletter })); }}
+                  onOdblokowano={(pelny, newsletter, mailOk) => { setRezerwa(wynikRef.current?.offsetHeight || 0); setStan((s) => ({ ...s, pelny, newsletter, mailOk })); }}
                 />
               </div>
             </>
           ) : (
             <>
-              <Odblokowano key="odblokowano" newsletter={stan.newsletter} />
+              <Odblokowano key="odblokowano" newsletter={stan.newsletter} mailOk={stan.mailOk} />
               <div key="filtry" className="narz-filtry" role="group" aria-label={en ? 'Mockup view' : 'Widok makiety'}>
                 {(en ? [['komputer', 'Desktop'], ['telefon', 'Mobile']] : [['komputer', 'Komputer'], ['telefon', 'Telefon']]).map(([k, t]) => (
                   <button key={k} type="button" aria-pressed={widok === k} onClick={() => setWidok(k)}>{t}</button>

@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { DEMO } from '@/lib/narzedziaApi';
+import { tekstPotwierdzenia } from '@/lib/narzedziaPotwierdzenie';
 import Zwin from './Zwin';
 import st from './narzedzia.module.css';
 
@@ -69,11 +70,12 @@ export function PasekDemo() {
 
 /** Potwierdzenie po bramce, widoczne nad pełnym wynikiem (bramka znika razem z atrapą).
  *  tylkoRaport (12.11.2026, Z-K5, autorytet): wynik był widoczny bez e-maila, bramka tylko wysłała raport. */
-export function Odblokowano({ newsletter, tylkoRaport = false }) {
+export function Odblokowano({ newsletter, tylkoRaport = false, mailOk }) {
   const en = useLocale() === 'en';
+  const potw = tekstPotwierdzenia({ lang: en ? 'en' : 'pl', tylkoRaport, mailOk }); // mailOk === false: raport nie wyszedł
   return (
     <div className="narz-bramka narz-bramka--gotowe r-stan" role="status">
-      <p className="narz-bramka-tytul">{tylkoRaport ? (en ? 'Done: we have emailed you the report.' : 'Gotowe: raport wysłaliśmy e-mailem.') : (en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest poniżej, raport wysłaliśmy e-mailem.')}</p>
+      <p className="narz-bramka-tytul">{potw.tytul}</p>
       {newsletter === 'pending' && <p className="narz-bramka-opis">{en ? 'Check your inbox and confirm your newsletter signup. Without confirmation we will not send any issue.' : 'Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.'}</p>}
     </div>
   );

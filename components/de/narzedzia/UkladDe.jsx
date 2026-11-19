@@ -56,7 +56,7 @@ export function ZrodlaDe({ zrodla, id = 'zrodla' }) {
 
 /** „Weitere kostenlose Tools”: tylko narzędzia i szablony z wersją DE (bez huba i bez bieżącej strony). */
 export function WeitereToolsDe({ bez }) {
-  const L = { audytStron: AUDYT.stron, botow: GENERATOR.botow, konkurentow: AUTORYTET.konkurentow, silniki: 'ChatGPT, Gemini, Perplexity, Claude und AI Overviews' };
+  const L = { audytStron: AUDYT.stron, botow: GENERATOR.botow, botowAi: GENERATOR.botowAi, konkurentow: AUTORYTET.konkurentow, silniki: 'ChatGPT, Gemini, Perplexity, Claude und AI Overviews' };
   const karty = Object.entries(KARTY_DE).filter(([href]) => href !== bez && maWersjeDe(href));
   if (!karty.length) return null;
   return (

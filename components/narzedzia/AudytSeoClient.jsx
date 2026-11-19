@@ -310,7 +310,7 @@ export default function AudytSeoClient() {
               a reszta listy pod nimi. Nic nie wstawia się nad listą, więc nic, co widać na ekranie, nie ucieka w dół. */}
           <div className="audyt-lista">
             <ul className="narz-problemy">{gora.map((p) => <KartaProblemu key={p.id} p={p} en={en} />)}</ul>
-            {stan.pelny && <Odblokowano newsletter={stan.newsletter} />}
+            {stan.pelny && <Odblokowano newsletter={stan.newsletter} mailOk={stan.mailOk} />}
             {stan.pelny && stan.id && <Monitoring id={stan.id} email={stan.email} domena={w.domena} en={en} />}
             {stan.pelny && (
               <div className="narz-filtry" role="group" aria-label={en ? 'Category filter' : 'Filtr kategorii'}>
@@ -341,11 +341,30 @@ export default function AudytSeoClient() {
                 opis={en ? 'We will show the full list here and email you a report you can hand straight to a developer.' : 'Pokażemy pełną listę tutaj i wyślemy raport e-mailem, gotowy do przekazania programiście.'}
                 korzysci={en ? ['Every issue with fix instructions', 'The pages each issue affects', 'Priorities: from errors to notices'] : ['Każdy problem z instrukcją naprawy', 'Adresy podstron, których dotyczy', 'Priorytety: od błędów do uwag']}
                 przycisk={en ? 'Show the full audit' : 'Pokaż pełny audyt'}
-                onOdblokowano={(pelny, newsletter) => {
+                onOdblokowano={(pelny, newsletter, mailOk) => {
                   const email = emailBramki.current;
-                  setStan((s) => ({ ...s, pelny, newsletter, email }));
+                  setStan((s) => ({ ...s, pelny, newsletter, email, mailOk }));
                 }}
               />
+            </div>
+          )}
+
+          {/* Do trzech problemów nic nie jest zablokowane (cały wynik jest na ekranie), więc bramka tylko wysyła raport
+              (tylkoRaport, jak w narzędziu autorytetu), a opcja comiesięcznego audytu wchodzi pod nią. Wynik zostaje bez zmian. */}
+          {!stan.pelny && stan.podglad.zablokowane.length === 0 && stan.id && (
+            <div onSubmitCapture={(e) => { if (e.target instanceof HTMLFormElement) emailBramki.current = String(new FormData(e.target).get('email') || '').trim(); }}>
+              <BramkaEmail
+                narzedzie="audyt_seo"
+                id={stan.id}
+                tylkoRaport
+                naglowek={en ? 'Send the report by email' : 'Wyślij raport e-mailem'}
+                opis={en ? 'The whole result is above. We will email it as a report with fix instructions that you can hand straight to a developer.' : 'Cały wynik masz powyżej. Wyślemy go e-mailem w raporcie z instrukcjami naprawy, gotowym do przekazania programiście.'}
+                onOdblokowano={(pelny, newsletter, mailOk) => {
+                  const email = emailBramki.current;
+                  setStan((s) => ({ ...s, raportWyslany: true, newsletter, email, mailOk }));
+                }}
+              />
+              {stan.raportWyslany && stan.mailOk !== false && <Monitoring id={stan.id} email={stan.email} domena={w.domena} en={en} />}
             </div>
           )}
 

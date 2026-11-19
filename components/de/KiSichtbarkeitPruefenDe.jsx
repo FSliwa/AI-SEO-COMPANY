@@ -22,6 +22,7 @@ import WebAppSchema from '@/components/WebAppSchema';
 import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
 import { DEMO, PANEL_API, wywolajNarzedzie, odblokuj } from '@/lib/narzedziaApi';
+import { tekstPotwierdzenia } from '@/lib/narzedziaPotwierdzenie';
 import { useParametrUrl, zapiszParametry, linkZParametrami } from '@/lib/narzedzia/parametrUrl';
 import { WIDOCZNOSC } from '@/lib/narzedziaLiczby';
 import { maWersjeDe, STRONY_DE } from '@/lib/stronyDe';
@@ -100,7 +101,7 @@ const OPCJONALNIE = { fontWeight: 400, fontSize: '0.8rem', color: 'var(--w-tusz-
 
 function liniaNaZywo() {
   const szukaja = W.geminiZWyszukiwaniem ? 'ChatGPT, Gemini, Perplexity und Claude suchen im Netz' : 'ChatGPT, Perplexity und Claude suchen im Netz, Gemini antwortet aus dem Modellwissen';
-  return `Ohne Anmeldung. Bis zu ${W.limitIp} Unternehmen pro Tag von einer IP-Adresse. Wir fragen live über die APIs: ${szukaja}, und die AI Overviews prüfen wir in den Google-Ergebnissen für Deutschland.${W.grok ? ' Grok antwortet aus dem Modellwissen, ohne Websuche.' : ''}`;
+  return `Ohne Anmeldung. Bis zu ${W.limitIp} Unternehmen pro Tag von einer IP-Adresse. Wir fragen live über die APIs: ${szukaja}, und die AI Overviews prüfen wir in den Google-Ergebnissen für Deutschland.${W.grok ? ' Grok antwortet aus dem Modellwissen, ohne Websuche.' : ''} ChatGPT meint hier ein OpenAI-Modell mit Websuche über die API; Antworten der ChatGPT-App können abweichen.`;
 }
 
 function lacz(lista) {
@@ -112,7 +113,7 @@ function opisBramki(p, top, topZr) {
   const resztaFirm = Math.max(0, (p.konkurentow ?? 0) - top.length);
   const resztaZrodel = Math.max(0, (p.zrodel ?? 0) - topZr.length);
   const co = [`den Wortlaut der ${p.odpowiedzi} Antworten`, 'die Quellen jeder Antwort'];
-  if (resztaFirm) co.push(top.length ? `die übrigen Unternehmen (${resztaFirm})` : `die Namen der ${resztaFirm} Unternehmen, die die Modelle nennen`);
+  if (resztaFirm) co.push(top.length ? `die übrigen Unternehmen (${resztaFirm})` : `die in den Antworten gefundenen Unternehmen (${resztaFirm}), automatisch aus dem Antworttext erkannt`);
   if (resztaZrodel) co.push(`die übrigen zitierten Seiten (${resztaZrodel})`);
   return `Wir zeigen ${lacz(co)} und senden Ihnen den Bericht per E-Mail.`;
 }
@@ -209,8 +210,8 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
     const r = await odblokuj(body);
     if (!r.ok) return setStan({ status: 'error', blad: r.blad });
     track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: 'widocznosc_ai', currency: 'PLN', value: 50 });
-    setStan({ status: 'done', blad: null });
-    return onOdblokowano?.(r.pelny);
+    setStan({ status: 'done', blad: null, mailOk: r.mailOk }); // mailOk === false: Bericht nicht versendet
+    return onOdblokowano?.(r.pelny, r.newsletter, r.mailOk);
   }
 
   const gotowe = stan.status === 'done';
@@ -251,7 +252,7 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
     </Zwin>
     {gotowe && (
       <div className="narz-bramka narz-bramka--gotowe r-stan" role="status" ref={potwRef} tabIndex={-1}>
-        <p className="narz-bramka-tytul">Fertig: Das vollständige Ergebnis steht unten, und den Bericht haben wir Ihnen per E-Mail gesendet.</p>
+        <p className="narz-bramka-tytul">{tekstPotwierdzenia({ lang: 'de', mailOk: stan.mailOk }).tytul}</p>
       </div>
     )}
     </>
@@ -527,15 +528,15 @@ function PruefTool() {
                 id={stan.id}
                 naglowek="Alle Antworten und Quellen ansehen"
                 opis={opisBramki(p, top, topZr)}
-                korzysci={[`Vollständige Antworten: ${listeEngines()}`, 'Der Ausschnitt, in dem Ihr Unternehmen genannt wird, und die Quellen jeder Antwort', 'Alle Unternehmen und Seiten, die die Modelle zitieren, plus der Bericht per E-Mail']}
+                korzysci={[`Vollständige Antworten: ${listeEngines()}`, p.wzmianki > 0 ? 'Der Ausschnitt, in dem Ihr Unternehmen genannt wird, und die Quellen jeder Antwort' : 'Ausschnitte der Antworten und die Quellen jeder Antwort', 'Alle Unternehmen und Seiten, die die Modelle zitieren, plus der Bericht per E-Mail']}
                 przycisk="KI-Antworten anzeigen"
-                onOdblokowano={(pelny) => setStan((x) => ({ ...x, pelny: DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny }))}
+                onOdblokowano={(pelny, newsletter, mailOk) => setStan((x) => ({ ...x, pelny: DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny, mailOk }))}
               />
             </div>
           ) : (
             <div key="pelny" ref={pelnyRef} className="narz-pelne-ai c-skok">
               <div className="narz-bramka narz-bramka--gotowe r-stan" role="status">
-                <p className="narz-bramka-tytul">Fertig: Das vollständige Ergebnis steht unten, und den Bericht haben wir Ihnen per E-Mail gesendet.</p>
+                <p className="narz-bramka-tytul">{tekstPotwierdzenia({ lang: 'de', mailOk: stan.mailOk }).tytul}</p>
               </div>
               {stan.pelny.konkurenci?.length > 0 && (
                 <div role="region" aria-labelledby="ai-konkurenci">

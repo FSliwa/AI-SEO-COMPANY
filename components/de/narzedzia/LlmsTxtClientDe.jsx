@@ -193,7 +193,7 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
           {stan.status === 'error' && <p role="alert" className="llms-wchodzi" style={{ margin: 0, color: '#b3261e' }}>{stan.blad}</p>}
         </div>
         <p id="llms-opis-formularza" style={{ ...s.przypis, margin: 0 }}>
-          {`Die ganze Datei sofort, ohne E-Mail. Wir rufen Ihre Sitemap ab (bis zu ${GENERATOR.mapPodrzednych} untergeordnete Sitemaps), wählen bis zu ${GENERATOR.adresow} Adressen aus (bei einer größeren Sitemap einige aus jedem Abschnitt) und prüfen ${GENERATOR.botow} KI-Bots. Vor dem Download können Sie Links, Beschreibungen und Reihenfolge ändern. Wir speichern weder die Adresse noch das Ergebnis. Limit: ${GENERATOR.limitIp} Prüfungen pro Tag und IP-Adresse.`}
+          {`Die ganze Datei sofort, ohne E-Mail. Wir rufen Ihre Sitemap ab (bis zu ${GENERATOR.mapPodrzednych} untergeordnete Sitemaps), wählen bis zu ${GENERATOR.adresow} Adressen aus (bei einer größeren Sitemap einige aus jedem Abschnitt) und prüfen ${GENERATOR.botowAi} KI-Bots und Bingbot. Vor dem Download können Sie Links, Beschreibungen und Reihenfolge ändern. Wir speichern weder die Adresse noch das Ergebnis. Limit: ${GENERATOR.limitIp} Prüfungen pro Tag und IP-Adresse.`}
         </p>
       </form>
 

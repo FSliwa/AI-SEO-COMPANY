@@ -43,7 +43,7 @@ const TESTY = [
   { co: 'noindex', poCo: 'Eine vom Index ausgeschlossene Seite gehört nicht in das Verzeichnis.', jak: 'Wir überspringen Adressen mit noindex im Meta-Tag robots oder im Header X-Robots-Tag.' },
   { co: 'Titel und Beschreibung', poCo: 'Sie bilden die Zeilen der Datei: ein Link mit Titel und einer Beschreibung nach dem Doppelpunkt.', jak: 'Keine Beschreibung = ein nackter Link. Ergänzen Sie für diese Seiten eine Meta-Beschreibung.' },
   { co: 'Abschnitte der Datei', poCo: 'Wir gruppieren Seiten nach dem ersten Teil der Adresse (Blog, Leistungen) und nach Sprachversion (EN-Version, Blog (EN)). AGB und Richtlinien kommen in den Abschnitt „Optional“, den ein Modell überspringen darf. Die Kontaktseite bleibt in „Seiten“.', jak: 'Ein Abschnitt braucht mindestens 2 Seiten in der Sitemap; die übrigen Adressen kommen nach „Seiten“. Im Editor können Sie Abschnitte vor dem Download umbenennen und Links zwischen ihnen verschieben.' },
-  { co: 'robots.txt für 8 Bots', poCo: 'Zeigt, ob ein Bot die Startseite abrufen darf und wie viele der geprüften Adressen er blockiert.', jak: 'Wer OAI-SearchBot oder PerplexityBot sperrt, schließt seine Website aus den Ergebnissen von ChatGPT und Perplexity aus.' },
+  { co: 'robots.txt für 7 KI-Bots und Bingbot', poCo: 'Zeigt, ob ein Bot die Startseite abrufen darf und wie viele der geprüften Adressen er blockiert.', jak: 'Wer OAI-SearchBot oder PerplexityBot sperrt, schließt seine Website aus den Ergebnissen von ChatGPT und Perplexity aus.' },
   { co: 'Vorhandene Datei /llms.txt', poCo: 'Zeigt, ob die Website die Datei schon hat und ob sie ohne Weiterleitung ausgeliefert wird.', jak: 'Code 200 und eine Überschrift „# Name“ in der ersten Zeile = die Datei ist vorhanden. Wir zeigen auch die Zahl der Links zu Ihren Unterseiten: Eine Datei ohne Links im Format [Name](https://adresse) markieren wir als Fehler, weil sie einem Modell nichts zeigt. HTML statt Text bedeutet die falsche Adresse.' },
   { co: 'HTTP-Code mit dem User-Agent des Bots', poCo: 'Erkennt Sperren durch Firewall (WAF) und CDN, die die robots.txt nicht zeigt.', jak: 'Code 403 oder 429 für den Bot bei 200 für einen Browser bedeutet eine Sperre auf Serverseite.' },
 ];
@@ -62,7 +62,7 @@ const FAQ_DODATKOWE = [
   {
     id: 'do-i-need-an-email',
     question: 'Brauche ich eine E-Mail-Adresse oder ein Konto?',
-    answer: `Nein. Die ganze Datei und den Bot-Test sehen Sie sofort auf der Seite, ohne Anmeldung und ohne E-Mail. Wir speichern weder die Adresse noch das Ergebnis. Das Limit liegt bei ${GENERATOR.limitIp} Prüfungen pro Tag und IP-Adresse.`,
+    answer: `Nein. Die ganze Datei und den Bot-Test sehen Sie sofort auf der Seite, ohne Anmeldung und ohne E-Mail. Wir speichern weder die Adresse noch das Ergebnis. Das Limit liegt bei ${GENERATOR.limitIp} Prüfungen pro Tag und IP-Adresse (ein ungefähres Limit).`,
   },
   {
     id: 'can-i-edit-the-file',
@@ -76,12 +76,12 @@ const CO_DOSTAJESZ = [
   'Zu jedem Link ein Titel und eine Beschreibung aus der Meta-Beschreibung der Unterseite, falls sie eine hat.',
   'Abschnitte nach Verzeichnissen und Sprachversionen, AGB und Richtlinien im Abschnitt „Optional“.',
   'Einen Editor vor dem Download: Zeilen deaktivieren, Titel, Beschreibungen, Reihenfolge und Abschnitte ändern.',
-  `Einen Test von robots.txt und HTTP-Code für ${GENERATOR.botow} KI-Bots mit einem Fazit zu jedem.`,
+  `Einen Test von robots.txt und HTTP-Code für ${GENERATOR.botowAi} KI-Bots und Bingbot mit einem Fazit zu jedem.`,
   'Eine Bewertung der vorhandenen Datei /llms.txt mit der Zahl der Links zu Unterseiten.',
   'Eine Liste der übersprungenen Adressen mit Grund (HTTP-Code, noindex) und einen Link zum Ergebnis zum Kopieren.',
 ];
 
-const FUNKCJE = [`llms.txt aus der Sitemap, bis zu ${GENERATOR.adresow} Adressen aus allen Abschnitten`, 'Abschnitte nach Verzeichnissen und Sprachversionen, Abschnitt Optional', 'Bearbeitung der Datei vor dem Download', `Test von robots.txt und HTTP-Code für ${GENERATOR.botow} KI-Bots`, 'Bewertung der vorhandenen Datei /llms.txt mit der Zahl der Links'];
+const FUNKCJE = [`llms.txt aus der Sitemap, bis zu ${GENERATOR.adresow} Adressen aus allen Abschnitten`, 'Abschnitte nach Verzeichnissen und Sprachversionen, Abschnitt Optional', 'Bearbeitung der Datei vor dem Download', `Test von robots.txt und HTTP-Code für ${GENERATOR.botowAi} KI-Bots und Bingbot`, 'Bewertung der vorhandenen Datei /llms.txt mit der Zahl der Links'];
 
 // Zrzut wyniku z trybu demo z interfejsem DE powstaje w kroku renderu (RAPORT de-narzedzia); do tego czasu bez zrzutu.
 const ZRZUT = null;
@@ -119,7 +119,7 @@ export default function GeneratorLlmsTxtDe() {
         featureList: FUNKCJE,
         ...(ZRZUT ? { screenshot: { url: ZRZUT.src, width: ZRZUT.width, height: ZRZUT.height } } : {}),
       }}
-      lead={`Geben Sie die Adresse Ihrer Website ein, und in höchstens ${GENERATOR.sekund} Sekunden erhalten Sie mit dem llms.txt Generator die ganze Datei aus Ihrer Sitemap und einen Zugriffstest für ${GENERATOR.botow} KI-Bots. Ohne Anmeldung und ohne E-Mail.`}
+      lead={`Geben Sie die Adresse Ihrer Website ein, und in höchstens ${GENERATOR.sekund} Sekunden erhalten Sie mit dem llms.txt Generator die ganze Datei aus Ihrer Sitemap und einen Zugriffstest für ${GENERATOR.botowAi} KI-Bots und Bingbot. Ohne Anmeldung und ohne E-Mail.`}
       narzedzie={<LlmsTxtClientDe hrefSprawdzarki={sprawdzarka} hrefAudytu={audyt} />}
       odpowiedz="llms.txt ist eine Markdown-Datei im Stammverzeichnis einer Website, die Sprachmodellen die wichtigsten Unterseiten mit einer kurzen Beschreibung nennt. Es ist ein Standardvorschlag (llmstxt.org), keine Pflicht: Laut einer Analyse von Ahrefs unterstützt ihn kein großer Anbieter von Modellen offiziell. Für ChatGPT ist wichtiger, ob KI-Bots in der robots.txt Zugriff auf die Website haben. Der Generator prüft beides."
       faq={[...FAQ_GENERATORA_DE, ...FAQ_DODATKOWE]}
@@ -139,8 +139,8 @@ export default function GeneratorLlmsTxtDe() {
             <ZrzutWyniku
               {...ZRZUT}
               sizes="(max-width: 700px) 100vw, 640px"
-              alt="llms.txt Generator: Ergebnis für ai-seo-company.pl mit Sitemap, Bewertung der vorhandenen Datei und Zugriffstest für 8 KI-Bots"
-              podpis="Ergebnis des Generators für unsere eigene Website: Sitemap, vorhandene Datei und der Test mit 8 Bots. Unter der Tabelle stehen die fertige Datei und der Editor."
+              alt="llms.txt Generator: Ergebnis für ai-seo-company.pl mit Sitemap, Bewertung der vorhandenen Datei und Zugriffstest für 7 KI-Bots und Bingbot"
+              podpis="Ergebnis des Generators für unsere eigene Website: Sitemap, vorhandene Datei und der Test mit 7 KI-Bots und Bingbot. Unter der Tabelle stehen die fertige Datei und der Editor."
             />
           </div>
         )}
@@ -170,14 +170,14 @@ export default function GeneratorLlmsTxtDe() {
           Die Signale von Google sind widersprüchlich. Das Chrome-Team hat die Prüfung auf llms.txt in experimentelle Lighthouse-Audits aufgenommen, während John Mueller von Google erklärte, die Datei sei nicht mit Blick auf die Suche entstanden. Den Zugriff von Gemini auf Inhalte regelt separat der Eintrag Google-Extended in der robots.txt.
         </p>
         <p style={s.akapit}>
-          Unser Fazit: llms.txt ist eine günstige Ergänzung, keine Strategie. Die Datei vorzubereiten kostet wenig und schadet nicht, aber ob ChatGPT, Perplexity oder Claude Ihre Website zitieren, entscheidet der Zugriff ihrer Bots und ein Inhalt, den man zitieren kann. Deshalb testet der Generator auch die robots.txt und die Antworten des Servers für 8 Bots. Wenn Ihnen Empfehlungen in den Antworten von Modellen wichtig sind, beginnen Sie mit der{' '}
+          Unser Fazit: llms.txt ist eine günstige Ergänzung, keine Strategie. Die Datei vorzubereiten kostet wenig und schadet nicht, aber ob ChatGPT, Perplexity oder Claude Ihre Website zitieren, entscheidet der Zugriff ihrer Bots und ein Inhalt, den man zitieren kann. Deshalb testet der Generator auch die robots.txt und die Antworten des Servers für 7 KI-Bots und Bingbot. Wenn Ihnen Empfehlungen in den Antworten von Modellen wichtig sind, beginnen Sie mit der{' '}
           {hubGeo ? <Link href={hubGeo} style={s.podkreslenie}>Generative Engine Optimization (GEO)</Link> : 'Generative Engine Optimization (GEO)'}.
         </p>
       </Sekcja>
 
       <Sekcja id="was-prueft-der-generator" tytul="Was der Generator prüft">
         <p style={s.akapit}>
-          {`Der Generator ruft Ihre Sitemap ab, wählt bis zu ${GENERATOR.adresow} Adressen aus (bei einer größeren Sitemap einige aus jedem Abschnitt), prüft sie und setzt daraus die Datei zusammen. Parallel testet er den Zugriff von ${GENERATOR.botow} Bots auf die Startseite. Der gesamte Ablauf dauert höchstens ${GENERATOR.sekund} Sekunden. Antwortet Ihre Website langsam, erhalten Sie ein Teilergebnis und eine Liste der Adressen, die wir nicht mehr prüfen konnten. Wir speichern weder die Adresse noch das Ergebnis.`}
+          {`Der Generator ruft Ihre Sitemap ab, wählt bis zu ${GENERATOR.adresow} Adressen aus (bei einer größeren Sitemap einige aus jedem Abschnitt), prüft sie und setzt daraus die Datei zusammen. Parallel testet er den Zugriff von ${GENERATOR.botowAi} KI-Bots und Bingbot auf die Startseite. Der gesamte Ablauf dauert höchstens ${GENERATOR.sekund} Sekunden. Antwortet Ihre Website langsam, erhalten Sie ein Teilergebnis und eine Liste der Adressen, die wir nicht mehr prüfen konnten. Wir speichern weder die Adresse noch das Ergebnis.`}
         </p>
         <CompareTable
           id="tabelle-tests"

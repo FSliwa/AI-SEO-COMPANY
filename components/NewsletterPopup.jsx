@@ -12,12 +12,12 @@
 //             cały ekran). Esc i przycisk zamykają.
 //
 // Formularz = ten sam wzorzec prawny co bramki: e-mail (wymagany) do wysłania PDF, wymagana zgoda
-// na wysłanie (tekst 1:1 z components/ChecklistForm.jsx, przedmiot „szablon”), osobny NIEzaznaczony
+// na wysłanie (tekst z components/ChecklistForm.jsx, przedmiot „szablon”; od 19.11.2026 zdanie o liście mailingowej wskazuje osobne pole newslettera, bo popup je ma, a ChecklistForm nie), osobny NIEzaznaczony
 // checkbox newslettera z tekstem ZGODA_NEWSLETTER_SZABLON (wariant dla szablonów: lib/zgodyNarzedzi.js = panel lib/newsletter.ts,
 // double opt-in: link potwierdzenia przychodzi w mailu z PDF) i pole-pułapka `nick`.
 // PDF wysyła panel: POST /api/szablony { plik, email, consent, nick, lang?, newsletter, zrodlo }.
 //
-// GA4 (lib/track.js): popup_view, popup_close, popup_submit z parametrami oferta, strona, jezyk;
+// GA4 (lib/track.js): popup_view, popup_close, popup_submit z parametrami oferta, strona, jezyk; newsletter_zapis raz, gdy panel potwierdził zapis (NL-5, 19.11.2026);
 // po udanym wysłaniu generate_lead jak w ChecklistForm (event_category 'Popup', plan popup_<oferta>).
 // Oferty-linki (CTA do narzędzia): kliknięcie = popup_submit z typ: 'link' i przerwa 14 dni.
 
@@ -42,12 +42,13 @@ const T = {
     zamknij: 'Zamknij',
     obietnica: 'Newsletter: co 2 tygodnie jedna zmiana w Google lub AI i jeden szablon.',
     przedmiot: 'szablon',
-    zgoda: (przedmiot) => `Zgadzam się na przetwarzanie adresu e-mail przez AI SIGNALS COMPANY P.S.A. (${SIEDZIBA.ulica}, Warszawa), żeby wysłać ${przedmiot} i odpowiedzieć na moje pytania. Nie zapisujemy Cię na listę mailingową. Szczegóły w `,
+    zgoda: (przedmiot) => `Zgadzam się na przetwarzanie adresu e-mail przez AI SIGNALS COMPANY P.S.A. (${SIEDZIBA.ulica}, Warszawa), żeby wysłać ${przedmiot} i odpowiedzieć na moje pytania. Samo wysłanie szablonu nie zapisuje Cię na listę mailingową: na newsletter zapisujesz się osobnym polem poniżej. Szczegóły w `,
     polityka: 'polityce prywatności',
     polityka_href: '/cookies',
     ok: 'Wysłane. Sprawdź skrzynkę (także folder Oferty albo Spam): link do PDF przyjdzie w ciągu minuty.',
     okNewsletter: ' Zapis do newslettera potwierdzisz przyciskiem w tym samym e-mailu.',
     okNewsletterJest: ' Ten adres jest już zapisany na newsletter.',
+    okNewsletterBlad: ' Nie udało się zapisać Cię do newslettera. Napisz do nas: kontakt@ai-seo-company.pl albo wyślij formularz ponownie.',
     blad: 'Nie udało się wysłać. Spróbuj za chwilę.',
     brakPolaczenia: 'Brak połączenia. Sprawdź internet i spróbuj ponownie.',
   },
@@ -61,12 +62,13 @@ const T = {
     zamknij: 'Close',
     obietnica: 'Newsletter: every 2 weeks, one change in Google or AI search and one template.',
     przedmiot: 'the template',
-    zgoda: (przedmiot) => `I agree to AI SIGNALS COMPANY P.S.A. (${SIEDZIBA.ulica}, Warsaw, Poland) processing my email address to send ${przedmiot} and to answer my questions. You will not be added to a mailing list. Details in the `,
+    zgoda: (przedmiot) => `I agree to AI SIGNALS COMPANY P.S.A. (${SIEDZIBA.ulica}, Warsaw, Poland) processing my email address to send ${przedmiot} and to answer my questions. Sending the template does not add you to a mailing list: you subscribe to the newsletter with the separate box below. Details in the `,
     polityka: 'privacy policy',
     polityka_href: '/en/cookies',
     ok: 'Sent. Check your inbox (including the Promotions or Spam folder): the link to the PDF will arrive within a minute.',
     okNewsletter: ' Confirm your newsletter subscription with the button in the same email.',
     okNewsletterJest: ' This address is already subscribed to the newsletter.',
+    okNewsletterBlad: ' We could not subscribe you to the newsletter. Write to kontakt@ai-seo-company.pl or submit the form again.',
     blad: 'Sending failed. Please try again in a moment.',
     brakPolaczenia: 'No connection. Check your internet and try again.',
   },
@@ -141,9 +143,13 @@ function Formularz({ oferta, t, params, idPola, poleRef, onWyslano }) {
       if (!res.ok || !data.ok) return setStan({ status: 'error', blad: data.error || t.blad, newsletter });
       zapiszDecyzje('wyslano');
       track('generate_lead', { lead_source: 'popup', event_category: 'Popup', plan: `popup_${oferta.id}`, currency: 'PLN', value: 100 });
+      // NL-5: zapis na newsletter liczymy raz, tylko gdy checkbox był zaznaczony, a panel potwierdził zapis (pending/confirmed).
+      if (newsletter && data.newsletter) track('newsletter_zapis', { zrodlo: `popup:${oferta.id}` });
       // Komunikat o newsletterze wg odpowiedzi panelu ('pending' | 'confirmed' | null), nie wg checkboxa:
       // panel bez tej zmiany (albo z błędem zapisu) wyśle sam PDF i nie obiecujemy linku potwierdzenia.
-      setStan({ status: 'done', blad: null, newsletter: newsletter ? (data.newsletter ?? null) : null });
+      // NL-1: zaznaczony checkbox i data.newsletter === null (panel nie zapisał) pokazuje komunikat o błędzie zapisu;
+      // brak pola w odpowiedzi (undefined, starszy panel) zostaje bez komunikatu.
+      setStan({ status: 'done', blad: null, newsletter: newsletter ? (data.newsletter ?? null) : null, newsletterBlad: newsletter && data.newsletter === null });
       onWyslano();
     } catch {
       setStan({ status: 'error', blad: t.brakPolaczenia, newsletter });
@@ -153,7 +159,7 @@ function Formularz({ oferta, t, params, idPola, poleRef, onWyslano }) {
     return (
       <p role="status" className="nlp-ok">
         {t.ok}
-        {stan.newsletter === 'pending' ? t.okNewsletter : stan.newsletter === 'confirmed' ? t.okNewsletterJest : ''}
+        {stan.newsletter === 'pending' ? t.okNewsletter : stan.newsletter === 'confirmed' ? t.okNewsletterJest : stan.newsletterBlad ? t.okNewsletterBlad : ''}
       </p>
     );
   return (

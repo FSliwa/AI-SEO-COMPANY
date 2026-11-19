@@ -19,6 +19,7 @@ import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
 import { odblokuj } from '@/lib/narzedziaApi';
+import { tekstPotwierdzenia } from '@/lib/narzedziaPotwierdzenie';
 import { ODBIORCY, ODBIORCY_EN, ZGODA_NEWSLETTER, ZGODA_NEWSLETTER_EN } from '@/lib/zgodyNarzedzi';
 import Zwin from './Zwin';
 import { SIEDZIBA } from '@/lib/firma';
@@ -68,8 +69,9 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
     }
     track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: narzedzie, currency: 'PLN', value: 50 });
     if (newsletter) track('newsletter_zapis', { zrodlo: narzedzie });
-    setStan({ status: 'done', blad: null, newsletter: r.newsletter });
-    onOdblokowano?.(r.pelny, r.newsletter);
+    // mailOk (opcjonalne pole panelu): false = wynik pokazany, ale wiadomość nie wyszła; undefined = wysłano.
+    setStan({ status: 'done', blad: null, newsletter: r.newsletter, mailOk: r.mailOk });
+    onOdblokowano?.(r.pelny, r.newsletter, r.mailOk);
   }
 
   const gotowe = stan.status === 'done';
@@ -77,11 +79,13 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
   useEffect(() => { if (gotowe) potwRef.current?.focus({ preventScroll: true }); }, [gotowe]);
   // tylkoRaport: formularz NIE zwija się (zmiana 1032 -> 90 px dawała CLS 0,17 / 0,72), tylko zostaje na miejscu
   // z wyłączonymi polami i potwierdzeniem w nagłówku; wysokość bramki prawie się nie zmienia.
-  const zostaje = tylkoRaport && gotowe;
-  const tytulPotw = en ? 'Done: we have emailed you the report.' : 'Gotowe: raport wysłaliśmy e-mailem.';
+  // Gdy e-mail nie wyszedł (mailOk === false), formularz zostaje aktywny, żeby dało się spróbować ponownie.
+  const potw = tekstPotwierdzenia({ lang: en ? 'en' : 'pl', tylkoRaport, mailOk: stan.mailOk });
+  const zostaje = tylkoRaport && gotowe && potw.wyslano;
+  const tytulPotw = potw.tytul;
   const potwierdzenie = (
     <div className="narz-bramka narz-bramka--gotowe r-stan" role="status" ref={potwRef} tabIndex={-1}>
-        <p className="narz-bramka-tytul">{tylkoRaport ? (en ? 'Done: we have emailed you the report.' : 'Gotowe: raport wysłaliśmy e-mailem.') : (en ? 'Done: the full result is below, and we have emailed you the report.' : 'Gotowe: pełny wynik jest niżej, raport wysłaliśmy e-mailem.')}</p>
+        <p className="narz-bramka-tytul">{tytulPotw}</p>
         {stan.newsletter === 'pending' && <p className="narz-bramka-opis">{en ? 'Check your inbox and confirm your newsletter signup. Without confirmation we will not send any issue.' : 'Sprawdź skrzynkę i potwierdź zapis do newslettera. Bez potwierdzenia nie wyślemy żadnego wydania.'}</p>}
       </div>
   );
@@ -133,7 +137,7 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
         <span>{(en ? ZGODA_NEWSLETTER_EN : ZGODA_NEWSLETTER).tekst}</span>
       </label>
       <p className="narz-bramka-mikro">{tylkoRaport ? (en ? 'The report reaches your inbox within a minute.' : 'Raport przychodzi na skrzynkę w ciągu minuty.') : (en ? 'The report reaches your inbox within a minute. You will also see the full result right here.' : 'Raport przychodzi na skrzynkę w ciągu minuty. Pełny wynik zobaczysz też od razu tutaj.')}</p>
-      <Zwin otwarte={stan.status === 'error'}><p role="alert" className="narz-blad">{stan.blad}</p></Zwin>
+      <Zwin otwarte={stan.status === 'error' || (tylkoRaport && gotowe && !potw.wyslano)}><p role="alert" className="narz-blad">{stan.status === 'error' ? stan.blad : tytulPotw}</p></Zwin>
     </form>
     </Zwin>
     {gotowe && !tylkoRaport && potwierdzenie}

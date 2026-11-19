@@ -81,7 +81,7 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
         screenshot: schemaZrzutu(ZRZUT.pl),
         featureList: [`Do ${AUDYT.stron} podstron w jednym audycie`, `${AUDYT.regul} reguł w ${AUDYT.kategorii} kategoriach`, `Wynik PageSpeed Insights na telefonie (mediana ${AUDYT.przebiegiPsi} pomiarów)`, 'Dostęp botów AI w robots.txt i plik llms.txt', 'Ocena 1-100 i lista błędów z instrukcją naprawy'],
       }}
-      lead={`Sprawdzimy do ${AUDYT.stron} podstron w ${AUDYT.regul} regułach i od razu, bez rejestracji, pokażemy ocenę, cztery kategorie i trzy najważniejsze błędy.`}
+      lead={`Darmowy audyt SEO online: wpisz adres, a w 20-90 sekund dostajesz ocenę 1-100 i listę błędów, bez konta. Sprawdzimy do ${AUDYT.stron} podstron w ${AUDYT.regul} regułach i od razu pokażemy ocenę, cztery kategorie i trzy najważniejsze błędy.`}
       narzedzie={<AudytSeoClient />}
       odpowiedz={`Darmowy audyt SEO sprawdza do ${AUDYT.stron} podstron Twojej strony, po kilka z każdej sekcji i wersji językowej, w ${AUDYT.regul} regułach: kody odpowiedzi, przekierowania, tytuły, opisy, nagłówki, treść, obrazy, dane strukturalne, robots.txt, mapę strony, szybkość na telefonie i dostęp botów AI. Wynik to ocena od 1 do 100 w czterech kategoriach i lista problemów z instrukcją naprawy.`}
       faq={FAQ_AUDYTU}
@@ -126,7 +126,7 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
         <h3 style={s.h3}>Wydajność ({regul(R.wydajnosc)}, {W.wydajnosc}% oceny)</h3>
         <p style={s.akapit}>Wynik Lighthouse na telefonie z Google PageSpeed Insights (mediana trzech niezależnych pomiarów, bo pojedynczy potrafi różnić się o 10 punktów), LCP i CLS (z danych prawdziwych użytkowników, jeśli strona je ma), waga strony głównej z listą największych plików, obrazy do optymalizacji (format, wymiary, kompresja), obrazy bez width i height, czas odpowiedzi serwera i rozmiar HTML.</p>
         <h3 style={s.h3}>Gotowość na AI ({regul(R.ai)}, {W.ai}% oceny)</h3>
-        <p style={s.akapit}>Czy tekst jest w HTML bez uruchamiania JavaScriptu (boty AI go nie uruchamiają), czy robots.txt wpuszcza GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot i Google-Extended, dane strukturalne firmy (Organization albo LocalBusiness) i poprawność JSON-LD, plik llms.txt i to, czy ma linki do podstron{llms ? <> (plik wygenerujesz w <Link href={llms} style={s.podkreslenie}>generatorze llms.txt</Link>)</> : null}.</p>
+        <p style={s.akapit}>Czy tekst jest w HTML bez uruchamiania JavaScriptu (boty AI go nie uruchamiają), czy robots.txt wpuszcza boty wyszukiwania AI (OAI-SearchBot, PerplexityBot, Claude-SearchBot) i jak ustawiono boty treningowe (GPTBot, ClaudeBot, Google-Extended), dane strukturalne firmy (Organization albo LocalBusiness) i poprawność JSON-LD, plik llms.txt i to, czy ma linki do podstron{llms ? <> (plik wygenerujesz w <Link href={llms} style={s.podkreslenie}>generatorze llms.txt</Link>)</> : null}.</p>
       </Sekcja>
 
       <Sekcja id="jak-liczymy-ocene" tytul="Jak liczymy ocenę 1-100">
@@ -145,14 +145,14 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
             { id: 't', kategoria: 'Technika', regul: R.techniczne, waga: `${W.techniczne}%`, najciezsze: 'robots.txt blokuje całą stronę, noindex na stronie głównej, błędy 4xx i 5xx, brak HTTPS' },
             { id: 'c', kategoria: 'Treść', regul: R.tresc, waga: `${W.tresc}%`, najciezsze: 'brak tytułu strony, brak nagłówka H1' },
             { id: 'w', kategoria: 'Wydajność', regul: R.wydajnosc, waga: `${W.wydajnosc}%, z czego 70% to wynik PageSpeed na telefonie (mediana ${AUDYT.przebiegiPsi} pomiarów)`, najciezsze: 'PageSpeed poniżej 50, strona główna cięższa niż 5 MB' },
-            { id: 'a', kategoria: 'Gotowość na AI', regul: R.ai, waga: `${W.ai}%`, najciezsze: 'treść widoczna dopiero po uruchomieniu JavaScriptu, robots.txt blokuje boty AI' },
+            { id: 'a', kategoria: 'Gotowość na AI', regul: R.ai, waga: `${W.ai}%`, najciezsze: 'treść widoczna dopiero po uruchomieniu JavaScriptu, robots.txt blokuje boty wyszukiwania AI' },
           ]}
           przypis="Gdy PageSpeed Insights nie odpowie, wydajność nie wchodzi do oceny, a wagi pozostałych kategorii przeliczamy proporcjonalnie. Wynik oznaczamy wtedy jako „Wydajność: brak pomiaru”."
         />
       </Sekcja>
 
       <Sekcja id="jak-czytac-ocene" tytul="Jak czytać ocenę">
-        <p style={s.akapit}>Ocena 80 i więcej oznacza, że podstawy są w porządku i warto skupić się na treści i linkach. Od 50 do 79 są problemy, które realnie ograniczają widoczność: zacznij od błędów, potem ostrzeżeń. Poniżej 50 strona ma braki techniczne, przez które Google może jej nie indeksować albo pokazywać gorzej niż konkurencję.</p>
+        <p style={s.akapit}>Ocena 80 i więcej oznacza, że podstawy są w porządku i warto skupić się na treści i linkach. Od 50 do 79 są problemy, które realnie ograniczają widoczność: zacznij od błędów, potem ostrzeżeń. Poniżej 50 strona ma poważne braki. Sprawdź najpierw błędy techniczne (noindex, robots.txt, kody 4xx/5xx), bo to one mogą blokować indeksowanie.</p>
         <p style={s.akapit}>Ocenę najlepiej porównać z konkurencją. Audyt działa dla każdej publicznej strony, więc sprawdź też 2-3 firmy, które są wyżej w Google: liczy się różnica w błędach, a nie sama liczba.{autorytet ? <> Siłę linków tych domen porównasz w <Link href={autorytet} style={s.podkreslenie}>sprawdzarce autorytetu domeny</Link>.</> : null}</p>
         <p style={s.akapit}>Ocena nie jest pozycją w Google. Pokazuje, jak dużo przeszkód stoi stronie na drodze. O pozycji decydują też treść, linki i konkurencja, które sprawdzamy w <Link href={audyt} style={s.podkreslenie}>pełnym audycie SEO</Link>.</p>
       </Sekcja>
@@ -248,6 +248,7 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
 // =============================== Wersja EN ===============================
 
 const FAQ_AUDYTU_EN = [
+  { id: 'how-do-i-check-the-seo-of-my-website', question: 'How do I check the SEO of my website?', answer: `Enter your address in the form above. The audit loads up to ${AUDYT.stron} pages, checks ${AUDYT.regul} rules in four categories (technical, content, performance, AI readiness) and shows the score and the top three issues right away, in 20 to 90 seconds, without an account.` },
   { id: 'is-the-free-seo-audit-really-free', question: 'Is the free SEO audit really free?', answer: 'Yes. You see the score, the categories and the three most important problems right away, with no sign-up. We show the full list of problems with page URLs after you give an email address, which we also send the report to. Signing up for the newsletter is separate and voluntary.' },
   { id: 'how-is-the-score-calculated', question: 'How do you calculate the SEO score from 1 to 100?', answer: `Each of the ${AUDYT.regul} rules subtracts points from its category when it fails. The score is ${W.techniczne}% technical, ${W.tresc}% content, ${W.wydajnosc}% performance (including the mobile PageSpeed Insights score) and ${W.ai}% AI readiness; details are in “How we calculate the 1-100 score”.` },
   { id: 'free-audit-vs-paid-audit', question: 'How does the free audit differ from a paid SEO audit?', answer: `The free audit automatically checks up to ${AUDYT.stron} pages against ${AUDYT.regul} rules. A paid SEO audit (from ${cena('audytSeo', 'en')} net, 3 to 5 business days) covers the whole website, keywords, competitors, the link profile and Search Console data, and its result is a plan of changes with priorities and a quote.` },
@@ -278,7 +279,7 @@ function AudytSeoEn() {
         screenshot: schemaZrzutu(ZRZUT.en),
         featureList: [`Up to ${AUDYT.stron} pages per audit`, `${AUDYT.regul} rules in ${AUDYT.kategorii} categories`, `Mobile PageSpeed Insights score (median of ${AUDYT.przebiegiPsi} runs)`, 'AI bot access in robots.txt and the llms.txt file', 'A 1-100 score and a list of errors with fix instructions'],
       }}
-      lead={`We check up to ${AUDYT.stron} pages against ${AUDYT.regul} rules and show your score, four category scores and the top three issues right away, with no sign-up.`}
+      lead={`We check up to ${AUDYT.stron} pages against ${AUDYT.regul} rules and show your score, four category scores and the top three issues right away, with no sign-up. Use it as a quick SEO analysis of your website: it checks the SEO of a site against ${AUDYT.regul} rules and returns a 1-100 score.`}
       narzedzie={<AudytSeoClient />}
       odpowiedz={`The free SEO audit checks up to ${AUDYT.stron} pages of your website, spread across its sections and language versions, against ${AUDYT.regul} rules: response codes, redirects, titles, descriptions, headings, content, images, structured data, robots.txt, the sitemap, mobile speed and AI bot access. The result is a score from 1 to 100 across four categories and a list of problems with fix instructions.`}
       faq={FAQ_AUDYTU_EN}
@@ -324,7 +325,7 @@ function AudytSeoEn() {
         <h3 style={s.h3}>Performance ({rules(R.wydajnosc)}, {W.wydajnosc}% of the score)</h3>
         <p style={s.akapit}>The mobile Lighthouse score from Google PageSpeed Insights (the median of three independent runs, because a single run can vary by 10 points), LCP and CLS (from real-user data, if the site has it), home page weight with a list of the largest files, images to optimise (format, size, compression), images without width and height, server response time and HTML size.</p>
         <h3 style={s.h3}>AI readiness ({rules(R.ai)}, {W.ai}% of the score)</h3>
-        <p style={s.akapit}>Whether the text is in the HTML without running JavaScript (AI bots do not run it), whether robots.txt lets in GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot and Google-Extended, your company structured data (Organization or LocalBusiness) and valid JSON-LD, and an llms.txt file with links to your pages{llms ? <> (you can create one in the <Link href={llms} style={s.podkreslenie}>llms.txt generator</Link>)</> : null}.</p>
+        <p style={s.akapit}>Whether the text is in the HTML without running JavaScript (AI bots do not run it), whether robots.txt lets in the AI search bots (OAI-SearchBot, PerplexityBot, Claude-SearchBot) and how the training bots (GPTBot, ClaudeBot, Google-Extended) are set, your company structured data (Organization or LocalBusiness) and valid JSON-LD, and an llms.txt file with links to your pages{llms ? <> (you can create one in the <Link href={llms} style={s.podkreslenie}>llms.txt generator</Link>)</> : null}.</p>
       </Sekcja>
 
       <Sekcja id="how-we-calculate-the-score" tytul="How we calculate the 1-100 score">
@@ -343,14 +344,14 @@ function AudytSeoEn() {
             { id: 't', kategoria: 'Technical', regul: R.techniczne, waga: `${W.techniczne}%`, najciezsze: 'robots.txt blocks the whole site, noindex on the home page, 4xx and 5xx errors, no HTTPS' },
             { id: 'c', kategoria: 'Content', regul: R.tresc, waga: `${W.tresc}%`, najciezsze: 'missing page title, missing H1 heading' },
             { id: 'w', kategoria: 'Performance', regul: R.wydajnosc, waga: `${W.wydajnosc}%, of which 70% is the mobile PageSpeed score (median of ${AUDYT.przebiegiPsi} runs)`, najciezsze: 'PageSpeed below 50, home page heavier than 5 MB' },
-            { id: 'a', kategoria: 'AI readiness', regul: R.ai, waga: `${W.ai}%`, najciezsze: 'content visible only after JavaScript runs, robots.txt blocks AI bots' },
+            { id: 'a', kategoria: 'AI readiness', regul: R.ai, waga: `${W.ai}%`, najciezsze: 'content visible only after JavaScript runs, robots.txt blocks AI search bots' },
           ]}
           przypis="If PageSpeed Insights does not respond, performance is left out of the score and the weights of the other categories are scaled proportionally. The result then shows “Performance: not measured”."
         />
       </Sekcja>
 
       <Sekcja id="how-to-read-the-score" tytul="How to read the score">
-        <p style={s.akapit}>A score of 80 or more means the basics are fine and it is worth focusing on content and links. From 50 to 79 there are problems that genuinely limit visibility: start with errors, then warnings. Below 50 the site has technical gaps that may stop Google from indexing it or make it show worse than your competitors.</p>
+        <p style={s.akapit}>A score of 80 or more means the basics are fine and it is worth focusing on content and links. From 50 to 79 there are problems that genuinely limit visibility: start with errors, then warnings. Below 50 the site has serious gaps. Check the technical errors first (noindex, robots.txt, 4xx/5xx codes), because those can block indexing.</p>
         <p style={s.akapit}>The score is most useful next to your competitors. The audit works for any public website, so also check 2-3 businesses that rank above you: what matters is the difference in errors, not the number alone.{autorytet ? <> You can compare the link strength of those domains in the <Link href={autorytet} style={s.podkreslenie}>domain authority checker</Link>.</> : null}</p>
         <p style={s.akapit}>The score is not a Google ranking. It shows how many obstacles stand in your site’s way. Rankings also depend on content, links and competitors, which we check in a <Link href={audyt} style={s.podkreslenie}>full SEO audit</Link>.</p>
       </Sekcja>

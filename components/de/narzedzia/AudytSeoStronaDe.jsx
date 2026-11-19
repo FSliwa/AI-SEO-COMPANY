@@ -120,7 +120,7 @@ export default function AudytSeoStronaDe() {
         <h3 style={s.h3}>Performance ({regeln(R.wydajnosc)}, {W.wydajnosc} % der Punktzahl)</h3>
         <p style={s.akapit}>Der Lighthouse-Wert für das Smartphone aus Google PageSpeed Insights (Median aus drei unabhängigen Messungen, denn eine einzelne kann um 10 Punkte abweichen), LCP und CLS (aus Daten echter Nutzer, sofern die Website welche hat), Gewicht der Startseite mit einer Liste der größten Dateien, zu optimierende Bilder (Format, Größe, Kompression), Bilder ohne width und height, Antwortzeit des Servers und Größe des HTML.</p>
         <h3 style={s.h3}>KI-Tauglichkeit ({regeln(R.ai)}, {W.ai} % der Punktzahl)</h3>
-        <p style={s.akapit}>Ob der Text ohne Ausführung von JavaScript im HTML steht (KI-Bots führen es nicht aus), ob die robots.txt GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot und Google-Extended zulässt, strukturierte Daten Ihres Unternehmens (Organization oder LocalBusiness) samt gültigem JSON-LD und eine Datei llms.txt mit Links zu Ihren Unterseiten{llms ? <> (erstellen können Sie sie im <Link href={llms} style={s.podkreslenie}>llms.txt Generator</Link>)</> : null}.</p>
+        <p style={s.akapit}>Ob der Text ohne Ausführung von JavaScript im HTML steht (KI-Bots führen es nicht aus), ob die robots.txt die KI-Suchbots (OAI-SearchBot, PerplexityBot, Claude-SearchBot) zulässt und wie die Trainings-Bots (GPTBot, ClaudeBot, Google-Extended) eingestellt sind, strukturierte Daten Ihres Unternehmens (Organization oder LocalBusiness) samt gültigem JSON-LD und eine Datei llms.txt mit Links zu Ihren Unterseiten{llms ? <> (erstellen können Sie sie im <Link href={llms} style={s.podkreslenie}>llms.txt Generator</Link>)</> : null}.</p>
       </Sekcja>
 
       <Sekcja id="so-berechnen-wir-die-punktzahl" tytul="So berechnen wir die Punktzahl von 1 bis 100">
@@ -139,14 +139,14 @@ export default function AudytSeoStronaDe() {
             { id: 't', kategoria: 'Technik', regul: R.techniczne, waga: `${W.techniczne} %`, najciezsze: 'robots.txt sperrt die ganze Website, noindex auf der Startseite, 4xx- und 5xx-Fehler, kein HTTPS' },
             { id: 'c', kategoria: 'Inhalt', regul: R.tresc, waga: `${W.tresc} %`, najciezsze: 'fehlender Seitentitel, fehlende H1-Überschrift' },
             { id: 'w', kategoria: 'Performance', regul: R.wydajnosc, waga: `${W.wydajnosc} %, davon 70 % der PageSpeed-Wert auf dem Smartphone (Median aus ${AUDYT.przebiegiPsi} Messungen)`, najciezsze: 'PageSpeed unter 50, Startseite schwerer als 5 MB' },
-            { id: 'a', kategoria: 'KI-Tauglichkeit', regul: R.ai, waga: `${W.ai} %`, najciezsze: 'Inhalt erst nach Ausführung von JavaScript sichtbar, robots.txt sperrt KI-Bots' },
+            { id: 'a', kategoria: 'KI-Tauglichkeit', regul: R.ai, waga: `${W.ai} %`, najciezsze: 'Inhalt erst nach Ausführung von JavaScript sichtbar, robots.txt sperrt KI-Suchbots' },
           ]}
           przypis="Antwortet PageSpeed Insights nicht, fließt die Performance nicht in die Punktzahl ein, und die Gewichte der übrigen Kategorien werden anteilig angepasst. Das Ergebnis trägt dann den Vermerk „Performance: nicht gemessen“."
         />
       </Sekcja>
 
       <Sekcja id="so-lesen-sie-die-punktzahl" tytul="So lesen Sie die Punktzahl">
-        <p style={s.akapit}>Ab 80 Punkten sind die Grundlagen in Ordnung, und es lohnt sich, Inhalte und Links in den Blick zu nehmen. Von 50 bis 79 gibt es Probleme, die Ihre Sichtbarkeit tatsächlich einschränken: Beginnen Sie mit den Fehlern, dann folgen die Warnungen. Unter 50 hat die Website technische Lücken, wegen derer Google sie womöglich nicht indexiert oder schlechter darstellt als Ihre Konkurrenten.</p>
+        <p style={s.akapit}>Ab 80 Punkten sind die Grundlagen in Ordnung, und es lohnt sich, Inhalte und Links in den Blick zu nehmen. Von 50 bis 79 gibt es Probleme, die Ihre Sichtbarkeit tatsächlich einschränken: Beginnen Sie mit den Fehlern, dann folgen die Warnungen. Unter 50 hat die Website gravierende Lücken. Prüfen Sie zuerst die technischen Fehler (noindex, robots.txt, 4xx/5xx-Codes), denn sie können die Indexierung blockieren.</p>
         <p style={s.akapit}>Am aussagekräftigsten ist die Punktzahl im Vergleich mit der Konkurrenz. Das Audit funktioniert für jede öffentliche Website, prüfen Sie also auch 2 bis 3 Unternehmen, die in Google vor Ihnen stehen: Entscheidend ist der Unterschied bei den Fehlern, nicht die Zahl allein.{autorytet ? <> Die Linkstärke dieser Domains vergleichen Sie im <Link href={autorytet} style={s.podkreslenie}>Domain Authority Checker</Link>.</> : null}</p>
         <p style={s.akapit}>Die Punktzahl ist keine Position in Google. Sie zeigt, wie viele Hindernisse Ihrer Website im Weg stehen. Über die Position entscheiden auch Inhalt, Links und Konkurrenz, die wir im {audyt ? <Link href={audyt} style={s.podkreslenie}>vollständigen SEO Audit</Link> : 'vollständigen SEO Audit'} prüfen.</p>
       </Sekcja>
