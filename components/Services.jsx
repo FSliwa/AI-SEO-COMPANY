@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { sectionId } from '@/lib/anchors';
 import { Link } from '@/i18n/routing';
+import { WSTEP_OFERTY } from '@/lib/wstepOferty';
 
 // 6.11.2026 (wyglad z makiety): ilustracje kreskowe pod kolumnami oferty.
 // Dekoracja (alt=""), przebarwione z fioletu makiety na pomarancz marki.
@@ -41,6 +42,9 @@ export default function Services() {
           </div>
           <h2>{t('title')}</h2>
           <p>{t('subtitle')}</p>
+          {/* 19.11.2026: akapit, ktory stal na dole hero ("Łączymy strategię marki..."), tu jako wstęp do trzech filarów;
+              tekst słowo w słowo w lib/wstepOferty.js. */}
+          <p className="oferta-wstep">{WSTEP_OFERTY[lang === 'en' ? 'en' : 'pl']}</p>
         </Reveal>
 
         {/* KOTA 3 Pillars Row (Screenshot 1) */}

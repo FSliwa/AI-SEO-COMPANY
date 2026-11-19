@@ -96,13 +96,14 @@ export function Liste({ punkte, nummeriert = false }) {
 }
 
 /** Raster aus Karten: [{ kicker, titel, text, href? }]. */
-export function Karten({ titel, untertitel, items, breite = 1240, spalten = 320, id }) {
+export function Karten({ titel, untertitel, einleitung, items, breite = 1240, spalten = 320, id }) {
   return (
     <section id={id} style={{ padding: '30px 0 80px 0', scrollMarginTop: '110px' }}>
       <div className="container" style={{ maxWidth: `${breite}px`, margin: '0 auto' }}>
         <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2.75rem auto' }}>
           <h2 lang="de" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: '1rem', hyphens: 'auto', overflowWrap: 'break-word' }}>{titel}</h2>
           {untertitel && <p lang="de" style={{ fontSize: '1.15rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500, lineHeight: 1.55 }}>{untertitel}</p>}
+          {einleitung && <p lang="de" style={{ fontSize: '1.02rem', color: 'var(--w-tusz-2)', margin: '1.1rem auto 0', maxWidth: '68ch', lineHeight: 1.65 }}>{einleitung}</p>}
         </Reveal>
         <RevealStagger style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(${spalten}px, 100%), 1fr))`, gap: '1.5rem' }}>
           {items.map((k, i) => (
