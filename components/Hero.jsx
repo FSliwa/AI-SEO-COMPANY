@@ -553,7 +553,7 @@ export default function Hero() {
     <section
       className="hero hero--en"
       id="hero"
-      // 11.11.2026: petle hero (mgla, samolot, fale) stoja, gdy sekcja jest poza ekranem (PetleWidoczne).
+      // 11.11.2026: petle hero (mgla, chmury) stoja, gdy sekcja jest poza ekranem (PetleWidoczne).
       data-petla=""
       suppressHydrationWarning
       style={{
@@ -586,50 +586,7 @@ export default function Hero() {
 
       {/* 11.11.2026 (prosba Filipa): bez polokregow i animacji sygnalu z etapu satelity - luki usuniete
           z grafiki tla (hero-tlo-v2.webp), fale i pakiety (SVG .hero-sygnal) usuniete. Ruch w tle daje
-          samolot (.hero-lot nizej). */}
-
-      {/* 11.11.2026: samolot ze smuga kondensacyjna w glebi nieba. Warstwa lezy POD kanwa
-          sceny 3D (przezroczyste tlo): samolot wylania sie zza robota i leci szczelina miedzy
-          tekstem a literami SEO (gorna krawedz liter = 30,4 % wysokosci sekcji), wiec nie
-          przecina tekstu. Smuga zostaje w miejscu i rozplywa sie. Animacje w app/wyglad.css. */}
-      <div className="hero-lot" aria-hidden="true">
-        <span className="hero-lot-smuga">
-          <span className="hero-lot-smuga-cien" />
-          <span className="hero-lot-smuga-rdzen" />
-        </span>
-        <svg className="hero-lot-samolot" viewBox="-64 -34 128 64" focusable="false">
-          <defs>
-            <linearGradient id="hero-lot-kadlub" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#a4a9b9" />
-              <stop offset="0.45" stopColor="#4f556a" />
-              <stop offset="1" stopColor="#23273a" />
-            </linearGradient>
-            <linearGradient id="hero-lot-skrzydlo" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#c3c7d3" />
-              <stop offset="0.55" stopColor="#5a6075" />
-              <stop offset="1" stopColor="#2a2e40" />
-            </linearGradient>
-            <linearGradient id="hero-lot-silnik" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#b4b9c7" />
-              <stop offset="1" stopColor="#2a2e40" />
-            </linearGradient>
-          </defs>
-          <path d="M-4 -6 L18 -22 L24 -22 L12 -6 Z" fill="#3a3f52" />
-          <path d="M46 -6 L58 -12 L61 -12 L54 -6 Z" fill="#3a3f52" />
-          <path d="M36 -7 L50 -30 L58 -30 L54 -10 Z" fill="url(#hero-lot-kadlub)" />
-          <path d="M47 -25 L57 -25 L56 -21 L45 -21 Z" fill="#ef6a1f" />
-          <path d="M-60 2 C-58 -4 -50 -7 -38 -7 L38 -7 C46 -7 52 -9 58 -14 L60 -12 C56 -4 50 2 40 4 L-38 6 C-50 6 -58 5 -60 2 Z" fill="url(#hero-lot-kadlub)" />
-          <path d="M-50 -6 L36 -6" stroke="rgba(255,255,255,0.45)" strokeWidth="1" />
-          <path d="M-52 2.6 L38 1.2" stroke="#ef6a1f" strokeWidth="0.9" opacity="0.85" />
-          <path d="M-40 -2 L34 -2" stroke="rgba(255,255,255,0.6)" strokeWidth="1.1" strokeDasharray="1.4 2.2" />
-          <path d="M-55 -1 C-52 -4 -48 -4.6 -45 -4.6 L-45 -1.6 Z" fill="#c9d6e2" />
-          <path d="M44 1 L58 10 L62 10 L54 0 Z" fill="url(#hero-lot-skrzydlo)" />
-          <path d="M2 6 L10 6 L8 10 L4 10 Z" fill="#2a2e40" />
-          <ellipse cx="6" cy="12" rx="8" ry="3.4" fill="url(#hero-lot-silnik)" />
-          <ellipse cx="-1.6" cy="12" rx="1.5" ry="2.8" fill="#ef6a1f" opacity="0.9" />
-          <path d="M-10 3 L26 26 L34 26 L10 3 Z" fill="url(#hero-lot-skrzydlo)" />
-        </svg>
-      </div>
+          dryf chmur (.hero-mgla nizej). */}
 
       {/* The scene is the section background on both locales now. The video and
           the starfield are gone with it – they were a second full-screen
@@ -719,21 +676,24 @@ export default function Hero() {
               )}
             </p>
 
-            {arcBody ? (
-              <HeroArcText
-                className="hero-en-body hero-en-body--arc"
-                text={copy.bodySeg.map(s => s.t).join('')}
-                lang={lang}
-              />
-            ) : (
-              <p className="hero-en-body">
-                {copy.bodySeg.map((s, i) =>
-                  s.wide
-                    ? <span key={i} className="hero-en-wide-only">{s.t}</span>
-                    : <Fragment key={i}>{s.t}</Fragment>
-                )}
-              </p>
-            )}
+            {/* hero-v7: stale opakowanie, ktore sie animuje - podmiana <p> na SVG nie restartuje wejscia. */}
+            <div className="hero-en-body-wrap">
+              {arcBody ? (
+                <HeroArcText
+                  className="hero-en-body hero-en-body--arc"
+                  text={copy.bodySeg.map(s => s.t).join('')}
+                  lang={lang}
+                />
+              ) : (
+                <p className="hero-en-body">
+                  {copy.bodySeg.map((s, i) =>
+                    s.wide
+                      ? <span key={i} className="hero-en-wide-only">{s.t}</span>
+                      : <Fragment key={i}>{s.t}</Fragment>
+                  )}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="hero-en-bottom">

@@ -306,14 +306,18 @@
 .sekcja > p, .sekcja > ul, .sekcja > ol { max-width: var(--w-miara, 54ch); }
 .sekcja :global(.narz-tabela-wrap), .sekcja table { max-width: 100%; }
 
-/* --- Układ treści: kolumna czytania + sticky spis (≥ 1180 px) --- */
-.tresc { display: block; }
+/* --- Układ treści: kolumna czytania + spis sekcji (NawBok) ---
+   ≥ 1024 px: sticky kolumna po prawej (jedzie z ekranem, własne przewijanie, kończy się razem z .tresc, więc nie nachodzi na stopkę).
+   < 1024 px: zwarty pasek position: fixed pod nagłówkiem z nazwą bieżącej sekcji, rozwija się do pełnej listy.
+   Dlaczego :global(body):has(.tresc): app/globals.css ustawia body overflow-x: hidden, co robi z body kontener przewijania
+   i psuje position: sticky (spis odjeżdżał z pierwszym ekranem). clip tnie tak samo, ale nie tworzy kontenera (jak body:has(.sz)). */
+:global(body):has(.tresc) { overflow-x: clip; }
+.tresc { display: block; --nw-nag: 69px; --nw-pasek: 48px; }
 .trescGlowna { min-width: 0; }
-.nawBok { display: none; }
-@media (min-width: 1180px) {
-  .tresc { display: grid; grid-template-columns: minmax(0, 820px) 232px; justify-content: space-between; gap: 48px; align-items: start; }
-  .nawBok { display: block; position: sticky; top: 112px; align-self: start; margin-top: clamp(2.5rem, 5vw, 4rem); }
-}
+.nawBok { display: block; }
+.nawSpis { position: relative; }
+.nawPrzycisk { display: none; }
+.nawPanel { display: block; }
 .nawSpis ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; border-left: 1px solid var(--w-linia); }
 .nawSpis a {
   display: block;
@@ -330,13 +334,72 @@
   overflow: hidden;
   transition: color var(--nw-krotki) var(--nw-ease), background-color var(--nw-krotki) var(--nw-ease);
 }
-.nawSpis a:focus-visible { outline: 3px solid var(--w-pomarancz); outline-offset: 2px; }
-.nawSpis a.nawAktywna { color: var(--w-tusz); background: var(--w-brzoskwinia-tlo); font-weight: 500; }
+.nawSpis a:focus-visible, .nawPrzycisk:focus-visible { outline: 3px solid var(--w-pomarancz); outline-offset: 2px; }
+.nawSpis a.nawAktywna { color: var(--w-tusz); background: var(--w-brzoskwinia-tlo); }
 /* wskaźnik aktywnej pozycji: pasek rośnie od środka (scaleY, 240 ms); leży na li, bo a ma overflow: hidden (line-clamp) */
 .nawSpis li { position: relative; }
 .nawSpis li::before { content: ''; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: var(--w-pomarancz); transform: scaleY(0); transition: transform var(--nw-krotki) var(--nw-ease); pointer-events: none; }
 .nawSpis li:has(> .nawAktywna)::before { transform: scaleY(1); }
 @media (hover: hover) { .nawSpis a:hover { color: var(--w-tusz); background: var(--w-brzoskwinia-tlo); } }
+
+/* Desktop i duży tablet */
+@media (min-width: 1024px) {
+  .tresc { display: grid; grid-template-columns: minmax(0, 1fr) 208px; justify-content: space-between; gap: 32px; align-items: start; }
+  .nawBok { position: sticky; top: 112px; align-self: start; margin-top: clamp(2.5rem, 5vw, 4rem); }
+  .nawPanel { max-height: calc(100vh - 112px - 24px); max-height: calc(100dvh - 112px - 24px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+}
+@media (min-width: 1180px) {
+  .tresc { grid-template-columns: minmax(0, 820px) 232px; gap: 48px; }
+}
+
+/* Telefon i mały tablet: pasek pod nagłówkiem (fixed: bez wpływu na układ, CLS 0) */
+@media (max-width: 1023.98px) {
+  .nawBok {
+    position: fixed;
+    top: var(--nw-nag, 64px);
+    left: 0;
+    right: 0;
+    z-index: 900;
+    margin: 0;
+    background: rgba(253, 249, 244, 0.96);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--w-linia);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nawBok[data-widoczny] { visibility: visible; opacity: 1; pointer-events: auto; }
+  .nawSpis { max-width: 820px; margin: 0 auto; }
+  .nawPrzycisk {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    min-height: var(--nw-pasek, 48px);
+    padding: 0.5rem clamp(16px, 4vw, 32px);
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 0.875rem;
+    color: var(--w-tusz);
+    text-align: left;
+    cursor: pointer;
+  }
+  .nawEtykieta { flex: none; font-family: var(--w-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--w-tusz-2); }
+  .nawBiezaca { flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nawStrzalka { flex: none; transition: rotate var(--nw-krotki) var(--nw-ease); }
+  .nawBok[data-otwarta] .nawStrzalka { rotate: 180deg; }
+  /* lista chowana z układu tylko gdy zwinięta; rozwinięta jest panelem pod paskiem z własnym przewijaniem */
+  .nawPanel { display: none; max-height: calc(100vh - var(--nw-nag, 64px) - var(--nw-pasek, 48px) - 16px); max-height: calc(100dvh - var(--nw-nag, 64px) - var(--nw-pasek, 48px) - 16px); overflow-y: auto; overscroll-behavior: contain; padding: 0 clamp(16px, 4vw, 32px) 0.75rem; border-top: 1px solid var(--w-linia); }
+  .nawBok[data-otwarta] .nawPanel { display: block; }
+  .nawSpis ol { border-left: 0; padding-top: 0.5rem; }
+  .nawSpis a { -webkit-line-clamp: unset; display: block; padding: 0.7rem 0.75rem; min-height: 44px; border-left-width: 3px; }
+  .nawSpis li::before { display: none; }
+  .nawSpis a.nawAktywna { border-left-color: var(--w-pomarancz); }
+  /* kotwice lądują pod nagłówkiem i paskiem; !important, bo DE ma scrollMarginTop inline na H2 */
+  .tresc section[id], .tresc section > h2[id], .trescGlowna .sekcja { scroll-margin-top: 150px !important; }
+}
 
 /* Sekcje: kreska zamiast pustki; padding zamiast margin-top (rytm 8 px) */
 .tresc .sekcja,
@@ -637,6 +700,8 @@
   /* Spis sekcji (NawBok) pojawia się po hydracji: 240 ms, opacity + translate 8 px (@starting-style) */
   .nawSpis { transition: opacity var(--nw-krotki) var(--nw-ease), translate var(--nw-krotki) var(--nw-ease); }
   @starting-style { .nawSpis { opacity: 0; translate: 0 var(--r-dy-s); } }
+  /* pasek na telefonie: wjazd 240 ms (opacity + visibility, bez zmiany układu) */
+  @media (max-width: 1023.98px) { .nawBok { transition: opacity var(--nw-krotki) var(--nw-ease), visibility var(--nw-krotki) var(--nw-ease); } }
 
   /* Wejście przy przewijaniu: tak samo jak .r-wej z app/ruch.css (12 px, zakres entry 0-35%); selektory z haszem modułu i
      lokalne klatki (moduł CSS nie widzi globalnych nazw klatek), dlatego tutaj, a nie przez klasę w JSX. Bez wsparcia przeglądarki treść jest widoczna od razu. */
@@ -663,7 +728,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .szkielet, .pasek i { transition: none; }
-  .nawSpis a, .nawSpis li::before { transition: none; }
+  .nawSpis a, .nawSpis li::before, .nawStrzalka, .nawBok { transition: none; }
 }
 @media (hover: hover) and (prefers-reduced-motion: reduce) {
   .kolumna:hover, .kafel:hover, .kartaHuba:hover { border-color: var(--color-border-hover); }
