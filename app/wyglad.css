@@ -344,6 +344,8 @@ section#contact.contact {
   position: relative;
   background-color: var(--w-noc);
   background-image: url('/images/wyglad/gory-oferta.webp');
+  /* 19.11.2026: AVIF (-v2) z tym samym WebP jako rezerwa; przegladarka bez image-set z type() zostaje przy wierszu wyzej */
+  background-image: image-set(url('/images/wyglad/gory-oferta-v2.avif') type('image/avif'), url('/images/wyglad/gory-oferta.webp') type('image/webp'));
   background-repeat: no-repeat;
   background-size: 100% auto;
   /* Grafika chmur zaczyna sie dokladnie tym wierszem zrodla, na ktorym konczy
@@ -526,6 +528,7 @@ section#contact.contact {
 #why-us.why-us {
   background-color: var(--w-papier) !important;
   background-image: url('/images/wyglad/gory-swit.webp') !important;
+  background-image: image-set(url('/images/wyglad/gory-swit-v2.avif') type('image/avif'), url('/images/wyglad/gory-swit.webp') type('image/webp')) !important;
   background-repeat: no-repeat !important;
   background-size: 100% auto !important;
   background-position: top center !important;
@@ -666,6 +669,9 @@ section#contact.contact {
   background-color: var(--w-noc) !important;
   background-image:
     url('/images/wyglad/gory-noc.webp'),
+    linear-gradient(180deg, var(--w-papier) 0, var(--w-papier) 12vw, var(--w-noc) 12vw) !important;
+  background-image:
+    image-set(url('/images/wyglad/gory-noc-v2.avif') type('image/avif'), url('/images/wyglad/gory-noc.webp') type('image/webp')),
     linear-gradient(180deg, var(--w-papier) 0, var(--w-papier) 12vw, var(--w-noc) 12vw) !important;
   background-repeat: no-repeat !important;
   background-size: 100% auto, 100% 100% !important;
@@ -1096,7 +1102,9 @@ section#contact.contact {
 /* --- Kontakt (components/Contact.jsx - takze na podstronach) --- */
 .contact {
   background-color: var(--w-noc) !important;
-  background-image: url('/images/wyglad/antena-linie.webp') !important;
+  background-image: url('/images/wyglad/antena-linie-v2-640.webp') !important;
+  /* 19.11.2026: prawdziwe 2x (1280 px z oryginalu 1536x1024), AVIF i WebP; szerokosc rysunku bez zmian */
+  background-image: image-set(url('/images/wyglad/antena-linie-v2-640.avif') 1x type('image/avif'), url('/images/wyglad/antena-linie-v2-1280.avif') 2x type('image/avif'), url('/images/wyglad/antena-linie-v2-640.webp') 1x type('image/webp'), url('/images/wyglad/antena-linie-v2-1280.webp') 2x type('image/webp')) !important;
   background-repeat: no-repeat !important;
   background-size: min(46vw, 640px) auto !important;
   background-position: left -4vw bottom 0 !important;
@@ -1254,10 +1262,12 @@ section#contact.contact {
 
   .gory-oferta {
     background-image: url('/images/wyglad/gory-oferta-900.webp');
+    background-image: image-set(url('/images/wyglad/gory-oferta-900-v2.avif') type('image/avif'), url('/images/wyglad/gory-oferta-900.webp') type('image/webp'));
   }
 
   #why-us.why-us {
     background-image: url('/images/wyglad/gory-swit-900.webp') !important;
+    background-image: image-set(url('/images/wyglad/gory-swit-900-v2.avif') type('image/avif'), url('/images/wyglad/gory-swit-900.webp') type('image/webp')) !important;
     padding-top: 72vw !important;
   }
 
@@ -1407,7 +1417,8 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   left: 0;
   height: 100%;
   width: calc(var(--k) * 3);
-  background: url('/images/wyglad/chmury.webp') repeat-x 0 0 / var(--k) 100%;
+  background: url('/images/wyglad/chmury-v2.webp') repeat-x 0 0 / var(--k) 100%;
+  background-image: image-set(url('/images/wyglad/chmury-v2.avif') type('image/avif'), url('/images/wyglad/chmury-v2.webp') type('image/webp'));
   will-change: transform;
 }
 
@@ -2594,7 +2605,8 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   bottom: calc(var(--h) * -0.36);
   height: var(--h);
   width: calc(var(--k) * 3);
-  background: url('/images/wyglad/chmury.webp') repeat-x 0 0 / var(--k) 100%;
+  background: url('/images/wyglad/chmury-v2.webp') repeat-x 0 0 / var(--k) 100%;
+  background-image: image-set(url('/images/wyglad/chmury-v2.avif') type('image/avif'), url('/images/wyglad/chmury-v2.webp') type('image/webp'));
   will-change: transform;
 }
 
@@ -2637,7 +2649,8 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   top: 0;
   height: 100%;
   width: calc(var(--k) * 3);
-  background: url('/images/wyglad/chmury.webp') repeat-x 0 0 / var(--k) 100%;
+  background: url('/images/wyglad/chmury-v2.webp') repeat-x 0 0 / var(--k) 100%;
+  background-image: image-set(url('/images/wyglad/chmury-v2.avif') type('image/avif'), url('/images/wyglad/chmury-v2.webp') type('image/webp'));
   will-change: transform;
   opacity: 0.85;
 }
@@ -3195,6 +3208,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   inset: 0;
   z-index: -1;
   background: url('/images/wyglad/gory-swit.webp') center 58% / cover no-repeat;
+  background-image: image-set(url('/images/wyglad/gory-swit-v2.avif') type('image/avif'), url('/images/wyglad/gory-swit.webp') type('image/webp'));
   transform: scaleX(-1);
   opacity: 0.55;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 70%, transparent 100%);
@@ -3202,7 +3216,11 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   pointer-events: none;
 }
 @media (max-width: 900px) {
-  .realizacje-pas::before { background-image: url('/images/wyglad/gory-swit-900.webp'); }
+  /* 19.11.2026: pelny plik 1600 px zamiast 900 px (rozciagniecie cover dawalo ratio 0,30); AVIF jest lzejszy niz dawny WebP 900 */
+  .realizacje-pas::before {
+    background-image: url('/images/wyglad/gory-swit.webp');
+    background-image: image-set(url('/images/wyglad/gory-swit-v2.avif') type('image/avif'), url('/images/wyglad/gory-swit.webp') type('image/webp'));
+  }
 }
 .realizacje-etykieta {
   display: flex;

@@ -4,7 +4,6 @@ import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import HeroArcText from './HeroArcText';
 import SceneErrorBoundary from './SceneErrorBoundary';
 import { hash } from '@/lib/anchors';
@@ -610,16 +609,24 @@ export default function Hero() {
       {/* 7.11.2026 (makieta "Desktop - 2"): tlo sceny z antena bez czaszy - robot 3D
           zastepuje antene. Dolna krawedz grafiki = gorna krawedz pasma chmur oferty. */}
       <div className="hero-tlo-sceny" aria-hidden="true" data-kursor="obraz">
-        <Image
-          src="/images/wyglad/hero-tlo-v2.webp"
-          alt=""
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          data-kursor-zrodlo=""
-          style={{ objectFit: 'cover', objectPosition: 'center bottom' }}
-        />
+        {/* 19.11.2026: <picture> zamiast next/image: gotowy plik nie przechodzi juz drugiej kompresji
+            stratnej (optymalizator Next q75). AVIF z WebP jako rezerwa, fetchPriority high zostaje
+            (obraz jest w HTML z SSR, wiec skaner preload widzi go bez <link>). */}
+        <picture>
+          <source type="image/avif" srcSet="/images/wyglad/hero-tlo-v3-1200.avif 1200w, /images/wyglad/hero-tlo-v3-1600.avif 1600w" sizes="100vw" />
+          <img
+            src="/images/wyglad/hero-tlo-v3-1600.webp"
+            srcSet="/images/wyglad/hero-tlo-v3-1200.webp 1200w, /images/wyglad/hero-tlo-v3-1600.webp 1600w"
+            sizes="100vw"
+            alt=""
+            width={1600}
+            height={1194}
+            fetchPriority="high"
+            decoding="async"
+            data-kursor-zrodlo=""
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center bottom' }}
+          />
+        </picture>
       </div>
 
       {/* 11.11.2026 (prosba Filipa): bez polokregow i animacji sygnalu z etapu satelity - luki usuniete
