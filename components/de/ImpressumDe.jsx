@@ -23,7 +23,7 @@ function Tabelle({ zeilen }) {
 export default function ImpressumDe() {
   const I = IMPRESSUM;
   const zeilen = [...I.zeilen];
-  if (I.vertretungsberechtigte) zeilen.splice(3, 0, ['Vertretungsberechtigt', I.vertretungsberechtigte]);
+  if (I.vertretungsberechtigte) zeilen.splice(2, 0, ['Vertreten durch', I.vertretungsberechtigte]);
   if (I.ustIdNr) zeilen.push(['USt-IdNr.', I.ustIdNr]);
   return (
     <RechtstextDe schluessel="/impressum" brotkrumen="Impressum" daten={I}>
@@ -32,8 +32,8 @@ export default function ImpressumDe() {
       <Tabelle zeilen={zeilen} />
       <h2 style={stilH2}>Kontakt</h2>
       <Tabelle zeilen={I.kontakt} />
-      {I.verantwortlichInhalt && (<><h2 style={stilH2}>Verantwortlich für den Inhalt</h2><p>{I.verantwortlichInhalt}</p></>)}
-      {I.streitbeilegung && (<><h2 style={stilH2}>Verbraucherstreitbeilegung</h2><p>{I.streitbeilegung}</p></>)}
+      {I.verantwortlichInhalt && (<><h2 style={stilH2}>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2><p>{I.verantwortlichInhalt}</p></>)}
+      {I.streitbeilegung && (<><h2 style={stilH2}>Verbraucherstreitbeilegung (§ 36 VSBG)</h2><p>{I.streitbeilegung}</p></>)}
       {I.hinweise.map((h, i) => (
         <section key={i}>
           <h2 style={stilH2}>{h.titel}</h2>

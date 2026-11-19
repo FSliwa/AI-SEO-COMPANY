@@ -16,6 +16,7 @@ import { DEMO, odblokuj } from '@/lib/narzedziaApi';
 import { linkZParametrami } from '@/lib/narzedzia/parametrUrl';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import Zwin from '@/components/narzedzia/Zwin';
+import NawBokBaza from '@/components/narzedzia/NawBok';
 import { SIEDZIBA } from '@/lib/firma';
 import '@/app/ruch.css'; // tokeny i utility ruchu (jak components/narzedzia/Zwin.jsx)
 
@@ -252,36 +253,7 @@ export function PrzykladAdresu({ onWybierz, adresy = ['ai-seo-company.pl'] }) {
   );
 }
 
-/** Sticky spis sekcji po prawej (desktop ≥ 1180 px): linki z H2 sekcji czytane z DOM po hydracji. */
+/** Spis sekcji (sticky od 1024 px, pasek pod nagłówkiem na telefonie): wspólna logika w components/narzedzia/NawBok.jsx. */
 export function NawBok({ rootId }) {
-  const [poz, setPoz] = useState([]);
-  const [aktywna, setAktywna] = useState(null);
-
-  useEffect(() => {
-    const root = document.getElementById(rootId);
-    if (!root) return undefined;
-    const naglowki = [...root.querySelectorAll('section > h2[id]')].filter((h) => !h.closest('[aria-live]'));
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- spis czytany z DOM po hydracji
-    setPoz(naglowki.map((h) => ({ id: h.id, tekst: h.textContent.trim() })));
-    if (!('IntersectionObserver' in window)) return undefined;
-    const io = new IntersectionObserver((wpisy) => {
-      wpisy.forEach((w) => { if (w.isIntersecting) setAktywna(w.target.id); });
-    }, { rootMargin: '-25% 0px -65% 0px' });
-    naglowki.forEach((h) => io.observe(h));
-    return () => io.disconnect();
-  }, [rootId]);
-
-  return (
-    <aside className={st.nawBok}>
-      <nav aria-label="Auf dieser Seite" className={st.nawSpis} hidden={poz.length < 3}>
-        <ol>
-          {poz.map((p) => (
-            <li key={p.id}>
-              <a href={`#${p.id}`} className={aktywna === p.id ? st.nawAktywna : undefined} aria-current={aktywna === p.id ? 'true' : undefined}>{p.tekst}</a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-    </aside>
-  );
+  return <NawBokBaza rootId={rootId} etykieta="Auf dieser Seite" />;
 }
