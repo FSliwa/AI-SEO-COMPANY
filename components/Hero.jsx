@@ -11,25 +11,21 @@
 // kolumnami, słowo w słowo jak dotąd (każdy segment, także te, które telefon dawniej ukrywał): z niego
 // pochodzą frazy pilnowane przez kontrola-fraz.py (agencja marketingowa, agencja seo warszawa).
 
+import { preload } from 'react-dom';
 import './Hero.css';
 import { hash } from '@/lib/anchors';
 import { tekstyHero, kafleHero, UI } from '@/lib/heroNarzedzia';
 import HeroKafel from './HeroKafel';
 import HeroNarzedzia from './HeroNarzedzia';
 
-const WSTEP = {
-  pl: 'Łączymy strategię marki, nowatorskie projektowanie i zaawansowane SEO, aby Twoja firma była widoczna, zapamiętana i masowo wybierana przez klientów. Prowadzimy te trzy obszary razem, a nie jako osobne projekty. Agencja SEO i Marketingowa Warszawa – pozycjonowanie stron i projektowanie. Jako agencja marketingowa z Warszawy łączymy SEO, projekt strony i markę w jednym zespole. Raportujemy zapytania i widoczność z Twoich kont Google, nie same pozycje; rozliczamy się w stałym abonamencie z jawnym celem TOP 3.',
-  en: 'The creativity of human SEO teams with AI-driven accuracy delivers dominant visibility and lasting growth. We merge the two so your brand compounds results instead of chasing them. Brand strategy, innovative design and advanced SEO make your business remembered and chosen at massive scale. Poland SEO and websites for B2B companies: one team for brand, site and search. We combine all three rather than treating them as separate projects.',
-  de: 'Wir sind eine KI SEO Agentur aus Warschau: Wir verbinden technisches SEO, Content und Generative Engine Optimization, damit Ihr Unternehmen in Google und in den Antworten von ChatGPT, Gemini und Perplexity genannt wird. SEO Audit, B2B SEO und Messung der KI-Sichtbarkeit, mit Monatsvertrag und Preisen in Euro.',
-};
-
 export default function Hero({ locale = 'pl' }) {
   const lang = locale === 'en' || locale === 'de' ? locale : 'pl';
   const t = tekstyHero(lang);
   const ui = UI[lang];
   const { kafle, m, strony } = kafleHero(lang);
-  const dl = WSTEP[lang].length;
-  const linie = { '--wl-m': Math.ceil(dl / 46) + 1, '--wl-t': Math.ceil(dl / 66) + 1, '--wl-d': Math.ceil(dl / 76) + 1 };
+  // 19.11.2026: warstwa chmur (tlo CSS, 9 KB) wchodzi w pierwszy ekran i bez preloadu doladowuje sie po CSS (ok. 0,8 s
+  // pozniej niz reszta), przez co stawala sie elementem LCP. Preload sprowadza ja razem z pierwszym malowaniem.
+  preload('/images/wyglad/chmury-v2.avif', { as: 'image', type: 'image/avif', fetchPriority: 'high' });
 
   return (
     <section className="hero hero--narz" id="hero" data-petla="">
@@ -86,9 +82,6 @@ export default function Hero({ locale = 'pl' }) {
           </ul>
         </HeroNarzedzia>
       </div>
-      {/* Wysokość akapitu jest zarezerwowana (min-height z liczby linii dla trzech szerokości): przy podmianie
-          czcionki zmieniała się o linię i ruszała warstwy mgły liczone w % wysokości hero (CLS). */}
-      <p className="hn-wstep" style={linie}>{WSTEP[lang]}</p>
     </section>
   );
 }

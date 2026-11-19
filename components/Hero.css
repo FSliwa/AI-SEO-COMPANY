@@ -19,11 +19,16 @@
   --hn-chipx: #A53A17;
   --hn-paper: #FFFCF8;
   --hn-navy: var(--w-noc, #0A1337);
+  --hn-ctl: #6E655C;
   --hn-ok: #047857;
   --hn-bad: #B42318;
   --hn-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --hn-rise: cubic-bezier(0.22, 1, 0.36, 1);
   --hn-gutter: clamp(20px, 5vw, 48px);
+  /* dol hero: tresc konczy sie nad pasem mgly na styku z ofertą (.styk-mgla: wysokosc clamp(200px, 26vw, 460px), szczyt
+     pasa 0,58 tej wysokosci nad dolem hero, maska gasi pierwsze 30 %), wiec panel i przyciski nie sa przykryte mgla
+     (19.11.2026: 0,3 -> 0,52, bo pasek sterowania panelu lezal pod mgla: pauza, licznik i ramki traciły kontrast) */
+  --hn-dol: calc(clamp(200px, 26vw, 460px) * 0.52 + 8px);
   position: relative;
   isolation: isolate;
   display: flex;
@@ -38,6 +43,9 @@
 }
 
 .hero--narz [hidden] { display: none !important; }
+/* Pasek sterowania jest ukryty do hydracji: miejsce zostaje zarezerwowane (visibility), zeby po hydracji panel nie
+   urosl o jego wysokosc i nie przesunal mgly u dolu hero (CLS na telefonie). */
+.hero--narz .hn-pasek[hidden] { display: flex !important; visibility: hidden; }
 
 /* Winieta u gory: jasny gradient pod nagloweksem strony. */
 .hn-winieta {
@@ -57,7 +65,7 @@
   width: 100%;
   max-width: 1760px;
   margin: 0 auto;
-  padding: 12px var(--hn-gutter) 0;
+  padding: 12px var(--hn-gutter) var(--hn-dol);
 }
 
 .hn-kol { position: relative; }
@@ -126,25 +134,9 @@
 .hn-btn--s:hover { background: var(--hn-ink); color: #FFFFFF; }
 .hn-btn--g:hover { background: var(--w-pomarancz-hover, #C24A22); }
 
-/* Akapit "Laczymy strategie marki..." (dawny luk) pod kolumnami, tekst bez zmian. */
-.hn-wstep {
-  position: relative;
-  z-index: 5;
-  margin: 0;
-  padding: 36px var(--hn-gutter) clamp(72px, 9vw, 130px);
-  box-sizing: content-box;
-  min-height: calc(var(--wl-m, 10) * 1.65em);
-  max-width: 78ch;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--hn-mut);
-  text-shadow: 0 1px 14px rgba(253, 249, 244, 0.9);
-}
-
 @media (min-width: 640px) { .hn-btn { padding: 14px 26px; } }
 @media (max-width: 640px) { .hn-btn { font-size: 14px; padding: 13px 20px; } }
 @media (min-width: 700px) {
-  .hn-wstep { min-height: calc(var(--wl-t, 8) * 1.65em); }
   .hn-d { font-size: clamp(40px, 5.4vw, 52px); }
   .hn-wnetrze { padding-top: 24px; }
 }
@@ -155,12 +147,11 @@
     grid-template-columns: minmax(0, 1fr) clamp(520px, 42.5vw, 612px);
     gap: 48px;
     align-items: center;
-    padding: 8px 80px 40px clamp(100px, 8.34vw, 120px);
+    padding: 8px 80px var(--hn-dol) clamp(100px, 8.34vw, 120px);
   }
   .hn-d { font-size: clamp(40px, 4.45vw, 66px); }
   .hn-sub { font-size: clamp(19px, 1.6vw, 22px); }
   .hn-lead { font-size: clamp(17px, 1.32vw, 19px); }
-  .hn-wstep { min-height: calc(var(--wl-d, 8) * 1.65em); max-width: 86ch; margin: 0 auto 0 0; padding-left: clamp(100px, 8.34vw, 120px); }
 }
 
 /* ---------- wejscie: tylko transform, tekst widoczny od pierwszej klatki ---------- */
@@ -178,18 +169,18 @@
 
 /* ---------- panel kafli ---------- */
 .hn-panel { position: relative; display: flex; flex-direction: column; margin-top: 28px; padding: 0 !important; } /* !important: globalna regula section dokłada 88 px */
-.hn-pasek { order: 2; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; min-height: 56px; padding: 6px 12px; }
+.hn-pasek { order: 2; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; min-height: 60px; padding: 6px 12px; }
 .hn-okno { position: relative; order: 1; min-height: 0; }
 .hn-seo, .hn-panel .sat { display: none; }
 
 .hn-panel .ib {
-  display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border-radius: 50%;
-  border: 1px solid rgba(30, 30, 30, 0.18); background: var(--hn-paper); color: var(--hn-ink); cursor: pointer;
+  display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: 50%;
+  border: 1px solid var(--hn-ctl); /* 3,1:1 na brzoskwiniowym panelu i 5:1 na papierze (WCAG 1.4.11) */ background: var(--hn-paper); color: var(--hn-ink); cursor: pointer;
 }
 .hn-panel .ib svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .hn-panel .ib:hover { border-color: var(--hn-acc); }
 .hn-panel .pg {
-  display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 16px; border: 0; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border: 0; border-radius: 999px;
   background: var(--hn-ink); color: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer;
 }
 .hn-panel .pg svg { width: 12px; height: 12px; fill: currentColor; }
@@ -197,15 +188,11 @@
 .hn-panel .pg[aria-pressed='true'] .pause { display: none; }
 .hn-panel .pg[aria-pressed='true'] .play { display: block; }
 .hn-panel .kw {
-  display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 999px;
-  border: 1px solid rgba(30, 30, 30, 0.22); background: var(--hn-paper); color: var(--hn-ink); font-size: 13px; font-weight: 500; cursor: pointer;
+  display: inline-flex; align-items: center; height: 44px; padding: 0 14px; border-radius: 999px;
+  border: 1px solid var(--hn-ctl); background: var(--hn-paper); color: var(--hn-ink); font-size: 13px; font-weight: 500; cursor: pointer;
 }
 .hn-panel .kw[aria-pressed='true'] { background: #FFFFFF; border-color: var(--hn-acc); color: var(--hn-acc); }
-.hn-panel .lic { min-width: 40px; text-align: center; font-size: 13px; font-weight: 500; color: var(--hn-mut); }
-@media (pointer: coarse) {
-  .hn-panel .ib, .hn-panel .pg, .hn-panel .kw { height: 44px; }
-  .hn-panel .ib { width: 44px; }
-}
+.hn-panel .lic { min-width: 40px; text-align: center; font-size: 13px; font-weight: 500; color: #4A423B; } /* AA także przy dolnym, ciemniejszym końcu gradientu panelu (2560 px: 4,4:1 z --hn-mut) */
 
 /* Widoczny fokus: pomaranczowy obrys z jasnym pierscieniem (czytelny na papierze i na granacie). */
 .hn-panel :focus-visible, .hn-kol :focus-visible {
@@ -226,7 +213,7 @@
 /* ---------- od 1200 px: panel jako wysoka karta, pionowy dryf, napis SEO i male kafle ---------- */
 @media (min-width: 1200px) {
   .hn-panel {
-    height: clamp(620px, calc(100svh - 156px), 800px);
+    height: clamp(620px, calc(100svh - 100px - var(--hn-dol)), 800px);
     margin-top: 0;
     overflow: clip;
     border-radius: 48px;
@@ -261,7 +248,7 @@
     background: var(--hn-paper); box-shadow: 0 10px 24px -14px rgba(60, 30, 15, 0.35); z-index: 2; pointer-events: none;
   }
   .hn-zestaw li.r .sat { left: auto; right: calc(100% + 20px); top: 11%; }
-  .hn-panel .sat small { display: block; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--hn-acc); }
+  .hn-panel .sat small { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--hn-acc); }
   .hn-panel .sat b { display: block; margin-top: 4px; font-size: 15px; font-weight: 600; line-height: 1.25; color: var(--hn-ink); }
   .hn-panel .sat > span { display: block; margin-top: 2px; font-size: 12px; line-height: 1.35; color: var(--hn-mut); }
 }
@@ -305,11 +292,11 @@
 .hn-panel .k:hover .c { text-decoration: underline; }
 .hn-panel .k:hover .ar { background: var(--hn-acc); color: #FFFFFF; }
 .hn-panel .k.ciemny { background: var(--hn-navy); border-color: rgba(243, 183, 156, 0.22); color: #FFFFFF; }
-.hn-panel .k .h { display: flex; align-items: center; gap: 10px; }
+.hn-panel .k .h { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; }
 .hn-panel .k .ik { display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--hn-chip); color: var(--hn-chipx); }
 .hn-panel .k .ik svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.hn-panel .k .t { flex: 1; font-size: 15px; font-weight: 600; }
-.hn-panel .k .bdg { padding: 3px 8px; border-radius: 999px; background: var(--hn-chip); color: var(--hn-chipx); font-size: 12px; font-weight: 600; letter-spacing: 0.03em; white-space: nowrap; }
+.hn-panel .k .t { flex: 1 1 auto; font-size: 15px; font-weight: 600; }
+.hn-panel .k .bdg { padding: 3px 8px; border-radius: 999px; background: var(--hn-chip); color: var(--hn-chipx); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; }
 .hn-panel .k .b { font-size: 13px; line-height: 18px; color: var(--hn-mut); }
 .hn-panel .k .cta { display: flex; align-items: center; gap: 8px; }
 .hn-panel .k .c { font-size: 13px; font-weight: 600; color: var(--hn-acc); }
@@ -332,8 +319,8 @@
 .hn-panel .wynik .z { font-size: 14px; font-weight: 500; color: var(--hn-mut); }
 .hn-panel .wynik .o { margin-left: auto; text-align: right; line-height: 16px; color: var(--hn-mut); }
 .hn-panel .wr { display: flex; align-items: center; gap: 8px; }
-.hn-panel .wr .l { flex: none; width: 98px; }
-.hn-panel .wr .p { flex: none; width: 96px; height: 6px; border-radius: 3px; background: rgba(30, 30, 30, 0.1); overflow: hidden; }
+.hn-panel .wr .l { flex: none; width: 98px; white-space: nowrap; }
+.hn-panel .wr .p { flex: 1 1 36px; min-width: 36px; max-width: 96px; height: 6px; border-radius: 3px; background: rgba(30, 30, 30, 0.1); overflow: hidden; }
 .hn-panel .wr .p i { display: block; height: 100%; border-radius: 3px; background: var(--hn-ok); }
 .hn-panel .wr .p i.w { background: var(--hn-acc); }
 .hn-panel .wr .v { margin-left: auto; font-weight: 500; white-space: nowrap; color: var(--hn-mut); }

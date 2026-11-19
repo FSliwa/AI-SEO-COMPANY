@@ -111,7 +111,8 @@
   left: 0;
   bottom: calc(var(--h) * -0.16);
   height: var(--h);
-  width: calc(var(--k) * 3);
+  /* 19.11.2026: nie mniej niz okno + jedno przesuniecie (--k): inaczej od ~1990 px prawy brzeg warstwy odslania pionowa krawedz mgly */
+  width: max(calc(var(--k) * 3), calc(100vw + var(--k)));
   background: url('/images/wyglad/chmury-v2.webp') repeat-x 0 0 / var(--k) 100%;
   background-image: image-set(url('/images/wyglad/chmury-v2.avif') type('image/avif'), url('/images/wyglad/chmury-v2.webp') type('image/webp'));
   opacity: 0.9;
@@ -157,30 +158,26 @@
   50% { transform: scale(var(--k)) rotate(0.8deg); }
 }
 
-/* DUZE EKRANY (18.11.2026): powyzej 1680 px scena (grafika gor + czasza) stoi na
-   srodkowym pudelku 1680 px (proporcje jak na 1680), a nie rozciaga sie do 3440 px
-   (rozdmuchana, rozmazana czasza, szwy). Boki pudelka gasna w mgle i papier.
-   Poniżej 1680 px nic sie nie zmienia (pudelko = cala szerokosc). */
-@media (min-width: 1600px) {
+/* DUZE EKRANY (19.11.2026, poprawka wlasciciela): do 2560 px scena (grafika gor + czasza) wypelnia cala
+   szerokosc hero i skaluje sie jako jedna calosc: pudelko sceny ma proporcje grafiki (1600x1194) i szerokosc
+   100cqw, a czasza jest w nim w % (pivot w punkcie styku z podstawa), wiec stoi na stacji przy kazdej szerokosci.
+   Wczesniej pudelko 1680 px (od 18.11) zostawialo od 1681 px puste pasy papieru po bokach.
+   Od 2561 px scena stoi na srodkowym pudelku 2560 px (proporcje jak na 2560), a jego boki gasna w mgle i papier,
+   zeby przy 3440 px grafika nie byla rozdmuchana. */
+@media (min-width: 2561px) {
   .tlo-gory-obraz {
     left: auto;
-    width: min(100cqw, 1680px);
-    right: calc((100cqw - min(100cqw, 1680px)) / 2);
-    height: min(100%, 504px);
-  }
-  .tlo-gory-scena {
-    width: min(100cqw, 1680px);
-    right: calc((100cqw - min(100cqw, 1680px)) / 2);
-  }
-}
-@media (min-width: 1681px) {
-  .tlo-gory-obraz {
+    width: 2560px;
+    right: calc((100cqw - 2560px) / 2);
+    height: min(100%, 768px);
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 30%);
     mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 30%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
   }
   .tlo-gory-scena {
+    width: 2560px;
+    right: calc((100cqw - 2560px) / 2);
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
     mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
   }
@@ -207,7 +204,7 @@
     --tg-lead: clamp(1rem, min(2vw, 2.45vh), 1.25rem);
     --tg-pb: max(190px, calc(38.1vw - 30px));
     /* lewa krawedz czaszy (px od lewej okna) i dostepna szerokosc srodkowej kolumny tekstu */
-    --tg-w: min(100vw, 1680px);
+    --tg-w: min(100vw, 2560px);
     --tg-dl: calc((100vw - var(--tg-w)) / 2 + var(--tg-w) * (0.55125 + 0.3438 * (1 - var(--tg-k))));
     padding-top: clamp(20px, 3.2vh, 44px) !important;
     padding-bottom: var(--tg-pb) !important;

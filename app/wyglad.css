@@ -1409,7 +1409,8 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   top: 0;
   left: 0;
   height: 100%;
-  width: calc(var(--k) * 3);
+  /* 19.11.2026: nie mniej niz okno + jedno przesuniecie (--k): inaczej od ~1990 px prawy brzeg warstwy odslania pionowa krawedz mgly */
+  width: max(calc(var(--k) * 3), calc(100vw + var(--k)));
   background: url('/images/wyglad/chmury-v2.webp') repeat-x 0 0 / var(--k) 100%;
   background-image: image-set(url('/images/wyglad/chmury-v2.avif') type('image/avif'), url('/images/wyglad/chmury-v2.webp') type('image/webp'));
   will-change: transform;
@@ -2503,7 +2504,8 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   left: 0;
   bottom: calc(var(--h) * -0.36);
   height: var(--h);
-  width: calc(var(--k) * 3);
+  /* 19.11.2026: nie mniej niz okno + jedno przesuniecie (--k): inaczej od ~1990 px prawy brzeg warstwy odslania pionowa krawedz mgly */
+  width: max(calc(var(--k) * 3), calc(100vw + var(--k)));
   background: url('/images/wyglad/chmury-v2.webp') repeat-x 0 0 / var(--k) 100%;
   background-image: image-set(url('/images/wyglad/chmury-v2.avif') type('image/avif'), url('/images/wyglad/chmury-v2.webp') type('image/webp'));
   will-change: transform;
@@ -2547,7 +2549,8 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   left: 0;
   top: 0;
   height: 100%;
-  width: calc(var(--k) * 3);
+  /* 19.11.2026: nie mniej niz okno + jedno przesuniecie (--k): inaczej od ~1990 px prawy brzeg warstwy odslania pionowa krawedz mgly */
+  width: max(calc(var(--k) * 3), calc(100vw + var(--k)));
   background: url('/images/wyglad/chmury-v2.webp') repeat-x 0 0 / var(--k) 100%;
   background-image: image-set(url('/images/wyglad/chmury-v2.avif') type('image/avif'), url('/images/wyglad/chmury-v2.webp') type('image/webp'));
   will-change: transform;
@@ -3631,19 +3634,11 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
 @media (min-width: 1600px) and (min-aspect-ratio: 1/1) {
   .hero.hero--narz {
     --hero-h: clamp(700px, 100vh, 1000px);
-    --hero-scena: min(100%, calc(var(--hero-h) * 1.78));
+    /* 19.11.2026: scena na cala szerokosc do 2560 px (wczesniej pudelko 1,78 x wysokosc zostawialo puste pasy
+       papieru po bokach od ~1780 px); pudelko 2560 px z miekkimi bokami dopiero od 2561 px (blok nizej) */
+    --hero-scena: min(100%, 2560px);
     /* inline style sekcji ma minHeight: 100vh, a min-height wygrywa z max-height */
     min-height: var(--hero-h) !important;
-  }
-
-  /* Boki poza scena: niebo -> mgla (kolory z krawedzi grafiki tla). */
-  .hero.hero--narz::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, rgb(250, 241, 237) 0%, rgb(249, 241, 236) 55%, rgb(246, 238, 232) 78%, rgb(242, 233, 227) 100%);
   }
 
   .hero .hero-tlo-sceny {
@@ -3651,12 +3646,6 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
     right: auto;
     width: var(--hero-scena);
     translate: -50% 0;
-  }
-
-  /* Miekkie krawedzie sceny grafiki tla (nie ma twardego pionowego szwu). */
-  .hero .hero-tlo-sceny {
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
   }
 
   /* Rozmiary tekstu hero (18.11, hero-home) licza sie w bloku "HERO v6" na koncu
@@ -3675,14 +3664,21 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
   .gory-oferta .gory-klienci + .services { padding-top: 216px !important; }
 }
 
-/* Okna > 2400 px: niebo i gory na cala szerokosc, bez bocznych maskowanych krawedzi. */
-@media (min-width: 2400px) and (min-aspect-ratio: 1/1) {
-  .hero .hero-tlo-sceny {
-    width: 100%;
-    -webkit-mask-image: none;
-    mask-image: none;
+/* Okna szersze niz 2560 px: grafika nieba i gor stoi na srodkowym pudelku 2560 px, boki gasna w kolor
+   nieba i mgly (kolory z krawedzi grafiki tla), bez twardego pionowego szwu. Do 2560 px scena wypelnia cala szerokosc. */
+@media (min-width: 2561px) and (min-aspect-ratio: 1/1) {
+  .hero.hero--narz::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(250, 241, 237) 0%, rgb(249, 241, 236) 55%, rgb(246, 238, 232) 78%, rgb(242, 233, 227) 100%);
   }
-  .hero.hero--narz::before { content: none; }
+  .hero .hero-tlo-sceny {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  }
 }
 
 /* ==========================================================================
@@ -3771,9 +3767,12 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
    literami (nie nachodzi na nie). */
 @media (max-width: 900px), (min-width: 901px) and (max-aspect-ratio: 1/1) {
 
+  /* 19.11.2026: nie wiecej niz 85 vw. Wysokosc hero zalezy od zawijania tekstu, a po podmianie czcionki zmienia sie
+     o linie; mgla w % wysokosci ruszala wtedy o kilkanascie px (CLS 0,011 przy 390 px, od kiedy akapit
+     z zarezerwowana wysokoscia nie stoi juz na dole hero). Na telefonie 85 vw jest mniejsze niz 32 %, wiec stale. */
   .hero-mgla,
   .hero-mgla-przod {
-    height: 32%;
+    height: min(32%, 85vw);
   }
 }
 
@@ -3978,4 +3977,16 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
 .kota-floating-cta {
   right: max(1rem, env(safe-area-inset-right)) !important;
   bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+}
+
+/* ==========================================================================
+   OFERTA: akapit wstepny (19.11.2026) - dawny tekst z dolu hero, teraz wstep do trzech filarow
+   (components/Services.jsx). Kolory i miara jak podtytul sekcji (centrowany, jasny tekst na nocnym pasie gor).
+   ========================================================================== */
+.gory-oferta .services .section-header p.oferta-wstep {
+  max-width: 68ch;
+  margin-top: 1.1rem !important;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--w-noc-tekst);
 }

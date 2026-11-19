@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import HeroKlienci from '@/components/HeroKlienci';
 import { Abschnitt, Absatz, Liste, Karten, Preise, Referenzen, CtaZeile, Faq } from './UslugiBausteine';
 import { HOME_LEISTUNGEN, HOME_VORTEILE, HOME_SCHRITTE, HOME_FAQ } from '@/lib/de/home';
+import { WSTEP_OFERTY } from '@/lib/wstepOferty';
 import { maWersjeDe } from '@/lib/stronyDe';
 
 export default function HomeDe() {
@@ -23,7 +24,7 @@ export default function HomeDe() {
         </div>
         <div style={{ paddingTop: '70px', color: 'var(--color-text-main)', overflowX: 'hidden' }}>
 
-        <Karten id="uslugi" titel="Unsere Leistungen" untertitel="SEO-Strategien, die Marken in Google und in KI-Antworten sichtbar machen." items={leistungen} />
+        <Karten id="uslugi" titel="Unsere Leistungen" untertitel="SEO-Strategien, die Marken in Google und in KI-Antworten sichtbar machen." einleitung={WSTEP_OFERTY.de} items={leistungen} />
 
         <Abschnitt titel="Warum AI SEO COMPANY" id="why-us" tag="Arbeitsweise">
           <Absatz>Wir bauen Lösungen auf Analysedaten und auf dem Wissen darüber, wie Kunden Kaufentscheidungen treffen. Als KI SEO Agentur aus Warschau führen wir SEO, Analytik und Content in einem Team, sodass nichts losgelöst vom Rest optimiert wird.</Absatz>
