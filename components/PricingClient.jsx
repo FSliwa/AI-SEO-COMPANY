@@ -199,7 +199,7 @@ export default function PricingClient() {
               <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>
                 {lang === 'pl'
                   ? 'Ukryte koszty i umowy na wiele lat to domena przestarzałych firm. Wierzymy, że dobra usługa broni się sama, a jasny i prosty cennik pozycjonowania to podstawa partnerskich relacji i najwyższego zwrotu z inwestycji (ROI).'
-                  : 'Hidden costs and multi-year contracts are the domain of outdated companies. We believe a good service defends itself, and clear, simple SEO pricing is the foundation of partnership and the highest ROI.'}
+                  : <>Hidden costs and multi-year contracts are the domain of outdated companies. We believe a good service defends itself, and clear, simple SEO pricing is the foundation of partnership and the highest ROI. Not sure whether the budget belongs in search or in ads? Our <Link href="/porownania/seo-czy-google-ads" style={{ textDecoration: 'underline' }}>SEO vs SEM</Link> comparison sets the cost per click from our own campaign against the monthly fee, and the <Link href="/narzedzia/kalkulator-strat-seo" style={{ textDecoration: 'underline' }}>SEO ROI calculator</Link> estimates the payback of a package. Other decision guides are collected under <Link href="/porownania" style={{ textDecoration: 'underline' }}>SEO comparisons</Link>.</>}
               </p>
               <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginTop: '1.5rem' }}>
                 {lang === 'pl'

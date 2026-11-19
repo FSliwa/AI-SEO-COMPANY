@@ -1,0 +1,45 @@
+/* Strona „SEO audit example” (18.11.2026). Prefiks ap-. Układ, hero, spis, tabele i FAQ: klasy sz-* z szablony.css;
+   tu tylko karta wyniku w hero, rysunek raportu, karty problemów i listy reguł. Tokeny --w-* z app/wyglad.css,
+   ruch z app/ruch.css (tylko transform/opacity, tylko przy prefers-reduced-motion: no-preference). */
+
+.ap-karta { position: relative; justify-self: center; width: min(100%, 360px); margin-inline: auto; padding: clamp(1.25rem, 3vw, 1.75rem); background: var(--w-karta); border: 1px solid var(--w-linia); border-radius: 24px; box-shadow: var(--sz-cien, 0 24px 60px rgba(10, 19, 55, 0.1)); }
+.ap-karta__domena { margin: 0 0 1rem; font-size: 0.9rem; font-weight: 600; color: var(--w-tusz-2); overflow-wrap: anywhere; }
+.ap-karta__glowna { display: flex; align-items: center; gap: 1rem; margin: 0 0 1.25rem; }
+.ap-karta__liczba { display: grid; place-items: center; flex: 0 0 auto; width: 96px; height: 96px; border-radius: 50%; border: 8px solid #047857; font-size: 2.25rem; font-weight: 700; letter-spacing: -0.03em; color: var(--w-tusz); }
+.ap-karta__opis { margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--w-tusz-2); }
+.ap-karta__opis strong { display: block; font-size: 1.05rem; color: var(--w-tusz); }
+.ap-karta__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.ap-karta__lista li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0.75rem; border-radius: 12px; background: var(--w-papier-2, rgba(0, 0, 0, 0.03)); font-size: 0.95rem; color: var(--w-tusz); }
+.ap-karta__lista b { font-variant-numeric: tabular-nums; }
+.ap-karta__lista .ap-slabsza b { color: #b45309; }
+
+.ap-rysunek { margin: 1.5rem 0 2rem; }
+.ap-rysunek img { display: block; width: 100%; max-width: 820px; height: auto; margin-inline: auto; border: 1px solid var(--w-linia); border-radius: 20px; background: var(--w-karta); }
+.ap-rysunek figcaption { max-width: 820px; margin: 0.75rem auto 0; font-size: 0.9rem; line-height: 1.55; color: var(--w-tusz-2); }
+
+.ap-problem { margin: 0 0 1.5rem; padding: clamp(1.1rem, 3vw, 1.6rem); background: var(--w-karta); border: 1px solid var(--w-linia); border-left: 4px solid #b45309; border-radius: 20px; }
+.ap-problem__meta { margin: 0 0 0.35rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #b45309; }
+.ap-problem h3 { margin: 0 0 0.75rem; }
+.ap-problem dl { margin: 0; display: grid; gap: 0.75rem; }
+.ap-problem dt { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--w-tusz-2); }
+.ap-problem dd { margin: 0.15rem 0 0; font-size: 1.0625rem; line-height: 1.6; color: var(--color-text-main); max-width: 62ch; }
+
+.ap-grupa { margin: 0 0 1rem; border: 1px solid var(--w-linia); border-radius: 16px; background: var(--w-karta); }
+.ap-grupa > summary { cursor: pointer; padding: 1rem 1.25rem; font-weight: 600; color: var(--w-tusz); list-style: none; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; justify-content: space-between; }
+.ap-grupa > summary::-webkit-details-marker { display: none; }
+.ap-grupa > summary:focus-visible { outline: 2px solid var(--w-pomarancz); outline-offset: 2px; border-radius: 12px; }
+.ap-grupa__stan { font-weight: 500; color: var(--w-tusz-2); }
+.ap-grupa ol { margin: 0; padding: 0 1.25rem 1.1rem 2.75rem; display: grid; gap: 0.35rem; font-size: 0.98rem; line-height: 1.5; color: var(--color-text-main); }
+.ap-grupa li[data-zgloszona] { font-weight: 600; color: #b45309; }
+.ap-grupa li small { font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 0.4rem; }
+
+.ap-kroki { margin: 0 0 1rem; padding: 0 0 0 1.5rem; display: grid; gap: 0.85rem; font-size: 1.0625rem; line-height: 1.6; color: var(--color-text-main); max-width: 66ch; }
+.ap-kroki strong { color: var(--w-tusz); }
+
+.ap-cta { margin: 2rem 0 0; padding: clamp(1.25rem, 4vw, 2rem); background: var(--w-brzoskwinia-tlo, rgba(251, 230, 218, 0.5)); border-radius: 24px; }
+.ap-cta p { margin: 0 0 1rem; font-size: 1.0625rem; line-height: 1.6; max-width: 56ch; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ap-karta, .ap-problem { transition: transform var(--r-d-std, 240ms) var(--r-ease, ease); }
+  .ap-problem:hover { transform: translateY(-2px); }
+}

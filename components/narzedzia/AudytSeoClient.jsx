@@ -256,6 +256,7 @@ export default function AudytSeoClient() {
           <p className="narz-mikro">{en
             ? `No sign-up. Up to ${AUDYT.limitIp} audits per day from one IP address. An audit usually takes 20 to 90 seconds. Data: our AISEOCompanyAudit crawler and Google PageSpeed Insights.`
             : `Bez rejestracji. Do ${AUDYT.limitIp} audytów dziennie z jednego adresu IP. Audyt trwa zwykle 20 do 90 sekund. Dane: nasz robot AISEOCompanyAudit i Google PageSpeed Insights.`}</p>
+          {en && <p className="narz-mikro">Not sure what you will get? Read an <Link href="/narzedzia/seo-audit-example">SEO audit example</Link>: the finished report for our own website, rule by rule.</p>}
           {stan.status === 'loading' && <Postep kroki={en ? KROKI_EN : KROKI} co={9000} />}
           {stan.status === 'error' && <p id="audyt-blad" role="alert" className="narz-blad">{stan.blad}</p>}
         </form>

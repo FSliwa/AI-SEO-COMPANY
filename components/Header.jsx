@@ -11,6 +11,7 @@ import { track } from '@/lib/track';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
 import { hash, homeHash, przewinDoSekcji, przejdzDoSekcji } from '@/lib/anchors';
 import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
+import { tylkoEn } from '@/lib/stronyTylkoEn';
 import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
 // 18.11.2026 (menu): style rozwiniętego menu (grupy, kolumny, ruch) w osobnym pliku.
 import './HeaderMenu.css';
@@ -100,6 +101,8 @@ export default function Header() {
     // or serve the wrong language under it, so fall back to the blog index.
     const post = blogPosts.find(p => p.slug === sciezka);
     if (post) return isPostAvailableIn(post, loc) ? sciezka : '/blog';
+    // 18.11.2026: strona tylko EN (lib/stronyTylkoEn.js) nie ma wersji PL; przełącznik PL prowadzi do huba narzędzi.
+    if (loc === 'pl' && tylkoEn(sciezka)) return '/narzedzia';
     if (loc === 'en') {
       if (tylkoPl(sciezka)) return celPrzelacznikaEn(sciezka);
       if (sciezka.startsWith('/blog/') && wpisPublikacji(sciezka)) return '/blog';

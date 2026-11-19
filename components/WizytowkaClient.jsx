@@ -85,6 +85,17 @@ const ZRODLA_EN = [
     nazwa: 'Google Business Profile Help: Business Profile suspensions and restrictions for policy violations',
     data: '2026-11-05',
   },
+  // 18.11.2026 (partia 2, p2-onpage): sekcje „What is…” i „How to get…”; odczyt stron pomocy 18.11.2026.
+  {
+    url: 'https://support.google.com/business/answer/2911778?hl=en',
+    nazwa: 'Google Business Profile Help: Add or claim your Business Profile',
+    data: '2026-11-18',
+  },
+  {
+    url: 'https://support.google.com/business/answer/3039617?hl=en',
+    nazwa: 'Google Business Profile Help: Edit your Business Profile',
+    data: '2026-11-18',
+  },
 ];
 
 // Tabela „co jest w cenie” (brief L1, sekcja 2). Kolumna rynku opisuje zakres ofert prowadzenia
@@ -219,6 +230,41 @@ export default function WizytowkaClient({ faqData }) {
           </div>
         </div>
       </section>
+
+      {/* 18.11.2026 (partia 2, pozycja 7): „What is a Google Business Profile?” (700/mies., US+GB) i „How to get a
+          Google Business Profile” (300/mies.). Tylko EN. Definicja 58 słów i kroki z Pomocy Profilu Firmy
+          (Add or claim your Business Profile; Guidelines for representing your business; Edit your Business
+          Profile, odczyt 18.11.2026). Kroki jako widoczny tekst, bez znaczników HowTo. */}
+      {en && (
+        <section style={sekcja}>
+          <div className="container" style={kontener}>
+            <h2 id="what-is-google-business-profile" style={h2Styl}>What is a Google Business Profile?</h2>
+            <AnswerBox etykieta="Short answer">
+              A Google Business Profile is the free listing that a business manages on Google to control how its name, address, opening hours, phone number and photos appear in Search and Maps. After verification you can edit these details and answer customers’ questions. To be eligible, a business needs a location customers can visit or must travel to customers.
+            </AnswerBox>
+            <p style={akapit}>
+              Google describes the rules in its{' '}
+              <a href={ZRODLA[1].url} rel="noopener" style={link}>guidelines for representing your business on Google</a>. A business with a storefront can show its address, while a service-area business that works from a home or other private location should generally hide it.
+            </p>
+
+            <h2 id="how-to-get-google-business-profile" style={{ ...h2Styl, marginTop: '2.5rem' }}>How to get a Google Business Profile</h2>
+            <p style={akapit}>
+              Adding a business is free. These four steps follow Google’s{' '}
+              <a href={ZRODLA[4].url} rel="noopener" style={link}>Add or claim your Business Profile</a> page:
+            </p>
+            <ol style={{ ...lista, gap: '0.9rem' }}>
+              <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Check that you are eligible.</span> Google lets only eligible businesses add or claim a location. Check the guidelines linked above before you start, and sign in to the Google Account that will own the profile.</li>
+              <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Add or claim your business.</span> Go to business.google.com/add and choose to add your business to Google. If a listing for your address already exists, claim it instead of creating a duplicate.</li>
+              <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Enter your business details.</span> Follow the on-screen instructions and use the same name, address and phone number as on your website, so the data matches everywhere.</li>
+              <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Verify the profile.</span> Choose one of the verification options Google offers and complete the steps shown. A profile appears in Search and Maps only after it is verified (<a href={ZRODLA[5].url} rel="noopener" style={link}>Edit your Business Profile</a>).</li>
+            </ol>
+            <p style={akapit}>
+              Once the profile is verified, fill in categories, services, hours and photos. The free{' '}
+              <Link href="/narzedzia/checklista-wizytowki-google" style={link}>local SEO checklist (PDF)</Link> walks through setup and verification point by point, and the sections below explain how we optimize the profile after that.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* H2 1: czynniki rankingu lokalnego wg Pomocy Profilu Firmy w Google (odczyt 5.11.2026). */}
       <section style={sekcja}>

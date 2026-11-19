@@ -1,6 +1,7 @@
 import { defineRouting } from 'next-intl/routing';
 import { createNavigation } from 'next-intl/navigation';
 import { STRONY_EN } from '../lib/stronyEn';
+import { TYLKO_EN } from '../lib/stronyTylkoEn';
 import { STRONY_DE, DE_AKTYWNE } from '../lib/stronyDe';
 
 // Wersja niemiecka (18.11.2026): przy DE_AKTYWNE = false (domyślnie, lib/stronyDe.js) routing jest
@@ -73,6 +74,8 @@ export const routing = defineRouting({
     // strona [slug] zawsze dostaje slug PL i locale. Strony bez wpisu EN (zarezerwowane adresy)
     // trafiają w szablon [slug] i dają 404 (dynamicParams = false).
     ...Object.fromEntries(Object.entries(STRONY_EN).map(([pl, { en }]) => [pl, { pl, en }])),
+    // 18.11.2026: strony tylko EN (lib/stronyTylkoEn.js): klucz jak strona z wersją EN, ale adres PL = 404 (trasa [slug] nie generuje locale pl).
+    ...Object.fromEntries(Object.entries(TYLKO_EN).map(([klucz, { en }]) => [klucz, { pl: klucz, en }])),
     '/porownania/[slug]': { pl: '/porownania/[slug]', en: '/comparisons/[slug]' },
     '/pozycjonowanie-w-ai/[slug]': { pl: '/pozycjonowanie-w-ai/[slug]', en: '/ai-search-optimization/[slug]' },
     '/narzedzia/[slug]': { pl: '/narzedzia/[slug]', en: '/tools/[slug]' },

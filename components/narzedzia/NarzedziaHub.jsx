@@ -260,7 +260,7 @@ export default function NarzedziaHub({ locale = 'pl' }) {
             </div>
             <h1 style={s.h1}>{H1}</h1>
           </div>
-          <p className={st.lead} style={{ ...s.lead, margin: '0 auto 1.5rem' }}>{t.lead(szablony.length)}</p>
+          <p className={st.lead} style={{ ...s.lead, margin: '0 auto 1.5rem' }}>{t.lead(szablony.filter((k) => k.id !== 'seo-audit-example').length)}</p>
 
           {/* Z-H7: pole darmowego audytu SEO w hubie (ten sam klient co na stronie audytu, bez automatycznego startu). */}
           {hrefAudytu ? (

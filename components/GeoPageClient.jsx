@@ -114,9 +114,11 @@ const T = {
   },
   en: {
     tag: 'AI search optimization · GEO',
-    h1: 'AI search optimization: your company in ChatGPT and Google answers',
+    h1: 'AI search optimization (GEO): get your company named in ChatGPT answers',
     // AV-03 (korekta, 58 słów): marka, miasto, rozwinięcie GEO i ceny z oferty EN.
-    lead: 'AI SEO COMPANY is a Warsaw-based AI search optimization (GEO, generative engine optimization) agency. Every week we ask ChatGPT, Perplexity, Gemini and Google AI Overviews 30 of your customers’ questions and track whether they mention you. The audit costs €235 net; ongoing tracking is in SEO Premium (from €590 net/month) or a €115 net/month add-on to SEO Standard.',
+    // 18.11.2026 (partia 2, poz. 3): definicja GEO i AEO w pierwszym akapicie; Google: GEO/AEO to etykiety,
+    // optymalizacja pod generatywne AI jest nadal SEO (ai-optimization-guide, odczyt 18.11.2026).
+    lead: <>Generative engine optimization (GEO), also called AI SEO, is the work of getting your company named in answers written by AI assistants such as ChatGPT, Gemini and Perplexity. Answer engine optimization (AEO) aims at being the direct answer in answer-style results. <a href={ZRODLO.googleGuide} rel="noopener" style={{ textDecoration: 'underline' }}>Google treats optimizing for generative AI search as part of SEO</a>, so the basics stay the same. AI SEO COMPANY is a Warsaw-based AI search optimization agency: every week we ask ChatGPT, Perplexity, Gemini and Google AI Overviews 30 of your customers’ questions and track whether they mention you. The audit costs €235 net; ongoing tracking is in SEO Premium (from €590 net/month) or a €115 net/month add-on to SEO Standard.</>,
     ctaCheck: 'Check for free whether ChatGPT recommends you',
     ctaAudit: 'AI audit: €235 net',
     howTitle: 'How we measure AI visibility',
@@ -426,6 +428,13 @@ function SekcjePl() {
         </p>
       </SekcjaTekstowa>
 
+      {/* 18.11.2026 (partia 2, poz. 10): GEO / geo seo (390), AI SEO (720), LLM SEO (110) jako nazwy tej samej usługi.
+          „AEO” celowo pominięte: po polsku to status celny (patrz karta o skrótach). Źródło: poradnik Google, odczyt 18.11.2026. */}
+      <SekcjaTekstowa title="GEO, AI SEO i LLM SEO: różne nazwy tej samej usługi">
+        <p style={tekstStyl}>Na rynku pozycjonowanie w AI ma kilka nazw. GEO, zapisywane też jako „geo seo”, AI SEO i LLM SEO są w praktyce synonimami: chodzi o to, żeby modele językowe i przeglądy AI wymieniały firmę i cytowały jej stronę. Różnią się głównie nazwą i tym, które odpowiedzi mierzymy: Google AI Overview, ChatGPT, Gemini czy Perplexity.</p>
+        <p style={tekstStyl}>Google w <a href={ZRODLO.googleGuide} rel="noopener" style={linkStyl}>poradniku o generatywnych funkcjach AI w Wyszukiwarce</a> (odczyt 18.11.2026) traktuje optymalizację pod AI jako część SEO, więc fundamentem zostaje strona, którą roboty czytają i która odpowiada wprost na pytania klientów.</p>
+      </SekcjaTekstowa>
+
       {/* MSA-05; dowody z naszej domeny: PLAN-v2 3.2 i AV-14 (botcheck 4.11 20:26 i 5.11 01:16). */}
       <SekcjaTekstowa title="Co wdrażamy technicznie">
         <ul style={{ ...tekstStyl, paddingLeft: '1.25rem', display: 'grid', gap: '0.6rem' }}>
@@ -490,6 +499,14 @@ export default function GeoPageClient() {
           </Reveal>
         </div>
       </section>
+
+      {/* 18.11.2026 (partia 2, poz. 3): H2 odpowiadający na „what is generative engine optimization” (5 280/mies. US+GB). Tylko EN. */}
+      {!pl && (
+        <SekcjaTekstowa id="what-is-generative-engine-optimization" title="What is generative engine optimization?">
+          <p style={tekstStyl}>Generative engine optimization (GEO) is the practice of making a company more likely to be named, and its pages cited, in answers that generative AI tools write: ChatGPT, Gemini, Perplexity and the AI overviews in Google Search. Instead of competing for a position in a list of ten links, you work on whether the model mentions you at all and on the sources it uses to decide.</p>
+          <p style={tekstStyl}>The terms overlap. Answer engine optimization (AEO) focuses on being the direct answer, and AI SEO and LLM SEO are other names used on the market. In its guide to <a href={ZRODLO.googleGuide} rel="noopener" style={linkStyl}>optimizing for generative AI features on Google Search</a> (read 18 November 2026), Google treats the whole area as part of SEO. The fundamentals are shared: pages that bots can read, clear answers, consistent business data and mentions on other sites. What differs is the measurement: we count the share of AI answers that name your company, not a position.{HREF.p2 && <> The <Link href={HREF.p2} style={linkStyl}>SEO vs GEO comparison</Link> shows the differences side by side.</>}</p>
+        </SekcjaTekstowa>
+      )}
 
       <section style={{ padding: '40px 0 60px' }}>
         <div className="container">

@@ -8,6 +8,9 @@ import { AudytSeoStrona, AutorytetStrona, KalkulatorStrona, MakietaStrona } from
 import { metadataStronyPl, parametryPl, wymagajStronyPl } from '@/lib/stronaPl';
 import { STRONY_NARZEDZI, metaStrony, stronaNarzedzia } from '@/lib/narzedzia';
 import { szablonDe } from '@/lib/szablony/de';
+import AudytPrzykladStrona from '@/components/narzedzia/AudytPrzykladStrona';
+import { DEFAULT_ROBOTS } from '@/lib/blogPosts';
+import { TYLKO_EN, opublikowaneTylkoEn, opublikowanaTylkoEn, wpisTylkoEn } from '@/lib/stronyTylkoEn';
 import AudytSeoStronaDe from '@/components/de/narzedzia/AudytSeoStronaDe';
 import GeneratorLlmsTxtDe from '@/components/de/narzedzia/GeneratorLlmsTxtDe';
 import AutorytetStronaDe from '@/components/de/narzedzia/AutorytetStronaDe';
@@ -38,12 +41,44 @@ const KOMPONENTY_DE = {
   'autorytet-domeny': AutorytetStronaDe,
 };
 
+// 18.11.2026 (p2-audyt-przyklad): strony TYLKO po angielsku (lib/stronyTylkoEn.js) mają parametr tylko
+// z locale 'en'; adres PL tej ścieżki nie jest generowany (dynamicParams = false), czyli 404.
+const SLUGI_TYLKO_EN = Object.fromEntries(Object.keys(TYLKO_EN).map((k) => [k.replace('/narzedzia/', ''), k]));
+
 export function generateStaticParams() {
-  return parametryPl('/narzedzia/', STRONY_NARZEDZI.map((s) => s.slug));
+  return [
+    ...parametryPl('/narzedzia/', STRONY_NARZEDZI.map((s) => s.slug)),
+    ...opublikowaneTylkoEn().map((k) => ({ locale: 'en', slug: k.replace('/narzedzia/', '') })),
+  ];
+}
+
+const BASE_STRONY = 'https://www.ai-seo-company.pl';
+
+function metadataTylkoEn(locale, klucz) {
+  const w = wpisTylkoEn(klucz);
+  if (!w || !w.opublikowana || locale !== 'en') return {};
+  const url = `${BASE_STRONY}/en${w.en}`;
+  return {
+    title: w.tytul,
+    description: w.opis,
+    // Strona bez wersji PL: canonical = sam adres EN, hreflang en + x-default na ten sam adres.
+    alternates: { canonical: url, languages: { en: url, 'x-default': url } },
+    robots: DEFAULT_ROBOTS,
+    openGraph: {
+      title: w.tytul,
+      description: w.opis,
+      url,
+      type: 'article',
+      locale: 'en_US',
+      siteName: 'AI SEO COMPANY',
+      images: [{ url: `${BASE_STRONY}/images/narzedzia/audyt-przyklad/seo-audit-example-report.webp`, width: 1230, height: 1700, alt: 'Report of the free SEO audit of ai-seo-company.pl: score 95 out of 100, three performance warnings' }],
+    },
+  };
 }
 
 export async function generateMetadata({ params }) {
   const { locale, slug } = await params;
+  if (SLUGI_TYLKO_EN[slug]) return metadataTylkoEn(locale, SLUGI_TYLKO_EN[slug]);
   if (!stronaNarzedzia(slug)) return {};
   const sciezka = `/narzedzia/${slug}`;
   const { title, description } = metaStrony(sciezka);
@@ -52,6 +87,12 @@ export async function generateMetadata({ params }) {
 
 export default async function NarzedziePage({ params }) {
   const { locale, slug } = await params;
+  if (SLUGI_TYLKO_EN[slug]) {
+    // Strona tylko EN: każdy inny język (w tym PL) i strona przed publikacją = 404.
+    if (locale !== 'en' || !opublikowanaTylkoEn(SLUGI_TYLKO_EN[slug])) notFound();
+    setRequestLocale(locale);
+    return <AudytPrzykladStrona />;
+  }
   wymagajStronyPl(locale, `/narzedzia/${slug}`);
   if (locale === 'de') {
     setRequestLocale(locale);

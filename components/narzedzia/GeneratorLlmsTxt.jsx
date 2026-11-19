@@ -31,6 +31,7 @@ import { sectionId } from '@/lib/anchors';
 import { STRONY_NARZEDZI_EN, FAQ_GENERATORA_EN } from '@/lib/narzedziaGeneratorRaport.en';
 import { BASE, FAQ_GENERATORA, SCIEZKA_HUBA, hrefAudytuAi, hrefSprawdzarki, stronaNarzedzia } from '@/lib/narzedzia';
 import { GENERATOR, cena } from '@/lib/narzedziaLiczby';
+import { poczatekLlmsTxt } from '@/lib/llmsTxtPrzyklad';
 import LlmsTxtClient from './LlmsTxtClient';
 import PozostaleNarzedzia, { RODZIC_HUBA } from './PozostaleNarzedzia';
 import Poradniki from './Poradniki';
@@ -164,8 +165,14 @@ const ZRZUTY = {
 const FUNKCJE = ['Plik llms.txt z mapy strony, do 50 adresów z każdej sekcji', 'Sekcje według katalogów i wersji językowych, sekcja Optional', 'Edycja pliku przed pobraniem', 'Test robots.txt i kodu HTTP dla 8 botów AI', 'Ocena istniejącego pliku /llms.txt z liczbą linków'];
 const FUNKCJE_EN = ['An llms.txt file from your sitemap, up to 50 URLs across all sections', 'Sections by folder and language version, an Optional section', 'Editing the file before downloading', 'robots.txt and HTTP code test for 8 AI bots', 'A check of the existing /llms.txt file, including its link count'];
 
-export default function GeneratorLlmsTxt({ locale = 'pl' }) {
+// Partia 2 (p2-llms, 18.11.2026): sekcja „llms.txt example” tylko w wersji EN. Wersja PL ma już fragment pliku
+// w sekcji „Co to jest llms.txt”, a polskie frazy z przykładem mają wolumen 10/mies., więc PL bez zmian.
+// Boty z app/api/llms-txt/generator.js (BOTY), kolumna „ua: null” = Google-Extended (tylko robots.txt).
+const BOTY_NAZWY = 'GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Claude-SearchBot, Google-Extended and Bingbot';
+
+export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
   const en = locale === 'en';
+  const przyklad = en ? await poczatekLlmsTxt(35) : null;
   const strona = stronaNarzedzia('generator-llms-txt');
   const a2 = hrefJesliOpublikowana('/pozycjonowanie-w-ai/chatgpt');
   const hubGeo = hrefJesliOpublikowana('/pozycjonowanie-w-ai');
@@ -249,8 +256,8 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
                   The llms.txt file lives at /llms.txt and describes a website for language models and AI agents that read pages on behalf of users. Jeremy Howard proposed the format in September 2024, and the current version of the specification (v2) is published at llmstxt.org.
                 </p>
                 <p style={s.akapit}>
-                  The layout is fixed. At the top is a heading with the company name, the only required element. Below it comes a blockquote with a short description, followed by sections with lists of links: the page title in square brackets, the URL in parentheses and, after a colon, a sentence about what is there. A section named &quot;Optional&quot; holds secondary links that a model may skip when it is short on context. This is what the beginning of{' '}
-                  <a href="/llms.txt" style={s.podkreslenie}>our llms.txt file</a> looks like:
+                  The layout is fixed. At the top is a heading with the company name, the only required element. Below it comes a blockquote with a short description, followed by sections with lists of links: the page title in square brackets, the URL in parentheses and, after a colon, a sentence about what is there. A section named &quot;Optional&quot; holds secondary links that a model may skip when it is short on context. {przyklad ? <>The live file of this website is shown below, and you can open <a href="/llms.txt" style={s.podkreslenie}>our llms.txt file</a> directly.</> : <>This is what the beginning of{' '}
+                  <a href="/llms.txt" style={s.podkreslenie}>our llms.txt file</a> looks like:</>}
                 </p>
               </>
             ) : (
@@ -264,14 +271,68 @@ export default function GeneratorLlmsTxt({ locale = 'pl' }) {
                 </p>
               </>
             )}
-            <pre style={{ ...s.karta, ...s.kod, padding: '1.25rem', margin: '0 0 0.5rem', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', color: 'var(--w-tusz)' }}>
+            {!(en && przyklad) && <pre style={{ ...s.karta, ...s.kod, padding: '1.25rem', margin: '0 0 0.5rem', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', color: 'var(--w-tusz)' }}>
               <code>{PRZYKLAD}</code>
-            </pre>
-            <p style={s.przypis}>{en ? PRZYKLAD_EN_NOTE : 'Fragment pliku https://www.ai-seo-company.pl/llms.txt, stan na 5 listopada 2026.'}</p>
+            </pre>}
+            {!(en && przyklad) && <p style={s.przypis}>{en ? PRZYKLAD_EN_NOTE : 'Fragment pliku https://www.ai-seo-company.pl/llms.txt, stan na 5 listopada 2026.'}</p>}
             <p style={{ ...s.akapit, marginTop: '1rem' }}>
               {en ? 'Some sites also publish a second, much longer file called llms-full.txt. Our generator creates the index, that is llms.txt: it is what a typical company website needs.' : 'Niektóre serwisy publikują obok drugi, dużo dłuższy plik llms-full.txt. Nasz generator tworzy spis, czyli llms.txt: tego potrzebuje typowa strona firmowa.'}
             </p>
           </section>
+
+          {en && przyklad && (
+            <section aria-labelledby="llms-txt-example" className={st.sekcja} style={s.sekcja}>
+              <h2 id="llms-txt-example" className={st.h2} style={s.h2}>llms.txt example: the live file of this website</h2>
+              <p style={s.akapit}>
+                Below are the first {przyklad.linii} lines (of {przyklad.lacznie}) of the file this website serves at /llms.txt, exactly as the route returns it. The text is produced by the same code that serves the file, so it matches the live version after every deployment. The file is in Polish, like the rest of the site, because it describes the Polish version; the structure is the same in any language.
+              </p>
+              <pre
+                tabIndex={0}
+                role="region"
+                aria-label={`First ${przyklad.linii} lines of the live llms.txt file of ai-seo-company.pl`}
+                lang="pl"
+                style={{ ...s.karta, ...s.kod, padding: '1.25rem', margin: '0 0 0.5rem', maxHeight: '26rem', overflow: 'auto', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', color: 'var(--w-tusz)' }}
+              >
+                <code>{przyklad.tekst}</code>
+              </pre>
+              <p style={s.przypis}>
+                <a href="/llms.txt" style={s.podkreslenie}>View the live file</a> (plain text, {przyklad.lacznie} lines). Click or tab into the box to scroll it with the keyboard.
+              </p>
+
+              <h3 id="llms-txt-format" style={s.h3}>llms.txt format: what each part is</h3>
+              <p style={s.akapit}>
+                The structure below follows the proposal at{' '}
+                <a href="https://llmstxt.org/" style={s.podkreslenie} rel="noopener">llmstxt.org</a> (read November 18, 2026), matched against the example above:
+              </p>
+              <ul style={s.lista}>
+                <li><strong>Title line.</strong> The first line, a single # heading with the site or company name (<code>{'# AI SEO COMPANY'}</code> above). It is the only required element.</li>
+                <li><strong>Summary block.</strong> A blockquote (lines starting with &gt;) with a short description that gives a model the key context for everything below.</li>
+                <li><strong>Optional detail.</strong> Plain Markdown between the summary and the first section, with no headings, for anything a model needs to interpret the links.</li>
+                <li><strong>Sections with links.</strong> H2 headings, each followed by a list in the form <code>{'- [name](https://address): note'}</code>. The link is required, the note after the colon is optional.</li>
+                <li><strong>The &quot;Optional&quot; section.</strong> By convention, an H2 section with this exact name holds secondary links that a model may skip when it needs less context. Our own file does not use one; the generator below creates it for terms and policies.</li>
+              </ul>
+              <p style={s.akapit}>
+                Our file also has a &quot;Fakty o firmie&quot; section (company facts) made of plain lines with no links. The proposal expects links in H2 sections, so treat that section as our own addition rather than part of the format. The file lives at the site root, and the proposal asks for it to stay small enough to fit in a model&apos;s context window.
+              </p>
+
+              <h3 id="llms-txt-checker" style={s.h3}>llms.txt checker: what the tool tests</h3>
+              <p style={s.akapit}>
+                When you run the generator, it also checks the llms.txt file your site already serves. It reads the first 64 KB and reports:
+              </p>
+              <ul style={s.lista}>
+                <li>the response code at /llms.txt (a redirect or any code other than 200 is flagged), the Content-Type and the file size;</li>
+                <li>whether the first line is a &quot;# Name&quot; heading, which the specification requires;</li>
+                <li>how many links in the <code>{'[name](https://address)'}</code> format the file has: none is marked as an error, because the file then points a model to no pages;</li>
+                <li>whether the address returns an HTML page instead of text, which means the file is missing or the address is wrong.</li>
+              </ul>
+              <p style={s.akapit}>
+                Next to the file check, the tool tests robots.txt for {GENERATOR.botow} bots ({BOTY_NAZWY}) and requests the home page with each bot&apos;s User-Agent (all except Google-Extended, which has no User-Agent of its own and gets only the robots.txt test). It does not judge the wording of your summary or notes.
+              </p>
+              <p style={s.akapit}>
+                One honest caveat: the file is not a ranking factor. As explained in the <a href="#czy-llms-txt-pomaga" style={s.podkreslenie}>section on Google and ChatGPT</a> below, Ahrefs found no statement from OpenAI, Anthropic or Google that their crawlers read it, and Google&apos;s John Mueller said the file was not created with search in mind.
+              </p>
+            </section>
+          )}
 
           <section aria-labelledby="czy-llms-txt-pomaga" className={st.sekcja} style={s.sekcja}>
             <h2 id="czy-llms-txt-pomaga" style={s.h2}>{en ? 'Does llms.txt help in Google and ChatGPT?' : 'Czy llms.txt pomaga w Google i ChatGPT?'}</h2>

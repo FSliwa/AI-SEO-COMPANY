@@ -134,7 +134,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <ArticleTOC items={tocItems} />
 
               <h2 id="what-it-checks">What Does a Technical SEO Audit Actually Check?</h2>
-              <p>A real audit works through several distinct categories, and skipping any one of them leaves ranking potential on the table. The <a href="https://crawlraven.com/blog/technical-seo-audit-checklist" target="_blank" rel="noopener noreferrer">CrawlRaven checklist</a> organises this into individual checks across those categories, which is a useful mental model even if you build your own list from scratch.</p>
+              <p>A real audit works through several distinct categories, and skipping any one of them leaves ranking potential on the table. The <a href="https://crawlraven.com/blog/technical-seo-audit-checklist" target="_blank" rel="noopener noreferrer">CrawlRaven checklist</a> organises this into individual checks across those categories, which is a useful mental model even if you build your own list from scratch. To see what the result looks like on a real site, read our <Link href="/narzedzia/seo-audit-example">SEO audit example</Link>, a finished report rule by rule.</p>
 
               <ul>
                 <li><strong>Crawlability and robots rules.</strong> Robots.txt syntax, server response codes, and whether bots can reach the pages that matter.</li>

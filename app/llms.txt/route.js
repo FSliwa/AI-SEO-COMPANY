@@ -3,6 +3,7 @@ import { blogPosts } from '@/lib/blogPosts';
 import { BASE_URL } from '@/lib/sitemapEntries';
 import { czyOpublikowana, opublikowaneSciezki, wpisPublikacji } from '@/lib/publikacja';
 import { STRONY_EN } from '@/lib/stronyEn';
+import { TYLKO_EN, opublikowanaTylkoEn } from '@/lib/stronyTylkoEn';
 import { BIURO, SIEDZIBA, adresLinia } from '@/lib/firma';
 
 // /llms.txt generowany z danych serwisu (T0.5, PLAN-v2 7; AV-05, AV-15 z korektą, AV-19, SA-12,
@@ -134,6 +135,10 @@ function trescLlms() {
       const en = Object.entries(STRONY_EN)
         .filter(([pl]) => czyOpublikowana(pl))
         .map(([, w]) => pozycja(w.tytul, `/en${w.en}`, w.opis));
+      // 18.11.2026: strony tylko EN (lib/stronyTylkoEn.js), tylko opublikowane.
+      en.push(...Object.entries(TYLKO_EN)
+        .filter(([klucz]) => opublikowanaTylkoEn(klucz))
+        .map(([, w]) => pozycja(w.tytul, `/en${w.en}`, w.opis)));
       return en.length ? ['## English versions', '', ...en].join('\n') : null;
     })(),
 

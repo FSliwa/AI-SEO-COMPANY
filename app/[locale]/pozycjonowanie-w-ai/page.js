@@ -12,9 +12,9 @@ export async function generateMetadata({ params }) {
     return metadataDe(KLUCZ_DE, { languages: { pl: 'https://www.ai-seo-company.pl/pozycjonowanie-w-ai', en: 'https://www.ai-seo-company.pl/en/ai-search-optimization' } });
   }
   return {
-    title: locale === 'en' ? 'AI Search Optimization: ChatGPT and Google AI' : 'Pozycjonowanie w AI: ChatGPT, AI Overview i SEO AI',
+    title: locale === 'en' ? 'AI Search Optimization (Generative Engine Optimization)' : 'Pozycjonowanie w AI: ChatGPT, AI Overview i SEO AI',
     description: locale === 'en'
-      ? 'Get your company mentioned in ChatGPT, Gemini, Perplexity and Google AI overviews. Weekly measurement in the client portal, AI audit €235 net.'
+      ? 'Generative engine optimization (GEO) and AI search optimization for ChatGPT, Gemini, Perplexity and Google AI overviews. Weekly tracking, AI audit €235 net.'
       : 'Pozycjonowanie w AI (GEO): Twoja firma w odpowiedziach ChatGPT, Gemini i Google. Pomiar co tydzień w panelu klienta, audyt AI 990 zł netto.',
     alternates: {
       canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/ai-search-optimization' : 'https://www.ai-seo-company.pl/pozycjonowanie-w-ai',
