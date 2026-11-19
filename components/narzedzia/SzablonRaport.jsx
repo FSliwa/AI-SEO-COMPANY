@@ -41,7 +41,7 @@ import SzNawigacja from './SzNawigacja';
 import './szablony.css';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
-import { LASTMOD } from '@/lib/lastmod';
+import { LASTMOD, pierwszaPublikacja } from '@/lib/lastmod';
 import { PANEL_DEMO_URL } from '@/lib/panel';
 import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
 import { BASE, ENDPOINT_WZORU_RAPORTU, RODZIC_OKRUSZKOW, faqRaportu, hrefSprawdzarki, stronaNarzedzia } from '@/lib/narzedzia';
@@ -130,7 +130,7 @@ export default function SzablonRaport({ locale = 'pl' }) {
         url={SCIEZKA}
         title={strona.h1}
         description={wpis?.opis}
-        datePublished={strona.opublikowano ?? dataZmiany}
+        datePublished={strona.opublikowano ?? pierwszaPublikacja(`${BASE}${SCIEZKA_EN}`) ?? dataZmiany}
         dateModified={dataZmiany}
         imageUrl="/images/panel/raporty.webp"
         extra={{
@@ -429,7 +429,7 @@ function RaportEn() {
         url={SCIEZKA_EN}
         title={meta.h1}
         description={wpis?.opis}
-        datePublished={strona.opublikowano ?? dataZmiany}
+        datePublished={strona.opublikowano ?? pierwszaPublikacja(`${BASE}${SCIEZKA_EN}`) ?? dataZmiany}
         dateModified={dataZmiany}
         imageUrl="/images/panel/raporty.webp"
         extra={{

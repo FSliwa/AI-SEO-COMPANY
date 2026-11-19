@@ -57,7 +57,14 @@ const checkliste = `<!doctype html>
 <title>SEO Checkliste: ${razem} Punkte</title>
 <!-- Quelle von public/pliki/de/seo-checkliste.pdf (Seite /de/tools/seo-checkliste, 18.11.2026). Erzeugt von scripts/szablony/pdf-de.mjs
      aus lib/szablony/checklista-seo.de.js (PUNKTY_DE). Nicht von Hand bearbeiten: Änderungen in der Datendatei vornehmen und neu erzeugen. -->
-<style>${css('seo-checklist.html')}</style>
+<style>${css('seo-checklist.html')}
+  /* SZ-03 (19.11.2026): niemieckie teksty są dłuższe od angielskich; ciaśniejszy rytm wierszy, żeby obszar B (14 punktów) mieścił się na jednej stronie (6 stron zamiast 7). */
+  table.lista td { padding: 0.55mm 1.3mm; }
+  .pk { font-size: 8pt; line-height: 1.18; }
+  .jak { font-size: 7pt; line-height: 1.18; margin-top: 0.1mm; }
+  .opis { margin: 0.6mm 0 2mm; }
+  table.lista th { hyphens: none; overflow-wrap: normal; }
+</style>
 </head>
 <body>
 <div class="naglowek"><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</div>
@@ -91,8 +98,26 @@ ${PUNKTY_DE.map(obszar).join('\n\n')}
 `;
 
 // --- Redaktionsplan Vorlage ---------------------------------------------------------------------------------------
+// SZ-02 (19.11.2026): tabele z 10 równymi kolumnami (table-layout: fixed) łamały nagłówki w środku słowa
+// („Veröffentlichu”, „Aktualisier/ung”). Szerokości kolumn liczymy z najdłuższego słowa nagłówka (wzór w mm),
+// więc żaden nagłówek nie jest dzielony; dzielenie wyrazów w nagłówkach zostaje wyłączone (hyphens: none).
+const MM_ZNAK = 1.36; // szerokość znaku pogrubionego 6.8 pt (nagłówki)
+const MM_ZNAK_TD = 1.3; // szerokość znaku zwykłego 8.2 pt (komórki)
+const MM_ODSTEP = 3.0; // padding komórki
+const najdluzsze = (t) => Math.max(0, ...t.replace(/<[^>]+>/g, ' ').split(/[\s-]+/).map((w) => w.length));
+const dobierzKolumny = (html) => html.replace(/<table><thead><tr>([\s\S]*?)<\/tr><\/thead><tbody>([\s\S]*?)<\/tbody>/g, (m, wiersz, cialo) => {
+  const naglowki = [...wiersz.matchAll(/<th>([\s\S]*?)<\/th>/g)].map((x) => x[1]);
+  if (naglowki.length < 8) return m;
+  const komorki = [...cialo.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map((r) => [...r[1].matchAll(/<td>([\s\S]*?)<\/td>/g)].map((x) => x[1]));
+  // minimalna szerokość kolumny = najdłuższe słowo nagłówka albo komórki (bez dzielenia słów)
+  const min = naglowki.map((n, i) => Math.max(Math.max(3, najdluzsze(n)) * MM_ZNAK, ...komorki.map((r) => najdluzsze(r[i] || '') * MM_ZNAK_TD)) + MM_ODSTEP);
+  const suma = min.reduce((a, b) => a + b, 0);
+  const calosc = 178; // mm: A4 bez marginesów 16 mm
+  const szer = min.map((w) => (suma < calosc ? w + ((calosc - suma) * w) / suma : w).toFixed(1));
+  return `<table><colgroup>${szer.map((w) => `<col style="width:${w}mm">`).join('')}</colgroup><thead><tr>${wiersz}</tr></thead><tbody>${cialo}</tbody>`;
+});
 const poczesci = (html) => html.split(/(?=<h3>Teil \d)/).filter(Boolean);
-const czesci = poczesci(cp.podglad.html);
+const czesci = poczesci(dobierzKolumny(cp.podglad.html));
 const stopka = '<p class="maly">Aktuelle Fassung mit Anleitung, Beispiel und Quellen: www.ai-seo-company.pl/de/tools/redaktionsplan-vorlage · AI SIGNALS COMPANY P.S.A., ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen</p>';
 const kopf = '<div class="naglowek"><span><b>AI SEO COMPANY</b> · www.ai-seo-company.pl</span><span>Redaktionsplan Vorlage · Stand: November 2026</span></div>';
 const h3zuH2 = (h) => h.replace(/<h3>(Teil \d\.)\s*([^<]*)<\/h3>/, '<h2 class="pierwszy"><span class="nr">$1</span> $2</h2>');
@@ -113,7 +138,7 @@ const redaktionsplan = `<!doctype html>
   .podglad-teil ol { margin: 0 0 2mm; padding-left: 5mm; }
   .podglad-teil ol li { margin: 0 0 1.6mm; }
   .podglad-teil table { margin: 0 0 2.4mm; }
-  .podglad-teil th { font-size: 7.2pt; }
+  .podglad-teil th { font-size: 6.8pt; padding: 1.2mm 1.5mm; hyphens: none; overflow-wrap: normal; word-break: normal; }
   .podglad-teil td { height: 8.2mm; }
 </style>
 </head>

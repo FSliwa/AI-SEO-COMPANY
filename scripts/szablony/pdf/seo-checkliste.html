@@ -58,6 +58,13 @@ footer { margin-top: 7mm; padding-top: 2.5mm; border-top: 0.6pt solid #E5E1DC; f
 footer p { margin: 0 0 0.8mm; }
 footer strong { color: #1D1D1F; }
 .sek { margin: 0 0 3.5mm; }
+
+  /* SZ-03 (19.11.2026): niemieckie teksty są dłuższe od angielskich; ciaśniejszy rytm wierszy, żeby obszar B (14 punktów) mieścił się na jednej stronie (6 stron zamiast 7). */
+  table.lista td { padding: 0.55mm 1.3mm; }
+  .pk { font-size: 8pt; line-height: 1.18; }
+  .jak { font-size: 7pt; line-height: 1.18; margin-top: 0.1mm; }
+  .opis { margin: 0.6mm 0 2mm; }
+  table.lista th { hyphens: none; overflow-wrap: normal; }
 </style>
 </head>
 <body>
@@ -125,7 +132,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">A6</td>
-        <td><div class="pk">Jede Seite hat ein Canonical-Tag, das auf sich selbst oder auf die richtige Version zeigt, und Sprachversionen verbindet ein gegenseitiges hreflang</div><div class="jak"><b>So prüfen Sie es:</b> Quelltext der Seite (<code>rel="canonical"</code>) oder der kostenlose SEO Audit. Canonical ist für Google ein Signal und kein Befehl, schauen Sie daher in der Search Console (URL-Prüfung) nach, welche Adresse es gewählt hat. Bei mehreren Sprachen verweist jede Version auf sich und auf die übrigen; sinnvoll ist ein Eintrag x-default.</div></td>
+        <td><div class="pk">Jede Seite hat ein Canonical-Tag, das auf sich selbst oder auf die richtige Version zeigt, und Sprachversionen verbindet ein gegenseitiges hreflang</div><div class="jak"><b>So prüfen Sie es:</b> Quelltext der Seite (<code>rel="canonical"</code>) oder das kostenlose SEO Audit. Canonical ist für Google ein Signal und kein Befehl, schauen Sie daher in der Search Console (URL-Prüfung) nach, welche Adresse es gewählt hat. Bei mehreren Sprachen verweist jede Version auf sich und auf die übrigen; sinnvoll ist ein Eintrag x-default.</div></td>
         <td><span class="prio s">mittel</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
         <td class="notatki"></td>
@@ -169,7 +176,7 @@ footer strong { color: #1D1D1F; }
     <tbody>
       <tr>
         <td class="nr">B1</td>
-        <td><div class="pk">Jede Seite hat einen eigenen Titel, der ihren Inhalt beschreibt</div><div class="jak"><b>So prüfen Sie es:</b> Crawler oder kostenloser Audit: Titel sortieren, Duplikate und fehlende Titel finden.</div></td>
+        <td><div class="pk">Jede Seite hat einen eigenen Titel, der ihren Inhalt beschreibt</div><div class="jak"><b>So prüfen Sie es:</b> Crawler oder kostenloses Audit: Titel sortieren, Duplikate und fehlende Titel finden.</div></td>
         <td><span class="prio w">hoch</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
         <td class="notatki"></td>
@@ -223,7 +230,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">B10</td>
-        <td><div class="pk">Jede wichtige Seite hat interne Links von anderen Seiten (Menü, Text, Footer)</div><div class="jak"><b>So prüfen Sie es:</b> Crawler: Seiten ohne eingehende Links und mehr als 3 Klicks von der Startseite entfernt finden. Ergänzen Sie einen Link von einer thematisch nahen Seite.</div></td>
+        <td><div class="pk">Jede wichtige Seite hat interne Links von anderen Seiten (Menü, Text, Footer)</div><div class="jak"><b>So prüfen Sie es:</b> Crawler: Seiten ohne eingehende Links und mehr als 3 Klicks von der Startseite entfernt (unsere Arbeitsregel, kein Google-Limit) finden. Ergänzen Sie einen Link von einer thematisch nahen Seite.</div></td>
         <td><span class="prio w">hoch</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
         <td class="notatki"></td>
@@ -247,7 +254,7 @@ footer strong { color: #1D1D1F; }
         <td class="notatki"></td>
       </tr><tr>
         <td class="nr">B14</td>
-        <td><div class="pk">Es ist sichtbar, wer hinter der Website steht: Firmenname, Kontakt, Autor bei Fachtexten</div><div class="jak"><b>So prüfen Sie es:</b> Prüfen Sie Footer, die Seite „Über uns“ und die Unterschriften der Artikel.</div></td>
+        <td><div class="pk">Es ist sichtbar, wer hinter der Website steht: Firmenname, Kontakt, Autor bei Fachtexten</div><div class="jak"><b>So prüfen Sie es:</b> Prüfen Sie Footer, die Seite „Über uns“ und die Unterschriften der Artikel. Für Websites in Deutschland gehört ein Impressum dazu (§ 5 DDG: Name, Anschrift, E-Mail, von jeder Seite erreichbar; Orientierung, keine Rechtsberatung).</div></td>
         <td><span class="prio s">mittel</span></td>
         <td class="st"><div><span class="box"></span>OK</div><div><span class="box"></span>Handeln</div><div><span class="box"></span>n. z.</div></td>
         <td class="notatki"></td>

@@ -30,7 +30,7 @@ import SzHero from './SzHero';
 import SzNawigacja from './SzNawigacja';
 import './szablony.css';
 import { Link } from '@/i18n/routing';
-import { LASTMOD } from '@/lib/lastmod';
+import { LASTMOD, pierwszaPublikacja } from '@/lib/lastmod';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { BASE, ENDPOINT_SZABLONOW, RODZIC_OKRUSZKOW } from '@/lib/narzedzia';
 import { hrefDlaLink, hrefWJezyku } from '@/lib/linkiEn';
@@ -55,7 +55,10 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
   const d = en ? dane.en : dane.pl;
   const sciezkaPl = `/narzedzia/${dane.slug}`;
   const url = en ? `/en${dane.sciezkaEn}` : sciezkaPl;
-  const dataZmiany = LASTMOD[`${BASE}${en ? `/en${dane.sciezkaEn}` : sciezkaPl}`] ?? LASTMOD[`${BASE}${sciezkaPl}`] ?? dane.updated;
+  const adresPelny = `${BASE}${en ? `/en${dane.sciezkaEn}` : sciezkaPl}`;
+  const dataZmiany = LASTMOD[adresPelny] ?? LASTMOD[`${BASE}${sciezkaPl}`] ?? dane.updated;
+  // datePublished = dzień pierwszej publikacji z lib/lastmod.json (nie data ostatniej zmiany).
+  const dataPubl = dane.opublikowano ?? pierwszaPublikacja(adresPelny) ?? dataZmiany;
   const powiazane = (d.powiazane || [])
     .map((p) => ({ ...p, cel: hrefJesliOpublikowana(p.href) }))
     // EN: tylko cele z wersją angielską (artykuł tylko po polsku dałby /en/blog/... = 404).
@@ -78,7 +81,7 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
         url={url}
         title={d.h1}
         description={d.lead}
-        datePublished={dane.opublikowano ?? dataZmiany}
+        datePublished={dataPubl}
         dateModified={dataZmiany}
         imageUrl={dane.obraz || undefined}
         extra={{
