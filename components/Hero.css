@@ -26,8 +26,9 @@
   --hn-rise: cubic-bezier(0.22, 1, 0.36, 1);
   --hn-gutter: clamp(20px, 5vw, 48px);
   /* dol hero: tresc konczy sie nad pasem mgly na styku z ofertą (.styk-mgla: wysokosc clamp(200px, 26vw, 460px), szczyt
-     pasa ok. 0,3 tej wysokosci nad dolem hero), wiec panel i przyciski nie sa przykryte mgla */
-  --hn-dol: calc(clamp(200px, 26vw, 460px) * 0.3 + 8px);
+     pasa 0,58 tej wysokosci nad dolem hero, maska gasi pierwsze 30 %), wiec panel i przyciski nie sa przykryte mgla
+     (19.11.2026: 0,3 -> 0,52, bo pasek sterowania panelu lezal pod mgla: pauza, licznik i ramki traciły kontrast) */
+  --hn-dol: calc(clamp(200px, 26vw, 460px) * 0.52 + 8px);
   position: relative;
   isolation: isolate;
   display: flex;
@@ -191,7 +192,7 @@
   border: 1px solid var(--hn-ctl); background: var(--hn-paper); color: var(--hn-ink); font-size: 13px; font-weight: 500; cursor: pointer;
 }
 .hn-panel .kw[aria-pressed='true'] { background: #FFFFFF; border-color: var(--hn-acc); color: var(--hn-acc); }
-.hn-panel .lic { min-width: 40px; text-align: center; font-size: 13px; font-weight: 500; color: var(--hn-mut); }
+.hn-panel .lic { min-width: 40px; text-align: center; font-size: 13px; font-weight: 500; color: #4A423B; } /* AA także przy dolnym, ciemniejszym końcu gradientu panelu (2560 px: 4,4:1 z --hn-mut) */
 
 /* Widoczny fokus: pomaranczowy obrys z jasnym pierscieniem (czytelny na papierze i na granacie). */
 .hn-panel :focus-visible, .hn-kol :focus-visible {

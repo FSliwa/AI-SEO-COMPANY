@@ -11,6 +11,7 @@
 // kolumnami, słowo w słowo jak dotąd (każdy segment, także te, które telefon dawniej ukrywał): z niego
 // pochodzą frazy pilnowane przez kontrola-fraz.py (agencja marketingowa, agencja seo warszawa).
 
+import { preload } from 'react-dom';
 import './Hero.css';
 import { hash } from '@/lib/anchors';
 import { tekstyHero, kafleHero, UI } from '@/lib/heroNarzedzia';
@@ -22,6 +23,9 @@ export default function Hero({ locale = 'pl' }) {
   const t = tekstyHero(lang);
   const ui = UI[lang];
   const { kafle, m, strony } = kafleHero(lang);
+  // 19.11.2026: warstwa chmur (tlo CSS, 9 KB) wchodzi w pierwszy ekran i bez preloadu doladowuje sie po CSS (ok. 0,8 s
+  // pozniej niz reszta), przez co stawala sie elementem LCP. Preload sprowadza ja razem z pierwszym malowaniem.
+  preload('/images/wyglad/chmury-v2.avif', { as: 'image', type: 'image/avif', fetchPriority: 'high' });
 
   return (
     <section className="hero hero--narz" id="hero" data-petla="">
