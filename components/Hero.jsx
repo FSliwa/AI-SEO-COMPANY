@@ -196,6 +196,7 @@ export default function Hero() {
   // przewiniecie po odswiezeniu: wczesniej zdejmowal plakat przy ukrytej scenie).
   const zaladowanaRef = useRef(false);
   const ponownyMontazRef = useRef(0);
+  const przewijanieRef = useRef(false);
   const [sceneKey, setSceneKey] = useState(0);
   const [sceneLost, setSceneLost] = useState(false);
   const [sceneLoaded, setSceneLoaded] = useState(false);
@@ -203,7 +204,7 @@ export default function Hero() {
     const app = appRef.current;
     if (!app) return;
     try {
-      if (!widocznaRef.current) app.stop();
+      if (!widocznaRef.current || przewijanieRef.current) app.stop();
       else if (wystartowalaRef.current) app.play();
     } catch (e) {}
   };
@@ -437,6 +438,40 @@ export default function Hero() {
     fetch(SCENE, { cache: 'force-cache' }).catch(() => {});
   }, []);
 
+  // 19.11.2026 (hero-szarpanie): scena 3D stoi na czas przewijania. Petla Spline (6 ms JS na klatke
+  // + GPU) trzymala watek glowny w hero tak, ze przy wolniejszym CPU aktualizacje sceny i tekstu
+  // przychodzily co kilkaset ms. Zdarzenia wejscia (wheel/touchmove/klawisze) dochodza jako zadania
+  // od razu, a samo `scroll` tylko w kroku renderowania, wiec nie wolno polegac wylacznie na nim.
+  // Dopiero po zakonczeniu wjazdu sceny (tekstPokazanyRef), zeby nie rozjechac zegara wjazdu.
+  useEffect(() => {
+    const sekcja = document.getElementById('hero');
+    const KLAWISZE = new Set([' ', 'PageDown', 'PageUp', 'ArrowDown', 'ArrowUp', 'Home', 'End']);
+    let zegar = 0;
+    const naRuch = (e) => {
+      if (e.type === 'keydown' && !KLAWISZE.has(e.key)) return;
+      if (!tekstPokazanyRef.current || !appRef.current) return;
+      if (!przewijanieRef.current) {
+        przewijanieRef.current = true;
+        synchronizujScene();
+        if (sekcja) sekcja.dataset.przewija = '1';
+      }
+      clearTimeout(zegar);
+      zegar = setTimeout(() => {
+        przewijanieRef.current = false;
+        synchronizujScene();
+        if (sekcja) delete sekcja.dataset.przewija;
+      }, 250);
+    };
+    const zdarzenia = ['wheel', 'touchmove', 'keydown', 'scroll'];
+    zdarzenia.forEach((z) => window.addEventListener(z, naRuch, { passive: true }));
+    return () => {
+      zdarzenia.forEach((z) => window.removeEventListener(z, naRuch));
+      clearTimeout(zegar);
+      przewijanieRef.current = false;
+      if (sekcja) delete sekcja.dataset.przewija;
+    };
+  }, []);
+
   // Micro-parallax (wide screens, fine pointers, motion allowed): the copy
   // drifts a few pixels slower than the scene on scroll, which reads as depth.
   // rAF-throttled, transform-only, and capped at 14px so it can never collide
@@ -446,6 +481,9 @@ export default function Hero() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (!window.matchMedia('(min-width: 901px) and (min-aspect-ratio: 1/1)').matches) return;
+    // 19.11.2026: gdy przegladarka zna os przewijania, parallax robi CSS (plynnosc.css); ten JS
+    // zostaje tylko jako zapas. Ten sam warunek co @supports w arkuszu.
+    if (typeof CSS !== 'undefined' && CSS.supports('(animation-timeline: scroll()) and (animation-range: 0px 233px)')) return;
     let raf = 0;
     const onScroll = () => {
       if (raf) return;

@@ -103,3 +103,21 @@ main:has(> .hero--en) > .contact { contain-intrinsic-size: auto 940px; }
 [data-petla="poza"] :is(.chmury-dryf, .mgla-dryf, .hero-mgla-chmury, .styk-mgla, .tlo-gory-chmury) > span {
   visibility: hidden;
 }
+
+/* 19.11.2026 (hero-szarpanie): parallax tekstu hero na osi przewijania (kompozytor) zamiast
+   scroll -> rAF -> style.transform. Wartosci jak w JS: -0,06 x scrollY, najwyzej 14 px (233 px
+   przewiniecia). Uzywamy `translate`, nie `transform`, wiec bez kolizji z wejsciem tekstu.
+   Tylko szeroki uklad i ruch dozwolony; bez wsparcia osi dziala zapasowy JS w Hero.jsx. */
+@media (min-width: 901px) and (min-aspect-ratio: 1/1) and (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: scroll()) and (animation-range: 0px 233px)) {
+    @keyframes hero-parallax { to { translate: 0 -14px; } }
+    section.hero .hero-en-copy {
+      animation: hero-parallax linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0px 233px;
+    }
+  }
+  /* Pauza poswiaty linii (heroGlowPulse) na czas przewijania [data-przewija] zmierzono i ODRZUCONO:
+     przy CPU x6 daje 250-280 ms przerwy w prezentacji klatek na starcie przewijania (x1/x4: odstep
+     32-34 ms zamiast 19 ms), a bez pauzy ich nie ma. Znacznik data-przewija zostaje w Hero.jsx. */
+}
