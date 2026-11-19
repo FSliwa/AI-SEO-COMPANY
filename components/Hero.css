@@ -266,6 +266,11 @@
   .hn-panel .sat > span { display: block; margin-top: 2px; font-size: 12px; line-height: 1.35; color: var(--hn-mut); }
 }
 
+/* 1200-1359 px: panel za waski, male kafle wchodza na lacznik i wystaja za okno (P1-1) - ukryte. */
+@media (min-width: 1200px) and (max-width: 1359.98px) {
+  .hn-panel .sat { display: none; }
+}
+
 /* ---------- ponizej 1200 px: poziomy pas pod tekstem (scroll-snap), bez napisu, lacznikow i malych kafli ---------- */
 @media (max-width: 1199.98px) {
   .hn-okno {
