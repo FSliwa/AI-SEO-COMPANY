@@ -106,72 +106,88 @@ const realizedWebsites = [
   }
 ];
 
-/* Dziesiec kafelkow w dwoch wysokosciach: szesc sekcji hero stron glownych
-   klientow (1200x700, proporcja 1.71:1 jak dominujace kafle u Ghosta) i cztery prawdziwe zrzuty paneli
-   Performance z Google Search Console (1600x726, niski wariant). Zadnych
-   podstron i zadnych kart z liczbami - dowodem sa same panele. Kolejnosc
-   dobrana pod cztery kolumny: panel GSC laduje bezposrednio pod hero tej
-   samej marki (Staniax, Madame Thai, ASE-BOT), a stosy wychodza poszarpane
-   jak u Ghosta (1.8 / 2.25 / 1.35 / 1.8 szerokosci kolumny). */
+/* Dziewiec kafelkow: zrzuty pierwszego ekranu stron klientow i wlasnej
+   strony agencji (szerokosc 1200 px, wysokosci 520-970 px zaleznie od
+   zrzutu). Dane z Search Console sa wyzej jako wykresy kart „Wybrane
+   realizacje”, dlatego paneli GSC (kiedys 5 kafli) w scianie juz nie ma;
+   pliki public/projects/gsc/*.webp zostaja jako wejscie skryptu
+   scripts/wykresy-gsc.py. Zrzuty 19.11.2026 (dziewiec kafli po wstrzymaniu kafla Babushkina Academy): 1440x900 CSS px, DPR 2, krop
+   i skalowanie do 1200 px w Figmie, WebP ok. 70-90 KB. Nazwa pliku to klucz
+   kafla w stosyDlaKolumn - przy kazdej zmianie pliku zmien tez klucz tam. */
 const MOSAIC = [
-  /* 15 kafli: osiem stron klientow + hero i blog wlasnej strony agencji
-     (zrzuty w OBU jezykach - srcEn przelacza wariant wg locale) + piec
-     prawdziwych paneli GSC. Tablica zasila obie wersje jezykowe naraz,
-     wiec nowy kafel wystarczy dopisac raz. */
 { src: '/projects/mosaic/elkat-a-v2.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
 { src: '/projects/mosaic/mad-a-v2.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
 { src: '/projects/mosaic/own-hero-pl4.webp', srcEn: '/projects/mosaic/own-hero-en4.webp', w: 1200, h: 752,
     alt: 'Sekcja hero strony AI SEO COMPANY – napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website – 3D SEO scene' },
-{ src: '/projects/mosaic/ase-a-v2.webp', w: 1200, h: 700, alt: 'Pełna sekcja hero platformy tradingowej ASE-BOT – AI trading i analiza rynków', altEn: 'Hero section of the ASE-BOT trading platform homepage' },
-{ src: '/projects/mosaic/tql-a.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej TQL – wdrożenia norm ISO', altEn: 'Hero section of the TQL ISO implementation homepage' , srcEn: '/projects/mosaic/tql-a-en.webp' },
-{ src: '/projects/mosaic/sta-blog-pl4.webp', w: 1200, h: 844,
-    alt: 'Karty artykułów bazy wiedzy Staniax – metalizacja próżniowa i regeneracja odbłyśników', altEn: 'Staniax knowledge base – articles on vacuum metallization' },
-{ src: '/projects/mosaic/sta-a-v4.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax – metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' , srcEn: '/projects/mosaic/sta-a-en3.webp' },
-{ src: '/projects/mosaic/own-blog-pl7.webp', srcEn: '/projects/mosaic/own-blog-en6.webp', w: 1200, h: 840,
-    alt: 'Blog AI SEO COMPANY – artykuły o SEO i web designie', altEn: 'AI SEO COMPANY blog – articles on SEO and web design' },
+{ src: '/projects/mosaic/ase-a-v4.webp', w: 1200, h: 640,
+    alt: 'Pełna sekcja hero platformy AISAS (ASE-BOT) – AI trading i analiza rynków, angielski nagłówek o analizie rynków kontraktów terminowych i ilustracja satelity',
+    altEn: 'Hero section of the AISAS (ASE-BOT) trading platform homepage – “Advanced AI trading & quant market analysis for futures markets” headline with a satellite illustration' },
+{ src: '/projects/mosaic/tql-a-v2.webp', srcEn: '/projects/mosaic/tql-a-en-v2.webp', w: 1200, h: 840,
+    alt: 'Sekcja hero strony głównej TQL – wdrożenia norm ISO, nagłówek o wdrażaniu systemów ISO i przygotowaniu do certyfikacji oraz liczby klientów',
+    altEn: 'Hero section of the TQL ISO implementation homepage – ISO management system implementation and certification headline with client figures' },
+{ src: '/projects/mosaic/sta-a-v4.webp', srcEn: '/projects/mosaic/sta-a-en3.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax – metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' },
+{ src: '/projects/mosaic/own-blog-pl8.webp', srcEn: '/projects/mosaic/own-blog-en7.webp', w: 1200, h: 840,
+    alt: 'Blog AI SEO COMPANY – artykuły o SEO i web designie, lista najnowszych artykułów', altEn: 'AI SEO COMPANY blog – articles on SEO and web design, list of the latest articles' },
 { src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/mosaic/frazy-a.webp', w: 1200, h: 783,
     alt: 'Podstrona Frazy Studio – biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
-    altEn: 'Frazy Studio page – an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
-{ src: '/projects/gsc/staniax.webp', w: 1600, h: 726, alt: 'Panel Performance staniax.pl w Google Search Console: 152 kliknięcia i 6,34 tys. wyświetleń w 92 dni', altEn: 'Google Search Console performance panel for staniax.pl: 152 clicks and 6.34K impressions over 92 days' },
-{ src: '/projects/gsc/madamethai.webp', w: 1600, h: 726,
-    alt: 'Panel Performance madamethai.pl w Google Search Console: 187 kliknięć i 10,1 tys. wyświetleń w 26 dni',
-    altEn: 'Google Search Console performance panel for madamethai.pl: 187 clicks and 10.1K impressions over 26 days' },
-{ src: '/projects/gsc/tql.webp', w: 1600, h: 726, alt: 'Panel Performance tql.pl w Google Search Console: 296 wyświetleń, pozycja 34,6 w 18 dni', altEn: 'Google Search Console performance panel for tql.pl: 296 impressions, position 34.6 over 18 days' },
-{ src: '/projects/gsc/ai-seo-company.webp', w: 1600, h: 726, alt: 'Panel Performance ai-seo-company.pl w Google Search Console: 2,77 tys. wyświetleń (26.07-21.08.2026)', altEn: 'Google Search Console performance panel for ai-seo-company.pl: 2.77K impressions (26 Jul-21 Aug 2026)' },
-{ src: '/projects/gsc/ase-bot.webp', w: 1600, h: 726, alt: 'Panel Performance ase-bot.live w Google Search Console: 7,71 tys. wyświetleń w 92 dni', altEn: 'Google Search Console performance panel for ase-bot.live: 7.71K impressions over 92 days' }
+    altEn: 'Frazy Studio page – an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' }
 ];
 
-/* Uklad zmierzony ze zrzutu sciany ghost.org: piec stosow wyrownanych do
-   dolu, o roznej wysokosci, przez co gorna krawedz jest poszarpana.
-   Kazda marka stoi nad swoim panelem GSC (Madame Thai, ASE-BOT, Staniax),
-   panele zamykaja kolumny od dolu.
+/* Uklady stosow dla 2, 3, 4 i 5 kolumn. Stosy sa wyrownane do DOLU
+   (align-items: end), wiec rozne wysokosci stosow daja poszarpana gorna
+   krawedz, a kontener ja przycina (jak u Ghosta). Klucz = nazwa pliku bez
+   rozszerzenia (klucz kafla z wariantem srcEn to nazwa pliku wersji PL).
 
-   UWAGA - to jest pulapka, ktora juz raz zadziala: uklad piecio-kolumnowy
-   NIE czyta tablicy MOSAIC, tylko te sztywna liste kluczy. Dopisanie kafla
-   do MOSAIC bez dopisania go TUTAJ konczy sie tym, ze kafel jest w
-   wariantach 2/3/4 kolumn, ale nie ma go w wariancie 5 kolumn, czyli znika
-   na kazdym ekranie >= 1280 px. Klucz to nazwa pliku bez rozszerzenia.
-   `filter(Boolean)` chroni przed literowka w kluczu - wtedy kafel po prostu
-   nie wejdzie, zamiast wywalic render.
+   Uklad liczony 19.11.2026 przeszukaniem wszystkich podzialow 9 kafli
+   (wysokosc stosu = suma h/w kafli + przerwy ok. 0,06 szerokosci kolumny):
+   5 kolumn: 1 / 2 / 2 / 2 / 2 kafle (9 kafli nie da sie podzielic na pary;
+             samotny Elkat 0,81 to poszarpana krawedz, reszta 1,19-1,39)
+   4 kolumny: 2 / 2 / 3 / 2 kafle, 1,52 / 1,46 / 1,71 / 1,43 (rozrzut 17%)
+   3 kolumny: 3 / 3 / 3 kafle, 2,06 / 2,07 / 2,05 (rozrzut 1%)
+   2 kolumny: 4 / 5 kafli, 3,09 / 3,15 (rozrzut 2%)
+   Pojedynczy kafel tworzy stos tylko przy 5 kolumnach.
 
-   Wysokosci stosow w jednostkach szerokosci kolumny (suma h/w kafli):
-   1.82 / 1.81 / 1.78 / 1.47 / 1.96. Kafel Frazy trafil do drugiej kolumny,
-   bo bez niego miala 1.15 i odstawala od reszty.
-   Ponizej 1280px round-robin: hero najpierw, GSC na koncu. */
+   UWAGA - pulapka, ktora juz raz zadziala: uklady NIE czytaja tablicy MOSAIC
+   tylko te sztywne listy kluczy. Kafel dopisany do MOSAIC, a nie do listy,
+   znikalby z danego wariantu (przy 5 kolumnach: na ekranach >= 1280 px).
+   Dlatego kafel, ktorego nie ma na zadnej liscie, trafia na koniec
+   najkrotszego stosu (stosyDlaKolumn nic juz nie gubi), a klucz z listy,
+   ktorego nie ma w MOSAIC, jest pomijany przez filter(Boolean). Mimo to
+   trzymaj listy zgodne z MOSAIC: nowy kafel dopisz do wszystkich czterech. */
+const UKLADY_STOSOW = {
+  5: [
+    ['elkat-a-v2'],
+    ['mad-a-v2', 'own-hero-pl4'],
+    ['ase-a-v4', 'tql-a-v2'],
+    ['sta-a-v4', 'frazy-a'],
+    ['own-blog-pl8', 'fix-a-v2'],
+  ],
+  4: [
+    ['elkat-a-v2', 'frazy-a'],
+    ['mad-a-v2', 'tql-a-v2'],
+    ['own-hero-pl4', 'ase-a-v4', 'fix-a-v2'],
+    ['sta-a-v4', 'own-blog-pl8'],
+  ],
+  3: [
+    ['elkat-a-v2', 'mad-a-v2', 'fix-a-v2'],
+    ['own-hero-pl4', 'sta-a-v4', 'frazy-a'],
+    ['ase-a-v4', 'tql-a-v2', 'own-blog-pl8'],
+  ],
+  2: [
+    ['elkat-a-v2', 'mad-a-v2', 'tql-a-v2', 'own-blog-pl8'],
+    ['own-hero-pl4', 'ase-a-v4', 'sta-a-v4', 'fix-a-v2', 'frazy-a'],
+  ],
+};
+
 function stosyDlaKolumn(cols) {
-  if (cols === 5) {
-    const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
-    return [
-      ['sta-a-v4', 'sta-blog-pl4', 'staniax'],
-      ['frazy-a', 'mad-a-v2', 'madamethai'],
-      ['own-hero-pl4', 'own-blog-pl7', 'ai-seo-company'],
-      ['ase-a-v2', 'fix-a-v2', 'ase-bot'],
-      ['elkat-a-v2', 'tql-a', 'tql'],
-    ].map((stack) => stack.map((k) => byKey[k])).map((stack) => stack.filter(Boolean));
-  }
-  const stacks = Array.from({ length: cols }, () => []);
-  MOSAIC.forEach((tile, i) => stacks[i % cols].push(tile));
+  const byKey = Object.fromEntries(MOSAIC.map((t) => [t.src.split('/').pop().replace('.webp', ''), t]));
+  const stacks = UKLADY_STOSOW[cols].map((stack) => stack.map((k) => byKey[k]).filter(Boolean));
+  const uzyte = new Set(stacks.flat());
+  const wys = (stack) => stack.reduce((suma, t) => suma + t.h / t.w, 0);
+  MOSAIC.filter((t) => !uzyte.has(t)).forEach((t) => {
+    stacks.reduce((min, stack) => (wys(stack) < wys(min) ? stack : min)).push(t);
+  });
   return stacks;
 }
 
@@ -296,7 +312,7 @@ export default function Portfolio() {
   /* Karty „Wybrane realizacje”. Zdania o Madame Thai, Staniax i ASE-BOT sa
      tymi samymi zdaniami, ktore stały w pasku klientow pod sciana; TQL
      dochodzi z liczbami z artykulu /blog/wyniki-wdrozen-seo-2026 (sekcja tql).
-     Metryki to kafelki z paneli GSC (te same zrzuty sa w scianie). */
+     Metryki to kafelki z paneli GSC (wykresy z tych paneli stoja w kartach; same zrzuty nie sa juz w scianie). */
   const logo = (nazwa) => realizedWebsites.find((w) => w.brandName === nazwa)?.brandLogo;
   const logoTql = (
     <span style={{ fontFamily: 'var(--font-geist), sans-serif', fontWeight: 800, letterSpacing: '0.06em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
@@ -406,8 +422,8 @@ export default function Portfolio() {
             </h2>
             <p className="portfolio-lede">
               {lang === 'pl'
-                ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów. Każdy kafelek to prawdziwy zrzut: strona zaprojektowana przez nasz zespół albo panel Google Search Console z kliknięciami, wyświetleniami i pozycjami. Tak wygląda pozycjonowanie stron rozliczane z realnych efektów, nie z obietnic.'
-                : 'Explore analytics-backed growth metrics across our client case studies. Every tile is a real screenshot: a website designed by our team or a Google Search Console panel with clicks, impressions and positions. This is SEO measured by real outcomes, not promises.'}
+                ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów. Każdy kafelek to prawdziwy zrzut strony zaprojektowanej przez nasz zespół, a dane z Google Search Console (kliknięcia, wyświetlenia i pozycje) pokazują wykresy powyżej. Tak wygląda pozycjonowanie stron rozliczane z realnych efektów, nie z obietnic.'
+                : 'Explore analytics-backed growth metrics across our client case studies. Every tile is a real screenshot of a website designed by our team, and the Google Search Console data (clicks, impressions and positions) is shown as charts above. This is SEO measured by real outcomes, not promises.'}
             </p>
             <Link className="portfolio-more" href="/pozycjonowanie-stron-internetowych">
               {lang === 'pl' ? 'Zobacz zakres współpracy' : 'See how we work'} →
