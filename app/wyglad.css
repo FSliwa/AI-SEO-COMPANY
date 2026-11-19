@@ -838,12 +838,12 @@ section#contact.contact {
 .pricing::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: 0 -3vw;                 /* nadmiar na dryf poziomy, konce linii poza krawedziami */
   z-index: -1;
   pointer-events: none;
   background:
-    url('/images/wyglad/kontury-1.webp') no-repeat left 0 top 6% / min(40vw, 560px) auto,
-    url('/images/wyglad/kontury-2.webp') no-repeat right 0 bottom 2% / min(40vw, 560px) auto;
+    url('/images/wyglad/kontury-cennik-gora.svg') no-repeat 0 0 / 100% var(--w-sekcja),
+    url('/images/wyglad/kontury-cennik-dol.svg') no-repeat 0 100% / 100% var(--w-sekcja);
 }
 
 .pricing .section-header {
@@ -1605,8 +1605,8 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   }
 
   @keyframes w-kontury {
-    from { translate: 0 0; scale: 1; }
-    to { translate: 0 -1.2vw; scale: 1; }
+    from { translate: 0 0; }
+    to { translate: -1.5vw 0; }
   }
 
   /* Hero: linie naglowka wjezdzaja od dolu bez wygaszania (LCP) */
@@ -2095,30 +2095,15 @@ main h3:not(.hero *) {
   border-radius: var(--w-promien-karta) !important;
 }
 
-/* (13/69, W01) Poziomice cennika maja poczatek i koniec: wzor siedzi tylko
-   w bocznych polach sekcji (maska pozioma wygasza srodek, wiec nie przecina
-   kart ani listy cech), a pionowa wygasza gore i dol. Zadna linia nie wchodzi
-   z krawedzi okna. */
+/* (13/69, W01) Poziomice cennika to dwa pasma SVG (gora i dol) o wysokosci
+   paddingu sekcji. Linie wychodza poza lewa i prawa krawedz, wiec zadna nie
+   ma konca w widocznym polu i zadna nie siega kart ani tekstu. */
 .pricing {
   overflow: clip;
 }
 
-.pricing::before {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 70%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, transparent 22%, transparent 78%, #000 94%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 70%, transparent 100%), linear-gradient(to right, transparent 0, #000 6%, transparent 22%, transparent 78%, #000 94%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-}
-
 .pricing-card {
   isolation: isolate;
-}
-
-@media (max-width: 1100px) {
-  .pricing::before {
-    background-position: left 0 top 4%, right 0 bottom 0;
-    background-size: min(46vw, 420px) auto, min(46vw, 420px) auto;
-  }
 }
 
 /* (30/52) Fokus na granacie */
@@ -2324,9 +2309,31 @@ main:has(.article-content) {
   padding-bottom: var(--w-sekcja) !important;
 }
 
-/* (105) /o-nas: poziomice w pustej prawej czesci pierwszego ekranu */
+/* (105) /o-nas: poziomice jako dwa pasma SVG w polach paddingu sekcji (gora i
+   dol), te same co w cenniku: linie wychodza poza lewa i prawa krawedz, wiec
+   zadna nie ma konca w widocznym polu i zadna nie siega tekstu. */
 #about-mission.why-us {
-  background: var(--w-papier) url('/images/wyglad/kontury-2.webp') no-repeat right -8vw top 40px / min(46vw, 660px) auto !important;
+  --pas-onas: 40px;
+  --pas-onas-dol: 0px;            /* kontrolki karuzeli siegaja dolu sekcji do 1023 px */
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--w-papier) !important;
+}
+
+#about-mission.why-us::before {
+  content: '';
+  position: absolute;
+  inset: 0 -3vw;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url('/images/wyglad/kontury-cennik-gora.svg') no-repeat 0 0 / 100% var(--pas-onas),
+    url('/images/wyglad/kontury-cennik-dol.svg') no-repeat 0 100% / 100% var(--pas-onas-dol);
+}
+
+@media (min-width: 1024px) {
+  #about-mission.why-us { --pas-onas: 72px; --pas-onas-dol: 56px; }
 }
 
 /* (108) Okladki i zdjecia stockowe w cieplej tonacji zamiast neonowego fioletu */
