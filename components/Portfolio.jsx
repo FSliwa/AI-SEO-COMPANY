@@ -313,14 +313,18 @@ export default function Portfolio() {
     }
   };
 
-  /* Karty „Wybrane realizacje”. Zdania o Madame Thai, Staniax i ASE-BOT sa
-     tymi samymi zdaniami, ktore stały w pasku klientow pod sciana; TQL
-     dochodzi z liczbami z artykulu /blog/wyniki-wdrozen-seo-2026 (sekcja tql).
-     Metryki to kafelki z paneli GSC (wykresy z tych paneli stoja w kartach; same zrzuty nie sa juz w scianie). */
+  /* Karty „Wybrane realizacje”. Wszystkie dane pobierane na żywo z Google Search Console
+     klientów agencji (lib/realizacjeGsc.js oraz /api/realizacje-gsc):
+     STANIAX, MADAME THAI, TQL, ASE-BOT i STEF-BUD (bez elkatelektro.com). */
   const logo = (nazwa) => realizedWebsites.find((w) => w.brandName === nazwa)?.brandLogo;
   const logoTql = (
     <span style={{ fontFamily: 'var(--font-geist), sans-serif', fontWeight: 800, letterSpacing: '0.06em', fontSize: '1.3rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
       TQL
+    </span>
+  );
+  const logoStefbud = (
+    <span style={{ fontFamily: 'var(--font-geist), sans-serif', fontWeight: 800, letterSpacing: '0.04em', fontSize: '1.25rem', color: '#0F172A', whiteSpace: 'nowrap' }}>
+      STEF-BUD
     </span>
   );
   const pl = lang === 'pl';
@@ -335,9 +339,9 @@ export default function Portfolio() {
       Ask for the Search Console data →
     </a>
   ));
-  const okres3 = pl ? 'Okres: 92 dni, 22.05-21.08.2026' : 'Period: 92 days, 22 May-21 Aug 2026';
-  const zrodloTyg = pl ? 'Źródło: Google Search Console, sumy tygodniowe' : 'Source: Google Search Console, weekly totals';
-  const zrodloDzien = pl ? 'Źródło: Google Search Console, dane dzienne' : 'Source: Google Search Console, daily data';
+  const okres91 = pl ? 'Okres: 91 dni, 21.08-19.11.2026' : 'Period: 91 days, 21 Aug-19 Nov 2026';
+  const okres75 = pl ? 'Okres: 75 dni, 06.09-19.11.2026' : 'Period: 75 days, 06 Sep-19 Nov 2026';
+  const zrodloGsc = pl ? 'Źródło: Google Search Console, dane na żywo' : 'Source: Google Search Console, live data';
   const pozycje = [
     {
       id: 'staniax',
@@ -345,14 +349,14 @@ export default function Portfolio() {
       logo: logo('STANIAX'),
       tag: pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
       opis: pl
-        ? 'Z zerowej widoczności do 152 kliknięć i 6,34 tys. wyświetleń w Google w 92 dni (Search Console).'
-        : 'From zero visibility to 152 clicks and 6.34k Google impressions in 92 days (Search Console).',
+        ? 'Z zerowej widoczności do 228 kliknięć i 8,61 tys. wyświetleń w Google (Search Console).'
+        : 'From zero visibility to 228 clicks and 8.61k Google impressions in 91 days (Search Console).',
       seria: 'staniax',
       metryki: pl
-        ? [['6,34 tys.', 'wyświetleń w Google w 92 dni'], ['152', 'kliknięcia z wyszukiwarki w 92 dni']]
-        : [['6.34k', 'Google impressions in 92 days'], ['152', 'clicks from search in 92 days']],
-      okres: okres3,
-      zrodlo: zrodloTyg,
+        ? [['8,61 tys.', 'wyświetleń w Google w 91 dni'], ['228', 'kliknięć z wyszukiwarki w 91 dni']]
+        : [['8.61k', 'Google impressions in 91 days'], ['228', 'clicks from search in 91 days']],
+      okres: okres91,
+      zrodlo: zrodloGsc,
       cta: cta('staniax'),
     },
     {
@@ -361,14 +365,14 @@ export default function Portfolio() {
       logo: logo('MADAME THAI'),
       tag: pl ? 'SEO LOKALNE / STRONA WWW' : 'LOCAL SEO / WEBSITE',
       opis: pl
-        ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji.'
-        : 'Building and scaling digital sales for the newly opened restaurant location.',
+        ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji: 1 460 kliknięć i 57,9 tys. wyświetleń w Google (Search Console).'
+        : 'Building and scaling digital sales for the newly opened restaurant location: 1,460 clicks and 57.9k Google impressions in 91 days (Search Console).',
       seria: 'madamethai',
       metryki: pl
-        ? [['10,1 tys.', 'wyświetleń w Google w 26 dni'], ['187', 'kliknięć z wyszukiwarki w 26 dni']]
-        : [['10.1k', 'Google impressions in 26 days'], ['187', 'clicks from search in 26 days']],
-      okres: pl ? 'Okres: 26 dni, 27.07-21.08.2026' : 'Period: 26 days, 27 Jul-21 Aug 2026',
-      zrodlo: zrodloDzien,
+        ? [['57,9 tys.', 'wyświetleń w Google w 91 dni'], ['1 460', 'kliknięć z wyszukiwarki w 91 dni']]
+        : [['57.9k', 'Google impressions in 91 days'], ['1,460', 'clicks from search in 91 days']],
+      okres: okres91,
+      zrodlo: zrodloGsc,
       cta: cta('madame-thai'),
     },
     {
@@ -377,14 +381,14 @@ export default function Portfolio() {
       logo: logoTql,
       tag: pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
       opis: pl
-        ? 'Firma wdrażająca normy ISO, strona świeżo uruchomiona: pierwsze wyświetlenia i pozycje w Google w pierwszych 18 dniach od startu (Search Console).'
-        : 'An ISO standards consultancy with a freshly launched website: first Google impressions and rankings within the first 18 days of launch (Search Console).',
+        ? 'Firma wdrażająca normy ISO: dynamiczny wzrost do 71 kliknięć i 4,59 tys. wyświetleń w Google (Search Console).'
+        : 'ISO standards consultancy: rapid growth to 71 clicks and 4.59k Google impressions in 91 days (Search Console).',
       seria: 'tql',
       metryki: pl
-        ? [['296', 'wyświetleń w Google w pierwsze 18 dni'], ['34,6', 'średnia pozycja w Google w tym okresie']]
-        : [['296', 'Google impressions in the first 18 days'], ['34.6', 'average Google position in that period']],
-      okres: pl ? 'Okres: pierwsze 18 dni, 5-22.08.2026' : 'Period: first 18 days, 5-22 Aug 2026',
-      zrodlo: zrodloDzien,
+        ? [['4,59 tys.', 'wyświetleń w Google w 91 dni'], ['71', 'kliknięć z wyszukiwarki w 91 dni']]
+        : [['4.59k', 'Google impressions in 91 days'], ['71', 'clicks from search in 91 days']],
+      okres: okres91,
+      zrodlo: zrodloGsc,
       cta: cta('tql'),
     },
     {
@@ -393,15 +397,31 @@ export default function Portfolio() {
       logo: logo('ASE-BOT'),
       tag: pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO',
       opis: pl
-        ? 'Nasz własny projekt: 7,71 tys. wyświetleń w Google w 92 dni, ze szczytem w lipcu i spadkiem w sierpniu (Search Console).'
-        : 'Our own project: 7.71k Google impressions in 92 days, peaking in July and falling in August (Search Console).',
+        ? 'Nasz własny projekt AI: 6,09 tys. wyświetleń w Google i stałe pozyskiwanie analityków rynkowych (Search Console).'
+        : 'Our own AI project: 6.09k Google impressions in 91 days and steady organic discovery (Search Console).',
       seria: 'ase-bot',
       metryki: pl
-        ? [['7,71 tys.', 'wyświetleń w Google w 92 dni'], ['28', 'kliknięć z wyszukiwarki w 92 dni']]
-        : [['7.71k', 'Google impressions in 92 days'], ['28', 'clicks from search in 92 days']],
-      okres: okres3,
-      zrodlo: zrodloTyg,
+        ? [['6,09 tys.', 'wyświetleń w Google w 91 dni'], ['15', 'kliknięć z wyszukiwarki w 91 dni']]
+        : [['6.09k', 'Google impressions in 91 days'], ['15', 'clicks from search in 91 days']],
+      okres: okres91,
+      zrodlo: zrodloGsc,
       cta: cta('ase-bot'),
+    },
+    {
+      id: 'stefbud',
+      nazwa: 'STEF-BUD',
+      logo: logoStefbud,
+      tag: pl ? 'PRODUKCJA / STRONA WWW I SEO' : 'MANUFACTURING / WEB & SEO',
+      opis: pl
+        ? 'Producent świetlików dachowych i pasm świetlnych: 218 kliknięć i 8,88 tys. wyświetleń na kluczowe zapytania B2B (Search Console).'
+        : 'Rooflight and skylight manufacturer: 218 clicks and 8.88k Google impressions on key B2B searches (Search Console).',
+      seria: 'stefbud',
+      metryki: pl
+        ? [['8,88 tys.', 'wyświetleń w Google w 75 dni'], ['218', 'kliknięć z wyszukiwarki w 75 dni']]
+        : [['8.88k', 'Google impressions in 75 days'], ['218', 'clicks from search in 75 days']],
+      okres: okres75,
+      zrodlo: zrodloGsc,
+      cta: cta('stefbud'),
     },
   ];
 

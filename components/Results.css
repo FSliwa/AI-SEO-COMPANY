@@ -1,0 +1,451 @@
+/* ==========================================================================
+   WYNIKI + PRZEJŚCIE KOPUŁOWE Z GLOBEM 3D W STYLU ASE-BOT.LIVE
+   components/Results.jsx
+   --------------------------------------------------------------------------
+   - Odwzorowuje architekturę i skalę sekcji „Built for professional analysts”
+     z ase-bot.live (szerokość --gw: min(1360px, calc(100vw - 2rem)),
+     4 kolumny z wiązkami 1.5 px spadającymi wprost z kolumn na wieże 3D,
+     głęboki kobalt z orbitami oraz eliptyczna kopuła 50% 17rem, spod której
+     dolny łuk globu 3D wchodzi bezpośrednio na ciepły papier #FDF9F4 sekcji
+     6 darmowych narzędzi).
+   ========================================================================== */
+
+.results.results--kopula {
+  --gw: min(1360px, calc(100vw - 2rem));
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--w-papier) !important;
+  background-image: none !important;
+  padding-top: clamp(210px, 31vw, 450px) !important;
+  padding-bottom: clamp(12px, 1.8vw, 24px) !important;
+  margin-bottom: -1px !important;
+}
+
+/* Tło kopuły w dwóch warstwach, bez poziomego szwu:
+   1) baza: szczyty gór (gory-noc, 1600x748 = 46,75vw wysokości, dół dokładnie #0A1437)
+      i pod nimi jednolity nocny granat #0A1337 - styk grafiki z tłem jest niewidoczny;
+   2) ::before: świetlisty królewski kobalt (#16308A -> #1B2FA6 -> #1F3BD0, jak ase-bot.live)
+      zaczyna się NAD dolną krawędzią grafiki i wchodzi maską od 0 do 100%, więc granat
+      płynnie przechodzi w jasny kobalt stapiający krawędź globu z tłem. */
+.results-noc-kopula {
+  --kopula-gory: 46.75vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  /* Dolny wierzchołek kopuły z ase-bot.live: ((1 - 0.619) * (1196/1315) - 0.112) = 0.2345 */
+  bottom: calc(var(--gw) * 0.2345 + clamp(12px, 1.8vw, 24px));
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #0A1337;
+  background-image:
+    url('/images/wyglad/gory-noc.webp'),
+    linear-gradient(180deg, var(--w-papier) 0, var(--w-papier) 12vw, #0A1337 12vw, #0A1337 100%);
+  background-image:
+    image-set(url('/images/wyglad/gory-noc-v2.avif') type('image/avif'), url('/images/wyglad/gory-noc.webp') type('image/webp')),
+    linear-gradient(180deg, var(--w-papier) 0, var(--w-papier) 12vw, #0A1337 12vw, #0A1337 100%);
+  background-repeat: no-repeat;
+  background-size: 100% auto, 100% 100%;
+  background-position: top center, center center;
+  border-bottom-left-radius: 50% 4rem;
+  border-bottom-right-radius: 50% 4rem;
+}
+
+@media (min-width: 640px) {
+  .results-noc-kopula {
+    border-bottom-left-radius: 50% 8rem;
+    border-bottom-right-radius: 50% 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .results-noc-kopula {
+    border-bottom-left-radius: 50% 17rem;
+    border-bottom-right-radius: 50% 17rem;
+  }
+}
+
+/* Formuła szerokiego ekranu z ase-bot.live: utrzymuje styk łuku z równikiem dysku i unosi krzywiznę ponad górną krawędź tarczy */
+@media (min-width: 1440px) {
+  .results-noc-kopula {
+    border-bottom-left-radius: 50% calc(17rem + (100vw - 1440px) * 0.75);
+    border-bottom-right-radius: 50% calc(17rem + (100vw - 1440px) * 0.75);
+  }
+}
+
+.results-noc-kopula::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--kopula-gory) - clamp(120px, 12vw, 220px));
+  bottom: 0;
+  background:
+    radial-gradient(110% 52% at 70% 24%, rgba(62, 114, 255, 0.48), transparent 62%),
+    radial-gradient(88% 48% at 14% 88%, rgba(44, 92, 242, 0.36), transparent 62%),
+    radial-gradient(96% 52% at 50% 78%, rgba(46, 86, 232, 0.56), transparent 70%),
+    linear-gradient(180deg, #0A1337 0%, #152D8A 20%, #1B34B0 48%, #1F3ED2 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 clamp(320px, 32vw, 480px));
+  mask-image: linear-gradient(180deg, transparent 0, #000 clamp(320px, 32vw, 480px));
+}
+
+/* Subtelne łuki orbitalne i pył sygnałowy (jak blue-field.webp w ase-bot.live) */
+.results-orbity {
+  position: absolute;
+  inset: 14% -12% 0 -12%;
+  opacity: 0.42;
+  background:
+    repeating-radial-gradient(
+      circle at 50% 98%,
+      transparent 0 128px,
+      rgba(253, 249, 244, 0.085) 128px 129.5px
+    ),
+    radial-gradient(1.6px 1.6px at 16% 32%, rgba(253, 249, 244, 0.78), transparent),
+    radial-gradient(1.6px 1.6px at 84% 28%, rgba(255, 198, 130, 0.85), transparent),
+    radial-gradient(1.6px 1.6px at 66% 42%, rgba(253, 249, 244, 0.6), transparent),
+    radial-gradient(1.6px 1.6px at 28% 54%, rgba(255, 198, 130, 0.72), transparent),
+    radial-gradient(1.6px 1.6px at 90% 48%, rgba(253, 249, 244, 0.55), transparent);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 84%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 84%, transparent 100%);
+}
+
+/* ---------- Karta CTA z delikatnym świetlnym obrysem (jak „Start analyzing with AI”) ---------- */
+.results--kopula .results-cta-karta {
+  position: relative;
+  padding: clamp(26px, 3.2vw, 38px) clamp(24px, 3.6vw, 44px) !important;
+  border-radius: 28px !important;
+  background: rgba(255, 255, 255, 0.048) !important;
+  border: 1px solid rgba(253, 249, 244, 0.14) !important;
+  overflow: hidden;
+}
+
+.results-cta-promien {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  overflow: hidden;
+}
+
+.results-cta-promien::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 290deg,
+    rgba(255, 190, 128, 0.28) 320deg,
+    #FFAA6E 346deg,
+    #FDF9F4 356deg,
+    transparent 360deg
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes results-beam {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  .results-cta-promien::before {
+    animation: results-beam 9s linear infinite;
+  }
+}
+
+/* Przycisk główny + cichy link do cennika (skrót do cen bez przewijania przez 3 sekcje) */
+.results-cta-akcje {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.results-cta-ceny {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0 0.5rem;
+  color: rgba(253, 249, 244, 0.86) !important;
+  font-size: 0.98rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(243, 183, 156, 0.5);
+  text-underline-offset: 4px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.results-cta-ceny:hover {
+  color: #FFFFFF !important;
+  text-decoration-color: var(--w-pomarancz);
+}
+
+/* ---------- Blok analityczny w proporcjach „Built for professional analysts” ---------- */
+.results-analityka {
+  position: relative;
+  width: var(--gw);
+  margin: clamp(96px, 11vw, 160px) auto 0;
+  color: #FDF9F4;
+}
+
+.results-analityka-nagl {
+  max-width: min(78rem, 100%);
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* Dwie linie jak „Built for / professional analysts”: każda fraza w jednym wierszu na desktopie */
+.results-analityka-h3 {
+  margin: 0;
+  font-family: var(--font-geist), system-ui, sans-serif !important;
+  font-size: clamp(2.3rem, 4.7vw, 4.25rem) !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.055em !important;
+  font-weight: 500 !important;
+  color: #FDF9F4 !important;
+  text-align: center !important;
+  text-wrap: balance;
+}
+
+.results-h3-jasny {
+  display: block;
+  font-weight: 500;
+  color: #FDF9F4;
+}
+
+.results-h3-akcent {
+  display: block;
+  margin-top: 0.06em;
+  font-weight: 600;
+  color: #FFB078;
+}
+
+.results-slowo {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+.results-analityka-opis {
+  max-width: 44rem !important;
+  margin: 1.75rem auto 0 !important;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.58;
+  color: rgba(253, 249, 244, 0.8) !important;
+}
+
+/* Scena łącząca 4 kolumny, wiązki laserowe i glob 3D w jednej osi --gw */
+.results-scena-globu {
+  position: relative;
+  margin-top: clamp(64px, 6.5vw, 96px);
+}
+
+/* 4 kolumny 01 / ... 04 / z marginesem 4% --gw po bokach (dokładnie jak ase-bot.live) */
+.results-filary {
+  position: relative;
+  z-index: 10;
+  list-style: none;
+  margin: 0;
+  padding: 0 calc(var(--gw) * 0.04);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  overflow: visible;
+}
+
+.results-filar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.results-filar-tresc {
+  padding-right: clamp(16px, 2vw, 28px);
+}
+
+.results-filar-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--w-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: #FDF9F4;
+}
+
+.results-nr-cyfra {
+  opacity: 0.65;
+}
+
+.results-nr-ukosnik {
+  opacity: 0.4;
+}
+
+.results-filar-ikona {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  color: #FFB87A;
+}
+
+.results-filar--ryzyko .results-filar-ikona {
+  color: #FF6242;
+}
+
+.results-filar-ikona svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.results-filar-tytul {
+  margin: 14px 0 0;
+  font-family: var(--font-geist), system-ui, sans-serif !important;
+  font-size: clamp(1.22rem, 1.55vw, 1.55rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.035em !important;
+  color: #FDF9F4 !important;
+  text-wrap: balance;
+}
+
+.results-filar-opis {
+  margin: 12px 0 0 !important;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(253, 249, 244, 0.76) !important;
+}
+
+/* Pionowa wiązka 1.5 px wychodząca wprost spod tekstu kolumny aż do wieży 3D na globie */
+.results-filar-linia {
+  position: relative;
+  margin-top: 24px;
+  min-height: 32px;
+  flex: 1 1 auto;
+  pointer-events: none;
+}
+
+.results-pin {
+  --kol-pin: #FFC27A;
+  --kol-blask: rgba(255, 194, 122, 0.42);
+  position: absolute;
+  top: 0;
+  width: 1.5px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(255, 194, 122, 0.35) 0%, var(--kol-pin) 18%, var(--kol-pin) 100%);
+  box-shadow: 0 0 8px var(--kol-blask);
+}
+
+.results-pin--ryzyko {
+  --kol-pin: #FF6242;
+  --kol-blask: rgba(255, 98, 66, 0.5);
+}
+
+.results-pin-kropka {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: var(--kol-pin);
+  box-shadow:
+    0 0 0 4px var(--kol-blask),
+    0 0 16px 4px var(--kol-blask);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes results-pin-puls {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.95; }
+    50% { transform: translateX(-50%) scale(1.26); opacity: 1; }
+  }
+  .results-pin-kropka {
+    animation: results-pin-puls 2.8s ease-in-out infinite;
+  }
+}
+
+/* ---------- Monumentalny glob 3D (w = --gw, proporcje i marginesy identyczne z ase-bot.live) ---------- */
+.results-glob-wrap {
+  position: relative;
+  z-index: 0;
+  width: var(--gw);
+  margin-top: calc(var(--gw) * -0.04);
+  margin-bottom: calc(var(--gw) * -0.112);
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: none;
+}
+
+@media (min-width: 1200px) {
+  .results-glob-wrap {
+    margin-top: calc(var(--gw) * -0.12);
+  }
+}
+
+.results-glob-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Tablety i telefony (< 1200 px) ---------- */
+@media (max-width: 1199.98px) {
+  .results.results--kopula {
+    --gw: min(1080px, calc(100vw - 1.5rem));
+  }
+  .results-filary {
+    padding: 0 clamp(16px, 3vw, 40px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 28px;
+  }
+  .results-filar {
+    border-top: 1px solid rgba(253, 249, 244, 0.14);
+    padding-top: 20px;
+  }
+  .results-filar-tresc {
+    padding-right: 0;
+  }
+  .results-filar-linia {
+    display: none;
+  }
+  .results-glob-wrap {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .results.results--kopula {
+    padding-top: 52vw !important;
+  }
+  .results-noc-kopula {
+    bottom: calc(var(--gw) * 0.17 + 14px);
+  }
+}
+
+@media (max-width: 639.98px) {
+  .results.results--kopula {
+    --gw: calc(100vw - 1rem);
+  }
+  .results-filary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+}

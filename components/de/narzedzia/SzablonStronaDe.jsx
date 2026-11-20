@@ -123,6 +123,7 @@ export default function SzablonStronaDe({ dane }) {
               <SzablonFormularzDe
                 endpoint={ENDPOINT_SZABLONOW}
                 plik={dane.plik}
+                plikPdfDe={dane.plikPdfDe}
                 plan={`szablon_${dane.plik}`}
                 idPrefiks={`sz-${dane.plik}`}
                 etykieta={d.formularz.etykieta}

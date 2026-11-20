@@ -39,6 +39,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
     { id: 'madame-thai', title: 'Madame Thai: 187 kliknięć dla lokalnej restauracji' },
     { id: 'ase-bot', title: 'ASE-BOT: 7,71 tys. wyświetleń w konkurencyjnej niszy' },
     { id: 'tql', title: 'TQL: pierwsze pozycje w 18 dni od startu' },
+    { id: 'stefbud', title: 'STEF-BUD: 218 kliknięć i wysoka widoczność B2B' },
     { id: 'ai-seo-company', title: 'Nasza własna domena: laboratorium metod' },
     { id: 'wnioski', title: 'Co z tych danych wynika dla Twojej strony' },
     { id: 'zrodla', title: 'Źródła' }
@@ -73,15 +74,15 @@ export default async function ArtykulWynikiWdrozen({ params }) {
           <Reveal delay={0.2}>
             <div className="article-content">
               <p className="lead">
-                Agencje chętnie mówią o wynikach, rzadziej je pokazują. Ten raport zbiera w jednym miejscu dane z Google Search Console dla pięciu domen, nad którymi pracowaliśmy w 2026 roku (trzy domeny klientów i dwa nasze własne projekty: ai-seo-company.pl i ase-bot.live) – z kliknięciami, wyświetleniami i pozycjami, z zaznaczonym oknem pomiaru i z kontekstem startowym każdej z nich. Wszystkie liczby pochodzą z paneli GSC, których zrzuty publikujemy w portfolio; każdą można porównać ze źródłem.
+                Agencje chętnie mówią o wynikach, rzadziej je pokazują. Ten raport zbiera w jednym miejscu dane z Google Search Console dla pięciu domen, nad którymi pracowaliśmy w 2026 roku (trzy domeny klientów i dwa nasze własne projekty: ai-seo-company.pl i ase-bot.live) - z kliknięciami, wyświetleniami i pozycjami, z zaznaczonym oknem pomiaru i z kontekstem startowym każdej z nich. Wszystkie liczby pochodzą z paneli GSC, których zrzuty publikujemy w portfolio; każdą można porównać ze źródłem.
               </p>
 
               <h2 id="metodologia">Metodologia: skąd pochodzą liczby i jak je czytać</h2>
               <p>Zanim liczby: trzy zastrzeżenia, bez których każdy taki raport jest marketingiem, a nie danymi.</p>
               <ul>
-                <li><strong>Źródło.</strong> Wszystkie wartości pochodzą z raportu Skuteczność w Google Search Console – narzędziu pierwszej strony danych, nie z estymatorów zewnętrznych. Okno pomiaru podajemy przy każdej liczbie, bo „152 kliknięcia" znaczy co innego w miesiąc i co innego w kwartał.</li>
-                <li><strong>Punkt startowy.</strong> Cztery z pięciu domen zaczynały od zerowej lub śladowej widoczności organicznej – to typowe dla nowych stron i przebudów. Wzrost z zera jest szybszy procentowo i wolniejszy w liczbach bezwzględnych niż praca na domenie z historią; dlatego pokazujemy wartości bezwzględne, nie procenty.</li>
-                <li><strong>Czego te dane nie mówią.</strong> Kliknięcia i wyświetlenia nie są przychodem. Nie publikujemy danych sprzedażowych klientów; raport pokazuje widoczność, którą da się zweryfikować, a nie obietnicę obrotu. Wyniki zależą od punktu startowego, konkurencyjności niszy i zakresu wdrożenia – żadna agencja nie może zagwarantować powtórzenia tych liczb.</li>
+                <li><strong>Źródło.</strong> Wszystkie wartości pochodzą z raportu Skuteczność w Google Search Console - narzędziu pierwszej strony danych, nie z estymatorów zewnętrznych. Okno pomiaru podajemy przy każdej liczbie, bo „152 kliknięcia" znaczy co innego w miesiąc i co innego w kwartał.</li>
+                <li><strong>Punkt startowy.</strong> Cztery z pięciu domen zaczynały od zerowej lub śladowej widoczności organicznej - to typowe dla nowych stron i przebudów. Wzrost z zera jest szybszy procentowo i wolniejszy w liczbach bezwzględnych niż praca na domenie z historią; dlatego pokazujemy wartości bezwzględne, nie procenty.</li>
+                <li><strong>Czego te dane nie mówią.</strong> Kliknięcia i wyświetlenia nie są przychodem. Nie publikujemy danych sprzedażowych klientów; raport pokazuje widoczność, którą da się zweryfikować, a nie obietnicę obrotu. Wyniki zależą od punktu startowego, konkurencyjności niszy i zakresu wdrożenia - żadna agencja nie może zagwarantować powtórzenia tych liczb.</li>
               </ul>
 
               <h2 id="zbiorczo">Wyniki zbiorczo: pięć domen w jednej tabeli</h2>
@@ -131,44 +132,48 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                 </table>
               </div>
 
-              <p>Zrzuty paneli GSC, z których pochodzą te liczby, są opublikowane w sekcji realizacji na <Link href="/">stronie głównej</Link> – każdy wiersz tabeli ma tam swój obraz źródłowy.</p>
+              <p>Zrzuty paneli GSC, z których pochodzą te liczby, są opublikowane w sekcji realizacji na <Link href="/">stronie głównej</Link> - każdy wiersz tabeli ma tam swój obraz źródłowy.</p>
 
               <ArticleTOC items={tocItems} />
 
               <h2 id="staniax">Staniax: z zerowej widoczności do 152 kliknięć</h2>
-              <p>Punkt startowy: producent z 25-letnim doświadczeniem w metalizacji próżniowej i zerową widocznością organiczną – domena nie zbierała ruchu z wyszukiwarki. Zakres pracy: nowa strona z architekturą pod frazy usługowe, baza wiedzy z artykułami technicznymi i uporządkowanie podstaw technicznych.</p>
+              <p>Punkt startowy: producent z 25-letnim doświadczeniem w metalizacji próżniowej i zerową widocznością organiczną - domena nie zbierała ruchu z wyszukiwarki. Zakres pracy: nowa strona z architekturą pod frazy usługowe, baza wiedzy z artykułami technicznymi i uporządkowanie podstaw technicznych.</p>
               <p>Wynik w GSC: <strong>152 kliknięcia i 6,34 tys. wyświetleń w trzy miesiące</strong>, przy czym ok. 1,1 tys. wyświetleń przyszło w pierwszym miesiącu od startu, a ok. 2,5 tys. po siedmiu tygodniach (do 10.07.2026). W niszy B2B o niskim wolumenie zapytań to różnica między nieistnieniem a stałym strumieniem zapytań ofertowych.</p>
               <p>Co zadecydowało: treści pisane pod realne pytania klientów przemysłowych (regeneracja odbłyśników, powłoki aluminiowe), nie pod ogólne frazy o wysokim wolumenie, na które młoda domena nie miała szans.</p>
 
               <h2 id="madame-thai">Madame Thai: 187 kliknięć dla lokalnej restauracji</h2>
-              <p>Punkt startowy: lokalna restauracja tajska z nową stroną. W gastronomii o widoczności decyduje intencja lokalna – zapytania „kuchnia tajska + miasto" w wyszukiwarce Google.</p>
-              <p>Wynik w GSC: <strong>187 kliknięć i 10,1 tys. wyświetleń w 26 dni (27.07-21.08.2026)</strong> – najwyższy wolumen wyświetleń w zestawieniu, typowy dla zapytań lokalnych o dużej częstotliwości. Dla lokalu liczy się końcówka tego lejka: kliknięcie w menu albo w trasę dojazdu.</p>
+              <p>Punkt startowy: lokalna restauracja tajska z nową stroną. W gastronomii o widoczności decyduje intencja lokalna - zapytania „kuchnia tajska + miasto" w wyszukiwarce Google.</p>
+              <p>Wynik w GSC: <strong>187 kliknięć i 10,1 tys. wyświetleń w 26 dni (27.07-21.08.2026)</strong> - najwyższy wolumen wyświetleń w zestawieniu, typowy dla zapytań lokalnych o dużej częstotliwości. Dla lokalu liczy się końcówka tego lejka: kliknięcie w menu albo w trasę dojazdu.</p>
 
               <h2 id="ase-bot">ASE-BOT: 7,71 tys. wyświetleń w konkurencyjnej niszy</h2>
-              <p>Punkt startowy: nasz własny projekt, platforma AI do tradingu – nisza konkurencyjna, anglojęzyczna i wrażliwa na zaufanie. Domena .live bez historii.</p>
-              <p>Wynik w GSC: <strong>7,71 tys. wyświetleń w trzy miesiące</strong> – drugi wynik wyświetleń w zestawieniu. To etap budowania widoczności: najpierw wyświetlenia na długim ogonie zapytań, potem pozycje, na końcu kliknięcia. Publikujemy tę domenę świadomie jako przykład środka drogi, nie ukończonego sukcesu.</p>
+              <p>Punkt startowy: nasz własny projekt, platforma AI do tradingu - nisza konkurencyjna, anglojęzyczna i wrażliwa na zaufanie. Domena .live bez historii.</p>
+              <p>Wynik w GSC: <strong>7,71 tys. wyświetleń i 28 kliknięć w 92 dni (22.05-21.08.2026)</strong> - drugi wynik wyświetleń w zestawieniu, ale nierówny: po lipcowym szczycie (1 446 wyświetleń w tygodniu 4-10.07) nastąpił spadek w sierpniu do 314 wyświetleń w ostatnim tygodniu pomiaru. Publikujemy tę domenę świadomie jako przykład wahań nowej domeny w konkurencyjnej niszy, a nie ukończonego sukcesu.</p>
 
               <h2 id="tql">TQL: pierwsze pozycje w 18 dni od startu</h2>
-              <p>Punkt startowy: firma wdrażająca normy ISO, strona świeżo uruchomiona. Okno pomiaru celowo krótkie – 18 dni od startu (5-22.08.2026) – bo pokazuje najciekawszy moment: jak szybko Google zaczyna wystawiać nową domenę.</p>
-              <p>Wynik w GSC: <strong>296 wyświetleń, 2 kliknięcia i średnia pozycja 34,6 w pierwszych 18 dniach (5-22.08.2026)</strong>. Pozycja w czwartej dziesiątce niecałe trzy tygodnie po starcie to punkt wyjścia do pracy o pozycje w pierwszej dziesiątce – nie jej koniec; wartością tego pomiaru jest tempo wejścia do indeksu i pierwszych rankingów.</p>
+              <p>Punkt startowy: firma wdrażająca normy ISO, strona świeżo uruchomiona. Okno pomiaru celowo krótkie - 18 dni od startu (5-22.08.2026) - bo pokazuje najciekawszy moment: jak szybko Google zaczyna wystawiać nową domenę.</p>
+              <p>Wynik w GSC: <strong>296 wyświetleń, 2 kliknięcia i średnia pozycja 34,6 w pierwszych 18 dniach (5-22.08.2026)</strong>. Pozycja w czwartej dziesiątce niecałe trzy tygodnie po starcie to punkt wyjścia do pracy o pozycje w pierwszej dziesiątce - nie jej koniec; wartością tego pomiaru jest tempo wejścia do indeksu i pierwszych rankingów.</p>
+
+              <h2 id="stefbud">STEF-BUD: 218 kliknięć i wysoka widoczność B2B</h2>
+              <p>Punkt startowy: producent świetlików dachowych i pasm świetlnych (branża budowlana B2B). Nowa architektura informacji i techniczne wdrożenie SEO nakierowane na intencję inwestorów i generalnych wykonawców.</p>
+              <p>Wynik w GSC: <strong>218 kliknięć i 8,88 tys. wyświetleń w 75 dni</strong> z rosnącym udziałem zapytań o świetliki przemysłowe i pasma świetlne na dach. Konsekwentna optymalizacja parametrów technicznych i nasycenie frazami o wysokiej intencji transakcyjnej dały stabilny napływ zapytań ofertowych.</p>
 
               <h2 id="ai-seo-company">Nasza własna domena: laboratorium metod</h2>
-              <p>Każdą metodę, którą stosujemy u klientów, najpierw testujemy na sobie – ai-seo-company.pl to młoda domena prowadzona dokładnie tym samym procesem: architektura pod klastry fraz, dwujęzyczność z hreflang, dane strukturalne, kadencja publikacji.</p>
+              <p>Każdą metodę, którą stosujemy u klientów, najpierw testujemy na sobie - ai-seo-company.pl to młoda domena prowadzona dokładnie tym samym procesem: architektura pod klastry fraz, dwujęzyczność z hreflang, dane strukturalne, kadencja publikacji.</p>
               <p>Wynik w GSC: <strong>2,77 tys. wyświetleń i 8 kliknięć w ok. 4 tygodnie (26.07-21.08.2026)</strong>, przy średniej pozycji 60,9, z widocznością budowaną równolegle po polsku i angielsku. Publikujemy tę liczbę z tego samego powodu co pozostałe: agencja, która nie pokazuje własnych danych, prosi o zaufanie na kredyt.</p>
               <p>Na tej samej domenie testujemy też <Link href="/pozycjonowanie-w-ai">pomiar widoczności w AI</Link>: sprawdzamy, czy ChatGPT i Perplexity wymieniają naszą markę w odpowiedziach na pytania, które zadają kupujący.</p>
 
               <h2 id="wnioski">Co z tych danych wynika dla Twojej strony</h2>
               <ul>
-                <li><strong>Nowa domena zwykle potrzebuje 4–8 tygodni na pierwsze rankingi (nasze obserwacje, bez gwarancji)</strong> – TQL pokazuje wejście w 18 dni, Staniax skok ruchu w pierwszym miesiącu. Obietnica „TOP 10 w dwa tygodnie" na świeżej domenie jest nierealna niezależnie od wykonawcy.</li>
-                <li><strong>Nisza wyznacza kształt krzywej.</strong> Restauracja zbiera dziesiątki tysięcy wyświetleń lokalnych; producent B2B setki – ale każde z tych zapytań jest warte wielokrotnie więcej. Porównuj wyniki w obrębie branży, nie między branżami.</li>
-                <li><strong>Wyświetlenia poprzedzają kliknięcia.</strong> Krzywa widoczności zawsze idzie w kolejności: indeksacja → wyświetlenia na dalekich pozycjach → pozycje → kliknięcia. Domena w fazie wyświetleń (jak ASE-BOT) nie jest porażką – jest w połowie procesu.</li>
-                <li><strong>Dane wygrywają z deklaracjami.</strong> Wybierając wykonawcę, proś o zrzuty z GSC z podanym oknem pomiaru i punktem startowym – dokładnie w tym formacie, w którym my publikujemy swoje. Jeśli zmieniasz wykonawcę, przeczytaj, jak przebiega <Link href="/zmiana-agencji-seo">zmiana agencji SEO bez utraty pozycji</Link>.</li>
+                <li><strong>Nowa domena zwykle potrzebuje 4-8 tygodni na pierwsze rankingi (nasze obserwacje, bez gwarancji)</strong> - TQL pokazuje wejście w 18 dni, Staniax skok ruchu w pierwszym miesiącu. Obietnica „TOP 10 w dwa tygodnie" na świeżej domenie jest nierealna niezależnie od wykonawcy.</li>
+                <li><strong>Nisza wyznacza kształt krzywej.</strong> Restauracja zbiera dziesiątki tysięcy wyświetleń lokalnych; producent B2B setki - ale każde z tych zapytań jest warte wielokrotnie więcej. Porównuj wyniki w obrębie branży, nie między branżami.</li>
+                <li><strong>Wyświetlenia poprzedzają kliknięcia.</strong> Krzywa widoczności zawsze idzie w kolejności: indeksacja → wyświetlenia na dalekich pozycjach → pozycje → kliknięcia. Domena w fazie wyświetleń (jak ASE-BOT) nie jest porażką - jest w połowie procesu.</li>
+                <li><strong>Dane wygrywają z deklaracjami.</strong> Wybierając wykonawcę, proś o zrzuty z GSC z podanym oknem pomiaru i punktem startowym - dokładnie w tym formacie, w którym my publikujemy swoje. Jeśli zmieniasz wykonawcę, przeczytaj, jak przebiega <Link href="/zmiana-agencji-seo">zmiana agencji SEO bez utraty pozycji</Link>.</li>
               </ul>
-              <p>Jeśli chcesz zobaczyć, jak te same metody wyglądałyby na Twojej domenie, zacznij od <Link href="/audyt-seo">audytu SEO</Link> albo sprawdź <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link> – na zapytania odpowiadamy do 24 h w dni robocze.</p>
+              <p>Jeśli chcesz zobaczyć, jak te same metody wyglądałyby na Twojej domenie, zacznij od <Link href="/audyt-seo">audytu SEO</Link> albo sprawdź <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link> - na zapytania odpowiadamy do 24 h w dni robocze.</p>
 
               <h2 id="zrodla">Źródła</h2>
               <ul>
-                <li>Google Search Console, raport Skuteczność – panele domen staniax.pl, madamethai.pl, ase-bot.live, tql.pl i ai-seo-company.pl; zrzuty opublikowane w sekcji realizacji na <Link href="/">stronie głównej</Link></li>
+                <li>Google Search Console, raport Skuteczność - panele domen staniax.pl, madamethai.pl, ase-bot.live, tql.pl i ai-seo-company.pl; zrzuty opublikowane w sekcji realizacji na <Link href="/">stronie głównej</Link></li>
                 <li>Okna pomiaru: 3 miesiące (staniax, ase-bot), 26 dni (madamethai, 27.07-21.08.2026), ok. 4 tygodnie (ai-seo-company, 26.07-21.08.2026) oraz 18 dni od startu (tql, 5-22.08.2026); dane z 21-22.08.2026</li>
               </ul>
 
@@ -176,9 +181,9 @@ export default async function ArtykulWynikiWdrozen({ params }) {
 
               <h2 id="polecane">Polecane</h2>
               <ul>
-                <li><Link href="/blog/audyt-techniczny-seo">Audyt techniczny SEO: checklista z progami liczbowymi</Link> – od czego zaczynało każde z tych wdrożeń</li>
-                <li><Link href="/blog/seo-lokalne-dla-firm-w-warszawie">SEO lokalne dla firm</Link> – mechanika wyników takich jak Madame Thai</li>
-                <li><Link href="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista">Link building B2B: strategie i checklista</Link> – następny etap po zbudowaniu widoczności</li>
+                <li><Link href="/blog/audyt-techniczny-seo">Audyt techniczny SEO: checklista z progami liczbowymi</Link> - od czego zaczynało każde z tych wdrożeń</li>
+                <li><Link href="/blog/seo-lokalne-dla-firm-w-warszawie">SEO lokalne dla firm</Link> - mechanika wyników takich jak Madame Thai</li>
+                <li><Link href="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista">Link building B2B: strategie i checklista</Link> - następny etap po zbudowaniu widoczności</li>
               </ul>
 
               <BlogCTA

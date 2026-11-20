@@ -1,6 +1,20 @@
 import { articleLanguages } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_CWV_DE } from '@/lib/de/blogCoreWebVitals';
+
+const KLUCZ_CWV = '/blog/core-web-vitals-a-pozycje-google';
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ_CWV, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/core-web-vitals-a-pozycje-google',
+        en: 'https://www.ai-seo-company.pl/en/blog/core-web-vitals-google-rankings',
+      },
+    });
+  }
   return {
   // 5.11.2026 (PLAN-v2 5.2a nr 108, CWV-K; SA-10, SA-13): meta PL i EN bez „FID” (od 2024 metryka
   // to INP, tresc artykulu juz o tym mowi) i title PL w polskiej pisowni. Tresc bez zmian; title EN bez zmian.
@@ -24,15 +38,22 @@ import { Link } from '@/i18n/routing';
 
 export default async function ArticleCwvPage({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={KLUCZ_CWV} dane={BLOG_CWV_DE} />;
   const tocItems = [
+    { id: 'progi-cwv', title: 'Progi Core Web Vitals oraz dane terenowe i laboratoryjne' },
     { id: 'dlaczego-przejmowac-sie', title: 'Dlaczego w ogóle przejmować się Core Web Vitals?' },
     { id: 'kluczowe-wskazniki', title: 'Kluczowe wskaźniki (Metryki CWV) i ich optymalizacja' },
-    { id: 'znaczenie-ttfb', title: 'Znaczenie TTFB i renderowania serwerowego (SSR)' }
+    { id: 'znaczenie-ttfb', title: 'Znaczenie TTFB i renderowania serwerowego (SSR)' },
+    { id: 'pytania-cwv', title: 'Najczęstsze pytania o Core Web Vitals' },
+    { id: 'zrodla', title: 'Źródła' }
   ];
   const tocItemsEn = [
+    { id: 'progi-cwv', title: 'Core Web Vitals thresholds: field data vs lab data' },
     { id: 'dlaczego-przejmowac-sie', title: 'Why should you care about Core Web Vitals at all?' },
     { id: 'kluczowe-wskazniki', title: 'Key indicators (CWV Metrics) and their optimization' },
-    { id: 'znaczenie-ttfb', title: 'The importance of TTFB and Server-Side Rendering (SSR)' }
+    { id: 'znaczenie-ttfb', title: 'The importance of TTFB and Server-Side Rendering (SSR)' },
+    { id: 'pytania-cwv', title: 'Core Web Vitals FAQ' },
+    { id: 'zrodla', title: 'Sources' }
   ];
 
   return (
@@ -68,6 +89,9 @@ export default async function ArticleCwvPage({ params }) {
                 Core Web Vitals measure page experience, which Google says aligns with what its core ranking systems reward. Good scores help but do not guarantee higher rankings. Here is our guide: Core Web Vitals and Google rankings in 2026.
               </p>
               <ArticleTOC items={tocItemsEn} />
+
+              <h2 id="progi-cwv">Core Web Vitals thresholds: field data vs lab data</h2>
+              <p>Google rates a page as good when, at the 75th percentile of real user visits (Chrome UX Report), <strong>LCP is up to 2.5 s</strong>, <strong>INP is up to 200 ms</strong>, and <strong>CLS is up to 0.1</strong> (<a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev: Web Vitals</a>, read Nov 19, 2026). Field data from real users decides the Search Console assessment; lab data in Lighthouse helps reproduce bottlenecks before deploying fixes.</p>
               
               <h2 id="dlaczego-przejmowac-sie">Why should you care about Core Web Vitals at all?</h2>
               <p>Loading speed is no longer just a nice addition - it has become a requirement. According to a 2017 Google/SOASTA study (mobile data), going from 1 to 3 seconds of load time raises the probability of a bounce by 32% (<a href="https://web.archive.org/web/20251226035614/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google (archive)</a>).</p>
@@ -98,6 +122,18 @@ export default async function ArticleCwvPage({ params }) {
               <h2 id="znaczenie-ttfb">The importance of TTFB and Server-Side Rendering (SSR)</h2>
               <p>Simply reducing image sizes will not help if the server responds too slowly (TTFB). Migrating to more modern architectures (such as Next.js App Router with React Server Components) means that the entire burden of database logic processing is done once on the server and distributed.</p>
               <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas. A Core Web Vitals review is one of the steps of our <Link href="/audyt-seo">SEO audit</Link>. For a quick check of the whole site, run the <Link href="/narzedzia/audyt-seo">free SEO audit</Link>.</p>
+
+              <h2 id="pytania-cwv">Core Web Vitals FAQ</h2>
+              <h3>What is INP (Interaction to Next Paint)?</h3>
+              <p>INP measures how quickly a page responds visually to clicks, taps and keyboard input across the whole visit. Google considers 200 ms or less at the 75th percentile a good score; above 500 ms is rated poor.</p>
+              <h3>Does Lighthouse score directly affect Google rankings?</h3>
+              <p>No. Lighthouse runs in a simulated lab environment. Google Search systems evaluate field data from real Chrome users (CrUX), while Lighthouse helps developers find what slows LCP, INP or CLS down.</p>
+
+              <h2 id="zrodla">Sources</h2>
+              <ul>
+                <li><a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev – Web Vitals (thresholds and 75th percentile rule)</a>, read Nov 19, 2026.</li>
+                <li><a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">Google Search Central – Understanding Core Web Vitals and Google search results</a>, read Nov 19, 2026.</li>
+              </ul>
 
               <BlogCTA 
   locale={locale} 
@@ -156,6 +192,9 @@ export default async function ArticleCwvPage({ params }) {
               </p>
 
               <ArticleTOC items={tocItems} />
+
+              <h2 id="progi-cwv">Progi Core Web Vitals oraz dane terenowe i laboratoryjne</h2>
+              <p>Google ocenia stronę jako dobrą, gdy w 75. percentylu wizyt prawdziwych użytkowników (raport Chrome UX) <strong>LCP wynosi maksymalnie 2,5 s</strong>, <strong>INP maksymalnie 200 ms</strong>, a <strong>CLS maksymalnie 0,1</strong> (<a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev: Web Vitals</a>, odczyt 19.11.2026). O statusie w Google Search Console decydują dane terenowe (field data) od realnych użytkowników, natomiast pomiar laboratoryjny (Lighthouse w PageSpeed Insights) służy do diagnozowania przyczyn spowolnień przed wdrożeniem poprawek.</p>
               
               <h2 id="dlaczego-przejmowac-sie">
                 Dlaczego w ogóle przejmować się Core Web Vitals?
@@ -210,6 +249,18 @@ export default async function ArticleCwvPage({ params }) {
               <p>
                 Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co ułatwia osiągnięcie wysokiego wyniku w PageSpeed Insights, ale wynik zależy też od obrazów, skryptów zewnętrznych i układu strony. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Analiza Core Web Vitals to jeden z etapów naszego <Link href="/audyt-seo">audytu SEO</Link>. Szybką kontrolę całej witryny zrobisz w <Link href="/narzedzia/audyt-seo">darmowym audycie SEO</Link>. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
               </p>
+
+              <h2 id="pytania-cwv">Najczęstsze pytania o Core Web Vitals</h2>
+              <h3>Co to jest INP?</h3>
+              <p>INP (Interaction to Next Paint) mierzy czas reakcji strony na kliknięcia, dotknięcia i klawiaturę podczas całej wizyty. Dobry wynik według Google to do 200 ms w 75. percentylu wizyt; powyżej 500 ms strona wymaga poprawy.</p>
+              <h3>Czym różnią się dane terenowe (field) od laboratoryjnych (lab)?</h3>
+              <p>Dane terenowe pochodzą z prawdziwych sesji użytkowników Chrome z ostatnich 28 dni i to one decydują o ocenie w Search Console. Dane laboratoryjne to pojedynczy test symulowany w Lighthouse, który pokazuje, który obraz lub skrypt spowalnia ładowanie.</p>
+
+              <h2 id="zrodla">Źródła</h2>
+              <ul>
+                <li><a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev – Web Vitals (progi LCP, INP, CLS i zasada 75. percentyla)</a>, odczyt 19.11.2026.</li>
+                <li><a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">Google Search Central – Core Web Vitals a wyniki wyszukiwania Google</a>, odczyt 19.11.2026.</li>
+              </ul>
 
               <BlogCTA 
   locale={locale} 

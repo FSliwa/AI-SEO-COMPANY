@@ -113,14 +113,20 @@ export default function PricingClient() {
       answer: 'Opłaca się, gdy klienci szukają Twojej usługi w Google, a strona zamienia wizyty w zapytania. W naszych <a href="/blog/wyniki-wdrozen-seo-2026" style="text-decoration:underline">wdrożeniach z 2026 roku</a> lokalna restauracja zebrała 187 kliknięć w 26 dni, a producent B2B 152 kliknięcia w 92 dni (Google Search Console, dane z 27.07-21.08.2026 i 22.05-21.08.2026). Kliknięcia to jeszcze nie przychód, dlatego opłacalność liczymy zapytaniami widocznymi w panelu klienta.',
     },
     {
+      id: 'seo-rates-fees-charges',
+      tylkoEn: true,
+      questionEn: 'What are typical SEO rates, fees and charges?',
+      answerEn: 'Our monthly SEO rates are fixed and published upfront: SEO Standard is €450 net per month and SEO Premium is €590 net per month, with no onboarding fees, activation charges or exit penalties. One-off services have clear starting fees too: a standalone technical SEO audit starts at €350 net and an AI visibility audit is €235 net (credited to your first month if you continue).'
+    },
+    {
       question: 'Potrzebuję też nowej strony – czy da się to połączyć z pozycjonowaniem?',
       questionEn: 'I also need a new website – can that be combined with SEO?',
       answer: 'Tak. Poza subskrypcją miesięczną oferujemy pakiet łączący pozycjonowanie z wykonaniem strony internetowej. Ma to przewagę porządkową: strona powstaje od razu z architekturą informacji i strukturą adresów przygotowaną pod wyszukiwarkę, więc nie trzeba później migrować URL-i ani przebudowywać nawigacji. Szczegóły w sekcji <a href="/projektowanie-stron-internetowych" style="text-decoration:underline">projektowanie stron internetowych</a>.',
       answerEn: 'Yes. Alongside the monthly subscription we offer a package combining SEO with building the website itself. That has a practical advantage: the site is built from the start with an information architecture and URL structure prepared for search, so there is no need to migrate URLs or rebuild navigation later. See <a href="/en/web-design" style="text-decoration:underline">web design</a> for details.'
     }
   ];
-  // FAQPage = pytania widoczne na stronie: PL 14, EN 12 (bez pytań tylkoPl).
-  const faqWidoczne = lang === 'pl' ? faqData : faqData.filter((f) => !f.tylkoPl);
+  // FAQPage = pytania widoczne na stronie: PL 14 (bez tylkoEn), EN 13 (bez tylkoPl).
+  const faqWidoczne = lang === 'pl' ? faqData.filter((f) => !f.tylkoEn) : faqData.filter((f) => !f.tylkoPl);
 
   return (
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>

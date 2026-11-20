@@ -117,6 +117,15 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
         </div>
       </CoDostajesz>
 
+      <Sekcja id="audyt-seo-online-krok-po-kroku" tytul="Jak zrobić audyt SEO online krok po kroku">
+        <ol style={s.lista}>
+          <li><strong>Wklej adres strony w formularzu u góry.</strong> Audyt SEO online działa dla każdej publicznej domeny i nie wymaga zakładania konta ani potwierdzania własności.</li>
+          <li><strong>Poczekaj 20–90 sekund na skan.</strong> Robot pobiera do {AUDYT.stron} podstron z różnych sekcji witryny oraz wynik mobilny z Google PageSpeed Insights.</li>
+          <li><strong>Sprawdź ocenę 1–100 i trzy najcięższe błędy.</strong> Od razu widzisz punkty w czterech kategoriach (technika, treść, wydajność, gotowość na AI) oraz instrukcję naprawy głównych blokad.</li>
+          <li><strong>Pobierz pełną listę na e-mail i porównaj z konkurencją.</strong> Po wdrożeniu poprawek uruchom darmowy audyt SEO online ponownie, żeby zobaczyć zmianę oceny.</li>
+        </ol>
+      </Sekcja>
+
       <Sekcja id="co-sprawdza-audyt" tytul={`Co sprawdza darmowy audyt SEO: ${AUDYT.regul} reguł w ${AUDYT.kategorii} kategoriach`}>
         <p style={s.akapit}>Każda reguła ma próg zapisany w kodzie, np. tytuł dłuższy niż 60 znaków, odpowiedź serwera wolniejsza niż 1,5 sekundy albo strona główna cięższa niż 3 MB. Przy każdym problemie dostajesz opis skutku, instrukcję naprawy i adresy podstron, których dotyczy.</p>
         <h3 style={s.h3}>Technika ({regul(R.techniczne)}, {W.techniczne}% oceny)</h3>

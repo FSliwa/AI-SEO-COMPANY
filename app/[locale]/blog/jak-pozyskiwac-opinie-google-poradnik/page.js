@@ -441,6 +441,26 @@ export default async function ArticleReviewsPage({ params }) {
               )}
               
               
+              {locale === 'en' ? (
+                <section aria-labelledby="reviews-faq-en" style={{ marginTop: '2.5rem' }}>
+                  <h2 id="reviews-faq-en">Google reviews FAQ</h2>
+                  <h3>Can I buy Google reviews?</h3>
+                  <p>No. Google’s policy strictly prohibits fake and incentivized reviews. Bought reviews can be removed automatically, and the Business Profile can face visibility restrictions or suspension. Ask real customers instead using a direct review link.</p>
+                  <h3>How do I get a direct Google review link?</h3>
+                  <p>Sign in to your Google Business Profile, select “Ask for reviews” (Read reviews → Get more reviews), copy the short URL Google generates, and send it to customers by email or SMS 24–48 hours after completing the job.</p>
+                </section>
+              ) : (
+                <section aria-labelledby="reviews-faq-pl" style={{ marginTop: '2.5rem' }}>
+                  <h2 id="reviews-faq-pl">Najczęstsze pytania o opinie Google</h2>
+                  <h3>Czy można kupić opinie Google?</h3>
+                  <p>Nie. Zasady Google zabraniają fałszywych i opłacanych recenzji oraz rabatów za opinię. Kupione wpisy są usuwane przez filtry, a Profil Firmy może dostać ograniczenie wyświetlania lub blokadę.</p>
+                  <h3>Jak usunąć opinię Google?</h3>
+                  <p>Właściciel firmy nie może sam skasować cudzej recenzji: w panelu Profilu Firmy zgłaszasz opinię naruszającą zasady Google do moderacji, natomiast sam autor może w każdej chwili edytować lub usunąć własny wpis.</p>
+                  <h3>Jak wygenerować link do opinii Google?</h3>
+                  <p>W panelu Profilu Firmy w Google kliknij „Poproś o opinie” (lub „Zdobywaj więcej opinii”), skopiuj wygenerowany krótki link i wyślij go klientowi e-mailem albo SMS-em po zakończonej usłudze.</p>
+                </section>
+              )}
+
               <div style={{ marginTop: '3rem', padding: '2rem', background: '#F9F9F9', borderRadius: '12px', border: '1px solid var(--w-linia)' }}>
                 <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600, color: 'var(--w-tusz)' }}>{locale === 'en' ? 'Useful sources & references' : 'Przydatne źródła i odniesienia'}</h3>
                 <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', color: 'var(--color-text-main)' }}>

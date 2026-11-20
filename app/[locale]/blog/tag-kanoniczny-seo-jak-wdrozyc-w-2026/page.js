@@ -1,6 +1,20 @@
 import { articleLanguages } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_CANONICAL_DE } from '@/lib/de/blogCanonicalTag';
+
+const KLUCZ_CANONICAL = '/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026';
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ_CANONICAL, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026',
+        en: 'https://www.ai-seo-company.pl/en/blog/canonical-tag-seo-guide-2026',
+      },
+    });
+  }
   return {
   // 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 24; CS-15, MSA-17): title PL (60 zn.) pod „rel canonical”
   // (GSC 36 wyśw., poz. 22,1), „link kanoniczny” i „adres kanoniczny”; meta PL (134 zn.) z decyzje-blog nr 24
@@ -27,6 +41,7 @@ import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArticleCanonicalPage({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={KLUCZ_CANONICAL} dane={BLOG_CANONICAL_DE} />;
   const tocItems = [
     { id: 'czym-jest', title: locale === 'en' ? 'What is a canonical tag and how it works' : 'Czym jest tag kanoniczny i jak działa w praktyce' },
     // 5.11.2026: trzy nowe H2 tylko w wersji PL (PAA i przyklad z Next.js) - w EN pozycji nie ma.
@@ -93,6 +108,9 @@ export default async function ArticleCanonicalPage({ params }) {
               </div>
               
               <p>It informs search engine algorithms: "This is the official, canonical version of this material. Treat all other versions only as duplicates and pass all the authority they gathered here" (details described by <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener noreferrer">official Google guidelines – Consolidate duplicate URLs</a>). Google treats this as a strong hint, but if the canonical page returns an error, the algorithm will ignore it and select another URL itself.</p>
+
+              <h2 id="canonical-used-for">What is a canonical tag used for?</h2>
+              <p>A canonical tag tells Google which URL to treat as the main one when several URLs show the same or near-identical content (for example with tracking parameters or filter query strings). Placed in the <code>&lt;head&gt;</code> as <code>&lt;link rel=&quot;canonical&quot; href=&quot;https://example.com/page/&quot;&gt;</code>, it consolidates link and ranking signals onto one preferred address. You can check missing or conflicting canonicals across up to 25 pages in our <Link href="/narzedzia/audyt-seo">free SEO audit</Link>.</p>
 
               <h2 id="kiedy-warto">When to use (and when not to) the rel="canonical" tag</h2>
               <p>This tag is not a universal bandage for all website problems, but with proper use, it can save your site's rankings.</p>
@@ -360,7 +378,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <h2 id="jak-sprawdzic">Jak sprawdzić, który URL Google uznał za kanoniczny</h2>
               <p>Najpewniejszym źródłem jest Google Search Console. Wklej adres w narzędzie do sprawdzania adresów URL i rozwiń szczegóły indeksowania strony. Zobaczysz dwa pola: adres kanoniczny zadeklarowany przez Ciebie i adres kanoniczny wybrany przez Google. Jeśli się różnią, Google nie przyjął Twojej wskazówki, zwykle dlatego, że inne sygnały (przekierowania, linki wewnętrzne, sitemapa) wskazują inny adres.</p>
               <p>Dla całego serwisu otwórz raport Indeksowanie → Strony. Canonicala dotyczą dwa statusy: „Duplikat, Google wybrał inną stronę kanoniczną niż użytkownik” i „Duplikat, użytkownik nie oznaczył strony kanonicznej”. Status „Strona alternatywna z prawidłowym tagiem strony kanonicznej” jest w porządku: to duplikat, który poprawnie wskazuje oryginał.</p>
-              <p>Szybki test bez Search Console: otwórz źródło strony i wyszukaj słowo „canonical” albo w terminalu wpisz <code>curl -s https://twoja-domena.pl/adres | grep -i canonical</code>. Pokaże to, co deklarujesz, a nie to, co wybrał Google. Dla plików PDF sprawdź nagłówek HTTP <code>Link</code> poleceniem <code>curl -I</code>.</p>
+              <p>Szybki test bez Search Console: otwórz źródło strony i wyszukaj słowo „canonical” albo w terminalu wpisz <code>curl -s https://twoja-domena.pl/adres | grep -i canonical</code>. Pokaże to, co deklarujesz, a nie to, co wybrał Google. Brak tagu kanonicznego lub rozbieżne kanonikale na do 25 podstronach naraz sprawdzisz też w naszym <Link href="/narzedzia/audyt-seo">darmowym audycie SEO</Link>. Dla plików PDF sprawdź nagłówek HTTP <code>Link</code> poleceniem <code>curl -I</code>.</p>
 
               <h2 id="narzedzia">Narzędzia do sprawdzania i monitorowania tagów kanonicznych</h2>
               <p>Regularne monitorowanie to obowiązek administratora strony.</p>

@@ -216,13 +216,112 @@ export default function Header() {
   useEffect(() => {
     const p = typeof window !== 'undefined' ? window.location.pathname : '';
     const isSubpage = p !== '/' && p !== '/pl' && p !== '/en' && p !== '/de' && p !== '/pl/' && p !== '/en/' && p !== '/de/';
-    const handleScroll = () => {
+    const root = document.documentElement;
+    const SELEKTOR_SEKCJI = [
+      '[data-header-box]',
+      '#whyus-carousel',
+      '.portfolio-mosaic',
+      '.hero-klienci',
+      '.realizacje-pas > .container',
+      '.w-noc-panele > section > .container',
+      '.powiazane-kontener',
+      '.sz-uklad',
+      'main article',
+      'main section > .container',
+      'main aside > .container',
+      'main > .container',
+      'footer > .container',
+    ].join(', ');
+
+    let ostatniaSzer = 0;
+    let raf = 0;
+
+    const obliczSzerokoscNaglowka = () => {
+      raf = 0;
+      const vw = window.innerWidth;
       setScrolled(isSubpage || window.scrollY > 40);
+
+      if (vw <= 768) {
+        if (ostatniaSzer !== vw) {
+          ostatniaSzer = vw;
+          root.style.setProperty('--header-szer', '100%');
+        }
+        return;
+      }
+
+      // Punkt próbkowania tuż pod paskiem nawigacji
+      const probeY = Math.min(Math.max(84, window.innerHeight * 0.16), 144);
+      const kandydaci = document.querySelectorAll(SELEKTOR_SEKCJI);
+      let wybrany = null;
+      let najmniejszaWys = Infinity;
+
+      for (let i = 0; i < kandydaci.length; i++) {
+        const el = kandydaci[i];
+        const r = el.getBoundingClientRect();
+        if (r.height < 36 || r.width < 160) continue;
+        if (r.top <= probeY && r.bottom >= probeY) {
+          // Wybieramy najbardziej szczegółowy kontener obejmujący linię pod nagłówkiem
+          if (r.height <= najmniejszaWys) {
+            najmniejszaWys = r.height;
+            wybrany = { el, r };
+          }
+        }
+      }
+
+      // Zapas: jeśli linia leży w odstępie między dwoma kontenerami, bierzemy najbliższy w pionie
+      if (!wybrany) {
+        let minDyst = Infinity;
+        for (let i = 0; i < kandydaci.length; i++) {
+          const el = kandydaci[i];
+          const r = el.getBoundingClientRect();
+          if (r.height < 36 || r.width < 160) continue;
+          const dyst = r.top > probeY ? r.top - probeY : probeY - r.bottom;
+          if (dyst < minDyst) {
+            minDyst = dyst;
+            wybrany = { el, r };
+          }
+        }
+      }
+
+      if (!wybrany) return;
+
+      const { el, r } = wybrany;
+      const navPad = 48; // 1.5rem z lewej + 1.5rem z prawej w .header .nav-container
+      let docelowa;
+
+      if (el.id === 'whyus-carousel' || el.classList.contains('portfolio-mosaic')) {
+        // Pełnoekranowe pasma karuzeli i ściany realizacji — szerszy rozstaw nagłówka
+        docelowa = Math.min(vw - 24, 1680);
+      } else {
+        const cs = window.getComputedStyle(el);
+        const padL = parseFloat(cs.paddingLeft) || 0;
+        const padR = parseFloat(cs.paddingRight) || 0;
+        const szerTresci = Math.max(0, r.width - padL - padR);
+        docelowa = Math.round(szerTresci + navPad);
+      }
+
+      const minBezpieczna = vw >= 1200 ? Math.min(vw, 1020) : Math.min(vw, 720);
+      const koncowa = Math.max(minBezpieczna, Math.min(vw, docelowa));
+
+      if (Math.abs(koncowa - ostatniaSzer) >= 2) {
+        ostatniaSzer = koncowa;
+        root.style.setProperty('--header-szer', `${koncowa}px`);
+      }
     };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    const zaplanujPomiar = () => {
+      if (!raf) raf = window.requestAnimationFrame(obliczSzerokoscNaglowka);
+    };
+
+    obliczSzerokoscNaglowka();
+    window.addEventListener('scroll', zaplanujPomiar, { passive: true });
+    window.addEventListener('resize', zaplanujPomiar, { passive: true });
+    return () => {
+      if (raf) window.cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', zaplanujPomiar);
+      window.removeEventListener('resize', zaplanujPomiar);
+    };
+  }, [sciezka]);
 
   const toggleMenu = () => {
     if (menuOpen) {
@@ -329,14 +428,12 @@ export default function Header() {
   return (
     <>
       <header className={`header ${scrolled ? 'scrolled' : ''}`} id="header">
-        <div 
-          className="nav-container" 
-          style={{ 
-            maxWidth: scrolled ? 'var(--container-width)' : '100%', 
-            padding: scrolled ? '0 1.5rem' : '0 3vw',
+        <div
+          className="nav-container"
+          style={{
+            maxWidth: 'var(--header-szer, var(--container-width))',
             margin: '0 auto',
             width: '100%',
-            transition: 'max-width 0.7s cubic-bezier(0.7, 0, 0.3, 1), padding 0.7s cubic-bezier(0.7, 0, 0.3, 1)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>

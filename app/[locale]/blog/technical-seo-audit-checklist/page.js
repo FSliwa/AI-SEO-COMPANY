@@ -252,7 +252,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
 
               <h3>A note on FAQ and HowTo markup</h3>
               <p>Plenty of audit checklists still ask you to validate FAQ and HowTo schema. That instruction is obsolete and worth removing from your template.</p>
-              <p>Google withdrew HowTo rich results from desktop in September 2023. FAQ rich results were restricted to government and health sites in August 2023 and deprecated entirely on 7 May 2026; Google removed the feature documentation on 12 June 2026. Neither type produces a search feature today.</p>
+              <p>Google withdrew HowTo rich results from desktop in September 2023. FAQ rich results were restricted to government and health sites in August 2023 and deprecated entirely on 7 May 2026; Google removed the feature documentation on 15 June 2026. Neither type produces a search feature today.</p>
               <p><code>FAQPage</code> remains a valid Schema.org type and existing markup can stay; Google has said unused structured data causes no problems. But it is no longer something to flag as a gap in an audit. Validate what still earns a result: Article, Product with Offer, BreadcrumbList, VideoObject, Organization.</p>
 
               <p><strong>Pro Tip:</strong> <em>Check robots.txt for accidental blocks on AI crawlers such as GPTBot, OAI-SearchBot and Claude-SearchBot. Plenty of sites block these by default and never notice. Blocking them can be a deliberate business decision – it should never be an accident of configuration.</em></p>
@@ -361,7 +361,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <h3>Google documentation</h3>
               <ul>
                 <li>Google Search Central – Core Web Vitals; INP replaced FID as a Core Web Vital in March 2024</li>
-                <li>Google Search Central – FAQPage structured data: FAQ rich results no longer shown from 7 May 2026, feature documentation removed 12 June 2026 (changelog, read 18 November 2026)</li>
+                <li>Google Search Central – FAQPage structured data: FAQ rich results no longer shown from 7 May 2026, feature documentation removed 15 June 2026 (changelog, read 18 November 2026)</li>
                 <li>Google Search Central – HowTo structured data deprecated on desktop, September 2023</li>
                 <li>Google Search Console Help – 16-month data retention</li>
               </ul>
@@ -619,7 +619,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
 
               <h3>Nota o znacznikach FAQ i HowTo</h3>
               <p>Wiele checklist wciąż każe walidować schemę FAQ i HowTo. Ta instrukcja jest nieaktualna i warto ją usunąć z szablonu.</p>
-              <p>Google wycofał wyniki rozszerzone HowTo na desktopie we wrześniu 2023. Wyniki FAQ ograniczył do stron rządowych i medycznych w sierpniu 2023, a <strong>7 maja 2026 wycofał całkowicie</strong>, a dokumentację tej funkcji usunął 12 czerwca 2026. Żaden z tych typów nie daje dziś wyniku w wyszukiwarce.</p>
+              <p>Google wycofał wyniki rozszerzone HowTo na desktopie we wrześniu 2023. Wyniki FAQ ograniczył do stron rządowych i medycznych w sierpniu 2023, a <strong>7 maja 2026 wycofał całkowicie</strong>, a dokumentację tej funkcji usunął 15 czerwca 2026. Żaden z tych typów nie daje dziś wyniku w wyszukiwarce.</p>
               <p><code>FAQPage</code> pozostaje poprawnym typem Schema.org i istniejący markup może zostać – nieużywane dane strukturalne nie szkodzą. Ale to już nie jest brak do wykazania w audycie. Waliduj to, co nadal daje efekt: Article, Product z Offer, BreadcrumbList, Organization.</p>
 
               <h2 id="krok-po-kroku">Jak zrobić audyt SEO krok po kroku</h2>
@@ -742,7 +742,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               <h3>Dokumentacja Google</h3>
               <ul>
                 <li>Google Search Central – Core Web Vitals; INP zastąpił FID jako metryka CWV w marcu 2024</li>
-                <li>Google Search Central – dane strukturalne FAQPage, nota o wycofaniu z 7 maja 2026; dokumentacja funkcji usunięta 12 czerwca 2026 (changelog Google, odczyt 18.11.2026)</li>
+                <li>Google Search Central – dane strukturalne FAQPage, nota o wycofaniu z 7 maja 2026; dokumentacja funkcji usunięta 15 czerwca 2026 (changelog Google, odczyt 18.11.2026)</li>
                 <li>Google Search Central – dane strukturalne HowTo, wycofanie na desktopie wrzesień 2023</li>
                 <li>Centrum pomocy Search Console – 16 miesięcy przechowywania danych</li>
               </ul>

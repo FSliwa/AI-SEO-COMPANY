@@ -380,7 +380,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
           </section>
 
           <section aria-labelledby="co-sprawdza-generator" className={st.sekcja} style={s.sekcja}>
-            <h2 id="co-sprawdza-generator" style={s.h2}>{en ? 'What the generator checks' : 'Co sprawdza generator'}</h2>
+            <h2 id="co-sprawdza-generator" style={s.h2}>{en ? 'What the generator checks' : 'Jak sprawdzić robots.txt pod kątem botów AI i co bada generator'}</h2>
             <p style={s.akapit}>
               {en ? `The generator fetches your sitemap, picks up to ${GENERATOR.adresow} URLs (with a larger sitemap, a few from every section), checks them and builds the file from them. At the same time it tests the access of ${GENERATOR.botowAi} AI bots and Bingbot to the home page. The whole run takes ${GENERATOR.sekund} seconds at most. If your site responds slowly, you get a partial result and a list of the URLs we did not manage to check. We do not store the address or the result.` : `Generator pobiera mapę strony, wybiera do ${GENERATOR.adresow} adresów (przy większej mapie po kilka z każdej sekcji), sprawdza je i składa z nich plik. Równolegle testuje dostęp ${GENERATOR.botowAi} botów AI i Bingbot do strony głównej. Całość trwa najwyżej ${GENERATOR.sekund} sekund. Gdy strona odpowiada wolno, dostajesz wynik częściowy i listę adresów, których nie zdążyliśmy sprawdzić. Nie zapisujemy ani adresu, ani wyniku.`}
             </p>

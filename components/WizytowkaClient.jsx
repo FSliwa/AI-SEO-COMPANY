@@ -62,6 +62,11 @@ const ZRODLA_PL = [
     nazwa: 'Pomoc Profilu Firmy w Google: Ograniczenia profilu firmy z powodu naruszenia zasad',
     data: '2026-11-05',
   },
+  {
+    url: 'https://support.google.com/business/answer/2911778?hl=pl',
+    nazwa: 'Pomoc Profilu Firmy w Google: Dodawanie i zgłaszanie praw do Profilu Firmy',
+    data: '2026-11-18',
+  },
 ];
 
 const ZRODLA_EN = [
@@ -247,9 +252,9 @@ export default function WizytowkaClient({ faqData }) {
               <a href={ZRODLA[1].url} rel="noopener" style={link}>guidelines for representing your business on Google</a>. A business with a storefront can show its address, while a service-area business that works from a home or other private location should generally hide it.
             </p>
 
-            <h2 id="how-to-get-google-business-profile" style={{ ...h2Styl, marginTop: '2.5rem' }}>How to get a Google Business Profile</h2>
+            <h2 id="how-to-get-google-business-profile" style={{ ...h2Styl, marginTop: '2.5rem' }}>How to create or claim a Google Business Profile</h2>
             <p style={akapit}>
-              Adding a business is free. These four steps follow Google’s{' '}
+              Creating a Google Business Profile (your Google business account listing) is free. These four steps follow Google’s{' '}
               <a href={ZRODLA[4].url} rel="noopener" style={link}>Add or claim your Business Profile</a> page:
             </p>
             <ol style={{ ...lista, gap: '0.9rem' }}>
@@ -261,6 +266,19 @@ export default function WizytowkaClient({ faqData }) {
             <p style={akapit}>
               Once the profile is verified, fill in categories, services, hours and photos. The free{' '}
               <Link href="/narzedzia/checklista-wizytowki-google" style={link}>local SEO checklist (PDF)</Link> walks through setup and verification point by point, and the sections below explain how we optimize the profile after that.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {!en && (
+        <section style={sekcja}>
+          <div className="container" style={kontener}>
+            <h2 id="jak-zalozyc-wizytowke-google" style={h2Styl}>Jak założyć wizytówkę Google</h2>
+            <p style={akapit}>
+              Założenie Profilu Firmy w Google (dawniej Google Moja Firma) jest bezpłatne. Zgodnie z instrukcją{' '}
+              <a href={ZRODLA[4].url} rel="noopener" style={link}>Dodawanie i zgłaszanie praw do Profilu Firmy</a> przechodzisz cztery kroki: zaloguj się kontem Google firmy, wejdź na <code>business.google.com/add</code> (lub przejmij istniejący wpis pod tym adresem zamiast tworzyć duplikat), wybierz kategorię główną oraz wpisz nazwę, adres, telefon i godziny identyczne jak na stronie www, a na końcu zweryfikuj własność metodą wskazaną przez Google. Profil pojawia się w wyszukiwarce i Mapach dopiero po weryfikacji, od której zaczyna się właściwe pozycjonowanie. Punkt po punkcie przeprowadzi Cię też darmowa{' '}
+              <Link href="/narzedzia/checklista-wizytowki-google" style={link}>checklista wizytówki Google (PDF)</Link>.
             </p>
           </div>
         </section>

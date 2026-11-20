@@ -50,6 +50,10 @@ export default function Contact({ isMainContent = false }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [service, setService] = useState('');
+  // 19.11.2026 (analiza konwersji: 19 wejść do kontaktu -> 2 starty formularza): pola opcjonalne
+  // (pakiet, „Skąd o nas wiesz?”) zwinięte w <details>. Zostają w DOM i w wysyłce; otwierają się same,
+  // gdy pakiet przyszedł z cennika, żeby wybór był widoczny.
+  const [dodatkoweOtwarte, setDodatkoweOtwarte] = useState(false);
   // Bledy walidacji per pole (klucz = id pola). 05.10.2026: jedyna informacja
   // o bledzie byl natywny dymek przegladarki - po zniknieciu dymka pola nie
   // mialy aria-invalid, aria-describedby, tekstu ani ramki bledu (audyt E5-13:
@@ -64,12 +68,14 @@ export default function Contact({ isMainContent = false }) {
   const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const lang = useLocale();
   const t = useTranslations('contact');
+  // Nowe krótkie teksty w trzech językach (tr() dla DE bierze tłumaczenie z angielskiego słownika).
+  const t3 = (pl, en, de) => (lang === 'de' ? de : lang === 'pl' ? pl : en);
 
   // Przyciski „Wybierz" w cenniku prowadzą kotwicą do formularza; wcześniej
   // wybrany pakiet ginął po drodze i użytkownik musiał wskazać go drugi raz.
   // Zdarzenie pricing_plan_click wysyła AnalyticsEvents, tu tylko odbiór.
   useEffect(() => {
-    const onPreselect = (e) => { if (e && e.detail) setService(e.detail); };
+    const onPreselect = (e) => { if (e && e.detail) { setService(e.detail); setDodatkoweOtwarte(true); } };
     window.addEventListener(PRESELECT_PLAN_EVENT, onPreselect);
     return () => window.removeEventListener(PRESELECT_PLAN_EVENT, onPreselect);
   }, []);
@@ -281,10 +287,26 @@ export default function Contact({ isMainContent = false }) {
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>NIP:</span> 5253090237</li>
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{tr(lang, 'Czas odpowiedzi:', 'Response Time:')}</span> {tr(lang, 'Do 24 h w dni robocze, zwykle szybciej', 'Within 24 h on business days, usually sooner')}</li>
             </ul>
+
+            {/* Duży przycisk telefonu: część osób woli zadzwonić niż wypełniać formularz (phone_click w GA4). */}
+            <a href="tel:+48518815055" className="contact-tel-btn" data-cta="contact_phone_big">
+              <span className="contact-tel-ikona" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" /></svg>
+              </span>
+              <span className="contact-tel-tekst">
+                <span className="contact-tel-etykieta">{t3('Wolisz porozmawiać? Zadzwoń', 'Prefer to talk? Call us', 'Lieber telefonieren? Rufen Sie an')}</span>
+                <span className="contact-tel-numer">518 815 055</span>
+              </span>
+            </a>
           </RevealItem>
 
           <RevealItem>
             <form className="contact-form" method="post" onSubmit={handleSubmit}>
+            {/* Obietnica nad polami (ta sama, którą dają reklamy i zdanie pod przyciskiem). */}
+            <p className="contact-obietnica">
+              <span className="contact-obietnica-kropka" aria-hidden="true" />
+              {t3('Bezpłatna wycena · odpowiedź w 24 h w dni robocze', 'Free quote · reply within 24 h on business days', 'Kostenloses Angebot · Antwort innerhalb von 24 Std. an Werktagen')}
+            </p>
             {/* 05.10.2026: komunikaty wysylki byly zwyklymi divami bez role, wiec
                 czytnik ekranu nie oglaszal ani sukcesu, ani bledu. Kontenery
                 z role sa w DOM stale (puste nie zajmuja miejsca) - region live
@@ -354,50 +376,58 @@ export default function Contact({ isMainContent = false }) {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
-              <select id="service" name="service" className="form-select" value={service} onInvalid={handleInvalid} onInput={handleInput} onChange={(e) => { setService(e.target.value); if (e.target.value) track('select_plan', { plan: e.target.value }); }}>
-                <option value="">{tr(lang, 'Wybierz pakiet (opcjonalnie)', 'Select plan (optional)')}</option>
-                <option value="standard">{tr(lang, 'SEO Standard (1 900 zł netto/mies.)', 'SEO Standard (€450 net/mo)')}</option>
-                <option value="premium">{tr(lang, 'SEO Premium (2 500 zł netto/mies.)', 'SEO Premium (€590 net/mo)')}</option>
-                <option value="booster">{tr(lang, 'Booster Pack (2 500 zł netto – Strona za 0 zł)', 'Booster Pack (€590 net – Free Website)')}</option>
-                <option value="custom">{tr(lang, 'Indywidualny zakres działania', 'Custom Project')}</option>
-                <option value="audyt-ai">{tr(lang, 'Audyt widoczności w AI (990 zł netto)', 'AI visibility audit (€235 net)')}</option>
-                <option value="przeglad-agencji">{tr(lang, 'Bezpłatny przegląd po poprzedniej agencji (30 min)', 'Free review after your previous agency (30 min)')}</option>
-                {ENTRY_OFFER === 'audyt' && lang !== 'de' && (
-                  <option value="audyt">{lang === 'pl' ? `Audyt SEO (${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} zł netto, odliczany od abonamentu)` : `SEO audit (PLN ${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} net, deducted from subscription)`}</option>
-                )}
-              </select>
-            </div>
-
-            {/* 5.11.2026 (ATR v2.2, PLAN-v2 9.3): opcjonalna deklaracja źródła
-                obok kanału technicznego (ścieżka ChatGPT → Mapy → wizytówka
-                technicznie daje „Profil Firmy”). Bez danych osobowych; do
-                arkusza idzie kod z lib/attribution.js (kolumna skad_o_nas_wiesz). */}
-            <div className="form-group">
-              <label className="form-label" htmlFor="skad_o_nas_wiesz">{tr(lang, 'Skąd o nas wiesz? (opcjonalnie)', 'How did you hear about us? (optional)')}</label>
-              <select id="skad_o_nas_wiesz" name="skad_o_nas_wiesz" className="form-select" defaultValue="">
-                <option value="">{tr(lang, 'Wybierz (opcjonalnie)', 'Select (optional)')}</option>
-                {SKAD_O_NAS_WIESZ.map((o) => (
-                  <option key={o.kod} value={o.kod}>{tr(lang, o.pl, o.en)}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="form-group">
-            </div>
-
-            <div className="form-group">
               <label className="form-label" htmlFor="message">{t('msgLabel')}</label>
               <textarea 
                 id="message" 
                 name="message" 
                 className="form-textarea" 
-                rows="4" 
+                rows="3" 
                 placeholder={tr(lang, 'Opcjonalnie: adres strony, cele i termin...', 'Optional: your website URL, goals and timeline...')}
                 onInvalid={handleInvalid}
                 onInput={handleInput}
               ></textarea>
             </div>
+
+            <details
+              className="form-dodatkowe"
+              open={dodatkoweOtwarte}
+              onToggle={(e) => setDodatkoweOtwarte(e.currentTarget.open)}
+            >
+              <summary className="form-dodatkowe-summary">
+                {t3('Pakiet i źródło (opcjonalnie)', 'Plan and source (optional)', 'Paket und Quelle (optional)')}
+              </summary>
+              <div className="form-dodatkowe-pola">
+                <div className="form-group">
+                  <label className="form-label" htmlFor="service">{t('serviceLabel')}</label>
+                  <select id="service" name="service" className="form-select" value={service} onInvalid={handleInvalid} onInput={handleInput} onChange={(e) => { setService(e.target.value); if (e.target.value) track('select_plan', { plan: e.target.value }); }}>
+                    <option value="">{tr(lang, 'Wybierz pakiet (opcjonalnie)', 'Select plan (optional)')}</option>
+                    <option value="standard">{tr(lang, 'SEO Standard (1 900 zł netto/mies.)', 'SEO Standard (€450 net/mo)')}</option>
+                    <option value="premium">{tr(lang, 'SEO Premium (2 500 zł netto/mies.)', 'SEO Premium (€590 net/mo)')}</option>
+                    <option value="booster">{tr(lang, 'Booster Pack (2 500 zł netto – Strona za 0 zł)', 'Booster Pack (€590 net – Free Website)')}</option>
+                    <option value="custom">{tr(lang, 'Indywidualny zakres działania', 'Custom Project')}</option>
+                    <option value="audyt-ai">{tr(lang, 'Audyt widoczności w AI (990 zł netto)', 'AI visibility audit (€235 net)')}</option>
+                    <option value="przeglad-agencji">{tr(lang, 'Bezpłatny przegląd po poprzedniej agencji (30 min)', 'Free review after your previous agency (30 min)')}</option>
+                    {ENTRY_OFFER === 'audyt' && lang !== 'de' && (
+                      <option value="audyt">{lang === 'pl' ? `Audyt SEO (${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} zł netto, odliczany od abonamentu)` : `SEO audit (PLN ${ENTRY_OFFER_PRICE_PLN.toLocaleString('pl-PL')} net, deducted from subscription)`}</option>
+                    )}
+                  </select>
+                </div>
+
+                {/* 5.11.2026 (ATR v2.2, PLAN-v2 9.3): opcjonalna deklaracja źródła
+                    obok kanału technicznego (ścieżka ChatGPT → Mapy → wizytówka
+                    technicznie daje „Profil Firmy”). Bez danych osobowych; do
+                    arkusza idzie kod z lib/attribution.js (kolumna skad_o_nas_wiesz). */}
+                <div className="form-group">
+                  <label className="form-label" htmlFor="skad_o_nas_wiesz">{tr(lang, 'Skąd o nas wiesz? (opcjonalnie)', 'How did you hear about us? (optional)')}</label>
+                  <select id="skad_o_nas_wiesz" name="skad_o_nas_wiesz" className="form-select" defaultValue="">
+                    <option value="">{tr(lang, 'Wybierz (opcjonalnie)', 'Select (optional)')}</option>
+                    {SKAD_O_NAS_WIESZ.map((o) => (
+                      <option key={o.kod} value={o.kod}>{tr(lang, o.pl, o.en)}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </details>
 
             {/* Honeypot antyspamowy: pole poza ekranem, bez etykiety, ukryte
                 przed czytnikami; route.js odrzuca zgłoszenia z wypełnionym

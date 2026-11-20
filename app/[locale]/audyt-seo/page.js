@@ -108,6 +108,12 @@ const faqAudyt = [
     tylkoPl: true,
     question: 'Czy audyt SEO obejmuje widoczność w ChatGPT i AI?',
     answer: `Klasyczny audyt SEO sprawdza widoczność w Google. Widoczność w ChatGPT, Gemini i Perplexity badamy osobno w <a href="${HREF_AUDYT_AI}" style="text-decoration:underline">audycie widoczności w AI</a> za 990 zł netto: 30 pytań w 4 źródłach, 5 konkurentów polecanych przez modele i 10 rekomendacji. Koszt tego audytu zaliczamy na pierwszy miesiąc abonamentu.`,
+  },
+  {
+    id: 'na-czym-polega-audyt-seo',
+    tylkoPl: true,
+    question: 'Na czym polega audyt SEO krok po kroku?',
+    answer: 'Audyt SEO to sprawdzenie strony pod kątem techniki, treści, szybkości i profilu linków: pełny crawl serwisu, zestawienie z danymi Google Search Console, lista błędów z wagą i instrukcją dla programisty oraz plan poprawek ułożony według wpływu na ruch. Kompletny audyt wykonujemy w 3–5 dni roboczych (od 1 490 zł netto albo w cenie pakietu pozycjonowania).',
   }
 ];
 

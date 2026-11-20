@@ -1,0 +1,178 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><title>Schema Markup Beispiele: 7 JSON-LD Vorlagen</title><style>
+  @page { size: A4; margin: 13mm 14mm 14mm; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color: #141414; font-size: 9pt; line-height: 1.38; margin: 0; }
+  .top { display: flex; justify-content: space-between; font-size: 7.8pt; color: #555; border-bottom: 1px solid #ddd; padding-bottom: 2.5mm; margin-bottom: 4mm; }
+  h1 { font-size: 16pt; margin: 0 0 1.8mm; letter-spacing: -0.02em; }
+  .lead { font-size: 8.8pt; color: #444; margin: 0 0 4mm; }
+  h2 { font-size: 11pt; margin: 4.5mm 0 1.6mm; border-bottom: 1px solid #e5e5e5; padding-bottom: 1mm; break-after: avoid; }
+  h3 { font-size: 9.5pt; margin: 3mm 0 1.2mm; break-after: avoid; }
+  .meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; margin-bottom: 3.5mm; }
+  .pole { border: 1px solid #ccc; border-radius: 3px; padding: 1.5mm 2mm; font-size: 7.5pt; color: #555; min-height: 9mm; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5mm 0 3mm; font-size: 8pt; }
+  th, td { border: 1px solid #d4d4d4; padding: 1.3mm 1.8mm; text-align: left; vertical-align: top; }
+  th { background: #f5f2ed; font-weight: 700; }
+  .puste td { height: 7.2mm; }
+  pre { background: #f7f5f2; border: 1px solid #ddd; border-radius: 3px; padding: 2mm 2.5mm; font-size: 7.2pt; line-height: 1.28; white-space: pre-wrap; word-break: break-word; break-inside: avoid; margin: 1.2mm 0 2.8mm; }
+  ol, ul { margin: 1mm 0 2.5mm; padding-left: 4.5mm; }
+  li { margin-bottom: 0.9mm; }
+  footer { margin-top: 5mm; padding-top: 2mm; border-top: 1px solid #ddd; font-size: 7.4pt; color: #666; display: flex; justify-content: space-between; }
+</style></head><body>
+  <div class="top"><span><strong>AI SEO COMPANY</strong> · www.ai-seo-company.pl/de/tools/schema-markup-beispiele</span><span>Stand: November 2026</span></div>
+  <h1>Schema Markup Beispiele: 7 JSON-LD Vorlagen & Checkliste</h1>
+  <p class="lead">Stammdatenblatt, kopierfertige JSON-LD-Blöcke nach Schema.org und Prüfcheckliste vor der Veröffentlichung.</p>
+  <h2>Teil 1. Stammdatenblatt (identisch mit Impressum & Google Unternehmensprofil)</h2>
+  <table><thead><tr><th style="width:48mm">Feld</th><th style="width:42mm">Schema.org-Eigenschaft</th><th>Eintrag Ihres Unternehmens</th></tr></thead><tbody>
+    <tr class="puste"><td>Offizieller Firmenname</td><td>name</td><td></td></tr>
+    <tr class="puste"><td>Haupt-URL & Logo-URL</td><td>url, logo</td><td></td></tr>
+    <tr class="puste"><td>Straße, PLZ, Ort, Land</td><td>address</td><td></td></tr>
+    <tr class="puste"><td>Telefon & E-Mail</td><td>telephone, email</td><td></td></tr>
+    <tr class="puste"><td>USt-IdNr. & Profile</td><td>vatID, sameAs</td><td></td></tr>
+  </tbody></table>
+  <h2>Teil 2. Kopierfertige JSON-LD-Vorlagen (&lt;script type="application/ld+json"&gt;)</h2>
+  <h3>1. Organization (Startseite oder Über-uns-Seite)</h3><pre>{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Muster GmbH",
+  "url": "https://www.beispiel-firma.de",
+  "logo": "https://www.beispiel-firma.de/images/logo.png",
+  "email": "kontakt@beispiel-firma.de",
+  "telephone": "+49-30-1234567",
+  "vatID": "DE123456789",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Musterstraße 12",
+    "postalCode": "10115",
+    "addressLocality": "Berlin",
+    "addressCountry": "DE"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/beispiel-firma"
+  ]
+}</pre><h3>2. WebSite (Startseite)</h3><pre>{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Muster GmbH",
+  "url": "https://www.beispiel-firma.de"
+}</pre><h3>3. LocalBusiness / ProfessionalService (Standortseite)</h3><pre>{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Muster Beratung München",
+  "url": "https://www.beispiel-firma.de/standort-muenchen",
+  "image": "https://www.beispiel-firma.de/images/buero-muenchen.jpg",
+  "telephone": "+49-89-7654321",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Leopoldstraße 45",
+    "postalCode": "80802",
+    "addressLocality": "München",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 48.15982,
+    "longitude": 11.58612
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:30"
+    }
+  ]
+}</pre><h3>4. BreadcrumbList (Unterseiten)</h3><pre>{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://www.beispiel-firma.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Leistungen",
+      "item": "https://www.beispiel-firma.de/leistungen"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "SEO Audit"
+    }
+  ]
+}</pre><h3>5. Article (Ratgeber / Blogbeitrag)</h3><pre>{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Core Web Vitals optimieren: Praxis-Leitfaden",
+  "datePublished": "2026-09-15",
+  "dateModified": "2026-11-19",
+  "image": [
+    "https://www.beispiel-firma.de/images/cwv-leitfaden.jpg"
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Max Mustermann",
+      "url": "https://www.beispiel-firma.de/team/max-mustermann"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Muster GmbH",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.beispiel-firma.de/images/logo.png"
+    }
+  }
+}</pre><h3>6. ProfilePage mit Person (Autorenprofil)</h3><pre>{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Max Mustermann",
+    "jobTitle": "Leiter Technisches SEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Muster GmbH"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/max-mustermann"
+    ]
+  }
+}</pre><h3>7. Product mit Offer (Produkt- oder Festpreisseite)</h3><pre>{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Technischer Website-Check (Festpreis)",
+  "image": [
+    "https://www.beispiel-firma.de/images/website-check.jpg"
+  ],
+  "description": "Vollständige technische Prüfung inklusive Maßnahmenplan.",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.beispiel-firma.de/website-check",
+    "priceCurrency": "EUR",
+    "price": "350.00",
+    "availability": "https://schema.org/InStock"
+  }
+}</pre>
+  <h2>Teil 3. Checkliste vor dem Livegang & Testprotokoll</h2>
+  <ul>
+    <li>☐ Google Test für Rich-Suchergebnisse ohne kritische Fehler bestanden</li>
+    <li>☐ Schema Markup Validator (validator.schema.org) ohne Syntaxfehler bestanden</li>
+    <li>☐ Alle Angaben im JSON-LD stehen sichtbar im Seitentext; keine Platzhalterwerte übrig</li>
+    <li>☐ Keine doppelten, widersprüchlichen Blöcke aus Theme und SEO-Plugin</li>
+    <li>☐ Keine eigenen aggregateRating-Sterne auf Organization oder LocalBusiness</li>
+  </ul>
+  <table><thead><tr><th style="width:22mm">Datum</th><th style="width:48mm">Geprüfte URL</th><th style="width:36mm">Prüftool</th><th>Befund & Korrektur</th></tr></thead><tbody><tr class="puste"><td>1</td><td></td><td></td><td></td></tr><tr class="puste"><td>2</td><td></td><td></td><td></td></tr><tr class="puste"><td>3</td><td></td><td></td><td></td></tr><tr class="puste"><td>4</td><td></td><td></td><td></td></tr></tbody></table>
+  <footer><span>AI SIGNALS COMPANY P.S.A. · ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau</span><span>www.ai-seo-company.pl/de</span></footer>
+</body></html>

@@ -207,7 +207,7 @@ export default function LinkBuildingClient({ faqData }) {
       <section style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('jakie-linki', 'which-links')} style={h2Styl}>
-            {en ? 'Which links we go for and which we avoid' : 'Jakich linków szukamy, a jakich unikamy'}
+            {en ? 'White-hat link building: which links we go for and which we avoid' : 'Jakich linków szukamy, a jakich unikamy'}
           </h2>
           <p style={akapit}>
             {en ? (

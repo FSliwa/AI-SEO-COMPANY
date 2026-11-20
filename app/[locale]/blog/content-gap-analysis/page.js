@@ -226,7 +226,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
 
               <p>Plenty of gap-analysis advice still recommends adding FAQ or HowTo markup as a quick win. That advice is out of date, and it matters here because it changes what belongs in a brief.</p>
 
-              <p>Google withdrew HowTo rich results from desktop in September 2023. FAQ rich results were restricted to authoritative government and health sites in August 2023 and deprecated entirely on 7 May 2026; Google removed the feature documentation on 12 June 2026. Neither markup type produces a search feature today.</p>
+              <p>Google withdrew HowTo rich results from desktop in September 2023. FAQ rich results were restricted to authoritative government and health sites in August 2023 and deprecated entirely on 7 May 2026; Google removed the feature documentation on 15 June 2026. Neither markup type produces a search feature today.</p>
 
               <p>Three practical consequences:</p>
 
@@ -512,7 +512,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
               <p><strong>Google documentation</strong></p>
 
               <ul>
-                <li>Google Search Central – FAQPage structured data, FAQ rich results no longer shown from 7 May 2026, feature documentation removed 12 June 2026 (changelog, read 18 November 2026)</li>
+                <li>Google Search Central – FAQPage structured data, FAQ rich results no longer shown from 7 May 2026, feature documentation removed 15 June 2026 (changelog, read 18 November 2026)</li>
                 <li>Google Search Central – HowTo structured data deprecated on desktop, September 2023</li>
                 <li>Google Search Central – AI features guidance: no special structured data is required for AI Overviews or AI Mode</li>
               </ul>
@@ -672,7 +672,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <p>Wiele poradników nadal zaleca dodawanie znaczników FAQ jako szybkiej wygranej. Ta rada jest nieaktualna i ma znaczenie praktyczne, bo zmienia zawartość briefu.</p>
 
-              <p>Google wycofał wyniki rozszerzone HowTo z desktopu we wrześniu 2023, a FAQ ograniczył do witryn rządowych i zdrowotnych 8 sierpnia 2023 (HowTo zniknęło z desktopu 13 września 2023), po czym <strong>7 maja 2026 wycofał je całkowicie</strong>; dokumentację tej funkcji Google usunął 12 czerwca 2026.</p>
+              <p>Google wycofał wyniki rozszerzone HowTo z desktopu we wrześniu 2023, a FAQ ograniczył do witryn rządowych i zdrowotnych 8 sierpnia 2023 (HowTo zniknęło z desktopu 13 września 2023), po czym <strong>7 maja 2026 wycofał je całkowicie</strong>; dokumentację tej funkcji Google usunął 15 czerwca 2026.</p>
 
               <p>Trzy wnioski:</p>
 
@@ -875,7 +875,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
               <h2 id="zrodla">Źródła</h2>
 
               <ul>
-                <li>Google Search Central – dane strukturalne FAQPage, wyniki rozszerzone FAQ niewyświetlane od 7 maja 2026, dokumentacja funkcji usunięta 12 czerwca 2026 (changelog Google, odczyt 18.11.2026)</li>
+                <li>Google Search Central – dane strukturalne FAQPage, wyniki rozszerzone FAQ niewyświetlane od 7 maja 2026, dokumentacja funkcji usunięta 15 czerwca 2026 (changelog Google, odczyt 18.11.2026)</li>
                 <li>Google Search Central – dane strukturalne HowTo wycofane na desktopie, wrzesień 2023</li>
                 <li>Google Search Central – wytyczne dla funkcji AI: dla AI Overviews i AI Mode nie są wymagane żadne dedykowane dane strukturalne</li>
                 <li>Google Search Central – polityka spamowa, sekcja scaled content abuse</li>

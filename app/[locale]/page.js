@@ -46,11 +46,13 @@ import Pricing from '@/components/Pricing';
 import WhyUs from '@/components/WhyUs';
 import Process from '@/components/Process';
 import Results from '@/components/Results';
+import DarmoweNarzedzia from '@/components/DarmoweNarzedzia';
 import PanelShowcase from '@/components/PanelShowcase';
 import Blog from '@/components/Blog';
 import HomeFaq from '@/components/HomeFaq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import PasekCtaMobile from '@/components/PasekCtaMobile';
 import HomeDe from '@/components/de/HomeDe';
 import { metadataDe, hreflangDe } from '@/lib/stronyDe';
 
@@ -80,10 +82,13 @@ export default async function Home({ params }) {
         <WhyUs isMainContent={true} />
         <Portfolio />
         <Results />
+        <DarmoweNarzedzia locale={locale} />
+        {/* 19.11.2026 (analiza konwersji): cennik przed panelem klienta - po narzędziach i wynikach
+            odwiedzający widzi ceny o jedną sekcję wcześniej (17 wejść do cennika na 73 sesje w 28 dni). */}
+        <Pricing isMainContent={true} />
         {/* 29.10.2026: panel klienta zamiast Testimonials (5 opinii bez nazw firm, decyzja D3).
             Komponent Testimonials zostaje w repo na prawdziwe opinie z Google. */}
         <PanelShowcase />
-        <Pricing isMainContent={true} />
         <div className="w-noc-panele" data-kursor="ciemne">
           <Blog />
           <HomeFaq />
@@ -91,6 +96,8 @@ export default async function Home({ params }) {
         <Contact isMainContent={true} />
       </main>
       <Footer />
+      {/* Przypięty pasek „Wyceń projekt / Zadzwoń” na telefonie po minięciu hero (components/PasekCtaMobile.jsx). */}
+      <PasekCtaMobile />
     </>
   );
 }

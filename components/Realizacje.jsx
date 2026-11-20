@@ -14,7 +14,7 @@
    Karty wszystkich klientów są w HTML od razu (nieaktywne z atrybutem
    hidden), więc tekst jest w SSR także bez JS. */
 
-import { useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { SERIE_GSC } from '@/lib/realizacjeGsc';
 
 const MIESIACE_PL = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'];
@@ -53,11 +53,11 @@ function zakresDat(od, doo, lang) {
   const rok = b.getUTCFullYear();
   if (od === doo) return lang === 'pl' ? `${dzien(a)} ${mies(a)} ${rok}` : `${mies(a)} ${dzien(a)}, ${rok}`;
   if (a.getUTCMonth() === b.getUTCMonth()) {
-    return lang === 'pl' ? `${dzien(a)}–${dzien(b)} ${mies(b)} ${rok}` : `${mies(a)} ${dzien(a)}–${dzien(b)}, ${rok}`;
+    return lang === 'pl' ? `${dzien(a)}-${dzien(b)} ${mies(b)} ${rok}` : `${mies(a)} ${dzien(a)}-${dzien(b)}, ${rok}`;
   }
   return lang === 'pl'
-    ? `${dzien(a)} ${mies(a)} – ${dzien(b)} ${mies(b)} ${rok}`
-    : `${mies(a)} ${dzien(a)} – ${mies(b)} ${dzien(b)}, ${rok}`;
+    ? `${dzien(a)} ${mies(a)} - ${dzien(b)} ${mies(b)} ${rok}`
+    : `${mies(a)} ${dzien(a)} - ${mies(b)} ${dzien(b)}, ${rok}`;
 }
 
 /* Krok osi Y: 1, 2, 2,5 albo 5 razy potęga dziesięciu, cztery przedziały. */
@@ -109,14 +109,21 @@ const P = 14;
 const G = 64;
 const D = 36;
 
-function Wykres({ klucz, lang, idPanelu }) {
+function Wykres({ klucz, daneGsc, lang, idPanelu }) {
   const [miara, setMiara] = useState('wysw');
   const [wskazany, setWskazany] = useState(null);
   const ramka = useRef(null);
-  const seria = SERIE_GSC[klucz];
+  const seria = (daneGsc && daneGsc[klucz]) || SERIE_GSC[klucz] || [];
   const tygodniowe = seria.length > 1 && seria[0][0] !== seria[0][1];
 
   const model = useMemo(() => {
+    if (!seria || seria.length === 0) {
+      return {
+        wysw: { wart: [0], kreski: [0], sy: () => 0, pkt: [[0, 0]], linia: '', pole: '', najw: 0 },
+        klik: { wart: [0], kreski: [0], sy: () => 0, pkt: [[0, 0]], linia: '', pole: '', najw: 0 },
+        etykiety: [],
+      };
+    }
     const t0 = data(seria[0][0]).getTime();
     const t1 = data(seria[seria.length - 1][1]).getTime();
     const sx = (t) => L + ((t - t0) / Math.max(t1 - t0, DZIEN)) * (SZER - L - P);
@@ -274,8 +281,18 @@ const KROPKA = 21; // środek kropki od lewej krawędzi zakładki (left 8 px + 1
 
 export default function Realizacje({ pozycje, lang, etykieta }) {
   const [aktywna, setAktywna] = useState(0);
+  const [daneGsc, setDaneGsc] = useState(SERIE_GSC);
   const lista = useRef(null);
   const [luk, setLuk] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/realizacje-gsc')
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.ok && d.serie) setDaneGsc(d.serie);
+      })
+      .catch(() => {});
+  }, []);
 
   /* Kropki leżą dokładnie na łuku: po ułożeniu listy mierzymy środek każdej
      zakładki i z tej samej funkcji liczymy jej przesunięcie oraz ścieżkę łuku.
@@ -372,7 +389,7 @@ export default function Realizacje({ pozycje, lang, etykieta }) {
               {lang === 'pl' ? 'Widoczność w Google' : 'Visibility in Google'}
             </h3>
             <p className="realizacje-opis">{p.opis}</p>
-            <Wykres klucz={p.seria} lang={lang} idPanelu={`${baza}-panel-${p.id}`} />
+            <Wykres klucz={p.seria} daneGsc={daneGsc} lang={lang} idPanelu={`${baza}-panel-${p.id}`} />
             <dl className="realizacje-metryki">
               {p.metryki.map(([wartosc, podpis]) => (
                 <div className="realizacje-metryka" key={podpis}>

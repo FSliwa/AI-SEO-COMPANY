@@ -80,6 +80,7 @@ const ZRODLA = [
   { url: 'https://blog.google/products-and-platforms/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)', data: '2026-11-18' },
   { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode – dostępność i wymagania', data: '2026-11-18' },
   { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność – sposób liczenia danych', data: '2026-11-18' },
+  { url: 'https://support.google.com/webmasters/answer/16984139', nazwa: 'Pomoc Search Console: raport skuteczności w generatywnej AI (Generative AI performance)', data: '2026-11-19' },
   { url: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers', nazwa: 'Google: przegląd typowych robotów Google (Google-Extended)', data: '2026-11-18' },
   { url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content', nazwa: 'Google Search Central: Creating helpful, reliable, people-first content', data: '2026-11-18' },
   { url: 'https://docs.perplexity.ai/docs/resources/perplexity-crawlers', nazwa: 'Perplexity Docs: dokumentacja robotów (PerplexityBot, Perplexity-User)', data: '2026-11-18' },
@@ -431,7 +432,7 @@ Allow: /`}</code></pre>
               <p>Szersze tło, czyli jak modele językowe dobierają źródła i jak budować rozpoznawalność marki poza wyszukiwarką, opisujemy w ramach naszej <Link href="/pozycjonowanie-w-ai">usługi pozycjonowania w AI i AI Overview</Link>.</p>
 
               <h2 id="pomiar">Jak zmierzyć wpływ AI Overviews na ruch na stronie?</h2>
-              <p>Zacznij od Search Console. Według Google strony wyświetlane w AI Overviews i AI Mode są wliczane do ogólnego ruchu i raportowane w raporcie Skuteczność, w typie wyszukiwania „Web”. Nie ma osobnego filtra „tylko AI Overviews”, więc wnioski trzeba wyciągać pośrednio.</p>
+              <p>Zacznij od Search Console. Według Google strony wyświetlane w AI Overviews i AI Mode są wliczane do ogólnego ruchu w raporcie Skuteczność (typ „Web”), a od 31 sierpnia 2026 r. także raportowane osobno w raporcie skuteczności generatywnej AI (Generative AI performance). Sam raport pokazuje łączny wpływ funkcji generatywnych, więc dla konkretnych pytań i cytowań konkurencji nadal warto uzupełniać go o dziennik zapytań.</p>
 
               <h3>Jak Search Console liczy AI Overviews i AI Mode</h3>
               <p>Według pomocy Search Console:</p>

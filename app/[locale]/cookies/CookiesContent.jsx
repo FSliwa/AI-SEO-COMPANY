@@ -73,7 +73,7 @@ export default function CookiesContent() {
                   <li>Dane z formularza kontaktowego, które nie doprowadziły do zawarcia umowy – do 12 miesięcy od zakończenia korespondencji.</li>
                   <li>Dane związane z realizacją umowy – przez czas jej trwania, a następnie przez okres przedawnienia roszczeń.</li>
                   <li>Dokumentacja księgowa – 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku.</li>
-                  <li>Dane z cookies analitycznych – do 14 miesięcy od ostatniej wizyty albo do momentu wycofania zgody.</li>
+                  <li>Dane z analityki (Google Analytics 4) – retencja danych zdarzeń w GA4 do 14 miesięcy od ostatniej wizyty albo do momentu wycofania zgody; samo ciasteczko <code>_ga</code> zapisywane w przeglądarce może pozostać aktywne do 2 lat (albo krócej, zależnie od ustawień przeglądarki).</li>
                   <li>Ciasteczko <code>aisc_attr</code> (atrybucja reklam) – 90 dni od zapisu albo do momentu wycofania zgody marketingowej.</li>
                 </ul>
 
@@ -142,7 +142,7 @@ export default function CookiesContent() {
                   <li>Contact form data that did not lead to a contract – up to 12 months after the correspondence ends.</li>
                   <li>Data related to performing a contract – for its duration and then until claims become time-barred.</li>
                   <li>Accounting records – 5 years from the end of the calendar year in which the tax payment deadline fell.</li>
-                  <li>Analytics cookie data – up to 14 months from your last visit, or until consent is withdrawn.</li>
+                  <li>Analytics data (Google Analytics 4) – event-level retention in GA4 up to 14 months from your last visit, or until consent is withdrawn; the <code>_ga</code> browser cookie itself may remain stored for up to 2 years (or less depending on browser limits).</li>
                   <li>The <code>aisc_attr</code> cookie (ad attribution) – 90 days from being set, or until marketing consent is withdrawn.</li>
                 </ul>
 

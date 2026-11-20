@@ -1,0 +1,688 @@
+/* ==========================================================================
+   WSZYSTKIE 6 DARMOWYCH NARZĘDZI W STYLU AIRSLATE (zdj. 2)
+   components/DarmoweNarzedzia.jsx
+   --------------------------------------------------------------------------
+   - Jasna, przestronna płaszczyzna (--w-papier #FDF9F4) pod tarczą sygnałową
+     z Results.jsx, zakończona u dołu miękkim eliptycznym łukiem przechodzącym
+     w granat PanelShowcase.jsx (--w-noc #0A1337).
+   - Wyśrodkowany nagłówek + pasek szybkiego przejścia po 6 narzędziach.
+   - 6 dwukolumnowych bloków w architekturze airSlate (lewa: Nazwa / KATEGORIA,
+     H3, opis, 2 przyciski, lista CO DOSTAJESZ z kwadratowymi znacznikami;
+     prawa: zaokrąglona pastelowa scena z kartą Start, łącznikiem + i oknem wyniku).
+   ========================================================================== */
+
+.dn-sekcja {
+  position: relative;
+  isolation: isolate;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: var(--w-noc);
+  color: var(--w-tusz);
+}
+
+.dn-arkusz {
+  position: relative;
+  background-color: var(--w-papier);
+  padding: clamp(44px, 6vw, 84px) 0 clamp(72px, 9vw, 132px);
+  border-bottom-left-radius: 50% clamp(2.75rem, 8.5vw, 9.5rem);
+  border-bottom-right-radius: 50% clamp(2.75rem, 8.5vw, 9.5rem);
+}
+
+.dn-kontener {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Nagłówek sekcji (wyśrodkowany jak na zdj. 2) ---------- */
+.dn-naglowek {
+  max-width: 54rem;
+  margin: 0 auto clamp(48px, 6.5vw, 88px);
+  text-align: center;
+}
+
+.dn-h2 {
+  margin: 0 auto !important;
+  max-width: 22ch;
+  font-family: var(--font-geist), system-ui, sans-serif !important;
+  font-size: clamp(2.15rem, 4.2vw, 3.6rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.042em !important;
+  font-weight: 500 !important;
+  color: var(--w-tusz) !important;
+}
+
+.dn-podtytul {
+  margin: 1.15rem auto 0 !important;
+  max-width: 52ch !important;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--w-tusz-2) !important;
+}
+
+/* Pasek szybkiego skoku po 6 narzędziach */
+.dn-skroty {
+  margin: 2rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dn-skrot {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--w-karta);
+  border: 1px solid var(--w-linia);
+  color: var(--w-tusz);
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dn-skrot:hover {
+  border-color: var(--w-pomarancz);
+  background: var(--w-brzoskwinia-tlo);
+  transform: translateY(-1px);
+}
+
+.dn-skrot-nr {
+  font-family: var(--w-mono);
+  font-size: 0.72rem;
+  color: var(--w-pomarancz-tekst);
+}
+
+/* ---------- 6 wierszy produktowych ---------- */
+.dn-lista {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 7.5vw, 108px);
+}
+
+.dn-wiersz {
+  scroll-margin-top: 108px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 5vw, 76px);
+  align-items: center;
+}
+
+.dn-lewa {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Kicker: Nazwa / KATEGORIA MONO (dokładnie jak „altaFlow / DOCUMENT PROCESS AUTOMATION” na zdj. 2) */
+.dn-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 10px;
+  margin-bottom: 16px;
+}
+
+.dn-kicker-nazwa {
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--w-tusz);
+}
+
+.dn-kicker-ukosnik {
+  color: rgba(30, 30, 30, 0.28);
+  font-size: 0.9rem;
+}
+
+.dn-kicker-kat {
+  font-family: var(--w-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--w-tusz-2);
+}
+
+.dn-h3 {
+  margin: 0 !important;
+  font-family: var(--font-geist), system-ui, sans-serif !important;
+  font-size: clamp(1.65rem, 2.5vw, 2.3rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.036em !important;
+  font-weight: 500 !important;
+  color: var(--w-tusz) !important;
+  max-width: 24ch;
+}
+
+.dn-opis {
+  margin: 16px 0 0 !important;
+  max-width: 50ch !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--w-tusz-2) !important;
+}
+
+/* Przyciski w stylu airSlate (ciemny główny + miękki neutralny drugi) */
+.dn-akcje {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.dn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.dn-btn--glowny {
+  background: var(--w-tusz);
+  color: #FFFFFF !important;
+  border: 1.5px solid var(--w-tusz);
+}
+
+.dn-btn--glowny:hover {
+  background: var(--w-pomarancz-przycisk);
+  border-color: var(--w-pomarancz-przycisk);
+  transform: translateY(-2px);
+}
+
+.dn-btn--drugi {
+  background: #EFEAE2;
+  color: var(--w-tusz) !important;
+  border: 1.5px solid rgba(30, 30, 30, 0.08);
+}
+
+.dn-btn--drugi:hover {
+  background: #E5DDD2;
+  border-color: rgba(30, 30, 30, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Blok CAPABILITIES / CO DOSTAJESZ z kolorowym kwadracikiem */
+.dn-mozliwosci {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--w-linia);
+  width: 100%;
+  max-width: 48ch;
+}
+
+.dn-moz-tytul {
+  margin: 0 0 12px !important;
+  font-family: var(--w-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--w-tusz-2) !important;
+}
+
+.dn-moz-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+
+.dn-moz-lista li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.94rem;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--w-tusz);
+}
+
+.dn-moz-lista li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--dn-akcent, #D85A30);
+}
+
+/* ---------- Prawa kolumna: pastelowa scena z przepływem i oknem wyniku ---------- */
+.dn-wiersz[data-tlo='koral'] { --dn-akcent: #D85A30; --dn-ik-tlo: #FBE6DA; --dn-ik-kol: #9E3614; }
+.dn-wiersz[data-tlo='lawenda'] { --dn-akcent: #5B4CE6; --dn-ik-tlo: #E8E6FF; --dn-ik-kol: #3B2EB8; }
+.dn-wiersz[data-tlo='blekit'] { --dn-akcent: #1D63DC; --dn-ik-tlo: #E0EDFF; --dn-ik-kol: #174EA6; }
+.dn-wiersz[data-tlo='piasek'] { --dn-akcent: #C2591B; --dn-ik-tlo: #FDE9D2; --dn-ik-kol: #943F0E; }
+.dn-wiersz[data-tlo='szalwia'] { --dn-akcent: #0D7A5F; --dn-ik-tlo: #DCFCE7; --dn-ik-kol: #065F46; }
+.dn-wiersz[data-tlo='roza'] { --dn-akcent: #C83E6B; --dn-ik-tlo: #FCE4EC; --dn-ik-kol: #9C254D; }
+
+.dn-scena {
+  position: relative;
+  border-radius: 28px;
+  padding: clamp(22px, 3vw, 36px) clamp(20px, 3vw, 36px) clamp(24px, 3.2vw, 38px);
+  border: 1px solid rgba(30, 30, 30, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.dn-scena[data-tlo='koral'] {
+  background: linear-gradient(135deg, #FDE7DC 0%, #F9D2C0 52%, #F4DFEC 100%);
+}
+.dn-scena[data-tlo='lawenda'] {
+  background: linear-gradient(135deg, #F5DCFA 0%, #E4DEFF 50%, #D3DEFF 100%);
+}
+.dn-scena[data-tlo='blekit'] {
+  background: linear-gradient(135deg, #DFF0FF 0%, #D8E6FF 55%, #E8E1FF 100%);
+}
+.dn-scena[data-tlo='piasek'] {
+  background: linear-gradient(135deg, #FDF0D8 0%, #FCE1C6 55%, #F8D8D2 100%);
+}
+.dn-scena[data-tlo='szalwia'] {
+  background: linear-gradient(135deg, #E2F7EC 0%, #D9EFEF 55%, #DFEAFF 100%);
+}
+.dn-scena[data-tlo='roza'] {
+  background: linear-gradient(135deg, #FCE3EC 0%, #F3DDF8 52%, #DCE6FF 100%);
+}
+
+/* Mała górna karta wejściowa (jak „Start / + Add autostart” na zdj. 2) */
+.dn-start-karta {
+  width: min(100%, 340px);
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 26px -14px rgba(15, 23, 42, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.dn-start-etykieta {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--w-tusz);
+}
+
+.dn-start-pole {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px dashed rgba(30, 30, 30, 0.22);
+  font-family: var(--w-mono);
+  font-size: 0.73rem;
+  color: var(--w-tusz-2);
+  min-width: 0;
+}
+
+.dn-start-pole > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dn-start-plus {
+  color: var(--dn-akcent, #D85A30);
+  font-weight: 700;
+}
+
+/* Pionowy łącznik z kółkiem (+) jak na zdj. 2 */
+.dn-lacznik {
+  position: relative;
+  height: 36px;
+  width: 2px;
+  background: rgba(30, 30, 30, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dn-lacznik-kropka {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.14);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--dn-akcent, #D85A30);
+}
+
+/* Główne okno wyniku z podwójnym oszronionym obrysem halo */
+.dn-podglad-ramka {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 0 0 7px rgba(255, 255, 255, 0.44),
+    0 22px 48px -18px rgba(15, 23, 42, 0.22);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--w-tusz);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.dn-podglad-ramka:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 7px rgba(255, 255, 255, 0.62),
+    0 28px 56px -18px rgba(15, 23, 42, 0.28);
+}
+
+.dn-okno-nagl {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(30, 30, 30, 0.08);
+  background: #FFFFFF;
+}
+
+.dn-okno-ikona {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--dn-ik-tlo, #FBE6DA);
+  color: var(--dn-ik-kol, #9E3614);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.dn-okno-ikona svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dn-okno-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dn-okno-tytul {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--w-tusz);
+  line-height: 1.2;
+}
+
+.dn-okno-pod {
+  font-size: 0.74rem;
+  color: var(--w-tusz-2);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dn-okno-kropki {
+  display: inline-flex;
+  gap: 4px;
+  flex: none;
+}
+
+.dn-okno-kropki i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.32);
+}
+
+.dn-okno-obraz {
+  display: block;
+  background: #FAF6F0;
+}
+
+.dn-okno-obraz img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Stopka z linkiem do pełnego huba ---------- */
+.dn-stopka {
+  margin-top: clamp(48px, 6vw, 80px);
+  display: flex;
+  justify-content: center;
+}
+
+.dn-hub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: var(--w-karta);
+  border: 1.5px solid var(--w-linia);
+  color: var(--w-tusz) !important;
+  font-weight: 600;
+  font-size: 0.98rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dn-hub-link:hover {
+  border-color: var(--w-pomarancz);
+  background: var(--w-brzoskwinia-tlo);
+  transform: translateY(-2px);
+}
+
+/* ---------- Responsywność ---------- */
+@media (max-width: 959.98px) {
+  .dn-wiersz {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .dn-h3 {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .dn-kontener {
+    padding: 0 1.25rem;
+  }
+
+  .dn-akcje .dn-btn {
+    flex: 1 1 auto;
+  }
+
+  .dn-skroty {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-inline: -1.25rem;
+    padding-inline: 1.25rem;
+    scrollbar-width: none;
+  }
+
+  .dn-skroty::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dn-skrot {
+    flex: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dn-skrot,
+  .dn-btn,
+  .dn-podglad-ramka,
+  .dn-hub-link {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   19.11.2026 - czystsza wersja bez zmiany charakteru (analiza konwersji, pkt 4):
+   2 wyróżnione wiersze + 4 kompaktowe karty, dwa tony zamiast sześciu,
+   jeden kolor akcji (pomarańcz jak w hero), drugie wezwanie jako cichy link,
+   mikrotekst zaufania pod przyciskami, pigułki skrótów bez numerów.
+   ========================================================================== */
+
+/* Dwa tony: ciepła brzoskwinia i chłodna lawenda (naprzemiennie wg narzędzia) */
+.dn-wiersz[data-tlo='koral'], .dn-wiersz[data-tlo='piasek'], .dn-wiersz[data-tlo='roza'],
+.dn-karta[data-tlo='koral'], .dn-karta[data-tlo='piasek'], .dn-karta[data-tlo='roza'] {
+  --dn-akcent: #D85A30; --dn-ik-tlo: #FBE6DA; --dn-ik-kol: #9E3614;
+}
+.dn-wiersz[data-tlo='lawenda'], .dn-wiersz[data-tlo='blekit'], .dn-wiersz[data-tlo='szalwia'],
+.dn-karta[data-tlo='lawenda'], .dn-karta[data-tlo='blekit'], .dn-karta[data-tlo='szalwia'] {
+  --dn-akcent: #D85A30; --dn-ik-tlo: #E8E6FF; --dn-ik-kol: #3B2EB8;
+}
+
+.dn-scena[data-tlo='koral'], .dn-scena[data-tlo='piasek'], .dn-scena[data-tlo='roza'],
+.dn-karta-scena[data-tlo='koral'], .dn-karta-scena[data-tlo='piasek'], .dn-karta-scena[data-tlo='roza'] {
+  background: linear-gradient(140deg, #FCE6DA 0%, #F9DCCB 48%, #FBEDE4 100%);
+}
+.dn-scena[data-tlo='lawenda'], .dn-scena[data-tlo='blekit'], .dn-scena[data-tlo='szalwia'],
+.dn-karta-scena[data-tlo='lawenda'], .dn-karta-scena[data-tlo='blekit'], .dn-karta-scena[data-tlo='szalwia'] {
+  background: linear-gradient(140deg, #EEE6FB 0%, #E3E2FC 50%, #EDF0FD 100%);
+}
+
+/* Jeden kolor akcji na całej stronie */
+.dn-btn--glowny {
+  background: var(--w-pomarancz-przycisk) !important;
+  border-color: var(--w-pomarancz-przycisk) !important;
+}
+.dn-btn--glowny:hover {
+  background: var(--w-pomarancz-hover) !important;
+  border-color: var(--w-pomarancz-hover) !important;
+}
+
+.dn-akcje {
+  align-items: center;
+}
+
+.dn-link-cichy {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+  color: var(--w-tusz) !important;
+  font-size: 0.94rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(30, 30, 30, 0.25);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+.dn-link-cichy:hover {
+  color: var(--w-pomarancz-tekst) !important;
+  text-decoration-color: var(--w-pomarancz);
+}
+
+.dn-zaufanie {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--w-tusz-2) !important;
+}
+.dn-zaufanie-kropka {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--w-wzrost);
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.14);
+}
+
+/* Kompaktowe karty 2x2 */
+.dn-siatka {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 32px);
+  margin-top: clamp(56px, 7vw, 100px);
+}
+
+.dn-karta {
+  scroll-margin-top: 108px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  background: var(--w-karta);
+  border: 1px solid var(--w-linia);
+  overflow: hidden;
+}
+
+.dn-karta-tresc {
+  padding: clamp(22px, 2.6vw, 34px) clamp(22px, 2.6vw, 34px) 0;
+}
+
+.dn-karta-h3 {
+  margin: 0 !important;
+  font-family: var(--font-geist), system-ui, sans-serif !important;
+  font-size: clamp(1.25rem, 1.7vw, 1.6rem) !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.03em !important;
+  font-weight: 500 !important;
+  color: var(--w-tusz) !important;
+  max-width: 30ch;
+}
+
+.dn-akcje--karta {
+  margin-top: 18px;
+}
+
+.dn-karta-scena {
+  margin-top: auto;
+  padding: clamp(20px, 2.4vw, 30px) clamp(20px, 2.4vw, 30px) 0;
+  margin-top: 22px;
+}
+
+.dn-karta-scena .dn-podglad-ramka {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.44), 0 -8px 30px -18px rgba(15, 23, 42, 0.2);
+}
+
+.dn-karta-scena .dn-podglad-ramka:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 959.98px) {
+  .dn-siatka {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

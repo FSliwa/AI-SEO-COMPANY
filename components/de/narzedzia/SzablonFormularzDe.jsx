@@ -13,7 +13,7 @@ import { SIEDZIBA } from '@/lib/firma';
 
 const field = { width: '100%', padding: '0.8rem 1rem', borderRadius: '14px', border: '1px solid rgba(15,23,42,0.15)', fontSize: '1rem', background: '#FFFFFF', color: 'var(--w-tusz)' };
 
-export default function SzablonFormularzDe({ endpoint, plik, plan, idPrefiks, etykieta, przycisk, komunikatOk, przedmiot, cta, kategoria = 'Template' }) {
+export default function SzablonFormularzDe({ endpoint, plik, plikPdfDe, plan, idPrefiks, etykieta, przycisk, komunikatOk, przedmiot, cta, kategoria = 'Template' }) {
   const [state, setState] = useState({ status: 'idle', error: null });
   async function onSubmit(e) {
     e.preventDefault();
@@ -26,14 +26,31 @@ export default function SzablonFormularzDe({ endpoint, plik, plan, idPrefiks, et
         body: JSON.stringify({ email: String(fd.get('email') || ''), consent: fd.get('consent') === 'on', nick: String(fd.get('nick') || ''), plik, lang: 'de' }),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) return setState({ status: 'error', error: data.error || 'Das Senden hat nicht geklappt. Bitte versuchen Sie es gleich noch einmal.' });
+      if (!res.ok || !data.ok) {
+        if (plikPdfDe) {
+          track('generate_lead', { lead_source: 'template', event_category: kategoria, plan, currency: 'PLN', value: 100 });
+          return setState({ status: 'direct', error: null });
+        }
+        return setState({ status: 'error', error: data.error || 'Das Senden hat nicht geklappt. Bitte versuchen Sie es gleich noch einmal.' });
+      }
       track('generate_lead', { lead_source: 'template', event_category: kategoria, plan, currency: 'PLN', value: 100 });
       setState({ status: 'done', error: null });
     } catch {
+      if (plikPdfDe) return setState({ status: 'direct', error: null });
       setState({ status: 'error', error: 'Keine Verbindung. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.' });
     }
   }
   if (state.status === 'done') return <p role="status" style={{ margin: 0, fontWeight: 600, color: '#047857' }}>{komunikatOk}</p>;
+  if (state.status === 'direct' && plikPdfDe) {
+    return (
+      <div role="status" style={{ display: 'grid', gap: '0.75rem' }}>
+        <p style={{ margin: 0, fontWeight: 600, color: '#047857' }}>Ihre PDF-Vorlage steht direkt zum Download bereit:</p>
+        <div>
+          <a href={plikPdfDe} download className="btn btn-primary" data-cta={`${cta}_pdf`}>PDF jetzt herunterladen</a>
+        </div>
+      </div>
+    );
+  }
   return (
     <form onSubmit={onSubmit} style={{ display: 'grid', gap: '0.9rem' }}>
       <label htmlFor={`${idPrefiks}-email`} style={{ fontWeight: 600, color: 'var(--color-text-dark)' }}>{etykieta}</label>
@@ -49,6 +66,17 @@ export default function SzablonFormularzDe({ endpoint, plik, plan, idPrefiks, et
         <button type="submit" className="btn btn-primary" disabled={state.status === 'loading'} data-cta={cta}>
           {state.status === 'loading' ? 'Wird gesendet…' : przycisk}
         </button>
+        {plikPdfDe && (
+          <a
+            href={plikPdfDe}
+            download
+            onClick={() => track('file_download', { file_name: plikPdfDe, event_category: kategoria })}
+            style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--color-text-dark)', textDecoration: 'underline' }}
+            data-cta={`${cta}_direkt`}
+          >
+            Oder PDF direkt herunterladen
+          </a>
+        )}
         {state.status === 'error' && <p role="alert" style={{ margin: 0, color: '#b3261e' }}>{state.error}</p>}
       </div>
     </form>

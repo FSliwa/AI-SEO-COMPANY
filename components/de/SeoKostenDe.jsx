@@ -29,8 +29,8 @@ export default function SeoKostenDe() {
       </Abschnitt>
       <CtaZeile />
 
-      <Abschnitt titel="SEO Preise im Überblick" id="ueberblick">
-        <Absatz>Die wichtigsten Preise auf einen Blick. Alle Beträge sind Nettopreise in Euro, zuzüglich gesetzlicher Umsatzsteuer.</Absatz>
+      <Abschnitt titel="Suchmaschinenoptimierung Kosten: SEO Preise im Überblick" id="ueberblick">
+        <Absatz>Die wichtigsten Kosten für Suchmaschinenoptimierung und die Leistungen einer SEO Agentur auf einen Blick. Alle Beträge sind Nettopreise in Euro, zuzüglich gesetzlicher Umsatzsteuer.</Absatz>
         <Tabelle
           beschriftung="Leistungen und Preise (netto)"
           spalten={['Leistung', 'Preis', 'Laufzeit und Umfang']}

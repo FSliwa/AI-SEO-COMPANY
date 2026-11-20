@@ -45,7 +45,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '3.5rem', width: '100%' }}>
             <div style={{ maxWidth: '780px' }}>
               <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
-                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZE REALIZACJE' : 'OUR WORK'}
+                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'SCENARIUSZE MODELU' : 'MODEL SCENARIOS'}
               </div>
               <h2 style={{ 
                 fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', 

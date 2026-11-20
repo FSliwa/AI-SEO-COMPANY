@@ -212,6 +212,11 @@ const faq = [
     question: 'Czy da się pozycjonować tylko w jednym modelu, np. ChatGPT?',
     answer: 'Pomiar można zawęzić do jednego modelu, ale samej pracy nie da się tak podzielić: wizytówka Google, wpisy w katalogach i strona z jasną ofertą trafiają do źródeł wielu modeli naraz. Modele różnią się tym, po co sięgają. W naszym pomiarze z 4–5.11.2026 ChatGPT w poleceniach firm linkował prawie wyłącznie do Map Google, a Perplexity do katalogów i rankingów. Dlatego mierzymy cztery źródła.',
   },
+  {
+    tylkoEn: true,
+    questionEn: 'What is the difference between AEO and GEO?',
+    answerEn: 'AEO (answer engine optimization) focuses on earning direct answers and featured snippets, while GEO (generative engine optimization) focuses on being named and cited inside AI-generated answers in ChatGPT, Gemini, Perplexity and Google AI Overviews. In practice both rely on crawlable HTML, direct answers, verifiable data and consistent external mentions.',
+  },
 ];
 
 // 8 kart „Pytania o widoczność w AI, na które odpowiadamy” (brief A1 z korektami CB-01, CB-03,
@@ -465,7 +470,7 @@ export default function GeoPageClient() {
   const lang = useLocale() === 'en' ? 'en' : 'pl';
   const t = T[lang];
   const pl = lang === 'pl';
-  const faqDane = pl ? faq : faq.filter((f) => !f.tylkoPl);
+  const faqDane = pl ? faq.filter((f) => !f.tylkoEn) : faq.filter((f) => !f.tylkoPl);
   return (
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />

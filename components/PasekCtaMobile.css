@@ -1,0 +1,91 @@
+/* Przypięty pasek „Wyceń projekt / Zadzwoń” (components/PasekCtaMobile.jsx), tylko telefony. */
+.pasek-cta {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .pasek-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 998;
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 8px;
+    padding: 10px max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    background: rgba(253, 249, 244, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--w-linia, rgba(30, 30, 30, 0.12));
+    box-shadow: 0 -10px 30px rgba(10, 19, 55, 0.12);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.32s;
+  }
+
+  .pasek-cta.is-widoczny {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
+  }
+
+  .pasek-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 14px;
+    border-radius: 12px;
+    font-family: var(--font-geist), system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .pasek-cta-btn--glowny {
+    background: var(--w-pomarancz-przycisk, #C94E24);
+    color: #FFFFFF !important;
+  }
+
+  .pasek-cta-btn--tel {
+    background: var(--w-noc, #0A1337);
+    color: #FFFFFF !important;
+  }
+
+  .pasek-cta-btn--tel svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .pasek-cta-btn:focus-visible {
+    outline: 3px solid var(--w-pomarancz-tekst, #BE461F);
+    outline-offset: 2px;
+  }
+
+  /* Na stronie z paskiem pływająca pigułka „Wyceń projekt” (Footer.jsx) byłaby duplikatem. */
+  body:has(.pasek-cta) .kota-floating-cta {
+    display: none !important;
+  }
+
+  /* Pasek nie zasłania banera cookies: przy widocznym banerze chowa się pod nim. */
+  body.has-cookie-banner .pasek-cta {
+    transform: translateY(110%);
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pasek-cta,
+  .pasek-cta.is-widoczny {
+    transition: none;
+  }
+}

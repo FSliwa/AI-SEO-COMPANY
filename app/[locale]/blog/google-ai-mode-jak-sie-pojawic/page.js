@@ -34,8 +34,8 @@ const DATA_ZMIANY = LASTMOD[URL_STRONY] ?? DATA_PUBLIKACJI;
 
 const FAQ = [
   {
-    pytanie: 'Czy Google AI Mode (Tryb AI) działa po polsku?',
-    odpowiedz: 'Tak. Strona pomocy Google, którą odczytaliśmy 18 listopada 2026 r., wymienia Polskę wśród krajów, a polski wśród języków AI Mode. Część funkcji ma dodatkowe warunki: najnowszy model Gemini 4 Carbon jest według tej strony dostępny w wybranych krajach (bez Polski) i dla subskrybentów Google AI Ultra.',
+    pytanie: 'Czy Google AI Mode (Tryb AI Google) działa po polsku?',
+    odpowiedz: 'Tak. Strona pomocy Google, którą odczytaliśmy 18 listopada 2026 r., wymienia Polskę wśród krajów, a polski wśród języków, w których działa Tryb AI Google (AI Mode). Część funkcji ma dodatkowe warunki: nowszy model Gemini 4 Argon jest według tej strony dostępny w wybranych krajach (bez Polski) i wymaga subskrypcji Google AI Pro albo Google AI Ultra.',
   },
   {
     pytanie: 'Czy potrzebuję specjalnego znacznika albo pliku, żeby pojawić się w Google AI Mode?',
@@ -43,7 +43,7 @@ const FAQ = [
   },
   {
     pytanie: 'Czy ruch z Google AI Mode widać w Search Console?',
-    odpowiedz: 'Tak, ale bez osobnego filtra. Według pomocy Search Console kliknięcie linku do zewnętrznej strony w AI Mode liczy się jako kliknięcie w raporcie Skuteczność w typie wyszukiwania „Web”, a pytanie uzupełniające jest nowym zapytaniem. Dane z eksperymentów Search Labs nie są uwzględniane, więc samego AI Mode nie wyodrębnisz.',
+    odpowiedz: 'Tak: kliknięcia i wyświetlenia z AI Mode wchodzą do raportu Skuteczność w typie wyszukiwania „Web” (pytanie uzupełniające liczy się jako nowe zapytanie). Od 31 sierpnia 2026 r. Search Console ma także osobny raport skuteczności w generatywnej AI (Generative AI performance), który pokazuje wyświetlenia i kliknięcia z AI Overviews i AI Mode osobno; dane z eksperymentów Search Labs nadal nie są uwzględniane.',
   },
   {
     pytanie: 'Czy mogę zablokować pokazywanie mojej strony w Google AI Mode?',
@@ -62,6 +62,7 @@ const ZRODLA = [
   { url: 'https://blog.google/products-and-platforms/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode (20 maja 2025)', data: '2026-11-18' },
   { url: 'https://blog.google/products-and-platforms/products/search/ai-mode-expands-languages-locations/', nazwa: 'Google Blog: AI Mode w ponad 35 nowych językach i ponad 40 krajach (7 października 2025)', data: '2026-11-18' },
   { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność, AI Overviews i AI Mode', data: '2026-11-18' },
+  { url: 'https://support.google.com/webmasters/answer/16984139', nazwa: 'Pomoc Search Console: raport skuteczności w generatywnej AI (Generative AI performance)', data: '2026-11-19' },
   { url: 'https://support.google.com/websearch/answer/14901683?hl=pl', nazwa: 'Pomoc Google: Przegląd od AI w wynikach wyszukiwania', data: '2026-11-18' },
   { url: 'https://www.benchmark.pl/google-ai-mode-w-polsce-7268543279072321a', nazwa: 'Benchmark.pl: AI Mode już w Polsce (8 października 2025, źródło wtórne)', data: '2026-11-18' },
 ];
@@ -89,7 +90,7 @@ const CHRONOLOGIA = [
   ['20.05.2025', 'Google opisuje AI Mode i technikę query fan-out w ogłoszeniu po konferencji Google I/O.', 'Google Blog'],
   ['7.10.2025', 'Google zapowiada AI Mode w ponad 35 nowych językach i ponad 40 nowych krajach i terytoriach, łącznie w ponad 200. Ogłoszenie nie wymienia Polski z nazwy.', 'Google Blog'],
   ['8.10.2025', 'Polskie media podają start Trybu AI w Polsce; część użytkowników mogła zobaczyć go z opóźnieniem.', 'Benchmark.pl (źródło wtórne)'],
-  ['18.11.2026', 'Strona pomocy Google wymienia Polskę i język polski. Polski nie ma na liście krajów dla modelu Gemini 4 Carbon, który wymaga Google AI Ultra.', 'Pomoc Google'],
+  ['18.11.2026', 'Strona pomocy Google wymienia Polskę i język polski. Polski nie ma na liście krajów dla modelu Gemini 4 Argon, który wymaga subskrypcji Google AI Pro albo Google AI Ultra.', 'Pomoc Google'],
 ];
 
 const KROKI = [
@@ -102,7 +103,7 @@ const KROKI = [
 ];
 
 const POMIAR = [
-  ['Search Console, raport Skuteczność, typ „Web”', 'Kliknięcia i wyświetlenia z AI Mode razem z całym ruchem', 'Nie wydzielisz samego AI Mode; dane z Search Labs są pominięte.'],
+  ['Search Console: Skuteczność („Web”) i raport Generative AI performance', 'Kliknięcia i wyświetlenia w ogólnym ruchu „Web” oraz osobno w raporcie skuteczności generatywnej AI (od 31.08.2026)', 'Raport obejmuje łącznie funkcje generatywne AI; dane z eksperymentów Search Labs są pominięte.'],
   ['Dziennik zapytań prowadzony ręcznie', 'Czy domena jest cytowana, które domeny konkurencji są cytowane', 'Wynik jednej sesji nie jest trendem; porównuj co miesiąc.'],
   ['Pomiar automatyczny (audyt i monitoring)', 'Odsetek odpowiedzi z nazwą firmy, źródła cytowań', 'Nasz audyt obejmuje przegląd AI w Google, nie osobny pomiar AI Mode.'],
 ];
@@ -276,7 +277,7 @@ export default async function ArtykulGoogleAiMode({ params }) {
 
               <h2 id="pomiar">Jak sprawdzić, czy Google AI Mode cytuje Twoją stronę?</h2>
               <p>
-                Search Console nie ma filtra „tylko AI Mode”. Według pomocy Google link do zewnętrznej strony w AI Mode liczy się jako kliknięcie, pozycja jest liczona jak na zwykłej stronie wyników, a pytanie uzupełniające to nowe zapytanie. Wszystko trafia do raportu Skuteczność w typie „Web”, razem z klasycznym ruchem.
+                W Search Console ruch z AI Mode wchodzi do raportu Skuteczność w typie „Web” (kliknięcie linku do zewnętrznej strony liczy się jako kliknięcie, pozycja liczona jest jak na zwykłej stronie wyników, a pytanie uzupełniające to nowe zapytanie). Od 31 sierpnia 2026 r. działa dodatkowo osobny raport skuteczności w generatywnej AI (Generative AI performance), który wydziela wyświetlenia i kliknięcia z AI Overviews i AI Mode; dane z eksperymentów Search Labs nadal są pomijane.
               </p>
               <div className="table-container tabela-artykulu" tabIndex={0} role="region" aria-label="Raportowanie AI Mode w Search Console">
                 <table>

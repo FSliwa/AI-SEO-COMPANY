@@ -7,6 +7,7 @@
     "build": "NEXT_PUBLIC_ZBUDOWANO=$(date -u +%Y-%m-%dT%H:%M:%SZ) next build",
     "start": "next start",
     "lint": "eslint",
+    "sync:gsc": "node --env-file=.env.local scripts/sync-gsc-realizacje.mjs",
     "wydanie": "node scripts/sitemap/wydanie.mjs",
     "lastmod:sprawdz": "node scripts/sitemap/wydanie.mjs --sprawdz",
     "sitemap:waliduj": "node scripts/sitemap/waliduj.mjs",
@@ -15,8 +16,10 @@
   "dependencies": {
     "framer-motion": "^12.42.2",
     "glob": "^13.0.6",
+    "google-auth-library": "^11.3.4",
     "next": "16.2.12",
     "next-intl": "^4.13.4",
+    "pg": "^8.23.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "resend": "^6.18.0"

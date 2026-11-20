@@ -11,7 +11,7 @@ import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 // automatycznie, a data-cta tylko nadaje mu czytelną nazwę.
 //
 // Zdarzenia:
-//   cta_click            {cta_location, cta_text, page_path}  (+ link_url dla BlogCTA klastra)
+//   cta_click            {cta_location, cta_text, page_path}  (+ link_url dla BlogCTA klastra i każdego linku wewnętrznego z data-cta)
 //   pricing_plan_click   {plan, cta_location, page_path}  + ustawia pakiet w formularzu
 //   phone_click          {link_location, link_url, page_path}
 //   page_view            {page_location (origin + pathname, bez query), page_title}  (tylko nawigacja kliencka)
@@ -106,7 +106,18 @@ export default function AnalyticsEvents() {
 
       const hashIndex = href.indexOf('#');
       const fragment = hashIndex >= 0 ? href.slice(hashIndex + 1) : '';
-      if (!CONTACT_IDS.includes(fragment)) return;
+
+      // 19.11.2026 (analiza konwersji): każdy link wewnętrzny oznaczony data-cta (hero -> narzędzia,
+      // sekcja 6 narzędzi, karta wyników, przypięty pasek na telefonie) wysyła cta_click z celem.
+      // Wcześniej mierzone były tylko kotwice do formularza, więc ścieżka hero -> narzędzie -> bramka
+      // e-mail (generate_lead) była w GA4 niewidoczna. Kotwice do formularza idą dalej starą ścieżką
+      // (pakiet z cennika, cta_click bez link_url), żeby raporty sprzed zmiany zostały porównywalne.
+      if (!CONTACT_IDS.includes(fragment)) {
+        if (a.closest('[data-cta]')) {
+          track('cta_click', { cta_location: location, cta_text: text, page_path: pagePath, link_url: href.split('?')[0] });
+        }
+        return;
+      }
 
       const plan = a.dataset.plan;
       if (plan) {

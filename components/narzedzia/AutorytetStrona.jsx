@@ -283,6 +283,7 @@ const FAQ_AUTORYTETU_EN = [
   { id: 'how-many-domains', question: 'How many domains can I check?', answer: `Up to ${AUTORYTET.limitIp} domains per day from one IP address. Each domain counts separately: checking your own domain with three competitors uses four. Below the result we show how many checks you have left today.` },
   { id: 'do-you-store-results', question: 'Do you store the results?', answer: 'We record the check in our panel to count the daily limit and to send the report you ask for. We do not publish a list of the domains checked or their scores.' },
   { id: 'authority-and-ai-visibility', question: 'Does domain authority matter for AI visibility?', answer: 'AI models do not use our score. But the same work that raises it, coverage in trade media and brand mentions, makes it more likely that ChatGPT or Gemini will name your business. You can check whether they already do with our free AI visibility tool.' },
+  { id: 'website-authority-checker', question: 'Is this a website authority checker?', answer: 'Yes: you can use it as a free website authority checker for any public domain, with up to three competitors side by side and no sign-up. The 0-100 score measures how strongly a website is embedded in the public Common Crawl link graph (combining harmonic centrality and PageRank). It is our own transparent score, not Moz Domain Authority or Ahrefs Domain Rating.' },
 ];
 
 function AutorytetEn() {

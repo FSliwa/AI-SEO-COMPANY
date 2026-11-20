@@ -7,21 +7,6 @@ import { sectionId } from '@/lib/anchors';
 import { Link } from '@/i18n/routing';
 import { WSTEP_OFERTY } from '@/lib/wstepOferty';
 
-// 6.11.2026 (wyglad z makiety): ilustracje kreskowe pod kolumnami oferty.
-// Dekoracja (alt=""), przebarwione z fioletu makiety na pomarancz marki.
-// 19.11.2026: prawdziwie wieksza rozdzielczosc (oryginal 1536x1024 z makiety, warianty 640 i 960 px)
-// jako <picture> z AVIF i WebP. Nowe nazwy -v2, bo /images ma cache immutable na rok.
-const Ilustracja = ({ baza, w, h }) => {
-  const szer = [640, 960];
-  const zestaw = (rozszerzenie) => szer.map((x) => `${baza}-v2-${x}.${rozszerzenie} ${x}w`).join(', ');
-  return (
-    <picture>
-      <source type="image/avif" srcSet={zestaw('avif')} sizes="300px" />
-      <img className="oferta-ilustracja" src={`${baza}-v2-640.webp`} srcSet={zestaw('webp')} sizes="300px" alt="" width={w} height={h} loading="lazy" decoding="async" aria-hidden="true" />
-    </picture>
-  );
-};
-
 export default function Services() {
   const lang = useLocale();
   const t = useTranslations('services');
@@ -33,39 +18,40 @@ export default function Services() {
     desc: t(`pillars.${i}.desc`)
   }));
 
+  // Zdania akapitu wstępnego (podział po kropce i spacji), grupy 2 + 2 + reszta.
+  const zdaniaWstepu = WSTEP_OFERTY[lang === 'en' ? 'en' : 'pl'].split(/(?<=\.)\s+/);
+  const blokiWstepu = [zdaniaWstepu.slice(0, 2), zdaniaWstepu.slice(2, 4), zdaniaWstepu.slice(4)].filter((b) => b.length);
+
   return (
     <section className="services cursor-light" id={sectionId('uslugi', lang)}>
-      <div className="container">
+      <div className="container" data-header-box="">
         <Reveal className="section-header">
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('tag')}
           </div>
           <h2>{t('title')}</h2>
           <p>{t('subtitle')}</p>
-          {/* 19.11.2026: akapit, ktory stal na dole hero ("Łączymy strategię marki..."), tu jako wstęp do trzech filarów;
-              tekst słowo w słowo w lib/wstepOferty.js. */}
-          <p className="oferta-wstep">{WSTEP_OFERTY[lang === 'en' ? 'en' : 'pl']}</p>
         </Reveal>
 
-        {/* KOTA 3 Pillars Row (Screenshot 1) */}
-        {/* Znak ✕ stal w tym samym elemencie flex co karta, wiec karty 1 i 2
-            oddawaly mu 34 px (18 px znaku + 16 px odstepu): pomiar 05.10.2026
-            przy 1440 px dal 347 / 347 / 381 px. Teraz ✕ jest osobnym elementem
-            miedzy kartami, karty dziela szerokosc po rowno, a stretch na rzedzie
-            wyrownuje ich wysokosc (po zmianie: 353,1 x 3 przy 1440 px). ✕ to
-            ozdobnik, wiec aria-hidden - bez tego czytnik odczytywal sam znak.
-            ✕ to Reveal z opoznieniem karty po lewej (delayChildren 0,2 s
-            + 0,15 s na karte), zeby wjezdzal tuz za nia jak wczesniej, a nie
-            liczyl sie do kolejki staggera (przesunalby wejscie kart 2 i 3).
-            Ukrycie ✕ ponizej 1024 px (rzad sie zawija) wymaga reguly
-            w app/globals.css przy .kota-divider-x. */}
+        {/* Akapit wstępny w 3 krótkich blokach: te same zdania co w WSTEP_OFERTY, tylko podzielone
+            (2 + 2 + reszta). Pierwsze zdanie bloku to wyróżnienie (span, nie strong - CLAUDE.md). */}
+        <Reveal className="oferta-wstep-siatka" delay={0.1}>
+          {blokiWstepu.map((zdania) => (
+            <p className="oferta-wstep" key={zdania[0]}>
+              <span className="oferta-wstep-wyroznienie">{zdania[0]}</span>{' '}
+              {zdania.slice(1).join(' ')}
+            </p>
+          ))}
+        </Reveal>
+
+        {/* 3 Filary oferty */}
         <RevealStagger className="kota-pillars-row" delay={0.2} style={{ alignItems: 'stretch' }}>
           {pillars.map((pillar, idx) => (
             <Fragment key={idx}>
               <RevealItem style={{ display: 'flex', flex: 1, minWidth: 260 }}>
                 <div className="kota-pillar-card">
                   <div className="kota-pillar-num">{pillar.num}</div>
-                  <div style={{ fontSize: "1.25rem", fontWeight: 600, margin: "0.75rem 0" }}>{pillar.title}</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 600, margin: '0.75rem 0' }}>{pillar.title}</div>
                   <p>{pillar.desc}</p>
                 </div>
               </RevealItem>
@@ -83,16 +69,16 @@ export default function Services() {
           ))}
         </RevealStagger>
 
-        {/* Detailed Service Cards */}
+        {/* Szczegółowe kolumny usług (bez dolnych ilustracji; 4 równe kolumny w PL, 3 w EN) */}
         <RevealStagger className="services-grid" delay={0.4}>
-          {/* Card 1 */}
+          {/* Kolumna 1 */}
           <RevealItem className="service-card">
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Visual Identity'}</h3>
-            <p>{lang === 'pl' 
-              ? 'Projektujemy spójną tożsamość wizualną: logo, system kolorystyczny, typografię oraz kompletną księgę znaku dostosowaną do wymagań cyfrowych.' 
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Visual Identity'}</h3>
+            <p>{lang === 'pl'
+              ? 'Projektujemy spójną tożsamość wizualną: logo, system kolorystyczny, typografię oraz kompletną księgę znaku dostosowaną do wymagań cyfrowych.'
               : <>We design the part <strong>search engine optimisation agencies</strong> usually outsource: cohesive visual identities – logo systems, color palettes, typography, and comprehensive digital brand guidelines.</>
             }</p>
             <ul className="service-features">
@@ -110,15 +96,14 @@ export default function Services() {
                 </>
               )}
             </ul>
-            <Ilustracja baza="/images/wyglad/antena-linie" w={640} h={379} />
           </RevealItem>
 
-          {/* Card 2 */}
+          {/* Kolumna 2 */}
           <RevealItem className="service-card">
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Projektowanie stron i sklepów internetowych' : <>Web Design &amp; <span style={{ whiteSpace: 'nowrap' }}>E-Commerce</span> Development</>}</h3>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>{lang === 'pl' ? 'Projektowanie stron i sklepów internetowych' : <>Web Design &amp; <span style={{ whiteSpace: 'nowrap' }}>E-Commerce</span> Development</>}</h3>
             <p>{lang === 'pl'
               ? 'Tworzymy responsywne, niezwykle szybkie strony internetowe (UX/UI), zoptymalizowane pod najwyższe współczynniki konwersji i estetykę premium.'
               : 'As a full-service marketing agency, we engineer responsive, high-speed websites (UX/UI), optimized for top conversion rates and premium aesthetic appeal.'
@@ -138,15 +123,14 @@ export default function Services() {
                 </>
               )}
             </ul>
-            <Ilustracja baza="/images/wyglad/oferta-www" w={640} h={416} />
           </RevealItem>
 
-          {/* Card 3 */}
+          {/* Kolumna 3 */}
           <RevealItem className="service-card">
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
             </div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Growth Marketing & Search Optimization'}</h3>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Growth Marketing & Search Optimization'}</h3>
             <p>{lang === 'pl'
               ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
               : <>High-impact search engine positioning, local <span style={{ fontWeight: 'bold' }}>SEO services</span>, and technical <span style={{ fontWeight: 'bold' }}>SEO optimization service</span> driving stable growth. We are recognized among top <strong>search engine optimization companies</strong>.</>
@@ -166,25 +150,22 @@ export default function Services() {
                 </>
               )}
             </ul>
-            <Ilustracja baza="/images/wyglad/oferta-seo" w={640} h={433} />
           </RevealItem>
 
-          {/* Card 4 - 5.11.2026 (HOME; PLAN-v2 6.24, MSA-07): strona główna nie linkowała w treści do huba GEO
-              (crawl 5.11: hub ma linki w treści tylko z cennika i sprawdzarki). Strona chroniona: tylko
-              dodanie, tylko PL (plan nie podaje tekstu EN), title/description bez zmian. Tekst 33 słowa,
-              celowo inny niż lead huba (playbook 5.5). Pełna szerokość siatki: 4. karta nie zostaje sama
-              w trzeciej kolumnie. Link do sprawdzarki dopiero po T0.2. */}
+          {/* Kolumna 4 (PL): Pozycjonowanie w AI (GEO) — pełnoprawna czwarta kolumna w tej samej siatce */}
           {lang === 'pl' && (
-            <RevealItem className="service-card service-card--geo" style={{ gridColumn: '1 / -1' }}>
+            <RevealItem className="service-card service-card--geo">
               <div className="service-icon">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
               </div>
-              <h3 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>Pozycjonowanie w AI (GEO)</h3>
-              <p style={{ maxWidth: '760px' }}>Klienci coraz częściej pytają ChatGPT i Gemini, jaką firmę wybrać. Mierzymy, czy modele wymieniają Twoją markę w odpowiedziach na pytania Twoich klientów, i poprawiamy strony, z których korzystają. Pomiar co tydzień w panelu.</p>
-              <Link href="/pozycjonowanie-w-ai" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' }}>
-                Zobacz, jak działa pozycjonowanie w AI →
-              </Link>
-              <Ilustracja baza="/images/wyglad/oferta-ai" w={640} h={531} />
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>Pozycjonowanie w AI (GEO)</h3>
+              <p>Klienci coraz częściej pytają ChatGPT i Gemini, jaką firmę wybrać. Mierzymy, czy modele wymieniają Twoją markę w odpowiedziach na pytania Twoich klientów, i poprawiamy strony, z których korzystają. Pomiar co tydzień w panelu.</p>
+              <div className="service-geo-footer">
+                <Link href="/pozycjonowanie-w-ai" className="service-geo-link">
+                  <span>Zobacz, jak działa pozycjonowanie w{'\u00A0'}AI</span>
+                  <span className="service-geo-arrow" aria-hidden="true">→</span>
+                </Link>
+              </div>
             </RevealItem>
           )}
         </RevealStagger>
