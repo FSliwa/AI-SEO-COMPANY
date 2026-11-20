@@ -82,7 +82,7 @@ export default function Results() {
           nr: '03',
           ikona: <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />,
           tytul: `Graf ${mlnDomen} domen`,
-          opis: `Wylicza autorytet linków 0–100 z publicznego grafu sieciowego i zestawia z ${AUTORYTET.konkurentow} konkurentami.`,
+          opis: `Wylicza autorytet linków 0-100 z publicznego grafu sieciowego i zestawia z ${AUTORYTET.konkurentow} konkurentami.`,
           ryzyko: false,
         },
         {
@@ -112,7 +112,7 @@ export default function Results() {
           nr: '03',
           ikona: <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />,
           tytul: `${mlnDomen}-domain link graph`,
-          opis: `Computes a 0–100 authority score from the public web graph against up to ${AUTORYTET.konkurentow} competitors.`,
+          opis: `Computes a 0-100 authority score from the public web graph against up to ${AUTORYTET.konkurentow} competitors.`,
           ryzyko: false,
         },
         {

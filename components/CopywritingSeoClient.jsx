@@ -117,7 +117,7 @@ export default function CopywritingSeoClient() {
           {S.cena.akapityPo.map((a) => <p key={a} style={akapit}><Tekst>{a}</Tekst></p>)}
           <div style={{ margin: '1.5rem 0 0' }}>
             <a href={kontakt} className="btn btn-primary" data-cta="service_cena_copywriting" data-plan="standard">
-              {D.ctaGlowny}{' – '}{D.ctaOdpowiedz}
+              {D.ctaGlowny}{' - '}{D.ctaOdpowiedz}
             </a>
           </div>
         </div>

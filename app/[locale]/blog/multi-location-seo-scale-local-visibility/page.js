@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
     description: locale === 'en' ? 'A complete guide to scaling local visibility for multiple locations using single domains, GBP optimization, and programmatic local content.' : 'Poradnik multi-location SEO na rok 2026.',
     alternates: {
       // The site runs localePrefix 'as-needed' with Polish as default, so there
-      // is no /pl/ prefix – interpolating the locale produced /pl/blog/…, which
+      // is no /pl/ prefix - interpolating the locale produced /pl/blog/…, which
       // 307s back here and closed a canonical loop. This post is enOnly, so the
       // English URL is the canonical one in both cases.
       canonical: 'https://www.ai-seo-company.pl/en/blog/multi-location-seo-scale-local-visibility',
@@ -39,7 +39,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
     { id: 'how-to-track-seo-performance-per-location', title: 'How to track SEO performance per location' },
     { id: 'audit-consolidation-and-migration-checklist-for-duplicate-pages', title: 'Audit, consolidation, and migration checklist for duplicate pages' },
     { id: 'how-ai-seo-company-runs-multi-location-seo-programs', title: 'How AI SEO COMPANY runs multi-location SEO programs' },
-    { id: 'what-we-keep-seeing-go-wrong-and-how-to-fix-it-fast', title: 'What we keep seeing go wrong – and how to fix it fast' },
+    { id: 'what-we-keep-seeing-go-wrong-and-how-to-fix-it-fast', title: 'What we keep seeing go wrong - and how to fix it fast' },
     { id: 'ai-seo-companys-multi-location-seo-services', title: 'AI SEO COMPANY\'s multi-location SEO services' },
     { id: 'sources', title: 'Sources' }
   ];
@@ -91,7 +91,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     A single authoritative domain with subfolders is the fastest, safest way to scale multi-location SEO while keeping entity trust signals intact. Build your location pages at <code>yourbrand.com/locations/city-name/</code>, anchor each one to a verified Google Business Profile, and use programmatic templates with mandatory unique local blocks. That three-part foundation handles the majority of what determines whether your locations show up in map packs and AI-generated local recommendations.
                   </p>
                   
-                  <p><strong>Start here – your five highest-leverage actions:</strong></p>
+                  <p><strong>Start here - your five highest-leverage actions:</strong></p>
                   <ul>
                     <li><strong>Centralize your NAP data.</strong> Create a master spreadsheet (or a location data platform) with the exact business name, address, phone, and URL for every location. This becomes the single source of truth for your website, GBP, and every directory.</li>
                     <li><strong>Claim and verify every GBP listing.</strong> Use bulk verification for 10 or more locations. An unverified GBP is invisible in the map pack.</li>
@@ -105,7 +105,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   <hr />
                   
                   <h2>Key Takeaways</h2>
-                  <p>Multi-location SEO succeeds when entity signals – consistent NAP, verified GBPs, original local content, and clean schema – are coordinated across every location from a single authoritative domain.</p>
+                  <p>Multi-location SEO succeeds when entity signals - consistent NAP, verified GBPs, original local content, and clean schema - are coordinated across every location from a single authoritative domain.</p>
                   
                   <div className="table-container">
                     <table>
@@ -122,7 +122,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                         </tr>
                         <tr>
                           <td><strong>Master NAP repository</strong></td>
-                          <td>Centralize all location data before touching directories, GBP, or schema – inconsistency is the root cause of most ranking failures.</td>
+                          <td>Centralize all location data before touching directories, GBP, or schema - inconsistency is the root cause of most ranking failures.</td>
                         </tr>
                         <tr>
                           <td><strong>GBP as entity anchor</strong></td>
@@ -147,7 +147,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   <ArticleTOC items={tocItems} />
                   
                   <h2 id="what-site-architecture-works-best-for-multi-location-seo">What site architecture works best for multi-location SEO?</h2>
-                  <p>The answer – and the starting point for most <strong>local SEO strategies</strong> at scale – is almost always a single domain with subfolders. <a href="https://searchengineland.com/multi-location-seo-structure-geographic-pages-483959" target="_blank" rel="noopener noreferrer">Search Engine Land&apos;s analysis of geographic page structure</a> confirms that fragmented strategies, whether subdomains or separate domains, dilute central domain authority and create compounding technical problems at scale. Every location page you build at <code>yourbrand.com/locations/chicago/</code> inherits the domain&apos;s authority. The same page at <code>chicago.yourbrand.com</code> starts from near zero.</p>
+                  <p>The answer - and the starting point for most <strong>local SEO strategies</strong> at scale - is almost always a single domain with subfolders. <a href="https://searchengineland.com/multi-location-seo-structure-geographic-pages-483959" target="_blank" rel="noopener noreferrer">Search Engine Land&apos;s analysis of geographic page structure</a> confirms that fragmented strategies, whether subdomains or separate domains, dilute central domain authority and create compounding technical problems at scale. Every location page you build at <code>yourbrand.com/locations/chicago/</code> inherits the domain&apos;s authority. The same page at <code>chicago.yourbrand.com</code> starts from near zero.</p>
                   
                   <h3>Comparing your three architecture options</h3>
                   
@@ -206,7 +206,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     <li><strong>NAP block:</strong> Exact business name, street address, local phone number (not a toll-free number), and hours, formatted consistently with your master NAP sheet.</li>
                     <li><strong>Embedded Google Map</strong> pinned to the exact address. Use a facade pattern (load the interactive map only on click or hover) and add <code>loading=&quot;lazy&quot;</code> to the iframe to protect LCP and INP scores at scale.</li>
                     <li><strong>Geo-coordinates</strong> in the schema block (latitude/longitude).</li>
-                    <li><strong>Services available at this location</strong> – not a copy-paste of the brand service list, but the actual services offered at that address.</li>
+                    <li><strong>Services available at this location</strong> - not a copy-paste of the brand service list, but the actual services offered at that address.</li>
                     <li><strong>Staff or team profiles</strong> with real names, photos, and titles. This is one of the strongest local trust signals and one of the most commonly skipped.</li>
                     <li><strong>Original local photos</strong> of the storefront, interior, team, and neighborhood. Stock photos do not count.</li>
                     <li><strong>Location-specific reviews or testimonials</strong> pulled from GBP or collected locally.</li>
@@ -222,7 +222,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   
                   <p><strong>When a location closes:</strong> redirect the URL to the nearest open location or to the location directory page. Do not leave it live with outdated hours. Do not delete it without a redirect. Update the GBP immediately and mark it as permanently closed. The <Link href="/blog/local-seo-for-companies">local SEO trust signals guide</Link> covers the full process for managing location lifecycle changes.</p>
                   
-                  <p><strong>Pro Tip:</strong> Service-area pages follow different rules – see the &quot;Handling overlapping service areas&quot; section below for when and how to create them safely.</p>
+                  <p><strong>Pro Tip:</strong> Service-area pages follow different rules - see the &quot;Handling overlapping service areas&quot; section below for when and how to create them safely.</p>
                   
                   <h2 id="how-to-set-up-and-optimize-gbp-for-every-location">How to set up and optimize GBP for every location</h2>
                   <p>Among all <strong>local ranking factors</strong>, GBP completeness is the single highest-leverage signal for map-pack and AI recommendations. In our experience, GBP completeness and review velocity remain top inputs for local rankings, and AI-powered local results draw heavily on GBP data. Before you touch anything else, get every GBP verified and fully filled out.</p>
@@ -233,7 +233,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     <li><strong>Use bulk verification for 10 or more locations.</strong> Google&apos;s bulk verification process requires a spreadsheet upload and a verification call or postcard. It is slower than single-location verification but the only practical option at scale.</li>
                     <li><strong>Set the primary category precisely.</strong> &quot;Restaurant&quot; is not enough if you run a Thai restaurant. &quot;Thai Restaurant&quot; is a category. Primary category is the most influential GBP field for local pack rankings.</li>
                     <li><strong>Add secondary categories</strong> for every relevant service type.</li>
-                    <li><strong>Fill every attribute.</strong> Wheelchair access, outdoor seating, accepts credit cards – these feed AI recommendation filters directly.</li>
+                    <li><strong>Fill every attribute.</strong> Wheelchair access, outdoor seating, accepts credit cards - these feed AI recommendation filters directly.</li>
                     <li><strong>Add services with descriptions.</strong> Not just service names. Write a sentence for each.</li>
                     <li><strong>Upload at least 10 original photos per location.</strong> Exterior, interior, team, product. Google&apos;s own guidance recommends regular photo updates.</li>
                     <li><strong>Set holiday hours</strong> before every major holiday. A listing showing &quot;closed&quot; on a day you&apos;re open loses customers and signals poor data quality.</li>
@@ -309,7 +309,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   <p><strong>Geo-targeted SEO</strong> wins in AI recommendation engines, which increasingly prefer original local content and images over templated text. A location page with original staff photos, a local case study, and a neighborhood-specific FAQ is more likely to appear in an AI-generated local recommendation than a page with stock photos and a city-name swap.</p>
                   
                   <h2 id="how-to-keep-hundreds-of-location-pages-technically-sound">How to keep hundreds of location pages technically sound</h2>
-                  <p><strong>Multi site optimization</strong> depends on three pillars: consistent schema, correct sitemaps, and clean canonical rules – without them, Google crawls the same content repeatedly, indexes the wrong pages, and ignores the ones you want ranked.</p>
+                  <p><strong>Multi site optimization</strong> depends on three pillars: consistent schema, correct sitemaps, and clean canonical rules - without them, Google crawls the same content repeatedly, indexes the wrong pages, and ignores the ones you want ranked.</p>
                   
                   <h3>Technical checklist for large location networks</h3>
                   
@@ -507,7 +507,7 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   
                   <p>We scope multi-location programmes individually: an initial build phase (audit, template, GBP sync, citation cleanup, measurement setup) followed by a monthly retainer for ongoing management, content, and reporting. Packages start at €450 net per month (SEO Standard).</p>
                   
-                  <h2 id="what-we-keep-seeing-go-wrong-and-how-to-fix-it-fast">What we keep seeing go wrong – and how to fix it fast</h2>
+                  <h2 id="what-we-keep-seeing-go-wrong-and-how-to-fix-it-fast">What we keep seeing go wrong - and how to fix it fast</h2>
                   <p>The same mistakes appear in nearly every multi-location audit, regardless of company size or industry.</p>
                   
                   <ul>
@@ -526,10 +526,10 @@ export default async function ArticleMultiLocationSEO({ params }) {
                     <li><em>One quarter:</em> Roll out unique content blocks to all remaining location pages, complete a full cycle of local link-building outreach, run a before-and-after performance audit in GA4 and GSC, and refine the content priority matrix based on actual traffic and conversion data.</li>
                   </ul>
                   
-                  <p>The underlying principle: treat each location as a verified entity, not a keyword target. Entity signals – consistent data, original content, real reviews, corroborating citations – are what AI-driven local search rewards.</p>
+                  <p>The underlying principle: treat each location as a verified entity, not a keyword target. Entity signals - consistent data, original content, real reviews, corroborating citations - are what AI-driven local search rewards.</p>
                   
                   <h2 id="ai-seo-companys-multi-location-seo-services">AI SEO COMPANY&apos;s multi-location SEO services</h2>
-                  <p>Running a multi-location SEO program in-house means managing GBP verification, citation audits, schema validation, content governance, and location-level reporting simultaneously. In our experience most marketing teams hit a ceiling at roughly 10–25 locations, where the coordination cost starts outpacing the output.</p>
+                  <p>Running a multi-location SEO program in-house means managing GBP verification, citation audits, schema validation, content governance, and location-level reporting simultaneously. In our experience most marketing teams hit a ceiling at roughly 10-25 locations, where the coordination cost starts outpacing the output.</p>
                   
                   <p>AI SEO COMPANY delivers the full program: <Link href="/seo-audit">technical SEO audits</Link> that surface every NAP inconsistency, duplicate page, and schema error before they compound; location page templates built with required unique content blocks; GBP management and citation sync through BrightLocal and Whitespark; and a Looker Studio measurement dashboard that gives corporate and local stakeholders their own view of performance.</p>
                   
@@ -544,8 +544,8 @@ export default async function ArticleMultiLocationSEO({ params }) {
                   <ul>
                     <li><a href="https://searchengineland.com/multi-location-seo-structure-geographic-pages-483959" target="_blank" rel="noopener noreferrer">Multi-location SEO: How to structure geographic pages at scale</a></li>
                     <li><a href="https://www.searchenginejournal.com/local-seo-multiple-locations/370704/" target="_blank" rel="noopener noreferrer">The Complete Guide To Local SEO For Multiple Locations</a></li>
-                    <li><a href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener noreferrer">Google Search Central – Spam policies (doorway abuse, scaled content abuse; read 2026-11-18)</a></li>
-                    <li><a href="https://eur-lex.europa.eu/eli/dir/2019/2161/oj" target="_blank" rel="noopener noreferrer">Directive (EU) 2019/2161 (Omnibus) – consumer reviews</a></li>
+                    <li><a href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener noreferrer">Google Search Central - Spam policies (doorway abuse, scaled content abuse; read 2026-11-18)</a></li>
+                    <li><a href="https://eur-lex.europa.eu/eli/dir/2019/2161/oj" target="_blank" rel="noopener noreferrer">Directive (EU) 2019/2161 (Omnibus) - consumer reviews</a></li>
                   </ul>
                   
                   <BlogCTA 

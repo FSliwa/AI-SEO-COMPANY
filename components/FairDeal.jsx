@@ -29,7 +29,7 @@ const fairRules = {
 const top3Rules = {
   pl: [
     'Frazy lokalne uzgadniamy na starcie i wpisujemy do umowy.',
-    'Cel: TOP 3 w Google dla tych fraz w 2–3 miesiące od startu prac.',
+    'Cel: TOP 3 w Google dla tych fraz w 2-3 miesiące od startu prac.',
     'Pozycję mierzymy osobno dla każdej uzgodnionej frazy: w Google Search Console (średnia pozycja frazy w tygodniu rozliczeniowym, cel osiągnięty przy średniej ≤ 3) i w wynikach Map dla adresu firmy. Postęp widzisz co tydzień w panelu klienta.',
     'Jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł.',
     'Wyjątki: nowa domena bez historii (dotyczy to zwykle nowych stron z Booster Pack), ręczna kara Google i zmiany na stronie wprowadzone bez nas.',
@@ -37,7 +37,7 @@ const top3Rules = {
   ],
   en: [
     'We agree the local keywords at the start and put them in the contract.',
-    'Goal: a Google TOP 3 for those keywords within 2–3 months of starting work.',
+    'Goal: a Google TOP 3 for those keywords within 2-3 months of starting work.',
     'We measure position separately for each agreed keyword: in Google Search Console (the keyword\'s average position in the billing week, goal met at an average of 3 or better) and in Maps results for your business address. You see progress weekly in the client portal.',
     'If we miss the goal after 3 months, the next month is on us.',
     'Exceptions: a new domain with no history (this usually applies to new Booster Pack websites), a Google manual action, and changes to the site made without us.',

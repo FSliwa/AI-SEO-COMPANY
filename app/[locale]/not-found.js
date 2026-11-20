@@ -17,7 +17,7 @@ import { Link } from '@/i18n/routing';
 export async function generateMetadata() {
   const lang = await getLocale();
   return {
-    title: lang === 'en' ? 'Page not found (404) – AI SEO COMPANY' : lang === 'de' ? 'Seite nicht gefunden (404) – AI SEO COMPANY' : 'Nie ma takiej strony (404) – AI SEO COMPANY',
+    title: lang === 'en' ? 'Page not found (404) - AI SEO COMPANY' : lang === 'de' ? 'Seite nicht gefunden (404) - AI SEO COMPANY' : 'Nie ma takiej strony (404) - AI SEO COMPANY',
     robots: { index: false },
   };
 }

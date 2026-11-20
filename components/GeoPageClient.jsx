@@ -27,7 +27,7 @@ import { BIURO, adresLinia } from '@/lib/firma';
 // MSA-05, OP-04/05/06, SA-01, AV-03, AV-19, CB-12(por.)): rozbudowa huba z ok. 620 do ok. 2 000
 // słów. Title, meta i H1 bez zmian (test title po eksporcie GSC G1).
 // - PL: „Krótka odpowiedź” (AnswerBox) zamiast leadu, H2 „Ile kosztuje pozycjonowanie w AI”
-//   z id="ile-kosztuje", 8 kart pytań, pomiar z 4–5.11.2026, „Dla kogo”, „Agencja GEO i SEO AI”,
+//   z id="ile-kosztuje", 8 kart pytań, pomiar z 4-5.11.2026, „Dla kogo”, „Agencja GEO i SEO AI”,
 //   „Co wdrażamy technicznie”, „Pierwsze 90 dni”, FAQ 5 + 3, jeden FAQPage (8 FAQ + 8 kart).
 // - EN: tylko nowy lead (AV-03), rozwinięcie GEO i źródło Senuto w FAQ (AV-19, CB-12(por.)).
 //   Nowe sekcje i nowe pytania FAQ wyłącznie dla lang === 'pl'.
@@ -85,7 +85,7 @@ const T = {
     ctaAudit: 'Audyt AI za 990 zł netto',
     howTitle: 'Jak mierzymy widoczność w AI',
     how: [
-      // AV-03: 30 pytań jak w Krótkiej odpowiedzi i w ofercie (wcześniej „20–50 pytań”).
+      // AV-03: 30 pytań jak w Krótkiej odpowiedzi i w ofercie (wcześniej „20-50 pytań”).
       ['Pytania jak od klientów', 'Ustalamy 30 pytań, które zadają Twoi klienci, np. „Polecisz dobrego stolarza na Woli?”.'],
       ['Cztery źródła odpowiedzi', 'ChatGPT z wyszukiwaniem z Twojego miasta, Perplexity, Gemini i przegląd AI w wynikach Google.'],
       // OP-04 link 22: „panelu klienta” -> /panel-klienta.
@@ -210,7 +210,7 @@ const faq = [
   {
     tylkoPl: true,
     question: 'Czy da się pozycjonować tylko w jednym modelu, np. ChatGPT?',
-    answer: 'Pomiar można zawęzić do jednego modelu, ale samej pracy nie da się tak podzielić: wizytówka Google, wpisy w katalogach i strona z jasną ofertą trafiają do źródeł wielu modeli naraz. Modele różnią się tym, po co sięgają. W naszym pomiarze z 4–5.11.2026 ChatGPT w poleceniach firm linkował prawie wyłącznie do Map Google, a Perplexity do katalogów i rankingów. Dlatego mierzymy cztery źródła.',
+    answer: 'Pomiar można zawęzić do jednego modelu, ale samej pracy nie da się tak podzielić: wizytówka Google, wpisy w katalogach i strona z jasną ofertą trafiają do źródeł wielu modeli naraz. Modele różnią się tym, po co sięgają. W naszym pomiarze z 4-5.11.2026 ChatGPT w poleceniach firm linkował prawie wyłącznie do Map Google, a Perplexity do katalogów i rankingów. Dlatego mierzymy cztery źródła.',
   },
   {
     tylkoEn: true,
@@ -220,7 +220,7 @@ const faq = [
 ];
 
 // 8 kart „Pytania o widoczność w AI, na które odpowiadamy” (brief A1 z korektami CB-01, CB-03,
-// CB-21; PLAN-v2 6.16 pkt 4). H3 = pytanie, akapit 47–57 słów. href null = karta bez linku
+// CB-21; PLAN-v2 6.16 pkt 4). H3 = pytanie, akapit 47-57 słów. href null = karta bez linku
 // i bez strzałki. Te same pytania i odpowiedzi idą do jednego FAQPage (AppleFaq extraSchema).
 const KARTY = [
   {
@@ -235,7 +235,7 @@ const KARTY = [
     pytanie: 'Skąd ChatGPT bierze firmy, które poleca?',
     // CB-01: 11 odpowiedzi na 10 pytań; linki prowadzą do wyszukiwania w Mapach (nie „do wizytówek”).
     odpowiedz: 'W testach z 4 i 5 listopada 2026 poprosiliśmy ChatGPT z wyszukiwaniem o polecenie firmy w 10 pytaniach, od agencji SEO po stolarza i hydraulika. W 11 odpowiedziach 59 z 62 linków prowadziło do Map Google. Przy pytaniach o ceny i rankingi model cytował strony www, w tym nasz cennik. Perplexity cytował głównie artykuły i opisy usług pod konkretne pytanie, a przy pytaniu o agencję B2B także katalogi firm (Clutch, Sortlist). To wyniki jednego modelu API, więc nie są rankingiem aplikacji ChatGPT.',
-    zrodlo: { tekst: 'pomiar własny przez API DataForSEO, 4–5.11.2026 (metoda pod tabelą pomiaru).' },
+    zrodlo: { tekst: 'pomiar własny przez API DataForSEO, 4-5.11.2026 (metoda pod tabelą pomiaru).' },
     href: HREF.a2Zrodla,
     anchor: 'Źródła i metoda pomiaru',
   },
@@ -293,7 +293,7 @@ const zrodloTekst = (z) => (z ? ` Źródło: ${z.tekst}${z.data ? `, ${z.data}` 
 // FAQPage: tekst w JSON-LD = tekst widoczny (pytanie, akapit i źródło), bez linku „więcej”.
 const KARTY_SCHEMA = KARTY.map((k) => ({ question: k.pytanie, answer: `${k.odpowiedz}${zrodloTekst(k.zrodlo)}` }));
 
-// Pomiar z 4–5.11.2026 (CB-14 z korektą CB-01; brief A1). Wiersz z naszym wynikiem dopiero po D4.
+// Pomiar z 4-5.11.2026 (CB-14 z korektą CB-01; brief A1). Wiersz z naszym wynikiem dopiero po D4.
 const POMIAR_KOLUMNY = [
   { key: 'pomiar', label: 'Co mierzyliśmy' },
   { key: 'wynik', label: 'Wynik' },
@@ -301,9 +301,9 @@ const POMIAR_KOLUMNY = [
 ];
 const POMIAR_WIERSZE = [
   { id: 'aio', pomiar: 'Przegląd AI w Google', wynik: '30 z 30 fraz z naszej próby (SEO, AI, ceny, narzędzia)', proba: 'Google PL, komputer, TOP 10, 4.11.2026' },
-  { id: 'polecenia', pomiar: 'ChatGPT: prośba o polecenie firmy (agencja SEO, stolarz, hydraulik, biuro rachunkowe)', wynik: '59 z 62 linków do wyszukiwania w Mapach Google (google.com/maps/search)', proba: '11 odpowiedzi na 10 pytań, 4–5.11.2026' },
-  { id: 'ceny', pomiar: 'ChatGPT: pytania o cenę, ranking albo funkcję usługi', wynik: '0 z 31 linków do Map; cytowane strony www, w tym nasz cennik', proba: '5 odpowiedzi, 4–5.11.2026' },
-  { id: 'perplexity', pomiar: 'Perplexity: wszystkie pytania', wynik: '0 z 23 odpowiedzi z linkiem do Map', proba: '23 odpowiedzi, 4–5.11.2026' },
+  { id: 'polecenia', pomiar: 'ChatGPT: prośba o polecenie firmy (agencja SEO, stolarz, hydraulik, biuro rachunkowe)', wynik: '59 z 62 linków do wyszukiwania w Mapach Google (google.com/maps/search)', proba: '11 odpowiedzi na 10 pytań, 4-5.11.2026' },
+  { id: 'ceny', pomiar: 'ChatGPT: pytania o cenę, ranking albo funkcję usługi', wynik: '0 z 31 linków do Map; cytowane strony www, w tym nasz cennik', proba: '5 odpowiedzi, 4-5.11.2026' },
+  { id: 'perplexity', pomiar: 'Perplexity: wszystkie pytania', wynik: '0 z 23 odpowiedzi z linkiem do Map', proba: '23 odpowiedzi, 4-5.11.2026' },
 ];
 
 // Pierwsze 90 dni (MSA-05).
@@ -314,7 +314,7 @@ const PLAN_KOLUMNY = [
 ];
 const PLAN_WIERSZE = [
   { id: 't1', okres: 'Tydzień 1', robimy: 'Ustalamy z Tobą 30 pytań i robimy pomiar bazowy we wszystkich czterech źródłach.', panel: 'Pierwszy wynik i listę stron, które modele cytują w Twojej branży.' },
-  { id: 't2-4', okres: 'Tygodnie 2–4', robimy: 'Audyt i poprawki techniczne: dostęp botów, dane strukturalne, te same dane firmy w katalogach, opcjonalnie llms.txt.', panel: 'Dziennik prac i sprawy do akceptacji.' },
+  { id: 't2-4', okres: 'Tygodnie 2-4', robimy: 'Audyt i poprawki techniczne: dostęp botów, dane strukturalne, te same dane firmy w katalogach, opcjonalnie llms.txt.', panel: 'Dziennik prac i sprawy do akceptacji.' },
   { id: 'm2', okres: 'Miesiąc 2', robimy: 'Treści, które odpowiadają na pytania klientów, i uzupełniona wizytówka Google.', panel: 'Nowe podstrony i zmianę wyniku tydzień po tygodniu.' },
   { id: 'm3', okres: 'Miesiąc 3', robimy: 'Wzmianki w katalogach i serwisach, które modele cytują, oraz porównanie z pomiarem bazowym.', panel: 'Zmianę odsetka odpowiedzi z nazwą firmy od startu.' },
 ];
@@ -356,7 +356,7 @@ function SekcjaTekstowa({ id, title, children }) {
   );
 }
 
-// Sekcje tylko PL, między cenami a „Co robimy” (konspekt PLAN-v2 6.16, pkt 4–10).
+// Sekcje tylko PL, między cenami a „Co robimy” (konspekt PLAN-v2 6.16, pkt 4-10).
 function SekcjePl() {
   const hrefMapy = HREF.l1 ?? '/seo-lokalne-warszawa';
   return (
@@ -373,7 +373,7 @@ function SekcjePl() {
       <SekcjaTekstowa title="Co modele polecają dziś: pomiar z listopada 2026">
         <p style={tekstStyl}>Zadajemy modelom pytania, jakie zadają klienci, i sprawdzamy, kogo polecają i skąd biorą informacje. Poniżej wynik z 4 i 5 listopada 2026 roku. Pokazujemy źródła, a nie nazwy polecanych firm.</p>
         <CompareTable
-          caption="Pomiar odpowiedzi AI, 4–5 listopada 2026"
+          caption="Pomiar odpowiedzi AI, 4-5 listopada 2026"
           columns={POMIAR_KOLUMNY}
           rows={POMIAR_WIERSZE}
           przypis="Metoda: odpowiedzi pobrane przez API DataForSEO z ChatGPT (gpt-4.1-mini z wyszukiwaniem w sieci, lokalizacja wyszukiwania Warszawa, także dla pytań o Kraków i Poznań) i z Perplexity (sonar), jedna odpowiedź na pytanie. Pytanie o naszą markę (5 linków, 0 do Map) i porady bez wyszukiwania liczymy osobno. Przegląd AI: wyniki Google PL na komputerze, 4.11.2026."
@@ -404,7 +404,7 @@ function SekcjePl() {
         </div>
       </SekcjaTekstowa>
 
-      {/* CS-02, OP-05: 180–250 słów, „agencja GEO” 2×, adres jak w LocalBusiness (layout.js). */}
+      {/* CS-02, OP-05: 180-250 słów, „agencja GEO” 2×, adres jak w LocalBusiness (layout.js). */}
       <SekcjaTekstowa title="Agencja GEO i SEO AI: jak wybrać i co robimy">
         <p style={tekstStyl}>AI SEO COMPANY to agencja SEO AI z Warszawy ({adresLinia(BIURO, 'pl')}). Łączymy pozycjonowanie stron z pracą nad widocznością w ChatGPT, Gemini i przeglądach AI, czyli z tym, czym zajmuje się agencja GEO. Pracujemy z firmami z Warszawy i całej Polski na umowie miesięcznej. Zobacz <Link href="/cennik-pozycjonowania" style={linkStyl}>cennik pozycjonowania</Link> i <a href={PANEL_DEMO_URL} data-cta="geo_agencja_demo" style={linkStyl}>demo panelu</a> bez logowania.</p>
         <h3 style={{ ...h3Styl, marginTop: '0.75rem' }}>Co robi agencja GEO co miesiąc</h3>

@@ -19,8 +19,8 @@ const reviewsData = [
     image: '/images/unsplash-1635776062127-d379bfcba9f8.jpg',
     leadPl: 'Pełny rebrand B2B i 104% wzrostu ruchu w 3 miesiące.',
     leadEn: 'Full B2B rebrand and 104% traffic growth in 3 months.',
-    bodyPl: 'AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania – ruch organiczny wzrósł błyskawicznie, a klienci zachwycają się nowoczesną estetyką.',
-    bodyEn: 'AI SEO COMPANY executed a full rebrand of our platform and web deployment. The results blew away our expectations – organic traffic skyrocketed and clients love our modern aesthetics.',
+    bodyPl: 'AI SEO COMPANY przeprowadziło pełny rebrand naszej platformy B2B oraz wdrożenie serwisu. Efekt przeszedł nasze najśmielsze oczekiwania - ruch organiczny wzrósł błyskawicznie, a klienci zachwycają się nowoczesną estetyką.',
+    bodyEn: 'AI SEO COMPANY executed a full rebrand of our platform and web deployment. The results blew away our expectations - organic traffic skyrocketed and clients love our modern aesthetics.',
     metric: '+104%',
     metricLabel: 'Wzrost ruchu',
     metricLabelEn: 'Traffic Growth'

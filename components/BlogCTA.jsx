@@ -30,7 +30,7 @@ export default function BlogCTA({ locale, currentSlug, klaster, customCtaTitlePl
   return (
     <>
       {/* Named byline: matches the Person author in the BlogPosting schema.
-          TODO: extend with years of experience and specialisation – left out
+          TODO: extend with years of experience and specialisation - left out
           deliberately rather than invented. */}
       <div style={{ marginTop: '3rem', padding: '1.5rem', border: '1px solid var(--w-linia)', borderRadius: '12px', background: 'var(--w-papier-2)' }}>
         <p style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 0.5rem 0' }}>
@@ -57,7 +57,7 @@ export default function BlogCTA({ locale, currentSlug, klaster, customCtaTitlePl
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {/* The card stays fully clickable, but only the title sits inside the
-              anchor – wrapping the description too made the anchor text ~150
+              anchor - wrapping the description too made the anchor text ~150
               characters, which the crawl flagged. .stretched-link covers the
               card via ::after, so the look and the click target are unchanged. */}
           {relatedPosts.map(post => (

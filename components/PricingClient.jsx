@@ -42,14 +42,14 @@ export default function PricingClient() {
     {
       question: 'Czy muszę podpisywać umowę na dłuższy okres?',
       questionEn: 'Do I have to sign a long-term contract?',
-      answer: 'Nie w pakietach SEO Standard i SEO Premium: pracujemy w modelu elastycznej subskrypcji miesięcznej z możliwością rezygnacji w każdej chwili. Wyjątkiem jest Booster Pack z nową stroną WWW – tam umowa trwa minimum 3 miesiące. Umowy wieloletnie z karami za wcześniejsze zakończenie uznajemy za sposób na zatrzymanie klienta, którego nie da się zatrzymać wynikami.',
+      answer: 'Nie w pakietach SEO Standard i SEO Premium: pracujemy w modelu elastycznej subskrypcji miesięcznej z możliwością rezygnacji w każdej chwili. Wyjątkiem jest Booster Pack z nową stroną WWW - tam umowa trwa minimum 3 miesiące. Umowy wieloletnie z karami za wcześniejsze zakończenie uznajemy za sposób na zatrzymanie klienta, którego nie da się zatrzymać wynikami.',
       answerEn: 'Not for SEO Standard and SEO Premium: we work on a flexible monthly subscription that you can cancel at any time. The exception is the Booster Pack with a new website, which has a minimum 3-month contract. Multi-year contracts with early-termination penalties are, in our view, a way of holding on to a client that results alone cannot hold.'
     },
     {
       question: 'Czy audyt SEO jest wliczony w cenę pakietu?',
       questionEn: 'Is the SEO audit included in the package price?',
-      answer: 'Tak. Każdy pakiet zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację techniczną. Audyt nie jest osobno płatnym dodatkiem – bez niego nie wiedzielibyśmy, od czego zacząć.',
-      answerEn: 'Yes. Every package includes a professional technical audit, original content production, a B2B link building strategy and technical optimisation. The audit is not a paid add-on – without it we would not know where to start.'
+      answer: 'Tak. Każdy pakiet zawiera profesjonalny audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B oraz optymalizację techniczną. Audyt nie jest osobno płatnym dodatkiem - bez niego nie wiedzielibyśmy, od czego zacząć.',
+      answerEn: 'Yes. Every package includes a professional technical audit, original content production, a B2B link building strategy and technical optimisation. The audit is not a paid add-on - without it we would not know where to start.'
     },
     {
       question: 'Czy SEO lokalne i wizytówka Google są dodatkowo płatne?',
@@ -101,8 +101,8 @@ export default function PricingClient() {
     {
       question: 'Kiedy zobaczę pierwsze efekty pozycjonowania?',
       questionEn: 'When will I see the first SEO results?',
-      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4–8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. Naszym celem jest TOP 3 dla uzgodnionych fraz lokalnych w 2–3 miesiące: postęp widzisz co tydzień w panelu klienta, a jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł (<a href="#cel-top-3" style="text-decoration:underline">zasady celu TOP 3</a>). Nie gwarantujemy pozycji nr 1, bo o kolejności decyduje Google. Pamiętaj: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',
-      answerEn: 'The first visibility movements usually appear after 4–8 weeks, once Google has re-crawled the technical fixes and new content. Our goal is a Google TOP 3 for agreed local keywords within 2–3 months: you track progress weekly in the client portal, and if we miss the goal after 3 months, the next month is on us (<a href="#cel-top-3" style="text-decoration:underline">TOP 3 goal rules</a>). We do not guarantee the #1 position, because Google decides the order. Remember: anyone promising a Top 3 in a month is selling you risk, not a service.'
+      answer: 'Pierwsze ruchy widoczności pojawiają się zwykle po 4-8 tygodniach, gdy Google przecrawluje wprowadzone poprawki techniczne i nowe treści. Naszym celem jest TOP 3 dla uzgodnionych fraz lokalnych w 2-3 miesiące: postęp widzisz co tydzień w panelu klienta, a jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł (<a href="#cel-top-3" style="text-decoration:underline">zasady celu TOP 3</a>). Nie gwarantujemy pozycji nr 1, bo o kolejności decyduje Google. Pamiętaj: każdy, kto obiecuje Top 3 w miesiąc, sprzedaje Ci ryzyko, a nie usługę.',
+      answerEn: 'The first visibility movements usually appear after 4-8 weeks, once Google has re-crawled the technical fixes and new content. Our goal is a Google TOP 3 for agreed local keywords within 2-3 months: you track progress weekly in the client portal, and if we miss the goal after 3 months, the next month is on us (<a href="#cel-top-3" style="text-decoration:underline">TOP 3 goal rules</a>). We do not guarantee the #1 position, because Google decides the order. Remember: anyone promising a Top 3 in a month is selling you risk, not a service.'
     },
     {
       // Nowe (C2, MSA-18): „czy pozycjonowanie się opłaca” 70/mies. (DataForSEO, 4.11.2026), 56 słów.
@@ -119,8 +119,8 @@ export default function PricingClient() {
       answerEn: 'Our monthly SEO rates are fixed and published upfront: SEO Standard is €450 net per month and SEO Premium is €590 net per month, with no onboarding fees, activation charges or exit penalties. One-off services have clear starting fees too: a standalone technical SEO audit starts at €350 net and an AI visibility audit is €235 net (credited to your first month if you continue).'
     },
     {
-      question: 'Potrzebuję też nowej strony – czy da się to połączyć z pozycjonowaniem?',
-      questionEn: 'I also need a new website – can that be combined with SEO?',
+      question: 'Potrzebuję też nowej strony - czy da się to połączyć z pozycjonowaniem?',
+      questionEn: 'I also need a new website - can that be combined with SEO?',
       answer: 'Tak. Poza subskrypcją miesięczną oferujemy pakiet łączący pozycjonowanie z wykonaniem strony internetowej. Ma to przewagę porządkową: strona powstaje od razu z architekturą informacji i strukturą adresów przygotowaną pod wyszukiwarkę, więc nie trzeba później migrować URL-i ani przebudowywać nawigacji. Szczegóły w sekcji <a href="/projektowanie-stron-internetowych" style="text-decoration:underline">projektowanie stron internetowych</a>.',
       answerEn: 'Yes. Alongside the monthly subscription we offer a package combining SEO with building the website itself. That has a practical advantage: the site is built from the start with an information architecture and URL structure prepared for search, so there is no need to migrate URLs or rebuild navigation later. See <a href="/en/web-design" style="text-decoration:underline">web design</a> for details.'
     }
@@ -154,14 +154,14 @@ export default function PricingClient() {
             </h1>
             <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
-                ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc w SEO Standard i Premium (Booster Pack: min. 3 miesiące), bez ukrytych opłat – poniżej pełny cennik pozycjonowania stron 2026.' 
+                ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc w SEO Standard i Premium (Booster Pack: min. 3 miesiące), bez ukrytych opłat - poniżej pełny cennik pozycjonowania stron 2026.' 
                 : 'Discover our SEO Pricing 2026. No hidden fees or complicated contracts. Check our packages and costs and pay for measurable search visibility growth.'}
             </p>
             {/* Przycisk i telefon w hero: 59% kliknięć z Google Ads trafia na ten landing,
                 a pierwszy przycisk był wcześniej na 4. ekranie telefonu (pomiar 24.09.2026). */}
             <div className="hero-cta-row" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <a href={hash('kontakt', lang)} className="hero-btn-primary" data-cta="service_hero_cennik">
-                {lang === 'pl' ? 'Zamów wycenę – odpowiedź w\u00a024\u00a0h' : 'Get a quote – reply within 24\u00a0h'}
+                {lang === 'pl' ? 'Zamów wycenę - odpowiedź w\u00a024\u00a0h' : 'Get a quote - reply within 24\u00a0h'}
               </a>
               <a href="tel:+48518815055" className="hero-btn-secondary" data-cta="service_hero_cennik_tel">
                 {lang === 'pl' ? 'Zadzwoń: 518 815 055' : 'Call: +48 518 815 055'}
@@ -217,7 +217,7 @@ export default function PricingClient() {
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_cennik_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w\u00a024\u00a0h' : 'Ask for a quote – reply within 24\u00a0h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę - odpowiedź w\u00a024\u00a0h' : 'Ask for a quote - reply within 24\u00a0h'}
             </a>
           </div>
         </div>

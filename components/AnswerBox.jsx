@@ -1,4 +1,4 @@
-// Blok „Krótka odpowiedź” pod H1 (PLAN-v2 6.0): 40–60 słów, pierwsze zdanie odpowiada wprost,
+// Blok „Krótka odpowiedź” pod H1 (PLAN-v2 6.0): 40-60 słów, pierwsze zdanie odpowiada wprost,
 // marka i/lub liczba ze źródłem. Etykieta to <p>, NIE nagłówek - konspekt zostaje H1 -> H2
 // bez przeskoku. Bez hooków: działa w komponentach serwerowych i klienckich.
 //

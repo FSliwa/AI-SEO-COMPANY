@@ -131,8 +131,8 @@ export default async function ArticleCwvPage({ params }) {
 
               <h2 id="zrodla">Sources</h2>
               <ul>
-                <li><a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev – Web Vitals (thresholds and 75th percentile rule)</a>, read Nov 19, 2026.</li>
-                <li><a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">Google Search Central – Understanding Core Web Vitals and Google search results</a>, read Nov 19, 2026.</li>
+                <li><a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev - Web Vitals (thresholds and 75th percentile rule)</a>, read Nov 19, 2026.</li>
+                <li><a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">Google Search Central - Understanding Core Web Vitals and Google search results</a>, read Nov 19, 2026.</li>
               </ul>
 
               <BlogCTA 
@@ -163,7 +163,7 @@ export default async function ArticleCwvPage({ params }) {
             </div>
 
             {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page – do not demote it. */}
+                renders, so this is not a second H1 on the page - do not demote it. */}
               <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
@@ -200,7 +200,7 @@ export default async function ArticleCwvPage({ params }) {
                 Dlaczego w ogóle przejmować się Core Web Vitals?
               </h2>
               <p>
-                Szybkość ładowania przestała być tylko miłym dodatkiem – stała się wymogiem. Według badania Google i SOASTA z 2017 roku (dane mobilne) wydłużenie ładowania strony z 1 do 3 sekund zwiększa prawdopodobieństwo odrzucenia o 32% (<a href="https://web.archive.org/web/20251226035614/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google (archiwum)</a>).
+                Szybkość ładowania przestała być tylko miłym dodatkiem - stała się wymogiem. Według badania Google i SOASTA z 2017 roku (dane mobilne) wydłużenie ładowania strony z 1 do 3 sekund zwiększa prawdopodobieństwo odrzucenia o 32% (<a href="https://web.archive.org/web/20251226035614/https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener noreferrer">Think with Google (archiwum)</a>).
               </p>
               <p>
                 Co więcej, algorytm Google premiuje w bezpłatnych wynikach wyszukiwania serwisy, które są lekkie i bezbłędnie zakodowane. Szybsza strona oznacza mniejszy koszt tzw. crawl budget, co sprzyja szybszej indeksacji nowych treści na Twoim blogu czy podstronach ofertowych.
@@ -235,7 +235,7 @@ export default async function ArticleCwvPage({ params }) {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: '1.15rem', color: 'var(--w-tusz)', fontWeight: 700, marginBottom: '0.25rem' }}>INP (Interaction to Next Paint)</span>
-                    <span style={{ color: 'var(--color-text-main)', lineHeight: 1.5 }}>Nowy standard zastępujący przestarzały FID. Mierzy opóźnienia interakcji – to znaczy czas między np. kliknięciem przycisku rozwinięcia menu, a fizyczną reakcją ekranu. Optymalizacja INP wymaga rozbicia długich zadań (Long Tasks) w głównym wątku JavaScript, zmniejszenia ilości wtyczek i redukcji zbędnego renderowania w React/Next.js.</span>
+                    <span style={{ color: 'var(--color-text-main)', lineHeight: 1.5 }}>Nowy standard zastępujący przestarzały FID. Mierzy opóźnienia interakcji - to znaczy czas między np. kliknięciem przycisku rozwinięcia menu, a fizyczną reakcją ekranu. Optymalizacja INP wymaga rozbicia długich zadań (Long Tasks) w głównym wątku JavaScript, zmniejszenia ilości wtyczek i redukcji zbędnego renderowania w React/Next.js.</span>
                   </div>
                 </li>
               </ul>
@@ -258,8 +258,8 @@ export default async function ArticleCwvPage({ params }) {
 
               <h2 id="zrodla">Źródła</h2>
               <ul>
-                <li><a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev – Web Vitals (progi LCP, INP, CLS i zasada 75. percentyla)</a>, odczyt 19.11.2026.</li>
-                <li><a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">Google Search Central – Core Web Vitals a wyniki wyszukiwania Google</a>, odczyt 19.11.2026.</li>
+                <li><a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev - Web Vitals (progi LCP, INP, CLS i zasada 75. percentyla)</a>, odczyt 19.11.2026.</li>
+                <li><a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">Google Search Central - Core Web Vitals a wyniki wyszukiwania Google</a>, odczyt 19.11.2026.</li>
               </ul>
 
               <BlogCTA 

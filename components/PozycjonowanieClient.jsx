@@ -87,11 +87,11 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B – raportujemy leady i sprzedaż, nie tylko pozycje.</>
+                ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B - raportujemy leady i sprzedaż, nie tylko pozycje.</>
                 : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>SEO optimization service</strong> comes with a client portal and a clear TOP 3 goal: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
 
-            {/* Obietnice z nagłówków RSA w pierwszym ekranie – wcześniej
+            {/* Obietnice z nagłówków RSA w pierwszym ekranie - wcześniej
                 „Wizytówka Google w cenie” była dopiero na 7,8 ekranu telefonu. */}
             <p className="hero-proof" style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: 'var(--w-tusz-2)' }}>
               {lang === 'pl'
@@ -173,7 +173,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_pozycjonowanie_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w\u00a024\u00a0h' : 'Ask for a quote – reply within 24\u00a0h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę - odpowiedź w\u00a024\u00a0h' : 'Ask for a quote - reply within 24\u00a0h'}
             </a>
           </div>
         </div>
@@ -181,7 +181,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <SubpagePortfolio 
         title={lang === 'pl' ? "Scenariusze Wzrostu i Wyniki" : "Growth Scenarios and Results"} 
-        subtitle={lang === 'pl' ? "Przykładowe scenariusze skalowania widoczności i konwersji w modelu AI SEO – ilustracja metody, nie wyniki konkretnych klientów. Liczby na kartach to założenia modelu, nie pomiary; rzeczywiste wyniki z datami pomiaru pokazujemy w portfolio" : "Illustrative scenarios of visibility and conversion scaling in the AI Optimization model – how the method works, not results of specific clients. Figures on the cards are model assumptions, not measurements; real results with measurement dates are in our portfolio"}
+        subtitle={lang === 'pl' ? "Przykładowe scenariusze skalowania widoczności i konwersji w modelu AI SEO - ilustracja metody, nie wyniki konkretnych klientów. Liczby na kartach to założenia modelu, nie pomiary; rzeczywiste wyniki z datami pomiaru pokazujemy w portfolio" : "Illustrative scenarios of visibility and conversion scaling in the AI Optimization model - how the method works, not results of specific clients. Figures on the cards are model assumptions, not measurements; real results with measurement dates are in our portfolio"}
         cases={portfolioCases} 
         layout="vertical"
       />
@@ -203,8 +203,8 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 </h3>
                 <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
                   {lang === 'pl'
-                    ? 'Pracujemy z firmami, których klienci szukają długo, zanim w ogóle się odezwą – dlatego każdą współpracę zaczynamy od pytania, które zapytania realnie ich przyprowadzają. Treść planujemy pod konkretny etap tej ścieżki, a nie „bo trzeba publikować”: każdy tekst ma zadanie i sprawdzamy, czy je wykonuje. SEO, analitykę i marketing prowadzi jeden zespół, więc nic nie jest optymalizowane w oderwaniu od reszty. Działamy też jako zaplecze dla działów marketingu i innych agencji, którym brakuje rąk.'
-                    : <>We work with companies whose buyers research long before they contact anyone, so every engagement starts with one question: which queries actually bring those buyers in. We treat the role of content in marketing as part of the whole funnel rather than a separate channel, so each article has a job to do. One team covers SEO, digital marketing and analytics, which means nothing gets optimised in isolation. We also work as a search optimisation agency for in-house teams that need extra capacity – <strong>SEO for agencies</strong> and for marketing departments running lean. Where paid and organic overlap we plan them together: search marketing, digital PR and landing-page tests feeding the same pipeline.</>}
+                    ? 'Pracujemy z firmami, których klienci szukają długo, zanim w ogóle się odezwą - dlatego każdą współpracę zaczynamy od pytania, które zapytania realnie ich przyprowadzają. Treść planujemy pod konkretny etap tej ścieżki, a nie „bo trzeba publikować”: każdy tekst ma zadanie i sprawdzamy, czy je wykonuje. SEO, analitykę i marketing prowadzi jeden zespół, więc nic nie jest optymalizowane w oderwaniu od reszty. Działamy też jako zaplecze dla działów marketingu i innych agencji, którym brakuje rąk.'
+                    : <>We work with companies whose buyers research long before they contact anyone, so every engagement starts with one question: which queries actually bring those buyers in. We treat the role of content in marketing as part of the whole funnel rather than a separate channel, so each article has a job to do. One team covers SEO, digital marketing and analytics, which means nothing gets optimised in isolation. We also work as a search optimisation agency for in-house teams that need extra capacity - <strong>SEO for agencies</strong> and for marketing departments running lean. Where paid and organic overlap we plan them together: search marketing, digital PR and landing-page tests feeding the same pipeline.</>}
                 </p>
               </RevealItem>
               <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
@@ -221,7 +221,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
             <div style={{ textAlign: 'center', marginTop: '3rem' }}>
               <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_pozycjonowanie_2">
-                {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w\u00a024\u00a0h' : 'Ask for a quote – reply within 24\u00a0h'}
+                {lang === 'pl' ? 'Zapytaj o wycenę - odpowiedź w\u00a024\u00a0h' : 'Ask for a quote - reply within 24\u00a0h'}
               </a>
             </div>
           </div>

@@ -48,7 +48,7 @@ export default async function ArticleCanonicalPage({ params }) {
     ...(locale === 'en' ? [] : [{ id: 'jak-oznaczyc', title: 'Jak oznaczyć stronę kanoniczną' }]),
     { id: 'kiedy-warto', title: locale === 'en' ? 'When to use (and when not to) rel="canonical"' : 'Kiedy warto (i kiedy nie) używać tagu rel="canonical"' },
     { id: 'a-przekierowania', title: locale === 'en' ? 'Canonical tag vs 301 redirects and noindex' : 'Tag kanoniczny a przekierowania 301 i dyrektywa noindex' },
-    { id: 'jak-wdrozyc', title: locale === 'en' ? 'How to correctly implement canonical tag – 5 proven ways' : 'Jak poprawnie wdrożyć tag kanoniczny – 5 sprawdzonych' },
+    { id: 'jak-wdrozyc', title: locale === 'en' ? 'How to correctly implement canonical tag - 5 proven ways' : 'Jak poprawnie wdrożyć tag kanoniczny - 5 sprawdzonych' },
     { id: 'bledy', title: locale === 'en' ? 'Most common mistakes that destroy SEO effects' : 'Najczęstsze błędy, które niszczą efekty SEO' },
     { id: 'indeksowanie', title: locale === 'en' ? 'Canonical vs indexing and crawl budget' : 'Canonical a indeksowanie i crawl budget' },
     { id: 'ecommerce', title: locale === 'en' ? 'Canonical strategy in e-commerce and PrestaShop' : 'Strategia canonical w e-commerce i na platformach PrestaShop' },
@@ -57,7 +57,7 @@ export default async function ArticleCanonicalPage({ params }) {
       { id: 'jak-sprawdzic', title: 'Jak sprawdzić, który URL Google uznał za kanoniczny' }
     ]),
     { id: 'narzedzia', title: locale === 'en' ? 'Tools for checking and monitoring canonical tags' : 'Narzędzia do sprawdzania i monitorowania tagów kanonicznych' },
-    { id: 'checklist', title: locale === 'en' ? 'Canonical implementation checklist – technical SEO step by' : 'Checklist wdrożenia canonical – techniczne SEO krok po kroku' },
+    { id: 'checklist', title: locale === 'en' ? 'Canonical implementation checklist - technical SEO step by' : 'Checklist wdrożenia canonical - techniczne SEO krok po kroku' },
     { id: 'oferta', title: locale === 'en' ? 'AI SEO COMPANY offer: technical audit and optimization' : 'Oferta AI SEO COMPANY: audyt techniczny i pakiety' }
   ];
 
@@ -84,7 +84,7 @@ export default async function ArticleCanonicalPage({ params }) {
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              SEO Canonical Tag – what is it, how it works and how to implement it in 2026
+              SEO Canonical Tag - what is it, how it works and how to implement it in 2026
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -107,7 +107,7 @@ export default async function ArticleCanonicalPage({ params }) {
                 <code>&lt;link rel="canonical" href="https://example.com/preferred-page/" /&gt;</code>
               </div>
               
-              <p>It informs search engine algorithms: "This is the official, canonical version of this material. Treat all other versions only as duplicates and pass all the authority they gathered here" (details described by <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener noreferrer">official Google guidelines – Consolidate duplicate URLs</a>). Google treats this as a strong hint, but if the canonical page returns an error, the algorithm will ignore it and select another URL itself.</p>
+              <p>It informs search engine algorithms: "This is the official, canonical version of this material. Treat all other versions only as duplicates and pass all the authority they gathered here" (details described by <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener noreferrer">official Google guidelines - Consolidate duplicate URLs</a>). Google treats this as a strong hint, but if the canonical page returns an error, the algorithm will ignore it and select another URL itself.</p>
 
               <h2 id="canonical-used-for">What is a canonical tag used for?</h2>
               <p>A canonical tag tells Google which URL to treat as the main one when several URLs show the same or near-identical content (for example with tracking parameters or filter query strings). Placed in the <code>&lt;head&gt;</code> as <code>&lt;link rel=&quot;canonical&quot; href=&quot;https://example.com/page/&quot;&gt;</code>, it consolidates link and ranking signals onto one preferred address. You can check missing or conflicting canonicals across up to 25 pages in our <Link href="/narzedzia/audyt-seo">free SEO audit</Link>.</p>
@@ -120,7 +120,7 @@ export default async function ArticleCanonicalPage({ params }) {
                 <li>Your platform generates dynamic URL parameters (e.g., price filtering, UTM tags).</li>
                 <li>The service is available simultaneously in www and non-www versions (combine this with a 301 redirect).</li>
                 <li>The CMS creates addresses with and without a trailing slash.</li>
-                <li>You distribute content (e.g., guest SEO copywriting) on external portals – you should implement cross-domain canonical.</li>
+                <li>You distribute content (e.g., guest SEO copywriting) on external portals - you should implement cross-domain canonical.</li>
               </ul>
               
               <h3>Definitely avoid canonical when:</h3>
@@ -162,17 +162,17 @@ export default async function ArticleCanonicalPage({ params }) {
               </div>
               <p>Never combine a canonical tag with a noindex directive. These are contradictory technical signals (one says "index another page instead of this one", the other "don't index it at all").</p>
 
-              <h2 id="jak-wdrozyc">How to correctly implement a canonical tag – 5 proven ways</h2>
+              <h2 id="jak-wdrozyc">How to correctly implement a canonical tag - 5 proven ways</h2>
               <ol>
-                <li><span style={{ fontWeight: 'bold' }}>Tag in the <code>&lt;head&gt;</code> section of the HTML document</span> – the most recommended and easily verifiable method.</li>
-                <li><span style={{ fontWeight: 'bold' }}>HTTP Header</span> – also works for other file types (e.g., PDF documents, spreadsheets, or images) for which a standard HTML tag cannot be applied.</li>
-                <li><span style={{ fontWeight: 'bold' }}>sitemap.xml file</span> – all addresses submitted in the sitemap are treated by Google as canonical suggestions.</li>
-                <li><span style={{ fontWeight: 'bold' }}>SEO plugins in CMS systems</span> – most systems like WordPress automate the self-referencing canonical process for basic pages.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Cross-domain canonical</span> – essential when syndicating articles on other, external domains.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Tag in the <code>&lt;head&gt;</code> section of the HTML document</span> - the most recommended and easily verifiable method.</li>
+                <li><span style={{ fontWeight: 'bold' }}>HTTP Header</span> - also works for other file types (e.g., PDF documents, spreadsheets, or images) for which a standard HTML tag cannot be applied.</li>
+                <li><span style={{ fontWeight: 'bold' }}>sitemap.xml file</span> - all addresses submitted in the sitemap are treated by Google as canonical suggestions.</li>
+                <li><span style={{ fontWeight: 'bold' }}>SEO plugins in CMS systems</span> - most systems like WordPress automate the self-referencing canonical process for basic pages.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Cross-domain canonical</span> - essential when syndicating articles on other, external domains.</li>
               </ol>
 
               <h2 id="bledy">Most common mistakes that destroy SEO effects</h2>
-              <p>Canonicalization errors are insidious because the site looks and works normally for the user, but search engine traffic still drops (more about solving problems can be found in the guide <a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization-troubleshooting" target="_blank" rel="noopener noreferrer">Fix Canonicalization Issues – Google</a>).</p>
+              <p>Canonicalization errors are insidious because the site looks and works normally for the user, but search engine traffic still drops (more about solving problems can be found in the guide <a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization-troubleshooting" target="_blank" rel="noopener noreferrer">Fix Canonicalization Issues - Google</a>).</p>
               <ul>
                 <li>Pointing to addresses with a 404 or 5xx error.</li>
                 <li>Canonical chaos / loops (Page A → Page B → Page C).</li>
@@ -190,12 +190,12 @@ export default async function ArticleCanonicalPage({ params }) {
               <h2 id="narzedzia">Tools for checking and monitoring canonical tags</h2>
               <p>Regular monitoring is the site administrator's duty.</p>
               <ul>
-                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> – the "Indexing" tab precisely shows what tag you implemented and what Google actually considered.</li>
-                <li><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer">Screaming Frog SEO Spider</a> – a mandatory tool before any deployment - catches loops and broken canonical links across the entire domain.</li>
-                <li>Ahrefs / Senuto – automated cloud tools for continuously checking the technical state of the site.</li>
+                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> - the "Indexing" tab precisely shows what tag you implemented and what Google actually considered.</li>
+                <li><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer">Screaming Frog SEO Spider</a> - a mandatory tool before any deployment - catches loops and broken canonical links across the entire domain.</li>
+                <li>Ahrefs / Senuto - automated cloud tools for continuously checking the technical state of the site.</li>
               </ul>
 
-              <h2 id="checklist">Canonical implementation checklist – technical SEO step by step</h2>
+              <h2 id="checklist">Canonical implementation checklist - technical SEO step by step</h2>
               <ol>
                 <li>Choose the final, preferred version of the domain (with/without www, with/without trailing slash).</li>
                 <li>Force permanent 301 redirects for all other URL variants.</li>
@@ -206,7 +206,7 @@ export default async function ArticleCanonicalPage({ params }) {
 
               <h2 id="oferta">AI SEO COMPANY offer: technical audit and optimization packages</h2>
               <p>Choosing a reliable <Link href="/o-nas">SEO partner</Link> is the foundation of success. At AI SEO COMPANY, we understand that without a healthy technical foundation, no off-site activities or the best content will bring the expected results.</p>
-              <p>Before implementing a solid strategy, we conduct an <Link href="/audyt-seo">advanced SEO audit</Link>, which shows the real state of the site's structure – including the correctness of canonical tags, sitemap, and URL architecture. We support both <Link href="/seo-lokalne-warszawa">local positioning</Link> for smaller companies and clinics, as well as e-commerce projects. If the new address comes from a domain or URL change, go through the free <Link href="/narzedzia/checklista-migracji-strony">website migration checklist</Link> as well.</p>
+              <p>Before implementing a solid strategy, we conduct an <Link href="/audyt-seo">advanced SEO audit</Link>, which shows the real state of the site's structure - including the correctness of canonical tags, sitemap, and URL architecture. We support both <Link href="/seo-lokalne-warszawa">local positioning</Link> for smaller companies and clinics, as well as e-commerce projects. If the new address comes from a domain or URL change, go through the free <Link href="/narzedzia/checklista-migracji-strony">website migration checklist</Link> as well.</p>
               <p>As part of the cooperation, we make sure that canonical tags, sitemap.xml, and store structure harmonize with each other. This is the safest way to stable visibility growth.</p>
               <p>Do you want to check what canonical tags look like on your site? <Link href={homeHash('kontakt', locale)}>Schedule a free consultation</Link>.</p>
               
@@ -227,9 +227,9 @@ export default async function ArticleCanonicalPage({ params }) {
               </span>
             </div>
             {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page – do not demote it. */}
+                renders, so this is not a second H1 on the page - do not demote it. */}
               <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Tag kanoniczny SEO – czym jest, jak działa i jak go wdrożyć w 2026
+              Tag kanoniczny SEO - czym jest, jak działa i jak go wdrożyć w 2026
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -243,7 +243,7 @@ export default async function ArticleCanonicalPage({ params }) {
                 Tag kanoniczny (<code>rel="canonical"</code>) to absolutny fundament technicznego SEO, bez którego skuteczne <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie strony w Google</Link> bywa praktycznie niemożliwe. Zanim zainwestujesz ogromne budżety w zaawansowany copywriting SEO lub kosztowne kampanie link buildingowe, musisz upewnić się, że wyszukiwarka wie, która treść na Twojej stronie jest tą oryginalną. Odpowiednio wdrożony tag canonical SEO funkcjonuje jako drogowskaz dla Google i innych wyszukiwarek. Mówi on jasno, która wersja danej strony jest wersją główną i najważniejszą.
               </p>
               
-              <p>Profesjonalne pozycjonowanie Google w dobie rosnącej złożoności systemów e-commerce i parametrów śledzących musi mierzyć się z problemem duplikacji treści. Bez poprawnego wdrożenia tego elementu wyszukiwarka może indeksować dziesiątki wersji tej samej podstrony – z parametrami sortowania, z prefiksem www i bez niego, z ukośnikiem na końcu (trailing slash) lub bez.</p>
+              <p>Profesjonalne pozycjonowanie Google w dobie rosnącej złożoności systemów e-commerce i parametrów śledzących musi mierzyć się z problemem duplikacji treści. Bez poprawnego wdrożenia tego elementu wyszukiwarka może indeksować dziesiątki wersji tej samej podstrony - z parametrami sortowania, z prefiksem www i bez niego, z ukośnikiem na końcu (trailing slash) lub bez.</p>
               
               <p>Zjawisko to może rozproszyć sygnały (linki) między wersjami i utrudnić Google wybór adresu. W praktyce dobrze ustawiony canonical pomaga skonsolidować ruch organiczny na preferowanej stronie.</p>
 
@@ -256,7 +256,7 @@ export default async function ArticleCanonicalPage({ params }) {
                 <code>&lt;link rel="canonical" href="https://przyklad.pl/preferowana-strona/" /&gt;</code>
               </div>
 
-              <p>Informuje on algorytmy wyszukiwarek: „To jest oficjalna, kanoniczna wersja tego materiału. Wszystkie inne wersje traktuj wyłącznie jako duplikaty i przekaż cały zebrany przez nie autorytet tutaj” (szczegóły opisują <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener noreferrer">oficjalne wytyczne Google – Consolidate duplicate URLs</a>). Google traktuje to jako silną wskazówkę, lecz jeśli strona z tagiem będzie np. zwracać błąd, algorytm i tak zignoruje nasze zalecenie i samodzielnie wybierze inny URL.</p>
+              <p>Informuje on algorytmy wyszukiwarek: „To jest oficjalna, kanoniczna wersja tego materiału. Wszystkie inne wersje traktuj wyłącznie jako duplikaty i przekaż cały zebrany przez nie autorytet tutaj” (szczegóły opisują <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener noreferrer">oficjalne wytyczne Google - Consolidate duplicate URLs</a>). Google traktuje to jako silną wskazówkę, lecz jeśli strona z tagiem będzie np. zwracać błąd, algorytm i tak zignoruje nasze zalecenie i samodzielnie wybierze inny URL.</p>
 
               {/* 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 24): H2 z PAA „Jak oznaczyć stronę kanoniczną”. */}
               <h2 id="jak-oznaczyc">Jak oznaczyć stronę kanoniczną</h2>
@@ -278,7 +278,7 @@ export default async function ArticleCanonicalPage({ params }) {
                 <li>Twoja platforma generuje dynamiczne parametry URL (np. filtrowanie po cenie, tagi UTM).</li>
                 <li>Serwis dostępny jest jednocześnie w wersji z www i bez www (dodatkowo połącz to z przekierowaniem 301).</li>
                 <li>System CMS tworzy adresy z ukośnikiem na końcu (trailing slash) i bez niego.</li>
-                <li>Dystrybuujesz treści (np. gościnny copywriting SEO) na portalach zewnętrznych – powinieneś wdrożyć cross-domain canonical.</li>
+                <li>Dystrybuujesz treści (np. gościnny copywriting SEO) na portalach zewnętrznych - powinieneś wdrożyć cross-domain canonical.</li>
               </ul>
 
               <h3>Zdecydowanie unikaj canonical, gdy:</h3>
@@ -321,17 +321,17 @@ export default async function ArticleCanonicalPage({ params }) {
 
               <p>Nigdy nie łącz tagu canonical z dyrektywą noindex. Są to sprzeczne sygnały techniczne (jeden mówi „zindeksuj inną stronę zamiast tej”, drugi „w ogóle jej nie indeksuj”).</p>
 
-              <h2 id="jak-wdrozyc">Jak poprawnie wdrożyć tag kanoniczny – 5 sprawdzonych sposobów</h2>
+              <h2 id="jak-wdrozyc">Jak poprawnie wdrożyć tag kanoniczny - 5 sprawdzonych sposobów</h2>
               <ol>
-                <li><span style={{ fontWeight: 'bold' }}>Tag w sekcji <code>&lt;head&gt;</code> dokumentu HTML</span> – najbardziej polecana i łatwo weryfikowalna metoda.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Nagłówek HTTP (HTTP Header)</span> – działa również dla innych typów plików (np. dokumentów PDF, arkuszy kalkulacyjnych czy obrazów), dla których nie można zastosować standardowego tagu w HTML.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Plik sitemap.xml</span> – wszystkie zgłoszone adresy w mapie witryny są traktowane przez Google jako sugestie kanoniczne.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Wtyczki SEO w systemach CMS</span> – większość systemów jak WordPress automatyzuje proces self-referencing canonical dla podstawowych stron.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Cross-domain canonical</span> – niezbędny przy syndykacji artykułów na innych, zewnętrznych domenach.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Tag w sekcji <code>&lt;head&gt;</code> dokumentu HTML</span> - najbardziej polecana i łatwo weryfikowalna metoda.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Nagłówek HTTP (HTTP Header)</span> - działa również dla innych typów plików (np. dokumentów PDF, arkuszy kalkulacyjnych czy obrazów), dla których nie można zastosować standardowego tagu w HTML.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Plik sitemap.xml</span> - wszystkie zgłoszone adresy w mapie witryny są traktowane przez Google jako sugestie kanoniczne.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Wtyczki SEO w systemach CMS</span> - większość systemów jak WordPress automatyzuje proces self-referencing canonical dla podstawowych stron.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Cross-domain canonical</span> - niezbędny przy syndykacji artykułów na innych, zewnętrznych domenach.</li>
               </ol>
 
               <h2 id="bledy">Najczęstsze błędy, które niszczą efekty SEO</h2>
-              <p>Błędy w kanonikalizacji są podstępne, bo strona dla użytkownika wygląda i działa normalnie, a ruch z wyszukiwarki i tak maleje (więcej o rozwiązywaniu problemów znajdziesz w poradniku <a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization-troubleshooting" target="_blank" rel="noopener noreferrer">Fix Canonicalization Issues – Google</a>).</p>
+              <p>Błędy w kanonikalizacji są podstępne, bo strona dla użytkownika wygląda i działa normalnie, a ruch z wyszukiwarki i tak maleje (więcej o rozwiązywaniu problemów znajdziesz w poradniku <a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization-troubleshooting" target="_blank" rel="noopener noreferrer">Fix Canonicalization Issues - Google</a>).</p>
               <ul>
                 <li>Wskazywanie na adresy z błędem 404 lub 5xx.</li>
                 <li>Kanoniczny chaos / pętle (Strona A → Strona B → Strona C).</li>
@@ -345,7 +345,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <h2 id="ecommerce">Strategia canonical w e-commerce i na platformach PrestaShop</h2>
               <p>Zlecając specjalistom <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie sklepu</Link>, najwięcej uwagi zawsze poświęca się filtrom i parametrom sesji. Tag kanoniczny na wygenerowanych adresach URL z parametrami powinien bezwzględnie wskazywać na „czystą” wersję docelowej kategorii.</p>
               
-              <p>W tym miejscu warto poruszyć specyfikę niektórych popularnych platform. Właściciele e-commerce’ów nieustannie poszukują wiedzy, wpisując hasła takie jak <em>canonical url prestashop</em> czy <em>prestashop canonical url</em> w obawie przed duplikacją treści. Przy platformach takich jak PrestaShop zalecamy weryfikację, czy canonical jest generowany poprawnie – bardzo często problemy wynikają z gotowych modułów optymalizacyjnych lub z konfliktów zaszytych bezpośrednio w szablonie. W AI SEO COMPANY preferujemy implementację bezpośrednio w szablonie i kodzie witryny, aby uniknąć konfliktów w bazie danych. Takie podejście ogranicza konflikty modułów i zwykle porządkuje indeksację (bez gwarancji).</p>
+              <p>W tym miejscu warto poruszyć specyfikę niektórych popularnych platform. Właściciele e-commerce’ów nieustannie poszukują wiedzy, wpisując hasła takie jak <em>canonical url prestashop</em> czy <em>prestashop canonical url</em> w obawie przed duplikacją treści. Przy platformach takich jak PrestaShop zalecamy weryfikację, czy canonical jest generowany poprawnie - bardzo często problemy wynikają z gotowych modułów optymalizacyjnych lub z konfliktów zaszytych bezpośrednio w szablonie. W AI SEO COMPANY preferujemy implementację bezpośrednio w szablonie i kodzie witryny, aby uniknąć konfliktów w bazie danych. Takie podejście ogranicza konflikty modułów i zwykle porządkuje indeksację (bez gwarancji).</p>
 
               {/* 5.11.2026 (PLAN-v2 6.25 R1, CS-15 wariant a): prawdziwy fragment generateMetadata z tego pliku
                   i znaczniki odczytane z HTML produkcji 4.11.2026 (dane/crawl-produkcja-2026-11-04.json). */}
@@ -383,24 +383,24 @@ export default async function ArticleCanonicalPage({ params }) {
               <h2 id="narzedzia">Narzędzia do sprawdzania i monitorowania tagów kanonicznych</h2>
               <p>Regularne monitorowanie to obowiązek administratora strony.</p>
               <ul>
-                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> – zakładka „Indeksowanie” precyzyjnie pokazuje, jaki tag wdrożyłeś Ty, a jaki faktycznie uznało Google.</li>
-                <li><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer">Screaming Frog SEO Spider</a> – narzędzie obowiązkowe przed każdym wdrożeniem – wyłapuje pętle i niedziałające odnośniki kanoniczne w obrębie całej domeny.</li>
-                <li>Ahrefs / Senuto – automatyczne chmurowe narzędzia do ciągłego sprawdzania stanu technicznego witryny.</li>
+                <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> - zakładka „Indeksowanie” precyzyjnie pokazuje, jaki tag wdrożyłeś Ty, a jaki faktycznie uznało Google.</li>
+                <li><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer">Screaming Frog SEO Spider</a> - narzędzie obowiązkowe przed każdym wdrożeniem - wyłapuje pętle i niedziałające odnośniki kanoniczne w obrębie całej domeny.</li>
+                <li>Ahrefs / Senuto - automatyczne chmurowe narzędzia do ciągłego sprawdzania stanu technicznego witryny.</li>
               </ul>
 
-              <h2 id="checklist">Checklist wdrożenia canonical – techniczne SEO krok po kroku</h2>
+              <h2 id="checklist">Checklist wdrożenia canonical - techniczne SEO krok po kroku</h2>
               <ol>
                 <li>Wybierz ostateczną, preferowaną wersję domeny (z/bez www, z/bez slasha na końcu).</li>
                 <li>Wymuś stałe przekierowania 301 dla wszystkich innych wariantów URL-i.</li>
                 <li>Zaimplementuj self-referencing canonical na każdej unikalnej, wartościowej podstronie.</li>
                 <li>Skonfiguruj parametry URL (np. UTM, filtry), by tag z nich kierował zawsze na czysty adres.</li>
-                <li>Zadbaj o porządek – wyklucz z pliku sitemap.xml wszystkie adresy, które nie są kanoniczne.</li>
+                <li>Zadbaj o porządek - wyklucz z pliku sitemap.xml wszystkie adresy, które nie są kanoniczne.</li>
               </ol>
 
               <h2 id="oferta">Oferta AI SEO COMPANY: audyt techniczny i pakiety optymalizacji</h2>
               <p>Wybór rzetelnej <Link href="/o-nas">agencji SEO</Link> to podstawa sukcesu. W AI SEO COMPANY rozumiemy, że bez zdrowego fundamentu technicznego żadne działania off-site ani najlepszy content nie przyniosą zakładanych rezultatów.</p>
               
-              <p>Przed wdrożeniem stałej strategii przeprowadzamy <Link href="/audyt-seo">zaawansowany audyt SEO</Link>, który pokazuje rzeczywisty stan struktury witryny – w tym poprawność tagów kanonicznych, mapy witryny i architektury adresów URL. Obsługujemy zarówno <Link href="/seo-lokalne-warszawa">pozycjonowanie lokalne</Link> mniejszych firm i gabinetów, jak i projekty e-commerce. Jeśli nowe adresy wynikają ze zmiany domeny albo struktury URL, przejdź też darmową checklistę: <Link href="/narzedzia/checklista-migracji-strony">migracja strony</Link>.</p>
+              <p>Przed wdrożeniem stałej strategii przeprowadzamy <Link href="/audyt-seo">zaawansowany audyt SEO</Link>, który pokazuje rzeczywisty stan struktury witryny - w tym poprawność tagów kanonicznych, mapy witryny i architektury adresów URL. Obsługujemy zarówno <Link href="/seo-lokalne-warszawa">pozycjonowanie lokalne</Link> mniejszych firm i gabinetów, jak i projekty e-commerce. Jeśli nowe adresy wynikają ze zmiany domeny albo struktury URL, przejdź też darmową checklistę: <Link href="/narzedzia/checklista-migracji-strony">migracja strony</Link>.</p>
               
               <p>W ramach współpracy dbamy o to, by tagi kanoniczne, sitemap.xml oraz struktura sklepu ze sobą współgrały. To najbezpieczniejsza droga do stabilnego wzrostu widoczności.</p>
               

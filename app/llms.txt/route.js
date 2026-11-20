@@ -11,7 +11,7 @@ import { BIURO, SIEDZIBA, adresLinia } from '@/lib/firma';
 // z lib/publikacja.js trafiały do pliku same w dniu publikacji, a nieopublikowane nigdy.
 // Treść stron istniejących = dotychczasowy public/llms.txt z poprawkami:
 // - zdanie encji (6.24, AV-05) = description #organization w app/[locale]/layout.js i 1. akapit /o-nas,
-// - nagłówek „Pozycjonowanie w AI (GEO – Generative Engine Optimization)” (AV-15, AV-19),
+// - nagłówek „Pozycjonowanie w AI (GEO - Generative Engine Optimization)” (AV-15, AV-19),
 // - dopisek o pomiarze AI w SEO Premium albo za dopłatą 490 zł (AV-15),
 // - sekcja „Profile firmy poza stroną” (Clutch, Sortlist = sameAs w layout.js),
 // - bez biblioteki artykułów (SA-12: /blog/biblioteka = 308 na /blog).
@@ -97,7 +97,7 @@ function trescLlms() {
 - Dane klienta: eksport CSV i JSON, REST API i serwer MCP z tokenem tylko do odczytu ([spis API](https://panel.ai-seo-company.pl/api/v1)).`,
 
     [
-      '## Pozycjonowanie w AI (GEO – Generative Engine Optimization)',
+      '## Pozycjonowanie w AI (GEO - Generative Engine Optimization)',
       '',
       `- [Pozycjonowanie w AI](${url('/pozycjonowanie-w-ai')}) · [AI search optimization (EN)](${url('/en/ai-search-optimization')}): audyt widoczności w AI 990 zł netto (zaliczany na pierwszy miesiąc abonamentu); GEO w SEO Premium, do SEO Standard dopłata 490 zł netto miesięcznie; wyniki co tydzień w panelu klienta.`,
       ...geo,

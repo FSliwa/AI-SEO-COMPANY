@@ -3,7 +3,7 @@
 // Artykuł tylko po angielsku (enOnly w lib/blogPosts.js): w polskich frazach popyt na „ile trwa
 // pozycjonowanie” to 30 wyszukiwań miesięcznie i odpowiada na nie FAQ na /pozycjonowanie-stron-internetowych.
 // Dane własne: przebiegi z Google Search Console czterech serwisów już opublikowanych na stronie
-// (lib/jakDlugoSeo.js liczy je z lib/realizacjeGsc.js). Zdanie o celu TOP 3 w 2–3 miesiące jest
+// (lib/jakDlugoSeo.js liczy je z lib/realizacjeGsc.js). Zdanie o celu TOP 3 w 2-3 miesiące jest
 // dosłownie jak na /seo-lokalne-warszawa (wersja EN FAQ); nie zmieniać.
 // Rejestr (blogPosts, sitemapa, llms.txt, linki wchodzące): ai-seo-prace/airslate/nowa-en/REJESTR.md.
 import { articleLanguages, articleRobots } from '@/lib/blogPosts';
@@ -64,7 +64,7 @@ const FAQ = [
   },
   {
     q: 'Do you guarantee a ranking after a set number of months?',
-    a: 'We do not guarantee position 1, because Google’s algorithm decides the rankings. Our commitment for agreed local keywords is a TOP 3 goal within 2–3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us.',
+    a: 'We do not guarantee position 1, because Google’s algorithm decides the rankings. Our commitment for agreed local keywords is a TOP 3 goal within 2-3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us.',
   },
   {
     q: 'Is SEO worth it if it takes months?',
@@ -155,17 +155,17 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
                 caption="Timeframes we give clients, by goal"
                 columns={[{ key: 'cel', label: 'Goal' }, { key: 'czas', label: 'Timeframe we state' }, { key: 'gdzie', label: 'Where we say it' }]}
                 rows={[
-                  { id: 'gbp', cel: 'First calls and enquiries from an optimized Google Business Profile', czas: '2–4 weeks', gdzie: <Link href="/seo-lokalne-warszawa">Local SEO in Warsaw</Link> },
-                  { id: 'tech', cel: 'First visible growth in visibility after technical optimization', czas: '4–8 weeks', gdzie: <Link href="/pozycjonowanie-stron-internetowych">Website SEO service</Link> },
-                  { id: 'site', cel: 'Whole-site improvement; the biggest return usually after month six', czas: '3–9 months, depending on competition', gdzie: <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">SEO pricing guide</Link> },
-                  { id: 'top3', cel: 'Agreed local keywords in the TOP 3 (our goal)', czas: '2–3 months', gdzie: 'Local SEO in Warsaw' },
+                  { id: 'gbp', cel: 'First calls and enquiries from an optimized Google Business Profile', czas: '2-4 weeks', gdzie: <Link href="/seo-lokalne-warszawa">Local SEO in Warsaw</Link> },
+                  { id: 'tech', cel: 'First visible growth in visibility after technical optimization', czas: '4-8 weeks', gdzie: <Link href="/pozycjonowanie-stron-internetowych">Website SEO service</Link> },
+                  { id: 'site', cel: 'Whole-site improvement; the biggest return usually after month six', czas: '3-9 months, depending on competition', gdzie: <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">SEO pricing guide</Link> },
+                  { id: 'top3', cel: 'Agreed local keywords in the TOP 3 (our goal)', czas: '2-3 months', gdzie: 'Local SEO in Warsaw' },
                   { id: 'nat', cel: 'Stable high positions for very competitive national keywords', czas: '3 to 6 months', gdzie: 'Website SEO service' },
                 ]}
                 przypis="Source: the timeframes stated on our own pages, as of 18 November 2026. Timeframes depend on competition, the starting state of the site and the scope of work."
               />
               </div>
               <p>
-                The goal for agreed local keywords is a TOP 3 within 2–3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us. We do not promise position 1, because Google decides the rankings.
+                The goal for agreed local keywords is a TOP 3 within 2-3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us. We do not promise position 1, because Google decides the rankings.
               </p>
 
               <h2 id="what-google-says">What does Google say about how long SEO takes?</h2>
@@ -192,30 +192,30 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
                 rows={[
                   {
                     id: 'mt',
-                    site: 'Madame Thai, a new restaurant location: 26 days (27 Jul–21 Aug 2026)',
+                    site: 'Madame Thai, a new restaurant location: 26 days (27 Jul-21 Aug 2026)',
                     early: `Week 1: about ${MADAME_THAI.tydzien1[1]} impressions and ${MADAME_THAI.tydzien1[0]} clicks`,
                     end: `Week 3: about ${liczba(MADAME_THAI.tydzien3[1])} impressions and ${MADAME_THAI.tydzien3[0]} clicks; total ${liczba(MADAME_THAI.razem[1])} impressions and ${MADAME_THAI.razem[0]} clicks`,
                   },
                   {
                     id: 'st',
-                    site: 'Staniax, B2B industrial site started from zero visibility: 13 weeks (22 May–21 Aug 2026)',
+                    site: 'Staniax, B2B industrial site started from zero visibility: 13 weeks (22 May-21 Aug 2026)',
                     early: `First 8 days: about ${STANIAX.tydzien1[3]} impressions`,
                     end: `Week 13: about ${STANIAX.tydzien13[3]} impressions a week; total ${liczba(STANIAX.razem[1])} impressions and ${STANIAX.razem[0]} clicks, with ${STANIAX.minKlikTyg} to ${STANIAX.maxKlikTyg} clicks a week throughout`,
                   },
                   {
                     id: 'tql',
-                    site: 'TQL, an ISO standards consultancy with a freshly launched site: first 18 days (5–22 Aug 2026)',
+                    site: 'TQL, an ISO standards consultancy with a freshly launched site: first 18 days (5-22 Aug 2026)',
                     early: `${TQL.pierwszyDzien} impression on day one`,
                     end: `Last ${TQL.ostatniTydzien.length} days: ${Math.min(...TQL.ostatniTydzien)} to ${Math.max(...TQL.ostatniTydzien)} impressions a day; total ${TQL.razemWysw} impressions at an average position of 34.6`,
                   },
                   {
                     id: 'ase',
-                    site: 'ASE-BOT, our own project in a competitive US niche: 13 weeks (22 May–21 Aug 2026)',
-                    early: `Weekly impressions peaked at about ${liczba(ASE_BOT.szczyt[3])} (4–10 Jul)`,
+                    site: 'ASE-BOT, our own project in a competitive US niche: 13 weeks (22 May-21 Aug 2026)',
+                    early: `Weekly impressions peaked at about ${liczba(ASE_BOT.szczyt[3])} (4-10 Jul)`,
                     end: `Fell to about ${ASE_BOT.ostatni[3]} a week by 21 August; total ${liczba(ASE_BOT.razem[1])} impressions and ${ASE_BOT.razem[0]} clicks`,
                   },
                 ]}
-                przypis="Source: Google Search Console panels of the sites named, data up to 21–22 August 2026. Series read from the panels and scaled to their totals (reading error before scaling 0.6–4%), so weekly values are approximate."
+                przypis="Source: Google Search Console panels of the sites named, data up to 21-22 August 2026. Series read from the panels and scaled to their totals (reading error before scaling 0.6-4%), so weekly values are approximate."
               />
               </div>
               <p>
@@ -229,7 +229,7 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
 
               <h2 id="what-changes-the-timeline">What makes SEO faster or slower?</h2>
               <ul>
-                <li><strong>Competition.</strong> A specific local query moves sooner than a broad national one. This is why we quote 2–3 months for agreed local keywords and 3 to 6 months for very competitive national ones.</li>
+                <li><strong>Competition.</strong> A specific local query moves sooner than a broad national one. This is why we quote 2-3 months for agreed local keywords and 3 to 6 months for very competitive national ones.</li>
                 <li><strong>Site history.</strong> A domain with history starts from a higher base. A new domain has to earn trust first, which Ahrefs’ figures above illustrate.</li>
                 <li><strong>Technical state.</strong> Crawling errors, slow pages and wrong canonical tags delay everything else. That is why the first weeks usually go to an <Link href="/audyt-seo">SEO audit</Link> and fixes.</li>
                 <li><strong>Content.</strong> Pages that answer the real query, one topic per URL, rank sooner than thin or overlapping pages.</li>

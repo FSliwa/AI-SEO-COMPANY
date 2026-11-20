@@ -1,4 +1,4 @@
-// Tabela porównania (PLAN-v2 6.0; P1–P3, P6, L1, AU1, S1). Jedno API dla 2–4 kolumn
+// Tabela porównania (PLAN-v2 6.0; P1-P3, P6, L1, AU1, S1). Jedno API dla 2-4 kolumn
 // i dla układu „pytanie / dobra odpowiedź / czerwona flaga” (P6). Bez hooków: działa
 // w komponentach serwerowych i klienckich.
 //
@@ -6,7 +6,7 @@
 //     id="tabela-kryteriow"
 //     caption="Pozycjonowanie za efekt i abonament w 10 kryteriach"
 //     columns={[{ key: 'kryterium', label: 'Kryterium' }, { key: 'efekt', label: 'Za efekt' }, { key: 'abonament', label: 'Abonament' }]}
-//     rows={[{ kryterium: 'Cena', efekt: '99–149 zł za frazę', abonament: 'od 1 900 zł netto' }]}
+//     rows={[{ kryterium: 'Cena', efekt: '99-149 zł za frazę', abonament: 'od 1 900 zł netto' }]}
 //     przypis="Źródło: cenniki 17 agencji, odczyt 25.10.2026."
 //   />
 //

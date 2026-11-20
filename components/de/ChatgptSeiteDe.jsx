@@ -1,6 +1,6 @@
 // Deutsche Spoke-Seite /de/ki-suchoptimierung/chatgpt (Faza 2 DE, 19.11.2026; klucz PL: /pozycjonowanie-w-ai/chatgpt).
 // Serverkomponente im gleichen Stil wie GeoSeiteDe.jsx: AnswerBox, BylineDe, CompareTable der eigenen API-Messung
-// vom 04.–05.11.2026, 7 Umsetzungsschritte, AppleFaq (FAQPage JSON-LD), ZrodlaDe, Contact und Footer.
+// vom 04.-05.11.2026, 7 Umsetzungsschritte, AppleFaq (FAQPage JSON-LD), ZrodlaDe, Contact und Footer.
 
 import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -88,7 +88,7 @@ export default function ChatgptSeiteDe() {
           </Reveal>
           <Reveal style={{ display: 'grid', gap: '1.1rem', marginTop: '1.4rem' }}>
             <p lang="de" style={tekstStyl}>
-              ChatGPT besitzt keine fest hinterlegte Empfehlungsliste für Dienstleister. Entscheidend ist, ob das Modell aus seinem Trainingswissen antwortet (ohne Links) oder die Live-Websuche (<em>ChatGPT search</em>) auslöst. In unserem Test griff ChatGPT bei <strong>jeder</strong> Bitte um eine Anbieter-Empfehlung und bei <strong>jeder</strong> Preisfrage auf die Websuche zurück – mit einer klaren Zweiteilung der Quellen:
+              ChatGPT besitzt keine fest hinterlegte Empfehlungsliste für Dienstleister. Entscheidend ist, ob das Modell aus seinem Trainingswissen antwortet (ohne Links) oder die Live-Websuche (<em>ChatGPT search</em>) auslöst. In unserem Test griff ChatGPT bei <strong>jeder</strong> Bitte um eine Anbieter-Empfehlung und bei <strong>jeder</strong> Preisfrage auf die Websuche zurück - mit einer klaren Zweiteilung der Quellen:
             </p>
             <CompareTable
               id={CHATGPT_DE.tabelleMessung.id}

@@ -47,30 +47,30 @@ export default function RegulaminContent() {
 
                 <h2 style={h2}>§ 2. Definicje</h2>
                 <ul style={ul}>
-                  <li><strong>Serwis</strong> – strona internetowa dostępna pod adresem ai-seo-company.pl wraz z podstronami.</li>
-                  <li><strong>Usługobiorca</strong> – osoba fizyczna, osoba prawna lub jednostka organizacyjna korzystająca z Serwisu.</li>
-                  <li><strong>Usługa elektroniczna</strong> – świadczenie wykonywane bez jednoczesnej obecności stron, drogą przesyłania danych na indywidualne żądanie Usługobiorcy.</li>
+                  <li><strong>Serwis</strong> - strona internetowa dostępna pod adresem ai-seo-company.pl wraz z podstronami.</li>
+                  <li><strong>Usługobiorca</strong> - osoba fizyczna, osoba prawna lub jednostka organizacyjna korzystająca z Serwisu.</li>
+                  <li><strong>Usługa elektroniczna</strong> - świadczenie wykonywane bez jednoczesnej obecności stron, drogą przesyłania danych na indywidualne żądanie Usługobiorcy.</li>
                 </ul>
 
                 <h2 style={h2}>§ 3. Rodzaje i zakres usług świadczonych drogą elektroniczną</h2>
                 <p>Za pośrednictwem Serwisu Usługodawca świadczy nieodpłatnie następujące usługi elektroniczne:</p>
                 <ul style={ul}>
-                  <li><strong>Dostęp do treści Serwisu</strong> – przeglądanie stron informacyjnych, opisów usług i artykułów publikowanych na blogu.</li>
-                  <li><strong>Formularz kontaktowy</strong> – umożliwiający przesłanie zapytania ofertowego. Usługa ma charakter jednorazowy i kończy się z chwilą wysłania wiadomości lub zaprzestania jej wypełniania.</li>
-                  <li><strong>Darmowe narzędzia</strong> – audyt SEO, sprawdzarka widoczności w AI, kalkulator strat SEO, makieta nowej strony, generator llms.txt i sprawdzarka autorytetu domeny. Usługa ma charakter jednorazowy i kończy się z chwilą wyświetlenia wyniku na stronie. Dla każdego narzędzia obowiązuje dzienny limit użyć z jednego adresu IP (na dobę: audyt SEO {AUDYT.limitIp}, sprawdzarka widoczności w AI {WIDOCZNOSC.limitIp}, makieta {MAKIETA.limitIp}, autorytet domeny {AUTORYTET.limitIp}, wysyłka wyniku kalkulatora {KALKULATOR.limitIp}); wynik jest orientacyjny i nie stanowi gwarancji ani wyceny.</li>
-                  <li><strong>Wysyłka wyniku narzędzia e-mailem</strong> – po podaniu adresu e-mail i zaznaczeniu zgody wysyłamy wynik na ten adres. Usługa jednorazowa, kończy się z chwilą wysłania wiadomości; wyniki i adres e-mail usuwamy po 60 dniach.</li>
-                  <li><strong>Newsletter</strong> – cykliczne wiadomości e-mail, po osobnej zgodzie i potwierdzeniu zapisu linkiem z wiadomości (double opt-in). Usługa ciągła, świadczona do czasu wypisania się jednym kliknięciem w wiadomości.</li>
-                  <li><strong>Comiesięczny audyt SEO</strong> – cykliczna wysyłka ponownego audytu wskazanej strony po osobnej zgodzie i potwierdzeniu linkiem z wiadomości (double opt-in). Usługa ciągła, świadczona do czasu wypisania się jednym kliknięciem w wiadomości.</li>
-                  <li><strong>Pobranie szablonu lub checklisty</strong> – po podaniu adresu e-mail w oknie z darmowym szablonem wysyłamy plik PDF na ten adres. Usługa jednorazowa, kończy się z chwilą wysłania wiadomości.</li>
+                  <li><strong>Dostęp do treści Serwisu</strong> - przeglądanie stron informacyjnych, opisów usług i artykułów publikowanych na blogu.</li>
+                  <li><strong>Formularz kontaktowy</strong> - umożliwiający przesłanie zapytania ofertowego. Usługa ma charakter jednorazowy i kończy się z chwilą wysłania wiadomości lub zaprzestania jej wypełniania.</li>
+                  <li><strong>Darmowe narzędzia</strong> - audyt SEO, sprawdzarka widoczności w AI, kalkulator strat SEO, makieta nowej strony, generator llms.txt i sprawdzarka autorytetu domeny. Usługa ma charakter jednorazowy i kończy się z chwilą wyświetlenia wyniku na stronie. Dla każdego narzędzia obowiązuje dzienny limit użyć z jednego adresu IP (na dobę: audyt SEO {AUDYT.limitIp}, sprawdzarka widoczności w AI {WIDOCZNOSC.limitIp}, makieta {MAKIETA.limitIp}, autorytet domeny {AUTORYTET.limitIp}, wysyłka wyniku kalkulatora {KALKULATOR.limitIp}); wynik jest orientacyjny i nie stanowi gwarancji ani wyceny.</li>
+                  <li><strong>Wysyłka wyniku narzędzia e-mailem</strong> - po podaniu adresu e-mail i zaznaczeniu zgody wysyłamy wynik na ten adres. Usługa jednorazowa, kończy się z chwilą wysłania wiadomości; wyniki i adres e-mail usuwamy po 60 dniach.</li>
+                  <li><strong>Newsletter</strong> - cykliczne wiadomości e-mail, po osobnej zgodzie i potwierdzeniu zapisu linkiem z wiadomości (double opt-in). Usługa ciągła, świadczona do czasu wypisania się jednym kliknięciem w wiadomości.</li>
+                  <li><strong>Comiesięczny audyt SEO</strong> - cykliczna wysyłka ponownego audytu wskazanej strony po osobnej zgodzie i potwierdzeniu linkiem z wiadomości (double opt-in). Usługa ciągła, świadczona do czasu wypisania się jednym kliknięciem w wiadomości.</li>
+                  <li><strong>Pobranie szablonu lub checklisty</strong> - po podaniu adresu e-mail w oknie z darmowym szablonem wysyłamy plik PDF na ten adres. Usługa jednorazowa, kończy się z chwilą wysłania wiadomości.</li>
                 </ul>
-                <p>Usługi płatne – audyt SEO, pozycjonowanie stron, projektowanie stron internetowych – nie są świadczone drogą elektroniczną w rozumieniu niniejszego regulaminu. Ich zakres, cenę i termin określa odrębna umowa zawierana indywidualnie z klientem.</p>
+                <p>Usługi płatne - audyt SEO, pozycjonowanie stron, projektowanie stron internetowych - nie są świadczone drogą elektroniczną w rozumieniu niniejszego regulaminu. Ich zakres, cenę i termin określa odrębna umowa zawierana indywidualnie z klientem.</p>
 
                 <h2 style={h2}>§ 4. Wymagania techniczne</h2>
                 <p>Do korzystania z Serwisu niezbędne są:</p>
                 <ul style={ul}>
                   <li>urządzenie z dostępem do internetu,</li>
                   <li>aktualna wersja przeglądarki internetowej z obsługą JavaScript,</li>
-                  <li>aktywne konto poczty elektronicznej – w przypadku korzystania z formularza kontaktowego, wysyłki wyniku narzędzia, newslettera i comiesięcznego audytu.</li>
+                  <li>aktywne konto poczty elektronicznej - w przypadku korzystania z formularza kontaktowego, wysyłki wyniku narzędzia, newslettera i comiesięcznego audytu.</li>
                 </ul>
                 <p>Usługodawca informuje, że korzystanie z internetu wiąże się z ryzykiem, w szczególności możliwością działania szkodliwego oprogramowania. Zalecane jest stosowanie aktualnego oprogramowania zabezpieczającego.</p>
 
@@ -78,7 +78,7 @@ export default function RegulaminContent() {
                 <p>Usługobiorcę obowiązuje zakaz dostarczania treści o charakterze bezprawnym, w szczególności treści naruszających prawa osób trzecich, wzywających do nienawiści, obraźliwych, a także treści zawierających złośliwe oprogramowanie. Usługodawca może odmówić realizacji zapytania naruszającego ten zakaz.</p>
 
                 <h2 style={h2}>§ 6. Zawarcie i rozwiązanie umowy o świadczenie usług elektronicznych</h2>
-                <p>Umowa o świadczenie usługi dostępu do treści Serwisu zostaje zawarta z chwilą wejścia na stronę i rozwiązana z chwilą jej opuszczenia – bez składania dodatkowych oświadczeń.</p>
+                <p>Umowa o świadczenie usługi dostępu do treści Serwisu zostaje zawarta z chwilą wejścia na stronę i rozwiązana z chwilą jej opuszczenia - bez składania dodatkowych oświadczeń.</p>
                 <p>Umowa o świadczenie usługi formularza kontaktowego zostaje zawarta z chwilą rozpoczęcia wypełniania formularza i rozwiązana z chwilą wysłania wiadomości albo zaprzestania jej wypełniania. Umowy o świadczenie darmowych narzędzi, wysyłki wyniku e-mailem i pobrania szablonu zostają zawarte z chwilą uruchomienia narzędzia lub wysłania formularza z adresem e-mail i rozwiązane z chwilą wyświetlenia wyniku albo wysłania wiadomości. Umowa o świadczenie newslettera i comiesięcznego audytu zostaje zawarta z chwilą potwierdzenia zapisu linkiem z wiadomości i rozwiązana z chwilą wypisania się (jednym kliknięciem w wiadomości) albo wycofania zgody. Korzystanie ze wszystkich usług jest w każdej chwili dobrowolne i może zostać przerwane bez podania przyczyny.</p>
 
                 <h2 style={h2}>§ 7. Tryb postępowania reklamacyjnego</h2>
@@ -112,30 +112,30 @@ export default function RegulaminContent() {
 
                 <h2 style={h2}>§ 2. Definitions</h2>
                 <ul style={ul}>
-                  <li><strong>Website</strong> – the website at ai-seo-company.pl together with its subpages.</li>
-                  <li><strong>User</strong> – a natural person, legal person or organisational unit using the Website.</li>
-                  <li><strong>Electronic service</strong> – a service performed without the simultaneous presence of the parties, by transmitting data at the User's individual request.</li>
+                  <li><strong>Website</strong> - the website at ai-seo-company.pl together with its subpages.</li>
+                  <li><strong>User</strong> - a natural person, legal person or organisational unit using the Website.</li>
+                  <li><strong>Electronic service</strong> - a service performed without the simultaneous presence of the parties, by transmitting data at the User's individual request.</li>
                 </ul>
 
                 <h2 style={h2}>§ 3. Types and scope of electronic services</h2>
                 <p>Through the Website the provider supplies the following services free of charge:</p>
                 <ul style={ul}>
-                  <li><strong>Access to Website content</strong> – browsing information pages, service descriptions and blog articles.</li>
-                  <li><strong>Contact form</strong> – allowing an enquiry to be sent. This is a one-off service ending when the message is sent or the form is abandoned.</li>
-                  <li><strong>Free tools</strong> – the SEO audit, the AI visibility checker, the SEO loss calculator, the website redesign mockup, the llms.txt generator and the domain authority checker. This is a one-off service ending when the result is shown on the page. Each tool has a daily usage limit per IP address (per day: SEO audit {AUDYT.limitIp}, AI visibility checker {WIDOCZNOSC.limitIp}, mockup {MAKIETA.limitIp}, domain authority {AUTORYTET.limitIp}, e-mailing the calculator result {KALKULATOR.limitIp}); results are indicative and are not a guarantee or a quotation.</li>
-                  <li><strong>Tool result sent by e-mail</strong> – after you enter your e-mail address and tick the consent, we send the result to that address. This is a one-off service ending when the message is sent; results and e-mail addresses are deleted after 60 days.</li>
-                  <li><strong>Newsletter</strong> – recurring e-mails, after a separate consent and confirmation of the subscription with the link in our e-mail (double opt-in). This is a continuing service provided until you unsubscribe with one click in any e-mail.</li>
-                  <li><strong>Monthly SEO audit</strong> – a recurring re-audit of the page you specify, after a separate consent and confirmation with the link in our e-mail (double opt-in). This is a continuing service provided until you unsubscribe with one click in any e-mail.</li>
-                  <li><strong>Template or checklist download</strong> – after you enter your e-mail address in the window offering a free template, we send the PDF file to that address. This is a one-off service ending when the message is sent.</li>
+                  <li><strong>Access to Website content</strong> - browsing information pages, service descriptions and blog articles.</li>
+                  <li><strong>Contact form</strong> - allowing an enquiry to be sent. This is a one-off service ending when the message is sent or the form is abandoned.</li>
+                  <li><strong>Free tools</strong> - the SEO audit, the AI visibility checker, the SEO loss calculator, the website redesign mockup, the llms.txt generator and the domain authority checker. This is a one-off service ending when the result is shown on the page. Each tool has a daily usage limit per IP address (per day: SEO audit {AUDYT.limitIp}, AI visibility checker {WIDOCZNOSC.limitIp}, mockup {MAKIETA.limitIp}, domain authority {AUTORYTET.limitIp}, e-mailing the calculator result {KALKULATOR.limitIp}); results are indicative and are not a guarantee or a quotation.</li>
+                  <li><strong>Tool result sent by e-mail</strong> - after you enter your e-mail address and tick the consent, we send the result to that address. This is a one-off service ending when the message is sent; results and e-mail addresses are deleted after 60 days.</li>
+                  <li><strong>Newsletter</strong> - recurring e-mails, after a separate consent and confirmation of the subscription with the link in our e-mail (double opt-in). This is a continuing service provided until you unsubscribe with one click in any e-mail.</li>
+                  <li><strong>Monthly SEO audit</strong> - a recurring re-audit of the page you specify, after a separate consent and confirmation with the link in our e-mail (double opt-in). This is a continuing service provided until you unsubscribe with one click in any e-mail.</li>
+                  <li><strong>Template or checklist download</strong> - after you enter your e-mail address in the window offering a free template, we send the PDF file to that address. This is a one-off service ending when the message is sent.</li>
                 </ul>
-                <p>Paid services – SEO audits, search engine optimisation and web design – are not provided by electronic means within the meaning of these terms. Their scope, price and schedule are set out in a separate agreement concluded individually with the client.</p>
+                <p>Paid services - SEO audits, search engine optimisation and web design - are not provided by electronic means within the meaning of these terms. Their scope, price and schedule are set out in a separate agreement concluded individually with the client.</p>
 
                 <h2 style={h2}>§ 4. Technical requirements</h2>
                 <p>Using the Website requires:</p>
                 <ul style={ul}>
                   <li>a device with internet access,</li>
                   <li>a current web browser with JavaScript enabled,</li>
-                  <li>an active e-mail account – when using the contact form, e-mailing a tool result, the newsletter and the monthly audit.</li>
+                  <li>an active e-mail account - when using the contact form, e-mailing a tool result, the newsletter and the monthly audit.</li>
                 </ul>
                 <p>The provider notes that using the internet carries risks, in particular exposure to malicious software. Keeping security software up to date is recommended.</p>
 

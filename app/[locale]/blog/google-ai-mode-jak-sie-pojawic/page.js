@@ -1,7 +1,7 @@
 // Artykuł tylko-PL (plOnly w lib/blogPosts.js, 308 /en/blog/<slug> -> /blog/<slug> w next.config.mjs).
 // Frazy: „google ai mode” (PL 2400/mies.), „tryb ai google” (1900/mies.); klaster ai-mode z seo/frazy-pl.csv (18.11.2026).
 // Fakty o AI Mode tylko ze źródeł pierwotnych Google (daty odczytu w ZRODLA) i z pomiarów własnych
-// z lib/pytaniaAi.js (4–5.11.2026, z podanym modelem). Nie twierdzimy, że mierzyliśmy AI Mode: nie mierzyliśmy.
+// z lib/pytaniaAi.js (4-5.11.2026, z podanym modelem). Nie twierdzimy, że mierzyliśmy AI Mode: nie mierzyliśmy.
 // Rozróżnienie od /blog/jak-zoptymalizowac-strone-pod-google-ai-overviews: tamten tekst to pełny przewodnik
 // po optymalizacji (technika, treść, Perplexity, plan 30 dni); ten dotyczy wyłącznie AI Mode:
 // dostępność w Polsce, czym różni się od AI Overviews, jak Google liczy go w Search Console, jak sprawdzać cytowania.
@@ -95,7 +95,7 @@ const CHRONOLOGIA = [
 
 const KROKI = [
   ['Sprawdź indeksowanie i fragmenty', 'Strona ma być zindeksowana i mieć prawo do wyświetlenia z fragmentem, bo tylko to Google podaje jako warunek. Przejrzyj robots.txt, CDN, nagłówki X-Robots-Tag i meta robots pod kątem noindex, nosnippet i max-snippet:0.'],
-  ['Odpowiadaj na pytania cząstkowe', 'AI Mode dzieli pytanie na podtematy i szuka każdego osobno. Daj więc każdemu podtematowi osobny nagłówek i 1–2 zdania odpowiedzi na jego początku. Strona spoza pierwszej dziesiątki może zostać zacytowana za jedną taką odpowiedź.'],
+  ['Odpowiadaj na pytania cząstkowe', 'AI Mode dzieli pytanie na podtematy i szuka każdego osobno. Daj więc każdemu podtematowi osobny nagłówek i 1-2 zdania odpowiedzi na jego początku. Strona spoza pierwszej dziesiątki może zostać zacytowana za jedną taką odpowiedź.'],
   ['Przewiduj pytania uzupełniające', 'Rozmowa trwa dalej, a każde dopytanie to nowe zapytanie. Napisz sekcje o kosztach, terminach, wyjątkach i alternatywach, czyli o tym, o co klient zapyta w drugiej i trzeciej turze.'],
   ['Utrzymuj spójne dane', 'Cena, godziny, adres i zakres usługi muszą być identyczne na stronie, w wizytówce Google i w danych strukturalnych. Google zaleca aktualizować Profil Firmy i Merchant Center oraz dopasować dane strukturalne do widocznej treści.'],
   ['Trzymaj ważne treści w tekście', 'Odpowiedzi ukryte w obrazkach albo ładowane dopiero po interakcji są trudniejsze do wykorzystania. Google zaleca treść w formie tekstowej, uzupełnioną wartościowymi obrazami i wideo.'],
@@ -301,17 +301,17 @@ export default async function ArtykulGoogleAiMode({ params }) {
               </div>
               <h3>Prosty dziennik cytowań</h3>
               <p>
-                Spisz 20–30 pytań, które klienci zadają przed zakupem. Raz w tygodniu zadawaj je w Trybie AI, w oknie prywatnym i po polsku. Zapisuj, czy Twoja domena jest cytowana i kto jest cytowany zamiast niej. Po miesiącu porównaj trend, bo pojedyncza odpowiedź niczego nie dowodzi.
+                Spisz 20-30 pytań, które klienci zadają przed zakupem. Raz w tygodniu zadawaj je w Trybie AI, w oknie prywatnym i po polsku. Zapisuj, czy Twoja domena jest cytowana i kto jest cytowany zamiast niej. Po miesiącu porównaj trend, bo pojedyncza odpowiedź niczego nie dowodzi.
               </p>
               <h3>Co zmierzyliśmy sami, a czego nie</h3>
               <p>
-                W dniach 4–5.11.2026 zadaliśmy przez API DataForSEO LLM Responses pytania o polecenie firm, ceny i ranking agencji modelowi gpt-4.1-mini z wyszukiwaniem w sieci (lokalizacja Warszawa) oraz Perplexity (model sonar). To nie jest pomiar Google AI Mode, więc nie wyciągamy z niego wniosków o jego cytowaniach. Pokazuje tylko, że różne zapytania kierują do różnych źródeł:
+                W dniach 4-5.11.2026 zadaliśmy przez API DataForSEO LLM Responses pytania o polecenie firm, ceny i ranking agencji modelowi gpt-4.1-mini z wyszukiwaniem w sieci (lokalizacja Warszawa) oraz Perplexity (model sonar). To nie jest pomiar Google AI Mode, więc nie wyciągamy z niego wniosków o jego cytowaniach. Pokazuje tylko, że różne zapytania kierują do różnych źródeł:
               </p>
               <div className="table-container tabela-artykulu" tabIndex={0} role="region" aria-label="Źródła cytowane w testowych zapytaniach">
                 <table>
                   <thead>
                     <tr>
-                      <th scope="col">Typ pytania (ChatGPT, gpt-4.1-mini, 4–5.11.2026)</th>
+                      <th scope="col">Typ pytania (ChatGPT, gpt-4.1-mini, 4-5.11.2026)</th>
                       <th scope="col">Linki w odpowiedziach</th>
                       <th scope="col">Dokąd prowadziły</th>
                     </tr>

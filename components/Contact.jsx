@@ -41,7 +41,7 @@ const STYL_TEKSTU_BLEDU = { color: KOLOR_BLEDU, fontSize: '0.875rem', lineHeight
 // Kliknięcia w telefon i e-mail mierzy components/AnalyticsEvents.jsx (jeden
 // nasłuch dla całej strony), tu zostają tylko zdarzenia samego formularza.
 
-// false w SSR i podczas hydratacji, true po niej – bez setState w efekcie.
+// false w SSR i podczas hydratacji, true po niej - bez setState w efekcie.
 const noopSubscribe = () => () => {};
 
 export default function Contact({ isMainContent = false }) {
@@ -59,7 +59,7 @@ export default function Contact({ isMainContent = false }) {
   // mialy aria-invalid, aria-describedby, tekstu ani ramki bledu (audyt E5-13:
   // ariaInvalid null, ramka pustego #email bez zmian rgba(15, 23, 42, 0.08)).
   const [bledy, setBledy] = useState({});
-  // Znacznik czasu montażu formularza – zapas, gdy przeglądarka nie ma
+  // Znacznik czasu montażu formularza - zapas, gdy przeglądarka nie ma
   // performance.now(). Zgłoszenie wysłane w mniej niż 3 s to bot.
   const [openedAt] = useState(() => Date.now());
   // Do hydratacji formularz nie ma handlera onSubmit: kliknięcie wysłałoby go
@@ -106,7 +106,7 @@ export default function Contact({ isMainContent = false }) {
       const komunikat = el.validationMessage;
       setBledy((b) => (b[idPola] === komunikat ? b : { ...b, [idPola]: komunikat }));
     }
-    // Które pole zatrzymuje wysyłkę – diagnostyka tarcia na stronie docelowej.
+    // Które pole zatrzymuje wysyłkę - diagnostyka tarcia na stronie docelowej.
     track('form_validation_error', {
       field: el.id || el.name || el.tagName.toLowerCase(),
       reason: el.validity.typeMismatch ? 'type_mismatch' : 'required',
@@ -196,7 +196,7 @@ export default function Contact({ isMainContent = false }) {
       setFormSubmitted(true);
 
       // Zgłoszenie odrzucone po cichu (honeypot / za szybkie): bot widzi
-      // „sukces”, ale konwersji w Google Ads nie ma – inaczej pierwszy bot
+      // „sukces”, ale konwersji w Google Ads nie ma - inaczej pierwszy bot
       // byłby pierwszą konwersją główną w koncie.
       if (result && result.rejected) {
         track('form_rejected', { reason: result.reason || 'spam' });
@@ -220,7 +220,7 @@ export default function Contact({ isMainContent = false }) {
         // którą Google Ads importuje z GA4.
         window.gtag('set', 'user_data', { email: data.email });
 
-        // Zalecane parametry GA4 dla generate_lead (currency + value) – dzięki
+        // Zalecane parametry GA4 dla generate_lead (currency + value) - dzięki
         // nim import do Google Ads może licytować pod wartość, nie pod sztukę.
         window.gtag('event', 'generate_lead', {
           transaction_id: leadId,
@@ -233,7 +233,7 @@ export default function Contact({ isMainContent = false }) {
           page_type: pageType(window.location.pathname),
         });
 
-        // Tagowa konwersja Google Ads – główna akcja „Formularz kontaktowy (tag)”
+        // Tagowa konwersja Google Ads - główna akcja „Formularz kontaktowy (tag)”
         // (utworzona 21.09.2026, stała wartość 1 000 zł ustawiona po stronie Ads,
         // więc nie wysyłamy value/currency). Tag liczy się także przy odmowie
         // zgody w Consent Mode (modelowanie) i korzysta z user_data powyżej,
@@ -403,7 +403,7 @@ export default function Contact({ isMainContent = false }) {
                     <option value="">{tr(lang, 'Wybierz pakiet (opcjonalnie)', 'Select plan (optional)')}</option>
                     <option value="standard">{tr(lang, 'SEO Standard (1 900 zł netto/mies.)', 'SEO Standard (€450 net/mo)')}</option>
                     <option value="premium">{tr(lang, 'SEO Premium (2 500 zł netto/mies.)', 'SEO Premium (€590 net/mo)')}</option>
-                    <option value="booster">{tr(lang, 'Booster Pack (2 500 zł netto – Strona za 0 zł)', 'Booster Pack (€590 net – Free Website)')}</option>
+                    <option value="booster">{tr(lang, 'Booster Pack (2 500 zł netto - Strona za 0 zł)', 'Booster Pack (€590 net - Free Website)')}</option>
                     <option value="custom">{tr(lang, 'Indywidualny zakres działania', 'Custom Project')}</option>
                     <option value="audyt-ai">{tr(lang, 'Audyt widoczności w AI (990 zł netto)', 'AI visibility audit (€235 net)')}</option>
                     <option value="przeglad-agencji">{tr(lang, 'Bezpłatny przegląd po poprzedniej agencji (30 min)', 'Free review after your previous agency (30 min)')}</option>
@@ -471,10 +471,10 @@ export default function Contact({ isMainContent = false }) {
             <button type="submit" className="btn btn-primary" style={{ width: '100%', opacity: (isSubmitting || !hydrated) ? 0.7 : 1, cursor: (isSubmitting || !hydrated) ? 'not-allowed' : 'pointer' }} disabled={isSubmitting || !hydrated}>
               {isSubmitting ? (tr(lang, 'Wysyłanie...', 'Sending...')) : t('btnSend')}
             </button>
-            {/* „Co dalej” pod przyciskiem – to samo zdanie, które obiecują
+            {/* „Co dalej” pod przyciskiem - to samo zdanie, które obiecują
                 nagłówki reklam („Bezpłatna wycena w 24 h”, „bez handlowca”). */}
             <p style={{ fontSize: '0.8rem', lineHeight: 1.5, color: 'var(--w-tusz-2)', margin: '0.75rem 0 0 0', textAlign: 'center' }}>
-              {tr(lang, 'Odpowiadamy w 24 h w dni robocze. Bez handlowca – odpisuje osoba, która robi SEO.', 'We reply within 24 h on business days. No sales rep – you hear from the person doing the SEO.')}
+              {tr(lang, 'Odpowiadamy w 24 h w dni robocze. Bez handlowca - odpisuje osoba, która robi SEO.', 'We reply within 24 h on business days. No sales rep - you hear from the person doing the SEO.')}
             </p>
             </form>
           </RevealItem>

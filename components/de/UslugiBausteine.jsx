@@ -215,7 +215,7 @@ export function Referenzen({ titel = 'Referenzen mit Messwerten', untertitel = '
 }
 
 /** Zeile mit Button zwischen Abschnitten. */
-export function CtaZeile({ text = 'Angebot anfragen – Antwort innerhalb von 24 Stunden' }) {
+export function CtaZeile({ text = 'Angebot anfragen - Antwort innerhalb von 24 Stunden' }) {
   return (
     <div style={{ textAlign: 'center', margin: '0 0 70px' }}>
       <a href="#kontakt" className="btn btn-primary" data-cta="de_mid">{text}</a>

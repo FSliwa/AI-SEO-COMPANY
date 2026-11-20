@@ -121,8 +121,8 @@ export default function AboutMission() {
       metric: '1:1',
       title: lang === 'pl' ? 'Traktujemy Twój biznes jak własny' : 'We treat your business as our own',
       description: lang === 'pl'
-        ? 'Nie jesteśmy tylko wykonawcą – stajemy się przedłużeniem Twojego zespołu. Angażujemy się w zrozumienie Twojego modelu biznesowego, by wspólnie budować długoterminowy sukces.'
-        : 'We are not just a contractor – we become an extension of your team. We commit to understanding your business model to build long-term success together.',
+        ? 'Nie jesteśmy tylko wykonawcą - stajemy się przedłużeniem Twojego zespołu. Angażujemy się w zrozumienie Twojego modelu biznesowego, by wspólnie budować długoterminowy sukces.'
+        : 'We are not just a contractor - we become an extension of your team. We commit to understanding your business model to build long-term success together.',
       bgVisual: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(245, 245, 247, 0.4))'
     },
     {

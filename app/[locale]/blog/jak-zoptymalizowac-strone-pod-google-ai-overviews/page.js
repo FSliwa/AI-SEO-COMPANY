@@ -1,5 +1,5 @@
 // Artykuł tylko-PL (plOnly w lib/blogPosts.js, 308 /en/blog/<slug> -> /blog/<slug> w next.config.mjs).
-// Treść: dokument „AI SEO – Optymalizacja pod Google AI Overviews” (17.11.2026).
+// Treść: dokument „AI SEO - Optymalizacja pod Google AI Overviews” (17.11.2026).
 // Zmiany względem dokumentu: title bez sufiksu marki (CLAUDE.md), meta skrócona do 136 zn.,
 // link do nieistniejącego wpisu /blog/widocznosc-firmy-w-generatywnych-ai zastąpiony hubem
 // /pozycjonowanie-w-ai i porównaniem SEO vs GEO, etykiety „Technika/Treść/…” w liście kontrolnej
@@ -78,8 +78,8 @@ const ZRODLA = [
   { url: 'https://developers.google.com/search/docs/appearance/ai-features', nazwa: 'Google Search Central: AI features and your website', data: '2026-11-18' },
   { url: 'https://support.google.com/websearch/answer/14901683?hl=pl', nazwa: 'Pomoc Google: Przegląd od AI w wynikach wyszukiwania', data: '2026-11-18' },
   { url: 'https://blog.google/products-and-platforms/products/search/google-search-ai-mode-update/', nazwa: 'Google Blog: ogłoszenie AI Mode w Google Search (20 maja 2025)', data: '2026-11-18' },
-  { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode – dostępność i wymagania', data: '2026-11-18' },
-  { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność – sposób liczenia danych', data: '2026-11-18' },
+  { url: 'https://support.google.com/websearch/answer/16011537', nazwa: 'Pomoc Google: AI Mode - dostępność i wymagania', data: '2026-11-18' },
+  { url: 'https://support.google.com/webmasters/answer/7042828', nazwa: 'Pomoc Search Console: raport Skuteczność - sposób liczenia danych', data: '2026-11-18' },
   { url: 'https://support.google.com/webmasters/answer/16984139', nazwa: 'Pomoc Search Console: raport skuteczności w generatywnej AI (Generative AI performance)', data: '2026-11-19' },
   { url: 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers', nazwa: 'Google: przegląd typowych robotów Google (Google-Extended)', data: '2026-11-18' },
   { url: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content', nazwa: 'Google Search Central: Creating helpful, reliable, people-first content', data: '2026-11-18' },
@@ -102,13 +102,13 @@ const TOC = [
   { id: 'lista-kontrolna', title: 'Lista kontrolna przed optymalizacją pod AI' },
   { id: 'plan-30-dni', title: 'Plan wdrożenia na 30 dni' },
   { id: 'pytania', title: 'Pytania o AI Overviews, AI Mode i Perplexity' },
-  { id: 'podsumowanie', title: 'Od indeksu do cytowania – podsumowanie' },
+  { id: 'podsumowanie', title: 'Od indeksu do cytowania - podsumowanie' },
   { id: 'zrodla', title: 'Źródła' },
 ];
 
 const W_SKROCIE = [
   ['Brak „magicznych” znaczników', 'Google nie wymaga osobnych plików, schematów ani znaczników dla funkcji AI. Liczy się indeksowanie i kwalifikacja do wyświetlenia z fragmentem.'],
-  ['Odpowiedź na początku sekcji', 'Pierwsze 1–2 zdania pod nagłówkiem powinny samodzielnie odpowiadać na pytanie z nagłówka.'],
+  ['Odpowiedź na początku sekcji', 'Pierwsze 1-2 zdania pod nagłówkiem powinny samodzielnie odpowiadać na pytanie z nagłówka.'],
   ['Nagłówki jako pytania', 'H2 i H3 sformułowane tak, jak pytają użytkownicy, ułatwiają dopasowanie do zapytań cząstkowych (query fan-out).'],
   ['Fakty ze źródłami', 'Liczby, daty i definicje z podanym źródłem są łatwiejsze do zacytowania niż ogólniki.'],
   ['Kontrola fragmentów', 'Atrybuty nosnippet, data-nosnippet i max-snippet ograniczają to, co Google może pokazać, także w AI Overviews.'],
@@ -118,12 +118,12 @@ const W_SKROCIE = [
 ];
 
 const PLAN = [
-  ['Dni 1–5', 'Wybór 20–30 pytań kluczowych, pierwszy pomiar w Google, AI Mode i Perplexity, eksport danych z Search Console', 'Punkt odniesienia i lista priorytetów'],
-  ['Dni 6–10', 'Przegląd techniczny: indeksowanie, robots.txt, WAF, nosnippet/max-snippet, renderowanie JS', 'Lista błędów blokujących cytowania'],
-  ['Dni 11–15', 'Poprawki techniczne i dopuszczenie PerplexityBota; weryfikacja w Sprawdzaniu adresu URL', 'Strony dostępne i kwalifikujące się do snippetów'],
-  ['Dni 16–22', 'Przebudowa 5–10 kluczowych artykułów: nagłówki-pytania, odpowiedzi na początku sekcji, tabele, źródła, autor', 'Treści gotowe do cytowania'],
-  ['Dni 23–26', 'Dane strukturalne zgodne z treścią, linkowanie wewnętrzne w klastrze, obrazy i opisy', 'Lepszy kontekst tematyczny'],
-  ['Dni 27–30', 'Ponowny pomiar, konfiguracja raportu GA4 dla ruchu z AI, plan kolejnych 30 dni', 'Porównanie z punktem wyjścia i dalsze priorytety'],
+  ['Dni 1-5', 'Wybór 20-30 pytań kluczowych, pierwszy pomiar w Google, AI Mode i Perplexity, eksport danych z Search Console', 'Punkt odniesienia i lista priorytetów'],
+  ['Dni 6-10', 'Przegląd techniczny: indeksowanie, robots.txt, WAF, nosnippet/max-snippet, renderowanie JS', 'Lista błędów blokujących cytowania'],
+  ['Dni 11-15', 'Poprawki techniczne i dopuszczenie PerplexityBota; weryfikacja w Sprawdzaniu adresu URL', 'Strony dostępne i kwalifikujące się do snippetów'],
+  ['Dni 16-22', 'Przebudowa 5-10 kluczowych artykułów: nagłówki-pytania, odpowiedzi na początku sekcji, tabele, źródła, autor', 'Treści gotowe do cytowania'],
+  ['Dni 23-26', 'Dane strukturalne zgodne z treścią, linkowanie wewnętrzne w klastrze, obrazy i opisy', 'Lepszy kontekst tematyczny'],
+  ['Dni 27-30', 'Ponowny pomiar, konfiguracja raportu GA4 dla ruchu z AI, plan kolejnych 30 dni', 'Porównanie z punktem wyjścia i dalsze priorytety'],
 ];
 
 const LISTA_KONTROLNA = [
@@ -136,7 +136,7 @@ const LISTA_KONTROLNA = [
   ]],
   ['Treść', [
     'Nagłówki H2 i H3 są sformułowane jako pytania użytkowników.',
-    'Pierwsze 1–2 zdania każdej sekcji odpowiadają na pytanie z nagłówka.',
+    'Pierwsze 1-2 zdania każdej sekcji odpowiadają na pytanie z nagłówka.',
     'Procedury są w listach numerowanych, porównania w tabelach.',
     'Liczby i fakty mają podane źródła.',
     'Data aktualizacji jest widoczna i odpowiada realnym zmianom.',
@@ -243,7 +243,7 @@ export default async function ArtykulAiOverviews({ params }) {
               </div>
 
               <h2 id="ai-overviews">Czym są Google AI Overviews (Przegląd od AI) i skąd biorą źródła?</h2>
-              <p>AI Overviews to generowane przez AI podsumowania nad wynikami Google, które streszczają temat i linkują do stron, na których można dowiedzieć się więcej. W polskim interfejsie funkcja pojawia się jako „Przegląd od AI”. Według strony pomocy Google funkcja pojawia się wtedy, gdy systemy uznają, że generatywna AI może być szczególnie pomocna – więc przy wielu zapytaniach podsumowania po prostu nie ma.</p>
+              <p>AI Overviews to generowane przez AI podsumowania nad wynikami Google, które streszczają temat i linkują do stron, na których można dowiedzieć się więcej. W polskim interfejsie funkcja pojawia się jako „Przegląd od AI”. Według strony pomocy Google funkcja pojawia się wtedy, gdy systemy uznają, że generatywna AI może być szczególnie pomocna - więc przy wielu zapytaniach podsumowania po prostu nie ma.</p>
               <p>To pierwsza ważna lekcja. Zanim zaczniesz cokolwiek zmieniać, sprawdź, czy przy Twoich kluczowych pytaniach podsumowanie w ogóle się pojawia. Nie zakładaj z góry, które zapytania je wywołują. Sprawdź to własnym testem, który opisujemy w sekcji o pomiarze.</p>
 
               <h3>Skąd AI Overviews biorą cytowane strony</h3>
@@ -261,7 +261,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <p>Załóżmy, że użytkownik pyta: „Jaką pompę ciepła wybrać do domu 150 m² na Mazowszu i ile to kosztuje z dotacją?”. AI Mode może rozbić to na kilka pytań cząstkowych:</p>
               <ul>
                 <li>Jak dobrać moc pompy ciepła do powierzchni domu?</li>
-                <li>Pompa powietrzna czy gruntowa – różnice w kosztach i sprawności?</li>
+                <li>Pompa powietrzna czy gruntowa - różnice w kosztach i sprawności?</li>
                 <li>Jakie dotacje na pompę ciepła są dostępne w Polsce?</li>
                 <li>Ile kosztuje montaż pompy ciepła?</li>
               </ul>
@@ -273,7 +273,7 @@ export default async function ArtykulAiOverviews({ params }) {
 
               <h2 id="geo-aeo">Czym jest GEO/AEO i gdzie zaczyna się praktyka?</h2>
               <p>
-                GEO (Generative Engine Optimization) to optymalizacja pod wyszukiwarki generatywne, a AEO (Answer Engine Optimization) – pod systemy udzielające bezpośrednich odpowiedzi. GEO/AEO to więc wspólny parasol dla działań, które zwiększają szansę, że AI zacytuje Twoją stronę.
+                GEO (Generative Engine Optimization) to optymalizacja pod wyszukiwarki generatywne, a AEO (Answer Engine Optimization) - pod systemy udzielające bezpośrednich odpowiedzi. GEO/AEO to więc wspólny parasol dla działań, które zwiększają szansę, że AI zacytuje Twoją stronę.
                 {hrefSeoVsGeo && <> Różnice między SEO a GEO w ośmiu kryteriach rozpisaliśmy w porównaniu <Link href={hrefSeoVsGeo}>SEO vs GEO</Link>.</>}
                 {' '}Całą usługę, z pomiarem widoczności w odpowiedziach modeli, opisujemy na stronie <Link href="/pozycjonowanie-w-ai">optymalizacja pod AI Overview</Link>.
               </p>
@@ -311,15 +311,15 @@ export default async function ArtykulAiOverviews({ params }) {
               <h3>Snippety: nosnippet, data-nosnippet i max-snippet</h3>
               <p>To najczęściej pomijany punkt. Google wymienia te same mechanizmy kontroli dla funkcji AI co dla zwykłych wyników:</p>
               <ul>
-                <li><strong>nosnippet</strong> – blokuje pokazywanie fragmentu strony, więc ogranicza też użycie jej tekstu w AI Overviews,</li>
-                <li><strong>data-nosnippet</strong> – wyłącza z fragmentów tylko wybrany element HTML,</li>
-                <li><strong>max-snippet</strong> – ogranicza długość fragmentu,</li>
-                <li><strong>noindex</strong> – wyklucza stronę z indeksu, a więc i z AI Overviews.</li>
+                <li><strong>nosnippet</strong> - blokuje pokazywanie fragmentu strony, więc ogranicza też użycie jej tekstu w AI Overviews,</li>
+                <li><strong>data-nosnippet</strong> - wyłącza z fragmentów tylko wybrany element HTML,</li>
+                <li><strong>max-snippet</strong> - ogranicza długość fragmentu,</li>
+                <li><strong>noindex</strong> - wyklucza stronę z indeksu, a więc i z AI Overviews.</li>
               </ul>
               <p>Zdarza się, że wtyczka SEO lub szablon ustawia max-snippet:0 albo nosnippet globalnie. Wtedy strona może rankować w klasycznych wynikach, ale nie zostanie wykorzystana jako fragment. Sprawdź nagłówki X-Robots-Tag i meta robots na kluczowych podstronach.</p>
 
               <h3>Google-Extended a wyszukiwarka</h3>
-              <p>Google-Extended to token w robots.txt, którym decydujesz, czy treści pobrane przez Google mogą służyć do trenowania modeli Gemini i do groundingu w innych produktach Google. Dokumentacja Google mówi wprost, że Google-Extended nie wpływa na obecność witryny w Google Search i nie jest sygnałem rankingowym. Zablokowanie go nie wyłączy więc strony z AI Overviews – za to odpowiadają Googlebot, noindex i atrybuty snippetów.</p>
+              <p>Google-Extended to token w robots.txt, którym decydujesz, czy treści pobrane przez Google mogą służyć do trenowania modeli Gemini i do groundingu w innych produktach Google. Dokumentacja Google mówi wprost, że Google-Extended nie wpływa na obecność witryny w Google Search i nie jest sygnałem rankingowym. Zablokowanie go nie wyłączy więc strony z AI Overviews - za to odpowiadają Googlebot, noindex i atrybuty snippetów.</p>
 
               <h3>Renderowanie JavaScript i treść w HTML</h3>
               <p>Google zaleca, aby ważne treści były dostępne w formie tekstowej. Jeśli kluczowe odpowiedzi ładują się dopiero po interakcji (zakładki, akordeony, „pokaż więcej” pobierane z API) albo są w obrazkach, model ma mniejszą szansę je wykorzystać. Sprawdź w Sprawdzaniu adresu URL zrenderowany HTML i upewnij się, że widać w nim treść, nie tylko szkielet strony. Przy stronach opartych na frameworkach JS rozważ renderowanie po stronie serwera dla treści informacyjnych.</p>
@@ -331,7 +331,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <p>Optymalizacja treści pod AI Overviews sprowadza się do jednej zasady: każda sekcja powinna być samodzielną, gotową do zacytowania odpowiedzią na konkretne pytanie. Model nie czyta artykułu jak człowiek od początku do końca. Wyszukuje fragment, który najlepiej pasuje do pytania cząstkowego.</p>
 
               <h3>Odpowiedź w pierwszym akapicie sekcji</h3>
-              <p>Pod każdym nagłówkiem H2 lub H3 umieść 1–2 zdania, które bezpośrednio odpowiadają na pytanie z nagłówka. Dopiero potem rozwijaj kontekst, przykłady i wyjątki.</p>
+              <p>Pod każdym nagłówkiem H2 lub H3 umieść 1-2 zdania, które bezpośrednio odpowiadają na pytanie z nagłówka. Dopiero potem rozwijaj kontekst, przykłady i wyjątki.</p>
               <p>Porównaj:</p>
               <ul>
                 <li><strong>Słabo:</strong> „Temat kosztów montażu jest złożony i zależy od wielu czynników, o których opowiemy poniżej.”</li>
@@ -355,7 +355,7 @@ export default async function ArtykulAiOverviews({ params }) {
                   </thead>
                   <tbody>
                     <tr><th scope="row">Nagłówek-pytanie</th><td>Pytanie użytkownika</td><td>Dopasowanie do zapytania cząstkowego</td></tr>
-                    <tr><th scope="row">Odpowiedź (1–2 zdania)</th><td>Konkretna odpowiedź</td><td>Fragment gotowy do cytowania</td></tr>
+                    <tr><th scope="row">Odpowiedź (1-2 zdania)</th><td>Konkretna odpowiedź</td><td>Fragment gotowy do cytowania</td></tr>
                     <tr><th scope="row">Rozwinięcie</th><td>Kontekst, wyjątki, przykład</td><td>Głębia i wiarygodność</td></tr>
                     <tr><th scope="row">Lista lub tabela</th><td>Kroki, parametry, różnice</td><td>Łatwe przetwarzanie przez AI i ludzi</td></tr>
                   </tbody>
@@ -363,7 +363,7 @@ export default async function ArtykulAiOverviews({ params }) {
               </div>
 
               <h3>Fakty z liczbami i źródłami</h3>
-              <p>Konkret wygrywa z ogólnikiem. Zamiast „wiele firm korzysta z AI” podaj liczbę, datę i źródło. Jeśli nie masz wiarygodnej liczby, nie wymyślaj jej – lepiej opisać mechanizm lub własne doświadczenie.</p>
+              <p>Konkret wygrywa z ogólnikiem. Zamiast „wiele firm korzysta z AI” podaj liczbę, datę i źródło. Jeśli nie masz wiarygodnej liczby, nie wymyślaj jej - lepiej opisać mechanizm lub własne doświadczenie.</p>
               <p>Najcenniejsze są dane własne: wyniki ankiety klientów, średnie czasy realizacji, ceny z cennika, wnioski z wdrożeń. Google w wytycznych o pomocnych treściach pyta wprost, czy treść zawiera oryginalne informacje, badania lub analizy. Unikalne dane trudno zastąpić cudzą stroną.</p>
 
               <h3>Aktualność i daty aktualizacji</h3>
@@ -375,16 +375,16 @@ export default async function ArtykulAiOverviews({ params }) {
               <ul>
                 <li>Stosuj standardowe typy tam, gdzie pasują: Article, Product, Organization, LocalBusiness, BreadcrumbList.</li>
                 <li>Dbaj, by cena, dostępność, autor czy data w znacznikach były identyczne z tym, co widzi użytkownik.</li>
-                <li>Nie oznaczaj treści, których na stronie nie ma – to łamie wytyczne i podważa wiarygodność.</li>
+                <li>Nie oznaczaj treści, których na stronie nie ma - to łamie wytyczne i podważa wiarygodność.</li>
                 <li>Dla sklepów i firm lokalnych aktualizuj Merchant Center i Profil Firmy w Google; Google wymienia to w zaleceniach dla funkcji AI.</li>
               </ul>
               <p>Dane strukturalne pomagają Google zrozumieć, czym jest strona i do kogo należy. To wsparcie, a nie dźwignia.</p>
 
               <h2 id="eeat">Jak wzmocnić E-E-A-T, linkowanie wewnętrzne i multimedia?</h2>
-              <p>Google nie publikuje osobnych kryteriów wyboru źródeł do AI Overviews, ale w wytycznych o pomocnych treściach stawia na zaufanie. E-E-A-T (doświadczenie, wiedza ekspercka, autorytet, wiarygodność) nie jest bezpośrednim czynnikiem rankingowym, ale według Google pomaga systemom rozpoznawać dobre treści – a najważniejszym elementem jest zaufanie.</p>
+              <p>Google nie publikuje osobnych kryteriów wyboru źródeł do AI Overviews, ale w wytycznych o pomocnych treściach stawia na zaufanie. E-E-A-T (doświadczenie, wiedza ekspercka, autorytet, wiarygodność) nie jest bezpośrednim czynnikiem rankingowym, ale według Google pomaga systemom rozpoznawać dobre treści - a najważniejszym elementem jest zaufanie.</p>
 
               <h3>Autorzy z prawdziwym doświadczeniem</h3>
-              <p>Podpisuj artykuły ekspertów, którzy faktycznie wykonują opisywaną pracę. Dodaj krótki biogram i stronę autora z doświadczeniem, certyfikatami lub realizacjami. Google ostrzega przed fałszywymi profilami twórców, np. z wygenerowanymi przez AI zdjęciami – to sygnał niskiej jakości, a nie autorytetu.</p>
+              <p>Podpisuj artykuły ekspertów, którzy faktycznie wykonują opisywaną pracę. Dodaj krótki biogram i stronę autora z doświadczeniem, certyfikatami lub realizacjami. Google ostrzega przed fałszywymi profilami twórców, np. z wygenerowanymi przez AI zdjęciami - to sygnał niskiej jakości, a nie autorytetu.</p>
               <p>Pokazuj doświadczenie w treści: opis tego, co faktycznie zrobiono i z jakim skutkiem, mówi więcej niż „eksperci zalecają”.</p>
 
               <h3>Linkowanie wewnętrzne jako mapa tematu</h3>
@@ -399,7 +399,7 @@ export default async function ArtykulAiOverviews({ params }) {
               <ul>
                 <li><strong>Pokryj ścieżkę decyzji, nie jedno pytanie.</strong> Jeśli piszesz o wyborze CRM, przewidź kolejne pytania: integracje, koszty wdrożenia, czas migracji, alternatywy.</li>
                 <li><strong>Dodawaj porównania i kryteria wyboru.</strong> Użytkownicy często dopytują o różnice, więc tabela „opcja A vs B vs C” z jasnymi kryteriami to naturalny materiał na odpowiedź.</li>
-                <li><strong>Opisuj wyjątki i warunki brzegowe.</strong> „To rozwiązanie nie sprawdzi się, jeśli…” – takie zdania pomagają odpowiedzieć na doprecyzowujące pytania.</li>
+                <li><strong>Opisuj wyjątki i warunki brzegowe.</strong> „To rozwiązanie nie sprawdzi się, jeśli…” - takie zdania pomagają odpowiedzieć na doprecyzowujące pytania.</li>
                 <li><strong>Utrzymuj spójność między stronami.</strong> Jeśli cennik mówi jedno, a artykuł blogowy drugie, system może pominąć oba źródła albo zacytować nieaktualne.</li>
               </ul>
               <p><em>Porada profesjonalisty:</em> Zapisz 10 pytań, które klienci zadają przed zakupem, i przetestuj je w AI Mode po polsku. Zanotuj, które domeny są cytowane i jakich informacji brakuje w Twoich treściach. To gotowa lista tematów do uzupełnienia.</p>
@@ -407,17 +407,17 @@ export default async function ArtykulAiOverviews({ params }) {
               <h2 id="perplexity">Jak trafić do odpowiedzi Perplexity AI?</h2>
               <p>Perplexity AI to wyszukiwarka odpowiadająca w czasie rzeczywistym, która przy każdej odpowiedzi pokazuje numerowane przypisy z linkami do źródeł. Aby trafić do Perplexity, Twoja strona musi być dostępna dla jej robotów i zawierać treść, którą da się łatwo zacytować. Perplexity korzysta z własnych robotów, więc dostęp Googlebota niczego tu nie rozstrzyga.</p>
 
-              <h3>PerplexityBot i Perplexity-User – czym się różnią</h3>
+              <h3>PerplexityBot i Perplexity-User - czym się różnią</h3>
               <p>Dokumentacja Perplexity opisuje dwa user-agenty:</p>
               <ul>
-                <li><strong>PerplexityBot</strong> – służy do wyświetlania i linkowania stron w wynikach Perplexity. Według dokumentacji nie zbiera treści do trenowania modeli. Perplexity zaleca dopuszczenie go w robots.txt.</li>
-                <li><strong>Perplexity-User</strong> – pobiera stronę w imieniu użytkownika, gdy ten zada pytanie. Ponieważ żądanie pochodzi od użytkownika, ten fetcher zasadniczo ignoruje reguły robots.txt.</li>
+                <li><strong>PerplexityBot</strong> - służy do wyświetlania i linkowania stron w wynikach Perplexity. Według dokumentacji nie zbiera treści do trenowania modeli. Perplexity zaleca dopuszczenie go w robots.txt.</li>
+                <li><strong>Perplexity-User</strong> - pobiera stronę w imieniu użytkownika, gdy ten zada pytanie. Ponieważ żądanie pochodzi od użytkownika, ten fetcher zasadniczo ignoruje reguły robots.txt.</li>
               </ul>
               <p>Jeśli blokujesz PerplexityBota w robots.txt, ograniczasz szansę na pojawienie się w indeksie Perplexity. Minimalny wpis dopuszczający wygląda tak:</p>
               <pre><code>{`User-agent: PerplexityBot
 Allow: /`}</code></pre>
 
-              <h3>WAF i Cloudflare – częsta przyczyna braku cytowań</h3>
+              <h3>WAF i Cloudflare - częsta przyczyna braku cytowań</h3>
               <p>Robots.txt to nie wszystko. Firewall aplikacyjny potrafi zablokować bota, nawet jeśli robots.txt na to pozwala. Perplexity publikuje zakresy IP swoich robotów w plikach JSON i zaleca, by na ich podstawie tworzyć reguły zezwalające, łącząc dopasowanie user-agenta z weryfikacją IP. W Cloudflare dokumentacja zaznacza, że trybu Bot Fight Mode nie da się pominąć regułą WAF. Zmiany w ustawieniach robots.txt mogą zacząć działać do 24 godzin po wprowadzeniu.</p>
 
               <h3>Perplexity SEO w praktyce</h3>
@@ -445,8 +445,8 @@ Allow: /`}</code></pre>
               <h3>Testowe zapytania i dziennik cytowań</h3>
               <p>Search Console nie powie Ci, które zapytania wywołały podsumowanie z Twoim linkiem. Uzupełnij dane ręcznie:</p>
               <ol>
-                <li>Wybierz 20–30 pytań kluczowych dla biznesu.</li>
-                <li>Raz w tygodniu sprawdzaj je w Google (AI Overviews), w AI Mode i w Perplexity AI – w oknie prywatnym, z polską lokalizacją.</li>
+                <li>Wybierz 20-30 pytań kluczowych dla biznesu.</li>
+                <li>Raz w tygodniu sprawdzaj je w Google (AI Overviews), w AI Mode i w Perplexity AI - w oknie prywatnym, z polską lokalizacją.</li>
                 <li>Zapisuj w arkuszu: czy pojawiło się podsumowanie, czy Twoja domena jest cytowana, które domeny konkurencji są cytowane.</li>
                 <li>Porównuj trendy co miesiąc, a nie pojedyncze wyniki, bo odpowiedzi AI się zmieniają.</li>
               </ol>
@@ -459,7 +459,7 @@ Allow: /`}</code></pre>
               <p>Google twierdzi, że kliknięcia z wyników z AI Overviews są wyższej jakości, bo użytkownicy częściej spędzają więcej czasu na stronie. Traktuj to jako hipotezę do sprawdzenia na własnych danych, nie jako pewnik. Patrz na konwersje, a nie tylko na kliknięcia.</p>
 
               <h2 id="lista-kontrolna">Lista kontrolna: co sprawdzić przed optymalizacją pod AI?</h2>
-              <p>Ta lista zbiera najważniejsze punkty z całego artykułu w jednym miejscu. Przejdź przez nią dla 10–20 najważniejszych podstron.</p>
+              <p>Ta lista zbiera najważniejsze punkty z całego artykułu w jednym miejscu. Przejdź przez nią dla 10-20 najważniejszych podstron.</p>
               {LISTA_KONTROLNA.map(([grupa, punkty]) => (
                 <div key={grupa}>
                   <h3>{grupa}</h3>
@@ -501,11 +501,11 @@ Allow: /`}</code></pre>
                 </div>
               ))}
 
-              <h2 id="podsumowanie">Od indeksu do cytowania – podsumowanie</h2>
+              <h2 id="podsumowanie">Od indeksu do cytowania - podsumowanie</h2>
               <p>Jak zoptymalizować stronę pod Google AI Overviews? Najpierw upewnij się, że Google może ją zaindeksować i pokazać z fragmentem. Potem przebuduj treść tak, by każda sekcja zaczynała się od konkretnej odpowiedzi na pytanie z nagłówka, a fakty miały źródła. Na koniec mierz efekty w Search Console i w dzienniku testowych zapytań.</p>
-              <p>Google AI Mode wymaga szerszego pokrycia tematu, bo użytkownicy dopytują. Perplexity AI wymaga osobnego sprawdzenia dostępu dla PerplexityBota i reguł firewalla. GEO, AEO i klasyczne SEO nie są osobnymi światami – to jedna praca nad stroną, którą zarówno ludzie, jak i modele mogą łatwo zrozumieć i której mogą zaufać.</p>
+              <p>Google AI Mode wymaga szerszego pokrycia tematu, bo użytkownicy dopytują. Perplexity AI wymaga osobnego sprawdzenia dostępu dla PerplexityBota i reguł firewalla. GEO, AEO i klasyczne SEO nie są osobnymi światami - to jedna praca nad stroną, którą zarówno ludzie, jak i modele mogą łatwo zrozumieć i której mogą zaufać.</p>
               <p>
-                Nie wiesz, od czego zacząć w Twojej branży? Zacznij od rzetelnego przeglądu. W ramach usługi <Link href="/audyt-seo">audyt SEO strony internetowej</Link> sprawdzimy indeksowanie, ustawienia snippetów, dostęp robotów i strukturę treści pod cytowania. Jeśli chcesz długofalowo budować widoczność w klasycznych wynikach i w odpowiedziach AI, zobacz nasze <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie stron internetowych</Link>. <a href="#kontakt">Skontaktuj się z nami</a> – odpowiadamy w 24 h w dni robocze.
+                Nie wiesz, od czego zacząć w Twojej branży? Zacznij od rzetelnego przeglądu. W ramach usługi <Link href="/audyt-seo">audyt SEO strony internetowej</Link> sprawdzimy indeksowanie, ustawienia snippetów, dostęp robotów i strukturę treści pod cytowania. Jeśli chcesz długofalowo budować widoczność w klasycznych wynikach i w odpowiedziach AI, zobacz nasze <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie stron internetowych</Link>. <a href="#kontakt">Skontaktuj się z nami</a> - odpowiadamy w 24 h w dni robocze.
               </p>
 
               <Zrodla zrodla={ZRODLA} />

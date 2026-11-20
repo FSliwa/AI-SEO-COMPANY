@@ -251,7 +251,7 @@ export default function CookiesBanner() {
   // Preferences" - bez widocznego slowa, wiec komenda glosowa "kliknij Zgoda"
   // go nie trafiala. aria-label usuniety: nazwa = widoczny tekst (emoji ukryte
   // przed czytnikiem), a title zostaje podpowiedzia i opisem ("Zgoda, przycisk,
-  // Dostosuj preferencje"). Nazwa w stylu "Zgoda – Dostosuj preferencje" razem
+  // Dostosuj preferencje"). Nazwa w stylu "Zgoda - Dostosuj preferencje" razem
   // z takim samym title dawala w drzewie AX opis = nazwa, czytany dwa razy.
   const fabText = t('title').split(' ')[0];
   const pasek = PASEK[lang] || PASEK.pl;

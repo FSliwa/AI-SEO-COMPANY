@@ -242,7 +242,7 @@ export default function AudytSeoClientDe() {
             {Object.entries(w.kategorie).map(([k, v]) => (
               <li key={k}>
                 {k === 'wydajnosc' && w.wydajnoscZmierzona === false
-                  ? <div className="narz-ocena narz-ocena--mala narz-ocena--brak" role="img" aria-label="Performance: nicht gemessen"><span className="narz-ocena-liczba" aria-hidden="true">–</span><span className="narz-ocena-podpis" aria-hidden="true">Performance: nicht gemessen</span></div>
+                  ? <div className="narz-ocena narz-ocena--mala narz-ocena--brak" role="img" aria-label="Performance: nicht gemessen"><span className="narz-ocena-liczba" aria-hidden="true">-</span><span className="narz-ocena-podpis" aria-hidden="true">Performance: nicht gemessen</span></div>
                   : <Ocena wynik={v.wynik} podpis={KATEGORIE[k]} maly />}
                 {stan.historia?.kategorie?.[k]?.zmiana != null && (
                   <span className="narz-psi" style={{ fontWeight: 700, color: kolorZmiany(stan.historia.kategorie[k].zmiana) }} aria-label={`Veränderung gegenüber dem letzten Audit: ${znak(stan.historia.kategorie[k].zmiana)}`}>
@@ -255,7 +255,7 @@ export default function AudytSeoClientDe() {
           {w.wydajnoscZmierzona === false && <p className="narz-psi">Die Geschwindigkeitsmessung von PageSpeed Insights war vorübergehend nicht verfügbar, daher fließt die Performance nicht in die Punktzahl ein.</p>}
           {w.psi && (
             <p className="narz-psi">
-              {`PageSpeed Insights (Smartphone): Performance ${w.psi.wydajnosc ?? '–'}, SEO ${w.psi.seo ?? '–'}, Barrierefreiheit ${w.psi.dostepnosc ?? '–'}, Best Practices ${w.psi.praktyki ?? '–'}.`}
+              {`PageSpeed Insights (Smartphone): Performance ${w.psi.wydajnosc ?? '-'}, SEO ${w.psi.seo ?? '-'}, Barrierefreiheit ${w.psi.dostepnosc ?? '-'}, Best Practices ${w.psi.praktyki ?? '-'}.`}
               {w.psi.przebiegi > 1 && w.psi.wydajnoscPomiary?.length > 1
                 ? ` Die Performance ist der Median aus ${w.psi.przebiegi} Messungen (${w.psi.wydajnoscPomiary.join(' und ')}).`
                 : w.psi.przebiegi === 1 ? ' Die Performance stammt aus einer einzigen Messung; eine einzelne Messung kann um etwa 10 Punkte abweichen.' : null}

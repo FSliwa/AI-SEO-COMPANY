@@ -290,7 +290,7 @@ export default function Header() {
       let docelowa;
 
       if (el.id === 'whyus-carousel' || el.classList.contains('portfolio-mosaic')) {
-        // Pełnoekranowe pasma karuzeli i ściany realizacji — szerszy rozstaw nagłówka
+        // Pełnoekranowe pasma karuzeli i ściany realizacji - szerszy rozstaw nagłówka
         docelowa = Math.min(vw - 24, 1680);
       } else {
         const cs = window.getComputedStyle(el);

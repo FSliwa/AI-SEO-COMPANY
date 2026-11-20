@@ -132,7 +132,7 @@ const WIERSZE_CENY_EN = [
 ];
 
 // Pomiar poleceń ChatGPT (CB-01 po weryfikacji: 2 wiersze, liczby odtworzone z plików pomiaru
-// dane/llm*.json planu i skille/ai-visibility/surowe, 4–5.11.2026). Linki do Map to adresy
+// dane/llm*.json planu i skille/ai-visibility/surowe, 4-5.11.2026). Linki do Map to adresy
 // wyszukiwania google.com/maps/search, nie URL-e wizytówek - stąd opis mechanizmu jako obserwacji.
 const WIERSZE_CHATGPT_PL = [
   { id: 'polecenie', pytanie: 'Prośba o polecenie firmy (11 odpowiedzi na 10 pytań)', linki: '62', mapy: '59' },
@@ -471,18 +471,18 @@ export default function WizytowkaClient({ faqData }) {
           <h2 id={idCena} style={h2Styl}>{en ? 'How much Google Business Profile optimization costs' : 'Ile kosztuje pozycjonowanie wizytówki Google'}</h2>
           {en ? (
             <p style={akapit}>
-              Agencies and freelancers usually manage a profile on its own for PLN 100–600 per month, and from PLN 800 in competitive industries. Our SEO Standard package costs <strong>from PLN 1,900 net per month (about €450)</strong>, because besides the profile it covers website optimization, up to 20 keywords, 2 pieces of content and 2 links per month{SIATKA_W_SEO_STANDARD ? ', plus Maps ranking measurement from 49 points every 14 days' : ''}. The contract is monthly.
+              Agencies and freelancers usually manage a profile on its own for PLN 100-600 per month, and from PLN 800 in competitive industries. Our SEO Standard package costs <strong>from PLN 1,900 net per month (about €450)</strong>, because besides the profile it covers website optimization, up to 20 keywords, 2 pieces of content and 2 links per month{SIATKA_W_SEO_STANDARD ? ', plus Maps ranking measurement from 49 points every 14 days' : ''}. The contract is monthly.
             </p>
           ) : (
             <p style={akapit}>
-              Samą wizytówkę agencje i freelancerzy prowadzą zwykle za 100–600 zł miesięcznie, w konkurencyjnych branżach od 800 zł. Nasz pakiet SEO Standard kosztuje <strong>od 1 900 zł netto miesięcznie</strong>, bo poza wizytówką obejmuje optymalizację strony, do 20 fraz, 2 treści i 2 linki miesięcznie{SIATKA_W_SEO_STANDARD ? ' oraz pomiar pozycji w Mapach z 49 punktów co 14 dni' : ''}. Umowa jest miesięczna.
+              Samą wizytówkę agencje i freelancerzy prowadzą zwykle za 100-600 zł miesięcznie, w konkurencyjnych branżach od 800 zł. Nasz pakiet SEO Standard kosztuje <strong>od 1 900 zł netto miesięcznie</strong>, bo poza wizytówką obejmuje optymalizację strony, do 20 fraz, 2 treści i 2 linki miesięcznie{SIATKA_W_SEO_STANDARD ? ' oraz pomiar pozycji w Mapach z 49 punktów co 14 dni' : ''}. Umowa jest miesięczna.
             </p>
           )}
           <p style={podpis}>{en ? 'Indicative market ranges from a single guide (dawidgicala.pl), checked on November 5, 2026; not a survey of price lists' : 'Widełki orientacyjne z jednego poradnika (dawidgicala.pl), sprawdzone 5.11.2026; nie jest to przegląd cenników'}</p>
           <p style={akapit}>
             {en
-              ? 'For comparison, an AI tool (not a price list): Perplexity, asked on November 4, 2026 who optimizes Google Business Profiles in Warsaw and what it costs, divides the market in a similar way. According to that answer, simple management of the profile alone costs around PLN 250–600 net per month, while local SEO covering the profile, website, reviews and links usually costs PLN 1,000–2,500 net per month. Our package falls in the second range.'
-              : 'Dla porównania odpowiedź narzędzia AI (nie cennik): Perplexity zapytany 4.11.2026, kto w Warszawie pozycjonuje wizytówki Google i ile to kosztuje. Według tej odpowiedzi prosta obsługa samej wizytówki kosztuje około 250–600 zł netto miesięcznie, a lokalne SEO obejmujące wizytówkę, stronę, opinie i linki zwykle 1 000–2 500 zł netto miesięcznie. Nasz pakiet mieści się w drugim przedziale.'}
+              ? 'For comparison, an AI tool (not a price list): Perplexity, asked on November 4, 2026 who optimizes Google Business Profiles in Warsaw and what it costs, divides the market in a similar way. According to that answer, simple management of the profile alone costs around PLN 250-600 net per month, while local SEO covering the profile, website, reviews and links usually costs PLN 1,000-2,500 net per month. Our package falls in the second range.'
+              : 'Dla porównania odpowiedź narzędzia AI (nie cennik): Perplexity zapytany 4.11.2026, kto w Warszawie pozycjonuje wizytówki Google i ile to kosztuje. Według tej odpowiedzi prosta obsługa samej wizytówki kosztuje około 250-600 zł netto miesięcznie, a lokalne SEO obejmujące wizytówkę, stronę, opinie i linki zwykle 1 000-2 500 zł netto miesięcznie. Nasz pakiet mieści się w drugim przedziale.'}
           </p>
 
           <CompareTable
@@ -520,7 +520,7 @@ export default function WizytowkaClient({ faqData }) {
           )}
           <div style={{ margin: '1.75rem 0 0' }}>
             <a href={kontakt} className="btn btn-primary" data-cta="service_cena_wizytowka" data-plan="standard">
-              {en ? 'Ask about the package with profile management – reply within 24 h' : <>Zapytaj o pakiet z wizytówką – odpowiedź w{' '}24{' '}h</>}
+              {en ? 'Ask about the package with profile management - reply within 24 h' : <>Zapytaj o pakiet z wizytówką - odpowiedź w{' '}24{' '}h</>}
             </a>
           </div>
         </div>
@@ -532,13 +532,13 @@ export default function WizytowkaClient({ faqData }) {
           <h2 id={idEl('wizytowka-a-chatgpt', 'chatgpt')} style={h2Styl}>{en ? 'Business Profile and ChatGPT: recommendations lead to Google Maps' : 'Wizytówka a ChatGPT: polecenia prowadzą do Map Google'}</h2>
           <p style={akapit}>
             {en
-              ? 'We checked where the links go when ChatGPT recommends a business. On November 4–5, 2026 we asked it 10 requests to recommend a business, including a carpenter, a plumber, an accounting firm and an SEO agency in Warsaw, Kraków and Poznań, plus questions about prices, rankings and service features.'
-              : 'Sprawdziliśmy, dokąd prowadzą linki, gdy ChatGPT poleca firmę. W dniach 4–5 listopada 2026 zadaliśmy mu 10 próśb o polecenie firmy, m.in. stolarza, hydraulika, biura rachunkowego i agencji SEO w Warszawie, Krakowie i Poznaniu, oraz pytania o ceny, rankingi i funkcje usług.'}
+              ? 'We checked where the links go when ChatGPT recommends a business. On November 4-5, 2026 we asked it 10 requests to recommend a business, including a carpenter, a plumber, an accounting firm and an SEO agency in Warsaw, Kraków and Poznań, plus questions about prices, rankings and service features.'
+              : 'Sprawdziliśmy, dokąd prowadzą linki, gdy ChatGPT poleca firmę. W dniach 4-5 listopada 2026 zadaliśmy mu 10 próśb o polecenie firmy, m.in. stolarza, hydraulika, biura rachunkowego i agencji SEO w Warszawie, Krakowie i Poznaniu, oraz pytania o ceny, rankingi i funkcje usług.'}
           </p>
 
           <CompareTable
             id={idEl('chatgpt-linki-do-map', 'chatgpt-links-to-maps')}
-            caption={en ? 'Where the links lead in answers of our gpt-4.1-mini API test (Nov 4–5, 2026)' : 'Dokąd prowadzą linki w odpowiedziach naszego testu API gpt-4.1-mini (4–5.11.2026)'}
+            caption={en ? 'Where the links lead in answers of our gpt-4.1-mini API test (Nov 4-5, 2026)' : 'Dokąd prowadzą linki w odpowiedziach naszego testu API gpt-4.1-mini (4-5.11.2026)'}
             columns={en
               ? [
                   { key: 'pytanie', label: 'Type of question' },
@@ -553,8 +553,8 @@ export default function WizytowkaClient({ faqData }) {
             rows={WIERSZE_CHATGPT}
             minWidth={520}
             przypis={en
-              ? 'Method: gpt-4.1-mini with web search via the DataForSEO API, search location Warsaw (also for the Kraków and Poznań questions), 1 answer per question, Nov 4–5, 2026. Links to Maps are Google Maps search URLs (google.com/maps/search). The ChatGPT app may answer differently.'
-              : 'Metoda: gpt-4.1-mini z wyszukiwaniem w sieci przez API DataForSEO, lokalizacja wyszukiwania Warszawa (także dla pytań o Kraków i Poznań), 1 odpowiedź na pytanie, 4–5.11.2026. Linki do Map to adresy wyszukiwania w Mapach Google (google.com/maps/search). Aplikacja ChatGPT może odpowiadać inaczej.'}
+              ? 'Method: gpt-4.1-mini with web search via the DataForSEO API, search location Warsaw (also for the Kraków and Poznań questions), 1 answer per question, Nov 4-5, 2026. Links to Maps are Google Maps search URLs (google.com/maps/search). The ChatGPT app may answer differently.'
+              : 'Metoda: gpt-4.1-mini z wyszukiwaniem w sieci przez API DataForSEO, lokalizacja wyszukiwania Warszawa (także dla pytań o Kraków i Poznań), 1 odpowiedź na pytanie, 4-5.11.2026. Linki do Map to adresy wyszukiwania w Mapach Google (google.com/maps/search). Aplikacja ChatGPT może odpowiadać inaczej.'}
           />
 
           <p style={akapit}>
@@ -590,8 +590,8 @@ export default function WizytowkaClient({ faqData }) {
           </ol>
           <p style={akapit}>
             {en
-              ? 'When should you hand over profile management? When steps 5–8 lose out to everyday work, when your ranking stands still despite a complete profile, or when you do not know whether changes work beyond your own street because you have no measurement from many points.'
-              : 'Kiedy zlecić prowadzenie wizytówki? Gdy kroki 5–8 przegrywają z codzienną pracą, gdy pozycja stoi mimo uzupełnionego profilu albo gdy nie wiesz, czy zmiany działają poza Twoją ulicą, bo nie masz pomiaru z wielu punktów.'}
+              ? 'When should you hand over profile management? When steps 5-8 lose out to everyday work, when your ranking stands still despite a complete profile, or when you do not know whether changes work beyond your own street because you have no measurement from many points.'
+              : 'Kiedy zlecić prowadzenie wizytówki? Gdy kroki 5-8 przegrywają z codzienną pracą, gdy pozycja stoi mimo uzupełnionego profilu albo gdy nie wiesz, czy zmiany działają poza Twoją ulicą, bo nie masz pomiaru z wielu punktów.'}
           </p>
         </div>
       </section>

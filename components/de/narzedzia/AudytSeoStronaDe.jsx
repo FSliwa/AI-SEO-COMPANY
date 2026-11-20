@@ -225,7 +225,7 @@ export default function AudytSeoStronaDe() {
             { id: 'co', co: 'Was geprüft wird', darmowy: `${AUDYT.regul} automatische Regeln: Technik, Inhalt, Performance, KI-Tauglichkeit`, pelny: 'dasselbe plus Keywords, Konkurrenz, Linkprofil und Daten aus der Search Console' },
             { id: 'czas', co: 'Dauer', darmowy: 'meist 20 bis 90 Sekunden', pelny: '3 bis 5 Werktage' },
             { id: 'wynik', co: 'Ergebnis', darmowy: 'Punktzahl von 1 bis 100 und Problemliste mit Anleitung zur Behebung', pelny: 'jeder Fehler mit Priorität und Anleitung für Entwickler, Maßnahmenplan und Angebot' },
-            { id: 'konto', co: 'Konto', darmowy: 'nicht nötig; E-Mail nur für die vollständige Liste', pelny: '–' },
+            { id: 'konto', co: 'Konto', darmowy: 'nicht nötig; E-Mail nur für die vollständige Liste', pelny: '-' },
           ]}
           przypis="Preise netto zzgl. gesetzlicher MwSt."
         />

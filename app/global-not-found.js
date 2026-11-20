@@ -28,7 +28,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
 export const metadata = {
-  title: 'Nie ma takiej strony (404) – AI SEO COMPANY',
+  title: 'Nie ma takiej strony (404) - AI SEO COMPANY',
   description: 'Strona pod tym adresem nie istnieje. Przejdź do usług, cennika, audytu SEO albo bloga AI SEO COMPANY.',
 };
 
@@ -59,7 +59,7 @@ export default function GlobalNotFound() {
       <body className={inter.variable}>
         <main style={styl.main}>
           <div className="container">
-            <Link href="/" prefetch={false} style={styl.logo} aria-label="AI SEO COMPANY – strona główna">
+            <Link href="/" prefetch={false} style={styl.logo} aria-label="AI SEO COMPANY - strona główna">
               {/* eslint-disable-next-line @next/next/no-img-element -- statyczny SVG logotypu, bez optymalizacji */}
               <img src="/ai-seo-company-logotyp.svg" alt="Logotyp AI SEO COMPANY" width={160} height={59} />
             </Link>

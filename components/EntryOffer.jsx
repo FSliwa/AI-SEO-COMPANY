@@ -57,13 +57,13 @@ export default function EntryOffer() {
           </p>
           <h2 style={{ margin: 0, fontSize: 'clamp(1.4rem, 3.4vw, 1.9rem)', lineHeight: 1.2, fontWeight: 700 }}>
             {lang === 'pl'
-              ? <>Audyt SEO za <span style={{ color: '#38BDF8' }}>{price} zł netto</span> – kwota odliczana od pierwszej faktury</>
-              : <>SEO audit for <span style={{ color: '#38BDF8' }}>PLN {price} net</span> – deducted from your first invoice</>}
+              ? <>Audyt SEO za <span style={{ color: '#38BDF8' }}>{price} zł netto</span> - kwota odliczana od pierwszej faktury</>
+              : <>SEO audit for <span style={{ color: '#38BDF8' }}>PLN {price} net</span> - deducted from your first invoice</>}
           </h2>
           <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.55, color: '#CBD5E1' }}>
             {lang === 'pl'
-              ? 'Raport w 3–5 dni roboczych: co blokuje Twoją stronę, lista napraw według priorytetu i realna prognoza. Bez umowy, bez handlowca. Jeśli potem wejdziesz w pozycjonowanie, audyt masz za darmo.'
-              : 'Report in 3–5 business days: what holds your site back, a prioritised fix list and a realistic forecast. No contract, no sales call. If you go on to a subscription, the audit is free.'}
+              ? 'Raport w 3-5 dni roboczych: co blokuje Twoją stronę, lista napraw według priorytetu i realna prognoza. Bez umowy, bez handlowca. Jeśli potem wejdziesz w pozycjonowanie, audyt masz za darmo.'
+              : 'Report in 3-5 business days: what holds your site back, a prioritised fix list and a realistic forecast. No contract, no sales call. If you go on to a subscription, the audit is free.'}
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
             <a href={hash('kontakt', lang)} onClick={onClick} className="hero-btn-primary" data-cta="entry_offer_audyt" style={{ minHeight: '44px' }}>

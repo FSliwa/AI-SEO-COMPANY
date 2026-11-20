@@ -15,7 +15,7 @@ export default function SeoKostenDe() {
         kicker="SEO Kosten 2026"
         h1={w.h1}
         lead={`SEO Kosten bei AI SEO COMPANY: SEO Standard startet bei ${e(PREISE.standard)} netto pro Monat, SEO Premium kostet ${e(PREISE.premium)} netto pro Monat. Das Booster Pack (${e(PREISE.booster)} netto pro Monat, mindestens 3 Monate) enthält zusätzlich eine neue Website. Monatsvertrag ohne lange Bindung und ohne versteckte Gebühren: Unten finden Sie alle Pakete mit Leistungsumfang.`}
-        cta="Angebot anfragen – Antwort in 24 Stunden"
+        cta="Angebot anfragen - Antwort in 24 Stunden"
       />
 
       <Preise />

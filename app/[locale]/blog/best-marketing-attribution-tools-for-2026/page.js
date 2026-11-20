@@ -110,7 +110,7 @@ export default async function ArticleAttributionTools({ params }) {
                     <tr>
                       <td>Dreamdata</td>
                       <td>B2B revenue attribution</td>
-                      <td>Freemium; paid custom (typically from ~$750–999/mo)</td>
+                      <td>Freemium; paid custom (typically from ~$750-999/mo)</td>
                       <td>First-touch, last-touch, linear, time-decay, data-driven</td>
                       <td>Salesforce, HubSpot, LinkedIn, Google Ads</td>
                       <td>Account-level identity stitching</td>
@@ -130,7 +130,7 @@ export default async function ArticleAttributionTools({ params }) {
                     <tr>
                       <td>HubSpot Marketing Hub</td>
                       <td>SMBs on HubSpot CRM</td>
-                      <td>Free tier; Starter from ~$20/seat; Professional from ~$800–890/mo; multi-touch in Enterprise (~$3,600/mo)</td>
+                      <td>Free tier; Starter from ~$20/seat; Professional from ~$800-890/mo; multi-touch in Enterprise (~$3,600/mo)</td>
                       <td>First-touch, last-touch, linear, time-decay, full-path (Enterprise)</td>
                       <td>HubSpot CRM, Google Ads, Facebook</td>
                       <td>CRM-linked contact tracking</td>
@@ -140,7 +140,7 @@ export default async function ArticleAttributionTools({ params }) {
                     <tr>
                       <td>Ruler Analytics</td>
                       <td>Agencies, closed-loop B2B</td>
-                      <td>From ~$179–400/mo (traffic-based)</td>
+                      <td>From ~$179-400/mo (traffic-based)</td>
                       <td>Multi-touch, first, last, linear, time-decay</td>
                       <td>Salesforce, HubSpot, GA4, Google Ads</td>
                       <td>Lead-level CRM matching</td>
@@ -150,7 +150,7 @@ export default async function ArticleAttributionTools({ params }) {
                     <tr>
                       <td>Triple Whale</td>
                       <td>Shopify / DTC ad profitability</td>
-                      <td>From ~$149–219/mo (GMV-based)</td>
+                      <td>From ~$149-219/mo (GMV-based)</td>
                       <td>First-touch, last-touch, linear, Triple Pixel deterministic</td>
                       <td>Shopify, Meta, TikTok, Google Ads</td>
                       <td>Pixel-based, fast deploy</td>
@@ -170,7 +170,7 @@ export default async function ArticleAttributionTools({ params }) {
                     <tr>
                       <td>CallRail</td>
                       <td>Phone-lead attribution</td>
-                      <td>From ~$45–50/mo + usage</td>
+                      <td>From ~$45-50/mo + usage</td>
                       <td>Source-level call attribution</td>
                       <td>Google Ads, HubSpot, Salesforce, GA4</td>
                       <td>Dynamic number insertion</td>
@@ -180,7 +180,7 @@ export default async function ArticleAttributionTools({ params }) {
                     <tr>
                       <td>Funnel</td>
                       <td>Data pipeline / ETL</td>
-                      <td>From ~$200–400/mo</td>
+                      <td>From ~$200-400/mo</td>
                       <td>N/A (data connector, not attribution engine)</td>
                       <td>500+ connectors; BigQuery, Looker, Tableau</td>
                       <td>Data normalization layer</td>
@@ -312,7 +312,7 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><a href="https://funnel.io/pricing" target="_blank" rel="noopener noreferrer">Funnel Pricing</a></li>
                 <li><a href="https://segmentstream.com/pricing" target="_blank" rel="noopener noreferrer">SegmentStream Pricing</a></li>
                 <li><a href="https://www.hubspot.com/pricing/marketing" target="_blank" rel="noopener noreferrer">HubSpot Marketing Hub Pricing</a></li>
-                <li><Link href="/pozycjonowanie-stron-internetowych">AI SEO COMPANY – SEO & Analytics Services</Link></li>
+                <li><Link href="/pozycjonowanie-stron-internetowych">AI SEO COMPANY - SEO & Analytics Services</Link></li>
               </ul>
               
               <BlogCTA 

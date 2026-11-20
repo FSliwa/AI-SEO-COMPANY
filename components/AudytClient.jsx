@@ -48,7 +48,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
-              {lang === 'pl' ? 'Audyt SEO – Analiza i Optymalizacja SEO' : 'SEO Audit Services: Technical Audit and SEO Keyword Analysis'}
+              {lang === 'pl' ? 'Audyt SEO - Analiza i Optymalizacja SEO' : 'SEO Audit Services: Technical Audit and SEO Keyword Analysis'}
             </h1>
 
             <div style={{ 
@@ -84,7 +84,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Techniczny <span style={{ fontWeight: 'bold' }}>audyt SEO</span> strony lub sklepu w 3–5 dni roboczych: ponad 50 czynników, każdy błąd z priorytetem i instrukcją naprawy dla programisty. <span style={{ color: 'var(--color-cta)' }}>Bez PDF-a na 90 stron – lista napraw, którą ktoś przeczyta.</span> Wycena w 24 h, bez handlowca.</>
+                ? <>Techniczny <span style={{ fontWeight: 'bold' }}>audyt SEO</span> strony lub sklepu w 3-5 dni roboczych: ponad 50 czynników, każdy błąd z priorytetem i instrukcją naprawy dla programisty. <span style={{ color: 'var(--color-cta)' }}>Bez PDF-a na 90 stron - lista napraw, którą ktoś przeczyta.</span> Wycena w 24 h, bez handlowca.</>
                 : <>Discover the real reasons for your lack of visibility. As <strong>search engine optimization consultants</strong> providing expert <strong>search engine optimisation consultancy</strong>, <span style={{ color: 'var(--color-cta)' }}>we verify over 50 critical technical factors blocking your Google potential</span>.</>}
             </p>
             
@@ -147,7 +147,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <a href={hash('kontakt', lang)} className="btn btn-primary" data-cta="service_mid_audyt_1">
-              {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w\u00a024\u00a0h' : 'Ask for a quote – reply within 24\u00a0h'}
+              {lang === 'pl' ? 'Zapytaj o wycenę - odpowiedź w\u00a024\u00a0h' : 'Ask for a quote - reply within 24\u00a0h'}
             </a>
           </div>
         </div>
@@ -188,7 +188,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
                     id: 'samodzielny',
                     wariant: 'Audyt SEO jako osobna usługa',
                     cena: 'od 1 490 zł',
-                    czas: '3–5 dni roboczych',
+                    czas: '3-5 dni roboczych',
                     zakres: '50+ punktów kontrolnych, lista napraw z priorytetem i konsultacja omówieniowa',
                   },
                   {

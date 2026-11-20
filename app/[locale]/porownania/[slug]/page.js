@@ -7,7 +7,7 @@ import { porownanieDeBySlug } from '@/lib/porownania.de';
 import VergleichDe from '@/components/de/VergleichDe';
 import { metadataStronyPl, wymagajStronyPl, parametryPl } from '@/lib/stronaPl';
 
-// Strony porównań /porownania/[slug] (5.11.2026; PLAN-v2 7 SIL, 6.2–6.4, 6.14; TS-03).
+// Strony porównań /porownania/[slug] (5.11.2026; PLAN-v2 7 SIL, 6.2-6.4, 6.14; TS-03).
 // generateStaticParams zwraca { locale, slug } (pl i en, ten sam slug PL) WYŁĄCZNIE dla porównań,
 // które przechodzą bramkę publikacji (lib/publikacja.js); EN dla stron z wpisem w lib/stronyEn.js. Kształt { locale, slug } jest obowiązkowy:
 // samo { slug } daje 0 wygenerowanych ścieżek i 404 (TS-03, build 5.11.2026).

@@ -44,8 +44,8 @@ const faqData = [
   {
     question: 'Kiedy zobaczę efekty pozycjonowania lokalnego w Warszawie?',
     questionEn: 'When will I see the effects of local SEO in Warsaw?',
-    answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Celem dla uzgodnionych fraz lokalnych jest TOP 3 w 2–3 miesiące: postęp widzisz co tydzień w panelu klienta, a jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. W najbardziej konkurencyjnych dzielnicach Warszawy zbudowanie wiodącej pozycji może potrwać 3-6 miesięcy.',
-    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. The goal for agreed local keywords is a TOP 3 within 2–3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us. In the most competitive Warsaw districts, building a leading position can take 3-6 months. More on timelines: <a href="/en/blog/how-long-does-seo-take">how long does SEO take</a>.'
+    answer: 'Zoptymalizowana wizytówka Google Profil Firmy może przynieść pierwsze zyski w postaci nowych telefonów i zapytań już w ciągu 2-4 tygodni. Celem dla uzgodnionych fraz lokalnych jest TOP 3 w 2-3 miesiące: postęp widzisz co tydzień w panelu klienta, a jeśli po 3 miesiącach cel nie jest osiągnięty, kolejny miesiąc pracujemy za 0 zł. W najbardziej konkurencyjnych dzielnicach Warszawy zbudowanie wiodącej pozycji może potrwać 3-6 miesięcy.',
+    answerEn: 'An optimized Google Business Profile can generate the first returns in the form of new calls and inquiries within 2-4 weeks. The goal for agreed local keywords is a TOP 3 within 2-3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us. In the most competitive Warsaw districts, building a leading position can take 3-6 months. More on timelines: <a href="/en/blog/how-long-does-seo-take">how long does SEO take</a>.'
   },
   {
     question: 'Czy muszę posiadać fizyczne biuro w Warszawie?',
@@ -57,14 +57,14 @@ const faqData = [
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
     questionEn: 'How does local SEO differ from traditional SEO?',
     answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów. Oba podejścia łączymy: zakres ogólnopolski opisujemy na stronie o <a href="/pozycjonowanie-stron-internetowych" style="text-decoration:underline">pozycjonowaniu stron</a>.',
-    answerEn: 'Local SEO (or local search engine optimization) focuses on the "Local Pack"–results from Google Maps – and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
+    answerEn: 'Local SEO (or local search engine optimization) focuses on the "Local Pack"-results from Google Maps - and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
   },
   {
     // Nowe (LO1, OP-10): 40 słów; „ile kosztuje pozycjonowanie lokalne” 10/mies. (DataForSEO, 4.11.2026).
     id: 'ile-kosztuje-pozycjonowanie-lokalne',
     tylkoPl: true,
     question: 'Ile kosztuje pozycjonowanie lokalne?',
-    // Poprawka 6.11.2026: zakres zgodny z listą pakietów (Pricing.jsx) – posty i odpowiedzi na opinie
+    // Poprawka 6.11.2026: zakres zgodny z listą pakietów (Pricing.jsx) - posty i odpowiedzi na opinie
     // nie są wpisane do SEO Standard.
     answer: 'Pozycjonowanie lokalne jest w cenie każdego pakietu, od 1 900 zł netto miesięcznie w SEO Standard, i obejmuje optymalizację wizytówki Google. Zakres stałego prowadzenia wizytówki (publikacje, odpowiedzi na opinie) zależy od pakietu. Umowa jest miesięczna, a pełne porównanie pakietów znajdziesz w <a href="/cennik-pozycjonowania" style="text-decoration:underline">cenniku pozycjonowania</a>.',
   },
@@ -88,7 +88,7 @@ const faqData = [
   }
 ];
 
-// 5.11.2026 (ALT; OP-16): karty 2–3 to zdjęcia stockowe (kłódka na drzwiach, 3 osoby przy laptopach),
+// 5.11.2026 (ALT; OP-16): karty 2-3 to zdjęcia stockowe (kłódka na drzwiach, 3 osoby przy laptopach),
 // których alt PL był kopią H3 karty - decorative: true = w PL alt="" i bez title (SubpagePortfolio.jsx).
 // Karta 1 (alt i plik z frazą „pozycjonowanie lokalne”) bez zmian do D18; alty EN bez zmian.
 const portfolioCases = [
@@ -117,7 +117,7 @@ const portfolioCases = [
     tagEn: 'NAP SIGNALS & CITATIONS',
     title: 'Budowanie Autorytetu Lokalnego',
     titleEn: 'Building Local Authority',
-    description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Pilnujemy, żeby nazwa, adres i telefon były wszędzie identyczne – to mocny sygnał zaufania dla Google.',
+    description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Pilnujemy, żeby nazwa, adres i telefon były wszędzie identyczne - to mocny sygnał zaufania dla Google.',
     descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We keep the Name, Address and Phone identical everywhere, which is a powerful trust signal for Google.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
     decorative: true,
@@ -272,7 +272,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                 fontWeight: 400
               }}>
                 {lang === 'pl' 
-                  ? <>Pozycjonowanie stron w Warszawie od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc. Wizytówka Google, Mapy i wyniki organiczne dla firm z Warszawy – skuteczne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> bez wieloletnich umów.</>
+                  ? <>Pozycjonowanie stron w Warszawie od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc. Wizytówka Google, Mapy i wyniki organiczne dla firm z Warszawy - skuteczne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> bez wieloletnich umów.</>
                   : <>Harness the power of local searches. Effective optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
               </p>
               {/* Obietnice z nagłówków RSA w pierwszym ekranie. */}
@@ -314,7 +314,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
               <h2 className={lang === 'pl' ? 'bez-kropki' : undefined} style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
-                {lang === 'pl' ? 'Pozycjonowanie stron w Warszawie – dlaczego lokalnie?' : 'Why Local SEO & Search Engine Optimization Matters'}
+                {lang === 'pl' ? 'Pozycjonowanie stron w Warszawie - dlaczego lokalnie?' : 'Why Local SEO & Search Engine Optimization Matters'}
               </h2>
               <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
                 {lang === 'pl'
@@ -352,7 +352,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
             {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
             <div style={{ textAlign: 'center', marginTop: '3rem' }}>
               <a href={hash('kontakt', locale)} className="btn btn-primary" data-cta="service_mid_warszawa_1">
-                {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w 24 h' : 'Ask for a quote – reply within 24 h'}
+                {lang === 'pl' ? 'Zapytaj o wycenę - odpowiedź w 24 h' : 'Ask for a quote - reply within 24 h'}
               </a>
             </div>
           </div>
@@ -369,7 +369,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               </h2>
               <p style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500, lineHeight: 1.6 }}>
                 {lang === 'pl'
-                  ? 'W pakiecie lokalnym Google o kolejności decydują trzy główne czynniki: trafność, odległość i rozpoznawalność. Dlatego w Warszawie nie ma jednej strategii – inaczej wygląda walka o widoczność w Śródmieściu, a inaczej na Ursynowie.'
+                  ? 'W pakiecie lokalnym Google o kolejności decydują trzy główne czynniki: trafność, odległość i rozpoznawalność. Dlatego w Warszawie nie ma jednej strategii - inaczej wygląda walka o widoczność w Śródmieściu, a inaczej na Ursynowie.'
                   : 'In the Google local pack, rankings depend on three core factors: relevance, distance and prominence. That is why Warsaw has no single strategy: competing in Srodmiescie looks nothing like competing in Ursynow.'}
               </p>
             </Reveal>
@@ -403,21 +403,21 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                     {lang === 'pl' ? 'Praga-Południe i Praga-Północ' : 'Praga-Poludnie and Praga-Polnoc'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Gastronomia, rzemiosło i usługi. Konkurencja rośnie, ale nasycenie dobrze prowadzonymi wizytówkami wciąż jest niskie – regularne posty i odpowiedzi na opinie dają tu przewagę szybciej niż gdziekolwiek indziej w mieście.' : 'Restaurants, crafts and services. Competition is growing, but the share of well-run business profiles is still low, so regular posts and replies to reviews build an advantage faster here than anywhere else in the city.'}
+                    {lang === 'pl' ? 'Gastronomia, rzemiosło i usługi. Konkurencja rośnie, ale nasycenie dobrze prowadzonymi wizytówkami wciąż jest niskie - regularne posty i odpowiedzi na opinie dają tu przewagę szybciej niż gdziekolwiek indziej w mieście.' : 'Restaurants, crafts and services. Competition is growing, but the share of well-run business profiles is still low, so regular posts and replies to reviews build an advantage faster here than anywhere else in the city.'}
                   </p>
                 </RevealItem>
             </RevealStagger>
             <Reveal>
               <p style={{ maxWidth: '820px', margin: '3rem auto 0 auto', color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.65, textAlign: 'center' }}>
                 {lang === 'pl'
-                  ? 'Jeśli obsługujesz klientów w całym mieście i nie masz lokalu z obsługą, konfigurujemy wizytówkę jako Service Area Business z obszarem obejmującym wszystkie dzielnice – wtedy o widoczność walczymy zasięgiem i opiniami, a nie adresem.'
-                  : 'If you serve the whole city and have no walk-in location, we set the profile up as a Service Area Business covering every district – then visibility is won with service area and reviews rather than with an address.'}
+                  ? 'Jeśli obsługujesz klientów w całym mieście i nie masz lokalu z obsługą, konfigurujemy wizytówkę jako Service Area Business z obszarem obejmującym wszystkie dzielnice - wtedy o widoczność walczymy zasięgiem i opiniami, a nie adresem.'
+                  : 'If you serve the whole city and have no walk-in location, we set the profile up as a Service Area Business covering every district - then visibility is won with service area and reviews rather than with an address.'}
               </p>
             </Reveal>
             {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
             <div style={{ textAlign: 'center', marginTop: '3rem' }}>
               <a href={hash('kontakt', locale)} className="btn btn-primary" data-cta="service_mid_warszawa_2">
-                {lang === 'pl' ? 'Zapytaj o wycenę – odpowiedź w 24 h' : 'Ask for a quote – reply within 24 h'}
+                {lang === 'pl' ? 'Zapytaj o wycenę - odpowiedź w 24 h' : 'Ask for a quote - reply within 24 h'}
               </a>
             </div>
           </div>
@@ -484,7 +484,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                     {lang === 'pl' ? 'Najlepsze Lokalne SEO' : 'Leading local SEO'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Nie gwarantujemy pozycji nr 1 – Google nas o zdanie nie pyta. Obiecujemy plan, robotę, panel klienta z mapami i wynikami organicznymi na bieżąco, comiesięczny raport oraz cel TOP 3 dla uzgodnionych fraz w 2–3 miesiące. Dedykowane usługi lokalnego SEO dopasowane do Twojego obszaru.' : 'We do not guarantee the #1 spot – Google does not ask our opinion. We promise a plan, the work, a client portal with map pack and organic results, a monthly report and a TOP 3 goal for agreed keywords within 2–3 months. Dedicated local SEO services tailored to your area.'}
+                    {lang === 'pl' ? 'Nie gwarantujemy pozycji nr 1 - Google nas o zdanie nie pyta. Obiecujemy plan, robotę, panel klienta z mapami i wynikami organicznymi na bieżąco, comiesięczny raport oraz cel TOP 3 dla uzgodnionych fraz w 2-3 miesiące. Dedykowane usługi lokalnego SEO dopasowane do Twojego obszaru.' : 'We do not guarantee the #1 spot - Google does not ask our opinion. We promise a plan, the work, a client portal with map pack and organic results, a monthly report and a TOP 3 goal for agreed keywords within 2-3 months. Dedicated local SEO services tailored to your area.'}
                   </p>
                 </RevealItem>
               </RevealStagger>
@@ -510,8 +510,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <SubpagePortfolio
           title={lang === 'pl' ? 'Sektor Strategii Lokalnych' : 'Local Strategy Sector'}
           subtitle={lang === 'pl'
-            ? 'Poznaj kluczowe obszary, w których budujemy widoczność firm w wynikach w Warszawie – przykładowe scenariusze, ilustracja metody, nie wyniki konkretnych klientów'
-            : 'The key areas of local search engine optimization we use to build companies\' visibility in the Warsaw results – illustrative scenarios of the method, not results of specific clients'}
+            ? 'Poznaj kluczowe obszary, w których budujemy widoczność firm w wynikach w Warszawie - przykładowe scenariusze, ilustracja metody, nie wyniki konkretnych klientów'
+            : 'The key areas of local search engine optimization we use to build companies\' visibility in the Warsaw results - illustrative scenarios of the method, not results of specific clients'}
           cases={portfolioCases}
           layout="vertical"
         />

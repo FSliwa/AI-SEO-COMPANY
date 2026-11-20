@@ -38,7 +38,7 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'proces-pozyskiwania-krok-po-kroku', title: 'Jak zbudować proces pozyskiwania opinii krok po kroku' },
     { id: 'szablony-wiadomosci', title: 'Szablony wiadomości, które faktycznie działają' },
     { id: 'jak-odpowiadac', title: 'Jak odpowiadać na opinie Google: 6 wzorów' },
-    { id: 'falszywa-opinia', title: 'Gdy opinia jest fałszywa lub narusza zasady – co zrobić' },
+    { id: 'falszywa-opinia', title: 'Gdy opinia jest fałszywa lub narusza zasady - co zrobić' },
     { id: 'automatyzacja-i-kpi', title: 'Automatyzacja i KPI: co mierzyć i jak testować' },
     { id: 'co-mowia-eksperci', title: 'Co mówią eksperci o personalizacji i automatyzacji w 2026' },
     { id: 'kluczowe-wnioski', title: 'Kluczowe wnioski' },
@@ -53,7 +53,7 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'proces-pozyskiwania-krok-po-kroku', title: 'How to build a review acquisition process step-by-step' },
     { id: 'szablony-wiadomosci', title: 'Message templates that actually work' },
     { id: 'jak-odpowiadac', title: 'How to reply to reviews to gain credibility' },
-    { id: 'falszywa-opinia', title: 'When a review is fake or violates rules – what to do' },
+    { id: 'falszywa-opinia', title: 'When a review is fake or violates rules - what to do' },
     { id: 'automatyzacja-i-kpi', title: 'Automation and KPIs: what to measure and test' },
     { id: 'co-mowia-eksperci', title: 'What experts say about personalization and automation in' },
     { id: 'kluczowe-wnioski', title: 'Key Takeaways' },
@@ -145,8 +145,8 @@ export default async function ArticleReviewsPage({ params }) {
                       <tbody>
                         <tr>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>New reviews / month</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>5–10</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>15–30</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>5-10</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>15-30</td>
                         </tr>
                         <tr>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Average rating</td>
@@ -169,7 +169,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <h2 id="jak-odpowiadac">How to reply to reviews to gain credibility</h2>
                   <p>Replying to a review is not a formality. It is content visible to all potential customers reading reviews before making a decision. Respond quickly (within 24-48h) and professionally.</p>
 
-                  <h2 id="falszywa-opinia">When a review is fake or violates rules – what to do</h2>
+                  <h2 id="falszywa-opinia">When a review is fake or violates rules - what to do</h2>
                   <p>Assess if the review actually violates Google's policies. Report it via the Business Profile panel (<a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>official Google support</a>), document everything, and reply neutrally publicly.</p>
 
                   <h2 id="automatyzacja-i-kpi">Automation and KPIs: what to measure and test</h2>
@@ -190,7 +190,7 @@ export default async function ArticleReviewsPage({ params }) {
               ) : (
                 <>
                   <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
-                    Metoda, która dobrze sprawdza się w praktyce przy pozyskiwaniu opinii Google, to spersonalizowana prośba wysłana 24–48 godzin po zrealizowanej usłudze, z jednym widocznym linkiem do wystawienia recenzji. Nie ma tu żadnej tajemnicy, jest za to konkretny proces: trigger w systemie CRM po zmianie statusu na „zrealizowano”, wiadomość z imieniem klienta i nazwą usługi, jedno wyraźne CTA. Jeden follow-up po 7 dniach, jeśli klient nie zareagował. Koniec.
+                    Metoda, która dobrze sprawdza się w praktyce przy pozyskiwaniu opinii Google, to spersonalizowana prośba wysłana 24-48 godzin po zrealizowanej usłudze, z jednym widocznym linkiem do wystawienia recenzji. Nie ma tu żadnej tajemnicy, jest za to konkretny proces: trigger w systemie CRM po zmianie statusu na „zrealizowano”, wiadomość z imieniem klienta i nazwą usługi, jedno wyraźne CTA. Jeden follow-up po 7 dniach, jeśli klient nie zareagował. Koniec.
                   </p>
                   <ArticleTOC items={tocItems} />
 
@@ -205,7 +205,7 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <h2 id="gdzie-wyswietlaja-sie-opinie">Gdzie wyświetlają się opinie Google i dlaczego to ważne</h2>
                   <p>Opinia Google to treść tworzona przez użytkownika (UGC) powiązana z Profilem Firmy w Google (Google Business Profile). Wyświetla się w kilku miejscach jednocześnie: w wizytówce w Mapach Google, w sekcji <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>wyników lokalnych (Local Pack)</Link> przy zapytaniach z intencją lokalną, w panelu wizytówki Profilu Firmy oraz w rozszerzeniach reklam Google Ads.</p>
-                  <p>Dla zapytań z lokalną intencją, takich jak „restauracja Warszawa“ czy „dentysta Kraków“, Google priorytetowo traktuje wizytówki z większą liczbą aktualnych opinii. Liczba i świeżość recenzji to ważne sygnały rankingowe, ale nie działają w izolacji – algorytm bierze pod uwagę także średnią ocen, proximity (bliskość lokalizacji), relevance (zgodność kategorii i treści z zapytaniem), <Link href="/blog/seo-lokalne-dla-firm-w-warszawie#strategia-nap-name-address-phone" style={{ color: '#0066cc', textDecoration: 'underline' }}>kompletność danych NAP</Link> oraz poziom engagementu (odpowiedzi na opinie, zdjęcia, aktualizacje profilu).</p>
+                  <p>Dla zapytań z lokalną intencją, takich jak „restauracja Warszawa“ czy „dentysta Kraków“, Google priorytetowo traktuje wizytówki z większą liczbą aktualnych opinii. Liczba i świeżość recenzji to ważne sygnały rankingowe, ale nie działają w izolacji - algorytm bierze pod uwagę także średnią ocen, proximity (bliskość lokalizacji), relevance (zgodność kategorii i treści z zapytaniem), <Link href="/blog/seo-lokalne-dla-firm-w-warszawie#strategia-nap-name-address-phone" style={{ color: '#0066cc', textDecoration: 'underline' }}>kompletność danych NAP</Link> oraz poziom engagementu (odpowiedzi na opinie, zdjęcia, aktualizacje profilu).</p>
                   <p>Profil z większą liczbą aktualnych recenzji i dobrą średnią ocen ma wyraźną przewagę nad profilem z małą liczbą recenzji, nawet jeśli ten drugi ma nieco wyższą średnią. Świeżość i regularny przyrost opinii często waży więcej niż sama ocena, bo Google traktuje je jako dowód aktywnego, żyjącego biznesu.</p>
                   <p>Opinie wspierają też SEO przez unikalną treść, która zawiera naturalne frazy długiego ogona. Klient, który pisze „świetna pizza na Mokotowie, szybka dostawa“, tworzy treść, której żaden copywriter nie napisałby lepiej pod kątem lokalnych zapytań.</p>
 
@@ -224,8 +224,8 @@ export default async function ArticleReviewsPage({ params }) {
                       <tbody>
                         <tr>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Liczba nowych opinii miesięcznie</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>5–10</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>15–30</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>5-10</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>15-30</td>
                         </tr>
                         <tr>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Średnia ocena</td>
@@ -240,13 +240,13 @@ export default async function ArticleReviewsPage({ params }) {
                         <tr>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Tempo przyrostu</td>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>max. 3× średniej z ost. 3 mies.</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>max. 3–5× średniej z ost. 3 mies.</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>max. 3-5× średniej z ost. 3 mies.</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   
-                  <p>Opinie klientów Google to też źródło UGC wspierające sprzedaż: recenzje eksponowane na stronie głównej lub kartach produktów skracają ścieżkę zakupową. Firma, która systematycznie zbiera 5–10 opinii miesięcznie, buduje przewagę rankingową trwalszą niż jednorazowa kampania zbierająca 50 recenzji w tydzień.</p>
+                  <p>Opinie klientów Google to też źródło UGC wspierające sprzedaż: recenzje eksponowane na stronie głównej lub kartach produktów skracają ścieżkę zakupową. Firma, która systematycznie zbiera 5-10 opinii miesięcznie, buduje przewagę rankingową trwalszą niż jednorazowa kampania zbierająca 50 recenzji w tydzień.</p>
                   <p>Systematyczny przyrost opinii daje lepszy sygnał rankingowy niż jednorazowy skok, który algorytmy Google traktują jako anomalię.</p>
                   <p>Opinie liczą się też poza Mapami. ChatGPT z wyszukiwaniem korzysta z wizytówek, opinii i katalogów firm, dlatego prowadzoną wizytówkę z opiniami uwzględniamy także w <Link href="/pozycjonowanie-w-ai" style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowaniu w AI</Link>.</p>
 
@@ -267,12 +267,12 @@ export default async function ArticleReviewsPage({ params }) {
                   <h2 id="proces-pozyskiwania-krok-po-kroku">Jak zbudować proces pozyskiwania opinii krok po kroku</h2>
                   <p>Skuteczny proces nie powstaje z dnia na dzień. Poniższy plan trzech faz pozwala wdrożyć go bez ryzyka nagłego skoku liczby recenzji.</p>
                   <ol>
-                    <li><span style={{ fontWeight: 'bold' }}>Faza audytu (dni 1–14):</span> Sprawdź aktualny stan profilu (lub zleć <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>pełny audyt SEO</Link>), policz istniejące opinie, oceń średnią i udział recenzji z treścią. Skonfiguruj link do wystawienia opinii (skrócony URL z Profilu Firmy). Przygotuj dwa szablony wiadomości: e-mail i SMS.</li>
-                    <li><span style={{ fontWeight: 'bold' }}>Faza rozruchu (dni 15–45):</span> Uruchom trigger w CRM powiązany ze statusem „zrealizowano“. Pierwsze 4 tygodnie: wysyłaj prośby do wszystkich klientów z zamkniętymi zleceniami. Cel: 3–5 nowych opinii tygodniowo.</li>
-                    <li><span style={{ fontWeight: 'bold' }}>Faza optymalizacji (dni 46–90):</span> Rozszerz bazę odbiorców na wszystkich klientów z zamkniętymi zleceniami. Włącz follow-up po 7 dniach dla tych, którzy nie zareagowali. Analizuj conversion rate dla każdego kanału i dostosuj miks.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Faza audytu (dni 1-14):</span> Sprawdź aktualny stan profilu (lub zleć <Link href="/audyt-seo" style={{ color: '#0066cc', textDecoration: 'underline' }}>pełny audyt SEO</Link>), policz istniejące opinie, oceń średnią i udział recenzji z treścią. Skonfiguruj link do wystawienia opinii (skrócony URL z Profilu Firmy). Przygotuj dwa szablony wiadomości: e-mail i SMS.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Faza rozruchu (dni 15-45):</span> Uruchom trigger w CRM powiązany ze statusem „zrealizowano“. Pierwsze 4 tygodnie: wysyłaj prośby do wszystkich klientów z zamkniętymi zleceniami. Cel: 3-5 nowych opinii tygodniowo.</li>
+                    <li><span style={{ fontWeight: 'bold' }}>Faza optymalizacji (dni 46-90):</span> Rozszerz bazę odbiorców na wszystkich klientów z zamkniętymi zleceniami. Włącz follow-up po 7 dniach dla tych, którzy nie zareagowali. Analizuj conversion rate dla każdego kanału i dostosuj miks.</li>
                   </ol>
                   <p>Rekomendowany miks kanałów dla średniej firmy usługowej opiera się na skuteczności poszczególnych metod: krótko po usłudze e-mail, SMS, osobista prośba oraz kod QR w lokalu. Najlepszy efekt daje połączenie dwóch lub więcej kanałów, bo każdy dociera do innego segmentu klientów.</p>
-                  <p>Kluczowe jest bezpieczne tempo. Jeśli przez ostatnie 3 miesiące zbierałeś średnio 2 opinie miesięcznie, nie próbuj nagle zebrać 30 w tydzień. Bezpieczny skok to maksymalnie 3–5 razy powyżej tej średniej.</p>
+                  <p>Kluczowe jest bezpieczne tempo. Jeśli przez ostatnie 3 miesiące zbierałeś średnio 2 opinie miesięcznie, nie próbuj nagle zebrać 30 w tydzień. Bezpieczny skok to maksymalnie 3-5 razy powyżej tej średniej.</p>
 
                   <h2 id="szablony-wiadomosci">Szablony wiadomości, które faktycznie działają</h2>
                   <p>Dobra prośba o opinię jest krótka, spersonalizowana i zawiera jedno CTA. Klient musi wiedzieć, że zajmie mu to 2 minuty, i musi dostać bezpośredni link, nie instrukcję, jak go znaleźć.</p>
@@ -285,7 +285,7 @@ export default async function ArticleReviewsPage({ params }) {
                   </ul>
                   
                   <div style={{ background: '#F9F9F9', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--w-linia)', marginBottom: '2rem' }}>
-                    <span style={{ fontWeight: 'bold' }}>Wzór e-maila (24–48 h po usłudze):</span><br /><br />
+                    <span style={{ fontWeight: 'bold' }}>Wzór e-maila (24-48 h po usłudze):</span><br /><br />
                     Temat: Jak oceniasz naszą współpracę, [Imię]?<br /><br />
                     Cześć [Imię],<br /><br />
                     Dziękujemy za wizytę w środę. Mamy nadzieję, że [nazwa usługi] spełniła Twoje oczekiwania.<br /><br />
@@ -309,7 +309,7 @@ export default async function ArticleReviewsPage({ params }) {
                   
                   <p><span style={{ fontWeight: 'bold' }}>Zasady odpowiedzi:</span></p>
                   <ul>
-                    <li>Reaguj szybko, najlepiej w ciągu 24–48 godzin.</li>
+                    <li>Reaguj szybko, najlepiej w ciągu 24-48 godzin.</li>
                     <li>Podpisuj się imieniem, nie tylko nazwą firmy.</li>
                     <li>Nigdy nie umieszczaj w odpowiedzi prywatnych danych klienta.</li>
                     <li>Nie wdawaj się w publiczne spory.</li>
@@ -363,7 +363,7 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <p>Odpowiedź na każdą opinię w ciągu 48 godzin to stały element naszej pracy, gdy prowadzimy <Link href={HREF_WIZYTOWKA} style={{ color: '#0066cc', textDecoration: 'underline' }}>pozycjonowanie wizytówki Google</Link>. Samą wizytówkę uzupełnisz według darmowej checklisty: <Link href="/narzedzia/checklista-wizytowki-google" style={{ color: '#0066cc', textDecoration: 'underline' }}>jak założyć wizytówkę Google</Link>.</p>
 
-                  <h2 id="falszywa-opinia">Gdy opinia jest fałszywa lub narusza zasady – co zrobić</h2>
+                  <h2 id="falszywa-opinia">Gdy opinia jest fałszywa lub narusza zasady - co zrobić</h2>
                   <ol>
                     <li><span style={{ fontWeight: 'bold' }}>Oceń, czy opinia faktycznie narusza regulamin Google.</span> Podstawy to spam, fałszywa treść, konflikt interesów itp. Niska ocena bez naruszenia regulaminu nie jest podstawą do usunięcia.</li>
                     <li><span style={{ fontWeight: 'bold' }}>Zgłoś opinię przez panel Profilu Firmy.</span> Wybierz właściwą kategorię naruszenia. Moderacja może potrwać kilka dni roboczych.</li>
@@ -392,7 +392,7 @@ export default async function ArticleReviewsPage({ params }) {
                         </tr>
                         <tr>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Współczynnik otwarcia e-maila</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>40–60%</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>40-60%</td>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Platforma e-mail marketingu</td>
                         </tr>
                         <tr>
@@ -402,7 +402,7 @@ export default async function ArticleReviewsPage({ params }) {
                         </tr>
                         <tr>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Współczynnik konwersji (opinia/wysłana)</td>
-                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>8–15%</td>
+                          <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>8-15%</td>
                           <td style={{ padding: '1rem', borderBottom: '1px solid var(--w-linia)' }}>Liczba nowych opinii / wysłane</td>
                         </tr>
                         <tr>
@@ -416,10 +416,10 @@ export default async function ArticleReviewsPage({ params }) {
 
                   <h2 id="co-mowia-eksperci">Co mówią eksperci o personalizacji i automatyzacji w 2026 roku</h2>
                   <p>Główny wniosek z branżowych analiz jest prosty: personalizacja prośby o opinię podnosi zaangażowanie bardziej niż jakikolwiek inny pojedynczy czynnik. Użycie imienia klienta, nazwy konkretnej usługi i daty wizyty sprawia, że wiadomość wygląda jak kontakt od człowieka, nie od systemu.</p>
-                  <p>Optymalne okno wysyłki to 24–48 godzin po usłudze. Follow-up po 7 dniach jest dopuszczalny raz. Więcej przypomnień niszczy relację z klientem.</p>
+                  <p>Optymalne okno wysyłki to 24-48 godzin po usłudze. Follow-up po 7 dniach jest dopuszczalny raz. Więcej przypomnień niszczy relację z klientem.</p>
                   <p><span style={{ fontWeight: 'bold' }}>Praktyczne kroki wdrożenia:</span></p>
                   <ul>
-                    <li>Skonfiguruj trigger w CRM na status „zrealizowano“ z opóźnieniem 24–48 h.</li>
+                    <li>Skonfiguruj trigger w CRM na status „zrealizowano“ z opóźnieniem 24-48 h.</li>
                     <li>Przygotuj dwa warianty wiadomości (A/B) z personalizowanymi polami.</li>
                     <li>Ustaw jednorazowy follow-up po 7 dniach dla tych, którzy nie kliknęli linku.</li>
                     <li>Monitoruj conversion rate tygodniowo przez pierwsze 3 miesiące.</li>
@@ -447,7 +447,7 @@ export default async function ArticleReviewsPage({ params }) {
                   <h3>Can I buy Google reviews?</h3>
                   <p>No. Google’s policy strictly prohibits fake and incentivized reviews. Bought reviews can be removed automatically, and the Business Profile can face visibility restrictions or suspension. Ask real customers instead using a direct review link.</p>
                   <h3>How do I get a direct Google review link?</h3>
-                  <p>Sign in to your Google Business Profile, select “Ask for reviews” (Read reviews → Get more reviews), copy the short URL Google generates, and send it to customers by email or SMS 24–48 hours after completing the job.</p>
+                  <p>Sign in to your Google Business Profile, select “Ask for reviews” (Read reviews → Get more reviews), copy the short URL Google generates, and send it to customers by email or SMS 24-48 hours after completing the job.</p>
                 </section>
               ) : (
                 <section aria-labelledby="reviews-faq-pl" style={{ marginTop: '2.5rem' }}>

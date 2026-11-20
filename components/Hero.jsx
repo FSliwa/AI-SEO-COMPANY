@@ -1,7 +1,7 @@
 // Hero strony głównej (PL, EN, DE) w układzie airSlate (zdj. 1, 19.11.2026):
 // - po lewej: eyebrow o 6 darmowych narzędziach i panelu klienta, jedno H1, lead oraz 2 przyciski CTA;
 // - po prawej: pływające kafelki narzędzi i panelu klienta ułożone w kompozycji airSlate BEZ tła-kafla
-//   pod nimi — bezpośrednio nad czystymi górami (bez podkładki pod satelitę) i przejściem chmurowym.
+//   pod nimi - bezpośrednio nad czystymi górami (bez podkładki pod satelitę) i przejściem chmurowym.
 
 import { preload } from 'react-dom';
 import './Hero.css';

@@ -121,7 +121,7 @@ function opisBramki(p, top, topZr) {
 // 18.11.2026 (anim-narzedzia-c): znaczniki wchodzą staggerem 50 ms (r-stan, --i = numer pytania, maks. 6 kroków).
 function Znak({ stan, i = 0 }) {
   const ruch = { '--i': i };
-  if (stan === 'brak') return <span className="narz-znak narz-znak--brak r-stan" style={ruch} title="Google hat keine AI Overview angezeigt">–</span>;
+  if (stan === 'brak') return <span className="narz-znak narz-znak--brak r-stan" style={ruch} title="Google hat keine AI Overview angezeigt">-</span>;
   return stan ? <span className="narz-znak narz-znak--tak r-stan" style={ruch} aria-label="genannt">✓</span> : <span className="narz-znak narz-znak--nie r-stan" style={ruch} aria-label="nicht genannt">✕</span>;
 }
 
@@ -471,10 +471,10 @@ function PruefTool() {
                     {x.dostepny
                       ? p.pytania.map((q, qi) => {
                         const c = p.siatka.find((g) => g.silnik === x.id && g.pytanie === q);
-                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} i={qi} /> : '–'}</td>;
+                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} i={qi} /> : '-'}</td>;
                       })
                       : <td colSpan={p.pytania.length} className="narz-mikro">{x.powod}</td>}
-                    <td>{x.dostepny ? `${x.wzmianki}/${x.odpowiedzi}` : '–'}</td>
+                    <td>{x.dostepny ? `${x.wzmianki}/${x.odpowiedzi}` : '-'}</td>
                   </tr>
                 ))}
               </tbody>

@@ -140,8 +140,8 @@ export default function WhyUs({ isMainContent = false }) {
       metric: '99/100',
       title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google' : 'Lightning performance & Google score',
       description: lang === 'pl'
-        ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum. Nasze strony ofertowe mają 98–99/100 w Lighthouse na telefonie (pomiar z 24.09.2026).'
-        : 'Page speed is where businesses and search engine optimization agencies lose most rankings, so we treat it as a core deliverable: we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures ensure your site passes all Core Web Vitals with flying colors. Our own service pages score 98–99/100 in mobile Lighthouse (measured on 24 September 2026).',
+        ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum. Nasze strony ofertowe mają 98-99/100 w Lighthouse na telefonie (pomiar z 24.09.2026).'
+        : 'Page speed is where businesses and search engine optimization agencies lose most rankings, so we treat it as a core deliverable: we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures ensure your site passes all Core Web Vitals with flying colors. Our own service pages score 98-99/100 in mobile Lighthouse (measured on 24 September 2026).',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
@@ -234,15 +234,15 @@ export default function WhyUs({ isMainContent = false }) {
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'DLACZEGO MY' : 'WHY US'}
             </div>
             <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: 'var(--w-tusz)', marginBottom: '1rem' }}>
-              {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie – agencja marketingowa nastawiona na wyniki' : 'An SEO and marketing agency for companies that measure pipeline, not rankings'}
+              {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie - agencja marketingowa nastawiona na wyniki' : 'An SEO and marketing agency for companies that measure pipeline, not rankings'}
             </h2>
             {lang === 'en' && (
               <h2 style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', fontWeight: 500, lineHeight: 1.6, margin: '0 0 1rem 0' }}>
-                Selected B2B projects delivered end to end – strategy, build and search visibility.
+                Selected B2B projects delivered end to end - strategy, build and search visibility.
               </h2>
             )}
             <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', fontWeight: 500, lineHeight: 1.6, margin: 0 }}>
-              {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych. Agencja SEO Warszawa to nasz adres, nie slogan – jako agencja marketingowa prowadzimy projekt, strony i pozycjonowanie w jednym zespole.' : 'We craft digital solutions backed by hard analytics and buyer psychology. Whether you call us an SEO firm or a search engine optimization agency, our job is the same: measurable pipeline growth.'}
+              {lang === 'pl' ? 'Tworzymy rozwiązania poparte twardymi danymi analitycznymi i psychologią podejmowania decyzji zakupowych. Agencja SEO Warszawa to nasz adres, nie slogan - jako agencja marketingowa prowadzimy projekt, strony i pozycjonowanie w jednym zespole.' : 'We craft digital solutions backed by hard analytics and buyer psychology. Whether you call us an SEO firm or a search engine optimization agency, our job is the same: measurable pipeline growth.'}
             </p>
           </Reveal>
 

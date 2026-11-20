@@ -148,7 +148,7 @@ function opisBramki(p, en, top, topZr) {
 // 18.11.2026 (anim-narzedzia-c): znaczniki wchodzą staggerem 50 ms (r-stan, --i = numer pytania, maks. 6 kroków).
 function Znak({ stan, en, i = 0 }) {
   const ruch = { '--i': i };
-  if (stan === 'brak') return <span className="narz-znak narz-znak--brak r-stan" style={ruch} title={en ? 'Google did not show an AI Overview' : 'Google nie pokazał przeglądu AI'}>–</span>;
+  if (stan === 'brak') return <span className="narz-znak narz-znak--brak r-stan" style={ruch} title={en ? 'Google did not show an AI Overview' : 'Google nie pokazał przeglądu AI'}>-</span>;
   return stan ? <span className="narz-znak narz-znak--tak r-stan" style={ruch} aria-label={en ? 'mentioned' : 'wymieniona'}>✓</span> : <span className="narz-znak narz-znak--nie r-stan" style={ruch} aria-label={en ? 'not mentioned' : 'niewymieniona'}>✕</span>;
 }
 
@@ -370,10 +370,10 @@ export default function WidocznoscAiClient() {
                     {s.dostepny
                       ? p.pytania.map((q, qi) => {
                         const c = p.siatka.find((x) => x.silnik === s.id && x.pytanie === q);
-                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} en={en} i={qi} /> : '–'}</td>;
+                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} en={en} i={qi} /> : '-'}</td>;
                       })
                       : <td colSpan={p.pytania.length} className="narz-mikro">{s.powod}</td>}
-                    <td>{s.dostepny ? `${s.wzmianki}/${s.odpowiedzi}` : '–'}</td>
+                    <td>{s.dostepny ? `${s.wzmianki}/${s.odpowiedzi}` : '-'}</td>
                   </tr>
                 ))}
               </tbody>

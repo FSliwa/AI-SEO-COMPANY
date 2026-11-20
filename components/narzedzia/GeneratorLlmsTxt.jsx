@@ -1,7 +1,7 @@
 // N1 /narzedzia/generator-llms-txt (PLAN-v2 6.10; brief N1; CB-09 korekta, CB-18; 5.11.2026).
 // Komponent serwerowy: treść, schema i okruszki; interaktywna część to LlmsTxtClient.
 // - H1 (59) i Krótka odpowiedź (54 słowa) z 6.10, bez obietnicy „plik dla ChatGPT” (CB-09),
-// - konspekt 1 000–1 200 słów BEZ H2 „Kto pobrał nasz llms.txt” (dopiero po ≥ 30 dniach danych
+// - konspekt 1 000-1 200 słów BEZ H2 „Kto pobrał nasz llms.txt” (dopiero po ≥ 30 dniach danych
 //   z trwałego licznika T0.5, CB-09; logi Vercel tego nie zapewnią),
 // - liczby z datą i źródłem: Ahrefs (28% ze 137 000 domen) i specyfikacja llmstxt.org - odczyt
 //   5.11.2026; własny test botów 5.11.2026 (skille/ai-visibility/botcheck-2026-11-05.txt);

@@ -28,14 +28,14 @@ const realizedWebsites = [
     layout: 'center',
     rightVisual: 'single-large',
     largeImage: '/projects/madame-thai-restaurant-website.webp',
-    imgAlt: 'Strona internetowa restauracji Madame Thai – projekt agencji SEO i marketingowej z Warszawy',
-    imgAltEn: 'Madame Thai restaurant website – the homepage we designed and built for their Warsaw location',
+    imgAlt: 'Strona internetowa restauracji Madame Thai - projekt agencji SEO i marketingowej z Warszawy',
+    imgAltEn: 'Madame Thai restaurant website - the homepage we designed and built for their Warsaw location',
     imgTitle: 'Projekt strony dla restauracji Madame Thai',
-    imgTitleEn: 'Madame Thai restaurant – website project',
+    imgTitleEn: 'Madame Thai restaurant - website project',
     largeImageMobile: '/images/madame-thai-mobile.webp',
-    details: `Część I – Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
+    details: `Część I - Nowa strona internetowa: Fundament, na którym pracuje cały marketing.
 - Indywidualny projekt graficzny (UX/UI) dopasowany do identyfikacji wizualnej: Buduje zaufanie od pierwszych sekund i w przemyślany sposób prowadzi klienta do telefonu lub rezerwacji.
-- Responsywna wersja strony (RWD): Poprawne działanie na telefonach i tabletach – eliminacja utraconych zapytań od klientów mobilnych.
+- Responsywna wersja strony (RWD): Poprawne działanie na telefonach i tabletach - eliminacja utraconych zapytań od klientów mobilnych.
 - Integracja narzędzi: Formularz kontaktowy, Google Analytics, linki social media, integracja z Hotres.
 - Stała opieka techniczna: Certyfikat bezpieczeństwa SSL, bieżące aktualizacje i brak przestojów w cenie.`
   },
@@ -62,14 +62,14 @@ const realizedWebsites = [
       image: '/projects/staniax-b2b-industrial-website.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'Strona B2B dla Staniax – pozycjonowanie stron i optymalizacja SEO w branży przemysłowej',
-    imgAltEn: 'Staniax B2B industrial website – the product pages we rebuilt for their German and US markets',
-    imgTitle: 'Pozycjonowanie stron dla Staniax – wyniki agencji marketingowej',
-    imgTitleEn: 'Staniax – B2B website rebuild and search visibility results',
-    details: `Case Study 1 – Skalowanie widoczności od zera i optymalizacja konwersji:
+    imgAlt: 'Strona B2B dla Staniax - pozycjonowanie stron i optymalizacja SEO w branży przemysłowej',
+    imgAltEn: 'Staniax B2B industrial website - the product pages we rebuilt for their German and US markets',
+    imgTitle: 'Pozycjonowanie stron dla Staniax - wyniki agencji marketingowej',
+    imgTitleEn: 'Staniax - B2B website rebuild and search visibility results',
+    details: `Case Study 1 - Skalowanie widoczności od zera i optymalizacja konwersji:
 - Start od zerowej widoczności → 152 kliknięcia i 6,34 tys. wyświetleń w 92 dni (22.05-21.08.2026), w tym ok. 1,1 tys. wyświetleń w pierwszym miesiącu (Google Search Console).
 - Zlokalizowanie kluczowych fraz usługowych: „metalizowanie próżniowe” (pozycja 17,38) oraz „metalizacja próżniowa” (pozycja 19,61).
-- Wyższy współczynnik klikalności CTR na urządzeniach mobilnych – przygotowanie i wdrożenie wersji wielojęzycznych (/de i /en pod Niemcy i USA).`
+- Wyższy współczynnik klikalności CTR na urządzeniach mobilnych - przygotowanie i wdrożenie wersji wielojęzycznych (/de i /en pod Niemcy i USA).`
   },
   {
     id: 3,
@@ -95,13 +95,13 @@ const realizedWebsites = [
       image: '/projects/aisas-fintech-platform.webp',
       btnText: 'View Case Study'
     },
-    imgAlt: 'Platforma fintech z AI – pozycjonowanie stron na rynku zagranicznym',
-    imgAltEn: 'AISAS fintech platform – the dashboard interface we designed for the US market launch',
-    imgTitle: 'Pozycjonowanie stron dla platformy fintech – wyniki',
-    imgTitleEn: 'AISAS fintech platform – design and organic growth results',
-    details: `Projekt własny – konkurencyjny rynek zagraniczny (ase-bot.live):
+    imgAlt: 'Platforma fintech z AI - pozycjonowanie stron na rynku zagranicznym',
+    imgAltEn: 'AISAS fintech platform - the dashboard interface we designed for the US market launch',
+    imgTitle: 'Pozycjonowanie stron dla platformy fintech - wyniki',
+    imgTitleEn: 'AISAS fintech platform - design and organic growth results',
+    details: `Projekt własny - konkurencyjny rynek zagraniczny (ase-bot.live):
 - 7,71 tys. wyświetleń w 92 dni (22.05-21.08.2026) od startu domeny bez historii; po szczycie w lipcu tygodniowe wyświetlenia spadły, a kliknięć jest niewiele (28 w całym okresie; Google Search Console).
-- Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 – krok od TOP 20), „best futures trading platforms” (pozycja 61).
+- Pozycjonowanie na trudne frazy komercywne: „ai futures trading” (pozycja 24 - krok od TOP 20), „best futures trading platforms” (pozycja 61).
 - 2 tys. wyświetleń z USA. Strona główna osiąga CTR 4.62%. Link building i rozbudowa artykułów eksperckich pod rynek globalny.`
   }
 ];
@@ -118,23 +118,23 @@ const MOSAIC = [
 { src: '/projects/mosaic/elkat-a-v2.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
 { src: '/projects/mosaic/mad-a-v2.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
 { src: '/projects/mosaic/own-hero-pl4.webp', srcEn: '/projects/mosaic/own-hero-en4.webp', w: 1200, h: 752,
-    alt: 'Sekcja hero strony AI SEO COMPANY – napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website – 3D SEO scene' },
+    alt: 'Sekcja hero strony AI SEO COMPANY - napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website - 3D SEO scene' },
 { src: '/projects/mosaic/ase-a-v4.webp', w: 1200, h: 640,
-    alt: 'Pełna sekcja hero platformy AISAS (ASE-BOT) – AI trading i analiza rynków, angielski nagłówek o analizie rynków kontraktów terminowych i ilustracja satelity',
-    altEn: 'Hero section of the AISAS (ASE-BOT) trading platform homepage – “Advanced AI trading & quant market analysis for futures markets” headline with a satellite illustration' },
+    alt: 'Pełna sekcja hero platformy AISAS (ASE-BOT) - AI trading i analiza rynków, angielski nagłówek o analizie rynków kontraktów terminowych i ilustracja satelity',
+    altEn: 'Hero section of the AISAS (ASE-BOT) trading platform homepage - “Advanced AI trading & quant market analysis for futures markets” headline with a satellite illustration' },
 { src: '/projects/mosaic/tql-a-v2.webp', srcEn: '/projects/mosaic/tql-a-en-v2.webp', w: 1200, h: 840,
-    alt: 'Sekcja hero strony głównej TQL – wdrożenia norm ISO, nagłówek o wdrażaniu systemów ISO i przygotowaniu do certyfikacji oraz liczby klientów',
-    altEn: 'Hero section of the TQL ISO implementation homepage – ISO management system implementation and certification headline with client figures' },
-{ src: '/projects/mosaic/sta-a-v4.webp', srcEn: '/projects/mosaic/sta-a-en3.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax – metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' },
+    alt: 'Sekcja hero strony głównej TQL - wdrożenia norm ISO, nagłówek o wdrażaniu systemów ISO i przygotowaniu do certyfikacji oraz liczby klientów',
+    altEn: 'Hero section of the TQL ISO implementation homepage - ISO management system implementation and certification headline with client figures' },
+{ src: '/projects/mosaic/sta-a-v4.webp', srcEn: '/projects/mosaic/sta-a-en3.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax - metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' },
 { src: '/projects/mosaic/own-blog-pl8.webp', srcEn: '/projects/mosaic/own-blog-en7.webp', w: 1200, h: 840,
-    alt: 'Blog AI SEO COMPANY – artykuły o SEO i web designie, lista najnowszych artykułów', altEn: 'AI SEO COMPANY blog – articles on SEO and web design, list of the latest articles' },
+    alt: 'Blog AI SEO COMPANY - artykuły o SEO i web designie, lista najnowszych artykułów', altEn: 'AI SEO COMPANY blog - articles on SEO and web design, list of the latest articles' },
 { src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
 { src: '/projects/mosaic/frazy-a.webp', w: 1200, h: 783,
-    alt: 'Podstrona Frazy Studio – biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
-    altEn: 'Frazy Studio page – an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
+    alt: 'Podstrona Frazy Studio - biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
+    altEn: 'Frazy Studio page - an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
 { src: '/projects/mosaic/andrianna-a.webp', w: 1200, h: 750,
-    alt: 'Sekcja hero strony Babushkina Academy – makijaż permanentny i szkolenia PMU w Warszawie, nagłówek „Beauty with precision” i portret kobiety',
-    altEn: 'Hero section of the Babushkina Academy website – permanent makeup and PMU training in Warsaw, “Beauty with precision” headline and a portrait of a woman' }
+    alt: 'Sekcja hero strony Babushkina Academy - makijaż permanentny i szkolenia PMU w Warszawie, nagłówek „Beauty with precision” i portret kobiety',
+    altEn: 'Hero section of the Babushkina Academy website - permanent makeup and PMU training in Warsaw, “Beauty with precision” headline and a portrait of a woman' }
 ];
 
 /* Uklady stosow dla 2, 3, 4 i 5 kolumn. Stosy sa wyrownane do DOLU
@@ -245,7 +245,7 @@ export default function Portfolio() {
 
   /* Ghost renderuje pięć sztywnych stosów w DOM i wyrównuje je do DOŁU
      (align-items: end). Że mają różną wysokość, górna krawędź ściany jest
-     poszarpana, a kontener ją przycina – to jest cały efekt. CSS multi-column
+     poszarpana, a kontener ją przycina - to jest cały efekt. CSS multi-column
      tego nie odtworzy, bo z definicji wyrównuje kolumny, więc stosy dla
      każdej liczby kolumn są gotowe w WARIANTY_SCIANY, a wybiera je @media. */
 
@@ -517,7 +517,7 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* The wall. One column layout, natural aspect ratios, equal gutters –
+      {/* The wall. One column layout, natural aspect ratios, equal gutters -
           the mechanics of ghost.org's theme gallery, measured rather than
           guessed (5 columns x 386px, 16px gap, images at their own heights).
           CSS multi-column does the balancing, so the column count can change
@@ -525,7 +525,7 @@ export default function Portfolio() {
 
           It replaces the carousel, but nothing it used to say is gone: the
           headline metric and its sentence are in the strip underneath, and the
-          full case studies still open in the same modal – now from a tile. */}
+          full case studies still open in the same modal - now from a tile. */}
       <div style={{ position: 'relative', width: '100%', padding: '0 0 3rem' }}>
         {/* Cztery warianty sciany (2/3/4/5 kolumn), widoczny jeden - wybiera
             @media w STYL_PORTFOLIO (opis przy WARIANTY_SCIANY). */}

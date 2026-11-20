@@ -72,7 +72,7 @@ const webDesignPortfolioCases = [
     title: 'Skalowalny System Projektowy',
     titleEn: 'Scalable Design System',
     description: 'Nie tworzymy przypadkowych układów. Budujemy spójny system wizualny (Design System), dzięki któremu Twoja marka wygląda niezwykle profesjonalnie i wzbudza',
-    descriptionEn: 'We don\'t create random layouts. We build a cohesive visual system (Design System) that makes your brand look highly professional and builds authority in your industry – in both B2B and B2C e-commerce.',
+    descriptionEn: 'We don\'t create random layouts. We build a cohesive visual system (Design System) that makes your brand look highly professional and builds authority in your industry - in both B2B and B2C e-commerce.',
     image: '/images/unsplash-1566410824233-a8011929225c.jpg',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
     metric: '100%',

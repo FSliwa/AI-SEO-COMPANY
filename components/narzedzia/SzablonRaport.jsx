@@ -68,7 +68,7 @@ const METRYKI = [
   { metryka: 'Wizytówka w Mapach: pozycja i działania klientów', zrodlo: 'Pomiar z 49 punktów (siatka 7×7), statystyki Profilu Firmy', jak: 'Odsetek punktów w TOP 3, połączenia i wskazówki dojazdu', pulapka: 'Jeden pomiar z biura to przypadek' },
   { metryka: 'Widoczność w ChatGPT i przeglądzie AI w Google', zrodlo: 'Stały zestaw pytań klientów co tydzień, wejścia z czatów AI w GA4', jak: 'Odsetek odpowiedzi z nazwą firmy', pulapka: 'Jedno pytanie nic nie dowodzi' },
   { metryka: 'Zdobyte linki', zrodlo: 'Lista z adresem, datą i stanem', jak: 'Nowe domeny linkujące do ważnych podstron i czy linki nadal są na stronie', pulapka: 'Liczba linków bez ich jakości' },
-  { metryka: 'Stan techniczny: indeksacja i Core Web Vitals', zrodlo: 'Search Console: raporty Indeksowanie stron i Core Web Vitals', jak: 'Ważne podstrony w indeksie; LCP do 2,5 s, INP do 200 ms, CLS do 0,1', pulapka: 'Ocena 0–100 z PageSpeed to test, a nie dane od użytkowników' },
+  { metryka: 'Stan techniczny: indeksacja i Core Web Vitals', zrodlo: 'Search Console: raporty Indeksowanie stron i Core Web Vitals', jak: 'Ważne podstrony w indeksie; LCP do 2,5 s, INP do 200 ms, CLS do 0,1', pulapka: 'Ocena 0-100 z PageSpeed to test, a nie dane od użytkowników' },
 ];
 
 // Typowe przyczyny zmian wyniku (playbook 9.3, drzewo diagnostyki spadków).
@@ -94,7 +94,7 @@ const POWIAZANE = [
   { href: '/narzedzia/szablon-strategii-seo', pl: 'Szablon strategii SEO', opisPl: 'cele i KPI, z którymi raport porównuje wynik', en: 'SEO strategy template', opisEn: 'the goals and KPIs your report measures results against' },
   { href: '/narzedzia/checklista-seo', pl: 'Checklista SEO', opisPl: 'część „Pomiar” sprawdza, czy Search Console i zdarzenia kluczowe w GA4 zbierają dane do raportu', en: 'SEO checklist', opisEn: 'the measurement section checks that Search Console and GA4 key events collect the data a report needs' },
   { href: '/narzedzia/szablon-analizy-konkurencji-seo', pl: 'Szablon analizy konkurencji SEO', opisPl: 'na tle kogo oceniać pozycje i widoczność w AI', en: 'SEO competitor analysis template', opisEn: 'who to compare your rankings and AI visibility with' },
-  { href: '/narzedzia/audyt-seo', pl: 'Darmowy audyt SEO', opisPl: 'ocena strony od 1 do 100 i lista błędów, gdy potrzebujesz diagnozy, a nie raportu', en: 'Free SEO audit', opisEn: 'a 1–100 score and a list of errors when you need a diagnosis rather than a report' },
+  { href: '/narzedzia/audyt-seo', pl: 'Darmowy audyt SEO', opisPl: 'ocena strony od 1 do 100 i lista błędów, gdy potrzebujesz diagnozy, a nie raportu', en: 'Free SEO audit', opisEn: 'a 1-100 score and a list of errors when you need a diagnosis rather than a report' },
 ];
 
 const FLAGI = [
@@ -147,7 +147,7 @@ export default function SzablonRaport({ locale = 'pl' }) {
             " h1={strona.h1} slug="raport-seo" locale="pl">
           <Byline sciezka={SCIEZKA} data={dataZmiany} />
           <AnswerBox>
-            Miesięczny raport SEO powinien zaczynać się od wyniku biznesowego, czyli liczby zapytań od klientów i ich kosztu, a dopiero potem pokazywać kliknięcia, pozycje i wykonane prace. Dobry raport mieści syntezę na jednej stronie: wynik względem celu, 3–5 przyczyn z dowodami, plan na kolejny miesiąc i ryzyka. Szczegółowe dane trzymaj w panelu albo dashboardzie.
+            Miesięczny raport SEO powinien zaczynać się od wyniku biznesowego, czyli liczby zapytań od klientów i ich kosztu, a dopiero potem pokazywać kliknięcia, pozycje i wykonane prace. Dobry raport mieści syntezę na jednej stronie: wynik względem celu, 3-5 przyczyn z dowodami, plan na kolejny miesiąc i ryzyka. Szczegółowe dane trzymaj w panelu albo dashboardzie.
           </AnswerBox>
       </SzHero>
 
@@ -217,7 +217,7 @@ export default function SzablonRaport({ locale = 'pl' }) {
 
             <h3 id="sekcja-przyczyny" className="sz-h3">2. Co wpłynęło na wynik</h3>
             <p className="sz-akapit">
-              Tu agencja podaje 3–5 przyczyn zmian, każdą z dowodem. Dowodem jest zrzut z Google Search Console z zaznaczoną datą, data wdrożenia zmiany na stronie albo aktualizacja algorytmu potwierdzona przez Google. Zdanie „pozycje wzrosły dzięki optymalizacji” bez daty i adresu strony niczego nie wyjaśnia. Dobra przyczyna mówi, co się zmieniło, kiedy i na których podstronach, np. „nowa sekcja z cenami na stronie usługi, wdrożona w połowie miesiąca; od tego dnia rosną kliknięcia z fraz o cenę”. Najczęściej przyczyną jest:
+              Tu agencja podaje 3-5 przyczyn zmian, każdą z dowodem. Dowodem jest zrzut z Google Search Console z zaznaczoną datą, data wdrożenia zmiany na stronie albo aktualizacja algorytmu potwierdzona przez Google. Zdanie „pozycje wzrosły dzięki optymalizacji” bez daty i adresu strony niczego nie wyjaśnia. Dobra przyczyna mówi, co się zmieniło, kiedy i na których podstronach, np. „nowa sekcja z cenami na stronie usługi, wdrożona w połowie miesiąca; od tego dnia rosną kliknięcia z fraz o cenę”. Najczęściej przyczyną jest:
             </p>
             <ul className="sz-lista">
               {PRZYCZYNY.map((p) => <li key={p}>{p}</li>)}
@@ -395,7 +395,7 @@ const METRYKI_EN = [
   { metryka: 'Business Profile in Maps: ranking and customer actions', zrodlo: 'Measurement from 49 points (7×7 grid), Business Profile performance data', jak: 'Percentage of points in the top 3, calls and direction requests', pulapka: 'A single check from the office is a coincidence' },
   { metryka: 'Visibility in ChatGPT and Google AI Overviews', zrodlo: 'A fixed set of customer questions, weekly; visits from AI chats in GA4', jak: 'Percentage of answers that name the company', pulapka: 'A single question proves nothing' },
   { metryka: 'Links acquired', zrodlo: 'A list with the URL, date and status', jak: 'New referring domains to key pages, and whether the links are still live', pulapka: 'A link count that ignores link quality' },
-  { metryka: 'Technical health: indexing and Core Web Vitals', zrodlo: 'Search Console: Page indexing and Core Web Vitals reports', jak: 'Key pages indexed; LCP within 2.5 s, INP 200 ms or less, CLS 0.1 or less', pulapka: 'A 0–100 PageSpeed score is a lab test, not real-user data' },
+  { metryka: 'Technical health: indexing and Core Web Vitals', zrodlo: 'Search Console: Page indexing and Core Web Vitals reports', jak: 'Key pages indexed; LCP within 2.5 s, INP 200 ms or less, CLS 0.1 or less', pulapka: 'A 0-100 PageSpeed score is a lab test, not real-user data' },
 ];
 
 const FLAGI_EN = [
@@ -446,7 +446,7 @@ function RaportEn() {
             " h1={meta.h1} slug="raport-seo" locale="en">
           <Byline sciezka={SCIEZKA} takzeEn data={dataZmiany} />
           <AnswerBox etykieta="Short answer">
-            A monthly SEO report should open with the business result: the number of customer inquiries and the cost per inquiry. Clicks, rankings and work done come after that. A good report fits its summary on one page: the result against the goal, 3–5 causes with evidence, next month&apos;s plan and the risks. Detailed data belongs in a portal or dashboard.
+            A monthly SEO report should open with the business result: the number of customer inquiries and the cost per inquiry. Clicks, rankings and work done come after that. A good report fits its summary on one page: the result against the goal, 3-5 causes with evidence, next month&apos;s plan and the risks. Detailed data belongs in a portal or dashboard.
           </AnswerBox>
       </SzHero>
 
@@ -516,7 +516,7 @@ function RaportEn() {
 
             <h3 id="sekcja-przyczyny" className="sz-h3">2. What influenced the result</h3>
             <p className="sz-akapit">
-              This is where the agency gives 3–5 causes of the changes, each with evidence. Evidence is a Google Search Console screenshot with the date marked, the date a change went live on the site, or an algorithm update confirmed by Google. The sentence “rankings rose thanks to optimization” with no date and no page URL explains nothing. A good cause says what changed, when and on which pages, for example “a new pricing section on the service page, deployed mid-month; clicks on price-related keywords have been rising since that day”. The most common causes are:
+              This is where the agency gives 3-5 causes of the changes, each with evidence. Evidence is a Google Search Console screenshot with the date marked, the date a change went live on the site, or an algorithm update confirmed by Google. The sentence “rankings rose thanks to optimization” with no date and no page URL explains nothing. A good cause says what changed, when and on which pages, for example “a new pricing section on the service page, deployed mid-month; clicks on price-related keywords have been rising since that day”. The most common causes are:
             </p>
             <ul className="sz-lista">
               {PRZYCZYNY_EN.map((p) => <li key={p}>{p}</li>)}
@@ -575,7 +575,7 @@ function RaportEn() {
               {hubGeo ? <Link href={hubGeo} className="sz-link">AI search optimization</Link> : 'AI search optimization'} page.
             </p>
             <p className="sz-akapit">
-              For technical health, a report needs just two things: whether key pages are indexed (the Page indexing report in Search Console) and whether the site meets the Core Web Vitals thresholds. Google considers LCP within 2.5 s, INP of 200 ms or less and CLS of 0.1 or less to be good when at least 75% of real-user page loads meet the threshold. The 0–100 score in PageSpeed Insights comes from a lab test (Lighthouse), not from customers, so it cannot replace the real-user data in the Core Web Vitals report.
+              For technical health, a report needs just two things: whether key pages are indexed (the Page indexing report in Search Console) and whether the site meets the Core Web Vitals thresholds. Google considers LCP within 2.5 s, INP of 200 ms or less and CLS of 0.1 or less to be good when at least 75% of real-user page loads meet the threshold. The 0-100 score in PageSpeed Insights comes from a lab test (Lighthouse), not from customers, so it cannot replace the real-user data in the Core Web Vitals report.
             </p>
           </section>
 

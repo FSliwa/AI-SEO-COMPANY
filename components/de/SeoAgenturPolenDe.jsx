@@ -55,7 +55,7 @@ export default function SeoAgenturPolenDe() {
         <Unterueberschrift>Preise in Euro</Unterueberschrift>
         <Absatz style={{ marginBottom: 0 }}>Für Polen gelten dieselben Pakete wie für alle Kunden, alle Preise netto in Euro. Die Pakete im Überblick finden Sie direkt unten.</Absatz>
       </Abschnitt>
-      <CtaZeile text="Unverbindlich anfragen – Antwort in 24 Stunden" />
+      <CtaZeile text="Unverbindlich anfragen - Antwort in 24 Stunden" />
 
       <Preise />
       <Faq eintraege={POLEN_FAQ} titel="Häufige Fragen zu SEO in Polen" />

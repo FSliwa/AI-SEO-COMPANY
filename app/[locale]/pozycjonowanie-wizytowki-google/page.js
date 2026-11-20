@@ -50,7 +50,7 @@ const faqData = [
   {
     id: 'ile-trwa-pozycjonowanie-wizytowki-google',
     question: 'Ile trwa pozycjonowanie wizytówki Google?',
-    answer: 'Zmiany kategorii i usług Google zwykle uwzględnia w ciągu kilku tygodni, dlatego pierwszy pomiar siatką robimy przed zmianami, a kolejne co 14 dni. Opinie i wzmianki budują pozycję miesiącami. Dla uzgodnionych fraz lokalnych celem jest TOP 3 w ciągu 2–3 miesięcy.',
+    answer: 'Zmiany kategorii i usług Google zwykle uwzględnia w ciągu kilku tygodni, dlatego pierwszy pomiar siatką robimy przed zmianami, a kolejne co 14 dni. Opinie i wzmianki budują pozycję miesiącami. Dla uzgodnionych fraz lokalnych celem jest TOP 3 w ciągu 2-3 miesięcy.',
   },
   {
     id: 'wizytowka-firmy-bez-lokalu',
@@ -88,7 +88,7 @@ const faqDataEn = [
     id: 'ile-trwa-pozycjonowanie-wizytowki-google',
     idEn: 'how-long-does-google-business-profile-optimization-take',
     question: 'How long does Google Business Profile optimization take?',
-    answer: 'Google usually picks up changes to categories and services within a few weeks, which is why we run the first grid measurement before the changes and the next ones every 14 days. Reviews and mentions build your ranking over months. For the agreed local keywords, the goal is TOP 3 within 2–3 months.',
+    answer: 'Google usually picks up changes to categories and services within a few weeks, which is why we run the first grid measurement before the changes and the next ones every 14 days. Reviews and mentions build your ranking over months. For the agreed local keywords, the goal is TOP 3 within 2-3 months.',
   },
   {
     id: 'wizytowka-firmy-bez-lokalu',

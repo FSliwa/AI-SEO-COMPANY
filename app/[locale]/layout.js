@@ -272,7 +272,7 @@ export default async function RootLayout({ children, params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localizedJsonLd(locale)) }}
         />
         {/* Consent Mode v2 defaults. This must execute before the gtag library
-            loads, otherwise Analytics writes _ga cookies on first paint –
+            loads, otherwise Analytics writes _ga cookies on first paint -
             before the banner has been answered, which art. 173 of the Polish
             electronic communications law does not allow. The banner calls
             gtag('consent','update',…) once the user decides. */}

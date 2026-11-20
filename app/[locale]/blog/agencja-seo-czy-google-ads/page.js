@@ -1,5 +1,5 @@
 // Artykuł tylko-PL (plOnly w lib/blogPosts.js, 308 /en/blog/<slug> -> /blog/<slug> w next.config.mjs).
-// Treść: dokument „AI SEO – Agencja SEO czy Google Ads” (17.11.2026).
+// Treść: dokument „AI SEO - Agencja SEO czy Google Ads” (17.11.2026).
 // Zmiany względem dokumentu: title bez sufiksu marki, 56 zn. (CLAUDE.md); link do nieistniejącego
 // wpisu /blog/widocznosc-firmy-w-generatywnych-ai zastąpiony hubem /pozycjonowanie-w-ai; zapowiedzi
 // „przygotujemy w osobnym wpisie/przewodniku” zastąpione linkami do istniejących stron
@@ -30,7 +30,7 @@ const URL_STRONY = `${BASE}${SCIEZKA}`;
 // z danymi z naszej kampanii zostają w porównaniu /porownania/seo-czy-google-ads (kanibalizacja, playbook 3.2).
 const TYTUL = 'Agencja SEO czy Google Ads? Jak wybrać kanał i partnera';
 const OPIS = 'Agencja SEO czy Google Ads? Porównaj mechanizmy, czas efektu i trwałość obu kanałów, sprawdź, kiedy je łączyć, i dowiedz się, jak wybrać partnera.';
-const H1 = 'Agencja SEO czy Google Ads – jak wybrać kanał i partnera dla firmy?';
+const H1 = 'Agencja SEO czy Google Ads - jak wybrać kanał i partnera dla firmy?';
 const DATA_ODCZYTU = '2026-11-18';
 
 const DATA_PUBLIKACJI = blogPosts.find((p) => p.slug === SCIEZKA)?.date;
@@ -263,11 +263,11 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
               <h3>Co wchodzi w zakres pozycjonowania</h3>
               <p>Zakres pracy różni się między firmami, ale dobra usługa obejmuje zwykle kilka stałych obszarów:</p>
               <ul>
-                <li><strong>technika</strong> – indeksacja, szybkość ładowania, Core Web Vitals, przekierowania, linkowanie wewnętrzne,</li>
-                <li><strong>treści</strong> – dopasowanie podstron do intencji wyszukiwania, klastry tematyczne, odpowiedzi na pytania klientów,</li>
-                <li><strong>autorytet</strong> – zdobywanie linków z wiarygodnych serwisów,</li>
-                <li><strong>SEO lokalne</strong> – optymalizacja Profilu Firmy w Google (dawniej wizytówki) dla firm działających w konkretnym mieście,</li>
-                <li><strong>pomiar</strong> – raporty z Google Search Console i Google Analytics, a nie tylko lista pozycji.</li>
+                <li><strong>technika</strong> - indeksacja, szybkość ładowania, Core Web Vitals, przekierowania, linkowanie wewnętrzne,</li>
+                <li><strong>treści</strong> - dopasowanie podstron do intencji wyszukiwania, klastry tematyczne, odpowiedzi na pytania klientów,</li>
+                <li><strong>autorytet</strong> - zdobywanie linków z wiarygodnych serwisów,</li>
+                <li><strong>SEO lokalne</strong> - optymalizacja Profilu Firmy w Google (dawniej wizytówki) dla firm działających w konkretnym mieście,</li>
+                <li><strong>pomiar</strong> - raporty z Google Search Console i Google Analytics, a nie tylko lista pozycji.</li>
               </ul>
               <p>
                 Tak wygląda też nasze <Link href="/pozycjonowanie-stron-internetowych">pozycjonowanie stron internetowych</Link>: technika, treści, linki i Profil Firmy w Google w jednym procesie. Coraz częściej do tego zakresu dochodzi widoczność w odpowiedziach AI, którą opisujemy na stronie <Link href="/pozycjonowanie-w-ai">pozycjonowanie w AI</Link>
@@ -344,7 +344,7 @@ export default async function ArtykulSeoCzyGoogleAds({ params }) {
               <h2 id="checker-czy-audyt">Od czego zacząć: SEO checker czy audyt SEO?</h2>
               <p>Zanim wydasz pierwsze złotówki na reklamy lub pozycjonowanie, sprawdź stan strony. Kiepska strona docelowa obniża skuteczność obu kanałów, więc diagnoza jest wspólnym punktem startu.</p>
 
-              <h3>SEO checker – narzędzia do szybkiej analizy</h3>
+              <h3>SEO checker - narzędzia do szybkiej analizy</h3>
               <p>
                 SEO checker to ogólne określenie automatycznych narzędzi, które w kilka minut skanują stronę i wskazują typowe problemy: brakujące tytuły, wolne ładowanie, błędy indeksacji. Na początek wystarczą darmowe narzędzia Google, takie jak Google Search Console i PageSpeed Insights.
                 {hrefNarzedzieAudyt && <> Szybką ocenę strony z listą błędów da też nasz <Link href={hrefNarzedzieAudyt}>darmowy audyt SEO online</Link>.</>}

@@ -1,5 +1,5 @@
 // Artykuł tylko-PL (plOnly w lib/blogPosts.js, 308 /en/blog/<slug> -> /blog/<slug> w next.config.mjs).
-// Treść: dokument „AI SEO – Landing page: tworzenie, CMS, hosting” (18.11.2026).
+// Treść: dokument „AI SEO - Landing page: tworzenie, CMS, hosting” (18.11.2026).
 // Zmiany względem dokumentu: link do nieistniejącego wpisu /blog/widocznosc-firmy-w-generatywnych-ai
 // zastąpiony hubem /pozycjonowanie-w-ai (jak w agencja-seo-czy-google-ads); /blog/audyt-techniczny-seo
 // podany kluczem trasy /blog/technical-seo-audit-checklist (next-intl zamienia go na adres PL);
@@ -30,7 +30,7 @@ const URL_STRONY = `${BASE}${SCIEZKA}`;
 // Title i meta: te same wartości co titlePl/descPl w lib/blogPosts.js.
 const TYTUL = 'Landing page: tworzenie, wybór CMS, hosting i cena';
 const OPIS = 'Landing page krok po kroku: tworzenie, wybór CMS, hosting i SEO strony. Sprawdź, od czego zależy cena i jak uniknąć błędów obniżających konwersję.';
-const H1 = 'Landing page – tworzenie, wybór CMS, hosting i cena';
+const H1 = 'Landing page - tworzenie, wybór CMS, hosting i cena';
 
 const DATA_PUBLIKACJI = blogPosts.find((p) => p.slug === SCIEZKA)?.date ?? '2026-11-18';
 const DATA_ZMIANY = LASTMOD[URL_STRONY] ?? DATA_PUBLIKACJI;
@@ -99,7 +99,7 @@ const TOC = [
   { id: 'landing-a-strona-firmowa', title: 'Czym różni się landing page od pełnej strony firmowej?' },
   { id: 'elementy', title: 'Z jakich elementów składa się skuteczna strona docelowa?' },
   { id: 'krok-po-kroku', title: 'Jak wygląda tworzenie landing page krok po kroku?' },
-  { id: 'wybor-cms', title: 'Wybór CMS – WordPress, kreator czy rozwiązanie headless?' },
+  { id: 'wybor-cms', title: 'Wybór CMS - WordPress, kreator czy rozwiązanie headless?' },
   { id: 'hosting', title: 'Jaki hosting strony internetowej sprawdzi się najlepiej?' },
   { id: 'seo', title: 'Jak zadbać o SEO strony od pierwszego dnia?' },
   { id: 'cena', title: 'Ile kosztuje landing page i od czego zależy cena?' },
@@ -332,7 +332,7 @@ export default async function ArtykulLandingPage({ params }) {
                   <li key={nazwa}><strong>{nazwa}.</strong> {opis}</li>
                 ))}
               </ol>
-              <p>Zanim zlecisz projekt, możesz sprawdzić kierunek wizualny: nasze bezpłatne <Link href="/narzedzia/makieta-redesignu">narzędzie do makiety nowej strony</Link> buduje w 1–3 minuty propozycję strony głównej na komputer i telefon na podstawie treści Twojej firmy, bez konta i karty.</p>
+              <p>Zanim zlecisz projekt, możesz sprawdzić kierunek wizualny: nasze bezpłatne <Link href="/narzedzia/makieta-redesignu">narzędzie do makiety nowej strony</Link> buduje w 1-3 minuty propozycję strony głównej na komputer i telefon na podstawie treści Twojej firmy, bez konta i karty.</p>
 
               <h3>Treść przed projektem graficznym</h3>
               <p>Kolejność „najpierw tekst, potem grafika” wydaje się oczywista, a mimo to wiele projektów zaczyna się od wyboru szablonu. Efekt to sekcje dopasowane do wyglądu, a nie do argumentów, oraz akapity skracane na siłę, żeby zmieściły się w ramce.</p>
@@ -346,7 +346,7 @@ export default async function ArtykulLandingPage({ params }) {
               <p>Jeśli wariant testowy działa pod osobnym adresem, Google zaleca oznaczyć go tagiem <code>rel=&quot;canonical&quot;</code> wskazującym oryginał, zamiast używać noindex. Przy przekierowaniu z oryginału na wariant stosuj tymczasowe przekierowanie 302, a po zakończeniu testu usuń jego elementy.</p>
               <p>Wybór narzędzia do testów porównujemy w artykule <Link href="/blog/vwo-vs-optimizely-porownanie">VWO vs Optimizely</Link>.</p>
 
-              <h2 id="wybor-cms">Wybór CMS – WordPress, kreator czy rozwiązanie headless?</h2>
+              <h2 id="wybor-cms">Wybór CMS - WordPress, kreator czy rozwiązanie headless?</h2>
               <p>System zarządzania treścią decyduje o tym, kto i jak szybko poprawi tekst, doda wariant strony albo podłączy nowe narzędzie. Wybór CMS warto więc oprzeć na tym, kto będzie stronę rozwijał po wdrożeniu, a nie tylko na cenie startowej.</p>
 
               <h3>Popularny system open source</h3>

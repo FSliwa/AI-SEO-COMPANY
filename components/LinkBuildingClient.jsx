@@ -198,7 +198,7 @@ export default function LinkBuildingClient({ faqData }) {
           </p>
           <div style={{ margin: '1.75rem 0 0' }}>
             <a href={kontakt} className="btn btn-primary" data-cta="service_cena_link_building" data-plan="standard">
-              {en ? 'Ask about the package – reply within 24 h' : <>Zapytaj o pakiet – odpowiedź w{' '}24{' '}h</>}
+              {en ? 'Ask about the package - reply within 24 h' : <>Zapytaj o pakiet - odpowiedź w{' '}24{' '}h</>}
             </a>
           </div>
         </div>

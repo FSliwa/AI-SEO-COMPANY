@@ -111,10 +111,10 @@ export default async function ArticleCennikPage({ params }) {
               <p>Always verify if your SEO contract includes the cost of publishing sponsored articles and copywriting. Many very cheap packages look attractive on paper, but later require you to pay extra for every single piece of content or backlink.</p>
               
               <h2 id="how-to-choose-an-agency">How to choose an SEO Agency?</h2>
-              <p>Choosing the right SEO agency is one of the most critical decisions for your business's online growth. The market is saturated with service providers promising instant number one rankings for incredibly low prices. However, experienced marketers know that true organic growth takes time, expertise, and a substantial investment in high-quality resources. When evaluating potential partners, look beyond the initial price tag. Ask about their technical capabilities, their approach to Core Web Vitals optimization, and their content strategy. A reputable <Link href="/o-nas" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO agency team</Link> will transparently explain their link-building methods – ensuring they use ethical, white-hat techniques that protect your domain from Google penalties. They should also provide comprehensive audits before proposing a strategy, highlighting exactly what technical debt your website currently holds. Explore our <Link href="/blog" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO blog</Link> to learn more about safe link-building techniques.</p>
+              <p>Choosing the right SEO agency is one of the most critical decisions for your business's online growth. The market is saturated with service providers promising instant number one rankings for incredibly low prices. However, experienced marketers know that true organic growth takes time, expertise, and a substantial investment in high-quality resources. When evaluating potential partners, look beyond the initial price tag. Ask about their technical capabilities, their approach to Core Web Vitals optimization, and their content strategy. A reputable <Link href="/o-nas" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO agency team</Link> will transparently explain their link-building methods - ensuring they use ethical, white-hat techniques that protect your domain from Google penalties. They should also provide comprehensive audits before proposing a strategy, highlighting exactly what technical debt your website currently holds. Explore our <Link href="/blog" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO blog</Link> to learn more about safe link-building techniques.</p>
               
               <h2 id="roi-and-timeline">ROI and expected timeline for results</h2>
-              <p>A common question is: "When will I see a return on my SEO investment?" Search Engine Optimization is a long-term strategy, and setting realistic expectations is vital. Typically, the first three months are dedicated to deep technical audits, fixing critical indexing errors, and establishing a robust content architecture. Local keywords usually move first; for a whole site, improvements typically take 3-9 months depending on competition. However, the most significant ROI – where organic traffic translates into a steady stream of high-converting leads – usually occurs after the six-month mark. This timeline depends heavily on your industry's competitiveness and your website's historical authority. In the long run, SEO offers one of the highest returns on investment compared to paid advertising, as the traffic you earn continues to flow even if you temporarily scale back your budget. We compare the two channels in <Link href="/porownania/seo-czy-google-ads" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO or Google Ads</Link>, and you can estimate the payback of a package with the <Link href="/narzedzia/kalkulator-strat-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO loss calculator</Link>. Check our <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>web design services</Link> to ensure your site is built to convert this traffic effectively. For the timelines behind these ranges, see <Link href="/blog/how-long-does-seo-take">how long SEO takes</Link>, with real Search Console data from four sites.</p>
+              <p>A common question is: "When will I see a return on my SEO investment?" Search Engine Optimization is a long-term strategy, and setting realistic expectations is vital. Typically, the first three months are dedicated to deep technical audits, fixing critical indexing errors, and establishing a robust content architecture. Local keywords usually move first; for a whole site, improvements typically take 3-9 months depending on competition. However, the most significant ROI - where organic traffic translates into a steady stream of high-converting leads - usually occurs after the six-month mark. This timeline depends heavily on your industry's competitiveness and your website's historical authority. In the long run, SEO offers one of the highest returns on investment compared to paid advertising, as the traffic you earn continues to flow even if you temporarily scale back your budget. We compare the two channels in <Link href="/porownania/seo-czy-google-ads" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO or Google Ads</Link>, and you can estimate the payback of a package with the <Link href="/narzedzia/kalkulator-strat-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO loss calculator</Link>. Check our <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>web design services</Link> to ensure your site is built to convert this traffic effectively. For the timelines behind these ranges, see <Link href="/blog/how-long-does-seo-take">how long SEO takes</Link>, with real Search Console data from four sites.</p>
               
               <h2 id="the-role-of-ai">The role of AI in modern SEO pricing</h2>
               <p>Artificial Intelligence is radically transforming how SEO services are priced and delivered. Agencies leveraging advanced AI tools can perform large-scale data analysis, semantic keyword research, and competitor backlink profiling much faster than before. However, this doesn't necessarily mean SEO is becoming cheaper. Instead, the focus is shifting toward higher quality and strategic execution. While AI can draft content outlines, human expertise is still required to inject brand voice, ensure factual accuracy, and satisfy Google's E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) guidelines. Therefore, when you pay for premium SEO in 2026, you are investing in the sophisticated human orchestration of AI tools, ensuring your brand stands out in an increasingly automated digital ecosystem.</p>
@@ -143,7 +143,7 @@ export default async function ArticleCennikPage({ params }) {
             </div>
 
             {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page – do not demote it. */}
+                renders, so this is not a second H1 on the page - do not demote it. */}
               <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
@@ -228,22 +228,22 @@ export default async function ArticleCennikPage({ params }) {
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem' }}>Firma lokalna (usługi, gabinety)</td>
                       <td style={{ padding: '1rem' }}>Lokalne SEO, Google Moja Firma, podstawowe treści</td>
-                      <td style={{ padding: '1rem' }}>1–2 miesiące</td>
+                      <td style={{ padding: '1rem' }}>1-2 miesiące</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem' }}>Mały e-commerce (do 500 prod.)</td>
                       <td style={{ padding: '1rem' }}>Audyt, techniczne SEO, opisy produktów, linki</td>
-                      <td style={{ padding: '1rem' }}>3–5 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>3-5 miesięcy</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem' }}>Firma B2B / średnia firma</td>
                       <td style={{ padding: '1rem' }}>Strategia fraz, content, link building, raportowanie</td>
-                      <td style={{ padding: '1rem' }}>4–9 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>4-9 miesięcy</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem' }}>Duży sklep / serwis ogólnopolski</td>
                       <td style={{ padding: '1rem' }}>Pełna strategia, content marketing, zaawansowany link building</td>
-                      <td style={{ padding: '1rem' }}>4–6 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>4-6 miesięcy</td>
                     </tr>
                   </tbody>
                 </table>
@@ -253,22 +253,22 @@ export default async function ArticleCennikPage({ params }) {
 
               <h3>Przykładowy zakres prac dla trzech typowych firm</h3>
               <ul>
-                <li><span style={{ fontWeight: 'bold' }}>Lokalny usługodawca (pakiet podstawowy):</span> optymalizacja Google Moja Firma, 2–3 wpisy blogowe miesięcznie, monitoring 10–20 fraz, raport miesięczny.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Mały e-commerce (pakiet rozszerzony):</span> audyt techniczny, optymalizacja 50–100 podstron, 4 artykuły miesięcznie, 4–6 linków zewnętrznych, raportowanie KPI.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Firma B2B (pełna strategia):</span> pełna strategia contentowa, link building (8–12 linków/mies.), optymalizacja konwersji, dedykowany opiekun, raport dwutygodniowy.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Lokalny usługodawca (pakiet podstawowy):</span> optymalizacja Google Moja Firma, 2-3 wpisy blogowe miesięcznie, monitoring 10-20 fraz, raport miesięczny.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Mały e-commerce (pakiet rozszerzony):</span> audyt techniczny, optymalizacja 50-100 podstron, 4 artykuły miesięcznie, 4-6 linków zewnętrznych, raportowanie KPI.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Firma B2B (pełna strategia):</span> pełna strategia contentowa, link building (8-12 linków/mies.), optymalizacja konwersji, dedykowany opiekun, raport dwutygodniowy.</li>
               </ul>
               
-              <p>Branże o wysokiej konkurencji – prawo, medycyna, finanse, ubezpieczenia – wymagają wyższych budżetów ze względu na większą konkurencję o widoczność, szczególnie dla firm z ambicjami ogólnopolskimi.</p>
+              <p>Branże o wysokiej konkurencji - prawo, medycyna, finanse, ubezpieczenia - wymagają wyższych budżetów ze względu na większą konkurencję o widoczność, szczególnie dla firm z ambicjami ogólnopolskimi.</p>
               
               <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: 'var(--w-papier-2)', borderRadius: '12px', marginBottom: '2rem' }}>
-                <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Oceń swój przedział w trzech krokach: (1) sprawdź, czy działasz lokalnie czy ogólnopolsko, (2) wpisz swoje główne frazy w Google i policz, ile firm płaci za reklamy – to sygnał konkurencji, (3) sprawdź w <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a>, jaki autorytet domeny mają Twoi konkurenci. Te trzy liczby powiedzą Ci więcej niż jakikolwiek cennik.
+                <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Oceń swój przedział w trzech krokach: (1) sprawdź, czy działasz lokalnie czy ogólnopolsko, (2) wpisz swoje główne frazy w Google i policz, ile firm płaci za reklamy - to sygnał konkurencji, (3) sprawdź w <a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a>, jaki autorytet domeny mają Twoi konkurenci. Te trzy liczby powiedzą Ci więcej niż jakikolwiek cennik.
               </p>
 
               <h2 id="co-zawiera-pakiet">Co zawiera pakiet SEO, a co jest płatnym dodatkiem?</h2>
               
               <p>Nie każdy pakiet SEO zawiera to samo, nawet jeśli kosztuje tyle samo: ta sama kwota u dwóch agencji może oznaczać bardzo różny zakres prac. Dlatego warto wiedzieć, co jest standardem, a co dodatkiem.</p>
 
-              <p><span style={{ fontWeight: 'bold' }}>Elementy standardowe (core SEO) – powinny być w każdym pakiecie:</span></p>
+              <p><span style={{ fontWeight: 'bold' }}>Elementy standardowe (core SEO) - powinny być w każdym pakiecie:</span></p>
               <ul>
                 <li>Audyt techniczny strony (przynajmniej wstępny przy starcie)</li>
                 <li><Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Optymalizacja on-page</Link>: tytuły, opisy, nagłówki, struktura URL</li>
@@ -302,16 +302,16 @@ export default async function ArticleCennikPage({ params }) {
               <h2 id="10-czynnikow">Jakie 10 czynników wpływa na koszt SEO?</h2>
               
               <ul>
-                <li><span style={{ fontWeight: 'bold' }}>Konkurencja słów kluczowych (wpływ: wysoki)</span> – im więcej firm walczy o te same frazy, tym więcej pracy i linków potrzeba. Frazy takie jak "adwokat Warszawa" czy "kredyt hipoteczny" kosztują wielokrotnie więcej niż "hydraulik Sandomierz".</li>
-                <li><span style={{ fontWeight: 'bold' }}>Liczba podstron do optymalizacji (wpływ: wysoki)</span> – sklep z 5 000 produktów wymaga innego nakładu pracy niż strona wizytówkowa z 10 podstronami.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Stan techniczny strony (wpływ: wysoki)</span> – serwis z setkami błędów indeksowania, wolnym ładowaniem i zduplikowanymi treściami wymaga najpierw naprawy, zanim zacznie się pozycjonowanie.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Używany CMS (wpływ: średni)</span> – WordPress jest łatwiejszy i tańszy w optymalizacji niż niestandardowe systemy lub starsze platformy e-commerce bez wtyczek SEO.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Branża i regulacje (wpływ: wysoki)</span> – branże YMYL (zdrowie, prawo, finanse) wymagają treści pisanych przez ekspertów lub z ich udziałem, co podnosi koszt contentu.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Wymagany zakres treści (wpływ: wysoki)</span> – regularne artykuły, opisy kategorii, landing page'e to znacząca część budżetu, szczególnie przy strategii long-tail.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Profil linków zewnętrznych (wpływ: wysoki)</span> – słaby profil linków oznacza konieczność intensywnego link buildingu od zera.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Zasięg geograficzny (wpływ: średni)</span> – lokalne SEO jest tańsze niż ogólnopolskie; kampania na całą Polskę wymaga większej liczby fraz i treści.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Integracje techniczne (wpływ: średni)</span> – połączenie z CRM, systemem płatności lub niestandardową analityką wymaga dodatkowych godzin pracy.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Potrzeba AEO (wpływ: niski – średni)</span> – optymalizacja pod wyszukiwarki AI to stosunkowo nowy koszt, ale firmy w branżach informacyjnych i doradczych coraz częściej go uwzględniają.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Konkurencja słów kluczowych (wpływ: wysoki)</span> - im więcej firm walczy o te same frazy, tym więcej pracy i linków potrzeba. Frazy takie jak "adwokat Warszawa" czy "kredyt hipoteczny" kosztują wielokrotnie więcej niż "hydraulik Sandomierz".</li>
+                <li><span style={{ fontWeight: 'bold' }}>Liczba podstron do optymalizacji (wpływ: wysoki)</span> - sklep z 5 000 produktów wymaga innego nakładu pracy niż strona wizytówkowa z 10 podstronami.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Stan techniczny strony (wpływ: wysoki)</span> - serwis z setkami błędów indeksowania, wolnym ładowaniem i zduplikowanymi treściami wymaga najpierw naprawy, zanim zacznie się pozycjonowanie.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Używany CMS (wpływ: średni)</span> - WordPress jest łatwiejszy i tańszy w optymalizacji niż niestandardowe systemy lub starsze platformy e-commerce bez wtyczek SEO.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Branża i regulacje (wpływ: wysoki)</span> - branże YMYL (zdrowie, prawo, finanse) wymagają treści pisanych przez ekspertów lub z ich udziałem, co podnosi koszt contentu.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Wymagany zakres treści (wpływ: wysoki)</span> - regularne artykuły, opisy kategorii, landing page'e to znacząca część budżetu, szczególnie przy strategii long-tail.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Profil linków zewnętrznych (wpływ: wysoki)</span> - słaby profil linków oznacza konieczność intensywnego link buildingu od zera.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Zasięg geograficzny (wpływ: średni)</span> - lokalne SEO jest tańsze niż ogólnopolskie; kampania na całą Polskę wymaga większej liczby fraz i treści.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Integracje techniczne (wpływ: średni)</span> - połączenie z CRM, systemem płatności lub niestandardową analityką wymaga dodatkowych godzin pracy.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Potrzeba AEO (wpływ: niski - średni)</span> - optymalizacja pod wyszukiwarki AI to stosunkowo nowy koszt, ale firmy w branżach informacyjnych i doradczych coraz częściej go uwzględniają.</li>
               </ul>
               
               <p style={{ fontStyle: 'italic', padding: '1rem', backgroundColor: 'var(--w-papier-2)', borderRadius: '12px', marginBottom: '2rem' }}>
@@ -335,25 +335,25 @@ export default async function ArticleCennikPage({ params }) {
                   <tbody>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem' }}>Lokalne SEO (mała firma)</td>
-                      <td style={{ padding: '1rem' }}>1–2 miesiące</td>
-                      <td style={{ padding: '1rem' }}>3–6 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>1-2 miesiące</td>
+                      <td style={{ padding: '1rem' }}>3-6 miesięcy</td>
                       <td style={{ padding: '1rem' }}>6 miesięcy</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem' }}>Mała strona usługowa</td>
-                      <td style={{ padding: '1rem' }}>2–3 miesiące</td>
-                      <td style={{ padding: '1rem' }}>4–6 miesięcy</td>
-                      <td style={{ padding: '1rem' }}>6–9 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>2-3 miesiące</td>
+                      <td style={{ padding: '1rem' }}>4-6 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>6-9 miesięcy</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem' }}>Mały e-commerce</td>
-                      <td style={{ padding: '1rem' }}>3–5 miesięcy</td>
-                      <td style={{ padding: '1rem' }}>6–9 miesięcy</td>
-                      <td style={{ padding: '1rem' }}>9–12 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>3-5 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>6-9 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>9-12 miesięcy</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid var(--w-linia)' }}>
                       <td style={{ padding: '1rem' }}>Duży sklep / konkurencyjna branża</td>
-                      <td style={{ padding: '1rem' }}>4–6 miesięcy</td>
+                      <td style={{ padding: '1rem' }}>4-6 miesięcy</td>
                       <td style={{ padding: '1rem' }}>9 miesięcy</td>
                       <td style={{ padding: '1rem' }}>12 miesięcy</td>
                     </tr>
@@ -364,10 +364,10 @@ export default async function ArticleCennikPage({ params }) {
               <h2 id="modele-rozliczen">Jakie modele rozliczeń stosują agencje SEO?</h2>
               
               <ul>
-                <li><span style={{ fontWeight: 'bold' }}>Abonament miesięczny</span> – najpopularniejszy i najbezpieczniejszy dla większości firm. Płacisz stałą kwotę za zdefiniowany zakres prac. Pozwala planować budżet i wymusza na agencji regularną pracę.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Jednorazowy projekt</span> – sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. W cennikach agencji z naszego zestawienia (odczyt 4.11.2026) audyt SEO kosztuje od 300 zł do 12 000 zł netto, zależnie od zakresu. U nas <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt SEO</Link> jako samodzielna usługa kosztuje od 1 490 zł netto, a w pakietach pozycjonowania jest w cenie.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Rozliczenie godzinowe</span> – stosowane przy konsultacjach lub doraźnych pracach.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Model częściowego wynagrodzenia za efekt</span> – pozycjonowanie „na efekt“ ma istotne ograniczenia: opiera się na metrykach, które agencja może optymalizować pod własne cele, a nie na realnym wzroście przychodów klienta. Dla większości firm bezpieczniejszy jest abonament z jasno określonym zakresem i KPI.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Abonament miesięczny</span> - najpopularniejszy i najbezpieczniejszy dla większości firm. Płacisz stałą kwotę za zdefiniowany zakres prac. Pozwala planować budżet i wymusza na agencji regularną pracę.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Jednorazowy projekt</span> - sprawdza się przy audytach, migracjach lub jednorazowej optymalizacji. W cennikach agencji z naszego zestawienia (odczyt 4.11.2026) audyt SEO kosztuje od 300 zł do 12 000 zł netto, zależnie od zakresu. U nas <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt SEO</Link> jako samodzielna usługa kosztuje od 1 490 zł netto, a w pakietach pozycjonowania jest w cenie.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Rozliczenie godzinowe</span> - stosowane przy konsultacjach lub doraźnych pracach.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Model częściowego wynagrodzenia za efekt</span> - pozycjonowanie „na efekt“ ma istotne ograniczenia: opiera się na metrykach, które agencja może optymalizować pod własne cele, a nie na realnym wzroście przychodów klienta. Dla większości firm bezpieczniejszy jest abonament z jasno określonym zakresem i KPI.</li>
               </ul>
 
               {/* 5.11.2026 (CB-10, PLAN-v2 6.25 W3): tekst akapitu z CB-10; renderowany tylko po publikacji P1. */}
@@ -391,7 +391,7 @@ export default async function ArticleCennikPage({ params }) {
 
               <p><span style={{ fontWeight: 'bold' }}>Czerwone flagi, których nie wolno ignorować:</span></p>
               <ul>
-                <li>Obietnica efektów w ciągu 2–4 tygodni</li>
+                <li>Obietnica efektów w ciągu 2-4 tygodni</li>
                 <li>Brak umowy lub umowa na jedną stronę bez zakresu prac</li>
                 <li>Brak portfolio lub case study</li>
                 <li>Cena znacząco poniżej rynku bez wyjaśnienia zakresu</li>
@@ -410,12 +410,12 @@ export default async function ArticleCennikPage({ params }) {
               <p>Zanim podpiszesz umowę z agencją, warto samodzielnie sprawdzić kilka rzeczy. Poniższe narzędzia i źródła pomogą Ci ocenić stan swojej strony i zweryfikować, czy oferta agencji jest dopasowana do rzeczywistych potrzeb.</p>
 
               <ul>
-                <li><span style={{ fontWeight: 'bold' }}><a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a></span> – bezpłatne narzędzie Google do monitorowania ruchu organicznego, błędów indeksowania i pozycji fraz. Punkt startowy każdej analizy.</li>
-                <li><span style={{ fontWeight: 'bold' }}><a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google PageSpeed Insights</a></span> – sprawdza szybkość ładowania strony na urządzeniach mobilnych i desktopowych; wynik Core Web Vitals wpływa na pozycjonowanie.</li>
-                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a></span> – polskie narzędzie do monitorowania widoczności, analizy fraz i śledzenia pozycji; przydatne do porównania z konkurentami.</li>
-                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.semstorm.com/pl" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Semstorm</a></span> – alternatywa dla Senuto z funkcją analizy treści i słów kluczowych; dobre do oceny potencjału fraz.</li>
-                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Screaming Frog SEO Spider</a></span> – bezpłatna wersja pozwala przeskanować do 500 podstron i znaleźć błędy techniczne (brakujące tytuły, zduplikowane treści, błędy 404).</li>
-                <li><span style={{ fontWeight: 'bold' }}><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://majestic.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Majestic</a></span> – analiza profilu linków zewnętrznych; pozwala sprawdzić, skąd agencja pozyskuje linki i czy są wartościowe.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google Search Console</a></span> - bezpłatne narzędzie Google do monitorowania ruchu organicznego, błędów indeksowania i pozycji fraz. Punkt startowy każdej analizy.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google PageSpeed Insights</a></span> - sprawdza szybkość ładowania strony na urządzeniach mobilnych i desktopowych; wynik Core Web Vitals wpływa na pozycjonowanie.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.senuto.com/pl/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Senuto</a></span> - polskie narzędzie do monitorowania widoczności, analizy fraz i śledzenia pozycji; przydatne do porównania z konkurentami.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.semstorm.com/pl" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Semstorm</a></span> - alternatywa dla Senuto z funkcją analizy treści i słów kluczowych; dobre do oceny potencjału fraz.</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Screaming Frog SEO Spider</a></span> - bezpłatna wersja pozwala przeskanować do 500 podstron i znaleźć błędy techniczne (brakujące tytuły, zduplikowane treści, błędy 404).</li>
+                <li><span style={{ fontWeight: 'bold' }}><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://majestic.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Majestic</a></span> - analiza profilu linków zewnętrznych; pozwala sprawdzić, skąd agencja pozyskuje linki i czy są wartościowe.</li>
               </ul>
 
               <BlogCTA 

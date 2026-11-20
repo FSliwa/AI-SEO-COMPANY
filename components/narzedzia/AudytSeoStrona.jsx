@@ -120,8 +120,8 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
       <Sekcja id="audyt-seo-online-krok-po-kroku" tytul="Jak zrobić audyt SEO online krok po kroku">
         <ol style={s.lista}>
           <li><strong>Wklej adres strony w formularzu u góry.</strong> Audyt SEO online działa dla każdej publicznej domeny i nie wymaga zakładania konta ani potwierdzania własności.</li>
-          <li><strong>Poczekaj 20–90 sekund na skan.</strong> Robot pobiera do {AUDYT.stron} podstron z różnych sekcji witryny oraz wynik mobilny z Google PageSpeed Insights.</li>
-          <li><strong>Sprawdź ocenę 1–100 i trzy najcięższe błędy.</strong> Od razu widzisz punkty w czterech kategoriach (technika, treść, wydajność, gotowość na AI) oraz instrukcję naprawy głównych blokad.</li>
+          <li><strong>Poczekaj 20-90 sekund na skan.</strong> Robot pobiera do {AUDYT.stron} podstron z różnych sekcji witryny oraz wynik mobilny z Google PageSpeed Insights.</li>
+          <li><strong>Sprawdź ocenę 1-100 i trzy najcięższe błędy.</strong> Od razu widzisz punkty w czterech kategoriach (technika, treść, wydajność, gotowość na AI) oraz instrukcję naprawy głównych blokad.</li>
           <li><strong>Pobierz pełną listę na e-mail i porównaj z konkurencją.</strong> Po wdrożeniu poprawek uruchom darmowy audyt SEO online ponownie, żeby zobaczyć zmianę oceny.</li>
         </ol>
       </Sekcja>
@@ -240,7 +240,7 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
             { id: 'co', co: 'Co sprawdza', darmowy: `${AUDYT.regul} reguł automatycznych: technika, treść, wydajność, gotowość na AI`, pelny: 'to samo plus frazy, konkurencja, profil linków i dane z Search Console' },
             { id: 'czas', co: 'Czas', darmowy: 'zwykle 20 do 90 sekund', pelny: '3 do 5 dni roboczych' },
             { id: 'wynik', co: 'Wynik', darmowy: 'ocena 1-100 i lista problemów z instrukcją naprawy', pelny: 'każdy błąd z priorytetem i instrukcją dla programisty, plan zmian i wycena' },
-            { id: 'konto', co: 'Konto', darmowy: 'niepotrzebne; e-mail tylko po pełną listę', pelny: '–' },
+            { id: 'konto', co: 'Konto', darmowy: 'niepotrzebne; e-mail tylko po pełną listę', pelny: '-' },
           ]}
         />
         <p style={{ marginTop: '1.25rem', textAlign: 'center' }}>
@@ -439,7 +439,7 @@ function AudytSeoEn() {
             { id: 'co', co: 'What it checks', darmowy: `${AUDYT.regul} automated rules: technical, content, performance, AI readiness`, pelny: 'the same plus keywords, competitors, the link profile and Search Console data' },
             { id: 'czas', co: 'Time', darmowy: 'usually 20 to 90 seconds', pelny: '3 to 5 business days' },
             { id: 'wynik', co: 'Result', darmowy: 'a 1-100 score and a list of problems with fix instructions', pelny: 'every error with a priority and instructions for a developer, a plan of changes and a quote' },
-            { id: 'konto', co: 'Account', darmowy: 'not needed; email only for the full list', pelny: '–' },
+            { id: 'konto', co: 'Account', darmowy: 'not needed; email only for the full list', pelny: '-' },
           ]}
         />
         <p style={{ marginTop: '1.25rem', textAlign: 'center' }}>

@@ -75,8 +75,8 @@ const KROKI = [
 ];
 const WYNIK = [
   ['0', 'Modele nie łączą Twojej firmy z branżą i miastem. Częste przyczyny: słaba wizytówka Google, mało opinii, brak firmy w katalogach i zestawieniach, strona bez jasnego opisu usług i lokalizacji.'],
-  ['1–49', 'Firma pojawia się, ale nie w każdym pytaniu ani w każdym modelu. Zobacz źródła w odpowiedziach: to strony, na których warto mieć wzmiankę.'],
-  ['50–100', 'Modele wymieniają Twoją firmę. Sprawdzaj to regularnie, bo odpowiedzi zmieniają się z dnia na dzień.'],
+  ['1-49', 'Firma pojawia się, ale nie w każdym pytaniu ani w każdym modelu. Zobacz źródła w odpowiedziach: to strony, na których warto mieć wzmiankę.'],
+  ['50-100', 'Modele wymieniają Twoją firmę. Sprawdzaj to regularnie, bo odpowiedzi zmieniają się z dnia na dzień.'],
 ];
 const FAQ = [
   { question: 'Czy sprawdzarka widoczności w AI jest darmowa?', answer: `Tak. Zapytania do modeli opłacamy my. Ocenę, siatkę odpowiedzi, ${W.przedBramka.firm} firm, które modele wymieniają najczęściej, i ${W.przedBramka.domen} najczęściej cytowanych stron widzisz od razu. Treść odpowiedzi, źródła każdej z nich i pozostałe firmy pokażemy po podaniu e-maila, na który wysyłamy też raport. Zapis na newsletter jest osobny i dobrowolny. Z jednego adresu IP można sprawdzić ${W.limitIp} firmy na dobę.` },
@@ -99,8 +99,8 @@ const KROKI_EN = [
 ];
 const WYNIK_EN = [
   ['0', 'The models do not connect your business with your industry and city. Common causes: a weak Google Business Profile, few reviews, no presence in directories and rankings, a website without a clear description of services and location.'],
-  ['1–49', 'Your business appears, but not in every question or every model. Look at the sources in the answers: those are the sites where a mention is worth having.'],
-  ['50–100', 'The models name your business. Check it regularly, because answers change from day to day.'],
+  ['1-49', 'Your business appears, but not in every question or every model. Look at the sources in the answers: those are the sites where a mention is worth having.'],
+  ['50-100', 'The models name your business. Check it regularly, because answers change from day to day.'],
 ];
 const FAQ_EN = [
   { question: 'Is the AI visibility checker free?', answer: `Yes. We pay for the model queries. You see the score, the answer grid, the ${W.przedBramka.firm} businesses the models name most often and the ${W.przedBramka.domen} most cited sites right away. The answer texts, the sources of each answer and the remaining businesses are shown once you enter your email address, to which we also send the report. Newsletter signup is separate and voluntary. You can check ${W.limitIp} businesses per day from one IP address.` },

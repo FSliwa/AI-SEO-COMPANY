@@ -285,7 +285,7 @@ export default function AudytSeoClient() {
             {Object.entries(w.kategorie).map(([k, v]) => (
               <li key={k}>
                 {k === 'wydajnosc' && w.wydajnoscZmierzona === false
-                  ? <div className="narz-ocena narz-ocena--mala narz-ocena--brak" role="img" aria-label={en ? 'Performance: not measured' : 'Wydajność: brak pomiaru'}><span className="narz-ocena-liczba" aria-hidden="true">–</span><span className="narz-ocena-podpis" aria-hidden="true">{en ? 'Performance: not measured' : 'Wydajność: brak pomiaru'}</span></div>
+                  ? <div className="narz-ocena narz-ocena--mala narz-ocena--brak" role="img" aria-label={en ? 'Performance: not measured' : 'Wydajność: brak pomiaru'}><span className="narz-ocena-liczba" aria-hidden="true">-</span><span className="narz-ocena-podpis" aria-hidden="true">{en ? 'Performance: not measured' : 'Wydajność: brak pomiaru'}</span></div>
                   : <Ocena wynik={v.wynik} podpis={kat[k]} maly />}
                 {stan.historia?.kategorie?.[k]?.zmiana != null && (
                   <span className="narz-psi" style={{ fontWeight: 700, color: kolorZmiany(stan.historia.kategorie[k].zmiana) }} aria-label={en ? `Change since the previous audit: ${znak(stan.historia.kategorie[k].zmiana)}` : `Zmiana od poprzedniego audytu: ${znak(stan.historia.kategorie[k].zmiana)}`}>
@@ -298,8 +298,8 @@ export default function AudytSeoClient() {
           {w.wydajnoscZmierzona === false && <p className="narz-psi">{en ? 'The PageSpeed Insights speed measurement was temporarily unavailable, so performance is not included in the score.' : 'Pomiar szybkości z PageSpeed Insights był chwilowo niedostępny, więc wydajność nie wchodzi do oceny.'}</p>}
           {w.psi && (
             <p className="narz-psi">{en
-              ? <>PageSpeed Insights (mobile): performance {w.psi.wydajnosc ?? '–'}, SEO {w.psi.seo ?? '–'}, accessibility {w.psi.dostepnosc ?? '–'}, best practices {w.psi.praktyki ?? '–'}.</>
-              : <>PageSpeed Insights (telefon): wydajność {w.psi.wydajnosc ?? '–'}, SEO {w.psi.seo ?? '–'}, dostępność {w.psi.dostepnosc ?? '–'}, dobre praktyki {w.psi.praktyki ?? '–'}.</>}
+              ? <>PageSpeed Insights (mobile): performance {w.psi.wydajnosc ?? '-'}, SEO {w.psi.seo ?? '-'}, accessibility {w.psi.dostepnosc ?? '-'}, best practices {w.psi.praktyki ?? '-'}.</>
+              : <>PageSpeed Insights (telefon): wydajność {w.psi.wydajnosc ?? '-'}, SEO {w.psi.seo ?? '-'}, dostępność {w.psi.dostepnosc ?? '-'}, dobre praktyki {w.psi.praktyki ?? '-'}.</>}
               {w.psi.przebiegi > 1 && w.psi.wydajnoscPomiary?.length > 1
                 ? (en ? ` Performance is the median of ${w.psi.przebiegi} runs (${w.psi.wydajnoscPomiary.join(' and ')}).` : ` Wydajność to mediana ${w.psi.przebiegi} pomiarów (${w.psi.wydajnoscPomiary.join(' i ')}).`)
                 : w.psi.przebiegi === 1 ? (en ? ' Performance comes from a single run; a single run can vary by about 10 points.' : ' Wydajność pochodzi z jednego pomiaru; pojedynczy pomiar może się różnić o ok. 10 punktów.') : null}</p>

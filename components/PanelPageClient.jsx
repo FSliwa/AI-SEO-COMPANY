@@ -17,7 +17,7 @@ import { PANEL_DEMO_URL } from '@/lib/panel';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 
 // Podstrona panelu klienta (zadanie 1.1 planu przewagi). Opisuje tylko to, co panel
-// robi dziś (etapy 1–3 panelu, stan 4.11.2026); nowe moduły dopisywać po wdrożeniu, nie wcześniej.
+// robi dziś (etapy 1-3 panelu, stan 4.11.2026); nowe moduły dopisywać po wdrożeniu, nie wcześniej.
 // Asystenta AI („Zapytaj o dane”) opisać dopiero, gdy działa na produkcji.
 const features = {
   pl: [
@@ -90,8 +90,8 @@ const faq = [
   {
     question: 'Skąd panel bierze dane?',
     questionEn: 'Where does the portal get its data?',
-    answer: 'Kliknięcia, wyświetlenia i pozycje pochodzą z Google Search Console, zapytania z Google Analytics 4 (zdarzenia formularza, kliknięcia w telefon i e-mail z ruchu z Google), a opisy zmian z historii kodu Twojej strony na GitHubie. Panel synchronizuje dane co noc; Search Console pokazuje wyniki z 2–3-dniowym opóźnieniem.',
-    answerEn: 'Clicks, impressions and positions come from Google Search Console, enquiries from Google Analytics 4 (form, phone and email events from Google traffic), and change summaries from your site code history on GitHub. The portal syncs every night; Search Console reports with a 2–3 day delay.'
+    answer: 'Kliknięcia, wyświetlenia i pozycje pochodzą z Google Search Console, zapytania z Google Analytics 4 (zdarzenia formularza, kliknięcia w telefon i e-mail z ruchu z Google), a opisy zmian z historii kodu Twojej strony na GitHubie. Panel synchronizuje dane co noc; Search Console pokazuje wyniki z 2-3-dniowym opóźnieniem.',
+    answerEn: 'Clicks, impressions and positions come from Google Search Console, enquiries from Google Analytics 4 (form, phone and email events from Google traffic), and change summaries from your site code history on GitHub. The portal syncs every night; Search Console reports with a 2-3 day delay.'
   },
   {
     question: 'Kto widzi moje dane?',
