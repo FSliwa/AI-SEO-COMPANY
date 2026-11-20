@@ -66,6 +66,7 @@ export default function Results() {
     ? [
         {
           nr: '01',
+          kicker: `CRAWLER ${AUDYT.regul} REGUŁ`,
           ikona: <><circle cx="11" cy="11" r="7" /><path d="m20 20-4.2-4.2" /></>,
           tytul: `Crawler ${AUDYT.regul} reguł i CWV`,
           opis: 'Bada kody HTTP, indeksację, strukturę nagłówków oraz mobilny PageSpeed Insights na żywo.',
@@ -73,6 +74,7 @@ export default function Results() {
         },
         {
           nr: '02',
+          kicker: `${WIDOCZNOSC.silnikow} SILNIKÓW AI`,
           ikona: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />,
           tytul: `${WIDOCZNOSC.silnikow} silników odpowiedzi AI`,
           opis: 'Odpytuje ChatGPT, Gemini, Perplexity, Claude i AI Overviews prawdziwymi pytaniami klientów.',
@@ -80,6 +82,7 @@ export default function Results() {
         },
         {
           nr: '03',
+          kicker: `GRAF ${mlnDomen.toUpperCase()} DOMEN`,
           ikona: <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />,
           tytul: `Graf ${mlnDomen} domen`,
           opis: `Wylicza autorytet linków 0-100 z publicznego grafu sieciowego i zestawia z ${AUTORYTET.konkurentow} konkurentami.`,
@@ -87,6 +90,7 @@ export default function Results() {
         },
         {
           nr: '04',
+          kicker: 'DETEKCJA STRAT',
           ikona: <><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
           tytul: 'Detekcja blokad i strat',
           opis: 'Wskazuje zablokowane boty AI w robots.txt oraz miesięczny zysk uciekający poza TOP 3.',
@@ -96,6 +100,7 @@ export default function Results() {
     : [
         {
           nr: '01',
+          kicker: `${AUDYT.regul}-RULE CRAWLER`,
           ikona: <><circle cx="11" cy="11" r="7" /><path d="m20 20-4.2-4.2" /></>,
           tytul: `${AUDYT.regul}-rule crawler & CWV`,
           opis: 'Inspects HTTP status codes, indexability, heading hierarchy and mobile PageSpeed Insights live.',
@@ -103,6 +108,7 @@ export default function Results() {
         },
         {
           nr: '02',
+          kicker: `${WIDOCZNOSC.silnikow} AI ENGINES`,
           ikona: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />,
           tytul: `${WIDOCZNOSC.silnikow} AI answer engines`,
           opis: 'Queries ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews with real buyer prompts.',
@@ -110,6 +116,7 @@ export default function Results() {
         },
         {
           nr: '03',
+          kicker: `${mlnDomen} DOMAIN GRAPH`,
           ikona: <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />,
           tytul: `${mlnDomen}-domain link graph`,
           opis: `Computes a 0-100 authority score from the public web graph against up to ${AUTORYTET.konkurentow} competitors.`,
@@ -117,6 +124,7 @@ export default function Results() {
         },
         {
           nr: '04',
+          kicker: 'LOSS DETECTION',
           ikona: <><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
           tytul: 'Bot blocks & revenue gap',
           opis: 'Flags AI crawlers blocked in robots.txt and estimates profit lost outside Google TOP 3.',
@@ -206,7 +214,8 @@ export default function Results() {
                     <div className="results-filar-meta">
                       <span className="results-filar-nr">
                         <span className="results-nr-cyfra">{f.nr}</span>{' '}
-                        <span className="results-nr-ukosnik">/</span>
+                        <span className="results-nr-ukosnik">/</span>{' '}
+                        <span className="results-nr-kat">{f.kicker}</span>
                       </span>
                       <span className="results-filar-ikona" aria-hidden="true">
                         <svg viewBox="0 0 24 24">{f.ikona}</svg>

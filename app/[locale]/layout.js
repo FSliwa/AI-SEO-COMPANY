@@ -178,6 +178,7 @@ const jsonLdDataPl = {
         'latitude': BIURO.lat,
         'longitude': BIURO.lon
       },
+      'hasMap': 'https://www.google.com/maps/place/?q=place_id:ChIJBbPRrkDNHkcR0Oetxw5AMFk',
       // 14.10.2026: bylo 'vatID': 'PL5253090237', ale VIES zwraca dla tego
       // numeru isValid: false, a spolki nie ma w wykazie VAT MF. NIP z KRS
       // (ten sam co w stopce) to taxID. vatID przywrocic dopiero, gdy VIES

@@ -28,20 +28,28 @@ export default function Pricing({ isMainContent = false }) {
           </div>
         </Reveal>
 
-        <RevealStagger className="pricing-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-          {/* Package 1 */}
+        <RevealStagger className="pricing-grid">
+          {/* Package 1: SEO Standard */}
           <RevealItem className="pricing-card">
             <div className="pricing-header">
               <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
+                <span className="pricing-kicker-gwiazdka">✳</span>
                 <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET SEO' : 'SEO PACKAGE'}</span>
                 <span className="pricing-kicker-ukosnik">/</span>
                 <span className="pricing-kicker-cel">{lang === 'pl' ? 'DLA STARTU' : 'FOR STARTERS'}</span>
               </div>
               <h3>{t('standardTitle')}</h3>
               <p className="pricing-desc">{t('standardDesc')}</p>
-              <div className="pricing-price">
-                <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
-                <div className="price-amount"><span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>{t('standardPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('standardPeriod')}</span></div>
+              <div className="pricing-price pricing-price-box">
+                <div className="pricing-price-top">
+                  <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
+                  <span className="price-contract-pill">{lang === 'pl' ? 'Umowa miesięczna' : 'Monthly rolling'}</span>
+                </div>
+                <div className="price-amount">
+                  <span className="price-from">{lang === 'pl' ? 'od' : 'from'}</span>
+                  {t('standardPrice')}{' '}
+                  <span className="price-period">{t('standardPeriod')}</span>
+                </div>
               </div>
             </div>
             <ul className="pricing-features">
@@ -69,22 +77,36 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
+            <div className="pricing-mikro-pasek" aria-hidden="true">
+              <span className="pricing-mikro-el">{lang === 'pl' ? 'Start prac: ≤ 48 h' : 'Kick-off: ≤ 48 h'}</span>
+              <span className="pricing-mikro-el">{lang === 'pl' ? 'Rezygnacja: 1 mies.' : 'Notice: 1 month'}</span>
+            </div>
             <a href={hash('kontakt', lang)} className="btn btn-secondary" data-cta="pricing" data-plan="standard">{t('btnChoose')} <span className="sr-only"> {t('standardTitle')}</span></a>
           </RevealItem>
 
-          {/* Package 2 */}
-          <RevealItem className="pricing-card">
+          {/* Package 2: SEO Premium */}
+          <RevealItem className="pricing-card pricing-card--popular">
+            <span className="pricing-popular-badge">
+              {lang === 'pl' ? 'NAJCZĘŚCIEJ WYBIERANY · SEO + AI' : 'MOST POPULAR · SEO + AI'}
+            </span>
             <div className="pricing-header">
               <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
-                <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET' : 'PACKAGE'}</span>
+                <span className="pricing-kicker-gwiazdka">✳</span>
+                <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET SEO' : 'SEO PACKAGE'}</span>
                 <span className="pricing-kicker-ukosnik">/</span>
                 <span className="pricing-kicker-cel">{lang === 'pl' ? 'DLA WZROSTU' : 'FOR GROWTH'}</span>
               </div>
               <h3>{t('premiumTitle')}</h3>
               <p className="pricing-desc">{t('premiumDesc')}</p>
-              <div className="pricing-price">
-                <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
-                <div className="price-amount">{t('premiumPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('premiumPeriod')}</span></div>
+              <div className="pricing-price pricing-price-box">
+                <div className="pricing-price-top">
+                  <div className="price-label">{lang === 'pl' ? 'Subskrypcja miesięczna' : 'Monthly Subscription'}</div>
+                  <span className="price-contract-pill">{lang === 'pl' ? 'Umowa miesięczna' : 'Monthly rolling'}</span>
+                </div>
+                <div className="price-amount">
+                  {t('premiumPrice')}{' '}
+                  <span className="price-period">{t('premiumPeriod')}</span>
+                </div>
               </div>
             </div>
             <ul className="pricing-features">
@@ -112,7 +134,11 @@ export default function Pricing({ isMainContent = false }) {
                 </>
               )}
             </ul>
-            <a href={hash('kontakt', lang)} className="btn btn-secondary" data-cta="pricing" data-plan="premium">{t('btnChoose')} <span className="sr-only"> {t('premiumTitle')}</span></a>
+            <div className="pricing-mikro-pasek" aria-hidden="true">
+              <span className="pricing-mikro-el">{lang === 'pl' ? 'Start prac: ≤ 48 h' : 'Kick-off: ≤ 48 h'}</span>
+              <span className="pricing-mikro-el">{lang === 'pl' ? 'Silniki AI: 4 modele' : 'AI engines: 4 models'}</span>
+            </div>
+            <a href={hash('kontakt', lang)} className="btn btn-dark-fill" data-cta="pricing" data-plan="premium">{t('btnChoose')} <span className="sr-only"> {t('premiumTitle')}</span></a>
           </RevealItem>
 
           {/* Package 3 (Featured Booster Pack) */}
@@ -120,25 +146,42 @@ export default function Pricing({ isMainContent = false }) {
             <span className="pricing-featured-badge">{lang === 'pl' ? 'STRONA WWW W CENIE' : 'WEBSITE INCLUDED'}</span>
             <div className="pricing-header">
               <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
+                <span className="pricing-kicker-gwiazdka">✳</span>
                 <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET WWW + SEO' : 'WEB + SEO PACKAGE'}</span>
                 <span className="pricing-kicker-ukosnik">/</span>
                 <span className="pricing-kicker-cel">{lang === 'pl' ? 'DLA WZROSTU' : 'FOR GROWTH'}</span>
               </div>
               <h3>{t('boosterTitle')}</h3>
               <p className="pricing-desc">{t('boosterDesc')}</p>
-              <div className="pricing-price">
-                <div className="price-label" style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Umowa min. 3 miesiące (Standard i Premium: umowa miesięczna)' : 'Min. 3-month contract (Standard and Premium: monthly)'}</div>
-                <div className="price-amount">{t('boosterPrice')} <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{t('boosterPeriod')}</span></div>
+              <div className="pricing-price pricing-price-box pricing-price-box--featured">
+                <div className="pricing-price-top">
+                  <div className="price-label price-label--booster">{lang === 'pl' ? 'Umowa min. 3 miesiące (Standard i Premium: umowa miesięczna)' : 'Min. 3-month contract (Standard and Premium: monthly)'}</div>
+                </div>
+                <div className="price-amount">
+                  {t('boosterPrice')}{' '}
+                  <span className="price-period">{t('boosterPeriod')}</span>
+                </div>
+              </div>
+            </div>
+            <div className="pricing-www-callout">
+              <div className="pricing-www-tytul">
+                <span className="pricing-www-kropka" aria-hidden="true" />
+                <span>{t('boosterBadge')}</span>
+              </div>
+              <div className="pricing-www-tagi" aria-hidden="true">
+                <span>{lang === 'pl' ? 'UX/UI na miarę' : 'Custom UX/UI'}</span>
+                <span>{lang === 'pl' ? 'RWD / Core Web Vitals' : 'RWD / Core Web Vitals'}</span>
+                <span>{lang === 'pl' ? 'SSL + serwer' : 'SSL + hosting'}</span>
               </div>
             </div>
             <ul className="pricing-features">
-              <li data-ikona="www"><span style={{ fontWeight: 600, color: 'var(--color-growth)' }}>{t('boosterBadge')}</span></li>
               {lang === 'pl' ? (
                 <>
                   <li data-ikona="pedzel">Indywidualny projekt graficzny UX/UI (RWD)</li>
                   <li data-ikona="panel">Panel klienta 24/7 od pierwszego dnia</li>
                   <li data-ikona="audyt">Pełne pozycjonowanie SEO i audyt konkurencji</li>
                   <li data-ikona="ptaszek">Optymalizacja i publikacje w Wizytówce Google</li>
+                  <li data-ikona="wykres">Konfiguracja GA4 i Google Search Console od startu</li>
                   <li data-ikona="tech">Certyfikat SSL, serwer i opieka techniczna</li>
                   <li data-ikona="nieskonczonosc">Brak jakichkolwiek dodatkowych ukrytych opłat</li>
                 </>
@@ -148,11 +191,16 @@ export default function Pricing({ isMainContent = false }) {
                   <li data-ikona="panel">24/7 client portal from day one</li>
                   <li data-ikona="tech">Complete technical & content SEO suite</li>
                   <li data-ikona="pin">Google Business Profile optimization and monthly posts</li>
+                  <li data-ikona="wykres">GA4 & Google Search Console setup from day one</li>
                   <li data-ikona="tarcza">SSL certificate, hosting & ongoing maintenance</li>
                   <li data-ikona="nieskonczonosc">No hidden setup or maintenance fees</li>
                 </>
               )}
             </ul>
+            <div className="pricing-mikro-pasek" aria-hidden="true">
+              <span className="pricing-mikro-el">{lang === 'pl' ? 'Makieta WWW: 7 dni' : 'Web mockup: 7 days'}</span>
+              <span className="pricing-mikro-el">{lang === 'pl' ? 'Gwarancja ceny: 0 zł dopłat' : 'Price lock: €0 extra fees'}</span>
+            </div>
             <a href={hash('kontakt', lang)} className="btn btn-primary btn-glow" data-cta="pricing" data-plan="booster">{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
           </RevealItem>
         </RevealStagger>

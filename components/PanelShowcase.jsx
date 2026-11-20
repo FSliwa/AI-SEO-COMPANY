@@ -11,14 +11,14 @@ import { PANEL_DEMO_URL } from '@/lib/panel';
 // przykładowych (Stolarnia Demo), więc można je pokazywać bez zgody żadnego klienta.
 const items = {
   pl: [
-    { img: '/images/panel/przeglad.webp', title: 'Zapytania i ruch z Google', text: 'Liczba zapytań z formularza, telefonu i e-maila na pierwszym ekranie, cel na miesiąc i wzrost kliknięć z Google Search Console.' },
-    { img: '/images/panel/zmiany.webp', title: 'Każda zmiana na stronie opisana', text: 'AI czyta historię zmian w kodzie strony, a zespół sprawdza opis przed publikacją. Widzisz, co zmieniliśmy i po co.' },
-    { img: '/images/panel/akceptacje.webp', title: 'Decyzje jednym kliknięciem', text: 'Artykuły, zdjęcia i zmiany czekające na Twoją zgodę są w jednym miejscu, bez wątków mailowych.' },
+    { img: '/images/panel/przeglad.webp', okno: 'Widok: Przegląd zapytań · odświeżanie 24h', title: 'Zapytania i ruch z Google', text: 'Liczba zapytań z formularza, telefonu i e-maila na pierwszym ekranie, cel na miesiąc i wzrost kliknięć z Google Search Console.' },
+    { img: '/images/panel/zmiany.webp', okno: 'Widok: Historia zmian kodu · opis AI', title: 'Każda zmiana na stronie opisana', text: 'AI czyta historię zmian w kodzie strony, a zespół sprawdza opis przed publikacją. Widzisz, co zmieniliśmy i po co.' },
+    { img: '/images/panel/akceptacje.webp', okno: 'Widok: Akceptacje treści · 1 kliknięcie', title: 'Decyzje jednym kliknięciem', text: 'Artykuły, zdjęcia i zmiany czekające na Twoją zgodę są w jednym miejscu, bez wątków mailowych.' },
   ],
   en: [
-    { img: '/images/panel/przeglad.webp', title: 'Enquiries and Google traffic', text: 'Form, phone and email enquiries on the first screen, a monthly goal and click growth from Google Search Console.' },
-    { img: '/images/panel/zmiany.webp', title: 'Every change to the site explained', text: 'AI reads the history of changes in your site code and the team reviews the summary before publishing it.' },
-    { img: '/images/panel/akceptacje.webp', title: 'Decisions in one click', text: 'Articles, photos and changes waiting for your approval sit in one place instead of email threads.' },
+    { img: '/images/panel/przeglad.webp', okno: 'View: Enquiries overview · 24h refresh', title: 'Enquiries and Google traffic', text: 'Form, phone and email enquiries on the first screen, a monthly goal and click growth from Google Search Console.' },
+    { img: '/images/panel/zmiany.webp', okno: 'View: Code change log · AI summary', title: 'Every change to the site explained', text: 'AI reads the history of changes in your site code and the team reviews the summary before publishing it.' },
+    { img: '/images/panel/akceptacje.webp', okno: 'View: Content approvals · 1 click', title: 'Decisions in one click', text: 'Articles, photos and changes waiting for your approval sit in one place instead of email threads.' },
   ],
 };
 
@@ -56,11 +56,22 @@ export default function PanelShowcase() {
               {lang === 'pl' ? 'Co jest w panelu klienta' : 'What is in the client portal'}
             </Link>
           </div>
+          <p className="panel-zaufanie">
+            <span className="panel-zaufanie-kropka" aria-hidden="true" />
+            {lang === 'pl'
+              ? 'Stolarnia Demo · Bez podawania e-maila · W cenie każdego pakietu'
+              : 'Demo workspace · No email required · Included in every plan'}
+          </p>
         </Reveal>
 
         <div className="panel-stos">
           {items[lang].map((it, i) => (
             <figure key={it.img} className={`panel-warstwa panel-warstwa--${i}`}>
+              <span className="panel-okno-nagl" aria-hidden="true">
+                <span className="panel-okno-kropki"><i /><i /><i /></span>
+                <span className="panel-okno-tytul">{it.okno}</span>
+                <span className="panel-okno-status" />
+              </span>
               <Image src={it.img} alt={lang === 'pl' ? `Panel klienta: ${it.title.toLowerCase()} (dane przykładowe)` : `Client portal: ${it.title.toLowerCase()} (sample data)`} width={1600} height={1025} sizes="(max-width: 900px) 100vw, 520px" />
             </figure>
           ))}

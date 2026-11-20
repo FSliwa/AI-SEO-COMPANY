@@ -278,6 +278,35 @@ export default function Contact({ isMainContent = false }) {
             </div>
             <h2>{t('title')}</h2>
             <p>{t('subtitle')}</p>
+
+            <div className="contact-dostajesz">
+              <p className="contact-dostajesz-tytul">
+                {t3('CO DOSTAJESZ PO WYSŁANIU', 'WHAT YOU GET AFTER SENDING', 'WAS SIE NACH DEM ABSENDEN ERHALTEN')}
+              </p>
+              <ul className="contact-dostajesz-lista">
+                <li>
+                  {t3(
+                    'Konkretną wycenę i plan priorytetów w ≤ 24 h w dni robocze',
+                    'Clear quote and priority roadmap within ≤ 24 h on business days',
+                    'Konkretes Angebot und Prioritätenplan in ≤ 24 Std. an Werktagen'
+                  )}
+                </li>
+                <li>
+                  {t3(
+                    'Szybki przegląd błędów indeksacji, fraz i widoczności w AI Twojej domeny',
+                    'Quick review of indexation issues, keywords and AI visibility for your domain',
+                    'Schnellprüfung von Indexierungsfehlern, Keywords und KI-Sichtbarkeit Ihrer Domain'
+                  )}
+                </li>
+                <li>
+                  {t3(
+                    'Odpowiedź bezpośrednio od specjalisty SEO prowadzącego projekt - bez handlowca',
+                    'Direct reply from the SEO specialist running the work - no sales rep',
+                    'Antwort direkt vom betreuenden SEO-Spezialisten - ohne Vertrieb'
+                  )}
+                </li>
+              </ul>
+            </div>
             
             <ul className="company-details">
               <li><span style={{ fontWeight: 500, color: 'var(--w-noc-tekst)' }}>{ETYKIETY.biuro[lang]}:</span> {adresLinia(BIURO, lang)}</li>
@@ -305,7 +334,11 @@ export default function Contact({ isMainContent = false }) {
             {/* Obietnica nad polami (ta sama, którą dają reklamy i zdanie pod przyciskiem). */}
             <p className="contact-obietnica">
               <span className="contact-obietnica-kropka" aria-hidden="true" />
-              {t3('Bezpłatna wycena · odpowiedź w 24 h w dni robocze', 'Free quote · reply within 24 h on business days', 'Kostenloses Angebot · Antwort innerhalb von 24 Std. an Werktagen')}
+              {t3(
+                'Bez handlowca - odpowiada specjalista SEO w ≤ 24 h · bezpłatna wycena',
+                'No sales rep - an SEO specialist replies in ≤ 24 h · free quote',
+                'Ohne Vertrieb - ein SEO-Spezialist antwortet in ≤ 24 Std. · kostenloses Angebot'
+              )}
             </p>
             {/* 05.10.2026: komunikaty wysylki byly zwyklymi divami bez role, wiec
                 czytnik ekranu nie oglaszal ani sukcesu, ani bledu. Kontenery

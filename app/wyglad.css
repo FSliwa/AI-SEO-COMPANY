@@ -56,7 +56,7 @@
   --color-border: var(--w-linia);
   --color-border-hover: rgba(216, 90, 48, 0.45);
   --shadow-cta: none;
-  --container-width: 1300px;
+  --container-width: 1360px;
 }
 
 /* Fonty: next/font daje --font-geist i --font-geist-mono na <body>. Stare
@@ -1022,23 +1022,27 @@ section#contact.contact {
 /* --- Blog i FAQ strony glownej: jasne panele na nocnym tle --- */
 .w-noc-panele {
   background: linear-gradient(180deg, var(--w-noc) 0%, #101A4A 55%, #1B2470 100%);
-  padding: clamp(24px, 3vw, 48px) 0 clamp(64px, 8vw, 120px);
+  padding: clamp(24px, 3vw, 40px) 0 clamp(48px, 5vw, 72px);
 }
 
 .w-noc-panele > section.blog,
 .w-noc-panele > section.faq-apple {
   padding: 0 !important;
-  margin: 0 auto clamp(24px, 3vw, 40px);
-  width: min(100% - 2 * clamp(16px, 4.7vw, 70px), 1300px);
+  margin: 0 auto clamp(24px, 3vw, 36px);
+  width: min(100% - 2 * clamp(16px, 3.8vw, 56px), 1360px);
   background: var(--w-papier) !important;
   border-radius: var(--w-promien-panel);
   position: relative;
   overflow: hidden;
 }
 
+.w-noc-panele > section:last-child {
+  margin-bottom: 0 !important;
+}
+
 .w-noc-panele > section.blog > .container,
 .w-noc-panele > section.faq-apple > .container {
-  padding: clamp(40px, 6vw, 88px) clamp(24px, 5vw, 80px) !important;
+  padding: clamp(36px, 5vw, 72px) clamp(24px, 4vw, 56px) !important;
   max-width: none !important;
 }
 
@@ -1108,15 +1112,27 @@ section#contact.contact {
   counter-increment: faq;
 }
 
+.faq-apple--panel .faq-apple-pytanie > span:first-child {
+  display: grid;
+  grid-template-columns: 2.35rem minmax(0, 1fr);
+  align-items: baseline;
+}
+
 .faq-apple--panel .faq-apple-pytanie > span:first-child::before {
   content: counter(faq, decimal-leading-zero);
-  display: block;
+  display: inline-block;
   font-family: var(--w-mono);
-  font-size: 0.75rem;
-  font-weight: 400;
+  font-size: 0.78rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   color: var(--w-pomarancz-gleboki);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .faq-apple--panel .faq-apple-odp {
+    padding-left: 2.35rem;
+  }
 }
 
 .faq-apple--panel .faq-apple-pytanie {
@@ -1977,13 +1993,13 @@ main h3:not(.hero *) {
 
 /* (47) Nazwy klientow czytelne na mgle */
 
-/* (19 + 19.11.2026) Płynne przejście oferta -> świt bez cięcia */
+/* (19 + 20.11.2026) Płynne przejście oferta -> świt bez zduplikowanego pasa granatu */
 .gory-oferta .services {
-  padding-bottom: clamp(72px, 8vw, 128px) !important;
+  padding-bottom: clamp(44px, 4.8vw, 68px) !important;
 }
 
 #why-us.why-us {
-  padding-top: clamp(260px, 34vw, 520px) !important;
+  padding-top: clamp(220px, 28.5vw, 430px) !important;
   background-position: center top !important;
 }
 
@@ -2129,13 +2145,37 @@ main h3:not(.hero *) {
   padding-right: 1.5rem !important;
 }
 
-/* (70) Mniej pustego granatu miedzy wynikami a panelem */
+/* (70 + 20.11.2026) Rytm pionowy strefy nocnej i styku mozaiki z kopułą na głównej */
 .results {
   padding-bottom: clamp(48px, 6vw, 96px) !important;
 }
 
-.results + .panel-showcase {
-  padding-top: clamp(48px, 6vw, 96px) !important;
+main:has(.gory-oferta) .portfolio {
+  padding-bottom: clamp(12px, 1.5vw, 24px) !important;
+}
+
+.portfolio-mosaic {
+  margin-bottom: 0 !important;
+}
+
+main:has(.gory-oferta) section.pricing,
+main:has(.gory-oferta) aside.pricing {
+  padding-bottom: clamp(64px, 6.5vw, 96px) !important;
+}
+
+.pricing + .panel-showcase {
+  padding-top: clamp(40px, 4.5vw, 64px) !important;
+}
+
+main:has(.gory-oferta) .panel-showcase {
+  padding-bottom: clamp(56px, 6vw, 84px) !important;
+}
+
+.w-noc-panele + section#kontakt.contact,
+.w-noc-panele + aside#kontakt.contact,
+.w-noc-panele + section#contact.contact,
+.w-noc-panele + aside#contact.contact {
+  padding-top: clamp(56px, 6vw, 80px) !important;
 }
 
 /* (6/57) Realizacje w kolumnie tresci */
@@ -2213,14 +2253,7 @@ main h3:not(.hero *) {
   filter: drop-shadow(0 26px 44px rgba(3, 6, 20, 0.42));
 }
 
-/* (16/44/85) Ceny w jednej linii */
-@media (min-width: 901px) {
-  .pricing-card .price-label {
-    min-height: 3.3em;
-    display: flex;
-    align-items: flex-end;
-  }
-}
+/* (16/44/85 + 20.11.2026) Cena w wydzielonym boksie .pricing-price-box - bez sztucznego min-height: 3.3em */
 
 /* (28/49) "netto / mies." */
 .price-amount > span:last-child {
@@ -2513,22 +2546,85 @@ main:has(.article-content) {
   }
 }
 
-/* 20.11.2026: cennik w stylu airSlate (techniczny kicker PAKIET / DLA WZROSTU nad nazwą pakietu
-   oraz kwadratowe punktory 7x7 px zamiast standardowych ptaszków/ikon). */
+/* 20.11.2026: cennik w układzie airSlate (1360 px, gap 24 px, wyrównanie do lewej,
+   wydzielony boks cenowy na --w-papier-2, moduł STRONA WWW ZA 0 ZŁ, dolny pasek mikro-parametrów
+   oraz czytelna hierarchia 3 kart bez pustych plam nad CTA). */
+.pricing > .container {
+  max-width: 1360px !important;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem !important;
+  align-items: stretch;
+}
+
+@media (max-width: 1023.98px) {
+  .pricing-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+    margin-inline: auto;
+  }
+}
+
+.pricing-card {
+  padding: 2.25rem 1.95rem 2rem !important;
+  border: 1.5px solid var(--w-linia) !important;
+}
+
+.pricing-card--popular {
+  border-color: rgba(30, 30, 30, 0.24) !important;
+}
+
+.pricing-card.featured {
+  border-color: var(--w-pomarancz) !important;
+}
+
+.pricing-popular-badge {
+  position: absolute;
+  top: -13px;
+  left: 1.95rem;
+  transform: none;
+  background: var(--w-tusz);
+  color: #FFFFFF;
+  font-family: var(--w-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 0.26rem 0.85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.pricing-card.featured .pricing-featured-badge {
+  left: 1.95rem !important;
+  transform: none !important;
+  font-size: 0.68rem !important;
+  padding: 0.26rem 0.85rem !important;
+}
+
 .pricing-kategoria,
 .pricing-kicker {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: center;
-  gap: 0.42rem;
+  justify-content: flex-start;
+  gap: 0.38rem;
   font-family: var(--w-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--w-tusz-2);
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-kicker-gwiazdka {
+  color: var(--w-pomarancz);
+  font-family: var(--font-geist), sans-serif;
+  font-size: 0.82rem;
 }
 
 .pricing-kicker-glowny {
@@ -2545,13 +2641,197 @@ main:has(.article-content) {
 }
 
 .pricing-header {
-  text-align: center;
+  text-align: left;
 }
 
-.pricing-header .pricing-price {
+.pricing-header h3 {
+  margin-bottom: 0.45rem !important;
+}
+
+.pricing-desc {
+  min-height: 0 !important;
+  margin-bottom: 1.1rem !important;
+  line-height: 1.52;
+  font-size: 0.92rem !important;
+}
+
+@media (min-width: 1024px) {
+  .pricing-desc {
+    min-height: 4.2rem !important;
+  }
+}
+
+.pricing-header .pricing-price-box {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.95rem 1.1rem;
+  margin-bottom: 1.25rem;
+  border-radius: 16px;
+  background: var(--w-papier-2);
+  border: 1px solid var(--w-linia);
+}
+
+.pricing-header .pricing-price-box--featured {
+  background: linear-gradient(145deg, #FDF4EE 0%, var(--w-papier-2) 100%);
+  border-color: rgba(216, 90, 48, 0.24);
+}
+
+.pricing-price-top {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem 0.5rem;
+  width: 100%;
+}
+
+.pricing-price-box .price-label {
+  font-size: 0.7rem !important;
+  letter-spacing: 0.09em;
+  line-height: 1.35;
+  color: var(--w-tusz-2);
+}
+
+.pricing-price-box .price-label--booster {
+  color: var(--w-pomarancz-tekst) !important;
+  font-weight: 600;
+}
+
+.price-contract-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1px solid var(--w-linia);
+  font-family: var(--w-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--w-tusz-2);
+  white-space: nowrap;
+}
+
+.pricing-price-box .price-amount {
+  margin-bottom: 0 !important;
+  font-size: clamp(1.95rem, 2.3vw, 2.25rem) !important;
+  line-height: 1.08;
+}
+
+.pricing-price-box .price-period {
+  font-size: 0.92rem;
+  color: var(--w-tusz-2);
+  font-weight: 400;
+  letter-spacing: 0 !important;
+  white-space: nowrap;
+}
+
+/* Moduł wyróżniający STRONA WWW ZA 0 ZŁ W PAKIECIE w Booster Pack */
+.pricing-www-callout {
+  margin: 0 0 1.05rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: 14px;
+  background: rgba(4, 120, 87, 0.07);
+  border: 1px solid rgba(4, 120, 87, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pricing-www-tytul {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #065F46;
+  line-height: 1.3;
+}
+
+.pricing-www-kropka {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--w-wzrost);
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.16);
+}
+
+.pricing-www-tagi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.pricing-www-tagi span {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(4, 120, 87, 0.16);
+  font-family: var(--w-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  color: #065F46;
+  line-height: 1.35;
+}
+
+.pricing-card .pricing-features {
+  gap: 0.65rem !important;
+  margin-bottom: 1.35rem !important;
+}
+
+/* Dolny pasek mikro-parametrów nad przyciskiem Wybierz pakiet */
+.pricing-mikro-pasek {
+  margin-top: auto;
+  margin-bottom: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--w-linia);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem 0.75rem;
+  font-family: var(--w-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--w-tusz-2);
+}
+
+.pricing-mikro-el {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pricing-mikro-el::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 1.5px;
+  background: var(--w-pomarancz);
+  flex: none;
+}
+
+/* Przycisk środkowego pakietu SEO Premium (wyraźniejszy od Standard, spokojniejszy od Booster) */
+.pricing-card .btn-dark-fill {
+  width: 100%;
+  background: var(--w-tusz) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid var(--w-tusz) !important;
+  box-shadow: none !important;
+}
+
+.pricing-card .btn-dark-fill:hover {
+  background: var(--w-pomarancz-przycisk) !important;
+  border-color: var(--w-pomarancz-przycisk) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
 }
 
 .pricing-features li,
@@ -3271,8 +3551,8 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 .realizacje-pas {
   position: relative;
   isolation: isolate;
-  margin-top: clamp(24px, 3vw, 48px);
-  padding: clamp(48px, 6vw, 96px) 0 clamp(16px, 2vw, 32px);
+  margin-top: 0;
+  padding: clamp(56px, 6vw, 88px) 0 clamp(16px, 2vw, 28px);
 }
 .realizacje-pas::before {
   content: '';
@@ -3621,7 +3901,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   }
 
   .gory-oferta .gory-klienci + .services {
-    padding-top: clamp(148px, 23.8vw, 356px) !important;
+    padding-top: clamp(140px, 19.5vw, 304px) !important;
   }
 }
 
@@ -3845,7 +4125,7 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
   .hero-klient--st { width: 240px; }
   /* 19.11.2026: wyśrodkowanie paska logotypów dokładnie pośrodku jasnego pasma mgły na szerokich monitorach (>= 1600 px) */
   .gory-klienci { padding-top: 26px; }
-  .gory-oferta .gory-klienci + .services { padding-top: 368px !important; }
+  .gory-oferta .gory-klienci + .services { padding-top: 308px !important; }
 }
 
 /* Okna szersze niz 2560 px: grafika nieba i gor stoi na srodkowym pudelku 2560 px, boki gasna w kolor
@@ -4518,4 +4798,426 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
   background: rgba(255, 255, 255, 0.055);
   border-color: rgba(255, 255, 255, 0.16);
   color: rgba(255, 255, 255, 0.88);
+}
+
+/* ==========================================================================
+   SZLIFY KOSMETYCZNE AIRSLATE W POZOSTAŁYCH SEKCJACH GŁÓWNEJ (20.11.2026):
+   1) Realizacje + Mozaika Portfolio (.realizacje-skroty, .portfolio-okno-nagl)
+   2) Panel klienta (.panel-okno-nagl, .panel-zaufanie)
+   3) Blog / Baza wiedzy (.blog-skroty, .blog-index-kicker)
+   4) FAQ na głównej (.faq-apple-stopka, .faq-hub-link)
+   5) Kontakt (.contact-dostajesz z kwadratowymi punktorami 7x7 px)
+   Palety barw sekcji w 100% zachowane.
+   ========================================================================== */
+
+/* 1a. Pigułkowy pasek skrótów nad wykresem Wybrane realizacje */
+.realizacje-blok {
+  margin-top: clamp(12px, 1.8vw, 22px);
+}
+
+.realizacje-pas .realizacje-blok > .realizacje {
+  margin-top: 0;
+}
+
+.realizacje-skroty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+}
+
+.realizacje-skrot {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--w-linia);
+  color: var(--w-tusz);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.realizacje-skrot:hover {
+  border-color: var(--w-pomarancz);
+  background: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.realizacje-skrot[aria-pressed='true'] {
+  background: #FFFFFF;
+  border-color: var(--w-pomarancz);
+  box-shadow: 0 6px 18px -10px rgba(216, 90, 48, 0.65);
+}
+
+.realizacje-skrot-kat {
+  font-family: var(--w-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--w-pomarancz-tekst);
+  font-weight: 600;
+}
+
+.realizacje-skrot-sep {
+  color: rgba(30, 30, 30, 0.3);
+}
+
+.realizacje-skrot-nazwa {
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--w-tusz);
+}
+
+.realizacje-skrot-live {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--w-linia);
+  font-family: var(--w-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--w-tusz-2);
+}
+
+.realizacje-live-kropka {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--w-wzrost);
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.16);
+  flex: none;
+}
+
+@media (max-width: 767.98px) {
+  .realizacje-skroty {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .realizacje-skroty::-webkit-scrollbar {
+    display: none;
+  }
+  .realizacje-skrot,
+  .realizacje-skrot-live {
+    flex: none;
+  }
+  .realizacje-skrot-live {
+    margin-left: 0;
+  }
+}
+
+/* 1b. Górny pasek okna na kafelkach mozaiki (.portfolio-mosaic-tile) */
+.portfolio-mosaic-tile {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(30, 30, 30, 0.09) !important;
+  box-shadow: 0 12px 28px -20px rgba(10, 19, 55, 0.22) !important;
+}
+
+.portfolio-okno-nagl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 11px;
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(30, 30, 30, 0.08);
+  font-family: var(--w-mono);
+  font-size: 0.66rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--w-tusz-2);
+}
+
+.portfolio-okno-info {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.portfolio-okno-domena {
+  font-weight: 600;
+  color: var(--w-tusz);
+}
+
+.portfolio-okno-uk {
+  color: rgba(30, 30, 30, 0.28);
+}
+
+.portfolio-okno-okres {
+  color: var(--w-tusz-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portfolio-okno-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: none;
+  white-space: nowrap;
+  color: var(--w-tusz-2);
+}
+
+.portfolio-okno-live--gsc {
+  color: #065F46;
+  font-weight: 500;
+}
+
+.portfolio-okno-kropka {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--w-wzrost);
+  box-shadow: 0 0 0 2.5px rgba(4, 120, 87, 0.16);
+  flex: none;
+}
+
+.portfolio-okno-domena::before,
+.portfolio-okno-uk::before,
+.portfolio-okno-okres::before,
+.portfolio-okno-status::before {
+  content: attr(data-t);
+}
+
+@media (max-width: 1500px) {
+  .portfolio-mosaic[data-kolumny="5"] .portfolio-okno-uk,
+  .portfolio-mosaic[data-kolumny="5"] .portfolio-okno-okres {
+    display: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .portfolio-okno-nagl {
+    padding: 5px 8px;
+    font-size: 0.6rem;
+  }
+  .portfolio-okno-uk,
+  .portfolio-okno-okres {
+    display: none;
+  }
+}
+
+/* 3. Panel klienta: cienka belka okna na 3 warstwach + mikro-linia zaufania */
+.panel-zaufanie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.74rem;
+  line-height: 1.45;
+  letter-spacing: 0.03em;
+  color: var(--w-noc-tekst) !important;
+}
+
+.panel-zaufanie-kropka {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22);
+}
+
+.panel-okno-nagl {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 12px;
+  background: #FAF6F0;
+  border-bottom: 1px solid rgba(30, 30, 30, 0.09);
+  font-family: var(--w-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--w-tusz-2);
+}
+
+.panel-okno-kropki {
+  display: inline-flex;
+  gap: 4px;
+  flex: none;
+}
+
+.panel-okno-kropki i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.22);
+}
+
+.panel-okno-tytul {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--w-tusz);
+}
+
+.panel-okno-status {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--w-wzrost);
+  box-shadow: 0 0 0 2.5px rgba(4, 120, 87, 0.16);
+}
+
+/* 4. Blog / Baza wiedzy: pasek 3 kategorii + kicker PORADNIK / CZAS CZYTANIA */
+.blog-skroty {
+  margin-top: 1.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-skrot {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--w-karta);
+  border: 1px solid var(--w-linia);
+  color: var(--w-tusz) !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.blog-skrot:hover {
+  border-color: var(--w-pomarancz);
+  background: var(--w-brzoskwinia-tlo);
+  transform: translateY(-1px);
+}
+
+.blog-index-kicker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 8px;
+  font-family: var(--w-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.blog-kicker-typ {
+  color: var(--w-pomarancz-tekst);
+  font-weight: 600;
+}
+
+.blog-kicker-ukosnik {
+  color: rgba(30, 30, 30, 0.28);
+}
+
+.blog-kicker-czas {
+  color: var(--w-tusz-2);
+  font-weight: 500;
+}
+
+/* 5. FAQ na głównej: dolny pasek domykający w stylu .dn-stopka */
+.faq-apple-stopka {
+  margin-top: clamp(32px, 4.5vw, 52px);
+  display: flex;
+  justify-content: center;
+}
+
+.faq-hub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  background: var(--w-karta);
+  border: 1.5px solid var(--w-linia);
+  color: var(--w-tusz) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.faq-hub-link:hover {
+  border-color: var(--w-pomarancz);
+  background: var(--w-brzoskwinia-tlo);
+  transform: translateY(-2px);
+}
+
+/* 6. Kontakt: blok CO DOSTAJESZ PO WYSŁANIU z kwadratowymi punktorami 7x7 px */
+.contact-dostajesz {
+  margin: 0 0 1.75rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--w-noc-linia);
+}
+
+.contact-dostajesz-tytul {
+  margin: 0 0 0.75rem !important;
+  font-family: var(--w-mono);
+  font-size: 0.72rem !important;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--w-pomarancz) !important;
+}
+
+.contact-dostajesz-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.contact-dostajesz-lista li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: 0.93rem;
+  line-height: 1.48;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.contact-dostajesz-lista li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.46em;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--w-pomarancz);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .realizacje-skrot,
+  .blog-skrot,
+  .faq-hub-link {
+    transition: none !important;
+    transform: none !important;
+  }
 }

@@ -17,7 +17,7 @@
   overflow: hidden;
   background-color: var(--w-papier) !important;
   background-image: none !important;
-  padding-top: clamp(210px, 31vw, 450px) !important;
+  padding-top: clamp(200px, 24.5vw, 376px) !important;
   padding-bottom: clamp(12px, 1.8vw, 24px) !important;
   margin-bottom: -1px !important;
 }
@@ -276,21 +276,41 @@
 }
 
 .results-filar-meta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 8px;
   font-family: var(--w-mono);
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: #FDF9F4;
 }
 
+.results-filar-nr {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+}
+
 .results-nr-cyfra {
-  opacity: 0.65;
+  color: #FFB87A;
+  font-weight: 600;
+}
+
+.results-filar--ryzyko .results-nr-cyfra {
+  color: #FF7A5C;
 }
 
 .results-nr-ukosnik {
-  opacity: 0.4;
+  opacity: 0.42;
+}
+
+.results-nr-kat {
+  color: rgba(253, 249, 244, 0.9);
+  font-weight: 500;
 }
 
 .results-filar-ikona {

@@ -108,12 +108,13 @@ const L = 58;
 const P = 14;
 const G = 64;
 const D = 36;
+const PUSTA_SERIA = [];
 
 function Wykres({ klucz, daneGsc, lang, idPanelu }) {
   const [miara, setMiara] = useState('wysw');
   const [wskazany, setWskazany] = useState(null);
   const ramka = useRef(null);
-  const seria = (daneGsc && daneGsc[klucz]) || SERIE_GSC[klucz] || [];
+  const seria = (daneGsc && daneGsc[klucz]) || SERIE_GSC[klucz] || PUSTA_SERIA;
   const tygodniowe = seria.length > 1 && seria[0][0] !== seria[0][1];
 
   const model = useMemo(() => {
@@ -337,7 +338,27 @@ export default function Realizacje({ pozycje, daneGsc: daneZewn, lang, etykieta 
   };
 
   return (
-    <div className="realizacje" style={{ ['--realizacje-n']: pozycje.length, ['--realizacje-aktywna']: aktywna }}>
+    <div className="realizacje-blok">
+      <div className="realizacje-skroty" role="group" aria-label={lang === 'pl' ? 'Branże i klienci' : 'Industries and clients'}>
+        {pozycje.map((p, i) => (
+          <button
+            key={p.id}
+            type="button"
+            className="realizacje-skrot"
+            aria-pressed={aktywna === i}
+            onClick={() => setAktywna(i)}
+          >
+            <span className="realizacje-skrot-kat">{p.skrot || p.tag}</span>
+            <span className="realizacje-skrot-sep" aria-hidden="true">·</span>
+            <span className="realizacje-skrot-nazwa">{p.nazwa}</span>
+          </button>
+        ))}
+        <span className="realizacje-skrot-live" aria-hidden="true">
+          <span className="realizacje-live-kropka" />
+          Live GSC API
+        </span>
+      </div>
+      <div className="realizacje" style={{ ['--realizacje-n']: pozycje.length, ['--realizacje-aktywna']: aktywna }}>
       <div className="realizacje-os" role="tablist" aria-label={etykieta} aria-orientation="vertical" ref={lista} data-luk={luk ? 'zmierzony' : undefined}>
         <svg className="realizacje-luk" viewBox={`0 0 72 ${luk ? luk.H : 400}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
           <path d={luk ? luk.d : 'M70 0 C 6 120, 6 280, 70 400'} />
@@ -411,6 +432,7 @@ export default function Realizacje({ pozycje, daneGsc: daneZewn, lang, etykieta 
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

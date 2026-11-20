@@ -60,6 +60,12 @@ export default function HomeFaq() {
       faqData={faqWidoczne}
       title={lang === 'pl' ? 'Najczęstsze pytania o współpracę' : 'Frequently Asked Questions'}
       wariant="panel"
+      stopkaLink={{
+        href: '/porownania',
+        label: lang === 'pl'
+          ? 'Porównaj modele rozliczeń SEO przed wyborem wykonawcy'
+          : 'Compare SEO pricing models before choosing an agency',
+      }}
     />
   );
 }

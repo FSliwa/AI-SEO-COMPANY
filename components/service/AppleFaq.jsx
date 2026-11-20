@@ -6,6 +6,7 @@ import { Reveal } from '@/components/ScrollReveal';
 import { useTranslations, useLocale } from 'next-intl';
 import { zachowaniePrzewijania } from '@/lib/ruch';
 import { hash } from '@/lib/anchors';
+import { Link } from '@/i18n/routing';
 
 /* 5.11.2026 (ANC1; BL-03, CB-03, CB-04, PLAN-v2 6.0 i 6.16) - stale kotwice i jeden FAQPage:
    - faqData[i].id / .idEn (opcjonalne): stale id pytania zamiast useId(), np.
@@ -23,7 +24,7 @@ const tekst = (lang, pl, en) => (lang === 'pl' ? pl : (en || pl));
 // typografia z tokenow zamiast wpisanych var(--w-tusz) / var(--color-text-main)). wariant="panel"
 // (strona glowna): tytul po lewej, pytania po prawej z numeracja "01" - numer
 // to licznik CSS (app/wyglad.css), nie tekst w HTML; tresc pytan bez zmian.
-export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extraSchema = [], schema = true, sectionId, wariant }) {
+export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extraSchema = [], schema = true, sectionId, wariant, stopkaLink }) {
   const panel = wariant === 'panel';
   const lang = useLocale();
   const [openIndex, setOpenIndex] = useState(0);
@@ -198,6 +199,14 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
           })}
         </div>
         </div>
+        {stopkaLink && (
+          <div className="faq-apple-stopka">
+            <Link href={stopkaLink.href} className="faq-hub-link" data-cta="home_faq_comparisons">
+              <span>{stopkaLink.label}</span>
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

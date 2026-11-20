@@ -116,24 +116,28 @@ const realizedWebsites = [
    i skalowanie do 1200 px (Figma; kafel Babushkina: PIL, ta sama skala), WebP ok. 70-90 KB. Nazwa pliku to klucz
    kafla w stosyDlaKolumn - przy kazdej zmianie pliku zmien tez klucz tam. */
 const MOSAIC = [
-{ src: '/projects/mosaic/elkat-a-v2.webp', w: 1200, h: 970, alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
-{ src: '/projects/mosaic/mad-a-v2.webp', w: 1200, h: 840, alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
-{ src: '/projects/mosaic/own-hero-pl4.webp', srcEn: '/projects/mosaic/own-hero-en4.webp', w: 1200, h: 752,
+  { src: '/projects/mosaic/elkat-a-v2.webp', w: 1200, h: 970, domena: 'elkatelektro.com', metaPl: 'KATALOG B2B', metaEn: 'B2B CATALOGUE',
+    alt: 'Sekcja hero katalogu komponentów elektrycznych Elkat Power', altEn: 'Hero section of the Elkat Power electrical components catalogue' },
+  { src: '/projects/mosaic/mad-a-v2.webp', w: 1200, h: 840, domena: 'madamethai.pl', gsc: 'madamethai',
+    alt: 'Sekcja hero strony głównej restauracji Madame Thai', altEn: 'Hero section of the Madame Thai restaurant homepage' },
+  { src: '/projects/mosaic/own-hero-pl4.webp', srcEn: '/projects/mosaic/own-hero-en4.webp', w: 1200, h: 752, domena: 'ai-seo-company.pl', metaPl: 'ARCHITEKTURA SEO', metaEn: 'SEO ARCHITECTURE',
     alt: 'Sekcja hero strony AI SEO COMPANY - napis SEO w scenie 3D', altEn: 'Hero section of the AI SEO COMPANY website - 3D SEO scene' },
-{ src: '/projects/mosaic/ase-a-v4.webp', w: 1200, h: 640,
+  { src: '/projects/mosaic/ase-a-v4.webp', w: 1200, h: 640, domena: 'ase-bot.live', gsc: 'ase-bot',
     alt: 'Pełna sekcja hero platformy AISAS (ASE-BOT) - AI trading i analiza rynków, angielski nagłówek o analizie rynków kontraktów terminowych i ilustracja satelity',
     altEn: 'Hero section of the AISAS (ASE-BOT) trading platform homepage - “Advanced AI trading & quant market analysis for futures markets” headline with a satellite illustration' },
-{ src: '/projects/mosaic/tql-a-v2.webp', srcEn: '/projects/mosaic/tql-a-en-v2.webp', w: 1200, h: 840,
+  { src: '/projects/mosaic/tql-a-v2.webp', srcEn: '/projects/mosaic/tql-a-en-v2.webp', w: 1200, h: 840, domena: 'tql.pl', gsc: 'tql',
     alt: 'Sekcja hero strony głównej TQL - wdrożenia norm ISO, nagłówek o wdrażaniu systemów ISO i przygotowaniu do certyfikacji oraz liczby klientów',
     altEn: 'Hero section of the TQL ISO implementation homepage - ISO management system implementation and certification headline with client figures' },
-{ src: '/projects/mosaic/sta-a-v4.webp', srcEn: '/projects/mosaic/sta-a-en3.webp', w: 1200, h: 800, alt: 'Sekcja „Kim jesteśmy" strony Staniax - metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' },
-{ src: '/projects/mosaic/own-blog-pl8.webp', srcEn: '/projects/mosaic/own-blog-en7.webp', w: 1200, h: 840,
+  { src: '/projects/mosaic/sta-a-v4.webp', srcEn: '/projects/mosaic/sta-a-en3.webp', w: 1200, h: 800, domena: 'staniax.pl', gsc: 'staniax',
+    alt: 'Sekcja „Kim jesteśmy" strony Staniax - metalizacja próżniowa, 25 lat doświadczenia', altEn: 'About section of the Staniax vacuum metallization website' },
+  { src: '/projects/mosaic/own-blog-pl8.webp', srcEn: '/projects/mosaic/own-blog-en7.webp', w: 1200, h: 840, domena: 'ai-seo-company.pl/blog', metaPl: 'BAZA WIEDZY', metaEn: 'KNOWLEDGE HUB',
     alt: 'Blog AI SEO COMPANY - artykuły o SEO i web designie, lista najnowszych artykułów', altEn: 'AI SEO COMPANY blog - articles on SEO and web design, list of the latest articles' },
-{ src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
-{ src: '/projects/mosaic/frazy-a.webp', w: 1200, h: 783,
+  { src: '/projects/mosaic/fix-a-v2.webp', w: 1200, h: 520, domena: 'stefbud.com', gsc: 'stefbud',
+    alt: 'Sekcja hero strony producenta świetlików dachowych Stef-Bud', altEn: 'Hero section of the Stef-Bud skylight manufacturer website' },
+  { src: '/projects/mosaic/frazy-a.webp', w: 1200, h: 783, domena: 'Frazy Studio', metaPl: 'E-COMMERCE UX', metaEn: 'E-COMMERCE UX',
     alt: 'Podstrona Frazy Studio - biała bluza oversize z nadrukiem samuraja w masce Noh, na tle rzeźbionej zieleni',
     altEn: 'Frazy Studio page - an off-white oversized hoodie with a samurai Noh mask print against sculpted greenery' },
-{ src: '/projects/mosaic/andrianna-a.webp', w: 1200, h: 750,
+  { src: '/projects/mosaic/andrianna-a.webp', w: 1200, h: 750, domena: 'Babushkina Academy', metaPl: 'PROJEKT WWW', metaEn: 'WEB DESIGN',
     alt: 'Sekcja hero strony Babushkina Academy - makijaż permanentny i szkolenia PMU w Warszawie, nagłówek „Beauty with precision” i portret kobiety',
     altEn: 'Hero section of the Babushkina Academy website - permanent makeup and PMU training in Warsaw, “Beauty with precision” headline and a portrait of a woman' }
 ];
@@ -373,7 +377,7 @@ export default function Portfolio() {
   const zrodloGsc = pl
     ? `Źródło: Google Search Console${aktualizacja ? `, aktualizacja ${aktualizacja}` : ''}`
     : `Source: Google Search Console${aktualizacja ? `, updated ${aktualizacja}` : ''}`;
-  const karta = (id, seria, nazwa, logoEl, tag, opisPl, opisEn) => {
+  const karta = (id, seria, nazwa, logoEl, tag, skrotKat, opisPl, opisEn) => {
     const m = gsc.metryki?.[seria] || METRYKI_GSC[seria];
     const kl = dokl(m.totalClicks);
     const wy = skrot(m.totalImpr);
@@ -383,6 +387,7 @@ export default function Portfolio() {
       nazwa,
       logo: logoEl,
       tag,
+      skrot: skrotKat,
       opis: pl ? opisPl(kl, wy) : opisEn(kl, wy, dni),
       seria,
       metryki: pl
@@ -396,19 +401,19 @@ export default function Portfolio() {
     };
   };
   const pozycje = [
-    karta('staniax', 'staniax', 'STANIAX', logo('STANIAX'), pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
+    karta('staniax', 'staniax', 'STANIAX', logo('STANIAX'), pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE', pl ? 'B2B Przemysł' : 'B2B Industry',
       (kl, wy) => `Z zerowej widoczności do ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
       (kl, wy, d) => `From zero visibility to ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
-    karta('madame-thai', 'madamethai', 'MADAME THAI', logo('MADAME THAI'), pl ? 'SEO LOKALNE / STRONA WWW' : 'LOCAL SEO / WEBSITE',
+    karta('madame-thai', 'madamethai', 'MADAME THAI', logo('MADAME THAI'), pl ? 'SEO LOKALNE / STRONA WWW' : 'LOCAL SEO / WEBSITE', pl ? 'Gastronomia' : 'Hospitality',
       (kl, wy) => `Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji: ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
       (kl, wy, d) => `Building and scaling digital sales for the newly opened restaurant location: ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
-    karta('tql', 'tql', 'TQL', logoTql, pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
+    karta('tql', 'tql', 'TQL', logoTql, pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE', 'ISO',
       (kl, wy) => `Firma wdrażająca normy ISO: dynamiczny wzrost do ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
       (kl, wy, d) => `ISO standards consultancy: rapid growth to ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
-    karta('ase-bot', 'ase-bot', 'ASE-BOT', logo('ASE-BOT'), pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO',
+    karta('ase-bot', 'ase-bot', 'ASE-BOT', logo('ASE-BOT'), pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO', 'SaaS / AI',
       (kl, wy) => `Nasz własny projekt AI: ${wy} wyświetleń w Google i stałe pozyskiwanie analityków rynkowych (Search Console).`,
       (kl, wy, d) => `Our own AI project: ${wy} Google impressions in ${d} days and steady organic discovery (Search Console).`),
-    karta('stefbud', 'stefbud', 'STEF-BUD', logoStefbud, pl ? 'PRODUKCJA / STRONA WWW I SEO' : 'MANUFACTURING / WEB & SEO',
+    karta('stefbud', 'stefbud', 'STEF-BUD', logoStefbud, pl ? 'PRODUKCJA / STRONA WWW I SEO' : 'MANUFACTURING / WEB & SEO', pl ? 'Budownictwo B2B' : 'B2B Construction',
       (kl, wy) => `Producent świetlików dachowych i pasm świetlnych: ${kl} kliknięć i ${wy} wyświetleń na kluczowe zapytania B2B (Search Console).`,
       (kl, wy) => `Rooflight and skylight manufacturer: ${kl} clicks and ${wy} Google impressions on key B2B searches (Search Console).`),
   ];
@@ -514,27 +519,46 @@ export default function Portfolio() {
           It replaces the carousel, but nothing it used to say is gone: the
           headline metric and its sentence are in the strip underneath, and the
           full case studies still open in the same modal - now from a tile. */}
-      <div style={{ position: 'relative', width: '100%', padding: '0 0 3rem' }}>
+      <div style={{ position: 'relative', width: '100%', padding: 0 }}>
         {/* Cztery warianty sciany (2/3/4/5 kolumn), widoczny jeden - wybiera
             @media w STYL_PORTFOLIO (opis przy WARIANTY_SCIANY). */}
         {WARIANTY_SCIANY.map(({ cols, columns }) => (
         <div className="portfolio-mosaic" data-kolumny={cols} key={cols} style={{ ['--mosaic-cols']: cols }}>
           {columns.map((column, ci) => (
           <div className="portfolio-mosaic-col" key={ci}>
-          {column.map((tile) => (
-            /* Sam obrazek: kafelek nic nie robi po kliknieciu. Case studies
-               otwiera pasek klientow pod sciana, wiec tresc nie znika. */
-            <figure className="portfolio-mosaic-tile" key={tile.src}>
-              <img
-                src={lang === 'en' && tile.srcEn ? tile.srcEn : tile.src}
-                alt={lang === 'pl' ? tile.alt : tile.altEn}
-                width={tile.w}
-                height={tile.h}
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-          ))}
+          {column.map((tile) => {
+            const mTile = tile.gsc ? (gsc.metryki?.[tile.gsc] || METRYKI_GSC[tile.gsc]) : null;
+            const okresTile = mTile
+              ? `${dzien(mTile.startDate)}-${dzien(mTile.endDate, true)}`
+              : (pl ? tile.metaPl : tile.metaEn);
+            const statusTile = mTile ? 'Live GSC API' : 'Live';
+            return (
+              /* Sam obrazek: kafelek nic nie robi po kliknieciu. Case studies
+                 otwiera pasek klientow pod sciana, wiec tresc nie znika. */
+              <figure className="portfolio-mosaic-tile" key={tile.src}>
+                <span className="portfolio-okno-nagl" aria-hidden="true">
+                  <span className="portfolio-okno-info">
+                    <span className="portfolio-okno-domena" data-t={tile.domena} />
+                    <span className="portfolio-okno-uk" data-t="/" />
+                    <span className="portfolio-okno-okres" data-t={okresTile} />
+                  </span>
+                  <span className={`portfolio-okno-live${mTile ? ' portfolio-okno-live--gsc' : ''}`}>
+                    <span className="portfolio-okno-kropka" />
+                    <span className="portfolio-okno-status" data-t={statusTile} />
+                  </span>
+                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element -- gotowe kafelki WebP 1200 px bez drugiej kompresji */}
+                <img
+                  src={lang === 'en' && tile.srcEn ? tile.srcEn : tile.src}
+                  alt={lang === 'pl' ? tile.alt : tile.altEn}
+                  width={tile.w}
+                  height={tile.h}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            );
+          })}
           </div>
           ))}
         </div>
@@ -551,7 +575,7 @@ export default function Portfolio() {
         <div className="modal-overlay" onClick={() => setActiveModal(null)} style={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(12px)' }}>
           <div className="modal-container" onClick={e => e.stopPropagation()} style={{ background: '#111', color: '#FFF', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px' }}>
             <span className="modal-close" onClick={() => setActiveModal(null)} style={{ color: '#FFF' }}>&times;</span>
-            <div style={{ fontSize: '2rem', marginBottom: '0.25rem', fontWeight: 700 }} style={{ fontSize: "1.5rem", fontWeight: 700, margin: "1rem 0" }}>{activeModal.brandName}</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>{activeModal.brandName}</div>
             <p style={{ fontSize: '1rem', color: 'var(--color-primary)', marginBottom: '1.5rem', fontWeight: '600' }}>
               <a href={activeModal.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
                 {activeModal.url} <span className="ico-ne" aria-hidden="true">↗</span>

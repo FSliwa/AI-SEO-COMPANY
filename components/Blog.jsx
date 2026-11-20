@@ -64,6 +64,17 @@ export default function Blog() {
           </div>
           <h2>{t('title')}</h2>
           <p>{t('subtitle')}</p>
+          <nav className="blog-skroty" aria-label={lang === 'pl' ? 'Główne kategorie bazy wiedzy' : 'Main knowledge hub categories'}>
+            <Link href="/blog/technical-seo-audit-checklist" className="blog-skrot">
+              <span>{lang === 'pl' ? 'Techniczne SEO' : 'Technical SEO'}</span>
+            </Link>
+            <Link href="/pozycjonowanie-w-ai" className="blog-skrot">
+              <span>{lang === 'pl' ? 'Widoczność w AI' : 'AI Visibility'}</span>
+            </Link>
+            <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" className="blog-skrot">
+              <span>{lang === 'pl' ? 'Cenniki i ROI' : 'Pricing & ROI'}</span>
+            </Link>
+          </nav>
         </Reveal>
 
         {/* Jeden Reveal na calosc, nie stagger na kazdy wiersz: osobne wejscia
@@ -81,6 +92,17 @@ export default function Blog() {
                   stronie glownej trzy naglowki (przeglad 05.10.2026). <a> moze
                   zawierac tresc blokowa, wiec caly wiersz zostaje jednym linkiem. */}
               <div className="blog-index-main">
+                <span className="blog-index-kicker">
+                  <span className="blog-kicker-typ">{lang === 'pl' ? 'PORADNIK' : 'GUIDE'}</span>
+                  {post.czas ? (
+                    <>
+                      <span className="blog-kicker-ukosnik" aria-hidden="true">/</span>
+                      <span className="blog-kicker-czas">
+                        {lang === 'pl' ? `CZAS CZYTANIA: ${post.czas} MIN` : `READ TIME: ${post.czas} MIN`}
+                      </span>
+                    </>
+                  ) : null}
+                </span>
                 <h3 className="blog-index-title">{post.title}</h3>
                 <span className="blog-index-standfirst">{post.desc}</span>
               </div>
