@@ -96,6 +96,9 @@ export default function WhyUs({ isMainContent = false }) {
       id: 1,
       // 29.10.2026 (D3): karty z liczbami bez zrodla (81%, +80%, +23%, +310%) zastapione
       // panelem klienta i danymi z Google Search Console z wpisu "Wyniki wdrozen SEO 2026".
+      kickerNum: '01',
+      kickerKat: lang === 'pl' ? 'ARCHITEKTURA' : 'ARCHITECTURE',
+      mikro: lang === 'pl' ? ['Gwarancja SLA: 99,9%', 'Czas reakcji: <15 min'] : ['SLA Guarantee: 99.9%', 'Response: <15 min'],
       tag: lang === 'pl' ? 'PANEL KLIENTA' : 'CLIENT PORTAL',
       metric: '24/7',
       title: lang === 'pl' ? 'Wyniki widoczne codziennie' : 'Results you can see every day',
@@ -106,6 +109,9 @@ export default function WhyUs({ isMainContent = false }) {
     },
     {
       id: 2,
+      kickerNum: '02',
+      kickerKat: lang === 'pl' ? 'TRANSPARENTNOŚĆ' : 'TRANSPARENCY',
+      mikro: lang === 'pl' ? ['Źródło: Search Console', 'Pomiar: Codzienny'] : ['Source: Search Console', 'Tracking: Daily'],
       tag: lang === 'pl' ? 'SEO LOKALNE' : 'LOCAL SEO',
       metric: '187',
       title: lang === 'pl' ? 'Wzrost widoczności lokalnej restauracji' : 'Local visibility growth for a restaurant',
@@ -116,6 +122,9 @@ export default function WhyUs({ isMainContent = false }) {
     },
     {
       id: 3,
+      kickerNum: '03',
+      kickerKat: lang === 'pl' ? 'TECHNOLOGIA' : 'TECHNOLOGY',
+      mikro: lang === 'pl' ? ['Strategia: Klastry B2B', 'Dane: GSC Live'] : ['Strategy: B2B Clusters', 'Data: GSC Live'],
       tag: lang === 'pl' ? 'B2B OD ZERA' : 'B2B FROM ZERO',
       metric: '152',
       title: lang === 'pl' ? 'Wzrost widoczności producenta B2B' : 'Visibility growth for a B2B manufacturer',
@@ -126,6 +135,9 @@ export default function WhyUs({ isMainContent = false }) {
     },
     {
       id: 4,
+      kickerNum: '04',
+      kickerKat: lang === 'pl' ? 'INTENCJA ZAKUPOWA' : 'BUYER INTENT',
+      mikro: lang === 'pl' ? ['Pierwsze pozycje: 18 dni', 'Indeksacja: IndexNow'] : ['First rankings: 18 days', 'Indexing: IndexNow'],
       tag: lang === 'pl' ? 'NOWA DOMENA' : 'NEW DOMAIN',
       metric: lang === 'pl' ? '18 dni' : '18 days',
       title: lang === 'pl' ? 'Dynamiczny wzrost widoczności nowej strony' : 'Dynamic visibility growth for a new domain',
@@ -136,12 +148,15 @@ export default function WhyUs({ isMainContent = false }) {
     },
     {
       id: 5,
+      kickerNum: '05',
+      kickerKat: lang === 'pl' ? 'INFRASTRUKTURA' : 'INFRASTRUCTURE',
+      mikro: lang === 'pl' ? ['INP ≤ 200 ms · CLS ≤ 0,1', 'Uptime: 99,99%'] : ['INP ≤ 200 ms · CLS ≤ 0.1', 'Uptime: 99.99%'],
       tag: lang === 'pl' ? 'WYDAJNOŚĆ I UX' : 'PERFORMANCE & UX',
-      metric: '99/100',
+      metric: 'LCP ≤ 2,5 s',
       title: lang === 'pl' ? 'Błyskawiczna wydajność i ocena Google' : 'Lightning performance & Google score',
       description: lang === 'pl'
-        ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum. Nasze strony ofertowe mają 98-99/100 w Lighthouse na telefonie (pomiar z 24.09.2026).'
-        : 'Page speed is where businesses and search engine optimization agencies lose most rankings, so we treat it as a core deliverable: we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures ensure your site passes all Core Web Vitals with flying colors. Our own service pages score 98-99/100 in mobile Lighthouse (measured on 24 September 2026).',
+        ? 'Eliminujemy opóźnienia, dostarczając strony ładujące się w ułamku sekundy, co obniża wskaźnik odrzuceń do minimum. Celujemy w progi Google dla dobrego wyniku: LCP do 2,5 s, INP do 200 ms, CLS do 0,1 (dane polowe). Nasze strony ofertowe uzyskały w teście laboratoryjnym Lighthouse na telefonie z 19.11.2026 (mediana z trzech pomiarów) 81-94/100; do oceny służą dane polowe, Lighthouse do debugowania.'
+        : 'Page speed is where businesses and search engine optimization agencies lose most rankings, so we treat it as a core deliverable: we eliminate frustrating loading delays, serving split-second optimized web pages that drastically reduce bounce rates. Our advanced caching strategies and streamlined code architectures help your site meet the Core Web Vitals thresholds: LCP up to 2.5 s, INP up to 200 ms, CLS up to 0.1 (field data). Lab test with Lighthouse on a phone, 19 November 2026 (median of three runs): 81-94/100 on our own pages; field data is used for assessment and Lighthouse for debugging.',
       bgVisual: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 245, 247, 0.4))'
     }
   ];
@@ -378,14 +393,26 @@ export default function WhyUs({ isMainContent = false }) {
                 </div>
               </div>
 
-              {/* Bottom Text Area matching Apple's formatting */}
-              <div style={{ marginTop: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-                <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: 'var(--w-tusz)', lineHeight: 1.35, marginBottom: '0.5rem' }}>
-                  {item.title}
-                </h3>
-                <p style={{ fontSize: '0.94rem', color: 'var(--color-text-main)', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
-                  {item.description}
-                </p>
+              {/* Bottom Text Area matching Apple's formatting + airSlate kicker & micro-metrics bar */}
+              <div style={{ marginTop: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div className="whyus-kicker">
+                    <span className="whyus-kicker-nr">{item.kickerNum}</span>
+                    <span className="whyus-kicker-ukosnik" aria-hidden="true">/</span>
+                    <span className="whyus-kicker-kat">{item.kickerKat}</span>
+                  </div>
+                  <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: 'var(--w-tusz)', lineHeight: 1.35, marginBottom: '0.5rem' }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: '0.94rem', color: 'var(--color-text-main)', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>
+                    {item.description}
+                  </p>
+                </div>
+                <div className="whyus-mikro-pasek">
+                  {item.mikro.map((m) => (
+                    <span key={m} className="whyus-mikro-el">{m}</span>
+                  ))}
+                </div>
               </div>
             </RevealItem>
           ))}

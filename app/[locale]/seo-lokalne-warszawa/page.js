@@ -74,7 +74,7 @@ const faqData = [
     id: 'czy-chatgpt-poleca-firmy-lokalne',
     tylkoPl: true,
     question: 'Czy ChatGPT poleca firmy lokalne?',
-    answer: 'Coraz częściej tak. ChatGPT z wyszukiwaniem w sieci korzysta z wizytówek, opinii i katalogów firm, więc dobrze prowadzone SEO lokalne (ang. local SEO) pomaga też w odpowiedziach modeli. Sprawdź za darmo, czy ChatGPT poleca Twoją firmę, gdy klient pyta o usługę w Twoim mieście.',
+    answer: 'W naszym teście API (4-5.11.2026) ChatGPT z wyszukiwaniem przy poleceniach firm najczęściej linkował do wyszukiwania w Mapach Google (59 z 62 linków), dlatego prowadzone SEO lokalne (ang. local SEO), w tym wizytówka z opiniami, ma znaczenie także tutaj. Nie wiemy, z jakich źródeł model składa opis firmy. Sprawdź za darmo, czy ChatGPT poleca Twoją firmę, gdy klient pyta o usługę w Twoim mieście.',
   },
   {
     // Nowe (LO1, CB-16): 45 słów (+7 z linkiem do L1 po jej publikacji); celowo inne zdania niż
@@ -105,31 +105,37 @@ const portfolioCases = [
     imgTitle: 'Pozycjonowanie lokalne',
     imgTitleEn: 'Local SEO Company',
     gradient: 'linear-gradient(135deg, var(--w-tusz) 0%, #1E1B4B 50%, #312E81 100%)',
-    metric: '+150%',
-    metricLabel: 'Wyświetlenia',
-    metricLabelEn: 'Views',
-    metric2: '+85%',
-    metric2Label: 'Telefony z Map',
-    metric2LabelEn: 'Calls from Maps'
+    // Audyt 3 (MT-05): bez liczb. Były „+150%” i „+85%” bez źródła; teraz wskaźniki, które mierzymy
+    // w Profilu Firmy (wyświetlenia i połączenia), bez obiecanego wyniku.
+    metric: 'Wyświetlenia',
+    metricEn: 'Views',
+    metricLabel: 'Co mierzymy w Profilu Firmy',
+    metricLabelEn: 'What we track in the Business Profile',
+    metric2: 'Telefony',
+    metric2En: 'Calls',
+    metric2Label: 'Połączenia z wizytówki',
+    metric2LabelEn: 'Calls from the profile'
   },
   {
     tag: 'SYGNAŁY NAP & CYTACJE',
     tagEn: 'NAP SIGNALS & CITATIONS',
     title: 'Budowanie Autorytetu Lokalnego',
     titleEn: 'Building Local Authority',
-    description: 'Rejestrujemy Twoją firmę w kluczowych warszawskich i ogólnopolskich katalogach branżowych (Panorama Firm, Yelp itp.). Pilnujemy, żeby nazwa, adres i telefon były wszędzie identyczne - to mocny sygnał zaufania dla Google.',
-    descriptionEn: 'We register your business in key local and national industry directories (Yelp, etc.). We keep the Name, Address and Phone identical everywhere, which is a powerful trust signal for Google.',
+    description: 'Rejestrujemy firmę w katalogach branżowych i lokalnych, które mają ruch w Twojej branży (np. Panorama Firm, Pkt.pl). Pilnujemy, żeby nazwa, adres i telefon były wszędzie identyczne, bo spójne dane ułatwiają klientom znalezienie firmy.',
+    descriptionEn: 'We register your business in industry and local directories that get traffic in your industry (e.g. Panorama Firm, Pkt.pl). We keep the name, address and phone number identical everywhere, because consistent data makes the business easier for customers to find.',
     image: '/images/unsplash-1555529902-5261145633bf.jpg',
     decorative: true,
     imgAltEn: 'Local authority and NAP consistency',
     imgTitleEn: 'Building local authority',
     gradient: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #059669 100%)',
-    metric: '100%',
-    metricLabel: 'Spójność NAP',
-    metricLabelEn: 'NAP Consistency',
-    metric2: 'Top 3',
-    metric2Label: 'Local Pack',
-    metric2LabelEn: 'Local Pack'
+    // Audyt 3 (MT-05): bez „100%” i „Top 3” (wynik nie jest gwarantowany ani zmierzony u klienta).
+    metric: 'NAP',
+    metricLabel: 'Spójne nazwa, adres i telefon',
+    metricLabelEn: 'Consistent name, address and phone',
+    metric2: 'Katalogi',
+    metric2En: 'Directories',
+    metric2Label: 'Branżowe i lokalne',
+    metric2LabelEn: 'Industry and local directories'
   },
   {
     tag: 'OPINIE KLIENTÓW',
@@ -147,9 +153,11 @@ const portfolioCases = [
     // (PLAN-v2 6.26, LOK: odpowiedź na każdą opinię ≤ 48 h), a nie wynik klienta.
     // Poprawka 6.11.2026: bez obietnicy czasu odpowiedzi (≤ 48 h) do potwierdzenia przez właściciela.
     metric: 'Opinie',
+    metricEn: 'Reviews',
     metricLabel: 'Proces zbierania i odpowiedzi',
     metricLabelEn: 'Collection and reply process',
-    metric2: 'Trust',
+    metric2: 'Zaufanie',
+    metric2En: 'Trust',
     metric2Label: 'Wiarygodność',
     metric2LabelEn: 'Credibility'
   }
@@ -369,8 +377,8 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               </h2>
               <p style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500, lineHeight: 1.6 }}>
                 {lang === 'pl'
-                  ? 'W pakiecie lokalnym Google o kolejności decydują trzy główne czynniki: trafność, odległość i rozpoznawalność. Dlatego w Warszawie nie ma jednej strategii - inaczej wygląda walka o widoczność w Śródmieściu, a inaczej na Ursynowie.'
-                  : 'In the Google local pack, rankings depend on three core factors: relevance, distance and prominence. That is why Warsaw has no single strategy: competing in Srodmiescie looks nothing like competing in Ursynow.'}
+                  ? 'W wynikach lokalnych Google bierze pod uwagę trafność, odległość i rozpoznawalność firmy. Odległości nie zmienisz, więc w Warszawie liczy się to, gdzie szukający stoi względem firmy, i nie ma jednej strategii: inaczej wygląda walka o widoczność w Śródmieściu, a inaczej na Ursynowie.'
+                  : 'In local results Google considers relevance, distance and prominence. You cannot change the distance, so in Warsaw what matters is where the searcher stands in relation to the business, and there is no single strategy: competing in Srodmiescie looks nothing like competing in Ursynow.'}
               </p>
             </Reveal>
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
@@ -379,7 +387,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                     {lang === 'pl' ? 'Śródmieście i Wola' : 'Srodmiescie and Wola'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Najgęstszy rynek biurowy w Polsce. W promieniu kilometra od Ronda ONZ o te same frazy walczy kilkadziesiąt firm z jednej branży, więc o miejsce w pakiecie lokalnym nie decyduje już odległość, tylko liczba i świeżość opinii oraz kompletność wizytówki.' : 'The densest office market in Poland. Within a kilometre of Rondo ONZ dozens of companies from one industry compete for the same phrases, so the local pack is decided by the number and freshness of reviews and by profile completeness, not by distance.'}
+                    {lang === 'pl' ? 'Dzielnica biurowa, w której o te same frazy walczy wiele firm z jednej branży i w podobnej odległości od szukającego. Przy zbliżonej odległości o kolejności pomagają trafność wizytówki i jej rozpoznawalność: według Google m.in. liczba opinii i ocen oraz kompletność danych.' : 'An office district where many companies from one industry compete for the same phrases at a similar distance from the searcher. At a similar distance, the relevance of the profile and its prominence help: according to Google, among other things the number of reviews and ratings, and the completeness of the data.'}
                   </p>
                 </RevealItem>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
@@ -395,7 +403,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                     {lang === 'pl' ? 'Ursynów, Wilanów, Białołęka' : 'Ursynow, Wilanow and Bialoleka'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Rynki mieszkaniowe: mniejsza konkurencja i wyższa konwersja niż w centrum. To tutaj najszybciej wchodzi się do TOP 3 Map, bo o wyniku decyduje promień i opinie od osób z sąsiedztwa.' : 'Residential markets with less competition and higher conversion than the centre. This is where a business reaches the Maps top three fastest, because proximity and neighbourhood reviews carry most of the weight.'}
+                    {lang === 'pl' ? 'Dzielnice mieszkaniowe, w których klienci szukają usług blisko domu. Odległość działa tu na korzyść firm z sąsiedztwa, a opinie od osób z okolicy wzmacniają rozpoznawalność wizytówki.' : 'Residential districts where customers look for services close to home. Distance works in favour of businesses from the neighbourhood, and reviews from people nearby strengthen the prominence of the profile.'}
                   </p>
                 </RevealItem>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
@@ -403,7 +411,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                     {lang === 'pl' ? 'Praga-Południe i Praga-Północ' : 'Praga-Poludnie and Praga-Polnoc'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-                    {lang === 'pl' ? 'Gastronomia, rzemiosło i usługi. Konkurencja rośnie, ale nasycenie dobrze prowadzonymi wizytówkami wciąż jest niskie - regularne posty i odpowiedzi na opinie dają tu przewagę szybciej niż gdziekolwiek indziej w mieście.' : 'Restaurants, crafts and services. Competition is growing, but the share of well-run business profiles is still low, so regular posts and replies to reviews build an advantage faster here than anywhere else in the city.'}
+                    {lang === 'pl' ? 'Gastronomia, rzemiosło i usługi. Regularne posty i odpowiedzi na opinie pomagają wyróżnić wizytówkę: według Google pozytywne opinie i pomocne odpowiedzi mogą pomóc firmie się wyróżnić.' : 'Restaurants, crafts and services. Regular posts and replies to reviews help a profile stand out: according to Google, positive reviews and helpful replies can help a business stand out.'}
                   </p>
                 </RevealItem>
             </RevealStagger>

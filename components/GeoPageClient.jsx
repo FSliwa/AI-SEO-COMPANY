@@ -173,9 +173,9 @@ const faq = [
     questionEn: 'Does regular SEO still make sense?',
     // CB-12(por.): raport Senuto v2.0 z 27.11.2025 (curl 5.11.2026), kategorie LOCAL i TRANSACTIONAL
     // z tabeli „Intencja Wiodąca”. MSA-05: wątek „tylko AI, bez SEO”. OP-04 link 25. Link do P2.
-    answer: `Tak. Według raportu Senuto ${aZew(ZRODLO.senuto, '„AI Overviews w Polsce”')} (wersja 2.0 z 27.11.2025, 17,8 mln fraz) przegląd AI pojawia się przy 28,95% polskich fraz, ale przy frazach o intencji lokalnej tylko przy 6,08%, a transakcyjnej przy 8,09%. Dla firmy usługowej z Warszawy Mapy i strona nadal dają większość zapytań. Samo GEO bez SEO zwykle nie wystarczy: modele z wyszukiwaniem sięgają po strony, które znajdą w sieci, a przegląd AI w Google cytuje strony z indeksu Google. Pozycjonowanie w AI dokładamy jako kolejną warstwę, nie zamiast ${aWew('/pozycjonowanie-stron-internetowych', 'pozycjonowania stron internetowych')}.`
+    answer: `Tak. Według raportu Senuto ${aZew(ZRODLO.senuto, '„AI Overviews w Polsce”')} (raport z 27.11.2025, wersja 2.0, próba 17,8 mln fraz, dane z 2025 r.; odczyt 19.11.2026) przegląd AI pojawia się przy 28,95% polskich fraz, ale przy frazach o intencji lokalnej tylko przy 6,08%, a transakcyjnej przy 8,09%. Dla firmy usługowej z Warszawy Mapy i strona nadal dają większość zapytań. Samo GEO bez SEO zwykle nie wystarczy: modele z wyszukiwaniem sięgają po strony, które znajdą w sieci, a przegląd AI w Google cytuje strony z indeksu Google. Pozycjonowanie w AI dokładamy jako kolejną warstwę, nie zamiast ${aWew('/pozycjonowanie-stron-internetowych', 'pozycjonowania stron internetowych')}.`
       + jesli(HREF.p2, (h) => ` Kiedy wystarczy samo SEO, a kiedy warto dołożyć GEO, opisujemy w ${aWew(h, 'porównaniu SEO i GEO')}.`),
-    answerEn: `Yes. According to Senuto’s ${aZew(ZRODLO.senuto, 'AI Overviews in Poland report')} (v2.0, 27 Nov 2025, 17.8M keywords), AI overviews appear for 28.95% of Polish keywords, but only 6.08% of keywords with local intent and 8.09% with transactional intent. For a local service business, Maps and the website still bring most enquiries. We add AI search as another layer, not a replacement.`
+    answerEn: `Yes. According to Senuto’s ${aZew(ZRODLO.senuto, 'AI Overviews in Poland report')} (report of 27 Nov 2025, v2.0, sample of 17.8M keywords, 2025 data; read on 19 Nov 2026), AI overviews appear for 28.95% of Polish keywords, but only 6.08% of keywords with local intent and 8.09% with transactional intent. For a local service business, Maps and the website still bring most enquiries. We add AI search as another layer, not a replacement.`
   },
   {
     question: 'Ile kosztuje pozycjonowanie w ChatGPT?',
@@ -266,7 +266,7 @@ const KARTY = [
     id: 'przeglad-ai-w-google',
     pytanie: 'Jak trafić do przeglądu AI w Google?',
     // CB-21 (próba 30 fraz, nie „cała branża”); ostatnie zdanie bez obietnicy o „każdej podstronie”.
-    odpowiedz: 'Przegląd AI pokazał się przy wszystkich 30 frazach z naszej próby (SEO, pozycjonowanie w AI, ceny i narzędzia; Google PL, 4.11.2026). W 21 z nich Google podał źródła: 153 odnośniki do 91 domen. Google nie wymaga pisania pod AI ani dzielenia treści na kawałki; krótka odpowiedź pod nagłówkiem to nasz standard czytelności, który ułatwia też zacytowanie.',
+    odpowiedz: 'Przegląd AI pokazał się przy wszystkich 30 frazach z naszej próby (SEO, pozycjonowanie w AI, ceny i narzędzia; Google PL, 4.11.2026). W 21 z nich Google podał źródła: 153 odnośniki do 91 domen. W porównaniu SEO i GEO liczymy 20 z tych fraz, bez „aeo” (to fraza o statusie celnym, nie o marketingu): 141 cytowań z 85 domen. Google nie wymaga pisania pod AI ani dzielenia treści na kawałki; krótka odpowiedź pod nagłówkiem to nasz standard czytelności, który ułatwia też zacytowanie.',
     zrodlo: { tekst: 'pomiar własny przez API DataForSEO (Google PL, komputer, TOP 10 i przegląd AI), 4.11.2026.' },
     href: HREF.b2,
     anchor: 'Przegląd od AI: jak trafić do źródeł',

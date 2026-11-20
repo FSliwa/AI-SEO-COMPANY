@@ -18,7 +18,7 @@ import { zachowaniePrzewijania } from '@/lib/ruch';
 const ALT_DEKORACYJNE = false;
 const czyDekoracyjny = (c, lang) => ALT_DEKORACYJNE && Boolean(c.decorative) && lang === 'pl';
 
-export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle = "Zobacz wyniki naszej pracy", cases = [], layout = "horizontal" }) {
+export default function SubpagePortfolio({ title = "Scenariusze modelu", subtitle = "Ilustracja metody, nie wyniki konkretnych klientów", cases = [], layout = "horizontal" }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const lang = useLocale();
 
@@ -208,7 +208,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                         <div style={{ fontSize: '0.9rem', color: '#FFFFFF', opacity: 0.8, fontWeight: 500, marginBottom: '0.25rem' }}>
                           {lang === 'pl' ? c.metric2Label : (c.metric2LabelEn || c.metric2Label)}
                         </div>
-                        <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>{c.metric2}</div>
+                        <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>{lang === 'pl' ? c.metric2 : (c.metric2En || c.metric2)}</div>
                       </div>
                     )}
                   </div>
@@ -220,7 +220,7 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                         {lang === 'pl' ? c.metricLabel : (c.metricLabelEn || c.metricLabel)}
                       </div>
                       <div style={{ fontSize: '3rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1 }}>
-                        {c.metric}
+                        {lang === 'pl' ? c.metric : (c.metricEn || c.metric)}
                       </div>
                     </div>
                     
@@ -282,14 +282,14 @@ export default function SubpagePortfolio({ title = "Nasze realizacje", subtitle 
                     
                     <div style={{ display: 'flex', gap: '3rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem' }}>
                       <div>
-                        <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric}</div>
+                        <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{lang === 'pl' ? c.metric : (c.metricEn || c.metric)}</div>
                         <div style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                           {lang === 'pl' ? c.metricLabel : (c.metricLabelEn || c.metricLabel)}
                         </div>
                       </div>
                       {c.metric2 && (
                         <div>
-                          <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{c.metric2}</div>
+                          <div style={{ fontSize: '2rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.02em' }}>{lang === 'pl' ? c.metric2 : (c.metric2En || c.metric2)}</div>
                           <div style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
                             {lang === 'pl' ? c.metric2Label : (c.metric2LabelEn || c.metric2Label)}
                           </div>

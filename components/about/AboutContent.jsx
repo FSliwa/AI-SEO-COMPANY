@@ -2,6 +2,11 @@
 
 import { useLocale } from 'next-intl';
 import { Reveal } from '../ScrollReveal';
+import { Link } from '@/i18n/routing';
+import { hrefJesliOpublikowana } from '@/lib/publikacja';
+
+// Audyt 3 (BR-04): link kontekstowy do porównania agencji z freelancerem (po publikacji strony).
+const HREF_FREELANCER = hrefJesliOpublikowana('/porownania/agencja-seo-czy-freelancer');
 
 // C8 (18.11.2026): „Jak powstają nasze treści”. Każde zdanie ma pokrycie w repozytorium:
 // autor i podpis (components/Byline.jsx, AboutAuthor.jsx), źródła z datą odczytu (components/Zrodla.jsx),
@@ -30,7 +35,7 @@ export default function AboutContent() {
                   <strong>Who is responsible.</strong> The guides on our blog are written under the name of Filip Śliwa, SEO specialist at AI SEO COMPANY, who signs each of them and answers for its content.
                 </p>
                 <p style={akapit}>
-                  <strong>How we check facts.</strong> We base factual claims on primary sources, such as Google Search Central documentation. Where an article has a list of sources, each one shows the date we read it. Our own data, for example Google Search Console results, comes with the measurement window. On 18 November 2026 we went through the site again: we removed claims that no source supported and aligned prices and figures with what the site itself states.
+                  <strong>How we check facts.</strong> We base factual claims on primary sources, such as Google Search Central documentation. Where an article has a list of sources, each one shows the date we read it. Our own data, for example Google Search Console results, comes with the measurement window. On 18 November 2026 we went through the site again and corrected some of the claims.
                 </p>
                 <p style={akapit}>
                   <strong>The role of AI.</strong> We use AI tools for the site code and for drafts. We review content before it is published, and new pages go public only after our publication checks.
@@ -38,6 +43,11 @@ export default function AboutContent() {
                 <p style={akapit}>
                   <strong>Corrections.</strong> The update date under an article changes only when its content really changes. If you spot an error, write to <a href="mailto:kontakt@ai-seo-company.pl" style={link}>kontakt@ai-seo-company.pl</a>.
                 </p>
+                {HREF_FREELANCER && (
+                  <p style={akapit}>
+                    <strong>Agency or freelancer?</strong> If you are deciding who should run your SEO, the <Link href={HREF_FREELANCER} style={link}>SEO agency vs freelancer</Link> comparison sets monthly cost, hours of work, cover during absence, Google accounts and the contract side by side.
+                  </p>
+                )}
               </>
             ) : (
               <>
@@ -45,7 +55,7 @@ export default function AboutContent() {
                   <strong>Kto odpowiada.</strong> Poradniki na naszym blogu powstają pod nazwiskiem Filipa Śliwy, specjalisty SEO w AI SEO COMPANY. Podpisuje każdy z nich i odpowiada za jego treść.
                 </p>
                 <p style={akapit}>
-                  <strong>Jak sprawdzamy fakty.</strong> Twierdzenia faktograficzne opieramy na źródłach pierwotnych, na przykład dokumentacji Google Search Central. Tam, gdzie artykuł ma listę źródeł, przy każdym widać datę odczytu. Dane własne, na przykład wyniki z Google Search Console, podajemy z oknem pomiaru. 18 listopada 2026 przeszliśmy przez serwis jeszcze raz: usunęliśmy twierdzenia, których nie potwierdzało żadne źródło, i ujednoliciliśmy ceny oraz liczby z tym, co podaje sama strona.
+                  <strong>Jak sprawdzamy fakty.</strong> Twierdzenia faktograficzne opieramy na źródłach pierwotnych, na przykład dokumentacji Google Search Central. Tam, gdzie artykuł ma listę źródeł, przy każdym widać datę odczytu. Dane własne, na przykład wyniki z Google Search Console, podajemy z oknem pomiaru. 18 listopada 2026 przeszliśmy przez serwis jeszcze raz i poprawiliśmy część twierdzeń.
                 </p>
                 <p style={akapit}>
                   <strong>Rola AI.</strong> Korzystamy z narzędzi AI przy kodzie strony i szkicach. Treści przeglądamy przed publikacją, a nowe strony trafiają do publicznej wersji dopiero po naszej kontroli publikacji.
@@ -53,6 +63,11 @@ export default function AboutContent() {
                 <p style={akapit}>
                   <strong>Poprawki.</strong> Data aktualizacji pod artykułem zmienia się tylko wtedy, gdy treść faktycznie się zmieniła. Jeśli zauważysz błąd, napisz na <a href="mailto:kontakt@ai-seo-company.pl" style={link}>kontakt@ai-seo-company.pl</a>.
                 </p>
+                {HREF_FREELANCER && (
+                  <p style={akapit}>
+                    <strong>Agencja czy freelancer?</strong> Jeśli zastanawiasz się, komu zlecić SEO, w porównaniu <Link href={HREF_FREELANCER} style={link}>freelancer SEO czy agencja</Link> zestawiamy koszt miesięczny, godziny pracy, zastępstwo, konta Google i umowę.
+                  </p>
+                )}
               </>
             )}
           </div>

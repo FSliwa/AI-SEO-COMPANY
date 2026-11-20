@@ -41,13 +41,14 @@ const ZRODLA_POROWNANIA = {
 
 const zewn = { ...s.podkreslenie };
 
-// Z-07: zrzut przykładowego wyniku z trybu demonstracyjnego narzędzia (12.11.2026, bez ręcznych poprawek,
-// widać część dostępną od razu, bez bramki e-mail). Domena example.com, ocena i problemy to dane demo,
+// Z-07: zrzut przykładowego wyniku z trybu demonstracyjnego narzędzia (19.11.2026, z lokalnego buildu demo, widać
+// część dostępną od razu, bez bramki e-mail; usunięta tylko przykładowa historia domeny, którą demo dokłada).
+// Teksty problemów zgodne z regułami audytu w panelu z 19.11.2026. Domena przyklad.pl (PL) i example.com (EN), ocena i problemy to dane demo,
 // a podpis mówi to wprost. Po wdrożeniu panelu można podmienić na prawdziwy przebieg dla ai-seo-company.pl
 // (zmiany.md Z-07): nowy plik, wymiary i podpis z datą przebiegu.
 const ZRZUT = {
-  pl: { src: '/images/narzedzia/przyklady/darmowy-audyt-seo-przykladowy-wynik.webp', width: 1200, height: 1480 },
-  en: { src: '/images/narzedzia/przyklady/free-seo-audit-example-result.webp', width: 1200, height: 1439 },
+  pl: { src: '/images/narzedzia/przyklady/darmowy-audyt-seo-przykladowy-wynik-2026-11-19.webp', width: 1200, height: 1569 },
+  en: { src: '/images/narzedzia/przyklady/free-seo-audit-example-result-2026-11-19.webp', width: 1200, height: 1507 },
 };
 const schemaZrzutu = (z) => ({ url: z.src, width: z.width, height: z.height });
 
@@ -111,8 +112,8 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
           <ZrzutWyniku
             {...ZRZUT.pl}
             sizes="(max-width: 700px) 100vw, 640px"
-            alt="Darmowy audyt SEO: przykładowy wynik dla example.com z oceną od 1 do 100, czterema kategoriami i najważniejszymi problemami"
-            podpis="Przykładowy wynik na danych demonstracyjnych: domena example.com, ocena i problemy są przykładowe, to nie wynik prawdziwej strony. Widać to, co dostajesz od razu; pełną listę problemów pokazujemy po podaniu e-maila. Zrzut z 12.11.2026."
+            alt="Darmowy audyt SEO: przykładowy wynik dla przyklad.pl z oceną od 1 do 100, czterema kategoriami i najważniejszymi problemami"
+            podpis="Przykładowy wynik na danych demonstracyjnych: domena przyklad.pl, ocena i problemy są przykładowe, to nie wynik prawdziwej strony. Widać to, co dostajesz od razu; pełną listę problemów pokazujemy po podaniu e-maila. Zrzut z 19.11.2026."
           />
         </div>
       </CoDostajesz>
@@ -320,7 +321,7 @@ function AudytSeoEn() {
             {...ZRZUT.en}
             sizes="(max-width: 700px) 100vw, 640px"
             alt="Free SEO audit: an example result for example.com with the score from 1 to 100, four categories and top issues"
-            podpis="An example result using demo data: the example.com domain, the score and the issues are illustrative, not a real website's result. It shows what you get right away; the full list of issues appears after you enter your email. Screenshot from November 12, 2026."
+            podpis="An example result using demo data: the example.com domain, the score and the issues are illustrative, not a real website's result. It shows what you get right away; the full list of issues appears after you enter your email. Screenshot from November 19, 2026."
           />
         </div>
       </CoDostajesz>

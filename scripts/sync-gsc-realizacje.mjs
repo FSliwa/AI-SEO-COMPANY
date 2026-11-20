@@ -41,6 +41,8 @@ async function main() {
  * - stefbud (sc-domain:stefbud.com)
  */
 
+export const GSC_WYGENEROWANO = ${JSON.stringify(res.wygenerowano)};
+
 export const SERIE_GSC = ${JSON.stringify(res.serie, null, 2)};
 
 export const METRYKI_GSC = ${JSON.stringify(res.metryki, null, 2)};

@@ -31,7 +31,7 @@ const features = {
     { img: '/images/panel/mapy.webp', title: 'Mapy Google z 49 punktów', text: 'Klient widzi inne wyniki w Mapach zależnie od tego, gdzie stoi. Sprawdzamy pozycję Twojej wizytówki w siatce 7×7 wokół adresu firmy co 14 dni.', dopisek: 'mapy' },
     { img: '/images/panel/linki.webp', title: 'Lista zdobytych linków', text: 'Każdy link z adresem strony, datą i rodzajem. Co tydzień automat sprawdza, czy link nadal jest na stronie. Lista zostaje u Ciebie także po zakończeniu współpracy.' },
     { img: '/images/panel/wiadomosci.webp', title: 'Wiadomości do opiekuna i alerty', text: 'Każda sprawa ma swój wątek, a czas odpowiedzi zespołu widzisz w panelu. Alerty pokazują spadek kliknięć o 30%, spadek ważnej frazy i 14 dni bez nowego wpisu w dzienniku prac.' },
-    { img: '/images/panel/faktury.webp', title: 'Faktury, pakiet i rozliczenia', text: 'Faktury z terminem i statusem płatności do pobrania w PDF oraz podgląd aktywnego pakietu. Zmianę pakietu albo wypowiedzenie wysyłasz e-mailem i od razu dostajesz potwierdzenie.' },
+    { img: '/images/panel/faktury.webp', title: 'Faktury, pakiet i wypowiedzenie', text: 'Faktury z terminem i statusem płatności do pobrania w PDF. Zmianę pakietu składasz w panelu i od razu dostajesz potwierdzenie e-mailem. Wypowiedzenie wysyłasz e-mailem albo składasz przyciskiem w panelu (konto właściciela firmy).' },
     { img: '/images/panel/dane.webp', title: 'Twoje dane do pobrania i dla Twojego AI', text: 'Wszystko z panelu pobierzesz w CSV albo JSON. Token tylko do odczytu podłącza dane do arkusza, własnego skryptu albo do Claude przez MCP. Token widzi wyłącznie dane Twojej firmy.' },
   ],
   en: [
@@ -45,7 +45,7 @@ const features = {
     { img: '/images/panel/mapy.webp', title: 'Google Maps from 49 points', text: 'People see different Maps results depending on where they stand. We check your Business Profile position on a 7×7 grid around your address every 14 days.' },
     { img: '/images/panel/linki.webp', title: 'Every link we earn', text: 'Each link with the linking page, date and type. A weekly check confirms the link is still live. The list stays with you after we stop working together.' },
     { img: '/images/panel/wiadomosci.webp', title: 'Messages and alerts', text: 'Every request has its own thread, and the team response time is shown in the portal. Alerts flag a 30% drop in clicks, a drop in a key phrase and 14 days without a new work log entry.' },
-    { img: '/images/panel/faktury.webp', title: 'Invoices, plan and billing', text: 'Invoices with due dates and payment status, ready to download as PDF, plus your active plan details. You change your plan or cancel by email and get a confirmation straight away.' },
+    { img: '/images/panel/faktury.webp', title: 'Invoices, plan and cancellation', text: 'Invoices with due dates and payment status, ready to download as PDF. You change your plan in the portal and get an email confirmation straight away. You cancel by email or with a button in the portal (company owner account).' },
     { img: '/images/panel/dane.webp', title: 'Your data, ready for your own AI', text: 'Download everything in the portal as CSV or JSON. A read-only token connects the data to a spreadsheet, your own script or Claude through MCP. The token sees only your company data.' },
   ],
 };

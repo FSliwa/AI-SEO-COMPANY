@@ -15,11 +15,8 @@ import { GODZINY_TEKST } from '@/lib/godziny';
 import { BIURO, SIEDZIBA, ETYKIETY, adresLinia } from '@/lib/firma';
 
 // A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
-// pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
-// Integracja 5.11.2026: także hub narzędzi i N1 (partia 3; celowo bez <Contact />, grupa narzedzia
-// pkt 8) - porównanie ze `sciezka` (szablon z wstawionym slugiem), bo pathname to '/narzedzia/[slug]'.
-// 11.11.2026: także 4 strony aplikacji (bez <Contact />): przycisk prowadzi do formularza na stronie głównej.
-const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/impressum', '/narzedzia', '/narzedzia/generator-llms-txt', '/narzedzia/audyt-seo', '/narzedzia/autorytet-domeny', '/narzedzia/kalkulator-strat-seo', '/narzedzia/makieta-redesignu'];
+// Wszystkie trasy /narzedzia i /narzedzia/* poza /narzedzia/raport-seo (SzablonRaport renderuje <Contact />) nie mają formularza.
+const bezFormularza = (s) => s === '/regulamin' || s === '/cookies' || s === '/impressum' || s === '/narzedzia' || (typeof s === 'string' && s.startsWith('/narzedzia/') && s !== '/narzedzia/raport-seo');
 
 export default function Footer() {
   const lang = useLocale();
@@ -125,7 +122,7 @@ export default function Footer() {
           glowna do formularza (05.10.2026). 5.11.2026 (A3b/BL-02): na tych
           stronach takze href prowadzi wprost do formularza strony glownej. */}
       <a
-        href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)}
+        href={bezFormularza(sciezka) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)}
         onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)}
         className={`kota-floating-cta${poPierwszymEkranie ? ' is-visible' : ''}${nadFormularzem ? ' is-nad-formularzem' : ''}`}
         data-cta="floating"

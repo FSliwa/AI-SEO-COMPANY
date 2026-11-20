@@ -825,7 +825,7 @@ export function nazwaMarki({ nazwaSerwisu, tytuly, host }) {
 function nazwaLinku(tytul, marka, url, lang = 'pl') {
   let segmenty = segmentyTytulu(tytul);
   if (segmenty.length > 1 && marka) segmenty = segmenty.filter((s) => s.toLowerCase() !== marka.toLowerCase());
-  let nazwa = segmenty.join(' – ');
+  let nazwa = segmenty.join(' - ');
   if (!nazwa) {
     const ostatni = new URL(url).pathname.split('/').filter(Boolean).pop() || '';
     let slug = ostatni;

@@ -24,13 +24,21 @@ export async function GET(req) {
   try {
     const res = await fetchLiveGscData();
 
-    // Zapisujemy plik JSON w public/dane/
-    const publicDir = path.join(process.cwd(), 'public', 'dane');
-    fs.mkdirSync(publicDir, { recursive: true });
-    fs.writeFileSync(path.join(publicDir, 'realizacje-gsc.json'), JSON.stringify(res, null, 2), 'utf8');
+    // Zapis pliku zapasowego działa lokalnie; na Vercelu system plików jest
+    // tylko do odczytu, więc błąd zapisu nie przerywa crona - strona i tak
+    // bierze dane z /api/realizacje-gsc, które pyta GSC bezpośrednio.
+    let zapisano = false;
+    try {
+      const publicDir = path.join(process.cwd(), 'public', 'dane');
+      fs.mkdirSync(publicDir, { recursive: true });
+      fs.writeFileSync(path.join(publicDir, 'realizacje-gsc.json'), JSON.stringify(res, null, 2), 'utf8');
+      zapisano = true;
+    } catch { /* EROFS na Vercelu */ }
 
     return NextResponse.json({
       ok: true,
+      zapisanoPlik: zapisano,
+      metryki: res.metryki,
       wygenerowano: res.wygenerowano,
       konto: res.pobraneDlaKonta,
       projekty: Object.keys(res.serie),

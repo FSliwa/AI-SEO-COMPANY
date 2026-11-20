@@ -119,7 +119,9 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
               {lang === 'pl' ? 'Obszary Analizy Technicznej' : 'Technical Analysis Areas'}
             </h2>
             <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
-              {lang === 'pl' ? 'Kompleksowa weryfikacja techniczna, strukturalna i semantyczna witryny.' : 'Comprehensive technical, structural, and semantic verification of your website.'}
+              {lang === 'pl'
+                ? <>Kompleksowa weryfikacja techniczna, strukturalna i semantyczna witryny. Na start możesz sprawdzić podstawy w <Link href="/narzedzia/audyt-seo" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>darmowym audycie SEO online</Link>: ocena 1-100 i lista błędów, bez rejestracji.</>
+                : <>Comprehensive technical, structural, and semantic verification of your website. To start, you can check the basics with the <Link href="/narzedzia/audyt-seo" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>free SEO audit tool</Link>: a score from 1 to 100 and a list of errors, no sign-up.</>}
             </p>
           </Reveal>
 
@@ -156,7 +158,7 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
       {/* Portfolio Section */}
       <SubpagePortfolio 
         title={lang === 'pl' ? "Co zwykle wykrywamy w audycie SEO" : "What an SEO audit usually uncovers"} 
-        subtitle={lang === 'pl' ? "Najczęstsze błędy techniczne wykrywane podczas audytów oraz metody ich eliminacji. Liczby na kartach to przykładowe scenariusze, nie wyniki konkretnych klientów." : "Most common technical errors detected during audits and how we eliminate them"}
+        subtitle={lang === 'pl' ? "Przykład problemu i celu naprawy: najczęstsze błędy techniczne wykrywane podczas audytów oraz metody ich eliminacji. Wartości na kartach to progi i cele, nie wyniki konkretnych klientów." : "An example of a problem and a fix target: the most common technical errors found in audits and how we eliminate them. The values on the cards are thresholds and goals, not results of specific clients."}
         cases={portfolioCases} 
       />
 

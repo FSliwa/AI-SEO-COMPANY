@@ -153,9 +153,9 @@ export default async function ArtykulWynikiWdrozen({ params }) {
               <p>Punkt startowy: firma wdrażająca normy ISO, strona świeżo uruchomiona. Okno pomiaru celowo krótkie - 18 dni od startu (5-22.08.2026) - bo pokazuje najciekawszy moment: jak szybko Google zaczyna wystawiać nową domenę.</p>
               <p>Wynik w GSC: <strong>296 wyświetleń, 2 kliknięcia i średnia pozycja 34,6 w pierwszych 18 dniach (5-22.08.2026)</strong>. Pozycja w czwartej dziesiątce niecałe trzy tygodnie po starcie to punkt wyjścia do pracy o pozycje w pierwszej dziesiątce - nie jej koniec; wartością tego pomiaru jest tempo wejścia do indeksu i pierwszych rankingów.</p>
 
-              <h2 id="stefbud">STEF-BUD: 218 kliknięć i wysoka widoczność B2B</h2>
+              <h2 id="stefbud">STEF-BUD: 219 kliknięć i wysoka widoczność B2B</h2>
               <p>Punkt startowy: producent świetlików dachowych i pasm świetlnych (branża budowlana B2B). Nowa architektura informacji i techniczne wdrożenie SEO nakierowane na intencję inwestorów i generalnych wykonawców.</p>
-              <p>Wynik w GSC: <strong>218 kliknięć i 8,88 tys. wyświetleń w 75 dni</strong> z rosnącym udziałem zapytań o świetliki przemysłowe i pasma świetlne na dach. Konsekwentna optymalizacja parametrów technicznych i nasycenie frazami o wysokiej intencji transakcyjnej dały stabilny napływ zapytań ofertowych.</p>
+              <p>Wynik w GSC: <strong>219 kliknięć i 9,07 tys. wyświetleń w 75 dni (06.09-19.11.2026)</strong> z rosnącym udziałem zapytań o świetliki przemysłowe i pasma świetlne na dach. Konsekwentna optymalizacja parametrów technicznych i nasycenie frazami o wysokiej intencji transakcyjnej dały stabilny napływ zapytań ofertowych.</p>
 
               <h2 id="ai-seo-company">Nasza własna domena: laboratorium metod</h2>
               <p>Każdą metodę, którą stosujemy u klientów, najpierw testujemy na sobie - ai-seo-company.pl to młoda domena prowadzona dokładnie tym samym procesem: architektura pod klastry fraz, dwujęzyczność z hreflang, dane strukturalne, kadencja publikacji.</p>

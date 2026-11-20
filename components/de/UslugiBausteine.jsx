@@ -108,9 +108,29 @@ export function Karten({ titel, untertitel, einleitung, items, breite = 1240, sp
         <RevealStagger style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(${spalten}px, 100%), 1fr))`, gap: '1.5rem' }}>
           {items.map((k, i) => (
             <RevealItem key={i} style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3vw, 2.5rem)', display: 'flex', flexDirection: 'column' }}>
-              {k.kicker && <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1rem', letterSpacing: '0.05em' }}>{k.kicker}</div>}
+              {k.kicker && (
+                <div className="usluga-pills" style={{ justifyContent: 'flex-start', marginTop: 0, marginBottom: '1rem' }}>
+                  {[k.kicker, k.kickerZwei].filter(Boolean).map((tag) => {
+                    const [a, b] = tag.split(' / ');
+                    return b ? (
+                      <span key={tag} className="usluga-pill">
+                        <span className="usluga-pill-gl">{a}</span>
+                        <span className="usluga-pill-uk" aria-hidden="true">/</span>
+                        <span>{b}</span>
+                      </span>
+                    ) : (
+                      <span key={tag} className="usluga-pill"><span className="usluga-pill-gl">{tag}</span></span>
+                    );
+                  })}
+                </div>
+              )}
               <h3 lang="de" style={{ fontSize: 'clamp(1.25rem, 2.4vw, 1.6rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '0.9rem', lineHeight: 1.2, hyphens: 'auto', overflowWrap: 'break-word' }}>{k.titel}</h3>
               <p lang="de" style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.55, margin: 0, flexGrow: 1 }}>{k.text}</p>
+              {k.lieferung && (
+                <div className="usluga-dostarczenie" style={{ justifyContent: 'flex-start' }}>
+                  {k.lieferung.map((l) => <span key={l} className="usluga-etykieta">{l}</span>)}
+                </div>
+              )}
               {k.href && (
                 <Link href={k.href} style={{ ...LINK, color: 'var(--color-primary)', marginTop: '1.1rem', display: 'inline-block' }}>{k.linktext || 'Mehr erfahren'} →</Link>
               )}
@@ -141,7 +161,11 @@ export function Preise({ titel = 'Transparente Pakete ohne versteckte Kosten', u
             <RevealItem key={p.schluessel} className={`pricing-card${p.hervorgehoben ? ' featured' : ''}`}>
               {p.plakette && <span className="pricing-featured-badge">{p.plakette}</span>}
               <div className="pricing-header">
-                <div className="pricing-kategoria" aria-hidden="true"><span className="asterisk">✳</span> {p.kategorie}</div>
+                <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
+                  <span className="pricing-kicker-glowny">PAKET</span>
+                  <span className="pricing-kicker-ukosnik">/</span>
+                  <span className="pricing-kicker-cel">{p.kategorie}</span>
+                </div>
                 <h3 lang="de">{p.name}</h3>
                 <p className="pricing-desc" lang="de">{p.text}</p>
                 <div className="pricing-price">

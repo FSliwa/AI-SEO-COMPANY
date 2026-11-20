@@ -76,7 +76,14 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
             </div>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Visual Identity'}</h3>
+            <div className="usluga-pills">
+              <span className="usluga-pill">
+                <span className="usluga-pill-gl">BRANDING</span>
+                <span className="usluga-pill-uk" aria-hidden="true">/</span>
+                <span>{lang === 'pl' ? 'IDENTYFIKACJA' : 'IDENTITY'}</span>
+              </span>
+            </div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0.75rem 0 1rem' }}>{lang === 'pl' ? 'Strategia i identyfikacja marki' : 'Brand Strategy & Visual Identity'}</h3>
             <p>{lang === 'pl'
               ? 'Projektujemy spójną tożsamość wizualną: logo, system kolorystyczny, typografię oraz kompletną księgę znaku dostosowaną do wymagań cyfrowych.'
               : <>We design the part <strong>search engine optimisation agencies</strong> usually outsource: cohesive visual identities - logo systems, color palettes, typography, and comprehensive digital brand guidelines.</>
@@ -96,6 +103,10 @@ export default function Services() {
                 </>
               )}
             </ul>
+            <div className="usluga-dostarczenie">
+              <span className="usluga-etykieta">{lang === 'pl' ? 'Raport: Cotygodniowy' : 'Report: Weekly'}</span>
+              <span className="usluga-etykieta">{lang === 'pl' ? 'Rozliczenie: Etapowe' : 'Billing: Milestone'}</span>
+            </div>
           </RevealItem>
 
           {/* Kolumna 2 */}
@@ -103,7 +114,14 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>{lang === 'pl' ? 'Projektowanie stron i sklepów internetowych' : <>Web Design &amp; <span style={{ whiteSpace: 'nowrap' }}>E-Commerce</span> Development</>}</h3>
+            <div className="usluga-pills">
+              <span className="usluga-pill">
+                <span className="usluga-pill-gl">UX &amp; UI</span>
+                <span className="usluga-pill-uk" aria-hidden="true">/</span>
+                <span>{lang === 'pl' ? 'TECHNICZNE' : 'TECHNICAL'}</span>
+              </span>
+            </div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0.75rem 0 1rem' }}>{lang === 'pl' ? 'Projektowanie stron i sklepów internetowych' : <>Web Design &amp; <span style={{ whiteSpace: 'nowrap' }}>E-Commerce</span> Development</>}</h3>
             <p>{lang === 'pl'
               ? 'Tworzymy responsywne, niezwykle szybkie strony internetowe (UX/UI), zoptymalizowane pod najwyższe współczynniki konwersji i estetykę premium.'
               : 'As a full-service marketing agency, we engineer responsive, high-speed websites (UX/UI), optimized for top conversion rates and premium aesthetic appeal.'
@@ -123,6 +141,10 @@ export default function Services() {
                 </>
               )}
             </ul>
+            <div className="usluga-dostarczenie">
+              <span className="usluga-etykieta">{lang === 'pl' ? 'Raport: Cotygodniowy' : 'Report: Weekly'}</span>
+              <span className="usluga-etykieta">{lang === 'pl' ? 'Rozliczenie: Wynikowe' : 'Billing: Outcome-based'}</span>
+            </div>
           </RevealItem>
 
           {/* Kolumna 3 */}
@@ -130,7 +152,19 @@ export default function Services() {
             <div className="service-icon">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
             </div>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Growth Marketing & Search Optimization'}</h3>
+            <div className="usluga-pills">
+              <span className="usluga-pill">
+                <span className="usluga-pill-gl">ON-PAGE</span>
+                <span className="usluga-pill-uk" aria-hidden="true">/</span>
+                <span>{lang === 'pl' ? 'TECHNICZNE' : 'TECHNICAL'}</span>
+              </span>
+              <span className="usluga-pill">
+                <span className="usluga-pill-gl">LINK BUILDING</span>
+                <span className="usluga-pill-uk" aria-hidden="true">/</span>
+                <span>B2B</span>
+              </span>
+            </div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0.75rem 0 1rem' }}>{lang === 'pl' ? 'Optymalizacja i marketing wzrostu' : 'Growth Marketing & Search Optimization'}</h3>
             <p>{lang === 'pl'
               ? 'Skuteczne pozycjonowanie stron, seo lokalne w Warszawie i całej Polsce, techniczna optymalizacja SEO oraz poprawa konwersji (CRO) napędzająca stabilny ruch z Google.'
               : <>High-impact search engine positioning, local <span style={{ fontWeight: 'bold' }}>SEO services</span>, and technical <span style={{ fontWeight: 'bold' }}>SEO optimization service</span> driving stable growth. We are recognized among top <strong>search engine optimization companies</strong>.</>
@@ -150,6 +184,10 @@ export default function Services() {
                 </>
               )}
             </ul>
+            <div className="usluga-dostarczenie">
+              <span className="usluga-etykieta">{lang === 'pl' ? 'Raport: Cotygodniowy' : 'Report: Weekly'}</span>
+              <span className="usluga-etykieta">{lang === 'pl' ? 'Rozliczenie: Wynikowe' : 'Billing: Outcome-based'}</span>
+            </div>
           </RevealItem>
 
           {/* Kolumna 4 (PL): Pozycjonowanie w AI (GEO) - pełnoprawna czwarta kolumna w tej samej siatce */}
@@ -158,13 +196,24 @@ export default function Services() {
               <div className="service-icon">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
               </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '1rem 0' }}>Pozycjonowanie w AI (GEO)</h3>
+              <div className="usluga-pills">
+                <span className="usluga-pill">
+                  <span className="usluga-pill-gl">GEO</span>
+                  <span className="usluga-pill-uk" aria-hidden="true">/</span>
+                  <span>WIDOCZNOŚĆ W AI</span>
+                </span>
+              </div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0.75rem 0 1rem' }}>Pozycjonowanie w AI (GEO)</h3>
               <p>Klienci coraz częściej pytają ChatGPT i Gemini, jaką firmę wybrać. Mierzymy, czy modele wymieniają Twoją markę w odpowiedziach na pytania Twoich klientów, i poprawiamy strony, z których korzystają. Pomiar co tydzień w panelu.</p>
               <div className="service-geo-footer">
                 <Link href="/pozycjonowanie-w-ai" className="service-geo-link">
                   <span>Zobacz, jak działa pozycjonowanie w{'\u00A0'}AI</span>
                   <span className="service-geo-arrow" aria-hidden="true">→</span>
                 </Link>
+              </div>
+              <div className="usluga-dostarczenie">
+                <span className="usluga-etykieta">Raport: Cotygodniowy</span>
+                <span className="usluga-etykieta">Rozliczenie: Wynikowe</span>
               </div>
             </RevealItem>
           )}

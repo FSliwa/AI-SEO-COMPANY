@@ -10,7 +10,7 @@ import { Link } from '../i18n/routing';
 const fairRules = {
   pl: [
     'Umowa miesięczna w SEO Standard i SEO Premium. Booster Pack z nową stroną: minimum 3 miesiące.',
-    'Wypowiedzenie wysyłasz e-mailem. Nie pobieramy opłat aktywacyjnych ani opłat za wyjście.',
+    'Wypowiedzenie wysyłasz e-mailem albo składasz przyciskiem w panelu. Nie pobieramy opłat aktywacyjnych ani opłat za wyjście.',
     'Treści, które dla Ciebie napiszemy, przechodzą na Ciebie po opłaceniu faktury.',
     'Linki zdobyte w czasie współpracy zostają po jej zakończeniu.',
     'Search Console, Analytics, wizytówka Google, konto reklamowe i domena są na Twoich kontach. My dostajemy tylko dostęp.',
@@ -18,7 +18,7 @@ const fairRules = {
   ],
   en: [
     'Monthly contract for SEO Standard and SEO Premium. Booster Pack with a new website: minimum 3 months.',
-    'You cancel by email. We charge no activation fees and no exit fees.',
+    'You cancel by email or with a button in the client portal. We charge no activation fees and no exit fees.',
     'Content we write for you becomes yours once the invoice is paid.',
     'Links earned during the engagement stay after it ends.',
     'Search Console, Analytics, your Google Business Profile, ad account and domain stay in your accounts. We only get access.',

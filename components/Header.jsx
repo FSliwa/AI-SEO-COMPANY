@@ -25,10 +25,8 @@ const CZAS_ZAMKNIECIA_MENU = 260;
 
 // A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
 // pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
-// Integracja 5.11.2026: także hub narzędzi i N1 (partia 3; celowo bez <Contact />, grupa narzedzia
-// pkt 8) - porównanie ze `sciezka` (szablon z wstawionym slugiem), bo pathname to '/narzedzia/[slug]'.
-// 11.11.2026: także 4 strony aplikacji (bez <Contact />): przycisk prowadzi do formularza na stronie głównej.
-const BEZ_FORMULARZA = ['/regulamin', '/cookies', '/impressum', '/narzedzia', '/narzedzia/generator-llms-txt', '/narzedzia/audyt-seo', '/narzedzia/autorytet-domeny', '/narzedzia/kalkulator-strat-seo', '/narzedzia/makieta-redesignu'];
+// Wszystkie trasy /narzedzia i /narzedzia/* poza /narzedzia/raport-seo (SzablonRaport renderuje <Contact />) nie mają formularza.
+const bezFormularza = (s) => s === '/regulamin' || s === '/cookies' || s === '/impressum' || s === '/narzedzia' || (typeof s === 'string' && s.startsWith('/narzedzia/') && s !== '/narzedzia/raport-seo');
 
 function UserIcon() {
   return (
@@ -303,7 +301,7 @@ export default function Header() {
       const minBezpieczna = vw >= 1200 ? Math.min(vw, 1020) : Math.min(vw, 720);
       const koncowa = Math.max(minBezpieczna, Math.min(vw, docelowa));
 
-      if (Math.abs(koncowa - ostatniaSzer) >= 2) {
+      if (Math.abs(koncowa - ostatniaSzer) >= 6) {
         ostatniaSzer = koncowa;
         root.style.setProperty('--header-szer', `${koncowa}px`);
       }
@@ -436,18 +434,17 @@ export default function Header() {
             width: '100%',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link href="/" className="logo" aria-label={tr(lang, 'Strona główna AI SEO COMPANY', 'AI SEO COMPANY homepage')} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible' }}>
+          <div className="header-left" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', minWidth: 0 }}>
+            <Link href="/" className="logo" aria-label={tr(lang, 'Strona główna AI SEO COMPANY', 'AI SEO COMPANY homepage')} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', overflow: 'visible', flexShrink: 0 }}>
               <span className="sr-only">{tr(lang, 'Strona główna AI SEO COMPANY', 'AI SEO COMPANY homepage')}</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 240 1802 294" 
                 overflow="visible"
+                className="header-logo-svg"
                 style={{ 
-                  height: 'clamp(22px, 1.8vw, 26px)', 
-                  width: 'auto', 
                   display: 'block',
-                  transition: 'all 0.5s ease' 
+                  flexShrink: 0
                 }}
               >
                 {/* Text AI SEO COMPANY - dynamically changes color on scroll */}
@@ -485,7 +482,7 @@ export default function Header() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="header-right" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
             {/* Language Switcher (PL | EN).
                 Aktywny jezyk byl oznaczony tylko kolorem (na podstronach
                 1,42:1 miedzy aktywnym a nieaktywnym), grupa nie miala nazwy,
@@ -582,7 +579,7 @@ export default function Header() {
                 #kontakt - przejdzDoSekcji przenosi wtedy na strone glowna
                 (05.10.2026). 5.11.2026 (A3b/BL-02): na tych stronach takze href
                 prowadzi wprost do formularza strony glownej (bez JS i dla crawlera). */}
-            <a href={BEZ_FORMULARZA.includes(sciezka) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
+            <a href={bezFormularza(sciezka) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
               background: 'var(--w-pomarancz-przycisk)',
               color: 'var(--w-na-pomaranczu)',
               transition: 'all 0.7s ease'

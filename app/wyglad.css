@@ -1503,26 +1503,14 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   z-index: 1;
 }
 
+/* 20.11.2026: animacja fal sygnału z grafiki anteny usunięta (zostaje sama ilustracja anteny). */
 .contact::before,
 .contact::after {
-  --w: min(46vw, 640px);
-  content: '';
-  position: absolute;
-  left: calc(-4vw + var(--w) * 0.385);
-  bottom: calc(var(--w) * 0.382);
-  width: calc(var(--w) * 0.5);
-  aspect-ratio: 1;
-  margin: 0 0 calc(var(--w) * -0.25) calc(var(--w) * -0.25);
-  border-radius: 50%;
-  border: 1.5px solid var(--w-pomarancz);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 0;
+  display: none !important;
+  animation: none !important;
 }
 
 @media (max-width: 900px) {
-  .contact::before,
-  .contact::after,
   .mgla-dryf {
     display: none;
   }
@@ -1689,10 +1677,6 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
     .panel-stos:hover .panel-warstwa--2 { translate: 0 30px; }
   }
 
-  /* Fale radiowe anteny */
-  .contact::before { animation: w-fala 3.6s ease-out infinite; }
-  .contact::after { animation: w-fala 3.6s ease-out 1.8s infinite; }
-
   /* Poziomice cennika dryfuja powoli */
   .pricing::before { animation: w-kontury 26s ease-in-out infinite alternate; }
 
@@ -1776,13 +1760,55 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   backdrop-filter: blur(16px) saturate(1.2);
 }
 
-/* (7/57 + 19.11.2026) Pasek nagłówka płynnie dopasowuje szerokość do aktywnej sekcji (--header-szer) */
+/* (7/57 + 20.11.2026) Pasek nagłówka płynnie dopasowuje szerokość do aktywnej sekcji (--header-szer),
+   ale logo NIGDY nie zmienia rozmiaru (ma zablokowane flex-shrink i stały wymiar z proporcji viewBox 1802/294),
+   a plakietki nie łamią wiersza przy zawężeniu paska. */
+.header {
+  --logo-h: clamp(22px, 1.8vw, 26px);
+}
+
 .header .nav-container {
+  container-type: inline-size;
   max-width: var(--header-szer, var(--container-width)) !important;
   margin-inline: auto !important;
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
   transition: max-width 0.48s cubic-bezier(0.22, 1, 0.36, 1), padding 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header .logo {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+.header .logo svg {
+  height: var(--logo-h) !important;
+  width: calc(var(--logo-h) * 1802 / 294) !important;
+  min-width: calc(var(--logo-h) * 1802 / 294) !important;
+  flex: 0 0 auto !important;
+  display: block !important;
+  transition: none !important;
+}
+
+.header .badge-pill,
+.header .header-hire-btn,
+.header .header-login-btn,
+.header .lang-switcher,
+.header .kota-menu-trigger {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+@container (max-width: 1160px) {
+  .header .header-award-badges > :nth-child(n + 2) {
+    display: none !important;
+  }
+}
+
+@container (max-width: 980px) {
+  .header .header-award-badges {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1792,21 +1818,18 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
 }
 
 @media (max-width: 768px) {
+  .header {
+    --logo-h: 20px;
+  }
   .header .nav-container {
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
   }
-  .header .logo {
-    flex-shrink: 0;
-  }
-  .header .logo svg {
-    height: 20px !important;
-  }
 }
 
 @media (max-width: 480px) {
-  .header .logo svg {
-    height: 18px !important;
+  .header {
+    --logo-h: 18px;
   }
   .header .nav-container > div:last-child {
     gap: 0.35rem !important;
@@ -1998,28 +2021,28 @@ main h3:not(.hero *) {
 
 @media (min-width: 901px) {
   .gory-oferta .services-grid:not(:has(.service-card--geo)) {
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(6, auto);
   }
   .gory-oferta .services-grid:not(:has(.service-card--geo)) .service-card {
     display: grid !important;
-    grid-row: span 4;
+    grid-row: span 6;
     grid-template-rows: subgrid;
     justify-items: center;
     row-gap: 0;
   }
   .gory-oferta .services-grid:not(:has(.service-card--geo)) .service-card h3 {
-    align-self: end;
+    align-self: start;
   }
 }
 
 @media (min-width: 1120px) {
   .gory-oferta .services-grid:has(.service-card--geo) {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(6, auto);
   }
   .gory-oferta .services-grid:has(.service-card--geo) .service-card {
     display: grid !important;
-    grid-row: span 4;
+    grid-row: span 6;
     grid-template-rows: subgrid;
     justify-items: center;
     align-items: start;
@@ -2490,15 +2513,35 @@ main:has(.article-content) {
   }
 }
 
-/* Cennik jak w makiecie (7.11.2026): etykieta kategorii nad nazwa pakietu i ikony
-   obrysowe przy cechach zamiast znacznika. Ikony to maski SVG w kolorze akcentu. */
-.pricing-kategoria {
+/* 20.11.2026: cennik w stylu airSlate (techniczny kicker PAKIET / DLA WZROSTU nad nazwą pakietu
+   oraz kwadratowe punktory 7x7 px zamiast standardowych ptaszków/ikon). */
+.pricing-kategoria,
+.pricing-kicker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.42rem;
   font-family: var(--w-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--w-pomarancz);
-  margin-bottom: 0.4rem;
+  color: var(--w-tusz-2);
+  margin-bottom: 0.55rem;
+}
+
+.pricing-kicker-glowny {
+  color: var(--w-pomarancz-tekst);
+  font-weight: 600;
+}
+
+.pricing-kicker-ukosnik {
+  color: rgba(30, 30, 30, 0.28);
+}
+
+.pricing-kicker-cel {
+  color: var(--w-tusz-2);
 }
 
 .pricing-header {
@@ -2511,21 +2554,26 @@ main:has(.article-content) {
   align-items: center;
 }
 
+.pricing-features li,
 .pricing-features li[data-ikona] {
   position: relative;
-  padding-left: 2rem !important;
+  display: block !important;
+  padding-left: 1.3rem !important;
+  line-height: 1.48;
 }
 
+.pricing-features li::before,
 .pricing-features li[data-ikona]::before {
   content: '' !important;
-  position: absolute;
-  left: 0;
-  top: 0.12em;
-  width: 1.2rem;
-  height: 1.2rem;
-  background-color: var(--w-tusz-2) !important;
-  -webkit-mask: var(--ikona) center / contain no-repeat;
-  mask: var(--ikona) center / contain no-repeat;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0.48em !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 2px !important;
+  background-color: var(--w-pomarancz) !important;
+  -webkit-mask: none !important;
+  mask: none !important;
 }
 
 .pricing-features li[data-ikona="panel"] { --ikona: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%224%22%20width%3D%2218%22%20height%3D%2212%22%20rx%3D%221.5%22/%3E%3Cpath%20d%3D%22M8%2020h8M12%2016v4%22/%3E%3C/svg%3E"); }
@@ -4306,4 +4354,168 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
 
 .form-dodatkowe-pola {
   padding: 0.25rem 0.95rem 0.1rem;
+}
+
+/* ==========================================================================
+   DETALE TECHNICZNE W STYLU AIRSLATE (20.11.2026):
+   - WhyUs: kickery 01 / ARCHITEKTURA, 02 / TRANSPARENTNOŚĆ, 03 / TECHNOLOGIA
+     oraz dolny pasek mikro-metryk na każdej karcie.
+   - Services: pill-tags ON-PAGE / TECHNICZNE, LINK BUILDING / B2B oraz
+     etykiety z formatem dostarczenia (Raport: Cotygodniowy, Rozliczenie: Wynikowe).
+   ========================================================================== */
+
+.whyus-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 8px;
+  margin-bottom: 0.55rem;
+  font-family: var(--w-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.whyus-kicker-nr {
+  color: var(--w-pomarancz-tekst);
+  font-weight: 600;
+}
+
+.whyus-kicker-ukosnik {
+  color: rgba(30, 30, 30, 0.28);
+}
+
+.whyus-kicker-kat {
+  color: var(--w-tusz-2);
+  font-weight: 500;
+}
+
+.whyus-mikro-pasek {
+  margin-top: 1.35rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--w-linia);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem 0.9rem;
+  font-family: var(--w-mono);
+  font-size: 0.73rem;
+  letter-spacing: 0.02em;
+  color: var(--w-tusz-2);
+}
+
+.whyus-mikro-el {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.whyus-mikro-el::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 1.5px;
+  background: var(--w-pomarancz);
+  flex: none;
+}
+
+.usluga-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 0.85rem;
+}
+
+.usluga-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--w-papier);
+  border: 1px solid var(--w-linia);
+  font-family: var(--w-mono);
+  font-size: 0.69rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--w-tusz-2);
+  line-height: 1.3;
+}
+
+.usluga-pill-gl {
+  color: var(--w-pomarancz-tekst);
+  font-weight: 600;
+}
+
+.usluga-pill-uk {
+  color: rgba(30, 30, 30, 0.3);
+}
+
+.usluga-dostarczenie {
+  margin-top: auto;
+  padding-top: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.usluga-etykieta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(30, 30, 30, 0.04);
+  border: 1px solid var(--w-linia);
+  font-family: var(--w-mono);
+  font-size: 0.71rem;
+  letter-spacing: 0.02em;
+  color: var(--w-tusz-2);
+  line-height: 1.35;
+}
+
+.usluga-etykieta::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 1.5px;
+  background: var(--w-pomarancz);
+  flex: none;
+}
+
+/* Wariant w sekcji .gory-oferta (gdzie karty usług mają ciemne tło pasma gór i biały tekst - zachowanie kolorystyki) */
+.gory-oferta .usluga-pill {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.gory-oferta .usluga-pill-gl {
+  color: #FF9E7A;
+}
+
+.gory-oferta .usluga-pill-uk {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.gory-oferta .usluga-dostarczenie {
+  align-self: end;
+  margin-top: 0;
+  padding-top: 1.35rem;
+}
+
+.gory-oferta .service-card--geo .service-geo-footer {
+  align-self: center;
+  margin-top: 1.25rem;
+}
+
+.gory-oferta .usluga-etykieta {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.88);
 }

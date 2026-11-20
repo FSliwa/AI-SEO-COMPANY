@@ -42,7 +42,7 @@ export default function AboutValues() {
             {lang === 'pl' ? 'Zasady, w oparciu o które budujemy sukces' : 'The principles upon which we build success'}
           </h2>
           <p style={{ fontSize: '1.25rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-            {lang === 'pl' ? 'Nasz kodeks postępowania gwarantujący niezmiennie wysoką jakość usług.' : 'Our code of conduct guaranteeing consistently high-quality services.'}
+            {lang === 'pl' ? 'Nasz kodeks postępowania, według którego pracujemy.' : 'Our code of conduct, the principles we work by.'}
           </p>
         </Reveal>
 

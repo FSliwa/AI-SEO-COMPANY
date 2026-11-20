@@ -168,7 +168,7 @@ export default function AboutMethodology() {
             {lang === 'pl' ? 'Trzy etapy do dominacji w Google' : 'Three steps to Google dominance'}
           </h2>
           <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.25rem', fontWeight: 500 }}>
-            {lang === 'pl' ? 'Poznaj proces, dzięki któremu wprowadzamy marki na szczyt wyników wyszukiwania.' : 'Explore the process that takes brands to the top of search results.'}
+            {lang === 'pl' ? 'Poznaj proces, dzięki któremu prowadzimy marki do widoczności w wynikach wyszukiwania.' : 'Explore the process we use to build brands\' visibility in search results.'}
           </p>
         </Reveal>
       </div>

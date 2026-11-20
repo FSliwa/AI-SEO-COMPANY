@@ -32,7 +32,11 @@ export default function Pricing({ isMainContent = false }) {
           {/* Package 1 */}
           <RevealItem className="pricing-card">
             <div className="pricing-header">
-              <div className="pricing-kategoria" aria-hidden="true"><span className="asterisk">✳</span> SEO</div>
+              <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
+                <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET SEO' : 'SEO PACKAGE'}</span>
+                <span className="pricing-kicker-ukosnik">/</span>
+                <span className="pricing-kicker-cel">{lang === 'pl' ? 'DLA STARTU' : 'FOR STARTERS'}</span>
+              </div>
               <h3>{t('standardTitle')}</h3>
               <p className="pricing-desc">{t('standardDesc')}</p>
               <div className="pricing-price">
@@ -71,7 +75,11 @@ export default function Pricing({ isMainContent = false }) {
           {/* Package 2 */}
           <RevealItem className="pricing-card">
             <div className="pricing-header">
-              <div className="pricing-kategoria" aria-hidden="true"><span className="asterisk">✳</span> SEO</div>
+              <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
+                <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET' : 'PACKAGE'}</span>
+                <span className="pricing-kicker-ukosnik">/</span>
+                <span className="pricing-kicker-cel">{lang === 'pl' ? 'DLA WZROSTU' : 'FOR GROWTH'}</span>
+              </div>
               <h3>{t('premiumTitle')}</h3>
               <p className="pricing-desc">{t('premiumDesc')}</p>
               <div className="pricing-price">
@@ -111,7 +119,11 @@ export default function Pricing({ isMainContent = false }) {
           <RevealItem className="pricing-card featured">
             <span className="pricing-featured-badge">{lang === 'pl' ? 'STRONA WWW W CENIE' : 'WEBSITE INCLUDED'}</span>
             <div className="pricing-header">
-              <div className="pricing-kategoria" aria-hidden="true"><span className="asterisk">✳</span> WWW + SEO</div>
+              <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
+                <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET WWW + SEO' : 'WEB + SEO PACKAGE'}</span>
+                <span className="pricing-kicker-ukosnik">/</span>
+                <span className="pricing-kicker-cel">{lang === 'pl' ? 'DLA WZROSTU' : 'FOR GROWTH'}</span>
+              </div>
               <h3>{t('boosterTitle')}</h3>
               <p className="pricing-desc">{t('boosterDesc')}</p>
               <div className="pricing-price">

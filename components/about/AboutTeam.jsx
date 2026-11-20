@@ -13,14 +13,14 @@ const teamData = [
     name: 'Tech & Architecture',
     role: 'Wydajność • Skalowalność • Next.js',
     roleEn: 'Performance • Scalability • Next.js',
-    metricBadge: 'Lighthouse mobile 98-99/100 (24.09.2026)',
-    metricBadgeEn: 'Mobile Lighthouse 98-99/100 (24 Sep 2026)',
+    metricBadge: 'Cel: LCP ≤ 2,5 s · INP ≤ 200 ms · CLS ≤ 0,1',
+    metricBadgeEn: 'Goal: LCP ≤ 2.5 s · INP ≤ 200 ms · CLS ≤ 0.1',
     image: '/images/unsplash-1614729939124-032f0b56c9ce.jpg',
     bgGradient: 'linear-gradient(135deg, var(--w-tusz) 0%, #1E293B 100%)',
     leadPl: 'Błyskawiczne działanie i perfekcyjny kod.',
     leadEn: 'Lightning fast performance and perfect code.',
-    bodyPl: 'Zespół deweloperski odpowiedzialny jest za wdrażanie nowoczesnych rozwiązań opartych na Next.js i architekturze serverless. Każda stworzona przez nas linijka kodu ma jeden cel: zapewnić Twojej stronie najwyższe noty w narzędziach Google i niesamowite doświadczenie dla użytkownika.',
-    bodyEn: 'Our development team implements modern solutions based on Next.js and serverless architecture. Every line of code we write has one goal: to ensure your site gets top scores in Google tools and delivers an amazing user experience.'
+    bodyPl: 'Zespół deweloperski odpowiedzialny jest za wdrażanie nowoczesnych rozwiązań opartych na Next.js i architekturze serverless. Każda stworzona przez nas linijka kodu ma jeden cel: dbać o dobre wyniki Twojej strony w narzędziach Google i wygodne korzystanie z niej.',
+    bodyEn: 'Our development team implements modern solutions based on Next.js and serverless architecture. Every line of code we write has one goal: to keep your site performing well in Google tools and pleasant to use.'
   },
   {
     id: 2,

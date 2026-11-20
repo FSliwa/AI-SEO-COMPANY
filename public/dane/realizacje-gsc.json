@@ -1,14 +1,19 @@
 {
   "ok": true,
   "pobraneDlaKonta": "f.sliwa@ai-signals-company.pl",
-  "wygenerowano": "2026-11-20T02:21:26.649Z",
+  "wygenerowano": "2026-11-20T17:02:13.873Z",
+  "zakresGsc": {
+    "od": "2026-08-20",
+    "do": "2026-11-19",
+    "widok": "3m-web"
+  },
   "serie": {
     "staniax": [
       [
-        "2026-08-21",
+        "2026-08-20",
         "2026-08-27",
-        16,
-        732
+        17,
+        862
       ],
       [
         "2026-08-28",
@@ -79,16 +84,16 @@
       [
         "2026-11-13",
         "2026-11-19",
-        22,
-        652
+        23,
+        722
       ]
     ],
     "madamethai": [
       [
-        "2026-08-21",
+        "2026-08-20",
         "2026-08-27",
-        85,
-        4106
+        89,
+        4694
       ],
       [
         "2026-08-28",
@@ -159,16 +164,16 @@
       [
         "2026-11-13",
         "2026-11-19",
-        143,
-        4004
+        149,
+        4137
       ]
     ],
     "tql": [
       [
-        "2026-08-21",
+        "2026-08-20",
         "2026-08-27",
         2,
-        164
+        190
       ],
       [
         "2026-08-28",
@@ -240,15 +245,15 @@
         "2026-11-13",
         "2026-11-19",
         29,
-        2076
+        2175
       ]
     ],
     "ase-bot": [
       [
-        "2026-08-21",
+        "2026-08-20",
         "2026-08-27",
         0,
-        557
+        650
       ],
       [
         "2026-08-28",
@@ -320,7 +325,7 @@
         "2026-11-13",
         "2026-11-19",
         0,
-        479
+        511
       ]
     ],
     "stefbud": [
@@ -387,8 +392,8 @@
       [
         "2026-11-13",
         "2026-11-19",
-        43,
-        1829
+        44,
+        2016
       ]
     ]
   },
@@ -396,47 +401,62 @@
     "staniax": {
       "nazwa": "STANIAX",
       "url": "sc-domain:staniax.pl",
-      "days": 91,
-      "startDate": "2026-08-21",
+      "days": 92,
+      "windowStart": "2026-08-20",
+      "startDate": "2026-08-20",
       "endDate": "2026-11-19",
-      "totalClicks": 228,
-      "totalImpr": 8614
+      "totalClicks": 230,
+      "totalImpr": 8814,
+      "ctr": 2.6,
+      "position": 8.4
     },
     "madamethai": {
       "nazwa": "MADAME THAI",
       "url": "sc-domain:madamethai.pl",
-      "days": 91,
-      "startDate": "2026-08-21",
+      "days": 92,
+      "windowStart": "2026-08-20",
+      "startDate": "2026-08-20",
       "endDate": "2026-11-19",
-      "totalClicks": 1460,
-      "totalImpr": 57897
+      "totalClicks": 1470,
+      "totalImpr": 58618,
+      "ctr": 2.5,
+      "position": 4.3
     },
     "tql": {
       "nazwa": "TQL",
       "url": "sc-domain:tql.pl",
-      "days": 91,
-      "startDate": "2026-08-21",
+      "days": 92,
+      "windowStart": "2026-08-20",
+      "startDate": "2026-08-20",
       "endDate": "2026-11-19",
       "totalClicks": 71,
-      "totalImpr": 4596
+      "totalImpr": 4721,
+      "ctr": 1.5,
+      "position": 16.9
     },
     "ase-bot": {
       "nazwa": "ASE-BOT",
       "url": "sc-domain:ase-bot.live",
-      "days": 91,
-      "startDate": "2026-08-21",
+      "days": 92,
+      "windowStart": "2026-08-20",
+      "startDate": "2026-08-20",
       "endDate": "2026-11-19",
       "totalClicks": 15,
-      "totalImpr": 6091
+      "totalImpr": 6216,
+      "ctr": 0.2,
+      "position": 31.1
     },
     "stefbud": {
       "nazwa": "STEF-BUD",
       "url": "sc-domain:stefbud.com",
       "days": 75,
+      "windowStart": "2026-08-20",
       "startDate": "2026-09-06",
       "endDate": "2026-11-19",
-      "totalClicks": 218,
-      "totalImpr": 8884
+      "totalClicks": 219,
+      "totalImpr": 9071,
+      "ctr": 2.4,
+      "position": 17.5
     }
   }
 }

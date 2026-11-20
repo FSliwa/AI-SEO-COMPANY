@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Reveal } from './ScrollReveal';
 import Realizacje from './Realizacje';
+import { SERIE_GSC, METRYKI_GSC, GSC_WYGENEROWANO } from '@/lib/realizacjeGsc';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
 
@@ -243,6 +244,17 @@ export default function Portfolio() {
   const [activeModal, setActiveModal] = useState(null);
   const lang = useLocale();
 
+  // Dane GSC dla kart i wykresu (jedno zapytanie). Start: dane wkompilowane (SSR, bez rozjazdu hydratacji).
+  const [gsc, setGsc] = useState({ serie: SERIE_GSC, metryki: METRYKI_GSC, wygenerowano: GSC_WYGENEROWANO });
+  useEffect(() => {
+    let aktywny = true;
+    fetch('/api/realizacje-gsc')
+      .then((r) => r.json())
+      .then((d) => { if (aktywny && d?.ok && d.serie && d.metryki) setGsc({ serie: d.serie, metryki: d.metryki, wygenerowano: d.wygenerowano || null }); })
+      .catch(() => {});
+    return () => { aktywny = false; };
+  }, []);
+
   /* Ghost renderuje pięć sztywnych stosów w DOM i wyrównuje je do DOŁU
      (align-items: end). Że mają różną wysokość, górna krawędź ściany jest
      poszarpana, a kontener ją przycina - to jest cały efekt. CSS multi-column
@@ -339,90 +351,66 @@ export default function Portfolio() {
       Ask for the Search Console data →
     </a>
   ));
-  const okres91 = pl ? 'Okres: 91 dni, 21.08-19.11.2026' : 'Period: 91 days, 21 Aug-19 Nov 2026';
-  const okres75 = pl ? 'Okres: 75 dni, 06.09-19.11.2026' : 'Period: 75 days, 06 Sep-19 Nov 2026';
-  const zrodloGsc = pl ? 'Źródło: Google Search Console, dane na żywo' : 'Source: Google Search Console, live data';
+  /* 20.11.2026: liczby, okres i data w kartach liczone z tych samych danych GSC co wykres
+     (/api/realizacje-gsc, zapas: lib/realizacjeGsc.js). Wcześniej były wpisane na sztywno,
+     więc po każdej synchronizacji różniły się od panelu GSC. Format jak w panelu GSC:
+     wyświetlenia w skrócie (3 cyfry znaczące, np. 4,6 tys.), kliknięcia dokładnie. */
+  const skrot = (n) => {
+    if (n < 1000) return String(n);
+    const k = n / 1000;
+    const zaokr = k >= 100 ? String(Math.round(k)) : k >= 10 ? k.toFixed(1) : k.toFixed(2);
+    const czysty = zaokr.replace(/\.0+$/, '').replace(/(\.\d*[1-9])0+$/, '$1');
+    return pl ? `${czysty.replace('.', ',')}\u00A0tys.` : `${czysty}K`;
+  };
+  const dokl = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, pl ? '\u00A0' : ',');
+  const dzien = (iso, rok) => {
+    const [y, m, d] = iso.split('-');
+    if (pl) return rok ? `${d}.${m}.${y}` : `${d}.${m}`;
+    const mies = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Number(m) - 1];
+    return rok ? `${d} ${mies} ${y}` : `${d} ${mies}`;
+  };
+  const aktualizacja = gsc.wygenerowano ? dzien(gsc.wygenerowano.slice(0, 10), true) : null;
+  const zrodloGsc = pl
+    ? `Źródło: Google Search Console${aktualizacja ? `, aktualizacja ${aktualizacja}` : ''}`
+    : `Source: Google Search Console${aktualizacja ? `, updated ${aktualizacja}` : ''}`;
+  const karta = (id, seria, nazwa, logoEl, tag, opisPl, opisEn) => {
+    const m = gsc.metryki?.[seria] || METRYKI_GSC[seria];
+    const kl = dokl(m.totalClicks);
+    const wy = skrot(m.totalImpr);
+    const dni = m.days;
+    return {
+      id,
+      nazwa,
+      logo: logoEl,
+      tag,
+      opis: pl ? opisPl(kl, wy) : opisEn(kl, wy, dni),
+      seria,
+      metryki: pl
+        ? [[wy, `wyświetleń w Google w ${dni} dni`], [kl, `kliknięć z wyszukiwarki w ${dni} dni`]]
+        : [[wy, `Google impressions in ${dni} days`], [kl, `clicks from search in ${dni} days`]],
+      okres: pl
+        ? `Okres: ${dni} dni, ${dzien(m.startDate)}-${dzien(m.endDate, true)}`
+        : `Period: ${dni} days, ${dzien(m.startDate)}-${dzien(m.endDate, true)}`,
+      zrodlo: zrodloGsc,
+      cta: cta(id),
+    };
+  };
   const pozycje = [
-    {
-      id: 'staniax',
-      nazwa: 'STANIAX',
-      logo: logo('STANIAX'),
-      tag: pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
-      opis: pl
-        ? 'Z zerowej widoczności do 228 kliknięć i 8,61 tys. wyświetleń w Google (Search Console).'
-        : 'From zero visibility to 228 clicks and 8.61k Google impressions in 91 days (Search Console).',
-      seria: 'staniax',
-      metryki: pl
-        ? [['8,61 tys.', 'wyświetleń w Google w 91 dni'], ['228', 'kliknięć z wyszukiwarki w 91 dni']]
-        : [['8.61k', 'Google impressions in 91 days'], ['228', 'clicks from search in 91 days']],
-      okres: okres91,
-      zrodlo: zrodloGsc,
-      cta: cta('staniax'),
-    },
-    {
-      id: 'madame-thai',
-      nazwa: 'MADAME THAI',
-      logo: logo('MADAME THAI'),
-      tag: pl ? 'SEO LOKALNE / STRONA WWW' : 'LOCAL SEO / WEBSITE',
-      opis: pl
-        ? 'Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji: 1 460 kliknięć i 57,9 tys. wyświetleń w Google (Search Console).'
-        : 'Building and scaling digital sales for the newly opened restaurant location: 1,460 clicks and 57.9k Google impressions in 91 days (Search Console).',
-      seria: 'madamethai',
-      metryki: pl
-        ? [['57,9 tys.', 'wyświetleń w Google w 91 dni'], ['1 460', 'kliknięć z wyszukiwarki w 91 dni']]
-        : [['57.9k', 'Google impressions in 91 days'], ['1,460', 'clicks from search in 91 days']],
-      okres: okres91,
-      zrodlo: zrodloGsc,
-      cta: cta('madame-thai'),
-    },
-    {
-      id: 'tql',
-      nazwa: 'TQL',
-      logo: logoTql,
-      tag: pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
-      opis: pl
-        ? 'Firma wdrażająca normy ISO: dynamiczny wzrost do 71 kliknięć i 4,59 tys. wyświetleń w Google (Search Console).'
-        : 'ISO standards consultancy: rapid growth to 71 clicks and 4.59k Google impressions in 91 days (Search Console).',
-      seria: 'tql',
-      metryki: pl
-        ? [['4,59 tys.', 'wyświetleń w Google w 91 dni'], ['71', 'kliknięć z wyszukiwarki w 91 dni']]
-        : [['4.59k', 'Google impressions in 91 days'], ['71', 'clicks from search in 91 days']],
-      okres: okres91,
-      zrodlo: zrodloGsc,
-      cta: cta('tql'),
-    },
-    {
-      id: 'ase-bot',
-      nazwa: 'ASE-BOT',
-      logo: logo('ASE-BOT'),
-      tag: pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO',
-      opis: pl
-        ? 'Nasz własny projekt AI: 6,09 tys. wyświetleń w Google i stałe pozyskiwanie analityków rynkowych (Search Console).'
-        : 'Our own AI project: 6.09k Google impressions in 91 days and steady organic discovery (Search Console).',
-      seria: 'ase-bot',
-      metryki: pl
-        ? [['6,09 tys.', 'wyświetleń w Google w 91 dni'], ['15', 'kliknięć z wyszukiwarki w 91 dni']]
-        : [['6.09k', 'Google impressions in 91 days'], ['15', 'clicks from search in 91 days']],
-      okres: okres91,
-      zrodlo: zrodloGsc,
-      cta: cta('ase-bot'),
-    },
-    {
-      id: 'stefbud',
-      nazwa: 'STEF-BUD',
-      logo: logoStefbud,
-      tag: pl ? 'PRODUKCJA / STRONA WWW I SEO' : 'MANUFACTURING / WEB & SEO',
-      opis: pl
-        ? 'Producent świetlików dachowych i pasm świetlnych: 218 kliknięć i 8,88 tys. wyświetleń na kluczowe zapytania B2B (Search Console).'
-        : 'Rooflight and skylight manufacturer: 218 clicks and 8.88k Google impressions on key B2B searches (Search Console).',
-      seria: 'stefbud',
-      metryki: pl
-        ? [['8,88 tys.', 'wyświetleń w Google w 75 dni'], ['218', 'kliknięć z wyszukiwarki w 75 dni']]
-        : [['8.88k', 'Google impressions in 75 days'], ['218', 'clicks from search in 75 days']],
-      okres: okres75,
-      zrodlo: zrodloGsc,
-      cta: cta('stefbud'),
-    },
+    karta('staniax', 'staniax', 'STANIAX', logo('STANIAX'), pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
+      (kl, wy) => `Z zerowej widoczności do ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
+      (kl, wy, d) => `From zero visibility to ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
+    karta('madame-thai', 'madamethai', 'MADAME THAI', logo('MADAME THAI'), pl ? 'SEO LOKALNE / STRONA WWW' : 'LOCAL SEO / WEBSITE',
+      (kl, wy) => `Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji: ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
+      (kl, wy, d) => `Building and scaling digital sales for the newly opened restaurant location: ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
+    karta('tql', 'tql', 'TQL', logoTql, pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE',
+      (kl, wy) => `Firma wdrażająca normy ISO: dynamiczny wzrost do ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
+      (kl, wy, d) => `ISO standards consultancy: rapid growth to ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
+    karta('ase-bot', 'ase-bot', 'ASE-BOT', logo('ASE-BOT'), pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO',
+      (kl, wy) => `Nasz własny projekt AI: ${wy} wyświetleń w Google i stałe pozyskiwanie analityków rynkowych (Search Console).`,
+      (kl, wy, d) => `Our own AI project: ${wy} Google impressions in ${d} days and steady organic discovery (Search Console).`),
+    karta('stefbud', 'stefbud', 'STEF-BUD', logoStefbud, pl ? 'PRODUKCJA / STRONA WWW I SEO' : 'MANUFACTURING / WEB & SEO',
+      (kl, wy) => `Producent świetlików dachowych i pasm świetlnych: ${kl} kliknięć i ${wy} wyświetleń na kluczowe zapytania B2B (Search Console).`,
+      (kl, wy) => `Rooflight and skylight manufacturer: ${kl} clicks and ${wy} Google impressions on key B2B searches (Search Console).`),
   ];
 
   return (
@@ -446,8 +434,8 @@ export default function Portfolio() {
             </h2>
             <p className="portfolio-lede">
               {lang === 'pl'
-                ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów. Każdy kafelek to prawdziwy zrzut strony zaprojektowanej przez nasz zespół, a dane z Google Search Console (kliknięcia, wyświetlenia i pozycje) pokazują wykresy powyżej. Tak wygląda pozycjonowanie stron rozliczane z realnych efektów, nie z obietnic.'
-                : 'Explore analytics-backed growth metrics across our client case studies. Every tile is a real screenshot of a website designed by our team, and the Google Search Console data (clicks, impressions and positions) is shown as charts above. This is SEO measured by real outcomes, not promises.'}
+                ? 'Zobacz wskaźniki wzrostu poparte twardymi danymi analitycznymi klientów. Każdy kafelek to prawdziwy zrzut strony zaprojektowanej przez nasz zespół, a dane z Google Search Console (kliknięcia, wyświetlenia i pozycje) pokazują wykresy powyżej. Tak wygląda pozycjonowanie stron: raportujemy zapytania i widoczność z Twoich kont, w stałym abonamencie z jawnym celem TOP 3. Zapytania i dziennik prac widzisz codziennie, pozycje co tydzień.'
+                : 'Explore analytics-backed growth metrics across our client case studies. Every tile is a real screenshot of a website designed by our team, and the Google Search Console data (clicks, impressions and positions) is shown as charts above. This is how SEO looks with us: we report enquiries and visibility from your own accounts, on a fixed subscription with an explicit TOP 3 goal. You see enquiries and the work log every day, and positions every week.'}
             </p>
             <Link className="portfolio-more" href="/pozycjonowanie-stron-internetowych">
               {lang === 'pl' ? 'Zobacz zakres współpracy' : 'See how we work'} →
@@ -513,7 +501,7 @@ export default function Portfolio() {
           <div className="portfolio-eyebrow realizacje-etykieta">
             <span className="asterisk" aria-hidden="true">✳</span> {lang === 'pl' ? 'WYBRANE REALIZACJE' : 'SELECTED CASE STUDIES'}
           </div>
-          <Realizacje pozycje={pozycje} lang={lang} etykieta={lang === 'pl' ? 'Wybrane realizacje' : 'Selected case studies'} />
+          <Realizacje pozycje={pozycje} daneGsc={gsc.serie} lang={lang} etykieta={lang === 'pl' ? 'Wybrane realizacje' : 'Selected case studies'} />
         </div>
       </div>
 

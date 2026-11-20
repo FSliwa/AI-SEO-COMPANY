@@ -279,20 +279,22 @@ const LUK_KONCE = 70;
 const lukX = (t) => LUK_SRODEK + (LUK_KONCE - LUK_SRODEK) * (1 - Math.sin(Math.PI * Math.min(1, Math.max(0, t))));
 const KROPKA = 21; // środek kropki od lewej krawędzi zakładki (left 8 px + 13 px)
 
-export default function Realizacje({ pozycje, lang, etykieta }) {
+export default function Realizacje({ pozycje, daneGsc: daneZewn, lang, etykieta }) {
   const [aktywna, setAktywna] = useState(0);
-  const [daneGsc, setDaneGsc] = useState(SERIE_GSC);
+  const [daneWlasne, setDaneWlasne] = useState(SERIE_GSC);
+  const daneGsc = daneZewn || daneWlasne;
   const lista = useRef(null);
   const [luk, setLuk] = useState(null);
 
   useEffect(() => {
+    if (daneZewn) return;
     fetch('/api/realizacje-gsc')
       .then((r) => r.json())
       .then((d) => {
-        if (d?.ok && d.serie) setDaneGsc(d.serie);
+        if (d?.ok && d.serie) setDaneWlasne(d.serie);
       })
       .catch(() => {});
-  }, []);
+  }, [daneZewn]);
 
   /* Kropki leżą dokładnie na łuku: po ułożeniu listy mierzymy środek każdej
      zakładki i z tej samej funkcji liczymy jej przesunięcie oraz ścieżkę łuku.

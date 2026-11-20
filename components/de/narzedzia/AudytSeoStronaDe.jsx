@@ -37,7 +37,7 @@ const zewn = { ...s.podkreslenie };
 
 // Zrzut przykładowego wyniku z trybu demo (NEXT_PUBLIC_NARZEDZIA_DEMO=1) z niemieckim interfejsem; domena example.com,
 // ocena i problemy to dane demonstracyjne, a podpis mówi to wprost. Plik powstaje w kroku renderu (RAPORT de-narzedzia).
-const ZRZUT = { src: '/images/narzedzia/przyklady/kostenloser-seo-audit-beispielergebnis.webp', width: 1200, height: 1480 };
+const ZRZUT = { src: '/images/narzedzia/przyklady/kostenloser-seo-audit-beispielergebnis-2026-11-19.webp', width: 1200, height: 1638 };
 
 const FAQ = [
   { id: 'audyt-seo-za-darmo', question: 'Ist das kostenlose SEO Audit wirklich kostenlos?', answer: 'Ja. Punktzahl, Kategorien und die drei wichtigsten Probleme sehen Sie sofort und ohne Anmeldung. Die vollständige Problemliste mit den Adressen der Unterseiten zeigen wir Ihnen, nachdem Sie Ihre E-Mail-Adresse angegeben haben; dorthin schicken wir auch den Bericht. Für die Anmeldung zum Newsletter gibt es keinen Zwang: Das Ergebnis erhalten Sie in jedem Fall.' },
@@ -106,7 +106,7 @@ export default function AudytSeoStronaDe() {
             {...ZRZUT}
             sizes="(max-width: 700px) 100vw, 640px"
             alt="Kostenloser SEO Audit: Beispielergebnis für example.com mit einer Punktzahl von 1 bis 100, vier Kategorien und den wichtigsten Problemen"
-            podpis="Beispielergebnis mit Demodaten: Die Domain example.com, die Punktzahl und die Probleme sind beispielhaft und stammen nicht von einer echten Website. Sichtbar ist, was Sie sofort erhalten; die vollständige Problemliste zeigen wir nach Angabe Ihrer E-Mail-Adresse. Screenshot vom 18.11.2026."
+            podpis="Beispielergebnis mit Demodaten: Die Domain example.com, die Punktzahl und die Probleme sind beispielhaft und stammen nicht von einer echten Website. Sichtbar ist, was Sie sofort erhalten; die vollständige Problemliste zeigen wir nach Angabe Ihrer E-Mail-Adresse. Screenshot vom 19.11.2026."
           />
         </div>
       </CoDostajesz>
