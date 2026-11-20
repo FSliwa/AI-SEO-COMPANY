@@ -3,16 +3,7 @@
   "_wydanie": {
     "data": "2026-11-20",
     "zmienione": [
-      "https://www.ai-seo-company.pl/",
-      "https://www.ai-seo-company.pl/cennik-pozycjonowania",
-      "https://www.ai-seo-company.pl/en",
-      "https://www.ai-seo-company.pl/en/local-seo-warsaw",
-      "https://www.ai-seo-company.pl/en/seo-pricing",
-      "https://www.ai-seo-company.pl/en/seo-services",
-      "https://www.ai-seo-company.pl/en/web-design",
-      "https://www.ai-seo-company.pl/pozycjonowanie-stron-internetowych",
-      "https://www.ai-seo-company.pl/projektowanie-stron-internetowych",
-      "https://www.ai-seo-company.pl/seo-lokalne-warszawa"
+      "https://www.ai-seo-company.pl/en/tools/llms-txt-generator"
     ],
     "usuniete": []
   },
@@ -122,7 +113,7 @@
     "https://www.ai-seo-company.pl/en/tools/free-seo-audit": {"lastmod":"2026-11-20","tresc":"2026-11-20"},
     "https://www.ai-seo-company.pl/en/tools/internal-linking-template": {"lastmod":"2026-11-20","tresc":"2026-11-19","pierwszy":"2026-11-12"},
     "https://www.ai-seo-company.pl/en/tools/keyword-research-template": {"lastmod":"2026-11-20","tresc":"2026-11-18","pierwszy":"2026-11-12"},
-    "https://www.ai-seo-company.pl/en/tools/llms-txt-generator": {"lastmod":"2026-11-19","tresc":"2026-11-19"},
+    "https://www.ai-seo-company.pl/en/tools/llms-txt-generator": {"lastmod":"2026-11-20","tresc":"2026-11-20"},
     "https://www.ai-seo-company.pl/en/tools/local-seo-checklist": {"lastmod":"2026-11-20","tresc":"2026-11-19","pierwszy":"2026-11-12"},
     "https://www.ai-seo-company.pl/en/tools/schema-markup-examples": {"lastmod":"2026-11-20","tresc":"2026-11-18","pierwszy":"2026-11-12"},
     "https://www.ai-seo-company.pl/en/tools/seo-audit-example": {"lastmod":"2026-11-20","tresc":"2026-11-19","pierwszy":"2026-11-19"},
