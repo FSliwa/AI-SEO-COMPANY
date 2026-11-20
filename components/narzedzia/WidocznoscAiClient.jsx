@@ -350,9 +350,18 @@ export default function WidocznoscAiClient() {
                 : <>Firma pojawia się w <strong>{p.wzmianki} z {p.odpowiedzi}</strong> odpowiedzi AI na pytania klientów z branży „{p.branza}”{p.miasto ? ` (${p.miasto})` : ''}.</>}</p>
               {p.uwagaNazwy && <p className="narz-mikro" role="note">{p.uwagaNazwy}</p>}
               {p.zastrzezenie && <p className="narz-mikro">{p.zastrzezenie}</p>}
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.4rem 1.5rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 1.25rem' }}>
                 <button type="button" className="narz-link" onClick={resetuj}>{en ? 'Check another business' : 'Sprawdź inną firmę'}</button>
-                {stan.dane && <LinkWyniku narzedzie="widocznosc_ai" parametry={stan.dane} tekst={en ? 'Copy a link to this check' : 'Kopiuj link do tego sprawdzenia'} />}
+                {stan.dane && (
+                  <LinkWyniku
+                    narzedzie="widocznosc_ai"
+                    parametry={stan.dane}
+                    tekst={en ? 'Copy a link to this check' : 'Kopiuj link do tego sprawdzenia'}
+                    podsumowanie={en
+                      ? `AI visibility for ${p.firma}: ${p.wzmianki}/${p.odpowiedzi} answers (${p.wynik}/100)`
+                      : `Widoczność w AI dla ${p.firma}: ${p.wzmianki}/${p.odpowiedzi} odpowiedzi (${p.wynik}/100)`}
+                  />
+                )}
               </div>
             </div>
           </div>

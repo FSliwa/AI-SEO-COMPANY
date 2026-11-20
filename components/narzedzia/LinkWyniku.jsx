@@ -42,16 +42,40 @@ async function kopiuj(tekst) {
   }
 }
 
-export default function LinkWyniku({ parametry, narzedzie, tryb = 'wypelnij', tekst, className }) {
+export default function LinkWyniku({ parametry, narzedzie, tryb = 'wypelnij', tekst, podsumowanie, className }) {
   const en = useLocale() === 'en';
   const [stan, setStan] = useState({ status: 'idle', link: '', n: 0 });
 
-  async function klik() {
+  async function klikKopiuj() {
     const link = linkZParametrami(parametry);
     if (!link) return;
     const ok = await kopiuj(link);
     setStan((x) => ({ status: ok ? 'ok' : 'blad', link, n: x.n + 1 }));
     if (narzedzie) track('narzedzie_link_wyniku', { narzedzie });
+  }
+
+  async function klikUdostepnij() {
+    const link = linkZParametrami(parametry);
+    if (!link) return;
+    const skrot = podsumowanie ? String(podsumowanie).trim() : '';
+    if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+      try {
+        await navigator.share({
+          title: skrot || document.title,
+          text: skrot || undefined,
+          url: link,
+        });
+        setStan((x) => ({ status: 'udostepniono', link, n: x.n + 1 }));
+        if (narzedzie) track('narzedzie_udostepnij', { narzedzie, metoda: 'native' });
+        return;
+      } catch (err) {
+        if (err && err.name === 'AbortError') return;
+      }
+    }
+    const tresc = skrot ? `${skrot} - ${link}` : link;
+    const ok = await kopiuj(tresc);
+    setStan((x) => ({ status: ok ? (skrot ? 'ok_opis' : 'ok') : 'blad', link, n: x.n + 1 }));
+    if (narzedzie) track('narzedzie_udostepnij', { narzedzie, metoda: 'schowek' });
   }
 
   const opis = tryb === 'wynik'
@@ -60,14 +84,29 @@ export default function LinkWyniku({ parametry, narzedzie, tryb = 'wypelnij', te
 
   return (
     <div className={`${st.linkWyniku}${className ? ` ${className}` : ''}`}>
-      <button type="button" className={st.przyciskTekstowy} onClick={klik} data-cta={narzedzie ? `narzedzie_${narzedzie}_link` : undefined}>
-        {tekst ?? (en ? 'Copy link to this result' : 'Kopiuj link do wyniku')}
-      </button>
+      <div className={st.linkWynikuPrzyciski}>
+        <button type="button" className={st.przyciskKopiujLink} onClick={klikKopiuj} data-cta={narzedzie ? `narzedzie_${narzedzie}_link` : undefined}>
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+            <path d="M6.8 9.2a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-1.1 1.1M9.2 6.8a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l1.1-1.1" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          {tekst ?? (en ? 'Copy link to result' : 'Kopiuj link do wyniku')}
+        </button>
+        <button type="button" className={st.przyciskUdostepnij} onClick={klikUdostepnij} data-cta={narzedzie ? `narzedzie_${narzedzie}_udostepnij` : undefined}>
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+            <path d="M11 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM4.5 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM11 14.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM6.3 7.1l3-1.8M6.3 8.9l3 1.8" fill="none" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          {en ? 'Share analysis result' : 'Udostępnij wynik analizy'}
+        </button>
+      </div>
       <span className="narz-mikro" role="status" aria-live="polite">
-        {stan.status === 'ok' ? (
+        {(stan.status === 'ok' || stan.status === 'ok_opis' || stan.status === 'udostepniono') ? (
           <span key={stan.n} className="r-stan--ok">
             <svg className="r-ok-znak" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            {en ? 'Link copied. ' : 'Skopiowano link. '}
+            {stan.status === 'udostepniono'
+              ? (en ? 'Result shared. ' : 'Udostępniono wynik. ')
+              : stan.status === 'ok_opis'
+              ? (en ? 'Summary and link copied. ' : 'Skopiowano podsumowanie z linkiem. ')
+              : (en ? 'Link copied. ' : 'Skopiowano link. ')}
           </span>
         ) : null}
         {stan.status === 'blad' ? (en ? 'Copy failed, select the link: ' : 'Nie udało się skopiować, zaznacz link: ') : null}

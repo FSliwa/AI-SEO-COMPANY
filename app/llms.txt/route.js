@@ -4,7 +4,7 @@ import { BASE_URL } from '@/lib/sitemapEntries';
 import { czyOpublikowana, opublikowaneSciezki, wpisPublikacji } from '@/lib/publikacja';
 import { STRONY_EN } from '@/lib/stronyEn';
 import { TYLKO_EN, opublikowanaTylkoEn } from '@/lib/stronyTylkoEn';
-import { BIURO, SIEDZIBA, adresLinia } from '@/lib/firma';
+import { BIURO, SIEDZIBA, MAPA_GOOGLE_URL, PROFILE_FIRMY, adresLinia } from '@/lib/firma';
 
 // /llms.txt generowany z danych serwisu (T0.5, PLAN-v2 7; AV-05, AV-15 z korektą, AV-19, SA-12,
 // CB-09). Integracja 5.11.2026: zastępuje public/llms.txt (plik usunięty), żeby nowe strony
@@ -84,10 +84,14 @@ function trescLlms() {
 - Model rozliczenia: abonament miesięczny, od 1 900 zł netto (SEO Standard: 20 fraz, 2 treści, 2 linki miesięcznie; SEO Premium 2 500 zł: 50 fraz, 4 treści, 4 linki, pomiar widoczności w AI)
 - Umowa: miesięczna, wypowiedzenie e-mailem albo w panelu klienta, bez opłat aktywacyjnych i za wyjście; treści i zdobyte linki zostają u klienta; konta Google są na koncie klienta`,
 
-    `## Profile firmy poza stroną
-
-- [Clutch](https://clutch.co/profile/ai-signals-company-prosta-sp-ka-akcyjna): profil agencji w katalogu Clutch.
-- [Sortlist](https://www.sortlist.co.uk/agency/ai-signals-company): profil agencji w katalogu Sortlist.`,
+    [
+      '## Profile firmy poza stroną',
+      '',
+      `- [Profil Firmy w Google (Mapy Google)](${MAPA_GOOGLE_URL}): wizytówka biura (${BIURO.ulica}, Warszawa).`,
+      `- [Clutch](${PROFILE_FIRMY.clutch}): profil agencji w katalogu Clutch.`,
+      `- [Sortlist](${PROFILE_FIRMY.sortlist}): profil agencji w katalogu Sortlist.`,
+      ...(PROFILE_FIRMY.linkedinFirma ? [`- [LinkedIn](${PROFILE_FIRMY.linkedinFirma}): profil firmowy AI SEO COMPANY.`] : []),
+    ].join('\n'),
 
     `## Panel klienta
 

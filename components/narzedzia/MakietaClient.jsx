@@ -143,7 +143,13 @@ export default function MakietaClient() {
               )}
             </>
           )}
-          {adres ? <LinkWyniku narzedzie="makieta" parametry={{ url: adres }} /> : null}
+          {adres ? (
+            <LinkWyniku
+              narzedzie="makieta"
+              parametry={{ url: adres }}
+              podsumowanie={en ? `Website mockup proposal for ${p.domena}` : `Propozycja makiety strony dla ${p.domena}`}
+            />
+          ) : null}
           <p className="narz-mikro">{en ? 'The mockup is a design proposal built from your website’s content, not a finished website. Before launch we adapt it to your brand, photos and SEO.' : 'Makieta to propozycja wyglądu z treści Twojej strony, a nie gotowa strona. Przed wdrożeniem dopasowujemy ją do marki, zdjęć i SEO.'}</p>
         </div>
       )}

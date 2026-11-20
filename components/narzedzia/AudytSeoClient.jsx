@@ -275,9 +275,15 @@ export default function AudytSeoClient() {
                 ) : (<>Sprawdziliśmy {odmien(w.stron, ['podstronę', 'podstrony', 'podstron'])}. Znaleźliśmy {liczbaProblemow(w.liczby.bledy + w.liczby.ostrzezenia + w.liczby.uwagi)}: {odmien(w.liczby.bledy, ['błąd', 'błędy', 'błędów'])}, {odmien(w.liczby.ostrzezenia, ['ostrzeżenie', 'ostrzeżenia', 'ostrzeżeń'])} i {odmien(w.liczby.uwagi, ['uwagę', 'uwagi', 'uwag'])}.</>)}
               </p>
               {stan.historia && <Historia h={stan.historia} en={en} />}
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.4rem 1.5rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 1.25rem' }}>
                 <button type="button" className="narz-link" onClick={wroc}>{en ? 'Check another site' : 'Sprawdź inną stronę'}</button>
-                <LinkWyniku narzedzie="audyt_seo" parametry={{ url: adres.trim() || w.domena }} />
+                <LinkWyniku
+                  narzedzie="audyt_seo"
+                  parametry={{ url: adres.trim() || w.domena }}
+                  podsumowanie={en
+                    ? `SEO audit for ${w.domena}: ${w.wynik}/100 (${w.liczby.bledy} ${w.liczby.bledy === 1 ? 'error' : 'errors'}, ${w.liczby.ostrzezenia} ${w.liczby.ostrzezenia === 1 ? 'warning' : 'warnings'})`
+                    : `Audyt SEO ${w.domena}: ${w.wynik}/100 (${odmien(w.liczby.bledy, ['błąd', 'błędy', 'błędów'])}, ${odmien(w.liczby.ostrzezenia, ['ostrzeżenie', 'ostrzeżenia', 'ostrzeżeń'])})`}
+                />
               </div>
             </div>
           </div>

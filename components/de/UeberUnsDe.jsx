@@ -3,6 +3,7 @@ import { ENTITAET, GRUNDSAETZE, METHODE, TEAM, WERTE } from '@/lib/de/ueberUns';
 import { FIRMA, KONTAKT } from '@/lib/de/uslugiGemeinsam';
 import { wpisDe, maWersjeDe } from '@/lib/stronyDe';
 import { Link } from '@/i18n/routing';
+import { PROFILE_FIRMY } from '@/lib/firma';
 
 const AUTOR_ID = 'https://www.ai-seo-company.pl/o-nas#filip-sliwa';
 
@@ -20,6 +21,7 @@ export default function UeberUnsDe() {
     email: KONTAKT.mail,
     worksFor: { '@id': 'https://www.ai-seo-company.pl/#organization' },
     knowsAbout: ['Suchmaschinenoptimierung', 'Technisches SEO', 'Lokales SEO', 'Webanalyse', 'Generative Engine Optimization (GEO)'],
+    ...(PROFILE_FIRMY.linkedinAutor ? { sameAs: [PROFILE_FIRMY.linkedinAutor] } : {}),
   };
   return (
     <Seite krumen="Über uns">
@@ -34,7 +36,10 @@ export default function UeberUnsDe() {
         <Absatz>Filip Śliwa ist SEO-Spezialist bei AI SEO COMPANY und Autor der Ratgeber auf unserem Blog (polnisch und englisch). Er arbeitet an technischem SEO, lokaler Sichtbarkeit und Analytik für B2B-Unternehmen: Audits, Indexierung, Core Web Vitals, Google Unternehmensprofil und die Einrichtung der Anfragemessung.</Absatz>
         <Absatz>Wir arbeiten ohne Vertriebsmitarbeiter: Auf Nachrichten antworten wir innerhalb von 24 Stunden an Werktagen, und die Antwort kommt von der Person, die das SEO Ihrer Website betreut. Was wir getan haben, sehen Sie im Kundenportal: ein Arbeitsprotokoll mit Datum, verständliche Beschreibungen der Änderungen an der Website und die Liste der gewonnenen Links.</Absatz>
         <Absatz>Jede Methode erproben wir zuerst auf ai-seo-company.pl: eine Seitenarchitektur nach Keyword-Gruppen, polnische und englische Version, verknüpft über hreflang, und strukturierte Daten. Ergebnisse zeigen wir als Daten, nicht als Behauptungen: Die Referenzen auf unserer Startseite enthalten Screenshots aus der Google Search Console mit dem Messzeitraum jedes Projekts. Verkaufsdaten unserer Kunden veröffentlichen wir nicht, nur die Sichtbarkeit, die Sie selbst nachprüfen können.</Absatz>
-        <Absatz style={{ marginBottom: 0 }}>Kontakt: <a href={`mailto:${KONTAKT.mail}`} style={{ textDecoration: 'underline' }}>{KONTAKT.mail}</a>, Telefon <a href={KONTAKT.telHref} style={{ textDecoration: 'underline' }} data-cta="de_ueber_uns_tel">{KONTAKT.tel}</a></Absatz>
+        <Absatz style={{ marginBottom: 0 }}>
+          Kontakt: <a href={`mailto:${KONTAKT.mail}`} style={{ textDecoration: 'underline' }}>{KONTAKT.mail}</a>, Telefon <a href={KONTAKT.telHref} style={{ textDecoration: 'underline' }} data-cta="de_ueber_uns_tel">{KONTAKT.tel}</a>
+          {PROFILE_FIRMY.linkedinAutor ? <>{', '}<a href={PROFILE_FIRMY.linkedinAutor} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }} data-cta="de_ueber_uns_linkedin">LinkedIn</a></> : null}
+        </Absatz>
       </Abschnitt>
 
       <Karten titel="Unsere Werte" untertitel="Die Grundsätze, nach denen wir Erfolg aufbauen." items={WERTE} />

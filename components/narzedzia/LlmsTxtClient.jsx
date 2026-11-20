@@ -136,7 +136,9 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
   const ocena = en ? OCENA_EN : OCENA;
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null });
   const [skopiowano, setSkopiowano] = useState(false);
+  const [skopiowanoSnippet, setSkopiowanoSnippet] = useState(false);
   const [pobrano, setPobrano] = useState(false);
+  const [zKomentarzemZrodla, setZKomentarzemZrodla] = useState(true);
   const [adres, setAdres] = useState('');
   // Edytor (Z-L4): model pliku z odpowiedzi API; zmieniony = plik do pobrania składamy z modelu.
   const [edycja, setEdycja] = useState({ model: null, zmieniony: false });
@@ -148,6 +150,11 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
     const t = setTimeout(() => setSkopiowano(false), 3000);
     return () => clearTimeout(t);
   }, [skopiowano]);
+  useEffect(() => {
+    if (!skopiowanoSnippet) return undefined;
+    const t = setTimeout(() => setSkopiowanoSnippet(false), 3000);
+    return () => clearTimeout(t);
+  }, [skopiowanoSnippet]);
   useEffect(() => {
     if (!pobrano) return undefined;
     const t = setTimeout(() => setPobrano(false), 2500);
@@ -204,7 +211,35 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
   }
 
   const w = stan.wynik;
-  const plik = w ? (edycja.model && edycja.zmieniony ? zlozLlmsTxt(edycja.model, { nazwa: host(w.strona), sekcja: en ? 'Pages' : 'Strony' }) : w.llmsTxt) : '';
+  const urlNarzedzia = en
+    ? 'https://www.ai-seo-company.pl/en/tools/llms-txt-generator'
+    : 'https://www.ai-seo-company.pl/narzedzia/generator-llms-txt';
+  const komentarzZrodla = en
+    ? `<!-- Generated with the free llms.txt generator: ${urlNarzedzia} -->`
+    : `<!-- Wygenerowano w darmowym generatorze llms.txt: ${urlNarzedzia} -->`;
+  const plikBazowy = w ? (edycja.model && edycja.zmieniony ? zlozLlmsTxt(edycja.model, { nazwa: host(w.strona), sekcja: en ? 'Pages' : 'Strony' }) : w.llmsTxt) : '';
+  const plik = plikBazowy
+    ? (zKomentarzemZrodla ? `${plikBazowy.trimEnd()}\n\n${komentarzZrodla}\n` : plikBazowy)
+    : '';
+  const docelowyLlmsUrl = (() => {
+    if (!w?.strona) return '';
+    try { return new URL('/llms.txt', w.strona).href; } catch { return `${w.strona.replace(/\/$/, '')}/llms.txt`; }
+  })();
+  const snippetTekst = w
+    ? (en
+      ? `<!-- AI content index (llmstxt.org specification) -->\n- [llms.txt file for AI models](${docelowyLlmsUrl}): structured index of key pages (generated with [AI SEO COMPANY llms.txt generator](${urlNarzedzia})).`
+      : `<!-- indeks treści dla modeli AI (specyfikacja llmstxt.org) -->\n- [Plik llms.txt dla modeli AI](${docelowyLlmsUrl}): ustrukturyzowany spis podstron (wygenerowano w [generatorze llms.txt AI SEO COMPANY](${urlNarzedzia})).`)
+    : '';
+  async function kopiujSnippet() {
+    if (!snippetTekst) return;
+    try {
+      await navigator.clipboard.writeText(snippetTekst);
+      setSkopiowanoSnippet(true);
+      track('llms_snippet_copy', { lang: en ? 'en' : 'pl' });
+    } catch {
+      // brak dostepu do schowka
+    }
+  }
   const liczby = edycja.model && edycja.zmieniony ? policz(edycja.model) : null;
   function zmienModel(model) {
     setEdycja({ model, zmieniony: true });
@@ -335,6 +370,19 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
                   : `Plik po zmianach: ${linki(liczby.wPliku)}, sekcje: ${liczby.sekcji}${liczby.odznaczone ? `, odznaczone: ${liczby.odznaczone}` : ''}.`}
               </p>
             )}
+            <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.6rem', fontSize: '0.9rem', color: 'var(--w-tusz-2)', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={zKomentarzemZrodla}
+                onChange={(e) => { setZKomentarzemZrodla(e.target.checked); setSkopiowano(false); }}
+                style={{ accentColor: 'var(--color-primary)' }}
+              />
+              <span>
+                {en
+                  ? 'Include a discreet source comment at the end of the file (<!-- ... -->)'
+                  : 'Dołącz na końcu pliku dyskretny komentarz źródła (<!-- ... -->)'}
+              </span>
+            </label>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '0.75rem', alignItems: 'center' }}>
               <button type="button" className="btn btn-primary" style={malyPrzycisk} onClick={kopiuj} data-cta="llms_copy">{en ? 'Copy' : 'Kopiuj'}</button>
               <button type="button" className="btn btn-secondary" style={malyPrzycisk} onClick={() => { pobierzPlik(plik); setPobrano(true); }} data-cta={edycja.zmieniony ? 'llms_download_edited' : 'llms_download'}>
@@ -352,7 +400,32 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
                 )}
               </span>
             </div>
-            <LinkWyniku narzedzie="llms_txt" parametry={{ url: adres || w.strona }} />
+            <LinkWyniku
+              narzedzie="llms_txt"
+              parametry={{ url: adres || w.strona }}
+              podsumowanie={en
+                ? `llms.txt file and AI bot check for ${host(w.strona)} (${liczby ? liczby.wPliku : w.wPliku} links)`
+                : `Plik llms.txt i test botów AI dla ${host(w.strona)} (${liczby ? liczby.wPliku : w.wPliku} linków)`}
+            />
+            <div className={st.snippetKarta}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                <strong style={{ fontSize: '0.92rem', color: 'var(--color-text-dark)' }}>
+                  {en ? 'Ready llms.txt snippet (for project README or docs)' : 'Gotowy snippet llms.txt (do README projektu lub dokumentacji)'}
+                </strong>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <button type="button" className={st.przyciskKopiujLink} onClick={kopiujSnippet} data-cta="llms_snippet_copy">
+                    {en ? 'Copy snippet' : 'Kopiuj snippet'}
+                  </button>
+                  {skopiowanoSnippet && (
+                    <span className="r-stan--ok" role="status" aria-live="polite" style={{ color: '#047857', fontSize: '0.85rem', fontWeight: 600 }}>
+                      <svg className="r-ok-znak" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      {en ? 'Snippet copied' : 'Skopiowano snippet'}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <pre className={st.snippetKod}><code>{snippetTekst}</code></pre>
+            </div>
 
             {w.pominiete.length > 0 && (
               <ListaAdresow

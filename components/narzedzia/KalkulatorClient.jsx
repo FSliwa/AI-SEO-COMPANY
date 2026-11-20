@@ -499,7 +499,14 @@ export default function KalkulatorClient() {
             {en ? ' shows what holds your site back' : ' pokaże, co blokuje stronę'}
             {SPRAWDZARKA_DZIALA ? <>{en ? ', and the ' : ', a '}<Link href="/sprawdz-widocznosc-w-ai" className="narz-link">{en ? 'AI visibility check' : 'sprawdzarka widoczności w AI'}</Link>{en ? ' whether AI models mention your business.' : ', czy modele AI wymieniają Twoją firmę.'}</> : '.'}
           </p>
-          <LinkWyniku narzedzie="kalkulator" tryb="wynik" parametry={parametryWyniku()} />
+          <LinkWyniku
+            narzedzie="kalkulator"
+            tryb="wynik"
+            parametry={parametryWyniku()}
+            podsumowanie={en
+              ? `Estimated loss without SEO and AI visibility: ${fmt(W.min.zysk)} to ${fmt(W.max.zysk)} per month`
+              : `Szacowana strata bez SEO i widoczności w AI: ${fmt(W.min.zysk)} do ${fmt(W.max.zysk)} miesięcznie`}
+          />
 
           <BramkaEmail
             narzedzie="kalkulator"

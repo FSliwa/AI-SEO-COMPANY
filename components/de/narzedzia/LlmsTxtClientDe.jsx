@@ -91,7 +91,9 @@ function ListaAdresow({ id, tytul, opis, elementy }) {
 export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = null }) {
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null });
   const [skopiowano, setSkopiowano] = useState(false);
+  const [skopiowanoSnippet, setSkopiowanoSnippet] = useState(false);
   const [pobrano, setPobrano] = useState(false);
+  const [zKomentarzemZrodla, setZKomentarzemZrodla] = useState(true);
   const [adres, setAdres] = useState('');
   const [edycja, setEdycja] = useState({ model: null, zmieniony: false });
   const poleRef = useRef(null);
@@ -103,6 +105,11 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
     const t = setTimeout(() => setSkopiowano(false), 3000);
     return () => clearTimeout(t);
   }, [skopiowano]);
+  useEffect(() => {
+    if (!skopiowanoSnippet) return undefined;
+    const t = setTimeout(() => setSkopiowanoSnippet(false), 3000);
+    return () => clearTimeout(t);
+  }, [skopiowanoSnippet]);
   useEffect(() => {
     if (!pobrano) return undefined;
     const t = setTimeout(() => setPobrano(false), 2500);
@@ -158,7 +165,29 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
   }
 
   const w = stan.wynik;
-  const plik = w ? (edycja.model && edycja.zmieniony ? zlozLlmsTxt(edycja.model, { nazwa: host(w.strona), sekcja: 'Seiten' }) : w.llmsTxt) : '';
+  const urlNarzedzia = 'https://www.ai-seo-company.pl/de/tools/llms-txt-generator';
+  const komentarzZrodla = `<!-- Erstellt mit dem kostenlosen llms.txt-Generator: ${urlNarzedzia} -->`;
+  const plikBazowy = w ? (edycja.model && edycja.zmieniony ? zlozLlmsTxt(edycja.model, { nazwa: host(w.strona), sekcja: 'Seiten' }) : w.llmsTxt) : '';
+  const plik = plikBazowy
+    ? (zKomentarzemZrodla ? `${plikBazowy.trimEnd()}\n\n${komentarzZrodla}\n` : plikBazowy)
+    : '';
+  const docelowyLlmsUrl = (() => {
+    if (!w?.strona) return '';
+    try { return new URL('/llms.txt', w.strona).href; } catch { return `${w.strona.replace(/\/$/, '')}/llms.txt`; }
+  })();
+  const snippetTekst = w
+    ? `<!-- Inhaltsverzeichnis für KI-Modelle (Spezifikation llmstxt.org) -->\n- [Datei llms.txt für KI-Modelle](${docelowyLlmsUrl}): strukturiertes Seitenverzeichnis (erstellt mit dem [llms.txt-Generator von AI SEO COMPANY](${urlNarzedzia})).`
+    : '';
+  async function kopiujSnippet() {
+    if (!snippetTekst) return;
+    try {
+      await navigator.clipboard.writeText(snippetTekst);
+      setSkopiowanoSnippet(true);
+      track('llms_snippet_copy', { lang: 'de' });
+    } catch {
+      // brak dostepu do schowka
+    }
+  }
   const liczby = edycja.model && edycja.zmieniony ? policz(edycja.model) : null;
   function zmienModel(model) {
     setEdycja({ model, zmieniony: true });
@@ -271,6 +300,15 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
                 {`Datei nach Ihren Änderungen: ${links(liczby.wPliku)} in ${liczby.sekcji} ${liczby.sekcji === 1 ? 'Abschnitt' : 'Abschnitten'}${liczby.odznaczone ? `, ${liczby.odznaczone} deaktiviert` : ''}.`}
               </p>
             )}
+            <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.6rem', fontSize: '0.9rem', color: 'var(--w-tusz-2)', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={zKomentarzemZrodla}
+                onChange={(e) => { setZKomentarzemZrodla(e.target.checked); setSkopiowano(false); }}
+                style={{ accentColor: 'var(--color-primary)' }}
+              />
+              <span>Dezenten Quellenhinweis am Dateiende anfügen (&lt;!-- ... --&gt;)</span>
+            </label>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '0.75rem', alignItems: 'center' }}>
               <button type="button" className="btn btn-primary" style={malyPrzycisk} onClick={kopiuj} data-cta="llms_copy">Kopieren</button>
               <button type="button" className="btn btn-secondary" style={malyPrzycisk} onClick={() => { pobierzPlik(plik); setPobrano(true); }} data-cta={edycja.zmieniony ? 'llms_download_edited' : 'llms_download'}>
@@ -288,7 +326,30 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
                 )}
               </span>
             </div>
-            <LinkWyniku narzedzie="llms_txt" parametry={{ url: adres || w.strona }} />
+            <LinkWyniku
+              narzedzie="llms_txt"
+              parametry={{ url: adres || w.strona }}
+              podsumowanie={`Datei llms.txt und KI-Bot-Prüfung für ${host(w.strona)} (${liczby ? liczby.wPliku : w.wPliku} Links)`}
+            />
+            <div className={st.snippetKarta}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                <strong style={{ fontSize: '0.92rem', color: 'var(--color-text-dark)' }}>
+                  Fertiges llms.txt-Snippet (für Projektdokumentation oder README)
+                </strong>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <button type="button" className={st.przyciskKopiujLink} onClick={kopiujSnippet} data-cta="llms_snippet_copy">
+                    Snippet kopieren
+                  </button>
+                  {skopiowanoSnippet && (
+                    <span className="r-stan--ok" role="status" aria-live="polite" style={{ color: '#047857', fontSize: '0.85rem', fontWeight: 600 }}>
+                      <svg className="r-ok-znak" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      Snippet kopiert
+                    </span>
+                  )}
+                </div>
+              </div>
+              <pre className={st.snippetKod}><code>{snippetTekst}</code></pre>
+            </div>
 
             {w.pominiete.length > 0 && (
               <ListaAdresow

@@ -1,5 +1,6 @@
 import { BASE_URL } from '@/lib/sitemapEntries';
 import { DE_AKTYWNE, STRONY_DE, hrefDe, opublikowaneSciezkiDe } from '@/lib/stronyDe';
+import { BIURO, MAPA_GOOGLE_URL, PROFILE_FIRMY } from '@/lib/firma';
 
 // Deutsche llms.txt unter /de/llms.txt (18.11.2026). Wird NUR bei aktiver deutscher Version
 // ausgeliefert (lib/stronyDe.js: DE_OPUBLIKOWANE oder NEXT_PUBLIC_PODGLAD_DE=1); sonst 404, und
@@ -25,9 +26,19 @@ function inhalt() {
     const zeilen = klucze.filter((k) => gruppen.includes(STRONY_DE[k].grupa)).map(zeile);
     return zeilen.length ? `## ${titel}\n\n${zeilen.join('\n')}` : null;
   }).filter(Boolean);
+  const profile = [
+    '## Externe Unternehmensprofile',
+    '',
+    `- [Google Unternehmensprofil (Google Maps)](${MAPA_GOOGLE_URL}): Bürostandort ${BIURO.ulica}, Warschau.`,
+    `- [Clutch](${PROFILE_FIRMY.clutch}): Agenturprofil auf Clutch.`,
+    `- [Sortlist](${PROFILE_FIRMY.sortlist}): Agenturprofil auf Sortlist.`,
+    ...(PROFILE_FIRMY.linkedinFirma ? [`- [LinkedIn](${PROFILE_FIRMY.linkedinFirma}): Unternehmensprofil von AI SEO COMPANY.`] : []),
+  ].join('\n');
   return `# AI SEO COMPANY (Deutsch)
 
 > AI SEO COMPANY ist eine SEO Agentur aus Warschau mit Schwerpunkt Generative Engine Optimization (GEO): SEO Audits, B2B SEO, Optimierung für Antworten von ChatGPT, Gemini, Perplexity und Google AI Overviews sowie kostenlose Tools. Betreiber: AI SIGNALS COMPANY Prosta Spółka Akcyjna, ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, KRS 0001239983.
+
+${profile}
 
 ${abschnitte.join('\n\n')}
 

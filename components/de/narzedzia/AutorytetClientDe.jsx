@@ -296,7 +296,11 @@ export default function AutorytetClientDe() {
           )}
 
           {p.pozostalo != null && <p className="narz-mikro">{`Heute noch übrig von Ihrer IP-Adresse: ${p.pozostalo} von ${p.limit ?? AUTORYTET.limitIp} Domain-Prüfungen.`}</p>}
-          <LinkWyniku narzedzie="autorytet" parametry={{ url: p.domena, porownaj: konkurenci.map((k) => k.domena).join(',') || null }} />
+          <LinkWyniku
+            narzedzie="autorytet"
+            parametry={{ url: p.domena, porownaj: konkurenci.map((k) => k.domena).join(',') || null }}
+            podsumowanie={`Domain-Autorität ${p.domena}: ${wartosc(p)}/100`}
+          />
 
           <BramkaEmail
             narzedzie="autorytet"

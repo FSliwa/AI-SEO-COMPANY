@@ -116,13 +116,88 @@
   background: var(--color-bg-surface);
 }
 
-/* Z-06: przycisk „Kopiuj link do wyniku” i przykład pod polem. */
+/* Z-06 + 20.11.2026: pasek akcji „Kopiuj link / Udostępnij wynik analizy” oraz „Przykład” pod polem. */
 .linkWyniku {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 0;
+}
+:global(.narz-wynik-glowa) .linkWyniku {
+  margin: 0.25rem 0 0;
+}
+.linkWynikuPrzyciski {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin: 0.75rem 0 0;
+}
+.przyciskKopiujLink,
+.przyciskUdostepnij {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+.przyciskKopiujLink {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  color: var(--color-text-dark, #0f172a);
+}
+.przyciskKopiujLink:hover {
+  border-color: var(--color-primary, #d85a30);
+  background: var(--w-brzoskwinia-tlo, #fdf2ec);
+}
+.przyciskUdostepnij {
+  background: var(--w-brzoskwinia-tlo, #fdf2ec);
+  border: 1px solid rgba(216, 90, 48, 0.34);
+  color: var(--color-primary, #b93f18);
+}
+.przyciskUdostepnij:hover {
+  border-color: var(--color-primary, #d85a30);
+  background: rgba(243, 183, 156, 0.32);
+}
+.przyciskKopiujLink:focus-visible,
+.przyciskUdostepnij:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+@media (pointer: coarse) {
+  .przyciskKopiujLink,
+  .przyciskUdostepnij {
+    min-height: 42px;
+  }
+}
+.snippetKarta {
+  margin-top: 1rem;
+  padding: 0.9rem 1.05rem;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: var(--color-bg-surface, #f8fafc);
+}
+.snippetKod {
+  margin: 0.55rem 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: #ffffff;
+  font-family: var(--w-mono, ui-monospace, monospace);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--w-tusz, #0f172a);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .przyciskTekstowy {
   appearance: none;

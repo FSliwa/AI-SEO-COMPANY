@@ -232,9 +232,13 @@ export default function AudytSeoClientDe() {
                 {`Wir haben ${unterseiten(w.stron)} geprüft und ${liczbaProblemow(w.liczby.bledy + w.liczby.ostrzezenia + w.liczby.uwagi)} gefunden: ${w.liczby.bledy} Fehler, ${w.liczby.ostrzezenia} ${w.liczby.ostrzezenia === 1 ? 'Warnung' : 'Warnungen'} und ${w.liczby.uwagi} ${w.liczby.uwagi === 1 ? 'Hinweis' : 'Hinweise'}.`}
               </p>
               {stan.historia && <Historia h={stan.historia} />}
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.4rem 1.5rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 1.25rem' }}>
                 <button type="button" className="narz-link" onClick={wroc}>Andere Website prüfen</button>
-                <LinkWyniku narzedzie="audyt_seo" parametry={{ url: adres.trim() || w.domena }} />
+                <LinkWyniku
+                  narzedzie="audyt_seo"
+                  parametry={{ url: adres.trim() || w.domena }}
+                  podsumowanie={`SEO-Audit ${w.domena}: ${w.wynik}/100 (${w.liczby.bledy} Fehler, ${w.liczby.ostrzezenia} ${w.liczby.ostrzezenia === 1 ? 'Warnung' : 'Warnungen'})`}
+                />
               </div>
             </div>
           </div>

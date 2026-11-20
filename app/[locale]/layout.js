@@ -12,7 +12,7 @@ import RuchUzytkownika from '@/components/RuchUzytkownika';
 import WebVitals from '@/components/WebVitals';
 import NewsletterPopupLoader from '@/components/NewsletterPopupLoader';
 import { GODZINY_JSONLD } from '@/lib/godziny';
-import { BIURO } from '@/lib/firma';
+import { BIURO, MAPA_GOOGLE_URL, PROFILE_FIRMY } from '@/lib/firma';
 import { STRONY_DE } from '@/lib/stronyDe';
 
 // Google tag konta Google Ads 230-348-6643. Identyfikator jest publiczny (widać go
@@ -178,7 +178,7 @@ const jsonLdDataPl = {
         'latitude': BIURO.lat,
         'longitude': BIURO.lon
       },
-      'hasMap': 'https://www.google.com/maps/place/?q=place_id:ChIJBbPRrkDNHkcR0Oetxw5AMFk',
+      'hasMap': MAPA_GOOGLE_URL,
       // 14.10.2026: bylo 'vatID': 'PL5253090237', ale VIES zwraca dla tego
       // numeru isValid: false, a spolki nie ma w wykazie VAT MF. NIP z KRS
       // (ten sam co w stopce) to taxID. vatID przywrocic dopiero, gdy VIES
@@ -208,12 +208,12 @@ const jsonLdDataPl = {
       // 4.11.2026: profile firmy poza stroną (modele AI i Google łączą je w jedną encję).
       // 5.11.2026 (AV-04): + Clutch (profil cytowany przez Perplexity). Nazwę wyświetlaną
       // „AI SEO COMPANY” (nazwa prawna w danych firmy) na obu profilach ustawia Filip (E1).
-      // Kolejne adresy dopisywać w dniu, w którym zwracają 200 i mają nazwę „AI SEO COMPANY”:
-      // LinkedIn firmy, kanał YouTube, Wikidata, Profil Firmy w Google (też jako hasMap, GBP-SA).
+      // Adres LinkedIn firmy czytany z PROFILE_FIRMY.linkedinFirma (lib/firma.js) - aktywny od razu po wpisaniu adresu 200 OK.
       'sameAs': [
-        'https://www.sortlist.co.uk/agency/ai-signals-company',
-        'https://clutch.co/profile/ai-signals-company-prosta-sp-ka-akcyjna'
-      ]
+        PROFILE_FIRMY.sortlist,
+        PROFILE_FIRMY.clutch,
+        PROFILE_FIRMY.linkedinFirma,
+      ].filter(Boolean)
     },
     {
       '@type': 'WebSite',

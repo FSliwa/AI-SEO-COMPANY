@@ -3,6 +3,7 @@
 import { useLocale } from 'next-intl';
 import { Reveal } from '../ScrollReveal';
 import { Link } from '@/i18n/routing';
+import { PROFILE_FIRMY } from '@/lib/firma';
 
 // Strona /o-nas byla linkowana w stopce jako sygnal E-E-A-T, ale nie padalo na
 // niej ani jedno nazwisko i nie bylo schematu Person. Jednoczesnie kazdy artykul
@@ -30,11 +31,12 @@ export default function AboutAuthor() {
     email: 'kontakt@ai-seo-company.pl',
     worksFor: { '@id': 'https://www.ai-seo-company.pl/#organization' },
     // 5.11.2026 (PLAN-v2 6.24, EEAT1; SA-07, AV-19): + GEO z rozwinięciem skrótu (to samo brzmienie
-    // co knowsAbout #organization w layout.js). sameAs dopiero z adresem profilu LinkedIn od Filipa
-    // (nie zgadujemy adresu).
+    // co knowsAbout #organization w layout.js). sameAs czytany z PROFILE_FIRMY.linkedinAutor (lib/firma.js)
+    // po podaniu potwierdzonego adresu LinkedIn przez Filipa (nie zgadujemy adresu).
     knowsAbout: isEn
       ? ['Search engine optimization', 'Technical SEO', 'Local SEO', 'Web analytics', 'AI search optimization (GEO, Generative Engine Optimization)']
       : ['Pozycjonowanie stron', 'Techniczne SEO', 'SEO lokalne', 'Analityka internetowa', 'Pozycjonowanie w AI (GEO, Generative Engine Optimization)'],
+    ...(PROFILE_FIRMY.linkedinAutor ? { sameAs: [PROFILE_FIRMY.linkedinAutor] } : {}),
   };
 
   const akapit = { fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--color-text-main)', marginBottom: '1rem' };
@@ -99,6 +101,14 @@ export default function AboutAuthor() {
               <a href="tel:+48518815055" data-cta="o_nas_autor_tel" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
                 {isEn ? '+48 518 815 055' : '518 815 055'}
               </a>
+              {PROFILE_FIRMY.linkedinAutor ? (
+                <>
+                  {', '}
+                  <a href={PROFILE_FIRMY.linkedinAutor} target="_blank" rel="noopener noreferrer" data-cta="o_nas_autor_linkedin" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                    LinkedIn
+                  </a>
+                </>
+              ) : null}
             </p>
           </div>
         </Reveal>
