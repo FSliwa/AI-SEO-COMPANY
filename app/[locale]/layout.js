@@ -236,20 +236,13 @@ import PetleWidoczne from '@/components/PetleWidoczne';
 import Typografia from '@/components/Typografia';
 import Script from 'next/script';
 
-import { Geist, Geist_Mono, Inter, Space_Grotesk } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 
-// 6.11.2026 (wyglad z makiety, DESIGN.md): Geist zamiast Inter + Space Grotesk.
-// Podzbior latin-ext jest konieczny - Inter ladowany tylko z 'latin' nie mial
-// polskich liter i "ą ę ł ż" rysowal font zastepczy. Stare zmienne --font-inter
-// i --font-space wskazuja na Geist w app/wyglad.css, wiec reguly globals.css
-// i style w komponentach dzialaja bez zmian.
+// 6.11.2026 (wyglad z makiety, DESIGN.md): Geist + Geist Mono w calym serwisie (od 21.11.2026 takze w .hero).
+// Podzbior latin-ext jest konieczny dla polskich i niemieckich znakow diakrytycznych.
+// Stare zmienne --font-inter i --font-space wskazuja na Geist w app/wyglad.css.
 const geist = Geist({ subsets: ['latin', 'latin-ext'], variable: '--font-geist', display: 'swap' });
 const geistMono = Geist_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-geist-mono', display: 'swap' });
-// 7.11.2026: hero strony glownej 1:1 z produkcja (robot 3D) - jego teksty zostaja
-// w Inter i Space Grotesk. Zmienne --font-inter/--font-space przepina na nie
-// app/wyglad.css tylko wewnatrz .hero.
-const interHero = Inter({ subsets: ['latin', 'latin-ext'], variable: '--font-inter-oryg', display: 'swap' });
-const spaceHero = Space_Grotesk({ subsets: ['latin', 'latin-ext'], variable: '--font-space-oryg', display: 'swap' });
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
@@ -265,7 +258,7 @@ export default async function RootLayout({ children, params }) {
   // /audyt-seo, ...), gdzie nikt tego pliku nie uzywa (Lighthouse 22.09).
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${geist.variable} ${geistMono.variable}`}>
       <head>
         <link rel="icon" href="/ai-seo-company-logotyp.svg" type="image/svg+xml" />
         <script
@@ -328,7 +321,7 @@ export default async function RootLayout({ children, params }) {
           `}
         </Script>
       </head>
-      <body className={`${geist.variable} ${geistMono.variable} ${interHero.variable} ${spaceHero.variable}`}>
+      <body>
         <NextIntlClientProvider messages={messages}>
           <KursorWgTla />
           <PetleWidoczne />

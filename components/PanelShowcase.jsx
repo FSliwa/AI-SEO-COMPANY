@@ -34,7 +34,8 @@ const IKONY = [
 // na srodku, opisy po prawej. Tresc bez zmian: te same zrzuty z tymi samymi
 // alt, te same tytuly i opisy, te same dwa przyciski - zmienil sie uklad.
 export default function PanelShowcase() {
-  const lang = useLocale() === 'en' ? 'en' : 'pl';
+  const locale = useLocale();
+  const lang = locale === 'en' ? 'en' : 'pl';
   return (
     <section className="panel-showcase cursor-light w-ciemne" data-petla="" id={lang === 'pl' ? 'panel-klienta' : 'client-portal'}>
       <div className="container panel-uklad">
@@ -57,8 +58,9 @@ export default function PanelShowcase() {
             </Link>
           </div>
           <p className="panel-zaufanie">
-            <span className="panel-zaufanie-kropka" aria-hidden="true" />
-            {lang === 'pl'
+            {locale === 'de'
+              ? 'Demo-Arbeitsbereich · Ohne E-Mail-Angabe · In jedem Paket enthalten'
+              : lang === 'pl'
               ? 'Stolarnia Demo · Bez podawania e-maila · W cenie każdego pakietu'
               : 'Demo workspace · No email required · Included in every plan'}
           </p>

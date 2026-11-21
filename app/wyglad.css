@@ -59,16 +59,19 @@
   --container-width: 1360px;
 }
 
-/* Fonty: next/font daje --font-geist i --font-geist-mono na <body>. Stare
+/* Fonty: next/font daje --font-geist i --font-geist-mono na <html>. Stare
    nazwy wskazuja na Geist, wiec reguly globals.css i style inline z
-   var(--font-inter) / var(--font-space) dzialaja bez zmian. */
+   var(--font-inter) / var(--font-space) dzialaja bez zmian w calym serwisie. */
+:root,
 body {
+  --w-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
+  --w-mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-inter: var(--font-geist);
   --font-space: var(--font-geist);
-  /* Tu, nie na :root: next/font ustawia --font-geist-mono na <body>, wiec na
-     :root var() bylby pusty i etykiety tracily mono (QA 7.11.2026). */
-  --w-mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  font-family: var(--font-geist), system-ui, -apple-system, sans-serif !important;
+}
+
+body {
+  font-family: var(--w-sans) !important;
   background-color: var(--w-papier);
   color: var(--color-text-main);
 }
@@ -79,20 +82,31 @@ body::before {
   background: none !important;
 }
 
-:where(h1, h2, h3, h4, h5, h6):not(.hero *) {
-  font-family: var(--font-geist), system-ui, sans-serif !important;
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--w-sans) !important;
   font-weight: 500;
   letter-spacing: -0.035em;
   color: var(--w-tusz);
 }
 
-/* Hero strony glownej 1:1 z produkcja (robot 3D, 7.11.2026): wlasne fonty
-   i szerokosc kolumny sprzed przebudowy. */
+/* Spojny Geist Mono we wszystkich wstawkach kodu (blog, porownania, szablony, dokumenty, narzedzia) */
+code,
+pre,
+kbd,
+samp,
+.article-content code,
+.szablon-tresc code {
+  font-family: var(--w-mono) !important;
+}
+
+.hn-ekran-liczba,
+.price-amount,
+.realizacje-metryka dd {
+  font-variant-numeric: tabular-nums;
+}
+
 .hero {
-  --font-inter: var(--font-inter-oryg);
-  --font-space: var(--font-space-oryg);
   --container-width: 1240px;
-  font-family: var(--font-inter-oryg), system-ui, -apple-system, sans-serif;
 }
 
 ::selection {
@@ -1173,13 +1187,19 @@ section#contact.contact {
 /* --- Kontakt (components/Contact.jsx - takze na podstronach) --- */
 .contact {
   background-color: var(--w-noc) !important;
-  background-image: url('/images/wyglad/antena-linie-v2-640.webp') !important;
-  /* 19.11.2026: prawdziwe 2x (1280 px z oryginalu 1536x1024), AVIF i WebP; szerokosc rysunku bez zmian */
-  background-image: image-set(url('/images/wyglad/antena-linie-v2-640.avif') 1x type('image/avif'), url('/images/wyglad/antena-linie-v2-1280.avif') 2x type('image/avif'), url('/images/wyglad/antena-linie-v2-640.webp') 1x type('image/webp'), url('/images/wyglad/antena-linie-v2-1280.webp') 2x type('image/webp')) !important;
+  background-image: url('/images/wyglad/antena-linie-v3-640.webp') !important;
+  /* 21.11.2026: v3 bez fali poziomej i ze zwartymi falami pionowymi, bez nachodzenia na treść */
+  background-image: image-set(url('/images/wyglad/antena-linie-v3-640.avif') 1x type('image/avif'), url('/images/wyglad/antena-linie-v3-1280.avif') 2x type('image/avif'), url('/images/wyglad/antena-linie-v3-640.webp') 1x type('image/webp'), url('/images/wyglad/antena-linie-v3-1280.webp') 2x type('image/webp')) !important;
   background-repeat: no-repeat !important;
-  background-size: min(46vw, 640px) auto !important;
-  background-position: left -4vw bottom 0 !important;
+  background-size: min(38vw, 500px) auto !important;
+  background-position: left -2.5vw bottom 0 !important;
   color: #FFFFFF;
+}
+
+@media (min-width: 992.02px) {
+  .contact-info {
+    padding-bottom: clamp(152px, 14.5vw, 188px);
+  }
 }
 
 .contact-box {
@@ -1357,9 +1377,9 @@ section#contact.contact {
   }
 
   .contact {
-    background-size: 90vw auto !important;
+    background-size: min(82vw, 460px) auto !important;
     background-position: center bottom !important;
-    padding-bottom: calc(var(--w-sekcja) + 40vw) !important;
+    padding-bottom: calc(var(--w-sekcja) + min(42vw, 240px)) !important;
   }
 
   .footer-col {
@@ -2532,15 +2552,20 @@ main:has(.article-content) {
   filter: grayscale(1) sepia(0.35) saturate(1.5) hue-rotate(-12deg) contrast(1.05);
 }
 
-/* Telefon: antena kreskowa w kontakcie pod formularzem */
-@media (max-width: 900px) {
+/* Telefon i tablet (1 kolumna <= 992px): antena kreskowa w kontakcie czysto pod formularzem */
+@media (max-width: 992px) {
+  .contact,
   aside#kontakt.contact,
   section#kontakt.contact,
   aside#contact.contact,
   section#contact.contact {
-    padding-bottom: calc(var(--w-sekcja) + 40vw) !important;
+    background-size: min(82vw, 460px) auto !important;
+    background-position: center bottom !important;
+    padding-bottom: calc(var(--w-sekcja) + min(42vw, 240px)) !important;
   }
+}
 
+@media (max-width: 900px) {
   .results {
     padding-top: 52vw !important;
   }
@@ -5018,22 +5043,12 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
   margin: 14px 0 0 !important;
   font-family: var(--w-mono);
   font-size: 0.74rem;
   line-height: 1.45;
   letter-spacing: 0.03em;
   color: var(--w-noc-tekst) !important;
-}
-
-.panel-zaufanie-kropka {
-  flex: none;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22);
 }
 
 .panel-okno-nagl {

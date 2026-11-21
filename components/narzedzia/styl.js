@@ -16,7 +16,7 @@ export const karta = { background: 'var(--w-karta)', border: '1px solid var(--w-
 export const sekcja = { marginTop: 'clamp(2.5rem, 5vw, 4rem)' };
 export const podkreslenie = { textDecoration: 'underline' };
 export const przypis = { fontSize: '0.9rem', lineHeight: 1.55, color: 'var(--w-tusz-2)', margin: '0.5rem 0 0' };
-export const kod = { fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace', fontSize: '0.88rem', lineHeight: 1.55 };
+export const kod = { fontFamily: 'var(--w-mono)', fontSize: '0.88rem', lineHeight: 1.55 };
 
 // S1-poprawki Z-01 (12.11.2026): lead pod H1 (jedno-dwa zdania obietnicy nad formularzem) i odstęp
 // „Krótkiej odpowiedzi” pod narzędziem. Nie używać klasy hero-lead: app/globals.css ustawia jej na

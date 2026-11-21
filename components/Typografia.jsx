@@ -38,7 +38,7 @@ function sierotki(korzen) {
 }
 
 function kropki() {
-  document.querySelectorAll('.section-header h2, .faq-apple-tytul, .portfolio-title').forEach((h) => {
+  document.querySelectorAll('.section-header h2, .faq-apple-tytul, .portfolio-title, .w-kropka').forEach((h) => {
     if (/[?!.:…]\s*$/.test(h.textContent || '')) h.classList.add('bez-kropki');
   });
 }
@@ -48,8 +48,8 @@ export default function Typografia() {
   useEffect(() => {
     kropki();
     const start = () => {
-      // Sierotki to reguła polska (a, i, o, u, w, z); w tekście niemieckim nie ma jednoliterowych spójników.
-      if (document.documentElement.lang === 'de') return;
+      // Sierotki to reguła polska (a, i, o, u, w, z) - wyłączona dla EN i DE.
+      if (document.documentElement.lang !== 'pl') return;
       document.querySelectorAll('main, footer').forEach(sierotki);
     };
     const id = 'requestIdleCallback' in window ? window.requestIdleCallback(start, { timeout: 1500 }) : window.setTimeout(start, 300);

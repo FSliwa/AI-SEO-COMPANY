@@ -21,11 +21,12 @@
 //   7 tras z kazdej odslony 404 bylby zbednym ruchem. Link z next/link, nie z @/i18n/routing,
 //   bo tu nie ma NextIntlClientProvider.
 import './globals.css';
+import './wyglad.css';
 import Link from 'next/link';
-import { Inter } from 'next/font/google';
+import { Geist } from 'next/font/google';
 
-// Ta sama konfiguracja co w app/[locale]/layout.js (globals.css czyta --font-inter).
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+// Ta sama konfiguracja Geist + latin-ext co w app/[locale]/layout.js (pelna obsluga polskich znakow i deduplikacja .woff2).
+const geist = Geist({ subsets: ['latin', 'latin-ext'], variable: '--font-geist', display: 'swap' });
 
 export const metadata = {
   title: 'Nie ma takiej strony (404) - AI SEO COMPANY',
@@ -44,7 +45,7 @@ const LINKI = [
 const styl = {
   main: { position: 'relative', zIndex: 1, minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '64px 0' },
   logo: { display: 'inline-block', marginBottom: '48px' },
-  h1: { fontSize: 'clamp(2.25rem, 0.9rem + 3vw, 3rem)', lineHeight: 1.15, color: 'var(--color-text-dark)', fontWeight: 700 },
+  h1: { fontSize: 'clamp(2.25rem, 0.9rem + 3vw, 3rem)', lineHeight: 1.12, letterSpacing: '-0.04em', color: 'var(--color-text-dark)', fontWeight: 500 },
   podtytul: { marginTop: '8px', fontSize: '1.125rem', color: 'var(--color-text-muted)' },
   lead: { marginTop: '24px', maxWidth: '560px', color: 'var(--color-text-main)' },
   lista: { listStyle: 'none', marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', maxWidth: '720px' },
@@ -55,8 +56,8 @@ const styl = {
 
 export default function GlobalNotFound() {
   return (
-    <html lang="pl">
-      <body className={inter.variable}>
+    <html lang="pl" className={geist.variable}>
+      <body>
         <main style={styl.main}>
           <div className="container">
             <Link href="/" prefetch={false} style={styl.logo} aria-label="AI SEO COMPANY - strona główna">

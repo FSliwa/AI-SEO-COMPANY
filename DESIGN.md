@@ -68,8 +68,8 @@ Mapowanie fioletów makiety: `#C3A4F0`, `#B085E5` → brzoskwinia / pomarańcz,
 
 - Hero strony głównej (19.11.2026, wariant A „hero v8”): tekst po lewej, po prawej jasny panel z dryfującą
   kolumną siedmiu kafli (sześć narzędzi i panel klienta), granatowy napis SEO za kaflami od 1200 px, góry,
-  chmury i mgła z dawnego hero; robota 3D (Spline) i pomarańczowego napisu SEO już nie ma. Inter + Space
-  Grotesk tylko w `.hero`. Pliki: `components/Hero*.jsx`, `components/Hero.css`, `lib/heroNarzedzia.js`.
+  chmury i mgła z dawnego hero; robota 3D (Spline) i pomarańczowego napisu SEO już nie ma. Geist + Geist
+  Mono spójnie w całym serwisie (także w `.hero`). Pliki: `components/Hero*.jsx`, `components/Hero.css`, `lib/heroNarzedzia.js`.
 - Pod hero pas z anteną (`components/PasAnteny.jsx`): tło bez czaszy
   (`antena-tlo.webp`, góra przechodzi w czerń hero) i sama czasza
   (`antena-czasza.webp`) obracana w elewacji wokół łożyska (83,08 % / 57,31 %),
