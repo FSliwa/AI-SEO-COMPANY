@@ -14,6 +14,7 @@ import { TYLKO_EN, opublikowaneTylkoEn, opublikowanaTylkoEn, wpisTylkoEn } from 
 import AudytSeoStronaDe from '@/components/de/narzedzia/AudytSeoStronaDe';
 import GeneratorLlmsTxtDe from '@/components/de/narzedzia/GeneratorLlmsTxtDe';
 import AutorytetStronaDe from '@/components/de/narzedzia/AutorytetStronaDe';
+import KalkulatorStronaDe from '@/components/de/narzedzia/KalkulatorStronaDe';
 import SzablonStronaDe from '@/components/de/narzedzia/SzablonStronaDe';
 
 // Strony pod /narzedzia/<slug> (PLAN-v2 6.10 N1 i 6.11 S1, partia 3 / W9; TS-03; 5.11.2026).
@@ -39,6 +40,7 @@ const KOMPONENTY_DE = {
   'generator-llms-txt': GeneratorLlmsTxtDe,
   'audyt-seo': AudytSeoStronaDe,
   'autorytet-domeny': AutorytetStronaDe,
+  'kalkulator-strat-seo': KalkulatorStronaDe,
 };
 
 // 18.11.2026 (p2-audyt-przyklad): strony TYLKO po angielsku (lib/stronyTylkoEn.js) mają parametr tylko

@@ -20,15 +20,63 @@ import { Link } from '@/i18n/routing';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
+import Zrodla from '@/components/Zrodla';
+import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
 import BlogCTA from '@/components/BlogCTA';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
 
 const BASE = 'https://www.ai-seo-company.pl';
+const KLUCZ_LB = '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista';
 // 5.11.2026 (PLAN-v2 6.25 R1): checklista z tresci artykulu jako plik statyczny; /pliki/* ma
 // X-Robots-Tag: noindex (next.config.mjs), wiec PDF nie konkuruje z artykulem w wynikach.
 const CHECKLISTA_PDF = '/pliki/checklista-link-building-b2b.pdf';
+
+const FAQ_LB_B2B = [
+  {
+    id: 'ile-linkow-miesiecznie-b2b',
+    idEn: 'how-many-backlinks-per-month-b2b',
+    question: 'Ile linków miesięcznie potrzebuje firma B2B?',
+    answer: 'W segmencie B2B o wynikach decyduje trafność tematyczna i ruch źródła, a nie hurtowa liczba odnośników. Pojedyncza publikacja w piśmie branżowym daje większą wartość niż dziesiątki wpisów katalogowych. W pakietach AI SEO COMPANY budujemy regularnie 2 linki miesięcznie w SEO Standard oraz 4 linki miesięcznie w SEO Premium, wspierając podstrony ofertowe.',
+    questionEn: 'How many backlinks per month does a B2B company need?',
+    answerEn: 'In B2B markets, topical relevance and real editorial readership outweigh raw backlink volume. A single placement in a trade publication read by buyers beats dozens of directory links. At AI SEO COMPANY, ongoing packages include 2 editorial or partner links per month in SEO Standard and 4 links per month in SEO Premium.',
+  },
+  {
+    id: 'jak-oznaczac-linki-sponsorowane-google',
+    idEn: 'how-to-mark-sponsored-links-google',
+    question: 'Jak oznaczać płatne publikacje i linki zgodnie z zasadami Google?',
+    answer: 'Zasady Google dotyczące spamu uznają kupowanie lub sprzedaż linków przekazujących PageRank za naruszenie wytycznych. Każda publikacja sponsorowana, artykuł reklamowy lub płatne partnerstwo powinno mieć w kodzie atrybut rel="sponsored" (lub rel="nofollow"). Naturalne odnośniki redakcyjne oraz cytowania własnych raportów branżowych i badań rynkowych nie wymagają tego oznaczenia.',
+    questionEn: 'How should paid or sponsored B2B links be marked for Google?',
+    answerEn: 'Google Search spam policies classify buying or selling links that pass ranking signals as link spam. Any paid placement, advertorial, or compensated partnership link must include rel="sponsored" (or rel="nofollow") in the anchor tag. Genuine editorial citations earned through proprietary industry reports, benchmarks, or expert commentary require no special rel attribute.',
+  },
+  {
+    id: 'czy-wzmianki-bez-linku-pomagaja-w-ai',
+    idEn: 'do-unlinked-brand-mentions-help-ai-search',
+    question: 'Czy wzmianki o marce bez klikalnego linku pomagają w wyszukiwarkach AI?',
+    answer: 'Tak. Systemy odpowiedzi takie jak ChatGPT z wyszukiwaniem czy Perplexity budują rekomendacje na podstawie stron znalezionych w indeksie i cytują firmy regularnie wymieniane w zestawieniach, raportach i katalogach B2B (np. Clutch lub Sortlist). Spójna obecność marki w publikacjach branżowych zwiększa szansę na pojawienie się na shortliście kupującego nawet przy linkach nofollow.',
+    questionEn: 'Do unlinked brand mentions help visibility in AI search engines?',
+    answerEn: 'Yes. AI answer engines such as ChatGPT Search and Perplexity synthesize recommendations from indexed web pages and frequently cite companies listed in industry roundups, research reports, and B2B directories like Clutch or Sortlist. Consistent brand mentions in trusted trade publications help put your company on buyer shortlists even with nofollow links.',
+  },
+];
+
+const ZRODLA_LB_PL = [
+  { url: 'https://developers.google.com/search/docs/crawling-indexing/links-crawlable?hl=pl', nazwa: 'Google Search Central: Wskazówki dotyczące linków i tekstu kotwicy (anchor text)', data: '2026-11-21' },
+  { url: 'https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links?hl=pl', nazwa: 'Google Search Central: Określanie charakteru linków wychodzących (rel=sponsored, ugc, nofollow)', data: '2026-11-21' },
+  { url: 'https://developers.google.com/search/docs/essentials/spam-policies?hl=pl', nazwa: 'Google Search Central: Zasady dotyczące spamu w wyszukiwarce Google (spam linkowy)', data: '2026-11-21' },
+  { url: 'https://data.commoncrawl.org/projects/hyperlinkgraph/cc-main-2026-aug-sep-oct/index.html', nazwa: 'Common Crawl: Web Graph Aug-Oct 2026 (graf ok. 135 mln domen)', data: '2026-11-21' },
+  { url: 'https://www.ai-seo-company.pl/narzedzia/autorytet-domeny', nazwa: 'AI SEO COMPANY: Darmowy sprawdzacz autorytetu domeny 0-100 (graf Common Crawl)', data: '2026-11-21' },
+];
+
+const ZRODLA_LB_EN = [
+  { url: 'https://developers.google.com/search/docs/crawling-indexing/links-crawlable', nazwa: 'Google Search Central: SEO link best practices and anchor text', data: '2026-11-21' },
+  { url: 'https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links', nazwa: 'Google Search Central: Qualify your outbound links to Google (rel=sponsored, ugc, nofollow)', data: '2026-11-21' },
+  { url: 'https://developers.google.com/search/docs/essentials/spam-policies', nazwa: 'Google Search Central: Spam policies for Google web search (link spam)', data: '2026-11-21' },
+  { url: 'https://data.commoncrawl.org/projects/hyperlinkgraph/cc-main-2026-aug-sep-oct/index.html', nazwa: 'Common Crawl: Web Graph Aug-Oct 2026 (~135 million domains)', data: '2026-11-21' },
+  { url: 'https://www.ai-seo-company.pl/en/tools/domain-authority-checker', nazwa: 'AI SEO COMPANY: Free Domain Authority Checker 0-100 (Common Crawl graph)', data: '2026-11-21' },
+];
 
 export default async function ArticleLinkBuildingB2bPage({ params }) {
   const { locale } = await params;
@@ -47,7 +95,9 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
     { id: 'wzmianki-ai', title: 'Wzmianki marki a odpowiedzi AI' },
     { id: 'wnioski', title: 'Kluczowe wnioski' },
     { id: 'ai-seo-company', title: 'Jak podchodzimy do link buildingu w AI SEO COMPANY' },
-    { id: 'wsparcie', title: 'Jak możemy wesprzeć Twój program link buildingu B2B?' }
+    { id: 'wsparcie', title: 'Jak możemy wesprzeć Twój program link buildingu B2B?' },
+    { id: 'pytania-lb-b2b', title: 'Najczęstsze pytania' },
+    { id: 'zrodla', title: 'Źródła' }
   ];
   // 5.11.2026: spis tresci byl renderowany bez pozycji (<ArticleTOC /> bez items) - pusty
   // naglowek „Spis treści”. Teraz kazda wersja dostaje liste swoich H2 (id bez zmian).
@@ -64,7 +114,9 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
     { id: 'digital-pr', title: 'Why do digital PR and practical expertise work best in B2B?' },
     { id: 'wnioski', title: 'Key takeaways' },
     { id: 'ai-seo-company', title: 'How we approach B2B link building at AI SEO COMPANY' },
-    { id: 'wsparcie', title: 'How can we support your B2B link building program?' }
+    { id: 'wsparcie', title: 'How can we support your B2B link building program?' },
+    { id: 'pytania-lb-b2b', title: 'Frequently asked questions' },
+    { id: 'zrodla', title: 'Sources' }
   ];
   // Link do P1 tylko po publikacji porownania (bramka PLAN-v2 6.0); przed nia zdanie znika.
   const hrefP1 = hrefJesliOpublikowana('/porownania/pozycjonowanie-za-efekt-czy-abonament');
@@ -80,6 +132,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (
+        <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           
           <Reveal>
@@ -88,7 +141,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 B2B Link Building
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                Jul 27, 2026
+                July 27, 2026
               </span>
             </div>
 
@@ -96,13 +149,15 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
               color: 'var(--w-tusz)', 
-              marginBottom: '2rem', 
+              marginBottom: '1.5rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
               B2B Link Building - Strategies & Checklist for Marketers
             </h1>
+
+            <Byline sciezka={KLUCZ_LB} takzeEn />
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -115,11 +170,15 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox etykieta="Short answer">
+                Effective B2B link building in 2026 rests on three pillars: proprietary-data digital PR, ecosystem partnerships, and bylined industry articles rather than mass directories or PBNs. At AI SEO COMPANY, retainers include 2 links/month in SEO Standard and 4 links/month in SEO Premium, and you can benchmark domain authority across ~135 million Common Crawl domains free.
+              </AnswerBox>
+
               <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                 An online marketing expert presents a complete guide - B2B link building for marketers: a step-by-step strategy and checklist.
               </p>
 
-              <p style={{ marginBottom: '1.5rem' }}>Effective B2B link building is based on three pillars: data-driven digital PR, strategic industry partnerships, and precisely selected expert publications. Mass outreach to random websites doesn't work in B2B, because decision-makers verify your company through the lens of who quotes you, not how many links you have.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Effective B2B link building is based on three pillars: data-driven digital PR, strategic industry partnerships, and precisely selected expert publications. Mass outreach to random websites doesn&apos;t work in B2B, because decision-makers verify your company through the lens of who quotes you, not how many links you have.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Three actions worth starting in the first month:</p>
               <ol>
@@ -134,7 +193,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Czym jest link building B2B ===== */}
               <h2 id="czym-jest">What is B2B link building and how does it differ from B2C?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>B2B link building is the process of acquiring links from external websites that strengthen your domain's authority in the eyes of search engines and confirm the company's credibility for decision-makers. Cooperating with a professional <Link href="/">SEO agency</Link> allows this process to be systematically planned and scaled.</p>
+              <p style={{ marginBottom: '1.5rem' }}>B2B link building is the process of acquiring links from external websites that strengthen your domain&apos;s authority in the eyes of search engines and confirm the company&apos;s credibility for decision-makers. Cooperating with a professional <Link href="/">SEO agency</Link> allows this process to be systematically planned and scaled.</p>
               <p style={{ marginBottom: '1.5rem' }}>The difference compared to B2C is fundamental. In B2C, volume and mass reach matter. In B2B, a single link from an industry magazine read by 5,000 procurement directors is worth more than a hundred links from general portals. B2B buyers conduct research for weeks or months, and expert quotes and mentions in trusted industry publications directly influence which companies make the shortlist.</p>
               
               <p style={{ marginBottom: '1.5rem' }}>Three typical goals of a B2B link program:</p>
@@ -161,7 +220,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Rodzaje linków ===== */}
               <h2 id="rodzaje-linkow">What types of links have the most value in B2B?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Not every link is equal. In B2B, the hierarchy is clear and it's worth knowing before planning actions.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Not every link is equal. In B2B, the hierarchy is clear and it&apos;s worth knowing before planning actions.</p>
               <ul>
                 <li><span style={{ fontWeight: 'bold' }}>Editorial links</span> are the top of the pyramid. The editorial team of an industry magazine or portal decides to quote you because your data or expertise is truly valuable. Such links cannot be bought, and their value for SEO and brand trust is disproportionately high.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Guest articles with a byline</span> rank just below, provided they reach publications with real traffic and editorial standards. An expert article in an industry magazine simultaneously builds a link and author visibility.</li>
@@ -178,7 +237,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               <p style={{ marginBottom: '1.5rem' }}>An industry report, benchmark, or survey is the best currency for pitching. One well-prepared study can bring many natural backlinks from publications that quote your data themselves.</p>
               <p style={{ marginBottom: '0.5rem' }}>How to do it:</p>
               <ul>
-                <li>Identify a question to which your industry doesn't yet have a good data-driven answer.</li>
+                <li>Identify a question to which your industry doesn&apos;t yet have a good data-driven answer.</li>
                 <li>Collect data (customer survey, analysis of your own database, scraping public data).</li>
                 <li>Prepare a report with key findings and visualizations ready to embed.</li>
                 <li>Send the report to 20-30 journalists and editors with a personalized pitch before publishing it publicly.</li>
@@ -219,7 +278,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Jakość linku ===== */}
               <h2 id="jakosc-linku">How to assess link quality before adding it to your profile?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Not every link you can get is worth getting. The matrix below helps you decide quickly. A professional <Link href="/audyt-seo">SEO audit</Link> always includes an analysis of the existing link profile's quality.</p>
+              <p style={{ marginBottom: '1.5rem' }}>Not every link you can get is worth getting. The matrix below helps you decide quickly. A professional <Link href="/audyt-seo">SEO audit</Link> always includes an analysis of the existing link profile&apos;s quality.</p>
               <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
                   <thead>
@@ -273,7 +332,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               {/* ===== SECTION: Outsourcing ===== */}
               <h2 id="outsourcing">When to outsource link building and how to choose an agency?</h2>
-              <p style={{ marginBottom: '1.5rem' }}>Three signs it's worth reaching for an external partner - an experienced <Link href="/">SEO agency</Link>:</p>
+              <p style={{ marginBottom: '1.5rem' }}>Three signs it&apos;s worth reaching for an external partner - an experienced <Link href="/">SEO agency</Link>:</p>
               <ul>
                 <li>Lack of internal resources to conduct systematic outreach and produce expert content.</li>
                 <li>Need for faster access to a network of relationships with industry editors, which takes months to build from scratch.</li>
@@ -374,26 +433,34 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li><a href="https://featured.com/" target="_blank" rel="noopener noreferrer">Featured.com (HARO)</a> (HARO, until 2025 run by Cision) - platform connecting journalists with experts.</li>
                 <li><a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> - database of journalists and industry editors.</li>
                 <li><a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a> / <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> - monitoring brand mentions and new links in real time.</li>
+                <li><Link href="/narzedzia/autorytet-domeny">Free domain authority checker</Link> - 0-100 score from the public Common Crawl link graph (~135 million domains) and comparison against up to 3 competitors.</li>
               </ul>
 
-              <p style={{ marginBottom: '1.5rem' }}>How to organize a pilot: choose one tactic (e.g., broken link building or partner outreach), define 10-15 targets, run the campaign for 4-6 weeks, and evaluate the response rate and publication conversion. Pilot results provide a real basis for a decision on the program's scale.</p>
+              <p style={{ marginBottom: '1.5rem' }}>How to organize a pilot: choose one tactic (e.g., broken link building or partner outreach), define 10-15 targets, run the campaign for 4-6 weeks, and evaluate the response rate and publication conversion. Pilot results provide a real basis for a decision on the program&apos;s scale.</p>
 
               <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "var(--w-tusz)" }}>Recommendation</div>
               <p style={{ marginBottom: '1.5rem' }}><Link href="/">SEO Agency</Link> | Branding, Web Design & Positioning - AI SEO COMPANY</p>
-              {/* Clear CTA Block */}
-              <BlogCTA 
-  locale={locale} 
-  currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
-  customCtaTitlePl="Zbuduj silny autorytet w B2B"
-  customCtaTextPl="Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO."
-  customCtaTitleEn="Build strong authority in B2B"
-  customCtaTextEn="Want to implement an effective link acquisition strategy in your company? Let's talk about a dedicated PR and SEO strategy."
-/>
-
             </div>
           </Reveal>
         </div>
 
+        <AppleFaq faqData={FAQ_LB_B2B} title="Frequently asked questions" sectionId="pytania-lb-b2b" />
+
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="article-content">
+            <Zrodla zrodla={ZRODLA_LB_EN} en />
+            {/* Clear CTA Block */}
+            <BlogCTA 
+              locale={locale} 
+              currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
+              customCtaTitlePl="Zbuduj silny autorytet w B2B"
+              customCtaTextPl="Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO."
+              customCtaTitleEn="Build strong authority in B2B"
+              customCtaTextEn="Want to implement an effective link acquisition strategy in your company? Let's talk about a dedicated PR and SEO strategy."
+            />
+          </div>
+        </div>
+        </>
       ) : (
         <>
 
@@ -405,7 +472,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 Link Building B2B
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                Jul 27, 2026
+                27 lipca 2026
               </span>
             </div>
 
@@ -415,13 +482,15 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
               color: 'var(--w-tusz)', 
-              marginBottom: '2rem', 
+              marginBottom: '1.5rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
               {locale === 'en' ? 'B2B Link Building - Strategies & Checklist for Marketers' : 'Link building B2B dla marketerów: strategie i checklista'}
             </h1>
+
+            <Byline sciezka={KLUCZ_LB} takzeEn />
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -434,6 +503,10 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox>
+                Skuteczny link building B2B w 2026 roku łączy 3 filary: dane własne (digital PR), partnerstwa branżowe i publikacje eksperckie zamiast masowych katalogów czy sieci PBN. W AI SEO COMPANY pakiety obejmują 2 linki miesięcznie w SEO Standard i 4 linki w SEO Premium, a siłę profilu na grafie Common Crawl (ok. 135 mln domen) sprawdzisz za darmo.
+              </AnswerBox>
+
               <p style={{ fontSize: '1.4rem', color: 'var(--w-tusz)', lineHeight: 1.5, marginBottom: '2.5rem', fontWeight: 500, letterSpacing: '-0.01em' }}>
                 Kompletny przewodnik dla marketerów: strategie linkowania B2B i checklista krok po kroku, także do pobrania w PDF.
               </p>
@@ -724,20 +797,28 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
                 <li><a href="https://featured.com/" target="_blank" rel="noopener noreferrer">Featured.com (HARO)</a> (HARO, do 2025 roku prowadzony przez Cision) - platforma łącząca dziennikarzy z ekspertami.</li>
                 <li><a href="https://muckrack.com/" target="_blank" rel="noopener noreferrer">Muck Rack</a> - baza dziennikarzy i redaktorów branżowych.</li>
                 <li><a href="https://www.google.com/alerts" target="_blank" rel="noopener noreferrer">Google Alerts</a> / <a href="https://ahrefs.com/alerts" target="_blank" rel="noopener noreferrer">Ahrefs Alerts</a> - monitoring wzmianek o marce i nowych linków w czasie rzeczywistym.</li>
+                <li><Link href="/narzedzia/autorytet-domeny">Darmowy sprawdzacz autorytetu domeny</Link> - wynik 0-100 na publicznym grafie linków Common Crawl (ok. 135 mln domen) oraz porównanie z maksymalnie 3 konkurentami.</li>
               </ul>
 
               <p style={{ marginBottom: '1.5rem' }}>Jak zorganizować pilotaż: wybierz jedną taktykę (np. broken link building lub outreach partnerski), zdefiniuj 10-15 celów, uruchom kampanię przez 4-6 tygodni i oceń wskaźnik odpowiedzi oraz konwersję do publikacji. Wyniki pilotażu dają realną podstawę do decyzji o skali programu.</p>
-
-              <BlogCTA 
-  locale={locale} 
-  currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
-  customCtaTitlePl="Zbuduj silny autorytet w B2B"
-  customCtaTextPl="Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO."
-  customCtaTitleEn="Build strong authority in B2B"
-  customCtaTextEn="Want to implement an effective link acquisition strategy in your company? Let's talk about a dedicated PR and SEO strategy."
-/>
             </div>
           </Reveal>
+        </div>
+
+        <AppleFaq faqData={FAQ_LB_B2B} title="Najczęstsze pytania" sectionId="pytania-lb-b2b" />
+
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="article-content">
+            <Zrodla zrodla={ZRODLA_LB_PL} />
+            <BlogCTA 
+              locale={locale} 
+              currentSlug="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista" 
+              customCtaTitlePl="Zbuduj silny autorytet w B2B"
+              customCtaTextPl="Chcesz wdrożyć skuteczną strategię pozyskiwania linków w swojej firmie? Porozmawiajmy o dedykowanej strategii PR i SEO."
+              customCtaTitleEn="Build strong authority in B2B"
+              customCtaTextEn="Want to implement an effective link acquisition strategy in your company? Let's talk about a dedicated PR and SEO strategy."
+            />
+          </div>
         </div>
       
         </>

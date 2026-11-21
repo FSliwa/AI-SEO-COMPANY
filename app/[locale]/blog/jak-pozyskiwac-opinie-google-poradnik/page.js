@@ -43,7 +43,8 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'co-mowia-eksperci', title: 'Co mówią eksperci o personalizacji i automatyzacji w 2026' },
     { id: 'kluczowe-wnioski', title: 'Kluczowe wnioski' },
     { id: 'dlaczego-uczciwe-opinie', title: 'Dlaczego uczciwe opinie opłacają się bardziej, niż myślisz' },
-    { id: 'ai-seo-company-wdrozy', title: 'AI SEO COMPANY wdroży ten proces za Ciebie' }
+    { id: 'ai-seo-company-wdrozy', title: 'AI SEO COMPANY wdroży ten proces za Ciebie' },
+    { id: 'reviews-faq-pl', title: 'Najczęstsze pytania o opinie Google' }
   ];
 
   const tocItemsEn = [
@@ -55,11 +56,50 @@ export default async function ArticleReviewsPage({ params }) {
     { id: 'jak-odpowiadac', title: 'How to reply to reviews to gain credibility' },
     { id: 'falszywa-opinia', title: 'When a review is fake or violates rules - what to do' },
     { id: 'automatyzacja-i-kpi', title: 'Automation and KPIs: what to measure and test' },
-    { id: 'co-mowia-eksperci', title: 'What experts say about personalization and automation in' },
+    { id: 'co-mowia-eksperci', title: 'What experts say about personalization and automation in 2026' },
     { id: 'kluczowe-wnioski', title: 'Key Takeaways' },
     { id: 'dlaczego-uczciwe-opinie', title: 'Why honest reviews pay off more than you think' },
-    { id: 'ai-seo-company-wdrozy', title: 'AI SEO COMPANY will implement this process for you' }
+    { id: 'ai-seo-company-wdrozy', title: 'AI SEO COMPANY will implement this process for you' },
+    { id: 'reviews-faq-en', title: 'Google reviews FAQ' }
   ];
+
+  const faqPl = [
+    {
+      q: 'Czy można kupić opinie Google?',
+      a: 'Nie. Zasady Google zabraniają fałszywych i opłacanych recenzji oraz dawania rabatów lub prezentów w zamian za opinię. Kupione wpisy są usuwane przez filtry, a Profil Firmy może dostać ograniczenie widoczności lub zawieszenie.',
+    },
+    {
+      q: 'Jak usunąć nieprawdziwą opinię w Google?',
+      a: 'Właściciel firmy nie może sam skasować cudzej recenzji: w panelu Profilu Firmy w Google zgłaszasz nieprawdziwą opinię naruszającą zasady do moderacji (np. spam, fałszywa treść, konflikt interesów), a pod wpisem zostawiasz krótką, rzeczową odpowiedź. Sam autor może w każdej chwili edytować lub usunąć własną opinię.',
+    },
+    {
+      q: 'Skąd wziąć bezpośredni link do wystawienia opinii Google?',
+      a: 'Zaloguj się do Profilu Firmy w Google, wybierz przycisk „Poproś o opinie” (dawniej „Udostępnij formularz opinii” / „Zdobywaj więcej opinii”), skopiuj wygenerowany krótki link i wyślij go klientowi e-mailem albo SMS-em 24-48 godzin po wykonanej usłudze.',
+    },
+  ];
+
+  const faqEn = [
+    {
+      q: 'Can I buy Google reviews?',
+      a: 'No. Google’s policy strictly prohibits fake and incentivized reviews. Bought reviews can be removed automatically, and the Business Profile can face visibility restrictions or suspension. Ask real customers instead using a direct review link.',
+    },
+    {
+      q: 'How do I remove a fake Google review?',
+      a: 'A business owner cannot delete someone else’s review directly: flag the policy-violating review for moderation inside your Google Business Profile panel (for example spam, fake engagement or conflict of interest) and post a calm, factual public reply while Google reviews the report. Only the author can edit or delete their own review at any time.',
+    },
+    {
+      q: 'How do I get a direct Google review link?',
+      a: 'Sign in to your Google Business Profile, click “Ask for reviews” (“Share review form” / “Get more reviews”), copy the short URL Google generates, and send it to customers by email or SMS 24-48 hours after completing the job.',
+    },
+  ];
+
+  const faqAktywne = locale === 'en' ? faqEn : faqPl;
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale === 'en' ? 'en' : 'pl',
+    mainEntity: faqAktywne.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
 
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -69,6 +109,7 @@ export default async function ArticleReviewsPage({ params }) {
         locale={locale}
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/how-to-get-google-reviews` : `${BASE}/blog/jak-pozyskiwac-opinie-google-poradnik`]}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
@@ -119,11 +160,11 @@ export default async function ArticleReviewsPage({ params }) {
                   
                   <p>Three rules whose violation ruins the whole effort:</p>
                   <ul>
-                    <li>Do not ask for a specific rating such as "5 stars": <a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Google forbids incentives for reviews and biased reviews</a>, and an open question gets more honest content.</li>
+                    <li>Do not ask for a specific rating such as &ldquo;5 stars&rdquo;: <a href="https://support.google.com/contributionpolicy/answer/7400114" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>Google forbids incentives for reviews and biased reviews</a>, and an open question gets more honest content.</li>
                     <li>Never offer rewards, discounts, or any benefits in exchange for a positive review.</li>
                     <li>Never buy reviews. The risk is not only the removal of the review but restricting the entire profile.</li>
                   </ul>
-                  <p><em>Pro tip: Instead of "Leave us a review," write: "How do you rate our cooperation? Your honest comment will take 2 minutes and help us a lot." An open question instead of a rating request increases both conversion and review quality.</em></p>
+                  <p><em>Pro tip: Instead of &ldquo;Leave us a review,&rdquo; write: &ldquo;How do you rate our cooperation? Your honest comment will take 2 minutes and help us a lot.&rdquo; An open question instead of a rating request increases both conversion and review quality.</em></p>
 
                   <h2 id="gdzie-wyswietlaja-sie-opinie">Where Google reviews appear and why it matters</h2>
                   <p>A Google review is user-generated content (UGC) linked to a Google Business Profile. It appears in several places simultaneously: on the Google Maps listing, in the <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: '#0066cc', textDecoration: 'underline' }}>Local Pack</Link> for local queries, and in the Google Business Profile panel, and in Google Ads extensions.</p>
@@ -170,10 +211,10 @@ export default async function ArticleReviewsPage({ params }) {
                   <p>Replying to a review is not a formality. It is content visible to all potential customers reading reviews before making a decision. Respond quickly (within 24-48h) and professionally.</p>
 
                   <h2 id="falszywa-opinia">When a review is fake or violates rules - what to do</h2>
-                  <p>Assess if the review actually violates Google's policies. Report it via the Business Profile panel (<a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>official Google support</a>), document everything, and reply neutrally publicly.</p>
+                  <p>Assess if the review actually violates Google&apos;s policies. Report it via the Business Profile panel (<a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', textDecoration: 'underline' }}>official Google support</a>), document everything, and reply neutrally publicly.</p>
 
                   <h2 id="automatyzacja-i-kpi">Automation and KPIs: what to measure and test</h2>
-                  <p>Automating the review collection process doesn't mean sending massive, impersonal messages. It means triggering a precise CRM action to send a personalized message at the right time.</p>
+                  <p>Automating the review collection process does not mean sending massive, impersonal messages. It means triggering a precise CRM action to send a personalized message at the right time.</p>
 
                   <h2 id="co-mowia-eksperci">What experts say about personalization and automation in 2026</h2>
                   <p>Personalization (name, service date, service name) significantly increases the open and conversion rate. Automation must include personalized CRM fields.</p>
@@ -441,25 +482,17 @@ export default async function ArticleReviewsPage({ params }) {
               )}
               
               
-              {locale === 'en' ? (
-                <section aria-labelledby="reviews-faq-en" style={{ marginTop: '2.5rem' }}>
-                  <h2 id="reviews-faq-en">Google reviews FAQ</h2>
-                  <h3>Can I buy Google reviews?</h3>
-                  <p>No. Google’s policy strictly prohibits fake and incentivized reviews. Bought reviews can be removed automatically, and the Business Profile can face visibility restrictions or suspension. Ask real customers instead using a direct review link.</p>
-                  <h3>How do I get a direct Google review link?</h3>
-                  <p>Sign in to your Google Business Profile, select “Ask for reviews” (Read reviews → Get more reviews), copy the short URL Google generates, and send it to customers by email or SMS 24-48 hours after completing the job.</p>
-                </section>
-              ) : (
-                <section aria-labelledby="reviews-faq-pl" style={{ marginTop: '2.5rem' }}>
-                  <h2 id="reviews-faq-pl">Najczęstsze pytania o opinie Google</h2>
-                  <h3>Czy można kupić opinie Google?</h3>
-                  <p>Nie. Zasady Google zabraniają fałszywych i opłacanych recenzji oraz rabatów za opinię. Kupione wpisy są usuwane przez filtry, a Profil Firmy może dostać ograniczenie wyświetlania lub blokadę.</p>
-                  <h3>Jak usunąć opinię Google?</h3>
-                  <p>Właściciel firmy nie może sam skasować cudzej recenzji: w panelu Profilu Firmy zgłaszasz opinię naruszającą zasady Google do moderacji, natomiast sam autor może w każdej chwili edytować lub usunąć własny wpis.</p>
-                  <h3>Jak wygenerować link do opinii Google?</h3>
-                  <p>W panelu Profilu Firmy w Google kliknij „Poproś o opinie” (lub „Zdobywaj więcej opinii”), skopiuj wygenerowany krótki link i wyślij go klientowi e-mailem albo SMS-em po zakończonej usłudze.</p>
-                </section>
-              )}
+              <section aria-labelledby={locale === 'en' ? 'reviews-faq-en' : 'reviews-faq-pl'} style={{ marginTop: '2.5rem' }}>
+                <h2 id={locale === 'en' ? 'reviews-faq-en' : 'reviews-faq-pl'}>
+                  {locale === 'en' ? 'Google reviews FAQ' : 'Najczęstsze pytania o opinie Google'}
+                </h2>
+                {faqAktywne.map((item) => (
+                  <div key={item.q}>
+                    <h3>{item.q}</h3>
+                    <p>{item.a}</p>
+                  </div>
+                ))}
+              </section>
 
               <div style={{ marginTop: '3rem', padding: '2rem', background: '#F9F9F9', borderRadius: '12px', border: '1px solid var(--w-linia)' }}>
                 <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600, color: 'var(--w-tusz)' }}>{locale === 'en' ? 'Useful sources & references' : 'Przydatne źródła i odniesienia'}</h3>

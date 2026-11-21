@@ -5,7 +5,7 @@ const { STRONY_DE } = await import('../lib/stronyDe.js');
 let bledy = 0;
 const e = (m) => { console.log('BŁĄD', m); bledy++; };
 const klucze = Object.keys(STRONY_DE);
-if (klucze.length !== 23) e(`stron: ${klucze.length}, oczekiwano 23`);
+if (klucze.length !== 29) e(`stron: ${klucze.length}, oczekiwano 29`);
 if (process.argv.includes('--publikacja')) for (const [k, w] of Object.entries(STRONY_DE)) if (w.gotowa !== true) e(`${k}: gotowa !== true (nie publikować)`);
 for (const [k, w] of Object.entries(STRONY_DE)) {
   if (w.tytul.length > 60) e(`${k}: title ${w.tytul.length} znaków`);

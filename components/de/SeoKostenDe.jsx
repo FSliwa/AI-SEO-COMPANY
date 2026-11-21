@@ -29,8 +29,9 @@ export default function SeoKostenDe() {
       </Abschnitt>
       <CtaZeile />
 
-      <Abschnitt titel="Suchmaschinenoptimierung Kosten: SEO Preise im Überblick" id="ueberblick">
-        <Absatz>Die wichtigsten Kosten für Suchmaschinenoptimierung und die Leistungen einer SEO Agentur auf einen Blick. Alle Beträge sind Nettopreise in Euro, zuzüglich gesetzlicher Umsatzsteuer.</Absatz>
+      <Abschnitt titel="Suchmaschinenoptimierung Kosten: Preise pro Monat" id="ueberblick">
+        <Absatz>Die Suchmaschinenoptimierung Kosten richten sich nach dem monatlichen Leistungsumfang: Bei uns startet SEO Standard bei {e(PREISE.standard)} netto pro Monat, SEO Premium kostet {e(PREISE.premium)} netto pro Monat. Das Booster Pack ({e(PREISE.booster)} netto pro Monat, mindestens 3 Monate Laufzeit) enthält zusätzlich eine neue Website. Damit sind die laufenden Kosten der SEO Optimierung vorab klar kalkulierbar; alle Beträge sind Nettopreise in Euro zuzüglich gesetzlicher Umsatzsteuer.</Absatz>
+        <Unterueberschrift>Kosten SEO Optimierung und SEO Preise im Überblick</Unterueberschrift>
         <Tabelle
           beschriftung="Leistungen und Preise (netto)"
           spalten={['Leistung', 'Preis', 'Laufzeit und Umfang']}

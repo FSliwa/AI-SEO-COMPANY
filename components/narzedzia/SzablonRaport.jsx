@@ -407,6 +407,19 @@ const FLAGI_EN = [
   ['Data only in a PDF', 'A report is no substitute for access to Search Console and Analytics on your own account. Without it, you are left with no data history when the contract ends.'],
 ];
 
+const FAQ_WORD_EXCEL_EN = {
+  id: 'word-excel-google-sheets',
+  question: 'Can I use this template in Word, Excel or Google Sheets?',
+  answer: 'The download is a ready PDF rather than a native Word or spreadsheet file. Because the template has five compact sections and a short metrics table, you can copy or recreate its layout in Word, Excel or Google Sheets in a few minutes.',
+};
+
+function faqRaportuEnPelne() {
+  const baza = faqRaportuEn();
+  return baza.some((f) => f.id === FAQ_WORD_EXCEL_EN.id || f.question === FAQ_WORD_EXCEL_EN.question)
+    ? baza.map((f) => ((f.id === FAQ_WORD_EXCEL_EN.id || f.question === FAQ_WORD_EXCEL_EN.question) ? FAQ_WORD_EXCEL_EN : f))
+    : [...baza, FAQ_WORD_EXCEL_EN];
+}
+
 function RaportEn() {
   const strona = stronaNarzedzia('raport-seo');
   const meta = STRONY_NARZEDZI_EN['raport-seo'];
@@ -666,7 +679,7 @@ function RaportEn() {
         </div>
       </div>
 
-      <AppleFaq faqData={faqRaportuEn()} title="Questions about the SEO report" sectionId="pytania" />
+      <AppleFaq faqData={faqRaportuEnPelne()} title="Questions about the SEO report" sectionId="pytania" />
       <section style={{ paddingBottom: '2rem' }}>
         <div className="container" style={s.kontener}>
           <Zrodla zrodla={meta.sources} en />

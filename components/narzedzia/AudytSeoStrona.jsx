@@ -82,7 +82,7 @@ export function AudytSeoStrona({ locale = 'pl' } = {}) {
         screenshot: schemaZrzutu(ZRZUT.pl),
         featureList: [`Do ${AUDYT.stron} podstron w jednym audycie`, `${AUDYT.regul} reguł w ${AUDYT.kategorii} kategoriach`, `Wynik PageSpeed Insights na telefonie (mediana ${AUDYT.przebiegiPsi} pomiarów)`, 'Dostęp botów AI w robots.txt i plik llms.txt', 'Ocena 1-100 i lista błędów z instrukcją naprawy'],
       }}
-      lead={`Darmowy audyt SEO online: wpisz adres, a w 20-90 sekund dostajesz ocenę 1-100 i listę błędów, bez konta. Sprawdzimy do ${AUDYT.stron} podstron w ${AUDYT.regul} regułach i od razu pokażemy ocenę, cztery kategorie i trzy najważniejsze błędy.`}
+      lead={`Darmowy audyt SEO online: wpisz adres, a w 20 do 90 sekund dostajesz ocenę 1-100 i listę błędów, bez zakładania konta. Sprawdzimy do ${AUDYT.stron} podstron w ${AUDYT.regul} regułach i od razu pokażemy ocenę, cztery kategorie i trzy najważniejsze błędy.`}
       narzedzie={<AudytSeoClient />}
       odpowiedz={`Darmowy audyt SEO sprawdza do ${AUDYT.stron} podstron Twojej strony, po kilka z każdej sekcji i wersji językowej, w ${AUDYT.regul} regułach: kody odpowiedzi, przekierowania, tytuły, opisy, nagłówki, treść, obrazy, dane strukturalne, robots.txt, mapę strony, szybkość na telefonie i dostęp botów AI. Wynik to ocena od 1 do 100 w czterech kategoriach i lista problemów z instrukcją naprawy.`}
       faq={FAQ_AUDYTU}
@@ -289,7 +289,7 @@ function AudytSeoEn() {
         screenshot: schemaZrzutu(ZRZUT.en),
         featureList: [`Up to ${AUDYT.stron} pages per audit`, `${AUDYT.regul} rules in ${AUDYT.kategorii} categories`, `Mobile PageSpeed Insights score (median of ${AUDYT.przebiegiPsi} runs)`, 'AI bot access in robots.txt and the llms.txt file', 'A 1-100 score and a list of errors with fix instructions'],
       }}
-      lead={`We check up to ${AUDYT.stron} pages against ${AUDYT.regul} rules and show your score, four category scores and the top three issues right away, with no sign-up. Use it as a quick SEO analysis of your website: it checks the SEO of a site against ${AUDYT.regul} rules and returns a 1-100 score.`}
+      lead={`We check up to ${AUDYT.stron} pages against ${AUDYT.regul} rules and show your score, four category scores and the top three issues right away, with no sign-up. Use it as a quick SEO analysis of your website whenever you need to check the SEO of a website: it tests up to ${AUDYT.stron} URLs against ${AUDYT.regul} rules and returns a 1-100 score.`}
       narzedzie={<AudytSeoClient />}
       odpowiedz={`The free SEO audit checks up to ${AUDYT.stron} pages of your website, spread across its sections and language versions, against ${AUDYT.regul} rules: response codes, redirects, titles, descriptions, headings, content, images, structured data, robots.txt, the sitemap, mobile speed and AI bot access. The result is a score from 1 to 100 across four categories and a list of problems with fix instructions.`}
       faq={FAQ_AUDYTU_EN}
@@ -325,6 +325,15 @@ function AudytSeoEn() {
           />
         </div>
       </CoDostajesz>
+
+      <Sekcja id="website-seo-analysis" tytul="Website SEO analysis: how to check the SEO of a website">
+        <ol style={s.lista}>
+          <li><strong>Paste your domain into the form above.</strong> This website SEO analysis works on any public site without an account or ownership verification.</li>
+          <li><strong>Wait 20 to 90 seconds for the scan.</strong> Our crawler fetches up to {AUDYT.stron} pages across your site sections together with mobile Google PageSpeed Insights lab runs.</li>
+          <li><strong>Review your 1-100 score and top three issues.</strong> You immediately see points across four categories (technical, content, performance, AI readiness) and clear fix instructions.</li>
+          <li><strong>Unlock the full URL list by email and compare competitors.</strong> After deploying fixes, check the SEO of your website again to see how the score changed.</li>
+        </ol>
+      </Sekcja>
 
       <Sekcja id="what-the-audit-checks" tytul={`What the free SEO audit checks: ${AUDYT.regul} rules in ${AUDYT.kategorii} categories`}>
         <p style={s.akapit}>Every rule has a threshold set in the code, e.g. a title longer than 60 characters, a server response slower than 1.5 seconds or a home page heavier than 3 MB. For each issue you get a description of its effect, fix instructions and the URLs of the pages it affects.</p>

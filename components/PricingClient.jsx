@@ -117,8 +117,9 @@ export default function PricingClient() {
     {
       id: 'seo-rates-fees-charges',
       tylkoEn: true,
+      question: 'What are typical SEO rates, fees and charges?',
       questionEn: 'What are typical SEO rates, fees and charges?',
-      answerEn: 'Our monthly SEO rates are fixed and published upfront: SEO Standard is €450 net per month and SEO Premium is €590 net per month, with no onboarding fees, activation charges or exit penalties. One-off services have clear starting fees too: a standalone technical SEO audit starts at €350 net and an AI visibility audit is €235 net (credited to your first month if you continue).'
+      answerEn: 'SEO is charged per month rather than per hour, and our rates are published upfront: €450 net per month for SEO Standard, €590 net per month for SEO Premium, and €590 net per month for the Booster Pack (minimum 3-month contract, new website included), with no onboarding fees or exit charges. Standalone fees are fixed too: a technical SEO audit starts at €350 net and an AI visibility audit is €235 net (credited to your first month if you continue). Check what a quote includes (audit, content, links, reporting) before comparing charges.'
     },
     {
       question: 'Potrzebuję też nowej strony - czy da się to połączyć z pozycjonowaniem?',
@@ -252,6 +253,29 @@ export default function PricingClient() {
                 {/* Do potwierdzenia przez Filipa (OP-01): czy te trzy dane wystarczają do wyceny. */}
                 <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>
                   Do wyceny pozycjonowania wystarczą adres strony, lista usług albo kategorii, które chcesz promować, i obszar działania: miasto, region albo cała Polska. Na tej podstawie dobieramy pakiet i liczbę fraz. Jeśli strona ma problemy techniczne, zaczynamy od <Link href="/audyt-seo" style={{ textDecoration: 'underline' }}>audytu SEO</Link>, który w każdym pakiecie jest w cenie.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {lang !== 'pl' && (
+        <section style={{ padding: '0 0 80px 0' }}>
+          <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--color-text-main)' }}>
+            <Reveal>
+              <div style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
+                <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-text-dark)' }}>
+                  SEO price per month: rates, fees and packages
+                </h2>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
+                  Our monthly <Link href="/pozycjonowanie-stron-internetowych" style={{ textDecoration: 'underline' }}>SEO services</Link> start at €450 net per month in SEO Standard (up to 20 keywords, 2 content pieces and 2 editorial links, or €22.50 net per keyword) and €590 net per month in SEO Premium (up to 50 keywords, 4 content pieces and 4 links, or €11.80 net per keyword). The Booster Pack is also €590 net per month on a minimum 3-month contract and includes building a new Next.js website. We charge no onboarding fees, activation charges or extra fees when keywords enter the top 10.
+                </p>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
+                  What to check before comparing SEO rates and quotes
+                </h3>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>
+                  Low-fee SEO retainers usually cut what does not show on a summary slide: original content, links from sites with real search traffic and developer-ready technical fixes. Before comparing charges, verify three things <a href="#uczciwa-umowa" style={{ textDecoration: 'underline' }}>in the contract</a>: how many keywords, articles and links are delivered each month, whether Google Search Console and Analytics stay under your company account, and how long the notice period is. Every package starts with a <Link href="/audyt-seo" style={{ textDecoration: 'underline' }}>technical SEO audit</Link> included in the monthly fee.
                 </p>
               </div>
             </Reveal>

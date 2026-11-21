@@ -51,6 +51,10 @@ const FAQ = [
     a: 'Google says some changes take effect within a few hours and others take several months. In our experience the first movement in impressions shows within days to weeks, first visible growth comes 4 to 8 weeks after technical optimization, and stable high positions for very competitive national keywords usually take 3 to 6 months.',
   },
   {
+    q: 'How long does it take for SEO to take effect?',
+    a: 'Some changes show within days, but stable positions for competitive keywords usually take 3 to 6 months in our client data, while first impressions in Google Search Console arrived within days.',
+  },
+  {
     q: 'How long does SEO take for a new website?',
     a: 'Longer than for an established one. Ahrefs found that only 1.74% of newly published pages reached the top 10 within a year in a sample of 1 million URLs from September 2023, and a second method gave 6.11%. In our four published cases, a new site had impressions within days, but clicks grew far more slowly than impressions.',
   },
@@ -74,6 +78,7 @@ const FAQ = [
 
 const TOC = [
   { id: 'how-long-does-seo-take-to-work', title: 'How long does SEO take to work?' },
+  { id: 'how-long-for-seo-to-take-effect', title: 'How long does it take for SEO to take effect?' },
   { id: 'what-google-says', title: 'What does Google say about how long SEO takes?' },
   { id: 'new-website', title: 'How long does SEO take for a new website?' },
   { id: 'indexing', title: 'How long does Google take to index a new page?' },
@@ -166,6 +171,11 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
               </div>
               <p>
                 The goal for agreed local keywords is a TOP 3 within 2-3 months: you track progress weekly in the client portal, and if we miss it after 3 months, the next month is on us. We do not promise position 1, because Google decides the rankings.
+              </p>
+
+              <h2 id="how-long-for-seo-to-take-effect">How long does it take for SEO to take effect?</h2>
+              <p>
+                Some changes show within days, but stable positions for competitive keywords usually take 3 to 6 months in our client data, while first impressions in Google Search Console arrived within days. Technical fixes such as removing an accidental <code>noindex</code> tag or fixing broken redirects can take effect as soon as Google recrawls the URL, whereas new content and editorial links build ranking strength gradually over months.
               </p>
 
               <h2 id="what-google-says">What does Google say about how long SEO takes?</h2>

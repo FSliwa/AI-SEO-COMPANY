@@ -9,7 +9,10 @@ export const dynamic = 'force-dynamic';
 
 function authorized(req) {
   const secret = process.env.CRON_SECRET;
-  if (!secret) return true; // Lokalnie lub bez sekretu zezwalamy na testy
+  if (!secret) {
+    // Na produkcji (Vercel) brak CRON_SECRET musi blokować publiczny dostęp.
+    return process.env.NODE_ENV !== 'production' && !process.env.VERCEL;
+  }
   const header = req.headers.get('authorization') ?? '';
   const a = Buffer.from(header);
   const b = Buffer.from(`Bearer ${secret}`);
@@ -40,7 +43,6 @@ export async function GET(req) {
       zapisanoPlik: zapisano,
       metryki: res.metryki,
       wygenerowano: res.wygenerowano,
-      konto: res.pobraneDlaKonta,
       projekty: Object.keys(res.serie),
     });
   } catch (err) {

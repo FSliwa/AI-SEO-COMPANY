@@ -23,10 +23,21 @@ const HREF_AUDYT_AI = hrefJesliOpublikowana('/pozycjonowanie-w-ai/audyt-widoczno
 const tekstSekcji = { fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' };
 const linkSekcji = { textDecoration: 'underline' };
 
+const FAQ_KROK_PO_KROKU_PL = {
+  id: 'na-czym-polega-audyt-seo',
+  tylkoPl: true,
+  question: 'Na czym polega audyt SEO krok po kroku?',
+  answer: 'Audyt SEO zaczyna się od pełnego crawlu serwisu i zestawienia go z danymi z Google Search Console. Następnie sprawdzamy stronę według reguł technicznych, jakości treści, Core Web Vitals (LCP, INP, CLS), profilu linków oraz gotowości na odpowiedzi AI. Wynikiem jest lista błędów uporządkowana według priorytetu z instrukcją dla programisty oraz konkretny plan wdrożenia zmian. Pełny audyt agencyjny realizujemy do 5 dni roboczych (3-5 dni roboczych, od 1 490 zł netto albo w cenie pakietu pozycjonowania).',
+};
+
 export default function AudytClient({ faqData, portfolioCases, carouselItems }) {
   const lang = useLocale();
-  // FAQPage = pytania widoczne na stronie: PL 12, EN 11 (bez pytań tylkoPl).
-  const faqWidoczne = lang === 'pl' ? faqData : faqData.filter((f) => !f.tylkoPl);
+  const faqPl = Array.isArray(faqData)
+    ? (faqData.some((f) => f.id === FAQ_KROK_PO_KROKU_PL.id || f.question === FAQ_KROK_PO_KROKU_PL.question)
+      ? faqData.map((f) => ((f.id === FAQ_KROK_PO_KROKU_PL.id || f.question === FAQ_KROK_PO_KROKU_PL.question) ? FAQ_KROK_PO_KROKU_PL : f))
+      : [...faqData, FAQ_KROK_PO_KROKU_PL])
+    : [FAQ_KROK_PO_KROKU_PL];
+  const faqWidoczne = lang === 'pl' ? faqPl : faqData.filter((f) => !f.tylkoPl);
 
   return (
     <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>

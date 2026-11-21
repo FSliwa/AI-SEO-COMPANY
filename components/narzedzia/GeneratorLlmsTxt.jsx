@@ -380,7 +380,7 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
           </section>
 
           <section aria-labelledby="co-sprawdza-generator" className={st.sekcja} style={s.sekcja}>
-            <h2 id="co-sprawdza-generator" style={s.h2}>{en ? 'What the generator checks' : 'Jak sprawdzić robots.txt pod kątem botów AI i co bada generator'}</h2>
+            <h2 id="co-sprawdza-generator" style={s.h2}>{en ? 'What the generator checks' : 'Co sprawdza generator'}</h2>
             <p style={s.akapit}>
               {en ? `The generator fetches your sitemap, picks up to ${GENERATOR.adresow} URLs (with a larger sitemap, a few from every section), checks them and builds the file from them. At the same time it tests the access of ${GENERATOR.botowAi} AI bots and Bingbot to the home page. The whole run takes ${GENERATOR.sekund} seconds at most. If your site responds slowly, you get a partial result and a list of the URLs we did not manage to check. We do not store the address or the result.` : `Generator pobiera mapę strony, wybiera do ${GENERATOR.adresow} adresów (przy większej mapie po kilka z każdej sekcji), sprawdza je i składa z nich plik. Równolegle testuje dostęp ${GENERATOR.botowAi} botów AI i Bingbot do strony głównej. Całość trwa najwyżej ${GENERATOR.sekund} sekund. Gdy strona odpowiada wolno, dostajesz wynik częściowy i listę adresów, których nie zdążyliśmy sprawdzić. Nie zapisujemy ani adresu, ani wyniku.`}
             </p>
@@ -403,6 +403,17 @@ export default async function GeneratorLlmsTxt({ locale = 'pl' }) {
               {en ? 'This is how we check ourselves, too. On November 5, 2026 we queried our own site with 17 User-Agents (16 bots and a browser) on 7 URLs. All 119 requests returned code 200, and our llms.txt was 14,437 bytes at the time.' : 'Tak sprawdzamy też siebie. 5 listopada 2026 odpytaliśmy własną stronę 17 User-Agentami (16 botów i przeglądarka) na 7 adresach. Wszystkie 119 zapytań dostały kod 200, a nasz llms.txt miał wtedy 14 437 bajtów.'}
             </p>
           </section>
+
+          {!en && (
+            <Sekcja id="jak-sprawdzic-robots-txt-boty-ai" tytul="Jak sprawdzić robots.txt pod kątem botów AI">
+              <p style={s.akapit}>
+                Wklej adres domeny w formularzu u góry: generator pobiera <code>robots.txt</code> i jednocześnie sprawdza kod odpowiedzi HTTP strony głównej dla {GENERATOR.botowAi} botów AI (<code>GPTBot</code>, <code>OAI-SearchBot</code>, <code>ChatGPT-User</code>, <code>PerplexityBot</code>, <code>ClaudeBot</code>, <code>Claude-SearchBot</code>, <code>Google-Extended</code>) oraz <code>Bingbot</code>. Dzięki temu od razu widzisz zarówno reguły <code>Allow</code> i <code>Disallow</code> w pliku <code>robots.txt</code>, jak i ukryte blokady zapory WAF lub CDN (kod <code>403</code> albo <code>429</code> dla bota przy <code>200</code> dla zwykłej przeglądarki).
+              </p>
+              <p style={s.akapit}>
+                Rozdzielaj boty treningowe od wyszukiwarkowych. Możesz zablokować <code>GPTBot</code> albo <code>ClaudeBot</code>, jeśli nie chcesz udostępniać treści do trenowania modeli, ale zablokowanie <code>OAI-SearchBot</code> w <code>robots.txt</code> wyklucza stronę z wyników wyszukiwania w ChatGPT (a blokada <code>PerplexityBot</code> z odpowiedzi Perplexity), nawet gdy wgrasz poprawny plik <code>/llms.txt</code>.
+              </p>
+            </Sekcja>
+          )}
 
           <Sekcja id={en ? 'improve-the-file' : 'jak-poprawic-plik'} tytul={en ? 'How to improve the file before uploading it' : 'Jak poprawić plik przed wgraniem'}>
             <p style={s.akapit}>

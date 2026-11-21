@@ -23,16 +23,64 @@ import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
+import Zrodla from '@/components/Zrodla';
+import AppleFaq from '@/components/service/AppleFaq';
 import BlogCTA from '@/components/BlogCTA';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { sectionId } from '@/lib/anchors';
 import { LASTMOD } from '@/lib/lastmod';
 
 const BASE = 'https://www.ai-seo-company.pl';
+const KLUCZ_CENNIK = '/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026';
+
+const FAQ_CENNIK = [
+  {
+    id: 'ile-kosztuje-seo-miesiecznie-2026',
+    idEn: 'how-much-does-seo-cost-per-month-2026',
+    question: 'Ile kosztuje pozycjonowanie strony miesięcznie w 2026 roku?',
+    answer: 'W naszym przeglądzie 17 agencji w Polsce (4.11.2026) najniższe stawki od 490 zł netto miesięcznie obejmują wyłącznie wizytówkę Google, natomiast stałe pozycjonowanie całej witryny sięga 4 000 zł netto i więcej. W AI SEO COMPANY pełne pakiety z audytem, treściami i linkami kosztują 1 900-2 500 zł netto miesięcznie.',
+    questionEn: 'How much does monthly SEO cost for a small business in 2026?',
+    answerEn: 'In our review of 17 Polish SEO agencies (November 4, 2026), entry plans from PLN 490 net per month cover only Google Business Profile management, while full-website retainers reach PLN 4,000+ net. At AI SEO COMPANY, full monthly retainers including audit, content, and editorial links cost €450-€590 net per month.',
+  },
+  {
+    id: 'ile-kosztuje-jednorazowy-audyt-seo',
+    idEn: 'how-much-does-a-technical-seo-audit-cost',
+    question: 'Ile kosztuje jednorazowy audyt SEO przed podpisaniem umowy?',
+    answer: 'W cennikach badanych agencji w Polsce jednorazowy audyt SEO kosztuje od 300 zł do 12 000 zł netto w zależności od wielkości serwisu i analizy logów. W AI SEO COMPANY samodzielny audyt techniczny zaczyna się od 1 490 zł netto, a w pakietach abonamentowych SEO Standard i SEO Premium jest wliczony w cenę.',
+    questionEn: 'How much does a standalone technical SEO audit cost?',
+    answerEn: 'Across Polish agency price lists reviewed on November 4, 2026, a one-off SEO audit ranges from PLN 300 to PLN 12,000 net depending on site size and log analysis depth. At AI SEO COMPANY, a standalone technical audit starts at €350 net (PLN 1,490 net) and is included free in monthly SEO packages.',
+  },
+  {
+    id: 'abonament-czy-za-efekt-seo',
+    idEn: 'monthly-retainer-vs-pay-for-performance-seo',
+    question: 'Co lepiej wybrać: abonament SEO czy rozliczenie za efekt?',
+    answer: 'Bezpieczniejszym modelem dla większości firm jest miesięczny abonament z jawną listą prac (treści, linki, naprawy techniczne). W naszym przeglądzie 11 z 17 agencji rozlicza się bez komponentu za efekt, a tylko 5 wiąże część opłaty z pozycjami. W modelu za efekt rachunek rośnie wraz z wynikami, a dobór prostych fraz nie zawsze daje sprzedaż.',
+    questionEn: 'Is a monthly SEO retainer better than pay-for-results billing?',
+    answerEn: 'For most businesses, a transparent monthly retainer with fixed deliverables (technical fixes, content, editorial links) is safer than pay-for-results billing. In our 17-agency market review, 11 agencies charge retainers without performance fees and only 5 use hybrid success fees, where bills climb as rankings rise and agencies may target low-intent keywords.',
+  },
+];
+
+const ZRODLA_CENNIK_PL = [
+  { url: 'https://developers.google.com/search/docs/fundamentals/do-i-need-seo?hl=pl', nazwa: 'Google Search Central: Czy potrzebujesz specjalisty SEO - jak wybrać agencję i na co uważać', data: '2026-11-21' },
+  { url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=pl', nazwa: 'Google Search Central: Przewodnik startowy SEO (czas oczekiwania na efekty zmian)', data: '2026-11-21' },
+  { url: 'https://developers.google.com/search/docs/essentials/spam-policies?hl=pl', nazwa: 'Google Search Central: Zasady dotyczące spamu w wyszukiwarce Google', data: '2026-11-21' },
+  { url: 'https://www.ai-seo-company.pl/cennik-pozycjonowania', nazwa: 'AI SEO COMPANY: Cennik pozycjonowania stron 2026 (pakiety 1 900-2 500 zł netto)', data: '2026-11-21' },
+  { url: 'https://www.ai-seo-company.pl/narzedzia/kalkulator-strat-seo', nazwa: 'AI SEO COMPANY: Kalkulator strat SEO i zwrotu z pakietu', data: '2026-11-21' },
+];
+
+const ZRODLA_CENNIK_EN = [
+  { url: 'https://developers.google.com/search/docs/fundamentals/do-i-need-seo', nazwa: 'Google Search Central: Do I need an SEO - how to hire an agency and red flags', data: '2026-11-21' },
+  { url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide', nazwa: 'Google Search Central: SEO Starter Guide (expected timelines for search changes)', data: '2026-11-21' },
+  { url: 'https://developers.google.com/search/docs/essentials/spam-policies', nazwa: 'Google Search Central: Spam policies for Google web search', data: '2026-11-21' },
+  { url: 'https://www.ai-seo-company.pl/en/seo-pricing', nazwa: 'AI SEO COMPANY: SEO Pricing 2026 (€450-€590 net monthly packages)', data: '2026-11-21' },
+  { url: 'https://www.ai-seo-company.pl/en/tools/seo-loss-calculator', nazwa: 'AI SEO COMPANY: Free SEO ROI and Loss Calculator', data: '2026-11-21' },
+];
 
 export default async function ArticleCennikPage({ params }) {
   const { locale } = await params;
-  const dataPubl = articleDates('/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026', locale);
+  const dataPubl = articleDates(KLUCZ_CENNIK, locale);
   const tocItemsPl = [
     { id: 'szybki-przegl-d-typowych-bud-et-w', title: 'Ile kosztuje SEO w agencjach: co pokazują cenniki' },
     { id: 'dla-roznych-firm', title: 'Ile kosztuje pozycjonowanie dla różnych typów firm?' },
@@ -42,7 +90,9 @@ export default async function ArticleCennikPage({ params }) {
     { id: 'modele-rozliczen', title: 'Jakie modele rozliczeń stosują agencje SEO?' },
     { id: 'jak-wybrac-agencje', title: 'Jak wybrać agencję SEO krok po kroku?' },
     { id: 'oferta-ai-seo-company', title: 'Ile kosztuje SEO w AI SEO COMPANY' },
-    { id: 'narzedzia', title: 'Przydatne źródła i narzędzia do weryfikacji ofert SEO' }
+    { id: 'narzedzia', title: 'Przydatne źródła i narzędzia do weryfikacji ofert SEO' },
+    { id: 'pytania-cennik', title: 'Najczęstsze pytania' },
+    { id: 'zrodla', title: 'Źródła' }
   ];
   // The English article renders a different set of sections with different ids,
   // so it needs its own table of contents or the links point at missing anchors.
@@ -52,7 +102,9 @@ export default async function ArticleCennikPage({ params }) {
     { id: 'ukryte-koszty', title: 'Hidden costs - what to watch out for?' },
     { id: 'how-to-choose-an-agency', title: 'How to choose an SEO Agency?' },
     { id: 'roi-and-timeline', title: 'ROI and expected timeline for results' },
-    { id: 'the-role-of-ai', title: 'The role of AI in modern SEO pricing' }
+    { id: 'the-role-of-ai', title: 'The role of AI in modern SEO pricing' },
+    { id: 'pytania-cennik', title: 'Frequently asked questions' },
+    { id: 'zrodla', title: 'Sources' }
   ];
   const tocItems = locale === 'en' ? tocItemsEn : tocItemsPl;
   // 5.11.2026 (CB-10, PLAN-v2 6.25): akapit z linkiem do P1 tylko po publikacji porownania (bramka 6.0).
@@ -74,7 +126,7 @@ export default async function ArticleCennikPage({ params }) {
       
       <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
       {locale === 'en' ? (
-
+        <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
@@ -85,9 +137,10 @@ export default async function ArticleCennikPage({ params }) {
                 {dataPubl.label}
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               How much does SEO cost? Pricing
             </h1>
+            <Byline sciezka={KLUCZ_CENNIK} takzeEn />
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </div>
@@ -96,37 +149,47 @@ export default async function ArticleCennikPage({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox etykieta="Short answer">
+                In 2026, our review of 17 Polish SEO agencies (as of November 4, 2026) shows published entry rates from PLN 490 net/month for Google Business Profile-only plans to PLN 4,000+ net/month for full-site retainers. At AI SEO COMPANY, full monthly SEO packages cost €450-€590 net per month (PLN 1,900-2,500 net) with cancel-anytime terms.
+              </AnswerBox>
               <p className="lead">
                 SEO pricing in 2026 is one of the most frequently searched topics by entrepreneurs. Most agencies sell the work in monthly packages, so below we break down what each tier actually contains and what you are really paying for.
               </p>
               <ArticleTOC items={tocItems} />
               
               <h2 id="od-czego-zalezy-cena">What determines the price of SEO?</h2>
-              <p>The cost of positioning is never fixed. It depends strictly on your industry's competitiveness, the current technical state of your website, and your business goals. In our review of 17 agencies in Poland (as of 4 Nov 2026), published “from” prices ranged from PLN 490 net per month for a Google Business Profile-only package to PLN 4,000 net and more for ongoing work on a whole site. Our SEO Standard is PLN 1,900 net per month; the full <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO cost</Link> of each package is on our pricing page. Local businesses typically need <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local positioning</Link>, while large nationwide stores need a much broader <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO strategy</Link>.</p>
+              <p>The cost of positioning is never fixed. It depends strictly on your industry&apos;s competitiveness, the current technical state of your website, and your business goals. In our review of 17 agencies in Poland (as of 4 Nov 2026), published “from” prices ranged from PLN 490 net per month for a Google Business Profile-only package to PLN 4,000 net and more for ongoing work on a whole site. Our SEO Standard is PLN 1,900 net per month; the full <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO cost</Link> of each package is on our pricing page. Local businesses typically need <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local positioning</Link>, while large nationwide stores need a much broader <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO strategy</Link>.</p>
 
               <h2 id="modele-rozliczen">Popular billing models</h2>
-              <p>Currently, the flat-fee subscription model is the absolute standard. It allows the agency to allocate a fixed budget for high-quality link building and content creation every month. Pay-for-results is rare: 5 of 17 agencies in our review (as of 4 November 2026) tie part of the fee to results; it lowers the cost of starting but the bill grows with the results, so check the contract terms. Before signing a contract, you should always request a comprehensive <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>technical SEO audit</Link> to understand your website's baseline.</p>
+              <p>Currently, the flat-fee subscription model is the absolute standard. It allows the agency to allocate a fixed budget for high-quality link building and content creation every month. Pay-for-results is rare: 5 of 17 agencies in our review (as of 4 November 2026) tie part of the fee to results; it lowers the cost of starting but the bill grows with the results, so check the contract terms. Before signing a contract, you should always request a comprehensive <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>technical SEO audit</Link> to understand your website&apos;s baseline.</p>
 
               <h2 id="ukryte-koszty">Hidden costs - what to watch out for?</h2>
               <p>Always verify if your SEO contract includes the cost of publishing sponsored articles and copywriting. Many very cheap packages look attractive on paper, but later require you to pay extra for every single piece of content or backlink.</p>
               
               <h2 id="how-to-choose-an-agency">How to choose an SEO Agency?</h2>
-              <p>Choosing the right SEO agency is one of the most critical decisions for your business's online growth. The market is saturated with service providers promising instant number one rankings for incredibly low prices. However, experienced marketers know that true organic growth takes time, expertise, and a substantial investment in high-quality resources. When evaluating potential partners, look beyond the initial price tag. Ask about their technical capabilities, their approach to Core Web Vitals optimization, and their content strategy. A reputable <Link href="/o-nas" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO agency team</Link> will transparently explain their link-building methods - ensuring they use ethical, white-hat techniques that protect your domain from Google penalties. They should also provide comprehensive audits before proposing a strategy, highlighting exactly what technical debt your website currently holds. Explore our <Link href="/blog" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO blog</Link> to learn more about safe link-building techniques.</p>
+              <p>Choosing the right SEO agency is one of the most critical decisions for your business&apos;s online growth. The market is saturated with service providers promising instant number one rankings for incredibly low prices. However, experienced marketers know that true organic growth takes time, expertise, and a substantial investment in high-quality resources. When evaluating potential partners, look beyond the initial price tag. Ask about their technical capabilities, their approach to Core Web Vitals optimization, and their content strategy. A reputable <Link href="/o-nas" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO agency team</Link> will transparently explain their link-building methods - ensuring they use ethical, white-hat techniques that protect your domain from Google penalties. They should also provide comprehensive audits before proposing a strategy, highlighting exactly what technical debt your website currently holds. Explore our <Link href="/blog" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO blog</Link> to learn more about safe link-building techniques.</p>
               
               <h2 id="roi-and-timeline">ROI and expected timeline for results</h2>
-              <p>A common question is: "When will I see a return on my SEO investment?" Search Engine Optimization is a long-term strategy, and setting realistic expectations is vital. Typically, the first three months are dedicated to deep technical audits, fixing critical indexing errors, and establishing a robust content architecture. Local keywords usually move first; for a whole site, improvements typically take 3-9 months depending on competition. However, the most significant ROI - where organic traffic translates into a steady stream of high-converting leads - usually occurs after the six-month mark. This timeline depends heavily on your industry's competitiveness and your website's historical authority. In the long run, SEO offers one of the highest returns on investment compared to paid advertising, as the traffic you earn continues to flow even if you temporarily scale back your budget. We compare the two channels in <Link href="/porownania/seo-czy-google-ads" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO or Google Ads</Link>, and you can estimate the payback of a package with the <Link href="/narzedzia/kalkulator-strat-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO loss calculator</Link>. Check our <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>web design services</Link> to ensure your site is built to convert this traffic effectively. For the timelines behind these ranges, see <Link href="/blog/how-long-does-seo-take">how long SEO takes</Link>, with real Search Console data from four sites.</p>
+              <p>A common question is: &quot;When will I see a return on my SEO investment?&quot; Search Engine Optimization is a long-term strategy, and setting realistic expectations is vital. Typically, the first three months are dedicated to deep technical audits, fixing critical indexing errors, and establishing a robust content architecture. Local keywords usually move first; for a whole site, improvements typically take 3-9 months depending on competition. However, the most significant ROI - where organic traffic translates into a steady stream of high-converting leads - usually occurs after the six-month mark. This timeline depends heavily on your industry&apos;s competitiveness and your website&apos;s historical authority. In the long run, SEO offers one of the highest returns on investment compared to paid advertising, as the traffic you earn continues to flow even if you temporarily scale back your budget. We compare the two channels in <Link href="/porownania/seo-czy-google-ads" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO or Google Ads</Link>, and you can estimate the payback of a package with the <Link href="/narzedzia/kalkulator-strat-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>SEO loss calculator</Link>. Check our <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>web design services</Link> to ensure your site is built to convert this traffic effectively. For the timelines behind these ranges, see <Link href="/blog/how-long-does-seo-take">how long SEO takes</Link>, with real Search Console data from four sites.</p>
               
               <h2 id="the-role-of-ai">The role of AI in modern SEO pricing</h2>
-              <p>Artificial Intelligence is radically transforming how SEO services are priced and delivered. Agencies leveraging advanced AI tools can perform large-scale data analysis, semantic keyword research, and competitor backlink profiling much faster than before. However, this doesn't necessarily mean SEO is becoming cheaper. Instead, the focus is shifting toward higher quality and strategic execution. While AI can draft content outlines, human expertise is still required to inject brand voice, ensure factual accuracy, and satisfy Google's E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) guidelines. Therefore, when you pay for premium SEO in 2026, you are investing in the sophisticated human orchestration of AI tools, ensuring your brand stands out in an increasingly automated digital ecosystem.</p>
-
-              <BlogCTA 
-                locale={locale} 
-                currentSlug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" 
-              />
+              <p>Artificial Intelligence is radically transforming how SEO services are priced and delivered. Agencies leveraging advanced AI tools can perform large-scale data analysis, semantic keyword research, and competitor backlink profiling much faster than before. However, this doesn&apos;t necessarily mean SEO is becoming cheaper. Instead, the focus is shifting toward higher quality and strategic execution. While AI can draft content outlines, human expertise is still required to inject brand voice, ensure factual accuracy, and satisfy Google&apos;s E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) guidelines. Therefore, when you pay for premium SEO in 2026, you are investing in the sophisticated human orchestration of AI tools, ensuring your brand stands out in an increasingly automated digital ecosystem.</p>
             </div>
           </Reveal>
         </div>
-    
+
+        <AppleFaq faqData={FAQ_CENNIK} title="Frequently asked questions" sectionId="pytania-cennik" />
+
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="article-content">
+            <Zrodla zrodla={ZRODLA_CENNIK_EN} en />
+            <BlogCTA 
+              locale={locale} 
+              currentSlug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" 
+            />
+          </div>
+        </div>
+        </>
       ) : (
         <>
 
@@ -138,7 +201,7 @@ export default async function ArticleCennikPage({ params }) {
                 Budżet SEO
               </span>
               <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                {dataPubl.label}
+                {dataPubl.label.toLowerCase()}
               </span>
             </div>
 
@@ -148,13 +211,15 @@ export default async function ArticleCennikPage({ params }) {
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
               fontWeight: 700, 
               color: 'var(--w-tusz)', 
-              marginBottom: '2rem', 
+              marginBottom: '1.5rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
               Ile kosztuje SEO w Polsce? Cennik i pakiety 2026
             </h1>
+
+            <Byline sciezka={KLUCZ_CENNIK} takzeEn />
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -167,6 +232,9 @@ export default async function ArticleCennikPage({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox>
+                W 2026 roku w przeglądzie cenników 17 agencji SEO w Polsce (stan na 4.11.2026) publikowane stawki „od” wynoszą od 490 zł netto/mies. za samą wizytówkę Google do ponad 4 000 zł netto/mies. za cały serwis. W AI SEO COMPANY kompleksowe pakiety z umową miesięczną kosztują 1 900-2 500 zł netto miesięcznie (SEO Standard i SEO Premium).
+              </AnswerBox>
               <p>
                 <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie stron w Polsce</Link> kosztuje różną kwotę, począwszy od niskiego poziomu dla bardzo lokalnych projektów, aż do wysokich sum dla dużych serwisów w branżach takich jak prawo, finanse czy medycyna. Większość małych i średnich firm przeznacza budżet, który pozwala na realną pracę, obejmującą <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt techniczny</Link>, optymalizację, treści i podstawowy link building. Nasze stawki znajdziesz w zakładce <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link>, a w tym artykule wyjaśniamy, od czego zależy cena SEO u każdej agencji.
               </p>
@@ -280,7 +348,7 @@ export default async function ArticleCennikPage({ params }) {
               <p><span style={{ fontWeight: 'bold' }}>Dodatki, które podnoszą cenę:</span></p>
               <ul>
                 <li>Link building (pozyskiwanie linków zewnętrznych)</li>
-                <li>Content marketing (regularne artykuły, landing page'e, opisy kategorii)</li>
+                <li>Content marketing (regularne artykuły, landing page&apos;e, opisy kategorii)</li>
                 <li>Lokalne SEO i zarządzanie Profilem Firmy w Google (zob. <Link href="/blog/seo-lokalne-dla-firm-w-warszawie" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>poradnik SEO lokalnego dla firm z Warszawy</Link>)</li>
                 <li>Optymalizacja pod modele AI, czyli AEO (Answer Engine Optimization)</li>
                 <li>Migracje serwisu i zmiany CMS</li>
@@ -288,7 +356,7 @@ export default async function ArticleCennikPage({ params }) {
               </ul>
               
               <h2 id="znaczenie-content-marketingu">Znaczenie Content Marketingu w cenie pozycjonowania</h2>
-              <p>Jednym z najczęstszych powodów, dla których oferty agencji drastycznie różnią się ceną, jest podejście do tworzenia treści. Najtańsze pakiety często opierają się na masowo generowanych, niskiej jakości tekstach z mieszarek synonimów lub tanich copywriterów piszących "pod znaki". W nowoczesnym SEO, zwłaszcza w dobie systemów jakości treści Google, zasad dotyczących spamu i E-E-A-T, takie podejście nie tylko nie przynosi efektów, ale może zaszkodzić. Profesjonalna agencja wlicza w cenę usługi pracę doświadczonych redaktorów lub ekspertów dziedzinowych, którzy tworzą klastry tematyczne i wyczerpujące artykuły eksperckie. Koszt jednego merytorycznego artykułu zależy od branży i stopnia specjalizacji autora. Kiedy w ofercie agencji widzisz wyższą cenę, często oznacza to, że płacisz za realny rozwój merytoryczny swojego serwisu, a nie tylko techniczne "przepychanie" słów kluczowych.</p>
+              <p>Jednym z najczęstszych powodów, dla których oferty agencji drastycznie różnią się ceną, jest podejście do tworzenia treści. Najtańsze pakiety często opierają się na masowo generowanych, niskiej jakości tekstach z mieszarek synonimów lub tanich copywriterów piszących „pod znaki”. W nowoczesnym SEO, zwłaszcza w dobie systemów jakości treści Google, zasad dotyczących spamu i E-E-A-T, takie podejście nie tylko nie przynosi efektów, ale może zaszkodzić. Profesjonalna agencja wlicza w cenę usługi pracę doświadczonych redaktorów lub ekspertów dziedzinowych, którzy tworzą klastry tematyczne i wyczerpujące artykuły eksperckie. Koszt jednego merytorycznego artykułu zależy od branży i stopnia specjalizacji autora. Kiedy w ofercie agencji widzisz wyższą cenę, często oznacza to, że płacisz za realny rozwój merytoryczny swojego serwisu, a nie tylko techniczne „przepychanie” słów kluczowych.</p>
               
               <h2 id="rola-analityki">Rola analityki i raportowania w cenniku SEO</h2>
               <p>Kolejnym kluczowym elementem wyceny jest poziom analityki internetowej. Agencje z najniższej półki cenowej zazwyczaj dostarczają jedynie wygenerowany z automatu raport pozycji (z narzędzi takich jak Seostation czy Webpozycja). W profesjonalnym pozycjonowaniu w 2026 roku pozycje to tylko metryka pomocnicza. Prawdziwa wartość kryje się w danych o zachowaniu użytkowników, optymalizacji konwersji (CRO), analizie wielokanałowych ścieżek przypisania (Multi-Channel Funnels) w Google Analytics 4 oraz wdrażaniu zaawansowanego śledzenia zdarzeń (np. GTM). Renomowana agencja SEO poświęca część Twojego miesięcznego budżetu na analityków, którzy monitorują, jak ruch organiczny przekłada się na realne leady i sprzedaż. Odpowiednie reagowanie na dane i modyfikacja strategii (tzw. zwinne SEO) to proces kosztowny, ale zwykle opłacalny w dłuższym okresie.{hrefS1 && <> Co powinno znaleźć się w comiesięcznym raporcie, opisujemy w poradniku <Link href={hrefS1} style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>raport SEO: co powinien zawierać</Link>.</>}</p>
@@ -302,12 +370,12 @@ export default async function ArticleCennikPage({ params }) {
               <h2 id="10-czynnikow">Jakie 10 czynników wpływa na koszt SEO?</h2>
               
               <ul>
-                <li><span style={{ fontWeight: 'bold' }}>Konkurencja słów kluczowych (wpływ: wysoki)</span> - im więcej firm walczy o te same frazy, tym więcej pracy i linków potrzeba. Frazy takie jak "adwokat Warszawa" czy "kredyt hipoteczny" kosztują wielokrotnie więcej niż "hydraulik Sandomierz".</li>
+                <li><span style={{ fontWeight: 'bold' }}>Konkurencja słów kluczowych (wpływ: wysoki)</span> - im więcej firm walczy o te same frazy, tym więcej pracy i linków potrzeba. Frazy takie jak „adwokat Warszawa” czy „kredyt hipoteczny” kosztują wielokrotnie więcej niż „hydraulik Sandomierz”.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Liczba podstron do optymalizacji (wpływ: wysoki)</span> - sklep z 5 000 produktów wymaga innego nakładu pracy niż strona wizytówkowa z 10 podstronami.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Stan techniczny strony (wpływ: wysoki)</span> - serwis z setkami błędów indeksowania, wolnym ładowaniem i zduplikowanymi treściami wymaga najpierw naprawy, zanim zacznie się pozycjonowanie.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Używany CMS (wpływ: średni)</span> - WordPress jest łatwiejszy i tańszy w optymalizacji niż niestandardowe systemy lub starsze platformy e-commerce bez wtyczek SEO.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Branża i regulacje (wpływ: wysoki)</span> - branże YMYL (zdrowie, prawo, finanse) wymagają treści pisanych przez ekspertów lub z ich udziałem, co podnosi koszt contentu.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Wymagany zakres treści (wpływ: wysoki)</span> - regularne artykuły, opisy kategorii, landing page'e to znacząca część budżetu, szczególnie przy strategii long-tail.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Wymagany zakres treści (wpływ: wysoki)</span> - regularne artykuły, opisy kategorii, landing page&apos;e to znacząca część budżetu, szczególnie przy strategii long-tail.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Profil linków zewnętrznych (wpływ: wysoki)</span> - słaby profil linków oznacza konieczność intensywnego link buildingu od zera.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Zasięg geograficzny (wpływ: średni)</span> - lokalne SEO jest tańsze niż ogólnopolskie; kampania na całą Polskę wymaga większej liczby fraz i treści.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Integracje techniczne (wpływ: średni)</span> - połączenie z CRM, systemem płatności lub niestandardową analityką wymaga dodatkowych godzin pracy.</li>
@@ -417,13 +485,20 @@ export default async function ArticleCennikPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Screaming Frog SEO Spider</a></span> - bezpłatna wersja pozwala przeskanować do 500 podstron i znaleźć błędy techniczne (brakujące tytuły, zduplikowane treści, błędy 404).</li>
                 <li><span style={{ fontWeight: 'bold' }}><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://majestic.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Majestic</a></span> - analiza profilu linków zewnętrznych; pozwala sprawdzić, skąd agencja pozyskuje linki i czy są wartościowe.</li>
               </ul>
-
-              <BlogCTA 
-                locale={locale} 
-                currentSlug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" 
-              />
             </div>
           </Reveal>
+        </div>
+
+        <AppleFaq faqData={FAQ_CENNIK} title="Najczęstsze pytania" sectionId="pytania-cennik" />
+
+        <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="article-content">
+            <Zrodla zrodla={ZRODLA_CENNIK_PL} />
+            <BlogCTA 
+              locale={locale} 
+              currentSlug="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" 
+            />
+          </div>
         </div>
       
         </>

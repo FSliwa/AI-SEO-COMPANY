@@ -111,7 +111,8 @@ export default function AudytSeoStronaDe() {
         </div>
       </CoDostajesz>
 
-      <Sekcja id="was-prueft-der-audit" tytul={`SEO Audit Tools: Was unser kostenloser Audit prüft (${regeln(AUDYT.regul)} in ${AUDYT.kategorii} Kategorien)`}>
+      <Sekcja id="was-prueft-der-audit" tytul="SEO Audit Tools: Was der kostenlose Audit prüft">
+        <p style={s.akapit}>Während viele SEO Audit Tools ein Nutzerkonto und eine Domain-Verifizierung voraussetzen, läuft unser kostenloser SEO Audit direkt im Browser: Er analysiert bis zu {AUDYT.stron} Unterseiten anhand von {regeln(AUDYT.regul)} in den {AUDYT.kategorii} Bereichen Technik, Inhalt, Performance und KI-Bereitschaft und liefert eine Bewertung von 1 bis 100.</p>
         <p style={s.akapit}>Jede Regel hat einen im Code festgelegten Schwellenwert, etwa einen Titel über 60 Zeichen, eine Serverantwort langsamer als 1,5 Sekunden oder eine Startseite schwerer als 3 MB. Zu jedem Problem erhalten Sie eine Beschreibung der Auswirkung, eine Anleitung zur Behebung und die Adressen der betroffenen Unterseiten.</p>
         <h3 style={s.h3}>Technik ({regeln(R.techniczne)}, {W.techniczne} % der Punktzahl)</h3>
         <p style={s.akapit}>HTTPS und Weiterleitungen, Versionen mit und ohne www, 4xx- und 5xx-Fehler, Weiterleitungsketten, Canonical-URLs, noindex (auch auf der Startseite und in ganzen Bereichen, etwa in einer Sprachversion unter /en/), das Attribut lang, das Meta-Tag viewport, über http:// geladene Ressourcen auf einer https://-Seite, defekte interne Links und tote externe Links (404 oder 410), Soft-404 (ob eine nicht vorhandene Adresse den Code 404 liefert), hreflang auf der Startseite und auf Unterseiten mehrsprachiger Websites (einschließlich Rückverweisen), robots.txt, Sitemap und Adressen in der Sitemap, die dort nicht stehen sollten (mit noindex, Weiterleitung, Fehler oder einem Canonical auf eine andere Seite).</p>

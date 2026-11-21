@@ -193,6 +193,12 @@ export default function WizytowkaClient({ faqData }) {
   // Reguła 6.0 planu: link do A2 tylko po jej publikacji; wcześniej ten sam tekst bez <a>.
   const hrefA2 = hrefJesliOpublikowana('/pozycjonowanie-w-ai/chatgpt');
   const kontakt = hash('kontakt', lang);
+  const odpowiedzPlatnaPl = 'Nie. Założenie i utrzymanie Profilu Firmy w Google jest bezpłatne; płacisz wyłącznie wtedy, gdy zlecasz agencji pozycjonowanie i stałe prowadzenie wizytówki (kategorie, usługi, zdjęcia, posty, odpowiedzi na opinie i pomiar pozycji). Google nie sprzedaje wyższych miejsc w bezpłatnych wynikach Map: płatne są tylko reklamy oznaczone jako sponsorowane.';
+  const faqPelne = !en && Array.isArray(faqData)
+    ? (faqData.some((f) => f.id === 'czy-wizytowka-google-jest-platna')
+      ? faqData.map((f) => (f.id === 'czy-wizytowka-google-jest-platna' ? { ...f, answer: odpowiedzPlatnaPl } : f))
+      : [{ id: 'czy-wizytowka-google-jest-platna', question: 'Czy wizytówka Google jest płatna?', answer: odpowiedzPlatnaPl }, ...faqData])
+    : faqData;
 
   return (
     <main className="subpage-main" style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -252,16 +258,16 @@ export default function WizytowkaClient({ faqData }) {
               <a href={ZRODLA[1].url} rel="noopener" style={link}>guidelines for representing your business on Google</a>. A business with a storefront can show its address, while a service-area business that works from a home or other private location should generally hide it.
             </p>
 
-            <h2 id="how-to-get-google-business-profile" style={{ ...h2Styl, marginTop: '2.5rem' }}>How to create or claim a Google Business Profile</h2>
+            <h2 id="how-to-get-google-business-profile" style={{ ...h2Styl, marginTop: '2.5rem' }}>How to create a Google Business Profile</h2>
             <p style={akapit}>
-              Creating a Google Business Profile (your Google business account listing) is free. These four steps follow Google’s{' '}
+              Creating a Google Business Profile (or claiming an existing Google business listing) is free. If you are looking up how to get a Google Business Profile, these four steps follow Google’s{' '}
               <a href={ZRODLA[4].url} rel="noopener" style={link}>Add or claim your Business Profile</a> page:
             </p>
             <ol style={{ ...lista, gap: '0.9rem' }}>
               <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Check that you are eligible.</span> Google lets only eligible businesses add or claim a location. Check the guidelines linked above before you start, and sign in to the Google Account that will own the profile.</li>
               <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Add or claim your business.</span> Go to business.google.com/add and choose to add your business to Google. If a listing for your address already exists, claim it instead of creating a duplicate.</li>
-              <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Enter your business details.</span> Follow the on-screen instructions and use the same name, address and phone number as on your website, so the data matches everywhere.</li>
-              <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Verify the profile.</span> Choose one of the verification options Google offers and complete the steps shown. A profile appears in Search and Maps only after it is verified (<a href={ZRODLA[5].url} rel="noopener" style={link}>Edit your Business Profile</a>).</li>
+              <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Choose your primary category, address and hours.</span> Pick the primary category that matches your core service, enter your storefront address (or service area if you travel to customers) and opening hours, and use the exact same name and phone number as on your website.</li>
+              <li><span style={{ fontWeight: 700, color: 'var(--color-text-dark)' }}>Verify ownership with Google.</span> Choose one of the verification options Google offers and complete the steps shown. A profile appears in Search and Maps only after ownership is verified (<a href={ZRODLA[5].url} rel="noopener" style={link}>Edit your Business Profile</a>), and ongoing optimisation starts after verification.</li>
             </ol>
             <p style={akapit}>
               Once the profile is verified, fill in categories, services, hours and photos. The free{' '}
@@ -627,7 +633,7 @@ export default function WizytowkaClient({ faqData }) {
       </section>
 
       <AppleFaq
-        faqData={faqData}
+        faqData={faqPelne}
         title={en ? 'Questions about Google Business Profile optimization' : 'Pytania o pozycjonowanie wizytówki Google'}
         sectionId={idEl('pytania', 'faq')}
       />

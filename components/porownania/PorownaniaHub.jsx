@@ -122,7 +122,7 @@ export default function PorownaniaHub({ locale = 'pl' }) {
                 </h3>
                 <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>{p.teaser}</p>
                 <p className={styles.kartaMeta}>
-                  {p.kryteria} · {t.aktualizacja}<time dateTime={p.updated}>{en ? dataEn(p.updated) : dataSlownie(p.updated)}</time>
+                  {p.kryteria} · {t.aktualizacja}<time data-lastmod="pomin" dateTime={p.updated}>{en ? dataEn(p.updated) : dataSlownie(p.updated)}</time>
                 </p>
               </div>
             ))}

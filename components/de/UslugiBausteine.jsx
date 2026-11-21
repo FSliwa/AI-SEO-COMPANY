@@ -1,7 +1,6 @@
 // Bausteine der deutschen Leistungsseiten (Gruppe de-uslugi): Seitenrahmen, Hero, Abschnitte, Karten, Preise, FAQ.
 // Serverkomponenten, soweit moeglich; die Client-Teile (Header, Footer, Contact, AppleFaq, Reveal) kommen aus dem Bestand.
 // AppleFaq wird unveraendert genutzt: fuer lang !== 'pl' liest er questionEn/answerEn (siehe faqFuerAppleFaq).
-import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -12,6 +11,7 @@ import { Link } from '@/i18n/routing';
 import { PAKETE, PREIS_HINWEIS, KONTAKT } from '@/lib/de/uslugiGemeinsam';
 import { REFERENZEN } from '@/lib/de/referenzen';
 import { faqFuerAppleFaq } from '@/lib/de/uslugiGemeinsam';
+import ReferenzenLiveDe from './ReferenzenLiveDe';
 
 const TEXT = { fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.25rem', hyphens: 'auto', overflowWrap: 'break-word' };
 const KARTE = { background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.5rem, 5vw, 3.25rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' };
@@ -210,7 +210,7 @@ export function Tabelle({ beschriftung, spalten, zeilen, fussnote }) {
   );
 }
 
-/** Referenzen mit echten Search-Console-Werten (lib/de/referenzen.js). */
+/** Referenzen mit echten Search-Console-Werten (lib/de/referenzen.js + Live-Hydrierung aus /api/realizacje-gsc). */
 export function Referenzen({ titel = 'Referenzen mit Messwerten', untertitel = 'Alle Zahlen stammen aus der Google Search Console, der Messzeitraum steht bei jedem Projekt. Verkaufsdaten unserer Kunden veröffentlichen wir nicht, nur die Sichtbarkeit, die Sie selbst nachprüfen können.', ids, id = 'referenzen' }) {
   const liste = ids ? REFERENZEN.filter((r) => ids.includes(r.id)) : REFERENZEN;
   return (
@@ -220,19 +220,7 @@ export function Referenzen({ titel = 'Referenzen mit Messwerten', untertitel = '
           <h2 lang="de" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: '1rem', hyphens: 'auto', overflowWrap: 'break-word' }}>{titel}</h2>
           <p lang="de" style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', lineHeight: 1.55, margin: 0 }}>{untertitel}</p>
         </Reveal>
-        <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: '1.25rem' }}>
-          {liste.map((r) => (
-            <RevealItem key={r.id} style={{ background: '#FFFFFF', borderRadius: '24px', padding: '1.75rem', boxShadow: '0 4px 24px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <div style={{ height: '36px', display: 'flex', alignItems: 'center' }}>
-                <Image unoptimized src={r.logo} alt={r.name} width={r.logoW} height={r.logoH} style={{ height: 'auto', width: 'auto', maxHeight: '34px', maxWidth: '170px', objectFit: 'contain' }} />
-              </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--w-tusz-2)' }}>{r.art}</div>
-              <div style={{ fontSize: '1.7rem', fontWeight: 700, color: 'var(--color-text-dark)', letterSpacing: '-0.02em' }}>{r.zahl}</div>
-              <p lang="de" style={{ margin: 0, fontSize: '1rem', lineHeight: 1.55, color: 'var(--color-text-main)', flexGrow: 1 }}>{r.text}</p>
-              <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--w-tusz-2)' }}>Zeitraum: {r.zeitraum}. Quelle: {r.quelle}</p>
-            </RevealItem>
-          ))}
-        </RevealStagger>
+        <ReferenzenLiveDe liste={liste} />
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import path from 'node:path';
 import { NextResponse } from 'next/server';
 import { SERIE_GSC, METRYKI_GSC } from '@/lib/realizacjeGsc';
 import { fetchLiveGscData } from '@/lib/gscLive';
+import { PANEL_API } from '@/lib/narzedziaApi';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -15,7 +16,11 @@ export const maxDuration = 60;
 const CZAS_PAMIECI_MS = 60 * 60 * 1000;
 let pamiec = null; // { dane, kiedy }
 
-const NAGLOWKI = { 'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400' };
+const NAGLOWKI = {
+  'Cache-Control': 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400',
+  'CDN-Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+  'Vercel-CDN-Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+};
 
 export async function GET() {
   if (pamiec && Date.now() - pamiec.kiedy < CZAS_PAMIECI_MS) {
@@ -29,7 +34,24 @@ export async function GET() {
       return NextResponse.json({ ...dane, zrodlo: 'gsc-na-zywo' }, { headers: NAGLOWKI });
     }
   } catch (e) {
-    console.error('realizacje-gsc: pobranie z GSC nieudane, używam zapasu:', e?.message || e);
+    console.error('realizacje-gsc: lokalne pobranie z GSC nieudane, próbuję przez panel API:', e?.message || e);
+  }
+
+  try {
+    const resPanel = await fetch(`${PANEL_API}/realizacje-gsc`, {
+      headers: { Accept: 'application/json' },
+      next: { revalidate: 3600 },
+    });
+    if (resPanel.ok) {
+      const danePanel = await resPanel.json();
+      if (danePanel?.ok && danePanel.serie && Object.keys(danePanel.serie).length) {
+        const { zrodlo: _z, ...reszta } = danePanel;
+        pamiec = { dane: reszta, kiedy: Date.now() };
+        return NextResponse.json({ ...reszta, zrodlo: 'gsc-na-zywo' }, { headers: NAGLOWKI });
+      }
+    }
+  } catch (e) {
+    console.error('realizacje-gsc: pobranie z panelu nieudane, używam zapasu:', e?.message || e);
   }
 
   try {
