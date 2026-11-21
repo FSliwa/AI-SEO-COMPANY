@@ -90,6 +90,7 @@ export function Odblokowano({ tylkoRaport = false, potwRef = null, mailOk }) {
 const ODBIORCY_DE = {
   audyt_seo: 'E-Mail-Dienstleister (Resend) und Anbieter der Geschwindigkeitsmessung (Google PageSpeed Insights)',
   autorytet: 'E-Mail-Dienstleister (Resend)',
+  kalkulator: 'E-Mail-Dienstleister (Resend)',
 };
 
 /** Bramka e-mail: zgoda na wysłanie wyniku (konieczna), bez newslettera. */
@@ -209,8 +210,11 @@ async function kopiuj(tekst) {
 }
 
 /** „Link zum Ergebnis kopieren / Analyseergebnis teilen”: adres bieżącej strony z parametrami (tryb 'wypelnij': link tylko wypełnia pole). */
-export function LinkWyniku({ parametry, narzedzie, tekst, podsumowanie, className }) {
+export function LinkWyniku({ parametry, narzedzie, tryb = 'wypelnij', tekst, podsumowanie, className }) {
   const [stan, setStan] = useState({ status: 'idle', link: '', n: 0 });
+  const opis = tryb === 'wynik'
+    ? 'Der Link stellt dieses Ergebnis mit denselben Eingaben wieder her.'
+    : 'Der Link öffnet das Tool mit der eingetragenen Adresse. Die Prüfung startet erst, wenn Sie auf den Button klicken.';
 
   async function klikKopiuj() {
     const link = linkZParametrami(parametry);
@@ -262,18 +266,20 @@ export function LinkWyniku({ parametry, narzedzie, tekst, podsumowanie, classNam
       </div>
       <span className="narz-mikro" role="status" aria-live="polite">
         {(stan.status === 'ok' || stan.status === 'ok_opis' || stan.status === 'udostepniono') ? (
-          <span key={stan.n} className="r-stan--ok">
-            <svg className="r-ok-znak" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            {stan.status === 'udostepniono'
-              ? 'Ergebnis geteilt. '
-              : stan.status === 'ok_opis'
-              ? 'Zusammenfassung mit Link kopiert. '
-              : 'Link kopiert. '}
-          </span>
+          <>
+            <span key={stan.n} className="r-stan--ok">
+              <svg className="r-ok-znak" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              {stan.status === 'udostepniono'
+                ? 'Ergebnis geteilt.'
+                : stan.status === 'ok_opis'
+                ? 'Zusammenfassung mit Link kopiert.'
+                : 'Link kopiert.'}
+            </span>{' '}
+          </>
         ) : null}
         {stan.status === 'blad' ? 'Kopieren fehlgeschlagen, markieren Sie den Link: ' : null}
         {stan.status === 'blad' ? <input readOnly value={stan.link} aria-label="Link zum Ergebnis" className="narz-pole" onFocus={(e) => e.target.select()} /> : null}
-        {stan.status !== 'idle' ? 'Der Link öffnet das Tool mit der eingetragenen Adresse. Die Prüfung startet erst, wenn Sie auf den Button klicken.' : null}
+        {stan.status !== 'idle' ? opis : null}
       </span>
     </div>
   );
