@@ -16,10 +16,10 @@
 export default function GlobalError({ error, reset }) {
   return (
     <html lang="pl">
-      <body style={{ margin: 0, backgroundColor: '#0B1220', color: '#FFFFFF', fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif' }}>
-        <title>Wystąpił błąd | AI SEO COMPANY</title>
+      <body style={{ margin: 0, backgroundColor: '#0B1220', color: '#FFFFFF', fontFamily: 'var(--font-geist), system-ui, -apple-system, "Segoe UI", sans-serif' }}>
+        <title>Wystąpił błąd</title>
         <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '2rem', gap: '1rem' }}>
-          <h1 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: 700, margin: 0 }}>
+          <h1 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: 0 }}>
             Coś poszło nie tak
           </h1>
           <p style={{ margin: 0, maxWidth: '32rem', lineHeight: 1.6, color: 'rgba(255, 255, 255, 0.78)' }}>
@@ -34,6 +34,7 @@ export default function GlobalError({ error, reset }) {
             >
               Spróbuj ponownie
             </button>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- pełne przeładowanie po awarii aplikacji */}
             <a
               href="/"
               style={{ padding: '0.75rem 1.5rem', borderRadius: '999px', border: '1px solid rgba(255, 255, 255, 0.35)', color: '#FFFFFF', textDecoration: 'none', fontWeight: 600, fontSize: '1rem' }}

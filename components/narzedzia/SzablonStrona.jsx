@@ -121,6 +121,7 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
               <h2 id="podglad-h" className="sz-h2">{d.podglad.h2}</h2>
               {d.podglad.opis && <p className="sz-akapit">{d.podglad.opis}</p>}
               <div className="sz-panel">
+                {d.podglad.html?.includes('☐') && <div className="sz-chk-slot" data-sz-chk-slot />}
                 <div className="sz-kartka">
                   <div className="sz-kartka__pasek" aria-hidden="true"><i /><i /><i /></div>
                   <div className="sz-kartka__tresc" tabIndex={0} role="group" aria-labelledby="podglad-h">

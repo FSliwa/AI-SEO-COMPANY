@@ -163,6 +163,8 @@ export function CwvVergleichClientDe() {
         .then((res) => res.json())
         .then((data) => {
           if (data?.ok && data.podglad) {
+            if (!p.a && !p.url && data.podglad.stronaA?.domena) setUrlA(data.podglad.stronaA.domena);
+            if (!p.b && data.podglad.stronaB?.domena) setUrlB(data.podglad.stronaB.domena);
             setStan({ status: 'done', blad: null, dane: data.podglad, id: p.wynik });
           } else {
             setStan({ status: 'idle', blad: null, dane: null, id: null });
@@ -709,7 +711,8 @@ export function CwvVergleichClientDe() {
                   <ul className="cwv-tco-lista">
                     <li>Einmaliger WordPress-Relaunch: ca. {eur(kalkulacja.wpBudowaEur, 'de')} netto</li>
                     <li>24 Monate Managed Hosting, Premium-Plugins &amp; Updates: ca. {eur(kalkulacja.wpWartung24Eur, 'de')} netto</li>
-                    <li>Neue Plugins verschlechtern INP und Sicherheit oft erneut</li>
+                    <li>24 Monate separates SEO-Retainer: {eur(24 * CENY.seoStandard.eur, 'de')} netto</li>
+                    <li><strong>Gesamtkosten über 24 Monate: ca. {eur(kalkulacja.wpBudowaEur + kalkulacja.wpWartung24Eur + 24 * CENY.seoStandard.eur, 'de')} netto</strong></li>
                   </ul>
                 </div>
 
@@ -724,6 +727,7 @@ export function CwvVergleichClientDe() {
                     <li>Individuell programmierte Next.js-SSR-Website für 0 € Einmalkosten</li>
                     <li>LCP ca. 1,15 s, INP ca. 48 ms, CLS 0,00 und null angreifbare PHP-Plugins</li>
                     <li>{`Inklusive laufendem SEO & KI-Sichtbarkeit (Mindestlaufzeit ${CENY.boosterPack.umowaMiesiecy} Monate)`}</li>
+                    <li><strong style={{ color: '#ffffff' }}>Gesamtkosten über 24 Monate: {eur(24 * CENY.boosterPack.eur, 'de')} netto</strong></li>
                   </ul>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', alignItems: 'center', marginTop: '0.35rem' }}>
                     <a

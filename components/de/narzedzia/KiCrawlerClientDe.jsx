@@ -32,7 +32,7 @@ const CSS_RAI_DE = `
 .rai-alert-waf { padding: 1rem 1.15rem; border-radius: 16px; background: rgba(179, 38, 30, 0.07); border: 1px solid rgba(179, 38, 30, 0.28); color: var(--w-tusz); }
 .rai-alert-spa { padding: 1rem 1.15rem; border-radius: 16px; background: rgba(180, 83, 9, 0.08); border: 1px solid rgba(180, 83, 9, 0.3); color: var(--w-tusz); margin-top: 0.85rem; }
 .rai-grupa { margin-top: 1.25rem; }
-.rai-grupa-h3 { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 700; color: var(--w-tusz); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+.rai-grupa-h3 { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: var(--w-tusz); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
 .rai-kod-okno { margin: 0.75rem 0 0; padding: 1rem 1.15rem; border-radius: 16px; background: #141923; color: #f8fafc; font-family: var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: 0.84rem; line-height: 1.6; overflow-x: auto; white-space: pre; border: 1px solid rgba(255,255,255,0.08); }
 .rai-akcje-kodu { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 0.75rem; }
 .rai-odznaka-box { padding: 1.2rem 1.35rem; border-radius: 20px; background: var(--w-papier, #f6f4ef); border: 1px solid var(--w-linia, rgba(30,30,30,0.12)); display: grid; gap: 0.75rem; }
@@ -95,12 +95,6 @@ function domyslnePolitykiDe(domena) {
   const host = wyczyscDomene(domena);
   const rekomendowana = `# Empfohlene KI- & SEO-Richtlinie in der robots.txt für ${host}
 # Erlaubt KI-Suche & Zitierungen (Traffic + Anfragen), sperrt reine LLM-Trainings-Scraper
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -116,7 +110,7 @@ Allow: /
 User-agent: Claude-SearchBot
 Allow: /
 
-User-agent: Claude-User
+User-agent: Bingbot
 Allow: /
 
 User-agent: Applebot
@@ -132,45 +126,40 @@ Disallow: /
 User-agent: Google-Extended
 Disallow: /
 
-User-agent: CCBot
+User-agent: Applebot-Extended
 Disallow: /
 
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: *
+Allow: /
 Sitemap: https://${host}/sitemap.xml
 `;
 
   const otwarta = `# Offene GEO-Richtlinie für ${host} - voller Zugriff für Such-, Agenten- und Trainings-Bots
 User-agent: *
 Allow: /
-
 Sitemap: https://${host}/sitemap.xml
 `;
 
   const zablokowana = `# Strikte KI-Sperre für ${host} - klassisches Google/Bing erlaubt, alle KI-Bots gesperrt
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
 User-agent: OAI-SearchBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: GPTBot
 Disallow: /
 
 User-agent: PerplexityBot
 Disallow: /
 
-User-agent: Perplexity-User
-Disallow: /
-
 User-agent: Claude-SearchBot
 Disallow: /
 
-User-agent: Claude-User
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+User-agent: GPTBot
 Disallow: /
 
 User-agent: ClaudeBot
@@ -179,9 +168,14 @@ Disallow: /
 User-agent: Google-Extended
 Disallow: /
 
-User-agent: CCBot
+User-agent: Applebot-Extended
 Disallow: /
 
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: *
+Allow: /
 Sitemap: https://${host}/sitemap.xml
 `;
 
@@ -275,10 +269,10 @@ function OdznakaPodgladSvgDe({ domena, wynik }) {
       <rect x="132" width="116" height="32" rx="8" fill="#d85a30" />
       <rect x="132" width="8" height="32" fill="#d85a30" />
       <circle cx="16" cy="16" r="5" fill="#34d399" />
-      <text x="28" y="20" fill="#ffffff" fontFamily="system-ui, -apple-system, sans-serif" fontSize="11.5" fontWeight="600">
+      <text x="28" y="20" fill="#ffffff" fontFamily="var(--w-sans)" fontSize="11.5" fontWeight="600">
         AI SEO Verified
       </text>
-      <text x="190" y="20" textAnchor="middle" fill="#ffffff" fontFamily="system-ui, -apple-system, sans-serif" fontSize="11.5" fontWeight="700">
+      <text x="190" y="20" textAnchor="middle" fill="#ffffff" fontFamily="var(--w-sans)" fontSize="11.5" fontWeight="700">
         {tekstPrawy}
       </text>
     </svg>
@@ -304,6 +298,7 @@ export function KiCrawlerClientDe() {
         .then((res) => res.json())
         .then((data) => {
           if (data?.ok && data.podglad) {
+            if (!url && data.podglad.domena) setAdres(data.podglad.domena);
             setStan({ status: 'done', blad: null, wynik: data.podglad, id: wynik });
           } else {
             setStan({ status: 'idle', blad: null, wynik: null, id: null });

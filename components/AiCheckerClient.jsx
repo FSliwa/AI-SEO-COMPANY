@@ -287,7 +287,7 @@ export default function AiCheckerClient() {
             <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))' }}>
               {wynik.map(([h, p]) => (
                 <div key={h} style={{ ...card, padding: '1.5rem' }}>
-                  <h3 style={{ fontSize: '1.6rem', fontWeight: 800, margin: '0 0 0.5rem', color: 'var(--color-text-dark)' }}>{h}</h3>
+                  <h3 style={{ fontSize: '1.6rem', fontWeight: 600, margin: '0 0 0.5rem', color: 'var(--color-text-dark)' }}>{h}</h3>
                   <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--color-text-main)' }}>{p}</p>
                 </div>
               ))}

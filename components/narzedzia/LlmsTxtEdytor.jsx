@@ -200,7 +200,7 @@ export default function LlmsTxtEdytor({ model, onZmiana, en = false, de = false 
                           </button>
                           <label style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', fontSize: '0.88rem', fontWeight: 600, flex: '1 1 200px', minWidth: 0 }}>
                             <span style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{t.doSekcji}</span>
-                            <select value={sek.id} data-link={l.id} data-akcja="sekcja" aria-describedby={idUrl} onChange={(e) => przeniesDo(l, e.target.value)} style={{ ...pole, width: 'auto', flex: '1 1 auto', minWidth: 0, maxWidth: '100%', minHeight: '40px' }}>
+                            <select value={sek.id} data-link={l.id} data-akcja="sekcja" aria-describedby={idUrl} onChange={(e) => przeniesDo(l, e.target.value)} className="narz-pole" style={{ ...pole, width: 'auto', flex: '1 1 auto', minWidth: 0, maxWidth: '100%', minHeight: '40px', paddingRight: '2.35rem' }}>
                               {model.sekcje.map((x) => <option key={x.id} value={x.id}>{x.nazwa.trim() || '…'}</option>)}
                               {!maOptional && <option value={NOWA_OPTIONAL}>{t.nowaOptional}</option>}
                             </select>

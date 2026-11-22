@@ -256,7 +256,7 @@ function Kwota({ min, max, fmt, slowo, tick }) {
 export default function KalkulatorClient() {
   const en = useLocale() === 'en';
   const lang = en ? 'en' : 'pl';
-  const [dane, setDane] = useState(() => ({ ...POCZATEK, ...(en ? { pakiet: 'seoStandard' } : {}) }));
+  const [dane, setDane] = useState(() => ({ ...POCZATEK, pakiet: 'seoStandard' }));
   const [walutaEn, setWalutaEn] = useState('USD');
   const [aktywnyPrzyklad, setAktywnyPrzyklad] = useState('');
   const waluta = en ? walutaEn : 'PLN';
@@ -314,7 +314,7 @@ export default function KalkulatorClient() {
       if (en && !zrodlo.wartoscPln && (zrodlo === PRZYKLAD || zrodlo === PRZYKLADY.remont || zrodlo === PS)) {
         setWalutaEn('PLN');
       }
-      setDane(() => ({ ...POCZATEK, ...zParametrow(zrodlo) }));
+      setDane((d) => ({ ...POCZATEK, pakiet: d.pakiet || 'seoStandard', ...zParametrow(zrodlo) }));
       setAktywnyPrzyklad(zrodlo.id || '');
       setBlysk((b) => b + 1);
     };
@@ -387,11 +387,26 @@ export default function KalkulatorClient() {
 
   const wybierzPrzyklad = (przyklad) => {
     const kwota = en && waluta === 'PLN' && przyklad.wartoscPln ? przyklad.wartoscPln : przyklad.wartosc;
-    setDane({ ...POCZATEK, ...zParametrow({ ...przyklad, wartosc: kwota }) });
+    const nowe = { ...POCZATEK, pakiet: dane.pakiet || 'seoStandard', ...zParametrow({ ...przyklad, wartosc: kwota }) };
+    setDane(nowe);
     setAktywnyPrzyklad(przyklad.id);
     setBlysk((b) => b + 1);
     track('narzedzie_kalkulator_przyklad', { przyklad: przyklad.id, lang });
   };
+
+  useEffect(() => {
+    if (!wypelnione || blad) return undefined;
+    const t = setTimeout(() => {
+      zapiszParametry({
+        ...wejscie,
+        ...(en ? { waluta } : {}),
+        pakiet: dane.pakiet || null,
+        koszt: dane.pakiet === 'wlasny' && Number.isFinite(koszt) ? koszt : null,
+        miesiace: dane.pakiet ? dane.miesiace : null,
+      });
+    }, 450);
+    return () => clearTimeout(t);
+  }, [wypelnione, blad, wejscie, en, waluta, dane.pakiet, dane.miesiace, koszt]);
 
   function licz(e) {
     e.preventDefault();

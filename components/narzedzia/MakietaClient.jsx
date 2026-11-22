@@ -10,7 +10,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { track } from '@/lib/track';
-import { wywolajNarzedzie } from '@/lib/narzedziaApi';
+import { DEMO, PANEL_API, wywolajNarzedzie } from '@/lib/narzedziaApi';
 import { MAKIETA } from '@/lib/narzedziaLiczby';
 import { zachowaniePrzewijania } from '@/lib/ruch';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
@@ -21,6 +21,34 @@ import './ruch-c.css';
 
 const KROKI_EN = ['Fetching your website and its content', 'Capturing a screenshot of the current design', 'Designing a new section layout', 'Matching colors, typography and the mobile version', 'Assembling the mockup'];
 const KROKI = ['Pobieramy Twoją stronę i jej treści', 'Robimy zrzut obecnego wyglądu', 'Projektujemy nowy układ sekcji', 'Dopasowujemy kolory, typografię i wersję na telefon', 'Składamy makietę'];
+
+function odmienSekcji(n) {
+  if (n === 1) return '1 sekcję';
+  const d = n % 10;
+  const s = n % 100;
+  return d >= 2 && d <= 4 && (s < 12 || s > 14) ? `${n} sekcje` : `${n} sekcji`;
+}
+
+function odczytajOdblokowanaMakiete(id) {
+  if (!id || typeof window === 'undefined') return null;
+  try {
+    const s = window.sessionStorage.getItem(`aisc_mak_${id}`);
+    if (!s) return null;
+    const p = JSON.parse(s);
+    return p && typeof p === 'object' ? p : null;
+  } catch {
+    return null;
+  }
+}
+
+function zapiszOdblokowanaMakiete(id, dane) {
+  if (!id || !dane?.pelny || typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.setItem(`aisc_mak_${id}`, JSON.stringify(dane));
+  } catch {
+    // brak dostepu do sessionStorage
+  }
+}
 
 // 18.11.2026 (anim-narzedzia-c): ramka ze szkieletem pod spodem; iframe wchodzi (opacity) po onLoad albo po 4 s
 // (zapas), więc wolne ładowanie nie wygląda na pustą ramkę. Wysokość daje iframe, szkielet tylko ją wypełnia.
@@ -49,7 +77,39 @@ export default function MakietaClient() {
   // Rezerwa wysokości na czas zamiany podglądu + bramki w pełną makietę (krótsza o kilkaset px na telefonie):
   // treść pod narzędziem stoi w miejscu, a rezerwę zdejmujemy po dojechaniu przewijania do początku wyniku.
   const [rezerwa, setRezerwa] = useState(0);
-  useParametrUrl(['url'], ({ url }) => { if (poleRef.current && url) poleRef.current.value = url; });
+  useParametrUrl(['url', 'wynik'], ({ url, wynik }) => {
+    if (url) {
+      setAdres(url);
+      if (poleRef.current) poleRef.current.value = url;
+    }
+    if (wynik && !DEMO && /^[0-9a-f-]{36}$/i.test(wynik)) {
+      const zapamietana = odczytajOdblokowanaMakiete(wynik);
+      setStan({ status: 'loading', blad: null, id: wynik, podglad: null, pelny: null });
+      fetch(`${PANEL_API}/wynik/${encodeURIComponent(wynik)}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.ok && data.podglad) {
+            const dom = data.podglad.domena || url || '';
+            if (dom) {
+              setAdres(dom);
+              if (poleRef.current && !poleRef.current.value) poleRef.current.value = dom;
+            }
+            setStan({
+              status: 'done',
+              blad: null,
+              id: wynik,
+              podglad: data.podglad,
+              pelny: zapamietana?.pelny ?? null,
+              newsletter: zapamietana?.newsletter,
+              mailOk: zapamietana?.mailOk,
+            });
+          } else {
+            setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null });
+          }
+        })
+        .catch(() => setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null }));
+    }
+  });
 
   // Po odblokowaniu pokazujemy początek pełnego wyniku (komunikat + makieta), bez skoku: smooth tylko bez reduce.
   useEffect(() => {
@@ -64,12 +124,13 @@ export default function MakietaClient() {
     const fd = new FormData(e.currentTarget);
     const url = String(fd.get('url') || '').trim();
     setAdres(url);
-    zapiszParametry({ url });
+    zapiszParametry({ url, wynik: null });
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null });
     track('narzedzie_start', { narzedzie: 'makieta' });
     const r = await wywolajNarzedzie('makieta', { url, cel: String(fd.get('cel') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' }, 290_000);
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
     track('narzedzie_wynik', { narzedzie: 'makieta' });
+    zapiszParametry({ url, wynik: r.id || null });
     setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null });
   }
 
@@ -81,7 +142,9 @@ export default function MakietaClient() {
         <form className="narz-formularz" onSubmit={start}>
           <label htmlFor="mak-url" className="narz-etykieta">{en ? 'Current website address' : 'Adres obecnej strony'}</label>
           <input ref={poleRef} id="mak-url" name="url" required maxLength={300} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
-          <PrzykladAdresu onWybierz={(a) => { if (poleRef.current) { poleRef.current.value = a; poleRef.current.focus(); } }} />
+          <PrzykladAdresu onWybierz={(a) => { setAdres(a); if (poleRef.current) { poleRef.current.value = a; poleRef.current.focus(); } }} />
+          <label htmlFor="mak-cel" className="narz-etykieta">{en ? 'What should improve? (optional)' : 'Co ma się poprawić? (opcjonalnie)'}</label>
+          <input id="mak-cel" name="cel" maxLength={300} placeholder={en ? 'e.g. more calls, modern look' : 'np. więcej telefonów, nowszy wygląd'} className="narz-pole" />
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
             <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta="narzedzie_makieta_start">
@@ -89,8 +152,6 @@ export default function MakietaClient() {
             </button>
           </div>
           <p className="narz-mikro">{en ? `No signup. The mockup takes ${MAKIETA.minut.replace('-', ' to ')} minutes. Up to ${MAKIETA.limitIp} mockups per day from one IP address.` : `Bez rejestracji. Makieta powstaje ${MAKIETA.minut.replace('-', ' do ')} minut. Do ${MAKIETA.limitIp} makiet dziennie z jednego adresu IP.`}</p>
-          <label htmlFor="mak-cel" className="narz-etykieta">{en ? 'What should improve? (optional)' : 'Co ma się poprawić? (opcjonalnie)'}</label>
-          <input id="mak-cel" name="cel" maxLength={300} placeholder={en ? 'e.g. more phone calls from customers, a more modern look' : 'np. więcej telefonów od klientów, nowocześniejszy wygląd'} className="narz-pole" />
           {stan.status === 'loading' && <Postep kroki={en ? KROKI_EN : KROKI} co={25000} />}
           {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
         </form>
@@ -121,11 +182,15 @@ export default function MakietaClient() {
                 <BramkaEmail
                   narzedzie="makieta"
                   id={stan.id}
-                  naglowek={en ? `Unlock the full mockup (${p.sekcji} ${p.sekcji === 1 ? 'section' : 'sections'})` : `Odblokuj całą makietę (${p.sekcji} sekcji)`}
+                  naglowek={en ? `Unlock the full mockup (${p.sekcji} ${p.sekcji === 1 ? 'section' : 'sections'})` : `Odblokuj całą makietę (${odmienSekcji(p.sekcji || 0)})`}
                   opis={en ? 'We will show the whole page, mobile included, and email you a link to the mockup so you can show it to a partner or a developer.' : 'Pokażemy całą stronę, także na telefonie, i wyślemy link do makiety e-mailem, żeby pokazać ją wspólnikowi albo programiście.'}
                   korzysci={en ? ['All sections: services, advantages, contact, footer', 'Desktop and mobile preview', 'Link valid for 60 days'] : ['Wszystkie sekcje: usługi, przewagi, kontakt, stopka', 'Podgląd na komputerze i telefonie', 'Link ważny 60 dni']}
                   przycisk={en ? 'Show the full mockup' : 'Pokaż całą makietę'}
-                  onOdblokowano={(pelny, newsletter, mailOk) => { setRezerwa(wynikRef.current?.offsetHeight || 0); setStan((s) => ({ ...s, pelny, newsletter, mailOk })); }}
+                  onOdblokowano={(pelny, newsletter, mailOk) => {
+                    setRezerwa(wynikRef.current?.offsetHeight || 0);
+                    zapiszOdblokowanaMakiete(stan.id, { pelny, newsletter, mailOk });
+                    setStan((s) => ({ ...s, pelny, newsletter, mailOk }));
+                  }}
                 />
               </div>
             </>
@@ -143,10 +208,11 @@ export default function MakietaClient() {
               )}
             </>
           )}
-          {adres ? (
+          {(adres || p.domena) ? (
             <LinkWyniku
               narzedzie="makieta"
-              parametry={{ url: adres }}
+              tryb={stan.id ? 'wynik' : 'wypelnij'}
+              parametry={{ url: adres || p.domena, ...(stan.id ? { wynik: stan.id } : {}) }}
               podsumowanie={en ? `Website mockup proposal for ${p.domena}` : `Propozycja makiety strony dla ${p.domena}`}
             />
           ) : null}

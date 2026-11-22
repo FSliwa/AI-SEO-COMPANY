@@ -401,8 +401,13 @@ export default function SzablonInterakcje({ slug = '', locale = 'pl' }) {
         };
         resetBtn.addEventListener('click', onReset);
 
-        const celPaska = root.querySelector('#podglad .sz-panel') || pozycje[0].el.closest('.szablon-tresc');
-        if (celPaska) celPaska.insertBefore(pasek, celPaska.firstChild);
+        const slotPaska = root.querySelector('[data-sz-chk-slot]');
+        if (slotPaska) {
+          slotPaska.replaceChildren(pasek);
+        } else {
+          const celPaska = root.querySelector('#podglad .sz-panel') || pozycje[0].el.closest('.szablon-tresc');
+          if (celPaska) celPaska.insertBefore(pasek, celPaska.firstChild);
+        }
         odswiezPasek();
 
         sprzatanie.push(() => {

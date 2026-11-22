@@ -50,11 +50,36 @@ const zwin = (t) => String(t || '').replace(/\s+/g, ' ').trim();
 const KRAJE_EN = [
   ['US', 'US - United States'],
   ['GB', 'GB - United Kingdom'],
-  ['PL', 'PL - Poland'],
   ['DE', 'DE - Germany'],
+  ['AT', 'AT - Austria'],
+  ['CH', 'CH - Switzerland'],
+  ['PL', 'PL - Poland'],
 ];
-const NAZWY_KRAJOW_EN = { US: 'the United States', GB: 'the United Kingdom', PL: 'Poland', DE: 'Germany' };
-const KROTKA_NAZWA_KRAJU_EN = { US: 'United States', GB: 'United Kingdom', PL: 'Poland', DE: 'Germany' };
+const KRAJE_PL = [
+  ['PL', 'PL - Polska'],
+  ['DE', 'DE - Niemcy'],
+  ['AT', 'AT - Austria'],
+  ['CH', 'CH - Szwajcaria'],
+  ['GB', 'GB - Wielka Brytania'],
+  ['US', 'US - Stany Zjednoczone'],
+];
+const NAZWY_KRAJOW_EN = { US: 'the United States', GB: 'the United Kingdom', PL: 'Poland', DE: 'Germany', AT: 'Austria', CH: 'Switzerland' };
+const KROTKA_NAZWA_KRAJU_EN = { US: 'United States', GB: 'United Kingdom', PL: 'Poland', DE: 'Germany', AT: 'Austria', CH: 'Switzerland' };
+const NAZWY_KRAJOW_PL = {
+  PL: { w: 'w Polsce', dla: 'dla Polski', cala: 'całą Polskę', krotka: 'Polska' },
+  DE: { w: 'w Niemczech', dla: 'dla Niemiec', cala: 'całe Niemcy', krotka: 'Niemcy' },
+  AT: { w: 'w Austrii', dla: 'dla Austrii', cala: 'całą Austrię', krotka: 'Austria' },
+  CH: { w: 'w Szwajcarii', dla: 'dla Szwajcarii', cala: 'całą Szwajcarię', krotka: 'Szwajcaria' },
+  GB: { w: 'w Wielkiej Brytanii', dla: 'dla Wielkiej Brytanii', cala: 'całą Wielką Brytanię', krotka: 'Wielka Brytania' },
+  US: { w: 'w USA', dla: 'dla USA', cala: 'całe USA', krotka: 'USA' },
+};
+const WIELOCZLONOWE_TLD = /\.(com\.pl|waw\.pl|net\.pl|org\.pl|info\.pl|co\.uk|org\.uk|co\.at|or\.at|com\.de)$/i;
+
+function bezTldDomeny(host) {
+  if (!host || !host.includes('.')) return '';
+  if (WIELOCZLONOWE_TLD.test(host)) return host.replace(WIELOCZLONOWE_TLD, '').replace(/\./g, ' ');
+  return host.split('.').slice(0, -1).join(' ');
+}
 
 function krajZDomeny(wartosc, dozwolone) {
   const h = String(wartosc || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
@@ -125,7 +150,7 @@ function bladPytania(lista, i, dane, en) {
   if (ADRES.test(t)) return en ? 'Remove the website or email address.' : 'Usuń adres strony albo e-mail.';
   const n = proste(t);
   const host = String(dane.www || '').toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
-  const marki = [proste(dane.firma), host.includes('.') ? proste(host.split('.').slice(0, -1).join(' ')) : ''].map((m) => m.trim()).filter((m) => m.replace(/ /g, '').length >= 3 && !OGOLNE.has(m));
+  const marki = [proste(dane.firma), host.includes('.') ? proste(bezTldDomeny(host)) : ''].map((m) => m.trim()).filter((m) => m.replace(/ /g, '').length >= 3 && !OGOLNE.has(m));
   if (marki.some((m) => n.includes(` ${m} `))) return en ? 'Remove your business name or domain: the model would repeat it in the answer and inflate the score.' : 'Usuń nazwę firmy albo jej domenę: model powtórzyłby ją w odpowiedzi i zawyżył wynik.';
   if (lista.some((x, j) => j < i && proste(x) === n)) return en ? 'The same question is already above.' : 'To samo pytanie jest już wyżej.';
   return null;
@@ -139,8 +164,9 @@ function pytaniaDemo(branza, miasto, en, kraj = 'PL') {
     const where = miasto ? `in ${miasto}` : `in ${krajNazwa}`;
     return [`Which company in the “${branza}” industry do you recommend ${where}? Name a few.`, `Who is the best in the “${branza}” industry ${where}?`, `I'm looking for: ${branza}${miasto ? `, ${miasto}` : `, ${krajKrotko}`}. Which company should I choose and why?`];
   }
-  const gdzie = miasto ? `w mieście ${miasto}` : 'w Polsce';
-  return [`Jaką firmę z branży „${branza}” polecasz ${gdzie}? Podaj kilka nazw.`, `Kto jest najlepszy w branży „${branza}” ${gdzie}?`, `Szukam: ${branza}${miasto ? `, ${miasto}` : ', Polska'}. Którą firmę wybrać i dlaczego?`];
+  const kPl = NAZWY_KRAJOW_PL[kraj] || NAZWY_KRAJOW_PL.PL;
+  const gdzie = miasto ? `w mieście ${miasto}` : kPl.w;
+  return [`Jaką firmę z branży „${branza}” polecasz ${gdzie}? Podaj kilka nazw.`, `Kto jest najlepszy w branży „${branza}” ${gdzie}?`, `Szukam: ${branza}${miasto ? `, ${miasto}` : `, ${kPl.krotka}`}. Którą firmę wybrać i dlaczego?`];
 }
 
 // Tryb demo: odpowiedzi z lib/narzedziaDemo.js mają stałe pytania, więc podstawiamy te z edytora (tylko podgląd lokalny).
@@ -184,8 +210,9 @@ function liniaNaZywo(en, kraj = 'PL') {
     const szukaja = WIDOCZNOSC.geminiZWyszukiwaniem ? 'ChatGPT, Gemini, Perplexity and Claude search the web' : 'ChatGPT, Perplexity and Claude search the web, Gemini answers from model knowledge';
     return `No sign-up. Up to ${n} businesses per day from one IP address. We ask live through the APIs: ${szukaja}, and we check AI Overviews in Google results for ${krajNazwa}.${WIDOCZNOSC.grok ? ' Grok answers from model knowledge, without web search.' : ''} ChatGPT here means an OpenAI model with web search through the API; answers in the ChatGPT app may differ.`;
   }
+  const kPl = NAZWY_KRAJOW_PL[kraj] || NAZWY_KRAJOW_PL.PL;
   const szukaja = WIDOCZNOSC.geminiZWyszukiwaniem ? 'ChatGPT, Gemini, Perplexity i Claude szukają w sieci' : 'ChatGPT, Perplexity i Claude szukają w sieci, Gemini odpowiada z wiedzy modelu';
-  return `Bez rejestracji. Do ${n} firm dziennie z jednego adresu IP. Pytamy na żywo przez API: ${szukaja}, a przegląd AI sprawdzamy w wynikach Google dla Polski.${WIDOCZNOSC.grok ? ' Grok odpowiada z wiedzy modelu, bez wyszukiwania.' : ''} ChatGPT to tu model OpenAI z wyszukiwaniem przez API; odpowiedzi aplikacji ChatGPT mogą się różnić.`;
+  return `Bez rejestracji. Do ${n} firm dziennie z jednego adresu IP. Pytamy na żywo przez API: ${szukaja}, a przegląd AI sprawdzamy w wynikach Google ${kPl.dla}.${WIDOCZNOSC.grok ? ' Grok odpowiada z wiedzy modelu, bez wyszukiwania.' : ''} ChatGPT to tu model OpenAI z wyszukiwaniem przez API; odpowiedzi aplikacji ChatGPT mogą się różnić.`;
 }
 
 // Dopisek przy polach opcjonalnych mniejszy niż etykieta: w 2 kolumnach na telefonie etykieta mieści się w 1 wierszu.
@@ -228,7 +255,8 @@ function Znak({ stan, en, i = 0 }) {
 
 export default function WidocznoscAiClient() {
   const en = useLocale() === 'en';
-  const dozwoloneKraje = en ? KRAJE_EN.map(([k]) => k) : ['PL'];
+  const listaKrajow = en ? KRAJE_EN : KRAJE_PL;
+  const dozwoloneKraje = listaKrajow.map(([k]) => k);
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, dane: null });
   // Formularz jest niekontrolowany; wartości z adresu i po „Sprawdź inną firmę” wracają przez defaultValue.
   const [wstepne, setWstepne] = useState({});
@@ -248,15 +276,13 @@ export default function WidocznoscAiClient() {
     const pola = { firma: w.firma ?? w.marka, branza: w.branza, miasto: w.miasto, www: w.url };
     const f = formRef.current;
     for (const [k, v] of Object.entries(pola)) if (v && f?.elements[k]) f.elements[k].value = v.slice(0, Number(f.elements[k].maxLength) > 0 ? Number(f.elements[k].maxLength) : 200);
-    if (en) {
-      const kParam = String(w.kraj || '').toUpperCase();
-      if (dozwoloneKraje.includes(kParam)) {
-        setKraj(kParam);
-        setKrajReczny(true);
-      } else if (w.url) {
-        const auto = krajZDomeny(w.url, dozwoloneKraje);
-        if (auto) setKraj(auto);
-      }
+    const kParam = String(w.kraj || '').toUpperCase();
+    if (dozwoloneKraje.includes(kParam)) {
+      setKraj(kParam);
+      setKrajReczny(true);
+    } else if (w.url) {
+      const auto = krajZDomeny(w.url, dozwoloneKraje);
+      if (auto) setKraj(auto);
     }
   });
 
@@ -274,12 +300,14 @@ export default function WidocznoscAiClient() {
         const id = data.id || wynikId;
         const pelny = odczytajOdblokowane(id);
         const pUrl = new URLSearchParams(window.location.search);
+        const odczytanyKraj = String(data.podglad.kraj || pUrl.get('kraj') || '').toUpperCase();
+        if (odczytanyKraj && dozwoloneKraje.includes(odczytanyKraj)) setKraj(odczytanyKraj);
         const dane = {
           firma: data.podglad.firma || pUrl.get('firma') || null,
           branza: data.podglad.branza || pUrl.get('branza') || null,
           miasto: data.podglad.miasto || pUrl.get('miasto') || null,
           url: pUrl.get('url') || null,
-          ...(en && (data.podglad.kraj || pUrl.get('kraj')) ? { kraj: String(data.podglad.kraj || pUrl.get('kraj')).toUpperCase() } : {}),
+          ...(odczytanyKraj ? { kraj: odczytanyKraj } : {}),
         };
         setStan((s) => (s.status === 'idle' ? {
           status: 'done',
@@ -294,7 +322,7 @@ export default function WidocznoscAiClient() {
       }
     })();
     return () => ctrl.abort();
-  }, [en]);
+  }, [en]); // eslint-disable-line react-hooks/exhaustive-deps -- dozwoloneKraje zależy wyłącznie od en
 
   // Po odblokowaniu przewijamy do początku pełnych odpowiedzi (smooth tylko bez reduce).
   useEffect(() => {
@@ -302,7 +330,7 @@ export default function WidocznoscAiClient() {
   }, [stan.pelny]);
 
   function onWwwZmiana(e) {
-    if (!en || krajReczny) return;
+    if (krajReczny) return;
     const auto = krajZDomeny(e.target.value, dozwoloneKraje);
     if (auto) setKraj(auto);
   }
@@ -312,7 +340,7 @@ export default function WidocznoscAiClient() {
   async function start(e) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const wybranyKraj = en ? String(fd.get('kraj') || kraj || 'US').toUpperCase() : 'PL';
+    const wybranyKraj = String(fd.get('kraj') || kraj || (en ? 'US' : 'PL')).toUpperCase();
     const body = { firma: String(fd.get('firma') || ''), branza: String(fd.get('branza') || ''), miasto: String(fd.get('miasto') || ''), www: String(fd.get('www') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl', kraj: wybranyKraj };
     setWstepne({ firma: body.firma, branza: body.branza, miasto: body.miasto, www: body.www });
     setStan({ status: 'pytania', blad: null, id: null, podglad: null, pelny: null, dane: null });
@@ -331,7 +359,8 @@ export default function WidocznoscAiClient() {
 
   // Krok 2: sprawdzenie. pytania[i] = tekst zmienionego pytania albo null (pytanie zaproponowane).
   async function uruchom(body, wlasne) {
-    const dane = { firma: body.firma.trim(), branza: body.branza.trim(), miasto: body.miasto.trim() || null, url: body.www.trim() || null, ...(en ? { kraj: body.kraj } : {}) };
+    const domyslnyKraj = en ? 'US' : 'PL';
+    const dane = { firma: body.firma.trim(), branza: body.branza.trim(), miasto: body.miasto.trim() || null, url: body.www.trim() || null, ...(body.kraj && (en || body.kraj !== domyslnyKraj) ? { kraj: body.kraj } : {}) };
     zapiszParametry({ ...dane, wynik: null });
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null, dane });
     const ileZmienionych = wlasne ? wlasne.filter(Boolean).length : 0;
@@ -396,28 +425,26 @@ export default function WidocznoscAiClient() {
           </div>
           <div>
             <label htmlFor="ai-miasto" className="narz-etykieta">{en ? 'City' : 'Miasto'} <span style={OPCJONALNIE}>{en ? '(optional)' : '(opcjonalnie)'}</span></label>
-            <input id="ai-miasto" name="miasto" maxLength={60} defaultValue={wstepne.miasto} placeholder={en ? (kraj === 'US' ? 'e.g. Chicago' : kraj === 'GB' ? 'e.g. London' : kraj === 'DE' ? 'e.g. Berlin' : 'e.g. Warsaw') : 'np. Warszawa'} className="narz-pole" aria-describedby="ai-miasto-opis" />
+            <input id="ai-miasto" name="miasto" maxLength={60} defaultValue={wstepne.miasto} placeholder={en ? (kraj === 'US' ? 'e.g. Chicago' : kraj === 'GB' ? 'e.g. London' : kraj === 'DE' ? 'e.g. Berlin' : kraj === 'AT' ? 'e.g. Vienna' : kraj === 'CH' ? 'e.g. Zurich' : 'e.g. Warsaw') : (kraj === 'DE' ? 'np. Berlin' : kraj === 'AT' ? 'np. Wiedeń' : kraj === 'CH' ? 'np. Zurych' : kraj === 'GB' ? 'np. Londyn' : kraj === 'US' ? 'np. Chicago' : 'np. Warszawa')} className="narz-pole" aria-describedby="ai-miasto-opis" />
           </div>
           <div>
             <label htmlFor="ai-www" className="narz-etykieta">{en ? 'Website' : 'Strona'} <span style={OPCJONALNIE}>{en ? '(optional)' : '(opcjonalnie)'}</span></label>
-            <input id="ai-www" name="www" maxLength={200} defaultValue={wstepne.www} onChange={onWwwZmiana} placeholder={en ? 'e.g. company.com' : 'np. firma.pl'} className="narz-pole" inputMode="url" aria-describedby="ai-www-opis" />
+            <input id="ai-www" name="www" maxLength={200} defaultValue={wstepne.www} onChange={onWwwZmiana} placeholder={en ? 'e.g. company.com' : (kraj === 'DE' ? 'np. firma.de' : kraj === 'AT' ? 'np. firma.at' : kraj === 'CH' ? 'np. firma.ch' : 'np. firma.pl')} className="narz-pole" inputMode="url" aria-describedby="ai-www-opis" />
           </div>
-          {en && (
-            <div style={{ gridColumn: '1 / -1' }}>
-              <label htmlFor="ai-kraj" className="narz-etykieta">Country / target market</label>
-              <select
-                id="ai-kraj"
-                name="kraj"
-                value={kraj}
-                onChange={(e) => { setKraj(e.target.value); setKrajReczny(true); }}
-                className="narz-pole"
-              >
-                {KRAJE_EN.map(([kod, nazwa]) => (
-                  <option key={kod} value={kod}>{nazwa}</option>
-                ))}
-              </select>
-            </div>
-          )}
+          <div style={{ gridColumn: '1 / -1' }}>
+            <label htmlFor="ai-kraj" className="narz-etykieta">{en ? 'Country / target market' : 'Kraj / rynek docelowy'}</label>
+            <select
+              id="ai-kraj"
+              name="kraj"
+              value={kraj}
+              onChange={(e) => { setKraj(e.target.value); setKrajReczny(true); }}
+              className="narz-pole"
+            >
+              {listaKrajow.map(([kod, nazwa]) => (
+                <option key={kod} value={kod}>{nazwa}</option>
+              ))}
+            </select>
+          </div>
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
             <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading' || stan.status === 'pytania'} aria-busy={stan.status === 'loading' || stan.status === 'pytania' ? 'true' : undefined} data-cta="ai_check_submit">
@@ -425,7 +452,7 @@ export default function WidocznoscAiClient() {
             </button>
           </div>
           <p className="narz-mikro">{liniaNaZywo(en, kraj)}</p>
-          <p className="narz-mikro">{en ? 'First you will see the 3 questions we will ask, and you can change each one. ' : 'Najpierw zobaczysz 3 pytania, które zadamy, i możesz zmienić każde z nich. '}<span id="ai-miasto-opis">{en ? `No city = we ask across ${NAZWY_KRAJOW_EN[kraj] || 'the United States'}. ` : 'Bez miasta pytamy o całą Polskę. '}</span><span id="ai-www-opis">{en ? 'If you add a page in English (e.g. company.com/en), we build one of the 3 questions from its title and description.' : 'Z tytułu i opisu podanej strony spróbujemy ułożyć jedno z 3 pytań.'}</span></p>
+          <p className="narz-mikro">{en ? 'First you will see the 3 questions we will ask, and you can change each one. ' : 'Najpierw zobaczysz 3 pytania, które zadamy, i możesz zmienić każde z nich. '}<span id="ai-miasto-opis">{en ? `No city = we ask across ${NAZWY_KRAJOW_EN[kraj] || 'the United States'}. ` : `Bez miasta pytamy o ${(NAZWY_KRAJOW_PL[kraj] || NAZWY_KRAJOW_PL.PL).cala}. `}</span><span id="ai-www-opis">{en ? 'If you add a page in English (e.g. company.com/en), we build one of the 3 questions from its title and description.' : 'Z tytułu i opisu podanej strony spróbujemy ułożyć jedno z 3 pytań.'}</span></p>
           {stan.status === 'loading' && <Postep kroki={en ? KROKI_EN : KROKI} co={20000} />}
           {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
         </form>

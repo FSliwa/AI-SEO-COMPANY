@@ -91,16 +91,28 @@ function zapiszOdblokowane(id, pelny) {
   }
 }
 
+const WIELOCZLONOWE_TLD_DE = /\.(com\.pl|waw\.pl|net\.pl|org\.pl|info\.pl|co\.uk|org\.uk|co\.at|or\.at|com\.de)$/i;
+
+function bezTldDomenyDe(host) {
+  if (!host || !host.includes('.')) return '';
+  if (WIELOCZLONOWE_TLD_DE.test(host)) return host.replace(WIELOCZLONOWE_TLD_DE, '').replace(/\./g, ' ');
+  return host.split('.').slice(0, -1).join(' ');
+}
+
 function wzorceMarki(firma, www) {
   const zbior = new Set();
   const czystaFirma = zwin(firma);
   if (czystaFirma.length >= 2) {
     zbior.add(czystaFirma);
-    const bezFormy = zwin(czystaFirma.replace(/\b(gmbh\s*&\s*co\.\s*kg|gmbh|ug|ag|kg|og|e\.u\.|gbr|ltd\.?|llc)\b/gi, ''));
+    const bezFormy = zwin(czystaFirma.replace(/\b(gmbh\s*&\s*co\.\s*kg|gmbh|ug|ag|kg|og|e\.u\.|gbr|ltd\.?|limited|llc|inc\.?|corp\.?|p\.s\.a\.|s\.a\.)\b/gi, ''));
     if (bezFormy.length >= 3 && !OGOLNE.has(bezFormy.toLowerCase())) zbior.add(bezFormy);
   }
   const host = String(www || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
-  if (host.length >= 4 && host.includes('.')) zbior.add(host);
+  if (host.length >= 4 && host.includes('.')) {
+    zbior.add(host);
+    const korzen = host.replace(/\.(com\.pl|waw\.pl|net\.pl|org\.pl|info\.pl|co\.uk|org\.uk|co\.at|or\.at|com\.de|[a-z]{2,12})$/i, '');
+    if (korzen.length >= 3 && !korzen.includes('.') && !OGOLNE.has(korzen)) zbior.add(korzen);
+  }
   return [...zbior].sort((a, b) => b.length - a.length);
 }
 
@@ -123,7 +135,7 @@ function bladPytania(lista, i, dane) {
   if (ADRES.test(t)) return 'Entfernen Sie die Website- oder E-Mail-Adresse.';
   const n = proste(t);
   const host = String(dane.www || '').toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
-  const marki = [proste(dane.firma), host.includes('.') ? proste(host.split('.').slice(0, -1).join(' ')) : ''].map((m) => m.trim()).filter((m) => m.replace(/ /g, '').length >= 3 && !OGOLNE.has(m));
+  const marki = [proste(dane.firma), host.includes('.') ? proste(bezTldDomenyDe(host)) : ''].map((m) => m.trim()).filter((m) => m.replace(/ /g, '').length >= 3 && !OGOLNE.has(m));
   if (marki.some((m) => n.includes(` ${m} `))) return 'Entfernen Sie Ihren Firmennamen oder Ihre Domain: Das Modell würde sie in der Antwort wiederholen und das Ergebnis aufblähen.';
   if (lista.some((x, j) => j < i && proste(x) === n)) return 'Dieselbe Frage steht schon weiter oben.';
   return null;
@@ -782,7 +794,7 @@ export default function KiSichtbarkeitPruefenDe() {
               <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))' }}>
                 {LESEN.stufen.map(([h, t]) => (
                   <div key={h} style={{ ...card, padding: '1.5rem' }}>
-                    <h3 style={{ fontSize: '1.6rem', fontWeight: 800, margin: '0 0 0.5rem', color: 'var(--color-text-dark)' }}>{h}</h3>
+                    <h3 style={{ fontSize: '1.6rem', fontWeight: 600, margin: '0 0 0.5rem', color: 'var(--color-text-dark)' }}>{h}</h3>
                     <p lang="de" style={{ margin: 0, lineHeight: 1.6, color: 'var(--color-text-main)', hyphens: 'auto', overflowWrap: 'break-word' }}>{t}</p>
                   </div>
                 ))}

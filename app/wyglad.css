@@ -2223,8 +2223,20 @@ select.narz-pole {
 }
 
 .narz-rozbicie-kwota,
-.narz-ocena-liczba {
+.narz-ocena-liczba,
+.narz-kwota,
+.narz-dr-liczba,
+.narz-slupki-wartosc,
+.kalk-biezacy strong,
+.rai-kafel-wartosc,
+.sz-chk-pasek__tekst {
   font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 520px) {
+  .narz-siatka-formularza {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* (2/38) /en "Why us": drugi H2 to podtytul */
@@ -3887,7 +3899,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 .narz-postep li.teraz::before { border-color: var(--w-pomarancz); border-right-color: transparent; }
 
 /* Wynik */
-.narz-wynik { display: grid; gap: 1.25rem; }
+.narz-wynik { display: grid; gap: 1.25rem; min-width: 0; }
 .narz-wynik-glowa { display: grid; grid-template-columns: auto 1fr; gap: clamp(1rem, 3vw, 2rem); align-items: center; }
 .narz-wynik-domena { margin: 0 0 0.35rem; font-size: clamp(1.25rem, 2.6vw, 1.6rem); font-weight: 700; color: var(--w-tusz); overflow-wrap: anywhere; }
 .narz-wynik-opis { margin: 0 0 0.5rem; line-height: 1.6; color: var(--w-tusz-2); }
@@ -3909,6 +3921,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 .narz-kategorie { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
 .narz-kategorie li { display: grid; justify-items: center; align-items: start; text-align: center; }
 .narz-kategorie .narz-ocena--mala { height: auto; grid-template-rows: 96px auto; }
+.narz-kategorie .narz-ocena--mala .narz-ocena-podpis { min-height: 2.35em; display: flex; align-items: flex-start; justify-content: center; line-height: 1.2; }
 .narz-kategorie .narz-ocena--mala svg { width: 96px; height: 96px; inset: 0 auto auto 50%; transform: translateX(-50%) rotate(-90deg); }
 .narz-kategorie .narz-ocena-liczba { grid-row: 1; align-self: center; }
 
@@ -4050,7 +4063,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
    w poziomie na telefonie, strona nie.
    ========================================================================== */
 .szablon-tresc p { margin: 0 0 1rem; }
-.szablon-tresc h3 { font-size: 1.15rem; line-height: 1.35; font-weight: 700; margin: 1.5rem 0 0.5rem; color: var(--color-text-dark); }
+.szablon-tresc h3 { font-size: 1.15rem; line-height: 1.35; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--color-text-dark); }
 .szablon-tresc ul,
 .szablon-tresc ol { margin: 0 0 1rem; padding-left: 1.25rem; display: grid; gap: 0.45rem; }
 .szablon-tresc table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 0 0 1.25rem; font-size: 0.95rem; line-height: 1.5; }
@@ -4058,7 +4071,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
 .szablon-tresc td { border: 1px solid #E5E1DC; padding: 0.55rem 0.7rem; text-align: left; vertical-align: top; min-width: 7rem; }
 .szablon-tresc th { background: #FBF7F2; font-weight: 700; color: var(--color-text-dark); }
 .szablon-tresc a { color: var(--color-primary); text-decoration: underline; }
-.szablon-tresc code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; background: #F4EFE9; padding: 0.1em 0.35em; border-radius: 6px; }
+.szablon-tresc code { font-family: var(--w-mono); font-size: 0.9em; background: #F4EFE9; padding: 0.1em 0.35em; border-radius: 6px; }
 /* Podgląd szablonu: punkty checklist mają własny znak ☐, więc bez kropek listy. */
 #podglad .szablon-tresc ul { list-style: none; padding-left: 0; }
 

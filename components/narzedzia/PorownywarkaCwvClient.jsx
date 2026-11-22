@@ -167,6 +167,8 @@ export function PorownywarkaCwvClient() {
         .then((res) => res.json())
         .then((data) => {
           if (data?.ok && data.podglad) {
+            if (!p.a && !p.url && data.podglad.stronaA?.domena) setUrlA(data.podglad.stronaA.domena);
+            if (!p.b && data.podglad.stronaB?.domena) setUrlB(data.podglad.stronaB.domena);
             setStan({ status: 'done', blad: null, dane: data.podglad, id: p.wynik });
           } else {
             setStan({ status: 'idle', blad: null, dane: null, id: null });
@@ -772,8 +774,15 @@ export function PorownywarkaCwvClient() {
                     </li>
                     <li>
                       {en
-                        ? 'Plugin updates often regress mobile INP and security'
-                        : 'Kolejne wtyczki z czasem znów pogarszają INP i bezpieczeństwo'}
+                        ? `24 months of SEO retainer: €${kalkulacja.tcoWordpress24.seo24.toLocaleString('en-US')} net`
+                        : `24 mies. osobnego abonamentu SEO: ${kalkulacja.tcoWordpress24.seo24.toLocaleString('pl-PL')} zł netto`}
+                    </li>
+                    <li>
+                      <strong>
+                        {en
+                          ? `24-month total: ~€${kalkulacja.tcoWordpress24.razem.toLocaleString('en-US')} net`
+                          : `Łącznie przez 24 miesiące: ok. ${kalkulacja.tcoWordpress24.razem.toLocaleString('pl-PL')} zł netto`}
+                      </strong>
                     </li>
                   </ul>
                 </div>
@@ -802,6 +811,13 @@ export function PorownywarkaCwvClient() {
                       {en
                         ? `Includes full SEO & AI Visibility execution (${CENY.boosterPack.umowaMiesiecy}-month min. agreement, code stays yours)`
                         : `W cenie pełne pozycjonowanie Google + AI (umowa na min. ${CENY.boosterPack.umowaMiesiecy} mies.)`}
+                    </li>
+                    <li>
+                      <strong style={{ color: '#ffffff' }}>
+                        {en
+                          ? `24-month total: €${kalkulacja.tcoBooster24.razem.toLocaleString('en-US')} net`
+                          : `Łącznie przez 24 miesiące: ${kalkulacja.tcoBooster24.razem.toLocaleString('pl-PL')} zł netto`}
+                      </strong>
                     </li>
                   </ul>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', alignItems: 'center', marginTop: '0.35rem' }}>

@@ -24,5 +24,5 @@ export const kod = { fontFamily: 'var(--w-mono)', fontSize: '0.88rem', lineHeigh
 export const lead = { fontSize: '1.1875rem', lineHeight: 1.55, color: 'var(--w-tusz-2)', maxWidth: '680px', margin: '0 0 1.5rem' };
 export const poNarzedziu = { marginTop: '2rem' };
 // Z-04 / Z-07: nagłówek kolumny i podpis zrzutu.
-export const h3Kolumny = { fontSize: '1.05rem', lineHeight: 1.35, fontWeight: 700, margin: '0 0 0.6rem', color: 'var(--color-text-dark)' };
+export const h3Kolumny = { fontSize: '1.05rem', lineHeight: 1.35, fontWeight: 600, margin: '0 0 0.6rem', color: 'var(--color-text-dark)' };
 export const podpis = { fontSize: '0.9rem', lineHeight: 1.55, color: 'var(--w-tusz-2)', margin: '0.6rem 0 0', textAlign: 'center' };

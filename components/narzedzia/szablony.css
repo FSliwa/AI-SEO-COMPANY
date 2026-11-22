@@ -148,6 +148,8 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 /* Podgląd treści szablonu: panel + kartka z paskiem narzędziowym */
 .sz-panel { margin-top: 1.25rem; padding: clamp(14px, 3vw, 40px); border-radius: clamp(28px, 4vw, 48px); background: var(--w-papier-2); }
 .sz-kartka { background: var(--w-karta); border: 1px solid var(--w-linia); border-radius: 20px; box-shadow: var(--sz-cien); overflow: hidden; }
+.sz-chk-slot { min-height: 52px; margin: 0 0 0.9rem; position: sticky; top: 74px; z-index: 4; }
+.sz-chk-slot > .sz-chk-pasek { margin: 0; position: static; min-height: 52px; box-sizing: border-box; }
 .sz-kartka__pasek { display: flex; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--w-linia); background: var(--w-papier); }
 .sz-kartka__pasek i { width: 10px; height: 10px; border-radius: 50%; background: var(--w-linia); }
 .sz-kartka__pasek i:first-child { background: var(--w-brzoskwinia); }

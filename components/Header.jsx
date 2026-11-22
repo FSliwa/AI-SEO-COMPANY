@@ -161,8 +161,8 @@ export default function Header() {
       { id: 'audyt', href: '/audyt-seo', tekst: tr(lang, 'Audyt SEO', 'SEO Audit') },
       // L1 (PLAN-v2 6.6): tylko PL i dopiero po publikacji partii 2.
       { id: 'wizytowka', href: hrefWizytowki, tekst: tr(lang, 'Pozycjonowanie wizytówki Google', 'Google Business Profile') },
-      { id: 'copywriting', href: hrefCopywritingu, tekst: pl ? 'Copywriting SEO' : 'SEO Copywriting' },
-      { id: 'linkbuilding', href: hrefLinkBuildingu, tekst: pl ? 'Link building' : 'Link Building' },
+      { id: 'copywriting', href: hrefCopywritingu, tekst: tr(lang, 'Copywriting SEO', 'SEO Copywriting') },
+      { id: 'linkbuilding', href: hrefLinkBuildingu, tekst: tr(lang, 'Link building', 'Link Building') },
       { id: 'strony', href: naDe('/projektowanie-stron-internetowych') ? '/projektowanie-stron-internetowych' : null, tekst: tr(lang, 'Tworzenie Stron', 'Web Design') },
       // DE: strona tylko niemiecka (rynek polski dla firm z DACH).
       ...(de && maWersjeDe('/seo-agentur-polen') ? [{ id: 'polen', ...wDe('/seo-agentur-polen', 'SEO Agentur Polen') }] : []),
@@ -174,8 +174,11 @@ export default function Header() {
       ...(de && maWersjeDe('/porownania/seo-vs-geo') ? [{ id: 'seo-geo', ...wDe('/porownania/seo-vs-geo', 'SEO vs GEO') }] : []),
     ] },
     { id: 'narzedzia', etykieta: x('Narzędzia i szablony', 'Tools and templates', 'Tools und Vorlagen'), linki: de ? [
-      // DE: pięć niemieckich stron narzędzi i szablonów (huba narzędzi po niemiecku nie ma).
+      { id: 'de-hub', ...wDe('/narzedzia', 'Kostenlose Tools') },
       { id: 'de-audyt', ...wDe('/narzedzia/audyt-seo', 'Kostenloser SEO Audit') },
+      { id: 'de-rechner', ...wDe('/narzedzia/kalkulator-strat-seo', 'SEO-Verlustrechner') },
+      { id: 'de-cwv', ...wDe('/narzedzia/test-core-web-vitals-porownanie', 'Core Web Vitals Vergleich') },
+      { id: 'de-crawler', ...wDe('/narzedzia/tester-robotow-ai-robots-txt', 'KI-Crawler & robots.txt Test') },
       { id: 'de-llms', ...wDe('/narzedzia/generator-llms-txt', 'llms.txt Generator') },
       { id: 'de-da', ...wDe('/narzedzia/autorytet-domeny', 'Domain Authority Checker') },
       { id: 'de-plan', ...wDe('/narzedzia/content-plan', 'Redaktionsplan Vorlage') },
@@ -188,8 +191,8 @@ export default function Header() {
     ] },
     { id: 'wiedza', etykieta: x('Wiedza', 'Knowledge', 'Wissen'), linki: [
       { id: 'blog', href: naDe('/blog') ? '/blog' : null, tekst: t('blog') },
-      { id: 'porownania', href: hrefPorownan, tekst: pl ? 'Porównania' : 'Comparisons' },
-      { id: 'zmiana', href: hrefZmianyAgencji, tekst: pl ? 'Zmiana agencji SEO' : 'Switching SEO agencies' },
+      { id: 'porownania', href: hrefPorownan, tekst: tr(lang, 'Porównania', 'Comparisons') },
+      { id: 'zmiana', href: hrefZmianyAgencji, tekst: tr(lang, 'Zmiana agencji SEO', 'Switching SEO agencies') },
     ] },
     { id: 'firma', etykieta: x('Firma i klient', 'Company and clients', 'Unternehmen'), linki: [
       { id: 'onas', href: '/o-nas', tekst: tr(lang, 'O Nas', 'About Us') },
