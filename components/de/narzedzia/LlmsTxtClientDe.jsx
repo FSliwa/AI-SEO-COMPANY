@@ -13,7 +13,7 @@ import { GENERATOR, CENY } from '@/lib/narzedziaLiczby';
 import { eur, liczba } from '@/lib/formatDe';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import LlmsTxtEdytor from '@/components/narzedzia/LlmsTxtEdytor';
-import { parsujLlmsTxt, policz, zlozLlmsTxt } from '@/components/narzedzia/llmsTxtPlik';
+import { czyOptional, parsujLlmsTxt, policz, zlozLlmsTxt } from '@/components/narzedzia/llmsTxtPlik';
 import { LinkWyniku, PrzykladAdresu } from './WspolneDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import * as s from '@/components/narzedzia/styl';
@@ -36,16 +36,93 @@ function host(adres) {
   }
 }
 
-function pobierzPlik(tekst) {
+function pobierzPlik(tekst, nazwaPliku = 'llms.txt') {
   const blob = new Blob([tekst], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'llms.txt';
+  a.download = nazwaPliku;
   document.body.appendChild(a);
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function sciezkaZAdresu(adres) {
+  try {
+    const u = new URL(adres);
+    return u.pathname + u.search;
+  } catch {
+    return adres;
+  }
+}
+
+function zbudujLlmsFullDe(model, w) {
+  if (!w) return '';
+  if (!model) return w.llmsFullTxt || w.llmsTxt || '';
+  const domena = host(w.strona);
+  const naglowek = String(model.nazwa || domena).trim();
+  const opisGlowny = String(model.opis || '').trim();
+  const dozwoloneBoty = Array.isArray(w.boty)
+    ? w.boty.filter((b) => b.robots === 'dozwolony').map((b) => b.nazwa)
+    : [];
+  const sekcjeKolejno = [
+    ...model.sekcje.filter((sek) => !czyOptional(sek)),
+    ...model.sekcje.filter(czyOptional),
+  ];
+  const aktywneSekcje = sekcjeKolejno
+    .map((sek) => ({ ...sek, aktywne: sek.linki.filter((l) => l.wPliku) }))
+    .filter((sek) => sek.aktywne.length > 0);
+  const lacznieLinkow = aktywneSekcje.reduce((suma, sek) => suma + sek.aktywne.length, 0);
+
+  const linie = [
+    `# ${naglowek} - Erweiterter RAG-Kontext (/llms-full.txt)`,
+    '',
+  ];
+  if (opisGlowny) linie.push(`> ${opisGlowny}`, '');
+  linie.push(
+    '## Kontextübersicht der Domain',
+    '',
+    `- Quell-Domain: ${w.strona}`,
+    `- Kompakter Hauptindex: ${w.strona.replace(/\/$/, '')}/llms.txt`,
+    `- Erfasste Unterseiten: ${lacznieLinkow} (${aktywneSekcje.length} Abschnitte)`,
+  );
+  if (dozwoloneBoty.length > 0) {
+    linie.push(`- Erlaubte Crawler laut robots.txt: ${dozwoloneBoty.join(', ')}`);
+  }
+  linie.push('');
+
+  for (const sek of aktywneSekcje) {
+    const nazwaSek = czyOptional(sek) ? 'Optional' : (sek.nazwa || 'Seiten');
+    linie.push(`## ${nazwaSek}`, '');
+    for (const l of sek.aktywne) {
+      const sciezka = sciezkaZAdresu(l.url);
+      const streszczenie = String(l.opis || '').trim() || `Wichtige Unterseite im Bereich ${nazwaSek} (${sciezka}).`;
+      linie.push(
+        `### ${l.tytul || l.url}`,
+        `- URL: ${l.url}`,
+        `- Pfad: ${sciezka}`,
+        `- Kontextbeschreibung: ${streszczenie}`,
+      );
+      const dodatkowaTresc = w.pelneTresci?.[l.url] || l.tresc;
+      if (dodatkowaTresc) {
+        linie.push(`- Textauszug: ${String(dodatkowaTresc).replace(/\s+/g, ' ').trim()}`);
+      }
+      linie.push('');
+    }
+  }
+  return `${linie.join('\n').trim()}\n`;
+}
+
+function kodWdrozeniaDe(zakladka, domena) {
+  const hostCzysty = domena || 'ihrefirma.de';
+  if (zakladka === 'nextjs') {
+    return `# Variante A (am schnellsten): beide Dateien in den Ordner public/ legen\ncp ~/Downloads/llms.txt ./public/llms.txt\ncp ~/Downloads/llms-full.txt ./public/llms-full.txt\n\n# Nach dem Deployment prüfen (HTTP 200 und text/plain erforderlich):\ncurl -I https://${hostCzysty}/llms.txt`;
+  }
+  if (zakladka === 'wordpress') {
+    return `# 1. Per SFTP / Hosting-Dateimanager mit dem WordPress-Stammverzeichnis verbinden (neben wp-config.php)\n# 2. llms.txt (und optional llms-full.txt) direkt hochladen nach:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Direktaufruf ohne Weiterleitung prüfen:\nhttps://${hostCzysty}/llms.txt`;
+  }
+  return `# Nginx: /llms.txt und /llms-full.txt als UTF-8-Klartext ausliefern\nlocation ~ ^/llms(-full)?\\.txt$ {\n  default_type "text/plain; charset=utf-8";\n  add_header Cache-Control "public, max-age=3600";\n  try_files $uri =404;\n}\n\n# Cloudflare WAF: bei aktivem Bot Fight Mode eine Custom Rule anlegen:\n# URI Path in {"/llms.txt" "/llms-full.txt"} -> Action: Skip (Managed Challenge)`;
 }
 
 // Stan obecnego pliku /llms.txt na sprawdzanej stronie.
@@ -92,8 +169,11 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null });
   const [skopiowano, setSkopiowano] = useState(false);
   const [skopiowanoSnippet, setSkopiowanoSnippet] = useState(false);
+  const [skopiowanoInstrukcje, setSkopiowanoInstrukcje] = useState(false);
   const [pobrano, setPobrano] = useState(false);
   const [zKomentarzemZrodla, setZKomentarzemZrodla] = useState(false);
+  const [trybPliku, setTrybPliku] = useState('zwykly');
+  const [zakladkaWdrozenia, setZakladkaWdrozenia] = useState('nextjs');
   const [adres, setAdres] = useState('');
   const [edycja, setEdycja] = useState({ model: null, zmieniony: false });
   const poleRef = useRef(null);
@@ -110,6 +190,11 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
     const t = setTimeout(() => setSkopiowanoSnippet(false), 3000);
     return () => clearTimeout(t);
   }, [skopiowanoSnippet]);
+  useEffect(() => {
+    if (!skopiowanoInstrukcje) return undefined;
+    const t = setTimeout(() => setSkopiowanoInstrukcje(false), 3000);
+    return () => clearTimeout(t);
+  }, [skopiowanoInstrukcje]);
   useEffect(() => {
     if (!pobrano) return undefined;
     const t = setTimeout(() => setPobrano(false), 2500);
@@ -156,7 +241,7 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
 
   async function kopiuj() {
     try {
-      await navigator.clipboard.writeText(plik);
+      await navigator.clipboard.writeText(aktywnyTekstPliku);
       setSkopiowano(true);
     } catch {
       const obszar = document.getElementById('llms-wynik-plik');
@@ -171,6 +256,31 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
   const plik = plikBazowy
     ? (zKomentarzemZrodla ? `${plikBazowy.trimEnd()}\n\n${komentarzZrodla}\n` : plikBazowy)
     : '';
+  const plikFullBazowy = w ? zbudujLlmsFullDe(edycja.model, w) : '';
+  const plikFull = plikFullBazowy
+    ? (zKomentarzemZrodla ? `${plikFullBazowy.trimEnd()}\n\n${komentarzZrodla}\n` : plikFullBazowy)
+    : '';
+  const czyFull = trybPliku === 'full';
+  const aktywnyTekstPliku = czyFull ? plikFull : plik;
+  const aktywnaNazwaPliku = czyFull ? 'llms-full.txt' : 'llms.txt';
+  const bajtyPliku = aktywnyTekstPliku ? new TextEncoder().encode(aktywnyTekstPliku).length : 0;
+  const kbPliku = liczba(bajtyPliku / 1024, 'de', 1);
+  const szacowaneTokeny = aktywnyTekstPliku ? Math.max(1, Math.ceil(aktywnyTekstPliku.length / 4)) : 0;
+  const procOkna128k = (szacowaneTokeny / 128000) * 100;
+  const tekstOkna128k = procOkna128k < 0.1
+    ? '< 0,1 %'
+    : `${liczba(procOkna128k, 'de', 1)} %`;
+  const tekstInstrukcji = w ? kodWdrozeniaDe(zakladkaWdrozenia, host(w.strona)) : '';
+  async function kopiujInstrukcje() {
+    if (!tekstInstrukcji) return;
+    try {
+      await navigator.clipboard.writeText(tekstInstrukcji);
+      setSkopiowanoInstrukcje(true);
+      track('llms_deploy_guide_copy', { stack: zakladkaWdrozenia, lang: 'de' });
+    } catch {
+      // brak dostepu do schowka
+    }
+  }
   const docelowyLlmsUrl = (() => {
     if (!w?.strona) return '';
     try { return new URL('/llms.txt', w.strona).href; } catch { return `${w.strona.replace(/\/$/, '')}/llms.txt`; }
@@ -289,12 +399,33 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
                 <LlmsTxtEdytor model={edycja.model} onZmiana={zmienModel} de />
               </details>
             )}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.6rem', margin: '0 0 0.75rem' }}>
+              <div className="narz-filtry" role="group" aria-label="Format der erzeugten Datei" style={{ margin: 0 }}>
+                <button
+                  type="button"
+                  aria-pressed={!czyFull}
+                  onClick={() => { setTrybPliku('zwykly'); setSkopiowano(false); }}
+                >
+                  /llms.txt (kompakter Index)
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={czyFull}
+                  onClick={() => { setTrybPliku('full'); setSkopiowano(false); }}
+                >
+                  /llms-full.txt (erweiterter RAG-Kontext)
+                </button>
+              </div>
+              <span style={{ fontSize: '0.84rem', color: 'var(--w-tusz-2)', fontVariantNumeric: 'tabular-nums' }}>
+                {`${kbPliku} KB · ~${liczba(szacowaneTokeny, 'de')} Tokens (${tekstOkna128k} des 128k-Fensters von GPT-4o / Claude)`}
+              </span>
+            </div>
             <textarea
               id="llms-wynik-plik"
               readOnly
-              value={plik}
+              value={aktywnyTekstPliku}
               rows={14}
-              aria-label="Erzeugte Datei llms.txt"
+              aria-label={`Erzeugte Datei ${aktywnaNazwaPliku}`}
               className="c-pole" style={{ ...pole, ...s.kod, resize: 'vertical', whiteSpace: 'pre', overflowX: 'auto' }}
             />
             {liczby && (
@@ -312,10 +443,12 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
               <span>Dezenten Quellenhinweis am Dateiende anfügen (&lt;!-- ... --&gt;)</span>
             </label>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '0.75rem', alignItems: 'center' }}>
-              <button type="button" className="btn btn-primary" style={malyPrzycisk} onClick={kopiuj} data-cta="llms_copy">Kopieren</button>
-              <button type="button" className="btn btn-secondary" style={malyPrzycisk} onClick={() => { pobierzPlik(plik); setPobrano(true); }} data-cta={edycja.zmieniony ? 'llms_download_edited' : 'llms_download'}>
+              <button type="button" className="btn btn-primary" style={malyPrzycisk} onClick={kopiuj} data-cta={czyFull ? 'llms_full_copy' : 'llms_copy'}>
+                {`${aktywnaNazwaPliku} kopieren`}
+              </button>
+              <button type="button" className="btn btn-secondary" style={malyPrzycisk} onClick={() => { pobierzPlik(aktywnyTekstPliku, aktywnaNazwaPliku); setPobrano(true); }} data-cta={czyFull ? 'llms_full_download' : (edycja.zmieniony ? 'llms_download_edited' : 'llms_download')}>
                 <svg className={pobrano ? 'llms-pobrano llms-pobrano-znak' : 'llms-pobrano-znak'} style={pobrano ? undefined : { visibility: 'hidden' }} viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                llms.txt herunterladen
+                {`${aktywnaNazwaPliku} herunterladen`}
               </button>
               {edycja.zmieniony && <button type="button" className={st.przyciskTekstowy} onClick={przywroc}>Alle Änderungen zurücknehmen</button>}
               <span role="status" aria-live="polite">
@@ -328,6 +461,41 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
                 )}
               </span>
             </div>
+
+            <details style={{ border: '1px solid rgba(15,23,42,0.12)', borderRadius: '16px', padding: '0.85rem clamp(0.6rem, 2.5vw, 1rem)', marginTop: '0.9rem', background: 'var(--color-bg-surface)' }}>
+              <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--color-text-dark)', lineHeight: 1.45 }}>
+                Einrichtung in 60 Sekunden (Anleitung)
+                <span style={{ display: 'block', fontWeight: 400, fontSize: '0.86rem', color: 'var(--w-tusz-2)' }}>
+                  Fertige 1-Klick-Befehle und Konfigurationen für Next.js, WordPress / SFTP sowie Cloudflare / Nginx.
+                </span>
+              </summary>
+              <div style={{ marginTop: '0.75rem', display: 'grid', gap: '0.65rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                  <div className="narz-filtry" role="group" aria-label="Plattform" style={{ margin: 0 }}>
+                    {[
+                      ['nextjs', 'Next.js (App Router)'],
+                      ['wordpress', 'WordPress / SFTP'],
+                      ['nginx', 'Cloudflare / Nginx'],
+                    ].map(([klucz, etykietaZakl]) => (
+                      <button
+                        key={klucz}
+                        type="button"
+                        aria-pressed={zakladkaWdrozenia === klucz}
+                        onClick={() => { setZakladkaWdrozenia(klucz); setSkopiowanoInstrukcje(false); }}
+                      >
+                        {etykietaZakl}
+                      </button>
+                    ))}
+                  </div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <button type="button" className={st.przyciskKopiujLink} onClick={kopiujInstrukcje} data-cta="llms_deploy_copy">
+                      {skopiowanoInstrukcje ? 'Kopiert!' : 'Anleitung kopieren'}
+                    </button>
+                  </div>
+                </div>
+                <pre className={st.snippetKod} style={{ margin: 0 }}><code>{tekstInstrukcji}</code></pre>
+              </div>
+            </details>
             <LinkWyniku
               narzedzie="llms_txt"
               parametry={{ url: adres || w.strona }}

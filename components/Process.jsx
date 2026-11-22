@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
+import kosm from './KosmetykaSekcji.module.css';
 
 export default function Process() {
   const [activeTab, setActiveTab] = useState(0);
@@ -17,6 +18,12 @@ export default function Process() {
     'Dopracuj proces',
     'Twórz pod konwersję',
     'Buduj ze skalą'
+  ] : lang === 'de' ? [
+    'Strategie zuerst. Immer.',
+    'Starkes Konzept finden',
+    'Prozess präzisieren',
+    'Auf Conversion auslegen',
+    'Skalierbar entwickeln'
   ] : [
     'Strategy first. Always.',
     'Find the bold idea',
@@ -32,6 +39,13 @@ export default function Process() {
     { num: '4', title: 'UX & UI Design', desc: 'Projektujemy makiety ukierunkowane na maksymalną konwersję.', highlight: true },
     { num: '5', title: 'Wdrożenie w Next.js', desc: 'Kodujemy w ultrawydajnym Next.js z dbałością o Core Web Vitals.' },
     { num: '6', title: 'Start & Wsparcie', desc: 'Uruchamiamy serwis, weryfikujemy w Google i zapewniamy stałe wsparcie.' },
+  ] : lang === 'de' ? [
+    { num: '1', title: 'Analyse & Strategie', desc: 'Wir analysieren Zielgruppe, Wettbewerb und geschäftsrelevante SEO-Keywords.' },
+    { num: '2', title: 'Kreative Richtung', desc: 'Wir entwickeln Moodboards und eine klare Tonalität für Ihre Marke.' },
+    { num: '3', title: 'Visuelle Identität', desc: 'Wir gestalten Logo, Farbsystem und ein konsistentes Designsystem.' },
+    { num: '4', title: 'UX & UI Design', desc: 'Wir entwerfen konversionsstarke Mockups für klare B2B-Anfragen.', highlight: true },
+    { num: '5', title: 'Next.js Entwicklung', desc: 'Wir programmieren schnelle Next.js-Seiten optimiert für Core Web Vitals.' },
+    { num: '6', title: 'Go-Live & Betreuung', desc: 'Wir starten die Website, verifizieren sie in Google und begleiten laufend.' },
   ] : [
     { num: '1', title: 'Discovery & Strategy', desc: 'We research target audiences, competitors, and core SEO queries.' },
     { num: '2', title: 'Creative Direction', desc: 'We craft moodboards and a distinctive brand communication tone.' },
@@ -40,6 +54,7 @@ export default function Process() {
     { num: '5', title: 'Next.js Development', desc: 'We code ultra-fast Next.js apps optimized for Core Web Vitals.' },
     { num: '6', title: 'Launch & Support', desc: 'We launch your site, verify in Google, and provide ongoing support.' },
   ];
+  const totalSteps = String(steps.length).padStart(2, '0');
 
   // Obrot kola od przewijania. Wczesniej kazde zdarzenie scroll wolalo setRotation, czyli
   // przerenderowanie calego komponentu (6 wezlow, AnimatePresence) wiele razy na klatke.
@@ -147,10 +162,13 @@ export default function Process() {
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
               >
-                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.35rem' }}>
+                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#38BDF8', fontWeight: 800, marginBottom: '0.2rem' }}>
                   {tabs[activeTab]}
                 </div>
-                <span style={{ fontSize: '1.05rem', color: 'var(--w-tusz)', display: 'block', marginBottom: '0.35rem', fontFamily: "var(--font-geist), system-ui, sans-serif" }}>
+                <span className={kosm.procesCentrumMeta} aria-hidden="true">
+                  0{steps[activeStep].num} / {totalSteps}
+                </span>
+                <span className={kosm.procesCentrumNagl}>
                   0{steps[activeStep].num}. {steps[activeStep].title}
                 </span>
                 <p style={{ margin: 0, fontSize: '0.83rem', color: 'var(--color-text-main)', lineHeight: '1.5' }}>
@@ -204,7 +222,7 @@ export default function Process() {
                       transform: 'rotate(calc(var(--rot, 0) * -1deg))'
                     }}
                   >
-                    <span className="process-node-num">0{step.num}.</span>
+                    <span className={`process-node-num ${kosm.procesWezelLicznik} ${isHighlight ? kosm.procesWezelLicznikJasny : ''}`} aria-hidden="true">0{step.num} / {totalSteps}</span>
                     <span className="process-node-title">{step.title}</span>
                   </div>
                 </div>
@@ -214,11 +232,17 @@ export default function Process() {
         </div>
 
         {/* Responsive Grid Fallback */}
-        <div className="process-grid-fallback">
+        <div className={`process-grid-fallback ${kosm.procesSiatka}`}>
           {steps.map((step, idx) => (
-            <div key={idx} className={`step-card ${activeStep === idx ? 'active' : ''}`} onClick={() => setActiveStep(idx)}>
-              <div className="step-number">0{step.num}</div>
-              <h3>{step.title}</h3>
+            <div
+              key={idx}
+              className={`step-card ${activeStep === idx ? 'active' : ''} ${kosm.krokKarta} ${activeStep === idx ? kosm.krokKartaAktywna : ''}`}
+              onClick={() => setActiveStep(idx)}
+            >
+              <div className={kosm.krokNaglowek}>
+                <div className={`step-number ${kosm.krokLicznik}`} aria-hidden="true">0{step.num} / {totalSteps}</div>
+                <h3>{step.title}</h3>
+              </div>
               <p>{step.desc}</p>
             </div>
           ))}

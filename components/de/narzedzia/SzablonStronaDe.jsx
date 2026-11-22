@@ -14,6 +14,9 @@ import AppleFaq from '@/components/service/AppleFaq';
 import SzHero from '@/components/narzedzia/SzHero';
 import SzNawigacja from '@/components/narzedzia/SzNawigacja';
 import SzablonInterakcje from '@/components/narzedzia/SzablonInterakcje';
+import ContentPlanGeneratorClient from '@/components/narzedzia/ContentPlanGeneratorClient';
+import ChecklistaAutoScan from '@/components/narzedzia/ChecklistaAutoScan';
+import JsonLdKreator from '@/components/narzedzia/JsonLdKreator';
 import '@/components/narzedzia/szablony.css';
 import { Link } from '@/i18n/routing';
 import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów
@@ -49,7 +52,16 @@ export default function SzablonStronaDe({ dane }) {
   const data = (url && dataTresci(url)) || dataPubl;
   const powiazane = (d.powiazane || []).filter((p) => maWersjeDe(p.href));
 
+  const pozycjaInteraktywna = dane.slug === 'content-plan'
+    ? [{ id: 'generator-content-planu', label: '90-Tage-Plan-Generator' }]
+    : dane.slug === 'checklista-seo'
+    ? [{ id: 'automatyczny-skan', label: 'Automatischer Domain-Scan' }]
+    : dane.slug === 'dane-strukturalne-json-ld'
+    ? [{ id: 'kreator-json-ld', label: 'JSON-LD Schnell-Generator' }]
+    : [];
+
   const spis = [
+    ...pozycjaInteraktywna,
     ...d.sekcje.map((sek) => ({ id: sek.id, label: sek.h2 })),
     ...(d.podglad ? [{ id: 'podglad', label: d.podglad.h2 }] : []),
     { id: 'pobierz', label: d.formularz.h2 },
@@ -92,6 +104,9 @@ export default function SzablonStronaDe({ dane }) {
         <SzNawigacja items={spis} etykieta="Inhalt der Seite" />
         <div className="sz-tresc" data-sz-tresc>
           <SzablonInterakcje slug={dane.slug} locale="de" />
+          {dane.slug === 'content-plan' && <ContentPlanGeneratorClient locale="de" />}
+          {dane.slug === 'checklista-seo' && <ChecklistaAutoScan locale="de" />}
+          {dane.slug === 'dane-strukturalne-json-ld' && <JsonLdKreator locale="de" />}
           {d.sekcje.map((sek) => (
             <div key={sek.id} id={sek.id} role="region" aria-labelledby={`${sek.id}-h`} className="sz-sekcja">
               <h2 id={`${sek.id}-h`} className="sz-h2">{sek.h2}</h2>

@@ -40,6 +40,11 @@ const CSS_CWV_DE = `
 .cwv-tco-kol--booster { background: linear-gradient(135deg, #101935 0%, #1d2b53 100%); color: #ffffff; border-color: transparent; }
 .cwv-tco-kol--booster p, .cwv-tco-kol--booster li { color: rgba(255, 255, 255, 0.88); }
 .cwv-tco-lista { margin: 0; padding-left: 1.15rem; display: grid; gap: 0.35rem; font-size: 0.9rem; line-height: 1.5; }
+.cwv-crux-wrap { margin-top: 0.45rem; display: grid; gap: 0.22rem; text-align: left; font-variant-numeric: tabular-nums; }
+.cwv-crux-pasek { display: flex; width: 100%; height: 7px; border-radius: 999px; overflow: hidden; background: rgba(15, 23, 42, 0.08); }
+.cwv-crux-opis { font-size: 0.72rem; line-height: 1.35; color: var(--w-tusz-2); }
+.cwv-selektor { display: block; max-width: 100%; margin-top: 0.38rem; padding: 0.2rem 0.45rem; border-radius: 6px; background: rgba(15, 23, 42, 0.06); font-family: var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: 0.72rem; color: var(--w-tusz); overflow-wrap: anywhere; text-align: left; }
+.cwv-odznaka-cache { display: inline-flex; align-items: center; padding: 0.18rem 0.55rem; border-radius: 999px; background: rgba(15, 23, 42, 0.06); border: 1px solid rgba(15, 23, 42, 0.12); font-size: 0.74rem; font-weight: 600; color: var(--w-tusz-2); font-variant-numeric: tabular-nums; }
 `;
 
 const BENCHMARK_DOMYSLNY_DE = {
@@ -49,8 +54,53 @@ const BENCHMARK_DOMYSLNY_DE = {
   skryptyBlokujace: 0,
   obrazyBezWymiarow: 0,
   wagaHtmlKb: 28,
-  metryki: { lcpMs: 1150, inpMs: 48, cls: 0, ttfbMs: 185, ocena: 'dobra', wynik: 99 },
+  selektorLcp: 'main > section.hero > h1',
+  rozkladCrux: { lcp: [96, 3, 1], inp: [98, 2, 0], cls: [99, 1, 0] },
+  metryki: {
+    lcpMs: 1150,
+    inpMs: 48,
+    cls: 0,
+    ttfbMs: 185,
+    ocena: 'dobra',
+    wynik: 99,
+    selektorLcp: 'main > section.hero > h1',
+    rozkladCrux: { lcp: [96, 3, 1], inp: [98, 2, 0], cls: [99, 1, 0] },
+  },
 };
+
+function wyciagnijTrojkeCrux(daneStrony, klucz = 'lcp') {
+  const r = daneStrony?.metryki?.rozkladCrux ?? daneStrony?.rozkladCrux;
+  if (!r) return null;
+  const zrodlo = Array.isArray(r) ? r : r[klucz];
+  if (Array.isArray(zrodlo) && zrodlo.length >= 3) {
+    const [dobre, poprawa, wolne] = zrodlo.map((x) => Math.max(0, Math.round(Number(x) || 0)));
+    if (dobre + poprawa + wolne > 0) return [dobre, poprawa, wolne];
+  }
+  if (typeof r.dobre === 'number' && klucz === 'lcp') {
+    return [Math.round(r.dobre), Math.round(r.doPoprawy || 0), Math.round(r.wolne || 0)];
+  }
+  return null;
+}
+
+function PasekRozkladuCruxDe({ trojka, zwiezly = false }) {
+  if (!trojka) return null;
+  const [dobre, poprawa, wolne] = trojka;
+  const tytul = `CrUX-Verteilung: ${dobre} % Gut / ${poprawa} % Optimierungsbedarf / ${wolne} % Langsam`;
+  return (
+    <div className="cwv-crux-wrap" title={tytul}>
+      <div className="cwv-crux-pasek" role="img" aria-label={tytul}>
+        {dobre > 0 && <span style={{ width: `${dobre}%`, background: '#047857' }} />}
+        {poprawa > 0 && <span style={{ width: `${poprawa}%`, background: '#d97706' }} />}
+        {wolne > 0 && <span style={{ width: `${wolne}%`, background: '#b3261e' }} />}
+      </div>
+      <span className="cwv-crux-opis">
+        {zwiezly
+          ? `${dobre} % / ${poprawa} % / ${wolne} %`
+          : `${dobre} % Gut · ${poprawa} % Mittel · ${wolne} % Langsam`}
+      </span>
+    </div>
+  );
+}
 
 function wyczyscDomene(surowy) {
   const s = String(surowy || '').trim();
@@ -111,7 +161,18 @@ function demoStronaDe(surowyUrl, wariant) {
       skryptyBlokujace: 0,
       obrazyBezWymiarow: 0,
       wagaHtmlKb: 31,
-      metryki: { lcpMs: 1220, inpMs: 54, cls: 0.01, ttfbMs: 210, ocena: 'dobra', wynik: 97 },
+      selektorLcp: 'main > section.hero > h1',
+      rozkladCrux: { lcp: [94, 4, 2], inp: [96, 3, 1], cls: [98, 2, 0] },
+      metryki: {
+        lcpMs: 1220,
+        inpMs: 54,
+        cls: 0.01,
+        ttfbMs: 210,
+        ocena: 'dobra',
+        wynik: 97,
+        selektorLcp: 'main > section.hero > h1',
+        rozkladCrux: { lcp: [94, 4, 2], inp: [96, 3, 1], cls: [98, 2, 0] },
+      },
     };
   }
   if (wariant === 'B') {
@@ -124,7 +185,18 @@ function demoStronaDe(surowyUrl, wariant) {
       skryptyBlokujace: 5,
       obrazyBezWymiarow: 2,
       wagaHtmlKb: 96,
-      metryki: { lcpMs: 2680, inpMs: 195, cls: 0.07, ttfbMs: 760, ocena: 'srednia', wynik: 74 },
+      selektorLcp: 'div.wp-block-cover > img.wp-post-image',
+      rozkladCrux: { lcp: [68, 21, 11], inp: [76, 16, 8], cls: [82, 12, 6] },
+      metryki: {
+        lcpMs: 2680,
+        inpMs: 195,
+        cls: 0.07,
+        ttfbMs: 760,
+        ocena: 'srednia',
+        wynik: 74,
+        selektorLcp: 'div.wp-block-cover > img.wp-post-image',
+        rozkladCrux: { lcp: [68, 21, 11], inp: [76, 16, 8], cls: [82, 12, 6] },
+      },
     };
   }
   return {
@@ -136,7 +208,18 @@ function demoStronaDe(surowyUrl, wariant) {
     skryptyBlokujace: 11,
     obrazyBezWymiarow: 6,
     wagaHtmlKb: 184,
-    metryki: { lcpMs: 3850, inpMs: 295, cls: 0.16, ttfbMs: 1120, ocena: 'slaba', wynik: 46 },
+    selektorLcp: 'section.elementor-top-section img.rev-slidebg',
+    rozkladCrux: { lcp: [38, 31, 31], inp: [52, 29, 19], cls: [61, 22, 17] },
+    metryki: {
+      lcpMs: 3850,
+      inpMs: 295,
+      cls: 0.16,
+      ttfbMs: 1120,
+      ocena: 'slaba',
+      wynik: 46,
+      selektorLcp: 'section.elementor-top-section img.rev-slidebg',
+      rozkladCrux: { lcp: [38, 31, 31], inp: [52, 29, 19], cls: [61, 22, 17] },
+    },
   };
 }
 
@@ -243,7 +326,8 @@ export function CwvVergleichClientDe() {
         });
         return;
       }
-      const d = data.podglad || data;
+      const surowyWynik = data.podglad || data;
+      const d = { ...surowyWynik, zCache: Boolean(data.zCache || surowyWynik?.zCache) };
       const runId = data.id || null;
       if (runId) zapiszParametry({ wynik: runId });
       track('narzedzie_wynik', { narzedzie: 'cwv_vs', wynikA: d.stronaA?.metryki?.wynik });
@@ -461,9 +545,14 @@ export function CwvVergleichClientDe() {
           <div className="narz-wynik" style={{ marginTop: '1.25rem' }} aria-live="polite">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '1rem', flexWrap: 'wrap' }}>
               <div>
-                <h2 className="narz-h2" ref={wynikRef} tabIndex={-1} style={{ margin: 0 }}>
-                  Core Web Vitals &amp; CMS-Röntgen im Direktvergleich
-                </h2>
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.55rem' }}>
+                  <h2 className="narz-h2" ref={wynikRef} tabIndex={-1} style={{ margin: 0 }}>
+                    Core Web Vitals &amp; CMS-Röntgen im Direktvergleich
+                  </h2>
+                  {d?.zCache === true && (
+                    <span className="cwv-odznaka-cache">Cache 24h</span>
+                  )}
+                </div>
                 <p className="narz-mikro">
                   Offizielle Google-Grenzwerte im 75. Perzentil (mobil): LCP &lt;= 2,50 s, INP &lt;= 200 ms, CLS &lt;= 0,10, TTFB &lt;= 800 ms.
                 </p>
@@ -523,13 +612,23 @@ export function CwvVergleichClientDe() {
                       LCP (Largest Contentful Paint)
                       <span className="narz-mikro">Hauptinhalt geladen (&lt;= 2,50 s)</span>
                     </th>
-                    {kolumny.map((k) => (
-                      <td key={k.klucz} className={k.next ? 'cwv-kol-next' : undefined}>
-                        <span className={`cwv-metr cwv-metr--${klasaLcp(k.dane.metryki?.lcpMs)}`}>
-                          {formatSekund(k.dane.metryki?.lcpMs)}
-                        </span>
-                      </td>
-                    ))}
+                    {kolumny.map((k) => {
+                      const selLcp = k.dane.metryki?.selektorLcp || k.dane.selektorLcp;
+                      const rozkladLcp = wyciagnijTrojkeCrux(k.dane, 'lcp');
+                      return (
+                        <td key={k.klucz} className={k.next ? 'cwv-kol-next' : undefined}>
+                          <span className={`cwv-metr cwv-metr--${klasaLcp(k.dane.metryki?.lcpMs)}`}>
+                            {formatSekund(k.dane.metryki?.lcpMs)}
+                          </span>
+                          <PasekRozkladuCruxDe trojka={rozkladLcp} />
+                          {selLcp && (
+                            <code className="cwv-selektor" title="Erkanntes LCP-DOM-Element">
+                              {selLcp}
+                            </code>
+                          )}
+                        </td>
+                      );
+                    })}
                   </tr>
 
                   <tr>
@@ -542,6 +641,7 @@ export function CwvVergleichClientDe() {
                         <span className={`cwv-metr cwv-metr--${klasaInp(k.dane.metryki?.inpMs)}`}>
                           {Number.isFinite(k.dane.metryki?.inpMs) ? `${fmtDe(k.dane.metryki.inpMs, 'de')} ms` : 'keine Daten'}
                         </span>
+                        <PasekRozkladuCruxDe trojka={wyciagnijTrojkeCrux(k.dane, 'inp')} zwiezly />
                       </td>
                     ))}
                   </tr>
@@ -556,6 +656,7 @@ export function CwvVergleichClientDe() {
                         <span className={`cwv-metr cwv-metr--${klasaCls(k.dane.metryki?.cls)}`}>
                           {formatCls(k.dane.metryki?.cls)}
                         </span>
+                        <PasekRozkladuCruxDe trojka={wyciagnijTrojkeCrux(k.dane, 'cls')} zwiezly />
                       </td>
                     ))}
                   </tr>

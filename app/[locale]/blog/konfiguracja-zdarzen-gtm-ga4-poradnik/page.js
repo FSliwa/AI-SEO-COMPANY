@@ -26,6 +26,8 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 import { LASTMOD } from '@/lib/lastmod';
 
@@ -70,15 +72,17 @@ export default async function ArticleGTM({ params }) {
 
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
+              fontWeight: 500, 
               color: 'var(--w-tusz)', 
-              marginBottom: '2rem', 
+              marginBottom: '1.5rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
               {locale === 'en' ? 'Google Tag Manager: GA4 Event Configuration Guide' : 'Google Tag Manager: Konfiguracja zdarzeń GA4 poradnik'}
             </h1>
+
+            <Byline sciezka="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik" data="2026-08-07" />
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -93,6 +97,9 @@ export default async function ArticleGTM({ params }) {
                 <p>English translation is currently unavailable for this article.</p>
               ) : (
                 <>
+                  <AnswerBox>
+                    Poprawna konfiguracja zdarzeń GA4 w Google Tag Managerze zaczyna się od wdrożenia tagu bazowego Google Tag na wyzwalaczu Initialization - All Pages ze stałą zmienną Measurement ID, a następnie utworzenia tagów zdarzeń w notacji lower_snake_case. Przed publikacją przetestuj wyzwalacze w GTM Preview i DebugView, a w GA4 oznacz zdarzenie np. generate_lead jako kluczowe.
+                  </AnswerBox>
                   <div className="table-container">
                     <table>
                       <tbody>
@@ -126,7 +133,7 @@ export default async function ArticleGTM({ params }) {
                   <p>Konfiguracja zdarzenia w GTM dla GA4 opiera się na typie tagu „Google Analytics: Zdarzenie GA4“ i wymaga kilku konkretnych kroków.</p>
 
                   <h3>Krok 1: Google Tag jako fundament</h3>
-                  <p>Zanim stworzysz jakikolwiek tag zdarzenia, kontener musi zawierać Google Tag z Measurement ID. Wejdź do GTM, utwórz nowy tag, wybierz typ Google Tag (dawniej „Google Analytics: Konfiguracja GA4") i wklej swój identyfikator Measurement ID (uwaga: w obecnym interfejsie GTM to pole nosi nazwę “Tag ID” lub “Identyfikator tagu”). Jako wyzwalacz przypisz Initialization - All Pages (nie zwykłe „All Pages") - dzięki temu Google Tag załaduje się przed wszystkimi pozostałymi tagami w kontenerze. Najlepiej przechowuj Measurement ID jako zmienną stałą (Constant Variable) o nazwie np. <code>GA4 - Measurement ID</code> - wtedy zmiana ID w jednym miejscu aktualizuje wszystkie tagi.</p>
+                  <p>Zanim stworzysz jakikolwiek tag zdarzenia, kontener musi zawierać Google Tag z Measurement ID. Wejdź do GTM, utwórz nowy tag, wybierz typ Google Tag (dawniej „Google Analytics: Konfiguracja GA4&quot;) i wklej swój identyfikator Measurement ID (uwaga: w obecnym interfejsie GTM to pole nosi nazwę “Tag ID” lub “Identyfikator tagu”). Jako wyzwalacz przypisz Initialization - All Pages (nie zwykłe „All Pages&quot;) - dzięki temu Google Tag załaduje się przed wszystkimi pozostałymi tagami w kontenerze. Najlepiej przechowuj Measurement ID jako zmienną stałą (Constant Variable) o nazwie np. <code>GA4 - Measurement ID</code> - wtedy zmiana ID w jednym miejscu aktualizuje wszystkie tagi.</p>
 
                   <h3>Krok 2: nowy tag zdarzenia</h3>
                   <p>Utwórz nowy tag, wybierz typ „Google Analytics: Zdarzenie GA4“. W polu <strong>Measurement ID</strong> wklej identyfikator (lub wskaż zmienną stałą, np. <code>&#123;&#123;GA4 - Measurement ID&#125;&#125;</code>). Wpisz nazwę zdarzenia, np. <code>form_submit</code>. Pamiętaj: GA4 rozróżnia wielkość liter, więc <code>Form_Submit</code> i <code>form_submit</code> to dwa różne zdarzenia w raportach.</p>

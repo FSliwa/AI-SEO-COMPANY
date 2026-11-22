@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
+import kosm from './KosmetykaSekcji.module.css';
 
 /**
  * Pasek klientow pod hero (makieta Desktop - 2): cztery loga w jednym szarym
@@ -41,6 +42,19 @@ export default function HeroKlienci() {
           <Image unoptimized src="/images/klienci/staniax.webp" alt="Staniax" width={720} height={129} />
         </li>
       </motion.ul>
+      <div className={kosm.klienciKotwicaWiersz}>
+        <a href="#portfolio" className={kosm.klienciKotwicaLink} data-cta="hero_clients_portfolio">
+          <span className={kosm.klienciKotwicaKropka} aria-hidden="true" />
+          <span>
+            {lang === 'en'
+              ? 'See implementations verified in Google Search Console'
+              : lang === 'de'
+                ? 'Verifizierte Ergebnisse aus der Google Search Console ansehen'
+                : 'Zobacz wdrożenia zweryfikowane w Google Search Console'}
+          </span>
+          <span className={kosm.klienciKotwicaStrzalka} aria-hidden="true">↓</span>
+        </a>
+      </div>
     </div>
   );
 }

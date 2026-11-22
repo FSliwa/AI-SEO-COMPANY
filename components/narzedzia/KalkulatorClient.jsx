@@ -121,10 +121,10 @@ const POLA_SKLEP_EN = [
   { k: 'powroty', etykieta: 'What % of customers buy again? (optional)', pomoc: 'The share of customers with at least two orders a year, from the customer report in your store admin. We count one extra order from each returning customer. Empty = first order only.', przyklad: podp(PS.powroty, true), jednostka: '%' },
 ];
 
-const KLUCZE_URL = ['tryb', 'waluta', 'wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'powroty', 'udzialAi', 'widocznyWAi', 'pakiet', 'koszt', 'miesiace'];
+const KLUCZE_URL = ['tryb', 'waluta', 'wyszukiwania', 'ruch', 'konwersja', 'closeRate', 'wartosc', 'marza', 'powroty', 'udzialAi', 'widocznyWAi', 'pakiet', 'koszt', 'miesiace'];
 const WIDOCZNOSC = ['tak', 'nie', 'nie_wiem'];
 const DOZWOLONE_WALUTY_EN = ['USD', 'EUR', 'GBP', 'PLN'];
-const POCZATEK = { tryb: 'uslugi', wyszukiwania: '', ruch: '', konwersja: '', wartosc: '', marza: '', powroty: '', udzialAi: String(ZALOZENIA.udzialAiDomyslny), widocznyWAi: 'nie_wiem', pakiet: '', koszt: '', miesiace: String(ZWROT.miesiaceDoEfektu.domyslnie) };
+const POCZATEK = { tryb: 'uslugi', wyszukiwania: '', ruch: '', konwersja: '', closeRate: '100', wartosc: '', marza: '', powroty: '', udzialAi: String(ZALOZENIA.udzialAiDomyslny), widocznyWAi: 'nie_wiem', pakiet: '', koszt: '', miesiace: String(ZWROT.miesiaceDoEfektu.domyslnie) };
 
 // Wartości z adresu albo z przykładu -> stan formularza (teksty pól). Złe wartości pomija.
 function zParametrow(p) {
@@ -133,6 +133,10 @@ function zParametrow(p) {
   if (p.waluta && DOZWOLONE_WALUTY_EN.includes(String(p.waluta).toUpperCase())) d.waluta = String(p.waluta).toUpperCase();
   for (const k of ['wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'powroty', 'koszt']) {
     if (p[k] !== undefined && p[k] !== '' && Number.isFinite(Number(p[k]))) d[k] = String(p[k]);
+  }
+  const cr = Number(p.closeRate);
+  if (p.closeRate !== undefined && Number.isFinite(cr) && cr >= 5 && cr <= 100) {
+    d.closeRate = String(Math.min(100, Math.max(5, Math.round(cr / 5) * 5)));
   }
   const ai = Number(p.udzialAi);
   if (p.udzialAi !== undefined && Number.isFinite(ai)) d.udzialAi = String(Math.min(60, Math.max(0, Math.round(ai / 5) * 5)));
@@ -206,9 +210,13 @@ body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
 .kalk-pakiety label:has(input:checked) { border-color: var(--w-pomarancz, #d85a30); box-shadow: 0 0 0 1px var(--w-pomarancz, #d85a30); }
 .kalk-pakiety input { accent-color: var(--w-pomarancz, #d85a30); margin-top: 0.2rem; }
 .kalk-pakiety small { display: block; color: var(--w-tusz-2); font-size: 0.8rem; }
-.kalk-zwrot-liczby { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 0.6rem; }
+.kalk-zwrot-liczby { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 0.6rem; font-variant-numeric: tabular-nums; }
 .kalk-zwrot-liczby > div { padding: 0.8rem; border-radius: 14px; background: #fff; }
 .kalk-zwrot-liczby .narz-rozbicie-kwota { font-size: 1.1rem; }
+.kalk-jcurve { margin-top: 0.75rem; padding: 0.9rem 1rem; border-radius: 16px; background: #fff; border: 1px solid rgba(10, 19, 55, 0.08); font-variant-numeric: tabular-nums; }
+.kalk-jcurve-nagl { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.45rem 1rem; margin-bottom: 0.55rem; font-size: 0.84rem; color: var(--w-tusz-2); }
+.kalk-jcurve-legenda { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; font-size: 0.78rem; }
+.kalk-jcurve-legenda span { display: inline-flex; align-items: center; gap: 0.35rem; }
 .kalk-plus { color: var(--n-ok); }
 .kalk-minus { color: var(--n-zle); }
 .kalk-dalej { margin: 0; text-align: left; }
@@ -251,6 +259,154 @@ function Kwota({ min, max, fmt, slowo, tick }) {
     return () => cancelAnimationFrame(id);
   }, [widziany]); // eslint-disable-line react-hooks/exhaustive-deps -- start tylko po zmianie tick
   return <p className="narz-kwota">{fmt(min * p)} {slowo} {fmt(max * p)}</p>;
+}
+
+function skrotKwoty(v, waluta, en) {
+  const n = Math.round(v);
+  const abs = Math.abs(n);
+  const pref = waluta === 'USD' ? '$' : waluta === 'EUR' ? '€' : waluta === 'GBP' ? '£' : '';
+  const suf = pref ? '' : (en ? ' PLN' : ' zł');
+  if (abs >= 1_000_000) {
+    const mln = (n / 1_000_000).toLocaleString(en ? 'en-US' : 'pl-PL', { maximumFractionDigits: 1 });
+    return `${pref}${mln}${en ? 'M' : ' mln'}${suf}`;
+  }
+  if (abs >= 10_000) {
+    const tys = Math.round(n / 1000).toLocaleString(en ? 'en-US' : 'pl-PL');
+    return `${pref}${tys}${en ? 'k' : ' tys.'}${suf}`;
+  }
+  return `${pref}${n.toLocaleString(en ? 'en-US' : 'pl-PL')}${suf}`;
+}
+
+function WykresJCurve({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, waluta, en, fmt }) {
+  const zyskSrodek = (zyskMin + zyskMax) / 2;
+  const n = Math.max(1, Number(miesiaceDoEfektu) || 12);
+  const punkty = [{ m: 0, kosztSkum: 0, zyskSkum: 0 }];
+  let sumaZysku = 0;
+  let przeciecie = null;
+  for (let m = 1; m <= 24; m += 1) {
+    sumaZysku += zyskSrodek * Math.min(m / n, 1);
+    const kosztM = koszt * m;
+    const prev = punkty[m - 1];
+    const prevBilans = prev.zyskSkum - prev.kosztSkum;
+    const currBilans = sumaZysku - kosztM;
+    if (przeciecie === null && currBilans >= 0 && sumaZysku > 0) {
+      const delta = currBilans - prevBilans;
+      const u = delta > 0 ? Math.min(1, Math.max(0, (0 - prevBilans) / delta)) : 1;
+      const mDokladny = (m - 1) + u;
+      przeciecie = {
+        miesiac: m,
+        mDokladny,
+        kwota: prev.kosztSkum + u * (kosztM - prev.kosztSkum),
+      };
+    }
+    punkty.push({ m, kosztSkum: kosztM, zyskSkum: sumaZysku });
+  }
+
+  const padL = 68;
+  const padR = 22;
+  const padT = 26;
+  const padB = 32;
+  const szer = 640 - padL - padR;
+  const wys = 240 - padT - padB;
+  const maxY = Math.max(punkty[24].kosztSkum, punkty[24].zyskSkum, 1) * 1.1;
+  const x = (m) => padL + (m / 24) * szer;
+  const y = (v) => padT + wys - (v / maxY) * wys;
+
+  const sciezkaKosztu = punkty.map((p, i) => `${i === 0 ? 'M' : 'L'}${x(p.m).toFixed(1)},${y(p.kosztSkum).toFixed(1)}`).join(' ');
+  const sciezkaZysku = punkty.map((p, i) => `${i === 0 ? 'M' : 'L'}${x(p.m).toFixed(1)},${y(p.zyskSkum).toFixed(1)}`).join(' ');
+  const obszarZysku = `${sciezkaZysku} L${x(24).toFixed(1)},${y(0).toFixed(1)} L${x(0).toFixed(1)},${y(0).toFixed(1)} Z`;
+
+  const etykietaPrzeciecia = przeciecie
+    ? (en ? `Break-Even: month ${przeciecie.miesiac}` : `Break-Even: ${przeciecie.miesiac}. mies.`)
+    : (en ? 'Break-Even: > 24 mo' : 'Break-Even: > 24 mies.');
+
+  return (
+    <div className="kalk-jcurve">
+      <div className="kalk-jcurve-nagl">
+        <strong style={{ color: 'var(--w-tusz)', fontSize: '0.88rem' }}>
+          {en ? 'ROI J-Curve (1-24 months, midpoint variant)' : 'Krzywa zwrotu inwestycji J-Curve (1-24 mies., wariant środkowy)'}
+        </strong>
+        <div className="kalk-jcurve-legenda">
+          <span>
+            <i style={{ width: 12, height: 3, background: '#047857', display: 'inline-block', borderRadius: 2 }} aria-hidden="true" />
+            {en ? 'Cumulative recovered profit' : 'Skumulowany odzyskany zysk'}
+          </span>
+          <span>
+            <i style={{ width: 12, height: 2, borderTop: '2px dashed #64748b', display: 'inline-block' }} aria-hidden="true" />
+            {en ? 'Cumulative SEO cost' : 'Skumulowany koszt SEO'}
+          </span>
+        </div>
+      </div>
+      <svg
+        viewBox="0 0 640 240"
+        width="100%"
+        height="auto"
+        role="img"
+        aria-label={en
+          ? `Cumulative SEO cost versus recovered profit over 24 months. ${etykietaPrzeciecia}. After 24 months: ${fmt(punkty[24].zyskSkum)} recovered profit vs ${fmt(punkty[24].kosztSkum)} cost.`
+          : `Skumulowany koszt SEO względem odzyskanego zysku w 24 miesiące. ${etykietaPrzeciecia}. Po 24 mies.: ${fmt(punkty[24].zyskSkum)} zysku wobec ${fmt(punkty[24].kosztSkum)} kosztu.`}
+        style={{ display: 'block', width: '100%', height: 'auto', fontFamily: 'var(--w-sans)', fontVariantNumeric: 'tabular-nums' }}
+      >
+        {[0, 0.5, 1].map((u) => {
+          const wart = maxY * u;
+          const pozY = y(wart);
+          return (
+            <g key={u}>
+              <line x1={padL} y1={pozY} x2={640 - padR} y2={pozY} stroke="rgba(15,23,42,0.08)" strokeWidth="1" />
+              <text x={padL - 8} y={pozY + 4} textAnchor="end" fontSize="11" fill="#64748b">
+                {skrotKwoty(wart, waluta, en)}
+              </text>
+            </g>
+          );
+        })}
+
+        {[1, 6, 12, 18, 24].map((m) => (
+          <g key={m}>
+            <line x1={x(m)} y1={padT + wys} x2={x(m)} y2={padT + wys + 4} stroke="rgba(15,23,42,0.2)" strokeWidth="1" />
+            <text x={x(m)} y={240 - 10} textAnchor="middle" fontSize="11" fill="#64748b">
+              {en ? `M${m}` : `${m} m.`}
+            </text>
+          </g>
+        ))}
+
+        <path d={obszarZysku} fill="rgba(4, 120, 87, 0.09)" />
+        <path d={sciezkaKosztu} fill="none" stroke="#64748b" strokeWidth="2" strokeDasharray="5 4" />
+        <path d={sciezkaZysku} fill="none" stroke="#047857" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+
+        {przeciecie && (
+          <g>
+            <line
+              x1={x(przeciecie.mDokladny)}
+              y1={padT}
+              x2={x(przeciecie.mDokladny)}
+              y2={padT + wys}
+              stroke="#d85a30"
+              strokeWidth="1.4"
+              strokeDasharray="3 3"
+            />
+            <circle
+              cx={x(przeciecie.mDokladny)}
+              cy={y(przeciecie.kwota)}
+              r="5.5"
+              fill="#d85a30"
+              stroke="#ffffff"
+              strokeWidth="2"
+            />
+            <text
+              x={przeciecie.mDokladny > 17 ? x(przeciecie.mDokladny) - 8 : x(przeciecie.mDokladny) + 8}
+              y={Math.max(padT + 13, y(przeciecie.kwota) - 10)}
+              textAnchor={przeciecie.mDokladny > 17 ? 'end' : 'start'}
+              fontSize="11.5"
+              fontWeight="700"
+              fill="#b4471f"
+            >
+              {etykietaPrzeciecia}
+            </text>
+          </g>
+        )}
+      </svg>
+    </div>
+  );
 }
 
 export default function KalkulatorClient() {
@@ -322,7 +478,9 @@ export default function KalkulatorClient() {
     return () => window.removeEventListener('kalkulator-przyklad', wstaw);
   }, [en]);
 
-  const wejscie = useMemo(() => ({
+  const closeRateNum = Math.min(100, Math.max(5, Number(dane.closeRate) || 100));
+  const czySkalujeCloseRate = !sklep && closeRateNum < 100;
+  const wejscieSurowe = useMemo(() => ({
     wyszukiwania: Math.round(liczba(dane.wyszukiwania)),
     ruch: Math.round(liczba(dane.ruch || 0)),
     konwersja: liczba(dane.konwersja),
@@ -333,12 +491,23 @@ export default function KalkulatorClient() {
     // Tryb usług bez pól sklepu: te same dane i ten sam adres wyniku co przed 12.11.2026.
     ...(dane.tryb === 'sklep' ? { tryb: 'sklep', ...(dane.powroty !== '' ? { powroty: liczba(dane.powroty) } : {}) } : {}),
   }), [dane, liczba]);
-  const blad = bladDanych(wejscie, lang, waluta);
+  const blad = bladDanych(wejscieSurowe, lang, waluta);
+  const wejscie = useMemo(() => {
+    if (!czySkalujeCloseRate || !Number.isFinite(wejscieSurowe.konwersja)) return wejscieSurowe;
+    return {
+      ...wejscieSurowe,
+      konwersja: Math.max(0.01, Number((wejscieSurowe.konwersja * (closeRateNum / 100)).toFixed(4))),
+    };
+  }, [wejscieSurowe, czySkalujeCloseRate, closeRateNum]);
   const wynik = useMemo(() => (blad ? null : policzStraty(wejscie)), [blad, wejscie]);
+  const wynikZapytan = useMemo(() => (blad ? null : policzStraty(wejscieSurowe)), [blad, wejscieSurowe]);
   // Ostatni poprawny wynik: potrzebny, gdy wynik się zwija po wpisaniu błędnej wartości (Zwin trzyma treść 200 ms).
   const [ostWynik, setOstWynik] = useState(null);
   if (wynik && wynik !== ostWynik) setOstWynik(wynik);
   const W = wynik ?? ostWynik;
+  const [ostZapytan, setOstZapytan] = useState(null);
+  if (wynikZapytan && wynikZapytan !== ostZapytan) setOstZapytan(wynikZapytan);
+  const WZapytan = wynikZapytan ?? ostZapytan;
   const [ostBlad, setOstBlad] = useState('');
   if (blad && blad !== ostBlad) setOstBlad(blad);
   const wypelnione = ['wyszukiwania', 'konwersja', 'wartosc', 'marza'].every((k) => dane[k] !== '');
@@ -398,7 +567,8 @@ export default function KalkulatorClient() {
     if (!wypelnione || blad) return undefined;
     const t = setTimeout(() => {
       zapiszParametry({
-        ...wejscie,
+        ...wejscieSurowe,
+        ...(czySkalujeCloseRate ? { closeRate: closeRateNum } : {}),
         ...(en ? { waluta } : {}),
         pakiet: dane.pakiet || null,
         koszt: dane.pakiet === 'wlasny' && Number.isFinite(koszt) ? koszt : null,
@@ -406,7 +576,7 @@ export default function KalkulatorClient() {
       });
     }, 450);
     return () => clearTimeout(t);
-  }, [wypelnione, blad, wejscie, en, waluta, dane.pakiet, dane.miesiace, koszt]);
+  }, [wypelnione, blad, wejscieSurowe, czySkalujeCloseRate, closeRateNum, en, waluta, dane.pakiet, dane.miesiace, koszt]);
 
   function licz(e) {
     e.preventDefault();
@@ -424,7 +594,8 @@ export default function KalkulatorClient() {
 
   function parametryWyniku() {
     return {
-      ...wejscie,
+      ...wejscieSurowe,
+      ...(czySkalujeCloseRate ? { closeRate: closeRateNum } : {}),
       ...(en ? { waluta } : {}),
       pakiet: dane.pakiet || null,
       koszt: dane.pakiet === 'wlasny' && Number.isFinite(koszt) ? koszt : null,
@@ -527,6 +698,34 @@ export default function KalkulatorClient() {
           </div>
         </div>
         {pola.filter((p) => p.k !== 'powroty').map(poleFormularza)}
+        <Zwin otwarte={!sklep}>
+          <div className="narz-kalk-pole" style={{ fontVariantNumeric: 'tabular-nums' }}>
+            <label htmlFor="k-closeRate" className="narz-etykieta">
+              {en ? 'Lead-to-deal Close Rate (optional)' : 'Odsetek domykanych zapytań - Close Rate (%)'}{' '}
+              <strong>{closeRateNum}%</strong>
+            </label>
+            <input
+              id="k-closeRate"
+              name="closeRate"
+              type="range"
+              min="5"
+              max="100"
+              step="5"
+              value={closeRateNum}
+              onChange={zmien('closeRate')}
+              className="narz-suwak"
+            />
+            <p className="narz-mikro">
+              {czySkalujeCloseRate && wynik && wynikZapytan
+                ? (en
+                  ? `At ${closeRateNum}% close rate: ${num(wynikZapytan.min.klienci)}-${num(wynikZapytan.max.klienci)} enquiries/mo turn into ${num(wynik.min.klienci)}-${num(wynik.max.klienci)} signed deals/mo (effective visit-to-deal conversion: ${podp(Number(wejscie.konwersja.toFixed(2)), true)}%).`
+                  : `Przy Close Rate ${closeRateNum}%: z ${num(wynikZapytan.min.klienci)}-${num(wynikZapytan.max.klienci)} zapytań miesięcznie domykasz ${num(wynik.min.klienci)}-${num(wynik.max.klienci)} umów (efektywna konwersja do umowy: ${podp(Number(wejscie.konwersja.toFixed(2)), false)}%).`)
+                : (en
+                  ? 'Default 100%: the conversion rate entered above already counts signed customers. If you entered lead/form conversion instead, lower this slider (e.g. 25%) to separate enquiries from closed contracts.'
+                  : 'Domyślnie 100%: wpisana wyżej konwersja oznacza już domkniętych klientów. Jeśli wyżej podajesz konwersję na samo zapytanie ofertowe, obniż suwak (np. 25%), aby przeliczyć zapytania na podpisane umowy.')}
+            </p>
+          </div>
+        </Zwin>
         <Zwin otwarte={sklep}>{poleFormularza(poleSklepPowroty)}</Zwin>
         <div className="narz-kalk-pole">
           <label htmlFor="k-udzialAi" className="narz-etykieta">{en ? 'What share of customers ask AI instead of Google?' : 'Jaka część klientów pyta AI zamiast Google?'} <strong>{dane.udzialAi}%</strong></label>
@@ -581,7 +780,11 @@ export default function KalkulatorClient() {
                 ? (en ? `per month, including ${num(W.min.klienci)} to ${num(W.max.klienci)} first orders from new customers` : `miesięcznie, w tym ${num(W.min.klienci)} do ${num(W.max.klienci)} pierwszych zamówień nowych klientów`)
                 : (en ? 'per month (first orders only)' : 'miesięcznie (tylko pierwsze zamówienia)')}</p></div>
             ) : (
-              <div><p className="narz-rozbicie-etykieta">{en ? 'Lost customers' : 'Utraceni klienci'}</p><p className="narz-rozbicie-kwota">{num(W.min.klienci)} {en ? 'to' : 'do'} {num(W.max.klienci)}</p><p className="narz-mikro">{en ? 'per month' : 'miesięcznie'}</p></div>
+              <div><p className="narz-rozbicie-etykieta">{en ? 'Lost customers' : 'Utraceni klienci'}</p><p className="narz-rozbicie-kwota">{num(W.min.klienci)} {en ? 'to' : 'do'} {num(W.max.klienci)}</p><p className="narz-mikro">{czySkalujeCloseRate && WZapytan
+                ? (en
+                  ? `signed deals/mo (from ${num(WZapytan.min.klienci)} to ${num(WZapytan.max.klienci)} enquiries at ${closeRateNum}% close rate)`
+                  : `podpisanych umów miesięcznie (z ${num(WZapytan.min.klienci)} do ${num(WZapytan.max.klienci)} zapytań przy ${closeRateNum}% Close Rate)`)
+                : (en ? 'per month' : 'miesięcznie')}</p></div>
             )}
           </div>
 
@@ -628,6 +831,15 @@ export default function KalkulatorClient() {
                   <div><p className="narz-rozbicie-etykieta">{en ? 'Balance of the first 12 months' : 'Bilans pierwszych 12 miesięcy'}</p><p className="narz-rozbicie-kwota"><span className={klasa(zwrot.min.bilansRok)}>{zeZnakiem(zwrot.min.bilansRok)}</span> {en ? 'to' : 'do'} <span className={klasa(zwrot.max.bilansRok)}>{zeZnakiem(zwrot.max.bilansRok)}</span></p></div>
                   <div><p className="narz-rozbicie-etykieta">{en ? 'Payback' : 'Zwrot kosztu'}</p><p className="narz-rozbicie-kwota">{okresZwrotu(zwrot)}</p><p className="narz-mikro">{en ? `the profit covers the cost ${ulamek(zwrot.min.razy)}-${ulamek(zwrot.max.razy)} times` : `zysk pokrywa koszt ${ulamek(zwrot.min.razy)}-${ulamek(zwrot.max.razy)} raza`}</p></div>
                 </div>
+                <WykresJCurve
+                  zyskMin={W.min.zysk}
+                  zyskMax={W.max.zysk}
+                  koszt={zwrot.koszt}
+                  miesiaceDoEfektu={zwrot.miesiaceDoEfektu}
+                  waluta={waluta}
+                  en={en}
+                  fmt={fmt}
+                />
                 <p className="narz-mikro" role="status">{wniosek} {en
                   ? `This is arithmetic on your numbers, not a promise: we assume you recover the whole calculated loss after ${zwrot.miesiaceDoEfektu} months, and SEO results take months.`
                   : `To arytmetyka na Twoich liczbach, nie obietnica: zakładamy odzyskanie całej wyliczonej straty po ${zwrot.miesiaceDoEfektu} miesiącach, a efekty SEO przychodzą po miesiącach.`}</p>

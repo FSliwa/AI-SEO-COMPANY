@@ -238,7 +238,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               
               <h1 style={{ 
                 fontSize: 'clamp(3.5rem, 7vw, 6rem)', 
-                fontWeight: 700, 
+                fontWeight: 500, 
                 lineHeight: 1.05, 
                 color: 'var(--color-text-main)', 
                 marginBottom: '1rem', 
@@ -321,7 +321,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <section style={{ padding: '120px 0' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-              <h2 className={lang === 'pl' ? 'bez-kropki' : undefined} style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+              <h2 className={lang === 'pl' ? 'bez-kropki' : undefined} style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
                 {lang === 'pl' ? 'Pozycjonowanie stron w Warszawie - dlaczego lokalnie?' : 'Why Local SEO & Search Engine Optimization Matters'}
               </h2>
               <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
@@ -341,19 +341,19 @@ export default async function SeoLokalneWarszawaPage({ params }) {
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
               <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 1' : 'RULE 1'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Searches with local intent'}</h3>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 600, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Searches with local intent'}</h3>
                 <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Duża część wyszukiwań w Google ma intencję lokalną, a Google pokazuje w nich pakiet lokalny z Mapami. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>A large share of searches have local intent, and Google shows a local pack with Maps for them. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
               </RevealItem>
               
               <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 2' : 'RULE 2'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Widoczność Mobilna' : 'Mobile visibility'}</h3>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 600, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Widoczność Mobilna' : 'Mobile visibility'}</h3>
                 <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Dominacja na urządzeniach mobilnych to klucz w branżach lokalnych (gastronomia, usługi prawne, beauty), gdzie decyzje podejmuje się "w drodze".' : 'Mobile dominance is key in local industries (gastronomy, legal services, beauty), where decisions are made on the go.'}</p>
               </RevealItem>
               
               <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 3' : 'RULE 3'}</div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'High conversion rate'}</h3>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 600, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'High conversion rate'}</h3>
                 <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Zapytania z Map często kończą się telefonem lub wizytą; mierzymy to w panelu klienta (połączenia, trasy).' : 'Searches in Maps often end in a call or a visit; we measure this in the client portal (calls, directions).'}</p>
               </RevealItem>
             </RevealStagger>
@@ -372,7 +372,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <section style={{ padding: '80px 0' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3rem auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
                 {lang === 'pl' ? 'Pozycjonowanie lokalne w Warszawie dzielnica po dzielnicy' : 'Local SEO in Warsaw, district by district'}
               </h2>
               <p style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500, lineHeight: 1.6 }}>
@@ -383,7 +383,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
             </Reveal>
             <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Śródmieście i Wola' : 'Srodmiescie and Wola'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
@@ -391,7 +391,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   </p>
                 </RevealItem>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Mokotów i Służewiec' : 'Mokotow and Sluzewiec'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
@@ -399,7 +399,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   </p>
                 </RevealItem>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Ursynów, Wilanów, Białołęka' : 'Ursynow, Wilanow and Bialoleka'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
@@ -407,7 +407,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   </p>
                 </RevealItem>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Praga-Południe i Praga-Północ' : 'Praga-Poludnie and Praga-Polnoc'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.6 }}>
@@ -438,7 +438,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
           <section style={{ padding: '80px 0' }}>
             <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
               <Reveal>
-                <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
+                <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
                   Jak mierzymy pozycjonowanie lokalne: siatka 7×7 w Mapach Google
                 </h2>
                 <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.65, marginBottom: '2rem' }}>
@@ -471,7 +471,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         <section style={{ padding: '80px 0', background: 'var(--w-papier-2)' }}>
             <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
               <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
-                <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+                <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
                   {lang === 'pl' ? 'Lokalna Optymalizacja Wyszukiwarek' : 'Local Search Engine Optimization'}
                 </h2>
                 <p style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
@@ -480,7 +480,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               </Reveal>
               <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem' }}>
                     {lang === 'pl' ? 'Firma SEO w Twojej Okolicy' : 'A local SEO company'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
@@ -488,7 +488,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   </p>
                 </RevealItem>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem' }}>
                     {lang === 'pl' ? 'Najlepsze Lokalne SEO' : 'Leading local SEO'}
                   </h3>
                   <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
@@ -503,7 +503,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
           <section style={{ padding: '0 0 64px 0', background: 'var(--w-papier-2)' }}>
             <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
               <Reveal style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                <h2 id="local-seo-vs-national-seo" style={{ fontSize: 'clamp(1.7rem, 2.6vw, 2.2rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+                <h2 id="local-seo-vs-national-seo" style={{ fontSize: 'clamp(1.7rem, 2.6vw, 2.2rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
                   Local SEO vs national SEO
                 </h2>
                 <p style={{ color: 'var(--color-text-main)', lineHeight: 1.65, margin: 0 }}>

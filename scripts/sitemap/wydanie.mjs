@@ -275,5 +275,14 @@ try {
   if (wartosci.raport) writeFileSync(wartosci.raport, JSON.stringify({ ...raport, bledy, ostrzezenia }, null, 1));
 }
 console.log(`Czas: ${((Date.now() - t0) / 1000).toFixed(1)} s.`);
+try {
+  const stRes = await fetch('https://panel.ai-seo-company.pl/api/narzedzia/statystyki-audytow', { signal: AbortSignal.timeout(4000) });
+  if (stRes.ok) {
+    const stJson = await stRes.json();
+    console.log(`Próba raportu błędów SEO (audit_domain_stats): ${stJson.domen ?? 0}/${stJson.prog ?? 100} domen${stJson.gotowe ? ' - GOTOWE do przełączenia opublikowana: true dla /raport-bledow-seo-w-polsce!' : ''}`);
+  }
+} catch {
+  // informacyjne - brak sieci nie przerywa wydania
+}
 if (bledy.length) koniec(1, `\nBŁĘDY (${bledy.length}):\n- ${bledy.join('\n- ')}`);
 koniec(0);

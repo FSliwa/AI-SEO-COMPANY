@@ -7,6 +7,7 @@ import Realizacje from './Realizacje';
 import { SERIE_GSC, METRYKI_GSC, GSC_WYGENEROWANO } from '@/lib/realizacjeGsc';
 import { Link } from '@/i18n/routing';
 import { hash } from '@/lib/anchors';
+import kosm from './KosmetykaSekcji.module.css';
 
 // Film z realizacji ASE-BOT w naglowku sekcji (ladowany leniwie, opis przy wideoSrc nizej).
 const WIDEO_PORTFOLIO = '/projects/ase-bot-demo.mp4';
@@ -377,13 +378,14 @@ export default function Portfolio() {
   const zrodloGsc = pl
     ? `Źródło: Google Search Console${aktualizacja ? `, aktualizacja ${aktualizacja}` : ''}`
     : `Source: Google Search Console${aktualizacja ? `, updated ${aktualizacja}` : ''}`;
-  const karta = (id, seria, nazwa, logoEl, tag, skrotKat, opisPl, opisEn) => {
+  const karta = (id, seria, domena, nazwa, logoEl, tag, skrotKat, opisPl, opisEn) => {
     const m = gsc.metryki?.[seria] || METRYKI_GSC[seria];
     const kl = dokl(m.totalClicks);
     const wy = skrot(m.totalImpr);
     const dni = m.days;
     return {
       id,
+      domena,
       nazwa,
       logo: logoEl,
       tag,
@@ -401,19 +403,19 @@ export default function Portfolio() {
     };
   };
   const pozycje = [
-    karta('staniax', 'staniax', 'STANIAX', logo('STANIAX'), pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE', pl ? 'B2B Przemysł' : 'B2B Industry',
+    karta('staniax', 'staniax', 'staniax.pl', 'STANIAX', logo('STANIAX'), pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE', pl ? 'B2B Przemysł' : 'B2B Industry',
       (kl, wy) => `Z zerowej widoczności do ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
       (kl, wy, d) => `From zero visibility to ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
-    karta('madame-thai', 'madamethai', 'MADAME THAI', logo('MADAME THAI'), pl ? 'SEO LOKALNE / STRONA WWW' : 'LOCAL SEO / WEBSITE', pl ? 'Gastronomia' : 'Hospitality',
+    karta('madame-thai', 'madamethai', 'madamethai.pl', 'MADAME THAI', logo('MADAME THAI'), pl ? 'SEO LOKALNE / STRONA WWW' : 'LOCAL SEO / WEBSITE', pl ? 'Gastronomia' : 'Hospitality',
       (kl, wy) => `Zbudowanie i rozwinięcie sprzedaży w nowo otwartej lokalizacji restauracji: ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
       (kl, wy, d) => `Building and scaling digital sales for the newly opened restaurant location: ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
-    karta('tql', 'tql', 'TQL', logoTql, pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE', 'ISO',
+    karta('tql', 'tql', 'tql.pl', 'TQL', logoTql, pl ? 'SEO / STRONA WWW' : 'SEO / WEBSITE', 'ISO',
       (kl, wy) => `Firma wdrażająca normy ISO: dynamiczny wzrost do ${kl} kliknięć i ${wy} wyświetleń w Google (Search Console).`,
       (kl, wy, d) => `ISO standards consultancy: rapid growth to ${kl} clicks and ${wy} Google impressions in ${d} days (Search Console).`),
-    karta('ase-bot', 'ase-bot', 'ASE-BOT', logo('ASE-BOT'), pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO', 'SaaS / AI',
+    karta('ase-bot', 'ase-bot', 'ase-bot.live', 'ASE-BOT', logo('ASE-BOT'), pl ? 'PROJEKT WŁASNY / SEO' : 'OWN PROJECT / SEO', 'SaaS / AI',
       (kl, wy) => `Nasz własny projekt AI: ${wy} wyświetleń w Google i stałe pozyskiwanie analityków rynkowych (Search Console).`,
       (kl, wy, d) => `Our own AI project: ${wy} Google impressions in ${d} days and steady organic discovery (Search Console).`),
-    karta('stefbud', 'stefbud', 'STEF-BUD', logoStefbud, pl ? 'PRODUKCJA / STRONA WWW I SEO' : 'MANUFACTURING / WEB & SEO', pl ? 'Budownictwo B2B' : 'B2B Construction',
+    karta('stefbud', 'stefbud', 'stefbud.com', 'STEF-BUD', logoStefbud, pl ? 'PRODUKCJA / STRONA WWW I SEO' : 'MANUFACTURING / WEB & SEO', pl ? 'Budownictwo B2B' : 'B2B Construction',
       (kl, wy) => `Producent świetlików dachowych i pasm świetlnych: ${kl} kliknięć i ${wy} wyświetleń na kluczowe zapytania B2B (Search Console).`,
       (kl, wy) => `Rooflight and skylight manufacturer: ${kl} clicks and ${wy} Google impressions on key B2B searches (Search Console).`),
   ];
@@ -531,13 +533,16 @@ export default function Portfolio() {
             const okresTile = mTile
               ? `${dzien(mTile.startDate)}-${dzien(mTile.endDate, true)}`
               : (pl ? tile.metaPl : tile.metaEn);
-            const statusTile = mTile ? 'Live GSC API' : 'Live';
+            const statusTile = mTile
+              ? (lang === 'pl' ? 'Dane GSC' : lang === 'de' ? 'GSC-Daten' : 'GSC Verified')
+              : 'Live';
             return (
               /* Sam obrazek: kafelek nic nie robi po kliknieciu. Case studies
                  otwiera pasek klientow pod sciana, wiec tresc nie znika. */
               <figure className="portfolio-mosaic-tile" key={tile.src}>
                 <span className="portfolio-okno-nagl" aria-hidden="true">
                   <span className="portfolio-okno-info">
+                    <span className={kosm.mozaikaKropki}><i /><i /><i /></span>
                     <span className="portfolio-okno-domena" data-t={tile.domena} />
                     <span className="portfolio-okno-uk" data-t="/" />
                     <span className="portfolio-okno-okres" data-t={okresTile} />

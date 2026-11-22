@@ -24,11 +24,16 @@ export default function Ikona({ nazwa, rozmiar = 24 }) {
 
 /** Klucz ikony dla ścieżki PL / id karty huba narzędzia. */
 export function ikonaNarzedzia(klucz = '') {
+  if (/lokalne|nap|qr/.test(klucz)) return 'checklista';
+  if (/przekierowania|hreflang|redirect/.test(klucz)) return 'strzalka';
+  if (/indexnow|bing/.test(klucz)) return 'bolt';
+  if (/encj|entity|graph/.test(klucz)) return 'autorytet';
+  if (/cytowalnosc|citability|zitierbarkeit/.test(klucz)) return 'ai';
   if (/audyt/.test(klucz)) return 'audyt';
   if (/widocznosc|sprawdzarka|robot|crawler/.test(klucz)) return 'ai';
   if (/vitals|cwv/.test(klucz)) return 'bolt';
   if (/kalkulator/.test(klucz)) return 'kalkulator';
-  if (/makieta/.test(klucz)) return 'makieta';
+  if (/makieta|mockup/.test(klucz)) return 'makieta';
   if (/llms/.test(klucz)) return 'llms';
   if (/autorytet/.test(klucz)) return 'autorytet';
   return 'szablon';

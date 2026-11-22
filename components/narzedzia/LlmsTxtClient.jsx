@@ -20,7 +20,7 @@ import { GENERATOR, cena } from '@/lib/narzedziaLiczby';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import LinkWyniku, { PrzykladAdresu } from './LinkWyniku';
 import LlmsTxtEdytor from './LlmsTxtEdytor';
-import { parsujLlmsTxt, policz, zlozLlmsTxt } from './llmsTxtPlik';
+import { czyOptional, parsujLlmsTxt, policz, zlozLlmsTxt } from './llmsTxtPlik';
 import st from './narzedzia.module.css';
 import * as s from './styl';
 import './ruch-c.css';
@@ -59,16 +59,100 @@ function host(adres) {
   }
 }
 
-function pobierzPlik(tekst) {
+function pobierzPlik(tekst, nazwaPliku = 'llms.txt') {
   const blob = new Blob([tekst], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'llms.txt';
+  a.download = nazwaPliku;
   document.body.appendChild(a);
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function sciezkaZAdresu(adres) {
+  try {
+    const u = new URL(adres);
+    return u.pathname + u.search;
+  } catch {
+    return adres;
+  }
+}
+
+function zbudujLlmsFull(model, w, en) {
+  if (!w) return '';
+  if (!model) return w.llmsFullTxt || w.llmsTxt || '';
+  const domena = host(w.strona);
+  const naglowek = String(model.nazwa || domena).trim();
+  const opisGlowny = String(model.opis || '').trim();
+  const dozwoloneBoty = Array.isArray(w.boty)
+    ? w.boty.filter((b) => b.robots === 'dozwolony').map((b) => b.nazwa)
+    : [];
+  const sekcjeKolejno = [
+    ...model.sekcje.filter((sek) => !czyOptional(sek)),
+    ...model.sekcje.filter(czyOptional),
+  ];
+  const aktywneSekcje = sekcjeKolejno
+    .map((sek) => ({ ...sek, aktywne: sek.linki.filter((l) => l.wPliku) }))
+    .filter((sek) => sek.aktywne.length > 0);
+  const lacznieLinkow = aktywneSekcje.reduce((suma, sek) => suma + sek.aktywne.length, 0);
+
+  const linie = [
+    `# ${naglowek} - ${en ? 'Extended RAG Context (/llms-full.txt)' : 'Rozszerzony kontekst RAG (/llms-full.txt)'}`,
+    '',
+  ];
+  if (opisGlowny) linie.push(`> ${opisGlowny}`, '');
+  linie.push(
+    en ? '## Context Overview' : '## Podsumowanie kontekstu domeny',
+    '',
+    `- ${en ? 'Canonical origin' : 'Domena źródłowa'}: ${w.strona}`,
+    `- ${en ? 'Primary index' : 'Indeks podstawowy'}: ${w.strona.replace(/\/$/, '')}/llms.txt`,
+    `- ${en ? 'Indexed URLs in this file' : 'Liczba opisanych podstron'}: ${lacznieLinkow} (${aktywneSekcje.length} ${en ? 'sections' : 'sekcji'})`,
+  );
+  if (dozwoloneBoty.length > 0) {
+    linie.push(`- ${en ? 'Allowed AI & search crawlers' : 'Dozwolone roboty w robots.txt'}: ${dozwoloneBoty.join(', ')}`);
+  }
+  linie.push('');
+
+  for (const sek of aktywneSekcje) {
+    const nazwaSek = czyOptional(sek) ? 'Optional' : (sek.nazwa || (en ? 'Pages' : 'Strony'));
+    linie.push(`## ${nazwaSek}`, '');
+    for (const l of sek.aktywne) {
+      const sciezka = sciezkaZAdresu(l.url);
+      const streszczenie = String(l.opis || '').trim()
+        || (en ? `Key page under ${nazwaSek} (${sciezka}).` : `Podstrona w sekcji ${nazwaSek} (${sciezka}).`);
+      linie.push(
+        `### ${l.tytul || l.url}`,
+        `- URL: ${l.url}`,
+        `- ${en ? 'Path' : 'Ścieżka'}: ${sciezka}`,
+        `- ${en ? 'Summary' : 'Opis kontekstowy'}: ${streszczenie}`,
+      );
+      const dodatkowaTresc = w.pelneTresci?.[l.url] || l.tresc;
+      if (dodatkowaTresc) {
+        linie.push(`- ${en ? 'Excerpt' : 'Wyciąg treści'}: ${String(dodatkowaTresc).replace(/\s+/g, ' ').trim()}`);
+      }
+      linie.push('');
+    }
+  }
+  return `${linie.join('\n').trim()}\n`;
+}
+
+function kodWdrozenia(zakladka, domena, en) {
+  const hostCzysty = domena || (en ? 'yourcompany.com' : 'twojafirma.pl');
+  if (zakladka === 'nextjs') {
+    return en
+      ? `# Option A (fastest): drop both files into the static public/ folder\ncp ~/Downloads/llms.txt ./public/llms.txt\ncp ~/Downloads/llms-full.txt ./public/llms-full.txt\n\n# Verify after deploy (must return HTTP 200 text/plain):\ncurl -I https://${hostCzysty}/llms.txt`
+      : `# Wariant A (najszybszy): wgraj pobrane pliki do katalogu public/\ncp ~/Downloads/llms.txt ./public/llms.txt\ncp ~/Downloads/llms-full.txt ./public/llms-full.txt\n\n# Sprawdź po wdrożeniu (wymagany kod 200 i text/plain):\ncurl -I https://${hostCzysty}/llms.txt`;
+  }
+  if (zakladka === 'wordpress') {
+    return en
+      ? `# 1. Connect via SFTP / cPanel File Manager to your WordPress root (next to wp-config.php)\n# 2. Upload llms.txt (and optionally llms-full.txt) to:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Verify direct access without redirects:\nhttps://${hostCzysty}/llms.txt`
+      : `# 1. Połącz się przez SFTP / menedżer plików hostingu z katalogiem głównym WordPressa (obok wp-config.php)\n# 2. Wgraj llms.txt (oraz opcjonalnie llms-full.txt) bezpośrednio do:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Otwórz w przeglądarce i upewnij się, że odpowiada bez przekierowania:\nhttps://${hostCzysty}/llms.txt`;
+  }
+  return en
+    ? `# Nginx: serve /llms.txt and /llms-full.txt as UTF-8 plain text\nlocation ~ ^/llms(-full)?\\.txt$ {\n  default_type "text/plain; charset=utf-8";\n  add_header Cache-Control "public, max-age=3600";\n  try_files $uri =404;\n}\n\n# Cloudflare WAF: if Bot Fight Mode is active, create a Custom Rule:\n# URI Path in {"/llms.txt" "/llms-full.txt"} -> Action: Skip (Managed Challenge)`
+    : `# Nginx: serwowanie /llms.txt oraz /llms-full.txt z nagłówkiem UTF-8\nlocation ~ ^/llms(-full)?\\.txt$ {\n  default_type "text/plain; charset=utf-8";\n  add_header Cache-Control "public, max-age=3600";\n  try_files $uri =404;\n}\n\n# Cloudflare WAF: przy włączonym Bot Fight Mode dodaj regułę Custom Rule:\n# URI Path in {"/llms.txt" "/llms-full.txt"} -> Action: Skip (Managed Challenge)`;
 }
 
 // Stan obecnego pliku /llms.txt na sprawdzanej stronie.
@@ -137,8 +221,11 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null });
   const [skopiowano, setSkopiowano] = useState(false);
   const [skopiowanoSnippet, setSkopiowanoSnippet] = useState(false);
+  const [skopiowanoInstrukcje, setSkopiowanoInstrukcje] = useState(false);
   const [pobrano, setPobrano] = useState(false);
   const [zKomentarzemZrodla, setZKomentarzemZrodla] = useState(false);
+  const [trybPliku, setTrybPliku] = useState('zwykly');
+  const [zakladkaWdrozenia, setZakladkaWdrozenia] = useState('nextjs');
   const [adres, setAdres] = useState('');
   // Edytor (Z-L4): model pliku z odpowiedzi API; zmieniony = plik do pobrania składamy z modelu.
   const [edycja, setEdycja] = useState({ model: null, zmieniony: false });
@@ -155,6 +242,11 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
     const t = setTimeout(() => setSkopiowanoSnippet(false), 3000);
     return () => clearTimeout(t);
   }, [skopiowanoSnippet]);
+  useEffect(() => {
+    if (!skopiowanoInstrukcje) return undefined;
+    const t = setTimeout(() => setSkopiowanoInstrukcje(false), 3000);
+    return () => clearTimeout(t);
+  }, [skopiowanoInstrukcje]);
   useEffect(() => {
     if (!pobrano) return undefined;
     const t = setTimeout(() => setPobrano(false), 2500);
@@ -202,7 +294,7 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
 
   async function kopiuj() {
     try {
-      await navigator.clipboard.writeText(plik);
+      await navigator.clipboard.writeText(aktywnyTekstPliku);
       setSkopiowano(true);
     } catch {
       const obszar = document.getElementById('llms-wynik-plik');
@@ -221,6 +313,31 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
   const plik = plikBazowy
     ? (zKomentarzemZrodla ? `${plikBazowy.trimEnd()}\n\n${komentarzZrodla}\n` : plikBazowy)
     : '';
+  const plikFullBazowy = w ? zbudujLlmsFull(edycja.model, w, en) : '';
+  const plikFull = plikFullBazowy
+    ? (zKomentarzemZrodla ? `${plikFullBazowy.trimEnd()}\n\n${komentarzZrodla}\n` : plikFullBazowy)
+    : '';
+  const czyFull = trybPliku === 'full';
+  const aktywnyTekstPliku = czyFull ? plikFull : plik;
+  const aktywnaNazwaPliku = czyFull ? 'llms-full.txt' : 'llms.txt';
+  const bajtyPliku = aktywnyTekstPliku ? new TextEncoder().encode(aktywnyTekstPliku).length : 0;
+  const kbPliku = (bajtyPliku / 1024).toLocaleString(en ? 'en-US' : 'pl-PL', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const szacowaneTokeny = aktywnyTekstPliku ? Math.max(1, Math.ceil(aktywnyTekstPliku.length / 4)) : 0;
+  const procOkna128k = (szacowaneTokeny / 128000) * 100;
+  const tekstOkna128k = procOkna128k < 0.1
+    ? (en ? '< 0.1%' : '< 0,1%')
+    : `${procOkna128k.toLocaleString(en ? 'en-US' : 'pl-PL', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
+  const tekstInstrukcji = w ? kodWdrozenia(zakladkaWdrozenia, host(w.strona), en) : '';
+  async function kopiujInstrukcje() {
+    if (!tekstInstrukcji) return;
+    try {
+      await navigator.clipboard.writeText(tekstInstrukcji);
+      setSkopiowanoInstrukcje(true);
+      track('llms_deploy_guide_copy', { stack: zakladkaWdrozenia, lang: en ? 'en' : 'pl' });
+    } catch {
+      // brak dostepu do schowka
+    }
+  }
   const docelowyLlmsUrl = (() => {
     if (!w?.strona) return '';
     try { return new URL('/llms.txt', w.strona).href; } catch { return `${w.strona.replace(/\/$/, '')}/llms.txt`; }
@@ -359,12 +476,35 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
                 <LlmsTxtEdytor model={edycja.model} onZmiana={zmienModel} en={en} />
               </details>
             )}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.6rem', margin: '0 0 0.75rem' }}>
+              <div className="narz-filtry" role="group" aria-label={en ? 'Generated file format' : 'Wariant wygenerowanego pliku'} style={{ margin: 0 }}>
+                <button
+                  type="button"
+                  aria-pressed={!czyFull}
+                  onClick={() => { setTrybPliku('zwykly'); setSkopiowano(false); }}
+                >
+                  {en ? '/llms.txt (concise index)' : '/llms.txt (indeks zwięzły)'}
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={czyFull}
+                  onClick={() => { setTrybPliku('full'); setSkopiowano(false); }}
+                >
+                  {en ? '/llms-full.txt (extended RAG context)' : '/llms-full.txt (rozszerzony kontekst RAG)'}
+                </button>
+              </div>
+              <span style={{ fontSize: '0.84rem', color: 'var(--w-tusz-2)', fontVariantNumeric: 'tabular-nums' }}>
+                {en
+                  ? `${kbPliku} KB · ~${szacowaneTokeny.toLocaleString('en-US')} tokens (${tekstOkna128k} of 128k GPT-4o / Claude window)`
+                  : `${kbPliku} KB · ~${szacowaneTokeny.toLocaleString('pl-PL')} tokenów (${tekstOkna128k} okna 128k GPT-4o / Claude)`}
+              </span>
+            </div>
             <textarea
               id="llms-wynik-plik"
               readOnly
-              value={plik}
+              value={aktywnyTekstPliku}
               rows={14}
-              aria-label={en ? 'Generated llms.txt file' : 'Wygenerowany plik llms.txt'}
+              aria-label={en ? `Generated ${aktywnaNazwaPliku} file` : `Wygenerowany plik ${aktywnaNazwaPliku}`}
               className="c-pole" style={{ ...pole, ...s.kod, resize: 'vertical', whiteSpace: 'pre', overflowX: 'auto' }}
             />
             {liczby && (
@@ -388,10 +528,12 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
               </span>
             </label>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '0.75rem', alignItems: 'center' }}>
-              <button type="button" className="btn btn-primary" style={malyPrzycisk} onClick={kopiuj} data-cta="llms_copy">{en ? 'Copy' : 'Kopiuj'}</button>
-              <button type="button" className="btn btn-secondary" style={malyPrzycisk} onClick={() => { pobierzPlik(plik); setPobrano(true); }} data-cta={edycja.zmieniony ? 'llms_download_edited' : 'llms_download'}>
+              <button type="button" className="btn btn-primary" style={malyPrzycisk} onClick={kopiuj} data-cta={czyFull ? 'llms_full_copy' : 'llms_copy'}>
+                {en ? `Copy ${aktywnaNazwaPliku}` : `Kopiuj ${aktywnaNazwaPliku}`}
+              </button>
+              <button type="button" className="btn btn-secondary" style={malyPrzycisk} onClick={() => { pobierzPlik(aktywnyTekstPliku, aktywnaNazwaPliku); setPobrano(true); }} data-cta={czyFull ? 'llms_full_download' : (edycja.zmieniony ? 'llms_download_edited' : 'llms_download')}>
                 <svg className={pobrano ? 'llms-pobrano llms-pobrano-znak' : 'llms-pobrano-znak'} style={pobrano ? undefined : { visibility: 'hidden' }} viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                {en ? 'Download llms.txt' : 'Pobierz llms.txt'}
+                {en ? `Download ${aktywnaNazwaPliku}` : `Pobierz ${aktywnaNazwaPliku}`}
               </button>
               {edycja.zmieniony && <button type="button" className={st.przyciskTekstowy} onClick={przywroc}>{en ? 'Undo all changes' : 'Cofnij wszystkie zmiany'}</button>}
               <span role="status" aria-live="polite">
@@ -404,6 +546,41 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
                 )}
               </span>
             </div>
+
+            <details style={{ border: '1px solid rgba(15,23,42,0.12)', borderRadius: '16px', padding: '0.85rem clamp(0.6rem, 2.5vw, 1rem)', marginTop: '0.9rem', background: 'var(--color-bg-surface)' }}>
+              <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--color-text-dark)', lineHeight: 1.45 }}>
+                {en ? '60-second deployment guide' : 'Instrukcja wdrożenia w 60 sekund'}
+                <span style={{ display: 'block', fontWeight: 400, fontSize: '0.86rem', color: 'var(--w-tusz-2)' }}>
+                  {en ? 'Ready 1-click commands for Next.js, WordPress / SFTP and Cloudflare / Nginx.' : 'Gotowe komendy i konfiguracja 1-klik dla Next.js, WordPress / SFTP oraz Cloudflare / Nginx.'}
+                </span>
+              </summary>
+              <div style={{ marginTop: '0.75rem', display: 'grid', gap: '0.65rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                  <div className="narz-filtry" role="group" aria-label={en ? 'Platform' : 'Platforma'} style={{ margin: 0 }}>
+                    {[
+                      ['nextjs', 'Next.js (App Router)'],
+                      ['wordpress', 'WordPress / SFTP'],
+                      ['nginx', 'Cloudflare / Nginx'],
+                    ].map(([klucz, etykietaZakl]) => (
+                      <button
+                        key={klucz}
+                        type="button"
+                        aria-pressed={zakladkaWdrozenia === klucz}
+                        onClick={() => { setZakladkaWdrozenia(klucz); setSkopiowanoInstrukcje(false); }}
+                      >
+                        {etykietaZakl}
+                      </button>
+                    ))}
+                  </div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <button type="button" className={st.przyciskKopiujLink} onClick={kopiujInstrukcje} data-cta="llms_deploy_copy">
+                      {skopiowanoInstrukcje ? (en ? 'Copied!' : 'Skopiowano!') : (en ? 'Copy snippet' : 'Kopiuj instrukcję')}
+                    </button>
+                  </div>
+                </div>
+                <pre className={st.snippetKod} style={{ margin: 0 }}><code>{tekstInstrukcji}</code></pre>
+              </div>
+            </details>
             <LinkWyniku
               narzedzie="llms_txt"
               parametry={{ url: adres || w.strona }}

@@ -20,6 +20,17 @@ import TesterRobotowAiStrona from '@/components/narzedzia/TesterRobotowAiStrona'
 import PorownywarkaCwvStrona from '@/components/narzedzia/PorownywarkaCwvStrona';
 import KiCrawlerStronaDe from '@/components/de/narzedzia/KiCrawlerStronaDe';
 import CwvVergleichStronaDe from '@/components/de/narzedzia/CwvVergleichStronaDe';
+import MakietaStronaDe from '@/components/de/narzedzia/MakietaStronaDe';
+import CytowalnoscGeoStrona from '@/components/narzedzia/sprint2/CytowalnoscGeoStrona';
+import PrzekierowaniaHreflangStrona from '@/components/narzedzia/sprint2/PrzekierowaniaHreflangStrona';
+import IndexNowBingStrona from '@/components/narzedzia/sprint2/IndexNowBingStrona';
+import GrafEncjiStrona from '@/components/narzedzia/sprint2/GrafEncjiStrona';
+import LokalneNapStrona from '@/components/narzedzia/sprint2/LokalneNapStrona';
+import CytowalnoscGeoStronaDe from '@/components/de/narzedzia/sprint2/CytowalnoscGeoStronaDe';
+import PrzekierowaniaHreflangStronaDe from '@/components/de/narzedzia/sprint2/PrzekierowaniaHreflangStronaDe';
+import IndexNowBingStronaDe from '@/components/de/narzedzia/sprint2/IndexNowBingStronaDe';
+import GrafEncjiStronaDe from '@/components/de/narzedzia/sprint2/GrafEncjiStronaDe';
+import LokalneNapStronaDe from '@/components/de/narzedzia/sprint2/LokalneNapStronaDe';
 
 // Strony pod /narzedzia/<slug> (PLAN-v2 6.10 N1 i 6.11 S1, partia 3 / W9; TS-03; 5.11.2026).
 // generateStaticParams w kształcie { locale: 'pl', slug } (samo { slug } daje 0 ścieżek i 404, TS-03)
@@ -38,6 +49,11 @@ const KOMPONENTY = {
   'makieta-redesignu': MakietaStrona,
   'tester-robotow-ai-robots-txt': TesterRobotowAiStrona,
   'test-core-web-vitals-porownanie': PorownywarkaCwvStrona,
+  'sprawdz-cytowalnosc-strony-ai': CytowalnoscGeoStrona,
+  'sprawdz-przekierowania-hreflang': PrzekierowaniaHreflangStrona,
+  'generator-indexnow-test-bing-chatgpt': IndexNowBingStrona,
+  'walidator-grafu-encji-json-ld': GrafEncjiStrona,
+  'audyt-lokalnego-seo-wizytowki': LokalneNapStrona,
 };
 
 // Wersja niemiecka (18.11.2026, DE_OPUBLIKOWANE w lib/stronyDe.js): narzędzia i szablony mają strony DE
@@ -47,8 +63,14 @@ const KOMPONENTY_DE = {
   'audyt-seo': AudytSeoStronaDe,
   'autorytet-domeny': AutorytetStronaDe,
   'kalkulator-strat-seo': KalkulatorStronaDe,
+  'makieta-redesignu': MakietaStronaDe,
   'tester-robotow-ai-robots-txt': KiCrawlerStronaDe,
   'test-core-web-vitals-porownanie': CwvVergleichStronaDe,
+  'sprawdz-cytowalnosc-strony-ai': CytowalnoscGeoStronaDe,
+  'sprawdz-przekierowania-hreflang': PrzekierowaniaHreflangStronaDe,
+  'generator-indexnow-test-bing-chatgpt': IndexNowBingStronaDe,
+  'walidator-grafu-encji-json-ld': GrafEncjiStronaDe,
+  'audyt-lokalnego-seo-wizytowki': LokalneNapStronaDe,
 };
 
 // 18.11.2026 (p2-audyt-przyklad): strony TYLKO po angielsku (lib/stronyTylkoEn.js) mają parametr tylko

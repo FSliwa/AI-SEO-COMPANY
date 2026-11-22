@@ -10,6 +10,7 @@ import { slugiOpublikowane } from '@/lib/publikacja';
 import { CHECKLIST_COUNT } from '@/lib/agencySwitch';
 import { hrefWJezyku } from '@/lib/linkiEn';
 import { hubDla, porownaniaDla, akapitMetodyHubaDla, dataEn } from '@/lib/porownania.en';
+import kosm from '@/components/KosmetykaSekcji.module.css';
 import styles from './porownania.module.css';
 
 // Hub /porownania (5.11.2026; PLAN-v2 6.1, brief-hub-porownania.md, CB-09).
@@ -89,11 +90,52 @@ const T = {
   },
 };
 
+const GRUPY_SKROTOW = [
+  {
+    klucz: 'wspolpraca',
+    pl: 'Model współpracy',
+    en: 'Pricing & agency',
+    slugi: ['pozycjonowanie-za-efekt-czy-abonament', 'jak-wybrac-agencje-seo', 'agencja-seo-czy-freelancer', 'seo-w-firmie-czy-agencja-seo'],
+  },
+  {
+    klucz: 'kanaly',
+    pl: 'SEO, GEO i Ads',
+    en: 'SEO, GEO & Ads',
+    slugi: ['seo-vs-geo', 'seo-czy-google-ads'],
+  },
+  {
+    klucz: 'cms',
+    pl: 'CMS i kod',
+    en: 'CMS & code',
+    slugi: ['nextjs-vs-wordpress-seo', 'webflow-vs-wordpress-seo', 'strona-kodowana-czy-kreator-seo'],
+  },
+  {
+    klucz: 'metryki',
+    pl: 'Metryki i pliki AI',
+    en: 'Metrics & AI files',
+    slugi: ['ahrefs-dr-vs-moz-da-vs-common-crawl', 'llms-txt-vs-robots-txt-vs-sitemap-xml'],
+  },
+];
+
 export default function PorownaniaHub({ locale = 'pl' }) {
   const en = locale === 'en';
   const t = T[en ? 'en' : 'pl'];
   const HUB = hubDla(locale);
   const lista = opublikowanePorownania(locale);
+  const dostepneSlugi = new Set(lista.map((p) => p.slug));
+  const skrotyGrup = GRUPY_SKROTOW
+    .map((g) => {
+      const trafienia = g.slugi.filter((s) => dostepneSlugi.has(s));
+      if (!trafienia.length) return null;
+      return {
+        klucz: g.klucz,
+        href: `#porownanie-${trafienia[0]}`,
+        etykieta: en ? g.en : g.pl,
+        liczba: trafienia.length,
+      };
+    })
+    .filter(Boolean);
+  const sumaStr = String(lista.length).padStart(2, '0');
   return (
     <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
@@ -109,14 +151,34 @@ export default function PorownaniaHub({ locale = 'pl' }) {
         </h1>
         <Byline sciezka={HUB.sciezka} data={HUB.updated} takzeEn style={{ margin: '0 0 1rem' }} />
         <p style={{ margin: 0, fontSize: '1.15rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', maxWidth: '760px' }}>{HUB.lead}</p>
+        <nav className={kosm.pasekSkrotow} aria-label={en ? 'Jump to comparison group or section' : 'Przejdź do grupy porównań lub sekcji'}>
+          {skrotyGrup.map((g) => (
+            <a key={g.klucz} href={g.href} className={kosm.pigulkaSkrotu}>
+              <span>{g.etykieta}</span>
+              <span className={kosm.pigulkaKod} aria-hidden="true">{String(g.liczba).padStart(2, '0')}</span>
+            </a>
+          ))}
+          <a href="#przed-jaka-decyzja" className={kosm.pigulkaSkrotu}>
+            <span>{en ? 'Decision matrix' : 'Tabela decyzji'}</span>
+            <span className={kosm.pigulkaKod} aria-hidden="true">↓</span>
+          </a>
+          <a href="#zanim-wybierzesz" className={kosm.pigulkaSkrotu}>
+            <span>{en ? 'Before switching' : 'Przed zmianą'}</span>
+            <span className={kosm.pigulkaKod} aria-hidden="true">↓</span>
+          </a>
+        </nav>
       </div>
 
       <div className="container" style={{ maxWidth: '960px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1.5rem', paddingBottom: '3rem' }}>
         <div id="lista-porownan" role="region" aria-labelledby="lista-porownan-naglowek" style={{ scrollMarginTop: '110px' }}>
           <h2 id="lista-porownan-naglowek" style={h2Styl}>{t.h2Lista}</h2>
           <div className={styles.siatkaKart}>
-            {lista.map((p) => (
-              <div key={p.slug} className={styles.kartaPorownania}>
+            {lista.map((p, idx) => (
+              <div key={p.slug} id={`porownanie-${p.slug}`} className={styles.kartaPorownania} style={{ scrollMarginTop: '110px' }}>
+                <div className={kosm.kartaPorownaniaKicker} aria-hidden="true">
+                  <span className={kosm.kartaPorownaniaNr}>{String(idx + 1).padStart(2, '0')} / {sumaStr}</span>
+                  <span>{p.kryteria}</span>
+                </div>
                 <h3 className={styles.kartaTytul}>
                   <Link href={`/porownania/${p.slug}`}>{p.nazwaKarty}</Link> <span aria-hidden="true">→</span>
                 </h3>

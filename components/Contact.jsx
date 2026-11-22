@@ -11,6 +11,7 @@ import { BIURO, SIEDZIBA, ETYKIETY, adresLinia } from '@/lib/firma';
 import { track, pageType, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { ENTRY_OFFER, ENTRY_OFFER_PRICE_PLN } from '@/components/EntryOffer';
 import { readAttribution, consentMarketing, SKAD_O_NAS_WIESZ } from '@/lib/attribution';
+import kosm from './KosmetykaSekcji.module.css';
 
 // Wartość zdarzenia generate_lead w GA4: miesięczna wartość pakietu netto
 // w PLN, tak jak w cenniku PL. Wcześniej szły tu kwoty w USD przeliczone
@@ -327,6 +328,19 @@ export default function Contact({ isMainContent = false }) {
 
           <RevealItem>
             <form className="contact-form" method="post" onSubmit={handleSubmit}>
+            <div className={kosm.kontaktStatusNagl} aria-hidden="true">
+              <span className={kosm.kontaktStatusLewa}>
+                <span className={kosm.kontaktStatusKropka} />
+                <span>
+                  {t3(
+                    'ODPOWIEDŹ W 24H · BEZ ZOBOWIĄZAŃ',
+                    'REPLY WITHIN 24H · NO OBLIGATION',
+                    'ANTWORT IN 24 STD. · UNVERBINDLICH'
+                  )}
+                </span>
+              </span>
+              <span className={kosm.kontaktStatusSla}>SLA ≤ 24H</span>
+            </div>
             {/* Obietnica nad polami (ta sama, którą dają reklamy i zdanie pod przyciskiem). */}
             <p className="contact-obietnica">
               <span className="contact-obietnica-kropka" aria-hidden="true" />

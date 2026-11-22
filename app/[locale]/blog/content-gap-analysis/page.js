@@ -25,6 +25,8 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
 import { homeHash } from '@/lib/anchors';
@@ -119,14 +121,18 @@ export default async function ArticleContentGapAnalysis({ params }) {
                 August 15, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Content Gap Analysis: A Practical Guide for Marketing Teams
             </h1>
+            <Byline sciezka="/blog/content-gap-analysis" data="2026-08-15" takzeEn />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox etykieta="Short answer">
+                A content gap analysis compares queries and formats where 3 to 5 SERP competitors rank against your current URL inventory across seven gap types, from missing topics and search intent to AI visibility. Updating existing pages in positions 5 to 15 typically moves rankings within 4 to 8 weeks, while new clusters require 3 to 6 months.
+              </AnswerBox>
               <p className="lead">
                 To identify content gaps you compare what competitors rank for against what you actually have. The analysis returns the topics, pages, and visibility signals you&apos;re missing, then gives you a prioritized list of exactly what to fix. Run it right and you&apos;ll capture organic traffic your competitors are currently taking, convert more of the visitors you already have, and show up in AI-generated answers where your brand is currently invisible.
               </p>
@@ -143,7 +149,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
 
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem' }}>Key Takeaways</h2>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 500, marginBottom: '1rem' }}>Key Takeaways</h2>
               <p>Content strategy analysis of this kind is the highest-ROI SEO activity most marketing teams run too rarely, and the teams that do it quarterly consistently outpace those who treat it as a one-time project.</p>
 
               <div className="table-container">
@@ -595,14 +601,18 @@ function ArticleAnalizaLukContentowych({ locale }) {
                 18 Sierpnia 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Analiza luk contentowych: przewodnik praktyczny
             </h1>
+            <Byline sciezka="/blog/analiza-luk-contentowych" data="2026-08-18" />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox>
+                Analiza luk contentowych zestawia frazy i formaty 3-5 rywali z SERP z inwentarzem Twojej domeny w siedmiu wymiarach - od brakujących tematów i intencji po widoczność w odpowiedziach AI. Rozbudowa istniejących podstron z pozycji 5-15 przynosi ruch zwykle w 4-8 tygodni, natomiast budowa nowych klastrów tematycznych trwa 3-6 miesięcy i wymaga kwartalnych powtórek.
+              </AnswerBox>
               <p className="lead">
                 Analiza luk contentowych polega na porównaniu tego, na co rankuje konkurencja, z tym, co faktycznie masz na stronie. Wynikiem nie jest lista fraz, tylko uporządkowany backlog: które strony zaktualizować, które napisać od zera, a które połączyć albo wycofać.
               </p>
@@ -621,7 +631,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem' }}>Kluczowe wnioski</h2>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 500, marginBottom: '1rem' }}>Kluczowe wnioski</h2>
               <p>Analiza luk contentowych działa wtedy, gdy kończy się backlogiem z właścicielami i metrykami, a nie arkuszem z dwustoma frazami.</p>
 
               <div className="table-container">
@@ -658,7 +668,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <p><strong>Luki na poziomie strony</strong> są subtelniejsze. Strona istnieje i rankuje, ale nie odpowiada na pytania, które pokrywa pierwsza trójka wyników. Naprawa to rozbudowa, nie nowa publikacja.</p>
 
-              <p><strong>Luki intencyjne</strong> są najbardziej kosztowne, bo niewidoczne w danych o frazach. Zapytanie „system CRM dla małych firm" ma intencję transakcyjną. Jeśli rankuje na nie wpis blogowy, a nie strona porównawcza albo produktowa, tracisz konwersje mimo dobrej pozycji.</p>
+              <p><strong>Luki intencyjne</strong> są najbardziej kosztowne, bo niewidoczne w danych o frazach. Zapytanie „system CRM dla małych firm&quot; ma intencję transakcyjną. Jeśli rankuje na nie wpis blogowy, a nie strona porównawcza albo produktowa, tracisz konwersje mimo dobrej pozycji.</p>
 
               <p><strong>Luki jakościowe</strong> to strony poniżej 500 słów, bez linkowania wewnętrznego, z ruchem poniżej 10 sesji miesięcznie. Do tej samej kategorii należą teksty opisujące ten sam temat pod różnymi tytułami - rozbijają autorytet zamiast go kumulować.</p>
 
@@ -690,7 +700,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <p><strong>Agregatory zajmują część pierwszej dziesiątki.</strong> W wielu kategoriach produktowych Allegro i Ceneo są w TOP 10 niezależnie od tego, co zrobisz. Przy wyborze konkurentów to nie są domeny do benchmarkowania - to są stałe elementy krajobrazu. Realnych konkurentów szukaj wśród pozostałych pozycji. Jeśli po odjęciu agregatorów i portali zostaje mniej niż trzy domeny, rozszerz analizę na TOP 20 zamiast obniżać kryteria.</p>
 
-              <p><strong>Fleksja rozbija wolumeny.</strong> „Audyt treści", „audytu treści", „audyty treści" mogą figurować w narzędziach jako osobne frazy o niskim wolumenie, choć Google traktuje je jako jedno zapytanie. Przy filtrowaniu po minimalnym wolumenie łatwo odrzucić klaster, który po zsumowaniu odmian jest wart pracy. Weryfikacja klastrów na SERP-ach, opisana dalej, wychwytuje to od razu.</p>
+              <p><strong>Fleksja rozbija wolumeny.</strong> „Audyt treści&quot;, „audytu treści&quot;, „audyty treści&quot; mogą figurować w narzędziach jako osobne frazy o niskim wolumenie, choć Google traktuje je jako jedno zapytanie. Przy filtrowaniu po minimalnym wolumenie łatwo odrzucić klaster, który po zsumowaniu odmian jest wart pracy. Weryfikacja klastrów na SERP-ach, opisana dalej, wychwytuje to od razu.</p>
 
               <p><strong>Wolumeny bezwzględne są wielokrotnie niższe niż na rynku anglojęzycznym</strong>, a różnica bywa większa w niszach B2B niż w kategoriach konsumenckich. Próg 100 wyszukiwań miesięcznie, typowy dla rynku anglojęzycznego, na polskim rynku odetnie większość wartościowych fraz B2B. Ustawiaj go raczej w okolicach 20-50 i kompensuj wymogiem, żeby rankowało co najmniej dwóch konkurentów.</p>
 
@@ -766,7 +776,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
                   <tbody>
                     <tr><td>Własne frazy i strony</td><td>Search Console: wyświetlenia bez kliknięć, pozycje 5-30, CTR poniżej średniej</td><td>To samo, szybciej, z historią dłuższą niż 16 miesięcy</td></tr>
                     <tr><td>Inwentarz i technika</td><td>Screaming Frog do 500 URL-i bezpłatnie, PageSpeed Insights, raport Core Web Vitals</td><td>Crawl bez limitu, integracja z danymi o ruchu</td></tr>
-                    <tr><td>Frazy konkurencji</td><td>Ręczny przegląd TOP 10 i sekcji „Podobne wyszukiwania"</td><td>Eksport domena-domena, tu płatne narzędzie jest nie do zastąpienia</td></tr>
+                    <tr><td>Frazy konkurencji</td><td>Ręczny przegląd TOP 10 i sekcji „Podobne wyszukiwania&quot;</td><td>Eksport domena-domena, tu płatne narzędzie jest nie do zastąpienia</td></tr>
                     <tr><td>Widoczność w AI</td><td>Prompty wpisywane ręcznie w ChatGPT i Perplexity</td><td>Narzędzia monitorujące cytowania</td></tr>
                   </tbody>
                 </table>

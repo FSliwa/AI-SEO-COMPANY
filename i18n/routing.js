@@ -150,6 +150,10 @@ export const routing = defineRouting({
     '/blog/vwo-vs-optimizely-porownanie': {
       pl: '/blog/vwo-vs-optimizely-porownanie',
       en: '/blog/vwo-vs-optimizely-comparison'
+    },
+    '/blog/reklamy-w-chatgpt': {
+      pl: '/blog/reklamy-w-chatgpt',
+      en: '/blog/chatgpt-ads-vs-organic-geo'
     }
   })
 });

@@ -21,6 +21,8 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
 import { LASTMOD } from '@/lib/lastmod';
@@ -65,14 +67,18 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                 31 Sierpnia 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Wyniki wdrożeń SEO w 2026: dane GSC z pięciu domen
             </h1>
+            <Byline sciezka="/blog/wyniki-wdrozen-seo-2026" data="2026-08-31" />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox>
+                Zestawienie danych z Google Search Console z 2026 roku dla pięciu prowadzonych przez nas domen (Staniax, Madame Thai, STEF-BUD, TQL i własnych projektów) pokazuje realną krzywą wzrostu od zera: pierwsze wyświetlenia pojawiają się po kilkunastu dniach (TQL: 296 wyświetleń w 18 dni), a w 1-3 miesiące rosną do 152-219 kliknięć w B2B i usługach lokalnych.
+              </AnswerBox>
               <p className="lead">
                 Agencje chętnie mówią o wynikach, rzadziej je pokazują. Ten raport zbiera w jednym miejscu dane z Google Search Console dla pięciu domen, nad którymi pracowaliśmy w 2026 roku (trzy domeny klientów i dwa nasze własne projekty: ai-seo-company.pl i ase-bot.live) - z kliknięciami, wyświetleniami i pozycjami, z zaznaczonym oknem pomiaru i z kontekstem startowym każdej z nich. Wszystkie liczby pochodzą z paneli GSC, których zrzuty publikujemy w portfolio; każdą można porównać ze źródłem.
               </p>

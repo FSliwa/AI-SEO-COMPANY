@@ -89,6 +89,140 @@ function historiaDemo(podglad) {
   return { data: new Date(Date.now() - 9 * 864e5).toISOString(), wynik: podglad.wynik - 6, zmiana: 6, kategorie, wydajnoscPorownywalna: true };
 }
 
+function zbudujFallbackFixPack(domena, urlDocelowy, en) {
+  const czysta = String(domena || 'twojafirma.pl').replace(/^www\./i, '');
+  let origin = `https://${domena || czysta}`;
+  try {
+    if (urlDocelowy) origin = new URL(urlDocelowy).origin;
+  } catch {
+    // zostaje domyslny origin
+  }
+  const zrodlowyHost = String(domena || '').toLowerCase().startsWith('www.') ? czysta : `www.${czysta}`;
+  const tytul = en ? `${czysta} - Services and Solutions` : `${czysta} - oferta i usługi`;
+  const opis = en
+    ? `Official website of ${czysta}. Explore our services, case studies and contact details.`
+    : `Oficjalna strona ${czysta}. Sprawdź zakres usług, realizacje i skontaktuj się z nami.`;
+  return {
+    headHtml: [
+      `<title>${tytul}</title>`,
+      `<meta name="description" content="${opis}" />`,
+      '<meta name="viewport" content="width=device-width, initial-scale=1" />',
+      `<link rel="canonical" href="${origin}/" />`,
+      `<meta property="og:title" content="${tytul}" />`,
+      `<meta property="og:description" content="${opis}" />`,
+      `<meta property="og:url" content="${origin}/" />`,
+      '<script type="application/ld+json">',
+      JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', '@id': `${origin}/#organization`, name: czysta, url: `${origin}/` }, null, 2),
+      '</script>',
+    ].join('\n'),
+    robotsTxt: [
+      'User-agent: *',
+      'Allow: /',
+      '',
+      'User-agent: OAI-SearchBot',
+      'Allow: /',
+      '',
+      'User-agent: PerplexityBot',
+      'Allow: /',
+      '',
+      'User-agent: Claude-SearchBot',
+      'Allow: /',
+      '',
+      `Sitemap: ${origin}/sitemap.xml`,
+    ].join('\n'),
+    redirectsNext: [
+      '// next.config.mjs',
+      'export default {',
+      '  async redirects() {',
+      '    return [',
+      '      {',
+      "        source: '/:path*',",
+      `        has: [{ type: 'host', value: '${zrodlowyHost}' }],`,
+      `        destination: '${origin}/:path*',`,
+      '        permanent: true,',
+      '      },',
+      '    ];',
+      '  },',
+      '};',
+    ].join('\n'),
+  };
+}
+
+function wzbogacDemoAudytu(obiekt, zakres, urzadzenie, en) {
+  if (!obiekt) return obiekt;
+  const domena = obiekt.domena || 'przyklad.pl';
+  return {
+    ...obiekt,
+    zakres: obiekt.zakres ?? zakres,
+    urzadzenie: obiekt.urzadzenie ?? urzadzenie,
+    stron: zakres === 'strona' ? 1 : obiekt.stron,
+    cruxPole: obiekt.cruxPole ?? { lcpMs: 2240, inpMs: 158, cls: 0.05 },
+    pikseleTytulu: obiekt.pikseleTytulu ?? 538,
+    tytulPrzekracza580Px: obiekt.tytulPrzekracza580Px ?? false,
+    przeskokNaglowkow: obiekt.przeskokNaglowkow ?? true,
+    fixPack: obiekt.fixPack ?? zbudujFallbackFixPack(domena, obiekt.url, en),
+  };
+}
+
+function pobierzCsvAudytu(w, problemy, kat, wagi, en) {
+  const esc = (v) => {
+    const s = String(v ?? '').replace(/\r?\n/g, ' ');
+    return /[";,]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  const sep = en ? ',' : ';';
+  const nagl = en
+    ? ['Severity', 'Category', 'Issue', 'Affected pages', 'How to fix', 'Sample URLs']
+    : ['Waga', 'Kategoria', 'Problem', 'Liczba podstron', 'Jak naprawic', 'Przykladowe adresy'];
+  const wiersze = [
+    nagl.join(sep),
+    ...problemy.map((p) => [
+      wagi[p.waga] || p.waga,
+      kat[p.kategoria] || p.kategoria,
+      p.tytul,
+      p.liczba ?? 1,
+      p.jakNaprawic,
+      (p.strony || []).join(' | '),
+    ].map(esc).join(sep)),
+  ];
+  const blob = new Blob([`\uFEFF${wiersze.join('\r\n')}`], { type: 'text/csv;charset=utf-8' });
+  const u = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = u;
+  const czysta = String(w.domena || 'strona').replace(/[^a-z0-9.-]/gi, '-');
+  a.download = en ? `seo-audit-${czysta}.csv` : `audyt-seo-${czysta}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(u), 1500);
+}
+
+function zbudujMarkdownDlaProgramisty(w, problemy, kat, wagi, en) {
+  const domena = w.domenaWyswietlana || w.domena;
+  const linie = [
+    en ? `# Technical SEO & AI Readiness Audit: ${domena} (${w.wynik}/100)` : `# Audyt techniczny SEO i AI: ${domena} (${w.wynik}/100)`,
+    '',
+    en
+      ? `- Checked pages: ${w.stron} (${w.zakres === 'strona' ? 'single URL' : 'site crawl'}) · Device: ${w.urzadzenie === 'desktop' ? 'Desktop' : 'Mobile'}`
+      : `- Sprawdzone podstrony: ${w.stron} (${w.zakres === 'strona' ? 'pojedynczy URL' : 'cała witryna'}) · Urządzenie: ${w.urzadzenie === 'desktop' ? 'Komputer' : 'Telefon'}`,
+    '',
+    en ? '## Issues to fix (ordered by priority)' : '## Lista zadań dla programisty (według priorytetu)',
+    '',
+  ];
+  if (problemy.length === 0) {
+    linie.push(en ? '- No issues detected in the checked scope.' : '- Brak wykrytych problemów w sprawdzonym zakresie.');
+  } else {
+    for (const p of problemy) {
+      linie.push(`- [ ] **[${wagi[p.waga] || p.waga} · ${kat[p.kategoria] || p.kategoria}] ${p.tytul}**`);
+      linie.push(`  - ${en ? 'Why' : 'Opis'}: ${p.opis}`);
+      linie.push(`  - ${en ? 'Fix' : 'Naprawa'}: ${p.jakNaprawic}`);
+      if (p.strony?.length) {
+        linie.push(`  - URLs: ${p.strony.slice(0, 8).join(', ')}${p.liczba > p.strony.length ? ` (+${p.liczba - p.strony.length})` : ''}`);
+      }
+    }
+  }
+  return `${linie.join('\n')}\n`;
+}
+
 async function wlaczMonitoring(body) {
   const en = body.lang === 'en';
   if (DEMO) return { ok: true, status: 'oczekuje', wygasa: new Date(Date.now() + 7 * 864e5).toISOString() };
@@ -212,6 +346,13 @@ export default function AudytSeoClient() {
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, historia: null });
   const [filtr, setFiltr] = useState('wszystkie');
   const [adres, setAdres] = useState('');
+  const [zakres, setZakres] = useState('witryna');
+  const [urzadzenie, setUrzadzenie] = useState('mobile');
+  const [zakladkaFix, setZakladkaFix] = useState('headHtml');
+  const [skopiowanoMd, setSkopiowanoMd] = useState(false);
+  const [skopiowanoFix, setSkopiowanoFix] = useState(false);
+  const [skopiowanoBadge, setSkopiowanoBadge] = useState(false);
+  const [bladObrazkaBadge, setBladObrazkaBadge] = useState(false);
   // Powrót do formularza: wynik najpierw się zwija (Zwin), dopiero potem stan wraca do pustego (anim-narzedzia-b).
   const [wychodzi, setWychodzi] = useState(false);
   const [powrot, setPowrot] = useState(false);
@@ -256,14 +397,16 @@ export default function AudytSeoClient() {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const url = adres.trim();
+    setBladObrazkaBadge(false);
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null, historia: null });
     zapiszParametry({ url, wynik: null });
-    track('narzedzie_start', { narzedzie: 'audyt_seo' });
-    const r = await wywolajNarzedzie('audyt_seo', { url, nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' });
+    track('narzedzie_start', { narzedzie: 'audyt_seo', zakres, urzadzenie });
+    const r = await wywolajNarzedzie('audyt_seo', { url, zakres, urzadzenie, nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' });
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
     if (r.id && !DEMO) zapiszParametry({ url, wynik: r.id });
-    track('narzedzie_wynik', { narzedzie: 'audyt_seo', wynik: r.podglad.wynik });
-    setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: odczytajOdblokowane(r.id), historia: r.historia ?? (DEMO ? historiaDemo(r.podglad) : null) });
+    const podgladGotowy = DEMO ? wzbogacDemoAudytu(r.podglad, zakres, urzadzenie, en) : r.podglad;
+    track('narzedzie_wynik', { narzedzie: 'audyt_seo', wynik: podgladGotowy.wynik, zakres, urzadzenie });
+    setStan({ status: 'done', blad: null, id: r.id, podglad: podgladGotowy, pelny: odczytajOdblokowane(r.id), historia: r.historia ?? (DEMO ? historiaDemo(podgladGotowy) : null) });
   }
 
   function wroc() {
@@ -280,6 +423,17 @@ export default function AudytSeoClient() {
   }
 
   const w = stan.pelny ?? stan.podglad;
+  const cruxPole = w?.cruxPole ?? stan.podglad?.cruxPole ?? null;
+  const pikseleTytulu = w?.pikseleTytulu ?? stan.podglad?.pikseleTytulu ?? null;
+  const przeskokNaglowkow = w?.przeskokNaglowkow ?? stan.podglad?.przeskokNaglowkow ?? null;
+  const urzadzenieWyniku = w?.urzadzenie ?? stan.podglad?.urzadzenie ?? urzadzenie;
+  const fixPack = w?.fixPack ?? stan.podglad?.fixPack ?? (w ? zbudujFallbackFixPack(w.domena, w.url, en) : null);
+  const odblokowaneNarzedzia = Boolean(stan.pelny) || (stan.podglad?.zablokowane?.length === 0);
+  const badgeUrl = w ? `${PANEL_API}/badge/seo-score?domain=${encodeURIComponent(w.domena)}&lang=${en ? 'en' : 'pl'}` : '';
+  const stronaAudytuHref = en ? 'https://www.ai-seo-company.pl/en/tools/seo-audit' : 'https://www.ai-seo-company.pl/narzedzia/audyt-seo';
+  const kodHtmlBadge = w
+    ? `<a href="${stronaAudytuHref}?url=${encodeURIComponent(w.domena)}" target="_blank" rel="noopener"><img src="${badgeUrl}" alt="${en ? `Verified SEO Score ${w.wynik}/100 - ${w.domena}` : `Zweryfikowany wynik Audytu SEO ${w.wynik}/100 - ${w.domena}`}" width="236" height="32" /></a>`
+    : '';
   const niesprawdzoneLiczba = Number(w?.niesprawdzoneLiczba ?? stan.podglad?.niesprawdzoneLiczba ?? 0);
   const niesprawdzoneLista = Array.isArray(w?.niesprawdzone) ? w.niesprawdzone : (Array.isArray(stan.podglad?.niesprawdzone) ? stan.podglad.niesprawdzone : []);
   const problemy = stan.pelny ? stan.pelny.problemy : stan.podglad?.problemy ?? [];
@@ -298,14 +452,32 @@ export default function AudytSeoClient() {
       <Zwin otwarte={stan.status !== 'done'} wejscie={powrot} className="r-zwin--karta">
         <form className="narz-formularz" onSubmit={start}>
           <label htmlFor="audyt-url" className="narz-etykieta">{en ? 'Website address' : 'Adres strony'}</label>
-          <div className="narz-bramka-wiersz">
-            <input ref={pole} id="audyt-url" name="url" required maxLength={300} aria-invalid={stan.status === 'error' ? 'true' : undefined} aria-describedby={stan.status === 'error' ? 'audyt-blad' : undefined} value={adres} onChange={(e) => setAdres(e.target.value)} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
+          <input ref={pole} id="audyt-url" name="url" required maxLength={300} aria-invalid={stan.status === 'error' ? 'true' : undefined} aria-describedby={stan.status === 'error' ? 'audyt-blad' : undefined} value={adres} onChange={(e) => setAdres(e.target.value)} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
+          <PrzykladAdresu onWybierz={(a) => { setAdres(a); pole.current?.focus(); }} />
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem 1rem', alignItems: 'center' }}>
+            <div className="narz-filtry" role="group" aria-label={en ? 'Audit scope' : 'Zakres skanowania'} style={{ margin: 0 }}>
+              <button type="button" aria-pressed={zakres === 'witryna'} onClick={() => setZakres('witryna')}>
+                {en ? 'Full site (up to 25 pages)' : 'Cała witryna (do 25 podstron)'}
+              </button>
+              <button type="button" aria-pressed={zakres === 'strona'} onClick={() => setZakres('strona')}>
+                {en ? 'Single URL only' : 'Tylko ten adres URL'}
+              </button>
+            </div>
+            <div className="narz-filtry" role="group" aria-label={en ? 'PageSpeed device' : 'Urządzenie pomiaru'} style={{ margin: 0 }}>
+              <button type="button" aria-pressed={urzadzenie === 'mobile'} onClick={() => setUrzadzenie('mobile')}>
+                {en ? 'Mobile' : 'Telefon (Mobile)'}
+              </button>
+              <button type="button" aria-pressed={urzadzenie === 'desktop'} onClick={() => setUrzadzenie('desktop')}>
+                {en ? 'Desktop' : 'Komputer (Desktop)'}
+              </button>
+            </div>
+          </div>
+          <div>
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_audyt_start">
               {stan.status === 'loading' ? (en ? 'Checking…' : 'Sprawdzam…') : (en ? 'Check your site for free' : 'Sprawdź stronę za darmo')}
             </button>
           </div>
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
-          <PrzykladAdresu onWybierz={(a) => { setAdres(a); pole.current?.focus(); }} />
           <p className="narz-mikro">{en
             ? `No sign-up. Up to ${AUDYT.limitIp} audits per day from one IP address. An audit usually takes 20 to 90 seconds. Data: our AISEOCompanyAudit crawler and Google PageSpeed Insights.`
             : `Bez rejestracji. Do ${AUDYT.limitIp} audytów dziennie z jednego adresu IP. Audyt trwa zwykle 20 do 90 sekund. Dane: nasz robot AISEOCompanyAudit i Google PageSpeed Insights.`}</p>
@@ -376,11 +548,51 @@ export default function AudytSeoClient() {
           {w.wydajnoscZmierzona === false && <p className="narz-psi">{en ? 'The PageSpeed Insights speed measurement was temporarily unavailable, so performance is not included in the score.' : 'Pomiar szybkości z PageSpeed Insights był chwilowo niedostępny, więc wydajność nie wchodzi do oceny.'}</p>}
           {w.psi && (
             <p className="narz-psi">{en
-              ? <>PageSpeed Insights (mobile): performance {w.psi.wydajnosc ?? '-'}, SEO {w.psi.seo ?? '-'}, accessibility {w.psi.dostepnosc ?? '-'}, best practices {w.psi.praktyki ?? '-'}.</>
-              : <>PageSpeed Insights (telefon): wydajność {w.psi.wydajnosc ?? '-'}, SEO {w.psi.seo ?? '-'}, dostępność {w.psi.dostepnosc ?? '-'}, dobre praktyki {w.psi.praktyki ?? '-'}.</>}
+              ? <>PageSpeed Insights ({urzadzenieWyniku === 'desktop' ? 'desktop' : 'mobile'}): performance {w.psi.wydajnosc ?? '-'}, SEO {w.psi.seo ?? '-'}, accessibility {w.psi.dostepnosc ?? '-'}, best practices {w.psi.praktyki ?? '-'}.</>
+              : <>PageSpeed Insights ({urzadzenieWyniku === 'desktop' ? 'komputer' : 'telefon'}): wydajność {w.psi.wydajnosc ?? '-'}, SEO {w.psi.seo ?? '-'}, dostępność {w.psi.dostepnosc ?? '-'}, dobre praktyki {w.psi.praktyki ?? '-'}.</>}
               {w.psi.przebiegi > 1 && w.psi.wydajnoscPomiary?.length > 1
                 ? (en ? ` Performance is the median of ${w.psi.przebiegi} runs (${w.psi.wydajnoscPomiary.join(', ')}).` : ` Wydajność to mediana ${w.psi.przebiegi} pomiarów (${w.psi.wydajnoscPomiary.join(', ')}).`)
                 : w.psi.przebiegi === 1 ? (en ? ' Performance comes from a single run; a single run can vary by about 10 points.' : ' Wydajność pochodzi z jednego pomiaru; pojedynczy pomiar może się różnić o ok. 10 punktów.') : null}</p>
+          )}
+          {cruxPole && (cruxPole.lcpMs != null || cruxPole.inpMs != null || cruxPole.cls != null) && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem 0.75rem', alignItems: 'center', padding: '0.6rem 0.85rem', borderRadius: '12px', background: 'var(--w-papier, #f6f4ef)', fontSize: '0.84rem', fontVariantNumeric: 'tabular-nums' }}>
+              <strong style={{ color: 'var(--w-tusz)' }}>
+                {en ? 'Chrome CrUX field data (28d):' : 'Dane polowe Chrome CrUX (28 dni):'}
+              </strong>
+              {cruxPole.lcpMs != null && (
+                <span style={{ padding: '0.12rem 0.5rem', borderRadius: '999px', fontWeight: 600, background: cruxPole.lcpMs <= 2500 ? 'rgba(4,120,87,0.12)' : cruxPole.lcpMs <= 4000 ? 'rgba(180,83,9,0.13)' : 'rgba(179,38,30,0.13)', color: cruxPole.lcpMs <= 2500 ? '#047857' : cruxPole.lcpMs <= 4000 ? '#b45309' : '#b3261e' }}>
+                  LCP {(cruxPole.lcpMs / 1000).toLocaleString(en ? 'en-US' : 'pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} s
+                </span>
+              )}
+              {cruxPole.inpMs != null && (
+                <span style={{ padding: '0.12rem 0.5rem', borderRadius: '999px', fontWeight: 600, background: cruxPole.inpMs <= 200 ? 'rgba(4,120,87,0.12)' : cruxPole.inpMs <= 500 ? 'rgba(180,83,9,0.13)' : 'rgba(179,38,30,0.13)', color: cruxPole.inpMs <= 200 ? '#047857' : cruxPole.inpMs <= 500 ? '#b45309' : '#b3261e' }}>
+                  INP {Math.round(cruxPole.inpMs)} ms
+                </span>
+              )}
+              {cruxPole.cls != null && (
+                <span style={{ padding: '0.12rem 0.5rem', borderRadius: '999px', fontWeight: 600, background: cruxPole.cls <= 0.1 ? 'rgba(4,120,87,0.12)' : cruxPole.cls <= 0.25 ? 'rgba(180,83,9,0.13)' : 'rgba(179,38,30,0.13)', color: cruxPole.cls <= 0.1 ? '#047857' : cruxPole.cls <= 0.25 ? '#b45309' : '#b3261e' }}>
+                  CLS {Number(cruxPole.cls).toLocaleString(en ? 'en-US' : 'pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </span>
+              )}
+            </div>
+          )}
+          {(pikseleTytulu != null || przeskokNaglowkow != null) && (
+            <p className="narz-psi" style={{ fontVariantNumeric: 'tabular-nums' }}>
+              {pikseleTytulu != null && (
+                <span>
+                  {en
+                    ? `SERP <title> pixel width: ~${pikseleTytulu} px ${pikseleTytulu > 580 ? '(> 580 px - Google may truncate on desktop)' : '(<= 580 px, fits without truncation)'}. `
+                    : `Szerokość <title> w SERP: ~${pikseleTytulu} px ${pikseleTytulu > 580 ? '(> 580 px - Google może uciąć tytuł)' : '(<= 580 px, bez ucięcia)'}. `}
+                </span>
+              )}
+              {przeskokNaglowkow != null && (
+                <span style={{ color: przeskokNaglowkow ? '#b45309' : undefined, fontWeight: przeskokNaglowkow ? 600 : undefined }}>
+                  {przeskokNaglowkow
+                    ? (en ? 'Heading hierarchy: skipped level detected (e.g. H1 -> H3).' : 'Hierarchia nagłówków: wykryto przeskok poziomów (np. H1 -> H3).')
+                    : (en ? 'Heading hierarchy H1-H6: clean (no skipped levels).' : 'Hierarchia nagłówków H1-H6: poprawna (bez przeskoków).')}
+                </span>
+              )}
+            </p>
           )}
 
           <h2 className="narz-h2" ref={naglowekWyniku} tabIndex={-1}>{stan.pelny ? (en ? 'All issues' : 'Wszystkie problemy') : (en ? 'Top issues' : 'Najważniejsze problemy')}</h2>
@@ -421,8 +633,9 @@ export default function AudytSeoClient() {
                 przycisk={en ? 'Show the full audit' : 'Pokaż pełny audyt'}
                 onOdblokowano={(pelny, newsletter, mailOk) => {
                   const email = emailBramki.current;
-                  zapiszOdblokowane(stan.id, pelny);
-                  setStan((s) => ({ ...s, pelny, newsletter, email, mailOk }));
+                  const pelnyGotowy = DEMO ? wzbogacDemoAudytu(pelny, zakres, urzadzenie, en) : pelny;
+                  zapiszOdblokowane(stan.id, pelnyGotowy);
+                  setStan((s) => ({ ...s, pelny: pelnyGotowy, newsletter, email, mailOk }));
                 }}
               />
             </div>
@@ -444,6 +657,149 @@ export default function AudytSeoClient() {
                 }}
               />
               {stan.raportWyslany && stan.mailOk !== false && <Monitoring id={stan.id} email={stan.email} domena={w.domena} en={en} />}
+            </div>
+          )}
+
+          {odblokowaneNarzedzia && (
+            <div style={{ marginTop: '1.1rem', display: 'grid', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', alignItems: 'center' }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    pobierzCsvAudytu(w, problemy, kat, wagi, en);
+                    track('audyt_export_csv', { domena: w.domena, lang: en ? 'en' : 'pl' });
+                  }}
+                  data-cta="audyt_export_csv"
+                >
+                  {en ? 'Download CSV' : 'Pobierz CSV'}
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(zbudujMarkdownDlaProgramisty(w, problemy, kat, wagi, en));
+                      setSkopiowanoMd(true);
+                      setTimeout(() => setSkopiowanoMd(false), 2600);
+                      track('audyt_copy_markdown', { domena: w.domena, lang: en ? 'en' : 'pl' });
+                    } catch {
+                      // brak schowka
+                    }
+                  }}
+                  data-cta="audyt_copy_markdown"
+                >
+                  {skopiowanoMd
+                    ? (en ? 'Copied Markdown!' : 'Skopiowano Markdown!')
+                    : (en ? 'Copy Markdown for developer / Cursor' : 'Kopiuj Markdown dla programisty / Cursor')}
+                </button>
+              </div>
+
+              {fixPack && (
+                <details style={{ border: '1px solid rgba(15,23,42,0.12)', borderRadius: '16px', padding: '0.85rem 1rem', background: 'var(--w-papier, #f6f4ef)' }}>
+                  <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--w-tusz)' }}>
+                    {en ? 'Copy-Paste Fix Pack (ready snippets for your site)' : 'Copy-Paste Fix Pack (gotowe bloki kodu do wdrożenia)'}
+                  </summary>
+                  <div style={{ marginTop: '0.75rem', display: 'grid', gap: '0.6rem' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                      <div className="narz-filtry" role="group" aria-label="Fix Pack" style={{ margin: 0 }}>
+                        {[
+                          ['headHtml', '<head> + JSON-LD'],
+                          ['robotsTxt', 'robots.txt'],
+                          ['redirectsNext', 'Next.js Redirects'],
+                        ].map(([klucz, etykietaZakl]) => (
+                          <button
+                            key={klucz}
+                            type="button"
+                            aria-pressed={zakladkaFix === klucz}
+                            onClick={() => { setZakladkaFix(klucz); setSkopiowanoFix(false); }}
+                          >
+                            {etykietaZakl}
+                          </button>
+                        ))}
+                      </div>
+                      <button
+                        type="button"
+                        className="narz-link"
+                        onClick={async () => {
+                          const kod = fixPack[zakladkaFix] || '';
+                          if (!kod) return;
+                          try {
+                            await navigator.clipboard.writeText(kod);
+                            setSkopiowanoFix(true);
+                            setTimeout(() => setSkopiowanoFix(false), 2500);
+                          } catch {
+                            // brak schowka
+                          }
+                        }}
+                      >
+                        {skopiowanoFix ? (en ? 'Copied!' : 'Skopiowano!') : (en ? 'Copy code' : 'Kopiuj kod')}
+                      </button>
+                    </div>
+                    <pre style={{ margin: 0, padding: '0.8rem 0.95rem', borderRadius: '12px', background: '#0f172a', color: '#f8fafc', fontSize: '0.78rem', lineHeight: 1.5, overflowX: 'auto', fontFamily: 'var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace)' }}>
+                      <code>{fixPack[zakladkaFix] || ''}</code>
+                    </pre>
+                  </div>
+                </details>
+              )}
+            </div>
+          )}
+
+          {w.wynik >= 80 && (
+            <div className="narz-bramka" style={{ marginTop: '1.25rem', fontVariantNumeric: 'tabular-nums' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
+                <div>
+                  <p className="narz-bramka-tytul" style={{ margin: 0 }}>
+                    {en ? 'Verified SEO Audit Score' : 'Zweryfikowany wynik Audytu SEO'}
+                  </p>
+                  <p className="narz-bramka-opis" style={{ margin: '0.25rem 0 0' }}>
+                    {en
+                      ? `Your domain scored ${w.wynik}/100. Embed this live SVG badge in your footer or README.`
+                      : `Twoja domena uzyskała ${w.wynik}/100. Możesz osadzić odznakę SVG w stopce strony lub README.`}
+                  </p>
+                </div>
+                {!DEMO && !bladObrazkaBadge ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={badgeUrl}
+                    alt={en ? `Verified SEO Score ${w.wynik}/100` : `Zweryfikowany wynik Audytu SEO ${w.wynik}/100`}
+                    width={236}
+                    height={32}
+                    onError={() => setBladObrazkaBadge(true)}
+                    style={{ display: 'block', height: '32px', width: 'auto' }}
+                  />
+                ) : (
+                  <svg width="236" height="32" viewBox="0 0 236 32" role="img" aria-label={`SEO Score ${w.wynik}/100`} style={{ flexShrink: 0 }}>
+                    <rect width="236" height="32" rx="8" fill="#101935" />
+                    <rect x="152" width="84" height="32" rx="8" fill="#047857" />
+                    <rect x="152" width="8" height="32" fill="#047857" />
+                    <text x="12" y="20" fill="#ffffff" fontSize="11.5" fontWeight="600" fontFamily="system-ui, sans-serif">AI SEO Audit</text>
+                    <text x="194" y="20" textAnchor="middle" fill="#ffffff" fontSize="12" fontWeight="700" fontFamily="system-ui, sans-serif">{`${w.wynik}/100`}</text>
+                  </svg>
+                )}
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', alignItems: 'center', marginTop: '0.55rem' }}>
+                <code style={{ flex: '1 1 260px', padding: '0.45rem 0.65rem', borderRadius: '8px', background: '#ffffff', border: '1px solid rgba(15,23,42,0.12)', fontSize: '0.74rem', fontFamily: 'var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace)', overflowX: 'auto', whiteSpace: 'nowrap' }}>
+                  {kodHtmlBadge}
+                </code>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(kodHtmlBadge);
+                      setSkopiowanoBadge(true);
+                      setTimeout(() => setSkopiowanoBadge(false), 2500);
+                      track('audyt_badge_copy', { domena: w.domena, wynik: w.wynik });
+                    } catch {
+                      // brak schowka
+                    }
+                  }}
+                  data-cta="audyt_badge_copy"
+                >
+                  {skopiowanoBadge ? (en ? 'Copied!' : 'Skopiowano!') : (en ? 'Copy badge HTML' : 'Kopiuj kod odznaki')}
+                </button>
+              </div>
             </div>
           )}
 

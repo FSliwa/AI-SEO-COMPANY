@@ -28,6 +28,7 @@ import Byline from '@/components/Byline';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
@@ -70,7 +71,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
                 August 26, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Technical SEO Audit Checklist for Digital Marketers
             </h1>
             <Byline sciezka="/blog/audyt-techniczny-seo" takzeEn data={LASTMOD['https://www.ai-seo-company.pl/en/blog/technical-seo-audit-checklist']} style={{ margin: '0 0 1.5rem' }} />
@@ -79,8 +80,11 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox etykieta="Short answer">
+                A technical SEO audit pairs a full desktop crawl (such as Screaming Frog) with 16 months of Google Search Console data to eliminate crawl and indexing blockers before optimizing Core Web Vitals (LCP up to 2.5 s, INP up to 200 ms, CLS up to 0.1) and structured data, scoring every fix with binary thresholds and ICE.
+              </AnswerBox>
               <p className="lead">
-                A technical SEO audit finds and ranks the crawl, indexing, performance, and structured-data issues blocking a site's visibility, then tells you which one to fix first. If you do nothing else today, run a full crawl alongside a Google Search Console check. That combination surfaces most blockers fast, whether it's a Core Web Vitals failure, a rogue robots.txt rule, or an XML sitemap full of dead URLs.
+                A technical SEO audit finds and ranks the crawl, indexing, performance, and structured-data issues blocking a site&apos;s visibility, then tells you which one to fix first. If you do nothing else today, run a full crawl alongside a Google Search Console check. That combination surfaces most blockers fast, whether it&apos;s a Core Web Vitals failure, a rogue robots.txt rule, or an XML sitemap full of dead URLs.
               </p>
 
               <ul>
@@ -92,7 +96,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <p>That last point is the one most audits get wrong, and it is the reason this guide runs in the order it does.</p>
 
               <h2 id="key-takeaways">Key Takeaways</h2>
-              <p>A website SEO audit checklist only pays off when indexing and crawl issues get fixed before performance work begins, since Google can't rank a page it can't see.</p>
+              <p>A website SEO audit checklist only pays off when indexing and crawl issues get fixed before performance work begins, since Google can&apos;t rank a page it can&apos;t see.</p>
 
               <div className="table-container">
                 <table>
@@ -113,7 +117,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
                     </tr>
                     <tr>
                       <td>Score with ICE, not gut feel</td>
-                      <td>Impact × Confidence × Ease, each on a 1-10 scale, decides the order - not the tool's default sort.</td>
+                      <td>Impact × Confidence × Ease, each on a 1-10 scale, decides the order - not the tool&apos;s default sort.</td>
                     </tr>
                     <tr>
                       <td>Know the actual thresholds</td>
@@ -150,8 +154,8 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
 
               <p>One more layer belongs on this list now: AI search readiness. That means checking whether AI crawlers can reach your content, whether critical text is delivered as HTML rather than client-side JavaScript, and whether your pages are structured so an answer engine can extract and attribute them.</p>
 
-              <h2 id="pass-criteria">Binary Pass Criteria, So Findings Aren't a Matter of Opinion</h2>
-              <p>A technical SEO checklist is only useful when every item has a threshold. Most tell you to "check redirects" and leave the judgement to you. Give each check a number instead - that turns a site audit checklist into something two people can score identically, and makes quarter-on-quarter comparison mean something.</p>
+              <h2 id="pass-criteria">Binary Pass Criteria, So Findings Aren&apos;t a Matter of Opinion</h2>
+              <p>A technical SEO checklist is only useful when every item has a threshold. Most tell you to &quot;check redirects&quot; and leave the judgement to you. Give each check a number instead - that turns a site audit checklist into something two people can score identically, and makes quarter-on-quarter comparison mean something.</p>
 
               <div className="table-container">
                 <table>
@@ -217,7 +221,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <p>Server response time deserves a note. It sits at the top of this table because it multiplies through everything else: a slow origin caps LCP, throttles crawl rate, and drags conversion. It is also the single check most audits skip, because crawlers report it as a number rather than as an error.</p>
 
               <h3>The Core Web Vitals thresholds, precisely</h3>
-              <p>A website performance audit starts with three numbers, not with a Lighthouse score. Vague advice to "improve speed" is why this work stalls. The three metrics and their pass thresholds are:</p>
+              <p>A website performance audit starts with three numbers, not with a Lighthouse score. Vague advice to &quot;improve speed&quot; is why this work stalls. The three metrics and their pass thresholds are:</p>
 
               <div className="table-container">
                 <table>
@@ -258,7 +262,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <p><strong>Pro Tip:</strong> <em>Check robots.txt for accidental blocks on AI crawlers such as GPTBot, OAI-SearchBot and Claude-SearchBot. Plenty of sites block these by default and never notice. Blocking them can be a deliberate business decision - it should never be an accident of configuration.</em></p>
 
               <h2 id="workflow">How Does the Audit Workflow Run Step by Step?</h2>
-              <p>This is how to perform a technical SEO audit end to end. The SEO audit steps below run in this order for a reason: audits should confirm that Google can reach a page before anyone optimises how fast it loads. Seoxpert's audit framework warns against the reverse order for good reason: performance work on a noindexed page produces nothing. Follow the sequence.</p>
+              <p>This is how to perform a technical SEO audit end to end. The SEO audit steps below run in this order for a reason: audits should confirm that Google can reach a page before anyone optimises how fast it loads. Seoxpert&apos;s audit framework warns against the reverse order for good reason: performance work on a noindexed page produces nothing. Follow the sequence.</p>
 
               <ol>
                 <li><strong>Crawl and sample.</strong> Run a full site crawl supported by Search Console data and server logs. Deliverable: a crawl inventory spreadsheet with every URL, its status, canonical and indexability.</li>
@@ -274,7 +278,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <p>No single tool covers a full SEO technical analysis, so you combine outputs by design rather than by accident.</p>
 
               <ul>
-                <li><strong>A desktop crawler</strong> for discovery. It should flag JS-rendering issues, since a lot of modern frameworks hide content from bots that don't execute scripts.</li>
+                <li><strong>A desktop crawler</strong> for discovery. It should flag JS-rendering issues, since a lot of modern frameworks hide content from bots that don&apos;t execute scripts.</li>
                 <li><strong>Search Console and Bing Webmaster Tools</strong> for indexation status and crawl errors straight from the source. Search Console retains 16 months, which is the minimum you need to compare a period against the same period last year.</li>
                 <li><strong>Lighthouse or PageSpeed Insights</strong> for debugging, paired with the Core Web Vitals report or CrUX for the numbers you actually report.</li>
                 <li><strong>Server log analysis</strong> to see how bots behave rather than how you assume they behave, and to catch orphan pages crawlers never visit. Quarterly is enough for most sites.</li>
@@ -290,7 +294,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <p>Multiply the three. Sort descending, take as many items as the quarter realistically absorbs, and review the rest next quarter - anything that has not been picked up in two consecutive quarters is telling you its real score was lower than it looked.</p>
               <p>Present each item to non-technical stakeholders with an expected outcome, a time estimate, and the risk of leaving it alone. That framing gets budget approved faster than a raw list of errors ever will.</p>
 
-              <p>Pro Tip: <em>If a stakeholder asks "what happens if we don't fix this," have a one-line answer ready for every top-tier item before the meeting starts.</em></p>
+              <p>Pro Tip: <em>If a stakeholder asks &quot;what happens if we don&apos;t fix this,&quot; have a one-line answer ready for every top-tier item before the meeting starts.</em></p>
 
               <h2 id="reporting-cadence">How Should You Report Results and Set Audit Cadence?</h2>
               <p>A report earns its keep when it reads as an SEO health assessment over time, not as a snapshot. Track indexable page counts, coverage errors, the LCP/INP/CLS distribution, crawl errors, redirect chains, and structured-data errors.</p>
@@ -335,7 +339,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
 
               <h2 id="faq">Frequently Asked Questions</h2>
 
-              <h3>We're migrating to a new domain. When should we audit?</h3>
+              <h3>We&apos;re migrating to a new domain. When should we audit?</h3>
               <p>Twice: once on the staging environment before launch, to catch noindex tags and blocks that would otherwise ship to production, and again daily for the first four weeks after. A drop of 10-20% for two to six weeks is common and not by itself a sign of failure. No recovery after eight weeks means something is wrong with the redirect map or index coverage, and that is when you go looking rather than waiting.{hrefJesliOpublikowana('/narzedzia/checklista-migracji-strony') && <> Every step is in our <Link href="/narzedzia/checklista-migracji-strony">website migration checklist</Link>.</>}</p>
 
               <h3>How long does a site audit take?</h3>
@@ -344,7 +348,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
               <h3>How often should I re-audit?</h3>
               <p>Lightweight crawls weekly, a full audit quarterly, and an extra comparison crawl within 48 hours of any major deploy, redesign, or migration.</p>
 
-              <h3>What's the difference between an on page SEO checklist and a technical audit checklist?</h3>
+              <h3>What&apos;s the difference between an on page SEO checklist and a technical audit checklist?</h3>
               <p>An on page SEO checklist covers content elements - titles, headings, keyword coverage. A technical audit covers crawlability, indexing, rendering, and infrastructure, which content-level fixes cannot touch.</p>
 
               <h3>Do I need both an automated crawler and manual checks?</h3>
@@ -435,7 +439,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
                 26 Sierpnia 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Audyt techniczny SEO: checklista z progami liczbowymi
             </h1>
             <Byline sciezka="/blog/audyt-techniczny-seo" data={LASTMOD['https://www.ai-seo-company.pl/blog/audyt-techniczny-seo']} style={{ margin: '0 0 1.5rem' }} />
@@ -444,6 +448,9 @@ function ArtykulAudytTechnicznySeo({ locale }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox>
+                Audyt techniczny SEO łączy pełny skan crawlerem (np. Screaming Frog) z 16-miesięcznymi danymi z Google Search Console, aby najpierw usunąć blokady indeksacji w robots.txt, noindex i canonicalach, a dopiero potem poprawiać Core Web Vitals (LCP do 2,5 s, INP do 200 ms, CLS do 0,1) oraz schema według progów liczbowych i priorytetyzacji ICE.
+              </AnswerBox>
               <p className="lead">
                 Audyt techniczny SEO znajduje i porządkuje problemy z crawlowaniem, indeksacją, wydajnością i danymi strukturalnymi, które blokują widoczność strony - a potem mówi, co naprawić najpierw. Jeśli masz dziś zrobić tylko jedną rzecz: uruchom pełny crawl i zestaw go z danymi z Google Search Console. Ta para wyłapuje większość blokerów szybko, niezależnie od tego, czy problemem jest Core Web Vitals, błędna reguła w robots.txt, czy sitemapa pełna martwych adresów.
               </p>
@@ -667,7 +674,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
               </ul>
 
               <p>Naprawę uznawaj za zakończoną po potwierdzeniu w Search Console i w danych polowych - zaliczony test laboratoryjny to nie to samo, co odczuwalna zmiana u realnych użytkowników.</p>
-              <p>Rytm: trzy cykle pracują razem. <strong>Lekki crawl co tydzień</strong> - regresja pokazuje się jako skok liczby problemów, a nie jako spadek ruchu. <strong>Pełny audyt co kwartał</strong>, razem z logami. <strong>Crawl porównawczy do 48 godzin po każdym większym wdrożeniu</strong> - większość katastrof SEO to niezamierzone skutki release'ów, wykryte za późno.</p>
+              <p>Rytm: trzy cykle pracują razem. <strong>Lekki crawl co tydzień</strong> - regresja pokazuje się jako skok liczby problemów, a nie jako spadek ruchu. <strong>Pełny audyt co kwartał</strong>, razem z logami. <strong>Crawl porównawczy do 48 godzin po każdym większym wdrożeniu</strong> - większość katastrof SEO to niezamierzone skutki release&apos;ów, wykryte za późno.</p>
               <p>Kadencja łapie regresje. Zapobieganie im to osobny ruch: wpisz SEO do <strong>definition of done</strong> dla zmian frontendowych i infrastrukturalnych. Cztery warunki, każdy testowalny przed wypuszczeniem zmiany - kody 200/301 zgodne z intencją, meta robots i canonical bez nieintencjonalnych zmian, kluczowa treść obecna w wyrenderowanym DOM, Core Web Vitals w ustalonym z deweloperami budżecie wydajności. Release, który nie przechodzi któregokolwiek z czterech, nie wychodzi. To jedno ustalenie usuwa więcej znalezisk audytowych niż jakikolwiek harmonogram crawli.</p>
 
               <h2 id="najszybsze-wygrane">Najszybsze wygrane audytu technicznego</h2>

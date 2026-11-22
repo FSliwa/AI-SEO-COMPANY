@@ -50,17 +50,71 @@ const INTERAKTIVE_TOOLS = [
     href: '/de/tools/ki-crawler-robots-txt-pruefen',
     ikona: 'llms',
     nazwa: 'KI-Crawler & robots.txt Prüfer',
-    opis: 'Vergleicht Ihre robots.txt-Regeln mit der echten HTTP-Antwort Ihrer Server-Firewall für 12 KI-Bots, misst die SSR-Content-Parität ohne JavaScript und generiert eine saubere robots.txt.',
-    sofort: 'Komplette 12-Bot-Matrix (inkl. 403-WAF-Erkennung), SSR-Paritätswert, 1-Klick robots.txt-Generator und einbettbares SVG-Prüfsiegel.',
+    opis: 'Vergleicht Ihre robots.txt-Regeln und X-Robots-Tag-Header mit der echten HTTP-Antwort Ihrer Server-Firewall für 15 KI-Bots, misst die SSR-Content-Parität und generiert eine saubere robots.txt.',
+    sofort: 'Komplette 15-Bot-Matrix (inkl. 403-WAF-Erkennung), SSR-Textvorschau, 1-Klick robots.txt-Generator und einbettbares SVG-Prüfsiegel.',
     email: null,
   },
   {
     id: 'core-web-vitals-vergleich',
     href: '/de/tools/core-web-vitals-vergleich',
-    ikona: 'autorytet',
+    ikona: 'bolt',
     nazwa: 'Core Web Vitals Test & Konkurrenz-Vergleich',
     opis: 'Stellt Ihre echten mobilen 28-Tage-CrUX-Ladezeiten (LCP, INP, CLS, TTFB) und Ihren CMS-Plugin-Ballast einem Wettbewerber sowie einer Next.js-SSR-Architektur gegenüber.',
-    sofort: '3-Spalten-Vergleichstabelle, CMS-Röntgen, Live-Rechner für entgangene mobile Anfragen in Euro und 24-Monats-TCO-Vergleich.',
+    sofort: '3-Spalten-Vergleichstabelle mit CrUX-Verteilung, CMS-Röntgen, Live-Rechner für entgangene Anfragen in Euro und 24-Monats-TCO-Vergleich.',
+    email: null,
+  },
+  {
+    id: 'website-relaunch-mockup',
+    href: '/de/tools/website-relaunch-mockup',
+    ikona: 'makieta',
+    nazwa: 'Website Relaunch Mockup mit KI',
+    opis: 'Entwirft in 1 bis 3 Minuten aus den echten Inhalten Ihrer bestehenden Website einen neuen Startseiten-Entwurf für Desktop und Mobilgerät ohne erfundene Zahlen.',
+    sofort: 'Screenshot Ihrer aktuellen Startseite direkt neben dem ersten Bildschirm des neuen Entwurfs.',
+    email: 'Komplettes Mockup (4-6 Sektionen plus Footer) für Desktop und Mobilgerät mit 60-Tage-Link.',
+  },
+  {
+    id: 'geo-zitierbarkeit-pruefen',
+    href: '/de/tools/geo-zitierbarkeit-pruefen',
+    ikona: 'ai',
+    nazwa: 'GEO-Zitierbarkeit & Antwortblock-Prüfer',
+    opis: 'Zerlegt jede Unterseite entlang der H2-/H3-Überschriften in RAG-Antwortblöcke und bewertet sie nach 6 deterministischen Kriterien für AI Overviews und ChatGPT.',
+    sofort: 'Punktzahl 0-100, 6 RAG-Kriterien, Vorschau des wahrscheinlichsten KI-Zitats und 1:1-Wettbewerbsvergleich.',
+    email: null,
+  },
+  {
+    id: 'weiterleitungen-hreflang-pruefen',
+    href: '/de/tools/weiterleitungen-hreflang-pruefen',
+    ikona: 'strzalka',
+    nazwa: '301-Weiterleitungen, Canonical & hreflang Prüfer',
+    opis: 'Testet alle 4 Host-Varianten (http, https, www) auf Weiterleitungsketten, gleicht das Canonical-Tag ab und prüft die gegenseitige hreflang-Verlinkung.',
+    sofort: '4-Varianten-Kettentabelle, hreflang-Matrix und kopierfertige Regeln für Next.js, Nginx, Apache und Cloudflare.',
+    email: null,
+  },
+  {
+    id: 'indexnow-generator-bing-chatgpt-test',
+    href: '/de/tools/indexnow-generator-bing-chatgpt-test',
+    ikona: 'bolt',
+    nazwa: 'IndexNow Generator, lastmod & Bing-KI-Prüfer',
+    opis: 'Prüft den Live-Zugriff von Bingbot und OAI-SearchBot, erkennt künstlich identische lastmod-Zeitstempel in der Sitemap und erstellt einen fertigen IndexNow-Schlüssel.',
+    sofort: 'Bot-Zugriffsstatus, Sitemap-lastmod-Diagnose sowie IndexNow-Schlüssel (.txt-Download, curl & GitHub Action).',
+    email: null,
+  },
+  {
+    id: 'entity-graph-json-ld-validator',
+    href: '/de/tools/entity-graph-json-ld-validator',
+    ikona: 'autorytet',
+    nazwa: 'JSON-LD Entitäts-Graph Validator & @graph Generator',
+    opis: 'Scannt Startseite, Über-uns und Impressum, zeichnet den Schema.org-@graph als interaktives SVG und prüft @id-Anker, USt-IdNr./HRB sowie sameAs-Profile.',
+    sofort: 'Interaktives SVG-Entitätsdiagramm, Lücken-Checkliste und einheitliche @graph-JSON-LD-Vorlage zum Kopieren.',
+    email: null,
+  },
+  {
+    id: 'lokales-seo-nap-qr-generator',
+    href: '/de/tools/lokales-seo-nap-qr-generator',
+    ikona: 'checklista',
+    nazwa: 'Lokales SEO: NAP-Prüfer & Bewertungs-QR-Generator',
+    opis: 'Vergleicht sichtbare Kontaktdaten im HTML mit LocalBusiness-JSON-LD, berechnet fehlende 5★-Rezensionen bis zum Marktführer und erzeugt einen unbegrenzten QR-Code.',
+    sofort: 'NAP-Abgleichtabelle, Live-Bewertungsrechner und druckfertiger Google-Bewertungs-QR-Code als SVG und PNG.',
     email: null,
   },
   {
@@ -121,7 +175,37 @@ const VORLAGEN_DE = [
     id: 'schema-markup-beispiele',
     href: '/de/tools/schema-markup-beispiele',
     nazwa: 'Schema Markup Beispiele (7 JSON-LD Vorlagen)',
-    opis: 'Sieben saubere JSON-LD-Vorlagen (Organization, LocalBusiness, WebSite, BreadcrumbList, Article, Person, Product) zum direkten Kopieren inklusive PDF-Leitfaden.',
+    opis: 'Sieben saubere JSON-LD-Vorlagen (Organization, LocalBusiness, WebSite, BreadcrumbList, Article, Person, Product) zum direkten Kopieren inklusive Live-Firmendaten-Generator und PDF.',
+  },
+  {
+    id: 'seo-report-vorlage',
+    href: '/de/tools/seo-report-vorlage',
+    nazwa: 'SEO Report Vorlage (Monatsbericht als PDF)',
+    opis: 'Sechs strukturierte Berichtsblöcke mit organischen Anfragen, Non-Brand-Klicks aus der Search Console, KI-Sichtbarkeit und Maßnahmenprotokoll statt leerer Diagramme.',
+  },
+  {
+    id: 'wettbewerbsanalyse-vorlage',
+    href: '/de/tools/wettbewerbsanalyse-vorlage',
+    nazwa: 'SEO Wettbewerbsanalyse Vorlage (5 Wettbewerber)',
+    opis: 'Praxisnahes Bewertungsraster (0-2 Punkte) für Google-Rankings, Maps, KI-Antworten, Inhalte, Technik und Autorität Ihrer 5 wichtigsten Konkurrenten als PDF.',
+  },
+  {
+    id: 'seo-strategie-vorlage',
+    href: '/de/tools/seo-strategie-vorlage',
+    nazwa: 'SEO Strategie Vorlage (12-Monats-Plan)',
+    opis: 'Kompletter Jahresplan auf sechs Arbeitsblättern: Geschäftsziele, Keyword-Cluster, 90-Tage-Sprints, KI-Sichtbarkeit, Ressourcen und Budgetplanung als PDF.',
+  },
+  {
+    id: 'website-relaunch-checkliste',
+    href: '/de/tools/website-relaunch-checkliste',
+    nazwa: 'Website Relaunch Checkliste für SEO',
+    opis: 'Schritt-für-Schritt-Prüfliste vor, am und nach dem Go-Live inklusive 301-Weiterleitungstabelle, Staging-Schutz und Search-Console-Abnahme ohne Sichtbarkeitsverlust.',
+  },
+  {
+    id: 'seo-vertrag-checkliste',
+    href: '/de/tools/seo-vertrag-checkliste',
+    nazwa: 'SEO Vertrag Checkliste (12 Klauseln)',
+    opis: 'Orientierungs-Checkliste für Auftraggeber vor Vertragsabschluss: 1-Monats-Kündigung, Eigentum an Google-Konten, dauerhafte Text- und Linkrechte sowie DSGVO/AVV.',
   },
 ];
 
@@ -129,7 +213,7 @@ const FAQ_HUB_DE = [
   {
     id: 'sind-alle-tools-wirklich-kostenlos',
     question: 'Sind alle SEO- und KI-Tools auf dieser Seite dauerhaft kostenlos?',
-    answer: `Ja. Alle 7 Online-Tools und 5 Vorlagen lassen sich ohne Registrierung und ohne Bezahlschranke nutzen. Faire Tageslimits pro IP-Adresse schützen lediglich vor automatisiertem Missbrauch und API-Kosten (z. B. ${AUDYT.limitIp} SEO-Audits, ${WIDOCZNOSC.limitIp} Markenprüfungen in den KI-Modellen und ${AUTORYTET.limitIp} Domains im Authority Checker pro Tag). Der Verlustrechner rechnet vollständig lokal in Ihrem Browser.`,
+    answer: `Ja. Alle ${INTERAKTIVE_TOOLS.length} Online-Tools und ${VORLAGEN_DE.length} Vorlagen lassen sich ohne Registrierung und ohne Bezahlschranke nutzen. Faire Tageslimits pro IP-Adresse schützen lediglich vor automatisiertem Missbrauch und API-Kosten (z. B. ${AUDYT.limitIp} SEO-Audits, ${WIDOCZNOSC.limitIp} Markenprüfungen in den KI-Modellen und ${AUTORYTET.limitIp} Domains im Authority Checker pro Tag). Der Verlustrechner rechnet vollständig lokal in Ihrem Browser.`,
   },
   {
     id: 'brauche-ich-eine-email-adresse',
@@ -262,9 +346,21 @@ export function ToolsHubDe() {
             <h1 style={s.h1}>{h1}</h1>
           </div>
 
-          <p className={st.lead} style={{ ...s.lead, margin: '0 auto 1.5rem' }}>
+          <p className={st.lead} style={{ ...s.lead, margin: '0 auto 1.1rem' }}>
             Geben Sie oben Ihre Domain für den schnellen SEO-Audit nach {AUDYT.regul} Regeln ein oder wählen Sie unten eines unserer {INTERAKTIVE_TOOLS.length} interaktiven Analyse-Tools und {VORLAGEN_DE.length} praxiserprobten SEO-Vorlagen.
           </p>
+
+          <nav aria-label="Schnellauswahl" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.45rem', margin: '0 auto 1.6rem' }}>
+            {[
+              { href: '#interaktive-tools', label: `Online-Tools (${INTERAKTIVE_TOOLS.length})` },
+              { href: '#vorlagen', label: `PDF-Vorlagen (${VORLAGEN_DE.length})` },
+              { href: '#pytania', label: 'FAQ' },
+            ].map((item) => (
+              <a key={item.href} href={item.href} style={{ display: 'inline-flex', alignItems: 'center', padding: '0.38rem 0.85rem', borderRadius: '999px', border: '1px solid var(--w-linia, rgba(30,30,30,0.12))', background: 'var(--w-karta, #fffcf8)', color: 'var(--w-tusz)', fontFamily: 'var(--w-mono)', fontSize: '0.78rem', textDecoration: 'none', fontVariantNumeric: 'tabular-nums' }}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
           <AudytSeoClientDe />
           <p style={{ ...s.przypis, textAlign: 'center', marginTop: '0.75rem' }}>

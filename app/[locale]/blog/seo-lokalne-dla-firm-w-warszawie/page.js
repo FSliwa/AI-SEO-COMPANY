@@ -124,7 +124,7 @@ export default async function ArticleLokalnePage({ params }) {
                 {dataPubl.label}
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Local SEO for Companies | 2026 Guide
             </h1>
             <Byline sciezka={KLUCZ_LOKALNE} takzeEn />
@@ -201,7 +201,7 @@ export default async function ArticleLokalnePage({ params }) {
                 renders, so this is not a second H1 on the page - do not demote it. */}
               <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
+              fontWeight: 500, 
               color: 'var(--w-tusz)', 
               marginBottom: '1.5rem', 
               lineHeight: 1.1,

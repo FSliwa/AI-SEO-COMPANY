@@ -25,6 +25,8 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
 
@@ -68,17 +70,21 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
                 {dataPubl.label}
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Convert More Customers: 5 Brand Storytelling Patterns for B2B and SMEs
             </h1>
+            <Byline sciezka="/blog/brand-storytelling-patterns" data={dataPubl.iso} takzeEn />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox etykieta="Short answer">
+                Brand storytelling replaces disconnected feature lists with a repeatable narrative built on four pillars: People, Places, Purpose, and Plot, casting the customer as hero and your company as guide. Most B2B firms and SMEs should start with two proven patterns - founder and functional stories - written as one 200-to-300-word core narrative adapted across channels.
+              </AnswerBox>
 
               <p className="lead">
-                Brand storytelling is the practice of connecting a company's identity, purpose, and customer proof through a recurring narrative rather than a list of features. The case for it rests on how memory works: give someone a causal sequence and they hold on to it far longer than a set of disconnected claims. This guide gives you the framework, the five patterns, and the metrics to test whether yours is actually working.
+                Brand storytelling is the practice of connecting a company&apos;s identity, purpose, and customer proof through a recurring narrative rather than a list of features. The case for it rests on how memory works: give someone a causal sequence and they hold on to it far longer than a set of disconnected claims. This guide gives you the framework, the five patterns, and the metrics to test whether yours is actually working.
               </p>
 
               <h2 id="key-takeaways">Key Takeaways</h2>
@@ -94,7 +100,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
                   <tbody>
                     <tr>
                       <td>Start with two of the five patterns</td>
-                      <td>Functional and founder stories run on material you already have. Underdog and lifestyle need conditions most SMEs don't meet yet.</td>
+                      <td>Functional and founder stories run on material you already have. Underdog and lifestyle need conditions most SMEs don&apos;t meet yet.</td>
                     </tr>
                     <tr>
                       <td>One core narrative, many lengths</td>
@@ -106,7 +112,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
                     </tr>
                     <tr>
                       <td>Four pillars keep it honest</td>
-                      <td>People, Places, Purpose, Plot - if you can't name the conflict, there is no story yet.</td>
+                      <td>People, Places, Purpose, Plot - if you can&apos;t name the conflict, there is no story yet.</td>
                     </tr>
                     <tr>
                       <td>The customer is the hero</td>
@@ -137,7 +143,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
               <ul>
                 <li><strong>Keep it between 200 and 300 words.</strong> Short enough that a salesperson can hold it in their head, long enough to adapt into a landing page or a deck.</li>
                 <li><strong>Write one canonical version, then derive the rest.</strong> The elevator pitch, homepage paragraph and one-liner are cuts of the same material, not separate drafts.</li>
-                <li><strong>Assign one owner</strong> who approves changes, so ten people aren't each rewording the founding story their own way.</li>
+                <li><strong>Assign one owner</strong> who approves changes, so ten people aren&apos;t each rewording the founding story their own way.</li>
               </ul>
 
               <h2 id="why-it-outperforms">Why does brand storytelling outperform feature lists?</h2>
@@ -146,56 +152,56 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
               <p>In a Stanford experiment, participants who linked a list of unrelated words into a narrative recalled 93% of them, against 13% for participants who tried to memorise the same list directly. Roughly seven times better, from a study you can point to.</p>
               <p>Chip and Dan Heath ran a related test with students giving one-minute talks. On average the speakers used two and a half statistics each, and only one in ten told a story. Ten minutes later, 63% of listeners could recall a story, while 5% could recall a single statistic.</p>
               <p>Two different setups, two different multipliers, one consistent direction. A feature list asks the brain to store ten unrelated facts. A story asks it to remember one sequence, which is a much lighter load - and that is the whole mechanism.</p>
-              <p>The business consequence follows in three steps, and it is worth naming them because "storytelling converts" on its own is not an argument.</p>
-              <p><strong>Recall comes first.</strong> This is where corporate storytelling differs from consumer work: a buyer who remembers your framing can repeat it internally - and in B2B, the person you spoke to is rarely the person who signs. A champion who can retell your story in a meeting you're not in is doing the selling for you.</p>
-              <p><strong>Preference follows recall.</strong> Given two vendors who both meet the requirements, buyers pick the one whose position they can articulate. That is why B2B buyers who cannot recite your pricing tiers can often repeat your founder's origin story.</p>
+              <p>The business consequence follows in three steps, and it is worth naming them because &quot;storytelling converts&quot; on its own is not an argument.</p>
+              <p><strong>Recall comes first.</strong> This is where corporate storytelling differs from consumer work: a buyer who remembers your framing can repeat it internally - and in B2B, the person you spoke to is rarely the person who signs. A champion who can retell your story in a meeting you&apos;re not in is doing the selling for you.</p>
+              <p><strong>Preference follows recall.</strong> Given two vendors who both meet the requirements, buyers pick the one whose position they can articulate. That is why B2B buyers who cannot recite your pricing tiers can often repeat your founder&apos;s origin story.</p>
               <p><strong>Conversion follows preference</strong>, but with a lag that trips up most measurement. A story-led page rarely beats a feature-led one on first-touch conversion; it wins on returning visitors, on branded search, and on deals where someone internally argued your case.</p>
               <p>That lag has a practical consequence for B2B teams: <strong>attribute the story to pipeline, not to last click.</strong> In a sales cycle measured in months, the page that introduced your framing will almost never be the last touch before a demo request. If your reporting only credits the final click, story-led content will look like it does nothing - right up until you check which accounts read it first.</p>
 
               <h2 id="framework">What framework turns storytelling into a repeatable process?</h2>
               <p>A brand story framework worth using breaks into four pillars: <strong>People, Places, Purpose, Plot.</strong> Each answers a different question, and together they stop a story from drifting into vague inspiration.</p>
               <ul>
-                <li><strong>People.</strong> Who is the hero (almost always the customer, not your brand) and who is the guide (that's you)? Prompt: describe the customer before they found you, in their own words if possible.</li>
+                <li><strong>People.</strong> Who is the hero (almost always the customer, not your brand) and who is the guide (that&apos;s you)? Prompt: describe the customer before they found you, in their own words if possible.</li>
                 <li><strong>Places.</strong> What context shapes the problem? Prompt: where does the pain actually show up - on a factory floor, in a spreadsheet, at 2 a.m.?</li>
                 <li><strong>Purpose.</strong> Why does solving this matter beyond revenue? Prompt: what would the customer lose if this stayed unsolved for another year?</li>
-                <li><strong>Plot.</strong> What is the sequence of struggle, turning point, and resolution? Prompt: what was the moment the customer realised the old way wasn't working?</li>
+                <li><strong>Plot.</strong> What is the sequence of struggle, turning point, and resolution? Prompt: what was the moment the customer realised the old way wasn&apos;t working?</li>
               </ul>
-              <p>Positioning matters here more than most marketers admit. <strong>Your brand is the guide, not the hero.</strong> Nike doesn't run the marathon; the customer does, and Nike hands them the shoes. Brands that cast themselves as the hero produce copy that reads like a CV, and CVs don't convert.</p>
-              <p>Map plot beats to the buyer journey and the same framework doubles as a content plan. Awareness content surfaces the "before" struggle. Consideration content introduces you as the guide, with proof you've solved this before. Decision content shows the resolution, ideally in someone else's voice rather than your own.</p>
+              <p>Positioning matters here more than most marketers admit. <strong>Your brand is the guide, not the hero.</strong> Nike doesn&apos;t run the marathon; the customer does, and Nike hands them the shoes. Brands that cast themselves as the hero produce copy that reads like a CV, and CVs don&apos;t convert.</p>
+              <p>Map plot beats to the buyer journey and the same framework doubles as a content plan. Awareness content surfaces the &quot;before&quot; struggle. Consideration content introduces you as the guide, with proof you&apos;ve solved this before. Decision content shows the resolution, ideally in someone else&apos;s voice rather than your own.</p>
 
-              <p><strong>Pro Tip:</strong> <em>Draft your Plot section before People or Purpose. If you can't articulate a real conflict, the rest of the framework will just decorate a story that doesn't exist yet.</em></p>
+              <p><strong>Pro Tip:</strong> <em>Draft your Plot section before People or Purpose. If you can&apos;t articulate a real conflict, the rest of the framework will just decorate a story that doesn&apos;t exist yet.</em></p>
 
               <h2 id="which-type">Which type of brand story fits your business?</h2>
               <p>Not every brand needs the same narrative shape. Five patterns cover most of what works, and smaller companies can borrow the structure without the budget.</p>
               <ol>
-                <li><strong>Functional story.</strong> Built around one specific, well-documented problem. A B2B software company that opens every case study with "here's the exact process that was broken" is running a functional story. Smaller brands should default here first, because it requires proof rather than production value.</li>
-                <li><strong>Underdog story.</strong> Positions the brand against a larger, entrenched competitor. Works when there's a real dynamic customers already sense - not one invented for a campaign.</li>
-                <li><strong>Lifestyle story.</strong> Sells identity and belonging rather than a transaction. Consumer brands built this at scale, but it demands consistent visual and tonal investment most SMEs can't sustain yet.</li>
-                <li><strong>Mission-driven story.</strong> Centres on a commitment the brand pursues regardless of short-term profit. The lesson for smaller brands is specificity: pick one measurable commitment, not a vague "we care" statement.</li>
-                <li><strong>Founder or origin story.</strong> Built on the specific moment someone started the company. The cheapest type to produce well, because the material already exists in the founder's memory rather than requiring a budget.</li>
+                <li><strong>Functional story.</strong> Built around one specific, well-documented problem. A B2B software company that opens every case study with &quot;here&apos;s the exact process that was broken&quot; is running a functional story. Smaller brands should default here first, because it requires proof rather than production value.</li>
+                <li><strong>Underdog story.</strong> Positions the brand against a larger, entrenched competitor. Works when there&apos;s a real dynamic customers already sense - not one invented for a campaign.</li>
+                <li><strong>Lifestyle story.</strong> Sells identity and belonging rather than a transaction. Consumer brands built this at scale, but it demands consistent visual and tonal investment most SMEs can&apos;t sustain yet.</li>
+                <li><strong>Mission-driven story.</strong> Centres on a commitment the brand pursues regardless of short-term profit. The lesson for smaller brands is specificity: pick one measurable commitment, not a vague &quot;we care&quot; statement.</li>
+                <li><strong>Founder or origin story.</strong> Built on the specific moment someone started the company. The cheapest type to produce well, because the material already exists in the founder&apos;s memory rather than requiring a budget.</li>
               </ol>
-              <p>The structural idea worth stealing from big brands isn't their budget. It's their discipline: one conflict, one hero, one proof point, repeated everywhere instead of reinvented each quarter.</p>
+              <p>The structural idea worth stealing from big brands isn&apos;t their budget. It&apos;s their discipline: one conflict, one hero, one proof point, repeated everywhere instead of reinvented each quarter.</p>
 
               <h2 id="examples">Brand storytelling examples worth studying</h2>
               <p>Patterns are easier to copy when you can see them working. Three brand story examples, one per pattern a smaller company can realistically run. They are illustrative models built on fictional companies, not case studies of real brands.</p>
-              <p><strong>Functional - a B2B scheduling vendor.</strong> Every case study opens with the same sentence shape: "This clinic was losing eleven appointments a week to no-shows nobody was tracking." No adjectives, no mission language. The conflict is a number the prospect can check against their own calendar. Cost to produce: one customer interview.</p>
+              <p><strong>Functional - a B2B scheduling vendor.</strong> Every case study opens with the same sentence shape: &quot;This clinic was losing eleven appointments a week to no-shows nobody was tracking.&quot; No adjectives, no mission language. The conflict is a number the prospect can check against their own calendar. Cost to produce: one customer interview.</p>
               <p><strong>Mission-driven - an outdoor equipment brand.</strong> The commitment is specific and auditable - a fixed share of revenue directed to environmental work, published annually - rather than a statement about caring for the planet. Smaller brands miss this by picking a value instead of a commitment. A value is a sentence; a commitment has a number and a date.</p>
               <p><strong>Founder - a two-person agency.</strong> The story is one afternoon: the moment the founder quit a job after watching a client get billed for work nobody performed. It runs on the About page, opens sales calls, and never changes. Cost to produce: nothing, because the material was already there.</p>
               <p>The two patterns missing from this list are deliberate. Underdog needs a rival your customers already name unprompted; invent that tension and it reads as posturing. Lifestyle needs sustained visual and tonal investment most smaller companies cannot keep up for the years it takes to work. Both are real patterns - they are just not where a company with one marketer should start.</p>
-              <p>What connects the three that are here is restraint. One conflict, told the same way everywhere, for years. The failure mode isn't a weak story - it's five different versions of a decent one.</p>
+              <p>What connects the three that are here is restraint. One conflict, told the same way everywhere, for years. The failure mode isn&apos;t a weak story - it&apos;s five different versions of a decent one.</p>
 
               <h2 id="step-by-step">How do you write your brand story step by step?</h2>
               <p>Storytelling techniques are worth less than a working sequence. Building a usable core narrative takes an afternoon if the raw material is ready.</p>
               <ol>
-                <li><strong>Inventory the raw material.</strong> Three sources: the founder's account of why the company started, two or three customer wins with specific numbers, and operational proof - certifications, years in business, response times - that a competitor can't casually claim.</li>
-                <li><strong>Pick one conflict customers actually recognise.</strong> Not "the market lacked innovation." Something concrete: "clinics were losing appointments to a scheduling system nobody trusted." If the team can't agree on the conflict, interview three recent customers about why they started looking.</li>
-                <li><strong>Write the 200-300 word core narrative</strong> using People, Places, Purpose, Plot. Customer's "before" state in the first third, your role as guide in the second, resolution with a specific proof point in the last.</li>
-                <li><strong>Compress into a 30-second version.</strong> If you can't say it out loud without notes, the core is still too complicated. Cut adjectives before you cut facts.</li>
+                <li><strong>Inventory the raw material.</strong> Three sources: the founder&apos;s account of why the company started, two or three customer wins with specific numbers, and operational proof - certifications, years in business, response times - that a competitor can&apos;t casually claim.</li>
+                <li><strong>Pick one conflict customers actually recognise.</strong> Not &quot;the market lacked innovation.&quot; Something concrete: &quot;clinics were losing appointments to a scheduling system nobody trusted.&quot; If the team can&apos;t agree on the conflict, interview three recent customers about why they started looking.</li>
+                <li><strong>Write the 200-300 word core narrative</strong> using People, Places, Purpose, Plot. Customer&apos;s &quot;before&quot; state in the first third, your role as guide in the second, resolution with a specific proof point in the last.</li>
+                <li><strong>Compress into a 30-second version.</strong> If you can&apos;t say it out loud without notes, the core is still too complicated. Cut adjectives before you cut facts.</li>
                 <li><strong>Route it for sign-off.</strong> Marketing writes it; a founder or ops lead confirms it matches operational reality. A gap between the story and the actual customer experience is the fastest way to lose trust.</li>
                 <li><strong>Document distribution.</strong> Approved version, elevator pitch and derivative snippets in one shared file, so nobody freelances a new version six months from now.</li>
               </ol>
 
-              <p>Pro Tip: <em>Write the customer's dialogue first, even a rough paraphrase of something they actually said. Stories drafted from a real quote read as human. Stories drafted from a brand-voice guideline read as marketing.</em></p>
+              <p>Pro Tip: <em>Write the customer&apos;s dialogue first, even a rough paraphrase of something they actually said. Stories drafted from a real quote read as human. Stories drafted from a brand-voice guideline read as marketing.</em></p>
 
               <h2 id="scale">How do you scale one story across every channel?</h2>
               <p>A brand storytelling strategy lives or dies on this step. Every channel has a different job, and forcing the same 300 words everywhere wastes the best material.</p>
@@ -210,12 +216,12 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
 
               <h2 id="measure">How do you measure whether your story is working?</h2>
               <p>Storytelling earns its budget through the same funnel metrics as everything else, plus two qualitative checks performance marketing skips.</p>
-              <p>Start by fixing which number the story is accountable for, because it differs by model. <strong>B2B and SaaS</strong>: qualified pipeline and demo requests, attributed across touchpoints rather than to the last click. <strong>Local services</strong>: calls and form submissions, since a story that builds trust shows up as someone picking up the phone. <strong>E-commerce</strong>: revenue per session on story-led category and About pages, not raw traffic. Pick one before you start measuring, or you'll end up defending engagement metrics to someone who wanted revenue.</p>
+              <p>Start by fixing which number the story is accountable for, because it differs by model. <strong>B2B and SaaS</strong>: qualified pipeline and demo requests, attributed across touchpoints rather than to the last click. <strong>Local services</strong>: calls and form submissions, since a story that builds trust shows up as someone picking up the phone. <strong>E-commerce</strong>: revenue per session on story-led category and About pages, not raw traffic. Pick one before you start measuring, or you&apos;ll end up defending engagement metrics to someone who wanted revenue.</p>
               <ul>
                 <li><strong>Average engagement time and scroll depth</strong> on story-driven pages. A story being read shows different behaviour than a skimmed feature list.</li>
                 <li><strong>Branded search volume</strong> in the weeks after a story-led campaign. Recall shows up as people searching your name, not just clicking your ad.</li>
                 <li><strong>Informal recall tests.</strong> Ask a handful of prospects a week after exposure what they remember, and compare against people who only saw feature-based messaging.</li>
-                <li><strong>A/B test story-led against feature-led landing pages</strong> on the same offer, holding CTA and design constant so the narrative is the only variable. Give it four to six weeks and a control group, or you're reading noise.</li>
+                <li><strong>A/B test story-led against feature-led landing pages</strong> on the same offer, holding CTA and design constant so the narrative is the only variable. Give it four to six weeks and a control group, or you&apos;re reading noise.</li>
                 <li><strong>Set a modest first benchmark.</strong> A few percentage points of lift in conversion or branded search over a feature-only control is a meaningful early signal, not a disappointment. Brand preference moves slowly.</li>
               </ul>
 
@@ -226,26 +232,26 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
               <p>Run three authenticity checks before publishing:</p>
               <ul>
                 <li>Would an employee recognise this as true?</li>
-                <li>Would a customer who's had a bad experience call it out as false?</li>
+                <li>Would a customer who&apos;s had a bad experience call it out as false?</li>
                 <li>Could a competitor claim the exact same sentence, word for word?</li>
               </ul>
               <p>If any answer is uncomfortable, revise before you publish - not after a customer does it for you in a review.</p>
               <p>Retire or revise a story when operational reality changes: a founder leaves, a public commitment gets missed, or customer feedback starts contradicting the narrative faster than you can defend it.</p>
 
-              <p>Pro Tip: <em>If you're not comfortable reading the story out loud to a sceptical customer, don't publish it to a trusting one.</em></p>
+              <p>Pro Tip: <em>If you&apos;re not comfortable reading the story out loud to a sceptical customer, don&apos;t publish it to a trusting one.</em></p>
 
               <h2 id="authenticity">Why authenticity, not automation, decides if a story lands</h2>
-              <p>Narrative marketing is under the same pressure as everything else: produce more, faster, with AI. The instinct isn't wrong; the execution usually is.</p>
-              <p>AI is genuinely useful for reformatting a core narrative into channel variants, drafting first passes, and spotting which beats perform. What it cannot do is invent the conflict, the customer quote, or the founder's real decision point - those have to come from someone who was there. Publishing generated narrative at volume, without that grounding, is also the pattern search engines treat as scaled content abuse.</p>
+              <p>Narrative marketing is under the same pressure as everything else: produce more, faster, with AI. The instinct isn&apos;t wrong; the execution usually is.</p>
+              <p>AI is genuinely useful for reformatting a core narrative into channel variants, drafting first passes, and spotting which beats perform. What it cannot do is invent the conflict, the customer quote, or the founder&apos;s real decision point - those have to come from someone who was there. Publishing generated narrative at volume, without that grounding, is also the pattern search engines treat as scaled content abuse.</p>
               <p>Practical advice for a 2026 budget: <strong>fund the story foundation before the campaign.</strong> A polished ad built on a thin, generic narrative underperforms a plain page built on a specific, true one.</p>
               <p>For a fast gut check, run this: publish one customer-quote-driven micro-story on social with zero design polish, and compare its engagement to your last feature-focused post.</p>
 
               <h2 id="our-role">How AI SEO COMPANY supports storytelling execution</h2>
-              <p>Brand storytelling online has a constraint that offline narrative does not: the story only performs if people can find the page it lives on. That's the practical link between narrative and the technical side.</p>
-              <p>We work on the second half: <Link href="/pozycjonowanie-stron-internetowych">website design and technical SEO</Link>, so the narrative lands on pages structured for readers and search engines alike. Writing the story itself stays with you or your copywriter - we don't sell narrative development as a service, and a story assembled by an agency that has never spoken to your customers tends to read like one.</p>
+              <p>Brand storytelling online has a constraint that offline narrative does not: the story only performs if people can find the page it lives on. That&apos;s the practical link between narrative and the technical side.</p>
+              <p>We work on the second half: <Link href="/pozycjonowanie-stron-internetowych">website design and technical SEO</Link>, so the narrative lands on pages structured for readers and search engines alike. Writing the story itself stays with you or your copywriter - we don&apos;t sell narrative development as a service, and a story assembled by an agency that has never spoken to your customers tends to read like one.</p>
 
 
-              <p>If the story exists but isn't earning attention, a structured <Link href="/audyt-seo">SEO audit</Link> is usually a faster fix than a rewrite - it shows whether the problem is the words or the pages they sit on. We reply to enquiries and send an initial proposal within 24 h on business days.</p>
+              <p>If the story exists but isn&apos;t earning attention, a structured <Link href="/audyt-seo">SEO audit</Link> is usually a faster fix than a rewrite - it shows whether the problem is the words or the pages they sit on. We reply to enquiries and send an initial proposal within 24 h on business days.</p>
 
               <h2 id="faq">Frequently Asked Questions</h2>
 
@@ -265,7 +271,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
               <p>The customer. Your brand is the guide. Copy that casts the company as the hero reads like a CV, and buyers respond to it the same way.</p>
 
               <h3>How do I know if my story is authentic enough to publish?</h3>
-              <p>Three checks: an employee would recognise it as true, an unhappy customer couldn't call it false, and a competitor couldn't claim the same sentence word for word.</p>
+              <p>Three checks: an employee would recognise it as true, an unhappy customer couldn&apos;t call it false, and a competitor couldn&apos;t claim the same sentence word for word.</p>
 
               <h3>How long before storytelling shows up in results?</h3>
               <p>Brand preference moves slowly. Run a story-led page against a feature-led one for four to six weeks with a control, and treat a few percentage points of lift as a real early signal.</p>
@@ -274,7 +280,7 @@ export default async function ArticleBrandStorytellingPatterns({ params }) {
               <ul>
                 <li>Bower, G. and Clark, M. (1969), narrative chaining and recall - the 93% versus 13% experiment</li>
                 <li>Heath, C. and Heath, D., <em>Made to Stick</em> - the one-minute speech recall test, 63% versus 5%</li>
-                <li>On the disputed "22 times" claim: multiple attempts to locate a primary source in Jerome Bruner's work have failed; the trail ends at a secondary business text citing him without a reference</li>
+                <li>On the disputed &quot;22 times&quot; claim: multiple attempts to locate a primary source in Jerome Bruner&apos;s work have failed; the trail ends at a secondary business text citing him without a reference</li>
               </ul>
 
               <p><em>Last reviewed: August 2026.</em></p>
@@ -342,14 +348,18 @@ function ArtykulStorytellingMarki({ locale }) {
                 {dataPubl.label}
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Storytelling marki: 5 wzorców dla B2B i mniejszych firm
             </h1>
+            <Byline sciezka="/blog/storytelling-marki" data={dataPubl.iso} />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox>
+                Storytelling marki zastępuje suchą listę funkcji spójną opowieścią opartą na czterech filarach: Ludziach, Miejscu, Celu i Fabule, w której bohaterem jest klient, a firma pełni rolę przewodnika. W B2B i MŚP najłatwiej wdrożyć dwa wzorce - historię funkcjonalną oraz historię założyciela - spisane w jednej bazowej narracji na 200-300 słów i skracane pod kanały.
+              </AnswerBox>
               <p className="lead">
                 Storytelling marki to praktyka łączenia tożsamości firmy, jej celu i dowodów od klientów w powtarzalną narrację - zamiast listy cech produktu. Argument za nim bierze się z tego, jak działa pamięć: sekwencję przyczynowo-skutkową trzymamy w głowie znacznie dłużej niż zestaw niepowiązanych twierdzeń. Ten przewodnik daje framework, pięć wzorców i metryki, które sprawdzają, czy Twoja historia faktycznie działa.
               </p>
@@ -404,7 +414,7 @@ function ArtykulStorytellingMarki({ locale }) {
               <ArticleTOC items={tocItems} />
 
               <h2 id="storytelling-a-historia-marki">Czym storytelling marki różni się od historii marki?</h2>
-              <p>W marketingu tych pojęć używa się luźno, więc zacznijmy od rozróżnienia, które ma znaczenie. Historia marki to pojedynczy artefakt: narracja założycielska, akapit misji, strona „O nas". Storytelling marki to bieżąca praktyka używania tej narracji - w różnych formach - w każdym punkcie styku z klientem.</p>
+              <p>W marketingu tych pojęć używa się luźno, więc zacznijmy od rozróżnienia, które ma znaczenie. Historia marki to pojedynczy artefakt: narracja założycielska, akapit misji, strona „O nas&quot;. Storytelling marki to bieżąca praktyka używania tej narracji - w różnych formach - w każdym punkcie styku z klientem.</p>
               <p>Traktuj narrację bazową jak dokument kanoniczny, który każdy kanał adaptuje, zamiast pisać nową historię pod każdą kampanię. To rozróżnienie jest ważne, bo większość zespołów marnuje siły na wymyślanie narracji od nowa co kwartał, zamiast używać tej, która już działa.</p>
               <p>Praktyczne ramy dokumentu bazowego:</p>
               <ul>
@@ -414,16 +424,16 @@ function ArtykulStorytellingMarki({ locale }) {
               </ul>
 
               <h2 id="dlaczego-wygrywa-z-lista-cech">Dlaczego storytelling wygrywa z listą cech produktu?</h2>
-              <p>W tekstach marketingowych krąży twierdzenie, że historie zapamiętuje się 22 razy lepiej niż fakty - zwykle przypisywane psychologowi Jerome'owi Brunerowi. <strong>Traktuj tę liczbę jak folklor.</strong> Wiele osób szukało pierwotnego badania, w tym autorzy, którzy sami wcześniej ją powtarzali - i nikt go nie znalazł; trop kończy się na biznesowej książce cytującej Brunera bez przypisu.</p>
+              <p>W tekstach marketingowych krąży twierdzenie, że historie zapamiętuje się 22 razy lepiej niż fakty - zwykle przypisywane psychologowi Jerome&apos;owi Brunerowi. <strong>Traktuj tę liczbę jak folklor.</strong> Wiele osób szukało pierwotnego badania, w tym autorzy, którzy sami wcześniej ją powtarzali - i nikt go nie znalazł; trop kończy się na biznesowej książce cytującej Brunera bez przypisu.</p>
               <p>Sam efekt jest jednak prawdziwy, a rzeczywiste eksperymenty są użyteczniejsze od mitu.</p>
               <p>W eksperymencie ze Stanforda uczestnicy, którzy powiązali listę niepowiązanych słów w narrację, odtworzyli 93% z nich - wobec 13% w grupie uczącej się tej samej listy na pamięć. Około siedmiu razy lepiej, z badania, które da się wskazać.</p>
               <p>Chip i Dan Heathowie przeprowadzili pokrewny test na studentach wygłaszających minutowe wystąpienia. Mówcy używali średnio dwóch i pół statystyki, a historię opowiadał tylko co dziesiąty. Dziesięć minut później 63% słuchaczy pamiętało historię, a 5% - jakąkolwiek statystykę.</p>
               <p>Dwa różne układy, dwa różne mnożniki, jeden spójny kierunek. Lista cech każe mózgowi zapamiętać dziesięć niepowiązanych faktów. Historia każe zapamiętać jedną sekwencję - a to znacznie lżejszy ładunek. I to jest cały mechanizm.</p>
-              <p>Konsekwencja biznesowa przychodzi w trzech krokach - warto je nazwać, bo samo „storytelling konwertuje" nie jest argumentem.</p>
+              <p>Konsekwencja biznesowa przychodzi w trzech krokach - warto je nazwać, bo samo „storytelling konwertuje&quot; nie jest argumentem.</p>
               <p><strong>Najpierw zapamiętanie.</strong> Tu storytelling firmowy różni się od konsumenckiego: kupujący, który pamięta Twoje ujęcie tematu, może je powtórzyć wewnątrz organizacji - a w B2B osoba, z którą rozmawiasz, rzadko jest tą, która podpisuje. Champion, który umie opowiedzieć Twoją historię na spotkaniu bez Ciebie, sprzedaje za Ciebie.</p>
               <p><strong>Preferencja idzie za zapamiętaniem.</strong> Przy dwóch dostawcach spełniających wymagania kupujący wybiera tego, którego pozycję umie wyartykułować. Dlatego kupujący B2B, którzy nie wyrecytują Twoich progów cenowych, często potrafią powtórzyć historię założyciela.</p>
               <p><strong>Konwersja idzie za preferencją</strong> - ale z opóźnieniem, na którym wykłada się większość pomiarów. Strona oparta na historii rzadko wygrywa z wersją opartą na cechach w konwersji z pierwszego kontaktu; wygrywa na powracających, na zapytaniach brandowych i na transakcjach, w których ktoś wewnętrznie bronił Waszej sprawy.</p>
-              <p>To opóźnienie ma praktyczną konsekwencję dla zespołów B2B: <strong>przypisuj historię do pipeline'u, nie do ostatniego kliknięcia.</strong> W cyklu sprzedaży liczonym w miesiącach strona, która wprowadziła Twoje ujęcie tematu, prawie nigdy nie będzie ostatnim punktem przed prośbą o demo. Jeśli raport uznaje tylko finalne kliknięcie, treści narracyjne będą wyglądały, jakby nie robiły nic - dopóki nie sprawdzisz, które konta czytały je jako pierwsze.</p>
+              <p>To opóźnienie ma praktyczną konsekwencję dla zespołów B2B: <strong>przypisuj historię do pipeline&apos;u, nie do ostatniego kliknięcia.</strong> W cyklu sprzedaży liczonym w miesiącach strona, która wprowadziła Twoje ujęcie tematu, prawie nigdy nie będzie ostatnim punktem przed prośbą o demo. Jeśli raport uznaje tylko finalne kliknięcie, treści narracyjne będą wyglądały, jakby nie robiły nic - dopóki nie sprawdzisz, które konta czytały je jako pierwsze.</p>
 
               <h2 id="framework">Jaki framework czyni storytelling powtarzalnym procesem?</h2>
               <p>Framework historii marki wart używania rozkłada się na cztery filary: <strong>Ludzie, Miejsca, Cel, Fabuła.</strong> Każdy odpowiada na inne pytanie, a razem nie pozwalają historii rozmyć się w mglistą inspirację.</p>
@@ -434,26 +444,26 @@ function ArtykulStorytellingMarki({ locale }) {
                 <li><strong>Fabuła.</strong> Jaka jest sekwencja zmagania, punktu zwrotnego i rozwiązania? Podpowiedź: w którym momencie klient zrozumiał, że stary sposób przestał działać?</li>
               </ul>
               <p>Obsada ról znaczy tu więcej, niż większość marketerów przyznaje. <strong>Twoja marka jest przewodnikiem, nie bohaterem.</strong> Nike nie biegnie maratonu; biegnie klient, a Nike podaje mu buty. Marki obsadzające siebie w roli bohatera produkują teksty czytające się jak CV - a CV nie konwertuje.</p>
-              <p>Zmapuj takty fabuły na ścieżkę zakupową, a ten sam framework stanie się planem treści. Treści świadomościowe pokazują zmaganie „przed". Treści rozważaniowe przedstawiają Ciebie jako przewodnika, z dowodem, że już to rozwiązywałeś. Treści decyzyjne pokazują rozwiązanie - najlepiej cudzym głosem, nie Twoim.</p>
+              <p>Zmapuj takty fabuły na ścieżkę zakupową, a ten sam framework stanie się planem treści. Treści świadomościowe pokazują zmaganie „przed&quot;. Treści rozważaniowe przedstawiają Ciebie jako przewodnika, z dowodem, że już to rozwiązywałeś. Treści decyzyjne pokazują rozwiązanie - najlepiej cudzym głosem, nie Twoim.</p>
 
               <p><strong>Porada profesjonalisty:</strong> <em>Napisz sekcję Fabuły przed Ludźmi i Celem. Jeśli nie umiesz wyartykułować prawdziwego konfliktu, reszta frameworku będzie tylko dekorować historię, której jeszcze nie ma.</em></p>
 
               <h2 id="ktory-wzorzec">Który typ historii marki pasuje do Twojej firmy?</h2>
               <p>Nie każda marka potrzebuje tej samej formy narracji. Pięć wzorców pokrywa większość tego, co działa, a mniejsze firmy mogą pożyczyć strukturę bez budżetu.</p>
               <ol>
-                <li><strong>Historia funkcjonalna.</strong> Zbudowana wokół jednego konkretnego, dobrze udokumentowanego problemu. Firma B2B, która każde case study otwiera zdaniem „oto proces, który dokładnie tak się psuł", prowadzi historię funkcjonalną. Mniejsze marki powinny zaczynać właśnie tu, bo wymaga dowodów, a nie wartości produkcyjnej.</li>
+                <li><strong>Historia funkcjonalna.</strong> Zbudowana wokół jednego konkretnego, dobrze udokumentowanego problemu. Firma B2B, która każde case study otwiera zdaniem „oto proces, który dokładnie tak się psuł&quot;, prowadzi historię funkcjonalną. Mniejsze marki powinny zaczynać właśnie tu, bo wymaga dowodów, a nie wartości produkcyjnej.</li>
                 <li><strong>Historia underdoga.</strong> Ustawia markę naprzeciw większego, okopanego konkurenta. Działa, gdy klienci już czują tę dynamikę - nie wtedy, gdy wymyślono ją na potrzeby kampanii.</li>
-                <li><strong>Historia lifestyle'owa.</strong> Sprzedaje tożsamość i przynależność, nie transakcję. Marki konsumenckie zbudowały to w skali, ale wymaga konsekwentnych inwestycji w wizerunek, których większość MŚP jeszcze nie utrzyma.</li>
-                <li><strong>Historia misji.</strong> W centrum stoi zobowiązanie, które marka realizuje niezależnie od krótkoterminowego zysku. Lekcja dla mniejszych marek: konkret. Jedno mierzalne zobowiązanie, nie mgliste „zależy nam".</li>
+                <li><strong>Historia lifestyle&apos;owa.</strong> Sprzedaje tożsamość i przynależność, nie transakcję. Marki konsumenckie zbudowały to w skali, ale wymaga konsekwentnych inwestycji w wizerunek, których większość MŚP jeszcze nie utrzyma.</li>
+                <li><strong>Historia misji.</strong> W centrum stoi zobowiązanie, które marka realizuje niezależnie od krótkoterminowego zysku. Lekcja dla mniejszych marek: konkret. Jedno mierzalne zobowiązanie, nie mgliste „zależy nam&quot;.</li>
                 <li><strong>Historia założyciela.</strong> Zbudowana na konkretnym momencie, w którym ktoś założył firmę. Najtańszy wzorzec do dobrego wykonania, bo materiał już istnieje w pamięci założyciela i nie wymaga budżetu.</li>
               </ol>
               <p>Strukturalna idea warta podebrania dużym markom to nie ich budżet, lecz dyscyplina: jeden konflikt, jeden bohater, jeden dowód - powtarzane wszędzie, zamiast wymyślane od nowa co kwartał.</p>
 
               <h2 id="przyklady">Przykłady storytellingu marki warte analizy</h2>
               <p>Wzorce łatwiej kopiować, gdy widać je w działaniu. Trzy przykłady - po jednym na wzorzec, który mniejsza firma realnie udźwignie. To przykłady modelowe, zilustrowane na wymyślonych firmach, a nie opisy realnych marek.</p>
-              <p><strong>Funkcjonalny - dostawca B2B systemu rezerwacji.</strong> Każde case study otwiera to samo zdanie: „Ta przychodnia traciła tygodniowo jedenaście wizyt przez nieodwołane terminy, których nikt nie śledził". Zero przymiotników, zero języka misji. Konflikt jest liczbą, którą potencjalny klient może sprawdzić we własnym kalendarzu. Koszt produkcji: jeden wywiad z klientem.</p>
+              <p><strong>Funkcjonalny - dostawca B2B systemu rezerwacji.</strong> Każde case study otwiera to samo zdanie: „Ta przychodnia traciła tygodniowo jedenaście wizyt przez nieodwołane terminy, których nikt nie śledził&quot;. Zero przymiotników, zero języka misji. Konflikt jest liczbą, którą potencjalny klient może sprawdzić we własnym kalendarzu. Koszt produkcji: jeden wywiad z klientem.</p>
               <p><strong>Misyjny - marka sprzętu outdoorowego.</strong> Zobowiązanie jest konkretne i audytowalne - stały procent przychodu na cele środowiskowe, publikowany co roku - a nie deklaracja troski o planetę. Mniejsze marki gubią to, wybierając wartość zamiast zobowiązania. Wartość to zdanie; zobowiązanie ma liczbę i datę.</p>
-              <p><strong>Założycielski - dwuosobowa agencja.</strong> Historia to jedno popołudnie: moment, w którym założyciel odszedł z pracy po tym, jak zobaczył fakturę wystawioną klientowi za pracę, której nikt nie wykonał. Działa na stronie „O nas", otwiera rozmowy handlowe i nigdy się nie zmienia. Koszt produkcji: zero, bo materiał już był.</p>
+              <p><strong>Założycielski - dwuosobowa agencja.</strong> Historia to jedno popołudnie: moment, w którym założyciel odszedł z pracy po tym, jak zobaczył fakturę wystawioną klientowi za pracę, której nikt nie wykonał. Działa na stronie „O nas&quot;, otwiera rozmowy handlowe i nigdy się nie zmienia. Koszt produkcji: zero, bo materiał już był.</p>
               <p>Dwóch wzorców celowo tu nie ma. <strong>Underdog</strong> wymaga rywala, którego Twoi klienci sami wymieniają bez pytania; wymyślisz to napięcie - i czyta się je jak pozę. <strong>Lifestyle</strong> wymaga inwestycji w spójny wizerunek przez lata, zanim zadziała. Oba wzorce są prawdziwe - po prostu nie są miejscem startu dla firmy z jednym marketerem.</p>
               <p>Trzy powyższe łączy powściągliwość. Jeden konflikt, opowiadany tak samo wszędzie, latami. Tryb awaryjny to nie słaba historia - to pięć różnych wersji przyzwoitej.</p>
 
@@ -461,8 +471,8 @@ function ArtykulStorytellingMarki({ locale }) {
               <p>Techniki narracyjne są warte mniej niż działająca sekwencja. Zbudowanie użytecznej narracji bazowej zajmuje popołudnie, jeśli surowy materiał jest gotowy.</p>
               <ol>
                 <li><strong>Zrób inwentarz materiału.</strong> Trzy źródła: relacja założyciela o tym, dlaczego firma powstała; dwa-trzy sukcesy klientów z konkretnymi liczbami; dowody operacyjne - certyfikaty, lata na rynku, czasy odpowiedzi - których konkurent nie przypisze sobie od niechcenia.</li>
-                <li><strong>Wybierz jeden konflikt, który klienci rozpoznają.</strong> Nie „rynkowi brakowało innowacji". Konkret: „przychodnie traciły wizyty przez system rezerwacji, któremu nikt nie ufał". Jeśli zespół nie może się zgodzić co do konfliktu, zapytaj trzech świeżych klientów, dlaczego zaczęli szukać.</li>
-                <li><strong>Napisz 200-300 słów narracji bazowej</strong> według filarów Ludzie, Miejsca, Cel, Fabuła. Stan klienta „przed" w pierwszej trzeciej, Twoja rola przewodnika w drugiej, rozwiązanie z konkretnym dowodem w ostatniej.</li>
+                <li><strong>Wybierz jeden konflikt, który klienci rozpoznają.</strong> Nie „rynkowi brakowało innowacji&quot;. Konkret: „przychodnie traciły wizyty przez system rezerwacji, któremu nikt nie ufał&quot;. Jeśli zespół nie może się zgodzić co do konfliktu, zapytaj trzech świeżych klientów, dlaczego zaczęli szukać.</li>
+                <li><strong>Napisz 200-300 słów narracji bazowej</strong> według filarów Ludzie, Miejsca, Cel, Fabuła. Stan klienta „przed&quot; w pierwszej trzeciej, Twoja rola przewodnika w drugiej, rozwiązanie z konkretnym dowodem w ostatniej.</li>
                 <li><strong>Zbij do wersji 30-sekundowej.</strong> Jeśli nie umiesz jej powiedzieć bez notatek, rdzeń jest wciąż za bardzo skomplikowany. Tnij przymiotniki, zanim zaczniesz ciąć fakty.</li>
                 <li><strong>Puść do akceptacji.</strong> Marketing pisze; założyciel albo szef operacji potwierdza zgodność z rzeczywistością. Rozjazd między historią a realnym doświadczeniem klienta to najszybszy sposób na utratę zaufania.</li>
                 <li><strong>Udokumentuj dystrybucję.</strong> Zatwierdzona wersja, elevator pitch i pochodne fragmenty w jednym wspólnym pliku - żeby za pół roku nikt nie tworzył własnej wersji na boku.</li>
@@ -475,7 +485,7 @@ function ArtykulStorytellingMarki({ locale }) {
               <ul>
                 <li><strong>Strona internetowa</strong> niesie pełną narrację i dowody - odwiedzający tutaj aktywnie oceniają.</li>
                 <li><strong>E-mail</strong> personalizuje ją w sekwencje: jeden takt fabuły na wiadomość, nie cały łuk naraz.</li>
-                <li><strong>Social media</strong> wzmacniają pojedynczy moment: cytat klienta, zdjęcie założyciela, liczbę „przed i po".</li>
+                <li><strong>Social media</strong> wzmacniają pojedynczy moment: cytat klienta, zdjęcie założyciela, liczbę „przed i po&quot;.</li>
                 <li><strong>Rozmowy handlowe</strong> używają mikrohistorii - 20-sekundowych wersji, które handlowiec wtrąca przy konkretnej obiekcji.</li>
                 <li><strong>Produkt i opakowanie</strong> przypominają filar Celu w jednej-dwóch linijkach - klientowi, który już kupił, dlaczego wybrał właśnie Was.</li>
               </ul>
@@ -543,7 +553,7 @@ function ArtykulStorytellingMarki({ locale }) {
               <ul>
                 <li>Bower, G. i Clark, M. (1969), łączenie narracyjne a pamięć - eksperyment 93% wobec 13%</li>
                 <li>Heath, C. i Heath, D., <em>Made to Stick</em> - test pamięci po minutowych wystąpieniach, 63% wobec 5%</li>
-                <li>O spornym twierdzeniu „22 razy": wielokrotne próby zlokalizowania pierwotnego źródła w pracach Jerome'a Brunera zakończyły się niepowodzeniem; trop kończy się na wtórnym tekście biznesowym cytującym go bez przypisu</li>
+                <li>O spornym twierdzeniu „22 razy&quot;: wielokrotne próby zlokalizowania pierwotnego źródła w pracach Jerome&apos;a Brunera zakończyły się niepowodzeniem; trop kończy się na wtórnym tekście biznesowym cytującym go bez przypisu</li>
               </ul>
 
               <p><em>Ostatnia weryfikacja: sierpień 2026.</em></p>

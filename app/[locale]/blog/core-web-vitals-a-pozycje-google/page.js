@@ -130,7 +130,7 @@ export default async function ArticleCwvPage({ params }) {
                 July 24, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Core Web Vitals and Rankings
             </h1>
             <Byline sciezka={KLUCZ_CWV} takzeEn />
@@ -224,7 +224,7 @@ export default async function ArticleCwvPage({ params }) {
                 renders, so this is not a second H1 on the page - do not demote it. */}
               <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
+              fontWeight: 500, 
               color: 'var(--w-tusz)', 
               marginBottom: '1.5rem', 
               lineHeight: 1.1,

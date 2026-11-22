@@ -6,6 +6,8 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 
 export async function generateMetadata({ params }) {
@@ -64,15 +66,17 @@ export default async function ArticleMultiLocationSEO({ params }) {
 
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
+              fontWeight: 500, 
               color: 'var(--w-tusz)', 
-              marginBottom: '2rem', 
+              marginBottom: '1.5rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
               Multi-Location SEO: Scale Local Visibility in 2026
             </h1>
+
+            {locale === 'en' && <Byline sciezka="/blog/multi-location-seo-scale-local-visibility" data="2026-08-08" takzeEn />}
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -87,6 +91,9 @@ export default async function ArticleMultiLocationSEO({ params }) {
                 <p>Polskie tłumaczenie jest obecnie niedostępne dla tego artykułu.</p>
               ) : (
                 <>
+                  <AnswerBox etykieta="Short answer">
+                    Scaling multi-location SEO in 2026 works best on a single domain using clean city subfolders (/locations/city/), with each page tied to a verified Google Business Profile, LocalBusiness schema, and unique local proof. Centralize NAP data in one master sheet before building citations so mismatched addresses never dilute Google Maps or AI local visibility.
+                  </AnswerBox>
                   <p className="lead">
                     A single authoritative domain with subfolders is the fastest, safest way to scale multi-location SEO while keeping entity trust signals intact. Build your location pages at <code>yourbrand.com/locations/city-name/</code>, anchor each one to a verified Google Business Profile, and use programmatic templates with mandatory unique local blocks. That three-part foundation handles the majority of what determines whether your locations show up in map packs and AI-generated local recommendations.
                   </p>

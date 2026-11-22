@@ -99,6 +99,9 @@ function domyslnePolityki(domena, en) {
     ? `# Recommended AI & SEO robots.txt policy for ${host}\n# Allows search & citation bots (traffic + leads), blocks raw LLM training scrapers`
     : `# Rekomendowana polityka robots.txt dla ${host}\n# Wpuszcza wyszukiwarki i cytowania AI (ruch i leady), blokuje scrapery treningowe LLM`;
   const rekomendowana = `${naglowekRek}
+User-agent: Googlebot
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -112,6 +115,9 @@ User-agent: Perplexity-User
 Allow: /
 
 User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: Bingbot
@@ -136,6 +142,9 @@ Disallow: /
 User-agent: Meta-ExternalAgent
 Disallow: /
 
+User-agent: CCBot
+Disallow: /
+
 User-agent: *
 Allow: /
 Sitemap: https://${host}/sitemap.xml
@@ -147,7 +156,7 @@ Allow: /
 Sitemap: https://${host}/sitemap.xml
 `;
 
-  const zablokowana = `${en ? `# Strict AI block for ${host} - allows classic Google/Bing, blocks all AI bots` : `# Pełna blokada AI dla ${host} - zostawia klasyczne Google/Bing, blokuje wszystkie boty AI`}
+  const zablokowana = `${en ? `# Strict AI block for ${host} - allows classic Google/Bing/Apple, blocks all AI bots` : `# Pełna blokada AI dla ${host} - zostawia klasyczne Google/Bing/Apple, blokuje wszystkie boty AI`}
 User-agent: OAI-SearchBot
 Disallow: /
 
@@ -163,6 +172,9 @@ Disallow: /
 User-agent: Perplexity-User
 Disallow: /
 
+User-agent: Claude-User
+Disallow: /
+
 User-agent: GPTBot
 Disallow: /
 
@@ -176,6 +188,9 @@ User-agent: Applebot-Extended
 Disallow: /
 
 User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: CCBot
 Disallow: /
 
 User-agent: *
@@ -204,6 +219,9 @@ function demoOdpowiedz(surowyUrl, en) {
         procent: 98,
         slowBezJs: 1420,
         h1: en ? 'SEO and AI Visibility Agency in Warsaw' : 'Agencja SEO i widoczności w AI z Warszawy',
+        podgladTekst: en
+          ? 'SEO and AI Visibility Agency in Warsaw. We build fast Next.js SSR websites and run transparent technical SEO and GEO campaigns for B2B and service companies. Pricing starts at €450 net/month with no long-term lock-in on SEO plans, full Search Console access and measurable AI citation tracking.'
+          : 'Agencja SEO i widoczności w AI z Warszawy. Projektujemy szybkie strony w Next.js SSR oraz prowadzimy pozycjonowanie w Google i wyszukiwarkach AI (ChatGPT, Perplexity, Gemini, Google AI Overviews). Jasny cennik od 1 900 zł netto miesięcznie, dostęp do panelu zadań i mierzalny wzrost zapytań.',
         liczbaH2: 8,
         liczbaTabel: 2,
         liczbaLinkow: 46,
@@ -212,18 +230,21 @@ function demoOdpowiedz(surowyUrl, en) {
         framework: 'Next.js (SSR)',
       },
       boty: [
-        { nazwa: 'OAI-SearchBot', grupa: 'wyszukiwanie', opisRoli: en ? 'ChatGPT Search index & live citations' : 'Indeks wyszukiwarki ChatGPT i cytowania z linkiem', robots: 'dozwolony', httpKod: 200, ttfbMs: 142, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'PerplexityBot', grupa: 'wyszukiwanie', opisRoli: en ? 'Perplexity AI search index & source cards' : 'Indeks odpowiedzi i kart źródeł Perplexity', robots: 'dozwolony', httpKod: 200, ttfbMs: 158, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'Claude-SearchBot', grupa: 'wyszukiwanie', opisRoli: en ? 'Anthropic web search & citations' : 'Wyszukiwanie sieciowe i cytowania Claude', robots: 'dozwolony', httpKod: 200, ttfbMs: 165, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'Googlebot', grupa: 'wyszukiwanie', opisRoli: en ? 'Google Search & AI Overviews base index' : 'Klasyczny indeks Google oraz baza AI Overviews', robots: 'dozwolony', httpKod: 200, ttfbMs: 118, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'Bingbot', grupa: 'wyszukiwanie', opisRoli: en ? 'Bing Search & Microsoft Copilot grounding' : 'Indeks Bing oraz zaplecze Microsoft Copilot', robots: 'dozwolony', httpKod: 200, ttfbMs: 134, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'ChatGPT-User', grupa: 'agent', opisRoli: en ? 'Live page fetch during a user prompt in ChatGPT' : 'Pobieranie strony na żywo podczas rozmowy w ChatGPT', robots: 'dozwolony', httpKod: 200, ttfbMs: 149, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'Perplexity-User', grupa: 'agent', opisRoli: en ? 'On-demand URL visit requested by Perplexity user' : 'Wejście na stronę na żądanie użytkownika Perplexity', robots: 'dozwolony', httpKod: 200, ttfbMs: 161, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'Claude-User', grupa: 'agent', opisRoli: en ? 'On-demand fetch triggered inside Claude chat' : 'Pobranie treści wywołane bezpośrednio w rozmowie Claude', robots: 'dozwolony', httpKod: 200, ttfbMs: 170, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'GPTBot', grupa: 'trening', opisRoli: en ? 'OpenAI foundation model training corpus' : 'Zbieranie treści do trenowania modeli OpenAI', robots: 'zablokowany', httpKod: 200, ttfbMs: 140, cloudflareIpCheck: false, status: 'zablokowany_robots' },
-        { nazwa: 'ClaudeBot', grupa: 'trening', opisRoli: en ? 'Anthropic LLM training crawler' : 'Korpus treningowy modeli językowych Anthropic', robots: 'zablokowany', httpKod: 200, ttfbMs: 152, cloudflareIpCheck: false, status: 'zablokowany_robots' },
-        { nazwa: 'Google-Extended', grupa: 'trening', opisRoli: en ? 'Controls Gemini model training (not Google Search)' : 'Steruje treningiem Gemini (nie blokuje wyszukiwarki Google)', robots: 'dozwolony', httpKod: 200, ttfbMs: 125, cloudflareIpCheck: false, status: 'ok' },
-        { nazwa: 'CCBot', grupa: 'trening', opisRoli: en ? 'Common Crawl open dataset used by LLM builders' : 'Otwarty zbiór Common Crawl używany do treningu modeli', robots: 'dozwolony', httpKod: 200, ttfbMs: 180, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'Googlebot', grupa: 'wyszukiwanie', opisRoli: en ? 'Google Search & AI Overviews primary crawler' : 'Klasyczny indeks Google oraz baza AI Overviews', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: 'index, follow, max-snippet:-1', httpKod: 200, ttfbMs: 118, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'OAI-SearchBot', grupa: 'wyszukiwanie', opisRoli: en ? 'ChatGPT Search index & live citations' : 'Indeks wyszukiwarki ChatGPT i cytowania z linkiem', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: 'index, follow', httpKod: 200, ttfbMs: 142, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'PerplexityBot', grupa: 'wyszukiwanie', opisRoli: en ? 'Perplexity AI search index & source cards' : 'Indeks odpowiedzi i kart źródeł Perplexity', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 158, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'Claude-SearchBot', grupa: 'wyszukiwanie', opisRoli: en ? 'Anthropic web search & citations' : 'Wyszukiwanie sieciowe i cytowania Claude', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 165, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'Bingbot', grupa: 'wyszukiwanie', opisRoli: en ? 'Bing Search & Microsoft Copilot grounding' : 'Indeks Bing oraz zaplecze Microsoft Copilot', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 134, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'Applebot', grupa: 'wyszukiwanie', opisRoli: en ? 'Apple Siri & Spotlight Search' : 'Apple Siri oraz wyszukiwarka Spotlight', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 147, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'ChatGPT-User', grupa: 'agent', opisRoli: en ? 'Live page fetch during a user prompt in ChatGPT' : 'Pobieranie strony na żywo podczas rozmowy w ChatGPT', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 149, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'Perplexity-User', grupa: 'agent', opisRoli: en ? 'On-demand URL visit requested by Perplexity user' : 'Wejście na stronę na żądanie użytkownika Perplexity', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 161, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'Claude-User', grupa: 'agent', opisRoli: en ? 'On-demand fetch triggered inside Claude chat' : 'Pobranie treści wywołane bezpośrednio w rozmowie Claude', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 170, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'GPTBot', grupa: 'trening', opisRoli: en ? 'OpenAI foundation model training corpus' : 'Zbieranie treści do trenowania modeli OpenAI', robots: 'zablokowany', blokadaLinia: { numer: 26, tresc: 'Disallow: /' }, xRobotsTag: null, httpKod: 200, ttfbMs: 140, cloudflareIpCheck: false, status: 'zablokowany_robots' },
+        { nazwa: 'ClaudeBot', grupa: 'trening', opisRoli: en ? 'Anthropic LLM training crawler' : 'Korpus treningowy modeli językowych Anthropic', robots: 'zablokowany', blokadaLinia: { numer: 29, tresc: 'Disallow: /' }, xRobotsTag: null, httpKod: 200, ttfbMs: 152, cloudflareIpCheck: false, status: 'zablokowany_robots' },
+        { nazwa: 'Google-Extended', grupa: 'trening', opisRoli: en ? 'Controls Gemini model training (not Google Search)' : 'Steruje treningiem Gemini (nie blokuje wyszukiwarki Google)', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 125, cloudflareIpCheck: false, status: 'ok' },
+        { nazwa: 'Applebot-Extended', grupa: 'trening', opisRoli: en ? 'Apple Intelligence model training' : 'Trenowanie modeli Apple Intelligence', robots: 'zablokowany', blokadaLinia: { numer: 35, tresc: 'Disallow: /' }, xRobotsTag: null, httpKod: 200, ttfbMs: 156, cloudflareIpCheck: false, status: 'zablokowany_robots' },
+        { nazwa: 'Meta-ExternalAgent', grupa: 'trening', opisRoli: en ? 'Meta AI (Llama) training crawler' : 'Trenowanie modeli Meta AI (Llama)', robots: 'zablokowany', blokadaLinia: { numer: 38, tresc: 'Disallow: /' }, xRobotsTag: null, httpKod: 200, ttfbMs: 162, cloudflareIpCheck: false, status: 'zablokowany_robots' },
+        { nazwa: 'CCBot', grupa: 'trening', opisRoli: en ? 'Common Crawl open dataset used by LLM builders' : 'Otwarty zbiór Common Crawl używany do treningu modeli', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 180, cloudflareIpCheck: false, status: 'ok' },
       ],
       politykiRobots: polityki,
     };
@@ -240,6 +261,11 @@ function demoOdpowiedz(surowyUrl, en) {
       procent: spa ? 18 : 81,
       slowBezJs: spa ? 42 : 690,
       h1: spa ? '' : (en ? 'Precision Industrial Solutions & Engineering' : 'Precyzyjne rozwiązania przemysłowe dla firm'),
+      podgladTekst: spa
+        ? (en ? 'Loading application... Please enable JavaScript to view this site.' : 'Ładowanie aplikacji... Włącz obsługę JavaScript w przeglądarce, aby wyświetlić zawartość strony.')
+        : (en
+          ? 'Precision Industrial Solutions & Engineering. Custom CNC machining, laser cutting and surface treatment for B2B manufacturing partners. ISO 9001 certified production plant with 48-hour quote turnaround and dedicated technical support.'
+          : 'Precyzyjne rozwiązania przemysłowe dla firm. Obróbka CNC, cięcie laserowe oraz powłoki techniczne dla przemysłu w całej Polsce. Wycena dokumentacji CAD w 48 godzin, własny park maszynowy i certyfikat jakości ISO 9001.'),
       liczbaH2: spa ? 0 : 5,
       liczbaTabel: spa ? 0 : 1,
       liczbaLinkow: spa ? 3 : 28,
@@ -248,18 +274,21 @@ function demoOdpowiedz(surowyUrl, en) {
       framework: spa ? 'React SPA (CSR)' : 'WordPress',
     },
     boty: [
-      { nazwa: 'OAI-SearchBot', grupa: 'wyszukiwanie', opisRoli: en ? 'ChatGPT Search index & live citations' : 'Indeks wyszukiwarki ChatGPT i cytowania z linkiem', robots: 'dozwolony', httpKod: 200, ttfbMs: 640, cloudflareIpCheck: false, status: 'ok' },
-      { nazwa: 'PerplexityBot', grupa: 'wyszukiwanie', opisRoli: en ? 'Perplexity AI search index & source cards' : 'Indeks odpowiedzi i kart źródeł Perplexity', robots: 'dozwolony', httpKod: 403, ttfbMs: 95, cloudflareIpCheck: false, status: 'konflikt_waf' },
-      { nazwa: 'Claude-SearchBot', grupa: 'wyszukiwanie', opisRoli: en ? 'Anthropic web search & citations' : 'Wyszukiwanie sieciowe i cytowania Claude', robots: 'dozwolony', httpKod: 200, ttfbMs: 685, cloudflareIpCheck: false, status: 'ok' },
-      { nazwa: 'Googlebot', grupa: 'wyszukiwanie', opisRoli: en ? 'Google Search & AI Overviews base index' : 'Klasyczny indeks Google oraz baza AI Overviews', robots: 'dozwolony', httpKod: 200, ttfbMs: 590, cloudflareIpCheck: false, status: 'ok' },
-      { nazwa: 'Bingbot', grupa: 'wyszukiwanie', opisRoli: en ? 'Bing Search & Microsoft Copilot grounding' : 'Indeks Bing oraz zaplecze Microsoft Copilot', robots: 'dozwolony', httpKod: 403, ttfbMs: 88, cloudflareIpCheck: true, status: 'weryfikacja_ip' },
-      { nazwa: 'ChatGPT-User', grupa: 'agent', opisRoli: en ? 'Live page fetch during a user prompt in ChatGPT' : 'Pobieranie strony na żywo podczas rozmowy w ChatGPT', robots: 'dozwolony', httpKod: 200, ttfbMs: 655, cloudflareIpCheck: false, status: 'ok' },
-      { nazwa: 'Perplexity-User', grupa: 'agent', opisRoli: en ? 'On-demand URL visit requested by Perplexity user' : 'Wejście na stronę na żądanie użytkownika Perplexity', robots: 'dozwolony', httpKod: 403, ttfbMs: 92, cloudflareIpCheck: false, status: 'konflikt_waf' },
-      { nazwa: 'Claude-User', grupa: 'agent', opisRoli: en ? 'On-demand fetch triggered inside Claude chat' : 'Pobranie treści wywołane bezpośrednio w rozmowie Claude', robots: 'dozwolony', httpKod: 200, ttfbMs: 702, cloudflareIpCheck: false, status: 'ok' },
-      { nazwa: 'GPTBot', grupa: 'trening', opisRoli: en ? 'OpenAI foundation model training corpus' : 'Zbieranie treści do trenowania modeli OpenAI', robots: 'dozwolony', httpKod: 200, ttfbMs: 630, cloudflareIpCheck: false, status: 'ok' },
-      { nazwa: 'ClaudeBot', grupa: 'trening', opisRoli: en ? 'Anthropic LLM training crawler' : 'Korpus treningowy modeli językowych Anthropic', robots: 'dozwolony', httpKod: 200, ttfbMs: 660, cloudflareIpCheck: false, status: 'ok' },
-      { nazwa: 'Google-Extended', grupa: 'trening', opisRoli: en ? 'Controls Gemini model training (not Google Search)' : 'Steruje treningiem Gemini (nie blokuje wyszukiwarki Google)', robots: 'dozwolony', httpKod: 200, ttfbMs: 615, cloudflareIpCheck: false, status: 'ok' },
-      { nazwa: 'CCBot', grupa: 'trening', opisRoli: en ? 'Common Crawl open dataset used by LLM builders' : 'Otwarty zbiór Common Crawl używany do treningu modeli', robots: 'zablokowany', httpKod: 200, ttfbMs: 645, cloudflareIpCheck: false, status: 'zablokowany_robots' },
+      { nazwa: 'Googlebot', grupa: 'wyszukiwanie', opisRoli: en ? 'Google Search & AI Overviews primary crawler' : 'Klasyczny indeks Google oraz baza AI Overviews', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: 'index, follow', httpKod: 200, ttfbMs: 590, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'OAI-SearchBot', grupa: 'wyszukiwanie', opisRoli: en ? 'ChatGPT Search index & live citations' : 'Indeks wyszukiwarki ChatGPT i cytowania z linkiem', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 640, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'PerplexityBot', grupa: 'wyszukiwanie', opisRoli: en ? 'Perplexity AI search index & source cards' : 'Indeks odpowiedzi i kart źródeł Perplexity', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 403, ttfbMs: 95, cloudflareIpCheck: false, status: 'konflikt_waf' },
+      { nazwa: 'Claude-SearchBot', grupa: 'wyszukiwanie', opisRoli: en ? 'Anthropic web search & citations' : 'Wyszukiwanie sieciowe i cytowania Claude', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 685, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'Bingbot', grupa: 'wyszukiwanie', opisRoli: en ? 'Bing Search & Microsoft Copilot grounding' : 'Indeks Bing oraz zaplecze Microsoft Copilot', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 403, ttfbMs: 88, cloudflareIpCheck: true, status: 'weryfikacja_ip' },
+      { nazwa: 'Applebot', grupa: 'wyszukiwanie', opisRoli: en ? 'Apple Siri & Spotlight Search' : 'Apple Siri oraz wyszukiwarka Spotlight', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 612, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'ChatGPT-User', grupa: 'agent', opisRoli: en ? 'Live page fetch during a user prompt in ChatGPT' : 'Pobieranie strony na żywo podczas rozmowy w ChatGPT', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 655, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'Perplexity-User', grupa: 'agent', opisRoli: en ? 'On-demand URL visit requested by Perplexity user' : 'Wejście na stronę na żądanie użytkownika Perplexity', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 403, ttfbMs: 92, cloudflareIpCheck: false, status: 'konflikt_waf' },
+      { nazwa: 'Claude-User', grupa: 'agent', opisRoli: en ? 'On-demand fetch triggered inside Claude chat' : 'Pobranie treści wywołane bezpośrednio w rozmowie Claude', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 702, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'GPTBot', grupa: 'trening', opisRoli: en ? 'OpenAI foundation model training corpus' : 'Zbieranie treści do trenowania modeli OpenAI', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: 'noai', httpKod: 200, ttfbMs: 630, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'ClaudeBot', grupa: 'trening', opisRoli: en ? 'Anthropic LLM training crawler' : 'Korpus treningowy modeli językowych Anthropic', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 660, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'Google-Extended', grupa: 'trening', opisRoli: en ? 'Controls Gemini model training (not Google Search)' : 'Steruje treningiem Gemini (nie blokuje wyszukiwarki Google)', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 615, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'Applebot-Extended', grupa: 'trening', opisRoli: en ? 'Apple Intelligence model training' : 'Trenowanie modeli Apple Intelligence', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 640, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'Meta-ExternalAgent', grupa: 'trening', opisRoli: en ? 'Meta AI (Llama) training crawler' : 'Trenowanie modeli Meta AI (Llama)', robots: 'dozwolony', blokadaLinia: null, xRobotsTag: null, httpKod: 200, ttfbMs: 652, cloudflareIpCheck: false, status: 'ok' },
+      { nazwa: 'CCBot', grupa: 'trening', opisRoli: en ? 'Common Crawl open dataset used by LLM builders' : 'Otwarty zbiór Common Crawl używany do treningu modeli', robots: 'zablokowany', blokadaLinia: { numer: 14, tresc: 'Disallow: /' }, xRobotsTag: null, httpKod: 200, ttfbMs: 645, cloudflareIpCheck: false, status: 'zablokowany_robots' },
     ],
     politykiRobots: polityki,
   };
@@ -401,7 +430,7 @@ export function TesterRobotowAiClient() {
 
   const w = stan.wynik;
   const domena = w ? (w.domena || wyczyscDomene(w.url || adres)) : '';
-  const ssr = w?.ssrParity || {};
+  const ssr = w?.ssr || w?.ssrParity || {};
   const procentSsr = Math.max(0, Math.min(100, Number(ssr.procent ?? 0)));
   const kolorPaskaSsr = ssr.wykrytySzkieletSpa || procentSsr < 50 ? '#b3261e' : procentSsr < 75 ? '#b45309' : '#047857';
 
@@ -467,6 +496,14 @@ export function TesterRobotowAiClient() {
       );
     }
 
+    const tekstLiniiBlokady = b.blokadaLinia
+      ? (typeof b.blokadaLinia === 'string'
+        ? b.blokadaLinia
+        : (b.blokadaLinia.numer
+          ? (en ? `Line ${b.blokadaLinia.numer} in robots.txt: ${b.blokadaLinia.tresc}` : `Linia ${b.blokadaLinia.numer} w robots.txt: ${b.blokadaLinia.tresc}`)
+          : b.blokadaLinia.tresc))
+      : null;
+
     return (
       <tr key={b.nazwa} style={b.status === 'konflikt_waf' ? { background: 'rgba(179, 38, 30, 0.04)' } : undefined}>
         <th scope="row" style={{ textAlign: 'left' }}>
@@ -477,10 +514,20 @@ export function TesterRobotowAiClient() {
           <span className={`rai-pigulka ${dozwolonyRobots ? 'rai-pigulka--ok' : 'rai-pigulka--uwaga'}`}>
             {dozwolonyRobots ? (en ? 'Allow' : 'Dozwolony') : (en ? 'Disallow' : 'Zablokowany')}
           </span>
+          {tekstLiniiBlokady && (
+            <code style={{ display: 'block', marginTop: '0.28rem', fontSize: '0.72rem', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz-2)', whiteSpace: 'normal', overflowWrap: 'anywhere' }}>
+              {tekstLiniiBlokady}
+            </code>
+          )}
         </td>
         <td style={{ fontVariantNumeric: 'tabular-nums' }}>
           <strong>{b.httpKod || '-'}</strong>
           {Number.isFinite(b.ttfbMs) ? <span className="narz-mikro" style={{ display: 'block', margin: 0 }}>{b.ttfbMs.toLocaleString(jezyk)} ms</span> : null}
+          {b.xRobotsTag && (
+            <code style={{ display: 'inline-block', marginTop: '0.25rem', padding: '0.1rem 0.35rem', borderRadius: '5px', background: 'rgba(15,23,42,0.06)', fontSize: '0.7rem', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>
+              X-Robots-Tag: {b.xRobotsTag}
+            </code>
+          )}
         </td>
         <td>{odznakaStatusu}</td>
       </tr>
@@ -540,7 +587,7 @@ export function TesterRobotowAiClient() {
             />
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_roboty_ai_start">
               {stan.status === 'loading'
-                ? (en ? 'Testing 12 bots & SSR...' : 'Testuję 12 botów i SSR...')
+                ? (en ? 'Testing 15 bots & SSR...' : 'Testuję 15 botów i SSR...')
                 : (en ? 'Run AI Crawler Check' : 'Sprawdź roboty AI i SSR')}
             </button>
           </div>
@@ -555,8 +602,8 @@ export function TesterRobotowAiClient() {
 
         <p className="narz-mikro" style={{ margin: 0 }}>
           {en
-            ? 'Free, no sign-up and no email: simultaneously checks robots.txt rules, real HTTP firewall responses for 12 AI crawlers, HTML content visible without JavaScript (SSR parity), and generates a ready-to-deploy robots.txt.'
-            : 'Za darmo, bez rejestracji i bez e-maila: narzędzie jednocześnie sprawdza reguły robots.txt, realny kod HTTP zapory serwerowej dla 12 botów AI, widoczność treści bez JavaScriptu (parzystość SSR) i generuje gotowy plik robots.txt.'}
+            ? 'Free, no sign-up and no email: simultaneously checks robots.txt rules, real HTTP firewall responses for 15 AI & search crawlers, HTML content visible without JavaScript (SSR parity), and generates a ready-to-deploy robots.txt.'
+            : 'Za darmo, bez rejestracji i bez e-maila: narzędzie jednocześnie sprawdza reguły robots.txt, realny kod HTTP zapory serwerowej dla 15 botów AI i wyszukiwarek, widoczność treści bez JavaScriptu (parzystość SSR) i generuje gotowy plik robots.txt.'}
         </p>
 
         {stan.status === 'loading' && (
@@ -564,12 +611,12 @@ export function TesterRobotowAiClient() {
             kroki={en
               ? [
                   'Fetching robots.txt, /llms.txt and raw server HTML without JavaScript',
-                  'Probing HTTP response codes and TTFB across 12 AI crawlers',
+                  'Probing HTTP response codes, X-Robots-Tag and TTFB across 15 crawlers',
                   'Measuring SSR vs JS content parity and building your robots.txt policy',
                 ]
               : [
                   'Pobieramy robots.txt, /llms.txt oraz surowy kod HTML bez JavaScriptu',
-                  'Sprawdzamy kody odpowiedzi HTTP i TTFB dla 12 robotów AI',
+                  'Sprawdzamy kody odpowiedzi HTTP, X-Robots-Tag i TTFB dla 15 robotów',
                   'Liczymy parzystość treści SSR i budujemy polityki zapory robots.txt',
                 ]}
             co={1300}
@@ -693,12 +740,26 @@ export function TesterRobotowAiClient() {
                   <strong>{en ? 'Visible H1:' : 'Odczytany H1 bez JS:'}</strong> {ssr.h1}
                 </p>
               )}
+              {ssr.podgladTekst && (
+                <details style={{ marginTop: '0.65rem', padding: '0.7rem 0.9rem', borderRadius: '12px', background: 'var(--w-papier, #f6f4ef)', border: '1px solid var(--w-linia, rgba(30,30,30,0.1))' }}>
+                  <summary style={{ cursor: 'pointer', fontWeight: 600, fontSize: '0.88rem', color: 'var(--w-tusz)' }}>
+                    {en
+                      ? 'First 400 characters of clean SSR text visible to AI bots'
+                      : 'Pierwsze 400 znaków czystego tekstu SSR widocznego dla botów AI'}
+                  </summary>
+                  <p style={{ margin: '0.55rem 0 0', fontSize: '0.84rem', lineHeight: 1.55, color: 'var(--w-tusz-2)', fontFamily: 'var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace)', overflowWrap: 'anywhere' }}>
+                    {ssr.podgladTekst}
+                  </p>
+                </details>
+              )}
             </div>
 
-            {/* 3. Macierz 12 botow AI: robots.txt vs realny kod zapory HTTP */}
+            {/* 3. Macierz 15 botow AI: robots.txt vs realny kod zapory HTTP */}
             <div style={{ borderTop: '1px solid var(--w-linia)', paddingTop: '1.25rem' }}>
               <h2 className="narz-h2" style={{ marginTop: 0 }}>
-                {en ? '12-Bot Split Matrix: robots.txt Rule vs Live Server Firewall' : 'Macierz 12 robotów AI: deklaracja robots.txt kontra zapora HTTP'}
+                {en
+                  ? `${boty.length || 15}-Bot Split Matrix: robots.txt Rule vs Live Server Firewall`
+                  : `Macierz ${boty.length || 15} robotów AI: deklaracja robots.txt kontra zapora HTTP`}
               </h2>
               <p className="narz-mikro" style={{ marginBottom: '0.85rem' }}>
                 {en

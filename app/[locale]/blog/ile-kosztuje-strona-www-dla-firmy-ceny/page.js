@@ -21,6 +21,8 @@ import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 import { LASTMOD } from '@/lib/lastmod';
 
@@ -79,9 +81,10 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 Aug 01, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               How Much Does a Website Cost? Business Website Pricing and What’s Included (2026)
             </h1>
+            <Byline sciezka="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" data="2026-08-01" takzeEn />
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -91,6 +94,9 @@ export default async function ArticleWebsitePricingPage({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox etykieta="Short answer">
+                In 2026, a basic landing page or 5-page business brochure website typically costs €300 to €1,200 net, while multi-page corporate sites, e-commerce stores, and custom CRM or multilingual builds cost proportionally more. Final pricing depends on custom design versus templates, copywriting, technical SEO setup, integrations, and recurring annual hosting and maintenance costs.
+              </AnswerBox>
               <p className="lead">
                 A simple brochure website usually falls into a wide price range, a company website with a dozen or more pages costs more, and online stores start at amounts that can rise significantly with complex integrations. These are broad ranges because the final <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>price of a website</Link> depends on several variables, which I’ll cover below.
               </p>
@@ -478,9 +484,10 @@ export default async function ArticleWebsitePricingPage({ params }) {
             </div>
             {/* The English branch above has its own <h1>. Only one of the two branches ever
                 renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Ile kosztuje strona internetowa dla firmy: ceny i co zawierają
             </h1>
+            <Byline sciezka="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" data="2026-08-01" takzeEn />
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -490,6 +497,9 @@ export default async function ArticleWebsitePricingPage({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox>
+                W 2026 roku prosty landing page lub strona wizytówkowa do 5 podstron kosztuje według naszego przeglądu rynku około 1 300-5 000 zł netto, natomiast rozbudowane serwisy firmowe B2B i sklepy e-commerce wyceniane są wyżej. O końcowym budżecie decydują indywidualny projekt graficzny, wsad treści, techniczne SEO, integracje z CRM lub płatnościami oraz roczne utrzymanie.
+              </AnswerBox>
               <p className="lead">
                 Prosta strona wizytówkowa w Polsce kosztuje zwykle w szerokim zakresie cenowym, strona firmowa z kilkunastoma podstronami jest droższa, a sklepy internetowe zaczynają się od kwoty, która może znacznie wzrosnąć przy rozbudowanych integracjach. To szerokie widełki, bo <Link href="/projektowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cena strony internetowej</Link> zależy od kilku zmiennych, które omówię poniżej.
               </p>

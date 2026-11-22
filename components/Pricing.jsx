@@ -6,10 +6,12 @@ import { sectionId } from '@/lib/anchors';
 import { hash } from '@/lib/anchors';
 import { Link } from '../i18n/routing';
 import { PANEL_DEMO_URL } from '@/lib/panel';
+import kosm from './KosmetykaSekcji.module.css';
 
 export default function Pricing({ isMainContent = false }) {
   const lang = useLocale();
   const t = useTranslations('pricing');
+  const t3 = (pl, en, de) => (lang === 'de' ? de : lang === 'pl' ? pl : en);
 
   const Wrapper = isMainContent ? 'section' : 'aside';
   const wrapperProps = isMainContent ? {} : { 'data-nosnippet': 'true', 'aria-label': 'Cennik' };
@@ -32,6 +34,10 @@ export default function Pricing({ isMainContent = false }) {
           {/* Package 1: SEO Standard */}
           <RevealItem className="pricing-card">
             <div className="pricing-header">
+              <div className={kosm.cennikKodNagl} aria-hidden="true">
+                <span className={kosm.cennikKodNr}>{t3('PAKIET 01', 'PLAN 01', 'PAKET 01')}</span>
+                <span className={kosm.cennikKodIndeks}>01 / 03</span>
+              </div>
               <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
                 <span className="pricing-kicker-gwiazdka">✳</span>
                 <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET SEO' : 'SEO PACKAGE'}</span>
@@ -90,6 +96,10 @@ export default function Pricing({ isMainContent = false }) {
               {lang === 'pl' ? 'NAJCZĘŚCIEJ WYBIERANY · SEO + AI' : 'MOST POPULAR · SEO + AI'}
             </span>
             <div className="pricing-header">
+              <div className={kosm.cennikKodNagl} aria-hidden="true">
+                <span className={kosm.cennikKodNr}>{t3('PAKIET 02', 'PLAN 02', 'PAKET 02')}</span>
+                <span className={kosm.cennikKodIndeks}>02 / 03</span>
+              </div>
               <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
                 <span className="pricing-kicker-gwiazdka">✳</span>
                 <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET SEO' : 'SEO PACKAGE'}</span>
@@ -145,6 +155,10 @@ export default function Pricing({ isMainContent = false }) {
           <RevealItem className="pricing-card featured">
             <span className="pricing-featured-badge">{lang === 'pl' ? 'STRONA WWW W CENIE' : 'WEBSITE INCLUDED'}</span>
             <div className="pricing-header">
+              <div className={kosm.cennikKodNagl} aria-hidden="true">
+                <span className={kosm.cennikKodNr}>{t3('PAKIET 03', 'PLAN 03', 'PAKET 03')}</span>
+                <span className={kosm.cennikKodIndeks}>03 / 03</span>
+              </div>
               <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
                 <span className="pricing-kicker-gwiazdka">✳</span>
                 <span className="pricing-kicker-glowny">{lang === 'pl' ? 'PAKIET WWW + SEO' : 'WEB + SEO PACKAGE'}</span>

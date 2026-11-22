@@ -1,0 +1,46 @@
+{
+  "name": "llms-txt-check",
+  "version": "1.0.0",
+  "description": "Zero-dependency CLI validator for /llms.txt, /llms-full.txt, LLM token budgets, and AI search crawler directives in /robots.txt (OAI-SearchBot, PerplexityBot, Claude-SearchBot, GPTBot, Google-Extended).",
+  "type": "module",
+  "bin": {
+    "llms-txt-check": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node ./bin/cli.mjs",
+    "smoke": "node ./bin/cli.mjs https://www.ai-seo-company.pl"
+  },
+  "homepage": "https://www.ai-seo-company.pl/en/tools/llms-txt-generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FSliwa/ai-crawler-robots-txt-presets.git",
+    "directory": "packages/llms-txt-check"
+  },
+  "bugs": {
+    "url": "https://github.com/FSliwa/ai-crawler-robots-txt-presets/issues"
+  },
+  "author": "Filip Śliwa <kontakt@ai-seo-company.pl> (https://www.ai-seo-company.pl/)",
+  "license": "MIT",
+  "keywords": [
+    "llms.txt",
+    "llms-full.txt",
+    "robots.txt",
+    "geo",
+    "generative-engine-optimization",
+    "ai-seo",
+    "oai-searchbot",
+    "perplexitybot",
+    "claude-searchbot",
+    "gptbot",
+    "google-extended",
+    "seo",
+    "cli"
+  ]
+}

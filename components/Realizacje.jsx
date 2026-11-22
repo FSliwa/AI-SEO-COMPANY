@@ -16,6 +16,7 @@
 
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { SERIE_GSC } from '@/lib/realizacjeGsc';
+import kosm from './KosmetykaSekcji.module.css';
 
 const MIESIACE_PL = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'];
 const MIESIACE_PL_DOP = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
@@ -402,8 +403,18 @@ export default function Realizacje({ pozycje, daneGsc: daneZewn, lang, etykieta 
             id={`${baza}-panel-${p.id}`}
             aria-labelledby={`${baza}-zakladka-${p.id}`}
             hidden={aktywna !== i}
-            className="realizacje-karta w-karta"
+            className={`realizacje-karta w-karta ${kosm.realizacjeKartaZBelka}`}
           >
+            <div className={kosm.realizacjeOknoBelka} aria-hidden="true">
+              <span className={kosm.oknoLewa}>
+                <span className={kosm.oknoKropki}><i /><i /><i /></span>
+                <span className={kosm.oknoDomena}>{p.domena || p.id}</span>
+              </span>
+              <span className={kosm.oknoStatusPill}>
+                <span className={kosm.oknoStatusKropka} />
+                <span>{lang === 'pl' ? 'Dane GSC' : lang === 'de' ? 'GSC-Daten' : 'GSC Verified'}</span>
+              </span>
+            </div>
             <div className="realizacje-marka">{p.logo}</div>
             {/* Nazwa klienta tylko dla czytników i wyszukiwarek: cztery karty
                 nie mają czterech identycznych nagłówków, a wygląd zostaje jak w makiecie. */}

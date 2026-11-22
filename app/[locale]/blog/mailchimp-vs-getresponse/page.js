@@ -5,6 +5,8 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 
 export async function generateMetadata({ params }) {
@@ -191,15 +193,17 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
+              fontWeight: 500, 
               color: 'var(--w-tusz)', 
-              marginBottom: '2rem', 
+              marginBottom: '1.5rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
               {locale === 'en' ? 'Mailchimp vs GetResponse: Which to Choose for Your Business?' : 'Mailchimp vs GetResponse: którą wybrać dla Twojej firmy?'}
             </h1>
+
+            <Byline sciezka="/blog/mailchimp-vs-getresponse" data="2026-08-09" />
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -214,6 +218,9 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
                 <p>English translation is currently unavailable for this article.</p>
               ) : (
                 <>
+                  <AnswerBox>
+                    Wybór między Mailchimp a GetResponse w 2026 roku zależy głównie od wielkości bazy i lejka sprzedaży: do około 2 500 kontaktów przy prostych wysyłkach i szybkich integracjach wygodniejszy bywa Mailchimp, a powyżej 5 000 adresów tańszy staje się GetResponse (359 zł wobec 88 EUR w Mailchimp Standard), oferując nielimitowane wysyłki, webinary i lejki.
+                  </AnswerBox>
                   <p>Mailchimp czy GetResponse? Odpowiedź sprowadza się do dwóch rzeczy: rozmiaru listy i tego, czy w Twoim procesie pojawiają się webinary albo lejki sprzedażowe.</p>
 
                   <p>Wybierz <strong>GetResponse</strong>, jeśli Twoja lista przekracza 5 000 kontaktów, potrzebujesz webinarów lub lejków sprzedażowych w jednym narzędziu, albo zależy Ci na zaawansowanej automatyzacji. Wybierz <strong>Mailchimp</strong>, jeśli dopiero zaczynasz, masz małą listę i chcesz szybko nadać kształt pierwszym kampaniom bez długiego wdrożenia.</p>
@@ -352,7 +359,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Ceny Mailchimp i GetResponse podano w tabeli wyłącznie jako <strong>stawki katalogowe w rozliczeniu miesięcznym</strong>: dla GetResponse w złotówkach, bo tak fakturuje polskich klientów, dla Mailchimpa w euro, bo w tej walucie płaci polska firma - cennika w złotówkach Mailchimp nie prowadzi. Wszystkie stawki są kwotami netto.</p>
 
-                  <p>To rozróżnienie jest ważne, bo kalkulator Mailchimpa eksponuje nie cenę katalogową, lecz <strong>ofertę wprowadzającą: 15% taniej przez pierwsze 12 miesięcy</strong>, po których stawka wraca do pełnej. Duża liczba na karcie planu to właśnie ta promocja, a cena docelowa kryje się w drobnym dopisku „then, starts at". Przykładowo Standard przy 20 001-25 000 kontaktów pokazuje 230 €, ale realnie kosztuje 271 €; Premium na tym progu to 460 € w promocji i 542 € po roku. Rabat obowiązuje od 10 000 kontaktów w górę - poniżej tego progu dostępny jest wyłącznie 14-dniowy okres próbny.</p>
+                  <p>To rozróżnienie jest ważne, bo kalkulator Mailchimpa eksponuje nie cenę katalogową, lecz <strong>ofertę wprowadzającą: 15% taniej przez pierwsze 12 miesięcy</strong>, po których stawka wraca do pełnej. Duża liczba na karcie planu to właśnie ta promocja, a cena docelowa kryje się w drobnym dopisku „then, starts at&quot;. Przykładowo Standard przy 20 001-25 000 kontaktów pokazuje 230 €, ale realnie kosztuje 271 €; Premium na tym progu to 460 € w promocji i 542 € po roku. Rabat obowiązuje od 10 000 kontaktów w górę - poniżej tego progu dostępny jest wyłącznie 14-dniowy okres próbny.</p>
 
                   <h3>Pełna drabinka Mailchimpa w euro (ceny katalogowe)</h3>
                   <div className="table-container">
@@ -466,7 +473,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <h2 id="jak-wybrac-miedzy-mailchimp-a-getresponse">Jak wybrać między Mailchimp a GetResponse?</h2>
                   
-                  <p>Pytanie „jaki program do e-mail marketingu wybrać" rzadko sprowadza się do jednego kryterium. Poniżej znajdziesz uporządkowaną listę kroków i pytań, które warto zadać przed podpisaniem umowy.</p>
+                  <p>Pytanie „jaki program do e-mail marketingu wybrać&quot; rzadko sprowadza się do jednego kryterium. Poniżej znajdziesz uporządkowaną listę kroków i pytań, które warto zadać przed podpisaniem umowy.</p>
 
                   <p><strong>Checklista wyboru:</strong></p>
                   <ol>
@@ -502,7 +509,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Typowy harmonogram migracji przy liście do 10 000 kontaktów to 2-4 tygodnie. Przy złożonych automatyzacjach i wielu segmentach może to potrwać 6-8 tygodni.</p>
 
-                  <p>Porada profesjonalisty: <em>Przed migracją wyślij kampanię reaktywacyjną do nieaktywnych kontaktów. Przenoszenie „martwej" bazy do nowego narzędzia obniży deliverability od pierwszego dnia i może trwale zaszkodzić reputacji domeny.</em></p>
+                  <p>Porada profesjonalisty: <em>Przed migracją wyślij kampanię reaktywacyjną do nieaktywnych kontaktów. Przenoszenie „martwej&quot; bazy do nowego narzędzia obniży deliverability od pierwszego dnia i może trwale zaszkodzić reputacji domeny.</em></p>
 
                   <p>Warto też pamiętać o kwestii <a href="https://fibly.pl/pomoc/klienci/profil-klienta/" target="_blank" rel="nofollow noopener noreferrer">profilowania klientów i zgodności z danymi</a> przy imporcie bazy. Poprawne odwzorowanie pól zgód to nie tylko wymóg RODO, lecz też warunek działania segmentów i automatyzacji po migracji.</p>
 
@@ -566,7 +573,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <p>Jak ocenialiśmy funkcje:</p>
                   <ul>
-                    <li>Funkcje oznaczone jako „natywne" są dostępne bez zewnętrznych integracji, ale niekoniecznie bez dopłaty - tam, gdzie funkcja wymaga wyższego planu lub płatnego dodatku, zaznaczyliśmy to wprost.</li>
+                    <li>Funkcje oznaczone jako „natywne&quot; są dostępne bez zewnętrznych integracji, ale niekoniecznie bez dopłaty - tam, gdzie funkcja wymaga wyższego planu lub płatnego dodatku, zaznaczyliśmy to wprost.</li>
                     <li>Podajemy ceny katalogowe, a nie promocyjne. Kalkulator Mailchimpa domyślnie pokazuje ofertę wprowadzającą na pierwsze 12 miesięcy, więc kwota widoczna na karcie planu jest niższa od tej, którą zapłacisz w drugim roku.</li>
                     <li>Wszystkie stawki dotyczą rozliczenia miesięcznego. GetResponse obniża je o ok. 18% przy płatności rocznej; u Mailchimpa rabat 15% na 12 miesięcy obowiązuje dopiero od 10 000 kontaktów.</li>
                     <li>Świadomie nie podajemy jednej liczby dla dostarczalności. Publikowane wskaźniki inbox placement wahają się między rundami testów i zależą od metodyki, więc zestawianie pojedynczych liczb jako porównania obu platform byłoby mylące. Realna dostarczalność zależy przede wszystkim od higieny listy, uwierzytelnienia domeny (SPF, DKIM, DMARC) i historii wysyłek.</li>
@@ -579,7 +586,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
 
                   <h2 id="kluczowe-wnioski">Kluczowe wnioski</h2>
                   
-                  <p>Tytuł „najlepszy e-mail marketing 2026" nie należy się w tym zestawieniu żadnej z platform - wygrywa ta, która pasuje do rozmiaru listy i modelu sprzedaży. GetResponse wygrywa przy listach powyżej 5 000 kontaktów i wszędzie tam, gdzie webinary lub złożone lejki są częścią strategii, natomiast Mailchimp pozostaje najlepszym wyborem na szybki start i przy małej bazie.</p>
+                  <p>Tytuł „najlepszy e-mail marketing 2026&quot; nie należy się w tym zestawieniu żadnej z platform - wygrywa ta, która pasuje do rozmiaru listy i modelu sprzedaży. GetResponse wygrywa przy listach powyżej 5 000 kontaktów i wszędzie tam, gdzie webinary lub złożone lejki są częścią strategii, natomiast Mailchimp pozostaje najlepszym wyborem na szybki start i przy małej bazie.</p>
 
                   <div className="table-container">
                     <table>
@@ -668,7 +675,7 @@ export default async function ArticleMailchimpVsGetResponse({ params }) {
                     <li><a href="https://developers.google.com/tag-platform/security/concepts/consent-mode" target="_blank" rel="noopener noreferrer">Consent Mode: dokumentacja Google</a> - Google Developers; opis implementacji Consent Mode v2, przydatny przy konfiguracji zbierania zgód w kampaniach e-mail.</li>
                     <li><a href="https://www.mailercloud.com/blog/getresponse-vs-mailchimp" target="_blank" rel="noopener noreferrer">GetResponse vs Mailchimp: platforma konwersyjna vs narzędzie dla początkujących</a> - MailerCloud; przegląd funkcjonalny z perspektywy scenariuszy użycia.</li>
                     <li><a href="https://www.g2.com/products/getresponse/reviews" target="_blank" rel="noopener noreferrer">GetResponse: recenzje użytkowników na G2</a> - G2; opinie użytkowników dotyczące wsparcia, funkcji i użyteczności. Sentyment na bieżąco aktualizowany.</li>
-                    <li><a href="https://www.emailsoftwareinsights.com/compare/getresponse-vs-mailchimp/" target="_blank" rel="noopener noreferrer">GetResponse vs Mailchimp: scenariusze użycia</a> - EmailSoftwareInsights; porównanie „best for" dla e-commerce, kursów i newsletterów.</li>
+                    <li><a href="https://www.emailsoftwareinsights.com/compare/getresponse-vs-mailchimp/" target="_blank" rel="noopener noreferrer">GetResponse vs Mailchimp: scenariusze użycia</a> - EmailSoftwareInsights; porównanie „best for&quot; dla e-commerce, kursów i newsletterów.</li>
                   </ul>
 
                   <p>Dane cenowe i limity darmowych planów są szczególnie podatne na zmiany. Przed zakupem zawsze sprawdzaj aktualne stawki na stronach GetResponse.com i Mailchimp.com.</p>

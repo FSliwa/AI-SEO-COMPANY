@@ -20,6 +20,8 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleUXAudit({ params }) {
@@ -66,15 +68,17 @@ export default async function ArticleUXAudit({ params }) {
 
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
+              fontWeight: 500, 
               color: 'var(--w-tusz)', 
-              marginBottom: '2rem', 
+              marginBottom: '1.5rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
               {locale === 'en' ? 'Website UX Audit for Conversion: A Practical Guide' : 'Audyt UX strony: przewodnik dla zespołów konwersji'}
             </h1>
+
+            <Byline sciezka="/blog/audyt-ux-strony" data={dataPubl.iso} takzeEn />
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -87,15 +91,18 @@ export default async function ArticleUXAudit({ params }) {
             <div className="article-content">
               {locale === 'en' ? (
                 <>
+                  <AnswerBox etykieta="Short answer">
+                    A website UX audit evaluates real user journeys through GA4 event verification, funnel drop-off analysis, usability heuristics, and moderated user tests to remove conversion blockers. Depending on scope, a heuristic review takes 2 to 5 days and a full audit takes 1 to 4 weeks, ending in an ICE-scored backlog rather than subjective design opinions.
+                  </AnswerBox>
                   <p className="lead">
-                    A website UX audit - also called a usability audit - is a systematic, data- and test-driven evaluation of the user experience, aimed at identifying the changes with the biggest impact on conversion. The client receives two things: an analytical view showing where users abandon the path, and a backlog of recommendations with priorities and implementation cost estimates. It is not a designer's wish list; it is a diagnosis backed by evidence.
+                    A website UX audit - also called a usability audit - is a systematic, data- and test-driven evaluation of the user experience, aimed at identifying the changes with the biggest impact on conversion. The client receives two things: an analytical view showing where users abandon the path, and a backlog of recommendations with priorities and implementation cost estimates. It is not a designer&apos;s wish list; it is a diagnosis backed by evidence.
                   </p>
 
                   <p>What to do in the first 48 hours after deciding to audit:</p>
                   <ul>
                     <li>Check the measurement setup in GA4: verify that key events (add to cart, sign-up, purchase) are recorded correctly and without duplicates.</li>
                     <li>Pick one path to optimise - the checkout funnel or the sign-up form - and establish its current completion rate as the baseline.</li>
-                    <li>Define the audit's KPIs: conversion rate, drop-off rate at a specific step, time to purchase.</li>
+                    <li>Define the audit&apos;s KPIs: conversion rate, drop-off rate at a specific step, time to purchase.</li>
                     <li>Collect known problems and hypotheses from sales and customer support - the questions you get most often are the purest signal of what the site fails to say.</li>
                   </ul>
 
@@ -157,7 +164,7 @@ export default async function ArticleUXAudit({ params }) {
                   <h3>Qualitative analysis</h3>
                   <ul>
                     <li>User testing: 3-8 tasks performed by participants matching the customer profile.</li>
-                    <li>Heuristic review: usability assessment against Jakob Nielsen's ten heuristics or your own checklist. Nielsen Norman Group recommends 3-5 people evaluating independently - a single auditor catches only part of the problems, and beyond five the gains are small.</li>
+                    <li>Heuristic review: usability assessment against Jakob Nielsen&apos;s ten heuristics or your own checklist. Nielsen Norman Group recommends 3-5 people evaluating independently - a single auditor catches only part of the problems, and beyond five the gains are small.</li>
                     <li>Stakeholder interviews: collecting business context and hypotheses from the team.</li>
                   </ul>
 
@@ -177,11 +184,11 @@ export default async function ArticleUXAudit({ params }) {
                     <li>Form analysis: fields causing abandonment, error messages, inline validation.</li>
                     <li>Checkout path: number of steps, CTA consistency, payment error handling.</li>
                     <li>Trust analysis: visibility of reviews, security certificates, return policy.</li>
-                    <li>Value proposition tests: does the homepage or landing page heading answer "why here, why now".</li>
+                    <li>Value proposition tests: does the homepage or landing page heading answer &quot;why here, why now&quot;.</li>
                   </ul>
 
                   <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
-                    Pro Tip: <em>With low traffic, the audit's weight shifts to qualitative methods. Nielsen's rule says five observed users catch about 85% of usability problems - enough to build a backlog even when monthly sessions are too few for statistically reliable GA4 funnels.</em>
+                    Pro Tip: <em>With low traffic, the audit&apos;s weight shifts to qualitative methods. Nielsen&apos;s rule says five observed users catch about 85% of usability problems - enough to build a backlog even when monthly sessions are too few for statistically reliable GA4 funnels.</em>
                   </div>
 
                   <h2 id="how-a-ux-audit-runs-step-by-step">How does a UX audit run, step by step?</h2>
@@ -190,7 +197,7 @@ export default async function ArticleUXAudit({ params }) {
                   <h3>Process stages</h3>
                   <ol>
                     <li><strong>Goal and KPI definition</strong> - establishing what the audit should measure and which metrics count as success.</li>
-                    <li><strong>Measurement verification</strong> - checking GA4 events, tags and recording-tool configuration before any diagnosis. If events still need to be configured or repaired, the order of steps is covered in the <a href="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik" hrefLang="pl">guide to configuring GA4 events in Google Tag Manager</a> (in Polish).</li>
+                    <li><strong>Measurement verification</strong> - checking GA4 events, tags and recording-tool configuration before any diagnosis. If events still need to be configured or repaired, the order of steps is covered in the <Link href="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik" locale="pl" hrefLang="pl">guide to configuring GA4 events in Google Tag Manager</Link> (in Polish).</li>
                     <li><strong>Quantitative analysis</strong> - path explorations, segmentation, identifying the steps with the biggest drop-off.</li>
                     <li><strong>Heuristic review</strong> - expert assessment of the interface against agreed criteria.</li>
                     <li><strong>User testing</strong> - observing real behaviour on key tasks.</li>
@@ -233,13 +240,13 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p>The quick review ends with a prioritised report and works on a small budget, or when you need one path diagnosed before deciding on a wider scope. The full audit delivers the complete set from the list above - choose it before a redesign (our free <Link href="/narzedzia/makieta-redesignu">website redesign mockup</Link> shows what a new homepage could look like), or when abandonment is high and nobody knows what causes it.</p>
 
-                  <p>Whether a full audit closes in a week or takes a month is decided by three things, not by site size: the number of paths in scope, the state of measurement (reconfiguring GA4 events can absorb the first week) and whether user tests need external recruitment or participants from the client's own base will do. A store with one funnel and correctly configured analytics can be audited in a week; a site with five funnels, multiple language variants and measurement in need of repair takes the full four.</p>
+                  <p>Whether a full audit closes in a week or takes a month is decided by three things, not by site size: the number of paths in scope, the state of measurement (reconfiguring GA4 events can absorb the first week) and whether user tests need external recruitment or participants from the client&apos;s own base will do. A store with one funnel and correctly configured analytics can be audited in a week; a site with five funnels, multiple language variants and measurement in need of repair takes the full four.</p>
 
                   <p>For prioritising recommendations, ICE works well: you score every backlog item on three dimensions - conversion impact, confidence in the effect, and ease of implementation. The result is the product of the three values on a 1-10 scale. A change scoring ICE = 8 × 7 × 9 goes to the top of the queue even if it is not visually spectacular. RICE works the same way with a reach estimate added, useful on large sites with many user segments.</p>
 
-                  <p>Two practical notes on scoring. Lower the confidence when you rely on a single data source or on "best practices" without your own observations - a recommendation backed by a session recording and a user test deserves a higher score than one derived from heuristics alone. Ease accounts for developer dependency: a task requiring a sprint scores lower than a copy change the marketing team can ship itself.</p>
+                  <p>Two practical notes on scoring. Lower the confidence when you rely on a single data source or on &quot;best practices&quot; without your own observations - a recommendation backed by a session recording and a user test deserves a higher score than one derived from heuristics alone. Ease accounts for developer dependency: a task requiring a sprint scores lower than a copy change the marketing team can ship itself.</p>
 
-                  <p>The backlog handed to the implementation team should name an owner and a success metric for every task. A sample entry: <em>"Inline validation in the sign-up form - owner: frontend team - metric: sign-up step completion rate, measured 4-6 weeks after rollout against a control group"</em>. Without an owner and a metric, a backlog item is an observation, not a task.</p>
+                  <p>The backlog handed to the implementation team should name an owner and a success metric for every task. A sample entry: <em>&quot;Inline validation in the sign-up form - owner: frontend team - metric: sign-up step completion rate, measured 4-6 weeks after rollout against a control group&quot;</em>. Without an owner and a metric, a backlog item is an observation, not a task.</p>
 
                   <h2 id="tools-and-ga4-explorations">Which tools matter and how to use GA4 Explorations?</h2>
                   <p>Website UX testing tools fall into three groups: quantitative analytics, recordings and heatmaps, and user testing. The list below is a starting point, not a requirement - any tool that exports user paths and lets you watch a session is fit for this work.</p>
@@ -264,7 +271,7 @@ export default async function ArticleUXAudit({ params }) {
                     <li>Choose the <strong>closed</strong> mode if you are analysing a specific funnel (e.g. cart → shipping details → payment → confirmation).</li>
                     <li>Limit the funnel to a maximum of 10 steps; more are not supported. (Path exploration, a different report, shows the sequences users actually follow and has no closed mode.)</li>
                     <li>Before interpreting results, confirm in DebugView that events on every step are recorded correctly.</li>
-                    <li>Break the path down by device - in the right-hand panel choose the <strong>Breakdown</strong> dimension → <em>Device category</em>; payment-step drop-off is often noticeably higher on mobile than on desktop. Mind this dimension's limitation: a user is assigned to the device on which they <strong>entered</strong> the path and stays in that bucket on all subsequent steps. Someone who browsed on a phone and paid on a computer counts as mobile at purchase too - in stores with frequent device switching this inflates mobile conversion and deflates desktop.</li>
+                    <li>Break the path down by device - in the right-hand panel choose the <strong>Breakdown</strong> dimension → <em>Device category</em>; payment-step drop-off is often noticeably higher on mobile than on desktop. Mind this dimension&apos;s limitation: a user is assigned to the device on which they <strong>entered</strong> the path and stays in that bucket on all subsequent steps. Someone who browsed on a phone and paid on a computer counts as mobile at purchase too - in stores with frequent device switching this inflates mobile conversion and deflates desktop.</li>
                   </ol>
 
                   <p>The usual traps: double-counted events (e.g. a <code>purchase</code> event firing twice through a tag error), no device breakdown, ignoring how skipped steps are counted, and confusing user counts with purchase counts. If the same user completes the path several times in the selected date range, Analytics records only the first sequence - the report shows how many <strong>users</strong> completed the path, not how many transactions there were. In a store with a high share of returning customers those two numbers diverge significantly. One broken event can make a working path look broken.</p>
@@ -274,15 +281,15 @@ export default async function ArticleUXAudit({ params }) {
                   </div>
 
                   <h2 id="most-common-ux-problems">Which UX problems do audits find most often?</h2>
-                  <p>The question of how to improve a site's UX usually comes down to the four problem categories below. Knowing them upfront speeds up hypothesis-building and shortens the analysis. Two things covered separately are not problem categories but return in nearly every audit: CTA labels, because they are the single most frequent swap landing in the backlog, and the team's own assessment bias.</p>
+                  <p>The question of how to improve a site&apos;s UX usually comes down to the four problem categories below. Knowing them upfront speeds up hypothesis-building and shortens the analysis. Two things covered separately are not problem categories but return in nearly every audit: CTA labels, because they are the single most frequent swap landing in the backlog, and the team&apos;s own assessment bias.</p>
 
-                  <p><strong>Form problems</strong> are the most common cause of abandonment at sign-up and checkout. Bad field labels, no inline validation (the error appears only after clicking "Submit"), unreadable error messages and too many required fields are the classic blockers. A user who once sees a red message with no explanation of what to fix often simply closes the tab.</p>
+                  <p><strong>Form problems</strong> are the most common cause of abandonment at sign-up and checkout. Bad field labels, no inline validation (the error appears only after clicking &quot;Submit&quot;), unreadable error messages and too many required fields are the classic blockers. A user who once sees a red message with no explanation of what to fix often simply closes the tab.</p>
 
-                  <p><strong>Unoptimised paths</strong> mean too many steps, distractions in the form of unnecessary links, and inconsistent CTAs. If the product-page button says "Add to cart" and the next screen offers "Continue shopping" instead of "Go to checkout", the user loses track of their progress.</p>
+                  <p><strong>Unoptimised paths</strong> mean too many steps, distractions in the form of unnecessary links, and inconsistent CTAs. If the product-page button says &quot;Add to cart&quot; and the next screen offers &quot;Continue shopping&quot; instead of &quot;Go to checkout&quot;, the user loses track of their progress.</p>
 
                   <p><strong>Technical problems</strong> hit trust directly. Slow loading, JavaScript errors blocking interactions and broken mobile responsiveness translate into higher bounce and lower task completion. Core Web Vitals are a good starting point here, but they do not replace tests on real devices.</p>
 
-                  <p><strong>Missing trust signals</strong> hurt online stores most. An invisible returns policy, no security certificate in a visible place, hidden delivery costs revealed only at checkout. A user who does not know the delivery cost before clicking "Buy now" abandons the cart.</p>
+                  <p><strong>Missing trust signals</strong> hurt online stores most. An invisible returns policy, no security certificate in a visible place, hidden delivery costs revealed only at checkout. A user who does not know the delivery cost before clicking &quot;Buy now&quot; abandons the cart.</p>
 
                   <h3>CTA labels: six swaps to test</h3>
                   <p>Inconsistent CTAs are usually fixed by one heuristic: the label should name the result of the click, not the demand placed on the user. The swaps below appear in audits most often, but treat them as hypotheses to verify, not ready-made answers - which version wins is decided by your audience and page context, not by a list of best practices.</p>
@@ -298,33 +305,33 @@ export default async function ArticleUXAudit({ params }) {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>"Sign up" before purchase</td>
-                          <td>"Continue without an account"</td>
+                          <td>&quot;Sign up&quot; before purchase</td>
+                          <td>&quot;Continue without an account&quot;</td>
                           <td>Names the result and removes the fear that an account is a purchase requirement</td>
                         </tr>
                         <tr>
-                          <td>"Submit" on a contact form</td>
-                          <td>"Send enquiry - we reply within [X] h"</td>
+                          <td>&quot;Submit&quot; on a contact form</td>
+                          <td>&quot;Send enquiry - we reply within [X] h&quot;</td>
                           <td>Says what happens after the click. Use a real time: an unkept promise costs more than none</td>
                         </tr>
                         <tr>
-                          <td>"Next" at the shipping step</td>
-                          <td>"Go to payment"</td>
-                          <td>Keeps funnel orientation; "Next" says nothing about how many steps remain</td>
+                          <td>&quot;Next&quot; at the shipping step</td>
+                          <td>&quot;Go to payment&quot;</td>
+                          <td>Keeps funnel orientation; &quot;Next&quot; says nothing about how many steps remain</td>
                         </tr>
                         <tr>
-                          <td>"Place order" before the summary</td>
-                          <td>"Go to summary"</td>
+                          <td>&quot;Place order&quot; before the summary</td>
+                          <td>&quot;Go to summary&quot;</td>
                           <td>Avoids implying irreversibility where there is none - otherwise users stop out of caution</td>
                         </tr>
                         <tr>
-                          <td>"Download" for an email-gated asset</td>
-                          <td>"Download PDF - no account needed"</td>
+                          <td>&quot;Download&quot; for an email-gated asset</td>
+                          <td>&quot;Download PDF - no account needed&quot;</td>
                           <td>Reveals the cost of the action before the click, not after</td>
                         </tr>
                         <tr>
-                          <td>"More" under a product description</td>
-                          <td>"See full specification"</td>
+                          <td>&quot;More&quot; under a product description</td>
+                          <td>&quot;See full specification&quot;</td>
                           <td>A specific destination instead of a label that says nothing about where it leads</td>
                         </tr>
                       </tbody>
@@ -333,7 +340,7 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p>These swaps are cheap to ship, which is why they usually score high on ICE - high ease at moderate impact beats costly changes with uncertain effect. Keep the confidence low, though, until you have your own data: these are recommendations derived from heuristics, not from observing your users. Roll each one out like any other backlog item - with a control group and the measurement described in the ROI section. Sometimes the longer, more descriptive label loses, because it wraps to two lines on a phone or sounds too informal for the industry.</p>
 
-                  <h3>Confirmation bias on the team's side</h3>
+                  <h3>Confirmation bias on the team&apos;s side</h3>
                   <p>A separate problem category is not the interface but the way it is judged. Specialists assessing their own site often unconsciously read the data in line with their expectations. <a href="https://en.wikipedia.org/wiki/Confirmation_bias" target="_blank" rel="noopener noreferrer">Confirmation bias</a> makes us look for evidence of what we already believe instead of testing hypotheses. That is why an audit run by an external specialist, or built on structured methods (user tests, checklist-driven heuristics), produces more reliable results than an internal team review.</p>
 
                   <h2 id="ux-audit-cost">How much does a UX audit cost and what drives the price?</h2>
@@ -390,7 +397,7 @@ export default async function ArticleUXAudit({ params }) {
                     </table>
                   </div>
 
-                  <p>The market spread is wide: some agencies sell an automated scanner report under the name "UX audit", others a research sprint lasting weeks. The ranges above compile public price lists and comparison services as of August 2026, described in the sources at the end. Before comparing offers, check how many items from the list above are actually in scope - that is what explains the difference between PLN 800 and PLN 15,000.</p>
+                  <p>The market spread is wide: some agencies sell an automated scanner report under the name &quot;UX audit&quot;, others a research sprint lasting weeks. The ranges above compile public price lists and comparison services as of August 2026, described in the sources at the end. Before comparing offers, check how many items from the list above are actually in scope - that is what explains the difference between PLN 800 and PLN 15,000.</p>
 
                   <p>If the audit is meant as the start of an ongoing engagement rather than a one-off, compare these amounts with the <Link href="/cennik-pozycjonowania">SEO pricing</Link> - in a subscription model, UX analysis is often part of the scope, not a separate invoice.</p>
 
@@ -408,8 +415,8 @@ export default async function ArticleUXAudit({ params }) {
                   <ul>
                     <li>Event verification: in DebugView you confirm that <code>begin_checkout</code> and <code>add_payment_info</code> fire correctly. The typical finding at this stage is a double-counted event artificially inflating drop-off at one step.</li>
                     <li>User tests: five moderated sessions are usually enough to explain the cause. A frequent result: the password-field error message is unreadable on mobile and does not state the length requirements.</li>
-                    <li>Form simplification: removing the "Confirm password" field in favour of a show-password toggle, adding inline validation with a readable message.</li>
-                    <li>CTA fix: changing the button label from "Sign up" to "Continue without an account", with a note that an account can be created after the order. The label should say what happens after the click, not what it demands of the user - the same principle behind the inconsistent-CTA problem described above.</li>
+                    <li>Form simplification: removing the &quot;Confirm password&quot; field in favour of a show-password toggle, adding inline validation with a readable message.</li>
+                    <li>CTA fix: changing the button label from &quot;Sign up&quot; to &quot;Continue without an account&quot;, with a note that an account can be created after the order. The label should say what happens after the click, not what it demands of the user - the same principle behind the inconsistent-CTA problem described above.</li>
                   </ul>
 
                   <p><strong>Measurement:</strong> you roll the changes out to half the traffic, keep the other half on the previous form as a control group, and compare the difference in trends for four to six weeks. Both groups must run in parallel - comparing the change against the previous month alone would mix seasonality into the result.</p>
@@ -417,15 +424,15 @@ export default async function ArticleUXAudit({ params }) {
                   <p><strong>What follows from this:</strong></p>
                   <ul>
                     <li>Measurement repair must precede interface diagnosis. A double-counted event can flag a working step as the problem.</li>
-                    <li>User tests answer the "why" that GA4 data cannot - which is the justification for the method order described above.</li>
+                    <li>User tests answer the &quot;why&quot; that GA4 data cannot - which is the justification for the method order described above.</li>
                     <li>A parallel control group is more reliable than a before/after comparison. Use before/after only when traffic does not allow a split - and then treat the result as an indication, not proof.</li>
-                    <li>The audit's ROI is the implementation cost compared against revenue from additional conversions over a quarter.</li>
+                    <li>The audit&apos;s ROI is the implementation cost compared against revenue from additional conversions over a quarter.</li>
                   </ul>
 
                   <h2 id="how-ai-seo-company-approaches-ux-audits">How AI SEO COMPANY approaches UX audits</h2>
                   <p>A UX audit only makes sense when its findings reach the implementation team in a form ready to act on - not as a slide deck of problems with no repair plan. That is the difference between diagnosis and treatment.</p>
 
-                  <p>AI SEO COMPANY's approach combines analytics with design: every recommendation is tied to a specific KPI and an implementation cost estimate, and the backlog is prioritised with ICE or RICE so the team knows where to start. Deliverables include an executive report, a detailed evidence-backed backlog (screenshots, recording excerpts), an implementation schedule and success metrics for measuring the effect.</p>
+                  <p>AI SEO COMPANY&apos;s approach combines analytics with design: every recommendation is tied to a specific KPI and an implementation cost estimate, and the backlog is prioritised with ICE or RICE so the team knows where to start. Deliverables include an executive report, a detailed evidence-backed backlog (screenshots, recording excerpts), an implementation schedule and success metrics for measuring the effect.</p>
 
                   <p><strong>We do not sell UX audits as a standalone service</strong> - a deliberate decision, because a report alone does not move the metrics. UX analysis enters our work at two moments, in both cases as part of a package, not a separate invoice:</p>
                   <ul>
@@ -435,20 +442,20 @@ export default async function ArticleUXAudit({ params }) {
 
                   <p>In both cases UX analysis is part of a package, not a line item: conversion optimisation is part of SEO Premium and the UX/UI design of a new site is part of the Booster Pack; SEO Standard covers SEO only, without UX analysis. Details are in the <Link href="/cennik-pozycjonowania">pricing</Link>.</p>
 
-                  <p>In simple cases - one conversion path, measurement that needs no repair, test participants from the client's own base - we close the full analysis in a week. Four weeks is the timeline for sites with multiple funnels, language variants or measurement needing reconfiguration, not the default.</p>
+                  <p>In simple cases - one conversion path, measurement that needs no repair, test participants from the client&apos;s own base - we close the full analysis in a week. Four weeks is the timeline for sites with multiple funnels, language variants or measurement needing reconfiguration, not the default.</p>
 
                   <p>The consequence of this model is simple: user experience optimisation does not end at the report, and recommendations do not stay in a PDF, because the same team that writes them is responsible for implementing them and for the result. If all you want is a report to execute in-house, this model will not be your cheapest option - the table above shows what that service costs on the market detached from implementation.</p>
 
                   <p>When choosing an audit provider, check three things: report samples from previous projects (do they carry evidence and priorities, or just a list of problems), references from a similar industry, and whether the agency can name the specific KPIs the audit is meant to improve. An agency that does not ask about your KPIs at the first meeting will probably deliver a report that does not change your results.</p>
 
-                  <p><Link href="/">AI SEO COMPANY</Link> specialises in conversion-optimised website design and pairs UX audits with implementation, which shortens the distance between diagnosis and effect. Results depend on the site's starting condition, traffic volume and how much of the backlog gets implemented - no agency can guarantee a conversion lift.</p>
+                  <p><Link href="/">AI SEO COMPANY</Link> specialises in conversion-optimised website design and pairs UX audits with implementation, which shortens the distance between diagnosis and effect. Results depend on the site&apos;s starting condition, traffic volume and how much of the backlog gets implemented - no agency can guarantee a conversion lift.</p>
 
                   <h2 id="how-to-commission-a-ux-audit">How to commission a UX audit and what to include in the brief</h2>
                   <p>A good brief shortens the quoting time and raises the odds of an audit matched to your goals. An agency that receives a brief with specific KPIs and GA4 access can start within days instead of a week.</p>
 
                   <p><strong>UX audit brief template (6 fields):</strong></p>
                   <ol>
-                    <li><strong>Audit goal:</strong> what do you want to improve? (e.g. "reduce cart abandonment at the payment step by 15%")</li>
+                    <li><strong>Audit goal:</strong> what do you want to improve? (e.g. &quot;reduce cart abandonment at the payment step by 15%&quot;)</li>
                     <li><strong>Traffic:</strong> average monthly sessions, mobile/desktop split, main traffic sources.</li>
                     <li><strong>Key paths:</strong> which funnels or pages should the audit cover?</li>
                     <li><strong>Expected deliverables:</strong> executive report, prioritised backlog, recordings, implementation schedule.</li>
@@ -456,9 +463,9 @@ export default async function ArticleUXAudit({ params }) {
                     <li><strong>Contact and timing:</strong> decision-maker, preferred start date and implementation window.</li>
                   </ol>
 
-                  <p>Attach GA4 access to the brief (the "Viewer" role is enough at the quoting stage) and a list of known problems or hypotheses. If you already run a session-recording tool, include access to it as well - it lets the audit skip the first days otherwise spent on setup and data collection.</p>
+                  <p>Attach GA4 access to the brief (the &quot;Viewer&quot; role is enough at the quoting stage) and a list of known problems or hypotheses. If you already run a session-recording tool, include access to it as well - it lets the audit skip the first days otherwise spent on setup and data collection.</p>
 
-                  <p>Contact AI SEO COMPANY through the agency website to send a brief or request a free analysis of your site's SEO and brand potential. We run UX analysis only as part of a site project (Booster Pack) and of conversion optimisation in SEO Premium; the scope is agreed in the brief. We reply to enquiries within 24 h on business days, usually sooner.</p>
+                  <p>Contact AI SEO COMPANY through the agency website to send a brief or request a free analysis of your site&apos;s SEO and brand potential. We run UX analysis only as part of a site project (Booster Pack) and of conversion optimisation in SEO Premium; the scope is agreed in the brief. We reply to enquiries within 24 h on business days, usually sooner.</p>
 
                   <h2 id="sources">Sources</h2>
                   <p>References useful when planning or commissioning a UX audit:</p>
@@ -480,6 +487,9 @@ export default async function ArticleUXAudit({ params }) {
                 </>
               ) : (
                 <>
+                  <AnswerBox>
+                    Audyt UX strony łączy weryfikację zdarzeń w GA4, analizę porzuceń w lejkach, ocenę heurystyczną oraz testy z użytkownikami, aby usunąć bariery obniżające konwersję. Szybki przegląd heurystyczny trwa 2-5 dni, a pełny audyt od 1 do 4 tygodni i kończy się backlogiem wdrożeniowym ocenionym metodą ICE według wpływu, pewności danych i kosztu prac.
+                  </AnswerBox>
                   <p className="lead">
                     Audyt UX strony - nazywany też audytem użyteczności strony - to systematyczna, oparta na danych i testach ocena doświadczenia użytkownika, której celem jest wskazanie zmian o największym wpływie na konwersję. Zamawiający otrzymuje dwie rzeczy: zakres analityczny pokazujący, gdzie użytkownicy porzucają ścieżkę, oraz backlog rekomendacji z priorytetami i szacunkami kosztu wdrożenia. Nie jest to lista życzeń projektanta, lecz diagnoza poparta dowodami.
                   </p>

@@ -146,7 +146,7 @@ export default async function ArticleCanonicalPage({ params }) {
                 July 30, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               SEO Canonical Tag - what is it, how it works and how to implement it in 2026
             </h1>
             <Byline sciezka={KLUCZ_CANONICAL} takzeEn />
@@ -305,7 +305,7 @@ export default async function ArticleCanonicalPage({ params }) {
             </div>
             {/* The English branch above has its own <h1>. Only one of the two branches ever
                 renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Tag kanoniczny SEO - czym jest, jak działa i jak go wdrożyć w 2026
             </h1>
             <Byline sciezka={KLUCZ_CANONICAL} takzeEn />

@@ -253,6 +253,118 @@ function Znak({ stan, en, i = 0 }) {
   return stan ? <span className="narz-znak narz-znak--tak r-stan" style={ruch} aria-label={en ? 'mentioned' : 'wymieniona'}>✓</span> : <span className="narz-znak narz-znak--nie r-stan" style={ruch} aria-label={en ? 'not mentioned' : 'niewymieniona'}>✕</span>;
 }
 
+const KATALOGI_DEMO_RE = /(^|\.)(clutch\.co|sortlist\.[a-z.]+|goodfirms\.co|g2\.com|capterra\.[a-z.]+|trustpilot\.[a-z.]+|panoramafirm\.pl|oferteo\.pl|aleo\.com|pkt\.pl|firmy\.net|gowork\.[a-z.]+|wlw\.de|gelbeseiten\.de|provenexpert\.com|kununu\.com|designrush\.com|yelp\.[a-z.]+|znanylekarz\.pl|booksy\.com)$/i;
+const SPOLECZNOSCI_DEMO_RE = /(^|\.)(reddit\.com|quora\.com|wykop\.pl|linkedin\.com|youtube\.com|youtu\.be|facebook\.com|instagram\.com|x\.com|medium\.com|github\.com|gutefrage\.net)$/i;
+const MEDIA_DEMO_RE = /(^|\.)(onet\.pl|wp\.pl|interia\.pl|gazeta\.pl|wyborcza\.pl|rp\.pl|pb\.pl|forbes\.[a-z.]+|businessinsider\.[a-z.]+|money\.pl|bankier\.pl|mamstartup\.pl|spidersweb\.pl|wirtualnemedia\.pl|techcrunch\.com|searchengineland\.com)$/i;
+
+function klasyfikujKategorie(domena, zastana) {
+  if (zastana) return zastana;
+  const d = String(domena || '').toLowerCase().replace(/^www\./, '');
+  if (KATALOGI_DEMO_RE.test(d)) return 'katalog_b2b';
+  if (SPOLECZNOSCI_DEMO_RE.test(d)) return 'spolecznosci';
+  if (MEDIA_DEMO_RE.test(d) || /(^|[.-])(news|presse|media|magazin|gazeta|dziennik|portal|blog)([.-]|$)/i.test(d)) return 'media';
+  return 'inne';
+}
+
+function etykietaKategoriiZrodla(kat, en) {
+  if (kat === 'katalog_b2b') return en ? 'B2B Directory' : 'Katalog B2B';
+  if (kat === 'media') return 'Media';
+  if (kat === 'spolecznosci') return en ? 'Community' : 'Społeczności';
+  if (kat === 'wlasna') return en ? 'Own site' : 'Własna strona';
+  return en ? 'Portal' : 'Portal';
+}
+
+function etykietaSentymentu(sent, en) {
+  if (sent === 'pozytywny') return en ? 'positive' : 'pozytywny';
+  if (sent === 'negatywny') return en ? 'negative' : 'negatywny';
+  if (sent === 'neutralny') return en ? 'neutral' : 'neutralny';
+  return null;
+}
+
+function stylSentymentu(sent) {
+  if (sent === 'pozytywny') return { background: 'rgba(4, 120, 87, 0.12)', color: '#047857' };
+  if (sent === 'negatywny') return { background: 'rgba(179, 38, 30, 0.12)', color: '#b3261e' };
+  return { background: 'rgba(15, 23, 42, 0.07)', color: 'var(--w-tusz-2)' };
+}
+
+function PigulkiPozycjiISentymentu({ pozycja, sentyment, en, kompakt = false }) {
+  const maPoz = Number.isFinite(pozycja) && pozycja > 0;
+  const tekstSent = etykietaSentymentu(sentyment, en);
+  if (!maPoz && !tekstSent) return null;
+  const stylBazowy = {
+    display: 'inline-block',
+    padding: kompakt ? '0.08rem 0.38rem' : '0.12rem 0.48rem',
+    borderRadius: '999px',
+    fontSize: kompakt ? '0.68rem' : '0.74rem',
+    fontWeight: 700,
+    lineHeight: 1.35,
+    fontVariantNumeric: 'tabular-nums',
+    whiteSpace: 'nowrap',
+  };
+  return (
+    <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0.25rem', alignItems: 'center', marginLeft: kompakt ? '0.3rem' : '0.4rem', verticalAlign: 'middle' }}>
+      {maPoz && (
+        <span
+          style={{
+            ...stylBazowy,
+            background: pozycja <= 3 ? 'rgba(216, 90, 48, 0.14)' : 'rgba(15, 23, 42, 0.08)',
+            color: pozycja <= 3 ? '#b4471f' : 'var(--w-tusz)',
+          }}
+          title={en ? `Recommendation rank #${pozycja}` : `Pozycja na liście rekomendacji: #${pozycja}`}
+        >
+          #{pozycja}
+        </span>
+      )}
+      {tekstSent && (
+        <span style={{ ...stylBazowy, ...stylSentymentu(sentyment) }}>
+          {tekstSent}
+        </span>
+      )}
+    </span>
+  );
+}
+
+function wzbogacDemoWidocznosci(obiekt, en) {
+  if (!obiekt) return obiekt;
+  let licznikWzmianek = 0;
+  const dopiszPozSent = (el) => {
+    if (!el?.wymieniona || el.brakOdpowiedzi) return el;
+    licznikWzmianek += 1;
+    return {
+      ...el,
+      pozycja: el.pozycja ?? ((licznikWzmianek % 3) + 1),
+      sentyment: el.sentyment ?? (licznikWzmianek % 2 === 1 ? 'pozytywny' : 'neutralny'),
+    };
+  };
+  const siatka = Array.isArray(obiekt.siatka) ? obiekt.siatka.map(dopiszPozSent) : obiekt.siatka;
+  licznikWzmianek = 0;
+  const wiersze = Array.isArray(obiekt.wiersze) ? obiekt.wiersze.map(dopiszPozSent) : obiekt.wiersze;
+  const bazoweZrodla = obiekt.zrodla || obiekt.zrodlaTop || [];
+  const lukaCytowan = Array.isArray(obiekt.lukaCytowan) && obiekt.lukaCytowan.length > 0
+    ? obiekt.lukaCytowan
+    : bazoweZrodla.slice(0, 4).map((z) => {
+        const kategoria = klasyfikujKategorie(z.domena, z.kategoria);
+        const wskazowka = kategoria === 'katalog_b2b'
+          ? (en
+            ? `Claim and complete your company profile on ${z.domena} (services, pricing tiers, min. 3 verified client reviews and consistent NAP).`
+            : `Załóż lub uzupełnij profil firmy w katalogu ${z.domena} (zakres usług, widełki cenowe, min. 3 zweryfikowane opinie i spójny NAP).`)
+          : kategoria === 'spolecznosci'
+            ? (en
+              ? `Publish expert answers or real case studies in industry threads on ${z.domena} cited by AI engines.`
+              : `Opublikuj merytoryczne odpowiedzi lub case study w wątkach branżowych na ${z.domena}, z których korzystają modele AI.`)
+            : (en
+              ? `Inspect the cited ranking or article on ${z.domena} and pitch your company profile or expert data quote.`
+              : `Sprawdź cytowany ranking lub artykuł na ${z.domena} i zadbaj o dopisanie firmy lub komentarz ekspercki.`);
+        return {
+          domena: z.domena,
+          kategoria,
+          ileOdpowiedzi: z.ile || 1,
+          wskazowka,
+        };
+      });
+  return { ...obiekt, ...(siatka ? { siatka } : {}), ...(wiersze ? { wiersze } : {}), lukaCytowan };
+}
+
 export default function WidocznoscAiClient() {
   const en = useLocale() === 'en';
   const listaKrajow = en ? KRAJE_EN : KRAJE_PL;
@@ -372,7 +484,9 @@ export default function WidocznoscAiClient() {
       const pokazane = edycje.map(zwin);
       const mapa = new Map(r.podglad.pytania.map((q, i) => [q, pokazane[i]]));
       setMapaDemo(mapa);
-      r = { ...r, podglad: { ...demoZPytaniami(r.podglad, mapa), zrodloPytan: pokazane.map((_, i) => (wlasne?.[i] ? 'uzytkownik' : 'szablon')), uwagiPytan: [] } };
+      r = { ...r, podglad: wzbogacDemoWidocznosci({ ...demoZPytaniami(r.podglad, mapa), zrodloPytan: pokazane.map((_, i) => (wlasne?.[i] ? 'uzytkownik' : 'szablon')), uwagiPytan: [] }, en) };
+    } else if (DEMO) {
+      r = { ...r, podglad: wzbogacDemoWidocznosci(r.podglad, en) };
     }
     track('narzedzie_wynik', { narzedzie: 'widocznosc_ai', wynik: r.podglad.wynik });
     setStan((s) => ({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: odczytajOdblokowane(r.id), dane: s.dane }));
@@ -407,6 +521,10 @@ export default function WidocznoscAiClient() {
   const topZr = (p?.zrodlaTop ?? []).slice(0, WIDOCZNOSC.przedBramka.domen);
   const resztaFirm = Math.max(0, (p?.konkurentow ?? 0) - top.length);
   const resztaZrodel = Math.max(0, (p?.zrodel ?? 0) - topZr.length);
+  const lukaPodglad = Array.isArray(p?.lukaCytowan) ? p.lukaCytowan : [];
+  const lukaPelna = Array.isArray(stan.pelny?.lukaCytowan) && stan.pelny.lukaCytowan.length > 0
+    ? stan.pelny.lukaCytowan
+    : lukaPodglad;
   // 12.11.2026: pola z panelu z edycją pytań (starszy panel ich nie ma).
   const zmienionePytania = (p?.zrodloPytan ?? []).filter((z) => z === 'uzytkownik').length;
   const uwagiPytan = Array.isArray(p?.uwagiPytan) ? p.uwagiPytan : [];
@@ -556,7 +674,18 @@ export default function WidocznoscAiClient() {
                     {s.dostepny
                       ? p.pytania.map((q, qi) => {
                         const c = p.siatka.find((x) => x.silnik === s.id && x.pytanie === q);
-                        return <td key={q}>{c ? <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} en={en} i={qi} /> : '-'}</td>;
+                        return (
+                          <td key={q}>
+                            {c ? (
+                              <span style={{ display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.2rem' }}>
+                                <Znak stan={c.brakOdpowiedzi ? 'brak' : c.wymieniona} en={en} i={qi} />
+                                {c.wymieniona && !c.brakOdpowiedzi && (
+                                  <PigulkiPozycjiISentymentu pozycja={c.pozycja} sentyment={c.sentyment} en={en} kompakt />
+                                )}
+                              </span>
+                            ) : '-'}
+                          </td>
+                        );
                       })
                       : <td colSpan={p.pytania.length} className="narz-mikro">{s.powod}</td>}
                     <td>{s.dostepny ? `${s.wzmianki}/${s.odpowiedzi}` : '-'}</td>
@@ -592,11 +721,36 @@ export default function WidocznoscAiClient() {
               {topZr.length > 0 && (
                 <div role="region" aria-labelledby="ai-top-zrodla">
                   <h2 id="ai-top-zrodla" className="narz-h2">{en ? 'Most cited sites' : 'Najczęściej cytowane strony'}</h2>
-                  <ul className="narz-chipy">{topZr.map((z) => <li key={z.domena}>{z.domena} <span>×{z.ile}</span></li>)}</ul>
+                  <ul className="narz-chipy">
+                    {topZr.map((z) => {
+                      const kat = klasyfikujKategorie(z.domena, z.kategoria);
+                      return (
+                        <li key={z.domena} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+                          <span>{z.domena}</span>
+                          <span style={{ fontSize: '0.72rem', padding: '0.08rem 0.42rem', borderRadius: '999px', background: 'rgba(15, 23, 42, 0.07)', color: 'var(--w-tusz-2)', fontWeight: 600 }}>
+                            {etykietaKategoriiZrodla(kat, en)}
+                          </span>
+                          <span style={{ fontVariantNumeric: 'tabular-nums' }}>×{z.ile}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
                   <p className="narz-mikro">
                     {en ? 'A mention of your business on these sites increases the chance that a model will recommend it.' : 'Wzmianka o firmie na tych stronach zwiększa szansę, że model ją poleci.'}
                     {resztaZrodel > 0 && (en ? ` And ${resztaZrodel} more ${resztaZrodel === 1 ? 'site' : 'sites'} after you enter your email.` : ` I jeszcze ${resztaZrodel} ${odmiana(resztaZrodel, ['strona', 'strony', 'stron'])} po podaniu e-maila.`)}
                   </p>
+                  {lukaPodglad.length > 0 && (
+                    <p className="narz-mikro" style={{ marginTop: '0.45rem', padding: '0.6rem 0.85rem', borderRadius: '12px', background: 'rgba(216, 90, 48, 0.07)', border: '1px solid rgba(216, 90, 48, 0.2)', color: 'var(--w-tusz)', fontVariantNumeric: 'tabular-nums' }}>
+                      <strong>
+                        {en
+                          ? `Citation Gap detected (${lukaPodglad.length} ${lukaPodglad.length === 1 ? 'source' : 'sources'}):`
+                          : `Wykryto ${lukaPodglad.length} ${odmiana(lukaPodglad.length, ['lukę cytowań', 'luki cytowań', 'luk cytowań'])}:`}
+                      </strong>{' '}
+                      {en
+                        ? 'Unlock the step-by-step Citation Gap Playbook below to see where competitors are cited without your business.'
+                        : 'Odblokuj niżej kartę Citation Gap Playbook z instrukcją krok po kroku, jak zdobyć wpis na domenach cytujących konkurencję.'}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -619,7 +773,8 @@ export default function WidocznoscAiClient() {
                   : [`Pełne odpowiedzi: ${listaSilnikow('pl')}`, p.wzmianki > 0 ? 'Fragment, w którym pada Twoja firma, i źródła każdej odpowiedzi' : 'Fragmenty odpowiedzi i źródła każdej z nich', 'Wszystkie firmy i strony, które cytują modele, oraz raport e-mailem']}
                 przycisk={en ? 'Show the AI answers' : 'Pokaż odpowiedzi AI'}
                 onOdblokowano={(pelny, newsletter, mailOk) => {
-                  const gotowyPelny = DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny;
+                  const podstawowyPelny = DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny;
+                  const gotowyPelny = DEMO ? wzbogacDemoWidocznosci(podstawowyPelny, en) : podstawowyPelny;
                   zapiszOdblokowane(stan.id, gotowyPelny);
                   setStan((s) => ({ ...s, pelny: gotowyPelny, newsletter, mailOk }));
                 }}
@@ -637,8 +792,65 @@ export default function WidocznoscAiClient() {
               {stan.pelny.zrodla?.length > 0 && (
                 <div role="region" aria-labelledby="ai-zrodla">
                   <h2 id="ai-zrodla" className="narz-h2">{en ? 'Which sites they rely on' : 'Z jakich stron korzystają'}</h2>
-                  <ul className="narz-chipy">{stan.pelny.zrodla.map((z) => <li key={z.domena}>{z.domena} <span>×{z.ile}</span></li>)}</ul>
+                  <ul className="narz-chipy">
+                    {stan.pelny.zrodla.map((z) => {
+                      const kat = klasyfikujKategorie(z.domena, z.kategoria);
+                      return (
+                        <li key={z.domena} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+                          <span>{z.domena}</span>
+                          <span style={{ fontSize: '0.72rem', padding: '0.08rem 0.42rem', borderRadius: '999px', background: 'rgba(15, 23, 42, 0.07)', color: 'var(--w-tusz-2)', fontWeight: 600 }}>
+                            {etykietaKategoriiZrodla(kat, en)}
+                          </span>
+                          <span style={{ fontVariantNumeric: 'tabular-nums' }}>×{z.ile}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
                   <p className="narz-mikro">{en ? 'A mention of your business on these sites increases the chance that a model will recommend it.' : 'Wzmianka o firmie na tych stronach zwiększa szansę, że model ją poleci.'}</p>
+                </div>
+              )}
+              {lukaPelna.length > 0 && (
+                <div
+                  role="region"
+                  aria-labelledby="ai-luka-cytowan"
+                  style={{ padding: '1.1rem 1.2rem', borderRadius: '18px', background: 'var(--w-papier, #f6f4ef)', border: '1px solid rgba(216, 90, 48, 0.22)', display: 'grid', gap: '0.75rem', fontVariantNumeric: 'tabular-nums' }}
+                >
+                  <div>
+                    <h2 id="ai-luka-cytowan" className="narz-h2" style={{ margin: 0 }}>
+                      {en
+                        ? 'Citation Gap Playbook - where competitors are cited and your business is missing'
+                        : 'Citation Gap Playbook - gdzie są cytowani konkurenci, a brakuje Twojej firmy'}
+                    </h2>
+                    <p className="narz-mikro" style={{ margin: '0.25rem 0 0' }}>
+                      {en
+                        ? 'Priority external domains from answers that recommended competitors without naming your company.'
+                        : 'Domeny zewnętrzne, na które powołały się modele AI w odpowiedziach polecających konkurencję bez Twojej firmy.'}
+                    </p>
+                  </div>
+                  <ul className="narz-problemy" style={{ margin: 0 }}>
+                    {lukaPelna.map((l) => {
+                      const kat = klasyfikujKategorie(l.domena, l.kategoria);
+                      const ile = Number(l.ileOdpowiedzi ?? l.ile ?? 1);
+                      return (
+                        <li key={l.domena} className="narz-problem" style={{ background: '#ffffff' }}>
+                          <p className="narz-problem-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', alignItems: 'center' }}>
+                            <strong style={{ color: 'var(--w-tusz)' }}>{l.domena}</strong>
+                            <span style={{ fontSize: '0.73rem', padding: '0.1rem 0.48rem', borderRadius: '999px', background: 'rgba(15, 23, 42, 0.07)', color: 'var(--w-tusz-2)', fontWeight: 600 }}>
+                              {etykietaKategoriiZrodla(kat, en)}
+                            </span>
+                            <span>
+                              {en
+                                ? `cited in ${ile} ${ile === 1 ? 'answer' : 'answers'}`
+                                : `cytowana w ${ile} ${odmiana(ile, ['odpowiedzi', 'odpowiedziach', 'odpowiedziach'])}`}
+                            </span>
+                          </p>
+                          {l.wskazowka && (
+                            <p className="narz-problem-opis" style={{ marginTop: '0.25rem' }}>{l.wskazowka}</p>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
               )}
               <h2 className="narz-h2">{en ? 'Answers' : 'Odpowiedzi'}</h2>
@@ -651,7 +863,12 @@ export default function WidocznoscAiClient() {
                     : <>{podswietlMarke(pelnyTekst.slice(0, 600), wzorce)}{pelnyTekst.length > 600 ? '…' : ''}</>;
                   return (
                     <li key={`${r.silnik}-${r.pytanie}`} className={`narz-problem ${r.wymieniona ? 'narz-problem--ok' : 'narz-problem--blad'}`}>
-                      <p className="narz-problem-meta"><span className="narz-waga">{etykieta(r.silnik)}</span> · {r.wymieniona ? (en ? 'business mentioned' : 'firma wymieniona') : (en ? 'business not mentioned' : 'firma niewymieniona')}</p>
+                      <p className="narz-problem-meta">
+                        <span className="narz-waga">{etykieta(r.silnik)}</span>
+                        {' · '}
+                        {r.wymieniona ? (en ? 'business mentioned' : 'firma wymieniona') : (en ? 'business not mentioned' : 'firma niewymieniona')}
+                        {r.wymieniona && <PigulkiPozycjiISentymentu pozycja={r.pozycja} sentyment={r.sentyment} en={en} />}
+                      </p>
                       <h3 className="narz-problem-tytul">{r.pytanie}</h3>
                       <p className="narz-problem-opis">{skrot}</p>
                       {maWiecej && (

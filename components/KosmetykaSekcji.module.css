@@ -1,0 +1,579 @@
+/* ==========================================================================
+   KOSMETYKA SEKCJI UI/UX (B1, B2, B3, B4, B5, B8)
+   Subtelne DNA techniczne wzorowane na DarmoweNarzedzia.jsx / DarmoweNarzedzia.css
+   bez zmiany palety kolorow docelowych sekcji (jasna / ciemna / gorska).
+   ========================================================================== */
+
+/* ---------- Wspolne mikro-elementy okna (B2, B8) ---------- */
+.oknoKropki {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+
+.oknoKropki i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.22);
+}
+
+.mozaikaKropki {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex: none;
+  margin-right: 2px;
+}
+
+.mozaikaKropki i {
+  display: block;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  background: rgba(30, 30, 30, 0.24);
+}
+
+/* ---------- B1: Process.jsx ---------- */
+.procesCentrumMeta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 0.2rem;
+  font-family: var(--w-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--w-pomarancz-tekst);
+}
+
+.procesCentrumNagl {
+  display: block;
+  padding-bottom: 0.38rem;
+  margin-bottom: 0.42rem;
+  border-bottom: 1px solid var(--w-linia);
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--w-tusz);
+}
+
+.procesWezelLicznik {
+  display: inline-block;
+  font-family: var(--w-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.procesWezelLicznikJasny {
+  border-bottom-color: rgba(15, 23, 42, 0.22);
+}
+
+.procesSiatka {
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)) !important;
+}
+
+.krokKarta {
+  background: var(--w-karta);
+  border: 1px solid var(--w-linia);
+  border-radius: 20px;
+  padding: 1.35rem 1.45rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.krokKartaAktywna {
+  border-color: var(--w-pomarancz);
+  box-shadow: 0 12px 28px -18px rgba(216, 90, 48, 0.35);
+}
+
+.krokNaglowek {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid var(--w-linia);
+}
+
+.krokLicznik {
+  font-family: var(--w-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--w-pomarancz-tekst);
+  line-height: 1.2;
+}
+
+.krokNaglowek h3 {
+  margin: 0 !important;
+  font-size: 1.18rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--w-tusz);
+}
+
+.krokKarta p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--w-tusz-2);
+}
+
+/* ---------- B2: Realizacje.jsx & Portfolio.jsx ---------- */
+.realizacjeKartaZBelka {
+  grid-template-areas:
+    'okno okno'
+    'marka marka'
+    'tytul miary'
+    'opis miary'
+    'wykres wykres'
+    'metryki metryki'
+    'stopka stopka' !important;
+}
+
+@media (max-width: 900px) {
+  .realizacjeKartaZBelka {
+    grid-template-areas:
+      'okno'
+      'marka'
+      'tytul'
+      'opis'
+      'miary'
+      'wykres'
+      'metryki'
+      'stopka' !important;
+  }
+}
+
+.realizacjeOknoBelka {
+  grid-area: okno;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--w-linia);
+  min-width: 0;
+}
+
+.oknoLewa {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.oknoDomena {
+  font-family: var(--w-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--w-tusz-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oknoStatusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(4, 120, 87, 0.08);
+  border: 1px solid rgba(4, 120, 87, 0.22);
+  font-family: var(--w-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #065F46;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.oknoStatusKropka {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--w-wzrost);
+  box-shadow: 0 0 0 2.5px rgba(4, 120, 87, 0.15);
+  flex: none;
+}
+
+/* ---------- B3: Services.jsx ---------- */
+.uslugaGoraWiersz {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+  margin-bottom: 0.9rem;
+}
+
+.uslugaGoraWiersz :global(.service-icon) {
+  margin-bottom: 0 !important;
+}
+
+.uslugaStrzalkaNarozna {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  text-decoration: none !important;
+  font-family: var(--w-mono);
+  font-size: 0.96rem;
+  line-height: 1;
+  opacity: 0.92;
+  color: var(--w-pomarancz-tekst);
+  background: rgba(216, 90, 48, 0.08);
+  border: 1px solid rgba(216, 90, 48, 0.22);
+  transition: transform 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease, opacity 0.22s ease;
+}
+
+:global(.gory-oferta) .uslugaStrzalkaNarozna {
+  color: #FF9E7A;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(243, 183, 156, 0.24);
+}
+
+:global(.service-card:hover) .uslugaStrzalkaNarozna,
+.uslugaStrzalkaNarozna:hover {
+  opacity: 1;
+  transform: translate(2px, -2px);
+  background: rgba(216, 90, 48, 0.18);
+  border-color: rgba(216, 90, 48, 0.45);
+}
+
+:global(.gory-oferta .service-card:hover) .uslugaStrzalkaNarozna,
+:global(.gory-oferta) .uslugaStrzalkaNarozna:hover {
+  color: #FFFFFF;
+  background: rgba(216, 90, 48, 0.28);
+  border-color: rgba(243, 183, 156, 0.52);
+}
+
+.uslugaEfektPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0.6rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  max-width: 100%;
+  background: var(--w-brzoskwinia-tlo);
+  border: 1px solid rgba(216, 90, 48, 0.22);
+  font-family: var(--w-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: var(--w-pomarancz-tekst);
+}
+
+.uslugaEfektKropka {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--w-pomarancz);
+  flex: none;
+}
+
+:global(.gory-oferta) .uslugaEfektPill {
+  background: rgba(216, 90, 48, 0.14);
+  border-color: rgba(243, 183, 156, 0.26);
+  color: #FFD2BF;
+}
+
+:global(.gory-oferta) .uslugaEfektKropka {
+  background: #FF9E7A;
+}
+
+.uslugaStrzalkaDolna {
+  display: inline-block;
+  opacity: 1;
+  transition: transform 0.22s ease, color 0.22s ease;
+}
+
+:global(.service-geo-link:hover) .uslugaStrzalkaDolna {
+  transform: translate(2px, -2px) !important;
+}
+
+/* ---------- B4: Pricing.jsx & Contact.jsx ---------- */
+.cennikKodNagl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 0.55rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid var(--w-linia);
+  font-family: var(--w-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.cennikKodNr {
+  color: var(--w-pomarancz-tekst);
+}
+
+.cennikKodIndeks {
+  color: var(--w-tusz-2);
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+.kontaktStatusNagl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.9rem;
+  border-bottom: 1px solid var(--w-linia);
+  font-family: var(--w-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--w-tusz-2);
+  line-height: 1.35;
+}
+
+.kontaktStatusLewa {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.kontaktStatusKropka {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--w-wzrost);
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.14);
+  flex: none;
+}
+
+.kontaktStatusSla {
+  color: var(--w-pomarancz-tekst);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- B5: PorownaniaHub.jsx & BlogGrid.jsx ---------- */
+.pasekSkrotow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1.35rem;
+  max-width: 100%;
+}
+
+.pasekSkrotowBlog {
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+
+.pigulkaSkrotu {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: none;
+  min-height: 38px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--w-karta);
+  border: 1px solid var(--w-linia);
+  color: var(--w-tusz);
+  font-family: var(--w-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pigulkaSkrotu:hover {
+  border-color: var(--w-pomarancz);
+  background: var(--w-brzoskwinia-tlo);
+  transform: translateY(-1px);
+}
+
+.pigulkaSkrotuAktywna {
+  border-color: var(--w-pomarancz);
+  background: var(--w-brzoskwinia-tlo);
+  color: var(--w-tusz);
+  box-shadow: 0 6px 16px -10px rgba(216, 90, 48, 0.55);
+}
+
+.pigulkaKod {
+  font-family: var(--w-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--w-pomarancz-tekst);
+}
+
+.kartaPorownaniaKicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 0.55rem;
+  margin-bottom: 0.15rem;
+  border-bottom: 1px solid var(--w-linia);
+  font-family: var(--w-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--w-tusz-2);
+}
+
+.kartaPorownaniaNr {
+  color: var(--w-pomarancz-tekst);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .pasekSkrotow {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pasekSkrotow::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------- B8: HeroKlienci.jsx ---------- */
+.klienciKotwicaWiersz {
+  display: flex;
+  justify-content: center;
+  margin: clamp(14px, 2vw, 22px) auto 0;
+  padding: 0 16px;
+  position: relative;
+  z-index: 6;
+}
+
+.klienciKotwicaLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(255, 252, 248, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(30, 30, 30, 0.11);
+  color: var(--w-tusz) !important;
+  font-family: var(--w-mono);
+  font-size: 0.73rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  text-decoration: none !important;
+  text-align: center;
+  max-width: 100%;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.klienciKotwicaLink:hover {
+  border-color: var(--w-pomarancz);
+  background: rgba(255, 252, 248, 0.96);
+  color: var(--w-pomarancz-tekst) !important;
+  transform: translateY(1px);
+}
+
+.klienciKotwicaKropka {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--w-wzrost);
+  box-shadow: 0 0 0 2.5px rgba(4, 120, 87, 0.15);
+  flex: none;
+}
+
+.klienciKotwicaStrzalka {
+  flex: none;
+  color: var(--w-pomarancz-tekst);
+  font-size: 0.82rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.klienciKotwicaLink:hover .klienciKotwicaStrzalka {
+  transform: translateY(2px);
+}
+
+@media (max-width: 520px) {
+  .klienciKotwicaWiersz {
+    margin-top: 14px;
+    padding: 0 12px;
+  }
+
+  .klienciKotwicaLink {
+    font-size: 0.68rem;
+    padding: 5px 11px;
+    gap: 6px;
+  }
+
+  .mozaikaKropki {
+    display: none;
+  }
+}
+
+@media (max-height: 500px) {
+  .klienciKotwicaWiersz {
+    margin-top: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .krokKarta,
+  .uslugaStrzalkaNarozna,
+  .uslugaStrzalkaDolna,
+  .pigulkaSkrotu,
+  .klienciKotwicaLink,
+  .klienciKotwicaStrzalka {
+    transition: none !important;
+    transform: none !important;
+  }
+}

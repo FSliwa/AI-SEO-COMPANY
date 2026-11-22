@@ -8,12 +8,31 @@ import { postsForLocale } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import kosm from './KosmetykaSekcji.module.css';
 
 const dataJezyka = (p, lang) => new Date((lang === 'en' && p.dateEn) || (lang === 'pl' && p.datePl) || p.date);
+
+const KATEGORIE_BLOG = [
+  { id: 'all', pl: 'Wszystkie', en: 'All' },
+  { id: 'audyt', pl: 'Techniczne SEO', en: 'Technical SEO' },
+  { id: 'ai', pl: 'Pozycjonowanie w AI', en: 'AI Search (GEO)' },
+  { id: 'web', pl: 'Strony WWW i UX', en: 'Web Design & UX' },
+  { id: 'ceny', pl: 'Strategia i budżet', en: 'Strategy & Pricing' },
+  { id: 'lokalne', pl: 'Lokalne SEO i analityka', en: 'Local SEO & Analytics' },
+];
+
+function kategoriaWpisu(post) {
+  if (post.cta === 'audyt') return 'audyt';
+  if (post.cta === 'ai') return 'ai';
+  if (post.cta === 'web') return 'web';
+  if (post.cta === 'ceny') return 'ceny';
+  return 'lokalne';
+}
 
 export default function BlogGrid() {
   const lang = useLocale();
   const [expandedMissionCard, setExpandedMissionCard] = useState(null);
+  const [activeCat, setActiveCat] = useState('all');
 
   const missionCards = [
     {
@@ -63,11 +82,25 @@ export default function BlogGrid() {
   const sortedPosts = postsForLocale(lang)
     .sort((a, b) => dataJezyka(b, lang) - dataJezyka(a, lang));
 
-  // Display only 4 posts (1 hero + 3 grid) on the main blog page
-  const displayPosts = sortedPosts.slice(0, 4);
+  const kategorieZNaliczaniem = KATEGORIE_BLOG
+    .map((k) => ({
+      ...k,
+      etykieta: lang === 'en' ? k.en : k.pl,
+      liczba: k.id === 'all'
+        ? sortedPosts.length
+        : sortedPosts.filter((p) => kategoriaWpisu(p) === k.id).length,
+    }))
+    .filter((k) => k.liczba > 0);
+
+  const widoczneWpisy = activeCat === 'all'
+    ? sortedPosts
+    : sortedPosts.filter((p) => kategoriaWpisu(p) === activeCat);
+
+  // Display 4 posts (1 hero + 3 grid) in default 'all' view; all matching posts when a category filter is active
+  const displayPosts = activeCat === 'all' ? widoczneWpisy.slice(0, 4) : widoczneWpisy;
 
   // The newest post is the hero
-  const heroPost = displayPosts[0];
+  const heroPost = displayPosts[0] || sortedPosts[0];
   // The rest are standard grid items
   const gridPosts = displayPosts.slice(1);
 
@@ -104,9 +137,32 @@ export default function BlogGrid() {
         {/* Srodtytul naprawia hierarchie naglowkow: dotad po H1 szly od razu
             H3 kart artykulow (przeskok flagowany w audycie 4.6). */}
         <Reveal delay={0.05}>
-          <h2 style={{ fontSize: 'clamp(1.2rem, 2vw, 1.45rem)', fontWeight: 500, color: 'var(--w-tusz-2)', letterSpacing: '-0.025em', margin: '0 0 1.25rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.2rem, 2vw, 1.45rem)', fontWeight: 500, color: 'var(--w-tusz-2)', letterSpacing: '-0.025em', margin: '0 0 1rem' }}>
             {lang === 'en' ? 'Latest articles' : 'Najnowsze artykuły'}
           </h2>
+          <nav
+            className={`${kosm.pasekSkrotow} ${kosm.pasekSkrotowBlog}`}
+            aria-label={lang === 'en' ? 'Filter articles by topic' : 'Filtruj artykuły według tematu'}
+          >
+            {kategorieZNaliczaniem.map((kat) => (
+              <button
+                key={kat.id}
+                type="button"
+                className={`${kosm.pigulkaSkrotu} ${activeCat === kat.id ? kosm.pigulkaSkrotuAktywna : ''}`}
+                aria-pressed={activeCat === kat.id}
+                onClick={() => setActiveCat(kat.id)}
+              >
+                <span>{kat.etykieta}</span>
+                <span className={kosm.pigulkaKod}>{String(kat.liczba).padStart(2, '0')}</span>
+              </button>
+            ))}
+            {sortedPosts.length > 4 && (
+              <a href="#wszystkie-artykuly" className={kosm.pigulkaSkrotu}>
+                <span>{lang === 'en' ? 'Full index' : 'Pełny spis'}</span>
+                <span className={kosm.pigulkaKod} aria-hidden="true">↓</span>
+              </a>
+            )}
+          </nav>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -434,7 +490,7 @@ export default function BlogGrid() {
             najnowsze, wiec dziesiec artykulow nie mialo zadnego linku w HTML
             serwerowym - Google odkrywal je dopiero przy renderowaniu JS. */}
         {sortedPosts.length > 4 && (
-          <Reveal style={{ marginTop: '4rem' }}>
+          <Reveal id="wszystkie-artykuly" style={{ marginTop: '4rem', scrollMarginTop: '110px' }}>
             <h2 style={{ fontSize: '1.65rem', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', letterSpacing: '-0.035em' }}>
               {lang === 'pl' ? 'Wszystkie artykuły' : 'All articles'}
             </h2>

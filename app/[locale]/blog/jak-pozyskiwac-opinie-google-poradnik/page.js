@@ -20,6 +20,8 @@ import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
@@ -126,15 +128,17 @@ export default async function ArticleReviewsPage({ params }) {
 
             <h1 style={{ 
               fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
+              fontWeight: 500, 
               color: 'var(--w-tusz)', 
-              marginBottom: '2rem', 
+              marginBottom: '1.5rem', 
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               textAlign: 'left'
             }}>
               {locale === 'en' ? 'How to get Google reviews: a 2026 guide with message templates' : 'Opinie Google: jak je zdobywać i jak odpowiadać (poradnik 2026)'}
             </h1>
+
+            <Byline sciezka="/blog/jak-pozyskiwac-opinie-google-poradnik" data="2026-07-31" takzeEn />
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -146,6 +150,15 @@ export default async function ArticleReviewsPage({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              {locale === 'en' ? (
+                <AnswerBox etykieta="Short answer">
+                  The safest, highest-converting way to earn Google reviews in 2026 is sending a personalized email or SMS with a direct Google Business Profile review link 24 to 48 hours after completing a job. Never buy reviews, filter unhappy clients, or offer discounts, and reply publicly to every review within 24 to 48 hours.
+                </AnswerBox>
+              ) : (
+                <AnswerBox>
+                  Najskuteczniejszy i zgodny z wytycznymi sposób zdobywania opinii Google w 2026 roku to wysyłka imiennego e-maila lub SMS-a z bezpośrednim linkiem z Profilu Firmy w ciągu 24-48 godzin po wykonaniu usługi. Nie kupuj recenzji, nie oferuj rabatów za ocenę i odpowiadaj na każdy wpis - pozytywny i krytyczny - w 24-48 godzin.
+                </AnswerBox>
+              )}
               <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto 3rem auto' }}>
                 {locale === 'en' 
                   ? 'Learning how to effectively get Google reviews is one of the most critical steps for local SEO success. Positive customer feedback builds immediate trust and improves your local map pack rankings.' 

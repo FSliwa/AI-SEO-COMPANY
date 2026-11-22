@@ -19,6 +19,8 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
 
@@ -61,9 +63,10 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 August 11, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               SEO for SaaS Startups: Product-Led Playbook 2026
             </h1>
+            <Byline sciezka="/blog/seo-for-saas-startups-playbook" data="2026-08-11" takzeEn />
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </div>
@@ -72,6 +75,9 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox etykieta="Short answer">
+                Product-led SEO for SaaS startups grows pipeline fastest when you fix crawlability, SSR rendering, and GA4 trial tracking in month one, then ship bottom-of-funnel comparison, alternative, integration, and use-case pages before broad educational posts. Reserve programmatic templates for patterns exceeding roughly 30 unique pages and judge ROI on SQLs and sign-ups.
+              </AnswerBox>
               <p className="lead">
                 The fastest path to repeatable organic growth for SaaS startups is a product-led SEO program that prioritizes buyer-intent pages (comparisons, use cases, integrations) and a technical foundation that keeps those pages crawlable, fast, and unambiguous. A durable SaaS SEO strategy rests on the same sequence every time: product-shaped content, then a clean technical foundation, then programmatic scale.
               </p>
@@ -95,7 +101,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               {/* ===== KEY TAKEAWAYS ===== */}
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem' }}>Key Takeaways</h2>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 500, marginBottom: '1rem' }}>Key Takeaways</h2>
               <p>SaaS SEO strategies compound fastest when you sequence product-shaped BOFU pages before broad educational content, build a clean technical foundation first, and measure the channel on qualified pipeline - sign-ups and sales-qualified leads from organic - rather than on rankings.</p>
 
               <div className="table-container">
@@ -121,8 +127,8 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               {/* ===== SECTION: Why SaaS SEO requires a different playbook ===== */}
               <h2 id="why-saas-seo-requires-a-different-playbook-than-general-seo">Why SaaS SEO requires a different playbook than general SEO</h2>
               <p>Most SEO advice is written for content publishers: blogs, media sites, and affiliate pages that monetize attention. SEO for SaaS companies works differently. Your product <em>is</em> the content. Feature pages, integration directories, and documentation rank for the exact queries your buyers type in the last 72 hours before they sign up.</p>
-              <p>The buyer intent skews mid- and bottom-funnel in a way that few other categories match. Someone searching "Notion vs Coda" or "Zapier Salesforce integration" is not doing research for a school project. They are evaluating tools right now. That is why BOFU assets - comparison, alternative, and integration pages - generally convert better than top-of-funnel educational posts, and why the gap should change where you spend your first six months.</p>
-              <p>The asymmetry is easiest to see when you compare two pages built by the same team in the same sprint. A page titled "Asana vs [Product Name]: Side-by-side comparison" attracts a small, self-selected audience that has already decided it needs a tool in this category and is choosing between two named options. A blog post titled "How to run better team standups" attracts a larger audience, most of which is not buying anything. Both may rank. Only one converts at a rate that justifies the build. Track both in GA4 for 90 days and you will have your own version of this number rather than someone else's benchmark.</p>
+              <p>The buyer intent skews mid- and bottom-funnel in a way that few other categories match. Someone searching &quot;Notion vs Coda&quot; or &quot;Zapier Salesforce integration&quot; is not doing research for a school project. They are evaluating tools right now. That is why BOFU assets - comparison, alternative, and integration pages - generally convert better than top-of-funnel educational posts, and why the gap should change where you spend your first six months.</p>
+              <p>The asymmetry is easiest to see when you compare two pages built by the same team in the same sprint. A page titled &quot;Asana vs [Product Name]: Side-by-side comparison&quot; attracts a small, self-selected audience that has already decided it needs a tool in this category and is choosing between two named options. A blog post titled &quot;How to run better team standups&quot; attracts a larger audience, most of which is not buying anything. Both may rank. Only one converts at a rate that justifies the build. Track both in GA4 for 90 days and you will have your own version of this number rather than someone else&apos;s benchmark.</p>
               <p>The implication for resource allocation is direct: spend the first six months on product-shaped pages, docs, and integration content. Reserve broad educational content for month six onward, once the foundation is earning traffic and you have conversion data to guide topic selection.</p>
               <p>The <a href="https://www.statista.com/statistics/510333/worldwide-public-cloud-software-as-a-service/" target="_blank" rel="noopener noreferrer">global public cloud SaaS market</a> is large and still growing, but market size is not search demand. It tells you competition for generic head terms will be fierce, not that a specific query has buyers behind it. Validate demand at the query level with Search Console and a keyword tool, not at the market level. Winning generic head terms takes years. Winning product-specific, integration, and comparison queries takes months.</p>
 
@@ -139,12 +145,12 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <p>Run the keyword research from the next section in parallel with all of this. The two streams do not compete for the same people, and the briefs need to be ready the moment the blockers clear - otherwise Phase 2 starts with a fortnight of research instead of a published page, and the parallel timeline collapses back into the sequential one.</p>
 
               <h3>Phase 2: Product-shaped pages and key docs (months 1-3)</h3>
-              <p>In SEO for software companies, the earliest returns come from the pages closest to purchase intent. Ship those first: comparison pages ("[Product] vs [Competitor]"), alternative pages ("[Competitor] alternatives"), your pricing page treated as a landing page rather than a table dump, integration pages ("[Product] + [Tool] integration"), and use-case landing pages ("project management for agencies").</p>
+              <p>In SEO for software companies, the earliest returns come from the pages closest to purchase intent. Ship those first: comparison pages (&quot;[Product] vs [Competitor]&quot;), alternative pages (&quot;[Competitor] alternatives&quot;), your pricing page treated as a landing page rather than a table dump, integration pages (&quot;[Product] + [Tool] integration&quot;), and use-case landing pages (&quot;project management for agencies&quot;).</p>
               <p>Plan for maintenance from day one. Comparison and alternative pages are the highest-maintenance assets on a SaaS site, not the lowest: competitor pricing, plan limits, and feature sets change every quarter, and a stale comparison page is both a conversion problem and a credibility risk. Put every competitor-naming page on a quarterly review cycle, keep claims factual and verifiable, and date the page so readers know when it was last checked. Integration and use-case pages are far more durable and need only annual review.</p>
 
               <h3>Phase 3: Programmatic pages and initial link plays (months 3-6)</h3>
               <p>Once you have 5-10 manually built product pages performing, build the template. As a rule of thumb, programmatic SEO rarely pays back its engineering cost below roughly 30 templated pages of the same pattern - the build is a fixed cost amortized across combinations, so thin patterns do not clear it. Three conditions before you build: there is real demand for the query pattern, you hold unique data to fill the template (product data, pricing, real integrations - not LLM-generated filler), and every page passes the test of whether it would deserve to exist if Google did not. Then index in batches rather than all at once, watching index coverage as each batch lands; mass thin pages are the most common cause of indexing problems across an entire site, not just the templated section. Simultaneously, begin partnership link plays: integration partner pages, co-created content, and free tools.</p>
-              <p>A word on generative AI here, because programmatic pages are where teams reach for it first. Google's spam policy targets scaled content abuse - producing many pages primarily to manipulate rankings rather than to help people - and it does not matter whether a human or a model wrote them. Use models for research, outlines, and first drafts; require that every page carries something a model cannot supply on its own, which for a SaaS product means your own data, your own integration behavior, or a worked example, and that a person verifies the facts before it ships. A thousand templated pages filled with model-generated prose and no proprietary data is the exact pattern the policy describes.</p>
+              <p>A word on generative AI here, because programmatic pages are where teams reach for it first. Google&apos;s spam policy targets scaled content abuse - producing many pages primarily to manipulate rankings rather than to help people - and it does not matter whether a human or a model wrote them. Use models for research, outlines, and first drafts; require that every page carries something a model cannot supply on its own, which for a SaaS product means your own data, your own integration behavior, or a worked example, and that a person verifies the facts before it ships. A thousand templated pages filled with model-generated prose and no proprietary data is the exact pattern the policy describes.</p>
 
               <h3>Phase 4: Content clusters and CRO experiments (months 6-12)</h3>
               <p>Now build topic clusters around your core use cases. Each cluster has a pillar page (broad, high-volume) supported by specific how-to, integration, and comparison pages. Run your first CRO experiments: test CTA copy on high-traffic product pages, add micro-conversion offers (free templates, calculators), and check onboarding activation rates for organic trial cohorts.</p>
@@ -196,11 +202,11 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               <p><strong>Page type prioritization checklist:</strong></p>
               <ol>
-                <li>Comparison pages ("[Product] vs [Competitor]")</li>
-                <li>Alternative pages ("Best [Competitor] alternatives")</li>
-                <li>Pricing page (optimized as a landing page, not an afterthought - buyers search "[Product] pricing" by name and it is the last page before signup)</li>
-                <li>Integration pages ("[Product] + [Tool]")</li>
-                <li>Use-case landing pages ("for [industry/role]")</li>
+                <li>Comparison pages (&quot;[Product] vs [Competitor]&quot;)</li>
+                <li>Alternative pages (&quot;Best [Competitor] alternatives&quot;)</li>
+                <li>Pricing page (optimized as a landing page, not an afterthought - buyers search &quot;[Product] pricing&quot; by name and it is the last page before signup)</li>
+                <li>Integration pages (&quot;[Product] + [Tool]&quot;)</li>
+                <li>Use-case landing pages (&quot;for [industry/role]&quot;)</li>
                 <li>Feature-specific landing pages</li>
                 <li>Documentation (indexed, structured)</li>
                 <li>Blog posts supporting clusters</li>
@@ -216,24 +222,24 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               <h3>The four-stage funnel framework</h3>
               <ul>
-                <li><strong>Problem-aware:</strong> "how to manage remote team tasks" (educational, low conversion)</li>
-                <li><strong>Solution-aware:</strong> "best project management software" (comparison intent, moderate conversion)</li>
-                <li><strong>Comparison stage:</strong> "Asana vs Monday vs [Product]" (high conversion, often lower volume)</li>
-                <li><strong>Feature stage:</strong> "Gantt chart software with time tracking" (feature-specific, high purchase intent)</li>
+                <li><strong>Problem-aware:</strong> &quot;how to manage remote team tasks&quot; (educational, low conversion)</li>
+                <li><strong>Solution-aware:</strong> &quot;best project management software&quot; (comparison intent, moderate conversion)</li>
+                <li><strong>Comparison stage:</strong> &quot;Asana vs Monday vs [Product]&quot; (high conversion, often lower volume)</li>
+                <li><strong>Feature stage:</strong> &quot;Gantt chart software with time tracking&quot; (feature-specific, high purchase intent)</li>
               </ul>
               <p>Most SaaS startups over-invest in problem-aware content and under-invest in comparison and feature queries. Competitor gap analysis is the fastest correction: find what your competitors rank for that you do not, then filter by intent.</p>
 
               <h3>Step-by-step keyword research template</h3>
               <ol>
-                <li><strong>Seed topics:</strong> List your product's core features, use cases, and the job it does. Add your top three competitors' names.</li>
-                <li><strong>Competitor gap analysis:</strong> Use Ahrefs Content Gap (Site Explorer → Content gap) or Semrush Keyword Gap to find keywords competitors rank for in positions 1-20 that you do not rank for at all. Ahrefs' Competing Domains report is a separate tool - use it first to confirm you picked the right competitor set, then run the gap report against those domains.</li>
+                <li><strong>Seed topics:</strong> List your product&apos;s core features, use cases, and the job it does. Add your top three competitors&apos; names.</li>
+                <li><strong>Competitor gap analysis:</strong> Use Ahrefs Content Gap (Site Explorer → Content gap) or Semrush Keyword Gap to find keywords competitors rank for in positions 1-20 that you do not rank for at all. Ahrefs&apos; Competing Domains report is a separate tool - use it first to confirm you picked the right competitor set, then run the gap report against those domains.</li>
                 <li><strong>Intent tagging:</strong> For each keyword, tag it as problem-aware, solution-aware, comparison, or feature. Filter out problem-aware queries for now.</li>
                 <li><strong>Opportunity scoring:</strong> Score each keyword on four dimensions: monthly search volume (minimum 50-100/month for early-stage), keyword difficulty (KD is a tool-specific proxy, not a Google metric - as a starting filter, target under 30 KD for a new domain and under 50 for a domain with some authority), clicks-per-search (prefer queries with high click-through, not dominated by featured snippets or AI answers), and business relevance (1-3 scale: does ranking for this page plausibly lead to a trial?).</li>
-                <li><strong>Prioritize feature and comparison queries:</strong> Any comparison or feature query with a business relevance score of 3 that clears your domain's KD threshold from step 4 goes to the top of your production queue, regardless of volume.</li>
+                <li><strong>Prioritize feature and comparison queries:</strong> Any comparison or feature query with a business relevance score of 3 that clears your domain&apos;s KD threshold from step 4 goes to the top of your production queue, regardless of volume.</li>
               </ol>
 
               <h3>Tool setup: what to run and where</h3>
-              <p><strong>Google Search Console:</strong> Go to Performance → Search Results. Filter by "Queries" and sort by impressions. The quick-win band is positions 5-20: high impressions with a rank just outside or just inside page one, where a title, intro, or internal-linking fix can move you into clickable territory. Queries ranking below position 20 usually need a new or substantially rebuilt page, not an optimization pass. Check "Pages" to find product pages with high impressions but low CTR - a title or meta description fix often moves the needle fast.</p>
+              <p><strong>Google Search Console:</strong> Go to Performance → Search Results. Filter by &quot;Queries&quot; and sort by impressions. The quick-win band is positions 5-20: high impressions with a rank just outside or just inside page one, where a title, intro, or internal-linking fix can move you into clickable territory. Queries ranking below position 20 usually need a new or substantially rebuilt page, not an optimization pass. Check &quot;Pages&quot; to find product pages with high impressions but low CTR - a title or meta description fix often moves the needle fast.</p>
               <p><strong>Ahrefs or Semrush:</strong> Run a Site Audit weekly to catch crawl errors. Use Keywords Explorer to validate volume and difficulty before assigning a page. Set up rank tracking for your 20 highest-priority BOFU pages from day one. For <Link href="/blog/analiza-konkurencji-seo-przewodnik">competitor analysis</Link>, use the Content Gap tool to surface queries where two or more competitors rank but you do not.</p>
 
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
@@ -244,20 +250,20 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               {/* ===== SECTION: Content Models ===== */}
               <h2 id="what-content-models-actually-convert-saas-organic-traffic-into-trials">What content models actually convert SaaS organic traffic into trials?</h2>
-              <p>Content that converts is content aligned to where the buyer is in their decision process. A blog post about "the future of project management" does not convert. A page titled "Monday.com vs [Your Product]: 2026 comparison" converts because the reader is already comparing.</p>
+              <p>Content that converts is content aligned to where the buyer is in their decision process. A blog post about &quot;the future of project management&quot; does not convert. A page titled &quot;Monday.com vs [Your Product]: 2026 comparison&quot; converts because the reader is already comparing.</p>
 
               <h3>SaaS content strategy: the cluster structure</h3>
-              <p>Build clusters from SERP overlap, not from what looks related. Two queries belong in the same cluster when their top 10 results overlap by roughly 40-50%; group by topical similarity alone and you end up either splitting one page's worth of intent across three URLs or writing two pages that compete for the same results. Check the overlap before you assign URLs, not after the pages are live.</p>
+              <p>Build clusters from SERP overlap, not from what looks related. Two queries belong in the same cluster when their top 10 results overlap by roughly 40-50%; group by topical similarity alone and you end up either splitting one page&apos;s worth of intent across three URLs or writing two pages that compete for the same results. Check the overlap before you assign URLs, not after the pages are live.</p>
               <p>A topic cluster for a SaaS product looks like this:</p>
               <ul>
-                <li><strong>Pillar page:</strong> "Project management software: complete guide" (broad, high-volume, links to all supporting pages)</li>
-                <li><strong>Use-case pages:</strong> "Project management for marketing agencies," "for software teams," "for freelancers"</li>
-                <li><strong>How-to pages:</strong> "How to set up a Gantt chart in [Product]," "How to automate task assignments"</li>
-                <li><strong>Integration pages:</strong> "[Product] + Slack integration," "[Product] + Google Calendar sync"</li>
-                <li><strong>Comparison pages:</strong> "[Product] vs Asana," "[Product] vs Trello"</li>
+                <li><strong>Pillar page:</strong> &quot;Project management software: complete guide&quot; (broad, high-volume, links to all supporting pages)</li>
+                <li><strong>Use-case pages:</strong> &quot;Project management for marketing agencies,&quot; &quot;for software teams,&quot; &quot;for freelancers&quot;</li>
+                <li><strong>How-to pages:</strong> &quot;How to set up a Gantt chart in [Product],&quot; &quot;How to automate task assignments&quot;</li>
+                <li><strong>Integration pages:</strong> &quot;[Product] + Slack integration,&quot; &quot;[Product] + Google Calendar sync&quot;</li>
+                <li><strong>Comparison pages:</strong> &quot;[Product] vs Asana,&quot; &quot;[Product] vs Trello&quot;</li>
               </ul>
-              <p>Each supporting page links back to the pillar and to the product's trial signup. The pillar links out to every supporting page. This internal link structure distributes link equity and signals topical depth.</p>
-              <p><strong>Watch for cannibalization as the cluster grows.</strong> Comparison, alternative, use-case, and integration pages describe the same product to overlapping audiences, so they drift onto each other's queries. Once a month, open the Search Console Performance report, filter to a priority query, and check the Pages tab: if two or more URLs rotate on it, you have a conflict. Resolve it one of three ways - consolidate the weaker page into the stronger with a 301, sharpen the intent of each page so they answer different questions, or change internal links and anchors so Google sees which URL you intend to rank. Rule of thumb: one page, one cluster.</p>
+              <p>Each supporting page links back to the pillar and to the product&apos;s trial signup. The pillar links out to every supporting page. This internal link structure distributes link equity and signals topical depth.</p>
+              <p><strong>Watch for cannibalization as the cluster grows.</strong> Comparison, alternative, use-case, and integration pages describe the same product to overlapping audiences, so they drift onto each other&apos;s queries. Once a month, open the Search Console Performance report, filter to a priority query, and check the Pages tab: if two or more URLs rotate on it, you have a conflict. Resolve it one of three ways - consolidate the weaker page into the stronger with a 301, sharpen the intent of each page so they answer different questions, or change internal links and anchors so Google sees which URL you intend to rank. Rule of thumb: one page, one cluster.</p>
 
               <h3>Product-shaped landing pages vs. blog posts</h3>
               <div className="table-container">
@@ -281,19 +287,19 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               </div>
 
               <h3>On-page SEO checklist for SaaS pages</h3>
-              <p>Every product page and comparison page needs: an H1 that matches the searcher's query phrasing, a meta title of about 55-60 characters (Google truncates by pixel width, not by character count) with the primary keyword near the front, a meta description that includes a benefit and a CTA, and intent-aligned H2s that answer the questions a buyer would actually ask.</p>
+              <p>Every product page and comparison page needs: an H1 that matches the searcher&apos;s query phrasing, a meta title of about 55-60 characters (Google truncates by pixel width, not by character count) with the primary keyword near the front, a meta description that includes a benefit and a CTA, and intent-aligned H2s that answer the questions a buyer would actually ask.</p>
               <p><strong>Structured data in 2026 - what changed.</strong> Two of the most commonly recommended schema types no longer produce anything in Google Search. HowTo rich results were removed from mobile in August 2023 and desktop in September 2023, and the documentation has since been retired entirely. FAQ rich results were deprecated on 7 May 2026, ending the last remaining eligibility for government and health sites, and Google removed the FAQ documentation in June 2026 (see Google&apos;s documentation updates log). Secondary sources report that Search Console reporting and Rich Results Test support for FAQ ended in June 2026 and Search Console API support in August 2026; Google&apos;s own pages do not confirm those two dates. If you have automated dashboards or BigQuery exports pulling FAQ appearance data, update those calls now.</p>
               <p>What this means practically:</p>
               <ul>
                 <li><strong>Do not add <code>FAQPage</code> or <code>HowTo</code> markup expecting a SERP effect.</strong> Neither is a ranking factor and neither renders a rich result. <code>FAQPage</code> remains a valid Schema.org type and existing markup can stay in place without harm - Google has stated that unused structured data does not cause problems - but it is no longer a reason to restructure a page.</li>
                 <li>Do use markup that still earns a search appearance or clarifies entities: <code>Organization</code>, <code>BreadcrumbList</code>, <code>Article</code> for docs and blog posts, <code>VideoObject</code> where you have video, and <code>SoftwareApplication</code> on product pages with <code>applicationCategory</code>, <code>operatingSystem</code>, and <code>offers</code>.</li>
-                <li><strong>Match markup to visible content.</strong> Google's guidance for AI Overviews and AI Mode is that no special schema is required, but any structured data you use must reflect what is actually on the page.</li>
+                <li><strong>Match markup to visible content.</strong> Google&apos;s guidance for AI Overviews and AI Mode is that no special schema is required, but any structured data you use must reflect what is actually on the page.</li>
                 <li><strong>Separate the schema question from the content question.</strong> Clear headings, direct answers, and comparison tables are worth building because they help readers and are easy for any retrieval system to parse - not because a specific markup type unlocks them.</li>
               </ul>
 
               <h3>Docs strategy and GitBook</h3>
               <p>Documentation is one of the most underrated ranking assets in SaaS SEO. A well-structured docs site ranks for long-tail feature queries that no blog post would target. Use GitBook or a similar docs platform that outputs clean, crawlable HTML. Set up a dedicated subdomain (docs.yourproduct.com) or subdirectory (/docs/) and include it in your XML sitemap. A subdirectory is generally the safer default for a young domain, since it consolidates signals on one host. Index docs pages that answer real user questions; noindex changelog pages and internal admin docs. Superseded version pages need a deliberate decision rather than a blanket rule - see the canonicalization section below.</p>
-              <p>There is a real shift in how software buyers discover tools, and it is worth planning for. <a href="https://learn.g2.com/g2-2026-ai-search-insight-report" target="_blank" rel="noopener noreferrer">G2's 2026 AI Search Insight Report</a> - a survey of 1,076 B2B decision makers fielded in March 2026 - found that B2B buyers increasingly begin research with AI assistants rather than with Google, and that AI-surfaced information regularly leads them to shortlist vendors they had not previously considered. The report's central finding is about trust: buyers act on AI recommendations but look for corroboration, and third-party review platforms are the signal they check most. The operational takeaway is therefore not "add more schema" but "make sure your product's claims are consistent and verifiable across your own docs, your comparison pages, and your review profiles," because that is the corpus these systems draw on.</p>
+              <p>There is a real shift in how software buyers discover tools, and it is worth planning for. <a href="https://learn.g2.com/g2-2026-ai-search-insight-report" target="_blank" rel="noopener noreferrer">G2&apos;s 2026 AI Search Insight Report</a> - a survey of 1,076 B2B decision makers fielded in March 2026 - found that B2B buyers increasingly begin research with AI assistants rather than with Google, and that AI-surfaced information regularly leads them to shortlist vendors they had not previously considered. The report&apos;s central finding is about trust: buyers act on AI recommendations but look for corroboration, and third-party review platforms are the signal they check most. The operational takeaway is therefore not &quot;add more schema&quot; but &quot;make sure your product&apos;s claims are consistent and verifiable across your own docs, your comparison pages, and your review profiles,&quot; because that is the corpus these systems draw on.</p>
 
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
@@ -315,7 +321,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <p>Multi-version docs need a deliberate decision, and <code>rel=canonical</code> is only the right tool in one of the two cases:</p>
               <ul>
                 <li><strong>Pages that are genuinely near-duplicate across versions</strong> (the content is materially unchanged from v2 to v3): canonical the older version to the current one. Google treats canonical as a hint and will ignore it where the pages differ substantially, so this only works when the duplication is real.</li>
-                <li><strong>Pages whose content genuinely changed between versions:</strong> do not canonical them together. Either <code>noindex</code> the superseded versions, or keep them indexed if customers on old versions still need to find them - and in that case add a visible "you are viewing v1, current version is v3" banner with a link, so users and crawlers both resolve to the right page.</li>
+                <li><strong>Pages whose content genuinely changed between versions:</strong> do not canonical them together. Either <code>noindex</code> the superseded versions, or keep them indexed if customers on old versions still need to find them - and in that case add a visible &quot;you are viewing v1, current version is v3&quot; banner with a link, so users and crawlers both resolve to the right page.</li>
               </ul>
               <p>Keep only the current version in your XML sitemap regardless of which route you choose. The <Link href="/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026">canonical tag guide</Link> covers the exact implementation for subdomain and subdirectory setups.</p>
 
@@ -332,7 +338,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <p>If you are publishing pages while technical remediation is still running, you are deploying continuously - run a comparative crawl within 48 hours of every significant deploy and diff it against the previous state. Most SEO disasters are unintended side effects of releases, caught too late.</p>
 
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
-                Pro Tip: In Google Search Console, use the URL Inspection tool on your five highest-priority pages after any major site update. If Googlebot's last crawl predates your update by more than two weeks, request indexing manually.
+                Pro Tip: In Google Search Console, use the URL Inspection tool on your five highest-priority pages after any major site update. If Googlebot&apos;s last crawl predates your update by more than two weeks, request indexing manually.
               </div>
 
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
@@ -346,10 +352,10 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 <li><strong>Integration partner pages:</strong> Every tool you integrate with has an integrations directory. Get listed. This earns a contextual, relevant link from a site your buyers already trust, and it drives referral traffic.</li>
                 <li><strong>Free tools and calculators:</strong> Build one genuinely useful free tool (an ROI calculator, a template generator, a benchmark report). Free tools earn links passively because other sites reference them as resources. The link profile builds without ongoing outreach.</li>
                 <li><strong>Original research and data reports:</strong> Survey your user base or analyze anonymized product data. Publish a short annual report. Journalists and bloggers link to original data because it gives them a citable source. A well-promoted data report is one of the few assets that reliably earns editorial links without paid placement, though the volume depends heavily on your category and distribution.</li>
-                <li><strong>Co-created content with integration partners:</strong> Write a joint guide with a complementary SaaS ("How [Partner] + [Your Product] automates client reporting"). Both teams promote it. Both earn links from the other's audience.</li>
+                <li><strong>Co-created content with integration partners:</strong> Write a joint guide with a complementary SaaS (&quot;How [Partner] + [Your Product] automates client reporting&quot;). Both teams promote it. Both earn links from the other&apos;s audience.</li>
                 <li><strong>PR hooks tied to product milestones:</strong> Funding announcements, user milestones, and product launches are natural PR moments. A brief press release distributed through PR Newswire or Business Wire, combined with direct outreach to SaaS-focused journalists, earns brand mentions. Note that wire-service syndication itself produces mostly nofollow or low-value links - the value is in the direct journalist outreach the release supports, not the distribution.</li>
                 <li><strong>Broken link recovery:</strong> Two variants, both cheap. Internally, every docs migration and site restructure leaves external links pointing at URLs that no longer resolve - run your backlink report against your own 404s and reclaim that equity with redirects. Externally, look for dead pages in your category that still attract links (a discontinued competitor tool, a retired guide), build the replacement, and tell the sites still linking to the broken one. Neither requires a pitch, because you are fixing something for the other party.</li>
-                <li><strong>Review platform and directory profiles:</strong> Claim and complete your G2, Capterra, and Crunchbase profiles, and get into the "best [category] software" roundups your buyers read. These rarely pass strong link equity, but they are the sources both buyers and AI assistants check when they corroborate a recommendation - which makes them an authority play as much as a link play.</li>
+                <li><strong>Review platform and directory profiles:</strong> Claim and complete your G2, Capterra, and Crunchbase profiles, and get into the &quot;best [category] software&quot; roundups your buyers read. These rarely pass strong link equity, but they are the sources both buyers and AI assistants check when they corroborate a recommendation - which makes them an authority play as much as a link play.</li>
                 <li><strong>Unlinked brand mentions:</strong> Set an alert for your product name and ask for a link where a publication mentions you without one. The conversion rate on this ask is the highest in outreach, because the editorial decision to mention you has already been made.</li>
               </ol>
               <p>For a detailed outreach framework and quality checklist, the <Link href="/blog/link-building-b2b-dla-marketerow-strategie-i-checklista">B2B link building guide</Link> covers cadence, templates, and the metrics to track per link.</p>
@@ -374,7 +380,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <ul>
                 <li><strong>Organic sessions by landing page:</strong> Which pages drive the most organic traffic? Are they BOFU pages or TOF posts? Read the trend year over year, not just month over month - most SaaS categories have a seasonal shape that makes a flat month look like a problem and a strong month look like a win when neither is true.</li>
                 <li><strong>Organic MQLs, and what they are worth:</strong> Define an MQL as an event that represents a real hand-raise - trial start, demo request, or pricing-form submission. Do not count a pricing page <em>view</em> as an MQL; it is an intent signal worth tracking separately, and folding it in inflates the number and undermines the case you are trying to build. Treat the MQL count as a weekly operational signal, not as the number you report upward.</li>
-                <li>Sales-qualified leads and sign-ups from organic - the number that settles the argument: An MQL is a marketing judgement about a lead; an SQL is sales agreeing the lead is real. That difference is the whole reason to track both. Report how many organic leads sales actually accepted and what they were worth - the CRM plumbing that makes this possible is covered under <em>Validating SEO lift</em> below. In a product-led motion the equivalent is organic sign-ups that reach activation. If you report only MQLs, the first skeptical question from finance - "how many of those became opportunities?" - has no answer, and the channel loses the argument it deserves to win.</li>
+                <li>Sales-qualified leads and sign-ups from organic - the number that settles the argument: An MQL is a marketing judgement about a lead; an SQL is sales agreeing the lead is real. That difference is the whole reason to track both. Report how many organic leads sales actually accepted and what they were worth - the CRM plumbing that makes this possible is covered under <em>Validating SEO lift</em> below. In a product-led motion the equivalent is organic sign-ups that reach activation. If you report only MQLs, the first skeptical question from finance - &quot;how many of those became opportunities?&quot; - has no answer, and the channel loses the argument it deserves to win.</li>
                 <li><strong>Trial starts from organic:</strong> Set a GA4 conversion event for trial signup and filter by organic source/medium. This is the event everything upstream is measured against - impressions, sessions, and rankings only matter insofar as they move it. It is not, however, the number you report to the board: that is the qualified pipeline above. If you sell through demos rather than a self-serve trial, substitute the demo request as the conversion event and read the rest of this section the same way - the mechanics do not change, only the name of the event.</li>
                 <li><strong>Activation events:</strong> Track the first meaningful action inside the product (first project created, first integration connected). Organic trial cohorts that activate at lower rates signal a content-audience mismatch.</li>
                 <li><strong>Share of voice, not average position:</strong> Once you are tracking dozens of comparison, alternative, and integration pages, average position becomes actively misleading - a handful of new long-tail pages entering at position 40 will drag the average down in a month when the channel grew. Track share of voice instead: define a basket of priority queries, weight each by volume or by the value of the deal behind it, and measure what proportion of the available visibility you hold against three to five named competitors. That single number moves with the things that matter and is the one worth putting in front of a board.</li>
@@ -383,15 +389,15 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               <h3>CRO test templates for organic landing pages</h3>
               <ul>
-                <li><strong>CTA mapping by intent:</strong> Comparison pages get a "Start free trial" CTA. Integration pages get a "Connect [Tool] now" CTA. Use-case pages get a "See how [use case] teams use [Product]" CTA. Matching CTA copy to the page's intent lifts conversion without changing the page structure.</li>
+                <li><strong>CTA mapping by intent:</strong> Comparison pages get a &quot;Start free trial&quot; CTA. Integration pages get a &quot;Connect [Tool] now&quot; CTA. Use-case pages get a &quot;See how [use case] teams use [Product]&quot; CTA. Matching CTA copy to the page&apos;s intent lifts conversion without changing the page structure.</li>
                 <li><strong>Micro-conversion experiments:</strong> Add a free template download or a short ROI calculator to high-traffic blog posts. Capture email. Nurture to trial. This converts TOF traffic that would otherwise bounce.</li>
-                <li><strong>Social proof placement:</strong> Move customer logos and review-platform ratings above the fold on comparison pages. Test a short testimonial quote from a customer in the same industry as the page's target use case.</li>
+                <li><strong>Social proof placement:</strong> Move customer logos and review-platform ratings above the fold on comparison pages. Test a short testimonial quote from a customer in the same industry as the page&apos;s target use case.</li>
                 <li><strong>Test sizing and controls:</strong> Most startup landing pages do not get enough traffic for a statistically valid A/B test in a reasonable window. Before running one, calculate the sample size you need at your baseline conversion rate. If the answer is longer than six weeks, do not fall back on a bare before/after measurement - seasonality and algorithm updates will contaminate it. Apply the change to a group of similar pages, hold back a control group with a comparable traffic profile, and measure the difference in trend between the two over four to six weeks.</li>
               </ul>
 
               <h3>Validating SEO lift</h3>
               <p>Attribution in SaaS is messy. A buyer might read your comparison page, leave, see a retargeting ad, and sign up a week later. To isolate SEO lift, track sessions where organic was the first touch and a conversion followed within a 30-day window, and compare trial-to-paid rates for organic cohorts against paid cohorts. Organic often converts to paid at a higher rate, plausibly because self-directed buyers are further along in their evaluation - but this is a correlation, and self-selection explains part of it. Treat it as supporting evidence in your business case, not proof of causation.</p>
-              <p>GA4 alone will undercount SEO at enterprise deal sizes, because a six-month buying cycle involves several people and a last-click model credits whichever channel closed the loop. Agree the model with whoever owns your CRM before you report on it: pass the first organic landing page into the CRM as a lead property, then read organic's contribution across the whole opportunity record rather than at the session level.</p>
+              <p>GA4 alone will undercount SEO at enterprise deal sizes, because a six-month buying cycle involves several people and a last-click model credits whichever channel closed the loop. Agree the model with whoever owns your CRM before you report on it: pass the first organic landing page into the CRM as a lead property, then read organic&apos;s contribution across the whole opportunity record rather than at the session level.</p>
 
               <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
@@ -431,7 +437,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 </table>
               </div>
               <p>Regional note: the same scope from a Western European or North American agency typically starts around €3,000 and runs well past €10,000 a month. The gap is labour cost, not deliverables - which is why a CEE-based team is a live option for a startup that would otherwise be priced out of managed SEO entirely.</p>
-              <p>The two costs founders consistently underestimate are engineering time for programmatic templates and technical fixes (typically 2-6 weeks of a developer's time in the first quarter) and the ongoing maintenance of competitor comparison pages.</p>
+              <p>The two costs founders consistently underestimate are engineering time for programmatic templates and technical fixes (typically 2-6 weeks of a developer&apos;s time in the first quarter) and the ongoing maintenance of competitor comparison pages.</p>
               <p>For current agency pricing benchmarks, the <Link href="/cennik-pozycjonowania">SEO pricing guide</Link> breaks down what different retainer tiers typically include and what outputs to expect at each level.</p>
 
               <p><strong>Minimal-budget SEO tips for startups:</strong></p>
@@ -450,7 +456,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <p>These are publicly observable organic growth patterns from SaaS companies that used product-shaped SEO. The patterns are visible from the outside; the conversion figures behind them are not public, so treat the mechanism as the lesson rather than any specific number.</p>
 
               <h3>Canva: use-case pages at scale</h3>
-              <p><strong>What they did:</strong> Canva built thousands of use-case and template landing pages ("Instagram post maker," "resume template," "birthday card maker"). Each page targets a specific job-to-be-done query, includes a working template, and converts directly to signup. The critical detail is that each page carries a genuinely different, usable asset - the pattern works because the pages are not templated shells.</p>
+              <p><strong>What they did:</strong> Canva built thousands of use-case and template landing pages (&quot;Instagram post maker,&quot; &quot;resume template,&quot; &quot;birthday card maker&quot;). Each page targets a specific job-to-be-done query, includes a working template, and converts directly to signup. The critical detail is that each page carries a genuinely different, usable asset - the pattern works because the pages are not templated shells.</p>
               <p><strong>How to replicate:</strong></p>
               <ul>
                 <li>Map every job your product does, not just the broad category</li>
@@ -459,7 +465,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               </ul>
 
               <h3>Webflow: integration and comparison pages</h3>
-              <p>What they did: Webflow built dedicated pages for every major integration and comparison pages against major competitors. These pages rank for high-intent queries such as "Webflow vs WordPress," capturing searchers who are already evaluating rather than still learning the category.</p>
+              <p>What they did: Webflow built dedicated pages for every major integration and comparison pages against major competitors. These pages rank for high-intent queries such as &quot;Webflow vs WordPress,&quot; capturing searchers who are already evaluating rather than still learning the category.</p>
               <p>How to replicate:</p>
               <ul>
                 <li>List every tool your product integrates with and build a dedicated page for each</li>
@@ -468,17 +474,17 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               </ul>
 
               <h3>Stripe: docs as a ranking asset</h3>
-              <p>What they did: Stripe's documentation ranks for a large volume of long-tail implementation queries ("how to create a payment intent," "Stripe webhook signature verification") - the kind a marketing page would never target. The docs are written to be useful during evaluation rather than only after purchase.</p>
+              <p>What they did: Stripe&apos;s documentation ranks for a large volume of long-tail implementation queries (&quot;how to create a payment intent,&quot; &quot;Stripe webhook signature verification&quot;) - the kind a marketing page would never target. The docs are written to be useful during evaluation rather than only after purchase.</p>
               <p>How to replicate:</p>
               <ul>
-                <li>Audit your docs for pages that answer "how to" queries buyers actually search</li>
+                <li>Audit your docs for pages that answer &quot;how to&quot; queries buyers actually search</li>
                 <li>Add proper H1s, meta descriptions, and internal links to docs pages</li>
                 <li>Link from docs pages to relevant feature landing pages and signup</li>
               </ul>
 
               <p><strong>Immediate next steps to copy all three:</strong></p>
               <ul>
-                <li>Build one use-case landing page this week for your product's most common job-to-be-done</li>
+                <li>Build one use-case landing page this week for your product&apos;s most common job-to-be-done</li>
                 <li>Email your top five integration partners and request a listing on their integrations page</li>
                 <li>Run a Search Console query report filtered to your docs pages and optimize the five with the most impressions but lowest CTR</li>
               </ul>
@@ -487,7 +493,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               {/* ===== SECTION: How AI SEO COMPANY Executes ===== */}
               <h2 id="how-ai-seo-company-executes-this-playbook-for-saas-clients">How AI SEO COMPANY executes this playbook for SaaS clients</h2>
-              <p>AI SEO COMPANY's approach to SaaS SEO follows the same four-phase sequence described in this guide: technical foundation, product-shaped pages, programmatic scale with initial link plays, and content clusters with CRO (CRO is part of SEO Premium). The difference is that the sequence runs against a fixed monthly retainer rather than ad hoc internal effort, which means the parallel timeline from the roadmap section is the default rather than the exception.</p>
+              <p>AI SEO COMPANY&apos;s approach to SaaS SEO follows the same four-phase sequence described in this guide: technical foundation, product-shaped pages, programmatic scale with initial link plays, and content clusters with CRO (CRO is part of SEO Premium). The difference is that the sequence runs against a fixed monthly retainer rather than ad hoc internal effort, which means the parallel timeline from the roadmap section is the default rather than the exception.</p>
               <p>What a typical first quarter looks like:</p>
               <ul>
                 <li><strong>Weeks 1-2:</strong> <Link href="/audyt-seo">Technical SEO audit</Link> - crawl, indexation, Core Web Vitals, canonicalization, and tracking setup. Delivered as a prioritized fix list, not a PDF report.</li>

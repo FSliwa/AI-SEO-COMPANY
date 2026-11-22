@@ -19,6 +19,8 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
+import AnswerBox from '@/components/AnswerBox';
+import Byline from '@/components/Byline';
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import BlogCTA from '@/components/BlogCTA';
@@ -65,14 +67,18 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 August 03, 2026
               </span>
             </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               SEO Competitor Analysis: A Step-by-Step Guide
             </h1>
+            <Byline sciezka="/blog/analiza-konkurencji-seo-przewodnik" data="2026-08-03" takzeEn />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox etykieta="Short answer">
+                An SEO competitor analysis identifies the 3 to 5 domains ranking in Google&apos;s Top 5 across your core commercial queries, then compares their top pages, SERP formats, and referring domains against your site. A focused tactical review takes 2 to 3 days, while a full multi-domain audit takes 2 to 4 weeks and produces a prioritized 3-to-6-month cluster roadmap.
+              </AnswerBox>
               <p className="lead">
                 Select 3-5 domains that appear in the Top 5 for at least 10 of your key business phrases, export their Top Pages, run a quick backlink scan, and generate a list of topical gaps for immediate action. This is the starting point of effective SEO competitor analysis.
               </p>
@@ -80,10 +86,10 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>To avoid wasting time figuring out where to begin, here is a ready-to-use checklist:</p>
               <ul>
                 <li><strong>Domain identification:</strong> Enter 15-20 business phrases in Google and note the domains that appear most frequently in the Top 5.</li>
-                <li><strong>Top Pages export:</strong> In Ahrefs or SEMrush, download the "Top Pages" report for each competitor (columns: URL, estimated traffic, number of keywords).</li>
+                <li><strong>Top Pages export:</strong> In Ahrefs or SEMrush, download the &quot;Top Pages&quot; report for each competitor (columns: URL, estimated traffic, number of keywords).</li>
                 <li><strong>Quick backlink scan:</strong> Export referring domains for each domain and filter by DR/AS and topical relevance.</li>
                 <li><strong>SERP check for 10 phrases:</strong> Review result types (guides, tables, FAQs), content length, and presence of schema.</li>
-                <li><strong>Prioritization of 3 clusters:</strong> Choose clusters with the largest gap between your visibility and the competitor's.</li>
+                <li><strong>Prioritization of 3 clusters:</strong> Choose clusters with the largest gap between your visibility and the competitor&apos;s.</li>
                 <li><strong>Deliverables after this phase:</strong> List of 3-5 SEO competitors, CSV file with Top Pages, backlink gap report, map of 3 clusters with priority recommendations.</li>
               </ul>
 
@@ -106,7 +112,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>A professional SEO competitor analysis process consists of six concrete operational steps:</p>
               <ol>
                 <li><strong>Preparation and keyword selection</strong> - Input: a list of 20-30 business phrases from GSC or your own research. For a full keyword gap analysis and discovery of new opportunities, external tools such as Senuto or SEMrush are absolutely essential. Output: a sorted list of phrases with volume and difficulty.</li>
-                <li><strong>URL inventory and clusters</strong> - Input: competitor domains. Output: CSV of Top Pages with traffic, keywords, and URL structure. Tools: Ahrefs "Top Pages", SEMrush "Organic Research", Screaming Frog.</li>
+                <li><strong>URL inventory and clusters</strong> - Input: competitor domains. Output: CSV of Top Pages with traffic, keywords, and URL structure. Tools: Ahrefs &quot;Top Pages&quot;, SEMrush &quot;Organic Research&quot;, Screaming Frog.</li>
                 <li><strong>SERP analysis</strong> - Checking dominant formats, content length, schema, and media for priority phrases.</li>
                 <li><strong>Quick backlink scan</strong> - Export of referring domains, filtering by quality and topicality, identification of the backlink gap.</li>
                 <li><strong>Content mapping and topical gaps</strong> - Grouping Top Pages into clusters and comparing them with your own visibility.</li>
@@ -169,7 +175,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>The key to combining data from different tools is three fields: URL (connects crawl data with organic data), keyword (connects GSC with SEMrush/Senuto), and referring domain (connects Ahrefs with SEMrush for backlink gap analysis).</p>
 
               <h2 id="backlinki">5. How to analyze competitor backlinks and set acquisition priorities</h2>
-              <p>A competitor's backlink profile is a map of opportunities, not a list to copy. Before you start acquiring links you need to know which ones actually drive the rival's visibility.</p>
+              <p>A competitor&apos;s backlink profile is a map of opportunities, not a list to copy. Before you start acquiring links you need to know which ones actually drive the rival&apos;s visibility.</p>
               <ol>
                 <li><strong>Export the backlink CSV.</strong> From <a href={AHREFS_PORADNIK} target="_blank" rel="noopener noreferrer">Ahrefs</a> or SEMrush download the full backlink report. Columns: source URL, target URL, referring domain, DR/AS, anchor text, acquisition date, link type.</li>
                 <li><strong>Filter unique referring domains.</strong> Remove duplicates from the same domain. One portal may link 50 times but counts as a single referring domain.</li>
@@ -179,12 +185,12 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>Prioritize acquiring links from industry domains that already link to at least two of your competitors but not to you. This is the so-called backlink gap and the fastest way to level the link profile.</p>
 
               <h2 id="luki-tematyczne">6. How to map content and find topical gaps</h2>
-              <p>Content mapping starts with exporting a competitor's Top Pages and ends with a list of clusters assessed by traffic potential.</p>
+              <p>Content mapping starts with exporting a competitor&apos;s Top Pages and ends with a list of clusters assessed by traffic potential.</p>
               <ol>
-                <li>Export the competitor's Top Pages from Ahrefs or SEMrush (minimum 50-100 URLs with estimated traffic).</li>
+                <li>Export the competitor&apos;s Top Pages from Ahrefs or SEMrush (minimum 50-100 URLs with estimated traffic).</li>
                 <li>Extract titles and H2/H3 headings using Screaming Frog or manually for the Top 20 pages.</li>
                 <li>Group URLs semantically: either manually by topical tagging or semi-automatically via title embeddings and clustering.</li>
-                <li>Compare the competitor's clusters with your own. Missing clusters or clusters with incomplete coverage are gaps to fill.</li>
+                <li>Compare the competitor&apos;s clusters with your own. Missing clusters or clusters with incomplete coverage are gaps to fill.</li>
               </ol>
               <p>Internal linking is an element most analyses overlook. Check how the competitor links between pillar and spoke pages. If their pillar page receives internal links from 20 spoke articles while yours receives only 3, that is where part of the advantage lies.</p>
 
@@ -315,14 +321,18 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
             </div>
             {/* The English branch above has its own <h1>. Only one of the two branches ever
                 renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
               Analiza konkurencji SEO: przewodnik krok po kroku
             </h1>
+            <Byline sciezka="/blog/analiza-konkurencji-seo-przewodnik" data="2026-08-03" takzeEn />
             <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="article-content">
+              <AnswerBox>
+                Analiza konkurencji SEO polega na wyłonieniu 3-5 domen zajmujących miejsca w Top 5 Google na Twoje główne frazy biznesowe oraz porównaniu ich najmocniejszych podstron, formatów SERP i profilu linków z Twoją witryną. Szybki przegląd taktyczny trwa 2-3 dni, natomiast pełny audyt zajmuje 2-4 tygodnie i kończy się priorytetowym planem klastrów na 3-6 miesięcy.
+              </AnswerBox>
               <p className="lead">
                 Wybierz 3-5 domen, które pojawiają się w Top 5 dla co najmniej 10 Twoich kluczowych fraz, wyeksportuj ich Top Pages, zrób szybki skan backlinków i wygeneruj listę luk tematycznych do natychmiastowego działania. To jest punkt startowy skutecznej analizy konkurencji SEO.
               </p>
@@ -330,7 +340,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>Żeby nie tracić czasu na szukanie od czego zacząć, poniżej masz gotowy checklist:</p>
               <ul>
                 <li><strong>Identyfikacja domen:</strong> wpisz 15-20 fraz biznesowych w Google, zapisz domeny pojawiające się w Top 5 najczęściej.</li>
-                <li><strong>Eksport Top Pages:</strong> w Ahrefs lub SEMrush pobierz raport „Top Pages" dla każdego konkurenta (kolumny: URL, szacowany ruch, liczba fraz).</li>
+                <li><strong>Eksport Top Pages:</strong> w Ahrefs lub SEMrush pobierz raport „Top Pages&quot; dla każdego konkurenta (kolumny: URL, szacowany ruch, liczba fraz).</li>
                 <li><strong>Szybki backlink scan:</strong> eksportuj referring domains dla każdej domeny, filtruj po DR/AS i tematyczności.</li>
                 <li><strong>SERP check dla 10 fraz:</strong> sprawdź typy wyników (przewodniki, tabele, FAQ), długość treści i obecność schema.</li>
                 <li><strong>Priorytetyzacja 3 klastrów:</strong> wybierz klastry z największą luką między Twoją widocznością a widocznością konkurenta.</li>
@@ -356,7 +366,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
               <p>Profesjonalny proces analizy konkurencji SEO składa się z sześciu konkretnych kroków operacyjnych:</p>
               <ol>
                 <li><strong>Przygotowanie i wybór fraz</strong> - Wejście: lista 20-30 fraz biznesowych z GSC lub własnego researchu. Do pełnej analizy luk (keyword gap) narzędzia zewnętrzne takie jak Senuto czy SEMrush są absolutnie niezbędne. Wyjście: posortowana lista fraz z wolumenem i trudnością.</li>
-                <li><strong>Inwentaryzacja URL i klastry</strong> - Wejście: domeny konkurentów. Wyjście: CSV Top Pages z ruchem, frazami i strukturą URL. Narzędzia: Ahrefs „Top Pages", SEMrush „Organic Research", Screaming Frog.</li>
+                <li><strong>Inwentaryzacja URL i klastry</strong> - Wejście: domeny konkurentów. Wyjście: CSV Top Pages z ruchem, frazami i strukturą URL. Narzędzia: Ahrefs „Top Pages&quot;, SEMrush „Organic Research&quot;, Screaming Frog.</li>
                 <li><strong>Analiza SERP</strong> - Sprawdzenie dominujących formatów, długości treści, schema i mediów dla priorytetowych fraz.</li>
                 <li><strong>Szybki skan backlinków</strong> - Eksport referring domains, filtracja po jakości i tematyczności, identyfikacja backlink gap.</li>
                 <li><strong>Mapowanie treści i luk tematycznych</strong> - Grupowanie Top Pages w klastry i porównanie z własną widocznością.</li>

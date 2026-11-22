@@ -15,6 +15,11 @@ const IKONY_NARZEDZI = {
   'makieta-redesignu': <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18" /></>,
   'tester-robotow-ai-robots-txt': <><path d="M12 3 5 6v5c0 5 3 8.5 7 10 4-1.5 7-5 7-10V6l-7-3z" /><path d="m9.5 12 2 2 3.5-3.5" /></>,
   'test-core-web-vitals-porownanie': <path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z" />,
+  'sprawdz-cytowalnosc-strony-ai': <><path d="M4 6h16M4 12h10M4 18h7" /><circle cx="17.5" cy="15.5" r="3.5" /><path d="m20 18 2 2" /></>,
+  'sprawdz-przekierowania-hreflang': <><path d="M4 8h11l-3-3M20 16H9l3 3" /><path d="m12 11 3-3" /></>,
+  'generator-indexnow-test-bing-chatgpt': <><path d="M13 3 6 13h5l-1 8 8-10h-5z" /></>,
+  'walidator-grafu-encji-json-ld': <><circle cx="6" cy="12" r="2.5" /><circle cx="18" cy="6" r="2.5" /><circle cx="18" cy="18" r="2.5" /><path d="m8.2 10.9 7.6-3.8M8.2 13.1l7.6 3.8" /></>,
+  'audyt-lokalnego-seo-wizytowki': <><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><path d="M14 14h3v3h-3zM17 17h3v3h-3z" /></>,
 };
 
 const ROZMIARY_PODGLADU = '(max-width: 959px) calc(100vw - 72px), 560px';
