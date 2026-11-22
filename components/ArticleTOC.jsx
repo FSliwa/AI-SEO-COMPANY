@@ -47,9 +47,10 @@ export default function ArticleTOC({ items = [] }) {
   // Tab trafial na niewidoczny link (opacity 0, wysokosc 0) i fokus znikal z
   // ekranu na 11 nacisniec. Nazwa nawigacji jest w jezyku strony, stan
   // przycisku ogloszony, a zwinieta lista dostaje inert (nizej).
+  const tocLabel = lang === 'de' ? 'Inhaltsverzeichnis' : lang === 'en' ? 'Table of contents' : 'Spis treści';
   return (
     <nav
-      aria-label={lang === 'en' ? 'Table of contents' : 'Spis treści'}
+      aria-label={tocLabel}
       style={{
         background: 'var(--w-papier-2)',
         borderRadius: '16px',
@@ -80,7 +81,7 @@ export default function ArticleTOC({ items = [] }) {
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
         }}>
-          {lang === 'en' ? 'Table of contents' : 'Spis treści'}
+          {tocLabel}
         </span>
         <svg
           aria-hidden="true"

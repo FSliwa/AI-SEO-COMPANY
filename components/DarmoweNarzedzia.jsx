@@ -89,7 +89,7 @@ export default function DarmoweNarzedzia({ locale = 'pl' }) {
             <p className="dn-podtytul">{dane.podtytul}</p>
 
             {/* Szybki pasek nawigacyjny po 6 narzędziach */}
-            <nav className="dn-skroty" aria-label={locale === 'en' ? 'Jump to a free tool' : 'Przejdź do wybranego narzędzia'}>
+            <nav className="dn-skroty" aria-label={locale === 'de' ? 'Zu einem kostenlosen Tool springen' : locale === 'en' ? 'Jump to a free tool' : 'Przejdź do wybranego narzędzia'}>
               {dane.narzedzia.map((n) => (
                 <a key={n.id} href={`#narz-${n.id}`} className="dn-skrot">
                   <span>{n.nazwa}</span>
