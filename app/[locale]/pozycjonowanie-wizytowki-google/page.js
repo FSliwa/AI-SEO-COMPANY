@@ -8,11 +8,13 @@
 // z wpisu stronyEn, FAQ i JSON-LD Service po angielsku (ServiceSchema nie ma EN dla 'wizytowka').
 // Title i meta z rejestru publikacji (= PLAN-v2 6.6, 59 i 128 zn.), żeby llms.txt, nawigacja
 // i <title> nie mogły się rozjechać. Okruszki 2-poziomowe (Strona główna › bieżąca).
+import { setRequestLocale } from 'next-intl/server';
 import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import ServiceSchema from '@/components/ServiceSchema';
 import WizytowkaClient from '@/components/WizytowkaClient';
+import GoogleUnternehmensprofilDe from '@/components/de/GoogleUnternehmensprofilDe';
 import { metadataStronyPl, wymagajStronyPl } from '@/lib/stronaPl';
 import { wpisPublikacji } from '@/lib/publikacja';
 import { hrefWJezyku } from '@/lib/linkiEn';
@@ -147,6 +149,8 @@ const serviceEn = {
 export default async function PozycjonowanieWizytowkiPage({ params }) {
   const { locale } = await params;
   wymagajStronyPl(locale, SCIEZKA);
+  setRequestLocale(locale);
+  if (locale === 'de') return <GoogleUnternehmensprofilDe />;
   return (
     <>
       {/* Service + Offer „SEO Standard z prowadzeniem wizytówki” 1 900 PLN/mies. (CB-02);

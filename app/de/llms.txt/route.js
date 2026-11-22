@@ -1,6 +1,6 @@
 import { BASE_URL } from '@/lib/sitemapEntries';
 import { DE_AKTYWNE, STRONY_DE, hrefDe, opublikowaneSciezkiDe } from '@/lib/stronyDe';
-import { BIURO, MAPA_GOOGLE_URL, PROFILE_FIRMY } from '@/lib/firma';
+import { BIURO, REJESTR, MAPA_GOOGLE_URL, PROFILE_FIRMY } from '@/lib/firma';
 
 // Deutsche llms.txt unter /de/llms.txt (18.11.2026). Wird NUR bei aktiver deutscher Version
 // ausgeliefert (lib/stronyDe.js: DE_OPUBLIKOWANE oder NEXT_PUBLIC_PODGLAD_DE=1); sonst 404, und
@@ -40,7 +40,7 @@ function inhalt() {
   ].join('\n');
   return `# AI SEO COMPANY (Deutsch)
 
-> AI SEO COMPANY ist eine SEO Agentur aus Warschau mit Schwerpunkt Generative Engine Optimization (GEO): SEO Audits, B2B SEO, Optimierung für Antworten von ChatGPT, Gemini, Perplexity und Google AI Overviews sowie kostenlose Tools. Betreiber: AI SIGNALS COMPANY Prosta Spółka Akcyjna, ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, KRS 0001239983.
+> AI SEO COMPANY ist eine KI SEO Agentur aus Warschau mit Schwerpunkt Generative Engine Optimization (GEO): SEO Audits, B2B SEO, Optimierung für Antworten von ChatGPT, Gemini, Perplexity und Google AI Overviews sowie kostenlose Tools. Betreiber: AI SIGNALS COMPANY Prosta Spółka Akcyjna, ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, KRS ${REJESTR.krs}, NIP ${REJESTR.nip}, Aktienkapital ${REJESTR.kapital.de}.
 
 ${profile}
 

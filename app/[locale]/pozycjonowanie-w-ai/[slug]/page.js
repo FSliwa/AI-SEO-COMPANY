@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import SpokeAiLayout from '@/components/ai/SpokeAiLayout';
 import ChatgptSeiteDe from '@/components/de/ChatgptSeiteDe';
+import KiSichtbarkeitAuditDe from '@/components/de/KiSichtbarkeitAuditDe';
 import { PREFIKS, pytaniaAi } from '@/lib/pytaniaAi';
 import { wpisPytaniaAiWJezyku } from '@/lib/pytaniaAi.en';
 import { metadataStronyPl, parametryPl, wymagajStronyPl } from '@/lib/stronaPl';
@@ -40,9 +41,10 @@ export default async function SpokeAiPage({ params }) {
   const { locale, slug } = await params;
   if (locale === 'de') {
     wymagajStronyPl(locale, `${PREFIKS}${slug}`);
-    if (slug !== 'chatgpt') notFound();
     setRequestLocale(locale);
-    return <ChatgptSeiteDe />;
+    if (slug === 'chatgpt') return <ChatgptSeiteDe />;
+    if (slug === 'audyt-widocznosci') return <KiSichtbarkeitAuditDe />;
+    notFound();
   }
   const wpis = wpisPytaniaAiWJezyku(slug, locale);
   if (!wpis) notFound();

@@ -155,10 +155,14 @@ const CSS = `
 .sz-chk-etykieta .sz-chk-box {
   margin: 0;
 }
+.sz-chk-punkt {
+  font-weight: 700;
+}
 li.sz-chk-zrobione {
   opacity: 0.68;
 }
-li.sz-chk-zrobione > strong:first-of-type {
+li.sz-chk-zrobione > strong:first-of-type,
+li.sz-chk-zrobione > .sz-chk-punkt {
   text-decoration: line-through;
 }
 tr.sz-chk-zrobione td {

@@ -15,6 +15,8 @@ const IKONY_EKO = {
   kalk: <><path d="M19 5 5 19" /><circle cx="7" cy="7" r="2" /><circle cx="17" cy="17" r="2" /></>,
   llms: <path d="m9 8-4 4 4 4M15 8l4 4-4 4" />,
   makieta: <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18" /></>,
+  boty: <><path d="M12 3 5 6v5c0 5 3 8.5 7 10 4-1.5 7-5 7-10V6l-7-3z" /><path d="m9.5 12 2 2 3.5-3.5" /></>,
+  cwv: <path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z" />,
 };
 
 export default function Hero({ locale = 'pl' }) {

@@ -129,8 +129,14 @@ export default function GeoSeiteDe() {
           <Reveal style={{ textAlign: 'center', marginTop: '1rem' }}>
             <p lang="de" style={fussStyl}>{ANGEBOT.hinweis}</p>
           </Reveal>
-          <Reveal style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <a href="#kontakt" className="btn btn-primary" data-cta="geo_offer_audit">{KOPF.ctaAudit}</a>
+          <Reveal style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            {maWersjeDe('/pozycjonowanie-w-ai/audyt-widocznosci') ? (
+              <Link href="/pozycjonowanie-w-ai/audyt-widocznosci" className="btn btn-primary" data-cta="geo_offer_audit">
+                KI-Sichtbarkeit Audit im Detail (235 € netto) →
+              </Link>
+            ) : (
+              <a href="#kontakt" className="btn btn-primary" data-cta="geo_offer_audit">{KOPF.ctaAudit}</a>
+            )}
           </Reveal>
         </div>
       </section>

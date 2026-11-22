@@ -331,6 +331,11 @@ const nextConfig = {
         destination: '/en/blog/how-much-does-a-business-website-cost-pricing',
         permanent: true,
       },
+      {
+        source: '/en/analiza-konkurencji-seo-przewodnik',
+        destination: '/en/blog/seo-competitor-analysis-step-by-step-guide',
+        permanent: true,
+      },
     ]
   },
   images: {

@@ -32,7 +32,7 @@ import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
 import { STRONY_EN } from '@/lib/stronyEn';
 import { AUTORYTET_OPUBLIKOWANY, BASE, SCIEZKA_HUBA, hrefAudytuAi } from '@/lib/narzedzia';
 import { H1_HUBA, faqHubaL, kartyHubaL, stronaNarzedziaL, zrodlaKalkulatoraL } from '@/lib/narzedzia.en';
-import { AUDYT, AUTORYTET, GENERATOR, WIDOCZNOSC, cena, listaSilnikow } from '@/lib/narzedziaLiczby';
+import { AUDYT, AUTORYTET, GENERATOR, POROWNYWARKA_CWV, ROBOTY_AI, WIDOCZNOSC, cena, listaSilnikow } from '@/lib/narzedziaLiczby';
 import { PORADNIKI } from '@/lib/narzedzia/poradniki';
 import { obrazKarty } from '@/lib/narzedziaObrazy';
 import AudytSeoClient from './AudytSeoClient';
@@ -55,7 +55,7 @@ const TEKSTY = {
     lead: (wzory) => `Wpisz adres strony, a darmowy audyt SEO sprawdzi ją w ${AUDYT.regul} regułach. Niżej znajdziesz pozostałe darmowe narzędzia SEO i AI oraz ${wzory} ${odmiana(wzory, ['wzór', 'wzory', 'wzorów'])} do pobrania. Bez rejestracji.`,
     poAudycie: 'Co sprawdza audyt, jak liczymy ocenę i czego nie sprawdza, opisujemy na stronie',
     linkAudyt: 'darmowego audytu SEO',
-    odpowiedz: 'Zebraliśmy tu bezpłatne narzędzia i szablony AI SEO COMPANY: audyt SEO z oceną 1-100, sprawdzarkę widoczności w AI, kalkulator strat bez SEO, makietę nowej strony z AI i generator llms.txt z testem botów AI. Działają bez rejestracji i pokazują wynik od razu, a pełne raporty i wzory PDF wysyłamy e-mailem.',
+    odpowiedz: 'Zebraliśmy tu bezpłatne narzędzia i szablony AI SEO COMPANY: audyt SEO z oceną 1-100, sprawdzarkę widoczności w AI, tester 12 robotów AI i kreator robots.txt, porównywarkę Core Web Vitals (CrUX), autorytet domeny, kalkulator strat bez SEO, makietę nowej strony z AI i generator llms.txt. Działają bez rejestracji i pokazują wynik od razu, a pełne raporty i wzory PDF wysyłamy e-mailem.',
     h2Narzedzia: 'Narzędzia online',
     pNarzedzia: 'Narzędzia uzupełniają darmowe narzędzia SEO Google, czyli Search Console i Analytics. Audyt zbiera błędy z podstron w jednym raporcie z oceną, sprawdzarka pokazuje, czy ChatGPT i inne modele wymieniają Twoją firmę, kalkulator liczy, ile zysku tracisz bez TOP 3, a generator sprawdza, czy boty modeli językowych mogą wejść na stronę. Przy każdym narzędziu piszemy, co widzisz od razu, a co dopiero po podaniu e-maila.',
     grupy: { seo: 'Strona i SEO', ai: 'Widoczność w AI' },
@@ -73,7 +73,7 @@ const TEKSTY = {
     poKrokach: 'Jeśli planujesz nową stronę, wypróbuj narzędzie, które w kilka minut pokaże, jak mogłaby wyglądać strona główna zbudowana z Twoich treści:',
     linkMakieta: 'makieta strony internetowej z AI',
     h2Dane: 'Skąd narzędzia biorą dane i jakie mają ograniczenia',
-    krotko: { 'audyt-seo': 'Darmowy audyt SEO', 'sprawdzarka-ai': 'Widoczność w AI', 'kalkulator-strat-seo': 'Kalkulator strat', 'makieta-redesignu': 'Makieta nowej strony', 'generator-llms-txt': 'Generator llms.txt', 'autorytet-domeny': 'Autorytet domeny' },
+    krotko: { 'audyt-seo': 'Darmowy audyt SEO', 'sprawdzarka-ai': 'Widoczność w AI', 'kalkulator-strat-seo': 'Kalkulator strat', 'makieta-redesignu': 'Makieta nowej strony', 'generator-llms-txt': 'Generator llms.txt', 'autorytet-domeny': 'Autorytet domeny', 'tester-robotow-ai-robots-txt': 'Tester robotów AI', 'test-core-web-vitals-porownanie': 'Porównywarka Core Web Vitals' },
     pDane: 'Każde narzędzie pokazuje wynik z prawdziwego sprawdzenia, bez wymyślonych liczb. Oto, co dokładnie robi i gdzie kończy się jego zasięg.',
     dane: {
       'audyt-seo': () => `nasz robot AISEOCompanyAudit czyta do ${AUDYT.stron} podstron (także z ${AUDYT.mapPodrzednych} map podrzędnych) i sprawdza ${AUDYT.regul} reguł w ${AUDYT.kategorii} kategoriach: technika (${AUDYT.reguly.techniczne}), treść (${AUDYT.reguly.tresc}), wydajność (${AUDYT.reguly.wydajnosc}) i gotowość na AI (${AUDYT.reguly.ai}). Kategorie ważą w ocenie ${AUDYT.wagi.techniczne}, ${AUDYT.wagi.tresc}, ${AUDYT.wagi.wydajnosc} i ${AUDYT.wagi.ai}%. Szybkość to mediana ${AUDYT.przebiegiPsi} pomiarów Google PageSpeed Insights na telefonie. To próbka strony, a nie pełne indeksowanie.`,
@@ -82,6 +82,8 @@ const TEKSTY = {
       'makieta-redesignu': () => 'model Claude buduje stronę główną z treści, które znajdzie na Twojej stronie, i nie dopisuje opinii, liczb ani nagród, których tam nie ma. Zdjęcia, teksty i SEO dopracowuje się przy wdrożeniu.',
       'generator-llms-txt': () => `pobiera mapę strony (do ${GENERATOR.mapPodrzednych} map podrzędnych), wybiera do ${GENERATOR.adresow} adresów, po kilka z każdej sekcji, i sprawdza robots.txt i kod odpowiedzi serwera dla ${GENERATOR.botowAi} botów AI i Bingbot. Nie zapisuje adresu ani wyniku.`,
       'autorytet-domeny': () => `liczy nasz wynik 0-100 z publicznego grafu linków Common Crawl (${AUTORYTET.okres.pl}): pozycję domeny w sieci linków, miejsce wśród domen .pl i różnicę do konkurentów. To nie jest DR Ahrefs ani DA Moz, a dane zmieniają się z kolejnym wydaniem grafu, nie z dnia na dzień.`,
+      'tester-robotow-ai-robots-txt': () => `porównuje reguły w robots.txt z prawdziwymi kodami odpowiedzi HTTP (wykrywając blokady 403 zapory WAF) dla ${ROBOTY_AI.botow} botów AI oraz liczy parzystość treści HTML bez JavaScriptu. Nie zapisuje adresu e-mail (do ${ROBOTY_AI.limitIp} sprawdzeń na dobę z jednego IP).`,
+      'test-core-web-vitals-porownanie': () => `pobiera oficjalne ${POROWNYWARKA_CWV.dniCrux}-dniowe dane polowe Chrome UX Report (CrUX) oraz PageSpeed Insights API (LCP, INP, CLS, TTFB) dla Twojej strony i wybranego konkurenta, rozpoznając też wtyczki CMS w kodzie HTML (do ${POROWNYWARKA_CWV.limitIp} porównań na dobę z jednego IP).`,
     },
     h2Szablony: 'Szablony i checklisty do pobrania',
     pSzablony: 'Wzory w PDF pomagają zaplanować SEO i sprawdzić pracę agencji: od checklisty SEO, planu treści i strategii po raport miesięczny i listę rzeczy do odebrania przed zmianą agencji. Każdy wzór ma stronę z opisem, co zawiera i jak z niego korzystać. Podajesz tylko adres e-mail, a link do pliku przychodzi w ciągu minuty.',
@@ -106,7 +108,7 @@ const TEKSTY = {
     lead: (wzory) => `Enter your website address and the free SEO audit checks it against ${AUDYT.regul} rules. Below you will find the other free SEO tools and AI tools and ${wzory} templates to download. No sign-up.`,
     poAudycie: 'What the audit checks, how we calculate the score and what it does not check are described on the page of the',
     linkAudyt: 'free SEO audit',
-    odpowiedz: 'Here you will find the free tools and templates from AI SEO COMPANY: an SEO audit with a 1-100 score, an AI visibility checker, an SEO loss calculator, an AI website redesign mockup and an llms.txt generator with an AI bot access test. They work without registration and show results right away, and we email the full reports and PDF templates.',
+    odpowiedz: 'Here you will find the free tools and templates from AI SEO COMPANY: an SEO audit with a 1-100 score, an AI visibility checker, a 12-bot AI crawler & robots.txt tester, a Core Web Vitals (CrUX) comparison tool, a domain authority checker, an SEO loss calculator, an AI website redesign mockup and an llms.txt generator. They work without registration and show results right away, and we email the full reports and PDF templates.',
     h2Narzedzia: 'Online tools',
     pNarzedzia: 'The tools complement free Google SEO tools, namely Search Console and Analytics. The audit collects the errors on your pages in one scored report, the checker shows whether ChatGPT and other models name your business, the calculator estimates the profit you lose without a top 3 position, and the generator tests whether language model bots can reach your website. For each tool we say what you see right away and what only after you enter your email.',
     grupy: { seo: 'Website and SEO', ai: 'AI visibility' },
@@ -124,7 +126,7 @@ const TEKSTY = {
     poKrokach: 'If you are planning a new website, the mockup shows in a few minutes what a homepage built from your content could look like.',
     linkMakieta: 'See a mockup of your new website',
     h2Dane: 'Where the tools get their data and what their limits are',
-    krotko: { 'audyt-seo': 'Free SEO audit', 'sprawdzarka-ai': 'AI visibility check', 'kalkulator-strat-seo': 'SEO loss calculator', 'makieta-redesignu': 'Website redesign mockup', 'generator-llms-txt': 'llms.txt generator', 'autorytet-domeny': 'Domain authority' },
+    krotko: { 'audyt-seo': 'Free SEO audit', 'sprawdzarka-ai': 'AI visibility check', 'kalkulator-strat-seo': 'SEO loss calculator', 'makieta-redesignu': 'Website redesign mockup', 'generator-llms-txt': 'llms.txt generator', 'autorytet-domeny': 'Domain authority', 'tester-robotow-ai-robots-txt': 'AI crawler tester', 'test-core-web-vitals-porownanie': 'Core Web Vitals comparison' },
     pDane: 'Each tool shows the result of a real check, with no made-up numbers. Here is exactly what it does and where its reach ends.',
     dane: {
       'audyt-seo': () => `our AISEOCompanyAudit crawler reads up to ${AUDYT.stron} pages (including from ${AUDYT.mapPodrzednych} child sitemaps) and checks ${AUDYT.regul} rules in ${AUDYT.kategorii} categories: technical (${AUDYT.reguly.techniczne}), content (${AUDYT.reguly.tresc}), performance (${AUDYT.reguly.wydajnosc}) and AI readiness (${AUDYT.reguly.ai}). The categories weigh ${AUDYT.wagi.techniczne}, ${AUDYT.wagi.tresc}, ${AUDYT.wagi.wydajnosc} and ${AUDYT.wagi.ai}% in the score. Speed is the median of ${AUDYT.przebiegiPsi} mobile Google PageSpeed Insights runs. It is a sample of your website, not a full crawl.`,
@@ -133,6 +135,8 @@ const TEKSTY = {
       'makieta-redesignu': () => 'the Claude model builds the homepage from the content it finds on your website and does not add reviews, numbers or awards that are not there. Photos, copy and SEO are finished during the build.',
       'generator-llms-txt': () => `it fetches your sitemap (up to ${GENERATOR.mapPodrzednych} child sitemaps), picks up to ${GENERATOR.adresow} URLs, a few from every section, and checks robots.txt and the server response code for ${GENERATOR.botowAi} AI bots and Bingbot. It stores neither the address nor the result.`,
       'autorytet-domeny': () => `it calculates our 0-100 score from the public Common Crawl link graph (${AUTORYTET.okres.en}): the domain’s position in the web of links, its rank among .pl domains and the gap to competitors. It is not Ahrefs DR or Moz DA, and the data changes with each graph release, not from day to day.`,
+      'tester-robotow-ai-robots-txt': () => `it compares your robots.txt rules against real HTTP server responses (detecting silent 403 WAF blocks) for ${ROBOTY_AI.botow} AI crawlers and scores server-rendered HTML parity without JavaScript. Requires no email (up to ${ROBOTY_AI.limitIp} checks per day per IP).`,
+      'test-core-web-vitals-porownanie': () => `it pulls official ${POROWNYWARKA_CWV.dniCrux}-day Chrome UX Report (CrUX) field data and PageSpeed Insights API metrics (LCP, INP, CLS, TTFB) for your site and a chosen competitor while X-raying CMS plugin overhead (up to ${POROWNYWARKA_CWV.limitIp} comparisons per day per IP).`,
     },
     h2Szablony: 'Templates and checklists to download',
     pSzablony: 'PDF templates help you plan SEO and assess your agency’s work: from an SEO checklist, a content calendar and a strategy to a monthly report and the list of things to collect before you switch agencies. Each template has a page that explains what it contains and how to use it. You only give an email address, and the link to the file arrives within a minute.',

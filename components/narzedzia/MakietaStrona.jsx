@@ -431,7 +431,7 @@ function MakietaEn() {
       <Sekcja id="how-to-review" tytul="How to review the mockup: 5 questions">
         <ol style={s.lista}>
           <li><strong>Does the first screen show what you do, who for and where?</strong> If not, that sentence is missing from your current website too: add it before the build starts.</li>
-          <li><strong>Are the contact button and phone number visible without scrolling, on mobile too?</strong> Switch the preview to mobile and check the first screen.</li>
+          <li><strong>Are the contact button and phone number visible without scrolling</strong>, on mobile too? Switch the preview to mobile and check the first screen.</li>
           <li><strong>Do the sections answer customers’ questions?</strong> What you offer, how working together looks, where you operate and how to book.</li>
           <li><strong>What is missing because it is not on your current website?</strong> Projects, photos, reviews, prices: the model will not add them, so this is your list of content to prepare.</li>
           <li><strong>Do the colors and typography fit your brand?</strong> Note what stays and what should change. That is a ready part of the brief for your developer.</li>

@@ -677,6 +677,89 @@
   transform: translateY(-3px);
 }
 
+/* Ustrukturyzowany podgląd metryk dla kart bez statycznego WebP z Figmy */
+.dn-okno-makietka {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 16px 18px;
+  background: #FAF6F0;
+}
+
+.dn-mak-pasek {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dn-mak-tytul {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--w-tusz);
+}
+
+.dn-mak-odznaka {
+  font-family: var(--w-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #FBE6DA;
+  color: #9E3614;
+}
+
+.dn-mak-wiersze {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.dn-mak-wiersz {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 11px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  border: 1px solid rgba(30, 30, 30, 0.06);
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+.dn-mak-kropka {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.dn-mak-kropka--ok {
+  background: #047857;
+}
+
+.dn-mak-kropka--warn {
+  background: #D85A30;
+}
+
+.dn-mak-etykieta {
+  flex: 1 1 auto;
+  font-weight: 500;
+  color: var(--w-tusz);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dn-mak-wartosc {
+  flex: none;
+  font-family: var(--w-mono);
+  font-size: 0.72rem;
+  color: var(--w-tusz-2);
+  white-space: nowrap;
+}
+
 @media (max-width: 959.98px) {
   .dn-siatka {
     grid-template-columns: minmax(0, 1fr);

@@ -73,9 +73,15 @@ export default function ChatgptSeiteDe() {
                   {CHATGPT_DE.ctaPruefen}
                 </Link>
               )}
-              <a href="#kontakt" className="hero-btn-secondary" data-cta="chatgpt_de_audit">
-                {CHATGPT_DE.ctaAudit}
-              </a>
+              {maWersjeDe('/pozycjonowanie-w-ai/audyt-widocznosci') ? (
+                <Link href="/pozycjonowanie-w-ai/audyt-widocznosci" className="hero-btn-secondary" data-cta="chatgpt_de_audit">
+                  {CHATGPT_DE.ctaAudit}
+                </Link>
+              ) : (
+                <a href="#kontakt" className="hero-btn-secondary" data-cta="chatgpt_de_audit">
+                  {CHATGPT_DE.ctaAudit}
+                </a>
+              )}
             </div>
           </Reveal>
         </div>

@@ -13,12 +13,14 @@ const IKONY_NARZEDZI = {
   'kalkulator-strat-seo': <><path d="M19 5 5 19" /><circle cx="7" cy="7" r="2" /><circle cx="17" cy="17" r="2" /></>,
   'generator-llms-txt': <path d="m9 8-4 4 4 4M15 8l4 4-4 4" />,
   'makieta-redesignu': <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18" /></>,
+  'tester-robotow-ai-robots-txt': <><path d="M12 3 5 6v5c0 5 3 8.5 7 10 4-1.5 7-5 7-10V6l-7-3z" /><path d="m9.5 12 2 2 3.5-3.5" /></>,
+  'test-core-web-vitals-porownanie': <path d="M13 3 5 14h6l-1 7 8-11h-6l1-7z" />,
 };
 
 const ROZMIARY_PODGLADU = '(max-width: 959px) calc(100vw - 72px), 560px';
 const ROZMIARY_KARTY = '(max-width: 959px) calc(100vw - 72px), 520px';
 
-// Okno podglądu wyniku (ikona, nazwa, status + ilustracja z Figmy). Link poza kolejnością Tab - CTA jest obok.
+// Okno podglądu wyniku (ikona, nazwa, status + ilustracja z Figmy albo ustrukturyzowana makieta metryk). Link poza kolejnością Tab - CTA jest obok.
 function Podglad({ n, rozmiary }) {
   return (
     <NextLink href={n.href} prefetch={false} className="dn-podglad-ramka" aria-label={`${n.nazwa}: ${n.ctaGlowne}`} tabIndex={-1}>
@@ -31,7 +33,7 @@ function Podglad({ n, rozmiary }) {
           <span className="dn-okno-pod">{n.statusWejscia}</span>
         </span>
       </span>
-      {n.obraz && (
+      {n.obraz ? (
         <span className="dn-okno-obraz">
           {/* eslint-disable-next-line @next/next/no-img-element -- gotowe makiety z Figmy w 3 rozdzielczościach WebP bez drugiej kompresji */}
           <img
@@ -45,7 +47,23 @@ function Podglad({ n, rozmiary }) {
             decoding="async"
           />
         </span>
-      )}
+      ) : n.podglad ? (
+        <span className="dn-okno-makietka" aria-hidden="true">
+          <span className="dn-mak-pasek">
+            <span className="dn-mak-tytul">{n.podglad.naglowek}</span>
+            <span className="dn-mak-odznaka">{n.podglad.odznaka}</span>
+          </span>
+          <span className="dn-mak-wiersze">
+            {n.podglad.wiersze.map((w) => (
+              <span className="dn-mak-wiersz" key={w.etykieta}>
+                <span className={`dn-mak-kropka dn-mak-kropka--${w.stan}`} />
+                <span className="dn-mak-etykieta">{w.etykieta}</span>
+                <span className="dn-mak-wartosc">{w.wartosc}</span>
+              </span>
+            ))}
+          </span>
+        </span>
+      ) : null}
     </NextLink>
   );
 }

@@ -5,7 +5,7 @@ export async function generateMetadata({ params }) {
   // 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 20): title PL (52 zn.) pod „ile kosztuje strona internetowa”
   // (1 000/mies., frazy.csv:67) i „…dla firmy” (140, :68). Meta i wersja EN bez zmian (EN: tylko zapis marki i oferta).
   title: locale === 'en' ? 'How Much Does a Website Cost? Business Pricing 2026' : 'Ile kosztuje strona internetowa dla firmy? Ceny 2026',
-  description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta wizytówka kosztuje według naszego szacunku 1 300-5 000 zł netto, profesjonalna więcej. Sprawdź, ile kosztuje strona www dla firmy i co wpływa na cenę.',
+  description: locale === 'en' ? 'Wondering how much a business website costs? See our web design pricing and learn what affects the final cost.' : 'Prosta wizytówka kosztuje wg naszego szacunku 1 300-5 000 zł netto, rozbudowana więcej. Sprawdź, ile kosztuje strona www dla firmy i co wpływa na cenę.',
   alternates: {
     canonical: locale === 'en' ? `https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing` : `https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny`,
     languages: articleLanguages('/blog/ile-kosztuje-strona-www-dla-firmy-ceny', 'https://www.ai-seo-company.pl/blog/ile-kosztuje-strona-www-dla-firmy-ceny', 'https://www.ai-seo-company.pl/en/blog/how-much-does-a-business-website-cost-pricing')
@@ -80,7 +80,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               </span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              How Much Does a Website Cost? Business Website Pricing and What's Included (2026)
+              How Much Does a Website Cost? Business Website Pricing and What’s Included (2026)
             </h1>
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -123,7 +123,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Website Type</th>
                       <th style={{ padding: '1rem' }}>One-time Cost (EUR net)</th>
-                      <th style={{ padding: '1rem' }}>What's Usually Included</th>
+                      <th style={{ padding: '1rem' }}>What’s Usually Included</th>
                       <th style={{ padding: '1rem' }}>Delivery Time</th>
                       <th style={{ padding: '1rem' }}>Best For</th>
                       <th style={{ padding: '1rem' }}>Estimated Annual Costs</th>
@@ -203,11 +203,11 @@ export default async function ArticleWebsitePricingPage({ params }) {
               </ul>
               
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
-                <span style={{ fontWeight: 'bold' }}>Professional tip:</span> The most commonly underestimated item is content. Clients assume they will "write it themselves," and then the project stalls for weeks because no one has time. Plan a copywriting budget upfront or agree with the provider that you will deliver the texts by a specific deadline written into the project schedule.
+                <span style={{ fontWeight: 'bold' }}>Professional tip:</span> The most commonly underestimated item is content. Clients assume they will &ldquo;write it themselves,&rdquo; and then the project stalls for weeks because no one has time. Plan a copywriting budget upfront or agree with the provider that you will deliver the texts by a specific deadline written into the project schedule.
               </div>
 
-              <h2 id="whats-included">What's Included in the Price and What Costs Extra?</h2>
-              <p>Offers from different providers look similar on paper, but the devil is in the details. Here's what should be standard and what is usually a separate item.</p>
+              <h2 id="whats-included">What’s Included in the Price and What Costs Extra?</h2>
+              <p>Offers from different providers look similar on paper, but the devil is in the details. Here’s what should be standard and what is usually a separate item.</p>
               
               <div style={{ fontSize: '1.2em', fontWeight: 'bold', margin: '1em 0 0.5em' }}>Standard scope in a basic offer</div>
               <p>A good company website offer should include: graphic design (template or custom depending on the package), CMS implementation (most often WordPress), SSL certificate configuration, basic technical SEO (meta tags, sitemap, robots.txt), implementation of agreed pages and contact forms, and training on the admin panel.</p>
@@ -289,15 +289,15 @@ export default async function ArticleWebsitePricingPage({ params }) {
               <ul>
                 <li><span style={{ fontWeight: 'bold' }}>Choose a proven template instead of a custom design.</span> A good WordPress template (e.g. from Envato Market) costs $50-100 and looks professional. You save <span style={{ fontWeight: 'bold' }}>€700-1,850</span> on design while losing visual uniqueness.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Limit the number of pages at launch.</span> Launch the website with 5-7 key pages and add the rest after 3-6 months. Staged expansion costs less than implementing everything at once.</li>
-                <li><span style={{ fontWeight: 'bold' }}>Use stock photos instead of a photo session.</span> Services like Unsplash or Pexels offer free high-quality photos. This is not a compromise for every industry, but for many service businesses it's enough to start.</li>
+                <li><span style={{ fontWeight: 'bold' }}>Use stock photos instead of a photo session.</span> Services like Unsplash or Pexels offer free high-quality photos. This is not a compromise for every industry, but for many service businesses it’s enough to start.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Choose SaaS for a simple store.</span> Shopify or a similar platform shifts costs from one-time implementation to a monthly subscription, lowering the entry threshold with a limited starting budget.</li>
                 <li><span style={{ fontWeight: 'bold' }}>Staged approach instead of immediate integrations.</span> Plan CRM or ERP integration for the second project stage, once the website is already live and generating traffic.</li>
               </ul>
               
-              <p>When is saving not worth it? First and foremost on <span style={{ fontWeight: 'bold' }}>performance</span>. A website that loads in more than 3 seconds statistically loses a significant portion of visitors before they even see the offer. It's also not worth cutting basic technical SEO, because errors in URL structure, missing redirects, or an incorrect sitemap can block indexing for months. Poor UX leads to a low conversion rate, which means even strong organic traffic doesn’t turn into inquiries.</p>
+              <p>When is saving not worth it? First and foremost on <span style={{ fontWeight: 'bold' }}>performance</span>. A website that loads in more than 3 seconds statistically loses a significant portion of visitors before they even see the offer. It’s also not worth cutting basic technical SEO, because errors in URL structure, missing redirects, or an incorrect sitemap can block indexing for months. Poor UX leads to a low conversion rate, which means even strong organic traffic doesn’t turn into inquiries.</p>
               
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
-                <span style={{ fontWeight: 'bold' }}>Professional tip:</span> Before deciding to cut costs, ask yourself one question: what is the value of one client acquired through the website? If it's €1,150, and investing an extra €700 in better UX increases conversion by 2 percentage points at 100 visits per month, the return on that investment will come within a few weeks.
+                <span style={{ fontWeight: 'bold' }}>Professional tip:</span> Before deciding to cut costs, ask yourself one question: what is the value of one client acquired through the website? If it’s €1,150, and investing an extra €700 in better UX increases conversion by 2 percentage points at 100 visits per month, the return on that investment will come within a few weeks.
               </div>
 
               <h2 id="how-to-choose-provider">How to Choose a Provider and What Questions to Ask When Getting a Quote</h2>
@@ -338,7 +338,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                     <tr style={{ background: 'var(--w-papier-2)', borderBottom: '2px solid var(--w-linia)' }}>
                       <th style={{ padding: '1rem' }}>Package Class</th>
                       <th style={{ padding: '1rem' }}>Cost / Model</th>
-                      <th style={{ padding: '1rem' }}>What's Included</th>
+                      <th style={{ padding: '1rem' }}>What’s Included</th>
                       <th style={{ padding: '1rem' }}>Delivery Time</th>
                       <th style={{ padding: '1rem' }}>Best For</th>
                       <th style={{ padding: '1rem' }}>Annual Costs</th>
@@ -349,7 +349,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                       <td style={{ padding: '1rem', fontWeight: 500 }}>Freelancer (budget)</td>
                       <td style={{ padding: '1rem' }}>Costs depend on the project</td>
                       <td style={{ padding: '1rem' }}>Template, basic CMS, contact form, SSL</td>
-                      <td style={{ padding: '1rem' }}>depends on the contractor's availability, stages described below</td>
+                      <td style={{ padding: '1rem' }}>depends on the contractor’s availability, stages described below</td>
                       <td style={{ padding: '1rem' }}>Micro-businesses, startups</td>
                       <td style={{ padding: '1rem' }}>Low annual costs</td>
                     </tr>
@@ -377,7 +377,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               
               <p>A freelancer is a good choice when you have a limited budget, a simple project, and time to manage the process yourself. A small agency offers more structure and usually better graphic design, but rarely provides advanced technical and SEO competencies in one place. Full-service makes sense when the website is meant to directly generate revenue and every week of delay or every percentage point of conversion has measurable value.</p>
 
-              <h2 id="why-invest">Why It's Worth Investing in a Well-Designed Website</h2>
+              <h2 id="why-invest">Why It’s Worth Investing in a Well-Designed Website</h2>
               <p>A website is not a cost that needs to be minimized. It is a sales channel that works 24 hours a day.</p>
               <p>According to the 2019 Edelman Trust Barometer Special Report: Brand Trust, 81% of consumers say they must be able to trust a brand to do the right thing before they buy from it, and the website is the first place where that trust is built or lost.</p>
               <p>A concrete example: a real estate company that moved from an outdated WordPress website to a Next.js solution with an optimized content structure and <Link href="/seo-lokalne-warszawa" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>local SEO</Link> can expect growth in organic traffic within 3-6 months of launch. The key point, however, is that simply changing technology without thoughtful UX and content will not deliver results.</p>
@@ -386,7 +386,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
                 <span style={{ fontWeight: 'bold' }}>Professional tip:</span> Measure website ROI through four indicators: organic traffic (Google Search Console), conversion rate (Google Analytics 4), average transaction or inquiry value, and bounce rate. If after 6 months none of these indicators have improved, the problem lies either in traffic quality or website UX.
               </div>
               
-              <p>It's also worth planning from the perspective of total cost of ownership (TCO) over 2-3 years: implementation + maintenance + marketing. A cheap implementation that requires a rebuild after a year because it doesn't scale or generates technical problems is more expensive than a solid project from the start.</p>
+              <p>It’s also worth planning from the perspective of total cost of ownership (TCO) over 2-3 years: implementation + maintenance + marketing. A cheap implementation that requires a rebuild after a year because it doesn’t scale or generates technical problems is more expensive than a solid project from the start.</p>
 
               <h2 id="key-takeaways">Key Takeaways</h2>
               <p>The cost of a website depends primarily on the scope of functionality and chosen technology, not just the number of pages.</p>
@@ -603,7 +603,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               </ul>
               
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
-                <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Najczęściej niedoszacowaną pozycją są treści. Klienci zakładają, że "napiszą sami", a potem projekt stoi tygodniami, bo nikt nie ma czasu. Zaplanuj budżet na copywriting z góry lub uzgodnij z wykonawcą, że dostarczysz teksty w konkretnym terminie, wpisanym do harmonogramu projektu.
+                <span style={{ fontWeight: 'bold' }}>Porada profesjonalisty:</span> Najczęściej niedoszacowaną pozycją są treści. Klienci zakładają, że „napiszą sami”, a potem projekt stoi tygodniami, bo nikt nie ma czasu. Zaplanuj budżet na copywriting z góry lub uzgodnij z wykonawcą, że dostarczysz teksty w konkretnym terminie, wpisanym do harmonogramu projektu.
               </div>
 
               <h2 id="co-jest-w-cenie">Co jest w cenie, a za co trzeba dopłacić?</h2>

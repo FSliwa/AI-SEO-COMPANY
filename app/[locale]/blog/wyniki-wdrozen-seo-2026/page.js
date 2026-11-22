@@ -80,7 +80,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
               <h2 id="metodologia">Metodologia: skąd pochodzą liczby i jak je czytać</h2>
               <p>Zanim liczby: trzy zastrzeżenia, bez których każdy taki raport jest marketingiem, a nie danymi.</p>
               <ul>
-                <li><strong>Źródło.</strong> Wszystkie wartości pochodzą z raportu Skuteczność w Google Search Console - narzędziu pierwszej strony danych, nie z estymatorów zewnętrznych. Okno pomiaru podajemy przy każdej liczbie, bo „152 kliknięcia" znaczy co innego w miesiąc i co innego w kwartał.</li>
+                <li><strong>Źródło.</strong> Wszystkie wartości pochodzą z raportu Skuteczność w Google Search Console - narzędziu pierwszej strony danych, nie z estymatorów zewnętrznych. Okno pomiaru podajemy przy każdej liczbie, bo „152 kliknięcia” znaczy co innego w miesiąc i co innego w kwartał.</li>
                 <li><strong>Punkt startowy.</strong> Cztery z pięciu domen zaczynały od zerowej lub śladowej widoczności organicznej - to typowe dla nowych stron i przebudów. Wzrost z zera jest szybszy procentowo i wolniejszy w liczbach bezwzględnych niż praca na domenie z historią; dlatego pokazujemy wartości bezwzględne, nie procenty.</li>
                 <li><strong>Czego te dane nie mówią.</strong> Kliknięcia i wyświetlenia nie są przychodem. Nie publikujemy danych sprzedażowych klientów; raport pokazuje widoczność, którą da się zweryfikować, a nie obietnicę obrotu. Wyniki zależą od punktu startowego, konkurencyjności niszy i zakresu wdrożenia - żadna agencja nie może zagwarantować powtórzenia tych liczb.</li>
               </ul>
@@ -142,7 +142,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
               <p>Co zadecydowało: treści pisane pod realne pytania klientów przemysłowych (regeneracja odbłyśników, powłoki aluminiowe), nie pod ogólne frazy o wysokim wolumenie, na które młoda domena nie miała szans.</p>
 
               <h2 id="madame-thai">Madame Thai: 187 kliknięć dla lokalnej restauracji</h2>
-              <p>Punkt startowy: lokalna restauracja tajska z nową stroną. W gastronomii o widoczności decyduje intencja lokalna - zapytania „kuchnia tajska + miasto" w wyszukiwarce Google.</p>
+              <p>Punkt startowy: lokalna restauracja tajska z nową stroną. W gastronomii o widoczności decyduje intencja lokalna - zapytania „kuchnia tajska + miasto” w wyszukiwarce Google.</p>
               <p>Wynik w GSC: <strong>187 kliknięć i 10,1 tys. wyświetleń w 26 dni (27.07-21.08.2026)</strong> - najwyższy wolumen wyświetleń w zestawieniu, typowy dla zapytań lokalnych o dużej częstotliwości. Dla lokalu liczy się końcówka tego lejka: kliknięcie w menu albo w trasę dojazdu.</p>
 
               <h2 id="ase-bot">ASE-BOT: 7,71 tys. wyświetleń w konkurencyjnej niszy</h2>
@@ -151,20 +151,20 @@ export default async function ArtykulWynikiWdrozen({ params }) {
 
               <h2 id="tql">TQL: pierwsze pozycje w 18 dni od startu</h2>
               <p>Punkt startowy: firma wdrażająca normy ISO, strona świeżo uruchomiona. Okno pomiaru celowo krótkie - 18 dni od startu (5-22.08.2026) - bo pokazuje najciekawszy moment: jak szybko Google zaczyna wystawiać nową domenę.</p>
-              <p>Wynik w GSC: <strong>296 wyświetleń, 2 kliknięcia i średnia pozycja 34,6 w pierwszych 18 dniach (5-22.08.2026)</strong>. Pozycja w czwartej dziesiątce niecałe trzy tygodnie po starcie to punkt wyjścia do pracy o pozycje w pierwszej dziesiątce - nie jej koniec; wartością tego pomiaru jest tempo wejścia do indeksu i pierwszych rankingów.</p>
+              <p>Wynik w GSC: <strong>296 wyświetleń, 2 kliknięcia i średnia pozycja 34,6</strong> w pierwszych 18 dniach (5-22.08.2026). Pozycja w czwartej dziesiątce niecałe trzy tygodnie po starcie to punkt wyjścia do pracy o pozycje w pierwszej dziesiątce - nie jej koniec; wartością tego pomiaru jest tempo wejścia do indeksu i pierwszych rankingów.</p>
 
               <h2 id="stefbud">STEF-BUD: 219 kliknięć i wysoka widoczność B2B</h2>
               <p>Punkt startowy: producent świetlików dachowych i pasm świetlnych (branża budowlana B2B). Nowa architektura informacji i techniczne wdrożenie SEO nakierowane na intencję inwestorów i generalnych wykonawców.</p>
               <p>Wynik w GSC: <strong>219 kliknięć i 9,07 tys. wyświetleń w 75 dni (06.09-19.11.2026)</strong> z rosnącym udziałem zapytań o świetliki przemysłowe i pasma świetlne na dach. Konsekwentna optymalizacja parametrów technicznych i nasycenie frazami o wysokiej intencji transakcyjnej dały stabilny napływ zapytań ofertowych.</p>
 
               <h2 id="ai-seo-company">Nasza własna domena: laboratorium metod</h2>
-              <p>Każdą metodę, którą stosujemy u klientów, najpierw testujemy na sobie - ai-seo-company.pl to młoda domena prowadzona dokładnie tym samym procesem: architektura pod klastry fraz, dwujęzyczność z hreflang, dane strukturalne, kadencja publikacji.</p>
+              <p>Każdą metodę, którą stosujemy u klientów, najpierw testujemy na sobie - ai-seo-company.pl to młoda domena prowadzona dokładnie tym samym procesem: architektura pod klastry fraz, wielojęzyczność z hreflang (PL, EN i DE), dane strukturalne, kadencja publikacji.</p>
               <p>Wynik w GSC: <strong>2,77 tys. wyświetleń i 8 kliknięć w ok. 4 tygodnie (26.07-21.08.2026)</strong>, przy średniej pozycji 60,9, z widocznością budowaną równolegle po polsku i angielsku. Publikujemy tę liczbę z tego samego powodu co pozostałe: agencja, która nie pokazuje własnych danych, prosi o zaufanie na kredyt.</p>
               <p>Na tej samej domenie testujemy też <Link href="/pozycjonowanie-w-ai">pomiar widoczności w AI</Link>: sprawdzamy, czy ChatGPT i Perplexity wymieniają naszą markę w odpowiedziach na pytania, które zadają kupujący.</p>
 
               <h2 id="wnioski">Co z tych danych wynika dla Twojej strony</h2>
               <ul>
-                <li><strong>Nowa domena zwykle potrzebuje 4-8 tygodni na pierwsze rankingi (nasze obserwacje, bez gwarancji)</strong> - TQL pokazuje wejście w 18 dni, Staniax skok ruchu w pierwszym miesiącu. Obietnica „TOP 10 w dwa tygodnie" na świeżej domenie jest nierealna niezależnie od wykonawcy.</li>
+                <li><strong>Nowa domena zwykle potrzebuje 4-8 tygodni na pierwsze rankingi</strong> (nasze obserwacje, bez gwarancji) - TQL pokazuje wejście w 18 dni, Staniax skok ruchu w pierwszym miesiącu. Obietnica „TOP 10 w dwa tygodnie” na świeżej domenie jest nierealna niezależnie od wykonawcy.</li>
                 <li><strong>Nisza wyznacza kształt krzywej.</strong> Restauracja zbiera dziesiątki tysięcy wyświetleń lokalnych; producent B2B setki - ale każde z tych zapytań jest warte wielokrotnie więcej. Porównuj wyniki w obrębie branży, nie między branżami.</li>
                 <li><strong>Wyświetlenia poprzedzają kliknięcia.</strong> Krzywa widoczności zawsze idzie w kolejności: indeksacja → wyświetlenia na dalekich pozycjach → pozycje → kliknięcia. Domena w fazie wyświetleń (jak ASE-BOT) nie jest porażką - jest w połowie procesu.</li>
                 <li><strong>Dane wygrywają z deklaracjami.</strong> Wybierając wykonawcę, proś o zrzuty z GSC z podanym oknem pomiaru i punktem startowym - dokładnie w tym formacie, w którym my publikujemy swoje. Jeśli zmieniasz wykonawcę, przeczytaj, jak przebiega <Link href="/zmiana-agencji-seo">zmiana agencji SEO bez utraty pozycji</Link>.</li>
