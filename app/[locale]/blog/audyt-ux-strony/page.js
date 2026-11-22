@@ -18,6 +18,7 @@ import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { Reveal } from '@/components/ScrollReveal';
+import NextLink from 'next/link';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
@@ -197,7 +198,7 @@ export default async function ArticleUXAudit({ params }) {
                   <h3>Process stages</h3>
                   <ol>
                     <li><strong>Goal and KPI definition</strong> - establishing what the audit should measure and which metrics count as success.</li>
-                    <li><strong>Measurement verification</strong> - checking GA4 events, tags and recording-tool configuration before any diagnosis. If events still need to be configured or repaired, the order of steps is covered in the <Link href="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik" locale="pl" hrefLang="pl">guide to configuring GA4 events in Google Tag Manager</Link> (in Polish).</li>
+                    <li><strong>Measurement verification</strong> - checking GA4 events, tags and recording-tool configuration before any diagnosis. If events still need to be configured or repaired, the order of steps is covered in the <NextLink href="/blog/konfiguracja-zdarzen-gtm-ga4-poradnik" hrefLang="pl">guide to configuring GA4 events in Google Tag Manager</NextLink> (in Polish).</li>
                     <li><strong>Quantitative analysis</strong> - path explorations, segmentation, identifying the steps with the biggest drop-off.</li>
                     <li><strong>Heuristic review</strong> - expert assessment of the interface against agreed criteria.</li>
                     <li><strong>User testing</strong> - observing real behaviour on key tasks.</li>
