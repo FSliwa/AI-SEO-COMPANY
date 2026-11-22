@@ -3,7 +3,10 @@
   "_wydanie": {
     "data": "2026-11-22",
     "zmienione": [
-      "https://www.ai-seo-company.pl/de"
+      "https://www.ai-seo-company.pl/de/ueber-uns",
+      "https://www.ai-seo-company.pl/en/about-us",
+      "https://www.ai-seo-company.pl/en/tools/llms-txt-generator",
+      "https://www.ai-seo-company.pl/o-nas"
     ],
     "usuniete": []
   },
@@ -70,7 +73,7 @@
     "https://www.ai-seo-company.pl/de/vergleiche/seo-vs-geo": {"lastmod":"2026-11-22","tresc":"2026-11-22","pierwszy":"2026-11-18"},
     "https://www.ai-seo-company.pl/de/vergleiche/webflow-vs-wordpress-seo": {"lastmod":"2026-11-22","tresc":"2026-11-22","pierwszy":"2026-11-21"},
     "https://www.ai-seo-company.pl/en": {"lastmod":"2026-11-22","tresc":"2026-11-22"},
-    "https://www.ai-seo-company.pl/en/about-us": {"lastmod":"2026-11-20","tresc":"2026-11-20"},
+    "https://www.ai-seo-company.pl/en/about-us": {"lastmod":"2026-11-22","tresc":"2026-11-22"},
     "https://www.ai-seo-company.pl/en/ai-search-optimization": {"lastmod":"2026-11-22","tresc":"2026-11-20"},
     "https://www.ai-seo-company.pl/en/ai-search-optimization/ai-visibility-audit": {"lastmod":"2026-11-18","tresc":"2026-11-18"},
     "https://www.ai-seo-company.pl/en/ai-search-optimization/chatgpt": {"lastmod":"2026-11-18","tresc":"2026-11-18","pierwszy":"2026-11-11"},
@@ -165,7 +168,7 @@
     "https://www.ai-seo-company.pl/narzedzia/test-core-web-vitals-porownanie": {"lastmod":"2026-11-22","tresc":"2026-11-22","pierwszy":"2026-11-22"},
     "https://www.ai-seo-company.pl/narzedzia/tester-robotow-ai-robots-txt": {"lastmod":"2026-11-22","tresc":"2026-11-22","pierwszy":"2026-11-22"},
     "https://www.ai-seo-company.pl/narzedzia/zapytanie-ofertowe-seo": {"lastmod":"2026-11-20","tresc":"2026-11-18","pierwszy":"2026-11-12"},
-    "https://www.ai-seo-company.pl/o-nas": {"lastmod":"2026-11-20","tresc":"2026-11-20"},
+    "https://www.ai-seo-company.pl/o-nas": {"lastmod":"2026-11-22","tresc":"2026-11-22"},
     "https://www.ai-seo-company.pl/panel-klienta": {"lastmod":"2026-11-20","tresc":"2026-11-20"},
     "https://www.ai-seo-company.pl/porownania": {"lastmod":"2026-11-22","tresc":"2026-11-21","pierwszy":"2026-11-06"},
     "https://www.ai-seo-company.pl/porownania/agencja-seo-czy-freelancer": {"lastmod":"2026-11-21","tresc":"2026-11-21","pierwszy":"2026-11-18"},
