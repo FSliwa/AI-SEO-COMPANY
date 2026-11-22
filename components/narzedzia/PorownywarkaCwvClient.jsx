@@ -148,19 +148,32 @@ export function PorownywarkaCwvClient() {
   const [urlB, setUrlB] = useState('');
   const [ruchMobilny, setRuchMobilny] = useState(3000);
   const [wartoscKlienta, setWartoscKlienta] = useState(domyslnaWartosc);
-  const [stan, setStan] = useState({ status: 'idle', blad: null, dane: null });
+  const [stan, setStan] = useState({ status: 'idle', blad: null, dane: null, id: null });
 
   const poleARef = useRef(null);
   const poleBRef = useRef(null);
   const wynikRef = useRef(null);
 
-  useParametrUrl(['a', 'b', 'url', 'ruch', 'wartosc'], (p) => {
+  useParametrUrl(['a', 'b', 'url', 'ruch', 'wartosc', 'wynik'], (p) => {
     if (p.a || p.url) setUrlA(p.a || p.url);
     if (p.b) setUrlB(p.b);
     const r = Number(p.ruch);
     if (Number.isFinite(r) && r >= 100 && r <= 200000) setRuchMobilny(Math.round(r));
     const w = Number(p.wartosc);
     if (Number.isFinite(w) && w >= 50 && w <= 100000) setWartoscKlienta(Math.round(w));
+    if (p.wynik && !DEMO && /^[0-9a-f-]{36}$/i.test(p.wynik)) {
+      setStan({ status: 'loading', blad: null, dane: null, id: p.wynik });
+      fetch(`${PANEL_API}/wynik/${encodeURIComponent(p.wynik)}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.ok && data.podglad) {
+            setStan({ status: 'done', blad: null, dane: data.podglad, id: p.wynik });
+          } else {
+            setStan({ status: 'idle', blad: null, dane: null, id: null });
+          }
+        })
+        .catch(() => setStan({ status: 'idle', blad: null, dane: null, id: null }));
+    }
   });
 
   useEffect(() => {
@@ -169,7 +182,7 @@ export function PorownywarkaCwvClient() {
 
   const formatKwoty = (kwota) => {
     const n = Math.round(kwota);
-    return en ? `$${n.toLocaleString('en-US')}` : `${n.toLocaleString('pl-PL')} zł`;
+    return en ? `€${n.toLocaleString('en-US')}` : `${n.toLocaleString('pl-PL')} zł`;
   };
 
   const formatSekund = (ms) => {
@@ -191,12 +204,13 @@ export function PorownywarkaCwvClient() {
       return;
     }
 
-    setStan({ status: 'loading', blad: null, dane: null });
+    setStan({ status: 'loading', blad: null, dane: null, id: null });
     zapiszParametry({
       a: czysteA,
       b: czysteB || null,
       ruch: ruchMobilny,
       wartosc: wartoscKlienta,
+      wynik: null,
     });
     track('narzedzie_start', { narzedzie: 'cwv_vs', zKonkurentem: Boolean(czysteB) });
 
@@ -236,8 +250,10 @@ export function PorownywarkaCwvClient() {
         return;
       }
       const d = data.podglad || data;
+      const runId = data.id || null;
+      if (runId) zapiszParametry({ wynik: runId });
       track('narzedzie_wynik', { narzedzie: 'cwv_vs', wynikA: d.stronaA?.metryki?.wynik });
-      setStan({ status: 'done', blad: null, dane: d });
+      setStan({ status: 'done', blad: null, dane: d, id: runId });
     } catch (err) {
       setStan({
         status: 'error',
@@ -270,14 +286,18 @@ export function PorownywarkaCwvClient() {
   // Wyliczenie wycieku konwersji mobilnej wg badania Google / Deloitte ("Milliseconds Make Millions"):
   // kazde 0,1 s opoznienia na mobile obniza konwersje o ~7-8% wzglednie; stosujemy ostrozny model z limitem 48%.
   const kalkulacja = useMemo(() => {
-    const lcpA = Number(stronaA?.metryki?.lcpMs ?? 3400);
-    const inpA = Number(stronaA?.metryki?.inpMs ?? 240);
+    const suroweLcp = stronaA?.metryki?.lcpMs;
+    const suroweInp = stronaA?.metryki?.inpMs;
+    const maLcp = Number.isFinite(suroweLcp);
+    const maInp = Number.isFinite(suroweInp);
+    const brakPomiaru = Boolean(stronaA) && !maLcp && !maInp;
     const lcpCel = Number(bench.metryki.lcpMs || 1150);
-    const nadwyzkaMs = Math.max(0, lcpA - lcpCel);
+    const nadwyzkaMs = maLcp ? Math.max(0, Number(suroweLcp) - lcpCel) : 0;
     const kroki100ms = nadwyzkaMs / 100;
     const karaLcp = kroki100ms > 0 ? (1 - Math.pow(0.968, Math.min(kroki100ms, 24))) : 0;
-    const karaInp = inpA > 200 ? Math.min(0.08, ((inpA - 200) / 300) * 0.06) : 0;
-    const odsetekUtraty = Math.min(0.48, Math.max(0, karaLcp + karaInp));
+    const inpNadwyzkaMs = maInp && Number(suroweInp) > 200 ? Number(suroweInp) - 200 : 0;
+    const karaInp = inpNadwyzkaMs > 0 ? Math.min(0.08, (inpNadwyzkaMs / 300) * 0.06) : 0;
+    const odsetekUtraty = brakPomiaru ? 0 : Math.min(0.48, Math.max(0, karaLcp + karaInp));
 
     const bazoweZapytania = ruchMobilny * 0.022;
     const utraconeZapytaniaMies = bazoweZapytania * odsetekUtraty;
@@ -286,7 +306,7 @@ export function PorownywarkaCwvClient() {
 
     // 24-miesieczne TCO: klasyczne wdrozenie WordPress + opieka + hosting + osobne SEO vs Booster Pack (strona 0 zl/0 EUR na start)
     const tcoWordpress24 = en
-      ? { budowa: 4200, utrzymanieIWtyczki: 1920, seo24: 24 * 590, razem: 4200 + 1920 + 24 * 590 }
+      ? { budowa: 4200, utrzymanieIWtyczki: 1920, seo24: 24 * CENY.seoStandard.eur, razem: 4200 + 1920 + 24 * CENY.seoStandard.eur }
       : { budowa: 12000, utrzymanieIWtyczki: 6000, seo24: 24 * CENY.seoStandard.pln, razem: 12000 + 6000 + 24 * CENY.seoStandard.pln };
 
     const tcoBooster24 = en
@@ -294,7 +314,9 @@ export function PorownywarkaCwvClient() {
       : { budowa: 0, miesiecznie: CENY.boosterPack.pln, razem: 24 * CENY.boosterPack.pln };
 
     return {
+      brakPomiaru,
       nadwyzkaSek: nadwyzkaMs / 1000,
+      inpNadwyzkaMs,
       odsetekProc: Math.round(odsetekUtraty * 100),
       utraconeZapytaniaMies,
       utraconyPrzychodMies,
@@ -665,7 +687,13 @@ export function PorownywarkaCwvClient() {
                 </p>
               </div>
 
-              {kalkulacja.odsetekProc === 0 ? (
+              {kalkulacja.brakPomiaru ? (
+                <p className="narz-wynik-opis" style={{ margin: 0, color: 'var(--w-tusz-2)' }}>
+                  {en
+                    ? `Google CrUX and PageSpeed returned no LCP/INP timing for ${stronaA.domena}, so we do not estimate conversion loss.`
+                    : `Google CrUX i PageSpeed nie zwróciły pomiaru LCP/INP dla ${stronaA.domena}, dlatego nie zgadujemy kwoty wycieku konwersji.`}
+                </p>
+              ) : kalkulacja.odsetekProc === 0 ? (
                 <p className="narz-wynik-opis" style={{ margin: 0, color: '#047857', fontWeight: 600 }}>
                   {en
                     ? `Great news: ${stronaA.domena} already loads on par with our Next.js benchmark, so you are not losing mobile enquiries to LCP/INP lag.`
@@ -675,10 +703,14 @@ export function PorownywarkaCwvClient() {
                 <div className="cwv-wyciek-siatka">
                   <div className="cwv-wyciek-boks">
                     <p className="narz-rozbicie-etykieta">
-                      {en ? 'Mobile LCP gap vs Next.js' : 'Opóźnienie LCP względem Next.js'}
+                      {kalkulacja.nadwyzkaSek === 0 && kalkulacja.inpNadwyzkaMs > 0
+                        ? (en ? 'Mobile INP lag (> 200 ms)' : 'Opóźnienie INP powyżej 200 ms')
+                        : (en ? 'Mobile LCP gap vs Next.js' : 'Opóźnienie LCP względem Next.js')}
                     </p>
                     <p className="narz-rozbicie-kwota" style={{ color: '#b3261e' }}>
-                      +{kalkulacja.nadwyzkaSek.toLocaleString(jezyk, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} s ({kalkulacja.odsetekProc}%)
+                      {kalkulacja.nadwyzkaSek === 0 && kalkulacja.inpNadwyzkaMs > 0
+                        ? `+${Math.round(kalkulacja.inpNadwyzkaMs)} ms (${kalkulacja.odsetekProc}%)`
+                        : `+${kalkulacja.nadwyzkaSek.toLocaleString(jezyk, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} s (${kalkulacja.odsetekProc}%)`}
                     </p>
                   </div>
 
@@ -730,12 +762,12 @@ export function PorownywarkaCwvClient() {
                   <ul className="cwv-tco-lista">
                     <li>
                       {en
-                        ? `Upfront custom WordPress build: ~$${kalkulacja.tcoWordpress24.budowa.toLocaleString('en-US')}`
+                        ? `Upfront custom WordPress build: ~€${kalkulacja.tcoWordpress24.budowa.toLocaleString('en-US')}`
                         : `Jednorazowe wdrożenie strony WordPress: ok. ${kalkulacja.tcoWordpress24.budowa.toLocaleString('pl-PL')} zł netto`}
                     </li>
                     <li>
                       {en
-                        ? `24 months of fast hosting, paid plugins & updates: ~$${kalkulacja.tcoWordpress24.utrzymanieIWtyczki.toLocaleString('en-US')}`
+                        ? `24 months of fast hosting, paid plugins & updates: ~€${kalkulacja.tcoWordpress24.utrzymanieIWtyczki.toLocaleString('en-US')}`
                         : `24 mies. hostingu, płatnych wtyczek i aktualizacji PHP: ok. ${kalkulacja.tcoWordpress24.utrzymanieIWtyczki.toLocaleString('pl-PL')} zł netto`}
                     </li>
                     <li>
@@ -758,7 +790,7 @@ export function PorownywarkaCwvClient() {
                   <ul className="cwv-tco-lista">
                     <li>
                       {en
-                        ? 'Custom-coded Next.js SSR website built for €0 / $0 upfront fee'
+                        ? 'Custom-coded Next.js SSR website built for €0 upfront fee'
                         : 'Indywidualnie kodowana strona Next.js SSR za 0 zł opłaty startowej'}
                     </li>
                     <li>
@@ -794,12 +826,13 @@ export function PorownywarkaCwvClient() {
 
             <LinkWyniku
               narzedzie="cwv_vs"
-              tryb="wynik"
+              tryb={stan.id ? 'wynik' : 'wypelnij'}
               parametry={{
                 a: stronaA.domena,
                 b: stronaB?.domena || null,
                 ruch: ruchMobilny,
                 wartosc: wartoscKlienta,
+                wynik: stan.id || null,
               }}
               podsumowanie={en
                 ? `Core Web Vitals comparison for ${stronaA.domena}: LCP ${formatSekund(stronaA.metryki?.lcpMs)}, INP ${stronaA.metryki?.inpMs ?? '-'} ms`

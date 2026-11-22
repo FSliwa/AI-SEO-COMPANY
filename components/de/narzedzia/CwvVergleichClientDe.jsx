@@ -144,19 +144,32 @@ export function CwvVergleichClientDe() {
   const [urlB, setUrlB] = useState('');
   const [ruchMobilny, setRuchMobilny] = useState(3000);
   const [wartoscKlienta, setWartoscKlienta] = useState(800);
-  const [stan, setStan] = useState({ status: 'idle', blad: null, dane: null });
+  const [stan, setStan] = useState({ status: 'idle', blad: null, dane: null, id: null });
 
   const poleARef = useRef(null);
   const poleBRef = useRef(null);
   const wynikRef = useRef(null);
 
-  useParametrUrl(['a', 'b', 'url', 'ruch', 'wartosc'], (p) => {
+  useParametrUrl(['a', 'b', 'url', 'ruch', 'wartosc', 'wynik'], (p) => {
     if (p.a || p.url) setUrlA(p.a || p.url);
     if (p.b) setUrlB(p.b);
     const r = Number(p.ruch);
     if (Number.isFinite(r) && r >= 100 && r <= 200000) setRuchMobilny(Math.round(r));
     const w = Number(p.wartosc);
     if (Number.isFinite(w) && w >= 50 && w <= 100000) setWartoscKlienta(Math.round(w));
+    if (p.wynik && !DEMO && /^[0-9a-f-]{36}$/i.test(p.wynik)) {
+      setStan({ status: 'loading', blad: null, dane: null, id: p.wynik });
+      fetch(`${PANEL_API}/wynik/${encodeURIComponent(p.wynik)}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.ok && data.podglad) {
+            setStan({ status: 'done', blad: null, dane: data.podglad, id: p.wynik });
+          } else {
+            setStan({ status: 'idle', blad: null, dane: null, id: null });
+          }
+        })
+        .catch(() => setStan({ status: 'idle', blad: null, dane: null, id: null }));
+    }
   });
 
   useEffect(() => {
@@ -182,12 +195,13 @@ export function CwvVergleichClientDe() {
       return;
     }
 
-    setStan({ status: 'loading', blad: null, dane: null });
+    setStan({ status: 'loading', blad: null, dane: null, id: null });
     zapiszParametry({
       a: czysteA,
       b: czysteB || null,
       ruch: ruchMobilny,
       wartosc: wartoscKlienta,
+      wynik: null,
     });
     track('narzedzie_start', { narzedzie: 'cwv_vs', zKonkurentem: Boolean(czysteB), lang: 'de' });
 
@@ -227,8 +241,10 @@ export function CwvVergleichClientDe() {
         return;
       }
       const d = data.podglad || data;
+      const runId = data.id || null;
+      if (runId) zapiszParametry({ wynik: runId });
       track('narzedzie_wynik', { narzedzie: 'cwv_vs', wynikA: d.stronaA?.metryki?.wynik });
-      setStan({ status: 'done', blad: null, dane: d });
+      setStan({ status: 'done', blad: null, dane: d, id: runId });
     } catch (err) {
       setStan({
         status: 'error',
@@ -259,14 +275,18 @@ export function CwvVergleichClientDe() {
   };
 
   const kalkulacja = useMemo(() => {
-    const lcpA = Number(stronaA?.metryki?.lcpMs ?? 3400);
-    const inpA = Number(stronaA?.metryki?.inpMs ?? 240);
+    const suroweLcp = stronaA?.metryki?.lcpMs;
+    const suroweInp = stronaA?.metryki?.inpMs;
+    const maLcp = Number.isFinite(suroweLcp);
+    const maInp = Number.isFinite(suroweInp);
+    const brakPomiaru = Boolean(stronaA) && !maLcp && !maInp;
     const lcpCel = Number(bench.metryki.lcpMs || 1150);
-    const nadwyzkaMs = Math.max(0, lcpA - lcpCel);
+    const nadwyzkaMs = maLcp ? Math.max(0, Number(suroweLcp) - lcpCel) : 0;
     const kroki100ms = nadwyzkaMs / 100;
     const karaLcp = kroki100ms > 0 ? (1 - Math.pow(0.968, Math.min(kroki100ms, 24))) : 0;
-    const karaInp = inpA > 200 ? Math.min(0.08, ((inpA - 200) / 300) * 0.06) : 0;
-    const odsetekUtraty = Math.min(0.48, Math.max(0, karaLcp + karaInp));
+    const inpNadwyzkaMs = maInp && Number(suroweInp) > 200 ? Number(suroweInp) - 200 : 0;
+    const karaInp = inpNadwyzkaMs > 0 ? Math.min(0.08, (inpNadwyzkaMs / 300) * 0.06) : 0;
+    const odsetekUtraty = brakPomiaru ? 0 : Math.min(0.48, Math.max(0, karaLcp + karaInp));
 
     const bazoweZapytania = ruchMobilny * 0.022;
     const utraconeZapytaniaMies = bazoweZapytania * odsetekUtraty;
@@ -274,7 +294,9 @@ export function CwvVergleichClientDe() {
     const utraconyPrzychodRok = utraconyPrzychodMies * 12;
 
     return {
+      brakPomiaru,
       nadwyzkaSek: nadwyzkaMs / 1000,
+      inpNadwyzkaMs,
       odsetekProc: Math.round(odsetekUtraty * 100),
       utraconeZapytaniaMies,
       utraconyPrzychodMies,
@@ -625,16 +647,26 @@ export function CwvVergleichClientDe() {
                 </p>
               </div>
 
-              {kalkulacja.odsetekProc === 0 ? (
+              {kalkulacja.brakPomiaru ? (
+                <p className="narz-wynik-opis" style={{ margin: 0, color: 'var(--w-tusz-2)' }}>
+                  Für {stronaA.domena} liegen aktuell keine LCP-/INP-Messwerte aus CrUX oder PageSpeed vor, daher schätzen wir keinen fiktiven Umsatzverlust.
+                </p>
+              ) : kalkulacja.odsetekProc === 0 ? (
                 <p className="narz-wynik-opis" style={{ margin: 0, color: '#047857', fontWeight: 600 }}>
                   Starkes Ergebnis: {stronaA.domena} lädt bereits auf dem Niveau unserer Next.js-Referenz - Sie verlieren keine mobilen Anfragen durch LCP/INP-Verzögerung.
                 </p>
               ) : (
                 <div className="cwv-wyciek-siatka">
                   <div className="cwv-wyciek-boks">
-                    <p className="narz-rozbicie-etykieta">Mobiler LCP-Rückstand ggü. Next.js</p>
+                    <p className="narz-rozbicie-etykieta">
+                      {kalkulacja.nadwyzkaSek === 0 && kalkulacja.inpNadwyzkaMs > 0
+                        ? 'Mobile INP-Verzögerung (> 200 ms)'
+                        : 'Mobiler LCP-Rückstand ggü. Next.js'}
+                    </p>
                     <p className="narz-rozbicie-kwota" style={{ color: '#b3261e' }}>
-                      +{kalkulacja.nadwyzkaSek.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} s ({kalkulacja.odsetekProc} %)
+                      {kalkulacja.nadwyzkaSek === 0 && kalkulacja.inpNadwyzkaMs > 0
+                        ? `+${Math.round(kalkulacja.inpNadwyzkaMs)} ms (${kalkulacja.odsetekProc} %)`
+                        : `+${kalkulacja.nadwyzkaSek.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} s (${kalkulacja.odsetekProc} %)`}
                     </p>
                   </div>
 
@@ -717,12 +749,13 @@ export function CwvVergleichClientDe() {
 
             <LinkWyniku
               narzedzie="cwv_vs"
-              tryb="wynik"
+              tryb={stan.id ? 'wynik' : 'wypelnij'}
               parametry={{
                 a: stronaA.domena,
                 b: stronaB?.domena || null,
                 ruch: ruchMobilny,
                 wartosc: wartoscKlienta,
+                wynik: stan.id || null,
               }}
               podsumowanie={`Core Web Vitals Vergleich für ${stronaA.domena}: LCP ${formatSekund(stronaA.metryki?.lcpMs)}, INP ${stronaA.metryki?.inpMs ?? '-'} ms`}
             />

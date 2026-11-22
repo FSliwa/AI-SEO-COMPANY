@@ -56,7 +56,12 @@ export default function VergleichDe({ porownanie: p }) {
   return (
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <Breadcrumbs pl={p.okruszek} en={p.okruszek} de={p.okruszek} />
+      <Breadcrumbs
+        parent={{ href: '/porownania', pl: 'Porównania', en: 'Comparisons', de: 'SEO-Vergleiche' }}
+        pl={p.okruszek}
+        en={p.okruszek}
+        de={p.okruszek}
+      />
       <ArticleSchema
         type="Article"
         breadcrumb={null}

@@ -87,7 +87,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             }}>
               {lang === 'pl' 
                 ? <>Pozycjonowanie stron internetowych od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc, bez długoterminowych zobowiązań. Audyt techniczny, treści i linki B2B - raportujemy leady i sprzedaż, nie tylko pozycje.</>
-                : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>SEO optimization service</strong> comes with a client portal and a clear TOP 3 goal: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
+                : <>Build a lasting competitive advantage. We combine advanced technical audits with <span style={{ fontWeight: 'bold' }}>content marketing</span> tailored for modern search engines. Our <strong>SEO optimization service</strong> comes with a client portal and a clear TOP 3 goal - whether you need an SEO company for small business growth or B2B SEO services for small businesses and mid-market teams: <span style={{ color: 'var(--color-cta)' }}>Website SEO | B2B Optimization | AI SEO COMPANY</span>.</>}
             </p>
 
             {/* Obietnice z nagłówków RSA w pierwszym ekranie - wcześniej

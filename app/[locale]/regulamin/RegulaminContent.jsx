@@ -5,8 +5,8 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import { Link } from '@/i18n/routing';
-import { SIEDZIBA, adresLinia } from '@/lib/firma';
-import { AUDYT, WIDOCZNOSC, MAKIETA, KALKULATOR, AUTORYTET } from '@/lib/narzedziaLiczby';
+import { SIEDZIBA, REJESTR, adresLinia } from '@/lib/firma';
+import { AUDYT, WIDOCZNOSC, MAKIETA, KALKULATOR, AUTORYTET, GENERATOR } from '@/lib/narzedziaLiczby';
 
 const h2 = { marginTop: '2.5rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.4rem' };
 const ul = { paddingLeft: '1.25rem', lineHeight: 1.7 };
@@ -42,7 +42,7 @@ export default function RegulaminContent() {
                 <p>Regulamin określa zasady korzystania z serwisu internetowego ai-seo-company.pl oraz warunki świadczenia usług drogą elektroniczną, zgodnie z art. 8 ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną.</p>
 
                 <h2 style={h2}>§ 1. Usługodawca</h2>
-                <p>Usługodawcą jest <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong> z siedzibą w Warszawie, {adresLinia(SIEDZIBA, 'pl')}, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego prowadzonego przez Sąd Rejonowy dla m.st. Warszawy w Warszawie pod numerem KRS 0001239983, NIP 5253090237, REGON 544761611.</p>
+                <p>Usługodawcą jest <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong> z siedzibą w Warszawie, {adresLinia(SIEDZIBA, 'pl')}, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego prowadzonego przez {REJESTR.sad.pl} pod numerem KRS {REJESTR.krs}, NIP {REJESTR.nip}, REGON {REJESTR.regon}, o kapitale akcyjnym {REJESTR.kapital.pl}.</p>
                 <p>Kontakt: <a href="mailto:kontakt@ai-seo-company.pl" style={a}>kontakt@ai-seo-company.pl</a>, tel. <a href="tel:+48518815055" style={a}>518 815 055</a>.</p>
 
                 <h2 style={h2}>§ 2. Definicje</h2>
@@ -57,7 +57,7 @@ export default function RegulaminContent() {
                 <ul style={ul}>
                   <li><strong>Dostęp do treści Serwisu</strong> - przeglądanie stron informacyjnych, opisów usług i artykułów publikowanych na blogu.</li>
                   <li><strong>Formularz kontaktowy</strong> - umożliwiający przesłanie zapytania ofertowego. Usługa ma charakter jednorazowy i kończy się z chwilą wysłania wiadomości lub zaprzestania jej wypełniania.</li>
-                  <li><strong>Darmowe narzędzia</strong> - audyt SEO, sprawdzarka widoczności w AI, kalkulator strat SEO, makieta nowej strony, generator llms.txt i sprawdzarka autorytetu domeny. Usługa ma charakter jednorazowy i kończy się z chwilą wyświetlenia wyniku na stronie. Dla każdego narzędzia obowiązuje dzienny limit użyć z jednego adresu IP (na dobę: audyt SEO {AUDYT.limitIp}, sprawdzarka widoczności w AI {WIDOCZNOSC.limitIp}, makieta {MAKIETA.limitIp}, autorytet domeny {AUTORYTET.limitIp}, wysyłka wyniku kalkulatora {KALKULATOR.limitIp}); wynik jest orientacyjny i nie stanowi gwarancji ani wyceny.</li>
+                  <li><strong>Darmowe narzędzia</strong> - audyt SEO, sprawdzarka widoczności w AI, tester robotów AI i generator robots.txt, porównywarka Core Web Vitals, kalkulator strat SEO, makieta nowej strony, generator llms.txt i sprawdzarka autorytetu domeny. Usługa ma charakter jednorazowy i kończy się z chwilą wyświetlenia wyniku na stronie. Dla każdego narzędzia obowiązuje dzienny limit użyć z jednego adresu IP (na dobę: audyt SEO {AUDYT.limitIp}, sprawdzarka widoczności w AI {WIDOCZNOSC.limitIp}, makieta {MAKIETA.limitIp}, autorytet domeny {AUTORYTET.limitIp}, generator llms.txt {GENERATOR.limitIp}, tester robotów AI 20, porównywarka Core Web Vitals 15, wysyłka wyniku kalkulatora {KALKULATOR.limitIp}); wynik jest orientacyjny i nie stanowi gwarancji ani wyceny.</li>
                   <li><strong>Wysyłka wyniku narzędzia e-mailem</strong> - po podaniu adresu e-mail i zaznaczeniu zgody wysyłamy wynik na ten adres. Usługa jednorazowa, kończy się z chwilą wysłania wiadomości; wyniki i adres e-mail usuwamy po 60 dniach.</li>
                   <li><strong>Newsletter</strong> - cykliczne wiadomości e-mail, po osobnej zgodzie i potwierdzeniu zapisu linkiem z wiadomości (double opt-in). Usługa ciągła, świadczona do czasu wypisania się jednym kliknięciem w wiadomości.</li>
                   <li><strong>Comiesięczny audyt SEO</strong> - cykliczna wysyłka ponownego audytu wskazanej strony po osobnej zgodzie i potwierdzeniu linkiem z wiadomości (double opt-in). Usługa ciągła, świadczona do czasu wypisania się jednym kliknięciem w wiadomości.</li>
@@ -107,14 +107,14 @@ export default function RegulaminContent() {
                 <p>These terms set out the rules for using the ai-seo-company.pl website and the conditions for providing services by electronic means, pursuant to art. 8 of the Polish Act of 18 July 2002 on Providing Services by Electronic Means.</p>
 
                 <h2 style={h2}>§ 1. Service provider</h2>
-                <p>The service provider is <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong>, registered office at {SIEDZIBA.ulica}, {SIEDZIBA.kod} Warsaw, Poland, entered in the register of entrepreneurs of the National Court Register kept by the District Court for the Capital City of Warsaw under KRS number 0001239983, NIP 5253090237, REGON 544761611.</p>
+                <p>The service provider is <strong>AI SIGNALS COMPANY Prosta Spółka Akcyjna</strong>, registered office at {SIEDZIBA.ulica}, {SIEDZIBA.kod} Warsaw, Poland, entered in the register of entrepreneurs of the National Court Register kept by the {REJESTR.sad.en} under KRS number {REJESTR.krs}, NIP {REJESTR.nip}, REGON {REJESTR.regon}, with share capital of {REJESTR.kapital.en}.</p>
                 <p>Contact: <a href="mailto:kontakt@ai-seo-company.pl" style={a}>kontakt@ai-seo-company.pl</a>, phone <a href="tel:+48518815055" style={a}>+48 518 815 055</a>.</p>
 
                 <h2 style={h2}>§ 2. Definitions</h2>
                 <ul style={ul}>
                   <li><strong>Website</strong> - the website at ai-seo-company.pl together with its subpages.</li>
                   <li><strong>User</strong> - a natural person, legal person or organisational unit using the Website.</li>
-                  <li><strong>Electronic service</strong> - a service performed without the simultaneous presence of the parties, by transmitting data at the User's individual request.</li>
+                  <li><strong>Electronic service</strong> - a service performed without the simultaneous presence of the parties, by transmitting data at the User&rsquo;s individual request.</li>
                 </ul>
 
                 <h2 style={h2}>§ 3. Types and scope of electronic services</h2>
@@ -122,7 +122,7 @@ export default function RegulaminContent() {
                 <ul style={ul}>
                   <li><strong>Access to Website content</strong> - browsing information pages, service descriptions and blog articles.</li>
                   <li><strong>Contact form</strong> - allowing an enquiry to be sent. This is a one-off service ending when the message is sent or the form is abandoned.</li>
-                  <li><strong>Free tools</strong> - the SEO audit, the AI visibility checker, the SEO loss calculator, the website redesign mockup, the llms.txt generator and the domain authority checker. This is a one-off service ending when the result is shown on the page. Each tool has a daily usage limit per IP address (per day: SEO audit {AUDYT.limitIp}, AI visibility checker {WIDOCZNOSC.limitIp}, mockup {MAKIETA.limitIp}, domain authority {AUTORYTET.limitIp}, e-mailing the calculator result {KALKULATOR.limitIp}); results are indicative and are not a guarantee or a quotation.</li>
+                  <li><strong>Free tools</strong> - the SEO audit, the AI visibility checker, the AI crawler and robots.txt checker, the Core Web Vitals competitor comparison, the SEO loss calculator, the website redesign mockup, the llms.txt generator and the domain authority checker. This is a one-off service ending when the result is shown on the page. Each tool has a daily usage limit per IP address (per day: SEO audit {AUDYT.limitIp}, AI visibility checker {WIDOCZNOSC.limitIp}, mockup {MAKIETA.limitIp}, domain authority {AUTORYTET.limitIp}, llms.txt generator {GENERATOR.limitIp}, AI crawler checker 20, Core Web Vitals comparison 15, e-mailing the calculator result {KALKULATOR.limitIp}); results are indicative and are not a guarantee or a quotation.</li>
                   <li><strong>Tool result sent by e-mail</strong> - after you enter your e-mail address and tick the consent, we send the result to that address. This is a one-off service ending when the message is sent; results and e-mail addresses are deleted after 60 days.</li>
                   <li><strong>Newsletter</strong> - recurring e-mails, after a separate consent and confirmation of the subscription with the link in our e-mail (double opt-in). This is a continuing service provided until you unsubscribe with one click in any e-mail.</li>
                   <li><strong>Monthly SEO audit</strong> - a recurring re-audit of the page you specify, after a separate consent and confirmation with the link in our e-mail (double opt-in). This is a continuing service provided until you unsubscribe with one click in any e-mail.</li>
@@ -150,7 +150,7 @@ export default function RegulaminContent() {
                 <p>Complaints about electronic services may be submitted:</p>
                 <ul style={ul}>
                   <li>by e-mail to <a href="mailto:kontakt@ai-seo-company.pl" style={a}>kontakt@ai-seo-company.pl</a>,</li>
-                  <li>in writing to the provider's registered address.</li>
+                  <li>in writing to the provider&rsquo;s registered address.</li>
                 </ul>
                 <p>A complaint should identify the User, describe the objections and give contact details for a reply. The provider examines the complaint and responds within <strong>14 days</strong> of receiving it, to the address indicated.</p>
 
@@ -158,7 +158,7 @@ export default function RegulaminContent() {
                 <p>The rules for processing personal data and using cookies are described in the <Link href="/cookies" style={a}>privacy and cookies policy</Link>, which forms an integral part of these terms.</p>
 
                 <h2 style={h2}>§ 9. Copyright</h2>
-                <p>Content published on the Website, including text, graphics and page layout, is protected by copyright and belongs to the provider or is used under appropriate licences. Copying and distributing it for commercial purposes without the provider's consent is not permitted.</p>
+                <p>Content published on the Website, including text, graphics and page layout, is protected by copyright and belongs to the provider or is used under appropriate licences. Copying and distributing it for commercial purposes without the provider&rsquo;s consent is not permitted.</p>
 
                 <h2 style={h2}>§ 10. Out-of-court dispute resolution</h2>
                 <p>A User who is a consumer may use the out-of-court complaint and redress procedures provided for in the Polish Act of 23 September 2016 on out-of-court resolution of consumer disputes. In particular they may seek free assistance from a district (municipal) consumer ombudsman or from the regional inspector of the Trade Inspection. The list of entities authorised to conduct out-of-court consumer dispute resolution proceedings is kept by the President of the Office of Competition and Consumer Protection and is available at <a href="https://polubowne.uokik.gov.pl/" target="_blank" rel="noopener noreferrer" style={a}>polubowne.uokik.gov.pl</a>. Use of these procedures is voluntary for both parties.</p>

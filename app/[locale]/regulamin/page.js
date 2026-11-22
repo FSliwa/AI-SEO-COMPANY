@@ -4,7 +4,7 @@ export async function generateMetadata({ params }) {
     return metadataDe('/regulamin', { languages: { pl: 'https://www.ai-seo-company.pl/regulamin', en: 'https://www.ai-seo-company.pl/en/terms' } });
   }
   return {
-    title: locale === 'en' ? 'Terms of Service | AI SEO COMPANY' : 'Regulamin świadczenia usług | AI SEO COMPANY',
+    title: locale === 'en' ? 'Terms of Service for Electronic Services' : 'Regulamin świadczenia usług drogą elektroniczną',
     description: locale === 'en'
       ? 'Terms of service for electronic services provided by AI SIGNALS COMPANY P.S.A. - scope of services, technical requirements, contracts and complaints.'
       : 'Regulamin świadczenia usług drogą elektroniczną przez AI SIGNALS COMPANY P.S.A. - zakres usług, wymagania techniczne, umowy i reklamacje.',

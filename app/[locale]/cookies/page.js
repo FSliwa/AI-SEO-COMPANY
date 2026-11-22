@@ -4,8 +4,10 @@ export async function generateMetadata({ params }) {
     return metadataDe('/cookies', { languages: { pl: 'https://www.ai-seo-company.pl/cookies', en: 'https://www.ai-seo-company.pl/en/cookies' } });
   }
   return {
-  title: locale === 'en' ? 'Cookies Policy | AI SEO COMPANY' : 'Polityka Cookies | AI SEO COMPANY',
-  description: locale === 'en' ? 'Information about cookies and how they are used on the AI SEO COMPANY agency website.' : 'Informacje o plikach cookies i sposobach ich wykorzystania na stronie agencji AI SEO COMPANY.',
+  title: locale === 'en' ? 'Privacy and Cookies Policy (GDPR)' : 'Polityka prywatności i plików cookies (RODO)',
+  description: locale === 'en'
+    ? 'Privacy and cookies policy (GDPR) of AI SIGNALS COMPANY P.S.A.: data controller, Google Consent Mode, retention periods, processors and your rights.'
+    : 'Polityka prywatności i plików cookies (RODO) AI SIGNALS COMPANY P.S.A.: administrator danych, Google Consent Mode, retencja i prawa użytkownika.',
       alternates: {
     canonical: locale === 'en' ? 'https://www.ai-seo-company.pl/en/cookies' : 'https://www.ai-seo-company.pl/cookies',
     languages: {

@@ -8,7 +8,13 @@ description: >-
   or panel-klienta-ai-seo/app/api/narzedzia.
 ---
 
-# AI SEO Tools — Crawler, Localization & QA Guardrails
+# AI SEO Tools - Crawler, Localization & QA Guardrails
+
+## 0. Mandatory Triple-Check Rule (Potrójna Weryfikacja 3x)
+Before reporting **any** code conclusion, bug, `file:line` reference, or audit finding to the user (especially findings returned by subagents), verify it **3 independent times**:
+1. **Pass 1 (`read_file` declaration + usage)**: Read both the state/function definition AND the exact JSX/TS line where it renders (e.g., verify whether `<input>` actually passes `value={state}` before claiming a controlled-input bug; in `LlmsTxtClient.jsx:272` `<input>` is uncontrolled!).
+2. **Pass 2 (Full runtime & cross-repo trace)**: Trace frontend <-> `panel-klienta-ai-seo` route <-> conditional UI branches (`odsetekProc === 0`, `opublikowana: false` in `lib/publikacja.js`, etc.).
+3. **Pass 3 (Empirical falsification)**: Cross-check against live DOM/browser behavior or a reproduction check. Never report unverified or single-pass claims.
 
 ## 1. Crawler & HTTP Edge-Case Rules (`pobieranie.ts`, `audyt.ts`, `generator.js`)
 - **WAF / Cloudflare `403` False-Positive Trap**: Never allow an audit crawler to treat a `401/403/429/503` entry page as "0 content errors = 100/100 Content score"! Abort with a clear localized WAF/HTTP block diagnostic (`422`) when `html200(d).length === 0`.
@@ -34,3 +40,12 @@ description: >-
 - **`BETTER_AUTH_URL` in Panel Tests**: Tests asserting production `https://panel.ai-seo-company.pl` links after `loadEnv()` must `delete process.env.BETTER_AUTH_URL` so `.env.local` (`http://localhost:3210`) does not override `PANEL()`.
 - **Google `PAGESPEED_API_KEY` Guard**: Always validate `/^AIza[0-9A-Za-z_-]{25,60}$/` before passing `?key=` to Google PSI / CrUX APIs (a placeholder string causes `HTTP 400 API key not valid`). Read `originLoadingExperience` as fallback to `loadingExperience`, and compute an HTML + TTFB mobile estimate when keyless PSI hits `429`.
 - **Panel DB Constraint & Vercel CLI Deploy**: New tools stored in `tool_runs` must be added to `tool_runs_tool_check` via Drizzle SQL migration on Neon, and `panel-klienta-ai-seo` deploys to production via `npx vercel --prod --yes` (it has no git remote `origin`).
+
+## 5. Client-Server State, Metrics & Localization Edge-Case Rules (Learned from 8-Tool Stress Test)
+- **`LinkWyniku tryb="wynik"` Contract**: NEVER pass `tryb="wynik"` unless the client component (a) saves `data.id` to URL via `zapiszParametry({ ..., wynik: data.id })` AND (b) implements a `useEffect` reading `?wynik=<id>` from `GET /api/narzedzia/wynik/[id]`.
+- **`useParametrUrl` on Controlled Inputs**: On React controlled inputs (`<input value={adres} onChange={...}>`), `useParametrUrl` MUST call the React state setter (`setAdres(url)`), NEVER mutate `poleRef.current.value = url` alone (React's next render wipes DOM mutations back to `''`).
+- **Null Metric Fallbacks & Fast-Site States**: Never substitute fabricated numbers (`lcpMs ?? 3400`) when PSI/CrUX returns `null` (`Number(null)` is `0`, `null ?? 3400` fabricates a slow site). Show an honest "not measured" state, and render a positive green state when `LCP <= 1150 ms` and `INP <= 200 ms`.
+- **Lighthouse `total-byte-weight` Deduplication (`psi.ts`)**: Always deduplicate `total-byte-weight` items by `url` (via `Map`) before `.slice(0, 3)` because browsers emit multiple `206 Partial Content` Range requests for the same `.mp4` video.
+- **Multi-Part TLD Brand Stripping & GA4 Currency**: Strip multi-part public suffixes (`.com.pl`, `.waw.pl`, `.co.uk`, `.co.at`, `.com.de`) before extracting domain brand roots (`host.split('.').slice(0, -1)` leaks `com`/`co`). Always pass `currency: 'EUR'` on `/de/` routes in GA4 `generate_lead` events and append `&lang=de` on external badge URLs (`/api/narzedzia/badge/ai-ready`).
+- **Polish 3-Form Paucal Pluralization**: Never use binary `n === 1 ? ... : ...` in Polish UI strings (`1 problem / 2-4 problemy / 5+ problemów`, `pozostały 1 / pozostałe 2-4 / pozostałych 5+`, `1 domena linkuje / 2-4 domeny linkują / 5+ domen linkuje`; `12-14` always take the `5+` genitive plural).
+- **Interactive Checklists (`SzablonInterakcje.jsx`)**: Activate `☐` checkbox enhancement whenever `☐` exists in `.szablon-tresc` (do not gate on `slug.includes('checklista')`), convert all `<td>☐</td>` columns via `.filter()`, and reserve an SSR slot for sticky progress bars to keep `CLS = 0.00`.

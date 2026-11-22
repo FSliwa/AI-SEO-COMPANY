@@ -206,19 +206,13 @@ export default function Contact({ isMainContent = false }) {
         return;
       }
 
-      // GA4 Event Tracking
-      // Wersja DE: zdarzenie z haszowanym e-mailem tylko po zgodzie marketingowej (§ 25 TDDDG, Art. 6 DSGVO).
+      // GA4 Event Tracking + Google Consent Mode v2:
+      // Zahaszowany adres e-mail (user_data, konwersje rozszerzone) przekazujemy WYŁĄCZNIE
+      // po wyrażeniu zgody marketingowej w każdym języku (Art. 6 ust. 1 lit. a RODO, Art. 399 PKE, § 25 TDDDG).
       if (typeof window !== 'undefined' && typeof window.gtag === 'function' && (lang !== 'de' || consentMarketing() === 'granted')) {
-        // Konwersje rozszerzone: gtag haszuje adres po stronie przeglądarki,
-        // surowy e-mail nie opuszcza urządzenia. Dane trafiają do wszystkich
-        // skonfigurowanych tagów (GA4 + Google Ads) i podnoszą dopasowanie
-        // konwersji tam, gdzie pliki cookie są ucięte (Safari, iOS). Wymaga
-        // włączonego "User-provided data collection" w GA4 oraz
-        // allow_enhanced_conversions w konfiguracji tagu Ads (layout.js).
-        // Musi być PRZED generate_lead: `set` dotyczy tylko kolejnych trafień,
-        // więc ustawione po zdarzeniu nie dopięłoby e-maila do konwersji,
-        // którą Google Ads importuje z GA4.
-        window.gtag('set', 'user_data', { email: data.email });
+        if (consentMarketing() === 'granted') {
+          window.gtag('set', 'user_data', { email: data.email });
+        }
 
         // Zalecane parametry GA4 dla generate_lead (currency + value) - dzięki
         // nim import do Google Ads może licytować pod wartość, nie pod sztukę.

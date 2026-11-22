@@ -2,6 +2,14 @@
 
 Ten plik obowiązuje bezwarunkowo przy **każdej wiadomości użytkownika** w tym repozytorium (`ai-seo-strona` oraz powiązanym backendzie `/Users/filipsliwa/Projekty/panel-klienta-ai-seo`).
 
+## 0. Żelazna Zasada Potrójnej Weryfikacji (Triple-Check 3x przed podaniem wniosku lub błędu)
+
+Zanim podasz użytkownikowi **jakikolwiek wniosek z kodu, diagnozę błędu, numer linii, regresję lub rekomendację**, MUSISZ zweryfikować go **trzykrotnie (3 niezależne kroki)**. Nigdy nie przepisuj wniosków subagentów (`research`, `self`, `browser`) bez samodzielnego sprawdzenia źródła:
+
+1. **Weryfikacja 1 - Dosłowny odczyt kodu (`read_file`)**: Otwórz wskazany plik i przeczytaj zarówno miejsce deklaracji stanu/zmiennej, jak i dokładne miejsce jej użycia w JSX/TS/CSS (np. nie zakładaj, że `<input>` jest kontrolowany tylko dlatego, że wyżej istnieje `useState` - przeczytaj sam znacznik `<input>`).
+2. **Weryfikacja 2 - Ścieżka wykonania i kaskada międzyplikowa**: Prześledź cały przepływ danych lub kaskadę CSS (frontend <-> backend API, flagi bramki w `lib/publikacja.js`, reguły nadrzędne w `wyglad.css`, stany warunkowe `=== 0` / `null`).
+3. **Weryfikacja 3 - Próba falsyfikacji / dowód empiryczny**: Spróbuj aktywnie obalić swój wniosek (sprawdź zachowanie w DOM na żywo, wynik testu lub przypadek brzegowy). Jeśli którakolwiek z 3 weryfikacji nie potwierdza błędu - **odrzuć go i nie wpisuj do raportu ani odpowiedzi**.
+
 ## 1. Obowiązkowa pętla uczenia się po KAŻDEJ wiadomości (Post-Turn Learning Loop)
 
 Po zrealizowaniu każdego zadania lub odpowiedzi dla użytkownika MUSISZ wykonać poniższe 3 kroki zanim zakończysz pracę (lub tuż po weryfikacji wdrożenia):

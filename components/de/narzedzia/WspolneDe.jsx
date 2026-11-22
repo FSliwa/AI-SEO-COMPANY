@@ -135,7 +135,7 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
       setStan({ status: 'error', blad: r.blad });
       return;
     }
-    track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: narzedzie, currency: 'PLN', value: 50 });
+    track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: narzedzie, currency: 'EUR', value: 12 });
     setStan({ status: 'done', blad: null, mailOk: r.mailOk }); // mailOk === false: Bericht nicht versendet
     onOdblokowano?.(r.pelny, r.newsletter, r.mailOk);
   }

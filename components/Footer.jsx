@@ -12,7 +12,7 @@ import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { track } from '@/lib/track';
 import { GODZINY_TEKST } from '@/lib/godziny';
-import { BIURO, SIEDZIBA, ETYKIETY, adresLinia } from '@/lib/firma';
+import { BIURO, SIEDZIBA, ETYKIETY, REJESTR, adresLinia } from '@/lib/firma';
 
 // A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
 // Wszystkie trasy /narzedzia i /narzedzia/* poza /narzedzia/raport-seo (SzablonRaport renderuje <Contact />) nie mają formularza.
@@ -148,11 +148,15 @@ export default function Footer() {
                 <p style={{ margin: 0 }}>AI SIGNALS COMPANY Prosta Spółka Akcyjna</p>
                 <p style={{ margin: 0 }}>{ETYKIETY.siedziba[lang]}: {adresLinia(SIEDZIBA, lang)}</p>
                 <p style={{ margin: 0 }}>
-                  {tr(lang, 'Sąd Rejonowy dla m.st. Warszawy w Warszawie', 'District Court for the Capital City of Warsaw')}
+                  {lang === 'de'
+                    ? 'Amtsgericht für die Hauptstadt Warschau, XII. Wirtschaftsabteilung des KRS'
+                    : (REJESTR.sad[lang] || REJESTR.sad.en)}
                 </p>
-                <p style={{ margin: 0 }}>KRS: 0001239983</p>
-                <p style={{ margin: 0 }}>NIP: 5253090237</p>
-                <p style={{ margin: 0 }}>REGON: 544761611</p>
+                <p style={{ margin: 0 }}>KRS: {REJESTR.krs} · NIP: {REJESTR.nip} · REGON: {REJESTR.regon}</p>
+                <p style={{ margin: 0 }}>
+                  {lang === 'de' ? 'Aktienkapital:' : tr(lang, 'Kapitał akcyjny:', 'Share capital:')}{' '}
+                  {REJESTR.kapital[lang] || REJESTR.kapital.en}
+                </p>
                 <p style={{ margin: 0 }}>{tr(lang, 'Godziny otwarcia:', 'Opening hours:')} {GODZINY_TEKST[lang]}</p>
               </div>
             </div>

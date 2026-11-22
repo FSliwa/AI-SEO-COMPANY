@@ -56,7 +56,7 @@ const faqData = [
   {
     question: 'Czym różni się SEO lokalne od tradycyjnego pozycjonowania?',
     questionEn: 'How does local SEO differ from traditional SEO?',
-    answer: 'SEO lokalne skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów. Oba podejścia łączymy: zakres ogólnopolski opisujemy na stronie o <a href="/pozycjonowanie-stron-internetowych" style="text-decoration:underline">pozycjonowaniu stron</a>.',
+    answer: 'SEO lokalne (w stolicy często wyszukiwane jako pozycjonowanie Warszawa lub pozycjonowanie stron Warszawa) skupia się na tzw. "Local Pack", czyli wynikach z Map Google (Mappack) oraz organicznych wynikach geolokalizowanych. Zamiast budować globalny zasięg, walczymy o klientów wyszukujących Twoich usług w promieniu kilku/kilkunastu kilometrów. Oba podejścia łączymy: zakres ogólnopolski opisujemy na stronie o <a href="/pozycjonowanie-stron-internetowych" style="text-decoration:underline">pozycjonowaniu stron</a>.',
     answerEn: 'Local SEO (or local search engine optimization) focuses on the "Local Pack"-results from Google Maps - and geolocated organic results. Instead of building global reach, we compete for clients searching for your services within a few miles radius.'
   },
   {
@@ -281,7 +281,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               }}>
                 {lang === 'pl' 
                   ? <>Pozycjonowanie stron w Warszawie od <span style={{ color: 'var(--color-cta)', fontWeight: 'bold' }}>1 900 zł netto/mies.</span> Umowa na miesiąc. Wizytówka Google, Mapy i wyniki organiczne dla firm z Warszawy - skuteczne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> bez wieloletnich umów.</>
-                  : <>Harness the power of local searches. Effective optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
+                  : <>Harness the power of local searches. Effective local SEO optimization helps scale businesses by combining <span style={{ color: 'var(--color-cta)' }}>advanced analytics with proven visibility strategies</span>. Dominate your market!</>}
               </p>
               {/* Obietnice z nagłówków RSA w pierwszym ekranie. */}
               <p className="hero-proof" style={{ margin: '-1.75rem auto 2.25rem auto', fontSize: '0.95rem', fontWeight: 600, color: 'var(--w-tusz-2)' }}>

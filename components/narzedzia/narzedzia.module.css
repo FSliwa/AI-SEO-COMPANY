@@ -404,9 +404,8 @@
 .nawPanel { display: block; }
 .nawSpis ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; border-left: 1px solid var(--w-linia); }
 .nawSpis a {
-  display: block;
   margin-left: -1px;
-  padding: 0.45rem 0.75rem;
+  padding: 0 0.75rem;
   border-left: 2px solid transparent;
   font-size: 0.875rem;
   line-height: 1.35;
@@ -416,15 +415,19 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  transition: color var(--nw-krotki) var(--nw-ease), background-color var(--nw-krotki) var(--nw-ease);
+  transition: color var(--nw-krotki) var(--nw-ease);
 }
 .nawSpis a:focus-visible, .nawPrzycisk:focus-visible { outline: 3px solid var(--w-pomarancz); outline-offset: 2px; }
-.nawSpis a.nawAktywna { color: var(--w-tusz); background: var(--w-brzoskwinia-tlo); }
-/* wskaźnik aktywnej pozycji: pasek rośnie od środka (scaleY, 240 ms); leży na li, bo a ma overflow: hidden (line-clamp) */
-.nawSpis li { position: relative; }
+.nawSpis a.nawAktywna { color: var(--w-tusz); }
+/* wskaźnik aktywnej pozycji i pionowy padding leżą na li (nie na a z -webkit-line-clamp + overflow: hidden), żeby Chromium nie przycinał 2. linii */
+.nawSpis li { position: relative; padding: 0.45rem 0; border-radius: 0 6px 6px 0; transition: background-color var(--nw-krotki) var(--nw-ease); }
+.nawSpis li:has(> .nawAktywna) { background: var(--w-brzoskwinia-tlo); }
 .nawSpis li::before { content: ''; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: var(--w-pomarancz); transform: scaleY(0); transition: transform var(--nw-krotki) var(--nw-ease); pointer-events: none; }
 .nawSpis li:has(> .nawAktywna)::before { transform: scaleY(1); }
-@media (hover: hover) { .nawSpis a:hover { color: var(--w-tusz); background: var(--w-brzoskwinia-tlo); } }
+@media (hover: hover) {
+  .nawSpis li:hover { background: var(--w-brzoskwinia-tlo); }
+  .nawSpis li:hover > a { color: var(--w-tusz); }
+}
 
 /* Desktop i duży tablet */
 @media (min-width: 1024px) {

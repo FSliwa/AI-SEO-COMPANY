@@ -313,9 +313,17 @@ export default async function RootLayout({ children, params }) {
                mógłby dopisać konwersję testową do konta. Bez config zdarzenia
                nie mają celu; konwersję Ads osobno blokuje flaga w Contact.jsx. */
             window.__aiscTracking = /^(www\\.)?ai-seo-company\\.pl$/.test(location.hostname);
+            try {
+              var _q = new URLSearchParams(location.search);
+              if (_q.get('internal') === '1') localStorage.setItem('aisc_internal', '1');
+              else if (_q.get('internal') === '0') localStorage.removeItem('aisc_internal');
+            } catch (e) {}
+            var __aiscInternal = false;
+            try { __aiscInternal = localStorage.getItem('aisc_internal') === '1'; } catch (e) {}
             if (window.__aiscTracking) {
-              gtag('config', 'G-WVVRW8FP30');
-              gtag('config', '${GA4_ADS_ID}');
+              var __gaCfg = __aiscInternal ? { traffic_type: 'internal' } : {};
+              gtag('config', 'G-WVVRW8FP30', __gaCfg);
+              gtag('config', '${GA4_ADS_ID}', __gaCfg);
               gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
             }
           `}

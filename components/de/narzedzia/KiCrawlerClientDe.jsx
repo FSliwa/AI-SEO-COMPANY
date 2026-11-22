@@ -93,7 +93,7 @@ function wyczyscDomene(surowy) {
 
 function domyslnePolitykiDe(domena) {
   const host = wyczyscDomene(domena);
-  const rekomendowana = `# Empfohlene KI- & SEO-Richtlinie in der robots.txt fuer ${host}
+  const rekomendowana = `# Empfohlene KI- & SEO-Richtlinie in der robots.txt für ${host}
 # Erlaubt KI-Suche & Zitierungen (Traffic + Anfragen), sperrt reine LLM-Trainings-Scraper
 User-agent: Googlebot
 Allow: /
@@ -138,14 +138,14 @@ Disallow: /
 Sitemap: https://${host}/sitemap.xml
 `;
 
-  const otwarta = `# Offene GEO-Richtlinie fuer ${host} - voller Zugriff fuer Such-, Agenten- und Trainings-Bots
+  const otwarta = `# Offene GEO-Richtlinie für ${host} - voller Zugriff für Such-, Agenten- und Trainings-Bots
 User-agent: *
 Allow: /
 
 Sitemap: https://${host}/sitemap.xml
 `;
 
-  const zablokowana = `# Strikte KI-Sperre fuer ${host} - klassisches Google/Bing erlaubt, alle KI-Bots gesperrt
+  const zablokowana = `# Strikte KI-Sperre für ${host} - klassisches Google/Bing erlaubt, alle KI-Bots gesperrt
 User-agent: Googlebot
 Allow: /
 
@@ -287,7 +287,7 @@ function OdznakaPodgladSvgDe({ domena, wynik }) {
 
 export function KiCrawlerClientDe() {
   const [adres, setAdres] = useState('');
-  const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null });
+  const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null, id: null });
   const [aktywnaPolityka, setAktywnaPolityka] = useState('rekomendowana');
   const [skopiowanoRobots, setSkopiowanoRobots] = useState(false);
   const [pobranoRobots, setPobranoRobots] = useState(false);
@@ -296,8 +296,21 @@ export function KiCrawlerClientDe() {
   const poleRef = useRef(null);
   const wynikRef = useRef(null);
 
-  useParametrUrl(['url'], ({ url }) => {
+  useParametrUrl(['url', 'wynik'], ({ url, wynik }) => {
     if (url) setAdres(url);
+    if (wynik && !DEMO && /^[0-9a-f-]{36}$/i.test(wynik)) {
+      setStan({ status: 'loading', blad: null, wynik: null, id: wynik });
+      fetch(`${PANEL_API}/wynik/${encodeURIComponent(wynik)}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.ok && data.podglad) {
+            setStan({ status: 'done', blad: null, wynik: data.podglad, id: wynik });
+          } else {
+            setStan({ status: 'idle', blad: null, wynik: null, id: null });
+          }
+        })
+        .catch(() => setStan({ status: 'idle', blad: null, wynik: null, id: null }));
+    }
   });
 
   useEffect(() => {
@@ -330,8 +343,8 @@ export function KiCrawlerClientDe() {
       return;
     }
     setBladObrazkaOdznaki(false);
-    setStan({ status: 'loading', blad: null, wynik: null });
-    zapiszParametry({ url: wejscie });
+    setStan({ status: 'loading', blad: null, wynik: null, id: null });
+    zapiszParametry({ url: wejscie, wynik: null });
     track('narzedzie_start', { narzedzie: 'roboty_ai', lang: 'de' });
 
     if (DEMO) {
@@ -361,8 +374,10 @@ export function KiCrawlerClientDe() {
         return;
       }
       const w = data.podglad || data;
+      const runId = data.id || null;
+      if (runId) zapiszParametry({ wynik: runId });
       track('narzedzie_wynik', { narzedzie: 'roboty_ai', wynik: w.wynik });
-      setStan({ status: 'done', blad: null, wynik: w });
+      setStan({ status: 'done', blad: null, wynik: w, id: runId });
     } catch (err) {
       setStan({
         status: 'error',
@@ -403,10 +418,10 @@ export function KiCrawlerClientDe() {
   };
   const tekstRobots = polityki[aktywnaPolityka] || polityki.rekomendowana;
 
-  const urlOdznakiSvg = domena ? `https://panel.ai-seo-company.pl/api/narzedzia/badge/ai-ready?domain=${encodeURIComponent(domena)}` : '';
+  const urlOdznakiSvg = domena ? `https://panel.ai-seo-company.pl/api/narzedzia/badge/ai-ready?domain=${encodeURIComponent(domena)}&lang=de` : '';
   const urlZwrotnyOdznaki = domena ? `https://www.ai-seo-company.pl/de/tools/ki-crawler-robots-txt-pruefen?url=${encodeURIComponent(domena)}` : '';
   const kodHtmlOdznaki = domena
-    ? `<a href="${urlZwrotnyOdznaki}" target="_blank" rel="noopener"><img src="${urlOdznakiSvg}" alt="${domena} - KI-Crawler Ready geprueft von AI SEO Company" width="248" height="32" /></a>`
+    ? `<a href="${urlZwrotnyOdznaki}" target="_blank" rel="noopener"><img src="${urlOdznakiSvg}" alt="${domena} - KI-Crawler Ready geprüft von AI SEO Company" width="248" height="32" /></a>`
     : '';
 
   const potrzebnySsr = Boolean(w && (procentSsr < 75 || ssr.wykrytySzkieletSpa));
@@ -836,7 +851,8 @@ export function KiCrawlerClientDe() {
 
             <LinkWyniku
               narzedzie="roboty_ai"
-              parametry={{ url: domena }}
+              tryb={stan.id ? 'wynik' : 'wypelnij'}
+              parametry={{ url: domena, wynik: stan.id || null }}
               podsumowanie={`KI-Crawler & SSR-Check für ${domena}: ${w.wynik}/100 (SSR-Parität ${procentSsr} %)`}
             />
           </div>

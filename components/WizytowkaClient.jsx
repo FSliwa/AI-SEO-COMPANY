@@ -219,7 +219,7 @@ export default function WizytowkaClient({ faqData }) {
           <AnswerBox etykieta={en ? 'Short answer' : undefined}>
             {en
               ? 'Google Business Profile optimization is the work of making your profile show up in Google Maps and the local pack when nearby customers search for your service. Google judges a profile on relevance, distance from the searcher and prominence of the business. We measure your ranking from 49 points around your address, because a customer at the other end of the district sees a different ranking than you do.'
-              : 'Pozycjonowanie wizytówki Google to praca nad tym, żeby Twój Profil Firmy pokazywał się w Mapach i w pakiecie lokalnym, gdy klienci z okolicy szukają Twojej usługi. Google ocenia trafność profilu, odległość od szukającego i rozpoznawalność firmy. Pozycję mierzymy z 49 punktów wokół adresu, bo klient na drugim końcu dzielnicy widzi inny ranking niż Ty.'}
+              : 'Pozycjonowanie wizytówki Google (dawniej wizytówka Google Moja Firma) to praca nad tym, żeby Twój Profil Firmy pokazywał się w Mapach i w pakiecie lokalnym, gdy klienci z okolicy szukają Twojej usługi. Google ocenia trafność profilu, odległość od szukającego i rozpoznawalność firmy. Pozycję mierzymy z 49 punktów wokół adresu, bo klient na drugim końcu dzielnicy widzi inny ranking niż Ty.'}
           </AnswerBox>
 
           <p style={akapit}>

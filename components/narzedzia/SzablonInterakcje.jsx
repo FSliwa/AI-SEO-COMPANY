@@ -253,9 +253,10 @@ export default function SzablonInterakcje({ slug = '', locale = 'pl' }) {
       });
     });
 
-    // 2. Interaktywne checklisty z zapisem w localStorage + pasek postępu
-    const czyChecklista = String(slug).includes('checklista') || String(slug).includes('checklist');
-    if (czyChecklista) {
+    // 2. Interaktywne pola ☐ we wszystkich szablonach i checklistach z zapisem w localStorage + pasek postępu
+    const obszarPodgladu = root.querySelector('#podglad') || root;
+    const maPolaDoOdznaczenia = Array.from(obszarPodgladu.querySelectorAll('.szablon-tresc li, .szablon-tresc tbody td')).some((el) => (el.textContent || '').includes('☐'));
+    if (maPolaDoOdznaczenia) {
       const kluczStorage = `aisc_chk_${slug}`;
       let stanZapisany = {};
       try {
@@ -277,7 +278,6 @@ export default function SzablonInterakcje({ slug = '', locale = 'pl' }) {
         }
       };
 
-      const obszarPodgladu = root.querySelector('#podglad') || root;
       const pozycje = [];
 
       // Wariant A: punkty <li> zaczynające się od ☐
@@ -305,36 +305,36 @@ export default function SzablonInterakcje({ slug = '', locale = 'pl' }) {
         });
       });
 
-      // Wariant B: wiersze tabeli <tbody><tr> z komórką statusu zawierającą ☐ (np. E-E-A-T DE)
-      if (pozycje.length === 0) {
-        obszarPodgladu.querySelectorAll('.szablon-tresc tbody tr').forEach((tr) => {
-          const komorki = Array.from(tr.cells || []);
-          const komorkaStatusu = komorki.find((td) => (td.textContent || '').includes('☐'));
-          if (!komorkaStatusu) return;
+      // Wariant B: wiersze tabeli <tbody><tr> z komórkami zawierającymi ☐ (obsługa również wielu kolumn ☐ w jednym wierszu)
+      obszarPodgladu.querySelectorAll('.szablon-tresc tbody tr').forEach((tr) => {
+        const komorki = Array.from(tr.cells || []);
+        const komorkiStatusu = komorki.filter((td) => /^\s*☐\s*$/.test(td.textContent || '') || (td.textContent || '').includes('☐'));
+        komorkiStatusu.forEach((komorkaStatusu, idxKom) => {
           const oryginalneHtml = komorkaStatusu.innerHTML;
           const etykieta = document.createElement('label');
           etykieta.className = 'sz-chk-etykieta';
           const box = document.createElement('input');
           box.type = 'checkbox';
           box.className = 'sz-chk-box';
-          const opisWiersza = (komorki[1]?.textContent || tr.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 100);
-          if (opisWiersza) box.setAttribute('aria-label', opisWiersza);
+          const opisWiersza = (komorki[0]?.textContent || komorki[1]?.textContent || tr.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 90);
+          if (opisWiersza) box.setAttribute('aria-label', komorkiStatusu.length > 1 ? `${opisWiersza} (${idxKom + 1})` : opisWiersza);
           const podpis = document.createElement('span');
           podpis.textContent = de ? 'Erledigt' : en ? 'Done' : 'Gotowe';
           etykieta.appendChild(box);
           etykieta.appendChild(podpis);
           komorkaStatusu.textContent = '';
           komorkaStatusu.appendChild(etykieta);
+          const elPodswietlenia = komorkiStatusu.length === 1 ? tr : komorkaStatusu;
           pozycje.push({
-            el: tr,
+            el: elPodswietlenia,
             box,
             przywroc: () => {
-              tr.classList.remove('sz-chk-zrobione');
+              elPodswietlenia.classList.remove('sz-chk-zrobione');
               komorkaStatusu.innerHTML = oryginalneHtml;
             },
           });
         });
-      }
+      });
 
       if (pozycje.length > 0) {
         const pasek = document.createElement('div');

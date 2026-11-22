@@ -6,7 +6,13 @@ description: >-
   app/wyglad.css, lib/stronyEn.js, lib/stronyDe.js, lib/publikacja.js, or running npm run wydanie.
 ---
 
-# AI SEO Strona — Release, i18n (PL/EN/DE), RSC & CSS Guardrails
+# AI SEO Strona - Release, i18n (PL/EN/DE), RSC & CSS Guardrails
+
+## 0. Mandatory Triple-Check Rule (Potrójna Weryfikacja 3x)
+Before presenting **any** conclusion from code, CSS cascade diagnosis, routing bug, or `file:line` claim to the user, verify it **3 independent times**:
+1. **Pass 1 (Literal `read_file`)**: Inspect the exact lines of both selector/variable definition and target JSX markup directly in the main agent (treat subagent claims as untrusted leads).
+2. **Pass 2 (Cascade & Registry Trace)**: Trace CSS specificity (`:where()` vs class vs inline vs `!important` in `wyglad.css`) and all 3 routing registries (`publikacja.js`, `stronyEn.js`, `stronyDe.js`).
+3. **Pass 3 (Empirical Falsification)**: Verify against `getComputedStyle` on live DOM or build/script output; drop any claim that fails even 1 of the 3 checks.
 
 ## 1. Next.js 16 RSC vs `'use client'` Boundary Trap
 - **Mistake learned**: Importing a named constant/array (e.g. `BEISPIELE_DE`) from a `'use client'` file into a Server Component turns that export into a React Client Reference proxy (`undefined` properties during SSR `next build`).
@@ -35,3 +41,5 @@ description: >-
 - **Mistake learned 3 (`992px` vs `900px` Contact grid)**: `.contact-box` in `globals.css` collapses from 2 columns to 1 column at `@media (max-width: 992px)`. Any bottom clearance for the `.contact` background antenna MUST switch at `992px` (not `900px`) and use versioned asset names (`antena-linie-v3-*`) to bust immutable CDN cache.
 - **Mistake learned 4 (Card False Affordances)**: Never apply `:hover { translateY(-4px) }` or orange hover borders to non-clickable static proof/metric cards (`WhyUs`, `Portfolio` mosaic, `PanelShowcase` features, `Pricing` container). Reserve lift + constant `→` signifier strictly for clickable navigation cards (Variant A).
 - **Mistake learned 5 (Font Preload Bloat & `latin-ext`)**: Only load `Geist` + `Geist_Mono` with `subsets: ['latin', 'latin-ext']` on `<html>` (including `app/global-not-found.js`). Omitting `latin-ext` breaks Polish diacritics (`ą ć ę ł ń ś ź ż`) into `Arial`.
+- **Mistake learned 6 (`-webkit-line-clamp` + vertical `padding` clipping bug)**: Never put `padding-top` / `padding-bottom` on the same element that has `display: -webkit-box; -webkit-line-clamp: 2; overflow: hidden;` (e.g. `.nawSpis a` in `narzedzia.module.css`) - Chromium includes `padding-top` in the 2-line height box and slices through the 2nd/3rd line ascenders above `padding-bottom`. Put vertical padding on a wrapper `<li>` or inner `<span>` instead.
+- **Mistake learned 7 (`H1/H2 = 500`, `H3 = 600`, `select.narz-pole` & `tabular-nums`)**: Keep `H1` and `H2` at `font-weight: 500` and enforce `H3` at `font-weight: 600` (`main h3:not(.hero *)` + `styl.js`). Style `<select className="narz-pole">` with `appearance: none` + custom chevron, use `var(--w-sans)` inside inline `<svg><text>`, and apply `font-variant-numeric: tabular-nums` to all live slider outputs, KPI badges, and right-aligned score columns.

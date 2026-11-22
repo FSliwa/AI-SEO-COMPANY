@@ -261,7 +261,15 @@ export default function AutorytetClient() {
             ) : (
               <>
                 <p className="narz-wynik-opis">
-                  <strong>{liczba(linki.liczba)}</strong> {en ? (linki.liczba === 1 ? 'domain links' : 'domains link') : (linki.liczba === 1 ? 'domena linkuje' : 'domen linkuje')} {en ? `to ${nazwaDomeny(p)}.` : `do ${nazwaDomeny(p)}.`}
+                  <strong>{liczba(linki.liczba)}</strong>{' '}
+                  {en
+                    ? (linki.liczba === 1 ? 'domain links' : 'domains link')
+                    : (linki.liczba === 1
+                      ? 'domena linkuje'
+                      : (linki.liczba % 10 >= 2 && linki.liczba % 10 <= 4 && (linki.liczba % 100 < 12 || linki.liczba % 100 > 14))
+                        ? 'domeny linkują'
+                        : 'domen linkuje')}{' '}
+                  {en ? `to ${nazwaDomeny(p)}.` : `do ${nazwaDomeny(p)}.`}
                 </p>
                 {linki.top.length > 0 && (
                   <>

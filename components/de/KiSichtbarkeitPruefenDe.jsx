@@ -250,7 +250,7 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
     setStan((x) => ({ status: 'loading', blad: x.blad })); // tekst poprzedniego błędu zostaje na czas zwijania
     const r = await odblokuj(body);
     if (!r.ok) return setStan({ status: 'error', blad: r.blad });
-    track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: 'widocznosc_ai', currency: 'PLN', value: 50 });
+    track('generate_lead', { lead_source: 'tool_gate', event_category: 'Narzędzia', plan: 'widocznosc_ai', currency: 'EUR', value: 12 });
     setStan({ status: 'done', blad: null, mailOk: r.mailOk }); // mailOk === false: Bericht nicht versendet
     return onOdblokowano?.(r.pelny, r.newsletter, r.mailOk);
   }

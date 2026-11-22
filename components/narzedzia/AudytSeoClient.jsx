@@ -415,7 +415,7 @@ export default function AudytSeoClient() {
               <BramkaEmail
                 narzedzie="audyt_seo"
                 id={stan.id}
-                naglowek={en ? `Unlock the remaining ${liczbaProblemowEn(stan.podglad.zablokowane.length)}` : `Odblokuj pozostałe ${liczbaProblemow(stan.podglad.zablokowane.length)}`}
+                naglowek={en ? `Unlock the remaining ${liczbaProblemowEn(stan.podglad.zablokowane.length)}` : (stan.podglad.zablokowane.length === 1 ? 'Odblokuj pozostały 1 problem' : `Odblokuj pozostałe ${liczbaProblemow(stan.podglad.zablokowane.length)}`)}
                 opis={en ? 'We will show the full list here and email you a report you can hand straight to a developer.' : 'Pokażemy pełną listę tutaj i wyślemy raport e-mailem, gotowy do przekazania programiście.'}
                 korzysci={en ? ['Every issue with fix instructions', 'The pages each issue affects', 'Priorities: from errors to notices'] : ['Każdy problem z instrukcją naprawy', 'Adresy podstron, których dotyczy', 'Priorytety: od błędów do uwag']}
                 przycisk={en ? 'Show the full audit' : 'Pokaż pełny audyt'}

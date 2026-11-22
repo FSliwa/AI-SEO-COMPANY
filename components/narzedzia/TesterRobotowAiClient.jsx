@@ -292,7 +292,7 @@ export function TesterRobotowAiClient() {
   const en = useLocale() === 'en';
   const jezyk = en ? 'en-US' : 'pl-PL';
   const [adres, setAdres] = useState('');
-  const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null });
+  const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null, id: null });
   const [aktywnaPolityka, setAktywnaPolityka] = useState('rekomendowana');
   const [skopiowanoRobots, setSkopiowanoRobots] = useState(false);
   const [pobranoRobots, setPobranoRobots] = useState(false);
@@ -301,8 +301,21 @@ export function TesterRobotowAiClient() {
   const poleRef = useRef(null);
   const wynikRef = useRef(null);
 
-  useParametrUrl(['url'], ({ url }) => {
+  useParametrUrl(['url', 'wynik'], ({ url, wynik }) => {
     if (url) setAdres(url);
+    if (wynik && !DEMO && /^[0-9a-f-]{36}$/i.test(wynik)) {
+      setStan({ status: 'loading', blad: null, wynik: null, id: wynik });
+      fetch(`${PANEL_API}/wynik/${encodeURIComponent(wynik)}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.ok && data.podglad) {
+            setStan({ status: 'done', blad: null, wynik: data.podglad, id: wynik });
+          } else {
+            setStan({ status: 'idle', blad: null, wynik: null, id: null });
+          }
+        })
+        .catch(() => setStan({ status: 'idle', blad: null, wynik: null, id: null }));
+    }
   });
 
   useEffect(() => {
@@ -335,8 +348,8 @@ export function TesterRobotowAiClient() {
       return;
     }
     setBladObrazkaOdznaki(false);
-    setStan({ status: 'loading', blad: null, wynik: null });
-    zapiszParametry({ url: wejscie });
+    setStan({ status: 'loading', blad: null, wynik: null, id: null });
+    zapiszParametry({ url: wejscie, wynik: null });
     track('narzedzie_start', { narzedzie: 'roboty_ai' });
 
     if (DEMO) {
@@ -366,8 +379,10 @@ export function TesterRobotowAiClient() {
         return;
       }
       const w = data.podglad || data;
+      const runId = data.id || null;
+      if (runId) zapiszParametry({ wynik: runId });
       track('narzedzie_wynik', { narzedzie: 'roboty_ai', wynik: w.wynik });
-      setStan({ status: 'done', blad: null, wynik: w });
+      setStan({ status: 'done', blad: null, wynik: w, id: runId });
     } catch (err) {
       setStan({
         status: 'error',
@@ -905,7 +920,8 @@ export function TesterRobotowAiClient() {
 
             <LinkWyniku
               narzedzie="roboty_ai"
-              parametry={{ url: domena }}
+              tryb={stan.id ? 'wynik' : 'wypelnij'}
+              parametry={{ url: domena, wynik: stan.id || null }}
               podsumowanie={en
                 ? `AI Crawler & SSR Parity Check for ${domena}: ${w.wynik}/100 (SSR Parity ${procentSsr}%)`
                 : `Test robotów AI i parzystości SSR dla ${domena}: ${w.wynik}/100 (SSR ${procentSsr}%)`}

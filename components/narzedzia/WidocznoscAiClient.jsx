@@ -94,11 +94,15 @@ function wzorceMarki(firma, www) {
   const czystaFirma = zwin(firma);
   if (czystaFirma.length >= 2) {
     zbior.add(czystaFirma);
-    const bezFormy = zwin(czystaFirma.replace(/\b(sp\.\s*z\s*o\.\s*o\.|spolka\s+z\s+o\.o\.|spółka\s+z\s+o\.o\.|s\.a\.|p\.s\.a\.|ltd\.?|llc|inc\.?|gmbh|ug)\b/gi, ''));
+    const bezFormy = zwin(czystaFirma.replace(/\b(sp\.\s*z\s*o\.\s*o\.|spolka\s+z\s+o\.o\.|spółka\s+z\s+o\.o\.|s\.a\.|p\.s\.a\.|ltd\.?|limited|llc|inc\.?|corp\.?|gmbh|ug|ag|kg)\b/gi, ''));
     if (bezFormy.length >= 3 && !OGOLNE.has(bezFormy.toLowerCase())) zbior.add(bezFormy);
   }
   const host = String(www || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
-  if (host.length >= 4 && host.includes('.')) zbior.add(host);
+  if (host.length >= 4 && host.includes('.')) {
+    zbior.add(host);
+    const korzen = host.replace(/\.(com\.pl|waw\.pl|net\.pl|org\.pl|info\.pl|co\.uk|org\.uk|co\.at|or\.at|com\.de|[a-z]{2,12})$/i, '');
+    if (korzen.length >= 3 && !korzen.includes('.') && !OGOLNE.has(korzen)) zbior.add(korzen);
+  }
   return [...zbior].sort((a, b) => b.length - a.length);
 }
 
