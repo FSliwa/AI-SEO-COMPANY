@@ -339,8 +339,6 @@ function WykresJCurve({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, waluta, en, f
       </div>
       <svg
         viewBox="0 0 640 240"
-        width="100%"
-        height="auto"
         role="img"
         aria-label={en
           ? `Cumulative SEO cost versus recovered profit over 24 months. ${etykietaPrzeciecia}. After 24 months: ${fmt(punkty[24].zyskSkum)} recovered profit vs ${fmt(punkty[24].kosztSkum)} cost.`

@@ -78,9 +78,11 @@ function normalizujBota(b) {
     const ok = /ok|allow|dozwol|200/i.test(b) && !/block|zablok|disallow|403/i.test(b);
     return { ok, robots: ok ? 'allow' : 'disallow', httpKod: ok ? 200 : 403, ttfbMs: null, cfIp: /ip|cf|cloudflare/i.test(b) };
   }
-  const cfIp = Boolean(b.cloudflareIpCheck || /weryfikacja_ip|ip_check/i.test(String(b.status || '')));
+  const cfIp = Boolean(b.cloudflareIpCheck || b.cloudflareWaf || /weryfikacja_ip|ip_check/i.test(String(b.status || '')));
   const dozwolonyRobots = b.dozwolony !== undefined
     ? Boolean(b.dozwolony)
+    : b.robotsDozwolony !== undefined
+    ? Boolean(b.robotsDozwolony)
     : !/zablok|block|disallow|sperr/i.test(String(b.robots ?? 'allow'));
   const kod = Number(b.httpKod ?? b.statusHttp ?? (dozwolonyRobots ? 200 : 403));
   const ok = b.ok !== undefined ? Boolean(b.ok) : (dozwolonyRobots && (kod >= 200 && kod < 400 || cfIp));
@@ -300,18 +302,23 @@ export function IndexNowBingClient() {
   const bing = normalizujBota(w?.dostepBotow?.bingbot);
   const oai = normalizujBota(w?.dostepBotow?.oaiSearchBot);
   const sm = w?.sitemapa || {};
+  const smZnaleziono = Boolean(sm.znaleziono ?? sm.znaleziona);
   const liczbaUrl = Number(sm.liczbaUrl ?? 0);
-  const zLastmod = Number(sm.liczbaZLastmod ?? 0);
-  const unikalnychDat = Number(sm.unikalnychDat ?? 0);
+  const zLastmod = Number(sm.liczbaZLastmod ?? sm.liczbaLastmod ?? 0);
+  const unikalnychDat = Number(sm.unikalnychDat ?? sm.unikalneLastmod ?? 0);
+  const entropiaWartosc = sm.entropia ?? sm.entropiaLastmod;
+  const przykladyLista = Array.isArray(sm.przykladyUrl) && sm.przykladyUrl.length
+    ? sm.przykladyUrl
+    : (Array.isArray(sm.przykladoweUrl) ? sm.przykladoweUrl : []);
   const sztuczneLastmod = Boolean(
     zLastmod >= 5 && unikalnychDat <= 1 ||
-    /sztucz|fake|niska|low|ident/i.test(String(sm.entropia ?? '')) ||
-    (typeof sm.entropia === 'number' && sm.entropia < 0.15 && zLastmod >= 5)
+    /sztucz|fake|niska|low|ident/i.test(String(entropiaWartosc ?? '')) ||
+    (typeof entropiaWartosc === 'number' && entropiaWartosc < 0.15 && zLastmod >= 5)
   );
 
-  const kluczBazowy = wlasnyKlucz || w?.indexNow?.wygenerowanyKlucz || w?.indexNow?.wykrytyKlucz || '8f4c2e91b7a34d60c5129e80f3a17b4d';
+  const kluczBazowy = wlasnyKlucz || w?.indexNow?.wygenerowanyKlucz || w?.indexNow?.wykrytyKlucz || w?.indexNow?.klucz || '8f4c2e91b7a34d60c5129e80f3a17b4d';
   const wygenerowaneLokalnie = domena
-    ? zbudujArtefaktyIndexNow(domena, kluczBazowy, Array.isArray(sm.przykladyUrl) ? sm.przykladyUrl : [])
+    ? zbudujArtefaktyIndexNow(domena, kluczBazowy, przykladyLista)
     : { nazwaPliku: `${kluczBazowy}.txt`, zawartoscPliku: kluczBazowy, curlKomenda: '', githubActionYaml: '' };
 
   const nazwaPlikuKlucza = wlasnyKlucz
@@ -325,7 +332,7 @@ export function IndexNowBingClient() {
     : (w?.indexNow?.curlKomenda || wygenerowaneLokalnie.curlKomenda);
   const yamlKod = wlasnyKlucz
     ? wygenerowaneLokalnie.githubActionYaml
-    : (w?.indexNow?.githubActionYaml || wygenerowaneLokalnie.githubActionYaml);
+    : (w?.indexNow?.githubActionYaml || w?.indexNow?.githubWorkflowYml || wygenerowaneLokalnie.githubActionYaml);
 
   const rekomendacje = Array.isArray(w?.rekomendacje) ? w.rekomendacje : [];
   const kotwicaKontakt = hash('kontakt', en ? 'en' : 'pl');
@@ -467,8 +474,8 @@ export function IndexNowBingClient() {
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.55rem' }}>
-                  <span className={`sp2-pigulka ${sm.znaleziono ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>
-                    sitemap.xml: {sm.znaleziono ? (en ? 'Found' : 'Wykryta') : (en ? 'Missing' : 'Brak')}
+                  <span className={`sp2-pigulka ${smZnaleziono ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>
+                    sitemap.xml: {smZnaleziono ? (en ? 'Found' : 'Wykryta') : (en ? 'Missing' : 'Brak')}
                   </span>
                   <span className={`sp2-pigulka ${w?.indexNow?.wykrytyKlucz ? 'sp2-pigulka--ok' : 'sp2-pigulka--info'}`}>
                     IndexNow: {w?.indexNow?.wykrytyKlucz
@@ -509,7 +516,7 @@ export function IndexNowBingClient() {
                 <h2 className="narz-h2">
                   {en ? 'Sitemap <lastmod> Entropy Audit' : 'Audyt entropii dat <lastmod> w pliku sitemap.xml'}
                 </h2>
-                {sm.znaleziono && (
+                {smZnaleziono && (
                   <span className={`sp2-pigulka ${sztuczneLastmod ? 'sp2-pigulka--blad' : zLastmod === 0 ? 'sp2-pigulka--uwaga' : 'sp2-pigulka--ok'}`}>
                     {sztuczneLastmod
                       ? (en ? 'Artificial uniform dates!' : 'Sztuczne identyczne daty!')
@@ -546,14 +553,14 @@ export function IndexNowBingClient() {
                 <div className="sp2-kafel">
                   <p className="sp2-kafel-etykieta">{en ? 'Entropy Verdict' : 'Ocena entropii'}</p>
                   <p className="sp2-kafel-wartosc">
-                    {typeof sm.entropia === 'number'
-                      ? sm.entropia.toLocaleString(jezyk, { maximumFractionDigits: 2 })
-                      : (sm.entropia || (sztuczneLastmod ? (en ? 'Low (Fake)' : 'Sztuczna') : 'OK'))}
+                    {typeof entropiaWartosc === 'number'
+                      ? entropiaWartosc.toLocaleString(jezyk, { maximumFractionDigits: 2 })
+                      : (entropiaWartosc || (sztuczneLastmod ? (en ? 'Low (Fake)' : 'Sztuczna') : 'OK'))}
                   </p>
                 </div>
               </div>
 
-              {Array.isArray(sm.przykladyUrl) && sm.przykladyUrl.length > 0 && (
+              {przykladyLista.length > 0 && (
                 <div className="narz-tabela-wrap" style={{ marginTop: '0.8rem' }}>
                   <table className="narz-tabela">
                     <thead>
@@ -563,7 +570,7 @@ export function IndexNowBingClient() {
                       </tr>
                     </thead>
                     <tbody>
-                      {sm.przykladyUrl.slice(0, 5).map((item, idx) => {
+                      {przykladyLista.slice(0, 5).map((item, idx) => {
                         const u = typeof item === 'string' ? item : item.url;
                         const lm = typeof item === 'object' ? item.lastmod : null;
                         return (

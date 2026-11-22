@@ -290,6 +290,8 @@ export function PrzekierowaniaHreflangClient() {
   const domena = w ? (w.domena || wyczyscDomene(w.url || adres)) : '';
   const warianty = Array.isArray(w?.wariantyHosta) ? w.wariantyHosta : [];
   const can = w?.canonical || {};
+  const canZgodny = Boolean(can.zgodnyZDocelowym ?? (can.zgodny && can.wskazujeSiebie));
+  const canHttp = can.httpHeader ?? can.http ?? null;
   const hreflang = Array.isArray(w?.hreflang) ? w.hreflang : [];
   const problemy = Array.isArray(w?.problemy) ? w.problemy : [];
   const domyslneReguly = domena ? zapasRegul(domena) : { nextjs: '', nginx: '', htaccess: '', cloudflare: '' };
@@ -411,8 +413,8 @@ export function PrzekierowaniaHreflangClient() {
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.55rem' }}>
-                  <span className={`sp2-pigulka ${can.zgodnyZDocelowym ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>
-                    Canonical: {can.zgodnyZDocelowym ? (en ? 'Consistent' : 'Spójny z celem') : (en ? 'Mismatch' : 'Niezgodny')}
+                  <span className={`sp2-pigulka ${canZgodny ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>
+                    Canonical: {canZgodny ? (en ? 'Consistent' : 'Spójny z celem') : (en ? 'Mismatch' : 'Niezgodny')}
                   </span>
                   {hreflang.length > 0 && (
                     <span className={`sp2-pigulka ${w.maXDefault ? 'sp2-pigulka--ok' : 'sp2-pigulka--uwaga'}`}>
@@ -517,13 +519,13 @@ export function PrzekierowaniaHreflangClient() {
                 <div className="sp2-kafel">
                   <p className="sp2-kafel-etykieta">{en ? 'HTTP Link Header Canonical' : 'Nagłówek HTTP Link (rel="canonical")'}</p>
                   <p className="sp2-kafel-wartosc" style={{ fontSize: '0.92rem', fontFamily: 'var(--w-mono, monospace)' }}>
-                    {can.httpHeader || (en ? 'Not set (optional for HTML)' : 'Brak (opcjonalny dla HTML)')}
+                    {canHttp || (en ? 'Not set (optional for HTML)' : 'Brak (opcjonalny dla HTML)')}
                   </p>
                 </div>
                 <div className="sp2-kafel">
                   <p className="sp2-kafel-etykieta">{en ? 'Alignment With Final Destination' : 'Zgodność z docelowym URL po 301'}</p>
-                  <p className="sp2-kafel-wartosc" style={{ color: can.zgodnyZDocelowym ? '#047857' : '#b3261e' }}>
-                    {can.zgodnyZDocelowym
+                  <p className="sp2-kafel-wartosc" style={{ color: canZgodny ? '#047857' : '#b3261e' }}>
+                    {canZgodny
                       ? (en ? '100% Exact Match' : '100% zgodny (Self-Canonical)')
                       : (en ? 'Conflict Detected' : 'Sprzeczność adresu!')}
                   </p>
@@ -564,12 +566,12 @@ export function PrzekierowaniaHreflangClient() {
                     </thead>
                     <tbody>
                       {hreflang.map((h, idx) => (
-                        <tr key={`${h.kod}-${idx}`}>
+                        <tr key={`${h.kod || h.lang}-${idx}`}>
                           <th scope="row" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)' }}>
-                            {h.kod}
+                            {h.kod || h.lang}
                           </th>
                           <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>
-                            {h.url}
+                            {h.url || h.href}
                           </td>
                           <td style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 700 }}>
                             <span className={`sp2-pigulka ${Number(h.status) === 200 ? 'sp2-pigulka--ok' : 'sp2-pigulka--blad'}`}>

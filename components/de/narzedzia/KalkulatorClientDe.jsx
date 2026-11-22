@@ -363,8 +363,6 @@ function WykresJCurveDe({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, fmt }) {
       </div>
       <svg
         viewBox="0 0 640 240"
-        width="100%"
-        height="auto"
         role="img"
         aria-label={`Kumulierte SEO-Kosten gegenüber zurückgewonnenem Gewinn über 24 Monate. ${etykietaPrzeciecia}. Nach 24 Monaten: ${fmt(punkty[24].zyskSkum)} Gewinn gegenüber ${fmt(punkty[24].kosztSkum)} Kosten.`}
         style={{ display: 'block', width: '100%', height: 'auto', fontFamily: 'var(--w-sans)', fontVariantNumeric: 'tabular-nums' }}

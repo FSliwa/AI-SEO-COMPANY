@@ -103,8 +103,10 @@ function odczytajWierszeNapDe(w) {
   ];
 
   return definicje.map((d) => {
-    const vHtml = html[d.klucz] ?? html[d.alt] ?? null;
-    const vSchema = schema[d.klucz] ?? schema[d.alt] ?? null;
+    const rawHtml = d.klucz === 'geo' ? (html.coordinates ?? html.geo) : (html[d.klucz] ?? html[d.alt]);
+    const rawSchema = d.klucz === 'geo' ? (schema.coordinates ?? schema.geo) : (schema[d.klucz] ?? schema[d.alt]);
+    const vHtml = typeof rawHtml === 'boolean' ? (rawHtml ? 'Vorhanden' : null) : rawHtml;
+    const vSchema = typeof rawSchema === 'boolean' ? (rawSchema ? 'Im Schema vorhanden' : null) : rawSchema;
     const rawSp = sp && typeof sp === 'object' ? (sp[d.klucz] ?? sp[d.alt]) : undefined;
     let status = 'brak';
     if (rawSp === true || /ok|zgod|match/i.test(String(rawSp || ''))) status = 'ok';

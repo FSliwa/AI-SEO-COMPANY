@@ -280,6 +280,36 @@ export default function MakietaClientDe() {
     return () => clearTimeout(t);
   }, [stan.pelny]);
 
+  function zaladujDemo() {
+    const surowy = poleRef.current?.value || adres || 'beispiel-industrie.de';
+    const domena = wyczyscDomene(surowy);
+    setAdres(domena);
+    if (poleRef.current && !poleRef.current.value) poleRef.current.value = domena;
+    track('narzedzie_demo', { narzedzie: 'makieta', lang: 'de' });
+    setStan({
+      status: 'done',
+      blad: null,
+      id: null,
+      podglad: {
+        domena,
+        nazwa: 'Beispiel GmbH',
+        zrzut: null,
+        html: MAKIETA_DEMO_PODGLAD_DE,
+        sekcji: 4,
+      },
+      pelny: {
+        domena,
+        nazwa: 'Beispiel GmbH',
+        html: MAKIETA_DEMO_PELNA_DE,
+        zrzut: null,
+        sekcji: 4,
+        link: '#',
+      },
+      trybDemo: true,
+      mailOk: true,
+    });
+  }
+
   async function start(e) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
@@ -351,7 +381,7 @@ export default function MakietaClientDe() {
             className="narz-pole"
           />
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
-          <div className="narz-kalk-akcja">
+          <div className="narz-kalk-akcja" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', alignItems: 'center' }}>
             <button
               type="submit"
               className="btn btn-primary c-zajety"
@@ -360,6 +390,15 @@ export default function MakietaClientDe() {
               data-cta="narzedzie_makieta_de_start"
             >
               {stan.status === 'loading' ? 'Entwurf entsteht…' : 'Neue Startseite entwerfen'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              disabled={stan.status === 'loading'}
+              onClick={zaladujDemo}
+              data-cta="narzedzie_makieta_de_demo"
+            >
+              DEMO-Vorschau laden
             </button>
           </div>
           <p className="narz-mikro">
@@ -377,7 +416,19 @@ export default function MakietaClientDe() {
           aria-live="polite"
           style={rezerwa ? { minHeight: rezerwa, alignContent: 'start' } : undefined}
         >
-          <p className="narz-wynik-domena">Neue Startseite: {p.nazwa}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
+            <p className="narz-wynik-domena" style={{ margin: 0 }}>Neue Startseite: {p.nazwa}</p>
+            {stan.trybDemo && (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                style={{ padding: '0.45rem 0.95rem', fontSize: '0.86rem' }}
+                onClick={() => setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, trybDemo: false })}
+              >
+                Eigene Website eingeben
+              </button>
+            )}
+          </div>
           {!stan.pelny ? (
             <>
               <div key="przed-bramka" className={`narz-porownanie-makiet${p.zrzut ? '' : ' narz-porownanie-makiet--bez-zrzutu'}`}>
