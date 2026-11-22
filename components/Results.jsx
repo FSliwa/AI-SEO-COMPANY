@@ -59,14 +59,14 @@ const PINY_KOLUMN = WIEZE.map((w, i) => ({
 export default function Results() {
   const lang = useLocale();
   const pl = lang === 'pl';
+  const de = lang === 'de';
   const bezRuchu = useReducedMotion();
-  const mlnDomen = pl ? '135 mln' : '135M';
+  const mlnDomen = pl ? '135 mln' : de ? '135-Mio.' : '135M';
 
   const filary = pl
     ? [
         {
           nr: '01',
-          kicker: `CRAWLER ${AUDYT.regul} REGUŁ`,
           ikona: <><circle cx="11" cy="11" r="7" /><path d="m20 20-4.2-4.2" /></>,
           tytul: `Crawler ${AUDYT.regul} reguł i CWV`,
           opis: 'Bada kody HTTP, indeksację, strukturę nagłówków oraz mobilny PageSpeed Insights na żywo.',
@@ -74,7 +74,6 @@ export default function Results() {
         },
         {
           nr: '02',
-          kicker: `${WIDOCZNOSC.silnikow} SILNIKÓW AI`,
           ikona: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />,
           tytul: `${WIDOCZNOSC.silnikow} silników odpowiedzi AI`,
           opis: 'Odpytuje ChatGPT, Gemini, Perplexity, Claude i AI Overviews prawdziwymi pytaniami klientów.',
@@ -82,7 +81,6 @@ export default function Results() {
         },
         {
           nr: '03',
-          kicker: `GRAF ${mlnDomen.toUpperCase()} DOMEN`,
           ikona: <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />,
           tytul: `Graf ${mlnDomen} domen`,
           opis: `Wylicza autorytet linków 0-100 z publicznego grafu sieciowego i zestawia z ${AUTORYTET.konkurentow} konkurentami.`,
@@ -90,47 +88,98 @@ export default function Results() {
         },
         {
           nr: '04',
-          kicker: 'DETEKCJA STRAT',
           ikona: <><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
           tytul: 'Detekcja blokad i strat',
           opis: 'Wskazuje zablokowane boty AI w robots.txt oraz miesięczny zysk uciekający poza TOP 3.',
           ryzyko: true,
         },
       ]
-    : [
-        {
-          nr: '01',
-          kicker: `${AUDYT.regul}-RULE CRAWLER`,
-          ikona: <><circle cx="11" cy="11" r="7" /><path d="m20 20-4.2-4.2" /></>,
-          tytul: `${AUDYT.regul}-rule crawler & CWV`,
-          opis: 'Inspects HTTP status codes, indexability, heading hierarchy and mobile PageSpeed Insights live.',
-          ryzyko: false,
-        },
-        {
-          nr: '02',
-          kicker: `${WIDOCZNOSC.silnikow} AI ENGINES`,
-          ikona: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />,
-          tytul: `${WIDOCZNOSC.silnikow} AI answer engines`,
-          opis: 'Queries ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews with real buyer prompts.',
-          ryzyko: false,
-        },
-        {
-          nr: '03',
-          kicker: `${mlnDomen} DOMAIN GRAPH`,
-          ikona: <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />,
-          tytul: `${mlnDomen}-domain link graph`,
-          opis: `Computes a 0-100 authority score from the public web graph against up to ${AUTORYTET.konkurentow} competitors.`,
-          ryzyko: false,
-        },
-        {
-          nr: '04',
-          kicker: 'LOSS DETECTION',
-          ikona: <><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
-          tytul: 'Bot blocks & revenue gap',
-          opis: 'Flags AI crawlers blocked in robots.txt and estimates profit lost outside Google TOP 3.',
-          ryzyko: true,
-        },
-      ];
+    : de
+      ? [
+          {
+            nr: '01',
+            ikona: <><circle cx="11" cy="11" r="7" /><path d="m20 20-4.2-4.2" /></>,
+            tytul: `${AUDYT.regul}-Regeln-Crawler & CWV`,
+            opis: 'Prüft HTTP-Statuscodes, Indexierbarkeit, Überschriftenstruktur und mobiles PageSpeed Insights live.',
+            ryzyko: false,
+          },
+          {
+            nr: '02',
+            ikona: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />,
+            tytul: `${WIDOCZNOSC.silnikow} KI-Antwortsysteme`,
+            opis: 'Fragt ChatGPT, Gemini, Perplexity, Claude und Google AI Overviews mit echten Kundenfragen ab.',
+            ryzyko: false,
+          },
+          {
+            nr: '03',
+            ikona: <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />,
+            tytul: `${mlnDomen}-Domain-Graph`,
+            opis: `Berechnet die Link-Autorität von 0-100 aus dem öffentlichen Webgraphen im Vergleich zu ${AUTORYTET.konkurentow} Wettbewerbern.`,
+            ryzyko: false,
+          },
+          {
+            nr: '04',
+            ikona: <><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
+            tytul: 'Blockaden- & Verlustanalyse',
+            opis: 'Erkennt in der robots.txt gesperrte KI-Crawler und beziffert den monatlichen Gewinnverlust außerhalb der TOP 3.',
+            ryzyko: true,
+          },
+        ]
+      : [
+          {
+            nr: '01',
+            ikona: <><circle cx="11" cy="11" r="7" /><path d="m20 20-4.2-4.2" /></>,
+            tytul: `${AUDYT.regul}-rule crawler & CWV`,
+            opis: 'Inspects HTTP status codes, indexability, heading hierarchy and mobile PageSpeed Insights live.',
+            ryzyko: false,
+          },
+          {
+            nr: '02',
+            ikona: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />,
+            tytul: `${WIDOCZNOSC.silnikow} AI answer engines`,
+            opis: 'Queries ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews with real buyer prompts.',
+            ryzyko: false,
+          },
+          {
+            nr: '03',
+            ikona: <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />,
+            tytul: `${mlnDomen}-domain link graph`,
+            opis: `Computes a 0-100 authority score from the public web graph against up to ${AUTORYTET.konkurentow} competitors.`,
+            ryzyko: false,
+          },
+          {
+            nr: '04',
+            ikona: <><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
+            tytul: 'Bot blocks & revenue gap',
+            opis: 'Flags AI crawlers blocked in robots.txt and estimates profit lost outside Google TOP 3.',
+            ryzyko: true,
+          },
+        ];
+
+  const ctaNaglowek = pl
+    ? 'Chcesz osiągnąć podobne wyniki?'
+    : de
+      ? 'Möchten Sie ähnliche Ergebnisse erzielen?'
+      : 'Want to achieve similar results?';
+  const ctaOpis = pl
+    ? 'Sprawdź, co blokuje Twoją stronę w Google: darmowy audyt SEO online w 49 regułach albo wycena pełnego audytu w 24 h.'
+    : de
+      ? 'Prüfen Sie kostenlos in 49 Regeln, was Ihre Website in Google bremst, oder fordern Sie ein Angebot innerhalb von 24 Stunden an.'
+      : 'Find out what holds your site back: run the free online SEO audit (49 rules) or request a quote for a full audit within 24 h.';
+  const ctaHref = pl
+    ? '/narzedzia/audyt-seo'
+    : de
+      ? '/de/tools/kostenloser-seo-audit'
+      : '/en/tools/free-seo-audit';
+  const ctaTekst = pl ? 'Sprawdź stronę za darmo' : de ? 'Website kostenlos prüfen' : 'Run the free audit';
+  const ctaCenyTekst = pl ? 'Zobacz ceny pakietów' : de ? 'Paketpreise ansehen' : 'See package prices';
+  const h3Linia1 = pl ? 'Zbudowane pod twardą analitykę' : de ? 'Entwickelt für präzise Analytik' : 'Built for technical precision';
+  const h3Linia2 = pl ? 'i widoczność w Google oraz AI' : de ? 'und Sichtbarkeit in Google & KI' : 'and visibility in Google & AI';
+  const analitykaOpis = pl
+    ? 'Cztery warstwy diagnostyki zasilające nasze darmowe narzędzia oraz panel klienta 24/7'
+    : de
+      ? 'Vier Diagnoseschichten für unsere kostenlosen SEO-Tools und das 24/7-Kundenportal'
+      : 'Four diagnostic layers powering our free tools and the 24/7 client portal';
 
   return (
     <section
@@ -148,23 +197,19 @@ export default function Results() {
       <div className="container" data-header-box="">
         <Reveal className="results-content results-cta-karta">
           <div className="results-text">
-            <h2>{pl ? 'Chcesz osiągnąć podobne wyniki?' : 'Want to achieve similar results?'}</h2>
-            <p>
-              {pl
-                ? 'Sprawdź, co blokuje Twoją stronę w Google: darmowy audyt SEO online w 49 regułach albo wycena pełnego audytu w 24 h.'
-                : 'Find out what holds your site back: run the free online SEO audit (49 rules) or request a quote for a full audit within 24 h.'}
-            </p>
+            <h2>{ctaNaglowek}</h2>
+            <p>{ctaOpis}</p>
           </div>
           <div className="results-cta-akcje">
             <a
-              href={pl ? '/narzedzia/audyt-seo' : '/en/tools/free-seo-audit'}
+              href={ctaHref}
               className="w-przycisk w-przycisk--glowny"
               data-cta="results_free_audit"
             >
-              {pl ? 'Sprawdź stronę za darmo' : 'Run the free audit'}
+              {ctaTekst}
             </a>
             <a href={hash('cennik', lang)} className="results-cta-ceny" data-cta="results_pricing">
-              {pl ? 'Zobacz ceny pakietów' : 'See package prices'} <span aria-hidden="true">→</span>
+              {ctaCenyTekst} <span aria-hidden="true">→</span>
             </a>
           </div>
         </Reveal>
@@ -175,23 +220,19 @@ export default function Results() {
         <div className="results-analityka-nagl">
           <h3 className="results-analityka-h3">
             <SlowaWejscia
-              tekst={pl ? 'Zbudowane pod twardą analitykę' : 'Built for technical precision'}
+              tekst={h3Linia1}
               className="results-h3-jasny"
               opoznienie={0}
               bezRuchu={bezRuchu}
             />
             <SlowaWejscia
-              tekst={pl ? 'i widoczność w Google oraz AI' : 'and visibility in Google & AI'}
+              tekst={h3Linia2}
               className="results-h3-akcent"
               opoznienie={0.18}
               bezRuchu={bezRuchu}
             />
           </h3>
-          <p className="results-analityka-opis">
-            {pl
-              ? 'Cztery warstwy diagnostyki zasilające nasze darmowe narzędzia oraz panel klienta 24/7'
-              : 'Four diagnostic layers powering our free tools and the 24/7 client portal'}
-          </p>
+          <p className="results-analityka-opis">{analitykaOpis}</p>
         </div>
 
         <div className="results-scena-globu">
@@ -213,8 +254,7 @@ export default function Results() {
                     <div className="results-filar-meta">
                       <span className="results-filar-nr">
                         <span className="results-nr-cyfra">{f.nr}</span>{' '}
-                        <span className="results-nr-ukosnik">/</span>{' '}
-                        <span className="results-nr-kat">{f.kicker}</span>
+                        <span className="results-nr-ukosnik">/</span>
                       </span>
                       <span className="results-filar-ikona" aria-hidden="true">
                         <svg viewBox="0 0 24 24">{f.ikona}</svg>

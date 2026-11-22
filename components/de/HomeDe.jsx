@@ -3,7 +3,8 @@ import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Hero from '@/components/Hero';
 import HeroKlienci from '@/components/HeroKlienci';
-import { Abschnitt, Absatz, Liste, Karten, Preise, Referenzen, CtaZeile, Faq } from './UslugiBausteine';
+import Results from '@/components/Results';
+import { Abschnitt, Absatz, Liste, Karten, Preise, Referenzen, Faq } from './UslugiBausteine';
 import { HOME_LEISTUNGEN, HOME_VORTEILE, HOME_SCHRITTE, HOME_FAQ } from '@/lib/de/home';
 import { WSTEP_OFERTY } from '@/lib/wstepOferty';
 import { maWersjeDe } from '@/lib/stronyDe';
@@ -32,12 +33,14 @@ export default function HomeDe() {
         </Abschnitt>
 
         <Referenzen id="portfolio" titel="Referenzen mit Messwerten" />
+        </div>
 
-        <CtaZeile />
+        <Results />
+
+        <div style={{ paddingTop: '56px', color: 'var(--color-text-main)', overflowX: 'hidden' }}>
+        <Karten titel="Unser Vorgehen" untertitel="Von der Analyse bis zur Messung in Google und in KI-Antworten." items={HOME_SCHRITTE} spalten={240} />
 
         <Preise id="cennik" titel="Transparente Pakete ohne versteckte Kosten" />
-
-        <Karten titel="Unser Vorgehen" untertitel="Von der Analyse bis zur Messung in Google und in KI-Antworten." items={HOME_SCHRITTE} spalten={240} />
 
         <Faq eintraege={HOME_FAQ} titel="Häufige Fragen zur Zusammenarbeit" />
         </div>
