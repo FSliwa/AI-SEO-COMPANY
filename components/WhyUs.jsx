@@ -227,14 +227,15 @@ export default function WhyUs({ isMainContent = false }) {
 
   // Najechanie mysza wstrzymuje przewijanie tylko na czas najechania (pomiar
   // 05.10.2026: przy :hover slajdy dalej przesuwaly sie co 5 s).
+  const liczbaKartWhyUs = whyUsCards.length;
   useEffect(() => {
     if (!isAutoplay || najechane) return;
     const interval = setInterval(() => {
-      const nextIndex = (activeIndex + 1) % whyUsCards.length;
+      const nextIndex = (activeIndex + 1) % liczbaKartWhyUs;
       scrollTo(nextIndex);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isAutoplay, najechane, activeIndex]);
+  }, [isAutoplay, najechane, activeIndex, liczbaKartWhyUs]);
 
   return (
     <Wrapper className="why-us" id="why-us" data-kursor="obraz" data-petla="" style={{ background: 'var(--w-papier-2)', padding: '7rem 0', color: 'var(--w-tusz)' }} onFocus={zatrzymajPrzyFokusie} {...wrapperProps}>
@@ -248,7 +249,7 @@ export default function WhyUs({ isMainContent = false }) {
             <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', fontWeight: 600 }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'DLACZEGO MY' : 'WHY US'}
             </div>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.15, color: 'var(--w-tusz)', marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1.08, color: 'var(--w-tusz)', marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Twój projekt, strony i skuteczne pozycjonowanie - agencja marketingowa nastawiona na wyniki' : 'An SEO and marketing agency for companies that measure pipeline, not rankings'}
             </h2>
             {lang === 'en' && (
@@ -342,44 +343,43 @@ export default function WhyUs({ isMainContent = false }) {
             #whyus-carousel::-webkit-scrollbar { display: none; }
           `}</style>
           
-          {whyUsCards.map((item, idx) => (
+          {whyUsCards.map((item) => (
             <RevealItem 
               key={item.id} 
               className="whyus-card-item"
               style={{
-                flex: idx === 0 ? '0 0 min(85vw, 580px)' : '0 0 min(75vw, 420px)', // Card 1 is wider like Apple screenshot!
+                flex: '0 0 min(84vw, 400px)',
                 scrollSnapAlign: 'center',
-                background: '#FFFFFF', // Pure white card background
-                borderRadius: '28px',
-                padding: '2.5rem 2.25rem',
+                background: 'var(--w-karta)',
+                borderRadius: '24px',
+                padding: '1.75rem 1.75rem 1.65rem',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 height: 'auto',
-                minHeight: '480px',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.03)',
-                border: '1px solid rgba(0,0,0,0.05)',
+                boxShadow: 'none',
+                border: '1px solid var(--w-linia)',
                 position: 'relative',
                 overflow: 'hidden'
               }}
             >
-              {/* Top Graphic / Stat Visual Area */}
+              {/* Compact Left-Aligned Metric Box (--w-papier-2, rx 16px) */}
               <div style={{ 
                 width: '100%', 
-                height: '210px', 
                 flexShrink: 0,
-                borderRadius: '20px', 
-                background: item.bgVisual, 
+                borderRadius: '16px', 
+                background: 'var(--w-papier-2)', 
                 display: 'flex', 
                 flexDirection: 'column',
                 justifyContent: 'center', 
-                alignItems: 'center',
+                alignItems: 'flex-start',
+                gap: '6px',
                 position: 'relative',
                 overflow: 'hidden',
-                padding: '1.25rem var(--whyus-tag-pad, 1rem)',
-                border: '1px solid rgba(0,0,0,0.03)'
+                padding: '16px 20px',
+                border: '1px solid var(--w-linia)'
               }}>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem', textAlign: 'center', whiteSpace: 'normal' }}>
+                <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--w-pomarancz-tekst)', textAlign: 'left', whiteSpace: 'normal' }}>
                   {item.tag}
                 </div>
                 {/* 18.11.2026 (plynnosc): puls liczby to animacja CSS (app/plynnosc.css), nie petla
@@ -387,21 +387,21 @@ export default function WhyUs({ isMainContent = false }) {
                     poza ekranem (2000 zapisow na jedno przewiniecie strony). Wyglad i tempo bez zmian. */}
                 <div
                   className="whyus-metric-puls"
-                  style={{ fontSize: 'clamp(4rem, 6.5vw, 6rem)', fontWeight: 800, color: 'var(--w-tusz)', lineHeight: 1.1, letterSpacing: '-0.03em', whiteSpace: 'nowrap', textAlign: 'center' }}
+                  style={{ fontSize: 'clamp(2.25rem, 3.4vw, 3rem)', fontWeight: 600, color: 'var(--w-pomarancz-gleboki)', lineHeight: 1.05, letterSpacing: '-0.045em', whiteSpace: 'nowrap', textAlign: 'left', fontVariantNumeric: 'tabular-nums' }}
                 >
                   <CountUpMetric value={item.metric} />
                 </div>
               </div>
 
-              {/* Bottom Text Area matching Apple's formatting + airSlate kicker & micro-metrics bar */}
-              <div style={{ marginTop: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              {/* Bottom Text Area + airSlate kicker & micro-metrics bar */}
+              <div style={{ marginTop: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
                   <div className="whyus-kicker">
                     <span className="whyus-kicker-nr">{item.kickerNum}</span>
                     <span className="whyus-kicker-ukosnik" aria-hidden="true">/</span>
                     <span className="whyus-kicker-kat">{item.kickerKat}</span>
                   </div>
-                  <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: 'var(--w-tusz)', lineHeight: 1.35, marginBottom: '0.5rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--w-tusz)', lineHeight: 1.25, letterSpacing: '-0.025em', marginBottom: '0.5rem' }}>
                     {item.title}
                   </h3>
                   <p style={{ fontSize: '0.94rem', color: 'var(--color-text-main)', fontWeight: 400, lineHeight: 1.55, margin: 0 }}>

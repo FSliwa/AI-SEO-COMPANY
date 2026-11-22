@@ -32,9 +32,9 @@ import * as EN from '@/lib/agencySwitch.en';
 // publikacji: zdania z tymi linkami renderują się dopiero, gdy cel zwraca 200 (bez celu zdanie
 // odsyłałoby do nieistniejącej treści).
 
-const card = { background: '#FFFFFF', borderRadius: '28px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' };
-const h2 = { fontSize: 'clamp(1.5rem, 3.2vw, 2rem)', fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1rem', color: 'var(--color-text-dark)' };
-const lead = { fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)', margin: '0 0 1.5rem' };
+const card = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: 'none' };
+const h2 = { fontSize: 'clamp(1.55rem, 3.2vw, 2.1rem)', fontWeight: 500, lineHeight: 1.12, letterSpacing: '-0.035em', margin: '0 0 1rem', color: 'var(--w-tusz)' };
+const lead = { fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', margin: '0 0 1.5rem' };
 const podkreslenie = { textDecoration: 'underline' };
 
 function preselectReview() {
@@ -53,17 +53,17 @@ export default function AgencySwitchClient() {
   const hrefP6 = hrefJesliOpublikowana('/porownania/jak-wybrac-agencje-seo');
   const hrefS1 = hrefJesliOpublikowana('/narzedzia/raport-seo');
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs pl="Zmiana agencji SEO" en="Switching SEO agency" />
 
       <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px' }}>
         <div className="container" style={{ maxWidth: '860px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 2rem' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t('Poradnik i checklista', 'Guide and checklist')}
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+              <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {t('Poradnik i checklista', 'Guide and checklist')}
             </div>
-            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1rem', color: 'var(--color-text-dark)' }}>
+            <h1 style={{ fontSize: 'clamp(2.1rem, 5vw, 3.35rem)', lineHeight: 1.08, fontWeight: 500, letterSpacing: '-0.04em', margin: '0 0 1rem', color: 'var(--w-tusz)' }}>
               {t('Jak zmienić agencję SEO bez kar i bez utraty pozycji', 'How to switch SEO agencies without penalties and without losing rankings')}
             </h1>
             <p className="hero-lead" style={{ fontSize: '1.15rem', color: 'var(--color-text-muted)', lineHeight: 1.65, maxWidth: '700px', margin: '0 auto 1.5rem' }}>
@@ -130,14 +130,14 @@ export default function AgencySwitchClient() {
               <div style={{ display: 'grid', gap: '1.5rem' }}>
                 {D.CHECKLIST.map((g) => (
                   <div key={g.title}>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: 700, margin: '0 0 0.6rem', color: 'var(--color-text-dark)' }}>{g.title}</h3>
-                    <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.5rem', lineHeight: 1.55, color: 'var(--color-text-main)' }}>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: 600, letterSpacing: '-0.02em', margin: '0 0 0.6rem', color: 'var(--w-tusz)' }}>{g.title}</h3>
+                    <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.5rem', lineHeight: 1.55, color: 'var(--w-tusz-2)' }}>
                       {g.items.map((i) => <li key={i}>{i}</li>)}
                     </ul>
                   </div>
                 ))}
               </div>
-              <div style={{ borderTop: '1px solid rgba(15,23,42,0.08)', marginTop: '2rem', paddingTop: '1.5rem' }}>
+              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', paddingTop: '1.5rem' }}>
                 <ChecklistForm />
               </div>
             </div>

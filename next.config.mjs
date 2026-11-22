@@ -19,7 +19,7 @@ const CSP_REPORT_ONLY = [
   // wg przewodnika Google dla tagu (developers.google.com/tag-platform/security/guides/csp).
   // www.google.<TLD>: Google wybiera domene kraju (u nas zmierzone .pl); gosc z innego kraju
   // moze dac pojedyncze naruszenie dla jego TLD.
-  "img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://ad.doubleclick.net https://pagead2.googlesyndication.com https://www.googleadservices.com https://www.google.com https://www.google.pl https://*.analytics.google.com https://google.com",
+  "img-src 'self' data: blob: https://panel.ai-seo-company.pl https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://ad.doubleclick.net https://pagead2.googlesyndication.com https://www.googleadservices.com https://www.google.com https://www.google.pl https://*.analytics.google.com https://google.com",
   "font-src 'self'",
   // panel.ai-seo-company.pl: formularze (checklista, szablony, narzedzia, monitoring audytu).
   // Reszta: wysylka zdarzen GA4 (region1.google-analytics.com, region1.analytics.google.com),
@@ -137,6 +137,17 @@ const nextConfig = {
       // osobna sekcje /szablony - jej adresy prowadza do huba i jego podstron.
       { source: '/szablony', destination: '/narzedzia#szablony', permanent: true },
       { source: '/szablony/:slug', destination: '/narzedzia/:slug', permanent: true },
+      // 22.11.2026: intuicyjne aliasy slugow narzedzi i szablonow (1 skok bezposrednio do celu, takze z /pl/).
+      { source: '/narzedzia/sprawdz-autorytet-domeny', destination: '/narzedzia/autorytet-domeny', permanent: true },
+      { source: '/pl/narzedzia/sprawdz-autorytet-domeny', destination: '/narzedzia/autorytet-domeny', permanent: true },
+      { source: '/en/tools/website-authority-checker', destination: '/en/tools/domain-authority-checker', permanent: true },
+      { source: '/en/tools/content-plan-generator', destination: '/en/tools/content-calendar-template', permanent: true },
+      { source: '/narzedzia/checklista-eeat', destination: '/narzedzia/checklista-e-e-a-t', permanent: true },
+      { source: '/pl/narzedzia/checklista-eeat', destination: '/narzedzia/checklista-e-e-a-t', permanent: true },
+      { source: '/narzedzia/szablon-badania-slow-kluczowych', destination: '/narzedzia/dobor-slow-kluczowych', permanent: true },
+      { source: '/pl/narzedzia/szablon-badania-slow-kluczowych', destination: '/narzedzia/dobor-slow-kluczowych', permanent: true },
+      { source: '/narzedzia/przyklady-schema-markup', destination: '/narzedzia/dane-strukturalne-json-ld', permanent: true },
+      { source: '/pl/narzedzia/przyklady-schema-markup', destination: '/narzedzia/dane-strukturalne-json-ld', permanent: true },
       // 5.11.2026 (PLAN-v2 rozdz. 7, VAPP; TS-08 po weryfikacji, zamiast lataki T7 z noindex):
       // alias produkcyjny ai-seo-company.vercel.app odpowiadal 200 kopia calego serwisu
       // (canonical na www, bez noindex). noindex + canonical do innego adresu to sprzeczne

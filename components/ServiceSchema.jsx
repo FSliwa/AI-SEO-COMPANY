@@ -51,7 +51,7 @@ const USLUGI = {
     oferty: [
       { pl: 'SEO Standard', en: 'SEO Standard', cena: 1900, cenaEn: 450, miesiecznie: true },
       { pl: 'SEO Premium', en: 'SEO Premium', cena: 2500, cenaEn: 590, miesiecznie: true },
-      { pl: 'Booster Pack', en: 'Booster Pack', cena: 2500, cenaEn: 590, miesiecznie: true },
+      { pl: 'Booster Pack', en: 'Booster Pack', cena: 2500, cenaEn: 590, miesiecznie: true, umowaMin3: true },
     ],
   },
   'seo-lokalne': {
@@ -73,7 +73,7 @@ const USLUGI = {
     // (wczesniej deklarowalismy 1 900 zl, czyli cene pozycjonowania - MSA-06, OP-17).
     oferty: [
       { pl: 'Strona internetowa', en: 'Company website', cena: 5900, cenaEn: 1400, miesiecznie: false, od: true },
-      { pl: 'Booster Pack', en: 'Booster Pack', cena: 2500, cenaEn: 590, miesiecznie: true },
+      { pl: 'Booster Pack', en: 'Booster Pack', cena: 2500, cenaEn: 590, miesiecznie: true, umowaMin3: true },
     ],
   },
   // 4.11.2026: strona GEO pokazuje dwie ceny (audyt jednorazowy i doplata
@@ -173,7 +173,7 @@ export default function ServiceSchema({ variant }) {
   }
 
   if (u.oferty) {
-    jsonLd.offers = u.oferty.map((o, i) => {
+    const listaOfert = u.oferty.map((o, i) => {
       const cena = eur ? o.cenaEn : o.cena;
       const offer = {
         '@type': 'Offer',
@@ -200,8 +200,21 @@ export default function ServiceSchema({ variant }) {
           valueAddedTaxIncluded: false,
         };
       }
+      if (o.umowaMin3) {
+        offer.eligibleDuration = {
+          '@type': 'QuantitativeValue',
+          minValue: 3,
+          unitCode: 'MON',
+        };
+      }
       return offer;
     });
+    jsonLd.offers = listaOfert;
+    jsonLd.hasOfferCatalog = {
+      '@type': 'OfferCatalog',
+      name: t.name,
+      itemListElement: listaOfert,
+    };
   }
 
   return (

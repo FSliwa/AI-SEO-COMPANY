@@ -44,8 +44,8 @@ const ID_FAQ_EN = 'faq';
 const ID_ZRODEL_EN = 'sources-list';
 
 const kontener = { maxWidth: '860px', margin: '0 auto' };
-const leadStyl = { fontSize: '1.12rem', lineHeight: 1.7, color: 'var(--color-text-main)', margin: '0 0 1.5rem' };
-const kartaCta = { background: '#FFFFFF', borderRadius: '28px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', display: 'grid', gap: '1rem' };
+const leadStyl = { fontSize: '1.12rem', lineHeight: 1.7, color: 'var(--w-tusz-2)', margin: '0 0 1.5rem' };
+const kartaCta = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: 'none', display: 'grid', gap: '1rem' };
 
 // Service JSON-LD wersji EN (kwoty w PLN, jak widoczne na stronie).
 function ServiceEn({ u }) {
@@ -89,7 +89,7 @@ export default function SpokeAiLayout({ wpis, locale = 'pl' }) {
   const Tresc = artykul ? 'article' : 'div';
 
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs pl={wpis.okruszek} en={wpis.okruszek} parent={RODZIC} />
       {artykul ? (
@@ -113,10 +113,10 @@ export default function SpokeAiLayout({ wpis, locale = 'pl' }) {
         <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '8px' }}>
           <div className="container" style={kontener}>
             <Reveal>
-              <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {wpis.tag}
+              <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+                <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {wpis.tag}
               </div>
-              <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1.5rem', color: 'var(--color-text-dark)' }}>
+              <h1 style={{ fontSize: 'clamp(2.1rem, 5vw, 3.25rem)', lineHeight: 1.08, fontWeight: 500, letterSpacing: '-0.04em', margin: '0 0 1.5rem', color: 'var(--w-tusz)' }}>
                 {wpis.h1}
               </h1>
               <AnswerBox etykieta={en ? 'Short answer' : undefined}>{wpis.answer}</AnswerBox>
@@ -143,7 +143,7 @@ export default function SpokeAiLayout({ wpis, locale = 'pl' }) {
             <Reveal>
               {/* Tytuł CTA to <p>, nie nagłówek: H1/H2 „Audyt widoczności w AI” ma tylko A5 (CS-07). */}
               <div style={kartaCta}>
-                <p style={{ margin: 0, fontSize: 'clamp(1.25rem, 2.6vw, 1.55rem)', fontWeight: 800, letterSpacing: '-0.01em', color: 'var(--color-text-dark)' }}>{wpis.cta.tytul}</p>
+                <p style={{ margin: 0, fontSize: 'clamp(1.25rem, 2.6vw, 1.55rem)', fontWeight: 600, letterSpacing: '-0.025em', color: 'var(--w-tusz)' }}>{wpis.cta.tytul}</p>
                 <p style={{ ...leadStyl, margin: 0 }}>{wpis.cta.tekst}</p>
                 <Przyciski przyciski={wpis.cta.przyciski} locale={locale} />
               </div>

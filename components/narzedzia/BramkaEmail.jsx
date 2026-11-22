@@ -24,7 +24,7 @@ import { ODBIORCY, ODBIORCY_EN, ZGODA_NEWSLETTER, ZGODA_NEWSLETTER_EN } from '@/
 import Zwin from './Zwin';
 import { SIEDZIBA } from '@/lib/firma';
 
-export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [], przycisk, dane, konkurenci, dodatkowePola = null, onOdblokowano, tylkoRaport = false }) {
+export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [], przycisk, dane, parametry = null, konkurenci, dodatkowePola = null, onOdblokowano, tylkoRaport = false }) {
   const lang = useLocale();
   const en = lang === 'en';
   przycisk = przycisk ?? (tylkoRaport ? (en ? 'Send the report' : 'Wyślij raport') : (en ? 'Send and show the full result' : 'Wyślij i pokaż pełny wynik'));
@@ -59,6 +59,7 @@ export default function BramkaEmail({ narzedzie, id = null, naglowek, opis, korz
       nick: String(fd.get('nick') || ''),
       lang: en ? 'en' : 'pl',
       ...(dane ? { dane } : {}),
+      ...(parametry ? { parametry } : {}),
       ...(konkurenci ? { konkurenci: konkurenci(fd) } : {}),
     };
     setStan((x) => ({ status: 'loading', blad: x.blad })); // tekst poprzedniego błędu zostaje na czas zwijania

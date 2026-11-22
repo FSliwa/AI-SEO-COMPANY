@@ -115,6 +115,7 @@ export default function Blog() {
                 ) : null}
                 <span className="blog-index-date">{post.date}</span>
               </span>
+              <span className="blog-index-strzalka" aria-hidden="true">→</span>
             </Link>
           ))}
         </Reveal>

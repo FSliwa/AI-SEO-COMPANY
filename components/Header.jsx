@@ -128,6 +128,7 @@ export default function Header() {
   const hrefCopywritingu = hrefMenu('/copywriting-seo');
   const hrefLinkBuildingu = hrefMenu('/link-building');
   const hrefNarzedzi = hrefMenu('/narzedzia');
+  const hrefDarmowegoAudytu = hrefMenu('/narzedzia/audyt-seo');
   // Porownania i zmiana agencji (strony z 6-18.11.2026) byly tylko w stopce.
   const hrefPorownan = hrefMenu('/porownania');
   const hrefZmianyAgencji = hrefMenu('/zmiana-agencji-seo');
@@ -182,6 +183,7 @@ export default function Header() {
     ].filter((l) => l.adres) : [
       // Narzędzia (PLAN-v2 6.9): tylko PL i dopiero po publikacji partii 3.
       { id: 'narzedzia', href: hrefNarzedzi, tekst: pl ? 'Narzędzia' : 'Free Tools' },
+      { id: 'darmowy-audyt', href: hrefDarmowegoAudytu, tekst: pl ? 'Darmowy audyt SEO online' : 'Free SEO audit tool' },
       { id: 'szablony', href: hrefNarzedzi, hash: 'szablony', tekst: pl ? 'Szablony' : 'Templates' },
     ] },
     { id: 'wiedza', etykieta: x('Wiedza', 'Knowledge', 'Wissen'), linki: [
@@ -373,6 +375,7 @@ export default function Header() {
     // rozwijajacym sie kolem przeskakuje o jego szerokosc (Windows).
     if (window.innerWidth > root.clientWidth) root.style.scrollbarGutter = 'stable';
     root.style.overflow = 'hidden';
+    const wyzwalacz = triggerRef.current;
 
     let proby = 0;
     let ramka = 0;
@@ -416,11 +419,9 @@ export default function Header() {
       root.style.scrollbarGutter = poprzedniGutter;
       if (przywrocFokusRef.current) {
         przywrocFokusRef.current = false;
-        triggerRef.current?.focus();
+        wyzwalacz?.focus();
       }
     };
-    // closeMenu korzysta tylko z setterow i refow - nie musi byc zaleznoscia.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuOpen]);
 
   return (

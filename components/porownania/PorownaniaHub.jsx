@@ -62,7 +62,7 @@ function SchemaHuba({ lista, HUB, locale }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />;
 }
 
-const h2Styl = { fontSize: 'clamp(1.45rem, 3.2vw, 1.9rem)', lineHeight: 1.25, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1rem', color: 'var(--color-text-dark)' };
+const h2Styl = { fontSize: 'clamp(1.5rem, 3.2vw, 2.05rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.035em', margin: '0 0 1rem', color: 'var(--w-tusz)' };
 
 const T = {
   pl: {
@@ -95,20 +95,20 @@ export default function PorownaniaHub({ locale = 'pl' }) {
   const HUB = hubDla(locale);
   const lista = opublikowanePorownania(locale);
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs pl="Porównania" en="Comparisons" />
       <SchemaHuba lista={lista} HUB={HUB} locale={locale} />
 
       <div className="container" style={{ maxWidth: '960px', margin: '0 auto', paddingTop: 'clamp(1.5rem, 4vw, 2.5rem)', paddingBottom: '2rem' }}>
-        <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-          <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+        <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+          <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {t.tag}
         </div>
-        <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.12, fontWeight: 800, letterSpacing: '-0.02em', margin: '0.5rem 0 1rem', color: 'var(--color-text-dark)' }}>
+        <h1 style={{ fontSize: 'clamp(2.15rem, 5vw, 3.35rem)', lineHeight: 1.08, fontWeight: 500, letterSpacing: '-0.04em', margin: '0.5rem 0 1rem', color: 'var(--w-tusz)' }}>
           {HUB.h1}
         </h1>
         <Byline sciezka={HUB.sciezka} data={HUB.updated} takzeEn style={{ margin: '0 0 1rem' }} />
-        <p style={{ margin: 0, fontSize: '1.15rem', lineHeight: 1.65, color: 'var(--color-text-muted)', maxWidth: '760px' }}>{HUB.lead}</p>
+        <p style={{ margin: 0, fontSize: '1.15rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', maxWidth: '760px' }}>{HUB.lead}</p>
       </div>
 
       <div className="container" style={{ maxWidth: '960px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1.5rem', paddingBottom: '3rem' }}>

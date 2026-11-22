@@ -27,13 +27,12 @@ export default function SzablonFormularzDe({ endpoint, plik, plikPdfDe, plan, id
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) {
-        if (plikPdfDe) {
-          track('generate_lead', { lead_source: 'template', event_category: kategoria, plan, currency: 'PLN', value: 100 });
+        if (plikPdfDe && res.status >= 500) {
           return setState({ status: 'direct', error: null });
         }
         return setState({ status: 'error', error: data.error || 'Das Senden hat nicht geklappt. Bitte versuchen Sie es gleich noch einmal.' });
       }
-      track('generate_lead', { lead_source: 'template', event_category: kategoria, plan, currency: 'PLN', value: 100 });
+      track('generate_lead', { lead_source: 'template', event_category: kategoria, plan, currency: 'EUR', value: 25 });
       setState({ status: 'done', error: null });
     } catch {
       if (plikPdfDe) return setState({ status: 'direct', error: null });

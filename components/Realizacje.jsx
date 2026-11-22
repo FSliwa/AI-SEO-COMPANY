@@ -402,7 +402,7 @@ export default function Realizacje({ pozycje, daneGsc: daneZewn, lang, etykieta 
             id={`${baza}-panel-${p.id}`}
             aria-labelledby={`${baza}-zakladka-${p.id}`}
             hidden={aktywna !== i}
-            className="realizacje-karta"
+            className="realizacje-karta w-karta"
           >
             <div className="realizacje-marka">{p.logo}</div>
             {/* Nazwa klienta tylko dla czytników i wyszukiwarek: cztery karty

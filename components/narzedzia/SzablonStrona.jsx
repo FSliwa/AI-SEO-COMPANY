@@ -28,6 +28,7 @@ import Zrodla from '@/components/Zrodla';
 import AppleFaq from '@/components/service/AppleFaq';
 import SzHero from './SzHero';
 import SzNawigacja from './SzNawigacja';
+import SzablonInterakcje from './SzablonInterakcje';
 import './szablony.css';
 import { Link } from '@/i18n/routing';
 import { LASTMOD, pierwszaPublikacja } from '@/lib/lastmod';
@@ -105,6 +106,7 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
       <div className="sz-uklad">
         <SzNawigacja items={spis} etykieta={en ? 'On this page' : 'Spis treści strony'} />
         <div className="sz-tresc" data-sz-tresc>
+          <SzablonInterakcje slug={dane.slug} locale={locale} />
           {d.sekcje.map((sek) => (
             <div key={sek.id} id={sek.id} role="region" aria-labelledby={`${sek.id}-h`} className="sz-sekcja">
               <h2 id={`${sek.id}-h`} className="sz-h2">{sek.h2}</h2>

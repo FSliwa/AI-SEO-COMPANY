@@ -74,7 +74,7 @@ export default function VergleichDe({ porownanie: p }) {
           <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
             <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {p.tag}
           </div>
-          <h1 lang="de" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.12, fontWeight: 800, letterSpacing: '-0.02em', margin: '0.5rem 0 1rem', color: 'var(--color-text-dark)', overflowWrap: 'break-word' }}>
+          <h1 lang="de" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0.5rem 0 1rem', color: 'var(--color-text-dark)', overflowWrap: 'break-word' }}>
             {p.h1}
           </h1>
           <BylineDe stand={p.updated} style={{ margin: '0 0 0.25rem' }} />

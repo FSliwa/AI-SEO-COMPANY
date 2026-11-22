@@ -42,10 +42,78 @@ const KROKI = ['Wysyłamy 3 pytania klientów do silników AI', `Pytamy ${PYTAMY
 // Pytania klienta: te same granice co panel (PYTANIE_DLUGOSC, wzorzec adresu i ogólne człony marek
 // z lib/narzedzia/widocznosc.ts i lib/dataforseo.ts). Panel sprawdza je jeszcze raz i ma ostatnie słowo.
 const PYTANIE = { min: 10, max: 200 };
-const ADRES = /https?:\/\/|(^|[^\p{L}\p{N}-])www\.|[\p{L}\p{N}._%+-]+@[\p{L}\p{N}-]+\.\p{L}{2,}|(^|[^\p{L}\p{N}-])[\p{L}\p{N}][\p{L}\p{N}-]*\.(pl|com|eu|net|org|io|ai|info|biz|co|uk|de|app|dev|shop|online|store|xyz|me|tv|edu|gov|cz|sk|ua)(?![\p{L}\p{N}])/iu;
+const ADRES = /https?:\/\/|(^|[^\p{L}\p{N}-])www\.|[\p{L}\p{N}._%+-]+@[\p{L}\p{N}-]+\.\p{L}{2,}|(^|[^\p{L}\p{N}-])[\p{L}\p{N}][\p{L}\p{N}-]*\.(pl|com|eu|net|org|io|ai|info|biz|co|uk|de|at|ch|app|dev|shop|online|store|xyz|me|tv|edu|gov|cz|sk|ua)(?![\p{L}\p{N}])/iu;
 const OGOLNE = new Set(['seo', 'web', 'art', 'pro', 'net', 'com', 'app', 'www', 'firma', 'sklep', 'studio', 'agencja', 'group', 'grupa', 'polska']);
 const proste = (t) => ` ${String(t || '').normalize('NFKD').replace(/\p{M}/gu, '').replace(/ł/gi, 'l').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()} `;
 const zwin = (t) => String(t || '').replace(/\s+/g, ' ').trim();
+
+const KRAJE_EN = [
+  ['US', 'US - United States'],
+  ['GB', 'GB - United Kingdom'],
+  ['PL', 'PL - Poland'],
+  ['DE', 'DE - Germany'],
+];
+const NAZWY_KRAJOW_EN = { US: 'the United States', GB: 'the United Kingdom', PL: 'Poland', DE: 'Germany' };
+const KROTKA_NAZWA_KRAJU_EN = { US: 'United States', GB: 'United Kingdom', PL: 'Poland', DE: 'Germany' };
+
+function krajZDomeny(wartosc, dozwolone) {
+  const h = String(wartosc || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
+  if (!h || !h.includes('.')) return null;
+  if ((h.endsWith('.co.uk') || h.endsWith('.org.uk') || h.endsWith('.uk')) && dozwolone.includes('GB')) return 'GB';
+  if (h.endsWith('.pl') && dozwolone.includes('PL')) return 'PL';
+  if (h.endsWith('.de') && dozwolone.includes('DE')) return 'DE';
+  if ((h.endsWith('.co.at') || h.endsWith('.or.at') || h.endsWith('.at')) && dozwolone.includes('AT')) return 'AT';
+  if (h.endsWith('.ch') && dozwolone.includes('CH')) return 'CH';
+  if (h.endsWith('.us') && dozwolone.includes('US')) return 'US';
+  return null;
+}
+
+function odczytajOdblokowane(id) {
+  if (!id || typeof window === 'undefined') return null;
+  try {
+    const s = window.sessionStorage.getItem(`aisc_odblok_${id}`);
+    if (!s) return null;
+    const p = JSON.parse(s);
+    return p && typeof p === 'object' ? (p.pelny ?? p) : null;
+  } catch {
+    return null;
+  }
+}
+
+function zapiszOdblokowane(id, pelny) {
+  if (!id || !pelny || typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.setItem(`aisc_odblok_${id}`, JSON.stringify(pelny));
+  } catch {
+    // brak dostepu do sessionStorage
+  }
+}
+
+function wzorceMarki(firma, www) {
+  const zbior = new Set();
+  const czystaFirma = zwin(firma);
+  if (czystaFirma.length >= 2) {
+    zbior.add(czystaFirma);
+    const bezFormy = zwin(czystaFirma.replace(/\b(sp\.\s*z\s*o\.\s*o\.|spolka\s+z\s+o\.o\.|spółka\s+z\s+o\.o\.|s\.a\.|p\.s\.a\.|ltd\.?|llc|inc\.?|gmbh|ug)\b/gi, ''));
+    if (bezFormy.length >= 3 && !OGOLNE.has(bezFormy.toLowerCase())) zbior.add(bezFormy);
+  }
+  const host = String(www || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
+  if (host.length >= 4 && host.includes('.')) zbior.add(host);
+  return [...zbior].sort((a, b) => b.length - a.length);
+}
+
+function podswietlMarke(tekst, wzorce) {
+  const s = String(tekst || '');
+  if (!s || !wzorce?.length) return s;
+  const esc = wzorce.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  if (!esc) return s;
+  const re = new RegExp(`(${esc})`, 'gi');
+  const czesci = s.split(re);
+  if (czesci.length <= 1) return s;
+  return czesci.map((czesc, idx) => (idx % 2 === 1
+    ? <mark key={idx} style={{ background: 'rgba(216, 90, 48, 0.18)', color: 'inherit', padding: '0.05em 0.2em', borderRadius: '4px' }}>{czesc}</mark>
+    : czesc));
+}
 
 function bladPytania(lista, i, dane, en) {
   const t = zwin(lista[i]);
@@ -60,10 +128,12 @@ function bladPytania(lista, i, dane, en) {
 }
 
 // Tryb demo (bez panelu): te same szablony co panel (lib/narzedzia/widocznosc.ts: pytania()), bez pytania ze strony.
-function pytaniaDemo(branza, miasto, en) {
+function pytaniaDemo(branza, miasto, en, kraj = 'PL') {
   if (en) {
-    const where = miasto ? `in ${miasto}` : 'in Poland';
-    return [`Which company in the “${branza}” industry do you recommend ${where}? Name a few.`, `Who is the best in the “${branza}” industry ${where}?`, `I'm looking for: ${branza}${miasto ? `, ${miasto}` : ', Poland'}. Which company should I choose and why?`];
+    const krajNazwa = NAZWY_KRAJOW_EN[kraj] || 'the United States';
+    const krajKrotko = KROTKA_NAZWA_KRAJU_EN[kraj] || 'United States';
+    const where = miasto ? `in ${miasto}` : `in ${krajNazwa}`;
+    return [`Which company in the “${branza}” industry do you recommend ${where}? Name a few.`, `Who is the best in the “${branza}” industry ${where}?`, `I'm looking for: ${branza}${miasto ? `, ${miasto}` : `, ${krajKrotko}`}. Which company should I choose and why?`];
   }
   const gdzie = miasto ? `w mieście ${miasto}` : 'w Polsce';
   return [`Jaką firmę z branży „${branza}” polecasz ${gdzie}? Podaj kilka nazw.`, `Kto jest najlepszy w branży „${branza}” ${gdzie}?`, `Szukam: ${branza}${miasto ? `, ${miasto}` : ', Polska'}. Którą firmę wybrać i dlaczego?`];
@@ -80,7 +150,7 @@ function demoZPytaniami(obiekt, mapa) {
 async function pobierzPytania(body) {
   if (DEMO) {
     await new Promise((r) => setTimeout(r, 500));
-    return { ok: true, pytania: pytaniaDemo(body.branza.trim(), body.miasto.trim() || null, body.lang === 'en'), zrodloPytan: ['szablon', 'szablon', 'szablon'] };
+    return { ok: true, pytania: pytaniaDemo(body.branza.trim(), body.miasto.trim() || null, body.lang === 'en', body.kraj), zrodloPytan: ['szablon', 'szablon', 'szablon'] };
   }
   const ctrl = new AbortController();
   const zegar = setTimeout(() => ctrl.abort(), 20_000);
@@ -102,13 +172,13 @@ const ETYKIETA_ZRODLA = {
   uzytkownik: ['zmienione przez Ciebie', 'edited by you'],
 };
 
-// Z-W3 (jawność silników). Zgodne z panelem: ChatGPT web_search PL (+ miasto), Gemini web_search
-// (wyłącznik NARZEDZIA_GEMINI_WEB_SEARCH=0), Claude web_search PL, Perplexity sonar, przegląd AI z Google „Poland”.
-function liniaNaZywo(en) {
+// Z-W3 (jawność silników). Zgodne z panelem: ChatGPT web_search, Gemini web_search, Claude web_search, Perplexity sonar, Google AI Overviews.
+function liniaNaZywo(en, kraj = 'PL') {
   const n = WIDOCZNOSC.limitIp;
   if (en) {
+    const krajNazwa = NAZWY_KRAJOW_EN[kraj] || 'the United States';
     const szukaja = WIDOCZNOSC.geminiZWyszukiwaniem ? 'ChatGPT, Gemini, Perplexity and Claude search the web' : 'ChatGPT, Perplexity and Claude search the web, Gemini answers from model knowledge';
-    return `No sign-up. Up to ${n} businesses per day from one IP address. We ask live through the APIs: ${szukaja}, and we check AI Overviews in Google results for Poland.${WIDOCZNOSC.grok ? ' Grok answers from model knowledge, without web search.' : ''} ChatGPT here means an OpenAI model with web search through the API; answers in the ChatGPT app may differ.`;
+    return `No sign-up. Up to ${n} businesses per day from one IP address. We ask live through the APIs: ${szukaja}, and we check AI Overviews in Google results for ${krajNazwa}.${WIDOCZNOSC.grok ? ' Grok answers from model knowledge, without web search.' : ''} ChatGPT here means an OpenAI model with web search through the API; answers in the ChatGPT app may differ.`;
   }
   const szukaja = WIDOCZNOSC.geminiZWyszukiwaniem ? 'ChatGPT, Gemini, Perplexity i Claude szukają w sieci' : 'ChatGPT, Perplexity i Claude szukają w sieci, Gemini odpowiada z wiedzy modelu';
   return `Bez rejestracji. Do ${n} firm dziennie z jednego adresu IP. Pytamy na żywo przez API: ${szukaja}, a przegląd AI sprawdzamy w wynikach Google dla Polski.${WIDOCZNOSC.grok ? ' Grok odpowiada z wiedzy modelu, bez wyszukiwania.' : ''} ChatGPT to tu model OpenAI z wyszukiwaniem przez API; odpowiedzi aplikacji ChatGPT mogą się różnić.`;
@@ -154,9 +224,12 @@ function Znak({ stan, en, i = 0 }) {
 
 export default function WidocznoscAiClient() {
   const en = useLocale() === 'en';
+  const dozwoloneKraje = en ? KRAJE_EN.map(([k]) => k) : ['PL'];
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, dane: null });
   // Formularz jest niekontrolowany; wartości z adresu i po „Sprawdź inną firmę” wracają przez defaultValue.
   const [wstepne, setWstepne] = useState({});
+  const [kraj, setKraj] = useState(en ? 'US' : 'PL');
+  const [krajReczny, setKrajReczny] = useState(false);
   // Krok pytań: { body, pytania, zrodloPytan } z panelu i bieżące teksty w edytorze.
   const [propozycje, setPropozycje] = useState(null);
   const [edycje, setEdycje] = useState(['', '', '']);
@@ -166,24 +239,77 @@ export default function WidocznoscAiClient() {
   const pelnyRef = useRef(null);
   const pytaniaRef = useRef(null);
 
-  // Z-06: ?firma= (albo ?marka=), ?branza=, ?miasto=, ?url= (strona www) tylko wypełniają pola.
-  useParametrUrl(['firma', 'marka', 'branza', 'miasto', 'url'], (w) => {
+  // Z-06: ?firma= (albo ?marka=), ?branza=, ?miasto=, ?url= (strona www), ?kraj= tylko wypełniają pola.
+  useParametrUrl(['firma', 'marka', 'branza', 'miasto', 'url', 'kraj'], (w) => {
     const pola = { firma: w.firma ?? w.marka, branza: w.branza, miasto: w.miasto, www: w.url };
     const f = formRef.current;
     for (const [k, v] of Object.entries(pola)) if (v && f?.elements[k]) f.elements[k].value = v.slice(0, Number(f.elements[k].maxLength) > 0 ? Number(f.elements[k].maxLength) : 200);
+    if (en) {
+      const kParam = String(w.kraj || '').toUpperCase();
+      if (dozwoloneKraje.includes(kParam)) {
+        setKraj(kParam);
+        setKrajReczny(true);
+      } else if (w.url) {
+        const auto = krajZDomeny(w.url, dozwoloneKraje);
+        if (auto) setKraj(auto);
+      }
+    }
   });
+
+  useEffect(() => {
+    if (DEMO || typeof window === 'undefined') return undefined;
+    const wynikId = new URLSearchParams(window.location.search).get('wynik')?.trim();
+    if (!wynikId || !/^[a-zA-Z0-9_-]{6,120}$/.test(wynikId)) return undefined;
+    const ctrl = new AbortController();
+    (async () => {
+      try {
+        const res = await fetch(`${PANEL_API}/wynik/${encodeURIComponent(wynikId)}`, { signal: ctrl.signal });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok || !data.podglad) return;
+        if (data.tool && data.tool !== 'widocznosc_ai') return;
+        const id = data.id || wynikId;
+        const pelny = odczytajOdblokowane(id);
+        const pUrl = new URLSearchParams(window.location.search);
+        const dane = {
+          firma: data.podglad.firma || pUrl.get('firma') || null,
+          branza: data.podglad.branza || pUrl.get('branza') || null,
+          miasto: data.podglad.miasto || pUrl.get('miasto') || null,
+          url: pUrl.get('url') || null,
+          ...(en && (data.podglad.kraj || pUrl.get('kraj')) ? { kraj: String(data.podglad.kraj || pUrl.get('kraj')).toUpperCase() } : {}),
+        };
+        setStan((s) => (s.status === 'idle' ? {
+          status: 'done',
+          blad: null,
+          id,
+          podglad: data.podglad,
+          pelny,
+          dane,
+        } : s));
+      } catch {
+        // nieudane pobranie wyniku z linku: formularz zostaje gotowy do uruchomienia
+      }
+    })();
+    return () => ctrl.abort();
+  }, [en]);
 
   // Po odblokowaniu przewijamy do początku pełnych odpowiedzi (smooth tylko bez reduce).
   useEffect(() => {
     if (stan.pelny) pelnyRef.current?.scrollIntoView({ block: 'start', behavior: zachowaniePrzewijania() });
   }, [stan.pelny]);
 
+  function onWwwZmiana(e) {
+    if (!en || krajReczny) return;
+    const auto = krajZDomeny(e.target.value, dozwoloneKraje);
+    if (auto) setKraj(auto);
+  }
+
   // Krok 1: dane firmy -> 3 proponowane pytania (bez kosztów). Gdy panel nie ma trasy /pytania albo
   // nie odpowiada, sprawdzamy od razu z pytaniami zaproponowanymi przez panel (zachowanie sprzed 12.11).
   async function start(e) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const body = { firma: String(fd.get('firma') || ''), branza: String(fd.get('branza') || ''), miasto: String(fd.get('miasto') || ''), www: String(fd.get('www') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' };
+    const wybranyKraj = en ? String(fd.get('kraj') || kraj || 'US').toUpperCase() : 'PL';
+    const body = { firma: String(fd.get('firma') || ''), branza: String(fd.get('branza') || ''), miasto: String(fd.get('miasto') || ''), www: String(fd.get('www') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl', kraj: wybranyKraj };
     setWstepne({ firma: body.firma, branza: body.branza, miasto: body.miasto, www: body.www });
     setStan({ status: 'pytania', blad: null, id: null, podglad: null, pelny: null, dane: null });
     const r = await pobierzPytania(body);
@@ -192,7 +318,7 @@ export default function WidocznoscAiClient() {
       setEdycje([...r.pytania]);
       setBledyPytan([null, null, null]);
       setStan((s) => ({ ...s, status: 'idle' }));
-      track('ai_check_questions', { city: body.miasto });
+      track('ai_check_questions', { city: body.miasto, country: wybranyKraj });
       return;
     }
     if (r.blad && [400, 429, 503].includes(r.status)) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
@@ -201,13 +327,14 @@ export default function WidocznoscAiClient() {
 
   // Krok 2: sprawdzenie. pytania[i] = tekst zmienionego pytania albo null (pytanie zaproponowane).
   async function uruchom(body, wlasne) {
-    const dane = { firma: body.firma.trim(), branza: body.branza.trim(), miasto: body.miasto.trim() || null, url: body.www.trim() || null };
-    zapiszParametry(dane);
+    const dane = { firma: body.firma.trim(), branza: body.branza.trim(), miasto: body.miasto.trim() || null, url: body.www.trim() || null, ...(en ? { kraj: body.kraj } : {}) };
+    zapiszParametry({ ...dane, wynik: null });
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null, dane });
     const ileZmienionych = wlasne ? wlasne.filter(Boolean).length : 0;
-    track('ai_check_start', { city: body.miasto, edited_questions: ileZmienionych });
+    track('ai_check_start', { city: body.miasto, country: body.kraj, edited_questions: ileZmienionych });
     let r = await wywolajNarzedzie('widocznosc_ai', ileZmienionych ? { ...body, pytania: wlasne } : body, 295_000);
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
+    if (r.id && !DEMO) zapiszParametry({ ...dane, wynik: r.id });
     if (DEMO && propozycje) {
       const pokazane = edycje.map(zwin);
       const mapa = new Map(r.podglad.pytania.map((q, i) => [q, pokazane[i]]));
@@ -215,7 +342,7 @@ export default function WidocznoscAiClient() {
       r = { ...r, podglad: { ...demoZPytaniami(r.podglad, mapa), zrodloPytan: pokazane.map((_, i) => (wlasne?.[i] ? 'uzytkownik' : 'szablon')), uwagiPytan: [] } };
     }
     track('narzedzie_wynik', { narzedzie: 'widocznosc_ai', wynik: r.podglad.wynik });
-    setStan((s) => ({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null, dane: s.dane }));
+    setStan((s) => ({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: odczytajOdblokowane(r.id), dane: s.dane }));
   }
 
   function zadajPytania(e) {
@@ -234,12 +361,14 @@ export default function WidocznoscAiClient() {
   }
 
   const resetuj = () => {
+    zapiszParametry({ wynik: null });
     setPropozycje(null);
     setMapaDemo(null);
     setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, dane: null });
   };
 
   const p = stan.podglad;
+  const wzorce = wzorceMarki(stan.pelny?.firma || p?.firma || stan.dane?.firma || wstepne.firma, stan.dane?.url || wstepne.www);
   const etykieta = (id) => p?.silniki.find((s) => s.id === id)?.etykieta ?? id;
   const top = (p?.konkurenciTop ?? []).slice(0, WIDOCZNOSC.przedBramka.firm);
   const topZr = (p?.zrodlaTop ?? []).slice(0, WIDOCZNOSC.przedBramka.domen);
@@ -263,20 +392,36 @@ export default function WidocznoscAiClient() {
           </div>
           <div>
             <label htmlFor="ai-miasto" className="narz-etykieta">{en ? 'City' : 'Miasto'} <span style={OPCJONALNIE}>{en ? '(optional)' : '(opcjonalnie)'}</span></label>
-            <input id="ai-miasto" name="miasto" maxLength={60} defaultValue={wstepne.miasto} placeholder={en ? 'e.g. Warsaw' : 'np. Warszawa'} className="narz-pole" aria-describedby="ai-miasto-opis" />
+            <input id="ai-miasto" name="miasto" maxLength={60} defaultValue={wstepne.miasto} placeholder={en ? (kraj === 'US' ? 'e.g. Chicago' : kraj === 'GB' ? 'e.g. London' : kraj === 'DE' ? 'e.g. Berlin' : 'e.g. Warsaw') : 'np. Warszawa'} className="narz-pole" aria-describedby="ai-miasto-opis" />
           </div>
           <div>
             <label htmlFor="ai-www" className="narz-etykieta">{en ? 'Website' : 'Strona'} <span style={OPCJONALNIE}>{en ? '(optional)' : '(opcjonalnie)'}</span></label>
-            <input id="ai-www" name="www" maxLength={200} defaultValue={wstepne.www} placeholder={en ? 'e.g. company.com' : 'np. firma.pl'} className="narz-pole" inputMode="url" aria-describedby="ai-www-opis" />
+            <input id="ai-www" name="www" maxLength={200} defaultValue={wstepne.www} onChange={onWwwZmiana} placeholder={en ? 'e.g. company.com' : 'np. firma.pl'} className="narz-pole" inputMode="url" aria-describedby="ai-www-opis" />
           </div>
+          {en && (
+            <div style={{ gridColumn: '1 / -1' }}>
+              <label htmlFor="ai-kraj" className="narz-etykieta">Country / target market</label>
+              <select
+                id="ai-kraj"
+                name="kraj"
+                value={kraj}
+                onChange={(e) => { setKraj(e.target.value); setKrajReczny(true); }}
+                className="narz-pole"
+              >
+                {KRAJE_EN.map(([kod, nazwa]) => (
+                  <option key={kod} value={kod}>{nazwa}</option>
+                ))}
+              </select>
+            </div>
+          )}
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
             <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading' || stan.status === 'pytania'} aria-busy={stan.status === 'loading' || stan.status === 'pytania' ? 'true' : undefined} data-cta="ai_check_submit">
               {stan.status === 'loading' ? (en ? 'Asking the AI models… (up to 2 min)' : 'Pytamy modele AI… (do 2 min)') : stan.status === 'pytania' ? (en ? 'Drafting the questions…' : 'Układamy pytania…') : (en ? 'Check your AI visibility for free' : 'Sprawdź widoczność w AI za darmo')}
             </button>
           </div>
-          <p className="narz-mikro">{liniaNaZywo(en)}</p>
-          <p className="narz-mikro">{en ? 'First you will see the 3 questions we will ask, and you can change each one. ' : 'Najpierw zobaczysz 3 pytania, które zadamy, i możesz zmienić każde z nich. '}<span id="ai-miasto-opis">{en ? 'No city = we ask about all of Poland. ' : 'Bez miasta pytamy o całą Polskę. '}</span><span id="ai-www-opis">{en ? 'If you add a page in English (e.g. company.com/en), we build one of the 3 questions from its title and description.' : 'Z tytułu i opisu podanej strony spróbujemy ułożyć jedno z 3 pytań.'}</span></p>
+          <p className="narz-mikro">{liniaNaZywo(en, kraj)}</p>
+          <p className="narz-mikro">{en ? 'First you will see the 3 questions we will ask, and you can change each one. ' : 'Najpierw zobaczysz 3 pytania, które zadamy, i możesz zmienić każde z nich. '}<span id="ai-miasto-opis">{en ? `No city = we ask across ${NAZWY_KRAJOW_EN[kraj] || 'the United States'}. ` : 'Bez miasta pytamy o całą Polskę. '}</span><span id="ai-www-opis">{en ? 'If you add a page in English (e.g. company.com/en), we build one of the 3 questions from its title and description.' : 'Z tytułu i opisu podanej strony spróbujemy ułożyć jedno z 3 pytań.'}</span></p>
           {stan.status === 'loading' && <Postep kroki={en ? KROKI_EN : KROKI} co={20000} />}
           {stan.status === 'error' && <p role="alert" className="narz-blad">{stan.blad}</p>}
         </form>
@@ -288,7 +433,7 @@ export default function WidocznoscAiClient() {
             <h2 id="ai-pytania-tytul" className="narz-h2" style={{ marginTop: 0 }}>{en ? 'We will ask the AI models these 3 questions' : 'Te 3 pytania zadamy modelom AI'}</h2>
             <p className="narz-mikro" style={{ marginTop: 0 }}>
               <strong style={{ color: 'var(--w-tusz)' }}>{propozycje.body.firma.trim()}</strong>
-              {` · ${propozycje.body.branza.trim()}${propozycje.body.miasto.trim() ? ` · ${propozycje.body.miasto.trim()}` : ''}${propozycje.body.www.trim() ? ` · ${propozycje.body.www.trim()}` : ''} `}
+              {` · ${propozycje.body.branza.trim()}${propozycje.body.miasto.trim() ? ` · ${propozycje.body.miasto.trim()}` : ''}${en && propozycje.body.kraj ? ` · ${propozycje.body.kraj}` : ''}${propozycje.body.www.trim() ? ` · ${propozycje.body.www.trim()}` : ''} `}
               <button type="button" className="narz-link" onClick={() => { setPropozycje(null); setStan((s) => ({ ...s, status: 'idle', blad: null })); }} disabled={stan.status === 'loading'}>{en ? 'Change details' : 'Zmień dane'}</button>
             </p>
             <p className="narz-mikro">{en
@@ -352,10 +497,11 @@ export default function WidocznoscAiClient() {
               {p.zastrzezenie && <p className="narz-mikro">{p.zastrzezenie}</p>}
               <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 1.25rem' }}>
                 <button type="button" className="narz-link" onClick={resetuj}>{en ? 'Check another business' : 'Sprawdź inną firmę'}</button>
-                {stan.dane && (
+                {(stan.dane || stan.id) && (
                   <LinkWyniku
                     narzedzie="widocznosc_ai"
-                    parametry={stan.dane}
+                    tryb={stan.id ? 'wynik' : 'wypelnij'}
+                    parametry={{ ...(stan.dane ?? { firma: p.firma, branza: p.branza, miasto: p.miasto || null }), ...(stan.id ? { wynik: stan.id } : {}) }}
                     tekst={en ? 'Copy a link to this check' : 'Kopiuj link do tego sprawdzenia'}
                     podsumowanie={en
                       ? `AI visibility for ${p.firma}: ${p.wzmianki}/${p.odpowiedzi} answers (${p.wynik}/100)`
@@ -441,7 +587,11 @@ export default function WidocznoscAiClient() {
                   ? [`Full answers: ${listaSilnikow('en')}`, p.wzmianki > 0 ? 'The excerpt that names your business and the sources of each answer' : 'Excerpts of the answers and the sources of each answer', 'All businesses and sites the models cite, plus the report by email']
                   : [`Pełne odpowiedzi: ${listaSilnikow('pl')}`, p.wzmianki > 0 ? 'Fragment, w którym pada Twoja firma, i źródła każdej odpowiedzi' : 'Fragmenty odpowiedzi i źródła każdej z nich', 'Wszystkie firmy i strony, które cytują modele, oraz raport e-mailem']}
                 przycisk={en ? 'Show the AI answers' : 'Pokaż odpowiedzi AI'}
-                onOdblokowano={(pelny, newsletter, mailOk) => setStan((s) => ({ ...s, pelny: DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny, newsletter, mailOk }))}
+                onOdblokowano={(pelny, newsletter, mailOk) => {
+                  const gotowyPelny = DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny;
+                  zapiszOdblokowane(stan.id, gotowyPelny);
+                  setStan((s) => ({ ...s, pelny: gotowyPelny, newsletter, mailOk }));
+                }}
               />
             </div>
           ) : (
@@ -462,14 +612,29 @@ export default function WidocznoscAiClient() {
               )}
               <h2 className="narz-h2">{en ? 'Answers' : 'Odpowiedzi'}</h2>
               <ul className="narz-problemy">
-                {stan.pelny.wiersze.filter((r) => !r.brakOdpowiedzi).map((r) => (
-                  <li key={`${r.silnik}-${r.pytanie}`} className={`narz-problem ${r.wymieniona ? 'narz-problem--ok' : 'narz-problem--blad'}`}>
-                    <p className="narz-problem-meta"><span className="narz-waga">{etykieta(r.silnik)}</span> · {r.wymieniona ? (en ? 'business mentioned' : 'firma wymieniona') : (en ? 'business not mentioned' : 'firma niewymieniona')}</p>
-                    <h3 className="narz-problem-tytul">{r.pytanie}</h3>
-                    <p className="narz-problem-opis">{r.fragment ? (en ? `“${r.fragment}”` : `„${r.fragment}”`) : r.odpowiedz.slice(0, 600)}</p>
-                    {r.zrodla.length > 0 && <p className="narz-mikro">{en ? 'Sources' : 'Źródła'}: {r.zrodla.join(', ')}</p>}
-                  </li>
-                ))}
+                {stan.pelny.wiersze.filter((r) => !r.brakOdpowiedzi).map((r) => {
+                  const pelnyTekst = String(r.odpowiedz || '');
+                  const maWiecej = Boolean(pelnyTekst) && (Boolean(r.fragment && pelnyTekst.trim() !== r.fragment.trim()) || pelnyTekst.length > 600);
+                  const skrot = r.fragment
+                    ? (en ? <>“{podswietlMarke(r.fragment, wzorce)}”</> : <>„{podswietlMarke(r.fragment, wzorce)}”</>)
+                    : <>{podswietlMarke(pelnyTekst.slice(0, 600), wzorce)}{pelnyTekst.length > 600 ? '…' : ''}</>;
+                  return (
+                    <li key={`${r.silnik}-${r.pytanie}`} className={`narz-problem ${r.wymieniona ? 'narz-problem--ok' : 'narz-problem--blad'}`}>
+                      <p className="narz-problem-meta"><span className="narz-waga">{etykieta(r.silnik)}</span> · {r.wymieniona ? (en ? 'business mentioned' : 'firma wymieniona') : (en ? 'business not mentioned' : 'firma niewymieniona')}</p>
+                      <h3 className="narz-problem-tytul">{r.pytanie}</h3>
+                      <p className="narz-problem-opis">{skrot}</p>
+                      {maWiecej && (
+                        <details className="narz-problem-strony" style={{ marginTop: '0.5rem' }}>
+                          <summary>{en ? 'Show full response' : 'Pokaż pełną odpowiedź'}</summary>
+                          <div className="narz-problem-opis" style={{ marginTop: '0.5rem', whiteSpace: 'pre-wrap' }}>
+                            {podswietlMarke(pelnyTekst, wzorce)}
+                          </div>
+                        </details>
+                      )}
+                      {r.zrodla.length > 0 && <p className="narz-mikro">{en ? 'Sources' : 'Źródła'}: {r.zrodla.join(', ')}</p>}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}

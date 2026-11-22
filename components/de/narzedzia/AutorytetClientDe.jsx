@@ -11,7 +11,7 @@
 import { WALID_DE } from '@/lib/walidacjaDe';
 import { useEffect, useRef, useState } from 'react';
 import { track } from '@/lib/track';
-import { wywolajNarzedzie } from '@/lib/narzedziaApi';
+import { DEMO, PANEL_API, wywolajNarzedzie } from '@/lib/narzedziaApi';
 import { AUTORYTET } from '@/lib/narzedziaLiczby';
 import { AUTORYTET_DE } from '@/lib/narzedzia.de';
 import { liczba as fmt, procent } from '@/lib/formatDe';
@@ -25,8 +25,9 @@ const PUSTE = ['', '', ''];
 
 const wynikZ = (x) => (x?.wynik ?? x?.dr ?? null);
 const flagaZ = (x) => x?.flaga || 'ok';
-const jestPl = (x) => String(x?.domena || '').toLowerCase().endsWith('.pl');
-const linkiZ = (x) => (x?.linkujace && Number.isFinite(x.linkujace.liczba) ? { liczba: x.linkujace.liczba, top: Array.isArray(x.linkujace.top) ? x.linkujace.top.filter((d) => typeof d === 'string').slice(0, 5) : [] } : null);
+const nazwaDomeny = (x) => x?.domenaWyswietlana || x?.domena || '';
+const jestPl = (x) => String(nazwaDomeny(x)).toLowerCase().endsWith('.pl');
+const linkiZ = (x) => (x?.linkujace && Number.isFinite(x.linkujace.liczba) ? { liczba: x.linkujace.liczba, top: Array.isArray(x.linkujace.top) ? x.linkujace.top.map((d) => (typeof d === 'string' ? d : nazwaDomeny(d))).filter(Boolean).slice(0, 5) : [] } : null);
 
 // Podpis źródła danych: wynik liczymy my, dane są z Common Crawl. Bez słów DR/DA jako nazwy wyniku.
 function Podpis({ wydanie }) {
@@ -58,6 +59,28 @@ export default function AutorytetClientDe() {
     setPola({ domena: url || '', k: [...k, ...PUSTE].slice(0, AUTORYTET.konkurentow) });
   });
 
+  useEffect(() => {
+    if (DEMO || typeof window === 'undefined') return undefined;
+    const wynikId = new URLSearchParams(window.location.search).get('wynik')?.trim();
+    if (!wynikId || !/^[a-zA-Z0-9_-]{6,120}$/.test(wynikId)) return undefined;
+    const ctrl = new AbortController();
+    (async () => {
+      try {
+        const res = await fetch(`${PANEL_API}/wynik/${encodeURIComponent(wynikId)}`, { signal: ctrl.signal });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok || !data.podglad) return;
+        if (data.tool && data.tool !== 'autorytet') return;
+        const id = data.id || wynikId;
+        const k = (data.podglad.konkurenci || []).map((x) => nazwaDomeny(x)).filter(Boolean).slice(0, AUTORYTET.konkurentow);
+        setPola((obecne) => (obecne.domena ? obecne : { domena: nazwaDomeny(data.podglad), k: [...k, ...PUSTE].slice(0, AUTORYTET.konkurentow) }));
+        setStan((s) => (s.status === 'idle' ? { status: 'done', blad: null, id, podglad: data.podglad } : s));
+      } catch {
+        // Fehler beim Laden des geteilten Ergebnisses ignorieren
+      }
+    })();
+    return () => ctrl.abort();
+  }, []);
+
   const liczba = (n, miejsc = 0) => (n == null ? '' : fmt(n, 'de', miejsc));
   const miejsce = (n) => `Platz ${liczba(n)}`;
   const data = (iso) => (iso ? new Date(iso).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' }) : '');
@@ -73,16 +96,18 @@ export default function AutorytetClientDe() {
     const domena = pola.domena.trim();
     const konkurenci = pola.k.map((x) => x.trim()).filter(Boolean);
     setStan({ status: 'loading', blad: null, id: null, podglad: null });
-    zapiszParametry({ url: domena, porownaj: konkurenci.join(',') || null });
+    zapiszParametry({ url: domena, porownaj: konkurenci.join(',') || null, wynik: null });
     track('narzedzie_start', { narzedzie: 'autorytet', konkurentow: konkurenci.length });
     const r = await wywolajNarzedzie('autorytet', { domena, konkurenci, nick: String(new FormData(e.currentTarget).get('nick') || ''), lang: 'de' }, 60_000);
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
     const podglad = r.podglad;
+    if (r.id && !DEMO) zapiszParametry({ url: nazwaDomeny(podglad) || domena, porownaj: (podglad.konkurenci || []).map((k) => nazwaDomeny(k)).filter(Boolean).join(',') || null, wynik: r.id });
     track('narzedzie_wynik', { narzedzie: 'autorytet', wynik: wynikZ(podglad), flaga: flagaZ(podglad), konkurentow: podglad.konkurenci?.length ?? 0 });
     setStan({ status: 'done', blad: null, id: r.id, podglad });
   }
 
   function edytuj(doKonkurentow = false) {
+    zapiszParametry({ wynik: null });
     setPowrot(true);
     setWychodzi(true);
     setTimeout(() => {
@@ -181,7 +206,7 @@ export default function AutorytetClientDe() {
               <span className="narz-dr-skala">von 100</span>
             </div>
             <div>
-              <p className="narz-wynik-domena" ref={naglowekWyniku} tabIndex={-1}>{p.domena}</p>
+              <p className="narz-wynik-domena" ref={naglowekWyniku} tabIndex={-1}>{nazwaDomeny(p)}</p>
               {opisFlagi && (
                 <p className="narz-wynik-opis"><strong>{opisFlagi.tytul}</strong> {p.tekst || opisFlagi.zapas}{opisFlagi.dopisek}</p>
               )}
@@ -214,11 +239,11 @@ export default function AutorytetClientDe() {
             ) : !linki ? (
               <p className="narz-wynik-opis">Die verlinkenden Domains konnten diesmal nicht gelesen werden. Der Wert oben ist davon nicht betroffen; versuchen Sie es in einigen Minuten erneut.</p>
             ) : linki.liczba === 0 ? (
-              <p className="narz-wynik-opis">{`Common Crawl hat in diesem Release keine Domain gesehen, die auf ${p.domena} verlinkt.`}</p>
+              <p className="narz-wynik-opis">{`Common Crawl hat in diesem Release keine Domain gesehen, die auf ${nazwaDomeny(p)} verlinkt.`}</p>
             ) : (
               <>
                 <p className="narz-wynik-opis">
-                  <strong>{liczba(linki.liczba)}</strong> {linki.liczba === 1 ? 'Domain verlinkt' : 'Domains verlinken'} {`auf ${p.domena}.`}
+                  <strong>{liczba(linki.liczba)}</strong> {linki.liczba === 1 ? 'Domain verlinkt' : 'Domains verlinken'} {`auf ${nazwaDomeny(p)}.`}
                 </p>
                 {linki.top.length > 0 && (
                   <>
@@ -244,7 +269,7 @@ export default function AutorytetClientDe() {
                   return (
                     <li key={`${i}-${x.domena}`} className={x.twoja ? 'twoja' : ''}>
                       <span className="narz-slupki-nazwa">
-                        {x.domena}{x.twoja ? ' (Ihre)' : ''}
+                        {nazwaDomeny(x)}{x.twoja ? ' (Ihre)' : ''}
                         {fl === 'brak_w_grafie' ? ', nicht im Graphen' : ''}
                         {fl === 'brak_linkow' ? ', keine Links' : ''}
                       </span>
@@ -269,7 +294,7 @@ export default function AutorytetClientDe() {
                         const l = linkiZ(x);
                         return (
                           <tr key={`${i}-${x.domena}`}>
-                            <th scope="row">{x.domena}{x.twoja ? ' (Ihre)' : ''}</th>
+                            <th scope="row">{nazwaDomeny(x)}{x.twoja ? ' (Ihre)' : ''}</th>
                             <td>{wartosc(x)}</td>
                             <td>{l ? liczba(l.liczba) : (jestPl(x) ? 'keine Daten' : 'nur .pl')}</td>
                           </tr>
@@ -298,8 +323,9 @@ export default function AutorytetClientDe() {
           {p.pozostalo != null && <p className="narz-mikro">{`Heute noch übrig von Ihrer IP-Adresse: ${p.pozostalo} von ${p.limit ?? AUTORYTET.limitIp} Domain-Prüfungen.`}</p>}
           <LinkWyniku
             narzedzie="autorytet"
-            parametry={{ url: p.domena, porownaj: konkurenci.map((k) => k.domena).join(',') || null }}
-            podsumowanie={`Domain-Autorität ${p.domena}: ${wartosc(p)}/100`}
+            tryb={stan.id ? 'wynik' : 'wypelnij'}
+            parametry={{ url: nazwaDomeny(p), porownaj: konkurenci.map((k) => nazwaDomeny(k)).join(',') || null, ...(stan.id ? { wynik: stan.id } : {}) }}
+            podsumowanie={`Domain-Autorität ${nazwaDomeny(p)}: ${wartosc(p)}/100`}
           />
 
           <BramkaEmail

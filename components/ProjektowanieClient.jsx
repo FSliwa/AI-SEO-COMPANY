@@ -18,22 +18,22 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
   const lang = useLocale();
 
   return (
-    <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       
       {/* Hero Banner - Apple Style */}
       <section className="subpage-hero tlo-gory-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
         <TloGory />
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.82rem' }}>
               {lang === 'pl' ? 'WEBDESIGN & DEVELOPMENT' : 'WEBDESIGN & DEVELOPMENT'}
             </div>
             
             <h1 className={lang === 'pl' ? 'tlo-gory-h1--dlugi' : undefined} style={{ 
-              fontSize: 'clamp(3.5rem, 7vw, 6rem)', 
-              fontWeight: 700, 
-              lineHeight: 1.05, 
-              color: 'var(--color-text-main)', 
+              fontSize: 'clamp(3.2rem, 6.5vw, 5.6rem)', 
+              fontWeight: 500, 
+              lineHeight: 1.04, 
+              color: 'var(--w-tusz)', 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
@@ -41,21 +41,20 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
             </h1>
 
             <div style={{ 
-              width: '120px', 
-              height: '6px', 
-              background: 'linear-gradient(90deg, var(--color-cta) 0%, #FF8A65 100%)', 
+              width: '96px', 
+              height: '4px', 
+              background: 'var(--w-pomarancz)', 
               margin: '0 auto 2rem auto', 
-              borderRadius: '3px',
-              boxShadow: '0 4px 15px rgba(216, 90, 48, 0.4)'
+              borderRadius: '2px'
             }}></div>
 
             <div style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
-              color: 'var(--color-text-main)', 
+              fontSize: 'clamp(2.25rem, 4.5vw, 3.6rem)', 
+              fontWeight: 500, 
+              color: 'var(--w-tusz)', 
               marginBottom: '1.5rem', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em'
+              lineHeight: 1.08,
+              letterSpacing: '-0.035em'
             }}>
               {lang === 'pl' ? (
                 <>Nowoczesne Strony<br/>Wysoka Konwersja</>
@@ -103,31 +102,31 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
       <section style={{ padding: '120px 0' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: 'clamp(2.35rem, 4vw, 3.6rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.08, marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Standardy: projektowanie stron internetowych' : 'Web Engineering Standards'}
             </h2>
-            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 400 }}>
               {lang === 'pl' ? 'Czym wyróżniają się interfejsy i architektura kodowana przez AI SEO COMPANY.' : 'What makes the interfaces and architecture coded by AI SEO COMPANY stand out.'}
             </p>
           </Reveal>
 
-          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '2rem' }}>
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 1' : 'PILLAR 1'}</div>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Niezawodność i Bezpieczeństwo' : 'Reliability & Security'}</div>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Nasze <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> łączy nowoczesną architekturę Headless z biznesowymi korzyściami. To nie tylko niezrównana szybkość, ale też całkowite odcięcie hakerów od Twojej bazy danych. Zyskujesz spokój ducha i bezpieczeństwo znane z systemów klasy Enterprise, zapominając o awariach.</> : "Our website design combines modern Headless architecture with business benefits. It's not just unmatched speed, but also a complete cut-off for hackers from your database. You gain peace of mind and Enterprise-grade security, forgetting about crashes."}</p>
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '1.5rem' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'FILAR 1' : 'PILLAR 1'}</div>
+              <div style={{ fontSize: '1.45rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Niezawodność i Bezpieczeństwo' : 'Reliability & Security'}</div>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? <>Nasze <span style={{ fontWeight: 600, color: 'var(--w-tusz)' }}>projektowanie stron internetowych</span> łączy nowoczesną architekturę Headless z biznesowymi korzyściami. To nie tylko niezrównana szybkość, ale też całkowite odcięcie hakerów od Twojej bazy danych. Zyskujesz spokój ducha i bezpieczeństwo znane z systemów klasy Enterprise, zapominając o awariach.</> : "Our website design combines modern Headless architecture with business benefits. It's not just unmatched speed, but also a complete cut-off for hackers from your database. You gain peace of mind and Enterprise-grade security, forgetting about crashes."}</p>
             </RevealItem>
             
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 2' : 'PILLAR 2'}</div>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wzrost Konwersji i Leady' : 'Conversion Growth & Leads'}</div>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Eliminujemy zbędny szum informacyjny. Budujemy przejrzyste interfejsy i formularze, które w logiczny sposób prowadzą klienta prosto do kontaktu z Twoim działem sprzedaży.' : 'We eliminate unnecessary information noise. We build clean interfaces and forms that logically guide the client straight to contacting your sales department.'}</p>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'FILAR 2' : 'PILLAR 2'}</div>
+              <div style={{ fontSize: '1.45rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wzrost Konwersji i Leady' : 'Conversion Growth & Leads'}</div>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? 'Eliminujemy zbędny szum informacyjny. Budujemy przejrzyste interfejsy i formularze, które w logiczny sposób prowadzą klienta prosto do kontaktu z Twoim działem sprzedaży.' : 'We eliminate unnecessary information noise. We build clean interfaces and forms that logically guide the client straight to contacting your sales department.'}</p>
             </RevealItem>
             
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'FILAR 3' : 'PILLAR 3'}</div>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Fundament pod SEO' : 'SEO Foundation'}</div>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Od pierwszego dnia strona jest zoptymalizowana pod Google (szybkość wczytywania, tagi strukturalne). Tworzenie stron internetowych z myślą o SEO daje solidną bazę, gotową na bezkompromisowe pozycjonowanie stron.' : 'From day one, the site is optimized for Google (loading speed, structured tags). We create a solid base, ready for uncompromising SEO.'}</p>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'FILAR 3' : 'PILLAR 3'}</div>
+              <div style={{ fontSize: '1.45rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Fundament pod SEO' : 'SEO Foundation'}</div>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? 'Od pierwszego dnia strona jest zoptymalizowana pod Google (szybkość wczytywania, tagi strukturalne). Tworzenie stron internetowych z myślą o SEO daje solidną bazę, gotową na bezkompromisowe pozycjonowanie stron.' : 'From day one, the site is optimized for Google (loading speed, structured tags). We create a solid base, ready for uncompromising SEO.'}</p>
             </RevealItem>
           </RevealStagger>
         </div>
@@ -137,26 +136,26 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
       <section style={{ padding: '0 0 120px 0' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>
               {lang === 'pl' ? 'KROKI PROJEKTOWE' : 'PROJECT STEPS'}
             </div>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: 'clamp(2.35rem, 4vw, 3.6rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.08, marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Od Koncepcji do Kodowania' : 'From Concept to Code'}
             </h2>
-            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 400 }}>
               {lang === 'pl' ? 'Przejrzysty proces realizacji Twojego projektu webowego.' : 'A transparent realization process for your web project.'}
             </p>
           </Reveal>
 
-          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '2rem' }}>
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profesjonalny Design i Makiety' : 'Professional Design and Mockups'}</div>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Nasze <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> zaczyna się od stworzenia czytelnych makiet i prototypów, w pełni dopasowanych do Twojej identyfikacji wizualnej i grupy docelowej.</> : 'Our web design begins with clean mockups and prototypes, perfectly tailored to your visual identity and target audience.'}</p>
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '1.5rem' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', boxShadow: 'none' }}>
+              <div style={{ fontSize: '1.45rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profesjonalny Design i Makiety' : 'Professional Design and Mockups'}</div>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? <>Nasze <span style={{ fontWeight: 600, color: 'var(--w-tusz)' }}>projektowanie stron internetowych</span> zaczyna się od stworzenia czytelnych makiet i prototypów, w pełni dopasowanych do Twojej identyfikacji wizualnej i grupy docelowej.</> : 'Our web design begins with clean mockups and prototypes, perfectly tailored to your visual identity and target audience.'}</p>
             </RevealItem>
-            <RevealItem style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wdrożenie i Skalowanie Sprzedaży' : 'Deployment and Sales Scaling'}</div>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Tworzenie stron internetowych kończymy wdrożeniem gotowego projektu w bezpiecznym i niezawodnym środowisku, dbając o zoptymalizowanie ścieżek zakupowych klienta (generowanie leadów).' : 'We transition the ready design into a secure and reliable environment, ensuring optimized customer purchase paths (lead generation).'}</p>
-              {lang === 'pl' && <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55, marginTop: '1rem' }}>Wymogi prawne wobec stron firmowych (cookies, formularze, polityka prywatności) opisujemy w poradniku <Link href="/blog/rodo-na-stronie-internetowej" style={{ textDecoration: 'underline' }}>RODO na stronie internetowej</Link>.</p>}
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', boxShadow: 'none' }}>
+              <div style={{ fontSize: '1.45rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wdrożenie i Skalowanie Sprzedaży' : 'Deployment and Sales Scaling'}</div>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? 'Tworzenie stron internetowych kończymy wdrożeniem gotowego projektu w bezpiecznym i niezawodnym środowisku, dbając o zoptymalizowanie ścieżek zakupowych klienta (generowanie leadów).' : 'We transition the ready design into a secure and reliable environment, ensuring optimized customer purchase paths (lead generation).'}</p>
+              {lang === 'pl' && <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6, marginTop: '1rem' }}>Wymogi prawne wobec stron firmowych (cookies, formularze, polityka prywatności) opisujemy w poradniku <Link href="/blog/rodo-na-stronie-internetowej" style={{ textDecoration: 'underline' }}>RODO na stronie internetowej</Link>.</p>}
             </RevealItem>
           </RevealStagger>
         </div>

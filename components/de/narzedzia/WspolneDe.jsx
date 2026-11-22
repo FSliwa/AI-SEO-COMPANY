@@ -91,10 +91,11 @@ const ODBIORCY_DE = {
   audyt_seo: 'E-Mail-Dienstleister (Resend) und Anbieter der Geschwindigkeitsmessung (Google PageSpeed Insights)',
   autorytet: 'E-Mail-Dienstleister (Resend)',
   kalkulator: 'E-Mail-Dienstleister (Resend)',
+  widocznosc_ai: 'E-Mail-Dienstleister (Resend) und Anbieter von KI-Modellen (DataForSEO, Anthropic)',
 };
 
 /** Bramka e-mail: zgoda na wysłanie wyniku (konieczna), bez newslettera. */
-export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [], przycisk, dane, konkurenci, onOdblokowano, tylkoRaport = false }) {
+export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [], przycisk, dane, konkurenci, onOdblokowano, tylkoRaport = false, podsumowaniePo = null }) {
   przycisk = przycisk ?? (tylkoRaport ? 'Bericht senden' : 'Senden und vollständiges Ergebnis anzeigen');
   const [stan, setStan] = useState({ status: 'idle', blad: null });
   const ref = useRef(null);
@@ -142,18 +143,25 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
   const gotowe = stan.status === 'done';
   // Po wysłaniu fokus idzie na potwierdzenie (formularz traci przycisk, bez tego fokus ląduje na BODY).
   useEffect(() => { if (gotowe) potwRef.current?.focus({ preventScroll: true }); }, [gotowe]);
+  // tylkoRaport: formularz NIE zwija się (unikamy skoku wysokości / CLS), tylko zostaje na miejscu
+  // z wyłączonymi polami i potwierdzeniem w nagłówku (jak components/narzedzia/BramkaEmail.jsx:80-95).
+  const potw = tekstPotwierdzenia({ lang: 'de', tylkoRaport, mailOk: stan.mailOk });
+  const zostaje = tylkoRaport && gotowe && potw.wyslano;
+  const tytulPotw = potw.tytul;
 
   return (
     <>
-    <Zwin otwarte={!gotowe || (tylkoRaport && stan.mailOk === false)} wejscie={false}>
-    <form ref={ref} className="narz-bramka" onSubmit={wyslij} aria-labelledby={`bramka-${narzedzie}`}>
+    <Zwin otwarte={tylkoRaport ? true : !gotowe || Boolean(podsumowaniePo)} wejscie={false}>
+    <form ref={ref} className={`narz-bramka${zostaje ? ' narz-bramka--gotowe' : ''}`} onSubmit={wyslij} aria-labelledby={`bramka-${narzedzie}`}>
       <div className="narz-bramka-glowa">
         <span className="narz-bramka-ikona" aria-hidden="true">
           <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
         </span>
         <div>
-          <p id={`bramka-${narzedzie}`} className="narz-bramka-tytul">{naglowek}</p>
-          {opis && <p className="narz-bramka-opis">{opis}</p>}
+          {zostaje
+            ? <p id={`bramka-${narzedzie}`} className="narz-bramka-tytul" role="status" ref={potwRef} tabIndex={-1}>{tytulPotw}</p>
+            : <p id={`bramka-${narzedzie}`} className="narz-bramka-tytul">{naglowek}</p>}
+          {opis && <p className="narz-bramka-opis">{zostaje && podsumowaniePo ? podsumowaniePo : opis}</p>}
         </div>
       </div>
       {korzysci.length > 0 && (
@@ -163,23 +171,23 @@ export function BramkaEmail({ narzedzie, id = null, naglowek, opis, korzysci = [
       )}
       <div className="narz-bramka-wiersz">
         <label htmlFor={`email-${narzedzie}`} className="sr-only">E-Mail-Adresse</label>
-        <input id={`email-${narzedzie}`} name="email" type="email" required {...WALID_DE} maxLength={200} autoComplete="email" inputMode="email" placeholder="sie@beispiel.de" className="narz-pole" />
-        <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta={`narzedzie_${narzedzie}_odblokuj`}>
-          {stan.status === 'loading' ? 'Wird gesendet…' : przycisk}
+        <input id={`email-${narzedzie}`} name="email" type="email" required {...WALID_DE} maxLength={200} disabled={zostaje} autoComplete="email" inputMode="email" placeholder="sie@beispiel.de" className="narz-pole" />
+        <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading' || zostaje} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta={`narzedzie_${narzedzie}_odblokuj`}>
+          {stan.status === 'loading' ? 'Wird gesendet…' : zostaje ? 'Gesendet' : przycisk}
         </button>
       </div>
       <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
       <label className="narz-zgoda">
-        <input type="checkbox" name="zgodaWynik" required {...WALID_DE} />
+        <input type="checkbox" name="zgodaWynik" required disabled={zostaje} {...WALID_DE} />
         <span>
           Bitte senden Sie mir dieses Ergebnis per E-Mail. Verantwortlicher: AI SIGNALS COMPANY P.S.A. ({SIEDZIBA.ulica}, Warschau, Polen). Wir verwenden Ihre Daten, um das Ergebnis zu senden und Ihre Fragen zu beantworten, und löschen sie nach 60 Tagen. Empfänger: {ODBIORCY_DE[narzedzie]}. Details in der <Link href="/cookies">Datenschutzerklärung</Link>.
         </span>
       </label>
       <p className="narz-bramka-mikro">{tylkoRaport ? 'Der Bericht erreicht Ihr Postfach innerhalb einer Minute.' : 'Der Bericht erreicht Ihr Postfach innerhalb einer Minute. Das vollständige Ergebnis sehen Sie außerdem sofort hier.'}</p>
-      <Zwin otwarte={stan.status === 'error'}><p role="alert" className="narz-blad">{stan.blad}</p></Zwin>
+      <Zwin otwarte={stan.status === 'error' || (tylkoRaport && gotowe && !potw.wyslano)}><p role="alert" className="narz-blad">{stan.status === 'error' ? stan.blad : tytulPotw}</p></Zwin>
     </form>
     </Zwin>
-    {gotowe && <Odblokowano tylkoRaport={tylkoRaport} potwRef={potwRef} mailOk={stan.mailOk} />}
+    {gotowe && !tylkoRaport && <Odblokowano tylkoRaport={tylkoRaport} potwRef={potwRef} mailOk={stan.mailOk} />}
     </>
   );
 }

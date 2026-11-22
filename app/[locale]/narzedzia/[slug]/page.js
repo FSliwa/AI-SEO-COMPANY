@@ -16,6 +16,10 @@ import GeneratorLlmsTxtDe from '@/components/de/narzedzia/GeneratorLlmsTxtDe';
 import AutorytetStronaDe from '@/components/de/narzedzia/AutorytetStronaDe';
 import KalkulatorStronaDe from '@/components/de/narzedzia/KalkulatorStronaDe';
 import SzablonStronaDe from '@/components/de/narzedzia/SzablonStronaDe';
+import TesterRobotowAiStrona from '@/components/narzedzia/TesterRobotowAiStrona';
+import PorownywarkaCwvStrona from '@/components/narzedzia/PorownywarkaCwvStrona';
+import KiCrawlerStronaDe from '@/components/de/narzedzia/KiCrawlerStronaDe';
+import CwvVergleichStronaDe from '@/components/de/narzedzia/CwvVergleichStronaDe';
 
 // Strony pod /narzedzia/<slug> (PLAN-v2 6.10 N1 i 6.11 S1, partia 3 / W9; TS-03; 5.11.2026).
 // generateStaticParams w kształcie { locale: 'pl', slug } (samo { slug } daje 0 ścieżek i 404, TS-03)
@@ -32,15 +36,19 @@ const KOMPONENTY = {
   'autorytet-domeny': AutorytetStrona,
   'kalkulator-strat-seo': KalkulatorStrona,
   'makieta-redesignu': MakietaStrona,
+  'tester-robotow-ai-robots-txt': TesterRobotowAiStrona,
+  'test-core-web-vitals-porownanie': PorownywarkaCwvStrona,
 };
 
-// Wersja niemiecka (18.11.2026, DE_OPUBLIKOWANE w lib/stronyDe.js): trzy narzędzia i dwa szablony mają strony DE
+// Wersja niemiecka (18.11.2026, DE_OPUBLIKOWANE w lib/stronyDe.js): narzędzia i szablony mają strony DE
 // (components/de/narzedzia, lib/szablony/*.de.js). Metadane DE składa metadataStronyPl (lib/stronaPl.js) z rejestru stronyDe.
 const KOMPONENTY_DE = {
   'generator-llms-txt': GeneratorLlmsTxtDe,
   'audyt-seo': AudytSeoStronaDe,
   'autorytet-domeny': AutorytetStronaDe,
   'kalkulator-strat-seo': KalkulatorStronaDe,
+  'tester-robotow-ai-robots-txt': KiCrawlerStronaDe,
+  'test-core-web-vitals-porownanie': CwvVergleichStronaDe,
 };
 
 // 18.11.2026 (p2-audyt-przyklad): strony TYLKO po angielsku (lib/stronyTylkoEn.js) mają parametr tylko

@@ -51,7 +51,7 @@ function pobierzPlik(tekst) {
 // Stan obecnego pliku /llms.txt na sprawdzanej stronie.
 function opisObecnegoPliku(o) {
   if (!o) return null;
-  if (!o.kod) return { ocena: 'uwaga', tekst: 'Vorhandene Datei /llms.txt: keine Antwort innerhalb von 4 s.' };
+  if (!o.kod) return { ocena: 'uwaga', tekst: 'Vorhandene Datei /llms.txt: keine Antwort innerhalb von 8 s.' };
   if (o.kod >= 300 && o.kod < 400) return { ocena: 'uwaga', tekst: `Vorhandene Datei /llms.txt: Weiterleitung (${o.kod}). Besser ist es, die Datei direkt unter /llms.txt auszuliefern.` };
   if (o.kod !== 200) return { ocena: 'uwaga', tekst: `Vorhandene Datei /llms.txt: nicht vorhanden (Code ${o.kod}). Laden Sie die unten erzeugte Datei hoch.` };
   if (o.html) return { ocena: 'blad', tekst: 'Unter /llms.txt liefert die Website HTML statt Text. Prüfen Sie, ob die Datei wirklich im Stammverzeichnis liegt.' };
@@ -93,7 +93,7 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
   const [skopiowano, setSkopiowano] = useState(false);
   const [skopiowanoSnippet, setSkopiowanoSnippet] = useState(false);
   const [pobrano, setPobrano] = useState(false);
-  const [zKomentarzemZrodla, setZKomentarzemZrodla] = useState(true);
+  const [zKomentarzemZrodla, setZKomentarzemZrodla] = useState(false);
   const [adres, setAdres] = useState('');
   const [edycja, setEdycja] = useState({ model: null, zmieniony: false });
   const poleRef = useRef(null);
@@ -233,7 +233,9 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
             <p style={s.akapit}>
               {w.mapa.zrodlo
                 ? `Sitemap: ${mapaOpis}. In der Datei: ${w.wPliku}, übersprungen: ${w.pominietychRazem}.`
-                : `Wir haben keine Sitemap gefunden (weder sitemap.xml noch einen Sitemap-Eintrag in der robots.txt), daher enthält die Datei nur die Startseite. In der Datei: ${w.wPliku}.`}
+                : w.wPliku > 1
+                  ? `Wir haben keine Sitemap gefunden (weder sitemap.xml noch einen Sitemap-Eintrag in der robots.txt) und haben deshalb die internen Links der Startseite ausgewertet. In der Datei: ${w.wPliku}${w.pominietychRazem ? `, übersprungen: ${w.pominietychRazem}` : ''}.`
+                  : `Wir haben keine Sitemap gefunden (weder sitemap.xml noch einen Sitemap-Eintrag in der robots.txt), daher enthält die Datei nur die Startseite. In der Datei: ${w.wPliku}.`}
               {w.czesciowy && ` Das Limit von 20 Sekunden war vor dem Ende erreicht. Nicht mehr geprüft werden konnten: ${adressen(w.nieprzetworzone.length)} (Liste unten).`}
             </p>
 

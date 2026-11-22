@@ -23,6 +23,8 @@ export const NARZEDZIA = [
   { href: '/narzedzia/makieta-redesignu', pl: ['Makieta strony internetowej', `nowa strona główna z AI w ${MAKIETA.minut} minuty, z Twoich treści`], en: ['Website redesign mockup', `a new AI homepage design in ${MAKIETA.minut} minutes, built from your content`] },
   { href: '/narzedzia/generator-llms-txt', pl: ['Generator llms.txt', `plik llms.txt z mapy strony i test dostępu ${GENERATOR.botowAi} botów AI i Bingbot`], en: ['llms.txt generator', `an llms.txt file from your sitemap and an access test for ${GENERATOR.botowAi} AI bots and Bingbot`] },
   { href: '/narzedzia/autorytet-domeny', pl: ['Autorytet domeny', `wynik 0-100 z grafu linków Common Crawl i porównanie z maksymalnie ${AUTORYTET.konkurentow} konkurentami`], en: ['Domain authority checker', `a 0-100 score from the Common Crawl link graph, compared with up to ${AUTORYTET.konkurentow} competitors`] },
+  { href: '/narzedzia/tester-robotow-ai-robots-txt', pl: ['Tester robotów AI i robots.txt', 'test 12 botów AI w robots.txt i na żywo po HTTP, wykrywanie blokad WAF 403 i parzystość SSR'], en: ['AI crawler & robots.txt checker', 'test 12 AI crawlers in robots.txt and live HTTP, spot 403 WAF blocks and check SSR parity'] },
+  { href: '/narzedzia/test-core-web-vitals-porownanie', pl: ['Porównywarka Core Web Vitals', 'dane Chrome UX Report z 28 dni (LCP, INP, CLS), rentgen wtyczek CMS i pojedynek z konkurentem'], en: ['Core Web Vitals comparison', '28-day Chrome UX Report field metrics (LCP, INP, CLS), CMS bloat X-ray and competitor showdown'] },
 ];
 
 function normalizujBez(bez) {

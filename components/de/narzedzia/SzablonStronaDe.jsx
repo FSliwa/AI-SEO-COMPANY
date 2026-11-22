@@ -13,12 +13,13 @@ import ArticleSchema from '@/components/ArticleSchema';
 import AppleFaq from '@/components/service/AppleFaq';
 import SzHero from '@/components/narzedzia/SzHero';
 import SzNawigacja from '@/components/narzedzia/SzNawigacja';
+import SzablonInterakcje from '@/components/narzedzia/SzablonInterakcje';
 import '@/components/narzedzia/szablony.css';
 import { Link } from '@/i18n/routing';
 import '@/app/ruch.css'; // tokeny i utility ruchu: tylko trasy narzędzi i szablonów
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
 import { dataTresci, pierwszaPublikacja } from '@/lib/lastmod';
-import { BASE, ENDPOINT_SZABLONOW } from '@/lib/narzedzia';
+import { BASE, ENDPOINT_SZABLONOW, RODZIC_OKRUSZKOW } from '@/lib/narzedzia';
 import { ZrodlaDe, dataDlugaDe } from './UkladDe';
 import SzablonFormularzDe from './SzablonFormularzDe';
 
@@ -57,7 +58,7 @@ export default function SzablonStronaDe({ dane }) {
   return (
     <main className="sz">
       <Header />
-      <Breadcrumbs pl={d.okruszek} en={d.okruszek} de={d.okruszek} />
+      <Breadcrumbs pl={d.okruszek} en={d.okruszek} de={d.okruszek} parent={{ ...RODZIC_OKRUSZKOW, de: 'Tools & Vorlagen' }} />
       <ArticleSchema
         type="Article"
         locale="de"
@@ -90,6 +91,7 @@ export default function SzablonStronaDe({ dane }) {
       <div className="sz-uklad">
         <SzNawigacja items={spis} etykieta="Inhalt der Seite" />
         <div className="sz-tresc" data-sz-tresc>
+          <SzablonInterakcje slug={dane.slug} locale="de" />
           {d.sekcje.map((sek) => (
             <div key={sek.id} id={sek.id} role="region" aria-labelledby={`${sek.id}-h`} className="sz-sekcja">
               <h2 id={`${sek.id}-h`} className="sz-h2">{sek.h2}</h2>

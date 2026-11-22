@@ -43,14 +43,17 @@ import dns from 'node:dns';
 import net from 'node:net';
 import zlib from 'node:zlib';
 
+export const LIMIT_STRONA_MS = 8000;
+
 export const LIMITY = {
   maxUrli: 50,
   wspolbieznosc: 8,
-  timeoutMs: 4000,
+  timeoutMs: LIMIT_STRONA_MS,
   limitGlobalnyMs: 20000,
   maxBajtow: 2 * 1024 * 1024,
   maxBajtowMapyPodrzednej: 512 * 1024,
   maxBajtowHtml: 64 * 1024,
+  maxBajtowGlownej: 256 * 1024,
   maxBajtowRobots: 512 * 1024,
   maxPrzekierowan: 5,
   maxMapPodrzednych: 20,
@@ -124,6 +127,20 @@ export const BOTY = [
     skutekBlokady: 'Google nie użyje treści w Gemini. Według Google nie wpływa to na wyniki wyszukiwania.',
     skutekBlokadyEn: 'Google will not use your content in Gemini. According to Google, this does not affect search results.',
     skutekBlokadyDe: 'Google nutzt Ihre Inhalte nicht in Gemini. Laut Google hat das keinen Einfluss auf die Suchergebnisse.',
+  },
+  {
+    nazwa: 'Applebot-Extended', token: 'applebot-extended', firma: 'Apple', rola: 'Apple Intelligence (trening modeli)', rolaEn: 'Apple Intelligence (model training)', rolaDe: 'Apple Intelligence (Modelltraining)',
+    ua: null,
+    skutekBlokady: 'Treści nie trafią do trenowania modeli Apple Intelligence. Według Apple nie wpływa to na indeks wyszukiwania Applebot.',
+    skutekBlokadyEn: 'Your content will not be used to train Apple Intelligence models. According to Apple, this does not affect Applebot search indexing.',
+    skutekBlokadyDe: 'Ihre Inhalte werden nicht für das Training von Apple-Intelligence-Modellen verwendet. Laut Apple hat das keinen Einfluss auf den Suchindex von Applebot.',
+  },
+  {
+    nazwa: 'Meta-ExternalAgent', token: 'meta-externalagent', firma: 'Meta', rola: 'Meta AI (trening i odpowiedzi)', rolaEn: 'Meta AI (training and answers)', rolaDe: 'Meta AI (Training und Antworten)',
+    ua: 'Mozilla/5.0 (compatible; meta-externalagent/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler))',
+    skutekBlokady: 'Meta nie użyje treści do trenowania modeli i odpowiedzi Meta AI.',
+    skutekBlokadyEn: 'Meta will not use your content to train models or generate Meta AI answers.',
+    skutekBlokadyDe: 'Meta nutzt Ihre Inhalte nicht für Modelltraining oder Antworten von Meta AI.',
   },
   {
     nazwa: 'Bingbot', token: 'bingbot', firma: 'Microsoft', rola: 'indeks Bing', rolaEn: 'Bing index', rolaDe: 'Bing-Index',
@@ -277,11 +294,17 @@ function dekompresor(kodowanie) {
   return null;
 }
 
+function jezykNaglowka(lang) {
+  if (lang === 'de') return 'de,en;q=0.8';
+  if (lang === 'en') return 'en,pl;q=0.5';
+  return 'pl,en;q=0.7';
+}
+
 /**
  * Jedno zapytanie bez podążania za przekierowaniem. Zwraca zawsze obiekt (nigdy nie rzuca):
  * { kod, naglowki, cialo: Buffer|null, uciete, blad }. cialo = null dla HEAD i maxBajtow 0.
  */
-export function pobierz(adres, { metoda = 'GET', ua = UA_GENERATORA, timeoutMs = LIMITY.timeoutMs, maxBajtow = LIMITY.maxBajtowHtml, agenci, accept = '*/*' } = {}) {
+export function pobierz(adres, { metoda = 'GET', ua = UA_GENERATORA, timeoutMs = LIMITY.timeoutMs, maxBajtow = LIMITY.maxBajtowHtml, agenci, accept = '*/*', lang = 'pl' } = {}) {
   return new Promise((resolve) => {
     let u;
     try {
@@ -308,7 +331,7 @@ export function pobierz(adres, { metoda = 'GET', ua = UA_GENERATORA, timeoutMs =
         'user-agent': ua,
         accept,
         'accept-encoding': 'gzip, deflate, br',
-        'accept-language': 'pl,en;q=0.7',
+        'accept-language': jezykNaglowka(lang),
       },
       lookup: bezpiecznyLookup,
       agent: agenci ? agenci[u.protocol] : false,
@@ -389,7 +412,7 @@ async function pobierzZPrzekierowaniami(adres, opcje, czyHostDozwolony = () => t
 // --- Tekst i HTML ---------------------------------------------------------------------------
 
 const ENCJE = {
-  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '–', mdash: '—', hellip: '…',
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '\u2013', mdash: '\u2014', hellip: '…',
   laquo: '«', raquo: '»', bdquo: '„', rdquo: '”', ldquo: '“', rsquo: '’', lsquo: '‘', copy: '©', reg: '®',
   oacute: 'ó', Oacute: 'Ó', middot: '·', bull: '•',
 };
@@ -442,6 +465,35 @@ export function metaZHtml(html) {
     else if (klucz === 'og:site_name' && !wynik.nazwaSerwisu) wynik.nazwaSerwisu = tresc;
     else if (klucz === 'og:title' && !wynik.ogTytul) wynik.ogTytul = tresc;
     else if (klucz === 'og:description' && !wynik.ogOpis) wynik.ogOpis = tresc;
+  }
+  return wynik;
+}
+
+const ZASOB_STATYCZNY = /\.(?:jpe?g|png|gif|webp|avif|svg|ico|bmp|tiff?|pdf|css|js|mjs|cjs|json|xml|rss|atom|txt|csv|zip|rar|7z|tar|gz|mp3|mp4|webm|ogg|wav|mov|avi|woff2?|ttf|otf|eot|doc|docx|xls|xlsx|ppt|pptx)$/i;
+const SCIEZKA_TECHNICZNA = /^\/(?:cdn-cgi|_next\/static|wp-json|wp-admin)(?:\/|$)/i;
+
+/** Wyciąga unikalne wewnętrzne linki <a href="..."> z HTML strony głównej (zapas, gdy brak sitemap.xml). */
+export function linkiZHtml(html, bazaUrl, czyDozwolony = () => true) {
+  if (!html || !bazaUrl) return [];
+  const wynik = [];
+  const widziane = new Set();
+  for (const m of String(html).matchAll(/<a\b[^<>]{0,2000}?\shref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))/gi)) {
+    const surowy = dekodujEncje(m[1] ?? m[2] ?? m[3] ?? '').trim();
+    if (!surowy || surowy.startsWith('#') || /^(?:mailto|tel|javascript|data|sms|whatsapp|viber):/i.test(surowy)) continue;
+    let u;
+    try {
+      u = new URL(surowy, bazaUrl);
+    } catch {
+      continue;
+    }
+    u.hash = '';
+    if ((u.protocol !== 'http:' && u.protocol !== 'https:') || !czyDozwolony(u)) continue;
+    if (ZASOB_STATYCZNY.test(u.pathname) || SCIEZKA_TECHNICZNA.test(u.pathname)) continue;
+    const klucz = `${bezWww(u.hostname)}${u.pathname.replace(/\/+$/, '')}${u.search}`;
+    if (widziane.has(klucz)) continue;
+    widziane.add(klucz);
+    wynik.push(u.toString());
+    if (wynik.length >= 500) break;
   }
   return wynik;
 }
@@ -542,7 +594,7 @@ const OTWARCIE_BLOKU = /<(?:url|sitemap)(?=[\s/>])[^<>]{0,500}>/gi;
 
 /**
  * Adresy z mapy albo indeksu map. lokacje[i] ma w zmiany[i] datę <lastmod> (ms, 0 = brak),
- * a w priorytety[i] wartość <priority> (0–1, brak = 0,5). Wpisy <image:loc> itp. są pomijane.
+ * a w priorytety[i] wartość <priority> (0-1, brak = 0,5). Wpisy <image:loc> itp. są pomijane.
  */
 export function adresyZMapy(tekst) {
   const lokacje = [];
@@ -802,7 +854,7 @@ export function wybierzAdresy(mapy, { limit = LIMITY.maxUrli, czyDozwolony = () 
 
 // --- llms.txt -------------------------------------------------------------------------------
 
-const SEPARATORY = /\s+[|–—•·-]\s+|\s*\|\s*/;
+const SEPARATORY = /\s+[|\u2013\u2014•·-]\s+|\s*\|\s*/;
 
 function segmentyTytulu(t) {
   return String(t || '').split(SEPARATORY).map((s) => s.trim()).filter(Boolean);
@@ -843,7 +895,7 @@ function skroc(s, max) {
   if (t.length <= max) return t;
   const ciecie = t.slice(0, max - 1);
   const spacja = ciecie.lastIndexOf(' ');
-  return `${(spacja > max * 0.6 ? ciecie.slice(0, spacja) : ciecie).replace(/[\s,;:.–-]+$/, '')}…`;
+  return `${(spacja > max * 0.6 ? ciecie.slice(0, spacja) : ciecie).replace(/[\s,;:.\u2013\u2014-]+$/, '')}…`;
 }
 
 // Nazwy częstych sekcji z polskimi znakami (slug ich nie ma).
@@ -948,7 +1000,7 @@ export function zbudujLlmsTxt({ marka, opis, wpisy, lang = 'pl', jezykGlowny = '
 
 const KODY_BLOKADY = new Set([401, 403, 406, 429, 451, 503]);
 
-function wniosekBota(bot, robotsStan, wynikRobots, kod, kodPrzegladarki, blad, lang = 'pl') {
+function wniosekBota(bot, robotsStan, wynikRobots, kod, kodPrzegladarki, blad, lang = 'pl', { cloudflare = false } = {}) {
   const en = lang === 'en';
   const de = lang === 'de';
   if (robotsStan === 'niedostepny') {
@@ -958,11 +1010,21 @@ function wniosekBota(bot, robotsStan, wynikRobots, kod, kodPrzegladarki, blad, l
     return { ocena: 'blad', tekst: de ? `In der robots.txt gesperrt. ${bot.skutekBlokadyDe}` : en ? `Blocked in robots.txt. ${bot.skutekBlokadyEn}` : `Zablokowany w robots.txt. ${bot.skutekBlokady}` };
   }
   if (!bot.ua) {
-    return { ocena: 'ok', tekst: de ? 'In der robots.txt erlaubt. Google-Extended hat keinen eigenen User-Agent, daher entfällt der HTTP-Test.' : en ? 'Allowed in robots.txt. Google-Extended has no separate User-Agent, so the HTTP test does not apply.' : 'Dozwolony w robots.txt. Google-Extended nie ma osobnego User-Agenta, więc test HTTP nie dotyczy.' };
+    return { ocena: 'ok', tekst: de ? `In der robots.txt erlaubt. ${bot.nazwa} hat keinen eigenen User-Agent, daher entfällt der HTTP-Test.` : en ? `Allowed in robots.txt. ${bot.nazwa} has no separate User-Agent, so the HTTP test does not apply.` : `Dozwolony w robots.txt. ${bot.nazwa} nie ma osobnego User-Agenta, więc test HTTP nie dotyczy.` };
   }
-  if (blad) return { ocena: 'uwaga', tekst: blad === 'timeout' ? (de ? 'Keine Antwort innerhalb von 4 s. Bitte erneut prüfen.' : en ? 'No response within 4 s. Check again.' : 'Brak odpowiedzi w 4 s. Sprawdź ponownie.') : (de ? 'Verbindung nicht möglich. Bitte erneut prüfen.' : en ? 'Could not connect. Check again.' : 'Nie udało się połączyć. Sprawdź ponownie.') };
+  if (blad) return { ocena: 'uwaga', tekst: blad === 'timeout' ? (de ? 'Keine Antwort innerhalb von 8 s. Bitte erneut prüfen.' : en ? 'No response within 8 s. Check again.' : 'Brak odpowiedzi w 8 s. Sprawdź ponownie.') : (de ? 'Verbindung nicht möglich. Bitte erneut prüfen.' : en ? 'Could not connect. Check again.' : 'Nie udało się połączyć. Sprawdź ponownie.') };
   if (kod >= 200 && kod < 300) return { ocena: 'ok', tekst: de ? 'Zugriff in Ordnung: Die robots.txt erlaubt ihn, und die Seite antwortet mit Code 200.' : en ? 'Access OK: robots.txt allows it and the page returns code 200.' : 'Dostęp OK: robots.txt pozwala, a strona odpowiada kodem 200.' };
   if (kod >= 300 && kod < 400) return { ocena: 'uwaga', tekst: de ? `Der Bot erhält eine Weiterleitung (${kod}), ein Browser nicht. Prüfen Sie die Serverregeln für diesen User-Agent.` : en ? `The bot gets a redirect (${kod}) while a browser does not. Check the server rules for this User-Agent.` : `Bot dostaje przekierowanie (${kod}), choć przeglądarka nie. Sprawdź reguły serwera dla tego User-Agenta.` };
+  if (kodPrzegladarki >= 200 && kodPrzegladarki < 300 && kod === 403 && cloudflare) {
+    return {
+      ocena: 'uwaga',
+      tekst: de
+        ? 'In der robots.txt erlaubt. Cloudflare antwortet unserem Testserver bei diesem Bot-User-Agent mit Code 403, weil es echte KI-Bots anhand ihrer offiziellen IP-Adressen verifiziert (Verified Bots). Der echte Bot hat in der Regel Zugriff, sofern Sie KI-Crawler in Cloudflare nicht ausdrücklich gesperrt haben.'
+        : en
+        ? 'Allowed in robots.txt. Cloudflare returned 403 to our test server because it verifies genuine AI crawlers by their official IP ranges (Verified Bots). The real bot normally has access unless you explicitly blocked AI crawlers in Cloudflare.'
+        : 'Dozwolony w robots.txt. Cloudflare odpowiedział naszemu serwerowi testowemu kodem 403, bo weryfikuje prawdziwe boty AI po oficjalnych adresach IP (Verified Bots). Prawdziwy bot ma zwykle dostęp, o ile nie włączyłeś w Cloudflare blokady botów AI.',
+    };
+  }
   if (kodPrzegladarki >= 200 && kodPrzegladarki < 300 && (KODY_BLOKADY.has(kod) || kod >= 400)) {
     return { ocena: 'blad', tekst: de ? `Die robots.txt erlaubt ihn, aber Server oder CDN antworten dem Bot mit Code ${kod} und einem Browser mit 200. Prüfen Sie Ihre Firewall (WAF) und die Einstellungen des Bot-Schutzes.` : en ? `robots.txt allows it, but the server or CDN returns code ${kod} to the bot and 200 to a browser. Check your firewall (WAF) and bot protection settings.` : `robots.txt pozwala, ale serwer albo CDN odpowiada botowi kodem ${kod}, a przeglądarce 200. Sprawdź zaporę (WAF) i ustawienia ochrony przed botami.` };
   }
@@ -1007,25 +1069,27 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
   try {
     // 1. Strona główna jak w przeglądarce (punkt odniesienia testu botów, nazwa i opis do pliku).
     const glowna = await pobierzZPrzekierowaniami(strona.toString(), {
-      czas: (adres) => pobierz(adres, { ua: UA_PRZEGLADARKI, timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowHtml, agenci, accept: 'text/html,*/*;q=0.8' }),
+      czas: (adres) => pobierz(adres, { ua: UA_PRZEGLADARKI, timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowGlownej, agenci, accept: 'text/html,*/*;q=0.8', lang }),
     });
     if (glowna.blad === 'adres niedozwolony' || glowna.blad === 'adres prywatny') {
       throw new BladZadania(400, de ? 'Die Website leitet in ein privates Netzwerk weiter. Wir prüfen nur öffentliche Websites.' : en ? 'The site redirects to a private network. We only check public websites.' : 'Strona przekierowuje do sieci prywatnej. Sprawdzamy tylko publiczne strony.');
     }
     if (!glowna.kod) {
       throw new BladZadania(502, glowna.blad === 'timeout'
-        ? (de ? 'Die Website hat nicht innerhalb von 4 s geantwortet. Prüfen Sie die Adresse und versuchen Sie es erneut.' : en ? 'The site did not respond within 4 s. Check the address and try again.' : 'Strona nie odpowiedziała w 4 s. Sprawdź adres i spróbuj ponownie.')
+        ? (de ? 'Die Website hat nicht innerhalb von 8 s geantwortet. Prüfen Sie die Adresse und versuchen Sie es erneut.' : en ? 'The site did not respond within 8 s. Check the address and try again.' : 'Strona nie odpowiedziała w 8 s. Sprawdź adres i spróbuj ponownie.')
         : (de ? 'Verbindung zur Website nicht möglich. Prüfen Sie die Adresse und versuchen Sie es erneut.' : en ? 'Could not connect to the site. Check the address and try again.' : 'Nie udało się połączyć ze stroną. Sprawdź adres i spróbuj ponownie.'));
     }
     const glownaUrl = new URL(glowna.url);
     const hostStrony = bezWww(glownaUrl.hostname);
     const tenSamHost = (u) => (u.protocol === 'http:' || u.protocol === 'https:') && bezWww(u.hostname) === hostStrony;
-    const metaGlownej = glowna.cialo ? metaZHtml(dekodujTekst(glowna.cialo, glowna.naglowki['content-type'])) : metaZHtml('');
+    const tekstGlownej = glowna.cialo ? dekodujTekst(glowna.cialo, glowna.naglowki['content-type']) : '';
+    const metaGlownej = tekstGlownej ? metaZHtml(tekstGlownej) : metaZHtml('');
+    const serwerGlownej = String(glowna.naglowki?.server || '');
     const origin = glownaUrl.origin;
 
     // 2. robots.txt (RFC 9309: przekierowania do 5 kroków, 4xx = brak ograniczeń, 5xx = pełny zakaz).
     const robotsOdp = await pobierzZPrzekierowaniami(`${origin}/robots.txt`, {
-      czas: (adres) => pobierz(adres, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowRobots, agenci, accept: 'text/plain,*/*;q=0.8' }),
+      czas: (adres) => pobierz(adres, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowRobots, agenci, accept: 'text/plain,*/*;q=0.8', lang }),
     }, tenSamHost);
     let robotsStan = 'brak';
     let robots = { grupy: [], sitemapy: [] };
@@ -1041,12 +1105,14 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       const wynikRobots = sprawdzSciezke(robots, bot.token, glownaUrl.pathname || '/');
       let kod = null;
       let blad = null;
+      let serwerBota = '';
       if (bot.ua && zostalo() > 500) {
-        const w = await pobierz(glowna.url, { ua: bot.ua, timeoutMs: timeout(), maxBajtow: 0, agenci, accept: 'text/html,*/*;q=0.8' });
+        const w = await pobierz(glowna.url, { ua: bot.ua, timeoutMs: timeout(), maxBajtow: 0, agenci, accept: 'text/html,*/*;q=0.8', lang });
         kod = w.kod || null;
         blad = w.blad;
+        serwerBota = String(w.naglowki?.server || '');
       }
-      return { bot, wynikRobots, kod, blad };
+      return { bot, wynikRobots, kod, blad, serwerBota };
     }));
 
     const mapa = (async () => {
@@ -1063,7 +1129,7 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       const terminMap = termin - LIMITY.rezerwaNaStronyMs;
       const czasMapy = () => Math.min(timeout(), terminMap - Date.now());
       const pobierzMape = (adres, maxBajtow = LIMITY.maxBajtow, podrzedna = false) => pobierzZPrzekierowaniami(adres, {
-        czas: (a) => pobierz(a, { timeoutMs: podrzedna ? Math.max(czasMapy(), 1) : timeout(), maxBajtow, agenci, accept: 'application/xml,text/xml,*/*;q=0.8' }),
+        czas: (a) => pobierz(a, { timeoutMs: podrzedna ? Math.max(czasMapy(), 1) : timeout(), maxBajtow, agenci, accept: 'application/xml,text/xml,*/*;q=0.8', lang }),
       }, tenSamHost);
       let uciete = false;
       const mapy = [];
@@ -1133,7 +1199,7 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
     // za przekierowaniem: plik za przekierowaniem raportujemy jako osobny przypadek.
     const obecny = (async () => {
       if (zostalo() < 1000) return null;
-      const o = await pobierz(`${origin}/llms.txt`, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowHtml, agenci, accept: 'text/plain,text/markdown,*/*;q=0.8' });
+      const o = await pobierz(`${origin}/llms.txt`, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowHtml, agenci, accept: 'text/plain,text/markdown,*/*;q=0.8', lang });
       if (!o.kod) return { kod: null, blad: o.blad };
       const typ = String(o.naglowki['content-type'] || '').split(';')[0].trim() || null;
       if (o.kod >= 300 && o.kod < 400) return { kod: o.kod, typ, przekierowanie: o.naglowki.location || null };
@@ -1158,9 +1224,10 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
     const [boty, { mapy, zrodlo: mapaZrodlo, razem: wMapie, wIndeksie, uciete: mapaUcieta }, obecnyPlik] = await Promise.all([testBotow, mapa, obecny]);
 
     // 4. Adresy do sprawdzenia: ta sama domena, bez duplikatów, maks. 50, po kilka z każdej mapy
-    //    i sekcji (wybierzAdresy). Strona główna spoza mapy dochodzi na początek.
+    //    i sekcji (wybierzAdresy). Gdy brak mapy strony (albo mapa ma < 2 adresy), wyciągamy unikalne
+    //    wewnętrzne linki <a href="..."> ze strony głównej, żeby strona bez sitemap.xml też dostała bogaty plik.
     const glownaOk = glowna.kod >= 200 && glowna.kod < 300;
-    const wybor = wybierzAdresy(mapy, {
+    const opcjeWyboru = {
       limit: LIMITY.maxUrli,
       czyDozwolony: tenSamHost,
       stronaGlowna: glownaOk ? glowna.url : null,
@@ -1168,18 +1235,30 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       jezykHtml: metaGlownej.jezyk,
       en,
       de,
-    });
+    };
+    const wyborMapy = wybierzAdresy(mapy, opcjeWyboru);
+    const adresowZMapy = wyborMapy.unikalnych || wMapie;
+    let wybor = wyborMapy;
+    if (adresowZMapy < 2 && glownaOk && tekstGlownej) {
+      const zLinkow = linkiZHtml(tekstGlownej, glowna.url, tenSamHost);
+      if (zLinkow.length > 0) {
+        wybor = wybierzAdresy([
+          ...mapy,
+          { lokacje: zLinkow, zmiany: zLinkow.map(() => 0), priorytety: zLinkow.map(() => 0.5) },
+        ], opcjeWyboru);
+      }
+    }
     const pominiete = wybor.pominiete;
     const doSprawdzenia = wybor.adresy;
     if (!doSprawdzenia.length && glownaOk) doSprawdzenia.push(glowna.url);
 
     // 5. Każdy adres: HEAD (kod, przekierowanie, X-Robots-Tag), potem ucięty GET (tytuł, opis, meta robots).
     const sprawdzAdres = async (url) => {
-      let glowa = await pobierz(url, { metoda: 'HEAD', timeoutMs: timeout(), agenci, accept: 'text/html,*/*;q=0.8' });
-      const bezHead = glowa.kod === 405 || glowa.kod === 501 || (!glowa.kod && glowa.blad !== 'timeout');
+      let glowa = await pobierz(url, { metoda: 'HEAD', timeoutMs: timeout(), agenci, accept: 'text/html,*/*;q=0.8', lang });
+      const bezHead = glowa.kod === 403 || glowa.kod === 405 || glowa.kod === 501 || (!glowa.kod && glowa.blad !== 'timeout');
       if (bezHead) glowa = null;
       if (glowa) {
-        if (!glowa.kod) return { url, powod: de ? 'keine Antwort innerhalb von 4 s' : en ? 'no response within 4 s' : 'brak odpowiedzi w 4 s' };
+        if (!glowa.kod) return { url, powod: de ? 'keine Antwort innerhalb von 8 s' : en ? 'no response within 8 s' : 'brak odpowiedzi w 8 s' };
         if (glowa.kod >= 300 && glowa.kod < 400) return { url, powod: de ? `Weiterleitung (${glowa.kod})` : en ? `redirect (${glowa.kod})` : `przekierowanie (${glowa.kod})` };
         if (glowa.kod !== 200) return { url, powod: de ? `Code ${glowa.kod}` : en ? `code ${glowa.kod}` : `kod ${glowa.kod}` };
         if (/noindex/i.test(String(glowa.naglowki['x-robots-tag'] || ''))) return { url, powod: de ? 'noindex (Header X-Robots-Tag)' : en ? 'noindex (X-Robots-Tag header)' : 'noindex (nagłówek X-Robots-Tag)' };
@@ -1187,8 +1266,8 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
         if (typHead && !/html/i.test(typHead)) return { url, powod: de ? `keine HTML-Seite (${typHead.split(';')[0]})` : en ? `not an HTML page (${typHead.split(';')[0]})` : `nie jest stroną HTML (${typHead.split(';')[0]})` };
       }
       if (zostalo() < 500) return { url, nieprzetworzony: true };
-      const odpGet = await pobierz(url, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowHtml, agenci, accept: 'text/html,*/*;q=0.8' });
-      if (!odpGet.kod) return { url, powod: odpGet.blad === 'timeout' ? (de ? 'keine Antwort innerhalb von 4 s' : en ? 'no response within 4 s' : 'brak odpowiedzi w 4 s') : (de ? 'Verbindungsfehler' : en ? 'connection error' : 'błąd połączenia') };
+      const odpGet = await pobierz(url, { timeoutMs: timeout(), maxBajtow: LIMITY.maxBajtowHtml, agenci, accept: 'text/html,*/*;q=0.8', lang });
+      if (!odpGet.kod) return { url, powod: odpGet.blad === 'timeout' ? (de ? 'keine Antwort innerhalb von 8 s' : en ? 'no response within 8 s' : 'brak odpowiedzi w 8 s') : (de ? 'Verbindungsfehler' : en ? 'connection error' : 'błąd połączenia') };
       if (odpGet.kod >= 300 && odpGet.kod < 400) return { url, powod: de ? `Weiterleitung (${odpGet.kod})` : en ? `redirect (${odpGet.kod})` : `przekierowanie (${odpGet.kod})` };
       if (odpGet.kod !== 200) return { url, powod: de ? `Code ${odpGet.kod}` : en ? `code ${odpGet.kod}` : `kod ${odpGet.kod}` };
       if (/noindex/i.test(String(odpGet.naglowki['x-robots-tag'] || ''))) return { url, powod: de ? 'noindex (Header X-Robots-Tag)' : en ? 'noindex (X-Robots-Tag header)' : 'noindex (nagłówek X-Robots-Tag)' };
@@ -1202,10 +1281,9 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
     // adresu nie zajmował miejsca w puli, kiedy inne wybrane adresy czekają (weryfikacja 11.11.2026).
     const wyniki = await pula(doSprawdzenia.map((url) => () => sprawdzAdres(url)), LIMITY.wspolbieznosc, termin);
     // Faza 2: odrzucony adres (powod) zastępujemy następnym z tej samej puli (wybor.zastepca): maks.
-    // LIMITY.maxZastepcow razy na adres, LIMITY.maxZastepcowRazem razem i tylko, gdy zostały co najmniej
-    // 2 timeouty (HEAD + GET) do limitu 20 s. Gdy odrzucona jest ponad połowa sprawdzonych adresów, błąd
-    // jest systemowy (np. każda podstrona przekierowuje na wersję z ukośnikiem) i zastępców nie szukamy:
-    // w symulacji takiego serwisu zastępcy podnosili liczbę zapytań z 63 do 165, a czas z 4,5 do 12,4 s.
+    // LIMITY.maxZastepcow razy na adres, LIMITY.maxZastepcowRazem razem i tylko, gdy zostało co najmniej
+    // 8 s do limitu 20 s. Gdy odrzucona jest ponad połowa sprawdzonych adresów, błąd jest systemowy
+    // (np. każda podstrona przekierowuje na wersję z ukośnikiem) i zastępców nie szukamy.
     const odrzuconych = wyniki.filter((w) => w && w.powod).length;
     const sprawdzonych = wyniki.filter((w) => w && !w.nieprzetworzony).length;
     if (odrzuconych && odrzuconych * 2 <= sprawdzonych) {
@@ -1216,7 +1294,7 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
         zadaniaZastepcow.push(async () => {
           const odrzucone = [];
           let biezacy = w;
-          for (let n = 0; n < LIMITY.maxZastepcow && biezacy.powod && budzet > 0 && zostalo() > 2 * LIMITY.timeoutMs; n += 1) {
+          for (let n = 0; n < LIMITY.maxZastepcow && biezacy.powod && budzet > 0 && zostalo() > 8000; n += 1) {
             const nastepny = wybor.zastepca(biezacy.url);
             if (!nastepny) break;
             budzet -= 1;
@@ -1258,8 +1336,9 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
     const marka = nazwaMarki({ nazwaSerwisu: metaGlownej.nazwaSerwisu, tytuly: [metaGlownej.tytul, ...wpisy.map((w) => w.tytul)].filter(Boolean), host: glownaUrl.hostname });
     const llmsTxt = zbudujLlmsTxt({ marka, opis: metaGlownej.opis || metaGlownej.ogOpis, wpisy, lang, jezykGlowny: wybor.jezykGlowny, wszystkieAdresy: wybor.wszystkie.length ? wybor.wszystkie : null, jezykStrony: wybor.jezykGlowny || metaGlownej.jezyk });
 
-    const tabelaBotow = boty.map(({ bot, wynikRobots, kod, blad }) => {
-      const w = wniosekBota(bot, robotsStan, wynikRobots, kod, glowna.kod, blad, lang);
+    const tabelaBotow = boty.map(({ bot, wynikRobots, kod, blad, serwerBota }) => {
+      const cloudflare = /cloudflare/i.test(serwerGlownej) || /cloudflare/i.test(serwerBota || '');
+      const w = wniosekBota(bot, robotsStan, wynikRobots, kod, glowna.kod, blad, lang, { cloudflare });
       const zablokowaneAdresy = robotsStan === 'jest'
         ? sprawdzoneAdresy.filter((u) => !sprawdzSciezke(robots, bot.token, new URL(u).pathname + new URL(u).search).dozwolona).length
         : 0;
@@ -1289,7 +1368,7 @@ export async function generuj(wejscie, { start = Date.now(), lang = 'pl' } = {})
       // sekcji = pule, między które podzielono limit (0 = wszystkie adresy mieszczą się w limicie),
       mapa: {
         zrodlo: mapaZrodlo,
-        adresow: wybor.unikalnych || wMapie,
+        adresow: adresowZMapy,
         // sprawdzone = adresy faktycznie pobrane, razem z zastępcami (zastepcze = ilu odrzuconych zastąpiliśmy).
         sprawdzone: sprawdzoneAdresy.length,
         zastepcze: zastepcow,

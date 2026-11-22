@@ -15,13 +15,13 @@ import { sectionId, hash } from '@/lib/anchors';
 import { celLinku, spelniony } from './segmenty';
 
 const S = {
-  h2: { fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', lineHeight: 1.2, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-text-dark)', margin: '3.5rem 0 1.25rem', scrollMarginTop: '110px' },
-  h3: { fontSize: 'clamp(1.2rem, 2.4vw, 1.45rem)', lineHeight: 1.3, fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--color-text-dark)', margin: '2.25rem 0 0.75rem', scrollMarginTop: '110px' },
-  p: { fontSize: '1.08rem', lineHeight: 1.7, color: 'var(--color-text-main)', margin: '0 0 1.1rem' },
-  lista: { margin: '0 0 1.25rem', paddingLeft: '1.4rem', display: 'grid', gap: '0.5rem', fontSize: '1.08rem', lineHeight: 1.65, color: 'var(--color-text-main)' },
-  link: { color: 'var(--color-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' },
+  h2: { fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.035em', color: 'var(--w-tusz)', margin: '3.5rem 0 1.25rem', scrollMarginTop: '110px' },
+  h3: { fontSize: 'clamp(1.2rem, 2.4vw, 1.45rem)', lineHeight: 1.25, fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', margin: '2.25rem 0 0.75rem', scrollMarginTop: '110px' },
+  p: { fontSize: '1.08rem', lineHeight: 1.7, color: 'var(--w-tusz-2)', margin: '0 0 1.1rem' },
+  lista: { margin: '0 0 1.25rem', paddingLeft: '1.4rem', display: 'grid', gap: '0.5rem', fontSize: '1.08rem', lineHeight: 1.65, color: 'var(--w-tusz-2)' },
+  link: { color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline', textUnderlineOffset: '3px' },
   podpis: { margin: '0.75rem 0 0', fontSize: '0.88rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' },
-  karta: { background: '#FFFFFF', borderRadius: '20px', padding: 'clamp(1.1rem, 3vw, 1.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', margin: '1.5rem 0 2rem' },
+  karta: { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '20px', padding: 'clamp(1.1rem, 3vw, 1.5rem)', boxShadow: 'none', margin: '1.5rem 0 2rem' },
 };
 
 /** id sekcji H2: kotwica z lib/anchors.js (np. 'zrodla') albo pole id wpisu. */
@@ -77,18 +77,18 @@ export function Przyciski({ przyciski = [], style, locale = 'pl' }) {
 function Wykres({ tytul, slupki = [], podpis, locale = 'pl' }) {
   return (
     <figure style={S.karta}>
-      <figcaption style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--color-text-dark)', margin: '0 0 1rem' }}>{tytul}</figcaption>
+      <figcaption style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--w-tusz)', margin: '0 0 1rem' }}>{tytul}</figcaption>
       <div style={{ display: 'grid', gap: '1rem' }}>
         {slupki.map((s) => {
           const proc = s.z ? Math.round((s.wartosc / s.z) * 100) : 0;
           return (
             <div key={s.etykieta}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', fontSize: '0.95rem', lineHeight: 1.4, color: 'var(--color-text-main)', marginBottom: '0.4rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', fontSize: '0.95rem', lineHeight: 1.4, color: 'var(--w-tusz-2)', marginBottom: '0.4rem' }}>
                 <span>{s.etykieta}</span>
-                <span style={{ fontWeight: 700, color: 'var(--color-text-dark)', whiteSpace: 'nowrap' }}>{locale === 'en' ? <>{s.wartosc} of {s.z} links</> : <>{s.wartosc} z {s.z} linków</>}</span>
+                <span style={{ fontWeight: 600, color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>{locale === 'en' ? <>{s.wartosc} of {s.z} links</> : <>{s.wartosc} z {s.z} linków</>}</span>
               </div>
               <div aria-hidden="true" style={{ height: '12px', background: 'var(--w-linia)', borderRadius: '999px', overflow: 'hidden' }}>
-                <div style={{ width: `${proc}%`, height: '100%', background: 'var(--color-primary)', borderRadius: '999px' }} />
+                <div style={{ width: `${proc}%`, height: '100%', background: 'var(--w-pomarancz)', borderRadius: '999px' }} />
               </div>
             </div>
           );
@@ -102,7 +102,7 @@ function Wykres({ tytul, slupki = [], podpis, locale = 'pl' }) {
 function Obraz({ src, alt, width, height, podpis }) {
   return (
     <figure style={{ margin: '1.5rem 0 2rem' }}>
-      <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 900px) 100vw, 820px" style={{ width: '100%', height: 'auto', borderRadius: '18px', boxShadow: '0 20px 50px rgba(15, 23, 42, 0.14)' }} />
+      <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 900px) 100vw, 820px" style={{ width: '100%', height: 'auto', borderRadius: '16px', border: '1px solid var(--w-linia)', boxShadow: 'none' }} />
       {podpis && <figcaption style={S.podpis}>{podpis}</figcaption>}
     </figure>
   );

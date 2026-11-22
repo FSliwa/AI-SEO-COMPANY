@@ -508,7 +508,7 @@ export default function KalkulatorClientDe() {
           </label>
           <input id="k-de-udzialAi" type="range" min="0" max="60" step="5" value={dane.udzialAi} onChange={zmien('udzialAi')} className="narz-suwak" />
           <p className="narz-mikro">
-            Standardwert {ZALOZENIA.udzialAiDomyslny} %: unsere vorsichtige Annahme (Gartner prognostizierte im Februar 2024 einen Rückgang des klassischen Suchvolumens um 25 % bis 2026; ob diese Prognose eingetreten ist, haben wir nicht überprüft). Passen Sie den Regler an Ihre Branche an. Je mehr Fragen an KI gehen, desto kleiner fällt der Gesamtverlust an Klicks aus, weil KI-Antworten deutlich seltener mit einem Website-Besuch enden.
+            Standardwert {ZALOZENIA.udzialAiDomyslny} %: unsere vorsichtige Annahme (Gartner prognostizierte im Februar 2024 einen Rückgang des klassischen Suchvolumens um 25 % bis 2026; ob diese Prognose eingetreten ist, haben wir nicht überprüft). Passen Sie den Regler an Ihre Branche an. Im KI-Kanal berücksichtigt das Modell sowohl direkte Quellenklicks als auch nachfolgende Markensuchen bei Google mit höherer Abschlussbereitschaft ({String(ZALOZENIA.ai.mnoznikKonwersji).replace('.', ',')}x Conversion-Lift).
           </p>
         </div>
 
@@ -573,7 +573,7 @@ export default function KalkulatorClientDe() {
               <div>
                 <p className="narz-rozbicie-etykieta">Fehlende KI-Empfehlungen</p>
                 <p className="narz-rozbicie-kwota">{fmt(W.min.zyskAi)} bis {fmt(W.max.zyskAi)}</p>
-                <p className="narz-mikro">{calkowita(W.min.wizytyAi)} bis {calkowita(W.max.wizytyAi)} Besuche aus KI-Antworten pro Monat</p>
+                <p className="narz-mikro">{calkowita(W.min.wizytyAi)} bis {calkowita(W.max.wizytyAi)} Besuche & Markensuchen pro Monat</p>
               </div>
               {sklep ? (
                 <div>

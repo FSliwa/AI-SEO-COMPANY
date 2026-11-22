@@ -148,6 +148,27 @@ function KartaProblemu({ p }) {
   );
 }
 
+function odczytajOdblokowane(id) {
+  if (!id || typeof window === 'undefined') return null;
+  try {
+    const s = window.sessionStorage.getItem(`aisc_odblok_${id}`);
+    if (!s) return null;
+    const p = JSON.parse(s);
+    return p && typeof p === 'object' ? (p.pelny ?? p) : null;
+  } catch {
+    return null;
+  }
+}
+
+function zapiszOdblokowane(id, pelny) {
+  if (!id || !pelny || typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.setItem(`aisc_odblok_${id}`, JSON.stringify(pelny));
+  } catch {
+    // kein Zugriff auf sessionStorage
+  }
+}
+
 export default function AudytSeoClientDe() {
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, historia: null });
   const [filtr, setFiltr] = useState('wszystkie');
@@ -163,6 +184,34 @@ export default function AudytSeoClientDe() {
   const emailBramki = useRef('');
   // ?url= tylko wypełnia pole; audyt startuje dopiero po kliknięciu (limit IP).
   useParametrUrl(['url'], ({ url }) => setAdres(url));
+  useEffect(() => {
+    if (DEMO || typeof window === 'undefined') return undefined;
+    const wynikId = new URLSearchParams(window.location.search).get('wynik')?.trim();
+    if (!wynikId || !/^[a-zA-Z0-9_-]{6,120}$/.test(wynikId)) return undefined;
+    const ctrl = new AbortController();
+    (async () => {
+      try {
+        const res = await fetch(`${PANEL_API}/wynik/${encodeURIComponent(wynikId)}`, { signal: ctrl.signal });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok || !data.podglad) return;
+        if (data.tool && data.tool !== 'audyt_seo') return;
+        const id = data.id || wynikId;
+        const pelny = odczytajOdblokowane(id);
+        setAdres((obecny) => obecny || data.podglad.domenaWyswietlana || data.podglad.domena || data.podglad.url || '');
+        setStan((s) => (s.status === 'idle' ? {
+          status: 'done',
+          blad: null,
+          id,
+          podglad: data.podglad,
+          pelny,
+          historia: data.historia ?? null,
+        } : s));
+      } catch {
+        // Fehler beim Laden des geteilten Ergebnisses ignorieren
+      }
+    })();
+    return () => ctrl.abort();
+  }, []);
   const pelnyAudyt = maWersjeDe('/audyt-seo') ? '/audyt-seo' : null;
 
   async function start(e) {
@@ -170,15 +219,17 @@ export default function AudytSeoClientDe() {
     const fd = new FormData(e.currentTarget);
     const url = adres.trim();
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null, historia: null });
-    zapiszParametry({ url });
+    zapiszParametry({ url, wynik: null });
     track('narzedzie_start', { narzedzie: 'audyt_seo' });
     const r = await wywolajNarzedzie('audyt_seo', { url, nick: String(fd.get('nick') || ''), lang: 'de' });
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
+    if (r.id && !DEMO) zapiszParametry({ url, wynik: r.id });
     track('narzedzie_wynik', { narzedzie: 'audyt_seo', wynik: r.podglad.wynik });
-    setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null, historia: r.historia ?? (DEMO ? historiaDemo(r.podglad) : null) });
+    setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: odczytajOdblokowane(r.id), historia: r.historia ?? (DEMO ? historiaDemo(r.podglad) : null) });
   }
 
   function wroc() {
+    zapiszParametry({ wynik: null });
     setPowrot(true);
     setWychodzi(true);
     setTimeout(() => {
@@ -191,6 +242,8 @@ export default function AudytSeoClientDe() {
   }
 
   const w = stan.pelny ?? stan.podglad;
+  const niesprawdzoneLiczba = Number(w?.niesprawdzoneLiczba ?? stan.podglad?.niesprawdzoneLiczba ?? 0);
+  const niesprawdzoneLista = Array.isArray(w?.niesprawdzone) ? w.niesprawdzone : (Array.isArray(stan.podglad?.niesprawdzone) ? stan.podglad.niesprawdzone : []);
   const problemy = stan.pelny ? stan.pelny.problemy : stan.podglad?.problemy ?? [];
   const widoczne = filtr === 'wszystkie' ? problemy : problemy.filter((p) => p.kategoria === filtr);
   // Przy pełnym wyniku lista dzieli się na trzy pierwsze (jak w podglądzie) i resztę pod bramką.
@@ -227,17 +280,34 @@ export default function AudytSeoClientDe() {
           <div className="narz-wynik-glowa">
             <Ocena wynik={w.wynik} podpis="Punktzahl" />
             <div>
-              <p className="narz-wynik-domena">{w.domena}</p>
+              <p className="narz-wynik-domena">{w.domenaWyswietlana || w.domena}</p>
               <p className="narz-wynik-opis">
                 {`Wir haben ${unterseiten(w.stron)} geprüft und ${liczbaProblemow(w.liczby.bledy + w.liczby.ostrzezenia + w.liczby.uwagi)} gefunden: ${w.liczby.bledy} Fehler, ${w.liczby.ostrzezenia} ${w.liczby.ostrzezenia === 1 ? 'Warnung' : 'Warnungen'} und ${w.liczby.uwagi} ${w.liczby.uwagi === 1 ? 'Hinweis' : 'Hinweise'}.`}
               </p>
+              {niesprawdzoneLiczba > 0 && (
+                <div className="narz-psi" role="note" style={{ margin: '0.35rem 0 0.6rem' }}>
+                  <p style={{ margin: 0 }}>
+                    {`${unterseiten(niesprawdzoneLiczba)} ${niesprawdzoneLiczba === 1 ? 'konnte' : 'konnten'} nicht abgerufen werden (Zeitüberschreitung oder Verbindungsfehler) und ${niesprawdzoneLiczba === 1 ? 'fließt' : 'fließen'} daher nicht in die Punktzahl ein.`}
+                  </p>
+                  {niesprawdzoneLista.length > 0 && (
+                    <details className="narz-problem-strony" style={{ marginTop: '0.25rem' }}>
+                      <summary>{`Nicht geprüfte Adressen (${niesprawdzoneLista.length})`}</summary>
+                      <ul>{niesprawdzoneLista.map((item, idx) => {
+                        const tekst = typeof item === 'string' ? item : `${item.url}${item.powod ? ` (${item.powod})` : ''}`;
+                        return <li key={`${idx}-${tekst}`}>{tekst}</li>;
+                      })}</ul>
+                    </details>
+                  )}
+                </div>
+              )}
               {stan.historia && <Historia h={stan.historia} />}
               <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 1.25rem' }}>
                 <button type="button" className="narz-link" onClick={wroc}>Andere Website prüfen</button>
                 <LinkWyniku
                   narzedzie="audyt_seo"
-                  parametry={{ url: adres.trim() || w.domena }}
-                  podsumowanie={`SEO-Audit ${w.domena}: ${w.wynik}/100 (${w.liczby.bledy} Fehler, ${w.liczby.ostrzezenia} ${w.liczby.ostrzezenia === 1 ? 'Warnung' : 'Warnungen'})`}
+                  tryb={stan.id ? 'wynik' : 'wypelnij'}
+                  parametry={{ url: adres.trim() || w.domenaWyswietlana || w.domena, ...(stan.id ? { wynik: stan.id } : {}) }}
+                  podsumowanie={`SEO-Audit ${w.domenaWyswietlana || w.domena}: ${w.wynik}/100 (${w.liczby.bledy} Fehler, ${w.liczby.ostrzezenia} ${w.liczby.ostrzezenia === 1 ? 'Warnung' : 'Warnungen'})`}
                 />
               </div>
             </div>
@@ -261,7 +331,7 @@ export default function AudytSeoClientDe() {
             <p className="narz-psi">
               {`PageSpeed Insights (Smartphone): Performance ${w.psi.wydajnosc ?? '-'}, SEO ${w.psi.seo ?? '-'}, Barrierefreiheit ${w.psi.dostepnosc ?? '-'}, Best Practices ${w.psi.praktyki ?? '-'}.`}
               {w.psi.przebiegi > 1 && w.psi.wydajnoscPomiary?.length > 1
-                ? ` Die Performance ist der Median aus ${w.psi.przebiegi} Messungen (${w.psi.wydajnoscPomiary.join(' und ')}).`
+                ? ` Die Performance ist der Median aus ${w.psi.przebiegi} Messungen (${w.psi.wydajnoscPomiary.join(', ')}).`
                 : w.psi.przebiegi === 1 ? ' Die Performance stammt aus einer einzigen Messung; eine einzelne Messung kann um etwa 10 Punkte abweichen.' : null}
             </p>
           )}
@@ -304,6 +374,7 @@ export default function AudytSeoClientDe() {
                 przycisk="Vollständiges Audit anzeigen"
                 onOdblokowano={(pelny, newsletter, mailOk) => {
                   const email = emailBramki.current;
+                  zapiszOdblokowane(stan.id, pelny);
                   setStan((s) => ({ ...s, pelny, email, mailOk }));
                 }}
               />

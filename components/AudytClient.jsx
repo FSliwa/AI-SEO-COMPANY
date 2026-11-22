@@ -40,22 +40,22 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
   const faqWidoczne = lang === 'pl' ? faqPl : faqData.filter((f) => !f.tylkoPl);
 
   return (
-    <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       
       {/* Hero Banner - Apple Style */}
       <section className="subpage-hero tlo-gory-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
         <TloGory />
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.82rem' }}>
               {lang === 'pl' ? 'Audyt SEO. Prawda zaboli.' : 'SEO AUDIT'}
             </div>
             
             <h1 style={{ 
-              fontSize: 'clamp(3.5rem, 7vw, 6rem)', 
-              fontWeight: 700, 
-              lineHeight: 1.05, 
-              color: 'var(--color-text-main)', 
+              fontSize: 'clamp(3.2rem, 6.5vw, 5.6rem)', 
+              fontWeight: 500, 
+              lineHeight: 1.04, 
+              color: 'var(--w-tusz)', 
               marginBottom: '1rem', 
               letterSpacing: '-0.04em'
             }}>
@@ -63,21 +63,20 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
             </h1>
 
             <div style={{ 
-              width: '120px', 
-              height: '6px', 
-              background: 'linear-gradient(90deg, var(--color-cta) 0%, #FF8A65 100%)', 
+              width: '96px', 
+              height: '4px', 
+              background: 'var(--w-pomarancz)', 
               margin: '0 auto 2rem auto', 
-              borderRadius: '3px',
-              boxShadow: '0 4px 15px rgba(216, 90, 48, 0.4)'
+              borderRadius: '2px'
             }}></div>
 
             <div style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
-              color: 'var(--color-text-main)', 
+              fontSize: 'clamp(2.25rem, 4.5vw, 3.6rem)', 
+              fontWeight: 500, 
+              color: 'var(--w-tusz)', 
               marginBottom: '1.5rem', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em'
+              lineHeight: 1.08,
+              letterSpacing: '-0.035em'
             }}>
               {lang === 'pl' ? (
                 <>Diagnoza Techniczna<br/>Precyzyjna Optymalizacja</>
@@ -126,35 +125,35 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
       <section style={{ padding: '120px 0' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: 'clamp(2.35rem, 4vw, 3.6rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.08, marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Obszary Analizy Technicznej' : 'Technical Analysis Areas'}
             </h2>
-            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 400 }}>
               {lang === 'pl'
-                ? <>Kompleksowa weryfikacja techniczna, strukturalna i semantyczna witryny. Na start możesz sprawdzić podstawy w <Link href="/narzedzia/audyt-seo" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>darmowym audycie SEO online</Link>: ocena 1-100 i lista błędów, bez rejestracji.</>
-                : <>Comprehensive technical, structural, and semantic verification of your website. To start, you can check the basics with the <Link href="/narzedzia/audyt-seo" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>free SEO audit tool</Link>: a score from 1 to 100 and a list of errors, no sign-up.</>}
+                ? <>Kompleksowa weryfikacja techniczna, strukturalna i semantyczna witryny. Na start możesz sprawdzić podstawy w <Link href="/narzedzia/audyt-seo" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>darmowym audycie SEO online</Link>: ocena 1-100 i lista błędów, bez rejestracji.</>
+                : <>Comprehensive technical, structural, and semantic verification of your website. To start, you can check the basics with the <Link href="/narzedzia/audyt-seo" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>free SEO audit tool</Link>: a score from 1 to 100 and a list of errors, no sign-up.</>}
             </p>
           </Reveal>
 
-          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '2rem' }}>
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 1' : 'AREA 1'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technikalia & CWV' : 'Search Engine Optimization and Optimisation Consultancy'}</h3>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots. Expert search engine optimisation consultancy and optimization applied.'}</p>
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '1.5rem' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'OBSZAR 1' : 'AREA 1'}</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Technikalia & CWV' : 'Search Engine Optimization and Optimisation Consultancy'}</h3>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? 'Analiza Core Web Vitals (LCP, CLS, INP), poprawności kodów HTTP, przekierowań i eliminacja barier dla robotów indeksujących.' : 'Analysis of Core Web Vitals (LCP, CLS, INP), HTTP code correctness, redirects, and eliminating barriers for indexing bots. Expert search engine optimisation consultancy and optimization applied.'}</p>
             </RevealItem>
             
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 2' : 'AREA 2'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Treści & Semantyka' : 'Content & Semantics'}</h3>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Weryfikacja intencji wyszukiwania (Search Intent), <span style={{ fontWeight: 'bold' }}>optymalizacja SEO</span> treści, analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.</> : 'Verification of search intent, analysis of keyword cannibalization and coverage of topical clusters.'}</p>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'OBSZAR 2' : 'AREA 2'}</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Treści & Semantyka' : 'Content & Semantics'}</h3>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? <>Weryfikacja intencji wyszukiwania (Search Intent), <span style={{ fontWeight: 600, color: 'var(--w-tusz)' }}>optymalizacja SEO</span> treści, analiza kanibalizacji słów kluczowych i pokrycia klastrów tematycznych.</> : 'Verification of search intent, analysis of keyword cannibalization and coverage of topical clusters.'}</p>
             </RevealItem>
             
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'OBSZAR 3' : 'AREA 3'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profil Linków & Autorytet' : 'Link Profile & Authority'}</h3>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl'
-                ? <>Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI. Co dalej z profilem linków: <Link href="/link-building" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>link building</Link> w pakietach SEO.</>
-                : <>Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains. What comes next for your link profile: <Link href="/link-building" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>link building services</Link> in our SEO packages.</>}</p>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'OBSZAR 3' : 'AREA 3'}</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profil Linków & Autorytet' : 'Link Profile & Authority'}</h3>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl'
+                ? <>Weryfikacja toksyczności linków przychodzących, analiza anchor textów oraz badanie domen odsyłających w modelu AI. Co dalej z profilem linków: <Link href="/link-building" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>link building</Link> w pakietach SEO.</>
+                : <>Verification of incoming link toxicity, anchor text analysis, and AI model evaluation of referring domains. What comes next for your link profile: <Link href="/link-building" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>link building services</Link> in our SEO packages.</>}</p>
             </RevealItem>
           </RevealStagger>
           {/* CTA w środku strony: między hero a #kontakt były sekcje bez żadnego przycisku. */}
@@ -179,54 +178,56 @@ export default function AudytClient({ faqData, portfolioCases, carouselItems }) 
           Widełki rynkowe: widoczni.com/pozycjonowanie-cennik, curl 5.11.2026 (MSA-02); bez linku. */}
       {lang === 'pl' && (
         <section style={{ padding: '0 0 40px 0' }}>
-          <div className="container" style={{ maxWidth: '900px', margin: '0 auto', color: 'var(--color-text-main)' }}>
+          <div className="container" style={{ maxWidth: '900px', margin: '0 auto', color: 'var(--w-tusz)' }}>
             <Reveal>
-              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
-                Audyt SEO: cena i warianty
-              </h2>
-              <p style={tekstSekcji}>
-                Cena zależy od tego, czy potrzebujesz samej diagnozy, czy diagnozy razem z wdrożeniem. Trzy warianty, w których robimy audyt SEO, zestawiliśmy w tabeli. Przed wyceną bezpłatnie oceniamy stronę i zakres, a pełny audyt z raportem jest płatny według tabeli.
-              </p>
-              <CompareTable
-                id="warianty-audytu"
-                caption="Warianty audytu: cena netto, czas i zakres"
-                columns={[
-                  { key: 'wariant', label: 'Wariant' },
-                  { key: 'cena', label: 'Cena (netto)' },
-                  { key: 'czas', label: 'Czas' },
-                  { key: 'zakres', label: 'Co dostajesz' },
-                ]}
-                rows={[
-                  {
-                    id: 'samodzielny',
-                    wariant: 'Audyt SEO jako osobna usługa',
-                    cena: 'od 1 490 zł',
-                    czas: '3-5 dni roboczych',
-                    zakres: '50+ punktów kontrolnych, lista napraw z priorytetem i konsultacja omówieniowa',
-                  },
-                  {
-                    id: 'w-pakiecie',
-                    wariant: <>Audyt SEO w <Link href="/cennik-pozycjonowania" style={linkSekcji}>pakiecie pozycjonowania</Link></>,
-                    cena: 'w cenie pakietu od 1 900 zł/mies.',
-                    czas: 'na starcie współpracy',
-                    zakres: 'ten sam zakres, a do tego wdrożenie poprawek',
-                  },
-                  {
-                    id: 'ai',
-                    wariant: <Link href={HREF_AUDYT_AI} style={linkSekcji}>Audyt widoczności w AI</Link>,
-                    cena: '990 zł',
-                    czas: '5 dni roboczych',
-                    zakres: '30 pytań w 4 źródłach, 5 konkurentów polecanych przez modele i 10 rekomendacji',
-                  },
-                ]}
-                przypis="Ceny netto, do których doliczamy 23% VAT. Stan cen: listopad 2026."
-              />
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-text-main)', marginTop: '2.5rem', marginBottom: '1rem' }}>
-                Audyt strony internetowej a audyt SEO
-              </h3>
-              <p style={{ ...tekstSekcji, marginBottom: 0 }}>
-                Audyt strony internetowej (albo audyt strony www) to szersze pojęcie: może obejmować też użyteczność, dostępność i bezpieczeństwo. Audyt SEO strony internetowej sprawdza to, co decyduje o widoczności w Google: indeksację, szybkość, strukturę nagłówków, treści i linki. Ocenę użyteczności opisujemy osobno w <Link href="/blog/audyt-ux-strony" style={linkSekcji}>poradniku o audycie UX strony</Link>.
-              </p>
+              <div className="w-karta" style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(1.75rem, 4.5vw, 3rem)', boxShadow: 'none' }}>
+                <h2 style={{ fontSize: 'clamp(1.85rem, 3vw, 2.45rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.035em', lineHeight: 1.1, marginBottom: '1.5rem' }}>
+                  Audyt SEO: cena i warianty
+                </h2>
+                <p style={tekstSekcji}>
+                  Cena zależy od tego, czy potrzebujesz samej diagnozy, czy diagnozy razem z wdrożeniem. Trzy warianty, w których robimy audyt SEO, zestawiliśmy w tabeli. Przed wyceną bezpłatnie oceniamy stronę i zakres, a pełny audyt z raportem jest płatny według tabeli.
+                </p>
+                <CompareTable
+                  id="warianty-audytu"
+                  caption="Warianty audytu: cena netto, czas i zakres"
+                  columns={[
+                    { key: 'wariant', label: 'Wariant' },
+                    { key: 'cena', label: 'Cena (netto)' },
+                    { key: 'czas', label: 'Czas' },
+                    { key: 'zakres', label: 'Co dostajesz' },
+                  ]}
+                  rows={[
+                    {
+                      id: 'samodzielny',
+                      wariant: 'Audyt SEO jako osobna usługa',
+                      cena: 'od 1 490 zł',
+                      czas: '3-5 dni roboczych',
+                      zakres: '50+ punktów kontrolnych, lista napraw z priorytetem i konsultacja omówieniowa',
+                    },
+                    {
+                      id: 'w-pakiecie',
+                      wariant: <>Audyt SEO w <Link href="/cennik-pozycjonowania" style={linkSekcji}>pakiecie pozycjonowania</Link></>,
+                      cena: 'w cenie pakietu od 1 900 zł/mies.',
+                      czas: 'na starcie współpracy',
+                      zakres: 'ten sam zakres, a do tego wdrożenie poprawek',
+                    },
+                    {
+                      id: 'ai',
+                      wariant: <Link href={HREF_AUDYT_AI} style={linkSekcji}>Audyt widoczności w AI</Link>,
+                      cena: '990 zł',
+                      czas: '5 dni roboczych',
+                      zakres: '30 pytań w 4 źródłach, 5 konkurentów polecanych przez modele i 10 rekomendacji',
+                    },
+                  ]}
+                  przypis="Ceny netto, do których doliczamy 23% VAT. Stan cen: listopad 2026."
+                />
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', marginTop: '2.25rem', marginBottom: '1rem' }}>
+                  Audyt strony internetowej a audyt SEO
+                </h3>
+                <p style={{ ...tekstSekcji, marginBottom: 0 }}>
+                  Audyt strony internetowej (albo audyt strony www) to szersze pojęcie: może obejmować też użyteczność, dostępność i bezpieczeństwo. Audyt SEO strony internetowej sprawdza to, co decyduje o widoczności w Google: indeksację, szybkość, strukturę nagłówków, treści i linki. Ocenę użyteczności opisujemy osobno w <Link href="/blog/audyt-ux-strony" style={linkSekcji}>poradniku o audycie UX strony</Link>.
+                </p>
+              </div>
             </Reveal>
           </div>
         </section>

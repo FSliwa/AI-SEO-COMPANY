@@ -152,6 +152,9 @@ export default async function ArticleCennikPage({ params }) {
               <AnswerBox etykieta="Short answer">
                 In 2026, our review of 17 Polish SEO agencies (as of November 4, 2026) shows published entry rates from PLN 490 net/month for Google Business Profile-only plans to PLN 4,000+ net/month for full-site retainers. At AI SEO COMPANY, full monthly SEO packages cost €450-€590 net per month (PLN 1,900-2,500 net) with cancel-anytime terms.
               </AnswerBox>
+              <p style={{ padding: '1rem 1.25rem', backgroundColor: 'var(--w-papier-2)', borderLeft: '3px solid var(--color-primary)', borderRadius: '0 12px 12px 0', margin: '0 0 1.75rem' }}>
+                Looking for transparent monthly deliverables and exact rates right away? Compare our <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' }}>SEO pricing packages from €450/month</Link> with month-to-month billing and no lock-in contracts.
+              </p>
               <p className="lead">
                 SEO pricing in 2026 is one of the most frequently searched topics by entrepreneurs. Most agencies sell the work in monthly packages, so below we break down what each tier actually contains and what you are really paying for.
               </p>
@@ -235,6 +238,9 @@ export default async function ArticleCennikPage({ params }) {
               <AnswerBox>
                 W 2026 roku w przeglądzie cenników 17 agencji SEO w Polsce (stan na 4.11.2026) publikowane stawki „od” wynoszą od 490 zł netto/mies. za samą wizytówkę Google do ponad 4 000 zł netto/mies. za cały serwis. W AI SEO COMPANY kompleksowe pakiety z umową miesięczną kosztują 1 900-2 500 zł netto miesięcznie (SEO Standard i SEO Premium).
               </AnswerBox>
+              <p style={{ padding: '1rem 1.25rem', backgroundColor: 'var(--w-papier-2)', borderLeft: '3px solid var(--color-primary)', borderRadius: '0 12px 12px 0', margin: '0 0 1.75rem' }}>
+                Szukasz od razu konkretnych stawek i listy prac w abonamencie? Zobacz nasz aktualny <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' }}>cennik pozycjonowania stron i pakiety od 1 900 zł netto</Link> z umową miesięczną bez długoterminowego wiązania.
+              </p>
               <p>
                 <Link href="/pozycjonowanie-stron-internetowych" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Pozycjonowanie stron w Polsce</Link> kosztuje różną kwotę, począwszy od niskiego poziomu dla bardzo lokalnych projektów, aż do wysokich sum dla dużych serwisów w branżach takich jak prawo, finanse czy medycyna. Większość małych i średnich firm przeznacza budżet, który pozwala na realną pracę, obejmującą <Link href="/audyt-seo" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>audyt techniczny</Link>, optymalizację, treści i podstawowy link building. Nasze stawki znajdziesz w zakładce <Link href="/cennik-pozycjonowania" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>cennik pozycjonowania</Link>, a w tym artykule wyjaśniamy, od czego zależy cena SEO u każdej agencji.
               </p>

@@ -38,11 +38,11 @@ const ZRODLA_EN = [
 
 const sekcja = { padding: 'clamp(2.5rem, 6vw, 4rem) 0 0' };
 const kontener = { maxWidth: '850px', margin: '0 auto' };
-const h2Styl = { fontSize: 'clamp(1.6rem, 3.4vw, 2.2rem)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.02em', color: 'var(--color-text-dark)', margin: '0 0 1.25rem', scrollMarginTop: '110px' };
-const akapit = { fontSize: '1.08rem', lineHeight: 1.7, color: 'var(--color-text-main)', margin: '0 0 1.1rem' };
+const h2Styl = { fontSize: 'clamp(1.65rem, 3.4vw, 2.25rem)', fontWeight: 500, lineHeight: 1.1, letterSpacing: '-0.035em', color: 'var(--w-tusz)', margin: '0 0 1.25rem', scrollMarginTop: '110px' };
+const akapit = { fontSize: '1.08rem', lineHeight: 1.7, color: 'var(--w-tusz-2)', margin: '0 0 1.1rem' };
 const lista = { ...akapit, paddingLeft: '1.25rem', display: 'grid', gap: '0.6rem' };
-const link = { color: 'var(--color-primary)', textDecoration: 'underline', fontWeight: 600 };
-const karta = { background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)', padding: 'clamp(1.5rem, 4vw, 2.5rem)' };
+const link = { color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline', fontWeight: 600 };
+const karta = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', boxShadow: 'none', padding: 'clamp(1.5rem, 4vw, 2.5rem)' };
 
 export default function LinkBuildingClient({ faqData }) {
   const lang = useLocale();
@@ -90,14 +90,14 @@ export default function LinkBuildingClient({ faqData }) {
       ];
 
   return (
-    <main className="subpage-main" style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main className="subpage-main" style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <section style={{ paddingTop: 'clamp(136px, 14vw, 166px)', paddingBottom: '1rem' }}>
         <div className="container" style={kontener}>
           <Reveal>
-            <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {en ? 'SEO · Links' : 'SEO · Linki'}
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+              <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {en ? 'SEO · Links' : 'SEO · Linki'}
             </div>
-            <h1 style={{ fontSize: 'clamp(2.1rem, 5vw, 3.4rem)', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1.5rem', color: 'var(--color-text-dark)' }}>
+            <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', lineHeight: 1.08, fontWeight: 500, letterSpacing: '-0.04em', margin: '0 0 1.5rem', color: 'var(--w-tusz)' }}>
               {en ? 'Link building services: editorial links inside your SEO package' : 'Link building: pozyskiwanie linków do Twojej strony w pakiecie SEO'}
             </h1>
           </Reveal>

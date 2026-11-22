@@ -72,16 +72,16 @@ export default function ReferenzenLiveDe({ liste }) {
       {liste.map((basis) => {
         const r = metryki && basis.gscKey ? liveKarte(basis, metryki[basis.gscKey]) : basis;
         return (
-          <RevealItem key={r.id} style={{ background: '#FFFFFF', borderRadius: '24px', padding: '1.75rem', boxShadow: '0 4px 24px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <RevealItem key={r.id} style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', minHeight: '36px' }}>
               <Image unoptimized src={r.logo} alt={r.name} width={r.logoW} height={r.logoH} style={{ height: 'auto', width: 'auto', maxHeight: '34px', maxWidth: '160px', objectFit: 'contain' }} />
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', fontWeight: 600, color: 'var(--w-tusz-2)', whiteSpace: 'nowrap' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', fontFamily: 'var(--w-mono)', fontWeight: 500, color: 'var(--w-tusz-2)', whiteSpace: 'nowrap' }}>
                 <span style={{ width: '7px', height: '7px', borderRadius: '999px', background: liveAktiv ? '#16a34a' : '#64748b', display: 'inline-block' }} aria-hidden="true" />
                 GSC API
               </span>
             </div>
             <div style={{ fontSize: '0.85rem', color: 'var(--w-tusz-2)' }}>{r.art}</div>
-            <div style={{ fontSize: '1.7rem', fontWeight: 700, color: 'var(--color-text-dark)', letterSpacing: '-0.02em' }}>{r.zahl}</div>
+            <div style={{ fontSize: '1.7rem', fontWeight: 600, color: 'var(--color-text-dark)', letterSpacing: '-0.02em' }}>{r.zahl}</div>
             <p lang="de" style={{ margin: 0, fontSize: '1rem', lineHeight: 1.55, color: 'var(--color-text-main)', flexGrow: 1 }}>{r.text}</p>
             <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--w-tusz-2)' }}>Zeitraum: {r.zeitraum}. Quelle: {r.quelle}</p>
           </RevealItem>

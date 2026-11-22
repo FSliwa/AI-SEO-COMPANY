@@ -36,9 +36,24 @@
   --w-brzoskwinia-tlo: #FBE6DA;
   --w-na-pomaranczu: #FFFFFF;
   --w-wzrost: #047857;
-  --w-promien-karta: 28px;
-  --w-promien-panel: 48px;
+  --w-promien-karta: 24px;
+  --w-promien-panel: 32px;
   --w-sekcja: clamp(80px, 10vw, 144px);
+
+  /* --- Koncentryczny system kart (siatka 8 px: 24 -> 16 -> 10 px) --- */
+  --karta-promien: 24px;
+  --karta-promien-wew: 16px;
+  --karta-promien-ikona: 10px;
+  --karta-pad: clamp(20px, 2.4vw, 28px);
+  --karta-linia: var(--w-linia);
+  --karta-linia-hover: rgba(216, 90, 48, 0.44);
+  --karta-cien-hover: 0 18px 40px -18px rgba(10, 19, 55, 0.16), 0 2px 8px -2px rgba(10, 19, 55, 0.06);
+  --karta-ciemna-tlo: rgba(17, 24, 62, 0.76);
+  --karta-ciemna-linia: rgba(243, 183, 156, 0.20);
+  --karta-ikona-tlo: #FBE6DA;
+  --karta-ikona-kolor: #B8431B;
+  --karta-ikona-ciemna-tlo: rgba(216, 90, 48, 0.14);
+  --karta-ikona-ciemna-kolor: #FF9E7A;
 
   /* --- Stare tokeny serwisu przepiete na makiete (podstrony dziedzicza) --- */
   --color-bg-surface: var(--w-papier);
@@ -211,6 +226,103 @@ samp,
   border-color: #FFFFFF !important;
 }
 
+/* ---------- Systemowe prymitywy kart (Wariant A: link, B: statyczna, C: konwersja) ---------- */
+.w-karta {
+  background: var(--w-karta);
+  border: 1px solid var(--w-linia);
+  border-radius: var(--karta-promien);
+  box-shadow: none;
+  padding: var(--karta-pad);
+  color: var(--w-tusz);
+}
+
+.w-karta--link {
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    translate 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.22s ease,
+    box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.w-karta--link:hover {
+  translate: 0 -3px;
+  border-color: var(--karta-linia-hover);
+  box-shadow: var(--karta-cien-hover);
+}
+
+.w-karta--link .w-karta-strzalka {
+  display: inline-block;
+  color: var(--w-pomarancz-tekst);
+  transition: translate 0.22s ease;
+}
+
+.w-karta--link:hover .w-karta-strzalka {
+  translate: 3px 0;
+}
+
+.w-karta--konwersja,
+.w-karta--konwersja:hover {
+  background: var(--w-karta);
+  border: 1px solid var(--w-linia);
+  border-radius: var(--karta-promien);
+  box-shadow: none;
+  transform: none;
+  translate: none;
+}
+
+.w-ciemne .w-karta,
+.w-karta--ciemna {
+  background: var(--karta-ciemna-tlo);
+  border: 1px solid var(--karta-ciemna-linia);
+  color: #FFFFFF;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.w-ciemne .w-karta--link:hover,
+.w-karta--ciemna.w-karta--link:hover {
+  border-color: rgba(216, 90, 48, 0.52);
+  box-shadow: 0 20px 44px -18px rgba(2, 5, 22, 0.55);
+}
+
+.w-ciemne .w-karta--link .w-karta-strzalka,
+.w-karta--ciemna .w-karta-strzalka {
+  color: var(--karta-ikona-ciemna-kolor);
+}
+
+.w-karta-ikona {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--karta-promien-ikona);
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: var(--karta-ikona-tlo);
+  color: var(--karta-ikona-kolor);
+}
+
+.w-ciemne .w-karta-ikona,
+.w-karta--ciemna .w-karta-ikona {
+  background: var(--karta-ikona-ciemna-tlo);
+  color: var(--karta-ikona-ciemna-kolor);
+  border: 1px solid rgba(243, 183, 156, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .w-karta--link,
+  .w-karta--link .w-karta-strzalka {
+    transition: none;
+  }
+  .w-karta--link:hover,
+  .w-karta--link:hover .w-karta-strzalka {
+    translate: none;
+    transform: none;
+  }
+}
+
 /* ---------- Etykiety sekcji (makieta: mono, wersaliki, pomarancz) ---------- */
 .section-tag,
 .portfolio-eyebrow {
@@ -368,7 +480,7 @@ section#contact.contact {
   color: #FFFFFF;
 }
 
-/* Jednolite wtopienie góry .gory-oferta w ten sam kolor mgły rgb(245, 238, 233), na którym kończy się .hero::after —
+/* Jednolite wtopienie góry .gory-oferta w ten sam kolor mgły rgb(245, 238, 233), na którym kończy się .hero::after -
    eliminuje widoczne cięcie wiersza 0 grafiki gory-oferta nad logotypami klientów. */
 .gory-oferta::before {
   content: '';
@@ -413,14 +525,22 @@ section#contact.contact {
   color: var(--w-noc-tekst);
 }
 
-/* Trzy filary: cienkie komorki zamiast bialych kart */
+/* Trzy filary: statyczne ciemne karty Wariantu B (bez fałszywego unoszenia na hover) */
 .gory-oferta .kota-pillar-card {
-  background: var(--w-noc-karta) !important;
-  border: 1px solid var(--w-noc-linia) !important;
-  border-radius: 20px !important;
+  background: rgba(17, 24, 62, 0.72) !important;
+  border: 1px solid rgba(243, 183, 156, 0.20) !important;
+  border-radius: 24px !important;
   box-shadow: none !important;
   color: #FFFFFF;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.kota-pillar-card:hover,
+.gory-oferta .kota-pillar-card:hover {
+  transform: none !important;
+  translate: none !important;
+  box-shadow: none !important;
 }
 
 .gory-oferta .kota-pillar-card p {
@@ -430,80 +550,100 @@ section#contact.contact {
 .gory-oferta .kota-pillar-num {
   font-family: var(--w-mono) !important;
   color: var(--w-pomarancz) !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.08em;
+  font-weight: 500 !important;
+  letter-spacing: 0.12em;
 }
 
 .gory-oferta .kota-divider-x {
-  color: var(--w-pomarancz) !important;
-  opacity: 0.8;
+  display: none !important;
 }
 
-/* Kolumny uslug jak w makiecie: bez tla, rozdzielone pionowa linia */
+/* Karty usług: obramowane ciemne powierzchnie Wariantu A/B z odstępem 20 px i wyrównaniem do lewej */
 .gory-oferta .services-grid {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 0 !important;
-  margin-top: clamp(48px, 6vw, 88px);
+  gap: 20px !important;
+  align-items: stretch;
+  margin-top: clamp(44px, 5vw, 76px);
 }
 
 .gory-oferta .service-card {
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
+  background: rgba(17, 24, 62, 0.74) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(243, 183, 156, 0.20) !important;
+  border-radius: 24px !important;
   box-shadow: none !important;
-  padding: 0.5rem clamp(1.25rem, 3vw, 2.75rem) 0 !important;
+  padding: 1.65rem 1.5rem !important;
   color: #FFFFFF;
-  text-align: center;
-  display: flex;
+  text-align: left !important;
+  display: flex !important;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start !important;
   transform: none !important;
+  translate: none !important;
 }
 
 .gory-oferta .service-card + .service-card {
-  border-left: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-left: 0 !important;
 }
 
 .gory-oferta .service-card:hover {
   transform: none !important;
+  translate: none !important;
   box-shadow: none !important;
+  border-color: rgba(216, 90, 48, 0.42) !important;
 }
 
 .gory-oferta .service-card .service-icon {
-  background: transparent !important;
-  border: 1px solid var(--w-noc-linia) !important;
-  color: var(--w-pomarancz) !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+  background: rgba(216, 90, 48, 0.16) !important;
+  border: 1px solid rgba(243, 183, 156, 0.20) !important;
+  color: #FF9E7A !important;
   box-shadow: none !important;
+  margin-bottom: 0.9rem !important;
+  transform: none !important;
+}
+
+.gory-oferta .service-card:hover .service-icon {
+  transform: none !important;
+  background: rgba(216, 90, 48, 0.22) !important;
+  color: #FF9E7A !important;
 }
 
 .gory-oferta .service-card h3 {
   color: #FFFFFF !important;
-  font-weight: 500 !important;
-  font-size: clamp(1.5rem, 2.3vw, 2.1rem) !important;
-  letter-spacing: -0.045em !important;
-  line-height: 1.1 !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.3rem, 1.65vw, 1.55rem) !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.18 !important;
 }
 
 .gory-oferta .service-card p {
   color: var(--w-noc-tekst) !important;
-  max-width: 380px;
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.58;
+  margin-bottom: 0 !important;
 }
 
 .gory-oferta .service-features {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0 0;
+  margin: 1.15rem 0 0;
   text-align: left;
   border: 0 !important;
+  width: 100%;
 }
 
 .gory-oferta .service-features li {
-  color: #FFFFFF !important;
-  font-size: 1.0625rem !important;
-  padding-left: 2.1rem !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 0.94rem !important;
+  padding-left: 1.75rem !important;
   position: relative;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.65rem;
 }
 
 .gory-oferta .service-features li::before {
@@ -531,49 +671,52 @@ section#contact.contact {
   background: linear-gradient(180deg, rgba(10, 19, 55, 0) 0%, rgba(10, 19, 55, 0.78) 54%, var(--w-noc) 100%);
 }
 
-/* Kolumna 4 (GEO, PL): ten sam pionowy rytm co pozostałe 3 kolumny */
+/* Dolne linki kierunkowe na wszystkich kartach usług */
 .service-geo-footer {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid rgba(243, 183, 156, 0.16);
   display: flex;
-  justify-content: center;
-  align-self: start;
+  justify-content: flex-start;
+  align-self: stretch;
   width: 100%;
 }
 
 .service-geo-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 0.55rem;
-  padding: 0.85rem 1.2rem;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--w-noc-linia);
+  width: 100%;
+  padding: 0.25rem 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
   color: var(--w-brzoskwinia) !important;
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   font-weight: 500;
   line-height: 1.35;
   text-decoration: none !important;
   text-align: left;
-  transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
+  transition: color 0.2s ease;
 }
 
 .service-geo-link:hover {
-  background: rgba(216, 90, 48, 0.16);
-  border-color: var(--w-pomarancz);
+  background: transparent;
   color: #FFFFFF !important;
-  transform: translateY(-2px);
+  transform: none;
 }
 
 .service-geo-arrow {
   flex: none;
   color: var(--w-pomarancz);
-  font-size: 1.1rem;
-  transition: transform 0.22s ease;
+  font-size: 1.08rem;
+  transition: transform 0.22s ease, color 0.22s ease;
 }
 
 .service-geo-link:hover .service-geo-arrow {
-  transform: translateX(3px);
+  transform: translateX(4px);
+  color: #FF9E7A;
 }
 
 /* ==========================================================================
@@ -626,36 +769,43 @@ section#contact.contact {
   border: 1.5px solid var(--w-tusz) !important;
 }
 
-.whyus-card-item {
+.whyus-card-item,
+.whyus-card-item:hover {
   background: var(--w-karta) !important;
   border: 1px solid var(--w-linia) !important;
   box-shadow: none !important;
-  border-radius: var(--w-promien-karta) !important;
+  border-radius: 24px !important;
+  transform: none !important;
+  translate: none !important;
 }
 
 .whyus-card-item > div:first-child {
-  background: linear-gradient(160deg, var(--w-brzoskwinia-tlo) 0%, var(--w-papier) 85%) !important;
-  border: 0 !important;
+  background: var(--w-papier-2) !important;
+  border: 1px solid var(--w-linia) !important;
+  border-radius: 16px !important;
+  padding: 16px 20px !important;
+  align-items: flex-start !important;
+  text-align: left !important;
 }
 
 .whyus-card-item > div:first-child > div:first-child {
   font-family: var(--w-mono) !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
   letter-spacing: 0.14em !important;
   color: var(--w-pomarancz-tekst) !important;
 }
 
 .whyus-card-item > div:first-child > div:nth-child(2) {
   color: var(--w-pomarancz-gleboki) !important;
-  font-weight: 500 !important;
-  letter-spacing: -0.06em !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.045em !important;
 }
 
 .whyus-card-item h3 {
   color: var(--w-tusz) !important;
-  font-weight: 500 !important;
-  font-size: 1.3rem !important;
-  letter-spacing: -0.03em !important;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: -0.025em !important;
 }
 
 .whyus-card-item p {
@@ -695,7 +845,7 @@ section#contact.contact {
 }
 
 .portfolio-mosaic-tile {
-  border-radius: 14px !important;
+  border-radius: 16px !important;
 }
 
 /* Klienci: jak lista realizacji w makiecie - kropka na osi i podpis mono */
@@ -859,7 +1009,7 @@ section#contact.contact {
 .panel-cechy {
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 3.5vw, 52px);
+  gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -867,28 +1017,32 @@ section#contact.contact {
 
 .panel-cecha {
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 1rem;
   align-items: start;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(243, 183, 156, 0.18);
+  border-radius: 20px;
+  padding: 18px 20px;
 }
 
 .panel-cecha-ikona {
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
-  border: 1px solid var(--w-noc-linia);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--w-pomarancz);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(243, 183, 156, 0.18);
+  background: rgba(216, 90, 48, 0.14);
+  color: #FF9E7A;
   display: grid;
   place-items: center;
 }
 
 .panel-cecha h3 {
   color: #FFFFFF !important;
-  font-size: 1.5rem !important;
-  font-weight: 500 !important;
-  letter-spacing: -0.035em;
-  margin: 0 0 0.4rem !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.35rem !important;
 }
 
 .panel-cecha p {
@@ -951,18 +1105,19 @@ section#contact.contact {
 
 .pricing-card {
   background: var(--w-karta) !important;
-  border: 1.5px solid rgba(243, 183, 156, 0.0) !important;
-  border-radius: var(--w-promien-karta) !important;
+  border: 1px solid var(--w-linia) !important;
+  border-radius: 24px !important;
   box-shadow: 0 30px 80px rgba(3, 6, 20, 0.45) !important;
   color: var(--w-tusz);
 }
 
 .pricing-card:hover {
-  transform: translateY(-4px);
+  transform: none !important;
+  translate: none !important;
 }
 
 .pricing-card.featured {
-  border-color: var(--w-pomarancz) !important;
+  border: 1.5px solid var(--w-pomarancz) !important;
 }
 
 .pricing-featured-badge {
@@ -1026,6 +1181,20 @@ section#contact.contact {
   border: 1px solid var(--w-noc-linia) !important;
   color: var(--w-noc-tekst) !important;
   box-shadow: none !important;
+}
+
+.pricing-note a.pricing-note-link {
+  color: var(--w-brzoskwinia) !important;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(243, 183, 156, 0.55);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.pricing-note a.pricing-note-link:hover {
+  color: #FFFFFF !important;
+  text-decoration-color: var(--w-pomarancz);
 }
 
 .pricing-panel-links,
@@ -1158,19 +1327,69 @@ section#contact.contact {
   font-size: clamp(2.2rem, 4vw, 3.5rem) !important;
 }
 
+.blog-index {
+  border-top: 0 !important;
+  display: grid !important;
+  gap: 14px !important;
+}
+
 .blog-index-row {
-  border-color: var(--w-linia) !important;
+  background: var(--w-karta) !important;
+  border: 1px solid var(--w-linia) !important;
+  border-radius: 20px !important;
+  padding: 22px 24px !important;
+  align-items: center !important;
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  gap: 1rem 1.5rem !important;
 }
 
 .blog-index-row--latest {
-  border-left-color: var(--w-pomarancz) !important;
+  border-left: 3px solid var(--w-pomarancz) !important;
+}
+
+.blog-index-row:hover {
+  translate: 0 -3px;
+  border-color: rgba(216, 90, 48, 0.44) !important;
+  box-shadow: var(--karta-cien-hover);
+  background: var(--w-karta) !important;
+}
+
+.blog-index-strzalka {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--w-brzoskwinia-tlo);
+  color: var(--w-pomarancz-tekst);
+  font-size: 1.05rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+}
+
+.blog-index-row:hover .blog-index-strzalka {
+  transform: translateX(3px);
+  background: var(--w-pomarancz-przycisk);
+  color: #FFFFFF;
+}
+
+@media (max-width: 767.98px) {
+  .blog-index-row {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    padding: 18px 20px !important;
+    gap: 0.75rem 1rem !important;
+  }
+  .blog-index-main {
+    grid-column: 1 / -1;
+  }
 }
 
 .blog-index-title,
 .blog-index .blog-index-title {
   font-family: var(--font-geist), sans-serif !important;
-  font-weight: 500 !important;
-  letter-spacing: -0.03em !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
   color: var(--w-tusz) !important;
 }
 
@@ -1330,13 +1549,14 @@ section#contact.contact {
 
   .gory-oferta .services-grid:not(:has(.service-card--geo)) {
     grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
   }
 
   .gory-oferta .services-grid:not(:has(.service-card--geo)) .service-card + .service-card {
     border-left: 0 !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
-    margin-top: 2.5rem;
-    padding-top: 2.5rem !important;
+    border-top: 0 !important;
+    margin-top: 0;
+    padding-top: 1.65rem !important;
   }
 
   .gory-oferta {
@@ -1372,8 +1592,10 @@ section#contact.contact {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .w-noc-panele > section {
-    border-radius: 28px;
+  .w-noc-panele > section,
+  .w-noc-panele > section.blog,
+  .w-noc-panele > section.faq-apple {
+    border-radius: 24px !important;
   }
 
   .contact {
@@ -1580,25 +1802,24 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   }
 
   .gory-oferta .kota-pillar-card:hover {
-    translate: 0 -6px;
-    border-color: rgba(216, 90, 48, 0.6) !important;
+    translate: none;
+    transform: none;
   }
 
   .gory-oferta .service-card:hover .oferta-ilustracja {
-    translate: 0 -10px;
-    filter: drop-shadow(0 14px 28px rgba(216, 90, 48, 0.35));
+    translate: none;
+    filter: none;
   }
 
   .whyus-card-item:hover {
-    translate: 0 -8px;
-    border-color: rgba(216, 90, 48, 0.45) !important;
-    box-shadow: 0 24px 48px rgba(30, 30, 30, 0.08) !important;
+    translate: none;
+    transform: none;
+    box-shadow: none !important;
   }
 
   .portfolio-mosaic-tile:hover {
-    scale: 1.035;
-    box-shadow: 0 18px 40px rgba(30, 30, 30, 0.18);
-    z-index: 2;
+    scale: none;
+    transform: none;
   }
 
   .portfolio-client:hover::before {
@@ -1607,14 +1828,14 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   }
 
   .panel-cecha:hover .panel-cecha-ikona {
-    border-color: var(--w-pomarancz);
-    background: rgba(216, 90, 48, 0.12);
-    scale: 1.06;
+    border-color: rgba(243, 183, 156, 0.34);
+    background: rgba(216, 90, 48, 0.20);
+    scale: none;
   }
 
   .blog-index-row:hover .blog-index-title {
-    color: var(--w-pomarancz) !important;
-    translate: 6px 0;
+    color: var(--w-pomarancz-tekst) !important;
+    translate: none;
   }
 
   .faq-apple-pytanie:hover > span:first-child > span:last-child {
@@ -2028,79 +2249,37 @@ main h3:not(.hero *) {
   text-shadow: 0 0 18px var(--w-papier), 0 0 36px var(--w-papier);
 }
 
-/* (10/60 + 19.11.2026) Równe rzędy w kolumnach oferty (4 kolumny w PL, 3 w EN) */
+/* (10/60 + 21.11.2026) Obramowane karty oferty (4 kolumny w PL, 3 w EN) */
 @media (max-width: 639.98px) {
   .gory-oferta .services-grid:has(.service-card--geo) {
     grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .gory-oferta .services-grid:has(.service-card--geo) .service-card + .service-card {
-    border-left: 0 !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
-    margin-top: 2.25rem;
-    padding-top: 2.25rem !important;
+    gap: 16px !important;
   }
 }
 
 @media (min-width: 640px) and (max-width: 1119.98px) {
   .gory-oferta .services-grid:has(.service-card--geo) {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    row-gap: 2.5rem !important;
-  }
-  .gory-oferta .services-grid:has(.service-card--geo) .service-card:nth-child(odd) {
-    border-left: 0 !important;
-  }
-  .gory-oferta .services-grid:has(.service-card--geo) .service-card:nth-child(n + 3) {
-    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
-    padding-top: 2.25rem !important;
-  }
-}
-
-@media (min-width: 901px) {
-  .gory-oferta .services-grid:not(:has(.service-card--geo)) {
-    grid-template-rows: repeat(6, auto);
-  }
-  .gory-oferta .services-grid:not(:has(.service-card--geo)) .service-card {
-    display: grid !important;
-    grid-row: span 6;
-    grid-template-rows: subgrid;
-    justify-items: center;
-    row-gap: 0;
-  }
-  .gory-oferta .services-grid:not(:has(.service-card--geo)) .service-card h3 {
-    align-self: start;
+    gap: 20px !important;
   }
 }
 
 @media (min-width: 1120px) {
   .gory-oferta .services-grid:has(.service-card--geo) {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    grid-template-rows: repeat(6, auto);
-  }
-  .gory-oferta .services-grid:has(.service-card--geo) .service-card {
-    display: grid !important;
-    grid-row: span 6;
-    grid-template-rows: subgrid;
-    justify-items: center;
-    align-items: start;
-    row-gap: 0;
-    padding: 0.5rem clamp(1rem, 1.6vw, 1.65rem) 0 !important;
-  }
-  .gory-oferta .services-grid:has(.service-card--geo) .service-card .service-icon {
-    align-self: start;
-    margin-top: 0 !important;
+    gap: 20px !important;
   }
   .gory-oferta .services-grid:has(.service-card--geo) .service-card h3 {
-    align-self: start;
-    font-size: clamp(1.32rem, 1.65vw, 1.72rem) !important;
+    font-size: clamp(1.28rem, 1.5vw, 1.5rem) !important;
   }
 }
 
-/* (35/71) Lista cech wysrodkowana pod opisem; lzejsze <strong> w EN */
+/* (35/71) Lista cech wyrównana do lewej w obramowanej karcie; lżejsze <strong> w EN */
 .gory-oferta .service-features {
-  align-self: center;
-  justify-self: center;
-  width: fit-content;
-  max-width: min(100%, 340px);
+  align-self: stretch;
+  justify-self: stretch;
+  width: 100%;
+  max-width: none;
 }
 
 .gory-oferta .service-card p strong,
@@ -2242,7 +2421,7 @@ main:has(.gory-oferta) .panel-showcase {
 }
 
 .portfolio-mosaic-tile {
-  border-radius: 12px !important;
+  border-radius: 16px !important;
 }
 
 /* (31) Panel klienta: szersza kolumna tekstu */
@@ -2595,15 +2774,16 @@ main:has(.article-content) {
 
 .pricing-card {
   padding: 2.25rem 1.95rem 2rem !important;
-  border: 1.5px solid var(--w-linia) !important;
+  border: 1px solid var(--w-linia) !important;
+  border-radius: 24px !important;
 }
 
 .pricing-card--popular {
-  border-color: rgba(30, 30, 30, 0.24) !important;
+  border: 1px solid rgba(30, 30, 30, 0.22) !important;
 }
 
 .pricing-card.featured {
-  border-color: var(--w-pomarancz) !important;
+  border: 1.5px solid var(--w-pomarancz) !important;
 }
 
 .pricing-popular-badge {
@@ -3214,8 +3394,13 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
     'stopka stopka';
   column-gap: 24px;
   align-items: end;
+  background: var(--w-karta);
+  border: 1px solid var(--w-linia);
+  border-radius: 24px;
+  padding: clamp(22px, 2.8vw, 34px);
+  box-shadow: 0 0 0 6px rgba(255, 252, 248, 0.52), 0 24px 56px -20px rgba(10, 19, 55, 0.16);
 }
-.realizacje-karta[hidden] { display: none; }
+.realizacje-karta[hidden] { display: none !important; }
 .realizacje-marka {
   grid-area: marka;
   margin-bottom: clamp(18px, 2vw, 28px);
@@ -4304,10 +4489,10 @@ main:not(:has(.gory-oferta)):not(:has(.subpage-hero)) .section-header h2:not(.he
    stronami. Tylko rozmiar, odstep, obrys i stany; teksty bez zmian.
    ========================================================================== */
 :root {
-  --w-r-karta: 28px;
+  --w-r-karta: 24px;
   --w-r-wew: 16px;
   --w-r-pole: 12px;
-  --w-cien-karty: 0 1px 2px rgba(30, 30, 30, 0.06), 0 12px 32px rgba(30, 30, 30, 0.06);
+  --w-cien-karty: var(--karta-cien-hover);
   --w-sekcja-pion: clamp(64px, 5vw + 32px, 112px);
 }
 
@@ -4361,9 +4546,9 @@ main section :is(h3)[style*="font-size"]:not(.hero *):not(.pricing-card *):not(.
 .powiazane-kontener { max-width: 1100px; margin-inline: auto; }
 .powiazane-h2 {
   font-size: var(--w-h2-sub);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   color: var(--w-tusz);
   margin: 0 0 1.5rem;
 }
@@ -4403,15 +4588,15 @@ main section :is(h3)[style*="font-size"]:not(.hero *):not(.pricing-card *):not(.
   .powiazane-strzalka { transition: translate 0.25s ease; }
   .powiazane-karta:hover .powiazane-strzalka { translate: 4px 0; }
 }
-.powiazane-karta:hover { translate: 0 -4px; box-shadow: var(--w-cien-karty); border-color: rgba(216, 90, 48, 0.45); }
+.powiazane-karta:hover { translate: 0 -3px; box-shadow: var(--karta-cien-hover); border-color: rgba(216, 90, 48, 0.44); }
 
-/* W21: te same stany najechania i fokusu na kartach uslug i pakietow */
+/* W21: stany najechania i fokusu na kartach uslug i pakietow */
 @media (prefers-reduced-motion: no-preference) {
-  .service-card, .pricing-card { transition: translate 0.25s ease, border-color 0.25s ease; }
+  .service-card, .pricing-card { transition: border-color 0.25s ease; }
 }
-.service-card:hover { translate: 0 -4px; }
+.service-card:hover { translate: none; transform: none; }
 .service-card:focus-within,
-.pricing-card:focus-within { outline: 2px solid #185FA5; outline-offset: 2px; }
+.pricing-card:focus-within { outline: 2px solid var(--w-pomarancz-tekst); outline-offset: 2px; }
 
 /* W12: cele dotyku. Powiekszenie przez pseudoelement/padding z ujemnym marginesem, bez zmiany ukladu */
 .breadcrumbs a, .byline a {
@@ -4794,6 +4979,11 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
 }
 
 /* Wariant w sekcji .gory-oferta (gdzie karty usług mają ciemne tło pasma gór i biały tekst - zachowanie kolorystyki) */
+.gory-oferta .usluga-pills {
+  justify-content: flex-start;
+  margin-top: 0;
+}
+
 .gory-oferta .usluga-pill {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(255, 255, 255, 0.2);
@@ -4809,14 +4999,16 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
 }
 
 .gory-oferta .usluga-dostarczenie {
-  align-self: end;
-  margin-top: 0;
-  padding-top: 1.35rem;
+  align-self: stretch;
+  justify-content: flex-start;
+  margin-top: auto;
+  padding-top: 1.15rem;
 }
 
 .gory-oferta .service-card--geo .service-geo-footer {
-  align-self: center;
-  margin-top: 1.25rem;
+  align-self: stretch;
+  justify-content: flex-start;
+  margin-top: 1rem;
 }
 
 .gory-oferta .usluga-etykieta {
@@ -4946,9 +5138,10 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
 
 /* 1b. Górny pasek okna na kafelkach mozaiki (.portfolio-mosaic-tile) */
 .portfolio-mosaic-tile {
-  background: #FFFFFF !important;
-  border: 1px solid rgba(30, 30, 30, 0.09) !important;
-  box-shadow: 0 12px 28px -20px rgba(10, 19, 55, 0.22) !important;
+  background: var(--w-karta) !important;
+  border: 1px solid var(--w-linia) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 28px -20px rgba(10, 19, 55, 0.16) !important;
 }
 
 .portfolio-okno-nagl {
@@ -4957,8 +5150,8 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
   justify-content: space-between;
   gap: 8px;
   padding: 7px 11px;
-  background: #FFFFFF;
-  border-bottom: 1px solid rgba(30, 30, 30, 0.08);
+  background: var(--w-karta);
+  border-bottom: 1px solid var(--w-linia);
   font-family: var(--w-mono);
   font-size: 0.66rem;
   line-height: 1.2;

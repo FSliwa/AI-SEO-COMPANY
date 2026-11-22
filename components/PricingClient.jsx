@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
@@ -7,13 +8,14 @@ import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import AppleFaq from '@/components/service/AppleFaq';
 import { Reveal } from '@/components/ScrollReveal';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import EntryOffer from '@/components/EntryOffer';
 import FairDeal from '@/components/FairDeal';
 import { hash } from '@/lib/anchors';
 import Byline from '@/components/Byline';
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
+import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 
 // 5.11.2026 (C2; PLAN-v2 6.18, OP-01, OP-04, MSA-18, CB-04, AV-12) - strona chroniona (strażnik fraz):
 // tylko DODAWANIE treści w wersji PL. Title, meta, H1 i istniejące zdania bez zmian; nowe pytania FAQ
@@ -27,13 +29,113 @@ const HREF_FREELANCER = hrefJesliOpublikowana('/porownania/agencja-seo-czy-freel
 
 export default function PricingClient() {
   const lang = useLocale();
+  const [typStrony, setTypStrony] = useState('lokalna');
+  const [zasieg, setZasieg] = useState('lokalny');
+  const [widocznoscAi, setWidocznoscAi] = useState('ai');
+
+  const rekomendacja = (() => {
+    if (typStrony === 'nowa-strona') {
+      return {
+        plan: 'booster',
+        nazwa: 'Booster Pack',
+        cena: lang === 'pl' ? '2 500 zł netto / mies.' : '€590 net / month',
+        warunek: lang === 'pl' ? 'Umowa min. 3 miesiące - budowa strony Next.js 0 zł na start' : 'Min. 3-month contract - Next.js website €0 upfront',
+        punkty: lang === 'pl'
+          ? [
+              'Projekt UX/UI i szybka strona w Next.js w cenie abonamentu',
+              'Architektura adresów URL i dane strukturalne gotowe od 1. dnia',
+              'Pełne pozycjonowanie lokalne i ogólnopolskie + panel klienta 24/7',
+            ]
+          : [
+              'UX/UI design and high-speed Next.js website included in retainer',
+              'Search-ready URL architecture and structured data from day one',
+              'Full Google SEO campaign + 24/7 live client portal access',
+            ],
+      };
+    }
+    if (typStrony === 'sklep' && zasieg === 'zagranica') {
+      return {
+        plan: 'custom',
+        nazwa: lang === 'pl' ? 'SEO E-commerce / International' : 'E-commerce / International SEO',
+        cena: lang === 'pl' ? 'od 2 500 zł netto / mies.' : 'from €590 net / month',
+        warunek: lang === 'pl' ? 'Elastyczna umowa miesięczna - zakres wg liczby kategorii i rynków' : 'Monthly rolling contract - scoped by category count and target markets',
+        punkty: lang === 'pl'
+          ? [
+              'Optymalizacja drzewa kategorii, filtrów fasetowych i indeksacji',
+              'Dane strukturalne Product, hreflang oraz audyt Core Web Vitals',
+              'Link building na rynkach docelowych + widoczność w ChatGPT i Google AI',
+            ]
+          : [
+              'Category tree, faceted navigation and crawl budget optimization',
+              'Product structured data, hreflang setup and Core Web Vitals fixes',
+              'Editorial link building across target markets + AI search tracking',
+            ],
+      };
+    }
+    if (typStrony === 'lokalna' && zasieg === 'lokalny' && widocznoscAi === 'google') {
+      return {
+        plan: 'standard',
+        nazwa: 'SEO Standard',
+        cena: lang === 'pl' ? '1 900 zł netto / mies.' : '€450 net / month',
+        warunek: lang === 'pl' ? 'Umowa miesięczna bez okresu wiązania - cel TOP 3 fraz lokalnych' : 'Flexible monthly subscription - local TOP 3 visibility goal',
+        punkty: lang === 'pl'
+          ? [
+              'Do 20 fraz kluczowych + pełna obsługa Wizytówki Google w cenie',
+              'Audyt techniczny na starcie, 2 treści SEO i 2 linki B2B miesięcznie',
+              'Codzienny podgląd kliknięć z GSC i zapytań w panelu klienta',
+            ]
+          : [
+              'Up to 20 target keywords + Google Business Profile included',
+              'Technical SEO audit, 2 SEO content pieces and 2 editorial links/mo',
+              'Daily GSC clicks, rankings and lead tracking in the client portal',
+            ],
+      };
+    }
+    return {
+      plan: 'premium',
+      nazwa: 'SEO Premium',
+      cena: lang === 'pl' ? '2 500 zł netto / mies.' : '€590 net / month',
+      warunek: lang === 'pl'
+        ? (typStrony === 'lokalna' && zasieg === 'lokalny'
+            ? 'Umowa miesięczna - zawiera monitoring AI (lub SEO Standard + dodatek AI: 2 390 zł netto/mies.)'
+            : 'Umowa miesięczna bez kar - pełna skala pod B2B, e-commerce i AI (GEO)')
+        : 'Flexible monthly subscription - full scale for B2B, e-commerce & AI search (GEO)',
+      punkty: lang === 'pl'
+        ? [
+            'Do 50 fraz kluczowych, 4 rozbudowane treści i 4 linki B2B miesięcznie',
+            'Wdrożenie poprawek Core Web Vitals oraz optymalizacja konwersji (CRO)',
+            'Cotygodniowy pomiar i działania pod widoczność w ChatGPT, Gemini i Google AI',
+          ]
+        : [
+            'Up to 50 target keywords, 4 content pieces and 4 B2B links/month',
+            'Core Web Vitals implementation and conversion rate optimization (CRO)',
+            'Weekly tracking and optimization for ChatGPT, Gemini and Google AI',
+          ],
+    };
+  })();
+
+  const wybierzRekomendacje = (e) => {
+    e.preventDefault();
+    track('pricing_matcher_select', {
+      plan: rekomendacja.plan,
+      site_type: typStrony,
+      reach: zasieg,
+      ai_mode: widocznoscAi,
+    });
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent(PRESELECT_PLAN_EVENT, { detail: rekomendacja.plan }));
+      const celId = lang === 'pl' ? 'kontakt' : 'contact';
+      const el = document.getElementById(celId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const faqData = [
     {
       question: 'Ile kosztuje pozycjonowanie?',
       questionEn: 'How much does SEO cost?',
-      answer: 'U nas pozycjonowanie kosztuje od 1 900 zł netto miesięcznie. Cena pozycjonowania zależy od wielkości serwisu, konkurencyjności branży oraz aktualnego stanu technicznego strony. W AI SEO COMPANY nasze pakiety zaczynają się od transparentnych kwot, oferując pełną optymalizację SEO, dedykowaną strategię content marketingu oraz jakościowy link building, bez ukrytych kosztów. Przeczytaj więcej w naszym szczegółowym poradniku: <a href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style="text-decoration:underline">Ile kosztuje SEO w Polsce? Cennik i pakiety 2026</a>.',
-      answerEn: 'The cost of SEO depends on the size of the website, industry competitiveness, and the current technical state of the site. At AI SEO COMPANY, our packages start at transparent rates, offering full SEO optimization, a dedicated content marketing strategy, and quality link building with no hidden costs. Read more in our detailed guide: <a href="/en/blog/how-much-does-seo-cost-pricing-packages-2026" style="text-decoration:underline">How Much Does SEO Cost? Pricing &amp; Packages 2026</a>.'
+      answer: 'U nas pozycjonowanie kosztuje od 1 900 zł netto miesięcznie. Cena pozycjonowania zależy od wielkości serwisu, konkurencyjności branży oraz aktualnego stanu technicznego strony. W AI SEO COMPANY nasze pakiety zaczynają się od transparentnych kwot, oferując pełną optymalizację SEO, dedykowaną strategię content marketingu oraz jakościowy link building, bez ukrytych kosztów. Przeczytaj więcej w naszym szczegółowym poradniku: <a href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026" style="text-decoration:underline">analiza rynkowych stawek 17 agencji SEO i modeli rozliczeń</a>.',
+      answerEn: 'The cost of SEO depends on the size of the website, industry competitiveness, and the current technical state of the site. At AI SEO COMPANY, our packages start at transparent rates, offering full SEO optimization, a dedicated content marketing strategy, and quality link building with no hidden costs. Read more in our detailed guide: <a href="/en/blog/how-much-does-seo-cost-pricing-packages-2026" style="text-decoration:underline">our breakdown of agency rate models and cost drivers</a>.'
     },
     {
       question: 'Ile kosztuje pozycjonowanie strony w 2026?',
@@ -131,8 +233,116 @@ export default function PricingClient() {
   // FAQPage = pytania widoczne na stronie: PL 14 (bez tylkoEn), EN 13 (bez tylkoPl).
   const faqWidoczne = lang === 'pl' ? faqData.filter((f) => !f.tylkoEn) : faqData.filter((f) => !f.tylkoPl);
 
+  const kartaStyl = {
+    background: 'var(--w-karta)',
+    border: '1px solid var(--w-linia)',
+    borderRadius: '24px',
+    boxShadow: 'none',
+    padding: 'clamp(1.75rem, 4.5vw, 3rem)',
+  };
+
+  const h2Styl = {
+    fontSize: 'clamp(1.75rem, 1rem + 2vw, 2.5rem)',
+    fontWeight: 500,
+    lineHeight: 1.1,
+    letterSpacing: '-0.035em',
+    marginBottom: '1.25rem',
+    color: 'var(--w-tusz)',
+  };
+
+  const h3Styl = {
+    fontSize: '1.35rem',
+    fontWeight: 600,
+    lineHeight: 1.2,
+    letterSpacing: '-0.02em',
+    marginBottom: '0.9rem',
+    marginTop: '2rem',
+    color: 'var(--w-tusz)',
+  };
+
+  const pillStyl = (aktywna) => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    minHeight: '40px',
+    padding: '0.45rem 0.95rem',
+    borderRadius: '999px',
+    border: aktywna ? '1.5px solid var(--w-pomarancz)' : '1px solid var(--w-linia)',
+    background: aktywna ? 'var(--w-brzoskwinia-tlo)' : 'var(--w-karta)',
+    color: aktywna ? 'var(--w-pomarancz-gleboki)' : 'var(--w-tusz)',
+    fontSize: '0.9rem',
+    fontWeight: aktywna ? 600 : 500,
+    cursor: 'pointer',
+    transition: 'border-color 0.18s ease, background-color 0.18s ease',
+  });
+
+  const wierszeTabeli = lang === 'pl'
+    ? [
+        {
+          typ: 'Lokalna firma usługowa + Wizytówka Google',
+          pakiet: 'SEO Standard',
+          cena: 'od 1 900 zł netto / mies.',
+          zakres: 'Do 20 fraz lokalnych, pełna optymalizacja Profilu Firmy w Google, audyt techniczny, 2 treści SEO i 2 linki/mies., cel TOP 3.',
+        },
+        {
+          typ: 'Firma B2B / SaaS + widoczność w AI (GEO)',
+          pakiet: 'SEO Premium',
+          cena: '2 500 zł netto / mies.',
+          zakres: 'Do 50 fraz, 4 treści eksperckie i 4 linki B2B/mies., wdrożenie Core Web Vitals i CRO, cotygodniowy pomiar w ChatGPT i Google AI.',
+        },
+        {
+          typ: 'Sklep internetowy (pozycjonowanie sklepu internetowego - cennik)',
+          pakiet: 'SEO Premium / Wycena indywidualna',
+          cena: 'od 2 500 zł netto / mies.',
+          zakres: 'Architektura drzewa kategorii i filtrów, dane strukturalne Product, opisy kategorii, link building produktowy (wycena wg skali katalogu).',
+        },
+        {
+          typ: 'Booster Pack (strona WWW 0 zł + SEO)',
+          pakiet: 'Booster Pack',
+          cena: '2 500 zł netto / mies. (min. 3 mies.)',
+          zakres: 'Projekt UX/UI i szybka strona w Next.js w cenie abonamentu + pełne pozycjonowanie i analityka od 1. dnia publikacji.',
+        },
+        {
+          typ: 'Usługi jednorazowe i konsultacje SEO (audyt SEO, audyt widoczności w AI)',
+          pakiet: 'Jednorazowo',
+          cena: 'audyt SEO od 1 490 zł netto / audyt AI 990 zł netto',
+          zakres: 'Lista priorytetów wdrożeniowych dla dewelopera i redakcji; koszt audytu widoczności w AI (990 zł) zaliczany na 1. miesiąc abonamentu.',
+        },
+      ]
+    : [
+        {
+          typ: 'Local service business + Google Business Profile',
+          pakiet: 'SEO Standard',
+          cena: 'from €450 net / month',
+          zakres: 'Up to 20 local keywords, full Google Business Profile management, technical audit, 2 SEO articles and 2 links/mo, local TOP 3 goal.',
+        },
+        {
+          typ: 'B2B / SaaS company + AI search visibility (GEO)',
+          pakiet: 'SEO Premium',
+          cena: '€590 net / month',
+          zakres: 'Up to 50 keywords, 4 expert content pieces and 4 B2B links/mo, Core Web Vitals fixes, CRO, weekly ChatGPT and Google AI tracking.',
+        },
+        {
+          typ: 'Online store (e-commerce SEO pricing)',
+          pakiet: 'SEO Premium / Custom scope',
+          cena: 'from €590 net / month',
+          zakres: 'Category tree and faceted navigation optimization, Product schema, category copy and editorial links (scoped by catalog size).',
+        },
+        {
+          typ: 'Booster Pack (new website €0 upfront + SEO)',
+          pakiet: 'Booster Pack',
+          cena: '€590 net / month (min. 3 months)',
+          zakres: 'UX/UI design and high-speed Next.js website included in the monthly retainer + full search optimization from day one.',
+        },
+        {
+          typ: 'One-off services & SEO consultations (SEO audit, AI visibility audit)',
+          pakiet: 'One-off',
+          cena: 'SEO audit from €350 net / AI audit €235 net',
+          zakres: 'Prioritized technical and content roadmap for your team; AI visibility audit fee (€235) credited toward your first monthly retainer.',
+        },
+      ];
+
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs pl="Cennik Pozycjonowania" en="SEO Pricing" />
       
@@ -140,22 +350,22 @@ export default function PricingClient() {
       <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px', position: 'relative' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '850px' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'Cennik SEO. Jawny. Bez ściemy.' : 'TRANSPARENT PRICING'}
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+              <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {lang === 'pl' ? 'Cennik SEO. Jawny. Bez ściemy.' : 'TRANSPARENT PRICING'}
             </div>
             
             <h1 style={{ 
-              fontSize: 'clamp(2rem, 5vw, 4.2rem)', 
-              fontWeight: 800, 
-              lineHeight: 1.15, 
-              color: 'var(--color-text-dark)', 
+              fontSize: 'clamp(2.25rem, 5vw, 4.25rem)', 
+              fontWeight: 500, 
+              lineHeight: 1.06, 
+              color: 'var(--w-tusz)', 
               marginBottom: '1.5rem', 
-              letterSpacing: '-0.02em'
+              letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? 'Ile kosztuje pozycjonowanie?' : 'How Much Does SEO Cost?'} <br />
-              <span style={{ color: 'var(--color-cta)' }}>{lang === 'pl' ? 'Cennik pozycjonowania stron 2026' : 'SEO Pricing 2026'}</span>
+              <span style={{ color: 'var(--w-pomarancz-tekst)' }}>{lang === 'pl' ? 'Cennik pozycjonowania stron 2026' : 'SEO Pricing 2026'}</span>
             </h1>
-            <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--color-text-muted)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
+            <p className="hero-lead" style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', maxWidth: '750px', margin: '0 auto 2rem auto', lineHeight: 1.65 }}>
               {lang === 'pl' 
                 ? 'Pozycjonowanie od 1 900 zł netto/mies. (SEO Standard) lub 2 500 zł netto/mies. (SEO Premium z CRO albo Booster Pack z nową stroną WWW). Umowa na miesiąc w SEO Standard i Premium (Booster Pack: min. 3 miesiące), bez ukrytych opłat - poniżej pełny cennik pozycjonowania stron 2026.' 
                 : 'Discover our SEO Pricing 2026. No hidden fees or complicated contracts. Check our packages and costs and pay for measurable search visibility growth.'}
@@ -184,33 +394,242 @@ export default function PricingClient() {
 
       <Pricing isMainContent={true} />
 
-      {/* SEO Content Section */}
-      <section style={{ padding: '40px 0 80px 0' }}>
-        <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--color-text-main)' }}>
+      {/* Interaktywny dobór pakietu w 15 sekund (Wariant C - karta robocza bez fałszywego hover-liftu) */}
+      <section style={{ padding: '16px 0 56px 0' }} aria-labelledby="dobor-pakietu-naglowek">
+        <div className="container" style={{ maxWidth: '1040px', margin: '0 auto' }}>
           <Reveal>
-            <div style={{ background: '#FFFFFF', borderRadius: '32px', padding: '3.5rem', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
-              <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-text-dark)' }}>
+            <div className="w-karta w-karta--konwersja" style={kartaStyl}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.76rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--w-pomarancz-tekst)', marginBottom: '0.55rem' }}>
+                {lang === 'pl' ? 'KONFIGURATOR PAKIETU' : 'PACKAGE MATCHER'}
+              </div>
+              <h2 id="dobor-pakietu-naglowek" style={{ ...h2Styl, marginBottom: '0.5rem' }}>
+                {lang === 'pl' ? 'Szybki dobór pakietu i wycena w 15 sekund' : '15-second package & quote matcher'}
+              </h2>
+              <p style={{ fontSize: '1.02rem', lineHeight: 1.6, color: 'var(--w-tusz-2)', marginBottom: '1.75rem', maxWidth: '64ch' }}>
+                {lang === 'pl'
+                  ? 'Zaznacz 3 parametry swojego serwisu, aby sprawdzić rekomendowany pakiet, dokładną stawkę miesięczną netto i miesięczny zakres prac.'
+                  : 'Select 3 parameters for your website to see the recommended package, exact monthly net fee and monthly deliverables.'}
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', alignItems: 'start' }}>
+                <div style={{ display: 'grid', gap: '1.25rem' }}>
+                  <div>
+                    <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.74rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--w-tusz-2)', marginBottom: '0.55rem' }}>
+                      {lang === 'pl' ? '1. Typ strony' : '1. Website type'}
+                    </div>
+                    <div role="group" aria-label={lang === 'pl' ? 'Typ strony' : 'Website type'} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                      {[
+                        { id: 'lokalna', pl: 'Lokalna firma usługowa', en: 'Local service business' },
+                        { id: 'b2b', pl: 'Firma B2B lub SaaS', en: 'B2B or SaaS company' },
+                        { id: 'sklep', pl: 'Sklep internetowy', en: 'Online store (e-commerce)' },
+                        { id: 'nowa-strona', pl: 'Potrzebuję nowej strony WWW', en: 'I need a new website' },
+                      ].map((op) => (
+                        <button
+                          key={op.id}
+                          type="button"
+                          aria-pressed={typStrony === op.id}
+                          onClick={() => setTypStrony(op.id)}
+                          style={pillStyl(typStrony === op.id)}
+                        >
+                          {lang === 'pl' ? op.pl : op.en}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.74rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--w-tusz-2)', marginBottom: '0.55rem' }}>
+                      {lang === 'pl' ? '2. Zasięg geograficzny' : '2. Geographic reach'}
+                    </div>
+                    <div role="group" aria-label={lang === 'pl' ? 'Zasięg geograficzny' : 'Geographic reach'} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                      {[
+                        { id: 'lokalny', pl: 'Jedno miasto / region', en: 'Single city / region' },
+                        { id: 'polska', pl: 'Cała Polska', en: 'Nationwide' },
+                        { id: 'zagranica', pl: 'Rynki zagraniczne', en: 'International markets' },
+                      ].map((op) => (
+                        <button
+                          key={op.id}
+                          type="button"
+                          aria-pressed={zasieg === op.id}
+                          onClick={() => setZasieg(op.id)}
+                          style={pillStyl(zasieg === op.id)}
+                        >
+                          {lang === 'pl' ? op.pl : op.en}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.74rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--w-tusz-2)', marginBottom: '0.55rem' }}>
+                      {lang === 'pl' ? '3. Widoczność w AI (ChatGPT, Gemini, Google AI)' : '3. AI search visibility (ChatGPT, Gemini, Google AI)'}
+                    </div>
+                    <div role="group" aria-label={lang === 'pl' ? 'Widoczność w AI' : 'AI search visibility'} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                      {[
+                        { id: 'google', pl: 'Standardowe SEO w Google', en: 'Google SEO only' },
+                        { id: 'ai', pl: 'SEO + widoczność w ChatGPT i AI', en: 'SEO + ChatGPT & AI visibility' },
+                      ].map((op) => (
+                        <button
+                          key={op.id}
+                          type="button"
+                          aria-pressed={widocznoscAi === op.id}
+                          onClick={() => setWidocznoscAi(op.id)}
+                          style={pillStyl(widocznoscAi === op.id)}
+                        >
+                          {lang === 'pl' ? op.pl : op.en}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Karta rekomendacji (promień wewnętrzny 16px = 24px - 8px) */}
+                <div
+                  aria-live="polite"
+                  style={{
+                    background: 'var(--w-papier-2)',
+                    border: '1px solid var(--w-linia)',
+                    borderRadius: '16px',
+                    padding: 'clamp(1.35rem, 2.8vw, 1.85rem)',
+                  }}
+                >
+                  <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.74rem', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--w-pomarancz-tekst)', marginBottom: '0.35rem' }}>
+                    {lang === 'pl' ? 'REKOMENDOWANY PAKIET' : 'RECOMMENDED PACKAGE'}
+                  </div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-0.025em', color: 'var(--w-tusz)', marginBottom: '0.2rem' }}>
+                    {rekomendacja.nazwa}
+                  </div>
+                  <div style={{ fontSize: '1.65rem', fontWeight: 600, letterSpacing: '-0.03em', color: 'var(--w-pomarancz-tekst)', marginBottom: '0.35rem' }}>
+                    {rekomendacja.cena}
+                  </div>
+                  <p style={{ fontSize: '0.88rem', lineHeight: 1.5, color: 'var(--w-tusz-2)', margin: '0 0 1rem 0' }}>
+                    {rekomendacja.warunek}
+                  </p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.35rem 0', display: 'grid', gap: '0.55rem' }}>
+                    {rekomendacja.punkty.map((pkt) => (
+                      <li key={pkt} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.94rem', lineHeight: 1.5, color: 'var(--w-tusz)' }}>
+                        <span aria-hidden="true" style={{ color: 'var(--w-wzrost)', fontWeight: 600, flexShrink: 0 }}>✓</span>
+                        <span>{pkt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+                    <a
+                      href={hash('kontakt', lang)}
+                      data-plan={rekomendacja.plan}
+                      data-cta="pricing_matcher_cta"
+                      onClick={wybierzRekomendacje}
+                      className="btn btn-primary"
+                      style={{ width: '100%', textAlign: 'center', justifyContent: 'center' }}
+                    >
+                      {lang === 'pl' ? `Wybierz ${rekomendacja.nazwa} i zamów wycenę →` : `Select ${rekomendacja.nazwa} & request quote →`}
+                    </a>
+                    <Link
+                      href="/narzedzia/kalkulator-strat-seo"
+                      style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--w-tusz-2)', textAlign: 'center', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+                    >
+                      {lang === 'pl' ? 'Oblicz zwrot z inwestycji w kalkulatorze strat SEO' : 'Estimate ROI in the SEO opportunity calculator'}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Tabela porównawcza cennika według typu strony i usługi */}
+      <section style={{ padding: '0 0 56px 0' }} aria-labelledby="tabela-cennika-naglowek">
+        <div className="container" style={{ maxWidth: '1040px', margin: '0 auto' }}>
+          <Reveal>
+            <div className="w-karta" style={kartaStyl}>
+              <h2 id="tabela-cennika-naglowek" style={h2Styl}>
+                {lang === 'pl' ? 'Cennik SEO według typu strony i usługi' : 'SEO pricing by website type and service'}
+              </h2>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', marginBottom: '1.5rem', maxWidth: '68ch' }}>
+                {lang === 'pl'
+                  ? 'Zestawienie stawek miesięcznych netto oraz usług jednorazowych w zależności od modelu biznesowego, wielkości serwisu i zakresu widoczności w Google oraz AI.'
+                  : 'Summary of monthly net retainers and standalone fees by business model, website scale, and Google + AI search scope.'}
+              </p>
+              <div className="tabela-przewijana" style={{ overflowX: 'auto', borderRadius: '16px', border: '1px solid var(--w-linia)' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '680px', textAlign: 'left', fontSize: '0.95rem' }}>
+                  <caption className="sr-only">
+                    {lang === 'pl' ? 'Cennik SEO według typu strony i usługi w 2026 roku' : 'SEO pricing by website type and service in 2026'}
+                  </caption>
+                  <thead>
+                    <tr style={{ background: 'var(--w-papier-2)', borderBottom: '1px solid var(--w-linia)' }}>
+                      <th scope="col" style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--w-tusz)', width: '28%' }}>
+                        {lang === 'pl' ? 'Typ strony / usługa' : 'Website type / service'}
+                      </th>
+                      <th scope="col" style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--w-tusz)', width: '18%' }}>
+                        {lang === 'pl' ? 'Rekomendowany pakiet' : 'Package'}
+                      </th>
+                      <th scope="col" style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--w-tusz)', width: '22%' }}>
+                        {lang === 'pl' ? 'Koszt netto' : 'Net price'}
+                      </th>
+                      <th scope="col" style={{ padding: '14px 16px', fontWeight: 600, color: 'var(--w-tusz)' }}>
+                        {lang === 'pl' ? 'Co zawiera wycena' : 'Included deliverables'}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {wierszeTabeli.map((w, idx) => (
+                      <tr
+                        key={w.typ}
+                        style={{
+                          borderBottom: idx === wierszeTabeli.length - 1 ? '0' : '1px solid var(--w-linia)',
+                          background: 'var(--w-karta)',
+                        }}
+                      >
+                        <th scope="row" style={{ padding: '15px 16px', fontWeight: 600, color: 'var(--w-tusz)', verticalAlign: 'top' }}>
+                          {w.typ}
+                        </th>
+                        <td style={{ padding: '15px 16px', color: 'var(--w-tusz)', fontWeight: 500, verticalAlign: 'top' }}>
+                          {w.pakiet}
+                        </td>
+                        <td style={{ padding: '15px 16px', color: 'var(--w-pomarancz-tekst)', fontWeight: 600, verticalAlign: 'top' }}>
+                          {w.cena}
+                        </td>
+                        <td style={{ padding: '15px 16px', color: 'var(--w-tusz-2)', lineHeight: 1.55, verticalAlign: 'top' }}>
+                          {w.zakres}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section style={{ padding: '16px 0 80px 0' }}>
+        <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--w-tusz)' }}>
+          <Reveal>
+            <div className="w-karta" style={kartaStyl}>
+              <h2 style={h2Styl}>
                 {lang === 'pl' ? 'Co obejmuje nasz cennik pozycjonowania stron?' : 'What does our SEO pricing include?'}
               </h2>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', marginBottom: '1.5rem' }}>
                 {lang === 'pl' 
                   ? 'Wybierając pakiety AI SEO COMPANY, inwestujesz w przewidywalny wzrost. Nasz cennik pozycjonowania stron internetowych został skonstruowany tak, aby zaspokoić potrzeby zarówno lokalnych biznesów B2C, jak i ogólnopolskich firm B2B.' 
                   : 'By choosing AI SEO COMPANY packages, you invest in predictable growth. Our website SEO pricing has been designed to meet the needs of both local B2C businesses and nationwide B2B companies.'}
               </p>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', marginBottom: '1.5rem' }}>
                 {lang === 'pl'
                   ? <>Jako nowoczesna agencja marketingowa i SEO, nie ograniczamy się tylko do dodawania linków. Każdy pakiet zawiera audyt techniczny, tworzenie unikalnych treści, strategię link buildingu B2B i optymalizację techniczną w zakresie opisanym przy pakiecie (Standard: podstawowa, Premium: pełna); audyt Core Web Vitals jest w audycie, a wdrożenie poprawek w Premium. Jak wygląda u nas <Link href="/link-building" style={{ textDecoration: 'underline' }}>link building</Link>: 2 linki miesięcznie w Standard i 4 w Premium. Jak powstają teksty, opisujemy na stronie o <Link href="/copywriting-seo" style={{ textDecoration: 'underline' }}>copywritingu SEO</Link>.</>
                   : <>As a modern marketing and SEO agency, we don&apos;t just build links. Every package includes a technical audit, unique content creation, B2B link building strategy and technical optimization within the scope described for that package (Standard: core, Premium: full); the Core Web Vitals audit is part of the audit, and implementing the fixes is part of Premium. How <Link href="/link-building" style={{ textDecoration: 'underline' }}>link building services</Link> work with us: 2 links a month in Standard and 4 in Premium. How the content is written: <Link href="/copywriting-seo" style={{ textDecoration: 'underline' }}>SEO copywriting</Link>.</>}
               </p>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
+              <h3 style={h3Styl}>
                 {lang === 'pl' ? 'Dlaczego transparentne pakiety?' : 'Why transparent packages?'}
               </h3>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)' }}>
                 {lang === 'pl'
                   ? <>Ukryte koszty i umowy na wiele lat to domena przestarzałych firm. Wierzymy, że dobra usługa broni się sama, a jasny i prosty cennik pozycjonowania to podstawa partnerskich relacji i najwyższego zwrotu z inwestycji (ROI).{HREF_FREELANCER && <> Zastanawiasz się, czy zlecić pozycjonowanie agencji, czy freelancerowi? W porównaniu <Link href={HREF_FREELANCER} style={{ textDecoration: 'underline' }}>freelancer SEO czy agencja</Link> zestawiamy koszt miesięczny, godziny pracy i zapisy umowy.</>}</>
                   : <>Hidden costs and multi-year contracts are the domain of outdated companies. We believe a good service defends itself, and clear, simple SEO pricing is the foundation of partnership and the highest ROI. Not sure whether the budget belongs in search or in ads? Our <Link href="/porownania/seo-czy-google-ads" style={{ textDecoration: 'underline' }}>SEO vs SEM</Link> comparison sets the cost per click from our own campaign against the monthly fee, and the <Link href="/narzedzia/kalkulator-strat-seo" style={{ textDecoration: 'underline' }}>SEO ROI calculator</Link> estimates the payback of a package. {HREF_FREELANCER && <> Weighing a freelancer instead of an agency? The <Link href={HREF_FREELANCER} style={{ textDecoration: 'underline' }}>SEO agency vs freelancer</Link> comparison sets monthly cost, hours of work and contract terms side by side.</>} Other decision guides are collected under <Link href="/porownania" style={{ textDecoration: 'underline' }}>SEO comparisons</Link>.</>}
               </p>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginTop: '1.5rem' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', marginTop: '1.5rem' }}>
                 {lang === 'pl'
                   ? 'Zdajemy sobie sprawę, że każda branża charakteryzuje się odmienną specyfiką, unikalną grupą docelową oraz specyficznym cyklem decyzyjnym. Z tego powodu podchodzimy z ogromną elastycznością do optymalizacji strategii biznesowej naszych Klientów. Decydując się na inwestycję w profesjonalny marketing internetowy w postaci SEO, wybierasz model trwałego budowania kompetencji własnej marki. Wspólnie identyfikujemy kluczowe cele konwersji i obniżamy długofalowy koszt pozyskania leada poprzez precyzyjne dotarcie z ofertą do właściwych konsumentów w najbardziej sprzyjającym momencie ich procesu zakupowego.'
                   : 'We realize that every industry is characterized by its own specific nature, unique target audience, and specific decision-making cycle. For this reason, we approach the optimization of our Clients business strategies with great flexibility. By deciding to invest in professional internet marketing in the form of SEO, you choose a model of lasting brand competency building. Together, we identify key conversion goals and lower the long-term cost of lead acquisition by precisely reaching out with an offer to the right consumers at the most favorable moment of their purchasing process.'}
@@ -232,26 +651,26 @@ export default function PricingClient() {
           i FAQ „Czym różnią się pakiety…”. Bez zdań z FAQ i leadu (playbook 5.5). */}
       {lang === 'pl' && (
         <section style={{ padding: '0 0 80px 0' }}>
-          <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--color-text-main)' }}>
+          <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--w-tusz)' }}>
             <Reveal>
-              <div style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
-                <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-text-dark)' }}>
+              <div className="w-karta" style={kartaStyl}>
+                <h2 style={h2Styl}>
                   Pozycjonowanie stron: cena, koszt i wycena w 2026
                 </h2>
-                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', marginBottom: '1.5rem' }}>
                   <Link href="/pozycjonowanie-stron-internetowych" style={{ textDecoration: 'underline' }}>Pozycjonowanie stron</Link> kosztuje u nas od 1 900 zł netto miesięcznie. W SEO Standard dostajesz do 20 fraz, czyli średnio 95 zł netto za frazę, a w SEO Premium za 2 500 zł netto do 50 fraz, czyli 50 zł za frazę. Za samo wejście fraz do TOP 10 nie dopłacasz. Zastanawiasz się, czy zamiast tego wybrać reklamy? Sprawdź, <Link href="/blog/agencja-seo-czy-google-ads" style={{ textDecoration: 'underline' }}>agencja SEO czy Google Ads</Link>.
                 </p>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
+                <h3 style={h3Styl}>
                   Tanie pozycjonowanie stron: na czym oszczędzają najtańsze oferty
                 </h3>
-                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', marginBottom: '1.5rem' }}>
                   Najtańsze oferty zwykle oszczędzają na tym, czego nie widać w raporcie: treściach, linkach z serwisów z realnym ruchem i poprawkach technicznych. Zanim porównasz ceny, sprawdź <a href="#uczciwa-umowa" style={{ textDecoration: 'underline' }}>w umowie</a> trzy rzeczy: ile fraz i treści dostajesz co miesiąc, czy konta Google są założone na Twoją firmę i ile trwa wypowiedzenie.
                 </p>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
+                <h3 style={h3Styl}>
                   Wycena pozycjonowania: czego potrzebujemy
                 </h3>
                 {/* Do potwierdzenia przez Filipa (OP-01): czy te trzy dane wystarczają do wyceny. */}
-                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)' }}>
                   Do wyceny pozycjonowania wystarczą adres strony, lista usług albo kategorii, które chcesz promować, i obszar działania: miasto, region albo cała Polska. Na tej podstawie dobieramy pakiet i liczbę fraz. Jeśli strona ma problemy techniczne, zaczynamy od <Link href="/audyt-seo" style={{ textDecoration: 'underline' }}>audytu SEO</Link>, który w każdym pakiecie jest w cenie.
                 </p>
               </div>
@@ -262,19 +681,19 @@ export default function PricingClient() {
 
       {lang !== 'pl' && (
         <section style={{ padding: '0 0 80px 0' }}>
-          <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--color-text-main)' }}>
+          <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--w-tusz)' }}>
             <Reveal>
-              <div style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
-                <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--color-text-dark)' }}>
+              <div className="w-karta" style={kartaStyl}>
+                <h2 style={h2Styl}>
                   SEO price per month: rates, fees and packages
                 </h2>
-                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', marginBottom: '1.5rem' }}>
                   Our monthly <Link href="/pozycjonowanie-stron-internetowych" style={{ textDecoration: 'underline' }}>SEO services</Link> start at €450 net per month in SEO Standard (up to 20 keywords, 2 content pieces and 2 editorial links, or €22.50 net per keyword) and €590 net per month in SEO Premium (up to 50 keywords, 4 content pieces and 4 links, or €11.80 net per keyword). The Booster Pack is also €590 net per month on a minimum 3-month contract and includes building a new Next.js website. We charge no onboarding fees, activation charges or extra fees when keywords enter the top 10.
                 </p>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)', marginTop: '2rem' }}>
+                <h3 style={h3Styl}>
                   What to check before comparing SEO rates and quotes
                 </h3>
-                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)' }}>
                   Low-fee SEO retainers usually cut what does not show on a summary slide: original content, links from sites with real search traffic and developer-ready technical fixes. Before comparing charges, verify three things <a href="#uczciwa-umowa" style={{ textDecoration: 'underline' }}>in the contract</a>: how many keywords, articles and links are delivered each month, whether Google Search Console and Analytics stay under your company account, and how long the notice period is. Every package starts with a <Link href="/audyt-seo" style={{ textDecoration: 'underline' }}>technical SEO audit</Link> included in the monthly fee.
                 </p>
               </div>

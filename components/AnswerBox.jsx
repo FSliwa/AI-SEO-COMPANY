@@ -9,24 +9,26 @@
 
 const pudelko = {
   background: 'var(--w-karta)',
-  borderLeft: '4px solid var(--color-primary)',
+  border: '1px solid var(--w-linia)',
+  borderLeft: '3px solid var(--w-pomarancz)',
   borderRadius: '16px',
   padding: 'clamp(1rem, 3vw, 1.5rem) clamp(1.1rem, 3vw, 1.75rem)',
   boxShadow: 'none',
   margin: '0 0 2rem',
   textAlign: 'left',
-  color: 'var(--color-text-main)',
+  color: 'var(--w-tusz)',
   fontSize: '1.05rem',
   lineHeight: 1.65,
 };
 
 const etykietaStyl = {
-  margin: '0 0 0.4rem',
-  fontSize: '0.8rem',
-  fontWeight: 700,
-  letterSpacing: '0.06em',
+  margin: '0 0 0.45rem',
+  fontFamily: 'var(--w-mono)',
+  fontSize: '0.76rem',
+  fontWeight: 500,
+  letterSpacing: '0.12em',
   textTransform: 'uppercase',
-  color: 'var(--color-primary)',
+  color: 'var(--w-pomarancz-tekst)',
 };
 
 export default function AnswerBox({ children, etykieta = 'Krótka odpowiedź', id }) {

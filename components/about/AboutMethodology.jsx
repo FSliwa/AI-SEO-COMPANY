@@ -7,46 +7,38 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Reveal, RevealStagger, RevealItem } from '../ScrollReveal';
 import { zachowaniePrzewijania } from '@/lib/ruch';
 
+const krokStyl = {
+  fontFamily: 'var(--w-mono)',
+  fontWeight: 500,
+  letterSpacing: '0.14em',
+  fontSize: '0.82rem',
+  color: 'var(--w-brzoskwinia)',
+  whiteSpace: 'nowrap',
+  textTransform: 'uppercase',
+};
+
 const methodologyStages = [
   {
     id: 1,
     brandName: 'KROK 1',
-    brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
-        KROK 1
-      </span>
-    ),
-    brandLogoEn: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 400, letterSpacing: '0.15em', fontSize: '1.2rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
-        STEP 1
-      </span>
-    ),
+    brandLogo: <span style={krokStyl}>KROK 1</span>,
+    brandLogoEn: <span style={krokStyl}>STEP 1</span>,
     metric: 'ARCHITEKTURA & DESIGN',
     metricEn: 'ARCHITECTURE & DESIGN',
     metricSubtitle: 'Projektowanie UX/UI i solidny fundament techniczny.',
     metricSubtitleEn: 'UX/UI design and solid technical foundation.',
-    gradient: 'linear-gradient(135deg, #818CF8, #38BDF8, #C084FC)',
     layout: 'center',
     largeImage: '/images/unsplash-1561070791-2526d30994b5.jpg',
   },
   {
     id: 2,
     brandName: 'KROK 2',
-    brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
-        KROK 2
-      </span>
-    ),
-    brandLogoEn: (
-      <span style={{ fontFamily: "var(--font-geist), system-ui, sans-serif", fontWeight: 700, letterSpacing: '-0.02em', fontSize: '1.4rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
-        STEP 2
-      </span>
-    ),
+    brandLogo: <span style={krokStyl}>KROK 2</span>,
+    brandLogoEn: <span style={krokStyl}>STEP 2</span>,
     metric: 'ZAAWANSOWANE SEO',
     metricEn: 'ADVANCED SEO',
     metricSubtitle: 'Budowanie struktury treści, techniczne SEO i organiczny wzrost.',
     metricSubtitleEn: 'Content structure building, technical SEO and organic growth.',
-    gradient: 'linear-gradient(135deg, #818CF8, #60A5FA, #34D399)',
     layout: 'right-side',
     desktopCard: {
       image: '/images/unsplash-1460925895917-afdab827c52f.jpg',
@@ -55,21 +47,12 @@ const methodologyStages = [
   {
     id: 3,
     brandName: 'KROK 3',
-    brandLogo: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
-        KROK 3
-      </span>
-    ),
-    brandLogoEn: (
-      <span style={{ fontFamily: "var(--font-geist), sans-serif", fontWeight: 800, letterSpacing: '0.1em', fontSize: '1.3rem', color: 'var(--w-tusz)', whiteSpace: 'nowrap' }}>
-        STEP 3
-      </span>
-    ),
+    brandLogo: <span style={krokStyl}>KROK 3</span>,
+    brandLogoEn: <span style={krokStyl}>STEP 3</span>,
     metric: 'SKALOWANIE SPRZEDAŻY',
     metricEn: 'SCALING SALES',
     metricSubtitle: 'Konwersja ruchu organicznego na realnych, płacących klientów.',
     metricSubtitleEn: 'Converting organic traffic into real, paying customers.',
-    gradient: 'linear-gradient(135deg, #60A5FA, #38BDF8, #A855F7)',
     layout: 'center-reverse',
     largeImage: '/images/unsplash-1552581234-26160f608093.jpg',
   }
@@ -77,18 +60,15 @@ const methodologyStages = [
 
 export default function AboutMethodology() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoplay, setIsAutoplay] = useState(true);
+  const [isAutoplay, setIsAutoplay] = useState(
+    () => typeof window === 'undefined' || !window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  );
   const [najechane, setNajechane] = useState(false);
   const lang = useLocale();
 
-  // Ten sam interwal co 5 s co w WhyUs i ten sam problem (05.10.2026): nie
-  // sprawdzal prefers-reduced-motion, najechania mysza ani fokusu klawiatury.
-  // Stan startowy true zgadza sie z renderem serwera; efekt po zamontowaniu
-  // wylacza autoodtwarzanie przy "ogranicz ruch".
   useEffect(() => {
-    if (!window.matchMedia) return;
+    if (!window.matchMedia) return undefined;
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq.matches) setIsAutoplay(false);
     const naZmiane = (e) => { if (e.matches) setIsAutoplay(false); };
     mq.addEventListener('change', naZmiane);
     return () => mq.removeEventListener('change', naZmiane);
@@ -156,18 +136,18 @@ export default function AboutMethodology() {
   }, [isAutoplay, najechane, activeIndex]);
 
   return (
-    <section className="portfolio" id="about-methodology" style={{ background: 'var(--color-bg-surface)', padding: '8rem 0' }} onFocus={zatrzymajPrzyFokusie}>
+    <section className="portfolio" id="about-methodology" style={{ background: 'var(--w-papier)', padding: '8rem 0' }} onFocus={zatrzymajPrzyFokusie}>
       <div className="container" style={{ maxWidth: '1440px' }}>
         
         {/* Top Header Row */}
         <Reveal className="section-header center" style={{ marginBottom: '4rem', maxWidth: '840px', marginInline: 'auto' }}>
-          <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'NASZA METODOLOGIA' : 'OUR METHODOLOGY'}
+          <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+            <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {lang === 'pl' ? 'NASZA METODOLOGIA' : 'OUR METHODOLOGY'}
           </div>
-          <h2 style={{ color: 'var(--w-tusz)', fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', fontWeight: 700, letterSpacing: '-0.04em', margin: '1rem 0' }}>
+          <h2 style={{ color: 'var(--w-tusz)', fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', fontWeight: 500, lineHeight: 1.06, letterSpacing: '-0.04em', margin: '1rem 0' }}>
             {lang === 'pl' ? 'Trzy etapy do dominacji w Google' : 'Three steps to Google dominance'}
           </h2>
-          <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.25rem', fontWeight: 500 }}>
+          <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.2rem', fontWeight: 400 }}>
             {lang === 'pl' ? 'Poznaj proces, dzięki któremu prowadzimy marki do widoczności w wynikach wyszukiwania.' : 'Explore the process we use to build brands\' visibility in search results.'}
           </p>
         </Reveal>
@@ -200,21 +180,21 @@ export default function AboutMethodology() {
               #about-methodology-carousel::-webkit-scrollbar { display: none; }
             `}</style>
             
-            {methodologyStages.map((item, index) => (
+            {methodologyStages.map((item) => (
               <RevealItem 
                 key={item.id} 
                 className="apple-card"
                 style={{
                   flex: '0 0 min(85vw, 1200px)',
                   scrollSnapAlign: 'center',
-                  background: '#000000', 
-                  borderRadius: '36px',
+                  background: 'var(--w-noc)', 
+                  borderRadius: '24px',
                   padding: '4rem 3.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   minHeight: '600px',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(243, 183, 156, 0.20)',
                   position: 'relative',
                   overflow: 'hidden'
                 }}
@@ -223,20 +203,20 @@ export default function AboutMethodology() {
                 {item.layout === 'center' ? (
                   <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', height: '100%', position: 'relative', width: '100%' }}>
                     <div className="portfolio-text-container" style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '0.5rem', zIndex: 2 }}>
-                      <div style={{ marginBottom: '1.25rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                      <div style={{ marginBottom: '1rem' }}>
                         {lang === 'pl' ? item.brandLogo : item.brandLogoEn}
                       </div>
                       <div style={{ 
                         fontSize: 'clamp(1.85rem, 3vw, 2.45rem)', 
-                        fontWeight: 700, 
+                        fontWeight: 600, 
                         color: '#FFFFFF', 
                         letterSpacing: '-0.03em', 
-                        lineHeight: 1.22, 
+                        lineHeight: 1.2, 
                         marginBottom: '0' 
                       }}>
                         {lang === 'pl' ? item.metric : item.metricEn}
                         <br />
-                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
+                        <span style={{ fontSize: '1.2rem', color: 'var(--w-noc-tekst)', fontWeight: 400 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
                       </div>
                     </div>
 
@@ -307,13 +287,13 @@ export default function AboutMethodology() {
                     </motion.div>
 
                     <div className="portfolio-text-container" style={{ maxWidth: '680px', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 'auto', paddingBottom: '0.5rem', zIndex: 2, position: 'relative' }}>
-                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
+                      <div style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 600, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: '0' }}>
                         {lang === 'pl' ? item.metric : item.metricEn}
                         <br />
-                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
+                        <span style={{ fontSize: '1.2rem', color: 'var(--w-noc-tekst)', fontWeight: 400 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
                       </div>
                       
-                      <div style={{ position: 'absolute', bottom: '-2.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                      <div style={{ position: 'absolute', bottom: '-2.25rem' }}>
                         {lang === 'pl' ? item.brandLogo : item.brandLogoEn}
                       </div>
                     </div>
@@ -321,20 +301,20 @@ export default function AboutMethodology() {
                 ) : item.layout === 'right-side' ? (
                   <div style={{ zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%' }}>
                     <div className="portfolio-text-container" style={{ flex: '0 0 42%', maxWidth: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 2 }}>
-                      <div style={{ marginBottom: '1.5rem', filter: 'brightness(0) invert(1)', opacity: 0.9 }}>
+                      <div style={{ marginBottom: '1.25rem' }}>
                         {lang === 'pl' ? item.brandLogo : item.brandLogoEn}
                       </div>
                       
                       <div style={{ 
-                        fontSize: 'clamp(2.2rem, 3.8vw, 3.5rem)', 
-                        fontWeight: 700, 
+                        fontSize: 'clamp(2.2rem, 3.8vw, 3.3rem)', 
+                        fontWeight: 600, 
                         color: '#FFFFFF', 
                         letterSpacing: '-0.035em', 
                         lineHeight: 1.18 
                       }}>
                         {lang === 'pl' ? item.metric : item.metricEn}
                         <br />
-                        <span style={{ fontSize: '1.25rem', color: '#A1A1AA', fontWeight: 500 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
+                        <span style={{ fontSize: '1.2rem', color: 'var(--w-noc-tekst)', fontWeight: 400 }}>{lang === 'pl' ? item.metricSubtitle : item.metricSubtitleEn}</span>
                       </div>
                     </div>
 

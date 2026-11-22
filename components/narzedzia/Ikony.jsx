@@ -25,7 +25,8 @@ export default function Ikona({ nazwa, rozmiar = 24 }) {
 /** Klucz ikony dla ścieżki PL / id karty huba narzędzia. */
 export function ikonaNarzedzia(klucz = '') {
   if (/audyt/.test(klucz)) return 'audyt';
-  if (/widocznosc|sprawdzarka/.test(klucz)) return 'ai';
+  if (/widocznosc|sprawdzarka|robot|crawler/.test(klucz)) return 'ai';
+  if (/vitals|cwv/.test(klucz)) return 'bolt';
   if (/kalkulator/.test(klucz)) return 'kalkulator';
   if (/makieta/.test(klucz)) return 'makieta';
   if (/llms/.test(klucz)) return 'llms';

@@ -18,7 +18,7 @@ import { maWersjeDe, wpisDe } from '@/lib/stronyDe';
 import { CHATGPT_DE, STAND_CHATGPT_DE } from '@/lib/de/chatgpt';
 
 const KLUCZ = '/pozycjonowanie-w-ai/chatgpt';
-const card = { background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' };
+const card = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)' };
 const tekstStyl = { margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)', hyphens: 'auto', overflowWrap: 'break-word' };
 const linkStyl = { textDecoration: 'underline' };
 
@@ -34,7 +34,7 @@ export default function ChatgptSeiteDe() {
     <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs
-        parent={{ label: 'Generative Engine Optimization', href: '/de/ki-suchoptimierung' }}
+        parent={{ href: '/pozycjonowanie-w-ai', pl: 'Pozycjonowanie w AI', en: 'AI SEO (GEO)', de: 'Generative Engine Optimization' }}
         pl={CHATGPT_DE.okruszek}
         en={CHATGPT_DE.okruszek}
         de={CHATGPT_DE.okruszek}
@@ -56,7 +56,7 @@ export default function ChatgptSeiteDe() {
             <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {CHATGPT_DE.tag}
             </div>
-            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1.2rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' }}>
+            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.2rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' }}>
               {h1}
             </h1>
             <BylineDe stand={STAND_CHATGPT_DE} />
@@ -112,7 +112,7 @@ export default function ChatgptSeiteDe() {
           <RevealStagger style={{ display: 'grid', gap: '1.1rem', marginTop: '1.6rem' }}>
             {CHATGPT_DE.schritte.map(([titel, text]) => (
               <RevealItem key={titel} style={{ ...card, padding: '1.4rem 1.6rem' }}>
-                <h3 lang="de" style={{ fontSize: '1.12rem', fontWeight: 700, margin: '0 0 0.45rem', color: 'var(--color-text-dark)' }}>{titel}</h3>
+                <h3 lang="de" style={{ fontSize: '1.12rem', fontWeight: 600, margin: '0 0 0.45rem', color: 'var(--color-text-dark)' }}>{titel}</h3>
                 <p lang="de" style={tekstStyl}>{text}</p>
               </RevealItem>
             ))}

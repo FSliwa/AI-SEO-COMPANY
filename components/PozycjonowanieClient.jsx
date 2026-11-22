@@ -29,21 +29,21 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
   const faqWidoczne = lang === 'pl' ? faqData : faqData.filter((f) => !f.tylkoPl);
 
   return (
-    <main className="subpage-main" style={{ paddingTop: '100px', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main className="subpage-main" style={{ paddingTop: '100px', backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <section className="subpage-hero tlo-gory-hero" style={{ paddingTop: '80px', paddingBottom: '80px', position: 'relative', textAlign: 'center' }}>
         <TloGory />
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal>
-            <div className="section-tag" style={{ color: 'var(--color-cta)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.85rem' }}>
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.14em', fontSize: '0.82rem' }}>
               {/* PL: dosłowny hak z przypiętego nagłówka RSA grupy P-Pozycjonowanie w Google Ads (dopasowanie przekazu reklama ↔ strona). */}
               {lang === 'pl' ? 'Pozycjonowanie stron bez bajek' : 'SEO OPTIMIZATION'}
             </div>
             
             <h1 className={lang === 'en' ? 'tlo-gory-h1--dlugi' : undefined} style={{
-              fontSize: 'clamp(3.5rem, 7vw, 6rem)',
-              fontWeight: 700,
-              lineHeight: 1.05,
-              color: 'var(--color-text-main)',
+              fontSize: 'clamp(3.2rem, 6.5vw, 5.6rem)',
+              fontWeight: 500,
+              lineHeight: 1.04,
+              color: 'var(--w-tusz)',
               marginBottom: '1rem',
               letterSpacing: '-0.04em'
             }}>
@@ -51,21 +51,20 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
             </h1>
 
             <div style={{ 
-              width: '120px', 
-              height: '6px', 
-              background: 'linear-gradient(90deg, var(--color-cta) 0%, #FF8A65 100%)', 
+              width: '96px', 
+              height: '4px', 
+              background: 'var(--w-pomarancz)', 
               margin: '0 auto 2rem auto', 
-              borderRadius: '3px',
-              boxShadow: '0 4px 15px rgba(216, 90, 48, 0.4)'
+              borderRadius: '2px'
             }}></div>
 
             <h2 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 700, 
-              color: 'var(--color-text-main)', 
+              fontSize: 'clamp(2.25rem, 4.5vw, 3.6rem)', 
+              fontWeight: 500, 
+              color: 'var(--w-tusz)', 
               marginBottom: '1.5rem', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em'
+              lineHeight: 1.08,
+              letterSpacing: '-0.035em'
             }}>
               {/* 22.10.2026: zamiast "Organiczny Wzrost / Maksymalna Konwersja"
                   (dwa hasla bez tresci, Title Case) - korzysc, o ktora pyta
@@ -127,46 +126,46 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
       <section style={{ padding: '120px 0' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 3.8rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.04em', lineHeight: 1.15, marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: 'clamp(2.35rem, 4vw, 3.6rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.08, marginBottom: '1rem' }}>
               {lang === 'pl' ? 'Jak Działamy' : 'How We Work'}
             </h2>
-            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500 }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 400 }}>
               {lang === 'pl' ? 'Trzyetapowa strategia wzrostu oparta na twardych danych analitycznych.' : 'A three-step growth strategy based on hard analytical data.'}
             </p>
           </Reveal>
 
-          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '2rem' }}>
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 1' : 'STEP 1'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
+          <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '1.5rem' }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'KROK 1' : 'STEP 1'}</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Audyt Techniczny & CWV' : 'Technical Audit & Search Engine Optimization'}
               </h3>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>
                 {lang === 'pl' ? 'Eliminujemy błędy indeksowania, przyspieszamy ładowanie i poprawiamy architekturę linkowania wewnętrznego.' : 'We eliminate indexing errors, speed up loading times, and improve internal linking architecture.'}
               </p>
             </RevealItem>
             
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 2' : 'STEP 2'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'KROK 2' : 'STEP 2'}</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Content Marketing' : 'Content Marketing & SEO Digital Strategy'}
               </h3>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>
                 {lang === 'pl' 
-                  ? <>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania. Sprawdź nasz <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>poradnik o opiniach Google</Link>. Zasady pisania tych tekstów: <Link href="/copywriting-seo" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>copywriting SEO</Link>.</>
-                  : <>We create topical clusters and semantic content answering user queries and search intent. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>Google reviews guide</Link>. How we write this content: <Link href="/copywriting-seo" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>SEO copywriting</Link>.</>}
+                  ? <>Tworzymy klastry tematyczne oraz semantyczne treści odpowiadające na pytania użytkowników i intencje wyszukiwania. Sprawdź nasz <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>poradnik o opiniach Google</Link>. Zasady pisania tych tekstów: <Link href="/copywriting-seo" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>copywriting SEO</Link>.</>
+                  : <>We create topical clusters and semantic content answering user queries and search intent. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>Google reviews guide</Link>. How we write this content: <Link href="/copywriting-seo" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>SEO copywriting</Link>.</>}
               </p>
             </RevealItem>
             
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'KROK 3' : 'STEP 3'}</div>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>
+            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+              <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'KROK 3' : 'STEP 3'}</div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Budowanie Autorytetu' : 'Authority Building & Search Optimisation'}
               </h3>
-              <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>
+              <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>
                 {lang === 'pl'
-                  ? <>Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny. Zakres i ceny: <Link href="/link-building" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>link building</Link>.</>
-                  : <>We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain. Scope and pricing: <Link href="/link-building" style={{ color: 'var(--color-cta)', textDecoration: 'underline' }}>link building services</Link>.</>}
+                  ? <>Pozyskujemy jakościowe odnośniki z cenionych portali, systematycznie budując zaufanie i autorytet Twojej domeny. Zakres i ceny: <Link href="/link-building" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>link building</Link>.</>
+                  : <>We acquire high-quality backlinks from respected portals, systematically building trust and authority for your domain. Scope and pricing: <Link href="/link-building" style={{ color: 'var(--w-pomarancz-tekst)', textDecoration: 'underline' }}>link building services</Link>.</>}
               </p>
             </RevealItem>
           </RevealStagger>
@@ -189,29 +188,29 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
       <section style={{ padding: '80px 0', background: 'var(--w-papier-2)' }}>
           <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
             <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.035em', lineHeight: 1.1, marginBottom: '1rem' }}>
                 {lang === 'pl' ? 'Zaawansowane Strategie Marketingu w Wyszukiwarkach' : 'Advanced Search Engine Optimization Marketing Strategies'}
               </h2>
               <p style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', margin: '0 auto' }}>
                 {lang === 'pl' ? 'Sprawdzone metody optymalizacji i marketingu treści dla firm B2B.' : 'Proven search optimization services tailored for B2B growth.'}
               </p>
             </Reveal>
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.5rem)', boxShadow: 'none' }}>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', marginBottom: '1rem' }}>
                   {lang === 'pl' ? 'Marketing Cyfrowy i Strategia Treści' : 'SEO for Agencies: Digital Search Marketing & Content Strategy'}
                 </h3>
-                <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
+                <p style={{ color: 'var(--w-tusz-2)', lineHeight: 1.65 }}>
                   {lang === 'pl'
                     ? 'Pracujemy z firmami, których klienci szukają długo, zanim w ogóle się odezwą - dlatego każdą współpracę zaczynamy od pytania, które zapytania realnie ich przyprowadzają. Treść planujemy pod konkretny etap tej ścieżki, a nie „bo trzeba publikować”: każdy tekst ma zadanie i sprawdzamy, czy je wykonuje. SEO, analitykę i marketing prowadzi jeden zespół, więc nic nie jest optymalizowane w oderwaniu od reszty. Działamy też jako zaplecze dla działów marketingu i innych agencji, którym brakuje rąk.'
                     : <>We work with companies whose buyers research long before they contact anyone, so every engagement starts with one question: which queries actually bring those buyers in. We treat the role of content in marketing as part of the whole funnel rather than a separate channel, so each article has a job to do. One team covers SEO, digital marketing and analytics, which means nothing gets optimised in isolation. We also work as a search optimisation agency for in-house teams that need extra capacity - <strong>SEO for agencies</strong> and for marketing departments running lean. Where paid and organic overlap we plan them together: search marketing, digital PR and landing-page tests feeding the same pipeline.</>}
                 </p>
               </RevealItem>
-              <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem' }}>
+              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.5rem)', boxShadow: 'none' }}>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', marginBottom: '1rem' }}>
                   {lang === 'pl' ? 'Ekspertyza Wyszukiwarek' : 'Search Engine Expertise'}
                 </h3>
-                <p style={{ color: 'var(--color-text-main)', lineHeight: 1.6 }}>
+                <p style={{ color: 'var(--w-tusz-2)', lineHeight: 1.65 }}>
                   {lang === 'pl'
                     ? 'Zapewniamy dogłębną analizę techniczną i ciągłe strategie podnoszące Twoje pozycje. Odkryj nasze kompleksowe usługi optymalizacji zaprojektowane dla zrównoważonego wzrostu. Jesteśmy agencją SEO dla B2B z panelem klienta, dedykowaną Twojemu długoterminowemu sukcesowi.'
                     : <><>We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive services as an <strong>optimization agency</strong> and <strong>search engine optimisation agency</strong> for B2B, dedicated to your long-term sustainable growth.</></>}
@@ -235,25 +234,27 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
         <section style={{ padding: '80px 0' }}>
           <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Reveal>
-              <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
-                Pozycjonowanie strony w Google: od czego zależy skuteczność
-              </h2>
-              <p style={tekstSekcji}>
-                Skuteczne pozycjonowanie stron firmowych opiera się na trzech rzeczach: stronie, którą Google szybko indeksuje, treściach odpowiadających na pytania klientów i linkach z serwisów o realnym ruchu. Pozycjonowanie strony w Google zaczynamy od <Link href="/audyt-seo" style={linkSekcji}>audytu SEO</Link> i listy fraz, które przynoszą zapytania. W panelu klienta co tydzień widzisz, jak pozycjonowanie stron SEO przekłada się na pozycje i zapytania.
-              </p>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-text-main)', marginTop: '2.5rem', marginBottom: '1rem' }}>
-                Pozycjonowanie stron w Google i w odpowiedziach AI
-              </h3>
-              <p style={tekstSekcji}>
-                Te same fundamenty decydują o tym, czy firmę wymieni ChatGPT albo przegląd AI w Google: modele składają odpowiedzi ze stron, które dobrze rankują i jasno odpowiadają na pytania. Dlatego pozycjonowanie stron w Google łączymy z pomiarem widoczności w AI, a zakres i ceny opisujemy na stronie <Link href="/pozycjonowanie-w-ai" style={linkSekcji}>pozycjonowanie w AI (GEO)</Link>.
-                {HREF_P2 && <> Jeśli dopiero porządkujesz pojęcia, sprawdź, <Link href={HREF_P2} style={linkSekcji}>czym SEO różni się od GEO</Link>.</>}
-              </p>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-text-main)', marginTop: '2.5rem', marginBottom: '1rem' }}>
-                Usługi SEO dla firm B2B i lokalnych
-              </h3>
-              <p style={tekstSekcji}>
-                Usługi SEO prowadzimy w dwóch modelach: dla firm B2B, które sprzedają w całej Polsce, i dla firm usługowych, które zdobywają klientów w swoim mieście. W drugim przypadku łączymy stronę z wizytówką Google, opiniami i Mapami. Ten zakres opisujemy osobno na stronie <Link href="/seo-lokalne-warszawa" style={linkSekcji}>SEO lokalne w Warszawie</Link>.
-              </p>
+              <div className="w-karta" style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(1.75rem, 4.5vw, 3rem)', boxShadow: 'none' }}>
+                <h2 style={{ fontSize: 'clamp(1.85rem, 3vw, 2.45rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.035em', lineHeight: 1.1, marginBottom: '1.5rem' }}>
+                  Pozycjonowanie strony w Google: od czego zależy skuteczność
+                </h2>
+                <p style={tekstSekcji}>
+                  Skuteczne pozycjonowanie stron firmowych opiera się na trzech rzeczach: stronie, którą Google szybko indeksuje, treściach odpowiadających na pytania klientów i linkach z serwisów o realnym ruchu. Pozycjonowanie strony w Google zaczynamy od <Link href="/audyt-seo" style={linkSekcji}>audytu SEO</Link> i listy fraz, które przynoszą zapytania. W panelu klienta co tydzień widzisz, jak pozycjonowanie stron SEO przekłada się na pozycje i zapytania.
+                </p>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', marginTop: '2.25rem', marginBottom: '1rem' }}>
+                  Pozycjonowanie stron w Google i w odpowiedziach AI
+                </h3>
+                <p style={tekstSekcji}>
+                  Te same fundamenty decydują o tym, czy firmę wymieni ChatGPT albo przegląd AI w Google: modele składają odpowiedzi ze stron, które dobrze rankują i jasno odpowiadają na pytania. Dlatego pozycjonowanie stron w Google łączymy z pomiarem widoczności w AI, a zakres i ceny opisujemy na stronie <Link href="/pozycjonowanie-w-ai" style={linkSekcji}>pozycjonowanie w AI (GEO)</Link>.
+                  {HREF_P2 && <> Jeśli dopiero porządkujesz pojęcia, sprawdź, <Link href={HREF_P2} style={linkSekcji}>czym SEO różni się od GEO</Link>.</>}
+                </p>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', marginTop: '2.25rem', marginBottom: '1rem' }}>
+                  Usługi SEO dla firm B2B i lokalnych
+                </h3>
+                <p style={{ ...tekstSekcji, marginBottom: 0 }}>
+                  Usługi SEO prowadzimy w dwóch modelach: dla firm B2B, które sprzedają w całej Polsce, i dla firm usługowych, które zdobywają klientów w swoim mieście. W drugim przypadku łączymy stronę z wizytówką Google, opiniami i Mapami. Ten zakres opisujemy osobno na stronie <Link href="/seo-lokalne-warszawa" style={linkSekcji}>SEO lokalne w Warszawie</Link>.
+                </p>
+              </div>
             </Reveal>
           </div>
         </section>

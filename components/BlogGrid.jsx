@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { postsForLocale } from '@/lib/blogPosts';
 import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
 import { Link } from '@/i18n/routing';
@@ -56,8 +56,7 @@ export default function BlogGrid() {
   const introTextPl = 'Nasz Blog to praktyczny Poradnik, stworzony przez ekspertów AI SEO COMPANY. Przeczytaj nasze Najnowsze Artykuły o SEO i Web Designie. Publikujemy tutaj sprawdzone strategie pozyskiwania ruchu organicznego, analizujemy najnowsze aktualizacje algorytmów Google oraz dzielimy się wiedzą z zakresu budowy konwertujących interfejsów B2B. Zrozumienie mechanizmów wyszukiwarki pozwala nie tylko na zwiększenie widoczności, ale przede wszystkim na budowanie długofalowej przewagi konkurencyjnej w internecie.';
   const introTextEn = 'Our Blog is a practical SEO and Web Design Guide, created by AI SEO COMPANY experts. Read our latest articles on optimization. We publish proven organic traffic strategies, analyze Google algorithm updates, and share knowledge on building converting B2B interfaces. Understanding search engine mechanisms allows not only to increase visibility, but above all to build a long-term competitive advantage online.';
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = typeof document !== 'undefined';
 
 
   // Sort all posts by date (newest first)
@@ -90,11 +89,12 @@ export default function BlogGrid() {
         <Reveal>
           <div style={{ textAlign: 'left', padding: '1rem 0 2rem 0' }}>
             <h1 style={{ 
-              fontSize: 'clamp(3rem, 5vw, 4.5rem)', 
-              fontWeight: 700, 
+              fontSize: 'clamp(2.6rem, 5vw, 4.25rem)', 
+              fontWeight: 500, 
               color: 'var(--w-tusz)', 
               marginBottom: '0',
-              letterSpacing: '-0.02em'
+              lineHeight: 1.06,
+              letterSpacing: '-0.04em'
             }}>
               {lang === 'pl' ? 'Artykuły o SEO i Web Designie' : 'SEO and Web Design Articles'}
             </h1>
@@ -104,7 +104,7 @@ export default function BlogGrid() {
         {/* Srodtytul naprawia hierarchie naglowkow: dotad po H1 szly od razu
             H3 kart artykulow (przeskok flagowany w audycie 4.6). */}
         <Reveal delay={0.05}>
-          <h2 style={{ fontSize: 'clamp(1.15rem, 2vw, 1.4rem)', fontWeight: 600, color: 'var(--w-tusz-2)', letterSpacing: '-0.01em', margin: '0 0 1.25rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.2rem, 2vw, 1.45rem)', fontWeight: 500, color: 'var(--w-tusz-2)', letterSpacing: '-0.025em', margin: '0 0 1.25rem' }}>
             {lang === 'en' ? 'Latest articles' : 'Najnowsze artykuły'}
           </h2>
         </Reveal>
@@ -114,12 +114,13 @@ export default function BlogGrid() {
             <div className="hero-card" style={{ 
               display: 'flex', 
               flexDirection: 'column', 
-              backgroundColor: '#FFFFFF', 
+              backgroundColor: 'var(--w-karta)', 
+              border: '1px solid var(--w-linia)',
               borderRadius: '24px', 
               overflow: 'hidden',
               marginBottom: '2rem', textAlign: 'left',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.04)',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: 'none',
+              transition: 'transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease',
               cursor: 'pointer'
             }}>
               {/* Desktop: side-by-side, Mobile: stack */}
@@ -138,29 +139,30 @@ export default function BlogGrid() {
                 </div>
                 
                 <div style={{ 
-                  padding: 'clamp(2rem, 5vw, 4rem)', 
+                  padding: 'clamp(2rem, 5vw, 3.5rem)', 
                   display: 'flex', 
                   flexDirection: 'column', 
                   justifyContent: 'center' 
                 }}>
                   <span style={{ 
+                    fontFamily: 'var(--w-mono)',
                     fontSize: '0.75rem', 
-                    fontWeight: 600, 
-                    color: 'var(--w-tusz-2)', 
+                    fontWeight: 500, 
+                    color: 'var(--w-pomarancz-tekst)', 
                     textTransform: 'uppercase', 
-                    letterSpacing: '0.05em',
+                    letterSpacing: '0.12em',
                     marginBottom: '1rem',
                     display: 'block'
                   }}>
                     {heroData.tag}
                   </span>
                   <h3 style={{ 
-                    fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
-                    fontWeight: 700, 
+                    fontSize: 'clamp(1.65rem, 3.6vw, 2.35rem)', 
+                    fontWeight: 600, 
                     color: 'var(--w-tusz)', 
-                    lineHeight: 1.1,
+                    lineHeight: 1.14,
                     marginBottom: '1.5rem',
-                    letterSpacing: '-0.02em'
+                    letterSpacing: '-0.03em'
                   }}>
                     {heroData.title}
                   </h3>
@@ -169,7 +171,7 @@ export default function BlogGrid() {
                     color: 'var(--w-tusz-2)',
                     fontWeight: 500
                   }}>
-                    {heroData.date}
+                    {heroData.date} →
                   </span>
                 </div>
               </div>
@@ -180,7 +182,7 @@ export default function BlogGrid() {
         <RevealStagger style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
-          gap: '2rem' 
+          gap: '1.5rem' 
         }}>
           {gridPosts.map((post, idx) => {
             const data = getPostData(post);
@@ -191,14 +193,15 @@ export default function BlogGrid() {
                     display: 'flex', 
                     flexDirection: 'column', 
                     height: '100%', 
-                    backgroundColor: '#FFFFFF', 
+                    backgroundColor: 'var(--w-karta)', 
+                    border: '1px solid var(--w-linia)',
                     borderRadius: '24px', 
                     overflow: 'hidden',
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.04)',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    boxShadow: 'none',
+                    transition: 'transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease',
                     cursor: 'pointer'
                   }}>
-                    <div style={{ position: 'relative', height: '240px' }}>
+                    <div style={{ position: 'relative', height: '240px', borderBottom: '1px solid var(--w-linia)' }}>
                       <Image
                         src={data.image}
                         alt={data.title}
@@ -208,24 +211,25 @@ export default function BlogGrid() {
                       />
                     </div>
                     
-                    <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                    <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                       <span style={{ 
-                        fontSize: '0.75rem', 
-                        fontWeight: 600, 
-                        color: 'var(--w-tusz-2)', 
+                        fontFamily: 'var(--w-mono)',
+                        fontSize: '0.74rem', 
+                        fontWeight: 500, 
+                        color: 'var(--w-pomarancz-tekst)', 
                         textTransform: 'uppercase', 
-                        letterSpacing: '0.05em',
-                        marginBottom: '1rem'
+                        letterSpacing: '0.12em',
+                        marginBottom: '0.85rem'
                       }}>
                         {data.tag}
                       </span>
                       <h3 style={{ 
                         fontSize: '1.25rem', 
-                        fontWeight: 700, 
+                        fontWeight: 600, 
                         color: 'var(--w-tusz)', 
-                        lineHeight: 1.3,
-                        marginBottom: '1.5rem',
-                        letterSpacing: '-0.01em',
+                        lineHeight: 1.25,
+                        marginBottom: '1.35rem',
+                        letterSpacing: '-0.02em',
                         flexGrow: 1
                       }}>
                         {data.title}
@@ -235,7 +239,7 @@ export default function BlogGrid() {
                         color: 'var(--w-tusz-2)',
                         fontWeight: 500
                       }}>
-                        {data.date}
+                        {data.date} →
                       </span>
                     </div>
                   </div>
@@ -251,15 +255,16 @@ export default function BlogGrid() {
 
       <style jsx>{`
         .hero-card:hover, .grid-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
+          transform: translateY(-3px);
+          border-color: rgba(216, 90, 48, 0.44) !important;
+          box-shadow: var(--karta-cien-hover) !important;
         }
       `}</style>
     
       <div className="container" style={{ paddingBottom: '0rem', paddingTop: '4rem' }}>
         <Reveal>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: 'var(--w-tusz)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.5rem, 1.5vw, 1rem)' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.035em', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.5rem, 1.5vw, 1rem)' }}>
               {lang === 'pl' ? 'Misja' : 'Mission'}
               <svg 
                   xmlns="http://www.w3.org/2000/svg" 
@@ -300,10 +305,10 @@ export default function BlogGrid() {
                   onClick={() => setExpandedMissionCard(card)}
                   style={{ 
                     display: 'flex', flexDirection: 'column', height: '100%', 
-                    backgroundColor: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', 
-                    padding: isLast ? 'clamp(2.5rem, 5vw, 4rem)' : '2.5rem', 
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.04)', 
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease', 
+                    backgroundColor: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', 
+                    padding: isLast ? 'clamp(2.25rem, 4.5vw, 3.5rem)' : '2.25rem', 
+                    boxShadow: 'none', 
+                    transition: 'transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease', 
                     cursor: 'pointer',
                     alignItems: isLast ? 'center' : 'flex-start',
                     textAlign: isLast ? 'center' : 'left'
@@ -330,9 +335,9 @@ export default function BlogGrid() {
                 </svg>
               </span>
                   <h3 style={{ 
-                    fontSize: isLast ? 'clamp(1.75rem, 4vw, 2.5rem)' : '1.4rem', 
-                    fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1rem', 
-                    lineHeight: isLast ? 1.15 : 1.25, letterSpacing: '-0.02em',
+                    fontSize: isLast ? 'clamp(1.65rem, 3.6vw, 2.3rem)' : '1.35rem', 
+                    fontWeight: 600, color: 'var(--w-tusz)', marginBottom: '1rem', 
+                    lineHeight: isLast ? 1.15 : 1.25, letterSpacing: '-0.025em',
                     maxWidth: isLast ? '800px' : 'none'
                   }}>
                     {lang === 'pl' ? card.titlePl : card.titleEn}
@@ -367,10 +372,10 @@ export default function BlogGrid() {
             padding: '1rem', backdropFilter: 'blur(10px)' 
           }} onClick={() => setExpandedMissionCard(null)}>
             <div style={{ 
-              backgroundColor: '#FFFFFF', borderRadius: '24px', 
+              backgroundColor: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', 
               width: '100%', maxWidth: '800px', 
               maxHeight: '90vh', overflowY: 'auto', overflowX: 'hidden', position: 'relative',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+              boxShadow: '0 25px 50px -12px rgba(10, 19, 55, 0.25)'
             }} onClick={e => e.stopPropagation()}>
               <button 
                 onClick={() => setExpandedMissionCard(null)} 
@@ -405,7 +410,7 @@ export default function BlogGrid() {
                 <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', display: 'block' }}>
                   {lang === 'pl' ? expandedMissionCard.tagPl : expandedMissionCard.tagEn}
                 </span>
-                <h3 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
+                <h3 style={{ fontSize: 'clamp(1.65rem, 3.6vw, 2.3rem)', fontWeight: 600, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.15, letterSpacing: '-0.025em' }}>
                   {lang === 'pl' ? expandedMissionCard.titlePl : expandedMissionCard.titleEn}
                 </h3>
                 <p style={{ color: 'var(--w-tusz)', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
@@ -430,7 +435,7 @@ export default function BlogGrid() {
             serwerowym - Google odkrywal je dopiero przy renderowaniu JS. */}
         {sortedPosts.length > 4 && (
           <Reveal style={{ marginTop: '4rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: '1.65rem', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', letterSpacing: '-0.035em' }}>
               {lang === 'pl' ? 'Wszystkie artykuły' : 'All articles'}
             </h2>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '0.75rem 2rem' }}>

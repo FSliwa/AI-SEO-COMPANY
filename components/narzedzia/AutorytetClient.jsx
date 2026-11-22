@@ -17,7 +17,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { track } from '@/lib/track';
-import { wywolajNarzedzie } from '@/lib/narzedziaApi';
+import { DEMO, PANEL_API, wywolajNarzedzie } from '@/lib/narzedziaApi';
 import { AUTORYTET } from '@/lib/narzedziaLiczby';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import BramkaEmail from './BramkaEmail';
@@ -31,8 +31,9 @@ const PUSTE = ['', '', ''];
 
 const wynikZ = (x) => (x?.wynik ?? x?.dr ?? null);
 const flagaZ = (x) => x?.flaga || 'ok';
-const jestPl = (x) => String(x?.domena || '').toLowerCase().endsWith('.pl');
-const linkiZ = (x) => (x?.linkujace && Number.isFinite(x.linkujace.liczba) ? { liczba: x.linkujace.liczba, top: Array.isArray(x.linkujace.top) ? x.linkujace.top.filter((d) => typeof d === 'string').slice(0, 5) : [] } : null);
+const nazwaDomeny = (x) => x?.domenaWyswietlana || x?.domena || '';
+const jestPl = (x) => String(nazwaDomeny(x)).toLowerCase().endsWith('.pl');
+const linkiZ = (x) => (x?.linkujace && Number.isFinite(x.linkujace.liczba) ? { liczba: x.linkujace.liczba, top: Array.isArray(x.linkujace.top) ? x.linkujace.top.map((d) => (typeof d === 'string' ? d : nazwaDomeny(d))).filter(Boolean).slice(0, 5) : [] } : null);
 
 // Podpis źródła danych: wynik liczymy my, dane są z Common Crawl. Bez słów DR/DA jako nazwy wyniku.
 function Podpis({ en, wydanie }) {
@@ -65,6 +66,28 @@ export default function AutorytetClient() {
     setPola({ domena: url || '', k: [...k, ...PUSTE].slice(0, AUTORYTET.konkurentow) });
   });
 
+  useEffect(() => {
+    if (DEMO || typeof window === 'undefined') return undefined;
+    const wynikId = new URLSearchParams(window.location.search).get('wynik')?.trim();
+    if (!wynikId || !/^[a-zA-Z0-9_-]{6,120}$/.test(wynikId)) return undefined;
+    const ctrl = new AbortController();
+    (async () => {
+      try {
+        const res = await fetch(`${PANEL_API}/wynik/${encodeURIComponent(wynikId)}`, { signal: ctrl.signal });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok || !data.podglad) return;
+        if (data.tool && data.tool !== 'autorytet') return;
+        const id = data.id || wynikId;
+        const k = (data.podglad.konkurenci || []).map((x) => nazwaDomeny(x)).filter(Boolean).slice(0, AUTORYTET.konkurentow);
+        setPola((obecne) => (obecne.domena ? obecne : { domena: nazwaDomeny(data.podglad), k: [...k, ...PUSTE].slice(0, AUTORYTET.konkurentow) }));
+        setStan((s) => (s.status === 'idle' ? { status: 'done', blad: null, id, podglad: data.podglad } : s));
+      } catch {
+        // nieudane pobranie wyniku z linku: formularz zostaje gotowy do sprawdzenia
+      }
+    })();
+    return () => ctrl.abort();
+  }, []);
+
   const jezyk = en ? 'en-GB' : 'pl-PL';
   const liczba = (n, miejsc = 0) => (n == null ? '' : Number(n).toLocaleString(jezyk, { maximumFractionDigits: miejsc }));
   const miejsce = (n) => (en ? `No. ${liczba(n)}` : `${liczba(n)}.`);
@@ -81,16 +104,18 @@ export default function AutorytetClient() {
     const domena = pola.domena.trim();
     const konkurenci = pola.k.map((x) => x.trim()).filter(Boolean);
     setStan({ status: 'loading', blad: null, id: null, podglad: null });
-    zapiszParametry({ url: domena, porownaj: konkurenci.join(',') || null });
+    zapiszParametry({ url: domena, porownaj: konkurenci.join(',') || null, wynik: null });
     track('narzedzie_start', { narzedzie: 'autorytet', konkurentow: konkurenci.length });
     const r = await wywolajNarzedzie('autorytet', { domena, konkurenci, nick: String(new FormData(e.currentTarget).get('nick') || ''), lang: en ? 'en' : 'pl' }, 60_000);
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
     const podglad = r.podglad;
+    if (r.id && !DEMO) zapiszParametry({ url: nazwaDomeny(podglad) || domena, porownaj: (podglad.konkurenci || []).map((k) => nazwaDomeny(k)).filter(Boolean).join(',') || null, wynik: r.id });
     track('narzedzie_wynik', { narzedzie: 'autorytet', wynik: wynikZ(podglad), flaga: flagaZ(podglad), konkurentow: podglad.konkurenci?.length ?? 0 });
     setStan({ status: 'done', blad: null, id: r.id, podglad });
   }
 
   function edytuj(doKonkurentow = false) {
+    zapiszParametry({ wynik: null });
     setPowrot(true);
     setWychodzi(true);
     setTimeout(() => {
@@ -197,7 +222,7 @@ export default function AutorytetClient() {
               <span className="narz-dr-skala">{en ? 'out of 100' : 'na 100'}</span>
             </div>
             <div>
-              <p className="narz-wynik-domena" ref={naglowekWyniku} tabIndex={-1}>{p.domena}</p>
+              <p className="narz-wynik-domena" ref={naglowekWyniku} tabIndex={-1}>{nazwaDomeny(p)}</p>
               {/* Stany bez dokładnego wyniku: tytuł z klienta, wyjaśnienie z panelu (p.tekst), a tekst zapasowy tylko,
                   gdy panel go nie poda (demo). Weryfikacja 12.11.2026: wcześniej to samo wyjaśnienie było dwa razy. */}
               {opisFlagi && (
@@ -232,11 +257,11 @@ export default function AutorytetClient() {
             ) : !linki ? (
               <p className="narz-wynik-opis">{en ? 'We could not read the linking domains this time. The score above is not affected; try again in a few minutes.' : 'Tym razem nie udało się odczytać domen linkujących. Wynik wyżej nie jest tym dotknięty; spróbuj ponownie za kilka minut.'}</p>
             ) : linki.liczba === 0 ? (
-              <p className="narz-wynik-opis">{en ? `Common Crawl saw no domain linking to ${p.domena} in this release.` : `Common Crawl nie widział w tym wydaniu żadnej domeny linkującej do ${p.domena}.`}</p>
+              <p className="narz-wynik-opis">{en ? `Common Crawl saw no domain linking to ${nazwaDomeny(p)} in this release.` : `Common Crawl nie widział w tym wydaniu żadnej domeny linkującej do ${nazwaDomeny(p)}.`}</p>
             ) : (
               <>
                 <p className="narz-wynik-opis">
-                  <strong>{liczba(linki.liczba)}</strong> {en ? (linki.liczba === 1 ? 'domain links' : 'domains link') : (linki.liczba === 1 ? 'domena linkuje' : 'domen linkuje')} {en ? `to ${p.domena}.` : `do ${p.domena}.`}
+                  <strong>{liczba(linki.liczba)}</strong> {en ? (linki.liczba === 1 ? 'domain links' : 'domains link') : (linki.liczba === 1 ? 'domena linkuje' : 'domen linkuje')} {en ? `to ${nazwaDomeny(p)}.` : `do ${nazwaDomeny(p)}.`}
                 </p>
                 {linki.top.length > 0 && (
                   <>
@@ -262,7 +287,7 @@ export default function AutorytetClient() {
                   return (
                     <li key={`${i}-${x.domena}`} className={x.twoja ? 'twoja' : ''}>
                       <span className="narz-slupki-nazwa">
-                        {x.domena}{x.twoja ? (en ? ' (yours)' : ' (Twoja)') : ''}
+                        {nazwaDomeny(x)}{x.twoja ? (en ? ' (yours)' : ' (Twoja)') : ''}
                         {fl === 'brak_w_grafie' ? (en ? ', not in the graph' : ', brak w grafie') : ''}
                         {fl === 'brak_linkow' ? (en ? ', no incoming links' : ', brak linków') : ''}
                       </span>
@@ -287,7 +312,7 @@ export default function AutorytetClient() {
                         const l = linkiZ(x);
                         return (
                           <tr key={`${i}-${x.domena}`}>
-                            <th scope="row">{x.domena}{x.twoja ? (en ? ' (yours)' : ' (Twoja)') : ''}</th>
+                            <th scope="row">{nazwaDomeny(x)}{x.twoja ? (en ? ' (yours)' : ' (Twoja)') : ''}</th>
                             <td>{wartosc(x)}</td>
                             <td>{l ? liczba(l.liczba) : (jestPl(x) ? (en ? 'no data' : 'brak danych') : (en ? 'only .pl' : 'tylko .pl'))}</td>
                           </tr>
@@ -316,8 +341,9 @@ export default function AutorytetClient() {
           {p.pozostalo != null && <p className="narz-mikro">{en ? `Left today from your IP address: ${p.pozostalo} of ${p.limit ?? AUTORYTET.limitIp} domain checks.` : `Zostało dziś z Twojego adresu IP: ${p.pozostalo} z ${p.limit ?? AUTORYTET.limitIp} sprawdzeń domen.`}</p>}
           <LinkWyniku
             narzedzie="autorytet"
-            parametry={{ url: p.domena, porownaj: konkurenci.map((k) => k.domena).join(',') || null }}
-            podsumowanie={en ? `Domain authority for ${p.domena}: ${wartosc(p)}/100` : `Autorytet domeny ${p.domena}: ${wartosc(p)}/100`}
+            tryb={stan.id ? 'wynik' : 'wypelnij'}
+            parametry={{ url: nazwaDomeny(p), porownaj: konkurenci.map((k) => nazwaDomeny(k)).join(',') || null, ...(stan.id ? { wynik: stan.id } : {}) }}
+            podsumowanie={en ? `Domain authority for ${nazwaDomeny(p)}: ${wartosc(p)}/100` : `Autorytet domeny ${nazwaDomeny(p)}: ${wartosc(p)}/100`}
           />
 
           <BramkaEmail

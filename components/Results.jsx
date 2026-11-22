@@ -147,7 +147,6 @@ export default function Results() {
 
       <div className="container" data-header-box="">
         <Reveal className="results-content results-cta-karta">
-          <div className="results-cta-promien" aria-hidden="true" />
           <div className="results-text">
             <h2>{pl ? 'Chcesz osiągnąć podobne wyniki?' : 'Want to achieve similar results?'}</h2>
             <p>

@@ -265,17 +265,17 @@
   background: var(--dn-akcent, #D85A30);
 }
 
-/* ---------- Prawa kolumna: pastelowa scena z przepływem i oknem wyniku ---------- */
+/* ---------- Prawa kolumna: ciepła scena z przepływem i oknem wyniku ---------- */
 .dn-wiersz[data-tlo='koral'] { --dn-akcent: #D85A30; --dn-ik-tlo: #FBE6DA; --dn-ik-kol: #9E3614; }
-.dn-wiersz[data-tlo='lawenda'] { --dn-akcent: #5B4CE6; --dn-ik-tlo: #E8E6FF; --dn-ik-kol: #3B2EB8; }
-.dn-wiersz[data-tlo='blekit'] { --dn-akcent: #1D63DC; --dn-ik-tlo: #E0EDFF; --dn-ik-kol: #174EA6; }
-.dn-wiersz[data-tlo='piasek'] { --dn-akcent: #C2591B; --dn-ik-tlo: #FDE9D2; --dn-ik-kol: #943F0E; }
-.dn-wiersz[data-tlo='szalwia'] { --dn-akcent: #0D7A5F; --dn-ik-tlo: #DCFCE7; --dn-ik-kol: #065F46; }
-.dn-wiersz[data-tlo='roza'] { --dn-akcent: #C83E6B; --dn-ik-tlo: #FCE4EC; --dn-ik-kol: #9C254D; }
+.dn-wiersz[data-tlo='lawenda'] { --dn-akcent: #D85A30; --dn-ik-tlo: #141933; --dn-ik-kol: #F3B79C; }
+.dn-wiersz[data-tlo='blekit'] { --dn-akcent: #D85A30; --dn-ik-tlo: #EFE5D8; --dn-ik-kol: #9E3614; }
+.dn-wiersz[data-tlo='piasek'] { --dn-akcent: #D85A30; --dn-ik-tlo: #FBE6DA; --dn-ik-kol: #9E3614; }
+.dn-wiersz[data-tlo='szalwia'] { --dn-akcent: #D85A30; --dn-ik-tlo: #EFE5D8; --dn-ik-kol: #9E3614; }
+.dn-wiersz[data-tlo='roza'] { --dn-akcent: #D85A30; --dn-ik-tlo: #FBE6DA; --dn-ik-kol: #9E3614; }
 
 .dn-scena {
   position: relative;
-  border-radius: 28px;
+  border-radius: var(--karta-promien, 24px);
   padding: clamp(22px, 3vw, 36px) clamp(20px, 3vw, 36px) clamp(24px, 3.2vw, 38px);
   border: 1px solid rgba(30, 30, 30, 0.06);
   display: flex;
@@ -284,23 +284,15 @@
   overflow: hidden;
 }
 
-.dn-scena[data-tlo='koral'] {
-  background: linear-gradient(135deg, #FDE7DC 0%, #F9D2C0 52%, #F4DFEC 100%);
-}
-.dn-scena[data-tlo='lawenda'] {
-  background: linear-gradient(135deg, #F5DCFA 0%, #E4DEFF 50%, #D3DEFF 100%);
-}
-.dn-scena[data-tlo='blekit'] {
-  background: linear-gradient(135deg, #DFF0FF 0%, #D8E6FF 55%, #E8E1FF 100%);
-}
-.dn-scena[data-tlo='piasek'] {
-  background: linear-gradient(135deg, #FDF0D8 0%, #FCE1C6 55%, #F8D8D2 100%);
-}
-.dn-scena[data-tlo='szalwia'] {
-  background: linear-gradient(135deg, #E2F7EC 0%, #D9EFEF 55%, #DFEAFF 100%);
-}
+.dn-scena[data-tlo='koral'],
+.dn-scena[data-tlo='piasek'],
 .dn-scena[data-tlo='roza'] {
-  background: linear-gradient(135deg, #FCE3EC 0%, #F3DDF8 52%, #DCE6FF 100%);
+  background: linear-gradient(140deg, #FCE6DA 0%, #F9DCCB 48%, #FBEDE4 100%);
+}
+.dn-scena[data-tlo='lawenda'],
+.dn-scena[data-tlo='blekit'],
+.dn-scena[data-tlo='szalwia'] {
+  background: linear-gradient(140deg, #F6EFE6 0%, #EFE5D8 52%, #FAF4EC 100%);
 }
 
 /* Mała górna karta wejściowa (jak „Start / + Add autostart” na zdj. 2) */
@@ -376,7 +368,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-radius: 18px;
+  border-radius: var(--karta-promien-wew, 16px);
   background: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow:
@@ -558,14 +550,18 @@
    mikrotekst zaufania pod przyciskami, pigułki skrótów bez numerów.
    ========================================================================== */
 
-/* Dwa tony: ciepła brzoskwinia i chłodna lawenda (naprzemiennie wg narzędzia) */
+/* Dwa ciepłe tony marki: brzoskwinia + terakota oraz ciepły piasek + granat AI */
 .dn-wiersz[data-tlo='koral'], .dn-wiersz[data-tlo='piasek'], .dn-wiersz[data-tlo='roza'],
 .dn-karta[data-tlo='koral'], .dn-karta[data-tlo='piasek'], .dn-karta[data-tlo='roza'] {
   --dn-akcent: #D85A30; --dn-ik-tlo: #FBE6DA; --dn-ik-kol: #9E3614;
 }
-.dn-wiersz[data-tlo='lawenda'], .dn-wiersz[data-tlo='blekit'], .dn-wiersz[data-tlo='szalwia'],
-.dn-karta[data-tlo='lawenda'], .dn-karta[data-tlo='blekit'], .dn-karta[data-tlo='szalwia'] {
-  --dn-akcent: #D85A30; --dn-ik-tlo: #E8E6FF; --dn-ik-kol: #3B2EB8;
+.dn-wiersz[data-tlo='lawenda'],
+.dn-karta[data-tlo='lawenda'] {
+  --dn-akcent: #D85A30; --dn-ik-tlo: #141933; --dn-ik-kol: #F3B79C;
+}
+.dn-wiersz[data-tlo='blekit'], .dn-wiersz[data-tlo='szalwia'],
+.dn-karta[data-tlo='blekit'], .dn-karta[data-tlo='szalwia'] {
+  --dn-akcent: #D85A30; --dn-ik-tlo: #EFE5D8; --dn-ik-kol: #9E3614;
 }
 
 .dn-scena[data-tlo='koral'], .dn-scena[data-tlo='piasek'], .dn-scena[data-tlo='roza'],
@@ -574,7 +570,7 @@
 }
 .dn-scena[data-tlo='lawenda'], .dn-scena[data-tlo='blekit'], .dn-scena[data-tlo='szalwia'],
 .dn-karta-scena[data-tlo='lawenda'], .dn-karta-scena[data-tlo='blekit'], .dn-karta-scena[data-tlo='szalwia'] {
-  background: linear-gradient(140deg, #EEE6FB 0%, #E3E2FC 50%, #EDF0FD 100%);
+  background: linear-gradient(140deg, #F6EFE6 0%, #EFE5D8 52%, #FAF4EC 100%);
 }
 
 /* Jeden kolor akcji na całej stronie */
@@ -640,7 +636,7 @@
   scroll-margin-top: 108px;
   display: flex;
   flex-direction: column;
-  border-radius: 28px;
+  border-radius: var(--karta-promien, 24px);
   background: var(--w-karta);
   border: 1px solid var(--w-linia);
   overflow: hidden;

@@ -207,6 +207,17 @@ export default function Pricing({ isMainContent = false }) {
 
         <Reveal className="pricing-note">
           {t('note')}
+          {!isMainContent && (
+            <>
+              {' '}
+              <Link href="/cennik-pozycjonowania" className="pricing-note-link" data-cta="pricing_full_page">
+                {lang === 'pl'
+                  ? 'Pełny cennik pozycjonowania stron i porównanie pakietów'
+                  : 'Full SEO pricing and package comparison'}
+              </Link>
+              <span aria-hidden="true"> →</span>
+            </>
+          )}
         </Reveal>
         {/* Panel klienta to wyroznik oferty (analiza konkurencji 25.10.2026): 4 z 17 agencji maja panel, zadna nie pokazuje go bez logowania. */}
         <Reveal className="pricing-panel-links">

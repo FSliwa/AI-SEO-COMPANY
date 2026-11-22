@@ -48,11 +48,11 @@ export default function BlogArtikelDe({ klucz, dane }) {
         <div className="container" style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1rem' }}>
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+              <span style={{ fontSize: '0.78rem', fontFamily: 'var(--w-mono)', fontWeight: 500, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                 {dane.kategoria}
               </span>
             </div>
-            <h1 lang="de" style={{ fontSize: 'clamp(2.1rem, 4.6vw, 3.35rem)', fontWeight: 800, color: 'var(--w-tusz)', margin: '0 0 1.25rem', lineHeight: 1.1, letterSpacing: '-0.025em', hyphens: 'auto', overflowWrap: 'break-word' }}>
+            <h1 lang="de" style={{ fontSize: 'clamp(2.1rem, 4.6vw, 3.35rem)', fontWeight: 500, color: 'var(--w-tusz)', margin: '0 0 1.25rem', lineHeight: 1.1, letterSpacing: '-0.025em', hyphens: 'auto', overflowWrap: 'break-word' }}>
               {wpis?.h1 ?? dane.h1}
             </h1>
             <BylineDe stand={dane.aktualisiert} />

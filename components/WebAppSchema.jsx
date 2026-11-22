@@ -30,7 +30,7 @@ export default function WebAppSchema({ name, description, url, category = 'Busin
     operatingSystem: 'Web',
     inLanguage: language,
     isAccessibleForFree: true,
-    offers: { '@type': 'Offer', price: 0, priceCurrency: language === 'de' ? 'EUR' : 'PLN' },
+    offers: { '@type': 'Offer', price: 0, priceCurrency: (language === 'de' || language === 'en') ? 'EUR' : 'PLN' },
     provider: { '@id': `${BASE}/#organization` },
   };
   if (Array.isArray(featureList) && featureList.length) jsonLd.featureList = featureList;

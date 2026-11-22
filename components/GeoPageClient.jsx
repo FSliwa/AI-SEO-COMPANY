@@ -319,9 +319,9 @@ const PLAN_WIERSZE = [
   { id: 'm3', okres: 'Miesiąc 3', robimy: 'Wzmianki w katalogach i serwisach, które modele cytują, oraz porównanie z pomiarem bazowym.', panel: 'Zmianę odsetka odpowiedzi z nazwą firmy od startu.' },
 ];
 
-const card = { background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' };
-const tekstStyl = { margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)' };
-const h3Styl = { fontSize: '1.15rem', fontWeight: 700, margin: '0 0 0.5rem', color: 'var(--color-text-dark)' };
+const card = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', boxShadow: 'none' };
+const tekstStyl = { margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--w-tusz-2)' };
+const h3Styl = { fontSize: '1.15rem', fontWeight: 600, letterSpacing: '-0.02em', margin: '0 0 0.5rem', color: 'var(--w-tusz)' };
 const linkStyl = { textDecoration: 'underline' };
 const przypisStyl = { margin: '0.6rem 0 0', fontSize: '0.85rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' };
 
@@ -472,17 +472,17 @@ export default function GeoPageClient() {
   const pl = lang === 'pl';
   const faqDane = pl ? faq.filter((f) => !f.tylkoEn) : faq.filter((f) => !f.tylkoPl);
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs pl="Pozycjonowanie w AI" en="AI Search Optimization" />
 
       <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '880px' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {t.tag}
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+              <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {t.tag}
             </div>
-            <h1 style={{ fontSize: 'clamp(2.1rem, 5vw, 3.4rem)', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1.25rem', color: 'var(--color-text-dark)' }}>{t.h1}</h1>
+            <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', lineHeight: 1.08, fontWeight: 500, letterSpacing: '-0.04em', margin: '0 0 1.25rem', color: 'var(--w-tusz)' }}>{t.h1}</h1>
             {pl ? (
               // Klasa hero-lead: na telefonie blok idzie pod przyciski (globals.css, baner cookies).
               <div className="hero-lead" style={{ maxWidth: '760px', margin: '0 auto' }}>
@@ -520,13 +520,13 @@ export default function GeoPageClient() {
             <RevealStagger style={{ display: 'grid', gap: '1rem' }}>
               {t.how.map(([h, p]) => (
                 <RevealItem key={h} style={{ ...card, padding: '1.25rem 1.5rem' }}>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.35rem', color: 'var(--color-text-dark)' }}>{h}</h3>
-                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--color-text-main)' }}>{p}</p>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 600, letterSpacing: '-0.02em', marginBottom: '0.35rem', color: 'var(--w-tusz)' }}>{h}</h3>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--w-tusz-2)' }}>{p}</p>
                 </RevealItem>
               ))}
             </RevealStagger>
             <Reveal style={{ textAlign: 'center' }}>
-              <Image src="/images/panel/ai.webp" alt={t.shotAlt} width={1600} height={1025} sizes="(max-width: 800px) 100vw, 560px" style={{ width: '100%', height: 'auto', borderRadius: '18px', boxShadow: '0 20px 50px rgba(15, 23, 42, 0.14)' }} />
+              <Image src="/images/panel/ai.webp" alt={t.shotAlt} width={1600} height={1025} sizes="(max-width: 800px) 100vw, 560px" style={{ width: '100%', height: 'auto', borderRadius: '16px', border: '1px solid var(--w-linia)', boxShadow: 'none' }} />
               <a href={PANEL_DEMO_URL} data-cta="geo_demo" style={{ display: 'inline-block', marginTop: '1rem', fontWeight: 600, textDecoration: 'underline' }}>{t.demo} →</a>
             </Reveal>
           </div>
@@ -545,10 +545,10 @@ export default function GeoPageClient() {
           )}
           <RevealStagger style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', marginTop: '2rem' }}>
             {t.offer.map((o, i) => (
-              <RevealItem key={o.name} style={{ ...card, padding: '1.75rem', border: o.featured ? '2px solid var(--color-primary)' : '1px solid transparent' }}>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-text-dark)' }}>{o.name}</h3>
-                <p style={{ margin: '0.75rem 0 0', fontSize: '2rem', fontWeight: 800, color: 'var(--color-text-dark)' }}>{o.price}</p>
-                <p style={{ margin: 0, color: 'var(--color-text-muted)' }}>{o.unit}</p>
+              <RevealItem key={o.name} style={{ ...card, padding: '1.75rem', border: o.featured ? '1.5px solid var(--w-pomarancz)' : '1px solid var(--w-linia)' }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)' }}>{o.name}</h3>
+                <p style={{ margin: '0.75rem 0 0', fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.03em', color: 'var(--w-tusz)' }}>{o.price}</p>
+                <p style={{ margin: 0, color: 'var(--w-tusz-2)' }}>{o.unit}</p>
                 {/* 6.11.2026 (publikacja A5): lista punktow zostaje, link do A5 dochodzi pod nia
                     (strona chroniona - tylko dodawanie; wczesniejszy wariant zamienial liste na akapit). */}
                 <ul style={{ margin: '1rem 0 0', paddingLeft: '1.1rem', display: 'grid', gap: '0.45rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>
@@ -584,17 +584,17 @@ export default function GeoPageClient() {
       <section style={{ padding: '20px 0 80px' }}>
         <div className="container" style={{ maxWidth: '850px', margin: '0 auto', display: 'grid', gap: '2rem' }}>
           <Reveal>
-            <div style={{ ...card, borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--color-text-dark)' }}>{t.doTitle}</h2>
-              <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.75rem', fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
+            <div style={{ ...card, padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 500, letterSpacing: '-0.035em', lineHeight: 1.1, marginBottom: '1.25rem', color: 'var(--w-tusz)' }}>{t.doTitle}</h2>
+              <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.75rem', fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--w-tusz-2)' }}>
                 {t.do.map((d) => <li key={d}>{d}</li>)}
               </ul>
             </div>
           </Reveal>
           <Reveal>
-            <div style={{ ...card, borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)' }}>{t.honestTitle}</h2>
-              <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)' }}>{t.honest}</p>
+            <div style={{ ...card, padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 500, letterSpacing: '-0.035em', lineHeight: 1.1, marginBottom: '1rem', color: 'var(--w-tusz)' }}>{t.honestTitle}</h2>
+              <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--w-tusz-2)' }}>{t.honest}</p>
             </div>
           </Reveal>
         </div>

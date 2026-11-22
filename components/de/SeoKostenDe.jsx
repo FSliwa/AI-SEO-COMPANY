@@ -70,12 +70,12 @@ export default function SeoKostenDe() {
 
       <section id="faire-vertraege" style={{ padding: '0 0 64px 0', scrollMarginTop: '110px' }}>
         <div className="container" style={{ maxWidth: '880px', margin: '0 auto', display: 'grid', gap: '2rem' }}>
-          <div style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.5rem, 5vw, 3rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
-            <h2 lang="de" style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--color-text-dark)' }}>Fairer Vertrag: sechs Grundsätze</h2>
+          <div style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 5vw, 3rem)' }}>
+            <h2 lang="de" style={{ fontSize: '1.6rem', fontWeight: 500, letterSpacing: '-0.02em', marginBottom: '1.25rem', color: 'var(--color-text-dark)' }}>Fairer Vertrag: sechs Grundsätze</h2>
             <Liste nummeriert punkte={FAIRE_REGELN} />
           </div>
-          <div id="ziel-top-3" style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.5rem, 5vw, 3rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)', scrollMarginTop: '110px' }}>
-            <h2 lang="de" style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--color-text-dark)' }}>Ziel Top 3: So messen wir es</h2>
+          <div id="ziel-top-3" style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 5vw, 3rem)', scrollMarginTop: '110px' }}>
+            <h2 lang="de" style={{ fontSize: '1.6rem', fontWeight: 500, letterSpacing: '-0.02em', marginBottom: '1.25rem', color: 'var(--color-text-dark)' }}>Ziel Top 3: So messen wir es</h2>
             <Liste punkte={TOP3_REGELN} />
           </div>
         </div>

@@ -39,7 +39,7 @@ export function ZrodlaDe({ zrodla, id = 'zrodla' }) {
   if (!zrodla || zrodla.length === 0) return null;
   return (
     <section aria-labelledby={id} style={{ margin: '2.5rem 0 0' }}>
-      <h2 id={id} style={{ fontSize: 'clamp(1.25rem, 2.6vw, 1.5rem)', fontWeight: 700, letterSpacing: '-0.01em', margin: '0 0 0.9rem', color: 'var(--color-text-dark)', scrollMarginTop: '110px' }}>
+      <h2 id={id} style={{ fontSize: 'clamp(1.25rem, 2.6vw, 1.5rem)', fontWeight: 500, letterSpacing: '-0.015em', margin: '0 0 0.9rem', color: 'var(--color-text-dark)', scrollMarginTop: '110px' }}>
         Quellen
       </h2>
       <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.5rem', fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--color-text-main)' }}>
@@ -86,7 +86,12 @@ export function UkladDe({ klucz, tag, h1, okruszek, zrodla, schema, lead, narzed
   return (
     <main className={st.strona} style={s.main}>
       <Header />
-      <Breadcrumbs pl={okruszek} en={okruszek} de={okruszek} />
+      <Breadcrumbs
+        parent={{ href: '/narzedzia', pl: 'Narzędzia', en: 'Tools', de: 'Tools & Vorlagen' }}
+        pl={okruszek}
+        en={okruszek}
+        de={okruszek}
+      />
       <WebAppSchema
         name={schema.name}
         description={schema.description}

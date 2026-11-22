@@ -18,9 +18,9 @@ import { BylineDe, faqFuerAppleFaq } from '@/components/de/GeoBausteineDe';
 import { KOPF, MESSUNG_KARTEN, ANGEBOT, MASSNAHMEN, FAQ, KARTEN, KARTEN_SCHEMA, MESSUNG, FUER_WEN, AGENTUR, TECHNIK, PLAN, STAND } from '@/lib/de/geo';
 
 const SCHLUESSEL = '/pozycjonowanie-w-ai';
-const card = { background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' };
+const card = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)' };
 const tekstStyl = { margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)', hyphens: 'auto', overflowWrap: 'break-word' };
-const h3Styl = { fontSize: '1.15rem', fontWeight: 700, margin: '0 0 0.5rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' };
+const h3Styl = { fontSize: '1.15rem', fontWeight: 600, margin: '0 0 0.5rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' };
 const linkStyl = { textDecoration: 'underline' };
 const fussStyl = { margin: '0.6rem 0 0', fontSize: '0.85rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' };
 
@@ -76,7 +76,7 @@ export default function GeoSeiteDe() {
             <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {KOPF.tag}
             </div>
-            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1.25rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' }}>{reg.h1}</h1>
+            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.25rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' }}>{reg.h1}</h1>
             <div className="hero-lead" style={{ maxWidth: '760px', margin: '0 auto' }}>
               <AnswerBox etykieta="Kurz gesagt"><p lang="de" style={{ margin: 0 }}>{KOPF.antwort}</p></AnswerBox>
             </div>
@@ -97,7 +97,7 @@ export default function GeoSeiteDe() {
           <RevealStagger style={{ display: 'grid', gap: '1rem', marginTop: '2rem' }}>
             {MESSUNG_KARTEN.karten.map(([h, p]) => (
               <RevealItem key={h} style={{ ...card, padding: '1.25rem 1.5rem' }}>
-                <h3 lang="de" style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.35rem', color: 'var(--color-text-dark)' }}>{h}</h3>
+                <h3 lang="de" style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.35rem', color: 'var(--color-text-dark)' }}>{h}</h3>
                 <p lang="de" style={{ margin: 0, lineHeight: 1.6, color: 'var(--color-text-main)' }}>{p}</p>
               </RevealItem>
             ))}
@@ -116,9 +116,9 @@ export default function GeoSeiteDe() {
           </Reveal>
           <RevealStagger style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', marginTop: '2rem' }}>
             {ANGEBOT.karten.map((o) => (
-              <RevealItem key={o.name} style={{ ...card, padding: '1.75rem', border: o.hervorgehoben ? '2px solid var(--color-primary)' : '1px solid transparent' }}>
-                <h3 lang="de" style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-text-dark)' }}>{o.name}</h3>
-                <p style={{ margin: '0.75rem 0 0', fontSize: 'clamp(1.6rem, 3.2vw, 2rem)', fontWeight: 800, color: 'var(--color-text-dark)' }}>{o.preis}</p>
+              <RevealItem key={o.name} style={{ ...card, padding: '1.75rem', border: o.hervorgehoben ? '1.5px solid var(--color-primary)' : '1px solid var(--w-linia)' }}>
+                <h3 lang="de" style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--color-text-dark)' }}>{o.name}</h3>
+                <p style={{ margin: '0.75rem 0 0', fontSize: 'clamp(1.6rem, 3.2vw, 2rem)', fontWeight: 600, color: 'var(--color-text-dark)' }}>{o.preis}</p>
                 <p lang="de" style={{ margin: 0, color: 'var(--color-text-muted)' }}>{o.einheit}</p>
                 <ul lang="de" style={{ margin: '1rem 0 0', paddingLeft: '1.1rem', display: 'grid', gap: '0.45rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>
                   {o.punkte.map((p) => <li key={p}>{p}</li>)}
@@ -213,16 +213,16 @@ export default function GeoSeiteDe() {
       <section style={{ padding: '20px 0 80px' }}>
         <div className="container" style={{ maxWidth: '850px', margin: '0 auto', display: 'grid', gap: '2rem' }}>
           <Reveal>
-            <div style={{ ...card, borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
-              <h2 lang="de" style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--color-text-dark)' }}>{MASSNAHMEN.titel}</h2>
+            <div style={{ ...card, padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
+              <h2 lang="de" style={{ fontSize: '1.6rem', fontWeight: 500, letterSpacing: '-0.02em', marginBottom: '1.25rem', color: 'var(--color-text-dark)' }}>{MASSNAHMEN.titel}</h2>
               <ul lang="de" style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.75rem', fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
                 {MASSNAHMEN.punkte.map((d) => <li key={d}>{d}</li>)}
               </ul>
             </div>
           </Reveal>
           <Reveal>
-            <div style={{ ...card, borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
-              <h2 lang="de" style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)' }}>{MASSNAHMEN.ehrlichTitel}</h2>
+            <div style={{ ...card, padding: 'clamp(1.75rem, 5vw, 3rem)' }}>
+              <h2 lang="de" style={{ fontSize: '1.6rem', fontWeight: 500, letterSpacing: '-0.02em', marginBottom: '1rem', color: 'var(--color-text-dark)' }}>{MASSNAHMEN.ehrlichTitel}</h2>
               <p lang="de" style={tekstStyl}>{MASSNAHMEN.ehrlich}</p>
             </div>
           </Reveal>

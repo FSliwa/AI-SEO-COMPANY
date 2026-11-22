@@ -518,12 +518,12 @@
 .kolumnaIkona, .kafelIkona {
   display: inline-grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   margin-bottom: 0.9rem;
-  border-radius: 50%;
-  background: var(--w-brzoskwinia-tlo);
-  color: var(--w-pomarancz);
+  border-radius: 10px;
+  background: #FBE6DA;
+  color: #B8431B;
   flex-shrink: 0;
 }
 .kolumna h3 { margin-top: 0; }

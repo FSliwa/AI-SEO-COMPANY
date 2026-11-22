@@ -75,7 +75,7 @@ function pobierzPlik(tekst) {
 function opisObecnegoPliku(o, en = false) {
   if (!o) return null;
   if (en) {
-    if (!o.kod) return { ocena: 'uwaga', tekst: 'Existing /llms.txt file: no response within 4 s.' };
+    if (!o.kod) return { ocena: 'uwaga', tekst: 'Existing /llms.txt file: no response within 8 s.' };
     if (o.kod >= 300 && o.kod < 400) return { ocena: 'uwaga', tekst: `Existing /llms.txt file: redirect (${o.kod}). It is better to serve the file directly at /llms.txt.` };
     if (o.kod !== 200) return { ocena: 'uwaga', tekst: `Existing /llms.txt file: not found (code ${o.kod}). Upload the file generated below.` };
     if (o.html) return { ocena: 'blad', tekst: 'At /llms.txt the site returns HTML instead of text. Check that the file is really in the root directory.' };
@@ -86,7 +86,7 @@ function opisObecnegoPliku(o, en = false) {
       ? { ocena: 'ok', tekst: `Existing /llms.txt file: found (code 200${o.typ ? `, ${o.typ}` : ''}${kbEn}${linkiEn}) and it starts with a heading with the name, as the specification requires.` }
       : { ocena: 'uwaga', tekst: `Existing /llms.txt file: found (code 200${kbEn}), but it does not start with a "# Name" heading, which the specification treats as required.` };
   }
-  if (!o.kod) return { ocena: 'uwaga', tekst: 'Obecny plik /llms.txt: brak odpowiedzi w 4 s.' };
+  if (!o.kod) return { ocena: 'uwaga', tekst: 'Obecny plik /llms.txt: brak odpowiedzi w 8 s.' };
   if (o.kod >= 300 && o.kod < 400) return { ocena: 'uwaga', tekst: `Obecny plik /llms.txt: przekierowanie (${o.kod}). Lepiej udostępnić plik bezpośrednio pod /llms.txt.` };
   if (o.kod !== 200) return { ocena: 'uwaga', tekst: `Obecny plik /llms.txt: brak (kod ${o.kod}). Wgraj plik wygenerowany niżej.` };
   if (o.html) return { ocena: 'blad', tekst: 'Pod /llms.txt strona zwraca HTML zamiast tekstu. Sprawdź, czy plik na pewno leży w katalogu głównym.' };
@@ -138,7 +138,7 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
   const [skopiowano, setSkopiowano] = useState(false);
   const [skopiowanoSnippet, setSkopiowanoSnippet] = useState(false);
   const [pobrano, setPobrano] = useState(false);
-  const [zKomentarzemZrodla, setZKomentarzemZrodla] = useState(true);
+  const [zKomentarzemZrodla, setZKomentarzemZrodla] = useState(false);
   const [adres, setAdres] = useState('');
   // Edytor (Z-L4): model pliku z odpowiedzi API; zmieniony = plik do pobrania składamy z modelu.
   const [edycja, setEdycja] = useState({ model: null, zmieniony: false });
@@ -294,10 +294,14 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
               {en
                 ? (w.mapa.zrodlo
                   ? `Sitemap: ${mapaOpis}. In the file: ${w.wPliku}, skipped: ${w.pominietychRazem}.`
-                  : `We did not find a sitemap (no sitemap.xml and no Sitemap entry in robots.txt), so the file contains only the home page. In the file: ${w.wPliku}.`)
+                  : w.wPliku > 1
+                    ? `We did not find a sitemap (no sitemap.xml and no Sitemap entry in robots.txt), so we collected internal links from the home page. In the file: ${w.wPliku}${w.pominietychRazem ? `, skipped: ${w.pominietychRazem}` : ''}.`
+                    : `We did not find a sitemap (no sitemap.xml and no Sitemap entry in robots.txt), so the file contains only the home page. In the file: ${w.wPliku}.`)
                 : (w.mapa.zrodlo
                   ? `Mapa strony: ${mapaOpis}. W pliku: ${w.wPliku}, pominięte: ${w.pominietychRazem}.`
-                  : `Nie znaleźliśmy mapy strony (sitemap.xml ani wpisu Sitemap w robots.txt), więc plik zawiera tylko stronę główną. W pliku: ${w.wPliku}.`)}
+                  : w.wPliku > 1
+                    ? `Nie znaleźliśmy mapy strony (sitemap.xml ani wpisu Sitemap w robots.txt), więc zebraliśmy linki wewnętrzne ze strony głównej. W pliku: ${w.wPliku}${w.pominietychRazem ? `, pominięte: ${w.pominietychRazem}` : ''}.`
+                    : `Nie znaleźliśmy mapy strony (sitemap.xml ani wpisu Sitemap w robots.txt), więc plik zawiera tylko stronę główną. W pliku: ${w.wPliku}.`)}
               {w.czesciowy && (en
                 ? ` The 20-second limit ran out before the end. We did not manage to check: ${adresy(w.nieprzetworzone.length, true)} (list below).`
                 : ` Limit 20 sekund minął przed końcem. Nie zdążyliśmy sprawdzić: ${adresy(w.nieprzetworzone.length)} (lista niżej).`)}

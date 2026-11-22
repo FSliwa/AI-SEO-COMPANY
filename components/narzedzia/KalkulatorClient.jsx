@@ -36,7 +36,13 @@ import './ruch-b.css';
 import { czasTokenu } from './wyjscie';
 
 const zl = (n) => `${Math.round(n).toLocaleString('pl-PL')} zł`;
-const zlEn = (n) => `PLN ${Math.round(n).toLocaleString('en-US')}`;
+const formatujWaluteEn = (n, waluta = 'USD') => {
+  const kwota = Math.round(n);
+  if (waluta === 'USD') return `$${kwota.toLocaleString('en-US')}`;
+  if (waluta === 'EUR') return `€${kwota.toLocaleString('en-US')}`;
+  if (waluta === 'GBP') return `£${kwota.toLocaleString('en-GB')}`;
+  return `PLN ${kwota.toLocaleString('en-US')}`;
+};
 const liczbaPl = (v) => Number(String(v).replace(/\s/g, '').replace(',', '.'));
 // EN: przecinek to separator tysięcy ("1,500"), kropka to ułamek.
 const liczbaEn = (v) => Number(String(v).replace(/[\s,]/g, ''));
@@ -47,9 +53,37 @@ const PS = PRZYKLADY.sklep;
 // Podpowiedź liczby w polu: PL z przecinkiem dziesiętnym, EN z kropką.
 const podp = (v, en) => (en ? String(v) : String(v).replace('.', ','));
 
-// Pakiety z cennika pozycjonowania (ceny netto miesięcznie z lib/narzedziaLiczby.js).
+// Pakiety z cennika pozycjonowania (ceny netto miesięcznie z lib/narzedziaLiczby.js + przeliczniki EN).
 const PAKIETY = ['seoStandard', 'seoPremium', 'boosterPack'];
 const NAZWY_PAKIETOW = { seoStandard: 'SEO Standard', seoPremium: 'SEO Premium', boosterPack: 'Booster Pack' };
+const WALUTY_EN = [
+  ['USD', 'USD ($)'],
+  ['EUR', 'EUR (€)'],
+  ['GBP', 'GBP (£)'],
+  ['PLN', 'PLN'],
+];
+const CENY_PAKIETOW_WALUTY = {
+  PLN: { seoStandard: CENY.seoStandard.pln, seoPremium: CENY.seoPremium.pln, boosterPack: CENY.boosterPack.pln },
+  EUR: { seoStandard: CENY.seoStandard.eur, seoPremium: CENY.seoPremium.eur, boosterPack: CENY.boosterPack.eur },
+  USD: { seoStandard: 550, seoPremium: 700, boosterPack: 700 },
+  GBP: { seoStandard: 390, seoPremium: 510, boosterPack: 510 },
+};
+
+const PRZYKLADY_BRANZ_PL = [
+  { id: 'remont', etykieta: 'Usługi lokalne / remonty', tryb: 'uslugi', wyszukiwania: 1500, ruch: 40, konwersja: 3, wartosc: 8000, marza: 35, udzialAi: 25, widocznyWAi: 'nie', pakiet: 'seoStandard', miesiace: 12 },
+  { id: 'gabinet', etykieta: 'Gabinet / klinika', tryb: 'uslugi', wyszukiwania: 3200, ruch: 60, konwersja: 3, wartosc: 2500, marza: 45, udzialAi: 25, widocznyWAi: 'nie_wiem', pakiet: 'seoStandard', miesiace: 12 },
+  { id: 'kancelaria', etykieta: 'Kancelaria / księgowość', tryb: 'uslugi', wyszukiwania: 2000, ruch: 35, konwersja: 2, wartosc: 4500, marza: 55, udzialAi: 25, widocznyWAi: 'nie_wiem', pakiet: 'seoPremium', miesiace: 12 },
+  { id: 'b2b', etykieta: 'Firma B2B / produkcja / IT', tryb: 'uslugi', wyszukiwania: 1600, ruch: 25, konwersja: 1.5, wartosc: 25000, marza: 30, udzialAi: 30, widocznyWAi: 'nie', pakiet: 'seoPremium', miesiace: 12 },
+  { id: 'sklep', etykieta: 'Sklep internetowy', tryb: 'sklep', wyszukiwania: 30000, ruch: 1800, konwersja: 1.3, wartosc: 220, marza: 35, powroty: 25, udzialAi: 25, widocznyWAi: 'nie_wiem', pakiet: 'seoStandard', miesiace: 12 },
+];
+
+const PRZYKLADY_BRANZ_EN = [
+  { id: 'contractors', etykieta: 'Home services / contractors', tryb: 'uslugi', wyszukiwania: 2400, ruch: 35, konwersja: 2.5, wartosc: 3800, wartoscPln: 15000, marza: 35, udzialAi: 25, widocznyWAi: 'nie', pakiet: 'seoStandard', miesiace: 12 },
+  { id: 'clinic', etykieta: 'Dental / medical clinic', tryb: 'uslugi', wyszukiwania: 3200, ruch: 50, konwersja: 3, wartosc: 1200, wartoscPln: 4800, marza: 45, udzialAi: 25, widocznyWAi: 'nie_wiem', pakiet: 'seoStandard', miesiace: 12 },
+  { id: 'legal', etykieta: 'Law / accounting firm', tryb: 'uslugi', wyszukiwania: 2000, ruch: 30, konwersja: 2, wartosc: 2800, wartoscPln: 11000, marza: 55, udzialAi: 25, widocznyWAi: 'nie_wiem', pakiet: 'seoPremium', miesiace: 12 },
+  { id: 'b2b', etykieta: 'B2B / SaaS / IT', tryb: 'uslugi', wyszukiwania: 1600, ruch: 25, konwersja: 1.5, wartosc: 12000, wartoscPln: 45000, marza: 30, udzialAi: 30, widocznyWAi: 'nie', pakiet: 'seoPremium', miesiace: 12 },
+  { id: 'shop', etykieta: 'Online shop', tryb: 'sklep', wyszukiwania: 30000, ruch: 500, konwersja: 1.3, wartosc: 110, wartoscPln: 420, marza: 38, powroty: 25, udzialAi: 25, widocznyWAi: 'nie_wiem', pakiet: 'seoStandard', miesiace: 12 },
+];
 
 const POLA = [
   { k: 'wyszukiwania', etykieta: 'Ile razy miesięcznie klienci szukają Twoich usług w Google?', pomoc: 'Suma wyszukiwań głównych fraz, np. „stolarz Warszawa”. Sprawdzisz w Planerze słów kluczowych Google Ads.', przyklad: '2000' },
@@ -87,14 +121,16 @@ const POLA_SKLEP_EN = [
   { k: 'powroty', etykieta: 'What % of customers buy again? (optional)', pomoc: 'The share of customers with at least two orders a year, from the customer report in your store admin. We count one extra order from each returning customer. Empty = first order only.', przyklad: podp(PS.powroty, true), jednostka: '%' },
 ];
 
-const KLUCZE_URL = ['tryb', 'wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'powroty', 'udzialAi', 'widocznyWAi', 'pakiet', 'koszt', 'miesiace'];
+const KLUCZE_URL = ['tryb', 'waluta', 'wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'powroty', 'udzialAi', 'widocznyWAi', 'pakiet', 'koszt', 'miesiace'];
 const WIDOCZNOSC = ['tak', 'nie', 'nie_wiem'];
+const DOZWOLONE_WALUTY_EN = ['USD', 'EUR', 'GBP', 'PLN'];
 const POCZATEK = { tryb: 'uslugi', wyszukiwania: '', ruch: '', konwersja: '', wartosc: '', marza: '', powroty: '', udzialAi: String(ZALOZENIA.udzialAiDomyslny), widocznyWAi: 'nie_wiem', pakiet: '', koszt: '', miesiace: String(ZWROT.miesiaceDoEfektu.domyslnie) };
 
 // Wartości z adresu albo z przykładu -> stan formularza (teksty pól). Złe wartości pomija.
 function zParametrow(p) {
   const d = {};
   if (p.tryb === 'sklep' || p.tryb === 'uslugi') d.tryb = p.tryb;
+  if (p.waluta && DOZWOLONE_WALUTY_EN.includes(String(p.waluta).toUpperCase())) d.waluta = String(p.waluta).toUpperCase();
   for (const k of ['wyszukiwania', 'ruch', 'konwersja', 'wartosc', 'marza', 'powroty', 'koszt']) {
     if (p[k] !== undefined && p[k] !== '' && Number.isFinite(Number(p[k]))) d[k] = String(p[k]);
   }
@@ -141,7 +177,19 @@ body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
 .kalk-tryb-opcje span { display: block; height: 100%; padding: 0.5rem 1rem; border-radius: 999px; font-weight: 600; font-size: 0.95rem; color: var(--w-tusz-2); line-height: 1.3; text-align: center; }
 .kalk-tryb-opcje input:checked + span { background: #fff; color: var(--w-tusz); box-shadow: 0 1px 3px rgba(10, 19, 55, 0.12), 0 0 0 1px var(--w-pomarancz, #d85a30); }
 .kalk-tryb-opcje input:focus-visible + span { outline: 2px solid var(--w-pomarancz, #d85a30); outline-offset: 2px; }
-.kalk-start { grid-column: 1 / -1; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; align-items: baseline; }
+.kalk-tryb-wiersz { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.9rem 1.5rem; align-items: flex-end; justify-content: space-between; }
+.kalk-tryb-wiersz .kalk-tryb { grid-column: auto; }
+.kalk-waluta-opcje { display: inline-grid; grid-template-columns: repeat(4, auto); gap: 0.2rem; padding: 0.25rem; border-radius: 999px; background: var(--w-papier, #f6f4ef); }
+.kalk-waluta-opcje label { position: relative; display: block; cursor: pointer; }
+.kalk-waluta-opcje input { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
+.kalk-waluta-opcje span { display: block; padding: 0.45rem 0.75rem; border-radius: 999px; font-weight: 600; font-size: 0.88rem; color: var(--w-tusz-2); line-height: 1.3; text-align: center; }
+.kalk-waluta-opcje input:checked + span { background: #fff; color: var(--w-tusz); box-shadow: 0 1px 3px rgba(10, 19, 55, 0.12), 0 0 0 1px var(--w-pomarancz, #d85a30); }
+.kalk-waluta-opcje input:focus-visible + span { outline: 2px solid var(--w-pomarancz, #d85a30); outline-offset: 2px; }
+.kalk-start { grid-column: 1 / -1; margin: 0; display: grid; gap: 0.45rem; }
+.kalk-beispiele { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.kalk-chip { padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(10, 19, 55, 0.14); background: #fff; font: inherit; font-size: 0.84rem; font-weight: 500; color: var(--w-tusz); cursor: pointer; transition: border-color 150ms ease, background-color 150ms ease; }
+.kalk-chip:hover { border-color: var(--w-pomarancz, #d85a30); background: var(--w-papier, #f6f4ef); }
+.kalk-chip--aktywny { border-color: var(--w-pomarancz, #d85a30); box-shadow: 0 0 0 1px var(--w-pomarancz, #d85a30); font-weight: 600; }
 .kalk-tekstowy { padding: 0; border: 0; background: none; font: inherit; color: var(--w-pomarancz-tekst, #b4471f); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .kalk-akcja { position: sticky; bottom: 0; z-index: 3; margin: 0 calc(-1 * clamp(1.25rem, 4vw, 2.25rem)); padding: 0.75rem clamp(1.25rem, 4vw, 2.25rem); background: #fff; border-top: 1px solid rgba(10, 19, 55, 0.08); display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; justify-content: space-between; }
 .kalk-akcja .btn { flex: 0 0 auto; }
@@ -208,18 +256,29 @@ function Kwota({ min, max, fmt, slowo, tick }) {
 export default function KalkulatorClient() {
   const en = useLocale() === 'en';
   const lang = en ? 'en' : 'pl';
-  const fmt = en ? zlEn : zl;
+  const [dane, setDane] = useState(() => ({ ...POCZATEK, ...(en ? { pakiet: 'seoStandard' } : {}) }));
+  const [walutaEn, setWalutaEn] = useState('USD');
+  const [aktywnyPrzyklad, setAktywnyPrzyklad] = useState('');
+  const waluta = en ? walutaEn : 'PLN';
+  const fmt = en ? (n) => formatujWaluteEn(n, waluta) : zl;
+  const jednostkaWaluty = waluta === 'USD' ? '$' : waluta === 'EUR' ? '€' : waluta === 'GBP' ? '£' : (en ? 'PLN' : 'zł');
   const num = (n) => n.toLocaleString(en ? 'en-US' : 'pl-PL');
   const ulamek = (n) => n.toLocaleString(en ? 'en-US' : 'pl-PL', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  const [dane, setDane] = useState(POCZATEK);
   const sklep = dane.tryb === 'sklep';
-  const pola = sklep ? (en ? POLA_SKLEP_EN : POLA_SKLEP) : (en ? POLA_EN : POLA);
+  const polaBazowe = sklep ? (en ? POLA_SKLEP_EN : POLA_SKLEP) : (en ? POLA_EN : POLA);
+  const pola = polaBazowe.map((p) => {
+    if (p.k !== 'wartosc') return p;
+    if (!en) return p;
+    const przykladKwoty = waluta === 'PLN' ? (sklep ? '220' : '1500') : (sklep ? '110' : '1200');
+    return { ...p, jednostka: jednostkaWaluty, przyklad: przykladKwoty };
+  });
   const liczba = en ? liczbaEn : liczbaPl;
   const [probowal, setProbowal] = useState(false);
   const [licznik, setLicznik] = useState(0); // kolejne „Policz”: uruchamia dojście kwoty (Kwota)
   const [blysk, setBlysk] = useState(0); // wypełnienie przykładem: pola rozjaśniają się raz
   const wynikRef = useRef(null);
   const poleSklepPowroty = (en ? POLA_SKLEP_EN : POLA_SKLEP).find((x) => x.k === 'powroty');
+  const listaPrzykladow = en ? PRZYKLADY_BRANZ_EN : PRZYKLADY_BRANZ_PL;
   // Jedno pole formularza; `key` z licznikiem wypełnień wstawia klasę rozjaśnienia od nowa przy każdym „Wstaw przykład”.
   const poleFormularza = (p) => (
     <div key={p.k} className="narz-kalk-pole">
@@ -237,12 +296,31 @@ export default function KalkulatorClient() {
   const zgloszonySklep = useRef(false);
 
   // Z-06: wynik z linku albo z przykładu (liczy się lokalnie, więc pokazuje się od razu).
-  useParametrUrl(KLUCZE_URL, (p) => setDane((d) => ({ ...d, ...zParametrow(p) })));
+  useParametrUrl(KLUCZE_URL, (p) => {
+    const oczyszczone = zParametrow(p);
+    if (en && oczyszczone.waluta) {
+      setWalutaEn(oczyszczone.waluta);
+      delete oczyszczone.waluta;
+    } else if (en && p.wartosc !== undefined && !p.waluta) {
+      // Starsze linki EN bez parametru waluta były w PLN.
+      setWalutaEn('PLN');
+    }
+    setDane((d) => ({ ...d, ...oczyszczone }));
+  });
   useEffect(() => {
-    const wstaw = (e) => { setDane(() => ({ ...POCZATEK, ...zParametrow(e.detail ?? PRZYKLAD) })); setBlysk((b) => b + 1); };
+    const wstaw = (e) => {
+      const zrodlo = e.detail ?? PRZYKLAD;
+      // WstawPrzyklad ze strony (PRZYKLADY.usluga / remont / sklep) ma kwoty w PLN.
+      if (en && !zrodlo.wartoscPln && (zrodlo === PRZYKLAD || zrodlo === PRZYKLADY.remont || zrodlo === PS)) {
+        setWalutaEn('PLN');
+      }
+      setDane(() => ({ ...POCZATEK, ...zParametrow(zrodlo) }));
+      setAktywnyPrzyklad(zrodlo.id || '');
+      setBlysk((b) => b + 1);
+    };
     window.addEventListener('kalkulator-przyklad', wstaw);
     return () => window.removeEventListener('kalkulator-przyklad', wstaw);
-  }, []);
+  }, [en]);
 
   const wejscie = useMemo(() => ({
     wyszukiwania: Math.round(liczba(dane.wyszukiwania)),
@@ -255,7 +333,7 @@ export default function KalkulatorClient() {
     // Tryb usług bez pól sklepu: te same dane i ten sam adres wyniku co przed 12.11.2026.
     ...(dane.tryb === 'sklep' ? { tryb: 'sklep', ...(dane.powroty !== '' ? { powroty: liczba(dane.powroty) } : {}) } : {}),
   }), [dane, liczba]);
-  const blad = bladDanych(wejscie, lang);
+  const blad = bladDanych(wejscie, lang, waluta);
   const wynik = useMemo(() => (blad ? null : policzStraty(wejscie)), [blad, wejscie]);
   // Ostatni poprawny wynik: potrzebny, gdy wynik się zwija po wpisaniu błędnej wartości (Zwin trzyma treść 200 ms).
   const [ostWynik, setOstWynik] = useState(null);
@@ -265,7 +343,8 @@ export default function KalkulatorClient() {
   if (blad && blad !== ostBlad) setOstBlad(blad);
   const wypelnione = ['wyszukiwania', 'konwersja', 'wartosc', 'marza'].every((k) => dane[k] !== '');
 
-  const koszt = PAKIETY.includes(dane.pakiet) ? CENY[dane.pakiet].pln : dane.pakiet === 'wlasny' ? liczba(dane.koszt) : NaN;
+  const cennikWaluty = CENY_PAKIETOW_WALUTY[waluta] ?? CENY_PAKIETOW_WALUTY.PLN;
+  const koszt = PAKIETY.includes(dane.pakiet) ? cennikWaluty[dane.pakiet] : dane.pakiet === 'wlasny' ? liczba(dane.koszt) : NaN;
   const miesiace = Number(dane.miesiace);
   const zwrot = wynik && dane.pakiet ? policzZwrot(wynik, koszt, miesiace) : null;
 
@@ -276,14 +355,15 @@ export default function KalkulatorClient() {
     if (!maWynik || zgloszony.current) return undefined;
     const t = setTimeout(() => {
       zgloszony.current = true;
-      track('narzedzie_wynik', { narzedzie: 'kalkulator', wynik: kwotaMin });
+      track('narzedzie_wynik', { narzedzie: 'kalkulator', wynik: kwotaMin, waluta });
     }, 1000);
     return () => clearTimeout(t);
-  }, [maWynik, kwotaMin]);
+  }, [maWynik, kwotaMin, waluta]);
 
   const zmien = (k) => (e) => {
     const v = e.target.value;
     setDane((d) => ({ ...d, [k]: v }));
+    if (k !== 'pakiet' && k !== 'koszt' && k !== 'miesiace') setAktywnyPrzyklad('');
     if (k === 'tryb' && v === 'sklep' && !zgloszonySklep.current) {
       zgloszonySklep.current = true;
       track('narzedzie_kalkulator_tryb', { tryb: v });
@@ -294,13 +374,32 @@ export default function KalkulatorClient() {
     }
   };
 
+  const zmienWalute = (nowaWaluta) => {
+    setWalutaEn(nowaWaluta);
+    if (en && aktywnyPrzyklad) {
+      const p = PRZYKLADY_BRANZ_EN.find((x) => x.id === aktywnyPrzyklad);
+      if (p) {
+        setDane((d) => ({ ...d, wartosc: String(nowaWaluta === 'PLN' ? p.wartoscPln : p.wartosc) }));
+      }
+    }
+    track('narzedzie_kalkulator_waluta', { waluta: nowaWaluta });
+  };
+
+  const wybierzPrzyklad = (przyklad) => {
+    const kwota = en && waluta === 'PLN' && przyklad.wartoscPln ? przyklad.wartoscPln : przyklad.wartosc;
+    setDane({ ...POCZATEK, ...zParametrow({ ...przyklad, wartosc: kwota }) });
+    setAktywnyPrzyklad(przyklad.id);
+    setBlysk((b) => b + 1);
+    track('narzedzie_kalkulator_przyklad', { przyklad: przyklad.id, lang });
+  };
+
   function licz(e) {
     e.preventDefault();
     setProbowal(true);
     if (blad) return;
     if (!zgloszonyStart.current) {
       zgloszonyStart.current = true;
-      track('narzedzie_start', { narzedzie: 'kalkulator' });
+      track('narzedzie_start', { narzedzie: 'kalkulator', waluta });
     }
     zapiszParametry(parametryWyniku());
     setLicznik((n) => n + 1);
@@ -311,6 +410,7 @@ export default function KalkulatorClient() {
   function parametryWyniku() {
     return {
       ...wejscie,
+      ...(en ? { waluta } : {}),
       pakiet: dane.pakiet || null,
       koszt: dane.pakiet === 'wlasny' && Number.isFinite(koszt) ? koszt : null,
       miesiace: dane.pakiet ? dane.miesiace : null,
@@ -319,8 +419,9 @@ export default function KalkulatorClient() {
 
   const cenaPakietu = (k) => {
     const c = CENY[k];
+    const kwota = cennikWaluty[k];
     const od = c.od ? (en ? 'from ' : 'od ') : '';
-    return en ? `${od}PLN ${c.pln.toLocaleString('en-US')} (€${c.eur}) net/mo` : `${od}${zl(c.pln)} netto/mies.`;
+    return en ? `${od}${formatujWaluteEn(kwota, waluta)} net/mo` : `${od}${zl(kwota)} netto/mies.`;
   };
   const miesiacTekst = (m) => (m === null ? (en ? `not within ${ZWROT.horyzont} months` : `nie w ciągu ${ZWROT.horyzont} miesięcy`) : (en ? `month ${m}` : `${m}. miesiąc`));
   // Zwrot w widełkach: optymistyczny (max) jest zawsze wcześniej albo równo z ostrożnym (min).
@@ -357,40 +458,67 @@ export default function KalkulatorClient() {
   }
 
   const bladKosztu = dane.pakiet === 'wlasny' && dane.koszt !== '' && !zwrot
-    ? (en ? `Enter a monthly amount from ${ZWROT.koszt.min} to ${ZWROT.koszt.max.toLocaleString('en-US')} PLN.` : `Podaj kwotę miesięczną od ${ZWROT.koszt.min} do ${ZWROT.koszt.max.toLocaleString('pl-PL')} zł.`)
+    ? (en ? `Enter a monthly amount from ${ZWROT.koszt.min} to ${ZWROT.koszt.max.toLocaleString('en-US')} ${waluta}.` : `Podaj kwotę miesięczną od ${ZWROT.koszt.min} do ${ZWROT.koszt.max.toLocaleString('pl-PL')} zł.`)
     : null;
 
-  const daneRaportu = zwrot ? { ...wejscie, koszt: zwrot.koszt, miesiaceDoEfektu: zwrot.miesiaceDoEfektu } : wejscie;
+  const daneRaportu = { ...(zwrot ? { ...wejscie, koszt: zwrot.koszt, miesiaceDoEfektu: zwrot.miesiaceDoEfektu } : wejscie), waluta };
 
   return (
     <div className="narz-app" id="narzedzie">
       <style>{CSS}</style>
       <PasekDemo />
       <form className="narz-formularz narz-kalkulator" onSubmit={licz} noValidate>
-        <fieldset className="kalk-tryb">
-          <legend className="narz-etykieta">{en ? 'What do you sell?' : 'Co sprzedajesz?'}</legend>
-          <div className="kalk-tryb-opcje">
-            {(en ? [['uslugi', 'Services'], ['sklep', 'Online shop']] : [['uslugi', 'Usługi lub zlecenia'], ['sklep', 'Sklep internetowy']]).map(([v, t]) => (
-              <label key={v}><input type="radio" name="tryb" value={v} checked={dane.tryb === v} onChange={zmien('tryb')} data-cta={`narzedzie_kalkulator_tryb_${v}`} /><span>{t}</span></label>
+        <div className="kalk-tryb-wiersz">
+          <fieldset className="kalk-tryb">
+            <legend className="narz-etykieta">{en ? 'What do you sell?' : 'Co sprzedajesz?'}</legend>
+            <div className="kalk-tryb-opcje">
+              {(en ? [['uslugi', 'Services'], ['sklep', 'Online shop']] : [['uslugi', 'Usługi lub zlecenia'], ['sklep', 'Sklep internetowy']]).map(([v, t]) => (
+                <label key={v}><input type="radio" name="tryb" value={v} checked={dane.tryb === v} onChange={zmien('tryb')} data-cta={`narzedzie_kalkulator_tryb_${v}`} /><span>{t}</span></label>
+              ))}
+            </div>
+          </fieldset>
+          {en && (
+            <fieldset className="kalk-tryb">
+              <legend className="narz-etykieta">Currency</legend>
+              <div className="kalk-waluta-opcje">
+                {WALUTY_EN.map(([kod, etykieta]) => (
+                  <label key={kod}>
+                    <input type="radio" name="waluta" value={kod} checked={waluta === kod} onChange={() => zmienWalute(kod)} data-cta={`narzedzie_kalkulator_waluta_${kod}`} />
+                    <span>{etykieta}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          )}
+        </div>
+        <div className="kalk-start">
+          <p className="narz-mikro" style={{ margin: 0 }}>
+            {sklep
+              ? (en ? 'Five numbers and one optional, the result updates as you type. Or pick an industry preset:' : 'Pięć liczb i jedna opcjonalna, wynik liczy się na bieżąco. Możesz też wczytać przykład branży:')
+              : (en ? 'Five numbers, the result updates as you type. Or pick an industry preset:' : 'Pięć liczb, wynik liczy się na bieżąco. Możesz też wczytać przykład branży:')}
+          </p>
+          <div className="kalk-beispiele" role="group" aria-label={en ? 'Load an industry preset' : 'Wczytaj przykład branży'}>
+            {listaPrzykladow.map((b) => (
+              <button
+                key={b.id}
+                type="button"
+                className={`kalk-chip${aktywnyPrzyklad === b.id ? ' kalk-chip--aktywny' : ''}`}
+                data-cta={`narzedzie_kalkulator_chip_${b.id}`}
+                onClick={() => wybierzPrzyklad(b)}
+              >
+                {b.etykieta}
+              </button>
             ))}
           </div>
-        </fieldset>
-        <p className="narz-mikro kalk-start">
-          <span>{sklep
-            ? (en ? 'Five numbers and one optional, the result updates as you type.' : 'Pięć liczb i jedna opcjonalna, wynik liczy się na bieżąco.')
-            : (en ? 'Five numbers, the result updates as you type.' : 'Pięć liczb, wynik liczy się na bieżąco.')}</span>
-          <button type="button" className="kalk-tekstowy" data-cta="narzedzie_kalkulator_przyklad" onClick={() => { setDane({ ...POCZATEK, ...zParametrow(sklep ? PS : PRZYKLAD) }); setBlysk((b) => b + 1); }}>
-            {en ? 'Fill in an example' : 'Wstaw przykład'}
-          </button>
-        </p>
+        </div>
         {pola.filter((p) => p.k !== 'powroty').map(poleFormularza)}
         <Zwin otwarte={sklep}>{poleFormularza(poleSklepPowroty)}</Zwin>
         <div className="narz-kalk-pole">
           <label htmlFor="k-udzialAi" className="narz-etykieta">{en ? 'What share of customers ask AI instead of Google?' : 'Jaka część klientów pyta AI zamiast Google?'} <strong>{dane.udzialAi}%</strong></label>
           <input id="k-udzialAi" type="range" min="0" max="60" step="5" value={dane.udzialAi} onChange={zmien('udzialAi')} className="narz-suwak" />
           <p className="narz-mikro">{en
-            ? `Default ${ZALOZENIA.udzialAiDomyslny}%: our cautious assumption (in 2024 Gartner forecast a 25% fall in traditional search volume by 2026, which we have not verified). Set your own value. The more questions go to AI, the fewer visits there are to win, because AI answers rarely end with a click.`
-            : `Domyślnie ${ZALOZENIA.udzialAiDomyslny}%: nasze ostrożne założenie (Gartner w 2024 r. prognozował spadek wolumenu wyszukiwań w klasycznych wyszukiwarkach o 25% do 2026 r., czego nie sprawdziliśmy). Ustaw swoją wartość. Im więcej pytań trafia do AI, tym mniej wejść jest do zdobycia, bo odpowiedzi AI rzadko kończą się kliknięciem.`}</p>
+            ? `Default ${ZALOZENIA.udzialAiDomyslny}%: our cautious assumption (in 2024 Gartner forecast a 25% fall in traditional search volume by 2026, which we have not verified). Set your own value. In the AI channel we include both direct citation clicks and zero-click brand searches with higher purchase intent (${ZALOZENIA.ai.mnoznikKonwersji}x conversion lift).`
+            : `Domyślnie ${ZALOZENIA.udzialAiDomyslny}%: nasze ostrożne założenie (Gartner w 2024 r. prognozował spadek wolumenu wyszukiwań w klasycznych wyszukiwarkach o 25% do 2026 r., czego nie sprawdziliśmy). Ustaw swoją wartość. W kanale AI uwzględniamy zarówno bezpośrednie kliknięcia w cytowane źródła, jak i wyszukiwania nazwy firmy po poleceniu w AI z wyższą intencją zakupu (${String(ZALOZENIA.ai.mnoznikKonwersji).replace('.', ',')}x wyższa konwersja).`}</p>
         </div>
         <fieldset className="narz-kalk-pole">
           <legend className="narz-etykieta">{sklep
@@ -463,8 +591,8 @@ export default function KalkulatorClient() {
               <div className="narz-kalk-pole">
                 <label htmlFor="k-koszt" className="narz-etykieta">{en ? 'Monthly SEO cost (net)' : 'Miesięczny koszt SEO (netto)'}</label>
                 <div className="narz-z-jednostka">
-                  <input id="k-koszt" name="koszt" value={dane.koszt} onChange={zmien('koszt')} inputMode="decimal" autoComplete="off" placeholder={en ? 'e.g. 3000' : 'np. 3000'} className="narz-pole" />
-                  <span aria-hidden="true">{en ? 'PLN' : 'zł'}</span>
+                  <input id="k-koszt" name="koszt" value={dane.koszt} onChange={zmien('koszt')} inputMode="decimal" autoComplete="off" placeholder={en ? (waluta === 'PLN' ? 'e.g. 3000' : 'e.g. 800') : 'np. 3000'} className="narz-pole" />
+                  <span aria-hidden="true">{jednostkaWaluty}</span>
                 </div>
                 {bladKosztu && <p role="alert" className="narz-blad">{bladKosztu}</p>}
               </div>
@@ -511,6 +639,7 @@ export default function KalkulatorClient() {
           <BramkaEmail
             narzedzie="kalkulator"
             dane={daneRaportu}
+            parametry={{ waluta }}
             tylkoRaport
             naglowek={en ? 'Email me the summary' : 'Wyślij zestawienie e-mailem'}
             opis={en ? 'We will send the result with the Google and AI breakdown and the assumptions, so you can come back to it when you plan your budget.' : 'Wyślemy wynik z rozbiciem na Google i AI oraz z założeniami, żeby wrócić do niego przy planowaniu budżetu.'}

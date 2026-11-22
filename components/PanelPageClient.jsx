@@ -141,17 +141,17 @@ export default function PanelPageClient() {
     raporty: hrefS1 ? <> Co powinno być w takim raporcie, pokazuje nasz <Link href={hrefS1} style={podkreslenie}>wzór raportu SEO</Link>.</> : null,
   };
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs pl="Panel klienta" en="Client Portal" />
 
       <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '860px' }}>
-            <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
-              <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {lang === 'pl' ? 'Panel klienta 24/7' : '24/7 client portal'}
+            <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+              <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {lang === 'pl' ? 'Panel klienta 24/7' : '24/7 client portal'}
             </div>
-            <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 1.25rem', color: 'var(--color-text-dark)' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.8rem)', lineHeight: 1.08, fontWeight: 500, letterSpacing: '-0.04em', margin: '0 0 1.25rem', color: 'var(--w-tusz)' }}>
               {lang === 'pl' ? 'Panel klienta: widzisz naszą pracę codziennie' : 'Client portal: see our work every day'}
             </h1>
             {/* 5.11.2026 (PLAN-v2 6.0 i 6.22, PK1; OP-11): w PL Krótka odpowiedź (50 słów, marka
@@ -181,7 +181,7 @@ export default function PanelPageClient() {
             </div>
           </Reveal>
           <Reveal style={{ marginTop: '3rem' }}>
-            <Image src="/images/panel/przeglad.webp" alt={lang === 'pl' ? 'Przegląd w panelu klienta na danych przykładowych' : 'Client portal overview with sample data'} width={1600} height={1025} priority sizes="(max-width: 1100px) 100vw, 1060px" style={{ width: '100%', maxWidth: '1060px', height: 'auto', display: 'block', margin: '0 auto', borderRadius: '12px', boxShadow: 'none', border: '1px solid var(--w-linia)' }} />
+            <Image src="/images/panel/przeglad.webp" alt={lang === 'pl' ? 'Przegląd w panelu klienta na danych przykładowych' : 'Client portal overview with sample data'} width={1600} height={1025} priority sizes="(max-width: 1100px) 100vw, 1060px" style={{ width: '100%', maxWidth: '1060px', height: 'auto', display: 'block', margin: '0 auto', borderRadius: '16px', boxShadow: 'none', border: '1px solid var(--w-linia)' }} />
           </Reveal>
         </div>
       </section>
@@ -193,25 +193,25 @@ export default function PanelPageClient() {
           </Reveal>
           <RevealStagger style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', marginTop: '2rem' }}>
             {features[lang].map((f) => (
-              <RevealItem key={f.img} style={{ background: '#FFFFFF', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
-                <Image src={f.img} alt={lang === 'pl' ? `${f.title} (dane przykładowe)` : `${f.title} (sample data)`} width={1600} height={1025} sizes="(max-width: 760px) 100vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', borderBottom: '1px solid rgba(0,0,0,0.06)' }} />
+              <RevealItem key={f.img} style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', overflow: 'hidden', boxShadow: 'none' }}>
+                <Image src={f.img} alt={lang === 'pl' ? `${f.title} (dane przykładowe)` : `${f.title} (sample data)`} width={1600} height={1025} sizes="(max-width: 760px) 100vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', borderBottom: '1px solid var(--w-linia)' }} />
                 <div style={{ padding: '1.25rem 1.5rem 1.5rem' }}>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--color-text-dark)' }}>{f.title}</h3>
-                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--color-text-main)' }}>{f.text}{lang === 'pl' && f.dopisek ? dopiski[f.dopisek] : null}</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 600, letterSpacing: '-0.02em', marginBottom: '0.5rem', color: 'var(--w-tusz)' }}>{f.title}</h3>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--w-tusz-2)' }}>{f.text}{lang === 'pl' && f.dopisek ? dopiski[f.dopisek] : null}</p>
                 </div>
               </RevealItem>
             ))}
           </RevealStagger>
-          <Reveal style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', alignItems: 'center', marginTop: '3rem', background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
+          <Reveal style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', alignItems: 'center', marginTop: '3rem', background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', boxShadow: 'none' }}>
             <div>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)' }}>{lang === 'pl' ? 'Na telefonie też' : 'On your phone too'}</h2>
-              <p style={{ margin: 0, lineHeight: 1.65, color: 'var(--color-text-main)', fontSize: '1.05rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.15rem)', fontWeight: 500, letterSpacing: '-0.035em', lineHeight: 1.1, marginBottom: '1rem', color: 'var(--w-tusz)' }}>{lang === 'pl' ? 'Na telefonie też' : 'On your phone too'}</h2>
+              <p style={{ margin: 0, lineHeight: 1.65, color: 'var(--w-tusz-2)', fontSize: '1.05rem' }}>
                 {lang === 'pl'
                   ? 'Panel działa w przeglądarce telefonu bez instalowania aplikacji. Zapytania z ostatnich dni i sprawy do akceptacji sprawdzisz w dwie minuty.'
                   : 'The portal works in your phone browser without installing an app. You can check recent enquiries and pending approvals in two minutes.'}
               </p>
             </div>
-            <Image src="/images/panel/przeglad-telefon.webp" alt={lang === 'pl' ? 'Panel klienta na telefonie (dane przykładowe)' : 'Client portal on a phone (sample data)'} width={780} height={1688} sizes="(max-width: 760px) 70vw, 300px" style={{ width: '100%', maxWidth: '300px', height: 'auto', justifySelf: 'center', borderRadius: '28px', boxShadow: '0 20px 50px rgba(15, 23, 42, 0.16)' }} />
+            <Image src="/images/panel/przeglad-telefon.webp" alt={lang === 'pl' ? 'Panel klienta na telefonie (dane przykładowe)' : 'Client portal on a phone (sample data)'} width={780} height={1688} sizes="(max-width: 760px) 70vw, 300px" style={{ width: '100%', maxWidth: '300px', height: 'auto', justifySelf: 'center', borderRadius: '24px', border: '1px solid var(--w-linia)', boxShadow: 'none' }} />
           </Reveal>
         </div>
       </section>
@@ -220,28 +220,28 @@ export default function PanelPageClient() {
         <div className="container" style={{ maxWidth: '1060px' }}>
           <Reveal className="section-header">
             <h2 id="porownanie">{lang === 'pl' ? 'Czego nie pokaże raport PDF' : 'What a PDF report will not show you'}</h2>
-            <p style={{ color: 'var(--color-text-muted)', maxWidth: '720px', margin: '0.75rem 0 0', lineHeight: 1.65 }}>
+            <p style={{ color: 'var(--w-tusz-2)', maxWidth: '720px', margin: '0.75rem 0 0', lineHeight: 1.65 }}>
               {lang === 'pl'
                 ? 'Porównanie z formami raportowania, które spotkasz u agencji SEO, na podstawie przeglądu cenników i opisów usług 17 agencji w Polsce (stan na 25.10.2026). Kolumna środkowa to uproszczony typowy panel, który pokazuje głównie pozycje fraz; część agencji oferuje więcej.'
                 : 'A comparison with the reporting you will find at SEO agencies, based on a review of the price lists and service descriptions of 17 agencies in Poland (as of 25 October 2026). The middle column is a simplified typical portal that mainly shows keyword positions; some agencies offer more.'}
             </p>
           </Reveal>
-          <Reveal style={{ marginTop: '2rem', overflowX: 'auto', background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.04)' }}>
+          <Reveal style={{ marginTop: '2rem', overflowX: 'auto', background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', boxShadow: 'none' }}>
             <table style={{ width: '100%', minWidth: '640px', borderCollapse: 'collapse', fontSize: '0.98rem', lineHeight: 1.45 }}>
               <thead>
-                <tr>
+                <tr style={{ background: 'var(--w-papier-2)' }}>
                   {compare.head[lang].map((h, i) => (
-                    <th key={h} scope="col" style={{ textAlign: 'left', padding: '1rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.1)', color: i === 3 ? 'var(--color-primary)' : 'var(--color-text-dark)', fontWeight: 700 }}>{h}</th>
+                    <th key={h} scope="col" style={{ textAlign: 'left', padding: '1rem 1.1rem', borderBottom: '1px solid var(--w-linia)', color: i === 3 ? 'var(--w-pomarancz-tekst)' : 'var(--w-tusz)', fontWeight: 600 }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {compare.rows.map((r) => (
                   <tr key={r.pl}>
-                    <th scope="row" style={{ textAlign: 'left', padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.06)', fontWeight: 600, color: 'var(--color-text-dark)' }}>{r[lang]}</th>
-                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.06)', color: '#5B6576' }}>{r.pdf[lang === 'pl' ? 0 : 1]}</td>
-                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.06)', color: '#5B6576' }}>{r.typ[lang === 'pl' ? 0 : 1]}</td>
-                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(15,23,42,0.06)', color: '#047857', fontWeight: 700 }}>{lang === 'pl' ? 'tak' : 'yes'}</td>
+                    <th scope="row" style={{ textAlign: 'left', padding: '0.85rem 1.1rem', borderBottom: '1px solid var(--w-linia)', fontWeight: 600, color: 'var(--w-tusz)' }}>{r[lang]}</th>
+                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid var(--w-linia)', color: 'var(--w-tusz-2)' }}>{r.pdf[lang === 'pl' ? 0 : 1]}</td>
+                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid var(--w-linia)', color: 'var(--w-tusz-2)' }}>{r.typ[lang === 'pl' ? 0 : 1]}</td>
+                    <td style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid var(--w-linia)', color: '#047857', fontWeight: 600 }}>{lang === 'pl' ? 'tak' : 'yes'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -256,14 +256,14 @@ export default function PanelPageClient() {
       {lang === 'pl' && (
         <section style={{ padding: '0 0 80px' }} aria-labelledby="jak-sprawdzic-panel">
           <div className="container" style={{ maxWidth: '850px', margin: '0 auto' }}>
-            <Reveal style={{ background: '#FFFFFF', borderRadius: '32px', padding: 'clamp(1.75rem, 5vw, 3rem)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
-              <h2 id="jak-sprawdzic-panel" style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--color-text-dark)' }}>Jak sprawdzić panel agencji przed podpisaniem umowy: 6 pytań</h2>
-              <p style={{ margin: '0 0 1.25rem', lineHeight: 1.65, color: 'var(--color-text-main)', fontSize: '1.05rem' }}>
+            <Reveal style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(1.75rem, 5vw, 3rem)', boxShadow: 'none' }}>
+              <h2 id="jak-sprawdzic-panel" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.15rem)', fontWeight: 500, letterSpacing: '-0.035em', lineHeight: 1.1, marginBottom: '1rem', color: 'var(--w-tusz)' }}>Jak sprawdzić panel agencji przed podpisaniem umowy: 6 pytań</h2>
+              <p style={{ margin: '0 0 1.25rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', fontSize: '1.05rem' }}>
                 Przed podpisaniem umowy poproś agencję o dostęp do panelu na danych przykładowych i przejdź sześć pytań poniżej. Nasz panel sprawdzisz od razu w <a href={PANEL_DEMO_URL} data-cta="panel_page_checklist_demo" style={podkreslenie}>demo bez logowania</a>.
               </p>
-              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
+              <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.9rem', fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--w-tusz-2)' }}>
                 {pytaniaPanelu.map((p) => (
-                  <li key={p.q}><strong style={{ color: 'var(--color-text-dark)' }}>{p.q}</strong> {p.a}</li>
+                  <li key={p.q}><strong style={{ color: 'var(--w-tusz)', fontWeight: 600 }}>{p.q}</strong> {p.a}</li>
                 ))}
               </ol>
             </Reveal>

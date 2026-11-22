@@ -44,14 +44,14 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
         }}>
           <div>
             <Reveal>
-              <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
-                <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {tag}
+              <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', marginBottom: '1rem', display: 'inline-flex', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+                <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {tag}
               </div>
-              <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 700, color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.15 }}>
+              <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.08 }}>
                 {title}
               </h2>
               {subtitle && (
-                <p style={{ fontSize: '1.15rem', color: 'var(--w-tusz-2)', marginTop: '0.75rem', fontWeight: 500, maxWidth: '650px' }}>
+                <p style={{ fontSize: '1.15rem', color: 'var(--w-tusz-2)', marginTop: '0.75rem', fontWeight: 400, maxWidth: '650px' }}>
                   {subtitle}
                 </p>
               )}
@@ -67,19 +67,19 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: '#FFFFFF',
-                border: '1px solid rgba(0,0,0,0.08)',
+                background: 'var(--w-karta)',
+                border: '1px solid var(--w-linia)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: activeIndex === 0 ? 'default' : 'pointer',
                 opacity: activeIndex === 0 ? 0.4 : 1,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                transition: 'all 0.2s ease'
+                boxShadow: 'none',
+                transition: 'border-color 0.2s ease, opacity 0.2s ease'
               }}
               aria-label={lang === 'pl' ? 'Poprzedni slajd' : 'Previous slide'}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--w-tusz)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
@@ -91,19 +91,19 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
                 width: '44px',
                 height: '44px',
                 borderRadius: '50%',
-                background: '#FFFFFF',
-                border: '1px solid rgba(0,0,0,0.08)',
+                background: 'var(--w-karta)',
+                border: '1px solid var(--w-linia)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: activeIndex === items.length - 1 ? 'default' : 'pointer',
                 opacity: activeIndex === items.length - 1 ? 0.4 : 1,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                transition: 'all 0.2s ease'
+                boxShadow: 'none',
+                transition: 'border-color 0.2s ease, opacity 0.2s ease'
               }}
               aria-label={lang === 'pl' ? 'Następny slajd' : 'Next slide'}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--w-tusz)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
@@ -119,7 +119,7 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
           id="service-carousel-scroll"
           style={{ 
             display: 'flex', 
-            gap: '24px', 
+            gap: '20px', 
             overflowX: 'auto', 
             scrollSnapType: 'x mandatory', 
             scrollbarWidth: 'none', 
@@ -135,9 +135,8 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
           `}</style>
           
           {items.map((item, idx) => {
-            // Vary card width and height per item to give dynamic Apple bento feel
-            const flexBasis = item.width || (idx === 0 ? 'min(85vw, 460px)' : idx % 2 === 1 ? 'min(75vw, 360px)' : 'min(80vw, 410px)');
-            const minHeight = item.minHeight || (idx === 0 ? '360px' : '340px');
+            const flexBasis = item.width || 'min(84vw, 390px)';
+            const minHeight = item.minHeight || '330px';
 
             return (
               <div 
@@ -146,33 +145,33 @@ export default function ServiceCarousel({ tag, title, subtitle, items }) {
                 style={{
                   flex: `0 0 ${flexBasis}`,
                   scrollSnapAlign: 'start',
-                  background: '#FFFFFF',
-                  borderRadius: '28px',
-                  padding: '2.75rem 2.25rem',
+                  background: 'var(--w-karta)',
+                  borderRadius: '24px',
+                  padding: '2.25rem 2rem',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.03)',
-                  border: '1px solid rgba(0,0,0,0.05)',
+                  boxShadow: 'none',
+                  border: '1px solid var(--w-linia)',
                   minHeight: minHeight,
                   position: 'relative'
                 }}
               >
                 <div>
                   {item.number && (
-                    <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '1.25rem', letterSpacing: '0.05em' }}>
+                    <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.8rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1rem', letterSpacing: '0.14em' }}>
                       {lang === 'pl' ? item.number : (item.numberEn || item.number)}
                     </div>
                   )}
                   {item.metric && (
-                    <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--w-tusz)', marginBottom: '0.75rem', letterSpacing: '-0.04em' }}>
+                    <div style={{ fontSize: '2.35rem', fontWeight: 600, color: 'var(--w-tusz)', marginBottom: '0.75rem', letterSpacing: '-0.035em' }}>
                       {lang === 'pl' ? item.metric : (item.metricEn || item.metric)}
                     </div>
                   )}
-                  <h3 style={{ fontSize: '1.45rem', fontWeight: 700, color: 'var(--w-tusz)', letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.25 }}>
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '0.85rem', lineHeight: 1.22 }}>
                     {lang === 'pl' ? item.title : (item.titleEn || item.title)}
                   </h3>
-                  <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6, margin: 0 }}>
+                  <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.02rem', lineHeight: 1.6, margin: 0 }}>
                     {lang === 'pl' ? item.description : (item.descriptionEn || item.description)}
                   </p>
                 </div>

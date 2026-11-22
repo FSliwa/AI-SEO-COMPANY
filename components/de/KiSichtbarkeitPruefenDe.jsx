@@ -23,10 +23,11 @@ import { Link } from '@/i18n/routing';
 import { track } from '@/lib/track';
 import { DEMO, PANEL_API, wywolajNarzedzie, odblokuj } from '@/lib/narzedziaApi';
 import { tekstPotwierdzenia } from '@/lib/narzedziaPotwierdzenie';
-import { useParametrUrl, zapiszParametry, linkZParametrami } from '@/lib/narzedzia/parametrUrl';
+import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
 import { WIDOCZNOSC } from '@/lib/narzedziaLiczby';
-import { maWersjeDe, STRONY_DE } from '@/lib/stronyDe';
+import { maWersjeDe, STRONY_DE, hrefDe } from '@/lib/stronyDe';
 import { Postep } from '@/components/narzedzia/Wspolne';
+import { LinkWyniku } from '@/components/de/narzedzia/WspolneDe';
 import Zwin from '@/components/narzedzia/Zwin';
 import { zachowaniePrzewijania } from '@/lib/ruch';
 import '@/components/narzedzia/ruch-c.css';
@@ -37,7 +38,6 @@ import st from '@/components/narzedzia/narzedzia.module.css';
 import * as s from '@/components/narzedzia/styl';
 import { BylineDe, faqFuerAppleFaq } from '@/components/de/GeoBausteineDe';
 import { KOPF, ODER_NACH_EMAIL, SCHRITTE, METHODE, LESEN, WEITER, WEITER_LINKS, QUELLEN, WEITERE_TOOLS, FAQ, SCHEMA, STAND, SCHLUESSEL, listeEngines } from '@/lib/de/kiSichtbarkeit';
-import { hrefDe } from '@/lib/stronyDe';
 import { SIEDZIBA } from '@/lib/firma';
 
 const W = WIDOCZNOSC;
@@ -52,6 +52,71 @@ const OGOLNE = new Set(['seo', 'web', 'art', 'pro', 'net', 'com', 'app', 'www', 
 const proste = (t) => ` ${String(t || '').normalize('NFKD').replace(/\p{M}/gu, '').replace(/ł/gi, 'l').replace(/ß/g, 'ss').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()} `;
 const zwin = (t) => String(t || '').replace(/\s+/g, ' ').trim();
 
+const KRAJE_DE = [
+  ['DE', 'DE - Deutschland'],
+  ['AT', 'AT - Österreich'],
+  ['CH', 'CH - Schweiz'],
+];
+const WO_KRAJ_DE = { DE: 'in Deutschland', AT: 'in Österreich', CH: 'in der Schweiz' };
+const FUER_KRAJ_DE = { DE: 'Deutschland', AT: 'Österreich', CH: 'die Schweiz' };
+const KROTKA_NAZWA_KRAJU_DE = { DE: 'Deutschland', AT: 'Österreich', CH: 'Schweiz' };
+
+function krajZDomenyDe(wartosc) {
+  const h = String(wartosc || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
+  if (!h || !h.includes('.')) return null;
+  if (h.endsWith('.co.at') || h.endsWith('.or.at') || h.endsWith('.at')) return 'AT';
+  if (h.endsWith('.ch')) return 'CH';
+  if (h.endsWith('.de')) return 'DE';
+  return null;
+}
+
+function odczytajOdblokowane(id) {
+  if (!id || typeof window === 'undefined') return null;
+  try {
+    const raw = window.sessionStorage.getItem(`aisc_odblok_${id}`);
+    if (!raw) return null;
+    const p = JSON.parse(raw);
+    return p && typeof p === 'object' ? (p.pelny ?? p) : null;
+  } catch {
+    return null;
+  }
+}
+
+function zapiszOdblokowane(id, pelny) {
+  if (!id || !pelny || typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.setItem(`aisc_odblok_${id}`, JSON.stringify(pelny));
+  } catch {
+    // kein Zugriff auf sessionStorage
+  }
+}
+
+function wzorceMarki(firma, www) {
+  const zbior = new Set();
+  const czystaFirma = zwin(firma);
+  if (czystaFirma.length >= 2) {
+    zbior.add(czystaFirma);
+    const bezFormy = zwin(czystaFirma.replace(/\b(gmbh\s*&\s*co\.\s*kg|gmbh|ug|ag|kg|og|e\.u\.|gbr|ltd\.?|llc)\b/gi, ''));
+    if (bezFormy.length >= 3 && !OGOLNE.has(bezFormy.toLowerCase())) zbior.add(bezFormy);
+  }
+  const host = String(www || '').trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').split(/[/?#:]/)[0];
+  if (host.length >= 4 && host.includes('.')) zbior.add(host);
+  return [...zbior].sort((a, b) => b.length - a.length);
+}
+
+function podswietlMarke(tekst, wzorce) {
+  const txt = String(tekst || '');
+  if (!txt || !wzorce?.length) return txt;
+  const esc = wzorce.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  if (!esc) return txt;
+  const re = new RegExp(`(${esc})`, 'gi');
+  const czesci = txt.split(re);
+  if (czesci.length <= 1) return txt;
+  return czesci.map((czesc, idx) => (idx % 2 === 1
+    ? <mark key={idx} style={{ background: 'rgba(216, 90, 48, 0.18)', color: 'inherit', padding: '0.05em 0.2em', borderRadius: '4px' }}>{czesc}</mark>
+    : czesc));
+}
+
 function bladPytania(lista, i, dane) {
   const t = zwin(lista[i]);
   if (t.length < PYTANIE.min || t.length > PYTANIE.max) return `Eine Frage muss zwischen ${PYTANIE.min} und ${PYTANIE.max} Zeichen lang sein.`;
@@ -65,9 +130,10 @@ function bladPytania(lista, i, dane) {
 }
 
 // Demo-Modus (ohne Panel, nur lokale Vorschau): dieselben Vorlagen wie im Panel, ohne Frage aus der Website.
-function pytaniaDemo(branza, miasto) {
-  const wo = miasto ? `in ${miasto}` : 'in Deutschland';
-  return [`Welches Unternehmen aus der Branche „${branza}“ empfehlen Sie ${wo}? Nennen Sie einige Namen.`, `Wer ist der Beste in der Branche „${branza}“ ${wo}?`, `Ich suche: ${branza}${miasto ? `, ${miasto}` : ', Deutschland'}. Welches Unternehmen soll ich wählen und warum?`];
+function pytaniaDemo(branza, miasto, kraj = 'DE') {
+  const wo = miasto ? `in ${miasto}` : (WO_KRAJ_DE[kraj] || 'in Deutschland');
+  const krotko = KROTKA_NAZWA_KRAJU_DE[kraj] || 'Deutschland';
+  return [`Welches Unternehmen aus der Branche „${branza}“ empfehlen Sie ${wo}? Nennen Sie einige Namen.`, `Wer ist der Beste in der Branche „${branza}“ ${wo}?`, `Ich suche: ${branza}${miasto ? `, ${miasto}` : `, ${krotko}`}. Welches Unternehmen soll ich wählen und warum?`];
 }
 
 function demoZPytaniami(obiekt, mapa) {
@@ -80,7 +146,7 @@ function demoZPytaniami(obiekt, mapa) {
 async function pobierzPytania(body) {
   if (DEMO) {
     await new Promise((r) => setTimeout(r, 500));
-    return { ok: true, pytania: pytaniaDemo(body.branza.trim(), body.miasto.trim() || null), zrodloPytan: ['szablon', 'szablon', 'szablon'] };
+    return { ok: true, pytania: pytaniaDemo(body.branza.trim(), body.miasto.trim() || null, body.kraj), zrodloPytan: ['szablon', 'szablon', 'szablon'] };
   }
   const ctrl = new AbortController();
   const zegar = setTimeout(() => ctrl.abort(), 20_000);
@@ -99,9 +165,10 @@ async function pobierzPytania(body) {
 const ETYKIETA_ZRODLA = { szablon: 'aus Branche und Stadt', strona: 'aus dem Inhalt Ihrer Website', uzytkownik: 'von Ihnen geändert' };
 const OPCJONALNIE = { fontWeight: 400, fontSize: '0.8rem', color: 'var(--w-tusz-2)', whiteSpace: 'nowrap' };
 
-function liniaNaZywo() {
+function liniaNaZywo(kraj = 'DE') {
+  const fuer = FUER_KRAJ_DE[kraj] || 'Deutschland';
   const szukaja = W.geminiZWyszukiwaniem ? 'ChatGPT, Gemini, Perplexity und Claude suchen im Netz' : 'ChatGPT, Perplexity und Claude suchen im Netz, Gemini antwortet aus dem Modellwissen';
-  return `Ohne Anmeldung. Bis zu ${W.limitIp} Unternehmen pro Tag von einer IP-Adresse. Wir fragen live über die APIs: ${szukaja}, und die AI Overviews prüfen wir in den Google-Ergebnissen für Deutschland.${W.grok ? ' Grok antwortet aus dem Modellwissen, ohne Websuche.' : ''} ChatGPT meint hier ein OpenAI-Modell mit Websuche über die API; Antworten der ChatGPT-App können abweichen.`;
+  return `Ohne Anmeldung. Bis zu ${W.limitIp} Unternehmen pro Tag von einer IP-Adresse. Wir fragen live über die APIs: ${szukaja}, und die AI Overviews prüfen wir in den Google-Ergebnissen für ${fuer}.${W.grok ? ' Grok antwortet aus dem Modellwissen, ohne Websuche.' : ''} ChatGPT meint hier ein OpenAI-Modell mit Websuche über die API; Antworten der ChatGPT-App können abweichen.`;
 }
 
 function lacz(lista) {
@@ -144,32 +211,6 @@ function Ocena({ wynik, podpis }) {
       </svg>
       <span className="narz-ocena-liczba" aria-hidden="true" style={{ '--cel': w }}>{w}</span>
       {podpis && <span className="narz-ocena-podpis" aria-hidden="true">{podpis}</span>}
-    </div>
-  );
-}
-
-/** Link zum Kopieren: öffnet den Check mit ausgefüllten Feldern, der Check startet erst nach Klick (Limit pro IP und Kosten). */
-function LinkKopieren({ parametry }) {
-  const [stan, setStan] = useState({ status: 'idle', link: '' });
-  async function klik() {
-    const link = linkZParametrami(parametry);
-    if (!link) return;
-    let ok = false;
-    try {
-      if (navigator.clipboard?.writeText) { await navigator.clipboard.writeText(link); ok = true; }
-    } catch { ok = false; }
-    setStan({ status: ok ? 'ok' : 'blad', link });
-    track('narzedzie_link_wyniku', { narzedzie: 'widocznosc_ai' });
-  }
-  return (
-    <div className={st.linkWyniku}>
-      <button type="button" className={st.przyciskTekstowy} onClick={klik} data-cta="narzedzie_widocznosc_ai_link">Link zu diesem Check kopieren</button>
-      <span className="narz-mikro" role="status" aria-live="polite">
-        {stan.status === 'ok' ? 'Link kopiert. ' : null}
-        {stan.status === 'blad' ? 'Kopieren nicht möglich, markieren Sie den Link: ' : null}
-        {stan.status === 'blad' ? <input readOnly value={stan.link} aria-label="Link zum Ergebnis" className="narz-pole" onFocus={(e) => e.target.select()} /> : null}
-        {stan.status !== 'idle' ? 'Der Link öffnet den Check mit ausgefüllten Feldern. Der Check startet erst, wenn Sie auf die Schaltfläche klicken.' : null}
-      </span>
     </div>
   );
 }
@@ -262,6 +303,8 @@ function Schranke({ id, naglowek, opis, korzysci, przycisk, onOdblokowano }) {
 function PruefTool() {
   const [stan, setStan] = useState({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, dane: null });
   const [wstepne, setWstepne] = useState({});
+  const [kraj, setKraj] = useState('DE');
+  const [krajReczny, setKrajReczny] = useState(false);
   const [propozycje, setPropozycje] = useState(null);
   const [edycje, setEdycje] = useState(['', '', '']);
   const [bledyPytan, setBledyPytan] = useState([null, null, null]);
@@ -275,17 +318,68 @@ function PruefTool() {
     if (stan.pelny) pelnyRef.current?.scrollIntoView({ block: 'start', behavior: zachowaniePrzewijania() });
   }, [stan.pelny]);
 
-  // ?firma=, ?branza=, ?miasto=, ?url= füllen nur die Felder aus (kein Start: Limit pro IP und API-Kosten).
-  useParametrUrl(['firma', 'marka', 'branza', 'miasto', 'url'], (w) => {
+  // ?firma=, ?branza=, ?miasto=, ?url=, ?kraj= füllen nur die Felder aus (kein Start: Limit pro IP und API-Kosten).
+  useParametrUrl(['firma', 'marka', 'branza', 'miasto', 'url', 'kraj'], (w) => {
     const pola = { firma: w.firma ?? w.marka, branza: w.branza, miasto: w.miasto, www: w.url };
     const f = formRef.current;
     for (const [k, v] of Object.entries(pola)) if (v && f?.elements[k]) f.elements[k].value = v.slice(0, Number(f.elements[k].maxLength) > 0 ? Number(f.elements[k].maxLength) : 200);
+    const kParam = String(w.kraj || '').toUpperCase();
+    if (['DE', 'AT', 'CH'].includes(kParam)) {
+      setKraj(kParam);
+      setKrajReczny(true);
+    } else if (w.url) {
+      const auto = krajZDomenyDe(w.url);
+      if (auto) setKraj(auto);
+    }
   });
+
+  useEffect(() => {
+    if (DEMO || typeof window === 'undefined') return undefined;
+    const wynikId = new URLSearchParams(window.location.search).get('wynik')?.trim();
+    if (!wynikId || !/^[a-zA-Z0-9_-]{6,120}$/.test(wynikId)) return undefined;
+    const ctrl = new AbortController();
+    (async () => {
+      try {
+        const res = await fetch(`${PANEL_API}/wynik/${encodeURIComponent(wynikId)}`, { signal: ctrl.signal });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok || !data.podglad) return;
+        if (data.tool && data.tool !== 'widocznosc_ai') return;
+        const id = data.id || wynikId;
+        const pelny = odczytajOdblokowane(id);
+        const pUrl = new URLSearchParams(window.location.search);
+        const dane = {
+          firma: data.podglad.firma || pUrl.get('firma') || null,
+          branza: data.podglad.branza || pUrl.get('branza') || null,
+          miasto: data.podglad.miasto || pUrl.get('miasto') || null,
+          url: pUrl.get('url') || null,
+          ...(data.podglad.kraj || pUrl.get('kraj') ? { kraj: String(data.podglad.kraj || pUrl.get('kraj')).toUpperCase() } : {}),
+        };
+        setStan((x) => (x.status === 'idle' ? {
+          status: 'done',
+          blad: null,
+          id,
+          podglad: data.podglad,
+          pelny,
+          dane,
+        } : x));
+      } catch {
+        // Fehler beim Laden des geteilten Ergebnisses ignorieren
+      }
+    })();
+    return () => ctrl.abort();
+  }, []);
+
+  function onWwwZmiana(e) {
+    if (krajReczny) return;
+    const auto = krajZDomenyDe(e.target.value);
+    if (auto) setKraj(auto);
+  }
 
   async function start(e) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const body = { firma: String(fd.get('firma') || ''), branza: String(fd.get('branza') || ''), miasto: String(fd.get('miasto') || ''), www: String(fd.get('www') || ''), nick: String(fd.get('nick') || ''), lang: 'de' };
+    const wybranyKraj = String(fd.get('kraj') || kraj || 'DE').toUpperCase();
+    const body = { firma: String(fd.get('firma') || ''), branza: String(fd.get('branza') || ''), miasto: String(fd.get('miasto') || ''), www: String(fd.get('www') || ''), nick: String(fd.get('nick') || ''), lang: 'de', kraj: wybranyKraj };
     setWstepne({ firma: body.firma, branza: body.branza, miasto: body.miasto, www: body.www });
     setStan({ status: 'pytania', blad: null, id: null, podglad: null, pelny: null, dane: null });
     const r = await pobierzPytania(body);
@@ -294,7 +388,7 @@ function PruefTool() {
       setEdycje([...r.pytania]);
       setBledyPytan([null, null, null]);
       setStan((x) => ({ ...x, status: 'idle' }));
-      track('ai_check_questions', { city: body.miasto });
+      track('ai_check_questions', { city: body.miasto, country: wybranyKraj });
       return;
     }
     if (r.blad && [400, 429, 503].includes(r.status)) return setStan((x) => ({ ...x, status: 'error', blad: r.blad }));
@@ -302,13 +396,14 @@ function PruefTool() {
   }
 
   async function uruchom(body, wlasne) {
-    const dane = { firma: body.firma.trim(), branza: body.branza.trim(), miasto: body.miasto.trim() || null, url: body.www.trim() || null };
-    zapiszParametry(dane);
+    const dane = { firma: body.firma.trim(), branza: body.branza.trim(), miasto: body.miasto.trim() || null, url: body.www.trim() || null, kraj: body.kraj || 'DE' };
+    zapiszParametry({ ...dane, wynik: null });
     setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null, dane });
     const ileZmienionych = wlasne ? wlasne.filter(Boolean).length : 0;
-    track('ai_check_start', { city: body.miasto, edited_questions: ileZmienionych });
+    track('ai_check_start', { city: body.miasto, country: body.kraj, edited_questions: ileZmienionych });
     let r = await wywolajNarzedzie('widocznosc_ai', ileZmienionych ? { ...body, pytania: wlasne } : body, 295_000);
     if (!r.ok) return setStan((x) => ({ ...x, status: 'error', blad: r.blad }));
+    if (r.id && !DEMO) zapiszParametry({ ...dane, wynik: r.id });
     if (DEMO && propozycje) {
       const pokazane = edycje.map(zwin);
       const mapa = new Map(r.podglad.pytania.map((q, i) => [q, pokazane[i]]));
@@ -316,7 +411,7 @@ function PruefTool() {
       r = { ...r, podglad: { ...demoZPytaniami(r.podglad, mapa), zrodloPytan: pokazane.map((_, i) => (wlasne?.[i] ? 'uzytkownik' : 'szablon')), uwagiPytan: [] } };
     }
     track('narzedzie_wynik', { narzedzie: 'widocznosc_ai', wynik: r.podglad.wynik });
-    return setStan((x) => ({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null, dane: x.dane }));
+    return setStan((x) => ({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: odczytajOdblokowane(r.id), dane: x.dane }));
   }
 
   function zadajPytania(e) {
@@ -335,12 +430,14 @@ function PruefTool() {
   }
 
   const resetuj = () => {
+    zapiszParametry({ wynik: null });
     setPropozycje(null);
     setMapaDemo(null);
     setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, dane: null });
   };
 
   const p = stan.podglad;
+  const wzorce = wzorceMarki(stan.pelny?.firma || p?.firma || stan.dane?.firma || wstepne.firma, stan.dane?.url || wstepne.www);
   const etykieta = (id) => p?.silniki.find((x) => x.id === id)?.etykieta ?? id;
   const top = (p?.konkurenciTop ?? []).slice(0, W.przedBramka.firm);
   const topZr = (p?.zrodlaTop ?? []).slice(0, W.przedBramka.domen);
@@ -364,11 +461,25 @@ function PruefTool() {
           </div>
           <div>
             <label htmlFor="ai-miasto" className="narz-etykieta">Stadt <span style={OPCJONALNIE}>(optional)</span></label>
-            <input id="ai-miasto" name="miasto" maxLength={60} defaultValue={wstepne.miasto} placeholder="z. B. München" className="narz-pole" aria-describedby="ai-miasto-opis" />
+            <input id="ai-miasto" name="miasto" maxLength={60} defaultValue={wstepne.miasto} placeholder={kraj === 'AT' ? 'z. B. Wien' : kraj === 'CH' ? 'z. B. Zürich' : 'z. B. München'} className="narz-pole" aria-describedby="ai-miasto-opis" />
           </div>
           <div>
             <label htmlFor="ai-www" className="narz-etykieta">Website <span style={OPCJONALNIE}>(optional)</span></label>
-            <input id="ai-www" name="www" maxLength={200} defaultValue={wstepne.www} placeholder="z. B. firma.de" className="narz-pole" inputMode="url" aria-describedby="ai-www-opis" />
+            <input id="ai-www" name="www" maxLength={200} defaultValue={wstepne.www} onChange={onWwwZmiana} placeholder={kraj === 'AT' ? 'z. B. firma.at' : kraj === 'CH' ? 'z. B. firma.ch' : 'z. B. firma.de'} className="narz-pole" inputMode="url" aria-describedby="ai-www-opis" />
+          </div>
+          <div style={{ gridColumn: '1 / -1' }}>
+            <label htmlFor="ai-kraj" className="narz-etykieta">Land / Zielmarkt</label>
+            <select
+              id="ai-kraj"
+              name="kraj"
+              value={kraj}
+              onChange={(e) => { setKraj(e.target.value); setKrajReczny(true); }}
+              className="narz-pole"
+            >
+              {KRAJE_DE.map(([kod, nazwa]) => (
+                <option key={kod} value={kod}>{nazwa}</option>
+              ))}
+            </select>
           </div>
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
@@ -376,10 +487,10 @@ function PruefTool() {
               {stan.status === 'loading' ? 'Wir fragen die KI-Modelle … (bis 2 Min.)' : stan.status === 'pytania' ? 'Fragen werden formuliert …' : 'KI-Sichtbarkeit kostenlos prüfen'}
             </button>
           </div>
-          <p className="narz-mikro">{liniaNaZywo()}</p>
+          <p className="narz-mikro">{liniaNaZywo(kraj)}</p>
           <p className="narz-mikro">
             Zuerst sehen Sie die 3 Fragen, die wir stellen, und können jede ändern.{' '}
-            <span id="ai-miasto-opis">Ohne Stadt fragen wir für ganz Deutschland. </span>
+            <span id="ai-miasto-opis">{`Ohne Stadt fragen wir für ${kraj === 'CH' ? 'die ganze Schweiz' : `ganz ${FUER_KRAJ_DE[kraj] || 'Deutschland'}`}. `}</span>
             <span id="ai-www-opis">Aus Titel und Beschreibung der angegebenen Website versuchen wir, eine der 3 Fragen zu formulieren.</span>
           </p>
           {stan.status === 'loading' && <Postep kroki={KROKI} co={20000} />}
@@ -393,7 +504,7 @@ function PruefTool() {
             <h2 id="ai-pytania-tytul" className="narz-h2" style={{ marginTop: 0 }}>Diese 3 Fragen stellen wir den KI-Modellen</h2>
             <p className="narz-mikro" style={{ marginTop: 0 }}>
               <strong style={{ color: 'var(--w-tusz)' }}>{propozycje.body.firma.trim()}</strong>
-              {` · ${propozycje.body.branza.trim()}${propozycje.body.miasto.trim() ? ` · ${propozycje.body.miasto.trim()}` : ''}${propozycje.body.www.trim() ? ` · ${propozycje.body.www.trim()}` : ''} `}
+              {` · ${propozycje.body.branza.trim()}${propozycje.body.miasto.trim() ? ` · ${propozycje.body.miasto.trim()}` : ''}${propozycje.body.kraj ? ` · ${propozycje.body.kraj}` : ''}${propozycje.body.www.trim() ? ` · ${propozycje.body.www.trim()}` : ''} `}
               <button type="button" className="narz-link" onClick={() => { setPropozycje(null); setStan((x) => ({ ...x, status: 'idle', blad: null })); }} disabled={stan.status === 'loading'}>Angaben ändern</button>
             </p>
             <p className="narz-mikro">Sie können jede Frage ändern, etwa um eine Leistung oder einen Stadtteil zu ergänzen oder so zu fragen, wie Ihre Kunden wirklich fragen. Geben Sie weder Ihren Firmennamen noch die Adresse Ihrer Website ein: Das Modell würde sie in der Antwort wiederholen, und das Ergebnis wäre aufgebläht.</p>
@@ -451,9 +562,17 @@ function PruefTool() {
               <p className="narz-wynik-opis">Ihr Unternehmen erscheint in <strong>{p.wzmianki} von {p.odpowiedzi}</strong> KI-Antworten auf Kundenfragen aus der Branche „{p.branza}“{p.miasto ? ` (${p.miasto})` : ''}.</p>
               {p.uwagaNazwy && <p className="narz-mikro" role="note">{p.uwagaNazwy}</p>}
               {p.zastrzezenie && <p className="narz-mikro">{p.zastrzezenie}</p>}
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.4rem 1.5rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 1.25rem' }}>
                 <button type="button" className="narz-link" onClick={resetuj}>Anderes Unternehmen prüfen</button>
-                {stan.dane && <LinkKopieren parametry={stan.dane} />}
+                {(stan.dane || stan.id) && (
+                  <LinkWyniku
+                    narzedzie="widocznosc_ai"
+                    tryb={stan.id ? 'wynik' : 'wypelnij'}
+                    parametry={{ ...(stan.dane ?? { firma: p.firma, branza: p.branza, miasto: p.miasto || null }), ...(stan.id ? { wynik: stan.id } : {}) }}
+                    tekst="Link zu diesem Check kopieren"
+                    podsumowanie={`KI-Sichtbarkeit für ${p.firma}: ${p.wzmianki}/${p.odpowiedzi} Antworten (${p.wynik}/100)`}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -530,7 +649,11 @@ function PruefTool() {
                 opis={opisBramki(p, top, topZr)}
                 korzysci={[`Vollständige Antworten: ${listeEngines()}`, p.wzmianki > 0 ? 'Der Ausschnitt, in dem Ihr Unternehmen genannt wird, und die Quellen jeder Antwort' : 'Ausschnitte der Antworten und die Quellen jeder Antwort', 'Alle Unternehmen und Seiten, die die Modelle zitieren, plus der Bericht per E-Mail']}
                 przycisk="KI-Antworten anzeigen"
-                onOdblokowano={(pelny, newsletter, mailOk) => setStan((x) => ({ ...x, pelny: DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny, mailOk }))}
+                onOdblokowano={(pelny, newsletter, mailOk) => {
+                  const gotowyPelny = DEMO && mapaDemo ? demoZPytaniami(pelny, mapaDemo) : pelny;
+                  zapiszOdblokowane(stan.id, gotowyPelny);
+                  setStan((x) => ({ ...x, pelny: gotowyPelny, mailOk }));
+                }}
               />
             </div>
           ) : (
@@ -553,14 +676,29 @@ function PruefTool() {
               )}
               <h2 className="narz-h2">Antworten</h2>
               <ul className="narz-problemy">
-                {stan.pelny.wiersze.filter((r) => !r.brakOdpowiedzi).map((r) => (
-                  <li key={`${r.silnik}-${r.pytanie}`} className={`narz-problem ${r.wymieniona ? 'narz-problem--ok' : 'narz-problem--blad'}`}>
-                    <p className="narz-problem-meta"><span className="narz-waga">{etykieta(r.silnik)}</span> · {r.wymieniona ? 'Unternehmen genannt' : 'Unternehmen nicht genannt'}</p>
-                    <h3 className="narz-problem-tytul">{r.pytanie}</h3>
-                    <p className="narz-problem-opis">{r.fragment ? `„${r.fragment}“` : r.odpowiedz.slice(0, 600)}</p>
-                    {r.zrodla.length > 0 && <p className="narz-mikro">Quellen: {r.zrodla.join(', ')}</p>}
-                  </li>
-                ))}
+                {stan.pelny.wiersze.filter((r) => !r.brakOdpowiedzi).map((r) => {
+                  const pelnyTekst = String(r.odpowiedz || '');
+                  const maWiecej = Boolean(pelnyTekst) && (Boolean(r.fragment && pelnyTekst.trim() !== r.fragment.trim()) || pelnyTekst.length > 600);
+                  const skrot = r.fragment
+                    ? <>„{podswietlMarke(r.fragment, wzorce)}“</>
+                    : <>{podswietlMarke(pelnyTekst.slice(0, 600), wzorce)}{pelnyTekst.length > 600 ? '…' : ''}</>;
+                  return (
+                    <li key={`${r.silnik}-${r.pytanie}`} className={`narz-problem ${r.wymieniona ? 'narz-problem--ok' : 'narz-problem--blad'}`}>
+                      <p className="narz-problem-meta"><span className="narz-waga">{etykieta(r.silnik)}</span> · {r.wymieniona ? 'Unternehmen genannt' : 'Unternehmen nicht genannt'}</p>
+                      <h3 className="narz-problem-tytul">{r.pytanie}</h3>
+                      <p className="narz-problem-opis">{skrot}</p>
+                      {maWiecej && (
+                        <details className="narz-problem-strony" style={{ marginTop: '0.5rem' }}>
+                          <summary>Vollständige Antwort anzeigen</summary>
+                          <div className="narz-problem-opis" style={{ marginTop: '0.5rem', whiteSpace: 'pre-wrap' }}>
+                            {podswietlMarke(pelnyTekst, wzorce)}
+                          </div>
+                        </details>
+                      )}
+                      {r.zrodla.length > 0 && <p className="narz-mikro">Quellen: {r.zrodla.join(', ')}</p>}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}

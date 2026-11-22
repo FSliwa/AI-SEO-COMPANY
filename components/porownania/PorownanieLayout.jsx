@@ -47,8 +47,8 @@ function Sekcja({ sekcja: s, porownanie: p }) {
       <Html html={s.htmlPo} />
       {s.uwaga && <p className={styles.uwaga}>{s.uwaga}</p>}
       {s.checklista && (
-        <div style={{ borderTop: '1px solid rgba(15,23,42,0.08)', marginTop: '1.5rem', paddingTop: '1.5rem', display: 'grid', gap: '1rem' }}>
-          <p style={{ margin: 0, fontWeight: 700, fontSize: '1.1rem', lineHeight: 1.4, color: 'var(--color-text-dark)' }}>{s.checklista.naglowek}</p>
+        <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '1.5rem', paddingTop: '1.5rem', display: 'grid', gap: '1rem' }}>
+          <p style={{ margin: 0, fontWeight: 600, fontSize: '1.1rem', lineHeight: 1.4, color: 'var(--w-tusz)' }}>{s.checklista.naglowek}</p>
           <ChecklistForm plan={s.checklista.plan} idPrefiks={s.checklista.idPrefiks} />
         </div>
       )}
@@ -95,21 +95,21 @@ export function BlokCta({ cta, dataCta, locale = 'pl' }) {
 export default function PorownanieLayout({ porownanie: p, locale = 'pl' }) {
   const en = locale === 'en';
   return (
-    <main style={{ backgroundColor: 'var(--color-bg-surface)', color: 'var(--color-text-main)', minHeight: '100vh', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <Breadcrumbs pl={p.okruszek} en={p.okruszek} parent={{ href: '/porownania', pl: 'Porównania', en: 'Comparisons' }} />
       <ComparisonSchema porownanie={p} locale={locale} />
 
       <article>
         <div className="container" style={{ maxWidth: '860px', margin: '0 auto', paddingTop: 'clamp(1.5rem, 4vw, 2.5rem)', paddingBottom: '1.5rem' }}>
-          <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
-            <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {p.tag}
+          <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
+            <span className="asterisk" style={{ color: 'var(--w-pomarancz)' }}>✳</span> {p.tag}
           </div>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.12, fontWeight: 800, letterSpacing: '-0.02em', margin: '0.5rem 0 1rem', color: 'var(--color-text-dark)' }}>
+          <h1 style={{ fontSize: 'clamp(2.1rem, 5vw, 3.25rem)', lineHeight: 1.08, fontWeight: 500, letterSpacing: '-0.04em', margin: '0.5rem 0 1rem', color: 'var(--w-tusz)' }}>
             {p.h1}
           </h1>
           {p.ujawnienie && (
-            <p style={{ margin: '0 0 0.75rem', fontSize: '1rem', lineHeight: 1.5, color: 'var(--color-text-main)' }}>{p.ujawnienie}</p>
+            <p style={{ margin: '0 0 0.75rem', fontSize: '1rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>{p.ujawnienie}</p>
           )}
           <Byline sciezka={`/porownania/${p.slug}`} data={p.updated} takzeEn style={{ margin: '0 0 0.25rem' }} />
           <p style={{ margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' }}>{p.zrodlaDanych}</p>
