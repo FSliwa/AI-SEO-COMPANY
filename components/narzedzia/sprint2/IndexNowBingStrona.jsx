@@ -206,8 +206,8 @@ export function IndexNowBingStrona({ locale = 'pl' } = {}) {
                     <p style={s.akapit}>
                       Read our full architectural comparison in{' '}
                       <Link href="/porownania/llms-txt-vs-robots-txt-vs-sitemap-xml" style={s.podkreslenie}>llms.txt vs robots.txt vs sitemap.xml</Link>{' '}
-                      and our step-by-step tutorial on{' '}
-                      <Link href="/blog/bing-webmaster-tools-indexnow-chatgpt" style={s.podkreslenie}>Bing Webmaster Tools &amp; IndexNow for ChatGPT</Link>.
+                      and our analysis of{' '}
+                      <Link href="/blog/reklamy-w-chatgpt" style={s.podkreslenie}>ChatGPT Search, Bing indexing &amp; Organic GEO</Link>.
                     </p>
                   </Sekcja>
 
@@ -215,7 +215,7 @@ export function IndexNowBingStrona({ locale = 'pl' } = {}) {
                     <ul style={s.lista}>
                       <li><strong>Content-hash tracking:</strong> Compute a SHA-256 hash of rendered main content at build time and only advance <code>&lt;lastmod&gt;</code> when visible text actually changes.</li>
                       <li><strong>CMS database timestamps:</strong> Pull real <code>post_modified_gmt</code> dates rather than regenerating a static timestamp across unchanged pages.</li>
-                      <li><strong>Pair with full AI bot testing:</strong> Inspect all 12 AI crawlers in our{' '}
+                      <li><strong>Pair with full AI bot testing:</strong> Inspect all 15 AI crawlers in our{' '}
                         <Link href="/narzedzia/tester-robotow-ai-robots-txt" style={s.podkreslenie}>AI Crawler &amp; robots.txt Checker</Link>, build your{' '}
                         <Link href="/narzedzia/generator-llms-txt" style={s.podkreslenie}>llms.txt file</Link>, or see our{' '}
                         <Link href="/cennik-pozycjonowania" style={s.podkreslenie}>SEO &amp; GEO plans</Link>{' '}
