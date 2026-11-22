@@ -55,7 +55,7 @@ export default function BlogCTA({ locale, currentSlug, klaster, customCtaTitlePl
         <h3 style={{ fontSize: '1.45rem', marginBottom: '1.5rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)' }}>
           {lang === 'en' ? 'Related Articles' : 'Powiązane artykuły'}
         </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.25rem' }}>
           {/* The card stays fully clickable, but only the title sits inside the
               anchor - wrapping the description too made the anchor text ~150
               characters, which the crawl flagged. .stretched-link covers the

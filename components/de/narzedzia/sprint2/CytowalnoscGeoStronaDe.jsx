@@ -193,7 +193,7 @@ export function CytowalnoscGeoStronaDe() {
       <AppleFaq
         faqData={FAQ_DE.map((f) => ({ ...f, questionEn: f.question, answerEn: f.answer, idEn: f.id }))}
         title="Häufige Fragen zur GEO-Zitierbarkeit und Answer-First-Struktur"
-        sectionId="pytania"
+        sectionId="faq"
       />
 
       <section style={{ paddingBottom: '2rem' }}>

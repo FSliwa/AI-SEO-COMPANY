@@ -40,7 +40,6 @@ import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Byline from '@/components/Byline';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import BlogCTA from '@/components/BlogCTA';
@@ -79,26 +78,20 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
       <Header />
       <ArticleSchema slug="/blog/technical-seo-audit-checklist" locale={locale} />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                SEO Analysis
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                August 26, 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Technical SEO Audit Checklist for Digital Marketers
-            </h1>
-            <Byline sciezka="/blog/audyt-techniczny-seo" takzeEn data={LASTMOD['https://www.ai-seo-company.pl/en/blog/technical-seo-audit-checklist']} style={{ margin: '0 0 1.5rem' }} />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              SEO Analysis
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Technical SEO Audit Checklist for Digital Marketers
+          </h1>
+          <Byline sciezka="/blog/technical-seo-audit-checklist" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 A technical SEO audit pairs a full desktop crawl (such as Screaming Frog) with 16 months of Google Search Console data to eliminate crawl and indexing blockers before optimizing Core Web Vitals (LCP up to 2.5 s, INP up to 200 ms, CLS up to 0.1) and structured data, scoring every fix with binary thresholds and ICE.
               </AnswerBox>
@@ -410,8 +403,7 @@ export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
                 customCtaTitleEn="Need a technical audit?"
                 customCtaTextEn="Request a scoped SEO audit. We reply to enquiries and send an initial proposal within 24 h on business days."
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 
@@ -447,26 +439,20 @@ function ArtykulAudytTechnicznySeo({ locale }) {
         dateModified={LASTMOD['https://www.ai-seo-company.pl/blog/audyt-techniczny-seo']}
       />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Techniczne SEO
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                26 Sierpnia 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '2rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Audyt techniczny SEO: checklista z progami liczbowymi
-            </h1>
-            <Byline sciezka="/blog/audyt-techniczny-seo" data={LASTMOD['https://www.ai-seo-company.pl/blog/audyt-techniczny-seo']} style={{ margin: '0 0 1.5rem' }} />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Techniczne SEO
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Audyt techniczny SEO: checklista z progami liczbowymi
+          </h1>
+          <Byline sciezka="/blog/audyt-techniczny-seo" />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 Audyt techniczny SEO łączy pełny skan crawlerem (np. Screaming Frog) z 16-miesięcznymi danymi z Google Search Console, aby najpierw usunąć blokady indeksacji w robots.txt, noindex i canonicalach, a dopiero potem poprawiać Core Web Vitals (LCP do 2,5 s, INP do 200 ms, CLS do 0,1) oraz schema według progów liczbowych i priorytetyzacji ICE.
               </AnswerBox>
@@ -793,8 +779,7 @@ function ArtykulAudytTechnicznySeo({ locale }) {
                 customCtaTitlePl="Potrzebujesz audytu technicznego?"
                 customCtaTextPl="Zobacz, co obejmuje audyt SEO strony i ile kosztuje. Na zapytania odpowiadamy i wstępną propozycję wysyłamy do 24 h w dni robocze."
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 

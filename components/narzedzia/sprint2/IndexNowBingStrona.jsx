@@ -254,7 +254,7 @@ export function IndexNowBingStrona({ locale = 'pl' } = {}) {
                     <ul style={s.lista}>
                       <li><strong>Odcisk treści (Content Hash):</strong> Zamiast wstawiać <code>new Date()</code> przy każdym wdrożeniu, zapisuj skrót widocznego tekstu podstrony i zmieniaj datę <code>&lt;lastmod&gt;</code> wyłącznie przy realnej edycji.</li>
                       <li><strong>Prawdziwa data edycji z bazy CMS:</strong> Pobieraj pole ostatniej modyfikacji dokumentu zamiast daty wygenerowania cache.</li>
-                      <li><strong>Sprawdź pozostałe boty AI:</strong> Przetestuj wszystkie 12 crawlerów w{' '}
+                      <li><strong>Sprawdź pozostałe boty AI:</strong> Przetestuj wszystkie 15 crawlerów w{' '}
                         <Link href="/narzedzia/tester-robotow-ai-robots-txt" style={s.podkreslenie}>testerze robotów AI i SSR</Link>, stwórz mapę dla modeli w{' '}
                         <Link href="/narzedzia/generator-llms-txt" style={s.podkreslenie}>generatorze llms.txt</Link>{' '}
                         lub sprawdź nasz{' '}

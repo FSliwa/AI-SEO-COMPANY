@@ -119,9 +119,9 @@ export default function SzablonStrona({ dane, locale = 'pl' }) {
         <SzNawigacja items={spis} etykieta={en ? 'On this page' : 'Spis treści strony'} />
         <div className="sz-tresc" data-sz-tresc>
           <SzablonInterakcje slug={dane.slug} locale={locale} />
-          {dane.slug === 'content-plan' && <ContentPlanGeneratorClient locale={locale} />}
-          {dane.slug === 'checklista-seo' && <ChecklistaAutoScan locale={locale} />}
-          {dane.slug === 'dane-strukturalne-json-ld' && <JsonLdKreator locale={locale} />}
+          {dane.slug === 'content-plan' && <div className="sz-narzedzie-blok"><ContentPlanGeneratorClient locale={locale} /></div>}
+          {dane.slug === 'checklista-seo' && <div className="sz-narzedzie-blok"><ChecklistaAutoScan locale={locale} /></div>}
+          {dane.slug === 'dane-strukturalne-json-ld' && <div className="sz-narzedzie-blok"><JsonLdKreator locale={locale} /></div>}
           {d.sekcje.map((sek) => (
             <div key={sek.id} id={sek.id} role="region" aria-labelledby={`${sek.id}-h`} className="sz-sekcja">
               <h2 id={`${sek.id}-h`} className="sz-h2">{sek.h2}</h2>

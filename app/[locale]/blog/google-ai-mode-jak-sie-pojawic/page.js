@@ -17,7 +17,6 @@ import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
 import Zrodla from '@/components/Zrodla';
 import BlogCTA from '@/components/BlogCTA';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 
 const BASE = 'https://www.ai-seo-company.pl';
@@ -159,23 +158,20 @@ export default async function ArtykulGoogleAiMode({ params }) {
       <ArticleSchema slug={SCIEZKA} locale={locale} dateModified={DATA_ZMIANY} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Pozycjonowanie w AI
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              {H1}
-            </h1>
-            <Byline sciezka={SCIEZKA} data={DATA_ZMIANY} />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Pozycjonowanie w AI
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            {H1}
+          </h1>
+          <Byline sciezka={SCIEZKA} />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 Google AI Mode to osobny tryb wyszukiwarki: użytkownik dostaje rozbudowaną odpowiedź z linkami do źródeł i może dopytywać. Żeby Twoja strona znalazła się wśród źródeł, musi być zindeksowana i kwalifikować się do wyświetlenia z fragmentem. Google zaznacza, że nie ma dodatkowych wymagań technicznych, ale też nie gwarantuje cytowania.
               </AnswerBox>
@@ -355,8 +351,7 @@ export default async function ArtykulGoogleAiMode({ params }) {
               <Zrodla zrodla={ZRODLA} />
 
               <BlogCTA locale={locale} currentSlug={SCIEZKA} />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 

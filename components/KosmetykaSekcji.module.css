@@ -479,6 +479,12 @@
   .pasekSkrotow::-webkit-scrollbar {
     display: none;
   }
+
+  .pasekSkrotowBlog {
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    gap: 6px !important;
+  }
 }
 
 /* ---------- B8: HeroKlienci.jsx ---------- */

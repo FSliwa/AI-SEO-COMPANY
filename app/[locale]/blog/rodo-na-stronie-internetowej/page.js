@@ -22,7 +22,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
@@ -59,26 +58,20 @@ export default async function ArticleRodoNaStronieInternetowej({ params }) {
         datePublished="2026-08-16"
       />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Compliance Stron Internetowych
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                16 Sierpnia 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              RODO na stronie internetowej: co musisz mieć i jak to wdrożyć
-            </h1>
-            <Byline sciezka="/blog/rodo-na-stronie-internetowej" data="2026-08-16" />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Compliance Stron Internetowych
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            RODO na stronie internetowej: co musisz mieć i jak to wdrożyć
+          </h1>
+          <Byline sciezka="/blog/rodo-na-stronie-internetowej" />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               {/* The disclaimer is the first thing on the page on purpose: this is
                   legal (YMYL) territory written by an SEO team, and the reader has
                   to know that before the first recommendation, not after it. */}
@@ -106,8 +99,6 @@ export default async function ArticleRodoNaStronieInternetowej({ params }) {
               </ul>
 
               <p>Dalsze sekcje rozpisują każdy z tych punktów: co wchodzi do polityki, jak zbudować baner zgodny z przepisami i gdzie najczęściej rozjeżdża się dokument z rzeczywistym działaniem strony.</p>
-
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               <h2 style={{ fontSize: '1.6rem', fontWeight: 500, marginBottom: '1rem' }}>Kluczowe wnioski</h2>
 
@@ -363,8 +354,7 @@ export default async function ArticleRodoNaStronieInternetowej({ params }) {
                 customCtaTitlePl="Chcesz wiedzieć, które skrypty startują na Twojej stronie przed zgodą?"
                 customCtaTextPl="Inwentaryzujemy skrypty zewnętrzne i pokazujemy, co ładuje się przed kliknięciem w banerze. Raport trafia do Twojego prawnika jako materiał wejściowy."
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 

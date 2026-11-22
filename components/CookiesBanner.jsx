@@ -253,7 +253,7 @@ export default function CookiesBanner() {
   // przed czytnikiem), a title zostaje podpowiedzia i opisem ("Zgoda, przycisk,
   // Dostosuj preferencje"). Nazwa w stylu "Zgoda - Dostosuj preferencje" razem
   // z takim samym title dawala w drzewie AX opis = nazwa, czytany dwa razy.
-  const fabText = t('title').split(' ')[0];
+  const fabText = lang === 'de' ? 'Cookies' : t('title').split(' ')[0];
   const pasek = PASEK[lang] || PASEK.pl;
 
   return (
@@ -273,17 +273,17 @@ export default function CookiesBanner() {
           title={t('manage')}
           style={{
             position: 'fixed',
-            bottom: '1.25rem',
-            left: '1.25rem',
+            bottom: '0.85rem',
+            left: '0.85rem',
             background: 'rgba(15, 23, 42, 0.88)',
             backdropFilter: 'blur(12px)',
             color: '#FFF',
             border: '1px solid rgba(255, 255, 255, 0.15)',
             borderRadius: '9999px',
-            padding: '0.45rem 0.85rem',
+            padding: '0.35rem 0.72rem',
             // Mial 90x37 px - ponizej 44 px celu dotykowego (05.10.2026).
             minHeight: '44px',
-            fontSize: '0.78rem',
+            fontSize: '0.75rem',
             fontWeight: 600,
             cursor: 'pointer',
             zIndex: 9998,

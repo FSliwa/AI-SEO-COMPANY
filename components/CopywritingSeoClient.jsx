@@ -101,7 +101,7 @@ export default function CopywritingSeoClient() {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={S.czym.id} style={h2Styl}>{S.czym.h2}</h2>
           {S.czym.akapity.map((a) => <p key={a} style={akapit}><Tekst>{a}</Tekst></p>)}
@@ -109,7 +109,7 @@ export default function CopywritingSeoClient() {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={S.cena.id} style={h2Styl}>{S.cena.h2}</h2>
           {S.cena.akapity.map((a) => <p key={a} style={akapit}><Tekst>{a}</Tekst></p>)}
@@ -123,7 +123,7 @@ export default function CopywritingSeoClient() {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={S.proces.id} style={h2Styl}>{S.proces.h2}</h2>
           <p style={akapit}>{S.proces.wstep}</p>
@@ -137,7 +137,7 @@ export default function CopywritingSeoClient() {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={S.szablony.id} style={h2Styl}>{S.szablony.h2}</h2>
           <p style={akapit}>{S.szablony.wstep}</p>
@@ -147,7 +147,7 @@ export default function CopywritingSeoClient() {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={S.nieWystarczy.id} style={h2Styl}>{S.nieWystarczy.h2}</h2>
           {S.nieWystarczy.akapity.map((a) => <p key={a} style={akapit}><Tekst>{a}</Tekst></p>)}
@@ -157,7 +157,7 @@ export default function CopywritingSeoClient() {
 
       <AppleFaq faqData={faqData} title={D.faqTytul} sectionId={en ? 'faq' : 'pytania'} />
 
-      <section style={{ padding: '0 0 3rem' }}>
+      <section className="de-abschnitt">
         <div className="container" style={kontener}>
           <div style={{ ...karta, textAlign: 'center' }}>
             <p style={{ ...akapit, fontSize: '1.2rem', fontWeight: 600, color: 'var(--color-text-dark)' }}>{D.ctaKoniec}</p>

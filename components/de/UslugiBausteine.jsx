@@ -48,7 +48,7 @@ export function Hero({ kicker, h1, lead, cta = 'Angebot anfragen', telefon = tru
               {kicker}
             </div>
           )}
-          <h1 lang="de" style={{ fontSize: 'clamp(2rem, 5.2vw, 3.9rem)', fontWeight: 500, lineHeight: 1.1, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '-0.03em', hyphens: 'auto', overflowWrap: 'break-word' }}>
+          <h1 lang="de" style={{ fontSize: 'clamp(2rem, 5.2vw, 3.9rem)', fontWeight: 500, lineHeight: 1.1, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '-0.03em', hyphens: 'manual', overflowWrap: 'break-word' }}>
             {h1}
           </h1>
           <p lang="de" className="hero-lead" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)', lineHeight: 1.6, maxWidth: '740px', margin: '0 auto 2rem auto', color: 'var(--color-text-main)' }}>
@@ -73,7 +73,7 @@ export function Abschnitt({ titel, children, id, breite = 880, tag }) {
         <Reveal>
           <div style={KARTE}>
             {tag && <div style={{ fontSize: '0.78rem', fontFamily: 'var(--w-mono)', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem' }}>{tag}</div>}
-            <h2 lang="de" style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2rem)', fontWeight: 500, marginBottom: '1.25rem', color: 'var(--color-text-dark)', lineHeight: 1.2, letterSpacing: '-0.02em', hyphens: 'auto', overflowWrap: 'break-word' }}>{titel}</h2>
+            <h2 lang="de" style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2rem)', fontWeight: 500, marginBottom: '1.25rem', color: 'var(--color-text-dark)', lineHeight: 1.2, letterSpacing: '-0.02em', hyphens: 'manual', overflowWrap: 'break-word' }}>{titel}</h2>
             {children}
           </div>
         </Reveal>
@@ -83,7 +83,7 @@ export function Abschnitt({ titel, children, id, breite = 880, tag }) {
 }
 
 export function Unterueberschrift({ children }) {
-  return <h3 lang="de" style={{ fontSize: '1.3rem', fontWeight: 600, margin: '1.75rem 0 0.75rem', color: 'var(--color-text-dark)', lineHeight: 1.25, hyphens: 'auto' }}>{children}</h3>;
+  return <h3 lang="de" style={{ fontSize: '1.3rem', fontWeight: 600, margin: '1.75rem 0 0.75rem', color: 'var(--color-text-dark)', lineHeight: 1.25, hyphens: 'manual', overflowWrap: 'break-word' }}>{children}</h3>;
 }
 
 export function Liste({ punkte, nummeriert = false }) {
@@ -101,7 +101,7 @@ export function Karten({ titel, untertitel, einleitung, items, breite = 1240, sp
     <section id={id} style={{ padding: '30px 0 80px 0', scrollMarginTop: '110px' }}>
       <div className="container" style={{ maxWidth: `${breite}px`, margin: '0 auto' }}>
         <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2.75rem auto' }}>
-          <h2 lang="de" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: '1rem', hyphens: 'auto', overflowWrap: 'break-word' }}>{titel}</h2>
+          <h2 lang="de" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: '1rem', hyphens: 'manual', overflowWrap: 'break-word' }}>{titel}</h2>
           {untertitel && <p lang="de" style={{ fontSize: '1.15rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500, lineHeight: 1.55 }}>{untertitel}</p>}
           {einleitung && <p lang="de" style={{ fontSize: '1.02rem', color: 'var(--w-tusz-2)', margin: '1.1rem auto 0', maxWidth: '68ch', lineHeight: 1.65 }}>{einleitung}</p>}
         </Reveal>
@@ -127,7 +127,7 @@ export function Karten({ titel, untertitel, einleitung, items, breite = 1240, sp
                   })}
                 </div>
               )}
-              <h3 lang="de" style={{ fontSize: 'clamp(1.25rem, 2.4vw, 1.6rem)', fontWeight: 600, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '0.9rem', lineHeight: 1.2, hyphens: 'auto', overflowWrap: 'break-word' }}>{k.titel}</h3>
+              <h3 lang="de" style={{ fontSize: 'clamp(1.25rem, 2.4vw, 1.6rem)', fontWeight: 600, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '0.9rem', lineHeight: 1.2, hyphens: 'manual', overflowWrap: 'break-word' }}>{k.titel}</h3>
               <p lang="de" style={{ color: 'var(--color-text-main)', fontSize: '1.05rem', lineHeight: 1.55, margin: 0, flexGrow: 1 }}>{k.text}</p>
               {k.lieferung && (
                 <div className="usluga-dostarczenie" style={{ justifyContent: 'flex-start' }}>
@@ -159,10 +159,10 @@ export function Preise({ titel = 'Transparente Pakete ohne versteckte Kosten', u
             ✓ Google Unternehmensprofil und lokales SEO in jedem Paket enthalten
           </div>
         </Reveal>
-        <RevealStagger className="pricing-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))' }}>
+        <Reveal className="pricing-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))' }}>
           {PAKETE.map((p) => (
-            <RevealItem key={p.schluessel} className={`pricing-card${p.hervorgehoben ? ' featured' : ''}`}>
-              {p.plakette && <span className="pricing-featured-badge">{p.plakette}</span>}
+            <div key={p.schluessel} className={`pricing-card${p.hervorgehoben ? ' featured' : ''}${p.beliebt ? ' pricing-card--popular' : ''}`}>
+              {p.plakette && <span className={p.hervorgehoben ? 'pricing-featured-badge' : 'pricing-popular-badge'}>{p.plakette}</span>}
               <div className="pricing-header">
                 <div className="pricing-kategoria pricing-kicker" aria-hidden="true">
                   <span className="pricing-kicker-glowny">PAKET</span>
@@ -179,10 +179,10 @@ export function Preise({ titel = 'Transparente Pakete ohne versteckte Kosten', u
               <ul className="pricing-features" lang="de">
                 {p.punkte.map(([ikone, t]) => <li key={t} data-ikona={ikone}>{t}</li>)}
               </ul>
-              <a href="#kontakt" className={`btn ${p.hervorgehoben ? 'btn-primary btn-glow' : 'btn-secondary'}`} data-cta="de_pricing" data-plan={p.schluessel}>{p.cta} <span className="sr-only"> {p.name}</span></a>
-            </RevealItem>
+              <a href="#kontakt" className={`btn ${p.hervorgehoben ? 'btn-primary btn-glow' : p.beliebt ? 'btn-dark-fill' : 'btn-secondary'}`} data-cta="de_pricing" data-plan={p.schluessel}>{p.cta} <span className="sr-only"> {p.name}</span></a>
+            </div>
           ))}
-        </RevealStagger>
+        </Reveal>
         <Reveal className="pricing-note">{PREIS_HINWEIS} Flexible Monatsverträge ohne lange Bindung (Ausnahme: Booster Pack, mindestens 3 Monate).</Reveal>
       </div>
     </section>
@@ -220,7 +220,7 @@ export function Referenzen({ titel = 'Referenzen mit Messwerten', untertitel = '
     <section id={id} style={{ padding: '30px 0 80px 0', scrollMarginTop: '110px' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 2.5rem auto' }}>
-          <h2 lang="de" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: '1rem', hyphens: 'auto', overflowWrap: 'break-word' }}>{titel}</h2>
+          <h2 lang="de" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: '1rem', hyphens: 'manual', overflowWrap: 'break-word' }}>{titel}</h2>
           <p lang="de" style={{ fontSize: '1.1rem', color: 'var(--w-tusz-2)', lineHeight: 1.55, margin: 0 }}>{untertitel}</p>
         </Reveal>
         <ReferenzenLiveDe liste={liste} />

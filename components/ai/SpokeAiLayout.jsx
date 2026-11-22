@@ -110,7 +110,7 @@ export default function SpokeAiLayout({ wpis, locale = 'pl' }) {
       )}
 
       <Tresc>
-        <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '8px' }}>
+        <section className="sekcja-po-okruszkach">
           <div className="container" style={kontener}>
             <Reveal>
               <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
@@ -138,7 +138,7 @@ export default function SpokeAiLayout({ wpis, locale = 'pl' }) {
       <AppleFaq faqData={faq} title={wpis.faqTytul} sectionId={idFaq} />
 
       {wpis.cta && (
-        <section style={{ padding: '0 0 40px' }}>
+        <section className="de-abschnitt">
           <div className="container" style={kontener}>
             <Reveal>
               {/* Tytuł CTA to <p>, nie nagłówek: H1/H2 „Audyt widoczności w AI” ma tylko A5 (CS-07). */}

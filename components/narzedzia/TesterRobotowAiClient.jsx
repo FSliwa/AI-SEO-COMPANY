@@ -33,12 +33,14 @@ const CSS_RAI = `
 .rai-pigulka--neutral { background: rgba(30, 30, 30, 0.08); color: var(--w-tusz-2); }
 .rai-alert-waf { padding: 1rem 1.15rem; border-radius: 16px; background: rgba(179, 38, 30, 0.07); border: 1px solid rgba(179, 38, 30, 0.28); color: var(--w-tusz); }
 .rai-alert-spa { padding: 1rem 1.15rem; border-radius: 16px; background: rgba(180, 83, 9, 0.08); border: 1px solid rgba(180, 83, 9, 0.3); color: var(--w-tusz); margin-top: 0.85rem; }
-.rai-grupa { margin-top: 1.25rem; }
+.rai-grupa { margin-top: 1.25rem; min-width: 0; max-width: 100%; }
 .rai-grupa-h3 { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; color: var(--w-tusz); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
-.rai-kod-okno { margin: 0.75rem 0 0; padding: 1rem 1.15rem; border-radius: 16px; background: #141923; color: #f8fafc; font-family: var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: 0.84rem; line-height: 1.6; overflow-x: auto; white-space: pre; border: 1px solid rgba(255,255,255,0.08); }
-.rai-akcje-kodu { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 0.75rem; }
-.rai-odznaka-box { padding: 1.2rem 1.35rem; border-radius: 20px; background: var(--w-papier, #f6f4ef); border: 1px solid var(--w-linia, rgba(30,30,30,0.12)); display: grid; gap: 0.75rem; }
-.rai-bofu { padding: clamp(1.25rem, 3vw, 1.75rem); border-radius: 22px; background: linear-gradient(135deg, #101935 0%, #1d2b53 100%); color: #ffffff; display: grid; gap: 0.85rem; }
+.rai-wynik { grid-template-columns: minmax(0, 1fr); min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: auto; }
+.rai-wynik > * { min-width: 0; max-width: 100%; box-sizing: border-box; }
+.rai-kod-okno { margin: 0.75rem 0 0; padding: 1rem 1.15rem; border-radius: 16px; background: #141923; color: #f8fafc; font-family: var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: 0.84rem; line-height: 1.6; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: auto; white-space: pre; border: 1px solid rgba(255,255,255,0.08); }
+.rai-akcje-kodu { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 0.75rem; min-width: 0; max-width: 100%; }
+.rai-odznaka-box { padding: 1.2rem 1.35rem; border-radius: 20px; background: var(--w-papier, #f6f4ef); border: 1px solid var(--w-linia, rgba(30,30,30,0.12)); display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: auto; }
+.rai-bofu { padding: clamp(1.25rem, 3vw, 1.75rem); border-radius: 22px; background: linear-gradient(135deg, #101935 0%, #1d2b53 100%); color: #ffffff; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.85rem; min-width: 0; max-width: 100%; box-sizing: border-box; overflow-x: auto; }
 .rai-bofu h2 { margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.5rem); color: #ffffff; line-height: 1.25; }
 .rai-bofu p { margin: 0; color: rgba(255, 255, 255, 0.86); line-height: 1.6; font-size: 0.96rem; }
 .rai-bofu-akcje { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; margin-top: 0.25rem; }
@@ -632,7 +634,7 @@ export function TesterRobotowAiClient() {
 
       <Zwin otwarte={stan.status === 'done' && Boolean(w)}>
         {w && (
-          <div className="narz-wynik" style={{ marginTop: '1.25rem' }} aria-live="polite">
+          <div className="narz-wynik rai-wynik" style={{ marginTop: '1.25rem' }} aria-live="polite">
             {/* 1. Naglowek wyniku: Pierscien 0-100 + podsumowanie plikow i frameworka */}
             <div className="narz-wynik-glowa">
               <Ocena wynik={w.wynik} podpis="AI Ready" />

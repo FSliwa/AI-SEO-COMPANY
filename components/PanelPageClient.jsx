@@ -145,7 +145,7 @@ export default function PanelPageClient() {
       <Header />
       <Breadcrumbs pl="Panel klienta" en="Client Portal" />
 
-      <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px' }}>
+      <section className="sekcja-po-okruszkach">
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '860px' }}>
             <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
@@ -186,7 +186,7 @@ export default function PanelPageClient() {
         </div>
       </section>
 
-      <section style={{ padding: '40px 0 80px' }}>
+      <section className="sekcja-kompakt">
         <div className="container">
           <Reveal className="section-header">
             <h2>{lang === 'pl' ? 'Co jest w panelu klienta' : 'What is in the client portal'}</h2>
@@ -216,7 +216,7 @@ export default function PanelPageClient() {
         </div>
       </section>
 
-      <section style={{ padding: '0 0 80px' }} aria-labelledby="porownanie">
+      <section className="de-abschnitt" aria-labelledby="porownanie">
         <div className="container" style={{ maxWidth: '1060px' }}>
           <Reveal className="section-header">
             <h2 id="porownanie">{lang === 'pl' ? 'Czego nie pokaże raport PDF' : 'What a PDF report will not show you'}</h2>
@@ -226,7 +226,7 @@ export default function PanelPageClient() {
                 : 'A comparison with the reporting you will find at SEO agencies, based on a review of the price lists and service descriptions of 17 agencies in Poland (as of 25 October 2026). The middle column is a simplified typical portal that mainly shows keyword positions; some agencies offer more.'}
             </p>
           </Reveal>
-          <Reveal style={{ marginTop: '2rem', overflowX: 'auto', background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', boxShadow: 'none' }}>
+          <Reveal className="tabela-przewijana" style={{ marginTop: '2rem', overflowX: 'auto', background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', boxShadow: 'none' }}>
             <table style={{ width: '100%', minWidth: '640px', borderCollapse: 'collapse', fontSize: '0.98rem', lineHeight: 1.45 }}>
               <thead>
                 <tr style={{ background: 'var(--w-papier-2)' }}>
@@ -254,7 +254,7 @@ export default function PanelPageClient() {
       </section>
 
       {lang === 'pl' && (
-        <section style={{ padding: '0 0 80px' }} aria-labelledby="jak-sprawdzic-panel">
+        <section className="de-abschnitt" aria-labelledby="jak-sprawdzic-panel">
           <div className="container" style={{ maxWidth: '850px', margin: '0 auto' }}>
             <Reveal style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(1.75rem, 5vw, 3rem)', boxShadow: 'none' }}>
               <h2 id="jak-sprawdzic-panel" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.15rem)', fontWeight: 500, letterSpacing: '-0.035em', lineHeight: 1.1, marginBottom: '1rem', color: 'var(--w-tusz)' }}>Jak sprawdzić panel agencji przed podpisaniem umowy: 6 pytań</h2>

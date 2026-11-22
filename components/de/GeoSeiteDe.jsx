@@ -20,7 +20,7 @@ import { KOPF, MESSUNG_KARTEN, ANGEBOT, MASSNAHMEN, FAQ, KARTEN, KARTEN_SCHEMA, 
 const SCHLUESSEL = '/pozycjonowanie-w-ai';
 const card = { background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)' };
 const tekstStyl = { margin: 0, fontSize: '1.05rem', lineHeight: 1.65, color: 'var(--color-text-main)', hyphens: 'auto', overflowWrap: 'break-word' };
-const h3Styl = { fontSize: '1.15rem', fontWeight: 600, margin: '0 0 0.5rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' };
+const h3Styl = { fontSize: '1.15rem', fontWeight: 600, margin: '0 0 0.5rem', color: 'var(--color-text-dark)', hyphens: 'manual', overflowWrap: 'break-word' };
 const linkStyl = { textDecoration: 'underline' };
 const fussStyl = { margin: '0.6rem 0 0', fontSize: '0.85rem', lineHeight: 1.5, color: 'var(--w-tusz-2)' };
 
@@ -54,7 +54,7 @@ function Karte({ k }) {
 
 function TextAbschnitt({ id, titel, children }) {
   return (
-    <section id={id} style={{ padding: '40px 0 50px' }}>
+    <section id={id} className="sekcja-kompakt">
       <div className="container" style={{ maxWidth: '850px', margin: '0 auto' }}>
         <Reveal className="section-header"><h2 lang="de">{titel}</h2></Reveal>
         <Reveal style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1rem', marginTop: '1.5rem' }}>{children}</Reveal>
@@ -70,13 +70,13 @@ export default function GeoSeiteDe() {
       <Header />
       <Breadcrumbs pl="Generative Engine Optimization" en="Generative Engine Optimization" de="Generative Engine Optimization" />
 
-      <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px' }}>
+      <section className="sekcja-po-okruszkach">
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '880px' }}>
             <div className="section-tag" style={{ color: 'var(--color-primary)', justifyContent: 'center' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {KOPF.tag}
             </div>
-            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.25rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' }}>{reg.h1}</h1>
+            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.25rem', color: 'var(--color-text-dark)', hyphens: 'manual', overflowWrap: 'break-word' }}>{reg.h1}</h1>
             <div className="hero-lead" style={{ maxWidth: '760px', margin: '0 auto' }}>
               <AnswerBox etykieta="Kurz gesagt"><p lang="de" style={{ margin: 0 }}>{KOPF.antwort}</p></AnswerBox>
             </div>
@@ -91,7 +91,7 @@ export default function GeoSeiteDe() {
         </div>
       </section>
 
-      <section style={{ padding: '40px 0 60px' }}>
+      <section className="sekcja-kompakt">
         <div className="container" style={{ maxWidth: '900px', margin: '0 auto' }}>
           <Reveal className="section-header"><h2 lang="de">{MESSUNG_KARTEN.titel}</h2></Reveal>
           <RevealStagger style={{ display: 'grid', gap: '1rem', marginTop: '2rem' }}>
@@ -105,7 +105,7 @@ export default function GeoSeiteDe() {
         </div>
       </section>
 
-      <section id="kosten" style={{ padding: '40px 0 60px' }}>
+      <section id="kosten" className="sekcja-kompakt">
         <div className="container">
           <Reveal className="section-header"><h2 lang="de">{ANGEBOT.titel}</h2></Reveal>
           <Reveal style={{ maxWidth: '760px', margin: '1rem 0 0' }}>
@@ -141,7 +141,7 @@ export default function GeoSeiteDe() {
         </div>
       </section>
 
-      <section style={{ padding: '40px 0 60px' }}>
+      <section className="sekcja-kompakt">
         <div className="container">
           <Reveal className="section-header"><h2 lang="de">Fragen zur KI-Sichtbarkeit, die wir beantworten</h2></Reveal>
           <RevealStagger style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', marginTop: '2rem' }}>
@@ -216,7 +216,7 @@ export default function GeoSeiteDe() {
         <CompareTable caption={PLAN.caption} columns={PLAN.spalten} rows={PLAN.zeilen} przypis={PLAN.fussnote} />
       </TextAbschnitt>
 
-      <section style={{ padding: '20px 0 80px' }}>
+      <section className="sekcja-kompakt">
         <div className="container" style={{ maxWidth: '850px', margin: '0 auto', display: 'grid', gap: '2rem' }}>
           <Reveal>
             <div style={{ ...card, padding: 'clamp(1.75rem, 5vw, 3rem)' }}>

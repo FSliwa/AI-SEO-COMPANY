@@ -50,13 +50,13 @@ export default function ChatgptSeiteDe() {
         dateModified={STAND_CHATGPT_DE}
       />
 
-      <section style={{ paddingTop: 'clamp(124px, 14vw, 160px)', paddingBottom: '36px' }}>
+      <section className="sekcja-po-okruszkach">
         <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {CHATGPT_DE.tag}
             </div>
-            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.2rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' }}>
+            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.2rem', color: 'var(--color-text-dark)', hyphens: 'manual', overflowWrap: 'break-word' }}>
               {h1}
             </h1>
             <BylineDe stand={STAND_CHATGPT_DE} />
@@ -87,7 +87,7 @@ export default function ChatgptSeiteDe() {
         </div>
       </section>
 
-      <section id="quellen-messung" style={{ padding: '36px 0 48px' }}>
+      <section id="quellen-messung" className="sekcja-kompakt">
         <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
           <Reveal className="section-header">
             <h2 lang="de">Woher ChatGPT seine Unternehmens-Empfehlungen nimmt: Unsere Messung</h2>
@@ -110,7 +110,7 @@ export default function ChatgptSeiteDe() {
         </div>
       </section>
 
-      <section id="schritte" style={{ padding: '36px 0 56px' }}>
+      <section id="schritte" className="sekcja-kompakt">
         <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
           <Reveal className="section-header">
             <h2 lang="de">ChatGPT SEO in 7 konkreten Schritten</h2>

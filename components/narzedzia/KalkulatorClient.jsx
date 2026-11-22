@@ -228,6 +228,7 @@ body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
   .kalk-biezacy { flex: none; min-width: 0; text-align: center; font-size: 0.85rem; }
   .kalk-biezacy--pusty { display: none; }
   .kalk-biezacy strong { font-size: 0.95rem; }
+  .kalk-jcurve svg { min-height: 150px; }
 }
 `;
 
@@ -302,13 +303,14 @@ function WykresJCurve({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, waluta, en, f
     punkty.push({ m, kosztSkum: kosztM, zyskSkum: sumaZysku });
   }
 
+  const wysSvg = 256;
   const padL = 68;
   const padR = 22;
-  const padT = 26;
+  const padT = 28;
   const padB = 32;
   const szer = 640 - padL - padR;
-  const wys = 240 - padT - padB;
-  const maxY = Math.max(punkty[24].kosztSkum, punkty[24].zyskSkum, 1) * 1.1;
+  const wys = wysSvg - padT - padB;
+  const maxY = Math.max(punkty[24].kosztSkum, punkty[24].zyskSkum, 1) * 1.18;
   const x = (m) => padL + (m / 24) * szer;
   const y = (v) => padT + wys - (v / maxY) * wys;
 
@@ -319,6 +321,11 @@ function WykresJCurve({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, waluta, en, f
   const etykietaPrzeciecia = przeciecie
     ? (en ? `Break-Even: month ${przeciecie.miesiac}` : `Break-Even: ${przeciecie.miesiac}. mies.`)
     : (en ? 'Break-Even: > 24 mo' : 'Break-Even: > 24 mies.');
+  const badgeW = Math.round(etykietaPrzeciecia.length * 6.8 + 18);
+  const cxPrzeciecia = przeciecie ? x(przeciecie.mDokladny) : 0;
+  const badgeX = przeciecie
+    ? Math.max(padL + 4, Math.min(640 - padR - badgeW - 4, cxPrzeciecia - badgeW / 2))
+    : padL + 4;
 
   return (
     <div className="kalk-jcurve">
@@ -338,7 +345,7 @@ function WykresJCurve({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, waluta, en, f
         </div>
       </div>
       <svg
-        viewBox="0 0 640 240"
+        viewBox={`0 0 640 ${wysSvg}`}
         role="img"
         aria-label={en
           ? `Cumulative SEO cost versus recovered profit over 24 months. ${etykietaPrzeciecia}. After 24 months: ${fmt(punkty[24].zyskSkum)} recovered profit vs ${fmt(punkty[24].kosztSkum)} cost.`
@@ -351,7 +358,7 @@ function WykresJCurve({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, waluta, en, f
           return (
             <g key={u}>
               <line x1={padL} y1={pozY} x2={640 - padR} y2={pozY} stroke="rgba(15,23,42,0.08)" strokeWidth="1" />
-              <text x={padL - 8} y={pozY + 4} textAnchor="end" fontSize="11" fill="#64748b">
+              <text x={padL - 8} y={pozY + 4} textAnchor="end" fontSize="11.5" fill="#64748b">
                 {skrotKwoty(wart, waluta, en)}
               </text>
             </g>
@@ -361,7 +368,7 @@ function WykresJCurve({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, waluta, en, f
         {[1, 6, 12, 18, 24].map((m) => (
           <g key={m}>
             <line x1={x(m)} y1={padT + wys} x2={x(m)} y2={padT + wys + 4} stroke="rgba(15,23,42,0.2)" strokeWidth="1" />
-            <text x={x(m)} y={240 - 10} textAnchor="middle" fontSize="11" fill="#64748b">
+            <text x={x(m)} y={wysSvg - 10} textAnchor="middle" fontSize="11.5" fill="#64748b">
               {en ? `M${m}` : `${m} m.`}
             </text>
           </g>
@@ -374,26 +381,36 @@ function WykresJCurve({ zyskMin, zyskMax, koszt, miesiaceDoEfektu, waluta, en, f
         {przeciecie && (
           <g>
             <line
-              x1={x(przeciecie.mDokladny)}
-              y1={padT}
-              x2={x(przeciecie.mDokladny)}
+              x1={cxPrzeciecia}
+              y1={padT + 2}
+              x2={cxPrzeciecia}
               y2={padT + wys}
               stroke="#d85a30"
               strokeWidth="1.4"
               strokeDasharray="3 3"
             />
             <circle
-              cx={x(przeciecie.mDokladny)}
+              cx={cxPrzeciecia}
               cy={y(przeciecie.kwota)}
               r="5.5"
               fill="#d85a30"
               stroke="#ffffff"
               strokeWidth="2"
             />
+            <rect
+              x={badgeX}
+              y={padT + 2}
+              width={badgeW}
+              height={20}
+              rx="6"
+              fill="rgba(255,255,255,0.95)"
+              stroke="rgba(216,90,48,0.45)"
+              strokeWidth="1"
+            />
             <text
-              x={przeciecie.mDokladny > 17 ? x(przeciecie.mDokladny) - 8 : x(przeciecie.mDokladny) + 8}
-              y={Math.max(padT + 13, y(przeciecie.kwota) - 10)}
-              textAnchor={przeciecie.mDokladny > 17 ? 'end' : 'start'}
+              x={badgeX + badgeW / 2}
+              y={padT + 16}
+              textAnchor="middle"
               fontSize="11.5"
               fontWeight="700"
               fill="#b4471f"

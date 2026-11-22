@@ -49,7 +49,7 @@ const styl = {
   h1: { fontSize: 'clamp(2.25rem, 0.9rem + 3vw, 3rem)', lineHeight: 1.12, letterSpacing: '-0.04em', color: 'var(--color-text-dark)', fontWeight: 500 },
   podtytul: { marginTop: '8px', fontSize: '1.125rem', color: 'var(--color-text-muted)' },
   lead: { marginTop: '24px', maxWidth: '560px', color: 'var(--color-text-main)' },
-  lista: { listStyle: 'none', marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', maxWidth: '720px' },
+  lista: { listStyle: 'none', marginTop: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '12px', maxWidth: '720px' },
   link: { display: 'flex', alignItems: 'center', minHeight: '56px', padding: '14px 18px', borderRadius: 'var(--radius-sm)', background: 'var(--color-card-bg)', border: '1px solid var(--color-border)', color: 'var(--color-text-dark)', fontWeight: 600 },
   en: { marginTop: '32px', color: 'var(--color-text-muted)' },
   enLink: { color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'underline' },
@@ -73,12 +73,15 @@ export default function GlobalNotFound() {
             <ul style={styl.lista}>
               {LINKI.map(([href, etykieta]) => (
                 <li key={href}>
-                  <Link href={href} prefetch={false} style={styl.link}>{etykieta} →</Link>
+                  <Link href={href} prefetch={false} style={styl.link}>{etykieta}{'\u00A0'}→</Link>
                 </li>
               ))}
             </ul>
             <p style={styl.en} lang="en">
               Looking for the English site? <Link href="/en" prefetch={false} hrefLang="en" style={styl.enLink}>Go to the English homepage</Link>
+            </p>
+            <p style={{ ...styl.en, marginTop: '10px' }} lang="de">
+              Auf Deutsch weiter? <Link href="/de" prefetch={false} hrefLang="de" style={styl.enLink}>Zur deutschen Startseite</Link>
             </p>
           </div>
         </main>

@@ -195,7 +195,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 {lang === 'pl' ? 'Sprawdzone metody optymalizacji i marketingu treści dla firm B2B.' : 'Proven search optimization services tailored for B2B growth.'}
               </p>
             </Reveal>
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
               <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.5rem)', boxShadow: 'none' }}>
                 <h3 style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', marginBottom: '1rem' }}>
                   {lang === 'pl' ? 'Marketing Cyfrowy i Strategia Treści' : 'SEO for Agencies: Digital Search Marketing & Content Strategy'}

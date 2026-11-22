@@ -31,7 +31,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
@@ -117,31 +116,22 @@ export default async function ArticleCwvPage({ params }) {
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/core-web-vitals-google-rankings` : `${BASE}/blog/core-web-vitals-a-pozycje-google`]}
       />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Technical SEO & Speed
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                July 24, 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Core Web Vitals and Rankings
-            </h1>
-            <Byline sciezka={KLUCZ_CWV} takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Technical SEO & Speed
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Core Web Vitals and Rankings
+          </h1>
+          <Byline sciezka={KLUCZ_CWV} takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 In 2026, passing Core Web Vitals requires meeting three thresholds at the 75th percentile of real Chrome user visits (CrUX, mobile and desktop): LCP up to 2.5 s, INP up to 200 ms, and CLS up to 0.1. Google Search Console evaluates 28-day field data rather than simulated Lighthouse scores.
               </AnswerBox>
@@ -185,8 +175,7 @@ export default async function ArticleCwvPage({ params }) {
               <h2 id="znaczenie-ttfb">The importance of TTFB and Server-Side Rendering (SSR)</h2>
               <p>Simply reducing image sizes will not help if the server responds too slowly (TTFB). Migrating to more modern architectures (such as Next.js App Router with React Server Components) means that the entire burden of database logic processing is done once on the server and distributed.</p>
               <p>This means minimized, static HTML files instantly ready for Googlebot to download. Remember that ultimate success depends not only on tools but on consistent and systematic website optimization in all key areas. A Core Web Vitals review is one of the steps of our <Link href="/audyt-seo">SEO audit</Link>. For a quick check of the whole site, run the <Link href="/narzedzia/audyt-seo">free SEO audit</Link>.</p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_CWV} title="Frequently asked questions" sectionId="pytania-cwv" />
@@ -209,44 +198,31 @@ export default async function ArticleCwvPage({ params }) {
         <>
 
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Techniczne SEO & Speed
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                24 lipca 2026
-              </span>
-            </div>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Techniczne SEO & Speed
+            </span>
+          </div>
 
-            {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 500, 
-              color: 'var(--w-tusz)', 
-              marginBottom: '1.5rem', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              textAlign: 'left'
-            }}>
-              Core Web Vitals a pozycje
-            </h1>
+          {/* The English branch above has its own <h1>. Only one of the two branches ever
+              renders, so this is not a second H1 on the page - do not demote it. */}
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+            fontWeight: 500, 
+            color: 'var(--w-tusz)', 
+            marginBottom: '1.5rem', 
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            textAlign: 'left'
+          }}>
+            Core Web Vitals a pozycje
+          </h1>
 
-            <Byline sciezka={KLUCZ_CWV} takzeEn />
+          <Byline sciezka={KLUCZ_CWV} takzeEn />
 
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </div>
-            
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 W 2026 roku dobre wyniki Core Web Vitals oznaczają w 75. percentylu wizyt użytkowników Chrome (CrUX, mobile i desktop): LCP do 2,5 s, INP do 200 ms oraz CLS do 0,1. Raport w Google Search Console opiera się na danych polowych z 28 dni, a nie na pojedynczym teście Lighthouse.
               </AnswerBox>
@@ -316,8 +292,7 @@ export default async function ArticleCwvPage({ params }) {
               <p>
                 Oznacza to zminimalizowane, statyczne pliki HTML natychmiast gotowe dla Googlebota do pobrania, co ułatwia osiągnięcie wysokiego wyniku w PageSpeed Insights, ale wynik zależy też od obrazów, skryptów zewnętrznych i układu strony. Pamiętaj, że ostateczny sukces zależy nie tylko od narzędzi, ale od konsekwentnej i systematycznej optymalizacji witryny we wszystkich kluczowych obszarach. Analiza Core Web Vitals to jeden z etapów naszego <Link href="/audyt-seo">audytu SEO</Link>. Szybką kontrolę całej witryny zrobisz w <Link href="/narzedzia/audyt-seo">darmowym audycie SEO</Link>. Regularnie monitoruj i udoskonalaj architekturę, co w dłuższej perspektywie przyniesie Ci wymierne rezultaty, lepsze pozycje i znacznie więcej klientów organicznych w skali każdego miesiąca.
               </p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_CWV} title="Najczęstsze pytania" sectionId="pytania-cwv" />

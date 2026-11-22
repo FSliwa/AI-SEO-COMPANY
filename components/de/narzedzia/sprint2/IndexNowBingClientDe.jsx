@@ -496,7 +496,7 @@ export function IndexNowBingClientDe() {
               </div>
 
               {przykladyLista.length > 0 && (
-                <div className="narz-tabela-wrap" style={{ marginTop: '0.8rem' }}>
+                <div className="narz-tabela-wrap sp2-tabela-wrap" style={{ marginTop: '0.8rem' }}>
                   <table className="narz-tabela">
                     <thead>
                       <tr>
@@ -510,7 +510,7 @@ export function IndexNowBingClientDe() {
                         const lm = typeof item === 'object' ? item.lastmod : null;
                         return (
                           <tr key={`${u}-${idx}`}>
-                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>{u}</td>
+                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>{u}</td>
                             <td style={{ fontFamily: 'var(--w-mono, monospace)', fontSize: '0.84rem', fontVariantNumeric: 'tabular-nums' }}>{lm || '-'}</td>
                           </tr>
                         );
@@ -523,18 +523,21 @@ export function IndexNowBingClientDe() {
 
             <div className="sp2-sekcja-wyniku">
               <h2 className="narz-h2">IndexNow-Schlüsselgenerator, curl &amp; GitHub Actions</h2>
-              <p className="narz-mikro">
+              <p className="narz-mikro" style={{ overflowWrap: 'anywhere' }}>
                 Schritt 1: Schlüsseldatei {nazwaPlikuKlucza} herunterladen und im öffentlichen Stammverzeichnis ablegen (https://www.{domena}/{nazwaPlikuKlucza}). Schritt 2: Geänderte URLs per curl oder GitHub Actions melden.
               </p>
 
               <div className="sp2-kafel" style={{ marginTop: '0.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
-                <div>
+                <div style={{ minWidth: 0, maxWidth: '100%' }}>
                   <p className="sp2-kafel-etykieta">Ihr 32-stelliger IndexNow-Schlüssel</p>
                   <p className="sp2-kafel-wartosc" style={{ fontFamily: 'var(--w-mono, monospace)', fontSize: '0.98rem' }}>
                     {kluczBazowy}
                   </p>
+                  <p className="narz-mikro" style={{ margin: '0.3rem 0 0', overflowWrap: 'anywhere' }}>
+                    Datei: <code style={{ fontSize: '0.78rem', overflowWrap: 'anywhere' }}>{nazwaPlikuKlucza}</code>
+                  </p>
                 </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', minWidth: 0, maxWidth: '100%' }}>
                   <button
                     type="button"
                     className="btn btn-primary"
@@ -544,7 +547,7 @@ export function IndexNowBingClientDe() {
                       track('narzedzie_pobierz_indexnow_txt', { domena, lang: 'de' });
                     }}
                   >
-                    Schlüsseldatei {nazwaPlikuKlucza} herunterladen
+                    Schlüsseldatei (.txt) herunterladen
                   </button>
                   <button
                     type="button"

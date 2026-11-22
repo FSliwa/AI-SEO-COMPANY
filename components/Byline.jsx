@@ -18,23 +18,32 @@ import { LASTMOD } from '@/lib/lastmod';
 const BASE = 'https://www.ai-seo-company.pl';
 const MIESIACE_PL = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
 const MIESIACE_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const MIESIACE_DE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 
 // Formatowanie bez Intl: identyczny tekst na serwerze i w przeglądarce (bez błędu hydracji).
-function formatujDate(iso, en) {
+function formatujDate(iso, lang) {
   const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
   if (!m) return null;
   const [, rok, mies, dzien] = m;
   const d = Number(dzien);
   const i = Number(mies) - 1;
-  return en ? `${MIESIACE_EN[i]} ${d}, ${rok}` : `${d} ${MIESIACE_PL[i]} ${rok}`;
+  if (lang === 'de') return `${d}. ${MIESIACE_DE[i]} ${rok}`;
+  return lang === 'en' ? `${MIESIACE_EN[i]} ${d}, ${rok}` : `${d} ${MIESIACE_PL[i]} ${rok}`;
 }
 
-function kluczLastmod(sciezka, en) {
+function kluczLastmod(sciezka, lang) {
   if (!sciezka) return null;
-  if (!en) return `${BASE}${sciezka}`;
-  // Klucz EN = lokalizowany adres z prefiksem (np. /en/ai-search-optimization); strona główna EN = /en.
+  if (lang === 'pl') {
+    if (LASTMOD[`${BASE}${sciezka}`]) return `${BASE}${sciezka}`;
+    try {
+      return `${BASE}${getPathname({ href: sciezka, locale: 'pl' })}`.replace(/\/$/, '');
+    } catch {
+      return `${BASE}${sciezka}`;
+    }
+  }
+  // Klucz EN / DE = lokalizowany adres z prefiksem (np. /en/ai-search-optimization, /de/ki-suchoptimierung); strona główna = /en lub /de.
   try {
-    return `${BASE}${getPathname({ href: sciezka, locale: 'en' })}`.replace(/\/$/, '');
+    return `${BASE}${getPathname({ href: sciezka, locale: lang })}`.replace(/\/$/, '');
   } catch {
     return null;
   }
@@ -45,19 +54,20 @@ const styl = { margin: '0 0 1.5rem', fontSize: '0.9rem', lineHeight: 1.5, color:
 export default function Byline({ sciezka, data, takzeEn = false, style }) {
   const lang = useLocale();
   const en = lang === 'en';
+  const de = lang === 'de';
   if (en && !takzeEn) return null;
 
-  const iso = data ?? LASTMOD[kluczLastmod(sciezka, en)];
-  const tekstDaty = formatujDate(iso, en);
+  const iso = data ?? LASTMOD[kluczLastmod(sciezka, lang)];
+  const tekstDaty = formatujDate(iso, lang);
 
   return (
-    <p className="byline" style={style ? { ...styl, ...style } : styl}>
-      {en ? 'Prepared by: ' : 'Opracował: '}
+    <p className="byline" lang={de ? 'de' : undefined} style={style ? { ...styl, ...style } : styl}>
+      {de ? 'Verfasst von: ' : en ? 'Prepared by: ' : 'Opracował: '}
       <Link href="/o-nas" style={{ color: 'inherit', textDecoration: 'underline' }}>Filip Śliwa</Link>
-      {en ? ', SEO specialist' : ', specjalista SEO'}
+      {de ? ', SEO-Spezialist' : en ? ', SEO specialist' : ', specjalista SEO'}
       {tekstDaty && (
         <>
-          {en ? ' · updated: ' : ' · aktualizacja: '}
+          {de ? ' · aktualisiert: ' : en ? ' · updated: ' : ' · aktualizacja: '}
           <time dateTime={iso.slice(0, 10)}>{tekstDaty}</time>
         </>
       )}

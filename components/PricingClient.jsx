@@ -347,7 +347,7 @@ export default function PricingClient() {
       <Breadcrumbs pl="Cennik Pozycjonowania" en="SEO Pricing" />
       
       {/* Hero Banner */}
-      <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px', position: 'relative' }}>
+      <section className="sekcja-po-okruszkach" style={{ position: 'relative' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-header" style={{ margin: '0 auto', maxWidth: '850px' }}>
             <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
@@ -395,7 +395,7 @@ export default function PricingClient() {
       <Pricing isMainContent={true} />
 
       {/* Interaktywny dobór pakietu w 15 sekund (Wariant C - karta robocza bez fałszywego hover-liftu) */}
-      <section style={{ padding: '16px 0 56px 0' }} aria-labelledby="dobor-pakietu-naglowek">
+      <section className="sekcja-kompakt" aria-labelledby="dobor-pakietu-naglowek">
         <div className="container" style={{ maxWidth: '1040px', margin: '0 auto' }}>
           <Reveal>
             <div className="w-karta w-karta--konwersja" style={kartaStyl}>
@@ -539,7 +539,7 @@ export default function PricingClient() {
       </section>
 
       {/* Tabela porównawcza cennika według typu strony i usługi */}
-      <section style={{ padding: '0 0 56px 0' }} aria-labelledby="tabela-cennika-naglowek">
+      <section className="de-abschnitt" aria-labelledby="tabela-cennika-naglowek">
         <div className="container" style={{ maxWidth: '1040px', margin: '0 auto' }}>
           <Reveal>
             <div className="w-karta" style={kartaStyl}>
@@ -604,7 +604,7 @@ export default function PricingClient() {
       </section>
 
       {/* SEO Content Section */}
-      <section style={{ padding: '16px 0 80px 0' }}>
+      <section className="de-abschnitt">
         <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--w-tusz)' }}>
           <Reveal>
             <div className="w-karta" style={kartaStyl}>
@@ -650,7 +650,7 @@ export default function PricingClient() {
           stron” 170 (DataForSEO i frazy.csv, 4.11.2026). Kwoty i liczby fraz = pakiety z Pricing.jsx
           i FAQ „Czym różnią się pakiety…”. Bez zdań z FAQ i leadu (playbook 5.5). */}
       {lang === 'pl' && (
-        <section style={{ padding: '0 0 80px 0' }}>
+        <section className="de-abschnitt">
           <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--w-tusz)' }}>
             <Reveal>
               <div className="w-karta" style={kartaStyl}>
@@ -680,7 +680,7 @@ export default function PricingClient() {
       )}
 
       {lang !== 'pl' && (
-        <section style={{ padding: '0 0 80px 0' }}>
+        <section className="de-abschnitt">
           <div className="container" style={{ maxWidth: '850px', margin: '0 auto', color: 'var(--w-tusz)' }}>
             <Reveal>
               <div className="w-karta" style={kartaStyl}>

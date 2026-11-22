@@ -36,6 +36,7 @@ const TEKSTY = {
     branzaLabel: 'Branża lub usługa (opcjonalnie)',
     branzaPh: 'np. biuro rachunkowe B2B',
     start: 'Wygeneruj plan na 90 dni',
+    demo: 'Załaduj przykładowy plan DEMO',
     trwa: 'Układam 12 tematów na 3 mies.…',
     pobierz: 'Pobierz arkusz planu (.csv do Excel / Google Sheets)',
     podsumowanie: (domena) => `Plan 90 dni (12 publikacji, Miesiąc 1-3) dla ${domena}`,
@@ -52,6 +53,7 @@ const TEKSTY = {
     branzaLabel: 'Industry or core service (optional)',
     branzaPh: 'e.g. B2B accounting',
     start: 'Generate 90-day plan',
+    demo: 'Load DEMO plan',
     trwa: 'Building 12-week plan…',
     pobierz: 'Download plan (.csv for Excel / Google Sheets)',
     podsumowanie: (domena) => `90-day content plan (12 topics, Months 1-3) for ${domena}`,
@@ -68,6 +70,7 @@ const TEKSTY = {
     branzaLabel: 'Branche oder Leistung (optional)',
     branzaPh: 'z. B. CNC-Fertigung',
     start: '90-Tage-Plan erstellen',
+    demo: 'DEMO-Plan sofort laden',
     trwa: 'Erstelle 12-Wochen-Plan…',
     pobierz: 'Redaktionsplan herunterladen (.csv für Excel / Google Sheets)',
     podsumowanie: (domena) => `90-Tage-Redaktionsplan (12 Themen, Monat 1-3) für ${domena}`,
@@ -254,6 +257,15 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
     track('narzedzie_content_plan_ai_csv', { lang: jezyk });
   }
 
+  function zaladujDemo() {
+    const domyslnaDomena = jezyk === 'de' ? 'ihre-cnc-technik.de' : jezyk === 'en' ? 'acme-industrial.com' : 'twoja-produkcja.pl';
+    const domena = url.trim() ? wyczyscDomene(url) : domyslnaDomena;
+    if (!url.trim()) setUrl(domena);
+    const wiersze = zbudujDemoPlan(domena, branza, jezyk);
+    track('narzedzie_content_plan_ai_demo', { lang: jezyk });
+    setStan({ status: 'done', blad: null, domena, wiersze });
+  }
+
   return (
     <div id="generator-content-planu" role="region" aria-labelledby="cpg-tytul" className="cpg-karta">
       <style>{CSS_CPG}</style>
@@ -297,7 +309,7 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
             />
           </div>
         </div>
-        <div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', alignItems: 'center' }}>
           <button
             type="submit"
             className="btn btn-primary"
@@ -306,6 +318,15 @@ export default function ContentPlanGeneratorClient({ locale = 'pl' }) {
             data-cta="content_plan_ai_submit"
           >
             {stan.status === 'loading' ? T.trwa : T.start}
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            disabled={stan.status === 'loading'}
+            onClick={zaladujDemo}
+            data-cta="content_plan_ai_demo"
+          >
+            {T.demo}
           </button>
         </div>
       </form>

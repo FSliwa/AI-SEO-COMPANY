@@ -11,7 +11,6 @@ import Byline from '@/components/Byline';
 import Zrodla from '@/components/Zrodla';
 import AppleFaq from '@/components/service/AppleFaq';
 import BlogCTA from '@/components/BlogCTA';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 
 const BASE = 'https://www.ai-seo-company.pl';
@@ -281,28 +280,22 @@ export default async function ArticleChatGptAdsPage({ params }) {
         dateModified={dataZmiany}
       />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         {en ? (
           <>
             <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-              <Reveal>
-                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                    AI Search & GEO
-                  </span>
-                  <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                    November 22, 2026
-                  </span>
-                </div>
-                <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-                  {H1_EN}
-                </h1>
-                <Byline sciezka={SCIEZKA} data={dataZmiany} takzeEn />
-                <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-              </Reveal>
+              <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                  AI Search & GEO
+                </span>
+              </div>
+              <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+                {H1_EN}
+              </h1>
+              <Byline sciezka={SCIEZKA} takzeEn />
+              <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-              <Reveal delay={0.2}>
-                <div className="article-content">
+              <div className="article-content">
                   <AnswerBox etykieta="Short answer">
                     ChatGPT Ads are clearly labeled sponsored units shown below answers or during image generation to logged-in adult users on Free and Go plans. OpenAI confirms ads never alter organic AI answers, and paid tiers (Plus, Pro, Business, Enterprise) stay ad-free - meaning B2B brands still need organic GEO citations first.
                   </AnswerBox>
@@ -418,8 +411,7 @@ export default async function ArticleChatGptAdsPage({ params }) {
                       <strong>Separate organic and paid AI traffic in GA4:</strong> Tag every sponsored URL with dedicated UTM parameters (for example <code>utm_source=chatgpt</code> and <code>utm_medium=cpc</code>) so paid visits never blend with organic referral clicks from <code>chatgpt.com</code> in Google Analytics 4.
                     </li>
                   </ol>
-                </div>
-              </Reveal>
+              </div>
             </div>
 
             <AppleFaq faqData={FAQ} title="Frequently asked questions about ChatGPT Ads" sectionId="faq" />
@@ -434,24 +426,18 @@ export default async function ArticleChatGptAdsPage({ params }) {
         ) : (
           <>
             <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-              <Reveal>
-                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                    Pozycjonowanie w AI
-                  </span>
-                  <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                    22 listopada 2026
-                  </span>
-                </div>
-                <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-                  {H1_PL}
-                </h1>
-                <Byline sciezka={SCIEZKA} data={dataZmiany} takzeEn />
-                <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-              </Reveal>
+              <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                  Pozycjonowanie w AI
+                </span>
+              </div>
+              <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+                {H1_PL}
+              </h1>
+              <Byline sciezka={SCIEZKA} takzeEn />
+              <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-              <Reveal delay={0.2}>
-                <div className="article-content">
+              <div className="article-content">
                   <AnswerBox>
                     Reklamy w ChatGPT (ChatGPT Ads) to wyraźnie oznaczone moduły sponsorowane wyświetlane pod odpowiedziami lub podczas generowania obrazów u pełnoletnich użytkowników planów Free i Go. OpenAI potwierdza, że opłacenie reklamy nie zmienia treści odpowiedzi modelu, a płatne konta Plus, Pro, Business i Enterprise pozostają bez reklam, więc w B2B fundamentem pozostaje organiczne GEO.
                   </AnswerBox>
@@ -567,8 +553,7 @@ export default async function ArticleChatGptAdsPage({ params }) {
                       <strong>Rozdziel pomiar ruchu z reklam i cytowań organicznych w GA4:</strong> Oznaczaj wszystkie linki w kampaniach sponsorowanych osobnymi parametrami UTM (np. <code>utm_source=chatgpt</code> oraz <code>utm_medium=cpc</code>), aby w Google Analytics 4 nie mieszać płatnych kliknięć z bezpłatnymi przejściami ze źródeł cytowanych przez <code>chatgpt.com</code>.
                     </li>
                   </ol>
-                </div>
-              </Reveal>
+              </div>
             </div>
 
             <AppleFaq faqData={FAQ} title="Najczęstsze pytania o reklamy w ChatGPT" sectionId="faq" />

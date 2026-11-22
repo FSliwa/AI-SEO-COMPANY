@@ -2767,18 +2767,21 @@ body.has-cookie-banner .kota-floating-cta {
 
    !important is required because the sizes are inline styles on the components.
    --------------------------------------------------------------------------- */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .subpage-main .subpage-hero,
   .subpage-hero {
     padding-top: 48px !important;
   }
+}
 
+@media (max-width: 600px) {
   .subpage-hero h1 {
     font-size: clamp(1.9rem, 8.4vw, 2.6rem) !important;
     line-height: 1.15 !important;
   }
 
-  /* The sub-headline sits two siblings after the H1 – a div on three pages, an
-     h2 on the SEO services page – and is fixed at 40px on phones. Left alone it
+  /* The sub-headline sits two siblings after the H1 - a div on three pages, an
+     h2 on the SEO services page - and is fixed at 40px on phones. Left alone it
      would now outrank the H1 it follows, so it scales with it. */
   .subpage-hero h1 + div + div,
   .subpage-hero h1 + div + h2 {

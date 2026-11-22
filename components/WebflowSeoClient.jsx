@@ -431,9 +431,11 @@ export default function WebflowSeoClient() {
         sectionId={en ? 'faq' : 'pytania'}
       />
 
-      <div className="container" style={{ ...kontener, paddingBottom: '3rem' }}>
-        <Zrodla zrodla={ZRODLA} en={en} />
-      </div>
+      <section>
+        <div className="container" style={kontener}>
+          <Zrodla zrodla={ZRODLA} en={en} />
+        </div>
+      </section>
 
       <Contact />
     </main>

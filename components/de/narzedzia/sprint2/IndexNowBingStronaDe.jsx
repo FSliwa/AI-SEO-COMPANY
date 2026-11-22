@@ -163,7 +163,7 @@ export function IndexNowBingStronaDe() {
               <Sekcja id="echte-lastmod-zeitstempel-umsetzen" tytul="So beheben Sie künstliche <lastmod>-Daten in Next.js und CMS">
                 <ul style={s.lista}>
                   <li><strong>Inhalts-Prüfsumme (Content Hash):</strong> Aktualisieren Sie <code>&lt;lastmod&gt;</code> beim Build nur dann, wenn sich der sichtbare Hauptinhalt einer URL tatsächlich geändert hat.</li>
-                  <li><strong>Alle 12 KI-Crawler testen:</strong> Prüfen Sie weitere Suchbots im{' '}
+                  <li><strong>Alle 15 KI-Crawler testen:</strong> Prüfen Sie weitere Suchbots im{' '}
                     {kiCrawler ? <Link href={kiCrawler} style={s.podkreslenie}>KI-Crawler &amp; robots.txt Prüfer</Link> : 'KI-Crawler & robots.txt Prüfer'}, erzeugen Sie Ihre{' '}
                     {llmsGen ? <Link href={llmsGen} style={s.podkreslenie}>llms.txt-Datei</Link> : 'llms.txt-Datei'}{' '}
                     und vergleichen Sie unsere Monatspakete (ab {eur(CENY.seoStandard.eur, 'de')} netto/Mon.) unter{' '}
@@ -182,7 +182,7 @@ export function IndexNowBingStronaDe() {
       <AppleFaq
         faqData={FAQ_DE.map((f) => ({ ...f, questionEn: f.question, answerEn: f.answer, idEn: f.id }))}
         title="Häufige Fragen zu IndexNow, Bing und ChatGPT Search"
-        sectionId="pytania"
+        sectionId="faq"
       />
 
       <section style={{ paddingBottom: '2rem' }}>

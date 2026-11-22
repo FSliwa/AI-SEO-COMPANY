@@ -127,7 +127,7 @@ export default function LinkBuildingClient({ faqData }) {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('zakres', 'scope')} style={h2Styl}>
             {en ? 'What link building services include at AI SEO COMPANY' : 'Co obejmuje link building w AI SEO COMPANY'}
@@ -166,7 +166,7 @@ export default function LinkBuildingClient({ faqData }) {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('pakiety', 'packages')} style={h2Styl}>
             {en ? 'How many links you get: packages and prices' : 'Ile linków dostajesz: pakiety i ceny'}
@@ -204,7 +204,7 @@ export default function LinkBuildingClient({ faqData }) {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('jakie-linki', 'which-links')} style={h2Styl}>
             {en ? 'White-hat link building: which links we go for and which we avoid' : 'Jakich linków szukamy, a jakich unikamy'}
@@ -237,7 +237,7 @@ export default function LinkBuildingClient({ faqData }) {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('pomiar', 'measurement')} style={h2Styl}>
             {en ? 'How we measure link building' : 'Jak mierzymy link building'}
@@ -267,7 +267,7 @@ export default function LinkBuildingClient({ faqData }) {
         </div>
       </section>
 
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('digital-pr', 'digital-pr')} style={h2Styl}>
             {en ? 'Example: digital PR built on our own data' : 'Przykład: digital PR na danych własnych'}
@@ -293,7 +293,7 @@ export default function LinkBuildingClient({ faqData }) {
         sectionId={idEl('pytania', 'faq')}
       />
 
-      <section style={{ padding: '0 0 3rem' }}>
+      <section className="de-abschnitt">
         <div className="container" style={kontener}>
           <div style={{ ...karta, textAlign: 'center' }}>
             <p style={{ ...akapit, fontSize: '1.2rem', fontWeight: 600, color: 'var(--color-text-dark)' }}>

@@ -82,6 +82,21 @@
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.menu-przewijanie::-webkit-scrollbar {
+  width: 6px;
+}
+
+.menu-przewijanie::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu-przewijanie::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
 }
 
 .menu-tresc {
@@ -326,6 +341,37 @@
   }
 }
 
+/* Desktop o umiarkowanej wysokosci (np. 1440x900): miesci 9 pozycji TOOLS UND VORLAGEN i dolny pasek CTA bez scinania */
+@media (min-width: 1100px) and (max-height: 940px) {
+  .menu-pasek-wew {
+    height: 68px;
+  }
+
+  .menu-tresc {
+    padding-top: 0.75rem;
+    padding-bottom: 1rem;
+  }
+
+  .menu-grupa {
+    margin-bottom: 1rem;
+  }
+
+  .menu-grupa-nazwa {
+    margin-bottom: 0.35rem;
+    padding-bottom: 0.55rem;
+  }
+
+  .menu-lista a {
+    min-height: 38px;
+    padding: 0.2rem 0;
+    font-size: 1.02rem;
+  }
+
+  .menu-stopka-wew {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
 /* --- telefon: jedna kolumna, grupy zwijane, stopka zwarta --- */
 @media (max-width: 767px) {
   .menu-pasek-wew {
@@ -398,7 +444,7 @@
     height: 56px;
   }
   .menu-tresc {
-    padding: 0.25rem 1.25rem 1rem;
+    padding: 0.25rem 1.25rem 1.5rem;
   }
   .menu-grupa {
     margin-bottom: 1rem;
@@ -411,7 +457,7 @@
     font-size: 0.98rem;
   }
   .menu-stopka-wew {
-    padding: 0.45rem 1.25rem calc(0.45rem + env(safe-area-inset-bottom, 0px));
+    padding: 0.35rem 1.25rem calc(0.35rem + env(safe-area-inset-bottom, 0px));
     gap: 0.5rem 1rem;
   }
   .menu-cta,

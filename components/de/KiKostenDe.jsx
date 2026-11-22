@@ -104,13 +104,13 @@ export default function KiKostenDe() {
         de={KI_KOSTEN_DE.okruszek}
       />
 
-      <section style={{ paddingTop: 'clamp(124px, 14vw, 160px)', paddingBottom: '36px' }}>
+      <section className="sekcja-po-okruszkach">
         <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {KI_KOSTEN_DE.tag}
             </div>
-            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.2rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' }}>
+            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.2rem', color: 'var(--color-text-dark)', hyphens: 'manual', overflowWrap: 'break-word' }}>
               {h1}
             </h1>
             <BylineDe stand={STAND_KI_KOSTEN_DE} />

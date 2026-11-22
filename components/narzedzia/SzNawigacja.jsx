@@ -10,6 +10,7 @@ export default function SzNawigacja({ items: poczatkowe = null, etykieta }) {
   const [items, setItems] = useState(poczatkowe || []);
   const [aktywna, setAktywna] = useState(poczatkowe && poczatkowe[0] ? poczatkowe[0].id : null);
   const lista = useRef(null);
+  const klikRef = useRef({ id: null, do: 0 });
 
   useEffect(() => {
     let wpisy = poczatkowe;
@@ -25,13 +26,61 @@ export default function SzNawigacja({ items: poczatkowe = null, etykieta }) {
       cele = wpisy.map((w) => document.getElementById(w.id));
     }
     if (typeof IntersectionObserver === 'undefined') return undefined;
+    const pary = [];
     const mapa = new Map();
-    cele.forEach((el, i) => { if (el && wpisy[i]) mapa.set(el, wpisy[i].id); });
+    cele.forEach((el, i) => {
+      if (el && wpisy[i]) {
+        mapa.set(el, wpisy[i].id);
+        pary.push({ el, id: wpisy[i].id });
+      }
+    });
+    const widoczne = new Set();
+    const wybierzAktywna = () => {
+      if (klikRef.current.id && Date.now() < klikRef.current.do) {
+        setAktywna(klikRef.current.id);
+        return;
+      }
+      const naDole = typeof window !== 'undefined'
+        && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 28;
+      if (naDole && pary.length > 0) {
+        let ostatniaWidoczna = null;
+        for (const p of pary) {
+          if (p.el.getBoundingClientRect().top <= window.innerHeight * 0.72) ostatniaWidoczna = p.id;
+        }
+        if (ostatniaWidoczna) {
+          setAktywna(ostatniaWidoczna);
+          return;
+        }
+      }
+      let wybrana = null;
+      for (const p of pary) {
+        if (widoczne.has(p.el)) wybrana = p.id;
+      }
+      if (wybrana) setAktywna(wybrana);
+    };
     const obs = new IntersectionObserver((wp) => {
-      for (const w of wp) if (w.isIntersecting) setAktywna(mapa.get(w.target));
-    }, { rootMargin: '-30% 0px -60% 0px' });
+      for (const w of wp) {
+        if (w.isIntersecting) widoczne.add(w.target);
+        else widoczne.delete(w.target);
+      }
+      wybierzAktywna();
+    }, { rootMargin: '-22% 0px -58% 0px' });
     mapa.forEach((_, el) => obs.observe(el));
-    return () => obs.disconnect();
+    let ramka = 0;
+    const onScroll = () => {
+      if (ramka) return;
+      ramka = requestAnimationFrame(() => {
+        ramka = 0;
+        if (klikRef.current.id && Date.now() >= klikRef.current.do) klikRef.current.id = null;
+        wybierzAktywna();
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      obs.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      if (ramka) cancelAnimationFrame(ramka);
+    };
   }, [poczatkowe]);
 
   // Pasek pigułek na telefonie: aktywna pigułka na środku (tylko przewijanie paska, nie strony).
@@ -49,7 +98,16 @@ export default function SzNawigacja({ items: poczatkowe = null, etykieta }) {
       <ol className="sz-nav__lista" ref={lista}>
         {items.map((it) => (
           <li key={it.id}>
-            <a href={`#${it.id}`} aria-current={aktywna === it.id ? 'true' : undefined}>{it.label}</a>
+            <a
+              href={`#${it.id}`}
+              aria-current={aktywna === it.id ? 'true' : undefined}
+              onClick={() => {
+                klikRef.current = { id: it.id, do: Date.now() + 900 };
+                setAktywna(it.id);
+              }}
+            >
+              {it.label}
+            </a>
           </li>
         ))}
       </ol>

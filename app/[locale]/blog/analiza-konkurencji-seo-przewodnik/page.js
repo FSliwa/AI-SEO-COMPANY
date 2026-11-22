@@ -32,7 +32,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
@@ -74,27 +73,21 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/seo-competitor-analysis-step-by-step-guide` : `${BASE}/blog/analiza-konkurencji-seo-przewodnik`]}
       />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                SEO Analysis
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                August 03, 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              SEO Competitor Analysis: A Step-by-Step Guide
-            </h1>
-            <Byline sciezka="/blog/analiza-konkurencji-seo-przewodnik" data="2026-08-03" takzeEn />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              SEO Analysis
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            SEO Competitor Analysis: A Step-by-Step Guide
+          </h1>
+          <Byline sciezka="/blog/analiza-konkurencji-seo-przewodnik" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 An SEO competitor analysis identifies the 3 to 5 domains ranking in Google&apos;s Top 5 across your core commercial queries, then compares their top pages, SERP formats, and referring domains against your site. A focused tactical review takes 2 to 3 days, while a full multi-domain audit takes 2 to 4 weeks and produces a prioritized 3-to-6-month cluster roadmap.
               </AnswerBox>
@@ -324,31 +317,24 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 locale={locale}
                 currentSlug="/blog/analiza-konkurencji-seo-przewodnik"
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       ) : (
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Analiza SEO
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                03 Sierpnia 2026
-              </span>
-            </div>
-            {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Analiza konkurencji SEO: przewodnik krok po kroku
-            </h1>
-            <Byline sciezka="/blog/analiza-konkurencji-seo-przewodnik" data="2026-08-03" takzeEn />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Analiza SEO
+            </span>
+          </div>
+          {/* The English branch above has its own <h1>. Only one of the two branches ever
+              renders, so this is not a second H1 on the page - do not demote it. */}
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Analiza konkurencji SEO: przewodnik krok po kroku
+          </h1>
+          <Byline sciezka="/blog/analiza-konkurencji-seo-przewodnik" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 Analiza konkurencji SEO polega na wyłonieniu 3-5 domen zajmujących miejsca w Top 5 Google na Twoje główne frazy biznesowe oraz porównaniu ich najmocniejszych podstron, formatów SERP i profilu linków z Twoją witryną. Szybki przegląd taktyczny trwa 2-3 dni, natomiast pełny audyt zajmuje 2-4 tygodnie i kończy się priorytetowym planem klastrów na 3-6 miesięcy.
               </AnswerBox>
@@ -638,8 +624,7 @@ export default async function ArticleAnalizaKonkurencjiPage({ params }) {
                 locale={locale}
                 currentSlug="/blog/analiza-konkurencji-seo-przewodnik"
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       )}
       </article>

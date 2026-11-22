@@ -68,7 +68,7 @@ export default async function Home({ params }) {
           hero (kolumna kafli z narzedziami na tle gor, 19.11), oferta na pasmie gor, realizacje,
           panel, cennik, wiedza, kontakt. Zadna sekcja nie zniknela; zmienila sie tylko kolejnosc
           (oferta przed "Dlaczego my", cennik za panelem klienta) i tla. */}
-      <main>
+      <main style={{ overflowX: 'clip' }}>
         <Hero locale={locale} />
         <div className="gory-oferta" data-kursor="obraz" data-petla="">
           {/* 7.11.2026: dryfujace chmury na styku hero i oferty (dekoracja, app/wyglad.css). */}

@@ -17,7 +17,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
@@ -47,29 +46,20 @@ export default async function ArticleAttributionTools({ params }) {
       <Header />
       <ArticleSchema slug="/blog/best-marketing-attribution-tools-for-2026" locale={locale} />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Attribution Tools
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                August 07, 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Best Marketing Attribution Tools for 2026: Full Buyer Guide
-            </h1>
-            <Byline sciezka="/blog/best-marketing-attribution-tools-for-2026" data="2026-08-07" takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Attribution Tools
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Best Marketing Attribution Tools for 2026: Full Buyer Guide
+          </h1>
+          <Byline sciezka="/blog/best-marketing-attribution-tools-for-2026" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 Choosing the right marketing attribution tool in 2026 depends on your sales model: Dreamdata or HockeyStack fit B2B pipeline tracking, Triple Whale or Northbeam serve DTC e-commerce, CallRail links phone leads, Ruler Analytics covers multi-client agencies, and GA4 provides a free baseline. Audit event tracking quality first so attribution models receive clean conversion data.
               </AnswerBox>
@@ -327,8 +317,7 @@ export default async function ArticleAttributionTools({ params }) {
                 customCtaTitleEn="Need help with attribution?"
                 customCtaTextEn="We will review your analytics setup as part of an SEO audit (from €350 net, included in every SEO package) and show you how to improve your tracking accuracy."
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 

@@ -183,7 +183,7 @@ export function LokalneNapStronaDe() {
       <AppleFaq
         faqData={FAQ_DE.map((f) => ({ ...f, questionEn: f.question, answerEn: f.answer, idEn: f.id }))}
         title="Häufige Fragen zu NAP-Konsistenz, Google-Bewertungen und QR-Codes"
-        sectionId="pytania"
+        sectionId="faq"
       />
 
       <section style={{ paddingBottom: '2rem' }}>

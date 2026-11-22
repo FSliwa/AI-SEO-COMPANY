@@ -17,7 +17,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
@@ -52,29 +51,20 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
       <Header />
       <ArticleSchema slug="/blog/seo-for-saas-startups-playbook" locale={locale} />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                SaaS SEO
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                August 11, 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              SEO for SaaS Startups: Product-Led Playbook 2026
-            </h1>
-            <Byline sciezka="/blog/seo-for-saas-startups-playbook" data="2026-08-11" takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              SaaS SEO
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            SEO for SaaS Startups: Product-Led Playbook 2026
+          </h1>
+          <Byline sciezka="/blog/seo-for-saas-startups-playbook" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 Product-led SEO for SaaS startups grows pipeline fastest when you fix crawlability, SSR rendering, and GA4 trial tracking in month one, then ship bottom-of-funnel comparison, alternative, integration, and use-case pages before broad educational posts. Reserve programmatic templates for patterns exceeding roughly 30 unique pages and judge ROI on SQLs and sign-ups.
               </AnswerBox>
@@ -99,8 +89,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               </ul>
 
               {/* ===== KEY TAKEAWAYS ===== */}
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
-
               <h2 style={{ fontSize: '1.6rem', fontWeight: 500, marginBottom: '1rem' }}>Key Takeaways</h2>
               <p>SaaS SEO strategies compound fastest when you sequence product-shaped BOFU pages before broad educational content, build a clean technical foundation first, and measure the channel on qualified pipeline - sign-ups and sales-qualified leads from organic - rather than on rankings.</p>
 
@@ -131,8 +119,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <p>The asymmetry is easiest to see when you compare two pages built by the same team in the same sprint. A page titled &quot;Asana vs [Product Name]: Side-by-side comparison&quot; attracts a small, self-selected audience that has already decided it needs a tool in this category and is choosing between two named options. A blog post titled &quot;How to run better team standups&quot; attracts a larger audience, most of which is not buying anything. Both may rank. Only one converts at a rate that justifies the build. Track both in GA4 for 90 days and you will have your own version of this number rather than someone else&apos;s benchmark.</p>
               <p>The implication for resource allocation is direct: spend the first six months on product-shaped pages, docs, and integration content. Reserve broad educational content for month six onward, once the foundation is earning traffic and you have conversion data to guide topic selection.</p>
               <p>The <a href="https://www.statista.com/statistics/510333/worldwide-public-cloud-software-as-a-service/" target="_blank" rel="noopener noreferrer">global public cloud SaaS market</a> is large and still growing, but market size is not search demand. It tells you competition for generic head terms will be fierce, not that a specific query has buyers behind it. Validate demand at the query level with Search Console and a keyword tool, not at the market level. Winning generic head terms takes years. Winning product-specific, integration, and comparison queries takes months.</p>
-
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               {/* ===== SECTION: Roadmap ===== */}
               <h2 id="what-does-a-practical-012-month-saas-seo-roadmap-look-like">What does a practical 0-12 month SaaS SEO roadmap look like?</h2>
@@ -214,8 +200,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
 
               <p><strong>Quick decision rule:</strong> Build programmatic pages when you have a repeating pattern with 30+ viable combinations (integrations, use cases, locations), real differentiating data for each one, and engineering capacity to build a template. Build manual landing pages when the page requires nuanced copy, a specific competitor comparison, or a high-stakes conversion moment.</p>
 
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
-
               {/* ===== SECTION: Keyword Research ===== */}
               <h2 id="how-do-you-do-keyword-research-specifically-for-saas-buyer-journeys">How do you do keyword research specifically for SaaS buyer journeys?</h2>
               <p>Generic keyword research finds volume. SaaS keyword research finds buyers. The difference is mapping every query to a jobs-to-be-done framework and a funnel stage before scoring it.</p>
@@ -245,8 +229,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <div className="pro-tip" style={{ padding: '1.5rem', background: 'var(--w-papier-2)', borderRadius: '12px', borderLeft: '4px solid var(--w-tusz)', marginBottom: '2rem' }}>
                 <strong>Pro Tip:</strong> To tighten the filter further, show only keywords where all three competitors rank in the top 20 - not just two of them. These are the highest-consensus opportunities - if every competitor has a page for it, buyers are clearly searching for it.
               </div>
-
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               {/* ===== SECTION: Content Models ===== */}
               <h2 id="what-content-models-actually-convert-saas-organic-traffic-into-trials">What content models actually convert SaaS organic traffic into trials?</h2>
@@ -301,8 +283,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <p>Documentation is one of the most underrated ranking assets in SaaS SEO. A well-structured docs site ranks for long-tail feature queries that no blog post would target. Use GitBook or a similar docs platform that outputs clean, crawlable HTML. Set up a dedicated subdomain (docs.yourproduct.com) or subdirectory (/docs/) and include it in your XML sitemap. A subdirectory is generally the safer default for a young domain, since it consolidates signals on one host. Index docs pages that answer real user questions; noindex changelog pages and internal admin docs. Superseded version pages need a deliberate decision rather than a blanket rule - see the canonicalization section below.</p>
               <p>There is a real shift in how software buyers discover tools, and it is worth planning for. <a href="https://learn.g2.com/g2-2026-ai-search-insight-report" target="_blank" rel="noopener noreferrer">G2&apos;s 2026 AI Search Insight Report</a> - a survey of 1,076 B2B decision makers fielded in March 2026 - found that B2B buyers increasingly begin research with AI assistants rather than with Google, and that AI-surfaced information regularly leads them to shortlist vendors they had not previously considered. The report&apos;s central finding is about trust: buyers act on AI recommendations but look for corroboration, and third-party review platforms are the signal they check most. The operational takeaway is therefore not &quot;add more schema&quot; but &quot;make sure your product&apos;s claims are consistent and verifiable across your own docs, your comparison pages, and your review profiles,&quot; because that is the corpus these systems draw on.</p>
 
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
-
               {/* ===== SECTION: Technical SEO ===== */}
               <h2 id="what-technical-seo-issues-actually-block-saas-sites-from-ranking">What technical SEO issues actually block SaaS sites from ranking?</h2>
               <p>Technical SEO for SaaS is not about chasing every Google algorithm update. How to rank SaaS websites comes down, at the technical layer, to removing the specific blockers that affect modern SaaS stacks: JavaScript rendering, multi-version docs, app-subdomain confusion, and crawl budget waste.</p>
@@ -341,8 +321,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 Pro Tip: In Google Search Console, use the URL Inspection tool on your five highest-priority pages after any major site update. If Googlebot&apos;s last crawl predates your update by more than two weeks, request indexing manually.
               </div>
 
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
-
               {/* ===== SECTION: Link Building ===== */}
               <h2 id="which-link-building-tactics-actually-work-for-saas-startups">Which link building tactics actually work for SaaS startups?</h2>
               <p>SaaS link building works best when it is tied to product assets, not to generic outreach. A cold email asking for a link to your blog post gets ignored. An email to an integration partner asking to be listed on their integrations page gets a yes, because it is mutually beneficial.</p>
@@ -370,8 +348,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <h3>Link quality metrics to track</h3>
               <p>Track domain rating (DR) or domain authority (DA) as a rough proxy - both are third-party estimates, not Google metrics - but weight these three factors more heavily: topical relevance (does the linking site cover your product category?), editorial context (is the link in body copy, not a footer or sidebar?), and estimated organic traffic to the linking page (a link from a page with real traffic is worth more than one from a DR 60 page with zero visitors).</p>
 
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
-
               {/* ===== SECTION: Measuring SEO ===== */}
               <h2 id="how-do-you-measure-seo-performance-and-run-cro-experiments-for-saas">How do you measure SEO performance and run CRO experiments for SaaS?</h2>
               <p>Measuring SEO for SaaS means tracking the funnel from organic session to trial to paid customer, not just rankings and traffic. Rankings are a leading indicator. Sign-ups and sales-qualified leads from organic are the metrics that justify the investment - an MQL count sits between the two and is the easiest number in the funnel to inflate, because you control its definition.</p>
@@ -398,8 +374,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <h3>Validating SEO lift</h3>
               <p>Attribution in SaaS is messy. A buyer might read your comparison page, leave, see a retargeting ad, and sign up a week later. To isolate SEO lift, track sessions where organic was the first touch and a conversion followed within a 30-day window, and compare trial-to-paid rates for organic cohorts against paid cohorts. Organic often converts to paid at a higher rate, plausibly because self-directed buyers are further along in their evaluation - but this is a correlation, and self-selection explains part of it. Treat it as supporting evidence in your business case, not proof of causation.</p>
               <p>GA4 alone will undercount SEO at enterprise deal sizes, because a six-month buying cycle involves several people and a last-click model credits whichever channel closed the loop. Agree the model with whoever owns your CRM before you report on it: pass the first organic landing page into the CRM as a lead property, then read organic&apos;s contribution across the whole opportunity record rather than at the session level.</p>
-
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               {/* ===== SECTION: Timeline and Cost ===== */}
               <h2 id="how-long-does-saas-seo-take-and-what-does-it-cost">How long does SaaS SEO take, and what does it cost?</h2>
@@ -449,8 +423,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 <li>Publish one original data point from your product (anonymized aggregate stats) and pitch it to two SaaS newsletters</li>
               </ul>
 
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
-
               {/* ===== SECTION: Growth Examples ===== */}
               <h2 id="three-public-growth-examples-you-can-replicate-right-now">Three public growth examples you can replicate right now</h2>
               <p>These are publicly observable organic growth patterns from SaaS companies that used product-shaped SEO. The patterns are visible from the outside; the conversion figures behind them are not public, so treat the mechanism as the lesson rather than any specific number.</p>
@@ -489,8 +461,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 <li>Run a Search Console query report filtered to your docs pages and optimize the five with the most impressions but lowest CTR</li>
               </ul>
 
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
-
               {/* ===== SECTION: How AI SEO COMPANY Executes ===== */}
               <h2 id="how-ai-seo-company-executes-this-playbook-for-saas-clients">How AI SEO COMPANY executes this playbook for SaaS clients</h2>
               <p>AI SEO COMPANY&apos;s approach to SaaS SEO follows the same four-phase sequence described in this guide: technical foundation, product-shaped pages, programmatic scale with initial link plays, and content clusters with CRO (CRO is part of SEO Premium). The difference is that the sequence runs against a fixed monthly retainer rather than ad hoc internal effort, which means the parallel timeline from the roadmap section is the default rather than the exception.</p>
@@ -504,8 +474,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
               <p>Reporting is monthly and follows the metrics structure from the measurement section: share of voice, organic sign-ups, and pipeline attribution - not a list of keywords that moved.</p>
               <p>For current retainer details and what each tier includes, see the <Link href="/cennik-pozycjonowania">SEO pricing page</Link>.</p>
 
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
-
               {/* ===== SECTION: Common Mistakes ===== */}
               <h2 id="what-most-saas-founders-get-wrong-about-organic-growth">What most SaaS founders get wrong about organic growth</h2>
               <p>The mistakes are predictable enough to list. If you recognize your own company in any of these, the fix is in the corresponding section of this guide.</p>
@@ -516,8 +484,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 <li><strong>Ignoring technical debt until it is an emergency.</strong> A site with broken canonicalization, client-side rendering, and no sitemap will not rank regardless of how good the content is. Fix the foundation first; it is cheaper than fixing it later, and every page you publish on a broken foundation earns less than it should.</li>
                 <li><strong>Expecting results in one quarter.</strong> Individual phrases can rank quickly. The channel takes 12-24 months to compound. Budget and plan for the long game, or do not start - a three-month SEO project that gets cut produces nothing durable.</li>
               </ul>
-
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               {/* ===== SECTION: CTA Section ===== */}
               <h2 id="ai-seo-company-seo-execution-for-saas-teams-that-need-results-not-reports">AI SEO COMPANY: SEO execution for SaaS teams that need results, not reports</h2>
@@ -530,8 +496,6 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 <li>CEE-based pricing that makes managed SEO accessible to startups that would be priced out by a Western European or North American agency</li>
               </ul>
               <p>Start with an SEO audit (from €350 net, included in every SEO package): <Link href="/audyt-seo">request an SEO audit</Link> and we will show you exactly what is blocking your organic growth and what the first 90 days would look like.</p>
-
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               {/* ===== SECTION: Sources ===== */}
               <h2 id="sources">Sources</h2>
@@ -558,8 +522,7 @@ export default async function ArticleSaaSSEOPlaybook({ params }) {
                 customCtaTitleEn="Ready to build your SaaS SEO engine?"
                 customCtaTextEn="We will run an SEO audit (from €350 net, included in every SEO package) and show you exactly which BOFU pages to build first for your product."
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 

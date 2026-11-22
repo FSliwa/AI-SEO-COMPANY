@@ -32,7 +32,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
@@ -133,31 +132,22 @@ export default async function ArticleCanonicalPage({ params }) {
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/canonical-tag-seo-guide-2026` : `${BASE}/blog/tag-kanoniczny-seo-jak-wdrozyc-w-2026`]}
       />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Technical SEO
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                July 30, 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              SEO Canonical Tag - what is it, how it works and how to implement it in 2026
-            </h1>
-            <Byline sciezka={KLUCZ_CANONICAL} takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Technical SEO
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            SEO Canonical Tag - what is it, how it works and how to implement it in 2026
+          </h1>
+          <Byline sciezka={KLUCZ_CANONICAL} takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 A canonical tag (rel=&quot;canonical&quot;) is an HTML &lt;head&gt; element that tells Google which URL is the preferred version among duplicates such as UTM or filter URLs. In 2026, implement one absolute HTTPS URL returning HTTP 200 per page and verify up to 25 URLs in the AI SEO COMPANY free SEO audit.
               </AnswerBox>
@@ -278,8 +268,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <p>Do you want to check what canonical tags look like on your site? <Link href={homeHash('kontakt', locale)}>Schedule a free consultation</Link>.</p>
               
               <p><span style={{ fontWeight: 'bold' }}>Also read:</span> <Link href="/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026">How much does SEO cost in Poland? Pricing and packages 2026</Link></p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_CANONICAL} title="Frequently asked questions" sectionId="pytania-canonical" />
@@ -294,29 +283,20 @@ export default async function ArticleCanonicalPage({ params }) {
       ) : (
         <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Techniczne SEO
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                30 lipca 2026
-              </span>
-            </div>
-            {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Tag kanoniczny SEO - czym jest, jak działa i jak go wdrożyć w 2026
-            </h1>
-            <Byline sciezka={KLUCZ_CANONICAL} takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Techniczne SEO
+            </span>
+          </div>
+          {/* The English branch above has its own <h1>. Only one of the two branches ever
+              renders, so this is not a second H1 on the page - do not demote it. */}
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Tag kanoniczny SEO - czym jest, jak działa i jak go wdrożyć w 2026
+          </h1>
+          <Byline sciezka={KLUCZ_CANONICAL} takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 Tag kanoniczny (rel=&quot;canonical&quot;) to znacznik w sekcji &lt;head&gt; wskazujący Google główny adres URL spośród duplikatów (np. parametrów UTM i filtrów). W 2026 roku wdróż pełny adres HTTPS zwracający kod 200 (1 tag na stronę) i zweryfikuj do 25 podstron w darmowym audycie SEO AI SEO COMPANY.
               </AnswerBox>
@@ -486,8 +466,7 @@ export default async function ArticleCanonicalPage({ params }) {
               <p>W ramach współpracy dbamy o to, by tagi kanoniczne, sitemap.xml oraz struktura sklepu ze sobą współgrały. To najbezpieczniejsza droga do stabilnego wzrostu widoczności.</p>
               
               <p>Chcesz sprawdzić, jak wyglądają tagi kanoniczne na Twojej stronie? <Link href={homeHash('kontakt', locale)}>Umów bezpłatną konsultację</Link>.</p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_CANONICAL} title="Najczęstsze pytania" sectionId="pytania-canonical" />

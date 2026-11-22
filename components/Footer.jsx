@@ -16,8 +16,27 @@ import { GODZINY_TEKST } from '@/lib/godziny';
 import { BIURO, SIEDZIBA, ETYKIETY, REJESTR, adresLinia } from '@/lib/firma';
 
 // A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
-// Wszystkie trasy /narzedzia i /narzedzia/* poza /narzedzia/raport-seo (SzablonRaport renderuje <Contact />) nie mają formularza.
-const bezFormularza = (s) => s === '/regulamin' || s === '/cookies' || s === '/impressum' || s === '/narzedzia' || (typeof s === 'string' && s.startsWith('/narzedzia/') && s !== '/narzedzia/raport-seo');
+// Narzędzia Sprint 1/2 z <Contact /> (oraz /de/tools w ToolsHubDe.jsx i /narzedzia/raport-seo w PL/EN) przewijają płynnie do #kontakt / #contact bez przeładowania strony i utraty wyników skanu.
+const NARZEDZIA_Z_FORMULARZEM = new Set([
+  '/narzedzia/tester-robotow-ai-robots-txt',
+  '/narzedzia/test-core-web-vitals-porownanie',
+  '/narzedzia/sprawdz-cytowalnosc-strony-ai',
+  '/narzedzia/sprawdz-przekierowania-hreflang',
+  '/narzedzia/generator-indexnow-test-bing-chatgpt',
+  '/narzedzia/walidator-grafu-encji-json-ld',
+  '/narzedzia/audyt-lokalnego-seo-wizytowki',
+]);
+
+const bezFormularza = (s, jezyk) => {
+  if (s === '/regulamin' || s === '/cookies' || s === '/impressum') return true;
+  if (s === '/narzedzia') return jezyk !== 'de';
+  if (typeof s === 'string' && s.startsWith('/narzedzia/')) {
+    if (NARZEDZIA_Z_FORMULARZEM.has(s)) return false;
+    if (s === '/narzedzia/raport-seo') return jezyk === 'de';
+    return true;
+  }
+  return false;
+};
 
 export default function Footer() {
   const lang = useLocale();
@@ -126,7 +145,7 @@ export default function Footer() {
           glowna do formularza (05.10.2026). 5.11.2026 (A3b/BL-02): na tych
           stronach takze href prowadzi wprost do formularza strony glownej. */}
       <a
-        href={bezFormularza(sciezka) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)}
+        href={bezFormularza(sciezka, lang) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)}
         onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)}
         className={`kota-floating-cta${poPierwszymEkranie ? ' is-visible' : ''}${nadFormularzem ? ' is-nad-formularzem' : ''}`}
         data-cta="floating"

@@ -57,7 +57,7 @@ export default function AgencySwitchClient() {
       <Header />
       <Breadcrumbs pl="Zmiana agencji SEO" en="Switching SEO agency" />
 
-      <section style={{ paddingTop: 'clamp(120px, 14vw, 160px)', paddingBottom: '40px' }}>
+      <section className="sekcja-po-okruszkach">
         <div className="container" style={{ maxWidth: '860px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', margin: '0 auto 2rem' }}>
             <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', letterSpacing: '0.14em' }}>
@@ -84,7 +84,7 @@ export default function AgencySwitchClient() {
         </div>
       </section>
 
-      <section style={{ paddingBottom: '40px' }}>
+      <section className="de-abschnitt">
         <div className="container" style={{ maxWidth: '860px', margin: '0 auto', display: 'grid', gap: '2rem' }}>
           <Reveal>
             <div style={card}>

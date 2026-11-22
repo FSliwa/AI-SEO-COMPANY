@@ -19,7 +19,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 
 import ArticleTOC from '@/components/ArticleTOC';
@@ -124,31 +123,22 @@ export default async function ArticleCennikPage({ params }) {
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/how-much-does-seo-cost-pricing-packages-2026` : `${BASE}/blog/ile-kosztuje-seo-w-polsce-cennik-i-pakiety-2026`]}
       />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Strategy & Pricing
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                {dataPubl.label}
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              How much does SEO cost? Pricing
-            </h1>
-            <Byline sciezka={KLUCZ_CENNIK} takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Strategy & Pricing
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            How much does SEO cost? Pricing
+          </h1>
+          <Byline sciezka={KLUCZ_CENNIK} takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 In 2026, our review of 17 Polish SEO agencies (as of November 4, 2026) shows published entry rates from PLN 490 net/month for Google Business Profile-only plans to PLN 4,000+ net/month for full-site retainers. At AI SEO COMPANY, full monthly SEO packages cost €450-€590 net per month (PLN 1,900-2,500 net) with cancel-anytime terms.
               </AnswerBox>
@@ -177,8 +167,7 @@ export default async function ArticleCennikPage({ params }) {
               
               <h2 id="the-role-of-ai">The role of AI in modern SEO pricing</h2>
               <p>Artificial Intelligence is radically transforming how SEO services are priced and delivered. Agencies leveraging advanced AI tools can perform large-scale data analysis, semantic keyword research, and competitor backlink profiling much faster than before. However, this doesn&apos;t necessarily mean SEO is becoming cheaper. Instead, the focus is shifting toward higher quality and strategic execution. While AI can draft content outlines, human expertise is still required to inject brand voice, ensure factual accuracy, and satisfy Google&apos;s E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) guidelines. Therefore, when you pay for premium SEO in 2026, you are investing in the sophisticated human orchestration of AI tools, ensuring your brand stands out in an increasingly automated digital ecosystem.</p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_CENNIK} title="Frequently asked questions" sectionId="pytania-cennik" />
@@ -197,44 +186,31 @@ export default async function ArticleCennikPage({ params }) {
         <>
 
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Budżet SEO
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                {dataPubl.label.toLowerCase()}
-              </span>
-            </div>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Budżet SEO
+            </span>
+          </div>
 
-            {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 500, 
-              color: 'var(--w-tusz)', 
-              marginBottom: '1.5rem', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              textAlign: 'left'
-            }}>
-              Ile kosztuje SEO w Polsce? Cennik i pakiety 2026
-            </h1>
+          {/* The English branch above has its own <h1>. Only one of the two branches ever
+              renders, so this is not a second H1 on the page - do not demote it. */}
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+            fontWeight: 500, 
+            color: 'var(--w-tusz)', 
+            marginBottom: '1.5rem', 
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            textAlign: 'left'
+          }}>
+            Ile kosztuje SEO w Polsce? Cennik i pakiety 2026
+          </h1>
 
-            <Byline sciezka={KLUCZ_CENNIK} takzeEn />
+          <Byline sciezka={KLUCZ_CENNIK} takzeEn />
 
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </div>
-            
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 W 2026 roku w przeglądzie cenników 17 agencji SEO w Polsce (stan na 4.11.2026) publikowane stawki „od” wynoszą od 490 zł netto/mies. za samą wizytówkę Google do ponad 4 000 zł netto/mies. za cały serwis. W AI SEO COMPANY kompleksowe pakiety z umową miesięczną kosztują 1 900-2 500 zł netto miesięcznie (SEO Standard i SEO Premium).
               </AnswerBox>
@@ -491,8 +467,7 @@ export default async function ArticleCennikPage({ params }) {
                 <li><span style={{ fontWeight: 'bold' }}><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Screaming Frog SEO Spider</a></span> - bezpłatna wersja pozwala przeskanować do 500 podstron i znaleźć błędy techniczne (brakujące tytuły, zduplikowane treści, błędy 404).</li>
                 <li><span style={{ fontWeight: 'bold' }}><a href="https://ahrefs.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Ahrefs</a> lub <a href="https://majestic.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Majestic</a></span> - analiza profilu linków zewnętrznych; pozwala sprawdzić, skąd agencja pozyskuje linki i czy są wartościowe.</li>
               </ul>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_CENNIK} title="Najczęstsze pytania" sectionId="pytania-cennik" />

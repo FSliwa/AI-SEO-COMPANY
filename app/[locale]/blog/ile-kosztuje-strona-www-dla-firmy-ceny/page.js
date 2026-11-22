@@ -17,7 +17,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 
 import ArticleTOC from '@/components/ArticleTOC';
@@ -69,31 +68,21 @@ export default async function ArticleWebsitePricingPage({ params }) {
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/how-much-does-a-business-website-cost-pricing` : `${BASE}/blog/ile-kosztuje-strona-www-dla-firmy-ceny`]}
       />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Web Design & Pricing
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                Aug 01, 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              How Much Does a Website Cost? Business Website Pricing and What’s Included (2026)
-            </h1>
-            <Byline sciezka="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" data="2026-08-01" takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Web Design & Pricing
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            How Much Does a Website Cost? Business Website Pricing and What’s Included (2026)
+          </h1>
+          <Byline sciezka="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 In 2026, a basic landing page or 5-page business brochure website typically costs €300 to €1,200 net, while multi-page corporate sites, e-commerce stores, and custom CRM or multilingual builds cost proportionally more. Final pricing depends on custom design versus templates, copywriting, technical SEO setup, integrations, and recurring annual hosting and maintenance costs.
               </AnswerBox>
@@ -467,36 +456,25 @@ export default async function ArticleWebsitePricingPage({ params }) {
               </ul>
               
               <BlogCTA currentSlug="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" />
-            </div>
-          </Reveal>
+          </div>
         </div>
 
       ) : (
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Projektowanie & Cenniki
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                01 Sierpnia 2026
-              </span>
-            </div>
-            {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Ile kosztuje strona internetowa dla firmy: ceny i co zawierają
-            </h1>
-            <Byline sciezka="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" data="2026-08-01" takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Projektowanie & Cenniki
+            </span>
+          </div>
+          {/* The English branch above has its own <h1>. Only one of the two branches ever
+              renders, so this is not a second H1 on the page - do not demote it. */}
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Ile kosztuje strona internetowa dla firmy: ceny i co zawierają
+          </h1>
+          <Byline sciezka="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 W 2026 roku prosty landing page lub strona wizytówkowa do 5 podstron kosztuje według naszego przeglądu rynku około 1 300-5 000 zł netto, natomiast rozbudowane serwisy firmowe B2B i sklepy e-commerce wyceniane są wyżej. O końcowym budżecie decydują indywidualny projekt graficzny, wsad treści, techniczne SEO, integracje z CRM lub płatnościami oraz roczne utrzymanie.
               </AnswerBox>
@@ -879,8 +857,7 @@ export default async function ArticleWebsitePricingPage({ params }) {
               </ul>
               
               <BlogCTA currentSlug="/blog/ile-kosztuje-strona-www-dla-firmy-ceny" />
-            </div>
-          </Reveal>
+          </div>
         </div>
       )}
       </article>

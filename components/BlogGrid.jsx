@@ -180,7 +180,7 @@ export default function BlogGrid() {
               cursor: 'pointer'
             }}>
               {/* Desktop: side-by-side, Mobile: stack */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', width: '100%' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', width: '100%' }}>
                 
                 {/* Bylo tlo CSS - miniatura nie istniala jako <img>, wiec nie
                     trafiala do Google Images i nie miala tekstu alternatywnego. */}
@@ -237,7 +237,7 @@ export default function BlogGrid() {
 
         <RevealStagger style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', 
           gap: '1.5rem' 
         }}>
           {gridPosts.map((post, idx) => {

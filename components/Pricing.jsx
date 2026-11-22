@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { Reveal, RevealStagger, RevealItem } from './ScrollReveal';
+import { Reveal } from './ScrollReveal';
 import { sectionId } from '@/lib/anchors';
 import { hash } from '@/lib/anchors';
 import { Link } from '../i18n/routing';
@@ -30,9 +30,9 @@ export default function Pricing({ isMainContent = false }) {
           </div>
         </Reveal>
 
-        <RevealStagger className="pricing-grid">
+        <Reveal className="pricing-grid">
           {/* Package 1: SEO Standard */}
-          <RevealItem className="pricing-card">
+          <div className="pricing-card">
             <div className="pricing-header">
               <div className={kosm.cennikKodNagl} aria-hidden="true">
                 <span className={kosm.cennikKodNr}>{t3('PAKIET 01', 'PLAN 01', 'PAKET 01')}</span>
@@ -88,10 +88,10 @@ export default function Pricing({ isMainContent = false }) {
               <span className="pricing-mikro-el">{lang === 'pl' ? 'Rezygnacja: 1 mies.' : 'Notice: 1 month'}</span>
             </div>
             <a href={hash('kontakt', lang)} className="btn btn-secondary" data-cta="pricing" data-plan="standard">{t('btnChoose')} <span className="sr-only"> {t('standardTitle')}</span></a>
-          </RevealItem>
+          </div>
 
           {/* Package 2: SEO Premium */}
-          <RevealItem className="pricing-card pricing-card--popular">
+          <div className="pricing-card pricing-card--popular">
             <span className="pricing-popular-badge">
               {lang === 'pl' ? 'NAJCZĘŚCIEJ WYBIERANY · SEO + AI' : 'MOST POPULAR · SEO + AI'}
             </span>
@@ -149,10 +149,10 @@ export default function Pricing({ isMainContent = false }) {
               <span className="pricing-mikro-el">{lang === 'pl' ? 'Silniki AI: 4 modele' : 'AI engines: 4 models'}</span>
             </div>
             <a href={hash('kontakt', lang)} className="btn btn-dark-fill" data-cta="pricing" data-plan="premium">{t('btnChoose')} <span className="sr-only"> {t('premiumTitle')}</span></a>
-          </RevealItem>
+          </div>
 
           {/* Package 3 (Featured Booster Pack) */}
-          <RevealItem className="pricing-card featured">
+          <div className="pricing-card featured">
             <span className="pricing-featured-badge">{lang === 'pl' ? 'STRONA WWW W CENIE' : 'WEBSITE INCLUDED'}</span>
             <div className="pricing-header">
               <div className={kosm.cennikKodNagl} aria-hidden="true">
@@ -216,8 +216,8 @@ export default function Pricing({ isMainContent = false }) {
               <span className="pricing-mikro-el">{lang === 'pl' ? 'Gwarancja ceny: 0 zł dopłat' : 'Price lock: €0 extra fees'}</span>
             </div>
             <a href={hash('kontakt', lang)} className="btn btn-primary btn-glow" data-cta="pricing" data-plan="booster">{t('btnChoose')} <span className="sr-only"> {t('boosterTitle')}</span></a>
-          </RevealItem>
-        </RevealStagger>
+          </div>
+        </Reveal>
 
         <Reveal className="pricing-note">
           {t('note')}

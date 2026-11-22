@@ -39,7 +39,6 @@ import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
 import Zrodla from '@/components/Zrodla';
 import AppleFaq from '@/components/service/AppleFaq';
-import { Reveal } from '@/components/ScrollReveal';
 import BlogCTA from '@/components/BlogCTA';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
@@ -148,46 +147,33 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/b2b-link-building-strategies-checklist` : `${BASE}/blog/link-building-b2b-dla-marketerow-strategie-i-checklista`]}
       />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                B2B Link Building
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                July 27, 2026
-              </span>
-            </div>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              B2B Link Building
+            </span>
+          </div>
 
-            <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 500, 
-              color: 'var(--w-tusz)', 
-              marginBottom: '1.5rem', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              textAlign: 'left'
-            }}>
-              B2B Link Building - Strategies & Checklist for Marketers
-            </h1>
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+            fontWeight: 500, 
+            color: 'var(--w-tusz)', 
+            marginBottom: '1.5rem', 
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            textAlign: 'left'
+          }}>
+            B2B Link Building - Strategies & Checklist for Marketers
+          </h1>
 
-            <Byline sciezka={KLUCZ_LB} takzeEn />
+          <Byline sciezka={KLUCZ_LB} takzeEn />
 
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </div>
-            
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 Effective B2B link building in 2026 rests on three pillars: proprietary-data digital PR, ecosystem partnerships, and bylined industry articles rather than mass directories or PBNs. At AI SEO COMPANY, retainers include 2 links/month in SEO Standard and 4 links/month in SEO Premium, and you can benchmark domain authority across ~135 million Common Crawl domains free.
               </AnswerBox>
@@ -458,8 +444,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
 
               <div style={{ fontSize: "1.3rem", fontWeight: 600, marginTop: "2rem", marginBottom: "1rem", color: "var(--w-tusz)" }}>Recommendation</div>
               <p style={{ marginBottom: '1.5rem' }}><Link href="/">SEO Agency</Link> | Branding, Web Design & Positioning - AI SEO COMPANY</p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_LB_B2B} title="Frequently asked questions" sectionId="pytania-lb-b2b" />
@@ -483,44 +468,31 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
         <>
 
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Link Building B2B
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                27 lipca 2026
-              </span>
-            </div>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Link Building B2B
+            </span>
+          </div>
 
-            {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 500, 
-              color: 'var(--w-tusz)', 
-              marginBottom: '1.5rem', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              textAlign: 'left'
-            }}>
-              {locale === 'en' ? 'B2B Link Building - Strategies & Checklist for Marketers' : 'Link building B2B dla marketerów: strategie i checklista'}
-            </h1>
+          {/* The English branch above has its own <h1>. Only one of the two branches ever
+              renders, so this is not a second H1 on the page - do not demote it. */}
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+            fontWeight: 500, 
+            color: 'var(--w-tusz)', 
+            marginBottom: '1.5rem', 
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            textAlign: 'left'
+          }}>
+            {locale === 'en' ? 'B2B Link Building - Strategies & Checklist for Marketers' : 'Link building B2B dla marketerów: strategie i checklista'}
+          </h1>
 
-            <Byline sciezka={KLUCZ_LB} takzeEn />
+          <Byline sciezka={KLUCZ_LB} takzeEn />
 
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </div>
-            
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 Skuteczny link building B2B w 2026 roku łączy 3 filary: dane własne (digital PR), partnerstwa branżowe i publikacje eksperckie zamiast masowych katalogów czy sieci PBN. W AI SEO COMPANY pakiety obejmują 2 linki miesięcznie w SEO Standard i 4 linki w SEO Premium, a siłę profilu na grafie Common Crawl (ok. 135 mln domen) sprawdzisz za darmo.
               </AnswerBox>
@@ -819,8 +791,7 @@ export default async function ArticleLinkBuildingB2bPage({ params }) {
               </ul>
 
               <p style={{ marginBottom: '1.5rem' }}>Jak zorganizować pilotaż: wybierz jedną taktykę (np. broken link building lub outreach partnerski), zdefiniuj 10-15 celów, uruchom kampanię przez 4-6 tygodni i oceń wskaźnik odpowiedzi oraz konwersję do publikacji. Wyniki pilotażu dają realną podstawę do decyzji o skali programu.</p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_LB_B2B} title="Najczęstsze pytania" sectionId="pytania-lb-b2b" />

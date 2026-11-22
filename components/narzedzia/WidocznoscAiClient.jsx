@@ -532,7 +532,7 @@ export default function WidocznoscAiClient() {
     <div className="narz-app" id="narzedzie" style={{ marginTop: '1.25rem' }}>
       <PasekDemo />
       {stan.status !== 'done' && !propozycje && (
-        <form ref={formRef} className="narz-formularz narz-siatka-formularza" onSubmit={start} style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', columnGap: '0.75rem', alignItems: 'end' }}>
+        <form ref={formRef} className="narz-formularz narz-siatka-formularza" onSubmit={start} style={{ columnGap: '0.75rem', alignItems: 'end' }}>
           <div>
             <label htmlFor="ai-firma" className="narz-etykieta">{en ? 'Company name' : 'Nazwa firmy'}</label>
             <input id="ai-firma" name="firma" required minLength={2} maxLength={100} defaultValue={wstepne.firma} placeholder={en ? 'e.g. Smith Carpentry' : 'np. Stolarnia Kowalski'} className="narz-pole" />

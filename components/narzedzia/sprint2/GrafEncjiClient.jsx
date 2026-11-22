@@ -578,8 +578,8 @@ export function GrafEncjiClient() {
                           {wybranyWezel.maId ? `@id: ${wybranyWezel.id}` : (en ? 'Missing @id anchor!' : 'Brak kotwicy @id!')}
                         </span>
                       </div>
-                      <p className="narz-mikro" style={{ marginTop: '0.35rem' }}>
-                        <strong>{en ? 'Found on:' : 'Wykryto na podstronie:'}</strong> <code>{wybranyWezel.strona || '/'}</code>
+                      <p className="narz-mikro" style={{ marginTop: '0.35rem', overflowWrap: 'anywhere' }}>
+                        <strong>{en ? 'Found on:' : 'Wykryto na podstronie:'}</strong> <code style={{ overflowWrap: 'anywhere' }}>{wybranyWezel.strona || '/'}</code>
                         {Array.isArray(wybranyWezel.pola) && wybranyWezel.pola.length > 0 && (
                           <> · <strong>{en ? 'Properties:' : 'Pola Schema:'}</strong> {wybranyWezel.pola.join(', ')}</>
                         )}
@@ -629,7 +629,7 @@ export function GrafEncjiClient() {
               </div>
 
               {sameAs.length > 0 ? (
-                <div className="narz-tabela-wrap" style={{ marginTop: '0.85rem' }}>
+                <div className="narz-tabela-wrap sp2-tabela-wrap" style={{ marginTop: '0.85rem' }}>
                   <table className="narz-tabela">
                     <thead>
                       <tr>
@@ -646,7 +646,7 @@ export function GrafEncjiClient() {
                             <th scope="row" style={{ textAlign: 'left' }}>
                               <span className="sp2-pigulka sp2-pigulka--ok">{plat}</span>
                             </th>
-                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>
+                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                               {u}
                             </td>
                           </tr>

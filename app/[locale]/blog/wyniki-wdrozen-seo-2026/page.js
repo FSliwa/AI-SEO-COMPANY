@@ -31,7 +31,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
@@ -72,26 +71,20 @@ export default async function ArtykulWynikiWdrozen({ params }) {
         dateModified={LASTMOD['https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026']}
       />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Analiza SEO
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                31 Sierpnia 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Wyniki wdrożeń SEO w 2026: dane GSC z pięciu domen
-            </h1>
-            <Byline sciezka="/blog/wyniki-wdrozen-seo-2026" data="2026-08-31" />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Analiza SEO
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Wyniki wdrożeń SEO w 2026: dane GSC z pięciu domen
+          </h1>
+          <Byline sciezka="/blog/wyniki-wdrozen-seo-2026" />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 Zestawienie danych z Google Search Console z 2026 roku dla pięciu prowadzonych przez nas domen (Staniax, Madame Thai, STEF-BUD, TQL i własnych projektów) pokazuje realną krzywą wzrostu od zera: pierwsze wyświetlenia pojawiają się po kilkunastu dniach (TQL: 296 wyświetleń w 18 dni), a w 1-3 miesiące rosną do 152-219 kliknięć w B2B i usługach lokalnych.
               </AnswerBox>
@@ -214,8 +207,7 @@ export default async function ArtykulWynikiWdrozen({ params }) {
                 customCtaTitlePl="Chcesz takie liczby u siebie?"
                 customCtaTextPl="Zobacz, co obejmują pakiety pozycjonowania i ile kosztują. Na zapytania odpowiadamy do 24 h w dni robocze."
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 

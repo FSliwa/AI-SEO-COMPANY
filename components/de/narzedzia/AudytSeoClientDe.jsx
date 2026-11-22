@@ -634,11 +634,11 @@ export default function AudytSeoClientDe() {
               </div>
 
               {fixPack && (
-                <details style={{ border: '1px solid rgba(15,23,42,0.12)', borderRadius: '16px', padding: '0.85rem 1rem', background: 'var(--w-papier, #f6f4ef)' }}>
+                <details style={{ border: '1px solid rgba(15,23,42,0.12)', borderRadius: '16px', padding: '0.85rem 1rem', background: 'var(--w-papier, #f6f4ef)', minWidth: 0, maxWidth: '100%', boxSizing: 'border-box' }}>
                   <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--w-tusz)' }}>
                     Copy-Paste Fix Pack (fertige Code-Blöcke zur Umsetzung)
                   </summary>
-                  <div style={{ marginTop: '0.75rem', display: 'grid', gap: '0.6rem' }}>
+                  <div style={{ marginTop: '0.75rem', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '0.6rem', minWidth: 0 }}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                       <div className="narz-filtry" role="group" aria-label="Fix Pack" style={{ margin: 0 }}>
                         {[
@@ -674,7 +674,7 @@ export default function AudytSeoClientDe() {
                         {skopiowanoFix ? 'Kopiert!' : 'Code kopieren'}
                       </button>
                     </div>
-                    <pre style={{ margin: 0, padding: '0.8rem 0.95rem', borderRadius: '12px', background: '#0f172a', color: '#f8fafc', fontSize: '0.78rem', lineHeight: 1.5, overflowX: 'auto', fontFamily: 'var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace)' }}>
+                    <pre style={{ margin: 0, padding: '0.8rem 0.95rem', borderRadius: '12px', background: '#0f172a', color: '#f8fafc', fontSize: '0.78rem', lineHeight: 1.5, overflowX: 'auto', minWidth: 0, maxWidth: '100%', boxSizing: 'border-box', fontFamily: 'var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace)' }}>
                       <code>{fixPack[zakladkaFix] || ''}</code>
                     </pre>
                   </div>
@@ -684,7 +684,7 @@ export default function AudytSeoClientDe() {
           )}
 
           {w.wynik >= 80 && (
-            <div className="narz-bramka" style={{ marginTop: '1.25rem', fontVariantNumeric: 'tabular-nums' }}>
+            <div className="narz-bramka" style={{ marginTop: '1.25rem', fontVariantNumeric: 'tabular-nums', minWidth: 0, maxWidth: '100%', boxSizing: 'border-box' }}>
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
                 <div>
                   <p className="narz-bramka-tytul" style={{ margin: 0 }}>
@@ -714,8 +714,8 @@ export default function AudytSeoClientDe() {
                   </svg>
                 )}
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', alignItems: 'center', marginTop: '0.55rem' }}>
-                <code style={{ flex: '1 1 260px', padding: '0.45rem 0.65rem', borderRadius: '8px', background: '#ffffff', border: '1px solid rgba(15,23,42,0.12)', fontSize: '0.74rem', fontFamily: 'var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace)', overflowX: 'auto', whiteSpace: 'nowrap' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', alignItems: 'center', marginTop: '0.55rem', minWidth: 0, maxWidth: '100%' }}>
+                <code style={{ flex: '1 1 260px', minWidth: 0, maxWidth: '100%', boxSizing: 'border-box', padding: '0.45rem 0.65rem', borderRadius: '8px', background: '#ffffff', border: '1px solid rgba(15,23,42,0.12)', fontSize: '0.74rem', fontFamily: 'var(--w-mono, ui-monospace, SFMono-Regular, Menlo, monospace)', overflowX: 'auto', whiteSpace: 'nowrap' }}>
                   {kodHtmlBadge}
                 </code>
                 <button

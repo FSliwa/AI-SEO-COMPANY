@@ -185,6 +185,9 @@
   border-radius: 16px;
   border: 1px solid rgba(15, 23, 42, 0.1);
   background: var(--color-bg-surface, #f8fafc);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .snippetKod {
   margin: 0.55rem 0;
@@ -198,6 +201,10 @@
   color: var(--w-tusz, #0f172a);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 .przyciskTekstowy {
   appearance: none;
@@ -302,6 +309,8 @@
 }
 
 /* --- Panel narzędzia i karta wyniku --- */
+.strona :global(.r-zwin) { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.strona :global(.r-zwin) > * { min-width: 0; max-width: 100%; }
 .strona :global(.narz-formularz),
 .strona :global(.narz-wynik),
 .strona :global(.narz-bramka) {
@@ -309,6 +318,17 @@
   border: 1.5px solid var(--nw-obrys-panel);
   border-radius: var(--w-promien-karta);
   box-shadow: var(--nw-cien-panel);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.strona :global(.narz-wynik),
+.strona :global(.narz-bramka) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.strona :global(.narz-wynik) > * {
+  min-width: 0;
+  max-width: 100%;
 }
 .strona :global(.narz-bramka) { box-shadow: none; }
 .strona :global(.narz-formularz) { transition: border-color var(--nw-krotki) var(--nw-ease); }

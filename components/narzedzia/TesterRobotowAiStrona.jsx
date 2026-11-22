@@ -120,20 +120,20 @@ export function TesterRobotowAiStrona({ locale = 'pl' } = {}) {
       <WebAppSchema
         name={en ? 'AI Crawler, SSR Content Parity & robots.txt Firewall Checker' : 'Tester robotów AI, parzystości SSR i kreator zapory robots.txt'}
         description={en
-          ? 'Free online diagnostic tool: checks robots.txt rules vs real HTTP firewall status across 12 AI crawlers (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), measures SSR vs JS HTML visibility, and generates a 1-click robots.txt policy.'
-          : 'Bezpłatne narzędzie online: porównuje reguły robots.txt z realnym kodem HTTP zapory serwerowej dla 12 botów AI (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), mierzy widoczność treści bez JavaScriptu (SSR) i generuje gotowy plik robots.txt.'}
+          ? 'Free online diagnostic tool: checks robots.txt rules vs real HTTP firewall status across 15 AI & search crawlers (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), measures SSR vs JS HTML visibility, and generates a 1-click robots.txt policy.'
+          : 'Bezpłatne narzędzie online: porównuje reguły robots.txt z realnym kodem HTTP zapory serwerowej dla 15 botów AI i wyszukiwarek (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), mierzy widoczność treści bez JavaScriptu (SSR) i generuje gotowy plik robots.txt.'}
         url={en ? URL_EN : URL_PL}
         category="DeveloperApplication"
         featureList={en
           ? [
-              '12-bot split matrix comparing robots.txt rules against live HTTP firewall responses and TTFB',
+              '15-bot split matrix comparing robots.txt rules against live HTTP firewall responses and TTFB',
               'Detection of 403 WAF conflicts and Cloudflare Verified Bot IP checks',
               'SSR vs JavaScript Content Parity meter (words, H1/H2, tables, links, JSON-LD, SPA detection)',
               '1-click robots.txt firewall generator with 3 policies (Allow AI Search + Block Training, Open GEO, Strict Block)',
               'Embeddable SVG AI-Ready verification badge for sites scoring 70/100 or higher',
             ]
           : [
-              'Macierz 12 botów AI zestawiająca reguły robots.txt z realnym kodem odpowiedzi HTTP i TTFB',
+              'Macierz 15 botów AI zestawiająca reguły robots.txt z realnym kodem odpowiedzi HTTP i TTFB',
               'Wykrywanie cichych blokad 403 na zaporze WAF oraz weryfikacji IP botów w Cloudflare',
               'Miernik parzystości treści SSR bez JavaScriptu (słowa, H1/H2, tabele, linki, JSON-LD, detekcja SPA)',
               'Kreator zapory robots.txt w 3 wariantach (Wpuść wyszukiwarki AI + Zablokuj trening, Otwarte GEO, Pełna blokada)',
@@ -178,20 +178,20 @@ export function TesterRobotowAiStrona({ locale = 'pl' } = {}) {
                   ? [
                       'Overall 0-100 AI Readiness score combining bot reachability, TTFB and HTML completeness',
                       'SSR vs JavaScript Content Parity meter: word count without JS, H1/H2 headings, tables, links, JSON-LD and SPA shell detection',
-                      '12-bot split matrix grouped into AI Search, User Agents and LLM Training Scrapers',
+                      '15-bot split matrix grouped into AI Search, User Agents and LLM Training Scrapers',
                       'Detection of 403 WAF firewall conflicts when robots.txt says Allow yet CDN rejects the bot',
                       '1-click robots.txt generator (Copy or Download) plus an embeddable AI-Ready SVG badge for scores >= 70',
                     ]
                   : [
                       'Ogólny wynik gotowości AI w skali 0-100 łączący dostępność botów, TTFB i kompletność HTML',
                       'Miernik parzystości treści SSR bez JavaScriptu: liczba słów, nagłówki H1/H2, tabele, linki, JSON-LD oraz wykrywanie szkieletu SPA',
-                      'Macierz 12 robotów podzielona na wyszukiwarki AI, agenty użytkownika oraz scrapery treningowe LLM',
+                      'Macierz 15 robotów podzielona na wyszukiwarki AI, agenty użytkownika oraz scrapery treningowe LLM',
                       'Wykrywanie konfliktów 403 WAF, gdy robots.txt pozwala wejść, ale serwer lub CDN wycina zapytanie',
                       'Kreator pliku robots.txt jednym kliknięciem oraz dynamiczna odznaka SVG dla domen z wynikiem od 70 pkt',
                     ]}
                 przypis={en
                   ? 'Zero email gate: every metric, diagnostic table and generated configuration file is unlocked immediately.'
-                  : 'Zero bramki e-mail: pełną macierz 12 botów, diagnozę SSR i wygenerowany plik robots.txt pobierasz od razu.'}
+                  : 'Zero bramki e-mail: pełną macierz 15 botów, diagnozę SSR i wygenerowany plik robots.txt pobierasz od razu.'}
               />
 
               {en ? (

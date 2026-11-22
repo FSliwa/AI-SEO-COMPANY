@@ -381,7 +381,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   : 'In local results Google considers relevance, distance and prominence. You cannot change the distance, so in Warsaw what matters is where the searcher stands in relation to the business, and there is no single strategy: competing in Srodmiescie looks nothing like competing in Ursynow.'}
               </p>
             </Reveal>
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
+            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '2rem' }}>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem', color: 'var(--color-text-main)' }}>
                     {lang === 'pl' ? 'Śródmieście i Wola' : 'Srodmiescie and Wola'}
@@ -478,7 +478,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   {lang === 'pl' ? 'Zaawansowane strategie dla firm szukających lokalnych rozwiązań SEO.' : 'Advanced strategies for businesses looking for local SEO solutions.'}
                 </p>
               </Reveal>
-              <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
+              <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '2rem' }}>
                 <RevealItem style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '1rem' }}>
                     {lang === 'pl' ? 'Firma SEO w Twojej Okolicy' : 'A local SEO company'}
@@ -496,23 +496,20 @@ export default async function SeoLokalneWarszawaPage({ params }) {
                   </p>
                 </RevealItem>
               </RevealStagger>
+              {lang === 'en' && (
+                <div style={{ maxWidth: '880px', margin: '2.5rem auto 0 auto' }}>
+                  <Reveal style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
+                    <h2 id="local-seo-vs-national-seo" style={{ fontSize: 'clamp(1.7rem, 2.6vw, 2.2rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+                      Local SEO vs national SEO
+                    </h2>
+                    <p style={{ color: 'var(--color-text-main)', lineHeight: 1.65, margin: 0 }}>
+                      Local SEO targets searches tied to a location (near me, city or district queries, and the Google Maps local pack) and relies on your Google Business Profile, reviews, NAP consistency and local service pages. National SEO targets country-wide queries without a city modifier through topic hubs, technical SEO and domain-level links. Service businesses that sell both locally and remotely often combine both in one roadmap.
+                    </p>
+                  </Reveal>
+                </div>
+              )}
             </div>
           </section>
-
-        {lang === 'en' && (
-          <section style={{ padding: '0 0 64px 0', background: 'var(--w-papier-2)' }}>
-            <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
-              <Reveal style={{ background: '#FFFFFF', borderRadius: '24px', padding: '2.5rem' }}>
-                <h2 id="local-seo-vs-national-seo" style={{ fontSize: 'clamp(1.7rem, 2.6vw, 2.2rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1rem' }}>
-                  Local SEO vs national SEO
-                </h2>
-                <p style={{ color: 'var(--color-text-main)', lineHeight: 1.65, margin: 0 }}>
-                  Local SEO targets searches tied to a location (near me, city or district queries, and the Google Maps local pack) and relies on your Google Business Profile, reviews, NAP consistency and local service pages. National SEO targets country-wide queries without a city modifier through topic hubs, technical SEO and domain-level links. Service businesses that sell both locally and remotely often combine both in one roadmap.
-                </p>
-              </Reveal>
-            </div>
-          </section>
-        )}
 
         {/* Portfolio Section */}
         <SubpagePortfolio

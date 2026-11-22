@@ -14,7 +14,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
@@ -111,31 +110,22 @@ export default async function ArticleLokalnePage({ params }) {
         dateModified={LASTMOD[locale === 'en' ? `${BASE}/en/blog/local-seo-for-companies` : `${BASE}/blog/seo-lokalne-dla-firm-w-warszawie`]}
       />
       
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
       {locale === 'en' ? (
         <>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Local SEO
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                {dataPubl.label}
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Local SEO for Companies | 2026 Guide
-            </h1>
-            <Byline sciezka={KLUCZ_LOKALNE} takzeEn />
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Local SEO
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Local SEO for Companies | 2026 Guide
+          </h1>
+          <Byline sciezka={KLUCZ_LOKALNE} takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 Effective local SEO for companies in 2026 relies on Google&apos;s three local ranking factors: Business Profile relevance, searcher distance, and prominence (reviews, consistent NAP citations, and district landing pages). Because Map rankings shift street by street, AI SEO COMPANY tracks visibility across a 49-point grid every 14 days (packages from €450 net/month).
               </AnswerBox>
@@ -161,8 +151,7 @@ export default async function ArticleLokalnePage({ params }) {
 
               <h2 id="mobile-optimization">Mobile Optimization for Local Search</h2>
               <p>Most local searches happen on the go, on mobile devices (check the device split for your own domain in Google Search Console). When someone searches for a &quot;restaurant near me&quot; or an &quot;emergency plumber,&quot; they are usually on the go and need immediate answers. If your website is not perfectly optimized for mobile, you will lose these high-converting leads instantly. Mobile optimization goes beyond simply having a responsive design. It involves ensuring lightning-fast load times (Core Web Vitals), making phone numbers clickable (click-to-call), and ensuring your address easily opens in a navigation app. A seamless mobile user experience keeps visitors on your site and helps them convert; Google does not confirm bounce rate as a ranking factor, but it does measure page experience (Core Web Vitals).</p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_LOKALNE} title="Frequently asked questions" sectionId="pytania-lokalne" />
@@ -172,7 +161,7 @@ export default async function ArticleLokalnePage({ params }) {
             <Zrodla zrodla={ZRODLA_LOKALNE_EN} en />
             <BlogCTA locale={locale} currentSlug="/blog/seo-lokalne-dla-firm-w-warszawie" />
 
-            <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '4rem', paddingTop: '4rem' }}>
+            <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2.5rem', paddingTop: '2.5rem' }}>
               <div style={{ background: 'var(--w-papier-2)', borderRadius: '24px', padding: '3rem', textAlign: 'center' }}>
                 <h3>Dominate your local market</h3>
                 <p style={{ margin: 0, color: 'var(--w-tusz-2)', fontSize: '1.1rem', marginBottom: '2rem' }}>Let our experts position your business at the top of Google Maps.</p>
@@ -186,44 +175,31 @@ export default async function ArticleLokalnePage({ params }) {
         <>
 
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Lokalne SEO Warszawa
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                {dataPubl.label.toLowerCase()}
-              </span>
-            </div>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Lokalne SEO Warszawa
+            </span>
+          </div>
 
-            {/* The English branch above has its own <h1>. Only one of the two branches ever
-                renders, so this is not a second H1 on the page - do not demote it. */}
-              <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              fontWeight: 500, 
-              color: 'var(--w-tusz)', 
-              marginBottom: '1.5rem', 
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              textAlign: 'left'
-            }}>
-              {locale === 'en' ? <>Local SEO for Companies | 2026 Guide</> : 'SEO Lokalne w Warszawie'}
-            </h1>
+          {/* The English branch above has its own <h1>. Only one of the two branches ever
+              renders, so this is not a second H1 on the page - do not demote it. */}
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+            fontWeight: 500, 
+            color: 'var(--w-tusz)', 
+            marginBottom: '1.5rem', 
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            textAlign: 'left'
+          }}>
+            {locale === 'en' ? <>Local SEO for Companies | 2026 Guide</> : 'SEO Lokalne w Warszawie'}
+          </h1>
 
-            <Byline sciezka={KLUCZ_LOKALNE} takzeEn />
+          <Byline sciezka={KLUCZ_LOKALNE} takzeEn />
 
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </div>
-            
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 Skuteczne SEO lokalne w Warszawie w 2026 roku opiera się na 3 czynnikach Google: trafności Profilu Firmy, odległości od szukającego oraz rozpoznawalności (opinie, spójny NAP i podstrony dzielnic). Ponieważ wynik zależy od ulicy klienta, w AI SEO COMPANY mierzymy pozycje w Mapach z 49 punktów siatki co 14 dni (pakiety od 1 900 zł netto/mies.).
               </AnswerBox>
@@ -300,8 +276,7 @@ export default async function ArticleLokalnePage({ params }) {
               <p>
                 Wielu przedsiębiorców skupia się wyłącznie na śledzeniu pozycji w rankingu dla 2-3 głównych słów kluczowych. W rzeczywistości nowoczesne SEO wymaga szerszego spojrzenia. Oprócz tradycyjnego rankingu w wynikach organicznych, należy analizować metryki płynące bezpośrednio ze statystyk Profilu Firmy w Google (GBP). Należą do nich: liczba zapytań o trasę dojazdu (Direction Requests), liczba połączeń telefonicznych wykonanych bezpośrednio z wyników wyszukiwania oraz liczba wizyt na stronie. Połączenie tych danych ze śledzeniem zdarzeń konwersji (np. wypełnienie formularza) w Google Analytics 4 pozwala na precyzyjne obliczenie zwrotu z inwestycji (ROI) w pozycjonowanie lokalne. Sukces kampanii SEO mierzy się nie pozycją w tabelkach, lecz realnym wzrostem liczby nowych zapytań ofertowych i faktycznych klientów z Twojej najbliższej okolicy.
               </p>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <AppleFaq faqData={FAQ_LOKALNE} title="Najczęstsze pytania" sectionId="pytania-lokalne" />

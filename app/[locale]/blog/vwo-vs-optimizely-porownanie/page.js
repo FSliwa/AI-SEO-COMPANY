@@ -15,7 +15,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
@@ -68,26 +67,20 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
       <Header />
       <ArticleSchema slug="/blog/vwo-vs-optimizely-porownanie" locale={locale} />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                {locale === 'en' ? 'A/B Testing and CRO' : 'Testy A/B i CRO'}
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                {locale === 'en' ? 'August 04, 2026' : '04 Sierpnia 2026'}
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              {locale === 'en' ? 'VWO vs Optimizely: Which A/B Testing Platform Is Better for Most Marketing and E-commerce Teams?' : 'VWO vs Optimizely: porównanie platform do testów A/B'}
-            </h1>
-            <Byline sciezka="/blog/vwo-vs-optimizely-porownanie" data="2026-08-04" takzeEn />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              {locale === 'en' ? 'A/B Testing and CRO' : 'Testy A/B i CRO'}
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            {locale === 'en' ? 'VWO vs Optimizely: Which A/B Testing Platform Is Better for Most Marketing and E-commerce Teams?' : 'VWO vs Optimizely: porównanie platform do testów A/B'}
+          </h1>
+          <Byline sciezka="/blog/vwo-vs-optimizely-porownanie" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            {locale === 'en' ? (
+          {locale === 'en' ? (
               <div className="article-content">
                 <AnswerBox etykieta="Short answer">
                   Between VWO and Optimizely in 2026, most small and mid-market marketing or e-commerce teams get faster ROI from VWO because it bundles A/B testing, a marketer-friendly visual editor, heatmaps, and session recordings in one tool. Optimizely suits enterprise organizations with dedicated engineers running server-side feature flags, warehouse-native analytics, and hundreds of experiments yearly.
@@ -657,7 +650,6 @@ export default async function ArticleVwoOptimizelyPage({ params }) {
               <BlogCTA currentSlug="/blog/vwo-vs-optimizely-porownanie" />
             </div>
             )}
-          </Reveal>
         </div>
       </article>
 

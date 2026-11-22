@@ -71,7 +71,7 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
         )}
 
         {/* 3 Bento Cards Grid (Same as Blog page) */}
-        <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '24px' }}>
           {items.map((item, idx) => (
             <RevealItem key={idx}>
               <div style={{ 

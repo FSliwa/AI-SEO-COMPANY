@@ -37,7 +37,6 @@ import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
@@ -129,26 +128,20 @@ export default async function ArticleContentGapAnalysis({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Content strategy
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                August 15, 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Content Gap Analysis: A Practical Guide for Marketing Teams
-            </h1>
-            <Byline sciezka="/blog/content-gap-analysis" data="2026-08-15" takzeEn />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Content strategy
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Content Gap Analysis: A Practical Guide for Marketing Teams
+          </h1>
+          <Byline sciezka="/blog/content-gap-analysis" takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 A content gap analysis compares queries and formats where 3 to 5 SERP competitors rank against your current URL inventory across seven gap types, from missing topics and search intent to AI visibility. Updating existing pages in positions 5 to 15 typically moves rankings within 4 to 8 weeks, while new clusters require 3 to 6 months.
               </AnswerBox>
@@ -165,8 +158,6 @@ export default async function ArticleContentGapAnalysis({ params }) {
               </ul>
 
               <p>You can complete both competitor exports and a first keyword list in under an hour. Quick wins from updating thin pages often show ranking movement in 4-8 weeks. New content targeting mid-funnel gaps typically takes 3-6 months to gain traction.</p>
-
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               <h2 style={{ fontSize: '1.6rem', fontWeight: 500, marginBottom: '1rem' }}>Key Takeaways</h2>
               <p>Content strategy analysis of this kind is the highest-ROI SEO activity most marketing teams run too rarely, and the teams that do it quarterly consistently outpace those who treat it as a one-time project.</p>
@@ -558,8 +549,7 @@ export default async function ArticleContentGapAnalysis({ params }) {
                 customCtaTitleEn="Want this run on your site?"
                 customCtaTextEn="We will pull the competitor exports, classify the gaps and hand you a prioritized roadmap in week four."
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 
@@ -609,26 +599,20 @@ function ArticleAnalizaLukContentowych({ locale }) {
         dateModified={LASTMOD['https://www.ai-seo-company.pl/blog/analiza-luk-contentowych']}
       />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                Strategia treści
-              </span>
-              <span style={{ fontSize: '0.9rem', color: 'var(--w-tusz-2)', fontWeight: 500 }}>
-                18 Sierpnia 2026
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              Analiza luk contentowych: przewodnik praktyczny
-            </h1>
-            <Byline sciezka="/blog/analiza-luk-contentowych" data="2026-08-18" />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              Strategia treści
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            Analiza luk contentowych: przewodnik praktyczny
+          </h1>
+          <Byline sciezka="/blog/analiza-luk-contentowych" />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox>
                 Analiza luk contentowych zestawia frazy i formaty 3-5 rywali z SERP z inwentarzem Twojej domeny w siedmiu wymiarach - od brakujących tematów i intencji po widoczność w odpowiedziach AI. Rozbudowa istniejących podstron z pozycji 5-15 przynosi ruch zwykle w 4-8 tygodni, natomiast budowa nowych klastrów tematycznych trwa 3-6 miesięcy i wymaga kwartalnych powtórek.
               </AnswerBox>
@@ -647,8 +631,6 @@ function ArticleAnalizaLukContentowych({ locale }) {
               <p>Pierwszy eksport i wstępną listę fraz zrobisz w godzinę. Aktualizacje istniejących stron dają ruch w <strong>4-8 tygodni</strong>, nowe klastry tematyczne potrzebują <strong>3-6 miesięcy</strong>.</p>
 
               <p><strong>Porada profesjonalisty:</strong> <em>Zanim wyeksportujesz cokolwiek, sprawdź w Search Console, na jakie frazy już zbierasz wyświetlenia bez kliknięć. To najtańsza lista luk, jaką dostaniesz, i nie wymaga płatnego narzędzia.</em></p>
-
-              <div style={{ borderTop: '1px solid var(--w-linia)', marginTop: '2rem', marginBottom: '2rem' }}></div>
 
               <h2 style={{ fontSize: '1.6rem', fontWeight: 500, marginBottom: '1rem' }}>Kluczowe wnioski</h2>
               <p>Analiza luk contentowych działa wtedy, gdy kończy się backlogiem z właścicielami i metrykami, a nie arkuszem z dwustoma frazami.</p>
@@ -926,8 +908,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
                 customCtaTitlePl="Chcesz, żebyśmy przeprowadzili to na Twojej stronie?"
                 customCtaTextPl="Pobierzemy eksporty konkurencji, sklasyfikujemy luki i oddamy roadmapę z priorytetami w czwartym tygodniu."
               />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 

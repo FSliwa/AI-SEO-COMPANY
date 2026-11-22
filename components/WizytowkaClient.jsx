@@ -247,7 +247,7 @@ export default function WizytowkaClient({ faqData }) {
           (Add or claim your Business Profile; Guidelines for representing your business; Edit your Business
           Profile, odczyt 18.11.2026). Kroki jako widoczny tekst, bez znaczników HowTo. */}
       {en && (
-        <section style={sekcja}>
+        <section className="sekcja-kompakt" style={sekcja}>
           <div className="container" style={kontener}>
             <h2 id="what-is-google-business-profile" style={h2Styl}>What is a Google Business Profile?</h2>
             <AnswerBox etykieta="Short answer">
@@ -278,7 +278,7 @@ export default function WizytowkaClient({ faqData }) {
       )}
 
       {!en && (
-        <section style={sekcja}>
+        <section className="sekcja-kompakt" style={sekcja}>
           <div className="container" style={kontener}>
             <h2 id="jak-zalozyc-wizytowke-google" style={h2Styl}>Jak założyć wizytówkę Google</h2>
             <p style={akapit}>
@@ -291,7 +291,7 @@ export default function WizytowkaClient({ faqData }) {
       )}
 
       {/* H2 1: czynniki rankingu lokalnego wg Pomocy Profilu Firmy w Google (odczyt 5.11.2026). */}
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('czynniki', 'ranking-factors')} style={h2Styl}>{en ? 'What decides your Business Profile’s position in Google Maps' : 'Co decyduje o pozycji wizytówki w Mapach Google'}</h2>
           {en ? (
@@ -353,7 +353,7 @@ export default function WizytowkaClient({ faqData }) {
 
       {/* H2 2: siatka 7×7. Dziś zrzut demo panelu z podpisem „dane przykładowe” (PLAN-v2 6.6, redakcja v2.2);
           skan GRID własnej wizytówki z datą dochodzi później (repo panelu) jako dodanie treści. */}
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('siatka-7x7', 'map-grid')} style={h2Styl}>{en ? 'How we measure your ranking: the 7×7 grid' : 'Jak mierzymy pozycję wizytówki: siatka 7×7'}</h2>
           <p style={akapit}>
@@ -414,7 +414,7 @@ export default function WizytowkaClient({ faqData }) {
       </section>
 
       {/* H2 3: optymalizacja (start) i zarządzanie (co miesiąc); lista z playbooka 7.2 (proces LOK). */}
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('zarzadzanie', 'management')} style={h2Styl}>{en ? 'Business Profile optimization and monthly management' : 'Optymalizacja i zarządzanie wizytówką Google co miesiąc'}</h2>
           <p style={akapit}>
@@ -472,7 +472,7 @@ export default function WizytowkaClient({ faqData }) {
 
       {/* H2 4: cena. Akapit dosłownie z CB-02 (po weryfikacji), podpis źródła widełek dosłownie z planu,
           drugi przedział z AV-08 (Perplexity, odpowiedź z 4.11.2026, surowe/q12_perplexity.json). */}
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idCena} style={h2Styl}>{en ? 'How much Google Business Profile optimization costs' : 'Ile kosztuje pozycjonowanie wizytówki Google'}</h2>
           {en ? (
@@ -533,7 +533,7 @@ export default function WizytowkaClient({ faqData }) {
       </section>
 
       {/* H2 5: ChatGPT (CB-01): nagłówek 53 zn., 2 wiersze tabeli, metoda pod tabelą, link do A2 warunkowy. */}
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('wizytowka-a-chatgpt', 'chatgpt')} style={h2Styl}>{en ? 'Business Profile and ChatGPT: recommendations lead to Google Maps' : 'Wizytówka a ChatGPT: polecenia prowadzą do Map Google'}</h2>
           <p style={akapit}>
@@ -579,7 +579,7 @@ export default function WizytowkaClient({ faqData }) {
       </section>
 
       {/* H2 6: poradnik „jak samodzielnie” (format z TOP 7 SERP, brief L1). */}
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('krok-po-kroku', 'step-by-step')} style={h2Styl}>{en ? 'How to optimize your Google Business Profile yourself: 8 steps' : 'Jak pozycjonować wizytówkę Google samodzielnie: 8 kroków'}</h2>
           <p style={akapit}>
@@ -605,7 +605,7 @@ export default function WizytowkaClient({ faqData }) {
       {/* H2 7: wizytówka i strona; linki z planu: /seo-lokalne-warszawa i /pozycjonowanie-stron-internetowych
           (anchory z 6.6) + case Madame Thai bez nowych liczb (brief L1, information gain 4).
           EN: wpis „wyniki-wdrozen-seo-2026” nie ma wersji EN, więc case Madame Thai bez linku. */}
-      <section style={sekcja}>
+      <section className="sekcja-kompakt" style={sekcja}>
         <div className="container" style={kontener}>
           <h2 id={idEl('wizytowka-i-strona', 'profile-and-website')} style={h2Styl}>{en ? 'Business Profile and website: why you need both' : 'Wizytówka i strona: dlaczego oba'}</h2>
           <p style={akapit}>
@@ -639,7 +639,7 @@ export default function WizytowkaClient({ faqData }) {
       />
 
       {/* CTA przed formularzem: pakiet SEO Standard wybrany w formularzu (data-plan). */}
-      <section style={{ padding: '0 0 3rem' }}>
+      <section className="de-abschnitt">
         <div className="container" style={kontener}>
           <div style={{ ...karta, textAlign: 'center' }}>
             <p style={{ ...akapit, fontSize: '1.2rem', fontWeight: 600, color: 'var(--color-text-dark)' }}>

@@ -398,7 +398,7 @@ export function PrzekierowaniaHreflangClientDe() {
                 Jede nicht-kanonische Adresse sollte in genau 1 dauerhaften Sprung (Status 301 oder 308) auf die kanonische Ziel-URL verweisen.
               </p>
 
-              <div className="narz-tabela-wrap">
+              <div className="narz-tabela-wrap sp2-tabela-wrap">
                 <table className="narz-tabela">
                   <thead>
                     <tr>
@@ -492,7 +492,7 @@ export function PrzekierowaniaHreflangClientDe() {
                   Keine hreflang-Tags gefunden. Bei einsprachigen Websites ist dies korrekt. Sobald Sie Sprachversionen für DACH (de-DE, de-AT, de-CH) oder Englisch (/en) ergänzen, müssen alle Seiten gegenseitig aufeinander verweisen.
                 </p>
               ) : (
-                <div className="narz-tabela-wrap" style={{ marginTop: '0.65rem' }}>
+                <div className="narz-tabela-wrap sp2-tabela-wrap" style={{ marginTop: '0.65rem' }}>
                   <table className="narz-tabela">
                     <thead>
                       <tr>
@@ -509,7 +509,7 @@ export function PrzekierowaniaHreflangClientDe() {
                           <th scope="row" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)' }}>
                             {h.kod || h.lang}
                           </th>
-                          <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>
+                          <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                             {h.url || h.href}
                           </td>
                           <td style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 700 }}>

@@ -15,7 +15,7 @@ import { sectionId, hash } from '@/lib/anchors';
 import { celLinku, spelniony } from './segmenty';
 
 const S = {
-  h2: { fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.035em', color: 'var(--w-tusz)', margin: '3.5rem 0 1.25rem', scrollMarginTop: '110px' },
+  h2: { fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.035em', color: 'var(--w-tusz)', margin: '0.5rem 0 1.15rem', scrollMarginTop: '110px' },
   h3: { fontSize: 'clamp(1.2rem, 2.4vw, 1.45rem)', lineHeight: 1.25, fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', margin: '2.25rem 0 0.75rem', scrollMarginTop: '110px' },
   p: { fontSize: '1.08rem', lineHeight: 1.7, color: 'var(--w-tusz-2)', margin: '0 0 1.1rem' },
   lista: { margin: '0 0 1.25rem', paddingLeft: '1.4rem', display: 'grid', gap: '0.5rem', fontSize: '1.08rem', lineHeight: 1.65, color: 'var(--w-tusz-2)' },
@@ -150,7 +150,7 @@ export default function SpokeAiTresc({ sections = [], locale = 'pl' }) {
       {sections.map((s) => {
         const id = idSekcji(s, locale);
         return (
-          <section key={id} aria-labelledby={id}>
+          <section key={id} className="spoke-sekcja" aria-labelledby={id}>
             <h2 id={id} style={S.h2}>{s.h2}</h2>
             {(s.bloki || []).map((b, i) => <Blok key={i} blok={b} locale={locale} />)}
             {(s.podsekcje || []).map((ps, i) => (

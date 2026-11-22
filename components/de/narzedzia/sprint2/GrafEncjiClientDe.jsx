@@ -529,8 +529,8 @@ export function GrafEncjiClientDe() {
                           {wybranyWezel.maId ? `@id: ${wybranyWezel.id}` : 'Kein @id-Anker!'}
                         </span>
                       </div>
-                      <p className="narz-mikro" style={{ marginTop: '0.35rem' }}>
-                        <strong>Gefunden auf:</strong> <code>{wybranyWezel.strona || '/'}</code>
+                      <p className="narz-mikro" style={{ marginTop: '0.35rem', overflowWrap: 'anywhere' }}>
+                        <strong>Gefunden auf:</strong> <code style={{ overflowWrap: 'anywhere' }}>{wybranyWezel.strona || '/'}</code>
                         {Array.isArray(wybranyWezel.pola) && wybranyWezel.pola.length > 0 && (
                           <> · <strong>Felder:</strong> {wybranyWezel.pola.join(', ')}</>
                         )}
@@ -575,7 +575,7 @@ export function GrafEncjiClientDe() {
               </div>
 
               {sameAs.length > 0 ? (
-                <div className="narz-tabela-wrap" style={{ marginTop: '0.85rem' }}>
+                <div className="narz-tabela-wrap sp2-tabela-wrap" style={{ marginTop: '0.85rem' }}>
                   <table className="narz-tabela">
                     <thead>
                       <tr>
@@ -592,7 +592,7 @@ export function GrafEncjiClientDe() {
                             <th scope="row" style={{ textAlign: 'left' }}>
                               <span className="sp2-pigulka sp2-pigulka--ok">{plat}</span>
                             </th>
-                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>
+                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                               {u}
                             </td>
                           </tr>

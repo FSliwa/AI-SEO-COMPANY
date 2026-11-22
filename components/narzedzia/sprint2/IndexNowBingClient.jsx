@@ -561,7 +561,7 @@ export function IndexNowBingClient() {
               </div>
 
               {przykladyLista.length > 0 && (
-                <div className="narz-tabela-wrap" style={{ marginTop: '0.8rem' }}>
+                <div className="narz-tabela-wrap sp2-tabela-wrap" style={{ marginTop: '0.8rem' }}>
                   <table className="narz-tabela">
                     <thead>
                       <tr>
@@ -575,7 +575,7 @@ export function IndexNowBingClient() {
                         const lm = typeof item === 'object' ? item.lastmod : null;
                         return (
                           <tr key={`${u}-${idx}`}>
-                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>{u}</td>
+                            <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>{u}</td>
                             <td style={{ fontFamily: 'var(--w-mono, monospace)', fontSize: '0.84rem', fontVariantNumeric: 'tabular-nums' }}>{lm || '-'}</td>
                           </tr>
                         );
@@ -591,20 +591,24 @@ export function IndexNowBingClient() {
               <h2 className="narz-h2">
                 {en ? 'IndexNow Key Generator, curl & GitHub Actions' : 'Generator klucza IndexNow, komendy curl i GitHub Actions'}
               </h2>
-              <p className="narz-mikro">
+              <p className="narz-mikro" style={{ overflowWrap: 'anywhere' }}>
                 {en
                   ? `Step 1: Download ${nazwaPlikuKlucza} and place it in your public root folder (https://www.${domena}/${nazwaPlikuKlucza}). Step 2: Ping IndexNow after publishing new or updated URLs.`
                   : `Krok 1: Pobierz plik ${nazwaPlikuKlucza} i umieść go w głównym katalogu publicznym (https://www.${domena}/${nazwaPlikuKlucza}). Krok 2: Wyślij powiadomienie IndexNow przez curl lub GitHub Actions.`}
               </p>
 
               <div className="sp2-kafel" style={{ marginTop: '0.75rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
-                <div>
+                <div style={{ minWidth: 0, maxWidth: '100%' }}>
                   <p className="sp2-kafel-etykieta">{en ? 'Generated 128-bit IndexNow Key' : 'Twój 32-znakowy klucz IndexNow'}</p>
                   <p className="sp2-kafel-wartosc" style={{ fontFamily: 'var(--w-mono, monospace)', fontSize: '0.98rem' }}>
                     {kluczBazowy}
                   </p>
+                  <p className="narz-mikro" style={{ margin: '0.3rem 0 0', overflowWrap: 'anywhere' }}>
+                    {en ? 'File:' : 'Plik:'}{' '}
+                    <code style={{ fontSize: '0.78rem', overflowWrap: 'anywhere' }}>{nazwaPlikuKlucza}</code>
+                  </p>
                 </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', minWidth: 0, maxWidth: '100%' }}>
                   <button
                     type="button"
                     className="btn btn-primary"
@@ -614,7 +618,7 @@ export function IndexNowBingClient() {
                       track('narzedzie_pobierz_indexnow_txt', { domena });
                     }}
                   >
-                    {en ? `Download key file ${nazwaPlikuKlucza}` : `Pobierz plik klucza ${nazwaPlikuKlucza}`}
+                    {en ? 'Download key file (.txt)' : 'Pobierz plik klucza (.txt)'}
                   </button>
                   <button
                     type="button"

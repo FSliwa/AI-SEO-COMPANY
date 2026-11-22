@@ -462,7 +462,7 @@ function PruefTool() {
     <div className="narz-app" id="narzedzie" style={{ marginTop: '1.25rem' }}>
       {DEMO && <p className="narz-demo" role="note">Demo-Modus: Beispieldaten, keine Verbindung zum Panel.</p>}
       {stan.status !== 'done' && !propozycje && (
-        <form ref={formRef} className="narz-formularz narz-siatka-formularza" onSubmit={start} style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', columnGap: '0.75rem', alignItems: 'end' }}>
+        <form ref={formRef} className="narz-formularz narz-siatka-formularza" onSubmit={start} style={{ columnGap: '0.75rem', alignItems: 'end' }}>
           <div>
             <label htmlFor="ai-firma" className="narz-etykieta">Firmenname</label>
             <input id="ai-firma" name="firma" required minLength={2} maxLength={100} defaultValue={wstepne.firma} placeholder="z. B. Schreinerei Müller" className="narz-pole" />

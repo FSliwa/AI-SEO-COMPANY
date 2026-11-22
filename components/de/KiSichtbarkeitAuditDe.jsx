@@ -89,13 +89,13 @@ export default function KiSichtbarkeitAuditDe() {
         de={KI_AUDIT_DE.okruszek}
       />
 
-      <section style={{ paddingTop: 'clamp(124px, 14vw, 160px)', paddingBottom: '36px' }}>
+      <section className="sekcja-po-okruszkach">
         <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
           <Reveal>
             <div className="section-tag" style={{ color: 'var(--color-primary)' }}>
               <span className="asterisk" style={{ color: 'var(--color-primary)' }}>✳</span> {KI_AUDIT_DE.tag}
             </div>
-            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.2rem', color: 'var(--color-text-dark)', hyphens: 'auto', overflowWrap: 'break-word' }}>
+            <h1 lang="de" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.2rem)', lineHeight: 1.12, fontWeight: 500, letterSpacing: '-0.025em', margin: '0 0 1.2rem', color: 'var(--color-text-dark)', hyphens: 'manual', overflowWrap: 'break-word' }}>
               {h1}
             </h1>
             <BylineDe stand={STAND_AUDIT_AI_DE} />
@@ -120,7 +120,7 @@ export default function KiSichtbarkeitAuditDe() {
         </div>
       </section>
 
-      <section id="umfang" style={{ padding: '36px 0 48px' }}>
+      <section id="umfang" className="sekcja-kompakt">
         <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
           <Reveal className="section-header">
             <h2 lang="de">Was wir prüfen: 30 Kundenfragen in 4 Antwortquellen</h2>
@@ -143,7 +143,7 @@ export default function KiSichtbarkeitAuditDe() {
         </div>
       </section>
 
-      <section id="fragentypen" style={{ padding: '32px 0 48px' }}>
+      <section id="fragentypen" className="sekcja-kompakt">
         <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
           <Reveal className="section-header">
             <h2 lang="de">Wie wir die 30 Fragen strukturieren - und warum das über die Maßnahmen entscheidet</h2>
@@ -166,7 +166,7 @@ export default function KiSichtbarkeitAuditDe() {
         </div>
       </section>
 
-      <section id="vergleich" style={{ padding: '36px 0 56px' }}>
+      <section id="vergleich" className="sekcja-kompakt">
         <div className="container" style={{ maxWidth: '940px', margin: '0 auto' }}>
           <Reveal className="section-header">
             <h2 lang="de">Schnell-Check, einmaliges Audit oder wöchentliches Monitoring?</h2>

@@ -210,7 +210,7 @@ const VORLAGEN_DE = [
   {
     id: 'google-unternehmensprofil-checkliste',
     href: '/de/tools/google-unternehmensprofil-checkliste',
-    nazwa: 'Google Unternehmensprofil Checkliste (40 Punkte)',
+    nazwa: 'Google Unternehmensprofil Checkliste (43 Punkte)',
     opis: 'Schritt-für-Schritt-Prüfliste zum Anlegen, Video-Verifizieren und Pflegen Ihres Unternehmensprofils inklusive NAP-Stammdatenblatt und Monatsprotokoll als PDF.',
   },
   {
@@ -390,7 +390,7 @@ export function ToolsHubDe() {
             {[
               { href: '#interaktive-tools', label: `Online-Tools (${INTERAKTIVE_TOOLS.length})` },
               { href: '#vorlagen', label: `PDF-Vorlagen (${VORLAGEN_DE.length})` },
-              { href: '#pytania', label: 'FAQ' },
+              { href: '#faq', label: 'FAQ' },
             ].map((item) => (
               <a key={item.href} href={item.href} style={{ display: 'inline-flex', alignItems: 'center', padding: '0.38rem 0.85rem', borderRadius: '999px', border: '1px solid var(--w-linia, rgba(30,30,30,0.12))', background: 'var(--w-karta, #fffcf8)', color: 'var(--w-tusz)', fontFamily: 'var(--w-mono)', fontSize: '0.78rem', textDecoration: 'none', fontVariantNumeric: 'tabular-nums' }}>
                 {item.label}
@@ -489,7 +489,7 @@ export function ToolsHubDe() {
       <AppleFaq
         faqData={FAQ_HUB_DE.map((f) => ({ ...f, questionEn: f.question, answerEn: f.answer, idEn: f.id }))}
         title="Häufige Fragen zu unseren kostenlosen SEO- & KI-Tools"
-        sectionId="pytania"
+        sectionId="faq"
       />
 
       <section style={{ paddingBottom: '2rem' }}>

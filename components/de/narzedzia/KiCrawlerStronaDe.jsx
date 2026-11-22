@@ -94,12 +94,12 @@ export function KiCrawlerStronaDe() {
       />
       <WebAppSchema
         name="KI-Crawler, SSR-Parität & robots.txt Firewall-Prüfer"
-        description="Kostenloses Online-Tool: vergleicht robots.txt-Regeln mit dem echten HTTP-Firewall-Status für 12 KI-Crawler (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), misst die HTML-Sichtbarkeit ohne JavaScript (SSR) und erstellt eine passende robots.txt."
+        description="Kostenloses Online-Tool: vergleicht robots.txt-Regeln mit dem echten HTTP-Firewall-Status für 15 KI- und Such-Crawler (OAI-SearchBot, PerplexityBot, ClaudeBot, GPTBot), misst die HTML-Sichtbarkeit ohne JavaScript (SSR) und erstellt eine passende robots.txt."
         url={url}
         category="DeveloperApplication"
         language="de"
         featureList={[
-          '12-Bot-Matrix: Vergleich zwischen robots.txt-Regel, HTTP-Statuscode und Server-TTFB',
+          '15-Bot-Matrix: Vergleich zwischen robots.txt-Regel, HTTP-Statuscode und Server-TTFB',
           'Erkennung stiller 403-WAF-Konflikte sowie verifizierter Cloudflare-Bot-IP-Prüfungen',
           'Messung der SSR- vs. JavaScript-Content-Parität (Wörter ohne JS, H1/H2, Tabellen, JSON-LD, SPA-Erkennung)',
           '1-Klick robots.txt-Generator in 3 Varianten (KI-Suche erlauben + Training sperren, Offenes GEO, Strikte Sperre)',
@@ -138,7 +138,7 @@ export function KiCrawlerStronaDe() {
                 odRazu={[
                   'Gesamtwert von 0 bis 100 für KI-Erreichbarkeit, Antwortzeit (TTFB) und HTML-Vollständigkeit',
                   'SSR-Content-Parität: sichtbare Wörter ohne JavaScript, H1/H2-Struktur, Tabellen, Links, JSON-LD und SPA-Warnung',
-                  'Aufgeteilte 12-Bot-Matrix nach KI-Suche, Nutzer-Agenten und reinen Trainings-Scrapern',
+                  'Aufgeteilte 15-Bot-Matrix nach KI-Suche, Nutzer-Agenten und reinen Trainings-Scrapern',
                   'Warnung bei 403-WAF-Konflikten, wenn die robots.txt den Zugriff erlaubt, das CDN ihn aber blockiert',
                   'Kopierfertiger 1-Klick robots.txt-Generator sowie ein dynamisches SVG-Prüfsiegel ab 70 Punkten',
                 ]}

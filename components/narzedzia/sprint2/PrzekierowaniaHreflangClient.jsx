@@ -443,7 +443,7 @@ export function PrzekierowaniaHreflangClient() {
                   : 'Każdy niekanoniczny wariant powinien przechodzić w dokładnie 1 stałym skoku (301 lub 308) na docelowy adres HTTPS.'}
               </p>
 
-              <div className="narz-tabela-wrap">
+              <div className="narz-tabela-wrap sp2-tabela-wrap">
                 <table className="narz-tabela">
                   <thead>
                     <tr>
@@ -553,7 +553,7 @@ export function PrzekierowaniaHreflangClient() {
                     : 'Nie wykryto tagów hreflang w sekcji <head> ani w nagłówkach HTTP. Dla witryny jednojęzycznej tagi hreflang nie są wymagane. Przy wdrożeniu wersji /en lub /de pamiętaj o pełnej zwrotności A <-> B oraz tagu x-default.'}
                 </p>
               ) : (
-                <div className="narz-tabela-wrap" style={{ marginTop: '0.65rem' }}>
+                <div className="narz-tabela-wrap sp2-tabela-wrap" style={{ marginTop: '0.65rem' }}>
                   <table className="narz-tabela">
                     <thead>
                       <tr>
@@ -570,7 +570,7 @@ export function PrzekierowaniaHreflangClient() {
                           <th scope="row" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)' }}>
                             {h.kod || h.lang}
                           </th>
-                          <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)' }}>
+                          <td className="narz-mikro" style={{ textAlign: 'left', fontFamily: 'var(--w-mono, monospace)', color: 'var(--w-tusz)', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                             {h.url || h.href}
                           </td>
                           <td style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 700 }}>

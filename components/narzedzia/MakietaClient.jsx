@@ -22,6 +22,43 @@ import './ruch-c.css';
 const KROKI_EN = ['Fetching your website and its content', 'Capturing a screenshot of the current design', 'Designing a new section layout', 'Matching colors, typography and the mobile version', 'Assembling the mockup'];
 const KROKI = ['Pobieramy Twoją stronę i jej treści', 'Robimy zrzut obecnego wyglądu', 'Projektujemy nowy układ sekcji', 'Dopasowujemy kolory, typografię i wersję na telefon', 'Składamy makietę'];
 
+const MAKIETA_DEMO_CSS = '*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;color:#1e1e1e;overflow-x:hidden}header{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center;padding:14px clamp(14px,4vw,40px);background:#fff;border-bottom:1px solid rgba(15,23,42,0.08)}nav{display:flex;flex-wrap:wrap;gap:6px 14px}nav a{margin:0;color:#1e1e1e;text-decoration:none;font-size:14px}.hero{padding:clamp(36px,8vw,84px) clamp(16px,5vw,40px);background:linear-gradient(135deg,#0a1337,#1b2470);color:#fff}.hero h1{font-size:clamp(22px,6vw,44px);line-height:1.14;max-width:680px;margin:0 0 14px;overflow-wrap:break-word;hyphens:auto}.hero p{font-size:clamp(15px,3.8vw,18px);line-height:1.55;max-width:600px;margin:0 0 24px;opacity:0.9}.btn{display:inline-block;background:#d85a30;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px}section.blok{padding:clamp(32px,6vw,56px) clamp(16px,5vw,40px)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px}.k{background:#f6f4ef;border-radius:18px;padding:20px}footer{padding:24px clamp(16px,5vw,40px);background:#0f172a;color:#cbd5e1;font-size:14px}';
+
+function wyczyscDomeneDemo(surowy, en) {
+  const zapas = en ? 'acme-industrial.com' : 'twojafirma.pl';
+  const s = String(surowy || '').trim();
+  if (!s) return zapas;
+  try {
+    const u = new URL(/^https?:\/\//i.test(s) ? s : `https://${s}`);
+    return u.hostname.replace(/^www\./i, '') || zapas;
+  } catch {
+    return s.replace(/^https?:\/\//i, '').split('/')[0] || zapas;
+  }
+}
+
+function zbudujDemoMakieteHtml(en) {
+  if (en) {
+    const podglad = `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${MAKIETA_DEMO_CSS}</style></head><body>
+<section data-sekcja="1"><header><strong>Acme Industrial Ltd</strong><nav><a href="#">Services</a><a href="#">Case Studies</a><a href="#">Contact</a></nav></header><div class="hero"><h1>Precision Engineering &amp; B2B Manufacturing Solutions</h1><p>Preview of the redesigned first screen built directly from your website content.</p><a class="btn" href="#">Request a Quote</a></div></section></body></html>`;
+    const pelna = `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${MAKIETA_DEMO_CSS}</style></head><body>
+<section data-sekcja="1"><header><strong>Acme Industrial Ltd</strong><nav><a href="#">Services</a><a href="#">Case Studies</a><a href="#">Contact</a></nav></header><div class="hero"><h1>Precision Engineering &amp; B2B Manufacturing Solutions</h1><p>Full 4-section responsive homepage mockup with desktop and mobile views.</p><a class="btn" href="#">Request a Quote</a></div></section>
+<section class="blok" data-sekcja="2"><h2>Core Services</h2><div class="grid"><div class="k"><strong>CNC Machining</strong><p>Custom tolerances and CAD-to-part production.</p></div><div class="k"><strong>Assembly</strong><p>On-schedule delivery across your target markets.</p></div><div class="k"><strong>Maintenance</strong><p>Dedicated engineers and SLA support.</p></div></div></section>
+<section class="blok" data-sekcja="3"><h2>Why Clients Work With Us</h2><div class="grid"><div class="k">Dedicated project lead</div><div class="k">Transparent quotes in 48h</div><div class="k">ISO-verified quality</div></div></section>
+<section class="blok" data-sekcja="4"><h2>Direct Contact</h2><p>Phone number and email carried over from your current homepage.</p></section>
+<footer>Acme Industrial Ltd - Redesign proposal built from your existing content</footer></body></html>`;
+    return { nazwa: 'Acme Industrial Ltd', podglad, pelna };
+  }
+  const podglad = `<!doctype html><html lang="pl"><head><meta charset="utf-8"><style>${MAKIETA_DEMO_CSS}</style></head><body>
+<section data-sekcja="1"><header><strong>Precyzja B2B Sp. z o.o.</strong><nav><a href="#">Oferta</a><a href="#">Realizacje</a><a href="#">Kontakt</a></nav></header><div class="hero"><h1>Precyzyjne wykonawstwo i rozwiązania dla przemysłu</h1><p>Podgląd nowego pierwszego ekranu zaprojektowanego na bazie treści Twojej obecnej strony.</p><a class="btn" href="#">Zapytaj o wycenę</a></div></section></body></html>`;
+  const pelna = `<!doctype html><html lang="pl"><head><meta charset="utf-8"><style>${MAKIETA_DEMO_CSS}</style></head><body>
+<section data-sekcja="1"><header><strong>Precyzja B2B Sp. z o.o.</strong><nav><a href="#">Oferta</a><a href="#">Realizacje</a><a href="#">Kontakt</a></nav></header><div class="hero"><h1>Precyzyjne wykonawstwo i rozwiązania dla przemysłu</h1><p>Pełna makieta nowej strony głównej w trybie DEMO z czterema sekcjami i stopką.</p><a class="btn" href="#">Zapytaj o wycenę</a></div></section>
+<section class="blok" data-sekcja="2"><h2>Główne usługi</h2><div class="grid"><div class="k"><strong>Produkcja</strong><p>Realizacja według dokumentacji technicznej klienta.</p></div><div class="k"><strong>Montaż</strong><p>Terminowe wdrożenia na terenie całej Polski.</p></div><div class="k"><strong>Serwis</strong><p>Stały opiekun techniczny i szybki czas reakcji.</p></div></div></section>
+<section class="blok" data-sekcja="3"><h2>Dlaczego klienci wybierają nas</h2><div class="grid"><div class="k">Bezpośredni kontakt z inżynierem</div><div class="k">Konkretna wycena w 48 godz.</div><div class="k">Potwierdzona jakość wykonania</div></div></section>
+<section class="blok" data-sekcja="4"><h2>Szybki kontakt</h2><p>Telefon i e-mail przeniesione z Twojej obecnej strony głównej.</p></section>
+<footer>Precyzja B2B Sp. z o.o. - Propozycja układu z treści Twojej obecnej witryny</footer></body></html>`;
+  return { nazwa: 'Precyzja B2B Sp. z o.o.', podglad, pelna };
+}
+
 function odmienSekcji(n) {
   if (n === 1) return '1 sekcję';
   const d = n % 10;
@@ -125,13 +162,44 @@ export default function MakietaClient() {
     const url = String(fd.get('url') || '').trim();
     setAdres(url);
     zapiszParametry({ url, wynik: null });
-    setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null });
+    setStan({ status: 'loading', blad: null, id: null, podglad: null, pelny: null, trybDemo: false });
     track('narzedzie_start', { narzedzie: 'makieta' });
     const r = await wywolajNarzedzie('makieta', { url, cel: String(fd.get('cel') || ''), nick: String(fd.get('nick') || ''), lang: en ? 'en' : 'pl' }, 290_000);
     if (!r.ok) return setStan((s) => ({ ...s, status: 'error', blad: r.blad }));
     track('narzedzie_wynik', { narzedzie: 'makieta' });
     zapiszParametry({ url, wynik: r.id || null });
-    setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null });
+    setStan({ status: 'done', blad: null, id: r.id, podglad: r.podglad, pelny: null, trybDemo: false });
+  }
+
+  function zaladujDemo() {
+    const surowy = poleRef.current?.value || adres || (en ? 'acme-industrial.com' : 'twoja-produkcja.pl');
+    const domena = wyczyscDomeneDemo(surowy, en);
+    const wzor = zbudujDemoMakieteHtml(en);
+    setAdres(domena);
+    if (poleRef.current && !poleRef.current.value) poleRef.current.value = domena;
+    track('narzedzie_demo', { narzedzie: 'makieta', lang: en ? 'en' : 'pl' });
+    setStan({
+      status: 'done',
+      blad: null,
+      id: null,
+      podglad: {
+        domena,
+        nazwa: wzor.nazwa,
+        zrzut: null,
+        html: wzor.podglad,
+        sekcji: 4,
+      },
+      pelny: {
+        domena,
+        nazwa: wzor.nazwa,
+        html: wzor.pelna,
+        zrzut: null,
+        sekcji: 4,
+        link: '#',
+      },
+      trybDemo: true,
+      mailOk: true,
+    });
   }
 
   const p = stan.podglad;
@@ -146,9 +214,12 @@ export default function MakietaClient() {
           <label htmlFor="mak-cel" className="narz-etykieta">{en ? 'What should improve? (optional)' : 'Co ma się poprawić? (opcjonalnie)'}</label>
           <input id="mak-cel" name="cel" maxLength={300} placeholder={en ? 'e.g. more calls and enquiries' : 'np. więcej telefonów i zapytań'} className="narz-pole" />
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
-          <div className="narz-kalk-akcja">
+          <div className="narz-kalk-akcja" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', alignItems: 'center' }}>
             <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta="narzedzie_makieta_start">
               {stan.status === 'loading' ? (en ? 'Designing…' : 'Projektuję…') : (en ? 'Design a new website' : 'Zaprojektuj nową stronę')}
+            </button>
+            <button type="button" className="btn btn-secondary" disabled={stan.status === 'loading'} onClick={zaladujDemo} data-cta="narzedzie_makieta_demo">
+              {en ? 'Load DEMO preview' : 'Załaduj podgląd DEMO'}
             </button>
           </div>
           <p className="narz-mikro">{en ? `No signup. The mockup takes ${MAKIETA.minut.replace('-', ' to ')} minutes. Up to ${MAKIETA.limitIp} mockups per day from one IP address.` : `Bez rejestracji. Makieta powstaje ${MAKIETA.minut.replace('-', ' do ')} minut. Do ${MAKIETA.limitIp} makiet dziennie z jednego adresu IP.`}</p>
@@ -158,8 +229,20 @@ export default function MakietaClient() {
       )}
 
       {stan.status === 'done' && p && (
-        <div ref={wynikRef} className="narz-wynik c-skok" aria-live="polite" style={rezerwa ? { minHeight: rezerwa, alignContent: 'start' } : undefined}>
-          <p className="narz-wynik-domena">{en ? 'New homepage' : 'Nowa strona główna'}: {p.nazwa}</p>
+        <div ref={wynikRef} className="narz-wynik c-skok" aria-live="polite" style={{ scrollMarginTop: '112px', ...(rezerwa ? { minHeight: rezerwa, alignContent: 'start' } : {}) }}>
+          <div style={{ scrollMarginTop: '112px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
+            <p className="narz-wynik-domena" style={{ margin: 0 }}>{en ? 'New homepage' : 'Nowa strona główna'}: {p.nazwa}</p>
+            {stan.trybDemo && (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                style={{ padding: '0.45rem 0.95rem', fontSize: '0.86rem' }}
+                onClick={() => setStan({ status: 'idle', blad: null, id: null, podglad: null, pelny: null, trybDemo: false })}
+              >
+                {en ? 'Enter your own website' : 'Wpisz własną stronę'}
+              </button>
+            )}
+          </div>
           {!stan.pelny ? (
             <>
               <div key="przed-bramka" className={`narz-porownanie-makiet${p.zrzut ? '' : ' narz-porownanie-makiet--bez-zrzutu'}`}>

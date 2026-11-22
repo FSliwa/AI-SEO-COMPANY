@@ -20,7 +20,6 @@ import CompareTable from '@/components/CompareTable';
 import BlogCTA from '@/components/BlogCTA';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { Reveal } from '@/components/ScrollReveal';
 import { Link } from '@/i18n/routing';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { MADAME_THAI, STANIAX, ASE_BOT, TQL, liczba } from '@/lib/jakDlugoSeo';
@@ -130,23 +129,20 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
-      <article style={{ paddingTop: '160px', paddingBottom: '120px' }}>
+      <article style={{ paddingTop: 'clamp(108px, 11vw, 148px)', paddingBottom: 'clamp(64px, 8vw, 110px)' }}>
         <div className="container" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 2rem' }}>
-          <Reveal>
-            <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
-                SEO basics
-              </span>
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
-              {H1}
-            </h1>
-            <Byline sciezka={SLUG} data={DATA} takzeEn />
-            <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '3rem' }}></div>
-          </Reveal>
+          <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+              SEO basics
+            </span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', fontWeight: 500, color: 'var(--w-tusz)', marginBottom: '1.5rem', lineHeight: 1.1, letterSpacing: '-0.02em', textAlign: 'left' }}>
+            {H1}
+          </h1>
+          <Byline sciezka={SLUG} takzeEn />
+          <div style={{ borderBottom: '1px solid var(--w-linia)', marginBottom: '1.5rem' }}></div>
 
-          <Reveal delay={0.2}>
-            <div className="article-content">
+          <div className="article-content">
               <AnswerBox etykieta="Short answer">
                 How long does SEO take? Google says some changes take effect within hours and others need several months, and advises waiting a few weeks before judging results. In our client data, the first impressions arrived within days; stable high positions for competitive keywords usually take 3 to 6 months.
               </AnswerBox>
@@ -278,8 +274,7 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
               <Zrodla zrodla={ZRODLA} en />
 
               <BlogCTA locale={locale} currentSlug={SLUG} klaster="ceny" />
-            </div>
-          </Reveal>
+          </div>
         </div>
       </article>
 

@@ -368,11 +368,11 @@ export default function SzablonRaport({ locale = 'pl' }) {
       </div>
 
       <AppleFaq faqData={faqRaportu()} title="Pytania o raport SEO" sectionId="pytania" />
-      <section style={{ paddingBottom: '2rem' }}>
+      <div style={{ paddingBottom: '2rem' }}>
         <div className="container" style={s.kontener}>
           <Zrodla zrodla={strona.sources} />
         </div>
-      </section>
+      </div>
       <Contact isMainContent />
       <Footer />
     </main>
@@ -680,11 +680,11 @@ function RaportEn() {
       </div>
 
       <AppleFaq faqData={faqRaportuEnPelne()} title="Questions about the SEO report" sectionId="pytania" />
-      <section style={{ paddingBottom: '2rem' }}>
+      <div style={{ paddingBottom: '2rem' }}>
         <div className="container" style={s.kontener}>
           <Zrodla zrodla={meta.sources} en />
         </div>
-      </section>
+      </div>
       <Contact isMainContent />
       <Footer />
     </main>

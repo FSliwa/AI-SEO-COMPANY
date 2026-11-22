@@ -88,8 +88,11 @@ body:has(.sz) { overflow-x: clip; }
 .sz-nav__postep { display: none; }
 
 /* ---------- Sekcje i typografia treści ---------- */
-.sz-sekcja { margin-top: clamp(40px, 5vw, 64px); margin-top: round(nearest, clamp(40px, 5vw, 64px), 8px); counter-increment: sz; scroll-margin-top: 112px; }
+.sz-narzedzie-blok { counter-increment: sz; scroll-margin-top: 112px; }
+.sz-narzedzie-blok > [id] { scroll-margin-top: 112px; }
+.sz-sekcja { margin-top: clamp(40px, 5vw, 64px); margin-top: round(nearest, clamp(40px, 5vw, 64px), 8px); padding-top: 0 !important; padding-bottom: 0 !important; counter-increment: sz; scroll-margin-top: 112px; }
 .sz-sekcja--bez { counter-increment: none; }
+.sz > section:has(.zrodla-sekcja) { padding-top: 0 !important; padding-bottom: 2rem !important; }
 .sz-tresc > .sz-sekcja:first-child, .sz-tresc > .sz-aside + .sz-sekcja { margin-top: clamp(32px, 4vw, 48px); margin-top: round(nearest, clamp(32px, 4vw, 48px), 8px); }
 .sz-h2 {
   font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.1; font-weight: 500; letter-spacing: -0.035em;
@@ -159,7 +162,7 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 
 /* Formularz pobrania */
 .sz-pobierz {
-  display: grid; gap: clamp(20px, 3vw, 40px); padding: clamp(1.25rem, 4vw, 2.5rem); border-radius: var(--w-promien-karta, 28px);
+  display: grid; gap: clamp(20px, 3vw, 40px); padding: clamp(1.25rem, 4vw, 2.5rem) !important; border-radius: var(--w-promien-karta, 28px);
   background: var(--w-brzoskwinia-tlo); border: 1.5px solid rgba(243, 183, 156, 0.55);
 }
 .sz-pobierz .sz-akapit { margin-bottom: 0; }
