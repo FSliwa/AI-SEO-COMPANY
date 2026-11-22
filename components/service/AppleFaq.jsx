@@ -101,8 +101,8 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
           {/* 7.11.2026: wariant panelu (strona glowna) - odsylacz do formularza pod tytulem, jak w makiecie. */}
           {panel && (
             <p className="faq-apple-kontakt">
-              <span>{lang === 'pl' ? 'Masz inne pytanie?' : 'Another question?'}</span>
-              <a href={hash('kontakt', lang)} data-cta="faq_kontakt">{lang === 'pl' ? 'Skontaktuj się z nami' : 'Contact us'}{'\u00A0'}→</a>
+              <span>{lang === 'de' ? 'Noch eine Frage?' : lang === 'pl' ? 'Masz inne pytanie?' : 'Another question?'}</span>
+              <a href={hash('kontakt', lang)} data-cta="faq_kontakt">{lang === 'de' ? 'Kontaktieren Sie uns' : lang === 'pl' ? 'Skontaktuj się z nami' : 'Contact us'}{'\u00A0'}→</a>
             </p>
           )}
         </Reveal>
@@ -114,7 +114,7 @@ export default function AppleFaq({ faqData, title = "Najczęstsze Pytania", extr
             const pytId = kotwica || `${uid}-pyt-${index}`;
             const odpId = kotwica ? `${kotwica}-odp` : `${uid}-odp-${index}`;
             return (
-              <Reveal key={index} delay={index * 0.1}>
+              <Reveal key={index} delay={Math.min(index * 0.05, 0.2)}>
                 <div className="faq-apple-pozycja" style={{ borderBottom: '1px solid var(--w-linia)' }}>
                   {/* Akordeon dostepny (05.10.2026). Pomiar na /, /en, cenniku i
                       stronach uslug (390 i 1440 px): przycisk bez aria-expanded

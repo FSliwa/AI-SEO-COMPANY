@@ -43,7 +43,15 @@ export default function HomeDe() {
         </div>
 
         <div className="w-noc-panele" data-kursor="ciemne">
-          <Faq eintraege={HOME_FAQ} titel="Häufige Fragen zur Zusammenarbeit" />
+          <Faq
+            eintraege={HOME_FAQ}
+            titel="Häufige Fragen zur Zusammenarbeit"
+            wariant="panel"
+            stopkaLink={{
+              href: '/porownania',
+              label: 'SEO-Abrechnungsmodelle und Agentur-Alternativen im Vergleich',
+            }}
+          />
         </div>
         <Contact isMainContent={true} />
       </main>

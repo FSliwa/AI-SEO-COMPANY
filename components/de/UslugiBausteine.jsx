@@ -238,6 +238,6 @@ export function CtaZeile({ text = 'Angebot anfragen - Antwort innerhalb von 24 S
   );
 }
 
-export function Faq({ eintraege, titel = 'Häufige Fragen', id }) {
-  return <AppleFaq faqData={faqFuerAppleFaq(eintraege)} title={titel} sectionId={id} />;
+export function Faq({ eintraege, titel = 'Häufige Fragen', id, wariant, stopkaLink }) {
+  return <AppleFaq faqData={faqFuerAppleFaq(eintraege)} title={titel} sectionId={id} wariant={wariant} stopkaLink={stopkaLink} />;
 }

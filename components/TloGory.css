@@ -268,7 +268,7 @@
    waska (srodek) i konczy sie na lewo od czaszy. */
 @media (min-width: 900px) {
   .subpage-hero.tlo-gory-hero {
-    --tg-pb: clamp(165px, 21vh, 215px);
+    --tg-pb: clamp(235px, 28vh, 265px);
     min-height: min(calc(var(--tg-w) * (0.2271 + 0.3063 * var(--tg-k)) + clamp(230px, 31vh, 300px)), max(760px, 95vh));
   }
   .tlo-gory-hero h1 ~ p:not(.hero-proof):not(.byline) { max-width: min(620px, max(380px, calc(2 * (var(--tg-dl) - 50vw) - 24px))) !important; }
