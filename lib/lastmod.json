@@ -3,10 +3,9 @@
   "_wydanie": {
     "data": "2026-11-22",
     "zmienione": [
-      "https://www.ai-seo-company.pl/en/ai-visibility-check",
-      "https://www.ai-seo-company.pl/en/tools/website-redesign-mockup",
-      "https://www.ai-seo-company.pl/narzedzia/makieta-redesignu",
-      "https://www.ai-seo-company.pl/sprawdz-widocznosc-w-ai"
+      "https://www.ai-seo-company.pl/",
+      "https://www.ai-seo-company.pl/de",
+      "https://www.ai-seo-company.pl/en"
     ],
     "usuniete": []
   },
@@ -39,7 +38,7 @@
     "https://www.ai-seo-company.pl/cennik-pozycjonowania": {"lastmod":"2026-11-22","tresc":"2026-11-22"},
     "https://www.ai-seo-company.pl/cookies": {"lastmod":"2026-11-22","tresc":"2026-11-22"},
     "https://www.ai-seo-company.pl/copywriting-seo": {"lastmod":"2026-11-18","tresc":"2026-11-18","pierwszy":"2026-11-18"},
-    "https://www.ai-seo-company.pl/de": {"lastmod":"2026-11-21","tresc":"2026-11-21","pierwszy":"2026-11-18"},
+    "https://www.ai-seo-company.pl/de": {"lastmod":"2026-11-22","tresc":"2026-11-22","pierwszy":"2026-11-18"},
     "https://www.ai-seo-company.pl/de/agb": {"lastmod":"2026-11-22","tresc":"2026-11-22","pierwszy":"2026-11-18"},
     "https://www.ai-seo-company.pl/de/blog/canonical-tag": {"lastmod":"2026-11-20","tresc":"2026-11-20"},
     "https://www.ai-seo-company.pl/de/blog/core-web-vitals": {"lastmod":"2026-11-20","tresc":"2026-11-20"},
