@@ -397,12 +397,12 @@ export default function BlogGrid() {
               {expandedMissionCard.image && (
                 <div style={{
                   width: '100%',
-                  height: 'clamp(250px, 40vh, 400px)',
+                  height: 'clamp(140px, 32vh, 360px)',
                   backgroundImage: `url(${expandedMissionCard.image})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   borderTopLeftRadius: '24px',
-                  borderTopRightRadius: '0'
+                  borderTopRightRadius: '24px'
                 }} />
               )}
               

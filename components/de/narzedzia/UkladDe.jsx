@@ -38,7 +38,7 @@ export function dataDlugaDe(iso) {
 export function ZrodlaDe({ zrodla, id = 'zrodla' }) {
   if (!zrodla || zrodla.length === 0) return null;
   return (
-    <section aria-labelledby={id} style={{ margin: '2.5rem 0 0' }}>
+    <section className="zrodla-sekcja" aria-labelledby={id} style={{ margin: '2.5rem 0 0' }}>
       <h2 id={id} style={{ fontSize: 'clamp(1.25rem, 2.6vw, 1.5rem)', fontWeight: 500, letterSpacing: '-0.015em', margin: '0 0 0.9rem', color: 'var(--color-text-dark)', scrollMarginTop: '110px' }}>
         Quellen
       </h2>

@@ -396,7 +396,7 @@
    Dlaczego :global(body):has(.tresc): app/globals.css ustawia body overflow-x: hidden, co robi z body kontener przewijania
    i psuje position: sticky (spis odjeżdżał z pierwszym ekranem). clip tnie tak samo, ale nie tworzy kontenera (jak body:has(.sz)). */
 :global(body):has(.tresc) { overflow-x: clip; }
-.tresc { display: block; --nw-nag: 69px; --nw-pasek: 48px; }
+.tresc { display: block; --nw-nag: 74px; --nw-pasek: 48px; }
 .trescGlowna { min-width: 0; }
 .nawBok { display: block; }
 .nawSpis { position: relative; }

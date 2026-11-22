@@ -63,10 +63,11 @@
 }
 
 /* Desktop: czasza z prawej, tresc (srodek, max 700 px) jej nie dotyka. */
-@media (min-width: 900px) { .tlo-gory-hero { --tg-k: 0.36; } }
-@media (min-width: 1100px) { .tlo-gory-hero { --tg-k: 0.42; } }
+@media (min-width: 900px) { .tlo-gory-hero { --tg-k: 0.30; } }
+@media (min-width: 1200px) { .tlo-gory-hero { --tg-k: 0.42; } }
 @media (min-width: 1400px) { .tlo-gory-hero { --tg-k: 0.5; } }
-@media (min-width: 1600px) { .tlo-gory-hero { --tg-k: 0.58; } }
+@media (min-width: 1600px) { .tlo-gory-hero { --tg-k: 0.56; } }
+@media (min-width: 1800px) and (max-height: 1150px) { .tlo-gory-hero { --tg-k: 0.44; } }
 
 @media (max-width: 600px) {
   /* telefon: czasza stoi nad podstawa, wiec tresc konczy sie nad nia (bez nakladania) */
@@ -267,10 +268,23 @@
    waska (srodek) i konczy sie na lewo od czaszy. */
 @media (min-width: 900px) {
   .subpage-hero.tlo-gory-hero {
-    --tg-pb: clamp(110px, 17vh, 200px);
-    min-height: calc(var(--tg-w) * (0.2271 + 0.3063 * var(--tg-k)) + clamp(230px, 31vh, 300px));
+    --tg-pb: clamp(165px, 21vh, 215px);
+    min-height: min(calc(var(--tg-w) * (0.2271 + 0.3063 * var(--tg-k)) + clamp(230px, 31vh, 300px)), max(760px, 95vh));
   }
   .tlo-gory-hero h1 ~ p:not(.hero-proof):not(.byline) { max-width: min(620px, max(380px, calc(2 * (var(--tg-dl) - 50vw) - 24px))) !important; }
+  .tlo-gory-hero .hero-proof,
+  .tlo-gory-hero .byline,
+  .tlo-gory-hero .hero-cta-row {
+    max-width: min(640px, max(400px, calc(2 * (var(--tg-dl) - 50vw) - 20px)));
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .subpage-hero.tlo-gory-hero {
+    --tg-pb: clamp(110px, 17vh, 200px);
+  }
 }
 
 /* Dlugi H1 (np. 65 znakow "Tworzenie stron internetowych i projektowanie stron internetowych"):
@@ -282,6 +296,15 @@
 /* Tablet pionowy (601-899 px): czasza ma wlasne pietro pod trescia (dol hero = jej wysokosc nad dolem + 12 px). */
 @media (min-width: 601px) and (max-width: 899px) {
   .subpage-hero.tlo-gory-hero { --tg-pb: calc(100vw * (0.2271 + 0.3063 * var(--tg-k)) + 12px); }
+}
+
+/* Telefon poziomo (np. 844x390): nizsza skala czaszy i zwarty dol hero, zeby gory nie zjadaly 85% wysokosci ekranu */
+@media (max-height: 500px) and (min-width: 601px) {
+  .tlo-gory-hero { --tg-k: 0.32; }
+  .subpage-hero.tlo-gory-hero {
+    --tg-pb: clamp(110px, 32vh, 155px) !important;
+    min-height: 0 !important;
+  }
 }
 
 /* Telefon: dlugi H1 o stopien mniejszy (4 wiersze spychaly przyciski pod zagiecie 844 px). */

@@ -2056,14 +2056,34 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   flex-shrink: 0 !important;
 }
 
-@container (max-width: 1160px) {
+.header .header-hire-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.25rem !important;
+}
+
+@container (max-width: 1200px) {
   .header .header-award-badges > :nth-child(n + 2) {
     display: none !important;
   }
 }
 
-@container (max-width: 980px) {
+@container (max-width: 1080px) {
   .header .header-award-badges {
+    display: none !important;
+  }
+}
+
+@container (max-width: 920px) {
+  .header .header-login-btn {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+  }
+  .header .header-login-label {
     display: none !important;
   }
 }
@@ -2128,8 +2148,31 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
 }
 
 @media (max-width: 420px) {
-  .lang-switcher {
-    margin-left: 10px;
+  .header {
+    --logo-h: 15px;
+  }
+  .header .nav-container {
+    padding-left: 0.875rem !important;
+    padding-right: 0.875rem !important;
+    gap: 0.4rem;
+  }
+  .header .nav-container > div:last-child {
+    gap: 0.25rem !important;
+  }
+  .header .lang-switcher {
+    gap: 0.1rem !important;
+    padding: 0 0.35rem !important;
+    margin-left: 0 !important;
+  }
+  .header .lang-btn {
+    min-width: 25px !important;
+    min-height: 38px !important;
+    font-size: 0.72rem !important;
+  }
+  .header .header-login-btn,
+  .header .kota-menu-trigger {
+    width: 38px !important;
+    height: 38px !important;
   }
 }
 
@@ -2189,7 +2232,7 @@ main h1:not(.hero *) {
   text-wrap: pretty;
 }
 
-/* (87) Dzielenie wyrazow w srodku tylko tam, gdzie nie ma innego wyjscia */
+/* (87) Dzielenie wyrazow w srodku tylko tam, gdzie nie ma innego wyjscia; na DE automatyczne dla dlugich zlozen */
 table,
 #subpage-portfolio-carousel,
 #about-methodology-carousel,
@@ -2199,6 +2242,11 @@ table,
   overflow-wrap: normal;
   word-break: normal;
   hyphens: manual;
+}
+
+:lang(de) :is(.section-header h2, .service-card h3, .faq-apple-tytul) {
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 /* (75) Naglowki podstron w lekkiej wadze makiety */
@@ -2233,7 +2281,7 @@ select.narz-pole {
   font-variant-numeric: tabular-nums;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 640px) {
   .narz-siatka-formularza {
     grid-template-columns: 1fr !important;
   }
@@ -2268,7 +2316,7 @@ select.narz-pole {
 }
 
 #why-us.why-us {
-  padding-top: clamp(220px, 28.5vw, 430px) !important;
+  padding-top: clamp(220px, 28.5vw, 730px) !important;
   background-position: center top !important;
 }
 
@@ -4225,6 +4273,66 @@ article:has(+ section.contact) {
      z globals.css (56 px na telefonie), przez co eyebrow siedzial na okruszkach.
    ========================================================================== */
 
+/* Spójne pionowe odstepy podstron: eliminacja 176-304 px pustych dziur po globalnym section { padding: 5.5rem !important } */
+main.subpage-main > section[style*="clamp(136px, 14vw, 166px)"] {
+  padding-top: clamp(120px, 12vw, 148px) !important;
+  padding-bottom: clamp(20px, 3vw, 32px) !important;
+}
+
+section.zrodla-sekcja {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 2rem 0 0 !important;
+}
+
+section:has(> .container > .zrodla-sekcja),
+section:has(> .zrodla-sekcja) {
+  padding-top: clamp(16px, 2.5vw, 32px) !important;
+  padding-bottom: clamp(40px, 5vw, 64px) !important;
+}
+
+section:has(> .container > .zrodla-sekcja) .zrodla-sekcja,
+section:has(> .zrodla-sekcja) .zrodla-sekcja {
+  margin-top: 0 !important;
+}
+
+.article-content > section {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.article-content > section[aria-labelledby="weiterfuehrend-h"] {
+  padding: 1.6rem 1.75rem !important;
+}
+
+section.de-abschnitt {
+  padding-top: 0 !important;
+  padding-bottom: clamp(32px, 4.5vw, 56px) !important;
+}
+
+.gory-klienci-pas {
+  position: relative;
+  background: linear-gradient(180deg, rgb(245, 238, 233) 0%, var(--w-papier) 100%);
+  padding: 8px 0 16px;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) and (max-width: 1119.98px) {
+  .de-karten-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1120px) {
+  .de-karten-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+nav.breadcrumbs:has(+ main.prawo-main) {
+  max-width: 800px !important;
+}
+
 @media (max-width: 768px) {
   .breadcrumbs {
     flex-wrap: wrap;
@@ -4238,6 +4346,7 @@ article:has(+ section.contact) {
 
   main.subpage-main > section[style*="clamp(136px, 14vw, 166px)"] {
     padding-top: 100px !important;
+    padding-bottom: 20px !important;
   }
 }
 
@@ -4669,8 +4778,19 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
   scroll-snap-type: x proximity;
 }
 
-/* W19b: kolumna naglowkowa przylega do lewej */
-.tabela-przewijana th[scope="row"] { position: sticky; left: 0; z-index: 1; background: var(--w-papier-2, #F6EFE6); }
+/* W19b: kolumna naglowkowa przylega do lewej od 641 px (z naglowkiem kolumny w tej samej osi; na telefonie <= 640 px cala tabela przewija sie swobodnie) */
+@media (min-width: 641px) {
+  .tabela-przewijana thead th:first-child,
+  .tabela-przewijana tbody th[scope="row"] {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--w-papier-2, #F6EFE6);
+  }
+  .tabela-przewijana thead th:first-child {
+    z-index: 2;
+  }
+}
 
 /* W10: 404 (siatka linkow rowna) */
 .nf-linki { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }

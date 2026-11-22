@@ -34,8 +34,9 @@ const CSS_CWV = `
 .cwv-wyciek-karta { padding: clamp(1.2rem, 3vw, 1.65rem); border-radius: 20px; background: var(--w-papier, #f6f4ef); border: 1px solid var(--w-linia, rgba(30,30,30,0.12)); display: grid; gap: 1rem; }
 .cwv-wyciek-siatka { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 0.75rem; }
 .cwv-wyciek-boks { padding: 0.95rem 1.05rem; border-radius: 14px; background: #ffffff; border: 1px solid var(--w-linia, rgba(30,30,30,0.1)); }
-.cwv-tco-siatka { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 0.9rem; }
-.cwv-tco-kol { padding: 1.15rem 1.25rem; border-radius: 18px; border: 1px solid var(--w-linia, rgba(30,30,30,0.12)); background: #ffffff; display: grid; gap: 0.55rem; align-content: start; }
+.cwv-tco-siatka { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0.9rem; }
+.cwv-tco-kol { min-width: 0; padding: 1.15rem 1.25rem; border-radius: 18px; border: 1px solid var(--w-linia, rgba(30,30,30,0.12)); background: #ffffff; display: grid; gap: 0.55rem; align-content: start; }
+.cwv-tco-kol .btn { width: 100%; max-width: 100%; white-space: normal; text-align: center; justify-content: center; height: auto; line-height: 1.3; }
 .cwv-tco-kol--booster { background: linear-gradient(135deg, #101935 0%, #1d2b53 100%); color: #ffffff; border-color: transparent; }
 .cwv-tco-kol--booster p, .cwv-tco-kol--booster li { color: rgba(255, 255, 255, 0.88); }
 .cwv-tco-lista { margin: 0; padding-left: 1.15rem; display: grid; gap: 0.35rem; font-size: 0.9rem; line-height: 1.5; }

@@ -14,7 +14,7 @@
 }
 
 /* ---------- Hero ---------- */
-.sz-hero { position: relative; isolation: isolate; padding: clamp(28px, 4vw, 56px) 0 clamp(40px, 6vw, 72px); padding: round(nearest, clamp(28px, 4vw, 56px), 8px) 0 round(nearest, clamp(40px, 6vw, 72px), 8px); margin-top: -1px; }
+.sz-hero { position: relative; isolation: isolate; padding: clamp(28px, 4vw, 56px) 0 clamp(40px, 6vw, 72px) !important; padding: round(nearest, clamp(28px, 4vw, 56px), 8px) 0 round(nearest, clamp(40px, 6vw, 72px), 8px) !important; margin-top: -1px; }
 .sz-tlo {
   /* 19.11.2026 (poprawki audytu 3, tło): warstwa zaczynała się na górze sekcji hero, ok. 128 px pod górą strony
      (pod nagłówkiem i okruszkami), więc gradient miał twardą poziomą krawędź pod okruszkami. Teraz sięga 160 px
@@ -184,6 +184,8 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 .sz-figura { margin: 0 0 2rem; }
 .sz-figura img { border-radius: 16px !important; border: 1px solid var(--w-linia); box-shadow: var(--sz-cien) !important; }
 .sz-faq { margin-top: clamp(40px, 5vw, 64px); }
+.sz-faq > .faq-apple > .container,
+.sz-faq .container { padding-inline: 0 !important; max-width: none !important; }
 
 /* ---------- Desktop: spis po lewej ---------- */
 @media (min-width: 1100px) {

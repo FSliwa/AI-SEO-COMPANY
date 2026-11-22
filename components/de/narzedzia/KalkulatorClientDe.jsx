@@ -242,13 +242,16 @@ body:has(.kalk-akcja), main:has(.kalk-akcja) { overflow-x: clip !important; }
 .kalk-minus { color: var(--n-zle); }
 .kalk-dalej { margin: 0; text-align: left; }
 @media (max-width: 600px) {
-  .kalk-tryb-opcje { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; }
-  .kalk-tryb-opcje span { padding: 0.55rem 0.5rem; border-radius: 12px; font-size: 0.9rem; }
+  .kalk-tryb-opcje { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; width: 100%; }
+  .kalk-tryb-opcje span { padding: 0.55rem 0.45rem; border-radius: 12px; font-size: 0.86rem; }
   .kalk-akcja { flex-direction: column; align-items: stretch; gap: 0.45rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
   .kalk-akcja .btn { width: 100%; justify-content: center; padding: 0.7rem 1rem; white-space: nowrap; font-size: 0.95rem; }
   .kalk-biezacy { flex: none; min-width: 0; text-align: center; font-size: 0.85rem; }
   .kalk-biezacy--pusty { display: none; }
   .kalk-biezacy strong { font-size: 0.95rem; }
+}
+@media (max-width: 440px) {
+  .kalk-tryb-opcje { grid-template-columns: 1fr; }
 }
 `;
 

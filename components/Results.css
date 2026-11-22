@@ -17,7 +17,7 @@
   overflow: hidden;
   background-color: var(--w-papier) !important;
   background-image: none !important;
-  padding-top: clamp(200px, 24.5vw, 376px) !important;
+  padding-top: clamp(200px, 24.5vw, 560px) !important;
   padding-bottom: clamp(12px, 1.8vw, 24px) !important;
   margin-bottom: -1px !important;
 }
@@ -70,8 +70,8 @@
 /* Formuła szerokiego ekranu z ase-bot.live: utrzymuje styk łuku z równikiem dysku i unosi krzywiznę ponad górną krawędź tarczy */
 @media (min-width: 1440px) {
   .results-noc-kopula {
-    border-bottom-left-radius: 50% calc(17rem + (100vw - 1440px) * 0.75);
-    border-bottom-right-radius: 50% calc(17rem + (100vw - 1440px) * 0.75);
+    border-bottom-left-radius: 50% min(calc(17rem + (100vw - 1440px) * 0.75), 34rem);
+    border-bottom-right-radius: 50% min(calc(17rem + (100vw - 1440px) * 0.75), 34rem);
   }
 }
 
@@ -409,7 +409,7 @@
     display: none;
   }
   .results-glob-wrap {
-    margin-top: 28px;
+    margin-top: clamp(-8px, -1vw, 8px);
   }
 }
 
@@ -419,6 +419,12 @@
   }
   .results-noc-kopula {
     bottom: calc(var(--gw) * 0.17 + 14px);
+  }
+}
+
+@media (max-width: 900px) and (max-height: 500px) {
+  .results.results--kopula {
+    padding-top: clamp(180px, 34vw, 280px) !important;
   }
 }
 
@@ -432,5 +438,8 @@
   }
   .results-filar:nth-child(even) {
     margin-top: 0;
+  }
+  .results-glob-wrap {
+    margin-top: 16px;
   }
 }

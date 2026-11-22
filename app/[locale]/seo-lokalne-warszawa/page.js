@@ -338,20 +338,20 @@ export default async function SeoLokalneWarszawaPage({ params }) {
               )}
             </Reveal>
 
-            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+            <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
+              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 1' : 'RULE 1'}</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wyszukiwania z Intencją "Near Me"' : 'Searches with local intent'}</h3>
                 <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? <>Duża część wyszukiwań w Google ma intencję lokalną, a Google pokazuje w nich pakiet lokalny z Mapami. Profesjonalne <span style={{ fontWeight: 'bold' }}>pozycjonowanie lokalne</span> sprawia, że klienci są gotowi do natychmiastowego telefonu lub wizyty w lokalu. Polecamy także sprawdzić <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>jak pozyskiwać opinie</Link>.</> : <>A large share of searches have local intent, and Google shows a local pack with Maps for them. Check out our <Link href="/blog/jak-pozyskiwac-opinie-google-poradnik" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Google reviews guide</Link>.</>}</p>
               </RevealItem>
               
-              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 2' : 'RULE 2'}</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Widoczność Mobilna' : 'Mobile visibility'}</h3>
                 <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Dominacja na urządzeniach mobilnych to klucz w branżach lokalnych (gastronomia, usługi prawne, beauty), gdzie decyzje podejmuje się "w drodze".' : 'Mobile dominance is key in local industries (gastronomy, legal services, beauty), where decisions are made on the go.'}</p>
               </RevealItem>
               
-              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '3.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+              <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>{lang === 'pl' ? 'ZASADA 3' : 'RULE 3'}</div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)', letterSpacing: '-0.02em', marginBottom: '1.25rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wysoka Konwersja' : 'High conversion rate'}</h3>
                 <p style={{ color: 'var(--color-text-main)', fontSize: '1.1rem', lineHeight: 1.55 }}>{lang === 'pl' ? 'Zapytania z Map często kończą się telefonem lub wizytą; mierzymy to w panelu klienta (połączenia, trasy).' : 'Searches in Maps often end in a call or a visit; we measure this in the client portal (calls, directions).'}</p>

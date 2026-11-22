@@ -60,9 +60,9 @@ export default function RechtstextDe({ schluessel, brotkrumen, daten, children }
     <>
       <Header />
       <Breadcrumbs pl={brotkrumen} en={brotkrumen} de={brotkrumen} />
-      <main className="subpage-main" style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--w-papier-2)' }}>
+      <main className="subpage-main prawo-main" style={{ paddingTop: '96px', minHeight: '80vh', background: 'var(--w-papier)' }}>
         {ld && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />}
-        <div className="container" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
+        <div className="container" style={{ maxWidth: '800px', padding: '1.5rem 1.5rem 4.5rem' }}>
           <h1 style={{ fontSize: 'clamp(1.9rem, 6vw, 3rem)', color: 'var(--w-tusz)', marginBottom: '0.75rem', letterSpacing: '-0.03em', overflowWrap: 'break-word', hyphens: 'auto' }}>
             {w ? w.h1 : brotkrumen}
           </h1>

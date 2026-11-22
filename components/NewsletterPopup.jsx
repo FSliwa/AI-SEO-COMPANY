@@ -107,7 +107,7 @@ const CSS = `
 .nlp-pasek .nlp-tytul{font-size:.98rem;margin:0 44px 8px 0;line-height:1.3}
 .nlp-pasek .btn{width:calc(100% - 6px);justify-content:center;min-height:44px;padding-top:.55rem;padding-bottom:.55rem}
 body.has-nlp-pasek .kota-floating-cta{transform:translateY(calc(-1 * var(--nlp-pasek-h, 140px) - 4px))}
-@media (max-height: 500px){.nlp-pasek{padding-top:6px}.nlp-pasek .nlp-kicker{display:none}.nlp-pasek .nlp-tytul{margin-bottom:6px}}
+@media (max-height: 500px){.nlp-pasek{padding-top:6px;max-height:min(160px,46vh)}.nlp-pasek .nlp-kicker{display:none}.nlp-pasek .nlp-tytul{margin-bottom:6px}}
 @keyframes nlp-wjazd{from{transform:translateY(110%)}to{transform:none}}
 @keyframes nlp-pojaw{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.nlp-pasek,.nlp-okno[open],.nlp-arkusz[open]{animation:none}}

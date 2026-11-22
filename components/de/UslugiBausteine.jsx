@@ -68,7 +68,7 @@ export function Hero({ kicker, h1, lead, cta = 'Angebot anfragen', telefon = tru
 /** Weisse Textkarte mit H2 (mittlere Breite). */
 export function Abschnitt({ titel, children, id, breite = 880, tag }) {
   return (
-    <section id={id} style={{ padding: '0 0 64px 0', scrollMarginTop: '110px' }}>
+    <section id={id} className="de-abschnitt" style={{ padding: '0 0 48px 0', scrollMarginTop: '110px' }}>
       <div className="container" style={{ maxWidth: `${breite}px`, margin: '0 auto' }}>
         <Reveal>
           <div style={KARTE}>
@@ -105,7 +105,10 @@ export function Karten({ titel, untertitel, einleitung, items, breite = 1240, sp
           {untertitel && <p lang="de" style={{ fontSize: '1.15rem', color: 'var(--w-tusz-2)', margin: '0 auto', fontWeight: 500, lineHeight: 1.55 }}>{untertitel}</p>}
           {einleitung && <p lang="de" style={{ fontSize: '1.02rem', color: 'var(--w-tusz-2)', margin: '1.1rem auto 0', maxWidth: '68ch', lineHeight: 1.65 }}>{einleitung}</p>}
         </Reveal>
-        <RevealStagger style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(${spalten}px, 100%), 1fr))`, gap: '1.5rem' }}>
+        <RevealStagger
+          className={items.length === 4 ? 'de-karten-grid de-karten-grid--4' : 'de-karten-grid'}
+          style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(${spalten}px, 100%), 1fr))`, gap: '1.5rem' }}
+        >
           {items.map((k, i) => (
             <RevealItem key={i} style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3vw, 2.5rem)', display: 'flex', flexDirection: 'column' }}>
               {k.kicker && (

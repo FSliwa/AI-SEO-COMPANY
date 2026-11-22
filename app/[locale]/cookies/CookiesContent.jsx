@@ -20,9 +20,9 @@ export default function CookiesContent() {
           okruszkami co na /blog i /o-nas. Title i meta strony bez zmian (SA-10); H1 PL
           („Polityka prywatności i cookies”) zmienia Integracja w messages/pl.json. */}
       <Breadcrumbs pl="Polityka cookies" en="Cookies policy" />
-      <main className="subpage-main" style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--w-papier-2)' }}>
-        <div className="container" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
-          <h1 style={{ fontSize: '3rem', color: 'var(--w-tusz)', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
+      <main className="subpage-main prawo-main" style={{ paddingTop: '96px', minHeight: '80vh', background: 'var(--w-papier)' }}>
+        <div className="container" style={{ maxWidth: '800px', padding: '1.5rem 1.5rem 4.5rem' }}>
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: 'var(--w-tusz)', marginBottom: '2rem', letterSpacing: '-0.03em' }}>
             {t('title')}
           </h1>
           <div style={{ color: '#334155', fontSize: '1.1rem', lineHeight: 1.8 }}>

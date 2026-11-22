@@ -392,6 +392,40 @@
   }
 }
 
+/* Telefon poziomo (np. 844x390): zwarty naglowek i stopka menu, zeby przewijana lista linkow miala >= 240 px wysokosci */
+@media (max-height: 500px) {
+  .menu-pasek-wew {
+    height: 56px;
+  }
+  .menu-tresc {
+    padding: 0.25rem 1.25rem 1rem;
+  }
+  .menu-grupa {
+    margin-bottom: 1rem;
+  }
+  .menu-grupa-przycisk {
+    min-height: 42px;
+  }
+  .menu-lista a {
+    min-height: 38px;
+    font-size: 0.98rem;
+  }
+  .menu-stopka-wew {
+    padding: 0.45rem 1.25rem calc(0.45rem + env(safe-area-inset-bottom, 0px));
+    gap: 0.5rem 1rem;
+  }
+  .menu-cta,
+  .menu-przycisk {
+    min-height: 40px;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    flex: 1 1 auto;
+  }
+  .menu-kontakt {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .kota-fullscreen-menu.menu-ov,
   .menu-grupa,

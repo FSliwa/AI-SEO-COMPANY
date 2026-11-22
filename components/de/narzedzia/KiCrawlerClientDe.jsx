@@ -23,7 +23,8 @@ const CSS_RAI_DE = `
 .rai-kafel-wartosc { margin: 0.25rem 0 0; font-size: 1.15rem; font-weight: 700; color: var(--w-tusz); line-height: 1.25; overflow-wrap: anywhere; }
 .rai-pasek-tlo { height: 12px; border-radius: 999px; background: rgba(30, 30, 30, 0.08); overflow: hidden; margin-top: 0.55rem; }
 .rai-pasek-wypelnienie { height: 100%; border-radius: 999px; transition: width 500ms cubic-bezier(0.2, 0.7, 0.2, 1); }
-.rai-pigulka { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.28rem 0.68rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; line-height: 1.25; white-space: nowrap; }
+.rai-pigulka { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.28rem 0.68rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; line-height: 1.25; white-space: nowrap; max-width: 100%; }
+@media (max-width: 480px) { .rai-pigulka { white-space: normal; text-align: left; } }
 .rai-pigulka--ok { background: rgba(4, 120, 87, 0.12); color: #047857; }
 .rai-pigulka--konflikt { background: rgba(179, 38, 30, 0.13); color: #b3261e; border: 1px solid rgba(179, 38, 30, 0.3); }
 .rai-pigulka--uwaga { background: rgba(180, 83, 9, 0.12); color: #b45309; }

@@ -44,7 +44,7 @@ export default function BlogArtikelDe({ klucz, dane }) {
         dateModified={dane.aktualisiert}
       />
 
-      <article style={{ paddingTop: 'clamp(128px, 13vw, 156px)', paddingBottom: '72px' }}>
+      <article style={{ paddingTop: 'clamp(24px, 3.5vw, 44px)', paddingBottom: '72px' }}>
         <div className="container" style={{ maxWidth: '760px', margin: '0 auto', padding: '0 1.5rem' }}>
           <Reveal>
             <div style={{ marginBottom: '1rem' }}>

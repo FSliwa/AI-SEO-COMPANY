@@ -241,7 +241,7 @@ export default function Header() {
 
     const obliczSzerokoscNaglowka = () => {
       raf = 0;
-      const vw = window.innerWidth;
+      const vw = document.documentElement.clientWidth || window.innerWidth;
       setScrolled(isSubpage || window.scrollY > 40);
 
       if (vw <= 768) {
@@ -303,7 +303,7 @@ export default function Header() {
         docelowa = Math.round(szerTresci + navPad);
       }
 
-      const minBezpieczna = vw >= 1200 ? Math.min(vw, 1020) : Math.min(vw, 720);
+      const minBezpieczna = vw >= 1200 ? Math.min(vw, 1100) : Math.min(vw, 780);
       const koncowa = Math.max(minBezpieczna, Math.min(vw, docelowa));
 
       if (Math.abs(koncowa - ostatniaSzer) >= 6) {
