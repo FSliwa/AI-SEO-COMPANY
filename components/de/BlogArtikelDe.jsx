@@ -32,7 +32,7 @@ export default function BlogArtikelDe({ klucz, dane }) {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
-      <Breadcrumbs pl={dane.okruszek} en={dane.okruszek} de={dane.okruszek} />
+      <Breadcrumbs parent={{ href: '/blog', pl: 'Blog', en: 'Blog', de: 'Blog' }} pl={dane.okruszek} en={dane.okruszek} de={dane.okruszek} />
       <ArticleSchema
         type="BlogPosting"
         locale="de"

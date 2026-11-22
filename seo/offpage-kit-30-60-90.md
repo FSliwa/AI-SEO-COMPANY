@@ -13,14 +13,14 @@ Gotowy pakiet tekstów „kopiuj-wklej” (PL / EN / DE) do budowania sygnałów
 | **Marka (Brand Name)** | AI SEO COMPANY | AI SEO COMPANY | AI SEO COMPANY |
 | **Pełna nazwa prawna** | AI SIGNALS COMPANY Prosta Spółka Akcyjna | AI SIGNALS COMPANY Prosta Spółka Akcyjna | AI SIGNALS COMPANY Prosta Spółka Akcyjna |
 | **Forma prawna** | Prosta Spółka Akcyjna (P.S.A.) | Simple Joint-Stock Company (P.S.A.) | Vereinfachte Aktiengesellschaft polnischen Rechts (P.S.A.) |
-| **KRS / NIP / REGON** | KRS `0001239983` · NIP `5253090237` · REGON `544761611` | KRS `0001239983` · Tax ID `PL5253090237` · REGON `544761611` | KRS `0001239983` · USt-IdNr. `PL5253090237` · REGON `544761611` |
+| **KRS / NIP / REGON** | KRS `0001239983` · NIP `5253090237` · REGON `544761611` | KRS `0001239983` · Tax ID (NIP) `5253090237` · REGON `544761611` | KRS `0001239983` · Steuernummer (NIP) `5253090237` · REGON `544761611` |
 | **Kapitał akcyjny** | `100 000,00 zł` | `PLN 100,000.00` | `100.000,00 PLN` |
 | **Sąd rejestrowy** | Sąd Rejonowy dla m.st. Warszawy w Warszawie, XII Wydział Gospodarczy Krajowego Rejestru Sądowego | District Court for the Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register | Bezirksgericht für die Hauptstadt Warschau in Warschau, XII. Wirtschaftsabteilung des Landesgerichtsregisters (KRS) |
 | **Reprezentacja** | Filip Śliwa - Prezes Zarządu | Filip Śliwa - CEO & Head of SEO | Filip Śliwa - Vorstandsvorsitzender (CEO) |
 | **Biuro (GBP / Katalogi)** | ul. Grzybowska 5A, 00-132 Warszawa, Polska | ul. Grzybowska 5A, 00-132 Warsaw, Poland | ul. Grzybowska 5A, 00-132 Warschau, Polen |
 | **Siedziba rejestrowa (KRS)** | ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa | ul. Grzybowska 12/14 lok. B-3, 00-132 Warsaw | ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau |
 | **Telefon / E-mail** | `+48 518 815 055` · `kontakt@ai-seo-company.pl` | `+48 518 815 055` · `kontakt@ai-seo-company.pl` | `+48 518 815 055` · `kontakt@ai-seo-company.pl` |
-| **Godziny otwarcia** | pon.-pt. 09:00-18:00 CET | Mon-Fri 09:00-18:00 CET | Mo.-Fr. 09:00-18:00 MEZ |
+| **Godziny otwarcia** | pon.-sob. 07:00-23:00 CET | Mon-Sat 07:00-23:00 CET | Mo.-Sa. 07:00-23:00 MEZ |
 | **URL kanoniczny** | `https://www.ai-seo-company.pl/` | `https://www.ai-seo-company.pl/en` | `https://www.ai-seo-company.pl/de` |
 | **Demo Panelu Klienta** | `https://panel.ai-seo-company.pl/demo` | `https://panel.ai-seo-company.pl/demo` | `https://panel.ai-seo-company.pl/demo` |
 | **Mapy Google (Place ID)** | `https://www.google.com/maps/place/?q=place_id:ChIJBbPRrkDNHkcR0Oetxw5AMFk` | `https://www.google.com/maps/place/?q=place_id:ChIJBbPRrkDNHkcR0Oetxw5AMFk` | `https://www.google.com/maps/place/?q=place_id:ChIJBbPRrkDNHkcR0Oetxw5AMFk` |
@@ -201,7 +201,7 @@ The company specializes in technical B2B Search Engine Optimization (SEO), Gener
 - **Büroanschrift**: `ul. Grzybowska 5A, 00-132 Warschau, Polen`
 - **Sitz der Gesellschaft (KRS)**: `ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen`
 - **Handelsregister**: `KRS 0001239983` (Bezirksgericht für die Hauptstadt Warschau in Warschau, XII. Wirtschaftsabteilung des Landesgerichtsregisters)
-- **USt-IdNr. (VAT EU)**: `PL5253090237` · **REGON**: `544761611`
+- **Steuernummer (NIP)**: `5253090237` · **REGON**: `544761611`
 - **Aktienkapital**: `100.000,00 PLN`
 - **Vorstandsvorsitzender**: `Filip Śliwa`
 - **Telefon**: `+48 518 815 055` · **E-Mail**: `kontakt@ai-seo-company.pl`
@@ -214,7 +214,7 @@ The company specializes in technical B2B Search Engine Optimization (SEO), Gener
 ### Unternehmensbeschreibung DE (kopiuj-wklej)
 
 ```text
-AI SEO COMPANY (Marke der AI SIGNALS COMPANY Prosta Spółka Akcyjna, KRS 0001239983, USt-IdNr. PL5253090237, Aktienkapital 100.000,00 PLN) ist eine spezialisierte B2B-SEO- und Generative-Engine-Optimization-Agentur (GEO) mit Sitz in Warschau (ul. Grzybowska 5A, 00-132 Warschau) für mittelständische Unternehmen im DACH-Raum und in Polen.
+AI SEO COMPANY (Marke der AI SIGNALS COMPANY Prosta Spółka Akcyjna, KRS 0001239983, NIP 5253090237, Aktienkapital 100.000,00 PLN) ist eine spezialisierte B2B-SEO- und Generative-Engine-Optimization-Agentur (GEO) mit Sitz in Warschau (ul. Grzybowska 5A, 00-132 Warschau) für mittelständische Unternehmen im DACH-Raum und in Polen.
 
 Unsere Kernleistungen für Industrie, B2B-Dienstleister und Technologieunternehmen:
 1. Technisches SEO & B2B-Suchmaschinenoptimierung: Crawl-Architektur, Core Web Vitals (CrUX), strukturierte Daten (Schema.org), mehrsprachiges SEO (DE/EN/PL) und redaktioneller Linkaufbau.

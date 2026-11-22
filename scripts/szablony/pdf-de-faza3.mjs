@@ -50,7 +50,7 @@ const pusteWiersze = (wierszy, kolumn) =>
 const STOPKA_HTML = `
   <div class="stopka">
     Herausgeber: AI SEO COMPANY (www.ai-seo-company.pl/de) · kontakt@ai-seo-company.pl · Tel. +48 518 815 055<br>
-    AI SIGNALS COMPANY P.S.A. · ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen · USt-IdNr. PL5253090237
+    AI SIGNALS COMPANY P.S.A. · ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen · KRS 0001239983 · NIP 5253090237 · REGON 544761611
   </div>`;
 
 // 1) SEO Report Vorlage

@@ -1,7 +1,21 @@
+import { setRequestLocale } from 'next-intl/server';
 import { articleLanguages, articleRobots, articleDates } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_UX_AUDIT_DE } from '@/lib/de/blogUxAudit';
+
+const KLUCZ_UX_AUDIT = '/blog/audyt-ux-strony';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ_UX_AUDIT, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/audyt-ux-strony',
+        en: 'https://www.ai-seo-company.pl/en/blog/ux-audit-guide',
+      },
+    });
+  }
   return {
     title: locale === 'en' ? 'Website UX Audit for Conversion: A Practical Guide' : 'Audyt UX strony pod konwersję: przewodnik',
     description: locale === 'en' ? 'How to conduct a UX audit that ends with a prioritized backlog: measurement verification, funnel analysis, user testing, and effect measurement.' : 'Jak przeprowadzić audyt UX, który kończy się backlogiem z priorytetami: weryfikacja pomiaru, analiza lejków, testy z użytkownikami i pomiar efektu.',
@@ -27,6 +41,10 @@ import BlogCTA from '@/components/BlogCTA';
 
 export default async function ArticleUXAudit({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    setRequestLocale(locale);
+    return <BlogArtikelDe klucz={KLUCZ_UX_AUDIT} dane={BLOG_UX_AUDIT_DE} />;
+  }
   const dataPubl = articleDates('/blog/audyt-ux-strony', locale);
   const tocItems = locale === 'en' ? [
     { id: 'what-a-full-ux-audit-should-include', title: 'What should a full website UX audit include?' },

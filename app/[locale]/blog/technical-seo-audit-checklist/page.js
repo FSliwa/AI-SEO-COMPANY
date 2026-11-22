@@ -1,7 +1,21 @@
+import { setRequestLocale } from 'next-intl/server';
 import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_TECHNISCHER_AUDIT_DE } from '@/lib/de/blogTechnischerAudit';
+
+const KLUCZ_TECH_AUDIT = '/blog/technical-seo-audit-checklist';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ_TECH_AUDIT, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/audyt-techniczny-seo',
+        en: 'https://www.ai-seo-company.pl/en/blog/technical-seo-audit-checklist',
+      },
+    });
+  }
   return {
     // 5.11.2026 (PLAN-v2 6.25 W6, decyzje-blog nr 4): title PL (51 zn.) - „i arkusz” = checklista do pobrania
     // w PDF i XLSX (public/pliki/, X-Robots-Tag: noindex). Meta, H1 i wersja EN bez zmian.
@@ -37,6 +51,11 @@ import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArticleTechnicalSeoAuditChecklist({ params }) {
   const { locale } = await params;
+
+  if (locale === 'de') {
+    setRequestLocale(locale);
+    return <BlogArtikelDe klucz={KLUCZ_TECH_AUDIT} dane={BLOG_TECHNISCHER_AUDIT_DE} />;
+  }
 
   if (locale === 'pl') {
     return <ArtykulAudytTechnicznySeo locale={locale} />;

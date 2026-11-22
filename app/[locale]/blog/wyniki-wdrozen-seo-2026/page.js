@@ -1,7 +1,19 @@
 import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_SEO_ERGEBNISSE_DE } from '@/lib/de/blogSeoErgebnisse';
+
+const KLUCZ = '/blog/wyniki-wdrozen-seo-2026';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026',
+      },
+    });
+  }
   return {
     // 5.11.2026 (PLAN-v2 6.25 W7, decyzje-blog nr 1): title (55 zn.) pod „case study seo” (110/mies., W1);
     // H1 i meta bez zmian. Zmiana title = synchronizacja titlePl w lib/blogPosts.js (integracja).
@@ -9,9 +21,9 @@ export async function generateMetadata({ params }) {
     description: 'Zebrane w jednym miejscu wyniki pięciu wdrożeń SEO z 2026 roku: kliknięcia, wyświetlenia i pozycje z Google Search Console, z metodologią pomiaru.',
     alternates: {
       canonical: `https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026`,
-      languages: articleLanguages('/blog/wyniki-wdrozen-seo-2026', 'https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026', null)
+      languages: articleLanguages(KLUCZ, 'https://www.ai-seo-company.pl/blog/wyniki-wdrozen-seo-2026', null)
     },
-    robots: articleRobots('/blog/wyniki-wdrozen-seo-2026', locale),
+    robots: articleRobots(KLUCZ, locale),
   };
 }
 
@@ -29,6 +41,10 @@ import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArtykulWynikiWdrozen({ params }) {
   const { locale } = await params;
+
+  if (locale === 'de') {
+    return <BlogArtikelDe klucz={KLUCZ} dane={BLOG_SEO_ERGEBNISSE_DE} />;
+  }
 
   if (locale === 'en') {
     return null;

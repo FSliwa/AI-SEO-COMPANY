@@ -7,6 +7,9 @@
 // dosłownie jak na /seo-lokalne-warszawa (wersja EN FAQ); nie zmieniać.
 // Rejestr (blogPosts, sitemapa, llms.txt, linki wchodzące): ai-seo-prace/airslate/nowa-en/REJESTR.md.
 import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_WIE_LANGE_DE } from '@/lib/de/blogWieLangeDauertSeo';
 import Header from '@/components/Header';
 import ArticleSchema from '@/components/ArticleSchema';
 import ArticleTOC from '@/components/ArticleTOC';
@@ -33,6 +36,9 @@ const H1 = 'How long does SEO take? What Google says and what our client data sh
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(SLUG, { languages: { en: URL_EN } });
+  }
   return {
     title: TYTUL,
     description: OPIS,
@@ -93,11 +99,12 @@ const ZRODLA = [
   { url: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide', nazwa: 'Google Search Central: SEO Starter Guide', data: '2026-11-18' },
   { url: 'https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl', nazwa: 'Google Search Central: Ask Google to recrawl your URLs', data: '2026-11-18' },
   { url: 'https://ahrefs.com/blog/how-long-does-it-take-to-rank-in-google-and-how-old-are-top-ranking-pages/', nazwa: 'Ahrefs: How Long Does It Take to Rank in Google? (15 May 2025)', data: '2026-11-18' },
-  { url: 'https://search.google.com/search-console', nazwa: 'Google Search Console: the source of our client series (screens published in our portfolio)', data: '2026-08-21' },
+  { url: 'https://search.google.com/search-console', nazwa: 'Google Search Console API: the source of our verified 3-month client series published in our portfolio', data: '2026-11-20' },
 ];
 
 export default async function ArticleHowLongDoesSeoTake({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={SLUG} dane={BLOG_WIE_LANGE_DE} />;
   const hrefPorownanie = hrefJesliOpublikowana('/porownania/seo-czy-google-ads');
   const hrefAutorytet = hrefJesliOpublikowana('/narzedzia/autorytet-domeny');
 
@@ -191,45 +198,45 @@ export default async function ArticleHowLongDoesSeoTake({ params }) {
                 Longer than for an established site, and the independent data is sobering. Ahrefs (article dated 15 May 2025) found that 1.74% of newly published pages reached the top 10 within a year in a sample of 1 million random URLs seen in September 2023. A second method, on 2 million URLs created in October 2023, gave 6.11%, which the authors consider the fairer figure. The average page ranking first was 5 years old, and 72.9% of top-10 pages were more than 3 years old. Ahrefs also reports that 40.82% of pages that reached the top 10 did so in their first month, so speed is possible but unusual.
               </p>
               <p>
-                For software companies, the order of work for a young domain is laid out in our <Link href="/blog/seo-for-saas-startups-playbook">SEO for SaaS startups playbook</Link>. Our own sites show the same pattern on a smaller scale. The table lists four sites whose Search Console data is already published in our portfolio. Two caveats: these are short windows of 18 days to 13 weeks, and impressions are not rankings. Figures are read from the daily chart of the Search Console panel and scaled to the totals shown in the panel, so weekly values are approximate.
+                For software companies, the order of work for a young domain is laid out in our <Link href="/blog/seo-for-saas-startups-playbook">SEO for SaaS startups playbook</Link>. Our own sites show the same pattern on a smaller scale. The table lists four sites whose live Google Search Console API data ({STANIAX.metryki.startDate} to {STANIAX.metryki.endDate}, {STANIAX.metryki.days} days across 13 weekly buckets) is published in our portfolio. Two caveats: a 3-month window captures compounding momentum rather than a finished year, and impressions move faster than clicks.
               </p>
               <div className="tabela-artykulu">
               <CompareTable
                 id="client-timelines"
-                caption="Search Console timelines of four sites we work on"
-                columns={[{ key: 'site', label: 'Site and window' }, { key: 'early', label: 'Early signal' }, { key: 'end', label: 'Where the series ended' }]}
+                caption={`Live Search Console 3-month timelines (${STANIAX.metryki.startDate} to ${STANIAX.metryki.endDate})`}
+                columns={[{ key: 'site', label: 'Site and 92-day window' }, { key: 'early', label: 'Start of 3-month window' }, { key: 'end', label: 'Latest week & 92-day total' }]}
                 minWidth={620}
                 rows={[
                   {
                     id: 'mt',
-                    site: 'Madame Thai, a new restaurant location: 26 days (27 Jul-21 Aug 2026)',
-                    early: `Week 1: about ${MADAME_THAI.tydzien1[1]} impressions and ${MADAME_THAI.tydzien1[0]} clicks`,
-                    end: `Week 3: about ${liczba(MADAME_THAI.tydzien3[1])} impressions and ${MADAME_THAI.tydzien3[0]} clicks; total ${liczba(MADAME_THAI.razem[1])} impressions and ${MADAME_THAI.razem[0]} clicks`,
+                    site: `Madame Thai, restaurant location (${MADAME_THAI.metryki.startDate} to ${MADAME_THAI.metryki.endDate})`,
+                    early: `First week (${MADAME_THAI.tydzien1[0]} to ${MADAME_THAI.tydzien1[1]}): ${liczba(MADAME_THAI.tydzien1[3])} impressions and ${liczba(MADAME_THAI.tydzien1[2])} clicks`,
+                    end: `Latest week: ${liczba(MADAME_THAI.ostatni[3])} impressions and ${liczba(MADAME_THAI.ostatni[2])} clicks; 92-day total ${liczba(MADAME_THAI.razem[1])} impressions, ${liczba(MADAME_THAI.razem[0])} clicks (avg. position ${MADAME_THAI.metryki.position})`,
                   },
                   {
                     id: 'st',
-                    site: 'Staniax, B2B industrial site started from zero visibility: 13 weeks (22 May-21 Aug 2026)',
-                    early: `First 8 days: about ${STANIAX.tydzien1[3]} impressions`,
-                    end: `Week 13: about ${STANIAX.tydzien13[3]} impressions a week; total ${liczba(STANIAX.razem[1])} impressions and ${STANIAX.razem[0]} clicks, with ${STANIAX.minKlikTyg} to ${STANIAX.maxKlikTyg} clicks a week throughout`,
+                    site: `Staniax, B2B industrial site (${STANIAX.metryki.startDate} to ${STANIAX.metryki.endDate})`,
+                    early: `First week (${STANIAX.tydzien1[0]} to ${STANIAX.tydzien1[1]}): ${liczba(STANIAX.tydzien1[3])} impressions and ${STANIAX.tydzien1[2]} clicks`,
+                    end: `Latest week: ${liczba(STANIAX.tydzien13[3])} impressions and ${STANIAX.tydzien13[2]} clicks; 92-day total ${liczba(STANIAX.razem[1])} impressions and ${liczba(STANIAX.razem[0])} clicks (${STANIAX.minKlikTyg}-${STANIAX.maxKlikTyg} clicks/week, avg. position ${STANIAX.metryki.position})`,
                   },
                   {
                     id: 'tql',
-                    site: 'TQL, an ISO standards consultancy with a freshly launched site: first 18 days (5-22 Aug 2026)',
-                    early: `${TQL.pierwszyDzien} impression on day one`,
-                    end: `Last ${TQL.ostatniTydzien.length} days: ${Math.min(...TQL.ostatniTydzien)} to ${Math.max(...TQL.ostatniTydzien)} impressions a day; total ${TQL.razemWysw} impressions at an average position of 34.6`,
+                    site: `TQL, ISO standards consultancy (${TQL.metryki.startDate} to ${TQL.metryki.endDate})`,
+                    early: `First week (${TQL.pierwszyTydzien[0]} to ${TQL.pierwszyTydzien[1]}): ${liczba(TQL.pierwszyTydzien[3])} impressions and ${TQL.pierwszyTydzien[2]} clicks`,
+                    end: `Latest week: ${liczba(TQL.ostatniTydzien[3])} impressions and ${TQL.ostatniTydzien[2]} clicks; 92-day total ${liczba(TQL.razemWysw)} impressions and ${liczba(TQL.razemKlik)} clicks (avg. position ${TQL.metryki.position})`,
                   },
                   {
                     id: 'ase',
-                    site: 'ASE-BOT, our own project in a competitive US niche: 13 weeks (22 May-21 Aug 2026)',
-                    early: `Weekly impressions peaked at about ${liczba(ASE_BOT.szczyt[3])} (4-10 Jul)`,
-                    end: `Fell to about ${ASE_BOT.ostatni[3]} a week by 21 August; total ${liczba(ASE_BOT.razem[1])} impressions and ${ASE_BOT.razem[0]} clicks`,
+                    site: `ASE-BOT, our own project in a competitive US niche (${ASE_BOT.metryki.startDate} to ${ASE_BOT.metryki.endDate})`,
+                    early: `Peak week (${ASE_BOT.szczyt[0]} to ${ASE_BOT.szczyt[1]}): ${liczba(ASE_BOT.szczyt[3])} impressions`,
+                    end: `Latest week: ${liczba(ASE_BOT.ostatni[3])} impressions; 92-day total ${liczba(ASE_BOT.razem[1])} impressions and ${ASE_BOT.razem[0]} clicks (avg. position ${ASE_BOT.metryki.position})`,
                   },
                 ]}
-                przypis="Source: Google Search Console panels of the sites named, data up to 21-22 August 2026. Series read from the panels and scaled to their totals (reading error before scaling 0.6-4%), so weekly values are approximate."
+                przypis={`Source: Google Search Console API for the verified properties named (${STANIAX.metryki.startDate} to ${STANIAX.metryki.endDate}, web search).`}
               />
               </div>
               <p>
-                What this shows. Impressions start within days, so first visibility is fast. Clicks are slower: Staniax grew from about {STANIAX.tydzien1[3]} to about {STANIAX.tydzien13[3]} impressions a week while its weekly clicks stayed between {STANIAX.minKlikTyg} and {STANIAX.maxKlikTyg}, and its main service phrases sat at positions 17 and 20 in Search Console, below the first page, where clicks are few. TQL had an average position of 34.6 after 18 days, which is the start of the work, not the result. ASE-BOT is the reminder that the line is not straight: its impressions fell after the July peak. None of these series is a finished result, and we will update the numbers as the data grows.
+                What this shows. Local intent moves fastest: Madame Thai reached {liczba(MADAME_THAI.razem[0])} clicks at an average position of {MADAME_THAI.metryki.position} over the 92-day window. B2B niches compound steadily once pages enter page one: Staniax improved from positions 17-20 in its early summer quarter to an average position of {STANIAX.metryki.position} ({liczba(STANIAX.razem[0])} clicks, {STANIAX.minKlikTyg} to {STANIAX.maxKlikTyg} clicks a week), while TQL moved from an initial 18-day average position of 34.6 in August to {TQL.metryki.position} across {liczba(TQL.razemWysw)} impressions and {TQL.razemKlik} clicks. ASE-BOT is the reminder that competitive English-language niches take longer and do not move in a straight line ({liczba(ASE_BOT.razem[1])} impressions at average position {ASE_BOT.metryki.position}).
               </p>
 
               <h2 id="indexing">How long does Google take to index a new page?</h2>

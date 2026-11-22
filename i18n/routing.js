@@ -154,6 +154,18 @@ export const routing = defineRouting({
     '/blog/reklamy-w-chatgpt': {
       pl: '/blog/reklamy-w-chatgpt',
       en: '/blog/chatgpt-ads-vs-organic-geo'
+    },
+    '/blog/konfiguracja-zdarzen-gtm-ga4-poradnik': {
+      pl: '/blog/konfiguracja-zdarzen-gtm-ga4-poradnik',
+      en: '/blog/konfiguracja-zdarzen-gtm-ga4-poradnik'
+    },
+    '/blog/wyniki-wdrozen-seo-2026': {
+      pl: '/blog/wyniki-wdrozen-seo-2026',
+      en: '/blog/wyniki-wdrozen-seo-2026'
+    },
+    '/blog/how-long-does-seo-take': {
+      pl: '/blog/how-long-does-seo-take',
+      en: '/blog/how-long-does-seo-take'
     }
   })
 });

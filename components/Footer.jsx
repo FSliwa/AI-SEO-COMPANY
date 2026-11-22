@@ -9,6 +9,7 @@ import NextLink from 'next/link';
 import { Link, usePathname, useRouter, getPathname } from '@/i18n/routing';
 import { hash, homeHash, sectionId, przejdzDoSekcji } from '@/lib/anchors';
 import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
+import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { track } from '@/lib/track';
 import { GODZINY_TEKST } from '@/lib/godziny';
@@ -46,6 +47,9 @@ export default function Footer() {
   const hrefWizytowki = hrefStopki('/pozycjonowanie-wizytowki-google');
   const hrefCopywritingu = hrefStopki('/copywriting-seo');
   const hrefLinkBuildingu = hrefStopki('/link-building');
+  const hrefWordpress = hrefStopki('/pozycjonowanie-wordpress');
+  const hrefWebflow = hrefStopki('/pozycjonowanie-webflow');
+  const hrefMazowsze = hrefStopki('/pozycjonowanie-stron-mazowsze');
   const drugiJezyk = lang === 'pl' ? 'en' : 'pl';
 
   // Plywajacy przycisk na telefonie i tablecie pokazuje sie dopiero po
@@ -167,7 +171,7 @@ export default function Footer() {
                 <li><Link href="/pozycjonowanie-stron-internetowych">{tr(lang, 'Pozycjonowanie stron', 'SEO Services')}</Link></li>
                 <li><Link href="/audyt-seo">{tr(lang, 'Audyt SEO', 'SEO Audit')}</Link></li>
                 <li><Link href="/cennik-pozycjonowania">{navT('pricing')}</Link></li>
-                {naDe('/blog') && <li><Link href="/blog">{lang === 'en' ? 'SEO Blog' : 'Blog SEO'}</Link></li>}
+                {naDe('/blog') && <li><Link href="/blog">{lang === 'pl' ? 'Blog SEO' : 'SEO Blog'}</Link></li>}
                 {/* 4.11.2026 (etap 0 planu z filmu): /panel-klienta, sprawdzarka i poradnik
                     o zmianie agencji mialy 1-2 linki wewnetrzne. Sprawdzarka i poradnik
                     istnieja tylko po polsku (EN = 404), wiec w EN ich nie linkujemy.
@@ -181,16 +185,21 @@ export default function Footer() {
                 {/* T1b (SA-05): stały link do drugiej wersji językowej - sekcja EN osiągalna z linków.
                     next/link z gotowym adresem ('/' albo '/en'): Link z next-intl z propem locale
                     dawał '/pl' (308). */}
-                {lang === 'de' ? (
-                  <>
-                    <li>
-                      <NextLink href={getPathname({ href: deTylko ? '/' : sciezka, locale: 'pl' })} hrefLang="pl" lang="pl" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'pl', page_path: pathname })}>Wersja polska</NextLink>
-                    </li>
-                    <li>
-                      <NextLink href={getPathname({ href: deTylko ? '/' : (tylkoPl(sciezka) ? celPrzelacznikaEn(sciezka) : sciezka), locale: 'en' })} hrefLang="en" lang="en" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'en', page_path: pathname })}>English version</NextLink>
-                    </li>
-                  </>
-                ) : (
+                {lang === 'de' ? (() => {
+                  const postDe = blogPosts.find((p) => p.slug === sciezka);
+                  const celPl = deTylko ? '/' : (postDe ? (isPostAvailableIn(postDe, 'pl') ? sciezka : '/blog') : sciezka);
+                  const celEn = deTylko ? '/' : (postDe ? (isPostAvailableIn(postDe, 'en') ? sciezka : '/blog') : (tylkoPl(sciezka) ? celPrzelacznikaEn(sciezka) : sciezka));
+                  return (
+                    <>
+                      <li>
+                        <NextLink href={getPathname({ href: celPl, locale: 'pl' })} hrefLang="pl" lang="pl" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'pl', page_path: pathname })}>Wersja polska</NextLink>
+                      </li>
+                      <li>
+                        <NextLink href={getPathname({ href: celEn, locale: 'en' })} hrefLang="en" lang="en" prefetch={false} onClick={() => track('language_switch', { from: lang, to: 'en', page_path: pathname })}>English version</NextLink>
+                      </li>
+                    </>
+                  );
+                })() : (
                 <li>
                   <NextLink
                     href={getPathname({ href: '/', locale: drugiJezyk })}
@@ -223,6 +232,9 @@ export default function Footer() {
                 {hrefWizytowki && <li><Link href={hrefWizytowki}>{tr(lang, 'Pozycjonowanie wizytówki Google', 'Google Business Profile')}</Link></li>}
                 {hrefCopywritingu && <li><Link href={hrefCopywritingu}>{tr(lang, 'Copywriting SEO', 'SEO Copywriting')}</Link></li>}
                 {hrefLinkBuildingu && <li><Link href={hrefLinkBuildingu}>{tr(lang, 'Link building', 'Link Building')}</Link></li>}
+                {hrefWordpress && <li><Link href={hrefWordpress}>{tr(lang, 'Pozycjonowanie WordPress', 'WordPress SEO')}</Link></li>}
+                {hrefWebflow && <li><Link href={hrefWebflow}>{tr(lang, 'Pozycjonowanie Webflow', 'Webflow SEO')}</Link></li>}
+                {hrefMazowsze && <li><Link href={hrefMazowsze}>{tr(lang, 'Pozycjonowanie Mazowsze', 'Local SEO Mazovia')}</Link></li>}
                 <li><Link href="/pozycjonowanie-w-ai">{tr(lang, 'Pozycjonowanie w AI', 'AI Search Optimization')}</Link></li>
               </ul>
             </div>

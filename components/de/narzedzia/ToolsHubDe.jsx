@@ -207,6 +207,42 @@ const VORLAGEN_DE = [
     nazwa: 'SEO Vertrag Checkliste (12 Klauseln)',
     opis: 'Orientierungs-Checkliste für Auftraggeber vor Vertragsabschluss: 1-Monats-Kündigung, Eigentum an Google-Konten, dauerhafte Text- und Linkrechte sowie DSGVO/AVV.',
   },
+  {
+    id: 'google-unternehmensprofil-checkliste',
+    href: '/de/tools/google-unternehmensprofil-checkliste',
+    nazwa: 'Google Unternehmensprofil Checkliste (40 Punkte)',
+    opis: 'Schritt-für-Schritt-Prüfliste zum Anlegen, Video-Verifizieren und Pflegen Ihres Unternehmensprofils inklusive NAP-Stammdatenblatt und Monatsprotokoll als PDF.',
+  },
+  {
+    id: 'briefing-vorlage-texter',
+    href: '/de/tools/briefing-vorlage-texter',
+    nazwa: 'Briefing Vorlage für Texter (Content Briefing)',
+    opis: 'Zehn strukturierte Felder für SEO- und Fachtexte: Suchintention, Top-5-SERP-Analyse, Information Gain, H2/H3-Gliederung, interne Links und 13-Punkte-Abnahme als PDF.',
+  },
+  {
+    id: 'content-audit-vorlage',
+    href: '/de/tools/content-audit-vorlage',
+    nazwa: 'Content Audit Vorlage (Bestandsseiten prüfen)',
+    opis: 'Sechs Arbeitsblätter für URL-Inventar aus Search Console und GA4, 5-Kriterien-Qualitätsbewertung und klare Entscheidung je Seite (behalten, updaten, 301 oder 410).',
+  },
+  {
+    id: 'interne-verlinkung-vorlage',
+    href: '/de/tools/interne-verlinkung-vorlage',
+    nazwa: 'Interne Verlinkung Vorlage (Hub-and-Spoke)',
+    opis: 'Acht Arbeitsblätter zur Priorisierung Ihrer Leistungsseiten, Steuerung eindeutiger Ankertexte ohne Kannibalisierung und Quartalsprüfung verwaister Seiten als PDF.',
+  },
+  {
+    id: 'website-briefing-vorlage',
+    href: '/de/tools/website-briefing-vorlage',
+    nazwa: 'Website Briefing Vorlage (Lastenheft inkl. SEO)',
+    opis: 'Zwölf Projektabschnitte vor der Agenturanfrage: Ziele, Seitenbaum, CMS-Auswahl, Core Web Vitals, SSR-HTML für KI-Bots, 301-Migration, DSGVO/BFSG und Budgetrahmen.',
+  },
+  {
+    id: 'seo-ausschreibung-vorlage',
+    href: '/de/tools/seo-ausschreibung-vorlage',
+    nazwa: 'SEO Ausschreibung Vorlage (SEO RFP)',
+    opis: 'Strukturierte Angebotsanfrage für B2B-Unternehmen mit 3-Spalten-Leistungsmatrix, 12 schriftlichen Pflichtfragen an Agenturen und gewichteter Bewertungs-Scorecard.',
+  },
 ];
 
 const FAQ_HUB_DE = [

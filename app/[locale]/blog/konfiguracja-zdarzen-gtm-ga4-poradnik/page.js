@@ -1,6 +1,19 @@
 import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_GA4_EVENTS_DE } from '@/lib/de/blogGa4EventsGtm';
+
+const KLUCZ = '/blog/konfiguracja-zdarzen-gtm-ga4-poradnik';
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik',
+      },
+    });
+  }
   return {
   // 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 14; CS-15, MSA-17): title PL (59 zn.) zaczyna sie od
   // „Konfiguracja GA4” (GSC: „konfiguracja ga4” 27 wyśw., poz. 21,0), meta PL (135 zn.) z decyzje-blog nr 14.
@@ -13,9 +26,9 @@ export async function generateMetadata({ params }) {
     // locale prowadza teraz na wersje polska, a rendering /en jest noindex
     // przez articleRobots ponizej - tak samo jak w /blog/rodo-na-stronie-internetowej.
     canonical: 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik',
-    languages: articleLanguages('/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik')
+    languages: articleLanguages(KLUCZ, 'https://www.ai-seo-company.pl/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', null)
   },
-  robots: articleRobots('/blog/konfiguracja-zdarzen-gtm-ga4-poradnik', locale),
+  robots: articleRobots(KLUCZ, locale),
 };
 }
 
@@ -33,6 +46,7 @@ import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArticleGTM({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={KLUCZ} dane={BLOG_GA4_EVENTS_DE} />;
   const tocItems = [
     { id: 'jak-skonfigurowac-zdarzenia-w-google-tag-manager-krok-po-kroku', title: 'Jak skonfigurować zdarzenia w Google Tag Manager krok po kroku' },
     { id: 'jak-testowac-i-debugowac-zdarzenia-w-gtm-i-ga4', title: 'Jak testować i debugować zdarzenia w GTM i GA4?' },

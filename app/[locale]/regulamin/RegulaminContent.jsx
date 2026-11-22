@@ -6,7 +6,22 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import { Link } from '@/i18n/routing';
 import { SIEDZIBA, REJESTR, adresLinia } from '@/lib/firma';
-import { AUDYT, WIDOCZNOSC, MAKIETA, KALKULATOR, AUTORYTET, GENERATOR } from '@/lib/narzedziaLiczby';
+import {
+  AUDYT,
+  WIDOCZNOSC,
+  MAKIETA,
+  KALKULATOR,
+  AUTORYTET,
+  GENERATOR,
+  ROBOTY_AI,
+  POROWNYWARKA_CWV,
+  CYTOWALNOSC_GEO,
+  PRZEKIEROWANIA_HREFLANG,
+  INDEXNOW_BING,
+  GRAF_ENCJI,
+  LOKALNE_NAP,
+  CONTENT_PLAN_AI,
+} from '@/lib/narzedziaLiczby';
 
 const h2 = { marginTop: '2.5rem', marginBottom: '1rem', color: 'var(--w-tusz)', fontSize: '1.4rem' };
 const ul = { paddingLeft: '1.25rem', lineHeight: 1.7 };
@@ -57,7 +72,7 @@ export default function RegulaminContent() {
                 <ul style={ul}>
                   <li><strong>Dostęp do treści Serwisu</strong> - przeglądanie stron informacyjnych, opisów usług i artykułów publikowanych na blogu.</li>
                   <li><strong>Formularz kontaktowy</strong> - umożliwiający przesłanie zapytania ofertowego. Usługa ma charakter jednorazowy i kończy się z chwilą wysłania wiadomości lub zaprzestania jej wypełniania.</li>
-                  <li><strong>Darmowe narzędzia</strong> - audyt SEO, sprawdzarka widoczności w AI, tester robotów AI i generator robots.txt, porównywarka Core Web Vitals, kalkulator strat SEO, makieta nowej strony, generator llms.txt i sprawdzarka autorytetu domeny. Usługa ma charakter jednorazowy i kończy się z chwilą wyświetlenia wyniku na stronie. Dla każdego narzędzia obowiązuje dzienny limit użyć z jednego adresu IP (na dobę: audyt SEO {AUDYT.limitIp}, sprawdzarka widoczności w AI {WIDOCZNOSC.limitIp}, makieta {MAKIETA.limitIp}, autorytet domeny {AUTORYTET.limitIp}, generator llms.txt {GENERATOR.limitIp}, tester robotów AI 20, porównywarka Core Web Vitals 15, wysyłka wyniku kalkulatora {KALKULATOR.limitIp}); wynik jest orientacyjny i nie stanowi gwarancji ani wyceny.</li>
+                  <li><strong>Darmowe narzędzia</strong> - audyt SEO, sprawdzarka widoczności w AI, tester robotów AI i generator robots.txt, porównywarka Core Web Vitals, tester cytowalności strony w AI (GEO), sprawdzarka przekierowań 301 i hreflang, generator IndexNow i tester Bing/ChatGPT, walidator grafu encji JSON-LD, audyt lokalnego SEO i generator kodu QR opinii, generator planu treści 90 dni, kalkulator strat SEO, makieta nowej strony, generator llms.txt i sprawdzarka autorytetu domeny. Usługa ma charakter jednorazowy i kończy się z chwilą wyświetlenia wyniku na stronie. Dla każdego narzędzia obowiązuje dzienny limit użyć z jednego adresu IP (na dobę: audyt SEO {AUDYT.limitIp}, sprawdzarka widoczności w AI {WIDOCZNOSC.limitIp}, makieta {MAKIETA.limitIp}, autorytet domeny {AUTORYTET.limitIp}, generator llms.txt {GENERATOR.limitIp}, tester robotów AI {ROBOTY_AI.limitIp}, porównywarka Core Web Vitals {POROWNYWARKA_CWV.limitIp}, cytowalność GEO {CYTOWALNOSC_GEO.limitIp}, przekierowania i hreflang {PRZEKIEROWANIA_HREFLANG.limitIp}, generator IndexNow {INDEXNOW_BING.limitIp}, walidator grafu encji {GRAF_ENCJI.limitIp}, audyt lokalny NAP {LOKALNE_NAP.limitIp}, generator planu treści {CONTENT_PLAN_AI.limitIp}, wysyłka wyniku kalkulatora {KALKULATOR.limitIp}); wynik jest orientacyjny i nie stanowi gwarancji ani wyceny.</li>
                   <li><strong>Wysyłka wyniku narzędzia e-mailem</strong> - po podaniu adresu e-mail i zaznaczeniu zgody wysyłamy wynik na ten adres. Usługa jednorazowa, kończy się z chwilą wysłania wiadomości; wyniki i adres e-mail usuwamy po 60 dniach.</li>
                   <li><strong>Newsletter</strong> - cykliczne wiadomości e-mail, po osobnej zgodzie i potwierdzeniu zapisu linkiem z wiadomości (double opt-in). Usługa ciągła, świadczona do czasu wypisania się jednym kliknięciem w wiadomości.</li>
                   <li><strong>Comiesięczny audyt SEO</strong> - cykliczna wysyłka ponownego audytu wskazanej strony po osobnej zgodzie i potwierdzeniu linkiem z wiadomości (double opt-in). Usługa ciągła, świadczona do czasu wypisania się jednym kliknięciem w wiadomości.</li>
@@ -122,7 +137,7 @@ export default function RegulaminContent() {
                 <ul style={ul}>
                   <li><strong>Access to Website content</strong> - browsing information pages, service descriptions and blog articles.</li>
                   <li><strong>Contact form</strong> - allowing an enquiry to be sent. This is a one-off service ending when the message is sent or the form is abandoned.</li>
-                  <li><strong>Free tools</strong> - the SEO audit, the AI visibility checker, the AI crawler and robots.txt checker, the Core Web Vitals competitor comparison, the SEO loss calculator, the website redesign mockup, the llms.txt generator and the domain authority checker. This is a one-off service ending when the result is shown on the page. Each tool has a daily usage limit per IP address (per day: SEO audit {AUDYT.limitIp}, AI visibility checker {WIDOCZNOSC.limitIp}, mockup {MAKIETA.limitIp}, domain authority {AUTORYTET.limitIp}, llms.txt generator {GENERATOR.limitIp}, AI crawler checker 20, Core Web Vitals comparison 15, e-mailing the calculator result {KALKULATOR.limitIp}); results are indicative and are not a guarantee or a quotation.</li>
+                  <li><strong>Free tools</strong> - the SEO audit, the AI visibility checker, the AI crawler and robots.txt checker, the Core Web Vitals competitor comparison, the GEO citability checker, the 301 redirect and hreflang checker, the IndexNow generator and Bing/ChatGPT tester, the JSON-LD entity graph validator, the local SEO NAP checker and Google review QR generator, the 90-day AI content plan generator, the SEO loss calculator, the website redesign mockup, the llms.txt generator and the domain authority checker. This is a one-off service ending when the result is shown on the page. Each tool has a daily usage limit per IP address (per day: SEO audit {AUDYT.limitIp}, AI visibility checker {WIDOCZNOSC.limitIp}, mockup {MAKIETA.limitIp}, domain authority {AUTORYTET.limitIp}, llms.txt generator {GENERATOR.limitIp}, AI crawler checker {ROBOTY_AI.limitIp}, Core Web Vitals comparison {POROWNYWARKA_CWV.limitIp}, GEO citability {CYTOWALNOSC_GEO.limitIp}, redirects and hreflang {PRZEKIEROWANIA_HREFLANG.limitIp}, IndexNow generator {INDEXNOW_BING.limitIp}, entity graph validator {GRAF_ENCJI.limitIp}, local NAP checker {LOKALNE_NAP.limitIp}, content plan generator {CONTENT_PLAN_AI.limitIp}, e-mailing the calculator result {KALKULATOR.limitIp}); results are indicative and are not a guarantee or a quotation.</li>
                   <li><strong>Tool result sent by e-mail</strong> - after you enter your e-mail address and tick the consent, we send the result to that address. This is a one-off service ending when the message is sent; results and e-mail addresses are deleted after 60 days.</li>
                   <li><strong>Newsletter</strong> - recurring e-mails, after a separate consent and confirmation of the subscription with the link in our e-mail (double opt-in). This is a continuing service provided until you unsubscribe with one click in any e-mail.</li>
                   <li><strong>Monthly SEO audit</strong> - a recurring re-audit of the page you specify, after a separate consent and confirmation with the link in our e-mail (double opt-in). This is a continuing service provided until you unsubscribe with one click in any e-mail.</li>

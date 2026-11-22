@@ -1,8 +1,12 @@
+import { setRequestLocale } from 'next-intl/server';
 import AgencySwitchClient from '@/components/AgencySwitchClient';
+import SeoAgenturWechselnDe from '@/components/de/SeoAgenturWechselnDe';
 import ArticleSchema from '@/components/ArticleSchema';
 import { CHECKLIST_COUNT, STEPS } from '@/lib/agencySwitch';
 import { STEPS as STEPS_EN } from '@/lib/agencySwitch.en';
+import { STAND_WECHSEL_DE, WECHSEL_SCHRITTE_DE } from '@/lib/de/seoAgenturWechseln';
 import { LASTMOD } from '@/lib/lastmod';
+import { wpisDe } from '@/lib/stronyDe';
 import { metadataStronyPl, wymagajStronyPl } from '@/lib/stronaPl';
 
 // Poradnik i checklista dla firm, które zmieniają agencję SEO (zadanie 3.2). Rynek polski,
@@ -48,9 +52,41 @@ const howToEn = {
   step: STEPS_EN.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.title, text: s.text })),
 };
 
+const URL_DE = 'https://www.ai-seo-company.pl/de/seo-agentur-wechseln';
+const DESCRIPTION_DE = 'Sicher die SEO Agentur wechseln: Kündigungsfrist prüfen, Google-Konten, Domain, Texte und Backlinks sichern. Leitfaden mit 32-Punkte-Übergabeliste.';
+const howToDe = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  '@id': `${URL_DE}#howto`,
+  name: 'SEO-Agentur wechseln: Schritt für Schritt in 6 Phasen',
+  inLanguage: 'de',
+  step: WECHSEL_SCHRITTE_DE.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.title, text: s.text })),
+};
+
 export default async function ZmianaAgencjiPage({ params }) {
   const { locale } = await params;
   wymagajStronyPl(locale, SCIEZKA);
+  setRequestLocale(locale);
+  if (locale === 'de') {
+    const wDe = wpisDe(SCIEZKA);
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToDe) }} />
+        <ArticleSchema
+          type="Article"
+          breadcrumb={null}
+          locale="de"
+          url="/de/seo-agentur-wechseln"
+          title={wDe?.h1 ?? 'SEO Agentur wechseln: 6 Schritte und 32 Prüfpunkte ohne Rankingverlust'}
+          description={wDe?.opis ?? DESCRIPTION_DE}
+          datePublished={STAND_WECHSEL_DE}
+          dateModified={LASTMOD[URL_DE] || STAND_WECHSEL_DE}
+          extra={{ '@id': `${URL_DE}#article` }}
+        />
+        <SeoAgenturWechselnDe />
+      </>
+    );
+  }
   if (locale === 'en') {
     return (
       <>

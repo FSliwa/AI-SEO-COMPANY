@@ -459,7 +459,7 @@ function RaportEn() {
             " h1={meta.h1} slug="raport-seo" locale="en">
           <Byline sciezka={SCIEZKA} takzeEn data={dataZmiany} />
           <AnswerBox etykieta="Short answer">
-            A monthly SEO report should open with the business result: the number of customer inquiries and the cost per inquiry. Clicks, rankings and work done come after that. A good report fits its summary on one page: the result against the goal, 3-5 causes with evidence, next month&apos;s plan and the risks. Detailed data belongs in a portal or dashboard.
+            A monthly SEO report should open with the business result: the number of customer inquiries and the cost per inquiry. Clicks, rankings and work done come after that. A good SEO report example fits its executive summary on one page: the result against the goal, 3-5 causes with evidence, next month&apos;s plan and the risks. Detailed data belongs in a portal or dashboard.
           </AnswerBox>
       </SzHero>
 

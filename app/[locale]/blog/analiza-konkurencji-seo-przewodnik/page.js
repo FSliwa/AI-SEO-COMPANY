@@ -1,6 +1,21 @@
+import { setRequestLocale } from 'next-intl/server';
 import { articleLanguages } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_KONKURRENZANALYSE_DE } from '@/lib/de/blogKonkurrenzanalyse';
+
+const KLUCZ_KONKURRENZ = '/blog/analiza-konkurencji-seo-przewodnik';
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ_KONKURRENZ, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/analiza-konkurencji-seo-przewodnik',
+        en: 'https://www.ai-seo-company.pl/en/blog/seo-competitor-analysis-step-by-step-guide',
+      },
+    });
+  }
   return {
     // 5.11.2026 (PLAN-v2 6.25 W10, decyzje-blog nr 18; SA-13 pisownia): title PL (59 zn.) z przykladem
     // 17 agencji (nowy H2 z liczbami zbiorczymi, bez nazw - D3). Meta i wersja EN bez zmian (EN: tylko anchory SA-08).
@@ -32,6 +47,10 @@ const AHREFS_PORADNIK = 'https://ahrefs.com/blog/seo-competitor-analysis/';
 
 export default async function ArticleAnalizaKonkurencjiPage({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    setRequestLocale(locale);
+    return <BlogArtikelDe klucz={KLUCZ_KONKURRENZ} dane={BLOG_KONKURRENZANALYSE_DE} />;
+  }
   const tocItems = [
     { id: 'dlaczego-analiza', title: locale === 'en' ? 'Why SEO competitor analysis should be your first step' : 'Dlaczego analiza konkurencji SEO powinna być Twoim pierwszym krokiem?' },
     { id: '6-krokow', title: locale === 'en' ? 'How to conduct SEO competitor analysis in 6 steps' : 'Jak przeprowadzić analizę konkurencji SEO w 6 krokach?' },

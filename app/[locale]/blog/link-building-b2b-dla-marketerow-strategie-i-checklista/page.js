@@ -1,6 +1,21 @@
+import { setRequestLocale } from 'next-intl/server';
 import { articleLanguages } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_LINKAUFBAU_B2B_DE } from '@/lib/de/blogLinkaufbauB2b';
+
+const KLUCZ_LB = '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista';
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ_LB, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/link-building-b2b-dla-marketerow-strategie-i-checklista',
+        en: 'https://www.ai-seo-company.pl/en/blog/b2b-link-building-strategies-checklist',
+      },
+    });
+  }
   return {
   // 5.11.2026 (PLAN-v2 6.25 R1, decyzje-blog nr 26; CS-15, SA-10): title PL (53 zn.) pod „linkowanie b2b”
   // (GSC 68 wyśw., poz. 9,7) i „link building”, meta PL (124 zn.) z korekty SA-10. EN bez zmian.
@@ -30,7 +45,6 @@ import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
 
 const BASE = 'https://www.ai-seo-company.pl';
-const KLUCZ_LB = '/blog/link-building-b2b-dla-marketerow-strategie-i-checklista';
 // 5.11.2026 (PLAN-v2 6.25 R1): checklista z tresci artykulu jako plik statyczny; /pliki/* ma
 // X-Robots-Tag: noindex (next.config.mjs), wiec PDF nie konkuruje z artykulem w wynikach.
 const CHECKLISTA_PDF = '/pliki/checklista-link-building-b2b.pdf';
@@ -80,6 +94,10 @@ const ZRODLA_LB_EN = [
 
 export default async function ArticleLinkBuildingB2bPage({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    setRequestLocale(locale);
+    return <BlogArtikelDe klucz={KLUCZ_LB} dane={BLOG_LINKAUFBAU_B2B_DE} />;
+  }
       const tocItems = [
     { id: 'czym-jest', title: 'Czym jest link building B2B i czym różni się od B2C?' },
     { id: 'dlaczego-linki', title: 'Dlaczego linki przekładają się na wyniki sprzedaży w B2B?' },

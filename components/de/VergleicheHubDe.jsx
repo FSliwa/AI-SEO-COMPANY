@@ -1,6 +1,8 @@
 // Deutscher Vergleichs-Hub (/de/vergleiche), analog zu components/porownania/PorownaniaHub.jsx.
-// Verbindet alle 6 veröffentlichten DACH-Vergleichsseiten (SEO vs GEO, SEO oder Google Ads,
-// Agentur vs Freelancer vs Inhouse, Next.js vs WordPress, Webflow vs WordPress, Programmierte Website vs Baukasten)
+// Verbindet alle 10 veröffentlichten DACH-Vergleichsseiten (SEO vs GEO, SEO oder Google Ads,
+// Agentur vs Freelancer vs Inhouse, SEO Agentur auswählen, SEO erfolgsbasiert vs Retainer,
+// Next.js vs WordPress, Webflow vs WordPress, Programmierte Website vs Baukasten,
+// Shopify vs WooCommerce sowie Ahrefs vs Semrush vs kostenlose SEO-Tools)
 // in einer Hub-and-Spoke-Architektur mit CollectionPage + ItemList JSON-LD und Entscheidungstabelle.
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -41,6 +43,22 @@ const ENTSCHEIDUNGEN_DE = {
   'strona-kodowana-czy-kreator-seo': {
     frage: 'Individuell programmierte Next.js-Website oder Homepage-Baukasten (Wix, Squarespace)?',
     kurz: 'Code-Eigentum, mobile Reaktionszeit (INP), Lesbarkeit für KI-Crawler und 24-Monats-Gesamtkosten im Vergleich.',
+  },
+  'jak-wybrac-agencje-seo': {
+    frage: 'Woran erkenne ich vor Vertragsabschluss eine seriöse SEO-Agentur im DACH-Raum?',
+    kurz: '12 Due-Diligence-Fragen zu eigenen Google-Konten, monatlicher Kündbarkeit, Verzicht auf Linkmiete, Preistransparenz und DSGVO/nDSG.',
+  },
+  'pozycjonowanie-za-efekt-czy-abonament': {
+    frage: 'SEO erfolgsbasiert (Bezahlung nach Platzierung), monatlicher Retainer oder Stundenkontingent?',
+    kurz: 'Euro-Modellrechnung, warum Erfolgsprämien oft Null-Volumen-Keywords oder riskante Mietlinks fördern und wann ein Retainer günstiger ist.',
+  },
+  'shopify-vs-woocommerce-seo': {
+    frage: 'Shopify oder WooCommerce für E-Commerce-SEO, internationale hreflang-Tags und B2B-Shops?',
+    kurz: 'URL-Struktur, Core Web Vitals (CDN vs. HPOS/Redis), Checkout-Freiheit, KI-Crawler-Zugriff und Gesamtkosten über 24 Monate.',
+  },
+  'ahrefs-vs-semrush-narzedzia-seo': {
+    frage: 'Ahrefs oder Semrush abonnieren - oder reichen kostenlose SEO-Tools (Search Console, Bing & unsere Prüfer)?',
+    kurz: 'Aktuelle USD-Tarife, Credit-Limits, Linkdatenbanken und wann B2B-Unternehmen Lizenzkosten lieber direkt in die Umsetzung investieren.',
   },
 };
 
@@ -110,7 +128,7 @@ export default function VergleicheHubDe() {
         </h1>
         <BylineDe stand="2026-11-22" style={{ margin: '0 0 1rem' }} />
         <p lang="de" style={{ margin: 0, fontSize: '1.15rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', maxWidth: '760px' }}>
-          Sechs fundierte Vergleiche für Geschäftsführer und Marketing-Verantwortliche im DACH-Raum: mit transparenten Kriterien, Euro-Kalkulationen über 24 Monate, Messdaten aus Google Search Console sowie klaren Quellenangaben.
+          {lista.length === 10 ? 'Zehn' : lista.length} fundierte Vergleiche für Geschäftsführer und Marketing-Verantwortliche im DACH-Raum: mit transparenten Kriterien, Euro-Kalkulationen über 24 Monate, Messdaten aus Google Search Console sowie klaren Quellenangaben.
         </p>
       </div>
 
@@ -127,7 +145,7 @@ export default function VergleicheHubDe() {
                   {p.description}
                 </p>
                 <p className={styles.kartaMeta}>
-                  {`${p.rows?.length || 8} Kriterien · Stand: `}
+                  {`${p.kryteria || `${p.rows?.length || 8} Kriterien`} · Stand: `}
                   <time data-lastmod="pomin" dateTime={p.updated}>{dataDeDluga(p.updated)}</time>
                 </p>
               </div>
@@ -175,6 +193,12 @@ export default function VergleicheHubDe() {
             </li>
             <li>
               <Link href="/narzedzia/audyt-seo">Kostenloser SEO Audit (49 Regeln)</Link>: Testen Sie Technik, mobile Ladezeit und KI-Bot-Zugriff Ihrer aktuellen Website in 30 Sekunden.
+            </li>
+            <li>
+              <Link href="/narzedzia/umowa-na-pozycjonowanie">SEO Vertrag Checkliste (kostenloses PDF)</Link>: 12 Vertragsklauseln zu Kündigungsfrist, Google-Konten, Nutzungsrechten und Auftragsverarbeitung vor der Unterschrift abhaken.
+            </li>
+            <li>
+              <Link href="/zmiana-agencji-seo">SEO Agentur wechseln (6 Schritte &amp; 32 Prüfpunkte)</Link>: Sicherer Übergabeleitfaden ohne Verlust von Rankings, Inhalten oder Backlinks.
             </li>
           </ul>
         </div>

@@ -206,7 +206,7 @@ const DOKUMENTY = [
       ],
       stopkaLinie: [
         'Published by AI SEO COMPANY (www.ai-seo-company.pl/en) · Free 24h second-opinion review of any SEO proposal: kontakt@ai-seo-company.pl · Tel. +48 518 815 055',
-        'AI SIGNALS COMPANY Prosta Spółka Akcyjna, Registered office: ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa, Poland · Office: ul. Grzybowska 5A, 00-132 Warszawa · KRS 0001239983 (District Court for the Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register) · NIP PL5253090237 · REGON 544761611 · Share capital: PLN 100,000.00.',
+        'AI SIGNALS COMPANY Prosta Spółka Akcyjna, Registered office: ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa, Poland · Office: ul. Grzybowska 5A, 00-132 Warszawa · KRS 0001239983 (District Court for the Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register) · NIP 5253090237 · REGON 544761611 · Share capital: PLN 100,000.00.',
       ],
     },
   },
@@ -244,7 +244,7 @@ const DOKUMENTY = [
       ],
       stopkaLinie: [
         'Herausgeber: AI SEO COMPANY (www.ai-seo-company.pl/de) · Kostenlose Zweitmeinung zu vorliegenden SEO-Angeboten innerhalb von 24 Werktagsstunden: kontakt@ai-seo-company.pl · Tel. +48 518 815 055',
-        'AI SIGNALS COMPANY Prosta Spółka Akcyjna, Sitz: ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen · Büro: ul. Grzybowska 5A, 00-132 Warschau · KRS 0001239983 (Sąd Rejonowy dla m.st. Warszawy w Warszawie, XII Wydział Gospodarczy Krajowego Rejestru Sądowego) · USt-IdNr. PL5253090237 · REGON 544761611 · Aktienkapital: 100.000,00 PLN.',
+        'AI SIGNALS COMPANY Prosta Spółka Akcyjna, Sitz: ul. Grzybowska 12/14 lok. B-3, 00-132 Warschau, Polen · Büro: ul. Grzybowska 5A, 00-132 Warschau · KRS 0001239983 (Sąd Rejonowy dla m.st. Warszawy w Warszawie, XII Wydział Gospodarczy Krajowego Rejestru Sądowego) · Steuernummer (NIP) 5253090237 · REGON 544761611 · Aktienkapital: 100.000,00 PLN.',
       ],
     },
   },

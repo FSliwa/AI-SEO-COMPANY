@@ -1,5 +1,17 @@
+import { setRequestLocale } from 'next-intl/server';
+import { hreflangDe, metadataDe } from '@/lib/stronyDe';
+import BlogHubDe from '@/components/de/BlogHubDe';
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe('/blog', {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog',
+        en: 'https://www.ai-seo-company.pl/en/blog',
+      },
+    });
+  }
   return {
   // ANK pkt 7 (5.11.2026, SA-13): polska pisownia w title (bez Title Case i bez „|”).
   title: locale === 'en' ? 'SEO Blog | Content Marketing and Web Design Guides' : 'Blog SEO: poradniki pozycjonowania stron i web designu',
@@ -9,7 +21,8 @@ export async function generateMetadata({ params }) {
     languages: {
       'pl': 'https://www.ai-seo-company.pl/blog',
       'x-default': 'https://www.ai-seo-company.pl/blog',
-      'en': 'https://www.ai-seo-company.pl/en/blog'
+      'en': 'https://www.ai-seo-company.pl/en/blog',
+      ...hreflangDe('/blog'),
     }
   },
 };
@@ -46,6 +59,10 @@ const blogFaqData = [
 
 export default async function BlogHubPage({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    setRequestLocale(locale);
+    return <BlogHubDe />;
+  }
   return (
     <>
       <Header />

@@ -72,7 +72,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
               fontWeight: 400
             }}>
               {lang === 'pl' 
-                ? <>Profesjonalne <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> to inwestycja w stabilny fundament. <span style={{ color: 'var(--color-cta)' }}>Tworzymy nowoczesne i szybkie strony internetowe dla firm i B2B w Next.js, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów</span>.</> 
+                ? <>Profesjonalne <span style={{ fontWeight: 'bold' }}>projektowanie stron internetowych</span> i <span style={{ fontWeight: 'bold' }}>tworzenie stron internetowych</span> to inwestycja w stabilny fundament. <span style={{ color: 'var(--color-cta)' }}>Tworzymy nowoczesne i szybkie strony internetowe dla firm i B2B w Next.js, chroniące przed atakami i zamieniające ruch organiczny w stałych klientów</span>.</> 
                 : <>We are a web design agency in Warsaw. Professional Web Design and Development is an investment in a stable foundation. <span style={{ color: 'var(--color-cta)' }}>We create fast Business Websites that protect against attacks and turn organic traffic into customers</span>.</>}
             </p>
             

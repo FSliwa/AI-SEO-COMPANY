@@ -43,6 +43,18 @@ const USLUGI = {
     pl: ['pozycjonowanie wizytówki Google', 'Profil Firmy, opinie i pozycje w Mapach'],
     en: ['Google Business Profile optimization', 'your profile, reviews and Maps positions'],
   },
+  '/pozycjonowanie-wordpress': {
+    pl: ['pozycjonowanie WordPress', 'optymalizacja wtyczek, LCP/INP, czysta indeksacja archiwów i widoczność w AI'],
+    en: ['WordPress SEO services', 'plugin cleanup, Core Web Vitals, clean archive indexing and AI search visibility'],
+  },
+  '/pozycjonowanie-webflow': {
+    pl: ['pozycjonowanie Webflow', 'architektura kolekcji CMS, wielojęzyczny hreflang, JSON-LD i widoczność w AI'],
+    en: ['Webflow SEO services', 'CMS collection architecture, multi-locale hreflang, JSON-LD and AI search visibility'],
+  },
+  '/pozycjonowanie-stron-mazowsze': {
+    pl: ['pozycjonowanie stron Mazowsze', 'widoczność w Google i Mapach dla firm z Warszawy i całego województwa mazowieckiego'],
+    en: ['local SEO in Mazovia', 'Google Search and Maps visibility for companies across Warsaw and the Mazovia region'],
+  },
 };
 
 export default function PowiazaneUslugi({ locale = 'pl', bez, items = [], tytul }) {

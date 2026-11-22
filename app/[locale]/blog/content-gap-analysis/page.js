@@ -1,7 +1,21 @@
+import { setRequestLocale } from 'next-intl/server';
 import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_CONTENT_GAP_DE } from '@/lib/de/blogContentGap';
+
+const KLUCZ_CONTENT_GAP = '/blog/content-gap-analysis';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ_CONTENT_GAP, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/analiza-luk-contentowych',
+        en: 'https://www.ai-seo-company.pl/en/blog/content-gap-analysis',
+      },
+    });
+  }
   return {
     title: locale === 'en'
       ? 'Content Gap Analysis: A Practical Guide'
@@ -35,6 +49,11 @@ import { LASTMOD } from '@/lib/lastmod';
 
 export default async function ArticleContentGapAnalysis({ params }) {
   const { locale } = await params;
+
+  if (locale === 'de') {
+    setRequestLocale(locale);
+    return <BlogArtikelDe klucz={KLUCZ_CONTENT_GAP} dane={BLOG_CONTENT_GAP_DE} />;
+  }
 
   if (locale === 'pl') {
     return <ArticleAnalizaLukContentowych locale={locale} />;

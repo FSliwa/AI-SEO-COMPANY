@@ -527,7 +527,7 @@ export default async function SeoLokalneWarszawaPage({ params }) {
         {/* Pricing */}
         <Pricing />
 
-        <PowiazaneUslugi locale={lang} bez="/seo-lokalne-warszawa" items={lang === 'pl' ? ['/audyt-seo', '/pozycjonowanie-wizytowki-google', '/porownania'] : ['/pozycjonowanie-stron-internetowych', '/cennik-pozycjonowania', '/pozycjonowanie-wizytowki-google']} />
+        <PowiazaneUslugi locale={lang} bez="/seo-lokalne-warszawa" items={lang === 'pl' ? ['/pozycjonowanie-stron-mazowsze', '/pozycjonowanie-wizytowki-google', '/audyt-seo'] : ['/pozycjonowanie-stron-mazowsze', '/pozycjonowanie-wizytowki-google', '/cennik-pozycjonowania']} />
 
         {/* FAQ Section */}
         <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Często zadawane pytania (Lokalne SEO)" : "Local Search Engine Optimization FAQs"} />

@@ -1,6 +1,20 @@
 import { articleLanguages } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_GOOGLE_BEWERTUNGEN_DE } from '@/lib/de/blogGoogleBewertungen';
+
+const KLUCZ = '/blog/jak-pozyskiwac-opinie-google-poradnik';
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(KLUCZ, {
+      languages: {
+        pl: 'https://www.ai-seo-company.pl/blog/jak-pozyskiwac-opinie-google-poradnik',
+        en: 'https://www.ai-seo-company.pl/en/blog/how-to-get-google-reviews',
+      },
+    });
+  }
   return {
   // 5.11.2026 (PLAN-v2 6.25 W7, decyzje-blog nr 22): title PL (55 zn.) pod „jak odpowiadać na opinie google”
   // (90/mies., W1) i meta PL (130 zn.) z decyzje-blog nr 22. EN bez zmian (poza anchorem BL-11 i zapisem marki).
@@ -33,6 +47,7 @@ const HREF_WIZYTOWKA = hrefJesliOpublikowana('/pozycjonowanie-wizytowki-google')
 
 export default async function ArticleReviewsPage({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={KLUCZ} dane={BLOG_GOOGLE_BEWERTUNGEN_DE} />;
   const tocItems = [
     { id: 'gdzie-wyswietlaja-sie-opinie', title: 'Gdzie wyświetlają się opinie Google i dlaczego to ważne' },
     { id: 'jak-opinie-wplywaja-na-seo', title: 'Jak opinie Google wpływają na SEO, CTR i sprzedaż' },

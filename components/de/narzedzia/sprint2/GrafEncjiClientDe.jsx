@@ -97,15 +97,15 @@ function demoGrafEncjiDe(surowyUrl) {
         { od: `${baza}/#service-geo`, do: `${baza}/#organization`, relacja: 'provider' },
       ],
       sameAs: [
-        { platforma: 'Clutch.co', url: 'https://clutch.co/profile/ai-seo-company' },
-        { platforma: 'Sortlist', url: 'https://www.sortlist.com/agency/ai-seo-company' },
-        { platforma: 'Google Maps', url: 'https://www.google.com/maps?cid=6426780283546953680' },
+        { platforma: 'Clutch.co', url: 'https://clutch.co/profile/ai-signals-company-prosta-sp-ka-akcyjna' },
+        { platforma: 'Sortlist', url: 'https://www.sortlist.co.uk/agency/ai-signals-company' },
+        { platforma: 'Google Maps', url: 'https://www.google.com/maps/place/?q=place_id:ChIJBbPRrkDNHkcR0Oetxw5AMFk' },
         { platforma: 'GitHub', url: 'https://github.com/FSliwa' },
       ],
       identyfikatoryRejestrowe: {
         nip: '5253090237',
         krs: '0001239983',
-        vatUe: 'PL5253090237',
+        vatUe: null,
         leI: null,
       },
       luki: [

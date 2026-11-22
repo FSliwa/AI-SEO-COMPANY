@@ -251,8 +251,11 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 <h3 style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', marginTop: '2.25rem', marginBottom: '1rem' }}>
                   Usługi SEO dla firm B2B i lokalnych
                 </h3>
+                <p style={{ ...tekstSekcji, marginBottom: '1rem' }}>
+                  Usługi SEO prowadzimy w dwóch modelach: dla firm B2B, które sprzedają w całej Polsce, i dla firm usługowych, które zdobywają klientów w swoim mieście. W drugim przypadku łączymy stronę z wizytówką Google, opiniami i Mapami. Ten zakres opisujemy osobno na stronie <Link href="/seo-lokalne-warszawa" style={linkSekcji}>SEO lokalne w Warszawie</Link> oraz regionalnie jako <Link href="/pozycjonowanie-stron-mazowsze" style={linkSekcji}>pozycjonowanie stron Mazowsze</Link>.
+                </p>
                 <p style={{ ...tekstSekcji, marginBottom: 0 }}>
-                  Usługi SEO prowadzimy w dwóch modelach: dla firm B2B, które sprzedają w całej Polsce, i dla firm usługowych, które zdobywają klientów w swoim mieście. W drugim przypadku łączymy stronę z wizytówką Google, opiniami i Mapami. Ten zakres opisujemy osobno na stronie <Link href="/seo-lokalne-warszawa" style={linkSekcji}>SEO lokalne w Warszawie</Link>.
+                  Optymalizację techniczną dopasowujemy do systemu zarządzania treścią klienta: prowadzimy dedykowane <Link href="/pozycjonowanie-wordpress" style={linkSekcji}>pozycjonowanie WordPress</Link> (odchudzanie wtyczek, naprawa LCP/INP i archiwów) oraz <Link href="/pozycjonowanie-webflow" style={linkSekcji}>pozycjonowanie Webflow</Link> (architektura kolekcji CMS i wielojęzyczny hreflang).
                 </p>
               </div>
             </Reveal>
@@ -262,7 +265,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
 
       <Pricing />
 
-      <PowiazaneUslugi locale={lang} bez="/pozycjonowanie-stron-internetowych" items={lang === 'pl' ? ['/audyt-seo', '/projektowanie-stron-internetowych', '/porownania'] : ['/audyt-seo', '/projektowanie-stron-internetowych', '/porownania']} />
+      <PowiazaneUslugi locale={lang} bez="/pozycjonowanie-stron-internetowych" items={lang === 'pl' ? ['/audyt-seo', '/projektowanie-stron-internetowych', '/porownania'] : ['/pozycjonowanie-wordpress', '/pozycjonowanie-webflow', '/audyt-seo']} />
 
       <AppleFaq faqData={faqWidoczne} title={lang === 'pl' ? "Najczęstsze pytania o pozycjonowanie stron internetowych" : "Frequently Asked Questions About Our SEO Services"} />
 
