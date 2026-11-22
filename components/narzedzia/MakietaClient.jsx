@@ -144,7 +144,7 @@ export default function MakietaClient() {
           <input ref={poleRef} id="mak-url" name="url" required maxLength={300} placeholder={en ? 'e.g. yourcompany.com' : 'np. twojafirma.pl'} className="narz-pole" inputMode="url" autoComplete="url" />
           <PrzykladAdresu onWybierz={(a) => { setAdres(a); if (poleRef.current) { poleRef.current.value = a; poleRef.current.focus(); } }} />
           <label htmlFor="mak-cel" className="narz-etykieta">{en ? 'What should improve? (optional)' : 'Co ma się poprawić? (opcjonalnie)'}</label>
-          <input id="mak-cel" name="cel" maxLength={300} placeholder={en ? 'e.g. more calls, modern look' : 'np. więcej telefonów, nowszy wygląd'} className="narz-pole" />
+          <input id="mak-cel" name="cel" maxLength={300} placeholder={en ? 'e.g. more calls and enquiries' : 'np. więcej telefonów i zapytań'} className="narz-pole" />
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
           <div className="narz-kalk-akcja">
             <button type="submit" className="btn btn-primary c-zajety" disabled={stan.status === 'loading'} aria-busy={stan.status === 'loading' ? 'true' : undefined} data-cta="narzedzie_makieta_start">
