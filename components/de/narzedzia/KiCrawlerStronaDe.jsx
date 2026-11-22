@@ -52,7 +52,7 @@ const FAQ_DE = [
   {
     id: 'fuehren-ki-bots-javascript-aus',
     question: 'Führen ChatGPT-, Perplexity- und Claude-Crawler JavaScript wie Googlebot aus?',
-    answer: 'Nein. Während Googlebot einen aufwendigen Chromium-Renderer betreibt, rufen KI-Suchbots in der Regel nur das rohe Server-HTML ab und führen keine React-, Vue- oder Angular-Pakete im Browser aus. Liefert eine Single-Page-Application ohne JavaScript nur ein leeres <div id="root"> aus, sehen KI-Systeme weder Überschriften noch Leistungstabellen.',
+    answer: 'Nein. Während Googlebot einen aufwendigen Chromium-Renderer betreibt, rufen KI-Suchbots in der Regel nur das rohe Server-HTML ab und führen keine React-, Vue- oder Angular-Pakete im Browser aus. Liefert eine Single-Page-Application ohne JavaScript nur ein leeres <code>&lt;div id=&quot;root&quot;&gt;</code> aus, sehen KI-Systeme weder Überschriften noch Leistungstabellen.',
   },
   {
     id: 'bedeutung-bot-ip-pruefung-cloudflare',

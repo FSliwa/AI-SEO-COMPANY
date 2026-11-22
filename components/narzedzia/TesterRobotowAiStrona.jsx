@@ -61,7 +61,7 @@ const FAQ_PL = [
   {
     id: 'czy-boty-ai-wykonuja-javascript',
     question: 'Czy roboty ChatGPT, Perplexity i Claude renderują JavaScript tak jak Googlebot?',
-    answer: 'Większość crawlerów AI pobiera wyłącznie surową odpowiedź HTML z serwera i nie uruchamia przeglądarki Chromium do wykonania kodu React, Vue ani Angular. Jeśli Twoja strona działa jako SPA (Client-Side Rendering) i bez JavaScriptu zwraca pusty znacznik <div id="root">, miernik parzystości SSR pokaże niski wynik, a modele językowe nie zobaczą nagłówków, cenników ani tabel.',
+    answer: 'Większość crawlerów AI pobiera wyłącznie surową odpowiedź HTML z serwera i nie uruchamia przeglądarki Chromium do wykonania kodu React, Vue ani Angular. Jeśli Twoja strona działa jako SPA (Client-Side Rendering) i bez JavaScriptu zwraca pusty znacznik <code>&lt;div id=&quot;root&quot;&gt;</code>, miernik parzystości SSR pokaże niski wynik, a modele językowe nie zobaczą nagłówków, cenników ani tabel.',
   },
   {
     id: 'co-oznacza-weryfikacja-ip-cloudflare',
@@ -89,7 +89,7 @@ const FAQ_EN = [
   {
     id: 'do-ai-crawlers-execute-javascript',
     question: 'Do ChatGPT, Perplexity and Claude crawlers execute JavaScript like Googlebot?',
-    answer: 'No. Unlike Googlebot’s headless Chromium Web Rendering Service, AI search crawlers fetch raw HTTP HTML responses without executing client-side React, Vue or Angular bundles. If your site relies on Client-Side Rendering (SPA) and ships an empty <div id="root"> container, AI bots see almost zero words, headings or pricing tables.',
+    answer: 'No. Unlike Googlebot’s headless Chromium Web Rendering Service, AI search crawlers fetch raw HTTP HTML responses without executing client-side React, Vue or Angular bundles. If your site relies on Client-Side Rendering (SPA) and ships an empty <code>&lt;div id=&quot;root&quot;&gt;</code> container, AI bots see almost zero words, headings or pricing tables.',
   },
   {
     id: 'what-is-cloudflare-ip-verification',

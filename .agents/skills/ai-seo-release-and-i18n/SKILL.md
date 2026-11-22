@@ -21,8 +21,13 @@ description: >-
 - Adding a new multi-language page requires synchronized entries in:
   1. `lib/publikacja.js` (`PUBLIKACJA[sciezkaPl]`, `tytul <= 60` chars, `opis <= 155` chars, `segment`),
   2. `lib/stronyEn.js` (`STRONY_EN[sciezkaPl]` with `{ en, tytul, opis }`),
-  3. `lib/stronyDe.js` (`STRONY_DE[sciezkaPl]` with `{ de, grupa, gotowa: true, tytul, h1, fraza, opis }` — `opis` MUST be `120-158` chars, verified via `node scripts/kontrola-stronyDe.mjs --publikacja`!).
+  3. `lib/stronyDe.js` (`STRONY_DE[sciezkaPl]` with `{ de, grupa, gotowa: true, tytul, h1, fraza, opis }` — `opis` MUST be `120-158` chars, verified via `node scripts/kontrola-stronyDe.mjs --publikacja`! Also update the expected `STRONY_DE` count in `scripts/kontrola-stronyDe.mjs`).
+- In `Breadcrumbs`, `parent` MUST pass the Polish route key (`parent={{ href: '/narzedzia', pl: '...', en: '...', de: '...' }}`), NEVER a `/de/...` path or `label` prop (`Breadcrumbs.jsx` checks `maWersjeDe(parent.href)` and reads `parent.de`).
 - Never use `/pl/` prefixes; never use `–` or `—` (use `-`).
+
+## 5. `AppleFaq` `<p dangerouslySetInnerHTML>` Hydration Mismatch (`React #418`) & CSP `img-src`
+- **Mistake learned 1 (`React #418` from `<div id="root">` in FAQ string)**: `AppleFaq.jsx` renders FAQ `answer` strings inside `<p dangerouslySetInnerHTML={{ __html: answer }}>`. Never put raw HTML block tags (`<div>`, `<p>`, `<ul>`, `<pre>`) inside FAQ `answer` strings — the browser HTML parser auto-closes `<p>` before React hydrates, causing `Minified React error #418`! Escape literal tags (`<code>&lt;div id=&quot;root&quot;&gt;</code>`).
+- **Mistake learned 2 (`CSP_REPORT_ONLY` `img-src`)**: When embedding dynamic SVG badges/images from `https://panel.ai-seo-company.pl`, ensure `https://panel.ai-seo-company.pl` is whitelisted in `img-src` (not just `connect-src`) in `next.config.mjs`.
 
 ## 4. CSS, Responsive Breakpoints & Inline-Flex Whitespace Traps
 - **Mistake learned 1 (`inline-flex` swallowing trailing spaces)**: Putting `"Link kopiert. "` inside `<span className="r-stan--ok">` (`display: inline-flex`) collapses the trailing space before the next sibling text node (`"Link kopiert.Der Link..."`). Always place `{' '}` **outside** the `inline-flex` element!

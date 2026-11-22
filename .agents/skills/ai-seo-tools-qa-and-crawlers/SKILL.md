@@ -28,3 +28,9 @@ description: >-
 ## 3. Email Gate CLS & Shareable Results
 - In `BramkaEmail` (PL/EN and `WspolneDe.jsx`), when `tylkoRaport === true`, keep the form container expanded (`otwarte={tylkoRaport ? true : !gotowe}`) to prevent `0.17-0.72` CLS jumps upon submit.
 - Use `tryb="wynik"` with `?wynik=<tool_runs_uuid>` (backed by `GET /api/narzedzia/wynik/[id]`) whenever a tool persists a run in `tool_runs`, and persist unlocked reports in `sessionStorage` so `F5` does not re-lock the result.
+
+## 4. Cross-Repo Calculator Parity, `PAGESPEED_API_KEY` Validation & Panel Deployment
+- **Calculator 1:1 Parity**: `ai-seo-strona/lib/kalkulatorStrat.js` and `panel-klienta-ai-seo/lib/narzedzia/kalkulator.ts` MUST keep identical `ZALOZENIA`, `wariant()`, and `policzZwrot()`, verified by `tests/kalkulator-wf.test.ts`, `tests/dk-kalkulator.test.ts`, and `tests/kalkulator-weryfikacja.test.ts`.
+- **`BETTER_AUTH_URL` in Panel Tests**: Tests asserting production `https://panel.ai-seo-company.pl` links after `loadEnv()` must `delete process.env.BETTER_AUTH_URL` so `.env.local` (`http://localhost:3210`) does not override `PANEL()`.
+- **Google `PAGESPEED_API_KEY` Guard**: Always validate `/^AIza[0-9A-Za-z_-]{25,60}$/` before passing `?key=` to Google PSI / CrUX APIs (a placeholder string causes `HTTP 400 API key not valid`). Read `originLoadingExperience` as fallback to `loadingExperience`, and compute an HTML + TTFB mobile estimate when keyless PSI hits `429`.
+- **Panel DB Constraint & Vercel CLI Deploy**: New tools stored in `tool_runs` must be added to `tool_runs_tool_check` via Drizzle SQL migration on Neon, and `panel-klienta-ai-seo` deploys to production via `npx vercel --prod --yes` (it has no git remote `origin`).
