@@ -26,10 +26,16 @@ Before reporting **any** code conclusion, schema/entity issue, analytics diagnos
 - Root index: `https://www.ai-seo-company.pl/sitemap.xml`
 - 9 segment sitemaps:
   `strony-pl.xml`, `strony-en.xml`, `blog-pl.xml`, `blog-en.xml`, `ai-pl.xml`, `ai-en.xml`, `porownania.xml`, `narzedzia-szablony.xml`, `de.xml` under `https://www.ai-seo-company.pl/sitemaps/sitemap/`.
-- Note: `panel-klienta-ai-seo/lib/google.ts` defaults to `webmasters.readonly`; programmatic `PUT` sitemap submission via GSC API requires widening OAuth scope to `https://www.googleapis.com/auth/webmasters` or submitting via the logged-in `browser` subagent.
+- `panel-klienta-ai-seo/lib/google.ts` uses `https://www.googleapis.com/auth/webmasters`. Once the admin re-consents once on `https://panel.ai-seo-company.pl/admin/integracje` (in any browser), the encrypted refresh token in Neon DB (`google_connections`) gains write permission and `npm run zglos:sitemapy` (`lib/gscSitemaps.js` + `/api/cron/indexnow/route.js`) submits all 10 XML sitemaps via `PUT /webmasters/v3/sites/sc-domain%3Aai-seo-company.pl/sitemaps/...` in 2 seconds without needing browser UI.
 
-## 3. GA4 Internal Traffic Defense-in-Depth (`547365077` / `G-WVVRW8FP30`)
-- Office/mobile ISPs in Poland rotate IPv4/IPv6 addresses (CGNAT/5G), so GA4 IP rules alone leak founder visits. Pair GA4's `Define internal traffic` + `Active` Data Filter with a persistent `localStorage` flag (`?internal=1`) in `app/[locale]/layout.js`.
+## 3. GA4 Internal Traffic Defense-in-Depth (`547365077` / `G-WVVRW8FP30`, Stream `15338291591`)
+- Office/mobile ISPs in Poland rotate IPv4/IPv6 addresses (CGNAT/5G), so GA4 IP rules alone leak founder visits.
+- `app/[locale]/layout.js` sets `localStorage['aisc_internal'] = '1'` and `window.__aiscInternal = true` on `?internal=1` (`?internal=0` clears it):
+  1. Sends `traffic_type: 'internal'` (`&tt=internal`) on `gtag('config', ...)` and all `track()` / `generate_lead` events (`lib/track.js`, `components/Contact.jsx`),
+  2. Suppresses `gtag('config', GOOGLE_ADS_ID)` and `gtag('event', 'conversion', ...)` in `Contact.jsx` so internal form tests never pollute Google Ads conversion bidding.
+- Pair this with GA4 `Define internal traffic` (office IP `77.89.99.243`) and switching Data Filter `Internal Traffic` from `Testing` to `Active`.
 
-## 4. Directory Automation & Anti-Bot Compliance
-- Clutch and Sortlist sit behind Cloudflare Turnstile (`403` to raw `urllib`/`curl`). Never attempt to bypass or solve CAPTCHAs / Turnstile challenges; pause the `browser` subagent cleanly for the user to complete login/verification in the browser pane, then resume form filling from canonical `lib/firma.js` data.
+## 4. Browser Sandbox Uploads, Protected Auth Hosts & Anti-Bot Compliance
+- **`browser_sandbox/uploads/` Lifecycle Trap**: Files staged in `<Artifact Directory Path>/browser_sandbox/uploads/<filename>` (such as `ai-seo-company-logo.png` for LinkedIn Company Page creation) are **automatically wiped on cross-domain navigation and on subagent turn exit**. Always re-copy `ai-seo-company-logo.png` into `browser_sandbox/uploads/` immediately BEFORE calling `invoke_subagent` or `send_message` to resume LinkedIn creation, and keep LinkedIn in its own dedicated subagent that does not navigate to other domains first.
+- **Protected Auth Hosts (`accounts.google.com`)**: Antigravity's browser blocks agent navigation/actions on `accounts.google.com`. Ask the user to sign into Google / LinkedIn / Bing directly in the Antigravity browser pane (or re-consent `/admin/integracje` in their regular browser for GSC API), then resume the paused subagent via `send_message`.
+- **CAPTCHA / Turnstile**: Never attempt to bypass or solve CAPTCHAs / Cloudflare Turnstile challenges (`Clutch`, `Sortlist`, `GoodFirms`, `DesignRush`); pause cleanly for the user to complete verification in the browser pane, then populate forms from `seo/entity-kit-offpage.json`.
