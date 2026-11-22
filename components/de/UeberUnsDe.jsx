@@ -9,6 +9,7 @@ const AUTOR_ID = 'https://www.ai-seo-company.pl/o-nas#filip-sliwa';
 
 export default function UeberUnsDe() {
   const w = wpisDe('/o-nas');
+  const autorSameAs = [PROFILE_FIRMY.linkedinAutor, PROFILE_FIRMY.githubAutor].filter(Boolean);
   const person = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -21,7 +22,7 @@ export default function UeberUnsDe() {
     email: KONTAKT.mail,
     worksFor: { '@id': 'https://www.ai-seo-company.pl/#organization' },
     knowsAbout: ['Suchmaschinenoptimierung', 'Technisches SEO', 'Lokales SEO', 'Webanalyse', 'Generative Engine Optimization (GEO)'],
-    ...(PROFILE_FIRMY.linkedinAutor ? { sameAs: [PROFILE_FIRMY.linkedinAutor] } : {}),
+    ...(autorSameAs.length ? { sameAs: autorSameAs } : {}),
   };
   return (
     <Seite krumen="Über uns">
@@ -39,6 +40,7 @@ export default function UeberUnsDe() {
         <Absatz style={{ marginBottom: 0 }}>
           Kontakt: <a href={`mailto:${KONTAKT.mail}`} style={{ textDecoration: 'underline' }}>{KONTAKT.mail}</a>, Telefon <a href={KONTAKT.telHref} style={{ textDecoration: 'underline' }} data-cta="de_ueber_uns_tel">{KONTAKT.tel}</a>
           {PROFILE_FIRMY.linkedinAutor ? <>{', '}<a href={PROFILE_FIRMY.linkedinAutor} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }} data-cta="de_ueber_uns_linkedin">LinkedIn</a></> : null}
+          {PROFILE_FIRMY.githubAutor ? <>{', '}<a href={PROFILE_FIRMY.githubAutor} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }} data-cta="de_ueber_uns_github">GitHub</a></> : null}
         </Absatz>
       </Abschnitt>
 

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "sync:gsc": "node --env-file=.env.local scripts/sync-gsc-realizacje.mjs",
+    "zglos:sitemapy": "node --env-file=.env.local scripts/zglos-sitemapy.mjs",
     "wydanie": "node scripts/sitemap/wydanie.mjs",
     "lastmod:sprawdz": "node scripts/sitemap/wydanie.mjs --sprawdz",
     "sitemap:waliduj": "node scripts/sitemap/waliduj.mjs",

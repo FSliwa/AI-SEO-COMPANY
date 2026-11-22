@@ -1,0 +1,92 @@
+{
+  "brandName": "AI SEO COMPANY",
+  "legalName": "AI SIGNALS COMPANY Prosta Spółka Akcyjna",
+  "legalForm": "Prosta Spółka Akcyjna (P.S.A.)",
+  "registration": {
+    "krs": "0001239983",
+    "nip": "5253090237",
+    "regon": "544761611",
+    "vatEu": "PL5253090237",
+    "shareCapitalPln": "100 000,00 PLN",
+    "courtPl": "Sąd Rejonowy dla m.st. Warszawy w Warszawie, XII Wydział Gospodarczy Krajowego Rejestru Sądowego",
+    "courtEn": "District Court for the Capital City of Warsaw in Warsaw, 12th Commercial Division of the National Court Register",
+    "ceo": "Filip Śliwa",
+    "ceoRolePl": "Prezes Zarządu",
+    "ceoRoleEn": "Chief Executive Officer (CEO) & Head of SEO"
+  },
+  "nap": {
+    "officeAddress": {
+      "street": "ul. Grzybowska 5A",
+      "postalCode": "00-132",
+      "cityPl": "Warszawa",
+      "cityEn": "Warsaw",
+      "cityDe": "Warschau",
+      "country": "Poland",
+      "countryCode": "PL",
+      "lat": 52.2368322,
+      "lon": 21.0004942,
+      "googleMapsPlaceId": "ChIJBbPRrkDNHkcR0Oetxw5AMFk",
+      "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJBbPRrkDNHkcR0Oetxw5AMFk"
+    },
+    "registeredSeat": {
+      "street": "ul. Grzybowska 12/14 lok. B-3",
+      "postalCode": "00-132",
+      "cityPl": "Warszawa",
+      "country": "Poland"
+    },
+    "phone": "+48 518 815 055",
+    "email": "kontakt@ai-seo-company.pl",
+    "websiteCanonical": "https://www.ai-seo-company.pl/",
+    "websiteEn": "https://www.ai-seo-company.pl/en",
+    "websiteDe": "https://www.ai-seo-company.pl/de",
+    "clientPortalDemo": "https://panel.ai-seo-company.pl/demo",
+    "openingHours": "Mon-Fri 09:00-18:00 CET"
+  },
+  "commercialProfile": {
+    "foundedYear": 2026,
+    "companySize": "2-10 employees",
+    "minProjectSizeUsd": 500,
+    "minMonthlyRetainerEur": 450,
+    "minMonthlyRetainerPln": 1900,
+    "hourlyRateUsd": "50 - 99 / hr",
+    "languages": ["Polish", "English", "German"],
+    "linkedinIndustry": "Advertising Services",
+    "specialtiesEn": [
+      "B2B SEO",
+      "Generative Engine Optimization (GEO)",
+      "AI Search Visibility (ChatGPT, Gemini, Perplexity, AI Overviews)",
+      "Technical SEO Audits",
+      "Next.js SSR Web Design & Core Web Vitals",
+      "Local SEO & Google Business Profile",
+      "Link Building & Editorial Content"
+    ],
+    "taglinePl": "Agencja SEO B2B i pozycjonowania w AI (GEO) z Warszawy - strony Next.js i panel klienta 24/7.",
+    "taglineEn": "Warsaw B2B SEO & Generative Engine Optimization (GEO) agency with a live 24/7 client portal.",
+    "descriptionPl": "AI SEO COMPANY (marka AI SIGNALS COMPANY P.S.A.) to agencja SEO B2B i pozycjonowania w AI (GEO - Generative Engine Optimization) z siedzibą w Warszawie. Łączymy techniczne SEO, rozbudowę treści eksperckich, link building, szybkie strony firmowe w Next.js App Router (SSR) oraz cotygodniowy pomiar widoczności marki w ChatGPT, Gemini, Perplexity, Claude i Google AI Overviews. Każdy klient otrzymuje dostęp 24/7 do panelu klienta spiętego na żywo z Google Search Console i GA4, umowę miesięczną bez długoterminowego wiązania oraz jawny cennik od 1 900 zł netto miesięcznie.",
+    "descriptionEn": "AI SEO COMPANY (operated by AI SIGNALS COMPANY P.S.A., KRS 0001239983) is a Warsaw-based B2B SEO and Generative Engine Optimization (GEO) agency. We combine technical SEO audits, intent-driven content architecture, editorial link building, fast custom-coded Next.js SSR websites (0 setup fee in our Booster Pack), and weekly brand visibility tracking across ChatGPT, Gemini, Perplexity, Claude, and Google AI Overviews. Every client gets a live 24/7 client portal connected directly to Google Search Console and GA4, transparent monthly retainers starting at EUR 450/mo (USD 500+), and month-to-month contracts with no lock-in.",
+    "descriptionDe": "AI SEO COMPANY (Marke der AI SIGNALS COMPANY P.S.A.) ist eine B2B-SEO- und Generative-Engine-Optimization-Agentur (GEO) aus Warschau für den polnischen, internationalen und DACH-Markt. Wir verbinden technisches SEO, Next.js-SSR-Webentwicklung, redaktionellen Linkaufbau und wöchentliches KI-Sichtbarkeits-Tracking in ChatGPT, Gemini, Perplexity und Google AI Overviews mit einem 24/7-Kundenportal ab 450 EUR netto monatlich."
+  },
+  "verifiedProfiles": {
+    "clutch": "https://clutch.co/profile/ai-signals-company-prosta-sp-ka-akcyjna",
+    "sortlist": "https://www.sortlist.co.uk/agency/ai-signals-company",
+    "githubAuthor": "https://github.com/FSliwa",
+    "githubOpenSource": "https://github.com/FSliwa/ai-crawler-robots-txt-presets"
+  },
+  "freeInteractiveTools": [
+    { "nameEn": "Free 49-Rule Technical SEO & CrUX Audit", "url": "https://www.ai-seo-company.pl/en/tools/free-seo-audit" },
+    { "nameEn": "Live 5-Engine AI Brand Visibility Checker", "url": "https://www.ai-seo-company.pl/en/ai-visibility-check" },
+    { "nameEn": "AI Crawler & robots.txt Live HTTP/SSR Tester", "url": "https://www.ai-seo-company.pl/en/tools/ai-crawler-robots-txt-checker" },
+    { "nameEn": "llms.txt Generator from XML Sitemaps", "url": "https://www.ai-seo-company.pl/en/tools/llms-txt-generator" },
+    { "nameEn": "Live 28-Day CrUX Core Web Vitals & WordPress vs Next.js Comparator", "url": "https://www.ai-seo-company.pl/en/tools/core-web-vitals-comparison" },
+    { "nameEn": "135M-Domain Web Graph Authority Checker", "url": "https://www.ai-seo-company.pl/en/tools/domain-authority-checker" },
+    { "nameEn": "SEO & AI Search Revenue Loss Calculator", "url": "https://www.ai-seo-company.pl/en/tools/seo-loss-calculator" },
+    { "nameEn": "B2B Website Redesign Mockup Generator", "url": "https://www.ai-seo-company.pl/en/tools/website-redesign-mockup" }
+  ],
+  "verifiedGscCaseStudies": [
+    { "client": "STANIAX", "domain": "staniax.pl", "industry": "Industrial Metal Processing B2B", "summaryEn": "Custom Next.js B2B website + technical & regional SEO verified in Google Search Console." },
+    { "client": "MADAME THAI", "domain": "madamethai.pl", "industry": "Hospitality & Local Search", "summaryEn": "Local SEO, Google Business Profile & mobile Core Web Vitals optimization verified in Google Search Console." },
+    { "client": "TQL", "domain": "tql.pl", "industry": "B2B Quality & Engineering", "summaryEn": "Technical B2B SEO architecture and search visibility growth verified in Google Search Console." },
+    { "client": "ASE-BOT", "domain": "ase-bot.live", "industry": "Financial Analytics SaaS (Global EN)", "summaryEn": "International English programmatic & technical SEO verified in Google Search Console." },
+    { "client": "STEF-BUD", "domain": "stefbud.com", "industry": "Construction & B2B Contracting", "summaryEn": "Service-page architecture and regional B2B lead generation verified in Google Search Console." }
+  ]
+}

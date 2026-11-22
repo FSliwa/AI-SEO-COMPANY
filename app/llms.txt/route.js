@@ -90,6 +90,10 @@ function trescLlms() {
       `- [Profil Firmy w Google (Mapy Google)](${MAPA_GOOGLE_URL}): wizytówka biura (${BIURO.ulica}, Warszawa).`,
       `- [Clutch](${PROFILE_FIRMY.clutch}): profil agencji w katalogu Clutch.`,
       `- [Sortlist](${PROFILE_FIRMY.sortlist}): profil agencji w katalogu Sortlist.`,
+      ...(PROFILE_FIRMY.goodfirms ? [`- [GoodFirms](${PROFILE_FIRMY.goodfirms}): profil agencji w katalogu GoodFirms.`] : []),
+      ...(PROFILE_FIRMY.designrush ? [`- [DesignRush](${PROFILE_FIRMY.designrush}): profil agencji w katalogu DesignRush.`] : []),
+      ...(PROFILE_FIRMY.githubAutor ? [`- [GitHub (Filip Śliwa)](${PROFILE_FIRMY.githubAutor}): profil autora i repozytoria open-source.`] : []),
+      ...(PROFILE_FIRMY.githubFirma ? [`- [GitHub (AI Crawler Presets)](${PROFILE_FIRMY.githubFirma}): otwarte szablony robots.txt i llms.txt dla botów AI.`] : []),
       ...(PROFILE_FIRMY.linkedinFirma ? [`- [LinkedIn](${PROFILE_FIRMY.linkedinFirma}): profil firmowy AI SEO COMPANY.`] : []),
     ].join('\n'),
 

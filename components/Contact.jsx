@@ -225,6 +225,7 @@ export default function Contact({ isMainContent = false }) {
           currency: 'PLN',
           value: LEAD_VALUE_PLN[data.service] ?? DEFAULT_LEAD_VALUE_PLN,
           page_type: pageType(window.location.pathname),
+          ...(window.__aiscInternal ? { traffic_type: 'internal' } : {}),
         });
 
         // Tagowa konwersja Google Ads - główna akcja „Formularz kontaktowy (tag)”
@@ -235,9 +236,10 @@ export default function Contact({ isMainContent = false }) {
         // sekretem (siedzi w HTML każdej strony), stąd wartość domyślna w kodzie.
         const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || 'AW-18426058950';
         const adsLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL || 'iNguCJLcr4AdEMaxndJE';
-        // window.__aiscTracking === false poza domeną produkcyjną (layout.js):
-        // podglądy Vercel i localhost nie mogą dopisywać konwersji do konta.
-        if (adsId && adsLabel && window.__aiscTracking !== false) {
+        // window.__aiscTracking === false poza domeną produkcyjną (layout.js),
+        // a window.__aiscInternal === true na przeglądarkach właściciela (?internal=1):
+        // podglądy Vercel, localhost i testy własne nie mogą dopisywać konwersji do konta Ads.
+        if (adsId && adsLabel && window.__aiscTracking !== false && !window.__aiscInternal) {
           window.gtag('event', 'conversion', {
             send_to: `${adsId}/${adsLabel}`,
             // Deduplikacja i klucz do późniejszej korekty/kwalifikacji leada.

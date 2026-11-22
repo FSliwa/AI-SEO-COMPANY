@@ -17,6 +17,8 @@ export default function AboutAuthor() {
   const lang = useLocale();
   const isEn = lang === 'en';
 
+  const authorSameAs = [PROFILE_FIRMY.linkedinAutor, PROFILE_FIRMY.githubAutor].filter(Boolean);
+
   const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -31,12 +33,11 @@ export default function AboutAuthor() {
     email: 'kontakt@ai-seo-company.pl',
     worksFor: { '@id': 'https://www.ai-seo-company.pl/#organization' },
     // 5.11.2026 (PLAN-v2 6.24, EEAT1; SA-07, AV-19): + GEO z rozwinięciem skrótu (to samo brzmienie
-    // co knowsAbout #organization w layout.js). sameAs czytany z PROFILE_FIRMY.linkedinAutor (lib/firma.js)
-    // po podaniu potwierdzonego adresu LinkedIn przez Filipa (nie zgadujemy adresu).
+    // co knowsAbout #organization w layout.js). sameAs czytany z PROFILE_FIRMY (lib/firma.js).
     knowsAbout: isEn
       ? ['Search engine optimization', 'Technical SEO', 'Local SEO', 'Web analytics', 'AI search optimization (GEO, Generative Engine Optimization)']
       : ['Pozycjonowanie stron', 'Techniczne SEO', 'SEO lokalne', 'Analityka internetowa', 'Pozycjonowanie w AI (GEO, Generative Engine Optimization)'],
-    ...(PROFILE_FIRMY.linkedinAutor ? { sameAs: [PROFILE_FIRMY.linkedinAutor] } : {}),
+    ...(authorSameAs.length ? { sameAs: authorSameAs } : {}),
   };
 
   const akapit = { fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--color-text-main)', marginBottom: '1rem' };
@@ -50,7 +51,7 @@ export default function AboutAuthor() {
       />
       <div className="container" style={{ maxWidth: '820px', margin: '0 auto' }}>
         <Reveal>
-          <div style={{ background: '#FFFFFF', borderRadius: '24px', padding: 'clamp(2rem, 5vw, 3rem)', boxShadow: '0 4px 24px rgba(0,0,0,0.04)' }}>
+          <div style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(2rem, 5vw, 3rem)' }}>
             <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--w-tusz-2)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1rem' }}>
               {isEn ? 'Who writes here' : 'Kto tu pisze'}
             </div>
@@ -106,6 +107,14 @@ export default function AboutAuthor() {
                   {', '}
                   <a href={PROFILE_FIRMY.linkedinAutor} target="_blank" rel="noopener noreferrer" data-cta="o_nas_autor_linkedin" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
                     LinkedIn
+                  </a>
+                </>
+              ) : null}
+              {PROFILE_FIRMY.githubAutor ? (
+                <>
+                  {', '}
+                  <a href={PROFILE_FIRMY.githubAutor} target="_blank" rel="noopener noreferrer" data-cta="o_nas_autor_github" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                    GitHub
                   </a>
                 </>
               ) : null}

@@ -212,6 +212,10 @@ const jsonLdDataPl = {
       'sameAs': [
         PROFILE_FIRMY.sortlist,
         PROFILE_FIRMY.clutch,
+        PROFILE_FIRMY.githubAutor,
+        PROFILE_FIRMY.githubFirma,
+        PROFILE_FIRMY.goodfirms,
+        PROFILE_FIRMY.designrush,
         PROFILE_FIRMY.linkedinFirma,
       ].filter(Boolean)
     },
@@ -320,11 +324,14 @@ export default async function RootLayout({ children, params }) {
             } catch (e) {}
             var __aiscInternal = false;
             try { __aiscInternal = localStorage.getItem('aisc_internal') === '1'; } catch (e) {}
+            window.__aiscInternal = __aiscInternal;
             if (window.__aiscTracking) {
               var __gaCfg = __aiscInternal ? { traffic_type: 'internal' } : {};
               gtag('config', 'G-WVVRW8FP30', __gaCfg);
               gtag('config', '${GA4_ADS_ID}', __gaCfg);
-              gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
+              if (!__aiscInternal) {
+                gtag('config', '${GOOGLE_ADS_ID}', { allow_enhanced_conversions: true });
+              }
             }
           `}
         </Script>

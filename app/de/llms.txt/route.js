@@ -32,6 +32,10 @@ function inhalt() {
     `- [Google Unternehmensprofil (Google Maps)](${MAPA_GOOGLE_URL}): Bürostandort ${BIURO.ulica}, Warschau.`,
     `- [Clutch](${PROFILE_FIRMY.clutch}): Agenturprofil auf Clutch.`,
     `- [Sortlist](${PROFILE_FIRMY.sortlist}): Agenturprofil auf Sortlist.`,
+    ...(PROFILE_FIRMY.goodfirms ? [`- [GoodFirms](${PROFILE_FIRMY.goodfirms}): Agenturprofil auf GoodFirms.`] : []),
+    ...(PROFILE_FIRMY.designrush ? [`- [DesignRush](${PROFILE_FIRMY.designrush}): Agenturprofil auf DesignRush.`] : []),
+    ...(PROFILE_FIRMY.githubAutor ? [`- [GitHub (Filip Śliwa)](${PROFILE_FIRMY.githubAutor}): Autorenprofil und Open-Source-Projekte.`] : []),
+    ...(PROFILE_FIRMY.githubFirma ? [`- [GitHub (AI Crawler Presets)](${PROFILE_FIRMY.githubFirma}): Open-Source-Vorlagen für robots.txt und llms.txt.`] : []),
     ...(PROFILE_FIRMY.linkedinFirma ? [`- [LinkedIn](${PROFILE_FIRMY.linkedinFirma}): Unternehmensprofil von AI SEO COMPANY.`] : []),
   ].join('\n');
   return `# AI SEO COMPANY (Deutsch)

@@ -1,6 +1,7 @@
 import { timingSafeEqual } from 'node:crypto';
 import { NextResponse } from 'next/server';
 import { WYDANIE } from '@/lib/lastmod';
+import { submitAllSitemaps } from '@/lib/gscSitemaps';
 import { planZgloszenia, zglos } from '../../../../scripts/sitemap/indexnow-klient.mjs';
 
 // Cron Vercel (vercel.json: 15 6 * * *, czyli codziennie ok. 7:15/8:15 czasu polskiego):
@@ -44,9 +45,15 @@ export async function GET(request) {
     return NextResponse.json({ ...opis, zgloszono: 0 });
   }
   try {
-    const wynik = await zglos(plan.adresy);
-    console.log(`[indexnow] ${wynik.zgloszono} adresów, HTTP ${wynik.status} (${plan.powod})`);
-    return NextResponse.json({ ...opis, zgloszono: wynik.zgloszono, status: wynik.status, pominiete: plan.pominiete }, { status: wynik.ok ? 200 : 502 });
+    const [wynik, sitemapy] = await Promise.all([
+      zglos(plan.adresy),
+      submitAllSitemaps().catch((err) => ({ blad: String(err?.message || err) })),
+    ]);
+    console.log(`[indexnow] ${wynik.zgloszono} adresów, HTTP ${wynik.status} (${plan.powod}); sitemapy GSC=${sitemapy?.gsc?.submitted ?? 0}`);
+    return NextResponse.json(
+      { ...opis, zgloszono: wynik.zgloszono, status: wynik.status, pominiete: plan.pominiete, sitemapy },
+      { status: wynik.ok ? 200 : 502 }
+    );
   } catch (e) {
     console.error(`[indexnow] błąd: ${e?.message || e}`);
     return NextResponse.json({ ...opis, zgloszono: 0, blad: String(e?.message || e) }, { status: 502 });
