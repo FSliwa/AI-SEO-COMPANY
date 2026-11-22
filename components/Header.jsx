@@ -9,7 +9,7 @@ import NextLink from 'next/link';
 import { Link, usePathname, useRouter, getPathname } from '../i18n/routing';
 import { track } from '@/lib/track';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
-import { hash, homeHash, przewinDoSekcji, przejdzDoSekcji } from '@/lib/anchors';
+import { hash, homeHash, przewinDoSekcji, przejdzDoSekcji, bezFormularza } from '@/lib/anchors';
 import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
 import { tylkoEn } from '@/lib/stronyTylkoEn';
 import { hrefJesliOpublikowana, wpisPublikacji } from '@/lib/publikacja';
@@ -23,10 +23,7 @@ import { PANEL_DEMO_URL, PANEL_LOGIN_URL } from '@/lib/panel';
 // Czas zamkniecia menu (ms): musi byc rowny przejsciu w components/HeaderMenu.css (.menu-ov, 240 ms).
 const CZAS_ZAMKNIECIA_MENU = 260;
 
-// A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
-// pathname z next-intl to klucz routingu, więc /en/terms i /en/cookies też pasują.
-// Wszystkie trasy /narzedzia i /narzedzia/* poza /narzedzia/raport-seo (SzablonRaport renderuje <Contact />) nie mają formularza.
-const bezFormularza = (s) => s === '/regulamin' || s === '/cookies' || s === '/impressum' || s === '/narzedzia' || (typeof s === 'string' && s.startsWith('/narzedzia/') && s !== '/narzedzia/raport-seo');
+// A3b/BL-02 (PLAN-v2 6.17): lista tras bez <Contact /> współdzielona w lib/anchors.js (bezFormularza).
 
 function UserIcon() {
   return (
@@ -583,7 +580,7 @@ export default function Header() {
                 #kontakt - przejdzDoSekcji przenosi wtedy na strone glowna
                 (05.10.2026). 5.11.2026 (A3b/BL-02): na tych stronach takze href
                 prowadzi wprost do formularza strony glownej (bez JS i dla crawlera). */}
-            <a href={bezFormularza(sciezka) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
+            <a href={bezFormularza(sciezka, lang) ? (lang === 'de' ? '/de#kontakt' : lang === 'pl' ? '/#kontakt' : '/en#contact') : hash('kontakt', lang)} onClick={(e) => przejdzDoSekcji(e, 'kontakt', lang, router)} className="header-hire-btn" data-cta="header" style={{
               background: 'var(--w-pomarancz-przycisk)',
               color: 'var(--w-na-pomaranczu)',
               transition: 'all 0.7s ease'

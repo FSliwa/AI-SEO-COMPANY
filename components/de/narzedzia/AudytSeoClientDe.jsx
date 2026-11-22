@@ -426,9 +426,25 @@ export default function AudytSeoClientDe() {
               </button>
             </div>
           </div>
-          <div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', alignItems: 'center' }}>
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_audyt_start">
               {stan.status === 'loading' ? 'Wird geprüft…' : 'Website kostenlos prüfen'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              disabled={stan.status === 'loading'}
+              data-cta="narzedzie_audyt_de_demo"
+              onClick={async () => {
+                const mod = await import('@/lib/narzedziaDemo');
+                const r = await mod.demoNarzedzia('audyt_seo', { url: adres.trim() || 'beispiel.de', zakres, urzadzenie, lang: 'de' });
+                if (!r?.podglad) return;
+                const demoPodglad = wzbogacDemoAudytuDe({ ...r.podglad, domena: adres.trim() || 'beispiel.de', wynik: 91, zablokowane: [] }, zakres, urzadzenie);
+                track('narzedzie_demo', { narzedzie: 'audyt_seo', lang: 'de' });
+                setStan({ status: 'done', blad: null, id: null, podglad: demoPodglad, pelny: demoPodglad, historia: null });
+              }}
+            >
+              DEMO-Audit sofort laden
             </button>
           </div>
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />

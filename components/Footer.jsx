@@ -7,7 +7,7 @@ import { tr } from '@/lib/shellDe';
 import { maWersjeDe, STRONY_DE } from '@/lib/stronyDe';
 import NextLink from 'next/link';
 import { Link, usePathname, useRouter, getPathname } from '@/i18n/routing';
-import { hash, homeHash, sectionId, przejdzDoSekcji } from '@/lib/anchors';
+import { hash, homeHash, sectionId, przejdzDoSekcji, bezFormularza } from '@/lib/anchors';
 import { tylkoPl, celPrzelacznikaEn } from '@/lib/plOnly';
 import { blogPosts, isPostAvailableIn } from '@/lib/blogPosts';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
@@ -15,28 +15,7 @@ import { track } from '@/lib/track';
 import { GODZINY_TEKST } from '@/lib/godziny';
 import { BIURO, SIEDZIBA, ETYKIETY, REJESTR, adresLinia } from '@/lib/firma';
 
-// A3b/BL-02 (PLAN-v2 6.17): tylko te strony nie mają sekcji kontaktu; tam CTA prowadzi wprost na formularz strony głównej.
-// Narzędzia Sprint 1/2 z <Contact /> (oraz /de/tools w ToolsHubDe.jsx i /narzedzia/raport-seo w PL/EN) przewijają płynnie do #kontakt / #contact bez przeładowania strony i utraty wyników skanu.
-const NARZEDZIA_Z_FORMULARZEM = new Set([
-  '/narzedzia/tester-robotow-ai-robots-txt',
-  '/narzedzia/test-core-web-vitals-porownanie',
-  '/narzedzia/sprawdz-cytowalnosc-strony-ai',
-  '/narzedzia/sprawdz-przekierowania-hreflang',
-  '/narzedzia/generator-indexnow-test-bing-chatgpt',
-  '/narzedzia/walidator-grafu-encji-json-ld',
-  '/narzedzia/audyt-lokalnego-seo-wizytowki',
-]);
-
-const bezFormularza = (s, jezyk) => {
-  if (s === '/regulamin' || s === '/cookies' || s === '/impressum') return true;
-  if (s === '/narzedzia') return jezyk !== 'de';
-  if (typeof s === 'string' && s.startsWith('/narzedzia/')) {
-    if (NARZEDZIA_Z_FORMULARZEM.has(s)) return false;
-    if (s === '/narzedzia/raport-seo') return jezyk === 'de';
-    return true;
-  }
-  return false;
-};
+// A3b/BL-02 (PLAN-v2 6.17): funkcja bezFormularza(s, jezyk) współdzielona z Header.jsx w lib/anchors.js.
 
 export default function Footer() {
   const lang = useLocale();

@@ -472,9 +472,25 @@ export default function AudytSeoClient() {
               </button>
             </div>
           </div>
-          <div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', alignItems: 'center' }}>
             <button type="submit" className="btn btn-primary" disabled={stan.status === 'loading'} data-cta="narzedzie_audyt_start">
               {stan.status === 'loading' ? (en ? 'Checking…' : 'Sprawdzam…') : (en ? 'Check your site for free' : 'Sprawdź stronę za darmo')}
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              disabled={stan.status === 'loading'}
+              data-cta="narzedzie_audyt_demo"
+              onClick={async () => {
+                const mod = await import('@/lib/narzedziaDemo');
+                const r = await mod.demoNarzedzia('audyt_seo', { url: adres.trim() || (en ? 'example.com' : 'przyklad.pl'), zakres, urzadzenie, lang: en ? 'en' : 'pl' });
+                if (!r?.podglad) return;
+                const demoPodglad = wzbogacDemoAudytu({ ...r.podglad, wynik: 91, zablokowane: [] }, zakres, urzadzenie, en);
+                track('narzedzie_demo', { narzedzie: 'audyt_seo', lang: en ? 'en' : 'pl' });
+                setStan({ status: 'done', blad: null, id: null, podglad: demoPodglad, pelny: demoPodglad, historia: null });
+              }}
+            >
+              {en ? 'Load DEMO audit' : 'Załaduj przykładowy audyt DEMO'}
             </button>
           </div>
           <input name="nick" tabIndex={-1} autoComplete="off" aria-hidden="true" className="narz-pulapka" />
