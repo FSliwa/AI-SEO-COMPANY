@@ -23,11 +23,11 @@
 import './globals.css';
 import './wyglad.css';
 import Link from 'next/link';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, DM_Mono } from 'next/font/google';
 
-// Ta sama konfiguracja Geist + Geist_Mono + latin-ext co w app/[locale]/layout.js (pelna obsluga polskich znakow i deduplikacja .woff2).
+// Ta sama konfiguracja Geist + DM_Mono + latin-ext co w app/[locale]/layout.js (pelna obsluga polskich znakow i deduplikacja .woff2).
 const geist = Geist({ subsets: ['latin', 'latin-ext'], variable: '--font-geist', display: 'swap' });
-const geistMono = Geist_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-geist-mono', display: 'swap' });
+const dmMono = DM_Mono({ weight: ['400', '500'], subsets: ['latin', 'latin-ext'], variable: '--font-dm-mono', display: 'swap' });
 
 export const metadata = {
   title: 'Nie ma takiej strony (404) - AI SEO COMPANY',
@@ -57,7 +57,7 @@ const styl = {
 
 export default function GlobalNotFound() {
   return (
-    <html lang="pl" className={`${geist.variable} ${geistMono.variable}`}>
+    <html lang="pl" className={`${geist.variable} ${dmMono.variable}`}>
       <body>
         <main style={styl.main}>
           <div className="container">

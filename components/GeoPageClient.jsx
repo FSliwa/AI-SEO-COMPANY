@@ -347,10 +347,10 @@ function Karta({ k }) {
 
 function SekcjaTekstowa({ id, title, children }) {
   return (
-    <section id={id} style={{ padding: '40px 0 50px' }}>
+    <section id={id} className="de-abschnitt">
       <div className="container" style={{ maxWidth: '850px', margin: '0 auto' }}>
         <Reveal className="section-header"><h2>{title}</h2></Reveal>
-        <Reveal style={{ display: 'grid', gap: '1rem', marginTop: '1.5rem' }}>{children}</Reveal>
+        <Reveal style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1rem', marginTop: '1.5rem' }}>{children}</Reveal>
       </div>
     </section>
   );

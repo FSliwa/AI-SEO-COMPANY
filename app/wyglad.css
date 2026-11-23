@@ -74,15 +74,17 @@
   --container-width: 1360px;
 }
 
-/* Fonty: next/font daje --font-geist i --font-geist-mono na <html>. Stare
+/* Fonty: next/font daje --font-geist i --font-dm-mono na <html>. Stare
    nazwy wskazuja na Geist, wiec reguly globals.css i style inline z
-   var(--font-inter) / var(--font-space) dzialaja bez zmian w calym serwisie. */
+   var(--font-inter) / var(--font-space) dzialaja bez zmian w calym serwisie.
+   font-synthesis-weight: none chroni DM Mono (wagi 400/500) przed sztucznym pogrubianiem przegladarki przy 600/700. */
 :root,
 body {
   --w-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
-  --w-mono: var(--font-geist-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --w-mono: var(--font-dm-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-inter: var(--font-geist);
   --font-space: var(--font-geist);
+  font-synthesis-weight: none;
 }
 
 body {
@@ -104,7 +106,7 @@ body::before {
   color: var(--w-tusz);
 }
 
-/* Spojny Geist Mono we wszystkich wstawkach kodu (blog, porownania, szablony, dokumenty, narzedzia) */
+/* Spojny DM Mono we wszystkich wstawkach kodu (blog, porownania, szablony, dokumenty, narzedzia) */
 code,
 pre,
 kbd,
@@ -3395,7 +3397,7 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   --r-akcent: var(--w-pomarancz);
   --r-linia: rgba(30, 30, 30, 0.12);
   display: grid;
-  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  grid-template-columns: minmax(220px, 316px) minmax(0, 1fr);
   gap: clamp(24px, 4vw, 72px);
   align-items: start;
   margin: clamp(40px, 5vw, 72px) 0 clamp(48px, 6vw, 88px);
@@ -5269,10 +5271,11 @@ label:has(> input[type="checkbox"]) { min-height: 44px; display: flex; align-ite
   padding-top: 1.15rem;
 }
 
-.gory-oferta .service-card--geo .service-geo-footer {
-  align-self: stretch;
-  justify-content: flex-start;
-  margin-top: 1rem;
+/* Na /de#uslugi jest 7 kart (6 głównych 3x2 / 2x3 + 7. karta ekspansji na Polskę): pełna szerokość dolnego wiersza bez pustych dziur w siatce */
+@media (min-width: 700px) {
+  .gory-oferta #uslugi .de-karten-grid > :nth-child(7):last-child {
+    grid-column: 1 / -1;
+  }
 }
 
 .gory-oferta .usluga-etykieta {

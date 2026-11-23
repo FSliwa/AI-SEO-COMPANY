@@ -163,16 +163,16 @@ const FAQ = [
   },
 ];
 
-const DATA_ODCZYTU = '2026-11-22';
+const DATA_ODCZYTU = '2026-11-23';
 
 const ZRODLA_PL = [
   {
-    url: 'https://openai.com/index/our-approach-to-advertising-and-expanding-access-to-chatgpt/',
-    nazwa: 'OpenAI: Our approach to advertising and expanding access to ChatGPT (zasady niezależności odpowiedzi, oznaczeń i prywatności)',
+    url: 'https://help.openai.com/en/articles/20001047-ads-in-chatgpt',
+    nazwa: 'OpenAI Help Center: Ads in ChatGPT (zasady niezależności odpowiedzi, oznaczeń i prywatności)',
     data: DATA_ODCZYTU,
   },
   {
-    url: 'https://platform.openai.com/docs/bots',
+    url: 'https://developers.openai.com/api/docs/bots',
     nazwa: 'OpenAI Platform Docs: Overview of OpenAI Crawlers (OAI-SearchBot, GPTBot, ChatGPT-User)',
     data: DATA_ODCZYTU,
   },
@@ -195,12 +195,12 @@ const ZRODLA_PL = [
 
 const ZRODLA_EN = [
   {
-    url: 'https://openai.com/index/our-approach-to-advertising-and-expanding-access-to-chatgpt/',
-    nazwa: 'OpenAI: Our approach to advertising and expanding access to ChatGPT (answer independence, labeling, and privacy principles)',
+    url: 'https://help.openai.com/en/articles/20001047-ads-in-chatgpt',
+    nazwa: 'OpenAI Help Center: Ads in ChatGPT (answer independence, labeling, and privacy principles)',
     data: DATA_ODCZYTU,
   },
   {
-    url: 'https://platform.openai.com/docs/bots',
+    url: 'https://developers.openai.com/api/docs/bots',
     nazwa: 'OpenAI Platform Docs: Overview of OpenAI Crawlers (OAI-SearchBot, GPTBot, ChatGPT-User)',
     data: DATA_ODCZYTU,
   },

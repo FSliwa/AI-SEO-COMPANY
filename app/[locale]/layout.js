@@ -240,13 +240,13 @@ import PetleWidoczne from '@/components/PetleWidoczne';
 import Typografia from '@/components/Typografia';
 import Script from 'next/script';
 
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, DM_Mono } from 'next/font/google';
 
-// 6.11.2026 (wyglad z makiety, DESIGN.md): Geist + Geist Mono w calym serwisie (od 21.11.2026 takze w .hero).
-// Podzbior latin-ext jest konieczny dla polskich i niemieckich znakow diakrytycznych.
+// 23.11.2026: Geist (tekst i naglowki) + DM Mono (Colophon Foundry - pigulki, etykiety sekcji, indeksy i bloki kodu).
+// Podzbior latin-ext zapewnia pelna obsluge polskich i niemieckich znakow diakrytycznych.
 // Stare zmienne --font-inter i --font-space wskazuja na Geist w app/wyglad.css.
 const geist = Geist({ subsets: ['latin', 'latin-ext'], variable: '--font-geist', display: 'swap' });
-const geistMono = Geist_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-geist-mono', display: 'swap' });
+const dmMono = DM_Mono({ weight: ['400', '500'], subsets: ['latin', 'latin-ext'], variable: '--font-dm-mono', display: 'swap' });
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
@@ -262,7 +262,7 @@ export default async function RootLayout({ children, params }) {
   // /audyt-seo, ...), gdzie nikt tego pliku nie uzywa (Lighthouse 22.09).
 
   return (
-    <html lang={locale} className={`${geist.variable} ${geistMono.variable}`}>
+    <html lang={locale} className={`${geist.variable} ${dmMono.variable}`}>
       <head>
         <link rel="icon" href="/ai-seo-company-logotyp.svg" type="image/svg+xml" />
         <script

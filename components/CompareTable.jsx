@@ -61,7 +61,7 @@ export default function CompareTable({ caption, columns, rows, id, przypis, minW
   const idPodpisu = id ? `${id}-podpis` : undefined;
 
   return (
-    <div style={{ margin: '0 0 2rem' }}>
+    <div style={{ margin: '0 0 2rem', minWidth: 0, maxWidth: '100%' }}>
       {caption && <p id={idPodpisu} style={captionStyl}>{caption}</p>}
       <div
         className="tabela-przewijana"
