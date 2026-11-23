@@ -45,3 +45,9 @@ Before reporting **any** code conclusion, schema/entity issue, analytics diagnos
 - **Always Use `update_content` (Never `replace_content`) on Project Pages**: Preserves inline `<database>` views and expiring S3 page icons intact.
 - **`call_mcp_tool` Identifier Key Rule**: Nested keys inside `Arguments` must be plain ASCII identifiers (`Status`, `Priority`, `Projekt`, `Kategoria`, `title`, `old_str`, `new_str`). Keys containing spaces, colons, or diacritics (e.g. `"Wskaźnik KPI"`, `"date:Date Complete:start"`) fail `call_mcp_tool` argument decoding; use `title` in `properties` to set any Notion database title column whose name contains spaces/diacritics.
 - **Exact URL Counting**: Always count published URLs from `Object.keys(JSON.parse(fs.readFileSync('lib/lastmod.json', 'utf8')).adresy)` (never `Object.keys(lastmod)` directly, which returns `['_opis', '_wydanie', 'adresy']`).
+
+## 6. GSC Forensic Drop Diagnosis Rule (Multi-Dimension Breakdown)
+- Whenever diagnosing an impression or click drop in Google Search Console (`sc-domain:ai-seo-company.pl`), NEVER rely on a single global `7d vs 7d` sum (which can mask a flat/declining primary market behind position `60+` international impressions):
+  1. Pull `90+` days in weekly buckets AND the last `21` days daily with `dataState: 'all'` (so fresh preliminary days at the right edge of the GSC UI chart are visible).
+  2. Filter `country == 'pol'` separately from `deu`/`gbr`/`usa` and compare `28d vs prev 28d` clicks and average position.
+  3. Inspect `/sitemaps` (`submitted` vs `indexed`) and run `urlInspection` (`verdict`, `coverageState`, `lastCrawlTime`, `sitemap`, `referringUrls`) on both core hubs (`/narzedzia`, `/narzedzia/audyt-seo`, `/de/tools`) and every page that lost impressions (checking for `"Crawled - currently not indexed"` or multi-month stale `lastCrawlTime`).
