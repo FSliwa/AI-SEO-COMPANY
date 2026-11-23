@@ -590,92 +590,81 @@ section#contact.contact {
   display: none !important;
 }
 
-/* Karty usług: obramowane ciemne powierzchnie Wariantu A/B z odstępem 20 px i wyrównaniem do lewej */
+/* Kolumny uslug jak w makiecie: bez tla, rozdzielone pionowa linia */
 .gory-oferta .services-grid {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 20px !important;
-  align-items: stretch;
-  margin-top: clamp(44px, 5vw, 76px);
+  gap: 0 !important;
+  margin-top: clamp(48px, 6vw, 88px);
 }
 
 .gory-oferta .service-card {
-  background: rgba(17, 24, 62, 0.74) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(243, 183, 156, 0.20) !important;
-  border-radius: 24px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 1.65rem 1.5rem !important;
+  padding: 0.5rem clamp(1.25rem, 3vw, 2.75rem) 0 !important;
   color: #FFFFFF;
-  text-align: left !important;
-  display: flex !important;
+  text-align: center !important;
+  display: flex;
   flex-direction: column;
-  align-items: flex-start !important;
+  align-items: center !important;
   transform: none !important;
   translate: none !important;
 }
 
 .gory-oferta .service-card + .service-card {
-  border-left: 0 !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.22) !important;
 }
 
 .gory-oferta .service-card:hover {
   transform: none !important;
   translate: none !important;
   box-shadow: none !important;
-  border-color: rgba(216, 90, 48, 0.42) !important;
 }
 
 .gory-oferta .service-card .service-icon {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 10px !important;
-  background: rgba(216, 90, 48, 0.16) !important;
-  border: 1px solid rgba(243, 183, 156, 0.20) !important;
-  color: #FF9E7A !important;
+  background: transparent !important;
+  border: 1px solid var(--w-noc-linia) !important;
+  color: var(--w-pomarancz) !important;
   box-shadow: none !important;
-  margin-bottom: 0.9rem !important;
   transform: none !important;
 }
 
 .gory-oferta .service-card:hover .service-icon {
   transform: none !important;
-  background: rgba(216, 90, 48, 0.22) !important;
+  background: rgba(216, 90, 48, 0.14) !important;
+  border-color: rgba(243, 183, 156, 0.42) !important;
   color: #FF9E7A !important;
 }
 
 .gory-oferta .service-card h3 {
   color: #FFFFFF !important;
-  font-weight: 600 !important;
-  font-size: clamp(1.3rem, 1.65vw, 1.55rem) !important;
-  letter-spacing: -0.03em !important;
-  line-height: 1.18 !important;
+  font-weight: 500 !important;
+  font-size: clamp(1.5rem, 2.3vw, 2.1rem) !important;
+  letter-spacing: -0.045em !important;
+  line-height: 1.1 !important;
 }
 
 .gory-oferta .service-card p {
   color: var(--w-noc-tekst) !important;
-  max-width: none;
-  font-size: 0.95rem;
-  line-height: 1.58;
-  margin-bottom: 0 !important;
+  max-width: 380px;
 }
 
 .gory-oferta .service-features {
   list-style: none;
   padding: 0;
-  margin: 1.15rem 0 0;
+  margin: 1.5rem 0 0;
   text-align: left;
   border: 0 !important;
-  width: 100%;
 }
 
 .gory-oferta .service-features li {
-  color: rgba(255, 255, 255, 0.92) !important;
-  font-size: 0.94rem !important;
-  padding-left: 1.75rem !important;
+  color: #FFFFFF !important;
+  font-size: 1.0625rem !important;
+  padding-left: 2.1rem !important;
   position: relative;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.9rem;
 }
 
 .gory-oferta .service-features li::before {
@@ -703,52 +692,49 @@ section#contact.contact {
   background: linear-gradient(180deg, rgba(10, 19, 55, 0) 0%, rgba(10, 19, 55, 0.78) 54%, var(--w-noc) 100%);
 }
 
-/* Dolne linki kierunkowe na wszystkich kartach usług */
+/* Kolumna 4 (GEO, PL): ten sam pionowy rytm co pozostałe 3 kolumny */
 .service-geo-footer {
-  margin-top: 1rem;
-  padding-top: 0.95rem;
-  border-top: 1px solid rgba(243, 183, 156, 0.16);
+  margin-top: 1.5rem;
   display: flex;
-  justify-content: flex-start;
-  align-self: stretch;
+  justify-content: center;
+  align-self: start;
   width: 100%;
 }
 
 .service-geo-link {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.55rem;
-  width: 100%;
-  padding: 0.25rem 0;
-  border-radius: 0;
-  background: transparent;
-  border: 0;
+  padding: 0.85rem 1.2rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--w-noc-linia);
   color: var(--w-brzoskwinia) !important;
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   font-weight: 500;
   line-height: 1.35;
   text-decoration: none !important;
   text-align: left;
-  transition: color 0.2s ease;
+  transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
 }
 
 .service-geo-link:hover {
-  background: transparent;
+  background: rgba(216, 90, 48, 0.16);
+  border-color: var(--w-pomarancz);
   color: #FFFFFF !important;
-  transform: none;
+  transform: translateY(-2px);
 }
 
 .service-geo-arrow {
   flex: none;
   color: var(--w-pomarancz);
-  font-size: 1.08rem;
-  transition: transform 0.22s ease, color 0.22s ease;
+  font-size: 1.1rem;
+  transition: transform 0.22s ease;
 }
 
 .service-geo-link:hover .service-geo-arrow {
-  transform: translateX(4px);
-  color: #FF9E7A;
+  transform: translateX(3px);
 }
 
 /* ==========================================================================
@@ -1581,14 +1567,13 @@ section#contact.contact {
 
   .gory-oferta .services-grid:not(:has(.service-card--geo)) {
     grid-template-columns: minmax(0, 1fr) !important;
-    gap: 16px !important;
   }
 
   .gory-oferta .services-grid:not(:has(.service-card--geo)) .service-card + .service-card {
     border-left: 0 !important;
-    border-top: 0 !important;
-    margin-top: 0;
-    padding-top: 1.65rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem !important;
   }
 
   .gory-oferta {
@@ -2358,37 +2343,79 @@ select.narz-pole {
   text-shadow: 0 0 18px var(--w-papier), 0 0 36px var(--w-papier);
 }
 
-/* (10/60 + 21.11.2026) Obramowane karty oferty (4 kolumny w PL, 3 w EN) */
+/* (10/60 + 19.11.2026) Równe rzędy w kolumnach oferty (4 kolumny w PL, 3 w EN) */
 @media (max-width: 639.98px) {
   .gory-oferta .services-grid:has(.service-card--geo) {
     grid-template-columns: minmax(0, 1fr) !important;
-    gap: 16px !important;
+  }
+  .gory-oferta .services-grid:has(.service-card--geo) .service-card + .service-card {
+    border-left: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+    margin-top: 2.25rem;
+    padding-top: 2.25rem !important;
   }
 }
 
 @media (min-width: 640px) and (max-width: 1119.98px) {
   .gory-oferta .services-grid:has(.service-card--geo) {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 20px !important;
+    row-gap: 2.5rem !important;
+  }
+  .gory-oferta .services-grid:has(.service-card--geo) .service-card:nth-child(odd) {
+    border-left: 0 !important;
+  }
+  .gory-oferta .services-grid:has(.service-card--geo) .service-card:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+    padding-top: 2.25rem !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .gory-oferta .services-grid:not(:has(.service-card--geo)) {
+    grid-template-rows: repeat(4, auto);
+  }
+  .gory-oferta .services-grid:not(:has(.service-card--geo)) .service-card {
+    display: grid !important;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    justify-items: center;
+    row-gap: 0;
+  }
+  .gory-oferta .services-grid:not(:has(.service-card--geo)) .service-card h3 {
+    align-self: end;
   }
 }
 
 @media (min-width: 1120px) {
   .gory-oferta .services-grid:has(.service-card--geo) {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 20px !important;
+    grid-template-rows: repeat(4, auto);
+  }
+  .gory-oferta .services-grid:has(.service-card--geo) .service-card {
+    display: grid !important;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    justify-items: center;
+    align-items: start;
+    row-gap: 0;
+    padding: 0.5rem clamp(1rem, 1.6vw, 1.65rem) 0 !important;
+  }
+  .gory-oferta .services-grid:has(.service-card--geo) .service-card .service-icon {
+    align-self: start;
+    margin-top: 0 !important;
   }
   .gory-oferta .services-grid:has(.service-card--geo) .service-card h3 {
-    font-size: clamp(1.28rem, 1.5vw, 1.5rem) !important;
+    align-self: start;
+    font-size: clamp(1.32rem, 1.65vw, 1.72rem) !important;
   }
 }
 
-/* (35/71) Lista cech wyrównana do lewej w obramowanej karcie; lżejsze <strong> w EN */
+/* (35/71) Lista cech wyśrodkowana pod opisem; lżejsze <strong> w EN */
 .gory-oferta .service-features {
-  align-self: stretch;
-  justify-self: stretch;
-  width: 100%;
-  max-width: none;
+  align-self: center;
+  justify-self: center;
+  width: fit-content;
+  max-width: min(100%, 340px);
 }
 
 .gory-oferta .service-card p strong,

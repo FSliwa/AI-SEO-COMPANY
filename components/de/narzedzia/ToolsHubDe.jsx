@@ -15,6 +15,7 @@ import AppleFaq from '@/components/service/AppleFaq';
 import Ikona from '@/components/narzedzia/Ikony';
 import { Link } from '@/i18n/routing';
 import { maWersjeDe, urlDe, wpisDe } from '@/lib/stronyDe';
+import { obrazKarty } from '@/lib/narzedziaObrazy';
 import { AUDYT, AUTORYTET, CENY, GENERATOR, WIDOCZNOSC } from '@/lib/narzedziaLiczby';
 import { eur, liczba } from '@/lib/formatDe';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -284,10 +285,22 @@ const ZRODLA_HUB_DE = [
 
 const malyTekst = { fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--color-text-main)', margin: '0.45rem 0 0' };
 const etykietaPol = { fontWeight: 600, color: 'var(--w-tusz)' };
+const ROZMIARY_MINIATURY = '(max-width: 699px) calc(100vw - 80px), (max-width: 1199px) 42vw, 504px';
+const podpisMiniatury = { fontSize: '0.8rem', lineHeight: 1.4, color: 'var(--w-tusz-2)', margin: '0.4rem 0 0' };
 
 function KartaToolDe({ karta, i }) {
+  const obraz = obrazKarty(karta.id, 'de');
   return (
     <article className={st.kartaHuba} style={{ '--i': i % 6 }}>
+      {obraz ? (
+        <figure className={st.miniatura}>
+          <div className={st.miniaturaRamka}>
+            {/* eslint-disable-next-line @next/next/no-img-element -- pliki WebP w trzech szerokosciach (srcSet) bez powtornej kompresji */}
+            <img src={obraz.src} srcSet={obraz.srcSet} sizes={ROZMIARY_MINIATURY} alt={obraz.alt} width={obraz.width} height={obraz.height} loading="lazy" decoding="async" />
+          </div>
+          <figcaption style={podpisMiniatury}>{obraz.podpis}</figcaption>
+        </figure>
+      ) : null}
       <div className={st.kartaNaglowek}>
         <span className={st.kafelIkona} aria-hidden="true">
           <Ikona nazwa={karta.ikona} />
