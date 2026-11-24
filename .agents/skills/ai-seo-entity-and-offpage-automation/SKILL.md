@@ -22,11 +22,14 @@ Before reporting **any** code conclusion, schema/entity issue, analytics diagnos
   - Registered KRS seat: `SIEDZIBA` (`ul. Grzybowska 12/14 lok. B-3, 00-132 Warszawa`, KRS `0001239983`, NIP `5253090237`, REGON `544761611`).
   - Website URL in all directories & GitHub repos: strictly `https://www.ai-seo-company.pl/` (never `http://` or non-`www` to avoid redirect hops).
 
-## 2. Exact 9 Segment Sitemaps & Search Engine Submission
+## 2. Exact 9 Segment Sitemaps & 1-Click Zero-Terminal Submission (`panel.ai-seo-company.pl`)
 - Root index: `https://www.ai-seo-company.pl/sitemap.xml`
 - 9 segment sitemaps:
   `strony-pl.xml`, `strony-en.xml`, `blog-pl.xml`, `blog-en.xml`, `ai-pl.xml`, `ai-en.xml`, `porownania.xml`, `narzedzia-szablony.xml`, `de.xml` under `https://www.ai-seo-company.pl/sitemaps/sitemap/`.
-- `panel-klienta-ai-seo/lib/google.ts` uses `https://www.googleapis.com/auth/webmasters`. Once the admin re-consents once on `https://panel.ai-seo-company.pl/admin/integracje` (in any browser), the encrypted refresh token in Neon DB (`google_connections`) gains write permission and `npm run zglos:sitemapy` (`lib/gscSitemaps.js` + `/api/cron/indexnow/route.js`) submits all 10 XML sitemaps via `PUT /webmasters/v3/sites/sc-domain%3Aai-seo-company.pl/sitemaps/...` in 2 seconds without needing browser UI.
+- **1-Click Production Auto-Submitter (`panel-klienta-ai-seo`, commit `8749b1d`)**:
+  - **Database Trap**: `ai-seo-strona/.env.local` points `DATABASE_URL` to `localhost/panel_dev`, whereas `https://panel.ai-seo-company.pl` stores OAuth tokens in **Neon production DB** (`google_connections`). Never ask the user to run local CLI `npm run sitemapy:zglos` after re-consenting in the browser without Neon credentials.
+  - Instead, `panel-klienta-ai-seo/app/api/google/callback/route.ts` (`submitAgencySitemaps()` in `lib/google.ts`) **automatically submits all 10 XML sitemaps to GSC immediately upon OAuth callback** (`?ok=1&sitemapy=10`), and `/admin/integracje` provides both `"Odśwież uprawnienia i zgłoś 10 map XML"` (when `hasWebmastersWriteScope()` is false) and `"Zgłoś 10 map XML do GSC"` (manual server action).
+  - **Panel Test & Deploy Invariants**: Keep `getConnectionStatus(db)` in `panel-klienta-ai-seo/lib/google.ts` strictly returning `{ googleEmail, createdAt }` (`tests/flows.test.ts:356` asserts exact keys), and deploy `panel-klienta-ai-seo` directly via `npx vercel --prod --yes` (it has no git `origin` remote).
 
 ## 3. GA4 Internal Traffic Defense-in-Depth (`547365077` / `G-WVVRW8FP30`, Stream `15338291591`)
 - Office/mobile ISPs in Poland rotate IPv4/IPv6 addresses (CGNAT/5G), so GA4 IP rules alone leak founder visits.
