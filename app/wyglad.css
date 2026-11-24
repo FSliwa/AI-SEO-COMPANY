@@ -55,6 +55,28 @@
   --karta-ikona-ciemna-tlo: rgba(216, 90, 48, 0.14);
   --karta-ikona-ciemna-kolor: #FF9E7A;
 
+  /* --- Warm Editorial Liquid Glass (Apple optical glass w cieplej palecie makiety) --- */
+  --w-szklo-tlo: linear-gradient(
+    145deg,
+    rgba(255, 254, 252, 0.56) 0%,
+    rgba(253, 249, 244, 0.34) 52%,
+    rgba(255, 251, 246, 0.48) 100%
+  );
+  --w-szklo-krawedz: rgba(255, 255, 255, 0.78);
+  --w-szklo-blur: blur(24px) saturate(155%);
+  --w-szklo-cien:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.94),
+    inset 1px 0 0 rgba(255, 255, 255, 0.62),
+    inset 0 -1px 0 rgba(188, 162, 138, 0.22),
+    0 24px 56px -20px rgba(24, 18, 12, 0.13),
+    0 4px 14px -4px rgba(24, 18, 12, 0.045);
+  --w-szklo-blask: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.50) 0%,
+    rgba(255, 255, 255, 0.10) 36%,
+    rgba(255, 255, 255, 0) 64%
+  );
+
   /* --- Stare tokeny serwisu przepiete na makiete (podstrony dziedzicza) --- */
   --color-bg-surface: var(--w-papier);
   --color-bg-alt: var(--w-papier-2);
@@ -3519,8 +3541,10 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   white-space: nowrap;
 }
 
-/* --- karta ---------------------------------------------------------------- */
+/* --- karta (Warm Editorial Liquid Glass nad mglistymi gorami .realizacje-pas) --- */
 .realizacje-karta {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
@@ -3532,11 +3556,31 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
     'stopka stopka';
   column-gap: 24px;
   align-items: end;
-  background: var(--w-karta);
-  border: 1px solid var(--w-linia);
+  background: var(--w-szklo-tlo);
+  backdrop-filter: var(--w-szklo-blur);
+  -webkit-backdrop-filter: var(--w-szklo-blur);
+  border: 1px solid var(--w-szklo-krawedz);
   border-radius: 24px;
   padding: clamp(22px, 2.8vw, 34px);
-  box-shadow: 0 0 0 6px rgba(255, 252, 248, 0.52), 0 24px 56px -20px rgba(10, 19, 55, 0.16);
+  box-shadow: var(--w-szklo-cien);
+}
+.realizacje-karta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: var(--w-szklo-blask);
+  pointer-events: none;
+}
+.realizacje-karta > * {
+  position: relative;
+  z-index: 1;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .realizacje-karta {
+    background: rgba(255, 252, 248, 0.94);
+  }
 }
 .realizacje-karta[hidden] { display: none !important; }
 .realizacje-marka {
@@ -3910,9 +3954,9 @@ body:has(.hero) .header:not(.scrolled) :focus-visible {
   background: url('/images/wyglad/gory-swit.webp') center 58% / cover no-repeat;
   background-image: image-set(url('/images/wyglad/gory-swit-v2.avif') type('image/avif'), url('/images/wyglad/gory-swit.webp') type('image/webp'));
   transform: scaleX(-1);
-  opacity: 0.55;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 70%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 70%, transparent 100%);
+  opacity: 0.68;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 74%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 74%, transparent 100%);
   pointer-events: none;
 }
 @media (max-width: 900px) {

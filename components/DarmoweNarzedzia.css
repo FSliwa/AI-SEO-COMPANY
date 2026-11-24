@@ -22,13 +22,31 @@
 
 .dn-arkusz {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background-color: var(--w-papier);
   padding: clamp(44px, 6vw, 84px) 0 clamp(72px, 9vw, 132px);
   border-bottom-left-radius: 50% clamp(2.75rem, 8.5vw, 9.5rem);
   border-bottom-right-radius: 50% clamp(2.75rem, 8.5vw, 9.5rem);
 }
 
+/* Ciepla organiczna poswiata refrakcyjna pod taflami Liquid Glass (100% w palecie makiety) */
+.dn-arkusz::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 32% at 76% 24%, rgba(216, 90, 48, 0.11) 0%, rgba(243, 183, 156, 0.16) 44%, rgba(253, 249, 244, 0) 76%),
+    radial-gradient(44% 30% at 74% 52%, rgba(235, 214, 190, 0.52) 0%, rgba(246, 239, 230, 0.24) 48%, rgba(253, 249, 244, 0) 78%),
+    radial-gradient(42% 28% at 26% 74%, rgba(216, 90, 48, 0.095) 0%, rgba(251, 230, 218, 0.34) 46%, rgba(253, 249, 244, 0) 78%),
+    radial-gradient(44% 30% at 74% 84%, rgba(243, 183, 156, 0.26) 0%, rgba(239, 229, 216, 0.36) 48%, rgba(253, 249, 244, 0) 80%);
+}
+
 .dn-kontener {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1360px;
   margin: 0 auto;
@@ -564,13 +582,70 @@
   --dn-akcent: #D85A30; --dn-ik-tlo: #EFE5D8; --dn-ik-kol: #9E3614;
 }
 
-.dn-scena[data-tlo='koral'], .dn-scena[data-tlo='piasek'], .dn-scena[data-tlo='roza'],
-.dn-karta-scena[data-tlo='koral'], .dn-karta-scena[data-tlo='piasek'], .dn-karta-scena[data-tlo='roza'] {
-  background: linear-gradient(140deg, #FCE6DA 0%, #F9DCCB 48%, #FBEDE4 100%);
+.dn-scena[data-tlo='koral'], .dn-scena[data-tlo='piasek'], .dn-scena[data-tlo='roza'] {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 253, 251, 0.56) 0%,
+    rgba(252, 230, 218, 0.40) 52%,
+    rgba(255, 247, 241, 0.48) 100%
+  );
 }
-.dn-scena[data-tlo='lawenda'], .dn-scena[data-tlo='blekit'], .dn-scena[data-tlo='szalwia'],
+.dn-scena[data-tlo='lawenda'], .dn-scena[data-tlo='blekit'], .dn-scena[data-tlo='szalwia'] {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 254, 252, 0.58) 0%,
+    rgba(239, 229, 216, 0.42) 52%,
+    rgba(250, 244, 236, 0.50) 100%
+  );
+}
+
+.dn-scena {
+  isolation: isolate;
+  backdrop-filter: var(--w-szklo-blur, blur(24px) saturate(155%));
+  -webkit-backdrop-filter: var(--w-szklo-blur, blur(24px) saturate(155%));
+  border: 1px solid var(--w-szklo-krawedz, rgba(255, 255, 255, 0.78));
+  box-shadow: var(
+    --w-szklo-cien,
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.94),
+    inset 1px 0 0 rgba(255, 255, 255, 0.62),
+    inset 0 -1px 0 rgba(188, 162, 138, 0.20),
+    0 22px 50px -22px rgba(24, 18, 12, 0.12)
+  );
+}
+
+.dn-scena::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(
+    --w-szklo-blask,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.10) 36%, rgba(255, 255, 255, 0) 64%)
+  );
+}
+
+.dn-scena > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dn-karta-scena[data-tlo='koral'], .dn-karta-scena[data-tlo='piasek'], .dn-karta-scena[data-tlo='roza'] {
+  background: linear-gradient(
+    180deg,
+    rgba(252, 230, 218, 0) 0%,
+    rgba(252, 230, 218, 0.26) 44%,
+    rgba(249, 220, 203, 0.42) 100%
+  );
+}
 .dn-karta-scena[data-tlo='lawenda'], .dn-karta-scena[data-tlo='blekit'], .dn-karta-scena[data-tlo='szalwia'] {
-  background: linear-gradient(140deg, #F6EFE6 0%, #EFE5D8 52%, #FAF4EC 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(246, 239, 230, 0) 0%,
+    rgba(239, 229, 216, 0.28) 44%,
+    rgba(239, 229, 216, 0.44) 100%
+  );
 }
 
 /* Jeden kolor akcji na całej stronie */
@@ -633,13 +708,53 @@
 }
 
 .dn-karta {
+  position: relative;
+  isolation: isolate;
   scroll-margin-top: 108px;
   display: flex;
   flex-direction: column;
   border-radius: var(--karta-promien, 24px);
-  background: var(--w-karta);
-  border: 1px solid var(--w-linia);
+  background: var(
+    --w-szklo-tlo,
+    linear-gradient(145deg, rgba(255, 254, 252, 0.56) 0%, rgba(253, 249, 244, 0.34) 52%, rgba(255, 251, 246, 0.48) 100%)
+  );
+  backdrop-filter: var(--w-szklo-blur, blur(24px) saturate(155%));
+  -webkit-backdrop-filter: var(--w-szklo-blur, blur(24px) saturate(155%));
+  border: 1px solid var(--w-szklo-krawedz, rgba(255, 255, 255, 0.78));
+  box-shadow: var(
+    --w-szklo-cien,
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.94),
+    inset 1px 0 0 rgba(255, 255, 255, 0.62),
+    inset 0 -1px 0 rgba(188, 162, 138, 0.20),
+    0 22px 50px -22px rgba(24, 18, 12, 0.12)
+  );
   overflow: hidden;
+}
+
+.dn-karta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(
+    --w-szklo-blask,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.10) 36%, rgba(255, 255, 255, 0) 64%)
+  );
+}
+
+.dn-karta-tresc,
+.dn-karta-scena {
+  position: relative;
+  z-index: 1;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .dn-scena,
+  .dn-karta {
+    background: rgba(255, 252, 248, 0.94);
+  }
 }
 
 .dn-karta-tresc {
