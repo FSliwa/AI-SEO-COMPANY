@@ -77,6 +77,14 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
   const blokadaSzukania = (d.reguly || []).find((r) => r.id === 'boty_ai_zablokowane')?.odsetek ?? 0;
   const urlStrony = en ? `${BASE}/en/seo-errors-benchmark-report` : `${BASE}/raport-bledow-seo-w-polsce`;
 
+  const etykietyKat = en ? KAT_EN : KAT_PL;
+  const paryKat = Object.entries(d.kategorieSrednie || {})
+    .filter(([, v]) => typeof v === 'number')
+    .sort((a, b) => a[1] - b[1]);
+  const najslabszyFilar = paryKat.length > 0
+    ? { klucz: paryKat[0][0], nazwa: (etykietyKat[paryKat[0][0]] || paryKat[0][0]).toLowerCase(), wynik: paryKat[0][1] }
+    : { klucz: 'ai', nazwa: en ? 'ai readiness' : 'gotowość na ai', wynik: d.sredniaOcena ?? '-' };
+
   const cytat = en
     ? `According to the AI SEO COMPANY benchmark (${d.domen} unique domains audited between ${d.odDnia} and ${d.doDnia}), the median SEO score is ${d.medianaOceny}/100, and ${blokadaSzukania}% of websites block at least one AI search crawler in robots.txt. Source: ${urlStrony}`
     : `Według zestawienia AI SEO COMPANY (${d.domen} unikalnych domen przebadanych w okresie ${d.odDnia} - ${d.doDnia}) mediana oceny SEO wynosi ${d.medianaOceny}/100, a ${blokadaSzukania}% witryn blokuje w robots.txt co najmniej jednego bota wyszukiwania AI. Źródło: ${urlStrony}`;
@@ -111,7 +119,7 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
         },
         {
           question: 'Is this sample representative of the entire internet?',
-          answer: 'No. It is a self-selected sample of websites tested by business owners, marketers and developers in our free SEO audit tool (up to 25 crawled subpages per domain). Treat the percentages as a benchmark of actively audited SME websites rather than a random census of all registered domains.',
+          answer: 'No. It combines anonymous runs triggered by business owners, marketers and developers in our free SEO audit tool with our baseline empirical crawl of active Polish and European SME, B2B, SaaS, industrial and e-commerce websites (up to 25 subpages per domain, 1 domain = 1 latest vector). Treat the percentages as a practical benchmark of active commercial websites rather than a random census of all registered domains.',
         },
         {
           question: 'Can I cite these statistics in an article or report?',
@@ -129,7 +137,7 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
         },
         {
           question: 'Czy próba odzwierciedla wszystkie strony w polskim internecie?',
-          answer: 'Nie. To próba stron zgłaszanych dobrowolnie przez właścicieli firm, marketerów i programistów w darmowym audycie SEO (crawl do 25 podstron na domenę). Odsetki pokazują realny stan witryn małych i średnich firm sprawdzających swoje SEO, a nie losowy spis wszystkich aktywnych domen .pl.',
+          answer: 'Nie. Zbiór łączy zanonimizowane audyty uruchamiane przez właścicieli firm, marketerów i programistów w darmowym audycie SEO z bazowym skanem empirycznym aktywnych polskich i europejskich witryn MŚP, B2B, SaaS, przemysłowych oraz e-commerce (1 domena = 1 najnowszy wektor reguł). Odsetki pokazują realny stan działających stron firmowych, a nie losowy spis wszystkich zarejestrowanych domen.',
         },
         {
           question: 'Czy mogę zacytować te dane we własnym artykule lub publikacji?',
@@ -187,8 +195,8 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
           <AnswerBox {...(en ? { etykieta: 'Short answer' } : {})}>
             <p className={styles.tresc} style={{ margin: 0 }}>
               {en
-                ? `Across ${d.domen} unique websites audited in 2026, the median overall SEO score is ${d.medianaOceny}/100 (mean ${d.sredniaOcena}/100), mobile performance is the weakest pillar (${d.kategorieSrednie.wydajnosc}/100), and ${blokadaSzukania}% of sites block at least one AI search crawler (OAI-SearchBot, PerplexityBot or Claude-SearchBot) in robots.txt.`
-                : `W próbie ${d.domen} unikalnych witryn przebadanych w 2026 roku mediana ogólnej oceny SEO wynosi ${d.medianaOceny}/100 (średnia ${d.sredniaOcena}/100), najsłabszym filarem jest wydajność mobilna (${d.kategorieSrednie.wydajnosc}/100), a ${blokadaSzukania}% stron blokuje w pliku robots.txt co najmniej jednego bota wyszukiwania AI (OAI-SearchBot, PerplexityBot lub Claude-SearchBot).`}
+                ? `Across ${d.domen} unique websites audited in 2026, the median overall SEO score is ${d.medianaOceny}/100 (mean ${d.sredniaOcena}/100), the weakest pillar is ${najslabszyFilar.nazwa} (${najslabszyFilar.wynik}/100), and ${blokadaSzukania}% of sites block at least one AI search crawler (OAI-SearchBot, PerplexityBot or Claude-SearchBot) in robots.txt.`
+                : `W próbie ${d.domen} unikalnych witryn przebadanych w 2026 roku mediana ogólnej oceny SEO wynosi ${d.medianaOceny}/100 (średnia ${d.sredniaOcena}/100), najsłabszym filarem jest ${najslabszyFilar.nazwa} (${najslabszyFilar.wynik}/100), a ${blokadaSzukania}% stron blokuje w pliku robots.txt co najmniej jednego bota wyszukiwania AI (OAI-SearchBot, PerplexityBot lub Claude-SearchBot).`}
             </p>
           </AnswerBox>
 
@@ -196,7 +204,7 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
             {[
               { k: en ? 'Unique domains (N)' : 'Unikalne domeny (N)', v: String(d.domen) },
               { k: en ? 'Median SEO score' : 'Mediana oceny SEO', v: `${d.medianaOceny}/100` },
-              { k: en ? 'Avg. mobile performance' : 'Śr. wydajność mobilna', v: `${d.kategorieSrednie.wydajnosc ?? '-'}/100` },
+              { k: en ? 'Avg. AI readiness' : 'Śr. gotowość na AI', v: `${d.kategorieSrednie.ai ?? '-'}/100` },
               { k: en ? 'Sites blocking AI search' : 'Blokada wyszukiwania AI', v: `${blokadaSzukania}%` },
             ].map((x) => (
               <div key={x.k} style={{ background: '#ffffff', border: '1px solid rgba(15,23,42,0.1)', borderRadius: '16px', padding: '1rem 1.15rem' }}>
@@ -274,8 +282,8 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
             <h2 className={styles.h2}>{en ? 'Methodology and sample limitations' : 'Metodologia pomiaru i ograniczenia próby'}</h2>
             <p className={styles.tresc}>
               {en
-                ? 'Data comes from public runs of our free SEO audit tool at ai-seo-company.pl. For every checked site, AISEOCompanyAudit fetches robots.txt, sitemap.xml (up to 10 child sitemaps), /llms.txt, Google PageSpeed Insights (mobile + CrUX field metrics where available) and up to 25 internal HTML pages balanced across language folders and URL sections.'
-                : 'Dane pochodzą z uruchomień naszego darmowego audytu SEO na stronie ai-seo-company.pl. Dla każdej badanej witryny crawler AISEOCompanyAudit pobiera plik robots.txt, mapę sitemap.xml (do 10 map podrzędnych), plik /llms.txt, dane Google PageSpeed Insights (telefon oraz dane polowe CrUX, jeśli domena je posiada) i maksymalnie 25 podstron wewnętrznych zbalansowanych między sekcjami i wersjami językowymi.'}
+                ? 'Data combines public runs of our free SEO audit tool at ai-seo-company.pl with our baseline empirical crawl of active Polish and European commercial websites. For every checked site, AISEOCompanyAudit fetches robots.txt, sitemap.xml (up to 10 child sitemaps), /llms.txt, mobile PageSpeed Insights (where measured) and internal HTML pages balanced across language folders and URL sections.'
+                : 'Zestawienie łączy publiczne uruchomienia naszego darmowego audytu SEO na stronie ai-seo-company.pl z bazowym skanem empirycznym aktywnych polskich i europejskich witryn firmowych. Dla każdej badanej domeny crawler AISEOCompanyAudit pobiera plik robots.txt, mapę sitemap.xml (do 10 map podrzędnych), plik /llms.txt, dane mobilne PageSpeed Insights (gdy wykonywany jest pomiar laboratoryjny) oraz podstrony HTML zbalansowane między sekcjami i wersjami językowymi.'}
             </p>
             <p className={styles.tresc} style={{ marginBottom: 0 }}>
               {en
@@ -288,6 +296,10 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
               <Link href="/narzedzia/generator-llms-txt" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
                 {en ? 'llms.txt generator' : 'generatorze llms.txt'}
               </Link>
+              {en ? ', or explore all open datasets in our ' : ', a pozostałe opracowania zobaczysz w dziale '}
+              <Link href="/raporty-ai" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                {en ? 'AI & SEO Research Reports' : 'raporty i dane własne AI SEO COMPANY'}
+              </Link>
               .
             </p>
           </div>
@@ -297,7 +309,7 @@ export default async function RaportBledowStrona({ locale = 'pl' }) {
       <AppleFaq faqData={faq} title={en ? 'Frequently asked questions' : 'Najczęstsze pytania o raport'} sectionId="faq" />
 
       <div className="container" style={{ maxWidth: '860px', margin: '0 auto' }}>
-        <Zrodla zrodla={zrodla} naglowek={en ? 'Sources and documentation' : 'Źródła i dokumentacja'} id="zrodla" />
+        <Zrodla zrodla={zrodla} en={en} naglowek={en ? 'Sources and documentation' : 'Źródła i dokumentacja'} id="zrodla" />
       </div>
 
       <Contact isMainContent />

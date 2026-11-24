@@ -12,6 +12,7 @@ import { maWersjeDe } from '@/lib/stronyDe';
 import { WALID_DE } from '@/lib/walidacjaDe';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
+import { PRESETY_CMS_ROBOTS, dolaczRegulyCmsDoRobots } from '@/lib/narzedzia/presetyTechnologiczne';
 import { LinkWyniku, Ocena, PasekDemo, Postep, PrzykladAdresu } from './WspolneDe';
 import Zwin from '@/components/narzedzia/Zwin';
 import st from '@/components/narzedzia/narzedzia.module.css';
@@ -311,6 +312,8 @@ export function KiCrawlerClientDe() {
   const [adres, setAdres] = useState('');
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null, id: null });
   const [aktywnaPolityka, setAktywnaPolityka] = useState('rekomendowana');
+  const [aktywnyCms, setAktywnyCms] = useState('uniwersalny');
+  const [odznakaNofollow, setOdznakaNofollow] = useState(true);
   const [skopiowanoRobots, setSkopiowanoRobots] = useState(false);
   const [pobranoRobots, setPobranoRobots] = useState(false);
   const [skopiowanoOdznake, setSkopiowanoOdznake] = useState(false);
@@ -439,12 +442,14 @@ export function KiCrawlerClientDe() {
     otwarta: w?.politykiRobots?.otwarta || zapasPolityk.otwarta,
     zablokowana: w?.politykiRobots?.zablokowana || zapasPolityk.zablokowana,
   };
-  const tekstRobots = polityki[aktywnaPolityka] || polityki.rekomendowana;
+  const tekstRobotsBazowy = polityki[aktywnaPolityka] || polityki.rekomendowana;
+  const tekstRobots = dolaczRegulyCmsDoRobots(tekstRobotsBazowy, aktywnyCms, domena, 'de');
 
   const urlOdznakiSvg = domena ? `https://panel.ai-seo-company.pl/api/narzedzia/badge/ai-ready?domain=${encodeURIComponent(domena)}&lang=de` : '';
   const urlZwrotnyOdznaki = domena ? `https://www.ai-seo-company.pl/de/tools/ki-crawler-robots-txt-pruefen?url=${encodeURIComponent(domena)}` : '';
+  const relOdznaki = odznakaNofollow ? 'nofollow noopener' : 'noopener';
   const kodHtmlOdznaki = domena
-    ? `<a href="${urlZwrotnyOdznaki}" target="_blank" rel="noopener"><img src="${urlOdznakiSvg}" alt="${domena} - KI-Crawler Ready geprüft von AI SEO Company" width="248" height="32" /></a>`
+    ? `<a href="${urlZwrotnyOdznaki}" target="_blank" rel="${relOdznaki}"><img src="${urlOdznakiSvg}" alt="${domena} - KI-Crawler Ready geprüft von AI SEO Company" width="248" height="32" /></a>`
     : '';
 
   const potrzebnySsr = Boolean(w && (procentSsr < 75 || ssr.wykrytySzkieletSpa));
@@ -768,6 +773,27 @@ export function KiCrawlerClientDe() {
                 </button>
               </div>
 
+              <div style={{ marginTop: '0.65rem' }}>
+                <p className="narz-mikro" style={{ margin: '0 0 0.35rem', fontWeight: 600 }}>
+                  CMS- &amp; Shopsystem-Regeln für Ihr Crawl-Budget:
+                </p>
+                <div className="narz-filtry" role="group" aria-label="CMS-System auswählen">
+                  {PRESETY_CMS_ROBOTS.map((p) => (
+                    <button
+                      key={p.id}
+                      type="button"
+                      aria-pressed={aktywnyCms === p.id}
+                      onClick={() => {
+                        setAktywnyCms(p.id);
+                        setSkopiowanoRobots(false);
+                      }}
+                    >
+                      {p.de}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <pre className="rai-kod-okno" tabIndex={0} aria-label="robots.txt">
                 <code>{tekstRobots}</code>
               </pre>
@@ -828,6 +854,17 @@ export function KiCrawlerClientDe() {
                 <pre className={st.snippetKod} style={{ margin: 0 }}>
                   <code>{kodHtmlOdznaki}</code>
                 </pre>
+                <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.84rem', color: 'var(--w-tusz-2)', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={odznakaNofollow}
+                    onChange={(e) => {
+                      setOdznakaNofollow(e.target.checked);
+                      setSkopiowanoOdznake(false);
+                    }}
+                  />
+                  <span>rel=&quot;nofollow&quot; setzen (gemäß Google-Spamrichtlinien für eingebettete Widgets empfohlen)</span>
+                </label>
                 <div>
                   <button
                     type="button"

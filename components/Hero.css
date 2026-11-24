@@ -765,20 +765,44 @@ a.hn-karta--panel:hover {
   box-shadow: 0 0 0 3px #FFFCF8;
 }
 
-/* ---------- Układ desktopowy >= 1080 px ---------- */
-@media (min-width: 1080px) {
+/* ---------- Tablety pionowe 720 - 979 px (np. iPad 768x1024): wyśrodkowana kolumna tekstowa ---------- */
+@media (min-width: 720px) and (max-width: 979.98px) {
+  .hn-kol {
+    max-width: 660px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hn-eyebrow,
+  .hn-lead {
+    margin-inline: auto;
+  }
+
+  .hn-akcje {
+    justify-content: center;
+  }
+}
+
+/* ---------- Układ 2-kolumnowy >= 980 px (w tym 1024x768 iPad poziomo i laptopy) ---------- */
+@media (min-width: 980px) {
   .hn-wnetrze {
-    grid-template-columns: minmax(0, 0.84fr) minmax(560px, 1.16fr);
-    gap: clamp(32px, 4vw, 64px);
+    grid-template-columns: minmax(0, 0.88fr) minmax(470px, 1.12fr);
+    gap: clamp(24px, 3.2vw, 64px);
     padding-top: clamp(16px, 2.2vh, 32px);
   }
 
   .hn-scena {
-    min-height: clamp(500px, calc(100svh - 210px), 620px);
+    min-height: clamp(470px, calc(100svh - 210px), 620px);
   }
 
   .hn-d {
-    font-size: clamp(42px, 4.15vw, 62px);
+    font-size: clamp(38px, 4.1vw, 62px);
+  }
+}
+
+@media (min-width: 1160px) {
+  .hn-wnetrze {
+    grid-template-columns: minmax(0, 0.84fr) minmax(560px, 1.16fr);
   }
 }
 

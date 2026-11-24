@@ -305,6 +305,7 @@ export default function AudytSeoClientDe() {
   const [skopiowanoMd, setSkopiowanoMd] = useState(false);
   const [skopiowanoFix, setSkopiowanoFix] = useState(false);
   const [skopiowanoBadge, setSkopiowanoBadge] = useState(false);
+  const [badgeNofollow, setBadgeNofollow] = useState(true);
   const [bladObrazkaBadge, setBladObrazkaBadge] = useState(false);
   // Powrót do formularza: wynik najpierw się zwija (Zwin), dopiero potem stan wraca do pustego (anim-narzedzia-b).
   const [wychodzi, setWychodzi] = useState(false);
@@ -385,8 +386,9 @@ export default function AudytSeoClientDe() {
   const odblokowaneNarzedzia = Boolean(stan.pelny) || (stan.podglad?.zablokowane?.length === 0);
   const badgeUrl = w ? `${PANEL_API}/badge/seo-score?domain=${encodeURIComponent(w.domena)}&lang=de` : '';
   const stronaAudytuHref = 'https://www.ai-seo-company.pl/de/tools/seo-audit';
+  const relBadge = badgeNofollow ? 'nofollow noopener' : 'noopener';
   const kodHtmlBadge = w
-    ? `<a href="${stronaAudytuHref}?url=${encodeURIComponent(w.domena)}" target="_blank" rel="noopener"><img src="${badgeUrl}" alt="Verifiziertes SEO-Audit-Ergebnis ${w.wynik}/100 - ${w.domena}" width="236" height="32" /></a>`
+    ? `<a href="${stronaAudytuHref}?url=${encodeURIComponent(w.domena)}" target="_blank" rel="${relBadge}"><img src="${badgeUrl}" alt="Verifiziertes SEO-Audit-Ergebnis ${w.wynik}/100 - ${w.domena}" width="236" height="32" /></a>`
     : '';
   const niesprawdzoneLiczba = Number(w?.niesprawdzoneLiczba ?? stan.podglad?.niesprawdzoneLiczba ?? 0);
   const niesprawdzoneLista = Array.isArray(w?.niesprawdzone) ? w.niesprawdzone : (Array.isArray(stan.podglad?.niesprawdzone) ? stan.podglad.niesprawdzone : []);
@@ -752,6 +754,17 @@ export default function AudytSeoClientDe() {
                   {skopiowanoBadge ? 'Kopiert!' : 'Siegel-Code kopieren'}
                 </button>
               </div>
+              <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', marginTop: '0.45rem', fontSize: '0.82rem', color: 'var(--w-tusz-2)', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={badgeNofollow}
+                  onChange={(e) => {
+                    setBadgeNofollow(e.target.checked);
+                    setSkopiowanoBadge(false);
+                  }}
+                />
+                <span>rel=&quot;nofollow&quot; setzen (gemäß Google-Spamrichtlinien für eingebettete Widgets empfohlen)</span>
+              </label>
             </div>
           )}
 

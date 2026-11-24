@@ -42,6 +42,7 @@ export default function Footer() {
   const hrefZmianyAgencji = hrefStopki('/zmiana-agencji-seo');
   const hrefPorownan = hrefStopki('/porownania');
   const hrefNarzedzi = hrefStopki('/narzedzia');
+  const hrefRaportow = hrefStopki('/raporty-ai');
   const hrefWizytowki = hrefStopki('/pozycjonowanie-wizytowki-google');
   const hrefCopywritingu = hrefStopki('/copywriting-seo');
   const hrefLinkBuildingu = hrefStopki('/link-building');
@@ -180,6 +181,7 @@ export default function Footer() {
                 {hrefZmianyAgencji && <li><Link href={hrefZmianyAgencji}>{tr(lang, 'Zmiana agencji SEO', 'Switching SEO agencies')}</Link></li>}
                 {hrefPorownan && <li><Link href={hrefPorownan}>{tr(lang, 'Porównania', 'Comparisons')}</Link></li>}
                 {hrefNarzedzi && <li><Link href={hrefNarzedzi}>{tr(lang, 'Narzędzia', 'Free tools')}</Link></li>}
+                {hrefRaportow && <li><Link href={hrefRaportow}>{tr(lang, 'Raporty i dane', 'Research & Data')}</Link></li>}
                 {/* T1b (SA-05): stały link do drugiej wersji językowej - sekcja EN osiągalna z linków.
                     next/link z gotowym adresem ('/' albo '/en'): Link z next-intl z propem locale
                     dawał '/pl' (308). */}

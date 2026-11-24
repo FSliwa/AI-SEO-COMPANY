@@ -12,6 +12,7 @@ import { CENY } from '@/lib/narzedziaLiczby';
 import { hash } from '@/lib/anchors';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
+import { zbudujRegulePrzekierowan } from '@/lib/narzedzia/presetyTechnologiczne';
 import LinkWyniku, { PrzykladAdresu } from '@/components/narzedzia/LinkWyniku';
 import { Ocena, PasekDemo, Postep } from '@/components/narzedzia/Wspolne';
 import Zwin from '@/components/narzedzia/Zwin';
@@ -177,6 +178,9 @@ export function PrzekierowaniaHreflangClient() {
   const [adres, setAdres] = useState('');
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null, id: null, trybDemo: false });
   const [aktywnySerwer, setAktywnySerwer] = useState('nextjs');
+  const [celWww, setCelWww] = useState('www');
+  const [bezTrailingSlash, setBezTrailingSlash] = useState(true);
+  const [zmienionoPreset, setZmienionoPreset] = useState(false);
   const [skopiowanoKod, setSkopiowanoKod] = useState(false);
   const poleRef = useRef(null);
   const wynikRef = useRef(null);
@@ -301,7 +305,9 @@ export function PrzekierowaniaHreflangClient() {
     htaccess: w?.regulyNaprawcze?.htaccess || domyslneReguly.htaccess,
     cloudflare: w?.regulyNaprawcze?.cloudflare || domyslneReguly.cloudflare,
   };
-  const aktywnyKod = reguly[aktywnySerwer] || reguly.nextjs;
+  const aktywnyKod = zmienionoPreset
+    ? zbudujRegulePrzekierowan(domena, aktywnySerwer, celWww, bezTrailingSlash, en ? 'en' : 'pl')
+    : (reguly[aktywnySerwer] || zbudujRegulePrzekierowan(domena, aktywnySerwer, celWww, bezTrailingSlash, en ? 'en' : 'pl'));
   const kotwicaKontakt = hash('kontakt', en ? 'en' : 'pl');
 
   return (
@@ -604,6 +610,41 @@ export function PrzekierowaniaHreflangClient() {
                   ? 'Eliminate multi-hop http -> https -> www chains on your server or CDN to preserve 100% of backlink authority.'
                   : 'Wyeliminuj dwuskokowe przekierowania http -> https -> www na swoim serwerze lub w Cloudflare, aby nie tracić mocy linków przychodzących.'}
               </p>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', marginBottom: '0.6rem', alignItems: 'center' }}>
+                <div className="narz-filtry" role="group" aria-label={en ? 'Canonical host target' : 'Docelowy wariant hosta'}>
+                  <button
+                    type="button"
+                    aria-pressed={celWww === 'www'}
+                    onClick={() => { setCelWww('www'); setZmienionoPreset(true); setSkopiowanoKod(false); }}
+                  >
+                    https://www.{domena || 'twojafirma.pl'}
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={celWww === 'bez-www'}
+                    onClick={() => { setCelWww('bez-www'); setZmienionoPreset(true); setSkopiowanoKod(false); }}
+                  >
+                    https://{domena || 'twojafirma.pl'} ({en ? 'apex / non-www' : 'bez www'})
+                  </button>
+                </div>
+                <div className="narz-filtry" role="group" aria-label={en ? 'Trailing slash policy' : 'Końcowy ukośnik'}>
+                  <button
+                    type="button"
+                    aria-pressed={bezTrailingSlash}
+                    onClick={() => { setBezTrailingSlash(true); setZmienionoPreset(true); setSkopiowanoKod(false); }}
+                  >
+                    {en ? 'No trailing slash (/oferta)' : 'Bez końcowego / (/oferta)'}
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={!bezTrailingSlash}
+                    onClick={() => { setBezTrailingSlash(false); setZmienionoPreset(true); setSkopiowanoKod(false); }}
+                  >
+                    {en ? 'With trailing slash (/oferta/)' : 'Z końcowym / (/oferta/)'}
+                  </button>
+                </div>
+              </div>
 
               <div className="narz-filtry" role="group" aria-label={en ? 'Server platform' : 'Platforma serwerowa'}>
                 {[

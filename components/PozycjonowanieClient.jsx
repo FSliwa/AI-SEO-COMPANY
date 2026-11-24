@@ -213,7 +213,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 <p style={{ color: 'var(--w-tusz-2)', lineHeight: 1.65 }}>
                   {lang === 'pl'
                     ? 'Zapewniamy dogłębną analizę techniczną i ciągłe strategie podnoszące Twoje pozycje. Odkryj nasze kompleksowe usługi optymalizacji zaprojektowane dla zrównoważonego wzrostu. Jesteśmy agencją SEO dla B2B z panelem klienta, dedykowaną Twojemu długoterminowemu sukcesowi.'
-                    : <><>We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive services as an <strong>optimization agency</strong> and <strong>search engine optimisation agency</strong> for B2B, dedicated to your long-term sustainable growth.</></>}
+                    : <><>We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive services as an <strong>optimization agency</strong> and <strong>search engine optimisation agency</strong> for B2B, dedicated to your long-term sustainable growth. Explore our industry playbooks backed by real Search Console data: <Link href="/seo-dla-firm-budowlanych" style={{ textDecoration: 'underline' }}>SEO for construction companies</Link>, <Link href="/seo-dla-firm-produkcyjnych-b2b" style={{ textDecoration: 'underline' }}>manufacturing &amp; industrial SEO</Link>, <Link href="/seo-dla-restauracji-i-gastronomii" style={{ textDecoration: 'underline' }}>restaurant &amp; hospitality SEO</Link>, <Link href="/seo-dla-firm-szkoleniowych-i-iso" style={{ textDecoration: 'underline' }}>SEO for training &amp; ISO consultancies</Link>, plus our <Link href="/raport-bledow-seo-w-polsce" style={{ textDecoration: 'underline' }}>2026 technical SEO errors benchmark</Link>.</></>}
                 </p>
               </RevealItem>
             </RevealStagger>
@@ -254,8 +254,11 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 <p style={{ ...tekstSekcji, marginBottom: '1rem' }}>
                   Usługi SEO prowadzimy w dwóch modelach: dla firm B2B, które sprzedają w całej Polsce, i dla firm usługowych, które zdobywają klientów w swoim mieście. W drugim przypadku łączymy stronę z wizytówką Google, opiniami i Mapami. Ten zakres opisujemy osobno na stronie <Link href="/seo-lokalne-warszawa" style={linkSekcji}>SEO lokalne w Warszawie</Link> oraz regionalnie jako <Link href="/pozycjonowanie-stron-mazowsze" style={linkSekcji}>pozycjonowanie stron Mazowsze</Link>.
                 </p>
+                <p style={{ ...tekstSekcji, marginBottom: '1rem' }}>
+                  Optymalizację techniczną dopasowujemy do systemu zarządzania treścią klienta: prowadzimy dedykowane <Link href="/pozycjonowanie-wordpress" style={linkSekcji}>pozycjonowanie WordPress</Link> (odchudzanie wtyczek, naprawa LCP/INP i archiwów) oraz <Link href="/pozycjonowanie-webflow" style={linkSekcji}>pozycjonowanie Webflow</Link> (architektura kolekcji CMS i wielojęzyczny hreflang). Statystykę najczęstszych usterek technicznych publikujemy w żywym <Link href="/raport-bledow-seo-w-polsce" style={linkSekcji}>raporcie błędów SEO w Polsce</Link>.
+                </p>
                 <p style={{ ...tekstSekcji, marginBottom: 0 }}>
-                  Optymalizację techniczną dopasowujemy do systemu zarządzania treścią klienta: prowadzimy dedykowane <Link href="/pozycjonowanie-wordpress" style={linkSekcji}>pozycjonowanie WordPress</Link> (odchudzanie wtyczek, naprawa LCP/INP i archiwów) oraz <Link href="/pozycjonowanie-webflow" style={linkSekcji}>pozycjonowanie Webflow</Link> (architektura kolekcji CMS i wielojęzyczny hreflang).
+                  Dla sektorów, w których mamy zweryfikowane 90-dniowe dane z Google Search Console, przygotowaliśmy osobne strategie branżowe: <Link href="/seo-dla-firm-budowlanych" style={linkSekcji}>SEO dla firm budowlanych i instalacyjnych</Link>, <Link href="/seo-dla-firm-produkcyjnych-b2b" style={linkSekcji}>SEO dla firm produkcyjnych i przemysłu B2B</Link>, <Link href="/seo-dla-restauracji-i-gastronomii" style={linkSekcji}>SEO dla restauracji i gastronomii</Link> oraz <Link href="/seo-dla-firm-szkoleniowych-i-iso" style={linkSekcji}>SEO dla firm szkoleniowych i wdrożeń ISO</Link>.
                 </p>
               </div>
             </Reveal>

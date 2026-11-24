@@ -12,6 +12,7 @@ import { maWersjeDe } from '@/lib/stronyDe';
 import { WALID_DE } from '@/lib/walidacjaDe';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
+import { zbudujRegulePrzekierowan } from '@/lib/narzedzia/presetyTechnologiczne';
 import { LinkWyniku, Ocena, PasekDemo, Postep, PrzykladAdresu } from '@/components/de/narzedzia/WspolneDe';
 import Zwin from '@/components/narzedzia/Zwin';
 import { CSS_SPRINT2, skopiujTekst, wyczyscDomene } from '@/components/narzedzia/sprint2/wspolneSprint2';
@@ -159,6 +160,9 @@ export function PrzekierowaniaHreflangClientDe() {
   const [adres, setAdres] = useState('');
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null, id: null, trybDemo: false });
   const [aktywnySerwer, setAktywnySerwer] = useState('nextjs');
+  const [celWww, setCelWww] = useState('www');
+  const [bezTrailingSlash, setBezTrailingSlash] = useState(true);
+  const [zmienionoPreset, setZmienionoPreset] = useState(false);
   const [skopiowanoKod, setSkopiowanoKod] = useState(false);
   const poleRef = useRef(null);
   const wynikRef = useRef(null);
@@ -283,7 +287,9 @@ export function PrzekierowaniaHreflangClientDe() {
     htaccess: w?.regulyNaprawcze?.htaccess || domyslneReguly.htaccess,
     cloudflare: w?.regulyNaprawcze?.cloudflare || domyslneReguly.cloudflare,
   };
-  const aktywnyKod = reguly[aktywnySerwer] || reguly.nextjs;
+  const aktywnyKod = zmienionoPreset
+    ? zbudujRegulePrzekierowan(domena, aktywnySerwer, celWww, bezTrailingSlash, 'de')
+    : (reguly[aktywnySerwer] || zbudujRegulePrzekierowan(domena, aktywnySerwer, celWww, bezTrailingSlash, 'de'));
   const maWechselDe = maWersjeDe('/zmiana-agencji-seo');
 
   return (
@@ -536,6 +542,41 @@ export function PrzekierowaniaHreflangClientDe() {
               <p className="narz-mikro" style={{ marginBottom: '0.65rem' }}>
                 Beseitigen Sie mehrstufige http -&gt; https -&gt; www Ketten direkt auf Ihrem Webserver oder in Cloudflare.
               </p>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', marginBottom: '0.6rem', alignItems: 'center' }}>
+                <div className="narz-filtry" role="group" aria-label="Kanonische Zieldomain">
+                  <button
+                    type="button"
+                    aria-pressed={celWww === 'www'}
+                    onClick={() => { setCelWww('www'); setZmienionoPreset(true); setSkopiowanoKod(false); }}
+                  >
+                    https://www.{domena || 'ihre-firma.de'}
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={celWww === 'bez-www'}
+                    onClick={() => { setCelWww('bez-www'); setZmienionoPreset(true); setSkopiowanoKod(false); }}
+                  >
+                    https://{domena || 'ihre-firma.de'} (ohne www)
+                  </button>
+                </div>
+                <div className="narz-filtry" role="group" aria-label="Schrägstrich am Ende">
+                  <button
+                    type="button"
+                    aria-pressed={bezTrailingSlash}
+                    onClick={() => { setBezTrailingSlash(true); setZmienionoPreset(true); setSkopiowanoKod(false); }}
+                  >
+                    Ohne Schrägstrich (/angebot)
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={!bezTrailingSlash}
+                    onClick={() => { setBezTrailingSlash(false); setZmienionoPreset(true); setSkopiowanoKod(false); }}
+                  >
+                    Mit Schrägstrich (/angebot/)
+                  </button>
+                </div>
+              </div>
 
               <div className="narz-filtry" role="group" aria-label="Server-Plattform">
                 {[

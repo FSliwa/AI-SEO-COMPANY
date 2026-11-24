@@ -120,7 +120,16 @@ function kodWdrozeniaDe(zakladka, domena) {
     return `# Variante A (am schnellsten): beide Dateien in den Ordner public/ legen\ncp ~/Downloads/llms.txt ./public/llms.txt\ncp ~/Downloads/llms-full.txt ./public/llms-full.txt\n\n# Nach dem Deployment prüfen (HTTP 200 und text/plain erforderlich):\ncurl -I https://${hostCzysty}/llms.txt`;
   }
   if (zakladka === 'wordpress') {
-    return `# 1. Per SFTP / Hosting-Dateimanager mit dem WordPress-Stammverzeichnis verbinden (neben wp-config.php)\n# 2. llms.txt (und optional llms-full.txt) direkt hochladen nach:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Direktaufruf ohne Weiterleitung prüfen:\nhttps://${hostCzysty}/llms.txt`;
+    return `# 1. Per SFTP / Hosting-Dateimanager mit dem WordPress- / WooCommerce-Stammverzeichnis verbinden (neben wp-config.php)\n# 2. llms.txt (und optional llms-full.txt) direkt hochladen nach:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Direktaufruf ohne Weiterleitung prüfen:\nhttps://${hostCzysty}/llms.txt`;
+  }
+  if (zakladka === 'shopify') {
+    return `# Shopify erlaubt keine eigenen Dateien im Stammverzeichnis - Lösung über Content -> Files:\n# 1. Shopify Admin -> Content -> Files -> llms.txt hochladen und CDN-Link kopieren\n# 2. Online Store -> Navigation -> URL Redirects -> Weiterleitung anlegen:\n#    Von: /llms.txt  ->  Ziel: https://cdn.shopify.com/s/files/.../llms.txt\n# (Oder per Cloudflare Worker direkt mit Status 200 text/plain unter /llms.txt ausliefern)`;
+  }
+  if (zakladka === 'webflow') {
+    return `# Webflow: Bereitstellung über Assets + Weiterleitung (oder Cloudflare Worker):\n# 1. Webflow Designer -> Assets -> llms.txt hochladen und Asset-URL kopieren\n# 2. Site Settings -> Publishing -> 301 Redirects:\n#    Old Path: /llms.txt  ->  Redirect to Path: <Asset-URL>\n# 3. Website veröffentlichen und prüfen: https://${hostCzysty}/llms.txt`;
+  }
+  if (zakladka === 'prestashop') {
+    return `# PrestaShop: per SFTP direkt in das Shop-Hauptverzeichnis (neben robots.txt und index.php) legen:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# Antwortcode 200 text/plain prüfen:\ncurl -I https://${hostCzysty}/llms.txt`;
   }
   return `# Nginx: /llms.txt und /llms-full.txt als UTF-8-Klartext ausliefern\nlocation ~ ^/llms(-full)?\\.txt$ {\n  default_type "text/plain; charset=utf-8";\n  add_header Cache-Control "public, max-age=3600";\n  try_files $uri =404;\n}\n\n# Cloudflare WAF: bei aktivem Bot Fight Mode eine Custom Rule anlegen:\n# URI Path in {"/llms.txt" "/llms-full.txt"} -> Action: Skip (Managed Challenge)`;
 }
@@ -473,8 +482,11 @@ export default function LlmsTxtClientDe({ hrefSprawdzarki = null, hrefAudytu = n
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                   <div className="narz-filtry" role="group" aria-label="Plattform" style={{ margin: 0 }}>
                     {[
-                      ['nextjs', 'Next.js (App Router)'],
-                      ['wordpress', 'WordPress / SFTP'],
+                      ['nextjs', 'Next.js / Vercel'],
+                      ['wordpress', 'WordPress / WooCommerce'],
+                      ['shopify', 'Shopify'],
+                      ['webflow', 'Webflow'],
+                      ['prestashop', 'PrestaShop'],
                       ['nginx', 'Cloudflare / Nginx'],
                     ].map(([klucz, etykietaZakl]) => (
                       <button

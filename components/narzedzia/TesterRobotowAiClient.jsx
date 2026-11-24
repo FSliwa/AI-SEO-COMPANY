@@ -12,6 +12,7 @@ import { CENY } from '@/lib/narzedziaLiczby';
 import { hash } from '@/lib/anchors';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
+import { PRESETY_CMS_ROBOTS, dolaczRegulyCmsDoRobots } from '@/lib/narzedzia/presetyTechnologiczne';
 import LinkWyniku, { PrzykladAdresu } from './LinkWyniku';
 import { Ocena, PasekDemo, Postep } from './Wspolne';
 import Zwin from './Zwin';
@@ -320,6 +321,8 @@ export function TesterRobotowAiClient() {
   const [adres, setAdres] = useState('');
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null, id: null });
   const [aktywnaPolityka, setAktywnaPolityka] = useState('rekomendowana');
+  const [aktywnyCms, setAktywnyCms] = useState('uniwersalny');
+  const [odznakaNofollow, setOdznakaNofollow] = useState(true);
   const [skopiowanoRobots, setSkopiowanoRobots] = useState(false);
   const [pobranoRobots, setPobranoRobots] = useState(false);
   const [skopiowanoOdznake, setSkopiowanoOdznake] = useState(false);
@@ -448,7 +451,8 @@ export function TesterRobotowAiClient() {
     otwarta: w?.politykiRobots?.otwarta || zapasPolityk.otwarta,
     zablokowana: w?.politykiRobots?.zablokowana || zapasPolityk.zablokowana,
   };
-  const tekstRobots = polityki[aktywnaPolityka] || polityki.rekomendowana;
+  const tekstRobotsBazowy = polityki[aktywnaPolityka] || polityki.rekomendowana;
+  const tekstRobots = dolaczRegulyCmsDoRobots(tekstRobotsBazowy, aktywnyCms, domena, en ? 'en' : 'pl');
 
   const urlOdznakiSvg = domena ? `https://panel.ai-seo-company.pl/api/narzedzia/badge/ai-ready?domain=${encodeURIComponent(domena)}` : '';
   const urlZwrotnyOdznaki = domena
@@ -456,8 +460,9 @@ export function TesterRobotowAiClient() {
       ? `https://www.ai-seo-company.pl/en/tools/ai-crawler-robots-txt-checker?url=${encodeURIComponent(domena)}`
       : `https://www.ai-seo-company.pl/narzedzia/tester-robotow-ai-robots-txt?url=${encodeURIComponent(domena)}`)
     : '';
+  const relOdznaki = odznakaNofollow ? 'nofollow noopener' : 'noopener';
   const kodHtmlOdznaki = domena
-    ? `<a href="${urlZwrotnyOdznaki}" target="_blank" rel="noopener"><img src="${urlOdznakiSvg}" alt="${en ? `${domena} - AI Crawler Ready verified by AI SEO Company` : `${domena} - dostępna dla robotów AI (weryfikacja AI SEO Company)`}" width="248" height="32" /></a>`
+    ? `<a href="${urlZwrotnyOdznaki}" target="_blank" rel="${relOdznaki}"><img src="${urlOdznakiSvg}" alt="${en ? `${domena} - AI Crawler Ready verified by AI SEO Company` : `${domena} - dostępna dla robotów AI (weryfikacja AI SEO Company)`}" width="248" height="32" /></a>`
     : '';
 
   const potrzebnySsr = Boolean(w && (procentSsr < 75 || ssr.wykrytySzkieletSpa));
@@ -833,6 +838,27 @@ export function TesterRobotowAiClient() {
                 </button>
               </div>
 
+              <div style={{ marginTop: '0.65rem' }}>
+                <p className="narz-mikro" style={{ margin: '0 0 0.35rem', fontWeight: 600 }}>
+                  {en ? 'CMS / Tech-Stack Crawl Budget Rules:' : 'Reguły ochrony crawl budgetu dla Twojego CMS / silnika:'}
+                </p>
+                <div className="narz-filtry" role="group" aria-label={en ? 'CMS tech stack preset' : 'Preset systemu CMS'}>
+                  {PRESETY_CMS_ROBOTS.map((p) => (
+                    <button
+                      key={p.id}
+                      type="button"
+                      aria-pressed={aktywnyCms === p.id}
+                      onClick={() => {
+                        setAktywnyCms(p.id);
+                        setSkopiowanoRobots(false);
+                      }}
+                    >
+                      {en ? p.en : p.pl}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <pre className="rai-kod-okno" tabIndex={0} aria-label="robots.txt">
                 <code>{tekstRobots}</code>
               </pre>
@@ -900,6 +926,21 @@ export function TesterRobotowAiClient() {
                 <pre className={st.snippetKod} style={{ margin: 0 }}>
                   <code>{kodHtmlOdznaki}</code>
                 </pre>
+                <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.84rem', color: 'var(--w-tusz-2)', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={odznakaNofollow}
+                    onChange={(e) => {
+                      setOdznakaNofollow(e.target.checked);
+                      setSkopiowanoOdznake(false);
+                    }}
+                  />
+                  <span>
+                    {en
+                      ? 'Include rel="nofollow" (recommended by Google Spam Policies for embedded widgets)'
+                      : 'Dodaj atrybut rel="nofollow" (zalecane przez zasady Google dla osadzanych widżetów)'}
+                  </span>
+                </label>
                 <div>
                   <button
                     type="button"

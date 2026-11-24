@@ -60,6 +60,22 @@ const ENTSCHEIDUNGEN_DE = {
     frage: 'Ahrefs oder Semrush abonnieren - oder reichen kostenlose SEO-Tools (Search Console, Bing & unsere Prüfer)?',
     kurz: 'Aktuelle USD-Tarife, Credit-Limits, Linkdatenbanken und wann B2B-Unternehmen Lizenzkosten lieber direkt in die Umsetzung investieren.',
   },
+  'sistrix-vs-ahrefs-vs-seobility': {
+    frage: 'Sistrix, Ahrefs oder Seobility für SEO-Monitoring und Technik-Audits im DACH-Raum?',
+    kurz: 'DACH-Sichtbarkeitsindex vs. weltweiter Backlink-Crawler vs. Nürnberger On-Page-Suite inklusive 24-Monats-Lizenzrechnung.',
+  },
+  'senuto-vs-semstorm-vs-ahrefs': {
+    frage: 'Welches SEO-Tool eignet sich für den Markteintritt in Polen und Mittelosteuropa: Senuto, Semstorm oder Ahrefs?',
+    kurz: 'Polnische Wortbeugung (Flexion), lokale Saisonalität, polnische AI Overviews und Backlink-Abgleich im direkten Kostenvergleich.',
+  },
+  'nextjs-vs-astro-vs-webflow-seo': {
+    frage: 'Next.js, Astro oder Webflow für eine schnelle, mehrsprachige B2B-Website?',
+    kurz: 'App-Router-SSR vs. Zero-JS-Islands vs. SaaS-CDN: mobiler INP, interaktive Rechner, hreflang-Zusatzkosten und Code-Eigentum.',
+  },
+  'chatgpt-search-vs-perplexity-vs-ai-overviews': {
+    frage: 'Worin unterscheiden sich ChatGPT Search, Perplexity und Google AI Overviews bei der Quellenauswahl?',
+    kurz: 'Bing- vs. Google-Index, OAI-SearchBot & PerplexityBot, IndexNow-Geschwindigkeit, lokale Kartenquellen und Messung in GA4.',
+  },
 };
 
 const CTA_DE = {
@@ -126,7 +142,7 @@ export default function VergleicheHubDe() {
         <h1 lang="de" style={{ fontSize: 'clamp(2.15rem, 5vw, 3.35rem)', lineHeight: 1.08, fontWeight: 500, letterSpacing: '-0.04em', margin: '0.5rem 0 1rem', color: 'var(--w-tusz)' }}>
           {wpis.h1}
         </h1>
-        <BylineDe stand="2026-11-22" style={{ margin: '0 0 1rem' }} />
+        <BylineDe stand="2026-11-24" style={{ margin: '0 0 1rem' }} />
         <p lang="de" style={{ margin: 0, fontSize: '1.15rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', maxWidth: '760px' }}>
           {lista.length === 10 ? 'Zehn' : lista.length} fundierte Vergleiche für Geschäftsführer und Marketing-Verantwortliche im DACH-Raum: mit transparenten Kriterien, Euro-Kalkulationen über 24 Monate, Messdaten aus Google Search Console sowie klaren Quellenangaben.
         </p>

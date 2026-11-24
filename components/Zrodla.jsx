@@ -24,12 +24,18 @@ export default function Zrodla({ zrodla, id = 'zrodla', naglowek, en = false }) 
         {naglowek}
       </h2>
       <ol style={{ margin: 0, paddingLeft: '1.25rem', display: 'grid', gap: '0.5rem', fontSize: '0.92rem', lineHeight: 1.55, color: 'var(--color-text-main)' }}>
-        {zrodla.map((z) => (
-          <li key={z.url}>
-            <a href={z.url} rel="noopener" style={{ color: 'var(--color-primary)', textDecoration: 'underline', overflowWrap: 'anywhere' }}>{z.nazwa}</a>
-            {z.data && (en ? <> (accessed {dataOdczytu(z.data, true)})</> : <> (odczyt: {dataOdczytu(z.data)})</>)}
-          </li>
-        ))}
+        {zrodla.map((z) => {
+          const etykieta = z.nazwa || z.tytul;
+          const kiedy = z.data || z.dopisek;
+          return (
+            <li key={z.url}>
+              <a href={z.url} rel="noopener" style={{ color: 'var(--color-primary)', textDecoration: 'underline', overflowWrap: 'anywhere' }}>{etykieta}</a>
+              {kiedy && (z.data
+                ? (en ? <> (accessed {dataOdczytu(z.data, true)})</> : <> (odczyt: {dataOdczytu(z.data)})</>)
+                : <> ({z.dopisek})</>)}
+            </li>
+          );
+        })}
       </ol>
     </section>
   );

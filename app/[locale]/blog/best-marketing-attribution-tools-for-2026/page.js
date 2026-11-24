@@ -20,6 +20,7 @@ import Contact from '@/components/Contact';
 import ArticleTOC from '@/components/ArticleTOC';
 import AnswerBox from '@/components/AnswerBox';
 import Byline from '@/components/Byline';
+import CompareTable from '@/components/CompareTable';
 import BlogCTA from '@/components/BlogCTA';
 import { Link } from '@/i18n/routing';
 
@@ -292,11 +293,43 @@ export default async function ArticleAttributionTools({ params }) {
                 <li><strong>Budget for implementation:</strong> The software cost is often only half the equation; reserve time and budget for proper onboarding and engineering support.</li>
               </ul>
 
-              <h2 id="data">How to choose: audit your data before you pick an attribution tool</h2>
-              <p>Most decisions go wrong when teams evaluate tools before auditing their own data. Fix UTMs and CRM mapping first, learn how to measure marketing attribution properly, then select from the best marketing attribution tools and top marketing attribution software available.</p>
+              <h2 id="data">How to choose: audit your data, Consent Mode v2, and AI search referrals first</h2>
+              <p>Most attribution projects fail before software is even connected because UTMs, server-side events, and CRM lifecycle stages do not match. In 2026, two blind spots distort attribution numbers across almost every B2B and e-commerce stack: <strong>EU Consent Mode v2 signal loss</strong> (when 30-55% of visitors reject marketing cookies) and <strong>zero-click AI search referrals</strong> (when buyers discover a vendor inside ChatGPT, Perplexity, or Google AI Overviews and then type the brand name directly into Google).</p>
 
-              <h2 id="partner">When hiring an attribution implementation partner makes more sense than going it alone</h2>
-              <p>We do not resell or implement attribution platforms. If you want to start with a data audit, the <Link href="/audyt-seo">SEO audit service</Link> (from €350 net, included in every SEO package) is the right first step.</p>
+              <CompareTable
+                id="attribution-2026-readiness"
+                caption="2026 Attribution Readiness: Consent Mode v2, Server-Side GTM & AI Search Tracking"
+                columns={[
+                  { key: 'layer', label: 'Measurement Layer' },
+                  { key: 'risk', label: 'What breaks without it in 2026' },
+                  { key: 'fix', label: 'Recommended technical setup' },
+                ]}
+                rows={[
+                  {
+                    id: 'consent-v2',
+                    layer: 'Google Consent Mode v2 + Server-Side GTM',
+                    risk: '30-55% of EU/UK conversions vanish from GA4 and Google Ads or get misattributed to Direct traffic',
+                    fix: 'Deploy cookieless behavioral pings only where legally permitted, gate Enhanced Conversions on marketing_storage=granted, and deduplicate browser + server event_id',
+                  },
+                  {
+                    id: 'ai-referrals',
+                    layer: 'AI Search & LLM Referral Grouping (ChatGPT, Perplexity, Claude, Gemini)',
+                    risk: 'High-intent visits from chatgpt.com and perplexity.ai land inside Unassigned or Referral buckets without pipeline credit',
+                    fix: 'Create a dedicated AI Search channel group in GA4 matching chatgpt.com, perplexity.ai, claude.ai and gemini.google.com, paired with a "How did you hear about us?" form field',
+                  },
+                  {
+                    id: 'crm-offline',
+                    layer: 'Offline CRM Stage Sync (SQL / Closed-Won)',
+                    risk: 'Ad platforms optimize toward cheap spam leads instead of qualified B2B pipeline',
+                    fix: 'Capture gclid / utm_source + landing page on first session and push qualified SQL / Closed-Won revenue back from HubSpot, Pipedrive or Salesforce',
+                  },
+                ]}
+              />
+
+              <p>Before paying $750-$2,200/month for multi-touch attribution software, verify that your <Link href="/narzedzia/audyt-seo">free technical SEO &amp; AI readiness audit</Link> passes with clean canonicals, working redirects (so 301/308 hops never strip UTM or <code>gclid</code> parameters), and verified <Link href="/sprawdz-widocznosc-w-ai">AI brand visibility</Link>.</p>
+
+              <h2 id="partner">When hiring an attribution and search analytics partner makes more sense</h2>
+              <p>We do not resell attribution licenses or take software affiliate commissions, so our recommendations stay vendor-neutral. When B2B companies come to us with broken GA4 numbers or rising acquisition costs, the root cause is usually missing GTM event deduplication, unsegmented AI search referrals, or unmeasured organic landing pages. Starting with our <Link href="/audyt-seo">technical SEO &amp; analytics audit</Link> (from €350 net, or included in every monthly <Link href="/cennik-pozycjonowania">SEO &amp; GEO retainer</Link> and <Link href="/pozycjonowanie-w-ai">AI search optimization</Link> plan) gives your team a clean event taxonomy before committing to an annual software contract.</p>
 
               <h2 id="sources">Useful sources for deeper reading</h2>
               <ul>

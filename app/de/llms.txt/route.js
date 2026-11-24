@@ -11,6 +11,7 @@ export const dynamic = 'force-static';
 const ABSCHNITTE = [
   ['Leistungen', ['de-uslugi']],
   ['KI-Sichtbarkeit und GEO', ['de-geo']],
+  ['Vergleiche und Entscheidungshilfen', ['de-porownania']],
   ['Kostenlose Tools und Vorlagen', ['de-narzedzia']],
   ['Ratgeber', ['de-blog']],
   ['Rechtliches', ['de-prawne']],

@@ -90,8 +90,9 @@ jobs:
 
 - **[AI SEO COMPANY](https://www.ai-seo-company.pl/)** - B2B SEO & Generative Engine Optimization (GEO) agency.
 - **[Free llms.txt Generator](https://www.ai-seo-company.pl/en/tools/llms-txt-generator)** - Build `/llms.txt` automatically from your `sitemap.xml`.
-- **[AI Crawler & robots.txt Live Tester](https://www.ai-seo-company.pl/en/tools/ai-crawler-robots-txt-checker)** - Test HTTP status, SSR HTML, and `robots.txt` for 10 AI bots.
-- **[5-Engine AI Brand Visibility Checker](https://www.ai-seo-company.pl/en/ai-visibility-check)** - Check if ChatGPT, Gemini, Perplexity, Claude, and Google AI Overviews recommend your company.
+- **[AI Crawler & robots.txt Live Tester](https://www.ai-seo-company.pl/en/tools/ai-crawler-robots-txt-checker)** - Test HTTP status, SSR HTML, and `robots.txt` for 15 AI bots.
+- **[6-Engine AI Brand Visibility Checker](https://www.ai-seo-company.pl/en/ai-visibility-check)** - Check if ChatGPT, Gemini, Perplexity, Claude, Grok, and Google AI Overviews recommend your company.
+- **[2026 Technical SEO & AI Bot Benchmark Report](https://www.ai-seo-company.pl/en/seo-errors-benchmark-report)** - Empirical 49-rule dataset across 149+ commercial domains (CC BY 4.0).
 
 ## License
 

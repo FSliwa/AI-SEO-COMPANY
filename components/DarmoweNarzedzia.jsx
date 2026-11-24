@@ -95,6 +95,9 @@ export default function DarmoweNarzedzia({ locale = 'pl' }) {
                   <span>{n.nazwa}</span>
                 </a>
               ))}
+              <NextLink href={dane.hubHref} prefetch={false} className="dn-skrot" data-cta="home_tools_top_hub">
+                <span>{locale === 'de' ? 'Alle 13 Tools →' : locale === 'en' ? 'All 13 tools →' : 'Wszystkie 13 narzędzi →'}</span>
+              </NextLink>
             </nav>
           </header>
 

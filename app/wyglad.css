@@ -4412,6 +4412,19 @@ body:has(.kalk-akcja) .cookie-manage-trigger {
   bottom: 4.75rem !important;
 }
 
+@media (min-width: 901px) {
+  .cookie-manage-trigger {
+    opacity: 0.72;
+    min-height: 36px !important;
+    padding: 0.28rem 0.68rem !important;
+    font-size: 0.74rem !important;
+  }
+  .cookie-manage-trigger:hover,
+  .cookie-manage-trigger:focus-visible {
+    opacity: 1;
+  }
+}
+
 .gory-klienci-pas {
   position: relative;
   background: linear-gradient(180deg, rgb(245, 238, 233) 0%, var(--w-papier) 100%);

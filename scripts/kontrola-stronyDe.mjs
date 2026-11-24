@@ -5,12 +5,12 @@ const { STRONY_DE } = await import('../lib/stronyDe.js');
 let bledy = 0;
 const e = (m) => { console.log('BŁĄD', m); bledy++; };
 const klucze = Object.keys(STRONY_DE);
-if (klucze.length !== 71) e(`stron: ${klucze.length}, oczekiwano 71`);
+if (klucze.length !== 79) e(`stron: ${klucze.length}, oczekiwano 79`);
 if (process.argv.includes('--publikacja')) for (const [k, w] of Object.entries(STRONY_DE)) if (w.gotowa !== true) e(`${k}: gotowa !== true (nie publikować)`);
 for (const [k, w] of Object.entries(STRONY_DE)) {
   if (w.tytul.length > 60) e(`${k}: title ${w.tytul.length} znaków`);
   if (w.opis.length < 120 || w.opis.length > 158) e(`${k}: opis ${w.opis.length} znaków`);
-  for (const f of ['tytul', 'h1', 'opis']) if (w[f].includes('—') || w[f].includes('–')) e(`${k}: pauza długa w ${f}`);
+  for (const f of ['tytul', 'h1', 'opis']) if (w[f].includes('\u2014') || w[f].includes('\u2013')) e(`${k}: pauza długa w ${f}`);
   console.log(`${k.padEnd(45)} title ${String(w.tytul.length).padStart(2)}  opis ${String(w.opis.length).padStart(3)}`);
 }
 console.log(bledy ? `BŁĘDY: ${bledy}` : 'OK');

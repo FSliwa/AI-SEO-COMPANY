@@ -147,8 +147,23 @@ function kodWdrozenia(zakladka, domena, en) {
   }
   if (zakladka === 'wordpress') {
     return en
-      ? `# 1. Connect via SFTP / cPanel File Manager to your WordPress root (next to wp-config.php)\n# 2. Upload llms.txt (and optionally llms-full.txt) to:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Verify direct access without redirects:\nhttps://${hostCzysty}/llms.txt`
-      : `# 1. Połącz się przez SFTP / menedżer plików hostingu z katalogiem głównym WordPressa (obok wp-config.php)\n# 2. Wgraj llms.txt (oraz opcjonalnie llms-full.txt) bezpośrednio do:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Otwórz w przeglądarce i upewnij się, że odpowiada bez przekierowania:\nhttps://${hostCzysty}/llms.txt`;
+      ? `# 1. Connect via SFTP / cPanel File Manager to your WordPress / WooCommerce root (next to wp-config.php)\n# 2. Upload llms.txt (and optionally llms-full.txt) to:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Verify direct access without redirects:\nhttps://${hostCzysty}/llms.txt`
+      : `# 1. Połącz się przez SFTP / menedżer plików hostingu z katalogiem głównym WordPress / WooCommerce (obok wp-config.php)\n# 2. Wgraj llms.txt (oraz opcjonalnie llms-full.txt) bezpośrednio do:\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# 3. Otwórz w przeglądarce i upewnij się, że odpowiada bez przekierowania:\nhttps://${hostCzysty}/llms.txt`;
+  }
+  if (zakladka === 'shopify') {
+    return en
+      ? `# Shopify does not allow raw files at root, so use Content -> Files + URL Redirect:\n# 1. Admin -> Content -> Files -> Upload llms.txt (copy its cdn.shopify.com URL)\n# 2. Online Store -> Navigation -> View URL Redirects -> Create URL redirect:\n#    Redirect from: /llms.txt\n#    Redirect to:   https://cdn.shopify.com/s/files/.../llms.txt\n# (Or proxy /llms.txt via Cloudflare Worker for a direct HTTP 200 without 301)`
+      : `# Shopify blokuje wgrywanie plików bezpośrednio do katalogu głównego - użyj Content -> Files:\n# 1. Panel Shopify -> Content -> Files -> wgraj pobrany plik llms.txt i skopiuj adres CDN\n# 2. Online Store -> Navigation -> URL Redirects -> utwórz przekierowanie:\n#    Z adresu: /llms.txt\n#    Na adres: https://cdn.shopify.com/s/files/.../llms.txt\n# (Alternatywnie: Cloudflare Worker na domenie zwracający kod 200 text/plain pod /llms.txt)`;
+  }
+  if (zakladka === 'webflow') {
+    return en
+      ? `# Webflow: host via Assets + 301 Redirect (or Cloudflare Worker):\n# 1. Webflow Designer -> Assets -> upload llms.txt and copy the Asset URL\n# 2. Site Settings -> Publishing -> 301 Redirects:\n#    Old Path: /llms.txt  ->  Redirect to Path: <Asset URL>\n# 3. Publish site and test: https://${hostCzysty}/llms.txt`
+      : `# Webflow: publikacja przez panel Assets + przekierowanie (lub Cloudflare Worker):\n# 1. Webflow Designer -> Assets -> wgraj plik llms.txt i skopiuj link zasobu\n# 2. Site Settings -> Publishing -> 301 Redirects:\n#    Old Path: /llms.txt  ->  Redirect to Path: <link z Assets>\n# 3. Opublikuj witrynę i przetestuj: https://${hostCzysty}/llms.txt`;
+  }
+  if (zakladka === 'prestashop') {
+    return en
+      ? `# PrestaShop: upload via SFTP to your store root directory (next to robots.txt & index.php):\n/var/www/prestashop/llms.txt\n/var/www/prestashop/llms-full.txt\n\n# Verify HTTP 200 plain-text response:\ncurl -I https://${hostCzysty}/llms.txt`
+      : `# PrestaShop: wgraj pliki przez SFTP do katalogu głównego sklepu (obok robots.txt i index.php):\n/public_html/llms.txt\n/public_html/llms-full.txt\n\n# Sprawdź odpowiedź HTTP 200 text/plain:\ncurl -I https://${hostCzysty}/llms.txt`;
   }
   return en
     ? `# Nginx: serve /llms.txt and /llms-full.txt as UTF-8 plain text\nlocation ~ ^/llms(-full)?\\.txt$ {\n  default_type "text/plain; charset=utf-8";\n  add_header Cache-Control "public, max-age=3600";\n  try_files $uri =404;\n}\n\n# Cloudflare WAF: if Bot Fight Mode is active, create a Custom Rule:\n# URI Path in {"/llms.txt" "/llms-full.txt"} -> Action: Skip (Managed Challenge)`
@@ -558,8 +573,11 @@ export default function LlmsTxtClient({ hrefSprawdzarki = null, hrefAudytu }) {
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                   <div className="narz-filtry" role="group" aria-label={en ? 'Platform' : 'Platforma'} style={{ margin: 0 }}>
                     {[
-                      ['nextjs', 'Next.js (App Router)'],
-                      ['wordpress', 'WordPress / SFTP'],
+                      ['nextjs', 'Next.js / Vercel'],
+                      ['wordpress', 'WordPress / WooCommerce'],
+                      ['shopify', 'Shopify'],
+                      ['webflow', 'Webflow'],
+                      ['prestashop', 'PrestaShop'],
                       ['nginx', 'Cloudflare / Nginx'],
                     ].map(([klucz, etykietaZakl]) => (
                       <button

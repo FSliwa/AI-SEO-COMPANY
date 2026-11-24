@@ -33,7 +33,14 @@ export default function SeoFuerUnternehmenDe() {
           <Absatz>Dieselben Grundlagen entscheiden, ob ChatGPT oder die KI-Antworten in Google Ihr Unternehmen nennen: Die Modelle stellen ihre Antworten aus Seiten zusammen, die gut ranken und Fragen klar beantworten. Deshalb verbinden wir SEO in Google mit der Messung der Sichtbarkeit in KI-Antworten. {maWersjeDe('/pozycjonowanie-w-ai') ? <>Umfang und Preise beschreiben wir auf der Seite <Link href="/pozycjonowanie-w-ai" style={LINK}>Generative Engine Optimization (GEO)</Link>.</> : null}</Absatz>
           <Unterueberschrift>SEO-Leistungen für B2B, CMS-Systeme und lokale Unternehmen</Unterueberschrift>
           <Absatz>Je nach bestehendem System setzen wir direkt im Code oder im CMS an: neben individuell programmierten Next.js-Seiten betreuen wir spezialisiert {maWersjeDe('/pozycjonowanie-wordpress') ? <Link href="/pozycjonowanie-wordpress" style={LINK}>WordPress SEO für Unternehmen</Link> : 'WordPress SEO'} (Plugin-Bereinigung, Ladezeit und Archiv-Indexierung) sowie {maWersjeDe('/pozycjonowanie-webflow') ? <Link href="/pozycjonowanie-webflow" style={LINK}>Webflow SEO für B2B &amp; SaaS</Link> : 'Webflow SEO'} (CMS-Kollektionen und sauberer hreflang).</Absatz>
-          <Absatz style={{ marginBottom: 0 }}>Wir arbeiten in zwei Modellen: für B2B-Unternehmen, die überregional verkaufen, und für Dienstleister, die ihre Kunden in der eigenen Stadt gewinnen. Im zweiten Fall verbinden wir die Website mit dem Google Unternehmensprofil, Bewertungen und Maps. {maWersjeDe('/cennik-pozycjonowania') ? <>Pakete und Preise finden Sie unter <Link href="/cennik-pozycjonowania" style={LINK}>SEO Kosten</Link>.</> : null}</Absatz>
+          <Absatz>Wir arbeiten in zwei Modellen: für B2B-Unternehmen, die überregional verkaufen, und für Dienstleister, die ihre Kunden in der eigenen Stadt gewinnen. Im zweiten Fall verbinden wir die Website mit dem Google Unternehmensprofil, Bewertungen und Maps. {maWersjeDe('/cennik-pozycjonowania') ? <>Pakete und Preise finden Sie unter <Link href="/cennik-pozycjonowania" style={LINK}>SEO Kosten</Link>.</> : null}</Absatz>
+          <Absatz style={{ marginBottom: 0 }}>
+            Für vier Branchen mit verifizierten 90-Tage-Messreihen aus der Google Search Console dokumentieren wir unsere Vorgehensweise im Detail:{' '}
+            {maWersjeDe('/seo-dla-firm-budowlanych') && <><Link href="/seo-dla-firm-budowlanych" style={LINK}>SEO für Bauunternehmen &amp; Handwerk</Link>, </>}
+            {maWersjeDe('/seo-dla-firm-produkcyjnych-b2b') && <><Link href="/seo-dla-firm-produkcyjnych-b2b" style={LINK}>Industrie-SEO für Hersteller &amp; CNC</Link>, </>}
+            {maWersjeDe('/seo-dla-restauracji-i-gastronomii') && <><Link href="/seo-dla-restauracji-i-gastronomii" style={LINK}>SEO für Restaurants &amp; Gastronomie</Link> sowie </>}
+            {maWersjeDe('/seo-dla-firm-szkoleniowych-i-iso') && <><Link href="/seo-dla-firm-szkoleniowych-i-iso" style={LINK}>SEO für Schulungsanbieter &amp; ISO-Beratung</Link>.</>}
+          </Absatz>
         </Abschnitt>
 
         <Referenzen ids={['staniax', 'tql']} titel="B2B SEO in der Praxis" />

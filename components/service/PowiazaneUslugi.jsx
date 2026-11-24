@@ -55,6 +55,22 @@ const USLUGI = {
     pl: ['pozycjonowanie stron Mazowsze', 'widoczność w Google i Mapach dla firm z Warszawy i całego województwa mazowieckiego'],
     en: ['local SEO in Mazovia', 'Google Search and Maps visibility for companies across Warsaw and the Mazovia region'],
   },
+  '/seo-dla-firm-budowlanych': {
+    pl: ['SEO dla firm budowlanych i instalacyjnych', 'zapytania inwestorów z Google, Map i AI poparte wynikiem STEF-BUD (9 071 wyśw.)'],
+    en: ['SEO for construction companies', 'contractor leads from Google, Maps and AI backed by STEF-BUD Search Console data'],
+  },
+  '/seo-dla-firm-produkcyjnych-b2b': {
+    pl: ['SEO dla firm produkcyjnych i przemysłu B2B', 'katalogi parametrów CNC/ISO i eksport PL-DACH poparte wynikiem STANIAX w GSC'],
+    en: ['manufacturing & industrial B2B SEO', 'technical specification SEO and DACH export backed by STANIAX Search Console data'],
+  },
+  '/seo-dla-restauracji-i-gastronomii': {
+    pl: ['SEO dla restauracji i gastronomii', 'rezerwacje z Map Google i AI bez prowizji portali - studium MADAME THAI (58 618 wyśw.)'],
+    en: ['restaurant & hospitality SEO', 'commission-free Google Maps and AI bookings - MADAME THAI case (58,618 impressions)'],
+  },
+  '/seo-dla-firm-szkoleniowych-i-iso': {
+    pl: ['SEO dla firm szkoleniowych i wdrożeń ISO', 'nabór na szkolenia B2B i doradztwo z wynikiem TQL (wzrost z 2 do 29 kliknięć/tydz.)'],
+    en: ['SEO for training & ISO consultancies', 'B2B training enrollments and ISO leads backed by TQL Search Console growth (14.5x)'],
+  },
 };
 
 export default function PowiazaneUslugi({ locale = 'pl', bez, items = [], tytul }) {

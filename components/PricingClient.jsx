@@ -238,7 +238,7 @@ export default function PricingClient() {
     border: '1px solid var(--w-linia)',
     borderRadius: '24px',
     boxShadow: 'none',
-    padding: 'clamp(1.75rem, 4.5vw, 3rem)',
+    padding: 'clamp(1.05rem, 4.5vw, 3rem)',
   };
 
   const h2Styl = {
@@ -671,7 +671,7 @@ export default function PricingClient() {
                 </h3>
                 {/* Do potwierdzenia przez Filipa (OP-01): czy te trzy dane wystarczają do wyceny. */}
                 <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)' }}>
-                  Do wyceny pozycjonowania wystarczą adres strony, lista usług albo kategorii, które chcesz promować, i obszar działania: miasto, region albo cała Polska. Na tej podstawie dobieramy pakiet i liczbę fraz. Jeśli strona ma problemy techniczne, zaczynamy od <Link href="/audyt-seo" style={{ textDecoration: 'underline' }}>audytu SEO</Link>, który w każdym pakiecie jest w cenie.
+                  Do wyceny pozycjonowania wystarczą adres strony, lista usług albo kategorii, które chcesz promować, i obszar działania: miasto (np. <Link href="/seo-lokalne-warszawa" style={{ textDecoration: 'underline' }}>SEO lokalne Warszawa</Link>), region albo cała Polska. Na tej podstawie dobieramy pakiet i liczbę fraz. Jeśli strona ma problemy techniczne, zaczynamy od <Link href="/audyt-seo" style={{ textDecoration: 'underline' }}>audytu SEO</Link>, który w każdym pakiecie jest w cenie (wstępny skan wykonasz też od ręki w <Link href="/narzedzia/audyt-seo" style={{ textDecoration: 'underline' }}>darmowym audycie SEO</Link>).
                 </p>
               </div>
             </Reveal>

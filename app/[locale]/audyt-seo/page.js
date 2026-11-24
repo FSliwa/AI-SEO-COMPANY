@@ -107,7 +107,7 @@ const faqAudyt = [
     id: 'audyt-seo-a-widocznosc-w-ai',
     tylkoPl: true,
     question: 'Czy audyt SEO obejmuje widoczność w ChatGPT i AI?',
-    answer: `Klasyczny audyt SEO sprawdza widoczność w Google. Widoczność w ChatGPT, Gemini i Perplexity badamy osobno w <a href="${HREF_AUDYT_AI}" style="text-decoration:underline">audycie widoczności w AI</a> za 990 zł netto: 30 pytań w 4 źródłach, 5 konkurentów polecanych przez modele i 10 rekomendacji. Koszt tego audytu zaliczamy na pierwszy miesiąc abonamentu.`,
+    answer: `Klasyczny audyt SEO sprawdza widoczność w Google (szybki podgląd do 25 podstron uruchomisz w <a href="/narzedzia/audyt-seo" style="text-decoration:underline">darmowym audycie SEO online</a>, a statystykę najczęstszych usterek zobaczysz w <a href="/raport-bledow-seo-w-polsce" style="text-decoration:underline">raporcie błędów SEO w Polsce</a>). Widoczność w ChatGPT, Gemini i Perplexity badamy osobno w <a href="${HREF_AUDYT_AI}" style="text-decoration:underline">audycie widoczności w AI</a> za 990 zł netto: 30 pytań w 4 źródłach, 5 konkurentów polecanych przez modele i 10 rekomendacji (zobacz też poradnik <a href="/pozycjonowanie-w-ai/chatgpt" style="text-decoration:underline">jak pojawić się w ChatGPT</a>). Koszt tego audytu zaliczamy na pierwszy miesiąc abonamentu.`,
   },
   {
     id: 'na-czym-polega-audyt-seo',

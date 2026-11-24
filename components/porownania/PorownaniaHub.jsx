@@ -101,19 +101,19 @@ const GRUPY_SKROTOW = [
     klucz: 'kanaly',
     pl: 'SEO, GEO i Ads',
     en: 'SEO, GEO & Ads',
-    slugi: ['seo-vs-geo', 'seo-czy-google-ads'],
+    slugi: ['seo-vs-geo', 'seo-czy-google-ads', 'chatgpt-search-vs-perplexity-vs-ai-overviews'],
   },
   {
     klucz: 'cms',
-    pl: 'CMS i kod',
-    en: 'CMS & code',
-    slugi: ['nextjs-vs-wordpress-seo', 'webflow-vs-wordpress-seo', 'strona-kodowana-czy-kreator-seo'],
+    pl: 'CMS, e-commerce i kod',
+    en: 'CMS, e-commerce & code',
+    slugi: ['nextjs-vs-wordpress-seo', 'nextjs-vs-astro-vs-webflow-seo', 'webflow-vs-wordpress-seo', 'shopify-vs-woocommerce-seo', 'strona-kodowana-czy-kreator-seo'],
   },
   {
     klucz: 'metryki',
-    pl: 'Metryki i pliki AI',
-    en: 'Metrics & AI files',
-    slugi: ['ahrefs-dr-vs-moz-da-vs-common-crawl', 'llms-txt-vs-robots-txt-vs-sitemap-xml'],
+    pl: 'Narzędzia, metryki i pliki AI',
+    en: 'Tools, metrics & AI files',
+    slugi: ['ahrefs-vs-semrush-narzedzia-seo', 'sistrix-vs-ahrefs-vs-seobility', 'senuto-vs-semstorm-vs-ahrefs', 'ahrefs-dr-vs-moz-da-vs-common-crawl', 'llms-txt-vs-robots-txt-vs-sitemap-xml'],
   },
 ];
 

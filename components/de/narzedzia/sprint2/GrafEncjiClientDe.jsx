@@ -12,6 +12,7 @@ import { maWersjeDe } from '@/lib/stronyDe';
 import { WALID_DE } from '@/lib/walidacjaDe';
 import { track, PRESELECT_PLAN_EVENT } from '@/lib/track';
 import { useParametrUrl, zapiszParametry } from '@/lib/narzedzia/parametrUrl';
+import { PRESETY_BRANZ_JSONLD, zbudujGrafBranzowyJsonLd } from '@/lib/narzedzia/presetyTechnologiczne';
 import { LinkWyniku, Ocena, PasekDemo, Postep, PrzykladAdresu } from '@/components/de/narzedzia/WspolneDe';
 import Zwin from '@/components/narzedzia/Zwin';
 import { CSS_SPRINT2, pobierzPlikTekstowy, skopiujTekst, wyczyscDomene } from '@/components/narzedzia/sprint2/wspolneSprint2';
@@ -252,6 +253,7 @@ export function GrafEncjiClientDe() {
   const [adres, setAdres] = useState('');
   const [stan, setStan] = useState({ status: 'idle', blad: null, wynik: null, id: null, trybDemo: false });
   const [aktywnyWezel, setAktywnyWezel] = useState(0);
+  const [aktywnaBranza, setAktywnaBranza] = useState('auto');
   const [zTagiemScript, setZTagiemScript] = useState(true);
   const [skopiowanoJson, setSkopiowanoJson] = useState(false);
   const poleRef = useRef(null);
@@ -376,10 +378,13 @@ export function GrafEncjiClientDe() {
 
   const surowyJson = useMemo(() => {
     if (!w) return '';
+    if (aktywnaBranza !== 'auto') {
+      return zbudujGrafBranzowyJsonLd(domena, aktywnaBranza, 'de');
+    }
     if (typeof w.wygenerowanyJsonLd === 'string' && w.wygenerowanyJsonLd.trim()) return w.wygenerowanyJsonLd.trim();
     if (w.wygenerowanyJsonLd && typeof w.wygenerowanyJsonLd === 'object') return JSON.stringify(w.wygenerowanyJsonLd, null, 2);
     return domyslnySzablonJsonLdDe(domena);
-  }, [w, domena]);
+  }, [w, domena, aktywnaBranza]);
 
   const gotowyKodDoKopiowania = zTagiemScript
     ? `<script type="application/ld+json">\n${surowyJson}\n</script>`
@@ -633,6 +638,31 @@ export function GrafEncjiClientDe() {
                   <button type="button" aria-pressed={!zTagiemScript} onClick={() => setZTagiemScript(false)}>
                     Reines JSON
                   </button>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '0.65rem', marginBottom: '0.45rem' }}>
+                <p className="narz-mikro" style={{ margin: '0 0 0.35rem', fontWeight: 600 }}>
+                  Branchen-Vorlage für Schema.org @graph:
+                </p>
+                <div className="narz-filtry" role="group" aria-label="Branchenvorlage auswählen">
+                  <button
+                    type="button"
+                    aria-pressed={aktywnaBranza === 'auto'}
+                    onClick={() => { setAktywnaBranza('auto'); setSkopiowanoJson(false); }}
+                  >
+                    Aus geprüfter Domain
+                  </button>
+                  {PRESETY_BRANZ_JSONLD.map((b) => (
+                    <button
+                      key={b.id}
+                      type="button"
+                      aria-pressed={aktywnaBranza === b.id}
+                      onClick={() => { setAktywnaBranza(b.id); setSkopiowanoJson(false); }}
+                    >
+                      {b.de}
+                    </button>
+                  ))}
                 </div>
               </div>
 
