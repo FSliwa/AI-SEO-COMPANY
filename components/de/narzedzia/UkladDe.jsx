@@ -60,8 +60,8 @@ export function WeitereToolsDe({ bez }) {
   const karty = Object.entries(KARTY_DE).filter(([href]) => href !== bez && maWersjeDe(href));
   if (!karty.length) return null;
   return (
-    <section aria-labelledby="weitere-tools" className={`${st.sekcja} ${st.sekcjaKarta}`} style={{ ...s.sekcja, ...s.karta }}>
-      <h2 id="weitere-tools" className={st.h2} style={{ ...s.h2, marginBottom: '1rem' }}>Weitere kostenlose Tools</h2>
+    <section aria-labelledby="weitere-tools" className={st.sekcja} style={s.sekcja}>
+      <h2 id="weitere-tools" className={st.h2} style={{ ...s.h2, marginBottom: '1.25rem' }}>Weitere kostenlose Tools</h2>
       <ul className={st.siatka}>
         {karty.map(([href, k]) => (
           <li key={href}>

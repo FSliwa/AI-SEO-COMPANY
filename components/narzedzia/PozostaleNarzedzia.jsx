@@ -58,8 +58,8 @@ export default function PozostaleNarzedzia({ bez, locale = 'pl', tytul }) {
   if (!linki.length && !hub) return null;
   const id = en ? 'more-tools' : 'inne-narzedzia';
   return (
-    <section aria-labelledby={id} className={`${st.sekcja} ${st.sekcjaKarta}`} style={{ ...s.sekcja, ...s.karta }}>
-      <h2 id={id} className={st.h2} style={{ ...s.h2, marginBottom: '1rem' }}>{tytul ?? (en ? 'More free tools' : 'Inne darmowe narzędzia')}</h2>
+    <section aria-labelledby={id} className={st.sekcja} style={s.sekcja}>
+      <h2 id={id} className={st.h2} style={{ ...s.h2, marginBottom: '1.25rem' }}>{tytul ?? (en ? 'More free tools' : 'Inne darmowe narzędzia')}</h2>
       <ul className={st.siatka}>
         {linki.map((n) => (
           <li key={n.href}>

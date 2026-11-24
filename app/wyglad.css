@@ -306,12 +306,14 @@ samp,
 .w-szklo-otoczenie::before {
   content: '';
   position: absolute;
-  inset: -24px 0;
+  inset: -36px 0;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(46% 52% at 22% 38%, rgba(216, 90, 48, 0.11) 0%, rgba(251, 230, 218, 0.36) 46%, rgba(253, 249, 244, 0) 78%),
-    radial-gradient(48% 54% at 78% 62%, rgba(235, 214, 190, 0.50) 0%, rgba(243, 183, 156, 0.22) 48%, rgba(253, 249, 244, 0) 80%);
+    radial-gradient(38% 42% at 28% 36%, rgba(216, 90, 48, 0.10) 0%, rgba(251, 230, 218, 0.32) 44%, rgba(253, 249, 244, 0) 76%),
+    radial-gradient(40% 44% at 72% 64%, rgba(235, 214, 190, 0.46) 0%, rgba(243, 183, 156, 0.20) 46%, rgba(253, 249, 244, 0) 76%);
+  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 38%, rgba(0, 0, 0, 0.54) 68%, rgba(0, 0, 0, 0.14) 85%, transparent 98%);
+  mask-image: radial-gradient(50% 50% at 50% 50%, #000 38%, rgba(0, 0, 0, 0.54) 68%, rgba(0, 0, 0, 0.14) 85%, transparent 98%);
 }
 
 .w-tafla-szklo {
@@ -4962,17 +4964,19 @@ main section :is(h3)[style*="font-size"]:not(.hero *):not(.pricing-card *):not(.
 }
 
 /* W09: Powiazane uslugi: wzorzec Warm Editorial Liquid Glass jak "Inne darmowe narzedzia" */
-.powiazane { position: relative; isolation: isolate; padding-block: var(--w-sekcja-pion); }
+.powiazane { position: relative; isolation: isolate; overflow-x: clip; padding-block: var(--w-sekcja-pion); }
 .powiazane-kontener { position: relative; isolation: isolate; max-width: 1100px; margin-inline: auto; }
 .powiazane-kontener::before {
   content: '';
   position: absolute;
-  inset: -1.5rem -1.5rem;
+  inset: -3.25rem -3.5rem;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(46% 48% at 24% 32%, rgba(216, 90, 48, 0.09) 0%, rgba(251, 230, 218, 0.34) 46%, rgba(253, 249, 244, 0) 78%),
-    radial-gradient(48% 50% at 76% 68%, rgba(235, 214, 190, 0.48) 0%, rgba(243, 183, 156, 0.22) 48%, rgba(253, 249, 244, 0) 80%);
+    radial-gradient(38% 38% at 28% 34%, rgba(216, 90, 48, 0.085) 0%, rgba(251, 230, 218, 0.30) 44%, rgba(253, 249, 244, 0) 76%),
+    radial-gradient(40% 40% at 72% 66%, rgba(235, 214, 190, 0.44) 0%, rgba(243, 183, 156, 0.20) 46%, rgba(253, 249, 244, 0) 76%);
+  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 36%, rgba(0, 0, 0, 0.54) 66%, rgba(0, 0, 0, 0.14) 84%, transparent 98%);
+  mask-image: radial-gradient(50% 50% at 50% 50%, #000 36%, rgba(0, 0, 0, 0.54) 66%, rgba(0, 0, 0, 0.14) 84%, transparent 98%);
 }
 .powiazane-h2 {
   font-size: var(--w-h2-sub);

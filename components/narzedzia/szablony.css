@@ -172,10 +172,15 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 /* Powiązane: lista linków jako siatka kart Warm Liquid Glass */
 .sz-powiazane { position: relative; isolation: isolate; list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); font-size: 0.95rem; line-height: 1.5; color: var(--w-tusz-2); }
 .sz-powiazane::before {
-  content: ''; position: absolute; inset: -1rem -1.25rem; z-index: -1; pointer-events: none;
+  content: ''; position: absolute; inset: -3rem -3rem; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(46% 48% at 24% 32%, rgba(216, 90, 48, 0.09) 0%, rgba(251, 230, 218, 0.34) 46%, rgba(253, 249, 244, 0) 78%),
-    radial-gradient(48% 50% at 76% 68%, rgba(235, 214, 190, 0.48) 0%, rgba(243, 183, 156, 0.22) 48%, rgba(253, 249, 244, 0) 80%);
+    radial-gradient(38% 36% at 30% 32%, rgba(216, 90, 48, 0.085) 0%, rgba(251, 230, 218, 0.30) 44%, rgba(253, 249, 244, 0) 76%),
+    radial-gradient(40% 38% at 70% 66%, rgba(235, 214, 190, 0.44) 0%, rgba(243, 183, 156, 0.20) 46%, rgba(253, 249, 244, 0) 76%);
+  -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 36%, rgba(0, 0, 0, 0.54) 66%, rgba(0, 0, 0, 0.14) 84%, transparent 98%);
+  mask-image: radial-gradient(50% 50% at 50% 50%, #000 36%, rgba(0, 0, 0, 0.54) 66%, rgba(0, 0, 0, 0.14) 84%, transparent 98%);
+}
+@media (max-width: 767px) {
+  .sz-powiazane::before { inset: -2rem -0.75rem; }
 }
 .sz-powiazane > li {
   position: relative; isolation: isolate; padding: 1.1rem 3rem 1.1rem 1.25rem; border: 1px solid var(--w-szklo-krawedz); border-radius: 20px;
