@@ -45,13 +45,13 @@ Gotowy pakiet tekstów „kopiuj-wklej” (PL / EN / DE) do budowania sygnałów
 - **Product Name**: `AI SEO COMPANY - Free GEO & Technical SEO Suite`
 - **Website URL**: `https://www.ai-seo-company.pl/en/tools`
 - **Open-Source CLI URL**: `https://www.ai-seo-company.pl/en/tools/llms-txt-generator`
-- **Tagline (59 znaków)**: `Free 5-engine AI visibility, CrUX & llms.txt audit tools`
+- **Tagline (59 znaków)**: `Free 13-tool AI visibility, CrUX & llms.txt audit suite`
 - **Topics**: `SEO`, `Artificial Intelligence`, `Developer Tools`, `Marketing`, `Open Source`
 
 ### Short Description (255 znaków - kopiuj-wklej)
 
 ```text
-8 free, no-signup SEO and Generative Engine Optimization (GEO) tools: check brand citations across ChatGPT, Gemini, Perplexity, Claude & AI Overviews, run a 49-rule CrUX technical audit, test 10 AI crawlers in robots.txt, and validate /llms.txt via CLI.
+13 free, no-signup SEO and Generative Engine Optimization (GEO) tools: check brand citations across ChatGPT, Gemini, Perplexity, Claude & AI Overviews, run a 49-rule CrUX audit, test 15 AI crawlers in robots.txt, and validate /llms.txt via CLI.
 ```
 
 ### Maker's First Comment (kopiuj-wklej)
@@ -355,17 +355,18 @@ Dzień dobry [Imię Redaktora / Redakcjo],
 
 coraz więcej decydentów B2B przed wysłaniem zapytania ofertowego prosi ChatGPT, Perplexity lub Google AI Overviews o krótką listę sprawdzonych dostawców. Problem w tym, że znaczna część polskich stron firmowych jest dla crawlerów wyszukiwawczych AI technicznie nieczytelna - często bez wiedzy właścicieli.
 
-W warszawskiej agencji AI SEO COMPANY zbudowaliśmy otwarty, 49-punktowy silnik audytowy połączony z 28-dniowymi danymi terenowymi Chrome UX Report (CrUX) oraz testerem 10 robotów AI (m.in. OAI-SearchBot, PerplexityBot, Claude-SearchBot). Zestawiliśmy najczęstsze błędy techniczne, które powtarzają się w audytach stron MŚP i B2B:
+W warszawskiej agencji AI SEO COMPANY przebadaliśmy naszym otwartym, 49-punktowym silnikiem audytowym próbę N = 149 aktywnych stron komercyjnych (MŚP, B2B, SaaS i e-commerce z Polski oraz regionu DACH/UE; mediana wyniku 90/100, licencja danych CC BY 4.0). Twarde liczby z raportu pokazują powtarzalne wąskie gardła techniczne:
 
-1. Mylenie botów treningowych z wyszukiwawczymi w robots.txt i zaporach WAF - firmy hurtowo blokują wszystkie boty AI (w tym OAI-SearchBot i PerplexityBot odpowiadające za cytowanie źródeł z linkiem), zamiast oddzielić ochronę przed trenowaniem modeli (GPTBot / Google-Extended) od widoczności w wyszukiwaniu.
-2. Puste powłoki JavaScript (Client-Side Rendering) - podczas gdy Googlebot renderuje JS w drugiej fali, lżejsze crawlery AI pobierają wyłącznie surowy HTML z serwera i widzą pusty znacznik <div id="root"></div> zamiast oferty i cennika.
-3. Rozjazd danych rejestrowych i brak sygnałów encji (Schema.org Organization + spójność KRS/NIP/adresów + plik /llms.txt) - przez co modele językowe nie potrafią jednoznacznie powiązać marki z kategorią usług i miastem.
-4. Przeciążone kreatory i motywy oblewające próg INP <= 200 ms oraz LCP <= 2,5 s na urządzeniach mobilnych w realnych danych użytkowników Chrome (CrUX).
+1. 59,1% badanych witryn nie posiada pliku /llms.txt ułatwiającego modelom językowym mapowanie oferty i dokumentacji, a część firm w robots.txt i zaporach WAF myli boty treningowe (GPTBot / Google-Extended) z wyszukiwawczymi (OAI-SearchBot, PerplexityBot, Claude-SearchBot), odcinając się od cytowań z linkiem.
+2. 83,9% stron pomija jawne wymiary obrazów (width/height), powodując przesunięcia układu (CLS), a 59,7% ma czas odpowiedzi serwera TTFB powyżej 1 sekundy.
+3. 65,8% przekracza limit długości tytułu <title> (> 60 znaków, ucinanie w SERP), a 45,6% nie posiada poprawnych opisów meta description na kluczowych podstronach.
+4. Puste powłoki JavaScript (Client-Side Rendering) i rozjazd danych encji (Schema.org @graph + KRS/NIP) sprawiają, że lżejsze crawlery AI widzą pusty znacznik <div id="root"></div> zamiast oferty i cennika.
 
-Wszystkie opisane zjawiska i metodologię opublikowaliśmy bez paywalla i bez bramek e-mailowych:
-- Pełna metodologia i zestawienie błędów: https://www.ai-seo-company.pl/narzedzia/raport-seo
-- Otwarty tester 10 robotów AI i SSR HTML: https://www.ai-seo-company.pl/narzedzia/tester-robotow-ai-robots-txt
-- Darmowy pakiet narzędzi diagnostycznych (w tym open-source CLI `llms-txt-check`): https://www.ai-seo-company.pl/narzedzia
+Pełne dane z próby N = 149 oraz otwarte narzędzia opublikowaliśmy na licencji CC BY 4.0 (bez paywalla i bez bramek e-mailowych):
+- Raport badawczy (N = 149 domen, tabele błędów i metodologia): https://www.ai-seo-company.pl/raport-bledow-seo-w-polsce
+- Wersja anglojęzyczna raportu (CC BY 4.0): https://www.ai-seo-company.pl/en/seo-errors-benchmark-report
+- Otwarty tester 15 robotów AI, presetów CMS i SSR HTML: https://www.ai-seo-company.pl/narzedzia/tester-robotow-ai-robots-txt
+- Pakiet 13 darmowych narzędzi SEO/GEO + open-source CLI `llms-txt-check`: https://www.ai-seo-company.pl/narzedzia
 
 Chętnie przygotuję dla Państwa redakcji:
 - ekskluzywny komentarz ekspercki (bez lokowania oferty sprzedażowej - czyste wnioski inżynieryjne i checklista dla właścicieli firm), lub

@@ -1445,21 +1445,29 @@ section#contact.contact {
   color: var(--w-pomarancz-gleboki) !important;
 }
 
-/* --- Kontakt (components/Contact.jsx - takze na podstronach) --- */
+/* --- Kontakt (components/Contact.jsx - pelnej szerokosci naturalne pasmo gorskie nad stopka, bez anteny i fal) --- */
 .contact {
   background-color: var(--w-noc) !important;
-  background-image: url('/images/wyglad/antena-linie-v3-640.webp') !important;
-  /* 21.11.2026: v3 bez fali poziomej i ze zwartymi falami pionowymi, bez nachodzenia na treść */
-  background-image: image-set(url('/images/wyglad/antena-linie-v3-640.avif') 1x type('image/avif'), url('/images/wyglad/antena-linie-v3-1280.avif') 2x type('image/avif'), url('/images/wyglad/antena-linie-v3-640.webp') 1x type('image/webp'), url('/images/wyglad/antena-linie-v3-1280.webp') 2x type('image/webp')) !important;
+  background-image: url('/images/wyglad/gory-stopka-linie-v1-1440.webp') !important;
+  background-image: image-set(
+    url('/images/wyglad/gory-stopka-linie-v1-1440.avif') 1x type('image/avif'),
+    url('/images/wyglad/gory-stopka-linie-v1-2880.avif') 2x type('image/avif'),
+    url('/images/wyglad/gory-stopka-linie-v1-1440.webp') 1x type('image/webp'),
+    url('/images/wyglad/gory-stopka-linie-v1-2880.webp') 2x type('image/webp')
+  ) !important;
   background-repeat: no-repeat !important;
-  background-size: min(38vw, 500px) auto !important;
-  background-position: left -2.5vw bottom 0 !important;
+  background-size: 100% auto !important;
+  background-position: center bottom !important;
   color: #FFFFFF;
 }
 
 @media (min-width: 992.02px) {
-  .contact-info {
-    padding-bottom: clamp(152px, 14.5vw, 188px);
+  .contact,
+  aside#kontakt.contact,
+  section#kontakt.contact,
+  aside#contact.contact,
+  section#contact.contact {
+    padding-bottom: calc(clamp(48px, 4.2vw, 72px) + 9vw) !important;
   }
 }
 
@@ -2891,16 +2899,16 @@ main:has(.article-content) {
   filter: grayscale(1) sepia(0.35) saturate(1.5) hue-rotate(-12deg) contrast(1.05);
 }
 
-/* Telefon i tablet (1 kolumna <= 992px): antena kreskowa w kontakcie czysto pod formularzem */
+/* Telefon i tablet (1 kolumna <= 992px): pelnej szerokosci pasmo gorskie pod formularzem nad stopka */
 @media (max-width: 992px) {
   .contact,
   aside#kontakt.contact,
   section#kontakt.contact,
   aside#contact.contact,
   section#contact.contact {
-    background-size: min(82vw, 460px) auto !important;
+    background-size: max(100%, 960px) auto !important;
     background-position: center bottom !important;
-    padding-bottom: calc(var(--w-sekcja) + min(42vw, 240px)) !important;
+    padding-bottom: calc(52px + max(9vw, 88px)) !important;
   }
 }
 

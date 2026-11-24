@@ -124,7 +124,6 @@ export default function DarmoweNarzedzia({ locale = 'pl' }) {
                     </NextLink>
                   </div>
                   <p className="dn-zaufanie">
-                    <span className="dn-zaufanie-kropka" aria-hidden="true" />
                     {dane.bezRejestracji} · {n.statusWejscia}
                   </p>
 
@@ -182,7 +181,6 @@ export default function DarmoweNarzedzia({ locale = 'pl' }) {
                     </NextLink>
                   </div>
                   <p className="dn-zaufanie">
-                    <span className="dn-zaufanie-kropka" aria-hidden="true" />
                     {dane.bezRejestracji} · {n.statusWejscia}
                   </p>
                 </div>
