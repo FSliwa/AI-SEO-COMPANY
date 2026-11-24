@@ -137,6 +137,11 @@ export default function GeoSeiteDe() {
             ) : (
               <a href="#kontakt" className="btn btn-primary" data-cta="geo_offer_audit">{KOPF.ctaAudit}</a>
             )}
+            {maWersjeDe('/pozycjonowanie-w-ai/cennik') && (
+              <Link href="/pozycjonowanie-w-ai/cennik" className="btn btn-secondary" data-cta="geo_offer_pricing">
+                GEO Kosten & Preismodelle vergleichen →
+              </Link>
+            )}
           </Reveal>
         </div>
       </section>

@@ -76,6 +76,18 @@ const ENTSCHEIDUNGEN_DE = {
     frage: 'Worin unterscheiden sich ChatGPT Search, Perplexity und Google AI Overviews bei der Quellenauswahl?',
     kurz: 'Bing- vs. Google-Index, OAI-SearchBot & PerplexityBot, IndexNow-Geschwindigkeit, lokale Kartenquellen und Messung in GA4.',
   },
+  'ahrefs-dr-vs-moz-da-vs-common-crawl': {
+    frage: 'Ahrefs DR, Moz DA oder offener Common-Crawl-Wert: Welche Autoritätsmetrik sagt wirklich etwas aus?',
+    kurz: 'Datenbasis, Berechnungsformel, 441-Domain-Korrelation und Kosten im Vergleich - und warum Google weder DR noch DA als Rankingfaktor nutzt.',
+  },
+  'llms-txt-vs-robots-txt-vs-sitemap-xml': {
+    frage: 'Wofür stehen llms.txt, robots.txt und sitemap.xml - und welche Datei steuert KI-Bots?',
+    kurz: 'robots.txt regelt den Crawler-Zugang, sitemap.xml beschleunigt die Indexierung und llms.txt kuratiert Inhalte für Sprachmodelle (mit 17-Bot-Test).',
+  },
+  'seo-w-firmie-czy-agencja-seo': {
+    frage: 'Eigene Inhouse-SEO-Stelle im DACH-Raum schaffen oder mit einer B2B-SEO-Agentur arbeiten?',
+    kurz: 'Arbeitgeberbrutto, Recruiting, Urlaubsvertretung und Lizenzpaket (Ahrefs, Sistrix) gegen monatlich kündbaren Retainer ab 450 € netto gerechnet.',
+  },
 };
 
 const CTA_DE = {
@@ -116,7 +128,7 @@ export default function VergleicheHubDe() {
     isPartOf: { '@id': `${BASE}/#website` },
     publisher: { '@id': `${BASE}/#organization` },
     datePublished: '2026-11-22',
-    dateModified: '2026-11-22',
+    dateModified: '2026-11-24',
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: lista.length,

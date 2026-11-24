@@ -24,20 +24,24 @@ function WochenverlaufGscDe({ seria, klientNazwa }) {
 
   return (
     <div
-      role="region"
-      aria-label={`Wöchentlicher Google-Search-Console-Verlauf für ${klientNazwa} (Kundenprojekt in Polen)`}
-      tabIndex={0}
+      className="w-tafla-szklo"
       style={{
-        overflowX: 'auto',
-        WebkitOverflowScrolling: 'touch',
         maxWidth: '100%',
         margin: '0 0 1.5rem',
         padding: '1.1rem 1rem',
         borderRadius: '16px',
-        background: 'var(--w-papier-2)',
-        border: '1px solid var(--w-linia)',
       }}
     >
+      <div
+        role="region"
+        aria-label={`Wöchentlicher Google-Search-Console-Verlauf für ${klientNazwa} (Kundenprojekt in Polen)`}
+        tabIndex={0}
+        style={{
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          maxWidth: '100%',
+        }}
+      >
       <div
         style={{
           display: 'grid',
@@ -112,6 +116,7 @@ function WochenverlaufGscDe({ seria, klientNazwa }) {
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );
@@ -205,13 +210,13 @@ export default function BrancheSeoDe({ kluczBranzy }) {
           items={de.baustellen}
         />
 
-        <Abschnitt tag={de.caseStudy.tag} titel={de.caseStudy.titel} id="search-console-studie">
+        <Abschnitt szklo tag={de.caseStudy.tag} titel={de.caseStudy.titel} id="search-console-studie">
           <Absatz>{de.caseStudy.einleitung}</Absatz>
 
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(175px, 100%), 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(155px, 100%), 1fr))',
               gap: '0.85rem',
               margin: '1.25rem 0 1.75rem',
             }}
@@ -220,11 +225,10 @@ export default function BrancheSeoDe({ kluczBranzy }) {
               <div
                 key={k.etykieta}
                 lang="de"
+                className="w-tafla-szklo"
                 style={{
-                  padding: '1rem 1.1rem',
+                  padding: '1rem 1.05rem',
                   borderRadius: '16px',
-                  background: 'var(--w-papier-2)',
-                  border: '1px solid var(--w-linia)',
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >

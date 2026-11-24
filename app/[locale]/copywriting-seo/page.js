@@ -8,6 +8,7 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import CopywritingSeoClient from '@/components/CopywritingSeoClient';
+import SeoTexteDe from '@/components/de/SeoTexteDe';
 import { metadataStronyPl, wymagajStronyPl } from '@/lib/stronaPl';
 import { PL, SCIEZKA, TITLE, DESCRIPTION } from '@/lib/copywritingSeo';
 import { EN } from '@/lib/copywritingSeo.en';
@@ -59,6 +60,7 @@ function serviceSchema(locale) {
 export default async function CopywritingSeoPage({ params }) {
   const { locale } = await params;
   wymagajStronyPl(locale, SCIEZKA);
+  if (locale === 'de') return <SeoTexteDe />;
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema(locale)) }} />

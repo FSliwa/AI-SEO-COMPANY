@@ -169,14 +169,22 @@ ol.sz-lista > li::marker, .szablon-tresc ol > li::marker { color: var(--w-tusz-2
 .sz-pobierz__form { background: var(--w-karta); border-radius: 20px; padding: clamp(1.1rem, 3vw, 1.75rem); border: 1px solid var(--w-linia); align-self: start; }
 .sz-pobierz__form .btn { width: 100%; justify-content: center; min-height: 52px; }
 
-/* Powiązane: lista linków jako siatka kart */
-.sz-powiazane { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); font-size: 0.95rem; line-height: 1.5; color: var(--w-tusz-2); }
-.sz-powiazane > li {
-  position: relative; padding: 1.1rem 3rem 1.1rem 1.25rem; border: 1px solid var(--w-linia); border-radius: 20px; background: var(--w-karta);
-  transition: transform var(--r-d-std) var(--sz-ease), border-color var(--r-d-std) var(--sz-ease);
+/* Powiązane: lista linków jako siatka kart Warm Liquid Glass */
+.sz-powiazane { position: relative; isolation: isolate; list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); font-size: 0.95rem; line-height: 1.5; color: var(--w-tusz-2); }
+.sz-powiazane::before {
+  content: ''; position: absolute; inset: -1rem -1.25rem; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(46% 48% at 24% 32%, rgba(216, 90, 48, 0.09) 0%, rgba(251, 230, 218, 0.34) 46%, rgba(253, 249, 244, 0) 78%),
+    radial-gradient(48% 50% at 76% 68%, rgba(235, 214, 190, 0.48) 0%, rgba(243, 183, 156, 0.22) 48%, rgba(253, 249, 244, 0) 80%);
 }
+.sz-powiazane > li {
+  position: relative; isolation: isolate; padding: 1.1rem 3rem 1.1rem 1.25rem; border: 1px solid var(--w-szklo-krawedz); border-radius: 20px;
+  background: var(--w-szklo-tlo); backdrop-filter: var(--w-szklo-blur); -webkit-backdrop-filter: var(--w-szklo-blur); box-shadow: var(--w-szklo-cien);
+  transition: transform var(--r-d-std) var(--sz-ease), border-color var(--r-d-std) var(--sz-ease), box-shadow var(--r-d-std) var(--sz-ease);
+}
+.sz-powiazane > li::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; background: var(--w-szklo-blask); }
 .sz-powiazane > li::after { content: ''; position: absolute; right: 1.1rem; top: 1rem; width: 1.1rem; height: 1.1rem; background: var(--w-pomarancz); -webkit-mask: var(--ico-ne) center / contain no-repeat; mask: var(--ico-ne) center / contain no-repeat; transition: transform var(--r-d-std) var(--sz-ease); }
-.sz-powiazane > li:hover { border-color: var(--w-brzoskwinia); transform: translateY(-3px); }
+.sz-powiazane > li:hover { border-color: rgba(216, 90, 48, 0.48); transform: translateY(-3px); }
 .sz-powiazane > li:hover::after { transform: translate(2px, -2px); }
 .sz-powiazane a { display: block; padding-block: 9px; margin-top: -9px; margin-bottom: calc(0.25rem - 9px); font-weight: 600; font-size: 1.0625rem; color: var(--w-tusz); }
 .sz-powiazane a::before { content: ''; position: absolute; inset: 0; border-radius: 20px; }

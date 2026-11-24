@@ -41,10 +41,10 @@
   overflow: hidden;
   background-color: #0A1337;
   background-image:
-    url('/images/wyglad/gory-noc.webp'),
+    url('/images/wyglad/gory-noc.webp?v=4x'),
     linear-gradient(180deg, var(--w-papier) 0, var(--w-papier) 12vw, #0A1337 12vw, #0A1337 100%);
   background-image:
-    image-set(url('/images/wyglad/gory-noc-v2.avif') type('image/avif'), url('/images/wyglad/gory-noc.webp') type('image/webp')),
+    image-set(url('/images/wyglad/gory-noc-v2.avif?v=4x') type('image/avif'), url('/images/wyglad/gory-noc.webp?v=4x') type('image/webp')),
     linear-gradient(180deg, var(--w-papier) 0, var(--w-papier) 12vw, #0A1337 12vw, #0A1337 100%);
   background-repeat: no-repeat;
   background-size: 100% auto, 100% 100%;

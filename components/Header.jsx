@@ -220,18 +220,39 @@ export default function Header() {
     const SELEKTOR_SEKCJI = [
       '[data-header-box]',
       '#whyus-carousel',
+      '#service-carousel-scroll',
+      '#subpage-portfolio-carousel',
+      '#about-methodology-carousel',
       '.portfolio-mosaic',
+      '.hn-wnetrze',
       '.hero-klienci',
+      '.dn-kontener',
+      '.results-scena-globu',
       '.realizacje-pas > .container',
       '.w-noc-panele > section > .container',
       '.powiazane-kontener',
+      '.sz-hero__siatka',
       '.sz-uklad',
-      'main article',
+      '#nw-tresc',
+      '.narz-app',
+      '.article-content',
+      'main article > .container',
+      '.subpage-main article > .container',
       'main section > .container',
+      '.subpage-main section > .container',
       'main aside > .container',
+      '.subpage-main aside > .container',
       'main > .container',
+      '.subpage-main > .container',
       'footer > .container',
     ].join(', ');
+
+    const PELNA_SZEROKOSC_IDS = new Set([
+      'whyus-carousel',
+      'service-carousel-scroll',
+      'subpage-portfolio-carousel',
+      'about-methodology-carousel',
+    ]);
 
     let ostatniaSzer = 0;
     let raf = 0;
@@ -239,7 +260,8 @@ export default function Header() {
     const obliczSzerokoscNaglowka = () => {
       raf = 0;
       const vw = document.documentElement.clientWidth || window.innerWidth;
-      setScrolled(isSubpage || window.scrollY > 40);
+      const czySkrolowany = isSubpage || window.scrollY > 40;
+      setScrolled(czySkrolowany);
 
       if (vw <= 768) {
         if (ostatniaSzer !== vw) {
@@ -249,8 +271,13 @@ export default function Header() {
         return;
       }
 
-      // Punkt próbkowania tuż pod paskiem nawigacji
-      const probeY = Math.min(Math.max(84, window.innerHeight * 0.16), 144);
+      // Punkt probkowania w gornej czesci aktywnego widoku pod plywajacym naglowkiem
+      const uDoluStrony = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 48;
+      const probeY = window.scrollY <= 40 && !isSubpage
+        ? 120
+        : uDoluStrony
+          ? Math.max(140, window.innerHeight * 0.72)
+          : Math.min(Math.max(112, window.innerHeight * 0.22), 210);
       const kandydaci = document.querySelectorAll(SELEKTOR_SEKCJI);
       let wybrany = null;
       let najmniejszaWys = Infinity;
@@ -258,25 +285,28 @@ export default function Header() {
       for (let i = 0; i < kandydaci.length; i++) {
         const el = kandydaci[i];
         const r = el.getBoundingClientRect();
-        if (r.height < 36 || r.width < 160) continue;
+        if (r.height < 36 || r.width < 240) continue;
         if (r.top <= probeY && r.bottom >= probeY) {
-          // Wybieramy najbardziej szczegółowy kontener obejmujący linię pod nagłówkiem
-          if (r.height <= najmniejszaWys) {
+          // Wybieramy najbardziej szczegolowy (najmniejszy w pionie, a przy rownej wysokosci - wezszy) kontener
+          if (
+            r.height < najmniejszaWys - 2 ||
+            (Math.abs(r.height - najmniejszaWys) <= 2 && (!wybrany || r.width < wybrany.r.width))
+          ) {
             najmniejszaWys = r.height;
             wybrany = { el, r };
           }
         }
       }
 
-      // Zapas: jeśli linia leży w odstępie między dwoma kontenerami, bierzemy najbliższy w pionie
+      // Zapas: jesli linia lezy w odstepie miedzy dwoma kontenerami, bierzemy najblizszy w pionie
       if (!wybrany) {
         let minDyst = Infinity;
         for (let i = 0; i < kandydaci.length; i++) {
           const el = kandydaci[i];
           const r = el.getBoundingClientRect();
-          if (r.height < 36 || r.width < 160) continue;
+          if (r.height < 36 || r.width < 240) continue;
           const dyst = r.top > probeY ? r.top - probeY : probeY - r.bottom;
-          if (dyst < minDyst) {
+          if (dyst < minDyst - 2 || (Math.abs(dyst - minDyst) <= 2 && (!wybrany || r.width < wybrany.r.width))) {
             minDyst = dyst;
             wybrany = { el, r };
           }
@@ -286,24 +316,30 @@ export default function Header() {
       if (!wybrany) return;
 
       const { el, r } = wybrany;
-      const navPad = 48; // 1.5rem z lewej + 1.5rem z prawej w .header .nav-container
+      const navPad = 48; // 1.5rem z lewej + 1.5rem z prawej, gdy pasek na gorze nie ma jeszcze kapsuly
       let docelowa;
 
-      if (el.id === 'whyus-carousel' || el.classList.contains('portfolio-mosaic')) {
-        // Pełnoekranowe pasma karuzeli i ściany realizacji - szerszy rozstaw nagłówka
+      if (PELNA_SZEROKOSC_IDS.has(el.id) || el.classList.contains('portfolio-mosaic')) {
+        // Pelnoekranowe pasma karuzeli i sciany realizacji - szeroki rozstaw naglowka
         docelowa = Math.min(vw - 24, 1680);
       } else {
         const cs = window.getComputedStyle(el);
         const padL = parseFloat(cs.paddingLeft) || 0;
         const padR = parseFloat(cs.paddingRight) || 0;
-        const szerTresci = Math.max(0, r.width - padL - padR);
-        docelowa = Math.round(szerTresci + navPad);
+        let szerTresci = Math.max(0, r.width - padL - padR);
+        if (el.classList.contains('sz-uklad') && vw >= 1100) {
+          szerTresci = Math.min(szerTresci, 1056);
+        }
+        // Gdy widoczna jest kapsula Liquid Glass (.header.scrolled), zewnetrzny obrys kapsuly zrownuje sie 1:1 z trescia sekcji
+        docelowa = czySkrolowany ? Math.round(szerTresci) : Math.round(szerTresci + navPad);
       }
 
-      const minBezpieczna = vw >= 1200 ? Math.min(vw, 1100) : Math.min(vw, 780);
-      const koncowa = Math.max(minBezpieczna, Math.min(vw, docelowa));
+      // Kontrolki (logo + PL/EN/DE + ikona logowania + CTA + menu) potrzebuja ~635 px przy ukrytych odznakach (@container <= 1080px),
+      // wiec prog 740 px pozwala naglowkowi realnie zwezac sie na sekcjach 752-960 px i rozszerzac na 1192-1680 px.
+      const minBezpieczna = Math.min(vw - 24, 740);
+      const koncowa = Math.max(minBezpieczna, Math.min(vw - (czySkrolowany ? 24 : 0), docelowa));
 
-      if (Math.abs(koncowa - ostatniaSzer) >= 6) {
+      if (Math.abs(koncowa - ostatniaSzer) >= 4) {
         ostatniaSzer = koncowa;
         root.style.setProperty('--header-szer', `${koncowa}px`);
       }
@@ -314,10 +350,16 @@ export default function Header() {
     };
 
     obliczSzerokoscNaglowka();
+    const poNawigacji = window.requestAnimationFrame(obliczSzerokoscNaglowka);
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(zaplanujPomiar) : null;
+    const mainEl = document.querySelector('main');
+    if (ro && mainEl) ro.observe(mainEl);
     window.addEventListener('scroll', zaplanujPomiar, { passive: true });
     window.addEventListener('resize', zaplanujPomiar, { passive: true });
     return () => {
       if (raf) window.cancelAnimationFrame(raf);
+      window.cancelAnimationFrame(poNawigacji);
+      if (ro) ro.disconnect();
       window.removeEventListener('scroll', zaplanujPomiar);
       window.removeEventListener('resize', zaplanujPomiar);
     };

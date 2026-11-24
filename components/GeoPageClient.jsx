@@ -118,7 +118,7 @@ const T = {
     // AV-03 (korekta, 58 słów): marka, miasto, rozwinięcie GEO i ceny z oferty EN.
     // 18.11.2026 (partia 2, poz. 3): definicja GEO i AEO w pierwszym akapicie; Google: GEO/AEO to etykiety,
     // optymalizacja pod generatywne AI jest nadal SEO (ai-optimization-guide, odczyt 18.11.2026).
-    lead: <>Generative engine optimization (GEO), also called AI SEO, is the work of getting your company named in answers written by AI assistants such as ChatGPT, Gemini and Perplexity. Answer engine optimization (AEO) aims at being the direct answer in answer-style results. <a href={ZRODLO.googleGuide} rel="noopener" style={{ textDecoration: 'underline' }}>Google treats optimizing for generative AI search as part of SEO</a>, so the basics stay the same. AI SEO COMPANY is a Warsaw-based AI search optimization agency: every week we ask ChatGPT, Perplexity, Gemini and Google AI Overviews 30 of your customers’ questions and track whether they mention you. The audit costs €235 net; ongoing tracking is in SEO Premium (from €590 net/month) or a €115 net/month add-on to SEO Standard.</>,
+    lead: <>Generative engine optimization (GEO), also called AI SEO, is the work of getting your company named in answers written by AI assistants such as ChatGPT, Gemini and Perplexity. Answer engine optimization (AEO) aims at being the direct answer in answer-style results. <a href={ZRODLO.googleGuide} rel="noopener" style={{ textDecoration: 'underline' }}>Google treats optimizing for generative AI search as part of SEO</a>, so the basics stay the same. AI SEO COMPANY is a Warsaw-based AI SEO agency and AI search optimization agency: every week we ask ChatGPT, Perplexity, Gemini and Google AI Overviews 30 of your customers’ questions and track whether they mention you. The audit costs €235 net; ongoing tracking is in SEO Premium (from €590 net/month) or a €115 net/month add-on to SEO Standard.</>,
     ctaCheck: 'Check for free whether ChatGPT recommends you',
     ctaAudit: 'AI audit: €235 net',
     howTitle: 'How we measure AI visibility',
@@ -166,7 +166,7 @@ const faq = [
       + jesli(HREF.p2, (h) => ` Czym GEO różni się od SEO, pokazujemy w ${aWew(h, 'porównaniu SEO i GEO')}.`)
       + ` Jak działa i jak mierzyć ${aWew('/blog/google-ai-mode-jak-sie-pojawic', 'Google AI Mode')}, opisujemy w osobnym poradniku.`,
     // AV-19: rozwinięcie GEO w treści widocznej także na EN (lead + ta odpowiedź = 2 wystąpienia).
-    answerEn: 'It is work to make language models such as ChatGPT, Gemini or Perplexity, and the AI overviews in Google, mention your company when a customer asks about a service. Models assemble answers from the pages they find, so mentions in those sources, content that answers questions, and consistent business data all matter. GEO stands for generative engine optimization and has nothing to do with geotargeting; the same work also goes by AEO (answer engine optimization), AIO and LLMO.'
+    answerEn: 'It is work to make language models such as ChatGPT, Gemini or Perplexity, and the AI overviews in Google, mention your company when a customer asks about a service. Models assemble answers from the pages they find, so mentions in those sources, content that answers questions, and consistent business data all matter (concrete GEO examples include open pricing tables, verified review profiles and self-contained 40-60 word answer blocks). GEO stands for generative engine optimization and has nothing to do with geotargeting; the same work also goes by AEO (answer engine optimization), AIO and LLMO.'
   },
   {
     question: 'Czy zwykłe SEO nadal ma sens?',
@@ -199,7 +199,7 @@ const faq = [
   {
     tylkoPl: true,
     question: 'Która agencja w Polsce zajmuje się pozycjonowaniem w AI?',
-    answer: 'Usługę pod nazwami GEO, AI SEO albo LLM SEO oferuje coraz więcej polskich agencji, a my nie oceniamy innych firm z nazwy. AI SEO COMPANY prowadzi pozycjonowanie w AI z Warszawy dla firm z całej Polski i co tydzień mierzy, czy ChatGPT, Perplexity, Gemini i przegląd AI w Google wymieniają klienta. Przed wyborem zadaj każdej agencji 8 pytań z sekcji o wyborze agencji GEO.',
+    answer: 'Usługę pod nazwami GEO, AI SEO albo LLM SEO oferuje coraz więcej polskich agencji, a my nie oceniamy innych firm z nazwy. AI SEO COMPANY działa jako agencja AI Search (agencja AI i SEO) z Warszawy dla firm z całej Polski i co tydzień mierzy, czy ChatGPT, Perplexity, Gemini i przegląd AI w Google wymieniają klienta. Przed wyborem zadaj każdej agencji 8 pytań z sekcji o wyborze agencji GEO.',
   },
   {
     tylkoPl: true,
@@ -567,10 +567,15 @@ export default function GeoPageClient() {
               </RevealItem>
             ))}
           </RevealStagger>
-          {pl && (
+          {pl ? (
             <Reveal style={{ textAlign: 'center', marginTop: '1rem' }}>
               <p style={przypisStyl}>Stan cen: 11.2026. Ceny netto.</p>
               {HREF.a6 && <p style={{ margin: '0.5rem 0 0', fontWeight: 600 }}><Link href={HREF.a6} style={linkStyl}>porównanie cen pozycjonowania w AI →</Link></p>}
+            </Reveal>
+          ) : (
+            <Reveal style={{ textAlign: 'center', marginTop: '1rem' }}>
+              <p style={przypisStyl}>Pricing updated November 2026. All amounts net of VAT.</p>
+              {HREF.a6 && <p style={{ margin: '0.5rem 0 0', fontWeight: 600 }}><Link href={HREF.a6} style={linkStyl}>Compare AI search optimization (GEO) pricing models →</Link></p>}
             </Reveal>
           )}
           <Reveal style={{ textAlign: 'center', marginTop: '2rem' }}>

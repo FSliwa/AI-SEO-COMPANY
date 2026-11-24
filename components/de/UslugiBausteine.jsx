@@ -65,13 +65,13 @@ export function Hero({ kicker, h1, lead, cta = 'Angebot anfragen', telefon = tru
   );
 }
 
-/** Weisse Textkarte mit H2 (mittlere Breite). */
-export function Abschnitt({ titel, children, id, breite = 880, tag }) {
+/** Weisse oder Liquid-Glass Textkarte mit H2 (mittlere Breite). */
+export function Abschnitt({ titel, children, id, breite = 880, tag, szklo = false }) {
   return (
-    <section id={id} className="de-abschnitt" style={{ padding: '0 0 48px 0', scrollMarginTop: '110px' }}>
+    <section id={id} className={szklo ? 'de-abschnitt w-szklo-otoczenie' : 'de-abschnitt'} style={{ padding: '0 0 48px 0', scrollMarginTop: '110px' }}>
       <div className="container" style={{ maxWidth: `${breite}px`, margin: '0 auto' }}>
         <Reveal>
-          <div style={KARTE}>
+          <div className={szklo ? 'w-tafla-szklo' : undefined} style={szklo ? { borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 5vw, 3.25rem)' } : KARTE}>
             {tag && <div style={{ fontSize: '0.78rem', fontFamily: 'var(--w-mono)', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '0.75rem' }}>{tag}</div>}
             <h2 lang="de" style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2rem)', fontWeight: 500, marginBottom: '1.25rem', color: 'var(--color-text-dark)', lineHeight: 1.2, letterSpacing: '-0.02em', hyphens: 'manual', overflowWrap: 'break-word' }}>{titel}</h2>
             {children}
@@ -96,9 +96,9 @@ export function Liste({ punkte, nummeriert = false }) {
 }
 
 /** Raster aus Karten: [{ kicker, titel, text, href? }]. */
-export function Karten({ titel, untertitel, einleitung, items, breite = 1240, spalten = 320, id }) {
+export function Karten({ titel, untertitel, einleitung, items, breite = 1240, spalten = 320, id, szklo = false }) {
   return (
-    <section id={id} style={{ padding: '30px 0 80px 0', scrollMarginTop: '110px' }}>
+    <section id={id} className={szklo ? 'w-szklo-otoczenie' : undefined} style={{ padding: '30px 0 80px 0', scrollMarginTop: '110px' }}>
       <div className="container" style={{ maxWidth: `${breite}px`, margin: '0 auto' }}>
         <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2.75rem auto' }}>
           <h2 lang="de" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 500, color: 'var(--color-text-main)', letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: '1rem', hyphens: 'manual', overflowWrap: 'break-word' }}>{titel}</h2>
@@ -110,7 +110,17 @@ export function Karten({ titel, untertitel, einleitung, items, breite = 1240, sp
           style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(${spalten}px, 100%), 1fr))`, gap: '1.5rem' }}
         >
           {items.map((k, i) => (
-            <RevealItem key={i} style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: 'clamp(1.5rem, 3vw, 2.5rem)', display: 'flex', flexDirection: 'column' }}>
+            <RevealItem
+              key={i}
+              className={szklo ? 'w-tafla-szklo' : undefined}
+              style={{
+                ...(szklo ? {} : { background: 'var(--w-karta)', border: '1px solid var(--w-linia)' }),
+                borderRadius: 'var(--w-promien-karta)',
+                padding: 'clamp(1.5rem, 3vw, 2.5rem)',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
               {k.kicker && (
                 <div className="usluga-pills" style={{ justifyContent: 'flex-start', marginTop: 0, marginBottom: '1rem' }}>
                   {[k.kicker, k.kickerZwei].filter(Boolean).map((tag) => {
@@ -217,7 +227,7 @@ export function Tabelle({ beschriftung, spalten, zeilen, fussnote }) {
 export function Referenzen({ titel = 'Referenzen mit Messwerten', untertitel = 'Alle Zahlen stammen aus der Google Search Console, der Messzeitraum steht bei jedem Projekt. Verkaufsdaten unserer Kunden veröffentlichen wir nicht, nur die Sichtbarkeit, die Sie selbst nachprüfen können.', ids, id = 'referenzen' }) {
   const liste = ids ? REFERENZEN.filter((r) => ids.includes(r.id)) : REFERENZEN;
   return (
-    <section id={id} style={{ padding: '30px 0 80px 0', scrollMarginTop: '110px' }}>
+    <section id={id} className="w-szklo-otoczenie" style={{ padding: '30px 0 80px 0', scrollMarginTop: '110px' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 2.5rem auto' }}>
           <h2 lang="de" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: '1rem', hyphens: 'manual', overflowWrap: 'break-word' }}>{titel}</h2>

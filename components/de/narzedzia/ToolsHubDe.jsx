@@ -1,7 +1,7 @@
 // Deutscher Hub „SEO- & KI-Tools sowie Vorlagen“ (/de/tools).
 // Serverkomponente analog zu components/narzedzia/NarzedziaHub.jsx im warmen --w-karta Designsystem.
 // Enthält Header, Breadcrumbs (BreadcrumbList JSON-LD), CollectionPageSchema (ItemList JSON-LD),
-// 2 Hauptbereiche (7 interaktive Online-Tools + 5 praxisnahe Checklisten & PDF-Vorlagen), FAQ, Quellen, Contact & Footer.
+// 2 Hauptbereiche (13 interaktive Online-Tools + 16 praxisnahe Checklisten & PDF-Vorlagen), FAQ, Quellen, Contact & Footer.
 
 import '@/app/ruch.css';
 import NextLink from 'next/link';
@@ -255,7 +255,7 @@ const FAQ_HUB_DE = [
   {
     id: 'brauche-ich-eine-email-adresse',
     question: 'Für welche Tools oder Vorlagen wird eine E-Mail-Adresse benötigt?',
-    answer: 'Beim KI-Crawler-Prüfer, Core-Web-Vitals-Vergleich, llms.txt-Generator, Domain Authority Checker und SEO-Verlustrechner sehen Sie das komplette Ergebnis sofort ohne E-Mail. Beim kostenlosen SEO-Audit und beim KI-Sichtbarkeits-Check sehen Sie Punktzahl und Kernbefunde sofort, während die vollständige Detailauswertung per E-Mail freigeschaltet wird. PDF-Vorlagen senden wir Ihnen auf Wunsch innerhalb einer Minute per Link ins Postfach - ohne Newsletter-Zwang.',
+    answer: 'Bei acht Prüfern (KI-Crawler-Prüfer, Core-Web-Vitals-Vergleich, GEO-Zitierbarkeit, 301-Weiterleitungen & hreflang, IndexNow-Generator, JSON-LD Entitäts-Graph, Lokales SEO & QR-Generator sowie llms.txt-Generator) ist das gesamte Ergebnis sofort frei ohne E-Mail sichtbar. Auch im SEO-Verlustrechner und im Domain Authority Checker sehen Sie Berechnung, Wert und Konkurrenzvergleich direkt im Browser; optional erhalten Sie eine Zusammenfassung per E-Mail. Beim kostenlosen SEO-Audit, beim KI-Sichtbarkeits-Check und beim Website Relaunch Mockup sehen Sie Punktzahl bzw. Vorschau sofort, während die vollständige Detailauswertung per E-Mail freigeschaltet wird. PDF-Vorlagen senden wir Ihnen auf Wunsch innerhalb einer Minute per Link ins Postfach - ohne Newsletter-Zwang.',
   },
   {
     id: 'woher-stammen-die-messdaten',
@@ -405,7 +405,7 @@ export function ToolsHubDe() {
               { href: '#vorlagen', label: `PDF-Vorlagen (${VORLAGEN_DE.length})` },
               { href: '#faq', label: 'FAQ' },
             ].map((item) => (
-              <a key={item.href} href={item.href} style={{ display: 'inline-flex', alignItems: 'center', padding: '0.38rem 0.85rem', borderRadius: '999px', border: '1px solid var(--w-linia, rgba(30,30,30,0.12))', background: 'var(--w-karta, #fffcf8)', color: 'var(--w-tusz)', fontFamily: 'var(--w-mono)', fontSize: '0.78rem', textDecoration: 'none', fontVariantNumeric: 'tabular-nums' }}>
+              <a key={item.href} href={item.href} className={st.pigulkaHuba}>
                 {item.label}
               </a>
             ))}
@@ -430,7 +430,7 @@ export function ToolsHubDe() {
           </p>
 
           {/* Sektion 1: Interaktive SEO- & KI-Tools */}
-          <section aria-labelledby="interaktive-tools" className={st.sekcja} style={{ marginTop: '3rem' }}>
+          <section aria-labelledby="interaktive-tools" data-header-box="" className={`${st.sekcja} ${st.sekcjaKatalogu}`} style={{ marginTop: '3rem' }}>
             <h2 id="interaktive-tools" style={s.h2}>
               Interaktive SEO- &amp; KI-Tools (kostenlose Online-Tools ohne Anmeldung)
             </h2>
@@ -445,7 +445,7 @@ export function ToolsHubDe() {
           </section>
 
           {/* Sektion 2: Praxisnahe SEO-Checklisten & Vorlagen */}
-          <section id="vorlagen" aria-labelledby="seo-vorlagen" className={st.sekcja} style={{ ...s.sekcja, scrollMarginTop: '110px' }}>
+          <section id="vorlagen" aria-labelledby="seo-vorlagen" data-header-box="" className={`${st.sekcja} ${st.sekcjaKatalogu}`} style={{ ...s.sekcja, scrollMarginTop: '110px' }}>
             <h2 id="seo-vorlagen" style={s.h2}>
               Praxisnahe SEO-Checklisten &amp; Vorlagen (PDF &amp; interaktive Checklisten)
             </h2>

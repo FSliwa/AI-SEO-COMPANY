@@ -81,22 +81,64 @@
 }
 
 .procesSiatka {
+  position: relative;
+  isolation: isolate;
   grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)) !important;
 }
 
+.procesSiatka::before {
+  content: '';
+  position: absolute;
+  inset: -24px -16px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 52% at 24% 34%, rgba(216, 90, 48, 0.11) 0%, rgba(251, 230, 218, 0.36) 46%, rgba(253, 249, 244, 0) 78%),
+    radial-gradient(48% 54% at 76% 66%, rgba(235, 214, 190, 0.50) 0%, rgba(243, 183, 156, 0.22) 48%, rgba(253, 249, 244, 0) 80%);
+}
+
 .krokKarta {
-  background: var(--w-karta);
-  border: 1px solid var(--w-linia);
+  position: relative;
+  isolation: isolate;
+  background: var(--w-szklo-tlo);
+  backdrop-filter: var(--w-szklo-blur);
+  -webkit-backdrop-filter: var(--w-szklo-blur);
+  border: 1px solid var(--w-szklo-krawedz);
+  box-shadow: var(--w-szklo-cien);
   border-radius: 20px;
   padding: 1.35rem 1.45rem;
   text-align: left;
   cursor: pointer;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.krokKarta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--w-szklo-blask);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .krokKarta {
+    background: rgba(255, 252, 248, 0.94);
+  }
 }
 
 .krokKartaAktywna {
   border-color: var(--w-pomarancz);
-  box-shadow: 0 12px 28px -18px rgba(216, 90, 48, 0.35);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 254, 252, 0.78) 0%,
+    rgba(251, 230, 218, 0.48) 54%,
+    rgba(255, 251, 246, 0.68) 100%
+  );
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.96),
+    0 16px 36px -16px rgba(216, 90, 48, 0.36);
 }
 
 .krokNaglowek {
@@ -411,8 +453,13 @@
   min-height: 38px;
   padding: 6px 14px;
   border-radius: 999px;
-  background: var(--w-karta);
-  border: 1px solid var(--w-linia);
+  background: var(--w-szklo-tlo);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--w-szklo-krawedz);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 8px 18px -10px rgba(24, 18, 12, 0.11);
   color: var(--w-tusz);
   font-family: var(--w-sans);
   font-size: 0.85rem;
@@ -420,20 +467,22 @@
   line-height: 1.2;
   text-decoration: none;
   cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .pigulkaSkrotu:hover {
-  border-color: var(--w-pomarancz);
-  background: var(--w-brzoskwinia-tlo);
+  border-color: rgba(216, 90, 48, 0.52);
+  background: linear-gradient(145deg, rgba(255, 254, 252, 0.82) 0%, rgba(251, 230, 218, 0.52) 100%);
   transform: translateY(-1px);
 }
 
 .pigulkaSkrotuAktywna {
   border-color: var(--w-pomarancz);
-  background: var(--w-brzoskwinia-tlo);
+  background: linear-gradient(145deg, rgba(255, 254, 252, 0.86) 0%, rgba(251, 230, 218, 0.58) 100%);
   color: var(--w-tusz);
-  box-shadow: 0 6px 16px -10px rgba(216, 90, 48, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 8px 18px -10px rgba(216, 90, 48, 0.45);
 }
 
 .pigulkaKod {

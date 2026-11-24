@@ -84,6 +84,7 @@ export default function GoogleUnternehmensprofilDe() {
 
         <Karten
           id="leistungen"
+          szklo
           titel="Was wir an Ihrem Google Unternehmensprofil laufend umsetzen"
           untertitel="Keine einmalige Kosmetik, sondern ein dokumentierter Monatsprozess mit Eigentum auf Ihrem eigenen Google-Konto."
           items={GBP_LEISTUNGEN}

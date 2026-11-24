@@ -7,6 +7,9 @@
 // Recenzja 18.11.2026: fakty sprawdzone u źródeł pierwotnych (daty odczytu w ZRODLA), AnswerBox 48 słów,
 // FAQ 43-62 słowa, H1 bez „GEO/AEO” (intencja huba i porównania SEO vs GEO), dopisane linki do narzędzi.
 import { articleLanguages, articleRobots, blogPosts } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_AI_OVERVIEWS_DE } from '@/lib/de/blogAiOverviewsDe';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
 import Header from '@/components/Header';
@@ -155,6 +158,9 @@ const LISTA_KONTROLNA = [
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(SCIEZKA, { languages: { pl: URL_STRONY } });
+  }
   return {
     title: TYTUL,
     description: OPIS,
@@ -168,6 +174,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ArtykulAiOverviews({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={SCIEZKA} dane={BLOG_AI_OVERVIEWS_DE} />;
   if (locale === 'en') return null;
 
   // Reguła 6.0: link tylko do strony, która zwraca 200 - inaczej zwykły tekst.

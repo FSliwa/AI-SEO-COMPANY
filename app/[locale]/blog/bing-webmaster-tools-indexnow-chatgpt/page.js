@@ -8,6 +8,9 @@
 // Fakty zewnętrzne: źródła pierwotne z odczytem 18.11.2026 (lista ZRODLA niżej). Strony pomocy
 // OpenAI o ChatGPT search zwracały 18.11.2026 HTTP 403, więc o OpenAI cytujemy tylko stronę o robotach.
 import { articleLanguages, articleRobots, blogPosts } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_BING_INDEXNOW_DE } from '@/lib/de/blogBingIndexnowDe';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
 import Header from '@/components/Header';
@@ -84,6 +87,9 @@ const TOC = [
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(SCIEZKA, { languages: { pl: URL_STRONY } });
+  }
   return {
     title: TYTUL,
     description: OPIS,
@@ -97,6 +103,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ArtykulBingIndexNow({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={SCIEZKA} dane={BLOG_BING_INDEXNOW_DE} />;
   if (locale === 'en') return null;
 
   // Reguła 6.0: link tylko do strony, która zwraca 200 - inaczej zwykły tekst.

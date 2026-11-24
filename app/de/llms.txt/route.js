@@ -12,6 +12,7 @@ const ABSCHNITTE = [
   ['Leistungen', ['de-uslugi']],
   ['KI-Sichtbarkeit und GEO', ['de-geo']],
   ['Vergleiche und Entscheidungshilfen', ['de-porownania']],
+  ['Forschungsberichte und offene Daten (CC BY 4.0)', ['de-studien']],
   ['Kostenlose Tools und Vorlagen', ['de-narzedzia']],
   ['Ratgeber', ['de-blog']],
   ['Rechtliches', ['de-prawne']],

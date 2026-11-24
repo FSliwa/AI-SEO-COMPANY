@@ -123,7 +123,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
         items={carouselItems}
       />
 
-      <section style={{ padding: '120px 0' }}>
+      <section className="w-szklo-otoczenie" style={{ padding: '120px 0' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
             <h2 style={{ fontSize: 'clamp(2.35rem, 4vw, 3.6rem)', fontWeight: 500, color: 'var(--w-tusz)', letterSpacing: '-0.04em', lineHeight: 1.08, marginBottom: '1rem' }}>
@@ -135,7 +135,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
           </Reveal>
 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '1.5rem' }}>
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+            <RevealItem className="w-tafla-szklo" style={{ borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'KROK 1' : 'STEP 1'}</div>
               <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Audyt Techniczny & CWV' : 'Technical Audit & Search Engine Optimization'}
@@ -145,7 +145,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               </p>
             </RevealItem>
             
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+            <RevealItem className="w-tafla-szklo" style={{ borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'KROK 2' : 'STEP 2'}</div>
               <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Content Marketing' : 'Content Marketing & SEO Digital Strategy'}
@@ -157,7 +157,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
               </p>
             </RevealItem>
             
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', boxShadow: 'none' }}>
+            <RevealItem className="w-tafla-szklo" style={{ borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
               <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.82rem', fontWeight: 500, color: 'var(--w-pomarancz-tekst)', marginBottom: '1.25rem', letterSpacing: '0.14em' }}>{lang === 'pl' ? 'KROK 3' : 'STEP 3'}</div>
               <h3 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>
                 {lang === 'pl' ? 'Budowanie Autorytetu' : 'Authority Building & Search Optimisation'}
@@ -213,7 +213,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                 <p style={{ color: 'var(--w-tusz-2)', lineHeight: 1.65 }}>
                   {lang === 'pl'
                     ? 'Zapewniamy dogłębną analizę techniczną i ciągłe strategie podnoszące Twoje pozycje. Odkryj nasze kompleksowe usługi optymalizacji zaprojektowane dla zrównoważonego wzrostu. Jesteśmy agencją SEO dla B2B z panelem klienta, dedykowaną Twojemu długoterminowemu sukcesowi.'
-                    : <><>We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive services as an <strong>optimization agency</strong> and <strong>search engine optimisation agency</strong> for B2B, dedicated to your long-term sustainable growth. Explore our industry playbooks backed by real Search Console data: <Link href="/seo-dla-firm-budowlanych" style={{ textDecoration: 'underline' }}>SEO for construction companies</Link>, <Link href="/seo-dla-firm-produkcyjnych-b2b" style={{ textDecoration: 'underline' }}>manufacturing &amp; industrial SEO</Link>, <Link href="/seo-dla-restauracji-i-gastronomii" style={{ textDecoration: 'underline' }}>restaurant &amp; hospitality SEO</Link>, <Link href="/seo-dla-firm-szkoleniowych-i-iso" style={{ textDecoration: 'underline' }}>SEO for training &amp; ISO consultancies</Link>, plus our <Link href="/raport-bledow-seo-w-polsce" style={{ textDecoration: 'underline' }}>2026 technical SEO errors benchmark</Link>.</></>}
+                    : <><>We provide deep technical analysis and ongoing strategies to boost your rankings. Discover our comprehensive services as an <strong>optimization agency</strong>, <strong>SEO services company</strong> and <strong>search engine optimisation agency</strong> for B2B, dedicated to your long-term sustainable growth. Explore our industry playbooks backed by real Search Console data: <Link href="/seo-dla-firm-budowlanych" style={{ textDecoration: 'underline' }}>SEO for construction companies</Link>, <Link href="/seo-dla-firm-produkcyjnych-b2b" style={{ textDecoration: 'underline' }}>manufacturing &amp; industrial SEO</Link>, <Link href="/seo-dla-restauracji-i-gastronomii" style={{ textDecoration: 'underline' }}>restaurant &amp; hospitality SEO</Link>, <Link href="/seo-dla-firm-szkoleniowych-i-iso" style={{ textDecoration: 'underline' }}>SEO for training &amp; ISO consultancies</Link>, plus our <Link href="/raport-bledow-seo-w-polsce" style={{ textDecoration: 'underline' }}>2026 technical SEO errors benchmark</Link>.</></>}
                 </p>
               </RevealItem>
             </RevealStagger>
@@ -239,7 +239,7 @@ export default function PozycjonowanieClient({ faqData, portfolioCases, carousel
                   Pozycjonowanie strony w Google: od czego zależy skuteczność
                 </h2>
                 <p style={tekstSekcji}>
-                  Skuteczne pozycjonowanie stron firmowych opiera się na trzech rzeczach: stronie, którą Google szybko indeksuje, treściach odpowiadających na pytania klientów i linkach z serwisów o realnym ruchu. Pozycjonowanie strony w Google zaczynamy od <Link href="/audyt-seo" style={linkSekcji}>audytu SEO</Link> i listy fraz, które przynoszą zapytania. W panelu klienta co tydzień widzisz, jak pozycjonowanie stron SEO przekłada się na pozycje i zapytania.
+                  Skuteczne pozycjonowanie stron firmowych opiera się na trzech rzeczach: stronie, którą Google szybko indeksuje, treściach odpowiadających na pytania klientów i linkach z serwisów o realnym ruchu. Pozycjonowanie strony w Google (często wpisywane skrótowo jako pozycjonowanie stron Google) zaczynamy od <Link href="/audyt-seo" style={linkSekcji}>audytu SEO</Link> i listy fraz, które przynoszą zapytania. W panelu klienta co tydzień widzisz, jak pozycjonowanie stron SEO przekłada się na pozycje i zapytania.
                 </p>
                 <h3 style={{ fontSize: '1.35rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--w-tusz)', marginTop: '2.25rem', marginBottom: '1rem' }}>
                   Pozycjonowanie stron w Google i w odpowiedziach AI

@@ -44,7 +44,7 @@ export default function HomeDe() {
         <DarmoweNarzedzia locale="de" />
 
         <div style={{ color: 'var(--color-text-main)', overflowX: 'clip' }}>
-          <Karten titel="Unser Vorgehen" untertitel="Von der Analyse bis zur Messung in Google und in KI-Antworten." items={HOME_SCHRITTE} spalten={240} />
+          <Karten id="vorgehen" szklo titel="Unser Vorgehen" untertitel="Von der Analyse bis zur Messung in Google und in KI-Antworten." items={HOME_SCHRITTE} spalten={240} />
 
           <Preise id="cennik" titel="Transparente Pakete ohne versteckte Kosten" />
         </div>

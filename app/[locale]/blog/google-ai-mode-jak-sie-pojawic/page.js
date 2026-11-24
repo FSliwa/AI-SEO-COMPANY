@@ -6,6 +6,9 @@
 // po optymalizacji (technika, treść, Perplexity, plan 30 dni); ten dotyczy wyłącznie AI Mode:
 // dostępność w Polsce, czym różni się od AI Overviews, jak Google liczy go w Search Console, jak sprawdzać cytowania.
 import { articleLanguages, articleRobots, blogPosts } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_GOOGLE_AI_MODE_DE } from '@/lib/de/blogGoogleAiModeDe';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
 import Header from '@/components/Header';
@@ -115,6 +118,9 @@ const POMIAR_WLASNY = [
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(SCIEZKA, { languages: { pl: URL_STRONY } });
+  }
   return {
     title: TYTUL,
     description: OPIS,
@@ -128,6 +134,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ArtykulGoogleAiMode({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={SCIEZKA} dane={BLOG_GOOGLE_AI_MODE_DE} />;
   if (locale === 'en') return null;
 
   // Reguła 6.0: link tylko do strony, która zwraca 200 - inaczej zwykły tekst.

@@ -133,7 +133,7 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
       </section>
 
       {/* Process Section */}
-      <section style={{ padding: '0 0 120px 0' }}>
+      <section className="w-szklo-otoczenie" style={{ padding: '0 0 120px 0' }}>
         <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
           <Reveal className="section-header" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
             <div className="section-tag" style={{ color: 'var(--w-pomarancz-tekst)', marginBottom: '1.5rem', display: 'inline-flex', justifyContent: 'center', fontFamily: 'var(--w-mono)', fontWeight: 500, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.14em' }}>
@@ -148,12 +148,12 @@ export default function ProjektowanieClient({ faqData, portfolioCases, carouselI
           </Reveal>
 
           <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '1.5rem' }}>
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', boxShadow: 'none' }}>
+            <RevealItem className="w-tafla-szklo" style={{ borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '1.45rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Profesjonalny Design i Makiety' : 'Professional Design and Mockups'}</div>
               <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? <>Nasze <span style={{ fontWeight: 600, color: 'var(--w-tusz)' }}>projektowanie stron internetowych</span> zaczyna się od stworzenia czytelnych makiet i prototypów, w pełni dopasowanych do Twojej identyfikacji wizualnej i grupy docelowej.</> : 'Our web design begins with clean mockups and prototypes, perfectly tailored to your visual identity and target audience.'}</p>
               {lang === 'pl' && <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6, marginTop: '1rem' }}>Zanim przebudujemy obecny serwis, weryfikujemy ścieżki konwersji według zasad opisanych w poradniku <Link href="/blog/audyt-ux-strony" style={{ textDecoration: 'underline' }}>audyt UX strony internetowej</Link> oraz możesz sprawdzić <Link href="/narzedzia/makieta-redesignu" style={{ textDecoration: 'underline' }}>darmową makietę redesignu z AI</Link>.</p>}
             </RevealItem>
-            <RevealItem style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column', boxShadow: 'none' }}>
+            <RevealItem className="w-tafla-szklo" style={{ borderRadius: '24px', padding: 'clamp(2rem, 3.5vw, 2.75rem)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontSize: '1.45rem', fontWeight: 600, color: 'var(--w-tusz)', letterSpacing: '-0.025em', marginBottom: '1rem', lineHeight: 1.2 }}>{lang === 'pl' ? 'Wdrożenie i Skalowanie Sprzedaży' : 'Deployment and Sales Scaling'}</div>
               <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6 }}>{lang === 'pl' ? 'Tworzenie stron internetowych kończymy wdrożeniem gotowego projektu w bezpiecznym i niezawodnym środowisku, dbając o zoptymalizowanie ścieżek zakupowych klienta (generowanie leadów).' : 'We transition the ready design into a secure and reliable environment, ensuring optimized customer purchase paths (lead generation).'}</p>
               {lang === 'pl' && <p style={{ color: 'var(--w-tusz-2)', fontSize: '1.05rem', lineHeight: 1.6, marginTop: '1rem' }}>Wymogi prawne wobec stron firmowych (cookies, formularze, polityka prywatności) opisujemy w poradniku <Link href="/blog/rodo-na-stronie-internetowej" style={{ textDecoration: 'underline' }}>RODO na stronie internetowej</Link>.</p>}

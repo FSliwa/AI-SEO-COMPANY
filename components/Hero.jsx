@@ -25,18 +25,18 @@ export default function Hero({ locale = 'pl' }) {
   const sc = scenaHero(lang);
 
   // Preload warstwy chmur dla szybkiego LCP.
-  preload('/images/wyglad/chmury-v2.avif', { as: 'image', type: 'image/avif', fetchPriority: 'high' });
+  preload('/images/wyglad/chmury-v2.avif?v=4x', { as: 'image', type: 'image/avif', fetchPriority: 'high' });
 
   return (
     <section className="hero hero--narz" id="hero" data-petla="">
-      {/* Czyste niebo i góry (bez betonowej podkładki pod satelitę) */}
+      {/* Czyste niebo i góry w rozdzielczości 4x (bez betonowej podkładki pod satelitę) */}
       <div className="hero-tlo-sceny" aria-hidden="true" data-kursor="obraz">
         <picture>
-          <source type="image/avif" srcSet="/images/wyglad/hero-gory-czyste-1200.avif 1200w, /images/wyglad/hero-gory-czyste-1600.avif 1600w" sizes="100vw" />
+          <source media="(max-width: 1200px)" type="image/avif" srcSet="/images/wyglad/hero-gory-czyste-1200.avif?v=4x" />
+          <source type="image/avif" srcSet="/images/wyglad/hero-gory-czyste-1600.avif?v=4x" />
+          <source media="(max-width: 1200px)" type="image/webp" srcSet="/images/wyglad/hero-gory-czyste-1200.webp?v=4x" />
           <img
-            src="/images/wyglad/hero-gory-czyste-1600.webp"
-            srcSet="/images/wyglad/hero-gory-czyste-1200.webp 1200w, /images/wyglad/hero-gory-czyste-1600.webp 1600w"
-            sizes="100vw"
+            src="/images/wyglad/hero-gory-czyste-1600.webp?v=4x"
             alt=""
             width={1600}
             height={1194}

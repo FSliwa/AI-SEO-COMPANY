@@ -21,7 +21,7 @@ export default function TloGory() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="tlo-gory-czasza"
-          src="/images/wyglad/satelita-czasza.webp"
+          src="/images/wyglad/satelita-czasza.webp?v=4x"
           alt=""
           width="707"
           height="587"

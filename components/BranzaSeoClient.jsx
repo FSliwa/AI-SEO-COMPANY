@@ -234,9 +234,9 @@ export default function BranzaSeoClient({ kluczBranzy }) {
         </div>
       </section>
 
-      <section className="de-abschnitt" id={en ? 'verified-results' : 'wyniki-gsc'}>
+      <section className="de-abschnitt w-szklo-otoczenie" id={en ? 'verified-results' : 'wyniki-gsc'}>
         <div className="container" style={kontener}>
-          <div style={karta}>
+          <div className="w-tafla-szklo" style={{ borderRadius: '24px', padding: 'clamp(1.5rem, 4vw, 2.5rem)', minWidth: 0, maxWidth: '100%' }}>
             <div style={{ fontFamily: 'var(--w-mono)', fontSize: '0.78rem', fontWeight: 500, letterSpacing: '0.08em', color: 'var(--w-pomarancz-tekst)', marginBottom: '0.55rem' }}>
               {t.caseStudy.kicker}
             </div>

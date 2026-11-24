@@ -517,16 +517,31 @@
 }
 .trescGlowna > :first-child.sekcja { border-top: 0; padding-top: 0 !important; }
 
-/* --- Karty: „co dostajesz”, inne narzędzia, wspólny język kafli --- */
+/* --- Karty: „co dostajesz”, inne narzędzia, wspólny język kafli (Warm Editorial Liquid Glass) --- */
 .kolumna {
   position: relative;
-  background: var(--w-karta);
-  border: 1px solid var(--w-linia);
+  isolation: isolate;
+  background: var(--w-szklo-tlo);
+  backdrop-filter: var(--w-szklo-blur);
+  -webkit-backdrop-filter: var(--w-szklo-blur);
+  border: 1px solid var(--w-szklo-krawedz);
+  box-shadow: var(--w-szklo-cien);
   border-radius: var(--w-promien-karta);
   padding: clamp(1.25rem, 3vw, 1.75rem);
-  transition: border-color var(--nw-krotki) var(--nw-ease), translate var(--nw-krotki) var(--nw-ease);
+  transition: border-color var(--nw-krotki) var(--nw-ease), translate var(--nw-krotki) var(--nw-ease), box-shadow var(--nw-krotki) var(--nw-ease);
 }
-.kolumnaZaEmailem { background: var(--w-papier-2); }
+.kolumna::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--w-szklo-blask);
+}
+.kolumnaZaEmailem {
+  background: linear-gradient(145deg, rgba(251, 230, 218, 0.56) 0%, rgba(246, 239, 230, 0.44) 55%, rgba(255, 251, 246, 0.64) 100%);
+}
 .kolumna ul { list-style: none; padding-left: 0; gap: 0.6rem; }
 .kolumna li { position: relative; padding-left: 1.4rem; }
 .kolumna li::before {
@@ -551,16 +566,44 @@
 }
 .kolumna h3 { margin-top: 0; }
 
-.siatka { grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 1rem; }
+.siatka {
+  position: relative;
+  isolation: isolate;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+}
+.siatka::before {
+  content: '';
+  position: absolute;
+  inset: -1.25rem -1.25rem;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 48% at 24% 32%, rgba(216, 90, 48, 0.09) 0%, rgba(251, 230, 218, 0.34) 46%, rgba(253, 249, 244, 0) 78%),
+    radial-gradient(48% 50% at 76% 68%, rgba(235, 214, 190, 0.48) 0%, rgba(243, 183, 156, 0.22) 48%, rgba(253, 249, 244, 0) 80%);
+}
 .kafel {
   position: relative;
-  background: var(--w-karta);
-  border: 1px solid var(--w-linia);
+  isolation: isolate;
+  background: var(--w-szklo-tlo);
+  backdrop-filter: var(--w-szklo-blur);
+  -webkit-backdrop-filter: var(--w-szklo-blur);
+  border: 1px solid var(--w-szklo-krawedz);
+  box-shadow: var(--w-szklo-cien);
   border-radius: var(--w-promien-karta);
   padding: 1.25rem 1.35rem 1.4rem;
-  transition: border-color var(--nw-krotki) var(--nw-ease), translate var(--nw-krotki) var(--nw-ease), background-color var(--nw-krotki) var(--nw-ease);
+  transition: border-color var(--nw-krotki) var(--nw-ease), translate var(--nw-krotki) var(--nw-ease), box-shadow var(--nw-krotki) var(--nw-ease);
 }
-.kafel:hover, .kafel:focus-visible { background: var(--w-karta); border-color: var(--color-border-hover); }
+.kafel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--w-szklo-blask);
+}
+.kafel:hover, .kafel:focus-visible { border-color: var(--color-border-hover); }
 .kafel:focus-visible { outline: 3px solid var(--w-pomarancz); outline-offset: 3px; }
 .kafel::after {
   content: '';
@@ -576,7 +619,10 @@
   transition: translate var(--nw-krotki) var(--nw-ease);
 }
 .kafelNazwa { text-decoration: none; padding-right: 1.5rem; }
-.kafelHub { border-style: dashed; background: transparent; }
+.kafelHub { border-style: dashed; background: rgba(255, 252, 248, 0.44); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .kolumna, .kafel { background: rgba(255, 252, 248, 0.94); }
+}
 .poradniki { gap: 0.6rem; }
 .sekcjaKarta { border-radius: var(--w-promien-karta); }
 .zrzut img { border-radius: 16px; border: 1px solid var(--w-linia); box-shadow: var(--nw-cien-panel); }
@@ -609,15 +655,79 @@
 @media (min-width: 700px) { .siatkaHub { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; } .siatkaSzablonow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1100px) { .siatkaSzablonow { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
+/* Ciepla organiczna poswiata refrakcyjna pod kafelkami katalogow narzedzi i szablonow (/narzedzia, /en/tools, /de/tools) */
+.sekcjaKatalogu {
+  position: relative;
+  isolation: isolate;
+}
+
+.sekcjaKatalogu::before {
+  content: '';
+  position: absolute;
+  inset: 2rem -2rem -1.5rem;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 36% at 24% 26%, rgba(216, 90, 48, 0.10) 0%, rgba(251, 230, 218, 0.36) 46%, rgba(253, 249, 244, 0) 78%),
+    radial-gradient(48% 38% at 76% 52%, rgba(235, 214, 190, 0.50) 0%, rgba(246, 239, 230, 0.24) 48%, rgba(253, 249, 244, 0) 80%),
+    radial-gradient(44% 34% at 28% 82%, rgba(243, 183, 156, 0.26) 0%, rgba(239, 229, 216, 0.34) 48%, rgba(253, 249, 244, 0) 80%);
+}
+
+.pigulkaHuba {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  background: var(--w-szklo-tlo);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--w-szklo-krawedz);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 8px 18px -10px rgba(24, 18, 12, 0.11);
+  color: var(--w-tusz);
+  font-family: var(--w-mono);
+  font-size: 0.78rem;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  transition: border-color var(--nw-krotki) var(--nw-ease), background var(--nw-krotki) var(--nw-ease), translate var(--nw-krotki) var(--nw-ease);
+}
+
+.pigulkaHuba:hover {
+  border-color: rgba(216, 90, 48, 0.52);
+  background: linear-gradient(145deg, rgba(255, 254, 252, 0.80) 0%, rgba(251, 230, 218, 0.52) 100%);
+  translate: 0 -1px;
+}
+
 .kartaHuba {
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
-  background: var(--w-karta);
-  border: 1px solid var(--w-linia);
+  background: var(--w-szklo-tlo);
+  backdrop-filter: var(--w-szklo-blur);
+  -webkit-backdrop-filter: var(--w-szklo-blur);
+  border: 1px solid var(--w-szklo-krawedz);
+  box-shadow: var(--w-szklo-cien);
   border-radius: var(--w-promien-karta);
   padding: clamp(1.1rem, 2.4vw, 1.5rem);
   transition: border-color var(--nw-krotki) var(--nw-ease), translate var(--nw-krotki) var(--nw-ease), box-shadow var(--nw-krotki) var(--nw-ease);
+}
+
+.kartaHuba::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--w-szklo-blask);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .kartaHuba {
+    background: rgba(255, 252, 248, 0.94);
+  }
 }
 .miniatura { margin: 0 0 1.1rem; }
 .miniaturaRamka {
@@ -685,13 +795,26 @@
   }
 }
 .ozKarta {
+  position: relative;
+  isolation: isolate;
   display: grid;
   gap: 18px;
   padding: 24px;
   border-radius: var(--w-promien-karta);
-  background: var(--w-karta);
-  border: 1.5px solid var(--nw-obrys-panel);
-  box-shadow: var(--nw-cien-panel);
+  background: var(--w-szklo-tlo);
+  backdrop-filter: var(--w-szklo-blur);
+  -webkit-backdrop-filter: var(--w-szklo-blur);
+  border: 1px solid var(--w-szklo-krawedz);
+  box-shadow: var(--w-szklo-cien);
+}
+.ozKarta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--w-szklo-blask);
 }
 .ozGlowa { display: flex; align-items: center; gap: 16px; }
 .ozLinie { flex: 1; display: grid; gap: 8px; }
@@ -827,7 +950,13 @@
   @media (hover: hover) {
     .kolumna:hover, .kafel:hover, .kartaHuba:hover { translate: 0 -4px; border-color: var(--color-border-hover); }
     .kafel:hover::after { translate: 3px -3px; }
-    .kartaHuba:hover { box-shadow: 0 14px 32px -18px rgba(10, 19, 55, 0.28); }
+    .kartaHuba:hover {
+      box-shadow:
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.96),
+        inset 1px 0 0 rgba(255, 255, 255, 0.66),
+        0 26px 56px -20px rgba(10, 19, 55, 0.18),
+        0 6px 16px -4px rgba(10, 19, 55, 0.06);
+    }
     .kartaHuba:hover .miniaturaRamka img { scale: 1.03; }
     .kartaHuba:hover .strzalka { translate: 3px -3px; }
     .kartaSzablonu:hover .miniKartka { translate: 0 -4px; rotate: -1.5deg; }

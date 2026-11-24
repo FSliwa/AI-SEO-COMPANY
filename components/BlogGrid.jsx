@@ -118,7 +118,7 @@ export default function BlogGrid() {
 
   return (
     <section className="blog-grid" style={{ padding: '4rem 0', backgroundColor: 'transparent' }}>
-      <div className="container" style={{ margin: '0 auto' }}>
+      <div className="container w-szklo-otoczenie" style={{ margin: '0 auto' }}>
         <Reveal>
           <div style={{ textAlign: 'left', padding: '1rem 0 2rem 0' }}>
             <h1 style={{ 
@@ -167,15 +167,12 @@ export default function BlogGrid() {
 
         <Reveal delay={0.1}>
           <Link href={heroData.slug} style={{ textDecoration: 'none' }}>
-            <div className="hero-card" style={{ 
+            <div className="hero-card w-tafla-szklo" style={{ 
               display: 'flex', 
               flexDirection: 'column', 
-              backgroundColor: 'var(--w-karta)', 
-              border: '1px solid var(--w-linia)',
               borderRadius: '24px', 
               overflow: 'hidden',
               marginBottom: '2rem', textAlign: 'left',
-              boxShadow: 'none',
               transition: 'transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease',
               cursor: 'pointer'
             }}>
@@ -245,15 +242,12 @@ export default function BlogGrid() {
             return (
               <RevealItem key={idx}>
                 <Link href={data.slug} style={{ textDecoration: 'none' }}>
-                  <div className="grid-card" style={{ 
+                  <div className="grid-card w-tafla-szklo" style={{ 
                     display: 'flex', 
                     flexDirection: 'column', 
                     height: '100%', 
-                    backgroundColor: 'var(--w-karta)', 
-                    border: '1px solid var(--w-linia)',
                     borderRadius: '24px', 
                     overflow: 'hidden',
-                    boxShadow: 'none',
                     transition: 'transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease',
                     cursor: 'pointer'
                   }}>

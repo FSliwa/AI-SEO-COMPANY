@@ -259,31 +259,61 @@
   padding-right: clamp(0px, 3.6vw, 48px);
 }
 
-/* Baza karty: czysty biały arkusz z delikatną oszronioną obwódką unoszący się na niebie i górach */
+/* Baza karty: 2 jasne karty nad gorami w Warm Editorial Liquid Glass (ciemna karta .hn-karta--panel zostaje w granacie) */
 .hn-karta {
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   border-radius: 18px;
   padding: 20px 22px;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 254, 252, 0.64) 0%,
+    rgba(253, 249, 244, 0.44) 52%,
+    rgba(255, 251, 246, 0.56) 100%
+  );
+  backdrop-filter: blur(24px) saturate(165%);
+  -webkit-backdrop-filter: blur(24px) saturate(165%);
   color: var(--hn-ink);
   text-decoration: none;
-  border: 1px solid rgba(30, 30, 30, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.84);
   box-shadow:
-    0 0 0 6px rgba(255, 255, 255, 0.62),
-    0 24px 52px -16px rgba(17, 22, 46, 0.16),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.96),
+    inset 1px 0 0 rgba(255, 255, 255, 0.66),
+    inset 0 -1px 0 rgba(188, 162, 138, 0.22),
+    0 0 0 5px rgba(255, 255, 255, 0.30),
+    0 24px 54px -18px rgba(17, 22, 46, 0.16),
     0 4px 14px -4px rgba(17, 22, 46, 0.06);
   transition: transform 240ms var(--hn-ease), box-shadow 240ms var(--hn-ease), border-color 220ms ease;
 }
 
-a.hn-karta:hover {
+.hn-karta:not(.hn-karta--panel)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(
+    --w-szklo-blask,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.10) 36%, rgba(255, 255, 255, 0) 64%)
+  );
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hn-karta:not(.hn-karta--panel) {
+    background: rgba(255, 252, 248, 0.94);
+  }
+}
+
+a.hn-karta:not(.hn-karta--panel):hover {
   transform: translateY(-4px);
-  border-color: rgba(216, 90, 48, 0.28);
+  border-color: rgba(216, 90, 48, 0.40);
   box-shadow:
-    0 0 0 6px rgba(255, 255, 255, 0.78),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98),
+    inset 1px 0 0 rgba(255, 255, 255, 0.72),
+    0 0 0 5px rgba(255, 255, 255, 0.44),
     0 30px 60px -16px rgba(17, 22, 46, 0.22),
     0 6px 18px -4px rgba(17, 22, 46, 0.08);
 }
@@ -531,23 +561,26 @@ a.hn-karta:hover {
   background: #EA580C;
 }
 
-/* Karta 3: Ciemna karta Panelu klienta 24/7 unosząca się nad szczytem góry i mgłą */
+/* Karta 3: Ciemna karta Panelu klienta 24/7 unosząca się nad szczytem góry i mgłą (zostaje w granacie dla kontrastu) */
 .hn-karta--panel {
   width: min(100%, 406px);
   padding: 20px;
   background: var(--hn-navy);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow:
-    0 0 0 6px rgba(255, 255, 255, 0.56),
+    0 0 0 5px rgba(255, 255, 255, 0.36),
     0 30px 60px -16px rgba(10, 16, 44, 0.44);
   gap: 13px;
 }
 
 a.hn-karta--panel:hover {
+  transform: translateY(-4px);
   border-color: rgba(243, 183, 156, 0.45);
   box-shadow:
-    0 0 0 6px rgba(255, 255, 255, 0.72),
+    0 0 0 5px rgba(255, 255, 255, 0.52),
     0 34px 68px -16px rgba(10, 16, 44, 0.54);
 }
 
@@ -695,9 +728,10 @@ a.hn-karta--panel:hover {
   color: rgba(255, 255, 255, 0.82);
 }
 
-/* Oszroniona pływająca plakietka nachodząca na prawy dolny róg białego ekranu */
+/* Pływająca plakietka Liquid Glass nachodząca na prawy dolny róg ciemnej karty i mgłę */
 .hn-plakietka-plywajaca {
   position: absolute;
+  isolation: isolate;
   right: 8px;
   bottom: 88px;
   z-index: 3;
@@ -706,14 +740,34 @@ a.hn-karta--panel:hover {
   gap: 10px;
   padding: 11px 15px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(30, 30, 30, 0.08);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 254, 252, 0.76) 0%,
+    rgba(253, 249, 244, 0.56) 54%,
+    rgba(255, 251, 246, 0.68) 100%
+  );
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.86);
   box-shadow:
-    0 0 0 5px rgba(255, 255, 255, 0.56),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.96),
+    inset 1px 0 0 rgba(255, 255, 255, 0.64),
+    0 0 0 4px rgba(255, 255, 255, 0.30),
     0 20px 38px -10px rgba(10, 19, 55, 0.24);
   pointer-events: none;
+}
+
+.hn-plakietka-plywajaca::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(
+    --w-szklo-blask,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.10) 36%, rgba(255, 255, 255, 0) 64%)
+  );
 }
 
 .hn-plakietka-ikona {

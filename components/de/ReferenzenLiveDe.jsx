@@ -72,7 +72,7 @@ export default function ReferenzenLiveDe({ liste }) {
       {liste.map((basis) => {
         const r = metryki && basis.gscKey ? liveKarte(basis, metryki[basis.gscKey]) : basis;
         return (
-          <RevealItem key={r.id} style={{ background: 'var(--w-karta)', border: '1px solid var(--w-linia)', borderRadius: 'var(--w-promien-karta)', padding: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <RevealItem key={r.id} className="w-tafla-szklo" style={{ borderRadius: 'var(--w-promien-karta)', padding: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', minHeight: '36px' }}>
               <Image unoptimized src={r.logo} alt={r.name} width={r.logoW} height={r.logoH} style={{ height: 'auto', width: 'auto', maxHeight: '34px', maxWidth: '160px', objectFit: 'contain' }} />
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', fontFamily: 'var(--w-mono)', fontWeight: 500, color: 'var(--w-tusz-2)', whiteSpace: 'nowrap' }}>

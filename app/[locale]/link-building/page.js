@@ -8,6 +8,7 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Footer from '@/components/Footer';
 import LinkBuildingClient from '@/components/LinkBuildingClient';
+import LinkbuildingAgenturDe from '@/components/de/LinkbuildingAgenturDe';
 import { metadataStronyPl, wymagajStronyPl } from '@/lib/stronaPl';
 import { wpisPublikacji } from '@/lib/publikacja';
 
@@ -137,6 +138,7 @@ function serviceLd(en) {
 export default async function LinkBuildingPage({ params }) {
   const { locale } = await params;
   wymagajStronyPl(locale, SCIEZKA);
+  if (locale === 'de') return <LinkbuildingAgenturDe />;
   const en = locale === 'en';
   return (
     <>

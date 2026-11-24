@@ -8,7 +8,7 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
   const lang = useLocale();
 
   return (
-    <section style={{ padding: '90px 0', backgroundColor: 'var(--w-papier-2)' }}>
+    <section className="w-szklo-otoczenie" style={{ padding: '90px 0', backgroundColor: 'var(--w-papier-2)' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: '0 auto' }}>
         <Reveal>
           <div className="section-tag" style={{ color: 'var(--color-primary)', marginBottom: '1rem', display: 'inline-flex' }}>
@@ -34,15 +34,12 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
         {/* Featured Hero Card (Same as Blog page) */}
         {heroItem && (
           <Reveal delay={0.1}>
-            <div style={{ 
+            <div className="w-tafla-szklo" style={{ 
               display: 'grid', 
               gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', 
-              backgroundColor: '#FFFFFF', 
               borderRadius: '28px', 
               overflow: 'hidden',
               marginBottom: '2rem',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.03)',
-              border: '1px solid rgba(0,0,0,0.05)'
             }}>
               <div style={{ height: '340px', width: '100%', position: 'relative' }}>
                 <Image 
@@ -74,15 +71,12 @@ export default function ServiceBlogGrid({ tag, title, subtitle, heroItem, items 
         <RevealStagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '24px' }}>
           {items.map((item, idx) => (
             <RevealItem key={idx}>
-              <div style={{ 
-                backgroundColor: '#FFFFFF', 
+              <div className="w-tafla-szklo" style={{ 
                 borderRadius: '24px', 
                 overflow: 'hidden', 
                 height: '100%',
                 display: 'flex', 
                 flexDirection: 'column',
-                boxShadow: '0 4px 24px rgba(0,0,0,0.03)',
-                border: '1px solid rgba(0,0,0,0.05)'
               }}>
                 <div style={{ height: '210px', width: '100%', position: 'relative' }}>
                   <Image 

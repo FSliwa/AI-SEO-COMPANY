@@ -29,7 +29,7 @@ export default function UeberUnsDe() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
       <Hero kicker="Über uns" h1={w.h1} lead={ENTITAET} cta="Kontakt aufnehmen" />
       <Karten titel="Wir arbeiten datenbasiert und legen offen, was wir tun" untertitel="Fünf Grundsätze, nach denen wir arbeiten." items={GRUNDSAETZE} spalten={280} />
-      <Karten titel="Unsere Methode in drei Schritten" untertitel="So führen wir Marken in den Suchergebnissen nach vorn." items={METHODE} />
+      <Karten szklo titel="Unsere Methode in drei Schritten" untertitel="So führen wir Marken in den Suchergebnissen nach vorn." items={METHODE} />
       <Karten titel="Die Menschen hinter Ihrem SEO" untertitel="Die drei Säulen unseres Teams in Technik, Gestaltung und Optimierung." items={TEAM.map((t) => ({ kicker: t.kicker, kickerZwei: t.rolle, titel: t.titel, text: t.text, lieferung: [t.plakette] }))} />
 
       <Abschnitt titel="Filip Śliwa: Wer Ihr SEO betreut" id="autor">

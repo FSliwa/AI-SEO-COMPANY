@@ -658,7 +658,7 @@ export default function PricingClient() {
                   Pozycjonowanie stron: cena, koszt i wycena w 2026
                 </h2>
                 <p style={{ fontSize: '1.1rem', lineHeight: 1.65, color: 'var(--w-tusz-2)', marginBottom: '1.5rem' }}>
-                  <Link href="/pozycjonowanie-stron-internetowych" style={{ textDecoration: 'underline' }}>Pozycjonowanie stron</Link> kosztuje u nas od 1 900 zł netto miesięcznie. W SEO Standard dostajesz do 20 fraz, czyli średnio 95 zł netto za frazę, a w SEO Premium za 2 500 zł netto do 50 fraz, czyli 50 zł za frazę. Za samo wejście fraz do TOP 10 nie dopłacasz. Zastanawiasz się, czy zamiast tego wybrać reklamy? Sprawdź, <Link href="/blog/agencja-seo-czy-google-ads" style={{ textDecoration: 'underline' }}>agencja SEO czy Google Ads</Link>.
+                  <Link href="/pozycjonowanie-stron-internetowych" style={{ textDecoration: 'underline' }}>Pozycjonowanie stron</Link> kosztuje u nas od 1 900 zł netto miesięcznie - pełny cennik pozycjonowania stron WWW (pozycjonowanie cena i pozycjonowanie stron koszt za miesiąc) widzisz w tabeli wyżej. W SEO Standard dostajesz do 20 fraz, czyli średnio 95 zł netto za frazę, a w SEO Premium za 2 500 zł netto do 50 fraz, czyli 50 zł za frazę. Za samo wejście fraz do TOP 10 nie dopłacasz. Zastanawiasz się, czy zamiast tego wybrać reklamy? Sprawdź, <Link href="/blog/agencja-seo-czy-google-ads" style={{ textDecoration: 'underline' }}>agencja SEO czy Google Ads</Link>.
                 </p>
                 <h3 style={h3Styl}>
                   Tanie pozycjonowanie stron: na czym oszczędzają najtańsze oferty

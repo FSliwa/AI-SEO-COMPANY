@@ -1,4 +1,7 @@
 import { articleLanguages, articleRobots } from '@/lib/blogPosts';
+import { metadataDe } from '@/lib/stronyDe';
+import BlogArtikelDe from '@/components/de/BlogArtikelDe';
+import { BLOG_CHATGPT_WERBUNG_DE } from '@/lib/de/blogChatgptWerbungDe';
 import { hrefJesliOpublikowana } from '@/lib/publikacja';
 import { LASTMOD } from '@/lib/lastmod';
 import Header from '@/components/Header';
@@ -243,6 +246,9 @@ const TOC_EN = [
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  if (locale === 'de') {
+    return metadataDe(SCIEZKA, { languages: { pl: URL_PL, en: URL_EN } });
+  }
   const en = locale === 'en';
   return {
     title: en ? TYTUL_EN : TYTUL_PL,
@@ -257,6 +263,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ArticleChatGptAdsPage({ params }) {
   const { locale } = await params;
+  if (locale === 'de') return <BlogArtikelDe klucz={SCIEZKA} dane={BLOG_CHATGPT_WERBUNG_DE} />;
   const en = locale === 'en';
   const dataZmiany = LASTMOD[en ? URL_EN : URL_PL] ?? DATA_PUBLIKACJI;
 

@@ -283,7 +283,7 @@ export default function NarzedziaHub({ locale = 'pl' }) {
               { href: '#szablony', label: en ? `PDF Templates (${szablony.length})` : `Szablony PDF (${szablony.length})` },
               { href: '#pytania', label: 'FAQ' },
             ].map((item) => (
-              <a key={item.href} href={item.href} style={{ display: 'inline-flex', alignItems: 'center', padding: '0.38rem 0.85rem', borderRadius: '999px', border: '1px solid var(--w-linia, rgba(30,30,30,0.12))', background: 'var(--w-karta, #fffcf8)', color: 'var(--w-tusz)', fontFamily: 'var(--w-mono)', fontSize: '0.78rem', textDecoration: 'none', fontVariantNumeric: 'tabular-nums' }}>
+              <a key={item.href} href={item.href} className={st.pigulkaHuba}>
                 {item.label}
               </a>
             ))}
@@ -307,7 +307,7 @@ export default function NarzedziaHub({ locale = 'pl' }) {
           </div>
           <Byline sciezka={SCIEZKA_HUBA} takzeEn style={{ textAlign: 'center' }} />
 
-          <section aria-labelledby="narzedzia-online" className={st.sekcja} style={{ marginTop: '3rem' }}>
+          <section aria-labelledby="narzedzia-online" data-header-box="" className={`${st.sekcja} ${st.sekcjaKatalogu}`} style={{ marginTop: '3rem' }}>
             <h2 id="narzedzia-online" style={s.h2}>{t.h2Narzedzia}</h2>
             <p style={s.akapit}>
               {t.pNarzedzia}
@@ -351,7 +351,7 @@ export default function NarzedziaHub({ locale = 'pl' }) {
             </ul>
           </section>
 
-          <section id="szablony" aria-labelledby="szablony-naglowek" className={st.sekcja} style={{ ...s.sekcja, scrollMarginTop: '110px' }}>
+          <section id="szablony" aria-labelledby="szablony-naglowek" data-header-box="" className={`${st.sekcja} ${st.sekcjaKatalogu}`} style={{ ...s.sekcja, scrollMarginTop: '110px' }}>
             <h2 id="szablony-naglowek" style={s.h2}>{t.h2Szablony}</h2>
             <p style={s.akapit}>
               {t.pSzablony}

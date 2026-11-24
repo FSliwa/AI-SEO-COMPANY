@@ -18,7 +18,7 @@ export default function SeoFuerUnternehmenDe() {
           cta="Kostenloses Angebot anfordern"
         />
         <Karten titel="Was B2B SEO bei uns leistet" untertitel="Die Mechanismen, die das Wachstum Ihres Geschäfts in der Google-Suche antreiben." items={B2B_SAEULEN} spalten={260} />
-        <Karten titel="So arbeiten wir" untertitel="Eine Wachstumsstrategie in drei Schritten, gestützt auf belastbare Analysedaten." items={B2B_SCHRITTE} />
+        <Karten szklo titel="So arbeiten wir" untertitel="Eine Wachstumsstrategie in drei Schritten, gestützt auf belastbare Analysedaten." items={B2B_SCHRITTE} />
         <CtaZeile />
 
         <Abschnitt titel="Content und Strategie im B2B-Marketing" id="strategie">

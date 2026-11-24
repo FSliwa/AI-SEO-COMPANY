@@ -166,6 +166,18 @@ export const routing = defineRouting({
     '/blog/how-long-does-seo-take': {
       pl: '/blog/how-long-does-seo-take',
       en: '/blog/how-long-does-seo-take'
+    },
+    '/blog/bing-webmaster-tools-indexnow-chatgpt': {
+      pl: '/blog/bing-webmaster-tools-indexnow-chatgpt',
+      en: '/blog/bing-webmaster-tools-indexnow-chatgpt'
+    },
+    '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews': {
+      pl: '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews',
+      en: '/blog/jak-zoptymalizowac-strone-pod-google-ai-overviews'
+    },
+    '/blog/google-ai-mode-jak-sie-pojawic': {
+      pl: '/blog/google-ai-mode-jak-sie-pojawic',
+      en: '/blog/google-ai-mode-jak-sie-pojawic'
     }
   })
 });

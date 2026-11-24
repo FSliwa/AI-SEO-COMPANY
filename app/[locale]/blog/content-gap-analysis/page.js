@@ -864,7 +864,7 @@ function ArticleAnalizaLukContentowych({ locale }) {
 
               <p>Wyniki zależą od punktu wyjścia, konkurencyjności branży i tego, ile z backlogu faktycznie powstanie - <strong>żadna agencja nie zagwarantuje pozycji ani przychodu</strong>. Liczby z zakończonych projektów publikujemy w sekcji realizacji na <Link href="/">stronie głównej</Link>.</p>
 
-              <p>Jeśli chcesz zacząć od diagnozy, a nie od umowy, zamów bezpłatną analizę SEO i potencjału obecnej marki - pokazuje, gdzie leżą największe luki, zanim ustalimy zakres. Na zapytanie odpowiadamy do 24 h w dni robocze, zwykle szybciej, a wstępną propozycję przygotowujemy w ciągu doby. Zakres każdego pakietu opisuje <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link>, a brief możesz przesłać przez <a href={homeHash('kontakt', locale)}>formularz kontaktowy</a>.</p>
+              <p>Jeśli chcesz zacząć od diagnozy, a nie od umowy, zamów bezpłatną analizę SEO i potencjału obecnej marki - pokazuje, gdzie leżą największe luki, zanim ustalimy zakres. Na zapytanie odpowiadamy do 24 h w dni robocze, zwykle szybciej, a wstępną propozycję przygotowujemy w ciągu doby. Zakres każdego pakietu opisuje <Link href="/cennik-pozycjonowania">cennik pozycjonowania</Link>, a brief możesz przesłać przez <Link href={homeHash('kontakt', locale)}>formularz kontaktowy</Link>.</p>
 
               <h2 id="najczestsze-pytania">Najczęstsze pytania</h2>
 
