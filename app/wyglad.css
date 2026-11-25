@@ -1035,14 +1035,14 @@ section#contact.contact {
   color: #FFFFFF;
 }
 
-/* --- Panel klienta: Interactive Cockpit Stage + Bento Micro-UIs (25.11.2026) --- */
+/* --- Panel klienta: 3-kolumnowy uklad z interaktywnym stosem izometrycznym 3D (25.11.2026) --- */
 .panel-showcase {
   position: relative;
   isolation: isolate;
   overflow: hidden;
 }
 
-.panel-poziomice-blask {
+.panel-aura-tla {
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -1050,1098 +1050,417 @@ section#contact.contact {
   overflow: hidden;
 }
 
-.panel-blask {
+.panel-aura {
   position: absolute;
   border-radius: 50%;
-  filter: blur(95px);
+  filter: blur(90px);
 }
 
-.panel-blask--prawy {
-  width: 560px;
-  height: 420px;
-  right: -60px;
-  top: 90px;
-  background: rgba(216, 90, 48, 0.14);
-}
-
-.panel-blask--lewy {
-  width: 580px;
+.panel-aura--miedz {
+  width: 540px;
   height: 460px;
-  left: -90px;
-  top: 560px;
-  background: rgba(16, 185, 129, 0.08);
+  left: 50%;
+  top: 50%;
+  transform: translate(-48%, -50%);
+  background: radial-gradient(circle, rgba(216, 90, 48, 0.20) 0%, rgba(216, 90, 48, 0.05) 58%, transparent 76%);
 }
 
-.panel-scena-kontener {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 2.6vw, 36px);
+.panel-aura--szmaragd {
+  width: 420px;
+  height: 360px;
+  right: 4%;
+  top: 16%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.09) 0%, transparent 72%);
 }
 
-.panel-showcase .section-header.panel-naglowek-sceny {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+.panel-uklad {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 1.18fr) minmax(0, 0.88fr);
   gap: clamp(24px, 3vw, 48px);
-  max-width: 100% !important;
-  margin: 0 !important;
-  text-align: left;
-}
-
-.panel-naglowek-lewa {
-  max-width: 700px;
-  min-width: 0;
-}
-
-.panel-tag-pigulka {
-  display: inline-flex !important;
   align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
-  border-radius: 999px;
-  background: rgba(216, 90, 48, 0.14);
-  border: 1px solid rgba(243, 183, 156, 0.28);
-  font-family: var(--w-mono);
-  font-size: 0.75rem !important;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: #FF9E7A !important;
-  margin-bottom: 1rem !important;
 }
 
-.panel-kropka-zywa {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #34D399;
-  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
-  flex-shrink: 0;
+.panel-showcase .section-header {
+  margin-bottom: 0 !important;
 }
 
 .panel-showcase .section-header h2 {
   color: #FFFFFF !important;
-  font-size: clamp(2.2rem, 3.3vw, 2.95rem) !important;
-  line-height: 1.09 !important;
-  letter-spacing: -0.038em;
-  margin: 0 0 1rem !important;
+  font-size: clamp(2.2rem, 3.2vw, 3rem) !important;
 }
 
 .panel-showcase .section-header p {
   color: var(--w-noc-tekst) !important;
   font-size: 1.0625rem !important;
-  line-height: 1.6 !important;
-  margin: 0 !important;
-}
-
-.panel-naglowek-prawa {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.85rem;
-  flex-shrink: 0;
 }
 
 .panel-akcje {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 0;
+  margin-top: 2rem;
 }
 
-.panel-showcase .panel-zaufanie {
-  font-family: var(--w-mono);
-  font-size: 0.72rem !important;
-  color: rgba(255, 255, 255, 0.6) !important;
-  margin: 0 !important;
-}
-
-/* Interaktywne zakladki nad kokpitem */
-.panel-zakladki {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  padding: 6px;
-  border-radius: 999px;
-  background: rgba(6, 11, 34, 0.82);
-  border: 1px solid rgba(243, 183, 156, 0.22);
-}
-
-.panel-zakladka {
-  appearance: none;
+.panel-cta-glowny {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 0.5rem;
+}
+
+.panel-cta-strzalka {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.panel-cta-glowny:hover .panel-cta-strzalka {
+  transform: translateX(4px);
+}
+
+.panel-cta-obrys {
+  background: rgba(255, 255, 255, 0.025);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.panel-scena-srodek {
+  position: relative;
   min-width: 0;
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.74);
-  font-family: inherit;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-  white-space: nowrap;
 }
 
-.panel-zakladka:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.panel-zakladka:focus-visible {
-  outline: 2px solid #FF9E7A;
-  outline-offset: 2px;
-}
-
-.panel-zakladka.is-active {
-  background: linear-gradient(188deg, rgba(216, 90, 48, 0.28) 14%, rgba(216, 90, 48, 0.14) 86%);
-  border-color: rgba(216, 90, 48, 0.78);
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-.panel-zakladka-nr {
-  font-family: var(--w-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.46);
-  font-variant-numeric: tabular-nums;
-}
-
-.panel-zakladka.is-active .panel-zakladka-nr {
-  color: #FF9E7A;
-}
-
-.panel-zakladka-pelna {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.panel-zakladka-krotka {
+.panel-mobile-przelacznik {
   display: none;
 }
 
-.panel-zakladka-licznik {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: #D85A30;
-  color: #FFFFFF;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  line-height: 1.2;
-  font-variant-numeric: tabular-nums;
+/* Stos 3 zrzutow w rzucie izometrycznym z plynna choreografia rozsuwania warstw */
+.panel-stos {
+  position: relative;
+  height: clamp(440px, 44vw, 640px);
+  margin: 0;
 }
 
-/* Glowna scena aplikacji (kokpit 1:1) */
-.panel-kokpit {
-  background: #0D163A;
-  border: 1px solid rgba(243, 183, 156, 0.30);
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow:
-    0 8px 36px rgba(216, 90, 48, 0.12),
-    0 36px 76px -12px rgba(2, 5, 19, 0.65);
-}
-
-.panel-kokpit-pasek {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 13px 22px;
-  background: #080F29;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.panel-kokpit-pasek-lewa,
-.panel-kokpit-pasek-prawa {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  min-width: 0;
-}
-
-.panel-okno-kropki {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.panel-okno-kropki i {
-  width: 9px;
-  height: 9px;
+.panel-stos-cien {
+  position: absolute;
+  left: 14%;
+  right: 10%;
+  bottom: 3%;
+  height: 120px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
+  background: radial-gradient(ellipse at center, rgba(1, 3, 14, 0.85) 0%, rgba(216, 90, 48, 0.14) 52%, transparent 78%);
+  filter: blur(26px);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.panel-kokpit-url {
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  font-family: var(--w-mono);
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.panel-telemetria {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-}
-
-.panel-telemetria--ok {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(52, 211, 153, 0.28);
-  color: #A7F3D0;
-}
-
-.panel-telemetria--ok i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #34D399;
-}
-
-.panel-telemetria--api {
-  background: rgba(216, 90, 48, 0.12);
-  border: 1px solid rgba(243, 183, 156, 0.24);
-  color: #FF9E7A;
-}
-
-.panel-kokpit-cialo {
-  display: grid;
-  grid-template-columns: 244px minmax(0, 1fr);
-  min-height: 540px;
-}
-
-.panel-kokpit-bok {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding: 18px;
-  background: #09102B;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.panel-klient-wizytowka {
-  padding: 14px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(243, 183, 156, 0.16);
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.panel-klient-nazwa {
-  margin: 0 !important;
-  font-size: 0.875rem !important;
-  font-weight: 600;
-  color: #FFFFFF !important;
-}
-
-.panel-klient-domena {
-  margin: 0 !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  color: rgba(255, 255, 255, 0.56) !important;
-}
-
-.panel-klient-pakiet {
-  margin: 2px 0 0 !important;
-  font-size: 0.6875rem !important;
-  color: #FF9E7A !important;
-}
-
-.panel-naw-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.panel-naw-pozycja {
-  appearance: none;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 9px 12px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.68);
-  font-family: inherit;
-  font-size: 0.8125rem;
-  text-align: left;
+.panel-warstwa {
+  --sx: 0px;
+  --sy: 0px;
+  --wz: 0px;
+  --ws: 1;
+  position: absolute;
+  left: 6%;
+  width: 88%;
+  margin: 0;
   cursor: pointer;
-  transition: background 0.18s ease, color 0.18s ease;
+  transform:
+    perspective(2400px)
+    translate3d(var(--sx), var(--sy), 0px)
+    rotateX(52deg)
+    rotateZ(-32deg)
+    translateZ(var(--wz))
+    scale(var(--ws));
+  transform-origin: center;
+  transition:
+    transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
 }
 
-.panel-naw-pozycja:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #FFFFFF;
-}
-
-.panel-naw-pozycja.is-active {
-  background: rgba(216, 90, 48, 0.18);
-  border-color: rgba(216, 90, 48, 0.45);
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-.panel-naw-odznaka {
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.78);
-  font-family: var(--w-mono);
-  font-size: 0.625rem;
-  font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
-}
-
-.panel-naw-odznaka.is-pilne {
-  background: #D85A30;
-  color: #FFFFFF;
-}
-
-.panel-kokpit-obszar {
-  background: #0E173D;
-  padding: clamp(20px, 2.4vw, 28px);
-  min-width: 0;
-}
-
-.panel-widok {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.panel-widok-naglowek {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.panel-widok-nadtytul {
-  margin: 0 0 4px !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  letter-spacing: 0.06em;
-  color: #FF9E7A !important;
-}
-
-.panel-widok-tytul {
-  margin: 0 !important;
-  font-size: clamp(1.125rem, 1.5vw, 1.3125rem) !important;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.3 !important;
-  color: #FFFFFF !important;
-}
-
-.panel-zakres-przelacznik {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 999px;
-  background: #080F29;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  flex-wrap: wrap;
-}
-
-.panel-zakres-przycisk {
-  appearance: none;
-  padding: 5px 12px;
-  border-radius: 999px;
-  border: 0;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.64);
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.panel-zakres-przycisk.is-active {
-  background: rgba(255, 255, 255, 0.13);
-  color: #FFFFFF;
-}
-
-/* Karty KPI w kokpicie */
-.panel-kpi-siatka {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.panel-kpi-karta {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
+.panel-warstwa-plyta {
   border-radius: 18px;
-  background: rgba(10, 17, 46, 0.85);
-  border: 1px solid rgba(243, 183, 156, 0.16);
-  min-width: 0;
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid rgba(243, 183, 156, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 3px 0 0 rgba(216, 90, 48, 0.88),
+    0 5px 0 0 rgba(108, 38, 16, 0.72),
+    0 36px 68px -8px rgba(2, 4, 18, 0.72);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.panel-kpi-karta.is-primary {
-  background: linear-gradient(218deg, rgba(24, 39, 94, 0.95) 14%, rgba(17, 28, 70, 0.95) 86%);
-  border-color: rgba(216, 90, 48, 0.65);
+.panel-warstwa.is-active .panel-warstwa-plyta {
+  border-color: rgba(255, 178, 148, 0.82);
+  box-shadow:
+    inset 0 1px 0 #FFFFFF,
+    0 3.5px 0 0 #E06338,
+    0 6px 0 0 rgba(118, 42, 18, 0.82),
+    0 18px 42px -6px rgba(216, 90, 48, 0.26),
+    0 46px 84px -10px rgba(2, 4, 18, 0.82);
 }
 
-.panel-kpi-etykieta {
-  margin: 0 !important;
-  font-size: 0.8125rem !important;
-  color: rgba(255, 255, 255, 0.72) !important;
-}
-
-.panel-kpi-wiersz {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.panel-kpi-liczba {
-  font-size: clamp(1.85rem, 2.5vw, 2.25rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: #FFFFFF;
-  font-variant-numeric: tabular-nums;
-}
-
-.panel-kpi-delta {
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(52, 211, 153, 0.30);
-  font-family: var(--w-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  color: #6EE7B7;
-  font-variant-numeric: tabular-nums;
-}
-
-.panel-kpi-pasek {
-  width: 100%;
-  height: 7px;
-  border-radius: 99px;
-  background: rgba(255, 255, 255, 0.10);
+.panel-warstwa-ekran {
+  position: relative;
   overflow: hidden;
 }
 
-.panel-kpi-pasek > span {
-  display: block;
-  height: 100%;
-  border-radius: 99px;
-  background: linear-gradient(90deg, #D85A30, #FF9E7A);
+.panel-warstwa-ekran::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    112deg,
+    transparent 24%,
+    rgba(255, 255, 255, 0.28) 46%,
+    rgba(255, 198, 174, 0.18) 52%,
+    transparent 72%
+  );
+  transform: translateX(-125%);
+  transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.panel-kpi-pasek > span.is-szmaragd {
-  background: linear-gradient(90deg, #10B981, #6EE7B7);
+.panel-warstwa.is-active .panel-warstwa-ekran::after {
+  transform: translateX(125%);
 }
 
-.panel-kpi-cel {
-  margin: 0 !important;
-  font-size: 0.75rem !important;
-  font-weight: 500;
-  color: #FF9E7A !important;
-  font-variant-numeric: tabular-nums;
-}
-
-.panel-kpi-podpis {
-  margin: auto 0 0 !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  color: rgba(255, 255, 255, 0.58) !important;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Wykres klikniec GSC + pineski dzialan */
-.panel-wykres-karta {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 20px 22px;
-  border-radius: 20px;
-  background: rgba(9, 16, 43, 0.95);
-  border: 1px solid rgba(243, 183, 156, 0.18);
-}
-
-.panel-wykres-naglowek {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.panel-wykres-tytul {
-  margin: 0 !important;
-  font-size: 0.9375rem !important;
-  font-weight: 600;
-  color: #FFFFFF !important;
-}
-
-.panel-wykres-legenda,
-.panel-mapy-legenda {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.panel-legenda-punkt {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  color: #FFFFFF;
-}
-
-.panel-legenda-punkt i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-
-.panel-legenda-punkt i.is-zielony { background: #34D399; }
-.panel-legenda-punkt i.is-pomarancz { background: #D85A30; }
-
-.panel-wykres-pineski {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-between;
-}
-
-.panel-pineska {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(20, 31, 74, 0.96);
-  font-family: var(--w-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-}
-
-.panel-pineska i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.panel-pineska--pomarancz {
-  border: 1px solid rgba(216, 90, 48, 0.72);
-  color: #FF9E7A;
-}
-
-.panel-pineska--pomarancz i { background: #D85A30; }
-
-.panel-pineska--zielona {
-  border: 1px solid rgba(52, 211, 153, 0.55);
-  color: #A7F3D0;
-}
-
-.panel-pineska--zielona i { background: #34D399; }
-
-.panel-wykres-svg-ramka {
-  width: 100%;
-  overflow: hidden;
-}
-
-.panel-wykres-svg {
+.panel-warstwa img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 176px;
 }
 
-/* Notatka opiekuna (Co sie stalo / Dlaczego / Co dalej) */
-.panel-notatka-siatka {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  padding: 18px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-}
-
-.panel-notatka-kolumna {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  min-width: 0;
-}
-
-.panel-notatka-etykieta {
-  margin: 0 !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: #FF9E7A !important;
-}
-
-.panel-notatka-tekst {
-  margin: 0 !important;
-  font-size: 0.8125rem !important;
-  line-height: 1.5 !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* Widoki zakladek 02, 03, 04 */
-.panel-lista-kart {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.panel-wpis-ciemny {
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: rgba(8, 15, 41, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.panel-wpis-meta {
-  margin: 0 !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  color: #6EE7B7 !important;
-}
-
-.panel-wpis-tytul {
-  margin: 0 !important;
-  font-size: 0.9375rem !important;
-  font-weight: 600;
-  color: #FFFFFF !important;
-}
-
-.panel-wpis-opis {
-  margin: 0 !important;
-  font-size: 0.8125rem !important;
-  line-height: 1.5 !important;
-  color: rgba(255, 255, 255, 0.78) !important;
-}
-
-.panel-wpis-kremowy {
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: #FFFCF8;
-  border: 1px solid rgba(216, 90, 48, 0.35);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.panel-wpis-kremowy-meta {
-  margin: 0 !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  font-weight: 500;
-  color: #C94E24 !important;
-}
-
-.panel-wpis-kremowy-tytul {
-  margin: 0 !important;
-  font-size: 0.9375rem !important;
-  font-weight: 600;
-  color: #1E1E1E !important;
-}
-
-.panel-wpis-kremowy-opis {
-  margin: 0 !important;
-  font-size: 0.8125rem !important;
-  line-height: 1.5 !important;
-  color: #4A433C !important;
-}
-
-.panel-wpis-akcje {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.panel-btn-akceptuj {
-  appearance: none;
-  padding: 8px 15px;
+.panel-okno-plakietka {
+  flex: none;
+  padding: 2px 7px;
   border-radius: 999px;
-  border: 0;
-  background: #C94E24;
-  color: #FFFFFF;
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.panel-btn-jasny {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 15px;
-  border-radius: 999px;
-  border: 1px solid rgba(30, 30, 30, 0.18);
-  background: #F6EFE6;
-  color: #1E1E1E;
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.panel-zatwierdzono-odznaka {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 13px;
-  border-radius: 999px;
-  background: rgba(16, 185, 129, 0.14);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  color: #065F46;
+  background: rgba(216, 90, 48, 0.11);
+  border: 1px solid rgba(216, 90, 48, 0.26);
+  color: #B6421B;
   font-family: var(--w-mono);
-  font-size: 0.72rem;
+  font-size: 0.58rem;
   font-weight: 500;
+  letter-spacing: 0.03em;
 }
 
-.panel-zatwierdzono-odznaka i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10B981;
+.panel-warstwa--0 { top: 0%; z-index: 3; }
+.panel-warstwa--1 { top: 30%; z-index: 2; }
+.panel-warstwa--2 { top: 60%; z-index: 1; }
+
+@media (min-width: 901px) {
+  /* Stan 0: klasyczny stos izometryczny z eksponowanym pierwszym ekranem (Przeglad zapytan) */
+  .panel-stos[data-focus="0"] .panel-warstwa--0 {
+    z-index: 4;
+    --sy: -6px;
+    --wz: 18px;
+    --ws: 1.02;
+    opacity: 1;
+  }
+  .panel-stos[data-focus="0"] .panel-warstwa--1 {
+    z-index: 2;
+    --sy: 4px;
+    --wz: 0px;
+    --ws: 0.99;
+    opacity: 0.92;
+  }
+  .panel-stos[data-focus="0"] .panel-warstwa--2 {
+    z-index: 1;
+    --sy: 10px;
+    --wz: -8px;
+    --ws: 0.98;
+    opacity: 0.84;
+  }
+
+  /* Stan 1: srodkowa karta (Historia zmian AI) wysuwa sie na pierwszy plan, gorna cofa w tlo */
+  .panel-stos[data-focus="1"] .panel-warstwa--0 {
+    z-index: 2;
+    --sy: -32px;
+    --wz: -8px;
+    --ws: 0.955;
+    opacity: 0.38;
+    filter: saturate(0.85) brightness(0.92);
+  }
+  .panel-stos[data-focus="1"] .panel-warstwa--1 {
+    z-index: 4;
+    --sy: -16px;
+    --wz: 24px;
+    --ws: 1.03;
+    opacity: 1;
+  }
+  .panel-stos[data-focus="1"] .panel-warstwa--2 {
+    z-index: 1;
+    --sy: 16px;
+    --wz: -8px;
+    --ws: 0.975;
+    opacity: 0.8;
+  }
+
+  /* Stan 2: dolna karta (Akceptacje 1 kliknieciem) wysuwa sie w gore na pierwszy plan */
+  .panel-stos[data-focus="2"] .panel-warstwa--0 {
+    z-index: 1;
+    --sy: -42px;
+    --wz: -14px;
+    --ws: 0.94;
+    opacity: 0.3;
+    filter: saturate(0.8) brightness(0.88);
+  }
+  .panel-stos[data-focus="2"] .panel-warstwa--1 {
+    z-index: 2;
+    --sy: -28px;
+    --wz: -6px;
+    --ws: 0.96;
+    opacity: 0.44;
+    filter: saturate(0.85) brightness(0.92);
+  }
+  .panel-stos[data-focus="2"] .panel-warstwa--2 {
+    z-index: 4;
+    --sy: -42px;
+    --wz: 26px;
+    --ws: 1.035;
+    opacity: 1;
+  }
 }
 
-.panel-widok-stopka {
-  margin: 0 !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  color: rgba(255, 255, 255, 0.58) !important;
-}
-
-/* Zakladka 04: Widocznosc AI + Mapy 7x7 */
-.panel-ai-mapy-uklad {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 20px;
-}
-
-.panel-ai-kolumna,
-.panel-mapy-kolumna {
-  padding: 18px 20px;
-  border-radius: 18px;
-  background: rgba(8, 15, 41, 0.92);
-  border: 1px solid rgba(243, 183, 156, 0.18);
+/* Karty cech po prawej zsynchronizowane 1:1 z warstwami stosu */
+.panel-cechy {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  min-width: 0;
-}
-
-.panel-podsekcja-tytul {
-  margin: 0 !important;
-  font-size: 0.875rem !important;
-  font-weight: 600;
-  color: #FFFFFF !important;
-}
-
-.panel-silniki-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.panel-silnik-wiersz {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.panel-silnik-nagl {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.panel-silnik-nazwa {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #FFFFFF;
-}
-
-.panel-silnik-proc {
-  font-family: var(--w-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #6EE7B7;
-  font-variant-numeric: tabular-nums;
-}
-
-.panel-silnik-szczegol,
-.panel-mapy-podpis {
-  margin: 0 !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  color: rgba(255, 255, 255, 0.62) !important;
-}
-
-.panel-mapy-nagl {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.panel-siatka-7x7 {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 6px;
-}
-
-.panel-punkt-mapy {
-  display: grid;
-  place-items: center;
-  height: 30px;
-  border-radius: 8px;
-  font-family: var(--w-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-
-.panel-punkt-mapy.is-top3 {
-  background: rgba(16, 185, 129, 0.18);
-  border: 1px solid rgba(52, 211, 153, 0.42);
-  color: #A7F3D0;
-}
-
-.panel-punkt-mapy.is-mid {
-  background: rgba(216, 90, 48, 0.16);
-  border: 1px solid rgba(243, 183, 156, 0.34);
-  color: #FF9E7A;
-}
-
-/* 3 karty Bento Micro-UI pod kokpitem (statyczne karty dowodowe bez falszywej afordancji hover) */
-.panel-bento-siatka {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 16px;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.panel-bento-karta {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 24px;
-  border-radius: 24px;
-  background: rgba(14, 24, 64, 0.94);
-  border: 1px solid rgba(243, 183, 156, 0.22);
-  min-width: 0;
+.panel-cecha {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.052) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(243, 183, 156, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 18px 20px 20px;
+  cursor: pointer;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.panel-bento-gora {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.panel-cecha:hover {
+  border-color: rgba(243, 183, 156, 0.34);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.028) 100%);
 }
 
-.panel-bento-wiersz-ikony {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+.panel-cecha.is-active {
+  background: linear-gradient(155deg, rgba(216, 90, 48, 0.13) 0%, rgba(255, 255, 255, 0.035) 100%);
+  border-color: rgba(216, 90, 48, 0.56);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 196, 172, 0.18),
+    0 16px 36px -14px rgba(2, 5, 20, 0.65);
 }
 
 .panel-cecha-ikona {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid rgba(243, 183, 156, 0.18);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(243, 183, 156, 0.2);
   background: rgba(216, 90, 48, 0.14);
   color: #FF9E7A;
   display: grid;
   place-items: center;
-  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.panel-bento-odznaka {
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: rgba(216, 90, 48, 0.14);
-  color: #FF9E7A;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
+.panel-cecha.is-active .panel-cecha-ikona {
+  background: rgba(216, 90, 48, 0.26);
+  border-color: rgba(255, 158, 122, 0.52);
+  color: #FFD0BD;
+  box-shadow: 0 0 20px rgba(216, 90, 48, 0.25);
 }
 
-.panel-bento-odznaka.is-szmaragd {
-  background: rgba(16, 185, 129, 0.14);
-  color: #6EE7B7;
+.panel-cecha-tresc {
+  min-width: 0;
 }
 
-.panel-bento-karta h3 {
-  color: #FFFFFF !important;
-  font-size: 1.1875rem !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.02em;
-  line-height: 1.3 !important;
-  margin: 0 !important;
-}
-
-.panel-bento-karta > .panel-bento-gora > p {
-  color: rgba(255, 255, 255, 0.72) !important;
-  margin: 0 !important;
-  line-height: 1.52 !important;
-  font-size: 0.9rem;
-}
-
-.panel-mikro-ciemne {
-  padding: 15px 16px;
-  border-radius: 16px;
-  background: #080F29;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.panel-mikro-sla-wiersz {
+.panel-cecha-meta {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #FFFFFF;
+  margin-bottom: 5px;
 }
 
-.panel-mikro-sla-wiersz i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.panel-mikro-sla-wiersz i.is-zielony { background: #34D399; }
-.panel-mikro-sla-wiersz i.is-pomarancz { background: #D85A30; }
-
-.panel-mikro-commit-meta {
-  margin: 0 !important;
+.panel-cecha-nr {
   font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  color: #6EE7B7 !important;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.44);
+  font-variant-numeric: tabular-nums;
 }
 
-.panel-mikro-commit-tytul {
-  margin: 0 !important;
-  font-size: 0.875rem !important;
-  font-weight: 600;
+.panel-cecha.is-active .panel-cecha-nr {
+  color: #FF9E7A;
+}
+
+.panel-cecha-plakietka {
+  padding: 1.5px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.66);
+  font-family: var(--w-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.03em;
+}
+
+.panel-cecha.is-active .panel-cecha-plakietka {
+  background: rgba(216, 90, 48, 0.2);
+  color: #FFB699;
+}
+
+.panel-cecha h3 {
   color: #FFFFFF !important;
+  font-size: 1.22rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.35rem !important;
 }
 
-.panel-mikro-commit-lista {
-  margin: 0;
-  padding-left: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  font-size: 0.75rem;
-  line-height: 1.48;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.panel-mikro-kremowe {
-  padding: 15px 16px;
-  border-radius: 16px;
-  background: #FFFCF8;
-  border: 1px solid rgba(216, 90, 48, 0.35);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.panel-mikro-kremowe-tytul {
+.panel-cecha p {
+  color: var(--w-noc-tekst) !important;
   margin: 0 !important;
-  font-size: 0.875rem !important;
-  font-weight: 600;
-  color: #1E1E1E !important;
+  line-height: 1.55 !important;
+  font-size: 0.95rem;
 }
 
-.panel-mikro-kremowe-meta {
-  margin: 0 !important;
-  font-family: var(--w-mono);
-  font-size: 0.6875rem !important;
-  color: #5E554D !important;
+@keyframes w-pasek-panelu {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
-.panel-mikro-kremowe-przyciski {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 2px;
+.panel-cecha-postep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #D85A30, #FF9E7A);
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
 }
 
-.panel-mikro-pigulka-glowna {
-  padding: 7px 13px;
-  border-radius: 999px;
-  background: #C94E24;
-  color: #FFFFFF;
-  font-size: 0.75rem;
-  font-weight: 600;
+.panel-cecha.is-active .panel-cecha-postep {
+  opacity: 0.9;
+  transform: scaleX(1);
 }
 
-.panel-mikro-pigulka-jasna {
-  padding: 7px 13px;
-  border-radius: 999px;
-  background: #F6EFE6;
-  border: 1px solid rgba(30, 30, 30, 0.16);
-  color: #1E1E1E;
-  font-size: 0.75rem;
-  font-weight: 500;
+.panel-cecha.is-active .panel-cecha-postep.is-running {
+  animation: w-pasek-panelu 4.6s linear forwards;
 }
 
 /* --- Cennik (components/Pricing.jsx - takze na podstronach) --- */
@@ -2639,26 +1958,11 @@ section#contact.contact {
    RESPONSYWNOSC
    ========================================================================== */
 @media (max-width: 1100px) {
-  .panel-showcase .section-header.panel-naglowek-sceny {
-    flex-direction: column;
-    align-items: flex-start;
+  .panel-uklad {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
-  .panel-naglowek-prawa {
-    align-items: flex-start;
-  }
-  .panel-zakladki {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-radius: 22px;
-  }
-  .panel-kokpit-cialo {
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 0;
-  }
-  .panel-kokpit-bok {
-    display: none;
-  }
-  .panel-bento-siatka {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .panel-uklad > .section-header {
+    grid-column: 1 / -1;
   }
 }
 
@@ -2686,19 +1990,89 @@ section#contact.contact {
     padding-top: 72vw !important;
   }
 
-  .panel-kpi-siatka,
-  .panel-notatka-siatka,
-  .panel-ai-mapy-uklad,
-  .panel-bento-siatka {
+  .panel-uklad {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .panel-zakladka-pelna {
+  .panel-mobile-przelacznik {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding: 5px;
+    margin-bottom: 14px;
+    border-radius: 999px;
+    background: rgba(6, 11, 34, 0.84);
+    border: 1px solid rgba(243, 183, 156, 0.24);
+  }
+
+  .panel-mobile-pigulka {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    padding: 9px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.72);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .panel-mobile-pigulka.is-active {
+    background: rgba(216, 90, 48, 0.22);
+    border-color: rgba(216, 90, 48, 0.72);
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  .panel-mobile-nr {
+    font-family: var(--w-mono);
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.46);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .panel-mobile-pigulka.is-active .panel-mobile-nr {
+    color: #FF9E7A;
+  }
+
+  .panel-stos {
+    height: auto;
+    display: grid;
+  }
+
+  .panel-stos-cien {
     display: none;
   }
 
-  .panel-zakladka-krotka {
-    display: inline;
+  .panel-warstwa {
+    grid-area: 1 / 1;
+    position: relative;
+    left: auto;
+    top: auto !important;
+    width: 100%;
+    transform: none !important;
+    opacity: 0;
+    scale: 0.975;
+    pointer-events: none;
+    transition: opacity 0.42s ease, scale 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .panel-warstwa.is-active {
+    opacity: 1;
+    scale: 1;
+    pointer-events: auto;
+    z-index: 4;
+  }
+
+  .panel-okno-plakietka {
+    display: none;
   }
 
   .faq-apple--panel .faq-apple-uklad {
@@ -3029,22 +2403,18 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
   .gory-oferta .service-card--geo .oferta-ilustracja { animation-delay: -1.2s; }
   .gory-oferta .service-card:hover .oferta-ilustracja { animation-play-state: paused; }
 
-  /* Panel klienta: warstwy oddychaja wzdluz swojej normalnej (translateZ
-     w tej samej transformacji co obrot), najechanie rozsuwa stos osobna
-     wlasciwoscia `translate`. Tylko uklad izometryczny (od 901 px). */
-  @keyframes w-oddech-warstwy {
-    0%, 100% { transform: perspective(2400px) rotateX(52deg) rotateZ(-32deg) translateZ(0); }
-    50% { transform: perspective(2400px) rotateX(52deg) rotateZ(-32deg) translateZ(16px); }
+  /* Panel klienta: plyty kart oddychaja wlasciwoscia `translate` (nie koliduje
+     z `transition: transform` odpowiedzialnym za plynne rozsuwanie 3D warstw). */
+  @keyframes w-oddech-plyty {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -8px; }
   }
   @media (min-width: 901px) {
-    .panel-warstwa {
-      animation: w-oddech-warstwy 6s ease-in-out infinite;
-      transition: translate var(--w-ruch-sredni) var(--w-ruch-ease), box-shadow var(--w-ruch-sredni) var(--w-ruch-ease);
+    .panel-warstwa-plyta {
+      animation: w-oddech-plyty 6.4s ease-in-out infinite;
     }
-    .panel-warstwa--1 { animation-delay: -2s; }
-    .panel-warstwa--2 { animation-delay: -4s; }
-    .panel-stos:hover .panel-warstwa--0 { translate: 0 -34px; }
-    .panel-stos:hover .panel-warstwa--2 { translate: 0 30px; }
+    .panel-warstwa-plyta--1 { animation-delay: -2.1s; }
+    .panel-warstwa-plyta--2 { animation-delay: -4.2s; }
   }
 
   /* Poziomice cennika dryfuja powoli */
@@ -3095,7 +2465,7 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
 
     .portfolio-mosaic-tile,
     .oferta-ilustracja,
-    .panel-kokpit {
+    .panel-stos {
       animation: w-wejscie-skala linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 80%;
@@ -3723,41 +3093,19 @@ main:has(.gory-oferta) .panel-showcase {
   border-radius: 16px !important;
 }
 
-/* (31) Panel klienta: przyciski obok siebie na desktopie, pelna szerokosc na telefonie */
+/* (31) Panel klienta: szersza kolumna tekstu i pelna szerokosc 2 przyciskow w lewej kolumnie */
+@media (min-width: 1101px) {
+  .panel-uklad {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.16fr) minmax(0, 0.88fr);
+  }
+}
+
 .panel-showcase .section-header h2 {
   font-size: clamp(2.2rem, 3.2vw, 3rem) !important;
 }
 
 .panel-akcje .w-przycisk {
-  flex: 0 1 auto;
-}
-
-@media (max-width: 640px) {
-  .panel-naglowek-prawa,
-  .panel-akcje {
-    width: 100%;
-  }
-  .panel-akcje .w-przycisk {
-    flex: 1 1 100%;
-    justify-content: center;
-  }
-  .panel-tag-pigulka {
-    font-size: 0.68rem !important;
-    white-space: normal;
-  }
-  .panel-kokpit {
-    border-radius: 22px;
-  }
-  .panel-kokpit-pasek {
-    padding: 11px 14px;
-  }
-  .panel-telemetria--api {
-    display: none;
-  }
-  .panel-pineska {
-    font-size: 0.65rem;
-    white-space: normal;
-  }
+  flex: 1 1 100%;
 }
 
 /* (12) Cien kart cennika liczony z calej siatki naraz (drop-shadow na
