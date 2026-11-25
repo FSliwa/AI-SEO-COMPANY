@@ -6,6 +6,7 @@ import HeroKlienci from '@/components/HeroKlienci';
 import WhyUs from '@/components/WhyUs';
 import Results from '@/components/Results';
 import DarmoweNarzedzia from '@/components/DarmoweNarzedzia';
+import PanelShowcase from '@/components/PanelShowcase';
 import PasekCtaMobile from '@/components/PasekCtaMobile';
 import { Abschnitt, Absatz, Liste, Karten, Preise, Referenzen, Faq } from './UslugiBausteine';
 import { HOME_LEISTUNGEN, HOME_VORTEILE, HOME_SCHRITTE, HOME_FAQ } from '@/lib/de/home';
@@ -48,6 +49,8 @@ export default function HomeDe() {
 
           <Preise id="cennik" titel="Transparente Pakete ohne versteckte Kosten" />
         </div>
+
+        <PanelShowcase locale="de" />
 
         <div className="w-noc-panele" data-kursor="ciemne">
           <Faq

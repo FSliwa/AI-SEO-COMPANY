@@ -420,11 +420,17 @@ export function PrzekierowaniaHreflangClientDe() {
                         ? v.skoki
                         : [{ url: v.startUrl, status: v.statusKoncowy }];
                       const ileSkokow = Number(v.liczbaSkokow ?? Math.max(0, skoki.length - 1));
+                      const etykietaWariantu = ({
+                        http_bez_www: 'http:// (ohne www)',
+                        http_z_www: 'http://www.',
+                        https_bez_www: 'https:// (ohne www)',
+                        https_z_www: 'https://www.',
+                      })[v.wariant] || v.wariant || v.startUrl;
                       return (
                         <tr key={v.startUrl || idx}>
                           <th scope="row" style={{ textAlign: 'left' }}>
                             <span className="narz-silnik" style={{ fontFamily: 'var(--w-mono, monospace)', fontSize: '0.86rem' }}>
-                              {v.wariant || v.startUrl}
+                              {etykietaWariantu}
                             </span>
                             {v.wariant && v.startUrl && <span className="narz-mikro">{v.startUrl}</span>}
                           </th>

@@ -1035,112 +1035,1113 @@ section#contact.contact {
   color: #FFFFFF;
 }
 
-/* --- Panel klienta (components/PanelShowcase.jsx) --- */
-.panel-uklad {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr) minmax(0, 0.9fr);
-  gap: clamp(24px, 3vw, 48px);
-  align-items: center;
+/* --- Panel klienta: Interactive Cockpit Stage + Bento Micro-UIs (25.11.2026) --- */
+.panel-showcase {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
 
-.panel-showcase .section-header {
-  margin-bottom: 0 !important;
+.panel-poziomice-blask {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.panel-blask {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(95px);
+}
+
+.panel-blask--prawy {
+  width: 560px;
+  height: 420px;
+  right: -60px;
+  top: 90px;
+  background: rgba(216, 90, 48, 0.14);
+}
+
+.panel-blask--lewy {
+  width: 580px;
+  height: 460px;
+  left: -90px;
+  top: 560px;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.panel-scena-kontener {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 2.6vw, 36px);
+}
+
+.panel-showcase .section-header.panel-naglowek-sceny {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 3vw, 48px);
+  max-width: 100% !important;
+  margin: 0 !important;
+  text-align: left;
+}
+
+.panel-naglowek-lewa {
+  max-width: 700px;
+  min-width: 0;
+}
+
+.panel-tag-pigulka {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(216, 90, 48, 0.14);
+  border: 1px solid rgba(243, 183, 156, 0.28);
+  font-family: var(--w-mono);
+  font-size: 0.75rem !important;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #FF9E7A !important;
+  margin-bottom: 1rem !important;
+}
+
+.panel-kropka-zywa {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+  flex-shrink: 0;
 }
 
 .panel-showcase .section-header h2 {
   color: #FFFFFF !important;
-  font-size: clamp(2.2rem, 3.6vw, 3.5rem) !important;
+  font-size: clamp(2.2rem, 3.3vw, 2.95rem) !important;
+  line-height: 1.09 !important;
+  letter-spacing: -0.038em;
+  margin: 0 0 1rem !important;
 }
 
 .panel-showcase .section-header p {
   color: var(--w-noc-tekst) !important;
   font-size: 1.0625rem !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.panel-naglowek-prawa {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.85rem;
+  flex-shrink: 0;
 }
 
 .panel-akcje {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
-/* Stos zrzutow panelu w rzucie izometrycznym (makieta: warstwy AISEO) */
-.panel-stos {
-  position: relative;
-  height: clamp(420px, 44vw, 640px);
-  margin: 0;
+.panel-showcase .panel-zaufanie {
+  font-family: var(--w-mono);
+  font-size: 0.72rem !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin: 0 !important;
 }
 
-.panel-warstwa {
-  position: absolute;
-  left: 6%;
-  width: 88%;
-  margin: 0;
-  border-radius: 18px;
+/* Interaktywne zakladki nad kokpitem */
+.panel-zakladki {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(6, 11, 34, 0.82);
+  border: 1px solid rgba(243, 183, 156, 0.22);
+}
+
+.panel-zakladka {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.74);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.panel-zakladka:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.panel-zakladka:focus-visible {
+  outline: 2px solid #FF9E7A;
+  outline-offset: 2px;
+}
+
+.panel-zakladka.is-active {
+  background: linear-gradient(188deg, rgba(216, 90, 48, 0.28) 14%, rgba(216, 90, 48, 0.14) 86%);
+  border-color: rgba(216, 90, 48, 0.78);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.panel-zakladka-nr {
+  font-family: var(--w-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.46);
+  font-variant-numeric: tabular-nums;
+}
+
+.panel-zakladka.is-active .panel-zakladka-nr {
+  color: #FF9E7A;
+}
+
+.panel-zakladka-pelna {
   overflow: hidden;
-  transform: perspective(2400px) rotateX(52deg) rotateZ(-32deg);
-  transform-origin: center;
-  border: 1px solid rgba(243, 183, 156, 0.45);
-  box-shadow:
-    0 2px 0 0 rgba(216, 90, 48, 0.85),
-    0 40px 70px rgba(2, 4, 18, 0.65);
-  background: #FFFFFF;
+  text-overflow: ellipsis;
 }
 
-.panel-warstwa img {
+.panel-zakladka-krotka {
+  display: none;
+}
+
+.panel-zakladka-licznik {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #D85A30;
+  color: #FFFFFF;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Glowna scena aplikacji (kokpit 1:1) */
+.panel-kokpit {
+  background: #0D163A;
+  border: 1px solid rgba(243, 183, 156, 0.30);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 36px rgba(216, 90, 48, 0.12),
+    0 36px 76px -12px rgba(2, 5, 19, 0.65);
+}
+
+.panel-kokpit-pasek {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 13px 22px;
+  background: #080F29;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.panel-kokpit-pasek-lewa,
+.panel-kokpit-pasek-prawa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.panel-okno-kropki {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.panel-okno-kropki i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.panel-kokpit-url {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  font-family: var(--w-mono);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.panel-telemetria {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+
+.panel-telemetria--ok {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  color: #A7F3D0;
+}
+
+.panel-telemetria--ok i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34D399;
+}
+
+.panel-telemetria--api {
+  background: rgba(216, 90, 48, 0.12);
+  border: 1px solid rgba(243, 183, 156, 0.24);
+  color: #FF9E7A;
+}
+
+.panel-kokpit-cialo {
+  display: grid;
+  grid-template-columns: 244px minmax(0, 1fr);
+  min-height: 540px;
+}
+
+.panel-kokpit-bok {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px;
+  background: #09102B;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.panel-klient-wizytowka {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(243, 183, 156, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.panel-klient-nazwa {
+  margin: 0 !important;
+  font-size: 0.875rem !important;
+  font-weight: 600;
+  color: #FFFFFF !important;
+}
+
+.panel-klient-domena {
+  margin: 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  color: rgba(255, 255, 255, 0.56) !important;
+}
+
+.panel-klient-pakiet {
+  margin: 2px 0 0 !important;
+  font-size: 0.6875rem !important;
+  color: #FF9E7A !important;
+}
+
+.panel-naw-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.panel-naw-pozycja {
+  appearance: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.68);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.panel-naw-pozycja:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+}
+
+.panel-naw-pozycja.is-active {
+  background: rgba(216, 90, 48, 0.18);
+  border-color: rgba(216, 90, 48, 0.45);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.panel-naw-odznaka {
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--w-mono);
+  font-size: 0.625rem;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.panel-naw-odznaka.is-pilne {
+  background: #D85A30;
+  color: #FFFFFF;
+}
+
+.panel-kokpit-obszar {
+  background: #0E173D;
+  padding: clamp(20px, 2.4vw, 28px);
+  min-width: 0;
+}
+
+.panel-widok {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel-widok-naglowek {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.panel-widok-nadtytul {
+  margin: 0 0 4px !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  letter-spacing: 0.06em;
+  color: #FF9E7A !important;
+}
+
+.panel-widok-tytul {
+  margin: 0 !important;
+  font-size: clamp(1.125rem, 1.5vw, 1.3125rem) !important;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3 !important;
+  color: #FFFFFF !important;
+}
+
+.panel-zakres-przelacznik {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #080F29;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  flex-wrap: wrap;
+}
+
+.panel-zakres-przycisk {
+  appearance: none;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.64);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.panel-zakres-przycisk.is-active {
+  background: rgba(255, 255, 255, 0.13);
+  color: #FFFFFF;
+}
+
+/* Karty KPI w kokpicie */
+.panel-kpi-siatka {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.panel-kpi-karta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(10, 17, 46, 0.85);
+  border: 1px solid rgba(243, 183, 156, 0.16);
+  min-width: 0;
+}
+
+.panel-kpi-karta.is-primary {
+  background: linear-gradient(218deg, rgba(24, 39, 94, 0.95) 14%, rgba(17, 28, 70, 0.95) 86%);
+  border-color: rgba(216, 90, 48, 0.65);
+}
+
+.panel-kpi-etykieta {
+  margin: 0 !important;
+  font-size: 0.8125rem !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.panel-kpi-wiersz {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.panel-kpi-liczba {
+  font-size: clamp(1.85rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel-kpi-delta {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.30);
+  font-family: var(--w-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #6EE7B7;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel-kpi-pasek {
+  width: 100%;
+  height: 7px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.10);
+  overflow: hidden;
+}
+
+.panel-kpi-pasek > span {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #D85A30, #FF9E7A);
+}
+
+.panel-kpi-pasek > span.is-szmaragd {
+  background: linear-gradient(90deg, #10B981, #6EE7B7);
+}
+
+.panel-kpi-cel {
+  margin: 0 !important;
+  font-size: 0.75rem !important;
+  font-weight: 500;
+  color: #FF9E7A !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel-kpi-podpis {
+  margin: auto 0 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  color: rgba(255, 255, 255, 0.58) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Wykres klikniec GSC + pineski dzialan */
+.panel-wykres-karta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: rgba(9, 16, 43, 0.95);
+  border: 1px solid rgba(243, 183, 156, 0.18);
+}
+
+.panel-wykres-naglowek {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.panel-wykres-tytul {
+  margin: 0 !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600;
+  color: #FFFFFF !important;
+}
+
+.panel-wykres-legenda,
+.panel-mapy-legenda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.panel-legenda-punkt {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.panel-legenda-punkt i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.panel-legenda-punkt i.is-zielony { background: #34D399; }
+.panel-legenda-punkt i.is-pomarancz { background: #D85A30; }
+
+.panel-wykres-pineski {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.panel-pineska {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(20, 31, 74, 0.96);
+  font-family: var(--w-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+
+.panel-pineska i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.panel-pineska--pomarancz {
+  border: 1px solid rgba(216, 90, 48, 0.72);
+  color: #FF9E7A;
+}
+
+.panel-pineska--pomarancz i { background: #D85A30; }
+
+.panel-pineska--zielona {
+  border: 1px solid rgba(52, 211, 153, 0.55);
+  color: #A7F3D0;
+}
+
+.panel-pineska--zielona i { background: #34D399; }
+
+.panel-wykres-svg-ramka {
+  width: 100%;
+  overflow: hidden;
+}
+
+.panel-wykres-svg {
   display: block;
   width: 100%;
   height: auto;
+  max-height: 176px;
 }
 
-.panel-warstwa--0 { top: 0; z-index: 3; }
-.panel-warstwa--1 { top: 30%; z-index: 2; }
-.panel-warstwa--2 { top: 60%; z-index: 1; }
+/* Notatka opiekuna (Co sie stalo / Dlaczego / Co dalej) */
+.panel-notatka-siatka {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
 
-.panel-cechy {
+.panel-notatka-kolumna {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  gap: 5px;
+  min-width: 0;
 }
 
-.panel-cecha {
+.panel-notatka-etykieta {
+  margin: 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #FF9E7A !important;
+}
+
+.panel-notatka-tekst {
+  margin: 0 !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Widoki zakladek 02, 03, 04 */
+.panel-lista-kart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-wpis-ciemny {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(8, 15, 41, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.panel-wpis-meta {
+  margin: 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  color: #6EE7B7 !important;
+}
+
+.panel-wpis-tytul {
+  margin: 0 !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600;
+  color: #FFFFFF !important;
+}
+
+.panel-wpis-opis {
+  margin: 0 !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.panel-wpis-kremowy {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #FFFCF8;
+  border: 1px solid rgba(216, 90, 48, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.panel-wpis-kremowy-meta {
+  margin: 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  font-weight: 500;
+  color: #C94E24 !important;
+}
+
+.panel-wpis-kremowy-tytul {
+  margin: 0 !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600;
+  color: #1E1E1E !important;
+}
+
+.panel-wpis-kremowy-opis {
+  margin: 0 !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  color: #4A433C !important;
+}
+
+.panel-wpis-akcje {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.panel-btn-akceptuj {
+  appearance: none;
+  padding: 8px 15px;
+  border-radius: 999px;
+  border: 0;
+  background: #C94E24;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.panel-btn-jasny {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(30, 30, 30, 0.18);
+  background: #F6EFE6;
+  color: #1E1E1E;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.panel-zatwierdzono-odznaka {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #065F46;
+  font-family: var(--w-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.panel-zatwierdzono-odznaka i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+}
+
+.panel-widok-stopka {
+  margin: 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  color: rgba(255, 255, 255, 0.58) !important;
+}
+
+/* Zakladka 04: Widocznosc AI + Mapy 7x7 */
+.panel-ai-mapy-uklad {
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  gap: 1rem;
-  align-items: start;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(243, 183, 156, 0.18);
-  border-radius: 20px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 20px;
+}
+
+.panel-ai-kolumna,
+.panel-mapy-kolumna {
   padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(8, 15, 41, 0.92);
+  border: 1px solid rgba(243, 183, 156, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.panel-podsekcja-tytul {
+  margin: 0 !important;
+  font-size: 0.875rem !important;
+  font-weight: 600;
+  color: #FFFFFF !important;
+}
+
+.panel-silniki-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-silnik-wiersz {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.panel-silnik-nagl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.panel-silnik-nazwa {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.panel-silnik-proc {
+  font-family: var(--w-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #6EE7B7;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel-silnik-szczegol,
+.panel-mapy-podpis {
+  margin: 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+.panel-mapy-nagl {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.panel-siatka-7x7 {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.panel-punkt-mapy {
+  display: grid;
+  place-items: center;
+  height: 30px;
+  border-radius: 8px;
+  font-family: var(--w-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel-punkt-mapy.is-top3 {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(52, 211, 153, 0.42);
+  color: #A7F3D0;
+}
+
+.panel-punkt-mapy.is-mid {
+  background: rgba(216, 90, 48, 0.16);
+  border: 1px solid rgba(243, 183, 156, 0.34);
+  color: #FF9E7A;
+}
+
+/* 3 karty Bento Micro-UI pod kokpitem (statyczne karty dowodowe bez falszywej afordancji hover) */
+.panel-bento-siatka {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.panel-bento-karta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(14, 24, 64, 0.94);
+  border: 1px solid rgba(243, 183, 156, 0.22);
+  min-width: 0;
+}
+
+.panel-bento-gora {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel-bento-wiersz-ikony {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .panel-cecha-ikona {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 10px;
   border: 1px solid rgba(243, 183, 156, 0.18);
   background: rgba(216, 90, 48, 0.14);
   color: #FF9E7A;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
 }
 
-.panel-cecha h3 {
+.panel-bento-odznaka {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(216, 90, 48, 0.14);
+  color: #FF9E7A;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+
+.panel-bento-odznaka.is-szmaragd {
+  background: rgba(16, 185, 129, 0.14);
+  color: #6EE7B7;
+}
+
+.panel-bento-karta h3 {
   color: #FFFFFF !important;
-  font-size: 1.25rem !important;
+  font-size: 1.1875rem !important;
   font-weight: 600 !important;
-  letter-spacing: -0.025em;
-  margin: 0 0 0.35rem !important;
+  letter-spacing: -0.02em;
+  line-height: 1.3 !important;
+  margin: 0 !important;
 }
 
-.panel-cecha p {
-  color: var(--w-noc-tekst) !important;
+.panel-bento-karta > .panel-bento-gora > p {
+  color: rgba(255, 255, 255, 0.72) !important;
   margin: 0 !important;
-  line-height: 1.55 !important;
-  font-size: 0.975rem;
+  line-height: 1.52 !important;
+  font-size: 0.9rem;
+}
+
+.panel-mikro-ciemne {
+  padding: 15px 16px;
+  border-radius: 16px;
+  background: #080F29;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.panel-mikro-sla-wiersz {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.panel-mikro-sla-wiersz i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.panel-mikro-sla-wiersz i.is-zielony { background: #34D399; }
+.panel-mikro-sla-wiersz i.is-pomarancz { background: #D85A30; }
+
+.panel-mikro-commit-meta {
+  margin: 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  color: #6EE7B7 !important;
+}
+
+.panel-mikro-commit-tytul {
+  margin: 0 !important;
+  font-size: 0.875rem !important;
+  font-weight: 600;
+  color: #FFFFFF !important;
+}
+
+.panel-mikro-commit-lista {
+  margin: 0;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.75rem;
+  line-height: 1.48;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.panel-mikro-kremowe {
+  padding: 15px 16px;
+  border-radius: 16px;
+  background: #FFFCF8;
+  border: 1px solid rgba(216, 90, 48, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.panel-mikro-kremowe-tytul {
+  margin: 0 !important;
+  font-size: 0.875rem !important;
+  font-weight: 600;
+  color: #1E1E1E !important;
+}
+
+.panel-mikro-kremowe-meta {
+  margin: 0 !important;
+  font-family: var(--w-mono);
+  font-size: 0.6875rem !important;
+  color: #5E554D !important;
+}
+
+.panel-mikro-kremowe-przyciski {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.panel-mikro-pigulka-glowna {
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: #C94E24;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.panel-mikro-pigulka-jasna {
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: #F6EFE6;
+  border: 1px solid rgba(30, 30, 30, 0.16);
+  color: #1E1E1E;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 /* --- Cennik (components/Pricing.jsx - takze na podstronach) --- */
@@ -1638,10 +2639,27 @@ section#contact.contact {
    RESPONSYWNOSC
    ========================================================================== */
 @media (max-width: 1100px) {
-  .panel-uklad {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  .panel-showcase .section-header.panel-naglowek-sceny {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .panel-uklad > .section-header { grid-column: 1 / -1; }
+  .panel-naglowek-prawa {
+    align-items: flex-start;
+  }
+  .panel-zakladki {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-radius: 22px;
+  }
+  .panel-kokpit-cialo {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .panel-kokpit-bok {
+    display: none;
+  }
+  .panel-bento-siatka {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 900px) {
@@ -1668,22 +2686,19 @@ section#contact.contact {
     padding-top: 72vw !important;
   }
 
-  .panel-uklad {
+  .panel-kpi-siatka,
+  .panel-notatka-siatka,
+  .panel-ai-mapy-uklad,
+  .panel-bento-siatka {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .panel-stos {
-    height: auto;
-    display: grid;
-    gap: 1rem;
+  .panel-zakladka-pelna {
+    display: none;
   }
 
-  .panel-warstwa {
-    position: relative;
-    left: auto;
-    top: auto !important;
-    width: 100%;
-    transform: none;
+  .panel-zakladka-krotka {
+    display: inline;
   }
 
   .faq-apple--panel .faq-apple-uklad {
@@ -2080,7 +3095,7 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
 
     .portfolio-mosaic-tile,
     .oferta-ilustracja,
-    .panel-stos {
+    .panel-kokpit {
       animation: w-wejscie-skala linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 80%;
@@ -2708,19 +3723,41 @@ main:has(.gory-oferta) .panel-showcase {
   border-radius: 16px !important;
 }
 
-/* (31) Panel klienta: szersza kolumna tekstu */
-@media (min-width: 1101px) {
-  .panel-uklad {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.15fr) minmax(0, 0.85fr);
-  }
-}
-
+/* (31) Panel klienta: przyciski obok siebie na desktopie, pelna szerokosc na telefonie */
 .panel-showcase .section-header h2 {
   font-size: clamp(2.2rem, 3.2vw, 3rem) !important;
 }
 
 .panel-akcje .w-przycisk {
-  flex: 1 1 100%;
+  flex: 0 1 auto;
+}
+
+@media (max-width: 640px) {
+  .panel-naglowek-prawa,
+  .panel-akcje {
+    width: 100%;
+  }
+  .panel-akcje .w-przycisk {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  .panel-tag-pigulka {
+    font-size: 0.68rem !important;
+    white-space: normal;
+  }
+  .panel-kokpit {
+    border-radius: 22px;
+  }
+  .panel-kokpit-pasek {
+    padding: 11px 14px;
+  }
+  .panel-telemetria--api {
+    display: none;
+  }
+  .panel-pineska {
+    font-size: 0.65rem;
+    white-space: normal;
+  }
 }
 
 /* (12) Cien kart cennika liczony z calej siatki naraz (drop-shadow na

@@ -20,6 +20,7 @@ import Ozdoba from './Ozdoba';
 import NawBok from './NawBok';
 import CoDostajesz from './CoDostajesz';
 import Sekcja from './Sekcja';
+import Poradniki from './Poradniki';
 import PozostaleNarzedzia from './PozostaleNarzedzia';
 import PorownywarkaCwvClient from './PorownywarkaCwvClient';
 import st from './narzedzia.module.css';
@@ -295,6 +296,7 @@ export function PorownywarkaCwvStrona({ locale = 'pl' } = {}) {
                 </>
               )}
 
+              <Poradniki narzedzie="/narzedzia/test-core-web-vitals-porownanie" locale={locale} />
               <PozostaleNarzedzia bez="/narzedzia/test-core-web-vitals-porownanie" locale={locale} />
             </div>
             <NawBok rootId="nw-tresc" />

@@ -20,6 +20,7 @@ import Ozdoba from './Ozdoba';
 import NawBok from './NawBok';
 import CoDostajesz from './CoDostajesz';
 import Sekcja from './Sekcja';
+import Poradniki from './Poradniki';
 import PozostaleNarzedzia from './PozostaleNarzedzia';
 import TesterRobotowAiClient from './TesterRobotowAiClient';
 import st from './narzedzia.module.css';
@@ -324,6 +325,7 @@ export function TesterRobotowAiStrona({ locale = 'pl' } = {}) {
                 </>
               )}
 
+              <Poradniki narzedzie="/narzedzia/tester-robotow-ai-robots-txt" locale={locale} />
               <PozostaleNarzedzia bez="/narzedzia/tester-robotow-ai-robots-txt" locale={locale} />
             </div>
             <NawBok rootId="nw-tresc" />

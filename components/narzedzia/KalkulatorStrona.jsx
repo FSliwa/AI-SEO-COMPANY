@@ -257,7 +257,7 @@ function KalkulatorEn() {
         description: 'A free calculator that estimates how much profit a business or an online shop loses each month without top 3 Google positions and without recommendations in AI answers, based on its data, Google CTR studies and studies of clicks from AI answers, and after how many months the cost of SEO pays back.',
         category: 'BusinessApplication',
         screenshot: schemaZrzutu(ZRZUT.en),
-        featureList: ['Loss in Google and in AI answers', 'A range from studies of clicks in Google and in AI answers', 'Monthly and yearly result in PLN', 'SEO cost and payback month for a package from our pricing or your own amount', 'Online shop mode: average order value, gross margin and returning customers'],
+        featureList: ['Loss in Google and in AI answers', 'A range from studies of clicks in Google and in AI answers', 'Monthly and yearly result in USD, EUR, GBP or PLN', 'SEO cost and payback month for a package from our pricing or your own amount', 'Online shop mode: average order value, gross margin and returning customers'],
       }}
       lead="Enter five numbers about your business or online shop and the calculator instantly shows the range of monthly profit you lose without a Google top 3 position and AI recommendations. Pick a package and it works as an SEO ROI calculator too: you see the monthly balance after the SEO cost and the month in which SEO pays back."
       narzedzie={<KalkulatorClient />}
@@ -302,7 +302,7 @@ function KalkulatorEn() {
       </Sekcja>
 
       <Sekcja id="cost-and-payback" tytul="Will SEO pay off: cost and payback month">
-        <p style={s.akapit}>Under the result you pick a package from our <Link href={cennik} style={s.podkreslenie}>SEO pricing</Link> or enter your own amount, for example another agency’s quote. The calculator works in Polish zloty, so we use the PLN prices (with the euro prices from our English pricing in brackets), net per month: SEO Standard from {pakiet('seoStandard')}, SEO Premium {pakiet('seoPremium')}, Booster Pack {pakiet('boosterPack')} ({CENY.boosterPack.umowaMiesiecy}-month minimum, new website included). For a “from” price we use the starting amount.</p>
+        <p style={s.akapit}>Under the result you pick a currency (USD, EUR, GBP or PLN) and choose a package from our <Link href={cennik} style={s.podkreslenie}>SEO pricing</Link> or enter your own monthly retainer, for example another agency’s quote. Reference monthly net prices: SEO Standard from {pakiet('seoStandard')}, SEO Premium {pakiet('seoPremium')}, Booster Pack {pakiet('boosterPack')} ({CENY.boosterPack.umowaMiesiecy}-month minimum, new website included). For a “from” price we use the starting amount.</p>
         <ol style={s.lista}>
           <li><strong>Monthly balance:</strong> the recovered profit at full effect minus the package cost. We show it for both loss variants.</li>
           <li><strong>Build-up:</strong> rankings do not grow from day one, so we assume the recovered profit grows evenly over the number of months you choose (default {ZWROT.miesiaceDoEfektu.domyslnie}, from {ZWROT.miesiaceDoEfektu.min} to {ZWROT.miesiaceDoEfektu.max}) and then stays flat. The default of {ZWROT.miesiaceDoEfektu.domyslnie} months is our assumption, not a study result. According to Ahrefs (2025), 1.74% of newly published pages reach Google’s top 10 within a year and 72.9% of top 10 pages are more than 3 years old, so with a new domain set more.</li>

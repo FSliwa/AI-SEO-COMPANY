@@ -490,7 +490,13 @@ export function IndexNowBingClientDe() {
                   <p className="sp2-kafel-wartosc">
                     {typeof entropiaWartosc === 'number'
                       ? fmtDe(entropiaWartosc, 'de', 2)
-                      : (entropiaWartosc || (sztuczneLastmod ? 'Künstlich' : 'OK'))}
+                      : (({
+                        wysoka: 'Hoch (glaubwürdig)',
+                        srednia: 'Mittel',
+                        falszywa_identyczna: 'Künstlich (identisch)',
+                        niska: 'Niedrig (identisch)',
+                        brak: 'Kein <lastmod>',
+                      })[entropiaWartosc] || entropiaWartosc || (sztuczneLastmod ? 'Künstlich' : 'OK'))}
                   </p>
                 </div>
               </div>

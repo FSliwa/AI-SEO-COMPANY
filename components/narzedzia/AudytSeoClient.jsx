@@ -431,7 +431,7 @@ export default function AudytSeoClient() {
   const fixPack = w?.fixPack ?? stan.podglad?.fixPack ?? (w ? zbudujFallbackFixPack(w.domena, w.url, en) : null);
   const odblokowaneNarzedzia = Boolean(stan.pelny) || (stan.podglad?.zablokowane?.length === 0);
   const badgeUrl = w ? `${PANEL_API}/badge/seo-score?domain=${encodeURIComponent(w.domena)}&lang=${en ? 'en' : 'pl'}` : '';
-  const stronaAudytuHref = en ? 'https://www.ai-seo-company.pl/en/tools/seo-audit' : 'https://www.ai-seo-company.pl/narzedzia/audyt-seo';
+  const stronaAudytuHref = en ? 'https://www.ai-seo-company.pl/en/tools/free-seo-audit' : 'https://www.ai-seo-company.pl/narzedzia/audyt-seo';
   const relBadge = badgeNofollow ? 'nofollow noopener' : 'noopener';
   const kodHtmlBadge = w
     ? `<a href="${stronaAudytuHref}?url=${encodeURIComponent(w.domena)}" target="_blank" rel="${relBadge}"><img src="${badgeUrl}" alt="${en ? `Verified SEO Score ${w.wynik}/100 - ${w.domena}` : `Zweryfikowany wynik Audytu SEO ${w.wynik}/100 - ${w.domena}`}" width="236" height="32" /></a>`

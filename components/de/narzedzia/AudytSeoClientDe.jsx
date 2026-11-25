@@ -385,7 +385,7 @@ export default function AudytSeoClientDe() {
   const fixPack = w?.fixPack ?? stan.podglad?.fixPack ?? (w ? zbudujFallbackFixPackDe(w.domena, w.url) : null);
   const odblokowaneNarzedzia = Boolean(stan.pelny) || (stan.podglad?.zablokowane?.length === 0);
   const badgeUrl = w ? `${PANEL_API}/badge/seo-score?domain=${encodeURIComponent(w.domena)}&lang=de` : '';
-  const stronaAudytuHref = 'https://www.ai-seo-company.pl/de/tools/seo-audit';
+  const stronaAudytuHref = 'https://www.ai-seo-company.pl/de/tools/kostenloser-seo-audit';
   const relBadge = badgeNofollow ? 'nofollow noopener' : 'noopener';
   const kodHtmlBadge = w
     ? `<a href="${stronaAudytuHref}?url=${encodeURIComponent(w.domena)}" target="_blank" rel="${relBadge}"><img src="${badgeUrl}" alt="Verifiziertes SEO-Audit-Ergebnis ${w.wynik}/100 - ${w.domena}" width="236" height="32" /></a>`

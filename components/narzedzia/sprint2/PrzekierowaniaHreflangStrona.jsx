@@ -19,6 +19,7 @@ import Ozdoba from '@/components/narzedzia/Ozdoba';
 import NawBok from '@/components/narzedzia/NawBok';
 import CoDostajesz from '@/components/narzedzia/CoDostajesz';
 import Sekcja from '@/components/narzedzia/Sekcja';
+import Poradniki from '@/components/narzedzia/Poradniki';
 import PozostaleNarzedzia from '@/components/narzedzia/PozostaleNarzedzia';
 import st from '@/components/narzedzia/narzedzia.module.css';
 import * as s from '@/components/narzedzia/styl';
@@ -269,6 +270,7 @@ export function PrzekierowaniaHreflangStrona({ locale = 'pl' } = {}) {
                 </>
               )}
 
+              <Poradniki narzedzie="/narzedzia/sprawdz-przekierowania-hreflang" locale={locale} />
               <PozostaleNarzedzia bez="/narzedzia/sprawdz-przekierowania-hreflang" locale={locale} />
             </div>
             <NawBok rootId="nw-tresc" />

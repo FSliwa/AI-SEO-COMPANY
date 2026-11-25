@@ -133,12 +133,20 @@ export default function PanelPageClient() {
   const hrefS1 = hrefJesliOpublikowana('/narzedzia/raport-seo');
   const podkreslenie = { textDecoration: 'underline' };
   const dopiski = {
-    ai: <> Na tych pomiarach opieramy <Link href="/pozycjonowanie-w-ai" style={podkreslenie}>pozycjonowanie w AI</Link>.</>,
-    mapy: (
+    ai: lang === 'pl'
+      ? <> Na tych pomiarach opieramy <Link href="/pozycjonowanie-w-ai" style={podkreslenie}>pozycjonowanie w AI</Link>.</>
+      : <> These measurements guide our <Link href="/pozycjonowanie-w-ai" style={podkreslenie}>AI search optimization</Link>.</>,
+    mapy: lang === 'pl' ? (
       <> To część naszego <Link href="/seo-lokalne-warszawa" style={podkreslenie}>SEO lokalnego</Link> i{' '}
         {hrefL1 ? <Link href={hrefL1} style={podkreslenie}>pozycjonowania wizytówki Google</Link> : 'pozycjonowania wizytówki Google'}.</>
+    ) : (
+      <> Included in our <Link href="/seo-lokalne-warszawa" style={podkreslenie}>local SEO</Link>{hrefL1 ? <> and <Link href={hrefL1} style={podkreslenie}>Google Business Profile optimization</Link></> : null}.</>
     ),
-    raporty: hrefS1 ? <> Co powinno być w takim raporcie, pokazuje nasz <Link href={hrefS1} style={podkreslenie}>wzór raportu SEO</Link>.</> : null,
+    raporty: hrefS1 ? (
+      lang === 'pl'
+        ? <> Co powinno być w takim raporcie, pokazuje nasz <Link href={hrefS1} style={podkreslenie}>wzór raportu SEO</Link>.</>
+        : <> See what every monthly summary should cover in our <Link href={hrefS1} style={podkreslenie}>SEO report template</Link>.</>
+    ) : null,
   };
   return (
     <main style={{ backgroundColor: 'var(--w-papier)', color: 'var(--w-tusz)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -197,7 +205,7 @@ export default function PanelPageClient() {
                 <Image src={f.img} alt={lang === 'pl' ? `${f.title} (dane przykładowe)` : `${f.title} (sample data)`} width={1600} height={1025} sizes="(max-width: 760px) 100vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', borderBottom: '1px solid var(--w-linia)' }} />
                 <div style={{ padding: '1.25rem 1.5rem 1.5rem' }}>
                   <h3 style={{ fontSize: '1.15rem', fontWeight: 600, letterSpacing: '-0.02em', marginBottom: '0.5rem', color: 'var(--w-tusz)' }}>{f.title}</h3>
-                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--w-tusz-2)' }}>{f.text}{lang === 'pl' && f.dopisek ? dopiski[f.dopisek] : null}</p>
+                  <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--w-tusz-2)' }}>{f.text}{f.dopisek ? dopiski[f.dopisek] : null}</p>
                 </div>
               </RevealItem>
             ))}

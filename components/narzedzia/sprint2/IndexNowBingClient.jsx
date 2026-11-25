@@ -555,7 +555,13 @@ export function IndexNowBingClient() {
                   <p className="sp2-kafel-wartosc">
                     {typeof entropiaWartosc === 'number'
                       ? entropiaWartosc.toLocaleString(jezyk, { maximumFractionDigits: 2 })
-                      : (entropiaWartosc || (sztuczneLastmod ? (en ? 'Low (Fake)' : 'Sztuczna') : 'OK'))}
+                      : (({
+                        wysoka: en ? 'High (Credible)' : 'Wysoka (wiarygodna)',
+                        srednia: en ? 'Moderate' : 'Umiarkowana',
+                        falszywa_identyczna: en ? 'Low (Uniform / Fake)' : 'Sztuczna (jednakowa)',
+                        niska: en ? 'Low (Uniform)' : 'Niska (jednakowa)',
+                        brak: en ? 'No <lastmod>' : 'Brak <lastmod>',
+                      })[entropiaWartosc] || entropiaWartosc || (sztuczneLastmod ? (en ? 'Low (Fake)' : 'Sztuczna') : 'OK'))}
                   </p>
                 </div>
               </div>
