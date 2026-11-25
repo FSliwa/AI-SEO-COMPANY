@@ -1035,7 +1035,7 @@ section#contact.contact {
   color: #FFFFFF;
 }
 
-/* --- Panel klienta: Propozycja 1 - Hybryda Linear x Stripe x Vercel x Apple x Supabase (25.11.2026) --- */
+/* --- Panel klienta: Wariant LG-1 - Nocny Granat #0A1337 + Cieple Tafle Apple Liquid Glass 3D (25.11.2026) --- */
 .panel-showcase {
   position: relative;
   isolation: isolate;
@@ -1053,29 +1053,29 @@ section#contact.contact {
 .panel-aura {
   position: absolute;
   border-radius: 50%;
-  filter: blur(92px);
+  filter: blur(95px);
+}
+
+.panel-aura--brzoskwinia {
+  width: 560px;
+  height: 480px;
+  left: 50%;
+  top: 48%;
+  transform: translate(-46%, -50%);
+  background: radial-gradient(circle, rgba(243, 183, 156, 0.18) 0%, rgba(216, 90, 48, 0.08) 54%, transparent 76%);
 }
 
 .panel-aura--miedz {
-  width: 540px;
-  height: 460px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-48%, -50%);
-  background: radial-gradient(circle, rgba(216, 90, 48, 0.21) 0%, rgba(216, 90, 48, 0.05) 58%, transparent 76%);
-}
-
-.panel-aura--szmaragd {
-  width: 420px;
-  height: 360px;
+  width: 440px;
+  height: 380px;
   right: 4%;
-  top: 16%;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.09) 0%, transparent 72%);
+  top: 18%;
+  background: radial-gradient(circle, rgba(251, 230, 218, 0.09) 0%, transparent 72%);
 }
 
 .panel-uklad {
   display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(0, 1.18fr) minmax(0, 0.94fr);
+  grid-template-columns: minmax(0, 1.03fr) minmax(0, 1.19fr) minmax(0, 0.93fr);
   gap: clamp(24px, 2.8vw, 38px);
   align-items: center;
 }
@@ -1084,21 +1084,65 @@ section#contact.contact {
   margin-bottom: 0 !important;
 }
 
+/* Pigulka eyebrow w cieplym szkle (spojna z Hero .hn-eyebrow) */
+.panel-showcase.w-ciemne .section-tag.panel-eyebrow-szklo {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 12px;
+  margin-bottom: 1.25rem !important;
+  border-radius: 999px;
+  background: rgba(251, 230, 218, 0.12);
+  border: 1px solid rgba(243, 183, 156, 0.28);
+  color: #F3B79C !important;
+  font-family: var(--w-mono) !important;
+  font-size: 0.71875rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+}
+
+.panel-eyebrow-kropka {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #D85A30;
+}
+
 .panel-showcase .section-header h2 {
   color: #FFFFFF !important;
-  font-size: clamp(2.2rem, 3.1vw, 2.85rem) !important;
+  font-size: clamp(2.2rem, 3.1vw, 2.75rem) !important;
 }
 
 .panel-showcase .section-header p {
-  color: var(--w-noc-tekst) !important;
-  font-size: 1.03125rem !important;
+  color: #D6DCEE !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+.panel-showcase .section-header p.panel-zaufanie {
+  margin: 14px 0 0 !important;
+  max-width: 24.75rem;
+  font-family: var(--w-mono) !important;
+  font-size: 0.72rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.03em;
+  color: rgba(214, 220, 238, 0.72) !important;
 }
 
 .panel-akcje {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 24.75rem;
   gap: 0.75rem;
-  margin-top: 1.85rem;
+  margin-top: 1.75rem;
+}
+
+.panel-akcje > .w-przycisk {
+  width: 100%;
+  min-height: 52px;
+  justify-content: center;
 }
 
 .panel-cta-glowny {
@@ -1106,6 +1150,7 @@ section#contact.contact {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
 }
 
 .panel-cta-strzalka {
@@ -1117,9 +1162,27 @@ section#contact.contact {
   transform: translateX(4px);
 }
 
-.panel-cta-obrys {
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+.panel-cta-perla {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 252, 249, 0.085) 0%,
+    rgba(255, 255, 255, 0.035) 48%,
+    rgba(255, 250, 246, 0.055) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 252, 248, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.panel-cta-perla:hover {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 252, 249, 0.14) 0%,
+    rgba(251, 230, 218, 0.07) 52%,
+    rgba(255, 250, 246, 0.09) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.38) !important;
 }
 
 .panel-scena-srodek {
@@ -1131,8 +1194,8 @@ section#contact.contact {
   display: none;
 }
 
-/* Siatka inzynieryjna (Vercel / Linear) z maska radialna pod stosem 3D */
-.panel-siatka-tla {
+/* Ciepla poswiata refrakcyjna pod taflami szkla */
+.panel-poswiata-ciepla {
   position: absolute;
   inset: 0;
   display: grid;
@@ -1141,30 +1204,17 @@ section#contact.contact {
   z-index: 0;
 }
 
-.panel-siatka-tla svg {
+.panel-poswiata-ciepla svg {
   max-width: 100%;
   height: auto;
 }
 
-/* Stos 3 plyt w podwojnej szklanej oprawie (Apple / Raycast double-bezel) */
+/* Stos 3 okien w mlecznej optycznej aureoli szkla 6 px (styl Apple + Hero + DarmoweNarzedzia) */
 .panel-stos {
   position: relative;
   height: 580px;
   margin: 0;
   z-index: 2;
-}
-
-.panel-stos-cien {
-  position: absolute;
-  left: 14%;
-  right: 10%;
-  bottom: 4%;
-  height: 110px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(1, 3, 14, 0.86) 0%, rgba(216, 90, 48, 0.14) 54%, transparent 78%);
-  filter: blur(26px);
-  pointer-events: none;
-  z-index: 0;
 }
 
 .panel-warstwa {
@@ -1173,15 +1223,15 @@ section#contact.contact {
   --wz: 0px;
   --ws: 1;
   position: absolute;
-  left: 3%;
-  width: 94%;
+  left: 3.5%;
+  width: 93%;
   margin: 0;
   cursor: pointer;
   transform:
     perspective(2400px)
     translate3d(var(--sx), var(--sy), 0px)
-    rotateX(48deg)
-    rotateZ(-28deg)
+    rotateX(46deg)
+    rotateZ(-26deg)
     translateZ(var(--wz))
     scale(var(--ws));
   transform-origin: center;
@@ -1192,36 +1242,30 @@ section#contact.contact {
   will-change: transform, opacity;
 }
 
-/* Zewnetrzna przydymiona ramka 6 px (double-bezel) + miedziany rant 3D */
+/* Mleczna optyczna aureola 6 px wokól okna (jak .hn-karta--panel i .dn-podglad-ramka) */
 .panel-warstwa-plyta {
-  padding: 6px;
   border-radius: 20px;
-  background: rgba(14, 24, 64, 0.92);
-  border: 1px solid rgba(243, 183, 156, 0.34);
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.96);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    0 3px 0 0 rgba(216, 90, 48, 0.28),
-    0 28px 48px -6px rgba(2, 4, 18, 0.78);
+    0 0 0 6px rgba(255, 252, 248, 0.22),
+    0 26px 52px -10px rgba(6, 11, 34, 0.52);
   transition:
-    border-color 0.4s ease,
-    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
 }
 
 .panel-warstwa.is-active .panel-warstwa-plyta {
-  border-color: rgba(243, 183, 156, 0.76);
   box-shadow:
-    inset 0 1px 0 rgba(255, 214, 196, 0.32),
-    0 3.5px 0 0 rgba(216, 90, 48, 0.62),
-    0 18px 42px -6px rgba(216, 90, 48, 0.24),
-    0 38px 68px -8px rgba(2, 4, 18, 0.84);
+    0 0 0 6px rgba(255, 252, 248, 0.36),
+    0 32px 64px -10px rgba(6, 11, 34, 0.62);
 }
 
-/* Wewnetrzne kremowe okno aplikacji #FFFCF8 + ukosny polysk swiatla */
 .panel-warstwa-okno {
   position: relative;
-  border-radius: 14px;
+  border-radius: 19px;
   overflow: hidden;
-  background: #FFFCF8;
+  background: #FDF9F4;
 }
 
 .panel-warstwa-okno::after {
@@ -1230,11 +1274,11 @@ section#contact.contact {
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
-    112deg,
+    115deg,
     transparent 24%,
-    rgba(255, 255, 255, 0.34) 46%,
-    rgba(255, 198, 174, 0.18) 52%,
-    transparent 72%
+    rgba(255, 255, 255, 0.42) 47%,
+    rgba(251, 230, 218, 0.22) 53%,
+    transparent 74%
   );
   transform: translateX(-125%);
   transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1244,183 +1288,219 @@ section#contact.contact {
   transform: translateX(125%);
 }
 
-.panel-okno-plakietka {
+/* Naglowek okna Apple Liquid Glass (blizniak .dn-okno-nagl) */
+.panel-lg-nagl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(22, 22, 24, 0.07);
+}
+
+.panel-lg-ikona {
   flex: none;
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: rgba(216, 90, 48, 0.12);
-  color: #D85A30;
-  font-family: var(--w-mono);
-  font-size: 0.59rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-/* Wektorowe Micro-UI wewnatrz okna (styl Clerk / Linear) */
-.panel-mikro-cialo {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #FBE6DA;
+  color: #9E3614;
   display: grid;
-  grid-template-columns: 86px minmax(0, 1fr);
-  min-height: 172px;
+  place-items: center;
 }
 
-.panel-mikro-bok {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 12px 10px;
-  background: #0A1337;
-  color: #FFFFFF;
-}
-
-.panel-mikro-logo {
-  font-size: 0.59rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #FFFFFF;
-}
-
-.panel-mikro-domena {
-  font-family: var(--w-mono);
-  font-size: 0.47rem;
-  color: rgba(196, 205, 230, 0.7);
-  margin-bottom: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.panel-mikro-nav {
-  font-size: 0.53rem;
-  color: rgba(196, 205, 230, 0.65);
-  white-space: nowrap;
-}
-
-.panel-mikro-nav.is-active {
-  color: #FF9E7A;
-  font-weight: 600;
-}
-
-.panel-mikro-glowne {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px 14px;
+.panel-lg-info {
+  flex: 1 1 auto;
   min-width: 0;
-  background: #FFFCF8;
-  color: #1E1E1E;
-}
-
-.panel-mikro-tytul {
-  font-size: 0.72rem;
-  font-weight: 600;
-  line-height: 1.25;
-  color: #1E1E1E;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.panel-mikro-kpi-rzad {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
-}
-
-.panel-mikro-kpi {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  padding: 6px 8px;
-  border-radius: 8px;
-  background: #FFFFFF;
-  border: 1px solid rgba(30, 30, 30, 0.08);
-  min-width: 0;
 }
 
-.panel-mikro-kpi-etykieta {
-  font-size: 0.5rem;
-  color: #62605C;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.panel-mikro-kpi-wartosc {
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.15;
-  color: #1E1E1E;
-  font-variant-numeric: tabular-nums;
-}
-
-.panel-mikro-kpi-zmiana {
-  font-family: var(--w-mono);
-  font-size: 0.5rem;
-  font-weight: 500;
-  color: #059669;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.panel-mikro-wykres svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.panel-mikro-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.panel-mikro-wiersz {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: #FFFFFF;
-  border: 1px solid rgba(30, 30, 30, 0.08);
-  min-width: 0;
-}
-
-.panel-mikro-wiersz-nagl {
-  font-size: 0.6rem;
+.panel-lg-tytul {
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #1E1E1E;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: #161618;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.panel-mikro-wiersz-efekt {
-  font-family: var(--w-mono);
-  font-size: 0.53rem;
-  color: #059669;
+.panel-lg-podtytul {
+  font-size: 0.625rem;
+  line-height: 1.25;
+  color: #5E554D;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.panel-mikro-akceptacja {
+.panel-lg-plakietka {
+  flex: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.panel-lg-plakietka.is-mieta {
+  background: #D1FAE5;
+  color: #047857;
+}
+
+.panel-lg-plakietka.is-brzoskwinia {
+  background: #FBE6DA;
+  color: #9E3614;
+}
+
+/* Spokojne, przestronne wnetrze okna na papierze #FDF9F4 (jak w Hero .hn-panel-ekran) */
+.panel-lg-cialo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px 16px;
+  background: #FDF9F4;
+  color: #161618;
+}
+
+.panel-lg-metryka-karta {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  border: 1px solid rgba(22, 22, 24, 0.07);
+}
+
+.panel-lg-metryka-gora {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: #FFFFFF;
-  border: 1px solid rgba(30, 30, 30, 0.08);
+  gap: 12px;
+}
+
+.panel-lg-metryka-lewa {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
   min-width: 0;
 }
 
-.panel-mikro-akceptacja.is-featured {
-  border-color: rgba(216, 90, 48, 0.36);
+.panel-lg-liczba {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: #161618;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.panel-mikro-akceptacja-tekst {
+.panel-lg-cel {
+  font-family: var(--w-mono);
+  font-size: 0.59375rem;
+  letter-spacing: 0.04em;
+  color: #5E554D;
+  white-space: nowrap;
+}
+
+.panel-lg-wykres {
+  flex: none;
+  max-width: 46%;
+}
+
+.panel-lg-wykres svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.panel-lg-submetryki {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.panel-lg-subkarta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 11px;
+  border-radius: 11px;
+  background: #FFFFFF;
+  border: 1px solid rgba(22, 22, 24, 0.07);
+  min-width: 0;
+}
+
+.panel-lg-subkarta-wartosc {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #161618;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-lg-subkarta-opis {
+  font-size: 0.59375rem;
+  line-height: 1.25;
+  color: #047857;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-lg-wiersz {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1px solid rgba(22, 22, 24, 0.07);
+  min-width: 0;
+}
+
+.panel-lg-wiersz-tytul {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #161618;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-lg-wiersz-opis {
+  font-size: 0.625rem;
+  line-height: 1.3;
+  color: #5E554D;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-lg-akceptacja {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1px solid rgba(22, 22, 24, 0.07);
+  min-width: 0;
+}
+
+.panel-lg-akceptacja.is-primary {
+  border-color: rgba(216, 90, 48, 0.3);
+}
+
+.panel-lg-akceptacja-tekst {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -1428,32 +1508,29 @@ section#contact.contact {
   flex: 1 1 auto;
 }
 
-.panel-mikro-akceptacja-meta {
-  font-family: var(--w-mono);
-  font-size: 0.5rem;
-  color: #62605C;
+.panel-lg-akceptacja-btn {
+  flex: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #F7F4EF;
+  color: #161618;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.1;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.panel-mikro-akceptacja-przycisk {
-  flex: none;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: #D85A30;
+.panel-lg-akceptacja-btn.is-primary {
+  background: var(--w-pomarancz-przycisk, #C94E24);
   color: #FFFFFF;
-  font-size: 0.53rem;
-  font-weight: 600;
-  white-space: nowrap;
 }
 
 .panel-warstwa--0 { top: 20px; z-index: 3; }
-.panel-warstwa--1 { top: 174px; z-index: 2; }
-.panel-warstwa--2 { top: 328px; z-index: 1; }
+.panel-warstwa--1 { top: 172px; z-index: 2; }
+.panel-warstwa--2 { top: 324px; z-index: 1; }
 
 @media (min-width: 901px) {
-  /* Stan 0: eksponowany pierwszy ekran (Przeglad zapytan) */
+  /* Stan 0: pierwszy plan dla Panelu klienta 24/7 */
   .panel-stos[data-focus="0"] .panel-warstwa--0 {
     z-index: 4;
     --sy: -4px;
@@ -1466,24 +1543,24 @@ section#contact.contact {
     --sy: 4px;
     --wz: 0px;
     --ws: 0.99;
-    opacity: 0.94;
+    opacity: 0.92;
   }
   .panel-stos[data-focus="0"] .panel-warstwa--2 {
     z-index: 1;
     --sy: 10px;
     --wz: -8px;
     --ws: 0.98;
-    opacity: 0.88;
+    opacity: 0.82;
   }
 
-  /* Stan 1: srodkowa plyta (Historia zmian AI) wysuwa sie na pierwszy plan */
+  /* Stan 1: pierwszy plan dla Historii zmian na stronie */
   .panel-stos[data-focus="1"] .panel-warstwa--0 {
     z-index: 2;
     --sy: -28px;
     --wz: -8px;
     --ws: 0.955;
-    opacity: 0.38;
-    filter: saturate(0.85) brightness(0.92);
+    opacity: 0.36;
+    filter: saturate(0.88) brightness(0.94);
   }
   .panel-stos[data-focus="1"] .panel-warstwa--1 {
     z-index: 4;
@@ -1497,25 +1574,25 @@ section#contact.contact {
     --sy: 14px;
     --wz: -8px;
     --ws: 0.975;
-    opacity: 0.84;
+    opacity: 0.82;
   }
 
-  /* Stan 2: dolna plyta (Akceptacje 1 kliknieciem) wysuwa sie na pierwszy plan */
+  /* Stan 2: pierwszy plan dla Akceptacji 1 kliknieciem */
   .panel-stos[data-focus="2"] .panel-warstwa--0 {
     z-index: 1;
     --sy: -38px;
     --wz: -14px;
     --ws: 0.94;
-    opacity: 0.3;
-    filter: saturate(0.8) brightness(0.88);
+    opacity: 0.28;
+    filter: saturate(0.85) brightness(0.92);
   }
   .panel-stos[data-focus="2"] .panel-warstwa--1 {
     z-index: 2;
     --sy: -24px;
     --wz: -6px;
     --ws: 0.96;
-    opacity: 0.44;
-    filter: saturate(0.85) brightness(0.92);
+    opacity: 0.42;
+    filter: saturate(0.88) brightness(0.94);
   }
   .panel-stos[data-focus="2"] .panel-warstwa--2 {
     z-index: 4;
@@ -1526,102 +1603,93 @@ section#contact.contact {
   }
 }
 
-/* Miedziany lacznik sygnalowy (Supabase / Figma) zsynchronizowany z aktywna karta */
-.panel-lacznik-svg {
-  position: absolute;
-  right: -42px;
-  top: 96px;
-  z-index: 5;
-  pointer-events: none;
-  transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.panel-scena-srodek[data-focus="0"] .panel-lacznik-svg {
-  transform: translateY(0px);
-}
-
-.panel-scena-srodek[data-focus="1"] .panel-lacznik-svg {
-  transform: translateY(184px);
-}
-
-.panel-scena-srodek[data-focus="2"] .panel-lacznik-svg {
-  transform: translateY(368px);
-}
-
-/* 2 plaskie (0 deg) plywajace pigulki KPI nad rzutem 3D (Stripe / Mercury) */
+/* Plywajace mleczne pigulki Liquid Glass 1:1 z naszego Hero (.hn-plakietka-plywajaca) */
 .panel-dymki-2d {
   pointer-events: none;
 }
 
-.panel-dymek-2d {
+.panel-dymek-mleczny {
   position: absolute;
+  isolation: isolate;
   z-index: 6;
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px 10px 12px;
-  border-radius: 14px;
-  background: rgba(12, 21, 58, 0.93);
-  backdrop-filter: blur(16px) saturate(145%);
-  -webkit-backdrop-filter: blur(16px) saturate(145%);
-  box-shadow: 0 14px 28px -4px rgba(2, 5, 20, 0.68);
+  gap: 11px;
+  padding: 11px 16px 11px 13px;
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 254, 252, 0.91) 0%,
+    rgba(253, 249, 244, 0.76) 52%,
+    rgba(255, 251, 246, 0.86) 100%
+  );
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.96),
+    inset 1px 0 0 rgba(255, 255, 255, 0.64),
+    0 0 0 4px rgba(255, 255, 255, 0.26),
+    0 18px 36px -8px rgba(10, 19, 55, 0.34);
   cursor: pointer;
   transition:
     transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.32s ease,
     box-shadow 0.32s ease;
 }
 
-.panel-dymek-2d:hover {
+.panel-dymek-mleczny::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(
+    --w-szklo-blask,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.1) 36%, rgba(255, 255, 255, 0) 64%)
+  );
+}
+
+.panel-dymek-mleczny:hover {
   transform: translateY(-2px);
 }
 
-.panel-dymek-2d--gora {
-  top: -6px;
-  right: 8px;
-  border: 1.2px solid rgba(52, 211, 153, 0.48);
-}
-
-.panel-dymek-2d--gora.is-active {
-  border-color: rgba(52, 211, 153, 0.82);
+.panel-dymek-mleczny.is-active {
   box-shadow:
-    0 16px 32px -4px rgba(2, 5, 20, 0.74),
-    0 0 22px rgba(16, 185, 129, 0.16);
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98),
+    inset 1px 0 0 rgba(255, 255, 255, 0.7),
+    0 0 0 4px rgba(255, 255, 255, 0.36),
+    0 22px 42px -8px rgba(10, 19, 55, 0.42);
 }
 
-.panel-dymek-2d--dol {
+.panel-dymek-mleczny--gora {
+  top: -4px;
+  right: 10px;
+}
+
+.panel-dymek-mleczny--dol {
   bottom: 8px;
-  left: -6px;
-  border: 1.2px solid rgba(255, 158, 122, 0.48);
+  left: -4px;
 }
 
-.panel-dymek-2d--dol.is-active {
-  border-color: rgba(255, 158, 122, 0.82);
-  box-shadow:
-    0 16px 32px -4px rgba(2, 5, 20, 0.74),
-    0 0 22px rgba(216, 90, 48, 0.18);
-}
-
-.panel-dymek-odznaka {
+.panel-dymek-kolko {
   flex: none;
-  padding: 6px 8px;
-  border-radius: 9px;
-  font-family: var(--w-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  line-height: 1;
-  white-space: nowrap;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
 }
 
-.panel-dymek-odznaka--szmaragd {
-  background: rgba(16, 185, 129, 0.2);
-  color: #34D399;
+.panel-dymek-kolko--mieta {
+  background: #D1FAE5;
+  color: #047857;
 }
 
-.panel-dymek-odznaka--miedz {
-  background: rgba(216, 90, 48, 0.24);
-  color: #FF9E7A;
+.panel-dymek-kolko--brzoskwinia {
+  background: #FBE6DA;
+  color: #9E3614;
 }
 
 .panel-dymek-tekst {
@@ -1632,22 +1700,22 @@ section#contact.contact {
 }
 
 .panel-dymek-tytul {
-  font-size: 0.78rem;
+  font-size: 0.78125rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
   line-height: 1.2;
-  color: #FFFFFF;
+  color: #161618;
   white-space: nowrap;
 }
 
 .panel-dymek-opis {
-  font-family: var(--w-mono);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   line-height: 1.25;
-  color: #C4CDE6;
+  color: #5E554D;
   white-space: nowrap;
 }
 
-/* Karty cech po prawej zsynchronizowane 1:1 z warstwami stosu */
+/* Perlowo-szklane karty Apple Liquid Glass (promien 24 px) po prawej */
 .panel-cechy {
   display: flex;
   flex-direction: column;
@@ -1662,12 +1730,21 @@ section#contact.contact {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(243, 183, 156, 0.18);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  padding: 18px 20px 16px;
+  gap: 12px;
+  background: linear-gradient(
+    153deg,
+    rgba(255, 252, 249, 0.085) 0%,
+    rgba(255, 255, 255, 0.035) 46%,
+    rgba(255, 250, 246, 0.055) 100%
+  );
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 252, 248, 0.14),
+    0 18px 36px -12px rgba(4, 8, 26, 0.36);
+  border-radius: 24px;
+  padding: 20px 22px 18px;
   cursor: pointer;
   transition:
     background 0.35s ease,
@@ -1677,41 +1754,51 @@ section#contact.contact {
 
 .panel-cecha-glowny-wiersz {
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-columns: 42px minmax(0, 1fr);
   gap: 14px;
   align-items: start;
 }
 
 .panel-cecha:hover {
-  border-color: rgba(243, 183, 156, 0.34);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.24);
+  background: linear-gradient(
+    153deg,
+    rgba(255, 252, 249, 0.12) 0%,
+    rgba(251, 230, 218, 0.055) 46%,
+    rgba(255, 250, 246, 0.07) 100%
+  );
 }
 
 .panel-cecha.is-active {
-  background: rgba(216, 90, 48, 0.12);
-  border: 1.25px solid rgba(216, 90, 48, 0.68);
+  background: linear-gradient(
+    152deg,
+    rgba(255, 250, 246, 0.16) 0%,
+    rgba(251, 230, 218, 0.09) 46%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.34);
   box-shadow:
-    inset 0 1px 0 rgba(255, 196, 172, 0.16),
-    0 16px 36px -14px rgba(2, 5, 20, 0.65);
+    inset 0 1.5px 0 rgba(255, 252, 248, 0.32),
+    0 20px 40px -12px rgba(4, 8, 26, 0.44);
 }
 
 .panel-cecha-ikona {
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
-  border: 1px solid rgba(255, 158, 122, 0.22);
-  background: rgba(216, 90, 48, 0.14);
-  color: #FF9E7A;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(243, 183, 156, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  color: #F3B79C;
   display: grid;
   place-items: center;
   transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .panel-cecha.is-active .panel-cecha-ikona {
-  background: rgba(216, 90, 48, 0.26);
-  border-color: rgba(255, 158, 122, 0.52);
-  color: #FFD0BD;
-  box-shadow: 0 0 20px rgba(216, 90, 48, 0.22);
+  background: #FBE6DA;
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #9E3614;
+  box-shadow: 0 6px 18px -6px rgba(251, 230, 218, 0.35);
 }
 
 .panel-cecha-tresc {
@@ -1721,45 +1808,15 @@ section#contact.contact {
   gap: 5px;
 }
 
-.panel-cecha-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Dotykowy klawisz [01] w stylu Raycast */
-.panel-cecha-klawisz {
-  padding: 2px 6px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+.panel-cecha-kicker {
   font-family: var(--w-mono);
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-size: 0.65625rem;
   line-height: 1.2;
-  color: #C4CDE6;
-  font-variant-numeric: tabular-nums;
+  color: rgba(214, 220, 238, 0.65);
 }
 
-.panel-cecha.is-active .panel-cecha-klawisz {
-  background: rgba(255, 255, 255, 0.12);
-  color: #FF9E7A;
-}
-
-.panel-cecha-plakietka {
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #C4CDE6;
-  font-family: var(--w-mono);
-  font-size: 0.65rem;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-.panel-cecha.is-active .panel-cecha-plakietka {
-  background: rgba(216, 90, 48, 0.22);
-  color: #FF9E7A;
+.panel-cecha.is-active .panel-cecha-kicker {
+  color: rgba(243, 183, 156, 0.95);
 }
 
 .panel-cecha h3 {
@@ -1772,45 +1829,10 @@ section#contact.contact {
 }
 
 .panel-cecha p {
-  color: #C4CDE6 !important;
+  color: rgba(214, 220, 238, 0.88) !important;
   margin: 0 !important;
-  line-height: 1.5 !important;
-  font-size: 0.865rem;
-}
-
-/* Stopka telemetrii w stylu Mercury */
-.panel-cecha-stopka {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding-top: 4px;
-  font-family: var(--w-mono);
-  font-size: 0.656rem;
-  color: rgba(196, 205, 230, 0.68);
-  min-width: 0;
-}
-
-.panel-cecha-stopka > span:last-child {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.panel-cecha.is-active .panel-cecha-stopka {
-  color: rgba(52, 211, 153, 0.95);
-}
-
-.panel-cecha-kropka {
-  flex: none;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 158, 122, 0.6);
-}
-
-.panel-cecha.is-active .panel-cecha-kropka {
-  background: #34D399;
-  box-shadow: 0 0 8px rgba(52, 211, 153, 0.55);
+  line-height: 1.52 !important;
+  font-size: 0.855rem;
 }
 
 @keyframes w-pasek-panelu {
@@ -1821,9 +1843,9 @@ section#contact.contact {
 .panel-cecha-sciezka {
   display: none;
   width: 100%;
-  height: 2.5px;
+  height: 2px;
   border-radius: 99px;
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.12);
   overflow: hidden;
 }
 
@@ -1836,7 +1858,7 @@ section#contact.contact {
   width: 100%;
   height: 100%;
   border-radius: 99px;
-  background: linear-gradient(90deg, #D85A30, #FF9E7A);
+  background: rgba(243, 183, 156, 0.92);
   transform-origin: left center;
   transform: scaleX(0.64);
 }
@@ -2346,6 +2368,17 @@ section#contact.contact {
   .panel-uklad > .section-header {
     grid-column: 1 / -1;
   }
+  .panel-akcje {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: none;
+  }
+  .panel-akcje > .w-przycisk {
+    width: auto;
+  }
+  .panel-showcase .section-header p.panel-zaufanie {
+    max-width: none;
+  }
   .panel-lacznik-svg {
     display: none;
   }
@@ -2384,10 +2417,12 @@ section#contact.contact {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 6px;
     padding: 5px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     border-radius: 999px;
-    background: rgba(6, 11, 34, 0.84);
-    border: 1px solid rgba(243, 183, 156, 0.24);
+    background: rgba(255, 252, 249, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
   }
 
   .panel-mobile-pigulka {
@@ -2410,8 +2445,8 @@ section#contact.contact {
   }
 
   .panel-mobile-pigulka.is-active {
-    background: rgba(216, 90, 48, 0.22);
-    border-color: rgba(216, 90, 48, 0.72);
+    background: rgba(255, 250, 246, 0.16);
+    border-color: rgba(255, 255, 255, 0.34);
     color: #FFFFFF;
     font-weight: 600;
   }
@@ -2424,7 +2459,7 @@ section#contact.contact {
   }
 
   .panel-mobile-pigulka.is-active .panel-mobile-nr {
-    color: #FF9E7A;
+    color: #F3B79C;
   }
 
   .panel-stos {
@@ -2433,9 +2468,7 @@ section#contact.contact {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .panel-stos-cien,
-  .panel-siatka-tla,
-  .panel-lacznik-svg {
+  .panel-poswiata-ciepla {
     display: none;
   }
 
@@ -2463,12 +2496,12 @@ section#contact.contact {
   .panel-dymki-2d {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    margin-top: 12px;
+    gap: 12px;
+    margin-top: 14px;
     pointer-events: auto;
   }
 
-  .panel-dymek-2d {
+  .panel-dymek-mleczny {
     position: relative;
     top: auto;
     right: auto;
@@ -2482,10 +2515,6 @@ section#contact.contact {
   .panel-dymek-opis {
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .panel-okno-plakietka {
-    display: none;
   }
 
   .faq-apple--panel .faq-apple-uklad {
@@ -2511,6 +2540,25 @@ section#contact.contact {
 
   .results {
     padding-top: 62vw !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .panel-akcje {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .panel-akcje > .w-przycisk {
+    width: 100%;
+  }
+  .panel-mobile-pigulka {
+    padding: 8px 6px;
+    font-size: 0.74rem;
+    gap: 4px;
+  }
+  .panel-dymki-2d {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
   }
 }
 
@@ -2727,9 +2775,9 @@ html[data-kursor-tlo] :is(input:not([type='button']):not([type='submit']):not([t
     background: var(--w-pomarancz);
   }
 
-  .panel-cecha:hover .panel-cecha-ikona {
+  .panel-cecha:not(.is-active):hover .panel-cecha-ikona {
     border-color: rgba(243, 183, 156, 0.34);
-    background: rgba(216, 90, 48, 0.20);
+    background: rgba(255, 255, 255, 0.13);
     scale: none;
   }
 
@@ -3509,18 +3557,15 @@ main:has(.gory-oferta) .panel-showcase {
 /* (31) Panel klienta: szersza kolumna tekstu i pelna szerokosc 2 przyciskow w lewej kolumnie */
 @media (min-width: 1101px) {
   .panel-uklad {
-    grid-template-columns: minmax(0, 1.04fr) minmax(0, 1.18fr) minmax(0, 0.94fr);
+    grid-template-columns: minmax(0, 1.03fr) minmax(0, 1.19fr) minmax(0, 0.93fr);
   }
 }
 
 @media (max-width: 560px) {
-  .panel-mikro-cialo {
+  .panel-dymki-2d {
     grid-template-columns: minmax(0, 1fr);
   }
-  .panel-mikro-bok {
-    display: none;
-  }
-  .panel-dymki-2d {
+  .panel-lg-submetryki {
     grid-template-columns: minmax(0, 1fr);
   }
 }

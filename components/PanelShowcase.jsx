@@ -7,15 +7,21 @@ import { Link } from '../i18n/routing';
 import { PANEL_DEMO_URL } from '@/lib/panel';
 import { PANEL_WARSTWY } from '@/lib/panelShowcaseDane';
 
-// Ikony cech (obrys 1,8 px, kolor miedziany, rozmiar 20x20 pod pojemnik 40x40) - kolejnosc jak w `items`.
-const IKONY = [
-  <svg key="a" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 3v18h18" /><path d="M7 15l4-4 3 3 6-7" /><path d="M16 7h4v4" /></svg>,
-  <svg key="b" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></svg>,
-  <svg key="c" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.5 2.5 5-5.5" /></svg>,
+// Ikony kart perlowych po prawej (20x20 pod pojemnik 42x42) - kolejnosc jak w `items`.
+const IKONY_KART = [
+  <svg key="a" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 3v18h18" /><path d="M7 15l4-4 3 3 6-7" /><path d="M16 7h4v4" /></svg>,
+  <svg key="b" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></svg>,
+  <svg key="c" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.5 2.5 5-5.5" /></svg>,
+];
+
+// Ikony paskow okien Apple Liquid Glass (15x15 pod pojemnik 28x28).
+const IKONY_OKIEN = [
+  <svg key="w0" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 3v18h18" /><path d="M7 15l4-4 3 3 6-7" /></svg>,
+  <svg key="w1" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></svg>,
+  <svg key="w2" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.5 2.5 4.5-5" /></svg>,
 ];
 
 const CZAS_CYKLU_MS = 4600;
-const AKTYWNY_INDEKS_MENU = [0, 2, 3];
 
 export default function PanelShowcase({ locale: propLocale }) {
   const ctxLocale = useLocale();
@@ -51,80 +57,79 @@ export default function PanelShowcase({ locale: propLocale }) {
     return () => window.clearInterval(id);
   }, [widoczna, wstrzymane, t.items.length]);
 
-  const renderujWnetrzeOkna = (indeks) => {
+  const renderujCialoOkna = (indeks) => {
     if (indeks === 0) {
-      const w = t.widoki.przeglad;
+      const p = t.widoki.przeglad;
       return (
-        <div className="panel-mikro-glowne">
-          <div className="panel-mikro-tytul">{w.naglowek}</div>
-          <div className="panel-mikro-kpi-rzad">
-            {w.kpi.map((k) => (
-              <div key={k.etykieta} className="panel-mikro-kpi">
-                <span className="panel-mikro-kpi-etykieta">{k.etykieta}</span>
-                <span className="panel-mikro-kpi-wartosc">{k.wartosc}</span>
-                <span className="panel-mikro-kpi-zmiana">{k.zmiana}</span>
+        <div className="panel-lg-cialo">
+          <div className="panel-lg-metryka-karta">
+            <div className="panel-lg-metryka-gora">
+              <div className="panel-lg-metryka-lewa">
+                <span className="panel-lg-liczba">{p.liczba}</span>
+                <span className="panel-lg-cel">{p.cel}</span>
+              </div>
+              <div className="panel-lg-wykres">
+                <svg width="168" height="44" viewBox="0 0 168 44" fill="none" aria-hidden="true">
+                  <path
+                    d="M6 36 C42 34, 76 27, 114 19 C136 14, 150 10, 162 7 L162 40 L6 40 Z"
+                    fill="#FBE6DA"
+                    fillOpacity="0.88"
+                  />
+                  <path
+                    d="M6 36 C42 34, 76 27, 114 19 C136 14, 150 10, 162 7"
+                    stroke="#D85A30"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                  />
+                  <circle cx="162" cy="7" r="4" fill="#D85A30" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div className="panel-lg-submetryki">
+            {p.kafelki.map((k) => (
+              <div key={k.wartosc} className="panel-lg-subkarta">
+                <span className="panel-lg-subkarta-wartosc">{k.wartosc}</span>
+                <span className="panel-lg-subkarta-opis">{k.opis}</span>
               </div>
             ))}
-          </div>
-          <div className="panel-mikro-wykres">
-            <svg width="310" height="54" viewBox="0 0 310 54" fill="none" aria-hidden="true">
-              <rect x="0.5" y="0.5" width="309" height="53" rx="7.5" fill="#FFFFFF" stroke="#E8E2D9" />
-              <path
-                d="M12 42 C52 40, 78 35, 116 31 C154 27, 186 22, 224 16 C254 11, 278 9, 298 7 L298 48 L12 48 Z"
-                fill="#10B981"
-                fillOpacity="0.14"
-              />
-              <path
-                d="M12 42 C52 40, 78 35, 116 31 C154 27, 186 22, 224 16 C254 11, 278 9, 298 7"
-                stroke="#10B981"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-              />
-              <circle cx="190" cy="20" r="4" fill="#D85A30" />
-              <circle cx="298" cy="7" r="4" fill="#10B981" />
-            </svg>
           </div>
         </div>
       );
     }
 
     if (indeks === 1) {
-      const w = t.widoki.zmiany;
       return (
-        <div className="panel-mikro-glowne">
-          <div className="panel-mikro-tytul">{w.naglowek}</div>
-          <div className="panel-mikro-lista">
-            {w.wpisy.map((wpis) => (
-              <div key={wpis.tytul} className="panel-mikro-wiersz">
-                <span className="panel-mikro-wiersz-nagl">{wpis.tytul}</span>
-                <span className="panel-mikro-wiersz-efekt">{wpis.efekt}</span>
-              </div>
-            ))}
-          </div>
+        <div className="panel-lg-cialo">
+          {t.widoki.zmiany.map((z) => (
+            <div key={z.tytul} className="panel-lg-wiersz">
+              <span className="panel-lg-wiersz-tytul">{z.tytul}</span>
+              <span className="panel-lg-wiersz-opis">{z.opis}</span>
+            </div>
+          ))}
         </div>
       );
     }
 
-    const w = t.widoki.akceptacje;
     return (
-      <div className="panel-mikro-glowne">
-        <div className="panel-mikro-tytul">{w.naglowek}</div>
-        <div className="panel-mikro-lista">
-          {w.elementy.map((el, idx) => (
-            <div key={el.tytul} className={`panel-mikro-akceptacja${idx === 0 ? ' is-featured' : ''}`}>
-              <div className="panel-mikro-akceptacja-tekst">
-                <span className="panel-mikro-wiersz-nagl">{el.tytul}</span>
-                <span className="panel-mikro-akceptacja-meta">{el.meta}</span>
-              </div>
-              <span className="panel-mikro-akceptacja-przycisk">{el.akcja}</span>
+      <div className="panel-lg-cialo">
+        {t.widoki.akceptacje.map((a) => (
+          <div key={a.tytul} className={`panel-lg-akceptacja${a.glowny ? ' is-primary' : ''}`}>
+            <div className="panel-lg-akceptacja-tekst">
+              <span className="panel-lg-wiersz-tytul">{a.tytul}</span>
+              <span className="panel-lg-wiersz-opis">{a.opis}</span>
             </div>
-          ))}
-        </div>
+            <span className={`panel-lg-akceptacja-btn${a.glowny ? ' is-primary' : ''}`}>
+              {a.przycisk}
+            </span>
+          </div>
+        ))}
       </div>
     );
   };
 
-  // Poza kolejnoscia wizualna w DOM dla prawidlowego malowania w 3D (2 na dole -> 0 na gorze)
+  // Kolejnosc w DOM: od dolnej warstwy (2) do gornej (0) dla naturalnego malowania 3D.
   const kolejnoscWarstw = [2, 1, 0];
 
   return (
@@ -140,14 +145,16 @@ export default function PanelShowcase({ locale: propLocale }) {
       onBlurCapture={() => setWstrzymane(false)}
     >
       <div className="panel-aura-tla" aria-hidden="true">
+        <span className="panel-aura panel-aura--brzoskwinia" />
         <span className="panel-aura panel-aura--miedz" />
-        <span className="panel-aura panel-aura--szmaragd" />
       </div>
 
       <div className="container panel-uklad">
         <Reveal className="section-header">
-          <div className="section-tag panel-tag-zywy">
-            <span className="asterisk">✸</span> {t.tag}
+          <div className="section-tag panel-eyebrow-szklo">
+            <span className="panel-eyebrow-kropka" aria-hidden="true" />
+            <span>{t.tag}</span>
+            <span aria-hidden="true" data-lastmod="pomin">{t.tagSufiks}</span>
           </div>
           <h2>{t.h2}</h2>
           <p>{t.lead}</p>
@@ -156,14 +163,14 @@ export default function PanelShowcase({ locale: propLocale }) {
               <span>{t.ctaDemo}</span>
               <span className="panel-cta-strzalka" aria-hidden="true">→</span>
             </a>
-            <Link href="/panel-klienta" className="w-przycisk w-przycisk--obrys panel-cta-obrys" data-cta="home_panel_page">
+            <Link href="/panel-klienta" className="w-przycisk w-przycisk--obrys panel-cta-perla" data-cta="home_panel_page">
               {t.ctaStrona}
             </Link>
           </div>
           <p className="panel-zaufanie">{t.zaufanie}</p>
         </Reveal>
 
-        <div className="panel-scena-srodek" data-focus={aktywna}>
+        <div className="panel-scena-srodek" data-focus={aktywna} data-lastmod="pomin">
           {/* Kompaktowy przelacznik widoczny na telefonie i tablecie */}
           <div className="panel-mobile-przelacznik" role="tablist" aria-label={t.ariaStos}>
             {t.items.map((it, i) => (
@@ -181,56 +188,30 @@ export default function PanelShowcase({ locale: propLocale }) {
             ))}
           </div>
 
-          {/* Siatka inzynieryjna w stylu Vercel / Linear z maska radialna i krzyzykami (+) */}
-          <div className="panel-siatka-tla" aria-hidden="true">
-            <svg width="462" height="580" viewBox="0 0 462 580" fill="none">
+          {/* Ciepla poswiata refrakcyjna pod taflami szkla (bez technicznej siatki DevTools) */}
+          <div className="panel-poswiata-ciepla" aria-hidden="true">
+            <svg width="466" height="580" viewBox="0 0 466 580" fill="none">
               <defs>
-                <radialGradient id={`pg-glow-${uid}`} cx="50%" cy="48%" r="50%">
-                  <stop offset="0%" stopColor="#D85A30" stopOpacity="0.24" />
-                  <stop offset="55%" stopColor="#10B981" stopOpacity="0.07" />
+                <radialGradient id={`lg1-wb1-${uid}`} cx="52%" cy="44%" r="50%">
+                  <stop offset="0%" stopColor="#F3B79C" stopOpacity="0.30" />
+                  <stop offset="46%" stopColor="#D85A30" stopOpacity="0.16" />
                   <stop offset="100%" stopColor="#0A1337" stopOpacity="0" />
                 </radialGradient>
-                <radialGradient id={`pg-mask-${uid}`} cx="50%" cy="50%" r="48%">
-                  <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.13" />
-                  <stop offset="70%" stopColor="#FFFFFF" stopOpacity="0.045" />
-                  <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                <radialGradient id={`lg1-wb2-${uid}`} cx="42%" cy="68%" r="44%">
+                  <stop offset="0%" stopColor="#FBE6DA" stopOpacity="0.20" />
+                  <stop offset="100%" stopColor="#0A1337" stopOpacity="0" />
                 </radialGradient>
               </defs>
-              <ellipse cx="231" cy="285" rx="225" ry="240" fill={`url(#pg-glow-${uid})`} />
-              <g stroke={`url(#pg-mask-${uid})`} strokeWidth="1">
-                <line x1="56" y1="40" x2="56" y2="540" />
-                <line x1="112" y1="40" x2="112" y2="540" />
-                <line x1="168" y1="40" x2="168" y2="540" />
-                <line x1="224" y1="40" x2="224" y2="540" />
-                <line x1="280" y1="40" x2="280" y2="540" />
-                <line x1="336" y1="40" x2="336" y2="540" />
-                <line x1="392" y1="40" x2="392" y2="540" />
-                <line x1="20" y1="96" x2="442" y2="96" />
-                <line x1="20" y1="152" x2="442" y2="152" />
-                <line x1="20" y1="208" x2="442" y2="208" />
-                <line x1="20" y1="264" x2="442" y2="264" />
-                <line x1="20" y1="320" x2="442" y2="320" />
-                <line x1="20" y1="376" x2="442" y2="376" />
-                <line x1="20" y1="432" x2="442" y2="432" />
-                <line x1="20" y1="488" x2="442" y2="488" />
-              </g>
-              <g stroke="#FF9E7A" strokeOpacity="0.48" strokeWidth="1.2" strokeLinecap="round">
-                <path d="M112 148v8M108 152h8" />
-                <path d="M112 428v8M108 432h8" />
-              </g>
-              <g stroke="#34D399" strokeOpacity="0.48" strokeWidth="1.2" strokeLinecap="round">
-                <path d="M336 148v8M332 152h8" />
-              </g>
+              <ellipse cx="240" cy="260" rx="230" ry="235" fill={`url(#lg1-wb1-${uid})`} />
+              <ellipse cx="195" cy="390" rx="200" ry="180" fill={`url(#lg1-wb2-${uid})`} />
             </svg>
           </div>
 
-          {/* Stos 3 plyt w podwojnej szklanej oprawie (Apple / Raycast double-bezel + Clerk Micro-UI) */}
+          {/* Stos 3 okien w mlecznej optycznej aureoli szkla 6 px (1:1 styl Hero i DarmoweNarzedzia) */}
           <div className="panel-stos" data-focus={aktywna} aria-hidden="true">
-            <div className="panel-stos-cien" />
             {kolejnoscWarstw.map((i) => {
               const it = t.items[i];
               const czyAktywna = aktywna === i;
-              const aktywnyNav = AKTYWNY_INDEKS_MENU[i];
               return (
                 <div
                   key={it.nr}
@@ -240,27 +221,17 @@ export default function PanelShowcase({ locale: propLocale }) {
                 >
                   <div className={`panel-warstwa-plyta panel-warstwa-plyta--${i}`}>
                     <div className="panel-warstwa-okno">
-                      <span className="panel-okno-nagl">
-                        <span className="panel-okno-kropki"><i /><i /><i /></span>
-                        <span className="panel-okno-tytul">{it.okno}</span>
-                        <span className="panel-okno-plakietka">{it.plakietka}</span>
-                        <span className="panel-okno-status" />
-                      </span>
-                      <div className="panel-mikro-cialo">
-                        <div className="panel-mikro-bok">
-                          <span className="panel-mikro-logo">COMPANY</span>
-                          <span className="panel-mikro-domena">{t.sidebarMarka}</span>
-                          {t.sidebarMenu.map((pozycja, mIdx) => (
-                            <span
-                              key={pozycja}
-                              className={`panel-mikro-nav${mIdx === aktywnyNav ? ' is-active' : ''}`}
-                            >
-                              {pozycja}
-                            </span>
-                          ))}
+                      <div className="panel-lg-nagl">
+                        <span className="panel-lg-ikona">{IKONY_OKIEN[i]}</span>
+                        <div className="panel-lg-info">
+                          <span className="panel-lg-tytul">{it.oknoTytul}</span>
+                          <span className="panel-lg-podtytul">{it.oknoPodtytul}</span>
                         </div>
-                        {renderujWnetrzeOkna(i)}
+                        <span className={`panel-lg-plakietka${i === 0 ? ' is-mieta' : ' is-brzoskwinia'}`}>
+                          {it.oknoPlakietka}
+                        </span>
                       </div>
+                      {renderujCialoOkna(i)}
                     </div>
                   </div>
                 </div>
@@ -268,26 +239,17 @@ export default function PanelShowcase({ locale: propLocale }) {
             })}
           </div>
 
-          {/* Swietlisty miedziany lacznik sygnalowy (Supabase / Figma) miedzy stosem 3D a aktywna karta */}
-          <div className="panel-lacznik-svg" aria-hidden="true">
-            <svg width="96" height="44" viewBox="0 0 96 44" fill="none">
-              <path d="M6 22 H90" stroke="#D85A30" strokeWidth="1.5" strokeDasharray="3 3" />
-              <circle cx="6" cy="22" r="5" fill="#D85A30" fillOpacity="0.28" />
-              <circle cx="6" cy="22" r="2.5" fill="#FF9E7A" />
-              <circle cx="90" cy="22" r="5" fill="#D85A30" fillOpacity="0.28" />
-              <circle cx="90" cy="22" r="2.5" fill="#FF9E7A" />
-            </svg>
-          </div>
-
-          {/* 2 plaskie (0 deg) plywajace pigulki KPI nad rzutem 3D (Stripe / Mercury) */}
+          {/* 2 plywajace mleczne pigulki Liquid Glass 1:1 z naszego Hero (.hn-plakietka-plywajaca) */}
           <div className="panel-dymki-2d" aria-hidden="true">
             <div
-              className={`panel-dymek-2d panel-dymek-2d--gora${aktywna === 0 ? ' is-active' : ''}`}
+              className={`panel-dymek-mleczny panel-dymek-mleczny--gora${aktywna === 0 ? ' is-active' : ''}`}
               onMouseEnter={() => setAktywna(0)}
               onClick={() => setAktywna(0)}
             >
-              <span className="panel-dymek-odznaka panel-dymek-odznaka--szmaragd">
-                {t.dymekGora.odznaka}
+              <span className="panel-dymek-kolko panel-dymek-kolko--mieta">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 13l4.5 4.5L19 7" />
+                </svg>
               </span>
               <div className="panel-dymek-tekst">
                 <span className="panel-dymek-tytul">{t.dymekGora.tytul}</span>
@@ -296,12 +258,14 @@ export default function PanelShowcase({ locale: propLocale }) {
             </div>
 
             <div
-              className={`panel-dymek-2d panel-dymek-2d--dol${aktywna !== 0 ? ' is-active' : ''}`}
-              onMouseEnter={() => setAktywna(1)}
-              onClick={() => setAktywna(1)}
+              className={`panel-dymek-mleczny panel-dymek-mleczny--dol${aktywna !== 0 ? ' is-active' : ''}`}
+              onMouseEnter={() => setAktywna(2)}
+              onClick={() => setAktywna(2)}
             >
-              <span className="panel-dymek-odznaka panel-dymek-odznaka--miedz">
-                {t.dymekDol.odznaka}
+              <span className="panel-dymek-kolko panel-dymek-kolko--brzoskwinia">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
               </span>
               <div className="panel-dymek-tekst">
                 <span className="panel-dymek-tytul">{t.dymekDol.tytul}</span>
@@ -323,19 +287,14 @@ export default function PanelShowcase({ locale: propLocale }) {
               >
                 <div className="panel-cecha-glowny-wiersz">
                   <span className="panel-cecha-ikona">
-                    {IKONY[i]}
+                    {IKONY_KART[i]}
                   </span>
                   <div className="panel-cecha-tresc">
-                    <div className="panel-cecha-meta" aria-hidden="true">
-                      <span className="panel-cecha-klawisz">{it.nr}</span>
-                      <span className="panel-cecha-plakietka">{it.plakietka}</span>
-                    </div>
+                    <span className="panel-cecha-kicker" aria-hidden="true" data-lastmod="pomin">
+                      {it.kartaTag}
+                    </span>
                     <h3>{it.title}</h3>
                     <p>{it.text}</p>
-                    <div className="panel-cecha-stopka" aria-hidden="true">
-                      <span className="panel-cecha-kropka" />
-                      <span>{it.stopka}</span>
-                    </div>
                   </div>
                 </div>
                 <span className="panel-cecha-sciezka" aria-hidden="true">
