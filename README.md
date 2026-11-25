@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI SEO COMPANY - B2B SEO, Generative Engine Optimization (GEO) & 13 Free SEO/AI Tools
 
-## Getting Started
+Official website and open-access SEO/GEO tool suite of **AI SEO COMPANY** (`AI SIGNALS COMPANY Prosta Spółka Akcyjna`, Warsaw, Poland).
 
-First, run the development server:
+- **Website (PL):** https://www.ai-seo-company.pl/
+- **Website (EN):** https://www.ai-seo-company.pl/en
+- **Website (DE / DACH):** https://www.ai-seo-company.pl/de
+- **24/7 Client Portal Demo (no login):** https://www.ai-seo-company.pl/panel-klienta
+
+## Free Interactive SEO & AI Visibility Tools (No Sign-Up)
+
+- **PL Hub (13 tools + 16 PDF templates):** https://www.ai-seo-company.pl/narzedzia
+- **EN Hub (13 tools + 16 PDF templates):** https://www.ai-seo-company.pl/en/tools
+- **DE Hub (13 tools + 16 PDF templates):** https://www.ai-seo-company.pl/de/tools
+- **Free 49-Rule SEO Audit:** https://www.ai-seo-company.pl/narzedzia/audyt-seo
+- **Live AI Visibility Checker (ChatGPT, Perplexity, Gemini, Claude, AI Overviews):** https://www.ai-seo-company.pl/sprawdz-widocznosc-w-ai
+- **Common Crawl Domain Authority Checker (135M domains):** https://www.ai-seo-company.pl/narzedzia/autorytet-domeny
+- **llms.txt Generator & AI Bot Access Test:** https://www.ai-seo-company.pl/narzedzia/generator-llms-txt
+- **Open Research & Benchmarks (CC BY 4.0):** https://www.ai-seo-company.pl/raporty-ai
+- **Machine-Readable Site Maps for LLMs:** https://www.ai-seo-company.pl/llms.txt · https://www.ai-seo-company.pl/de/llms.txt
+
+## CLI Package
+
+- [`llms-txt-check`](./packages/llms-txt-check) - zero-dependency CLI validator for `llms.txt` and AI crawler `robots.txt` rules.
+
+## Development & Verification
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx next dev --port 3000
+node scripts/kontrola-stronyDe.mjs --publikacja
+npm run test:sitemap
+npm run wydanie
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
