@@ -33,7 +33,7 @@ main:has(> .hero--narz) > :is(#why-us, .results, .panel-showcase, .pricing, .w-n
 /* Wartosci = wysokosc zawartosci (bez paddingu) zmierzona w przegladarce. */
 main:has(> .hero--narz) > #why-us { contain-intrinsic-size: auto 1280px; }
 main:has(> .hero--narz) > .results { contain-intrinsic-size: auto 180px; }
-main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 660px; }
+main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 600px; }
 main:has(> .hero--narz) > .pricing { contain-intrinsic-size: auto 1480px; }
 main:has(> .hero--narz) > .w-noc-panele { contain-intrinsic-size: auto 2060px; }
 main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 940px; }
@@ -49,7 +49,7 @@ main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 940px; }
 
 @media (max-width: 900px) {
   main:has(> .hero--narz) > .results { contain-intrinsic-size: auto 190px; }
-  main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 1240px; }
+  main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 1320px; }
   main:has(> .hero--narz) > .pricing { contain-intrinsic-size: auto 2300px; }
   main:has(> .hero--narz) > .w-noc-panele { contain-intrinsic-size: auto 2090px; }
   main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 1430px; }
@@ -58,7 +58,7 @@ main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 940px; }
 @media (max-width: 600px) {
   main:has(> .hero--narz) > #why-us { contain-intrinsic-size: auto 1480px; }
   main:has(> .hero--narz) > .results { contain-intrinsic-size: auto 260px; }
-  main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 1280px; }
+  main:has(> .hero--narz) > .panel-showcase { contain-intrinsic-size: auto 1380px; }
   main:has(> .hero--narz) > .pricing { contain-intrinsic-size: auto 3460px; }
   main:has(> .hero--narz) > .w-noc-panele { contain-intrinsic-size: auto 2660px; }
   main:has(> .hero--narz) > .contact { contain-intrinsic-size: auto 1660px; }
